@@ -1,0 +1,42 @@
+{
+  "beauty": {
+    "n_users": 253,
+    "v2_mean": 0.1695125560967885,
+    "content_mean": 0.14721006003770087,
+    "delta_point": 0.02230249605908762,
+    "ci_lo_95": 0.01295290186303379,
+    "ci_hi_95": 0.03129718315846396,
+    "B_replicates": 2000,
+    "resampling_unit": "user"
+  },
+  "fashion": {
+    "n_users": 512,
+    "v2_mean": 0.18099034050954368,
+    "content_mean": 0.15961705178073504,
+    "delta_point": 0.021373288728808622,
+    "ci_lo_95": 0.013355032882796459,
+    "ci_hi_95": 0.029304532651627625,
+    "B_replicates": 2000,
+    "resampling_unit": "user"
+  },
+  "instruments": {
+    "n_users": 3911,
+    "v2_mean": 0.05692605484429473,
+    "content_mean": 0.03596595308432514,
+    "delta_point": 0.02096010175996959,
+    "ci_lo_95": 0.01914227680048596,
+    "ci_hi_95": 0.02277106316325776,
+    "B_replicates": 2000,
+    "resampling_unit": "user"
+  },
+  "books": {
+    "n_users": 11930,
+    "v2_mean": 0.07277985210326504,
+    "content_mean": 0.03328952816173058,
+    "delta_point": 0.03949032394153446,
+    "ci_lo_95": 0.03817701542957443,
+    "ci_hi_95": 0.04077790373017634,
+    "B_replicates": 2000,
+    "resampling_unit": "user"
+  }
+}

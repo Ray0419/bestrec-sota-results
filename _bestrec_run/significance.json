@@ -1,0 +1,361 @@
+{
+  "cold_item": {
+    "beauty": {
+      "lc2c_v2 > content_direct": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 253,
+        "p_raw": 9.517808463674615e-06,
+        "p_raw_str": "9.518e-06"
+      },
+      "lc2c_v2 > dropoutnet": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 253,
+        "p_raw": 2.4828511705811983e-07,
+        "p_raw_str": "2.483e-07"
+      },
+      "lc2c_v2 > lc2c (V1)": {
+        "holm_sig": true,
+        "marker": "*",
+        "n_users": 253,
+        "p_raw": 0.020613808554809585,
+        "p_raw_str": "0.02061"
+      },
+      "lc2cpp_zfusion > content_direct": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 253,
+        "p_raw": 2.151057948394789e-06,
+        "p_raw_str": "2.151e-06"
+      },
+      "lc2cpp_zfusion > dropoutnet": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 253,
+        "p_raw": 1.7856748151448467e-07,
+        "p_raw_str": "1.786e-07"
+      },
+      "lc2cpp_zfusion > lc2c_v2": {
+        "holm_sig": false,
+        "marker": "n.s.",
+        "n_users": 253,
+        "p_raw": 0.261465222285297,
+        "p_raw_str": "0.2615"
+      }
+    },
+    "books": {
+      "lc2c_v2 > content_direct": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 11930,
+        "p_raw": 0.0,
+        "p_raw_str": "<1e-300"
+      },
+      "lc2c_v2 > dropoutnet": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 11930,
+        "p_raw": 7.47669855576255e-308,
+        "p_raw_str": "<1e-300"
+      },
+      "lc2c_v2 > lc2c (V1)": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 11930,
+        "p_raw": 0.0,
+        "p_raw_str": "<1e-300"
+      },
+      "lc2cpp_zfusion > content_direct": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 11930,
+        "p_raw": 0.0,
+        "p_raw_str": "<1e-300"
+      },
+      "lc2cpp_zfusion > dropoutnet": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 11930,
+        "p_raw": 0.0,
+        "p_raw_str": "<1e-300"
+      },
+      "lc2cpp_zfusion > lc2c_v2": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 11930,
+        "p_raw": 1.7189040141399548e-39,
+        "p_raw_str": "1.72e-39"
+      }
+    },
+    "fashion": {
+      "lc2c_v2 > content_direct": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 512,
+        "p_raw": 1.231122191805099e-06,
+        "p_raw_str": "1.231e-06"
+      },
+      "lc2c_v2 > dropoutnet": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 512,
+        "p_raw": 3.96180815020991e-09,
+        "p_raw_str": "3.962e-09"
+      },
+      "lc2c_v2 > lc2c (V1)": {
+        "holm_sig": false,
+        "marker": "n.s.",
+        "n_users": 512,
+        "p_raw": 0.7364669017578067,
+        "p_raw_str": "0.7365"
+      },
+      "lc2cpp_zfusion > content_direct": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 512,
+        "p_raw": 5.276643498152046e-07,
+        "p_raw_str": "5.277e-07"
+      },
+      "lc2cpp_zfusion > dropoutnet": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 512,
+        "p_raw": 1.478715435623326e-09,
+        "p_raw_str": "1.479e-09"
+      },
+      "lc2cpp_zfusion > lc2c_v2": {
+        "holm_sig": false,
+        "marker": "n.s.",
+        "n_users": 512,
+        "p_raw": 0.029919274816404766,
+        "p_raw_str": "0.02992"
+      }
+    },
+    "instruments": {
+      "lc2c_v2 > content_direct": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 3911,
+        "p_raw": 2.6934591066073833e-95,
+        "p_raw_str": "2.69e-95"
+      },
+      "lc2c_v2 > dropoutnet": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 3911,
+        "p_raw": 2.1267799349727782e-92,
+        "p_raw_str": "2.13e-92"
+      },
+      "lc2c_v2 > lc2c (V1)": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 3911,
+        "p_raw": 3.4638290604114536e-18,
+        "p_raw_str": "3.46e-18"
+      },
+      "lc2cpp_zfusion > content_direct": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 3911,
+        "p_raw": 7.051660116540766e-98,
+        "p_raw_str": "7.05e-98"
+      },
+      "lc2cpp_zfusion > dropoutnet": {
+        "holm_sig": true,
+        "marker": "***",
+        "n_users": 3911,
+        "p_raw": 6.971809999419733e-94,
+        "p_raw_str": "6.97e-94"
+      },
+      "lc2cpp_zfusion > lc2c_v2": {
+        "holm_sig": true,
+        "marker": "*",
+        "n_users": 3911,
+        "p_raw": 0.015941459572987732,
+        "p_raw_str": "0.01594"
+      }
+    }
+  },
+  "cold_item_bootstrap": {
+    "beauty": {
+      "B_replicates": 2000,
+      "ci_hi_95": 0.03129718315846396,
+      "ci_lo_95": 0.01295290186303379,
+      "content_mean": 0.14721006003770087,
+      "delta_point": 0.02230249605908762,
+      "n_users": 253,
+      "resampling_unit": "user",
+      "v2_mean": 0.1695125560967885
+    },
+    "books": {
+      "B_replicates": 2000,
+      "ci_hi_95": 0.04077790373017634,
+      "ci_lo_95": 0.03817701542957443,
+      "content_mean": 0.03328952816173058,
+      "delta_point": 0.03949032394153446,
+      "n_users": 11930,
+      "resampling_unit": "user",
+      "v2_mean": 0.07277985210326504
+    },
+    "fashion": {
+      "B_replicates": 2000,
+      "ci_hi_95": 0.029304532651627625,
+      "ci_lo_95": 0.013355032882796459,
+      "content_mean": 0.15961705178073504,
+      "delta_point": 0.021373288728808622,
+      "n_users": 512,
+      "resampling_unit": "user",
+      "v2_mean": 0.18099034050954368
+    },
+    "instruments": {
+      "B_replicates": 2000,
+      "ci_hi_95": 0.02277106316325776,
+      "ci_lo_95": 0.01914227680048596,
+      "content_mean": 0.03596595308432514,
+      "delta_point": 0.02096010175996959,
+      "n_users": 3911,
+      "resampling_unit": "user",
+      "v2_mean": 0.05692605484429473
+    }
+  },
+  "correction_family": {
+    "cold_item": "Holm within dataset over compared baselines",
+    "warm": "Holm within dataset over compared baselines"
+  },
+  "sample_unit": {
+    "cold_item": "per-user target-item ranking records",
+    "cold_item_bootstrap": "user/item/fold clustered bootstrap where available",
+    "warm": "per-user leave-one-out records"
+  },
+  "schema_version": 1,
+  "source_records": {
+    "cold_item": "results_cold_item_v2.json",
+    "warm": "results_warm_loo.json"
+  },
+  "warm": {
+    "beauty": {
+      "ease_pure": {
+        "holm_sig": true,
+        "marker": "***",
+        "p_raw": 8.484368533897435e-06
+      },
+      "higher_order": {
+        "holm_sig": false,
+        "marker": "n.s.",
+        "p_raw": 0.2504490855245922
+      },
+      "ials": {
+        "holm_sig": false,
+        "marker": "n.s.",
+        "p_raw": 0.032231761513132014
+      },
+      "lightgcn": {
+        "holm_sig": false,
+        "marker": "n.s.",
+        "p_raw": 0.049954707853206125
+      },
+      "multvae": {
+        "holm_sig": true,
+        "marker": "***",
+        "p_raw": 0.0004316969589305949
+      },
+      "popularity": {
+        "holm_sig": true,
+        "marker": "***",
+        "p_raw": 1.4901123734711534e-14
+      }
+    },
+    "books": {
+      "ease_pure": {
+        "holm_sig": true,
+        "marker": "***",
+        "p_raw": 6.138259887967847e-13
+      },
+      "higher_order": {
+        "holm_sig": true,
+        "marker": "***",
+        "p_raw": 2.4110235193854487e-13
+      },
+      "lightgcn": {
+        "holm_sig": true,
+        "marker": "***",
+        "p_raw": 8.590244468635071e-35
+      },
+      "multvae": {
+        "holm_sig": true,
+        "marker": "***",
+        "p_raw": 7.718871302099604e-26
+      },
+      "popularity": {
+        "holm_sig": true,
+        "marker": "***",
+        "p_raw": 0.0
+      }
+    },
+    "fashion": {
+      "ease_pure": {
+        "holm_sig": true,
+        "marker": "***",
+        "p_raw": 0.00021085435526637368
+      },
+      "higher_order": {
+        "holm_sig": false,
+        "marker": "n.s.",
+        "p_raw": 0.27301039494509527
+      },
+      "ials": {
+        "holm_sig": true,
+        "marker": "*",
+        "p_raw": 0.011282200588880992
+      },
+      "lightgcn": {
+        "holm_sig": false,
+        "marker": "n.s.",
+        "p_raw": 0.03987002313910495
+      },
+      "multvae": {
+        "holm_sig": true,
+        "marker": "***",
+        "p_raw": 0.0001212072699426267
+      },
+      "popularity": {
+        "holm_sig": true,
+        "marker": "***",
+        "p_raw": 1.8270945003994812e-17
+      }
+    },
+    "instruments": {
+      "ease_pure": {
+        "holm_sig": false,
+        "marker": "n.s.",
+        "p_raw": 0.1605691237327475
+      },
+      "higher_order": {
+        "holm_sig": false,
+        "marker": "n.s.",
+        "p_raw": 0.9968955056019272
+      },
+      "ials": {
+        "holm_sig": true,
+        "marker": "***",
+        "p_raw": 1.656532264653676e-06
+      },
+      "lightgcn": {
+        "holm_sig": false,
+        "marker": "n.s.",
+        "p_raw": 0.2993680759972811
+      },
+      "multvae": {
+        "holm_sig": false,
+        "marker": "n.s.",
+        "p_raw": 0.36013114599743634
+      },
+      "popularity": {
+        "holm_sig": true,
+        "marker": "***",
+        "p_raw": 1.9089297625665913e-60
+      }
+    }
+  }
+}

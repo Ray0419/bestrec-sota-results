@@ -1,0 +1,154 @@
+{
+  "beauty": {
+    "V0_content_direct": {
+      "NDCG@10": 0.14492750792051187,
+      "NDCG@10_std": 0.010302675166745571,
+      "HR@10": 0.28914722566158596,
+      "description": "baseline: no LC2C"
+    },
+    "V1_lc2c_full_k64": {
+      "NDCG@10": 0.16111573956963238,
+      "NDCG@10_std": 0.01567416826520639,
+      "HR@10": 0.3113306873952861,
+      "description": "sensitivity: SVD k=64"
+    },
+    "V2_lc2c_no_svd": {
+      "NDCG@10": 0.17311339110469984,
+      "NDCG@10_std": 0.01491514818992665,
+      "HR@10": 0.3368212409717356,
+      "description": "ablation: no SVD (direct B-row regression)"
+    },
+    "V3_lc2c_no_ridge_k64": {
+      "NDCG@10": 0.16097656512489258,
+      "NDCG@10_std": 0.010103727834522793,
+      "HR@10": 0.3185109313899296,
+      "description": "ablation: no Ridge (nearest-warm in SBERT)"
+    },
+    "V1_lc2c_full_k16": {
+      "NDCG@10": 0.15632309328882205,
+      "NDCG@10_std": 0.015252456821625038,
+      "HR@10": 0.3066790042159562,
+      "description": "sensitivity: SVD k=16"
+    },
+    "V1_lc2c_full_k256": {
+      "NDCG@10": 0.16151303939434794,
+      "NDCG@10_std": 0.015233781619626135,
+      "HR@10": 0.31365393646643547,
+      "description": "sensitivity: SVD k=256"
+    }
+  },
+  "fashion": {
+    "V0_content_direct": {
+      "NDCG@10": 0.13378226167289245,
+      "NDCG@10_std": 0.01491692250876985,
+      "HR@10": 0.2530086268393329,
+      "description": "baseline: no LC2C"
+    },
+    "V1_lc2c_full_k64": {
+      "NDCG@10": 0.15656659034768378,
+      "NDCG@10_std": 0.023796561930993776,
+      "HR@10": 0.2947881460922842,
+      "description": "sensitivity: SVD k=64"
+    },
+    "V2_lc2c_no_svd": {
+      "NDCG@10": 0.15483715516066007,
+      "NDCG@10_std": 0.01927558641771225,
+      "HR@10": 0.28791731440749746,
+      "description": "ablation: no SVD (direct B-row regression)"
+    },
+    "V3_lc2c_no_ridge_k64": {
+      "NDCG@10": 0.14671070646776624,
+      "NDCG@10_std": 0.01870559768266245,
+      "HR@10": 0.28243578272311687,
+      "description": "ablation: no Ridge (nearest-warm in SBERT)"
+    },
+    "V1_lc2c_full_k16": {
+      "NDCG@10": 0.1371357586139096,
+      "NDCG@10_std": 0.02252742329579332,
+      "HR@10": 0.27211041609435466,
+      "description": "sensitivity: SVD k=16"
+    },
+    "V1_lc2c_full_k256": {
+      "NDCG@10": 0.15695092800268995,
+      "NDCG@10_std": 0.02205431437599428,
+      "HR@10": 0.29542836267946404,
+      "description": "sensitivity: SVD k=256"
+    }
+  },
+  "instruments": {
+    "V0_content_direct": {
+      "NDCG@10": 0.03548195703073459,
+      "NDCG@10_std": 0.003439333320507261,
+      "HR@10": 0.07118691183679804,
+      "description": "baseline: no LC2C"
+    },
+    "V1_lc2c_full_k64": {
+      "NDCG@10": 0.050207358300753444,
+      "NDCG@10_std": 0.00426292782969577,
+      "HR@10": 0.10029210784046154,
+      "description": "sensitivity: SVD k=64"
+    },
+    "V2_lc2c_no_svd": {
+      "NDCG@10": 0.057514999793508305,
+      "NDCG@10_std": 0.0032767183692428868,
+      "HR@10": 0.10983085189226463,
+      "description": "ablation: no SVD (direct B-row regression)"
+    },
+    "V3_lc2c_no_ridge_k64": {
+      "NDCG@10": 0.03841610824849967,
+      "NDCG@10_std": 0.008131125815111516,
+      "HR@10": 0.08076763998072521,
+      "description": "ablation: no Ridge (nearest-warm in SBERT)"
+    },
+    "V1_lc2c_full_k16": {
+      "NDCG@10": 0.03953961577813584,
+      "NDCG@10_std": 0.003466517017304676,
+      "HR@10": 0.0824201601246156,
+      "description": "sensitivity: SVD k=16"
+    },
+    "V1_lc2c_full_k256": {
+      "NDCG@10": 0.05255240963246606,
+      "NDCG@10_std": 0.0041810731803181974,
+      "HR@10": 0.1035262727970719,
+      "description": "sensitivity: SVD k=256"
+    }
+  },
+  "books": {
+    "V0_content_direct": {
+      "NDCG@10": 0.0272073566441075,
+      "NDCG@10_std": 0.0004771059083556582,
+      "HR@10": 0.046786531794103595,
+      "description": "baseline: no LC2C"
+    },
+    "V1_lc2c_full_k64": {
+      "NDCG@10": 0.04562976143902821,
+      "NDCG@10_std": 0.0013165073050376871,
+      "HR@10": 0.08236309856725217,
+      "description": "sensitivity: SVD k=64"
+    },
+    "V2_lc2c_no_svd": {
+      "NDCG@10": 0.06528449427586258,
+      "NDCG@10_std": 0.0011641589578662587,
+      "HR@10": 0.11298454600610557,
+      "description": "ablation: no SVD (direct B-row regression)"
+    },
+    "V3_lc2c_no_ridge_k64": {
+      "NDCG@10": 0.03652991954711077,
+      "NDCG@10_std": 0.0011588574578650242,
+      "HR@10": 0.06665999274906961,
+      "description": "ablation: no Ridge (nearest-warm in SBERT)"
+    },
+    "V1_lc2c_full_k16": {
+      "NDCG@10": 0.023176644390421153,
+      "NDCG@10_std": 0.0002454376712775959,
+      "HR@10": 0.04720569538182761,
+      "description": "sensitivity: SVD k=16"
+    },
+    "V1_lc2c_full_k256": {
+      "NDCG@10": 0.060190674781439524,
+      "NDCG@10_std": 0.0012843130599316736,
+      "HR@10": 0.10537150615668925,
+      "description": "sensitivity: SVD k=256"
+    }
+  }
+}

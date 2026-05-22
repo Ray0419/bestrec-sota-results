@@ -1,0 +1,75 @@
+{
+  "baselines": {
+    "blair_text": {
+      "notes": "BLaIR-style text retrieval comparator has not been generated.",
+      "seeds": [
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ],
+      "status": "not_run"
+    },
+    "clcrec_melt": {
+      "notes": "CLCRec/MELT-style cold-start comparator has not been generated.",
+      "seeds": [
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ],
+      "status": "not_run"
+    },
+    "faithful_dropoutnet": {
+      "notes": "Required WMF-backed multi-seed/grid-tuned DropoutNet has not been generated.",
+      "seeds": [
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ],
+      "status": "not_run"
+    },
+    "ials": {
+      "notes": "Legacy iALS is incomplete/OOM on Books; sparse tuned iALS is missing.",
+      "seeds": [
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ],
+      "status": "legacy_partial"
+    },
+    "lightgcn": {
+      "notes": "Legacy canonical-setting LightGCN numbers exist, but the repaired tuned multi-seed audit is missing.",
+      "seeds": [
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ],
+      "status": "legacy_partial"
+    },
+    "multivae": {
+      "notes": "Legacy canonical-setting MultiVAE numbers exist, but the repaired tuned multi-seed audit is missing.",
+      "seeds": [
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ],
+      "status": "legacy_partial"
+    }
+  },
+  "schema_version": 1,
+  "win_condition": {
+    "notes": "LC2C++ variants have not yet passed the full-catalog cold-item SOTA protocol.",
+    "status": "not_evaluated"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "comparisons": {
+    "beauty": {
+      "comparison": "lc2cpp_validated_margin > lc2c_v2",
+      "dataset": "beauty",
+      "holm_sig": true,
+      "holm_threshold": 0.05,
+      "marker": "*",
+      "mean_delta": 0.0008449715202586428,
+      "n_users": 253,
+      "negative_users": 17,
+      "p_raw": 0.026399444191406496,
+      "p_raw_str": "0.0264",
+      "positive_users": 30,
+      "zero_users": 206
+    },
+    "books": {
+      "comparison": "lc2cpp_validated_margin > lc2c_v2",
+      "dataset": "books",
+      "holm_sig": true,
+      "holm_threshold": 0.0125,
+      "marker": "***",
+      "mean_delta": 0.001460531347904987,
+      "n_users": 11930,
+      "negative_users": 2128,
+      "p_raw": 2.5641874920564574e-46,
+      "p_raw_str": "2.56e-46",
+      "positive_users": 3264,
+      "zero_users": 6538
+    },
+    "fashion": {
+      "comparison": "lc2cpp_validated_margin > lc2c_v2",
+      "dataset": "fashion",
+      "holm_sig": true,
+      "holm_threshold": 0.025,
+      "marker": "**",
+      "mean_delta": 0.002248466479125502,
+      "n_users": 512,
+      "negative_users": 107,
+      "p_raw": 0.006789309776992434,
+      "p_raw_str": "0.006789",
+      "positive_users": 152,
+      "zero_users": 253
+    },
+    "instruments": {
+      "comparison": "lc2cpp_validated_margin > lc2c_v2",
+      "dataset": "instruments",
+      "holm_sig": true,
+      "holm_threshold": 0.016666666666666666,
+      "marker": "**",
+      "mean_delta": 0.0004458979026188016,
+      "n_users": 3911,
+      "negative_users": 982,
+      "p_raw": 0.003864644743576658,
+      "p_raw_str": "0.003865",
+      "positive_users": 1178,
+      "zero_users": 1751
+    }
+  },
+  "correction_family": "Holm across four dataset-level LC2C++ validated > LC2C V2 comparisons",
+  "method": "lc2cpp_validated_margin",
+  "sample_unit": "per-user mean NDCG@10 from validation-selected cold-fold-only records",
+  "schema_version": 1
+}

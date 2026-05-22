@@ -1,0 +1,125 @@
+{
+  "beauty": {
+    "popularity": {
+      "p_raw": 1.4901123734711534e-14,
+      "holm_sig": true,
+      "marker": "***"
+    },
+    "ease_pure": {
+      "p_raw": 8.484368533897435e-06,
+      "holm_sig": true,
+      "marker": "***"
+    },
+    "multvae": {
+      "p_raw": 0.0004316969589305949,
+      "holm_sig": true,
+      "marker": "***"
+    },
+    "ials": {
+      "p_raw": 0.032231761513132014,
+      "holm_sig": false,
+      "marker": "n.s."
+    },
+    "lightgcn": {
+      "p_raw": 0.049954707853206125,
+      "holm_sig": false,
+      "marker": "n.s."
+    },
+    "higher_order": {
+      "p_raw": 0.2504490855245922,
+      "holm_sig": false,
+      "marker": "n.s."
+    }
+  },
+  "fashion": {
+    "popularity": {
+      "p_raw": 1.8270945003994812e-17,
+      "holm_sig": true,
+      "marker": "***"
+    },
+    "multvae": {
+      "p_raw": 0.0001212072699426267,
+      "holm_sig": true,
+      "marker": "***"
+    },
+    "ease_pure": {
+      "p_raw": 0.00021085435526637368,
+      "holm_sig": true,
+      "marker": "***"
+    },
+    "ials": {
+      "p_raw": 0.011282200588880992,
+      "holm_sig": true,
+      "marker": "*"
+    },
+    "lightgcn": {
+      "p_raw": 0.03987002313910495,
+      "holm_sig": false,
+      "marker": "n.s."
+    },
+    "higher_order": {
+      "p_raw": 0.27301039494509527,
+      "holm_sig": false,
+      "marker": "n.s."
+    }
+  },
+  "instruments": {
+    "popularity": {
+      "p_raw": 1.9089297625665913e-60,
+      "holm_sig": true,
+      "marker": "***"
+    },
+    "ials": {
+      "p_raw": 1.656532264653676e-06,
+      "holm_sig": true,
+      "marker": "***"
+    },
+    "ease_pure": {
+      "p_raw": 0.1605691237327475,
+      "holm_sig": false,
+      "marker": "n.s."
+    },
+    "lightgcn": {
+      "p_raw": 0.2993680759972811,
+      "holm_sig": false,
+      "marker": "n.s."
+    },
+    "multvae": {
+      "p_raw": 0.36013114599743634,
+      "holm_sig": false,
+      "marker": "n.s."
+    },
+    "higher_order": {
+      "p_raw": 0.9968955056019272,
+      "holm_sig": false,
+      "marker": "n.s."
+    }
+  },
+  "books": {
+    "popularity": {
+      "p_raw": 0.0,
+      "holm_sig": true,
+      "marker": "***"
+    },
+    "lightgcn": {
+      "p_raw": 8.590244468635071e-35,
+      "holm_sig": true,
+      "marker": "***"
+    },
+    "multvae": {
+      "p_raw": 7.718871302099604e-26,
+      "holm_sig": true,
+      "marker": "***"
+    },
+    "higher_order": {
+      "p_raw": 2.4110235193854487e-13,
+      "holm_sig": true,
+      "marker": "***"
+    },
+    "ease_pure": {
+      "p_raw": 6.138259887967847e-13,
+      "holm_sig": true,
+      "marker": "***"
+    }
+  }
+}

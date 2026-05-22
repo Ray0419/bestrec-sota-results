@@ -1,0 +1,4602 @@
+[
+  {
+    "user_id": 3220,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "The Criminal Lawyer: A Crime Thriller Inspired By a True Sto",
+      "The King of Torts: A Novel",
+      "The Confession: A Novel",
+      "The Litigators",
+      "Sweet Tooth: A Novel",
+      "Hidden Order: A Thriller (The Scot Harvath Series Book 12)"
+    ],
+    "target_title": "The Crossing (A Harry Bosch Novel Book 18)",
+    "distractor_titles": [
+      "The Drop (A Harry Bosch Novel Book 15)",
+      "The Overlook (A Harry Bosch Novel, 13)",
+      "The Wolves (A John Wells Novel)",
+      "KILLING PLATO (The Jack Shepherd Novels Book 2)"
+    ],
+    "rank_content_direct": 4,
+    "rank_v1": 5,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11427,
+    "n_warm": 24,
+    "warm_titles_sample": [
+      "Caged Animal (Noah Wolf Book 15)",
+      "Black Harvest (Noah Wolf Book 13)",
+      "Time To Hunt (Noah Wolf Book 8)",
+      "All My Witches (A Wicked Witches of the Midwest Fantasy Book",
+      "On a Witch and a Prayer: A Wicked Witches of the Midwest Sho",
+      "Wicked Brew: A Wicked Witches of the Midwest Short"
+    ],
+    "target_title": "Deep Allegiance (Noah Wolf Book 16)",
+    "distractor_titles": [
+      "Noah Wolf Series: Books 5-7 (Noah Wolf Boxed Set Book 2)",
+      "Coming Dawn (Devin Gray Book 2)",
+      "Her Every Fear: A Novel",
+      "Run, Rose, Run: A Novel"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 4,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 5565,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Freaky Reapers (A Mystic Caravan Mystery Book 8)",
+      "Only the Evil (A Death Gate Grim Reapers Thriller Book 8)",
+      "The Wendigo Whoop-De-Doo (A Charlie Rhodes Cozy Mystery Book",
+      "Freaky Rites (A Mystic Caravan Mystery Book 6)",
+      "The Asylum Aberration (A Charlie Rhodes Cozy Mystery Book 9)",
+      "The Banshee Brouhaha (A Charlie Rhodes Cozy Mystery Book 8)"
+    ],
+    "target_title": "Ghost of a Chance: A Paranormal Women's Fiction Novel (Chint",
+    "distractor_titles": [
+      "Ghosts: A novel",
+      "SEEING DEAD THINGS: A Paranormal Women\u2019s Fiction Novel (Roxi",
+      "The Cruel Prince (The Folk of the Air, 1)",
+      "Six Years"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8643,
+    "n_warm": 15,
+    "warm_titles_sample": [
+      "The Defendants (Thaddeus Murfee Legal Thriller Series Book 1",
+      "Cades Cove: The Curse of Allie Mae: A Supernatural Thriller ",
+      "The Target (An FBI Thriller Book 3)",
+      "The Maze (An FBI Thriller Book 2)",
+      "Midnight Moon (Vampire for Hire Book 13)",
+      "The Ghost Files"
+    ],
+    "target_title": "Die Trying (Jack Reacher Book 2)",
+    "distractor_titles": [
+      "Better Off Dead A Jack Reacher Novel",
+      "The Affair (Jack Reacher)",
+      "Deadly Pursuit (A Pax Arrington Mystery)",
+      "Daughters of the Night Sky"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 3,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10552,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Final Betrayal: An absolutely gripping crime thriller (Detec",
+      "Dead Memories: An addictive and gripping crime thriller (Det",
+      "Her Pretty Bones: A completely addictive crime thriller with",
+      "Her Final Confession: An absolutely addictive crime fiction ",
+      "Deadly Secrets: An absolutely gripping crime thriller (Detec",
+      "Tell Nobody: Absolutely gripping crime fiction with unputdow"
+    ],
+    "target_title": "Child's Play: A totally unputdownable serial killer thriller",
+    "distractor_titles": [
+      "Killing Mind: An addictive and nail-biting crime thriller (D",
+      "Stolen Ones: A totally jaw-dropping and addictive crime thri",
+      "Little Secrets: A Novel",
+      "Innocent"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 3,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13562,
+    "n_warm": 24,
+    "warm_titles_sample": [
+      "The Engine House: A Black Beacons Murder Mystery (DCI Evan W",
+      "The Hit List (Blake Wilder FBI Mystery Thriller Book 16)",
+      "The Heist (Blake Wilder FBI Mystery Thriller Book 15)",
+      "The Keeper of Happy Endings",
+      "The Veiled (The Baudin & Dixon Trilogy Book 3)",
+      "Love, Lies, and Suicide (Olivia Knight FBI Mystery Thriller "
+    ],
+    "target_title": "St. Benet's: A chilling Norfolk Broads crime thriller (DI Ta",
+    "distractor_titles": [
+      "A Dark Sin: A chilling British detective crime thriller (The",
+      "MURDER AT THE OLD ABBEY: Murder, mystery and suspense in Sou",
+      "Inside the Echo (The Flint K-9 Search And Rescue Mysteries B",
+      "To Love and Cherish (Bridal Veil Island)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 3,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8976,
+    "n_warm": 33,
+    "warm_titles_sample": [
+      "Unquiet Bones: A Yorkshire Murder Mystery (DCI Harry Grimm C",
+      "Their Burning Graves: A totally heart-stopping and addictive",
+      "GRAVES ON THE FENS a gripping crime thriller full of stunnin",
+      "False Witness: A Novel",
+      "Shallow Waters (Detective Hannah Robbins Crime Series Book 1",
+      "Blood Trail: A Yorkshire Murder Mystery (DCI Harry Grimm Cri"
+    ],
+    "target_title": "What She Said (Detective Karen Hart Book 6)",
+    "distractor_titles": [
+      "Don't Turn Back (Detective Karen Hart Book 3)",
+      "Where Secrets Lie (Detective Karen Hart Book 2)",
+      "The Winter People: A Suspense Thriller",
+      "Grave Sight (Harper Connelly Mysteries, Book 1)"
+    ],
+    "rank_content_direct": 5,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 2342,
+    "n_warm": 39,
+    "warm_titles_sample": [
+      "Rizzoli & Isles: Listen to Me: A Novel",
+      "Going Rogue: Rise and Shine Twenty-Nine (Stephanie Plum Book",
+      "Unquiet Bones: A Yorkshire Murder Mystery (DCI Harry Grimm C",
+      "Buried in Secret (Sandhamn Murders Book 10)",
+      "In Bad Company (Sandhamn Murders Book 9)",
+      "In the Shadow of Power (Sandhamn Murders Book 7)"
+    ],
+    "target_title": "Cold, Cold Bones (A Temperance Brennan Novel Book 21)",
+    "distractor_titles": [
+      "A Conspiracy of Bones (Temperance Brennan Book 19)",
+      "Stone Cold (A Joe Pickett Novel Book 14)",
+      "Miss Peregrine's Home for Peculiar Children",
+      "Hangman: A Novel"
+    ],
+    "rank_content_direct": 4,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 12062,
+    "n_warm": 17,
+    "warm_titles_sample": [
+      "Spell's Bells (Spellbound Paranormal Cozy Mystery Book 3)",
+      "Doom and Broom (Spellbound Paranormal Cozy Mystery Book 2)",
+      "The Wendigo Whoop-De-Doo (A Charlie Rhodes Cozy Mystery Book",
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book",
+      "Only the Guilty (A Death Gate Grim Reapers Thriller Book 7)",
+      "A Crone to Pick (A Spell's Angels Cozy Mystery Book 6)"
+    ],
+    "target_title": "A Little Slice of Death (A Two Broomsticks Gas & Grill Witch",
+    "distractor_titles": [
+      "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+      "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+      "Everywhere That Mary Went (Rosato & Associates Book 1)",
+      "Shadow Kill (A John Kovac Thriller Book 1) (John Kovac Thril"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 9793,
+    "n_warm": 26,
+    "warm_titles_sample": [
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book",
+      "Dances With Witches (A Hannah Hickok Witchy Mystery Book 5)",
+      "Hex, Drugs & Rock and Roll (A Supernatural Speakeasy Cozy My",
+      "With Scream and Sugar: A Magical Tea Room Mystery (The Magic",
+      "Spelling the Tea: A Magical Tea Room Mystery (The Magical Te",
+      "Romancing the Crone (A Spell's Angels Cozy Mystery Book 5)"
+    ],
+    "target_title": "A Little Slice of Death (A Two Broomsticks Gas & Grill Witch",
+    "distractor_titles": [
+      "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+      "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+      "Mortal Fear (Mississippi Book 1)",
+      "Ice on the Grapevine (A Hunter Rayne Highway Mystery, Book 2"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 1284,
+    "n_warm": 18,
+    "warm_titles_sample": [
+      "Going Rogue: Rise and Shine Twenty-Nine (Stephanie Plum Book",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "Freaky Sights (A Mystic Caravan Mystery Book 13)",
+      "Freaky Gifts (A Mystic Caravan Mystery Book 12)",
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book",
+      "Freaky Mage (A Mystic Caravan Mystery Book 11)"
+    ],
+    "target_title": "A Little Slice of Death (A Two Broomsticks Gas & Grill Witch",
+    "distractor_titles": [
+      "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+      "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+      "Later",
+      "Buried Lies (\"Lies\" Mystery Thriller Series Book 6)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 1057,
+    "n_warm": 15,
+    "warm_titles_sample": [
+      "The Bone Jar (Detective Lew Kirby Book 1)",
+      "Insidious (An FBI Thriller Book 20)",
+      "Beyond Eden (Contemporary Romantic Thriller Book 3)",
+      "Power Play (An FBI Thriller Book 18)",
+      "The Lost Key (A Brit in the FBI, Book 2)",
+      "The Final Cut (A Brit in the FBI, Book 1)"
+    ],
+    "target_title": "Water's Edge: A totally gripping crime thriller (Detective M",
+    "distractor_titles": [
+      "Snow Creek: An absolutely gripping mystery thriller (Detecti",
+      "Silent Ridge: A gripping crime thriller and mystery (Detecti",
+      "The Christmas Shoppe",
+      "Murder One (David Sloane Book 4)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8839,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "Gwendy's Button Box",
+      "Follow You Home",
+      "Silken Prey: A Lucas Davenport Novel (The Prey Series Book 2",
+      "Hidden Prey (The Prey Series Book 15)",
+      "Broken Prey (The Prey Series Book 16)",
+      "Winter Prey (The Prey Series Book 5)"
+    ],
+    "target_title": "End of Watch: A Novel (The Bill Hodges Trilogy Book 3)",
+    "distractor_titles": [
+      "Mr. Mercedes: A Novel (1) (The Bill Hodges Trilogy)",
+      "The Wolf and the Watchman: A Novel",
+      "King's Cage (Red Queen, 3)",
+      "The Sleeper (A Lance Spector Thriller Book 4)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 4965,
+    "n_warm": 18,
+    "warm_titles_sample": [
+      "Delayed Departures - A Mary O'Reilly Paranormal Mystery (Boo",
+      "Old Acquaintance - A Mary O'Reilly Paranormal Mystery (Book ",
+      "Dying Games (Jefferson Tayte Genealogical Mystery Book 6)",
+      "Deadly Circumstances - A Mary O'Reilly Paranormal Mystery (B",
+      "Cold Shadows (Ellie Jordan, Ghost Trapper Book 2)",
+      "Ellie Jordan, Ghost Trapper"
+    ],
+    "target_title": "Kindred (Jefferson Tayte Genealogical Mystery Book 5)",
+    "distractor_titles": [
+      "Goodey's Last Stand: A Hard Boiled Mystery (Joe Goodey Myste",
+      "The Jefferson Key: A Novel",
+      "Bet on It",
+      "Crimson Lake Road (Desert Plains Book 2)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13861,
+    "n_warm": 25,
+    "warm_titles_sample": [
+      "Wicked Forever (An Ivy Morgan Mystery Book 21)",
+      "The Banshee Brouhaha (A Charlie Rhodes Cozy Mystery Book 8)",
+      "Dances With Witches (A Hannah Hickok Witchy Mystery Book 5)",
+      "Ghostly Camping (A Harper Harlow Mystery Book 16)",
+      "The Monstrous Seven (A Hannah Hickok Witchy Mystery Book 4)",
+      "The Killer Clown Calamity (A Charlie Rhodes Cozy Mystery Boo"
+    ],
+    "target_title": "The Witch is Back (Wicked Witches of the Midwest Book 17)",
+    "distractor_titles": [
+      "Careful What You Witch For: A Wicked Witches of the Midwest ",
+      "Close Encounters of the Witchy Kind (A Wicked Witches of the",
+      "Spooner",
+      "Birdsong: A Novel of Love and War"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11319,
+    "n_warm": 17,
+    "warm_titles_sample": [
+      "The Girl in the River: A totally addictive and heart-racing ",
+      "The Hidden Girl: An absolutely gripping mystery thriller (Ag",
+      "The Snow Graves: A totally addictive and unputdownable myste",
+      "The Burning Girls: A completely gripping crime thriller pack",
+      "Wildflower Graves: A totally gripping mystery thriller (Dete",
+      "Death in the Sunshine (The Retired Detectives Club Book 1)"
+    ],
+    "target_title": "A Perfect Wife (Blake Wilder FBI Mystery Thriller Book 2)",
+    "distractor_titles": [
+      "The Perfect Husband: An FBI Profiler Novel",
+      "The Chosen Girls (Blake Wilder FBI Mystery Thriller Book 4)",
+      "Alexander Hamilton",
+      "Heart of Ice: A Gripping Crime Thriller (An Emily Kenyon Thr"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14393,
+    "n_warm": 17,
+    "warm_titles_sample": [
+      "Silent Angel: A completely gripping thriller packed with nai",
+      "Sleeping Dolls: An utterly unputdownable and gripping crime ",
+      "First Girl to Die: A completely gripping crime thriller (Det",
+      "The Killer's Girl: A completely nail-biting crime thriller (",
+      "One Left Alive: A heart-stopping and gripping crime thriller",
+      "The Girl in the River: A totally addictive and heart-racing "
+    ],
+    "target_title": "Find the Girl: An utterly addictive and unputdownable crime ",
+    "distractor_titles": [
+      "Girl Forgotten : A completely addictive, heart-stopping crim",
+      "Stolen Ones: A totally jaw-dropping and addictive crime thri",
+      "The Daughter's Tale: A Novel",
+      "Bring Them Home (Detective Karen Hart Book 1)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 4881,
+    "n_warm": 30,
+    "warm_titles_sample": [
+      "Rough Country (A Virgil Flowers Novel, Book 3)",
+      "Bad Blood (A Virgil Flowers Novel, Book 4)",
+      "Storm Front (A Virgil Flowers Novel, Book 7)",
+      "Deadline (A Virgil Flowers Novel, Book 8)",
+      "Mad River (A Virgil Flowers Novel, Book 6)",
+      "Shock Wave (A Virgil Flowers Novel, Book 5)"
+    ],
+    "target_title": "The Lost Symbol (Robert Langdon Book 3)",
+    "distractor_titles": [
+      "What Once Was Lost: A Novel",
+      "The End of Getting Lost: A Novel",
+      "Fortune and Glory: Tantalizing Twenty-Seven (27) (Stephanie ",
+      "Robert B. Parker's The Devil Wins (Jesse Stone Novels Book 1"
+    ],
+    "rank_content_direct": 4,
+    "rank_v1": 5,
+    "rank_v2": 4,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 9654,
+    "n_warm": 25,
+    "warm_titles_sample": [
+      "One and Done: A Legal Thriller (Sam Johnstone Book 2)",
+      "Misjudged: A Legal Thriller (Sam Johnstone Book 1)",
+      "I Swear To Tell: A Legal Thriller (Cadence Elliott Legal Thr",
+      "The Lawyer's Truth (Cadence Elliott Legal Thriller Series Bo",
+      "The Good Client (Mitch Turner Legal Thrillers Book 1)",
+      "Steel Justice: A Jack Steel Action Mystery Thriller, Book 3 "
+    ],
+    "target_title": "True Intent (The Nate Shepherd Legal Thriller Series Book 2)",
+    "distractor_titles": [
+      "False Oath (The Nate Shepherd Legal Thriller Series Book 4)",
+      "Just Plea (The Nate Shepherd Legal Thriller Series Book 5)",
+      "Forty Thieves",
+      "The Lacuna: A Novel"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 3,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 9639,
+    "n_warm": 13,
+    "warm_titles_sample": [
+      "Act of War: A Thriller (The Scot Harvath Series Book 13)",
+      "Zero Day (John Puller Book 1)",
+      "Force of Nature (A Joe Pickett Novel Book 12)",
+      "Open Season (A Joe Pickett Novel Book 1)",
+      "Endangered (A Joe Pickett Novel Book 15)",
+      "Off the Grid (A Joe Pickett Novel Book 16)"
+    ],
+    "target_title": "Stone Cold (A Joe Pickett Novel Book 14)",
+    "distractor_titles": [
+      "Wolf Pack (A Joe Pickett Novel Book 19)",
+      "Shadows Reel (A Joe Pickett Novel Book 22)",
+      "The Piano Teacher: A Novel",
+      "Love You More"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 2667,
+    "n_warm": 24,
+    "warm_titles_sample": [
+      "Cross My Heart: A completely gripping and unputdownable seri",
+      "Be Mine Forever: An absolutely nail-biting crime thriller wi",
+      "Promises in the Dark: A totally gripping serial killer thril",
+      "Silent Voices: A gripping crime thriller packed with mystery",
+      "Broken Souls: An absolutely addictive mystery thriller with ",
+      "Final Betrayal: An absolutely gripping crime thriller (Detec"
+    ],
+    "target_title": "Buried Angels: Absolutely gripping crime fiction with a jaw-",
+    "distractor_titles": [
+      "Their Silent Graves: A completely gripping and addictive cri",
+      "Missing Angel: An absolutely unputdownable mystery and suspe",
+      "Shanghai Girls: A Novel",
+      "Unsettled Ground"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 3433,
+    "n_warm": 38,
+    "warm_titles_sample": [
+      "False Justice (Jessie Black Legal Thrillers Book 5)",
+      "May It Please The Court (Daniel Mendoza Thrillers Book 1)",
+      "Grain of Truth (Innocence Unit Book 1)",
+      "The Good Client (Mitch Turner Legal Thrillers Book 1)",
+      "Sufficient Evidence: A Novel (Goodlove and Shek Book 2)",
+      "Power and Justice: A Legal Thriller (Tex Hunter Legal Thrill"
+    ],
+    "target_title": "True Intent (The Nate Shepherd Legal Thriller Series Book 2)",
+    "distractor_titles": [
+      "False Oath (The Nate Shepherd Legal Thriller Series Book 4)",
+      "Just Plea (The Nate Shepherd Legal Thriller Series Book 5)",
+      "Every Fifteen Minutes",
+      "One by One"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8826,
+    "n_warm": 21,
+    "warm_titles_sample": [
+      "GRAVES ON THE FENS a gripping crime thriller full of stunnin",
+      "Unquiet Bones: A Yorkshire Murder Mystery (DCI Harry Grimm C",
+      "Fair Game: A Yorkshire Murder Mystery (DCI Harry Grimm Crime",
+      "Dead Level (DI Nick Dixon Crime Book 5)",
+      "Swansong (DI Nick Dixon Crime Book 4)",
+      "Where the Sky Begins: A Novel"
+    ],
+    "target_title": "Blood Sport: A Yorkshire Murder Mystery (DCI Harry Grimm Cri",
+    "distractor_titles": [
+      "DUPLICITY: A compelling Scottish murder mystery (Detective I",
+      "Murder at the Flood: a compelling British crime mystery (Det",
+      "Killer Instinct",
+      "How Sweet It Is"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 3748,
+    "n_warm": 27,
+    "warm_titles_sample": [
+      "Unquiet Bones: A Yorkshire Murder Mystery (DCI Harry Grimm C",
+      "Fair Game: A Yorkshire Murder Mystery (DCI Harry Grimm Crime",
+      "Blood Trail: A Yorkshire Murder Mystery (DCI Harry Grimm Cri",
+      "Cold Sanctuary: A Yorkshire Murder Mystery (DCI Harry Grimm ",
+      "City of Scars: A Scottish Crime Novel (DCI Logan Crime Thril",
+      "Come Hell or High Water: A Scottish Murder Mystery (DCI Loga"
+    ],
+    "target_title": "Shooting Season: A Yorkshire Murder Mystery (DCI Harry Grimm",
+    "distractor_titles": [
+      "Blood Sport: A Yorkshire Murder Mystery (DCI Harry Grimm Cri",
+      "DUPLICITY: A compelling Scottish murder mystery (Detective I",
+      "The Traitor's Story",
+      "Promise Not to Tell"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 1816,
+    "n_warm": 24,
+    "warm_titles_sample": [
+      "The Stolen Girls: A totally gripping thriller with a twist y",
+      "Secrets of the Dead: A serial killer thriller with a twist (",
+      "The Missing Girls: A serial killer thriller with a twist (De",
+      "The Night Stalker: A chilling serial killer thriller (Detect",
+      "Dark Water: A totally gripping thriller with a killer twist ",
+      "The Girls in the Water: A completely gripping detective thri"
+    ],
+    "target_title": "The Missing Ones: An absolutely gripping thriller with a jaw",
+    "distractor_titles": [
+      "Buried Angels: Absolutely gripping crime fiction with a jaw-",
+      "One Left Behind: A completely gripping and addictive crime t",
+      "Alex Cross, Run",
+      "The Next Best Thing"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 2548,
+    "n_warm": 31,
+    "warm_titles_sample": [
+      "Mob Lawyer 2: A Legal Thriller",
+      "Mob Lawyer: A Legal Thriller",
+      "BEWARE THE PAST a gripping crime thriller with a huge twist ",
+      "Beyond a Reasonable Death (Thaddeus Murfee Legal Thriller Se",
+      "Lethal Defense (The Nate Shepherd Legal Thriller Series Book",
+      "Blood in the Bayou: A Bone-Chilling FBI Thriller (FBI Agent "
+    ],
+    "target_title": "A Young Lawyer's Story (Thaddeus Murfee Thrillers)",
+    "distractor_titles": [
+      "Rogue Lawyer: A Novel",
+      "The Southern Lawyer: An Epic Legal Thriller (Joe Hennessy Le",
+      "Trust Exercise: A Novel",
+      "Chances Are . . .: A novel"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 2,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11408,
+    "n_warm": 21,
+    "warm_titles_sample": [
+      "Only the Evil (A Death Gate Grim Reapers Thriller Book 8)",
+      "Witch Out of Water (A Moonstone Bay Cozy Mystery Book 2)",
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book",
+      "Witchin' USA (A Moonstone Bay Cozy Mystery Book 1)",
+      "All My Witches (A Wicked Witches of the Midwest Fantasy Book",
+      "Expose (Dr. Schwartzman Book 3)"
+    ],
+    "target_title": "Girl, Forgotten: A Novel",
+    "distractor_titles": [
+      "All Is Not Forgotten: A Novel",
+      "The Perfect Girl: A Novel",
+      "The Girl in the Garden",
+      "The First Commandment: A Thriller (The Scot Harvath Series B"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 3,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 7899,
+    "n_warm": 29,
+    "warm_titles_sample": [
+      "Tall Tales & Witchy Fails (A Witch on the Rocks Cozy Mystery",
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book",
+      "A Crone to Pick (A Spell's Angels Cozy Mystery Book 6)",
+      "Freaky Gifts (A Mystic Caravan Mystery Book 12)",
+      "Wicked Whispers (An Ivy Morgan Mystery Book 20)",
+      "Great Hexpectations (A Moonstone Bay Cozy Mystery Book 8)"
+    ],
+    "target_title": "Only the Grim (A Death Gate Grim Reapers Thriller Book 9)",
+    "distractor_titles": [
+      "Deeper Evil (The Evil Secrets Trilogy Book 2)",
+      "The Perfect Death (Brannon House Book 1)",
+      "The Ludwig Conspiracy",
+      "A Young Lawyer's Story (Thaddeus Murfee Thrillers)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 12611,
+    "n_warm": 50,
+    "warm_titles_sample": [
+      "A Bad Day At Casper Creek (A Hannah Hickok Witchy Mystery Bo",
+      "Older, Wiser, Witchier: A Return to Magic Cozy Mystery",
+      "That Magic Moment (A Supernatural Speakeasy Cozy Mystery Boo",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "Witch is the Word (A Moonstone Bay Cozy Mystery Book 10)",
+      "The Haunted Hotel Hoopla (A Charlie Rhodes Cozy Mystery Book"
+    ],
+    "target_title": "Only the Grim (A Death Gate Grim Reapers Thriller Book 9)",
+    "distractor_titles": [
+      "Deeper Evil (The Evil Secrets Trilogy Book 2)",
+      "The Perfect Death (Brannon House Book 1)",
+      "Unpaved Surfaces",
+      "The Witch Hunter"
+    ],
+    "rank_content_direct": 4,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13508,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Cast the First Crone (A Spell's Angels Cozy Mystery Book 9)",
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "That Magic Moment (A Supernatural Speakeasy Cozy Mystery Boo",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "Friday the Witchteenth (Wicked Witches of the Midwest Book 2",
+      "Grease the Wheel (A Two Broomsticks Gas & Grill Witch Cozy M"
+    ],
+    "target_title": "Only the Grim (A Death Gate Grim Reapers Thriller Book 9)",
+    "distractor_titles": [
+      "Deeper Evil (The Evil Secrets Trilogy Book 2)",
+      "The Perfect Death (Brannon House Book 1)",
+      "Meet Cute",
+      "The Thirteenth Tale"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11383,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "Grease the Wheel (A Two Broomsticks Gas & Grill Witch Cozy M",
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "Witch is the Word (A Moonstone Bay Cozy Mystery Book 10)",
+      "Friday the Witchteenth (Wicked Witches of the Midwest Book 2"
+    ],
+    "target_title": "Witch for Hire (A Witch's Path Book 1)",
+    "distractor_titles": [
+      "Hour of the Witch: A Novel",
+      "The Midnight Witch: A Novel",
+      "TRUTH OR DEAD a gripping crime thriller full of twists (Spec",
+      "Live to Tell: A Detective D. D. Warren Novel"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 3582,
+    "n_warm": 33,
+    "warm_titles_sample": [
+      "Every Witch Way But Wicked (Wicked Witches of the Midwest Bo",
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "A Bad Day At Casper Creek (A Hannah Hickok Witchy Mystery Bo",
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst"
+    ],
+    "target_title": "Only the Grim (A Death Gate Grim Reapers Thriller Book 9)",
+    "distractor_titles": [
+      "Deeper Evil (The Evil Secrets Trilogy Book 2)",
+      "The Perfect Death (Brannon House Book 1)",
+      "The School for German Brides: A Novel of World War II",
+      "The Story of Edgar Sawtelle: A Novel (Oprah Book Club #62)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11300,
+    "n_warm": 51,
+    "warm_titles_sample": [
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "Eat, Drink & Be Witchy (A Witch on the Rocks Cozy Mystery Bo",
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst",
+      "Older, Wiser, Witchier: A Return to Magic Cozy Mystery",
+      "That Magic Moment (A Supernatural Speakeasy Cozy Mystery Boo",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)"
+    ],
+    "target_title": "Only the Grim (A Death Gate Grim Reapers Thriller Book 9)",
+    "distractor_titles": [
+      "Deeper Evil (The Evil Secrets Trilogy Book 2)",
+      "The Perfect Death (Brannon House Book 1)",
+      "A Gentleman in Moscow: A Novel",
+      "Magic Burns (Kate Daniels)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10040,
+    "n_warm": 40,
+    "warm_titles_sample": [
+      "A Bad Day At Casper Creek (A Hannah Hickok Witchy Mystery Bo",
+      "That Magic Moment (A Supernatural Speakeasy Cozy Mystery Boo",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "The Haunted Hotel Hoopla (A Charlie Rhodes Cozy Mystery Book",
+      "Friday the Witchteenth (Wicked Witches of the Midwest Book 2",
+      "Haunted Plains Drifter (A Hannah Hickok Witchy Mystery Book "
+    ],
+    "target_title": "Only the Grim (A Death Gate Grim Reapers Thriller Book 9)",
+    "distractor_titles": [
+      "Deeper Evil (The Evil Secrets Trilogy Book 2)",
+      "The Perfect Death (Brannon House Book 1)",
+      "Two Years Eight Months and Twenty-Eight Nights: A Novel",
+      "The House on Foster Hill"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14398,
+    "n_warm": 30,
+    "warm_titles_sample": [
+      "Cast the First Crone (A Spell's Angels Cozy Mystery Book 9)",
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst",
+      "Older, Wiser, Witchier: A Return to Magic Cozy Mystery",
+      "Witch is the Word (A Moonstone Bay Cozy Mystery Book 10)",
+      "The Haunted Hotel Hoopla (A Charlie Rhodes Cozy Mystery Book"
+    ],
+    "target_title": "Only the Grim (A Death Gate Grim Reapers Thriller Book 9)",
+    "distractor_titles": [
+      "Deeper Evil (The Evil Secrets Trilogy Book 2)",
+      "The Perfect Death (Brannon House Book 1)",
+      "The Woman in Black: A Ghost Story",
+      "Avenger (Sovereign Stars)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13613,
+    "n_warm": 15,
+    "warm_titles_sample": [
+      "Holy Ghost (A Virgil Flowers Novel Book 11)",
+      "Invisible Prey (The Prey Series Book 17)",
+      "The Woman in the Woods: A Thriller (Charlie Parker Book 16)",
+      "Silent Prey (The Prey Series Book 4)",
+      "Rules of Prey (The Prey Series Book 1)",
+      "The Last Coyote (A Harry Bosch Novel Book 4)"
+    ],
+    "target_title": "Two Kinds of Truth (A Harry Bosch Novel Book 20)",
+    "distractor_titles": [
+      "Two Kinds of Truth (A Harry Bosch Novel, 20)",
+      "Truth Be Told: A Novel",
+      "These Broken Stars",
+      "The House on the Hill (Blake Wilder FBI Mystery Thriller Boo"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11205,
+    "n_warm": 38,
+    "warm_titles_sample": [
+      "Older, Wiser, Witchier: A Return to Magic Cozy Mystery",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "Spelling the Tea: A Magical Tea Room Mystery (The Magical Te",
+      "The Haunted Hotel Hoopla (A Charlie Rhodes Cozy Mystery Book",
+      "Friday the Witchteenth (Wicked Witches of the Midwest Book 2",
+      "Grease the Wheel (A Two Broomsticks Gas & Grill Witch Cozy M"
+    ],
+    "target_title": "Game of Crones (A Spell's Angels Cozy Mystery Book 8)",
+    "distractor_titles": [
+      "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+      "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+      "Such a Quiet Place: A Novel",
+      "Hearts of Resistance"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11454,
+    "n_warm": 39,
+    "warm_titles_sample": [
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "That Magic Moment (A Supernatural Speakeasy Cozy Mystery Boo",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "Witch is the Word (A Moonstone Bay Cozy Mystery Book 10)",
+      "For a Few Witches More (A Hannah Hickok Witchy Mystery Book ",
+      "The Haunted Hotel Hoopla (A Charlie Rhodes Cozy Mystery Book"
+    ],
+    "target_title": "Only the Grim (A Death Gate Grim Reapers Thriller Book 9)",
+    "distractor_titles": [
+      "Deeper Evil (The Evil Secrets Trilogy Book 2)",
+      "The Perfect Death (Brannon House Book 1)",
+      "Broken (Nevada James #1) (Nevada James Mysteries)",
+      "The Bigfoot Blunder (A Charlie Rhodes Cozy Mystery Book 1)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10515,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "The 17th Suspect (A Women's Murder Club Thriller)",
+      "16th Seduction (A Women's Murder Club Thriller)",
+      "15th Affair (Women's Murder Club)",
+      "11th Hour (Women's Murder Club)",
+      "10th Anniversary (Women's Murder Club)",
+      "Her Final Confession: An absolutely addictive crime fiction "
+    ],
+    "target_title": "The Bones She Buried: A completely gripping, heart-stopping ",
+    "distractor_titles": [
+      "Her Deadly Touch: An absolutely addictive crime thriller and",
+      "Catch Her Death: A jaw-dropping and absolutely gripping crim",
+      "A Longer Fall (Gunnie Rose Book 2)",
+      "The Stranger in the Mirror: A Novel"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 108,
+    "n_warm": 40,
+    "warm_titles_sample": [
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "The Raven Spell: A Novel (A Conspiracy of Magic Book 1)",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "Witch is the Word (A Moonstone Bay Cozy Mystery Book 10)",
+      "Sticks and Crones (A Spell's Angels Cozy Mystery Book 7)",
+      "Friday the Witchteenth (Wicked Witches of the Midwest Book 2"
+    ],
+    "target_title": "Game of Crones (A Spell's Angels Cozy Mystery Book 8)",
+    "distractor_titles": [
+      "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+      "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+      "Silent on the Moor (A Lady Julia Grey Mystery, 3)",
+      "You Will Know Me: A Novel"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8963,
+    "n_warm": 31,
+    "warm_titles_sample": [
+      "Golden Prey (A Prey Novel Book 27)",
+      "The Devil's Triangle (A Brit in the FBI Book 4)",
+      "Gathering Prey (The Prey Series Book 25)",
+      "Echo Burning (Jack Reacher Book 5)",
+      "Gone Girl: A Novel",
+      "The Keeper of Lost Causes: The First Department Q Novel"
+    ],
+    "target_title": "The End Game (A Brit in the FBI Book 3)",
+    "distractor_titles": [
+      "Reckoning: An FBI Thriller",
+      "Right Behind You (FBI Profiler Book 7)",
+      "Gray Justice (Tom Gray #1)",
+      "Hidden Agenda: A Novel (Southern Crimes)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13931,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "That Magic Moment (A Supernatural Speakeasy Cozy Mystery Boo",
+      "Tall Tales & Witchy Fails (A Witch on the Rocks Cozy Mystery",
+      "Sticks and Crones (A Spell's Angels Cozy Mystery Book 7)",
+      "Wicked Forever (An Ivy Morgan Mystery Book 21)",
+      "The Ghoul, the Bad, & the Ugly (A Hannah Hickok Witchy Myste",
+      "A Crone to Pick (A Spell's Angels Cozy Mystery Book 6)"
+    ],
+    "target_title": "Long, Hot, Witchy Summer (A Moonstone Bay Cozy Mystery Book ",
+    "distractor_titles": [
+      "Once in a Brew Moon (A Supernatural Speakeasy Cozy Mystery B",
+      "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+      "Renegades",
+      "The Summer She Disappeared: A gripping new suspense thriller"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 1869,
+    "n_warm": 17,
+    "warm_titles_sample": [
+      "Northwind: A Robert Hoon Thriller (Robert Hoon Thrillers Boo",
+      "Web of Lies: A Midlands Crime Thriller (Detective Sebastian ",
+      "One Bad Turn: A Yorkshire Murder Mystery (DCI Harry Grimm Cr",
+      "Cold Sanctuary: A Yorkshire Murder Mystery (DCI Harry Grimm ",
+      "The Crown in the Heather (The Bruce Trilogy Book 1)",
+      "INNOCENT LIES a gripping detective mystery full of twists an"
+    ],
+    "target_title": "HIDDEN ON THE FENS a totally addictive crime thriller filled",
+    "distractor_titles": [
+      "SECRETS ON THE FENS a gripping crime thriller with a huge tw",
+      "DARKNESS ON THE FENS a totally addictive crime thriller fill",
+      "Changes (Dresden Files, Book 12)",
+      "The Hunting Grounds (Hidden Sins Book 2)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 6780,
+    "n_warm": 17,
+    "warm_titles_sample": [
+      "Whisper in the Night: An absolutely heart-stopping serial ki",
+      "Murder on Astor Place: A Gaslight Mystery",
+      "The Dare: An absolutely gripping crime thriller (Detective N",
+      "Nothing to Lose (Ziba MacKenzie Book 2)",
+      "Blood for Blood (Ziba MacKenzie Book 1)",
+      "Perfect Girls: An absolutely gripping page turning crime thr"
+    ],
+    "target_title": "First Blood: A completely gripping mystery thriller (Detecti",
+    "distractor_titles": [
+      "Stolen Ones: A totally jaw-dropping and addictive crime thri",
+      "Blood Moon (The Huntress/FBI Thrillers Book 2)",
+      "The Signature of All Things: A Novel",
+      "Where Home Is (The Laramie Series Book 3)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 6682,
+    "n_warm": 21,
+    "warm_titles_sample": [
+      "Act of Treason (9) (A Mitch Rapp Novel)",
+      "Extreme Measures: A Thriller (11) (A Mitch Rapp Novel)",
+      "Die Trying (Jack Reacher)",
+      "A Wanted Man (Jack Reacher)",
+      "Deep Down: A Jack Reacher Story",
+      "Second Son (Kindle Single) (Jack Reacher)"
+    ],
+    "target_title": "Kill Shot: An American Assassin Thriller (2) (A Mitch Rapp N",
+    "distractor_titles": [
+      "Consent to Kill: A Thriller (Mitch Rapp, No. 6)",
+      "Protect and Defend: A Thriller (Mitch Rapp Book 10)",
+      "12",
+      "Days of Blood & Starlight"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10520,
+    "n_warm": 48,
+    "warm_titles_sample": [
+      "Devil\u2019s Way: An addictive crime thriller packed with jaw-dro",
+      "Fatal Witness: An absolutely gripping mystery and suspense t",
+      "Six Graves: An absolutely heart-pounding and addictive crime",
+      "The Marlow Murder Club: A Novel",
+      "Death in the Sunshine (The Retired Detectives Club Book 1)",
+      "One for Sorrow: The new heart-stopping, page-turning crime t"
+    ],
+    "target_title": "What She Said (Detective Karen Hart Book 6)",
+    "distractor_titles": [
+      "Still Life (Karen Pirie Novels Book 6)",
+      "One Left Behind: A completely gripping and addictive crime t",
+      "The Wives of Los Alamos: A Novel",
+      "The Spindlers"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 7871,
+    "n_warm": 15,
+    "warm_titles_sample": [
+      "12th of Never (Women's Murder Club)",
+      "Higher Law Box Set, Volume 2: Mike Daley/Rosie Fernandez Nov",
+      "Criminal Intent (Mike Daley/Rosie Fernandez Legal Thriller B",
+      "11th Hour (Women's Murder Club)",
+      "Incriminating Evidence (Mike Daley/Rosie Fernandez Legal Thr",
+      "Unlucky 13 (Women's Murder Club)"
+    ],
+    "target_title": "14th Deadly Sin (Women's Murder Club)",
+    "distractor_titles": [
+      "1st to Die: A Novel (Women's Murder Club, No 1)",
+      "The Thursday Murder Club: A Novel (A Thursday Murder Club My",
+      "Watching You: A Novel",
+      "The Lady of Bolton Hill"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10344,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "The Last Line: A Short Story (Tracy Crosswhite)",
+      "In Her Tracks (Tracy Crosswhite Book 8)",
+      "A Cold Trail (Tracy Crosswhite Book 7)",
+      "The Wrong Bones (Widow's Island Novella Book 10)",
+      "Bone Deep (Widow's Island Novella Book 9)",
+      "The Lost Bones (Widow's Island Novella Book 8)"
+    ],
+    "target_title": "What She Found (Tracy Crosswhite Book 9)",
+    "distractor_titles": [
+      "The Pages of Her Life",
+      "The End of Her: A Novel",
+      "The Hunting Party: A Novel",
+      "Angela's Ashes: A Memoir"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 4230,
+    "n_warm": 22,
+    "warm_titles_sample": [
+      "State of Exile (Virgil Jones Mystery Thriller Series Book 5)",
+      "State of Control (Virgil Jones Mystery Thriller Series Book ",
+      "Guilty Acts (Cass Leary Legal Thriller Series Book 9)",
+      "Accomplice Liability: (David Brunelle Legal Thriller Series ",
+      "Corpus Delicti: (David Brunelle Legal Thriller Series Book 6",
+      "Deadly Justice: A Legal Thriller (Tex Hunter Legal Thriller "
+    ],
+    "target_title": "State of Anger (Virgil Jones Mystery Thriller Series Book 1)",
+    "distractor_titles": [
+      "Heat Lightning (A Virgil Flowers Novel, Book 2)",
+      "Dark State (Jason Trapp Thriller Book 1)",
+      "Nora Goes Off Script",
+      "The Last to Vanish: A Novel"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 9671,
+    "n_warm": 15,
+    "warm_titles_sample": [
+      "Devil's Bargain (Cass Leary Legal Thriller Series Book 3)",
+      "Burden of Truth (Cass Leary Legal Thriller Series Book 1)",
+      "The Trial Lawyer (Thaddeus Murfee Legal Thriller Series Book",
+      "The Girl Who Wrote The New York Times Bestseller (Thaddeus M",
+      "The Mental Case (Thaddeus Murfee Legal Thriller Series Book ",
+      "Attorney at Large (Thaddeus Murfee Legal Thriller Series Boo"
+    ],
+    "target_title": "A Killer's Alibi (Philadelphia Legal)",
+    "distractor_titles": [
+      "The Alibi",
+      "The Innocent Man: Murder and Injustice in a Small Town",
+      "Name Not Given (Jack Widow Book 6)",
+      "The Exes' Revenge"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10022,
+    "n_warm": 23,
+    "warm_titles_sample": [
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "The Haunted Hotel Hoopla (A Charlie Rhodes Cozy Mystery Book",
+      "Sticks and Crones (A Spell's Angels Cozy Mystery Book 7)",
+      "Freaky Sights (A Mystic Caravan Mystery Book 13)",
+      "The Ghoul, the Bad, & the Ugly (A Hannah Hickok Witchy Myste",
+      "My Brew Heaven (A Supernatural Speakeasy Cozy Mystery Book 6"
+    ],
+    "target_title": "Game of Crones (A Spell's Angels Cozy Mystery Book 8)",
+    "distractor_titles": [
+      "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+      "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+      "Death of Secrets (Political Thriller) (Secrets Series Book 1",
+      "The Deceivers (John Wells Book 12)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14323,
+    "n_warm": 33,
+    "warm_titles_sample": [
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst",
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "Eat, Drink & Be Witchy (A Witch on the Rocks Cozy Mystery Bo",
+      "A Bad Day At Casper Creek (A Hannah Hickok Witchy Mystery Bo",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)"
+    ],
+    "target_title": "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+    "distractor_titles": [
+      "Mermaid Moon (A Sunset Cove Novel)",
+      "Sunset Beach: A Novel",
+      "Silent Voices: A Vera Stanhope Mystery (Vera Stanhope series",
+      "An Available Man: A Novel"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14036,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "Near Dark: A Thriller (The Scot Harvath Series Book 19)",
+      "Total Power (Mitch Rapp Book 19)",
+      "Lethal Agent (Mitch Rapp Book 18)",
+      "Echo Burning (Jack Reacher Book 5)",
+      "Red War (Mitch Rapp Book 17)",
+      "Spymaster: A Thriller (The Scot Harvath Series Book 17)"
+    ],
+    "target_title": "Backlash: A Thriller (The Scot Harvath Series Book 18)",
+    "distractor_titles": [
+      "Act of War: A Thriller (13) (The Scot Harvath Series)",
+      "The Last Patriot: A Thriller (The Scot Harvath Series Book 7",
+      "The Second Life of Nick Mason (A Nick Mason Novel)",
+      "Take My Hand"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14317,
+    "n_warm": 32,
+    "warm_titles_sample": [
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "Older, Wiser, Witchier: A Return to Magic Cozy Mystery",
+      "Eat, Drink & Be Witchy (A Witch on the Rocks Cozy Mystery Bo",
+      "A Bad Day At Casper Creek (A Hannah Hickok Witchy Mystery Bo",
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst",
+      "That Magic Moment (A Supernatural Speakeasy Cozy Mystery Boo"
+    ],
+    "target_title": "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+    "distractor_titles": [
+      "Long, Hot, Witchy Summer (A Moonstone Bay Cozy Mystery Book ",
+      "Mermaid Moon (A Sunset Cove Novel)",
+      "Break the Silence: A totally addictive crime thriller (Detec",
+      "Hide (Detective Harriet Foster Book 1)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10858,
+    "n_warm": 64,
+    "warm_titles_sample": [
+      "Sticks and Crones (A Spell's Angels Cozy Mystery Book 7)",
+      "Older, Wiser, Witchier: A Return to Magic Cozy Mystery",
+      "Eat, Drink & Be Witchy (A Witch on the Rocks Cozy Mystery Bo",
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "Witcher Upper (Magical Renovation Mysteries Book 1)"
+    ],
+    "target_title": "Game of Crones (A Spell's Angels Cozy Mystery Book 8)",
+    "distractor_titles": [
+      "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+      "Deadly Spells and a Southern Belle (A Southern Belles and Sp",
+      "As Chimney Sweepers Come to Dust: A Flavia de Luce Novel",
+      "Daughters of the Night Sky"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13552,
+    "n_warm": 41,
+    "warm_titles_sample": [
+      "One Girl Missing: A totally addictive and gripping crime thr",
+      "Don't Look Back: A completely addictive and gripping Kane an",
+      "Black Orchid Girls: A completely nail-biting and gripping cr",
+      "Frozen Souls: An addictive crime thriller packed with suspen",
+      "Stillwater Island: An absolutely gripping mystery suspense t",
+      "The Drowning Girls: A totally addictive crime thriller and m"
+    ],
+    "target_title": "The Birthday Party: A totally nail-biting and addictive crim",
+    "distractor_titles": [
+      "The New House: An absolutely jaw-dropping psychological thri",
+      "Bring Me Flowers: A gripping serial killer thriller with a s",
+      "For Love and Honor",
+      "The Shadow"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13425,
+    "n_warm": 32,
+    "warm_titles_sample": [
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "That Magic Moment (A Supernatural Speakeasy Cozy Mystery Boo",
+      "Only the Evil (A Death Gate Grim Reapers Thriller Book 8)",
+      "Heaven & Spell (A Supernatural Speakeasy Cozy Mystery Book 8",
+      "Grease the Wheel (A Two Broomsticks Gas & Grill Witch Cozy M",
+      "Tall Tales & Witchy Fails (A Witch on the Rocks Cozy Mystery"
+    ],
+    "target_title": "Once in a Brew Moon (A Supernatural Speakeasy Cozy Mystery B",
+    "distractor_titles": [
+      "Long, Hot, Witchy Summer (A Moonstone Bay Cozy Mystery Book ",
+      "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+      "Ohio",
+      "Sinister (Shaye Archer Series Book 2)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14322,
+    "n_warm": 22,
+    "warm_titles_sample": [
+      "Tall Tales & Witchy Fails (A Witch on the Rocks Cozy Mystery",
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book",
+      "A Crone to Pick (A Spell's Angels Cozy Mystery Book 6)",
+      "Freaky Gifts (A Mystic Caravan Mystery Book 12)",
+      "My Brew Heaven (A Supernatural Speakeasy Cozy Mystery Book 6",
+      "Great Hexpectations (A Moonstone Bay Cozy Mystery Book 8)"
+    ],
+    "target_title": "A Little Slice of Death (A Two Broomsticks Gas & Grill Witch",
+    "distractor_titles": [
+      "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+      "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+      "Death Ship (Danforth Saga Book 5)",
+      "The 8th Confession (Women's Murder Club)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10620,
+    "n_warm": 27,
+    "warm_titles_sample": [
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book",
+      "A Crone to Pick (A Spell's Angels Cozy Mystery Book 6)",
+      "The Asylum Aberration (A Charlie Rhodes Cozy Mystery Book 9)",
+      "Prelude to a Witch (Wicked Witches of the Midwest Book 18)",
+      "Hex, Drugs & Rock and Roll (A Supernatural Speakeasy Cozy My",
+      "Romancing the Crone (A Spell's Angels Cozy Mystery Book 5)"
+    ],
+    "target_title": "A Little Slice of Death (A Two Broomsticks Gas & Grill Witch",
+    "distractor_titles": [
+      "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+      "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+      "The Bookshop of Yesterdays",
+      "A Treasure Concealed (Sapphire Brides)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 4781,
+    "n_warm": 35,
+    "warm_titles_sample": [
+      "Spell's Bells (Spellbound Paranormal Cozy Mystery Book 3)",
+      "Doom and Broom (Spellbound Paranormal Cozy Mystery Book 2)",
+      "Magic & Murder (Starry Hollow Witches Book 1)",
+      "Tall Tales & Witchy Fails (A Witch on the Rocks Cozy Mystery",
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book",
+      "Cut to the Crone (A Spell's Angels Cozy Mystery Book 4)"
+    ],
+    "target_title": "A Little Slice of Death (A Two Broomsticks Gas & Grill Witch",
+    "distractor_titles": [
+      "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+      "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+      "A Young Lawyer's Story (Thaddeus Murfee Thrillers)",
+      "Delirium: The Special Edition (Delirium Trilogy, 1)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 7822,
+    "n_warm": 17,
+    "warm_titles_sample": [
+      "Shadow Prey (The Prey Series Book 2)",
+      "Dark of the Moon (A Virgil Flowers Novel, Book 1)",
+      "Rough Country (A Virgil Flowers Novel, Book 3)",
+      "Wicked Prey (The Prey Series Book 19)",
+      "Broken Prey (The Prey Series Book 16)",
+      "Silent Prey (The Prey Series Book 4)"
+    ],
+    "target_title": "Eyes of Prey (The Prey Series Book 3)",
+    "distractor_titles": [
+      "Extreme Prey (A Prey Novel)",
+      "Invisible Prey",
+      "The Stone Circle: A Mystery (Ruth Galloway Mysteries Book 11",
+      "Sex, Marry, Kill"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13373,
+    "n_warm": 18,
+    "warm_titles_sample": [
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)",
+      "Rookie Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Favorite Mistake (Vegas Aces: The Wide Receiver)",
+      "Raging Heat: Nikki Heat Book 6",
+      "Minding Frankie",
+      "DEAD OF WINTER (Louis Kincaid Book 2)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13906,
+    "n_warm": 17,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Raging Heat: Nikki Heat Book 6",
+      "Hardball (V.I. Warshawski Novel)",
+      "Evicted: Poverty and Profit in the American City",
+      "Lying Next to Me"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14396,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Long Game (Vegas Aces)",
+      "Raging Heat: Nikki Heat Book 6",
+      "Never Saw Me Coming: A Novel",
+      "American Vampire (Vampire for Hire Book 3)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14395,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Raging Heat: Nikki Heat Book 6",
+      "Hardball (V.I. Warshawski Novel)",
+      "Hannibal Rising",
+      "The Krampus Kink (A Charlie Rhodes Cozy Mystery Book 12)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13883,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Raging Heat: Nikki Heat Book 6",
+      "Hardball (V.I. Warshawski Novel)",
+      "The God Delusion",
+      "From the Cradle (A Detective Lennon Thriller Book 1)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13880,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Groundball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Hardball (Vegas Heat: The Expansion Team)",
+      "Raging Heat: Nikki Heat Book 6",
+      "Spell Bound (A Hex Hall Novel) (A Hex Hall Novel, 3)",
+      "The Burning Wire: A Lincoln Rhyme Novel"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13712,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Favorite Mistake (Vegas Aces: The Wide Receiver)",
+      "Raging Heat: Nikki Heat Book 6",
+      "The Ice Twins: A Novel",
+      "If the Creek Don't Rise: A Novel"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13707,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Raging Heat: Nikki Heat Book 6",
+      "Hardball (V.I. Warshawski Novel)",
+      "Just Plea (The Nate Shepherd Legal Thriller Series Book 5)",
+      "Stealth Attack: An Exciting & Page-Turning Kidnapping Thrill"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13392,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Raging Heat: Nikki Heat Book 6",
+      "Hardball (V.I. Warshawski Novel)",
+      "Juror #3",
+      "A Million Suns"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 12789,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Raging Heat: Nikki Heat Book 6",
+      "Hardball (V.I. Warshawski Novel)",
+      "Unthinkable (Detective Jane Candiotti)",
+      "The Burning Wire: A Lincoln Rhyme Novel"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11125,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Raging Heat: Nikki Heat Book 6",
+      "Hardball (V.I. Warshawski Novel)",
+      "The Rook: A Novel (The Rook Files, 1)",
+      "Private"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11023,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Raging Heat: Nikki Heat Book 6",
+      "Hardball (V.I. Warshawski Novel)",
+      "Nora Goes Off Script",
+      "Shiver"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 4942,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Groundball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Hardball (Vegas Heat: The Expansion Team)",
+      "Raging Heat: Nikki Heat Book 6",
+      "Portrait of a Girl",
+      "Meant to Be (An Anchor Island Novel)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14109,
+    "n_warm": 18,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Raging Heat: Nikki Heat Book 6",
+      "Hardball (V.I. Warshawski Novel)",
+      "The Soul of America: The Battle for Our Better Angels",
+      "The Hours: A Novel (Picador Modern Classics, 1)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13393,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Raging Heat: Nikki Heat Book 6",
+      "Hardball (V.I. Warshawski Novel)",
+      "He Started It",
+      "Trophy Hunt (A Joe Pickett Novel Book 4)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 1064,
+    "n_warm": 18,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Groundball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Hardball (Vegas Heat: The Expansion Team)",
+      "Long Game (Vegas Aces)",
+      "Brotherhood in Death",
+      "The Morisot Connection (Book 8) (Genevieve Lenard)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 5038,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Groundball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Hardball (Vegas Heat: The Expansion Team)",
+      "Long Game (Vegas Aces)",
+      "Hidden Pictures: A Novel",
+      "The Wright Brothers"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13884,
+    "n_warm": 17,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Groundball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Hardball (Vegas Heat: The Expansion Team)",
+      "Favorite Mistake (Vegas Aces: The Wide Receiver)",
+      "The Imposter: Life Is Not Easy In The Big Easy: The Alexandr",
+      "Austenland: A Novel"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13892,
+    "n_warm": 18,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Raging Heat: Nikki Heat Book 6",
+      "Hardball (V.I. Warshawski Novel)",
+      "The Fifth Petal: A Novel",
+      "The Collectors"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8879,
+    "n_warm": 18,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)",
+      "Rookie Mistake (Vegas Aces: The Wide Receiver)",
+      "Tight End (Vegas Aces: The Tight End)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Favorite Mistake (Vegas Aces: The Wide Receiver)",
+      "Raging Heat: Nikki Heat Book 6",
+      "Heartless (The Parasol Protectorate, 4)",
+      "The Hawaiian Discovery"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 12705,
+    "n_warm": 12,
+    "warm_titles_sample": [
+      "Dark Sky (A Joe Pickett Novel Book 21)",
+      "Paradise Valley: A Cassie Dewell Novel (Highway (feat. Cody ",
+      "Endangered (A Joe Pickett Novel Book 15)",
+      "Open Season (A Joe Pickett Novel Book 1)",
+      "Savage Run (A Joe Pickett Novel Book 2)",
+      "Force of Nature (A Joe Pickett Novel Book 12)"
+    ],
+    "target_title": "Back of Beyond: A Cody Hoyt Novel (Cassie Dewell Novels Book",
+    "distractor_titles": [
+      "Invisible Girl: A Novel",
+      "Under the Surface: A Gripping Bear and Mandy Logan Mystery (",
+      "Watching Edie",
+      "The Body Finder (Body Finder, 1)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10492,
+    "n_warm": 18,
+    "warm_titles_sample": [
+      "Hush Little Girl: An absolutely gripping mystery and suspens",
+      "Save Her Soul: An absolutely unputdownable crime thriller an",
+      "Vanished (Callahan & McLane Book 1)",
+      "Somebody's Daughter: A gripping crime thriller packed with m",
+      "The Secret Admirer: An absolutely gripping crime thriller (D",
+      "Losing Leah Holloway (A Claire Fletcher and Detective Parks "
+    ],
+    "target_title": "Her Deadly Touch: An absolutely addictive crime thriller and",
+    "distractor_titles": [
+      "Catch Her Death: A jaw-dropping and absolutely gripping crim",
+      "Find the Girl: An utterly addictive and unputdownable crime ",
+      "The Wrong Family: A Thriller",
+      "Spirit Bound"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10002,
+    "n_warm": 21,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Raging Heat: Nikki Heat Book 6",
+      "Hardball (V.I. Warshawski Novel)",
+      "Catch Her in a Lie (Getaway collection)",
+      "Blind Spot (Dr. Evelyn Talbot Novels Book 4)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14220,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "You Can Hide: A Riveting New Thriller (A Laurel Snow Thrille",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Long Game (Vegas Aces)",
+      "Raging Heat: Nikki Heat Book 6",
+      "A Flicker in the Dark: A Novel",
+      "A Killer's Alibi (Philadelphia Legal)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 9541,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "Landon Calling: A Wicked Witches of the Midwest Short",
+      "Murder Most Witchy (Wicked Witches of the Midwest Book 10)",
+      "On Writing: A Memoir Of The Craft (A Memoir of the Craft (Re",
+      "Thistle While You Work: A Wicked Witches of the Midwest Shor",
+      "Merry Witchmas: A Wicked Witches of the Midwest Short",
+      "Happy Witchgiving: A Wicked Witches of the Midwest Short"
+    ],
+    "target_title": "Four-Leaf Clover: A Wicked Witches of the Midwest Short",
+    "distractor_titles": [
+      "Close Encounters of the Witchy Kind (A Wicked Witches of the",
+      "The Witch is Back (Wicked Witches of the Midwest Book 17)",
+      "An Uncommon Courtship (Hawthorne House)",
+      "The Turtle Boy (The Timmy Quinn Series Book 1)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 6711,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "Old Acquaintance - A Mary O'Reilly Paranormal Mystery (Book ",
+      "Delayed Departures - A Mary O'Reilly Paranormal Mystery (Boo",
+      "Deadly Circumstances - A Mary O'Reilly Paranormal Mystery (B",
+      "Haunted Tales: A Mary O'Reilly Paranormal Mystery - Book Fif",
+      "Stolen Dreams - A Mary O'Reilly Paranormal Mystery - Book Fo",
+      "Buried Innocence - A Mary O'Reilly Paranormal Mystery - Book"
+    ],
+    "target_title": "Frayed Edges - A Mary O'Reilly Paranormal Mystery (Book Seve",
+    "distractor_titles": [
+      "Chase Her Shadow: A totally addictive serial killer thriller",
+      "SEEING DEAD THINGS: A Paranormal Women\u2019s Fiction Novel (Roxi",
+      "The Witnesses (BookShots)",
+      "Wicked Lovely (Wicked Lovely, 1)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13536,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Final Betrayal: An absolutely gripping crime thriller (Detec",
+      "The Crying Season: An edge of your seat crime thriller (Dete",
+      "Tell Nobody: Absolutely gripping crime fiction with unputdow",
+      "Don't Tell a Soul: A gripping crime thriller that will have ",
+      "The Chosen Ones: A completely gripping murder mystery thrill",
+      "Dying Truth: A completely gripping crime thriller (Detective"
+    ],
+    "target_title": "Where Angels Fear: An addictive crime thriller with a grippi",
+    "distractor_titles": [
+      "Break the Silence: A totally addictive crime thriller (Detec",
+      "Chase Her Shadow: A totally addictive serial killer thriller",
+      "The Distance Between Us",
+      "Station Eleven"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10845,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Her Frozen Cry: A totally pulse-pounding crime thriller (Det",
+      "Gone to Her Grave: A totally gripping and jaw-dropping crime",
+      "One Child Alive: An absolutely gripping crime thriller packe",
+      "Silent Voices: A gripping crime thriller packed with mystery",
+      "Frozen Souls: An addictive crime thriller packed with suspen",
+      "Her Perfect Bones: A totally addictive mystery and suspense "
+    ],
+    "target_title": "Catch Her Death: A jaw-dropping and absolutely gripping crim",
+    "distractor_titles": [
+      "The Last Time She Died: A totally unputdownable crime thrill",
+      "Find the Girl: An utterly addictive and unputdownable crime ",
+      "Burial Rites",
+      "Beyond The Veil: A Muse Urban Fantasy (The Veil Series Book "
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 7442,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "Older, Wiser, Witchier: A Return to Magic Cozy Mystery",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "Tall Tales & Witchy Fails (A Witch on the Rocks Cozy Mystery",
+      "Friday the Witchteenth (Wicked Witches of the Midwest Book 2",
+      "Wicked Forever (An Ivy Morgan Mystery Book 21)"
+    ],
+    "target_title": "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+    "distractor_titles": [
+      "Ghosts: A novel",
+      "Help for the Haunted: A Novel",
+      "The Devil in Winter",
+      "Gone Again: A Thriller"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 6662,
+    "n_warm": 15,
+    "warm_titles_sample": [
+      "Girl Taken : Absolutely gripping mystery and suspense with a",
+      "The Third Grave: A Riveting New Thriller (Savannah Book 4)",
+      "Girl Found: An addictive crime mystery packed with jaw-dropp",
+      "Girl Lost: An addictive mystery crime thriller (A Detective ",
+      "Girl Missing (A Detective Kaitlyn Carr Mystery Book 1)",
+      "In Her Tracks (Tracy Crosswhite Book 8)"
+    ],
+    "target_title": "Girl Forgotten : A completely addictive, heart-stopping crim",
+    "distractor_titles": [
+      "Find the Girl: An utterly addictive and unputdownable crime ",
+      "Catch Her Death: A jaw-dropping and absolutely gripping crim",
+      "The Goose Girl (Books of Bayern)",
+      "Shelter in Place"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 2987,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book",
+      "Landon Calling: A Wicked Witches of the Midwest Short",
+      "Thistle While You Work: A Wicked Witches of the Midwest Shor",
+      "Flip the Witch Switch (Wicked Witches of the Midwest Book 14",
+      "All My Witches (A Wicked Witches of the Midwest Fantasy Book",
+      "On a Witch and a Prayer: A Wicked Witches of the Midwest Sho"
+    ],
+    "target_title": "The Witch is Back (Wicked Witches of the Midwest Book 17)",
+    "distractor_titles": [
+      "The Midnight Witch: A Novel",
+      "Hour of the Witch: A Novel",
+      "The Unwritten Rule",
+      "Murder One (David Sloane Book 4)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11450,
+    "n_warm": 26,
+    "warm_titles_sample": [
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "Witchin' USA (A Moonstone Bay Cozy Mystery Book 1)",
+      "Witch Out of Water (A Moonstone Bay Cozy Mystery Book 2)",
+      "A Crone to Pick (A Spell's Angels Cozy Mystery Book 6)",
+      "Romancing the Crone (A Spell's Angels Cozy Mystery Book 5)",
+      "Cut to the Crone (A Spell's Angels Cozy Mystery Book 4)"
+    ],
+    "target_title": "Freaky Seas (A Mystic Caravan Mystery Book 10)",
+    "distractor_titles": [
+      "Exquisite Captive (Dark Caravan Cycle, 1)",
+      "The Book of Strange New Things",
+      "Peace Like a River: A Novel",
+      "The Fourteenth Protocol: A Thriller (The Special Agent Jana "
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14319,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Prelude to a Witch (Wicked Witches of the Midwest Book 18)",
+      "Freaky Mage (A Mystic Caravan Mystery Book 11)",
+      "Ghostly Camping (A Harper Harlow Mystery Book 16)",
+      "Freaky Fangs (A Mystic Caravan Mystery Book 9)",
+      "Freaky Reapers (A Mystic Caravan Mystery Book 8)",
+      "Freaky Rites (A Mystic Caravan Mystery Book 6)"
+    ],
+    "target_title": "Long, Hot, Witchy Summer (A Moonstone Bay Cozy Mystery Book ",
+    "distractor_titles": [
+      "Once in a Brew Moon (A Supernatural Speakeasy Cozy Mystery B",
+      "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+      "Gone Again: A Thriller",
+      "The Look-Alike: A Novel"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11007,
+    "n_warm": 23,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Raging Heat: Nikki Heat Book 6",
+      "Hardball (V.I. Warshawski Novel)",
+      "Camino Winds",
+      "SECRETS ON THE FENS a gripping crime thriller with a huge tw"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11218,
+    "n_warm": 27,
+    "warm_titles_sample": [
+      "Eat, Drink & Be Witchy (A Witch on the Rocks Cozy Mystery Bo",
+      "Older, Wiser, Witchier: A Return to Magic Cozy Mystery",
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "Grease the Wheel (A Two Broomsticks Gas & Grill Witch Cozy M",
+      "That Magic Moment (A Supernatural Speakeasy Cozy Mystery Boo",
+      "Heaven & Spell (A Supernatural Speakeasy Cozy Mystery Book 8"
+    ],
+    "target_title": "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+    "distractor_titles": [
+      "The Midnight Witch: A Novel",
+      "Wisteria Witches: A Laugh-Out-Loud Funny Witch Cozy Mystery ",
+      "It Starts with Us: A Novel (2) (It Ends with Us)",
+      "Court of Swans (A Dericott Tale)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 5219,
+    "n_warm": 24,
+    "warm_titles_sample": [
+      "Dead Memories: An addictive and gripping crime thriller (Det",
+      "The Birthday: An absolutely gripping crime thriller (Detecti",
+      "The Death of Mrs. Westaway",
+      "Nobody's Child: An unputdownable crime thriller that will ha",
+      "The Chosen Ones: A completely gripping murder mystery thrill",
+      "Dying Truth: A completely gripping crime thriller (Detective"
+    ],
+    "target_title": "Bring Me Flowers: A gripping serial killer thriller with a s",
+    "distractor_titles": [
+      "Chase Her Shadow: A totally addictive serial killer thriller",
+      "Break the Silence: A totally addictive crime thriller (Detec",
+      "Kindred (Jefferson Tayte Genealogical Mystery Book 5)",
+      "The Namesake: A Novel"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8642,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "One for Sorrow: The new heart-stopping, page-turning crime t",
+      "Perfect Remains: A gripping crime thriller that will leave y",
+      "Hidden Scars: A completely gripping crime thriller with a na",
+      "Paper Girls: An Unputdownable British Crime Thriller (DCI Ke",
+      "A Snowball's Chance in Hell (DCI Logan Crime Thrillers Book ",
+      "A Death Most Monumental: A Scottish Detective Mystery (DCI L"
+    ],
+    "target_title": "Twisted Lies: An absolutely gripping mystery and suspense th",
+    "distractor_titles": [
+      "Killing Mind: An addictive and nail-biting crime thriller (D",
+      "Stolen Ones: A totally jaw-dropping and addictive crime thri",
+      "Stella Bain",
+      "Red Notice: A True Story of High Finance, Murder, and One Ma"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 3170,
+    "n_warm": 17,
+    "warm_titles_sample": [
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "Witch is the Word (A Moonstone Bay Cozy Mystery Book 10)",
+      "Great Hexpectations (A Moonstone Bay Cozy Mystery Book 8)",
+      "Older, Wiser, Witchier: A Return to Magic Cozy Mystery",
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book",
+      "Prelude to a Witch (Wicked Witches of the Midwest Book 18)"
+    ],
+    "target_title": "Deadly Spells and a Southern Belle (A Southern Belles and Sp",
+    "distractor_titles": [
+      "Close Encounters of the Witchy Kind (A Wicked Witches of the",
+      "The King of Bones and Ashes (Witches of New Orleans Book 1)",
+      "Bad Taste in Boys",
+      "The Quiet Game (Penn Cage Book 1)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11093,
+    "n_warm": 33,
+    "warm_titles_sample": [
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst",
+      "Grease the Wheel (A Two Broomsticks Gas & Grill Witch Cozy M",
+      "Friday the Witchteenth (Wicked Witches of the Midwest Book 2",
+      "A Fistful of Demons (A Hannah Hickok Witchy Mystery Book 2)",
+      "The Dirty Coven (A Hannah Hickok Witchy Mystery Book 1)"
+    ],
+    "target_title": "Boot Scootin' Boogeyman (A Hannah Hickok Witchy Mystery Book",
+    "distractor_titles": [
+      "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+      "Wisteria Witches: A Laugh-Out-Loud Funny Witch Cozy Mystery ",
+      "The Look-Alike: A Novel",
+      "The Steel Kiss (Lincoln Rhyme Book 12)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 1086,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Lit Fuse (A Tanner Novel Book 44)",
+      "To Serve And Protect (A Tanner Novel Book 39)",
+      "The Evil of Two Lessers (A Tanner Novel Book 41)",
+      "Soulless (A Tanner Novel Book 43)",
+      "Black Sheep (A Tanner Novel Book 34)",
+      "Tanner: Year Four (A Tanner Series Book 4)"
+    ],
+    "target_title": "Hyenas (A Tanner Novel Book 45)",
+    "distractor_titles": [
+      "Revelations (A Tanner Novel Book 20)",
+      "Occupation: Death (A Tanner Novel Book 12)",
+      "On Writing: A Memoir of the Craft",
+      "Stalking Jack the Ripper"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 9994,
+    "n_warm": 28,
+    "warm_titles_sample": [
+      "Eat, Drink & Be Witchy (A Witch on the Rocks Cozy Mystery Bo",
+      "Witch Confidential (A Supernatural Speakeasy Cozy Mystery Bo",
+      "The Hexorcist (A Supernatural Speakeasy Cozy Mystery Book 1)",
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "The Dirty Coven (A Hannah Hickok Witchy Mystery Book 1)",
+      "Tall Tales & Witchy Fails (A Witch on the Rocks Cozy Mystery"
+    ],
+    "target_title": "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+    "distractor_titles": [
+      "Mermaid Moon (A Sunset Cove Novel)",
+      "Sunset Beach: A Novel",
+      "The Last Thing He Told Me: A Novel",
+      "The Indebted Earl (Serendipity & Secrets)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 5296,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Unquiet Bones: A Yorkshire Murder Mystery (DCI Harry Grimm C",
+      "Fair Game: A Yorkshire Murder Mystery (DCI Harry Grimm Crime",
+      "Blood Trail: A Yorkshire Murder Mystery (DCI Harry Grimm Cri",
+      "Cold Sanctuary: A Yorkshire Murder Mystery (DCI Harry Grimm ",
+      "Death's Requiem: A Yorkshire Murder Mystery (DCI Harry Grimm",
+      "Paper Girls: An Unputdownable British Crime Thriller (DCI Ke"
+    ],
+    "target_title": "Blood Sport: A Yorkshire Murder Mystery (DCI Harry Grimm Cri",
+    "distractor_titles": [
+      "DUPLICITY: A compelling Scottish murder mystery (Detective I",
+      "Murder at the Flood: a compelling British crime mystery (Det",
+      "Ringworld: A Novel",
+      "Letter From The Dead: A British Murder Mystery (DI Declan Wa"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14360,
+    "n_warm": 14,
+    "warm_titles_sample": [
+      "Six Graves: An absolutely heart-pounding and addictive crime",
+      "Truth and Lies (A DI Amy Winter Thriller Book 1)",
+      "Blood and Treachery (DCI Logan Crime Thrillers Book 4)",
+      "Thicker Than Water: A Scottish Detective Mystery (DCI Logan ",
+      "A Litter of Bones: A Scottish Detective Mystery (DCI Logan C",
+      "Nine Elms: A Kate Marshall Thriller"
+    ],
+    "target_title": "Dead End (Detective Kelly Porter Book 3)",
+    "distractor_titles": [
+      "Dark Game (Detective Kelly Porter Book 1)",
+      "Dead at Third (Henry Walsh Private Investigator Series Book ",
+      "Justice Redeemed (Darren Street Book 1)",
+      "The Red Hill (Thomas Berrington Historical Mystery Book 1)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11424,
+    "n_warm": 22,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "No Mistake (Vegas Aces: The Wide Receiver)",
+      "Honest Mistake (Vegas Aces: The Wide Receiver)",
+      "Hidden Mistake (Vegas Aces: The Wide Receiver)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Long Game (Vegas Aces)",
+      "Raging Heat: Nikki Heat Book 6",
+      "At First Light (Dr. Evan Wilding Book 1)",
+      "The Summer I Met Jack: A Novel"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 6687,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "The Boys in the Church (Joe Court Book 3)",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "Freaky Sights (A Mystic Caravan Mystery Book 13)",
+      "The Joy of Hex (A Moonstone Bay Cozy Mystery Book 9)",
+      "To Spell With It (A Moonstone Bay Cozy Mystery Book 4)"
+    ],
+    "target_title": "Game of Crones (A Spell's Angels Cozy Mystery Book 8)",
+    "distractor_titles": [
+      "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+      "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+      "Two Spies in Caracas: A Novel",
+      "For Whom the Bell Tolls (Scribner Classics)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 2922,
+    "n_warm": 17,
+    "warm_titles_sample": [
+      "Ninth House (Alex Stern Book 1)",
+      "The Hostage (A Sarah Roberts Thriller, Book 4)",
+      "The Crypt (A Sarah Roberts Thriller, Book 3)",
+      "The Warning (A Sarah Roberts Thriller, Book 2)",
+      "Dark Visions (A Sarah Roberts Thriller, Book 1)",
+      "The Witch and the Englishman (Allison Lopez, Witch Detective"
+    ],
+    "target_title": "Moon Angel (Vampire for Hire Book 14)",
+    "distractor_titles": [
+      "Blood Moon (The Huntress/FBI Thrillers Book 2)",
+      "The Angel Maker: A Novel",
+      "What Once Was Lost: A Novel",
+      "Freaky Lies (A Mystic Caravan Mystery Book 2)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10581,
+    "n_warm": 24,
+    "warm_titles_sample": [
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "For a Few Witches More (A Hannah Hickok Witchy Mystery Book ",
+      "Friday the Witchteenth (Wicked Witches of the Midwest Book 2",
+      "Witch is the Word (A Moonstone Bay Cozy Mystery Book 10)"
+    ],
+    "target_title": "The Krampus Kink (A Charlie Rhodes Cozy Mystery Book 12)",
+    "distractor_titles": [
+      "The Undead Uproar (A Charlie Rhodes Cozy Mystery Book 5)",
+      "The Megalodon Mix-Up (A Charlie Rhodes Cozy Mystery Book 4)",
+      "One Little Secret: A Novel",
+      "Consent to Kill: A Thriller (Mitch Rapp, No. 6)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13439,
+    "n_warm": 24,
+    "warm_titles_sample": [
+      "THE GUILTY ONES a gripping crime thriller filled with stunni",
+      "FIRE ON THE FENS a gripping crime thriller filled with stunn",
+      "THIEVES ON THE FENS a gripping crime thriller full of twists",
+      "BURIED ON THE FENS a gripping crime thriller full of twists ",
+      "CAPTIVE ON THE FENS a gripping crime thriller full of twists",
+      "STALKER ON THE FENS a gripping crime thriller full of twists"
+    ],
+    "target_title": "THE VICARAGE MURDER an addictive crime mystery full of twist",
+    "distractor_titles": [
+      "NEXT VICTIM an absolutely gripping crime mystery with a mass",
+      "The Murder at the Vicarage: A Miss Marple Mystery (Miss Marp",
+      "I Capture the Castle: Movie Tie-In Edition",
+      "14th Deadly Sin (Women's Murder Club)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10236,
+    "n_warm": 64,
+    "warm_titles_sample": [
+      "Their Burning Graves: A totally heart-stopping and addictive",
+      "The Innocent Wife: An addictive crime thriller packed with j",
+      "The Girl in the River: A totally addictive and heart-racing ",
+      "Missing Girl at Frozen Falls: A totally addictive and heart-",
+      "Her Frozen Heart: A nail-biting and heart-pounding crime thr",
+      "Last Seen Alive: An utterly gripping and unputdownable crime"
+    ],
+    "target_title": "The Rose Girls: A heart-pounding crime thriller with a kille",
+    "distractor_titles": [
+      "Find the Girl: An utterly addictive and unputdownable crime ",
+      "Lovely Girls: A Thriller",
+      "Midnight Thief (Midnight Thief, 1)",
+      "The Sky Is Everywhere"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8697,
+    "n_warm": 39,
+    "warm_titles_sample": [
+      "SO WE LIE: A gripping, heart-stopping mystery novel (Eva Rae",
+      "Her Bleeding Heart: An absolutely gripping and addictive ser",
+      "Kiss Her Goodnight: A completely unputdownable crime thrille",
+      "Pray for Mercy: A totally gripping and unputdownable crime t",
+      "Her Perfect Family",
+      "Fallen Angel: An absolutely addictive crime thriller with a "
+    ],
+    "target_title": "Chase Her Shadow: A totally addictive serial killer thriller",
+    "distractor_titles": [
+      "Killing Mind: An addictive and nail-biting crime thriller (D",
+      "Catch Her Death: A jaw-dropping and absolutely gripping crim",
+      "Bitter Roots (Bitter Root Mysteries Book 1)",
+      "Warm Bodies: A Novel (The Warm Bodies Series)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11255,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Grim Rising (Aisling Grimlock Book 7)",
+      "Thistle While You Work: A Wicked Witches of the Midwest Shor",
+      "Merry Witchmas: A Wicked Witches of the Midwest Short",
+      "Happy Witchgiving: A Wicked Witches of the Midwest Short",
+      "Witchdependence Day: A Wicked Witches of the Midwest Short",
+      "A Solstice Celebration: A Wicked Witches of the Midwest Shor"
+    ],
+    "target_title": "Four-Leaf Clover: A Wicked Witches of the Midwest Short",
+    "distractor_titles": [
+      "Close Encounters of the Witchy Kind (A Wicked Witches of the",
+      "The Witch is Back (Wicked Witches of the Midwest Book 17)",
+      "Maybe Someday (1)",
+      "Hush Little Baby: A Detective London McKenna Novel"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 6448,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "The Girl in the Ground: A completely gripping mystery and su",
+      "The Burning Girls: A completely gripping crime thriller pack",
+      "Dead Woman Crossing: A totally heart-stopping crime thriller",
+      "Her Broken Wings: A completely unputdownable serial killer t",
+      "Broken Souls: An absolutely addictive mystery thriller with ",
+      "Follow Me Home: An unputdownable crime thriller that will ha"
+    ],
+    "target_title": "Breathe Your Last: An addictive and nail-biting crime thrill",
+    "distractor_titles": [
+      "Her Deadly Touch: An absolutely addictive crime thriller and",
+      "The Bones She Buried: A completely gripping, heart-stopping ",
+      "Shiver",
+      "Close Your Eyes, Hold Hands: A Novel"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11219,
+    "n_warm": 21,
+    "warm_titles_sample": [
+      "Cast the First Crone (A Spell's Angels Cozy Mystery Book 9)",
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "With Scream and Sugar: A Magical Tea Room Mystery (The Magic",
+      "Spelling the Tea: A Magical Tea Room Mystery (The Magical Te",
+      "A Bad Day At Casper Creek (A Hannah Hickok Witchy Mystery Bo",
+      "Older, Wiser, Witchier: A Return to Magic Cozy Mystery"
+    ],
+    "target_title": "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+    "distractor_titles": [
+      "Long, Hot, Witchy Summer (A Moonstone Bay Cozy Mystery Book ",
+      "Mermaid Moon (A Sunset Cove Novel)",
+      "The Jane Austen Society: A Novel",
+      "Dare You To"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11428,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "These Haunts Are Made For Walking: A Ghost Hunter Cozy Myste",
+      "Freaky Deaky Tiki (A Moonstone Bay Cozy Mystery Book 3)",
+      "Murder of the Month: Witches of Keyhole Lake Book 7 (Witches",
+      "Here Comes the Witch (A Paranormal Witch Cozy Mystery): (Mai",
+      "Soul Food Spirits (Southern Ghost Wranglers Book 1)",
+      "Landon Calling: A Wicked Witches of the Midwest Short"
+    ],
+    "target_title": "Careful What You Witch For: A Wicked Witches of the Midwest ",
+    "distractor_titles": [
+      "You Only Witch Once: A Wicked Witches of the Midwest Short",
+      "The Witch is Back (Wicked Witches of the Midwest Book 17)",
+      "The Story of Edgar Sawtelle: A Novel (Oprah Book Club #62)",
+      "Freefall: A Novel"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 9112,
+    "n_warm": 23,
+    "warm_titles_sample": [
+      "Only the Evil (A Death Gate Grim Reapers Thriller Book 8)",
+      "Marriage is Murder: A Witches of Keyhole Lake Cozy Mystery (",
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book",
+      "Only the Guilty (A Death Gate Grim Reapers Thriller Book 7)",
+      "Murder in the Mountains: A Witches of Keyhole Lake Southern ",
+      "The Hexorcist (A Supernatural Speakeasy Cozy Mystery Book 1)"
+    ],
+    "target_title": "A Score to Kettle: The Magical Tea Room Mysteries",
+    "distractor_titles": [
+      "The Tea Planter's Wife: A Novel",
+      "Once in a Brew Moon (A Supernatural Speakeasy Cozy Mystery B",
+      "Brooklyn",
+      "The Perks of Being a Wallflower"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11299,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "Freaky Sights (A Mystic Caravan Mystery Book 13)",
+      "Wicked Forever (An Ivy Morgan Mystery Book 21)",
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book"
+    ],
+    "target_title": "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+    "distractor_titles": [
+      "Ghosts: A novel",
+      "Help for the Haunted: A Novel",
+      "A Thousand Splendid Suns",
+      "Wisteria Witches: A Laugh-Out-Loud Funny Witch Cozy Mystery "
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 9910,
+    "n_warm": 24,
+    "warm_titles_sample": [
+      "Never Say Sever in Deadwood: Deadwood Humorous Mystery Book ",
+      "The Boat Man: A Mystery Suspense Thriller",
+      "Empty Bodies: A Post-Apocalyptic Tale of Dystopian Survival ",
+      "Clear Expectations - A Mary O'Reilly Paranormal Mystery (Boo",
+      "Old Acquaintance - A Mary O'Reilly Paranormal Mystery (Book ",
+      "Delayed Departures - A Mary O'Reilly Paranormal Mystery (Boo"
+    ],
+    "target_title": "Frayed Edges - A Mary O'Reilly Paranormal Mystery (Book Seve",
+    "distractor_titles": [
+      "Chase Her Shadow: A totally addictive serial killer thriller",
+      "SEEING DEAD THINGS: A Paranormal Women\u2019s Fiction Novel (Roxi",
+      "The Woman in Black: A Ghost Story",
+      "The Rebel Bride (Volume 10) (Daughters of the Mayflower)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8192,
+    "n_warm": 27,
+    "warm_titles_sample": [
+      "With Scream and Sugar: A Magical Tea Room Mystery (The Magic",
+      "Spelling the Tea: A Magical Tea Room Mystery (The Magical Te",
+      "Marriage is Murder: A Witches of Keyhole Lake Cozy Mystery (",
+      "The Tourist Attraction: A Sweet Escapist Romantic Comedy (Mo",
+      "Murder in the Mountains: A Witches of Keyhole Lake Southern ",
+      "Southern Fried Murder: Witches of Keyhole Lake Book 9 (Witch"
+    ],
+    "target_title": "A Score to Kettle: The Magical Tea Room Mysteries",
+    "distractor_titles": [
+      "The Tea Planter's Wife: A Novel",
+      "Once in a Brew Moon (A Supernatural Speakeasy Cozy Mystery B",
+      "The Last Mrs. Parrish: A Reese's Book Club Pick",
+      "See Her Die (Bree Taggert Book 2)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13155,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "Romancing the Crone (A Spell's Angels Cozy Mystery Book 5)",
+      "Dances With Witches (A Hannah Hickok Witchy Mystery Book 5)",
+      "All the Pretty Witches (A Hannah Hickok Witchy Mystery Book ",
+      "Freaky Mage (A Mystic Caravan Mystery Book 11)",
+      "Ghostly Camping (A Harper Harlow Mystery Book 16)",
+      "Cut to the Crone (A Spell's Angels Cozy Mystery Book 4)"
+    ],
+    "target_title": "Long, Hot, Witchy Summer (A Moonstone Bay Cozy Mystery Book ",
+    "distractor_titles": [
+      "Once in a Brew Moon (A Supernatural Speakeasy Cozy Mystery B",
+      "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+      "What Rose Forgot: A Novel",
+      "Sedition (A Political Conspiracy Book 1)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13810,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "Flyball (Vegas Heat: The Expansion Team)",
+      "Fastball (Vegas Heat: The Expansion Team)",
+      "Curveball (Vegas Heat: The Expansion Team)",
+      "Tight End (Vegas Aces: The Tight End)",
+      "Tight Laced (Vegas Aces: The Tight End)",
+      "Tight Fit (Vegas Aces: The Tight End)"
+    ],
+    "target_title": "Hardball (Vegas Heat: The Expansion Team)",
+    "distractor_titles": [
+      "Favorite Mistake (Vegas Aces: The Wide Receiver)",
+      "Raging Heat: Nikki Heat Book 6",
+      "Midnight at the Bright Ideas Bookstore: A Novel",
+      "You: A Novel"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11257,
+    "n_warm": 54,
+    "warm_titles_sample": [
+      "A Bad Day At Casper Creek (A Hannah Hickok Witchy Mystery Bo",
+      "For a Few Witches More (A Hannah Hickok Witchy Mystery Book ",
+      "Haunted Plains Drifter (A Hannah Hickok Witchy Mystery Book ",
+      "Thistle While You Work: A Wicked Witches of the Midwest Shor",
+      "Fiends in Low Places: A Hannah Hickok and Ivy Morgan Witchy ",
+      "Merry Witchmas: A Wicked Witches of the Midwest Short"
+    ],
+    "target_title": "Four-Leaf Clover: A Wicked Witches of the Midwest Short",
+    "distractor_titles": [
+      "Careful What You Witch For: A Wicked Witches of the Midwest ",
+      "Close Encounters of the Witchy Kind (A Wicked Witches of the",
+      "Palace of Treason: A Novel (The Red Sparrow Trilogy Book 2)",
+      "The Butterflies of Grand Canyon: A Novel"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10359,
+    "n_warm": 17,
+    "warm_titles_sample": [
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book",
+      "A Crone to Pick (A Spell's Angels Cozy Mystery Book 6)",
+      "Freaky Gifts (A Mystic Caravan Mystery Book 12)",
+      "Great Hexpectations (A Moonstone Bay Cozy Mystery Book 8)"
+    ],
+    "target_title": "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+    "distractor_titles": [
+      "The Midnight Witch: A Novel",
+      "Wisteria Witches: A Laugh-Out-Loud Funny Witch Cozy Mystery ",
+      "Lonestar Angel (Lonestar, 4)",
+      "The Brilliant Death"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 4927,
+    "n_warm": 23,
+    "warm_titles_sample": [
+      "Hand of Justice (Mara Brent Legal Thriller Series Book 3)",
+      "Misjudged: A Legal Thriller (Sam Johnstone Book 1)",
+      "The Eighth Sister: A Thriller (Charles Jenkins Book 1)",
+      "Price of Justice (Mara Brent Legal Thriller Series Book 2)",
+      "Divine Justice: A Legal Thriller (Brad Madison Legal Thrille",
+      "Justice Lost (Darren Street Book 3)"
+    ],
+    "target_title": "ALPHA: A Black Flagged Thriller (The Black Flagged Series Bo",
+    "distractor_titles": [
+      "VEKTOR: A Black Flagged Thriller (The Black Flagged Series B",
+      "Into the Black Nowhere: A Novel (An UNSUB Novel)",
+      "THE LOST SISTER: A London murder mystery full of twists (Det",
+      "Missing: A Serial Killer Crime Novel (Private Investigator M"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14373,
+    "n_warm": 25,
+    "warm_titles_sample": [
+      "Lit Fuse (A Tanner Novel Book 44)",
+      "Soulless (A Tanner Novel Book 43)",
+      "The Evil of Two Lessers (A Tanner Novel Book 41)",
+      "To Serve And Protect (A Tanner Novel Book 39)",
+      "Missing (A Tanner Novel Book 37)",
+      "Never See It Coming (A Tanner Novel Book 36)"
+    ],
+    "target_title": "Sins of the Father and Mother (A Tanner Novel Book 42)",
+    "distractor_titles": [
+      "The Hunting Grounds (Hidden Sins Book 2)",
+      "Occupation: Death (A Tanner Novel Book 12)",
+      "The Uninvited Guests: A Novel",
+      "To Say Nothing of the Dog"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8762,
+    "n_warm": 18,
+    "warm_titles_sample": [
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "Eat, Drink & Be Witchy (A Witch on the Rocks Cozy Mystery Bo",
+      "Sticks and Crones (A Spell's Angels Cozy Mystery Book 7)",
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book",
+      "Only the Guilty (A Death Gate Grim Reapers Thriller Book 7)",
+      "A Crone to Pick (A Spell's Angels Cozy Mystery Book 6)"
+    ],
+    "target_title": "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+    "distractor_titles": [
+      "The Midnight Witch: A Novel",
+      "Wisteria Witches: A Laugh-Out-Loud Funny Witch Cozy Mystery ",
+      "Fablehaven",
+      "The Riviera House"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11289,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "Flip the Witch Switch (Wicked Witches of the Midwest Book 14",
+      "Bad to the Crone (A Spell's Angels Cozy Mystery Book 1)",
+      "Murder Most Witchy (Wicked Witches of the Midwest Book 10)",
+      "Malevolent (Shaye Archer Series Book 1)",
+      "A Solstice Celebration: A Wicked Witches of the Midwest Shor",
+      "Bewitched: A Wicked Witches of the Midwest Short"
+    ],
+    "target_title": "Freaky Seas (A Mystic Caravan Mystery Book 10)",
+    "distractor_titles": [
+      "Freaky Lies (A Mystic Caravan Mystery Book 2)",
+      "Exquisite Captive (Dark Caravan Cycle, 1)",
+      "Asylum",
+      "How to Get Filthy Rich in Rising Asia: A Novel"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11364,
+    "n_warm": 14,
+    "warm_titles_sample": [
+      "Crowbones (World of the Others Book 3)",
+      "On a Witch and a Prayer: A Wicked Witches of the Midwest Sho",
+      "Wicked Brew: A Wicked Witches of the Midwest Short",
+      "Witch Me Luck (Wicked Witches of the Midwest Book 6)",
+      "Witching On A Star (Wicked Witches of the Midwest Book 4)",
+      "Witching You Were Here (Wicked Witches of the Midwest Book 3"
+    ],
+    "target_title": "A Little Slice of Death (A Two Broomsticks Gas & Grill Witch",
+    "distractor_titles": [
+      "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+      "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+      "If She Wakes",
+      "Transcription: A Novel"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 5770,
+    "n_warm": 35,
+    "warm_titles_sample": [
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst",
+      "A Bad Day At Casper Creek (A Hannah Hickok Witchy Mystery Bo",
+      "Older, Wiser, Witchier: A Return to Magic Cozy Mystery"
+    ],
+    "target_title": "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+    "distractor_titles": [
+      "Ghosts: A novel",
+      "Help for the Haunted: A Novel",
+      "The Christmas Wishing Tree: An Eternity Springs Novel (Etern",
+      "The Thirteenth Tale"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 2319,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Sycamore Row: A Novel (Jake Brigance Book 2)",
+      "Half Moon Bay: A Novel (Clay Edison Book 3)",
+      "The Wedding Guest: An Alex Delaware Novel",
+      "In the Heart of the Fire (Nameless: Season One Book 1)",
+      "Brilliance (The Brilliance Trilogy Book 1)",
+      "The Last Mile (Amos Decker Book 2)"
+    ],
+    "target_title": "Killer: An Alex Delaware Novel",
+    "distractor_titles": [
+      "Killer: An Alex Delaware Novel",
+      "Motive: An Alex Delaware Novel",
+      "Spellcaster (A Spellbound Novel)",
+      "Midnight Thief (Midnight Thief, 1)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11234,
+    "n_warm": 25,
+    "warm_titles_sample": [
+      "Brink of War: A Prosecution Force Thriller (The Prosecution ",
+      "Autumn's Risk: Autumn Trent Series (Winter Black FBI Mystery",
+      "Autumn's Chaos: Autumn Trent Series (Winter Black FBI Myster",
+      "Autumn's Rage: Autumn Trent Series (Winter Black FBI Mystery",
+      "Autumn's Fear: Autumn Trent Series (Winter Black FBI Mystery",
+      "The Senator: A Blake Jordan Thriller (The Blake Jordan Serie"
+    ],
+    "target_title": "Autumn's Break: Autumn Trent Series (Winter Black FBI Myster",
+    "distractor_titles": [
+      "The House on the Hill (Blake Wilder FBI Mystery Thriller Boo",
+      "Autumn Secrets (Seasons Pass Book 4)",
+      "One In A Million (Beyond The Veil Supernatural Thriller Book",
+      "The Return"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11213,
+    "n_warm": 15,
+    "warm_titles_sample": [
+      "A Bad Day At Casper Creek (A Hannah Hickok Witchy Mystery Bo",
+      "Sticks and Crones (A Spell's Angels Cozy Mystery Book 7)",
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "Witch is the Word (A Moonstone Bay Cozy Mystery Book 10)",
+      "The Asylum Aberration (A Charlie Rhodes Cozy Mystery Book 9)",
+      "Spelling the Tea: A Magical Tea Room Mystery (The Magical Te"
+    ],
+    "target_title": "The Krampus Kink (A Charlie Rhodes Cozy Mystery Book 12)",
+    "distractor_titles": [
+      "The Megalodon Mix-Up (A Charlie Rhodes Cozy Mystery Book 4)",
+      "The Bigfoot Blunder (A Charlie Rhodes Cozy Mystery Book 1)",
+      "Never Saw Me Coming: A Novel",
+      "Threat Vector (Jack Ryan, Jr.)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13547,
+    "n_warm": 15,
+    "warm_titles_sample": [
+      "Nine Elms: A Kate Marshall Thriller",
+      "Fatal Witness: An absolutely gripping mystery and suspense t",
+      "Six Graves: An absolutely heart-pounding and addictive crime",
+      "Her Last Day (Jessie Cole Book 1)",
+      "Her Final Words",
+      "Gone to Darkness (Sydney Rose Parnell Book 4)"
+    ],
+    "target_title": "Twisted Lies: An absolutely gripping mystery and suspense th",
+    "distractor_titles": [
+      "Stolen Ones: A totally jaw-dropping and addictive crime thri",
+      "Never Tell a Lie: A Novel of Suspense",
+      "Another Man's Moccasins: A Longmire Mystery (Walt Longmire M",
+      "A Court of Frost and Starlight (A Court of Thorns and Roses)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11370,
+    "n_warm": 57,
+    "warm_titles_sample": [
+      "Cast the First Crone (A Spell's Angels Cozy Mystery Book 9)",
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "Eat, Drink & Be Witchy (A Witch on the Rocks Cozy Mystery Bo",
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst"
+    ],
+    "target_title": "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+    "distractor_titles": [
+      "Ghosts: A novel",
+      "Help for the Haunted: A Novel",
+      "Frankenstein: Prodigal Son: A Novel",
+      "The Spellbook of Katrina Van Tassel: A Story of Sleepy Hollo"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11222,
+    "n_warm": 21,
+    "warm_titles_sample": [
+      "Forgotten in Death: An Eve Dallas Novel",
+      "The Other Lady Vanishes",
+      "Hook, Line, and Murder: Witches of Keyhole Lake Book 6 (Witc",
+      "Murder to the Max: Witches of Keyhole Lake Book 2 (Witches o",
+      "Dark Rites: A Paranormal Romance Novel (Krewe of Hunters Boo",
+      "Murder Of A Werewolf (A Brimstone Witch Mystery Book 1)"
+    ],
+    "target_title": "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+    "distractor_titles": [
+      "Long, Hot, Witchy Summer (A Moonstone Bay Cozy Mystery Book ",
+      "Mermaid Moon (A Sunset Cove Novel)",
+      "Under the Wide and Starry Sky: A Novel",
+      "To The Bone (Kate Reid Thrillers Book 9)"
+    ],
+    "rank_content_direct": 5,
+    "rank_v1": 5,
+    "rank_v2": 5,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13273,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "Hidden Bones: A totally addictive crime novel packed with tw",
+      "The Burning Girls: A completely gripping crime thriller pack",
+      "Frozen Souls: An addictive crime thriller packed with suspen",
+      "The Hunted Girls: A totally gripping crime thriller (Agent N",
+      "The Girl from Berlin: An utterly heart-wrenching and grippin",
+      "Shadow Falls: An absolutely gripping mystery thriller (Detec"
+    ],
+    "target_title": "The Next Girl: A gripping thriller with a heart-stopping twi",
+    "distractor_titles": [
+      "One Left Behind: A completely gripping and addictive crime t",
+      "Next Girl On The List - An edge of your seat serial killer c",
+      "Good Riddance",
+      "The Defense: A Novel (Eddie Flynn Book 1)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13493,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "Cast the First Crone (A Spell's Angels Cozy Mystery Book 9)",
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book",
+      "Witching On A Star (Wicked Witches of the Midwest Book 4)",
+      "Any Witch Way You Can (Wicked Witches of the Midwest Book 1)",
+      "No Crones About It (A Spell's Angels Cozy Mystery Book 2)",
+      "Bad to the Crone (A Spell's Angels Cozy Mystery Book 1)"
+    ],
+    "target_title": "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+    "distractor_titles": [
+      "Long, Hot, Witchy Summer (A Moonstone Bay Cozy Mystery Book ",
+      "Mermaid Moon (A Sunset Cove Novel)",
+      "The Twelve Tribes of Hattie (Oprah's Book Club 2.0)",
+      "Winter Garden"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8290,
+    "n_warm": 21,
+    "warm_titles_sample": [
+      "Great Hexpectations (A Moonstone Bay Cozy Mystery Book 8)",
+      "Every Witch Way But Wicked (Wicked Witches of the Midwest Bo",
+      "To Spell With It (A Moonstone Bay Cozy Mystery Book 4)",
+      "Freaky Deaky Tiki (A Moonstone Bay Cozy Mystery Book 3)",
+      "Witch Out of Water (A Moonstone Bay Cozy Mystery Book 2)",
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)"
+    ],
+    "target_title": "Long, Hot, Witchy Summer (A Moonstone Bay Cozy Mystery Book ",
+    "distractor_titles": [
+      "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+      "Summer Secrets: A Novel",
+      "Heart-Shaped Box: A Novel",
+      "The Hitchhiker's Guide to the Galaxy"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8706,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "Lit Fuse (A Tanner Novel Book 44)",
+      "Soulless (A Tanner Novel Book 43)",
+      "To Serve And Protect (A Tanner Novel Book 39)",
+      "Missing (A Tanner Novel Book 37)",
+      "Never See It Coming (A Tanner Novel Book 36)",
+      "Flesh and Blood (A Tanner Novel Book 35)"
+    ],
+    "target_title": "Sins of the Father and Mother (A Tanner Novel Book 42)",
+    "distractor_titles": [
+      "Target: Tanner (A Tanner Novel Book 33)",
+      "Revelations (A Tanner Novel Book 20)",
+      "The Boy Who Stole from the Dead (Nadia Tesla Book 2)",
+      "Hour of the Witch: A Novel"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11451,
+    "n_warm": 26,
+    "warm_titles_sample": [
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "Friday the Witchteenth (Wicked Witches of the Midwest Book 2",
+      "The Joy of Hex (A Moonstone Bay Cozy Mystery Book 9)",
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book",
+      "A Crone to Pick (A Spell's Angels Cozy Mystery Book 6)",
+      "Freaky Gifts (A Mystic Caravan Mystery Book 12)"
+    ],
+    "target_title": "Long, Hot, Witchy Summer (A Moonstone Bay Cozy Mystery Book ",
+    "distractor_titles": [
+      "Once in a Brew Moon (A Supernatural Speakeasy Cozy Mystery B",
+      "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+      "Burial Rites",
+      "The Summer Getaway: A Novel"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11430,
+    "n_warm": 25,
+    "warm_titles_sample": [
+      "Only the Guilty (A Death Gate Grim Reapers Thriller Book 7)",
+      "Prelude to a Witch (Wicked Witches of the Midwest Book 18)",
+      "Freaky Mage (A Mystic Caravan Mystery Book 11)",
+      "Spelling the Tea: A Magical Tea Room Mystery (The Magical Te",
+      "The Banshee Brouhaha (A Charlie Rhodes Cozy Mystery Book 8)",
+      "Cocoa Curses: A Christmas Paranormal Cozy Mystery (Winter Wi"
+    ],
+    "target_title": "Long, Hot, Witchy Summer (A Moonstone Bay Cozy Mystery Book ",
+    "distractor_titles": [
+      "Once in a Brew Moon (A Supernatural Speakeasy Cozy Mystery B",
+      "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+      "The Black Box (A Harry Bosch Novel, 16)",
+      "My Name Is Mary Sutter: A Novel"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13437,
+    "n_warm": 23,
+    "warm_titles_sample": [
+      "Covert Kill: A David Rivers Thriller (Shadow Strike Book 3)",
+      "Last Target Standing: A David Rivers Thriller (Shadow Strike",
+      "Ice Cold Spy (Alex Mason Book 2)",
+      "The Enemies of My Country: A David Rivers Thriller (Shadow S",
+      "Hellfire (A Jonathan Grave Thriller Book 12)",
+      "Lit Fuse (A Tanner Novel Book 44)"
+    ],
+    "target_title": "Hyenas (A Tanner Novel Book 45)",
+    "distractor_titles": [
+      "Target: Tanner (A Tanner Novel Book 33)",
+      "Revelations (A Tanner Novel Book 20)",
+      "Protect and Defend: A Thriller (Mitch Rapp Book 10)",
+      "The Sixes: A Novel"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14303,
+    "n_warm": 24,
+    "warm_titles_sample": [
+      "The Haunted Hotel Hoopla (A Charlie Rhodes Cozy Mystery Book",
+      "Tall Tales & Witchy Fails (A Witch on the Rocks Cozy Mystery",
+      "Great Hexpectations (A Moonstone Bay Cozy Mystery Book 8)",
+      "Sticks and Crones (A Spell's Angels Cozy Mystery Book 7)",
+      "Freaky Sights (A Mystic Caravan Mystery Book 13)",
+      "My Big Fat Witch Wedding (Wicked Witches of the Midwest Book"
+    ],
+    "target_title": "Long, Hot, Witchy Summer (A Moonstone Bay Cozy Mystery Book ",
+    "distractor_titles": [
+      "Once in a Brew Moon (A Supernatural Speakeasy Cozy Mystery B",
+      "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+      "Bel Canto",
+      "The Alienist"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13074,
+    "n_warm": 26,
+    "warm_titles_sample": [
+      "Cast the First Crone (A Spell's Angels Cozy Mystery Book 9)",
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "Witch is the Word (A Moonstone Bay Cozy Mystery Book 10)",
+      "The Haunted Hotel Hoopla (A Charlie Rhodes Cozy Mystery Book"
+    ],
+    "target_title": "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+    "distractor_titles": [
+      "Mermaid Moon (A Sunset Cove Novel)",
+      "Sunset Beach: A Novel",
+      "Until the Day I Die: A Novel",
+      "Emmy & Oliver"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14318,
+    "n_warm": 35,
+    "warm_titles_sample": [
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "Eat, Drink & Be Witchy (A Witch on the Rocks Cozy Mystery Bo",
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst",
+      "Older, Wiser, Witchier: A Return to Magic Cozy Mystery",
+      "Grease the Wheel (A Two Broomsticks Gas & Grill Witch Cozy M",
+      "With Scream and Sugar: A Magical Tea Room Mystery (The Magic"
+    ],
+    "target_title": "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+    "distractor_titles": [
+      "The Midnight Witch: A Novel",
+      "Wisteria Witches: A Laugh-Out-Loud Funny Witch Cozy Mystery ",
+      "Bitten",
+      "Beartown: A Novel (Beartown Series)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 7412,
+    "n_warm": 17,
+    "warm_titles_sample": [
+      "Autumn's Risk: Autumn Trent Series (Winter Black FBI Mystery",
+      "Autumn's Chaos: Autumn Trent Series (Winter Black FBI Myster",
+      "Autumn's Rage: Autumn Trent Series (Winter Black FBI Mystery",
+      "Autumn's Fear: Autumn Trent Series (Winter Black FBI Mystery",
+      "Autumn's Game: Autumn Trent Series (Winter Black FBI Mystery",
+      "In the Heart of the Fire (Nameless: Season One Book 1)"
+    ],
+    "target_title": "Autumn's Break: Autumn Trent Series (Winter Black FBI Myster",
+    "distractor_titles": [
+      "The House on the Hill (Blake Wilder FBI Mystery Thriller Boo",
+      "Autumn Secrets (Seasons Pass Book 4)",
+      "Crooked Man: A Hard-Boiled but Humorous New Orleans Mystery ",
+      "Wicked Lovely (Wicked Lovely, 1)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 5507,
+    "n_warm": 66,
+    "warm_titles_sample": [
+      "Cast the First Crone (A Spell's Angels Cozy Mystery Book 9)",
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "Eat, Drink & Be Witchy (A Witch on the Rocks Cozy Mystery Bo",
+      "Older, Wiser, Witchier: A Return to Magic Cozy Mystery",
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst",
+      "A Bad Day At Casper Creek (A Hannah Hickok Witchy Mystery Bo"
+    ],
+    "target_title": "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+    "distractor_titles": [
+      "Ghosts: A novel",
+      "Help for the Haunted: A Novel",
+      "Woman in the Water (A Pax Arrington Mystery Book 3)",
+      "For a Few Demons More (The Hollows, Book 5)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11355,
+    "n_warm": 51,
+    "warm_titles_sample": [
+      "Cast the First Crone (A Spell's Angels Cozy Mystery Book 9)",
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst",
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "A Bad Day At Casper Creek (A Hannah Hickok Witchy Mystery Bo",
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book"
+    ],
+    "target_title": "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+    "distractor_titles": [
+      "Mermaid Moon (A Sunset Cove Novel)",
+      "Sunset Beach: A Novel",
+      "Sunset in Central Park: The perfect romantic comedy to curl ",
+      "Grave Peril (The Dresden Files, Book 3)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11354,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Freaky Fangs (A Mystic Caravan Mystery Book 9)",
+      "The Hexorcist (A Supernatural Speakeasy Cozy Mystery Book 1)",
+      "Jerry Takes Charge: An Aisling Grimlock Short",
+      "No Crones About It (A Spell's Angels Cozy Mystery Book 2)",
+      "Freaky Reapers (A Mystic Caravan Mystery Book 8)",
+      "To Spell With It (A Moonstone Bay Cozy Mystery Book 4)"
+    ],
+    "target_title": "Deadly Spells and a Southern Belle (A Southern Belles and Sp",
+    "distractor_titles": [
+      "Close Encounters of the Witchy Kind (A Wicked Witches of the",
+      "The King of Bones and Ashes (Witches of New Orleans Book 1)",
+      "Falling Like Snowflakes (A Summer Harbor Novel)",
+      "Wolf Hall"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10729,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "Cleaver Square: Sometimes the dead won\u2019t stay buried. (A DCI",
+      "Dead on Demand: He had the perfect life.. He\u2019ll kill to get ",
+      "In the Shadow of Power (Sandhamn Murders Book 7)",
+      "The Body in the Marsh (DCI Craig Gillard Crime Thrillers Boo",
+      "The Quartet Murders (A Yorkshire Murder Mystery Book 2)",
+      "THE SEDLEIGH HALL MURDER a gripping crime mystery full of tw"
+    ],
+    "target_title": "In the Name of Truth (Sandhamn Murders Book 8)",
+    "distractor_titles": [
+      "A Dark Sin: A chilling British detective crime thriller (The",
+      "The 8th Confession (Women's Murder Club)",
+      "The Things We Knew",
+      "Spectrum (The Karen Vail Series, Book 6)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11349,
+    "n_warm": 63,
+    "warm_titles_sample": [
+      "Cast the First Crone (A Spell's Angels Cozy Mystery Book 9)",
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "Eat, Drink & Be Witchy (A Witch on the Rocks Cozy Mystery Bo",
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst"
+    ],
+    "target_title": "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+    "distractor_titles": [
+      "Ghosts: A novel",
+      "Help for the Haunted: A Novel",
+      "King of Scars (King of Scars Duology Book 1)",
+      "A Northern Light"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 7445,
+    "n_warm": 18,
+    "warm_titles_sample": [
+      "Will of Justice: A Legal Thriller (Bill Harvey Book 3)",
+      "The Southern Criminal: An Epic Legal Thriller (Joe Hennessy ",
+      "Deadly Justice: A Legal Thriller (Tex Hunter Legal Thriller ",
+      "Gates of Power: A Gripping Crime Mystery (Jack Valentine Mys",
+      "The Venice Sketchbook: A Novel",
+      "Blind Conviction (The Nate Shepherd Legal Thriller Series Bo"
+    ],
+    "target_title": "The Southern Lawyer: An Epic Legal Thriller (Joe Hennessy Le",
+    "distractor_titles": [
+      "Rogue Lawyer: A Novel",
+      "TRIAL - A Legal Thriller: Clifford Irving's legal novels: Bo",
+      "Behind the Scenes at the Museum: A Novel, Packaging May Vary",
+      "Fire Study (Study, Book 3)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 4672,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "No Crones About It (A Spell's Angels Cozy Mystery Book 2)",
+      "Freaky Reapers (A Mystic Caravan Mystery Book 8)",
+      "To Spell With It (A Moonstone Bay Cozy Mystery Book 4)",
+      "Cupid in Crisis: A Moonstone Bay Cozy Mystery Short",
+      "The Dirty Coven (A Hannah Hickok Witchy Mystery Book 1)",
+      "Freaky Places (A Mystic Caravan Mystery Book 5)"
+    ],
+    "target_title": "The Undead Uproar (A Charlie Rhodes Cozy Mystery Book 5)",
+    "distractor_titles": [
+      "The Krampus Kink (A Charlie Rhodes Cozy Mystery Book 12)",
+      "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+      "When God Made You",
+      "Invisible Prey"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 224,
+    "n_warm": 42,
+    "warm_titles_sample": [
+      "Sticks and Crones (A Spell's Angels Cozy Mystery Book 7)",
+      "A Crone to Pick (A Spell's Angels Cozy Mystery Book 6)",
+      "Romancing the Crone (A Spell's Angels Cozy Mystery Book 5)",
+      "Cut to the Crone (A Spell's Angels Cozy Mystery Book 4)",
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "No Crones About It (A Spell's Angels Cozy Mystery Book 2)"
+    ],
+    "target_title": "The Krampus Kink (A Charlie Rhodes Cozy Mystery Book 12)",
+    "distractor_titles": [
+      "Once in a Brew Moon (A Supernatural Speakeasy Cozy Mystery B",
+      "Known (A Bone Secrets Novel Book 5)",
+      "Luster: A Novel",
+      "Dead Ever After (Sookie Stackhouse/True Blood)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 1190,
+    "n_warm": 36,
+    "warm_titles_sample": [
+      "Winter Wind: An addictive mystery thriller (The Rain Collect",
+      "The Witch and the Englishman (Allison Lopez, Witch Detective",
+      "Cast the First Crone (A Spell's Angels Cozy Mystery Book 9)",
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "A Bad Day At Casper Creek (A Hannah Hickok Witchy Mystery Bo"
+    ],
+    "target_title": "The Magnificent Lives of Marjorie Post: A Novel",
+    "distractor_titles": [
+      "Becoming Marie Antoinette: A Novel",
+      "Spoiler Alert: A Novel",
+      "As Love Blooms: A Novel (The Gregory Sisters)",
+      "The Redbreast: A Harry Hole Novel (Harry Hole Series, 3)"
+    ],
+    "rank_content_direct": 5,
+    "rank_v1": 5,
+    "rank_v2": 5,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 5474,
+    "n_warm": 47,
+    "warm_titles_sample": [
+      "The Girl in the Pink Shoes: A heart-pounding crime novel pac",
+      "The Innocent Wife: An addictive crime thriller packed with j",
+      "The Girl in the River: A totally addictive and heart-racing ",
+      "Last Seen Alive: An utterly gripping and unputdownable crime",
+      "Hidden Bones: A totally addictive crime novel packed with tw",
+      "Kiss Her Goodnight: A completely unputdownable crime thrille"
+    ],
+    "target_title": "The Rose Girls: A heart-pounding crime thriller with a kille",
+    "distractor_titles": [
+      "Find the Girl: An utterly addictive and unputdownable crime ",
+      "Lovely Girls: A Thriller",
+      "Of Fire and Lions: A Novel",
+      "The Snow Child: A Novel (Pulitzer Prize in Letters: Fiction "
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11237,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Flip the Witch Switch (Wicked Witches of the Midwest Book 14",
+      "Bad to the Crone (A Spell's Angels Cozy Mystery Book 1)",
+      "Freaky Deaky Tiki (A Moonstone Bay Cozy Mystery Book 3)",
+      "The Werewolf Whoops (A Charlie Rhodes Cozy Mystery Book 3)",
+      "Witchin' USA (A Moonstone Bay Cozy Mystery Book 1)",
+      "Grim Rising (Aisling Grimlock Book 7)"
+    ],
+    "target_title": "The Undead Uproar (A Charlie Rhodes Cozy Mystery Book 5)",
+    "distractor_titles": [
+      "The Krampus Kink (A Charlie Rhodes Cozy Mystery Book 12)",
+      "The Megalodon Mix-Up (A Charlie Rhodes Cozy Mystery Book 4)",
+      "The Cloisters: A Novel",
+      "Heart on the Line"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 1202,
+    "n_warm": 26,
+    "warm_titles_sample": [
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "Murder by the Book (A Beyond the Page Bookstore Mystery 1)",
+      "The Second Mrs. Astor: A Heartbreaking Historical Novel of t",
+      "Eat, Drink & Be Witchy (A Witch on the Rocks Cozy Mystery Bo",
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "A Bad Day At Casper Creek (A Hannah Hickok Witchy Mystery Bo"
+    ],
+    "target_title": "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+    "distractor_titles": [
+      "Mermaid Moon (A Sunset Cove Novel)",
+      "Sunset Beach: A Novel",
+      "Shopaholic to the Stars",
+      "Meant to Be (An Anchor Island Novel)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 6595,
+    "n_warm": 17,
+    "warm_titles_sample": [
+      "Murder on the Orient Express: A Hercule Poirot Mystery (Herc",
+      "Defending Jacob: A Novel",
+      "The Royal Baths Murder (A Yorkshire Murder Mystery Book 4)",
+      "FIVE BLOODY HEARTS an absolutely gripping crime thriller wit",
+      "HUNTED ON THE FENS a gripping crime thriller full of twists ",
+      "THE RIVERBOAT MYSTERY an absolutely gripping whodunit full o"
+    ],
+    "target_title": "THE VICARAGE MURDER an addictive crime mystery full of twist",
+    "distractor_titles": [
+      "The Murder at the Vicarage: A Miss Marple Mystery (Miss Marp",
+      "Talking to the Dead: Meet crime fiction's most startling det",
+      "With Autumn's Return: A Novel (Westward Winds)",
+      "The Winter of the Witch: A Novel (Winternight Trilogy)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 9916,
+    "n_warm": 69,
+    "warm_titles_sample": [
+      "With Scream and Sugar: A Magical Tea Room Mystery (The Magic",
+      "Spelling the Tea: A Magical Tea Room Mystery (The Magical Te",
+      "Cocoa Curses: A Christmas Paranormal Cozy Mystery (Winter Wi",
+      "Spell's Bells (Spellbound Paranormal Cozy Mystery Book 3)",
+      "Doom and Broom (Spellbound Paranormal Cozy Mystery Book 2)",
+      "Graves and Golf Carts (Divine Place Supernatural Cozy Myster"
+    ],
+    "target_title": "A Score to Kettle: The Magical Tea Room Mysteries",
+    "distractor_titles": [
+      "The Tea Planter's Wife: A Novel",
+      "On What Grounds (Coffeehouse Mysteries, No. 1)",
+      "Just Try to Stop Me (A Waterman & Stark Thriller Book 5)",
+      "The Supremes at Earl's All-You-Can-Eat"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11298,
+    "n_warm": 45,
+    "warm_titles_sample": [
+      "Cast the First Crone (A Spell's Angels Cozy Mystery Book 9)",
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst",
+      "Older, Wiser, Witchier: A Return to Magic Cozy Mystery",
+      "That Magic Moment (A Supernatural Speakeasy Cozy Mystery Boo"
+    ],
+    "target_title": "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+    "distractor_titles": [
+      "Ghosts: A novel",
+      "Help for the Haunted: A Novel",
+      "The Ghost Fields (Ruth Galloway Mysteries) (Ruth Galloway My",
+      "Backfire (An FBI Thriller Book 16)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8342,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Kiss Her Goodnight: A completely unputdownable crime thrille",
+      "Sleeping Dolls: An utterly unputdownable and gripping crime ",
+      "First Girl to Die: A completely gripping crime thriller (Det",
+      "The Girl in the Grave: An unputdownable crime thriller with ",
+      "The Crying House: An absolutely nail-biting mystery and susp",
+      "First Girl Gone: An absolutely addictive crime thriller with"
+    ],
+    "target_title": "The Hiding Place: An absolutely heart-stopping crime thrille",
+    "distractor_titles": [
+      "Find the Girl: An utterly addictive and unputdownable crime ",
+      "Hide (Detective Harriet Foster Book 1)",
+      "The Man Without A Face (Peter Black Book 2)",
+      "Funny You Should Ask: A Novel"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 796,
+    "n_warm": 12,
+    "warm_titles_sample": [
+      "The Target (Will Robie Series, 3)",
+      "The Innocent (Will Robie Series, 1)",
+      "The Hit (Will Robie Series, 2)",
+      "Savage Run (A Joe Pickett Novel Book 2)",
+      "Winterkill (A Joe Pickett Novel Book 3)",
+      "Out of Range (A Joe Pickett Novel Book 5)"
+    ],
+    "target_title": "Shadows Reel (A Joe Pickett Novel Book 22)",
+    "distractor_titles": [
+      "Wolf Pack (A Joe Pickett Novel Book 19)",
+      "Long Range (A Joe Pickett Novel Book 20)",
+      "The Cliff House: A Clean & Wholesome Romance (Cape Sanctuary",
+      "The World That We Knew: A Novel"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11278,
+    "n_warm": 26,
+    "warm_titles_sample": [
+      "Cast the First Crone (A Spell's Angels Cozy Mystery Book 9)",
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "Eat, Drink & Be Witchy (A Witch on the Rocks Cozy Mystery Bo",
+      "The Dirty Coven (A Hannah Hickok Witchy Mystery Book 1)",
+      "Witch is the Word (A Moonstone Bay Cozy Mystery Book 10)",
+      "Grave Homecoming (A Maddie Graves Mystery Book 1)"
+    ],
+    "target_title": "Beach Blanket Wendigo (A Moonstone Bay Cozy Mystery Book 11)",
+    "distractor_titles": [
+      "Mermaid Moon (A Sunset Cove Novel)",
+      "Sunset Beach: A Novel",
+      "The Forgotten Orphan: The heartbreaking and gripping World W",
+      "The Bitter Season (Kovac and Liska Series)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10340,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "Kiss Her Goodnight: A completely unputdownable crime thrille",
+      "Autumn's Game: Autumn Trent Series (Winter Black FBI Mystery",
+      "Pray for Mercy: A totally gripping and unputdownable crime t",
+      "Cross My Heart: A completely gripping and unputdownable seri",
+      "Be Mine Forever: An absolutely nail-biting crime thriller wi",
+      "Lose Your Breath: An absolutely gripping short-read thriller"
+    ],
+    "target_title": "Autumn's Break: Autumn Trent Series (Winter Black FBI Myster",
+    "distractor_titles": [
+      "The House on the Hill (Blake Wilder FBI Mystery Thriller Boo",
+      "Autumn Secrets (Seasons Pass Book 4)",
+      "Before We Were Yours: A Novel",
+      "The Favor: A Novel"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 9123,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "Fallen Angel: An absolutely addictive crime thriller with a ",
+      "Cross My Heart: A completely gripping and unputdownable seri",
+      "Deadly Cry: An absolutely gripping crime thriller packed wit",
+      "Beneath Devil's Bridge: A Novel",
+      "Be Mine Forever: An absolutely nail-biting crime thriller wi",
+      "Promises in the Dark: A totally gripping serial killer thril"
+    ],
+    "target_title": "Killing Mind: An addictive and nail-biting crime thriller (D",
+    "distractor_titles": [
+      "Stolen Ones: A totally jaw-dropping and addictive crime thri",
+      "Chase Her Shadow: A totally addictive serial killer thriller",
+      "The Bone Collector: The First Lincoln Rhyme Novel",
+      "Let it Burn: An Alex McKnight Novel"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10862,
+    "n_warm": 80,
+    "warm_titles_sample": [
+      "Cast the First Crone (A Spell's Angels Cozy Mystery Book 9)",
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "Older, Wiser, Witchier: A Return to Magic Cozy Mystery",
+      "Black & Brew (A Supernatural Speakeasy Cozy Mystery Book 10)",
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "Eat, Drink & Be Witchy (A Witch on the Rocks Cozy Mystery Bo"
+    ],
+    "target_title": "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+    "distractor_titles": [
+      "Ghosts: A novel",
+      "Help for the Haunted: A Novel",
+      "The Anatomist's Wife (A Lady Darby Mystery)",
+      "Dead to the World (Sookie Stackhouse Book 4)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 1,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 6489,
+    "n_warm": 78,
+    "warm_titles_sample": [
+      "The Girl in the Pink Shoes: A heart-pounding crime novel pac",
+      "The Innocent Wife: An addictive crime thriller packed with j",
+      "Their Burning Graves: A totally heart-stopping and addictive",
+      "Missing Girl at Frozen Falls: A totally addictive and heart-",
+      "The Girl in the River: A totally addictive and heart-racing ",
+      "Silent Angel: A completely gripping thriller packed with nai"
+    ],
+    "target_title": "The Rose Girls: A heart-pounding crime thriller with a kille",
+    "distractor_titles": [
+      "Lovely Girls: A Thriller",
+      "Girl Forgotten : A completely addictive, heart-stopping crim",
+      "A Court of Frost and Starlight (A Court of Thorns and Roses)",
+      "The Shadowy Horses"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 2142,
+    "n_warm": 21,
+    "warm_titles_sample": [
+      "The Russian Cage (Gunnie Rose Book 3)",
+      "Freaky Crush (A Mystic Caravan Mystery Book 15)",
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "Freaky Crypts (A Mystic Caravan Mystery Book 14)",
+      "Friday the Witchteenth (Wicked Witches of the Midwest Book 2",
+      "Only the Evil (A Death Gate Grim Reapers Thriller Book 8)"
+    ],
+    "target_title": "A Longer Fall (Gunnie Rose Book 2)",
+    "distractor_titles": [
+      "Can't Help Falling: A Novel",
+      "Run, Rose, Run: A Novel",
+      "Jayne Doe",
+      "The Woman in the Window: A Novel"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 2,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10510,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "Missing Girl at Frozen Falls: A totally addictive and heart-",
+      "Love, Lies, and Suicide (Olivia Knight FBI Mystery Thriller ",
+      "The Murders in Beacon Hill (Olivia Knight FBI Mystery Thrill",
+      "The Missing Girls (Blake Wilder FBI Mystery Thriller Book 12",
+      "Night at the Asylum (Blake Wilder FBI Mystery Thriller Book ",
+      "A Wife's Secret (A Pax Arrington Mystery Book 4)"
+    ],
+    "target_title": "The Man Burned by Winter (Rooker Lindstr\u00f6m Thriller Book 1)",
+    "distractor_titles": [
+      "DEAD OF WINTER (Louis Kincaid Book 2)",
+      "The Winter People: A Suspense Thriller",
+      "No Mark upon Her (Duncan Kincaid/Gemma James Novels, 14)",
+      "Hyenas (A Tanner Novel Book 45)"
+    ],
+    "rank_content_direct": 4,
+    "rank_v1": 5,
+    "rank_v2": 5,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8084,
+    "n_warm": 15,
+    "warm_titles_sample": [
+      "Hidden Scars: A completely gripping crime thriller with a na",
+      "Six Graves: An absolutely heart-pounding and addictive crime",
+      "Heartbreak Bay (Stillhouse Lake Book 5)",
+      "Silent Voices: A gripping crime thriller packed with mystery",
+      "Gone to Darkness (Sydney Rose Parnell Book 4)",
+      "Deadly Secrets: An absolutely gripping crime thriller (Detec"
+    ],
+    "target_title": "Twisted Lies: An absolutely gripping mystery and suspense th",
+    "distractor_titles": [
+      "Stolen Ones: A totally jaw-dropping and addictive crime thri",
+      "Lost Girls: A fast paced, gripping thriller novel (Detective",
+      "Next Girl On The List - An edge of your seat serial killer c",
+      "Saga, Vol. 5"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 11431,
+    "n_warm": 25,
+    "warm_titles_sample": [
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "The Wendigo Whoop-De-Doo (A Charlie Rhodes Cozy Mystery Book",
+      "The Asylum Aberration (A Charlie Rhodes Cozy Mystery Book 9)",
+      "We All Scream (A Two Broomsticks Gas & Grill Witch Cozy Myst",
+      "Friday the Witchteenth (Wicked Witches of the Midwest Book 2",
+      "Grease the Wheel (A Two Broomsticks Gas & Grill Witch Cozy M"
+    ],
+    "target_title": "The Krampus Kink (A Charlie Rhodes Cozy Mystery Book 12)",
+    "distractor_titles": [
+      "The Undead Uproar (A Charlie Rhodes Cozy Mystery Book 5)",
+      "The Megalodon Mix-Up (A Charlie Rhodes Cozy Mystery Book 4)",
+      "Cruel Intent (Ali Reynolds Book 4)",
+      "Code Name: Camelot - An Action Thriller Novel (A Noah Wolf N"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 3,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 6051,
+    "n_warm": 23,
+    "warm_titles_sample": [
+      "Trouble in Mudbug (Ghost-in-Law Mystery/Romance Book 1)",
+      "Murder Most Witchy (Wicked Witches of the Midwest Book 10)",
+      "Thistle While You Work: A Wicked Witches of the Midwest Shor",
+      "Merry Witchmas: A Wicked Witches of the Midwest Short",
+      "Happy Witchgiving: A Wicked Witches of the Midwest Short",
+      "Ghostly Worries (A Harper Harlow Mystery Book 4)"
+    ],
+    "target_title": "The Bigfoot Blunder (A Charlie Rhodes Cozy Mystery Book 1)",
+    "distractor_titles": [
+      "The Megalodon Mix-Up (A Charlie Rhodes Cozy Mystery Book 4)",
+      "The Krampus Kink (A Charlie Rhodes Cozy Mystery Book 12)",
+      "The Last Child: A Novel",
+      "A Lady in Disguise: A Novel (The Daughters of Hampshire)"
+    ],
+    "rank_content_direct": 5,
+    "rank_v1": 1,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 6371,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "The Hit List (Blake Wilder FBI Mystery Thriller Book 16)",
+      "The Heist (Blake Wilder FBI Mystery Thriller Book 15)",
+      "No More Lies (Blake Wilder FBI Mystery Thriller Book 13)",
+      "Love, Lies, and Suicide (Olivia Knight FBI Mystery Thriller ",
+      "A Time to Die (Blake Wilder FBI Mystery Thriller Book 10)",
+      "The Woman Behind the Door (Olivia Knight FBI Mystery Thrille"
+    ],
+    "target_title": "Deadly Pursuit (A Pax Arrington Mystery)",
+    "distractor_titles": [
+      "A Deadly Distance: A Jack Noble Thriller",
+      "Woman in the Water (A Pax Arrington Mystery Book 3)",
+      "The Aspen Account",
+      "Extreme Measures: A Thriller (Mitch Rapp Book 11)"
+    ],
+    "rank_content_direct": 4,
+    "rank_v1": 1,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 7018,
+    "n_warm": 34,
+    "warm_titles_sample": [
+      "Cold Evidence (Cass Leary Legal Thriller Series Book 10)",
+      "Price of Justice (Mara Brent Legal Thriller Series Book 2)",
+      "Influencing Justice: A Legal Thriller with a shocking final ",
+      "Mark of Justice (Mara Brent Legal Thriller Series Book 4)",
+      "Lettie Portman: Justice in Time (Sisters in Law Book 2)",
+      "One and Done: A Legal Thriller (Sam Johnstone Book 2)"
+    ],
+    "target_title": "RICO Rocky (Thaddeus Murfee Thrillers Book 15)",
+    "distractor_titles": [
+      "The Trap (Agent Dallas Thrillers Book 3)",
+      "Nemesis (An FBI Thriller Book 19)",
+      "Half of a Yellow Sun",
+      "Tunnel Vision"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8840,
+    "n_warm": 26,
+    "warm_titles_sample": [
+      "Watch Her Disappear: A totally gripping crime thriller packe",
+      "Be Mine Forever: An absolutely nail-biting crime thriller wi",
+      "Hush Little Girl: An absolutely gripping mystery and suspens",
+      "Her Final Confession: An absolutely addictive crime fiction ",
+      "The Girl With No Name: Absolutely gripping mystery and suspe",
+      "Cold Heart Creek: A nail-biting and gripping mystery suspens"
+    ],
+    "target_title": "The Bones She Buried: A completely gripping, heart-stopping ",
+    "distractor_titles": [
+      "Her Deadly Touch: An absolutely addictive crime thriller and",
+      "Catch Her Death: A jaw-dropping and absolutely gripping crim",
+      "The Confessor (Gabriel Allon)",
+      "Mercy (A Novel)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 790,
+    "n_warm": 18,
+    "warm_titles_sample": [
+      "Eat, Drink & Be Witchy (A Witch on the Rocks Cozy Mystery Bo",
+      "The Asylum Aberration (A Charlie Rhodes Cozy Mystery Book 9)",
+      "Prelude to a Witch (Wicked Witches of the Midwest Book 18)",
+      "Wicked Games (An Ivy Morgan Mystery Book 17)",
+      "No Crone Unturned (A Spell's Angels Cozy Mystery Book 3)",
+      "Only the Lost (A Death Gate Grim Reapers Thriller Book 3)"
+    ],
+    "target_title": "The Megalodon Mix-Up (A Charlie Rhodes Cozy Mystery Book 4)",
+    "distractor_titles": [
+      "The Bigfoot Blunder (A Charlie Rhodes Cozy Mystery Book 1)",
+      "The Krampus Kink (A Charlie Rhodes Cozy Mystery Book 12)",
+      "The Appointment Killer (The Revenge Series Book 2)",
+      "Young Jane Young: A Novel"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8025,
+    "n_warm": 25,
+    "warm_titles_sample": [
+      "Don't Tell a Soul: A gripping crime thriller that will have ",
+      "Looking Glass (The Naturalist Book 2)",
+      "Vigilante: A gripping and twisted serial killer thriller (De",
+      "The Body Reader (Detective Jude Fontaine Mysteries Book 1)",
+      "Silent Prey (The Prey Series Book 4)",
+      "The Girl in the Ice: A gripping serial killer thriller (Dete"
+    ],
+    "target_title": "Next Girl On The List - An edge of your seat serial killer c",
+    "distractor_titles": [
+      "The Next Girl: A gripping thriller with a heart-stopping twi",
+      "Lost Girls: A fast paced, gripping thriller novel (Detective",
+      "Shades of Doon (A Doon Novel)",
+      "The Last Child: A Novel"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 14364,
+    "n_warm": 17,
+    "warm_titles_sample": [
+      "Code Green (Thomas Caine Thrillers Book 5)",
+      "Zero Dark: A Covert-Ops Suspense Action Novel (Zeb Carter Th",
+      "Burn Rate: A Covert-Ops Suspense Action Novel (Zeb Carter Th",
+      "Depth Charge (Caine: Rapid Fire Book 2)",
+      "The Peace Killers: A Covert-Ops Suspense Action Novel (Zeb C",
+      "Threat Intelligence: The Shatterhand Code Part 1 (Simon Ashc"
+    ],
+    "target_title": "Traitor: A Covert-Ops Suspense Action Novel (Zeb Carter Thri",
+    "distractor_titles": [
+      "Terror: A Covert-Ops Suspense Action Novel (Zeb Carter Thril",
+      "Driven: A Thrilling Novel of Suspense (Deep Ops Book 4)",
+      "Their Silent Graves: A completely gripping and addictive cri",
+      "Point of Control"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 3017,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "Hidden Scars: A completely gripping crime thriller with a na",
+      "Six Graves: An absolutely heart-pounding and addictive crime",
+      "Deadly Cry: An absolutely gripping crime thriller packed wit",
+      "Somebody's Daughter: A gripping crime thriller packed with m",
+      "The Secret Admirer: An absolutely gripping crime thriller (D",
+      "The Blossom Twins: An absolutely gripping crime thriller (De"
+    ],
+    "target_title": "Stolen Ones: A totally jaw-dropping and addictive crime thri",
+    "distractor_titles": [
+      "Child's Play: A totally unputdownable serial killer thriller",
+      "Lost Girls: A fast paced, gripping thriller novel (Detective",
+      "Sister Dear",
+      "Winter Territory (Jack Widow Book 2)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 6287,
+    "n_warm": 12,
+    "warm_titles_sample": [
+      "A Test of Wills: The First Inspector Ian Rutledge Mystery",
+      "A Divided Loyalty: A Novel (Inspector Ian Rutledge Mysteries",
+      "A LOVER TOO MANY a gripping crime mystery full of twists (In",
+      "The Royal Baths Murder (A Yorkshire Murder Mystery Book 4)",
+      "THE SEDLEIGH HALL MURDER a gripping crime mystery full of tw",
+      "FIVE BLOODY HEARTS an absolutely gripping crime thriller wit"
+    ],
+    "target_title": "Crooked River (Pendergast Book 19)",
+    "distractor_titles": [
+      "The Bank of the River (The River Book 1)",
+      "Rivers: A Novel",
+      "Mrs. John Doe: A Nora Baron Thriller",
+      "The Last Lecture"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10932,
+    "n_warm": 20,
+    "warm_titles_sample": [
+      "The Secret Admirer: An absolutely gripping crime thriller (D",
+      "The Blossom Twins: An absolutely gripping crime thriller (De",
+      "Broken Souls: An absolutely addictive mystery thriller with ",
+      "Blind River: A Thriller (Mackley and Lassiter Book 1)",
+      "The Perfect Block (A Jessie Hunt Psychological Suspense Thri",
+      "A Neighbor\u2019s Lie (A Chloe Fine Psychological Suspense Myster"
+    ],
+    "target_title": "Killing Mind: An addictive and nail-biting crime thriller (D",
+    "distractor_titles": [
+      "Stolen Ones: A totally jaw-dropping and addictive crime thri",
+      "Child's Play: A totally unputdownable serial killer thriller",
+      "Gate 76 (Freddy Ferguson Book 1)",
+      "The Back Road (Tom Douglas Thrillers Book 2)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 1362,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "Killing the Rising Sun: How America Vanquished World War II ",
+      "Orphan Train",
+      "Killing Floor (Jack Reacher)",
+      "The Guilty (Will Robie Series, 5)",
+      "Die Trying (Jack Reacher)",
+      "Echo Burning (Jack Reacher)"
+    ],
+    "target_title": "Tripwire (Jack Reacher)",
+    "distractor_titles": [
+      "The Enemy (Jack Reacher)",
+      "Die Trying (Jack Reacher Book 2)",
+      "The Infinite Sea: The Second Book of the 5th Wave",
+      "The Kingdoms of Savannah: A Novel"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13804,
+    "n_warm": 25,
+    "warm_titles_sample": [
+      "Mystery at Seagrave Hall: A totally addictive cozy mystery n",
+      "THE MISSING NURSE an enthralling crime mystery full of twist",
+      "The Royal Baths Murder (A Yorkshire Murder Mystery Book 4)",
+      "MURDER ON THE WEST COAST: Irish detectives investigate a bun",
+      "THE OXFORD MYSTERY an absolutely gripping whodunit full of t",
+      "THE CASTLE MYSTERY an absolutely gripping whodunit full of t"
+    ],
+    "target_title": "MURDER AT THE OLD ABBEY: Murder, mystery and suspense in Sou",
+    "distractor_titles": [
+      "St. Benet's: A chilling Norfolk Broads crime thriller (DI Ta",
+      "The Murder at the Vicarage: A Miss Marple Mystery (Miss Marp",
+      "Nature Girl",
+      "Chaos: A Scarpetta Novel (Kay Scarpetta, 24)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13408,
+    "n_warm": 18,
+    "warm_titles_sample": [
+      "The Asylum Aberration (A Charlie Rhodes Cozy Mystery Book 9)",
+      "Great Hexpectations (A Moonstone Bay Cozy Mystery Book 8)",
+      "Freaky Gifts (A Mystic Caravan Mystery Book 12)",
+      "Hex, Drugs & Rock and Roll (A Supernatural Speakeasy Cozy My",
+      "Prelude to a Witch (Wicked Witches of the Midwest Book 18)",
+      "Wicked Honeymoon (An Ivy Morgan Mystery Book 19)"
+    ],
+    "target_title": "A Little Slice of Death (A Two Broomsticks Gas & Grill Witch",
+    "distractor_titles": [
+      "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+      "Witch at the End of the Tunnel (A Witch on the Rocks Cozy My",
+      "Skinwalker (Jane Yellowrock, Book 1)",
+      "Killer Instinct"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13406,
+    "n_warm": 31,
+    "warm_titles_sample": [
+      "Freaky Mage (A Mystic Caravan Mystery Book 11)",
+      "The Banshee Brouhaha (A Charlie Rhodes Cozy Mystery Book 8)",
+      "Dances With Witches (A Hannah Hickok Witchy Mystery Book 5)",
+      "The Monstrous Seven (A Hannah Hickok Witchy Mystery Book 4)",
+      "Witcher Upper (Magical Renovation Mysteries Book 1)",
+      "The Killer Clown Calamity (A Charlie Rhodes Cozy Mystery Boo"
+    ],
+    "target_title": "Freaky Seas (A Mystic Caravan Mystery Book 10)",
+    "distractor_titles": [
+      "Freaky Lies (A Mystic Caravan Mystery Book 2)",
+      "Exquisite Captive (Dark Caravan Cycle, 1)",
+      "Lowcountry Bonfire (A Liz Talbot Mystery Book 6)",
+      "The Murder of Mr. Wickham (MR. DARCY & MISS TILNEY MYSTERY)"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 5347,
+    "n_warm": 17,
+    "warm_titles_sample": [
+      "The Innocent Wife: An addictive crime thriller packed with j",
+      "The Girl in the River: A totally addictive and heart-racing ",
+      "You Can Hide: A Riveting New Thriller (A Laurel Snow Thrille",
+      "Her Frozen Heart: A nail-biting and heart-pounding crime thr",
+      "Three Small Bones: A totally unputdownable mystery and suspe",
+      "Her Bleeding Heart: An absolutely gripping and addictive ser"
+    ],
+    "target_title": "Catch Her Death: A jaw-dropping and absolutely gripping crim",
+    "distractor_titles": [
+      "The Last Time She Died: A totally unputdownable crime thrill",
+      "Find the Girl: An utterly addictive and unputdownable crime ",
+      "The Namesake: A Novel",
+      "House of Echoes: A Novel"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 3494,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "The Rules of Magic: A Novel (The Practical Magic Series Book",
+      "Finding Claire Fletcher (A Claire Fletcher and Detective Par",
+      "Or Else: A Thriller",
+      "Heartbreak Bay (Stillhouse Lake Book 5)",
+      "Wolfhunter River (Stillhouse Lake Book 3)",
+      "Vanishing Girls: A totally heart-stopping crime thriller (De"
+    ],
+    "target_title": "Catch Her Death: A jaw-dropping and absolutely gripping crim",
+    "distractor_titles": [
+      "The Last Time She Died: A totally unputdownable crime thrill",
+      "Find the Girl: An utterly addictive and unputdownable crime ",
+      "The Dead Zone",
+      "The Isaac Question: Templars and the Secret of the Old Testa"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 12897,
+    "n_warm": 14,
+    "warm_titles_sample": [
+      "The Quiet Game (Penn Cage)",
+      "Sleep No More: A Suspense Thriller",
+      "A Widow for One Year",
+      "A Wanted Man (Jack Reacher)",
+      "Die Trying (Jack Reacher)",
+      "Echo Burning (Jack Reacher)"
+    ],
+    "target_title": "The Girl Who Kicked the Hornet's Nest (Millennium Trilogy)",
+    "distractor_titles": [
+      "Daughters of the Night Sky",
+      "The Girl Who Played with Fire (Millennium)",
+      "Where the Blame Lies",
+      "Bloody Sunday: A Thriller (A Dewey Andreas Novel Book 8)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 4,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 6305,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "A Litter of Bones: A Scottish Detective Mystery (DCI Logan C",
+      "Tell Nobody: Absolutely gripping crime fiction with unputdow",
+      "No Safe Place: A gripping thriller with a shocking twist (De",
+      "The Lost Child: A gripping detective thriller with a heart-s",
+      "The Stolen Girls: A totally gripping thriller with a twist y",
+      "The Last Trial (McMurtrie and Drake Legal Thrillers Book 3)"
+    ],
+    "target_title": "St. Benet's: A chilling Norfolk Broads crime thriller (DI Ta",
+    "distractor_titles": [
+      "A Dark Sin: A chilling British detective crime thriller (The",
+      "MURDER AT THE OLD ABBEY: Murder, mystery and suspense in Sou",
+      "A Thousand Splendid Suns",
+      "Vengeance Road"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 2,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 1698,
+    "n_warm": 29,
+    "warm_titles_sample": [
+      "The Jack Noble Series: Books 4-6 (The Jack Noble Series Box ",
+      "The Tracker (Sam Callahan Book 1)",
+      "Absolution: A Leine Basso Thriller",
+      "Dark Return: A Leine Basso Thriller",
+      "Bad Traffick: A Leine Basso Thriller",
+      "A Killing Truth: A Leine Basso Thriller"
+    ],
+    "target_title": "The Appointment Killer (The Revenge Series Book 2)",
+    "distractor_titles": [
+      "Fatal Affair (The Fatal Series Book 1)",
+      "Retribution (C.J. Townsend Thriller Book 1)",
+      "Missing Daughter",
+      "HE WILL KILL YOU an absolutely gripping crime thriller with "
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 4,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 10652,
+    "n_warm": 18,
+    "warm_titles_sample": [
+      "Finders Keepers: A Novel (The Bill Hodges Trilogy Book 2)",
+      "Three Weeks to Say Goodbye: A Novel",
+      "Paradise Valley: A Cassie Dewell Novel (Highway (feat. Cody ",
+      "The Highway: A Cody Hoyt/Cassie Dewell Novel (Highway (feat.",
+      "The Disappeared (A Joe Pickett Novel Book 18)",
+      "Off the Grid (A Joe Pickett Novel Book 16)"
+    ],
+    "target_title": "End of Watch: A Novel (The Bill Hodges Trilogy Book 3)",
+    "distractor_titles": [
+      "Mr. Mercedes: A Novel (1) (The Bill Hodges Trilogy)",
+      "The Wolf and the Watchman: A Novel",
+      "Velocity: A Novel",
+      "The City of Ember (Books of Ember)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 2,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8047,
+    "n_warm": 25,
+    "warm_titles_sample": [
+      "Lights, Cameras, Witches (Wicked Witches of the Midwest Book",
+      "Witch is the Word (A Moonstone Bay Cozy Mystery Book 10)",
+      "Great Hexpectations (A Moonstone Bay Cozy Mystery Book 8)",
+      "To Spell With It (A Moonstone Bay Cozy Mystery Book 4)",
+      "Freaky Deaky Tiki (A Moonstone Bay Cozy Mystery Book 3)",
+      "Witch Out of Water (A Moonstone Bay Cozy Mystery Book 2)"
+    ],
+    "target_title": "Close Encounters of the Witchy Kind (A Wicked Witches of the",
+    "distractor_titles": [
+      "Careful What You Witch For: A Wicked Witches of the Midwest ",
+      "You Only Witch Once: A Wicked Witches of the Midwest Short",
+      "You: A Novel",
+      "Never Tell: A Novel of Suspense (Ellie Hatcher Book 4)"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 2,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 831,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "No Plan B: A Jack Reacher Novel",
+      "The Sentinel: A Jack Reacher Novel",
+      "Killing Floor (Jack Reacher)",
+      "Die Trying (Jack Reacher)",
+      "Echo Burning (Jack Reacher)",
+      "Without Fail (Jack Reacher)"
+    ],
+    "target_title": "Tripwire (Jack Reacher)",
+    "distractor_titles": [
+      "The Affair (Jack Reacher)",
+      "Die Trying (Jack Reacher Book 2)",
+      "Solid: Book 1",
+      "Silent Voices: A Vera Stanhope Mystery (Vera Stanhope series"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8115,
+    "n_warm": 16,
+    "warm_titles_sample": [
+      "Unquiet Bones: A Yorkshire Murder Mystery (DCI Harry Grimm C",
+      "Fair Game: A Yorkshire Murder Mystery (DCI Harry Grimm Crime",
+      "Blood Trail: A Yorkshire Murder Mystery (DCI Harry Grimm Cri",
+      "One Bad Turn: A Yorkshire Murder Mystery (DCI Harry Grimm Cr",
+      "Cold Sanctuary: A Yorkshire Murder Mystery (DCI Harry Grimm ",
+      "Death's Requiem: A Yorkshire Murder Mystery (DCI Harry Grimm"
+    ],
+    "target_title": "A Little Slice of Death (A Two Broomsticks Gas & Grill Witch",
+    "distractor_titles": [
+      "New Ghosts, Old Tricks (A Return to Magic Cozy Mystery Book ",
+      "Close Encounters of the Witchy Kind (A Wicked Witches of the",
+      "Breathers: A Zombie's Lament",
+      "Spellcaster (A Spellbound Novel)"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 86,
+    "n_warm": 24,
+    "warm_titles_sample": [
+      "The Dirty Coven (A Hannah Hickok Witchy Mystery Book 1)",
+      "Witch Me Luck (Wicked Witches of the Midwest Book 6)",
+      "Witching You Were Here (Wicked Witches of the Midwest Book 3",
+      "Witching On A Star (Wicked Witches of the Midwest Book 4)",
+      "Every Witch Way But Wicked (Wicked Witches of the Midwest Bo",
+      "Any Witch Way You Can (Wicked Witches of the Midwest Book 1)"
+    ],
+    "target_title": "The Bigfoot Blunder (A Charlie Rhodes Cozy Mystery Book 1)",
+    "distractor_titles": [
+      "The Megalodon Mix-Up (A Charlie Rhodes Cozy Mystery Book 4)",
+      "The Krampus Kink (A Charlie Rhodes Cozy Mystery Book 12)",
+      "White Houses: A Novel",
+      "You've Reached Sam: A Novel"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 1,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8059,
+    "n_warm": 15,
+    "warm_titles_sample": [
+      "Fire Burn And Cauldron Bubble: A Paranormal Romance Series (",
+      "Miss Frost Saves The Sandman: A Funny Cozy Paranormal Myster",
+      "DEAD EYE: Tiger's Eye Mysteries",
+      "Moon Dance (Vampire for Hire Book 1)",
+      "Vampire Moon (Vampire for Hire Book 2)",
+      "Moon Child (Vampire for Hire Book 4)"
+    ],
+    "target_title": "Beyond The Veil: A Muse Urban Fantasy (The Veil Series Book ",
+    "distractor_titles": [
+      "One In A Million (Beyond The Veil Supernatural Thriller Book",
+      "The City of Mirrors: A Novel (Book Three of The Passage Tril",
+      "The Ink Black Heart (A Cormoran Strike Novel)",
+      "Bury Your Dead: A Chief Inspector Gamache Novel (Chief Inspe"
+    ],
+    "rank_content_direct": 2,
+    "rank_v1": 1,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 8863,
+    "n_warm": 19,
+    "warm_titles_sample": [
+      "Witch Is The New Black (A Supernatural Speakeasy Cozy Myster",
+      "A Fistful of Demons (A Hannah Hickok Witchy Mystery Book 2)",
+      "Here Comes the Witch (A Paranormal Witch Cozy Mystery): (Mai",
+      "Freaky Reapers (A Mystic Caravan Mystery Book 8)",
+      "Flip the Witch Switch (Wicked Witches of the Midwest Book 14",
+      "Murder Of A Werewolf (A Brimstone Witch Mystery Book 1)"
+    ],
+    "target_title": "The Megalodon Mix-Up (A Charlie Rhodes Cozy Mystery Book 4)",
+    "distractor_titles": [
+      "The Krampus Kink (A Charlie Rhodes Cozy Mystery Book 12)",
+      "The Undead Uproar (A Charlie Rhodes Cozy Mystery Book 5)",
+      "The Steel Kiss (Lincoln Rhyme Book 12)",
+      "Miss Peregrine's Home for Peculiar Children"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 2,
+    "rank_v2": 4,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 3164,
+    "n_warm": 13,
+    "warm_titles_sample": [
+      "The Innocent (Will Robie Book 1)",
+      "Takedown: A Thriller (The Scot Harvath Series Book 5)",
+      "Blowback: A Thriller (The Scot Harvath Series Book 4)",
+      "Path of the Assassin: A Thriller (The Scot Harvath Series Bo",
+      "Foreign Influence: A Thriller (The Scot Harvath Series Book ",
+      "Hidden Order: A Thriller (The Scot Harvath Series Book 12)"
+    ],
+    "target_title": "The Survivor (Mitch Rapp Book 14)",
+    "distractor_titles": [
+      "The Survivor (A Mitch Rapp Novel)",
+      "Memorial Day (7) (A Mitch Rapp Novel)",
+      "The Wrong Family: A Thriller",
+      "Hush Little Baby: A Detective London McKenna Novel"
+    ],
+    "rank_content_direct": 1,
+    "rank_v1": 1,
+    "rank_v2": 3,
+    "n_candidates": 5
+  },
+  {
+    "user_id": 13754,
+    "n_warm": 10,
+    "warm_titles_sample": [
+      "Sycamore Row: A Novel (Jake Brigance Book 2)",
+      "The Last Man: A Novel (Mitch Rapp Book 13)",
+      "Pursuit of Honor: A Novel (Mitch Rapp Book 12)",
+      "Act of Treason (Mitch Rapp Book 9)",
+      "Executive Power (Mitch Rapp Book 6)",
+      "The Third Option (Mitch Rapp Book 4)"
+    ],
+    "target_title": "Junkyard Dogs: A Longmire Mystery (Walt Longmire Mysteries B",
+    "distractor_titles": [
+      "Another Man's Moccasins: A Longmire Mystery (Walt Longmire M",
+      "Night of the Hunted (The Reed Ferguson Mystery Series Book 1",
+      "Any Day Now (Sullivan's Crossing, 2)",
+      "The Girl from Berlin: A Novel (Liam Taggart and Catherine Lo"
+    ],
+    "rank_content_direct": 3,
+    "rank_v1": 3,
+    "rank_v2": 5,
+    "n_candidates": 5
+  }
+]

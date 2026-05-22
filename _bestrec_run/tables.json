@@ -1,0 +1,469 @@
+{
+  "figure_5_2_gaps": [
+    {
+      "dataset": "beauty",
+      "ease_pure_ndcg10": 0.06283473325850292,
+      "label": "Beauty",
+      "lc2c_ndcg10": 0.09286525023028405,
+      "relative_gap_pct": 47.79286139122322
+    },
+    {
+      "dataset": "fashion",
+      "ease_pure_ndcg10": 0.07596981231013152,
+      "label": "Fashion",
+      "lc2c_ndcg10": 0.09225757974396645,
+      "relative_gap_pct": 21.439788961625165
+    },
+    {
+      "dataset": "instruments",
+      "ease_pure_ndcg10": 0.055325669563854096,
+      "label": "Instruments",
+      "lc2c_ndcg10": 0.05636070748532945,
+      "relative_gap_pct": 1.870809571099304
+    },
+    {
+      "dataset": "books",
+      "ease_pure_ndcg10": 0.10033568463907368,
+      "label": "Books",
+      "lc2c_ndcg10": 0.10232135573267423,
+      "relative_gap_pct": 1.9790278012686957
+    }
+  ],
+  "limitations": [
+    "Books warm-user evaluation is capped at 5000 each instead of the full 14407 users per fold.",
+    "Core modern SOTA baseline audit is incomplete; SOTA claims must be removed.",
+    "LC2C++ win condition has not passed under the predeclared protocol."
+  ],
+  "schema_version": 1,
+  "sota_audit": {
+    "mandatory_baselines": {
+      "blair_text": {
+        "config": null,
+        "notes": "BLaIR-style text retrieval comparator has not been generated.",
+        "per_user_records": null,
+        "runtime_seconds": null,
+        "seeds": [
+          "42",
+          "43",
+          "44",
+          "45",
+          "46"
+        ],
+        "status": "not_run"
+      },
+      "clcrec_melt": {
+        "config": null,
+        "notes": "CLCRec/MELT-style cold-start comparator has not been generated.",
+        "per_user_records": null,
+        "runtime_seconds": null,
+        "seeds": [
+          "42",
+          "43",
+          "44",
+          "45",
+          "46"
+        ],
+        "status": "not_run"
+      },
+      "faithful_dropoutnet": {
+        "config": null,
+        "notes": "Required WMF-backed multi-seed/grid-tuned DropoutNet has not been generated.",
+        "per_user_records": null,
+        "runtime_seconds": null,
+        "seeds": [
+          "42",
+          "43",
+          "44",
+          "45",
+          "46"
+        ],
+        "status": "not_run"
+      },
+      "ials": {
+        "config": null,
+        "notes": "Legacy iALS is incomplete/OOM on Books; sparse tuned iALS is missing.",
+        "per_user_records": null,
+        "runtime_seconds": null,
+        "seeds": [
+          "42",
+          "43",
+          "44",
+          "45",
+          "46"
+        ],
+        "status": "legacy_partial"
+      },
+      "lightgcn": {
+        "config": null,
+        "notes": "Legacy canonical-setting LightGCN numbers exist, but the repaired tuned multi-seed audit is missing.",
+        "per_user_records": null,
+        "runtime_seconds": null,
+        "seeds": [
+          "42",
+          "43",
+          "44",
+          "45",
+          "46"
+        ],
+        "status": "legacy_partial"
+      },
+      "multivae": {
+        "config": null,
+        "notes": "Legacy canonical-setting MultiVAE numbers exist, but the repaired tuned multi-seed audit is missing.",
+        "per_user_records": null,
+        "runtime_seconds": null,
+        "seeds": [
+          "42",
+          "43",
+          "44",
+          "45",
+          "46"
+        ],
+        "status": "legacy_partial"
+      }
+    },
+    "win_condition": {
+      "notes": "LC2C++ variants have not yet passed the full-catalog cold-item SOTA protocol.",
+      "status": "not_evaluated"
+    }
+  },
+  "sota_claim_allowed": false,
+  "sources": {
+    "cold_item": "results_cold_item_v2.json",
+    "results_final": "results_FINAL.json",
+    "significance": "significance.json",
+    "sota_audit": "results_sota_audit.json",
+    "warm": "results_warm_loo.json"
+  },
+  "table_4_1_dataset_stats": {
+    "columns": [
+      "Dataset",
+      "k",
+      "|U|",
+      "|I|",
+      "|R|"
+    ],
+    "rows": [
+      [
+        "Beauty",
+        "5",
+        "253",
+        "177",
+        "1,467"
+      ],
+      [
+        "Fashion",
+        "5",
+        "513",
+        "312",
+        "2,998"
+      ],
+      [
+        "Instruments",
+        "5",
+        "3,911",
+        "2,400",
+        "22,274"
+      ],
+      [
+        "Books",
+        "5",
+        "14,407",
+        "9,561",
+        "80,008"
+      ]
+    ]
+  },
+  "table_4_2_protocol_sizes": {
+    "columns": [
+      "Dataset",
+      "Warm test pairs/fold",
+      "Cold-item pairs/fold",
+      "Cold candidate scope",
+      "Books warm status"
+    ],
+    "rows": [
+      [
+        "Beauty",
+        "253 each",
+        "475, 508, 515, 541, 496",
+        "cold_fold_only (secondary)",
+        "full"
+      ],
+      [
+        "Fashion",
+        "513, 513, 513, 513, 341",
+        "709, 747, 806, 767, 772",
+        "cold_fold_only (secondary)",
+        "full"
+      ],
+      [
+        "Instruments",
+        "3911 each",
+        "11678, 10359, 12988, 12105, 11896",
+        "cold_fold_only (secondary)",
+        "full"
+      ],
+      [
+        "Books",
+        "5000 each",
+        "41373, 42614, 42235, 42185, 41100",
+        "cold_fold_only (secondary)",
+        "capped"
+      ]
+    ]
+  },
+  "table_5_1_main": {
+    "columns": [
+      "Dataset",
+      "k",
+      "|U|",
+      "|I|",
+      "|R|",
+      "NDCG@10",
+      "HR@10",
+      "MRR",
+      "MAE",
+      "RMSE"
+    ],
+    "rows": [
+      [
+        "Beauty",
+        "5",
+        "253",
+        "177",
+        "1,467",
+        "0.0929 +- 0.0043",
+        "0.1652",
+        "0.0859",
+        "0.6749 +- 0.0282",
+        "0.9058 +- 0.0300"
+      ],
+      [
+        "Fashion",
+        "5",
+        "513",
+        "312",
+        "2,998",
+        "0.0923 +- 0.0056",
+        "0.1635",
+        "0.0824",
+        "0.7104 +- 0.0355",
+        "0.9599 +- 0.0625"
+      ],
+      [
+        "Instruments",
+        "5",
+        "3,911",
+        "2,400",
+        "22,274",
+        "0.0564 +- 0.0020",
+        "0.1033",
+        "0.0512",
+        "0.5983 +- 0.0027",
+        "0.9039 +- 0.0113"
+      ],
+      [
+        "Books",
+        "5",
+        "14,407",
+        "9,561",
+        "80,008",
+        "0.1023 +- 0.0030",
+        "0.1826",
+        "0.0895",
+        "0.5840 +- 0.0036",
+        "0.8055 +- 0.0055"
+      ]
+    ]
+  },
+  "table_5_2_baselines": {
+    "columns": [
+      "Dataset",
+      "Popularity",
+      "EASE-pure",
+      "Higher-Order EASE",
+      "iALS",
+      "MultiVAE",
+      "LightGCN"
+    ],
+    "rows": [
+      [
+        "Beauty",
+        "0.0177 ***",
+        "0.0628 ***",
+        "0.0920 n.s.",
+        "0.0559 n.s.",
+        "OOM/NA",
+        "0.0568 n.s."
+      ],
+      [
+        "Fashion",
+        "0.0374 ***",
+        "0.0760 ***",
+        "0.0918 n.s.",
+        "0.0602 *",
+        "OOM/NA",
+        "0.0643 n.s."
+      ],
+      [
+        "Instruments",
+        "0.0341 ***",
+        "0.0553 n.s.",
+        "0.0570 n.s.",
+        "0.0344 ***",
+        "OOM/NA",
+        "0.0538 n.s."
+      ],
+      [
+        "Books",
+        "0.0069 ***",
+        "0.1003 ***",
+        "0.1006 ***",
+        "OOM/NA",
+        "OOM/NA",
+        "0.0464 ***"
+      ]
+    ],
+    "significance_source": "significance.json"
+  },
+  "table_5_4_cold_item": {
+    "columns": [
+      "Dataset",
+      "Content-direct",
+      "DropoutNet",
+      "CF hybrid",
+      "LC2C V1",
+      "LC2C V2",
+      "LC2C++ validated",
+      "Random"
+    ],
+    "rows": [
+      [
+        "Beauty",
+        "0.1449",
+        "0.1409",
+        "0.1658",
+        "0.1611",
+        "0.1731",
+        "0.1738",
+        "0.0672"
+      ],
+      [
+        "Fashion",
+        "0.1338",
+        "0.1256",
+        "0.1547",
+        "0.1566",
+        "0.1548",
+        "0.1579",
+        "0.0358"
+      ],
+      [
+        "Instruments",
+        "0.0355",
+        "0.0331",
+        "0.0498",
+        "0.0502",
+        "0.0575",
+        "0.0579",
+        "0.0106"
+      ],
+      [
+        "Books",
+        "0.0272",
+        "0.0409",
+        "0.0485",
+        "0.0456",
+        "0.0653",
+        "0.0667",
+        "0.0017"
+      ]
+    ]
+  },
+  "table_5_4b_cold_item_wilcoxon": {
+    "columns": [
+      "Dataset",
+      "LC2C++ validated > LC2C V2",
+      "LC2C V2 > DropoutNet",
+      "LC2C V2 > Content-direct",
+      "LC2C V2 > LC2C V1"
+    ],
+    "rows": [
+      [
+        "Beauty",
+        "*",
+        "***",
+        "***",
+        "*"
+      ],
+      [
+        "Fashion",
+        "**",
+        "***",
+        "***",
+        "n.s."
+      ],
+      [
+        "Instruments",
+        "**",
+        "***",
+        "***",
+        "***"
+      ],
+      [
+        "Books",
+        "***",
+        "***",
+        "***",
+        "***"
+      ]
+    ],
+    "significance_source": "significance.json"
+  },
+  "table_5_4c_cold_item_bootstrap": {
+    "columns": [
+      "Dataset",
+      "Delta point",
+      "CI low",
+      "CI high",
+      "B",
+      "Resampling unit"
+    ],
+    "rows": [
+      [
+        "Beauty",
+        "0.0223",
+        "0.0130",
+        "0.0313",
+        "2000",
+        "user"
+      ],
+      [
+        "Fashion",
+        "0.0214",
+        "0.0134",
+        "0.0293",
+        "2000",
+        "user"
+      ],
+      [
+        "Instruments",
+        "0.0210",
+        "0.0191",
+        "0.0228",
+        "2000",
+        "user"
+      ],
+      [
+        "Books",
+        "0.0395",
+        "0.0382",
+        "0.0408",
+        "2000",
+        "user"
+      ]
+    ],
+    "significance_source": "significance.json"
+  }
+}

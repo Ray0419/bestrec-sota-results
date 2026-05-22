@@ -1,0 +1,1700 @@
+{
+  "latest_output_hashes": {
+    "INTERNAL_SOTA_FAILURE_REPORT.md": "c8226e5ff08e1cb7df5c6801f8cf0b866088864a1a3b1ad3f3513a51ab5e666c"
+  },
+  "runs": [
+    {
+      "command": [
+        "python",
+        "consolidate_final.py"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Consolidated only current generated artifacts; no cache/v5 inputs.",
+      "output_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T10:55:21Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_tables.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29",
+        "_bestrec_run\\results_cold_item_v2.json": "f7252078dd921d5871eee1fb0fd98fa84fb0759928c702c808e695422a02e774",
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_cold_item_bootstrap.json": "1d69b84b4ffd3a028e1d75cf737ad64abaaf0001c5b4ba6f8156725adb00a190",
+        "_bestrec_run\\significance_cold_item_corrected.json": "ac017a0d0c884881052f0fbaa6e0a047c8df0b42f80047f506e12756dccbe65f",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Canonical table and significance build.",
+      "output_hashes": {
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "f06f80e5cb5b5fc5080b9c9cb2d8af68b20173dc3b4eb89220a53b7bc68fc9e7"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T10:55:24Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_tables.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29",
+        "_bestrec_run\\results_cold_item_v2.json": "f7252078dd921d5871eee1fb0fd98fa84fb0759928c702c808e695422a02e774",
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_cold_item_bootstrap.json": "1d69b84b4ffd3a028e1d75cf737ad64abaaf0001c5b4ba6f8156725adb00a190",
+        "_bestrec_run\\significance_cold_item_corrected.json": "ac017a0d0c884881052f0fbaa6e0a047c8df0b42f80047f506e12756dccbe65f",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Canonical table and significance build.",
+      "output_hashes": {
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "110eae7f737a4148b7f8ca7df30f4d2b863e09affb10326e09a063c217edabc6"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T10:56:04Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_tables.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29",
+        "_bestrec_run\\results_cold_item_v2.json": "f7252078dd921d5871eee1fb0fd98fa84fb0759928c702c808e695422a02e774",
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_cold_item_bootstrap.json": "1d69b84b4ffd3a028e1d75cf737ad64abaaf0001c5b4ba6f8156725adb00a190",
+        "_bestrec_run\\significance_cold_item_corrected.json": "ac017a0d0c884881052f0fbaa6e0a047c8df0b42f80047f506e12756dccbe65f",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Canonical table and significance build.",
+      "output_hashes": {
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "81ba7b4b133849c66917a5ef6bb564402bd70564d5feb6dd4c28c13c6ce3bed2"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T10:56:39Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_tables.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29",
+        "_bestrec_run\\results_cold_item_v2.json": "f7252078dd921d5871eee1fb0fd98fa84fb0759928c702c808e695422a02e774",
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_cold_item_bootstrap.json": "1d69b84b4ffd3a028e1d75cf737ad64abaaf0001c5b4ba6f8156725adb00a190",
+        "_bestrec_run\\significance_cold_item_corrected.json": "ac017a0d0c884881052f0fbaa6e0a047c8df0b42f80047f506e12756dccbe65f",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Canonical table and significance build.",
+      "output_hashes": {
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "67fd54500ea7946e72b8690aa0e1c612695d560e6395652127b6525524918cf3"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T10:56:59Z"
+    },
+    {
+      "command": [
+        "python",
+        "consolidate_final.py"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Consolidated only current generated artifacts; no cache/v5 inputs.",
+      "output_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:07:29Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_tables.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29",
+        "_bestrec_run\\results_cold_item_v2.json": "f7252078dd921d5871eee1fb0fd98fa84fb0759928c702c808e695422a02e774",
+        "_bestrec_run\\results_sota_audit.json": "d87afa5557098ca5c071457891c4c4d35eb6f8ad95397e9edfb24049d5f809e5",
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_cold_item_bootstrap.json": "1d69b84b4ffd3a028e1d75cf737ad64abaaf0001c5b4ba6f8156725adb00a190",
+        "_bestrec_run\\significance_cold_item_corrected.json": "ac017a0d0c884881052f0fbaa6e0a047c8df0b42f80047f506e12756dccbe65f",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Canonical table and significance build.",
+      "output_hashes": {
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "8c1a4fbcae11738252f0017677481725621695ff4ab49e8a9c68f7c20f6f00a8"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:07:30Z"
+    },
+    {
+      "command": [
+        "uv",
+        "--project",
+        "C:\\Users\\rayxc\\Documents\\R\\_bestrec_run",
+        "run",
+        "python",
+        "run_all.py",
+        "--profile",
+        "full",
+        "--datasets",
+        "beauty,fashion,instruments,books",
+        "--seeds",
+        "42"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_cold_item_v2.json": "f7252078dd921d5871eee1fb0fd98fa84fb0759928c702c808e695422a02e774",
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_cold_item_bootstrap.json": "1d69b84b4ffd3a028e1d75cf737ad64abaaf0001c5b4ba6f8156725adb00a190",
+        "_bestrec_run\\significance_cold_item_corrected.json": "ac017a0d0c884881052f0fbaa6e0a047c8df0b42f80047f506e12756dccbe65f",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Canonical run_all profile=full; sota_claim_allowed=False",
+      "output_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29",
+        "_bestrec_run\\results_manifest.json": "9d1a50c571d2bde64cb009cfa894fff9df8bf3dc4203b3cd557bd524f3349e49",
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "8c1a4fbcae11738252f0017677481725621695ff4ab49e8a9c68f7c20f6f00a8",
+        "figures\\fig1_warm_methods_x_datasets.png": "f1a11b4673b525f6ed52d47138643641b66a6daa6f14c068fb96a34509aca9c8",
+        "figures\\fig2_vs_lightgcn.png": "8b64b67ec875946d2b756214228e445a0080ad56bbe6e5c45a0beee53cda7505",
+        "figures\\fig3_ablation_embeddings.png": "d95dd2f848955b11f81dbc5ab66189e00968d5e21597e1b33a2b25e62a6e3246",
+        "figures\\fig6_hp_sensitivity_combined.png": "5ebc8f870c115e2052c8dd6f6613b1c1ce8ed9dbcfe3c0642455aca2b249c272",
+        "figures\\fig7_cold_item_v2.png": "3074b5db145aca49f37431be1e50811f5eb052d44c0730b854289203c9825300",
+        "figures\\fig8_lc2c_ablation.png": "9a4419002b5b65f620f7fc02650e52187f3ffd62bf64358f0869b5fe6dc46b86",
+        "figures\\fig9_lc2c_latentdim.png": "dd20685fbd171e20bbaeec7837114e45a7c846574a966ab7adf1515e620e7659"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T11:07:32Z"
+    },
+    {
+      "command": [
+        "uv",
+        "--project",
+        "_bestrec_run",
+        "run",
+        "python",
+        "_paper_gen/build_paper_full.py"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_manifest.json": "c957e3813aef1a2735184f9823ba240a86c8cad834a99affb65a4067509bbb5d",
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "8c1a4fbcae11738252f0017677481725621695ff4ab49e8a9c68f7c20f6f00a8",
+        "figures\\fig1_warm_methods_x_datasets.png": "f1a11b4673b525f6ed52d47138643641b66a6daa6f14c068fb96a34509aca9c8",
+        "figures\\fig2_vs_lightgcn.png": "8b64b67ec875946d2b756214228e445a0080ad56bbe6e5c45a0beee53cda7505",
+        "figures\\fig3_ablation_embeddings.png": "d95dd2f848955b11f81dbc5ab66189e00968d5e21597e1b33a2b25e62a6e3246",
+        "figures\\fig4_cold_start.png": "b15e03abf88f078bc1de77939f298a7866ae120ca62ff1a1c0f6a51dcd0a3df1",
+        "figures\\fig5_size_vs_ndcg.png": "c39cef25b3717a48ae9fcf22fd9a5ddcf61b2ba81e5b9173bec912e3dfaf298a",
+        "figures\\fig6_hp_sensitivity_beauty.png": "b617e35f14f4784f4e1c2ef29deda90cc4fb7402b5e506acbd7383cc617e2b24",
+        "figures\\fig6_hp_sensitivity_combined.png": "5ebc8f870c115e2052c8dd6f6613b1c1ce8ed9dbcfe3c0642455aca2b249c272",
+        "figures\\fig6_hp_sensitivity_fashion.png": "d77e18d5cb25e186cec7e7337439356a699f119cb282436d5df7d8d9b229d6b7",
+        "figures\\fig6_hp_sensitivity_instruments.png": "fdafb38a0beb0dd49f134a6007b4b5b3ca0ef40181c93a05388bd137b3b830d2",
+        "figures\\fig7_cold_item.png": "649a798f03ef13b0f4ab2cdef60cf53621f46b8eb7f231173f0e33341a0150f5",
+        "figures\\fig7_cold_item_v2.png": "3074b5db145aca49f37431be1e50811f5eb052d44c0730b854289203c9825300",
+        "figures\\fig8_lc2c_ablation.png": "9a4419002b5b65f620f7fc02650e52187f3ffd62bf64358f0869b5fe6dc46b86",
+        "figures\\fig9_lc2c_latentdim.png": "dd20685fbd171e20bbaeec7837114e45a7c846574a966ab7adf1515e620e7659",
+        "figures\\fig_architecture_overview.png": "2b7c7d87bbee2496aee3f8951c464e7350461562a6ef68a5c49673b1e43cc18a"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Manifest entry for PDF build from generated tables.",
+      "output_hashes": {
+        "BEST_Rec_v4_Full_Paper.pdf": "b9938a996e08a94962f9d0a4280652ff15117936d4b4c1338f7d66fabac6cc00"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T11:07:47Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_internal_report.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\tables.json": "8c1a4fbcae11738252f0017677481725621695ff4ab49e8a9c68f7c20f6f00a8"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Generated internal failure report because SOTA gate did not pass.",
+      "output_hashes": {
+        "INTERNAL_SOTA_FAILURE_REPORT.md": "d7403d042e1d629796317fc4c1837e932d8af0b406f16cd2d94bc7ac88b03767"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:08:18Z"
+    },
+    {
+      "command": [
+        "python",
+        "consolidate_final.py"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Consolidated only current generated artifacts; no cache/v5 inputs.",
+      "output_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:08:59Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_tables.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29",
+        "_bestrec_run\\results_cold_item_v2.json": "f7252078dd921d5871eee1fb0fd98fa84fb0759928c702c808e695422a02e774",
+        "_bestrec_run\\results_sota_audit.json": "b1295a30808cccffff702056bbe7f5959e9282092b1e384c07ffdfc87f56f41c",
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_cold_item_bootstrap.json": "1d69b84b4ffd3a028e1d75cf737ad64abaaf0001c5b4ba6f8156725adb00a190",
+        "_bestrec_run\\significance_cold_item_corrected.json": "ac017a0d0c884881052f0fbaa6e0a047c8df0b42f80047f506e12756dccbe65f",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Canonical table and significance build.",
+      "output_hashes": {
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "3bdd3d75d8f453ca595cd6a7fb50db9f5976bb93e5b0aacdb95a90079f022f45"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:09:00Z"
+    },
+    {
+      "command": [
+        "uv",
+        "--project",
+        "C:\\Users\\rayxc\\Documents\\R\\_bestrec_run",
+        "run",
+        "python",
+        "run_all.py",
+        "--profile",
+        "full",
+        "--datasets",
+        "beauty,fashion,instruments,books",
+        "--seeds",
+        "42,43,44,45,46"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_cold_item_v2.json": "f7252078dd921d5871eee1fb0fd98fa84fb0759928c702c808e695422a02e774",
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_cold_item_bootstrap.json": "1d69b84b4ffd3a028e1d75cf737ad64abaaf0001c5b4ba6f8156725adb00a190",
+        "_bestrec_run\\significance_cold_item_corrected.json": "ac017a0d0c884881052f0fbaa6e0a047c8df0b42f80047f506e12756dccbe65f",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Canonical run_all profile=full; sota_claim_allowed=False",
+      "output_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29",
+        "_bestrec_run\\results_manifest.json": "da15a7cb8e7c5001cff564f3ff07f63d9f94c874dbfc7b86a562b825f56851b7",
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "3bdd3d75d8f453ca595cd6a7fb50db9f5976bb93e5b0aacdb95a90079f022f45",
+        "figures\\fig1_warm_methods_x_datasets.png": "f1a11b4673b525f6ed52d47138643641b66a6daa6f14c068fb96a34509aca9c8",
+        "figures\\fig2_vs_lightgcn.png": "8b64b67ec875946d2b756214228e445a0080ad56bbe6e5c45a0beee53cda7505",
+        "figures\\fig3_ablation_embeddings.png": "d95dd2f848955b11f81dbc5ab66189e00968d5e21597e1b33a2b25e62a6e3246",
+        "figures\\fig6_hp_sensitivity_combined.png": "5ebc8f870c115e2052c8dd6f6613b1c1ce8ed9dbcfe3c0642455aca2b249c272",
+        "figures\\fig7_cold_item_v2.png": "3074b5db145aca49f37431be1e50811f5eb052d44c0730b854289203c9825300",
+        "figures\\fig8_lc2c_ablation.png": "9a4419002b5b65f620f7fc02650e52187f3ffd62bf64358f0869b5fe6dc46b86",
+        "figures\\fig9_lc2c_latentdim.png": "dd20685fbd171e20bbaeec7837114e45a7c846574a966ab7adf1515e620e7659"
+      },
+      "seeds": [
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ],
+      "timestamp_utc": "2026-05-21T11:09:01Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_internal_report.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\tables.json": "3bdd3d75d8f453ca595cd6a7fb50db9f5976bb93e5b0aacdb95a90079f022f45"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Generated internal failure report because SOTA gate did not pass.",
+      "output_hashes": {
+        "INTERNAL_SOTA_FAILURE_REPORT.md": "c8226e5ff08e1cb7df5c6801f8cf0b866088864a1a3b1ad3f3513a51ab5e666c"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:09:10Z"
+    },
+    {
+      "command": [
+        "uv",
+        "--project",
+        "_bestrec_run",
+        "run",
+        "python",
+        "_paper_gen/build_paper_full.py"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_manifest.json": "d8ac787fa7bbb9f0e02d3c7a65510c337e5dbcfbb1084baacd5c6b9e84604404",
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "3bdd3d75d8f453ca595cd6a7fb50db9f5976bb93e5b0aacdb95a90079f022f45",
+        "figures\\fig1_warm_methods_x_datasets.png": "f1a11b4673b525f6ed52d47138643641b66a6daa6f14c068fb96a34509aca9c8",
+        "figures\\fig2_vs_lightgcn.png": "8b64b67ec875946d2b756214228e445a0080ad56bbe6e5c45a0beee53cda7505",
+        "figures\\fig3_ablation_embeddings.png": "d95dd2f848955b11f81dbc5ab66189e00968d5e21597e1b33a2b25e62a6e3246",
+        "figures\\fig4_cold_start.png": "b15e03abf88f078bc1de77939f298a7866ae120ca62ff1a1c0f6a51dcd0a3df1",
+        "figures\\fig5_size_vs_ndcg.png": "c39cef25b3717a48ae9fcf22fd9a5ddcf61b2ba81e5b9173bec912e3dfaf298a",
+        "figures\\fig6_hp_sensitivity_beauty.png": "b617e35f14f4784f4e1c2ef29deda90cc4fb7402b5e506acbd7383cc617e2b24",
+        "figures\\fig6_hp_sensitivity_combined.png": "5ebc8f870c115e2052c8dd6f6613b1c1ce8ed9dbcfe3c0642455aca2b249c272",
+        "figures\\fig6_hp_sensitivity_fashion.png": "d77e18d5cb25e186cec7e7337439356a699f119cb282436d5df7d8d9b229d6b7",
+        "figures\\fig6_hp_sensitivity_instruments.png": "fdafb38a0beb0dd49f134a6007b4b5b3ca0ef40181c93a05388bd137b3b830d2",
+        "figures\\fig7_cold_item.png": "649a798f03ef13b0f4ab2cdef60cf53621f46b8eb7f231173f0e33341a0150f5",
+        "figures\\fig7_cold_item_v2.png": "3074b5db145aca49f37431be1e50811f5eb052d44c0730b854289203c9825300",
+        "figures\\fig8_lc2c_ablation.png": "9a4419002b5b65f620f7fc02650e52187f3ffd62bf64358f0869b5fe6dc46b86",
+        "figures\\fig9_lc2c_latentdim.png": "dd20685fbd171e20bbaeec7837114e45a7c846574a966ab7adf1515e620e7659",
+        "figures\\fig_architecture_overview.png": "2b7c7d87bbee2496aee3f8951c464e7350461562a6ef68a5c49673b1e43cc18a"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Manifest entry for PDF build from generated tables after SOTA audit stub refresh.",
+      "output_hashes": {
+        "BEST_Rec_v4_Full_Paper.pdf": "2b337bf6841a223fe17420e64255a0c1c890d338e81996340ddd7c537ebfae05"
+      },
+      "seeds": [
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ],
+      "timestamp_utc": "2026-05-21T11:09:11Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_tables.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29",
+        "_bestrec_run\\results_cold_item_v2.json": "f7252078dd921d5871eee1fb0fd98fa84fb0759928c702c808e695422a02e774",
+        "_bestrec_run\\results_sota_audit.json": "b1295a30808cccffff702056bbe7f5959e9282092b1e384c07ffdfc87f56f41c",
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_cold_item_bootstrap.json": "1d69b84b4ffd3a028e1d75cf737ad64abaaf0001c5b4ba6f8156725adb00a190",
+        "_bestrec_run\\significance_cold_item_corrected.json": "ac017a0d0c884881052f0fbaa6e0a047c8df0b42f80047f506e12756dccbe65f",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Canonical table and significance build.",
+      "output_hashes": {
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "3e284c2c5b46eee02d99a702ee442135b76600bf8db7b66c0cdec65479791039"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:09:55Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_internal_report.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\tables.json": "3e284c2c5b46eee02d99a702ee442135b76600bf8db7b66c0cdec65479791039"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Generated internal failure report because SOTA gate did not pass.",
+      "output_hashes": {
+        "INTERNAL_SOTA_FAILURE_REPORT.md": "c8226e5ff08e1cb7df5c6801f8cf0b866088864a1a3b1ad3f3513a51ab5e666c"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:09:55Z"
+    },
+    {
+      "command": [
+        "uv",
+        "--project",
+        "_bestrec_run",
+        "run",
+        "python",
+        "_paper_gen/build_paper_full.py"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_manifest.json": "bc0c2858a7cf9ad03725350b3be0e9724afb353fa1429e9a8a2f1a622fd20f8f",
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "3e284c2c5b46eee02d99a702ee442135b76600bf8db7b66c0cdec65479791039",
+        "figures\\fig1_warm_methods_x_datasets.png": "f1a11b4673b525f6ed52d47138643641b66a6daa6f14c068fb96a34509aca9c8",
+        "figures\\fig2_vs_lightgcn.png": "8b64b67ec875946d2b756214228e445a0080ad56bbe6e5c45a0beee53cda7505",
+        "figures\\fig3_ablation_embeddings.png": "d95dd2f848955b11f81dbc5ab66189e00968d5e21597e1b33a2b25e62a6e3246",
+        "figures\\fig4_cold_start.png": "b15e03abf88f078bc1de77939f298a7866ae120ca62ff1a1c0f6a51dcd0a3df1",
+        "figures\\fig5_size_vs_ndcg.png": "c39cef25b3717a48ae9fcf22fd9a5ddcf61b2ba81e5b9173bec912e3dfaf298a",
+        "figures\\fig6_hp_sensitivity_beauty.png": "b617e35f14f4784f4e1c2ef29deda90cc4fb7402b5e506acbd7383cc617e2b24",
+        "figures\\fig6_hp_sensitivity_combined.png": "5ebc8f870c115e2052c8dd6f6613b1c1ce8ed9dbcfe3c0642455aca2b249c272",
+        "figures\\fig6_hp_sensitivity_fashion.png": "d77e18d5cb25e186cec7e7337439356a699f119cb282436d5df7d8d9b229d6b7",
+        "figures\\fig6_hp_sensitivity_instruments.png": "fdafb38a0beb0dd49f134a6007b4b5b3ca0ef40181c93a05388bd137b3b830d2",
+        "figures\\fig7_cold_item.png": "649a798f03ef13b0f4ab2cdef60cf53621f46b8eb7f231173f0e33341a0150f5",
+        "figures\\fig7_cold_item_v2.png": "3074b5db145aca49f37431be1e50811f5eb052d44c0730b854289203c9825300",
+        "figures\\fig8_lc2c_ablation.png": "9a4419002b5b65f620f7fc02650e52187f3ffd62bf64358f0869b5fe6dc46b86",
+        "figures\\fig9_lc2c_latentdim.png": "dd20685fbd171e20bbaeec7837114e45a7c846574a966ab7adf1515e620e7659",
+        "figures\\fig_architecture_overview.png": "2b7c7d87bbee2496aee3f8951c464e7350461562a6ef68a5c49673b1e43cc18a"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Manifest entry after regenerated tables/paper/internal report.",
+      "output_hashes": {
+        "BEST_Rec_v4_Full_Paper.pdf": "583ea591acc9021b442403f194f5723c629096db4979990b4447f281b458e9b0",
+        "INTERNAL_SOTA_FAILURE_REPORT.md": "c8226e5ff08e1cb7df5c6801f8cf0b866088864a1a3b1ad3f3513a51ab5e666c"
+      },
+      "seeds": [
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ],
+      "timestamp_utc": "2026-05-21T11:09:56Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_tables.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29",
+        "_bestrec_run\\results_cold_item_v2.json": "f7252078dd921d5871eee1fb0fd98fa84fb0759928c702c808e695422a02e774",
+        "_bestrec_run\\results_sota_audit.json": "b1295a30808cccffff702056bbe7f5959e9282092b1e384c07ffdfc87f56f41c",
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_cold_item_bootstrap.json": "1d69b84b4ffd3a028e1d75cf737ad64abaaf0001c5b4ba6f8156725adb00a190",
+        "_bestrec_run\\significance_cold_item_corrected.json": "ac017a0d0c884881052f0fbaa6e0a047c8df0b42f80047f506e12756dccbe65f",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Canonical table and significance build.",
+      "output_hashes": {
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "c805e89d6ee5bea636775f42d46e2d7292369db7d46143e324761155b9193af2"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:11:48Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_internal_report.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\tables.json": "c805e89d6ee5bea636775f42d46e2d7292369db7d46143e324761155b9193af2"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Generated internal failure report because SOTA gate did not pass.",
+      "output_hashes": {
+        "INTERNAL_SOTA_FAILURE_REPORT.md": "c8226e5ff08e1cb7df5c6801f8cf0b866088864a1a3b1ad3f3513a51ab5e666c"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:11:48Z"
+    },
+    {
+      "command": [
+        "uv",
+        "--project",
+        "_bestrec_run",
+        "run",
+        "python",
+        "_paper_gen/build_paper_full.py"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_manifest.json": "a9351346ab2c6339b64cc233123d38818caeaf5c0bc437656aa4ab5ccc65bf51",
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "c805e89d6ee5bea636775f42d46e2d7292369db7d46143e324761155b9193af2",
+        "figures\\fig1_warm_methods_x_datasets.png": "f1a11b4673b525f6ed52d47138643641b66a6daa6f14c068fb96a34509aca9c8",
+        "figures\\fig2_vs_lightgcn.png": "8b64b67ec875946d2b756214228e445a0080ad56bbe6e5c45a0beee53cda7505",
+        "figures\\fig3_ablation_embeddings.png": "d95dd2f848955b11f81dbc5ab66189e00968d5e21597e1b33a2b25e62a6e3246",
+        "figures\\fig4_cold_start.png": "b15e03abf88f078bc1de77939f298a7866ae120ca62ff1a1c0f6a51dcd0a3df1",
+        "figures\\fig5_size_vs_ndcg.png": "c39cef25b3717a48ae9fcf22fd9a5ddcf61b2ba81e5b9173bec912e3dfaf298a",
+        "figures\\fig6_hp_sensitivity_beauty.png": "b617e35f14f4784f4e1c2ef29deda90cc4fb7402b5e506acbd7383cc617e2b24",
+        "figures\\fig6_hp_sensitivity_combined.png": "5ebc8f870c115e2052c8dd6f6613b1c1ce8ed9dbcfe3c0642455aca2b249c272",
+        "figures\\fig6_hp_sensitivity_fashion.png": "d77e18d5cb25e186cec7e7337439356a699f119cb282436d5df7d8d9b229d6b7",
+        "figures\\fig6_hp_sensitivity_instruments.png": "fdafb38a0beb0dd49f134a6007b4b5b3ca0ef40181c93a05388bd137b3b830d2",
+        "figures\\fig7_cold_item.png": "649a798f03ef13b0f4ab2cdef60cf53621f46b8eb7f231173f0e33341a0150f5",
+        "figures\\fig7_cold_item_v2.png": "3074b5db145aca49f37431be1e50811f5eb052d44c0730b854289203c9825300",
+        "figures\\fig8_lc2c_ablation.png": "9a4419002b5b65f620f7fc02650e52187f3ffd62bf64358f0869b5fe6dc46b86",
+        "figures\\fig9_lc2c_latentdim.png": "dd20685fbd171e20bbaeec7837114e45a7c846574a966ab7adf1515e620e7659",
+        "figures\\fig_architecture_overview.png": "2b7c7d87bbee2496aee3f8951c464e7350461562a6ef68a5c49673b1e43cc18a"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Manifest entry after LC2C++ hook patch and regenerated paper/internal report.",
+      "output_hashes": {
+        "BEST_Rec_v4_Full_Paper.pdf": "c0aa226d13dd87288680a729b2edd785bb3737336ec19f721970a3220d3e0335",
+        "INTERNAL_SOTA_FAILURE_REPORT.md": "c8226e5ff08e1cb7df5c6801f8cf0b866088864a1a3b1ad3f3513a51ab5e666c"
+      },
+      "seeds": [
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ],
+      "timestamp_utc": "2026-05-21T11:11:59Z"
+    },
+    {
+      "command": [
+        "python",
+        "consolidate_final.py"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Consolidated only current generated artifacts; no cache/v5 inputs.",
+      "output_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:33:38Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_tables.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29",
+        "_bestrec_run\\results_cold_item_v2.json": "e6a36d72e10c5681ce04e4e48e72800bfcefb041795d5b3eeb5edf9c0c3d360f",
+        "_bestrec_run\\results_sota_audit.json": "b1295a30808cccffff702056bbe7f5959e9282092b1e384c07ffdfc87f56f41c",
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_cold_item_bootstrap.json": "1d69b84b4ffd3a028e1d75cf737ad64abaaf0001c5b4ba6f8156725adb00a190",
+        "_bestrec_run\\significance_cold_item_corrected.json": "ac017a0d0c884881052f0fbaa6e0a047c8df0b42f80047f506e12756dccbe65f",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Canonical table and significance build.",
+      "output_hashes": {
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "22dae61082b6cc1aff37edf8ac8895954dd9ddfb850f2ee36dec4e73f26402da"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:33:38Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_internal_report.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\tables.json": "22dae61082b6cc1aff37edf8ac8895954dd9ddfb850f2ee36dec4e73f26402da"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Generated internal failure report because SOTA gate did not pass.",
+      "output_hashes": {
+        "INTERNAL_SOTA_FAILURE_REPORT.md": "c8226e5ff08e1cb7df5c6801f8cf0b866088864a1a3b1ad3f3513a51ab5e666c"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:33:39Z"
+    },
+    {
+      "command": [
+        "uv",
+        "--project",
+        "_bestrec_run",
+        "run",
+        "python",
+        "_paper_gen/build_paper_full.py"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_cold_item_v2.json": "e6a36d72e10c5681ce04e4e48e72800bfcefb041795d5b3eeb5edf9c0c3d360f",
+        "_bestrec_run\\results_manifest.json": "c9b19eca677383c9e3a0c55aedf0a3d49159838841e12b46c1ea15dc6911ac30",
+        "_bestrec_run\\significance.json": "6213769cc4bc0d0fc4a44761b5739bd22ab627b1fc2e7b91aac3ce343b88a9e6",
+        "_bestrec_run\\tables.json": "22dae61082b6cc1aff37edf8ac8895954dd9ddfb850f2ee36dec4e73f26402da",
+        "figures\\fig1_warm_methods_x_datasets.png": "f1a11b4673b525f6ed52d47138643641b66a6daa6f14c068fb96a34509aca9c8",
+        "figures\\fig2_vs_lightgcn.png": "8b64b67ec875946d2b756214228e445a0080ad56bbe6e5c45a0beee53cda7505",
+        "figures\\fig3_ablation_embeddings.png": "d95dd2f848955b11f81dbc5ab66189e00968d5e21597e1b33a2b25e62a6e3246",
+        "figures\\fig4_cold_start.png": "b15e03abf88f078bc1de77939f298a7866ae120ca62ff1a1c0f6a51dcd0a3df1",
+        "figures\\fig5_size_vs_ndcg.png": "c39cef25b3717a48ae9fcf22fd9a5ddcf61b2ba81e5b9173bec912e3dfaf298a",
+        "figures\\fig6_hp_sensitivity_beauty.png": "b617e35f14f4784f4e1c2ef29deda90cc4fb7402b5e506acbd7383cc617e2b24",
+        "figures\\fig6_hp_sensitivity_combined.png": "5ebc8f870c115e2052c8dd6f6613b1c1ce8ed9dbcfe3c0642455aca2b249c272",
+        "figures\\fig6_hp_sensitivity_fashion.png": "d77e18d5cb25e186cec7e7337439356a699f119cb282436d5df7d8d9b229d6b7",
+        "figures\\fig6_hp_sensitivity_instruments.png": "fdafb38a0beb0dd49f134a6007b4b5b3ca0ef40181c93a05388bd137b3b830d2",
+        "figures\\fig7_cold_item.png": "649a798f03ef13b0f4ab2cdef60cf53621f46b8eb7f231173f0e33341a0150f5",
+        "figures\\fig7_cold_item_v2.png": "3074b5db145aca49f37431be1e50811f5eb052d44c0730b854289203c9825300",
+        "figures\\fig8_lc2c_ablation.png": "9a4419002b5b65f620f7fc02650e52187f3ffd62bf64358f0869b5fe6dc46b86",
+        "figures\\fig9_lc2c_latentdim.png": "dd20685fbd171e20bbaeec7837114e45a7c846574a966ab7adf1515e620e7659",
+        "figures\\fig_architecture_overview.png": "2b7c7d87bbee2496aee3f8951c464e7350461562a6ef68a5c49673b1e43cc18a"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Manifest entry after Beauty LC2C++ experiment and regenerated paper.",
+      "output_hashes": {
+        "BEST_Rec_v4_Full_Paper.pdf": "fd1ca5f89f7f6d5fb5fafe0aa2773bb6a9e1dc6a5ca8499070c02cf7941e1e05",
+        "INTERNAL_SOTA_FAILURE_REPORT.md": "c8226e5ff08e1cb7df5c6801f8cf0b866088864a1a3b1ad3f3513a51ab5e666c"
+      },
+      "seeds": [
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ],
+      "timestamp_utc": "2026-05-21T11:33:53Z"
+    },
+    {
+      "command": [
+        "python",
+        "run_lc2cpp_explore.py",
+        "beauty"
+      ],
+      "datasets": [
+        "beauty"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\run_cold_item_v2.py": "676755d1229f32c6a29c120a758d8a1d9809ca02bb588396e34165b71adb2e8f",
+        "_bestrec_run\\run_lc2cpp_explore.py": "17e2a221d29fadf07a2cbe3695156416c74d8de62836a6042d42b9595a7ececc"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Exploratory LC2C++ combination sweep; not a valid paper selection path.",
+      "output_hashes": {
+        "_bestrec_run\\results_lc2cpp_explore.json": "aa92a9220e6291610db25703e372eedb591a52f6d8492ebec72e7211288bae48"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T11:38:08Z"
+    },
+    {
+      "command": [
+        "python",
+        "run_lc2cpp_explore.py",
+        "fashion"
+      ],
+      "datasets": [
+        "fashion"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\run_cold_item_v2.py": "676755d1229f32c6a29c120a758d8a1d9809ca02bb588396e34165b71adb2e8f",
+        "_bestrec_run\\run_lc2cpp_explore.py": "17e2a221d29fadf07a2cbe3695156416c74d8de62836a6042d42b9595a7ececc"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Exploratory LC2C++ combination sweep; not a valid paper selection path.",
+      "output_hashes": {
+        "_bestrec_run\\results_lc2cpp_explore.json": "20cbca07cb9615e0f400a5dcbd2a7b64556ce5db76919be475031ce2656bc3b6"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T11:38:24Z"
+    },
+    {
+      "command": [
+        "python",
+        "run_lc2cpp_explore.py",
+        "instruments"
+      ],
+      "datasets": [
+        "instruments"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\run_cold_item_v2.py": "676755d1229f32c6a29c120a758d8a1d9809ca02bb588396e34165b71adb2e8f",
+        "_bestrec_run\\run_lc2cpp_explore.py": "17e2a221d29fadf07a2cbe3695156416c74d8de62836a6042d42b9595a7ececc"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Exploratory LC2C++ combination sweep; not a valid paper selection path.",
+      "output_hashes": {
+        "_bestrec_run\\results_lc2cpp_explore.json": "eec8dc2cfcf107448d1df59e1fca80682838027daf4bfb866dbe68ab77f3cf8f"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T11:39:09Z"
+    },
+    {
+      "command": [
+        "python",
+        "run_lc2cpp_zgrid.py",
+        "beauty",
+        "fashion",
+        "instruments",
+        "books",
+        "--weights",
+        "0.75,0.85,0.9,0.95,0.98"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\run_cold_item_v2.py": "33d5500e4f56dded433aca8a7cb610822fb115af4bde2b4148c489debff4c163",
+        "_bestrec_run\\run_lc2cpp_zgrid.py": "58e9c8027c65c28b72b5719aced539b7507985b4dcc14767433c43f4c6cbf9c2"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Exploratory LC2C++ z-fusion weight grid; not validation-selected.",
+      "output_hashes": {
+        "_bestrec_run\\results_lc2cpp_zgrid.json": "f6176aaef21a9a2757174ab7383a2d15fa1b8731f893d796aed2441c5f509b22"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T11:48:23Z"
+    },
+    {
+      "command": [
+        "python",
+        "consolidate_final.py"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Consolidated only current generated artifacts; no cache/v5 inputs.",
+      "output_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:53:44Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_tables.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29",
+        "_bestrec_run\\results_cold_item_v2.json": "29b366700341d0b2a00b5019541421eb185ba8ae6cb2fd7a13fce206b2d0fcdf",
+        "_bestrec_run\\results_sota_audit.json": "b1295a30808cccffff702056bbe7f5959e9282092b1e384c07ffdfc87f56f41c",
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_cold_item_bootstrap.json": "1d69b84b4ffd3a028e1d75cf737ad64abaaf0001c5b4ba6f8156725adb00a190",
+        "_bestrec_run\\significance_cold_item_corrected.json": "891d277c763ed1bc2efcb4bbedb0fbd2dfe86ef8db8b58250b58811bd581161f",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Canonical table and significance build.",
+      "output_hashes": {
+        "_bestrec_run\\significance.json": "90f22ab25bf71e23b10c7f7cc81a7031cefcfbd4c9caffbaf94f0fd66b6e5885",
+        "_bestrec_run\\tables.json": "de1c76575fca93369881bb7ec2c158d2f6fa1185bce49e06f08413918830bb66"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:53:45Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_internal_report.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\tables.json": "de1c76575fca93369881bb7ec2c158d2f6fa1185bce49e06f08413918830bb66"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Generated internal failure report because SOTA gate did not pass.",
+      "output_hashes": {
+        "INTERNAL_SOTA_FAILURE_REPORT.md": "c8226e5ff08e1cb7df5c6801f8cf0b866088864a1a3b1ad3f3513a51ab5e666c"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T11:53:45Z"
+    },
+    {
+      "command": [
+        "uv",
+        "--project",
+        "_bestrec_run",
+        "run",
+        "python",
+        "_bestrec_run/run_cold_item_v2.py",
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\run_cold_item_v2.py": "e7753430742130b1de4762daf88e40a5132d13bc255fee2eb35d3dcd45386763"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Official rerun after LC2C++ z-fusion 0.95 promotion.",
+      "output_hashes": {
+        "BEST_Rec_v4_Full_Paper.pdf": "7a7fb9ee14d0c979c8e1a3f9ef8b2577972c17f5f00aa3ecbb2d6dc3bbc4aea5",
+        "_bestrec_run\\results_cold_item_v2.json": "29b366700341d0b2a00b5019541421eb185ba8ae6cb2fd7a13fce206b2d0fcdf",
+        "_bestrec_run\\results_cold_item_v2_perpair_beauty.json": "73d67b8e46cb2666821f4e26051d1440ec3da6e1de944713a880a0c430361aed",
+        "_bestrec_run\\results_cold_item_v2_perpair_books.json": "9223067d742acfe374d5347704a61ce8259bf38a8a92219352f221f273d4f484",
+        "_bestrec_run\\results_cold_item_v2_perpair_fashion.json": "75fdb6b0090460c578235b82e5865ca56badde8f0734035aa9bc901e7157c6d1",
+        "_bestrec_run\\results_cold_item_v2_perpair_instruments.json": "4fac02978ae187d86f4dcd6b5cb96b00c047f542c8f6c8339e695e84419e14dc",
+        "_bestrec_run\\significance_cold_item_corrected.json": "891d277c763ed1bc2efcb4bbedb0fbd2dfe86ef8db8b58250b58811bd581161f",
+        "_bestrec_run\\tables.json": "de1c76575fca93369881bb7ec2c158d2f6fa1185bce49e06f08413918830bb66"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T11:53:55Z"
+    },
+    {
+      "command": [
+        "python",
+        "run_lc2cpp_validated.py",
+        "beauty",
+        "fashion",
+        "instruments",
+        "books",
+        "--weights",
+        "1,0.98,0.95,0.9,0.85,0.75"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\run_cold_item_v2.py": "e7753430742130b1de4762daf88e40a5132d13bc255fee2eb35d3dcd45386763",
+        "_bestrec_run\\run_lc2cpp_validated.py": "9fefc11a0e7a16241b848b9aa7ac2b252ab5a88e11baf98f8a8f4fe7b46a3bd6"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Validation-selected LC2C++ z-fusion on secondary cold-fold-only metric.",
+      "output_hashes": {
+        "_bestrec_run\\results_lc2cpp_validated.json": "6634e6d38a854dc653a966a0450728f523d802c21745126a4ffbf1a96979c190",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_beauty.json": "15a3ac2631a393ccd8c5920d2201bbd4e8b5ee57271cf76d83e78e35390e8144",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_books.json": "15a3ac2631a393ccd8c5920d2201bbd4e8b5ee57271cf76d83e78e35390e8144",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_fashion.json": "15a3ac2631a393ccd8c5920d2201bbd4e8b5ee57271cf76d83e78e35390e8144",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_instruments.json": "15a3ac2631a393ccd8c5920d2201bbd4e8b5ee57271cf76d83e78e35390e8144"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T12:08:18Z"
+    },
+    {
+      "command": [
+        "python",
+        "run_lc2cpp_validated.py",
+        "beauty",
+        "fashion",
+        "instruments",
+        "books",
+        "--weights",
+        "1,0.98,0.95,0.9,0.85,0.75"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\run_cold_item_v2.py": "e7753430742130b1de4762daf88e40a5132d13bc255fee2eb35d3dcd45386763",
+        "_bestrec_run\\run_lc2cpp_validated.py": "68f27f3f3be360bc96baa5f128bf345478005369e131e3c3a4d873cf3fe0d7ed"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Validation-selected LC2C++ z-fusion on secondary cold-fold-only metric.",
+      "output_hashes": {
+        "_bestrec_run\\results_lc2cpp_validated.json": "6634e6d38a854dc653a966a0450728f523d802c21745126a4ffbf1a96979c190",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_beauty.json": "505c369788f8234e1f34e747b0c3b6a465d6d503877be02f0e5fe8d20690421d",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_books.json": "d6786949b9b77d08abb9521be6b9b5203707fe34d53997a41b0ee4b72992da55",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_fashion.json": "0adb5f662c787feb922a8c524576f6dfc4f796fa2875e77c397b5e03344e0de1",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_instruments.json": "6df31c01b34c359ff5125faee07b811b826bbabd63619e4550fdb3691a32013f"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T12:12:39Z"
+    },
+    {
+      "command": [
+        "python",
+        "run_lc2cpp_usergate.py",
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\run_cold_item_v2.py": "e7753430742130b1de4762daf88e40a5132d13bc255fee2eb35d3dcd45386763",
+        "_bestrec_run\\run_lc2cpp_usergate.py": "63ed5e59b49a8daacfb6e0b721709f59dd0465d41aaa046fb3592b89833cbec9"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Validation user-gated LC2C++ selector on secondary cold-fold-only metric.",
+      "output_hashes": {
+        "_bestrec_run\\results_lc2cpp_usergate.json": "50754f16dcb0711bc422b099634c407d299551bb0089886cd26e4e33cf86f499",
+        "_bestrec_run\\results_lc2cpp_usergate_perpair_beauty.json": "b282e2295a6248d8d45ba2162f89d0ef5b99999456a70fed9541bd3e9bbdbf74",
+        "_bestrec_run\\results_lc2cpp_usergate_perpair_books.json": "d6949c9f37337ae5f5164fed094b61916d97467e70b0220b9c8839665b6ba2d3",
+        "_bestrec_run\\results_lc2cpp_usergate_perpair_fashion.json": "63d6feb8c2bc30c171d816d1fc909cf5cf054cdcc6786d74bacc09849767d904",
+        "_bestrec_run\\results_lc2cpp_usergate_perpair_instruments.json": "5ae7cc02b2a29bde25de35f9d7d68b3b354983616d79a7c499c69d7c58d26e87"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T12:18:59Z"
+    },
+    {
+      "command": [
+        "python",
+        "compute_validated_significance.py"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_lc2cpp_validated_perpair_beauty.json": "505c369788f8234e1f34e747b0c3b6a465d6d503877be02f0e5fe8d20690421d",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_books.json": "d6786949b9b77d08abb9521be6b9b5203707fe34d53997a41b0ee4b72992da55",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_fashion.json": "0adb5f662c787feb922a8c524576f6dfc4f796fa2875e77c397b5e03344e0de1",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_instruments.json": "6df31c01b34c359ff5125faee07b811b826bbabd63619e4550fdb3691a32013f"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Holm-corrected per-user significance for validation-selected LC2C++.",
+      "output_hashes": {
+        "_bestrec_run\\significance_lc2cpp_validated.json": "d14e4198615be669b838f0a62663970e2de6c2bf4e7336032eefcb11c0666b16"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T12:20:32Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_tables.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29",
+        "_bestrec_run\\results_cold_item_v2.json": "29b366700341d0b2a00b5019541421eb185ba8ae6cb2fd7a13fce206b2d0fcdf",
+        "_bestrec_run\\results_sota_audit.json": "b1295a30808cccffff702056bbe7f5959e9282092b1e384c07ffdfc87f56f41c",
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_cold_item_bootstrap.json": "1d69b84b4ffd3a028e1d75cf737ad64abaaf0001c5b4ba6f8156725adb00a190",
+        "_bestrec_run\\significance_cold_item_corrected.json": "891d277c763ed1bc2efcb4bbedb0fbd2dfe86ef8db8b58250b58811bd581161f",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Canonical table and significance build.",
+      "output_hashes": {
+        "_bestrec_run\\significance.json": "90f22ab25bf71e23b10c7f7cc81a7031cefcfbd4c9caffbaf94f0fd66b6e5885",
+        "_bestrec_run\\tables.json": "01cb300c2844a7193f9a29a7fa3f55e89e3dc4cc1d07330a7622a3c3fc086cd3"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T12:20:33Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_publication_validity_report.py"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_lc2cpp_validated.json": "6634e6d38a854dc653a966a0450728f523d802c21745126a4ffbf1a96979c190",
+        "_bestrec_run\\significance_lc2cpp_validated.json": "d14e4198615be669b838f0a62663970e2de6c2bf4e7336032eefcb11c0666b16",
+        "_bestrec_run\\tables.json": "01cb300c2844a7193f9a29a7fa3f55e89e3dc4cc1d07330a7622a3c3fc086cd3"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Generated publication validity report for validation-selected LC2C++.",
+      "output_hashes": {
+        "PUBLICATION_VALIDITY_REPORT.md": "fa00b7dec4d92d400a800de446265a0fa6fa8e60b65b2611bf6d5e20afd7e3b1"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T12:20:33Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_internal_report.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\tables.json": "01cb300c2844a7193f9a29a7fa3f55e89e3dc4cc1d07330a7622a3c3fc086cd3"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Generated internal failure report because SOTA gate did not pass.",
+      "output_hashes": {
+        "INTERNAL_SOTA_FAILURE_REPORT.md": "c8226e5ff08e1cb7df5c6801f8cf0b866088864a1a3b1ad3f3513a51ab5e666c"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T12:20:33Z"
+    },
+    {
+      "command": [
+        "python",
+        "run_lc2cpp_components_validated.py",
+        "beauty"
+      ],
+      "datasets": [
+        "beauty"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\run_cold_item_v2.py": "e7753430742130b1de4762daf88e40a5132d13bc255fee2eb35d3dcd45386763",
+        "_bestrec_run\\run_lc2cpp_components_validated.py": "fcf6c5acfd0416e79ec8fcb002f262597f6a3e17ef7ba45ab52d20bb7ae6d919"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Component add/remove validation-selected LC2C++ attempt.",
+      "output_hashes": {
+        "_bestrec_run\\results_lc2cpp_components_validated.json": "4684ead9d4e8164170064e33cdfeb60013544bd3b191a6f9b0676cd5640130d5",
+        "_bestrec_run\\results_lc2cpp_components_validated_perpair_beauty.json": "8cbc982477737403edb2cb439bf7f85d3fe478124c80c2908f9cfbf6e07638c6"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T12:25:47Z"
+    },
+    {
+      "command": [
+        "python",
+        "run_lc2cpp_components_validated.py",
+        "beauty"
+      ],
+      "datasets": [
+        "beauty"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\run_cold_item_v2.py": "e7753430742130b1de4762daf88e40a5132d13bc255fee2eb35d3dcd45386763",
+        "_bestrec_run\\run_lc2cpp_components_validated.py": "26e82ad0808edc0f49ae60a91a522cfa21c3df1c155b13f1f75c2f72e8c77ea2"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Component add/remove validation-selected LC2C++ attempt.",
+      "output_hashes": {
+        "_bestrec_run\\results_lc2cpp_components_validated.json": "1abfab6fa2e93d1088481dfff64136a2eb929f0bf110e1aacda17758b8396fdf",
+        "_bestrec_run\\results_lc2cpp_components_validated_perpair_beauty.json": "8e96bd67fd6e4e855b1bd9fdd01970daad47d1d5de4b7bbf2946d63cd966c9ee"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T12:26:26Z"
+    },
+    {
+      "command": [
+        "python",
+        "run_lc2cpp_validated.py",
+        "beauty",
+        "--weights",
+        "1,0.98,0.95,0.9,0.85,0.75"
+      ],
+      "datasets": [
+        "beauty"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\run_cold_item_v2.py": "e7753430742130b1de4762daf88e40a5132d13bc255fee2eb35d3dcd45386763",
+        "_bestrec_run\\run_lc2cpp_validated.py": "534e3b00aea7c193ba89c8de3fb382a8be9942094d6c43de994b2bb434b2a4d5"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Validation-selected LC2C++ z-fusion on secondary cold-fold-only metric.",
+      "output_hashes": {
+        "_bestrec_run\\results_lc2cpp_validated.json": "304afb53e6b63cce3126b5f21ca6c11e2a8e3393334a4c6649b6fa1c5934f18d",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_beauty.json": "b3e08be9e1fef39cdd05bdc823bc7c2305c0c7d392d6ccfcb808bf87b0441243",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_books.json": "d6786949b9b77d08abb9521be6b9b5203707fe34d53997a41b0ee4b72992da55",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_fashion.json": "0adb5f662c787feb922a8c524576f6dfc4f796fa2875e77c397b5e03344e0de1",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_instruments.json": "6df31c01b34c359ff5125faee07b811b826bbabd63619e4550fdb3691a32013f"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T12:27:26Z"
+    },
+    {
+      "command": [
+        "python",
+        "run_lc2cpp_validated.py",
+        "beauty",
+        "--weights",
+        "1,0.995,0.99,0.985,0.98,0.975,0.95"
+      ],
+      "datasets": [
+        "beauty"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\run_cold_item_v2.py": "e7753430742130b1de4762daf88e40a5132d13bc255fee2eb35d3dcd45386763",
+        "_bestrec_run\\run_lc2cpp_validated.py": "534e3b00aea7c193ba89c8de3fb382a8be9942094d6c43de994b2bb434b2a4d5"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Validation-selected LC2C++ z-fusion on secondary cold-fold-only metric.",
+      "output_hashes": {
+        "_bestrec_run\\results_lc2cpp_validated.json": "79e33cdc52a4f3ba3e1a3bd0010aaca46b0d9ce3f2ba4687819cd7864a73b4ae",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_beauty.json": "a593da53b9407fe1ddf111288e1d706d948682a38adfdffcf9754435f7128617",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_books.json": "d6786949b9b77d08abb9521be6b9b5203707fe34d53997a41b0ee4b72992da55",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_fashion.json": "0adb5f662c787feb922a8c524576f6dfc4f796fa2875e77c397b5e03344e0de1",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_instruments.json": "6df31c01b34c359ff5125faee07b811b826bbabd63619e4550fdb3691a32013f"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T12:27:49Z"
+    },
+    {
+      "command": [
+        "python",
+        "run_lc2cpp_validated.py",
+        "beauty",
+        "fashion",
+        "instruments",
+        "books",
+        "--weights",
+        "1,0.995,0.99,0.985,0.98,0.975,0.95"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\run_cold_item_v2.py": "e7753430742130b1de4762daf88e40a5132d13bc255fee2eb35d3dcd45386763",
+        "_bestrec_run\\run_lc2cpp_validated.py": "534e3b00aea7c193ba89c8de3fb382a8be9942094d6c43de994b2bb434b2a4d5"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Validation-selected LC2C++ z-fusion on secondary cold-fold-only metric.",
+      "output_hashes": {
+        "_bestrec_run\\results_lc2cpp_validated.json": "67679514281c525eb9aef9cb5ce17708756d0a70b6c791d33e71e82c32461ab9",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_beauty.json": "a593da53b9407fe1ddf111288e1d706d948682a38adfdffcf9754435f7128617",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_books.json": "c760db549ca5c739044918cb255d9a4eeef5a8f715381e094bfc289edf73c3cd",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_fashion.json": "0f648ef5fe5b3e4f509e55727bcfd31e633a47d47237b7e6b4db4f2854846c44",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_instruments.json": "8995d9e564328210f49a82cda1f9f871b299fa6f596a830a841a7b2ccea828c7"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T12:31:30Z"
+    },
+    {
+      "command": [
+        "python",
+        "run_lc2cpp_validated.py",
+        "beauty",
+        "fashion",
+        "instruments",
+        "books",
+        "--weights",
+        "1,0.995,0.99,0.985,0.98,0.975,0.95,0.9,0.85,0.75"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\run_cold_item_v2.py": "e7753430742130b1de4762daf88e40a5132d13bc255fee2eb35d3dcd45386763",
+        "_bestrec_run\\run_lc2cpp_validated.py": "534e3b00aea7c193ba89c8de3fb382a8be9942094d6c43de994b2bb434b2a4d5"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Validation-selected LC2C++ z-fusion on secondary cold-fold-only metric.",
+      "output_hashes": {
+        "_bestrec_run\\results_lc2cpp_validated.json": "f07f9a26cd7352ad6aabd4fd136bd78c0e77b5106a6128245a86190f87cf4446",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_beauty.json": "a593da53b9407fe1ddf111288e1d706d948682a38adfdffcf9754435f7128617",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_books.json": "5183b628ab90dc7c4b5960bd9d5439d6f1b4c8fa3e50fef0fa40f5c8412e6084",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_fashion.json": "5085c4a4f9991b9278fb7b937ec60223d5de41d09a0e6a201205b6e8a0e1d405",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_instruments.json": "7e9f3b7d88fa7a322338df3f29da9b0d896018ed7f13f9dbc6421bdd974156e4"
+      },
+      "seeds": [
+        "42"
+      ],
+      "timestamp_utc": "2026-05-21T12:35:39Z"
+    },
+    {
+      "command": [
+        "python",
+        "compute_validated_significance.py"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_lc2cpp_validated_perpair_beauty.json": "a593da53b9407fe1ddf111288e1d706d948682a38adfdffcf9754435f7128617",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_books.json": "5183b628ab90dc7c4b5960bd9d5439d6f1b4c8fa3e50fef0fa40f5c8412e6084",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_fashion.json": "5085c4a4f9991b9278fb7b937ec60223d5de41d09a0e6a201205b6e8a0e1d405",
+        "_bestrec_run\\results_lc2cpp_validated_perpair_instruments.json": "7e9f3b7d88fa7a322338df3f29da9b0d896018ed7f13f9dbc6421bdd974156e4"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Holm-corrected per-user significance for validation-selected LC2C++.",
+      "output_hashes": {
+        "_bestrec_run\\significance_lc2cpp_validated.json": "f9762843ba9f3f4fc4499c7a8142fcaac0feab83ba15ab112c09092046069ee7"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T12:35:55Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_tables.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\results_FINAL.json": "43185bc5030546cf9c631e620f83a229625da56a5a80531ddd5eb69e60b9be29",
+        "_bestrec_run\\results_cold_item_v2.json": "29b366700341d0b2a00b5019541421eb185ba8ae6cb2fd7a13fce206b2d0fcdf",
+        "_bestrec_run\\results_sota_audit.json": "b1295a30808cccffff702056bbe7f5959e9282092b1e384c07ffdfc87f56f41c",
+        "_bestrec_run\\results_warm_loo.json": "b6bea2c3787c3808cf998b0f7f475792476de341940a4d33d9b21207aefb0399",
+        "_bestrec_run\\significance_cold_item_bootstrap.json": "1d69b84b4ffd3a028e1d75cf737ad64abaaf0001c5b4ba6f8156725adb00a190",
+        "_bestrec_run\\significance_cold_item_corrected.json": "891d277c763ed1bc2efcb4bbedb0fbd2dfe86ef8db8b58250b58811bd581161f",
+        "_bestrec_run\\significance_corrected.json": "6b6a938a43f6e9d81615666d174a40e0327e4905bbffa9e0cb25956007d3ca9d"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Canonical table and significance build.",
+      "output_hashes": {
+        "_bestrec_run\\significance.json": "90f22ab25bf71e23b10c7f7cc81a7031cefcfbd4c9caffbaf94f0fd66b6e5885",
+        "_bestrec_run\\tables.json": "67f7b992f698a1e5fc782f79e4aa82285f9d1a393247806bc90efe61cdd85692"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T12:36:31Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_publication_validity_report.py"
+      ],
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "input_hashes": {
+        "_bestrec_run\\results_lc2cpp_validated.json": "f07f9a26cd7352ad6aabd4fd136bd78c0e77b5106a6128245a86190f87cf4446",
+        "_bestrec_run\\significance_lc2cpp_validated.json": "f9762843ba9f3f4fc4499c7a8142fcaac0feab83ba15ab112c09092046069ee7",
+        "_bestrec_run\\tables.json": "67f7b992f698a1e5fc782f79e4aa82285f9d1a393247806bc90efe61cdd85692"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Generated publication validity report for validation-selected LC2C++.",
+      "output_hashes": {
+        "PUBLICATION_VALIDITY_REPORT.md": "90d774f81b7af9bc34c316e04e15cdd273226b8007de8de1ce8af9e701d2ca52"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T12:36:31Z"
+    },
+    {
+      "command": [
+        "python",
+        "build_internal_report.py"
+      ],
+      "datasets": [],
+      "input_hashes": {
+        "_bestrec_run\\tables.json": "67f7b992f698a1e5fc782f79e4aa82285f9d1a393247806bc90efe61cdd85692"
+      },
+      "machine": {
+        "cwd": "C:\\Users\\rayxc\\Documents\\R",
+        "git_commit": null,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+        "python": "3.12.13"
+      },
+      "note": "Generated internal failure report because SOTA gate did not pass.",
+      "output_hashes": {
+        "INTERNAL_SOTA_FAILURE_REPORT.md": "c8226e5ff08e1cb7df5c6801f8cf0b866088864a1a3b1ad3f3513a51ab5e666c"
+      },
+      "seeds": [],
+      "timestamp_utc": "2026-05-21T12:36:31Z"
+    }
+  ],
+  "schema_version": 1,
+  "updated_utc": "2026-05-21T12:36:31Z"
+}

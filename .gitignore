@@ -1,0 +1,21 @@
+# Large raw data
+data/
+# Multi-GB caches and outputs
+cache/
+_bestrec_confirmatory/
+# Large per-pair / per-fold JSONLs
+_bestrec_run/results_*_perpair_*.json
+_bestrec_run/results_*_perfold_*.json
+_bestrec_run/results_warm_loo_perfold_*.json
+_bestrec_run/results_lc2cpp_*_perpair_*.json
+_bestrec_run/*.jsonl
+_bestrec_run/poc_*.log
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+**/.venv/
+# Misc
+*.tmp
+*.bak

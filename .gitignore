@@ -19,3 +19,14 @@ __pycache__/
 # Misc
 *.tmp
 *.bak
+
+# Agent worktrees (transient, recreated per session)
+.claude/worktrees/
+
+# Run logs (transient, per-experiment stdout/stderr)
+_bestrec_run/*.log
+_bestrec_run/run_*.log
+
+# Scratch / smoke-test artifacts
+_bestrec_run/_smoke_*
+_bestrec_run/_tmp_*

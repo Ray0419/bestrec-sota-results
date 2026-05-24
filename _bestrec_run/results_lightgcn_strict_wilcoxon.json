@@ -1,0 +1,57 @@
+{
+  "note": "Per-USER paired Wilcoxon for tuned LightGCN vs EASE+SBERT on warm-LOO. Per-user NDCG@10 is the mean over folds (ease_sbert) or over (seed, fold) (lightgcn_strict). Holm-Bonferroni correction is applied ACROSS the per-dataset p-values for each of the three alternatives.",
+  "methods_compared": [
+    "lightgcn_strict (multi-seed multi-config tuned)",
+    "ease_sbert (warm-LOO, single seed=42 from run_warm_loo.py)"
+  ],
+  "per_dataset": {
+    "beauty": {
+      "n_users_paired": 253,
+      "ease_sbert_NDCG@10_per_user_mean": 0.09286525023028405,
+      "lightgcn_strict_NDCG@10_per_user_mean": 0.0371869063093743,
+      "mean_diff_lightgcn_minus_ease_sbert": -0.05567834392090976,
+      "n_lightgcn_wins": 66,
+      "n_ease_sbert_wins": 108,
+      "n_ties": 79,
+      "wilcoxon_two_sided_p": 8.621602524903927e-10,
+      "wilcoxon_lightgcn_greater_p": 0.9999999995689198,
+      "wilcoxon_lightgcn_less_p": 4.3108012624519635e-10,
+      "wilcoxon_statistic": 3531.5,
+      "wilcoxon_two_sided_p_holm": 2.586480757471178e-09,
+      "wilcoxon_lightgcn_greater_p_holm": 1.0,
+      "wilcoxon_lightgcn_less_p_holm": 1.293240378735589e-09
+    },
+    "fashion": {
+      "n_users_paired": 513,
+      "ease_sbert_NDCG@10_per_user_mean": 0.09226540090324643,
+      "lightgcn_strict_NDCG@10_per_user_mean": 0.06408612639819537,
+      "mean_diff_lightgcn_minus_ease_sbert": -0.02817927450505105,
+      "n_lightgcn_wins": 132,
+      "n_ease_sbert_wins": 149,
+      "n_ties": 232,
+      "wilcoxon_two_sided_p": 3.910911747272315e-06,
+      "wilcoxon_lightgcn_greater_p": 0.9999980445441263,
+      "wilcoxon_lightgcn_less_p": 1.9554558736361574e-06,
+      "wilcoxon_statistic": 13517.0,
+      "wilcoxon_two_sided_p_holm": 7.82182349454463e-06,
+      "wilcoxon_lightgcn_greater_p_holm": 1.0,
+      "wilcoxon_lightgcn_less_p_holm": 3.910911747272315e-06
+    },
+    "instruments": {
+      "n_users_paired": 3911,
+      "ease_sbert_NDCG@10_per_user_mean": 0.056360707485329446,
+      "lightgcn_strict_NDCG@10_per_user_mean": 0.05339603799508625,
+      "mean_diff_lightgcn_minus_ease_sbert": -0.002964669490243209,
+      "n_lightgcn_wins": 1149,
+      "n_ease_sbert_wins": 1010,
+      "n_ties": 1752,
+      "wilcoxon_two_sided_p": 0.1289635321439657,
+      "wilcoxon_lightgcn_greater_p": 0.9355182339280171,
+      "wilcoxon_lightgcn_less_p": 0.06448176607198285,
+      "wilcoxon_statistic": 1121879.0,
+      "wilcoxon_two_sided_p_holm": 0.1289635321439657,
+      "wilcoxon_lightgcn_greater_p_holm": 1.0,
+      "wilcoxon_lightgcn_less_p_holm": 0.06448176607198285
+    }
+  }
+}

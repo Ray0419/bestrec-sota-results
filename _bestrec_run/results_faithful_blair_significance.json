@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "candidate_method": "faithful_blair",
+  "comparators": [
+    "blair_text_simplified",
+    "content_direct",
+    "CDR_validated"
+  ],
+  "wilcoxon": "per-user paired one-sided (faithful_blair > baseline), Holm correction within dataset",
+  "datasets": {
+    "beauty": {
+      "dataset": "beauty",
+      "candidate_method": "faithful_blair",
+      "faithful_blair_micro_mean_ndcg10": 0.04289654038436679,
+      "faithful_blair_perfold_mean": 0.042811028091495035,
+      "faithful_blair_perfold_std": 0.012049416384861176,
+      "n_pairs_faithful_blair": 7605,
+      "n_pairs_blair_text_simplified": 7605,
+      "n_pairs_content_direct": 7605,
+      "n_pairs_cdr_validated": 7605,
+      "comparisons_holm_corrected": [
+        {
+          "comparison": "faithful_blair > CDR_validated",
+          "n_users": 253,
+          "cand_mean": 0.045734566727084626,
+          "base_mean": 0.15057088603838575,
+          "delta": -0.10483631931130113,
+          "p_raw": 1.0,
+          "intersection_records": 7605,
+          "holm_threshold": 0.05,
+          "holm_significant": false,
+          "marker": "n.s."
+        },
+        {
+          "comparison": "faithful_blair > blair_text_simplified",
+          "n_users": 253,
+          "cand_mean": 0.045734566727084626,
+          "base_mean": 0.04311127813054964,
+          "delta": 0.0026232885965349795,
+          "p_raw": 0.4225771048654628,
+          "intersection_records": 7605,
+          "holm_threshold": 0.016666666666666666,
+          "holm_significant": false,
+          "marker": "n.s."
+        },
+        {
+          "comparison": "faithful_blair > content_direct",
+          "n_users": 253,
+          "cand_mean": 0.045734566727084626,
+          "base_mean": 0.04311127813054964,
+          "delta": 0.0026232885965349795,
+          "p_raw": 0.4225771048654628,
+          "intersection_records": 7605,
+          "holm_threshold": 0.025,
+          "holm_significant": false,
+          "marker": "n.s."
+        }
+      ]
+    },
+    "fashion": {
+      "dataset": "fashion",
+      "candidate_method": "faithful_blair",
+      "faithful_blair_micro_mean_ndcg10": 0.0377198895856472,
+      "faithful_blair_perfold_mean": 0.03762811901384127,
+      "faithful_blair_perfold_std": 0.006141524695198488,
+      "n_pairs_faithful_blair": 11391,
+      "n_pairs_blair_text_simplified": 11391,
+      "n_pairs_content_direct": 11391,
+      "n_pairs_cdr_validated": 11391,
+      "comparisons_holm_corrected": [
+        {
+          "comparison": "faithful_blair > CDR_validated",
+          "n_users": 513,
+          "cand_mean": 0.04716068872427712,
+          "base_mean": 0.1623454156866142,
+          "delta": -0.11518472696233709,
+          "p_raw": 1.0,
+          "intersection_records": 11391,
+          "holm_threshold": 0.05,
+          "holm_significant": false,
+          "marker": "n.s."
+        },
+        {
+          "comparison": "faithful_blair > blair_text_simplified",
+          "n_users": 513,
+          "cand_mean": 0.04716068872427712,
+          "base_mean": 0.05102493717679925,
+          "delta": -0.003864248452522141,
+          "p_raw": 0.8988987370763067,
+          "intersection_records": 11391,
+          "holm_threshold": 0.016666666666666666,
+          "holm_significant": false,
+          "marker": "n.s."
+        },
+        {
+          "comparison": "faithful_blair > content_direct",
+          "n_users": 513,
+          "cand_mean": 0.04716068872427712,
+          "base_mean": 0.051025998805583,
+          "delta": -0.0038653100813058915,
+          "p_raw": 0.8988987370763067,
+          "intersection_records": 11391,
+          "holm_threshold": 0.025,
+          "holm_significant": false,
+          "marker": "n.s."
+        }
+      ]
+    },
+    "instruments": {
+      "dataset": "instruments",
+      "candidate_method": "faithful_blair",
+      "faithful_blair_micro_mean_ndcg10": 0.007188594364400136,
+      "faithful_blair_perfold_mean": 0.007179643429114926,
+      "faithful_blair_perfold_std": 0.0013607032382434003,
+      "n_pairs_faithful_blair": 177078,
+      "n_pairs_blair_text_simplified": 177078,
+      "n_pairs_content_direct": 177078,
+      "n_pairs_cdr_validated": 177078,
+      "comparisons_holm_corrected": [
+        {
+          "comparison": "faithful_blair > CDR_validated",
+          "n_users": 3911,
+          "cand_mean": 0.00750358366277266,
+          "base_mean": 0.05373219563850291,
+          "delta": -0.04622861197573025,
+          "p_raw": 1.0,
+          "intersection_records": 177078,
+          "holm_threshold": 0.05,
+          "holm_significant": false,
+          "marker": "n.s."
+        },
+        {
+          "comparison": "faithful_blair > blair_text_simplified",
+          "n_users": 3911,
+          "cand_mean": 0.00750358366277266,
+          "base_mean": 0.009686894815840062,
+          "delta": -0.002183311153067402,
+          "p_raw": 0.9999999999722906,
+          "intersection_records": 177078,
+          "holm_threshold": 0.025,
+          "holm_significant": false,
+          "marker": "n.s."
+        },
+        {
+          "comparison": "faithful_blair > content_direct",
+          "n_users": 3911,
+          "cand_mean": 0.00750358366277266,
+          "base_mean": 0.009685670125336185,
+          "delta": -0.002182086462563526,
+          "p_raw": 0.999999999972246,
+          "intersection_records": 177078,
+          "holm_threshold": 0.016666666666666666,
+          "holm_significant": false,
+          "marker": "n.s."
+        }
+      ]
+    },
+    "books": {
+      "dataset": "books",
+      "candidate_method": "faithful_blair",
+      "faithful_blair_micro_mean_ndcg10": 0.007734745588548385,
+      "faithful_blair_perfold_mean": 0.007727457450492241,
+      "faithful_blair_perfold_std": 0.0004954581360703976,
+      "n_pairs_faithful_blair": 601992,
+      "n_pairs_blair_text_simplified": 601992,
+      "n_pairs_content_direct": 601992,
+      "n_pairs_cdr_validated": 0,
+      "comparisons_holm_corrected": [
+        {
+          "comparison": "faithful_blair > blair_text_simplified",
+          "n_users": 14407,
+          "cand_mean": 0.01042025243597898,
+          "base_mean": 0.012979821763940115,
+          "delta": -0.002559569327961136,
+          "p_raw": 1.0,
+          "intersection_records": 601992,
+          "holm_threshold": 0.025,
+          "holm_significant": false,
+          "marker": "n.s."
+        },
+        {
+          "comparison": "faithful_blair > content_direct",
+          "n_users": 14407,
+          "cand_mean": 0.01042025243597898,
+          "base_mean": 0.012980063539057025,
+          "delta": -0.0025598111030780443,
+          "p_raw": 1.0,
+          "intersection_records": 601992,
+          "holm_threshold": 0.05,
+          "holm_significant": false,
+          "marker": "n.s."
+        }
+      ]
+    }
+  }
+}

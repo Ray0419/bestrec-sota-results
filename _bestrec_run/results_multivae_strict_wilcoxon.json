@@ -1,0 +1,73 @@
+{
+  "note": "Per-USER paired Wilcoxon for tuned MultiVAE vs EASE+SBERT on warm-LOO. Per-user NDCG@10 is the mean over folds (ease_sbert) or over (seed, fold) (multivae_strict). Holm-Bonferroni correction is applied ACROSS the per-dataset p-values for each of the three alternatives.",
+  "methods_compared": [
+    "multivae_strict (multi-seed multi-config tuned)",
+    "ease_sbert (warm-LOO, single seed=42 from run_warm_loo.py)"
+  ],
+  "per_dataset": {
+    "beauty": {
+      "n_users_paired": 253,
+      "ease_sbert_NDCG@10_per_user_mean": 0.09286525023028405,
+      "multivae_strict_NDCG@10_per_user_mean": 0.028464298132102273,
+      "mean_diff_multivae_minus_ease_sbert": -0.0644009520981818,
+      "n_multivae_wins": 58,
+      "n_ease_sbert_wins": 116,
+      "n_ties": 79,
+      "wilcoxon_two_sided_p": 1.744537787895278e-13,
+      "wilcoxon_multivae_greater_p": 0.9999999999999127,
+      "wilcoxon_multivae_less_p": 8.72268893947639e-14,
+      "wilcoxon_statistic": 2710.5,
+      "wilcoxon_two_sided_p_holm": 5.233613363685834e-13,
+      "wilcoxon_multivae_greater_p_holm": 1.0,
+      "wilcoxon_multivae_less_p_holm": 2.616806681842917e-13
+    },
+    "fashion": {
+      "n_users_paired": 513,
+      "ease_sbert_NDCG@10_per_user_mean": 0.09226540090324643,
+      "multivae_strict_NDCG@10_per_user_mean": 0.05491746617319752,
+      "mean_diff_multivae_minus_ease_sbert": -0.03734793473004891,
+      "n_multivae_wins": 120,
+      "n_ease_sbert_wins": 161,
+      "n_ties": 232,
+      "wilcoxon_two_sided_p": 3.6613165735337593e-10,
+      "wilcoxon_multivae_greater_p": 0.9999999998169342,
+      "wilcoxon_multivae_less_p": 1.8306582867668796e-10,
+      "wilcoxon_statistic": 11265.0,
+      "wilcoxon_two_sided_p_holm": 7.322633147067519e-10,
+      "wilcoxon_multivae_greater_p_holm": 1.0,
+      "wilcoxon_multivae_less_p_holm": 3.6613165735337593e-10
+    },
+    "instruments": {
+      "n_users_paired": 3911,
+      "ease_sbert_NDCG@10_per_user_mean": 0.056360707485329446,
+      "multivae_strict_NDCG@10_per_user_mean": 0.05272887673136132,
+      "mean_diff_multivae_minus_ease_sbert": -0.0036318307539681344,
+      "n_multivae_wins": 1077,
+      "n_ease_sbert_wins": 1034,
+      "n_ties": 1800,
+      "wilcoxon_two_sided_p": 0.003193910751053321,
+      "wilcoxon_multivae_greater_p": 0.9984030446244734,
+      "wilcoxon_multivae_less_p": 0.0015969553755266605,
+      "wilcoxon_statistic": 1032026.5,
+      "wilcoxon_two_sided_p_holm": 0.003193910751053321,
+      "wilcoxon_multivae_greater_p_holm": 1.0,
+      "wilcoxon_multivae_less_p_holm": 0.0015969553755266605
+    },
+    "books": {
+      "n_users_paired": 5000,
+      "ease_sbert_NDCG@10_per_user_mean": 0.10232135573267423,
+      "multivae_strict_NDCG@10_per_user_mean": 0.06818820413257111,
+      "mean_diff_multivae_minus_ease_sbert": -0.03413315160010312,
+      "n_multivae_wins": 1274,
+      "n_ease_sbert_wins": 2167,
+      "n_ties": 1559,
+      "wilcoxon_two_sided_p": 5.605781685368226e-126,
+      "wilcoxon_multivae_greater_p": 1.0,
+      "wilcoxon_multivae_less_p": 2.802890842684113e-126,
+      "wilcoxon_statistic": 1569533.5,
+      "wilcoxon_two_sided_p_holm": 2.2423126741472903e-125,
+      "wilcoxon_multivae_greater_p_holm": 1.0,
+      "wilcoxon_multivae_less_p_holm": 1.1211563370736451e-125
+    }
+  }
+}

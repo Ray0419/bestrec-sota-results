@@ -30,3 +30,4 @@ _bestrec_run/run_*.log
 # Scratch / smoke-test artifacts
 _bestrec_run/_smoke_*
 _bestrec_run/_tmp_*
+cache_5core/

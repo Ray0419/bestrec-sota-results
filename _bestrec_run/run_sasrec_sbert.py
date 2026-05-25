@@ -191,11 +191,9 @@ class SASRecSBERT(nn.Module):
         ids = torch.arange(self.n_items, device=self.item_emb.weight.device)
         return self.item_features(ids)
 
-    def forward(self, input_ids):
-        """input_ids: (B, L). Returns logits (B, L, n_items).
-        Uses causal mask only (no key padding mask). Right-padded sequences
-        keep the standard SASRec convention; pad positions still get computed
-        but their outputs are masked-out by ignore_index in cross-entropy."""
+    def encode(self, input_ids):
+        """Encode an input sequence into hidden states (no item-scoring).
+        Returns (B, L, d_model). Useful for sampled-softmax training."""
         B, L = input_ids.shape
         device = input_ids.device
 
@@ -204,19 +202,27 @@ class SASRecSBERT(nn.Module):
         x = x + self.pos_emb(positions)
         x = self.drop(x)
 
-        # Causal mask: position i cannot attend to position j > i
         causal_mask = torch.triu(torch.ones(L, L, dtype=torch.bool, device=device), diagonal=1)
-
-        h = self.transformer(x, mask=causal_mask)        # NO src_key_padding_mask
+        h = self.transformer(x, mask=causal_mask)
         h = self.ln_final(h)                             # (B, L, d)
+        return h
 
-        # Compute logits over all items
+    def forward(self, input_ids):
+        """input_ids: (B, L). Returns logits (B, L, n_items).
+        Uses causal mask only (no key padding mask). Right-padded sequences
+        keep the standard SASRec convention; pad positions still get computed
+        but their outputs are masked-out by ignore_index in cross-entropy."""
+        h = self.encode(input_ids)
         all_items = self.all_item_features()             # (n_items, d)
         logits = h @ all_items.T                         # (B, L, n_items)
         return logits
 
 
-def train_one_epoch(model, loader, opt, pad_id, device, grad_clip=5.0):
+def train_one_epoch(model, loader, opt, pad_id, device, grad_clip=5.0,
+                      sampled_negs: int = 0):
+    """If sampled_negs > 0, use sampled softmax with that many random
+    negatives per position (memory-friendly for huge catalogs). Otherwise
+    use full softmax over all n_items."""
     model.train()
     total_loss = 0.0
     n_batches = 0
@@ -224,12 +230,38 @@ def train_one_epoch(model, loader, opt, pad_id, device, grad_clip=5.0):
     for inputs, targets in loader:
         inputs = inputs.to(device, non_blocking=True)
         targets = targets.to(device, non_blocking=True)
-        logits = model(inputs)                          # (B, L, n_items)
-        B, L, n_items = logits.shape
-        loss = F.cross_entropy(logits.reshape(B * L, n_items),
-                                 targets.reshape(B * L),
-                                 ignore_index=pad_id,
-                                 reduction="mean")
+
+        if sampled_negs == 0:
+            # Full softmax
+            logits = model(inputs)                       # (B, L, n_items)
+            B, L, n_items = logits.shape
+            loss = F.cross_entropy(logits.reshape(B * L, n_items),
+                                     targets.reshape(B * L),
+                                     ignore_index=pad_id,
+                                     reduction="mean")
+        else:
+            # Sampled softmax: produce hidden states, sample K negatives,
+            # compute cross-entropy over (1 positive + K negatives)
+            hidden = model.encode(inputs)                # (B, L, d)
+            B, L, d = hidden.shape
+            # Valid positions are where target != pad
+            valid = (targets != pad_id)
+            n_valid = valid.sum().item()
+            if n_valid == 0:
+                continue
+            # Sample K random items per valid position
+            sampled = torch.randint(0, model.n_items, (n_valid, sampled_negs),
+                                     device=device)
+            # Pos item ids + sampled neg ids
+            h_v = hidden[valid]                          # (n_valid, d)
+            pos_ids = targets[valid]                     # (n_valid,)
+            cand_ids = torch.cat([pos_ids.unsqueeze(1), sampled], dim=1)  # (n_valid, 1 + K)
+            cand_emb = model.item_features(cand_ids)     # (n_valid, 1+K, d)
+            logits = (cand_emb @ h_v.unsqueeze(-1)).squeeze(-1)  # (n_valid, 1+K)
+            # Cross-entropy with target=0 (first column is positive)
+            target = torch.zeros(n_valid, dtype=torch.long, device=device)
+            loss = F.cross_entropy(logits, target, reduction="mean")
+
         opt.zero_grad(); loss.backward()
         nn.utils.clip_grad_norm_(model.parameters(), grad_clip)
         opt.step()
@@ -335,6 +367,10 @@ def main():
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--no-sbert", action="store_true", help="Disable SBERT augmentation")
     ap.add_argument("--eval-every", type=int, default=5)
+    ap.add_argument("--sampled-negs", type=int, default=0,
+                     help="If >0, use sampled softmax with this many negatives "
+                          "per position (avoids OOM when n_items is huge). "
+                          "0 = full softmax over all n_items.")
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
 
@@ -401,7 +437,8 @@ def main():
     history = []
     for epoch in range(1, args.epochs + 1):
         t0 = time.time()
-        train_loss, n_pos = train_one_epoch(model, loader, opt, pad_id, DEVICE)
+        train_loss, n_pos = train_one_epoch(model, loader, opt, pad_id, DEVICE,
+                                              sampled_negs=args.sampled_negs)
         ep_time = time.time() - t0
         log = {"epoch": epoch, "train_loss": train_loss, "epoch_time_s": ep_time}
         if epoch % args.eval_every == 0 or epoch == args.epochs:

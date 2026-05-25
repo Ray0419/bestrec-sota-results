@@ -240,28 +240,38 @@ def train_one_epoch(model, loader, opt, pad_id, device, grad_clip=5.0):
 
 
 def evaluate(model, user_seqs, test_inters, n_items, pad_id, max_seq_len,
-              device, top_k=10, batch_size=512):
+              device, top_k=10, batch_size=512, extra_history=None):
     """For each (u, target) in test_inters, encode u's training sequence and
     score the target item against all items. Mask training items. Compute
     NDCG@K, HR@K, MRR.
 
     Right-padding convention: real items are placed at positions 0..L-1, then
     pad at positions L..max_seq_len-1. The 'next-item prediction' is taken
-    from position L-1 (the last REAL item)."""
+    from position L-1 (the last REAL item).
+
+    extra_history: optional dict {user_id: [extra_item_ids]} appended to the
+    user's training sequence in chronological order. Used for test eval where
+    the val item is included in the input."""
     model.eval()
     test_dict = {u: i for u, i, _, _ in test_inters}
     users = sorted(test_dict.keys())
     n_eval = len(users)
+    extra = extra_history or {}
     ndcg, hr, rr = [], [], []
     print(f"  evaluating {n_eval:,} users in batches of {batch_size}...")
     t0 = time.time()
     with torch.no_grad():
         for s in range(0, n_eval, batch_size):
             batch_users = users[s:s + batch_size]
-            # Right-padded inputs
+            # Right-padded inputs (train + optional extra_history)
             input_ids = torch.full((len(batch_users), max_seq_len), pad_id,
                                      dtype=torch.long, device=device)
-            train_items = [user_seqs.get(u, []) for u in batch_users]
+            train_items = []
+            for u in batch_users:
+                seq = list(user_seqs.get(u, []))
+                if u in extra:
+                    seq = seq + list(extra[u])
+                train_items.append(seq)
             real_len = []
             for k, items in enumerate(train_items):
                 if not items:
@@ -282,7 +292,8 @@ def evaluate(model, user_seqs, test_inters, n_items, pad_id, max_seq_len,
             if torch.isnan(final).any():
                 raise RuntimeError(f"NaN logits at batch starting {s}; check architecture.")
 
-            # Mask training items
+            # Mask the user's full input history (train + any extras like val)
+            # — train_items above already concatenates them.
             for k, items in enumerate(train_items):
                 if items:
                     final[k, items] = -float("inf")
@@ -396,8 +407,13 @@ def main():
         if epoch % args.eval_every == 0 or epoch == args.epochs:
             val_metrics = evaluate(model, user_seqs, valid_inters, n_items, pad_id,
                                      args.max_seq_len, DEVICE)
+            # For test eval: standard SASRec/TIGER convention is to include
+            # the val item in the input sequence so test predicts the
+            # immediate-next item (matching what the model was trained on).
+            valid_dict = {u: i for u, i, _, _ in valid_inters}
+            test_extra = {u: [i] for u, i in valid_dict.items()}
             test_metrics = evaluate(model, user_seqs, test_inters, n_items, pad_id,
-                                      args.max_seq_len, DEVICE)
+                                      args.max_seq_len, DEVICE, extra_history=test_extra)
             log["val"] = val_metrics
             log["test"] = test_metrics
             print(f"  epoch {epoch:>3d}  loss={train_loss:.4f}  val_NDCG={val_metrics['NDCG@10']:.4f}  "

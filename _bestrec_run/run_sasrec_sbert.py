@@ -313,12 +313,16 @@ def evaluate(model, user_seqs, test_inters, n_items, pad_id, max_seq_len,
                                                                 dtype=torch.long,
                                                                 device=device)
                 real_len.append(len(truncated))
-            logits = model(input_ids)                    # (B, L, n_items)
-            # Take logits at the last REAL position per user (right-padded)
+            # Memory-efficient: compute hidden states then score ONLY the
+            # last real position against all items. Avoids materializing the
+            # full (B, L, n_items) logits tensor — critical for n_items >> 50K.
+            hidden = model.encode(input_ids)             # (B, L, d)
             B = len(batch_users)
             last_real_pos = torch.tensor([max(0, rl - 1) for rl in real_len],
                                           device=device)
-            final = logits[torch.arange(B, device=device), last_real_pos, :]  # (B, n_items)
+            last_h = hidden[torch.arange(B, device=device), last_real_pos, :]  # (B, d)
+            all_items = model.all_item_features()        # (n_items, d)
+            final = last_h @ all_items.T                 # (B, n_items)
 
             # Sanity: detect NaN (should never happen now)
             if torch.isnan(final).any():
@@ -366,6 +370,9 @@ def main():
     ap.add_argument("--dropout", type=float, default=0.2)
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--no-sbert", action="store_true", help="Disable SBERT augmentation")
+    ap.add_argument("--encoder-cache", default=None,
+                     help="Override the default sbert_titles_<cat>.npy cache "
+                          "path (e.g. cache_5core/blair_titles_<cat>.npy for BLaIR).")
     ap.add_argument("--eval-every", type=int, default=5)
     ap.add_argument("--sampled-negs", type=int, default=0,
                      help="If >0, use sampled softmax with this many negatives "
@@ -380,7 +387,8 @@ def main():
     train_csv = SPLIT_DIR / f"{args.category}.train.csv"
     valid_csv = SPLIT_DIR / f"{args.category}.valid.csv"
     test_csv = SPLIT_DIR / f"{args.category}.test.csv"
-    sbert_npy = EMB_CACHE_DIR / f"sbert_titles_{args.category}.npy"
+    sbert_npy = (Path(args.encoder_cache) if args.encoder_cache
+                  else EMB_CACHE_DIR / f"sbert_titles_{args.category}.npy")
     for p in (train_csv, valid_csv, test_csv):
         if not p.exists():
             print(f"ERROR: {p} missing")

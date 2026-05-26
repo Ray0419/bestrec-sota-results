@@ -53,6 +53,40 @@ This is a **simple, well-motivated baseline** that:
 - Beats published TIGER/BLaIR on the same dataset+protocol
 - Demonstrates that complicated semantic-ID generative retrieval (TIGER/LIGER) may not be strictly necessary at moderate catalog size
 
+## Post-session follow-up: scale-up attempts on Beauty_and_PC failed
+
+After the initial honest writeup, we tried two follow-ups to push Beauty_and_PC past the 0.018 plateau:
+
+### Attempt 1: BLaIR encoder swap (not the bottleneck)
+On Video_Games, we compared MiniLM-SASRec (mean 0.0514) vs BLaIR-SASRec (0.0498). BLaIR's official `hyp1231/blair-roberta-base` checkpoint (768-d, RoBERTa-base, Amazon-Reviews-2023-contrastively-trained) **gave no measurable improvement** over MiniLM (384-d, general-purpose). BLaIR for Beauty_and_PC was therefore skipped — a 2-3 hour encoding job that the Video_Games ablation predicted would not help.
+
+### Attempt 2: Wider model (d=64 → d=128)
+On Beauty_and_PC, we trained SASRec with d=128 (vs baseline d=64), 2 layers (kept), 4 heads (up from 2), sampled-negs=1024 (kept), dropout=0.2. Total params 12M → ~50M.
+
+| Epoch | d=64 baseline test NDCG@10 | d=128 test NDCG@10 |
+|---|---:|---:|
+| 5 | 0.0172 | 0.0177 |
+| 10 | 0.0181 | 0.0176 |
+| 15 | 0.0178 | **0.0170 (overfit)** |
+
+**d=128 buys essentially nothing.** Training loss drops faster (4.21 vs 4.25 at epoch 10) but ranking quality is identical. By epoch 15 the wider model starts overfitting (val falls 0.0214 → 0.0208).
+
+### What this rules out
+- **Encoder choice is not the bottleneck** (BLaIR ≈ MiniLM)
+- **Model width is not the bottleneck** (d=128 ≈ d=64)
+
+### What's left as the actual bottleneck
+1. **Short user histories.** Beauty_and_PC's median user has only 5 training interactions. Sequential models need longer histories to outperform popularity baselines meaningfully.
+2. **Sampled-softmax variance.** With 207K items and 1024 negatives per position, the gradient is a noisy estimate of the full softmax gradient. TIGER/LIGER avoid this by using semantic IDs (tokens, not items) so the softmax is over a tiny vocabulary.
+3. **Architecture mismatch.** TIGER/LIGER's autoregressive token generation over semantic IDs is fundamentally different from SASRec's next-item dot-product scoring. The semantic-ID approach gives much richer gradients per training example.
+
+To actually reach LIGER's ~0.045 on Beauty_and_PC, we'd need to either:
+- **Reimplement TIGER/LIGER** (semantic IDs + autoregressive decoder) — multi-week effort
+- **Sequence-augment short histories** (sliding-window data augmentation, masked-LM pretraining) — 1-2 weeks
+- **Use full softmax** (need a sampled-softmax approximation with much better importance weighting, e.g., adaptive negative sampling) — 1 week
+
+Within this session's budget, none of these are achievable. **The Video_Games result stands as the SOTA-competitive finding; Beauty_and_PC is documented as a tractable but unsolved follow-up.**
+
 ## What it would take to make this a top-tier publication
 
 | Gap | Effort |

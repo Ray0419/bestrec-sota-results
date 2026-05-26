@@ -100,30 +100,41 @@ class SASRecDataset(Dataset):
       input  = [i1, i2, ..., i_{L-1}, pad ... pad]  (length max_seq_len)
       target = [i2, i3, ..., iL,       pad ... pad]  (length max_seq_len)
     Loss only counts positions where target != pad.
-    Right-padding + causal mask (no key padding mask) avoids the NaN-trap
-    where TransformerEncoder produces NaN for rows that have no valid keys.
+    Right-padding + causal mask (no key padding mask) avoids the NaN-trap.
+
+    augment_factor: number of training examples per user per epoch. If > 1,
+    additional examples use random subsequence starting positions, giving the
+    model multiple "views" of the same user history per epoch.
     """
-    def __init__(self, user_seqs, max_seq_len, n_items, pad_id):
+    def __init__(self, user_seqs, max_seq_len, n_items, pad_id, augment_factor=1):
         self.examples = []
         self.max_seq_len = max_seq_len
         self.pad_id = pad_id
         self.n_items = n_items
+        self.augment_factor = augment_factor
         for u, seq in user_seqs.items():
             if len(seq) < 2:
                 continue
-            self.examples.append((u, seq))
+            for _ in range(augment_factor):
+                self.examples.append((u, seq))
 
     def __len__(self):
         return len(self.examples)
 
     def __getitem__(self, idx):
         u, seq = self.examples[idx]
-        # Truncate to most-recent max_seq_len+1 items, predict each next from prefix
-        if len(seq) > self.max_seq_len + 1:
-            seq = seq[-(self.max_seq_len + 1):]
-        # input = seq[:-1], target = seq[1:]
-        input_ids = seq[:-1]
-        target_ids = seq[1:]
+        # If augmentation enabled, pick a random subsequence end position.
+        # The subsequence is seq[start:end+1] with end uniformly in [1, L-1].
+        if self.augment_factor > 1 and len(seq) > 2:
+            end = np.random.randint(1, len(seq))
+            sub = seq[:end + 1]
+        else:
+            sub = seq
+        # Truncate to most-recent max_seq_len+1 items
+        if len(sub) > self.max_seq_len + 1:
+            sub = sub[-(self.max_seq_len + 1):]
+        input_ids = sub[:-1]
+        target_ids = sub[1:]
         # Right-pad
         L = len(input_ids)
         pad_amount = self.max_seq_len - L
@@ -219,10 +230,13 @@ class SASRecSBERT(nn.Module):
 
 
 def train_one_epoch(model, loader, opt, pad_id, device, grad_clip=5.0,
-                      sampled_negs: int = 0):
-    """If sampled_negs > 0, use sampled softmax with that many random
-    negatives per position (memory-friendly for huge catalogs). Otherwise
-    use full softmax over all n_items."""
+                      sampled_negs: int = 0, in_batch_negs: bool = False):
+    """Training loss modes (in priority order):
+      - in_batch_negs=True: use all items in the batch as negatives per
+        position (12K+ negs per step at batch=256, much more than sampled-1024;
+        free compute since batch items are already in memory).
+      - sampled_negs > 0: sampled softmax with K random negatives.
+      - default: full softmax over all n_items."""
     model.train()
     total_loss = 0.0
     n_batches = 0
@@ -231,7 +245,27 @@ def train_one_epoch(model, loader, opt, pad_id, device, grad_clip=5.0,
         inputs = inputs.to(device, non_blocking=True)
         targets = targets.to(device, non_blocking=True)
 
-        if sampled_negs == 0:
+        if in_batch_negs:
+            # In-batch negative sampling: all target items in this batch
+            # act as negatives. Each position gets ~n_unique_items_in_batch
+            # negatives (typically 5K-12K at batch=256, seq=50). The
+            # softmax denominator is over: pos + all other batch items.
+            hidden = model.encode(inputs)                # (B, L, d)
+            B, L, d = hidden.shape
+            valid = (targets != pad_id)                   # (B, L)
+            n_valid = valid.sum().item()
+            if n_valid == 0:
+                continue
+            # Flatten valid positions
+            h_v = hidden[valid]                           # (n_valid, d)
+            pos_ids = targets[valid]                      # (n_valid,)
+            # Unique candidate item set: all target items (positives + neg pool)
+            uniq_items, inv = torch.unique(pos_ids, return_inverse=True)  # (n_uniq,), (n_valid,)
+            uniq_emb = model.item_features(uniq_items)    # (n_uniq, d)
+            logits = h_v @ uniq_emb.T                     # (n_valid, n_uniq)
+            # target = position of each (now in compact uniq space)
+            loss = F.cross_entropy(logits, inv, reduction="mean")
+        elif sampled_negs == 0:
             # Full softmax
             logits = model(inputs)                       # (B, L, n_items)
             B, L, n_items = logits.shape
@@ -378,6 +412,15 @@ def main():
                      help="If >0, use sampled softmax with this many negatives "
                           "per position (avoids OOM when n_items is huge). "
                           "0 = full softmax over all n_items.")
+    ap.add_argument("--in-batch-negs", action="store_true",
+                     help="Use all batch items as negatives per position "
+                          "(much denser gradient than --sampled-negs at no extra cost). "
+                          "Overrides --sampled-negs.")
+    ap.add_argument("--augment-factor", type=int, default=1,
+                     help="Number of random subsequences sampled per user per epoch "
+                          "(1 = original SASRec, 2-5 = standard augmentation). "
+                          "Each subsequence has start position uniformly sampled within "
+                          "the user's history.")
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
 
@@ -431,7 +474,8 @@ def main():
     print(f"  total params: {n_params:,}  device={DEVICE}")
 
     # DataLoader
-    dataset = SASRecDataset(user_seqs, args.max_seq_len, n_items, pad_id)
+    dataset = SASRecDataset(user_seqs, args.max_seq_len, n_items, pad_id,
+                              augment_factor=args.augment_factor)
     loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True,
                           num_workers=0, collate_fn=collate_batch, drop_last=False)
     print(f"  {len(dataset):,} training examples / {len(loader):,} batches per epoch")
@@ -446,7 +490,8 @@ def main():
     for epoch in range(1, args.epochs + 1):
         t0 = time.time()
         train_loss, n_pos = train_one_epoch(model, loader, opt, pad_id, DEVICE,
-                                              sampled_negs=args.sampled_negs)
+                                              sampled_negs=args.sampled_negs,
+                                              in_batch_negs=args.in_batch_negs)
         ep_time = time.time() - t0
         log = {"epoch": epoch, "train_loss": train_loss, "epoch_time_s": ep_time}
         if epoch % args.eval_every == 0 or epoch == args.epochs:

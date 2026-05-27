@@ -246,25 +246,38 @@ def train_one_epoch(model, loader, opt, pad_id, device, grad_clip=5.0,
         targets = targets.to(device, non_blocking=True)
 
         if in_batch_negs:
-            # In-batch negative sampling: all target items in this batch
-            # act as negatives. Each position gets ~n_unique_items_in_batch
-            # negatives (typically 5K-12K at batch=256, seq=50). The
-            # softmax denominator is over: pos + all other batch items.
+            # In-batch + random negatives (hybrid):
+            # Candidate pool = unique items in batch ∪ K random items.
+            # In-batch alone causes train-test shift (training discriminates
+            # against ~12K batch items, eval against all 207K). Adding random
+            # negs samples the full catalog distribution.
             hidden = model.encode(inputs)                # (B, L, d)
             B, L, d = hidden.shape
-            valid = (targets != pad_id)                   # (B, L)
+            valid = (targets != pad_id)
             n_valid = valid.sum().item()
             if n_valid == 0:
                 continue
-            # Flatten valid positions
             h_v = hidden[valid]                           # (n_valid, d)
             pos_ids = targets[valid]                      # (n_valid,)
-            # Unique candidate item set: all target items (positives + neg pool)
-            uniq_items, inv = torch.unique(pos_ids, return_inverse=True)  # (n_uniq,), (n_valid,)
-            uniq_emb = model.item_features(uniq_items)    # (n_uniq, d)
-            logits = h_v @ uniq_emb.T                     # (n_valid, n_uniq)
-            # target = position of each (now in compact uniq space)
-            loss = F.cross_entropy(logits, inv, reduction="mean")
+            uniq_in_batch = torch.unique(pos_ids)         # (n_in_batch,)
+            # If sampled_negs > 0, add that many random negatives drawn from
+            # the full item catalog (rejection-free; some may overlap with
+            # in-batch positives which is fine — they just stay as positives).
+            if sampled_negs > 0:
+                rand_negs = torch.randint(0, model.n_items, (sampled_negs,),
+                                            device=device)
+                cand = torch.unique(torch.cat([uniq_in_batch, rand_negs]))
+            else:
+                cand = uniq_in_batch
+            cand_emb = model.item_features(cand)          # (n_cand, d)
+            # Map pos_ids into compact cand index
+            # pos_ids must all be in cand (in-batch positives are). Build
+            # a mapping via searchsorted on the sorted cand.
+            sorted_cand, sort_idx = torch.sort(cand)
+            pos_in_sorted = torch.searchsorted(sorted_cand, pos_ids)
+            pos_compact = sort_idx[pos_in_sorted]
+            logits = h_v @ cand_emb.T                     # (n_valid, n_cand)
+            loss = F.cross_entropy(logits, pos_compact, reduction="mean")
         elif sampled_negs == 0:
             # Full softmax
             logits = model(inputs)                       # (B, L, n_items)

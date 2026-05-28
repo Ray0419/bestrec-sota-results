@@ -369,7 +369,8 @@ def train_one_epoch(model, loader, opt, pad_id, device, grad_clip=5.0,
 
 
 def evaluate(model, user_seqs, test_inters, n_items, pad_id, max_seq_len,
-              device, top_k=10, batch_size=512, extra_history=None):
+              device, top_k=10, batch_size=512, extra_history=None,
+              subsample_users=0, subsample_seed=0):
     """For each (u, target) in test_inters, encode u's training sequence and
     score the target item against all items. Mask training items. Compute
     NDCG@K, HR@K, MRR.
@@ -384,6 +385,9 @@ def evaluate(model, user_seqs, test_inters, n_items, pad_id, max_seq_len,
     model.eval()
     test_dict = {u: i for u, i, _, _ in test_inters}
     users = sorted(test_dict.keys())
+    if subsample_users and subsample_users < len(users):
+        rng = np.random.RandomState(subsample_seed)
+        users = sorted(rng.choice(users, subsample_users, replace=False).tolist())
     n_eval = len(users)
     extra = extra_history or {}
     ndcg, hr, rr = [], [], []
@@ -471,6 +475,8 @@ def main():
                      help="Override the default sbert_titles_<cat>.npy cache "
                           "path (e.g. cache_5core/blair_titles_<cat>.npy for BLaIR).")
     ap.add_argument("--eval-every", type=int, default=5)
+    ap.add_argument("--eval-subsample", type=int, default=0,
+                     help="Subsample N users for periodic eval (full eval at the end). 0 = full set always.")
     ap.add_argument("--sampled-negs", type=int, default=0,
                      help="If >0, use sampled softmax with this many negatives "
                           "per position (avoids OOM when n_items is huge). "
@@ -566,15 +572,17 @@ def main():
         ep_time = time.time() - t0
         log = {"epoch": epoch, "train_loss": train_loss, "epoch_time_s": ep_time}
         if epoch % args.eval_every == 0 or epoch == args.epochs:
+            # Periodic eval: subsample to keep wall time tractable.
+            # Final eval is always on the full set.
+            subs = args.eval_subsample if epoch < args.epochs else 0
             val_metrics = evaluate(model, user_seqs, valid_inters, n_items, pad_id,
-                                     args.max_seq_len, DEVICE)
-            # For test eval: standard SASRec/TIGER convention is to include
-            # the val item in the input sequence so test predicts the
-            # immediate-next item (matching what the model was trained on).
+                                     args.max_seq_len, DEVICE,
+                                     subsample_users=subs)
             valid_dict = {u: i for u, i, _, _ in valid_inters}
             test_extra = {u: [i] for u, i in valid_dict.items()}
             test_metrics = evaluate(model, user_seqs, test_inters, n_items, pad_id,
-                                      args.max_seq_len, DEVICE, extra_history=test_extra)
+                                      args.max_seq_len, DEVICE, extra_history=test_extra,
+                                      subsample_users=subs)
             log["val"] = val_metrics
             log["test"] = test_metrics
             print(f"  epoch {epoch:>3d}  loss={train_loss:.4f}  val_NDCG={val_metrics['NDCG@10']:.4f}  "

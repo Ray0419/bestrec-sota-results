@@ -229,8 +229,52 @@ class SASRecSBERT(nn.Module):
         return logits
 
 
+def chunked_full_softmax_loss(hidden, targets, model, pad_id, item_chunk: int = 8192):
+    """Compute full-softmax cross-entropy in CHUNKS over the item dimension to
+    avoid the (B, L, n_items) tensor that would OOM at large catalogs.
+
+    Returns the mean cross-entropy over valid (non-pad) positions.
+
+    Approach: for each valid position, we need log p(target) under softmax over
+    all items. The log p = score_target - logsumexp(all scores). We compute
+    logsumexp incrementally over chunks of the item dimension, then add the
+    target score (gathered once)."""
+    valid = (targets != pad_id)
+    n_valid = valid.sum().item()
+    if n_valid == 0:
+        return torch.tensor(0.0, device=hidden.device, requires_grad=True)
+    h_v = hidden[valid]                                  # (n_valid, d)
+    pos_ids = targets[valid]                             # (n_valid,)
+    n_items = model.n_items
+    # Incremental logsumexp over item chunks
+    lse = torch.full((n_valid,), -float("inf"), device=hidden.device)
+    target_scores = None
+    for start in range(0, n_items, item_chunk):
+        end = min(start + item_chunk, n_items)
+        chunk_ids = torch.arange(start, end, device=hidden.device)
+        chunk_emb = model.item_features(chunk_ids)       # (chunk, d)
+        chunk_logits = h_v @ chunk_emb.T                 # (n_valid, chunk)
+        # Update logsumexp: lse = logsumexp(lse, max(chunk_logits, axis=-1))
+        chunk_max = chunk_logits.max(dim=-1).values      # (n_valid,)
+        chunk_lse = chunk_max + torch.log(torch.sum(
+            torch.exp(chunk_logits - chunk_max.unsqueeze(-1)), dim=-1))  # (n_valid,)
+        lse = torch.logsumexp(torch.stack([lse, chunk_lse], dim=-1), dim=-1)
+        # If pos_ids fall in this chunk, grab their score
+        in_chunk = (pos_ids >= start) & (pos_ids < end)
+        if in_chunk.any():
+            local_idx = pos_ids[in_chunk] - start
+            scores_here = chunk_logits[in_chunk, local_idx]   # (n_in_chunk,)
+            if target_scores is None:
+                target_scores = torch.full((n_valid,), -float("inf"), device=hidden.device)
+            target_scores[in_chunk] = scores_here
+    # Cross-entropy = -mean(target_score - logsumexp)
+    loss = -(target_scores - lse).mean()
+    return loss
+
+
 def train_one_epoch(model, loader, opt, pad_id, device, grad_clip=5.0,
-                      sampled_negs: int = 0, in_batch_negs: bool = False):
+                      sampled_negs: int = 0, in_batch_negs: bool = False,
+                      chunked_full_softmax: bool = False, item_chunk: int = 8192):
     """Training loss modes (in priority order):
       - in_batch_negs=True: use all items in the batch as negatives per
         position (12K+ negs per step at batch=256, much more than sampled-1024;
@@ -245,7 +289,13 @@ def train_one_epoch(model, loader, opt, pad_id, device, grad_clip=5.0,
         inputs = inputs.to(device, non_blocking=True)
         targets = targets.to(device, non_blocking=True)
 
-        if in_batch_negs:
+        if chunked_full_softmax:
+            # Full softmax via chunked logits — proper baseline for the "sampled
+            # softmax is the bottleneck" hypothesis. Memory-bounded by item_chunk.
+            hidden = model.encode(inputs)
+            loss = chunked_full_softmax_loss(hidden, targets, model, pad_id,
+                                                item_chunk=item_chunk)
+        elif in_batch_negs:
             # In-batch + random negatives (hybrid):
             # Candidate pool = unique items in batch ∪ K random items.
             # In-batch alone causes train-test shift (training discriminates
@@ -429,6 +479,12 @@ def main():
                      help="Use all batch items as negatives per position "
                           "(much denser gradient than --sampled-negs at no extra cost). "
                           "Overrides --sampled-negs.")
+    ap.add_argument("--chunked-full-softmax", action="store_true",
+                     help="Compute full softmax loss over all n_items via chunked "
+                          "logits (avoids OOM). Use this when n_items is huge and you "
+                          "want the proper full-softmax baseline.")
+    ap.add_argument("--item-chunk", type=int, default=8192,
+                     help="Chunk size for --chunked-full-softmax")
     ap.add_argument("--augment-factor", type=int, default=1,
                      help="Number of random subsequences sampled per user per epoch "
                           "(1 = original SASRec, 2-5 = standard augmentation). "
@@ -504,7 +560,9 @@ def main():
         t0 = time.time()
         train_loss, n_pos = train_one_epoch(model, loader, opt, pad_id, DEVICE,
                                               sampled_negs=args.sampled_negs,
-                                              in_batch_negs=args.in_batch_negs)
+                                              in_batch_negs=args.in_batch_negs,
+                                              chunked_full_softmax=args.chunked_full_softmax,
+                                              item_chunk=args.item_chunk)
         ep_time = time.time() - t0
         log = {"epoch": epoch, "train_loss": train_loss, "epoch_time_s": ep_time}
         if epoch % args.eval_every == 0 or epoch == args.epochs:

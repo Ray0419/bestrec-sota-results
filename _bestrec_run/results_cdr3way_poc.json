@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "candidate_scope": "full_catalog",
+  "candidate_method": "CDR-3way (content + Ridge + CLCRec, validated simplex)",
+  "baseline_method": "CDR_validated (CDR-3way with alpha_clcrec=0)",
+  "seeds": [
+    20260521
+  ],
+  "config": {
+    "bpr_epochs": 40,
+    "tau": 0.2,
+    "lr": 0.001,
+    "hidden": 128
+  },
+  "datasets": {
+    "beauty": {
+      "perfold_3way": [
+        0.1404151687166256,
+        0.14621156006063327,
+        0.15587523176616375,
+        0.15156594481511515,
+        0.1449390695662813
+      ],
+      "perfold_cdr": [
+        0.1527219186005311,
+        0.1376178881875486,
+        0.15312360706957517,
+        0.15025249802694277,
+        0.15425867872158355
+      ],
+      "perfold_cdrcl": [
+        0.1469339725990445,
+        0.13098584490843898,
+        0.1341852324643131,
+        0.1384708116558574,
+        0.12030159869429619
+      ],
+      "wilcoxon_3way_vs_cdr": {
+        "n_users": 253,
+        "delta_mean": -0.004378110897302712,
+        "p_one_sided_greater": 0.9029125673032584,
+        "marker": "n.s."
+      },
+      "selected_simplex": [
+        {
+          "seed": 20260521,
+          "fold_id": 0,
+          "chosen_simplex": [
+            0.5,
+            0.5,
+            0.0
+          ]
+        },
+        {
+          "seed": 20260521,
+          "fold_id": 1,
+          "chosen_simplex": [
+            0.1,
+            0.5,
+            0.4
+          ]
+        },
+        {
+          "seed": 20260521,
+          "fold_id": 2,
+          "chosen_simplex": [
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "seed": 20260521,
+          "fold_id": 3,
+          "chosen_simplex": [
+            0.1,
+            0.75,
+            0.15
+          ]
+        },
+        {
+          "seed": 20260521,
+          "fold_id": 4,
+          "chosen_simplex": [
+            0.1,
+            0.5,
+            0.4
+          ]
+        }
+      ]
+    }
+  }
+}

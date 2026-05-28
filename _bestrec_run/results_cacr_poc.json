@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "candidate_scope": "full_catalog",
+  "candidate_method": "CDR-4way + CACR (content + Ridge + CLCRec + cross-attention)",
+  "baseline_method": "CDR_validated",
+  "seeds": [
+    20260521
+  ],
+  "config": {
+    "bpr_epochs": 30,
+    "cacr_epochs": 20
+  },
+  "datasets": {
+    "beauty": {
+      "perfold_4way": [
+        0.13230168485448768,
+        0.13039846167043126,
+        0.15173443957841515,
+        0.1585010907699308,
+        0.15676339244706974
+      ],
+      "perfold_cdr": [
+        0.1527219186005311,
+        0.1376178881875486,
+        0.15312360706957517,
+        0.15025249802694277,
+        0.15425867872158355
+      ],
+      "wilcoxon": {
+        "n_users": 253,
+        "delta_mean": -0.0038064205112066,
+        "p_one_sided_greater": 0.7076253695924697,
+        "marker": "n.s."
+      },
+      "selected_simplex": [
+        {
+          "seed": 20260521,
+          "fold_id": 0,
+          "chosen_simplex": [
+            0.75,
+            0.0,
+            0.0,
+            0.25
+          ]
+        },
+        {
+          "seed": 20260521,
+          "fold_id": 1,
+          "chosen_simplex": [
+            0.0,
+            0.25,
+            0.1,
+            0.65
+          ]
+        },
+        {
+          "seed": 20260521,
+          "fold_id": 2,
+          "chosen_simplex": [
+            0.0,
+            0.25,
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "seed": 20260521,
+          "fold_id": 3,
+          "chosen_simplex": [
+            0.25,
+            0.5,
+            0.25,
+            0.0
+          ]
+        },
+        {
+          "seed": 20260521,
+          "fold_id": 4,
+          "chosen_simplex": [
+            0.0,
+            0.75,
+            0.25,
+            0.0
+          ]
+        }
+      ]
+    }
+  }
+}

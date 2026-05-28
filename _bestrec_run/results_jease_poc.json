@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "candidate_scope": "full_catalog",
+  "candidate_method": "JEASE",
+  "baseline_method": "CDR_validated",
+  "seeds": [
+    20260521
+  ],
+  "cold_mass_scales": [
+    0.5,
+    1.0,
+    2.0
+  ],
+  "datasets": {
+    "beauty": {
+      "rows": [
+        {
+          "seed": 20260521,
+          "fold": 0,
+          "alpha": 0.5,
+          "CDR_validated_ndcg10": 0.1404151687166256,
+          "JEASE_cms=0.5_ndcg10": 0.06003887854256201,
+          "JEASE_cms=1.0_ndcg10": 0.12138461857572176,
+          "JEASE_cms=2.0_ndcg10": 0.1248597564055419
+        },
+        {
+          "seed": 20260521,
+          "fold": 1,
+          "alpha": 0.0,
+          "CDR_validated_ndcg10": 0.1363141394171894,
+          "JEASE_cms=0.5_ndcg10": 0.05394794361434356,
+          "JEASE_cms=1.0_ndcg10": 0.12070768653294109,
+          "JEASE_cms=2.0_ndcg10": 0.11055940208431701
+        },
+        {
+          "seed": 20260521,
+          "fold": 2,
+          "alpha": 0.0,
+          "CDR_validated_ndcg10": 0.15587523176616375,
+          "JEASE_cms=0.5_ndcg10": 0.059841636578178335,
+          "JEASE_cms=1.0_ndcg10": 0.13578867121596416,
+          "JEASE_cms=2.0_ndcg10": 0.14095030492763294
+        },
+        {
+          "seed": 20260521,
+          "fold": 3,
+          "alpha": 0.0,
+          "CDR_validated_ndcg10": 0.14877151440936381,
+          "JEASE_cms=0.5_ndcg10": 0.06313796037893721,
+          "JEASE_cms=1.0_ndcg10": 0.13014794937530222,
+          "JEASE_cms=2.0_ndcg10": 0.12928480957312755
+        },
+        {
+          "seed": 20260521,
+          "fold": 4,
+          "alpha": 0.5,
+          "CDR_validated_ndcg10": 0.14921669725778444,
+          "JEASE_cms=0.5_ndcg10": 0.06227786310460508,
+          "JEASE_cms=1.0_ndcg10": 0.11725266772656645,
+          "JEASE_cms=2.0_ndcg10": 0.11063519829398452
+        }
+      ]
+    }
+  }
+}

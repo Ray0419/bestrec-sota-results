@@ -1,0 +1,86 @@
+{
+  "ablation": {
+    "ablation_id": "dropoutnet_anchor_only_control",
+    "generated_utc": "2026-06-03T14:37:10Z",
+    "publication_role": "diagnostic_ablation_only",
+    "purpose": "Controls for the DropoutNet anchor by setting rank-blend prediction weight to zero."
+  },
+  "candidate": "lc2c_retrieval_ltr",
+  "dropoutnet_feature_config": {
+    "beauty": {
+      "k": 128,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.5,
+      "reg": 10.0
+    },
+    "books": {
+      "k": 64,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.7,
+      "reg": 1.0
+    },
+    "fashion": {
+      "k": 128,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.5,
+      "reg": 10.0
+    },
+    "instruments": {
+      "k": 128,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.7,
+      "reg": 1.0
+    }
+  },
+  "ltr_config": {
+    "fallback_method": "official_dropoutnet",
+    "feature_methods": [
+      "official_dropoutnet"
+    ],
+    "learning_rate": 0.04,
+    "mask_seen_in_topm": false,
+    "max_depth": 3,
+    "max_train_examples": 60000,
+    "method": "lc2c_retrieval_ltr",
+    "min_validation_gain": 0.0,
+    "n_estimators": 120,
+    "negative_samples_per_positive": 32,
+    "rank_feature_scope": "zsigmoid",
+    "rerank_anchor_method": "official_dropoutnet",
+    "rerank_anchor_methods": [],
+    "rerank_output_mode": "rank_blend",
+    "rerank_prediction_weight": 0.0,
+    "rerank_top_m": 512,
+    "score_batch_items": 2048,
+    "validation_baseline_method": "official_dropoutnet"
+  },
+  "protocol": {
+    "claim_scope": "cold-start full-catalog recommendation only; no broad SOTA claim is allowed unless every required evidence method is complete",
+    "datasets": [
+      "beauty",
+      "fashion",
+      "instruments",
+      "books"
+    ],
+    "fresh_confirmatory_seeds": [
+      20260611,
+      20260612,
+      20260613,
+      20260614,
+      20260615
+    ],
+    "minimum_bootstrap_reps": 2000,
+    "protocol_id": "cold_sota_strict_v2",
+    "protocol_path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\protocols\\cold_sota_strict_v2.json",
+    "required_evidence_methods": [
+      "official_dropoutnet_fixed",
+      "official_dropoutnet",
+      "official_blair",
+      "official_clcrec",
+      "official_melt",
+      "tiger_liger_retrieval"
+    ]
+  },
+  "schema_version": 1,
+  "source_research_run": "research_strict_v2_all_official_dn_rankblend05_101_103"
+}

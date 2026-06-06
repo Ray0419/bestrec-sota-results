@@ -1,0 +1,337 @@
+{
+  "checks": [
+    {
+      "missing": [],
+      "name": "required_artifacts_present",
+      "passed": true
+    },
+    {
+      "gate_passed": true,
+      "name": "gate_matches_tables",
+      "passed": true,
+      "tables_sota_claim_allowed": true
+    },
+    {
+      "leaked_proxy_methods": [],
+      "name": "no_proxy_methods_in_paper_table",
+      "passed": true
+    },
+    {
+      "checked_outputs": 5,
+      "mismatches": [],
+      "name": "manifest_output_hashes_match",
+      "passed": true
+    },
+    {
+      "failures": [],
+      "name": "table_significance_matches_significance_json",
+      "passed": true
+    }
+  ],
+  "consistency_passed": true,
+  "full_experiment_rebuild": {
+    "canonical_run_id": "confirmatory_masked_candidate_20260701_20260705_candidate_only",
+    "command": [
+      "C:\\Users\\rayxc\\Documents\\R\\_bestrec_run\\.venv\\Scripts\\python.exe",
+      "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\validate_full_clean_rebuild.py",
+      "--canonical-run-id",
+      "confirmatory_masked_candidate_20260701_20260705_candidate_only",
+      "--run-id",
+      "full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705",
+      "--metric-tolerance",
+      "1e-09"
+    ],
+    "compare": {
+      "canonical_run_id": "confirmatory_masked_candidate_20260701_20260705_candidate_only",
+      "diff_failures": [],
+      "max_metric_abs_diff": 0.0,
+      "metric_tolerance": 1e-09,
+      "passed": true,
+      "rebuilt_gate_passed": true,
+      "rebuilt_run_id": "full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705",
+      "record_hash_match_required": false,
+      "record_hashes": [
+        {
+          "canonical_sha256": "57cf6cca51f2649d0235d88396c4e7eb3e79f854ceba4b83a18cf020184ffc63",
+          "dataset": "beauty",
+          "file": "cold_full_catalog_records_beauty.jsonl",
+          "passed": false,
+          "rebuilt_sha256": "2a1d88e12a773f1e5fe6cd60c2e0b1002ae0f7982057f85613bed8783eac79d8"
+        },
+        {
+          "canonical_sha256": "7e81a5c3bb7ebcf018a4c1f36fbdc974950742547bcafed841c0e77ef046f0ab",
+          "dataset": "fashion",
+          "file": "cold_full_catalog_records_fashion.jsonl",
+          "passed": false,
+          "rebuilt_sha256": "d277e09cf3b7830956293095da2b6e8dbbe1d4ad5a3434fadf87a5cfe35c552c"
+        },
+        {
+          "canonical_sha256": "9c7310b282fa2d7c36327308df8be3aee4182edf1804a86ae07d872ebedfc580",
+          "dataset": "instruments",
+          "file": "cold_full_catalog_records_instruments.jsonl",
+          "passed": false,
+          "rebuilt_sha256": "04b1f43c0dc0a94b25ba0978243c4fd1878d97deac386a1a38a316f27e93dba5"
+        },
+        {
+          "canonical_sha256": "5b8254afc7f6dfb4d3cceb0b8e0829881287f47c31379b2b9657763b46cdf382",
+          "dataset": "books",
+          "file": "cold_full_catalog_records_books.jsonl",
+          "passed": false,
+          "rebuilt_sha256": "35d83bc9012af3995a59d1af79b15899db9aa0002103eb14f5ff980a6e9d7e5e"
+        }
+      ],
+      "record_hashes_match": false,
+      "record_multiset_fingerprints": [
+        {
+          "canonical": {
+            "row_count": 88725,
+            "row_digest_sum_sha256": "0d108c63064e2ee146e913887b089e106a975b38dc4e326d653a6135170840b8",
+            "row_digest_xor_sha256": "8cb5b0a0957686e593c7b9dd8a5513424614d15e652ac16188fc570c275aa5e4"
+          },
+          "dataset": "beauty",
+          "file": "cold_full_catalog_records_beauty.jsonl",
+          "passed": true,
+          "rebuilt": {
+            "row_count": 88725,
+            "row_digest_sum_sha256": "0d108c63064e2ee146e913887b089e106a975b38dc4e326d653a6135170840b8",
+            "row_digest_xor_sha256": "8cb5b0a0957686e593c7b9dd8a5513424614d15e652ac16188fc570c275aa5e4"
+          }
+        },
+        {
+          "canonical": {
+            "row_count": 132972,
+            "row_digest_sum_sha256": "bdb166f071f68928880cc81267512351df20cb0d628198ed5cd736233efc760f",
+            "row_digest_xor_sha256": "36453c8120947c8d5fec75901c0f42cd8904ae55a398a7916a905d90a83432b5"
+          },
+          "dataset": "fashion",
+          "file": "cold_full_catalog_records_fashion.jsonl",
+          "passed": true,
+          "rebuilt": {
+            "row_count": 132972,
+            "row_digest_sum_sha256": "bdb166f071f68928880cc81267512351df20cb0d628198ed5cd736233efc760f",
+            "row_digest_xor_sha256": "36453c8120947c8d5fec75901c0f42cd8904ae55a398a7916a905d90a83432b5"
+          }
+        },
+        {
+          "canonical": {
+            "row_count": 2065910,
+            "row_digest_sum_sha256": "11b821da3928cc588f0dff45329b1f370de523db0edb7ebadb9668bbce0f560e",
+            "row_digest_xor_sha256": "810fbbe14c3910b3aab41828fadfc7b652966cff5603176ad5cde9b5b5d6446c"
+          },
+          "dataset": "instruments",
+          "file": "cold_full_catalog_records_instruments.jsonl",
+          "passed": true,
+          "rebuilt": {
+            "row_count": 2065910,
+            "row_digest_sum_sha256": "11b821da3928cc588f0dff45329b1f370de523db0edb7ebadb9668bbce0f560e",
+            "row_digest_xor_sha256": "810fbbe14c3910b3aab41828fadfc7b652966cff5603176ad5cde9b5b5d6446c"
+          }
+        },
+        {
+          "canonical": {
+            "row_count": 21069720,
+            "row_digest_sum_sha256": "b7d475e04cb1357fd22328e88aaa2f2d73acdf78e98d09cbd8921ee3116c0e63",
+            "row_digest_xor_sha256": "67eebc57c87a221f23b326bf2f65e619b7fb28652a7b7392f89f426f682894b5"
+          },
+          "dataset": "books",
+          "file": "cold_full_catalog_records_books.jsonl",
+          "passed": true,
+          "rebuilt": {
+            "row_count": 21069720,
+            "row_digest_sum_sha256": "b7d475e04cb1357fd22328e88aaa2f2d73acdf78e98d09cbd8921ee3116c0e63",
+            "row_digest_xor_sha256": "67eebc57c87a221f23b326bf2f65e619b7fb28652a7b7392f89f426f682894b5"
+          }
+        }
+      ],
+      "record_multisets_match": true,
+      "required_method_failures": [],
+      "schema_version": 1
+    },
+    "compare_file": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705\\full_clean_rebuild_compare.json",
+    "full_rebuild_run_id": "full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705",
+    "name": "full_experiment_clean_rebuild",
+    "passed": true,
+    "returncode": 0,
+    "scope": "Requires an independently generated run with model training/scoring and JSONL record generation already completed.",
+    "stderr_tail": [],
+    "stdout_tail": [
+      "Wrote C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705\\full_clean_rebuild_compare.json",
+      "Full clean rebuild compare: PASSED",
+      "Raw record hash differences: 4"
+    ]
+  },
+  "generated_utc": "2026-06-06T12:26:45Z",
+  "mode": "full_experiment_rebuild",
+  "notes": [
+    "This audit does not rerun model training or regenerate JSONL records.",
+    "The record-level mode verifies that derived paper-facing artifacts can be regenerated from canonical records.",
+    "Strict full clean-rebuild approval requires a separate full rebuild run and successful comparison."
+  ],
+  "passed": true,
+  "record_level_clean_rebuild_passed": true,
+  "record_level_rebuild": {
+    "bootstrap_reps": 2000,
+    "checks": [
+      {
+        "missing": [],
+        "name": "required_artifacts_present",
+        "passed": true
+      },
+      {
+        "gate_passed": true,
+        "name": "gate_matches_tables",
+        "passed": true,
+        "tables_sota_claim_allowed": true
+      },
+      {
+        "leaked_proxy_methods": [],
+        "name": "no_proxy_methods_in_paper_table",
+        "passed": true
+      },
+      {
+        "checked_outputs": 5,
+        "mismatches": [],
+        "name": "manifest_output_hashes_match",
+        "passed": true
+      },
+      {
+        "failures": [],
+        "name": "table_significance_matches_significance_json",
+        "passed": true
+      },
+      {
+        "comparisons": [
+          {
+            "name": "results_final.json",
+            "passed": true
+          },
+          {
+            "name": "significance.json",
+            "passed": true
+          },
+          {
+            "name": "baseline_audit.json",
+            "passed": true
+          },
+          {
+            "name": "publication_gate.json",
+            "passed": true
+          },
+          {
+            "name": "tables.json",
+            "passed": true
+          }
+        ],
+        "name": "semantic_outputs_match",
+        "passed": true
+      }
+    ],
+    "finalize_returncode": 0,
+    "finalize_stderr_tail": [],
+    "finalize_stdout_tail": [
+      "Finalized C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\confirmatory_masked_candidate_20260701_20260705_candidate_only__record_rebuild",
+      "Gate: PASSED"
+    ],
+    "input_file_count": 15,
+    "input_files": [
+      {
+        "bytes": 1785,
+        "mode": "hardlink",
+        "name": "baseline_run_config_official_dropoutnet_fixed.json",
+        "sha256": "7502df1eb027e303f9628504922f2aa05f8157a6fde1b3fb093e971dd547b7d8"
+      },
+      {
+        "bytes": 19003185,
+        "mode": "hardlink",
+        "name": "cold_full_catalog_records_beauty.jsonl",
+        "sha256": "57cf6cca51f2649d0235d88396c4e7eb3e79f854ceba4b83a18cf020184ffc63"
+      },
+      {
+        "bytes": 4592676033,
+        "mode": "hardlink",
+        "name": "cold_full_catalog_records_books.jsonl",
+        "sha256": "5b8254afc7f6dfb4d3cceb0b8e0829881287f47c31379b2b9657763b46cdf382"
+      },
+      {
+        "bytes": 28705816,
+        "mode": "hardlink",
+        "name": "cold_full_catalog_records_fashion.jsonl",
+        "sha256": "7e81a5c3bb7ebcf018a4c1f36fbdc974950742547bcafed841c0e77ef046f0ab"
+      },
+      {
+        "bytes": 458668616,
+        "mode": "hardlink",
+        "name": "cold_full_catalog_records_instruments.jsonl",
+        "sha256": "9c7310b282fa2d7c36327308df8be3aee4182edf1804a86ae07d872ebedfc580"
+      },
+      {
+        "bytes": 48499,
+        "mode": "hardlink",
+        "name": "lc2c_v2_audit.json",
+        "sha256": "ef3542a0d8e1f1925fbc5121a3dea85119f9bf08ba2f9a0f7f89dc69a504673a"
+      },
+      {
+        "bytes": 34295,
+        "mode": "hardlink",
+        "name": "official_blair_audit.json",
+        "sha256": "c9ae42db64f7217f298dea0e078fdf39f8594e50561cbd7a81c573ef3e386a11"
+      },
+      {
+        "bytes": 295892,
+        "mode": "hardlink",
+        "name": "official_clcrec_audit.json",
+        "sha256": "f3bb881630add20e41b182120f9c2c634f495d335fe56aa79fe604a03350a3bb"
+      },
+      {
+        "bytes": 103030,
+        "mode": "hardlink",
+        "name": "official_dropoutnet_audit.json",
+        "sha256": "ce36d3cf966a0dc128a28999117cb3e824f62568e1fd46c37c4709e074009f64"
+      },
+      {
+        "bytes": 55368,
+        "mode": "hardlink",
+        "name": "official_dropoutnet_fixed_audit.json",
+        "sha256": "c87fefc8cc5ee360847752824cf8295ca07a9c2cdf3d9cede13f803370362aaf"
+      },
+      {
+        "bytes": 43066,
+        "mode": "hardlink",
+        "name": "official_melt_audit.json",
+        "sha256": "94a3e0339531bdf19ce6fc0bd70c462627b10f3bd0995474c992afec281d31eb"
+      },
+      {
+        "bytes": 43066,
+        "mode": "hardlink",
+        "name": "official_melt_same_split_audit.json",
+        "sha256": "94a3e0339531bdf19ce6fc0bd70c462627b10f3bd0995474c992afec281d31eb"
+      },
+      {
+        "bytes": 4860,
+        "mode": "hardlink",
+        "name": "run_config.json",
+        "sha256": "88b3ef2473927241fd0a4da7577ddeb28fb7a9fadb5b3c239b68acd48497c383"
+      },
+      {
+        "bytes": 2359,
+        "mode": "hardlink",
+        "name": "tiger_liger_retrieval_audit.json",
+        "sha256": "52f837cb3255811caca9c54f3c4f29542806551da7bfe1722fc2368b23e9f7e3"
+      },
+      {
+        "bytes": 1529,
+        "mode": "hardlink",
+        "name": "tiger_liger_retrieval_import_audit.json",
+        "sha256": "85b8b5a4b10a7fa5d5585c8055da33e3850f198a24f91b82d7a043422cb84de0"
+      }
+    ],
+    "name": "record_level_clean_rebuild",
+    "passed": true,
+    "rebuild_dir": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\confirmatory_masked_candidate_20260701_20260705_candidate_only__record_rebuild",
+    "run_id": "confirmatory_masked_candidate_20260701_20260705_candidate_only__record_rebuild",
+    "scope": "Regenerates derived summaries/tables/significance/manifest from canonical JSONL records and audit evidence. It does not rerun model training or record generation."
+  },
+  "run_id": "confirmatory_masked_candidate_20260701_20260705_candidate_only",
+  "schema_version": 1,
+  "strict_clean_rebuild_passed": true
+}

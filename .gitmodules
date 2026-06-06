@@ -1,0 +1,6 @@
+[submodule "_bestrec_sota_lab/third_party/MELT"]
+	path = _bestrec_sota_lab/third_party/MELT
+	url = https://github.com/rlqja1107/MELT
+[submodule "external/liger"]
+	path = external/liger
+	url = https://github.com/facebookresearch/liger.git

@@ -1,0 +1,806 @@
+{
+  "ablation_runs": {
+    "ablation_mask_seen_books_20260611_20260615_full": {
+      "ablation": {
+        "ablation_id": "mask_seen_topm_true",
+        "generated_utc": "2026-06-03T14:37:10Z",
+        "publication_role": "diagnostic_ablation_only",
+        "purpose": "Checks whether excluding train-history items during top-M rerank pool selection changes the reported win."
+      },
+      "datasets": {
+        "books": {
+          "baseline_comparisons": {
+            "content_direct": {
+              "alternative": "candidate greater than baseline",
+              "baseline_user_mean": 0.013257397114189004,
+              "candidate_user_mean": 0.047075257969201464,
+              "mean_delta": 0.033817860855012455,
+              "metric": "ndcg10",
+              "n_users": 14407,
+              "negative_users": 644,
+              "p_greater": 0.0,
+              "positive_users": 12800,
+              "sample_unit": "per-user mean",
+              "zero_users": 963
+            },
+            "official_blair": {
+              "alternative": "candidate greater than baseline",
+              "baseline_user_mean": 0.010518355447938452,
+              "candidate_user_mean": 0.047075257969201464,
+              "mean_delta": 0.03655690252126301,
+              "metric": "ndcg10",
+              "n_users": 14407,
+              "negative_users": 629,
+              "p_greater": 0.0,
+              "positive_users": 12836,
+              "sample_unit": "per-user mean",
+              "zero_users": 942
+            },
+            "official_clcrec": {
+              "alternative": "candidate greater than baseline",
+              "baseline_user_mean": 0.0038469977135673775,
+              "candidate_user_mean": 0.047075257969201464,
+              "mean_delta": 0.04322826025563408,
+              "metric": "ndcg10",
+              "n_users": 14407,
+              "negative_users": 486,
+              "p_greater": 0.0,
+              "positive_users": 13044,
+              "sample_unit": "per-user mean",
+              "zero_users": 877
+            },
+            "official_dropoutnet": {
+              "alternative": "candidate greater than baseline",
+              "baseline_user_mean": 0.02309184156976525,
+              "candidate_user_mean": 0.047075257969201464,
+              "mean_delta": 0.02398341639943621,
+              "metric": "ndcg10",
+              "n_users": 14407,
+              "negative_users": 1230,
+              "p_greater": 0.0,
+              "positive_users": 12188,
+              "sample_unit": "per-user mean",
+              "zero_users": 989
+            },
+            "official_dropoutnet_fixed": {
+              "alternative": "candidate greater than baseline",
+              "baseline_user_mean": 0.02309184156976525,
+              "candidate_user_mean": 0.047075257969201464,
+              "mean_delta": 0.02398341639943621,
+              "metric": "ndcg10",
+              "n_users": 14407,
+              "negative_users": 1230,
+              "p_greater": 0.0,
+              "positive_users": 12188,
+              "sample_unit": "per-user mean",
+              "zero_users": 989
+            }
+          },
+          "extra_in_ablation": 0,
+          "folds": [
+            {
+              "fold_id": 0,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.08016424050888693,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.00025864647068808043,
+                  "reference_mean": 0.07990559403819886
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.04084991134506126,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0002083951303767216,
+                  "reference_mean": 0.040641516214684544
+                },
+                "rr": {
+                  "ablation_mean": 0.03613864018705242,
+                  "max_abs_delta": 0.9375,
+                  "mean_delta": 0.0004564645175122803,
+                  "reference_mean": 0.03568217566954015
+                }
+              },
+              "n_common": 123721,
+              "seed": 20260611
+            },
+            {
+              "fold_id": 1,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.0782568329152686,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": -0.0004805029807473043,
+                  "reference_mean": 0.07873733589601589
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.03969028660582014,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": -0.0003022834271857852,
+                  "reference_mean": 0.03999257003300593
+                },
+                "rr": {
+                  "ablation_mean": 0.035615318784368286,
+                  "max_abs_delta": 0.9977324263038548,
+                  "mean_delta": -1.4873284207283314e-05,
+                  "reference_mean": 0.035630192068575574
+                }
+              },
+              "n_common": 122788,
+              "seed": 20260611
+            },
+            {
+              "fold_id": 2,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.07970208030134407,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.00038524098964129786,
+                  "reference_mean": 0.07931683931170276
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.039450490707937665,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": -0.00018159172098806403,
+                  "reference_mean": 0.03963208242892573
+                },
+                "rr": {
+                  "ablation_mean": 0.03495362858345203,
+                  "max_abs_delta": 0.9375,
+                  "mean_delta": -0.0001383429784651318,
+                  "reference_mean": 0.035091971561917165
+                }
+              },
+              "n_common": 116810,
+              "seed": 20260611
+            },
+            {
+              "fold_id": 3,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.08577440936300072,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0017522091249014906,
+                  "reference_mean": 0.08402220023809923
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.04347340216338079,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0007793241286704786,
+                  "reference_mean": 0.04269407803471031
+                },
+                "rr": {
+                  "ablation_mean": 0.03776340656924735,
+                  "max_abs_delta": 0.9962962962962963,
+                  "mean_delta": 0.0009454958779953036,
+                  "reference_mean": 0.03681791069125204
+                }
+              },
+              "n_common": 119278,
+              "seed": 20260611
+            },
+            {
+              "fold_id": 4,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.0770635286234767,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.001700238703463294,
+                  "reference_mean": 0.0753632899200134
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.03929467565324987,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0010171636148754086,
+                  "reference_mean": 0.03827751203837446
+                },
+                "rr": {
+                  "ablation_mean": 0.034699313153204764,
+                  "max_abs_delta": 0.9444444444444444,
+                  "mean_delta": 0.0009402361696028722,
+                  "reference_mean": 0.033759076983601886
+                }
+              },
+              "n_common": 119395,
+              "seed": 20260611
+            },
+            {
+              "fold_id": 0,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.0819113460756405,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0007482716551443676,
+                  "reference_mean": 0.08116307442049614
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.04159917563447072,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0007494282752346077,
+                  "reference_mean": 0.040849747359236105
+                },
+                "rr": {
+                  "ablation_mean": 0.03658899143895712,
+                  "max_abs_delta": 0.972972972972973,
+                  "mean_delta": 0.0008820819421335327,
+                  "reference_mean": 0.035706909496823584
+                }
+              },
+              "n_common": 122950,
+              "seed": 20260612
+            },
+            {
+              "fold_id": 1,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.07435132691771505,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.00230658093733366,
+                  "reference_mean": 0.0720447459803814
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.03797770041891617,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0013565361772244326,
+                  "reference_mean": 0.03662116424169173
+                },
+                "rr": {
+                  "ablation_mean": 0.03406248220382362,
+                  "max_abs_delta": 0.9523809523809523,
+                  "mean_delta": 0.0010697069594382234,
+                  "reference_mean": 0.0329927752443854
+                }
+              },
+              "n_common": 118357,
+              "seed": 20260612
+            },
+            {
+              "fold_id": 2,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.0815748347359536,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": -0.000526504926581813,
+                  "reference_mean": 0.08210133966253541
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.04071294207473158,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": -0.0003373448963560568,
+                  "reference_mean": 0.04105028697108763
+                },
+                "rr": {
+                  "ablation_mean": 0.03571636881532195,
+                  "max_abs_delta": 0.9655172413793104,
+                  "mean_delta": -5.7270822104911096e-05,
+                  "reference_mean": 0.035773639637426864
+                }
+              },
+              "n_common": 119657,
+              "seed": 20260612
+            },
+            {
+              "fold_id": 3,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.08607117991563255,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.00016382028914281035,
+                  "reference_mean": 0.08590735962648974
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.04463256198460428,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.00016493655614740216,
+                  "reference_mean": 0.04446762542845688
+                },
+                "rr": {
+                  "ablation_mean": 0.03899674039619689,
+                  "max_abs_delta": 0.9615384615384616,
+                  "mean_delta": 0.0002881041651415,
+                  "reference_mean": 0.038708636231055395
+                }
+              },
+              "n_common": 122085,
+              "seed": 20260612
+            },
+            {
+              "fold_id": 4,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.0853602145565523,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0004708137511244882,
+                  "reference_mean": 0.08488940080542781
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.04418242417435404,
+                  "max_abs_delta": 0.6989700043360187,
+                  "mean_delta": 9.711420829167043e-05,
+                  "reference_mean": 0.04408530996606238
+                },
+                "rr": {
+                  "ablation_mean": 0.03921332509369622,
+                  "max_abs_delta": 0.8888888888888888,
+                  "mean_delta": 0.00010308372622172637,
+                  "reference_mean": 0.0391102413674745
+                }
+              },
+              "n_common": 118943,
+              "seed": 20260612
+            },
+            {
+              "fold_id": 0,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.07554488363502032,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0004197870839909998,
+                  "reference_mean": 0.07512509655102932
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.03762951070911275,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.00029211266517379503,
+                  "reference_mean": 0.03733739804393895
+                },
+                "rr": {
+                  "ablation_mean": 0.03281510660643482,
+                  "max_abs_delta": 0.9887640449438202,
+                  "mean_delta": 0.00039276174918875123,
+                  "reference_mean": 0.032422344857246065
+                }
+              },
+              "n_common": 119108,
+              "seed": 20260613
+            },
+            {
+              "fold_id": 1,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.0763076717298802,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.00016719472333453155,
+                  "reference_mean": 0.07614047700654568
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.038890575234043406,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0002818742086740842,
+                  "reference_mean": 0.03860870102536932
+                },
+                "rr": {
+                  "ablation_mean": 0.035001032280857755,
+                  "max_abs_delta": 0.9444444444444444,
+                  "mean_delta": 0.00045533650030145226,
+                  "reference_mean": 0.0345456957805563
+                }
+              },
+              "n_common": 119621,
+              "seed": 20260613
+            },
+            {
+              "fold_id": 2,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.08000131338088867,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0008865320998497821,
+                  "reference_mean": 0.07911478128103888
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.0405973958648676,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0008016002280841839,
+                  "reference_mean": 0.039795795636783426
+                },
+                "rr": {
+                  "ablation_mean": 0.03617548559174806,
+                  "max_abs_delta": 0.9444444444444444,
+                  "mean_delta": 0.0008875035666432646,
+                  "reference_mean": 0.035287982025104796
+                }
+              },
+              "n_common": 121823,
+              "seed": 20260613
+            },
+            {
+              "fold_id": 3,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.07735723498821075,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": -0.000829766433072354,
+                  "reference_mean": 0.0781870014212831
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.039548868632907366,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": -0.0005408441969180205,
+                  "reference_mean": 0.04008971282982539
+                },
+                "rr": {
+                  "ablation_mean": 0.03488383505308391,
+                  "max_abs_delta": 0.9615384615384616,
+                  "mean_delta": -5.1481331429993724e-05,
+                  "reference_mean": 0.03493531638451391
+                }
+              },
+              "n_common": 121721,
+              "seed": 20260613
+            },
+            {
+              "fold_id": 4,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.07525956615073631,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.00034246861400446046,
+                  "reference_mean": 0.07491709753673184
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.03890515552608289,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": -6.425980862128265e-05,
+                  "reference_mean": 0.038969415334704174
+                },
+                "rr": {
+                  "ablation_mean": 0.03451167214231734,
+                  "max_abs_delta": 0.9473684210526316,
+                  "mean_delta": 1.2943405767027694e-05,
+                  "reference_mean": 0.03449872873655031
+                }
+              },
+              "n_common": 119719,
+              "seed": 20260613
+            },
+            {
+              "fold_id": 0,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.07742783236779253,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0019586291248977297,
+                  "reference_mean": 0.0754692032428948
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.03935587529094199,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0010654960544774458,
+                  "reference_mean": 0.03829037923646455
+                },
+                "rr": {
+                  "ablation_mean": 0.034897611292176924,
+                  "max_abs_delta": 0.9761904761904762,
+                  "mean_delta": 0.001086286841776907,
+                  "reference_mean": 0.03381132445040002
+                }
+              },
+              "n_common": 121003,
+              "seed": 20260614
+            },
+            {
+              "fold_id": 1,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.07992628434110541,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0010959927258556862,
+                  "reference_mean": 0.07883029161524972
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.04107327671199252,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0008929790252351887,
+                  "reference_mean": 0.040180297686757335
+                },
+                "rr": {
+                  "ablation_mean": 0.036607406060875744,
+                  "max_abs_delta": 0.9545454545454546,
+                  "mean_delta": 0.0009583008187460022,
+                  "reference_mean": 0.035649105242129754
+                }
+              },
+              "n_common": 123176,
+              "seed": 20260614
+            },
+            {
+              "fold_id": 2,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.078381708652793,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": -0.00016258214676889376,
+                  "reference_mean": 0.07854429079956188
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.040104026833683394,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 6.653225838111394e-05,
+                  "reference_mean": 0.04003749457530229
+                },
+                "rr": {
+                  "ablation_mean": 0.03559695504363076,
+                  "max_abs_delta": 0.9285714285714286,
+                  "mean_delta": 0.0003086745049283417,
+                  "reference_mean": 0.035288280538702414
+                }
+              },
+              "n_common": 116864,
+              "seed": 20260614
+            },
+            {
+              "fold_id": 3,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.08433478850901718,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0007357629862167068,
+                  "reference_mean": 0.08359902552280048
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.04289895943590302,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 4.1398380593313e-05,
+                  "reference_mean": 0.04285756105530972
+                },
+                "rr": {
+                  "ablation_mean": 0.03838365270335265,
+                  "max_abs_delta": 0.9583333333333334,
+                  "mean_delta": -6.99132969017354e-05,
+                  "reference_mean": 0.03845356600025438
+                }
+              },
+              "n_common": 122322,
+              "seed": 20260614
+            },
+            {
+              "fold_id": 4,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.08075733180473248,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0014836420039282794,
+                  "reference_mean": 0.0792736898008042
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.04111604240667674,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0011244781148611403,
+                  "reference_mean": 0.0399915642918156
+                },
+                "rr": {
+                  "ablation_mean": 0.036599920156661574,
+                  "max_abs_delta": 0.9523809523809523,
+                  "mean_delta": 0.001125800073185615,
+                  "reference_mean": 0.03547412008347596
+                }
+              },
+              "n_common": 118627,
+              "seed": 20260614
+            },
+            {
+              "fold_id": 0,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.08375817520167618,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.00020358478882319509,
+                  "reference_mean": 0.08355459041285299
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.043231214283371434,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 7.461947369145393e-05,
+                  "reference_mean": 0.043156594809679975
+                },
+                "rr": {
+                  "ablation_mean": 0.0387931965480102,
+                  "max_abs_delta": 0.9090909090909091,
+                  "mean_delta": 0.00017229736041333632,
+                  "reference_mean": 0.03862089918759687
+                }
+              },
+              "n_common": 117887,
+              "seed": 20260615
+            },
+            {
+              "fold_id": 1,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.08328855898228589,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": -0.00010745844251386628,
+                  "reference_mean": 0.08339601742479975
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.042293893785771246,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.00020097921890986918,
+                  "reference_mean": 0.04209291456686138
+                },
+                "rr": {
+                  "ablation_mean": 0.037425399456556076,
+                  "max_abs_delta": 0.9615384615384616,
+                  "mean_delta": 0.0005843328215321183,
+                  "reference_mean": 0.036841066635023956
+                }
+              },
+              "n_common": 120977,
+              "seed": 20260615
+            },
+            {
+              "fold_id": 2,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.08628373564837058,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.0006875528090259944,
+                  "reference_mean": 0.08559618283934459
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.04515625469535937,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.00021320063778244928,
+                  "reference_mean": 0.04494305405757692
+                },
+                "rr": {
+                  "ablation_mean": 0.03980356151043532,
+                  "max_abs_delta": 0.9642857142857143,
+                  "mean_delta": 0.0002073455920144379,
+                  "reference_mean": 0.039596215918420885
+                }
+              },
+              "n_common": 120718,
+              "seed": 20260615
+            },
+            {
+              "fold_id": 3,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.0798785910689371,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.00021213926126581865,
+                  "reference_mean": 0.07966645180767128
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.04033669182229967,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.00011753051611990821,
+                  "reference_mean": 0.040219161306179765
+                },
+                "rr": {
+                  "ablation_mean": 0.0356885101769222,
+                  "max_abs_delta": 0.9230769230769231,
+                  "mean_delta": 0.0002909668833077042,
+                  "reference_mean": 0.03539754329361449
+                }
+              },
+              "n_common": 122561,
+              "seed": 20260615
+            },
+            {
+              "fold_id": 4,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.08273744461781074,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.00041719163280461245,
+                  "reference_mean": 0.08232025298500613
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.04169424257545267,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": 0.00030794878109257815,
+                  "reference_mean": 0.041386293794360096
+                },
+                "rr": {
+                  "ablation_mean": 0.03673704237798015,
+                  "max_abs_delta": 0.9666666666666667,
+                  "mean_delta": 0.0005481279688864451,
+                  "reference_mean": 0.036188914409093706
+                }
+              },
+              "n_common": 119849,
+              "seed": 20260615
+            }
+          ],
+          "identical_metrics": false,
+          "metrics": {
+            "hr10": {
+              "ablation_mean": 0.08046685005780807,
+              "max_abs_delta": 1.0,
+              "mean_delta": 0.0005697750136214435,
+              "negative_records": 14439,
+              "positive_records": 16154,
+              "reference_mean": 0.07989707504418664,
+              "zero_records": 2979367
+            },
+            "ndcg10": {
+              "ablation_mean": 0.0409930311847116,
+              "max_abs_delta": 1.0,
+              "mean_delta": 0.0003368242488212934,
+              "negative_records": 69753,
+              "positive_records": 67537,
+              "reference_mean": 0.0406562069358903,
+              "zero_records": 2872670
+            },
+            "rr": {
+              "ablation_mean": 0.036311148648946856,
+              "max_abs_delta": 0.9977324263038548,
+              "mean_delta": 0.00045573932396411046,
+              "negative_records": 547138,
+              "positive_records": 2208340,
+              "reference_mean": 0.03585540932498275,
+              "zero_records": 254482
+            }
+          },
+          "missing_in_ablation": 0,
+          "n_common": 3009960
+        }
+      },
+      "publication_gate": {
+        "accepted_non_applicable_methods": {},
+        "checked_at_utc": "2026-06-03T19:39:53Z",
+        "failures": [
+          "Frozen config is an ablation (mask_seen_topm_true) with publication_role=diagnostic_ablation_only; diagnostic ablations cannot authorize publication claims.",
+          "Bootstrap used 200 reps, below strict minimum 2000.",
+          "beauty missing cold full-catalog results.",
+          "fashion missing cold full-catalog results.",
+          "instruments missing cold full-catalog results.",
+          "books missing paired significance comparison against official_dropoutnet_fixed.",
+          "books missing paired significance comparison against official_dropoutnet.",
+          "books missing paired significance comparison against official_blair.",
+          "books missing paired significance comparison against official_clcrec.",
+          "Mandatory evidence method official_dropoutnet_fixed is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method official_dropoutnet_fixed.",
+          "fashion missing full-catalog records for mandatory evidence method official_dropoutnet_fixed.",
+          "instruments missing full-catalog records for mandatory evidence method official_dropoutnet_fixed.",
+          "books missing full-catalog records for mandatory evidence method official_dropoutnet_fixed.",
+          "Mandatory evidence method official_dropoutnet is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method official_dropoutnet.",
+          "fashion missing full-catalog records for mandatory evidence method official_dropoutnet.",
+          "instruments missing full-catalog records for mandatory evidence method official_dropoutnet.",
+          "books missing full-catalog records for mandatory evidence method official_dropoutnet.",
+          "Mandatory evidence method official_blair is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method official_blair.",
+          "fashion missing full-catalog records for mandatory evidence method official_blair.",
+          "instruments missing full-catalog records for mandatory evidence method official_blair.",
+          "books missing full-catalog records for mandatory evidence method official_blair.",
+          "Mandatory evidence method official_clcrec is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method official_clcrec.",
+          "fashion missing full-catalog records for mandatory evidence method official_clcrec.",
+          "instruments missing full-catalog records for mandatory evidence method official_clcrec.",
+          "books missing full-catalog records for mandatory evidence method official_clcrec.",
+          "Mandatory evidence method official_melt is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method official_melt.",
+          "fashion missing full-catalog records for mandatory evidence method official_melt.",
+          "instruments missing full-catalog records for mandatory evidence method official_melt.",
+          "books missing full-catalog records for mandatory evidence method official_melt.",
+          "Mandatory evidence method tiger_liger_retrieval is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method tiger_liger_retrieval.",
+          "fashion missing full-catalog records for mandatory evidence method tiger_liger_retrieval.",
+          "instruments missing full-catalog records for mandatory evidence method tiger_liger_retrieval.",
+          "books missing full-catalog records for mandatory evidence method tiger_liger_retrieval."
+        ],
+        "passed": false,
+        "protocol_id": "cold_sota_strict_v2",
+        "stage": "confirmatory",
+        "standard": "strict frozen full-catalog cold-SOTA gate"
+      }
+    }
+  },
+  "baseline_methods": [
+    "official_dropoutnet",
+    "official_dropoutnet_fixed",
+    "official_blair",
+    "official_clcrec",
+    "content_direct"
+  ],
+  "datasets": [
+    "books"
+  ],
+  "generated_utc": "2026-06-03T19:45:03Z",
+  "method": "lc2c_retrieval_ltr",
+  "reference_run": "confirmatory_strict_v2_candidate_20260611_20260615",
+  "schema_version": 1
+}

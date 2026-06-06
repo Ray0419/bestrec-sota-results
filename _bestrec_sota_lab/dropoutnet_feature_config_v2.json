@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "config_id": "dropoutnet_feature_v2_fixed_component",
+  "role": "Shared DropoutNet component config for lc2c_retrieval_ltr and official_dropoutnet_fixed.",
+  "selection_status": "frozen_from_preexisting_lab_candidate_before_strict_v2_repair; requires fresh confirmatory rerun under cold_sota_strict_v2",
+  "warning": "Do not compare a candidate using this component only against a differently tuned DropoutNet. The fixed comparator must use these exact values, and the tuned comparator must also be reported.",
+  "datasets": {
+    "beauty": {
+      "k": 128,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.5,
+      "reg": 10.0
+    },
+    "books": {
+      "k": 64,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.7,
+      "reg": 1.0
+    },
+    "fashion": {
+      "k": 128,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.5,
+      "reg": 10.0
+    },
+    "instruments": {
+      "k": 128,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.7,
+      "reg": 1.0
+    }
+  }
+}

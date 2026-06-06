@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "protocol_id": "cold_sota_strict_v2",
+  "claim_scope": "cold-start full-catalog recommendation only; no broad SOTA claim is allowed unless every required evidence method is complete",
+  "datasets": [
+    "beauty",
+    "fashion",
+    "instruments",
+    "books"
+  ],
+  "development_seeds": [
+    101,
+    102,
+    103
+  ],
+  "fresh_confirmatory_seeds": [
+    20260701,
+    20260702,
+    20260703,
+    20260704,
+    20260705
+  ],
+  "retired_confirmatory_seeds": [
+    20260611,
+    20260612,
+    20260613,
+    20260614,
+    20260615
+  ],
+  "candidate_method": "lc2c_retrieval_ltr",
+  "candidate_scope": "full_catalog",
+  "required_candidate_ltr_config": {
+    "mask_seen_in_topm": true
+  },
+  "dropoutnet_feature_config_path": "dropoutnet_feature_config_v2.json",
+  "dropoutnet_fairness_rule": "If official_dropoutnet is used as a candidate feature or rerank anchor, an official_dropoutnet_fixed comparator using exactly this config is mandatory; a separately tuned official_dropoutnet comparator is also mandatory as a stronger baseline.",
+  "required_evidence_methods": [
+    "official_dropoutnet_fixed",
+    "official_dropoutnet",
+    "official_blair",
+    "official_clcrec",
+    "official_melt",
+    "tiger_liger_retrieval"
+  ],
+  "documented_non_applicable_methods": {
+    "official_melt": {
+      "allowed_status": "not_applicable_to_zero_interaction_item_cold",
+      "required_audit_file": "official_melt_audit.json",
+      "claim_limitation": "MELT is a long-tailed sequential recommendation method whose official item branch requires train item-contexts; it is excluded from zero-interaction item-cold full-catalog SOTA claims only when the same-split audit proves every strict-fold cold item has zero train context."
+    }
+  },
+  "required_against_methods": [
+    "official_dropoutnet_fixed",
+    "official_dropoutnet",
+    "official_blair",
+    "official_clcrec",
+    "lc2c_v2"
+  ],
+  "proxy_methods_disallowed_for_publication": [
+    "faithful_dropoutnet",
+    "clcrec_contrastive",
+    "melt_tail_transfer"
+  ],
+  "minimum_bootstrap_reps": 2000,
+  "significance": {
+    "primary_metric": "NDCG@10",
+    "sample_unit": "per-user mean full-catalog cold-item NDCG@10",
+    "wilcoxon_alternative": "greater",
+    "correction": "Holm within dataset across candidate-vs-baseline comparisons",
+    "bootstrap": "user/item/fold clustered bootstrap",
+    "bootstrap_ci": 0.95
+  },
+  "publication_gate": {
+    "macro_win_required": true,
+    "dataset_wins_required": 4,
+    "holm_significant_vs_best_required": true,
+    "holm_significant_vs_lc2c_v2_required": true,
+    "bootstrap_lower_ci_above_zero_required": true,
+    "candidate_must_mask_seen_items_before_topm": true,
+    "candidate_feature_dropoutnet_must_match_fixed_comparator": true,
+    "no_proxy_or_missing_required_baselines": true,
+    "manifest_must_hash_code_data_records": true,
+    "research_stage_never_approves_publication": true
+  },
+  "notes": [
+    "This protocol intentionally revokes the earlier pass if faithful MELT or TIGER/LIGER evidence is absent.",
+    "MELT may be excluded only through documented source-backed non-applicability to zero-interaction item-cold full-catalog ranking; proxy MELT evidence remains disallowed.",
+    "The prior 20260606-20260610 confirmatory run may be used only as exploratory evidence after this protocol is frozen.",
+    "Any new publication claim must use fresh confirmatory seeds and the frozen candidate/config before looking at those results.",
+    "After the full ablation audit, mask_seen_in_topm=true is mandatory for any publication candidate because the unmasked Fashion result was inflated.",
+    "Because the repaired masked candidate was selected after inspecting the 20260611-20260615 runs, those seeds are retired from publication approval. Fresh post-repair confirmatory seeds are 20260701-20260705."
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "base_config": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\research_strict_v2_all_official_dn_rankblend05_101_103\\frozen_candidate_config.json",
+  "base_config_sha256": "8989b09249764bc3331e74f365dd90e39a58d6008300ce9bdcb757bd0274b46a",
+  "generated_configs": {
+    "dropoutnet_anchor_only_control": {
+      "ltr_config": {
+        "fallback_method": "official_dropoutnet",
+        "feature_methods": [
+          "official_dropoutnet"
+        ],
+        "learning_rate": 0.04,
+        "mask_seen_in_topm": false,
+        "max_depth": 3,
+        "max_train_examples": 60000,
+        "method": "lc2c_retrieval_ltr",
+        "min_validation_gain": 0.0,
+        "n_estimators": 120,
+        "negative_samples_per_positive": 32,
+        "rank_feature_scope": "zsigmoid",
+        "rerank_anchor_method": "official_dropoutnet",
+        "rerank_anchor_methods": [],
+        "rerank_output_mode": "rank_blend",
+        "rerank_prediction_weight": 0.0,
+        "rerank_top_m": 512,
+        "score_batch_items": 2048,
+        "validation_baseline_method": "official_dropoutnet"
+      },
+      "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\ablation_configs\\dropoutnet_anchor_only_control.json",
+      "purpose": "Controls for the DropoutNet anchor by setting rank-blend prediction weight to zero.",
+      "sha256": "0d8ecacbb23fdcb1f63da77b93a49a05c03f03809cb2cad4c997c483faa482d7"
+    },
+    "dropoutnet_feature_content_anchor": {
+      "ltr_config": {
+        "fallback_method": "official_dropoutnet",
+        "feature_methods": [
+          "content_direct",
+          "blair_text",
+          "faithful_dropoutnet",
+          "lc2c_v2",
+          "lc2cpp_validated_margin",
+          "melt_tail_transfer",
+          "popularity",
+          "official_dropoutnet"
+        ],
+        "learning_rate": 0.04,
+        "mask_seen_in_topm": false,
+        "max_depth": 3,
+        "max_train_examples": 60000,
+        "method": "lc2c_retrieval_ltr",
+        "min_validation_gain": 0.0,
+        "n_estimators": 120,
+        "negative_samples_per_positive": 32,
+        "rank_feature_scope": "zsigmoid",
+        "rerank_anchor_method": "content_direct",
+        "rerank_anchor_methods": [],
+        "rerank_output_mode": "rank_blend",
+        "rerank_prediction_weight": 0.5,
+        "rerank_top_m": 512,
+        "score_batch_items": 2048,
+        "validation_baseline_method": "official_dropoutnet"
+      },
+      "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\ablation_configs\\dropoutnet_feature_content_anchor.json",
+      "purpose": "Keeps DropoutNet as an LTR feature but removes it as the retrieval-stage anchor.",
+      "sha256": "11d160a8d3e4f0392808a81d6e75233d112bb2355bf6562d994674bbf822542d"
+    },
+    "mask_seen_topm_true": {
+      "ltr_config": {
+        "fallback_method": "official_dropoutnet",
+        "feature_methods": [
+          "content_direct",
+          "blair_text",
+          "faithful_dropoutnet",
+          "lc2c_v2",
+          "lc2cpp_validated_margin",
+          "melt_tail_transfer",
+          "popularity",
+          "official_dropoutnet"
+        ],
+        "learning_rate": 0.04,
+        "mask_seen_in_topm": true,
+        "max_depth": 3,
+        "max_train_examples": 60000,
+        "method": "lc2c_retrieval_ltr",
+        "min_validation_gain": 0.0,
+        "n_estimators": 120,
+        "negative_samples_per_positive": 32,
+        "rank_feature_scope": "zsigmoid",
+        "rerank_anchor_method": "official_dropoutnet",
+        "rerank_anchor_methods": [
+          "official_dropoutnet",
+          "content_direct",
+          "official_dropoutnet"
+        ],
+        "rerank_output_mode": "rank_blend",
+        "rerank_prediction_weight": 0.5,
+        "rerank_top_m": 512,
+        "score_batch_items": 2048,
+        "validation_baseline_method": "official_dropoutnet"
+      },
+      "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\ablation_configs\\mask_seen_topm_true.json",
+      "purpose": "Checks whether excluding train-history items during top-M rerank pool selection changes the reported win.",
+      "sha256": "14750991500f98eb4e837d1e3b0f6183184a1724591d30521a3f7e2e59e97336"
+    },
+    "no_dropoutnet_feature_or_anchor": {
+      "ltr_config": {
+        "fallback_method": "content_direct",
+        "feature_methods": [
+          "content_direct",
+          "blair_text",
+          "lc2c_v2",
+          "lc2cpp_validated_margin",
+          "melt_tail_transfer",
+          "popularity"
+        ],
+        "learning_rate": 0.04,
+        "mask_seen_in_topm": false,
+        "max_depth": 3,
+        "max_train_examples": 60000,
+        "method": "lc2c_retrieval_ltr",
+        "min_validation_gain": 0.0,
+        "n_estimators": 120,
+        "negative_samples_per_positive": 32,
+        "rank_feature_scope": "zsigmoid",
+        "rerank_anchor_method": "content_direct",
+        "rerank_anchor_methods": [],
+        "rerank_output_mode": "rank_blend",
+        "rerank_prediction_weight": 0.5,
+        "rerank_top_m": 512,
+        "score_batch_items": 2048,
+        "validation_baseline_method": "content_direct"
+      },
+      "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\ablation_configs\\no_dropoutnet_feature_or_anchor.json",
+      "purpose": "Measures whether LC2C-LTR still adds signal without any DropoutNet-derived feature or rerank anchor.",
+      "sha256": "1ec6258cace2e7e1921d6171b28e3ccc9725fe3f3a286c52771e85762a8adc82"
+    }
+  },
+  "generated_utc": "2026-06-03T14:37:10Z",
+  "reviewer_rule": "Ablations are diagnostics. They cannot authorize publication unless rerun under the same strict full-catalog protocol and summarized by finalize.py.",
+  "schema_version": 1
+}

@@ -1,0 +1,255 @@
+{
+  "ablation_runs": {
+    "ablation_mask_seen_beauty_seed20260611_fold0": {
+      "ablation": {
+        "ablation_id": "mask_seen_topm_true",
+        "generated_utc": "2026-06-03T14:37:10Z",
+        "publication_role": "diagnostic_ablation_only",
+        "purpose": "Checks whether excluding train-history items during top-M rerank pool selection changes the reported win."
+      },
+      "datasets": {
+        "beauty": {
+          "extra_in_ablation": 0,
+          "folds": [
+            {
+              "fold_id": 0,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.26095238095238094,
+                  "max_abs_delta": 0.0,
+                  "mean_delta": 0.0,
+                  "reference_mean": 0.26095238095238094
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.13227602999197421,
+                  "max_abs_delta": 0.0,
+                  "mean_delta": 0.0,
+                  "reference_mean": 0.13227602999197421
+                },
+                "rr": {
+                  "ablation_mean": 0.11813527789274465,
+                  "max_abs_delta": 0.0,
+                  "mean_delta": 0.0,
+                  "reference_mean": 0.11813527789274465
+                }
+              },
+              "n_common": 525,
+              "seed": 20260611
+            }
+          ],
+          "identical_metrics": true,
+          "metrics": {
+            "hr10": {
+              "ablation_mean": 0.26095238095238094,
+              "max_abs_delta": 0.0,
+              "mean_delta": 0.0,
+              "negative_records": 0,
+              "positive_records": 0,
+              "reference_mean": 0.26095238095238094,
+              "zero_records": 525
+            },
+            "ndcg10": {
+              "ablation_mean": 0.13227602999197421,
+              "max_abs_delta": 0.0,
+              "mean_delta": 0.0,
+              "negative_records": 0,
+              "positive_records": 0,
+              "reference_mean": 0.13227602999197421,
+              "zero_records": 525
+            },
+            "rr": {
+              "ablation_mean": 0.11813527789274465,
+              "max_abs_delta": 0.0,
+              "mean_delta": 0.0,
+              "negative_records": 0,
+              "positive_records": 0,
+              "reference_mean": 0.11813527789274465,
+              "zero_records": 525
+            }
+          },
+          "missing_in_ablation": 12135,
+          "n_common": 525
+        }
+      },
+      "publication_gate": {
+        "accepted_non_applicable_methods": {},
+        "checked_at_utc": "2026-06-03T14:38:14Z",
+        "failures": [
+          "Frozen config is an ablation (mask_seen_topm_true) with publication_role=diagnostic_ablation_only; diagnostic ablations cannot authorize publication claims.",
+          "Confirmatory seeds [20260611] do not match frozen fresh seeds [20260611, 20260612, 20260613, 20260614, 20260615].",
+          "Bootstrap used 50 reps, below strict minimum 2000.",
+          "beauty missing paired significance comparison against official_dropoutnet_fixed.",
+          "beauty missing paired significance comparison against official_dropoutnet.",
+          "beauty missing paired significance comparison against official_blair.",
+          "beauty missing paired significance comparison against official_clcrec.",
+          "fashion missing cold full-catalog results.",
+          "instruments missing cold full-catalog results.",
+          "books missing cold full-catalog results.",
+          "Mandatory evidence method official_dropoutnet_fixed is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method official_dropoutnet_fixed.",
+          "fashion missing full-catalog records for mandatory evidence method official_dropoutnet_fixed.",
+          "instruments missing full-catalog records for mandatory evidence method official_dropoutnet_fixed.",
+          "books missing full-catalog records for mandatory evidence method official_dropoutnet_fixed.",
+          "Mandatory evidence method official_dropoutnet is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method official_dropoutnet.",
+          "fashion missing full-catalog records for mandatory evidence method official_dropoutnet.",
+          "instruments missing full-catalog records for mandatory evidence method official_dropoutnet.",
+          "books missing full-catalog records for mandatory evidence method official_dropoutnet.",
+          "Mandatory evidence method official_blair is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method official_blair.",
+          "fashion missing full-catalog records for mandatory evidence method official_blair.",
+          "instruments missing full-catalog records for mandatory evidence method official_blair.",
+          "books missing full-catalog records for mandatory evidence method official_blair.",
+          "Mandatory evidence method official_clcrec is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method official_clcrec.",
+          "fashion missing full-catalog records for mandatory evidence method official_clcrec.",
+          "instruments missing full-catalog records for mandatory evidence method official_clcrec.",
+          "books missing full-catalog records for mandatory evidence method official_clcrec.",
+          "Mandatory evidence method official_melt is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method official_melt.",
+          "fashion missing full-catalog records for mandatory evidence method official_melt.",
+          "instruments missing full-catalog records for mandatory evidence method official_melt.",
+          "books missing full-catalog records for mandatory evidence method official_melt.",
+          "Mandatory evidence method tiger_liger_retrieval is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method tiger_liger_retrieval.",
+          "fashion missing full-catalog records for mandatory evidence method tiger_liger_retrieval.",
+          "instruments missing full-catalog records for mandatory evidence method tiger_liger_retrieval.",
+          "books missing full-catalog records for mandatory evidence method tiger_liger_retrieval."
+        ],
+        "passed": false,
+        "protocol_id": "cold_sota_strict_v2",
+        "stage": "confirmatory",
+        "standard": "strict frozen full-catalog cold-SOTA gate"
+      }
+    },
+    "ablation_no_dn_beauty_seed20260611_fold0": {
+      "ablation": {
+        "ablation_id": "no_dropoutnet_feature_or_anchor",
+        "generated_utc": "2026-06-03T14:37:10Z",
+        "publication_role": "diagnostic_ablation_only",
+        "purpose": "Measures whether LC2C-LTR still adds signal without any DropoutNet-derived feature or rerank anchor."
+      },
+      "datasets": {
+        "beauty": {
+          "extra_in_ablation": 0,
+          "folds": [
+            {
+              "fold_id": 0,
+              "metrics": {
+                "hr10": {
+                  "ablation_mean": 0.24571428571428572,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": -0.015238095238095238,
+                  "reference_mean": 0.26095238095238094
+                },
+                "ndcg10": {
+                  "ablation_mean": 0.12536743673874579,
+                  "max_abs_delta": 1.0,
+                  "mean_delta": -0.0069085932532284376,
+                  "reference_mean": 0.13227602999197421
+                },
+                "rr": {
+                  "ablation_mean": 0.10618326974456901,
+                  "max_abs_delta": 0.9937888198757764,
+                  "mean_delta": -0.011952008148175644,
+                  "reference_mean": 0.11813527789274465
+                }
+              },
+              "n_common": 525,
+              "seed": 20260611
+            }
+          ],
+          "identical_metrics": false,
+          "metrics": {
+            "hr10": {
+              "ablation_mean": 0.24571428571428572,
+              "max_abs_delta": 1.0,
+              "mean_delta": -0.015238095238095238,
+              "negative_records": 65,
+              "positive_records": 57,
+              "reference_mean": 0.26095238095238094,
+              "zero_records": 403
+            },
+            "ndcg10": {
+              "ablation_mean": 0.12536743673874579,
+              "max_abs_delta": 1.0,
+              "mean_delta": -0.0069085932532284376,
+              "negative_records": 92,
+              "positive_records": 90,
+              "reference_mean": 0.13227602999197421,
+              "zero_records": 343
+            },
+            "rr": {
+              "ablation_mean": 0.10618326974456901,
+              "max_abs_delta": 0.9937888198757764,
+              "mean_delta": -0.011952008148175644,
+              "negative_records": 306,
+              "positive_records": 203,
+              "reference_mean": 0.11813527789274465,
+              "zero_records": 16
+            }
+          },
+          "missing_in_ablation": 12135,
+          "n_common": 525
+        }
+      },
+      "publication_gate": {
+        "accepted_non_applicable_methods": {},
+        "checked_at_utc": "2026-06-03T14:40:32Z",
+        "failures": [
+          "Frozen config is an ablation (no_dropoutnet_feature_or_anchor) with publication_role=diagnostic_ablation_only; diagnostic ablations cannot authorize publication claims.",
+          "Confirmatory seeds [20260611] do not match frozen fresh seeds [20260611, 20260612, 20260613, 20260614, 20260615].",
+          "Bootstrap used 50 reps, below strict minimum 2000.",
+          "beauty missing paired significance comparison against official_dropoutnet_fixed.",
+          "beauty missing paired significance comparison against official_dropoutnet.",
+          "beauty missing paired significance comparison against official_blair.",
+          "beauty missing paired significance comparison against official_clcrec.",
+          "fashion missing cold full-catalog results.",
+          "instruments missing cold full-catalog results.",
+          "books missing cold full-catalog results.",
+          "Mandatory evidence method official_dropoutnet_fixed is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method official_dropoutnet_fixed.",
+          "fashion missing full-catalog records for mandatory evidence method official_dropoutnet_fixed.",
+          "instruments missing full-catalog records for mandatory evidence method official_dropoutnet_fixed.",
+          "books missing full-catalog records for mandatory evidence method official_dropoutnet_fixed.",
+          "Mandatory evidence method official_dropoutnet is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method official_dropoutnet.",
+          "fashion missing full-catalog records for mandatory evidence method official_dropoutnet.",
+          "instruments missing full-catalog records for mandatory evidence method official_dropoutnet.",
+          "books missing full-catalog records for mandatory evidence method official_dropoutnet.",
+          "Mandatory evidence method official_blair is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method official_blair.",
+          "fashion missing full-catalog records for mandatory evidence method official_blair.",
+          "instruments missing full-catalog records for mandatory evidence method official_blair.",
+          "books missing full-catalog records for mandatory evidence method official_blair.",
+          "Mandatory evidence method official_clcrec is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method official_clcrec.",
+          "fashion missing full-catalog records for mandatory evidence method official_clcrec.",
+          "instruments missing full-catalog records for mandatory evidence method official_clcrec.",
+          "books missing full-catalog records for mandatory evidence method official_clcrec.",
+          "Mandatory evidence method official_melt is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method official_melt.",
+          "fashion missing full-catalog records for mandatory evidence method official_melt.",
+          "instruments missing full-catalog records for mandatory evidence method official_melt.",
+          "books missing full-catalog records for mandatory evidence method official_melt.",
+          "Mandatory evidence method tiger_liger_retrieval is not publication-grade complete: status=not_run.",
+          "beauty missing full-catalog records for mandatory evidence method tiger_liger_retrieval.",
+          "fashion missing full-catalog records for mandatory evidence method tiger_liger_retrieval.",
+          "instruments missing full-catalog records for mandatory evidence method tiger_liger_retrieval.",
+          "books missing full-catalog records for mandatory evidence method tiger_liger_retrieval."
+        ],
+        "passed": false,
+        "protocol_id": "cold_sota_strict_v2",
+        "stage": "confirmatory",
+        "standard": "strict frozen full-catalog cold-SOTA gate"
+      }
+    }
+  },
+  "datasets": [
+    "beauty"
+  ],
+  "generated_utc": "2026-06-03T14:43:47Z",
+  "method": "lc2c_retrieval_ltr",
+  "reference_run": "confirmatory_strict_v2_candidate_20260611_20260615",
+  "schema_version": 1
+}

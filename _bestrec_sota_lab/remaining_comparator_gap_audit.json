@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "generated": "2026-06-03",
+  "current_confirmatory_run": "confirmatory_strict_v2_candidate_20260611_20260615",
+  "bootstrap_status": {
+    "required_replicates": 2000,
+    "completed_replicates": 2000,
+    "status": "complete",
+    "notes": "The strict bootstrap gate is no longer a blocker. Publication gate remains failed only because mandatory MELT and TIGER/LIGER evidence is absent."
+  },
+  "official_melt": {
+    "status": "not_applicable_to_zero_interaction_item_cold",
+    "primary_sources": [
+      "https://github.com/rlqja1107/MELT",
+      "https://arxiv.org/abs/2304.08382"
+    ],
+    "local_source": "_bestrec_sota_lab/third_party/MELT",
+    "same_split_audit": "_bestrec_sota_lab/runs/melt_audit_strict_20260611_20260615/official_melt_same_split_audit.json",
+    "source_claim": "Official PyTorch implementation of MELT: Mutual Enhancement of Long-Tailed User and Item for Sequential Recommendation.",
+    "mismatch": [
+      "Official MELT trains/evaluates chronological sequential recommendation splits, not item-held-out cold full-catalog folds.",
+      "Official MELT evaluation uses its own TestData/NegativeSampler candidate protocol, not our full k-core item catalog with user-history masking.",
+      "The same-split audit found zero train item-contexts for every strict-fold cold item: Beauty 1,780/1,780 zero-context cold item-folds, Fashion 3,070/3,070, Instruments 11,345/11,345, Books 65,820/65,820.",
+      "The current repository's MELT-like evidence is explicitly a proxy and is marked not_official_melt."
+    ],
+    "honest_next_action": "Do not treat MELT proxy results as publication-grade. Either restrict the claim to zero-interaction item-cold methods where MELT is documented as non-applicable, or introduce a clearly modified non-official MELT adapter and keep SOTA claims blocked until records exist."
+  },
+  "tiger_liger_retrieval": {
+    "status": "same_split_export_complete_no_scores",
+    "primary_sources": [
+      "https://github.com/facebookresearch/liger",
+      "https://arxiv.org/abs/2411.18814"
+    ],
+    "local_source": "external/liger",
+    "same_split_export": "_bestrec_sota_lab/runs/liger_export_strict_20260611_20260615/liger_same_split_export_audit.json",
+    "same_split_eval_smoke": "_bestrec_sota_lab/runs/liger_eval_beauty_fold0_200step/tiger_liger_retrieval_audit.json",
+    "source_claim": "Official LIGER codebase for Unifying Generative and Dense Retrieval for Sequential Recommendation.",
+    "mismatch": [
+      "The official LIGER pipeline expects its own Hydra dataset preprocessing, semantic-ID generation, sequence generation, and W&B metric logging.",
+      "A local export adapter now maps all strict item-held-out folds into LIGER-compatible processed sequence, item-text, embedding, and target-map files; LIGER's own process_data_split parser verified all 100 strict folds.",
+      "A smoke evaluation runner now uses official LIGER RQ-VAE/TIGER/model_forward/dense-scoring modules and writes canonical JSONL records, but only for Beauty seed 20260611 fold 0 with 200 training steps.",
+      "No full official LIGER/TIGER training/evaluation has produced canonical full-catalog JSONL records for all datasets/seeds/folds.",
+      "The existing _bestrec_run TIGER/RQ-VAE code is marked as a proxy or minimal separate benchmark, not mandatory same-split evidence."
+    ],
+    "honest_next_action": "Scale the LIGER dense/full training configuration from smoke to the frozen strict datasets/seeds/folds, then import `tiger_liger_retrieval` full-catalog JSONL records; until then keep SOTA claims blocked."
+  }
+}

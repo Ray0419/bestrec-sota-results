@@ -1,0 +1,77 @@
+{
+  "chunked_rebuild_aggregate": false,
+  "completed_utc": "2026-06-06T11:59:49Z",
+  "config": {
+    "batch_size": 64,
+    "codebook_size": 32,
+    "d_model": 64,
+    "datasets": "books",
+    "device": "cpu",
+    "eval_batch_size": 128,
+    "export_run_id": "deterministic_liger_books_export_20260701_20260705",
+    "fold_ids": "",
+    "latent_dim": 64,
+    "lr": 0.0003,
+    "max_folds": 0,
+    "max_targets_per_fold": 0,
+    "mode": "liger_dense",
+    "resume": true,
+    "rqvae_epochs": 100,
+    "run_id": "deterministic_liger_books_20260701_20260705",
+    "seeds": "20260701,20260702,20260703,20260704,20260705",
+    "train_steps": 1000
+  },
+  "datasets": {
+    "books": {
+      "fold_count": 25,
+      "n_records": 3009960,
+      "record_file": "cold_full_catalog_records_books.jsonl",
+      "summary": {
+        "HR@10": 0.002181424337864955,
+        "MRR": 0.0019562255897141263,
+        "NDCG@10": 0.0009701265990891449,
+        "n_records": 3009960
+      }
+    }
+  },
+  "device": "cpu",
+  "elapsed_seconds": 30.547,
+  "generated_utc": "2026-06-06T11:59:19Z",
+  "import_audit_file": "tiger_liger_retrieval_import_audit.json",
+  "method": "tiger_liger_retrieval",
+  "mode": "liger_dense",
+  "notes": [
+    "Uses official LIGER modules for RQ-VAE, TIGER model construction, model_forward, and dense target scoring.",
+    "Smoke/partial settings are not publication-grade and must not satisfy the strict gate."
+  ],
+  "official_source_dir": "C:\\Users\\rayxc\\Documents\\R\\external\\liger",
+  "partial_rebuild_import": true,
+  "publication_grade_records": false,
+  "publication_scope_checks": {
+    "datasets_ok": false,
+    "minimum_rqvae_epochs_ok": true,
+    "minimum_train_steps_ok": true,
+    "no_fold_cap": true,
+    "no_target_cap": true,
+    "requires_all_datasets": [
+      "beauty",
+      "fashion",
+      "instruments",
+      "books"
+    ],
+    "requires_strict_seeds": [
+      20260701,
+      20260702,
+      20260703,
+      20260704,
+      20260705
+    ],
+    "seeds_ok": true
+  },
+  "run_id": "deterministic_liger_books_20260701_20260705",
+  "schema_version": 1,
+  "source_export_run_id": "deterministic_liger_books_export_20260701_20260705",
+  "source_run_id": "deterministic_liger_books_20260701_20260705",
+  "stage": "smoke_or_partial",
+  "status": "partial"
+}

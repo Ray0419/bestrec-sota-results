@@ -1,0 +1,15 @@
+{
+  "accepted_non_applicable_methods": {
+    "official_melt": {
+      "claim_limitation": "MELT is a long-tailed sequential recommendation method whose official item branch requires train item-contexts; it is excluded from zero-interaction item-cold full-catalog SOTA claims only when the same-split audit proves every strict-fold cold item has zero train context.",
+      "evidence_file": "official_melt_audit.json",
+      "status": "not_applicable_to_zero_interaction_item_cold"
+    }
+  },
+  "checked_at_utc": "2026-06-06T12:15:54Z",
+  "failures": [],
+  "passed": true,
+  "protocol_id": "cold_sota_strict_v2",
+  "stage": "confirmatory",
+  "standard": "strict frozen full-catalog cold-SOTA gate"
+}

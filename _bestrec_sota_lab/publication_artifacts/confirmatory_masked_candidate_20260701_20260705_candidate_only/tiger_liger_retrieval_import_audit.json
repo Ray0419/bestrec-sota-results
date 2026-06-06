@@ -1,0 +1,37 @@
+{
+  "accepted_partial_rebuild_source": true,
+  "allow_partial_rebuild": true,
+  "datasets": {
+    "books": {
+      "dataset": "books",
+      "dry_run": false,
+      "fold_count": 25,
+      "imported_rows": 3009960,
+      "removed_existing_target_rows": 3009960,
+      "source_path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\deterministic_liger_books_20260701_20260705\\tiger_liger_retrieval_records_books.jsonl",
+      "summary": {
+        "HR@10": 0.002181424337864955,
+        "MRR": 0.0019562255897141263,
+        "NDCG@10": 0.0009701265990891449,
+        "n_records": 3009960
+      },
+      "target_file": "cold_full_catalog_records_books.jsonl"
+    }
+  },
+  "dry_run": false,
+  "method": "tiger_liger_retrieval",
+  "partial_rebuild_source_ok": true,
+  "partial_source_failures": [],
+  "publication_grade_source_ok": false,
+  "schema_version": 1,
+  "source_audit": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\deterministic_liger_books_20260701_20260705\\tiger_liger_retrieval_audit.json",
+  "source_failures": [
+    "source audit status=partial_complete expected complete",
+    "source audit stage=smoke_or_partial expected candidate_publication_run",
+    "source audit publication_grade_records is not true",
+    "source audit publication_scope_checks.datasets_ok is not true"
+  ],
+  "source_run_id": "deterministic_liger_books_20260701_20260705",
+  "status": "complete",
+  "target_run_id": "confirmatory_masked_candidate_20260701_20260705_candidate_only"
+}

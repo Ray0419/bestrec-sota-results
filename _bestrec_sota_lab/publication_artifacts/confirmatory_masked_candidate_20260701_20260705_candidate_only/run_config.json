@@ -1,0 +1,176 @@
+{
+  "candidate_only": true,
+  "candidate_scope": "full_catalog",
+  "chunked_confirmatory": true,
+  "created_utc": "2026-06-03T23:43:00Z",
+  "datasets": [
+    "beauty",
+    "fashion",
+    "instruments",
+    "books"
+  ],
+  "dropoutnet_feature_config": {
+    "beauty": {
+      "k": 128,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.5,
+      "reg": 10.0
+    },
+    "books": {
+      "k": 64,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.7,
+      "reg": 1.0
+    },
+    "fashion": {
+      "k": 128,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.5,
+      "reg": 10.0
+    },
+    "instruments": {
+      "k": 128,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.7,
+      "reg": 1.0
+    }
+  },
+  "frozen_config": {
+    "ablation": null,
+    "dropoutnet_feature_config": {
+      "beauty": {
+        "k": 128,
+        "mode": "wmf_warm_tower_cold_calib",
+        "p_drop": 0.5,
+        "reg": 10.0
+      },
+      "books": {
+        "k": 64,
+        "mode": "wmf_warm_tower_cold_calib",
+        "p_drop": 0.7,
+        "reg": 1.0
+      },
+      "fashion": {
+        "k": 128,
+        "mode": "wmf_warm_tower_cold_calib",
+        "p_drop": 0.5,
+        "reg": 10.0
+      },
+      "instruments": {
+        "k": 128,
+        "mode": "wmf_warm_tower_cold_calib",
+        "p_drop": 0.7,
+        "reg": 1.0
+      }
+    },
+    "ltr_config": {
+      "fallback_method": "official_dropoutnet",
+      "feature_methods": [
+        "content_direct",
+        "blair_text",
+        "faithful_dropoutnet",
+        "lc2c_v2",
+        "lc2cpp_validated_margin",
+        "melt_tail_transfer",
+        "popularity",
+        "official_dropoutnet"
+      ],
+      "learning_rate": 0.04,
+      "mask_seen_in_topm": true,
+      "max_depth": 3,
+      "max_train_examples": 60000,
+      "method": "lc2c_retrieval_ltr",
+      "min_validation_gain": 0.0,
+      "n_estimators": 120,
+      "negative_samples_per_positive": 32,
+      "rank_feature_scope": "zsigmoid",
+      "rerank_anchor_method": "official_dropoutnet",
+      "rerank_anchor_methods": [
+        "official_dropoutnet",
+        "content_direct",
+        "official_dropoutnet"
+      ],
+      "rerank_output_mode": "rank_blend",
+      "rerank_prediction_weight": 0.5,
+      "rerank_top_m": 512,
+      "score_batch_items": 2048,
+      "validation_baseline_method": "official_dropoutnet"
+    },
+    "protocol": {
+      "claim_scope": "cold-start full-catalog recommendation only; no broad SOTA claim is allowed unless every required evidence method is complete",
+      "datasets": [
+        "beauty",
+        "fashion",
+        "instruments",
+        "books"
+      ],
+      "fresh_confirmatory_seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "minimum_bootstrap_reps": 2000,
+      "protocol_id": "cold_sota_strict_v2",
+      "protocol_path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\protocols\\cold_sota_strict_v2.json",
+      "required_evidence_methods": [
+        "official_dropoutnet_fixed",
+        "official_dropoutnet",
+        "official_blair",
+        "official_clcrec",
+        "official_melt",
+        "tiger_liger_retrieval"
+      ]
+    },
+    "source": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\publication_candidate_mask_seen_v2.json",
+    "source_research_run": "research_strict_v2_all_official_dn_rankblend05_101_103"
+  },
+  "machine": {
+    "cwd": "C:\\Users\\rayxc\\Documents\\R",
+    "git_commit": "f05c139",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+    "python": "3.12.13"
+  },
+  "max_folds": 0,
+  "no_books_cap": true,
+  "protocol": {
+    "claim_scope": "cold-start full-catalog recommendation only; no broad SOTA claim is allowed unless every required evidence method is complete",
+    "datasets": [
+      "beauty",
+      "fashion",
+      "instruments",
+      "books"
+    ],
+    "fresh_confirmatory_seeds": [
+      20260701,
+      20260702,
+      20260703,
+      20260704,
+      20260705
+    ],
+    "minimum_bootstrap_reps": 2000,
+    "protocol_id": "cold_sota_strict_v2",
+    "protocol_path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\protocols\\cold_sota_strict_v2.json",
+    "required_evidence_methods": [
+      "official_dropoutnet_fixed",
+      "official_dropoutnet",
+      "official_blair",
+      "official_clcrec",
+      "official_melt",
+      "tiger_liger_retrieval"
+    ]
+  },
+  "quick": false,
+  "run_id": "confirmatory_masked_candidate_20260701_20260705_candidate_only",
+  "schema_version": 1,
+  "seeds": [
+    20260701,
+    20260702,
+    20260703,
+    20260704,
+    20260705
+  ],
+  "stage": "confirmatory"
+}

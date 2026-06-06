@@ -1,0 +1,1905 @@
+{
+  "baseline_slot": "faithful_dropoutnet_fixed_component",
+  "datasets": {
+    "beauty": {
+      "candidate_scope": "full_catalog",
+      "coverage": {
+        "complete_folds": 25,
+        "expected_folds": 25,
+        "missing_folds": [],
+        "partial_folds": [],
+        "status": "complete"
+      },
+      "dataset": "beauty",
+      "fixed_config": {
+        "k": 128,
+        "mode": "wmf_warm_tower_cold_calib",
+        "p_drop": 0.5,
+        "reg": 10.0
+      },
+      "fold_summaries_new_rows": [
+        {
+          "HR@10": 0.25691699604743085,
+          "MRR": 0.12441710516884538,
+          "NDCG@10": 0.14078484271936667,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 1.8053042888641357,
+          "fold_id": 1,
+          "n_eval": 506,
+          "seed": 20260701,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.2119460500963391,
+          "MRR": 0.1035762838608436,
+          "NDCG@10": 0.11396990990665193,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.5114717483520508,
+          "fold_id": 2,
+          "n_eval": 519,
+          "seed": 20260701,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.2147239263803681,
+          "MRR": 0.09485379871839016,
+          "NDCG@10": 0.10763040969653435,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.4998798370361328,
+          "fold_id": 3,
+          "n_eval": 489,
+          "seed": 20260701,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.234251968503937,
+          "MRR": 0.11164176548372727,
+          "NDCG@10": 0.12506768653798098,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.5274839401245117,
+          "fold_id": 4,
+          "n_eval": 508,
+          "seed": 20260701,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.23800738007380073,
+          "MRR": 0.10694007054595198,
+          "NDCG@10": 0.12427516293871267,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.517230749130249,
+          "fold_id": 0,
+          "n_eval": 542,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.2167689161554192,
+          "MRR": 0.10536984966504098,
+          "NDCG@10": 0.1176408861564025,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.47616100311279297,
+          "fold_id": 1,
+          "n_eval": 489,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.2297029702970297,
+          "MRR": 0.11428231566745081,
+          "NDCG@10": 0.12640260152023267,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.5107061862945557,
+          "fold_id": 2,
+          "n_eval": 505,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.232,
+          "MRR": 0.10366630487743786,
+          "NDCG@10": 0.11804620873576212,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.5601696968078613,
+          "fold_id": 3,
+          "n_eval": 500,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.22444889779559118,
+          "MRR": 0.1068052128366869,
+          "NDCG@10": 0.11941764455999003,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.4941093921661377,
+          "fold_id": 4,
+          "n_eval": 499,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.22862453531598512,
+          "MRR": 0.09249453879849395,
+          "NDCG@10": 0.10934394684338193,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.4792520999908447,
+          "fold_id": 0,
+          "n_eval": 538,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.24242424242424243,
+          "MRR": 0.10418106648003427,
+          "NDCG@10": 0.12112313937040517,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.47885918617248535,
+          "fold_id": 1,
+          "n_eval": 495,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.24123711340206186,
+          "MRR": 0.11600808189033114,
+          "NDCG@10": 0.13224651327276082,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.5071156024932861,
+          "fold_id": 2,
+          "n_eval": 485,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.2124756335282651,
+          "MRR": 0.09842395403848866,
+          "NDCG@10": 0.11007639707739014,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.4733865261077881,
+          "fold_id": 3,
+          "n_eval": 513,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.2718253968253968,
+          "MRR": 0.12741874050154373,
+          "NDCG@10": 0.1469428684089125,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.4844961166381836,
+          "fold_id": 4,
+          "n_eval": 504,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.19483101391650098,
+          "MRR": 0.09416957463102683,
+          "NDCG@10": 0.10294885245304784,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.4847848415374756,
+          "fold_id": 0,
+          "n_eval": 503,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.203125,
+          "MRR": 0.09909872994469317,
+          "NDCG@10": 0.1080788123082034,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.47327494621276855,
+          "fold_id": 1,
+          "n_eval": 512,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.22574257425742575,
+          "MRR": 0.11105246975779448,
+          "NDCG@10": 0.12213579106755983,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.4746260643005371,
+          "fold_id": 2,
+          "n_eval": 505,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.20428015564202334,
+          "MRR": 0.09916603539727366,
+          "NDCG@10": 0.1065395365298771,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.4784128665924072,
+          "fold_id": 3,
+          "n_eval": 514,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.2155688622754491,
+          "MRR": 0.0949767020321358,
+          "NDCG@10": 0.10857380728687513,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.4751434326171875,
+          "fold_id": 4,
+          "n_eval": 501,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.23471400394477318,
+          "MRR": 0.09508955546535189,
+          "NDCG@10": 0.11293384733447838,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.45871496200561523,
+          "fold_id": 0,
+          "n_eval": 507,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.20631970260223048,
+          "MRR": 0.10109769745204955,
+          "NDCG@10": 0.11107988787707995,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.47384071350097656,
+          "fold_id": 1,
+          "n_eval": 538,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.22535211267605634,
+          "MRR": 0.09924494195509727,
+          "NDCG@10": 0.11482803358768635,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.4740266799926758,
+          "fold_id": 2,
+          "n_eval": 497,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.20824742268041238,
+          "MRR": 0.10152676969344315,
+          "NDCG@10": 0.11127572154536047,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.48432445526123047,
+          "fold_id": 3,
+          "n_eval": 485,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.25196850393700787,
+          "MRR": 0.12152598468086957,
+          "NDCG@10": 0.13760667450617303,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "beauty",
+          "elapsed_seconds": 0.4734373092651367,
+          "fold_id": 4,
+          "n_eval": 508,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        }
+      ],
+      "folds_requested_per_seed": 5,
+      "method": "official_dropoutnet_fixed",
+      "new_folds": 24,
+      "quick": false,
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "summary_new_rows": {
+        "HR@10": 0.22603190264759085,
+        "MRR": 0.10525301022210776,
+        "NDCG@10": 0.11866875216666403,
+        "n_records": 12162
+      }
+    },
+    "books": {
+      "candidate_scope": "full_catalog",
+      "coverage": {
+        "complete_folds": 25,
+        "expected_folds": 25,
+        "missing_folds": [],
+        "partial_folds": [],
+        "status": "complete"
+      },
+      "dataset": "books",
+      "fixed_config": {
+        "k": 64,
+        "mode": "wmf_warm_tower_cold_calib",
+        "p_drop": 0.7,
+        "reg": 1.0
+      },
+      "fold_summaries_new_rows": [
+        {
+          "HR@10": 0.04299539635068383,
+          "MRR": 0.019425710020901737,
+          "NDCG@10": 0.020914917303052626,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 14.473539590835571,
+          "fold_id": 0,
+          "n_eval": 119036,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04267198888152685,
+          "MRR": 0.01940409471543086,
+          "NDCG@10": 0.02050602100487498,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 12.62870454788208,
+          "fold_id": 1,
+          "n_eval": 123758,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.047835357374617596,
+          "MRR": 0.021697762247352093,
+          "NDCG@10": 0.023947557496644185,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 12.539602518081665,
+          "fold_id": 2,
+          "n_eval": 118657,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04000033375330624,
+          "MRR": 0.018286325039000854,
+          "NDCG@10": 0.019802234480814793,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 12.224514961242676,
+          "fold_id": 3,
+          "n_eval": 119849,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04134491101315746,
+          "MRR": 0.018677506653721095,
+          "NDCG@10": 0.020232067545262022,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 12.78261661529541,
+          "fold_id": 4,
+          "n_eval": 120692,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.044541328431292805,
+          "MRR": 0.021390614649161612,
+          "NDCG@10": 0.023016084787257526,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 12.158012628555298,
+          "fold_id": 0,
+          "n_eval": 122942,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04071099494627836,
+          "MRR": 0.019078453262038345,
+          "NDCG@10": 0.0201410723946032,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 13.196087121963501,
+          "fold_id": 1,
+          "n_eval": 120901,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.048253251902904845,
+          "MRR": 0.02138526151578181,
+          "NDCG@10": 0.02362500566672407,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 12.273465394973755,
+          "fold_id": 2,
+          "n_eval": 122313,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04355201747707788,
+          "MRR": 0.02042629007300436,
+          "NDCG@10": 0.021859613598943128,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 13.234890222549438,
+          "fold_id": 3,
+          "n_eval": 120844,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04380304716849868,
+          "MRR": 0.020250418894636923,
+          "NDCG@10": 0.021850198005564613,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 12.250004291534424,
+          "fold_id": 4,
+          "n_eval": 114992,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.047157841312806634,
+          "MRR": 0.02288967596534826,
+          "NDCG@10": 0.024496450728954695,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 12.411894083023071,
+          "fold_id": 0,
+          "n_eval": 118220,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.0417969419659257,
+          "MRR": 0.01834277407892795,
+          "NDCG@10": 0.01980007307992116,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 12.994552612304688,
+          "fold_id": 1,
+          "n_eval": 122497,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04596848017021698,
+          "MRR": 0.021244427334582816,
+          "NDCG@10": 0.022995258199112207,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 12.41982650756836,
+          "fold_id": 2,
+          "n_eval": 121257,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.0397336516957845,
+          "MRR": 0.017903491128993785,
+          "NDCG@10": 0.01882020539954807,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 12.258941411972046,
+          "fold_id": 3,
+          "n_eval": 118942,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.03702633056922924,
+          "MRR": 0.01680423769030013,
+          "NDCG@10": 0.01755880120248063,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 12.163793325424194,
+          "fold_id": 4,
+          "n_eval": 121076,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04318223435601205,
+          "MRR": 0.01992674307965168,
+          "NDCG@10": 0.02170978731862417,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 12.40758728981018,
+          "fold_id": 0,
+          "n_eval": 120142,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.042946056371878705,
+          "MRR": 0.01912197050650477,
+          "NDCG@10": 0.020707319981322497,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 14.157303810119629,
+          "fold_id": 1,
+          "n_eval": 120663,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.038888609335949946,
+          "MRR": 0.018440035472285465,
+          "NDCG@10": 0.0195578630466291,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 12.296891689300537,
+          "fold_id": 2,
+          "n_eval": 119238,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04392327925631852,
+          "MRR": 0.018157493658294832,
+          "NDCG@10": 0.02025589282580657,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 12.194015741348267,
+          "fold_id": 3,
+          "n_eval": 122418,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04254126544578394,
+          "MRR": 0.019360696489451684,
+          "NDCG@10": 0.021033245031279842,
+          "config": {
+            "k": 64,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "books",
+          "elapsed_seconds": 13.03829050064087,
+          "fold_id": 4,
+          "n_eval": 119531,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        }
+      ],
+      "folds_requested_per_seed": 5,
+      "method": "official_dropoutnet_fixed",
+      "new_folds": 20,
+      "quick": false,
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "summary_new_rows": {
+        "HR@10": 0.042943261704474475,
+        "MRR": 0.019607191244162103,
+        "NDCG@10": 0.02113798192117447,
+        "n_records": 2407968
+      }
+    },
+    "fashion": {
+      "candidate_scope": "full_catalog",
+      "coverage": {
+        "complete_folds": 25,
+        "expected_folds": 25,
+        "missing_folds": [],
+        "partial_folds": [],
+        "status": "complete"
+      },
+      "dataset": "fashion",
+      "fixed_config": {
+        "k": 128,
+        "mode": "wmf_warm_tower_cold_calib",
+        "p_drop": 0.5,
+        "reg": 10.0
+      },
+      "fold_summaries_new_rows": [
+        {
+          "HR@10": 0.1863013698630137,
+          "MRR": 0.07714810284826837,
+          "NDCG@10": 0.0914356431235367,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.8624753952026367,
+          "fold_id": 0,
+          "n_eval": 730,
+          "seed": 20260701,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.16098226466575716,
+          "MRR": 0.07637313291545153,
+          "NDCG@10": 0.08436642624508255,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.685875415802002,
+          "fold_id": 1,
+          "n_eval": 733,
+          "seed": 20260701,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.18309859154929578,
+          "MRR": 0.08396079111224436,
+          "NDCG@10": 0.09448032872106026,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6817903518676758,
+          "fold_id": 2,
+          "n_eval": 852,
+          "seed": 20260701,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.19920844327176782,
+          "MRR": 0.09622918556102526,
+          "NDCG@10": 0.10863784695685058,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6906154155731201,
+          "fold_id": 3,
+          "n_eval": 758,
+          "seed": 20260701,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.20277777777777778,
+          "MRR": 0.08832948597428936,
+          "NDCG@10": 0.10400667186857741,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6750807762145996,
+          "fold_id": 4,
+          "n_eval": 720,
+          "seed": 20260701,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.17162162162162162,
+          "MRR": 0.06984458691480454,
+          "NDCG@10": 0.08133282291030954,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6990904808044434,
+          "fold_id": 0,
+          "n_eval": 740,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.1774193548387097,
+          "MRR": 0.09376731243789517,
+          "NDCG@10": 0.10197607393735243,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6745450496673584,
+          "fold_id": 1,
+          "n_eval": 744,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.21658415841584158,
+          "MRR": 0.09162263214080282,
+          "NDCG@10": 0.10894056652231011,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6894690990447998,
+          "fold_id": 2,
+          "n_eval": 808,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.11764705882352941,
+          "MRR": 0.0559024092254162,
+          "NDCG@10": 0.05896364067936497,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6942105293273926,
+          "fold_id": 3,
+          "n_eval": 748,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.19607843137254902,
+          "MRR": 0.07678019770242095,
+          "NDCG@10": 0.092202503661901,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6909570693969727,
+          "fold_id": 4,
+          "n_eval": 765,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.20253164556962025,
+          "MRR": 0.07952258041768627,
+          "NDCG@10": 0.09578550981016593,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6854283809661865,
+          "fold_id": 0,
+          "n_eval": 790,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.18503401360544217,
+          "MRR": 0.08499100750480328,
+          "NDCG@10": 0.09653682759894994,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6849474906921387,
+          "fold_id": 1,
+          "n_eval": 735,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.19922879177377892,
+          "MRR": 0.08845884999378659,
+          "NDCG@10": 0.10255015058525711,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.7011892795562744,
+          "fold_id": 2,
+          "n_eval": 778,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.18601747815230962,
+          "MRR": 0.08281259134981066,
+          "NDCG@10": 0.09580283813222101,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6770076751708984,
+          "fold_id": 3,
+          "n_eval": 801,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.15584415584415584,
+          "MRR": 0.07846924004176016,
+          "NDCG@10": 0.0870896405962644,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.7249975204467773,
+          "fold_id": 4,
+          "n_eval": 693,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.23028785982478098,
+          "MRR": 0.09185775046656698,
+          "NDCG@10": 0.11316170679745091,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.7189595699310303,
+          "fold_id": 0,
+          "n_eval": 799,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.15343203230148048,
+          "MRR": 0.06875491963109277,
+          "NDCG@10": 0.07595857553898941,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.7109074592590332,
+          "fold_id": 1,
+          "n_eval": 743,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.18844566712517194,
+          "MRR": 0.07862191283992713,
+          "NDCG@10": 0.09341697823984461,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6811368465423584,
+          "fold_id": 2,
+          "n_eval": 727,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.19451697127937337,
+          "MRR": 0.07981541603277699,
+          "NDCG@10": 0.09550701088257994,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6980905532836914,
+          "fold_id": 3,
+          "n_eval": 766,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.17082785808147175,
+          "MRR": 0.07995818873409188,
+          "NDCG@10": 0.08954402963751233,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6968543529510498,
+          "fold_id": 4,
+          "n_eval": 761,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.18013245033112582,
+          "MRR": 0.08475350185273825,
+          "NDCG@10": 0.09571947501179962,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6681938171386719,
+          "fold_id": 0,
+          "n_eval": 755,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.17275280898876405,
+          "MRR": 0.07949978400769199,
+          "NDCG@10": 0.09142187557173552,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6794524192810059,
+          "fold_id": 1,
+          "n_eval": 712,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.1981747066492829,
+          "MRR": 0.09561367271792413,
+          "NDCG@10": 0.10851329394321979,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6685776710510254,
+          "fold_id": 2,
+          "n_eval": 767,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.17843388960205392,
+          "MRR": 0.0775812777023158,
+          "NDCG@10": 0.08798735641997929,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.7015848159790039,
+          "fold_id": 3,
+          "n_eval": 779,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.16414141414141414,
+          "MRR": 0.08325112625834095,
+          "NDCG@10": 0.09053194275097609,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.5,
+            "reg": 10.0
+          },
+          "dataset": "fashion",
+          "elapsed_seconds": 0.6918284893035889,
+          "fold_id": 4,
+          "n_eval": 792,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        }
+      ],
+      "folds_requested_per_seed": 5,
+      "method": "official_dropoutnet_fixed",
+      "new_folds": 25,
+      "quick": false,
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "summary_new_rows": {
+        "HR@10": 0.1832491050747526,
+        "MRR": 0.0818673178353415,
+        "NDCG@10": 0.09399038369497198,
+        "n_records": 18996
+      }
+    },
+    "instruments": {
+      "candidate_scope": "full_catalog",
+      "coverage": {
+        "complete_folds": 25,
+        "expected_folds": 25,
+        "missing_folds": [],
+        "partial_folds": [],
+        "status": "complete"
+      },
+      "dataset": "instruments",
+      "fixed_config": {
+        "k": 128,
+        "mode": "wmf_warm_tower_cold_calib",
+        "p_drop": 0.7,
+        "reg": 1.0
+      },
+      "fold_summaries_new_rows": [
+        {
+          "HR@10": 0.05083246199630017,
+          "MRR": 0.025325703035707275,
+          "NDCG@10": 0.025578373153253783,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.529371738433838,
+          "fold_id": 0,
+          "n_eval": 12433,
+          "seed": 20260701,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.044521395003710114,
+          "MRR": 0.022368879106027976,
+          "NDCG@10": 0.022007329480476425,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.519944667816162,
+          "fold_id": 1,
+          "n_eval": 12129,
+          "seed": 20260701,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04568281224688158,
+          "MRR": 0.023052179008739803,
+          "NDCG@10": 0.022680835322039128,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.5098249912261963,
+          "fold_id": 2,
+          "n_eval": 12346,
+          "seed": 20260701,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.039368713146028446,
+          "MRR": 0.02105657734960924,
+          "NDCG@10": 0.01969277415632152,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.659602165222168,
+          "fold_id": 3,
+          "n_eval": 11532,
+          "seed": 20260701,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.054694880030228606,
+          "MRR": 0.025468266669572907,
+          "NDCG@10": 0.026374044513548384,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.5377259254455566,
+          "fold_id": 4,
+          "n_eval": 10586,
+          "seed": 20260701,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04885749896136269,
+          "MRR": 0.02397775721276652,
+          "NDCG@10": 0.02437475497997876,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.5253212451934814,
+          "fold_id": 0,
+          "n_eval": 12035,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.0487250694269124,
+          "MRR": 0.02315791270696886,
+          "NDCG@10": 0.023590227658180828,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.503173351287842,
+          "fold_id": 1,
+          "n_eval": 11883,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04909433652979264,
+          "MRR": 0.024390569859295382,
+          "NDCG@10": 0.02469205365782676,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.398998737335205,
+          "fold_id": 2,
+          "n_eval": 12201,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.051595446911737265,
+          "MRR": 0.02483359596591343,
+          "NDCG@10": 0.02544077167640116,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.369689464569092,
+          "fold_id": 3,
+          "n_eval": 10718,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.047173681187956354,
+          "MRR": 0.02450619098240765,
+          "NDCG@10": 0.024320776883387272,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.4637486934661865,
+          "fold_id": 4,
+          "n_eval": 12189,
+          "seed": 20260702,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.048165923894412065,
+          "MRR": 0.024796070609324684,
+          "NDCG@10": 0.024897837475959746,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.4284775257110596,
+          "fold_id": 0,
+          "n_eval": 11668,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04517336806120788,
+          "MRR": 0.02281464421020643,
+          "NDCG@10": 0.022706870753947977,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.446660041809082,
+          "fold_id": 1,
+          "n_eval": 12286,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.047104779411764705,
+          "MRR": 0.023538426704655648,
+          "NDCG@10": 0.02347589527076991,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.503941774368286,
+          "fold_id": 2,
+          "n_eval": 13056,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.047582938388625595,
+          "MRR": 0.023070634374485092,
+          "NDCG@10": 0.022945245352079563,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.4753642082214355,
+          "fold_id": 3,
+          "n_eval": 10550,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.051892551892551896,
+          "MRR": 0.025536089489185933,
+          "NDCG@10": 0.026245394168841415,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.439788579940796,
+          "fold_id": 4,
+          "n_eval": 11466,
+          "seed": 20260703,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04761514505818718,
+          "MRR": 0.023636144788138785,
+          "NDCG@10": 0.023612300024052357,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.523406744003296,
+          "fold_id": 0,
+          "n_eval": 12202,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04724278466272977,
+          "MRR": 0.023465702795953898,
+          "NDCG@10": 0.02332165701563801,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.4548232555389404,
+          "fold_id": 1,
+          "n_eval": 12023,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.044963334619837904,
+          "MRR": 0.02302619793540088,
+          "NDCG@10": 0.02273521652564108,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.569164752960205,
+          "fold_id": 2,
+          "n_eval": 10364,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04656357388316151,
+          "MRR": 0.023433659478575997,
+          "NDCG@10": 0.0232303888383863,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.4958043098449707,
+          "fold_id": 3,
+          "n_eval": 11640,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.047901851996561697,
+          "MRR": 0.024304082587083647,
+          "NDCG@10": 0.024567661720766708,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.4408764839172363,
+          "fold_id": 4,
+          "n_eval": 12797,
+          "seed": 20260704,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.0422958510482334,
+          "MRR": 0.02178117691410807,
+          "NDCG@10": 0.021390405291416774,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.4526448249816895,
+          "fold_id": 0,
+          "n_eval": 13642,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.052118198336042844,
+          "MRR": 0.0259503883447054,
+          "NDCG@10": 0.02627177218070651,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.445899486541748,
+          "fold_id": 1,
+          "n_eval": 10457,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04415562058874161,
+          "MRR": 0.022060519032956322,
+          "NDCG@10": 0.022050833493429442,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.4166693687438965,
+          "fold_id": 2,
+          "n_eval": 11618,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04367687129347652,
+          "MRR": 0.022666945669189805,
+          "NDCG@10": 0.022163553670642325,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.4302608966827393,
+          "fold_id": 3,
+          "n_eval": 12478,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        },
+        {
+          "HR@10": 0.04902594404948758,
+          "MRR": 0.023704607532682446,
+          "NDCG@10": 0.02386870678531403,
+          "config": {
+            "k": 128,
+            "mode": "wmf_warm_tower_cold_calib",
+            "p_drop": 0.7,
+            "reg": 1.0
+          },
+          "dataset": "instruments",
+          "elapsed_seconds": 3.364070177078247,
+          "fold_id": 4,
+          "n_eval": 10831,
+          "seed": 20260705,
+          "tower_epochs": 100,
+          "wmf_iters": 50
+        }
+      ],
+      "folds_requested_per_seed": 5,
+      "method": "official_dropoutnet_fixed",
+      "new_folds": 25,
+      "quick": false,
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "summary_new_rows": {
+        "HR@10": 0.0473452376918646,
+        "MRR": 0.023650329643803494,
+        "NDCG@10": 0.023654099527802466,
+        "n_records": 295130
+      }
+    }
+  },
+  "dropoutnet_feature_config": {
+    "beauty": {
+      "k": 128,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.5,
+      "reg": 10.0
+    },
+    "books": {
+      "k": 64,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.7,
+      "reg": 1.0
+    },
+    "fashion": {
+      "k": 128,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.5,
+      "reg": 10.0
+    },
+    "instruments": {
+      "k": 128,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.7,
+      "reg": 1.0
+    }
+  },
+  "method": "official_dropoutnet_fixed",
+  "notes": "Uses the exact frozen DropoutNet config consumed by lc2c_retrieval_ltr when official_dropoutnet is enabled.",
+  "protocol": {
+    "claim_scope": "cold-start full-catalog recommendation only; no broad SOTA claim is allowed unless every required evidence method is complete",
+    "datasets": [
+      "beauty",
+      "fashion",
+      "instruments",
+      "books"
+    ],
+    "fresh_confirmatory_seeds": [
+      20260701,
+      20260702,
+      20260703,
+      20260704,
+      20260705
+    ],
+    "minimum_bootstrap_reps": 2000,
+    "protocol_id": "cold_sota_strict_v2",
+    "protocol_path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\protocols\\cold_sota_strict_v2.json",
+    "required_evidence_methods": [
+      "official_dropoutnet_fixed",
+      "official_dropoutnet",
+      "official_blair",
+      "official_clcrec",
+      "official_melt",
+      "tiger_liger_retrieval"
+    ]
+  },
+  "schema_version": 1,
+  "seeds": [
+    20260701,
+    20260702,
+    20260703,
+    20260704,
+    20260705
+  ],
+  "status": "complete"
+}

@@ -1,0 +1,180 @@
+{
+  "baselines": {
+    "blair_text": {
+      "checkpoint": "hyp1231/blair-roberta-base",
+      "evidence_file": "official_blair_audit.json",
+      "evidence_method": "official_blair",
+      "notes": "Publication-grade official_blair full-catalog records are present in the canonical cold JSONL files.",
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "status": "complete"
+    },
+    "clcrec_contrastive": {
+      "checkpoint": null,
+      "evidence_file": "official_clcrec_audit.json",
+      "evidence_method": "official_clcrec",
+      "notes": "Publication-grade official_clcrec full-catalog records are present in the canonical cold JSONL files.",
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "status": "complete"
+    },
+    "faithful_dropoutnet": {
+      "checkpoint": null,
+      "evidence_file": "official_dropoutnet_audit.json",
+      "evidence_method": "official_dropoutnet",
+      "notes": "Publication-grade official_dropoutnet full-catalog records are present in the canonical cold JSONL files.",
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "status": "complete"
+    },
+    "ials": {
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "status": "not_run"
+    },
+    "lightgcn": {
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "status": "not_run"
+    },
+    "melt_tail_transfer": {
+      "notes": "Generated inside isolated lab; not an official publication-grade external implementation.",
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "status": "not_run"
+    },
+    "multivae": {
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "status": "not_run"
+    },
+    "official_blair": {
+      "evidence_file": "official_blair_audit.json",
+      "expected_seed_folds_per_dataset": 25,
+      "notes": "",
+      "records_present_all_datasets": true,
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "status": "complete"
+    },
+    "official_clcrec": {
+      "evidence_file": "official_clcrec_audit.json",
+      "expected_seed_folds_per_dataset": 25,
+      "notes": "Faithful CLCRec imported read-only from _bestrec_run; default mode performs per-fold inner validation and writes canonical full-catalog records.",
+      "records_present_all_datasets": true,
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "status": "complete"
+    },
+    "official_dropoutnet": {
+      "evidence_file": "official_dropoutnet_audit.json",
+      "expected_seed_folds_per_dataset": 25,
+      "notes": "Tuned faithful DropoutNet with WMF item factors, dataset-level inner validation on the first active confirmatory seed, and canonical full-catalog records.",
+      "records_present_all_datasets": true,
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "status": "complete"
+    },
+    "official_dropoutnet_fixed": {
+      "evidence_file": "official_dropoutnet_fixed_audit.json",
+      "expected_seed_folds_per_dataset": 25,
+      "notes": "Uses the exact frozen DropoutNet config consumed by lc2c_retrieval_ltr when official_dropoutnet is enabled.",
+      "records_present_all_datasets": true,
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "status": "complete"
+    },
+    "official_melt": {
+      "evidence_file": "official_melt_audit.json",
+      "expected_seed_folds_per_dataset": 25,
+      "notes": [
+        "This audit does not claim a MELT result.",
+        "It checks whether BEST-Rec cold items have the train contexts required by MELT's item branch.",
+        "If all cold items have zero train context, official MELT is not a fair zero-interaction item-cold full-catalog comparator without a method change."
+      ],
+      "records_present_all_datasets": false,
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "status": "not_applicable_to_zero_interaction_item_cold"
+    },
+    "tiger_liger_retrieval": {
+      "evidence_file": "tiger_liger_retrieval_audit.json",
+      "expected_seed_folds_per_dataset": 25,
+      "notes": [
+        "Uses official LIGER modules for RQ-VAE, TIGER model construction, model_forward, and dense target scoring.",
+        "Smoke/partial settings are not publication-grade and must not satisfy the strict gate.",
+        "Marked complete by exact canonical record coverage across all frozen datasets, seeds, and folds; the evidence audit status is partial because the independent rebuild was executed in chunks."
+      ],
+      "records_present_all_datasets": true,
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "status": "complete"
+    }
+  },
+  "schema_version": 1
+}

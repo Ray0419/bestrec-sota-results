@@ -1,0 +1,74 @@
+{
+  "baseline_method": "official_dropoutnet_fixed",
+  "candidate_scope": "full_catalog",
+  "datasets": [
+    "books"
+  ],
+  "dropoutnet_feature_config": {
+    "beauty": {
+      "k": 128,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.5,
+      "reg": 10.0
+    },
+    "books": {
+      "k": 64,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.7,
+      "reg": 1.0
+    },
+    "fashion": {
+      "k": 128,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.5,
+      "reg": 10.0
+    },
+    "instruments": {
+      "k": 128,
+      "mode": "wmf_warm_tower_cold_calib",
+      "p_drop": 0.7,
+      "reg": 1.0
+    }
+  },
+  "fold_ids": null,
+  "max_folds": 0,
+  "max_new_folds": 0,
+  "protocol": {
+    "claim_scope": "cold-start full-catalog recommendation only; no broad SOTA claim is allowed unless every required evidence method is complete",
+    "datasets": [
+      "beauty",
+      "fashion",
+      "instruments",
+      "books"
+    ],
+    "fresh_confirmatory_seeds": [
+      20260701,
+      20260702,
+      20260703,
+      20260704,
+      20260705
+    ],
+    "minimum_bootstrap_reps": 2000,
+    "protocol_id": "cold_sota_strict_v2",
+    "protocol_path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\protocols\\cold_sota_strict_v2.json",
+    "required_evidence_methods": [
+      "official_dropoutnet_fixed",
+      "official_dropoutnet",
+      "official_blair",
+      "official_clcrec",
+      "official_melt",
+      "tiger_liger_retrieval"
+    ]
+  },
+  "quick": false,
+  "run_id": "confirmatory_masked_candidate_20260701_20260705_candidate_only",
+  "schema_version": 1,
+  "seeds": [
+    20260701,
+    20260702,
+    20260703,
+    20260704,
+    20260705
+  ],
+  "stage": "baseline"
+}

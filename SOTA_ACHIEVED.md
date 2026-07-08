@@ -1,4 +1,16 @@
-# STATUS: CLAIM WITHDRAWN PENDING AUDIT-PROOF RE-CONFIRMATION (2026-07-08)
+# STATUS: RE-CONFIRMED UNDER THE V2 AUDIT-PROOF PROTOCOL (2026-07-08, EXEC2)
+
+**The V2 pre-registered dual gate PASSED under clean provenance** — see
+`SOTA_CONFIRM_V2_RESULTS.md` §5 for the final adjudication (k16 fresh 5-seed CI-LB 0.04096 >
+0.0406 AND k8 CI-LB 0.04083 > 0.0406, 10/10 fresh seeds above, all manifests single-commit
+`86816be…` / clean / hash-matched; EXEC1 was voided by the provenance tripwire and cured by
+full re-execution — chronology and disclosed deviation documented there). The ONLY claim made is
+the frozen per-category point-estimate wording in that file. The withdrawal notice below is
+retained as the historical record of the Codex audit response.
+
+---
+
+# (historical) STATUS: CLAIM WITHDRAWN PENDING AUDIT-PROOF RE-CONFIRMATION (2026-07-08)
 
 **The 2026-07-06 "scoped, pre-registered, selection-free SOTA" claim previously in this file has
 been WITHDRAWN** in response to the Codex audit (`CLAUDE_SOTA_RESULT_AUDIT_2026-07-08.md`), which

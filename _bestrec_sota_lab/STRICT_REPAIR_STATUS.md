@@ -2,32 +2,30 @@
 
 Generated: 2026-06-03
 
-Updated: 2026-06-04
+Updated: 2026-06-10
 
 ## Decision
 
-Reject the current paper/result for publication-grade SOTA claims.
+Approve the repaired full-catalog cold-item claim only.
 
-Latest strict re-audit on 2026-06-04 reviewed
-`confirmatory_masked_candidate_20260701_20260705_candidate_only`. The result is
-artifact-backed and significant against the completed comparators, but the
-publication gate still fails. Completed active-seed comparators now include
-`official_blair` and `lc2c_v2` on all four datasets and all `25/25` seed/folds.
-The bootstrap was regenerated with the required `2000` clustered replicates.
-Remaining approval blockers are missing publication-grade full-catalog records
-for `official_dropoutnet_fixed`, `official_dropoutnet`, `official_clcrec`, and
-`tiger_liger_retrieval`, plus the absence of a true clean rebuild from deleted
-generated outputs.
+Latest strict re-audit on 2026-06-10 reviewed
+`full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705` and
+exited cleanly. The audit found no blocking artifact, fairness, or
+reproducibility findings. The approved scope is narrow: cold-item full-catalog
+ranking on Beauty, Fashion, Instruments, and Books under protocol
+`cold_sota_strict_v2`.
 
-The previous confirmatory run remains real exploratory evidence, but it is not
-fair and reproducible enough to approve. After the strict-v2 repair, its
-`publication_gate.json` is correctly failed.
+The claim is not a broad warm-start or general recommender SOTA claim. Warm
+baselines `ials`, `lightgcn`, and `multivae` are outside this lab gate. The
+candidate also uses DropoutNet-derived evidence as a feature/rerank anchor, so
+the paper must compare against fixed and tuned official DropoutNet and must not
+claim DropoutNet independence.
 
-The active publication protocol now retires seeds
-`20260611,20260612,20260613,20260614,20260615` because the repaired masked
-candidate was selected after inspecting those runs. Any future approval attempt
-must use fresh post-repair seeds
-`20260701,20260702,20260703,20260704,20260705`.
+The repaired approval run uses fresh post-repair seeds
+`20260701,20260702,20260703,20260704,20260705`, `mask_seen_in_topm=true`,
+required modern cold comparators, `2000` clustered bootstrap replicates, and
+run-local full clean-rebuild evidence with `max_metric_abs_diff=0.0` and
+`record_multisets_match=true`.
 
 ## Repaired
 
@@ -190,8 +188,10 @@ must use fresh post-repair seeds
   DropoutNet-dependence ablation set: DropoutNet helps on every dataset, but
   removing it does not erase the gains on Fashion, Instruments, or Books;
   Beauty remains the fragile case.
-- Current strict gate still fails because TIGER/LIGER full-catalog score records
-  are absent.
+- At this point in the repair log, the strict gate still failed because
+  TIGER/LIGER full-catalog score records were absent. This blocker is now
+  closed in the 2026-06-10 approved run
+  `full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705`.
 
 ## Newly Fixed Harness Issue
 

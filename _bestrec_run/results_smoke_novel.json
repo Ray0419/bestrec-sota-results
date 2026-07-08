@@ -1,0 +1,80 @@
+{
+  "category": "Video_Games",
+  "config": {
+    "category": "Video_Games",
+    "epochs": 2,
+    "batch_size": 256,
+    "max_seq_len": 50,
+    "d_model": 64,
+    "n_layers": 2,
+    "n_heads": 2,
+    "dropout": 0.3,
+    "lr": 0.001,
+    "no_sbert": false,
+    "sbert_only": false,
+    "encoder_cache": null,
+    "mlp_adaptor": false,
+    "mlp_hidden": 300,
+    "mlp_dropout": 0.2,
+    "eval_every": 1,
+    "eval_subsample": 2000,
+    "sampled_negs": 0,
+    "in_batch_negs": false,
+    "chunked_full_softmax": true,
+    "item_chunk": 32768,
+    "augment_factor": 1,
+    "seed": 20260608,
+    "lr_schedule": "none",
+    "time_bias": true,
+    "text_sim_bias": true,
+    "text_prototypes": 512,
+    "proto_tau": 0.05,
+    "out": "results_smoke_novel.json"
+  },
+  "n_users": 94762,
+  "n_items": 25612,
+  "n_params": 11635290,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 8.5028368841927,
+      "epoch_time_s": 8.330141305923462,
+      "val": {
+        "NDCG@10": 0.042591314822067676,
+        "HR@10": 0.0815,
+        "MRR": 0.03861349717710631,
+        "n_eval": 2000
+      },
+      "test": {
+        "NDCG@10": 0.03426518828112412,
+        "HR@10": 0.066,
+        "MRR": 0.031594618700521174,
+        "n_eval": 2000
+      }
+    },
+    {
+      "epoch": 2,
+      "train_loss": 7.952106959093613,
+      "epoch_time_s": 8.263737678527832,
+      "val": {
+        "NDCG@10": 0.04873284280412842,
+        "HR@10": 0.09200945526687913,
+        "MRR": 0.043957472466251174,
+        "n_eval": 94762
+      },
+      "test": {
+        "NDCG@10": 0.04354131009037731,
+        "HR@10": 0.08102403917181993,
+        "MRR": 0.039703823404685784,
+        "n_eval": 94762
+      }
+    }
+  ],
+  "best_val_NDCG10": 0.04873284280412842,
+  "best_test": {
+    "NDCG@10": 0.04354131009037731,
+    "HR@10": 0.08102403917181993,
+    "MRR": 0.039703823404685784,
+    "n_eval": 94762
+  }
+}

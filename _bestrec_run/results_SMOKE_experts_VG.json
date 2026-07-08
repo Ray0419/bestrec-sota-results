@@ -1,0 +1,76 @@
+{
+  "category": "Video_Games",
+  "config": {
+    "category": "Video_Games",
+    "epochs": 2,
+    "batch_size": 256,
+    "max_seq_len": 50,
+    "d_model": 64,
+    "n_layers": 4,
+    "n_heads": 2,
+    "dropout": 0.5,
+    "lr": 0.001,
+    "no_sbert": false,
+    "sbert_only": false,
+    "encoder_cache": null,
+    "mlp_adaptor": false,
+    "mlp_hidden": 300,
+    "mlp_dropout": 0.2,
+    "eval_every": 2,
+    "eval_subsample": 0,
+    "sampled_negs": 0,
+    "in_batch_negs": false,
+    "chunked_full_softmax": true,
+    "item_chunk": 32768,
+    "augment_factor": 1,
+    "seed": 20260608,
+    "lr_schedule": "warmup_cosine",
+    "time_bias": true,
+    "text_sim_bias": true,
+    "text_prototypes": "512",
+    "cosine_scoring": false,
+    "score_temp": 0.05,
+    "text_distill_weight": 0.0,
+    "pos_rab": true,
+    "encoder": "hstu",
+    "proto_tau": 0.05,
+    "time_decay_kernel": false,
+    "time_decay_bases": 8,
+    "expert_heads": 4,
+    "out": "_bestrec_run/results_SMOKE_experts_VG.json"
+  },
+  "n_users": 94762,
+  "n_items": 25612,
+  "n_params": 11712834,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 8.533542049541628,
+      "epoch_time_s": 11.133074760437012
+    },
+    {
+      "epoch": 2,
+      "train_loss": 7.909378364079725,
+      "epoch_time_s": 10.82294487953186,
+      "val": {
+        "NDCG@10": 0.04798087197125252,
+        "HR@10": 0.09043709503809544,
+        "MRR": 0.043391795797104615,
+        "n_eval": 94762
+      },
+      "test": {
+        "NDCG@10": 0.04367099027585454,
+        "HR@10": 0.08081298410755366,
+        "MRR": 0.03981739048778319,
+        "n_eval": 94762
+      }
+    }
+  ],
+  "best_val_NDCG10": 0.04798087197125252,
+  "best_test": {
+    "NDCG@10": 0.04367099027585454,
+    "HR@10": 0.08081298410755366,
+    "MRR": 0.03981739048778319,
+    "n_eval": 94762
+  }
+}

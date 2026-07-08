@@ -1,0 +1,160 @@
+{
+  "category": "Musical_Instruments",
+  "config": {
+    "category": "Musical_Instruments",
+    "epochs": 2,
+    "batch_size": 256,
+    "max_seq_len": 50,
+    "d_model": 64,
+    "n_layers": 4,
+    "n_heads": 2,
+    "dropout": 0.5,
+    "lr": 0.001,
+    "no_sbert": false,
+    "sbert_only": false,
+    "encoder_cache": null,
+    "mlp_adaptor": false,
+    "mlp_hidden": 300,
+    "mlp_dropout": 0.2,
+    "eval_every": 2,
+    "eval_subsample": 0,
+    "eval_stratify_head": 0.0,
+    "subsample_train_frac": 1.0,
+    "subsample_mode": "interaction",
+    "subsample_seed": 0,
+    "sampled_negs": 0,
+    "in_batch_negs": false,
+    "chunked_full_softmax": true,
+    "item_chunk": 32768,
+    "augment_factor": 1,
+    "seed": 20260609,
+    "lr_schedule": "warmup_cosine",
+    "time_bias": true,
+    "text_sim_bias": true,
+    "text_prototypes": "512",
+    "cosine_scoring": false,
+    "score_temp": 0.05,
+    "text_distill_weight": 0.0,
+    "text_init_emb": false,
+    "pos_rab": true,
+    "encoder": "hstu",
+    "proto_tau": 0.05,
+    "time_decay_kernel": false,
+    "time_decay_bases": 8,
+    "expert_heads": 0,
+    "cl_weight": 0.0,
+    "cl_mask_prob": 0.3,
+    "cl_tau": 1.0,
+    "label_smoothing": 0.2,
+    "ema_decay": 0.0,
+    "causal_filter": true,
+    "filter_kernel": 8,
+    "js_shrink": false,
+    "heat_target": false,
+    "heat_neighbors": 20,
+    "fitness_gate": false,
+    "fitness_gate_alpha": 0.0,
+    "fitness_gate_slope": 4.0,
+    "cue_fusion": false,
+    "cue_fusion_mode": "sum2",
+    "cue_fusion_nbr": 20,
+    "spectral_shrink": false,
+    "spectral_shrink_every": 1,
+    "spectral_shrink_mode": "hard",
+    "niche_share_beta": 0.0,
+    "out": "_bestrec_run/results_SMOKE2_conngate_MI.json",
+    "conn_gate": true
+  },
+  "n_users": 57439,
+  "n_items": 24587,
+  "n_params": 11185537,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 9.38984881930881,
+      "epoch_time_s": 5.846522808074951
+    },
+    {
+      "epoch": 2,
+      "train_loss": 9.050283262464735,
+      "epoch_time_s": 5.563199996948242,
+      "val": {
+        "NDCG@10": 0.031178400185878412,
+        "HR@10": 0.05781785894601229,
+        "MRR": 0.0290189966681352,
+        "n_eval": 57439,
+        "by_popularity": {
+          "tail": {
+            "NDCG@10": 0.0,
+            "HR@10": 0.0,
+            "n": 7762
+          },
+          "mid": {
+            "NDCG@10": 0.0001807990732300662,
+            "HR@10": 0.0004896560166483046,
+            "n": 8169
+          },
+          "head": {
+            "NDCG@10": 0.0431092603991388,
+            "HR@10": 0.07991230606148213,
+            "n": 41508
+          }
+        }
+      },
+      "test": {
+        "NDCG@10": 0.028572694641897878,
+        "HR@10": 0.0526993854349832,
+        "MRR": 0.026609930129789384,
+        "n_eval": 57439,
+        "by_popularity": {
+          "tail": {
+            "NDCG@10": 0.0,
+            "HR@10": 0.0,
+            "n": 8800
+          },
+          "mid": {
+            "NDCG@10": 0.00014379072649906921,
+            "HR@10": 0.0004620538292711101,
+            "n": 8657
+          },
+          "head": {
+            "NDCG@10": 0.04101701293623805,
+            "HR@10": 0.07560902406082737,
+            "n": 39982
+          }
+        }
+      }
+    }
+  ],
+  "best_val_NDCG10": 0.031178400185878412,
+  "best_test": {
+    "NDCG@10": 0.028572694641897878,
+    "HR@10": 0.0526993854349832,
+    "MRR": 0.026609930129789384,
+    "n_eval": 57439,
+    "by_popularity": {
+      "tail": {
+        "NDCG@10": 0.0,
+        "HR@10": 0.0,
+        "n": 8800
+      },
+      "mid": {
+        "NDCG@10": 0.00014379072649906921,
+        "HR@10": 0.0004620538292711101,
+        "n": 8657
+      },
+      "head": {
+        "NDCG@10": 0.04101701293623805,
+        "HR@10": 0.07560902406082737,
+        "n": 39982
+      }
+    }
+  },
+  "learned_niche_share_beta": null,
+  "learned_js_shrink_c": null,
+  "learned_heat_target_T": null,
+  "learned_conn_gate_alpha": 0.002353969495743513,
+  "learned_conn_gate_slope": 0.911692202091217,
+  "spectral_effective_rank": null,
+  "spectral_bbp_rho_by_tercile": null
+}

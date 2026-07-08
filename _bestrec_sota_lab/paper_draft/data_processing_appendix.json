@@ -1,0 +1,158 @@
+{
+  "canonical_run_id": "confirmatory_masked_candidate_20260701_20260705_candidate_only",
+  "datasets": [
+    {
+      "confirmatory_records": {
+        "max": 542,
+        "min": 485,
+        "seed_fold_count": 25,
+        "total": 12675
+      },
+      "dataset": "beauty",
+      "item_fold_split": {
+        "cold_items_max": 72,
+        "cold_items_min": 71,
+        "seed_fold_count": 25,
+        "test_interactions_max": 542,
+        "test_interactions_min": 485,
+        "train_interactions_max": 2050,
+        "train_interactions_min": 1993
+      },
+      "label": "Beauty",
+      "raw": {
+        "cache": "cache\\beauty\\raw_data_dedup.pkl",
+        "deduplicated_interactions": 693929,
+        "deduplicated_items": 112565,
+        "deduplicated_users": 631986,
+        "source_category": "All_Beauty",
+        "source_review_file": "data/beauty/All_Beauty.jsonl"
+      },
+      "strict_k_core": {
+        "interactions": 2535,
+        "items": 356,
+        "significance_user_counts": [
+          253
+        ],
+        "threshold": 5,
+        "users": 253
+      }
+    },
+    {
+      "confirmatory_records": {
+        "max": 852,
+        "min": 693,
+        "seed_fold_count": 25,
+        "total": 18996
+      },
+      "dataset": "fashion",
+      "item_fold_split": {
+        "cold_items_max": 123,
+        "cold_items_min": 122,
+        "seed_fold_count": 25,
+        "test_interactions_max": 856,
+        "test_interactions_min": 697,
+        "train_interactions_max": 3108,
+        "train_interactions_min": 2949
+      },
+      "label": "Fashion",
+      "raw": {
+        "cache": "cache\\fashion\\raw_data_dedup.pkl",
+        "deduplicated_interactions": 2474375,
+        "deduplicated_items": 825869,
+        "deduplicated_users": 2035490,
+        "source_category": "Amazon_Fashion",
+        "source_review_file": "data/fashion/Amazon_Fashion.jsonl"
+      },
+      "strict_k_core": {
+        "interactions": 3805,
+        "items": 614,
+        "significance_user_counts": [
+          513
+        ],
+        "threshold": 4,
+        "users": 513
+      }
+    },
+    {
+      "confirmatory_records": {
+        "max": 13642,
+        "min": 10364,
+        "seed_fold_count": 25,
+        "total": 295130
+      },
+      "dataset": "instruments",
+      "item_fold_split": {
+        "cold_items_max": 454,
+        "cold_items_min": 453,
+        "seed_fold_count": 25,
+        "test_interactions_max": 13642,
+        "test_interactions_min": 10364,
+        "train_interactions_max": 48662,
+        "train_interactions_min": 45384
+      },
+      "label": "Instruments",
+      "raw": {
+        "cache": "cache\\instruments\\raw_data_dedup.pkl",
+        "deduplicated_interactions": 2975551,
+        "deduplicated_items": 213571,
+        "deduplicated_users": 1762679,
+        "source_category": "Musical_Instruments",
+        "source_review_file": "data/instruments/Musical_Instruments.jsonl"
+      },
+      "strict_k_core": {
+        "interactions": 59026,
+        "items": 2269,
+        "significance_user_counts": [
+          3911
+        ],
+        "threshold": 10,
+        "users": 3911
+      }
+    },
+    {
+      "confirmatory_records": {
+        "max": 123758,
+        "min": 114992,
+        "seed_fold_count": 25,
+        "total": 3009960
+      },
+      "dataset": "books",
+      "item_fold_split": {
+        "cold_items_max": 2633,
+        "cold_items_min": 2632,
+        "seed_fold_count": 25,
+        "test_interactions_max": 123758,
+        "test_interactions_min": 114992,
+        "train_interactions_max": 487000,
+        "train_interactions_min": 478234
+      },
+      "label": "Books",
+      "raw": {
+        "cache": "cache\\books\\raw_data_dedup.pkl",
+        "deduplicated_interactions": 29139329,
+        "deduplicated_items": 4446065,
+        "deduplicated_users": 10297355,
+        "source_category": "Books",
+        "source_review_file": "data/books/Books.jsonl"
+      },
+      "strict_k_core": {
+        "interactions": 601992,
+        "items": 13164,
+        "significance_user_counts": [
+          14407
+        ],
+        "threshold": 20,
+        "users": 14407
+      }
+    }
+  ],
+  "run_id": "full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705",
+  "schema_version": 1,
+  "seeds": [
+    20260701,
+    20260702,
+    20260703,
+    20260704,
+    20260705
+  ]
+}

@@ -31,3 +31,7 @@ _bestrec_run/run_*.log
 _bestrec_run/_smoke_*
 _bestrec_run/_tmp_*
 cache_5core/
+# Large raw splits + reference clone (audit: hashes recorded in provenance manifests)
+data_5core/
+external/
+_bestrec_run/*.users.jsonl.gz

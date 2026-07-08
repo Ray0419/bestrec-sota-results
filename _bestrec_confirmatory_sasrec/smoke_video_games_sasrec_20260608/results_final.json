@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "dataset": "Video_Games",
+  "candidate_scope": "full_catalog",
+  "seeds": [
+    20260608
+  ],
+  "methods": {
+    "sasrec_sbert": {
+      "n_completed_seeds": 1,
+      "ndcg10_values": [
+        0.03693102052584908
+      ],
+      "mean_ndcg10": 0.03693102052584908,
+      "std_ndcg10": 0.0,
+      "records_total": 94762
+    }
+  },
+  "paired_tests": {}
+}

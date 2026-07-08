@@ -1,0 +1,103 @@
+{
+  "category": "Video_Games",
+  "config": {
+    "category": "Video_Games",
+    "epochs": 2,
+    "batch_size": 256,
+    "max_seq_len": 50,
+    "d_model": 64,
+    "n_layers": 4,
+    "n_heads": 2,
+    "dropout": 0.5,
+    "lr": 0.001,
+    "no_sbert": false,
+    "sbert_only": false,
+    "encoder_cache": null,
+    "mlp_adaptor": false,
+    "mlp_hidden": 300,
+    "mlp_dropout": 0.2,
+    "eval_every": 1,
+    "eval_subsample": 0,
+    "sampled_negs": 0,
+    "in_batch_negs": false,
+    "chunked_full_softmax": true,
+    "item_chunk": 32768,
+    "augment_factor": 1,
+    "seed": 20260608,
+    "lr_schedule": "warmup_cosine",
+    "time_bias": true,
+    "text_sim_bias": true,
+    "text_prototypes": "512",
+    "cosine_scoring": false,
+    "score_temp": 0.05,
+    "text_distill_weight": 0.0,
+    "text_init_emb": false,
+    "pos_rab": true,
+    "encoder": "hstu",
+    "proto_tau": 0.05,
+    "time_decay_kernel": false,
+    "time_decay_bases": 8,
+    "expert_heads": 0,
+    "cl_weight": 0.0,
+    "cl_mask_prob": 0.3,
+    "cl_tau": 1.0,
+    "label_smoothing": 0.2,
+    "ema_decay": 0.0,
+    "causal_filter": true,
+    "filter_kernel": 8,
+    "js_shrink": false,
+    "heat_target": true,
+    "heat_neighbors": 20,
+    "niche_share_beta": 0.0,
+    "out": "results_Y1_smoke.json"
+  },
+  "n_users": 94762,
+  "n_items": 25612,
+  "n_params": 11644736,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 9.035233263699514,
+      "epoch_time_s": 9.348777055740356,
+      "val": {
+        "NDCG@10": 0.04461467145386793,
+        "HR@10": 0.08406323209725418,
+        "MRR": 0.04067533245425992,
+        "n_eval": 94762
+      },
+      "test": {
+        "NDCG@10": 0.04040036437849215,
+        "HR@10": 0.07551550199447035,
+        "MRR": 0.03701979937266568,
+        "n_eval": 94762
+      }
+    },
+    {
+      "epoch": 2,
+      "train_loss": 8.602785871356645,
+      "epoch_time_s": 8.990206718444824,
+      "val": {
+        "NDCG@10": 0.04994032889914464,
+        "HR@10": 0.09328633840569005,
+        "MRR": 0.04506875990378929,
+        "n_eval": 94762
+      },
+      "test": {
+        "NDCG@10": 0.04493687925437512,
+        "HR@10": 0.08295519300985627,
+        "MRR": 0.04091201715839133,
+        "n_eval": 94762
+      }
+    }
+  ],
+  "best_val_NDCG10": 0.04994032889914464,
+  "best_test": {
+    "NDCG@10": 0.04493687925437512,
+    "HR@10": 0.08295519300985627,
+    "MRR": 0.04091201715839133,
+    "n_eval": 94762
+  },
+  "learned_niche_share_beta": null,
+  "learned_js_shrink_c": null,
+  "learned_heat_target_T": 0.0017591876676306129
+}

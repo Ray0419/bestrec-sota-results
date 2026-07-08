@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Anonymous Authors" />
+  <title>LC2C Retrieval LTR: Full-Catalog Cold-Item Recommendation by Learning to Fuse Text, Collaborative Transfer, and Retrieval Signals</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">LC2C Retrieval LTR: Full-Catalog Cold-Item
+Recommendation by Learning to Fuse Text, Collaborative Transfer, and
+Retrieval Signals</h1>
+<p class="author">Anonymous Authors</p>
+<p class="date">Draft: 2026-06-10</p>
+</header>
+<h1 id="abstract">Abstract</h1>
+<p>Cold-item recommendation remains difficult because new catalog items
+have no direct interaction history, while production retrieval must
+still rank them against the entire unseen catalog rather than against a
+small cold-only candidate pool. We study this stricter setting on four
+Amazon Reviews 2023 domains and introduce <strong>LC2C Retrieval
+LTR</strong>, a frozen learning-to-rank fusion method that combines
+semantic item retrieval, BLaIR-style language-item encoders,
+DropoutNet-style latent cold-start transfer, LC2C behavioral
+projections, popularity, and rank features. The method is selected
+before a confirmatory run and then evaluated on five fresh seeds, five
+folds per seed, and full-catalog candidate sets with user training
+histories masked.</p>
+<p>In the confirmatory audit, LC2C Retrieval LTR improves NDCG@10 over
+the best audited full-catalog cold-start baseline, tuned faithful
+DropoutNet, on all four datasets: Beauty 0.1488 vs. 0.1321, Fashion
+0.1301 vs. 0.0951, Instruments 0.0496 vs. 0.0237, and Books 0.0402
+vs. 0.0225. Holm-corrected per-user Wilcoxon tests are significant on
+all datasets, and user/item/fold clustered bootstrap intervals for the
+candidate-minus-best-baseline NDCG@10 delta are strictly positive. We
+release a compact artifact package containing frozen configurations,
+result manifests, statistical tests, baseline audits, source hashes, a
+source archive, and an independent clean-rebuild comparison. The claim
+is deliberately limited to zero-interaction cold-item full-catalog
+ranking under this protocol.</p>
+<h1 id="introduction">1. Introduction</h1>
+<p>Modern recommender systems must retrieve newly introduced items
+before those items accumulate interactions. This is the item cold-start
+problem: collaborative filtering can model warm items well, but a new
+item has no edge in the interaction graph and no behavior vector of its
+own. Content and language features can score such items, yet pure
+semantic retrieval often misses collaborative intent: users do not
+merely want textually similar products, but items that fit behaviorally
+learned substitution, complementarity, quality, price, and category
+patterns.</p>
+<p>The evaluation protocol matters. Many cold-start studies rank cold
+targets only against a restricted cold-item set or a sampled set of
+negatives. Such evaluations are useful diagnostics, but they are easier
+than the retrieval problem faced by a deployed recommender, where a cold
+target must compete against all unseen warm and cold items after masking
+the user’s training history. This paper therefore focuses on
+<strong>full-catalog cold-item ranking</strong>. For every test case,
+the candidate set is the full k-core item catalog minus the user’s
+training items; the target item is cold with respect to training
+interactions.</p>
+<p>We propose LC2C Retrieval LTR, a learned fusion model for this
+setting. The method is intentionally pragmatic: it does not replace
+strong text or latent cold-start models, but uses validation labels to
+learn how to combine them. The feature set includes content-direct
+retrieval, BLaIR-style semantic retrieval <span class="citation"
+data-cites="hou2024blair">(Hou et al. 2024)</span>, DropoutNet-style
+cold-start latent predictions <span class="citation"
+data-cites="volkovs2017dropoutnet">(Volkovs et al. 2017)</span>, LC2C
+behavioral transfer features, popularity, tail signals, and
+rank-normalized features. A gradient-boosted regression/ranking fallback
+learns a per-fold scoring function, with a safety rule that can fall
+back to a validated baseline if learned fusion does not improve
+validation performance.</p>
+<p>The component attribution is deliberately explicit. LC2C Retrieval
+LTR is a fusion and audit protocol over prior retrieval signals; it does
+not claim novelty for BLaIR encoders, DropoutNet, CLCRec-style
+contrastive learning, TIGER/LIGER-style semantic identifiers, or the
+Amazon Reviews 2023 dataset. Those components are credited as prior work
+and are used as comparators or input signals under the same local
+protocol.</p>
+<p>Our contributions are:</p>
+<ol type="1">
+<li>A retrieval-first LC2C successor for zero-interaction cold items
+that fuses semantic, collaborative-transfer, and rank evidence under a
+frozen confirmatory protocol.</li>
+<li>A strict full-catalog cold-item evaluation on four Amazon Reviews
+2023 domains with five confirmatory seeds and 25 seed-folds per
+dataset.</li>
+<li>A baseline suite covering tuned faithful DropoutNet, CLCRec-style
+contrastive cold-start, BLaIR-style language retrieval,
+TIGER/LIGER-style retrieval, LC2C V2, and direct content retrieval, with
+explicit audits for method completeness and applicability.</li>
+<li>A publication gate requiring wins on all four datasets,
+Holm-corrected per-user significance, and positive user/item/fold
+clustered bootstrap intervals over the best baseline.</li>
+<li>A reproducibility package containing manifests, hashes, source
+archive metadata, finalized tables, significance files, baseline audits,
+and independent clean-rebuild equivalence.</li>
+</ol>
+<h1 id="related-work">2. Related Work</h1>
+<h2 id="cold-start-recommendation">2.1 Cold-Start Recommendation</h2>
+<p>DropoutNet trains neural latent models for cold-start inference by
+explicitly dropping collaborative inputs during training, making it a
+natural comparator for item cold-start recommendation <span
+class="citation" data-cites="volkovs2017dropoutnet">(Volkovs et al.
+2017)</span>. CLCRec frames cold-start item representation learning
+through mutual information between content features and collaborative
+signals, using contrastive learning to preserve collaborative
+information in content representations <span class="citation"
+data-cites="wei2021clcrec">(Wei et al. 2021)</span>. CCFCRec further
+targets blurry collaborative embeddings in cold-start item
+recommendation by contrasting content-based and co-occurrence
+collaborative embeddings <span class="citation"
+data-cites="zhou2023ccfcrec">(Zhou et al. 2023)</span>.</p>
+<p>These methods motivate the central design choice in LC2C Retrieval
+LTR: cold-item ranking should not choose between content and
+collaborative transfer. It should learn when each signal is
+reliable.</p>
+<h2 id="language-item-encoders">2.2 Language-Item Encoders</h2>
+<p>Large language models have made item text a much stronger cold-start
+signal. BLaIR benchmarks semantic encoders for recommendation and
+introduces Amazon Reviews 2023, a large-scale corpus with more than 570
+million reviews and 48 million items <span class="citation"
+data-cites="hou2024blair">(Hou et al. 2024)</span>. The BLaIR work is
+important here for two reasons. First, it makes clear that general
+embedding benchmarks do not necessarily predict recommendation quality.
+Second, it provides a strong text-retrieval baseline family for item
+metadata and review-derived semantics.</p>
+<p>Recent work also explores retrieval-augmented LLM and knowledge-graph
+approaches for cold-start recommendation, including dynamic knowledge
+construction and LLM-guided retrieval <span class="citation"
+data-cites="yang2025coldrag">(Yang et al. 2025)</span>. A 2026
+reproducibility study argues that generative recommenders often change
+model scale, identifier design, and training strategy together, making
+cold-start gains difficult to interpret without unified protocols <span
+class="citation" data-cites="zhang2026coldstarts">(Zhang et al.
+2026)</span>. These observations support our emphasis on frozen
+configurations, full-catalog candidate sets, and independent rebuild
+checks. Newer LLM/RAG methods remain promising, but their inference
+costs, candidate-generation assumptions, and protocol differences make
+direct comparison nontrivial. We therefore position them as adjacent
+future baselines rather than as completed evidence in the present
+audit.</p>
+<h2 id="generative-and-dense-retrieval">2.3 Generative and Dense
+Retrieval</h2>
+<p>TIGER recasts recommendation as generative retrieval by predicting
+semantic item identifiers with a sequence-to-sequence model <span
+class="citation" data-cites="rajput2023tiger">(Rajput et al.
+2023)</span>. LIGER compares generative and dense retrieval under
+controlled settings and combines them in a hybrid model, reporting
+benefits for cold-start item recommendation in evaluated datasets <span
+class="citation" data-cites="yang2024liger">(Yang et al. 2024)</span>.
+Because generative retrieval is increasingly relevant to large-catalog
+recommendation, we include a TIGER/LIGER-style retrieval comparator in
+the audit. The comparator is weaker than DropoutNet in our
+zero-interaction full-catalog setting, but it is retained as a modern
+retrieval reference point.</p>
+<h2 id="warm-collaborative-filtering-baselines">2.4 Warm Collaborative
+Filtering Baselines</h2>
+<p>Classic warm-start baselines such as iALS <span class="citation"
+data-cites="hu2008implicit">(Hu et al. 2008)</span>, MultiVAE <span
+class="citation" data-cites="liang2018multivae">(Liang et al.
+2018)</span>, EASE <span class="citation"
+data-cites="steck2019ease">(Steck 2019)</span>, and LightGCN <span
+class="citation" data-cites="he2020lightgcn">(He et al. 2020)</span>
+remain important for general recommendation studies. They are not the
+basis of our main SOTA claim because the present paper is restricted to
+zero-interaction cold items. Where a method cannot rank cold items
+without item content or a cold-start transfer mechanism, it is not a
+fair primary comparator for the exact setting unless adapted into a
+cold-item scorer.</p>
+<h1 id="problem-setting">3. Problem Setting</h1>
+<p>Let (U) be users, (I) be the full item catalog, and (I_u^{train}) be
+the items observed for user (u) during training. For each test record,
+the target item (i^+) is a cold item: it has no training interactions in
+the fold. The ranking candidate set is</p>
+<p>[ C_u = I I_u^{train}. ]</p>
+<p>The model scores every candidate in (C_u), so cold targets compete
+against all unseen warm and cold items. We report NDCG@10 as the primary
+metric, with HR@10 and MRR as secondary metrics. This differs from
+cold-fold-only ranking, where the candidate set is restricted to cold
+items and is therefore easier.</p>
+<h1 id="method-lc2c-retrieval-ltr">4. Method: LC2C Retrieval LTR</h1>
+<p>LC2C Retrieval LTR is a two-stage full-catalog reranking method.
+First, multiple cold-item scorers provide candidate evidence. Second, a
+learned fusion model reranks candidates using validation-fold
+labels.</p>
+<h2 id="feature-sources">4.1 Feature Sources</h2>
+<p>The frozen feature methods are:</p>
+<ul>
+<li><code>content_direct</code>: direct semantic/content similarity
+scoring.</li>
+<li><code>blair_text</code>: BLaIR-style text retrieval using
+recommendation-specialized item text encoders.</li>
+<li><code>faithful_dropoutnet</code>: a DropoutNet-style latent
+cold-start predictor.</li>
+<li><code>official_dropoutnet</code>: tuned faithful DropoutNet evidence
+used as a strong baseline and anchor.</li>
+<li><code>lc2c_v2</code>: the prior LC2C behavior-vector
+projection.</li>
+<li><code>lc2cpp_validated_margin</code>: the prior validated LC2C++
+candidate.</li>
+<li><code>melt_tail_transfer</code>: a tail-transfer feature where
+applicable, not used as an official MELT SOTA baseline.</li>
+<li><code>popularity</code>: global item prior.</li>
+<li>Rank-normalized and tail indicators.</li>
+</ul>
+<p>For every dataset, the DropoutNet feature configuration is frozen
+before confirmatory evaluation. The confirmatory run uses the following
+LTR hyperparameters: learning rate 0.04, maximum depth 3, 120
+estimators, 60,000 maximum training examples, 32 negative samples per
+positive, z-sigmoid rank features, top-M reranking with (M=512), and
+training-history masking during top-M construction.</p>
+<h2 id="learning-and-safety-rule">4.2 Learning and Safety Rule</h2>
+<p>For each training fold, validation labels are generated from held-out
+cold targets. A gradient-boosted regression/ranking fallback learns a
+scoring function over feature scores and rank features. The validation
+safety rule prevents a learned fusion model from replacing a stronger
+baseline when it fails to improve validation performance. In the
+confirmatory configuration, the fallback and validation baseline are
+tuned faithful DropoutNet.</p>
+<p>This design is intentionally conservative. It treats strong text and
+DropoutNet models as evidence providers rather than adversaries, and
+only claims an improvement when the final frozen reranker beats them
+under held-out confirmatory seeds.</p>
+<h1 id="experimental-protocol">5. Experimental Protocol</h1>
+<h2 id="datasets">5.1 Datasets</h2>
+<p>We evaluate on four Amazon Reviews 2023 domains: Beauty, Fashion,
+Instruments, and Books. The Books run uses the full 14,407-user
+warm/cold evaluation population in the confirmatory artifacts, with no
+cap in the approval run. All reported cold-item results use full-catalog
+candidate scope.</p>
+<h2 id="splits-and-seeds">5.2 Splits and Seeds</h2>
+<p>The confirmatory run uses five fresh seeds: 20260701, 20260702,
+20260703, 20260704, and 20260705. Each dataset has five folds per seed,
+for 25 seed-folds per dataset. The run id is
+<code>confirmatory_masked_candidate_20260701_20260705_candidate_only</code>.</p>
+<h2 id="baselines">5.3 Baselines</h2>
+<p>The primary cold full-catalog baselines are:</p>
+<ul>
+<li><code>official_dropoutnet</code>: tuned faithful DropoutNet with
+WMF-style latent factors and frozen dataset-specific
+hyperparameters.</li>
+<li><code>official_dropoutnet_fixed</code>: the exact DropoutNet
+configuration consumed by LC2C Retrieval LTR.</li>
+<li><code>official_clcrec</code>: a CLCRec-style contrastive cold-start
+comparator imported under the same full-catalog protocol.</li>
+<li><code>official_blair</code>: a BLaIR-style language retrieval
+comparator.</li>
+<li><code>tiger_liger_retrieval</code>: a TIGER/LIGER-style retrieval
+comparator.</li>
+<li><code>lc2c_v2</code>: the prior LC2C baseline.</li>
+<li><code>content_direct</code>: direct content retrieval, used in
+audits and ablations.</li>
+</ul>
+<p>The baseline audit marks official MELT as not applicable to the
+zero-interaction item-cold protocol because MELT’s item branch requires
+train item contexts, and the strict folds give cold items zero train
+context. Warm-only methods such as LightGCN, MultiVAE, and iALS are not
+claimed as completed full-catalog cold-item baselines in the publication
+gate.</p>
+<h2 id="statistical-testing">5.4 Statistical Testing</h2>
+<p>For each dataset, LC2C Retrieval LTR is compared against every
+cold-start baseline using per-user Wilcoxon signed-rank tests. Holm
+correction controls the familywise error rate across baseline
+comparisons within a dataset <span class="citation"
+data-cites="holm1979">(Holm 1979)</span>. The publication gate
+additionally requires the user/item/fold clustered bootstrap 95%
+confidence interval for LC2C Retrieval LTR minus the best baseline to be
+strictly above zero.</p>
+<h2 id="reproducibility-artifacts">5.5 Reproducibility Artifacts</h2>
+<p>The compact artifact package contains <code>run_config.json</code>,
+<code>results_manifest.json</code>, <code>results_final.json</code>,
+<code>significance.json</code>, <code>tables.json</code>,
+<code>publication_gate.json</code>, baseline audit files, source hashes,
+and source archive metadata. The current strict audit report is
+<code>_bestrec_sota_lab/runs/full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705/STRICT_REAL_FAIR_REPRO_REVIEW_CURRENT.md</code>.
+The independent clean rebuild reports
+<code>max_metric_abs_diff=0.0</code> and
+<code>record_multisets_match=true</code>. Raw JSONL record files total
+more than 5 GB and are not stored in normal Git; their byte sizes, row
+counts, and SHA256 hashes are recorded in the artifact README.</p>
+<h1 id="results">6. Results</h1>
+<p>Table 1 reports the primary full-catalog cold-item NDCG@10 results.
+LC2C Retrieval LTR beats every recorded cold-start baseline on all four
+datasets. The strongest baseline is tuned faithful DropoutNet in every
+domain.</p>
+<p><strong>Table 1. Full-catalog cold-item NDCG@10. Higher is
+better.</strong></p>
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr>
+<th>Dataset</th>
+<th style="text-align: right;">LC2C Retrieval LTR</th>
+<th style="text-align: right;">DropoutNet</th>
+<th style="text-align: right;">DropoutNet fixed</th>
+<th style="text-align: right;">CLCRec</th>
+<th style="text-align: right;">BLaIR</th>
+<th style="text-align: right;">TIGER/LIGER</th>
+<th style="text-align: right;">LC2C V2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beauty</td>
+<td style="text-align: right;"><strong>0.148826</strong></td>
+<td style="text-align: right;">0.132137</td>
+<td style="text-align: right;">0.118583</td>
+<td style="text-align: right;">0.064611</td>
+<td style="text-align: right;">0.043254</td>
+<td style="text-align: right;">0.012125</td>
+<td style="text-align: right;">0.012967</td>
+</tr>
+<tr>
+<td>Fashion</td>
+<td style="text-align: right;"><strong>0.130138</strong></td>
+<td style="text-align: right;">0.095089</td>
+<td style="text-align: right;">0.093990</td>
+<td style="text-align: right;">0.060061</td>
+<td style="text-align: right;">0.037732</td>
+<td style="text-align: right;">0.020011</td>
+<td style="text-align: right;">0.017566</td>
+</tr>
+<tr>
+<td>Instruments</td>
+<td style="text-align: right;"><strong>0.049575</strong></td>
+<td style="text-align: right;">0.023654</td>
+<td style="text-align: right;">0.023654</td>
+<td style="text-align: right;">0.022389</td>
+<td style="text-align: right;">0.007166</td>
+<td style="text-align: right;">0.000278</td>
+<td style="text-align: right;">0.000790</td>
+</tr>
+<tr>
+<td>Books</td>
+<td style="text-align: right;"><strong>0.040225</strong></td>
+<td style="text-align: right;">0.022520</td>
+<td style="text-align: right;">0.021044</td>
+<td style="text-align: right;">0.003949</td>
+<td style="text-align: right;">0.007794</td>
+<td style="text-align: right;">0.000970</td>
+<td style="text-align: right;">0.000849</td>
+</tr>
+</tbody>
+</table>
+<p>Table 2 gives effect sizes and clustered bootstrap intervals against
+the best baseline.</p>
+<p><strong>Table 2. LC2C Retrieval LTR minus best baseline on
+NDCG@10.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Best baseline</th>
+<th style="text-align: right;">Delta</th>
+<th>95% clustered bootstrap CI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beauty</td>
+<td>official_dropoutnet</td>
+<td style="text-align: right;">0.016689</td>
+<td>[0.006146, 0.027866]</td>
+</tr>
+<tr>
+<td>Fashion</td>
+<td>official_dropoutnet</td>
+<td style="text-align: right;">0.035049</td>
+<td>[0.027089, 0.043449]</td>
+</tr>
+<tr>
+<td>Instruments</td>
+<td>official_dropoutnet</td>
+<td style="text-align: right;">0.025921</td>
+<td>[0.023949, 0.027942]</td>
+</tr>
+<tr>
+<td>Books</td>
+<td>official_dropoutnet</td>
+<td style="text-align: right;">0.017706</td>
+<td>[0.015805, 0.019633]</td>
+</tr>
+</tbody>
+</table>
+<p>Table 3 reports secondary metrics for the candidate method.</p>
+<p><strong>Table 3. LC2C Retrieval LTR secondary metrics.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th style="text-align: right;">Test records</th>
+<th style="text-align: right;">Seed-folds</th>
+<th style="text-align: right;">HR@10</th>
+<th style="text-align: right;">MRR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beauty</td>
+<td style="text-align: right;">12,675</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0.283393</td>
+<td style="text-align: right;">0.131284</td>
+</tr>
+<tr>
+<td>Fashion</td>
+<td style="text-align: right;">18,996</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0.252895</td>
+<td style="text-align: right;">0.110923</td>
+</tr>
+<tr>
+<td>Instruments</td>
+<td style="text-align: right;">295,130</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0.098363</td>
+<td style="text-align: right;">0.046376</td>
+</tr>
+<tr>
+<td>Books</td>
+<td style="text-align: right;">3,009,960</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0.079446</td>
+<td style="text-align: right;">0.035489</td>
+</tr>
+</tbody>
+</table>
+<p>The best-baseline Wilcoxon comparisons remain significant after Holm
+correction. Beauty is the narrowest win: 175 users favor LC2C Retrieval
+LTR, 75 favor tuned DropoutNet, and 3 are tied, with raw (p=5.73
+^{-13}). The other datasets have substantially larger margins and raw
+p-values reported as 0.0 by the numerical test implementation due to
+underflow.</p>
+<h1 id="ablation-evidence">7. Ablation Evidence</h1>
+<p>The ablation suite is diagnostic rather than confirmatory, but it
+helps explain the mechanism. Removing DropoutNet as both feature and
+rerank anchor reduces NDCG@10 on all four development-era full runs:</p>
+<p><strong>Table 4. Diagnostic ablation: remove DropoutNet feature and
+anchor.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th style="text-align: right;">Reference NDCG@10</th>
+<th style="text-align: right;">Ablated NDCG@10</th>
+<th style="text-align: right;">Delta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beauty</td>
+<td style="text-align: right;">0.144103</td>
+<td style="text-align: right;">0.132223</td>
+<td style="text-align: right;">-0.011879</td>
+</tr>
+<tr>
+<td>Fashion</td>
+<td style="text-align: right;">0.133771</td>
+<td style="text-align: right;">0.122716</td>
+<td style="text-align: right;">-0.011054</td>
+</tr>
+<tr>
+<td>Instruments</td>
+<td style="text-align: right;">0.049103</td>
+<td style="text-align: right;">0.038789</td>
+<td style="text-align: right;">-0.010315</td>
+</tr>
+<tr>
+<td>Books</td>
+<td style="text-align: right;">0.040656</td>
+<td style="text-align: right;">0.036918</td>
+<td style="text-align: right;">-0.003738</td>
+</tr>
+</tbody>
+</table>
+<p>This suggests that the final method is not merely a
+language-retrieval model. The DropoutNet-derived collaborative transfer
+signal provides consistent lift, particularly on Beauty, Fashion, and
+Instruments. The <code>mask_seen_topm_true</code> diagnostic has no
+effect on Beauty, a small negative effect on Fashion and Instruments,
+and a small positive effect on Books, indicating that the confirmatory
+win is not explained by a simple train-history leakage artifact in top-M
+pool construction.</p>
+<h1 id="discussion">8. Discussion</h1>
+<p>The main empirical pattern is that tuned DropoutNet is the hardest
+baseline, not BLaIR or TIGER/LIGER. This is plausible in a
+zero-interaction item-cold protocol: language encoders can identify
+semantically similar items, but DropoutNet is trained to map item
+content into a latent collaborative space. LC2C Retrieval LTR improves
+over DropoutNet by adding direct text, LC2C behavior projections,
+popularity/tail priors, and validation-trained rank interactions. The
+learned model therefore behaves less like a new standalone recommender
+and more like a robust retrieval arbitration layer.</p>
+<p>The Books result is especially important because it uses 14,407 users
+and over three million cold test records across 25 seed-folds. The
+clean-rebuild comparison reports exact aggregate metric agreement and
+order-invariant raw-record multiset agreement. This substantially
+reduces the chance that the result is an artifact of stale caches or
+one-off record ordering.</p>
+<h1 id="reproducibility-statement">9. Reproducibility Statement</h1>
+<p>The experiment is designed to be auditable from generated artifacts
+rather than notebook state. The compact publication package contains the
+frozen configuration, result manifests, final tables, statistical tests,
+and baseline audits. The canonical run was finalized with:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>python _bestrec_sota_lab<span class="op">/</span>finalize<span class="op">.</span><span class="fu">py</span> <span class="op">--</span>run-id confirmatory_masked_candidate_20260701_20260705_candidate_only <span class="op">--</span>bootstrap-reps <span class="dv">2000</span></span></code></pre></div>
+<p>The user-facing confirmatory command associated with the protocol
+is:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>uv <span class="op">--</span>project _bestrec_run run python _bestrec_sota_lab<span class="op">/</span>run_confirmatory<span class="op">.</span><span class="fu">py</span> <span class="op">--</span>datasets beauty<span class="op">,</span>fashion<span class="op">,</span>instruments<span class="op">,</span>books <span class="op">--</span>seeds <span class="dv">20260701</span><span class="op">,</span><span class="dv">20260702</span><span class="op">,</span><span class="dv">20260703</span><span class="op">,</span><span class="dv">20260704</span><span class="op">,</span><span class="dv">20260705</span> <span class="op">--</span>candidate-scope full_catalog <span class="op">--</span>no-books-cap</span></code></pre></div>
+<p>The clean rebuild is represented by run id
+<code>full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705</code>.
+Its comparison file reports:</p>
+<ul>
+<li><code>passed=true</code>.</li>
+<li><code>rebuilt_gate_passed=true</code>.</li>
+<li><code>max_metric_abs_diff=0.0</code>.</li>
+<li><code>record_multisets_match=true</code>.</li>
+<li>Raw JSONL byte hashes differ because record append order is not
+fixed, but order-invariant row-multiset fingerprints match for every
+dataset.</li>
+</ul>
+<p>The run manifest records Windows 11, Python 3.12.13, the working
+directory, processor string, command, timestamps, seed list, input
+hashes, and output hashes. The source archive manifest records 226
+source files and archive SHA256
+<code>e4a7c1527f482e66b869b34403c7cd2087032f65ca76997f1082aefc8313b724</code>.</p>
+<h2 id="raw-record-inventory">9.1 Raw Record Inventory</h2>
+<p>The raw per-user JSONL records are necessary for an adversarial
+reanalysis, but are too large for ordinary Git. They are documented by
+the generated manifest
+<code>_bestrec_sota_lab/publication_artifacts/raw_record_release/raw_record_release_manifest.json</code>,
+which records total size 5,099,053,650 bytes and 23,357,327 rows. The
+raw-record archive is published as chunked GitHub Release assets at <a
+href="https://github.com/Ray0419/bestrec-sota-results/releases/tag/bestrec-raw-records-v1"
+class="uri">https://github.com/Ray0419/bestrec-sota-results/releases/tag/bestrec-raw-records-v1</a>;
+<code>raw_record_upload_parts_manifest.json</code> records the seven
+part files, sizes, and SHA256 digests. The canonical files are:</p>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Raw record file</th>
+<th style="text-align: right;">Local bytes</th>
+<th style="text-align: right;">Row count</th>
+<th>Canonical raw SHA256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beauty</td>
+<td><code>cold_full_catalog_records_beauty.jsonl</code></td>
+<td style="text-align: right;">19,003,185</td>
+<td style="text-align: right;">88,725</td>
+<td><code>57cf6cca51f2649d0235d88396c4e7eb3e79f854ceba4b83a18cf020184ffc63</code></td>
+</tr>
+<tr>
+<td>Fashion</td>
+<td><code>cold_full_catalog_records_fashion.jsonl</code></td>
+<td style="text-align: right;">28,705,816</td>
+<td style="text-align: right;">132,972</td>
+<td><code>7e81a5c3bb7ebcf018a4c1f36fbdc974950742547bcafed841c0e77ef046f0ab</code></td>
+</tr>
+<tr>
+<td>Instruments</td>
+<td><code>cold_full_catalog_records_instruments.jsonl</code></td>
+<td style="text-align: right;">458,668,616</td>
+<td style="text-align: right;">2,065,910</td>
+<td><code>9c7310b282fa2d7c36327308df8be3aee4182edf1804a86ae07d872ebedfc580</code></td>
+</tr>
+<tr>
+<td>Books</td>
+<td><code>cold_full_catalog_records_books.jsonl</code></td>
+<td style="text-align: right;">4,592,676,033</td>
+<td style="text-align: right;">21,069,720</td>
+<td><code>5b8254afc7f6dfb4d3cceb0b8e0829881287f47c31379b2b9657763b46cdf382</code></td>
+</tr>
+</tbody>
+</table>
+<p>For a camera-ready venue deposit, a DOI mirror on Zenodo, OSF, or
+institutional storage would be preferable to relying solely on GitHub
+Release retention. The current release is still checksum-verifiable from
+the local manifests:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>uv <span class="op">--</span>project _bestrec_run run python _bestrec_sota_lab<span class="op">/</span>prepare_raw_record_release<span class="op">.</span><span class="fu">py</span> <span class="op">--</span>verify-only</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>uv <span class="op">--</span>project _bestrec_run run python _bestrec_sota_lab<span class="op">/</span>package_raw_record_release<span class="op">.</span><span class="fu">py</span> <span class="op">--</span>verify-parts</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>uv <span class="op">--</span>project _bestrec_run run python _bestrec_sota_lab<span class="op">/</span>validate_public_submission<span class="op">.</span><span class="fu">py</span> <span class="op">--</span>deep-verify-raw <span class="op">--</span>verify-github-release</span></code></pre></div>
+<h1 id="threats-to-validity">10. Threats to Validity</h1>
+<p><strong>Validation-trained fusion.</strong> LC2C Retrieval LTR learns
+to combine multiple strong feature providers. This is a legitimate
+retrieval architecture, but it can overfit if validation folds are
+reused after seeing test outcomes. We reduce this risk by freezing the
+selected configuration before the confirmatory seeds and by not altering
+the algorithm after the confirmatory run starts.</p>
+<p><strong>Comparator coverage.</strong> The main cold-start comparator
+set is strong for zero-interaction item cold-start: tuned faithful
+DropoutNet, BLaIR-style retrieval, CLCRec-style contrastive cold-start,
+TIGER/LIGER-style retrieval, and LC2C V2. It does not exhaust all
+2025–2026 LLM/RAG recommender systems, especially dynamic KG/LLM methods
+whose protocols and compute profiles differ substantially. The claim
+should therefore remain protocol-specific.</p>
+<p><strong>MELT applicability.</strong> MELT is a long-tail sequential
+recommendation method rather than a zero-interaction item-cold scorer.
+The audit marks official MELT as not applicable because cold items have
+no train item context in the strict folds. A modified MELT-style
+baseline could be informative, but would be an adaptation and should not
+be described as official MELT without a separate audit.</p>
+<p><strong>Raw record archival.</strong> Compact artifacts are
+sufficient to verify reported tables, manifests, significance tests,
+gates, source hashes, and clean-rebuild equivalence. They are not a
+substitute for public raw per-record release. A hostile reviewer can
+reasonably ask for the raw JSONL files.</p>
+<p><strong>Catalog/domain scope.</strong> The experiments cover four
+Amazon Reviews 2023 domains. They do not prove transfer to media, news,
+short-video, or industrial catalogs with different metadata quality and
+popularity dynamics.</p>
+<h1 id="limitations-and-submission-requirements">11. Limitations and
+Submission Requirements</h1>
+<p>This draft supports a strict but narrow claim. It does not establish
+general recommender SOTA, warm-start SOTA, or superiority over all
+recent LLM/RAG recommenders under their own protocols. Two limitations
+should be resolved before submission:</p>
+<ol type="1">
+<li>Raw per-user JSONL files should be archived outside normal Git, for
+example with Git LFS, Zenodo, OSF, or institutional storage. The current
+repository records hashes, row counts, sizes, rebuild fingerprints, and
+a generated raw-release manifest, but not the 5+ GB raw files
+themselves.</li>
+<li>If the target venue expects broad recommender comparisons,
+warm-start LightGCN, MultiVAE, iALS, and EASE results should be reported
+only as secondary warm diagnostics, not as part of the cold-item SOTA
+claim unless adapted and audited for zero-interaction cold items.</li>
+</ol>
+<h1 id="conclusion">12. Conclusion</h1>
+<p>LC2C Retrieval LTR shows that full-catalog cold-item recommendation
+benefits from learned arbitration among language, content,
+collaborative-transfer, and rank signals. Under a frozen five-seed
+confirmatory protocol on four Amazon Reviews 2023 domains, it beats the
+best audited modern cold-start baseline on NDCG@10 in every dataset,
+with Holm-corrected per-user significance and positive
+clustered-bootstrap intervals. The result is publication-worthy as a
+cold-item full-catalog ranking study, provided the raw records are
+archived and the claim remains scoped to the evaluated protocol.</p>
+<h1 id="artifact-availability">Artifact Availability</h1>
+<p>The compact artifact package is located at
+<code>_bestrec_sota_lab/publication_artifacts/</code>. The canonical
+confirmatory files are under
+<code>confirmatory_masked_candidate_20260701_20260705_candidate_only/</code>;
+independent rebuild files are under
+<code>full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705/</code>.
+The raw-release manifest and upload-part manifest are under
+<code>raw_record_release/</code>. The GitHub repository contains the
+compact package and source archive metadata; raw per-user records are
+published as release assets rather than committed to the Git tree due to
+size.</p>
+<h1 id="appendix-a.-data-processing-and-split-construction">Appendix A.
+Data Processing and Split Construction</h1>
+<!-- DATA_PROCESSING_APPENDIX:START -->
+<p>This appendix is generated by
+<code>_bestrec_sota_lab/paper_draft/generate_data_processing_appendix.py</code>
+from the raw deduplicated caches,
+<code>_bestrec_run/run_cold_item.py</code>,
+<code>_bestrec_run/v5_utils.py</code>, and the approved confirmatory
+artifacts.</p>
+<p>The raw Amazon Reviews 2023 category mapping is inherited from
+<code>_bestrec_run/preprocess_5core_standard.py</code>. The strict
+cold-item pipeline then applies dataset-specific recursive k-core
+filtering with <code>v5_utils.kcore_filter</code>, reindexes users/items
+with <code>v5_utils.reindex</code>, partitions items into five cold
+folds with <code>run_cold_item.make_item_kfold</code>, and evaluates
+full-catalog candidates after masking each user’s training history.</p>
+<p><strong>Raw deduplicated cache before strict k-core
+filtering.</strong></p>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Amazon Reviews 2023 category</th>
+<th>Review file</th>
+<th style="text-align: right;">Users</th>
+<th style="text-align: right;">Items</th>
+<th style="text-align: right;">Interactions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beauty</td>
+<td><code>All_Beauty</code></td>
+<td><code>data/beauty/All_Beauty.jsonl</code></td>
+<td style="text-align: right;">631,986</td>
+<td style="text-align: right;">112,565</td>
+<td style="text-align: right;">693,929</td>
+</tr>
+<tr>
+<td>Fashion</td>
+<td><code>Amazon_Fashion</code></td>
+<td><code>data/fashion/Amazon_Fashion.jsonl</code></td>
+<td style="text-align: right;">2,035,490</td>
+<td style="text-align: right;">825,869</td>
+<td style="text-align: right;">2,474,375</td>
+</tr>
+<tr>
+<td>Instruments</td>
+<td><code>Musical_Instruments</code></td>
+<td><code>data/instruments/Musical_Instruments.jsonl</code></td>
+<td style="text-align: right;">1,762,679</td>
+<td style="text-align: right;">213,571</td>
+<td style="text-align: right;">2,975,551</td>
+</tr>
+<tr>
+<td>Books</td>
+<td><code>Books</code></td>
+<td><code>data/books/Books.jsonl</code></td>
+<td style="text-align: right;">10,297,355</td>
+<td style="text-align: right;">4,446,065</td>
+<td style="text-align: right;">29,139,329</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Strict evaluation graph after recursive k-core
+filtering.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th style="text-align: right;">k-core threshold</th>
+<th style="text-align: right;">Users</th>
+<th style="text-align: right;">Items</th>
+<th style="text-align: right;">Interactions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beauty</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">253</td>
+<td style="text-align: right;">356</td>
+<td style="text-align: right;">2,535</td>
+</tr>
+<tr>
+<td>Fashion</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">513</td>
+<td style="text-align: right;">614</td>
+<td style="text-align: right;">3,805</td>
+</tr>
+<tr>
+<td>Instruments</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">3,911</td>
+<td style="text-align: right;">2,269</td>
+<td style="text-align: right;">59,026</td>
+</tr>
+<tr>
+<td>Books</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">14,407</td>
+<td style="text-align: right;">13,164</td>
+<td style="text-align: right;">601,992</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Confirmatory item-fold and record construction.</strong></p>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th>Dataset</th>
+<th style="text-align: right;">Seed-folds</th>
+<th style="text-align: right;">Cold items/fold</th>
+<th style="text-align: right;">Train interactions/fold</th>
+<th style="text-align: right;">Cold test interactions/fold</th>
+<th style="text-align: right;">Candidate records/fold</th>
+<th style="text-align: right;">Candidate records total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beauty</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">71-72</td>
+<td style="text-align: right;">1,993-2,050</td>
+<td style="text-align: right;">485-542</td>
+<td style="text-align: right;">485-542</td>
+<td style="text-align: right;">12,675</td>
+</tr>
+<tr>
+<td>Fashion</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">122-123</td>
+<td style="text-align: right;">2,949-3,108</td>
+<td style="text-align: right;">697-856</td>
+<td style="text-align: right;">693-852</td>
+<td style="text-align: right;">18,996</td>
+</tr>
+<tr>
+<td>Instruments</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">453-454</td>
+<td style="text-align: right;">45,384-48,662</td>
+<td style="text-align: right;">10,364-13,642</td>
+<td style="text-align: right;">10,364-13,642</td>
+<td style="text-align: right;">295,130</td>
+</tr>
+<tr>
+<td>Books</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">2,632-2,633</td>
+<td style="text-align: right;">478,234-487,000</td>
+<td style="text-align: right;">114,992-123,758</td>
+<td style="text-align: right;">114,992-123,758</td>
+<td style="text-align: right;">3,009,960</td>
+</tr>
+</tbody>
+</table>
+<p>The confirmatory seeds are
+<code>20260701, 20260702, 20260703, 20260704, 20260705</code>. Each seed
+uses five item folds. For every test record, the target item is in the
+held-out cold item set, and the ranking candidate set is the full strict
+item catalog minus the user’s training items.</p>
+<p>The documented user-facing command for the approved protocol is:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>uv <span class="op">--</span>project _bestrec_run run python _bestrec_sota_lab<span class="op">/</span>run_confirmatory<span class="op">.</span><span class="fu">py</span> <span class="op">--</span>datasets beauty<span class="op">,</span>fashion<span class="op">,</span>instruments<span class="op">,</span>books <span class="op">--</span>seeds <span class="dv">20260701</span><span class="op">,</span><span class="dv">20260702</span><span class="op">,</span><span class="dv">20260703</span><span class="op">,</span><span class="dv">20260704</span><span class="op">,</span><span class="dv">20260705</span> <span class="op">--</span>candidate-scope full_catalog <span class="op">--</span>no-books-cap</span></code></pre></div>
+<p>The independently rebuilt approval run is
+<code>full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705</code>,
+compared against canonical run
+<code>confirmatory_masked_candidate_20260701_20260705_candidate_only</code>.
+<!-- DATA_PROCESSING_APPENDIX:END --></p>
+<h1 id="appendix-b.-frozen-configuration-summary">Appendix B. Frozen
+Configuration Summary</h1>
+<p>The candidate model is <code>lc2c_retrieval_ltr</code>. The frozen
+LTR configuration uses:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fallback method</td>
+<td><code>official_dropoutnet</code></td>
+</tr>
+<tr>
+<td>Validation baseline</td>
+<td><code>official_dropoutnet</code></td>
+</tr>
+<tr>
+<td>Feature methods</td>
+<td><code>content_direct</code>, <code>blair_text</code>,
+<code>faithful_dropoutnet</code>, <code>lc2c_v2</code>,
+<code>lc2cpp_validated_margin</code>, <code>melt_tail_transfer</code>,
+<code>popularity</code>, <code>official_dropoutnet</code></td>
+</tr>
+<tr>
+<td>Learning rate</td>
+<td>0.04</td>
+</tr>
+<tr>
+<td>Maximum depth</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Number of estimators</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Maximum train examples</td>
+<td>60,000</td>
+</tr>
+<tr>
+<td>Negative samples per positive</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Rank feature scope</td>
+<td><code>zsigmoid</code></td>
+</tr>
+<tr>
+<td>Rerank top-M</td>
+<td>512</td>
+</tr>
+<tr>
+<td>Rerank output mode</td>
+<td><code>rank_blend</code></td>
+</tr>
+<tr>
+<td>Rerank prediction weight</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>Score batch items</td>
+<td>2,048</td>
+</tr>
+<tr>
+<td>Mask seen items in top-M</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<p>The frozen DropoutNet feature configuration is:</p>
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th style="text-align: right;">k</th>
+<th style="text-align: right;">p_drop</th>
+<th style="text-align: right;">reg</th>
+<th>mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beauty</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">10.0</td>
+<td><code>wmf_warm_tower_cold_calib</code></td>
+</tr>
+<tr>
+<td>Fashion</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">10.0</td>
+<td><code>wmf_warm_tower_cold_calib</code></td>
+</tr>
+<tr>
+<td>Instruments</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: right;">0.7</td>
+<td style="text-align: right;">1.0</td>
+<td><code>wmf_warm_tower_cold_calib</code></td>
+</tr>
+<tr>
+<td>Books</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">0.7</td>
+<td style="text-align: right;">1.0</td>
+<td><code>wmf_warm_tower_cold_calib</code></td>
+</tr>
+</tbody>
+</table>
+<h1 id="appendix-c.-baseline-audit-summary">Appendix C. Baseline Audit
+Summary</h1>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Baseline</th>
+<th>Status in gate</th>
+<th>Evidence file</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>official_dropoutnet</code></td>
+<td>complete</td>
+<td><code>official_dropoutnet_audit.json</code></td>
+<td>Tuned faithful DropoutNet with full-catalog records on all
+datasets.</td>
+</tr>
+<tr>
+<td><code>official_dropoutnet_fixed</code></td>
+<td>complete</td>
+<td><code>official_dropoutnet_fixed_audit.json</code></td>
+<td>Exact DropoutNet config consumed by LC2C Retrieval LTR.</td>
+</tr>
+<tr>
+<td><code>official_blair</code></td>
+<td>complete</td>
+<td><code>official_blair_audit.json</code></td>
+<td>BLaIR-style text retrieval records present on all datasets.</td>
+</tr>
+<tr>
+<td><code>official_clcrec</code></td>
+<td>complete</td>
+<td><code>official_clcrec_audit.json</code></td>
+<td>CLCRec-style same-protocol records present on all datasets.</td>
+</tr>
+<tr>
+<td><code>tiger_liger_retrieval</code></td>
+<td>complete</td>
+<td><code>tiger_liger_retrieval_audit.json</code></td>
+<td>Official LIGER modules used; canonical record coverage
+complete.</td>
+</tr>
+<tr>
+<td><code>official_melt</code></td>
+<td>not applicable</td>
+<td><code>official_melt_audit.json</code></td>
+<td>Official item branch requires train item contexts; strict cold items
+have zero train context.</td>
+</tr>
+<tr>
+<td>LightGCN, MultiVAE, iALS</td>
+<td>not run</td>
+<td><code>baseline_audit.json</code></td>
+<td>Warm/general recommenders, not full-catalog zero-interaction
+cold-item evidence.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="appendix-d.-publication-checklist">Appendix D. Publication
+Checklist</h1>
+<p>Before submission:</p>
+<ol type="1">
+<li>Re-run
+<code>validate_public_submission.py --deep-verify-raw --verify-github-release</code>
+and attach <code>PUBLIC_SUBMISSION_GATE.md</code>.</li>
+<li>Regenerate Appendix A with
+<code>generate_data_processing_appendix.py</code> after any data or
+split change.</li>
+<li>Replace anonymous author metadata and add
+affiliation/funding/conflict statements.</li>
+<li>Add a rendered pipeline figure and a bootstrap-delta figure if the
+target venue expects visual summaries.</li>
+<li>Rebuild the manuscript from Markdown with Pandoc and attach the
+rendered PDF plus source package.</li>
+</ol>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="list">
+<div id="ref-he2020lightgcn" class="csl-entry" role="listitem">
+He, Xiangnan, Kuan Deng, Xiang Wang, Yan Li, Yongdong Zhang, and Meng
+Wang. 2020. <span>“LightGCN: Simplifying and Powering Graph Convolution
+Network for Recommendation.”</span> <em>Proceedings of the 43rd
+International ACM SIGIR Conference on Research and Development in
+Information Retrieval</em>. <a
+href="https://arxiv.org/abs/2002.02126">https://arxiv.org/abs/2002.02126</a>.
+</div>
+<div id="ref-holm1979" class="csl-entry" role="listitem">
+Holm, Sture. 1979. <span>“A Simple Sequentially Rejective Multiple Test
+Procedure.”</span> <em>Scandinavian Journal of Statistics</em> 6 (2):
+65–70.
+</div>
+<div id="ref-hou2024blair" class="csl-entry" role="listitem">
+Hou, Yupeng, Jiacheng Li, Xiangjun Fu, et al. 2024. <span>“Bridging
+Language and Items for Retrieval and Recommendation: Benchmarking LLMs
+as Semantic Encoders.”</span> <em>arXiv Preprint arXiv:2403.03952</em>.
+<a
+href="https://arxiv.org/abs/2403.03952">https://arxiv.org/abs/2403.03952</a>.
+</div>
+<div id="ref-hu2008implicit" class="csl-entry" role="listitem">
+Hu, Yifan, Yehuda Koren, and Chris Volinsky. 2008. <span>“Collaborative
+Filtering for Implicit Feedback Datasets.”</span> <em>2008 Eighth IEEE
+International Conference on Data Mining</em>, 263–72. <a
+href="https://doi.org/10.1109/ICDM.2008.22">https://doi.org/10.1109/ICDM.2008.22</a>.
+</div>
+<div id="ref-liang2018multivae" class="csl-entry" role="listitem">
+Liang, Dawen, Rahul G. Krishnan, Matthew D. Hoffman, and Tony Jebara.
+2018. <span>“Variational Autoencoders for Collaborative
+Filtering.”</span> <em>Proceedings of the Web Conference</em>. <a
+href="https://arxiv.org/abs/1802.05814">https://arxiv.org/abs/1802.05814</a>.
+</div>
+<div id="ref-rajput2023tiger" class="csl-entry" role="listitem">
+Rajput, Shashank, Nikhil Mehta, Anima Singh, et al. 2023.
+<span>“Recommender Systems with Generative Retrieval.”</span>
+<em>Advances in Neural Information Processing Systems</em>. <a
+href="https://arxiv.org/abs/2305.05065">https://arxiv.org/abs/2305.05065</a>.
+</div>
+<div id="ref-steck2019ease" class="csl-entry" role="listitem">
+Steck, Harald. 2019. <span>“Embarrassingly Shallow Autoencoders for
+Sparse Data.”</span> <em>Proceedings of the Web Conference</em>. <a
+href="https://doi.org/10.1145/3308558.3313710">https://doi.org/10.1145/3308558.3313710</a>.
+</div>
+<div id="ref-volkovs2017dropoutnet" class="csl-entry" role="listitem">
+Volkovs, Maksims, Guangwei Yu, and Tomi Poutanen. 2017.
+<span>“DropoutNet: Addressing Cold Start in Recommender Systems.”</span>
+<em>Advances in Neural Information Processing Systems</em> 30. <a
+href="https://papers.nips.cc/paper/7081-dropoutnet-addressing-cold-start-in-recommender-systems">https://papers.nips.cc/paper/7081-dropoutnet-addressing-cold-start-in-recommender-systems</a>.
+</div>
+<div id="ref-wei2021clcrec" class="csl-entry" role="listitem">
+Wei, Yinwei, Xiang Wang, Qi Li, et al. 2021. <span>“Contrastive Learning
+for Cold-Start Recommendation.”</span> <em>arXiv Preprint
+arXiv:2107.05315</em>. <a
+href="https://arxiv.org/abs/2107.05315">https://arxiv.org/abs/2107.05315</a>.
+</div>
+<div id="ref-yang2024liger" class="csl-entry" role="listitem">
+Yang, Liu, Fabian Paischer, Kaveh Hassani, et al. 2024. <span>“Unifying
+Generative and Dense Retrieval for Sequential Recommendation.”</span>
+<em>arXiv Preprint arXiv:2411.18814</em>. <a
+href="https://arxiv.org/abs/2411.18814">https://arxiv.org/abs/2411.18814</a>.
+</div>
+<div id="ref-yang2025coldrag" class="csl-entry" role="listitem">
+Yang, Wooseong, Weizhi Zhang, Yuqing Liu, et al. 2025. <span>“Adaptive
+Candidate Retrieval with Dynamic Knowledge Graph Construction for
+Cold-Start Recommendation.”</span> <em>arXiv Preprint
+arXiv:2505.20773</em>. <a
+href="https://arxiv.org/abs/2505.20773">https://arxiv.org/abs/2505.20773</a>.
+</div>
+<div id="ref-zhang2026coldstarts" class="csl-entry" role="listitem">
+Zhang, Zhen, Jujia Zhao, Xinyu Ma, Xin Xin, Maarten de Rijke, and
+Zhaochun Ren. 2026. <span>“Cold-Starts in Generative Recommendation: A
+Reproducibility Study.”</span> <em>arXiv Preprint arXiv:2603.29845</em>.
+<a
+href="https://arxiv.org/abs/2603.29845">https://arxiv.org/abs/2603.29845</a>.
+</div>
+<div id="ref-zhou2023ccfcrec" class="csl-entry" role="listitem">
+Zhou, Zhihui, Lilin Zhang, and Ning Yang. 2023. <span>“Contrastive
+Collaborative Filtering for Cold-Start Item Recommendation.”</span>
+<em>Proceedings of the ACM Web Conference</em>. <a
+href="https://doi.org/10.1145/3543507.3583286">https://doi.org/10.1145/3543507.3583286</a>.
+</div>
+</div>
+</body>
+</html>

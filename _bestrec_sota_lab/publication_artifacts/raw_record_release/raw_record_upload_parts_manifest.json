@@ -1,0 +1,104 @@
+{
+  "datasets": {
+    "beauty": {
+      "part_bytes_limit": 1500000000,
+      "parts": [
+        {
+          "bytes": 19003185,
+          "name": "cold_full_catalog_records_beauty.jsonl.part001of001",
+          "part_count": 1,
+          "part_index": 1,
+          "path": "_bestrec_sota_lab\\publication_artifacts\\raw_record_release\\upload_parts\\cold_full_catalog_records_beauty.jsonl.part001of001",
+          "sha256": "57cf6cca51f2649d0235d88396c4e7eb3e79f854ceba4b83a18cf020184ffc63"
+        }
+      ],
+      "source_bytes": 19003185,
+      "source_name": "cold_full_catalog_records_beauty.jsonl",
+      "source_path": "_bestrec_sota_lab\\runs\\confirmatory_masked_candidate_20260701_20260705_candidate_only\\cold_full_catalog_records_beauty.jsonl",
+      "source_sha256": "57cf6cca51f2649d0235d88396c4e7eb3e79f854ceba4b83a18cf020184ffc63"
+    },
+    "books": {
+      "part_bytes_limit": 1500000000,
+      "parts": [
+        {
+          "bytes": 1500000000,
+          "name": "cold_full_catalog_records_books.jsonl.part001of004",
+          "part_count": 4,
+          "part_index": 1,
+          "path": "_bestrec_sota_lab\\publication_artifacts\\raw_record_release\\upload_parts\\cold_full_catalog_records_books.jsonl.part001of004",
+          "sha256": "ce238771c54d88d3917ba6d39902bf43d47fb2daff9b5f58b61db5a27eb412e1"
+        },
+        {
+          "bytes": 1500000000,
+          "name": "cold_full_catalog_records_books.jsonl.part002of004",
+          "part_count": 4,
+          "part_index": 2,
+          "path": "_bestrec_sota_lab\\publication_artifacts\\raw_record_release\\upload_parts\\cold_full_catalog_records_books.jsonl.part002of004",
+          "sha256": "955dcf74cf374a139e6909a4e5aef31bf903d0545e723b924cb53a854424c44b"
+        },
+        {
+          "bytes": 1500000000,
+          "name": "cold_full_catalog_records_books.jsonl.part003of004",
+          "part_count": 4,
+          "part_index": 3,
+          "path": "_bestrec_sota_lab\\publication_artifacts\\raw_record_release\\upload_parts\\cold_full_catalog_records_books.jsonl.part003of004",
+          "sha256": "c7d1440a3fbfcfb80037934f32eacea385acce200883a4e09295eb3c52bfb6f9"
+        },
+        {
+          "bytes": 92676033,
+          "name": "cold_full_catalog_records_books.jsonl.part004of004",
+          "part_count": 4,
+          "part_index": 4,
+          "path": "_bestrec_sota_lab\\publication_artifacts\\raw_record_release\\upload_parts\\cold_full_catalog_records_books.jsonl.part004of004",
+          "sha256": "de15f29d59d1c6a3fcafc54b736d7b871ad2db8afb0aed03fe1a7255c42992c1"
+        }
+      ],
+      "source_bytes": 4592676033,
+      "source_name": "cold_full_catalog_records_books.jsonl",
+      "source_path": "_bestrec_sota_lab\\runs\\confirmatory_masked_candidate_20260701_20260705_candidate_only\\cold_full_catalog_records_books.jsonl",
+      "source_sha256": "5b8254afc7f6dfb4d3cceb0b8e0829881287f47c31379b2b9657763b46cdf382"
+    },
+    "fashion": {
+      "part_bytes_limit": 1500000000,
+      "parts": [
+        {
+          "bytes": 28705816,
+          "name": "cold_full_catalog_records_fashion.jsonl.part001of001",
+          "part_count": 1,
+          "part_index": 1,
+          "path": "_bestrec_sota_lab\\publication_artifacts\\raw_record_release\\upload_parts\\cold_full_catalog_records_fashion.jsonl.part001of001",
+          "sha256": "7e81a5c3bb7ebcf018a4c1f36fbdc974950742547bcafed841c0e77ef046f0ab"
+        }
+      ],
+      "source_bytes": 28705816,
+      "source_name": "cold_full_catalog_records_fashion.jsonl",
+      "source_path": "_bestrec_sota_lab\\runs\\confirmatory_masked_candidate_20260701_20260705_candidate_only\\cold_full_catalog_records_fashion.jsonl",
+      "source_sha256": "7e81a5c3bb7ebcf018a4c1f36fbdc974950742547bcafed841c0e77ef046f0ab"
+    },
+    "instruments": {
+      "part_bytes_limit": 1500000000,
+      "parts": [
+        {
+          "bytes": 458668616,
+          "name": "cold_full_catalog_records_instruments.jsonl.part001of001",
+          "part_count": 1,
+          "part_index": 1,
+          "path": "_bestrec_sota_lab\\publication_artifacts\\raw_record_release\\upload_parts\\cold_full_catalog_records_instruments.jsonl.part001of001",
+          "sha256": "9c7310b282fa2d7c36327308df8be3aee4182edf1804a86ae07d872ebedfc580"
+        }
+      ],
+      "source_bytes": 458668616,
+      "source_name": "cold_full_catalog_records_instruments.jsonl",
+      "source_path": "_bestrec_sota_lab\\runs\\confirmatory_masked_candidate_20260701_20260705_candidate_only\\cold_full_catalog_records_instruments.jsonl",
+      "source_sha256": "9c7310b282fa2d7c36327308df8be3aee4182edf1804a86ae07d872ebedfc580"
+    }
+  },
+  "generated_utc": "2026-06-10T09:21:33Z",
+  "part_bytes_limit": 1500000000,
+  "parts_dir": "_bestrec_sota_lab\\publication_artifacts\\raw_record_release\\upload_parts",
+  "raw_record_manifest": "_bestrec_sota_lab\\publication_artifacts\\raw_record_release\\raw_record_release_manifest.json",
+  "raw_record_manifest_sha256": "09367ee4b94b68619a4f341b65b497c552812b34140ebc745bc197ea7b343257",
+  "schema_version": 1,
+  "total_part_bytes": 5099053650,
+  "total_parts": 7
+}

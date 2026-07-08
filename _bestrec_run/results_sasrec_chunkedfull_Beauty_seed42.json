@@ -1,0 +1,153 @@
+{
+  "category": "Beauty_and_Personal_Care",
+  "config": {
+    "category": "Beauty_and_Personal_Care",
+    "epochs": 15,
+    "batch_size": 256,
+    "max_seq_len": 50,
+    "d_model": 64,
+    "n_layers": 2,
+    "n_heads": 2,
+    "dropout": 0.2,
+    "lr": 0.001,
+    "no_sbert": false,
+    "sbert_only": false,
+    "encoder_cache": null,
+    "mlp_adaptor": false,
+    "mlp_hidden": 300,
+    "mlp_dropout": 0.2,
+    "eval_every": 5,
+    "eval_subsample": 10000,
+    "sampled_negs": 0,
+    "in_batch_negs": false,
+    "chunked_full_softmax": true,
+    "item_chunk": 32768,
+    "augment_factor": 1,
+    "seed": 42,
+    "lr_schedule": "none",
+    "out": "_bestrec_run/results_sasrec_chunkedfull_Beauty_seed42.json"
+  },
+  "n_users": 729576,
+  "n_items": 207649,
+  "n_params": 93155072,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 10.45281657202202,
+      "epoch_time_s": 291.75246024131775
+    },
+    {
+      "epoch": 2,
+      "train_loss": 10.05402431989971,
+      "epoch_time_s": 292.5374963283539
+    },
+    {
+      "epoch": 3,
+      "train_loss": 9.908901572645757,
+      "epoch_time_s": 293.40893936157227
+    },
+    {
+      "epoch": 4,
+      "train_loss": 9.82257438525819,
+      "epoch_time_s": 287.8659245967865
+    },
+    {
+      "epoch": 5,
+      "train_loss": 9.760981294732344,
+      "epoch_time_s": 284.2493896484375,
+      "val": {
+        "NDCG@10": 0.02209263255640353,
+        "HR@10": 0.0394,
+        "MRR": 0.020640917347099864,
+        "n_eval": 10000
+      },
+      "test": {
+        "NDCG@10": 0.017694567386196836,
+        "HR@10": 0.0326,
+        "MRR": 0.016538736211765742,
+        "n_eval": 10000
+      }
+    },
+    {
+      "epoch": 6,
+      "train_loss": 9.712326591893246,
+      "epoch_time_s": 284.1690709590912
+    },
+    {
+      "epoch": 7,
+      "train_loss": 9.671519198835941,
+      "epoch_time_s": 284.08314418792725
+    },
+    {
+      "epoch": 8,
+      "train_loss": 9.63682252080817,
+      "epoch_time_s": 284.1350255012512
+    },
+    {
+      "epoch": 9,
+      "train_loss": 9.607108245983458,
+      "epoch_time_s": 284.09875750541687
+    },
+    {
+      "epoch": 10,
+      "train_loss": 9.580712623930815,
+      "epoch_time_s": 284.06150817871094,
+      "val": {
+        "NDCG@10": 0.024113376358791475,
+        "HR@10": 0.0431,
+        "MRR": 0.022051836702218486,
+        "n_eval": 10000
+      },
+      "test": {
+        "NDCG@10": 0.018407948991171912,
+        "HR@10": 0.0338,
+        "MRR": 0.01707118506838814,
+        "n_eval": 10000
+      }
+    },
+    {
+      "epoch": 11,
+      "train_loss": 9.558273703926488,
+      "epoch_time_s": 284.049729347229
+    },
+    {
+      "epoch": 12,
+      "train_loss": 9.53752318365532,
+      "epoch_time_s": 283.6781723499298
+    },
+    {
+      "epoch": 13,
+      "train_loss": 9.521275107735082,
+      "epoch_time_s": 284.06076431274414
+    },
+    {
+      "epoch": 14,
+      "train_loss": 9.505124506030166,
+      "epoch_time_s": 284.11437916755676
+    },
+    {
+      "epoch": 15,
+      "train_loss": 9.49218821810003,
+      "epoch_time_s": 284.07512617111206,
+      "val": {
+        "NDCG@10": 0.023197136386881638,
+        "HR@10": 0.04128425277147275,
+        "MRR": 0.021325318533616456,
+        "n_eval": 729576
+      },
+      "test": {
+        "NDCG@10": 0.019040102018119377,
+        "HR@10": 0.034322675087996316,
+        "MRR": 0.017634608166867544,
+        "n_eval": 729576
+      }
+    }
+  ],
+  "best_val_NDCG10": 0.024113376358791475,
+  "best_test": {
+    "NDCG@10": 0.018407948991171912,
+    "HR@10": 0.0338,
+    "MRR": 0.01707118506838814,
+    "n_eval": 10000
+  }
+}

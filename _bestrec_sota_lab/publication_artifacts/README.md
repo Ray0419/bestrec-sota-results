@@ -2,6 +2,8 @@
 
 Packaged UTC: 2026-06-06T13:57:54Z
 
+Strict audit refreshed UTC: 2026-06-10T08:01:10Z
+
 This directory contains the compact, commit-visible empirical artifact package for the strict full-catalog cold-item SOTA audit. It was added after the initial GitHub push because `_bestrec_sota_lab/runs/*` is intentionally ignored to avoid committing multi-GB per-user JSONL records to normal Git.
 
 ## Scope
@@ -36,8 +38,10 @@ The independent rebuild directory includes:
 The source package outside this directory includes:
 
 - `_bestrec_sota_lab/source_archive_manifest.json`.
-- `_bestrec_sota_lab/source_archives/bestrec_sota_lab_source_confirmatory_masked_candidate_20260701_20260705_candidate_only.zip`.
-- Source archive SHA256: `1742da4a713b550b58ea860249ba8ccf96e3309d4bbbda1869f0b119d7c83e85`.
+- `_bestrec_sota_lab/source_archives/bestrec_sota_lab_source_full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705.zip`.
+- Source archive SHA256 and source file count are authoritative in
+  `_bestrec_sota_lab/source_archive_manifest.json` and repeated in the current
+  strict review report.
 
 ## Primary Result Summary
 
@@ -50,7 +54,7 @@ Strict gate status: passed.
 | Instruments | 0.049575215957 | official_dropoutnet | 0.023654099528 | [0.0239, 0.0279] |
 | Books | 0.040225492558 | official_dropoutnet | 0.022519558968 | [0.0158, 0.0196] |
 
-The review decision in `_bestrec_sota_lab/STRICT_REAL_FAIR_REPRO_REVIEW_20260605.md` approves only the cold-item full-catalog claim under this protocol.
+The current review decision in `_bestrec_sota_lab/runs/full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705/STRICT_REAL_FAIR_REPRO_REVIEW_CURRENT.md` approves only the cold-item full-catalog claim under this protocol.
 
 ## Key Frozen Parameters
 
@@ -86,6 +90,21 @@ From `results_manifest.json`:
 
 The canonical per-user records are not committed to Git because the largest file is 4.59 GB. They remain local under `_bestrec_sota_lab/runs/confirmatory_masked_candidate_20260701_20260705_candidate_only/`, and their reproducibility evidence is captured in `full_clean_rebuild_compare.json`.
 
+A generated raw-record release manifest is available under
+`_bestrec_sota_lab/publication_artifacts/raw_record_release/`. It streams the
+canonical JSONL files, verifies byte sizes, row counts, SHA256 hashes, and links
+them to the independent clean-rebuild multiset evidence. Current status:
+`uploaded` to the GitHub Release archive at
+https://github.com/Ray0419/bestrec-sota-results/releases/tag/bestrec-raw-records-v1.
+The release uses seven deterministic chunk files described by
+`raw_record_upload_parts_manifest.json`.
+
+The public-submission gate is recorded in
+`_bestrec_sota_lab/publication_artifacts/PUBLIC_SUBMISSION_GATE.md`. It should
+be rerun with `--deep-verify-raw --verify-github-release` before submission so
+that the local raw records, release assets, checksums, and paper text are all
+checked together.
+
 | Dataset | Raw record file | Local bytes | Row count | Canonical raw SHA256 |
 | --- | --- | ---: | ---: | --- |
 | Beauty | `cold_full_catalog_records_beauty.jsonl` | 19,003,185 | 88,725 | `57cf6cca51f2649d0235d88396c4e7eb3e79f854ceba4b83a18cf020184ffc63` |
@@ -97,6 +116,7 @@ The independent rebuild has different raw JSONL byte hashes because records can 
 
 ## Reviewer Caveats
 
-- Normal GitHub Git is not a proper home for the 5+ GB raw record set. For external review, upload raw JSONL files to Git LFS, Zenodo, OSF, or another archival store and link them here with SHA256 checksums.
-- The pushed package is enough to audit code, configs, hashes, summarized results, significance, gates, and clean rebuild equivalence; it is not a complete raw-record archive.
+- Normal GitHub Git is not a proper home for the 5+ GB raw record set, so the raw records are stored as release assets rather than committed files. A Zenodo/OSF DOI mirror would be stronger for camera-ready archival permanence.
+- Run `uv --project _bestrec_run run python _bestrec_sota_lab/validate_public_submission.py --deep-verify-raw --verify-github-release` before any public submission.
+- The pushed Git tree plus GitHub Release assets are enough to audit code, configs, hashes, summarized results, significance, gates, clean rebuild equivalence, and raw per-record data.
 - Any paper must state the claim as full-catalog cold-item ranking only.

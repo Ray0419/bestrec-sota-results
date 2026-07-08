@@ -1,0 +1,108 @@
+{
+  "canonical_run_id": "confirmatory_masked_candidate_20260701_20260705_candidate_only",
+  "clean_rebuild": {
+    "compare_path": "_bestrec_sota_lab\\runs\\full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705\\full_clean_rebuild_compare.json",
+    "max_metric_abs_diff": 0.0,
+    "passed": true,
+    "record_multiset_fingerprints": [
+      {
+        "canonical": {
+          "row_count": 88725,
+          "row_digest_sum_sha256": "0d108c63064e2ee146e913887b089e106a975b38dc4e326d653a6135170840b8",
+          "row_digest_xor_sha256": "8cb5b0a0957686e593c7b9dd8a5513424614d15e652ac16188fc570c275aa5e4"
+        },
+        "dataset": "beauty",
+        "file": "cold_full_catalog_records_beauty.jsonl",
+        "passed": true,
+        "rebuilt": {
+          "row_count": 88725,
+          "row_digest_sum_sha256": "0d108c63064e2ee146e913887b089e106a975b38dc4e326d653a6135170840b8",
+          "row_digest_xor_sha256": "8cb5b0a0957686e593c7b9dd8a5513424614d15e652ac16188fc570c275aa5e4"
+        }
+      },
+      {
+        "canonical": {
+          "row_count": 132972,
+          "row_digest_sum_sha256": "bdb166f071f68928880cc81267512351df20cb0d628198ed5cd736233efc760f",
+          "row_digest_xor_sha256": "36453c8120947c8d5fec75901c0f42cd8904ae55a398a7916a905d90a83432b5"
+        },
+        "dataset": "fashion",
+        "file": "cold_full_catalog_records_fashion.jsonl",
+        "passed": true,
+        "rebuilt": {
+          "row_count": 132972,
+          "row_digest_sum_sha256": "bdb166f071f68928880cc81267512351df20cb0d628198ed5cd736233efc760f",
+          "row_digest_xor_sha256": "36453c8120947c8d5fec75901c0f42cd8904ae55a398a7916a905d90a83432b5"
+        }
+      },
+      {
+        "canonical": {
+          "row_count": 2065910,
+          "row_digest_sum_sha256": "11b821da3928cc588f0dff45329b1f370de523db0edb7ebadb9668bbce0f560e",
+          "row_digest_xor_sha256": "810fbbe14c3910b3aab41828fadfc7b652966cff5603176ad5cde9b5b5d6446c"
+        },
+        "dataset": "instruments",
+        "file": "cold_full_catalog_records_instruments.jsonl",
+        "passed": true,
+        "rebuilt": {
+          "row_count": 2065910,
+          "row_digest_sum_sha256": "11b821da3928cc588f0dff45329b1f370de523db0edb7ebadb9668bbce0f560e",
+          "row_digest_xor_sha256": "810fbbe14c3910b3aab41828fadfc7b652966cff5603176ad5cde9b5b5d6446c"
+        }
+      },
+      {
+        "canonical": {
+          "row_count": 21069720,
+          "row_digest_sum_sha256": "b7d475e04cb1357fd22328e88aaa2f2d73acdf78e98d09cbd8921ee3116c0e63",
+          "row_digest_xor_sha256": "67eebc57c87a221f23b326bf2f65e619b7fb28652a7b7392f89f426f682894b5"
+        },
+        "dataset": "books",
+        "file": "cold_full_catalog_records_books.jsonl",
+        "passed": true,
+        "rebuilt": {
+          "row_count": 21069720,
+          "row_digest_sum_sha256": "b7d475e04cb1357fd22328e88aaa2f2d73acdf78e98d09cbd8921ee3116c0e63",
+          "row_digest_xor_sha256": "67eebc57c87a221f23b326bf2f65e619b7fb28652a7b7392f89f426f682894b5"
+        }
+      }
+    ],
+    "record_multisets_match": true
+  },
+  "external_archive": {
+    "doi": null,
+    "note": "Raw JSONL files are published at the recorded archive URL/DOI; verify downloaded files against this manifest before reanalysis.",
+    "status": "uploaded",
+    "url": "https://github.com/Ray0419/bestrec-sota-results/releases/tag/bestrec-raw-records-v1"
+  },
+  "generated_utc": "2026-06-10T09:21:13Z",
+  "rebuild_run_id": "full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705",
+  "records": {
+    "beauty": {
+      "bytes": 19003185,
+      "path": "_bestrec_sota_lab\\runs\\confirmatory_masked_candidate_20260701_20260705_candidate_only\\cold_full_catalog_records_beauty.jsonl",
+      "rows": 88725,
+      "sha256": "57cf6cca51f2649d0235d88396c4e7eb3e79f854ceba4b83a18cf020184ffc63"
+    },
+    "books": {
+      "bytes": 4592676033,
+      "path": "_bestrec_sota_lab\\runs\\confirmatory_masked_candidate_20260701_20260705_candidate_only\\cold_full_catalog_records_books.jsonl",
+      "rows": 21069720,
+      "sha256": "5b8254afc7f6dfb4d3cceb0b8e0829881287f47c31379b2b9657763b46cdf382"
+    },
+    "fashion": {
+      "bytes": 28705816,
+      "path": "_bestrec_sota_lab\\runs\\confirmatory_masked_candidate_20260701_20260705_candidate_only\\cold_full_catalog_records_fashion.jsonl",
+      "rows": 132972,
+      "sha256": "7e81a5c3bb7ebcf018a4c1f36fbdc974950742547bcafed841c0e77ef046f0ab"
+    },
+    "instruments": {
+      "bytes": 458668616,
+      "path": "_bestrec_sota_lab\\runs\\confirmatory_masked_candidate_20260701_20260705_candidate_only\\cold_full_catalog_records_instruments.jsonl",
+      "rows": 2065910,
+      "sha256": "9c7310b282fa2d7c36327308df8be3aee4182edf1804a86ae07d872ebedfc580"
+    }
+  },
+  "schema_version": 1,
+  "total_bytes": 5099053650,
+  "total_rows": 23357327
+}

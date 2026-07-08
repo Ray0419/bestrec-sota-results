@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "confirmatory_run_complete": true,
+  "per_user_records_present": true,
+  "fresh_seed_count": 5,
+  "same_run_comparators_reproduced": [
+    "sasrec_blair",
+    "sasrec_no_sbert"
+  ],
+  "same_run_paired_tests": {
+    "sasrec_sbert_vs_sasrec_blair": {
+      "candidate": "sasrec_sbert",
+      "baseline": "sasrec_blair",
+      "alternative": "candidate_greater",
+      "sample_unit": "per-user per-seed NDCG@10 record",
+      "n_pairs": 473810,
+      "mean_delta_ndcg10": 0.0005682366142601002,
+      "wilcoxon_statistic": 56282821122.5,
+      "p_value": 0.031105259299573317,
+      "holm_adjusted_p_value": 0.031105259299573317,
+      "holm_family": "sasrec_sbert_vs_same_run_confirmatory_comparators"
+    },
+    "sasrec_sbert_vs_sasrec_no_sbert": {
+      "candidate": "sasrec_sbert",
+      "baseline": "sasrec_no_sbert",
+      "alternative": "candidate_greater",
+      "sample_unit": "per-user per-seed NDCG@10 record",
+      "n_pairs": 473810,
+      "mean_delta_ndcg10": 0.004126809106384379,
+      "wilcoxon_statistic": 57124144057.0,
+      "p_value": 5.280487653995692e-32,
+      "holm_adjusted_p_value": 1.0560975307991383e-31,
+      "holm_family": "sasrec_sbert_vs_same_run_confirmatory_comparators"
+    }
+  },
+  "external_protocol_matched_comparators_reproduced": false,
+  "known_external_blockers": [
+    {
+      "method": "HSTU-BLaIR",
+      "source": "https://github.com/snapfinger/HSTU-BLaIR",
+      "reported_video_games_ndcg10": 0.076,
+      "local_status": "not reproduced in this Windows confirmatory package; upstream code requires Ubuntu/Python 3.9/CUDA, fbgemm_gpu/torchrec, and uses multiprocessing forkserver plus CUDA-only operators",
+      "claim_impact": "blocks broad SOTA claim unless reproduced under the same protocol or beaten"
+    },
+    {
+      "method": "TIGER/LIGER",
+      "source": "https://arxiv.org/abs/2411.18814",
+      "local_status": "local LIGER checkout targets Amazon 2014 Beauty/Toys/Sports and Steam, not this Amazon Reviews 2023 Video_Games split; protocol-matched adaptation was not completed",
+      "claim_impact": "blocks broad generative-retrieval SOTA wording"
+    }
+  ],
+  "final_unqualified_sota_claim_allowed": false,
+  "strict_reviewer_verdict": "same-run SASRec ablations are auditable, but final SOTA claim remains blocked by unreproduced stronger external comparators, especially reported HSTU-BLaIR"
+}

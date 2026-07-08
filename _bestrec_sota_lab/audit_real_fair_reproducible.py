@@ -131,6 +131,10 @@ def source_archive_status() -> dict[str, Any]:
         else:
             archive_reason = "archive file missing"
     ok = not missing and not mismatched and archive_ok
+    if missing:
+        archive_reason = f"{len(missing)} source files missing from archive manifest"
+    elif mismatched:
+        archive_reason = f"{len(mismatched)} archived source hashes do not match current files"
     return {
         "ok": ok,
         "reason": "ok" if ok else archive_reason,
@@ -141,6 +145,87 @@ def source_archive_status() -> dict[str, Any]:
         "missing": missing[:12],
         "mismatched": mismatched[:12],
         "external_revisions": payload.get("external_revisions", {}),
+    }
+
+
+def clean_rebuild_evidence(run_id: str) -> dict[str, Any]:
+    """Return the strongest clean-rebuild evidence that references this run."""
+    run_dir = RUNS_DIR / run_id
+    compare_path = run_dir / "full_clean_rebuild_compare.json"
+    if compare_path.exists():
+        compare = read_json(compare_path, {})
+        references_current = compare.get("rebuilt_run_id") == run_id
+        passed = (
+            references_current
+            and compare.get("passed") is True
+            and compare.get("rebuilt_gate_passed") is True
+            and not compare.get("diff_failures")
+            and compare.get("record_multisets_match") is True
+        )
+        return {
+            "source": "run_local_full_clean_rebuild_compare",
+            "path": str(compare_path),
+            "references_current_run": references_current,
+            "strict_clean_rebuild_passed": passed,
+            "compare": compare,
+            "run_id": compare.get("rebuilt_run_id"),
+            "canonical_run_id": compare.get("canonical_run_id"),
+        }
+
+    audit_path = run_dir / "full_clean_rebuild_audit.json"
+    if audit_path.exists():
+        audit = read_json(audit_path, {})
+        compare = audit.get("full_experiment_rebuild", {}).get("compare", {})
+        references_current = audit.get("run_id") == run_id or compare.get("rebuilt_run_id") == run_id
+        passed = (
+            references_current
+            and audit.get("strict_clean_rebuild_passed") is True
+            and audit.get("consistency_passed") is True
+        )
+        return {
+            "source": "run_local_full_clean_rebuild_audit",
+            "path": str(audit_path),
+            "references_current_run": references_current,
+            "strict_clean_rebuild_passed": passed,
+            "audit": audit,
+            "compare": compare,
+            "run_id": audit.get("run_id"),
+            "canonical_run_id": audit.get("canonical_run_id"),
+        }
+
+    root_path = LAB_DIR / "clean_rebuild_audit.json"
+    if root_path.exists():
+        audit = read_json(root_path, {})
+        full_rebuild = audit.get("full_experiment_rebuild", {})
+        compare = full_rebuild.get("compare", {})
+        references_current = audit.get("run_id") == run_id or compare.get("rebuilt_run_id") == run_id
+        passed = (
+            references_current
+            and audit.get("strict_clean_rebuild_passed") is True
+            and audit.get("consistency_passed") is True
+            and full_rebuild.get("passed") is True
+            and compare.get("passed") is True
+            and compare.get("rebuilt_gate_passed") is True
+            and not compare.get("diff_failures")
+            and compare.get("record_multisets_match") is True
+        )
+        return {
+            "source": "lab_root_clean_rebuild_audit",
+            "path": str(root_path),
+            "references_current_run": references_current,
+            "strict_clean_rebuild_passed": passed,
+            "audit": audit,
+            "compare": compare,
+            "run_id": audit.get("run_id"),
+            "canonical_run_id": audit.get("canonical_run_id"),
+        }
+
+    return {
+        "source": "absent",
+        "path": str(root_path),
+        "references_current_run": False,
+        "strict_clean_rebuild_passed": False,
+        "compare": {},
     }
 
 
@@ -425,68 +510,66 @@ def review_findings(
                 "fix": "Commit or archive the lab scripts, protocol, and exact external source revisions with hashes, then rerun this audit.",
             }
         )
-    clean_rebuild_path = LAB_DIR / "clean_rebuild_audit.json"
-    if not clean_rebuild_path.exists():
+    clean_rebuild = clean_rebuild_evidence(str(config.get("run_id")))
+    if clean_rebuild["source"] == "absent":
         findings.append(
             {
                 "severity": "Major",
                 "title": "Clean rebuild evidence is absent",
-                "body": "`_bestrec_sota_lab/clean_rebuild_audit.json` was not found.",
+                "body": "No run-local or lab-root clean rebuild evidence was found.",
                 "fix": "Add and run a clean rebuild check that deletes generated lab outputs, reruns documented commands, and verifies schema/table/significance consistency.",
             }
         )
-    else:
-        clean_rebuild = read_json(clean_rebuild_path, {})
-        if clean_rebuild.get("run_id") != config.get("run_id"):
+    elif not clean_rebuild.get("references_current_run"):
+        findings.append(
+            {
+                "severity": "Major",
+                "title": "Clean rebuild audit references a different run",
+                "body": f"`{clean_rebuild.get('path')}` records run_id=`{clean_rebuild.get('run_id')}`, but this review is for `{config.get('run_id')}`.",
+                "fix": "Rerun the artifact consistency audit against the current confirmatory run, then perform a true clean rebuild before publication approval.",
+            }
+        )
+    elif clean_rebuild.get("strict_clean_rebuild_passed") is not True:
+        audit = clean_rebuild.get("audit", {})
+        compare = clean_rebuild.get("compare", {})
+        diff_failures = compare.get("diff_failures", [])
+        only_liger = bool(diff_failures) and all(
+            row.get("method") == "tiger_liger_retrieval" for row in diff_failures
+        )
+        if compare.get("rebuilt_gate_passed") is True and only_liger:
+            max_diff = compare.get("max_metric_abs_diff")
             findings.append(
                 {
                     "severity": "Major",
-                    "title": "Clean rebuild audit references a different run",
-                    "body": f"`clean_rebuild_audit.json` records run_id=`{clean_rebuild.get('run_id')}`, but this review is for `{config.get('run_id')}`.",
-                    "fix": "Rerun the artifact consistency audit against the current confirmatory run, then perform a true clean rebuild before publication approval.",
-                }
-            )
-        elif clean_rebuild.get("strict_clean_rebuild_passed") is not True:
-            full_rebuild = clean_rebuild.get("full_experiment_rebuild", {})
-            compare = full_rebuild.get("compare", {})
-            diff_failures = compare.get("diff_failures", [])
-            only_liger = bool(diff_failures) and all(
-                row.get("method") == "tiger_liger_retrieval" for row in diff_failures
-            )
-            if compare.get("rebuilt_gate_passed") is True and only_liger:
-                max_diff = compare.get("max_metric_abs_diff")
-                findings.append(
-                    {
-                        "severity": "Major",
-                        "title": "Full rebuild differs from the old canonical LIGER comparator",
-                        "body": (
-                            "The independent full rebuild regenerated model outputs and JSONL records and its own publication gate passed, "
-                            "but comparison to the old canonical fails only for `tiger_liger_retrieval` on Books "
-                            f"(max metric absolute difference `{max_diff}`). This is consistent with the LIGER adapter's pre-fix nondeterministic TIGER initialization."
-                        ),
-                        "fix": (
-                            "Use the patched seeded LIGER runner, rerun or replace the canonical LIGER records, and rerun the full clean-rebuild comparison. "
-                            "Until then, the main LC2C++ win is real/fair, but strict bit-level package reproducibility remains unapproved."
-                        ),
-                    }
-                )
-                return findings
-            record_note = ""
-            if "record_level_clean_rebuild_passed" in clean_rebuild:
-                record_note = f" record_level_clean_rebuild_passed={clean_rebuild.get('record_level_clean_rebuild_passed')}."
-            findings.append(
-                {
-                    "severity": "Major",
-                    "title": "Full experiment clean rebuild has not passed",
+                    "title": "Full rebuild differs from the old canonical LIGER comparator",
                     "body": (
-                        f"`clean_rebuild_audit.json` mode is `{clean_rebuild.get('mode')}` with "
-                        f"consistency_passed={clean_rebuild.get('consistency_passed')} and "
-                        f"strict_clean_rebuild_passed={clean_rebuild.get('strict_clean_rebuild_passed')}."
-                        f"{record_note}"
+                        "The independent full rebuild regenerated model outputs and JSONL records and its own publication gate passed, "
+                        "but comparison to the old canonical fails only for `tiger_liger_retrieval` on Books "
+                        f"(max metric absolute difference `{max_diff}`). This is consistent with the LIGER adapter's pre-fix nondeterministic TIGER initialization."
                     ),
-                    "fix": "Run a true full experiment rebuild that regenerates model outputs and JSONL records from documented commands, not only derived summaries from existing records.",
+                    "fix": (
+                        "Use the patched seeded LIGER runner, rerun or replace the canonical LIGER records, and rerun the full clean-rebuild comparison. "
+                        "Until then, the main LC2C++ win is real/fair, but strict bit-level package reproducibility remains unapproved."
+                    ),
                 }
             )
+            return findings
+        record_note = ""
+        if "record_level_clean_rebuild_passed" in audit:
+            record_note = f" record_level_clean_rebuild_passed={audit.get('record_level_clean_rebuild_passed')}."
+        findings.append(
+            {
+                "severity": "Major",
+                "title": "Full experiment clean rebuild has not passed",
+                "body": (
+                    f"`{clean_rebuild.get('path')}` source is `{clean_rebuild.get('source')}` with "
+                    f"consistency_passed={audit.get('consistency_passed')} and "
+                    f"strict_clean_rebuild_passed={clean_rebuild.get('strict_clean_rebuild_passed')}."
+                    f"{record_note}"
+                ),
+                "fix": "Run a true full experiment rebuild that regenerates model outputs and JSONL records from documented commands, not only derived summaries from existing records.",
+            }
+        )
     return findings
 
 
@@ -667,12 +750,23 @@ def write_markdown(
             f"- Source archive verified: `{source_archive.get('archive_path')}` "
             f"({source_archive.get('source_file_count')} files, sha256 `{source_archive.get('archive_sha256')}`)."
         )
-    clean_rebuild = read_json(LAB_DIR / "clean_rebuild_audit.json", {}) if (LAB_DIR / "clean_rebuild_audit.json").exists() else {}
-    if clean_rebuild.get("record_level_clean_rebuild_passed"):
-        rebuild = clean_rebuild.get("record_level_rebuild", {})
+    clean_rebuild = clean_rebuild_evidence(run_id)
+    if clean_rebuild.get("strict_clean_rebuild_passed"):
+        compare = clean_rebuild.get("compare", {})
         lines.append(
-            f"- Record-level clean rebuild passed in `{rebuild.get('run_id')}`: derived summaries, significance, tables, gate, and manifest were regenerated from canonical JSONL records."
+            "- Full clean rebuild evidence accepted from "
+            f"`{clean_rebuild.get('path')}`: rebuilt run `{compare.get('rebuilt_run_id')}`, "
+            f"canonical run `{compare.get('canonical_run_id')}`, "
+            f"max_metric_abs_diff={compare.get('max_metric_abs_diff')}, "
+            f"record_multisets_match={compare.get('record_multisets_match')}."
         )
+    else:
+        audit = clean_rebuild.get("audit", {})
+        rebuild = audit.get("record_level_rebuild", {})
+        if audit.get("record_level_clean_rebuild_passed"):
+            lines.append(
+                f"- Record-level clean rebuild passed in `{rebuild.get('run_id')}`: derived summaries, significance, tables, gate, and manifest were regenerated from canonical JSONL records."
+            )
     if proxy_in_table:
         lines.append("- Proxy/local diagnostic methods still appear in paper-facing tables and must be removed or labelled.")
     else:

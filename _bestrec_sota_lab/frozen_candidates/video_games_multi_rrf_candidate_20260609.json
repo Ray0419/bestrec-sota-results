@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "status": "frozen_development_candidate_not_publication_evidence",
+  "frozen_at_utc": "2026-06-09T11:12:00Z",
+  "dataset": "Video_Games",
+  "candidate_name": "multi_rrf_dev10_dev13_dev4_dev5_dev9_sasrec_k30",
+  "selection_source_run": "_bestrec_sota_lab/runs/hstu_multi7_k30_sparse_local_refine_r005_20260609",
+  "selection_protocol": "Validation-selected fixed RRF fusion over frozen per-user top-50 generators. This candidate was selected during development after prior held-out outcomes were known and therefore must be rerun on fresh confirmatory seeds/splits before any publication claim.",
+  "fusion_config": {
+    "rrf_k": 30,
+    "weights": {
+      "dev10": 0.2,
+      "dev13": 0.45,
+      "dev4": 0.05,
+      "dev5": 0.2,
+      "dev9": 0.05,
+      "sasrec": 0.05
+    }
+  },
+  "development_metrics": {
+    "validation_ndcg10": 0.0848013329571396,
+    "validation_hr10": 0.14985964838226293,
+    "validation_rr": 0.07339394091692897,
+    "test_ndcg10": 0.07652977352062436,
+    "test_hr10": 0.13562398429750322,
+    "test_rr": 0.06636780667534566,
+    "gap_to_local_hstu_sm120_ndcg10": 0.002707359303608492,
+    "gap_to_upstream_hstu_report_ndcg10": 0.0005297735206243603
+  },
+  "artifacts": {
+    "summary": {
+      "path": "_bestrec_sota_lab/runs/hstu_multi7_k30_sparse_local_refine_r005_20260609/multi_rrf_fusion_summary.json",
+      "sha256": "d6df46546a6180baf82941014ca057e64d31d31cee6d4314209ce258f4308298"
+    },
+    "test_records": {
+      "path": "_bestrec_sota_lab/runs/hstu_multi7_k30_sparse_local_refine_r005_20260609/warm_full_catalog_records_Video_Games_multi_rrf_fusion_test.jsonl",
+      "sha256": "859171de2415c7331a526c64b33f20a94f068d5cd6fcee86ac9344f6d44f4635",
+      "records": 94762,
+      "unique_users": 94762,
+      "schema_validation": "passed_required_fields_metrics_match_summary"
+    }
+  },
+  "component_generators": {
+    "dev4": "strict_hstu_sm120_epoch60_direct",
+    "dev5": "strict_hstu_sm120_epoch30_dropout03",
+    "dev9": "strict_hstu_sm120_epoch60_dropout03",
+    "dev10": "strict_hstu_sm120_dev9_resume_lr3e-4_dropout03",
+    "dev13": "strict_hstu_sm120_d96_l4h4_epoch60_dropout03",
+    "sasrec": "sasrec_sbert_seed101_from_checkpoint"
+  },
+  "approval_gate": {
+    "can_claim_sota_from_this_run": false,
+    "reason": "The development run beats the upstream HSTU report numerically, but it was found through iterative search after previous held-out test outcomes were known. A claim requires freezing this config before fresh confirmatory runs, plus statistical tests and modern-baseline gates.",
+    "required_next_step": "Rerun frozen component generators and this fusion recipe on fresh confirmatory seeds/splits, then test against HSTU/BLaIR and other modern baselines with per-user significance and bootstrap intervals."
+  }
+}

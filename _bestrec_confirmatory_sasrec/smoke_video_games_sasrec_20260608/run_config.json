@@ -1,0 +1,52 @@
+{
+  "run_id": "smoke_video_games_sasrec_20260608",
+  "created_utc": "2026-06-08T03:01:26+00:00",
+  "category": "Video_Games",
+  "methods": [
+    "sasrec_sbert"
+  ],
+  "seeds": [
+    20260608
+  ],
+  "candidate_scope": "full_catalog",
+  "argv": [
+    "_bestrec_run\\run_sasrec_confirmatory.py",
+    "--category",
+    "Video_Games",
+    "--methods",
+    "sasrec_sbert",
+    "--seeds",
+    "20260608",
+    "--epochs",
+    "1",
+    "--eval-every",
+    "1",
+    "--run-id",
+    "smoke_video_games_sasrec_20260608"
+  ],
+  "config": {
+    "category": "Video_Games",
+    "seeds": "20260608",
+    "methods": "sasrec_sbert",
+    "run_id": "smoke_video_games_sasrec_20260608",
+    "epochs": 1,
+    "batch_size": 256,
+    "eval_batch_size": 512,
+    "max_seq_len": 50,
+    "d_model": 64,
+    "n_layers": 2,
+    "n_heads": 2,
+    "dropout": 0.2,
+    "lr": 0.001,
+    "eval_every": 1,
+    "eval_subsample": 0,
+    "sampled_negs": 0,
+    "in_batch_negs": false,
+    "chunked_full_softmax": false,
+    "item_chunk": 8192,
+    "augment_factor": 1,
+    "mlp_hidden": 300,
+    "mlp_dropout": 0.2,
+    "resume": false
+  }
+}

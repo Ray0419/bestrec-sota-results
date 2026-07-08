@@ -1,0 +1,73 @@
+{
+  "category": "Video_Games",
+  "config": {
+    "category": "Video_Games",
+    "epochs": 2,
+    "batch_size": 256,
+    "max_seq_len": 50,
+    "d_model": 64,
+    "n_layers": 4,
+    "n_heads": 2,
+    "dropout": 0.5,
+    "lr": 0.001,
+    "no_sbert": false,
+    "sbert_only": false,
+    "encoder_cache": null,
+    "mlp_adaptor": false,
+    "mlp_hidden": 300,
+    "mlp_dropout": 0.2,
+    "eval_every": 2,
+    "eval_subsample": 2000,
+    "sampled_negs": 0,
+    "in_batch_negs": false,
+    "chunked_full_softmax": true,
+    "item_chunk": 32768,
+    "augment_factor": 1,
+    "seed": 20260608,
+    "lr_schedule": "warmup_cosine",
+    "time_bias": true,
+    "text_sim_bias": true,
+    "text_prototypes": "512",
+    "cosine_scoring": false,
+    "score_temp": 0.05,
+    "text_distill_weight": 0.2,
+    "pos_rab": true,
+    "encoder": "hstu",
+    "proto_tau": 0.05,
+    "out": "_bestrec_run/results_smoke_distill.json"
+  },
+  "n_users": 94762,
+  "n_items": 25612,
+  "n_params": 11644222,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 8.634733221922923,
+      "epoch_time_s": 9.760288715362549
+    },
+    {
+      "epoch": 2,
+      "train_loss": 8.005349470277359,
+      "epoch_time_s": 9.550479412078857,
+      "val": {
+        "NDCG@10": 0.04800759653633222,
+        "HR@10": 0.09020493446740255,
+        "MRR": 0.043427959949731476,
+        "n_eval": 94762
+      },
+      "test": {
+        "NDCG@10": 0.04297159099808503,
+        "HR@10": 0.07995821109727527,
+        "MRR": 0.03914442225283505,
+        "n_eval": 94762
+      }
+    }
+  ],
+  "best_val_NDCG10": 0.04800759653633222,
+  "best_test": {
+    "NDCG@10": 0.04297159099808503,
+    "HR@10": 0.07995821109727527,
+    "MRR": 0.03914442225283505,
+    "n_eval": 94762
+  }
+}

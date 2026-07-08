@@ -2,6 +2,14 @@
 checkpoint (`hyp1231/blair-roberta-base`). Caches to
 `cache_5core/blair_titles_<category>.npy`.
 
+Citations:
+- BLaIR encoder: Hou et al. (2024). "Bridging Language and Items for
+  Retrieval and Recommendation." arXiv:2403.03952. Checkpoint:
+  hyp1231/blair-roberta-base.
+- Amazon Reviews 2023 dataset: Hou et al. (2024), arXiv:2403.03952.
+- This title-only encoder is a local 5-core cache builder; BLaIR itself is
+  prior work, not a contribution of this repository.
+
 This is the BLaIR equivalent of the MiniLM encoding done by
 `_bestrec_run/run_5core_benchmark.py --encode-titles`. We need it so that
 `run_sasrec_sbert.py` can swap MiniLM for BLaIR if model-scaling alone
@@ -28,6 +36,7 @@ EMB_CACHE_DIR = ROOT / "cache_5core"
 META_PATHS = {
     "Video_Games":              ROOT / "data_raw_proper" / "video_games" / "meta_Video_Games.jsonl",
     "Beauty_and_Personal_Care": ROOT / "data_raw_proper" / "beauty_and_pc" / "meta_Beauty_and_Personal_Care.jsonl",
+    "Musical_Instruments":      ROOT / "data" / "instruments" / "meta_Musical_Instruments.jsonl",
 }
 BLAIR_CHECKPOINT = "hyp1231/blair-roberta-base"
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"

@@ -1,20 +1,41 @@
-# SOTA-Competitive Result on Amazon Reviews 2023 Video_Games 5-core
+# Strong Internal Result on Amazon Reviews 2023 Video_Games 5-core
+
+**Superseding audit note, 2026-06-09:** this file is historical and must not be
+used to support a broad or final SOTA claim. The HSTU-BLaIR WSL compatibility
+run completed with final full-eval NDCG@10 `0.0738224` and best full-eval
+NDCG@10 `0.0740335`, both far above the local SASRec-SBERT result. The
+defensible claim here is limited to a same-repository SASRec ablation result:
+SASRec-SBERT is stronger than same-run SASRec-BLaIR and no-text SASRec under
+this local Video_Games 5-core full-catalog protocol.
 
 **Date:** 2026-05-25
 **Algorithm:** SASRec-SBERT (right-padded SASRec + frozen SBERT projection)
 **Code:** `_bestrec_run/run_sasrec_sbert.py`
 **Result file:** `_bestrec_run/results_sasrec_sbert_Video_Games_v3.json`
-**Status:** Single-seed result; multi-seed confirmation in flight.
+**Status:** Historical single-seed headline; later repository artifacts contain
+the 5-seed confirmation. Treat all external leaderboard comparison below as
+retracted/provisional until the cited methods are re-run or verified on exactly
+the same splits and evaluation code.
+
+## Attribution and claim guardrail
+
+SASRec is Kang and McAuley's ICDM 2018 self-attentive sequential recommender. SBERT/MiniLM is an off-the-shelf sentence-embedding model from the Sentence-BERT line of work. BLaIR and Amazon Reviews 2023 are due to Hou et al. 2024. The local contribution in this file is the integration, debugging, 5-core preprocessing/evaluation, SBERT projection experiment, and multi-seed empirical result; it is not a new Transformer backbone, a new sentence encoder, or a new BLaIR-style pretraining method.
+
+The TIGER/BLaIR/LIGER numbers in this writeup are retained as session targets, not as final camera-ready leaderboard evidence. A publishable SOTA claim must cite the exact table/metric from each paper and either reproduce those methods under this 5-core full-catalog protocol or clearly label any protocol mismatch.
 
 ## Headline numbers
 
-On the **standard Amazon Reviews 2023 Video_Games 5-core benchmark** (94,762 users / 25,612 items / 814,586 interactions, leave-last-out split, full-catalog ranking, train-items masked), our SASRec-SBERT model achieves:
+On this repository's **Amazon Reviews 2023 Video_Games 5-core benchmark** (94,762 users / 25,612 items / 814,586 interactions, leave-last-out split, full-catalog ranking, train-items masked), our SASRec-SBERT model achieves:
 
-| Metric | Value |
-|---|---:|
-| NDCG@10 | **0.0543** |
-| HR@10 | **0.0984** |
-| MRR | **0.0489** |
+| Metric | Single-seed (2026-05-25) | **5-seed mean ± std (2026-06-08, updated)** |
+|---|---:|---:|
+| NDCG@10 | 0.0543 | **0.0551 ± 0.0003** |
+| HR@10 | 0.0984 | **0.0998 ± 0.0009** |
+| MRR | 0.0489 | (not reported per-seed) |
+
+**5-seed source**: `_bestrec_confirmatory_sasrec/video_games_sasrec_confirmatory_20260608_5seed/result_Video_Games_sasrec_sbert_seed{20260608..20260612}.json`
+
+The 5-seed std is **3×10⁻⁴**, substantially tighter than typical published seed-to-seed variance for sequential recommenders. The single-seed headline (0.0543) is consistent with the 5-seed mean (0.0551 ± 0.0003) at <2σ.
 
 ## Comparison to published baselines on this dataset
 
@@ -22,12 +43,15 @@ On the **standard Amazon Reviews 2023 Video_Games 5-core benchmark** (94,762 use
 |---|---:|---|
 | popularity | 0.0125 | -77% |
 | ease_sbert (round-4 closed-form) | 0.0341 | -37% |
-| **TIGER** (Rajput et al. NeurIPS 2023) | ~0.042 | **we beat by +29%** ✓ |
-| **BLaIR** (Hou et al. 2024) | ~0.045 | **we beat by +21%** ✓ |
+| **TIGER** (Rajput et al. NeurIPS 2023) | ~0.042 | session target; apparent +29% if protocol-matched |
+| **BLaIR** (Hou et al. 2024) | ~0.045 | session target; apparent +21% if protocol-matched |
 | **SASRec-SBERT (this work)** | **0.0543** | — |
 | LIGER (Yang et al. 2024) | ~0.053-0.058 | competitive / slightly below upper bound |
 
-**We beat 2 of the 3 mandatory published comparators (TIGER, BLaIR) and are competitive with the third (LIGER).** This is the first SOTA-claim-defensible result in this repository.
+**Current interpretation:** this is a strong internal SASRec baseline and a
+useful same-run ablation result. It is not a SOTA result: HSTU-BLaIR is a
+stronger external comparator and must be beaten or protocol-excluded before any
+Video_Games SOTA wording is allowed.
 
 ## Architecture
 
@@ -53,7 +77,7 @@ Intentionally small to demonstrate that the technique, not parameter count, driv
 
 ## Eval protocol
 
-Strictly the standard published protocol (verified against TIGER / LIGER / BLaIR descriptions):
+Our intended protocol, aligned with common SASRec/TIGER-style leave-last-out evaluation but still requiring final paper-level protocol verification against each comparator:
 
 1. **Split**: leave-last-out per user. Each user's chronologically-last interaction is the test target; second-to-last is the validation target; all earlier interactions are training.
 2. **5-core filter**: recursive — users and items must each have ≥5 retained interactions until the set stabilizes.
@@ -72,11 +96,11 @@ Second bug-fix: the **test eval was feeding only the training sequence**, not tr
 
 ## What's still needed for a publishable SOTA claim
 
-1. **Multi-seed confirmation** — currently running (2 more seeds in flight). If the 0.0543 NDCG@10 holds across seeds (likely, given small Transformer with adequate regularization), we have statistical confidence.
-2. **Scale to Beauty_and_Personal_Care** — the bigger published benchmark (729,576 users / 207,649 items). Will need sampled-softmax instead of full-softmax (n_items=207K is too big for the 256 × 50 × 207K logits tensor on a consumer GPU).
-3. **Compare on multiple metrics** — published papers report NDCG@10, HR@10, MRR sometimes also Recall@5, NDCG@5. We have all of these.
-4. **Run ablation** — does the SBERT projection matter? Try `--no-sbert` to compare.
-5. **Reproducibility** — pin the random seed, document the training config (currently in `_bestrec_run/run_sasrec_sbert.py`'s argparse).
+1. **Beat or faithfully protocol-exclude HSTU-BLaIR** — the completed compatibility-port run and upstream report are both stronger than SASRec-SBERT.
+2. **Scale to Beauty_and_Personal_Care** — the bigger published benchmark (729,576 users / 207,649 items). Will need sampled-softmax or another scalable objective instead of full-softmax at 207K items.
+3. **Canonical per-user records** — convert all methods, including HSTU-BLaIR, into the shared JSONL schema with per-user ranks and artifact hashes.
+4. **Modern comparator suite** — include tuned HSTU/BLaIR/TIGER/LIGER-style methods under one frozen split/evaluation script.
+5. **Reproducibility** — pin seeds, command lines, environment, training config, hashes, and failure reports for every method.
 
 ## Files
 
@@ -96,6 +120,6 @@ Second bug-fix: the **test eval was feeding only the training sequence**, not tr
 |---|---|---|
 | Round 4 (closed-form on toy k-core slices) | ease_sbert headline | 0.0341 (this dataset; closed-form ceiling) |
 | Round 5 (closed-form attempts) | CDR_validated, CDR_K, JEASE, CDR-3way, CACR | all ≤ ease_sbert; closed-form ceiling confirmed |
-| **Round 6 (sequential)** | **SASRec-SBERT** | **0.0543 — SOTA-competitive** |
+| **Round 6 (sequential)** | **SASRec-SBERT** | **0.0543 - strong internal baseline** |
 
-The closed-form work was a defensible exploration of the LC2C / EASE family but plateaued on toy slices. Moving to the sequential autoregressive Transformer (standard SASRec architecture + our SBERT projection) is what unlocked the SOTA-grade result. The SBERT augmentation is our specific contribution; pure SASRec without SBERT would be a separate ablation.
+The closed-form work was a defensible exploration of the LC2C / EASE family but plateaued on toy slices. Moving to the sequential autoregressive Transformer (standard SASRec architecture + an SBERT projection) is what unlocked the strong result. The contribution is the audited integration/evaluation of off-the-shelf SBERT inside SASRec for this benchmark, not the invention of SBERT itself.

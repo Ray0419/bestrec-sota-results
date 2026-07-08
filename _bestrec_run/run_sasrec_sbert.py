@@ -2821,6 +2821,33 @@ def main():
             ["git", "status", "--porcelain", "-uno"], cwd=str(ROOT), text=True).strip())
     except Exception as e:
         provenance["git_commit"] = f"unavailable: {e}"
+    # Code-file hash family (Codex resubmission-audit R3): lets an auditor verify
+    # code identity across doc-only commits directly from the artifact.
+    provenance["code_sha256"] = {
+        "run_sasrec_sbert.py": _sha256(os.path.abspath(__file__)),
+        "run_sota_confirm_v2.sh": _sha256(str(ROOT / "_bestrec_run" / "run_sota_confirm_v2.sh")),
+        "summarize_sota_confirm_v2.py": _sha256(str(ROOT / "_bestrec_run" / "summarize_sota_confirm_v2.py")),
+    }
+    # Per-user records sidecar: write BEFORE the summary JSON so its path/rows/
+    # SHA256 can be embedded in the manifest (Codex resubmission-audit R2).
+    if best_test_user_records is not None:
+        import gzip as _gz
+        rec_path = Path(str(out_path).replace(".json", "") + ".users.jsonl.gz")
+        ur = best_test_user_records
+        with _gz.open(rec_path, "wt", encoding="utf-8") as fh:
+            for i in range(len(ur["user_id"])):
+                fh.write(json.dumps({
+                    "dataset": args.category, "seed": args.seed,
+                    "user_id": ur["user_id"][i],
+                    "target_item_id": ur["target_item_id"][i],
+                    "rank0": ur["rank0"][i], "ndcg10": ur["ndcg10"][i],
+                    "hr10": ur["hr10"][i], "rr": ur["rr"][i],
+                    "pop_bucket": ur["pop_bucket"][i]}) + "\n")
+        provenance["user_records_path"] = rec_path.name
+        provenance["user_records_n"] = len(ur["user_id"])
+        provenance["user_records_sha256"] = _sha256(str(rec_path))
+        print(f"wrote {rec_path} ({len(ur['user_id']):,} per-user records, "
+              f"best epoch {best_test_epoch}, sha256 {provenance['user_records_sha256'][:12]}…)")
 
     out = {
         "category": args.category, "config": vars(args),
@@ -2841,22 +2868,6 @@ def main():
     with out_path.open("w") as f:
         json.dump(out, f, indent=2)
     print(f"\nwrote {out_path}")
-    # Per-user records sidecar (Codex fix#5): dataset, seed, user_id, target,
-    # rank0, ndcg10, hr10, rr, pop_bucket — for bootstrap/tie/rank diagnostics.
-    if best_test_user_records is not None:
-        import gzip as _gz
-        rec_path = Path(str(out_path).replace(".json", "") + ".users.jsonl.gz")
-        ur = best_test_user_records
-        with _gz.open(rec_path, "wt", encoding="utf-8") as fh:
-            for i in range(len(ur["user_id"])):
-                fh.write(json.dumps({
-                    "dataset": args.category, "seed": args.seed,
-                    "user_id": ur["user_id"][i],
-                    "target_item_id": ur["target_item_id"][i],
-                    "rank0": ur["rank0"][i], "ndcg10": ur["ndcg10"][i],
-                    "hr10": ur["hr10"][i], "rr": ur["rr"][i],
-                    "pop_bucket": ur["pop_bucket"][i]}) + "\n")
-        print(f"wrote {rec_path} ({len(ur['user_id']):,} per-user records, best epoch {best_test_epoch})")
     return 0
 
 

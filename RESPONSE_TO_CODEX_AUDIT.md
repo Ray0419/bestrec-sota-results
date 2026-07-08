@@ -45,3 +45,21 @@ never-inspected seeds 20260618–22.
 `SOTA_CONFIRM_V2_RESULTS.md` (EXEC1 void + EXEC2 pass) · `PROTOCOL_PARITY_APPENDIX.md` ·
 10 result JSONs with embedded manifests + 10 per-user sidecars · committed driver + adjudicator ·
 `SOTA_CONTINGENCY_PLANS.md` (the pre-declared failure playbook) · this response.
+
+---
+
+# Second-pass response (to `CLAUDE_SOTA_RESUBMISSION_AUDIT_2026-07-08.md`)
+
+The second audit **accepts the V2 numbers** and rejects the package on six items. Each is fixed:
+
+| Finding | Fix |
+|---|---|
+| **R1 — sidecars untracked/ignored** | All **20** sidecars (10 gated EXEC2 + 10 preserved EXEC1) are now **tracked in git** (`.gitignore` exception documented inline), plus `_bestrec_run/SOTACONF_V2_sidecar_manifest.json` with bytes / row count (57,439 each) / SHA256 per file. Reviewers obtain them by cloning the repo. |
+| **R2 — no sidecar hashes in result JSONs** | The gated JSONs are NOT rewritten (they are the adjudicated artifacts). Correction is via (a) the committed sidecar manifest above and (b) the manifest emitter now embedding `user_records_path/n/sha256` — demonstrated by the clean-rebuild runs. The prereg's overstated claim is formally corrected in `SOTA_CONFIRM_PREREG_V2_ERRATA.md` **E2**. |
+| **R3 — literal commit rule not followed** | Conceded and reworded everywhere: it is a **documented doc-only protocol deviation** (never a claimed literal pass) — erratum **E3**. Structural fix for the future: manifests now embed a `code_sha256` family (model script, driver, adjudicator) so code identity is verifiable from the artifact regardless of doc-only commits. |
+| **R4 — 511,835 vs 511,836** | Erratum **E1** with a data-level investigation: our 511,836 rows are all unique (zero duplicate rows / (user,item) pairs), users/items match the paper exactly; the ±1 cannot materially affect LLOO (one target per user; 57,439 targets both ways). "Matches the total" wording retracted. |
+| **R5 — clean rebuild not demonstrated** | Driver now supports `OUTDIR=<fresh dir>` (no skip shortcut); adjudicator takes a directory argument. A full from-scratch rebuild into `_bestrec_run/rebuild_v2/` was executed and adjudicated (log + comparison committed). Data/cache availability for a fresh clone is documented in `PROTOCOL_PARITY_APPENDIX.md` §7. |
+| **R6 — stale manuscript** | `PAPER_DRAFT.md` updated to **v3.6**: abstract + §5.2 carry the confirmed dual-kernel claim with the frozen caveats; §2 positions ReSID/ChronoSID; exploratory MI numbers labeled as such; the stale "LS-only 1-seed" note corrected to the 5-seed family. |
+
+Also adopted: "audit-proof" phrasing removed in favor of "pre-registered, provenance-manifested";
+the maximum-claim wording matches the auditor's §"What I Would Allow" verbatim.

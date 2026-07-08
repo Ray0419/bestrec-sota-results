@@ -11,8 +11,12 @@ Evidence that our reproduced AR2023 Musical_Instruments protocol matches the com
 | items | 24,587 | 24,587 |
 | interactions | 511,835 | 511,836 = train 396,958 + valid 57,439 + test 57,439 |
 
-(The ±1 on interactions is a boundary-dedup artifact of the split export; user/item counts match
-exactly.) Source: Amazon Reviews 2023 (Hou et al. 2024), official category dump.
+(User/item counts match exactly; the interaction total differs by exactly one. Investigated
+2026-07-08 — our 511,836 rows contain zero duplicate rows and zero duplicate (user,item) pairs,
+so the ±1 originates on the comparator paper's side of the counting; immaterial to LLOO since
+both pipelines evaluate exactly one target per user for the identical 57,439 users. Full
+statement: `SOTA_CONFIRM_PREREG_V2_ERRATA.md` E1.) Source: Amazon Reviews 2023 (Hou et al.
+2024), official category dump.
 
 ## 2. Preprocessing / split
 
@@ -61,3 +65,19 @@ claim is capped at "exceeds the published point estimate" (wording frozen in the
 - Positioning: our claim is confined to the **HSTU-BLaIR protocol family** (AR2023 5-core LLOO
   full-catalog), where 0.0406 is the strongest published MI number we know of; SID-family
   results under different filtering are cited and discussed, not claimed against.
+
+## 7. Obtaining the ignored data/cache artifacts (clean-clone reproduction, audit R5)
+
+`data_5core/` and `cache_5core/` are git-ignored (size). A fresh clone regenerates them:
+
+1. **Raw data:** download the `Musical_Instruments` reviews + metadata from the official Amazon
+   Reviews 2023 release (Hou et al. 2024, `hyp1231/AmazonReviews2023` / McAuley Lab HF datasets).
+2. **Splits:** run `preprocess_5core_standard.py Musical_Instruments` (mirrors the official kcore
+   script) → the three CSVs; verify against the frozen SHA256s in `SOTA_CONFIRM_PREREG_V2.md`
+   (train `1f56c4ab…`, valid `f1240768…`, test `19f3ed96…`) — hash equality guarantees the
+   identical split.
+3. **Text cache:** run `_bestrec_run/run_5core_benchmark.py --encode-titles` (MiniLM/SBERT
+   `all-MiniLM-L6-v2`) → `cache_5core/sbert_titles_Musical_Instruments.npy`; verify SHA256
+   `40697924…`.
+4. **Rebuild:** `OUTDIR=_bestrec_run/rebuild_v2 bash _bestrec_run/run_sota_confirm_v2.sh`
+   regenerates all 10 runs from scratch (no skip shortcut) and adjudicates them.

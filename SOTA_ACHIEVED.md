@@ -1,4 +1,16 @@
-# STATUS: RE-CONFIRMED UNDER THE V2 AUDIT-PROOF PROTOCOL (2026-07-08, EXEC2)
+# STATUS: RE-CONFIRMED UNDER THE V2 PRE-REGISTERED, PROVENANCE-MANIFESTED PROTOCOL (2026-07-08, EXEC2)
+
+> **Second-pass audit note (2026-07-08):** Codex's resubmission audit
+> (`CLAUDE_SOTA_RESUBMISSION_AUDIT_2026-07-08.md`) **accepts the V2 numbers** ("no longer reject
+> the V2 numbers"; it independently reproduced both arms and verified all 10 per-user sidecars
+> row-by-row) while rejecting the *package* on six packaging/wording defects (R1–R6). All six are
+> addressed: sidecars tracked in git + hashed manifest (`_bestrec_run/SOTACONF_V2_sidecar_manifest.json`);
+> errata for the prereg's overstated sidecar-hash/interaction-count/commit-rule claims
+> (`SOTA_CONFIRM_PREREG_V2_ERRATA.md`); manuscript updated to v3.6 with the confirmed claim and
+> 2026 SID positioning; manifest emitter now embeds sidecar + code hashes; clean-rebuild mode
+> added and a from-scratch rebuild demonstration recorded. The deviation (manifests at `86816be`,
+> a doc-only descendant of the prereg commit `832a8ff`) is a **documented protocol deviation**,
+> not a claimed literal pass.
 
 **The V2 pre-registered dual gate PASSED under clean provenance** — see
 `SOTA_CONFIRM_V2_RESULTS.md` §5 for the final adjudication (k16 fresh 5-seed CI-LB 0.04096 >

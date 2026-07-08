@@ -20,13 +20,18 @@ PREREG_HASHES = {
 
 
 def main():
+    # Optional directory argument (clean-rebuild adjudication): defaults to the
+    # canonical _bestrec_run; pass e.g. _bestrec_run/rebuild_v2 to adjudicate a
+    # from-scratch regeneration (Codex resubmission-audit R5).
+    base = sys.argv[1] if len(sys.argv) > 1 else "_bestrec_run"
+    print(f"adjudicating: {base}")
     overall_pass = True
     commits = set()
     for arm in (16, 8):
         vals = []
         print(f"\n=== ARM k{arm} ===")
         for s in SEEDS:
-            path = f"_bestrec_run/results_SOTACONF_V2_k{arm}_MI_seed{s}.json"
+            path = f"{base}/results_SOTACONF_V2_k{arm}_MI_seed{s}.json"
             try:
                 d = json.load(open(path))
             except FileNotFoundError:

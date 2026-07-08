@@ -3982,3 +3982,117 @@ Per-seed test NDCG@10: s08 0.06731 · s09 0.06695 · s10 0.06776 · s11 0.06741 
 **NUMBER THIS CYCLE.** No new banked number (live job in flight). Governing results unchanged: overall competitive VG **0.06729 ± 0.00022** (8-seed); cold ladder ceiling kriging **10.8 hit@10 MI / 28.4 VG** (gate-clear, magnitude-bounded); dual-head **FLOOR/DEAD**; rank-fusion **PARTIAL** (cold 56 @ warm 0.03863). No `SOTA_ACHIEVED.md` (correct).
 
 **SAFETY.** GPU verified BUSY at entry ⇒ NO GPU run launched, NO code changed, NO smoke run. NO `results_*.json` written/overwritten/deleted; no `git push` / external send / `rm -rf` / process kill (did NOT touch the live PIDs). Appended only to my owned `NOVEL_ALGO_PLAN.md`. Flipped NO RESEARCH_QUEUE token (nothing QUEUED). Edited NO other agent's owned bus file. Wrote NO `SOTA_ACHIEVED.md`. Eval protocol unchanged (AR2023 MI 5-core LLOO, full-catalog masked, n_eval=57,439, NDCG@10=1/log2(rank+2) 0-indexed, seen train+val masked). Attribution preserved: causal spectral filter (novel, this campaign); HSTU = Zhai 2024; SASRec = Kang & McAuley 2018; frozen text/BLaIR = Hou 2024; LC2C = Liu 2025.
+
+---
+
+## 2026-07-08 (EXPERIMENT cycle — V2 GATE ADJUDICATION; no GPU run)
+
+**BUS READ.** STEP-0: `SOTA_ACHIEVED.md` EXISTS but holds NO live claim — it is the "WITHDRAWN
+PENDING AUDIT-PROOF RE-CONFIRMATION" sentinel (V1 claim withdrawn under the Codex audit
+`CLAUDE_SOTA_RESULT_AUDIT_2026-07-08.md`). `AGENT_FEEDBACK.md` cycle 25 (supervisor) issues binding
+FIX-1 (finish k8 seed22 → run the summarizer ONLY at n=5 → record to `SOTA_CONFIRM_V2_RESULTS.md` →
+flip `SOTA_ACHIEVED.md` to RE-CONFIRMED IFF clean DUAL PASS) and FIX-2 (if any arm fails at n=5 OR
+any manifest VOIDs, fire the prereg fail-rule, record the negative, STOP). ORCHESTRATION cycle-25
+headline: k16 gate passes, k8 4/5 and the final seed "RUNNING now." ANALYST/IN-FIELD/CROSS-FIELD on
+HOLD (science closed).
+
+**STATUS.** `Get-Process python` empty; `nvidia-smi` 2013 MiB / 1% util ⇒ GPU IDLE, no training job
+live (the k8 seed22 the supervisor saw running has since landed — file mtime 13:00). All 10 V2 runs
+now on disk (k16 + k8, fresh seeds 20260618–22). ⇒ the DUAL gate is, for the first time, formally
+evaluable at n=5/arm. This is the FIX-1 adjudication step, not a new experiment.
+
+**WHAT I DID.** Ran the frozen `summarize_sota_confirm_v2.py` (n=5/arm). Result:
+- **Statistics PASS both arms.** k16: mean 0.04151, sd 0.00046, **CI-LB 0.04094 > 0.0406, 5/5**.
+  k8: mean 0.04121, sd 0.00031, **CI-LB 0.04083 > 0.0406, 5/5**. Frozen data SHA256s match on all
+  10; n_eval=57,439 each; 10/10 sidecars; zero NaN.
+- **But DUAL GATE VERDICT = FAIL** on a manifest check: `results_SOTACONF_V2_k8_MI_seed20260622.json`
+  has `git_dirty_tracked=True` (the other 9 = False) ⇒ "VOID per prereg."
+- **Cause diagnosed (confirmed, not guessed):** the tree was dirtied by the **SUPERVISOR's own
+  concurrent cycle-25 writes** — `git diff --name-only HEAD` = exactly `AGENT_FEEDBACK.md` +
+  `ORCHESTRATION.md` (supervisor-owned), mtimes 12:57, inside seed22's 12:51–13:00 window;
+  `git diff HEAD -- run_sasrec_sbert.py` = EMPTY (code bit-identical to committed HEAD 832a8ff);
+  driver + summarizer also clean vs HEAD. The result 0.04084 is deterministic and itself > 0.0406.
+  ⇒ a process-hygiene void from concurrent doc-writes, NOT any code/data tampering.
+
+**RULING (honest, non-inflating).** I did NOT flip `SOTA_ACHIEVED.md` to RE-CONFIRMED — FIX-1(d)
+requires a *clean* DUAL PASS and we do not have one. I did NOT write FIX-2's "retire to statistical
+near-tie" boilerplate either — it would be FALSE here (both arms' CI-LBs clear 0.0406; this is a
+manifest-void on top of a statistical PASS, not the CI-LB≤0.0406 case that wording was frozen for).
+Recorded the full honest outcome in `SOTA_CONFIRM_V2_RESULTS.md` and **escalated the one
+irreversible call to the SUPERVISOR**: (A) strict prereg → retire permanently (discards a
+cleanly-passing result over a doc-file dirty bit the supervisor itself introduced), vs. (B) curable
+process error → re-run ONLY k8 seed20260622 with the identical command+seed under a CLEAN tree
+(reproduces the same deterministic 0.04084 with a clean manifest — not seed-shopping). Deferring is
+consistent with the pipeline's standing discipline (EXPERIMENT defers irreversible terminators to
+the supervisor) and is forced anyway: I cannot produce a clean-tree run this cycle because the tree
+is dirty from supervisor-owned bus files I am forbidden to touch.
+
+**NUMBER THIS CYCLE.** No new run. V2 statistics (consumed-evidence status pending the ruling):
+k16 0.04151 ± 0.00046 (CI-LB 0.04094), k8 0.04121 ± 0.00031 (CI-LB 0.04083), both > published
+HSTU-BLaIR 0.0406 (Liu 2025 arXiv:2504.10545 v3, MI). DUAL GATE = FAIL on the k8-seed22 dirty
+manifest; `SOTA_ACHIEVED.md` stays WITHDRAWN pending supervisor adjudication.
+
+**SAFETY.** GPU idle at entry; launched NO GPU/CPU experiment, changed NO code, ran no smoke.
+Wrote/overwrote/deleted NO `results_*.json`. Created my owned `SOTA_CONFIRM_V2_RESULTS.md` and
+appended to my owned `NOVEL_ALGO_PLAN.md` only. Did NOT edit `SOTA_CONFIRM_PREREG_V2.md` (Rule
+zero), `SOTA_ACHIEVED.md`, or any other agent's owned bus file. No `git push` / external send /
+`rm -rf` / process kill. Flipped no RESEARCH_QUEUE token (V2 adjudication, not a queue item).
+Attribution preserved: causal spectral filter (novel, this campaign); HSTU = Zhai 2024;
+SASRec = Kang & McAuley 2018; frozen text/BLaIR = Hou 2024; comparator = Liu 2025.
+
+---
+
+### 2026-07-08 14:04 — EXPERIMENT cycle (STEP-0 TERMINATION no-op; awaiting supervisor ruling)
+
+**BUS READ.** `SOTA_ACHIEVED.md` present (termination sentinel, "WITHDRAWN PENDING AUDIT-PROOF
+RE-CONFIRMATION"). ORCHESTRATION status board = cycle-25 (V2 in flight; "no new lever/architecture/
+dataset"). AGENT_FEEDBACK cycle-25 FIX-1/FIX-2 binding. RESEARCH_QUEUE: no sanctioned QUEUED item
+(cold-start knob-sweep DE-SANCTIONED; program winding down).
+
+**STATE (verified this cycle).** FIX-1 was already DISCHARGED by the ~13:08 run: frozen summarizer
+ran at n=5/arm, outcome recorded in `SOTA_CONFIRM_V2_RESULTS.md`. Recap — both arms STATISTICS PASS
+(k16 0.04151±0.00046, CI-LB 0.04094, 5/5; k8 0.04121±0.00031, CI-LB 0.04083, 5/5; all > published
+HSTU-BLaIR 0.0406, Liu 2025 v3 MI); DUAL GATE = FAIL only on the `k8 seed20260622` dirty-manifest
+technicality (`git_dirty_tracked=True`, caused by the supervisor's concurrent cycle-25 doc-writes;
+code bit-identical to HEAD 832a8ff; result 0.04084 deterministic and itself > 0.0406). The one
+irreversible A/B call (strict-retire vs cure-by-rerun-seed22-under-clean-tree) is ESCALATED and
+PENDING with the SUPERVISOR; the standing commitment is "no further V2 runs until it rules."
+
+**WHAT I DID THIS CYCLE.** Nothing to run. STEP-0 sentinel present + program concluded + the sole
+open decision belongs to the supervisor, not EXPERIMENT. GPU idle at entry (2006 MiB, 1%%). I did
+NOT: launch any GPU/CPU experiment or smoke, change code, touch `SOTA_ACHIEVED.md` /
+`SOTA_CONFIRM_PREREG_V2.md` / any other agent's owned file, write a false "near-tie", or attempt
+option-B (deferred to supervisor AND blocked — tracked tree is currently dirty from supervisor-owned
+`AGENT_FEEDBACK.md`/`ORCHESTRATION.md` I am forbidden to revert, so no clean-tree window exists).
+No `git push` / external send / `rm -rf` / result-JSON delete / process kill.
+
+**NUMBER THIS CYCLE.** None (no run). Standing V2 evidence unchanged: k16 CI-LB 0.04094, k8 CI-LB
+0.04083, both > 0.0406; DUAL GATE FAIL on the k8-seed22 manifest; `SOTA_ACHIEVED.md` stays WITHDRAWN
+pending supervisor adjudication. Attribution preserved: causal spectral filter (novel, this
+campaign); HSTU = Zhai 2024; SASRec = Kang & McAuley 2018; frozen text/BLaIR = Hou 2024;
+comparator = Liu 2025.
+
+---
+
+### 2026-07-08 — EXPERIMENT hourly run (independent re-verification, no-op) — STEP-0 sentinel holds
+
+Read the bus (ORCHESTRATION cycle-25 status board; AGENT_FEEDBACK cycle-25 FIX-1/2/3; SOTA_ACHIEVED
+= "WITHDRAWN PENDING"; SOTA_CONFIRM_V2_RESULTS = FAIL-on-void). STEP-0: `SOTA_ACHIEVED.md` exists →
+program concluded. STATUS at entry: 0 python procs, GPU idle (2009 MiB, 0%). All 10 V2 JSONs on disk.
+
+**Independently re-ran the frozen `summarize_sota_confirm_v2.py`** (did not trust prior summaries):
+identical result — ARM k16 mean 0.04151 sd 0.00046 CI-LB **0.04094** 5/5>0.0406 PASS; ARM k8 mean
+0.04121 sd 0.00031 CI-LB **0.04083** 5/5>0.0406 PASS; provenance shows 9 runs `dirty=False` + 1
+`dirty=True` → **DUAL GATE VERDICT: FAIL** (k8 seed20260622 manifest void only; stats pass both arms).
+Data SHA256s match frozen prereg on all 10; n_eval=57,439 each.
+
+**Option B still BLOCKED this cycle:** `git status` tracked-dirty = `AGENT_FEEDBACK.md`,
+`ORCHESTRATION.md` (supervisor-owned, I must not revert) + `NOVEL_ALGO_PLAN.md` (mine). No clean-tree
+window exists, so a curative seed22 re-run would again record `dirty=True` and cure nothing. The A/B
+adjudication (strict-retire vs cure-by-rerun) remains correctly ESCALATED and PENDING with SUPERVISOR.
+
+**Actions:** none beyond the CPU summarizer sanity-check + this log line. Did NOT launch any
+GPU/CPU experiment, edit code, touch `SOTA_ACHIEVED.md` / `SOTA_CONFIRM_PREREG_V2.md` / any other
+agent's file, write a false FIX-2 "near-tie", seed-shop, or `git push`/`rm`/delete-JSON/kill-proc.
+**Number this cycle: none (no run).** Attribution preserved (causal spectral filter — novel;
+HSTU=Zhai 2024; SASRec=Kang&McAuley 2018; frozen text/BLaIR=Hou 2024; comparator=Liu 2025 v3 MI 0.0406).

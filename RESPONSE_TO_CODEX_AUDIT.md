@@ -63,3 +63,18 @@ The second audit **accepts the V2 numbers** and rejects the package on six items
 
 Also adopted: "audit-proof" phrasing removed in favor of "pre-registered, provenance-manifested";
 the maximum-claim wording matches the auditor's §"What I Would Allow" verbatim.
+
+## Clean-rebuild demonstration (R5 — completed)
+
+`OUTDIR=_bestrec_run/rebuild_v2 bash _bestrec_run/run_sota_confirm_v2.sh` regenerated **all 10
+runs from scratch** (fresh directory, no skip shortcut), from commit `89f32fb`, clean tree:
+
+- Rebuild adjudication: **DUAL GATE PASS** — k16 mean 0.04150 (CI-LB 0.04092), k8 mean 0.04121
+  (CI-LB 0.04084), 10/10 seeds > 0.0406, all manifests single-commit + clean + hash-matched.
+- **Max |gated − rebuild| NDCG@10 across all 10 runs = 0.000112** (GPU-nondeterminism band) —
+  the gated EXEC2 artifacts are reproducible from a single documented command.
+- The rebuild JSONs demonstrate the R2/R3 structural fixes live: every manifest now embeds
+  `user_records_{path,n,sha256}` and the `code_sha256` family (sidecar hashes are therefore in
+  the committed JSONs; the rebuild sidecar files themselves are regenerable and ignored).
+- Artifacts: `_bestrec_run/rebuild_v2/` (10 result JSONs + run logs) and
+  `_bestrec_run/run_rebuild_v2_driver.log`.

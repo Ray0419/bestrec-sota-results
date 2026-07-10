@@ -21,17 +21,29 @@ Default mode (no flags):
        (a) any source file is missing,
        (b) any recomputed value drifts > 5e-5 from the manifest value,
        (c) any manifest cell has an empty source_files list without being declared
-           status UNTRACEABLE (warning) or EXTERNAL_PUBLISHED (cited constant).
-     UNTRACEABLE cells are listed as WARNINGS (they must be fixed in the paper).
+           status UNTRACEABLE (warning), REMOVED_FROM_PAPER (retired; non-blocking,
+           non-warning -- kept only as provenance history), or EXTERNAL_PUBLISHED
+           (cited constant).
+     UNTRACEABLE cells and paper-value MISMATCHes are listed as WARNINGS; the run
+     ends "BUILD OK (N warnings)". "BUILD GREEN" is printed ONLY on a zero-warning
+     build (strict resubmission audit 2026-07-11, F1).
   5. Additionally compares every recomputed value against the paper-printed value
      (tolerant parse: the paper rounds to 4-6 decimals; delta columns are differences
-      of rounded endpoints). Paper mismatches are REPORTED, not build-fatal
-      (the paper is fixed separately; the graph is authoritative).
+      of rounded endpoints). In default mode paper mismatches are WARNINGS.
+
+--submission (fail-closed publication gate; audit F1) additionally EXITS NONZERO if
+  (d) ANY cell is status UNTRACEABLE,
+  (e) ANY paper check is a MISMATCH (recomputed value does not reproduce the
+      paper-printed numeral at its printed precision),
+  (f) ANY declared paper-claim family (REQUIRED_FAMILIES, incl. the Office_Products
+      confirmation family, audit F3) has no sourced cells in the manifest.
+  REMOVED_FROM_PAPER and EXTERNAL_PUBLISHED cells are non-blocking in both modes.
 
 --write-manifest regenerates the manifest from the embedded spec (same engine).
 --manifest PATH   overrides the manifest path (used to self-test the failure gates).
 
 Run:  _bestrec_run/.venv/Scripts/python _bestrec_run/build_hstu_tables.py
+      _bestrec_run/.venv/Scripts/python _bestrec_run/build_hstu_tables.py --submission
 Pure stdlib; CPU-only; read-only on every result artifact.
 """
 import argparse
@@ -389,6 +401,66 @@ def rule_sign_test(p):
 def rule_const_ratio(p):
     return {"value": p["num"] / p["den"]}
 
+# ---- Office_Products final-epoch FULL-catalog rules (audit F3) --------------
+# CRITICAL: the Office headline values come from history[-1].test with
+# n_eval == 223,308 (the always-full final-epoch eval), NOT from best_test
+# (which is the 30k best-by-val subsample). This mirrors
+# _bestrec_run/office_prereg_tools.py::_final_full exactly.
+def _final_full_test(rel, expect_n_eval):
+    j = load(rel)
+    fins = [h for h in j.get("history", []) if "test" in h]
+    if not fins:
+        raise ValueError(f"no history[*].test entries in {rel}")
+    t = fins[-1]["test"]
+    if t.get("n_eval") != expect_n_eval:
+        raise ValueError(f"final eval not full-catalog in {rel}: "
+                         f"n_eval {t.get('n_eval')} != {expect_n_eval}")
+    return t
+
+def rule_final_full_ci(p):
+    """per-seed final-epoch full-catalog metric + mean/sd/95% CI-LB
+    (+ optional count above threshold and percent vs a published constant)."""
+    m = p.get("metric", "NDCG@10")
+    xs = [float(_final_full_test(f, p["expect_n_eval"])[m]) for f in p["files"]]
+    n = len(xs)
+    se = sstd(xs) / math.sqrt(n)
+    out = {"mean": mean(xs), "sd": sstd(xs), "n": n,
+           "cilb": mean(xs) - t_ppf(0.975, n - 1) * se}
+    for s, x in zip(p.get("seeds", []), xs):
+        out[f"seed{s}"] = x
+    if p.get("threshold") is not None:
+        out["n_above"] = float(sum(1 for x in xs if x > p["threshold"]))
+    if p.get("pct_vs") is not None:
+        out["pct_vs_pub"] = 100.0 * (mean(xs) / p["pct_vs"] - 1.0)
+    return out
+
+def rule_final_full_count_above(p):
+    m = p.get("metric", "NDCG@10")
+    xs = [float(_final_full_test(f, p["expect_n_eval"])[m]) for f in p["files"]]
+    return {"count": float(sum(1 for x in xs if x > p["threshold"])), "n": len(xs)}
+
+def rule_final_full_tail_hits(p):
+    """pooled stratum hit counts (text arm vs id arm) at cutoff K from the
+    final-epoch full eval, plus the two-proportion z of
+    office_prereg_tools.py::adjudicate."""
+    K, stratum = p["k"], p.get("stratum", "tail")
+    def pooled(files):
+        tot, ns = 0, []
+        for f in files:
+            bp = _final_full_test(f, p["expect_n_eval"])["by_popularity"][stratum]
+            if p.get("expect_n") is not None and bp.get("n") != p["expect_n"]:
+                raise ValueError(f"{stratum} n drift in {f}: {bp.get('n')} != {p['expect_n']}")
+            tot += bp[f"n_hit@{K}"]
+            ns.append(bp["n"])
+        return tot, ns
+    ht, ns = pooled(p["a"])
+    hi, _ = pooled(p["b"])
+    N = ns[0] * len(ns)
+    pp = (ht + hi) / (2.0 * N)
+    se = math.sqrt(max(pp * (1.0 - pp) * 2.0 / N, 1e-12))
+    z = (ht / N - hi / N) / se if se > 0 else 0.0
+    return {"text_hits": float(ht), "id_hits": float(hi), "z": z, "pooled_n": float(N)}
+
 RULES = {r[5:]: fn for r, fn in list(globals().items()) if r.startswith("rule_")}
 
 # ---------------------------------------------------------------- file families
@@ -475,15 +547,32 @@ POPF = BR + "results_5core_Video_Games.json"
 HBPORT = "_bestrec_sota_lab/runs/hstu_blair_eval_export_full_20260609_fg/hstu_blair_eval_export_summary.json"
 TITRLOG066 = BR + "run_TITRATE_idonly_rho066_VG.log"
 
+SOFF = ["20260623", "20260624", "20260625", "20260626", "20260627"]
+OFF16 = _f("results_OFFICE_k16_seed{s}.json", SOFF)
+OFF8 = _f("results_OFFICE_k8_seed{s}.json", SOFF)
+OFFID = _f("results_OFFICE_idonly_seed{s}.json", SOFF)
+OFFFLOOR = BR + "results_OFFICE_sasrecfloor_seed20260623.json"
+
 NEVAL_VG, TAILN_VG = 94762, 10900
 NEVAL_MI, TAILN_MI = 57439, 8800
 TAILN_B = 71522
+NEVAL_OFF_FULL, TAILN_OFF = 223308, 36610   # final-epoch FULL-catalog eval geometry
 PUB_SASREC_VG = 0.0573      # Liu 2025, published (external constant)
 PUB_HSTUBLAIR_MI = 0.0406   # Liu 2025, published (external constant)
+PUB_HSTUBLAIR_OFF = 0.0271  # Liu 2025, published Office_Products (external constant)
+PUB_SASREC_OFF = 0.0153     # Liu 2025, published Office_Products SASRec (external constant)
+
+# every table family the paper declares; --submission fails if any has no sourced cells
+REQUIRED_FAMILIES = ["table1", "table1a", "table1b", "table1c", "table1d", "table1e",
+                     "table541", "table542", "tableV2conf", "table2",
+                     "office_confirmation"]
+
+OFFICE_VOID_NOTE = ("VOID under prereg floor check (+44% floor inflation); "
+                    "provisional, not counted as a pass")
 
 # ---------------------------------------------------------------- spec helpers
 def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
-         status="OK", seeds=None, notes=""):
+         status="OK", seeds=None, notes="", status_note=None):
     rule_text = {
         "mean_std_metric": "mean/sample-std over seeds of best_test[{m}]",
         "single_metric": "single run best_test[{m}]",
@@ -513,8 +602,15 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "log_scan": "scalar(s) parsed from run log(s) by regex",
         "sign_test": "one-sided binomial sign test on per-seed paired deltas",
         "const_ratio": "ratio of quoted run-log constants",
+        "final_full_ci": "per-seed history[-1].test[{m}] (final-epoch FULL-catalog eval, "
+                         "n_eval asserted; NOT best_test) + mean/sd/95% CI lower bound",
+        "final_full_count_above": "count of seeds with history[-1].test[{m}] > threshold "
+                                  "(final-epoch full-catalog eval)",
+        "final_full_tail_hits": "pooled n_hit@K (text vs id) from "
+                                "history[-1].test.by_popularity[stratum] (final-epoch full "
+                                "eval) + two-proportion z",
     }[rule].replace("{m}", str(params.get("metric", "NDCG@10")))
-    return {
+    d = {
         "cell_id": cid, "table_id": table, "row_label": row, "metric": metric,
         "evidence_class": ev, "status": status,
         "source_files": files, "n_seeds": n_seeds,
@@ -523,11 +619,18 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "recompute_rule": rule_text,
         "paper": paper, "notes": notes,
     }
+    if status_note is not None:
+        d["status_note"] = status_note
+    return d
 
-def unt(cid, table, row, metric, paper, notes):
+def unt(cid, table, row, metric, paper, notes, status="UNTRACEABLE"):
+    """sourceless cell. status UNTRACEABLE = paper still prints it (warning; fatal in
+    --submission). status REMOVED_FROM_PAPER = value was deleted from the manuscript
+    (2026-07-11 repair); kept only as provenance history -- non-blocking, non-warning
+    in BOTH modes."""
     return {
         "cell_id": cid, "table_id": table, "row_label": row, "metric": metric,
-        "evidence_class": "exploratory", "status": "UNTRACEABLE",
+        "evidence_class": "exploratory", "status": status,
         "source_files": [], "n_seeds": None, "seeds": [],
         "recompute": None, "recompute_rule": None,
         "paper": paper, "notes": notes,
@@ -585,15 +688,20 @@ def build_spec():
                   5, expl, notes="n=5 stack vs n=1 plain baseline."))
     C.append(cell("t1.bias_stack.pct", "table1", "+ full bias stack", "percent vs plain",
                   STACK5 + [J1], "pct_change", {"a": STACK5, "b": [J1]},
-                  [chk("pct", 8.7, 1)], 5, expl,
-                  notes="Paper prints +8.7%; that reproduces only from the rounded seed-08 pair "
-                        "(0.0639/0.0588 -> +8.7%); the 5-seed-mean ratio is +8.2% and "
-                        "0.0049/0.0588 = +8.3%. Reported as a paper mismatch."))
+                  [chk("pct", 8.3, 1),
+                   chk("pct", 8.3, 1, mode="endpoint_pct",
+                       other={"minuend": "t1.bias_stack.ndcg", "mfield": "mean",
+                              "subtrahend": "t1.plain.ndcg", "sfield": "value",
+                              "eprec": 4})], 5, expl,
+                  notes="Paper corrected 2026-07-11 (was +8.7%): now prints +8.3% = the ratio "
+                        "of the rounded endpoints (+0.0049/0.0588). The direct 5-seed "
+                        "ratio-of-means is +8.25% (drift-gated in recomputed.pct); the "
+                        "endpoint_pct check verifies the printed figure."))
     C.append(cell("t1.ls.ndcg", "table1", "+ label smoothing e=0.2 (U2)", "NDCG@10 mean +- sd",
                   U2F, "mean_std_metric", {"files": U2F, "expect_n_eval": NEVAL_VG},
-                  [chk("mean", 0.0649, 4), chk("sd", 0.0002, 4)], 5, conf, seeds=S0812,
-                  notes="Recomputed sample-std is 0.00027 -> rounds to 0.0003, not the "
-                        "paper's 0.0002. Reported as a paper mismatch (sd only)."))
+                  [chk("mean", 0.0649, 4), chk("sd", 0.0003, 4)], 5, conf, seeds=S0812,
+                  notes="Paper corrected 2026-07-11 (was 0.0002): recomputed sample-std "
+                        "0.00027 rounds half-up to 0.0003, which the paper now prints."))
     C.append(cell("t1.ls.delta", "table1", "+ label smoothing", "delta vs bias stack",
                   U2F + STACK5, "delta_means", {"a": U2F, "b": STACK5},
                   [chk("delta", 0.0012, 4, mode="endpoint",
@@ -640,12 +748,13 @@ def build_spec():
                   TEXT5 + IDONLY5, "pct_of_paired", {"a": TEXT5, "b": IDONLY5},
                   [chk("pct", 2.7, 1)], 5, conf))
     C.append(cell("t1.full_vs_pub.pct", "table1", "full model vs published SASRec 0.0573",
-                  "percent (headline +17.6%)", V26, "pct_change",
+                  "percent (headline +17.5%)", V26, "pct_change",
                   {"a": V26, "denom_const": PUB_SASREC_VG},
-                  [chk("pct", 17.6, 1)], 6, conf,
+                  [chk("pct", 17.5, 1)], 6, conf,
                   notes="Denominator is the published (external) SASRec 0.0573 of Liu 2025. "
-                        "6-seed mean 0.067337 gives +17.5%; the printed +17.6% matches the "
-                        "superseded 5-seed mean 0.0674. Reported as a paper mismatch."))
+                        "Paper corrected 2026-07-11 (was +17.6%, the superseded 5-seed mean): "
+                        "the 6-seed mean 0.067337 gives +17.5%, now printed consistently "
+                        "(abstract, S2.2, S5.1, S8)."))
     C.append(cell("t1.idonly_vs_pub.pct", "table1", "ID-only vs published SASRec 0.0573",
                   "percent (~ +14%)", IDONLY5, "pct_change",
                   {"a": IDONLY5, "denom_const": PUB_SASREC_VG},
@@ -686,10 +795,10 @@ def build_spec():
                   [chk("mean", 0.0004, 4)], 4, expl))
     C.append(cell("t1.decomp5.textsim", "table1", "DECOMP5: text-sim", "paired delta (4-seed)",
                   D5TS + D5J1, "paired_delta", {"a": D5TS, "b": D5J1},
-                  [chk("mean", -0.0001, 4)], 4, expl,
-                  notes="Recomputed 4-seed paired mean is -0.000047 (rounds to -0.0000); the "
-                        "paper prints -0.0001. Direction consistent; reported as a mismatch. "
-                        "Table 2's '+-0.0001 (4)' bound form passes."))
+                  [chk("mean", -0.00005, 5)], 4, expl,
+                  notes="Paper corrected 2026-07-11 (was -0.0001): recomputed 4-seed paired "
+                        "mean -0.000047 rounds half-up to -0.00005, which S5.1 now prints. "
+                        "Table 2's '+-0.0001 (4)' bound form also passes."))
 
     # ---------------- Table 1a: protocol-parity baselines ----------------
     C.append(cell("t1a.popularity.ndcg", "table1a", "popularity floor", "NDCG@10",
@@ -954,10 +1063,12 @@ def build_spec():
                   "within-rung tail delta NDCG@10", UT66T + UT66I, "pop_paired_delta",
                   {"a": UT66T, "b": UT66I, "stratum": "tail",
                    "expect_n_eval": NEVAL_VG, "expect_n": TAILN_VG},
-                  [chk("mean", 0.000178, 6), chk("sd", 0.000137, 6),
+                  [chk("mean", 0.000178, 6), chk("sd", 0.000153, 6),
                    chk("pos", 5, mode="count"), chk("t", 2.6, 1, mode="approx", tol=0.15)],
                   5, conf, seeds=S0812,
-                  notes="users/item 2.44 and interactions/item 16.12 are run-log quantities."))
+                  notes="users/item 2.44 and interactions/item 16.12 are run-log quantities. "
+                        "Paper sd corrected 2026-07-11 (was 0.000137): recomputed sample-std "
+                        "0.0001535 rounds to 0.000153, now printed in the S5.4.2 table."))
     C.append(cell("t542.u066.tail_ratio", "table542", "user-thinned rho=0.66", "tail text/ID ratio",
                   UT66T + UT66I, "pop_ratio", {"a": UT66T, "b": UT66I, "stratum": "tail"},
                   [chk("ratio", 1.046, 3)], 5, conf))
@@ -1012,7 +1123,12 @@ def build_spec():
     C.append(cell("t542.anchor.text_hr", "table542", "full-density TEXT-arm tail HR anchor",
                   "tail text HR@10 mean", TEXT5, "pop_arm_mean",
                   {"files": TEXT5, "stratum": "tail", "metric": "HR@10"},
-                  [chk("mean", 0.0100, 4)], 5, conf))
+                  [chk("mean", 0.0100, 4)], 5, conf,
+                  notes="KNOWN RESIDUAL PAPER MISMATCH (the one 2026-07-11 repair miss): "
+                        "recomputed 5-seed mean 0.0099266 rounds to 0.0099, but the paper "
+                        "still prints 0.0100 ('tail HR 0.00422 vs 0.0100', "
+                        "PAPER_SUBMISSION.md S5.4.2 / PAPER_DRAFT.md). Blocks --submission "
+                        "until the manuscript prints 0.0099; NOT waived here (fail-closed)."))
     C.append(cell("t542.u040.id_abs", "table542", "rho_user=0.40 ID-arm tail (holds)",
                   "tail id NDCG@10 mean", UT40I, "pop_arm_mean",
                   {"files": UT40I, "stratum": "tail"},

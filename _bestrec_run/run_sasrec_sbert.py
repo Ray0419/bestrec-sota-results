@@ -331,6 +331,7 @@ class SASRecSBERT(nn.Module):
                   time_decay_kernel=False, time_decay_bases=8,
                   n_experts=0, text_init_emb=False, cl_aux=False,
                   causal_filter=False, filter_kernel=50,
+                  causal_filter_fixed_avg=False, causal_filter_no_gate=False,
                   niche_share=False, niche_pop=None,
                   js_shrink=False, item_freq=None,
                   heat_target=False, heat_nbr_idx=None, heat_nbr_sim=None,
@@ -477,6 +478,22 @@ class SASRecSBERT(nn.Module):
                 # causal delta: weight 1.0 at the LAST (most-recent) tap, 0 elsewhere
                 self.causal_filter.weight[:, :, -1] = 1.0
             self.filter_gate = nn.Parameter(torch.zeros(1))
+            # Comparator ablations (novelty-audit fix-plan #4) — each arm changes
+            # EXACTLY ONE design element vs the full learnable gated FIR:
+            # (a) fixed-avg: kernel FROZEN at a uniform causal moving average
+            #     (pure low-pass, non-learnable); the zero-init gate stays
+            #     learnable. Tests whether kernel LEARNABILITY matters or any
+            #     fixed local smoothing suffices.
+            # (b) no-gate: gate FROZEN at 1 (delta-init kernel => still a no-op
+            #     at init via the kernel); the kernel stays learnable. Tests
+            #     whether the zero-init gate parameterization matters.
+            if causal_filter_fixed_avg:
+                with torch.no_grad():
+                    self.causal_filter.weight.fill_(1.0 / K)
+                self.causal_filter.weight.requires_grad_(False)
+            if causal_filter_no_gate:
+                del self.filter_gate
+                self.register_buffer("filter_gate", torch.ones(1), persistent=False)
 
         # Sequence encoder: softmax Transformer (SASRec default) or
         # HSTU-style pointwise-attention stack (Zhai et al., 2024; cited).
@@ -1836,6 +1853,14 @@ def main():
                           "(passive shadow); only eval weights differ. Targets the "
                           "LLOO val/test sharp-minima overfit signature. "
                           "0 = off (eval on live weights). Try 0.8-0.95.")
+    ap.add_argument("--filter-fixed-avg", action="store_true",
+                     help="Comparator ablation (novelty-audit #4a): FREEZE the FIR kernel "
+                          "at a uniform causal moving average (non-learnable low-pass); "
+                          "zero-init gate stays learnable. Isolates kernel learnability.")
+    ap.add_argument("--filter-no-gate", action="store_true",
+                     help="Comparator ablation (novelty-audit #4b): FREEZE the gate at 1 "
+                          "(kernel delta-init still makes init a no-op); kernel stays "
+                          "learnable. Isolates the zero-init gate parameterization.")
     ap.add_argument("--causal-filter", action="store_true",
                      help="NOVEL probe V1 (RESEARCH_QUEUE 2026-06-16-1): insert ONE "
                           "strictly-causal per-channel learnable temporal FIR filter "
@@ -2456,6 +2481,8 @@ def main():
                          text_init_emb=args.text_init_emb,
                          cl_aux=(args.cl_weight > 0.0),
                          causal_filter=args.causal_filter,
+                         causal_filter_fixed_avg=args.filter_fixed_avg,
+                         causal_filter_no_gate=args.filter_no_gate,
                          filter_kernel=args.filter_kernel,
                          niche_share=(args.niche_share_beta != 0.0),
                          niche_pop=niche_pop,

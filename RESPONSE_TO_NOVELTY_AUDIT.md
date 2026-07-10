@@ -41,4 +41,18 @@ filter; the latter is a nontrivial reimplementation we scope out honestly).
 
 ## Results of the comparator ablations
 
-_(pending — appended by the analysis after `FIR_ABLATIONS_COMPLETE`)_
+**COMPLETE (5 seeds/arm, MI k8 stack; each arm changes exactly one design element):**
+
+| arm | NDCG@10 (5-seed) | gain vs no-filter (LS-only 0.03913 ± 0.00015) |
+|---|---|---|
+| REAL: learnable kernel + zero-init gate | 0.04138 ± 0.00053 | +0.00225 |
+| ABL-A: kernel FROZEN at causal moving average | 0.04046 ± 0.00022 | +0.00133 (~59% of the gain) |
+| ABL-B: learnable kernel, gate FROZEN at 1 | 0.04127 ± 0.00046 | +0.00214 (≈ full) |
+
+**Verdicts:** (1) **kernel learnability is load-bearing** — generic fixed smoothing recovers barely
+half the effect; the learned kernel shape contributes +0.0009 beyond any fixed low-pass
+(non-overlapping bands vs ABL-A). (2) **The zero-init gate is a training-stability convenience,
+not the performance driver** — ABL-B matches the full filter. This dissects the contribution the
+way the audit demanded and *supports* the narrow novelty claim: the causal FIR module's gain is
+specific to its learned response, not to smoothing per se. Files:
+`results_FIRABL_{fixedavg,nogate}_MI_seed{08–12}.json`.

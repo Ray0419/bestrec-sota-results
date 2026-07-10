@@ -1,0 +1,131 @@
+{
+ "generated_by": "build_hstu_tables.py (recomputed from source artifacts; no cached values)",
+ "manifest": "_bestrec_run\\hstu_results_manifest.json",
+ "gates": {
+  "missing_sources_or_recompute_failures": [],
+  "manifest_drift": [],
+  "unsourced_cells": []
+ },
+ "warnings_untraceable": [
+  "UNTRACEABLE: [table1a] SASRec (no text features, 5-seed) -- paper prints 'NDCG@10 0.0510 +- 0.0006 / HR 0.0923 +- 0.0009 / MRR 0.0460 +- 0.0006' with NO on-disk source. No 5-seed VG no-text plain-SASRec family exists on disk; nearest artifact is the MI SASRec baseline (different category). The v1-era VG scan files were overwrit",
+  "UNTRACEABLE: [table1a] SASRec-SBERT (MiniLM, 5-seed) parity baseline -- paper prints 'NDCG@10 0.0551 +- 0.0003 / HR 0.0998 +- 0.0009 / MRR 0.0496 +- 0.0003' with NO on-disk source. KNOWN untraceable number (also flagged by the prior audits and quoted in SOTA_VERDICT.md). On-disk candidates do not reproduce it: results_sasrec_sbert_VG_tuned",
+  "UNTRACEABLE: [table1a] SASRec-BLaIR (5-seed) -- paper prints 'NDCG@10 0.0545 +- 0.0007 / HR 0.0986 +- 0.0011 / MRR 0.0492 +- 0.0006' with NO on-disk source. Only a single-seed results_sasrec_blair_Video_Games.json (0.0498) exists on disk; no 5-seed family reproduces 0.0545.",
+  "UNTRACEABLE: [table1b] HSTU-BLaIR local port (best full eval) -- paper prints 'NDCG@10 0.07403' with NO on-disk source. The 'best full-eval 0.07403' epoch-level value is not present in the exported summary artifacts (only the final-eval 0.07382 was exported); it came from the WSL"
+ ],
+ "paper_check_summary": {
+  "exact": 124,
+  "within_rounding": 18,
+  "MISMATCH": 6,
+  "UNTRACEABLE": 4
+ },
+ "paper_mismatch_cells": [
+  {
+   "cell_id": "t1.bias_stack.pct",
+   "table": "table1",
+   "row": "+ full bias stack",
+   "checks": [
+    {
+     "name": "pct",
+     "paper": 8.7,
+     "mode": "round",
+     "recomputed": 8.249741223467023,
+     "result": "MISMATCH",
+     "rounded": 8.2
+    }
+   ],
+   "notes": "Paper prints +8.7%; that reproduces only from the rounded seed-08 pair (0.0639/0.0588 -> +8.7%); the 5-seed-mean ratio is +8.2% and 0.0049/0.0588 = +8.3%. Reported as a paper mismatch."
+  },
+  {
+   "cell_id": "t1.ls.ndcg",
+   "table": "table1",
+   "row": "+ label smoothing e=0.2 (U2)",
+   "checks": [
+    {
+     "name": "sd",
+     "paper": 0.0002,
+     "mode": "round",
+     "recomputed": 0.00027316686810892,
+     "result": "MISMATCH",
+     "rounded": 0.0003
+    }
+   ],
+   "notes": "Recomputed sample-std is 0.00027 -> rounds to 0.0003, not the paper's 0.0002. Reported as a paper mismatch (sd only)."
+  },
+  {
+   "cell_id": "t1.full_vs_pub.pct",
+   "table": "table1",
+   "row": "full model vs published SASRec 0.0573",
+   "checks": [
+    {
+     "name": "pct",
+     "paper": 17.6,
+     "mode": "round",
+     "recomputed": 17.517253340905725,
+     "result": "MISMATCH",
+     "rounded": 17.5
+    }
+   ],
+   "notes": "Denominator is the published (external) SASRec 0.0573 of Liu 2025. 6-seed mean 0.067337 gives +17.5%; the printed +17.6% matches the superseded 5-seed mean 0.0674. Reported as a paper mismatch."
+  },
+  {
+   "cell_id": "t1.decomp5.textsim",
+   "table": "table1",
+   "row": "DECOMP5: text-sim",
+   "checks": [
+    {
+     "name": "mean",
+     "paper": -0.0001,
+     "mode": "round",
+     "recomputed": -4.731876115515385e-05,
+     "result": "MISMATCH",
+     "rounded": -0.0
+    }
+   ],
+   "notes": "Recomputed 4-seed paired mean is -0.000047 (rounds to -0.0000); the paper prints -0.0001. Direction consistent; reported as a mismatch. Table 2's '+-0.0001 (4)' bound form passes."
+  },
+  {
+   "cell_id": "t542.u066.tail",
+   "table": "table542",
+   "row": "VG user-thinned rho_user=0.66 (users/item 2.44)",
+   "checks": [
+    {
+     "name": "sd",
+     "paper": 0.000137,
+     "mode": "round",
+     "recomputed": 0.0001534773441159898,
+     "result": "MISMATCH",
+     "rounded": 0.000153
+    }
+   ],
+   "notes": "users/item 2.44 and interactions/item 16.12 are run-log quantities."
+  },
+  {
+   "cell_id": "t542.anchor.text_hr",
+   "table": "table542",
+   "row": "full-density TEXT-arm tail HR anchor",
+   "checks": [
+    {
+     "name": "mean",
+     "paper": 0.01,
+     "mode": "round",
+     "recomputed": 0.009926605504587157,
+     "result": "MISMATCH",
+     "rounded": 0.0099
+    }
+   ],
+   "notes": ""
+  }
+ ],
+ "tables": {
+  "table1": "**Table 1 (regenerated): Headline component ablation — NDCG@10, AR2023 Video_Games 5-core LLOO, full-catalog n_eval=94,762 (values recomputed from manifested artifacts).**\n\n| Configuration | NDCG@10 | seeds | Δ (direct recompute) | evidence |\n|---|---:|---:|---:|---|\n| HSTU-style encoder, plain | 0.0588 | 1 | — | exploratory |\n| + TAPE-512 | 0.0597 | 1 | +0.0009 | exploratory |\n| + full bias stack | 0.0637 ± 0.0003 | 5 | +0.0049 vs plain | confirmatory |\n| + label smoothing ε=0.2 | 0.0649 ± 0.0003 | 5 | +0.0013 | confirmatory |\n| **+ causal FIR filter K=8 → full model** | **0.0673 ± 0.0003** | **6** | **+0.0024** | confirmatory |\n| *(isolation)* causal filter only, no LS | 0.0652 ± 0.0003 | 5 | +0.0015 vs stack | confirmatory |\n| *(isolation)* ID-only | 0.0656 ± 0.0002 | 5 | text adds +0.00178 (+2.7%) | confirmatory |\n| kernel sweep K=16 | 0.0676 ± 0.0002 | 5 | — | confirmatory |\n| kernel sweep K=4 / K=50 (3-seed) | 0.0673 / 0.0675 | 3 | robustness only | exploratory |\n\nSingle-flag attribution (seed 20260608, exploratory): time bias +0.0027; text-sim +0.000004. 4-seed DECOMP5 cross-check (exploratory): base 0.0594, time bias +0.0030, pos-rab +0.0012, TAPE +0.0004, text-sim -0.000047.",
+  "table1a": "**Table 1a (regenerated): SASRec-family protocol-parity baselines.**\n\n| Method | NDCG@10 | HR@10 | provenance |\n|---|---:|---:|---|\n| popularity | 0.0125 | 0.0248 | results_5core_Video_Games.json (deterministic) |\n| SASRec (no text features, 5-seed) | UNTRACEABLE | UNTRACEABLE | **WARNING: no on-disk source** (paper prints: NDCG@10 0.0510 +- 0.0006 / HR 0.0923 +- 0.0009 / MRR 0.0460 +- 0.0006) |\n| SASRec-SBERT (MiniLM, 5-seed) parity baseline | UNTRACEABLE | UNTRACEABLE | **WARNING: no on-disk source** (paper prints: NDCG@10 0.0551 +- 0.0003 / HR 0.0998 +- 0.0009 / MRR 0.0496 +- 0.0003) |\n| SASRec-BLaIR (5-seed) | UNTRACEABLE | UNTRACEABLE | **WARNING: no on-disk source** (paper prints: NDCG@10 0.0545 +- 0.0007 / HR 0.0986 +- 0.0011 / MRR 0.0492 +- 0.0006) |",
+  "table1b": "**Table 1b (regenerated, local rows only): HSTU-BLaIR comparator evidence.** Published rows are cited constants (EXTERNAL_PUBLISHED), not local artifacts.\n\n| Row | NDCG@10 | HR@10 | provenance |\n|---|---:|---:|---|\n| HSTU-BLaIR local SM120 port (final full eval) | 0.07382 | 0.13234 | _bestrec_sota_lab/.../hstu_blair_eval_export_summary.json |\n| HSTU-BLaIR local port (best full eval) | UNTRACEABLE (paper: 0.07403) | — | **WARNING: WSL-side log not retained** |\n| SASRec / HSTU / HSTU-BLaIR published rows | 0.0573 / 0.0741 / 0.0760 | — | external published (Liu 2025; Zhai 2024) |",
+  "table1c": "**Table 1c (regenerated): Musical_Instruments per-lever isolation — NDCG@10, best-by-val, n_eval=57,439 (recomputed).**\n\n| Configuration | NDCG@10 | Δ vs base | share of k16 combined lift |\n|---|---:|---:|---:|\n| MI SBERT+TAPE base (4×e20) | 0.0383 ± 0.0004 | — | — |\n| + label smoothing only (5-seed) | 0.03914 ± 0.00013 | +0.0008 | 26% |\n| + causal filter only (k16, 5-seed) | 0.0408 | +0.0025 | 77% |\n| + both = V2 (k16, 5-seed) | 0.0415 ± 0.0002 | +0.0032 | 100% |\n| V2 k8 headline stack (5-seed) | 0.0413 ± 0.0005 | +7.9% vs base; filter share 82% | — |\n| plain ID-only SASRec (MI floor) | 0.0264 | V2 k8 is +57% above | — |",
+  "table1d": "**Table 1d (regenerated): text − ID tail-tercile NDCG@10 contrast (paired, per-seed).**\n\n| dataset | tail Δ NDCG@10 | seeds positive | evidence |\n|---|---:|---:|---|\n| Musical_Instruments (sparse) | +0.000335 ± 0.000195 (5/5) , 95% CI [+0.00009, +0.00058] | 5/5 | confirmatory |\n| Video_Games (dense) | -0.000148 ± 0.000179 (2/5) | 2/5 | confirmatory (powered null) |\n| Beauty_and_PC (dense) | -0.0000078 ± 0.0000199 (1/3) | 1/3 | exploratory (3-seed) |\n\nMI tail HR replication: +0.00109 ± 0.00065 (5/5); hits/seed 29.6 vs 20.0; MI head Δ +0.00527. Cross-dataset Welch: MI−VG = +0.000484, t = 4.09, df = 7.9, p = 0.0035. VG MDE = 0.000246 (< MI effect); TOST 90% CI [-0.000319, +0.000023] ⊂ ±0.000335.",
+  "table1e": "**Table 1e (regenerated): interaction-thinning density-titration ladder** (paired text−ID, best-by-val; 5 seeds/rung; n_eval=94,762, tail_n=10,900; kept-inter./item quoted from run logs; α = ipi/23).\n\n| ρ | kept inter./item | α | head ΔNDCG@10 | head ΔHR@10 | tail ΔNDCG@10 | tail ΔHR@10 |\n|---|---|---|---|---|---|---|\n| 1.00 | 24.405 | 1.061 | +0.002213 ± 0.000241 (5/5) | +0.004238 ± 0.000765 (5/5) | -0.000148 ± 0.000179 (2/5) | +0.000128 ± 0.000582 (3/5) |\n| 0.94 | 22.947 | 0.998 | +0.002389 ± 0.000267 (5/5) | +0.004083 ± 0.000830 (5/5) | +0.000165 ± 0.000370 (4/5) | +0.000807 ± 0.000712 (5/5) |\n| 0.91 | 22.210 | 0.966 | +0.002544 ± 0.000491 (5/5) | +0.004940 ± 0.000892 (5/5) | +0.000039 ± 0.000310 (3/5) | +0.000110 ± 0.000766 (3/5) |\n| 0.88 | 21.484 | 0.934 | +0.002520 ± 0.000421 (5/5) | +0.004869 ± 0.000765 (5/5) | +0.000537 ± 0.000386 (4/5) | +0.000661 ± 0.000995 (4/5) |\n| 0.78 | 19.030 | 0.827 | +0.002664 ± 0.000398 (5/5) | +0.004467 ± 0.001082 (5/5) | +0.000056 ± 0.000552 (2/5) | +0.000239 ± 0.001087 (2/5) |\n| 0.66 | 16.109 | 0.700 | +0.003540 ± 0.000416 (5/5) | +0.005720 ± 0.000904 (5/5) | -0.000108 ± 0.000503 (1/5) | +0.000073 ± 0.001165 (3/5) |\n\nSpearman ρ_s vs density: head NDCG -0.94, head HR -0.71, tail NDCG -0.14 (n.s.).",
+  "table541": "**§5.4.1 (regenerated): scale-free tail/head arm-ratio table.**\n\n| regime | TAIL text | TAIL id | TAIL ratio | HEAD ratio |\n|---|---:|---:|---:|---:|\n| VG full density | 0.004919 | 0.005068 | 0.971 | 1.026 |\n| VG thinned → MI-density (ρ=0.66) | 0.003569 | 0.003677 | 0.971 | 1.049 |\n| MI native | 0.001551 | 0.001216 | 1.276 | 1.101 |\n\nTail starvation full→ρ0.66: text -27.4%, ID -27.4%; MI tail relative text gain +27.6%.",
+  "table542": "**§5.4.2 (regenerated): user-mode titration (connectivity).**\n\n| regime | TAIL ratio | tail Δ (5-seed) | HEAD ratio |\n|---|---:|---:|---:|\n| VG full | 0.971 | -0.000148 ± 0.000179 (2/5) | 1.026 |\n| VG interaction-thinned ρ=0.66 | 0.971 | -0.000108 ± 0.000503 (1/5) | 1.049 |\n| **VG user-thinned ρ_user=0.66** | **1.046** | **+0.000178 ± 0.000153 (5/5), t=2.59** | 1.039 |\n| MI native | 1.276 | +0.000335 ± 0.000195 (5/5) | 1.101 |\n\ndd vs full anchor: +0.000326 ± 0.000210 (5/5), t = 3.47, 95% CI [+0.000065, +0.000587]; sign-test p = 0.0312. Matched-R1 (user − interaction): tail +0.000286, head -0.000475 (diff-of-diffs +0.000761). Down-limb: ρ_user=0.50 +0.000236 ± 0.000532 (4/5); ρ_user=0.40 -0.001545 ± 0.000994 (1/5) — TEXT-arm floor collapse (tail abs 0.00218, tail HR 0.00422 vs full-density anchor 0.0099; ID arm 0.0037).",
+  "tableV2conf": "**§5.2 (regenerated): pre-registered dual-kernel V2 confirmation (SOTACONF_V2, fresh seeds 20260618–22, EXEC2 gated artifacts, n_eval=57,439).**\n\n| kernel | fresh 5-seed NDCG@10 | 95% CI lower bound | vs published 0.0406 |\n|---|---:|---:|---|\n| K=16 | 0.04152 ± 0.00045 | 0.04096 | ABOVE |\n| K=8 | 0.04120 ± 0.00030 | 0.04083 | ABOVE |\n\nFresh seeds above 0.0406: 10/10. EXEC1↔EXEC2 max per-seed |Δ| = 0.000057 (< 0.0003). Clean rebuild (rebuild_v2/): K=16 CI-LB 0.04092, K=8 CI-LB 0.04084 — dual gate PASS.",
+  "table2": "**Table 2 (regenerated): systematic negative-result map.** All single-seed rows are exploratory (audit F6); only conn-gate (and the titration nulls of §5.3–§5.4) carry confirmatory weight.\n\n| Lever | Base | Δ NDCG@10 (recomputed) | learned scalar | n |\n|---|---|---:|---|---:|\n| c3 continuous time-decay kernel (L1) | H2 stack 0.0639 | -0.01496 | n/a | 1 |\n| Sampled softmax (Q1, negs=512) | H2 (full-softmax) | -0.00255 | n/a | 1 |\n| Dual text encoder (O1) | H2 (SBERT) | -0.00140 | n/a | 1 |\n| BLaIR encoder swap (N1) | H2 (SBERT) | -0.00127 | n/a | 1 |\n| GD1 spectral-shrink | V2 seed08 | -0.00278 | n/a | 1 |\n| n_heads = 4 (P1) | H2 | -0.00050 | n/a | 1 |\n| CL4SRec SSL (T1) | H2 | -0.00045 | n/a | 1 |\n| c1 expert heads (M1) | H2 | -0.00040 | n/a | 1 |\n| c2 text-distill (K1) | H2 | -0.00040 | n/a | 1 |\n| text-init warm-start (S1) | H2 | -0.00026 | n/a | 1 |\n| EMA/SWA (R1) | H2 | +0.00007 | n/a | 1 |\n| text-sim bias (DECOMP5) | J1 plain 4-seed | -0.000047 (|Δ|≤0.0001) | n/a | 4 |\n| W1 niche-share | U2 band | abs 0.0652 | β = -7.4173 | 1 |\n| X1 James–Stein shrink | V2 band 0.0674 ± 0.0003 | abs 0.0673 | c = 0.0044 → off | 1 |\n| Y1 heat-kernel target | V2 band | abs 0.06653 | T = 0.00061 → 0 | 1 |\n| Z1 forced ID→text routing | V2-text tail (s08) | tail -75.6% (overall +0.00019) | forced | 1 |\n| CF1 cue-fusion | V2 (VG) / MI k16 | -0.00038 / -0.00063 | gate → 0 | 1 / 5 |\n| conn-gate (MI, 5-seed) | MI V2-text stack | tail +0.00010 ± 0.00028, 95% CI [-0.00025, +0.00045] | α = 0.00108 (voted off) | 5 |\n| max_seq_len 200 (F1, directional) | full-stack baselines | -0.00129 (no gain) | n/a | 1 |\n| cosine scoring (D1, directional) | dot baselines | -0.00190 (≤0) | n/a | 1 |"
+ }
+}

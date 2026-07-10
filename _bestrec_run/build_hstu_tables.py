@@ -1,0 +1,1675 @@
+#!/usr/bin/env python
+"""
+build_hstu_tables.py -- enforceable artifact graph for the canonical HSTU/FIR paper
+(audit F2 of STRICT_FULL_METHOD_AND_PAPER_AUDIT_2026-07-10; evidence labeling = F6).
+
+Contract
+--------
+The manifest `_bestrec_run/hstu_results_manifest.json` enumerates every empirical
+table-cell family of PAPER_DRAFT.md (Table 1, 1a, 1b-local, 1c, 1d, 1e, the section-5.4.1
+arm-ratio table, the section-5.4.2 user-titration table, the section-5.2 pre-registered
+V2 confirmation, and Table 2), each with: source result JSONs, a declarative recompute
+rule, the recomputed value(s), seed counts, and an evidence_class label
+(confirmatory = >=5-seed multi-seed family or pre-registered confirmation;
+ exploratory  = single-seed / <5-seed / post-hoc).
+
+Default mode (no flags):
+  1. loads the manifest,
+  2. RE-COMPUTES every cell from the SOURCE FILES (never from cached values),
+  3. regenerates all tables as markdown into `_bestrec_run/hstu_tables.json`,
+  4. EXITS NONZERO if
+       (a) any source file is missing,
+       (b) any recomputed value drifts > 5e-5 from the manifest value,
+       (c) any manifest cell has an empty source_files list without being declared
+           status UNTRACEABLE (warning) or EXTERNAL_PUBLISHED (cited constant).
+     UNTRACEABLE cells are listed as WARNINGS (they must be fixed in the paper).
+  5. Additionally compares every recomputed value against the paper-printed value
+     (tolerant parse: the paper rounds to 4-6 decimals; delta columns are differences
+      of rounded endpoints). Paper mismatches are REPORTED, not build-fatal
+      (the paper is fixed separately; the graph is authoritative).
+
+--write-manifest regenerates the manifest from the embedded spec (same engine).
+--manifest PATH   overrides the manifest path (used to self-test the failure gates).
+
+Run:  _bestrec_run/.venv/Scripts/python _bestrec_run/build_hstu_tables.py
+Pure stdlib; CPU-only; read-only on every result artifact.
+"""
+import argparse
+import json
+import math
+import os
+import re
+import sys
+from decimal import Decimal, ROUND_HALF_UP
+
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
+except (AttributeError, ValueError):
+    pass
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
+BR = "_bestrec_run/"
+MANIFEST_PATH = os.path.join(HERE, "hstu_results_manifest.json")
+TABLES_PATH = os.path.join(HERE, "hstu_tables.json")
+TOL = 5e-5  # manifest drift gate
+
+# ---------------------------------------------------------------- numerics
+def rhu(x, nd):
+    """round-half-up at nd decimals (paper-style rounding)."""
+    q = Decimal(1).scaleb(-nd)
+    return float(Decimal(repr(float(x))).quantize(q, rounding=ROUND_HALF_UP))
+
+def mean(xs):
+    return sum(xs) / len(xs)
+
+def sstd(xs):
+    n = len(xs)
+    if n < 2:
+        return 0.0
+    m = mean(xs)
+    return math.sqrt(sum((x - m) ** 2 for x in xs) / (n - 1))
+
+def _betacf(a, b, x, itmax=300, eps=3e-12):
+    qab, qap, qam = a + b, a + 1.0, a - 1.0
+    c, d = 1.0, 1.0 - qab * x / qap
+    if abs(d) < 1e-300:
+        d = 1e-300
+    d = 1.0 / d
+    h = d
+    for m in range(1, itmax + 1):
+        m2 = 2 * m
+        aa = m * (b - m) * x / ((qam + m2) * (a + m2))
+        d = 1.0 + aa * d
+        if abs(d) < 1e-300:
+            d = 1e-300
+        c = 1.0 + aa / c
+        if abs(c) < 1e-300:
+            c = 1e-300
+        d = 1.0 / d
+        h *= d * c
+        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2))
+        d = 1.0 + aa * d
+        if abs(d) < 1e-300:
+            d = 1e-300
+        c = 1.0 + aa / c
+        if abs(c) < 1e-300:
+            c = 1e-300
+        d = 1.0 / d
+        de = d * c
+        h *= de
+        if abs(de - 1.0) < eps:
+            break
+    return h
+
+def betainc(a, b, x):
+    if x <= 0.0:
+        return 0.0
+    if x >= 1.0:
+        return 1.0
+    lb = (math.lgamma(a + b) - math.lgamma(a) - math.lgamma(b)
+          + a * math.log(x) + b * math.log(1.0 - x))
+    front = math.exp(lb)
+    if x < (a + 1.0) / (a + b + 2.0):
+        return front * _betacf(a, b, x) / a
+    return 1.0 - front * _betacf(b, a, 1.0 - x) / b
+
+def t_sf(t, df):
+    """one-sided upper-tail P(T > t)."""
+    x = df / (df + t * t)
+    p = 0.5 * betainc(df / 2.0, 0.5, x)
+    return p if t > 0 else 1.0 - p
+
+def t_two_sided_p(t, df):
+    return 2.0 * t_sf(abs(t), df)
+
+def t_ppf(q, df):
+    """quantile of Student t via bisection (q in (0.5, 1))."""
+    lo, hi = 0.0, 200.0
+    for _ in range(200):
+        mid = 0.5 * (lo + hi)
+        if 1.0 - t_sf(mid, df) < q:
+            lo = mid
+        else:
+            hi = mid
+    return 0.5 * (lo + hi)
+
+def binom_sf_all(n):
+    """one-sided sign-test p for n/n successes at p=0.5."""
+    return 0.5 ** n
+
+def spearman(xs, ys):
+    def ranks(v):
+        order = sorted(range(len(v)), key=lambda i: v[i])
+        r = [0.0] * len(v)
+        for rank, i in enumerate(order):
+            r[i] = rank + 1.0
+        return r
+    rx, ry = ranks(xs), ranks(ys)
+    mx, my = mean(rx), mean(ry)
+    num = sum((a - mx) * (b - my) for a, b in zip(rx, ry))
+    den = math.sqrt(sum((a - mx) ** 2 for a in rx) * sum((b - my) ** 2 for b in ry))
+    return num / den
+
+# ---------------------------------------------------------------- artifact IO
+_CACHE = {}
+_MISSING = []
+
+def load(rel):
+    ap = os.path.join(ROOT, rel)
+    if rel in _CACHE:
+        return _CACHE[rel]
+    if not os.path.exists(ap):
+        _MISSING.append(rel)
+        raise FileNotFoundError(rel)
+    with open(ap, encoding="utf-8") as f:
+        j = json.load(f)
+    _CACHE[rel] = j
+    return j
+
+def bt_metric(rel, metric):
+    return float(load(rel)["best_test"][metric])
+
+def pop(rel, stratum, metric, expect_n_eval=None, expect_n=None):
+    j = load(rel)
+    bt = j["best_test"]
+    if expect_n_eval is not None and bt.get("n_eval") != expect_n_eval:
+        raise ValueError(f"n_eval drift in {rel}: {bt.get('n_eval')} != {expect_n_eval}")
+    s = bt["by_popularity"][stratum]
+    if expect_n is not None and s.get("n") != expect_n:
+        raise ValueError(f"{stratum} n drift in {rel}: {s.get('n')} != {expect_n}")
+    return float(s[metric])
+
+def paired_stats(deltas):
+    n = len(deltas)
+    m, sd = mean(deltas), sstd(deltas)
+    se = sd / math.sqrt(n) if n > 1 else float("nan")
+    t = m / se if (n > 1 and se > 0) else float("nan")
+    tc = t_ppf(0.975, n - 1) if n > 1 else float("nan")
+    return {"mean": m, "sd": sd, "n": n,
+            "pos": sum(1 for d in deltas if d > 0),
+            "t": t, "ci_lo": m - tc * se, "ci_hi": m + tc * se}
+
+# ---------------------------------------------------------------- rule engine
+def rule_mean_std_metric(p):
+    xs = [bt_metric(f, p.get("metric", "NDCG@10")) for f in p["files"]]
+    if p.get("expect_n_eval") is not None:
+        for f in p["files"]:
+            ne = load(f)["best_test"].get("n_eval")
+            if ne != p["expect_n_eval"]:
+                raise ValueError(f"n_eval drift in {f}: {ne}")
+    return {"mean": mean(xs), "sd": sstd(xs), "n": len(xs)}
+
+def rule_single_metric(p):
+    return {"value": bt_metric(p["file"], p.get("metric", "NDCG@10"))}
+
+def rule_best_val(p):
+    return {"value": float(load(p["file"])["best_val_NDCG10"])}
+
+def rule_delta_means(p):
+    a = mean([bt_metric(f, p.get("metric", "NDCG@10")) for f in p["a"]])
+    b = mean([bt_metric(f, p.get("metric", "NDCG@10")) for f in p["b"]])
+    return {"delta": a - b, "a_mean": a, "b_mean": b}
+
+def rule_paired_delta(p):
+    m = p.get("metric", "NDCG@10")
+    d = [bt_metric(a, m) - bt_metric(b, m) for a, b in zip(p["a"], p["b"])]
+    return paired_stats(d)
+
+def rule_pct_of_paired(p):
+    """mean paired (a-b) delta as a percent of mean(b)."""
+    m = p.get("metric", "NDCG@10")
+    d = [bt_metric(a, m) - bt_metric(b, m) for a, b in zip(p["a"], p["b"])]
+    bm = mean([bt_metric(b, m) for b in p["b"]])
+    return {"pct": 100.0 * mean(d) / bm}
+
+def rule_pct_change(p):
+    """percent change of mean(a) vs mean(b) or vs a published constant denom."""
+    m = p.get("metric", "NDCG@10")
+    a = mean([bt_metric(f, m) for f in p["a"]])
+    b = p.get("denom_const") if p.get("denom_const") is not None else \
+        mean([bt_metric(f, m) for f in p["b"]])
+    return {"pct": 100.0 * (a / b - 1.0), "a_mean": a, "denom": b}
+
+def rule_share_of_lift(p):
+    m = p.get("metric", "NDCG@10")
+    x = mean([bt_metric(f, m) for f in p["x"]])
+    base = mean([bt_metric(f, m) for f in p["base"]])
+    top = mean([bt_metric(f, m) for f in p["top"]])
+    return {"pct": 100.0 * (x - base) / (top - base),
+            "lift": x - base, "combined": top - base}
+
+def rule_pop_paired_delta(p):
+    d = [pop(a, p["stratum"], p.get("metric", "NDCG@10"),
+             p.get("expect_n_eval"), p.get("expect_n"))
+         - pop(b, p["stratum"], p.get("metric", "NDCG@10"),
+               p.get("expect_n_eval_b", p.get("expect_n_eval")), p.get("expect_n"))
+         for a, b in zip(p["a"], p["b"])]
+    return paired_stats(d)
+
+def rule_pop_arm_mean(p):
+    xs = [pop(f, p["stratum"], p.get("metric", "NDCG@10"),
+              p.get("expect_n_eval"), p.get("expect_n")) for f in p["files"]]
+    return {"mean": mean(xs), "sd": sstd(xs), "n": len(xs)}
+
+def rule_pop_ratio(p):
+    m = p.get("metric", "NDCG@10")
+    a = mean([pop(f, p["stratum"], m) for f in p["a"]])
+    b = mean([pop(f, p["stratum"], m) for f in p["b"]])
+    return {"ratio": a / b, "a_mean": a, "b_mean": b}
+
+def rule_pop_pct_change(p):
+    m = p.get("metric", "NDCG@10")
+    a = mean([pop(f, p["stratum"], m) for f in p["a"]])
+    b = mean([pop(f, p["stratum"], m) for f in p["b"]])
+    return {"pct": 100.0 * (a / b - 1.0)}
+
+def rule_pop_hits_mean(p):
+    xs = [pop(f, p["stratum"], "HR@10") *
+          load(f)["best_test"]["by_popularity"][p["stratum"]]["n"] for f in p["files"]]
+    return {"hits": mean(xs)}
+
+def rule_pop_single(p):
+    return {"value": pop(p["file"], p["stratum"], p.get("metric", "NDCG@10"))}
+
+def rule_dd_paired(p):
+    m = p.get("metric", "NDCG@10")
+    da = [pop(a, p["stratum"], m) - pop(b, p["stratum"], m)
+          for a, b in zip(p["a_text"], p["a_id"])]
+    db = [pop(a, p["stratum"], m) - pop(b, p["stratum"], m)
+          for a, b in zip(p["b_text"], p["b_id"])]
+    return paired_stats([x - y for x, y in zip(da, db)])
+
+def rule_welch(p):
+    m = p.get("metric", "NDCG@10")
+    da = [pop(a, p["stratum"], m) - pop(b, p["stratum"], m)
+          for a, b in zip(p["a_text"], p["a_id"])]
+    db = [pop(a, p["stratum"], m) - pop(b, p["stratum"], m)
+          for a, b in zip(p["b_text"], p["b_id"])]
+    ma, mb = mean(da), mean(db)
+    va, vb = sstd(da) ** 2 / len(da), sstd(db) ** 2 / len(db)
+    t = (ma - mb) / math.sqrt(va + vb)
+    df = (va + vb) ** 2 / (va ** 2 / (len(da) - 1) + vb ** 2 / (len(db) - 1))
+    return {"diff": ma - mb, "t": t, "df": df, "p": t_two_sided_p(t, df)}
+
+def rule_mde_paired(p):
+    m = p.get("metric", "NDCG@10")
+    d = [pop(a, p["stratum"], m) - pop(b, p["stratum"], m)
+         for a, b in zip(p["a"], p["b"])]
+    n = len(d)
+    se = sstd(d) / math.sqrt(n)
+    return {"mde": (t_ppf(0.95, n - 1) + t_ppf(0.80, n - 1)) * se}
+
+def rule_tost_ci90(p):
+    m = p.get("metric", "NDCG@10")
+    d = [pop(a, p["stratum"], m) - pop(b, p["stratum"], m)
+         for a, b in zip(p["a"], p["b"])]
+    n = len(d)
+    se = sstd(d) / math.sqrt(n)
+    tc = t_ppf(0.95, n - 1)
+    lo, hi = mean(d) - tc * se, mean(d) + tc * se
+    mg = p["margin"]
+    return {"lo": lo, "hi": hi, "equivalent": 1.0 if (-mg < lo and hi < mg) else 0.0}
+
+def rule_ci_lower(p):
+    m = p.get("metric", "NDCG@10")
+    xs = [bt_metric(f, m) for f in p["files"]]
+    if p.get("expect_n_eval") is not None:
+        for f in p["files"]:
+            if load(f)["best_test"].get("n_eval") != p["expect_n_eval"]:
+                raise ValueError(f"n_eval drift in {f}")
+    n = len(xs)
+    se = sstd(xs) / math.sqrt(n)
+    return {"mean": mean(xs), "sd": sstd(xs), "n": n,
+            "cilb": mean(xs) - t_ppf(0.975, n - 1) * se}
+
+def rule_count_above(p):
+    xs = [bt_metric(f, p.get("metric", "NDCG@10")) for f in p["files"]]
+    return {"count": float(sum(1 for x in xs if x > p["threshold"])), "n": len(xs)}
+
+def rule_max_pairwise_diff(p):
+    m = p.get("metric", "NDCG@10")
+    return {"max_abs": max(abs(bt_metric(a, m) - bt_metric(b, m))
+                           for a, b in zip(p["a"], p["b"]))}
+
+def rule_dual_gate(p):
+    out = {}
+    for tag in ("k16", "k8"):
+        xs = [bt_metric(f, "NDCG@10") for f in p[tag]]
+        se = sstd(xs) / math.sqrt(len(xs))
+        out[tag + "_cilb"] = mean(xs) - t_ppf(0.975, len(xs) - 1) * se
+    out["pass"] = 1.0 if (out["k16_cilb"] > p["threshold"] and
+                          out["k8_cilb"] > p["threshold"]) else 0.0
+    return out
+
+def rule_spearman_rungs(p):
+    m = p.get("metric", "NDCG@10")
+    ds = []
+    for tf, idf in p["rungs"]:
+        ds.append(mean([pop(a, p["stratum"], m) - pop(b, p["stratum"], m)
+                        for a, b in zip(tf, idf)]))
+    return {"rho": spearman(ds, p["densities"])}
+
+def rule_json_scalar(p):
+    v = load(p["file"]).get(p["key"])
+    if v is None:
+        raise ValueError(f"key {p['key']} absent in {p['file']}")
+    return {"value": float(v)}
+
+def rule_json_path(p):
+    o = load(p["file"])
+    for k in p["path"]:
+        o = o[k]
+    return {"value": float(o)}
+
+def rule_log_scan(p):
+    vals = []
+    for rel in p["files"]:
+        ap = os.path.join(ROOT, rel)
+        if not os.path.exists(ap):
+            _MISSING.append(rel)
+            raise FileNotFoundError(rel)
+        with open(ap, encoding="utf-8", errors="replace") as f:
+            for mt in re.finditer(p["regex"], f.read()):
+                vals.append(float(mt.group(1)))
+    if not vals:
+        raise ValueError(f"regex {p['regex']!r} matched nothing")
+    return {"mean": mean(vals), "min": min(vals), "max": max(vals),
+            "n": float(len(vals))}
+
+def rule_sign_test(p):
+    m = p.get("metric", "NDCG@10")
+    d = [pop(a, p["stratum"], m) - pop(b, p["stratum"], m)
+         for a, b in zip(p["a"], p["b"])]
+    k, n = sum(1 for x in d if x > 0), len(d)
+    pv = sum(math.comb(n, i) for i in range(k, n + 1)) * 0.5 ** n
+    return {"p": pv, "pos": float(k)}
+
+def rule_const_ratio(p):
+    return {"value": p["num"] / p["den"]}
+
+RULES = {r[5:]: fn for r, fn in list(globals().items()) if r.startswith("rule_")}
+
+# ---------------------------------------------------------------- file families
+def _f(pat, seeds):
+    return [BR + pat.format(s=s) for s in seeds]
+
+S0812 = ["20260608", "20260609", "20260610", "20260611", "20260612"]
+S0912 = S0812[1:]
+S1822 = ["20260618", "20260619", "20260620", "20260621", "20260622"]
+
+J1 = BR + "results_J1_plain_VG.json"
+J2 = BR + "results_J2_tapeonly_VG.json"
+H2 = BR + "results_H2_reg50_VG.json"
+STACK5 = [H2] + _f("results_BEST_VG_seed{s}.json", S0912)
+U2F = [BR + "results_U2_ls02_VG.json"] + _f("results_U2_ls02_seed{s}_VG.json", S0912)
+V1B = [BR + "results_V1b_causalfilter_k8_VG.json"] + _f("results_V1b_causalfilter_k8_seed{s}_VG.json", S0912)
+V25 = [BR + "results_V2_ls02_filter8_VG.json"] + _f("results_V2_ls02_filter8_seed{s}_VG.json", S0912)
+V26 = V25 + [BR + "results_V2_confirm_seed20260613_VG.json"]
+IDONLY5 = [BR + "results_TAIL_idonly_VG.json"] + _f("results_TAIL_idonly_seed{s}_VG.json", S0912)
+TEXT5 = [BR + "results_TAIL_V2_text_VG.json"] + _f("results_TAIL_V2_text_seed{s}_VG.json", S0912)
+K16 = _f("results_KSWEEP_k16_seed{s}_VG.json", S0812)
+K4 = _f("results_KSWEEP_k4_seed{s}_VG.json", S0812[:3])
+K50 = _f("results_KSWEEP_k50_seed{s}_VG.json", S0812[:3])
+D5J1 = _f("results_DECOMP5_J1plain_seed{s}_VG.json", S0912)
+D5TB = _f("results_DECOMP5_timebias_seed{s}_VG.json", S0912)
+D5PR = _f("results_DECOMP5_posrab_seed{s}_VG.json", S0912)
+D5TA = _f("results_DECOMP5_tapeonly_seed{s}_VG.json", S0912)
+D5TS = _f("results_DECOMP5_textsim_seed{s}_VG.json", S0912)
+DEC_TB = BR + "results_DECOMP_timebias_VG.json"
+DEC_TS = BR + "results_DECOMP_textsim_VG.json"
+MIBASE4 = _f("results_BEST_MI_sbert_e20_seed{s}.json", S0912)
+MILS = [BR + "results_MI_lsonly_seed08.json"] + _f("results_MI_lsonly_seed{s}.json", S0912)
+MIFO = [BR + "results_MI_filteronly_seed08.json"] + _f("results_MI_filteronly_seed{s}.json", S0912)
+MIK16 = _f("results_MI_V2_ls02_filter16_seed{s}.json", S0812)
+MIK8 = [BR + "results_MI_V2_ls02_filter8.json"] + _f("results_MI_V2_ls02_filter8_seed{s}.json", S0912)
+MISAS = BR + "results_MI_SASREC_baseline.json"
+MIT_T = _f("results_MI_TAIL_V2_text_seed{s}.json", S0812)
+MIT_I = _f("results_MI_TAIL_idonly_seed{s}.json", S0812)
+BT_T = [BR + "results_Beauty_TAIL_V2_text_seed20260608.json",
+        BR + "results_Beauty_TAIL_V2_text_strat_seed20260609.json",
+        BR + "results_Beauty_TAIL_V2_text_strat_seed20260610.json"]
+BT_I = [BR + "results_Beauty_TAIL_idonly_seed20260608.json",
+        BR + "results_Beauty_TAIL_idonly_strat_seed20260609.json",
+        BR + "results_Beauty_TAIL_idonly_seed20260610.json"]
+def TITR(arm, tag):
+    return [BR + f"results_TITR_{arm}_rho{tag}_s{s}_VG.json" for s in ("08", "09", "10", "11", "12")]
+T066_T = [BR + "results_TITRATE_text_rho066_VG.json"] + \
+    [BR + f"results_TITRATE_text_rho066_seed{s}_VG.json" for s in ("09", "10", "11", "12")]
+T066_I = [BR + "results_TITRATE_idonly_rho066_VG.json"] + \
+    [BR + f"results_TITRATE_idonly_rho066_seed{s}_VG.json" for s in ("09", "10", "11", "12")]
+def UT(arm, rho):
+    return [BR + f"results_USERTITR_{arm}_rho{rho}_s{s}_VG.json" for s in ("08", "09", "10", "11", "12")]
+SC16 = _f("results_SOTACONF_V2_k16_MI_seed{s}.json", S1822)
+SC8 = _f("results_SOTACONF_V2_k8_MI_seed{s}.json", S1822)
+SC16E1 = _f("results_SOTACONF_V2_k16_MI_seed{s}.EXEC1.json", S1822)
+SC8E1 = _f("results_SOTACONF_V2_k8_MI_seed{s}.EXEC1.json", S1822)
+RB16 = _f("rebuild_v2/results_SOTACONF_V2_k16_MI_seed{s}.json", S1822)
+RB8 = _f("rebuild_v2/results_SOTACONF_V2_k8_MI_seed{s}.json", S1822)
+L1 = BR + "results_L1_decaykernel_VG.json"
+Q1 = BR + "results_Q1_sampled512dot_VG.json"
+O1 = BR + "results_O1_dualtext_VG.json"
+N1 = BR + "results_N1_blair_VG.json"
+GD1 = BR + "results_GD1_spectralshrink_VG.json"
+M1 = BR + "results_M1_experts4_VG.json"
+K1D = BR + "results_K1_distill01_VG.json"
+S1 = BR + "results_S1_textinit_VG.json"
+R1 = BR + "results_R1_ema09_VG.json"
+P1 = BR + "results_P1_heads4_VG.json"
+T1 = BR + "results_T1_cl4srec_VG.json"
+W1 = BR + "results_W1_nicheshare_VG.json"
+X1 = BR + "results_X1_jsshrink_VG.json"
+Y1 = BR + "results_Y1_heattarget_VG.json"
+Z1 = BR + "results_Z1_fitnessgate_VG.json"
+CF1VG = BR + "results_CF1_cuefusion_VG.json"
+CF1MI = [BR + "results_CF1_cuefusion_MI.json"] + _f("results_CF1_cuefusion_MI_seed{s}.json", S0912)
+CONNG = _f("results_CONNGATE_MI_k8_seed{s}.json", S0812)
+CONNG_LOGS = [BR + "run_CONNGATE_MI_k8_seed20260608.log", BR + "run_CONNGATE_5seed_driver.log"]
+F1S = BR + "results_F1_seq200_VG.json"
+D1C = BR + "results_D1_cosfull_VG.json"
+D2C = BR + "results_D2_samp512cos_VG.json"
+D3C = BR + "results_D3_samp512_VG.json"
+ABLTS = BR + "results_ABL_no_textsim_VG.json"
+POPF = BR + "results_5core_Video_Games.json"
+HBPORT = "_bestrec_sota_lab/runs/hstu_blair_eval_export_full_20260609_fg/hstu_blair_eval_export_summary.json"
+TITRLOG066 = BR + "run_TITRATE_idonly_rho066_VG.log"
+
+NEVAL_VG, TAILN_VG = 94762, 10900
+NEVAL_MI, TAILN_MI = 57439, 8800
+TAILN_B = 71522
+PUB_SASREC_VG = 0.0573      # Liu 2025, published (external constant)
+PUB_HSTUBLAIR_MI = 0.0406   # Liu 2025, published (external constant)
+
+# ---------------------------------------------------------------- spec helpers
+def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
+         status="OK", seeds=None, notes=""):
+    rule_text = {
+        "mean_std_metric": "mean/sample-std over seeds of best_test[{m}]",
+        "single_metric": "single run best_test[{m}]",
+        "best_val": "single run best_val_NDCG10",
+        "delta_means": "mean(a) - mean(b) of best_test[{m}]",
+        "paired_delta": "mean/sd over seeds of per-seed paired (a-b) best_test[{m}]",
+        "pct_of_paired": "100 * mean per-seed (a-b) / mean(b), best_test[{m}]",
+        "pct_change": "100 * (mean(a)/denom - 1), best_test[{m}]",
+        "share_of_lift": "100 * (mean(x)-mean(base)) / (mean(top)-mean(base))",
+        "pop_paired_delta": "mean/sd over seeds of paired (text-id) best_test.by_popularity[stratum][{m}]",
+        "pop_arm_mean": "mean over seeds of best_test.by_popularity[stratum][{m}]",
+        "pop_ratio": "mean(text arm) / mean(id arm) of by_popularity[stratum][{m}]",
+        "pop_pct_change": "100 * (mean(a)/mean(b) - 1) of by_popularity[stratum][{m}]",
+        "pop_hits_mean": "mean over seeds of HR@10 * n in by_popularity[stratum]",
+        "pop_single": "single run by_popularity[stratum][{m}]",
+        "dd_paired": "per-seed ((a_text-a_id) - (b_text-b_id)) on by_popularity[stratum][{m}]; mean/sd/t/CI",
+        "welch": "Welch two-sample t on per-seed paired tail deltas (a vs b)",
+        "mde_paired": "(t_{0.95,n-1}+t_{0.80,n-1}) * sd/sqrt(n) of per-seed paired deltas",
+        "tost_ci90": "90% CI of per-seed paired deltas vs equivalence margin",
+        "ci_lower": "mean - t_{0.975,n-1} * sd/sqrt(n) of best_test[{m}]",
+        "count_above": "count of seeds with best_test[{m}] > threshold",
+        "max_pairwise_diff": "max over seeds of |a-b| best_test[{m}]",
+        "dual_gate": "95% CI lower bounds of both kernels vs published threshold",
+        "spearman_rungs": "Spearman rho of per-rung mean paired delta vs density",
+        "json_scalar": "learned scalar read from result JSON",
+        "json_path": "value read from JSON at path",
+        "log_scan": "scalar(s) parsed from run log(s) by regex",
+        "sign_test": "one-sided binomial sign test on per-seed paired deltas",
+        "const_ratio": "ratio of quoted run-log constants",
+    }[rule].replace("{m}", str(params.get("metric", "NDCG@10")))
+    return {
+        "cell_id": cid, "table_id": table, "row_label": row, "metric": metric,
+        "evidence_class": ev, "status": status,
+        "source_files": files, "n_seeds": n_seeds,
+        "seeds": seeds or [],
+        "recompute": {"rule": rule, "params": params},
+        "recompute_rule": rule_text,
+        "paper": paper, "notes": notes,
+    }
+
+def unt(cid, table, row, metric, paper, notes):
+    return {
+        "cell_id": cid, "table_id": table, "row_label": row, "metric": metric,
+        "evidence_class": "exploratory", "status": "UNTRACEABLE",
+        "source_files": [], "n_seeds": None, "seeds": [],
+        "recompute": None, "recompute_rule": None,
+        "paper": paper, "notes": notes,
+    }
+
+def ext(cid, table, row, metric, value, notes):
+    return {
+        "cell_id": cid, "table_id": table, "row_label": row, "metric": metric,
+        "evidence_class": "external", "status": "EXTERNAL_PUBLISHED",
+        "source_files": [], "n_seeds": None, "seeds": [],
+        "recompute": None, "recompute_rule": None,
+        "paper": [{"name": "value", "value": value, "mode": "info"}],
+        "notes": notes,
+    }
+
+def chk(name, value, precision=None, mode="round", tol=None, other=None):
+    c = {"name": name, "value": value, "mode": mode}
+    if precision is not None:
+        c["precision"] = precision
+    if tol is not None:
+        c["tol"] = tol
+    if other:
+        c.update(other)
+    return c
+
+# ---------------------------------------------------------------- the spec
+def build_spec():
+    C = []
+    conf, expl = "confirmatory", "exploratory"
+
+    # ---------------- Table 1: VG per-component ablation ladder ----------------
+    C.append(cell("t1.plain.ndcg", "table1", "HSTU-style encoder, plain", "NDCG@10",
+                  [J1], "single_metric", {"file": J1},
+                  [chk("value", 0.0588, 4)], 1, expl, seeds=["20260608"]))
+    C.append(cell("t1.tape.ndcg", "table1", "+ TAPE-512", "NDCG@10",
+                  [J2], "single_metric", {"file": J2},
+                  [chk("value", 0.0597, 4)], 1, expl, seeds=["20260608"]))
+    C.append(cell("t1.tape.delta", "table1", "+ TAPE-512", "delta NDCG@10 vs plain (single-flag TAPE)",
+                  [J2, J1], "delta_means", {"a": [J2], "b": [J1]},
+                  [chk("delta", 0.0009, 4)], 1, expl,
+                  notes="Also quoted in abstract/S5.1 as TAPE single-flag +0.0009 (n=1)."))
+    C.append(cell("t1.bias_stack.ndcg", "table1", "+ full bias stack (TAPE+time+text-sim+pos-rab)",
+                  "NDCG@10 mean +- sd", STACK5, "mean_std_metric",
+                  {"files": STACK5, "expect_n_eval": NEVAL_VG},
+                  [chk("mean", 0.0637, 4), chk("sd", 0.0003, 4)], 5, conf,
+                  seeds=S0812,
+                  notes="Seed-08 member is results_H2_reg50_VG.json (the 'H2' ls0 stack of "
+                        "ANALYSIS_LOG); seeds 09-12 are results_BEST_VG_seed*."))
+    C.append(cell("t1.bias_stack.delta", "table1", "+ full bias stack", "delta vs plain",
+                  STACK5 + [J1], "delta_means", {"a": STACK5, "b": [J1]},
+                  [chk("delta", 0.0049, 4),
+                   chk("delta", 0.0049, 4, mode="endpoint",
+                       other={"minuend": "t1.bias_stack.ndcg", "mfield": "mean",
+                              "subtrahend": "t1.plain.ndcg", "sfield": "value"})],
+                  5, expl, notes="n=5 stack vs n=1 plain baseline."))
+    C.append(cell("t1.bias_stack.pct", "table1", "+ full bias stack", "percent vs plain",
+                  STACK5 + [J1], "pct_change", {"a": STACK5, "b": [J1]},
+                  [chk("pct", 8.7, 1)], 5, expl,
+                  notes="Paper prints +8.7%; that reproduces only from the rounded seed-08 pair "
+                        "(0.0639/0.0588 -> +8.7%); the 5-seed-mean ratio is +8.2% and "
+                        "0.0049/0.0588 = +8.3%. Reported as a paper mismatch."))
+    C.append(cell("t1.ls.ndcg", "table1", "+ label smoothing e=0.2 (U2)", "NDCG@10 mean +- sd",
+                  U2F, "mean_std_metric", {"files": U2F, "expect_n_eval": NEVAL_VG},
+                  [chk("mean", 0.0649, 4), chk("sd", 0.0002, 4)], 5, conf, seeds=S0812,
+                  notes="Recomputed sample-std is 0.00027 -> rounds to 0.0003, not the "
+                        "paper's 0.0002. Reported as a paper mismatch (sd only)."))
+    C.append(cell("t1.ls.delta", "table1", "+ label smoothing", "delta vs bias stack",
+                  U2F + STACK5, "delta_means", {"a": U2F, "b": STACK5},
+                  [chk("delta", 0.0012, 4, mode="endpoint",
+                       other={"minuend": "t1.ls.ndcg", "mfield": "mean",
+                              "subtrahend": "t1.bias_stack.ndcg", "sfield": "mean"}),
+                   chk("delta", 0.0013, 4)],
+                  5, conf,
+                  notes="Table 1 prints +0.0012 (difference of rounded endpoints); the S5.1/Table-0 "
+                        "single-flag figure +0.0013 is the direct 5-seed mean difference (0.00128)."))
+    C.append(cell("t1.full.ndcg", "table1", "+ causal FIR filter K=8 -> full model (V2)",
+                  "NDCG@10 mean +- sd (6-seed)", V26, "mean_std_metric",
+                  {"files": V26, "expect_n_eval": NEVAL_VG},
+                  [chk("mean", 0.0673, 4), chk("sd", 0.0003, 4)], 6, conf,
+                  seeds=S0812 + ["20260613"]))
+    C.append(cell("t1.full.delta", "table1", "full model", "delta vs +LS",
+                  V26 + U2F, "delta_means", {"a": V26, "b": U2F},
+                  [chk("delta", 0.0024, 4)], 6, conf))
+    C.append(cell("t1.full.combined", "table1", "full model", "combined delta vs bias stack (prose)",
+                  V26 + STACK5, "delta_means", {"a": V26, "b": STACK5},
+                  [chk("delta", 0.0036, 4, mode="endpoint",
+                       other={"minuend": "t1.full.ndcg", "mfield": "mean",
+                              "subtrahend": "t1.bias_stack.ndcg", "sfield": "mean"})],
+                  6, conf,
+                  notes="Direct 6-seed difference is +0.00368 (rounds to 0.0037); the paper's "
+                        "+0.0036 is the difference of rounded endpoints 0.0673-0.0637."))
+    C.append(cell("t1.v1b.ndcg", "table1", "(isolation) causal filter only, no LS (V1b)",
+                  "NDCG@10 mean +- sd", V1B, "mean_std_metric",
+                  {"files": V1B, "expect_n_eval": NEVAL_VG},
+                  [chk("mean", 0.0652, 4), chk("sd", 0.0003, 4)], 5, conf, seeds=S0812,
+                  notes="Recomputed mean 0.065150 rounds (half-up) to 0.0652."))
+    C.append(cell("t1.v1b.delta", "table1", "(isolation) causal filter only", "delta vs bias stack",
+                  V1B + STACK5, "delta_means", {"a": V1B, "b": STACK5},
+                  [chk("delta", 0.0015, 4)], 5, conf,
+                  notes="Also the S5.1 'causal filter alone +0.0015' single-flag figure."))
+    C.append(cell("t1.idonly.ndcg", "table1", "(isolation) ID-only (no SBERT/no text-sim/no prototypes)",
+                  "NDCG@10 mean +- sd", IDONLY5, "mean_std_metric",
+                  {"files": IDONLY5, "expect_n_eval": NEVAL_VG},
+                  [chk("mean", 0.0656, 4), chk("sd", 0.0002, 4)], 5, conf, seeds=S0812))
+    C.append(cell("t1.text_add.paired", "table1", "text stack minus ID-only (same seeds)",
+                  "paired delta NDCG@10 mean +- sd", TEXT5 + IDONLY5, "paired_delta",
+                  {"a": TEXT5, "b": IDONLY5},
+                  [chk("mean", 0.00178, 5), chk("sd", 0.00021, 5)], 5, conf, seeds=S0812))
+    C.append(cell("t1.text_add.pct", "table1", "text stack vs ID-only", "percent overall",
+                  TEXT5 + IDONLY5, "pct_of_paired", {"a": TEXT5, "b": IDONLY5},
+                  [chk("pct", 2.7, 1)], 5, conf))
+    C.append(cell("t1.full_vs_pub.pct", "table1", "full model vs published SASRec 0.0573",
+                  "percent (headline +17.6%)", V26, "pct_change",
+                  {"a": V26, "denom_const": PUB_SASREC_VG},
+                  [chk("pct", 17.6, 1)], 6, conf,
+                  notes="Denominator is the published (external) SASRec 0.0573 of Liu 2025. "
+                        "6-seed mean 0.067337 gives +17.5%; the printed +17.6% matches the "
+                        "superseded 5-seed mean 0.0674. Reported as a paper mismatch."))
+    C.append(cell("t1.idonly_vs_pub.pct", "table1", "ID-only vs published SASRec 0.0573",
+                  "percent (~ +14%)", IDONLY5, "pct_change",
+                  {"a": IDONLY5, "denom_const": PUB_SASREC_VG},
+                  [chk("pct", 14.0, 0)], 5, conf))
+    C.append(cell("t1.ksweep.k16", "table1", "kernel sweep K=16", "NDCG@10 mean +- sd",
+                  K16, "mean_std_metric", {"files": K16, "expect_n_eval": NEVAL_VG},
+                  [chk("mean", 0.0676, 4), chk("sd", 0.0002, 4)], 5, conf, seeds=S0812))
+    C.append(cell("t1.ksweep.k4", "table1", "kernel sweep K=4", "NDCG@10 mean (robustness)",
+                  K4 + U2F, "delta_means", {"a": K4, "b": U2F},
+                  [chk("delta", 0.0, mode="gt")], 3, expl,
+                  notes="No numeral printed in the paper; supports 'gain robust across "
+                        "K in {4,8,16,50}' -- gate: mean(K4) > mean(no-filter U2 stack)."))
+    C.append(cell("t1.ksweep.k50", "table1", "kernel sweep K=50", "NDCG@10 mean (robustness)",
+                  K50 + U2F, "delta_means", {"a": K50, "b": U2F},
+                  [chk("delta", 0.0, mode="gt")], 3, expl,
+                  notes="Same robustness gate as K=4; K=8 is the V2 family itself."))
+    # single-seed DECOMP attributions quoted inline in S5.1
+    C.append(cell("t1.decomp1.timebias", "table1", "DECOMP single-flag: time bias",
+                  "delta NDCG@10 (n=1)", [DEC_TB, J1], "delta_means",
+                  {"a": [DEC_TB], "b": [J1]},
+                  [chk("delta", 0.0027, 4)], 1, expl, seeds=["20260608"]))
+    C.append(cell("t1.decomp1.textsim", "table1", "DECOMP single-flag: text-sim bias",
+                  "delta NDCG@10 (n=1, dead weight)", [DEC_TS, J1], "delta_means",
+                  {"a": [DEC_TS], "b": [J1]},
+                  [chk("delta", 0.0001, mode="bound_abs")], 1, expl,
+                  notes="Paper states 'dead weight (+-0.0001)'; gate is |delta| <= 0.0001."))
+    C.append(cell("t1.decomp5.base", "table1", "DECOMP5 4-seed cross-check: HSTU-style base",
+                  "NDCG@10 mean", D5J1, "mean_std_metric", {"files": D5J1},
+                  [chk("mean", 0.0594, 4)], 4, expl, seeds=S0912))
+    C.append(cell("t1.decomp5.timebias", "table1", "DECOMP5: time bias", "paired delta (4-seed)",
+                  D5TB + D5J1, "paired_delta", {"a": D5TB, "b": D5J1},
+                  [chk("mean", 0.0030, 4)], 4, expl))
+    C.append(cell("t1.decomp5.posrab", "table1", "DECOMP5: pos-rab", "paired delta (4-seed)",
+                  D5PR + D5J1, "paired_delta", {"a": D5PR, "b": D5J1},
+                  [chk("mean", 0.0012, 4)], 4, expl))
+    C.append(cell("t1.decomp5.tape", "table1", "DECOMP5: TAPE", "paired delta (4-seed)",
+                  D5TA + D5J1, "paired_delta", {"a": D5TA, "b": D5J1},
+                  [chk("mean", 0.0004, 4)], 4, expl))
+    C.append(cell("t1.decomp5.textsim", "table1", "DECOMP5: text-sim", "paired delta (4-seed)",
+                  D5TS + D5J1, "paired_delta", {"a": D5TS, "b": D5J1},
+                  [chk("mean", -0.0001, 4)], 4, expl,
+                  notes="Recomputed 4-seed paired mean is -0.000047 (rounds to -0.0000); the "
+                        "paper prints -0.0001. Direction consistent; reported as a mismatch. "
+                        "Table 2's '+-0.0001 (4)' bound form passes."))
+
+    # ---------------- Table 1a: protocol-parity baselines ----------------
+    C.append(cell("t1a.popularity.ndcg", "table1a", "popularity floor", "NDCG@10",
+                  [POPF], "json_path", {"file": POPF, "path": ["methods", "popularity", "NDCG@10"]},
+                  [chk("value", 0.0125, 4)], 1, expl,
+                  notes="Deterministic popularity scorer, results_5core_Video_Games.json."))
+    C.append(cell("t1a.popularity.hr", "table1a", "popularity floor", "HR@10",
+                  [POPF], "json_path", {"file": POPF, "path": ["methods", "popularity", "HR@10"]},
+                  [chk("value", 0.0248, 4)], 1, expl))
+    C.append(unt("t1a.sasrec_notext", "table1a", "SASRec (no text features, 5-seed)",
+                 "NDCG@10 0.0510 +- 0.0006 / HR 0.0923 +- 0.0009 / MRR 0.0460 +- 0.0006",
+                 [chk("mean", 0.0510, 4, mode="info")],
+                 "No 5-seed VG no-text plain-SASRec family exists on disk; nearest artifact is the "
+                 "MI SASRec baseline (different category). The v1-era VG scan files were "
+                 "overwritten/not retained."))
+    C.append(unt("t1a.sasrec_sbert", "table1a", "SASRec-SBERT (MiniLM, 5-seed) parity baseline",
+                 "NDCG@10 0.0551 +- 0.0003 / HR 0.0998 +- 0.0009 / MRR 0.0496 +- 0.0003",
+                 [chk("mean", 0.0551, 4, mode="info")],
+                 "KNOWN untraceable number (also flagged by the prior audits and quoted in "
+                 "SOTA_VERDICT.md). On-disk candidates do not reproduce it: "
+                 "results_sasrec_sbert_VG_tuned_* (5 seeds) -> 0.0562 +- 0.0004; "
+                 "results_sasrec_sbert_Video_Games_v3.json -> 0.0543; "
+                 "seed20260522/23 -> 0.0498/0.0500. The 0.0551 5-seed family predates the "
+                 "retained artifact set."))
+    C.append(unt("t1a.sasrec_blair", "table1a", "SASRec-BLaIR (5-seed)",
+                 "NDCG@10 0.0545 +- 0.0007 / HR 0.0986 +- 0.0011 / MRR 0.0492 +- 0.0006",
+                 [chk("mean", 0.0545, 4, mode="info")],
+                 "Only a single-seed results_sasrec_blair_Video_Games.json (0.0498) exists on "
+                 "disk; no 5-seed family reproduces 0.0545."))
+
+    # ---------------- Table 1b: comparator evidence (local rows only) ----------------
+    C.append(cell("t1b.port.final_ndcg", "table1b",
+                  "HSTU-BLaIR local SM120 compatibility port (final full eval)", "NDCG@10",
+                  [HBPORT], "json_path", {"file": HBPORT, "path": ["metrics", "NDCG@10"]},
+                  [chk("value", 0.07382, 5)], 1, expl,
+                  notes="Single-run WSL/SM120 compatibility port export; validity caveats in S5.1."))
+    C.append(cell("t1b.port.final_hr", "table1b", "HSTU-BLaIR local port (final full eval)", "HR@10",
+                  [HBPORT], "json_path", {"file": HBPORT, "path": ["metrics", "HR@10"]},
+                  [chk("value", 0.13234, 5)], 1, expl))
+    C.append(unt("t1b.port.best_ndcg", "table1b", "HSTU-BLaIR local port (best full eval)",
+                 "NDCG@10 0.07403",
+                 [chk("value", 0.07403, 5, mode="info")],
+                 "The 'best full-eval 0.07403' epoch-level value is not present in the exported "
+                 "summary artifacts (only the final-eval 0.07382 was exported); it came from the "
+                 "WSL-side training log which was not retained in the repo."))
+    C.append(ext("t1b.pub.sasrec", "table1b", "SASRec (Liu 2025, published)", "NDCG@10",
+                 PUB_SASREC_VG, "Published single-seed comparator; not a local artifact."))
+    C.append(ext("t1b.pub.hstublair_vg", "table1b", "HSTU-BLaIR VG (Liu 2025, published)",
+                 "NDCG@10", 0.0760, "Published comparator; hardware-blocked locally."))
+    C.append(ext("t1b.pub.hstublair_mi", "table1b", "HSTU-BLaIR MI (Liu 2025, published)",
+                 "NDCG@10", PUB_HSTUBLAIR_MI,
+                 "Published per-category point estimate targeted by the pre-registered V2 confirmation."))
+
+    # ---------------- Table 1c: MI per-lever isolation ----------------
+    C.append(cell("t1c.base.ndcg", "table1c", "MI SBERT+TAPE base (4 x e20 seeds)", "NDCG@10 mean +- sd",
+                  MIBASE4, "mean_std_metric", {"files": MIBASE4, "expect_n_eval": NEVAL_MI},
+                  [chk("mean", 0.0383, 4), chk("sd", 0.0004, 4)], 4, expl, seeds=S0912,
+                  notes="4-seed family (paper discloses the seed-08 e15 checkpoint was excluded); "
+                        "labeled exploratory per the n>=5 confirmatory rule."))
+    C.append(cell("t1c.lsonly.ndcg", "table1c", "+ label smoothing only", "NDCG@10 mean +- sd",
+                  MILS, "mean_std_metric", {"files": MILS, "expect_n_eval": NEVAL_MI},
+                  [chk("mean", 0.0391, 4), chk("mean", 0.03914, 5), chk("sd", 0.00013, 5)],
+                  5, conf, seeds=S0812,
+                  notes="Paper quotes both 0.0391 +- 0.0001 (table) and 0.03914 +- 0.00013 (prose)."))
+    C.append(cell("t1c.lsonly.delta", "table1c", "+ LS only", "delta vs base",
+                  MILS + MIBASE4, "delta_means", {"a": MILS, "b": MIBASE4},
+                  [chk("delta", 0.0008, 4)], 5, conf))
+    C.append(cell("t1c.lsonly.share", "table1c", "+ LS only", "share of combined k16 lift",
+                  MILS + MIBASE4 + MIK16, "share_of_lift",
+                  {"x": MILS, "base": MIBASE4, "top": MIK16},
+                  [chk("pct", 26.0, 0)], 5, conf))
+    C.append(cell("t1c.filteronly.ndcg", "table1c", "+ causal filter only (k16)", "NDCG@10 mean",
+                  MIFO, "mean_std_metric", {"files": MIFO, "expect_n_eval": NEVAL_MI},
+                  [chk("mean", 0.0408, 4)], 5, conf, seeds=S0812))
+    C.append(cell("t1c.filteronly.delta", "table1c", "+ filter only", "delta vs base",
+                  MIFO + MIBASE4, "delta_means", {"a": MIFO, "b": MIBASE4},
+                  [chk("delta", 0.0025, 4)], 5, conf))
+    C.append(cell("t1c.filteronly.share", "table1c", "+ filter only", "share of combined k16 lift",
+                  MIFO + MIBASE4 + MIK16, "share_of_lift",
+                  {"x": MIFO, "base": MIBASE4, "top": MIK16},
+                  [chk("pct", 77.0, 0)], 5, conf))
+    C.append(cell("t1c.v2k16.ndcg", "table1c", "+ both = V2 (k16)", "NDCG@10 mean +- sd",
+                  MIK16, "mean_std_metric", {"files": MIK16, "expect_n_eval": NEVAL_MI},
+                  [chk("mean", 0.0415, 4), chk("sd", 0.0002, 4)], 5, conf, seeds=S0812))
+    C.append(cell("t1c.v2k16.delta", "table1c", "+ both = V2 (k16)", "delta vs base",
+                  MIK16 + MIBASE4, "delta_means", {"a": MIK16, "b": MIBASE4},
+                  [chk("delta", 0.0032, 4)], 5, conf))
+    C.append(cell("t1c.v2k8.ndcg", "table1c", "V2 k8 (MI headline stack)", "NDCG@10 mean +- sd",
+                  MIK8, "mean_std_metric", {"files": MIK8, "expect_n_eval": NEVAL_MI},
+                  [chk("mean", 0.0413, 4), chk("sd", 0.0005, 4)], 5, conf, seeds=S0812))
+    C.append(cell("t1c.v2k8.share", "table1c", "filter share of k8 combined lift", "percent",
+                  MIFO + MIBASE4 + MIK8, "share_of_lift",
+                  {"x": MIFO, "base": MIBASE4, "top": MIK8},
+                  [chk("pct", 82.0, 0)], 5, conf,
+                  notes="Paper: '82% vs the k8 headline stack'; ~80% claims use tol 5pp."))
+    C.append(cell("t1c.v2k8.pct_base", "table1c", "V2 k8 vs MI base", "percent (+7.9%)",
+                  MIK8 + MIBASE4, "pct_change", {"a": MIK8, "b": MIBASE4},
+                  [chk("pct", 7.9, 1)], 5, conf))
+    C.append(cell("t1c.sasrec_floor.ndcg", "table1c", "plain ID-only SASRec (MI)", "NDCG@10",
+                  [MISAS], "single_metric", {"file": MISAS},
+                  [chk("value", 0.0264, 4)], 1, expl, seeds=["20260608"]))
+    C.append(cell("t1c.v2k8.pct_sasrec", "table1c", "V2 k8 vs plain SASRec (MI)", "percent (+57%)",
+                  MIK8 + [MISAS], "pct_change", {"a": MIK8, "b": [MISAS]},
+                  [chk("pct", 57.0, 0)], 5, conf))
+
+    # ---------------- Table 1d: text-vs-ID tail contrast ----------------
+    C.append(cell("t1d.mi.tail", "table1d", "Musical_Instruments (sparse)",
+                  "tail delta NDCG@10 (paired, 5-seed)", MIT_T + MIT_I, "pop_paired_delta",
+                  {"a": MIT_T, "b": MIT_I, "stratum": "tail",
+                   "expect_n_eval": NEVAL_MI, "expect_n": TAILN_MI},
+                  [chk("mean", 0.000335, 6), chk("sd", 0.000195, 6),
+                   chk("pos", 5, mode="count"), chk("ci_lo", 0.00009, 5),
+                   chk("ci_hi", 0.00058, 5), chk("ci_lo", 0.0, mode="gt")],
+                  5, conf, seeds=S0812))
+    C.append(cell("t1d.vg.tail", "table1d", "Video_Games (dense)",
+                  "tail delta NDCG@10 (paired, 5-seed)", TEXT5 + IDONLY5, "pop_paired_delta",
+                  {"a": TEXT5, "b": IDONLY5, "stratum": "tail",
+                   "expect_n_eval": NEVAL_VG, "expect_n": TAILN_VG},
+                  [chk("mean", -0.000148, 6), chk("sd", 0.000179, 6),
+                   chk("pos", 2, mode="count")], 5, conf, seeds=S0812))
+    C.append(cell("t1d.beauty.tail", "table1d", "Beauty_and_PC (dense)",
+                  "tail delta NDCG@10 (paired, 3-seed)", BT_T + BT_I, "pop_paired_delta",
+                  {"a": BT_T, "b": BT_I, "stratum": "tail", "expect_n": TAILN_B},
+                  [chk("mean", -0.0000078, 7), chk("sd", 0.000020, 6),
+                   chk("pos", 1, mode="count")], 3, expl, seeds=["20260608", "20260609", "20260610"],
+                  notes="Heterogeneous eval geometry disclosed: seed08 pair is full-eval "
+                        "(n_eval=729,576) both arms; seed09 pair is stratified-eval (212,245) both "
+                        "arms; seed10 pairs a stratified TEXT run against a full-eval ID run. The "
+                        "tail bucket (n=71,522) is identical across all six files, so the tail "
+                        "contrast is bucket-consistent, but the seed10 pair is not user-set-matched."))
+    C.append(cell("t1d.mi.tail_hr", "table1d", "MI tail replication on HR@10",
+                  "tail delta HR@10 (paired, 5-seed)", MIT_T + MIT_I, "pop_paired_delta",
+                  {"a": MIT_T, "b": MIT_I, "stratum": "tail", "metric": "HR@10",
+                   "expect_n_eval": NEVAL_MI, "expect_n": TAILN_MI},
+                  [chk("mean", 0.00109, 5), chk("sd", 0.00065, 5), chk("pos", 5, mode="count")],
+                  5, conf))
+    C.append(cell("t1d.mi.tail_hits_text", "table1d", "MI tail hits/seed (text arm)", "HR@10 x n",
+                  MIT_T, "pop_hits_mean", {"files": MIT_T, "stratum": "tail"},
+                  [chk("hits", 29.6, 1, mode="approx", tol=0.5)], 5, conf,
+                  notes="Paper: '~29.6 vs 20.0 hits/seed'."))
+    C.append(cell("t1d.mi.tail_hits_id", "table1d", "MI tail hits/seed (ID arm)", "HR@10 x n",
+                  MIT_I, "pop_hits_mean", {"files": MIT_I, "stratum": "tail"},
+                  [chk("hits", 20.0, 1, mode="approx", tol=0.5)], 5, conf))
+    C.append(cell("t1d.mi.head_abs", "table1d", "MI head delta (largest absolute text lift)",
+                  "head delta NDCG@10", MIT_T + MIT_I, "pop_paired_delta",
+                  {"a": MIT_T, "b": MIT_I, "stratum": "head",
+                   "expect_n_eval": NEVAL_MI},
+                  [chk("mean", 0.00527, 5)], 5, conf))
+    C.append(cell("t1d.welch", "table1d", "cross-dataset difference MI - VG",
+                  "Welch t on per-seed tail deltas", MIT_T + MIT_I + TEXT5 + IDONLY5, "welch",
+                  {"a_text": MIT_T, "a_id": MIT_I, "b_text": TEXT5, "b_id": IDONLY5,
+                   "stratum": "tail"},
+                  [chk("diff", 0.000484, 6), chk("t", 4.09, 2),
+                   chk("p", 0.004, mode="approx", tol=0.001)], 5, conf))
+    C.append(cell("t1d.vg.mde", "table1d", "VG powered-null minimum detectable effect",
+                  "MDE (paired t, 80% power, one-sided alpha 0.05, n=5)",
+                  TEXT5 + IDONLY5, "mde_paired",
+                  {"a": TEXT5, "b": IDONLY5, "stratum": "tail"},
+                  [chk("mde", 0.000246, 6), chk("mde", 0.000335, mode="lt")], 5, conf,
+                  notes="Gate: MDE < MI's native effect 0.000335 (the 'powered null' claim)."))
+    C.append(cell("t1d.vg.tost", "table1d", "VG TOST equivalence vs MI margin",
+                  "90% CI of paired tail delta", TEXT5 + IDONLY5, "tost_ci90",
+                  {"a": TEXT5, "b": IDONLY5, "stratum": "tail", "margin": 0.000335},
+                  [chk("lo", -0.000319, 6), chk("hi", 0.000023, 6),
+                   chk("equivalent", 1, mode="count")], 5, conf))
+
+    # ---------------- Table 1e: interaction-thinning titration ladder ----------------
+    RUNGS = [
+        ("100", 1.00, TEXT5, IDONLY5, 24.405,
+         (0.002213, 0.000241, 5), (0.004238, 0.000765, 5),
+         (-0.000148, 0.000179, 2), (0.000128, 0.000582, 3)),
+        ("094", 0.94, TITR("text", "094"), TITR("idonly", "094"), 22.947,
+         (0.002389, 0.000267, 5), (0.004083, 0.000830, 5),
+         (0.000165, 0.000370, 4), (0.000807, 0.000712, 5)),
+        ("091", 0.91, TITR("text", "091"), TITR("idonly", "091"), 22.210,
+         (0.002544, 0.000491, 5), (0.004940, 0.000892, 5),
+         (0.000039, 0.000310, 3), (0.000110, 0.000766, 3)),
+        ("088", 0.88, TITR("text", "088"), TITR("idonly", "088"), 21.484,
+         (0.002520, 0.000421, 5), (0.004869, 0.000765, 5),
+         (0.000537, 0.000386, 4), (0.000661, 0.000995, 4)),
+        ("078", 0.78, TITR("text", "078"), TITR("idonly", "078"), 19.030,
+         (0.002664, 0.000398, 5), (0.004467, 0.001082, 5),
+         (0.000056, 0.000552, 2), (0.000239, 0.001087, 2)),
+        ("066", 0.66, T066_T, T066_I, 16.109,
+         (0.003540, 0.000416, 5), (0.005720, 0.000904, 5),
+         (-0.000108, 0.000503, 1), (0.000073, 0.001165, 3)),
+    ]
+    for tag, rho, tf, idf, ipi, hn, hh, tn, th in RUNGS:
+        for stratum, metric, (pm, ps, pp) in (
+                ("head", "NDCG@10", hn), ("head", "HR@10", hh),
+                ("tail", "NDCG@10", tn), ("tail", "HR@10", th)):
+            mkey = "ndcg" if metric == "NDCG@10" else "hr"
+            C.append(cell(f"t1e.rho{tag}.{stratum}_{mkey}", "table1e",
+                          f"rho={rho:.2f} (kept inter./item {ipi}, run-log value)",
+                          f"{stratum} delta {metric} (paired, 5-seed)",
+                          tf + idf, "pop_paired_delta",
+                          {"a": tf, "b": idf, "stratum": stratum, "metric": metric,
+                           "expect_n_eval": NEVAL_VG,
+                           "expect_n": TAILN_VG if stratum == "tail" else None},
+                          [chk("mean", pm, 6), chk("sd", ps, 6), chk("pos", pp, mode="count")],
+                          5, conf, seeds=S0812,
+                          notes="kept-interactions/item is quoted from the frozen run logs "
+                                "(see make_table_5_4_titration.py); alpha = ipi/23."))
+    C.append(cell("t1e.alpha066", "table1e", "alpha(rho=0.66) = ipi/d_eff", "ratio",
+                  [TITRLOG066], "const_ratio", {"num": 16.109, "den": 23.0},
+                  [chk("value", 0.700, 3)], None, conf,
+                  notes="ipi=16.109 quoted from run_TITRATE_idonly_rho066_VG.log; d_eff=23 from "
+                        "the S5.4 BBP/Gavish-Donoho analysis."))
+    RUNG_FILES = [(r[2], r[3]) for r in RUNGS]
+    DENS = [r[1] for r in RUNGS]
+    C.append(cell("t1e.spearman.head_ndcg", "table1e", "Spearman rho_s(head delta vs density)",
+                  "NDCG@10", sum([a + b for a, b in RUNG_FILES], []), "spearman_rungs",
+                  {"rungs": RUNG_FILES, "densities": DENS, "stratum": "head"},
+                  [chk("rho", -0.94, 2)], 5, conf))
+    C.append(cell("t1e.spearman.head_hr", "table1e", "Spearman rho_s(head delta vs density)",
+                  "HR@10", sum([a + b for a, b in RUNG_FILES], []), "spearman_rungs",
+                  {"rungs": RUNG_FILES, "densities": DENS, "stratum": "head", "metric": "HR@10"},
+                  [chk("rho", -0.71, 2)], 5, conf))
+    C.append(cell("t1e.spearman.tail_ndcg", "table1e", "Spearman rho_s(tail delta vs density)",
+                  "NDCG@10", sum([a + b for a, b in RUNG_FILES], []), "spearman_rungs",
+                  {"rungs": RUNG_FILES, "densities": DENS, "stratum": "tail"},
+                  [chk("rho", -0.14, 2)], 5, conf))
+
+    # ---------------- S5.4.1 arm-ratio table ----------------
+    ARM = [("vgfull", "VG full density", TEXT5, IDONLY5,
+            0.004919, 0.005068, 0.971, 1.026),
+           ("rho066", "VG thinned -> MI-density (rho=0.66)", T066_T, T066_I,
+            0.003569, 0.003677, 0.971, 1.049),
+           ("mi", "MI native", MIT_T, MIT_I,
+            0.001551, 0.001216, 1.276, 1.101)]
+    for key, row, tf, idf, ptt, pti, ptr, phr in ARM:
+        C.append(cell(f"t541.{key}.tail_text", "table541", row, "tail text-arm NDCG@10 mean",
+                      tf, "pop_arm_mean", {"files": tf, "stratum": "tail"},
+                      [chk("mean", ptt, 6)], 5, conf))
+        C.append(cell(f"t541.{key}.tail_id", "table541", row, "tail ID-arm NDCG@10 mean",
+                      idf, "pop_arm_mean", {"files": idf, "stratum": "tail"},
+                      [chk("mean", pti, 6)], 5, conf))
+        C.append(cell(f"t541.{key}.tail_ratio", "table541", row, "tail text/ID ratio",
+                      tf + idf, "pop_ratio", {"a": tf, "b": idf, "stratum": "tail"},
+                      [chk("ratio", ptr, 3)], 5, conf))
+        C.append(cell(f"t541.{key}.head_ratio", "table541", row, "head text/ID ratio",
+                      tf + idf, "pop_ratio", {"a": tf, "b": idf, "stratum": "head"},
+                      [chk("ratio", phr, 3)], 5, conf))
+    C.append(cell("t541.starve.text_pct", "table541", "text-arm tail starvation full->rho0.66",
+                  "percent", T066_T + TEXT5, "pop_pct_change",
+                  {"a": T066_T, "b": TEXT5, "stratum": "tail"},
+                  [chk("pct", -27.4, 1)], 5, conf))
+    C.append(cell("t541.starve.id_pct", "table541", "ID-arm tail starvation full->rho0.66",
+                  "percent", T066_I + IDONLY5, "pop_pct_change",
+                  {"a": T066_I, "b": IDONLY5, "stratum": "tail"},
+                  [chk("pct", -27.4, 1)], 5, conf))
+    C.append(cell("t541.mi.tail_rel", "table541", "MI tail relative text gain", "percent (+27.6%)",
+                  MIT_T + MIT_I, "pop_pct_change",
+                  {"a": MIT_T, "b": MIT_I, "stratum": "tail"},
+                  [chk("pct", 27.6, 1)], 5, conf))
+
+    # ---------------- S5.4.2 user-mode titration ----------------
+    UT66T, UT66I = UT("text", "066"), UT("idonly", "066")
+    UT50T, UT50I = UT("text", "050"), UT("idonly", "050")
+    UT40T, UT40I = UT("text", "040"), UT("idonly", "040")
+    C.append(cell("t542.u066.tail", "table542", "VG user-thinned rho_user=0.66 (users/item 2.44)",
+                  "within-rung tail delta NDCG@10", UT66T + UT66I, "pop_paired_delta",
+                  {"a": UT66T, "b": UT66I, "stratum": "tail",
+                   "expect_n_eval": NEVAL_VG, "expect_n": TAILN_VG},
+                  [chk("mean", 0.000178, 6), chk("sd", 0.000137, 6),
+                   chk("pos", 5, mode="count"), chk("t", 2.6, 1, mode="approx", tol=0.15)],
+                  5, conf, seeds=S0812,
+                  notes="users/item 2.44 and interactions/item 16.12 are run-log quantities."))
+    C.append(cell("t542.u066.tail_ratio", "table542", "user-thinned rho=0.66", "tail text/ID ratio",
+                  UT66T + UT66I, "pop_ratio", {"a": UT66T, "b": UT66I, "stratum": "tail"},
+                  [chk("ratio", 1.046, 3)], 5, conf))
+    C.append(cell("t542.u066.head_ratio", "table542", "user-thinned rho=0.66", "head text/ID ratio",
+                  UT66T + UT66I, "pop_ratio", {"a": UT66T, "b": UT66I, "stratum": "head"},
+                  [chk("ratio", 1.039, 3)], 5, conf))
+    C.append(cell("t542.u066.dd_vs_full", "table542", "dd vs full-density anchor",
+                  "paired diff-of-deltas (tail NDCG@10)",
+                  UT66T + UT66I + TEXT5 + IDONLY5, "dd_paired",
+                  {"a_text": UT66T, "a_id": UT66I, "b_text": TEXT5, "b_id": IDONLY5,
+                   "stratum": "tail"},
+                  [chk("mean", 0.000326, 6), chk("sd", 0.000210, 6),
+                   chk("t", 3.47, 2), chk("ci_lo", 0.000065, 6), chk("ci_hi", 0.000587, 6),
+                   chk("pos", 5, mode="count"), chk("ci_lo", 0.0, mode="gt")],
+                  5, conf))
+    C.append(cell("t542.u066.signtest", "table542", "dd vs full anchor", "one-sided sign-test p",
+                  UT66T + UT66I + TEXT5 + IDONLY5, "sign_test",
+                  {"a": UT66T, "b": UT66I, "stratum": "tail"},
+                  [chk("p", 0.031, 3)], 5, conf,
+                  notes="5/5 positive -> p = 0.5^5 = 0.03125."))
+    C.append(cell("t542.matchedR1.tail", "table542", "matched-R1: (user - interaction) at rho=0.66",
+                  "tail delta difference", UT66T + UT66I + T066_T + T066_I, "dd_paired",
+                  {"a_text": UT66T, "a_id": UT66I, "b_text": T066_T, "b_id": T066_I,
+                   "stratum": "tail"},
+                  [chk("mean", 0.000286, 6)], 5, conf))
+    C.append(cell("t542.matchedR1.head", "table542", "matched-R1: (user - interaction) at rho=0.66",
+                  "head delta difference", UT66T + UT66I + T066_T + T066_I, "dd_paired",
+                  {"a_text": UT66T, "a_id": UT66I, "b_text": T066_T, "b_id": T066_I,
+                   "stratum": "head"},
+                  [chk("mean", -0.000475, 6)], 5, conf,
+                  notes="diff-of-diffs tail-head = +0.000761 with opposite signs (see both cells)."))
+    C.append(cell("t542.u050.tail", "table542", "down-limb rho_user=0.50",
+                  "tail delta NDCG@10", UT50T + UT50I, "pop_paired_delta",
+                  {"a": UT50T, "b": UT50I, "stratum": "tail",
+                   "expect_n_eval": NEVAL_VG, "expect_n": TAILN_VG},
+                  [chk("mean", 0.000236, 6), chk("sd", 0.000532, 6), chk("pos", 4, mode="count")],
+                  5, conf, seeds=S0812))
+    C.append(cell("t542.u040.tail", "table542", "down-limb rho_user=0.40 (floor artifact)",
+                  "tail delta NDCG@10", UT40T + UT40I, "pop_paired_delta",
+                  {"a": UT40T, "b": UT40I, "stratum": "tail",
+                   "expect_n_eval": NEVAL_VG, "expect_n": TAILN_VG},
+                  [chk("mean", -0.001545, 6), chk("pos", 1, mode="count")], 5, conf, seeds=S0812))
+    C.append(cell("t542.u040.text_abs", "table542", "rho_user=0.40 TEXT-arm tail collapse",
+                  "tail text NDCG@10 mean", UT40T, "pop_arm_mean",
+                  {"files": UT40T, "stratum": "tail"},
+                  [chk("mean", 0.00218, 5)], 5, conf,
+                  notes="Paper: 'falls to 0.00218 ~ 44% of the full-density anchor 0.00494'."))
+    C.append(cell("t542.u040.text_hr", "table542", "rho_user=0.40 TEXT-arm tail HR",
+                  "tail text HR@10 mean", UT40T, "pop_arm_mean",
+                  {"files": UT40T, "stratum": "tail", "metric": "HR@10"},
+                  [chk("mean", 0.00422, 5)], 5, conf))
+    C.append(cell("t542.anchor.text_hr", "table542", "full-density TEXT-arm tail HR anchor",
+                  "tail text HR@10 mean", TEXT5, "pop_arm_mean",
+                  {"files": TEXT5, "stratum": "tail", "metric": "HR@10"},
+                  [chk("mean", 0.0100, 4)], 5, conf))
+    C.append(cell("t542.u040.id_abs", "table542", "rho_user=0.40 ID-arm tail (holds)",
+                  "tail id NDCG@10 mean", UT40I, "pop_arm_mean",
+                  {"files": UT40I, "stratum": "tail"},
+                  [chk("mean", 0.0037, 4, mode="approx", tol=0.0002)], 5, conf,
+                  notes="Paper: 'the ID arm holds ~0.0037'."))
+
+    # ---------------- S5.2 pre-registered V2 confirmation (SOTACONF_V2) ----------------
+    C.append(cell("v2conf.k16", "tableV2conf", "K=16 fresh seeds 20260618-22 (EXEC2, gated)",
+                  "NDCG@10 mean +- sd, 95% CI lower bound", SC16, "ci_lower",
+                  {"files": SC16, "expect_n_eval": NEVAL_MI},
+                  [chk("mean", 0.04152, 5), chk("sd", 0.00045, 5), chk("cilb", 0.04096, 5),
+                   chk("cilb", PUB_HSTUBLAIR_MI, mode="gt")],
+                  5, conf, seeds=S1822,
+                  notes="Pre-registered (SOTA_CONFIRM_PREREG_V2.md); gate = CI-LB > published "
+                        "0.0406. evidence_class confirmatory + pre-registered."))
+    C.append(cell("v2conf.k8", "tableV2conf", "K=8 fresh seeds 20260618-22 (EXEC2, gated)",
+                  "NDCG@10 mean +- sd, 95% CI lower bound", SC8, "ci_lower",
+                  {"files": SC8, "expect_n_eval": NEVAL_MI},
+                  [chk("mean", 0.04120, 5), chk("sd", 0.00030, 5), chk("cilb", 0.04083, 5),
+                   chk("cilb", PUB_HSTUBLAIR_MI, mode="gt")],
+                  5, conf, seeds=S1822))
+    C.append(cell("v2conf.count", "tableV2conf", "fresh seeds above published 0.0406",
+                  "count over both kernels", SC16 + SC8, "count_above",
+                  {"files": SC16 + SC8, "threshold": PUB_HSTUBLAIR_MI},
+                  [chk("count", 10, mode="count")], 10, conf))
+    C.append(cell("v2conf.exec_agreement", "tableV2conf", "EXEC1 vs EXEC2 per-seed agreement",
+                  "max |NDCG@10 difference|", SC16 + SC16E1 + SC8 + SC8E1, "max_pairwise_diff",
+                  {"a": SC16 + SC8, "b": SC16E1 + SC8E1},
+                  [chk("max_abs", 0.0003, mode="lt")], 10, conf,
+                  notes="Paper: 'both executions agree per-seed to +-0.0003' (the voided EXEC1 "
+                        "and the clean-tree EXEC2)."))
+    C.append(cell("v2conf.rebuild", "tableV2conf", "clean-rebuild regeneration (rebuild_v2/)",
+                  "dual gate holds on rebuilt artifacts", RB16 + RB8, "dual_gate",
+                  {"k16": RB16, "k8": RB8, "threshold": PUB_HSTUBLAIR_MI},
+                  [chk("pass", 1, mode="count")], 10, conf,
+                  notes="From-scratch regeneration (commit 2a5003e) must independently pass the "
+                        "pre-registered dual gate."))
+
+    # ---------------- Table 2: negative-result map ----------------
+    def t2delta(cid, row, run, basef, paper_delta, prec, notes="", base_label="H2 ls0 stack (seed08)"):
+        return cell(cid, "table2", row, f"delta NDCG@10 vs {base_label} (n=1)",
+                    [run] + ([basef] if isinstance(basef, str) else list(basef)),
+                    "delta_means",
+                    {"a": [run], "b": [basef] if isinstance(basef, str) else list(basef)},
+                    [chk("delta", paper_delta, prec)], 1, expl, seeds=["20260608"], notes=notes)
+
+    C.append(t2delta("t2.c3_decay", "c3 continuous time-decay attention kernel (L1)",
+                     L1, H2, -0.0150, 4,
+                     notes="The val>>test gap-exploder; see t2.c3_decay.val/test."))
+    C.append(cell("t2.c3_decay.test", "table2", "c3 (L1) absolute test", "NDCG@10",
+                  [L1], "single_metric", {"file": L1},
+                  [chk("value", 0.0489, 4)], 1, expl))
+    C.append(cell("t2.c3_decay.val", "table2", "c3 (L1) record validation", "val NDCG@10",
+                  [L1], "best_val", {"file": L1},
+                  [chk("value", 0.0725, 4)], 1, expl))
+    C.append(t2delta("t2.sampled", "Sampled softmax (Q1, sampled_negs=512)", Q1, H2, -0.0026, 4,
+                     notes="PAPER WORDING MISMATCH: Table 2 says 'K=1024 negatives' but the "
+                           "artifact (results_Q1_sampled512dot_VG.json) has sampled_negs=512. "
+                           "The delta value itself matches. K=1024 belongs to the appendix "
+                           "Beauty scan, not this VG row."))
+    C.append(t2delta("t2.dualtext", "Dual text encoder SBERT+BLaIR (O1)", O1, H2, -0.0014, 4))
+    C.append(t2delta("t2.blair", "BLaIR text encoder swap (N1)", N1, H2, -0.0013, 4))
+    C.append(t2delta("t2.gd1", "GD1 spectral-shrink prior", GD1, V25[0], -0.003, 3,
+                     base_label="V2 seed08",
+                     notes="Learned shrink driven to zero; BBP irreducibility figure retained."))
+    C.append(t2delta("t2.heads4", "n_heads = 4 (P1)", P1, H2, -0.0005, 4))
+    C.append(t2delta("t2.cl4srec", "CL4SRec self-supervision (T1)", T1, H2, -0.0005, 4,
+                     notes="Direct delta -0.000446 rounds to -0.0004; the printed -0.0005 is the "
+                           "difference of rounded endpoints (0.0634 - 0.0639), verified via the "
+                           "endpoint check."))
+    C[-1]["paper"].append(chk("delta", -0.0005, 4, mode="endpoint_files"))
+    C.append(t2delta("t2.c1_experts", "c1 prototype-routed expert heads (M1)", M1, H2, -0.0004, 4))
+    C.append(t2delta("t2.c2_distill", "c2 text-distillation aux loss (K1)", K1D, H2, -0.0004, 4))
+    C.append(t2delta("t2.textinit", "text-init / warm-start (S1)", S1, H2, -0.0003, 4))
+    C.append(t2delta("t2.ema", "EMA / SWA weight averaging (R1)", R1, H2, 0.0001, 4))
+    C.append(cell("t2.textsim4", "table2", "text-sim bias (4-seed DECOMP5 isolation)",
+                  "paired delta NDCG@10, dead-weight bound", D5TS + D5J1, "paired_delta",
+                  {"a": D5TS, "b": D5J1},
+                  [chk("mean", 0.0001, mode="bound_abs")], 4, expl,
+                  notes="Table-2 row prints '+-0.0001 (4)': gate is |4-seed paired mean| <= "
+                        "0.0001 (recomputed -0.000047). Corroborated by the single-seed drop "
+                        "test results_ABL_no_textsim_VG.json (-0.000099 vs V2)."))
+    C.append(cell("t2.textsim_drop", "table2", "text-sim bias dropped from V2 (ABL, n=1)",
+                  "delta NDCG@10 (V2 minus no-textsim)", [V25[0], ABLTS], "delta_means",
+                  {"a": [V25[0]], "b": [ABLTS]},
+                  [chk("delta", 0.0001, mode="bound_abs")], 1, expl))
+    C.append(cell("t2.w1.abs", "table2", "W1 niche-share fitness-sharing penalty",
+                  "absolute test NDCG@10 (vs U2 band)", [W1], "single_metric", {"file": W1},
+                  [chk("value", 0.0652, 4)], 1, expl,
+                  notes="'Within band' holds against the recomputed U2 sd (0.00027): "
+                        "|0.06518-0.06494| = 0.00024 < 1 sd. Against the paper's understated "
+                        "sd 0.0002 it would sit just outside; see t1.ls.ndcg mismatch."))
+    C.append(cell("t2.w1.beta", "table2", "W1 learned scalar", "beta (sign-flipped)",
+                  [W1], "json_scalar", {"file": W1, "key": "learned_niche_share_beta"},
+                  [chk("value", -7.42, 2)], 1, expl))
+    C.append(cell("t2.x1.abs", "table2", "X1 frequency-adaptive James-Stein shrinkage",
+                  "absolute test NDCG@10 (vs V2 5-seed band)", [X1], "single_metric", {"file": X1},
+                  [chk("value", 0.0673, 4)], 1, expl))
+    C.append(cell("t2.x1.base_band", "table2", "X1/Y1 base band: V2 5-seed",
+                  "NDCG@10 mean +- sd (seeds 08-12)", V25, "mean_std_metric",
+                  {"files": V25, "expect_n_eval": NEVAL_VG},
+                  [chk("mean", 0.0674, 4), chk("sd", 0.0003, 4)], 5, conf, seeds=S0812))
+    C.append(cell("t2.x1.c", "table2", "X1 learned scalar", "shrink c -> 0",
+                  [X1], "json_scalar", {"file": X1, "key": "learned_js_shrink_c"},
+                  [chk("value", 0.004, 3), chk("value", 0.005, mode="lt")], 1, expl,
+                  notes="Paper: 'c ~ 0 (lambda_max ~ 0.004)'; artifact value 0.004376."))
+    C.append(cell("t2.y1.abs", "table2", "Y1 heat-kernel/manifold label smoothing",
+                  "absolute test NDCG@10", [Y1], "single_metric", {"file": Y1},
+                  [chk("value", 0.06653, 5)], 1, expl))
+    C.append(cell("t2.y1.T", "table2", "Y1 learned scalar", "temperature T -> 0",
+                  [Y1], "json_scalar", {"file": Y1, "key": "learned_heat_target_T"},
+                  [chk("value", 0.00061, 5)], 1, expl))
+    C.append(cell("t2.z1.tail_pct", "table2", "Z1 forced ID->text routing", "tail collapse percent",
+                  [Z1, TEXT5[0]], "pop_pct_change",
+                  {"a": [Z1], "b": [TEXT5[0]], "stratum": "tail"},
+                  [chk("pct", -75.0, mode="approx", tol=1.0)], 1, expl,
+                  notes="Recomputed -75.6% (Z1 tail 0.001206 vs V2-text seed08 tail 0.004941); "
+                        "paper prints 'tail -75%'."))
+    C.append(cell("t2.z1.overall", "table2", "Z1 overall (flat)", "delta NDCG@10 vs V2 seed08",
+                  [Z1, V25[0]], "delta_means", {"a": [Z1], "b": [V25[0]]},
+                  [chk("delta", 0.0005, mode="bound_abs")], 1, expl))
+    C.append(cell("t2.cf1.vg", "table2", "CF1 cue-fusion gate (VG)", "delta NDCG@10 vs V2 seed08",
+                  [CF1VG, V25[0]], "delta_means", {"a": [CF1VG], "b": [V25[0]]},
+                  [chk("delta", 0.0005, mode="bound_abs")], 1, expl,
+                  notes="PAPER WORDING MISMATCH: the Table-2 base column reads 'V2 / Beauty', "
+                        "but the second CF1 dataset on disk is Musical_Instruments "
+                        "(results_CF1_cuefusion_MI*), not Beauty. Flat/dead verdict unchanged."))
+    C.append(cell("t2.cf1.mi", "table2", "CF1 cue-fusion gate (MI, 5-seed)",
+                  "paired delta NDCG@10 vs MI V2 k16", CF1MI + MIK16, "paired_delta",
+                  {"a": CF1MI, "b": MIK16},
+                  [chk("mean", 0.001, mode="bound_abs")], 5, conf,
+                  notes="Recomputed -0.00063 (dead, no gain)."))
+    C.append(cell("t2.conngate.tail", "table2", "conn-gate connectivity-gated fusion (MI, 5-seed)",
+                  "paired tail delta NDCG@10 vs MI V2-text stack", CONNG + MIT_T, "pop_paired_delta",
+                  {"a": CONNG, "b": MIT_T, "stratum": "tail",
+                   "expect_n_eval": NEVAL_MI, "expect_n": TAILN_MI},
+                  [chk("mean", 0.0001, 4), chk("sd", 0.0003, 4),
+                   chk("ci_lo", -0.00025, 5), chk("ci_hi", 0.00045, 5)],
+                  5, conf, seeds=S0812,
+                  notes="The only Table-2 probe at full 5-seed power (pre-declared); CI includes "
+                        "zero -> not actionable."))
+    C.append(cell("t2.conngate.overall", "table2", "conn-gate overall (flat)",
+                  "paired delta NDCG@10 vs MI V2-text stack", CONNG + MIT_T, "paired_delta",
+                  {"a": CONNG, "b": MIT_T},
+                  [chk("mean", 0.0005, mode="bound_abs")], 5, conf))
+    C.append(cell("t2.conngate.alpha", "table2", "conn-gate learned scalar", "alpha -> 0.0011 (< init 0.0025)",
+                  CONNG_LOGS, "log_scan",
+                  {"files": CONNG_LOGS,
+                   "regex": r"conn-gate alpha = ([0-9.]+)"},
+                  [chk("mean", 0.0011, 4)], 5, expl,
+                  notes="The learned alpha is not embedded in the result JSONs (fields null); it "
+                        "is parsed from the tracked run logs. All per-seed values (0.00107-0.00110) "
+                        "round to 0.0011 < init 0.0025."))
+    C.append(cell("t2.seq200", "table2", "max_seq_len 200 / seq > 50 (F1)",
+                  "directional: no gain vs full-stack baselines", [F1S, H2], "delta_means",
+                  {"a": [F1S], "b": [H2]},
+                  [chk("delta", 0.0005, mode="lt")], 1, expl,
+                  notes="DIRECTIONAL, config-confounded (100ep, no pos-rab; exact seq-50 twin not "
+                        "on disk) -- disclosed in ANALYSIS_LOG; the paper renders it as '~0', "
+                        "not a signed delta. Gate: F1 gains nothing over the seed-08 stack."))
+    C.append(cell("t2.cosine", "table2", "cosine scoring (D1)",
+                  "directional: underperforms dot at all op-points", [D1C, H2, U2F[0]], "delta_means",
+                  {"a": [D1C], "b": [H2]},
+                  [chk("delta", 0.0, mode="lt")], 1, expl,
+                  notes="DIRECTIONAL, config-confounded (100ep, no pos-rab twin). Corroborating "
+                        "sampled-pair: D2 samp512+cos 0.05814 < D3 samp512+dot 0.06072 "
+                        "(results_D2_samp512cos_VG.json / results_D3_samp512_VG.json)."))
+
+    return C
+
+# ---------------------------------------------------------------- compute & verify
+def compute_cell(c):
+    if c.get("recompute") is None:
+        return None
+    fn = RULES[c["recompute"]["rule"]]
+    return fn(c["recompute"]["params"])
+
+def check_paper(c, rec, by_id):
+    """classify each paper check; returns (results, cell_class)."""
+    out = []
+    any_fail, any_soft = False, False
+    for k in c.get("paper", []):
+        mode = k.get("mode", "round")
+        name, pv = k.get("name"), k.get("value")
+        rv = None if rec is None else rec.get(name)
+        res = {"name": name, "paper": pv, "mode": mode, "recomputed": rv}
+        if mode == "info" or rec is None:
+            res["result"] = "info"
+        elif mode == "round":
+            r = rhu(rv, k["precision"])
+            res["result"] = "exact" if abs(r - pv) < 10 ** (-k["precision"] - 6) else "MISMATCH"
+            res["rounded"] = r
+        elif mode == "approx":
+            ok = abs(rv - pv) <= k["tol"]
+            res["result"] = "within_tol" if ok else "MISMATCH"
+        elif mode == "bound_abs":
+            ok = abs(rv) <= pv + 5e-7
+            res["result"] = "bound_ok" if ok else "MISMATCH"
+        elif mode == "lt":
+            res["result"] = "qual_ok" if rv < pv else "MISMATCH"
+        elif mode == "gt":
+            res["result"] = "qual_ok" if rv > pv else "MISMATCH"
+        elif mode == "count":
+            res["result"] = "exact" if int(round(rv)) == int(pv) else "MISMATCH"
+        elif mode == "endpoint":
+            mc, sc = by_id.get(k["minuend"]), by_id.get(k["subtrahend"])
+            if not mc or not sc or mc.get("recomputed") is None or sc.get("recomputed") is None:
+                res["result"] = "info"
+            else:
+                prec = k.get("precision", 4)
+                ep = rhu(mc["recomputed"][k["mfield"]], prec) - rhu(sc["recomputed"][k["sfield"]], prec)
+                res["endpoint_delta"] = rhu(ep, prec)
+                res["result"] = ("endpoint_ok" if abs(res["endpoint_delta"] - pv)
+                                 < 10 ** (-prec - 6) else "MISMATCH")
+        elif mode == "endpoint_files":
+            prec = k.get("precision", 4)
+            a = rhu(rec["a_mean"], prec) if "a_mean" in rec else None
+            b = rhu(rec["b_mean"], prec) if "b_mean" in rec else None
+            if a is None or b is None:
+                res["result"] = "info"
+            else:
+                res["endpoint_delta"] = rhu(a - b, prec)
+                res["result"] = ("endpoint_ok" if abs(res["endpoint_delta"] - pv)
+                                 < 10 ** (-prec - 6) else "MISMATCH")
+        else:
+            res["result"] = "info"
+        if res["result"] == "MISMATCH":
+            any_fail = True
+        elif res["result"] in ("endpoint_ok", "within_tol", "bound_ok", "qual_ok"):
+            any_soft = True
+        out.append(res)
+    # a cell whose 'round' checks fail but which carries a passing endpoint/tolerance
+    # variant of the same named check is classified within_rounding, not MISMATCH
+    names_fail = {r["name"] for r in out if r["result"] == "MISMATCH"}
+    names_soft = {r["name"] for r in out
+                  if r["result"] in ("endpoint_ok", "within_tol", "bound_ok")}
+    superseded = False
+    if names_fail and names_fail <= names_soft:
+        any_fail = False
+        superseded = True
+        for r in out:
+            if r["result"] == "MISMATCH" and r["name"] in names_soft:
+                r["result"] = "mismatch_superseded_by_endpoint"
+    # 'hard' checks compare a printed numeral at its printed precision; 'soft' checks
+    # are endpoint-identities, tolerances, bounds, and qualitative sign/threshold gates.
+    n_hard_pass = sum(1 for r in out if r["result"] == "exact")
+    if any_fail:
+        cls = "MISMATCH"
+    elif superseded or (any_soft and n_hard_pass == 0):
+        cls = "within_rounding"
+    elif n_hard_pass:
+        cls = "exact"
+    elif any_soft:
+        cls = "within_rounding"
+    else:
+        cls = "exact"  # info-only cells
+    return out, cls
+
+# ---------------------------------------------------------------- rendering
+def fmt(v, nd=6):
+    return f"{v:+.{nd}f}" if v < 0 or nd >= 5 else f"{v:.{nd}f}"
+
+def render_tables(cells):
+    by_id = {c["cell_id"]: c for c in cells}
+
+    def R(cid, field="mean", nd=4):
+        c = by_id[cid]
+        return f"{c['recomputed'][field]:.{nd}f}"
+
+    def MS(cid, nd=4):
+        c = by_id[cid]["recomputed"]
+        return f"{c['mean']:.{nd}f} ± {c['sd']:.{nd}f}"
+
+    def PD(cid, nd=6):
+        c = by_id[cid]["recomputed"]
+        return f"{c['mean']:+.{nd}f} ± {c['sd']:.{nd}f} ({int(c['pos'])}/{int(c['n'])})"
+
+    T = {}
+    T["table1"] = "\n".join([
+        "**Table 1 (regenerated): Headline component ablation — NDCG@10, AR2023 Video_Games "
+        "5-core LLOO, full-catalog n_eval=94,762 (values recomputed from manifested artifacts).**",
+        "",
+        "| Configuration | NDCG@10 | seeds | Δ (direct recompute) | evidence |",
+        "|---|---:|---:|---:|---|",
+        f"| HSTU-style encoder, plain | {R('t1.plain.ndcg','value')} | 1 | — | exploratory |",
+        f"| + TAPE-512 | {R('t1.tape.ndcg','value')} | 1 | {by_id['t1.tape.delta']['recomputed']['delta']:+.4f} | exploratory |",
+        f"| + full bias stack | {MS('t1.bias_stack.ndcg')} | 5 | {by_id['t1.bias_stack.delta']['recomputed']['delta']:+.4f} vs plain | confirmatory |",
+        f"| + label smoothing ε=0.2 | {MS('t1.ls.ndcg')} | 5 | {by_id['t1.ls.delta']['recomputed']['delta']:+.4f} | confirmatory |",
+        f"| **+ causal FIR filter K=8 → full model** | **{MS('t1.full.ndcg')}** | **6** | "
+        f"**{by_id['t1.full.delta']['recomputed']['delta']:+.4f}** | confirmatory |",
+        f"| *(isolation)* causal filter only, no LS | {MS('t1.v1b.ndcg')} | 5 | {by_id['t1.v1b.delta']['recomputed']['delta']:+.4f} vs stack | confirmatory |",
+        f"| *(isolation)* ID-only | {MS('t1.idonly.ndcg')} | 5 | text adds {by_id['t1.text_add.paired']['recomputed']['mean']:+.5f} "
+        f"({by_id['t1.text_add.pct']['recomputed']['pct']:+.1f}%) | confirmatory |",
+        f"| kernel sweep K=16 | {MS('t1.ksweep.k16')} | 5 | — | confirmatory |",
+        f"| kernel sweep K=4 / K=50 (3-seed) | {by_id['t1.ksweep.k4']['recomputed']['a_mean']:.4f} / "
+        f"{by_id['t1.ksweep.k50']['recomputed']['a_mean']:.4f} | 3 | robustness only | exploratory |",
+        "",
+        f"Single-flag attribution (seed 20260608, exploratory): time bias "
+        f"{by_id['t1.decomp1.timebias']['recomputed']['delta']:+.4f}; text-sim "
+        f"{by_id['t1.decomp1.textsim']['recomputed']['delta']:+.6f}. 4-seed DECOMP5 cross-check "
+        f"(exploratory): base {R('t1.decomp5.base')}, time bias "
+        f"{by_id['t1.decomp5.timebias']['recomputed']['mean']:+.4f}, pos-rab "
+        f"{by_id['t1.decomp5.posrab']['recomputed']['mean']:+.4f}, TAPE "
+        f"{by_id['t1.decomp5.tape']['recomputed']['mean']:+.4f}, text-sim "
+        f"{by_id['t1.decomp5.textsim']['recomputed']['mean']:+.6f}.",
+    ])
+
+    unt_rows = [c for c in cells if c["table_id"] == "table1a" and c["status"] == "UNTRACEABLE"]
+    T["table1a"] = "\n".join([
+        "**Table 1a (regenerated): SASRec-family protocol-parity baselines.**",
+        "",
+        "| Method | NDCG@10 | HR@10 | provenance |",
+        "|---|---:|---:|---|",
+        f"| popularity | {R('t1a.popularity.ndcg','value')} | {R('t1a.popularity.hr','value')} | "
+        f"results_5core_Video_Games.json (deterministic) |",
+    ] + [f"| {c['row_label']} | UNTRACEABLE | UNTRACEABLE | **WARNING: no on-disk source** "
+         f"(paper prints: {c['metric']}) |" for c in unt_rows])
+
+    T["table1b"] = "\n".join([
+        "**Table 1b (regenerated, local rows only): HSTU-BLaIR comparator evidence.** "
+        "Published rows are cited constants (EXTERNAL_PUBLISHED), not local artifacts.",
+        "",
+        "| Row | NDCG@10 | HR@10 | provenance |",
+        "|---|---:|---:|---|",
+        f"| HSTU-BLaIR local SM120 port (final full eval) | {R('t1b.port.final_ndcg','value',5)} | "
+        f"{R('t1b.port.final_hr','value',5)} | _bestrec_sota_lab/.../hstu_blair_eval_export_summary.json |",
+        "| HSTU-BLaIR local port (best full eval) | UNTRACEABLE (paper: 0.07403) | — | "
+        "**WARNING: WSL-side log not retained** |",
+        "| SASRec / HSTU / HSTU-BLaIR published rows | 0.0573 / 0.0741 / 0.0760 | — | "
+        "external published (Liu 2025; Zhai 2024) |",
+    ])
+
+    T["table1c"] = "\n".join([
+        "**Table 1c (regenerated): Musical_Instruments per-lever isolation — NDCG@10, best-by-val, "
+        "n_eval=57,439 (recomputed).**",
+        "",
+        "| Configuration | NDCG@10 | Δ vs base | share of k16 combined lift |",
+        "|---|---:|---:|---:|",
+        f"| MI SBERT+TAPE base (4×e20) | {MS('t1c.base.ndcg')} | — | — |",
+        f"| + label smoothing only (5-seed) | {MS('t1c.lsonly.ndcg', 5)} | "
+        f"{by_id['t1c.lsonly.delta']['recomputed']['delta']:+.4f} | "
+        f"{by_id['t1c.lsonly.share']['recomputed']['pct']:.0f}% |",
+        f"| + causal filter only (k16, 5-seed) | {R('t1c.filteronly.ndcg')} | "
+        f"{by_id['t1c.filteronly.delta']['recomputed']['delta']:+.4f} | "
+        f"{by_id['t1c.filteronly.share']['recomputed']['pct']:.0f}% |",
+        f"| + both = V2 (k16, 5-seed) | {MS('t1c.v2k16.ndcg')} | "
+        f"{by_id['t1c.v2k16.delta']['recomputed']['delta']:+.4f} | 100% |",
+        f"| V2 k8 headline stack (5-seed) | {MS('t1c.v2k8.ndcg')} | "
+        f"+{by_id['t1c.v2k8.pct_base']['recomputed']['pct']:.1f}% vs base; filter share "
+        f"{by_id['t1c.v2k8.share']['recomputed']['pct']:.0f}% | — |",
+        f"| plain ID-only SASRec (MI floor) | {R('t1c.sasrec_floor.ndcg','value')} | "
+        f"V2 k8 is +{by_id['t1c.v2k8.pct_sasrec']['recomputed']['pct']:.0f}% above | — |",
+    ])
+
+    T["table1d"] = "\n".join([
+        "**Table 1d (regenerated): text − ID tail-tercile NDCG@10 contrast (paired, per-seed).**",
+        "",
+        "| dataset | tail Δ NDCG@10 | seeds positive | evidence |",
+        "|---|---:|---:|---|",
+        f"| Musical_Instruments (sparse) | {PD('t1d.mi.tail')} , 95% CI "
+        f"[{by_id['t1d.mi.tail']['recomputed']['ci_lo']:+.5f}, "
+        f"{by_id['t1d.mi.tail']['recomputed']['ci_hi']:+.5f}] | "
+        f"{int(by_id['t1d.mi.tail']['recomputed']['pos'])}/5 | confirmatory |",
+        f"| Video_Games (dense) | {PD('t1d.vg.tail')} | {int(by_id['t1d.vg.tail']['recomputed']['pos'])}/5 | confirmatory (powered null) |",
+        f"| Beauty_and_PC (dense) | {PD('t1d.beauty.tail', 7)} | {int(by_id['t1d.beauty.tail']['recomputed']['pos'])}/3 | exploratory (3-seed) |",
+        "",
+        f"MI tail HR replication: {PD('t1d.mi.tail_hr', 5)}; hits/seed "
+        f"{by_id['t1d.mi.tail_hits_text']['recomputed']['hits']:.1f} vs "
+        f"{by_id['t1d.mi.tail_hits_id']['recomputed']['hits']:.1f}; MI head Δ "
+        f"{by_id['t1d.mi.head_abs']['recomputed']['mean']:+.5f}. Cross-dataset Welch: MI−VG = "
+        f"{by_id['t1d.welch']['recomputed']['diff']:+.6f}, t = "
+        f"{by_id['t1d.welch']['recomputed']['t']:.2f}, df = "
+        f"{by_id['t1d.welch']['recomputed']['df']:.1f}, p = "
+        f"{by_id['t1d.welch']['recomputed']['p']:.4f}. VG MDE = "
+        f"{by_id['t1d.vg.mde']['recomputed']['mde']:.6f} (< MI effect); TOST 90% CI "
+        f"[{by_id['t1d.vg.tost']['recomputed']['lo']:+.6f}, "
+        f"{by_id['t1d.vg.tost']['recomputed']['hi']:+.6f}] ⊂ ±0.000335.",
+    ])
+
+    rows1e = []
+    for tag, rho, ipi in (("100", 1.00, 24.405), ("094", 0.94, 22.947), ("091", 0.91, 22.210),
+                          ("088", 0.88, 21.484), ("078", 0.78, 19.030), ("066", 0.66, 16.109)):
+        rows1e.append(
+            f"| {rho:.2f} | {ipi:.3f} | {ipi/23.0:.3f} | "
+            f"{PD(f't1e.rho{tag}.head_ndcg')} | {PD(f't1e.rho{tag}.head_hr')} | "
+            f"{PD(f't1e.rho{tag}.tail_ndcg')} | {PD(f't1e.rho{tag}.tail_hr')} |")
+    T["table1e"] = "\n".join([
+        "**Table 1e (regenerated): interaction-thinning density-titration ladder** "
+        "(paired text−ID, best-by-val; 5 seeds/rung; n_eval=94,762, tail_n=10,900; "
+        "kept-inter./item quoted from run logs; α = ipi/23).",
+        "",
+        "| ρ | kept inter./item | α | head ΔNDCG@10 | head ΔHR@10 | tail ΔNDCG@10 | tail ΔHR@10 |",
+        "|---|---|---|---|---|---|---|"] + rows1e + [
+        "",
+        f"Spearman ρ_s vs density: head NDCG {by_id['t1e.spearman.head_ndcg']['recomputed']['rho']:+.2f}, "
+        f"head HR {by_id['t1e.spearman.head_hr']['recomputed']['rho']:+.2f}, "
+        f"tail NDCG {by_id['t1e.spearman.tail_ndcg']['recomputed']['rho']:+.2f} (n.s.).",
+    ])
+
+    T["table541"] = "\n".join([
+        "**§5.4.1 (regenerated): scale-free tail/head arm-ratio table.**",
+        "",
+        "| regime | TAIL text | TAIL id | TAIL ratio | HEAD ratio |",
+        "|---|---:|---:|---:|---:|",
+        f"| VG full density | {R('t541.vgfull.tail_text','mean',6)} | {R('t541.vgfull.tail_id','mean',6)} | "
+        f"{R('t541.vgfull.tail_ratio','ratio',3)} | {R('t541.vgfull.head_ratio','ratio',3)} |",
+        f"| VG thinned → MI-density (ρ=0.66) | {R('t541.rho066.tail_text','mean',6)} | "
+        f"{R('t541.rho066.tail_id','mean',6)} | {R('t541.rho066.tail_ratio','ratio',3)} | "
+        f"{R('t541.rho066.head_ratio','ratio',3)} |",
+        f"| MI native | {R('t541.mi.tail_text','mean',6)} | {R('t541.mi.tail_id','mean',6)} | "
+        f"{R('t541.mi.tail_ratio','ratio',3)} | {R('t541.mi.head_ratio','ratio',3)} |",
+        "",
+        f"Tail starvation full→ρ0.66: text {by_id['t541.starve.text_pct']['recomputed']['pct']:+.1f}%, "
+        f"ID {by_id['t541.starve.id_pct']['recomputed']['pct']:+.1f}%; MI tail relative text gain "
+        f"{by_id['t541.mi.tail_rel']['recomputed']['pct']:+.1f}%.",
+    ])
+
+    T["table542"] = "\n".join([
+        "**§5.4.2 (regenerated): user-mode titration (connectivity).**",
+        "",
+        "| regime | TAIL ratio | tail Δ (5-seed) | HEAD ratio |",
+        "|---|---:|---:|---:|",
+        f"| VG full | {R('t541.vgfull.tail_ratio','ratio',3)} | {PD('t1d.vg.tail')} | "
+        f"{R('t541.vgfull.head_ratio','ratio',3)} |",
+        f"| VG interaction-thinned ρ=0.66 | {R('t541.rho066.tail_ratio','ratio',3)} | "
+        f"{PD('t1e.rho066.tail_ndcg')} | {R('t541.rho066.head_ratio','ratio',3)} |",
+        f"| **VG user-thinned ρ_user=0.66** | **{R('t542.u066.tail_ratio','ratio',3)}** | "
+        f"**{PD('t542.u066.tail')}, t={by_id['t542.u066.tail']['recomputed']['t']:.2f}** | "
+        f"{R('t542.u066.head_ratio','ratio',3)} |",
+        f"| MI native | {R('t541.mi.tail_ratio','ratio',3)} | {PD('t1d.mi.tail')} | "
+        f"{R('t541.mi.head_ratio','ratio',3)} |",
+        "",
+        f"dd vs full anchor: {PD('t542.u066.dd_vs_full')}, t = "
+        f"{by_id['t542.u066.dd_vs_full']['recomputed']['t']:.2f}, 95% CI "
+        f"[{by_id['t542.u066.dd_vs_full']['recomputed']['ci_lo']:+.6f}, "
+        f"{by_id['t542.u066.dd_vs_full']['recomputed']['ci_hi']:+.6f}]; sign-test p = "
+        f"{by_id['t542.u066.signtest']['recomputed']['p']:.4f}. Matched-R1 (user − interaction): tail "
+        f"{by_id['t542.matchedR1.tail']['recomputed']['mean']:+.6f}, head "
+        f"{by_id['t542.matchedR1.head']['recomputed']['mean']:+.6f} (diff-of-diffs "
+        f"{by_id['t542.matchedR1.tail']['recomputed']['mean'] - by_id['t542.matchedR1.head']['recomputed']['mean']:+.6f}). "
+        f"Down-limb: ρ_user=0.50 {PD('t542.u050.tail')}; ρ_user=0.40 {PD('t542.u040.tail')} — "
+        f"TEXT-arm floor collapse (tail abs {R('t542.u040.text_abs','mean',5)}, tail HR "
+        f"{R('t542.u040.text_hr','mean',5)} vs full-density anchor {R('t542.anchor.text_hr','mean',4)}; "
+        f"ID arm {R('t542.u040.id_abs','mean',4)}).",
+    ])
+
+    k16, k8 = by_id["v2conf.k16"]["recomputed"], by_id["v2conf.k8"]["recomputed"]
+    T["tableV2conf"] = "\n".join([
+        "**§5.2 (regenerated): pre-registered dual-kernel V2 confirmation "
+        "(SOTACONF_V2, fresh seeds 20260618–22, EXEC2 gated artifacts, n_eval=57,439).**",
+        "",
+        "| kernel | fresh 5-seed NDCG@10 | 95% CI lower bound | vs published 0.0406 |",
+        "|---|---:|---:|---|",
+        f"| K=16 | {k16['mean']:.5f} ± {k16['sd']:.5f} | {k16['cilb']:.5f} | ABOVE |",
+        f"| K=8 | {k8['mean']:.5f} ± {k8['sd']:.5f} | {k8['cilb']:.5f} | ABOVE |",
+        "",
+        f"Fresh seeds above 0.0406: {int(by_id['v2conf.count']['recomputed']['count'])}/10. "
+        f"EXEC1↔EXEC2 max per-seed |Δ| = "
+        f"{by_id['v2conf.exec_agreement']['recomputed']['max_abs']:.6f} (< 0.0003). "
+        f"Clean rebuild (rebuild_v2/): K=16 CI-LB "
+        f"{by_id['v2conf.rebuild']['recomputed']['k16_cilb']:.5f}, K=8 CI-LB "
+        f"{by_id['v2conf.rebuild']['recomputed']['k8_cilb']:.5f} — dual gate "
+        f"{'PASS' if by_id['v2conf.rebuild']['recomputed']['pass'] else 'FAIL'}.",
+    ])
+
+    t2rows = []
+    for cid, lever, basecol, n in [
+            ("t2.c3_decay", "c3 continuous time-decay kernel (L1)", "H2 stack 0.0639", 1),
+            ("t2.sampled", "Sampled softmax (Q1, negs=512)", "H2 (full-softmax)", 1),
+            ("t2.dualtext", "Dual text encoder (O1)", "H2 (SBERT)", 1),
+            ("t2.blair", "BLaIR encoder swap (N1)", "H2 (SBERT)", 1),
+            ("t2.gd1", "GD1 spectral-shrink", "V2 seed08", 1),
+            ("t2.heads4", "n_heads = 4 (P1)", "H2", 1),
+            ("t2.cl4srec", "CL4SRec SSL (T1)", "H2", 1),
+            ("t2.c1_experts", "c1 expert heads (M1)", "H2", 1),
+            ("t2.c2_distill", "c2 text-distill (K1)", "H2", 1),
+            ("t2.textinit", "text-init warm-start (S1)", "H2", 1),
+            ("t2.ema", "EMA/SWA (R1)", "H2", 1)]:
+        d = by_id[cid]["recomputed"]["delta"]
+        t2rows.append(f"| {lever} | {basecol} | {d:+.5f} | n/a | {n} |")
+    t2rows.append(f"| text-sim bias (DECOMP5) | J1 plain 4-seed | "
+                  f"{by_id['t2.textsim4']['recomputed']['mean']:+.6f} (|Δ|≤0.0001) | n/a | 4 |")
+    t2rows.append(f"| W1 niche-share | U2 band | abs {R('t2.w1.abs','value')} | "
+                  f"β = {by_id['t2.w1.beta']['recomputed']['value']:.4f} | 1 |")
+    t2rows.append(f"| X1 James–Stein shrink | V2 band {MS('t2.x1.base_band')} | abs "
+                  f"{R('t2.x1.abs','value')} | c = {by_id['t2.x1.c']['recomputed']['value']:.4f} → off | 1 |")
+    t2rows.append(f"| Y1 heat-kernel target | V2 band | abs {R('t2.y1.abs','value',5)} | "
+                  f"T = {by_id['t2.y1.T']['recomputed']['value']:.5f} → 0 | 1 |")
+    t2rows.append(f"| Z1 forced ID→text routing | V2-text tail (s08) | tail "
+                  f"{by_id['t2.z1.tail_pct']['recomputed']['pct']:+.1f}% (overall "
+                  f"{by_id['t2.z1.overall']['recomputed']['delta']:+.5f}) | forced | 1 |")
+    t2rows.append(f"| CF1 cue-fusion | V2 (VG) / MI k16 | {by_id['t2.cf1.vg']['recomputed']['delta']:+.5f} / "
+                  f"{by_id['t2.cf1.mi']['recomputed']['mean']:+.5f} | gate → 0 | 1 / 5 |")
+    cg = by_id["t2.conngate.tail"]["recomputed"]
+    t2rows.append(f"| conn-gate (MI, 5-seed) | MI V2-text stack | tail {cg['mean']:+.5f} ± "
+                  f"{cg['sd']:.5f}, 95% CI [{cg['ci_lo']:+.5f}, {cg['ci_hi']:+.5f}] | α = "
+                  f"{by_id['t2.conngate.alpha']['recomputed']['mean']:.5f} (voted off) | 5 |")
+    t2rows.append(f"| max_seq_len 200 (F1, directional) | full-stack baselines | "
+                  f"{by_id['t2.seq200']['recomputed']['delta']:+.5f} (no gain) | n/a | 1 |")
+    t2rows.append(f"| cosine scoring (D1, directional) | dot baselines | "
+                  f"{by_id['t2.cosine']['recomputed']['delta']:+.5f} (≤0) | n/a | 1 |")
+    T["table2"] = "\n".join([
+        "**Table 2 (regenerated): systematic negative-result map.** All single-seed rows are "
+        "exploratory (audit F6); only conn-gate (and the titration nulls of §5.3–§5.4) carry "
+        "confirmatory weight.",
+        "",
+        "| Lever | Base | Δ NDCG@10 (recomputed) | learned scalar | n |",
+        "|---|---|---:|---|---:|"] + t2rows)
+    return T
+
+# ---------------------------------------------------------------- main modes
+def write_manifest(path):
+    cells = build_spec()
+    by_id = {c["cell_id"]: c for c in cells}
+    n_err = 0
+    for c in cells:
+        if c.get("recompute") is None:
+            c["recomputed"] = None
+            c["recomputed_value"] = None
+            continue
+        try:
+            rec = compute_cell(c)
+        except Exception as e:
+            print(f"ERROR computing {c['cell_id']}: {e}", file=sys.stderr)
+            n_err += 1
+            continue
+        c["recomputed"] = rec
+        prim = c["paper"][0]["name"] if c.get("paper") else None
+        c["recomputed_value"] = rec.get(prim) if prim in (rec or {}) else \
+            next(iter(rec.values()))
+    if n_err:
+        sys.exit(f"ABORT --write-manifest: {n_err} cells failed to compute")
+    for c in cells:
+        if c.get("recomputed") is not None:
+            c["paper_check"], c["paper_check_class"] = check_paper(c, c["recomputed"], by_id)
+        elif c["status"] == "UNTRACEABLE":
+            c["paper_check"], c["paper_check_class"] = [], "UNTRACEABLE"
+        else:
+            c["paper_check"], c["paper_check_class"] = [], "external"
+    manifest = {
+        "manifest_version": 2,
+        "generated": "2026-07-11",
+        "purpose": "Enforceable artifact graph for the canonical HSTU/FIR manuscript "
+                   "(PAPER_DRAFT.md): every empirical table cell -> source result JSONs -> "
+                   "recompute rule -> recomputed value. Audit F2; evidence labels audit F6.",
+        "paper": "PAPER_DRAFT.md (draft v3.7 values snapshot, 2026-07-10/11)",
+        "builder": "_bestrec_run/build_hstu_tables.py",
+        "rerun": "_bestrec_run/.venv/Scripts/python _bestrec_run/build_hstu_tables.py",
+        "recompute_tolerance": TOL,
+        "evidence_class_rule": "confirmatory = >=5-seed multi-seed family or pre-registered "
+                               "confirmation; exploratory = single-seed / <5-seed / post-hoc "
+                               "(audit F6). external = published comparator constant.",
+        "paths_relative_to": "repository root",
+        "cells": cells,
+    }
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(manifest, f, indent=1, ensure_ascii=False)
+    print(f"wrote {path} ({len(cells)} cells)")
+
+def verify(manifest_path, tables_path):
+    with open(manifest_path, encoding="utf-8") as f:
+        manifest = json.load(f)
+    cells = manifest["cells"]
+    by_id = {c["cell_id"]: c for c in cells}
+    errors, warnings = [], []
+    n_ok = 0
+    for c in cells:
+        if c.get("recompute") is None:
+            if c["status"] == "UNTRACEABLE":
+                warnings.append(
+                    f"UNTRACEABLE: [{c['table_id']}] {c['row_label']} -- paper prints "
+                    f"'{c['metric']}' with NO on-disk source. {c['notes'][:160]}")
+            elif c["status"] == "EXTERNAL_PUBLISHED":
+                pass
+            else:
+                errors.append(f"(c) cell {c['cell_id']} has no source files and no declared status")
+            continue
+        # gate (a): sources exist
+        miss = [s for s in c["source_files"] if not os.path.exists(os.path.join(ROOT, s))]
+        if miss:
+            errors.append(f"(a) {c['cell_id']}: missing source file(s): {miss}")
+            continue
+        # recompute from files
+        try:
+            rec = compute_cell(c)
+        except Exception as e:
+            errors.append(f"(a) {c['cell_id']}: recompute failed: {e}")
+            continue
+        # gate (b): drift vs manifest
+        stored = c.get("recomputed") or {}
+        for k, v in rec.items():
+            sv = stored.get(k)
+            if sv is None:
+                errors.append(f"(b) {c['cell_id']}: component '{k}' absent from manifest")
+            elif abs(float(v) - float(sv)) > TOL:
+                errors.append(f"(b) {c['cell_id']}.{k}: recomputed {v!r} drifts from "
+                              f"manifest {sv!r} by more than {TOL}")
+        c["recomputed"] = rec  # use fresh values downstream
+        n_ok += 1
+    # paper comparison (report-only)
+    paper_report = {"exact": [], "within_rounding": [], "MISMATCH": [], "UNTRACEABLE": []}
+    for c in cells:
+        if c.get("recompute") is None:
+            if c["status"] == "UNTRACEABLE":
+                paper_report["UNTRACEABLE"].append(c["cell_id"])
+            continue
+        checks, cls = check_paper(c, c["recomputed"], by_id)
+        c["paper_check"], c["paper_check_class"] = checks, cls
+        if cls in paper_report:
+            paper_report[cls].append(c["cell_id"])
+    # render tables (only from a fully recomputed cell set)
+    tables = render_tables(cells) if not errors else \
+        {"_error": "tables not rendered: build gates failed", "_gate_errors": errors}
+    out = {
+        "generated_by": "build_hstu_tables.py (recomputed from source artifacts; no cached values)",
+        "manifest": os.path.relpath(manifest_path, ROOT),
+        "gates": {"missing_sources_or_recompute_failures": [e for e in errors if e.startswith("(a)")],
+                  "manifest_drift": [e for e in errors if e.startswith("(b)")],
+                  "unsourced_cells": [e for e in errors if e.startswith("(c)")]},
+        "warnings_untraceable": warnings,
+        "paper_check_summary": {k: len(v) for k, v in paper_report.items()},
+        "paper_mismatch_cells": [
+            {"cell_id": c["cell_id"], "table": c["table_id"], "row": c["row_label"],
+             "checks": [x for x in c["paper_check"] if x["result"] == "MISMATCH"],
+             "notes": c["notes"]}
+            for c in cells if c.get("paper_check_class") == "MISMATCH"],
+        "tables": tables,
+    }
+    with open(tables_path, "w", encoding="utf-8") as f:
+        json.dump(out, f, indent=1, ensure_ascii=False)
+    # console report
+    print(f"cells recomputed OK : {n_ok}")
+    print(f"paper-check         : {out['paper_check_summary']}")
+    for w in warnings:
+        print("WARNING " + w)
+    for m in out["paper_mismatch_cells"]:
+        det = "; ".join(f"{x['name']}: paper {x['paper']} vs recomputed "
+                        f"{x['recomputed']:.6g}" for x in m["checks"])
+        print(f"PAPER MISMATCH [{m['table']}] {m['row']} -> {det}")
+    if errors:
+        print(f"\nBUILD FAILED ({len(errors)} gate violations):", file=sys.stderr)
+        for e in errors:
+            print("  " + e, file=sys.stderr)
+        sys.exit(2)
+    print(f"\nBUILD GREEN: {n_ok} cells recomputed from source artifacts; "
+          f"{len(warnings)} UNTRACEABLE warning(s); tables written to {tables_path}")
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--write-manifest", action="store_true",
+                    help="regenerate the manifest from the embedded spec")
+    ap.add_argument("--manifest", default=MANIFEST_PATH)
+    ap.add_argument("--tables-out", default=TABLES_PATH)
+    a = ap.parse_args()
+    if a.write_manifest:
+        write_manifest(a.manifest)
+    verify(a.manifest, a.tables_out)
+
+if __name__ == "__main__":
+    main()

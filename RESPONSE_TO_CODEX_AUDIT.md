@@ -2,8 +2,14 @@
 
 Audit: `CLAUDE_SOTA_RESULT_AUDIT_2026-07-08.md` (verdict: reject as publication-grade SOTA).
 Response prepared: 2026-07-08. Every blocking finding is addressed below; the decisive evidence
-is the **V2 pre-registered confirmation** running from immutable commit `832a8ffcaf67` on
-never-inspected seeds 20260618–22.
+is the **V2 pre-registered confirmation** on never-inspected seeds 20260618–22.
+
+**Commit chronology (unambiguous, per third-audit M3):** the prereg was introduced and frozen at
+`832a8ff`; the **gated EXEC2 campaign ran at `86816be`** (a doc-only descendant — deviation
+disclosed in errata E3, code identity proven by empty protocol diffs); the **clean rebuild ran at
+`89f32fb`** (code hashes embedded in its manifests match the protocol files). The literal
+commit-equality rule of the prereg was NOT satisfied; the deviation is documented, not claimed
+away.
 
 ## Point-by-point
 

@@ -1,4 +1,16 @@
-# STATUS: RE-CONFIRMED UNDER THE V2 PRE-REGISTERED, PROVENANCE-MANIFESTED PROTOCOL (2026-07-08, EXEC2)
+# STATUS: APPROVED BY THE THIRD-PASS AUDIT (2026-07-10) — narrow claim accepted
+
+> **Codex third audit** (`CLAUDE_SOTA_THIRD_RESUBMISSION_AUDIT_2026-07-10.md`): **"Approve the
+> narrow V2 claim, with mandatory wording limits… Accept the narrow V2 result claim."** The
+> auditor independently re-ran the gate (both arms PASS), re-verified all 20 sidecar hashes
+> (20/20 match), re-adjudicated the clean rebuild (PASS; max gated-vs-rebuild deviation
+> 0.000112), and confirmed code-hash identity. The approved claim wording is exactly the frozen
+> wording below; the forbidden phrasings ("statistically significantly better", "general SOTA",
+> "SOTA on Amazon Reviews 2023", "paired superiority") are binding. The four minor copyedit items
+> (M1–M4: ChronoSID 0.0346, driver log tracked, commit chronology made unambiguous, deviation
+> stated in the paper) are all applied as of the commit carrying this note.
+
+# (superseded) STATUS: RE-CONFIRMED UNDER THE V2 PRE-REGISTERED, PROVENANCE-MANIFESTED PROTOCOL (2026-07-08, EXEC2)
 
 > **Second-pass audit note (2026-07-08):** Codex's resubmission audit
 > (`CLAUDE_SOTA_RESUBMISSION_AUDIT_2026-07-08.md`) **accepts the V2 numbers** ("no longer reject

@@ -59,7 +59,7 @@ claim is capped at "exceeds the published point estimate" (wording frozen in the
 - **ReSID** (arXiv:2602.02338): semantic-ID generative retrieval; reports MI NDCG@10 = 0.0346
   under its own filtering/statistics — different setup, lower number; not directly comparable.
 - **ChronoSID** (arXiv:2607.03918, 2026-07-04): improves over ReSID on MI within the SID
-  protocol (NDCG@10 0.0345 output-level); again a different filtered universe.
+  protocol (NDCG@10 0.0346, five-run average); again a different filtered universe.
 - **TIGER / LIGER**: evaluate on Amazon 2014, not AR2023 (verified in CITATION_AUDIT.md); not
   comparable.
 - Positioning: our claim is confined to the **HSTU-BLaIR protocol family** (AR2023 5-core LLOO

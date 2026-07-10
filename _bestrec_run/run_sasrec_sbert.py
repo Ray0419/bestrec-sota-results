@@ -2559,6 +2559,8 @@ def main():
     best_test_metrics = None
     best_test_user_records = None
     best_test_epoch = None
+    final_test_user_records = None
+    final_test_epoch = None
     history = []
     # NOVEL GD1 (spectral-shrink) diagnostics (directive-(c) irreducibility figure).
     spectral_eff_rank = None
@@ -2703,6 +2705,11 @@ def main():
             # stash only the best-by-val epoch's copy for the sidecar artifact.
             val_metrics.pop("_user_records", None)
             _test_urec = test_metrics.pop("_user_records", None)
+            # A-F4 (resubmission audit): always retain the LAST eval's records too —
+            # when periodic evals are subsampled, the final epoch is the full-catalog
+            # headline eval and needs its own per-user sidecar.
+            final_test_user_records = _test_urec
+            final_test_epoch = epoch
             log["val"] = val_metrics
             log["test"] = test_metrics
             print(f"  epoch {epoch:>3d}  loss={train_loss:.4f}  val_NDCG={val_metrics['NDCG@10']:.4f}  "
@@ -2883,6 +2890,26 @@ def main():
         provenance["user_records_sha256"] = _sha256(str(rec_path))
         print(f"wrote {rec_path} ({len(ur['user_id']):,} per-user records, "
               f"best epoch {best_test_epoch}, sha256 {provenance['user_records_sha256'][:12]}…)")
+    # A-F4: final-epoch (headline) sidecar when it differs from the best-by-val one
+    # — e.g. subsampled periodic evals with a full-catalog final eval.
+    _final_urec = locals().get("final_test_user_records")
+    if _final_urec is not None and locals().get("final_test_epoch") != best_test_epoch:
+        import gzip as _gz2
+        frec_path = Path(str(out_path).replace(".json", "") + ".final.users.jsonl.gz")
+        fu = _final_urec
+        with _gz2.open(frec_path, "wt", encoding="utf-8") as fh:
+            for i in range(len(fu["user_id"])):
+                fh.write(json.dumps({
+                    "dataset": args.category, "seed": args.seed,
+                    "user_id": fu["user_id"][i],
+                    "target_item_id": fu["target_item_id"][i],
+                    "rank0": fu["rank0"][i], "ndcg10": fu["ndcg10"][i],
+                    "hr10": fu["hr10"][i], "rr": fu["rr"][i],
+                    "pop_bucket": fu["pop_bucket"][i]}) + "\n")
+        provenance["user_records_final_path"] = frec_path.name
+        provenance["user_records_final_n"] = len(fu["user_id"])
+        provenance["user_records_final_sha256"] = _sha256(str(frec_path))
+        print(f"wrote {frec_path} ({len(fu['user_id']):,} FINAL-epoch per-user records)")
 
     out = {
         "category": args.category, "config": vars(args),

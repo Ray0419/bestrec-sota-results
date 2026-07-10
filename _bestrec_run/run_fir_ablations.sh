@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Novelty-audit fix-plan #4 comparator ablations: each arm changes exactly ONE
 # design element of the causal FIR filter, on the MI k8 confirmation stack.
 cd /c/Users/rayxc/Documents/R

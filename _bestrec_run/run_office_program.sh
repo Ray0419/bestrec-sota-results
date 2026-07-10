@@ -1,8 +1,12 @@
 #!/bin/bash
 # SOTA_CONFIRM_PREREG_OFFICE.md driver — 4th-category program (16 runs total).
-set -u
+set -euo pipefail
 cd /c/Users/rayxc/Documents/R
-PY=_bestrec_run/.venv/Scripts/python
+PY="${PYBIN:-}"
+if [ -z "$PY" ]; then
+  if command -v uv >/dev/null 2>&1; then PY="uv --project _bestrec_run run python";
+  else PY=_bestrec_run/.venv/Scripts/python; fi
+fi
 echo "[office] waiting for downloads..."
 for f in data_raw_proper/office/Office_Products.jsonl.gz data_raw_proper/office/meta_Office_Products.jsonl.gz; do
   until gzip -t "$f" 2>/dev/null; do sleep 60; done; echo "[office] $f OK"

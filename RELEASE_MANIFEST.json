@@ -1,0 +1,169 @@
+{
+  "release": "v0.9-audit-evidence",
+  "date": "2026-07-11",
+  "license": {
+    "code": "MIT (this repo)",
+    "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
+  },
+  "git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
+  "splits": {
+    "Video_Games.train": {
+      "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
+      "bytes": 36876874
+    },
+    "Video_Games.valid": {
+      "sha256": "b70d195ab3b9f76082854671e0e6a94c444302db6169d4074f112695d1467711",
+      "bytes": 5590891
+    },
+    "Video_Games.test": {
+      "sha256": "5a21bbcb5106d48cca21e90bbb6c417e1b95ac406321cd300c7800759dbaa496",
+      "bytes": 5590949
+    },
+    "Musical_Instruments.train": {
+      "sha256": "1f56c4abf0515e59090d728174db6b35ffa97f06929a0f955f2be924560f9dba",
+      "bytes": 23421672
+    },
+    "Musical_Instruments.valid": {
+      "sha256": "f1240768bd813fe84620fdff9d91c1055f560f51be42cf8ae9de45d7ee8d76bc",
+      "bytes": 3389015
+    },
+    "Musical_Instruments.test": {
+      "sha256": "19f3ed965a5adafec9f55575cdbe113556ae5ee156e41591da364cfb89cda36a",
+      "bytes": 3389015
+    },
+    "Office_Products.train": {
+      "sha256": "95d3db37ab29157c4e6922270a282f72c43c3c4ccd01cd95385aa852d1469c58",
+      "bytes": 79907881
+    },
+    "Office_Products.valid": {
+      "sha256": "a0bd9331846c56e005d13911f785fcf79938284bb81d04dd72a1b9bb75ca8876",
+      "bytes": 13175332
+    },
+    "Office_Products.test": {
+      "sha256": "92a9a602dd6fa73c3271ed69d37da5c7e8c63ecb1a928ab59c5085af4188c1ed",
+      "bytes": 13175332
+    },
+    "Beauty_and_Personal_Care.train": {
+      "sha256": "29d06f3ccf6623bdb74f8a1d90b274ec83f7d31b810eef0e7bde27f15d0c10ba",
+      "bytes": 304783478
+    },
+    "Beauty_and_Personal_Care.valid": {
+      "sha256": "15411717d313ea4a02c695ba2b41fed2e2a0d41623dd41c87be9b8958343c221",
+      "bytes": 43045160
+    },
+    "Beauty_and_Personal_Care.test": {
+      "sha256": "a9a5413282acf08ce7f69011d737eb722c911f41c3853c8d78bac17cf276a5a3",
+      "bytes": 43045160
+    }
+  },
+  "text_caches": {
+    "sbert_titles_Beauty_and_Personal_Care.npy": {
+      "sha256": "1694fbce74c39ec9cb5e0af86c209a11bffc7a1d5f667f675f08c020088ac233",
+      "bytes": 318948992
+    },
+    "sbert_titles_Musical_Instruments.npy": {
+      "sha256": "406979249f4f89cb14d520bf9ca33994763e9caffd215280bb5f5ee7a49ed90b",
+      "bytes": 37765760
+    },
+    "sbert_titles_Office_Products.npy": {
+      "sha256": "48d2b660f7fec56d37c6d418297db6bb9a308d2f664b1ceb5a8f0bb2f5c157e4",
+      "bytes": 119118464
+    },
+    "sbert_titles_Video_Games.npy": {
+      "sha256": "00e539a4e04289ec42db9c18eacd0d817a4ba9f8a4d2a9c14cf8a4e8bc8b45fd",
+      "bytes": 39340160
+    }
+  },
+  "protocol_code": {
+    "_bestrec_run/run_sasrec_sbert.py": {
+      "sha256": "6617456f0924ae9b4f00c598bd1b176b00b25820f6979d24bff798251f5aab63"
+    },
+    "_bestrec_run/run_sota_confirm_v2.sh": {
+      "sha256": "0c7fa2a4e58e0d442c4a6c3af510c5d62bcd5b238bfe5346ea060bc742fa1b1a"
+    },
+    "_bestrec_run/summarize_sota_confirm_v2.py": {
+      "sha256": "b8270cbafa407434c729af96ee1cb02fd7f6dedbe9b12f170271f82a176be003"
+    },
+    "_bestrec_run/run_office_program.sh": {
+      "sha256": "ff8311df8b9d73d40080a6e3e867cf52c10f9be1a0f96a46c7c80c4e571085b5"
+    },
+    "_bestrec_run/office_prereg_tools.py": {
+      "sha256": "aee4608a561e043234310bbe1d82d4e9338b99b70d0b287569fd5c624f85e2a4"
+    },
+    "_bestrec_run/build_hstu_tables.py": {
+      "sha256": "084ed7c74ab21f5d0be3dedaa7b4d8b75ebb4ee720f03f2228bb8c35c59f9bdd"
+    },
+    "_bestrec_run/test_hstu_parity.py": {
+      "sha256": "adf28343d5a27841f97f12d680578ddb0e6d9029745608e21e55519aec59396c"
+    },
+    "_bestrec_run/preprocess_5core_standard.py": {
+      "sha256": "16e306f6175415c397db9fa7b63604d6f7b468ece254c9c5aa3fc0f795fb640d"
+    }
+  },
+  "result_families": {
+    "MI_gate_EXEC2": {
+      "results_SOTACONF_V2_k16_MI_seed20260618.json": "73cbfa14018ad286ebe7ee28a1bf37710bec8aa2d61a3d3a7817f99185d3f02b",
+      "results_SOTACONF_V2_k16_MI_seed20260619.json": "733bf45f2c3c25ad3a683ceea92beaa97af925d11469c2e1b2de6813cfc3555c",
+      "results_SOTACONF_V2_k8_MI_seed20260618.json": "daa4ae304cefa3f9f080046eb0dc27352547d02b7718e32902414f615dc7001c",
+      "results_SOTACONF_V2_k8_MI_seed20260619.json": "75d71351c4d0156c41c3c747f8b520e450a0ce5d77a2b31928f5fcc2449cbdbd"
+    },
+    "MI_gate_EXEC2_rest": {
+      "results_SOTACONF_V2_k16_MI_seed20260620.EXEC1.json": "1b64a6575b28863b4a509fbb65fe0a3d6cb3a6f9df9304d2eff106ac58c21ad3",
+      "results_SOTACONF_V2_k16_MI_seed20260620.json": "94274236defed92161297ed5b78a6f1051b2bafe799fc988ce68dcf95fd7fd6d",
+      "results_SOTACONF_V2_k16_MI_seed20260621.EXEC1.json": "0c78860ef79c008ff1a2acf4f41ba4a81d8a95371c384fae8fd358f5363bdb7d",
+      "results_SOTACONF_V2_k16_MI_seed20260621.json": "c7448170973a8e92013d25e78048a1ae8177c66655661b2184dd7973225990e1",
+      "results_SOTACONF_V2_k16_MI_seed20260622.EXEC1.json": "c78261f388bc5072bf75c9c321ff2e061615bb909ac13082d6f091bcafcd7ebf",
+      "results_SOTACONF_V2_k16_MI_seed20260622.json": "4243606f42aa32b9adeb7775154fb40a5fcdc821b1f7c9ba5694dcd1f81a6aad",
+      "results_SOTACONF_V2_k8_MI_seed20260620.EXEC1.json": "4ff2338306a99c53b32d3a09f1948ac296fb0b60ea73e7af1ee80d9fa2da8b79",
+      "results_SOTACONF_V2_k8_MI_seed20260620.json": "db38bd58e756f03bfb38deaa105cf773f4ae3e21bea83e367d72a23cf2154d22",
+      "results_SOTACONF_V2_k8_MI_seed20260621.EXEC1.json": "48efb41b11627c21cc6789f266111d36fdecb480de841f6040fff7bc32c5425f",
+      "results_SOTACONF_V2_k8_MI_seed20260621.json": "84bb988197837a6c8a92f9d88613240aa50c21ce3ca9d1402232b0a3bd0d01bd",
+      "results_SOTACONF_V2_k8_MI_seed20260622.EXEC1.json": "e669c4f0ccce141876e896a2c166f44bb7d67b92babb8983c76050b4b5379295",
+      "results_SOTACONF_V2_k8_MI_seed20260622.json": "9b1d3401a9977e03ffebe2bf408e416a1d3c31de4b0b93e504962fe4eeec56f8"
+    },
+    "MI_rebuild": {
+      "results_SOTACONF_V2_k16_MI_seed20260618.json": "1e9df2ec2e6b61191b653f6950ef1a2e5b29a068efca4e52cdb5ec48366de250",
+      "results_SOTACONF_V2_k16_MI_seed20260619.json": "f036d8e62cf1b3499dca6503730c6a6f381c8ba99dcb4511bdb6708fd39fcced",
+      "results_SOTACONF_V2_k16_MI_seed20260620.json": "df24fb299896f3560c297b9873d373c0555bec9bc594df0492f079886a8c1587",
+      "results_SOTACONF_V2_k16_MI_seed20260621.json": "45e1381178edd4739cb55772deed9775edb58fc2a07065d8cd42e80f1ad8ddcb",
+      "results_SOTACONF_V2_k16_MI_seed20260622.json": "8cad83aee5ab4ad91203a8961a019312e6819b06b72d56ba1387668e80cea22f",
+      "results_SOTACONF_V2_k8_MI_seed20260618.json": "9cbd642a1a0fe89d442f080769cd5209caa906191185a5d4fb3a3e4e7f06800c",
+      "results_SOTACONF_V2_k8_MI_seed20260619.json": "93ea02008bb0ec491870c4ed13ee3d8111c7cee7052a6e55508cca9dd6d955ef",
+      "results_SOTACONF_V2_k8_MI_seed20260620.json": "50ba90bfe5c1b0bf90b21b8135dde227d3864c863d0e413fda89e91f75caa6cf",
+      "results_SOTACONF_V2_k8_MI_seed20260621.json": "50524e0a0d07a5c3dbd381f40141bfc22924a71601b674e7f2f9d868eb32fd75",
+      "results_SOTACONF_V2_k8_MI_seed20260622.json": "813cbb5cce4763d48bc9d3444956780ee290443dfb5275c4dd007061a8820b77"
+    },
+    "OFFICE_gate": {
+      "results_OFFICE_k16_seed20260623.json": "a267e19a9b2126f86bfd80688520ef73feb27fbbdbf5fe68880de924786e6f9f",
+      "results_OFFICE_k16_seed20260624.json": "4693c48caf467382e6808364ce4d029eb68ab5db108719e517172bf780d5d8eb",
+      "results_OFFICE_k16_seed20260625.json": "bdb9f39a49b6f05cb2dbe659555b2d8dcdf7afd0082f69f3f1892fdb1b1cc059",
+      "results_OFFICE_k16_seed20260626.json": "91362b544e8ce2ae2aafeaf923f207807888c060e9865dc593ac24024659fd3c",
+      "results_OFFICE_k16_seed20260627.json": "14d9fef45b4acd5e7d834be2f0569e24417ba56d056295c33f853eeba283fd6a",
+      "results_OFFICE_k8_seed20260623.json": "b62416684684641b22dadf48691ee574c407066116be8da090d7ed2746eca4a7",
+      "results_OFFICE_k8_seed20260624.json": "97c48653c79498b35885cbd2a0ac82d35922155592809ffc6adee06797a13b42",
+      "results_OFFICE_k8_seed20260625.json": "126668e4708700d232cc227d864abb67224ed4306c5ba6123b7355e646fd42af",
+      "results_OFFICE_k8_seed20260626.json": "cb92509d3d59de81abe0b4e1439599b0a049bdbed4b8576f4e278392f802ecb3",
+      "results_OFFICE_k8_seed20260627.json": "29d3407e9b2262a34550f4931ea12732263c9352241b13884c7fc6b057b66dbf"
+    },
+    "OFFICE_idonly_floor": {
+      "results_OFFICE_idonly_seed20260623.json": "67dc809442ada4c7d5268da4877966c28619a17b3362373cbccd413ddcae5760",
+      "results_OFFICE_idonly_seed20260624.json": "c1734078a4d63b36d5320ab5d649663ba380d5b91dac10292c400a7a8d7fcc5e",
+      "results_OFFICE_idonly_seed20260625.json": "6116557cc67102ef2e3a90a8eab6f5a1f7fc84cb7f4966ba3e30f5ffd7c35727",
+      "results_OFFICE_idonly_seed20260626.json": "5d4c109cf8ef5e27f90cba1ad389a38a24ac630fee55ae880f4ffe4c0de32158",
+      "results_OFFICE_idonly_seed20260627.json": "676dc6ffad33aba34ae1312e7e1da7385a405fd5ea5afb3fb6bd6464a4045945"
+    },
+    "FIR_ablations": {
+      "results_FIRABL_fixedavg_MI_seed20260608.json": "9305a4005c10fc705ac6947f1dc4ce89dc0c74bc5f0094f387e0baafa036c22e",
+      "results_FIRABL_fixedavg_MI_seed20260609.json": "75843d1d3820d65d9f6f99318694b557d6a54438cf7db1cfd6d952c3d24ee51d",
+      "results_FIRABL_fixedavg_MI_seed20260610.json": "cc3e9b0f2e6f700e299a5c4fc27972b2d054bb681b5c4d5a86467af8b66aae9f",
+      "results_FIRABL_fixedavg_MI_seed20260611.json": "16cce4f93b6be5b5f96015da99973cab8ac8a5bfcde3a08eeeb7248956f2acad",
+      "results_FIRABL_fixedavg_MI_seed20260612.json": "c2267b74e0f3697dfb835274ded85c0bea2fa94ab2dac905e19984ac77d8a284",
+      "results_FIRABL_nogate_MI_seed20260608.json": "7ad3b85e19fba95b28632b224189189ec9c60b7c9e72aa27bb1a84f8751c9c9b",
+      "results_FIRABL_nogate_MI_seed20260609.json": "754381b501fcb324a64604ea06fbb9d8650ea04dbbc45a05e0486abf3368056a",
+      "results_FIRABL_nogate_MI_seed20260610.json": "efe0470c0ee986d6effc97c2a733b7157d3e62189b82e777dcd778cb3c1b37a4",
+      "results_FIRABL_nogate_MI_seed20260611.json": "9eed44e257e4fb171cd6ba9d429d04581331586d4883be296c4b3c9792d0c2b3",
+      "results_FIRABL_nogate_MI_seed20260612.json": "230372fe2c58d80e5f9311abe0602b90a1ed6d3f1d54dfdd304d860f8a1b3889"
+    }
+  },
+  "sidecars": "see _bestrec_run/SOTACONF_V2_sidecar_manifest.json (tracked) + per-run user_records_sha256 fields"
+}

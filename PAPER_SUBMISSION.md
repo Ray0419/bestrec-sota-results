@@ -478,7 +478,7 @@ On Video_Games our full stack reaches **NDCG@10 = 0.0673 ± 0.0003 (6-seed)**, +
 
 ## 8. Code and Data Availability
 
-All preprocessing, training, and evaluation code is available at `_bestrec_run/`. Pre-computed text-encoder caches for Video_Games and Beauty_and_PC are released alongside.
+All preprocessing, training, and evaluation code is available at `_bestrec_run/`. Pre-computed text-encoder caches for Video_Games, Musical_Instruments, Office_Products, and Beauty_and_PC are covered by SHA256 in `RELEASE_MANIFEST.json` (release `v0.9-audit-evidence`), with regeneration instructions in the protocol-parity appendix; result JSONs and per-user sidecars are tracked in the repository with per-file hashes.
 
 ## 9. Acknowledgments
 

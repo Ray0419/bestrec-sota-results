@@ -243,9 +243,17 @@ class HSTULayer(nn.Module):
     as novel; cited and reimplemented here so our TAPE / time-bias / text-sim
     components can be evaluated on a stronger sequence encoder.
 
-    Differences from softmax attention:
-      A(i,j) = silu(q_i·k_j/sqrt(dh) + bias_ij) for j <= i, else 0,
-      normalized by row count (i+1); output gated elementwise by U branch:
+    Implemented attention math (the AUTHORITATIVE spec — full-method audit F4;
+    verified numerically against the reference research implementation by
+    `_bestrec_run/test_hstu_parity.py`, see HSTU_PARITY_REPORT.md):
+      A(i,j) = silu(q_i·k_j + bias_ij) for j <= i, else 0
+        — NO 1/sqrt(dh) score scaling, NO softmax, NO per-row (i+1) count
+          normalization (an earlier draft of this docstring wrongly described
+          both; adding them collapses pointwise attention into mean-pooling —
+          the campaign's pivotal bug diagnosis);
+      aggregation divided by the CONSTANT sequence length L (scale stability
+        only; post-LayerNorm absorbs any constant factor);
+      output gated elementwise by the U branch:
       y = W_out( LayerNorm(A·V) * U ), residual added. No separate FFN
       (the silu gating plays that role, per the HSTU design)."""
 

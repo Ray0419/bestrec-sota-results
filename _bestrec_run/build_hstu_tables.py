@@ -808,26 +808,38 @@ def build_spec():
     C.append(cell("t1a.popularity.hr", "table1a", "popularity floor", "HR@10",
                   [POPF], "json_path", {"file": POPF, "path": ["methods", "popularity", "HR@10"]},
                   [chk("value", 0.0248, 4)], 1, expl))
+    RM = ("RETIRED 2026-07-11 (strict resubmission audit F1): this v1-era row and every "
+          "observation derived from it were REMOVED from PAPER_SUBMISSION.md/PAPER_DRAFT.md "
+          "(Table 1a now carries only the traceable popularity floor plus a removal note). "
+          "Cell kept solely as provenance history; non-blocking and non-warning. ")
     C.append(unt("t1a.sasrec_notext", "table1a", "SASRec (no text features, 5-seed)",
-                 "NDCG@10 0.0510 +- 0.0006 / HR 0.0923 +- 0.0009 / MRR 0.0460 +- 0.0006",
+                 "NDCG@10 0.0510 +- 0.0006 / HR 0.0923 +- 0.0009 / MRR 0.0460 +- 0.0006 "
+                 "(v1-era print, no longer in the paper)",
                  [chk("mean", 0.0510, 4, mode="info")],
-                 "No 5-seed VG no-text plain-SASRec family exists on disk; nearest artifact is the "
-                 "MI SASRec baseline (different category). The v1-era VG scan files were "
-                 "overwritten/not retained."))
+                 RM + "No 5-seed VG no-text plain-SASRec family exists on disk; nearest artifact "
+                 "is the MI SASRec baseline (different category). The v1-era VG scan files were "
+                 "overwritten/not retained.", status="REMOVED_FROM_PAPER"))
     C.append(unt("t1a.sasrec_sbert", "table1a", "SASRec-SBERT (MiniLM, 5-seed) parity baseline",
-                 "NDCG@10 0.0551 +- 0.0003 / HR 0.0998 +- 0.0009 / MRR 0.0496 +- 0.0003",
+                 "NDCG@10 0.0551 +- 0.0003 / HR 0.0998 +- 0.0009 / MRR 0.0496 +- 0.0003 "
+                 "(v1-era print, no longer in the paper)",
                  [chk("mean", 0.0551, 4, mode="info")],
-                 "KNOWN untraceable number (also flagged by the prior audits and quoted in "
+                 RM + "KNOWN untraceable number (also flagged by the prior audits and quoted in "
                  "SOTA_VERDICT.md). On-disk candidates do not reproduce it: "
                  "results_sasrec_sbert_VG_tuned_* (5 seeds) -> 0.0562 +- 0.0004; "
                  "results_sasrec_sbert_Video_Games_v3.json -> 0.0543; "
                  "seed20260522/23 -> 0.0498/0.0500. The 0.0551 5-seed family predates the "
-                 "retained artifact set."))
+                 "retained artifact set. Residue resolved 2026-07-11: the S2.2 contributions "
+                 "parenthetical now states the number was RETIRED from Table 1a (not "
+                 "'retained'), and the 'relative to HSTU-BLaIR' bullet no longer claims the "
+                 "3-method encoder ablation -- both papers updated.",
+                 status="REMOVED_FROM_PAPER"))
     C.append(unt("t1a.sasrec_blair", "table1a", "SASRec-BLaIR (5-seed)",
-                 "NDCG@10 0.0545 +- 0.0007 / HR 0.0986 +- 0.0011 / MRR 0.0492 +- 0.0006",
+                 "NDCG@10 0.0545 +- 0.0007 / HR 0.0986 +- 0.0011 / MRR 0.0492 +- 0.0006 "
+                 "(v1-era print, no longer in the paper)",
                  [chk("mean", 0.0545, 4, mode="info")],
-                 "Only a single-seed results_sasrec_blair_Video_Games.json (0.0498) exists on "
-                 "disk; no 5-seed family reproduces 0.0545."))
+                 RM + "Only a single-seed results_sasrec_blair_Video_Games.json (0.0498) exists "
+                 "on disk; no 5-seed family reproduces 0.0545.",
+                 status="REMOVED_FROM_PAPER"))
 
     # ---------------- Table 1b: comparator evidence (local rows only) ----------------
     C.append(cell("t1b.port.final_ndcg", "table1b",
@@ -839,11 +851,16 @@ def build_spec():
                   [HBPORT], "json_path", {"file": HBPORT, "path": ["metrics", "HR@10"]},
                   [chk("value", 0.13234, 5)], 1, expl))
     C.append(unt("t1b.port.best_ndcg", "table1b", "HSTU-BLaIR local port (best full eval)",
-                 "NDCG@10 0.07403",
+                 "NDCG@10 0.07403 (v1-era print, no longer in the paper)",
                  [chk("value", 0.07403, 5, mode="info")],
-                 "The 'best full-eval 0.07403' epoch-level value is not present in the exported "
-                 "summary artifacts (only the final-eval 0.07382 was exported); it came from the "
-                 "WSL-side training log which was not retained in the repo."))
+                 "RETIRED 2026-07-11 (strict resubmission audit F1): the best-epoch 0.07403 "
+                 "was REMOVED from both manuscripts -- Table 1b now prints only the exported "
+                 "final full-eval 0.07382 and states that the higher best-epoch reading "
+                 "'survives only in an unretained WSL log and is excluded from the artifact "
+                 "graph'. The value is not present in the exported summary artifacts; it came "
+                 "from the WSL-side training log which was not retained in the repo. Cell kept "
+                 "solely as provenance history; non-blocking and non-warning.",
+                 status="REMOVED_FROM_PAPER"))
     C.append(ext("t1b.pub.sasrec", "table1b", "SASRec (Liu 2025, published)", "NDCG@10",
                  PUB_SASREC_VG, "Published single-seed comparator; not a local artifact."))
     C.append(ext("t1b.pub.hstublair_vg", "table1b", "HSTU-BLaIR VG (Liu 2025, published)",
@@ -1123,12 +1140,13 @@ def build_spec():
     C.append(cell("t542.anchor.text_hr", "table542", "full-density TEXT-arm tail HR anchor",
                   "tail text HR@10 mean", TEXT5, "pop_arm_mean",
                   {"files": TEXT5, "stratum": "tail", "metric": "HR@10"},
-                  [chk("mean", 0.0100, 4)], 5, conf,
-                  notes="KNOWN RESIDUAL PAPER MISMATCH (the one 2026-07-11 repair miss): "
-                        "recomputed 5-seed mean 0.0099266 rounds to 0.0099, but the paper "
-                        "still prints 0.0100 ('tail HR 0.00422 vs 0.0100', "
-                        "PAPER_SUBMISSION.md S5.4.2 / PAPER_DRAFT.md). Blocks --submission "
-                        "until the manuscript prints 0.0099; NOT waived here (fail-closed)."))
+                  [chk("mean", 0.0099, 4)], 5, conf,
+                  notes="Was the one 2026-07-11 repair miss: the paper printed 0.0100 while "
+                        "the recomputed 5-seed mean 0.0099266 rounds to 0.0099. Manuscript "
+                        "corrected to 0.0099 ('tail HR 0.00422 vs 0.0099') in both "
+                        "PAPER_SUBMISSION.md S5.4.2 and PAPER_DRAFT.md on 2026-07-11; "
+                        "expectation updated to match. Never waived: the gate stayed "
+                        "fail-closed until the manuscript changed."))
     C.append(cell("t542.u040.id_abs", "table542", "rho_user=0.40 ID-arm tail (holds)",
                   "tail id NDCG@10 mean", UT40I, "pop_arm_mean",
                   {"files": UT40I, "stratum": "tail"},
@@ -1219,8 +1237,8 @@ def build_spec():
                   "absolute test NDCG@10 (vs U2 band)", [W1], "single_metric", {"file": W1},
                   [chk("value", 0.0652, 4)], 1, expl,
                   notes="'Within band' holds against the recomputed U2 sd (0.00027): "
-                        "|0.06518-0.06494| = 0.00024 < 1 sd. Against the paper's understated "
-                        "sd 0.0002 it would sit just outside; see t1.ls.ndcg mismatch."))
+                        "|0.06518-0.06494| = 0.00024 < 1 sd. Consistent with the paper's "
+                        "printed sd since the 2026-07-11 correction to 0.0003 (t1.ls.ndcg)."))
     C.append(cell("t2.w1.beta", "table2", "W1 learned scalar", "beta (sign-flipped)",
                   [W1], "json_scalar", {"file": W1, "key": "learned_niche_share_beta"},
                   [chk("value", -7.42, 2)], 1, expl))
@@ -1297,6 +1315,116 @@ def build_spec():
                         "sampled-pair: D2 samp512+cos 0.05814 < D3 samp512+dot 0.06072 "
                         "(results_D2_samp512cos_VG.json / results_D3_samp512_VG.json)."))
 
+    # ---------------- office_confirmation: pre-registered second category ----------------
+    # (audit F3.) SOTA_CONFIRM_PREREG_OFFICE.md, fresh seeds 20260623-27, config carried
+    # over from MI unchanged. HEADLINE RULE: final-epoch FULL-catalog eval
+    # (history[-1].test, n_eval=223,308) -- NOT best_test (the 30k best-by-val
+    # subsample). Mirrors office_prereg_tools.py::_final_full. The dual gate passes
+    # numerically on both kernels BUT the pre-registered floor check FAILED
+    # (floor 0.02208 = +44% above published SASRec 0.0153), so the family is
+    # provisional/VOID under the prereg -- the paper counts MI only (S5.2).
+    C.append(cell("office.k16.gate", "office_confirmation",
+                  "K=16 fresh seeds 20260623-27 (prereg OFFICE, gated)",
+                  "final-epoch full-catalog NDCG@10 per seed + mean +- sd, 95% CI-LB",
+                  OFF16, "final_full_ci",
+                  {"files": OFF16, "seeds": SOFF, "expect_n_eval": NEVAL_OFF_FULL,
+                   "threshold": PUB_HSTUBLAIR_OFF, "pct_vs": PUB_HSTUBLAIR_OFF},
+                  [chk("mean", 0.03042, 5), chk("sd", 0.00008, 5), chk("cilb", 0.03032, 5),
+                   chk("cilb", PUB_HSTUBLAIR_OFF, mode="gt"),
+                   chk("n_above", 5, mode="count"),
+                   chk("pct_vs_pub", 12.0, mode="approx", tol=0.5)],
+                  5, conf, seeds=SOFF, status_note=OFFICE_VOID_NOTE,
+                  notes="Pre-registered (SOTA_CONFIRM_PREREG_OFFICE.md, frozen before the raw "
+                        "data finished downloading; zero category-specific tuning). Headline = "
+                        "history[-1].test with n_eval asserted == 223,308; best_test is the "
+                        "30k subsample and is NOT used. Paper prints 0.03042 +- 0.00008 "
+                        "(CI-LB 0.03032), all seeds above published 0.0271, '~+12% margin' -- "
+                        "but the S5.2 Office paragraph itself declares the pass VOID under the "
+                        "failed prereg floor check; see office.floor."))
+    C.append(cell("office.k8.gate", "office_confirmation",
+                  "K=8 fresh seeds 20260623-27 (prereg OFFICE, gated)",
+                  "final-epoch full-catalog NDCG@10 per seed + mean +- sd, 95% CI-LB",
+                  OFF8, "final_full_ci",
+                  {"files": OFF8, "seeds": SOFF, "expect_n_eval": NEVAL_OFF_FULL,
+                   "threshold": PUB_HSTUBLAIR_OFF, "pct_vs": PUB_HSTUBLAIR_OFF},
+                  [chk("mean", 0.03033, 5), chk("sd", 0.00018, 5), chk("cilb", 0.03010, 5),
+                   chk("cilb", PUB_HSTUBLAIR_OFF, mode="gt"),
+                   chk("n_above", 5, mode="count"),
+                   chk("pct_vs_pub", 12.0, mode="approx", tol=0.5)],
+                  5, conf, seeds=SOFF, status_note=OFFICE_VOID_NOTE,
+                  notes="Same headline rule as office.k16.gate (final-epoch full-catalog, "
+                        "n_eval=223,308). Paper prints 0.03033 +- 0.00018 (CI-LB 0.03010)."))
+    C.append(cell("office.count_above", "office_confirmation",
+                  "fresh seeds above published 0.0271 (both kernels)",
+                  "count of final-epoch full-catalog NDCG@10 > 0.0271",
+                  OFF16 + OFF8, "final_full_count_above",
+                  {"files": OFF16 + OFF8, "expect_n_eval": NEVAL_OFF_FULL,
+                   "threshold": PUB_HSTUBLAIR_OFF},
+                  [chk("count", 10, mode="count")], 10, conf, seeds=SOFF,
+                  status_note=OFFICE_VOID_NOTE,
+                  notes="Paper: 'all 10 fresh seeds above the published HSTU-BLaIR point "
+                        "estimate 0.0271' -- reported as provisional, not as a counted pass."))
+    C.append(cell("office.idonly.arm", "office_confirmation",
+                  "ID-only arm, fresh seeds 20260623-27 (prereg OFFICE)",
+                  "final-epoch full-catalog NDCG@10 per seed + mean +- sd",
+                  OFFID, "final_full_ci",
+                  {"files": OFFID, "seeds": SOFF, "expect_n_eval": NEVAL_OFF_FULL},
+                  [chk("mean", 0.02840, mode="info"), chk("sd", 0.00005, mode="info")],
+                  5, conf, seeds=SOFF,
+                  notes="Pre-registered 5-seed contrast arm (text stack removed). The overall "
+                        "arm mean is not printed in the manuscript (info checks only; values "
+                        "protected by the manifest drift gate); it exists as the ID side of "
+                        "the descriptive tail contrast (office.tail.hits*)."))
+    C.append(cell("office.floor", "office_confirmation",
+                  "plain ID-only SASRec floor run (seed 20260623)",
+                  "best_test NDCG@10 (floor check vs published SASRec 0.0153)",
+                  [OFFFLOOR], "single_metric", {"file": OFFFLOOR},
+                  [chk("value", 0.02208, 5), chk("value", 0.0221, 4)], 1, conf,
+                  seeds=["20260623"],
+                  status_note="floor check FAILED vs prereg condition",
+                  notes="The prereg comparability condition (SOTA_CONFIRM_PREREG_OFFICE.md: "
+                        "floor 'must be at or below' the published-SASRec neighborhood) "
+                        "FAILED: 0.02208 is +44% above published 0.0153, so the Office "
+                        "second-category pass is VOID under the prereg as written (paper "
+                        "S5.2 discloses this; matched comparator-baseline rerun in progress). "
+                        "Floor is read from best_test exactly as adjudicated by "
+                        "office_prereg_tools.py (the floor rule predates the final-full "
+                        "headline rule and was scored on best_test)."))
+    C.append(cell("office.floor.pct", "office_confirmation",
+                  "floor inflation vs published SASRec 0.0153",
+                  "percent (+44%)", [OFFFLOOR], "pct_change",
+                  {"a": [OFFFLOOR], "denom_const": PUB_SASREC_OFF},
+                  [chk("pct", 44.0, 0)], 1, conf, seeds=["20260623"],
+                  status_note="floor check FAILED vs prereg condition",
+                  notes="Recomputed +44.3%; the paper prints '+44% ABOVE the published "
+                        "SASRec (0.0153)'. This is the quantity that voids the Office pass."))
+    for K, chks in ((10, [chk("text_hits", 364, mode="count"),
+                          chk("id_hits", 268, mode="count"),
+                          chk("z", 3.8, mode="approx", tol=0.05)]),
+                    (20, [chk("text_hits", 586, mode="count"),
+                          chk("id_hits", 414, mode="count")]),
+                    (50, [chk("text_hits", 1170, mode="count"),
+                          chk("id_hits", 739, mode="count")]),
+                    (100, [chk("text_hits", 1983, mode="count"),
+                           chk("id_hits", 1247, mode="count"),
+                           chk("z", 13.0, mode="approx", tol=0.05)])):
+        C.append(cell(f"office.tail.hits{K}", "office_confirmation",
+                      f"pooled tail hits @{K} (text = k8 arm vs ID-only)",
+                      f"n_hit@{K} summed over 5 seeds, final-epoch full eval "
+                      f"(tail n=36,610/seed)",
+                      OFF8 + OFFID, "final_full_tail_hits",
+                      {"a": OFF8, "b": OFFID, "k": K, "stratum": "tail",
+                       "expect_n_eval": NEVAL_OFF_FULL, "expect_n": TAILN_OFF},
+                      chks, 5, expl, seeds=SOFF,
+                      status_note="descriptive post-hoc pattern evidence only; the "
+                                  "pre-registered Office tail prediction was scored VOID "
+                                  "(connectivity 2.89 in the pre-declared ambiguous zone)",
+                      notes="Paper (S5.2) prints the @10 and @100 pooled counts with z; the "
+                            "@20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md "
+                            "(final adjudication) and manifested here for completeness. "
+                            "Audit F7: usable only as descriptive pattern evidence, never as "
+                            "a pre-registered confirmation of the tail rule."))
+
     return C
 
 # ---------------------------------------------------------------- compute & verify
@@ -1352,6 +1480,20 @@ def check_paper(c, rec, by_id):
             else:
                 res["endpoint_delta"] = rhu(a - b, prec)
                 res["result"] = ("endpoint_ok" if abs(res["endpoint_delta"] - pv)
+                                 < 10 ** (-prec - 6) else "MISMATCH")
+        elif mode == "endpoint_pct":
+            # percent formed from the ROUNDED endpoints (paper-style):
+            # 100 * (round(minuend) - round(subtrahend)) / round(subtrahend)
+            mc, sc = by_id.get(k["minuend"]), by_id.get(k["subtrahend"])
+            if not mc or not sc or mc.get("recomputed") is None or sc.get("recomputed") is None:
+                res["result"] = "info"
+            else:
+                eprec = k.get("eprec", 4)
+                av = rhu(mc["recomputed"][k["mfield"]], eprec)
+                bv = rhu(sc["recomputed"][k["sfield"]], eprec)
+                prec = k.get("precision", 1)
+                res["endpoint_pct"] = rhu(100.0 * (av - bv) / bv, prec)
+                res["result"] = ("endpoint_ok" if abs(res["endpoint_pct"] - pv)
                                  < 10 ** (-prec - 6) else "MISMATCH")
         else:
             res["result"] = "info"
@@ -1437,15 +1579,22 @@ def render_tables(cells):
     ])
 
     unt_rows = [c for c in cells if c["table_id"] == "table1a" and c["status"] == "UNTRACEABLE"]
+    ret_rows = [c for c in cells if c["table_id"] == "table1a"
+                and c["status"] == "REMOVED_FROM_PAPER"]
     T["table1a"] = "\n".join([
-        "**Table 1a (regenerated): SASRec-family protocol-parity baselines.**",
+        "**Table 1a (regenerated): SASRec-family protocol-parity baselines.** The v1-era "
+        "SASRec/SBERT/BLaIR rows were removed from the manuscript (2026-07-11, audit F1); "
+        "only the traceable popularity floor remains a paper row.",
         "",
         "| Method | NDCG@10 | HR@10 | provenance |",
         "|---|---:|---:|---|",
         f"| popularity | {R('t1a.popularity.ndcg','value')} | {R('t1a.popularity.hr','value')} | "
         f"results_5core_Video_Games.json (deterministic) |",
     ] + [f"| {c['row_label']} | UNTRACEABLE | UNTRACEABLE | **WARNING: no on-disk source** "
-         f"(paper prints: {c['metric']}) |" for c in unt_rows])
+         f"(paper prints: {c['metric']}) |" for c in unt_rows]
+      + [f"| {c['row_label']} | — | — | RETIRED (REMOVED_FROM_PAPER): row + derived "
+         f"observations deleted from the manuscript; kept in the manifest as provenance "
+         f"history only (was: {c['metric']}) |" for c in ret_rows])
 
     T["table1b"] = "\n".join([
         "**Table 1b (regenerated, local rows only): HSTU-BLaIR comparator evidence.** "
@@ -1455,8 +1604,9 @@ def render_tables(cells):
         "|---|---:|---:|---|",
         f"| HSTU-BLaIR local SM120 port (final full eval) | {R('t1b.port.final_ndcg','value',5)} | "
         f"{R('t1b.port.final_hr','value',5)} | _bestrec_sota_lab/.../hstu_blair_eval_export_summary.json |",
-        "| HSTU-BLaIR local port (best full eval) | UNTRACEABLE (paper: 0.07403) | — | "
-        "**WARNING: WSL-side log not retained** |",
+        "| HSTU-BLaIR local port (best full eval) | RETIRED (REMOVED_FROM_PAPER; was paper: "
+        "0.07403) | — | best-epoch reading survives only in an unretained WSL log; removed "
+        "from the manuscript, which now prints the exported final full-eval 0.07382 only |",
         "| SASRec / HSTU / HSTU-BLaIR published rows | 0.0573 / 0.0741 / 0.0760 | — | "
         "external published (Liu 2025; Zhai 2024) |",
     ])
@@ -1594,6 +1744,47 @@ def render_tables(cells):
         f"{'PASS' if by_id['v2conf.rebuild']['recomputed']['pass'] else 'FAIL'}.",
     ])
 
+    def _seeds(cid):
+        r = by_id[cid]["recomputed"]
+        return " / ".join(f"{r['seed' + s]:.5f}" for s in
+                          ("20260623", "20260624", "20260625", "20260626", "20260627"))
+
+    ok16, ok8 = by_id["office.k16.gate"]["recomputed"], by_id["office.k8.gate"]["recomputed"]
+    oid, ofl = by_id["office.idonly.arm"]["recomputed"], by_id["office.floor"]["recomputed"]
+    hitrows = []
+    for K in (10, 20, 50, 100):
+        h = by_id[f"office.tail.hits{K}"]["recomputed"]
+        hitrows.append(f"@{K}: {int(h['text_hits'])} vs {int(h['id_hits'])} (z={h['z']:.1f})")
+    T["office_confirmation"] = "\n".join([
+        "**office_confirmation (regenerated): second-category pre-registered confirmation — "
+        "Office_Products** (SOTA_CONFIRM_PREREG_OFFICE.md; fresh seeds 20260623–27; headline "
+        "rule = final-epoch FULL-catalog eval, history[-1].test, n_eval=223,308 — NOT the "
+        "30k best_test subsample).",
+        "",
+        "**STATUS: VOID under the prereg floor check (+44% floor inflation) — provisional, "
+        "NOT counted as a second-category pass; the confirmed per-category claim remains "
+        "Musical_Instruments only (§5.2).**",
+        "",
+        "| arm | per-seed NDCG@10 (final-epoch full) | mean ± sd | 95% CI-LB | vs published 0.0271 |",
+        "|---|---|---:|---:|---|",
+        f"| K=16 | {_seeds('office.k16.gate')} | {ok16['mean']:.5f} ± {ok16['sd']:.5f} | "
+        f"{ok16['cilb']:.5f} | ABOVE ({int(ok16['n_above'])}/5 seeds) — provisional/VOID |",
+        f"| K=8 | {_seeds('office.k8.gate')} | {ok8['mean']:.5f} ± {ok8['sd']:.5f} | "
+        f"{ok8['cilb']:.5f} | ABOVE ({int(ok8['n_above'])}/5 seeds) — provisional/VOID |",
+        f"| ID-only (contrast arm) | {_seeds('office.idonly.arm')} | {oid['mean']:.5f} ± "
+        f"{oid['sd']:.5f} | {oid['cilb']:.5f} | (no gate; tail-contrast arm) |",
+        f"| SASRec floor (best_test, seed 20260623) | {ofl['value']:.5f} | — | — | "
+        f"floor check FAILED: {by_id['office.floor.pct']['recomputed']['pct']:+.1f}% vs "
+        f"published SASRec 0.0153 → Office pass VOID under prereg |",
+        "",
+        f"Fresh seeds above published 0.0271: "
+        f"{int(by_id['office.count_above']['recomputed']['count'])}/10 (provisional; not a "
+        f"counted pass). Pooled tail hits, text (k8 arm) vs ID-only, final-epoch full eval "
+        f"(tail n=36,610/seed): " + "; ".join(hitrows) + " — descriptive post-hoc pattern "
+        "evidence only (the pre-registered Office tail prediction was scored VOID: "
+        "connectivity 2.89 in the pre-declared ambiguous zone).",
+    ])
+
     t2rows = []
     for cid, lever, basecol, n in [
             ("t2.c3_decay", "c3 continuous time-decay kernel (L1)", "H2 stack 0.0639", 1),
@@ -1666,21 +1857,34 @@ def write_manifest(path):
             c["paper_check"], c["paper_check_class"] = check_paper(c, c["recomputed"], by_id)
         elif c["status"] == "UNTRACEABLE":
             c["paper_check"], c["paper_check_class"] = [], "UNTRACEABLE"
+        elif c["status"] == "REMOVED_FROM_PAPER":
+            c["paper_check"], c["paper_check_class"] = [], "REMOVED_FROM_PAPER"
         else:
             c["paper_check"], c["paper_check_class"] = [], "external"
     manifest = {
-        "manifest_version": 2,
+        "manifest_version": 3,
         "generated": "2026-07-11",
-        "purpose": "Enforceable artifact graph for the canonical HSTU/FIR manuscript "
-                   "(PAPER_DRAFT.md): every empirical table cell -> source result JSONs -> "
-                   "recompute rule -> recomputed value. Audit F2; evidence labels audit F6.",
-        "paper": "PAPER_DRAFT.md (draft v3.7 values snapshot, 2026-07-10/11)",
+        "purpose": "Enforceable artifact graph for the canonical HSTU/FIR manuscript: every "
+                   "empirical table cell -> source result JSONs -> recompute rule -> "
+                   "recomputed value. Audit F2; evidence labels audit F6; fail-closed "
+                   "submission gate + Office_Products family per the strict resubmission "
+                   "audit 2026-07-11 (F1, F3).",
+        "paper": "PAPER_SUBMISSION.md (canonical submission copy; printed-value snapshot "
+                 "2026-07-11 post audit-repair) / PAPER_DRAFT.md kept in sync",
         "builder": "_bestrec_run/build_hstu_tables.py",
         "rerun": "_bestrec_run/.venv/Scripts/python _bestrec_run/build_hstu_tables.py",
+        "rerun_submission_gate": "_bestrec_run/.venv/Scripts/python "
+                                 "_bestrec_run/build_hstu_tables.py --submission",
         "recompute_tolerance": TOL,
         "evidence_class_rule": "confirmatory = >=5-seed multi-seed family or pre-registered "
                                "confirmation; exploratory = single-seed / <5-seed / post-hoc "
                                "(audit F6). external = published comparator constant.",
+        "status_semantics": "OK = sourced + recomputed + drift-gated. UNTRACEABLE = paper "
+                            "prints it, no on-disk source (warning; FATAL in --submission). "
+                            "REMOVED_FROM_PAPER = value retired from the manuscript "
+                            "2026-07-11; provenance history only, non-blocking/non-warning "
+                            "in both modes. EXTERNAL_PUBLISHED = cited constant.",
+        "required_families": REQUIRED_FAMILIES,
         "paths_relative_to": "repository root",
         "cells": cells,
     }
@@ -1688,19 +1892,21 @@ def write_manifest(path):
         json.dump(manifest, f, indent=1, ensure_ascii=False)
     print(f"wrote {path} ({len(cells)} cells)")
 
-def verify(manifest_path, tables_path):
+def verify(manifest_path, tables_path, submission=False):
     with open(manifest_path, encoding="utf-8") as f:
         manifest = json.load(f)
     cells = manifest["cells"]
     by_id = {c["cell_id"]: c for c in cells}
     errors, warnings = [], []
-    n_ok = 0
+    n_ok, n_retired = 0, 0
     for c in cells:
         if c.get("recompute") is None:
             if c["status"] == "UNTRACEABLE":
                 warnings.append(
                     f"UNTRACEABLE: [{c['table_id']}] {c['row_label']} -- paper prints "
                     f"'{c['metric']}' with NO on-disk source. {c['notes'][:160]}")
+            elif c["status"] == "REMOVED_FROM_PAPER":
+                n_retired += 1  # retired provenance record: non-blocking, non-warning
             elif c["status"] == "EXTERNAL_PUBLISHED":
                 pass
             else:
@@ -1728,64 +1934,130 @@ def verify(manifest_path, tables_path):
                               f"manifest {sv!r} by more than {TOL}")
         c["recomputed"] = rec  # use fresh values downstream
         n_ok += 1
-    # paper comparison (report-only)
-    paper_report = {"exact": [], "within_rounding": [], "MISMATCH": [], "UNTRACEABLE": []}
+    # paper comparison (warning in default mode; FATAL in --submission)
+    paper_report = {"exact": [], "within_rounding": [], "MISMATCH": [],
+                    "UNTRACEABLE": [], "REMOVED_FROM_PAPER": []}
     for c in cells:
         if c.get("recompute") is None:
-            if c["status"] == "UNTRACEABLE":
-                paper_report["UNTRACEABLE"].append(c["cell_id"])
+            if c["status"] in ("UNTRACEABLE", "REMOVED_FROM_PAPER"):
+                paper_report[c["status"]].append(c["cell_id"])
             continue
         checks, cls = check_paper(c, c["recomputed"], by_id)
         c["paper_check"], c["paper_check_class"] = checks, cls
         if cls in paper_report:
             paper_report[cls].append(c["cell_id"])
+    mismatch_cells = [
+        {"cell_id": c["cell_id"], "table": c["table_id"], "row": c["row_label"],
+         "checks": [x for x in c["paper_check"] if x["result"] == "MISMATCH"],
+         "notes": c["notes"]}
+        for c in cells if c.get("paper_check_class") == "MISMATCH"]
+    # --submission fail-closed escalations (audit F1 + F3)
+    sub_errors = []
+    if submission:
+        for c in cells:
+            if c["status"] == "UNTRACEABLE":
+                sub_errors.append(f"(d) UNTRACEABLE cell {c['cell_id']} [{c['table_id']}] "
+                                  f"{c['row_label']}: paper prints '{c['metric']}' with no "
+                                  f"on-disk source")
+        for m in mismatch_cells:
+            det = "; ".join(f"{x['name']}: paper {x['paper']} vs recomputed "
+                            f"{x['recomputed']:.6g}" for x in m["checks"])
+            sub_errors.append(f"(e) paper MISMATCH {m['cell_id']} [{m['table']}] "
+                              f"{m['row']}: {det}")
+        sourced = {c["table_id"] for c in cells
+                   if c["status"] == "OK" and c.get("source_files")}
+        for fam in manifest.get("required_families", REQUIRED_FAMILIES):
+            if fam not in sourced:
+                sub_errors.append(f"(f) declared paper-claim family '{fam}' has no sourced "
+                                  f"cells in the manifest")
     # render tables (only from a fully recomputed cell set)
-    tables = render_tables(cells) if not errors else \
-        {"_error": "tables not rendered: build gates failed", "_gate_errors": errors}
+    if errors:
+        tables = {"_error": "tables not rendered: build gates failed", "_gate_errors": errors}
+    else:
+        try:
+            tables = render_tables(cells)
+        except Exception as e:  # structurally incomplete manifest (e.g. family stripped)
+            errors.append(f"(a) table rendering failed -- manifest structurally "
+                          f"incomplete: {type(e).__name__}: {e}")
+            tables = {"_error": f"tables not rendered: {type(e).__name__}: {e}"}
+    n_warn = len(warnings) + len(mismatch_cells)
     out = {
         "generated_by": "build_hstu_tables.py (recomputed from source artifacts; no cached values)",
         "manifest": os.path.relpath(manifest_path, ROOT),
+        "mode": "submission" if submission else "default",
         "gates": {"missing_sources_or_recompute_failures": [e for e in errors if e.startswith("(a)")],
                   "manifest_drift": [e for e in errors if e.startswith("(b)")],
                   "unsourced_cells": [e for e in errors if e.startswith("(c)")]},
+        "submission_gate": {
+            "enforced": submission,
+            "policy": "fail-closed: UNTRACEABLE cells (d), paper-check MISMATCHes (e), and "
+                      "missing declared claim families (f) are FATAL in --submission "
+                      "(strict resubmission audit 2026-07-11, F1/F3); REMOVED_FROM_PAPER "
+                      "and EXTERNAL_PUBLISHED are non-blocking in both modes",
+            "violations": sub_errors,
+        },
         "warnings_untraceable": warnings,
+        "retired_removed_from_paper": paper_report["REMOVED_FROM_PAPER"],
         "paper_check_summary": {k: len(v) for k, v in paper_report.items()},
-        "paper_mismatch_cells": [
-            {"cell_id": c["cell_id"], "table": c["table_id"], "row": c["row_label"],
-             "checks": [x for x in c["paper_check"] if x["result"] == "MISMATCH"],
-             "notes": c["notes"]}
-            for c in cells if c.get("paper_check_class") == "MISMATCH"],
+        "paper_mismatch_cells": mismatch_cells,
         "tables": tables,
     }
     with open(tables_path, "w", encoding="utf-8") as f:
         json.dump(out, f, indent=1, ensure_ascii=False)
     # console report
+    print(f"mode                : {out['mode']}")
     print(f"cells recomputed OK : {n_ok}")
+    if n_retired:
+        print(f"retired cells       : {n_retired} REMOVED_FROM_PAPER "
+              f"(provenance history; non-blocking)")
     print(f"paper-check         : {out['paper_check_summary']}")
     for w in warnings:
         print("WARNING " + w)
-    for m in out["paper_mismatch_cells"]:
+    for m in mismatch_cells:
         det = "; ".join(f"{x['name']}: paper {x['paper']} vs recomputed "
                         f"{x['recomputed']:.6g}" for x in m["checks"])
-        print(f"PAPER MISMATCH [{m['table']}] {m['row']} -> {det}")
+        print(f"WARNING PAPER MISMATCH [{m['table']}] {m['row']} -> {det}")
     if errors:
         print(f"\nBUILD FAILED ({len(errors)} gate violations):", file=sys.stderr)
         for e in errors:
             print("  " + e, file=sys.stderr)
+    if submission and sub_errors:
+        print(f"\nSUBMISSION GATE FAILED ({len(sub_errors)} violation(s)) -- fail-closed "
+              f"per strict resubmission audit F1/F3:", file=sys.stderr)
+        for e in sub_errors:
+            print("  " + e, file=sys.stderr)
+    if errors:
         sys.exit(2)
-    print(f"\nBUILD GREEN: {n_ok} cells recomputed from source artifacts; "
-          f"{len(warnings)} UNTRACEABLE warning(s); tables written to {tables_path}")
+    if submission and sub_errors:
+        sys.exit(3)
+    if submission:
+        print(f"\nSUBMISSION BUILD GREEN: {n_ok} cells recomputed from source artifacts; "
+              f"0 untraceable, 0 paper mismatches, all "
+              f"{len(manifest.get('required_families', REQUIRED_FAMILIES))} declared claim "
+              f"families sourced; tables written to {tables_path}")
+    elif n_warn:
+        print(f"\nBUILD OK ({n_warn} warning{'s' if n_warn != 1 else ''}): {n_ok} cells "
+              f"recomputed from source artifacts; {len(warnings)} untraceable, "
+              f"{len(mismatch_cells)} paper mismatch(es) -- run --submission for the "
+              f"fail-closed gate; tables written to {tables_path}")
+    else:
+        print(f"\nBUILD GREEN: {n_ok} cells recomputed from source artifacts; 0 warnings; "
+              f"tables written to {tables_path}")
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--write-manifest", action="store_true",
                     help="regenerate the manifest from the embedded spec")
+    ap.add_argument("--submission", action="store_true",
+                    help="fail-closed publication gate: exit nonzero on any UNTRACEABLE "
+                         "cell, any paper-check MISMATCH, or any missing declared claim "
+                         "family (audit F1/F3)")
     ap.add_argument("--manifest", default=MANIFEST_PATH)
     ap.add_argument("--tables-out", default=TABLES_PATH)
     a = ap.parse_args()
     if a.write_manifest:
         write_manifest(a.manifest)
-    verify(a.manifest, a.tables_out)
+    verify(a.manifest, a.tables_out, submission=a.submission)
 
 if __name__ == "__main__":
     main()

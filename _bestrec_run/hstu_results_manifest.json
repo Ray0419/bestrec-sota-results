@@ -1,12 +1,27 @@
 {
- "manifest_version": 2,
+ "manifest_version": 3,
  "generated": "2026-07-11",
- "purpose": "Enforceable artifact graph for the canonical HSTU/FIR manuscript (PAPER_DRAFT.md): every empirical table cell -> source result JSONs -> recompute rule -> recomputed value. Audit F2; evidence labels audit F6.",
- "paper": "PAPER_DRAFT.md (draft v3.7 values snapshot, 2026-07-10/11)",
+ "purpose": "Enforceable artifact graph for the canonical HSTU/FIR manuscript: every empirical table cell -> source result JSONs -> recompute rule -> recomputed value. Audit F2; evidence labels audit F6; fail-closed submission gate + Office_Products family per the strict resubmission audit 2026-07-11 (F1, F3).",
+ "paper": "PAPER_SUBMISSION.md (canonical submission copy; printed-value snapshot 2026-07-11 post audit-repair) / PAPER_DRAFT.md kept in sync",
  "builder": "_bestrec_run/build_hstu_tables.py",
  "rerun": "_bestrec_run/.venv/Scripts/python _bestrec_run/build_hstu_tables.py",
+ "rerun_submission_gate": "_bestrec_run/.venv/Scripts/python _bestrec_run/build_hstu_tables.py --submission",
  "recompute_tolerance": 5e-05,
  "evidence_class_rule": "confirmatory = >=5-seed multi-seed family or pre-registered confirmation; exploratory = single-seed / <5-seed / post-hoc (audit F6). external = published comparator constant.",
+ "status_semantics": "OK = sourced + recomputed + drift-gated. UNTRACEABLE = paper prints it, no on-disk source (warning; FATAL in --submission). REMOVED_FROM_PAPER = value retired from the manuscript 2026-07-11; provenance history only, non-blocking/non-warning in both modes. EXTERNAL_PUBLISHED = cited constant.",
+ "required_families": [
+  "table1",
+  "table1a",
+  "table1b",
+  "table1c",
+  "table1d",
+  "table1e",
+  "table541",
+  "table542",
+  "tableV2conf",
+  "table2",
+  "office_confirmation"
+ ],
  "paths_relative_to": "repository root",
  "cells": [
   {
@@ -344,12 +359,23 @@
    "paper": [
     {
      "name": "pct",
-     "value": 8.7,
+     "value": 8.3,
      "mode": "round",
      "precision": 1
+    },
+    {
+     "name": "pct",
+     "value": 8.3,
+     "mode": "endpoint_pct",
+     "precision": 1,
+     "minuend": "t1.bias_stack.ndcg",
+     "mfield": "mean",
+     "subtrahend": "t1.plain.ndcg",
+     "sfield": "value",
+     "eprec": 4
     }
    ],
-   "notes": "Paper prints +8.7%; that reproduces only from the rounded seed-08 pair (0.0639/0.0588 -> +8.7%); the 5-seed-mean ratio is +8.2% and 0.0049/0.0588 = +8.3%. Reported as a paper mismatch.",
+   "notes": "Paper corrected 2026-07-11 (was +8.7%): now prints +8.3% = the ratio of the rounded endpoints (+0.0049/0.0588). The direct 5-seed ratio-of-means is +8.25% (drift-gated in recomputed.pct); the endpoint_pct check verifies the printed figure.",
    "recomputed": {
     "pct": 8.249741223467023,
     "a_mean": 0.06366034024341549,
@@ -359,14 +385,22 @@
    "paper_check": [
     {
      "name": "pct",
-     "paper": 8.7,
+     "paper": 8.3,
      "mode": "round",
      "recomputed": 8.249741223467023,
-     "result": "MISMATCH",
+     "result": "mismatch_superseded_by_endpoint",
      "rounded": 8.2
+    },
+    {
+     "name": "pct",
+     "paper": 8.3,
+     "mode": "endpoint_pct",
+     "recomputed": 8.249741223467023,
+     "endpoint_pct": 8.3,
+     "result": "endpoint_ok"
     }
    ],
-   "paper_check_class": "MISMATCH"
+   "paper_check_class": "within_rounding"
   },
   {
    "cell_id": "t1.ls.ndcg",
@@ -413,12 +447,12 @@
     },
     {
      "name": "sd",
-     "value": 0.0002,
+     "value": 0.0003,
      "mode": "round",
      "precision": 4
     }
    ],
-   "notes": "Recomputed sample-std is 0.00027 -> rounds to 0.0003, not the paper's 0.0002. Reported as a paper mismatch (sd only).",
+   "notes": "Paper corrected 2026-07-11 (was 0.0002): recomputed sample-std 0.00027 rounds half-up to 0.0003, which the paper now prints.",
    "recomputed": {
     "mean": 0.0649402313180909,
     "sd": 0.00027316686810892,
@@ -436,14 +470,14 @@
     },
     {
      "name": "sd",
-     "paper": 0.0002,
+     "paper": 0.0003,
      "mode": "round",
      "recomputed": 0.00027316686810892,
-     "result": "MISMATCH",
+     "result": "exact",
      "rounded": 0.0003
     }
    ],
-   "paper_check_class": "MISMATCH"
+   "paper_check_class": "exact"
   },
   {
    "cell_id": "t1.ls.delta",
@@ -1139,7 +1173,7 @@
    "cell_id": "t1.full_vs_pub.pct",
    "table_id": "table1",
    "row_label": "full model vs published SASRec 0.0573",
-   "metric": "percent (headline +17.6%)",
+   "metric": "percent (headline +17.5%)",
    "evidence_class": "confirmatory",
    "status": "OK",
    "source_files": [
@@ -1170,12 +1204,12 @@
    "paper": [
     {
      "name": "pct",
-     "value": 17.6,
+     "value": 17.5,
      "mode": "round",
      "precision": 1
     }
    ],
-   "notes": "Denominator is the published (external) SASRec 0.0573 of Liu 2025. 6-seed mean 0.067337 gives +17.5%; the printed +17.6% matches the superseded 5-seed mean 0.0674. Reported as a paper mismatch.",
+   "notes": "Denominator is the published (external) SASRec 0.0573 of Liu 2025. Paper corrected 2026-07-11 (was +17.6%, the superseded 5-seed mean): the 6-seed mean 0.067337 gives +17.5%, now printed consistently (abstract, S2.2, S5.1, S8).",
    "recomputed": {
     "pct": 17.517253340905725,
     "a_mean": 0.06733738616433897,
@@ -1185,14 +1219,14 @@
    "paper_check": [
     {
      "name": "pct",
-     "paper": 17.6,
+     "paper": 17.5,
      "mode": "round",
      "recomputed": 17.517253340905725,
-     "result": "MISMATCH",
+     "result": "exact",
      "rounded": 17.5
     }
    ],
-   "paper_check_class": "MISMATCH"
+   "paper_check_class": "exact"
   },
   {
    "cell_id": "t1.idonly_vs_pub.pct",
@@ -1859,12 +1893,12 @@
    "paper": [
     {
      "name": "mean",
-     "value": -0.0001,
+     "value": -5e-05,
      "mode": "round",
-     "precision": 4
+     "precision": 5
     }
    ],
-   "notes": "Recomputed 4-seed paired mean is -0.000047 (rounds to -0.0000); the paper prints -0.0001. Direction consistent; reported as a mismatch. Table 2's '+-0.0001 (4)' bound form passes.",
+   "notes": "Paper corrected 2026-07-11 (was -0.0001): recomputed 4-seed paired mean -0.000047 rounds half-up to -0.00005, which S5.1 now prints. Table 2's '+-0.0001 (4)' bound form also passes.",
    "recomputed": {
     "mean": -4.731876115515385e-05,
     "sd": 0.0004645626567892094,
@@ -1878,14 +1912,14 @@
    "paper_check": [
     {
      "name": "mean",
-     "paper": -0.0001,
+     "paper": -5e-05,
      "mode": "round",
      "recomputed": -4.731876115515385e-05,
-     "result": "MISMATCH",
-     "rounded": -0.0
+     "result": "exact",
+     "rounded": -5e-05
     }
    ],
-   "paper_check_class": "MISMATCH"
+   "paper_check_class": "exact"
   },
   {
    "cell_id": "t1a.popularity.ndcg",
@@ -1989,9 +2023,9 @@
    "cell_id": "t1a.sasrec_notext",
    "table_id": "table1a",
    "row_label": "SASRec (no text features, 5-seed)",
-   "metric": "NDCG@10 0.0510 +- 0.0006 / HR 0.0923 +- 0.0009 / MRR 0.0460 +- 0.0006",
+   "metric": "NDCG@10 0.0510 +- 0.0006 / HR 0.0923 +- 0.0009 / MRR 0.0460 +- 0.0006 (v1-era print, no longer in the paper)",
    "evidence_class": "exploratory",
-   "status": "UNTRACEABLE",
+   "status": "REMOVED_FROM_PAPER",
    "source_files": [],
    "n_seeds": null,
    "seeds": [],
@@ -2005,19 +2039,19 @@
      "precision": 4
     }
    ],
-   "notes": "No 5-seed VG no-text plain-SASRec family exists on disk; nearest artifact is the MI SASRec baseline (different category). The v1-era VG scan files were overwritten/not retained.",
+   "notes": "RETIRED 2026-07-11 (strict resubmission audit F1): this v1-era row and every observation derived from it were REMOVED from PAPER_SUBMISSION.md/PAPER_DRAFT.md (Table 1a now carries only the traceable popularity floor plus a removal note). Cell kept solely as provenance history; non-blocking and non-warning. No 5-seed VG no-text plain-SASRec family exists on disk; nearest artifact is the MI SASRec baseline (different category). The v1-era VG scan files were overwritten/not retained.",
    "recomputed": null,
    "recomputed_value": null,
    "paper_check": [],
-   "paper_check_class": "UNTRACEABLE"
+   "paper_check_class": "REMOVED_FROM_PAPER"
   },
   {
    "cell_id": "t1a.sasrec_sbert",
    "table_id": "table1a",
    "row_label": "SASRec-SBERT (MiniLM, 5-seed) parity baseline",
-   "metric": "NDCG@10 0.0551 +- 0.0003 / HR 0.0998 +- 0.0009 / MRR 0.0496 +- 0.0003",
+   "metric": "NDCG@10 0.0551 +- 0.0003 / HR 0.0998 +- 0.0009 / MRR 0.0496 +- 0.0003 (v1-era print, no longer in the paper)",
    "evidence_class": "exploratory",
-   "status": "UNTRACEABLE",
+   "status": "REMOVED_FROM_PAPER",
    "source_files": [],
    "n_seeds": null,
    "seeds": [],
@@ -2031,19 +2065,19 @@
      "precision": 4
     }
    ],
-   "notes": "KNOWN untraceable number (also flagged by the prior audits and quoted in SOTA_VERDICT.md). On-disk candidates do not reproduce it: results_sasrec_sbert_VG_tuned_* (5 seeds) -> 0.0562 +- 0.0004; results_sasrec_sbert_Video_Games_v3.json -> 0.0543; seed20260522/23 -> 0.0498/0.0500. The 0.0551 5-seed family predates the retained artifact set.",
+   "notes": "RETIRED 2026-07-11 (strict resubmission audit F1): this v1-era row and every observation derived from it were REMOVED from PAPER_SUBMISSION.md/PAPER_DRAFT.md (Table 1a now carries only the traceable popularity floor plus a removal note). Cell kept solely as provenance history; non-blocking and non-warning. KNOWN untraceable number (also flagged by the prior audits and quoted in SOTA_VERDICT.md). On-disk candidates do not reproduce it: results_sasrec_sbert_VG_tuned_* (5 seeds) -> 0.0562 +- 0.0004; results_sasrec_sbert_Video_Games_v3.json -> 0.0543; seed20260522/23 -> 0.0498/0.0500. The 0.0551 5-seed family predates the retained artifact set. Residue resolved 2026-07-11: the S2.2 contributions parenthetical now states the number was RETIRED from Table 1a (not 'retained'), and the 'relative to HSTU-BLaIR' bullet no longer claims the 3-method encoder ablation -- both papers updated.",
    "recomputed": null,
    "recomputed_value": null,
    "paper_check": [],
-   "paper_check_class": "UNTRACEABLE"
+   "paper_check_class": "REMOVED_FROM_PAPER"
   },
   {
    "cell_id": "t1a.sasrec_blair",
    "table_id": "table1a",
    "row_label": "SASRec-BLaIR (5-seed)",
-   "metric": "NDCG@10 0.0545 +- 0.0007 / HR 0.0986 +- 0.0011 / MRR 0.0492 +- 0.0006",
+   "metric": "NDCG@10 0.0545 +- 0.0007 / HR 0.0986 +- 0.0011 / MRR 0.0492 +- 0.0006 (v1-era print, no longer in the paper)",
    "evidence_class": "exploratory",
-   "status": "UNTRACEABLE",
+   "status": "REMOVED_FROM_PAPER",
    "source_files": [],
    "n_seeds": null,
    "seeds": [],
@@ -2057,11 +2091,11 @@
      "precision": 4
     }
    ],
-   "notes": "Only a single-seed results_sasrec_blair_Video_Games.json (0.0498) exists on disk; no 5-seed family reproduces 0.0545.",
+   "notes": "RETIRED 2026-07-11 (strict resubmission audit F1): this v1-era row and every observation derived from it were REMOVED from PAPER_SUBMISSION.md/PAPER_DRAFT.md (Table 1a now carries only the traceable popularity floor plus a removal note). Cell kept solely as provenance history; non-blocking and non-warning. Only a single-seed results_sasrec_blair_Video_Games.json (0.0498) exists on disk; no 5-seed family reproduces 0.0545.",
    "recomputed": null,
    "recomputed_value": null,
    "paper_check": [],
-   "paper_check_class": "UNTRACEABLE"
+   "paper_check_class": "REMOVED_FROM_PAPER"
   },
   {
    "cell_id": "t1b.port.final_ndcg",
@@ -2163,9 +2197,9 @@
    "cell_id": "t1b.port.best_ndcg",
    "table_id": "table1b",
    "row_label": "HSTU-BLaIR local port (best full eval)",
-   "metric": "NDCG@10 0.07403",
+   "metric": "NDCG@10 0.07403 (v1-era print, no longer in the paper)",
    "evidence_class": "exploratory",
-   "status": "UNTRACEABLE",
+   "status": "REMOVED_FROM_PAPER",
    "source_files": [],
    "n_seeds": null,
    "seeds": [],
@@ -2179,11 +2213,11 @@
      "precision": 5
     }
    ],
-   "notes": "The 'best full-eval 0.07403' epoch-level value is not present in the exported summary artifacts (only the final-eval 0.07382 was exported); it came from the WSL-side training log which was not retained in the repo.",
+   "notes": "RETIRED 2026-07-11 (strict resubmission audit F1): the best-epoch 0.07403 was REMOVED from both manuscripts -- Table 1b now prints only the exported final full-eval 0.07382 and states that the higher best-epoch reading 'survives only in an unretained WSL log and is excluded from the artifact graph'. The value is not present in the exported summary artifacts; it came from the WSL-side training log which was not retained in the repo. Cell kept solely as provenance history; non-blocking and non-warning.",
    "recomputed": null,
    "recomputed_value": null,
    "paper_check": [],
-   "paper_check_class": "UNTRACEABLE"
+   "paper_check_class": "REMOVED_FROM_PAPER"
   },
   {
    "cell_id": "t1b.pub.sasrec",
@@ -8459,7 +8493,7 @@
     },
     {
      "name": "sd",
-     "value": 0.000137,
+     "value": 0.000153,
      "mode": "round",
      "precision": 6
     },
@@ -8476,7 +8510,7 @@
      "tol": 0.15
     }
    ],
-   "notes": "users/item 2.44 and interactions/item 16.12 are run-log quantities.",
+   "notes": "users/item 2.44 and interactions/item 16.12 are run-log quantities. Paper sd corrected 2026-07-11 (was 0.000137): recomputed sample-std 0.0001535 rounds to 0.000153, now printed in the S5.4.2 table.",
    "recomputed": {
     "mean": 0.0001777134781061964,
     "sd": 0.0001534773441159898,
@@ -8498,10 +8532,10 @@
     },
     {
      "name": "sd",
-     "paper": 0.000137,
+     "paper": 0.000153,
      "mode": "round",
      "recomputed": 0.0001534773441159898,
-     "result": "MISMATCH",
+     "result": "exact",
      "rounded": 0.000153
     },
     {
@@ -8519,7 +8553,7 @@
      "result": "within_tol"
     }
    ],
-   "paper_check_class": "MISMATCH"
+   "paper_check_class": "exact"
   },
   {
    "cell_id": "t542.u066.tail_ratio",
@@ -9457,12 +9491,12 @@
    "paper": [
     {
      "name": "mean",
-     "value": 0.01,
+     "value": 0.0099,
      "mode": "round",
      "precision": 4
     }
    ],
-   "notes": "",
+   "notes": "Was the one 2026-07-11 repair miss: the paper printed 0.0100 while the recomputed 5-seed mean 0.0099266 rounds to 0.0099. Manuscript corrected to 0.0099 ('tail HR 0.00422 vs 0.0099') in both PAPER_SUBMISSION.md S5.4.2 and PAPER_DRAFT.md on 2026-07-11; expectation updated to match. Never waived: the gate stayed fail-closed until the manuscript changed.",
    "recomputed": {
     "mean": 0.009926605504587157,
     "sd": 0.00022843852473373836,
@@ -9472,14 +9506,14 @@
    "paper_check": [
     {
      "name": "mean",
-     "paper": 0.01,
+     "paper": 0.0099,
      "mode": "round",
      "recomputed": 0.009926605504587157,
-     "result": "MISMATCH",
+     "result": "exact",
      "rounded": 0.0099
     }
    ],
-   "paper_check_class": "MISMATCH"
+   "paper_check_class": "exact"
   },
   {
    "cell_id": "t542.u040.id_abs",
@@ -10800,7 +10834,7 @@
      "precision": 4
     }
    ],
-   "notes": "'Within band' holds against the recomputed U2 sd (0.00027): |0.06518-0.06494| = 0.00024 < 1 sd. Against the paper's understated sd 0.0002 it would sit just outside; see t1.ls.ndcg mismatch.",
+   "notes": "'Within band' holds against the recomputed U2 sd (0.00027): |0.06518-0.06494| = 0.00024 < 1 sd. Consistent with the paper's printed sd since the 2026-07-11 correction to 0.0003 (t1.ls.ndcg).",
    "recomputed": {
     "value": 0.06518129355032258
    },
@@ -11694,6 +11728,955 @@
     }
    ],
    "paper_check_class": "within_rounding"
+  },
+  {
+   "cell_id": "office.k16.gate",
+   "table_id": "office_confirmation",
+   "row_label": "K=16 fresh seeds 20260623-27 (prereg OFFICE, gated)",
+   "metric": "final-epoch full-catalog NDCG@10 per seed + mean +- sd, 95% CI-LB",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_OFFICE_k16_seed20260623.json",
+    "_bestrec_run/results_OFFICE_k16_seed20260624.json",
+    "_bestrec_run/results_OFFICE_k16_seed20260625.json",
+    "_bestrec_run/results_OFFICE_k16_seed20260626.json",
+    "_bestrec_run/results_OFFICE_k16_seed20260627.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    "20260623",
+    "20260624",
+    "20260625",
+    "20260626",
+    "20260627"
+   ],
+   "recompute": {
+    "rule": "final_full_ci",
+    "params": {
+     "files": [
+      "_bestrec_run/results_OFFICE_k16_seed20260623.json",
+      "_bestrec_run/results_OFFICE_k16_seed20260624.json",
+      "_bestrec_run/results_OFFICE_k16_seed20260625.json",
+      "_bestrec_run/results_OFFICE_k16_seed20260626.json",
+      "_bestrec_run/results_OFFICE_k16_seed20260627.json"
+     ],
+     "seeds": [
+      "20260623",
+      "20260624",
+      "20260625",
+      "20260626",
+      "20260627"
+     ],
+     "expect_n_eval": 223308,
+     "threshold": 0.0271,
+     "pct_vs": 0.0271
+    }
+   },
+   "recompute_rule": "per-seed history[-1].test[NDCG@10] (final-epoch FULL-catalog eval, n_eval asserted; NOT best_test) + mean/sd/95% CI lower bound",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.03042,
+     "mode": "round",
+     "precision": 5
+    },
+    {
+     "name": "sd",
+     "value": 8e-05,
+     "mode": "round",
+     "precision": 5
+    },
+    {
+     "name": "cilb",
+     "value": 0.03032,
+     "mode": "round",
+     "precision": 5
+    },
+    {
+     "name": "cilb",
+     "value": 0.0271,
+     "mode": "gt"
+    },
+    {
+     "name": "n_above",
+     "value": 5,
+     "mode": "count"
+    },
+    {
+     "name": "pct_vs_pub",
+     "value": 12.0,
+     "mode": "approx",
+     "tol": 0.5
+    }
+   ],
+   "notes": "Pre-registered (SOTA_CONFIRM_PREREG_OFFICE.md, frozen before the raw data finished downloading; zero category-specific tuning). Headline = history[-1].test with n_eval asserted == 223,308; best_test is the 30k subsample and is NOT used. Paper prints 0.03042 +- 0.00008 (CI-LB 0.03032), all seeds above published 0.0271, '~+12% margin' -- but the S5.2 Office paragraph itself declares the pass VOID under the failed prereg floor check; see office.floor.",
+   "status_note": "VOID under prereg floor check (+44% floor inflation); provisional, not counted as a pass",
+   "recomputed": {
+    "mean": 0.030423137988352084,
+    "sd": 8.384552639220904e-05,
+    "n": 5,
+    "cilb": 0.030319030016820434,
+    "seed20260623": 0.030408220376142898,
+    "seed20260624": 0.03054703996303816,
+    "seed20260625": 0.030421664113613564,
+    "seed20260626": 0.030311225071278078,
+    "seed20260627": 0.030427540417687724,
+    "n_above": 5.0,
+    "pct_vs_pub": 12.262501802037207
+   },
+   "recomputed_value": 0.030423137988352084,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.03042,
+     "mode": "round",
+     "recomputed": 0.030423137988352084,
+     "result": "exact",
+     "rounded": 0.03042
+    },
+    {
+     "name": "sd",
+     "paper": 8e-05,
+     "mode": "round",
+     "recomputed": 8.384552639220904e-05,
+     "result": "exact",
+     "rounded": 8e-05
+    },
+    {
+     "name": "cilb",
+     "paper": 0.03032,
+     "mode": "round",
+     "recomputed": 0.030319030016820434,
+     "result": "exact",
+     "rounded": 0.03032
+    },
+    {
+     "name": "cilb",
+     "paper": 0.0271,
+     "mode": "gt",
+     "recomputed": 0.030319030016820434,
+     "result": "qual_ok"
+    },
+    {
+     "name": "n_above",
+     "paper": 5,
+     "mode": "count",
+     "recomputed": 5.0,
+     "result": "exact"
+    },
+    {
+     "name": "pct_vs_pub",
+     "paper": 12.0,
+     "mode": "approx",
+     "recomputed": 12.262501802037207,
+     "result": "within_tol"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "office.k8.gate",
+   "table_id": "office_confirmation",
+   "row_label": "K=8 fresh seeds 20260623-27 (prereg OFFICE, gated)",
+   "metric": "final-epoch full-catalog NDCG@10 per seed + mean +- sd, 95% CI-LB",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260627.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    "20260623",
+    "20260624",
+    "20260625",
+    "20260626",
+    "20260627"
+   ],
+   "recompute": {
+    "rule": "final_full_ci",
+    "params": {
+     "files": [
+      "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260627.json"
+     ],
+     "seeds": [
+      "20260623",
+      "20260624",
+      "20260625",
+      "20260626",
+      "20260627"
+     ],
+     "expect_n_eval": 223308,
+     "threshold": 0.0271,
+     "pct_vs": 0.0271
+    }
+   },
+   "recompute_rule": "per-seed history[-1].test[NDCG@10] (final-epoch FULL-catalog eval, n_eval asserted; NOT best_test) + mean/sd/95% CI lower bound",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.03033,
+     "mode": "round",
+     "precision": 5
+    },
+    {
+     "name": "sd",
+     "value": 0.00018,
+     "mode": "round",
+     "precision": 5
+    },
+    {
+     "name": "cilb",
+     "value": 0.0301,
+     "mode": "round",
+     "precision": 5
+    },
+    {
+     "name": "cilb",
+     "value": 0.0271,
+     "mode": "gt"
+    },
+    {
+     "name": "n_above",
+     "value": 5,
+     "mode": "count"
+    },
+    {
+     "name": "pct_vs_pub",
+     "value": 12.0,
+     "mode": "approx",
+     "tol": 0.5
+    }
+   ],
+   "notes": "Same headline rule as office.k16.gate (final-epoch full-catalog, n_eval=223,308). Paper prints 0.03033 +- 0.00018 (CI-LB 0.03010).",
+   "status_note": "VOID under prereg floor check (+44% floor inflation); provisional, not counted as a pass",
+   "recomputed": {
+    "mean": 0.03032760783134327,
+    "sd": 0.00017974439540945728,
+    "n": 5,
+    "cilb": 0.030104425686684446,
+    "seed20260623": 0.030346958478773927,
+    "seed20260624": 0.030361532049495727,
+    "seed20260625": 0.030476372857387805,
+    "seed20260626": 0.03043294412933216,
+    "seed20260627": 0.030020231641726753,
+    "n_above": 5.0,
+    "pct_vs_pub": 11.909991997576652
+   },
+   "recomputed_value": 0.03032760783134327,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.03033,
+     "mode": "round",
+     "recomputed": 0.03032760783134327,
+     "result": "exact",
+     "rounded": 0.03033
+    },
+    {
+     "name": "sd",
+     "paper": 0.00018,
+     "mode": "round",
+     "recomputed": 0.00017974439540945728,
+     "result": "exact",
+     "rounded": 0.00018
+    },
+    {
+     "name": "cilb",
+     "paper": 0.0301,
+     "mode": "round",
+     "recomputed": 0.030104425686684446,
+     "result": "exact",
+     "rounded": 0.0301
+    },
+    {
+     "name": "cilb",
+     "paper": 0.0271,
+     "mode": "gt",
+     "recomputed": 0.030104425686684446,
+     "result": "qual_ok"
+    },
+    {
+     "name": "n_above",
+     "paper": 5,
+     "mode": "count",
+     "recomputed": 5.0,
+     "result": "exact"
+    },
+    {
+     "name": "pct_vs_pub",
+     "paper": 12.0,
+     "mode": "approx",
+     "recomputed": 11.909991997576652,
+     "result": "within_tol"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "office.count_above",
+   "table_id": "office_confirmation",
+   "row_label": "fresh seeds above published 0.0271 (both kernels)",
+   "metric": "count of final-epoch full-catalog NDCG@10 > 0.0271",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_OFFICE_k16_seed20260623.json",
+    "_bestrec_run/results_OFFICE_k16_seed20260624.json",
+    "_bestrec_run/results_OFFICE_k16_seed20260625.json",
+    "_bestrec_run/results_OFFICE_k16_seed20260626.json",
+    "_bestrec_run/results_OFFICE_k16_seed20260627.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260627.json"
+   ],
+   "n_seeds": 10,
+   "seeds": [
+    "20260623",
+    "20260624",
+    "20260625",
+    "20260626",
+    "20260627"
+   ],
+   "recompute": {
+    "rule": "final_full_count_above",
+    "params": {
+     "files": [
+      "_bestrec_run/results_OFFICE_k16_seed20260623.json",
+      "_bestrec_run/results_OFFICE_k16_seed20260624.json",
+      "_bestrec_run/results_OFFICE_k16_seed20260625.json",
+      "_bestrec_run/results_OFFICE_k16_seed20260626.json",
+      "_bestrec_run/results_OFFICE_k16_seed20260627.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260627.json"
+     ],
+     "expect_n_eval": 223308,
+     "threshold": 0.0271
+    }
+   },
+   "recompute_rule": "count of seeds with history[-1].test[NDCG@10] > threshold (final-epoch full-catalog eval)",
+   "paper": [
+    {
+     "name": "count",
+     "value": 10,
+     "mode": "count"
+    }
+   ],
+   "notes": "Paper: 'all 10 fresh seeds above the published HSTU-BLaIR point estimate 0.0271' -- reported as provisional, not as a counted pass.",
+   "status_note": "VOID under prereg floor check (+44% floor inflation); provisional, not counted as a pass",
+   "recomputed": {
+    "count": 10.0,
+    "n": 10
+   },
+   "recomputed_value": 10.0,
+   "paper_check": [
+    {
+     "name": "count",
+     "paper": 10,
+     "mode": "count",
+     "recomputed": 10.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "office.idonly.arm",
+   "table_id": "office_confirmation",
+   "row_label": "ID-only arm, fresh seeds 20260623-27 (prereg OFFICE)",
+   "metric": "final-epoch full-catalog NDCG@10 per seed + mean +- sd",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_OFFICE_idonly_seed20260623.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260624.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260625.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260626.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260627.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    "20260623",
+    "20260624",
+    "20260625",
+    "20260626",
+    "20260627"
+   ],
+   "recompute": {
+    "rule": "final_full_ci",
+    "params": {
+     "files": [
+      "_bestrec_run/results_OFFICE_idonly_seed20260623.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260624.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260625.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260626.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260627.json"
+     ],
+     "seeds": [
+      "20260623",
+      "20260624",
+      "20260625",
+      "20260626",
+      "20260627"
+     ],
+     "expect_n_eval": 223308
+    }
+   },
+   "recompute_rule": "per-seed history[-1].test[NDCG@10] (final-epoch FULL-catalog eval, n_eval asserted; NOT best_test) + mean/sd/95% CI lower bound",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.0284,
+     "mode": "info"
+    },
+    {
+     "name": "sd",
+     "value": 5e-05,
+     "mode": "info"
+    }
+   ],
+   "notes": "Pre-registered 5-seed contrast arm (text stack removed). The overall arm mean is not printed in the manuscript (info checks only; values protected by the manifest drift gate); it exists as the ID side of the descriptive tail contrast (office.tail.hits*).",
+   "recomputed": {
+    "mean": 0.028395716866820818,
+    "sd": 4.693888422768732e-05,
+    "n": 5,
+    "cilb": 0.028337434544159445,
+    "seed20260623": 0.028446621964856075,
+    "seed20260624": 0.02832966966784832,
+    "seed20260625": 0.028432140451788587,
+    "seed20260626": 0.02837269982509817,
+    "seed20260627": 0.028397452424512942
+   },
+   "recomputed_value": 0.028395716866820818,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.0284,
+     "mode": "info",
+     "recomputed": 0.028395716866820818,
+     "result": "info"
+    },
+    {
+     "name": "sd",
+     "paper": 5e-05,
+     "mode": "info",
+     "recomputed": 4.693888422768732e-05,
+     "result": "info"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "office.floor",
+   "table_id": "office_confirmation",
+   "row_label": "plain ID-only SASRec floor run (seed 20260623)",
+   "metric": "best_test NDCG@10 (floor check vs published SASRec 0.0153)",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_OFFICE_sasrecfloor_seed20260623.json"
+   ],
+   "n_seeds": 1,
+   "seeds": [
+    "20260623"
+   ],
+   "recompute": {
+    "rule": "single_metric",
+    "params": {
+     "file": "_bestrec_run/results_OFFICE_sasrecfloor_seed20260623.json"
+    }
+   },
+   "recompute_rule": "single run best_test[NDCG@10]",
+   "paper": [
+    {
+     "name": "value",
+     "value": 0.02208,
+     "mode": "round",
+     "precision": 5
+    },
+    {
+     "name": "value",
+     "value": 0.0221,
+     "mode": "round",
+     "precision": 4
+    }
+   ],
+   "notes": "The prereg comparability condition (SOTA_CONFIRM_PREREG_OFFICE.md: floor 'must be at or below' the published-SASRec neighborhood) FAILED: 0.02208 is +44% above published 0.0153, so the Office second-category pass is VOID under the prereg as written (paper S5.2 discloses this; matched comparator-baseline rerun in progress). Floor is read from best_test exactly as adjudicated by office_prereg_tools.py (the floor rule predates the final-full headline rule and was scored on best_test).",
+   "status_note": "floor check FAILED vs prereg condition",
+   "recomputed": {
+    "value": 0.0220777148309893
+   },
+   "recomputed_value": 0.0220777148309893,
+   "paper_check": [
+    {
+     "name": "value",
+     "paper": 0.02208,
+     "mode": "round",
+     "recomputed": 0.0220777148309893,
+     "result": "exact",
+     "rounded": 0.02208
+    },
+    {
+     "name": "value",
+     "paper": 0.0221,
+     "mode": "round",
+     "recomputed": 0.0220777148309893,
+     "result": "exact",
+     "rounded": 0.0221
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "office.floor.pct",
+   "table_id": "office_confirmation",
+   "row_label": "floor inflation vs published SASRec 0.0153",
+   "metric": "percent (+44%)",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_OFFICE_sasrecfloor_seed20260623.json"
+   ],
+   "n_seeds": 1,
+   "seeds": [
+    "20260623"
+   ],
+   "recompute": {
+    "rule": "pct_change",
+    "params": {
+     "a": [
+      "_bestrec_run/results_OFFICE_sasrecfloor_seed20260623.json"
+     ],
+     "denom_const": 0.0153
+    }
+   },
+   "recompute_rule": "100 * (mean(a)/denom - 1), best_test[NDCG@10]",
+   "paper": [
+    {
+     "name": "pct",
+     "value": 44.0,
+     "mode": "round",
+     "precision": 0
+    }
+   ],
+   "notes": "Recomputed +44.3%; the paper prints '+44% ABOVE the published SASRec (0.0153)'. This is the quantity that voids the Office pass.",
+   "status_note": "floor check FAILED vs prereg condition",
+   "recomputed": {
+    "pct": 44.2987897450281,
+    "a_mean": 0.0220777148309893,
+    "denom": 0.0153
+   },
+   "recomputed_value": 44.2987897450281,
+   "paper_check": [
+    {
+     "name": "pct",
+     "paper": 44.0,
+     "mode": "round",
+     "recomputed": 44.2987897450281,
+     "result": "exact",
+     "rounded": 44.0
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "office.tail.hits10",
+   "table_id": "office_confirmation",
+   "row_label": "pooled tail hits @10 (text = k8 arm vs ID-only)",
+   "metric": "n_hit@10 summed over 5 seeds, final-epoch full eval (tail n=36,610/seed)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260627.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260623.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260624.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260625.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260626.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260627.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    "20260623",
+    "20260624",
+    "20260625",
+    "20260626",
+    "20260627"
+   ],
+   "recompute": {
+    "rule": "final_full_tail_hits",
+    "params": {
+     "a": [
+      "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260627.json"
+     ],
+     "b": [
+      "_bestrec_run/results_OFFICE_idonly_seed20260623.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260624.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260625.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260626.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260627.json"
+     ],
+     "k": 10,
+     "stratum": "tail",
+     "expect_n_eval": 223308,
+     "expect_n": 36610
+    }
+   },
+   "recompute_rule": "pooled n_hit@K (text vs id) from history[-1].test.by_popularity[stratum] (final-epoch full eval) + two-proportion z",
+   "paper": [
+    {
+     "name": "text_hits",
+     "value": 364,
+     "mode": "count"
+    },
+    {
+     "name": "id_hits",
+     "value": 268,
+     "mode": "count"
+    },
+    {
+     "name": "z",
+     "value": 3.8,
+     "mode": "approx",
+     "tol": 0.05
+    }
+   ],
+   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-registered confirmation of the tail rule.",
+   "status_note": "descriptive post-hoc pattern evidence only; the pre-registered Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
+   "recomputed": {
+    "text_hits": 364.0,
+    "id_hits": 268.0,
+    "z": 3.821975335225754,
+    "pooled_n": 183050.0
+   },
+   "recomputed_value": 364.0,
+   "paper_check": [
+    {
+     "name": "text_hits",
+     "paper": 364,
+     "mode": "count",
+     "recomputed": 364.0,
+     "result": "exact"
+    },
+    {
+     "name": "id_hits",
+     "paper": 268,
+     "mode": "count",
+     "recomputed": 268.0,
+     "result": "exact"
+    },
+    {
+     "name": "z",
+     "paper": 3.8,
+     "mode": "approx",
+     "recomputed": 3.821975335225754,
+     "result": "within_tol"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "office.tail.hits20",
+   "table_id": "office_confirmation",
+   "row_label": "pooled tail hits @20 (text = k8 arm vs ID-only)",
+   "metric": "n_hit@20 summed over 5 seeds, final-epoch full eval (tail n=36,610/seed)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260627.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260623.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260624.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260625.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260626.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260627.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    "20260623",
+    "20260624",
+    "20260625",
+    "20260626",
+    "20260627"
+   ],
+   "recompute": {
+    "rule": "final_full_tail_hits",
+    "params": {
+     "a": [
+      "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260627.json"
+     ],
+     "b": [
+      "_bestrec_run/results_OFFICE_idonly_seed20260623.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260624.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260625.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260626.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260627.json"
+     ],
+     "k": 20,
+     "stratum": "tail",
+     "expect_n_eval": 223308,
+     "expect_n": 36610
+    }
+   },
+   "recompute_rule": "pooled n_hit@K (text vs id) from history[-1].test.by_popularity[stratum] (final-epoch full eval) + two-proportion z",
+   "paper": [
+    {
+     "name": "text_hits",
+     "value": 586,
+     "mode": "count"
+    },
+    {
+     "name": "id_hits",
+     "value": 414,
+     "mode": "count"
+    }
+   ],
+   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-registered confirmation of the tail rule.",
+   "status_note": "descriptive post-hoc pattern evidence only; the pre-registered Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
+   "recomputed": {
+    "text_hits": 586.0,
+    "id_hits": 414.0,
+    "z": 5.446561287164066,
+    "pooled_n": 183050.0
+   },
+   "recomputed_value": 586.0,
+   "paper_check": [
+    {
+     "name": "text_hits",
+     "paper": 586,
+     "mode": "count",
+     "recomputed": 586.0,
+     "result": "exact"
+    },
+    {
+     "name": "id_hits",
+     "paper": 414,
+     "mode": "count",
+     "recomputed": 414.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "office.tail.hits50",
+   "table_id": "office_confirmation",
+   "row_label": "pooled tail hits @50 (text = k8 arm vs ID-only)",
+   "metric": "n_hit@50 summed over 5 seeds, final-epoch full eval (tail n=36,610/seed)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260627.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260623.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260624.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260625.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260626.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260627.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    "20260623",
+    "20260624",
+    "20260625",
+    "20260626",
+    "20260627"
+   ],
+   "recompute": {
+    "rule": "final_full_tail_hits",
+    "params": {
+     "a": [
+      "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260627.json"
+     ],
+     "b": [
+      "_bestrec_run/results_OFFICE_idonly_seed20260623.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260624.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260625.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260626.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260627.json"
+     ],
+     "k": 50,
+     "stratum": "tail",
+     "expect_n_eval": 223308,
+     "expect_n": 36610
+    }
+   },
+   "recompute_rule": "pooled n_hit@K (text vs id) from history[-1].test.by_popularity[stratum] (final-epoch full eval) + two-proportion z",
+   "paper": [
+    {
+     "name": "text_hits",
+     "value": 1170,
+     "mode": "count"
+    },
+    {
+     "name": "id_hits",
+     "value": 739,
+     "mode": "count"
+    }
+   ],
+   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-registered confirmation of the tail rule.",
+   "status_note": "descriptive post-hoc pattern evidence only; the pre-registered Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
+   "recomputed": {
+    "text_hits": 1170.0,
+    "id_hits": 739.0,
+    "z": 9.890302292704154,
+    "pooled_n": 183050.0
+   },
+   "recomputed_value": 1170.0,
+   "paper_check": [
+    {
+     "name": "text_hits",
+     "paper": 1170,
+     "mode": "count",
+     "recomputed": 1170.0,
+     "result": "exact"
+    },
+    {
+     "name": "id_hits",
+     "paper": 739,
+     "mode": "count",
+     "recomputed": 739.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "office.tail.hits100",
+   "table_id": "office_confirmation",
+   "row_label": "pooled tail hits @100 (text = k8 arm vs ID-only)",
+   "metric": "n_hit@100 summed over 5 seeds, final-epoch full eval (tail n=36,610/seed)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260627.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260623.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260624.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260625.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260626.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260627.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    "20260623",
+    "20260624",
+    "20260625",
+    "20260626",
+    "20260627"
+   ],
+   "recompute": {
+    "rule": "final_full_tail_hits",
+    "params": {
+     "a": [
+      "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260627.json"
+     ],
+     "b": [
+      "_bestrec_run/results_OFFICE_idonly_seed20260623.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260624.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260625.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260626.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260627.json"
+     ],
+     "k": 100,
+     "stratum": "tail",
+     "expect_n_eval": 223308,
+     "expect_n": 36610
+    }
+   },
+   "recompute_rule": "pooled n_hit@K (text vs id) from history[-1].test.by_popularity[stratum] (final-epoch full eval) + two-proportion z",
+   "paper": [
+    {
+     "name": "text_hits",
+     "value": 1983,
+     "mode": "count"
+    },
+    {
+     "name": "id_hits",
+     "value": 1247,
+     "mode": "count"
+    },
+    {
+     "name": "z",
+     "value": 13.0,
+     "mode": "approx",
+     "tol": 0.05
+    }
+   ],
+   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-registered confirmation of the tail rule.",
+   "status_note": "descriptive post-hoc pattern evidence only; the pre-registered Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
+   "recomputed": {
+    "text_hits": 1983.0,
+    "id_hits": 1247.0,
+    "z": 13.007711175889494,
+    "pooled_n": 183050.0
+   },
+   "recomputed_value": 1983.0,
+   "paper_check": [
+    {
+     "name": "text_hits",
+     "paper": 1983,
+     "mode": "count",
+     "recomputed": 1983.0,
+     "result": "exact"
+    },
+    {
+     "name": "id_hits",
+     "paper": 1247,
+     "mode": "count",
+     "recomputed": 1247.0,
+     "result": "exact"
+    },
+    {
+     "name": "z",
+     "paper": 13.0,
+     "mode": "approx",
+     "recomputed": 13.007711175889494,
+     "result": "within_tol"
+    }
+   ],
+   "paper_check_class": "exact"
   }
  ]
 }

@@ -3,8 +3,8 @@
 
 WHAT IS COMPARED
   OURS : class HSTULayer
-         _bestrec_run/run_sasrec_sbert.py  (class at lines 240-310;
-         __init__ 252-279, forward 281-310)
+         _bestrec_run/run_sasrec_sbert.py  (class at lines 240-318;
+         __init__ 260-287, forward 289-318; line numbers as of 2026-07-10)
   REF  : class SequentialTransductionUnitJagged (+ module-level function
          _hstu_attention_maybe_from_cache)
          external/HSTU-BLaIR/generative_recommenders/research/modeling/
@@ -46,7 +46,7 @@ MASK / NORMALIZATION SEMANTICS (verified identical)
        709) — lower-triangular-inclusive KEEP mask, multiplied in after
        silu(qk)/n (hstu.py 212-213), n = mask.size(-1) fixed.
   ours: `keep` lower-triangular KEEP mask, multiplied in before /L
-       (run_sasrec_sbert.py 306-307), L = seq len fixed.
+       (run_sasrec_sbert.py 314-315), L = seq len fixed.
   For a {0,1} float mask, (silu(s)/n)*m == (silu(s)*m)/n exactly in IEEE-754,
   and n == L here, so the two orderings are numerically identical.
 
@@ -257,19 +257,19 @@ def main() -> int:
 
         # ============ STAGE-WISE ISOLATION (case A input) =================
         # Reference stages use the reference's own bound methods/functions;
-        # our stages recompose forward() lines 290-309 from ours' submodules
+        # our stages recompose forward() lines 298-317 from ours' submodules
         # (validated below by an exact match against the real forward).
         # -- stage 1: input layer norm
         ref_n = ref._norm_input(xj)                         # hstu.py 277-278
-        our_n = ours.norm_in(x)                             # run_...py 290
+        our_n = ours.norm_in(x)                             # run_...py 298
         record("  stage 1: norm_in", ref_n.view(B, L, D), our_n)
 
         # -- stage 2: fused uvqk projection + silu + split
         ref_g = F.silu(torch.mm(ref_n, ref._uvqk))          # hstu.py 322-324
         ru, rv, rq, rk = torch.split(
             ref_g, [DH * H, DH * H, DH * H, DH * H], dim=1) # hstu.py 327-336
-        our_g = F.silu(ours.uvqk(our_n))                    # run_...py 291
-        ou, ov, oq, ok = our_g.chunk(4, dim=-1)             # run_...py 292
+        our_g = F.silu(ours.uvqk(our_n))                    # run_...py 299
+        ou, ov, oq, ok = our_g.chunk(4, dim=-1)             # run_...py 300
         for nm, r_, o_ in (("u", ru, ou), ("v", rv, ov),
                            ("q", rq, oq), ("k", rk, ok)):
             record(f"  stage 2: uvqk split [{nm}]", r_.view(B, L, D), o_)
@@ -281,24 +281,24 @@ def main() -> int:
             delta_x_offsets=None, x_offsets=offsets, all_timestamps=None,
             invalid_attn_mask=keep, rel_attn_bias=rel_bias,
         )
-        q_ = oq.view(B, L, H, DH).transpose(1, 2)           # run_...py 300-302
+        q_ = oq.view(B, L, H, DH).transpose(1, 2)           # run_...py 308-310
         k_ = ok.view(B, L, H, DH).transpose(1, 2)
         v_ = ov.view(B, L, H, DH).transpose(1, 2)
-        scores = q_ @ k_.transpose(-2, -1)                  # run_...py 303
-        a_ = F.silu(scores) * keep                          # run_...py 306
-        a_ = a_ / L                                         # run_...py 307
-        our_attn = (a_ @ v_).transpose(1, 2).reshape(B, L, D)  # run_...py 308
+        scores = q_ @ k_.transpose(-2, -1)                  # run_...py 311
+        a_ = F.silu(scores) * keep                          # run_...py 314
+        a_ = a_ / L                                         # run_...py 315
+        our_attn = (a_ @ v_).transpose(1, 2).reshape(B, L, D)  # run_...py 316
         record("  stage 3: attention output", ref_attn.view(B, L, D), our_attn)
 
         # -- stage 4: attn layer norm + elementwise u gate
         ref_gate = ru * ref._norm_attn_output(ref_attn)     # hstu.py 424
-        our_gate = ours.norm_attn(our_attn) * ou            # run_...py 309
+        our_gate = ours.norm_attn(our_attn) * ou            # run_...py 317
         record("  stage 4: norm_attn * u gate",
                ref_gate.view(B, L, D), our_gate)
 
         # -- stage 5: output projection + residual
         ref_fin = ref._o(ref_gate) + xj                     # hstu.py 426-435
-        our_fin = x + ours.out(our_gate)                    # run_...py 309-310
+        our_fin = x + ours.out(our_gate)                    # run_...py 317-318
         record("  stage 5: out proj + residual",
                ref_fin.view(B, L, D), our_fin)
 

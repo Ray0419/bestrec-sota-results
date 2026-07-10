@@ -87,8 +87,20 @@ def _arm(vals):
     return m, sd, lb
 
 
+def _final_full(path):
+    """Prereg-compliant headline: the FINAL-epoch FULL-catalog eval (the prereg
+    declares headline numbers come from full-catalog all-user evaluations only;
+    best-by-val checkpoints were evaluated on the 30k subsample)."""
+    d = json.load(open(path))
+    fin = [h for h in d["history"] if "test" in h][-1]
+    t = fin["test"]
+    assert t["n_eval"] == 223308, f"final eval not full-catalog: {t['n_eval']}"
+    return t
+
+
 def adjudicate():
-    out = ["\n## ADJUDICATION\n"]
+    out = ["\n## FINAL ADJUDICATION — prereg-compliant headline (final-epoch FULL-catalog eval; "
+           "supersedes the earlier best_test-based sections above)\n"]
     ok = True
     # P2 dual gate
     for arm in (16, 8):
@@ -96,8 +108,7 @@ def adjudicate():
         for s in SEEDS:
             p = ROOT / "_bestrec_run" / f"results_OFFICE_k{arm}_seed{s}.json"
             try:
-                d = json.load(open(p))
-                vals.append(d["best_test"]["NDCG@10"])
+                vals.append(_final_full(p)["NDCG@10"])
             except FileNotFoundError:
                 out.append(f"- ARM k{arm} seed {s}: MISSING\n")
                 ok = False
@@ -114,7 +125,7 @@ def adjudicate():
         for tag, fn in (("text", f"results_OFFICE_k8_seed{s}.json"),
                         ("id", f"results_OFFICE_idonly_seed{s}.json")):
             try:
-                bp = json.load(open(ROOT / "_bestrec_run" / fn))["best_test"]["by_popularity"]["tail"]
+                bp = _final_full(ROOT / "_bestrec_run" / fn)["by_popularity"]["tail"]
                 for K in (10, 20, 50, 100):
                     hits[tag].setdefault(K, []).append(bp.get(f"n_hit@{K}", 0))
                 hits[tag].setdefault("n", []).append(bp["n"])

@@ -56,3 +56,18 @@ not the performance driver** — ABL-B matches the full filter. This dissects th
 way the audit demanded and *supports* the narrow novelty claim: the causal FIR module's gain is
 specific to its learned response, not to smoothing per se. Files:
 `results_FIRABL_{fixedavg,nogate}_MI_seed{08–12}.json`.
+
+## Office_Products program — outcome (N7 + N13 counter-evidence, resolved 2026-07-11)
+
+- **N13 "needs broader wins": ANSWERED WITH DATA.** The pre-registered zero-tuning Office
+  confirmation PASSED its dual gate on full-catalog evals: K=16 CI-LB 0.03032 / K=8 CI-LB
+  0.03010 vs published 0.0271 (+12%, 10/10 fresh seeds; dataset stats-identical). The paper now
+  exceeds the published HSTU-BLaIR point estimate on **two of the comparator paper's three
+  AR2023 categories**.
+- **N7 "pattern needs a predictive model + replication": PARTIALLY answered, honestly.** The
+  pre-registered prediction was scored **VOID** (Office's connectivity 2.89 falls in the
+  pre-declared ambiguous zone; a stats-tool formula inconsistency is disclosed in
+  `SOTA_CONFIRM_OFFICE_RESULTS.md`). Descriptively, Office's tail contrast is strongly
+  text-positive (z=3.8 @10 → z=13.0 @100, full catalog), consistent with the connectivity
+  gradient (2.34 win → 2.89 win → 3.51/3.70 null) — reported as a fourth pattern point, not a
+  scored out-of-sample confirmation.

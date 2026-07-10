@@ -12,7 +12,7 @@ assertion into executable evidence (novelty-audit finding N9,
 
 | Side | Code | Location |
 |---|---|---|
-| **Ours** | `class HSTULayer` | `_bestrec_run/run_sasrec_sbert.py` lines 240–310 (`__init__` 252–279, `forward` 281–310) |
+| **Ours** | `class HSTULayer` | `_bestrec_run/run_sasrec_sbert.py` lines 240–318 (`__init__` 260–287, `forward` 289–318; line numbers as of the 2026-07-10 working tree) |
 | **Reference** | `class SequentialTransductionUnitJagged` + `_hstu_attention_maybe_from_cache` + `RelativePositionalBias` | `external/HSTU-BLaIR/generative_recommenders/research/modeling/sequential/hstu.py` lines 227–445, 151–224, 67–85; causal-mask construction lines 627–639 and 709 |
 
 The reference file is the research-mode HSTU of Zhai et al. (ICML'24, arXiv:2402.17152),
@@ -48,12 +48,12 @@ reimplements): `linear_config="uvqk"`, `linear_activation="silu"`,
 
 No column permutation is needed: both sides use split order **u, v, q, k** with
 head-major per-head layout (`view(B, L, H, d_h)` on both sides), verified from
-hstu.py 327–336 / 205–209 / 218–221 vs run_sasrec_sbert.py 292 / 300–302 / 308.
+hstu.py 327–336 / 205–209 / 218–221 vs run_sasrec_sbert.py 300 / 308–310 / 316.
 
 Mask/normalization semantics were verified identical before testing: the reference's
 `invalid_attn_mask` is `1.0 − triu(ones, diagonal=1)` — a lower-triangular-inclusive
 **keep** mask multiplied in after `silu(qk)/n` (hstu.py 212–213); ours multiplies the same
-keep mask before `/L` (run_sasrec_sbert.py 306–307). For a {0,1} float mask these
+keep mask before `/L` (run_sasrec_sbert.py 314–315). For a {0,1} float mask these
 orderings are exactly equal in IEEE-754, and `n = L` here.
 
 ## Input setup
@@ -64,7 +64,7 @@ full length, so jagged ≡ dense) to the reference; identical full causal keep m
 0 and `eval()` on both sides. Case B feeds the **same** `RelativePositionalBias` module
 instance to both sides: the reference consumes it internally (hstu.py 210–211); ours
 receives its precomputed `(1, L, L)` output as the additive `bias` argument
-(run_sasrec_sbert.py 304–305) — this exercises the rab-addition pathway itself.
+(run_sasrec_sbert.py 312–313) — this exercises the rab-addition pathway itself.
 
 ## Numerical results
 
@@ -115,7 +115,7 @@ each item below has an exact reference-equivalent setting (used in the test):
    has none. Reference = (bias=0) point.
 3. **eps default** — 1e-5 vs 1e-6 (quantified above; our trained runs use 1e-5).
 4. **Dropout placement** — reference applies dropout to the gated tensor before `_o`
-   (hstu.py 426–433); ours after `out` (run_sasrec_sbert.py 310). Identity at p=0/eval;
+   (hstu.py 426–433); ours after `out` (run_sasrec_sbert.py 318). Identity at p=0/eval;
    a training-time regularization-placement choice, not eval math. (The reference's
    `attn_dropout_ratio` is stored but never applied in its rel_bias path.)
 5. **/n constant** — both divide `silu(qk)` by a *fixed global* constant (not per-row
@@ -128,11 +128,11 @@ each item below has an exact reference-equivalent setting (used in the test):
    zero-initialized ⇒ exact no-op; the test uses 0 and the paper's HSTU claim concerns
    the base layer).
 
-Note: the `HSTULayer` class docstring (run_sasrec_sbert.py 246–248) is stale — it
-describes `1/sqrt(d_h)` scaling and row-count normalization, while the code and the
-forward-comment (lines 284–288, 303–307) correctly implement the published
-no-scaling, fixed-1/L math that this test verifies. The code, not the class docstring,
-is what matches the reference.
+Note: an earlier version of the `HSTULayer` class docstring wrongly described
+`1/sqrt(d_h)` scaling and per-row-count normalization (the code never did either). The
+docstring was corrected in the current working tree (run_sasrec_sbert.py 246–258) and
+now states the authoritative no-scaling, fixed-1/L math that this test verifies; the
+forward-comments (lines 292–296, 311–315) match the code exactly.
 
 ## Scoped out (external to the block on both sides)
 

@@ -288,7 +288,17 @@ of run-internal epoch variance).
 
 ### 4.3 Stretch goals — status update (round-3 audit F4 disclosure)
 
-**DISCLOSURE (2026-07-12):** the Office_Products HSTU-BLaIR run described below as staged was **launched on 2026-07-11 (~11:40Z)** and is **in progress** at the time of the round-3 audit (their config `hstu-sampled-softmax-n512-blair.gin`, 101 epochs, run dir `theirs_runs/office_hstu_blair/`). It will be integrated into this report, the paper's Appendix A.0, and the artifact manifest as **descriptive/non-confirmatory** Office evidence with the same VOID caveat when it completes — regardless of where it lands. It is not, and will not be, part of any counted claim. (Original section text below, retained verbatim.)
+**COMPLETED (2026-07-12).** The Office_Products HSTU-BLaIR run (their config `hstu-sampled-softmax-n512-blair.gin`, 101 epochs, launched 2026-07-11 ~11:40Z, run dir `theirs_runs/office_hstu_blair/`, ~9h wall) finished:
+
+| metric | their published | local final ep 100 | local vs published | local best full eval (ep 90) |
+|---|---|---|---|---|
+| NDCG@10 | 0.0271 | **0.0275** | +1.6% | 0.0279 (+2.8%) |
+| HR@10 | — | 0.0486 | — | — |
+| MRR | — | 0.0253 | — | — |
+
+Full-eval NDCG@10 trajectory: ep0 0.0170 → 20 0.0258 → 50 0.0269 → 70 0.0274 → 90 0.0279 → 100 0.0275 (plateau band ≈0.0267–0.0279 from ~epoch 40).
+
+**Outcome: the published Office HSTU-BLaIR row REGENERATES here** (final +1.6%, best +2.8% — comparable to the MI regeneration margins). This **refutes the section-4.1 extrapolation below** (that the HSTU-BLaIR Office row would plausibly land well above 0.0271 the way the SASRec row did): the conservatism observed in this environment is a property of their published Office **SASRec** row (+13.9%), **not** of their published Office **HSTU-BLaIR** row (+1.6%). Descriptive context only: our (VOID) Office gate values 0.03042/0.03033 sit ≈+9% above both the published 0.0271 and this local regeneration — reported as descriptive, environment-caveated, single-run evidence; **the prereg VOID stands on procedural grounds** (the floor check failed as written; no post-hoc information restores a voided pre-registration) and Office remains counted in no claim. (Original section text below, retained verbatim.)
 
 Office HSTU-BLaIR (published NDCG@10 .0271) and Video_Games HSTU-BLaIR
 (published .0760) were not run: the two priority questions were answered and
@@ -299,12 +309,14 @@ embeddings); launch with `bash _bestrec_run/theirs_run_office_hstu_blair.sh`
 `theirs_preprocess.py amzn23_game` (raw meta jsonl already on disk at
 `data_raw_proper/video_games/meta_Video_Games.jsonl`).
 
-Note the implication of 4.1 for the Office stretch: since their own SASRec
+Note the implication of 4.1 for the Office stretch (WRITTEN BEFORE THE RUN; kept for the record): since their own SASRec
 config lands ~+14% above its published row locally, a local office
 HSTU-BLaIR run would plausibly also land above 0.0271 — i.e. published
 comparator rows for Office appear systematically conservative relative to
 what this environment reproduces. Any gate comparison against 0.0271 should
 carry that caveat.
+
+**Post-run correction (2026-07-12): the extrapolation did NOT hold.** The completed run (§4.3 table) lands only +1.6% above the published row — the Office HSTU-BLaIR row regenerates, and the systematic-conservatism reading narrows to the Office SASRec row specifically.
 
 ## 5. Validity caveats (honest assessment)
 
@@ -360,11 +372,11 @@ final-epoch full-corpus eval):
 
 Practical upshots: (1) the MI comparator row can now be cited as locally
 regenerated with the reference implementation (single run, environment
-caveats in Section 5); (2) published Office rows from this table appear
-conservative in this environment, which should temper any pass/fail
-comparisons made against them at the third decimal; (3) the full recipe
+caveats in Section 5); (2) [refined 2026-07-12 after the completed Office HSTU-BLaIR run] the published Office **SASRec** row appears
+conservative in this environment (+13.9%) while the Office **HSTU-BLaIR** row regenerates (+1.6%),
+so conservatism must be assessed per-row, not assumed for the table; (3) the full recipe
 (shims + launchers + preprocessing with SHA256 provenance) is reusable for
-the remaining configs (`theirs_run_office_hstu_blair.sh` — launched 2026-07-11, in progress; see the §4.3 disclosure).
+the remaining configs (`theirs_run_office_hstu_blair.sh` — completed 2026-07-12, results in §4.3; Video_Games remains the un-run config).
 
 Artifacts: `_bestrec_run/theirs_runs/{office_sasrec_final,music_hstu_blair}/`
 (metrics.jsonl with hr@{1..1000}/ndcg@{1..200}/mrr per eval, run_meta.json,

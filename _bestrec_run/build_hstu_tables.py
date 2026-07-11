@@ -1507,6 +1507,20 @@ def build_spec():
                         "baseline-strength protocol differences; Office VOID retained "
                         "(Appendix A.0). Their preprocess assertions passed "
                         "(77,551 items / 223,308 users)."))
+    THEIRS_OFFHB = BR + "theirs_runs/office_hstu_blair/metrics.jsonl"
+    C.append(cell("theirs.office_hstu.ndcg", "theirs_on_ours",
+                  "their HSTU-BLaIR on Office_Products, local run (completed 2026-07-12)",
+                  "NDCG@10 full-corpus",
+                  [THEIRS_OFFHB], "theirs_jsonl",
+                  {"file": THEIRS_OFFHB, "metric": "ndcg@10", "pct_vs": PUB_HSTUBLAIR_OFF},
+                  [chk("final", 0.0275, 4), chk("best", 0.0279, 4),
+                   chk("pct_vs_pub", 1.6, mode="approx", tol=0.1)], 1, expl,
+                  notes=TON_NOTE + " REGENERATES the published Office HSTU-BLaIR row 0.0271 "
+                        "(final +1.6%; best full eval ep90 +2.8%) -- refutes the earlier "
+                        "extrapolation that this row would be conservative like the Office "
+                        "SASRec row (+13.9%): conservatism is per-row, not table-wide. "
+                        "Descriptive only; the Office VOID stands on procedural grounds "
+                        "(paper Appendix A.0, THEIRS_ON_OURS_REPORT.md S4.3)."))
     C.append(cell("office.floor_final_full", "theirs_on_ours",
                   "our SASRec floor, final-epoch FULL-catalog (decomposition endpoint)",
                   "NDCG@10",

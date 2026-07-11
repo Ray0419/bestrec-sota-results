@@ -25,8 +25,11 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
    with an honest verdict**: gate arithmetic passed numerically but the pre-registration is
    **VOID under its floor check** — Office is **descriptive only, counted in no claim**; the
    floor anomaly is mechanistically explained (their own SASRec run locally lands +13.9% above
-   its published row) and the VOID is deliberately retained (`SOTA_CONFIRM_PREREG_OFFICE.md`,
-   `SOTA_CONFIRM_OFFICE_RESULTS.md`, paper Appendix A.0, `THEIRS_ON_OURS_REPORT.md`).
+   its published row; their Office HSTU-BLaIR row, by contrast, regenerates locally at +1.6%,
+   reported descriptively) and the VOID is retained on procedural grounds — the floor check
+   failed as written, and no post-hoc result restores a voided pre-registration
+   (`SOTA_CONFIRM_PREREG_OFFICE.md`, `SOTA_CONFIRM_OFFICE_RESULTS.md`, paper Appendix A.0,
+   `THEIRS_ON_OURS_REPORT.md`).
 4. TAPE as a modest secondary component; negative results labeled exploratory unless multi-seed.
 5. Reproducibility: provenance manifests, per-user sidecars (MI tracked; Office sidecars
    local-only/untracked, not part of any counted claim), clean-rebuild demonstration, and the

@@ -12944,6 +12944,83 @@
    "paper_check_class": "exact"
   },
   {
+   "cell_id": "theirs.office_hstu.ndcg",
+   "table_id": "theirs_on_ours",
+   "row_label": "their HSTU-BLaIR on Office_Products, local run (completed 2026-07-12)",
+   "metric": "NDCG@10 full-corpus",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/theirs_runs/office_hstu_blair/metrics.jsonl"
+   ],
+   "n_seeds": 1,
+   "seeds": [],
+   "recompute": {
+    "rule": "theirs_jsonl",
+    "params": {
+     "file": "_bestrec_run/theirs_runs/office_hstu_blair/metrics.jsonl",
+     "metric": "ndcg@10",
+     "pct_vs": 0.0271
+    }
+   },
+   "recompute_rule": "reference-implementation local run: final/best full-corpus ndcg@10 from metrics.jsonl (eval_epoch_full rows)",
+   "paper": [
+    {
+     "name": "final",
+     "value": 0.0275,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "best",
+     "value": 0.0279,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "pct_vs_pub",
+     "value": 1.6,
+     "mode": "approx",
+     "tol": 0.1
+    }
+   ],
+   "notes": "Reference repo external/HSTU-BLaIR @40a27879 UNMODIFIED (their preprocessing -> their gin -> their trainer -> their eval), run locally via three pure-PyTorch fbgemm data-movement shims + world-size-1 DDP identity wrapper. SINGLE RUN, unpinned env (torch 2.11 vs pinned 2.2.2), RTX 5060 Ti -- environment-caveated regeneration, not a pinned reproduction; changes no claim wording. REGENERATES the published Office HSTU-BLaIR row 0.0271 (final +1.6%; best full eval ep90 +2.8%) -- refutes the earlier extrapolation that this row would be conservative like the Office SASRec row (+13.9%): conservatism is per-row, not table-wide. Descriptive only; the Office VOID stands on procedural grounds (paper Appendix A.0, THEIRS_ON_OURS_REPORT.md S4.3).",
+   "recomputed": {
+    "final": 0.027520272880792618,
+    "final_epoch": 100.0,
+    "best": 0.02786177396774292,
+    "best_epoch": 90.0,
+    "pct_vs_pub": 1.550822438349142
+   },
+   "recomputed_value": 0.027520272880792618,
+   "paper_check": [
+    {
+     "name": "final",
+     "paper": 0.0275,
+     "mode": "round",
+     "recomputed": 0.027520272880792618,
+     "result": "exact",
+     "rounded": 0.0275
+    },
+    {
+     "name": "best",
+     "paper": 0.0279,
+     "mode": "round",
+     "recomputed": 0.02786177396774292,
+     "result": "exact",
+     "rounded": 0.0279
+    },
+    {
+     "name": "pct_vs_pub",
+     "paper": 1.6,
+     "mode": "approx",
+     "recomputed": 1.550822438349142,
+     "result": "within_tol"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
    "cell_id": "office.floor_final_full",
    "table_id": "theirs_on_ours",
    "row_label": "our SASRec floor, final-epoch FULL-catalog (decomposition endpoint)",

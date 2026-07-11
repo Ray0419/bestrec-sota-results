@@ -1,0 +1,27 @@
+{
+  "title": "Causal FIR Filtering and Dataset-Conditional Text Benefits in an HSTU-Style Pure-PyTorch Sequential Recommender (code and evaluation artifacts)",
+  "upload_type": "software",
+  "license": "MIT",
+  "creators": [
+    {
+      "name": "Ray0419"
+    }
+  ],
+  "description": "Code, pre-registrations, provenance manifests, and evaluation artifacts for an HSTU-style pure-PyTorch sequential recommender on the Amazon Reviews 2023 5-core benchmark. Includes: the strictly causal FIR temporal filter and its ablations; the pre-registered Musical_Instruments point-estimate confirmation (fresh seeds, dual kernels, provenance manifests, per-user sidecars); the dataset-conditional long-tail pattern and titration interventions; a fail-closed artifact-graph build (build_hstu_tables.py --submission / rebuild_hstu_submission.py --strict) that recomputes every printed number from source artifacts; the bitwise HSTU core-block parity test; and the shim harness that executes the reference HSTU-BLaIR implementation locally (THEIRS_ON_OURS_REPORT.md). The Amazon Reviews 2023 dataset itself is not redistributed; derived splits and caches are identified by SHA256 with regeneration scripts (RELEASE_MANIFEST.json).",
+  "keywords": [
+    "sequential recommendation",
+    "Amazon Reviews 2023",
+    "HSTU",
+    "text-augmented recommendation",
+    "causal FIR filter",
+    "reproducibility",
+    "pre-registration"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://github.com/Ray0419/bestrec-sota-results",
+      "resource_type": "software"
+    }
+  ]
+}

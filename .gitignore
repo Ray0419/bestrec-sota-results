@@ -44,3 +44,6 @@ _bestrec_run/rebuild_v2/*.users.jsonl.gz
 _bestrec_run/theirs_runs/ckpts/
 _bestrec_run/theirs_runs/tmp/
 _bestrec_run/theirs_runs/**/tb/
+
+# deposit build artifacts (released as GitHub release assets)
+_release/

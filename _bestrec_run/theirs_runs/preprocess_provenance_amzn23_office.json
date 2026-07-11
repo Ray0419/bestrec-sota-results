@@ -1,0 +1,39 @@
+{
+  "dataset": "amzn23_office",
+  "their_repo_commit": "40a27879ec22648657b5abc77915a7cc88c66cfd",
+  "monkeypatches": [
+    "AmazonDataProcessor.download",
+    "AmazonDataProcessor.process_meta"
+  ],
+  "files": {
+    "tmp/Office_Products.csv.gz": {
+      "sha256": "64f074ec034e7d9367d9088c6d25e873561422885c398b1fa15d7630ad8a8b84",
+      "source_url": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/benchmark/5core/rating_only/Office_Products.csv.gz"
+    },
+    "tmp/Office_Products.csv": {
+      "sha256": "f21c01544176fb6a24821a32859af5c684812cef3e80f7be8d208c6bae51a420"
+    },
+    "C:\\Users\\rayxc\\Documents\\R\\data_raw_proper\\office\\meta_Office_Products.jsonl": {
+      "sha256": "d9709095587ee34b2d5e639ca69de2a6fc8ab1953c467b86715e409c5ad78314",
+      "note": "McAuley-Lab AR2023 raw_meta jsonl (local copy)"
+    },
+    "tmp/amzn23_office/sasrec_format.csv": {
+      "sha256": "70d20f7835ed4755824aebdce776724b1d5c8fbba31ef25550cb5c144c3a5d82",
+      "bytes": 45455926
+    },
+    "tmp/amzn23_office/data_maps": {
+      "sha256": "064700b34e88128114e23b694c84b80ef8bd11eb533f04bd7f2406069d7e8da8",
+      "bytes": 118862325
+    },
+    "tmp/amzn23_office/item_text_embeddings_blair.pt": {
+      "sha256": "c7e7a8052b2451d06ce7bd18216e51d6e99246a3892ee9c23ee4dbf35bab5c14",
+      "bytes": 238241518
+    }
+  },
+  "started_utc": "2026-07-10T23:09:58Z",
+  "meta_null_fields_patched": 0,
+  "num_unique_items_returned": 77551,
+  "expected_num_unique_items": 77551,
+  "elapsed_sec": 834.5,
+  "finished_utc": "2026-07-10T23:23:52Z"
+}

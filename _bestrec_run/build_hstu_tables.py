@@ -461,6 +461,42 @@ def rule_final_full_tail_hits(p):
     z = (ht / N - hi / N) / se if se > 0 else 0.0
     return {"text_hits": float(ht), "id_hits": float(hi), "z": z, "pooled_n": float(N)}
 
+def rule_final_full_single(p):
+    """single run's final-epoch FULL-catalog metric (n_eval asserted)."""
+    t = _final_full_test(p["file"], p["expect_n_eval"])
+    return {"value": float(t[p.get("metric", "NDCG@10")])}
+
+# ---- reference implementation run locally ("theirs on ours", 2026-07-11) ----
+def rule_theirs_jsonl(p):
+    """metric from a reference-implementation local run's metrics.jsonl (a tee of
+    every value their trainer writes to TensorBoard; THEIRS_ON_OURS_REPORT.md).
+    Full-corpus eval rows carry prefix eval_epoch_full; reports the final
+    (max epoch) and best (max value) readings, plus percent vs a published
+    constant when given."""
+    ap = os.path.join(ROOT, p["file"])
+    if not os.path.exists(ap):
+        _MISSING.append(p["file"])
+        raise FileNotFoundError(p["file"])
+    rows = []
+    with open(ap, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            r = json.loads(line)
+            if r.get("prefix") == p.get("prefix", "eval_epoch_full") and p["metric"] in r:
+                rows.append((int(r["batch_id"]), float(r[p["metric"]])))
+    if not rows:
+        raise ValueError(f"no {p.get('prefix', 'eval_epoch_full')} rows with "
+                         f"{p['metric']} in {p['file']}")
+    rows.sort()
+    out = {"final": rows[-1][1], "final_epoch": float(rows[-1][0])}
+    be, bv = max(rows, key=lambda t: t[1])
+    out["best"], out["best_epoch"] = bv, float(be)
+    if p.get("pct_vs") is not None:
+        out["pct_vs_pub"] = 100.0 * (out["final"] / p["pct_vs"] - 1.0)
+    return out
+
 RULES = {r[5:]: fn for r, fn in list(globals().items()) if r.startswith("rule_")}
 
 # ---------------------------------------------------------------- file families
@@ -565,7 +601,7 @@ PUB_SASREC_OFF = 0.0153     # Liu 2025, published Office_Products SASRec (extern
 # every table family the paper declares; --submission fails if any has no sourced cells
 REQUIRED_FAMILIES = ["table1", "table1a", "table1b", "table1c", "table1d", "table1e",
                      "table541", "table542", "tableV2conf", "table2",
-                     "office_confirmation"]
+                     "office_confirmation", "theirs_on_ours"]
 
 OFFICE_VOID_NOTE = ("VOID under prereg floor check (+44% floor inflation); "
                     "provisional, not counted as a pass")
@@ -609,6 +645,10 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "final_full_tail_hits": "pooled n_hit@K (text vs id) from "
                                 "history[-1].test.by_popularity[stratum] (final-epoch full "
                                 "eval) + two-proportion z",
+        "final_full_single": "single run history[-1].test[{m}] (final-epoch FULL-catalog "
+                             "eval, n_eval asserted)",
+        "theirs_jsonl": "reference-implementation local run: final/best full-corpus {m} "
+                        "from metrics.jsonl (eval_epoch_full rows)",
     }[rule].replace("{m}", str(params.get("metric", "NDCG@10")))
     d = {
         "cell_id": cid, "table_id": table, "row_label": row, "metric": metric,
@@ -1424,6 +1464,61 @@ def build_spec():
                             "(final adjudication) and manifested here for completeness. "
                             "Audit F7: usable only as descriptive pattern evidence, never as "
                             "a pre-registered confirmation of the tail rule."))
+
+    # ------- theirs-on-ours: the reference implementation executed locally -------
+    # (S5.6 + Appendix A.0 resolution; full recipe/provenance THEIRS_ON_OURS_REPORT.md)
+    THEIRS_MI = BR + "theirs_runs/music_hstu_blair/metrics.jsonl"
+    THEIRS_OFF = BR + "theirs_runs/office_sasrec_final/metrics.jsonl"
+    TON_NOTE = ("Reference repo external/HSTU-BLaIR @40a27879 UNMODIFIED (their "
+                "preprocessing -> their gin -> their trainer -> their eval), run "
+                "locally via three pure-PyTorch fbgemm data-movement shims + "
+                "world-size-1 DDP identity wrapper. SINGLE RUN, unpinned env "
+                "(torch 2.11 vs pinned 2.2.2), RTX 5060 Ti -- environment-caveated "
+                "regeneration, not a pinned reproduction; changes no claim wording.")
+    C.append(cell("theirs.mi.ndcg", "theirs_on_ours",
+                  "their HSTU-BLaIR on Musical_Instruments, local run", "NDCG@10 full-corpus",
+                  [THEIRS_MI], "theirs_jsonl", {"file": THEIRS_MI, "metric": "ndcg@10"},
+                  [chk("final", 0.0391, 4), chk("best", 0.0406, 4)], 1, expl,
+                  notes=TON_NOTE + " Best full eval = epoch 35 = published 0.0406 EXACTLY; "
+                        "final epoch 100. Their own preprocess assertions passed "
+                        "(24,587 items / 57,439 users)."))
+    C.append(cell("theirs.mi.hr", "theirs_on_ours",
+                  "their HSTU-BLaIR on Musical_Instruments, local run", "HR@10 full-corpus",
+                  [THEIRS_MI], "theirs_jsonl", {"file": THEIRS_MI, "metric": "hr@10"},
+                  [chk("final", 0.0716, 4), chk("best", 0.0743, 4)], 1, expl))
+    C.append(cell("theirs.mi.mrr", "theirs_on_ours",
+                  "their HSTU-BLaIR on Musical_Instruments, local run", "MRR full-corpus",
+                  [THEIRS_MI], "theirs_jsonl", {"file": THEIRS_MI, "metric": "mrr"},
+                  [chk("final", 0.0355, 4), chk("best", 0.0369, 4)], 1, expl))
+    C.append(cell("theirs.office.ndcg", "theirs_on_ours",
+                  "their SASRec on Office_Products, local run (floor-anomaly check)",
+                  "NDCG@10 full-corpus",
+                  [THEIRS_OFF], "theirs_jsonl",
+                  {"file": THEIRS_OFF, "metric": "ndcg@10", "pct_vs": PUB_SASREC_OFF},
+                  [chk("final", 0.0174, 4), chk("best", 0.0177, 4),
+                   chk("pct_vs_pub", 13.9, 1)], 1, expl,
+                  notes=TON_NOTE + " Lands +13.9% ABOVE its own published row 0.0153 "
+                        "(crossed at epoch 20/101, never re-entered) -> the +44% floor "
+                        "anomaly decomposes into published-row conservatism x "
+                        "baseline-strength protocol differences; Office VOID retained "
+                        "(Appendix A.0). Their preprocess assertions passed "
+                        "(77,551 items / 223,308 users)."))
+    C.append(cell("office.floor_final_full", "theirs_on_ours",
+                  "our SASRec floor, final-epoch FULL-catalog (decomposition endpoint)",
+                  "NDCG@10",
+                  [OFFFLOOR], "final_full_single",
+                  {"file": OFFFLOOR, "expect_n_eval": NEVAL_OFF_FULL},
+                  [chk("value", 0.0204, 4)], 1, expl,
+                  notes="Same floor run as office.floor (best_test 0.02208 / 30k subsample) "
+                        "read at history[-1].test (223,308 users) for the A.0 decomposition: "
+                        "0.0204/0.0174 = +16.9% protocol strength; 0.0174/0.0153 = +13.9% "
+                        "published-row conservatism; 1.139 x 1.169 = 1.331 = 0.0204/0.0153."))
+    C.append(ext("theirs.pub.mi_hr", "theirs_on_ours",
+                 "published MI HSTU-BLaIR (comparator README)", "HR@10", 0.0733,
+                 "Liu 2025 README, Musical_Instruments HSTU-BLaIR row (S5.6 table)."))
+    C.append(ext("theirs.pub.mi_mrr", "theirs_on_ours",
+                 "published MI HSTU-BLaIR (comparator README)", "MRR", 0.0371,
+                 "Liu 2025 README, Musical_Instruments HSTU-BLaIR row (S5.6 table)."))
 
     return C
 

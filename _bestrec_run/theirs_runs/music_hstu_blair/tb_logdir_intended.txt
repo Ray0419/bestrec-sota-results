@@ -1,0 +1,1 @@
+./exps/amzn23_music-l50/HSTU-b4-h4-dqk16-dv16-lsilud0.5-ad0.0_blair_DotProduct_local_text-l2-eps1e-06_ssl-t0.05-n512-b128-lr0.001-wu0-wd0-2026-07-11-fe5

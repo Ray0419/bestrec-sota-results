@@ -72,3 +72,35 @@ arm rather than before it — arm ORDER carries no significance (config and seed
 - floor SASRec NDCG@10 = 0.02208 (published SASRec 0.0153; must not be far ABOVE it)
 
 **P2 DUAL GATE: PASS**
+
+## FINAL ADJUDICATION — prereg-compliant headline (final-epoch FULL-catalog eval; supersedes the earlier best_test-based sections above)
+- **ARM k16**: ['0.03041', '0.03055', '0.03042', '0.03031', '0.03043'] mean 0.03042 sd 0.00008 CI-LB 0.03032 (5/5 > 0.0271) -> PASS
+- **ARM k8**: ['0.03035', '0.03036', '0.03048', '0.03043', '0.03002'] mean 0.03033 sd 0.00018 CI-LB 0.03010 (5/5 > 0.0271) -> PASS
+- **P1 tail contrast (pooled hits text vs id)**: @10: 364 vs 268 (z=3.82, p=0.0001)  @20: 586 vs 414 (z=5.45, p=0.0000)  @50: 1170 vs 739 (z=9.89, p=0.0000)  @100: 1983 vs 1247 (z=13.01, p=0.0000)  
+- floor SASRec NDCG@10 = 0.02208 (published SASRec 0.0153; must not be far ABOVE it)
+
+**P2 DUAL GATE: PASS**
+
+## CONTEXT NOTE for the two FINAL ADJUDICATION blocks above (2026-07-11)
+
+The two identical blocks above were appended by successive `office_prereg_tools.py adjudicate`
+runs (the tool appended unconditionally; it is now idempotent and its output now carries a VOID
+banner). Read them with the overall verdict in view: **"P2 DUAL GATE: PASS" is the gate
+arithmetic only** (both CI-LBs > 0.0271). The pre-registration as a whole is **VOID** — the floor
+line printed inside each block is the reason (0.02208 sits +44% ABOVE the published 0.0153,
+violating the comparability condition). The floor anomaly has since been resolved mechanistically:
+the reference implementation's own Office SASRec, run locally end-to-end on its own pipeline,
+lands **+13.9% above its published row** (final-epoch NDCG@10 0.0174 vs 0.0153), decomposing the
++44% into published-row conservatism (+13.9%) x baseline-strength protocol differences (+16.9%) —
+`THEIRS_ON_OURS_REPORT.md` §4.1 and the paper's Appendix A.0. Because that implies the published
+HSTU-BLaIR Office row (0.0271) is plausibly conservative here as well, **the VOID is deliberately
+retained**: the gate values remain provisional/descriptive, never a confirmatory pass.
+
+## FINAL ADJUDICATION — prereg-compliant headline (final-epoch FULL-catalog eval; supersedes the earlier best_test-based sections above)
+> NOTE: 'P2 DUAL GATE' below reports the gate ARITHMETIC only (CI-LBs vs 0.0271). The pre-registration as a whole is VOID — the floor check failed (+44% above the published SASRec; anomaly explained and VOID deliberately retained, see THEIRS_ON_OURS_REPORT.md S4.1 and the paper's Appendix A.0). Gate values are provisional/descriptive, never a confirmatory pass.
+- **ARM k16**: ['0.03041', '0.03055', '0.03042', '0.03031', '0.03043'] mean 0.03042 sd 0.00008 CI-LB 0.03032 (5/5 > 0.0271) -> PASS
+- **ARM k8**: ['0.03035', '0.03036', '0.03048', '0.03043', '0.03002'] mean 0.03033 sd 0.00018 CI-LB 0.03010 (5/5 > 0.0271) -> PASS
+- **P1 tail contrast (pooled hits text vs id)**: @10: 364 vs 268 (z=3.82, p=0.0001)  @20: 586 vs 414 (z=5.45, p=0.0000)  @50: 1170 vs 739 (z=9.89, p=0.0000)  @100: 1983 vs 1247 (z=13.01, p=0.0000)  
+- floor SASRec NDCG@10 = 0.02208 (published SASRec 0.0153; must not be far ABOVE it)
+
+**P2 DUAL GATE: PASS**

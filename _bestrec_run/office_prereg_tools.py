@@ -100,7 +100,12 @@ def _final_full(path):
 
 def adjudicate():
     out = ["\n## FINAL ADJUDICATION — prereg-compliant headline (final-epoch FULL-catalog eval; "
-           "supersedes the earlier best_test-based sections above)\n"]
+           "supersedes the earlier best_test-based sections above)\n",
+           "> NOTE: 'P2 DUAL GATE' below reports the gate ARITHMETIC only (CI-LBs vs 0.0271). "
+           "The pre-registration as a whole is VOID — the floor check failed (+44% above the "
+           "published SASRec; anomaly explained and VOID deliberately retained, see "
+           "THEIRS_ON_OURS_REPORT.md S4.1 and the paper's Appendix A.0). Gate values are "
+           "provisional/descriptive, never a confirmatory pass.\n"]
     ok = True
     # P2 dual gate
     for arm in (16, 8):
@@ -151,8 +156,13 @@ def adjudicate():
     except FileNotFoundError:
         out.append("- floor run MISSING\n")
     out.append(f"\n**P2 DUAL GATE: {'PASS' if ok else 'FAIL'}**\n")
-    _append("".join(out))
-    print("".join(out))
+    text = "".join(out)
+    # idempotent: rebuild runs adjudicate repeatedly; only record a block once
+    if text in RES.read_text(encoding="utf-8"):
+        print("(identical adjudication already recorded in results file; append skipped)")
+    else:
+        _append(text)
+    print(text)
     return 0
 
 

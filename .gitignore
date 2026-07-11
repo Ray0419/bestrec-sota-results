@@ -39,3 +39,8 @@ _bestrec_run/*.users.jsonl.gz
 !_bestrec_run/results_SOTACONF_V2_*.users.jsonl.gz
 # Rebuild demo sidecars: hashes are embedded in the committed rebuild JSONs (user_records_sha256)
 _bestrec_run/rebuild_v2/*.users.jsonl.gz
+
+# theirs-on-ours bulky run outputs (metrics/logs/provenance ARE tracked)
+_bestrec_run/theirs_runs/ckpts/
+_bestrec_run/theirs_runs/tmp/
+_bestrec_run/theirs_runs/**/tb/

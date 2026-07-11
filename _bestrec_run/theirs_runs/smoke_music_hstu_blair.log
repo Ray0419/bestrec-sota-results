@@ -1,0 +1,38 @@
+W0711 09:07:48.871000 21612 .venv\Lib\site-packages\torch\utils\flop_counter.py:29] triton not found; flop counting will not work for triton kernels
+[theirs_train] shims: pure-PyTorch fbgemm shims installed (3 ops) + selftest passed
+[theirs_train] gin: C:\Users\rayxc\Documents\R\external\HSTU-BLaIR\configs\amzn23_music\hstu-sampled-softmax-n512-blair.gin
+[theirs_train] bindings: ['train_fn.num_epochs = 1', 'create_data_loader.num_workers = 0', 'create_data_loader.prefetch_factor = None']
+INFO:root:cuda.matmul.allow_tf32: True
+INFO:root:cudnn.allow_tf32: True
+INFO:root:Training model on rank 0.
+Initialize _item_emb.weight as truncated normal: torch.Size([24588, 64]) params
+Initialize _text_projection.weight as truncated normal: torch.Size([64, 768]) params
+Initialize _text_projection.bias as truncated normal: torch.Size([64]) params
+Skipping init for _embedding_module._item_emb.weight
+Skipping init for _embedding_module._text_projection.weight
+Skipping init for _embedding_module._text_projection.bias
+Initialize _input_features_preproc._pos_emb.weight as xavier normal: torch.Size([61, 64]) params
+Skipping init for _hstu._attention_layers.0._uvqk
+Skipping init for _hstu._attention_layers.0._rel_attn_bias._ts_w
+Skipping init for _hstu._attention_layers.0._rel_attn_bias._pos_w
+Skipping init for _hstu._attention_layers.0._o.weight
+Skipping init for _hstu._attention_layers.0._o.bias
+Skipping init for _hstu._attention_layers.1._uvqk
+Skipping init for _hstu._attention_layers.1._rel_attn_bias._ts_w
+Skipping init for _hstu._attention_layers.1._rel_attn_bias._pos_w
+Skipping init for _hstu._attention_layers.1._o.weight
+Skipping init for _hstu._attention_layers.1._o.bias
+Skipping init for _hstu._attention_layers.2._uvqk
+Skipping init for _hstu._attention_layers.2._rel_attn_bias._ts_w
+Skipping init for _hstu._attention_layers.2._rel_attn_bias._pos_w
+Skipping init for _hstu._attention_layers.2._o.weight
+Skipping init for _hstu._attention_layers.2._o.bias
+Skipping init for _hstu._attention_layers.3._uvqk
+Skipping init for _hstu._attention_layers.3._rel_attn_bias._ts_w
+Skipping init for _hstu._attention_layers.3._rel_attn_bias._pos_w
+Skipping init for _hstu._attention_layers.3._o.weight
+Skipping init for _hstu._attention_layers.3._o.bias
+INFO:root:Rank 0: writing logs to ./exps/amzn23_music-l50/HSTU-b4-h4-dqk16-dv16-lsilud0.5-ad0.0_blair_DotProduct_local_text-l2-eps1e-06_ssl-t0.05-n512-b128-lr0.001-wu0-wd0-2026-07-11-fe5
+INFO:root:rank 0:  batch-stat (eval): iter 0 (epoch 0): NDCG@10 0.0206, HR@10 0.0234, HR@50 0.0469, MRR 0.0219 
+INFO:root: rank: 0, batch-stat (train): step 0 (epoch 0 in 0.41s): 6.343539
+INFO:root:rank 0: eval @ epoch 0 in 12.72s: NDCG@10 0.0267, NDCG@50 0.0425, HR@10 0.0514, HR@50 0.1249, MRR 0.0245

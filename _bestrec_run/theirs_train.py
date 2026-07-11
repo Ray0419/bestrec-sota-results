@@ -17,7 +17,16 @@ MONKEYPATCHES applied to their trainer module from our side (repo untouched):
   2. train.add_to_summary_writer: wrapped to ALSO append every metric that
      their code sends to TensorBoard (hr@10/50/100/200, ndcg@10/50/100/200,
      mrr, ...) to <run_dir>/metrics.jsonl. Pure logging addition.
-  ( 3. optional, off by default: dataloader worker override for Windows --
+  3. train.DDP -> single-process passthrough wrapper. Reason: on Windows,
+     torch 2.11 DistributedDataParallel with gloo + CUDA modules dies with
+     ACCESS_VIOLATION (0xC0000005) even for a 2-layer toy model with no
+     custom ops (see theirs_debug_segfault.py stages A/C/D; stage E shows
+     everything EXCEPT the DDP wrapper works). At world_size=1 DDP is
+     mathematically the identity: its only job is averaging gradients over
+     ranks (a no-op for 1 rank; broadcast_buffers is already False in their
+     call). The wrapper keeps the `.module` attribute and the "module."
+     state_dict prefix so their checkpoint format is unchanged.
+  ( 4. optional, off by default: dataloader worker override for Windows --
      recorded in run_meta.json when used. num_workers only affects wall clock;
      DatasetV2.__getitem__ is deterministic and all sampling RNG lives in the
      training process, so results are unaffected. )
@@ -119,6 +128,40 @@ def main() -> int:
 
     train_mod.add_to_summary_writer = tee_add_to_summary_writer
 
+    # --- patch 2b: redirect TensorBoard event files to a SHORT directory.
+    # Their log_dir embeds the full model_desc; on Windows the resulting
+    # event-file path exceeds MAX_PATH (260) for amzn23_office (261 chars)
+    # and SummaryWriter creation dies with FileNotFoundError. Event-file
+    # LOCATION only; the intended log_dir is recorded in run_meta/log, and
+    # all scalar content is also tee'd to metrics.jsonl by patch 2.
+    _RealSummaryWriter = train_mod.SummaryWriter
+
+    def short_dir_summary_writer(log_dir=None, *a, **k):
+        tb_dir = os.path.join(run_dir, "tb")
+        os.makedirs(tb_dir, exist_ok=True)
+        with open(os.path.join(run_dir, "tb_logdir_intended.txt"), "w") as f:
+            f.write(str(log_dir) + "\n")
+        return _RealSummaryWriter(log_dir=tb_dir, *a, **k)
+
+    train_mod.SummaryWriter = short_dir_summary_writer
+
+    # --- patch 3: single-process DDP passthrough (Windows gloo+CUDA DDP
+    #     segfaults; world_size=1 DDP is identity) ---------------------------
+    class SingleProcessDDP(torch.nn.Module):
+        def __init__(self, module, device_ids=None, broadcast_buffers=False,
+                     **kwargs):
+            super().__init__()
+            self.module = module            # keeps "module." state_dict prefix
+
+        def forward(self, *args, **kwargs):
+            return self.module(*args, **kwargs)
+
+        @property
+        def device(self):                   # train.py uses model.device
+            return next(self.module.parameters()).device
+
+    train_mod.DDP = SingleProcessDDP
+
     # --- gin config ---------------------------------------------------------
     bindings = list(args.binding)
     if args.workers0:
@@ -141,7 +184,11 @@ def main() -> int:
         "device": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu",
         "python": sys.version,
         "monkeypatches": ["train.setup: nccl->gloo",
-                          "train.add_to_summary_writer: tee to metrics.jsonl"],
+                          "train.add_to_summary_writer: tee to metrics.jsonl",
+                          "train.SummaryWriter: events to <run_dir>/tb "
+                          "(Windows MAX_PATH; location only)",
+                          "train.DDP: single-process passthrough (Windows "
+                          "gloo+CUDA DDP segfaults; identity at world_size=1)"],
         "argv": sys.argv,
         "started_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     }

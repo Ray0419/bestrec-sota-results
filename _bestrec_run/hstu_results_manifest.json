@@ -20,7 +20,8 @@
   "table542",
   "tableV2conf",
   "table2",
-  "office_confirmation"
+  "office_confirmation",
+  "theirs_on_ours"
  ],
  "paths_relative_to": "repository root",
  "cells": [
@@ -12677,6 +12678,365 @@
     }
    ],
    "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "theirs.mi.ndcg",
+   "table_id": "theirs_on_ours",
+   "row_label": "their HSTU-BLaIR on Musical_Instruments, local run",
+   "metric": "NDCG@10 full-corpus",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/theirs_runs/music_hstu_blair/metrics.jsonl"
+   ],
+   "n_seeds": 1,
+   "seeds": [],
+   "recompute": {
+    "rule": "theirs_jsonl",
+    "params": {
+     "file": "_bestrec_run/theirs_runs/music_hstu_blair/metrics.jsonl",
+     "metric": "ndcg@10"
+    }
+   },
+   "recompute_rule": "reference-implementation local run: final/best full-corpus ndcg@10 from metrics.jsonl (eval_epoch_full rows)",
+   "paper": [
+    {
+     "name": "final",
+     "value": 0.0391,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "best",
+     "value": 0.0406,
+     "mode": "round",
+     "precision": 4
+    }
+   ],
+   "notes": "Reference repo external/HSTU-BLaIR @40a27879 UNMODIFIED (their preprocessing -> their gin -> their trainer -> their eval), run locally via three pure-PyTorch fbgemm data-movement shims + world-size-1 DDP identity wrapper. SINGLE RUN, unpinned env (torch 2.11 vs pinned 2.2.2), RTX 5060 Ti -- environment-caveated regeneration, not a pinned reproduction; changes no claim wording. Best full eval = epoch 35 = published 0.0406 EXACTLY; final epoch 100. Their own preprocess assertions passed (24,587 items / 57,439 users).",
+   "recomputed": {
+    "final": 0.03907879441976547,
+    "final_epoch": 100.0,
+    "best": 0.04062400758266449,
+    "best_epoch": 35.0
+   },
+   "recomputed_value": 0.03907879441976547,
+   "paper_check": [
+    {
+     "name": "final",
+     "paper": 0.0391,
+     "mode": "round",
+     "recomputed": 0.03907879441976547,
+     "result": "exact",
+     "rounded": 0.0391
+    },
+    {
+     "name": "best",
+     "paper": 0.0406,
+     "mode": "round",
+     "recomputed": 0.04062400758266449,
+     "result": "exact",
+     "rounded": 0.0406
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "theirs.mi.hr",
+   "table_id": "theirs_on_ours",
+   "row_label": "their HSTU-BLaIR on Musical_Instruments, local run",
+   "metric": "HR@10 full-corpus",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/theirs_runs/music_hstu_blair/metrics.jsonl"
+   ],
+   "n_seeds": 1,
+   "seeds": [],
+   "recompute": {
+    "rule": "theirs_jsonl",
+    "params": {
+     "file": "_bestrec_run/theirs_runs/music_hstu_blair/metrics.jsonl",
+     "metric": "hr@10"
+    }
+   },
+   "recompute_rule": "reference-implementation local run: final/best full-corpus hr@10 from metrics.jsonl (eval_epoch_full rows)",
+   "paper": [
+    {
+     "name": "final",
+     "value": 0.0716,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "best",
+     "value": 0.0743,
+     "mode": "round",
+     "precision": 4
+    }
+   ],
+   "notes": "",
+   "recomputed": {
+    "final": 0.07158899307250977,
+    "final_epoch": 100.0,
+    "best": 0.07432232797145844,
+    "best_epoch": 35.0
+   },
+   "recomputed_value": 0.07158899307250977,
+   "paper_check": [
+    {
+     "name": "final",
+     "paper": 0.0716,
+     "mode": "round",
+     "recomputed": 0.07158899307250977,
+     "result": "exact",
+     "rounded": 0.0716
+    },
+    {
+     "name": "best",
+     "paper": 0.0743,
+     "mode": "round",
+     "recomputed": 0.07432232797145844,
+     "result": "exact",
+     "rounded": 0.0743
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "theirs.mi.mrr",
+   "table_id": "theirs_on_ours",
+   "row_label": "their HSTU-BLaIR on Musical_Instruments, local run",
+   "metric": "MRR full-corpus",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/theirs_runs/music_hstu_blair/metrics.jsonl"
+   ],
+   "n_seeds": 1,
+   "seeds": [],
+   "recompute": {
+    "rule": "theirs_jsonl",
+    "params": {
+     "file": "_bestrec_run/theirs_runs/music_hstu_blair/metrics.jsonl",
+     "metric": "mrr"
+    }
+   },
+   "recompute_rule": "reference-implementation local run: final/best full-corpus mrr from metrics.jsonl (eval_epoch_full rows)",
+   "paper": [
+    {
+     "name": "final",
+     "value": 0.0355,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "best",
+     "value": 0.0369,
+     "mode": "round",
+     "precision": 4
+    }
+   ],
+   "notes": "",
+   "recomputed": {
+    "final": 0.03551233932375908,
+    "final_epoch": 100.0,
+    "best": 0.03693476691842079,
+    "best_epoch": 35.0
+   },
+   "recomputed_value": 0.03551233932375908,
+   "paper_check": [
+    {
+     "name": "final",
+     "paper": 0.0355,
+     "mode": "round",
+     "recomputed": 0.03551233932375908,
+     "result": "exact",
+     "rounded": 0.0355
+    },
+    {
+     "name": "best",
+     "paper": 0.0369,
+     "mode": "round",
+     "recomputed": 0.03693476691842079,
+     "result": "exact",
+     "rounded": 0.0369
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "theirs.office.ndcg",
+   "table_id": "theirs_on_ours",
+   "row_label": "their SASRec on Office_Products, local run (floor-anomaly check)",
+   "metric": "NDCG@10 full-corpus",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/theirs_runs/office_sasrec_final/metrics.jsonl"
+   ],
+   "n_seeds": 1,
+   "seeds": [],
+   "recompute": {
+    "rule": "theirs_jsonl",
+    "params": {
+     "file": "_bestrec_run/theirs_runs/office_sasrec_final/metrics.jsonl",
+     "metric": "ndcg@10",
+     "pct_vs": 0.0153
+    }
+   },
+   "recompute_rule": "reference-implementation local run: final/best full-corpus ndcg@10 from metrics.jsonl (eval_epoch_full rows)",
+   "paper": [
+    {
+     "name": "final",
+     "value": 0.0174,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "best",
+     "value": 0.0177,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "pct_vs_pub",
+     "value": 13.9,
+     "mode": "round",
+     "precision": 1
+    }
+   ],
+   "notes": "Reference repo external/HSTU-BLaIR @40a27879 UNMODIFIED (their preprocessing -> their gin -> their trainer -> their eval), run locally via three pure-PyTorch fbgemm data-movement shims + world-size-1 DDP identity wrapper. SINGLE RUN, unpinned env (torch 2.11 vs pinned 2.2.2), RTX 5060 Ti -- environment-caveated regeneration, not a pinned reproduction; changes no claim wording. Lands +13.9% ABOVE its own published row 0.0153 (crossed at epoch 20/101, never re-entered) -> the +44% floor anomaly decomposes into published-row conservatism x baseline-strength protocol differences; Office VOID retained (Appendix A.0). Their preprocess assertions passed (77,551 items / 223,308 users).",
+   "recomputed": {
+    "final": 0.017421336844563484,
+    "final_epoch": 100.0,
+    "best": 0.01772831566631794,
+    "best_epoch": 50.0,
+    "pct_vs_pub": 13.864946696493362
+   },
+   "recomputed_value": 0.017421336844563484,
+   "paper_check": [
+    {
+     "name": "final",
+     "paper": 0.0174,
+     "mode": "round",
+     "recomputed": 0.017421336844563484,
+     "result": "exact",
+     "rounded": 0.0174
+    },
+    {
+     "name": "best",
+     "paper": 0.0177,
+     "mode": "round",
+     "recomputed": 0.01772831566631794,
+     "result": "exact",
+     "rounded": 0.0177
+    },
+    {
+     "name": "pct_vs_pub",
+     "paper": 13.9,
+     "mode": "round",
+     "recomputed": 13.864946696493362,
+     "result": "exact",
+     "rounded": 13.9
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "office.floor_final_full",
+   "table_id": "theirs_on_ours",
+   "row_label": "our SASRec floor, final-epoch FULL-catalog (decomposition endpoint)",
+   "metric": "NDCG@10",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_OFFICE_sasrecfloor_seed20260623.json"
+   ],
+   "n_seeds": 1,
+   "seeds": [],
+   "recompute": {
+    "rule": "final_full_single",
+    "params": {
+     "file": "_bestrec_run/results_OFFICE_sasrecfloor_seed20260623.json",
+     "expect_n_eval": 223308
+    }
+   },
+   "recompute_rule": "single run history[-1].test[NDCG@10] (final-epoch FULL-catalog eval, n_eval asserted)",
+   "paper": [
+    {
+     "name": "value",
+     "value": 0.0204,
+     "mode": "round",
+     "precision": 4
+    }
+   ],
+   "notes": "Same floor run as office.floor (best_test 0.02208 / 30k subsample) read at history[-1].test (223,308 users) for the A.0 decomposition: 0.0204/0.0174 = +16.9% protocol strength; 0.0174/0.0153 = +13.9% published-row conservatism; 1.139 x 1.169 = 1.331 = 0.0204/0.0153.",
+   "recomputed": {
+    "value": 0.02036644215640485
+   },
+   "recomputed_value": 0.02036644215640485,
+   "paper_check": [
+    {
+     "name": "value",
+     "paper": 0.0204,
+     "mode": "round",
+     "recomputed": 0.02036644215640485,
+     "result": "exact",
+     "rounded": 0.0204
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "theirs.pub.mi_hr",
+   "table_id": "theirs_on_ours",
+   "row_label": "published MI HSTU-BLaIR (comparator README)",
+   "metric": "HR@10",
+   "evidence_class": "external",
+   "status": "EXTERNAL_PUBLISHED",
+   "source_files": [],
+   "n_seeds": null,
+   "seeds": [],
+   "recompute": null,
+   "recompute_rule": null,
+   "paper": [
+    {
+     "name": "value",
+     "value": 0.0733,
+     "mode": "info"
+    }
+   ],
+   "notes": "Liu 2025 README, Musical_Instruments HSTU-BLaIR row (S5.6 table).",
+   "recomputed": null,
+   "recomputed_value": null,
+   "paper_check": [],
+   "paper_check_class": "external"
+  },
+  {
+   "cell_id": "theirs.pub.mi_mrr",
+   "table_id": "theirs_on_ours",
+   "row_label": "published MI HSTU-BLaIR (comparator README)",
+   "metric": "MRR",
+   "evidence_class": "external",
+   "status": "EXTERNAL_PUBLISHED",
+   "source_files": [],
+   "n_seeds": null,
+   "seeds": [],
+   "recompute": null,
+   "recompute_rule": null,
+   "paper": [
+    {
+     "name": "value",
+     "value": 0.0371,
+     "mode": "info"
+    }
+   ],
+   "notes": "Liu 2025 README, Musical_Instruments HSTU-BLaIR row (S5.6 table).",
+   "recomputed": null,
+   "recomputed_value": null,
+   "paper_check": [],
+   "paper_check_class": "external"
   }
  ]
 }

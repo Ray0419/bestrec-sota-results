@@ -47,3 +47,7 @@ _bestrec_run/theirs_runs/**/tb/
 
 # deposit build artifacts (released as GitHub release assets)
 _release/
+
+# render + adjudication scratch (regenerated; never release-swept)
+/_paper_render.html
+/tmp/

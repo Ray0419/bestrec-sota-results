@@ -47,7 +47,7 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
 - Table generation (fail-closed): `_bestrec_run/build_hstu_tables.py` regenerates every
   empirical table from the manifest; **`--submission` exits nonzero** on any UNTRACEABLE cell,
   any printed-numeral MISMATCH, or any required claim family without sourced cells
-  (current state: 163 cells recomputed, 0/0, 12/12 families)
+  (invariants: 0 mismatch / 0 untraceable / all 12 required families sourced; the authoritative cell count is the strict build's own output — 164 at this writing, and it grows as evidence lands)
 - Canonical one-command verification: `python _bestrec_run/rebuild_hstu_submission.py --strict`
   (parity test → strict `--submission` build → MI V2 adjudicator → Office adjudicator
   (descriptive/VOID, non-gating)) — passes end-to-end at the submitted commit

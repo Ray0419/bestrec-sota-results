@@ -41,6 +41,13 @@ SUBMISSION_DOCS = [
     "_bestrec_run/fbgemm_shims.py", "_bestrec_run/rebuild_hstu_submission.py",
     "_bestrec_run/update_release_manifest.py",
 ]
+# reference-implementation local runs (git-tracked source artifacts)
+REFERENCE_RUN_DIRS = ["_bestrec_run/theirs_runs/music_hstu_blair",
+                      "_bestrec_run/theirs_runs/office_sasrec_final",
+                      "_bestrec_run/theirs_runs/office_hstu_blair"]
+REFERENCE_RUN_LOGS = ["_bestrec_run/theirs_runs/music_hstu_blair.log",
+                      "_bestrec_run/theirs_runs/office_sasrec_final.log",
+                      "_bestrec_run/theirs_runs/office_hstu_blair.log"]
 PINNED_PARITY_DIR = "_bestrec_run/theirs_runs/tmp/pinned_parity"
 PINNED_PARITY_FILES = [
     "inenv_results.json", "replay_results_Linux-torch2.2.2pcpu-shims.json",
@@ -129,6 +136,14 @@ def verify(m):
     for fam, files in m.get("result_families", {}).items():
         for fn, digest in files.items():
             check_named(f"result_families/{fam}", fn, digest)
+    for rel, ent in m.get("reference_runs", {}).get("files", {}).items():
+        ap = os.path.join(ROOT, rel)
+        if not os.path.exists(ap):
+            bad.append(f"reference_runs/{rel}: MISSING (git-tracked file)")
+        elif sha(ap) != ent["sha256"]:
+            bad.append(f"reference_runs/{rel}: hash mismatch vs manifest")
+        else:
+            checked += 1
     for fn, ent in m.get("pinned_parity_artifacts", {}).get("files", {}).items():
         ap = os.path.join(ROOT, PINNED_PARITY_DIR, fn)
         if not os.path.exists(ap):
@@ -199,6 +214,38 @@ def regen(m):
                  "v0.9-audit-evidence. Source of truth is the script + commands."),
         "files": pp,
     }
+
+    rr = {}
+    for d in REFERENCE_RUN_DIRS:
+        ad = os.path.join(ROOT, d)
+        if not os.path.isdir(ad):
+            print("MISSING reference-run dir:", d)
+            return 2
+        for fn in sorted(os.listdir(ad)):
+            ap = os.path.join(ad, fn)
+            if os.path.isfile(ap):  # skip tb/ event dirs
+                rel = f"{d}/{fn}"
+                rr[rel] = {"sha256": sha(ap), "bytes": os.path.getsize(ap)}
+    for rel in REFERENCE_RUN_LOGS:
+        ap = os.path.join(ROOT, rel)
+        if os.path.exists(ap):
+            rr[rel] = {"sha256": sha(ap), "bytes": os.path.getsize(ap)}
+    m["reference_runs"] = {
+        "note": ("Git-tracked source artifacts of the local reference-implementation "
+                 "runs (THEIRS_ON_OURS_REPORT.md): metrics.jsonl / run_meta.json / gin "
+                 "copy / intended-TB-path / trainer log per run. Consumed by the "
+                 "theirs_on_ours family of _bestrec_run/hstu_results_manifest.json."),
+        "files": rr,
+    }
+    m["generated_artifacts_note"] = (
+        "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are "
+        "git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them "
+        "deterministically from the source files hashed in this manifest, and the "
+        "fail-closed --submission gate is itself their integrity check. They are "
+        "intentionally outside this manifest's hash scope: the strict wrapper rewrites "
+        "hstu_tables.json during the same run that verifies these hashes, so including "
+        "them would make verification circular. Provenance layer: git tracking + the "
+        "gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2.")
 
     m["git_commit"] = head_commit()
     m["date"] = "2026-07-12"

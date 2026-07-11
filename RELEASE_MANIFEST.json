@@ -1,11 +1,11 @@
 {
   "release": "v0.9-audit-evidence",
-  "date": "2026-07-11",
+  "date": "2026-07-12",
   "license": {
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "31ca137dc5c7e11b4336c0d9df43d3f206505e3c",
+  "git_commit": "a15bfe89eec40c65ffebe5c1badadc360f0c093a",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -91,7 +91,7 @@
       "sha256": "eb7d57ae024a2d84153b6d0886a1452d0b25b55be63fc347e594ff74f61e7230"
     },
     "_bestrec_run/build_hstu_tables.py": {
-      "sha256": "248a1fe19b2d7bc5d44618bd1f799e77e3a86f2d71f8cce0d88ab879344b4c7c"
+      "sha256": "e700cfcabc35d76f6c593a9ef5127480eb4cb23a206cf08656de5e11bb3c5e08"
     },
     "_bestrec_run/test_hstu_parity.py": {
       "sha256": "adf28343d5a27841f97f12d680578ddb0e6d9029745608e21e55519aec59396c"
@@ -166,6 +166,97 @@
     }
   },
   "sidecars": "see _bestrec_run/SOTACONF_V2_sidecar_manifest.json (tracked) + per-run user_records_sha256 fields",
-  "manifest_scope": "Hashes describe the repository working tree at git_commit (round-2 audit F2 regeneration). Data sections (splits, text_caches, result_families) are the UNCHANGED v0.9-audit-evidence release assets -- every entry re-verified byte-identical at regeneration time. protocol_code hashes are recomputed at git_commit (the strict fail-closed gate and Office-adjudicator work legitimately changed build_hstu_tables.py and office_prereg_tools.py after the original manifest). The commit that CONTAINS this manifest file is the immediate child of git_commit; the manifest cannot hash itself.",
-  "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945"
+  "manifest_scope": "Hashes describe the repository files as of git_commit. Kept in sync MECHANICALLY: rebuild_hstu_submission.py --strict runs update_release_manifest.py --verify, which fails the submission gate on any hash mismatch, so a manifested file cannot change without a --regen + commit. Data sections (splits, text_caches, result_families) are the unchanged v0.9-audit-evidence release assets, byte-verified at every --regen. The manifest cannot hash itself; its own commit is the immediate child of the state it describes.",
+  "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
+  "submission_docs": {
+    "PAPER_SUBMISSION.md": {
+      "sha256": "340407278a7480a6d254a28493dc830026a930b1569fcfc48b68504b7624b096",
+      "bytes": 117899
+    },
+    "PAPER_SUBMISSION.pdf": {
+      "sha256": "f7174bfca3bacc4ac345ca4f154fefaa01c2f817cc80ca521362f60c78f791b1",
+      "bytes": 810116
+    },
+    "PAPER_DRAFT.md": {
+      "sha256": "0ac946875087a4d2bf7deefcd8783be42a0162b36f595690ebf9089b370bbfcd",
+      "bytes": 139146
+    },
+    "CANONICAL_SUBMISSION.md": {
+      "sha256": "ea7b9182cc3223b625ff9c38394be072f218b1870c0f2d4605885bccc5ac0500",
+      "bytes": 4937
+    },
+    "THEIRS_ON_OURS_REPORT.md": {
+      "sha256": "8e98a19e5454aa2da6852ecc292c475932f7d198b052b56f458c1c767388759c",
+      "bytes": 22650
+    },
+    "PINNED_ENV_PARITY_REPORT.md": {
+      "sha256": "50a5276e770cfdbe27192b12886df500d7e84d4e3d64abc9823b1c72048d136e",
+      "bytes": 17177
+    },
+    "HSTU_PARITY_REPORT.md": {
+      "sha256": "808b3a8ab739fc77084ac43acf0dd2a470d04faad5566d82a7379d0e762dc2ea",
+      "bytes": 10908
+    },
+    "_bestrec_run/test_hstu_parity.py": {
+      "sha256": "adf28343d5a27841f97f12d680578ddb0e6d9029745608e21e55519aec59396c",
+      "bytes": 15533
+    },
+    "_bestrec_run/test_pinned_env_parity.py": {
+      "sha256": "bdc575d736d33f744788a19a70188a585e639a36da7f43ac1277a81f4addc7c2",
+      "bytes": 37349
+    },
+    "_bestrec_run/fbgemm_shims.py": {
+      "sha256": "bb661345a50e11c20ccd16dc9699884467dbbc137fb2b26893804de7aecc9d34",
+      "bytes": 9762
+    },
+    "_bestrec_run/rebuild_hstu_submission.py": {
+      "sha256": "831b6edb813efe93fd7886e55ce28997eaa10586188f7489ecca9dd9ae9055d3",
+      "bytes": 2195
+    },
+    "_bestrec_run/update_release_manifest.py": {
+      "sha256": "5de5cc1f1ea1e6281126c1a150c8db3c1f0107c0ba1399496c274048de3e384d",
+      "bytes": 9453
+    }
+  },
+  "pinned_parity_artifacts": {
+    "note": "Reproducible intermediates of test_pinned_env_parity.py (three-leg commands in PINNED_ENV_PARITY_REPORT.md section 3); archived as release asset pinned_env_parity_artifacts.zip on v0.9-audit-evidence. Source of truth is the script + commands.",
+    "files": {
+      "inenv_results.json": {
+        "sha256": "9352a8461102c3979f7a91d350120b74a396ebbe9048e81eb3c7d27860caa960",
+        "bytes": 6824
+      },
+      "replay_results_Linux-torch2.2.2pcpu-shims.json": {
+        "sha256": "b81197d181f7f7329881c108c88ffaac11f9651c0310f8a4d4f9e22cfec854ae",
+        "bytes": 9285
+      },
+      "replay_results_Windows-torch2.11.0pcu128-shims.json": {
+        "sha256": "75aae011977c02cd1a0ad87c5e1cc4d382c7c13f07156aca9108e3622f80d496",
+        "bytes": 10191
+      },
+      "pinned_ops.pt": {
+        "sha256": "d6bedad1f455fc0e3adaefc10bc1d398156d64a5557d6b7c63dfd1a6395b781c",
+        "bytes": 10857890
+      },
+      "pinned_block.pt": {
+        "sha256": "b36da427a45f938e739f5bfcd93542a8d07b82459413921c0e19dfcf597e7acd",
+        "bytes": 660670
+      },
+      "pinned_pip_freeze.txt": {
+        "sha256": "a18ceb06152aba79395657bb34905590a09a0da04dd2739356c99f9f97f64c32",
+        "bytes": 254
+      },
+      "setup_pinned_env.sh": {
+        "sha256": "560b0a7adc72dcd07984cc6dc39aad2aab89bcae58e631139d7154a31416eed3",
+        "bytes": 3362
+      },
+      "negative_control.py": {
+        "sha256": "0fad4a24aa2e563db0572772464730f1db730a7557362f0074facb5ce04676dc",
+        "bytes": 2154
+      },
+      "negative_control.log": {
+        "sha256": "e9381a4f58fa3d8618e55aeb057cdb10135573bd78c7557f1e96cf6ffb5979ba",
+        "bytes": 409
+      }
+    }
+  }
 }

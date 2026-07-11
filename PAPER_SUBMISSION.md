@@ -468,6 +468,7 @@ We hypothesize that the MLP adaptor's benefit comes from its expressive capacity
 - **Closing the gap to LIGER on Beauty_and_PC**: we do not, and the gap may be partially preprocessing-dependent.
 - **Beauty_and_PC improvement is statistically certified**: we have only n=2 seeds for the best variant; baseline is n=1.
 - **Category scope**: the headline causal-FIR evidence uses Video_Games and Musical_Instruments; Beauty_and_PC supports the tail-pattern null; Office_Products is descriptive (VOID under its prereg floor check; the anomaly is explained by §5.6's local comparator run and the VOID is deliberately retained, Appendix A.0). Other categories untested.
+- **Model-input hygiene** (a clarification, not a caveat): the canonical model consumes only item IDs, interaction timestamps, and frozen item-text embeddings; no outputs, scores, or embeddings of any baseline or comparator model enter the pipeline as inputs or features (the superseded earlier-stage fusion experiments that did are quarantined in the non-canonical track).
 
 ### 6.5 Limitations
 

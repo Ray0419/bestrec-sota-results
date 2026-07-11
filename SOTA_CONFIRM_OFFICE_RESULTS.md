@@ -1,4 +1,12 @@
 
+
+> **FINAL STATUS: OFFICE IS VOID UNDER THE PRE-REGISTERED FLOOR CHECK.** Any
+> `P2 DUAL GATE: PASS` lines below are arithmetic-only historical append blocks
+> (both CI lower bounds > 0.0271) and are **not claim approvals**. The floor check
+> failed (+44% above the published SASRec 0.0153); the anomaly is mechanistically
+> explained (`THEIRS_ON_OURS_REPORT.md` §4.1, paper Appendix A.0) and the VOID is
+> deliberately retained. Nothing in this file counts Office as a confirmatory pass.
+
 ## STATS + P1 PREDICTION (recorded BEFORE any training run)
 
 - splits sha256: train `95d3db37ab29157c...` valid `a0bd9331846c56e0...` test `92a9a602dd6fa73c...`

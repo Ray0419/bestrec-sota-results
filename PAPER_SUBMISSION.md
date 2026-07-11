@@ -261,7 +261,7 @@ What this paper provides relative to HSTU-BLaIR:
 
 What this paper does NOT provide:
 - A new leaderboard result; HSTU-BLaIR's reported 0.0760 remains the stronger external reference.
-- A faithful HSTU implementation; we completed only an SM120 compatibility-port reproduction with caveats. A faithful pinned-environment reproduction on compatible hardware is future work.
+- A faithful pinned-environment end-to-end HSTU-BLaIR reproduction. (The encoder core block is bitwise-exact against the reference research code, §3.2, and the reference implementation's research path runs locally under data-movement shims as environment-caveated single-run regenerations, §5.6 — but a pinned-GPU end-to-end reproduction on compatible hardware remains future work.)
 
 **Older published baselines on different protocols** (NOT directly comparable; for context only):
 
@@ -276,10 +276,10 @@ What this paper does NOT provide:
 
 **Comparability caveat**: TIGER and LIGER evaluate on the older Amazon Reviews 2014 dataset, not AR2023. The BLaIR paper does evaluate on AR2023 Video_Games but uses a by-timestamp split (no k-core filter) and a different downstream architecture (UniSRec), producing numbers ~3-4× lower than our 5-core LLOO numbers. The 5-core filter removes cold users and items, which substantially eases the benchmark relative to the by-timestamp variant. We therefore do **not** claim SOTA over TIGER/LIGER/BLaIR. HSTU-BLaIR is the relevant stronger AR2023 Video_Games 5-core reference and blocks a SASRec-SBERT SOTA claim.
 
-**2026 semantic-ID / generative retrieval line.** Two recent semantic-ID methods report Amazon Reviews 2023 Musical_Instruments numbers: **ReSID** (arXiv:2602.02338) reports MI NDCG@10 = 0.0346 in its main ranking table under its own filtering; **ChronoSID** (arXiv:2607.03918), in its output-level MI table (five-run averages), reports 0.0345 for ChronoSID versus 0.0325 for its ReSID reproduction. Each uses the SID line's own filtered universe (57,359 users / 23,742 items / 490,522 interactions), which differs from the 57,439 / 24,587 / ~511,835 HSTU-BLaIR-family statistics we and the comparator share; metrics and protocols are not interchangeable across the two lines. These setups are not split-identical to ours, so we discuss them as the current generative-retrieval line rather than claiming against them; within the HSTU-BLaIR protocol family (AR2023 5-core LLOO full-catalog), the published HSTU-BLaIR 0.0406 remains the strongest Musical_Instruments reference we know of, and it is the point estimate our pre-registered confirmation exceeds (§5.2).
+**2026 semantic-ID / generative retrieval line.** Recent 2026 work reports Amazon Reviews 2023 numbers in three distinct, non-interchangeable setups. (i) **Same-statistics AR2023 5-core LLOO** (the HSTU-BLaIR protocol family we evaluate in): the concurrent preprints **SID-MLP** (arXiv:2605.12617) and **Latte** (arXiv:2605.06331) report leave-one-out numbers on the same MI/VG dataset statistics (Latte reports MI NDCG@10 0.0331 and VG 0.0515). We cite them for completeness of the protocol family and make **no comparative claim** against unreviewed concurrent work; their published point estimates do not alter the comparator choice — the published HSTU-BLaIR 0.0406 remains the strongest Musical_Instruments reference we know of in this family, and it is the point estimate our pre-registered confirmation exceeds (§5.2). (ii) **The SID line's own filtered universe**: **ReSID** (arXiv:2602.02338) reports MI NDCG@10 = 0.0346 in its main ranking table under its own filtering; **ChronoSID** (arXiv:2607.03918), in its output-level MI table, reports 0.0345 for ChronoSID versus 0.0325 for its ReSID reproduction. Each uses the SID line's filtered universe (57,359 users / 23,742 items / 490,522 interactions), which differs from the 57,439 / 24,587 / ~511,835 HSTU-BLaIR-family statistics we and the comparator share; metrics and protocols are not interchangeable across the two lines, so we discuss this line rather than claim against it. (iii) **Older Amazon-2014 protocols**: TIGER/LIGER numbers predate AR2023 and are not comparable (§2.1, Appendix A.3).
 
 What we *can* claim:
-- Among methods evaluated on the AR2023 5-core LLOO protocol (where we are the first to report numbers), our SASRec-SBERT is a strong, simple, compact baseline using only 11.6M parameters and ~10 min of training on a single consumer GPU.
+- Among our HSTU-style full-catalog AR2023 5-core LLOO runs, SASRec-SBERT is a strong, simple, compact baseline — with no priority claim for the protocol: HSTU-BLaIR published AR2023 5-core numbers before this work, and 2026 preprints report further AR2023 LLOO numbers on the same dataset statistics (the concurrent-preprint paragraph in §5.1). It is using only 11.6M parameters and ~10 min of training on a single consumer GPU.
 - Compared to a popularity floor (0.0125), our model achieves a 4.1× improvement, indicating the model is learning meaningful sequential structure rather than just popularity.
 
 ### 5.2 The causal FIR filter carries the cross-category generalization (Musical_Instruments)
@@ -517,21 +517,34 @@ We thank the Amazon Reviews 2023 maintainers (Hou et al., 2024) for releasing th
 - Gavish, M., Donoho, D. L., 2014. The Optimal Hard Threshold for Singular Values is 4/√3. IEEE Transactions on Information Theory. *(optimal-shrinkage rank, Fig. 3)*
 - He, R., McAuley, J., 2016. Ups and Downs: Modeling the Visual Evolution of Fashion Trends with One-Class Collaborative Filtering. WWW. *(source of the Amazon 2014 Beauty subset used by TIGER/LIGER)*
 - Hou, Y., He, Z., McAuley, J., Zhao, W. X., 2022. Towards Universal Sequence Representation Learning for Recommender Systems (UniSRec). KDD.
+- Hou, Y., He, Z., McAuley, J., Zhao, W. X., 2023. Learning Vector-Quantized Item Representation for Transferable Sequential Recommenders (VQ-Rec). WWW. *(PQ-code item representations; TAPE novelty boundary, Table 0)*
 - Hou, Y., Li, J., He, Z., Yan, A., Chen, X., McAuley, J., 2024. Bridging Language and Items for Retrieval and Recommendation (BLaIR). arXiv:2403.03952.
 - James, W., Stein, C., 1961. Estimation with Quadratic Loss. 4th Berkeley Symp. *(with Stein, C., 1956, 3rd Berkeley Symp.)*
 - Kang, W.-C., McAuley, J., 2018. Self-Attentive Sequential Recommendation (SASRec). ICDM.
+- Kim, K., Hyun, D., Yun, S., Park, C., 2023. MELT: Mutual Enhancement of Long-Tailed User and Item for Sequential Recommendation. SIGIR. *(long-tail method; earlier-stage proxy experiments, non-canonical track)*
+- Li, J., Wang, Y., McAuley, J., 2020. Time Interval Aware Self-Attention for Sequential Recommendation (TiSASRec). WSDM. *(time-interval attention; time-bias attribution, Table 0)*
 - Liu, 2025. HSTU-BLaIR: Lightweight Contrastive Text Embedding for Generative Sequential Recommendation. arXiv:2504.10545. *(the external AR2023 5-core reference family: Video_Games 0.0760, Musical_Instruments 0.0406, Office_Products 0.0271; the pinned environment is not installable on our hardware — the research path was executed locally via data-movement shims, §5.6, regenerating the Musical_Instruments row)*
 - Marchenko, V. A., Pastur, L. A., 1967. Distribution of Eigenvalues for Some Sets of Random Matrices. Matematicheskii Sbornik. *(MP bulk edge, Fig. 3 spectral-irreducibility analysis)*
+- Melchiorre, A. B., Rekabsaz, N., Ganhör, C., Schedl, M., 2022. ProtoMF: Prototype-based Matrix Factorization for Effective and Explainable Recommendations. RecSys. *(prototype methods; TAPE novelty boundary, Table 0)*
 - Rajput, S. et al., 2023. Recommender Systems with Generative Retrieval (TIGER). NeurIPS.
 - Reimers, N., Gurevych, I., 2019. Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. EMNLP.
 - Shaw, P., Uszkoreit, J., Vaswani, A., 2018. Self-Attention with Relative Position Representations. NAACL. *(relative-position attention bias)*
 - Shin, Y. et al., 2024. An Attentive Inductive Bias for Sequential Recommendation beyond the Self-Attention (BSARec). AAAI. arXiv:2312.10325. *(bidirectional FFT filter; our causal-filter adaptation)*
 - Sun, F. et al., 2019. BERT4Rec: Sequential Recommendation with Bidirectional Encoder Representations from Transformer. CIKM.
 - Szegedy, C. et al., 2016. Rethinking the Inception Architecture for Computer Vision. CVPR. *(label smoothing)*
+- Volkovs, M., Yu, G., Poutanen, T., 2017. DropoutNet: Addressing Cold Start in Recommender Systems. NeurIPS. *(cold-start baseline; earlier-stage experiments, non-canonical track)*
 - Wang, W. et al., 2020. MiniLM: Deep Self-Attention Distillation for Task-Agnostic Compression of Pre-Trained Transformers. NeurIPS. arXiv:2002.10957.
+- Wei, Y., Wang, X., Li, Q., Nie, L., Li, Y., Li, X., Chua, T.-S., 2021. Contrastive Learning for Cold-Start Recommendation (CLCRec). ACM MM. *(cold-start baseline; earlier-stage experiments, non-canonical track)*
 - Yang, J. et al., 2024. Unifying Generative and Dense Retrieval for Sequential Recommendation (LIGER). arXiv:2411.18814.
 - Zhai, J. et al., 2024. Actions Speak Louder than Words: Trillion-Parameter Sequential Transducers for Generative Recommendations (HSTU). ICML. *(the published architecture our HSTU-style pure-PyTorch implementation is based on)*
 - Zhou, K. et al., 2022. Filter-enhanced MLP is All You Need for Sequential Recommendation (FMLP-Rec). WWW. arXiv:2202.13556. *(bidirectional learnable frequency filter; our causal-filter adaptation)*
+
+*Concurrent 2026 preprints (unreviewed; cited by arXiv identifier for protocol-family completeness, §5.1 — no comparative claim is made against them):*
+
+- ReSID. arXiv:2602.02338, 2026. *(SID-line MI comparator context; own filtered universe)*
+- ChronoSID. arXiv:2607.03918, 2026. *(SID-line MI comparator context; own filtered universe)*
+- SID-MLP. arXiv:2605.12617, 2026. *(AR2023 5-core LLOO, same MI/VG dataset statistics)*
+- Latte. arXiv:2605.06331, 2026. *(AR2023 5-core LLOO, same MI/VG dataset statistics)*
 
 ---
 
@@ -616,9 +629,9 @@ Earlier versions of this work cited an apparent 57% gap to LIGER on Beauty_and_P
 
 3. **TIGER reports on Amazon 2014 only.** The TIGER paper (Rajput et al., 2023) reports NDCG@10 = 0.0384 on Amazon Beauty 2014 with their 5-core, also not on AR2023.
 
-4. **BLaIR (Hou et al., 2024) is the only published work using AR2023.** Their Beauty subset is "All_Beauty" (not "Beauty_and_Personal_Care") and their preprocessing is by-timestamp 8:1:1 with no k-core filter. They report NDCG@10 on All_Beauty in the range 0.0177-0.0241 across various LLM encoders (Table 8). With a UniSRec downstream model, their best All_Beauty number is 0.0241 (gemini-embedding). They do not report on Beauty_and_Personal_Care.
+4. **BLaIR (Hou et al., 2024) introduced AR2023 — historical note, superseded: the AR2023 5-core literature has since grown (HSTU-BLaIR and 2026 preprints; §5.1).** Their Beauty subset is "All_Beauty" (not "Beauty_and_Personal_Care") and their preprocessing is by-timestamp 8:1:1 with no k-core filter. They report NDCG@10 on All_Beauty in the range 0.0177-0.0241 across various LLM encoders (Table 8). With a UniSRec downstream model, their best All_Beauty number is 0.0241 (gemini-embedding). They do not report on Beauty_and_Personal_Care.
 
-We therefore cannot make a defensible gap claim to TIGER/LIGER/BLaIR on AR2023 Beauty_and_Personal_Care 5-core, because **no comparable published number exists**. Our 0.01946 (2-seed mean) is the first such reported number, to our knowledge. We provide it as a reference baseline rather than as a SOTA-improvement claim.
+We therefore cannot make a defensible gap claim to TIGER/LIGER/BLaIR on AR2023 Beauty_and_Personal_Care 5-core, because **we did not find a comparable published number** (a search statement as of this writing, not a priority claim — AR2023 preprints are appearing rapidly; §5.1). We provide our 0.01946 (2-seed mean) as a reference baseline rather than as a SOTA-improvement claim.
 
 A future apples-to-apples comparison would require either:
 - Running TIGER/LIGER on our 5-core preprocessing (multi-week effort for faithful reproduction), or

@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "815259016ca78c11077e7834040eb25a76f3873a",
+  "git_commit": "65311663b4ab52be1d7adbc0059793e8fecfd941",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -182,8 +182,8 @@
       "bytes": 140354
     },
     "CANONICAL_SUBMISSION.md": {
-      "sha256": "ad3c63d584057b02c3c5b4dcf46137044a29cd24b6ac346c67bcff141d8c07a7",
-      "bytes": 5151
+      "sha256": "4698ddf4872b08b12c05f9cd31d79ca2a5c8f37549851af13dfa055d80a73954",
+      "bytes": 5287
     },
     "THEIRS_ON_OURS_REPORT.md": {
       "sha256": "615c2c0c762e9d8a92dc29c3b7f593680304b8f2853a65d0acca56f6d2c344a7",
@@ -214,8 +214,8 @@
       "bytes": 2195
     },
     "_bestrec_run/update_release_manifest.py": {
-      "sha256": "5de5cc1f1ea1e6281126c1a150c8db3c1f0107c0ba1399496c274048de3e384d",
-      "bytes": 9453
+      "sha256": "0281b6e1586bdddfa6d3916be79c003d33472fe7a720d3658853c89dcfbbad4a",
+      "bytes": 12051
     }
   },
   "pinned_parity_artifacts": {
@@ -258,5 +258,71 @@
         "bytes": 409
       }
     }
-  }
+  },
+  "reference_runs": {
+    "note": "Git-tracked source artifacts of the local reference-implementation runs (THEIRS_ON_OURS_REPORT.md): metrics.jsonl / run_meta.json / gin copy / intended-TB-path / trainer log per run. Consumed by the theirs_on_ours family of _bestrec_run/hstu_results_manifest.json.",
+    "files": {
+      "_bestrec_run/theirs_runs/music_hstu_blair/hstu-sampled-softmax-n512-blair.gin": {
+        "sha256": "07ed8a4f293edaa6e645334310efdd722554e7101991a68b89c7edd4050d1fce",
+        "bytes": 1288
+      },
+      "_bestrec_run/theirs_runs/music_hstu_blair/metrics.jsonl": {
+        "sha256": "223977eb5065d492ad160ae1cd4b05193796f540b8450f0adcc40a3348e547b7",
+        "bytes": 77524
+      },
+      "_bestrec_run/theirs_runs/music_hstu_blair/run_meta.json": {
+        "sha256": "05e1a91034cbff7ee57f9166088f6be9c42f15b9738343c01d90c1e579f48d0b",
+        "bytes": 1439
+      },
+      "_bestrec_run/theirs_runs/music_hstu_blair/tb_logdir_intended.txt": {
+        "sha256": "8e82550211657d672f1e4e82039a8992ed7bb5f612c369d672a71532278ea05d",
+        "bytes": 154
+      },
+      "_bestrec_run/theirs_runs/office_sasrec_final/metrics.jsonl": {
+        "sha256": "5571706444955d510d7a25bddc32d11926382e5928647cd11210901c3cf9f329",
+        "bytes": 94985
+      },
+      "_bestrec_run/theirs_runs/office_sasrec_final/run_meta.json": {
+        "sha256": "6af8bda041cca063c37e8b4af6a8596fe32e59275f887bc463eea23a0a57c427",
+        "bytes": 1452
+      },
+      "_bestrec_run/theirs_runs/office_sasrec_final/sasrec-sampled-softmax-n512-final.gin": {
+        "sha256": "3c5215eb92144072fb702883aca74911c6f256ffef5a2874344b97bc7588c213",
+        "bytes": 1353
+      },
+      "_bestrec_run/theirs_runs/office_sasrec_final/tb_logdir_intended.txt": {
+        "sha256": "9e1bb969c19fc3ddff9575f5a2f4f0725d15ffd28f473553ba2b74ba774257f6",
+        "bytes": 157
+      },
+      "_bestrec_run/theirs_runs/office_hstu_blair/hstu-sampled-softmax-n512-blair.gin": {
+        "sha256": "6fd33b706f23e03bdf295fc8dff50a720d3318a53fe50e3dd6473e67e50e06f3",
+        "bytes": 1289
+      },
+      "_bestrec_run/theirs_runs/office_hstu_blair/metrics.jsonl": {
+        "sha256": "a26cfcd29f7915e5607b3271bfa6c2986d22dbb6019fa758501c8c425edc4e7a",
+        "bytes": 94940
+      },
+      "_bestrec_run/theirs_runs/office_hstu_blair/run_meta.json": {
+        "sha256": "c1e15580030b9c160d944a64bda9d3436acc96305c31cfc3d1b039ae50f414d8",
+        "bytes": 1444
+      },
+      "_bestrec_run/theirs_runs/office_hstu_blair/tb_logdir_intended.txt": {
+        "sha256": "9f02f2154eab10735d0dd87077f3203a4c7a35afeda6746956c442af963e7015",
+        "bytes": 155
+      },
+      "_bestrec_run/theirs_runs/music_hstu_blair.log": {
+        "sha256": "79d832b2ad3ca1d31840353286ad92b6679172e617f3c9c1aeb840acb92064d6",
+        "bytes": 21589
+      },
+      "_bestrec_run/theirs_runs/office_sasrec_final.log": {
+        "sha256": "bcb8b6270123ba2b11843ac8be9b5cb117ff547deaf3d2c527d7bf37c484b100",
+        "bytes": 29597
+      },
+      "_bestrec_run/theirs_runs/office_hstu_blair.log": {
+        "sha256": "5eef1fb94935ae49cf50077d1dfd4f3845a693827c41389d4494d19dd849b141",
+        "bytes": 28304
+      }
+    }
+  },
+  "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2."
 }

@@ -4,6 +4,29 @@ This response file is cumulative, mirroring `PAPER_REVIEW_AUDIT.md`: each audit 
 timestamped response section below. The newest section always addresses the audit's newest
 "Audit Run" section and its updated risk list.
 
+## Response — to Audit Run 2026-07-12 08:31 (responded 2026-07-12, same day)
+
+Verdict received: prior literature-framing risk confirmed fixed in source and PDF; remaining
+top-journal risk is "polish, not result invalidation". Both confirmed problems fixed; the
+flagged number re-verified; the scoping question answered.
+
+| # | Finding | Resolution |
+|---|---|---|
+| 1 | Four 2026 preprint references are bare arXiv IDs | **Upgraded to full bibliographic entries with real metadata fetched from the arXiv listings** (2026-07-12) — never invented: SID-MLP = Guo, Hou, Ju, Shah, McAuley, "MLPs are Efficient Distilled Generative Recommenders"; Latte = Hou, Kim, Ju, Escoto, Shah, McAuley, "Expressiveness Limits of Autoregressive Semantic ID Generation in Generative Recommendation"; ChronoSID = Huang, Gao, Huang, Sheng, Yao, "Beyond Item Order: Temporal Gap Tokenization…"; ReSID = Liang et al. (13 authors), "Rethinking Generative Recommender Tokenizer…". The unreviewed-concurrent-work fence is retained and now states the metadata-verification date. |
+| 2 | Working tree intentionally dirty (auditor's regenerated PDF + manifest) | Folded in and superseded: the reference edits forced a fresh render + manifest regen anyway; PDF (38 pp, scan CLEAN), `RELEASE_MANIFEST.json`, and the audit file are **committed together** in one commit, keeping the PDF and manifest boundary consistent as required. |
+| R | Latte MI 0.0331 / VG 0.0515 extraction brittle | **Re-verified directly against Latte's Table 1** (row "Latte": 0.0331* Instruments, 0.0515* Games) — the paper's quoted values are correct; the reference entry now notes the verification. |
+
+**Concrete-fix 2 (recent-preprint scoping) — decided:** the paper explicitly scopes its
+comparisons to the HSTU-BLaIR protocol family (same-statistics AR2023 5-core LLOO) and discusses
+the SID-line filtered universe as non-interchangeable context; other 2026 AR2023 preprints are
+covered by the standing unreviewed-concurrent-work fence rather than enumerated. A fresh
+freshness triage is committed to as part of the venue-formatting step, once the maintainer picks
+the venue (the remaining open question, together with the template).
+
+**Verification:** strict chain re-run — SUBMISSION BUILD GREEN (164 cells, 0/0, 12/12 families)
+→ RELEASE MANIFEST VERIFY OK (111 files) → MI dual gate PASS → Office VOID/descriptive →
+**SUBMISSION REBUILD: PASS**, exit 0.
+
 ## Response — to Audit Run 2026-07-12 07:28 (responded 2026-07-12, same day)
 
 Verdict received: scientific core "conditionally defensible"; literature framing needs revision.

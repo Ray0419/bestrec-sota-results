@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "a15bfe89eec40c65ffebe5c1badadc360f0c093a",
+  "git_commit": "815259016ca78c11077e7834040eb25a76f3873a",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -91,7 +91,7 @@
       "sha256": "eb7d57ae024a2d84153b6d0886a1452d0b25b55be63fc347e594ff74f61e7230"
     },
     "_bestrec_run/build_hstu_tables.py": {
-      "sha256": "e700cfcabc35d76f6c593a9ef5127480eb4cb23a206cf08656de5e11bb3c5e08"
+      "sha256": "f830a5a47d21e0f0ff0f1b1e528d196deae8fc588736fc47694cdb4c85cd9191"
     },
     "_bestrec_run/test_hstu_parity.py": {
       "sha256": "adf28343d5a27841f97f12d680578ddb0e6d9029745608e21e55519aec59396c"
@@ -170,24 +170,24 @@
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     "PAPER_SUBMISSION.md": {
-      "sha256": "340407278a7480a6d254a28493dc830026a930b1569fcfc48b68504b7624b096",
-      "bytes": 117899
+      "sha256": "58d4ca361a3de796442b2ee494ae2e657ab3d7a9f2cc25247d695b294af1bd3b",
+      "bytes": 119107
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "f7174bfca3bacc4ac345ca4f154fefaa01c2f817cc80ca521362f60c78f791b1",
-      "bytes": 810116
+      "sha256": "e00a67acc4d482f7fdf18014e94c345d9825b84e0ea3a741a0bfe81f675b464f",
+      "bytes": 813880
     },
     "PAPER_DRAFT.md": {
-      "sha256": "0ac946875087a4d2bf7deefcd8783be42a0162b36f595690ebf9089b370bbfcd",
-      "bytes": 139146
+      "sha256": "dec79634ff60f28b928d8f0746cd56f7e0e1183e76a61b5fff83be287d2d5b4b",
+      "bytes": 140354
     },
     "CANONICAL_SUBMISSION.md": {
-      "sha256": "ea7b9182cc3223b625ff9c38394be072f218b1870c0f2d4605885bccc5ac0500",
-      "bytes": 4937
+      "sha256": "ad3c63d584057b02c3c5b4dcf46137044a29cd24b6ac346c67bcff141d8c07a7",
+      "bytes": 5151
     },
     "THEIRS_ON_OURS_REPORT.md": {
-      "sha256": "8e98a19e5454aa2da6852ecc292c475932f7d198b052b56f458c1c767388759c",
-      "bytes": 22650
+      "sha256": "615c2c0c762e9d8a92dc29c3b7f593680304b8f2853a65d0acca56f6d2c344a7",
+      "bytes": 24043
     },
     "PINNED_ENV_PARITY_REPORT.md": {
       "sha256": "50a5276e770cfdbe27192b12886df500d7e84d4e3d64abc9823b1c72048d136e",

@@ -286,7 +286,9 @@ locally on the exact corpus its own pipeline reproduces (24,587 items,
 57,439 users), regenerates it within a few percent (exactly, at the level
 of run-internal epoch variance).
 
-### 4.3 Stretch goals (not run; scripts staged)
+### 4.3 Stretch goals — status update (round-3 audit F4 disclosure)
+
+**DISCLOSURE (2026-07-12):** the Office_Products HSTU-BLaIR run described below as staged was **launched on 2026-07-11 (~11:40Z)** and is **in progress** at the time of the round-3 audit (their config `hstu-sampled-softmax-n512-blair.gin`, 101 epochs, run dir `theirs_runs/office_hstu_blair/`). It will be integrated into this report, the paper's Appendix A.0, and the artifact manifest as **descriptive/non-confirmatory** Office evidence with the same VOID caveat when it completes — regardless of where it lands. It is not, and will not be, part of any counted claim. (Original section text below, retained verbatim.)
 
 Office HSTU-BLaIR (published NDCG@10 .0271) and Video_Games HSTU-BLaIR
 (published .0760) were not run: the two priority questions were answered and
@@ -362,7 +364,7 @@ caveats in Section 5); (2) published Office rows from this table appear
 conservative in this environment, which should temper any pass/fail
 comparisons made against them at the third decimal; (3) the full recipe
 (shims + launchers + preprocessing with SHA256 provenance) is reusable for
-the remaining configs (`theirs_run_office_hstu_blair.sh` staged).
+the remaining configs (`theirs_run_office_hstu_blair.sh` — launched 2026-07-11, in progress; see the §4.3 disclosure).
 
 Artifacts: `_bestrec_run/theirs_runs/{office_sasrec_final,music_hstu_blair}/`
 (metrics.jsonl with hr@{1..1000}/ndcg@{1..200}/mrr per eval, run_meta.json,

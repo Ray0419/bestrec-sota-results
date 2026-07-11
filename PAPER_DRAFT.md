@@ -433,7 +433,7 @@ All entries are best-by-val test NDCG@10, full-catalog eval (n_eval = 94,762 on 
 | X1 frequency-adaptive James–Stein shrinkage | representation regularizer | V2 0.0674±0.0003 | 0.0673 (1), within band | **c ≈ 0** (λ_max ≈ 0.004) → off | Rejected — model voted shrinkage off |
 | Y1 heat-kernel/manifold label smoothing | loss-target reshaping | V2 0.0674±0.0003 | 0.06653 (1), ≤ band | **T → 0.00061** (< init) → delta target | Rejected — text-manifold geometry voted off |
 | Z1 forced ID→text routing | representation routing | V2 | tail −75% (globally dead) | forced gate | Rejected — globally harmful |
-| CF1 cue-fusion gate | representation fusion | V2 / Beauty | flat/dead (both datasets) | gate → 0 | Rejected — new-lever search closed |
+| CF1 cue-fusion gate | representation fusion | V2 / MI | flat/dead (both datasets) | gate → 0 | Rejected — new-lever search closed |
 | conn-gate connectivity-gated cold-start ID↔text fusion | representation fusion/routing | V2 text stack, MI | **tail** Δ +0.0001 ± 0.0003, paired 95% CI [−0.00025, +0.00045] (5); overall flat | **α → 0.0011 < init 0.0025** (voted off) | Rejected — operationalizes the intervention-supported connectivity tail mechanism, but is not actionable (CI includes 0) |
 | max_seq_len 200 / seq > 50 | sequence length | SBERT stack | ~0 (1) | n/a | Rejected — sequences short post-5-core |
 | cosine scoring | scoring function | winning op-point | ≤ 0 (1) | n/a | Rejected — dot-product better at the op-point |

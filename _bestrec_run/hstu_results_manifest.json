@@ -10173,7 +10173,7 @@
      "precision": 4
     }
    ],
-   "notes": "PAPER WORDING MISMATCH: Table 2 says 'K=1024 negatives' but the artifact (results_Q1_sampled512dot_VG.json) has sampled_negs=512. The delta value itself matches. K=1024 belongs to the appendix Beauty scan, not this VG row.",
+   "notes": "RESOLVED 2026-07-11 (repair pass P10): Table 2 once said 'K=1024 negatives'; the paper now prints K=512, matching the artifact (results_Q1_sampled512dot_VG.json, sampled_negs=512). K=1024 belongs to the appendix Beauty scan, not this VG row.",
    "recomputed": {
     "delta": -0.002553568199508742,
     "a_mean": 0.06131277873418368,
@@ -11296,7 +11296,7 @@
      "mode": "bound_abs"
     }
    ],
-   "notes": "PAPER WORDING MISMATCH: the Table-2 base column reads 'V2 / Beauty', but the second CF1 dataset on disk is Musical_Instruments (results_CF1_cuefusion_MI*), not Beauty. Flat/dead verdict unchanged.",
+   "notes": "RESOLVED 2026-07-12 (round-3 audit F5): the Table-2 base column read 'V2 / Beauty' but the second CF1 dataset on disk is Musical_Instruments (results_CF1_cuefusion_MI*); the paper row now prints 'V2 / MI'. Flat/dead verdict unchanged.",
    "recomputed": {
     "delta": -0.00038453316009000316,
     "a_mean": 0.06692774716653745,
@@ -12215,7 +12215,7 @@
      "precision": 4
     }
    ],
-   "notes": "The prereg comparability condition (SOTA_CONFIRM_PREREG_OFFICE.md: floor 'must be at or below' the published-SASRec neighborhood) FAILED: 0.02208 is +44% above published 0.0153, so the Office second-category pass is VOID under the prereg as written (paper S5.2 discloses this; matched comparator-baseline rerun in progress). Floor is read from best_test exactly as adjudicated by office_prereg_tools.py (the floor rule predates the final-full headline rule and was scored on best_test).",
+   "notes": "The prereg comparability condition (SOTA_CONFIRM_PREREG_OFFICE.md: floor 'must be at or below' the published-SASRec neighborhood) FAILED: 0.02208 is +44% above published 0.0153, so the Office second-category pass is VOID under the prereg as written (paper S5.2/Appendix A.0 disclose this; the matched comparator-baseline run is COMPLETE — their own SASRec run locally lands +13.9% above its published row, THEIRS_ON_OURS_REPORT.md S4.1 — and the VOID is deliberately retained). Floor is read from best_test exactly as adjudicated by office_prereg_tools.py (the floor rule predates the final-full headline rule and was scored on best_test).",
    "status_note": "floor check FAILED vs prereg condition",
    "recomputed": {
     "value": 0.0220777148309893

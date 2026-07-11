@@ -34,6 +34,11 @@ def main():
         src = io.open(ROOT / "_bestrec_run" / "build_hstu_tables.py", encoding="utf-8").read()
         build_args.append("--strict-submission" if "--strict-submission" in src else "--submission")
     ok &= run("Artifact-graph table build" + (" (strict)" if STRICT else ""), build_args)
+    if STRICT:
+        # round-3 audit F1: the release manifest must describe the submitted
+        # tree; verify file-by-file, fail closed on any drift
+        ok &= run("Release-manifest verification",
+                  ["_bestrec_run/update_release_manifest.py", "--verify"])
     ok &= run("MI V2 gate adjudication", ["_bestrec_run/summarize_sota_confirm_v2.py"])
     # Office is VOID/descriptive under its prereg floor check — report, non-gating
     run("Office adjudication (descriptive; VOID under prereg floor check)",

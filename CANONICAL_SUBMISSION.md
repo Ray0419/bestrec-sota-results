@@ -53,9 +53,12 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
   `theirs_*.py` (`THEIRS_ON_OURS_REPORT.md`)
 - Adjudicators: `summarize_sota_confirm_v2.py`, `office_prereg_tools.py` (idempotent appends;
   output carries the VOID banner)
-- Release/provenance: `RELEASE_MANIFEST.json` (split/cache/protocol/result hashes; regenerated
-  at the submitted commit) + GitHub releases `v0.9-audit-evidence` (data/result assets) and
-  `v1.0-deposit` (DOI-ready archival bundle; `DOI_DEPOSIT_INSTRUCTIONS.md`)
+- Release/provenance: `RELEASE_MANIFEST.json` — split/cache/protocol/result AND
+  submission-doc/PDF/parity-artifact hashes, kept in sync **mechanically**: the strict
+  wrapper runs `update_release_manifest.py --verify` and fails the gate on any drift;
+  regenerate with `--regen` (+ commit together) whenever a manifested file changes.
+  GitHub releases: `v0.9-audit-evidence` (data/result/parity assets) and `v1.0-deposit`
+  (DOI-ready archival bundle; `DOI_DEPOSIT_INSTRUCTIONS.md`)
 - Audits + responses: `CLAUDE_SOTA_*AUDIT*.md`, `STRICT_*AUDIT*.md` (incl.
   `STRICT_RESUBMISSION_AUDIT_ROUND2_2026-07-11.md`), `RESPONSE_TO_*.md`
 

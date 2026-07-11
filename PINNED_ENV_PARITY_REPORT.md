@@ -202,6 +202,8 @@ cross-stack). Artifacts (gitignored scratch,
 `replay_results_Windows-torch2.11.0pcu128-shims.json`, `negative_control.{py,log}`.
 WSL env is reproducible from scratch via `setup_pinned_env.sh` (uv; ~2 minutes).
 
+**Artifact status (round-3 audit F3):** the scratch files above are **reproducible intermediates** — the source of truth is `_bestrec_run/test_pinned_env_parity.py` plus the three-leg commands in section 3. They are additionally archived as the release asset `pinned_env_parity_artifacts.zip` on `v0.9-audit-evidence` (SHA256 `f469d3d849fe2049c8cf059b880eebfd6032d9c6c58d99b03a13c052159fec4b`), and the key outputs are hash-manifested in `RELEASE_MANIFEST.json` under `pinned_parity_artifacts` (verified by `update_release_manifest.py --verify`, which the strict rebuild wrapper runs).
+
 ## 6. Findings and notes
 
 1. **Pinned-binary layout restrictions** (Section 4.1): fbgemm 0.6.0 CPU rejects unflattened

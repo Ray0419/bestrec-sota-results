@@ -1243,10 +1243,10 @@ def build_spec():
                   [L1], "best_val", {"file": L1},
                   [chk("value", 0.0725, 4)], 1, expl))
     C.append(t2delta("t2.sampled", "Sampled softmax (Q1, sampled_negs=512)", Q1, H2, -0.0026, 4,
-                     notes="PAPER WORDING MISMATCH: Table 2 says 'K=1024 negatives' but the "
-                           "artifact (results_Q1_sampled512dot_VG.json) has sampled_negs=512. "
-                           "The delta value itself matches. K=1024 belongs to the appendix "
-                           "Beauty scan, not this VG row."))
+                     notes="RESOLVED 2026-07-11 (repair pass P10): Table 2 once said 'K=1024 "
+                           "negatives'; the paper now prints K=512, matching the artifact "
+                           "(results_Q1_sampled512dot_VG.json, sampled_negs=512). K=1024 "
+                           "belongs to the appendix Beauty scan, not this VG row."))
     C.append(t2delta("t2.dualtext", "Dual text encoder SBERT+BLaIR (O1)", O1, H2, -0.0014, 4))
     C.append(t2delta("t2.blair", "BLaIR text encoder swap (N1)", N1, H2, -0.0013, 4))
     C.append(t2delta("t2.gd1", "GD1 spectral-shrink prior", GD1, V25[0], -0.003, 3,
@@ -1311,9 +1311,10 @@ def build_spec():
     C.append(cell("t2.cf1.vg", "table2", "CF1 cue-fusion gate (VG)", "delta NDCG@10 vs V2 seed08",
                   [CF1VG, V25[0]], "delta_means", {"a": [CF1VG], "b": [V25[0]]},
                   [chk("delta", 0.0005, mode="bound_abs")], 1, expl,
-                  notes="PAPER WORDING MISMATCH: the Table-2 base column reads 'V2 / Beauty', "
-                        "but the second CF1 dataset on disk is Musical_Instruments "
-                        "(results_CF1_cuefusion_MI*), not Beauty. Flat/dead verdict unchanged."))
+                  notes="RESOLVED 2026-07-12 (round-3 audit F5): the Table-2 base column read "
+                        "'V2 / Beauty' but the second CF1 dataset on disk is "
+                        "Musical_Instruments (results_CF1_cuefusion_MI*); the paper row now "
+                        "prints 'V2 / MI'. Flat/dead verdict unchanged."))
     C.append(cell("t2.cf1.mi", "table2", "CF1 cue-fusion gate (MI, 5-seed)",
                   "paired delta NDCG@10 vs MI V2 k16", CF1MI + MIK16, "paired_delta",
                   {"a": CF1MI, "b": MIK16},
@@ -1426,7 +1427,10 @@ def build_spec():
                         "floor 'must be at or below' the published-SASRec neighborhood) "
                         "FAILED: 0.02208 is +44% above published 0.0153, so the Office "
                         "second-category pass is VOID under the prereg as written (paper "
-                        "S5.2 discloses this; matched comparator-baseline rerun in progress). "
+                        "S5.2/Appendix A.0 disclose this; the matched comparator-baseline "
+                        "run is COMPLETE — their own SASRec run locally lands +13.9% above "
+                        "its published row, THEIRS_ON_OURS_REPORT.md S4.1 — and the VOID is "
+                        "deliberately retained). "
                         "Floor is read from best_test exactly as adjudicated by "
                         "office_prereg_tools.py (the floor rule predates the final-full "
                         "headline rule and was scored on best_test)."))

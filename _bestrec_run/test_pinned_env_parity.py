@@ -479,8 +479,9 @@ def run_block_case(cfg, state=None, x_in=None):
 # Mode: pinned (leg 1)
 # ---------------------------------------------------------------------------
 
-def mode_pinned() -> int:
+def mode_pinned(allow_dev_fallback: bool = False) -> int:
     fbgemm_impl = None
+    dev_fallback = False
     try:
         import fbgemm_gpu  # noqa: F401  -- registers the real ops
         import importlib.metadata as md
@@ -492,10 +493,30 @@ def mode_pinned() -> int:
             except Exception:
                 continue
         fbgemm_impl = f"REAL {ver}"
-    except Exception as e:  # documented fallback: shims on both sides
+    except Exception as e:
+        # Round-3 audit F2: --mode pinned must FAIL CLOSED without the real
+        # pinned binary. A shim fallback here would silently test shims
+        # against shims and report a vacuous "pinned" PASS.
+        if not allow_dev_fallback:
+            print("FATAL [pinned]: real fbgemm_gpu did not import "
+                  f"({e}).\n  --mode pinned is only valid in the pinned "
+                  "environment (WSL venv with torch==2.2.2+cpu and "
+                  "fbgemm-gpu-cpu==0.6.0; see PINNED_ENV_PARITY_REPORT.md "
+                  "section 2).\n  Refusing to fall back to shims: that would "
+                  "compare the shims against themselves and prove nothing.\n"
+                  "  For development only, rerun with "
+                  "--allow-shim-fallback-for-dev (output is marked "
+                  "NON-PUBLICATION and is NOT pinned evidence).")
+            return 3
         import fbgemm_shims
         fbgemm_shims.install()
-        fbgemm_impl = f"SHIM-FALLBACK (fbgemm_gpu import failed: {e})"
+        dev_fallback = True
+        fbgemm_impl = f"SHIM-FALLBACK-DEV-NONPUBLICATION (fbgemm_gpu import failed: {e})"
+        print("=" * 78)
+        print("WARNING: DEV SHIM FALLBACK ACTIVE -- NON-PUBLICATION RUN.")
+        print("This run compares the shims against themselves. It is NOT")
+        print("pinned-binary evidence and must never be cited as such.")
+        print("=" * 78)
     import fbgemm_shims as shims_mod  # plain functions for the in-env check
     shim_fns = ShimFns(shims_mod)
     real_fns = TorchOpsFns()
@@ -597,8 +618,9 @@ def mode_pinned() -> int:
                                     for k, v in block_results.items()}},
                   f, indent=1, default=str)
     print(f"\n[pinned] saved: {OPS_PT}\n[pinned] saved: {BLOCK_PT}")
+    tag = " (DEV-ONLY SHIM FALLBACK, NON-PUBLICATION)" if dev_fallback else ""
     print(f"[pinned] GATE (in-env real-vs-shim + contract + sanity): "
-          f"{'PASS' if n_fail == 0 else f'FAIL ({n_fail})'}")
+          f"{'PASS' if n_fail == 0 else f'FAIL ({n_fail})'}{tag}")
     return 0 if n_fail == 0 else 1
 
 
@@ -757,9 +779,16 @@ def main() -> int:
     ap.add_argument("--mode", choices=["pinned", "shimmed"], required=True,
                     help="pinned: generate+run under the pinned stack (WSL); "
                          "shimmed: replay through the shims (any env)")
+    ap.add_argument("--allow-shim-fallback-for-dev", action="store_true",
+                    help="DEV ONLY: let --mode pinned run with shims when real "
+                         "fbgemm_gpu is absent. Output is marked "
+                         "NON-PUBLICATION; without this flag, --mode pinned "
+                         "fails closed (exit 3) if fbgemm_gpu does not import.")
     args = ap.parse_args()
     os.makedirs(SCRATCH, exist_ok=True)
-    return mode_pinned() if args.mode == "pinned" else mode_shimmed()
+    if args.mode == "pinned":
+        return mode_pinned(allow_dev_fallback=args.allow_shim_fallback_for_dev)
+    return mode_shimmed()
 
 
 if __name__ == "__main__":

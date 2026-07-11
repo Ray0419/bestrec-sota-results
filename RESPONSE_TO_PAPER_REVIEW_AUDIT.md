@@ -4,6 +4,26 @@ This response file is cumulative, mirroring `PAPER_REVIEW_AUDIT.md`: each audit 
 timestamped response section below. The newest section always addresses the audit's newest
 "Audit Run" section and its updated risk list.
 
+## Response — to Audit Run 2026-07-12 07:28 (responded 2026-07-12, same day)
+
+Verdict received: scientific core "conditionally defensible"; literature framing needs revision.
+All three confirmed problems fixed, both plausible risks addressed, both open questions answered.
+
+| # | Finding | Resolution |
+|---|---|---|
+| 1 | Stale "first to report numbers" (§ "What we can claim") | **Deleted and inverted into an explicit no-priority-claim statement**: HSTU-BLaIR predates this work on the protocol, and the concurrent preprints SID-MLP (arXiv:2605.12617) and Latte (arXiv:2605.06331) report AR2023 5-core LLOO numbers on the same MI/VG dataset statistics (both papers). |
+| 2 | Appendix A.3 "BLaIR is the only published work using AR2023" | Rewritten as a historical/superseded note pointing at the current AR2023 literature; the Beauty closing line is now a **search statement, explicitly not a priority claim** ("we did not find a comparable published number… preprints appearing rapidly"). |
+| 3 | References incomplete for named prior art | **Ten entries added**: full citations for TiSASRec (Li et al. 2020, WSDM), VQ-Rec (Hou et al. 2023, WWW), ProtoMF (Melchiorre et al. 2022, RecSys), MELT (Kim et al. 2023, SIGIR), DropoutNet (Volkovs et al. 2017, NeurIPS), CLCRec (Wei et al. 2021, ACM MM); the four 2026 preprints (ReSID, ChronoSID, SID-MLP, Latte) are cited **by arXiv identifier under an explicit unreviewed-concurrent-work note** — no invented authors or titles. |
+| R1 | "five-run averages" for ChronoSID unsupported | Phrase **deleted** (the source table reports paired-bootstrap CIs per the audit's fact-check; we now cite the output-level table without characterizing its aggregation). |
+| R2 | "A faithful HSTU implementation" ambiguous | Rephrased to the precise boundary: what is not provided is a *faithful pinned-environment end-to-end HSTU-BLaIR reproduction*; the core block is bitwise-exact (§3.2) and the research path runs locally as environment-caveated single-run regenerations (§5.6). |
+| R3 | PDF not visually re-checked in the audit run | Re-rendered after all edits: **38 pages, placeholder/lab-language scan CLEAN**. |
+
+**Concrete-fix 4 (related-work expansion):** the §5.1 2026-line paragraph now carries the audit's exact three-way separation — (i) same-statistics AR2023 5-core LLOO concurrent preprints (SID-MLP, Latte — cited for completeness, **no comparative claim** made against unreviewed work), (ii) the ReSID/ChronoSID filtered universe (not protocol-interchangeable), (iii) older Amazon-2014 TIGER/LIGER. The comparator choice is unchanged: published HSTU-BLaIR 0.0406 remains the strongest known same-protocol MI reference, which the pre-registered confirmation exceeds as a point-estimate comparison.
+
+**Open questions answered:** (a) the Beauty "first such reported number" claim is **withdrawn** in favor of the search statement — it was defensible only under an exact-universe reading, and priority language contradicts our narrowing-only discipline; (b) 2026 arXiv-only work is cited in place but explicitly fenced as *unreviewed concurrent preprints* (in the §5.1 paragraph and in a labeled References block) — completeness without over-weighting.
+
+**Verification:** strict chain re-run after the edits — SUBMISSION BUILD GREEN (164 cells, 0/0, 12/12 families) → RELEASE MANIFEST VERIFY OK (111 files) → MI dual gate PASS → Office VOID/descriptive → **SUBMISSION REBUILD: PASS**, exit 0.
+
 ## Response — to Audit Run 2026-07-12 04:28 (responded 2026-07-12, same day)
 
 Verdict received: narrow scientific core "still conditionally acceptable"; artifact package

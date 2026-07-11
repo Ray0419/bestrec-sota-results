@@ -6,40 +6,189 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **Confirmed moderate literature/novelty wording problem: stale "first to
-   report numbers" / "only published AR2023" claims.** `PAPER_SUBMISSION.md`
-   line 282 still says "where we are the first to report numbers" for AR2023
-   5-core LLOO, and Appendix A.3 line 619 says BLaIR is the only published work
-   using AR2023. This is no longer defensible as written: HSTU-BLaIR is already
-   the manuscript's own AR2023 5-core reference; 2026 SID-line papers such as
-   SID-MLP and Latte report AR2023 5-core leave-one-out numbers on the same
-   MI/VG dataset statistics; ReSID/ChronoSID report a nearby but different
-   filtered AR2023 universe. Fix by deleting "first" language and replacing it
-   with a precise protocol-family comparison.
-2. **Confirmed citation/readiness problem: named prior-art methods are missing
-   from References.** The paper names TiSASRec, VQ-Rec, ProtoMF, MELT,
-   DropoutNet, CLCRec, ReSID, ChronoSID, and SASRecText-related artifacts in
-   the body/table, but the References section does not contain bibliographic
-   entries for those named works. Add full references before submission,
-   especially for any method used in the novelty-boundary table.
-3. **Plausible moderate related-work coverage gap: the 2026 semantic-ID /
-   generative-retrieval paragraph is too narrow.** It says "two recent" methods
-   and only discusses ReSID/ChronoSID. At minimum, add SID-MLP (arXiv
-   2605.12617) and Latte (arXiv 2605.06331), and state that their reported
-   MI/VG numbers do not overturn the HSTU-BLaIR-family comparison but do
-   invalidate any "first report" framing.
-4. **Plausible wording risk: "reproduces" vs "regenerates".** The manuscript
+1. **Confirmed minor submission-readiness problem: the 2026 concurrent-preprint
+   references are still bare arXiv identifiers.** `PAPER_SUBMISSION.md` now
+   cites ReSID, ChronoSID, SID-MLP, and Latte and correctly removes priority
+   claims, but the References entries for those four works are not yet full
+   bibliographic entries. Before top-journal submission, add authors/titles and
+   venue/preprint status, or move them to a clearly labeled "recent preprints"
+   note if the venue discourages unreviewed references.
+2. **Plausible moderate related-work freshness gap.** A fresh search confirms
+   SID-MLP, Latte, ReSID, and ChronoSID are now covered, but AR2023
+   recommendation preprints are appearing quickly. Triage other 2026 AR2023
+   papers before submission and explicitly explain why they are non-comparable
+   if they use different splits, tasks, candidate sets, or LLM-reasoning
+   protocols.
+3. **Plausible wording risk: "reproduces" vs "regenerates".** The manuscript
    correctly caveats the local reference-implementation runs as unpinned,
    environment-caveated, single-run regenerations. Keep avoiding language that
    implies a faithful official reproduction, especially for the MI best-epoch
    comparator match and the Office HSTU-BLaIR descriptive run.
-5. **Persistent scientific boundary: no broad SOTA, no paired superiority.**
+4. **Persistent scientific boundary: no broad SOTA, no paired superiority.**
    The current paper respects this boundary. Any future abstract, conclusion,
    release note, or venue cover letter must keep Video_Games as competitive but
    not SOTA; MI as a per-category point-estimate comparison; and Office as VOID
    / descriptive only.
+5. **Working-tree packaging risk.** This run regenerated
+   `PAPER_SUBMISSION.pdf` and `RELEASE_MANIFEST.json` after the branch advanced
+   to `9ed7be3`; they are modified and should be committed together with this
+   audit if this state is kept.
 6. **Submission-readiness risk: venue formatting remains unresolved.** The PDF
    is readable and regenerated, but not yet in a target venue template.
+
+## Audit Run - 2026-07-12 08:31 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD at final verification: `codex/bestrec-sota-results` /
+  `9ed7be3` (`Respond to PAPER_REVIEW_AUDIT run 07:28: literature framing
+  fixed (no priority claims), references completed`)
+- Note: the branch advanced during this automation run from `a889053` to
+  `9ed7be3` via commits at 2026-07-12 08:29-08:30 Australia/Sydney. I treated
+  the new HEAD as the current workspace state and did not revert it.
+- Current modified tracked files after this audit:
+  `PAPER_SUBMISSION.pdf`, `RELEASE_MANIFEST.json`, and this audit file.
+- Canonical source/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`, `RELEASE_MANIFEST.json`,
+  `_bestrec_run/rebuild_hstu_submission.py`, `_bestrec_run/render_paper_pdf.py`,
+  and the cumulative audit.
+
+### Verdict
+
+**The previous literature-framing rejection risk is now fixed in the source and
+the regenerated PDF.** The stale "first to report numbers", "only published work
+using AR2023", and "first such reported number" phrases are gone. The paper now
+separates same-statistics AR2023 5-core LLOO preprints (SID-MLP, Latte), the
+ReSID/ChronoSID filtered SID universe, and older Amazon-2014 TIGER/LIGER
+protocols.
+
+**Scientific core remains conditionally defensible under the narrowed claim
+boundary.** The strict gate still passes; Video_Games is not claimed as SOTA,
+Musical_Instruments remains a per-category point-estimate comparison, and Office
+remains VOID/descriptive.
+
+**Main remaining top-journal risk is polish, not result invalidation.** Full
+metadata for the 2026 arXiv-only references and venue formatting remain open.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact (`max|diff| = 0.000e+00`).
+  - PASS: 164 paper cells recomputed; 0 `MISMATCH`; 0 `UNTRACEABLE`; all 12
+    claim families sourced.
+  - PASS: release manifest verification after regeneration: 111 files verified.
+  - PASS: MI V2 gate. K=16 mean 0.04152, CI-LB 0.04096; K=8 mean 0.04120,
+    CI-LB 0.04083; both above the published HSTU-BLaIR 0.0406 point estimate.
+  - PASS/VOID: Office arithmetic gates pass, but Office remains descriptive and
+    VOID because the preregistered floor check failed.
+- `uv --project _bestrec_run run python _bestrec_run/render_paper_pdf.py`
+  - Regenerated `PAPER_SUBMISSION.pdf`: 827,780 bytes, 38 pages, placeholder
+    scan clean.
+- PDF text extraction using `pypdf`:
+  - `first to report numbers`: absent.
+  - `only published work using AR2023`: absent.
+  - `where we are the first`: absent.
+  - `first such reported number`: absent.
+  - `SID-MLP`, `Latte`, and the revised BLaIR/AR2023 historical note: present.
+- `uv --project _bestrec_run run python _bestrec_run/update_release_manifest.py --verify`
+  - Initially failed only because the regenerated PDF hash differed from the
+    manifest.
+  - `--regen` refreshed `RELEASE_MANIFEST.json` to `git_commit =
+    9ed7be3ee79822fd1bca59fedd29618539aded4b`; final strict verification
+    passed.
+
+### Confirmed Fixes Since The 07:28 Audit
+
+1. **Priority/novelty wording fixed.** The manuscript no longer claims to be
+   first to report AR2023 5-core LLOO numbers, and Appendix A.3 no longer says
+   BLaIR is the only published work using AR2023.
+2. **2026 AR2023 coverage expanded.** The related-work/comparability paragraph
+   now includes SID-MLP and Latte in addition to ReSID and ChronoSID, and keeps
+   the protocol families separate.
+3. **Named prior-art references mostly filled.** The References section now has
+   entries for TiSASRec, VQ-Rec, ProtoMF, MELT, DropoutNet, and CLCRec, plus
+   arXiv-identifier entries for ReSID, ChronoSID, SID-MLP, and Latte.
+4. **PDF and manifest refreshed.** The compiled PDF no longer contains the stale
+   phrases, and the manifest verifies the regenerated PDF hash.
+
+### Confirmed Problems
+
+1. **Bare references for four recent preprints.** ReSID, ChronoSID, SID-MLP, and
+   Latte are currently listed by name + arXiv ID only. That is acceptable for an
+   internal audit but weak for a top-journal bibliography.
+2. **Working tree is intentionally dirty.** `PAPER_SUBMISSION.pdf` and
+   `RELEASE_MANIFEST.json` changed during this run. Keep or commit them with the
+   audit; do not mix the regenerated PDF with an older manifest boundary.
+
+### Plausible Risks Requiring Author Verification
+
+- The paper says Latte reports MI NDCG@10 0.0331 and VG 0.0515. I confirmed
+  Latte uses the same MI/VG dataset statistics from its arXiv HTML, but the
+  exact two NDCG values should be checked once more against the paper's table
+  before final submission because the table extraction is brittle.
+- The phrase "The Musical_Instruments comparator reproduces" is defensible only
+  because the surrounding paragraphs caveat the run as environment-caveated and
+  unpinned. If space edits shorten Section 5.6, preserve the caveat.
+- The related-work freshness scan was broad, not exhaustive. Triage additional
+  2026 AR2023 recommender preprints for relevance before a real submission.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR's public repository reports the exact comparator values used by the
+  paper: Video_Games HSTU-BLaIR NDCG@10 0.0760, Office_Products 0.0271, and
+  Musical_Instruments 0.0406, with expected small run variability. Source:
+  https://github.com/snapfinger/HSTU-BLaIR
+- SID-MLP (arXiv:2605.12617) uses Amazon Reviews 2023 5-core last-out splits and
+  reports the same MI/VG dataset statistics as this paper's HSTU-BLaIR-family
+  universe: MI 57,439 / 24,587 / 511,836 and VG 94,762 / 25,612 / 814,586.
+  Source: https://arxiv.org/html/2605.12617v1
+- Latte (arXiv:2605.06331) uses Amazon Reviews 2023 Instruments/Scientific/Games
+  leave-one-out and reports the same statistics for Instruments and Games.
+  Source: https://arxiv.org/html/2605.06331v1
+- ReSID (arXiv:2602.02338) evaluates Amazon-2023 subsets under its own filtered
+  universe: MI 57,359 / 23,742 / 490,522 and VG 94,515 / 24,685 / 772,218.
+  Source: https://arxiv.org/html/2602.02338v1
+- ChronoSID (arXiv:2607.03918) reports an output-level MI comparison with ReSID
+  0.0325 vs ChronoSID 0.0345 NDCG@10 and paired-bootstrap confidence intervals.
+  Source: https://arxiv.org/html/2607.03918v1
+- Amazon Reviews 2023's official site describes the dataset and standard
+  processing resources; it is the correct source for dataset-level facts.
+  Source: https://amazon-reviews-2023.github.io/
+
+### Concrete Fixes To Make Next
+
+1. Expand the four 2026 preprint references from bare arXiv IDs to full
+   author/title entries.
+2. Decide whether to include a short "recent preprints" paragraph for other
+   2026 AR2023 recommendation papers found by fresh search, or explicitly scope
+   the paper to the HSTU-BLaIR/SID-protocol families.
+3. Commit `PAPER_SUBMISSION.pdf`, `RELEASE_MANIFEST.json`, and this audit file
+   together if this regenerated artifact state is accepted.
+4. Move the manuscript into the target venue template and rerun the PDF visual
+   check after formatting.
+
+### Open Questions
+
+- What is the target venue? The current Markdown/Chrome PDF is readable but not
+  venue-formatted.
+- Does the author want to cite all very recent 2026 arXiv preprints in the main
+  paper, or keep only those that directly threaten priority/comparability?
+
+### Running Checklist
+
+- [x] Read automation memory.
+- [x] Locate canonical manuscript source and PDF.
+- [x] Detect branch advancement and audit the final HEAD.
+- [x] Verify stale first/only AR2023 phrases are absent from source.
+- [x] Regenerate `PAPER_SUBMISSION.pdf`.
+- [x] Verify stale phrases are absent from extracted PDF text.
+- [x] Regenerate `RELEASE_MANIFEST.json`.
+- [x] Rerun strict submission gate after PDF/manifest refresh.
+- [x] Fact-check the key novelty/comparator literature against primary sources.
+- [ ] Expand 2026 preprint references to full bibliographic entries.
+- [ ] Commit the regenerated PDF, manifest, and audit if this state is kept.
+- [ ] Move to target venue formatting.
 
 ## Audit Run - 2026-07-12 07:28 Australia/Sydney
 

@@ -539,12 +539,12 @@ We thank the Amazon Reviews 2023 maintainers (Hou et al., 2024) for releasing th
 - Zhai, J. et al., 2024. Actions Speak Louder than Words: Trillion-Parameter Sequential Transducers for Generative Recommendations (HSTU). ICML. *(the published architecture our HSTU-style pure-PyTorch implementation is based on)*
 - Zhou, K. et al., 2022. Filter-enhanced MLP is All You Need for Sequential Recommendation (FMLP-Rec). WWW. arXiv:2202.13556. *(bidirectional learnable frequency filter; our causal-filter adaptation)*
 
-*Concurrent 2026 preprints (unreviewed; cited by arXiv identifier for protocol-family completeness, §5.1 — no comparative claim is made against them):*
+*Concurrent 2026 preprints (unreviewed at the time of writing; cited for protocol-family completeness, §5.1 — no comparative claim is made against them; metadata verified against the arXiv listings on 2026-07-12):*
 
-- ReSID. arXiv:2602.02338, 2026. *(SID-line MI comparator context; own filtered universe)*
-- ChronoSID. arXiv:2607.03918, 2026. *(SID-line MI comparator context; own filtered universe)*
-- SID-MLP. arXiv:2605.12617, 2026. *(AR2023 5-core LLOO, same MI/VG dataset statistics)*
-- Latte. arXiv:2605.06331, 2026. *(AR2023 5-core LLOO, same MI/VG dataset statistics)*
+- Guo, Z., Hou, Y., Ju, C. M., Shah, N., McAuley, J., 2026. MLPs are Efficient Distilled Generative Recommenders (SID-MLP). arXiv:2605.12617. *(AR2023 5-core LLOO, same MI/VG dataset statistics)*
+- Hou, Y., Kim, H., Ju, C. M., Escoto, E., Shah, N., McAuley, J., 2026. Expressiveness Limits of Autoregressive Semantic ID Generation in Generative Recommendation (Latte). arXiv:2605.06331. *(AR2023 5-core LLOO, same MI/VG dataset statistics; the MI/VG NDCG@10 values quoted in §5.1 are verified against its Table 1)*
+- Huang, C., Gao, T., Huang, H., Sheng, Q. Z., Yao, L., 2026. Beyond Item Order: Temporal Gap Tokenization for Generative Recommendation with Semantic IDs (ChronoSID). arXiv:2607.03918. *(SID-line MI comparator context; own filtered universe)*
+- Liang, Y., Zhang, Z., Zhu, Y., Zhang, K., Guo, Z., Zhou, W., Yang, Z., Wu, K., Ni, Y., Zeng, A., Fu, C., Wang, J., Xia, J., 2026. Rethinking Generative Recommender Tokenizer: Recsys-Native Encoding and Semantic Quantization Beyond LLMs (ReSID). arXiv:2602.02338. *(SID-line MI comparator context; own filtered universe)*
 
 ---
 

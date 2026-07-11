@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
+  "git_commit": "31ca137dc5c7e11b4336c0d9df43d3f206505e3c",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -88,10 +88,10 @@
       "sha256": "ff8311df8b9d73d40080a6e3e867cf52c10f9be1a0f96a46c7c80c4e571085b5"
     },
     "_bestrec_run/office_prereg_tools.py": {
-      "sha256": "aee4608a561e043234310bbe1d82d4e9338b99b70d0b287569fd5c624f85e2a4"
+      "sha256": "eb7d57ae024a2d84153b6d0886a1452d0b25b55be63fc347e594ff74f61e7230"
     },
     "_bestrec_run/build_hstu_tables.py": {
-      "sha256": "084ed7c74ab21f5d0be3dedaa7b4d8b75ebb4ee720f03f2228bb8c35c59f9bdd"
+      "sha256": "248a1fe19b2d7bc5d44618bd1f799e77e3a86f2d71f8cce0d88ab879344b4c7c"
     },
     "_bestrec_run/test_hstu_parity.py": {
       "sha256": "adf28343d5a27841f97f12d680578ddb0e6d9029745608e21e55519aec59396c"
@@ -165,5 +165,7 @@
       "results_FIRABL_nogate_MI_seed20260612.json": "230372fe2c58d80e5f9311abe0602b90a1ed6d3f1d54dfdd304d860f8a1b3889"
     }
   },
-  "sidecars": "see _bestrec_run/SOTACONF_V2_sidecar_manifest.json (tracked) + per-run user_records_sha256 fields"
+  "sidecars": "see _bestrec_run/SOTACONF_V2_sidecar_manifest.json (tracked) + per-run user_records_sha256 fields",
+  "manifest_scope": "Hashes describe the repository working tree at git_commit (round-2 audit F2 regeneration). Data sections (splits, text_caches, result_families) are the UNCHANGED v0.9-audit-evidence release assets -- every entry re-verified byte-identical at regeneration time. protocol_code hashes are recomputed at git_commit (the strict fail-closed gate and Office-adjudicator work legitimately changed build_hstu_tables.py and office_prereg_tools.py after the original manifest). The commit that CONTAINS this manifest file is the immediate child of git_commit; the manifest cannot hash itself.",
+  "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945"
 }

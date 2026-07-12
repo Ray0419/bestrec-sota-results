@@ -6,51 +6,251 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **Confirmed reviewer-facing methods contradiction: Section 3.2 still defines
-   "our base model" as a 2-layer SASRec/Transformer, while the headline
-   experiments, results, and result JSONs use a 4-layer HSTU-style encoder.**
-   This is now the top rejection risk. `paper_tex/sections/03-method.tex` says
-   "Our base model, SASRec-SBERT" and "2-layer Transformer encoder"; Section
-   4.3 says all headline results use the HSTU-style encoder with 4 layers; the
-   source result files (`results_V2_ls02_filter8_VG.json`,
-   `results_J1_plain_VG.json`, `results_BEST_MI_sbert_e20_seed20260609.json`)
-   confirm `encoder: hstu`, `n_layers: 4`. Fix by making Section 3.2 the
-   headline HSTU-style architecture, moving SASRec-SBERT to a baseline/protocol
-   parity subsection, and correcting the Section 4.3 cross-reference.
-2. **Confirmed bibliography metadata issue: WPGRec is described under an
-   "unreviewed" 2026-preprint framing, but arXiv metadata says it is accepted to
-   SIGIR 2026.** Update `PAPER_SUBMISSION.md` and `paper_tex/references.bib`
-   notes so the current rendered references do not understate/false-label a
-   peer-reviewed comparator-adjacent frequency/time-frequency paper.
-3. **Confirmed previous MLP-adaptor contradiction is fixed in the current
-   source and PDFs.** Section 6.1 now attributes the Beauty cross-pipeline
-   signal to BLaIR/rich text rather than the MLP adaptor alone; PDF extraction
-   confirms the old "only consistently-positive intervention" wording is gone
-   from both `PAPER_SUBMISSION.pdf` and `paper_tex/PAPER_TORS.pdf`.
-4. **Plausible recent-literature scope risk: SILLM4Rec still lacks direct
-   protocol inspection.** The current exclusion sentence is reviewer-safe, and
-   the public GitHub repo suggests 5-core AR2023 data handling plus generated
-   candidate-ranking tasks, but it still does not establish apples-to-apples
-   full-catalog LLOO comparability. Inspect the full ACM paper or keep the
-   exclusion narrowly framed.
-5. **Statistical-rhetoric risk: the mechanism language remains too strong in a
-   few high-visibility places.** The paper mostly scopes "driver" and "causal
-   role" to synthetic thinning interventions, but phrases such as "resolves the
-   open mechanism" are stronger than the evidence. Prefer "partially resolves"
-   or "supports a partial mechanism under the intervention."
-6. **Plausible reviewer-readability risk: the abstract and Table 2 remain
-   overloaded.** The paper is now more honest than most submissions, but the
-   first page still carries many p-values, caveats, and mechanism claims. Table
-   2 is valuable but dense; a top-journal reviewer may prefer a compact main
-   summary plus appendix detail.
+1. **Confirmed reviewer-facing dataset/protocol-section inconsistency: Section
+   4.1 still says the paper evaluates on two AR2023 categories, but the current
+   abstract/results use Musical_Instruments as a headline cross-category
+   confirmation and Office_Products as descriptive/VOID material.** This is now
+   the top actionable rejection risk because it is a methods-readability defect,
+   not a numerical failure. Rewrite Section 4.1 to list all categories by role:
+   Video_Games primary, Musical_Instruments confirmatory cross-category,
+   Beauty_and_Personal_Care supporting/appendix tail-null and transfer material,
+   Office_Products descriptive/VOID only.
+2. **Confirmed dataset-count inconsistency in Section 4.1: it mixes total
+   interactions and train-only interactions, and the Video_Games total is
+   rounded/stated inconsistently.** Local row counts after headers are
+   Video_Games total 814,586 (train 625,062 + valid 94,762 + test 94,762),
+   Musical_Instruments total 511,836 (train 396,958 + valid/test 57,439 each),
+   Beauty_and_Personal_Care total 6,624,441 (train 5,165,289 + valid/test
+   729,576 each), and Office_Products total 1,800,878 (train 1,354,262 +
+   valid/test 223,308 each). Fix by labeling total-vs-train counts explicitly
+   and making Video_Games 814.6K/814,586 everywhere rather than "~830k" and
+   "814,585" in different locations.
+3. **Confirmed previous methods-architecture contradiction is fixed in source
+   and PDFs.** Section 3.2 now separates the HSTU-style headline encoder from
+   the SASRec-SBERT baseline and states the headline configuration as 4 layers,
+   2 heads, d=64, dropout 0.5. PDF extraction no longer finds "Our base model"
+   or "2-layer Transformer encoder"; it does find the "Headline encoder"
+   replacement.
+4. **Confirmed WPGRec metadata issue is fixed in source and rendered
+   references.** `paper_tex/references.bib` now records WPGRec as accepted to
+   SIGIR 2026; both rendered PDFs include non-stale WPGRec reference text, and
+   the related-work prose cites it only as later frequency/time-frequency prior
+   art, not as an apples-to-apples comparator.
+5. **Plausible recent-literature scope risk: SILLM4Rec still lacks direct
+   protocol inspection.** ACM/GitHub metadata show an accepted MMAsia 2025 paper
+   using AR2023 5-core subdatasets and generated candidate-ranking tasks, so it
+   is adjacent enough that a reviewer may ask about it. The current exclusion is
+   defensible only if kept narrow: "not established as apples-to-apples
+   full-catalog LLOO" rather than "irrelevant."
+6. **Plausible wording risk: "unreviewed concurrent work" remains acceptable
+   for SID-MLP/Latte/GrIT as of this audit, but it is a moving target.** arXiv
+   pages for SID-MLP and Latte show no venue comments, and GrIT search/open
+   results still look like arXiv-preprint metadata. Recheck before submission or
+   replace with "concurrent arXiv works" to avoid a brittle peer-review-status
+   claim.
 7. **Core artifact checks remain green.** The strict rebuild passes: HSTU
    core-block parity exact, 164 cells recomputed, 0 mismatches, 0 untraceable
    cells, all 12 claim families sourced, release manifest verified, MI dual
-   gate PASS, Office descriptive/VOID OK.
+   gate PASS, and Office descriptive/VOID OK. `paper_tex/PAPER_TORS.pdf` hygiene
+   scan also passes with 0 placeholder/forbidden-claim failures.
 8. **Persistent scientific boundary: no broad SOTA, no paired superiority.** Any
    future abstract, conclusion, cover letter, response file, or release note
    must keep Video_Games as competitive but not SOTA; MI as a per-category
    point-estimate comparison; and Office as VOID/descriptive only.
+
+## Audit Run - 2026-07-12 23:39 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `8d060297`
+- Supplied last-run cutoff: `2026-07-12T12:35:58.679Z`.
+- `git log --since="2026-07-12T12:35:58Z"` returned no commits. The tracked
+  working tree was clean before and after this audit.
+- Automation memory at start still described the 21:37 run's top watch items:
+  the Section 3.2 HSTU/SASRec contradiction and stale WPGRec metadata.
+- Canonical artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/sections/01-introduction.tex`,
+  `paper_tex/sections/03-method.tex`,
+  `paper_tex/sections/04-experiments.tex`,
+  `paper_tex/sections/05-results.tex`,
+  `paper_tex/sections/07-conclusion.tex`, `paper_tex/references.bib`,
+  `paper_tex/tables/table0_novelty.tex`, local AR2023 5-core CSV splits, and
+  the strict rebuild/provenance scripts.
+
+### Verdict
+
+**The two prior top blockers are repaired, and the artifact graph remains
+green.** The remaining reviewer-facing problem is Section 4.1: it understates
+the experimental scope ("two" categories) and mixes total interaction counts
+with train-only counts. A strict reviewer can read this as sloppy protocol
+description, even though the downstream results/provenance are internally
+traceable.
+
+### Commands And Evidence Checked
+
+- `git status --short --branch`
+  - Clean on `codex/bestrec-sota-results`.
+- `git log --since="2026-07-12T12:35:58Z" --oneline --decorate --name-status`
+  - No commits after the supplied cutoff.
+- `uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: 164 cells recomputed; 0 `MISMATCH`; 0 `UNTRACEABLE`; all 12 declared
+    claim families sourced.
+  - PASS: release manifest verification, MI V2 dual gate, Office descriptive/
+    VOID adjudication.
+- `uv --project _bestrec_run run python paper_tex/scan_pdf.py paper_tex/PAPER_TORS.pdf`
+  - PASS: 36 pages; 0 placeholder/forbidden-claim failures.
+  - SOTA/paired-superiority mentions are negated or informational.
+- PDF text extraction with `pypdf` through the repo `uv` environment
+  - Both PDFs no longer contain "Our base model" or "2-layer Transformer
+    encoder".
+  - Both PDFs contain the new "Headline encoder" text.
+  - Both PDFs contain WPGRec in references with non-stale accepted/SIGIR 2026
+    wording, though not always in the exact same extracted string.
+  - `PAPER_SUBMISSION.pdf` contains "partially resolves the open mechanism";
+    the TORS PDF uses the more scoped "partial causal role" conclusion wording.
+- Local CSV counts with `Measure-Object -Line`
+  - Video_Games `rating_only`: 814,587 lines including header -> 814,586 rows.
+  - Video_Games split rows: 625,062 train + 94,762 valid + 94,762 test =
+    814,586.
+  - Musical_Instruments `rating_only`: 511,837 lines including header ->
+    511,836 rows.
+  - Musical_Instruments split rows: 396,958 train + 57,439 valid + 57,439 test
+    = 511,836.
+  - Beauty_and_Personal_Care `rating_only`: 6,624,442 lines including header ->
+    6,624,441 rows.
+  - Beauty split rows: 5,165,289 train + 729,576 valid + 729,576 test =
+    6,624,441.
+  - Office_Products `rating_only`: 1,800,879 lines including header ->
+    1,800,878 rows.
+  - Office split rows: 1,354,262 train + 223,308 valid + 223,308 test =
+    1,800,878.
+
+### Confirmed Fixes Since Prior Audit
+
+1. **Section 3.2 method contradiction is repaired.**
+   - Source now describes shared item-feature construction, then the HSTU-style
+     headline encoder, then the SASRec-SBERT baseline.
+   - Section 4.3 points to the HSTU-style encoder and uses the same 4-layer
+     configuration.
+   - Rendered PDFs no longer expose the stale SASRec-as-headline wording.
+2. **WPGRec metadata is repaired.**
+   - `paper_tex/references.bib` now says WPGRec is accepted to SIGIR 2026.
+   - `PAPER_SUBMISSION.pdf` renders "SIGIR 2026 (accepted; arXiv:2604.21305)".
+   - `paper_tex/PAPER_TORS.pdf` renders "Accepted to SIGIR 2026".
+3. **Mechanism rhetoric is materially toned down.**
+   - The abstract now says the user-mode titration "partially resolves the open
+     mechanism (under the thinning intervention's assumptions)".
+   - The conclusion states that collaborative connectivity is "consistent with
+     a partial causal role" and repeats that these are controlled interventions,
+     not causal identification of the real-world generative process.
+
+### Confirmed Problems
+
+1. **Section 4.1 does not match the paper's current experimental scope.**
+   - It says "We evaluate on two AR2023 5-core categories" and lists only
+     Video_Games and Beauty_and_Personal_Care.
+   - The abstract, Section 5, and conclusion make Musical_Instruments a
+     headline cross-category confirmation. Office_Products also appears as a
+     descriptive/VOID pre-registration result.
+   - Concrete fix: rewrite Section 4.1 as a role-based dataset table with all
+     categories used anywhere in the paper, including which are confirmatory,
+     exploratory, appendix-only, or VOID/descriptive.
+2. **Section 4.1 mixes interaction-count definitions.**
+   - Video_Games is listed as "~830k interactions" while later Section 5.1 says
+     814,585 and local data give 814,586 rows after header.
+   - Beauty is listed as 5.17M interactions, which matches train-only rows, not
+     total 5-core rows (6,624,441). A reader will not know whether counts mean
+     total rating-only interactions or train interactions after LLOO.
+   - Concrete fix: state both totals and split counts, or state only totals in
+     Section 4.1 and move train counts to an appendix/protocol table.
+
+### Plausible Risks Requiring Author Verification
+
+- **SILLM4Rec is closer than a metadata-only footnote suggests.** ACM metadata
+  says the paper experiments on three AR2023 5-core subdatasets, including
+  Video_Games, and the GitHub repo describes generation of candidate product
+  ranking tasks. That still does not prove identical full-catalog LLOO
+  comparability, but it does make "excluded pending direct protocol inspection"
+  the right stance.
+- **"Unreviewed concurrent work" is a brittle phrase.** SID-MLP, Latte, and
+  GrIT still look like arXiv-only works in the sources checked here, but peer
+  review status can change. Prefer "concurrent arXiv works" if the sentence does
+  not need a review-status claim.
+- **Reader burden remains high.** The abstract is now more defensible, but it
+  still carries many p-values, caveats, and mechanism claims. Table 2 remains
+  valuable but dense.
+
+### External Fact-Check / Novelty Notes
+
+- WPGRec arXiv confirms the title, wavelet-packet/graph-enhanced framing, and
+  "Accepted to SIGIR 2026" comment:
+  https://arxiv.org/abs/2604.21305
+- The SIGIR 2026 accepted-papers page also lists WPGRec:
+  https://sigir2026.org/en-AU/pages/program/accepted-papers
+- SID-MLP arXiv page shows only arXiv metadata and no accepted-venue comment in
+  the opened page:
+  https://arxiv.org/abs/2605.12617
+- Latte arXiv page shows only arXiv metadata and no accepted-venue comment in
+  the opened page:
+  https://arxiv.org/abs/2605.06331
+- GrIT search/open metadata remains arXiv-preprint style:
+  https://arxiv.org/abs/2602.19728
+- SILLM4Rec ACM/GitHub pages confirm MMAsia 2025 publication context and
+  AR2023 5-core / candidate-ranking relevance, but not full-catalog LLOO
+  equivalence from accessible metadata:
+  https://dl.acm.org/doi/10.1145/3743093.3771011
+  https://github.com/MKC-Lab/SILLM4Rec
+- Official Amazon Reviews 2023 5-core statistics list Video_Games at 94.8K
+  users, 25.6K items, 814.6K ratings; Musical_Instruments at 57.4K users,
+  24.6K items, 511.8K ratings; Beauty_and_Personal_Care at 729.6K users,
+  207.6K items, 6.6M ratings; Office_Products at 223.3K users, 77.6K items,
+  1.8M ratings:
+  https://amazon-reviews-2023.github.io/data_processing/5core.html
+- The AmazonReviews2023 benchmark scripts define 5-core `rating_only` and
+  `last_out` leave-last-out splits, with latest interaction as test,
+  second-latest as validation, and remaining interactions as train:
+  https://github.com/hyp1231/AmazonReviews2023/blob/main/benchmark_scripts/README.md
+
+### Concrete Fixes To Make Next
+
+1. Rewrite Section 4.1 as a dataset/protocol table with category role, total
+   rows, train/valid/test rows, users, items, and which paper claims depend on
+   the category.
+2. Replace Video_Games "~830k" and later "814,585" with one consistent value:
+   814,586 local rows, or 814.6K when rounded.
+3. Decide whether Beauty's 5.17M should be labeled "train interactions" or
+   replaced by total 6.62M in the dataset list.
+4. Keep SILLM4Rec excluded only under the narrow protocol-inspection caveat, or
+   inspect the ACM full text and add a short non-comparability sentence.
+5. Before final submission, recheck whether SID-MLP, Latte, or GrIT acquired
+   accepted-venue metadata; otherwise avoid "unreviewed" in favor of
+   "concurrent arXiv".
+
+### Open Questions
+
+- Should Office_Products appear in the main dataset table as "VOID/descriptive"
+  or be moved entirely to appendix/pre-registration material?
+- Should the paper report both total and train-only interaction counts, or only
+  totals in the main dataset description?
+- Can the authors access the full SILLM4Rec ACM paper to audit candidate-set
+  construction, ranking universe, and whether metrics are full-catalog LLOO?
+
+### Running Checklist
+
+- [x] Read automation memory.
+- [x] Locate canonical manuscript sources and PDFs.
+- [x] Check commits and tracked tree after the supplied last-run cutoff.
+- [x] Verify strict rebuild/provenance gate.
+- [x] Verify TORS PDF hygiene scan.
+- [x] Confirm prior Section 3.2 methods fix in source and PDFs.
+- [x] Confirm WPGRec SIGIR 2026 status in source and rendered references.
+- [x] Fact-check current concurrent-work and SILLM4Rec status with external
+  sources.
+- [x] Verify local AR2023 category row counts and identify Section 4.1 scope/
+  count inconsistency.
 
 ## Audit Run - 2026-07-12 21:37 Australia/Sydney
 

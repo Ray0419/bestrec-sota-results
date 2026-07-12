@@ -6,51 +6,246 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **Confirmed TORS formatting blocker: the running title collides with page
-   numbers.** The current `paper_tex/PAPER_TORS.pdf` review build is otherwise
-   readable, but rendered pages 23 and 29 visibly show the long header merging
-   into the page number (`... Recommender23`, `... Recommender29`). This is a
-   real submission-readiness defect. Likely fix: give acmart a short optional
-   title in `paper_tex/paper-shared.tex`, e.g. `\title[Short running
-   title]{...}`, then rebuild and visually inspect odd/even headers.
-2. **Confirmed comparator-language polish risk: "reproduces" is still too strong
-   in the unpinned local-run section.** The paper correctly states that a
-   faithful pinned HSTU-BLaIR reproduction is blocked locally, but
-   `paper_tex/sections/05-results.tex` still says "The Musical_Instruments
-   comparator reproduces" and "reproduces the published value" for a shimmed,
-   unpinned, single-environment run. Rewrite those occurrences to "regenerates
-   locally under the shimmed research path" or equivalent.
-3. **Plausible reviewer-readability risk: Table 2 remains dense.** The old
+1. **Plausible literature-freeze risk is now the highest reviewer risk.** The
+   manuscript cites SID-MLP, Latte, GrIT, ReSID, ChronoSID, WPGRec, and the
+   HSTU-BLaIR family, but a fresh search found additional AR2023-adjacent work
+   not yet cited: `Augment or Not?` (AR2023 Musical Instruments / Industrial
+   and Scientific 5-core LOO), `DiffuReason` (AR2023 Video & Games 5-core under
+   different filtering/statistics, with HSTU-backbone results), and SILLM4Rec
+   (ACM DOI page says three AR2023 5-core datasets; not fully inspected due DOI
+   access). These do not overturn the current claim boundary, but omission could
+   look selective at top-journal review. Add a compact "other recent
+   AR2023-adjacent, non-interchangeable protocol" paragraph or document the
+   exclusion decisions before freeze.
+2. **Plausible reviewer-readability risk: Table 2 remains dense.** The old
    broken continuation-cell defect is gone and the rendered page is legible, but
    the negative-result map is still crowded. A top-journal reviewer may prefer a
    compact main-table summary plus appendix detail.
-4. **Plausible production-metadata risk: ACM CCS concepts and keywords remain
+3. **Plausible production-metadata risk: ACM CCS concepts and keywords remain
    absent.** `BUILD_NOTES.md` says this is intentionally deferred, but TORS
    submission freeze should add them rather than relying on a post-review
    cleanup.
-5. **Plausible literature-freeze risk.** WPGRec has now been added, and the
-   frequency/time-frequency phrase is no longer uncited. Still do one final
-   targeted search before freezing the TORS submission, especially for 2026
-   AR2023 5-core, semantic-ID/generative, and frequency/time-frequency
-   sequential-recommendation preprints.
-6. **Confirmed prior provenance blocker fixed.** The dirty
+4. **Plausible first-page layout polish risk.** The rendered review artifact is
+   readable, but page 1 shows both the acmart topmatter line
+   "2026. Manuscript submitted to ACM" and the footer "Manuscript submitted to
+   ACM". This may be normal review-mode acmart output; verify against the exact
+   TORS submission workflow before freeze.
+5. **Confirmed prior TORS header blocker fixed.** `paper-shared.tex` now uses
+   an optional short title, and rendered pages 23 and 29 show the running title
+   separated cleanly from the page number.
+6. **Confirmed prior comparator-language blocker fixed.** The unpinned local
+   comparator section now uses "regenerates" language; remaining "reproduce"
+   occurrences are negated pinned-reproduction caveats or internal
+   thinning/titration language, not an official-comparator overclaim.
+7. **Confirmed prior provenance blocker fixed.** The dirty
    `_bestrec_run/emit_latex_tables.py` manifest problem is closed: the working
    tree is clean, the strict gate fails on dirty manifested files, and
    `update_release_manifest.py --verify` passes. `RELEASE_MANIFEST.json`
    intentionally records source boundary `d76ef64`, with later commits limited
    to the manifest child and response log.
-7. **Confirmed prior documentation/literature blockers fixed.** `BUILD_NOTES.md`
+8. **Confirmed prior documentation/literature blockers fixed.** `BUILD_NOTES.md`
    now describes both `manuscript,review,anonymous` and `acmsmall` targets
    consistently, and the novelty paragraph cites WPGRec alongside FEARec.
-8. **Confirmed core artifact checks remain green.** The strict rebuild passes:
+9. **Confirmed core artifact checks remain green.** The strict rebuild passes:
    HSTU core-block parity exact, 164 cells recomputed, 0 mismatches, 0
    untraceable cells, all 12 claim families sourced, release manifest verified,
    MI dual gate PASS, Office descriptive/VOID OK.
-9. **Persistent scientific boundary: no broad SOTA, no paired superiority.** The
+10. **Persistent scientific boundary: no broad SOTA, no paired superiority.** The
    current paper mostly respects this boundary. Any future abstract, conclusion,
    cover letter, response file, or release note must keep Video_Games as
    competitive but not SOTA; MI as a per-category point-estimate comparison; and
    Office as VOID / descriptive only.
+
+## Audit Run - 2026-07-12 16:32 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `555f566` (`Respond to
+  PAPER_REVIEW_AUDIT run 15:31: header collision fixed (visually verified);
+  regenerates-wording aligned`)
+- Working tree before writing this audit: clean.
+- Commits since the supplied last-run cutoff (`2026-07-12T05:30:22Z`):
+  `15b7dbaf` (short running title and regenerates wording), `d7846db4`
+  (manifest regen), `555f5669` (response log).
+- Canonical artifacts inspected: `PAPER_SUBMISSION.md`, `PAPER_SUBMISSION.pdf`,
+  `CANONICAL_SUBMISSION.md`, `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`,
+  `paper_tex/main.tex`, `paper_tex/paper-shared.tex`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/references.bib`,
+  `paper_tex/sections/*`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, and `PAPER_REVIEW_AUDIT.md`.
+- Visual PDF check: rendered `paper_tex/PAPER_TORS.pdf` pages 1, 17, 18, 22,
+  23, 24, 29, and 35 with `pypdfium2` through the project `uv` runtime into
+  `tmp/pdfs/hourly_audit_20260712_1632_tors/`.
+
+### Verdict
+
+**No new hard rejection defect found in this run.** The prior two confirmed
+defects are closed: the TORS running title no longer collides with page numbers,
+and the unpinned comparator language is aligned to "regenerates" rather than
+"reproduces." The scientific/provenance gate remains green. The highest current
+risks are now submission-readiness and reviewer-perception risks: recent-work
+coverage, Table 2 density, CCS/keyword metadata, and one minor first-page
+layout-polish check.
+
+### Commands And Evidence Checked
+
+- `git status --short --branch`
+  - Clean on `codex/bestrec-sota-results`.
+- `git log --since="2026-07-12T05:30:22Z" --oneline --name-status`
+  - Confirms the expected three commits after the previous audit response.
+- `uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py
+  --strict`
+  - PASS: HSTU core-block parity exact (`max|diff| = 0.000e+00`).
+  - PASS: 164 cells recomputed; 0 `MISMATCH`; 0 `UNTRACEABLE`; all 12 claim
+    families sourced.
+  - PASS: release manifest verification, 113 files verified.
+  - PASS: MI dual gate.
+  - PASS/VOID: Office remains descriptive and VOID under the preregistered floor
+    check.
+- `uv --project _bestrec_run run python paper_tex/scan_pdf.py
+  paper_tex/PAPER_TORS.pdf`
+  - PASS: 35 pages; 0 placeholder/forbidden-claim failures.
+  - Informational SOTA list contains only explicit non-claim contexts.
+- PDF text/object extraction with `pypdf`
+  - `paper_tex/PAPER_TORS.pdf`: 35 pages, 426,626 bytes; contains WPGRec and
+    "regenerates"; no `CCS Concepts`.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 36 pages, 433,961 bytes; contains
+    WPGRec and "regenerates"; no `CCS Concepts`.
+  - `PAPER_SUBMISSION.pdf`: 40 pages, 1,311,606 bytes; contains WPGRec and
+    "regenerates"; no `CCS Concepts`.
+- Wording sweep
+  - `paper_tex/sections/05-results.tex` now has
+    `The Musical_Instruments comparator regenerates locally` and
+    `Caveats (why these are regenerations, not reproductions)`.
+  - Remaining `reproduce*` hits are either negated pinned-reproduction caveats
+    or internal "does not reproduce MI's tail win" thinning-language, not an
+    official-comparator claim.
+- Visual spot check
+  - Page 23: short running title and page number are separated; Fig. 3 remains
+    readable.
+  - Page 24: Table 2 is legible but still dense.
+  - Page 29: short running title and page number are separated; ethics/data
+    governance section is readable.
+  - Page 1: content is readable; note the duplicated-looking acmart
+    "Manuscript submitted to ACM" topmatter/footer text as a freeze-time polish
+    check.
+
+### Confirmed Fixes Since Prior Audit
+
+1. **Running-header collision fixed.** The optional short title in
+   `paper_tex/paper-shared.tex` is present and the previously failing pages
+   visually render cleanly.
+2. **Comparator wording fixed.** The MI local reference-implementation run is
+   now described as an environment-caveated local regeneration, not an official
+   or pinned reproduction.
+3. **Strict gate remains healthy after those fixes.** The rebuild, manifest
+   verification, MI gate, Office VOID adjudication, and PDF hygiene scan all
+   pass on the current HEAD.
+
+### Confirmed Problems
+
+- **No new confirmed numerical, provenance, or claim-boundary defect was found.**
+- **Confirmed submission metadata still absent:** the active PDFs and TeX source
+  do not include ACM CCS concepts or keywords. This is acceptable only if it is
+  intentionally deferred until the actual TORS submission form/template pass.
+
+### Plausible Risks Requiring Author Verification
+
+- **Recent AR2023 literature coverage may still look selective.** The manuscript
+  currently cites the main same-statistics and SID-family 2026 preprints, but a
+  fresh search found additional AR2023-adjacent work not in the bibliography:
+  `Augment or Not?` (2025) evaluates AR2023 Musical Instruments / Industrial
+  and Scientific under 5-core leave-one-out; `DiffuReason` (2026) evaluates
+  AR2023 Video & Games with an HSTU backbone but a different filtered universe;
+  and SILLM4Rec has an ACM DOI page claiming three AR2023 5-core datasets. None
+  of the inspected results overturn the paper's MI comparator choice or
+  no-Video-Games-SOTA boundary, but a reviewer may expect an explicit
+  non-comparability note.
+- **DiffuReason deserves special handling if cited.** It reports Video & Games
+  HSTU NDCG@10 0.0945 and DiffuReason-H 0.1041, far above this manuscript's
+  Video_Games number, but its Video & Games universe is 67,658 users / 25,535
+  items / 654,867 interactions and it filters positive ratings differently from
+  the HSTU-BLaIR-family universe here (94,762 / 25,612 / about 814,586). This
+  is not an apples-to-apples defeat, but it is a reason to keep avoiding broad
+  Video_Games claims.
+- **`Augment or Not?` is relevant but not threatening.** Its AR2023 Musical
+  Instruments table reports best listed NDCG@10 0.0282 (LETTER-TIGER), well
+  below HSTU-BLaIR's 0.0406 comparator, but it is a modern AR2023 5-core
+  LOO LLM-recommender benchmark and should be considered for the final
+  recent-work paragraph.
+- **SILLM4Rec needs direct inspection before citation.** Search/ACM metadata
+  indicate AR2023 5-core experiments, but this audit did not fully inspect the
+  paper text because the ACM PDF page was not accessible through the tool.
+- **First-page ACM footer/topmatter repetition may be harmless.** Verify against
+  final TORS instructions rather than changing acmart blindly.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR still reports the paper's key comparator points: Video Games
+  HSTU-BLaIR NDCG@10 0.0760, Office Products 0.0271, Musical Instruments
+  0.0406, with AR2023 5-core framing. Sources:
+  https://github.com/snapfinger/HSTU-BLaIR and
+  https://arxiv.org/html/2504.10545v3
+- SID-MLP remains a same-statistics AR2023 5-core LLOO concurrent-preprint
+  comparator context for MI/VG dataset statistics. Source:
+  https://arxiv.org/html/2605.12617v1
+- WPGRec is real and supports the manuscript's statement that later
+  time-frequency/wavelet-packet SR work exists; an ACM DOI search result now
+  also appears, so bibliography metadata should be checked at freeze. Sources:
+  https://arxiv.org/abs/2604.21305 and
+  https://dl.acm.org/doi/10.1145/3805712.3809907
+- `Augment or Not?` uses Amazon'23 Musical Instruments / Industrial and
+  Scientific, 5-core leave-one-out, and reports MI NDCG@10 values up to 0.0282
+  in its Table 2. Source: https://arxiv.org/html/2505.23053
+- `DiffuReason` uses AR2023 Video & Games only among its Amazon review
+  datasets, with 67,658 users / 25,535 items / 654,867 interactions and full
+  ranking; its HSTU-backbone result is on a different universe and should not be
+  mixed with HSTU-BLaIR-family numbers. Source:
+  https://arxiv.org/html/2602.09744
+- Amazon Reviews 2023 remains the correct primary dataset source for public
+  review, metadata, and link facts. Source: https://amazon-reviews-2023.github.io/
+
+### Concrete Fixes To Make Next
+
+1. Add a compact recent/concurrent-work note covering additional
+   AR2023-adjacent but non-interchangeable protocols, or document why they are
+   excluded from the main related-work paragraph. Include at least
+   `Augment or Not?` and `DiffuReason`; inspect SILLM4Rec directly if adding it.
+2. Decide whether to split Table 2 before submission or leave the dense
+   complete negative-result map in the main text.
+3. Add ACM CCS concepts and keywords before the actual TORS submission freeze.
+4. Verify the first-page acmart "Manuscript submitted to ACM" repetition against
+   final TORS formatting guidance.
+5. Run one more targeted literature sweep at the freeze timestamp, especially
+   for AR2023 5-core, HSTU, semantic-ID/generative, LLM/reasoning, and
+   frequency/time-frequency sequential-recommendation work.
+
+### Open Questions
+
+- Should the paper cite `Augment or Not?` and `DiffuReason` in the main
+  related-work paragraph, or in a short appendix/concurrent-work note?
+- Is SILLM4Rec close enough to the paper's protocol to warrant inclusion after
+  direct inspection?
+- Is the dense Table 2 intended as a deliberate top-journal evidence table, or
+  should it be condensed for first-pass review readability?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical source and compiled artifacts.
+- [x] Check commits since the supplied last-run cutoff.
+- [x] Verify strict numerical/provenance rebuild.
+- [x] Run TORS PDF hygiene scan.
+- [x] Render and visually inspect the prior failure pages.
+- [x] Verify the prior header-collision fix.
+- [x] Verify the prior "reproduces" wording fix.
+- [x] Run a targeted external literature sweep.
+- [x] Update the cumulative audit with current risk priorities.
+- [ ] Add/freeze final recent-work coverage.
+- [ ] Decide Table 2 split vs dense main-table presentation.
+- [ ] Add ACM CCS concepts and keywords before submission.
+- [ ] Verify final TORS first-page/footer formatting.
 
 ## Audit Run - 2026-07-12 15:31 Australia/Sydney
 

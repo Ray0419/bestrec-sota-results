@@ -6,55 +6,206 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **Plausible literature-freeze risk is now the highest reviewer risk.** The
-   manuscript cites SID-MLP, Latte, GrIT, ReSID, ChronoSID, WPGRec, and the
-   HSTU-BLaIR family, but a fresh search found additional AR2023-adjacent work
-   not yet cited: `Augment or Not?` (AR2023 Musical Instruments / Industrial
-   and Scientific 5-core LOO), `DiffuReason` (AR2023 Video & Games 5-core under
-   different filtering/statistics, with HSTU-backbone results), and SILLM4Rec
-   (ACM DOI page says three AR2023 5-core datasets; not fully inspected due DOI
-   access). These do not overturn the current claim boundary, but omission could
-   look selective at top-journal review. Add a compact "other recent
-   AR2023-adjacent, non-interchangeable protocol" paragraph or document the
-   exclusion decisions before freeze.
-2. **Plausible reviewer-readability risk: Table 2 remains dense.** The old
+1. **Confirmed reviewer-facing prose defect: remove workflow/tooling language
+   from the SILLM4Rec exclusion sentence.** The new AR2023-adjacent paragraph
+   says SILLM4Rec is not cited because "its full text was not accessible to our
+   tooling." That is an internal audit-process leak, not journal prose. Replace
+   with a neutral protocol-auditability statement or remove the SILLM4Rec
+   sentence entirely until the paper can be inspected.
+2. **Plausible artifact-role metadata risk: CCS/keywords are closed for the TORS
+   LaTeX artifact, not for the canonical markdown PDF.** `paper-shared.tex` and
+   `paper_tex/PAPER_TORS.pdf` now contain ACM CCS concepts; `PAPER_SUBMISSION.pdf`
+   extraction still lacks `CCS Concepts`/`Keywords`. This is acceptable only if
+   TORS receives the LaTeX PDF and the markdown PDF is clearly non-submission
+   reader output.
+3. **Plausible reviewer-readability risk: Table 2 remains dense.** The old
    broken continuation-cell defect is gone and the rendered page is legible, but
    the negative-result map is still crowded. A top-journal reviewer may prefer a
    compact main-table summary plus appendix detail.
-3. **Plausible production-metadata risk: ACM CCS concepts and keywords remain
-   absent.** `BUILD_NOTES.md` says this is intentionally deferred, but TORS
-   submission freeze should add them rather than relying on a post-review
-   cleanup.
 4. **Plausible first-page layout polish risk.** The rendered review artifact is
    readable, but page 1 shows both the acmart topmatter line
    "2026. Manuscript submitted to ACM" and the footer "Manuscript submitted to
    ACM". This may be normal review-mode acmart output; verify against the exact
    TORS submission workflow before freeze.
-5. **Confirmed prior TORS header blocker fixed.** `paper-shared.tex` now uses
+5. **Confirmed recent-literature omission mostly fixed.** `Augment or Not?` and
+   `DiffuReason` are now cited as AR2023-adjacent but non-interchangeable
+   protocols; the external check supports that framing. Keep SILLM4Rec excluded
+   unless direct protocol inspection becomes possible.
+6. **Confirmed prior TORS header blocker fixed.** `paper-shared.tex` now uses
    an optional short title, and rendered pages 23 and 29 show the running title
    separated cleanly from the page number.
-6. **Confirmed prior comparator-language blocker fixed.** The unpinned local
+7. **Confirmed prior comparator-language blocker fixed.** The unpinned local
    comparator section now uses "regenerates" language; remaining "reproduce"
    occurrences are negated pinned-reproduction caveats or internal
    thinning/titration language, not an official-comparator overclaim.
-7. **Confirmed prior provenance blocker fixed.** The dirty
+8. **Confirmed prior provenance blocker fixed.** The dirty
    `_bestrec_run/emit_latex_tables.py` manifest problem is closed: the working
    tree is clean, the strict gate fails on dirty manifested files, and
    `update_release_manifest.py --verify` passes. `RELEASE_MANIFEST.json`
-   intentionally records source boundary `d76ef64`, with later commits limited
-   to the manifest child and response log.
-8. **Confirmed prior documentation/literature blockers fixed.** `BUILD_NOTES.md`
+   intentionally records a source boundary commit, with later commits limited
+   to manifest/response bookkeeping unless manifested content changes.
+9. **Confirmed prior documentation/literature blockers fixed.** `BUILD_NOTES.md`
    now describes both `manuscript,review,anonymous` and `acmsmall` targets
    consistently, and the novelty paragraph cites WPGRec alongside FEARec.
-9. **Confirmed core artifact checks remain green.** The strict rebuild passes:
+10. **Confirmed core artifact checks remain green.** The strict rebuild passes:
    HSTU core-block parity exact, 164 cells recomputed, 0 mismatches, 0
    untraceable cells, all 12 claim families sourced, release manifest verified,
    MI dual gate PASS, Office descriptive/VOID OK.
-10. **Persistent scientific boundary: no broad SOTA, no paired superiority.** The
+11. **Persistent scientific boundary: no broad SOTA, no paired superiority.** The
    current paper mostly respects this boundary. Any future abstract, conclusion,
    cover letter, response file, or release note must keep Video_Games as
    competitive but not SOTA; MI as a per-category point-estimate comparison; and
    Office as VOID / descriptive only.
+
+## Audit Run - 2026-07-12 17:35 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `a53a9013` (`Respond to
+  PAPER_REVIEW_AUDIT run 16:32: coverage clause (iv), CCS/keywords closed`)
+- Working tree before writing this audit: clean.
+- Commits since supplied last-run cutoff (`2026-07-12T06:31:53Z`):
+  `2fcfb06f` (AR2023-adjacent clause, CCS concepts, keywords, references, PDF
+  rebuild), `8fb5c21a` (manifest regeneration), `a53a9013` (response log).
+- Canonical artifacts inspected: `PAPER_SUBMISSION.md`, `PAPER_SUBMISSION.pdf`,
+  `CANONICAL_SUBMISSION.md`, `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`,
+  `paper_tex/paper-shared.tex`, `paper_tex/sections/05-results.tex`,
+  `paper_tex/references.bib`, `paper_tex/tables/tableA1.tex`,
+  `paper_tex/PAPER_TORS.pdf`, `paper_tex/hygiene_scan_output.txt`, and
+  `PAPER_REVIEW_AUDIT.md`.
+
+### Verdict
+
+**No numerical, provenance, or claim-boundary rejection defect found.** The
+strict rebuild remains green, and the new recent-literature paragraph materially
+improves the prior coverage risk. The only new confirmed problem is writing and
+submission-polish level: the paper should not tell reviewers that a paper was
+excluded because it was inaccessible to "our tooling." Also, the metadata fix is
+closed for the TORS LaTeX artifact but not for the markdown-rendered PDF, so the
+submission role of `PAPER_SUBMISSION.pdf` should stay explicit.
+
+### Commands And Evidence Checked
+
+- `git status --short --branch`
+  - Clean on `codex/bestrec-sota-results`.
+- `git log --since="2026-07-12T06:31:53Z" --oneline --decorate --name-status`
+  - Confirms the three expected commits after the prior audit cutoff.
+- `git diff --stat` and targeted `git diff`
+  - No uncommitted manuscript or artifact drift before this audit edit.
+- `uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py
+  --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: 164 cells recomputed; 0 `MISMATCH`; 0 `UNTRACEABLE`; all 12 declared
+    claim families sourced.
+  - PASS: release manifest verification, 113 files verified.
+  - PASS: MI V2 dual gate.
+  - PASS/VOID: Office remains descriptive and VOID under the preregistered floor
+    check.
+- `uv --project _bestrec_run run python paper_tex/scan_pdf.py
+  paper_tex/PAPER_TORS.pdf`
+  - PASS: 36 pages; 0 placeholder/forbidden-claim failures.
+  - Informational SOTA list remains negated/non-claim contexts.
+- PDF text extraction via `pypdf` under the project `uv` runtime
+  - `paper_tex/PAPER_TORS.pdf`: 36 pages; contains `CCS Concepts`, DiffuReason,
+    SILLM4Rec, "full text was not accessible", and the new AR2023-adjacent
+    clause. Extraction did not find the literal string `Keywords`, likely
+    because acmart renders the keyword label differently.
+  - `PAPER_SUBMISSION.pdf`: 41 pages; contains Augment or Not, DiffuReason,
+    SILLM4Rec, "full text was not accessible", and the new AR2023-adjacent
+    clause; extraction did not find `CCS Concepts` or `Keywords`.
+- Targeted wording sweep
+  - `PAPER_SUBMISSION.md` / `paper_tex/sections/05-results.tex` no longer have
+    the old first/only AR2023 wording and still keep Video_Games as non-SOTA.
+  - `paper_tex/sections/05-results.tex` now contains the audit-requested clause
+    `(iv) Other AR2023-adjacent, non-interchangeable protocols`.
+
+### Confirmed Problems
+
+1. **Manuscript leaks audit/tooling process into the SILLM4Rec sentence.**
+   Current wording: "A further candidate (SILLM4Rec) is not cited pending direct
+   protocol inspection (its full text was not accessible to our tooling at the
+   time of writing)." A journal paper can say protocol details were not available
+   in the accessible metadata; it should not mention "our tooling." This is a
+   small but real reviewer-confidence issue.
+2. **The CCS/keyword closure is artifact-specific.** The TORS LaTeX source and
+   `PAPER_TORS.pdf` now contain ACM CCS concepts, but `PAPER_SUBMISSION.pdf`
+   does not. If the markdown PDF remains a public reader artifact, this is fine;
+   if it is treated as a submission artifact, the prior metadata finding is not
+   fully closed.
+
+### Plausible Risks Requiring Author Verification
+
+- **SILLM4Rec may be relevant but is not protocol-audited from accessible
+  metadata.** Search/ACM/ResearchGate metadata confirms the paper exists
+  (`SILLM4Rec: Self-Improving with Chain of Thought Enhanced Preference
+  Optimization for Multimodal Recommendation`, MMAsia 2025, DOI
+  `10.1145/3743093.3771011`), but the accessible metadata did not provide enough
+  protocol detail to decide whether it belongs in the AR2023 5-core paragraph.
+  Keep it excluded unless the PDF can be inspected directly; if mentioned, use a
+  neutral note such as "excluded pending direct protocol inspection."
+- **The response log overstates the metadata verification.**
+  `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` says both PDFs had CCS/keywords verified
+  in extraction, but the extraction check here finds that only the TORS artifact
+  carries CCS. This is not a paper defect if the response log is historical
+  correspondence, but it should not be copied into submission metadata.
+- **Table 2 and first-page review-mode text remain standing polish risks.**
+  Nothing in this run worsens them.
+
+### External Fact-Check / Novelty Notes
+
+- `Augment or Not?` is correctly AR2023-adjacent but non-interchangeable: it
+  uses Amazon'23 Musical Instruments and Industrial and Scientific under 5-core
+  leave-one-out, and its table reports LETTER-TIGER Musical Instruments
+  NDCG@10 = 0.0282. Source:
+  https://arxiv.org/html/2505.23053v1
+- `DiffuReason` is correctly non-comparable to this paper's Video_Games result:
+  it reports a different AR2023 Video & Games universe (67,658 users / 25,535
+  items / 654,867 interactions), full ranking, and HSTU/DiffuReason-H NDCG@10
+  0.0945 / 0.1041. Source: https://arxiv.org/html/2602.09744v1
+- Amazon Reviews 2023 remains the correct primary dataset source. Source:
+  https://amazon-reviews-2023.github.io/
+- SILLM4Rec metadata confirms existence and venue/DOI, but not protocol details
+  in the accessible pages used here. Sources:
+  https://dl.acm.org/doi/10.1145/3743093.3771011 and
+  https://www.researchgate.net/publication/398412502_SILLM4Rec_Self-Improving_with_Chain_of_Thought_Enhanced_Preference_Optimization_for_Multimodal_Recommendation
+
+### Concrete Fixes To Make Next
+
+1. Replace the SILLM4Rec sentence with neutral wording:
+   "A further candidate, SILLM4Rec (MMAsia 2025), is excluded pending direct
+   protocol inspection; accessible metadata did not establish an
+   apples-to-apples AR2023 5-core full-catalog LLOO setting."
+   Or simply delete the sentence until the paper is inspectable.
+2. Decide whether `PAPER_SUBMISSION.pdf` should gain a short metadata front
+   matter block or be explicitly described as non-venue reader output. Do not
+   claim that both PDFs contain CCS/keywords unless extraction verifies it.
+3. Keep the current AR2023-adjacent paragraph's non-comparability framing for
+   `Augment or Not?` and `DiffuReason`; it is source-supported.
+4. Leave Table 2 dense only if completeness is the intended reviewer-facing
+   tradeoff; otherwise move most negative-result rows to appendix.
+5. Re-run one final literature/protocol sweep at freeze.
+
+### Open Questions
+
+- Is `PAPER_SUBMISSION.pdf` still intended for public/reader consumption after
+  TORS submission, and if so should it carry venue metadata for consistency?
+- Can the authors obtain SILLM4Rec's full PDF through institutional access or an
+  author copy before freeze?
+
+### Running Checklist
+
+- [x] Locate canonical manuscript source and PDF.
+- [x] Read prior automation memory and prior cumulative audit.
+- [x] Check files/commits after the automation last-run cutoff.
+- [x] Verify strict rebuild and release manifest.
+- [x] Verify TORS PDF hygiene scan.
+- [x] Fact-check new Augment/DiffuReason coverage against external sources.
+- [x] Check CCS/keyword presence in generated PDFs.
+- [x] Identify reviewer-facing SILLM4Rec tooling-language defect.
+- [ ] Rewrite or remove the SILLM4Rec sentence.
+- [ ] Clarify metadata expectations for `PAPER_SUBMISSION.pdf`.
+- [ ] Final freeze-time literature/protocol sweep.
 
 ## Audit Run - 2026-07-12 16:32 Australia/Sydney
 

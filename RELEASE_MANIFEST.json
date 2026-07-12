@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "791de36a636260d73e3d5246a4740e937b528001",
+  "git_commit": "bbb728fe2710caad36f17fa8121484f9df7ad653",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -170,16 +170,16 @@
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     "PAPER_SUBMISSION.md": {
-      "sha256": "9b56cfbe39b715045eff7b1841012ffd68a2ca3dc554e33f49c6527e88435fcc",
-      "bytes": 139530
+      "sha256": "34633a4bc79bb8626bad0a209982a028bf32f68259641463d01b10685f5634e9",
+      "bytes": 140864
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "56c2527c8ca6cd15c2829d5acd9898f036a6cff37ee03bf52ccd50134aae1508",
-      "bytes": 1344931
+      "sha256": "fec0f8d6c93a9dc227218aae21fd1a580da46f8b9a637ebb1fabfd904ca6995d",
+      "bytes": 1364255
     },
     "PAPER_DRAFT.md": {
-      "sha256": "f6eb6665092e900cf7ca0fff8c8af67591975191fe4b0dfc477fcc9417e07ed8",
-      "bytes": 161715
+      "sha256": "1d5b80aa9d163721c63dc7313a334d99e393abc9414cef9572567641668b56c6",
+      "bytes": 163049
     },
     "CANONICAL_SUBMISSION.md": {
       "sha256": "e354c92088070de1d194c03dcb31624df397b72190dcca0b17fc595ea37261dc",
@@ -218,12 +218,12 @@
       "bytes": 13880
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "ad2b1232c9ba02ac911e912aa43939ac59128699776e4ea4cb2d0118187225e0",
-      "bytes": 446693
+      "sha256": "7de14e661108db6003e9cf5905abf064c7e5fbdeec48d50d6759a6a0429fc3a4",
+      "bytes": 449790
     },
     "_bestrec_run/emit_latex_tables.py": {
-      "sha256": "1ac6b422b12416a893c8eb9f79e21729801435d9af4202a84b43f8ecd2e60f86",
-      "bytes": 24350
+      "sha256": "81ac05d73e5d1d31b51bd4b246cfcea12f7f1883204d703063358340a1151367",
+      "bytes": 24725
     }
   },
   "pinned_parity_artifacts": {

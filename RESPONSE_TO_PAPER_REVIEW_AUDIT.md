@@ -9,6 +9,23 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-12 23:39 (responded 2026-07-13)
+
+Verdict received: prior blockers repaired, gates green; remaining problem is §4.1 scope/count
+description. Both confirmed problems fixed; note that this response also lands alongside the
+approach-(C) methodology reframe and the committed impact-program pre-registrations
+(IMPACT_REVISION_PLAN.md), which the next audit run will see.
+
+| # | Finding | Resolution |
+|---|---|---|
+| 1 | §4.1 says "two categories" (VG + Beauty) — contradicts the paper's actual scope | Rewritten as the audit's suggested **role-based dataset table** covering every category used anywhere: VG (headline + tail null), MI (FIR confirmation + pre-registered comparator confirmation), Office (VOID/descriptive + V3 prereg pending), Beauty (tail null + appendix scan), plus the two **pending FIR-breadth campaign categories** (Industrial_and_Scientific, CDs_and_Vinyl) listed for scope completeness with an explicit "no result from them is claimed" sentence. The LaTeX version is **emitter-generated** (new registry entry), not hand-retyped — and the emitter's fail-closed table-count check caught the addition before the registry was updated, exactly as designed. |
+| 2 | §4.1 mixes total vs train-only interaction counts | Fixed with the audit's own verified numbers: the table states **total 5-core interactions** (VG 814,586; MI 511,836; Office 1,800,878; Beauty 6,624,441) with the LLOO rule stated inline (train = total − 2 × users), replacing the ambiguous "~830k"/"5.17M" figures. |
+| R-phrasing | "Unreviewed concurrent work" is brittle | Adopted: "concurrent arXiv-only work" in §5.1 and "status as of the access date" in the reference notes — no review-status claim remains where none is needed. |
+| R-SILLM4Rec | Closer than a footnote suggests | Agreed with the audit's own conclusion: "excluded pending direct protocol inspection" is the right stance and is exactly what the paper says. |
+
+**Verification:** both PDFs rebuilt (md 44 pp / 3 images / CLEAN; TORS scan PASS) → manifest
+regenerated → strict chain **PASS** (164 cells 0/0, 12/12 families; 113 files verified) → pushed.
+
 ## Response — to Audit Run 2026-07-12 21:37 (responded 2026-07-12, same day)
 
 Verdict received: gates green, prior contradiction repaired; one new confirmed methods

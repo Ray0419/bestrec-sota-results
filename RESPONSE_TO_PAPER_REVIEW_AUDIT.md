@@ -4,6 +4,28 @@ This response file is cumulative, mirroring `PAPER_REVIEW_AUDIT.md`: each audit 
 timestamped response section below. The newest section always addresses the audit's newest
 "Audit Run" section and its updated risk list.
 
+## Response — to Audit Runs 2026-07-12 09:40 AND 10:31 (responded together, 2026-07-12)
+
+Both runs' verdicts: no numerical regression; blockers are presentation, ethics/data governance,
+and literature/venue hygiene. All confirmed problems from both runs are fixed.
+
+| # | Finding (run) | Resolution |
+|---|---|---|
+| 1 | Figs 1–3 absent from the PDF (10:31 #1, 09:40-adjacent) | **Embedded**: markdown image syntax added at the three referencing paragraphs (PNG assets); the rendered PDF now carries **3 image XObjects** (render script gains a fail-closed images≥1 gate + width-scaling CSS). The TORS LaTeX twin embeds the PDF vector versions via `\includegraphics` (delta build in flight). |
+| 2 | No ethics/privacy/data-use section (10:31 #2) | **New §10 "Ethics and Data Governance"**: public pseudonymized AR2023 under its research terms; scope of data consumed = interaction tuples + item-metadata text only (no review bodies, no images, no re-identification attempts); sidecars carry remapped integer IDs only; raw data not redistributed (hash + regeneration boundary); no new data collection ⇒ IRB not applicable; explicit no-deployment-claim + exposure-bias note. |
+| 3 | Table 0 contradicts the parity evidence (09:40 #1 / 10:31 #3) | HSTU-base row corrected to the audit's suggested boundary: **"core-block parity demonstrated bitwise against the reference research implementation (§3.2); no pinned end-to-end system reproduction (§5.6, §6.5)"** — an understatement fix, not a claim expansion. |
+| 4 | GrIT uncited (10:31 #4) | Cited with fetched metadata (Shyam, Kagita, Rana, Kumar — "GrIT: Group Informed Transformer for Sequential Recommendation", arXiv:2602.19728): §5.1 notes its matching VG 5-core statistics and published NDCG@10 0.0588, records that our 5-seed 0.0673 ± 0.0003 is numerically higher **as a point-estimate observation with explicit comparability caveats, not a claim**; References entry added to the concurrent-preprints block. Kept out of the audited comparator table (Table 1b) per the fence. |
+| 5 | Frequency-filter related work too narrow (09:40 #2) | §2.3 novelty boundary broadened: FEARec (Du et al., SIGIR 2023) cited as representative of the wider frequency/time-frequency SR line, and our contribution restated narrower — left-causal depthwise FIR inside an HSTU-style stack, all-position next-item objective, full-catalog AR2023 5-core LLOO. |
+| 6 | Venue-date claim not verifiable (10:31 #5) | `VENUE_PLAN.md` now says RecSys 2027 dates are **TBD**, with the RecSys 2026 call (artifacts required, dual submission prohibited) cited as precedent only — matching the audit's own ACM-policy fact-check. |
+| 7 | Stale page counts (09:40 #3) | `CANONICAL_SUBMISSION.md` no longer states a page count (machine-scanned every render); older response sections are historical records, not package metadata. |
+| 8 | Table 2 dangling cell at page break (09:40 #4) | `tr{break-inside:avoid}` injected by the render script (idempotent); re-rendered PDF: **40 pages, 3 images, scan CLEAN**. |
+| 9 | paper_tex smoke artifacts untriaged (10:31 housekeeping) | Triaged: `_smoke.*` deleted (install probes), `main.pdf` gitignored (intermediate), and the full TORS LaTeX build **committed** — acmart TORS anonymous format, 16 generated table includes (2 straight from strict-build JSON, 10 md-extracted with numeric cross-check against manifest families, 4 md-only), 30-entry bibliography, own hygiene scan PASS. The round-7 deltas (figures/ethics/GrIT/FEARec/Table-0) are being applied to the LaTeX twin now; it will be committed when its rebuild passes. |
+| 10 | Manifest commit ≠ HEAD (09:40 #3) | Ritual regen at the fix commit; strict wrapper re-verifies (111 files OK). |
+
+**Verification:** SUBMISSION BUILD GREEN (164 cells, 0/0, 12/12 families) → RELEASE MANIFEST
+VERIFY OK → MI dual gate PASS → Office VOID/descriptive → **SUBMISSION REBUILD: PASS**, exit 0.
+Markdown PDF: 40 pp, 3 embedded images, scan CLEAN.
+
 ## Response — to Audit Run 2026-07-12 08:31 (responded 2026-07-12, same day)
 
 Verdict received: prior literature-framing risk confirmed fixed in source and PDF; remaining

@@ -9,6 +9,23 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-12 15:31 (responded 2026-07-12, same day)
+
+Verdict received: numerical/provenance package green; submission formatting not yet green (header
+collision + one wording overstatement). Both confirmed problems fixed and visually verified.
+
+| # | Finding | Resolution |
+|---|---|---|
+| 1 | Running title collides with page numbers (pp. 23/29 of the TORS review build) | Fixed with the audit's suggested mechanism: `	itle[Causal FIR Filtering in an HSTU-Style Recommender]{…full title…}` in `paper-shared.tex`; both TeX targets rebuilt, hygiene scan PASS, and the previously-affected pages **re-rendered and visually inspected** — the short running head now sits clear of the page number on both. |
+| 2 | "The Musical_Instruments comparator reproduces" overstates an unpinned run | Softened to the caveat boundary in both markdown papers **and** the LaTeX twin: the §5.6 heading now reads "regenerates locally", the in-paragraph sentence reads "a local run of the generating code regenerates it under the unpinned shimmed research path", and §5.2 says "regenerates the published value". The titration-internal "reproduces the MI-subcritical anchor" (our runs vs our own anchor, no comparator involved) is deliberately unchanged. |
+| Q1 | Is `PAPER_SUBMISSION.pdf` still a live deliverable? | Yes, with distinct roles: `PAPER_SUBMISSION.pdf` is the **canonical-markdown render** — the human-readable output of the artifact-gated source that repository readers and these audits consume; `paper_tex/PAPER_TORS.pdf` is the **venue review artifact**. Both are manifest-gated; neither supersedes the other until submission, when TORS receives the LaTeX build. |
+| Q2 | Should the response log enter the manifest/deposit boundary? | By policy, no (historical-log banner): it is audit-trail correspondence, not package metadata. If a venue's artifact track wants the correspondence, it ships as clearly-labeled ancillary material outside the hash boundary — the boundary statement in `manifest_scope` covers this. |
+| R-table2 / R-CCS / R-lit / R-HyTiFRec | Standing items | Positions unchanged and restated: Table 2 stays complete-by-design until freeze or reviewer request; CCS concepts + keywords are drafted at submission freeze; the final literature sweep runs at the maintainer's go signal; WPGRec suffices as the representative time-frequency citation per the audit's own note ("not strictly required after WPGRec"). |
+
+**Verification:** both PDFs rebuilt (md 40 pp / 3 images / CLEAN; TORS manuscript scan PASS with
+header fix visually confirmed) → manifest regenerated at the clean boundary → strict chain
+**PASS** (164 cells 0/0, 12/12 families; 113 files verified incl. the dirty-file gate) → pushed.
+
 ## Response — to Audit Run 2026-07-12 14:34 (responded 2026-07-12, same day)
 
 Verdict received: review format substantially fixed; the new top blocker is the manifest hashing

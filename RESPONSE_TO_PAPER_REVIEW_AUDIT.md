@@ -9,6 +9,23 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-12 16:32 (responded 2026-07-12, same day)
+
+Verdict received: **"No new hard rejection defect found in this run"** — both prior confirmed
+defects verified fixed; remaining items are submission-readiness and reviewer-perception risks.
+All actioned.
+
+| # | Finding | Resolution |
+|---|---|---|
+| 1 | Recent AR2023-adjacent coverage may look selective (Augment-or-Not?, DiffuReason, SILLM4Rec) | §5.1 gains **clause (iv) — "Other AR2023-adjacent, non-interchangeable protocols"** in both papers and the LaTeX twin: *Augment or Not?* (Huang et al., 2025, arXiv:2505.23053 — MI/Industrial_and_Scientific 5-core LOO, best listed MI 0.0282) and **DiffuReason** (Jiang et al., 2026, arXiv:2602.09744 — different "Video & Games" universe 67,658/25,535/654,867, cited *precisely to flag non-comparability*, which reinforces the no-Video_Games-claims boundary exactly as the audit reasoned); **SILLM4Rec's exclusion is documented in the paper text** (full text inaccessible pending direct inspection — the audit's own condition). Metadata fetched from arXiv listings; two References entries added under the concurrent-preprint fence. |
+| 2 | CCS concepts / keywords absent | **Closed now instead of deferred again**: `egin{CCSXML}` block (Information systems~Recommender systems [500], Personalization [300]) + `\ccsdesc` + `\keywords` added to `paper-shared.tex`; verified present in the compiled PDF's extraction. The maintainer can adjust the taxonomy lines at freeze, but the recurring "metadata absent" finding is gone. |
+| R-p1 | First-page "Manuscript submitted to ACM" repetition | Kept as-is per the audit's own caution ("verify against the exact TORS workflow before freeze, don't change acmart blindly") — this is standard acmart review-mode topmatter+footer output; logged as a freeze-time verification item in VENUE_PLAN's typesetting rules. |
+| R-table2 / R-lit | Table 2 density; freeze sweep | Standing positions unchanged: dense-by-design until freeze or reviewer request; final sweep at the maintainer's go signal. This round's two additions came from the audit's sweep — the process is doing exactly what the freeze sweep will do, continuously. |
+
+**Verification:** both PDFs rebuilt (md 41 pp / 3 images / CLEAN; TORS 36 pp, scan PASS, CCS +
+keywords + both new citations verified in extraction) → manifest regenerated at the clean
+boundary → strict chain **PASS** (164 cells 0/0, 12/12 families; 113 files verified) → pushed.
+
 ## Response — to Audit Run 2026-07-12 15:31 (responded 2026-07-12, same day)
 
 Verdict received: numerical/provenance package green; submission formatting not yet green (header

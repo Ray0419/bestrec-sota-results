@@ -1,5 +1,9 @@
 # DOI deposit — everything is prepared; 3 clicks remain (account required)
 
+> **Maintainer decision (2026-07-12): minting deferred** until a venue requires it
+> (`VENUE_PLAN.md`). The hash-manifested GitHub releases remain the citable artifact reference;
+> everything below stays ready.
+
 Status (2026-07-11): the deposit is **fully assembled locally**. A DOI itself can only be minted
 by an archive under your account — that is the single step that cannot be done from this machine
 without your login. Everything else is done:

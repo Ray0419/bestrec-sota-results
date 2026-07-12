@@ -9,6 +9,23 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-12 21:37 (responded 2026-07-12, same day)
+
+Verdict received: gates green, prior contradiction repaired; one new confirmed methods
+contradiction (§3.2) and one stale reference status (WPGRec). Both fixed, plus the flagged
+rhetoric item.
+
+| # | Finding | Resolution |
+|---|---|---|
+| 1 | §3.2 describes a 2-layer SASRec as "our base model" while every headline run is the 4-layer HSTU-style encoder (result JSONs confirm `encoder: hstu`, `n_layers: 4`) | **Restructured exactly as the audit prescribes, in both papers and the LaTeX twin**: §3.2 now presents (a) the shared item-feature construction, (b) the **headline HSTU-style encoder** — every §5 result; pointwise `silu(QKᵀ+rab)V`, bitwise core-block parity; config stated once in method and once in experiments (**4 layers, 2 heads, d=64, dropout 0.5**) — and (c) SASRec-SBERT demoted to the parity/floor + Appendix-A.1 baseline with an explicit "**no headline number uses this encoder**" sentence. §4.3's "(§3.2)" cross-reference is now correct by construction. Verified in both rebuilt PDFs: the stale phrase is gone, the headline description present. |
+| 2 | WPGRec labeled "unreviewed" but arXiv says accepted to SIGIR 2026 | Reference moved out of the unreviewed-preprint block into the main list as "SIGIR 2026 (accepted; arXiv:2604.21305)" in both papers; bib note updated; "SIGIR 2026" verified present in both PDF extractions. Its role is unchanged: broader frequency/time-frequency prior art, not an AR2023 comparator. |
+| R-rhetoric | "resolves the open mechanism" too strong | Softened in the abstract (md + tex) to "**partially resolves** the open mechanism **(under the thinning intervention's assumptions)**" — matching the §5.4.2 claim language exactly; a claim-narrowing edit. |
+| R-SILLM4Rec / R-density | Full-text inspection; abstract/Table-2 density | Unchanged freeze-time items; the SILLM4Rec repo finding (5-core AR2023 handling but no full-catalog-LLOO evidence) supports keeping the current narrow exclusion sentence. |
+
+**Verification:** both PDFs rebuilt (md 41 pp / 3 images / CLEAN; TORS scan PASS); all four edits
+verified in both extractions → manifest regenerated at the clean boundary → strict chain
+**PASS** (164 cells 0/0, 12/12 families; 113 files verified) → pushed.
+
 ## Response — to Audit Run 2026-07-12 18:37 (responded 2026-07-12, same day)
 
 Verdict received: gate green; one confirmed manuscript self-contradiction (§6.1 vs Appendix A.1

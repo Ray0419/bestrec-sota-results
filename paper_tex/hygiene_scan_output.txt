@@ -13,6 +13,6 @@ review list (SOTA mentions + negated claim-wordings): 14
   REVIEW SOTA-mention :: s the benchmark relative to the by-timestamp variant. We therefore do not claim SOTA over TIGER/LIGER/BLaIR. HSTU-BLaIR is the relevant stronger AR2023 Video_Games 
   REVIEW SOTA-mention :: relevant stronger AR2023 Video_Games 5-core reference and blocks a SASRec-SBERT SOTA claim. 2026 semantic-ID / generative retrieval line. Recent 2026 work reports A
   REVIEW SOTA-mention :: itive text contributor (+0.0009), not a headline. We do not claim a Video_Games SOTA — the published HSTU-BLaIR 0.0760 relies on custom CUDA/Triton kernels that are
-  REVIEW SOTA-mention :: e Pure-PyTorch Sequential Recommender 29 Explicit non-claims: • We do not claim SOTA over TIGER, LIGER, BLaIR, or HSTU-BLaIR; the published HSTU-BLaIR 0.0760 remain
+  REVIEW SOTA-mention :: iltering in an HSTU-Style Recommender 29 Explicit non-claims: • We do not claim SOTA over TIGER, LIGER, BLaIR, or HSTU-BLaIR; the published HSTU-BLaIR 0.0760 remain
   REVIEW SOTA-mention :: . We provide our 0.01946 (2-seed mean) as a reference baseline rather than as a SOTA-improvement claim. A future apples-to-apples comparison would require either: •
 verdict: PASS (review list above is informational)

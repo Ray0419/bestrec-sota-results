@@ -6,61 +6,223 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **Confirmed release/provenance blocker: the manifest currently hashes an
-   uncommitted version of `_bestrec_run/emit_latex_tables.py`.** The current
-   working tree has one tracked modification: an added `Beauty_and_PC`
-   `\allowbreak` rule. `RELEASE_MANIFEST.json`'s hash for that file matches the
-   dirty working tree, but not `HEAD` and not the manifest's recorded
-   `git_commit` (`7a627ef`). This means a clean checkout of the committed state
-   is not self-consistent with its manifest. Commit the generator change and
-   regenerate/commit the manifest at the intended boundary, or deliberately
-   remove the generator edit and regenerate the manifest.
-2. **Confirmed documentation contradiction: `paper_tex/BUILD_NOTES.md` still has
-   an old document-class paragraph.** The new top of the file and `main.tex`
-   correctly say the default review target is
-   `\documentclass[manuscript,review,anonymous]{acmart}`, but lines 84-91 still
-   say `\documentclass[acmsmall,screen,review,anonymous]{acmart}`. This is
-   stale prose, not a build failure, but it undermines the TORS compliance
-   story.
-3. **Confirmed prior high-risk format issue mostly fixed.** `paper_tex/main.tex`
-   now uses ACM's `manuscript,review,anonymous` review format and the old
-   `acmsmall` build is a separate production preview. Keep this from regressing,
-   and make the notes internally consistent.
-4. **Plausible related-work polish risk: the paper cites FEARec but leaves
-   "subsequent time-frequency architectures" uncited.** Fresh search confirms
-   the frequency/time-frequency SR line is active in 2025-2026 (for example
-   WaveRec/WPGRec, wavelet adaptive filters, and HyTiFRec). Because the paper
-   explicitly invokes that line to narrow novelty, add representative citations
-   or remove the uncited phrase.
-5. **Plausible reviewer-readability risk: Table 2 remains extremely dense in the
-   TORS PDF.** The old dangling continuation-cell problem is gone and page 24 is
-   readable in the manuscript build, but the negative-result table is still
-   crowded. A top-journal reviewer may still prefer a compact main table plus
-   appendix detail.
-6. **Plausible production-metadata risk: ACM CCS concepts / keywords remain
-   absent and BibTeX still accepts empty-address warnings.** This is acceptable
-   for an audit build if intentionally deferred, but it should be closed at
-   actual TORS submission time.
-7. **Confirmed prior blockers fixed: figures, ethics, Table 0, GrIT, and FEARec
-   remain present in the active artifacts.** `PAPER_SUBMISSION.pdf` has three
-   image XObjects, `paper_tex/PAPER_TORS.pdf` has three vector Form XObjects,
-   the ethics/data-governance section is present, Table 0 no longer says "no
-   numerical-parity claim", and GrIT/FEARec are cited. Keep these under the
-   strict gate so they do not regress.
-8. **Persistent scientific boundary: no broad SOTA, no paired superiority.** The
-   current paper respects this boundary. Any future abstract, conclusion, venue
+1. **Confirmed TORS formatting blocker: the running title collides with page
+   numbers.** The current `paper_tex/PAPER_TORS.pdf` review build is otherwise
+   readable, but rendered pages 23 and 29 visibly show the long header merging
+   into the page number (`... Recommender23`, `... Recommender29`). This is a
+   real submission-readiness defect. Likely fix: give acmart a short optional
+   title in `paper_tex/paper-shared.tex`, e.g. `\title[Short running
+   title]{...}`, then rebuild and visually inspect odd/even headers.
+2. **Confirmed comparator-language polish risk: "reproduces" is still too strong
+   in the unpinned local-run section.** The paper correctly states that a
+   faithful pinned HSTU-BLaIR reproduction is blocked locally, but
+   `paper_tex/sections/05-results.tex` still says "The Musical_Instruments
+   comparator reproduces" and "reproduces the published value" for a shimmed,
+   unpinned, single-environment run. Rewrite those occurrences to "regenerates
+   locally under the shimmed research path" or equivalent.
+3. **Plausible reviewer-readability risk: Table 2 remains dense.** The old
+   broken continuation-cell defect is gone and the rendered page is legible, but
+   the negative-result map is still crowded. A top-journal reviewer may prefer a
+   compact main-table summary plus appendix detail.
+4. **Plausible production-metadata risk: ACM CCS concepts and keywords remain
+   absent.** `BUILD_NOTES.md` says this is intentionally deferred, but TORS
+   submission freeze should add them rather than relying on a post-review
+   cleanup.
+5. **Plausible literature-freeze risk.** WPGRec has now been added, and the
+   frequency/time-frequency phrase is no longer uncited. Still do one final
+   targeted search before freezing the TORS submission, especially for 2026
+   AR2023 5-core, semantic-ID/generative, and frequency/time-frequency
+   sequential-recommendation preprints.
+6. **Confirmed prior provenance blocker fixed.** The dirty
+   `_bestrec_run/emit_latex_tables.py` manifest problem is closed: the working
+   tree is clean, the strict gate fails on dirty manifested files, and
+   `update_release_manifest.py --verify` passes. `RELEASE_MANIFEST.json`
+   intentionally records source boundary `d76ef64`, with later commits limited
+   to the manifest child and response log.
+7. **Confirmed prior documentation/literature blockers fixed.** `BUILD_NOTES.md`
+   now describes both `manuscript,review,anonymous` and `acmsmall` targets
+   consistently, and the novelty paragraph cites WPGRec alongside FEARec.
+8. **Confirmed core artifact checks remain green.** The strict rebuild passes:
+   HSTU core-block parity exact, 164 cells recomputed, 0 mismatches, 0
+   untraceable cells, all 12 claim families sourced, release manifest verified,
+   MI dual gate PASS, Office descriptive/VOID OK.
+9. **Persistent scientific boundary: no broad SOTA, no paired superiority.** The
+   current paper mostly respects this boundary. Any future abstract, conclusion,
    cover letter, response file, or release note must keep Video_Games as
    competitive but not SOTA; MI as a per-category point-estimate comparison; and
    Office as VOID / descriptive only.
-9. **Persistent wording risk: "reproduces" vs "regenerates".** The manuscript
-   mostly caveats local reference-implementation runs as unpinned,
-   environment-caveated, single-run regenerations. Keep avoiding language that
-   implies a faithful official pinned reproduction, especially for the MI
-   best-epoch comparator match and the Office HSTU-BLaIR descriptive run.
-10. **Plausible literature-freeze risk.** GrIT and FEARec were added, but the
-   literature is moving fast. Do one final targeted search before freezing the
-   TORS submission, especially for 2026 AR2023 5-core, semantic-ID/generative,
-   and frequency/time-frequency sequential-recommendation preprints.
+
+## Audit Run - 2026-07-12 15:31 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `c580f48` (`Respond to
+  PAPER_REVIEW_AUDIT run 14:34: manifest boundary healed + dirty-file gate;
+  WPGRec; BUILD_NOTES`)
+- Working tree before writing this audit: clean.
+- Manifest source boundary: `RELEASE_MANIFEST.json` records `git_commit =
+  d76ef6436b60e6feab7b28d067172786ab8eaf0c`. `git diff --name-status
+  5ce2d91..HEAD` shows only `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`, so the
+  manifest/source boundary is deliberate rather than new drift.
+- Canonical artifacts inspected: `PAPER_SUBMISSION.md`, `PAPER_SUBMISSION.pdf`,
+  `paper_tex/main.tex`, `paper_tex/paper-shared.tex`, `paper_tex/BUILD_NOTES.md`,
+  `paper_tex/references.bib`, `paper_tex/sections/*`, `paper_tex/tables/*`,
+  `paper_tex/PAPER_TORS.pdf`, `paper_tex/PAPER_TORS_acmsmall.pdf`,
+  `RELEASE_MANIFEST.json`, `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`, and
+  `CANONICAL_SUBMISSION.md`.
+- Visual PDF check: rendered `paper_tex/PAPER_TORS.pdf` pages 1, 17, 18, 22,
+  23, 24, 29, and 35 with `pypdfium2` into
+  `tmp/pdfs/hourly_audit_20260712_1531_tors/`.
+
+### Verdict
+
+**Numerical/provenance package: currently green. Submission formatting: not yet
+green.** The prior manifest blocker, stale build-note class paragraph, and
+uncited WPGRec/time-frequency related-work issue are closed. The strict rebuild
+passes and the TORS PDF hygiene scanner passes. However, the rendered ACM
+manuscript has a visible running-header/page-number collision on odd pages, and
+the "reproduces" wording around the MI comparator still risks overstating an
+unpinned local regeneration.
+
+### Commands And Evidence Checked
+
+- `git status --short --branch`
+  - Clean at `c580f48`.
+- `git log --oneline --decorate -5`
+  - Shows `d76ef64` content commit, `5ce2d91` manifest child, then `c580f48`
+    response-log commit.
+- `uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py
+  --strict`
+  - PASS: HSTU core-block parity exact (`max|diff| = 0.000e+00`).
+  - PASS: 164 paper cells recomputed; 0 `MISMATCH`; 0 `UNTRACEABLE`; all 12
+    declared claim families sourced.
+  - PASS: release manifest verification, 113 files verified.
+  - PASS: MI V2 dual gate.
+  - PASS/VOID: Office arithmetic remains descriptive and VOID under the
+    preregistered floor-check failure.
+- `uv --project _bestrec_run run python _bestrec_run/update_release_manifest.py
+  --verify`
+  - PASS: 113 files verified, 0 release-asset files not local.
+- `uv --project _bestrec_run run python paper_tex/scan_pdf.py
+  paper_tex/PAPER_TORS.pdf`
+  - PASS: 35 pages; 0 placeholder/forbidden-claim failures.
+  - Review list contains only explicit SOTA/non-claim contexts.
+- PDF object/text inspection with `pypdf`
+  - `paper_tex/PAPER_TORS.pdf`: 35 pages, 427,696 bytes, US-letter media box,
+    0 image XObjects, 3 vector Form XObjects; contains `ETHICS`, `GrIT`,
+    `FEARec`, `WPGRec`, and the pinned-reproduction caveat; no `CCS Concepts`.
+  - `PAPER_SUBMISSION.pdf`: 40 pages, 1,311,601 bytes, US-letter media box, 3
+    image XObjects; contains `GrIT`, `FEARec`, and `WPGRec`.
+- Visual spot check
+  - Page 1: title/abstract readable in ACM manuscript review format.
+  - Page 23: Fig. 3 page readable, but running title collides with page number.
+  - Page 24: Table 2 is legible but crowded.
+  - Page 29: ethics/data-governance text readable, but running title again
+    collides with page number.
+
+### Confirmed Fixes Since Prior Audit
+
+1. **Manifest/source-boundary blocker fixed.** The previously dirty
+   `emit_latex_tables.py` change is committed, the manifest was regenerated at
+   a clean boundary, and the strict verify now includes the dirty-file gate.
+2. **`BUILD_NOTES.md` class contradiction fixed.** The notes now state that
+   `main.tex` is the gated `manuscript,review,anonymous` target and
+   `main-acmsmall.tex` is an untracked production preview.
+3. **Time-frequency related-work gap mostly fixed.** The novelty-boundary
+   paragraph now cites WPGRec with a bibliography entry and no longer leaves the
+   broader "subsequent time-frequency" phrase unsupported.
+4. **Prior core scientific boundaries still hold.** Figures, ethics/data
+   governance, GrIT, FEARec, WPGRec, Office VOID language, and no-Video-Games
+   SOTA language remain present in the active artifacts.
+
+### Confirmed Problems
+
+1. **Running header overlaps page number in the TORS review PDF.** This is
+   visible in the rendered review artifact, not just an extraction artifact.
+   `paper_tex/paper-shared.tex` sets a long `\title{...}` and
+   `\renewcommand{\shortauthors}{Anonymized}` but does not provide an optional
+   short running title, so acmart uses the full title in the running head.
+2. **Comparator wording remains stronger than the paper's own caveat boundary.**
+   The section heading "The Musical_Instruments comparator reproduces" and the
+   sentence "a local regeneration by the generating code reproduces it" should
+   be softened. The evidence supports a local, environment-caveated regeneration
+   of the published point estimate, not a faithful pinned reproduction.
+
+### Plausible Risks Requiring Author Verification
+
+- Whether to split Table 2 before initial TORS submission or wait for reviewer
+  pressure. It is now technically readable but dense enough to slow review.
+- Whether to add ACM CCS concepts and keywords now or only at submission-freeze.
+- Whether to cite one more representative 2025 time-frequency SR paper such as
+  HyTiFRec/CTF4Rec, or keep WPGRec as the representative recent example. WPGRec
+  is enough to support the current sentence, but the literature is moving fast.
+- Whether `PAPER_SUBMISSION.pdf` remains a live deliverable or only a markdown
+  render. The TORS artifact is cleaner on ethics/formatting and appears to be
+  the real submission target.
+
+### External Fact-Check / Novelty Notes
+
+- ACM author guidance and venue examples support the `manuscript,review` /
+  `manuscript,review,anonymous` review build direction. Sources:
+  https://www.acm.org/publications/authors/submissions and
+  https://chi2026.acm.org/chi-publication-formats/
+- ACM TORS author guidelines require originality / not-under-review
+  declaration in the cover letter; this supports keeping the TORS-specific venue
+  plan explicit. Source: https://dl.acm.org/journal/tors/author-guidelines
+- WPGRec is a real 2026 arXiv preprint in the time-frequency sequential
+  recommendation line and is now a reasonable representative citation for the
+  novelty-boundary paragraph. Source: https://arxiv.org/abs/2604.21305
+- HyTiFRec is a 2025 hybrid time-frequency sequential-recommendation paper,
+  relevant as an optional additional recent citation but not strictly required
+  after WPGRec was added. Source:
+  https://www.techscience.com/cmc/v83n2/60583
+- HSTU-BLaIR remains the stronger external AR2023 5-core comparator family for
+  the manuscript's Video_Games / Musical_Instruments / Office framing. Sources:
+  https://github.com/snapfinger/HSTU-BLaIR and
+  https://arxiv.org/html/2504.10545v3
+- Amazon Reviews 2023 is a large public dataset with user reviews, item
+  metadata, and links; the paper's ethics section correctly scopes the risk to
+  public/pseudonymized review and metadata use rather than human-subject
+  intervention. Source: https://amazon-reviews-2023.github.io/
+
+### Concrete Fixes To Make Next
+
+1. Add an optional short title in `paper_tex/paper-shared.tex`, rebuild both
+   TeX targets, rerun `paper_tex/scan_pdf.py`, and visually inspect pages with
+   running heads.
+2. Replace the `paper_tex/sections/05-results.tex` and `PAPER_SUBMISSION.md`
+   "comparator reproduces" wording with "regenerates locally under the unpinned
+   shimmed research path" language.
+3. Decide Table 2 presentation: leave as dense complete main-table evidence, or
+   move long rows to appendix and keep a compact main summary.
+4. Add ACM CCS concepts and keywords at submission freeze.
+5. Run one final literature sweep immediately before TORS submission.
+
+### Open Questions
+
+- Is `PAPER_SUBMISSION.pdf` still intended to be submitted anywhere, or is
+  `paper_tex/PAPER_TORS.pdf` now the only review artifact?
+- Should the response log remain outside the manifest boundary by policy, or
+  should deposits include response/audit correspondence as ancillary files?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical source and compiled artifacts.
+- [x] Verify clean git state and manifest boundary.
+- [x] Run strict numerical/provenance rebuild.
+- [x] Run release-manifest verification.
+- [x] Run TORS PDF hygiene scan.
+- [x] Render and visually inspect representative PDF pages.
+- [x] Fact-check current venue/literature/comparator claims against external
+      sources.
+- [x] Confirm prior 14:34 blockers are mostly fixed.
+- [ ] Fix TORS running-header/page-number collision.
+- [ ] Soften "reproduces" wording for unpinned local comparator runs.
+- [ ] Decide Table 2 split vs dense main-table presentation.
+- [ ] Add ACM CCS concepts and keywords before submission.
+- [ ] Final targeted literature sweep at freeze.
 
 ## Audit Run - 2026-07-12 14:34 Australia/Sydney
 

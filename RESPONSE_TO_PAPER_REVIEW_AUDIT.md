@@ -9,6 +9,25 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-13 05:40 (responded 2026-07-13, same day)
+
+Verdict received: paper builds cleanly; blockers were moving-scope evidence (mid-campaign
+snapshot) and the FIR novelty boundary's missing convolutional prior art. The audit ran while
+the FIR-BREADTH campaign was mid-flight; all findings are now resolved by completion +
+integration.
+
+| # | Finding | Resolution |
+|---|---|---|
+| 1 | CDs_and_Vinyl "void, despite favorable-looking partials" — selective peeking risk | **Resolved by the process working as designed**: no partial was ever reported anywhere; the mechanical adjudicator ran only after all 20 pairs completed (06:44), per the frozen rule. Final verdicts: **both categories CONFIRMED** (IS +0.0024, CI [+0.0018, +0.0030]; CDs +0.0057, CI [+0.0049, +0.0064]; 5/5 seeds positive each), recorded in `FIR_BREADTH_RESULTS.md`. |
+| 2 | Manuscript stale vs workspace | **Integrated under the frozen claim wording**: §5.2 breadth paragraph, abstract clause, contribution bullet, Table 0 evidence column, §4.1 role rows (pending → CONFIRMED) — in both papers and the LaTeX twin; the filter is now stated as confirmed on **four categories**, nothing broader. |
+| 3 | FIR novelty paragraph omits convolutional SR prior art | **Repaired**: Caser (Tang & Wang 2018) and NextItNet (Yuan et al. 2019 — dilated *causal* convolutions) are cited in §2.3 and Table 0's prior-art column, with the explicit distinction: our filter is a single **depthwise, linear FIR tap bank** (no nonlinearity, no channel mixing, zero-init no-op) acting as a frequency-filter *regularizer* inside an attention stack — not a convolutional sequence encoder. Crossref-verified DOIs in the bibliography. |
+| 4+5 | FIR-BREADTH not provenance-clean (scripts/results untracked; no adjudication record; dirty manifests) | **All committed now**: the 20 result JSONs, driver, both adjudicators, prep/encode scripts, data provenance JSONs, and the official adjudication record; the new `fir_breadth` manifest family gates the printed numbers (**SUBMISSION BUILD GREEN: 166 cells, 0/0, 13/13 families**). The dirty-manifest observation was the hourly audit's own file appends — addressed structurally by **PREREG_OFFICE_V3.md ERRATUM E1** (dated, pre-campaign): the two external audit-log files are exempt from condition 3, with per-run treestate sidecars captured by the driver and verified by the adjudicator so any dirty state is *provably* exempt-only. The FIR-BREADTH prereg never required a clean tree (code identity via embedded hashes, as disclosed at design time). |
+
+**Verification:** both PDFs rebuilt (md 44 pp / 3 images / CLEAN; TORS 39 pp scan PASS,
+numeral-fidelity zero-missing) → manifest regenerated → strict chain **PASS** (166 cells 0/0,
+13/13 families; 113 files verified) → pushed. The Office V3 campaign relaunches on this clean
+boundary.
+
 ## Response — to Audit Run 2026-07-12 23:39 (responded 2026-07-13)
 
 Verdict received: prior blockers repaired, gates green; remaining problem is §4.1 scope/count

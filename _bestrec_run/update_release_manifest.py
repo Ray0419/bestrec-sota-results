@@ -247,7 +247,11 @@ def regen(m):
         "intentionally outside this manifest's hash scope: the strict wrapper rewrites "
         "hstu_tables.json during the same run that verifies these hashes, so including "
         "them would make verification circular. Provenance layer: git tracking + the "
-        "gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2.")
+        "gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. "
+        "LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed "
+        "by git at the recorded git_commit -- this manifest hashes only the rendered "
+        "paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship "
+        "the git archive of that commit.")
 
     m["git_commit"] = head_commit()
     m["date"] = "2026-07-12"

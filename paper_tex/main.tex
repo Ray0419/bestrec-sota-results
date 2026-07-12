@@ -1,70 +1,12 @@
 %% PAPER_TORS -- ACM TORS LaTeX derivative of the canonical PAPER_SUBMISSION.md
 %% (generated format conversion; the markdown remains canonical -- see BUILD_NOTES.md).
-%% Build: ./build.sh  (emit tables from artifact JSON -> tectonic compile -> hygiene scan)
-\documentclass[acmsmall,screen,review,anonymous]{acmart}
-
-\acmJournal{TORS}
-\acmYear{2026}
-\setcopyright{none}
-\settopmatter{printacmref=false}
-\acmDOI{}% suppress the class's 10.1145/nnnnnnn.nnnnnnn stub on the review manuscript
-
-\citestyle{acmauthoryear}
-
-\usepackage{tabularx}
-\usepackage{longtable}
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
-
-%% round-7: Figs 1-3 embedded from the repository figures/ directory (canonical PDFs)
-\graphicspath{{../figures/}}
-%% \cref prints exactly the md's "Fig. N" wording (cleveref loads after hyperref, which acmart provides)
-\usepackage{cleveref}
-\crefname{figure}{Fig.}{Figs.}
-\Crefname{figure}{Fig.}{Figs.}
-
-%% pandoc-emitted list macro
-\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
-%% long technical tokens + narrow table cells: soften overfull boxes
-\emergencystretch=3em
-\hyphenation{Musical-Instruments Video-Games Beauty-and-Personal-Care}
-
-\begin{document}
-
-\title{Causal FIR Filtering and Dataset-Conditional Text Benefits in an HSTU-Style Pure-PyTorch Sequential Recommender}
-
-\author{[anonymized for review]}
-\affiliation{%
-  \institution{[anonymized for review]}
-  \country{}}
-
-\renewcommand{\shortauthors}{Anonymized}
-
-\begin{abstract}
-\input{sections/abstract}
-\end{abstract}
-
-\maketitle
-
-\input{sections/01-introduction}
-\input{sections/02-related}
-\input{sections/03-method}
-\input{sections/04-experiments}
-\input{sections/05-results}
-\input{sections/06-discussion}
-\input{sections/07-conclusion}
-\input{sections/08-availability}
-\input{sections/09-acknowledgments}
-\input{sections/10-ethics}
-
-%% References (position matches the canonical md: after S10, before the appendices).
-%% \nocite{*}: the md reference list includes entries cited in text by name only;
-%% printing the full transcribed list keeps the LaTeX bibliography identical to the md list.
-\nocite{*}
-\bibliographystyle{ACM-Reference-Format}
-\bibliography{references}
-
-\input{sections/appendix-a0}
-\input{sections/appendix-a}
-
-\end{document}
+%%
+%% DEFAULT REVIEW TARGET (round-8): single-column `manuscript` format, per ACM's general
+%% author workflow for initial journal review submissions (VENUE_PLAN.md: "TORS:
+%% manuscript/acmsmall journal format"). Produces PAPER_TORS.pdf -- the gated review artifact.
+%% The two-column production preview lives in main-acmsmall.tex -> PAPER_TORS_acmsmall.pdf
+%% (untracked). All content is shared via paper-shared.tex.
+%%
+%% Build: ./build.sh  (emit tables from artifact JSON -> tectonic compile both targets -> hygiene scan)
+\documentclass[manuscript,review,anonymous]{acmart}
+\input{paper-shared}

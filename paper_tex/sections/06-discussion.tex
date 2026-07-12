@@ -3,7 +3,7 @@
 
 \subsection{What does cross-pipeline transfer reveal? (Appendix A.1 supporting study)}\label{sec:6.1}
 
-The next two subsections discuss the 20-variant Beauty\_and\_PC cross-pipeline scan (Appendix A.1) --- supporting/reproducibility material, not part of the headline spine (the causal FIR filter, the dataset-conditional tail pattern, and the competitive Video\_Games result of \S\ref{sec:5}).
+The next two subsections discuss the 20-variant Beauty\_and\_\allowbreak PC cross-pipeline scan (Appendix A.1) --- supporting/reproducibility material, not part of the headline spine (the causal FIR filter, the dataset-conditional tail pattern, and the competitive Video\_Games result of \S\ref{sec:5}).
 
 Our 20-variant scan finds that the \textbf{only} consistently-positive intervention is the MLP-adaptor design from \citet{hou2024blair} --- a design originally tuned on their 0-core preprocessing. This is a small positive cross-pipeline transfer signal: published architectural choices do not universally transfer (heavy dropout from the same source does not), but the parametric form of the text\ensuremath{\rightarrow}hidden adaptor does.
 
@@ -15,7 +15,7 @@ We hypothesize that the MLP adaptor's benefit comes from its expressive capacity
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Heavy dropout (0.5)}: Hurts in our setup. Beauty\_and\_PC users have median 5 interactions; aggressive regularization probably masks too much signal.
+  \textbf{Heavy dropout (0.5)}: Hurts in our setup. Beauty\_and\_\allowbreak PC users have median 5 interactions; aggressive regularization probably masks too much signal.
 \item
   \textbf{Removing learned item embeddings}: The 207k-item catalog appears to demand per-item parameter capacity that the encoder + MLP adaptor cannot fully replace.
 \item
@@ -43,11 +43,11 @@ We hypothesize that the MLP adaptor's benefit comes from its expressive capacity
 \item
   \textbf{A wholly new architecture}: our architectural additions are deliberately small --- a causal FIR adaptation of prior frequency-filter ideas and a soft text-prototype additive term; every other component we use is from prior work.
 \item
-  \textbf{Closing the gap to LIGER on Beauty\_and\_PC}: we do not, and the gap may be partially preprocessing-dependent.
+  \textbf{Closing the gap to LIGER on Beauty\_and\_\allowbreak PC}: we do not, and the gap may be partially preprocessing-dependent.
 \item
-  \textbf{Beauty\_and\_PC improvement is statistically certified}: we have only n=2 seeds for the best variant; baseline is n=1.
+  \textbf{Beauty\_and\_\allowbreak PC improvement is statistically certified}: we have only n=2 seeds for the best variant; baseline is n=1.
 \item
-  \textbf{Category scope}: the headline causal-FIR evidence uses Video\_Games and Musical\_Instruments; Beauty\_and\_PC supports the tail-pattern null; Office\_Products is descriptive (VOID under its prereg floor check; the anomaly is explained by \S\ref{sec:5.6}'s local comparator run and the VOID is deliberately retained, Appendix A.0). Other categories untested.
+  \textbf{Category scope}: the headline causal-FIR evidence uses Video\_Games and Musical\_Instruments; Beauty\_and\_\allowbreak PC supports the tail-pattern null; Office\_Products is descriptive (VOID under its prereg floor check; the anomaly is explained by \S\ref{sec:5.6}'s local comparator run and the VOID is deliberately retained, Appendix A.0). Other categories untested.
 \item
   \textbf{Model-input hygiene} (a clarification, not a caveat): the canonical model consumes only item IDs, interaction timestamps, and frozen item-text embeddings; no outputs, scores, or embeddings of any baseline or comparator model enter the pipeline as inputs or features (the superseded earlier-stage fusion experiments that did are quarantined in the non-canonical track).
 \end{itemize}
@@ -66,7 +66,7 @@ We state the paper's limitations explicitly, for reviewers:
 \item
   \textbf{TAPE is modest.} +0.0009 single-flag (single-seed; +0.0004 in the 4-seed cross-check), sub-additive --- an ablation-level component, not a headline contribution.
 \item
-  \textbf{The tail finding is AR2023-limited and small in absolute terms.} It rests on three AR2023 categories (Musical\_Instruments, Video\_Games, Beauty\_and\_PC); the MI tail effect (+0.000335 NDCG@10, \textasciitilde30 hits/seed base) is a large relative but small absolute effect, and the pattern is not replicated on non-Amazon domains.
+  \textbf{The tail finding is AR2023-limited and small in absolute terms.} It rests on three AR2023 categories (Musical\_Instruments, Video\_Games, Beauty\_and\_\allowbreak PC); the MI tail effect (+0.000335 NDCG@10, \textasciitilde30 hits/seed base) is a large relative but small absolute effect, and the pattern is not replicated on non-Amazon domains.
 \item
   \textbf{The negative probes are not all equally powered.} Most Table 2 rows are single-seed exploratory probes; only the multi-seed pre-declared negatives carry confirmatory weight (\S\ref{sec:5.5}).
 \item

@@ -1,4 +1,6 @@
-# Build PAPER_TORS.pdf (PowerShell twin of build.sh) -- see build.sh for step documentation.
+# Build the TORS LaTeX derivative (PowerShell twin of build.sh; two targets, round-8).
+#   review target : main.tex          [manuscript,review,anonymous]      -> PAPER_TORS.pdf (gated)
+#   preview target: main-acmsmall.tex [acmsmall,screen,review,anonymous] -> PAPER_TORS_acmsmall.pdf (untracked)
 $ErrorActionPreference = "Stop"
 Set-Location $PSScriptRoot
 
@@ -12,15 +14,19 @@ Write-Host "== [1/4] regenerate table includes from the artifact graph =="
 & $Python (Join-Path $PSScriptRoot "..\_bestrec_run\emit_latex_tables.py")
 if ($LASTEXITCODE -ne 0) { throw "emit_latex_tables.py failed (numeric cross-check or extraction drift)" }
 
-Write-Host "== [2/4] tectonic compile (acmart TORS, review+anonymous) =="
+Write-Host "== [2/4] tectonic compile: review target (manuscript) =="
 & $Tectonic main.tex
-if ($LASTEXITCODE -ne 0) { throw "tectonic compile failed" }
+if ($LASTEXITCODE -ne 0) { throw "tectonic compile failed (main.tex)" }
+Write-Host "== [2/4] tectonic compile: production preview (acmsmall) =="
+& $Tectonic main-acmsmall.tex
+if ($LASTEXITCODE -ne 0) { throw "tectonic compile failed (main-acmsmall.tex)" }
 
-Write-Host "== [3/4] package PAPER_TORS.pdf =="
+Write-Host "== [3/4] package PAPER_TORS.pdf (review) + PAPER_TORS_acmsmall.pdf (preview, untracked) =="
 Copy-Item -Force main.pdf PAPER_TORS.pdf
+Copy-Item -Force main-acmsmall.pdf PAPER_TORS_acmsmall.pdf
 
-Write-Host "== [4/4] hygiene scan =="
+Write-Host "== [4/4] hygiene scan of the review artifact =="
 & $Python scan_pdf.py PAPER_TORS.pdf
 if ($LASTEXITCODE -ne 0) { throw "hygiene scan FAILED" }
 
-Write-Host "BUILD OK: paper_tex/PAPER_TORS.pdf"
+Write-Host "BUILD OK: paper_tex/PAPER_TORS.pdf (review, manuscript) + paper_tex/PAPER_TORS_acmsmall.pdf (preview)"

@@ -84,7 +84,7 @@ This bounds peak memory by \texttt{(batch,\ item\_chunk)} instead of \texttt{(ba
 
 \subsection{Evaluation protocol}\label{sec:3.6}
 
-We score each user against the \textbf{full catalog} of 207k items (Beauty\_and\_PC) or 25k items (Video\_Games). For the held-out test item, we compute the rank under dot-product scoring (after masking train+val items the user has already seen) and report NDCG@10, HR@10, MRR. We use the standard SASRec test-time convention of including the validation item in the input sequence \citep{kang2018sasrec}.
+We score each user against the \textbf{full catalog} of 207k items (Beauty\_and\_\allowbreak PC) or 25k items (Video\_Games). For the held-out test item, we compute the rank under dot-product scoring (after masking train+val items the user has already seen) and report NDCG@10, HR@10, MRR. We use the standard SASRec test-time convention of including the validation item in the input sequence \citep{kang2018sasrec}.
 
 For our default 16 GB GPU, the optimized evaluation caches the (n\_items, d) item-features table once per \texttt{evaluate()} call rather than recomputing it per batch --- this is critical with the MLP adaptor, which would otherwise recompute the 207k-item \ensuremath{\times} 768 \ensuremath{\rightarrow} 300 \ensuremath{\rightarrow} 64 MLP forward 1,400+ times per evaluation.
 

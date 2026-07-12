@@ -5,7 +5,7 @@ We summarize prior work that our experiments directly build on. A complete attri
 
 \textbf{SASRec} \citep{kang2018sasrec} is the base Transformer sequential recommender we re-implement. SASRec models a user's history with a causal-masked Transformer encoder and scores the next item via dot product with a learned item-embedding table.
 
-\textbf{BERT4Rec} \citep{sun2019bert4rec} adapts BERT-style bidirectional masked-item modeling for sequential recommendation. We implement BERT4Rec as one of our 20 ablation baselines on Beauty\_and\_PC.
+\textbf{BERT4Rec} \citep{sun2019bert4rec} adapts BERT-style bidirectional masked-item modeling for sequential recommendation. We implement BERT4Rec as one of our 20 ablation baselines on Beauty\_and\_\allowbreak PC.
 
 \textbf{SBERT / MiniLM} \citep{reimers2019sbert,wang2020minilm} provide pre-trained sentence embeddings. We use \texttt{sentence-transformers/all-MiniLM-L6-v2} (384-d) as the default frozen item-text encoder.
 

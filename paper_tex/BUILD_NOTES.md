@@ -1,12 +1,71 @@
 # BUILD_NOTES — ACM TORS LaTeX derivative (`paper_tex/`)
 
-Generated 2026-07-12; **synced to the round-7 canonical md** (commit `f141cf7`: Figs. 1–3
+Generated 2026-07-12; synced to the round-7 canonical md (commit `f141cf7`: Figs. 1–3
 embedded, new §10 Ethics and Data Governance, Table-0 parity-row rewording, GrIT + FEARec
-citations). **The markdown remains canonical** (`CANONICAL_SUBMISSION.md` governs;
-`PAPER_SUBMISSION.md` is the source of record). This directory is a *derived* typeset format per
-`VENUE_PLAN.md`: format conversion only — no content was cut, added, or reworded (two
-presentation-only additions are disclosed under "Conversion decisions" below). Compiled output:
-**`paper_tex/PAPER_TORS.pdf` (36 pages, acmart/TORS review format, Figs. 1–3 embedded)**.
+citations) **+ round-8 packaging** (12:34 audit: two-target class-option restructure +
+verified BibTeX metadata fill — see the round-8 sections below). **The markdown remains
+canonical** (`CANONICAL_SUBMISSION.md` governs; `PAPER_SUBMISSION.md` is the source of
+record). This directory is a *derived* typeset format per `VENUE_PLAN.md`: format conversion
+only — no content was cut, added, or reworded (two presentation-only additions are disclosed
+under "Conversion decisions" below). Compiled outputs:
+**`paper_tex/PAPER_TORS.pdf` — the gated review artifact — 35 pages, single-column
+`[manuscript,review,anonymous]` acmart format, Figs. 1–3 embedded**, plus the untracked
+production preview `PAPER_TORS_acmsmall.pdf` (36 pages, `[acmsmall,screen,review,anonymous]`).
+
+## Round-8: two build targets (class options)
+
+Per ACM's general author workflow (initial journal review submissions in single-column
+`manuscript` format; VENUE_PLAN.md: "TORS: `manuscript`/`acmsmall` journal format"):
+
+- `main.tex` — **default review target**: `\documentclass[manuscript,review,anonymous]{acmart}`
+  → `PAPER_TORS.pdf` (the manifest-gated review artifact; letter-size 612×792 pt page).
+- `main-acmsmall.tex` — **production preview**: `[acmsmall,screen,review,anonymous]`
+  → `PAPER_TORS_acmsmall.pdf` (6.75in×10in page; **untracked**, see `paper_tex/.gitignore`).
+- Both are two-line drivers sharing every preamble command and the full body via
+  `paper-shared.tex`; `build.sh`/`build.ps1` compile both and hygiene-scan the review artifact.
+
+Page-count note: acmart's `manuscript` **and** `acmsmall` are both *single-column* formats, so
+the review manuscript does not balloon relative to acmsmall — it lands at 35 pages vs
+acmsmall's 36 (manuscript uses a larger letter-size text block). The format switch is real and
+verified by page geometry (612×792 pt vs 486×720 pt) and the class option.
+
+## Round-8: BibTeX metadata fill (verified only; nothing invented)
+
+Missing volume/number/pages/publisher/DOI fields were filled **only** where verifiable from
+authoritative listings on 2026-07-12: the Crossref registry (publisher-deposited metadata,
+`api.crossref.org`, exact title+author+year matches), the ACL Anthology page (devlin2019bert),
+and the PMLR v235 page (zhai2024hstu). **21 entries gained fields**:
+
+- ACM venues (pages+publisher+doi): sun2019bert4rec, hou2022unisrec, hou2023vqrec,
+  zhou2022fmlprec, li2020tisasrec, kim2023melt, wei2021clcrec, melchiorre2022protomf,
+  du2023fearec; he2016ups (publisher = IW3C2 Steering Committee, per registry).
+- IEEE venues (pages+publisher+doi): kang2018sasrec, szegedy2016rethinking;
+  gavish2014optimal (+volume 60, number 8).
+- ACL venues (pages+publisher+doi): reimers2019sbert (registry pages 3980–3990),
+  shaw2018relative, devlin2019bert (ACL Anthology: 4171–4186, doi 10.18653/v1/N19-1423).
+- AAAI: shin2024bsarec (volume 38, number 8, pages 8984–8992, doi 10.1609/aaai.v38i8.28747).
+- NeurIPS 2023 proceedings deposit: rajput2023tiger (pages 10299–10315, doi
+  10.52202/075280-0452 — the Curran/NeurIPS-Foundation registry record).
+- Journals: efron1973stein (JASA 68(341):117–130, Taylor & Francis, doi
+  10.1080/01621459.1973.10481350); baik2005bbp (Ann. Probab. 33(5), IMS, doi
+  10.1214/009117905000000233 — the registry record carries **no page field**, so pages were
+  deliberately not filled).
+- PMLR: zhai2024hstu (volume 235, pages 58484–58509, publisher PMLR; PMLR registers no DOI).
+
+**Left as-is (no unambiguous authoritative record; noted, not guessed):**
+- wang2020minilm, volkovs2017dropoutnet — NeurIPS 2020/2017 papers with no Crossref record
+  under exact title+author queries; the entries keep the md's venue + (for MiniLM) arXiv note.
+- marchenko1967mp — the 1967 Russian *Matematicheskii Sbornik* original is not DOI-registered;
+  only the English-translation record exists (a different publication object) — left untouched.
+- james1961estimation — the 1961 Berkeley Symposium original is not registered; Crossref only
+  carries the 1992 Springer reprint (different object) — left untouched.
+- hou2024blair, liu2025hstublair, yang2024liger and the five 2026 concurrent preprints
+  (guo2026sidmlp, hou2026latte, huang2026chronosid, liang2026resid, shyam2026grit) — arXiv-only
+  by design; no venue metadata exists.
+
+Effect: 20 `https://doi.org/...` links now render in the bibliography; BibTeX warnings reduced
+to "empty address" (conference cities are not in the registry data pulled and were not
+invented) plus the deliberately-left entries above.
 
 ## Toolchain
 
@@ -186,11 +245,17 @@ plus nothing else.
 
 ## Compile status
 
-- `tectonic main.tex`: **0 errors, 0 overfull boxes, 0 undefined references/citations**;
-  36 pages (the Chrome render of the md differs by format, as expected).
+- Review target `tectonic main.tex` (`manuscript`): **0 errors, 0 undefined
+  references/citations**; 35 pages; **one accepted cosmetic overfull** (4.45 pt ≈ 1.6 mm, a
+  bold enumerate header in §5.4.2 — invisible protrusion; every other overfull was fixed with
+  typography-only `\allowbreak` hints, incl. the long `results_USERTITR_...json` artifact name
+  and `Beauty_and_PC`).
+- Preview target `tectonic main-acmsmall.tex` (`acmsmall`): 0 errors, **0 overfull boxes**,
+  36 pages.
 - Remaining warnings (accepted):
-  - BibTeX "no number/volume/pages/publisher/address" warnings — the md reference list does
-    not carry these fields and nothing may be invented (transcription-only rule).
+  - BibTeX "empty address" warnings — conference cities are not in the registry data pulled
+    and were not invented (round-8 fill covers volume/number/pages/publisher/DOI); plus the
+    deliberately-unfilled entries listed in the round-8 section.
   - acmart "CCS concepts / keywords not provided" — the canonical md has neither; adding them
     would be new content. To be supplied at actual submission time if TORS requires them.
   - Underfull `\vbox`/`\hbox` cosmetics from the review-mode line-number grid and one
@@ -209,7 +274,7 @@ hard-fail (the paper contains explicit SOTA *non-claims* by design). Full output
 `paper_tex/hygiene_scan_output.txt`.
 
 ```
-hygiene scan: PAPER_TORS.pdf | pages: 36
+hygiene scan: PAPER_TORS.pdf | pages: 35
 placeholder+forbidden failures: 0
 review list (SOTA mentions + negated claim-wordings): 14
   REVIEW negated-ok: paired\s+superiority :: ... this is a per-category point-estimate comparison, not a paired superiority or general SOTA claim ...
@@ -237,17 +302,21 @@ official/pinned-reproduction language, Office never a passed category).
 
 ```
 paper_tex/
-├── main.tex                  # acmart TORS driver (review, anonymous; graphicspath ../figures; cleveref Fig. refs)
-├── references.bib            # transcribed md reference list (32 entries incl. 5 concurrent preprints)
+├── main.tex                  # REVIEW driver: [manuscript,review,anonymous] (round-8 default target)
+├── main-acmsmall.tex         # PREVIEW driver: [acmsmall,screen,review,anonymous] (untracked output)
+├── paper-shared.tex          # shared preamble commands + full document body (both drivers input this)
+├── references.bib            # transcribed md list (32 entries incl. 5 concurrent preprints; round-8 verified metadata)
 ├── acmart.cls                # vendored v2.03 (TL2023-final) — TORS-capable, tectonic-compatible
 ├── ACM-Reference-Format.bst  # vendored ACM bibliography style
+├── .gitignore                # main.pdf, main-acmsmall.pdf, PAPER_TORS_acmsmall.pdf + TeX intermediates
 ├── sections/*.tex            # 13 converted section files (see file map; incl. round-7 10-ethics.tex)
 ├── tables/*.tex              # 16 GENERATED includes + TABLES_PROVENANCE.json (never edit by hand)
-├── build.sh / build.ps1      # regenerate tables → compile → package → hygiene scan
+├── build.sh / build.ps1      # regenerate tables → compile BOTH targets → package → hygiene scan
 ├── scan_pdf.py               # hygiene scanner (exit 1 on any failure)
 ├── hygiene_scan_output.txt   # last scan output (PASS)
-├── main.pdf                  # tectonic output (identical content to PAPER_TORS.pdf)
-└── PAPER_TORS.pdf            # deliverable (36 pp, Figs. 1–3 embedded as vector Form XObjects)
+├── main.pdf                  # tectonic output of the review driver (untracked; = PAPER_TORS.pdf)
+├── PAPER_TORS.pdf            # DELIVERABLE (35 pp, manuscript format, Figs. 1–3 embedded as vector Form XObjects)
+└── PAPER_TORS_acmsmall.pdf   # production preview (36 pp; untracked)
 ```
 
 Generator script (allowed new file outside `paper_tex/`): `_bestrec_run/emit_latex_tables.py`.

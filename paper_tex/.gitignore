@@ -1,0 +1,10 @@
+# build byproducts (the tracked deliverable is PAPER_TORS.pdf; the acmsmall preview is untracked by decision)
+main.pdf
+main-acmsmall.pdf
+PAPER_TORS_acmsmall.pdf
+*.log
+*.blg
+*.aux
+*.bbl
+*.out
+*.xdv

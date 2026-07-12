@@ -9,7 +9,7 @@
 \subsection*{A.1 Beauty\_and\_\allowbreak Personal\_Care --- 20-variant cross-pipeline scan (superseded supporting material)}
 
 \begin{quote}
-\textbf{Note:} the following Beauty\_and\_PC 20-variant scan and the LIGER-gap audit are \textbf{earlier-stage supporting material}, retained for the reproducibility and negative-result record. They predate the HSTU + causal-filter + tail-pattern spine and are \emph{not} the paper's headline; the live Beauty result used in the tail pattern (\S\ref{sec:5.3}) is the text\ensuremath{-}ID tail contrast, not these single-seed sampled-softmax scans.
+\textbf{Note:} the following Beauty\_and\_\allowbreak PC 20-variant scan and the LIGER-gap audit are \textbf{earlier-stage supporting material}, retained for the reproducibility and negative-result record. They predate the HSTU + causal-filter + tail-pattern spine and are \emph{not} the paper's headline; the live Beauty result used in the tail pattern (\S\ref{sec:5.3}) is the text\ensuremath{-}ID tail contrast, not these single-seed sampled-softmax scans.
 \end{quote}
 
 The scan varies five axes: \textbf{text encoder} (MiniLM titles/rich-text, BLaIR titles/rich-text), \textbf{projection \ensuremath{\Phi}} (single Linear vs the 2-layer MLP adaptor of \citealp{hou2024blair}), \textbf{learned item embedding} (kept vs removed = faithful SASRecText), \textbf{loss} (sampled softmax K=1024, in-batch negatives, chunked-full-softmax, hybrid), and \textbf{augmentation} (random subsequence sampling, factor 1/2/3). Training used a 15--20-epoch budget, batch size 256, Adam (lr 1e-3, weight decay 1e-5, gradient clip 5.0), a single seed for the initial scan, and two seeds (42, 43) for the final reported variants. Table A1 summarizes all 20 variants. \textbf{Numbers are single-seed unless otherwise noted.}
@@ -41,7 +41,7 @@ Re-analysis of the 20-variant scan:
 \end{itemize}
 
 
-\subsection*{A.2 Beauty\_and\_PC multi-seed signal (superseded supporting material)}
+\subsection*{A.2 Beauty\_and\_\allowbreak PC multi-seed signal (superseded supporting material)}
 
 \begin{quote}
 \textbf{Note:} this is appendix supporting material for the Beauty 20-variant scan (\S{}A.1), not the headline tail-pattern result (\S\ref{sec:5.3}).

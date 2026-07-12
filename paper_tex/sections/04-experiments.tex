@@ -13,7 +13,7 @@ We evaluate on two AR2023 5-core categories:
   \textbf{Beauty\_and\_\allowbreak Personal\_Care}: 729,576 users, 207,649 items, 5.17M interactions
 \end{itemize}
 
-The Beauty\_and\_PC catalog is 8\ensuremath{\times} larger than Video\_Games, with median user history of only 5 interactions --- a harder benchmark.
+The Beauty\_and\_\allowbreak PC catalog is 8\ensuremath{\times} larger than Video\_Games, with median user history of only 5 interactions --- a harder benchmark.
 
 
 \subsection{Baselines}\label{sec:4.2}
@@ -47,10 +47,10 @@ The tail analysis (\S\ref{sec:5.3}--\S\ref{sec:5.4}) rests on two controlled con
   \textbf{density / connectivity titration (\S\ref{sec:5.4}):} training-only sub-sampling that thins either interactions (interaction-mode) or whole users (user-mode) to match a sparser reference category's resource levels, with the evaluation set held fixed.
 \end{itemize}
 
-A separate \textbf{20-variant cross-pipeline transfer scan on Beauty\_and\_PC} --- supporting reproducibility material, not part of the headline spine --- is reported in Appendix A.1.
+A separate \textbf{20-variant cross-pipeline transfer scan on Beauty\_and\_\allowbreak PC} --- supporting reproducibility material, not part of the headline spine --- is reported in Appendix A.1.
 
 
 \subsection{Training details and hardware}\label{sec:4.4}
 
-Headline runs use Adam (lr 1e-3, weight decay 1e-5) with gradient clipping (norm 5.0) under the 40-epoch warmup-cosine schedule above. Hardware: a single NVIDIA RTX 5060 Ti (16 GB, Blackwell sm\_120). Video\_Games training takes \textasciitilde10 min/seed; Beauty\_and\_PC \textasciitilde1.5--2 hr/seed with the chunked-full-softmax loss. (The Appendix A.1 Beauty scan used a shorter 15--20-epoch budget and seeds 42/43; those details are local to that supporting study.)
+Headline runs use Adam (lr 1e-3, weight decay 1e-5) with gradient clipping (norm 5.0) under the 40-epoch warmup-cosine schedule above. Hardware: a single NVIDIA RTX 5060 Ti (16 GB, Blackwell sm\_120). Video\_Games training takes \textasciitilde10 min/seed; Beauty\_and\_\allowbreak PC \textasciitilde1.5--2 hr/seed with the chunked-full-softmax loss. (The Appendix A.1 Beauty scan used a shorter 15--20-epoch budget and seeds 42/43; those details are local to that supporting study.)
 

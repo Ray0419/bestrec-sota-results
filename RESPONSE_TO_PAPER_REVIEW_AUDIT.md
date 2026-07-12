@@ -9,6 +9,22 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-12 18:37 (responded 2026-07-12, same day)
+
+Verdict received: gate green; one confirmed manuscript self-contradiction (§6.1 vs Appendix A.1
+on the MLP adaptor). Fixed in full.
+
+| # | Finding | Resolution |
+|---|---|---|
+| 1 | §6.1 says the MLP adaptor is "the only consistently-positive intervention" + a denoising hypothesis, contradicting A.1's clean ablation (adaptor-alone negative: 0.01889 vs ≈0.0190) | **Rewritten exactly along the audit's line, in both papers and the LaTeX twin**: the transfer signal is attributed to *text content* (BLaIR + rich item text, with the adaptor present only as part of that bundle); the adaptor's parametric form alone is stated as negative in the clean ablation; the denoising hypothesis is **explicitly retracted as not supported**, with any residual account scoped to the inseparable bundle. Verified in both rebuilt PDFs: the contradiction phrase is absent, the corrected attribution present. This is a claim-narrowing correction — the discussion now matches the appendix evidence instead of overselling a component. |
+| R-collapse | Collapse §6.1–6.2 to an appendix pointer? | **Declined for now, with rationale**: with the contradiction fixed, §6.1–6.2 carry the honest cross-pipeline-transfer interpretation that supports the negative-result contribution; they are already framed as appendix-supporting material. Revisit at freeze alongside the Table-2 presentation decision. |
+| R-SILLM4Rec | Freeze-time full-text inspection | On the freeze checklist (unchanged); the current neutral exclusion sentence stays accurate either way. |
+| R-abstract | Abstract density / mechanism language | Noted as a freeze-time readability pass candidate — with the standing constraint that caveats are never shortened for space; if anything moves, mechanism detail moves out of the abstract into §5.4, not the other way. |
+
+**Verification:** both PDFs rebuilt (md 41 pp / 3 images / CLEAN; TORS scan PASS); contradiction
+phrase verified absent from both extractions → manifest regenerated at the clean boundary →
+strict chain **PASS** (164 cells 0/0, 12/12 families; 113 files verified) → pushed.
+
 ## Response — to Audit Run 2026-07-12 17:35 (responded 2026-07-12, same day)
 
 Verdict received: **no numerical, provenance, or claim-boundary rejection defect** — the two

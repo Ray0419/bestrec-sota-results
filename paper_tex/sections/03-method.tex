@@ -25,9 +25,7 @@ This protocol matches TIGER \citep{rajput2023tiger} and LIGER \citep{yang2024lig
 
 \subsection{Model architecture}\label{sec:3.2}
 
-Our base model, \textbf{SASRec-SBERT}, follows \citet{kang2018sasrec} with a frozen-text item-feature augmentation:
-
-For each item $i$:
+\textbf{Shared item-feature construction (both encoder families).} For each item $i$:
 
 \begin{itemize}
 \tightlist
@@ -39,9 +37,11 @@ For each item $i$:
   A learnable projection $\Phi : \mathbb{R}^k \rightarrow \mathbb{R}^d$.
 \end{itemize}
 
-The item feature passed into the Transformer encoder is $f_i = e_i + \Phi(s_i)$. Sequences are right-padded with a dedicated pad token and processed with a causal-only attention mask (no key-padding mask --- see \S\ref{sec:3.4}).
+The item feature passed into the encoder is $f_i = e_i + \Phi(s_i)$. Sequences are right-padded with a dedicated pad token and processed with a causal-only attention mask (no key-padding mask --- see \S\ref{sec:3.4}). The output logits for position $t$ are $h_t \cdot{}$\texttt{all\_items.T} where \texttt{all\_items} is the (n\_items, d) item-features table.
 
-We use a 2-layer Transformer encoder (d=64, n\_heads=2, FFN dim=4d, GELU activation, pre-norm) followed by a final LayerNorm. The output logits for position $t$ are $h_t \cdot{}$\texttt{all\_items.T} where \texttt{all\_items} is the (n\_items, d) item-features table.
+\textbf{Headline encoder --- HSTU-style (every \S\ref{sec:5} result).} All headline experiments use the \textbf{HSTU-style pure-PyTorch pointwise-attention encoder}, described in full in \S\ref{sec:3.7}: pointwise $\mathrm{silu}(QK^{\top} + \mathrm{rab})\,V$ aggregation with the published per-block normalization --- no softmax, no $1/\sqrt{d}$ scaling --- with the core block verified bitwise-exact against the reference research implementation (\texttt{HSTU\_PARITY\_REPORT.md}). Configuration, stated here and in \S\ref{sec:4.4}: \textbf{4 layers, 2 heads, d = 64, dropout 0.5}.
+
+\textbf{Baseline encoder --- SASRec-SBERT (protocol parity and the superseded Appendix A.1 scans only).} The SASRec-family baseline follows \citet{kang2018sasrec}: a 2-layer pre-norm Transformer encoder (d=64, n\_heads=2, FFN dim=4d, GELU activation) followed by a final LayerNorm, using the same item-feature construction. \textbf{No headline number uses this encoder}; it appears as the per-category parity/floor baseline and in the superseded Beauty scan (Appendix A.1).
 
 
 \subsection{Choice of projection \ensuremath{\Phi}}\label{sec:3.3}

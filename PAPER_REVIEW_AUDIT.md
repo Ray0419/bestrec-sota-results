@@ -6,46 +6,225 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **Confirmed reviewer-facing contradiction: Section 6.1 says the MLP adaptor
-   is the only consistently-positive cross-pipeline intervention, but Appendix
-   A.1 says the clean adaptor-only ablation is negative.** This is visible in
-   both PDFs (`PAPER_SUBMISSION.pdf` page 30 / appendix page 39;
-   `paper_tex/PAPER_TORS.pdf` pages 27 and 35). Rewrite Section 6.1 to say the
-   Beauty scan's small signal comes from BLaIR/rich-text content, not the MLP
-   adaptor alone, or remove the transfer interpretation entirely.
-2. **Plausible recent-literature scope risk: SILLM4Rec still lacks direct
-   protocol inspection.** The tooling-language leak is fixed, and the current
-   sentence is reviewer-safe. However, ACM metadata says SILLM4Rec experiments
-   use three 5-core Amazon Reviews 2023 subdatasets, so before freeze the paper
-   should either inspect the full paper or keep the exclusion narrowly framed as
-   "not established as apples-to-apples full-catalog LLOO."
-3. **Plausible reviewer-readability risk: Table 2 remains dense.** The broken
-   continuation-cell defect is gone and the rendered page is legible, but the
-   negative-result map is still crowded. A top-journal reviewer may prefer a
-   compact main-table summary plus appendix detail.
-4. **Plausible first-page / review-mode polish risk.** The TORS review artifact
-   is readable and the running-head collision is fixed, but the PDF still shows
-   acmart review-mode line numbering and "Manuscript submitted to ACM" footer
-   text. This may be standard; verify against the exact TORS submission workflow
-   before freeze.
-5. **Statistical-rhetoric risk: keep all causal / driver language scoped to the
-   synthetic thinning interventions.** The manuscript mostly does this, but the
-   abstract is dense and uses "driver", "partial causal role", and uncorrected
-   p-values. Do not shorten caveats for space; if anything, move some mechanism
-   language out of the abstract.
-6. **Confirmed metadata-role issue fixed for current artifact roles.** The
-   reader PDF now explicitly says it is a reader edition and points to
-   `paper_tex/PAPER_TORS.pdf` for ACM CCS concepts/keywords; the TORS source has
-   `\keywords{...}` and CCS metadata.
-7. **Confirmed core artifact checks remain green.** The strict rebuild passes:
-   HSTU core-block parity exact, 164 cells recomputed, 0 mismatches, 0
-   untraceable cells, all 12 claim families sourced, release manifest verified,
-   MI dual gate PASS, Office descriptive/VOID OK.
-8. **Persistent scientific boundary: no broad SOTA, no paired superiority.** The
-   current paper mostly respects this boundary. Any future abstract, conclusion,
-   cover letter, response file, or release note must keep Video_Games as
-   competitive but not SOTA; MI as a per-category point-estimate comparison; and
-   Office as VOID / descriptive only.
+1. **Confirmed reviewer-facing methods contradiction: Section 3.2 still defines
+   "our base model" as a 2-layer SASRec/Transformer, while the headline
+   experiments, results, and result JSONs use a 4-layer HSTU-style encoder.**
+   This is now the top rejection risk. `paper_tex/sections/03-method.tex` says
+   "Our base model, SASRec-SBERT" and "2-layer Transformer encoder"; Section
+   4.3 says all headline results use the HSTU-style encoder with 4 layers; the
+   source result files (`results_V2_ls02_filter8_VG.json`,
+   `results_J1_plain_VG.json`, `results_BEST_MI_sbert_e20_seed20260609.json`)
+   confirm `encoder: hstu`, `n_layers: 4`. Fix by making Section 3.2 the
+   headline HSTU-style architecture, moving SASRec-SBERT to a baseline/protocol
+   parity subsection, and correcting the Section 4.3 cross-reference.
+2. **Confirmed bibliography metadata issue: WPGRec is described under an
+   "unreviewed" 2026-preprint framing, but arXiv metadata says it is accepted to
+   SIGIR 2026.** Update `PAPER_SUBMISSION.md` and `paper_tex/references.bib`
+   notes so the current rendered references do not understate/false-label a
+   peer-reviewed comparator-adjacent frequency/time-frequency paper.
+3. **Confirmed previous MLP-adaptor contradiction is fixed in the current
+   source and PDFs.** Section 6.1 now attributes the Beauty cross-pipeline
+   signal to BLaIR/rich text rather than the MLP adaptor alone; PDF extraction
+   confirms the old "only consistently-positive intervention" wording is gone
+   from both `PAPER_SUBMISSION.pdf` and `paper_tex/PAPER_TORS.pdf`.
+4. **Plausible recent-literature scope risk: SILLM4Rec still lacks direct
+   protocol inspection.** The current exclusion sentence is reviewer-safe, and
+   the public GitHub repo suggests 5-core AR2023 data handling plus generated
+   candidate-ranking tasks, but it still does not establish apples-to-apples
+   full-catalog LLOO comparability. Inspect the full ACM paper or keep the
+   exclusion narrowly framed.
+5. **Statistical-rhetoric risk: the mechanism language remains too strong in a
+   few high-visibility places.** The paper mostly scopes "driver" and "causal
+   role" to synthetic thinning interventions, but phrases such as "resolves the
+   open mechanism" are stronger than the evidence. Prefer "partially resolves"
+   or "supports a partial mechanism under the intervention."
+6. **Plausible reviewer-readability risk: the abstract and Table 2 remain
+   overloaded.** The paper is now more honest than most submissions, but the
+   first page still carries many p-values, caveats, and mechanism claims. Table
+   2 is valuable but dense; a top-journal reviewer may prefer a compact main
+   summary plus appendix detail.
+7. **Core artifact checks remain green.** The strict rebuild passes: HSTU
+   core-block parity exact, 164 cells recomputed, 0 mismatches, 0 untraceable
+   cells, all 12 claim families sourced, release manifest verified, MI dual
+   gate PASS, Office descriptive/VOID OK.
+8. **Persistent scientific boundary: no broad SOTA, no paired superiority.** Any
+   future abstract, conclusion, cover letter, response file, or release note
+   must keep Video_Games as competitive but not SOTA; MI as a per-category
+   point-estimate comparison; and Office as VOID/descriptive only.
+
+## Audit Run - 2026-07-12 21:37 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `3a346d86`
+- Automation memory at start: no prior memory content was present at
+  `$CODEX_HOME/automations/hourly-strict-paper-audit/memory.md`.
+- Supplied last-run cutoff: `2026-07-12T10:34:56.879Z`.
+- `git log --since="2026-07-12T10:34:56Z"` returned no commits; tracked working
+  tree was clean before and after the strict rebuild.
+- Canonical artifacts inspected: `PAPER_SUBMISSION.md`, `PAPER_SUBMISSION.pdf`,
+  `paper_tex/PAPER_TORS.pdf`, `paper_tex/sections/03-method.tex`,
+  `paper_tex/sections/04-experiments.tex`, `paper_tex/sections/05-results.tex`,
+  `paper_tex/sections/06-discussion.tex`, `paper_tex/sections/appendix-a.tex`,
+  `paper_tex/references.bib`, `paper_tex/tables/TABLES_PROVENANCE.json`,
+  `paper_tex/tables/table0_novelty.tex`, `_bestrec_run/hstu_results_manifest.json`,
+  and representative result JSONs for VG/MI headline runs.
+
+### Verdict
+
+**Artifact/provenance gates are green and the previous MLP-adaptor contradiction
+is repaired, but the current manuscript has a new high-salience methods
+contradiction.** The paper's numerical story is traceable; the problem is that
+Section 3.2 still reads like the headline model is a 2-layer SASRec/Transformer,
+while every headline run and the artifact graph say the model is a 4-layer
+HSTU-style encoder. A top-journal reviewer can cite this as an unclear or stale
+method description even if all results are valid.
+
+### Commands And Evidence Checked
+
+- `git status --short --branch`
+  - Clean on `codex/bestrec-sota-results`.
+- `git log --since="2026-07-12T10:34:56Z" --oneline --decorate --name-status`
+  - No commits after the supplied cutoff.
+- `uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: 164 cells recomputed; 0 `MISMATCH`; 0 `UNTRACEABLE`; all 12 declared
+    claim families sourced.
+  - PASS: release manifest verification, MI V2 dual gate, Office descriptive/
+    VOID adjudication.
+- `uv --project _bestrec_run run python paper_tex/scan_pdf.py paper_tex/PAPER_TORS.pdf`
+  - PASS: 36 pages; 0 placeholder/forbidden-claim failures.
+  - SOTA mentions are informational and negated/non-claim contexts.
+- PDF text extraction with `pypdf`
+  - Both PDFs contain the repaired Section 6.1 language ("text content, not the
+    projection layer") and Appendix A.1's "MLP adaptor by itself does NOT help".
+  - Both PDFs no longer contain the stale phrase "only consistently-positive
+    intervention".
+  - Both PDFs still contain WPGRec; neither mentions SIGIR 2026 acceptance.
+- Targeted source/result sweeps
+  - `paper_tex/sections/03-method.tex`: "Our base model, SASRec-SBERT" and
+    "2-layer Transformer encoder".
+  - `paper_tex/sections/04-experiments.tex`: headline runs use HSTU-style
+    encoder with `d_model 64, 4 layers, 2 heads, dropout 0.5`.
+  - Representative result JSONs confirm `encoder: hstu`, `n_layers: 4`,
+    `n_heads: 2`, `dropout: 0.5`.
+
+### Confirmed Problems
+
+1. **Method architecture description is internally inconsistent.**
+   - Source conflict: Section 3.2 presents the "base model" as SASRec-SBERT
+     with a 2-layer Transformer; Section 3.7 says the additions are defined on
+     top of HSTU-style; Section 4.3 says all headline results use HSTU-style
+     `4 layers`; result JSONs confirm HSTU/4-layer for the headline runs.
+   - Why this matters: the paper asks reviewers to trust fine-grained
+     architectural deltas. A stale method section undermines reproducibility and
+     makes it unclear whether Table 1 is a SASRec or HSTU-style ablation.
+   - Concrete fix: rewrite Section 3.2 as "Item-feature construction and
+     scoring" plus "Headline HSTU-style encoder"; demote SASRec-SBERT to
+     baseline/protocol-parity wording; move the HSTU equation into Section 3.2
+     or point Section 4.3 to the exact HSTU subsection; state `4 layers, 2
+     heads, d=64, dropout=0.5` once in the method and once in experiments.
+2. **WPGRec reference metadata is stale.**
+   - `PAPER_SUBMISSION.md` and `paper_tex/references.bib` still put WPGRec under
+     an "unreviewed at the time of writing" preprint framing.
+   - arXiv metadata for `2604.21305` says WPGRec was accepted to SIGIR 2026.
+   - Concrete fix: remove WPGRec from the unreviewed-preprint umbrella or revise
+     the note to "accepted to SIGIR 2026; arXiv:2604.21305"; keep it as broader
+     frequency/time-frequency prior art, not an apples-to-apples AR2023
+     comparator.
+
+### Confirmed Fixes Since Prior Audit
+
+- **Section 6.1 / Appendix A.1 MLP-adaptor contradiction is repaired.** The
+  current source and both PDFs now say the Beauty signal is attributable to
+  BLaIR/rich text as a bundle, while the clean MiniLM+MLP adaptor ablation is
+  negative.
+- **SILLM4Rec tooling-language leak remains fixed.** The manuscript no longer
+  says a paper was inaccessible to "our tooling"; the current sentence says
+  accessible metadata did not establish apples-to-apples protocol comparability.
+- **Artifact gates remain green.** Strict rebuild, table provenance, release
+  manifest, PDF hygiene scan, and tracked working tree all pass.
+
+### Plausible Risks Requiring Author Verification
+
+- **SILLM4Rec direct protocol inspection is still open.** The public GitHub repo
+  instructs users to download Amazon Reviews 2023 5-core files and generate
+  candidate ranking tasks, which makes the paper more relevant than a metadata-
+  only mention. However, the accessible repo does not establish full-catalog
+  LLOO equivalence, so exclusion remains defensible only if narrowly worded.
+- **"Resolves the open mechanism" overstates the tail evidence.** The user-mode
+  titration supports a partial mechanism under synthetic thinning assumptions;
+  it does not fully resolve the real data-generating mechanism. This is a
+  rhetoric risk, not a numeric contradiction.
+- **Reader burden remains high.** The abstract, Section 5, and Table 2 are
+  unusually dense. The honesty is useful, but a reviewer may miss the core
+  contribution behind caveats and negative-result detail.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR's arXiv HTML confirms the AR2023 5-core statistics and comparator
+  constants used by the manuscript: Video Games 25,612 items / 94,762 users /
+  814,585 interactions, NDCG@10 0.0760; Musical Instruments NDCG@10 0.0406;
+  Office Products NDCG@10 0.0271. Source:
+  https://arxiv.org/html/2504.10545v3
+- SID-MLP's arXiv HTML confirms same-statistics AR2023 5-core LLOO datasets for
+  MI/VG: Musical Instruments 57,439 users / 24,587 items / 511,836
+  interactions and Video Games 94,762 users / 25,612 items / 814,586
+  interactions. Source: https://arxiv.org/html/2605.12617v1
+- WPGRec's arXiv page confirms it is a wavelet-packet, graph-enhanced
+  sequential recommendation paper and says "Accepted to SIGIR 2026"; this
+  supports the manuscript's broader frequency/time-frequency boundary but
+  invalidates the "unreviewed" metadata note. Source:
+  https://arxiv.org/abs/2604.21305
+- The SILLM4Rec public repo confirms relevance to Amazon Reviews 2023 5-core
+  data preparation and generated ranking tasks, but the accessible README does
+  not establish full-catalog LLOO comparability. Source:
+  https://github.com/MKC-Lab/SILLM4Rec
+- The official Amazon Reviews 2023 site remains the correct dataset source and
+  documents the 5-core processing caveats and category statistics. Sources:
+  https://amazon-reviews-2023.github.io/ and
+  https://amazon-reviews-2023.github.io/data_processing/5core.html
+
+### Concrete Fixes To Make Next
+
+1. Repair Section 3.2 / 3.7 / 4.3 architecture wording before any submission:
+   make the headline HSTU-style 4-layer encoder the main method and label
+   SASRec-SBERT as baseline/protocol-parity only.
+2. Rebuild both PDFs and rerun text extraction for the phrases "2-layer
+   Transformer encoder" and "4 layers" after the method fix.
+3. Update WPGRec metadata to SIGIR 2026 accepted status, and remove it from any
+   blanket "unreviewed" preprint sentence.
+4. Keep SILLM4Rec excluded unless the full paper is inspected; if mentioned,
+   keep the current narrow "not established as apples-to-apples full-catalog
+   LLOO" wording.
+5. Tone down "resolves the open mechanism" to "partially resolves" or "supports
+   a partial mechanism under the thinning intervention."
+
+### Open Questions
+
+- Should the Method section be organized around the headline HSTU-style stack
+  only, with SASRec-family details moved to baselines/appendix, or should it
+  explicitly describe two model families?
+- Can the authors obtain SILLM4Rec's full ACM PDF to inspect its exact
+  evaluation protocol?
+- Is WPGRec's SIGIR 2026 acceptance enough to move it from a reference note into
+  the related-work prose, or is the current one-sentence boundary sufficient?
+
+### Running Checklist
+
+- [x] Read automation memory.
+- [x] Locate canonical manuscript sources and PDFs.
+- [x] Check commits and tracked tree after the supplied last-run cutoff.
+- [x] Verify strict rebuild/provenance gate.
+- [x] Verify TORS PDF hygiene scan.
+- [x] Verify prior Section 6.1 MLP-adaptor contradiction is absent from PDFs.
+- [x] Fact-check selected novelty/comparator claims against external sources.
+- [x] Identify new confirmed methods inconsistency.
+- [x] Identify stale WPGRec bibliographic metadata.
+- [ ] Rewrite Method architecture section for HSTU-style 4-layer headline stack.
+- [ ] Update WPGRec SIGIR 2026 metadata and rerender references.
+- [ ] Protocol-inspect SILLM4Rec full text if accessible before freeze.
 
 ## Audit Run - 2026-07-12 18:37 Australia/Sydney
 

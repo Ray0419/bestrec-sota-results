@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "7a8607b280173d0ac15de242044f56bac6c5ccbd",
+  "git_commit": "95190073f689e081e5e429c97b4ba9ad080e402d",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -214,8 +214,8 @@
       "bytes": 2195
     },
     "_bestrec_run/update_release_manifest.py": {
-      "sha256": "8f53ec827de0c88b73c4c038fb5a52ba2076e3a5be79cc48490dc90ed415b61b",
-      "bytes": 12201
+      "sha256": "97a5a02534aa636573affd545174cbe6b05e85c2a075a8e9476e16e4db9464c1",
+      "bytes": 12507
     },
     "paper_tex/PAPER_TORS.pdf": {
       "sha256": "0094b2af56a960c58805629daed83e5bffc97527baf2f65a2fd828282cd3a424",
@@ -332,5 +332,5 @@
       }
     }
   },
-  "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2."
+  "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit."
 }

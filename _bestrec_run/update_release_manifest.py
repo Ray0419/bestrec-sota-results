@@ -156,6 +156,22 @@ def verify(m):
         else:
             checked += 1
 
+    # round-9 audit structural fix: a manifested file that is git-dirty means the
+    # manifest describes uncommitted content -- a clean clone would not verify.
+    try:
+        dirty = subprocess.check_output(["git", "status", "--porcelain", "-uno"],
+                                        cwd=ROOT, text=True).splitlines()
+        manifested = set()
+        for sec in ("protocol_code", "submission_docs"):
+            manifested.update(m.get(sec, {}).keys())
+        for ln in dirty:
+            rel = ln[3:].strip().replace("\\", "/")
+            if rel in manifested:
+                bad.append(f"{rel}: git-DIRTY manifested file -- commit it together "
+                           "with a regenerated manifest (clean clones would fail)")
+    except Exception as e:
+        print("  (git dirty-check skipped:", e, ")")
+
     for w in missing_asset:
         print("  SKIPPED-missing (release asset):", w)
     if bad:
@@ -270,6 +286,18 @@ def regen(m):
     print(f"regenerated at {m['git_commit']}")
     print(f"protocol_code updated: {changed or 'none'}")
     print(f"submission_docs: {len(docs)} files; pinned_parity_artifacts: {len(pp)} files")
+    try:
+        dirty = subprocess.check_output(["git", "status", "--porcelain", "-uno"],
+                                        cwd=ROOT, text=True).splitlines()
+        hashed = set(m["protocol_code"]) | set(m["submission_docs"])
+        need = [ln[3:].strip() for ln in dirty
+                if ln[3:].strip().replace("\\", "/") in hashed]
+        if need:
+            print("COMMIT TOGETHER WITH RELEASE_MANIFEST.json (dirty manifested files):")
+            for r in need:
+                print("   +", r)
+    except Exception:
+        pass
     return 0
 
 

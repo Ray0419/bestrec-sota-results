@@ -6,54 +6,264 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **Plausible high submission-format risk: the TORS LaTeX uses `acmsmall`, not
-   ACM's review `manuscript` option.** `paper_tex/main.tex` currently declares
-   `\documentclass[acmsmall,screen,review,anonymous]{acmart}`. ACM's general
-   author workflow says review submissions should use the single-column
-   `manuscript` option, while ACM also says journals use `acmsmall` for journal
-   templates. Before upload, either switch the review build to
-   `manuscript,review,anonymous` or document a TORS-specific override.
-2. **Confirmed prior blockers fixed: figures, ethics, Table 0, GrIT, and FEARec
-   are now present in the active artifacts.** `PAPER_SUBMISSION.pdf` has three
+1. **Confirmed release/provenance blocker: the manifest currently hashes an
+   uncommitted version of `_bestrec_run/emit_latex_tables.py`.** The current
+   working tree has one tracked modification: an added `Beauty_and_PC`
+   `\allowbreak` rule. `RELEASE_MANIFEST.json`'s hash for that file matches the
+   dirty working tree, but not `HEAD` and not the manifest's recorded
+   `git_commit` (`7a627ef`). This means a clean checkout of the committed state
+   is not self-consistent with its manifest. Commit the generator change and
+   regenerate/commit the manifest at the intended boundary, or deliberately
+   remove the generator edit and regenerate the manifest.
+2. **Confirmed documentation contradiction: `paper_tex/BUILD_NOTES.md` still has
+   an old document-class paragraph.** The new top of the file and `main.tex`
+   correctly say the default review target is
+   `\documentclass[manuscript,review,anonymous]{acmart}`, but lines 84-91 still
+   say `\documentclass[acmsmall,screen,review,anonymous]{acmart}`. This is
+   stale prose, not a build failure, but it undermines the TORS compliance
+   story.
+3. **Confirmed prior high-risk format issue mostly fixed.** `paper_tex/main.tex`
+   now uses ACM's `manuscript,review,anonymous` review format and the old
+   `acmsmall` build is a separate production preview. Keep this from regressing,
+   and make the notes internally consistent.
+4. **Plausible related-work polish risk: the paper cites FEARec but leaves
+   "subsequent time-frequency architectures" uncited.** Fresh search confirms
+   the frequency/time-frequency SR line is active in 2025-2026 (for example
+   WaveRec/WPGRec, wavelet adaptive filters, and HyTiFRec). Because the paper
+   explicitly invokes that line to narrow novelty, add representative citations
+   or remove the uncited phrase.
+5. **Plausible reviewer-readability risk: Table 2 remains extremely dense in the
+   TORS PDF.** The old dangling continuation-cell problem is gone and page 24 is
+   readable in the manuscript build, but the negative-result table is still
+   crowded. A top-journal reviewer may still prefer a compact main table plus
+   appendix detail.
+6. **Plausible production-metadata risk: ACM CCS concepts / keywords remain
+   absent and BibTeX still accepts empty-address warnings.** This is acceptable
+   for an audit build if intentionally deferred, but it should be closed at
+   actual TORS submission time.
+7. **Confirmed prior blockers fixed: figures, ethics, Table 0, GrIT, and FEARec
+   remain present in the active artifacts.** `PAPER_SUBMISSION.pdf` has three
    image XObjects, `paper_tex/PAPER_TORS.pdf` has three vector Form XObjects,
    the ethics/data-governance section is present, Table 0 no longer says "no
    numerical-parity claim", and GrIT/FEARec are cited. Keep these under the
    strict gate so they do not regress.
-3. **Plausible release/deposit boundary risk: the manifest hashes the TORS PDF,
-   but not the full LaTeX source tree.** `RELEASE_MANIFEST.json` now includes
-   `paper_tex/PAPER_TORS.pdf` and the LaTeX table-emitter script, and the
-   manifest correctly points to the immediate parent commit. If the DOI/deposit
-   bundle is expected to include source, explicitly hash or package the
-   `paper_tex` sources; if not, state that Git is the source boundary and the
-   manifest only hashes the rendered TORS artifact.
-4. **Plausible reviewer-readability risk: Table 2 remains extremely dense in the
-   TORS PDF.** The old dangling continuation-cell problem is gone, but the
-   negative-result table on page 25 is small and crowded. A top-journal reviewer
-   may still ask for a narrower main table plus appendix detail.
-5. **Confirmed documentation-staleness risk in response prose.**
-   `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` still contains historical rows saying
-   the TORS delta build is "in flight" / "will be committed" and older 37/38-page
-   statements. This is not the canonical source, but it can confuse a release
-   package if included without context.
-6. **Plausible bibliography-production risk.** `paper_tex/BUILD_NOTES.md`
-   accepts BibTeX warnings for missing volume/pages/publisher/address because
-   the bibliography mirrors the Markdown references. That is acceptable for an
-   audit build, but the final TORS source package should fill standard metadata
-   where available.
-7. **Persistent scientific boundary: no broad SOTA, no paired superiority.** The
+8. **Persistent scientific boundary: no broad SOTA, no paired superiority.** The
    current paper respects this boundary. Any future abstract, conclusion, venue
    cover letter, response file, or release note must keep Video_Games as
    competitive but not SOTA; MI as a per-category point-estimate comparison; and
    Office as VOID / descriptive only.
-8. **Persistent wording risk: "reproduces" vs "regenerates".** The manuscript
+9. **Persistent wording risk: "reproduces" vs "regenerates".** The manuscript
    mostly caveats local reference-implementation runs as unpinned,
    environment-caveated, single-run regenerations. Keep avoiding language that
    implies a faithful official pinned reproduction, especially for the MI
    best-epoch comparator match and the Office HSTU-BLaIR descriptive run.
-9. **Plausible literature-freeze risk.** GrIT and FEARec were added, but the
+10. **Plausible literature-freeze risk.** GrIT and FEARec were added, but the
    literature is moving fast. Do one final targeted search before freezing the
    TORS submission, especially for 2026 AR2023 5-core, semantic-ID/generative,
    and frequency/time-frequency sequential-recommendation preprints.
+
+## Audit Run - 2026-07-12 14:34 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `6719bb3` (`Close round-8 row 1
+  with phase-B landing details`)
+- Working tree before writing this audit: dirty only in
+  `_bestrec_run/emit_latex_tables.py`.
+- Dirty change inspected: one added typography rule,
+  `Beauty\_and\_PC -> Beauty\_and\_\allowbreak PC`, at
+  `_bestrec_run/emit_latex_tables.py:109`.
+- Canonical source/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_SUBMISSION.pdf`, `CANONICAL_SUBMISSION.md`,
+  `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`, `VENUE_PLAN.md`,
+  `RELEASE_MANIFEST.json`, `_bestrec_run/emit_latex_tables.py`,
+  `paper_tex/main.tex`, `paper_tex/main-acmsmall.tex`,
+  `paper_tex/build.ps1`, `paper_tex/BUILD_NOTES.md`,
+  `paper_tex/references.bib`, `paper_tex/sections/*`,
+  `paper_tex/tables/*`, `paper_tex/PAPER_TORS.pdf`, and
+  `paper_tex/PAPER_TORS_acmsmall.pdf`.
+- Visual PDF check: rendered `paper_tex/PAPER_TORS.pdf` pages 1, 17, 18, 22,
+  23, 24, 29, and 35 with `pypdfium2` into
+  `tmp/pdfs/hourly_audit_20260712_1430_tors/`.
+
+### Verdict
+
+**The TORS review-format issue is substantially fixed, but the release boundary
+is not yet clean enough for a top-journal artifact package.** The current
+review PDF is now a 35-page ACM `manuscript,review,anonymous` build; the hygiene
+scanner passes; figures, ethics, GrIT, FEARec, and the no-SOTA wording all remain
+present; and the strict numerical gate passes. The serious new blocker is
+provenance: the manifest hash for `_bestrec_run/emit_latex_tables.py` matches an
+uncommitted working-tree edit, not the committed file at either `HEAD` or the
+manifest's recorded source boundary.
+
+### Commands And Evidence Checked
+
+- `git status --short --branch`; `git log --oneline -5`
+  - HEAD is `6719bb3`.
+  - Only tracked dirty file before this audit was
+    `_bestrec_run/emit_latex_tables.py`.
+- `git diff -- _bestrec_run/emit_latex_tables.py`
+  - One-line typography-only `Beauty_and_PC` allowbreak addition.
+- `uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact (`max|diff| = 0.000e+00`).
+  - PASS: 164 paper cells recomputed; 0 `MISMATCH`; 0 `UNTRACEABLE`; all 12
+    required claim families sourced.
+  - PASS: release manifest verification, 113 files verified.
+  - PASS: MI V2 dual gate.
+  - PASS/VOID: Office arithmetic passes, but Office remains descriptive and
+    VOID under the preregistered floor-check failure.
+- `uv --project _bestrec_run run python paper_tex/scan_pdf.py paper_tex/PAPER_TORS.pdf`
+  - PASS: 35 pages; 0 placeholder/forbidden-claim failures.
+  - Review list contains only explicit SOTA/non-claim contexts.
+- `update_release_manifest.py --verify`
+  - PASS in the dirty working tree because the manifest hash matches the dirty
+    generator file.
+- Manifest/hash cross-check:
+  - Working-tree `_bestrec_run/emit_latex_tables.py` SHA256 =
+    `1ac6b422b12416a893c8eb9f79e21729801435d9af4202a84b43f8ecd2e60f86`.
+  - `RELEASE_MANIFEST.json` entry for that file =
+    `1ac6b422b12416a893c8eb9f79e21729801435d9af4202a84b43f8ecd2e60f86`.
+  - `HEAD:_bestrec_run/emit_latex_tables.py` SHA256 =
+    `2d631b7a785f734704cbc90756a5a2a5c879ff3d5f9cb2d6bdbbbc36196a08d6`.
+  - `7a627ef:_bestrec_run/emit_latex_tables.py` SHA256 =
+    `2d631b7a785f734704cbc90756a5a2a5c879ff3d5f9cb2d6bdbbbc36196a08d6`.
+  - Therefore the manifest does not describe the committed source state it says
+    it describes.
+- PDF object/text inspection:
+  - `PAPER_SUBMISSION.pdf`: 40 pages, 1,310,455 bytes, letter mediabox, 3 image
+    XObjects.
+  - `paper_tex/PAPER_TORS.pdf`: 35 pages, 427,335 bytes, letter mediabox
+    `(612, 792)`, 3 vector Form XObjects.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 36 pages, 433,983 bytes,
+    `(486, 720)` mediabox, 3 vector Form XObjects.
+  - TORS PDF contains `10 ETHICS`, `GrIT`, and `FEARec`.
+- Visual spot check:
+  - Figures 1-3 render and remain readable.
+  - Table 2 is no longer broken across a bad page transition; page 24 is
+    readable, though dense.
+  - Ethics/data-governance text is readable on page 29.
+
+### Confirmed Fixes Since Prior Audit
+
+1. **ACM review format was changed to the safer default.** `paper_tex/main.tex`
+   now uses `\documentclass[manuscript,review,anonymous]{acmart}` and produces
+   the manifest-gated `PAPER_TORS.pdf`. `main-acmsmall.tex` is now a separate
+   production-preview target.
+2. **Response staleness is reduced.** `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` now
+   begins with a historical-log banner and closes the prior "in flight" wording
+   with landing commits.
+3. **Deposit/source-boundary prose exists.** `RELEASE_MANIFEST.json` now states
+   that `paper_tex` source is governed by Git at the recorded `git_commit`, while
+   the manifest hashes the rendered TORS PDF.
+4. **Bibliography metadata was improved.** `paper_tex/BUILD_NOTES.md` documents
+   registry-verified metadata fills and explicitly lists entries left untouched
+   because no authoritative record was found.
+5. **Prior scientific blockers remain closed.** Figures, ethics/data governance,
+   Table 0 parity wording, GrIT, and FEARec remain present in the inspected
+   artifacts.
+
+### Confirmed Problems
+
+1. **Manifest/source-boundary inconsistency is now the top blocker.** The working
+   tree passes `update_release_manifest.py --verify`, but only because a
+   manifest-hashed file is dirty. A clean clone at `HEAD` would have the
+   committed generator content, whose hash does not match the committed manifest
+   entry. This contradicts the manifest's "hashes describe repository files as
+   of git_commit" rule.
+2. **`paper_tex/BUILD_NOTES.md` contradicts itself about the document class.**
+   Lines 11-29 and the actual `main.tex` say the review build is `manuscript`;
+   lines 84-91 still say the document class is
+   `acmsmall,screen,review,anonymous`. Fix the stale paragraph to name both
+   targets correctly.
+3. **Related-work prose has an uncited "subsequent time-frequency architectures"
+   phrase.** The paper cites FEARec, but not the later wavelet/time-frequency
+   works that make the phrase true. This is a reviewer-polish issue, not a
+   result invalidation.
+
+### Plausible Risks Requiring Author Verification
+
+- Whether the dirty `Beauty_and_PC` line is intended. It appears consistent with
+  `BUILD_NOTES.md`'s overfull-box claim, but it must be committed or removed.
+- Whether the manifest `git_commit` should advance beyond `7a627ef` after the
+  response-only commits. If response files remain outside the deposit boundary,
+  this can be acceptable, but the boundary should be explicit.
+- Whether TORS requires CCS concepts and keywords at initial submission. The
+  current build notes defer them as new content.
+- Whether to split Table 2 before submission freeze despite the manuscript build
+  being visually acceptable.
+- Which representative 2025-2026 time-frequency SR works to cite in the
+  novelty-boundary paragraph.
+
+### External Fact-Check / Novelty Notes
+
+- ACM's current author workflow says review submissions should be single-column
+  and says LaTeX authors should use the `manuscript` option with
+  `\documentclass[manuscript]{acmart}`. This supports the new `main.tex`
+  review target. Source: https://www.acm.org/publications/authors/submissions
+- The current `acmart` documentation says the `review` option is useful when
+  combined with `manuscript`, and that `anonymous` obscures author information.
+  It also notes ACM submission samples for both manuscript and acmsmall. Source:
+  https://mirrors.ctan.org/macros/latex/contrib/acmart/acmart.pdf
+- SID-MLP remains a relevant 2026 AR2023 5-core comparator-context paper: it
+  reports AR2023 5-core leave-last-out statistics matching the MI/VG universes
+  and NDCG@10 values below the manuscript's MI/VG values. Source:
+  https://arxiv.org/html/2605.12617v1
+- GrIT remains a relevant same-statistics AR2023 Video_Games 5-core related-work
+  item: its table reports Video Games NDCG@10 0.0588. Source:
+  https://arxiv.org/html/2602.19728v1
+- The time-frequency SR line is broader than FEARec. WPGRec (2026) explicitly
+  frames frequency/time-frequency modeling as active, cites FEARec and WaveRec,
+  and proposes wavelet-packet subband modeling with graph propagation. Source:
+  https://arxiv.org/html/2604.21305v1
+- HyTiFRec (2025) is another time-frequency sequential-recommendation example,
+  proposing a hybrid time-frequency dual-branch transformer and reporting
+  experiments on five datasets. Source:
+  https://www.sciencedirect.com/org/science/article/pii/S1546221825003388
+
+### Concrete Fixes To Make Next
+
+1. Commit `_bestrec_run/emit_latex_tables.py` if the `Beauty_and_PC` line is
+   intended, then regenerate/commit `RELEASE_MANIFEST.json` at the intended
+   boundary and verify from a clean working tree. If the line is not intended,
+   remove it and regenerate the manifest instead.
+2. Fix `paper_tex/BUILD_NOTES.md` lines 84-91 so the document-class section
+   describes the default `manuscript` review target and the separate `acmsmall`
+   preview target.
+3. Add one sentence and 1-3 representative citations for later
+   frequency/time-frequency SR work (for example WaveRec/WPGRec and HyTiFRec),
+   or remove the phrase "subsequent time-frequency architectures."
+4. Decide whether Table 2 should be split for readability before submission
+   freeze.
+5. Add ACM CCS concepts / keywords if TORS requires them at initial submission.
+
+### Open Questions
+
+- Was the manifest regenerated while `_bestrec_run/emit_latex_tables.py` was
+  dirty and then committed without the generator edit?
+- Should `RELEASE_MANIFEST.json` describe the latest source commit, or only the
+  committed artifact boundary for the TORS PDF?
+- Is the current Table 2 density an acceptable TORS tradeoff, or should the
+  main paper carry only a summarized negative-result map?
+
+### Running Checklist
+
+- [x] Read automation memory.
+- [x] Locate canonical manuscript source and TORS artifacts.
+- [x] Check files modified since the previous automation cutoff.
+- [x] Inspect current git status and recent commits.
+- [x] Verify strict numerical/provenance gate.
+- [x] Verify TORS hygiene scan.
+- [x] Inspect PDF page count, media box, figures, and ethics section.
+- [x] Render visual spot-check pages.
+- [x] Fact-check ACM review-format guidance against external sources.
+- [x] Run targeted AR2023/generative and time-frequency related-work searches.
+- [x] Identify manifest/dirty-source contradiction.
+- [ ] Commit or remove dirty generator change and align the manifest boundary.
+- [ ] Fix stale `BUILD_NOTES.md` document-class paragraph.
+- [ ] Cite or remove uncited later time-frequency architecture wording.
+- [ ] Decide whether to split Table 2.
 
 ## Audit Run - 2026-07-12 12:34 Australia/Sydney
 

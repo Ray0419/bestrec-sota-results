@@ -106,6 +106,7 @@ def unimap(s):
     s = s.replace(r"external/AmazonReviews2023/seq\_rec\_results/",
                   r"external/\allowbreak AmazonReviews2023/\allowbreak seq\_rec\_results/")
     s = s.replace(r"Beauty\_and\_Personal\_Care", r"Beauty\_and\_\allowbreak Personal\_Care")
+    s = s.replace(r"Beauty\_and\_PC", r"Beauty\_and\_\allowbreak PC")
     s = s.replace(r"SOTA\_CONFIRM\_PREREG\_OFFICE.md", r"SOTA\_CONFIRM\_\allowbreak PREREG\_\allowbreak OFFICE.md")
     # round-7: Figs 1-3 are embedded floats; wire textual figure mentions to the labels
     # (\cref with \crefname{figure}{Fig.}{Figs.} prints exactly the md's "Fig. N")

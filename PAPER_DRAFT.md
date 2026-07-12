@@ -97,7 +97,7 @@ We do not claim a wholly new recommender architecture. Our architectural additio
 
 ### 2.3 Novelty boundary
 
-Table 0 states, component by component, what is prior art, what we reuse, what we change, the evidence behind each claim, and an honest novelty grade. Nothing in this paper is graded above "moderate"; the two architectural additions are graded "incremental" by design. The frequency/time-frequency line in sequential recommendation is broader than the two works we adapt — e.g. frequency-aware hybrid-attention models such as FEARec (Du et al., 2023) and subsequent time-frequency architectures — and our boundary is correspondingly narrow: what we add is only the left-causal, depthwise-FIR form of the idea inside an HSTU-style stack trained with an all-position next-item objective under full-catalog AR2023 5-core LLOO evaluation.
+Table 0 states, component by component, what is prior art, what we reuse, what we change, the evidence behind each claim, and an honest novelty grade. Nothing in this paper is graded above "moderate"; the two architectural additions are graded "incremental" by design. The frequency/time-frequency line in sequential recommendation is broader than the two works we adapt — e.g. frequency-aware hybrid-attention models such as FEARec (Du et al., 2023) and, more recently, wavelet-packet models such as WPGRec (Liu et al., 2026; arXiv:2604.21305) — and our boundary is correspondingly narrow: what we add is only the left-causal, depthwise-FIR form of the idea inside an HSTU-style stack trained with an all-position next-item objective under full-catalog AR2023 5-core LLOO evaluation.
 
 **Table 0: Novelty boundary — what is reused, what is changed, and how novel each piece is.**
 
@@ -593,6 +593,7 @@ constitutes a deployment claim.
 - Huang, C., Gao, T., Huang, H., Sheng, Q. Z., Yao, L., 2026. Beyond Item Order: Temporal Gap Tokenization for Generative Recommendation with Semantic IDs (ChronoSID). arXiv:2607.03918. *(SID-line MI comparator context; own filtered universe)*
 - Liang, Y., Zhang, Z., Zhu, Y., Zhang, K., Guo, Z., Zhou, W., Yang, Z., Wu, K., Ni, Y., Zeng, A., Fu, C., Wang, J., Xia, J., 2026. Rethinking Generative Recommender Tokenizer: Recsys-Native Encoding and Semantic Quantization Beyond LLMs (ReSID). arXiv:2602.02338. *(SID-line MI comparator context; own filtered universe)*
 - Shyam, A., Kagita, V. R., Rana, B., Kumar, V., 2026. GrIT: Group Informed Transformer for Sequential Recommendation. arXiv:2602.19728. *(AR2023 5-core Video_Games statistics match ours; full-item-set ranking; the NDCG@10 0.0588 quoted in §5.1 is its published value)*
+- Liu, P., Ji, Z., Yan, G., 2026. WPGRec: Wavelet Packet Guided Graph Enhanced Sequential Recommendation. arXiv:2604.21305. *(representative of the later frequency/time-frequency SR line invoked in §2.3)*
 
 ---
 

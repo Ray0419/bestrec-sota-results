@@ -83,7 +83,11 @@ exit on any hit). Tool paths overridable via `PYTHON` / `TECTONIC` env vars.
 
 ## Document class / anonymization
 
-`\documentclass[acmsmall,screen,review,anonymous]{acmart}`, `\acmJournal{TORS}`,
+Default review target (`main.tex`): `\documentclass[manuscript,review,anonymous]{acmart}` —
+ACM's single-column review format, producing the manifest-gated `PAPER_TORS.pdf`. Production
+preview (`main-acmsmall.tex`, untracked output `PAPER_TORS_acmsmall.pdf`):
+`\documentclass[acmsmall,screen,review,anonymous]{acmart}`. Both drivers share
+`paper-shared.tex`, which sets `\acmJournal{TORS}`,
 `\citestyle{acmauthoryear}`, `\setcopyright{none}`, `\settopmatter{printacmref=false}`,
 `\acmDOI{}` (suppresses the class's `10.1145/nnnnnnn` stub on the review manuscript).
 `\author{[anonymized for review]}` — the `anonymous` option renders the byline as

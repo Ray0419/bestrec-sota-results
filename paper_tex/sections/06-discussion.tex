@@ -1,0 +1,83 @@
+%% GENERATED from PAPER_SUBMISSION.md (pandoc) -- hand-fixed conversion; see BUILD_NOTES.md
+\section{Discussion}\label{sec:6}
+
+\subsection{What does cross-pipeline transfer reveal? (Appendix A.1 supporting study)}\label{sec:6.1}
+
+The next two subsections discuss the 20-variant Beauty\_and\_PC cross-pipeline scan (Appendix A.1) --- supporting/reproducibility material, not part of the headline spine (the causal FIR filter, the dataset-conditional tail pattern, and the competitive Video\_Games result of \S\ref{sec:5}).
+
+Our 20-variant scan finds that the \textbf{only} consistently-positive intervention is the MLP-adaptor design from \citet{hou2024blair} --- a design originally tuned on their 0-core preprocessing. This is a small positive cross-pipeline transfer signal: published architectural choices do not universally transfer (heavy dropout from the same source does not), but the parametric form of the text\ensuremath{\rightarrow}hidden adaptor does.
+
+We hypothesize that the MLP adaptor's benefit comes from its expressive capacity for the 768-d \ensuremath{\rightarrow} 64-d projection. A single Linear layer can only project; the 2-layer MLP can also denoise the BLaIR features into a recommendation-relevant subspace.
+
+
+\subsection{What does NOT cross over?}\label{sec:6.2}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Heavy dropout (0.5)}: Hurts in our setup. Beauty\_and\_PC users have median 5 interactions; aggressive regularization probably masks too much signal.
+\item
+  \textbf{Removing learned item embeddings}: The 207k-item catalog appears to demand per-item parameter capacity that the encoder + MLP adaptor cannot fully replace.
+\item
+  \textbf{Subsequence augmentation}: Creates a train-test distribution shift in our protocol. We did not try the longer recipes of Hou et al. (UniSRec uses additional contrastive losses) that might counteract this.
+\end{itemize}
+
+
+\subsection{Engineering takeaways}\label{sec:6.3}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Chunked-full-softmax} is essential at the 207k-item scale; sampled softmax with K=1024 negatives undertrains the catalog ranking.
+\item
+  \textbf{Eval item-features caching} is a small but critical optimization for any text-augmented sequential recommender, providing a \textasciitilde10\ensuremath{\times} speedup at d=64 with MLP adaptors.
+\item
+  \textbf{Right-padding + causal-only mask} avoids a silent NaN-propagation bug that we observed inflating eval NDCG to \textasciitilde0.9955 with left-padding + key-padding-mask + pre-norm.
+\end{itemize}
+
+
+\subsection{What we don't claim}\label{sec:6.4}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{A wholly new architecture}: our architectural additions are deliberately small --- a causal FIR adaptation of prior frequency-filter ideas and a soft text-prototype additive term; every other component we use is from prior work.
+\item
+  \textbf{Closing the gap to LIGER on Beauty\_and\_PC}: we do not, and the gap may be partially preprocessing-dependent.
+\item
+  \textbf{Beauty\_and\_PC improvement is statistically certified}: we have only n=2 seeds for the best variant; baseline is n=1.
+\item
+  \textbf{Category scope}: the headline causal-FIR evidence uses Video\_Games and Musical\_Instruments; Beauty\_and\_PC supports the tail-pattern null; Office\_Products is descriptive (VOID under its prereg floor check; the anomaly is explained by \S\ref{sec:5.6}'s local comparator run and the VOID is deliberately retained, Appendix A.0). Other categories untested.
+\item
+  \textbf{Model-input hygiene} (a clarification, not a caveat): the canonical model consumes only item IDs, interaction timestamps, and frozen item-text embeddings; no outputs, scores, or embeddings of any baseline or comparator model enter the pipeline as inputs or features (the superseded earlier-stage fusion experiments that did are quarantined in the non-canonical track).
+\end{itemize}
+
+
+\subsection{Limitations}\label{sec:6.5}
+
+We state the paper's limitations explicitly, for reviewers:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Single published point-estimate comparator.} The Musical\_Instruments comparison (\S\ref{sec:5.2}) is against a single-seed published point estimate (HSTU-BLaIR 0.0406); no paired significance test against the comparator is possible.
+\item
+  \textbf{No executable official END-TO-END HSTU-BLaIR reproduction on local hardware.} The official CUDA/Triton kernels cannot execute on our sm\_120 GPU (\S\ref{sec:7}). The CORE research block, however, is verified numerically: a mirrored-weight parity test against the reference research implementation shows exact agreement (max abs diff 0.0 at every stage; \texttt{HSTU\_PARITY\_REPORT.md}). What we do not claim is end-to-end system parity (training pipeline, data path, kernels, hyperparameters).
+\item
+  \textbf{TAPE is modest.} +0.0009 single-flag (single-seed; +0.0004 in the 4-seed cross-check), sub-additive --- an ablation-level component, not a headline contribution.
+\item
+  \textbf{The tail finding is AR2023-limited and small in absolute terms.} It rests on three AR2023 categories (Musical\_Instruments, Video\_Games, Beauty\_and\_PC); the MI tail effect (+0.000335 NDCG@10, \textasciitilde30 hits/seed base) is a large relative but small absolute effect, and the pattern is not replicated on non-Amazon domains.
+\item
+  \textbf{The negative probes are not all equally powered.} Most Table 2 rows are single-seed exploratory probes; only the multi-seed pre-declared negatives carry confirmatory weight (\S\ref{sec:5.5}).
+\item
+  \textbf{The thinning interventions are synthetic dataset manipulations.} The interaction- and user-mode titrations are controlled interventions on the training data, not causal identification of the real-world process that generated the datasets; all ``driver''/``causal role'' language is scoped to these interventions.
+\item
+  \textbf{Pre-registration deviation (disclosed).} The confirmation runs executed at a documentation-only descendant commit of the pre-registration's introducing commit, so the pre-registered commit-equality rule was not literally satisfied; code identity is demonstrated by empty protocol-file diffs and manifest code hashes, and the deviation is disclosed in \texttt{SOTA\_CONFIRM\_PREREG\_V2\_ERRATA.md} (E3) rather than claimed away (\S\ref{sec:5.2}).
+\item
+  \textbf{Preprocessing differs from the comparator by exactly one interaction per category} (users and items match exactly on every category; the \ensuremath{\pm}1 originates on the comparator's side of the counting and cannot materially affect leave-last-out evaluation, which ranks one target per user for the identical user sets).
+\item
+  \textbf{No baseline model is used as an input feature.} The canonical model consumes item IDs, timestamps, and frozen item-text embeddings only; no outputs of SASRec, HSTU-BLaIR, DropoutNet, or any comparator feed the model at training or inference time.
+\item
+  \textbf{Office\_Products status.} Office gate values pass numerically on both kernels but the pre-registered floor check failed (+44\%); the second-category pass is VOID under the prereg despite the completed matched comparator-baseline explanation (\S\ref{sec:5.6}, Appendix A.0) --- the published Office comparator row appears conservative in this environment --- and no claim counts Office (\S\ref{sec:5.2}).
+\end{itemize}
+

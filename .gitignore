@@ -51,3 +51,4 @@ _release/
 # render + adjudication scratch (regenerated; never release-swept)
 /_paper_render.html
 /tmp/
+/paper_tex/main.pdf

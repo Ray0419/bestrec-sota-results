@@ -1,0 +1,62 @@
+%% PAPER_TORS -- ACM TORS LaTeX derivative of the canonical PAPER_SUBMISSION.md
+%% (generated format conversion; the markdown remains canonical -- see BUILD_NOTES.md).
+%% Build: ./build.sh  (emit tables from artifact JSON -> tectonic compile -> hygiene scan)
+\documentclass[acmsmall,screen,review,anonymous]{acmart}
+
+\acmJournal{TORS}
+\acmYear{2026}
+\setcopyright{none}
+\settopmatter{printacmref=false}
+\acmDOI{}% suppress the class's 10.1145/nnnnnnn.nnnnnnn stub on the review manuscript
+
+\citestyle{acmauthoryear}
+
+\usepackage{tabularx}
+\usepackage{longtable}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+%% pandoc-emitted list macro
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%% long technical tokens + narrow table cells: soften overfull boxes
+\emergencystretch=3em
+\hyphenation{Musical-Instruments Video-Games Beauty-and-Personal-Care}
+
+\begin{document}
+
+\title{Causal FIR Filtering and Dataset-Conditional Text Benefits in an HSTU-Style Pure-PyTorch Sequential Recommender}
+
+\author{[anonymized for review]}
+\affiliation{%
+  \institution{[anonymized for review]}
+  \country{}}
+
+\renewcommand{\shortauthors}{Anonymized}
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\maketitle
+
+\input{sections/01-introduction}
+\input{sections/02-related}
+\input{sections/03-method}
+\input{sections/04-experiments}
+\input{sections/05-results}
+\input{sections/06-discussion}
+\input{sections/07-conclusion}
+\input{sections/08-availability}
+\input{sections/09-acknowledgments}
+
+%% References (position matches the canonical md: after S9, before the appendices).
+%% \nocite{*}: the md reference list includes entries cited in text by name only;
+%% printing the full transcribed list keeps the LaTeX bibliography identical to the md list.
+\nocite{*}
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\input{sections/appendix-a0}
+\input{sections/appendix-a}
+
+\end{document}

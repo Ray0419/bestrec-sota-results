@@ -1,0 +1,56 @@
+%% GENERATED from PAPER_SUBMISSION.md (pandoc) -- hand-fixed conversion; see BUILD_NOTES.md
+\section{Experiments}\label{sec:4}
+
+\subsection{Datasets}\label{sec:4.1}
+
+We evaluate on two AR2023 5-core categories:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Video\_Games}: 94,762 users, 25,612 items, \textasciitilde830k interactions
+\item
+  \textbf{Beauty\_and\_\allowbreak Personal\_Care}: 729,576 users, 207,649 items, 5.17M interactions
+\end{itemize}
+
+The Beauty\_and\_PC catalog is 8\ensuremath{\times} larger than Video\_Games, with median user history of only 5 interactions --- a harder benchmark.
+
+
+\subsection{Baselines}\label{sec:4.2}
+
+\begin{itemize}
+\tightlist
+\item
+  Popularity (trivial floor)
+\item
+  SASRec with sampled-512 softmax (our ``original'' baseline)
+\item
+  SASRec with chunked-full-softmax (improved baseline)
+\item
+  BERT4Rec \citep{sun2019bert4rec}
+\item
+  Published comparators: TIGER \citep{rajput2023tiger}, BLaIR \citep{hou2024blair}, LIGER \citep{yang2024liger}
+\end{itemize}
+
+
+\subsection{Experimental design (headline runs)}\label{sec:4.3}
+
+All headline results (\S\ref{sec:5.1}--\S\ref{sec:5.4}) use the HSTU-style pure-PyTorch encoder (\S\ref{sec:3.2}) under the fixed AR2023 5-core full-catalog LLOO protocol (\S\ref{sec:3.6}). Each configuration is trained for \textbf{40 epochs} at batch size 256 (d\_model 64, 4 layers, 2 heads, dropout 0.5) with the memory-efficient chunked-full-softmax loss (\S\ref{sec:3.5}, item chunk 32,768) and a warmup-cosine learning-rate schedule. On top of the bias stack (TAPE-512 + time bias + text-similarity bias + pos-rab) the winning configuration adds label smoothing (\ensuremath{\varepsilon}=0.2) and the causal FIR filter (K=8). We run \textbf{6 seeds (20260608--20260613)} for the full-model headline and \textbf{5 seeds (20260608--20260612)} for every per-component ablation rung, reporting mean \ensuremath{\pm} sample-std; the reported test number is always selected by best validation NDCG@10 (best-by-val), never by test. Evaluation is full-catalog (n\_eval = 94,762 on Video\_Games), with all train+val items masked (\S\ref{sec:3.6}).
+
+The tail analysis (\S\ref{sec:5.3}--\S\ref{sec:5.4}) rests on two controlled contrasts, each toggling exactly one factor on the same split and seeds and reporting \texttt{by\_popularity} NDCG@10 / HR@10 on leak-free train-frequency terciles (terciles frozen at full density):
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{text vs ID-only:} the full text stack against an ID-only ablation (\texttt{-\/-no-sbert}, no prototypes, no text-similarity bias).
+\item
+  \textbf{density / connectivity titration (\S\ref{sec:5.4}):} training-only sub-sampling that thins either interactions (interaction-mode) or whole users (user-mode) to match a sparser reference category's resource levels, with the evaluation set held fixed.
+\end{itemize}
+
+A separate \textbf{20-variant cross-pipeline transfer scan on Beauty\_and\_PC} --- supporting reproducibility material, not part of the headline spine --- is reported in Appendix A.1.
+
+
+\subsection{Training details and hardware}\label{sec:4.4}
+
+Headline runs use Adam (lr 1e-3, weight decay 1e-5) with gradient clipping (norm 5.0) under the 40-epoch warmup-cosine schedule above. Hardware: a single NVIDIA RTX 5060 Ti (16 GB, Blackwell sm\_120). Video\_Games training takes \textasciitilde10 min/seed; Beauty\_and\_PC \textasciitilde1.5--2 hr/seed with the chunked-full-softmax loss. (The Appendix A.1 Beauty scan used a shorter 15--20-epoch budget and seeds 42/43; those details are local to that supporting study.)
+

@@ -7,7 +7,7 @@ dual-submission policies, so the plan is:
 1. **Primary: ACM TORS** (Transactions on Recommender Systems). Rolling submissions — typeset
    and submit first. Journal length accommodates the full apparatus (pre-registrations,
    artifact gate, negative-result map, appendices).
-2. **Secondary: RecSys 2027, Reproducibility track** (deadline ~spring 2027). If TORS has
+2. **Secondary: RecSys 2027, Reproducibility track** (dates not yet announced; the RecSys 2026 cycle — artifacts required, dual submission prohibited — is precedent only). If TORS has
    rejected (or the maintainer withdraws) before that deadline, submit the
    reproducibility-focused variant there. If TORS review is still pending at the deadline, the
    maintainer decides then; no double submission.

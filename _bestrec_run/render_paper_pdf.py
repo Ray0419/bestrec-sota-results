@@ -13,9 +13,13 @@ import markdown  # noqa: E402
 src = io.open(MD, encoding="utf-8").read()
 body = markdown.markdown(src, extensions=["tables", "fenced_code", "toc"])
 
-# reuse the existing head/style verbatim
+# reuse the existing head/style verbatim (+ idempotent additions)
 old = io.open(HTML, encoding="utf-8").read()
 head = old.split("<body>", 1)[0] + "<body>"
+if "break-inside" not in head:  # audit: no dangling table cells across page breaks
+    head = head.replace("td,th{", "tr{break-inside:avoid}\ntd,th{", 1)
+if "img{" not in head:  # embedded figures scale to text width
+    head = head.replace("@page{", "img{max-width:100%;display:block;margin:10px auto}\n@page{", 1)
 io.open(HTML, "w", encoding="utf-8").write(head + body + "</body></html>")
 print("html written:", len(body), "chars body")
 
@@ -41,6 +45,16 @@ assert os.path.exists(PDF), "PDF not produced: " + (r.stderr or "")[-400:]
 print("pdf bytes:", os.path.getsize(PDF))
 
 from pypdf import PdfReader  # noqa: E402
+
+def _count_images(reader):
+    n = 0
+    for pg in reader.pages:
+        try:
+            xo = pg["/Resources"].get("/XObject", {})
+            n += sum(1 for k in xo if xo[k].get_object().get("/Subtype") == "/Image")
+        except Exception:
+            pass
+    return n
 rd = PdfReader(PDF)
 text = "\n".join((pg.extract_text() or "") for pg in rd.pages)
 pats = [r"\bTODO\b", r"\bTBD\b", r"\bFIXME\b", r"\bXXX\b", r"PLACEHOLDER",
@@ -50,6 +64,10 @@ hits = []
 for p in pats:
     for m in re.finditer(p, text, re.I if p in (r"lorem", r"PLACEHOLDER") else 0):
         hits.append((p, text[max(0, m.start()-60):m.end()+60].replace("\n", " ")))
-print("pages:", len(rd.pages), "| scan:", "CLEAN" if not hits else "%d HITS" % len(hits))
+n_img = _count_images(rd)
+if "figures/fig_" in src and n_img == 0:
+    hits.append(("figures", "manuscript references figures but the PDF embeds 0 images"))
+print("pages:", len(rd.pages), "| images:", n_img,
+      "| scan:", "CLEAN" if not hits else "%d HITS" % len(hits))
 for p, ctx in hits[:20]:
     print("  HIT", p, "::", ctx)

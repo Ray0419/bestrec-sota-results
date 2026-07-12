@@ -1,7 +1,7 @@
 # CANONICAL SUBMISSION — single source of truth (full-method audit F1; updated for round-2 audit F1, 2026-07-11)
 
 **The one canonical paper:** the HSTU/FIR manuscript — working copy `PAPER_DRAFT.md`,
-submission copy `PAPER_SUBMISSION.md` (+ rendered `PAPER_SUBMISSION.pdf`, 36 pp).
+submission copy `PAPER_SUBMISSION.md` (+ rendered `PAPER_SUBMISSION.pdf` — page count varies by revision; machine-scanned at every render). The ACM/TORS LaTeX under `paper_tex/` is **generated, derived output** (`VENUE_PLAN.md`): regenerated from the canonical markdown + `hstu_tables.json`, never edited divergently.
 Everything else is archived (see `archive_noncanonical/README.md`) or marked non-canonical
 (`_bestrec_sota_lab/paper_draft/NONCANONICAL.md`).
 

@@ -1,0 +1,110 @@
+%% GENERATED from PAPER_SUBMISSION.md (pandoc) -- hand-fixed conversion; see BUILD_NOTES.md
+\section{Method}\label{sec:3}
+
+\subsection{Preprocessing pipeline}\label{sec:3.1}
+
+We preprocess Amazon Reviews 2023 \citep{hou2024blair} into 5-core leave-last-out splits. For each category we:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Load raw user-item review interactions from the \texttt{raw\_review\_\textless{}category\textgreater{}} HuggingFace subset.
+\item
+  Apply a 5-core filter iteratively until no user or item has fewer than 5 interactions.
+\item
+  Sort each user's interactions chronologically.
+\item
+  Hold out the last interaction as test, the second-to-last as validation, the rest as training.
+\item
+  Encode item metadata (\texttt{meta\_\textless{}category\textgreater{}.jsonl}) with the chosen frozen text encoder.
+\end{enumerate}
+
+This protocol matches TIGER \citep{rajput2023tiger} and LIGER \citep{yang2024liger} but differs from \citet{hou2024blair}'s reference repo (\texttt{external/\allowbreak AmazonReviews2023/\allowbreak seq\_rec\_results/}) which uses the \texttt{0core\_timestamp\_w\_his\_*} HuggingFace subset. The 5-core protocol produces smaller, denser interaction matrices.
+
+
+\subsection{Model architecture}\label{sec:3.2}
+
+Our base model, \textbf{SASRec-SBERT}, follows \citet{kang2018sasrec} with a frozen-text item-feature augmentation:
+
+For each item $i$:
+
+\begin{itemize}
+\tightlist
+\item
+  A learned per-item embedding $e_i \in \mathbb{R}^d$ (initialized N(0, 0.02), padding-aware).
+\item
+  A frozen text embedding $s_i \in \mathbb{R}^k$ from MiniLM (k=384) or BLaIR (k=768).
+\item
+  A learnable projection $\Phi : \mathbb{R}^k \rightarrow \mathbb{R}^d$.
+\end{itemize}
+
+The item feature passed into the Transformer encoder is $f_i = e_i + \Phi(s_i)$. Sequences are right-padded with a dedicated pad token and processed with a causal-only attention mask (no key-padding mask --- see \S\ref{sec:3.4}).
+
+We use a 2-layer Transformer encoder (d=64, n\_heads=2, FFN dim=4d, GELU activation, pre-norm) followed by a final LayerNorm. The output logits for position $t$ are $h_t \cdot{}$\texttt{all\_items.T} where \texttt{all\_items} is the (n\_items, d) item-features table.
+
+
+\subsection{Choice of projection \ensuremath{\Phi}}\label{sec:3.3}
+
+Following our cross-pipeline transfer study (\S\ref{sec:5.2}), we compare two designs for $\Phi$:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Linear}: $\Phi(s) = W s$ for a learned weight $W \in \mathbb{R}^{d \times k}$.
+\item
+  \textbf{MLP} (adopted from \citet{hou2024blair} SASRecText): $\Phi(s) = W_2 \cdot \mathrm{ReLU}(W_1 \cdot \mathrm{Dropout}(s))$ with hidden dim 300 and Dropout(0.2) between and before the linear layers. \textbf{This design is from \citet{hou2024blair} and we do not claim novelty for it.}
+\end{itemize}
+
+
+\subsection{Right-padding + causal-only mask}\label{sec:3.4}
+
+During exploration we identified a numerical failure mode in the standard SASRec implementation pattern: combining left-padding with both a key-padding mask and a pre-norm Transformer encoder produces NaN logits when an entire row of keys is padded (the softmax denominator is zero). The NaN propagates through residual connections and silently inflates eval NDCG to \textasciitilde0.9955 --- a ``fake-perfect'' result. We adopt right-padding + causal-only mask (no key-padding mask) to avoid this trap.
+
+
+\subsection{Chunked-full-softmax loss}\label{sec:3.5}
+
+For training with cross-entropy over the full catalog (no sampled negatives), the full logits tensor \texttt{(B,\ L,\ n\_items)} is prohibitive at L=50 and n\_items=207k. We implement an incremental-logsumexp loss:
+
+\begin{verbatim}
+def chunked_full_softmax_loss(hidden, targets, model, item_chunk):
+    lse = -inf  # running logsumexp over the item dimension
+    target_scores = None
+    for chunk_start in range(0, n_items, item_chunk):
+        chunk_emb = model.item_features(chunk_ids)
+        chunk_logits = hidden @ chunk_emb.T
+        lse = logsumexp(lse, logsumexp(chunk_logits, axis=-1))
+        if any(target in chunk):
+            target_scores[in_chunk] = chunk_logits[in_chunk, target]
+    return -mean(target_scores - lse)
+\end{verbatim}
+
+This bounds peak memory by \texttt{(batch,\ item\_chunk)} instead of \texttt{(batch,\ n\_items)} and allows proper full-softmax training at the 207k-item Beauty\_and\_\allowbreak Personal\_Care scale on a 16 GB GPU.
+
+
+\subsection{Evaluation protocol}\label{sec:3.6}
+
+We score each user against the \textbf{full catalog} of 207k items (Beauty\_and\_PC) or 25k items (Video\_Games). For the held-out test item, we compute the rank under dot-product scoring (after masking train+val items the user has already seen) and report NDCG@10, HR@10, MRR. We use the standard SASRec test-time convention of including the validation item in the input sequence \citep{kang2018sasrec}.
+
+For our default 16 GB GPU, the optimized evaluation caches the (n\_items, d) item-features table once per \texttt{evaluate()} call rather than recomputing it per batch --- this is critical with the MLP adaptor, which would otherwise recompute the 207k-item \ensuremath{\times} 768 \ensuremath{\rightarrow} 300 \ensuremath{\rightarrow} 64 MLP forward 1,400+ times per evaluation.
+
+
+\subsection{Added components (deliberately small adaptations)}\label{sec:3.7}
+
+We do not claim a wholly new recommender architecture. Our architectural additions are deliberately small: a causal FIR adaptation of prior frequency-filter ideas and a soft text-prototype additive term. Both are deliberately simple, default-OFF, and zero-initialized so that each is a \emph{bit-identical no-op at initialization} and reduces the design to a single controlled lever. Both are defined on top of an \textbf{HSTU-style pure-PyTorch implementation of the HSTU encoder, based on the published architecture} \citep{zhai2024hstu}: we use the pointwise-aggregated interaction $\mathrm{silu}(QK^{\top} + \mathrm{rab})\,V$ with the published per-block normalization, having diagnosed and removed two spurious normalizations (a $1/\sqrt{d}$ score scaling and a $1/(i{+}1)$ row averaging) in our initial reimplementation that collapse HSTU's pointwise attention into weak mean-pooling. We verify the implementation equation-by-equation against the published HSTU formulation (pointwise $\mathrm{silu}(QK^{\top} + \mathrm{rab})\,V$ aggregation, no softmax, no $1/\sqrt{d}$ scaling); an executable end-to-end reproduction of the official kernel stack is impossible on our hardware (\S\ref{sec:7}); the core block, however, passes an exact numerical parity test against the reference research implementation (max abs diff 0.0; \texttt{HSTU\_PARITY\_REPORT.md}).
+
+\textbf{(a) Text-Anchored Prototype Embeddings (TAPE).} TAPE is a simple soft text-prototype additive capacity term inspired by semantic-ID and prototype methods (TIGER, VQ-Rec, ProtoMF); it provides a small but not headline gain (\S\ref{sec:5.1}). Let $t_i \in \mathbb{R}^{d_{\text{text}}}$ be item \emph{i}'s frozen text embedding (MiniLM or BLaIR). We k-means the L2-normalized text embeddings into \emph{K} centroids $\{c_1,\ldots,c_K\}$ once, offline, and form a \textbf{frozen soft assignment} $A_i = \mathrm{softmax}(\langle t_i, c\rangle / \tau) \in \Delta^{K}$ ($\tau$ = 0.05). We add a \textbf{learnable prototype table} $P \in \mathbb{R}^{K\times d}$ (zero-initialized) to each item's feature:
+\begin{equation*}
+  e_i = \mathrm{id}_i + \Phi(t_i) + A_i P,
+\end{equation*}
+where $\mathrm{id}_i$ is the learned per-item embedding and $\Phi$ the frozen-text projection. Items in the same semantic neighborhood share the learnable capacity $A_i P$ --- the shared-structure benefit of TIGER-style semantic IDs \citep{rajput2023tiger} without discrete codes or an autoregressive decoder. Because $A$ is frozen and $P$ is zero-init, TAPE is an exact no-op at initialization and recovers the baseline. TAPE is adjacent to TIGER (discrete RQ-VAE IDs), VQ-Rec (PQ codes), and ProtoMF (prototype matrix factorization for explainability); it differs only in realization --- a frozen text-derived soft assignment gating a learnable prototype table inside a sequential recommender --- and we present it as a small adaptation of these prior ideas tested as a secondary ablation, not as a headline contribution. Default K = 512.
+
+\textbf{(b) Strictly causal FIR temporal filter.} BSARec \citep[Thm 3.1]{shin2024bsarec} analyzes vanilla Transformer self-attention as low-pass in the sequential-recommendation setting. We hypothesize that the HSTU-style pointwise aggregation used here can benefit from a similar local high-frequency inductive bias; the empirical ablation (\S\ref{sec:5.1}--\S\ref{sec:5.2}) tests this hypothesis. We insert, immediately before the HSTU stack, one \textbf{per-channel learnable FIR filter} as a zero-init gated residual on the sequence embeddings $x \in \mathbb{R}^{B\times L\times d}$:
+\begin{equation*}
+  y = \mathrm{DepthwiseConv1d}_K(\mathrm{pad\_left}(x, K{-}1)), \qquad
+  x \leftarrow x + g \odot (y - x),
+\end{equation*}
+implemented as a depthwise \texttt{Conv1d(d,\ d,\ kernel\_size=K,\ groups=d,\ bias=False)} with a \textbf{left-only causal pad of $K{-}1$}, a scalar gate $g$ zero-initialized, and the kernel initialized to a causal delta (all-pass). The left-only pad makes output position \emph{t} a function of input positions \ensuremath{\le} \emph{t} only --- so under our all-position next-item loss there is \textbf{no future-label leakage}. FMLP-Rec \citep{zhou2022fmlprec} and BSARec use bidirectional sequence filters in their original formulations; under our all-position next-item loss, directly inserting such filters before each position's prediction would mix future positions, so we use a left-causal FIR realization. The novelty boundary is narrow and we state it plainly. \emph{Not new}: filtering sequential representations, the frequency-domain motivation, and the attention-oversmoothing framing (FMLP-Rec; BSARec). \emph{New}: the leak-free, left-causal FIR realization inserted before an HSTU-style stack under the all-position next-item objective, evaluated under full-catalog LLOO. As an FIR filter the module has a learnable per-channel frequency response --- the only sense in which we use the word ``spectral'' --- and it supplies an explicit local temporal bias that the baseline does not learn as reliably in our low-capacity setting (we do not claim the attention stack cannot represent this behavior). The gain is robust across kernel lengths K \ensuremath{\in} \{4, 8, 16, 50\} (\S\ref{sec:5}); we use K = 8 on Video\_Games and K = 16 on Musical\_Instruments.
+
+Both components are leak-free by construction and add negligible parameters (TAPE: K\ensuremath{\times}d \ensuremath{\approx} 33k; filter: K\ensuremath{\times}d \ensuremath{\approx} 0.5--3k). Two further regularizers we use are \emph{not} claimed novel: \textbf{label smoothing} \citep{szegedy2016rethinking} on the full-softmax CE target, and the standard time / text-similarity / relative-position attention biases (TiSASRec; HSTU; \citealp{shaw2018relative}), each cited at the point of use.
+

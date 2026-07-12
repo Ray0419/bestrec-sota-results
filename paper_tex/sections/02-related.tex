@@ -1,0 +1,56 @@
+%% GENERATED from PAPER_SUBMISSION.md (pandoc) -- hand-fixed conversion; see BUILD_NOTES.md
+\section{Related Work and Attribution}\label{sec:2}
+
+We summarize prior work that our experiments directly build on. A complete attribution table for every component used in our experiments appears at the end of this section.
+
+\textbf{SASRec} \citep{kang2018sasrec} is the base Transformer sequential recommender we re-implement. SASRec models a user's history with a causal-masked Transformer encoder and scores the next item via dot product with a learned item-embedding table.
+
+\textbf{BERT4Rec} \citep{sun2019bert4rec} adapts BERT-style bidirectional masked-item modeling for sequential recommendation. We implement BERT4Rec as one of our 20 ablation baselines on Beauty\_and\_PC.
+
+\textbf{SBERT / MiniLM} \citep{reimers2019sbert,wang2020minilm} provide pre-trained sentence embeddings. We use \texttt{sentence-transformers/all-MiniLM-L6-v2} (384-d) as the default frozen item-text encoder.
+
+\textbf{UniSRec} \citep{hou2022unisrec} is the first widely-cited text-based sequential recommender that uses a pre-trained language model to embed item text and learns a parametric adaptor to project these embeddings into the sequential model's hidden space. The SASRec-with-frozen-text-encoder pattern we use is a strict simplification of UniSRec.
+
+\textbf{BLaIR} \citep{hou2024blair} is a RoBERTa-base model continually pretrained on 10\% of (item-metadata, review) pairs from Amazon Reviews 2023. We use \texttt{hyp1231/blair-roberta-base} (768-d) as an alternative frozen item-text encoder. Hou et al. also publish a reference implementation, \textbf{SASRecText}, that pairs SASRec with BLaIR via a 2-layer MLP adaptor \texttt{{[}768,\ 300,\ 64{]}} with Dropout(0.2) + ReLU; we adopt this adaptor design verbatim (see Appendix A.1).
+
+\textbf{TIGER} \citep{rajput2023tiger} reformulates sequential recommendation as autoregressive generation over discrete semantic IDs produced by a residual-quantized variational autoencoder over item-text embeddings. TIGER reports strong results on Amazon Reviews 5-core benchmarks.
+
+\textbf{LIGER} \citep{yang2024liger} extends TIGER with a dense-retrieval refinement step and reports further gains.
+
+\textbf{Amazon Reviews 2023} \citep{hou2024blair} is the source dataset. We use the \textbf{5-core leave-last-out} protocol (described in \S\ref{sec:3}) matching the convention used by TIGER, LIGER, and similar works, which differs from the \texttt{0core\_timestamp\_w\_his\_*} HuggingFace subset used by Hou et al.'s \texttt{seq\_rec\_results/} reference implementation.
+
+
+\subsection{Attribution table}\label{sec:2.1}
+
+\input{tables/table_attribution}
+
+
+\subsection{Our additions to the above prior art}\label{sec:2.2}
+
+We do not claim a wholly new recommender architecture. Our architectural additions are deliberately small: a causal FIR adaptation of prior frequency-filter ideas and a soft text-prototype additive term. Our contributions are:
+
+\begin{itemize}
+\tightlist
+\item
+  An \textbf{open-source 5-core preprocessing pipeline} (\texttt{preprocess\_5core\_standard.py}) that matches the protocol used by TIGER and LIGER (not the 0-core protocol used by Hou et al.'s repo).
+\item
+  A \textbf{memory-efficient chunked-full-softmax loss} that enables proper full-catalog cross-entropy training at 207k-item catalogs on a single 16 GB GPU.
+\item
+  An \textbf{eval optimization} (caching \texttt{all\_item\_features()} once per \texttt{evaluate()} call) that gives \textasciitilde10\ensuremath{\times} speedup at d=64 with the MLP adaptor.
+\item
+  A \textbf{cross-pipeline transfer study}: empirically testing which published architectural choices help on the 5-core protocol.
+\item
+  \textbf{Negative-result documentation} for 18 of 20 tested variants on Beauty\_and\_\allowbreak Personal\_Care 5-core.
+\item
+  The \textbf{competitive Video\_Games 5-core result} on the HSTU-style pure-PyTorch stack (6-seed NDCG@10 = \textbf{0.0673 \ensuremath{\pm} 0.0003}, +17.5\% over published SASRec 0.0573), shown to be architectural (ID-only \ensuremath{\approx}0.0656), with no SOTA claim. \emph{(The earlier v1-era SASRec-SBERT number 0.05509 \ensuremath{\pm} 0.00035 has been retired from Table 1a: its raw per-seed artifacts predate the artifact manifest and cannot be recomputed, so it survives only as a RETIRED provenance row in the manifest, not as a paper claim.)}
+\item
+  The two added components --- the \textbf{strictly causal FIR temporal filter} (cross-category-confirmed) and \textbf{TAPE} --- plus the \textbf{dataset-conditional long-tail pattern} (\S\ref{sec:5.3}) and its \textbf{interaction-thinning titration} double result (\S\ref{sec:5.4}). The novelty boundary for each is stated explicitly in Table 0 (\S\ref{sec:2.3}).
+\end{itemize}
+
+
+\subsection{Novelty boundary}\label{sec:2.3}
+
+Table 0 states, component by component, what is prior art, what we reuse, what we change, the evidence behind each claim, and an honest novelty grade. Nothing in this paper is graded above ``moderate''; the two architectural additions are graded ``incremental'' by design.
+
+\input{tables/table0_novelty}
+

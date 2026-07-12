@@ -6,56 +6,210 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **Confirmed reviewer-facing prose defect: remove workflow/tooling language
-   from the SILLM4Rec exclusion sentence.** The new AR2023-adjacent paragraph
-   says SILLM4Rec is not cited because "its full text was not accessible to our
-   tooling." That is an internal audit-process leak, not journal prose. Replace
-   with a neutral protocol-auditability statement or remove the SILLM4Rec
-   sentence entirely until the paper can be inspected.
-2. **Plausible artifact-role metadata risk: CCS/keywords are closed for the TORS
-   LaTeX artifact, not for the canonical markdown PDF.** `paper-shared.tex` and
-   `paper_tex/PAPER_TORS.pdf` now contain ACM CCS concepts; `PAPER_SUBMISSION.pdf`
-   extraction still lacks `CCS Concepts`/`Keywords`. This is acceptable only if
-   TORS receives the LaTeX PDF and the markdown PDF is clearly non-submission
-   reader output.
-3. **Plausible reviewer-readability risk: Table 2 remains dense.** The old
-   broken continuation-cell defect is gone and the rendered page is legible, but
-   the negative-result map is still crowded. A top-journal reviewer may prefer a
+1. **Confirmed reviewer-facing contradiction: Section 6.1 says the MLP adaptor
+   is the only consistently-positive cross-pipeline intervention, but Appendix
+   A.1 says the clean adaptor-only ablation is negative.** This is visible in
+   both PDFs (`PAPER_SUBMISSION.pdf` page 30 / appendix page 39;
+   `paper_tex/PAPER_TORS.pdf` pages 27 and 35). Rewrite Section 6.1 to say the
+   Beauty scan's small signal comes from BLaIR/rich-text content, not the MLP
+   adaptor alone, or remove the transfer interpretation entirely.
+2. **Plausible recent-literature scope risk: SILLM4Rec still lacks direct
+   protocol inspection.** The tooling-language leak is fixed, and the current
+   sentence is reviewer-safe. However, ACM metadata says SILLM4Rec experiments
+   use three 5-core Amazon Reviews 2023 subdatasets, so before freeze the paper
+   should either inspect the full paper or keep the exclusion narrowly framed as
+   "not established as apples-to-apples full-catalog LLOO."
+3. **Plausible reviewer-readability risk: Table 2 remains dense.** The broken
+   continuation-cell defect is gone and the rendered page is legible, but the
+   negative-result map is still crowded. A top-journal reviewer may prefer a
    compact main-table summary plus appendix detail.
-4. **Plausible first-page layout polish risk.** The rendered review artifact is
-   readable, but page 1 shows both the acmart topmatter line
-   "2026. Manuscript submitted to ACM" and the footer "Manuscript submitted to
-   ACM". This may be normal review-mode acmart output; verify against the exact
-   TORS submission workflow before freeze.
-5. **Confirmed recent-literature omission mostly fixed.** `Augment or Not?` and
-   `DiffuReason` are now cited as AR2023-adjacent but non-interchangeable
-   protocols; the external check supports that framing. Keep SILLM4Rec excluded
-   unless direct protocol inspection becomes possible.
-6. **Confirmed prior TORS header blocker fixed.** `paper-shared.tex` now uses
-   an optional short title, and rendered pages 23 and 29 show the running title
-   separated cleanly from the page number.
-7. **Confirmed prior comparator-language blocker fixed.** The unpinned local
-   comparator section now uses "regenerates" language; remaining "reproduce"
-   occurrences are negated pinned-reproduction caveats or internal
-   thinning/titration language, not an official-comparator overclaim.
-8. **Confirmed prior provenance blocker fixed.** The dirty
-   `_bestrec_run/emit_latex_tables.py` manifest problem is closed: the working
-   tree is clean, the strict gate fails on dirty manifested files, and
-   `update_release_manifest.py --verify` passes. `RELEASE_MANIFEST.json`
-   intentionally records a source boundary commit, with later commits limited
-   to manifest/response bookkeeping unless manifested content changes.
-9. **Confirmed prior documentation/literature blockers fixed.** `BUILD_NOTES.md`
-   now describes both `manuscript,review,anonymous` and `acmsmall` targets
-   consistently, and the novelty paragraph cites WPGRec alongside FEARec.
-10. **Confirmed core artifact checks remain green.** The strict rebuild passes:
+4. **Plausible first-page / review-mode polish risk.** The TORS review artifact
+   is readable and the running-head collision is fixed, but the PDF still shows
+   acmart review-mode line numbering and "Manuscript submitted to ACM" footer
+   text. This may be standard; verify against the exact TORS submission workflow
+   before freeze.
+5. **Statistical-rhetoric risk: keep all causal / driver language scoped to the
+   synthetic thinning interventions.** The manuscript mostly does this, but the
+   abstract is dense and uses "driver", "partial causal role", and uncorrected
+   p-values. Do not shorten caveats for space; if anything, move some mechanism
+   language out of the abstract.
+6. **Confirmed metadata-role issue fixed for current artifact roles.** The
+   reader PDF now explicitly says it is a reader edition and points to
+   `paper_tex/PAPER_TORS.pdf` for ACM CCS concepts/keywords; the TORS source has
+   `\keywords{...}` and CCS metadata.
+7. **Confirmed core artifact checks remain green.** The strict rebuild passes:
    HSTU core-block parity exact, 164 cells recomputed, 0 mismatches, 0
    untraceable cells, all 12 claim families sourced, release manifest verified,
    MI dual gate PASS, Office descriptive/VOID OK.
-11. **Persistent scientific boundary: no broad SOTA, no paired superiority.** The
+8. **Persistent scientific boundary: no broad SOTA, no paired superiority.** The
    current paper mostly respects this boundary. Any future abstract, conclusion,
    cover letter, response file, or release note must keep Video_Games as
    competitive but not SOTA; MI as a per-category point-estimate comparison; and
    Office as VOID / descriptive only.
+
+## Audit Run - 2026-07-12 18:37 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `395d472f` (`Respond to
+  PAPER_REVIEW_AUDIT run 17:35: tooling-leak removed, artifact roles explicit`)
+- Automation memory at start: no prior memory file found at
+  `$CODEX_HOME/automations/hourly-strict-paper-audit/memory.md`.
+- Working tree before writing this audit: clean.
+- Files modified after the supplied cutoff (`2026-07-12T07:32:54.215Z`):
+  `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`,
+  `_paper_render.html`, `paper_tex/sections/05-results.tex`,
+  `paper_tex/tables/*`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, `RELEASE_MANIFEST.json`,
+  `_bestrec_run/hstu_tables.json`, and `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`.
+- Canonical artifacts inspected: `PAPER_SUBMISSION.md`, `PAPER_SUBMISSION.pdf`,
+  `paper_tex/PAPER_TORS.pdf`, `paper_tex/sections/05-results.tex`,
+  `paper_tex/sections/06-discussion.tex`, `paper_tex/sections/appendix-a.tex`,
+  `paper_tex/tables/table0_novelty.tex`, `paper_tex/tables/table1.tex`,
+  `paper_tex/tables/tableV2conf.tex`, `paper_tex/tables/table56_theirs.tex`,
+  `paper_tex/references.bib`, `paper_tex/hygiene_scan_output.txt`,
+  `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`, and this audit file.
+
+### Verdict
+
+**Strict artifact/provenance gate remains green, but the manuscript has a
+confirmed self-contradiction that a top-journal reviewer can cite directly.**
+The contradiction is not numerical: it is the interpretation of the Beauty
+cross-pipeline scan. Section 6.1 says the MLP adaptor is the only consistently
+positive intervention and hypothesizes why it helps; Appendix A.1 later says the
+clean MiniLM-only MLP-adaptor ablation drops performance and that the observed
+gain comes from changing the text encoder and content, not the projection layer.
+
+This should be fixed before any submission freeze. It is a high-salience
+internal-consistency defect because both statements are in the rendered PDFs.
+
+### Commands And Evidence Checked
+
+- `git status --short --branch`
+  - Clean on `codex/bestrec-sota-results` before writing this audit.
+- Modified-since-cutoff scan from `2026-07-12T07:32:54.215Z`
+  - Confirms the latest substantive changes are the manuscript/PDF/table rebuild
+    and response files after the previous audit response.
+- `uv --project _bestrec_run run python _bestrec_run/update_release_manifest.py
+  --verify`
+  - PASS: 113 files verified.
+- `uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py
+  --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: 164 cells recomputed; 0 `MISMATCH`; 0 `UNTRACEABLE`; all 12 declared
+    claim families sourced.
+  - PASS: release manifest verification, MI V2 dual gate, Office
+    descriptive/VOID adjudication.
+- `pdfinfo` via bundled Poppler direct executable
+  - `PAPER_SUBMISSION.pdf`: 41 pages, letter, generated 2026-07-12 18:27.
+  - `paper_tex/PAPER_TORS.pdf`: 36 pages, letter, generated 2026-07-12 18:27.
+- PDF text extraction with `pypdf` under `uv`
+  - `PAPER_SUBMISSION.pdf`: Section 6.1 contradiction on page 30; appendix
+    clean-ablation correction on page 39.
+  - `paper_tex/PAPER_TORS.pdf`: same contradiction on page 27 and appendix
+    correction on page 35.
+- Poppler page renders inspected visually
+  - `tmp/pdfs/audit_20260712_1830/paper_submission_p-30.png`: Section 6.1
+    visibly says "only consistently-positive intervention is the MLP-adaptor."
+  - `tmp/pdfs/audit_20260712_1830/paper_tors_27_single.png`: same text visible
+    in the TORS PDF.
+  - `tmp/pdfs/audit_20260712_1830/paper_tors_p-35.png`: appendix visibly says
+    "The MLP adaptor by itself does NOT help on this protocol."
+- Targeted `rg` sweeps
+  - `not accessible to our tooling` is gone.
+  - SILLM4Rec is now excluded using neutral protocol-auditability wording.
+  - `\keywords{...}` is present in `paper_tex/paper-shared.tex`.
+
+### Confirmed Problems
+
+1. **Section 6.1 contradicts Appendix A.1 on the MLP adaptor.**
+   - Section 6.1: "the only consistently-positive intervention is the
+     MLP-adaptor design" and "the 2-layer MLP can also denoise the BLaIR
+     features."
+   - Appendix A.1: the clean MiniLM + MLP adaptor row is 0.01889, worse than
+     the MiniLM + Linear baseline around 0.0190; the text says the MLP adaptor
+     by itself does not help and the observed +1.3-2.3% comes from MiniLM ->
+     BLaIR plus titles -> rich text, not projection-layer form.
+   - Why this matters: the current paper asks reviewers to trust an unusually
+     complex artifact/provenance story. A direct internal contradiction in the
+     discussion weakens that trust even though the numeric artifact gate passes.
+
+### Plausible Risks Requiring Author Verification
+
+- **The Beauty cross-pipeline scan may not deserve body discussion anymore.**
+  The paper already frames it as appendix/supporting material, and the headline
+  spine is causal FIR + tail pattern. Consider deleting Sections 6.1-6.2 or
+  replacing them with a shorter "superseded supporting scan" paragraph.
+- **SILLM4Rec may still need a freeze-time full-paper inspection.** Search/ACM
+  metadata confirms the paper exists and says it uses three 5-core AR2023
+  subdatasets, but accessible metadata did not establish the exact
+  full-catalog-LLOO protocol needed for apples-to-apples comparison.
+- **The abstract remains very dense.** Its caveats are mostly correct, but a
+  reviewer may still see too many results, p-values, and mechanism claims before
+  the method is introduced. This is a readability/reviewer-fatigue risk, not a
+  contradiction.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR's arXiv HTML confirms the paper uses AR2023 5-core subsets and
+  reports the comparator constants the manuscript relies on: Video Games
+  HSTU-BLaIR NDCG@10 0.0760, Office Products 0.0271, and Musical Instruments
+  0.0406; its dataset statistics match the paper's quoted users/items for the
+  HSTU-BLaIR-family protocol. Source:
+  https://arxiv.org/html/2504.10545v3
+- GrIT (arXiv:2602.19728) reports AR2023 Video Games with 94,762 users, 25,612
+  items, 814,586 interactions, 5-core filtering, full-item-set evaluation, and
+  NDCG@10 0.0588 for GrIT. The manuscript's "numerically higher but no
+  comparative claim" framing is appropriate. Source:
+  https://arxiv.org/html/2602.19728v1
+- Latte (arXiv:2605.06331) reports Amazon Reviews 2023 Instruments/Scientific/
+  Games and includes Latte NDCG@10 values 0.0331 (Instruments) and 0.0515
+  (Games) in the RQ-KMeans row, supporting the manuscript's values. Source:
+  https://arxiv.org/pdf/2605.06331
+- SILLM4Rec metadata confirms a real MMAsia 2025 paper with DOI
+  `10.1145/3743093.3771011`; search snippets from ACM state experiments use
+  three 5-core Amazon Reviews 2023 subdatasets, but the accessible metadata
+  checked here did not establish full-catalog LLOO comparability. Source:
+  https://dl.acm.org/doi/10.1145/3743093.3771011
+
+### Concrete Fixes To Make Next
+
+1. Rewrite `PAPER_SUBMISSION.md` Section 6.1 from "MLP adaptor transfer" to
+   "BLaIR/rich-text content transfer, with MLP alone negative in the clean
+   ablation." Remove the denoising hypothesis unless it is clearly scoped to
+   BLaIR-rich-text + MLP as an inseparable bundle.
+2. Apply the same correction to `PAPER_DRAFT.md` and the LaTeX twin
+   `paper_tex/sections/06-discussion.tex`.
+3. Rerender both PDFs and confirm extraction no longer contains the phrase
+   "only consistently-positive intervention is the MLP-adaptor."
+4. Optional: collapse Sections 6.1-6.2 into one short appendix-pointer paragraph
+   to keep the body focused on the headline results.
+5. Before freeze, obtain/inspect the SILLM4Rec full text if available; otherwise
+   keep the current neutral exclusion sentence.
+
+### Open Questions
+
+- Does the author want to preserve the Beauty scan as interpretive discussion,
+  or retain it only as an appendix/provenance record?
+- Is SILLM4Rec full text available through institutional access? If yes, it
+  should be protocol-inspected, not left as metadata-only.
+
+### Running Checklist
+
+- [x] Locate canonical manuscript source and PDFs.
+- [x] Read prior audit and response trail.
+- [x] Check files changed after the supplied last-run cutoff.
+- [x] Verify release manifest.
+- [x] Run strict rebuild/provenance gate.
+- [x] Inspect latest PDF page counts and rendered pages.
+- [x] Fact-check key comparator/recent-literature claims against primary or
+      reliable sources.
+- [x] Identify a new confirmed reviewer-facing contradiction.
+- [ ] Rewrite Section 6.1 / LaTeX discussion to match Appendix A.1.
+- [ ] Rerender PDFs after the prose fix.
+- [ ] Protocol-inspect SILLM4Rec full text if accessible before submission
+      freeze.
 
 ## Audit Run - 2026-07-12 17:35 Australia/Sydney
 

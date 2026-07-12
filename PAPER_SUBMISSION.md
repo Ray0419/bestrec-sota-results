@@ -462,9 +462,9 @@ Two single-run results (their configurations as shipped, 101 epochs; our RTX 506
 
 The next two subsections discuss the 20-variant Beauty_and_PC cross-pipeline scan (Appendix A.1) — supporting/reproducibility material, not part of the headline spine (the causal FIR filter, the dataset-conditional tail pattern, and the competitive Video_Games result of §5).
 
-Our 20-variant scan finds that the **only** consistently-positive intervention is the MLP-adaptor design from Hou et al. (2024) — a design originally tuned on their 0-core preprocessing. This is a small positive cross-pipeline transfer signal: published architectural choices do not universally transfer (heavy dropout from the same source does not), but the parametric form of the text→hidden adaptor does.
+Our 20-variant scan finds one small positive cross-pipeline transfer signal, and the clean ablation (Appendix A.1) attributes it to **text content, not the projection layer**: the winning variant swaps MiniLM-titles for **BLaIR + rich item text** (with the MLP adaptor of Hou et al., 2024, present as part of that bundle), while the isolating ablation — MiniLM + MLP adaptor alone — is *negative* (0.01889 vs the ≈0.0190 Linear baseline). Published architectural choices therefore do not universally transfer (heavy dropout from the same source does not, and the adaptor's parametric form alone does not either); what transfers is the recommendation-tuned text encoder plus richer item text, observed on this protocol only as a bundle with its adaptor.
 
-We hypothesize that the MLP adaptor's benefit comes from its expressive capacity for the 768-d → 64-d projection. A single Linear layer can only project; the 2-layer MLP can also denoise the BLaIR features into a recommendation-relevant subspace.
+We accordingly make no claim about the adaptor's expressive form in isolation: an earlier draft's hypothesis that the 2-layer MLP "denoises" the text features is **not supported** by the clean ablation (Appendix A.1), and any such account would have to attach to the inseparable BLaIR-rich-text + MLP bundle, not to the projection layer itself.
 
 ### 6.2 What does NOT cross over?
 

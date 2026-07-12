@@ -9,6 +9,25 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-12 14:34 (responded 2026-07-12, same day)
+
+Verdict received: review format substantially fixed; the new top blocker is the manifest hashing
+an uncommitted generator edit. All three confirmed problems fixed, with the blocker class closed
+structurally.
+
+| # | Finding | Resolution |
+|---|---|---|
+| 1 | Manifest hashed a git-dirty `emit_latex_tables.py` (clean clone would not verify) | **Healed and made un-leakable.** The dirty `llowbreak` line was the typesetting agent's intended overfull fix that the orchestrator's phase-B `git add` list missed — it is now committed, and the manifest regenerated at the clean boundary. Structural fix so this class cannot recur: `--verify` (which the strict wrapper runs) now **fails on any git-dirty manifested file**, and `--regen` prints a commit-together checklist of dirty manifested files. The audit's own scenario — verify passing only because the dirty file matches — is now impossible: dirty ⇒ gate failure. |
+| 2 | `BUILD_NOTES.md` stale document-class paragraph | Rewritten to describe both targets: `manuscript,review,anonymous` review default → `PAPER_TORS.pdf`; `acmsmall` production preview (untracked); shared `paper-shared.tex` carries the journal metadata. |
+| 3 | Uncited "subsequent time-frequency architectures" | Phrase replaced with a **cited representative**: WPGRec (Liu, Ji, Yan, 2026 — "Wavelet Packet Guided Graph Enhanced Sequential Recommendation", arXiv:2604.21305, metadata fetched from the arXiv listing) in §2.3 of both papers and the LaTeX twin; reference entries added under the concurrent-preprint fence. |
+| R-boundary | Should the manifest `git_commit` advance past response-only commits? | Boundary already explicit in `manifest_scope` (manifest describes the recorded commit; its own commit is the child); response files are outside the deposit boundary per the historical-log banner. With the new dirty-file gate, any *content* commit that touches manifested files now forces a regen, so the boundary tracks content changes mechanically and ignores response-only commits by construction. |
+| R-CCS / R-table2 / R-lit | CCS concepts/keywords, Table 2 split, literature freeze | Unchanged positions, restated: CCS concepts + keywords are drafted at submission time (TORS requires them in the workflow, not in the audit build); Table 2 split deferred to freeze or reviewer request with the completeness rationale; the final literature sweep runs at the maintainer's TORS go signal — this round's WPGRec addition came from the audit's own sweep, which is the process working. |
+
+**Verification:** both PDFs rebuilt (md: 40 pp / 3 images / scan CLEAN; TORS manuscript: 35 pp /
+scan PASS + acmsmall preview) → manifest regenerated at the clean boundary → strict chain
+**PASS** (164 cells 0/0, 12/12 families; **manifest verify OK incl. the new dirty-file gate**)
+→ pushed.
+
 ## Response — to Audit Run 2026-07-12 12:34 (responded 2026-07-12, same day)
 
 Verdict received: material progress, prior top blockers closed, gate passes; remaining risks are

@@ -9,6 +9,22 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-12 17:35 (responded 2026-07-12, same day)
+
+Verdict received: **no numerical, provenance, or claim-boundary rejection defect** — the two
+confirmed items are writing/metadata polish. Both fixed.
+
+| # | Finding | Resolution |
+|---|---|---|
+| 1 | "not accessible to our tooling" leaks audit process into journal prose | Replaced with the audit's suggested neutral wording in both papers **and** the LaTeX twin: *"A further candidate, SILLM4Rec (MMAsia 2025), is excluded pending direct protocol inspection; accessible metadata did not establish an apples-to-apples AR2023 5-core full-catalog LLOO setting."* Verified absent from both rebuilt PDFs' extractions. |
+| 2 | CCS/keywords closure is TORS-artifact-specific; the markdown PDF's role must be explicit | Made explicit **on the artifact itself**: `PAPER_SUBMISSION.pdf` now carries a front-matter line declaring it the *reader edition rendered from the canonical markdown*, pointing to `paper_tex/PAPER_TORS.pdf` as the ACM review artifact that carries venue metadata. **Clarification of the prior response's wording**: the round-11 "verified in extraction" statement referred to the TORS artifact only (content-level check: CCS block + keyword terms) — the markdown PDF never carried and is not intended to carry ACM metadata; this response supersedes any broader reading, per the historical-log banner. |
+| R-SILLM4Rec | Obtain the full PDF before freeze? | Noted for the freeze checklist: if institutional/author access materializes, SILLM4Rec gets protocol-inspected and either enters clause (iv) with a non-comparability note or stays excluded; the paper's current sentence is accurate either way. |
+| R-table2 / R-p1 / R-lit | Standing freeze-time items | Unchanged: Table 2 dense-by-design pending freeze/reviewer preference; first-page acmart review-mode text verified against TORS workflow at freeze; final sweep at the maintainer's go signal. |
+
+**Verification:** both PDFs rebuilt (md 41 pp / 3 images / CLEAN, reader-edition note renders;
+TORS 36 pp scan PASS, leak absent) → manifest regenerated at the clean boundary → strict chain
+**PASS** (164 cells 0/0, 12/12 families; 113 files verified) → pushed.
+
 ## Response — to Audit Run 2026-07-12 16:32 (responded 2026-07-12, same day)
 
 Verdict received: **"No new hard rejection defect found in this run"** — both prior confirmed

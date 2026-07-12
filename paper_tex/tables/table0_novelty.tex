@@ -11,7 +11,7 @@ Component & Prior art & What we reuse & What we change & Evidence & Novelty stre
 \endhead
 \bottomrule
 \endfoot
-HSTU base & \citet{zhai2024hstu} & pointwise \texttt{silu(QK\ensuremath{^{\top}}\ +\ rab)\ V} aggregation, per-block normalization, relative attention biases & pure-PyTorch implementation; diagnosis/removal of two spurious normalizations in our initial reimplementation; equation-level verification only, no numerical-parity claim (\S\ref{sec:3.7}, \S\ref{sec:6.5}) & Table 1 ablations; \S\ref{sec:3.7} & none (implementation work) \\
+HSTU base & \citet{zhai2024hstu} & pointwise \texttt{silu(QK\ensuremath{^{\top}}\ +\ rab)\ V} aggregation, per-block normalization, relative attention biases & pure-PyTorch implementation; diagnosis/removal of two spurious normalizations in our initial reimplementation; equation-level verification only, core-block parity demonstrated bitwise against the reference research implementation (\S\ref{sec:3.2}); no pinned end-to-end system reproduction (\S\ref{sec:5.6}, \S\ref{sec:6.5}) & Table 1 ablations; \S\ref{sec:3.7} & none (implementation work) \\
 BLaIR / SBERT text embeddings & \citet{hou2024blair}; \citet{reimers2019sbert}; \citet{wang2020minilm} & frozen encoders; Hou et al.'s MLP adaptor verbatim & nothing (frozen, off-the-shelf) & Table 1a encoder comparison & none \\
 Label smoothing & \citet{szegedy2016rethinking} & standard uniform label smoothing & applied to full-catalog chunked-softmax CE in this setting & +0.0013 single-flag; +0.0012 stacked (Table 1) & none \\
 Time bias & TiSASRec; HSTU \citep{zhai2024hstu} & bucketed time-interval attention bias & integration only & +0.0027 single-flag, largest classical component (Table 1) & none \\

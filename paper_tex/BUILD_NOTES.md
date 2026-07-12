@@ -1,10 +1,12 @@
 # BUILD_NOTES — ACM TORS LaTeX derivative (`paper_tex/`)
 
-Generated 2026-07-12. **The markdown remains canonical** (`CANONICAL_SUBMISSION.md` governs;
+Generated 2026-07-12; **synced to the round-7 canonical md** (commit `f141cf7`: Figs. 1–3
+embedded, new §10 Ethics and Data Governance, Table-0 parity-row rewording, GrIT + FEARec
+citations). **The markdown remains canonical** (`CANONICAL_SUBMISSION.md` governs;
 `PAPER_SUBMISSION.md` is the source of record). This directory is a *derived* typeset format per
 `VENUE_PLAN.md`: format conversion only — no content was cut, added, or reworded (two
 presentation-only additions are disclosed under "Conversion decisions" below). Compiled output:
-**`paper_tex/PAPER_TORS.pdf` (34 pages, acmart/TORS review format)**.
+**`paper_tex/PAPER_TORS.pdf` (36 pages, acmart/TORS review format, Figs. 1–3 embedded)**.
 
 ## Toolchain
 
@@ -44,11 +46,12 @@ prints line numbers, as TORS expects for submission.
 | §7 Conclusion | `sections/07-conclusion.tex` |
 | §8 Code and Data Availability | `sections/08-availability.tex` |
 | §9 Acknowledgments | `sections/09-acknowledgments.tex` |
+| §10 Ethics and Data Governance (round-7) | `sections/10-ethics.tex` |
 | References | `references.bib` (+ `\nocite{*}` in `main.tex`; see below) |
 | Appendix A.0 (Office_Products) | `sections/appendix-a0.tex` |
 | Appendix A (A.1–A.3, Beauty) | `sections/appendix-a.tex` |
 
-Section numbering matches the md exactly (LaTeX auto-numbers reproduce 1–9, 5.4.1/5.4.2, etc.);
+Section numbering matches the md exactly (LaTeX auto-numbers reproduce 1–10, 5.4.1/5.4.2, etc.);
 `§X.Y` prose references became `\S\ref{sec:X.Y}` with labels on every heading, so printed
 references resolve to the same numbers as the md. Appendix headings are unnumbered `\section*`
 with the md's literal titles ("Appendix A.0 — …", "Appendix A — …", "A.1 …"), preserving the md's
@@ -131,20 +134,34 @@ plus nothing else.
    and `ℝ^{...}` in §3.7; both are set as `\mathbb{R}` for glyph consistency with the md's own
    §3.7 usage. The §3.5 chunked-softmax pseudocode stays a verbatim block.
 5. **Citations**: `(Author, year)` → `\citep`, inline names → `\citet`/name+`\citealp`,
-   with `acmauthoryear` style (renders `[Author year]`). The four concurrent 2026 preprints are
-   cited with their arXiv IDs as postnotes (`\citep[arXiv:...]{...}`). `references.bib`
-   transcribes the md reference list **exactly** (authors/initials/venues as printed; nothing
-   invented — hence BibTeX warnings about missing volume/pages, see below). The md's per-entry
-   parenthetical annotations are `note` fields; the md's *concurrent-preprint fence paragraph*
-   is carried verbatim-in-substance in the note field of each of the four 2026 entries
-   (allowed packaging: "footnote or note field"). `\nocite{*}` prints the full list so the
-   bibliography contains exactly the md's entries, including the ones the md cites by name
-   only (Devlin, Efron–Morris, James–Stein, VQ-Rec, ProtoMF). ACM-Reference-Format sorts
-   alphabetically, so the four preprints interleave with the main list (the md prints them as
-   a separate trailing group); their notes preserve the fence wording.
-6. **Figures**: the md references Figs. 1–3 by repository path in parentheses
-   (`figures/fig_*`) without embedding images; the LaTeX does the same (textual references,
-   no `\includegraphics`), preserving the canonical presentation.
+   with `acmauthoryear` style (renders `[Author year]`). The five concurrent 2026 preprints
+   (incl. GrIT, round-7) are cited with their arXiv IDs as postnotes (`\citep[arXiv:...]{...}`).
+   `references.bib` transcribes the md reference list **exactly** — 32 entries after round-7
+   (FEARec in the main list; GrIT in the concurrent block) — authors/initials/venues as
+   printed; nothing invented (hence BibTeX warnings about missing volume/pages, see below).
+   The md's per-entry parenthetical annotations are `note` fields; the md's
+   *concurrent-preprint fence paragraph* is carried verbatim-in-substance in the note field of
+   each of the five 2026 entries (allowed packaging: "footnote or note field"). `\nocite{*}`
+   prints the full list so the bibliography contains exactly the md's entries, including the
+   ones the md cites by name only (Devlin, Efron–Morris, James–Stein, VQ-Rec, ProtoMF).
+   ACM-Reference-Format sorts alphabetically, so the preprints interleave with the main list
+   (the md prints them as a separate trailing group); their notes preserve the fence wording.
+6. **Figures (round-7: embedded).** The md now embeds Figs. 1–3 as image lines with caption
+   text (plus a duplicate italic caption line for the md/Chrome pipeline). The LaTeX renders
+   them as `figure` floats — `\includegraphics[width=\linewidth]` of the **canonical PDF
+   vector figures** via `\graphicspath{{../figures/}}` (`fig_tail_law_mechanism.pdf` after the
+   §5.3 cross-dataset-significance block = Fig. 1; `fig_r1r2_plane.pdf` after the §5.4.2
+   MI-matched-connectivity paragraph = Fig. 2; `fig_bbp_irreducibility.pdf` after the
+   "Refined verdict" paragraph = Fig. 3) — with `\caption` = the md caption text (the md's
+   duplicated italic caption line collapses into the single LaTeX caption; LaTeX supplies the
+   "Fig. N." prefix, so the md's "Fig. N:" prefix is not repeated inside the caption body).
+   Float numbering reproduces the md's Fig. 1/2/3 names, and every in-text "Fig. N" mention
+   (incl. Table 2's GD1 cell, wired inside the table generator) is a `cleveref` `\cref` with
+   `\crefname{figure}{Fig.}{Figs.}`, so the printed text is exactly the md's "Fig. N" and all
+   references resolve. Note for verification tooling: the figures are **vector PDFs**, so they
+   embed as PDF *Form XObjects* (3 of them, ~30–36 KB each), not raster Image XObjects —
+   `pypdf`'s `page.images` reports 0 by design; count `/XObject` entries with
+   `/Subtype /Form` instead.
 7. **§-references**: `§X.Y` → `\S\ref{sec:X.Y}`; the md's `§7` references (pointing at the
    Conclusion) resolve to section 7 as in the md. `§A.1` is set as literal `\S{}A.1` (appendix
    sections are unnumbered by design, see above).
@@ -156,11 +173,21 @@ plus nothing else.
    blocks replaced by `\input{tables/...}`, unicode/citation/§-ref post-passes), then
    hand-reviewed file by file; the table includes are the part that regenerates mechanically
    on every build, per the venue plan's standing requirement.
+10. **Round-7 md deltas mirrored** (canonical commit `f141cf7`): (a) Figs. 1–3 embedded (see
+   caveat 6); (b) new §10 Ethics and Data Governance (`sections/10-ethics.tex`, verbatim
+   conversion, input between §9 and the References); (c) Table 0 HSTU-base row now reads
+   "core-block parity demonstrated bitwise against the reference research implementation
+   (§3.2); no pinned end-to-end system reproduction (§5.6, §6.5)" — picked up automatically by
+   the table generator from the md; (d) §2.3 novelty paragraph gained the FEARec
+   frequency-line-broadening sentence (`\citep{du2023fearec}`); (e) §5.1 concurrent-preprint
+   paragraph gained the GrIT sentence (`\citep[arXiv:2602.19728]{shyam2026grit}`, VG 0.0588
+   point-estimate observation with comparability caveats) and "We cite them" → "We cite these
+   works"; (f) two new reference entries (FEARec, GrIT).
 
 ## Compile status
 
 - `tectonic main.tex`: **0 errors, 0 overfull boxes, 0 undefined references/citations**;
-  34 pages (the 38-page Chrome render of the md differs by format, as expected).
+  36 pages (the Chrome render of the md differs by format, as expected).
 - Remaining warnings (accepted):
   - BibTeX "no number/volume/pages/publisher/address" warnings — the md reference list does
     not carry these fields and nothing may be invented (transcription-only rule).
@@ -182,7 +209,7 @@ hard-fail (the paper contains explicit SOTA *non-claims* by design). Full output
 `paper_tex/hygiene_scan_output.txt`.
 
 ```
-hygiene scan: PAPER_TORS.pdf | pages: 34
+hygiene scan: PAPER_TORS.pdf | pages: 36
 placeholder+forbidden failures: 0
 review list (SOTA mentions + negated claim-wordings): 14
   REVIEW negated-ok: paired\s+superiority :: ... this is a per-category point-estimate comparison, not a paired superiority or general SOTA claim ...
@@ -210,17 +237,17 @@ official/pinned-reproduction language, Office never a passed category).
 
 ```
 paper_tex/
-├── main.tex                  # acmart TORS driver (review, anonymous)
-├── references.bib            # transcribed md reference list (30 entries incl. 4 concurrent preprints)
+├── main.tex                  # acmart TORS driver (review, anonymous; graphicspath ../figures; cleveref Fig. refs)
+├── references.bib            # transcribed md reference list (32 entries incl. 5 concurrent preprints)
 ├── acmart.cls                # vendored v2.03 (TL2023-final) — TORS-capable, tectonic-compatible
 ├── ACM-Reference-Format.bst  # vendored ACM bibliography style
-├── sections/*.tex            # 12 converted section files (see file map)
+├── sections/*.tex            # 13 converted section files (see file map; incl. round-7 10-ethics.tex)
 ├── tables/*.tex              # 16 GENERATED includes + TABLES_PROVENANCE.json (never edit by hand)
 ├── build.sh / build.ps1      # regenerate tables → compile → package → hygiene scan
 ├── scan_pdf.py               # hygiene scanner (exit 1 on any failure)
 ├── hygiene_scan_output.txt   # last scan output (PASS)
 ├── main.pdf                  # tectonic output (identical content to PAPER_TORS.pdf)
-└── PAPER_TORS.pdf            # deliverable (34 pp)
+└── PAPER_TORS.pdf            # deliverable (36 pp, Figs. 1–3 embedded as vector Form XObjects)
 ```
 
 Generator script (allowed new file outside `paper_tex/`): `_bestrec_run/emit_latex_tables.py`.

@@ -146,8 +146,8 @@
    "out": "table1e.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    336,
-    343
+    340,
+    347
    ],
    "family": "hstu_tables.json:table1e",
    "crosscheck": {
@@ -164,8 +164,8 @@
    "out": "table541.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    353,
-    357
+    357,
+    361
    ],
    "family": "hstu_tables.json:table541",
    "crosscheck": {
@@ -182,8 +182,8 @@
    "out": "table542.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    374,
-    379
+    378,
+    383
    ],
    "family": "hstu_tables.json:table542",
    "crosscheck": {
@@ -200,8 +200,8 @@
    "out": "table2.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    401,
-    422
+    413,
+    434
    ],
    "family": "hstu_tables.json:table2",
    "crosscheck": {
@@ -218,8 +218,8 @@
    "out": "table56_theirs.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    432,
-    438
+    444,
+    450
    ],
    "family": "hstu_results_manifest.json:theirs_on_ours(+published constants)",
    "crosscheck": {
@@ -236,8 +236,8 @@
    "out": "tableA1.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    571,
-    594
+    602,
+    625
    ],
    "family": "md-only (pandoc-converted; no JSON family)",
    "crosscheck": {

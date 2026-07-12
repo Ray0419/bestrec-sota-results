@@ -50,7 +50,7 @@ We do not claim a wholly new recommender architecture. Our architectural additio
 
 \subsection{Novelty boundary}\label{sec:2.3}
 
-Table 0 states, component by component, what is prior art, what we reuse, what we change, the evidence behind each claim, and an honest novelty grade. Nothing in this paper is graded above ``moderate''; the two architectural additions are graded ``incremental'' by design.
+Table 0 states, component by component, what is prior art, what we reuse, what we change, the evidence behind each claim, and an honest novelty grade. Nothing in this paper is graded above ``moderate''; the two architectural additions are graded ``incremental'' by design. The frequency/time-frequency line in sequential recommendation is broader than the two works we adapt --- e.g. frequency-aware hybrid-attention models such as FEARec \citep{du2023fearec} and subsequent time-frequency architectures --- and our boundary is correspondingly narrow: what we add is only the left-causal, depthwise-FIR form of the idea inside an HSTU-style stack trained with an all-position next-item objective under full-catalog AR2023 5-core LLOO evaluation.
 
 \input{tables/table0_novelty}
 

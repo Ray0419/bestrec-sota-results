@@ -40,6 +40,8 @@ SUBMISSION_DOCS = [
     "_bestrec_run/test_hstu_parity.py", "_bestrec_run/test_pinned_env_parity.py",
     "_bestrec_run/fbgemm_shims.py", "_bestrec_run/rebuild_hstu_submission.py",
     "_bestrec_run/update_release_manifest.py",
+    # generated TORS LaTeX (derived output, VENUE_PLAN.md) + its table generator
+    "paper_tex/PAPER_TORS.pdf", "_bestrec_run/emit_latex_tables.py",
 ]
 # reference-implementation local runs (git-tracked source artifacts)
 REFERENCE_RUN_DIRS = ["_bestrec_run/theirs_runs/music_hstu_blair",

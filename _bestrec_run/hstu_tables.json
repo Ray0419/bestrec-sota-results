@@ -20,7 +20,7 @@
   "t1b.port.best_ndcg"
  ],
  "paper_check_summary": {
-  "exact": 145,
+  "exact": 147,
   "within_rounding": 19,
   "MISMATCH": 0,
   "UNTRACEABLE": 0,

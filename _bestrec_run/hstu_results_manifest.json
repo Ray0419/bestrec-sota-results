@@ -21,7 +21,8 @@
   "tableV2conf",
   "table2",
   "office_confirmation",
-  "theirs_on_ours"
+  "theirs_on_ours",
+  "fir_breadth"
  ],
  "paths_relative_to": "repository root",
  "cells": [
@@ -13114,6 +13115,242 @@
    "recomputed_value": null,
    "paper_check": [],
    "paper_check_class": "external"
+  },
+  {
+   "cell_id": "firb.is.paired",
+   "table_id": "fir_breadth",
+   "row_label": "pre-registered FIR breadth: Industrial_and_Scientific paired (filter - nofilter)",
+   "metric": "paired 5-seed delta NDCG@10 (best-by-val full catalog)",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260713.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260714.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260715.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260716.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260717.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260713.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260714.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260715.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260716.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260717.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    20260713,
+    20260714,
+    20260715,
+    20260716,
+    20260717
+   ],
+   "recompute": {
+    "rule": "paired_delta",
+    "params": {
+     "a": [
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260713.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260714.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260715.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260716.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260717.json"
+     ],
+     "b": [
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260713.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260714.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260715.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260716.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260717.json"
+     ]
+    }
+   },
+   "recompute_rule": "mean/sd over seeds of per-seed paired (a-b) best_test[NDCG@10]",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.0024,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.0018,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.003,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "pos",
+     "value": 5,
+     "mode": "count"
+    }
+   ],
+   "notes": "Pre-registered breadth campaign (PREREG_FIR_BREADTH.md, committed before any run; frozen V2 config transplanted with zero per-category tuning; fresh seeds 20260713-17). Internal paired contrast, no comparator. Mechanical adjudication in FIR_BREADTH_RESULTS.md; n_eval full-catalog verified there per run.",
+   "recomputed": {
+    "mean": 0.0024015865758802712,
+    "sd": 0.0004613256858539702,
+    "n": 5,
+    "pos": 5,
+    "t": 11.640606630386324,
+    "ci_lo": 0.001828775080308739,
+    "ci_hi": 0.0029743980714518033
+   },
+   "recomputed_value": 0.0024015865758802712,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.0024,
+     "mode": "round",
+     "recomputed": 0.0024015865758802712,
+     "result": "exact",
+     "rounded": 0.0024
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.0018,
+     "mode": "round",
+     "recomputed": 0.001828775080308739,
+     "result": "exact",
+     "rounded": 0.0018
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.003,
+     "mode": "round",
+     "recomputed": 0.0029743980714518033,
+     "result": "exact",
+     "rounded": 0.003
+    },
+    {
+     "name": "pos",
+     "paper": 5,
+     "mode": "count",
+     "recomputed": 5,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "firb.cd.paired",
+   "table_id": "fir_breadth",
+   "row_label": "pre-registered FIR breadth: CDs_and_Vinyl paired (filter - nofilter)",
+   "metric": "paired 5-seed delta NDCG@10 (best-by-val full catalog)",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260713.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260714.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260715.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260716.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260717.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260713.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260714.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260715.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260716.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260717.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    20260713,
+    20260714,
+    20260715,
+    20260716,
+    20260717
+   ],
+   "recompute": {
+    "rule": "paired_delta",
+    "params": {
+     "a": [
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260713.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260714.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260715.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260716.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260717.json"
+     ],
+     "b": [
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260713.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260714.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260715.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260716.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260717.json"
+     ]
+    }
+   },
+   "recompute_rule": "mean/sd over seeds of per-seed paired (a-b) best_test[NDCG@10]",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.0057,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.0049,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.0064,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "pos",
+     "value": 5,
+     "mode": "count"
+    }
+   ],
+   "notes": "Pre-registered breadth campaign (PREREG_FIR_BREADTH.md, committed before any run; frozen V2 config transplanted with zero per-category tuning; fresh seeds 20260713-17). Internal paired contrast, no comparator. Mechanical adjudication in FIR_BREADTH_RESULTS.md; n_eval full-catalog verified there per run.",
+   "recomputed": {
+    "mean": 0.005663298288636808,
+    "sd": 0.0005887929382977914,
+    "n": 5,
+    "pos": 5,
+    "t": 21.507594820787997,
+    "ci_lo": 0.004932215294755833,
+    "ci_hi": 0.006394381282517783
+   },
+   "recomputed_value": 0.005663298288636808,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.0057,
+     "mode": "round",
+     "recomputed": 0.005663298288636808,
+     "result": "exact",
+     "rounded": 0.0057
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.0049,
+     "mode": "round",
+     "recomputed": 0.004932215294755833,
+     "result": "exact",
+     "rounded": 0.0049
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.0064,
+     "mode": "round",
+     "recomputed": 0.006394381282517783,
+     "result": "exact",
+     "rounded": 0.0064
+    },
+    {
+     "name": "pos",
+     "paper": 5,
+     "mode": "count",
+     "recomputed": 5,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
   }
  ]
 }

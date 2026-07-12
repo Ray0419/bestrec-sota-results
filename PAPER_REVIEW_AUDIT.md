@@ -6,57 +6,942 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **Confirmed reviewer-facing dataset/protocol-section inconsistency: Section
-   4.1 still says the paper evaluates on two AR2023 categories, but the current
-   abstract/results use Musical_Instruments as a headline cross-category
-   confirmation and Office_Products as descriptive/VOID material.** This is now
-   the top actionable rejection risk because it is a methods-readability defect,
-   not a numerical failure. Rewrite Section 4.1 to list all categories by role:
-   Video_Games primary, Musical_Instruments confirmatory cross-category,
-   Beauty_and_Personal_Care supporting/appendix tail-null and transfer material,
-   Office_Products descriptive/VOID only.
-2. **Confirmed dataset-count inconsistency in Section 4.1: it mixes total
-   interactions and train-only interactions, and the Video_Games total is
-   rounded/stated inconsistently.** Local row counts after headers are
-   Video_Games total 814,586 (train 625,062 + valid 94,762 + test 94,762),
-   Musical_Instruments total 511,836 (train 396,958 + valid/test 57,439 each),
-   Beauty_and_Personal_Care total 6,624,441 (train 5,165,289 + valid/test
-   729,576 each), and Office_Products total 1,800,878 (train 1,354,262 +
-   valid/test 223,308 each). Fix by labeling total-vs-train counts explicitly
-   and making Video_Games 814.6K/814,586 everywhere rather than "~830k" and
-   "814,585" in different locations.
-3. **Confirmed previous methods-architecture contradiction is fixed in source
-   and PDFs.** Section 3.2 now separates the HSTU-style headline encoder from
-   the SASRec-SBERT baseline and states the headline configuration as 4 layers,
-   2 heads, d=64, dropout 0.5. PDF extraction no longer finds "Our base model"
-   or "2-layer Transformer encoder"; it does find the "Headline encoder"
-   replacement.
-4. **Confirmed WPGRec metadata issue is fixed in source and rendered
-   references.** `paper_tex/references.bib` now records WPGRec as accepted to
-   SIGIR 2026; both rendered PDFs include non-stale WPGRec reference text, and
-   the related-work prose cites it only as later frequency/time-frequency prior
-   art, not as an apples-to-apples comparator.
-5. **Plausible recent-literature scope risk: SILLM4Rec still lacks direct
-   protocol inspection.** ACM/GitHub metadata show an accepted MMAsia 2025 paper
-   using AR2023 5-core subdatasets and generated candidate-ranking tasks, so it
-   is adjacent enough that a reviewer may ask about it. The current exclusion is
-   defensible only if kept narrow: "not established as apples-to-apples
-   full-catalog LLOO" rather than "irrelevant."
-6. **Plausible wording risk: "unreviewed concurrent work" remains acceptable
-   for SID-MLP/Latte/GrIT as of this audit, but it is a moving target.** arXiv
-   pages for SID-MLP and Latte show no venue comments, and GrIT search/open
-   results still look like arXiv-preprint metadata. Recheck before submission or
-   replace with "concurrent arXiv works" to avoid a brittle peer-review-status
-   claim.
-7. **Core artifact checks remain green.** The strict rebuild passes: HSTU
-   core-block parity exact, 164 cells recomputed, 0 mismatches, 0 untraceable
-   cells, all 12 claim families sourced, release manifest verified, MI dual
-   gate PASS, and Office descriptive/VOID OK. `paper_tex/PAPER_TORS.pdf` hygiene
-   scan also passes with 0 placeholder/forbidden-claim failures.
-8. **Persistent scientific boundary: no broad SOTA, no paired superiority.** Any
+1. **Confirmed manuscript-scope staleness around FIR-BREADTH.** Both
+   pre-registered breadth categories now mechanically adjudicate as
+   `CONFIRMED`: Industrial_and_Scientific paired mean `+0.00240`, 95% t-CI
+   `[+0.00183, +0.00297]`, 5/5 positive; CDs_and_Vinyl paired mean `+0.00566`,
+   95% t-CI `[+0.00493, +0.00639]`, 5/5 positive. The manuscript and TeX table
+   still call both rows "outcome pending," say no result from them is claimed,
+   and Section 6.4 still says other categories are untested. This is now the
+   clearest reviewer-facing contradiction.
+2. **Confirmed FIR-BREADTH governance/provenance defect remains active.**
+   `FIR_BREADTH_RESULTS.md` now exists with the mechanical adjudication, but it
+   is untracked; the adjudicator, driver/prep scripts, raw-data directories,
+   and all FIR-BREADTH result JSONs are also untracked. All completed CDs result
+   manifests inspected record `git_dirty_tracked=true` at commit `f50c7fdd`.
+   A methodology-first paper cannot cite this campaign until the scripts,
+   data/provenance boundary, results, adjudication file, manifest scope, and PDF
+   are committed and gate-verified together.
+3. **Confirmed Office V3 governance change is uncommitted.** `PREREG_OFFICE_V3.md`
+   now has an appended Erratum E1 exempting `PAPER_REVIEW_AUDIT.md` and
+   `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` from that campaign's clean-tree
+   requirement. No Office V3 run artifacts or active processes were found, so
+   the erratum appears pre-run, but it must be committed before any V3 run and
+   disclosed as a protocol clarification.
+4. **Confirmed novelty-boundary gap for causal/local convolutional SR.** The
+   manuscript cites FMLP-Rec/BSARec/FEARec/WPGRec for frequency filtering, but
+   local search finds no citation to Caser, NextItNet, or the 2022 "Self-
+   Attentive Sequential Recommendation with Cheap Causal Convolutions" paper.
+   Because the abstract/introduction call the left-causal FIR realization
+   "new" mainly against bidirectional frequency filters, a reviewer can object
+   that causal convolutional sequence modeling in recommendation is already
+   prior art. This is a wording/citation problem, not a leak problem.
+5. **Current printed-paper artifact evidence is green.** A fresh strict rebuild
+   on this run passes: HSTU core-block parity exact; 164 cells recomputed; 0
+   `MISMATCH`; 0 `UNTRACEABLE`; all 12 declared claim families sourced; release
+   manifest verification OK for 113 files; MI gate PASS; Office remains
+   descriptive/VOID. `paper_tex/hygiene_scan_output.txt` also records 0
+   placeholder/forbidden-claim failures for the 39-page TORS PDF.
+6. **Confirmed causal-filter implementation matches the leak-free claim.** The
+   code applies depthwise Conv1d after left-only padding (`F.pad(xt, (K - 1,
+   0))`) on right-padded sequences, so output position t depends only on input
+   positions <= t. This supports the paper's core "strictly causal FIR" claim;
+   the current rejection risk is novelty boundary and governance, not leakage.
+7. **Confirmed prior Section 4.1 dataset/protocol blockers are repaired.** The
+   paper now uses a role-based dataset table covering Video_Games,
+   Musical_Instruments, Office_Products, Beauty_and_Personal_Care,
+   Industrial_and_Scientific, and CDs_and_Vinyl. Counts are labeled as total
+   5-core interactions, with the LLOO rule stated inline; local row counts and
+   external AR2023 statistics match the table values checked this run.
+8. **Plausible residual count-readability risk: Section 5.1 still quotes the
+   HSTU-BLaIR Video_Games interaction count as 814,585 while Section 4.1's local
+   table reports 814,586.** This is no longer a contradiction because Section
+   4.1 says interactions match the comparator pipeline within +/-1, but a
+   reviewer may still pause. Label the 814,585 number explicitly as the
+   comparator paper's reported count, not the local row count.
+9. **Methodology-first novelty/fit risk increased after the reframe.** The
+   evaluation-trust problem is real and well cited, but a top-journal reviewer
+   may view the "trustworthy-evaluation apparatus" as good artifact practice
+   rather than a standalone scientific contribution unless the paper states its
+   novelty narrowly: an auditable case study/per-paper discipline, not a new
+   general framework. Add a short comparison to standardized benchmarking and
+   artifact-evaluation norms, and keep empirical contributions visible.
+10. **Plausible recent-literature scope risk: SILLM4Rec still lacks direct
+   protocol inspection.** ACM metadata now says SILLM4Rec uses three 5-core
+   Amazon Reviews 2023 datasets and reports NDCG@10. The current exclusion may
+   still be defensible if the full text does not establish full-catalog LLOO,
+   but the paper should either inspect the PDF or soften the sentence to avoid
+   implying it is too remote to matter.
+11. **Persistent scientific boundary: no broad SOTA, no paired superiority.** Any
    future abstract, conclusion, cover letter, response file, or release note
    must keep Video_Games as competitive but not SOTA; MI as a per-category
-   point-estimate comparison; and Office as VOID/descriptive only.
+   point-estimate comparison; Office as VOID/descriptive only; and any
+   FIR-BREADTH wording as an internal paired filter-vs-no-filter result, never a
+   comparator or SOTA claim.
+
+## Audit Run - 2026-07-13 06:46 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `f50c7fdd` (`Respond to
+  PAPER_REVIEW_AUDIT run 23:39: 4.1 role table + count definitions`).
+- Canonical sources/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_SUBMISSION.pdf`, `paper_tex/sections/*`, `paper_tex/tables/*`,
+  `paper_tex/references.bib`, `PREREG_FIR_BREADTH.md`,
+  `FIR_BREADTH_RESULTS.md`, FIR-BREADTH JSON/log artifacts, and the cumulative
+  audit.
+- Working tree state after this audit's commands: `PAPER_REVIEW_AUDIT.md`
+  modified by this audit; `PREREG_OFFICE_V3.md` independently gained an
+  uncommitted Erratum E1 at 06:46; `FIR_BREADTH_RESULTS.md`, FIR-BREADTH
+  adjudicator/scripts/results, and raw-data directories are untracked. No
+  manuscript/TeX source file was edited by this audit.
+
+### Verdict
+
+**The live workspace has outgrown the submitted manuscript.** The printed paper
+still passes its strict rebuild and hygiene checks, but the now-complete
+FIR-BREADTH campaign makes the current manuscript stale: it says two categories
+are pending and unclaimed while the workspace contains a mechanical two-category
+confirmation. A top-journal reviewer would treat this as a governance and
+scope-boundary failure unless the authors either freeze the submitted package as
+pre-breadth, or integrate the campaign cleanly and regenerate every artifact.
+
+The second live rejection risk is unchanged: the causal FIR novelty boundary
+still cites frequency filters but not older causal/local convolutional
+sequential-recommendation work. The claim can survive only as a narrow
+left-causal, zero-init depthwise residual FIR inside this HSTU-style evaluation
+apparatus, not as a broad first use of causal/local convolution.
+
+### Commands And Evidence Checked
+
+- `_bestrec_run\.venv\Scripts\python.exe _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - Industrial_and_Scientific: `CONFIRMED`.
+  - CDs_and_Vinyl: `CONFIRMED`.
+  - Industrial paired deltas: `+0.00243`, `+0.00196`, `+0.00191`, `+0.00287`,
+    `+0.00284`; mean `+0.00240`, 95% t-CI `[+0.00183, +0.00297]`, positive
+    seeds `5/5`.
+  - CDs paired deltas: `+0.00539`, `+0.00638`, `+0.00617`, `+0.00498`,
+    `+0.00540`; mean `+0.00566`, 95% t-CI `[+0.00493, +0.00639]`, positive
+    seeds `5/5`.
+- `FIR_BREADTH_RESULTS.md`
+  - Contains the same mechanical adjudication block and frozen claim wording
+    for both categories, but the file is currently untracked.
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: 164 cells recomputed, 0 mismatches, 0 untraceable; all 12 declared
+    claim families sourced.
+  - PASS: release manifest verification OK for 113 files.
+  - PASS: MI dual gate; Office remains descriptive/VOID under prereg floor
+    check.
+- `rg "FIR_BREADTH|FIR-BREADTH|Industrial_and_Scientific|CDs_and_Vinyl|outcome pending|pending-campaign"`
+  - `PAPER_SUBMISSION.md`, `paper_tex/sections/04-experiments.tex`, and
+    `paper_tex/tables/table_datasets41.tex` still label the FIR-BREADTH rows as
+    pending and say no result from them is claimed.
+  - `PAPER_SUBMISSION.md` / `paper_tex/sections/06-discussion.tex` still say
+    other categories are untested.
+- Structured JSON parse of completed CDs_and_Vinyl files:
+  - Filter NDCG@10 by seed: `0.066173`, `0.066262`, `0.066081`, `0.065990`,
+    `0.065889`.
+  - No-filter NDCG@10 by seed: `0.060778`, `0.059880`, `0.059913`,
+    `0.061013`, `0.060494`.
+  - Every inspected result manifest records `git_dirty_tracked=true` at
+    `f50c7fdd6eb821a7c4012ea5abcd53662d691424`.
+- `paper_tex/hygiene_scan_output.txt`
+  - PASS: `PAPER_TORS.pdf`, 39 pages, 0 placeholder/forbidden-claim failures.
+- `pdfinfo`
+  - Not usable in this shell (`The system cannot find the path specified.`), so
+    no fresh external page-count extraction was recorded this run.
+
+### Confirmed Problems
+
+1. **The paper is now stale relative to its own workspace evidence.** Both
+   FIR-BREADTH categories are confirmed under the frozen rule, but the
+   manuscript still presents the campaign as pending and outside the paper's
+   result set.
+2. **The campaign cannot yet be cited as top-journal-grade evidence.** The
+   adjudication file and underlying scripts/results/raw-data directories are
+   untracked, the result manifests record dirty tracked state, and the release
+   manifest/artifact gate has not been extended to this campaign.
+3. **Office V3's clean-tree rule changed in an uncommitted erratum.** The new
+   erratum exempts audit/response logs from the dirty-tree condition. No Office
+   V3 run artifacts or live processes were found, so this appears pre-run, but
+   it is only defensible if committed before the first V3 run and kept narrow.
+4. **The frozen claim wording is narrow and must stay narrow.** The admissible
+   wording is only "paired 5-seed improvement on <category>, transplanted with
+   zero per-category tuning, positive with a 95% CI excluding zero." It is not a
+   comparator claim, not an SOTA claim, and not evidence for all categories.
+5. **The causal FIR related-work boundary remains under-cited.** The manuscript
+   still needs Caser/NextItNet/cheap causal-convolution SR or equivalent local
+   convolutional SR citations before "new left-causal FIR realization" is safe.
+6. **SILLM4Rec exclusion is now a paper-readiness risk, not just a TODO.** ACM
+   metadata says the paper uses three 5-core Amazon Reviews 2023 datasets and
+   reports NDCG@10, so a reviewer may reasonably expect either inspection or a
+   more cautious exclusion sentence.
+
+### Confirmed Fixes Since Earlier Runs
+
+- The prior "first to report numbers" / "only published work using AR2023"
+  problem no longer appears in the searched manuscript/TeX sources.
+- The 2026 AR2023-adjacent paragraph now covers SID-MLP, Latte, GrIT, ReSID,
+  ChronoSID, Augment-or-Not, and DiffuReason with explicit comparability
+  caveats and no comparative claim against concurrent arXiv work.
+- The strict submission rebuild remains green despite the in-progress
+  FIR-BREADTH materials being outside the printed-paper artifact graph.
+
+### Plausible Risks Requiring Author Verification
+
+- The authors need a scope decision: submit a pre-FIR-BREADTH snapshot, or make
+  FIR-BREADTH a real result section/appendix with committed provenance and a
+  regenerated paper/PDF. Leaving the current mixed state is the worst option.
+- If FIR-BREADTH is integrated, the main paper must decide whether this is a
+  short breadth note in limitations/results or a full result table. The latter
+  requires new generated tables and manifest coverage.
+- `FIR_BREADTH_RESULTS.md` appeared during/after the final run despite this
+  audit using `--no-append`; verify whether the training driver or adjudicator
+  created it intentionally before treating it as the official record.
+- `PREREG_OFFICE_V3.md` Erratum E1 should be committed before any V3 run starts;
+  otherwise the exemption could look like post-hoc relaxation after seeing a
+  clean-tree failure.
+- SILLM4Rec may still be non-comparable, but "accessible metadata did not
+  establish..." is now only partially satisfying because the ACM abstract
+  metadata is close enough to the paper's protocol family to invite reviewer
+  scrutiny.
+
+### External Fact-Check / Novelty Notes
+
+- GrIT is an arXiv 2026 sequential-recommendation preprint; the manuscript's
+  "concurrent arXiv-only" caveat is supported by the arXiv listing as checked in
+  this run. Source: https://arxiv.org/abs/2602.19728
+- DiffuReason's arXiv listing identifies it as a 2026 sequential-recommendation
+  paper; the search/PDF snippet reports the manuscript-cited different
+  Video-and-Games universe (`67,658` users, `25,535` items, `654,867`
+  interactions), supporting the non-comparability note. Source:
+  https://arxiv.org/abs/2602.09744
+- Augment-or-Not's arXiv listing confirms it is a 2025 LLM-recommender
+  benchmark; the paper's non-interchangeable-protocol citation is directionally
+  appropriate. Source: https://arxiv.org/abs/2505.23053
+- SILLM4Rec ACM metadata says its experiments use three 5-core Amazon Reviews
+  2023 datasets and report NDCG@10, so it should not be dismissed without full
+  protocol inspection. Source: https://dl.acm.org/doi/10.1145/3743093.3771011
+- The earlier causal-convolution novelty warning still applies: Caser,
+  NextItNet, and cheap causal-convolution SR are relevant prior art for any
+  broad local/causal convolution phrasing. Sources:
+  https://arxiv.org/abs/1809.07426, https://arxiv.org/abs/1808.05163,
+  https://arxiv.org/abs/2211.01297
+
+### Concrete Fixes To Make Next
+
+1. Decide the FIR-BREADTH scope boundary before editing prose:
+   - **Pre-breadth submission:** remove or archive untracked FIR-BREADTH
+     artifacts from the submitted/deposit boundary and keep the paper's pending
+     language accurate for the submitted snapshot.
+   - **Integrated submission:** commit/adjudicate/manifest the entire campaign,
+     regenerate tables/PDFs, and update all pending/untested language.
+2. If integrated, add one narrowly worded FIR-BREADTH result paragraph/table:
+   Industrial `+0.00240` CI `[+0.00183,+0.00297]`; CDs `+0.00566` CI
+   `[+0.00493,+0.00639]`; both 5/5 positive; explicitly "internal paired
+   filter-vs-no-filter, zero per-category tuning, no comparator/SOTA claim."
+3. Commit or deliberately exclude `FIR_BREADTH_RESULTS.md`,
+   `_bestrec_run/adjudicate_fir_breadth.py`, run scripts, prep/encoding
+   scripts, raw-data provenance, JSONs, user sidecars if intended, and any
+   manifest updates as a single coherent evidence boundary.
+4. Commit `PREREG_OFFICE_V3.md` Erratum E1 before any Office V3 execution, or
+   remove it and keep the original strict clean-tree rule. Do not run V3 while
+   the pre-registration is dirty.
+5. Repair causal FIR novelty wording and references by adding convolutional SR
+   prior art before FMLP/BSARec, then narrow the claim to this specific
+   zero-init left-causal residual FIR in this artifact-gated setting.
+6. Obtain/inspect SILLM4Rec full text or soften the exclusion to:
+   "SILLM4Rec is adjacent AR2023 5-core work, but we have not yet verified
+   full-catalog LLOO comparability; we therefore make no claim against it."
+
+### Open Questions
+
+- Should FIR-BREADTH be incorporated before submission, or treated as future
+  work outside the current paper snapshot?
+- If incorporated, should Office V3 remain pending in the same paragraph, or
+  should the paper separate "confirmed internal breadth" from "Office
+  comparator-facing pre-registration still pending/VOID history"?
+- Is the Office V3 Erratum E1 author-approved and intentionally pre-run, or was
+  it generated by an automated responder that should not define the protocol?
+- Is there institutional access to the SILLM4Rec PDF, or should the authors
+  contact the authors for protocol details?
+
+### Running Checklist
+
+- [x] Locate canonical manuscript source and PDF.
+- [x] Read automation memory and prior cumulative audit.
+- [x] Re-run strict submission rebuild.
+- [x] Wait for final CDs_and_Vinyl no-filter seed to finish.
+- [x] Re-run FIR-BREADTH mechanical adjudicator after all 20 runs completed.
+- [x] Check manuscript/TeX for stale pending/untested language.
+- [x] Check current related-work coverage for recent AR2023-adjacent papers.
+- [x] Inspect unexpected `PREREG_OFFICE_V3.md` tracked diff.
+- [x] Update the cumulative audit with current findings.
+- [ ] Decide pre-breadth vs integrated-scope submission boundary.
+- [ ] Commit/manifest or deliberately exclude FIR-BREADTH artifacts.
+- [ ] Commit or remove Office V3 Erratum E1 before any V3 run.
+- [ ] Repair causal-convolution prior-art boundary.
+- [ ] Inspect SILLM4Rec full protocol or soften exclusion wording.
+
+## Audit Run - 2026-07-13 05:40 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `f50c7fdd` (`Respond to
+  PAPER_REVIEW_AUDIT run 23:39: 4.1 role table + count definitions`).
+- Tracked working tree before this run: `PAPER_REVIEW_AUDIT.md` modified; no
+  tracked manuscript or TeX edits detected after the 02:41 audit.
+- Active untracked FIR-BREADTH artifacts changed after 02:41:
+  - CDs_and_Vinyl filter seeds `20260713`-`20260717` are now complete.
+  - CDs_and_Vinyl no-filter seeds `20260713`-`20260714` are complete.
+  - CDs_and_Vinyl no-filter seed `20260715` appears active: `uv`/`python`
+    process started 05:19 and `run_FIRB_CDs_and_Vinyl_nofilter_seed20260715.log`
+    was at epoch 14 during inspection.
+- Canonical sources/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_SUBMISSION.pdf`, `paper_tex/sections/*`, `paper_tex/tables/*`,
+  `paper_tex/references.bib`, `PREREG_FIR_BREADTH.md`, FIR-BREADTH JSON/log
+  artifacts, and the existing cumulative audit.
+
+### Verdict
+
+**The paper itself still builds cleanly, but top-journal readiness is blocked by
+two live issues: moving-scope evidence and an incomplete novelty boundary.**
+The printed paper can be defended only as a pre-FIR-BREADTH snapshot. If the
+new breadth evidence is included, Industrial_and_Scientific must be integrated
+with full provenance and CDs_and_Vinyl must remain VOID until all pairs are
+complete and mechanically adjudicated. Separately, the causal FIR novelty
+boundary needs repair: the manuscript acknowledges bidirectional frequency
+filters but not earlier convolutional/causal-convolution sequential
+recommenders.
+
+### Commands And Evidence Checked
+
+- `_bestrec_run\.venv\Scripts\python.exe _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - Industrial_and_Scientific: `CONFIRMED`.
+  - Paired deltas remain `+0.00243`, `+0.00196`, `+0.00191`, `+0.00287`,
+    `+0.00284`; mean `+0.00240`, 95% t-CI `[+0.00183, +0.00297]`, positive
+    seeds `5/5`.
+  - CDs_and_Vinyl: `VOID(incomplete)` with 7/10 runs present; missing no-filter
+    seeds `20260715`-`20260717`.
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: 164 cells recomputed, 0 mismatches, 0 untraceable; all 12 declared
+    claim families sourced.
+  - PASS: release manifest verification OK for 113 files.
+  - PASS: MI dual gate; Office remains descriptive/VOID under prereg floor
+    check.
+- Structured JSON parse of completed CDs_and_Vinyl FIR-BREADTH files:
+  - Filter complete: seeds `20260713`-`20260717`, NDCG@10 `0.066173`,
+    `0.066262`, `0.066081`, `0.065990`, `0.065889`.
+  - No-filter complete: seeds `20260713`-`20260714`, NDCG@10 `0.060778`,
+    `0.059880`.
+  - Completed paired deltas: seed `20260713` `+0.00539`; seed `20260714`
+    `+0.00638`.
+  - All completed CDs result manifests inspected here record
+    `git_dirty_tracked=true` at commit `f50c7fdd`.
+- `rg "FIR_BREADTH|Industrial_and_Scientific|CDs_and_Vinyl|untested|pending"`
+  - `PAPER_SUBMISSION.md`, `paper_tex/sections/04-experiments.tex`, and
+    `paper_tex/tables/table_datasets41.tex` still label Industrial and CDs as
+    pending.
+  - `PAPER_SUBMISSION.md` and `paper_tex/sections/06-discussion.tex` still say
+    other categories are untested.
+- `rg "cheap causal|causal convolution|Caser|NextItNet|2211\.01297|WEARec"`
+  - No local citation/prose hit in `PAPER_SUBMISSION.md`, `paper_tex/sections`,
+    or `paper_tex/references.bib`.
+- `paper_tex/hygiene_scan_output.txt`
+  - Latest scan remains PASS: 39 pages, 0 placeholder/forbidden-claim failures.
+
+### Confirmed Problems
+
+1. **CDs_and_Vinyl is still void, despite favorable-looking partials.** The
+   frozen rule requires five paired differences. Reporting the two completed
+   positive pairs would be selective-peeking, especially because the remaining
+   no-filter arm is still running.
+2. **The current manuscript is stale relative to the workspace.** Industrial is
+   adjudicable and confirmed; CDs is partially run and void. The paper still
+   says both are pending and other categories are untested.
+3. **The causal FIR novelty paragraph omits convolutional SR prior art.** Caser,
+   NextItNet-style holed/dilated convolution, and cheap causal-convolution
+   self-attentive SR all weaken a claim that the "left-causal FIR realization"
+   is new unless the paper distinguishes its much narrower contribution.
+4. **FIR-BREADTH is not yet provenance-clean.** The adjudicator/scripts/results
+   remain untracked, no official adjudication record was appended, and all
+   completed CDs result manifests inspected in this run have dirty tracked
+   state.
+5. **The pre-registration's "script committed with the campaign" promise is not
+   presently true in the working tree.** `adjudicate_fir_breadth.py` is
+   untracked, so the campaign cannot yet support a methodology-first
+   submission without repository hygiene work.
+
+### Plausible Risks Requiring Author Verification
+
+- If no-filter seed `20260715` finishes after this audit, the current section
+  will immediately become stale. That is fine for an hourly audit, but the paper
+  must not be submitted while the evidence boundary is moving.
+- The large partial CDs deltas may tempt an early breadth claim. A strict
+  reviewer will treat that as cherry-picking unless the official 5-pair
+  adjudicator result is recorded and all missing counterparts are accounted for.
+- The causal FIR contribution can probably survive if rewritten as "a
+  zero-init, depthwise, left-causal residual FIR inserted before an HSTU-style
+  stack under all-position full-catalog AR2023 LLOO," but not as a broad first
+  use of causal/local convolution for sequential recommendation.
+- The methodology-led framing raises the standard for all of the above. A
+  normal empirical paper might get away with a late appendix note; this paper's
+  stated contribution is that it does not.
+
+### External Fact-Check / Novelty Notes
+
+- `Self-Attentive Sequential Recommendation with Cheap Causal Convolutions`
+  (arXiv:2211.01297) explicitly proposes a self-attentive SR model using causal
+  convolutions to capture local item context for attention and sequence
+  embedding. Source: https://arxiv.org/abs/2211.01297
+- Caser (`Personalized Top-N Sequential Recommendation via Convolutional
+  Sequence Embedding`, WSDM 2018) uses convolutional filters over recent item
+  sequences to learn local sequential patterns. Source:
+  https://arxiv.org/abs/1809.07426
+- NextItNet (`A Simple Convolutional Generative Network for Next Item
+  Recommendation`) uses holed/dilated convolutional layers to model short- and
+  long-range item dependencies for next-item recommendation. Source:
+  https://arxiv.org/abs/1808.05163
+- WEARec (AAAI 2026) lists a broader frequency-SR lineage including FMLP-Rec,
+  SLIME4Rec, FEARec, BSARec, and FamouSRec, supporting a broader related-work
+  sentence if the manuscript keeps frequency/time-frequency claims prominent.
+  Source: https://arxiv.org/html/2511.07028v1
+- WPGRec remains a relevant 2026 time-frequency sequential-recommendation
+  comparator/context paper and is already cited; it should stay framed as
+  related prior art, not an apples-to-apples AR2023 comparator. Source:
+  https://arxiv.org/abs/2604.21305
+
+### Concrete Fixes To Make Next
+
+1. Rewrite the FIR novelty boundary everywhere it appears (abstract,
+   introduction, Table 0, method, conclusion) to include the convolutional SR
+   line. Suggested boundary: "local/causal convolutional sequence modeling and
+   frequency filtering are prior art; our contribution is the zero-init gated
+   depthwise left-causal FIR residual placed before an HSTU-style stack and
+   artifact-gated under AR2023 full-catalog LLOO."
+2. Add references and Table 0/prose distinctions for Caser, NextItNet or an
+   equivalent dilated-convolution SR source, and cheap causal-convolution SR.
+3. Decide the FIR-BREADTH evidence boundary before any submission package:
+   either freeze the paper as pre-breadth and exclude these artifacts, or wait
+   for all CDs counterparts, run the official adjudicator append, commit/hash
+   scripts/results/provenance, and update the manuscript/PDF.
+4. Do not mention the two positive CDs pairs in manuscript prose until the
+   missing no-filter seeds are complete and the frozen rule returns a category
+   verdict.
+5. If FIR-BREADTH is integrated, use only the frozen internal-paired wording and
+   keep it out of comparator/SOTA claims.
+
+### Open Questions
+
+- Is the current intended submission snapshot pre-FIR-BREADTH, or should the
+  paper wait for the active CDs no-filter sequence to finish?
+- If FIR-BREADTH is integrated, should dirty-tracked runs be accepted with code
+  hashes and disclosure, or rerun from a clean committed boundary?
+- Should WEARec/FamouSRec/SLIME4Rec be added only to related work, or also to
+  Table 0's novelty-boundary row?
+
+### Running Checklist
+
+- [x] Read automation memory state.
+- [x] Locate canonical manuscript source, TeX derivative, PDF, figures/tables,
+      preregistration, result files, and cumulative audit.
+- [x] Check files modified after the previous audit.
+- [x] Re-adjudicate FIR-BREADTH in no-append mode.
+- [x] Re-run strict manuscript artifact rebuild.
+- [x] Parse completed CDs_and_Vinyl FIR-BREADTH JSONs and paired deltas.
+- [x] Confirm manuscript still says Industrial/CDs pending and other categories
+      untested.
+- [x] Fact-check causal/local-convolution and frequency-SR novelty context
+      against primary sources.
+- [x] Update this cumulative audit.
+- [ ] Add missing causal-convolution/convolutional-SR prior-art citations.
+- [ ] Decide whether FIR-BREADTH enters the submission or remains excluded.
+- [ ] Complete/officially adjudicate CDs_and_Vinyl before any breadth wording.
+
+## Audit Run - 2026-07-13 02:41 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Tracked working tree: `PAPER_REVIEW_AUDIT.md` modified before this run; no
+  manuscript/source edits made by this audit.
+- No commits after the previous automation cutoff (`2026-07-12T15:37:31Z`).
+- Untracked active files include FIR-BREADTH/Office V3 adjudicators and driver
+  scripts, raw-data directories for Industrial/CDs, 10 Industrial FIR-BREADTH
+  result JSONs, one CDs filter result, and a smoke result.
+
+### Verdict
+
+**The printed paper still passes its artifact gate, but the workspace has moved
+past the paper's stated FIR-BREADTH status.** Industrial_and_Scientific now
+mechanically confirms the causal FIR filter under the frozen internal paired
+rule. CDs_and_Vinyl is incomplete/void. The top-journal risk is no longer
+"partial result contamination"; it is scope and provenance: the paper says
+pending/untested while the workspace contains an untracked favorable confirmed
+result and an incomplete companion category.
+
+### Commands And Evidence Checked
+
+- `_bestrec_run/.venv/Scripts/python.exe _bestrec_run/adjudicate_fir_breadth.py --no-append`
+  - Industrial_and_Scientific: `CONFIRMED`.
+  - Per-seed NDCG@10 deltas: `+0.00243`, `+0.00196`, `+0.00191`,
+    `+0.00287`, `+0.00284`.
+  - Paired mean `+0.00240`, sd `0.00046`, 95% t-CI
+    `[+0.00183, +0.00297]`, positive seeds `5/5`.
+  - CDs_and_Vinyl: `VOID(incomplete)` with 1/10 runs present.
+- `uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: 164 cells recomputed; 0 mismatch; 0 untraceable; all 12 claim
+    families sourced.
+  - PASS: release manifest verification for 113 files.
+  - PASS: MI V2 dual gate.
+  - PASS/VOID-as-designed: Office descriptive adjudication.
+- Source/code inspection:
+  - `paper_tex/sections/04-experiments.tex` and `paper_tex/tables/table_datasets41.tex`
+    still label Industrial_and_Scientific and CDs_and_Vinyl as pending.
+  - `paper_tex/sections/06-discussion.tex` still says other categories are
+    untested.
+  - `_bestrec_run/run_sasrec_sbert.py` implements the FIR as left-padded
+    depthwise Conv1d on right-padded sequences, supporting the leak-free claim.
+- `git status --short`
+  - Confirms the breadth result files, adjudicator, driver/prep scripts, and raw
+    data are untracked.
+- `paper_tex/hygiene_scan_output.txt`
+  - Latest recorded scan passes: 39 pages, 0 placeholder/forbidden failures.
+
+### Confirmed Problems
+
+1. **Stale paper/workspace status.** The paper's pending/untested language is no
+   longer true of the workspace if these new artifacts are part of the
+   submitted evidence package.
+2. **Incomplete paired campaign.** CDs_and_Vinyl is currently void by the
+   campaign's own rule; it cannot be quietly ignored if Industrial is used.
+3. **Untracked campaign boundary.** FIR-BREADTH evidence is not yet in the
+   repository/release manifest/artifact graph. This undercuts a methodology-led
+   paper unless fixed or explicitly excluded.
+4. **Adjudication not recorded.** I used `--no-append` to avoid changing
+   `FIR_BREADTH_RESULTS.md`; that file still does not exist unless another
+   process creates it later. The confirmed Industrial verdict is therefore
+   audit-observed, not yet campaign-recorded.
+
+### Plausible Risks Requiring Author Verification
+
+- Some FIR-BREADTH result manifests were generated with `git_dirty_tracked=true`
+  because this audit file was dirty. The code hashes may still prove training
+  identity, but a reviewer will expect a clean explanation if the result becomes
+  confirmatory evidence.
+- The positive Industrial result strengthens breadth for the FIR module but
+  should not be allowed to inflate the paper into a general cross-category
+  recommender claim. It is an internal paired filter-vs-no-filter result, not a
+  comparator or SOTA result.
+- The paper's "trustworthy-evaluation apparatus" framing raises the bar for
+  process hygiene. Untracked favorable artifacts are more damaging under this
+  framing than they would be in an ordinary empirical paper.
+
+### External Fact-Check / Novelty Notes
+
+- GrIT is a real 2026 arXiv preprint; its table reports Video Games NDCG@10
+  `0.0588` under its listed setup. Source:
+  https://arxiv.org/html/2602.19728v1
+- WPGRec is a real 2026 time-frequency sequential-recommendation paper and the
+  arXiv page says accepted to SIGIR 2026. This supports citing it as later
+  frequency/time-frequency prior art, not as an apples-to-apples comparator.
+  Source: https://arxiv.org/abs/2604.21305
+- DiffuReason uses a different AR2023 "Video & Games" universe; the arXiv text
+  lists 67,658 users / 25,535 items / 654,867 interactions, supporting the
+  manuscript's non-comparability caveat. Source:
+  https://arxiv.org/html/2602.09744
+- Augment or Not? uses Amazon'23 Musical Instruments and Industrial and
+  Scientific under 5-core leave-one-out, supporting the manuscript's
+  "AR2023-adjacent, non-interchangeable" framing. Source:
+  https://arxiv.org/html/2505.23053v1
+- The Amazon Reviews 2023 project page confirms the dataset is collected in
+  2023 and includes reviews, metadata, and links, with 571.54M reviews and
+  standard splitting resources. Source: https://amazon-reviews-2023.github.io/
+
+### Concrete Fixes To Make Next
+
+1. Decide whether FIR-BREADTH is inside or outside the current submission. If
+   outside, exclude the untracked result files from the evidence bundle and keep
+   the paper frozen as pre-breadth.
+2. If FIR-BREADTH is inside, create the official adjudication record, commit the
+   scripts/results/provenance, add manifest/artifact-gate coverage, and update
+   Section 4.1/6.4 to say Industrial confirmed and CDs incomplete/void.
+3. Preserve narrow wording: "Industrial_and_Scientific internal paired 5-seed
+   filter-vs-no-filter improvement" only. No external comparator language.
+4. Add a provenance note for dirty tracked state or rerun under a clean
+   committed boundary if pristine confirmation is required.
+5. Re-run PDF hygiene after any manuscript integration of FIR-BREADTH.
+
+### Running Checklist
+
+- [x] Read automation memory state.
+- [x] Locate canonical TeX/Markdown/PDF sources and artifact files.
+- [x] Inspect current audit file and preserve previous uncommitted sections.
+- [x] Check working tree and new untracked campaign artifacts.
+- [x] Run FIR-BREADTH adjudicator in no-append mode.
+- [x] Run strict manuscript artifact rebuild.
+- [x] Inspect FIR implementation for left-causal padding.
+- [x] Fact-check recent-literature and dataset framing against primary sources.
+- [x] Update this cumulative audit.
+- [ ] Decide whether FIR-BREADTH enters the paper or remains excluded.
+- [ ] Commit/hash campaign artifacts before any FIR-BREADTH claim is submitted.
+
+## Audit Run - 2026-07-13 01:42 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` /
+  `f50c7fdd6eb821a7c4012ea5abcd53662d691424`.
+- Tracked manuscript/PDF/LaTeX diff since the 00:40 audit: none.
+- Tracked working tree: `PAPER_REVIEW_AUDIT.md` modified.
+- Untracked active-program files include the FIR-BREADTH and Office V3
+  adjudicators, driver/prep scripts, raw-data provenance, 5 filter result JSONs,
+  3 no-filter result JSONs, and the smoke result.
+- Active process observed: `run_impact_program.sh` had advanced to
+  `FIRB Industrial_and_Scientific nofilter seed 20260716`; I did not stop or
+  modify it.
+
+### Verdict
+
+**The manuscript still has no new printed contradiction: it says the
+FIR-BREADTH campaign is pending, and no breadth result is claimed.** The
+rejection risk is now process contamination. Partial outcomes have been observed
+before the untracked-tooling and dirty-tree defects were repaired. In a
+methodology-first paper, that is central: the campaign can still be reported
+honestly, but it should not be sold as a pristine confirmatory extension unless
+it is restarted or accompanied by a blunt provenance erratum.
+
+### Commands And Evidence Checked
+
+- `git status --short --untracked-files=all`
+  - Confirms only `PAPER_REVIEW_AUDIT.md` is tracked-dirty, while the impact
+    driver, adjudicators, raw-data provenance, and FIR-BREADTH results are
+    untracked.
+- `git diff --name-only -- PAPER_SUBMISSION.md PAPER_DRAFT.md
+  PAPER_SUBMISSION.pdf CANONICAL_SUBMISSION.md paper_tex`
+  - Empty: the printed paper sources/artifacts have not changed since the 00:40
+    strict rebuild/PDF-hygiene check.
+- `_bestrec_run/impact_program.log`
+  - The program began at `2026-07-13 00:25:03` from a dirty tracked tree
+    containing manuscript, PDF, LaTeX, table, and reference changes.
+  - Later FIR-BREADTH runs continued with `PAPER_REVIEW_AUDIT.md` dirty.
+  - As of this audit, seed 20260716 no-filter was running.
+- FIR-BREADTH JSON manifests:
+  - Filter seeds 20260713-17 are present; no-filter seeds 20260713-15 are
+    present.
+  - Full-catalog `n_eval=50,985` for all observed Industrial_and_Scientific
+    results checked.
+  - Observed paired best-test NDCG@10:
+    - seed 20260713: filter `0.033774047`, no-filter `0.031343612`,
+      delta `+0.002430`.
+    - seed 20260714: filter `0.033409370`, no-filter `0.031453663`,
+      delta `+0.001956`.
+    - seed 20260715: filter `0.032943585`, no-filter `0.031031976`,
+      delta `+0.001912`.
+  - Manifest dirtiness: filter 20260713 records `git_dirty_tracked=false`;
+    filter 20260714-17 and no-filter 20260713-15 record
+    `git_dirty_tracked=true`.
+- `FIR_BREADTH_RESULTS.md`
+  - Not present at audit time, so no mechanical adjudication block has been
+    recorded yet.
+
+### External Fact-Check / Source Notes
+
+- The official AR2023 5-core page lists the relevant rounded category
+  statistics: Industrial_and_Scientific 51.0K users / 25.8K items / 412.9K
+  ratings; CDs_and_Vinyl 123.9K / 89.4K / split rows 1.3M train plus 123.9K
+  validation/test; Musical_Instruments 57.4K / 24.6K / 511.8K; Office_Products
+  223.3K / 77.6K / 1.8M; Video_Games 94.8K / 25.6K / 814.6K. Source:
+  https://amazon-reviews-2023.github.io/data_processing/5core.html
+- The AmazonReviews2023 benchmark README defines `last_out` as leave-last-out:
+  latest review for test, second-latest for validation, rest for training, and
+  `rating_only` as deduplicated user/item/rating/timestamp records with 0-core
+  or 5-core filtering. Source:
+  https://github.com/hyp1231/AmazonReviews2023/blob/main/benchmark_scripts/README.md
+- HSTU-BLaIR's repository reports the comparator values used in the manuscript:
+  Video_Games HSTU-BLaIR NDCG@10 `0.0760`, Office_Products `0.0271`, and
+  Musical_Instruments `0.0406`, with a warning that reproduction can vary
+  within a small margin. Source: https://github.com/snapfinger/HSTU-BLaIR
+
+### Confirmed Problems
+
+1. **The active FIR-BREADTH campaign is already result-exposed while its
+   adjudication/run tooling is outside the committed boundary.** This violates
+   the spirit, and likely the literal reviewer reading, of the prereg's
+   "adjudication script committed with the campaign" sentence.
+2. **The run driver intentionally allows dirty tracked state for FIR-BREADTH.**
+   That may have been acceptable engineering convenience before the paper led
+   with methodology; it is not strong enough for a top-journal confirmatory
+   claim.
+3. **Partial positive results are now known.** Even if the final 5-seed rule
+   later confirms, the decision to keep, report, or expand the campaign is now
+   post-outcome unless the authors explicitly freeze that choice or restart.
+4. **The same dirty audit file will likely block Office V3.** The driver uses a
+   hard clean-tree check for Office V3; unless the tracked tree is cleaned
+   before the FIR-BREADTH segment completes, Office V3 should exit under its
+   own condition 3 rather than run.
+
+### Concrete Fixes To Make Next
+
+1. For a pristine confirmatory claim: stop after the current run family,
+   classify these Industrial/CDs outputs as contaminated/exploratory, commit
+   the driver/adjudicators/prep scripts/provenance, and restart with new seeds.
+2. For a less conservative but honest route: write a provenance erratum before
+   any paper edit, listing the dirty launch state, the untracked tooling, every
+   result manifest's `git_dirty_tracked` flag, code hashes, and the exact point
+   at which partial results became visible.
+3. Do not update `PAPER_SUBMISSION.md`, release notes, or responses with
+   FIR-BREADTH numbers until all 5 paired seeds are complete and the mechanical
+   adjudicator has run under a committed version.
+4. If Office V3 is intended to proceed in the current driver, clean the tracked
+   tree first; otherwise let the hard check stop it and record that stop as
+   designed behavior.
+
+### Open Questions
+
+- Will the authors prefer a clean restart over a provenance erratum for
+  FIR-BREADTH?
+- Should FIR-BREADTH's driver be changed to hard-fail on dirty tracked state,
+  matching Office V3, now that process integrity is the lead contribution?
+- Should the pre-registration be amended to say "embedded code hashes" are
+  sufficient, or is that amendment itself post-outcome and therefore a reason
+  to restart?
+
+### Running Checklist
+
+- [x] Read automation memory state.
+- [x] Preserve the existing 00:40 audit section.
+- [x] Recheck active workspace and untracked artifacts.
+- [x] Inspect current FIR-BREADTH result manifests and log.
+- [x] Verify no tracked manuscript/PDF/LaTeX diff since the 00:40 artifact
+      gate.
+- [x] Fact-check AR2023 split/stat claims and HSTU-BLaIR comparator values
+      against external sources.
+- [ ] Resolve FIR-BREADTH governance before using any breadth result.
+- [ ] Re-run strict build/PDF hygiene after the active GPU program is stopped
+      or finished.
+- [ ] Decide whether Office V3 should be allowed to stop on the clean-tree hard
+      check or be relaunched from a clean boundary.
+
+## Audit Run - 2026-07-13 00:40 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `f50c7fdd`
+- Supplied last-run cutoff: `2026-07-12T13:35:29.596Z`.
+- Commits after cutoff:
+  - `a7d6733d` Impact-revision program: pre-registrations committed BEFORE any
+    run.
+  - `791de36a` Approach (C): methodology-first reframe -- retitled, apparatus
+    leads, claims unchanged.
+  - `14c3df2b` Regenerate RELEASE_MANIFEST at the reframe boundary.
+  - `bbb728fe` Round-15: Section 4.1 rewritten as role-based dataset table;
+    count definitions fixed; brittle phrasing.
+  - `8ccd04f1` Regenerate RELEASE_MANIFEST at round-15 boundary.
+  - `f50c7fdd` Respond to PAPER_REVIEW_AUDIT run 23:39.
+- Tracked working tree at audit time: clean.
+- Untracked/currently outside git boundary: impact-program scripts, two
+  adjudicators, first FIR-BREADTH result, smoke result, and new raw-data
+  downloads/provenance files.
+- A FIR-BREADTH run was active during this audit:
+  `Industrial_and_Scientific filter seed 20260714` (Python process observed at
+  00:40, log at epoch 3/20). I did not stop or modify it.
+
+### Verdict
+
+**The previous hard manuscript defect is fixed, and the printed paper still
+passes its strict artifact gate.** Section 4.1 now describes the dataset roles
+and total counts clearly. The new top-journal rejection risk is not a table
+value; it is governance around the newly launched impact/FIR-BREADTH program.
+After the methodology-first reframe, process integrity is now part of the
+paper's lead claim. The campaign currently has untracked adjudication/run
+tooling and a start-of-run dirty-tree ambiguity. Those defects must be resolved
+before any breadth result is printed as confirmatory.
+
+### Commands And Evidence Checked
+
+- `git log --oneline --decorate --since='2026-07-12T13:35:29Z'`
+  - Shows the impact pre-registrations, methodology reframe, Section 4.1 repair,
+    manifest regenerations, and response commit after the supplied cutoff.
+- `git status --short --untracked-files=all`
+  - Tracked tree clean, but untracked:
+    `_bestrec_run/adjudicate_fir_breadth.py`,
+    `_bestrec_run/adjudicate_office_v3.py`,
+    `_bestrec_run/encode_impact_titles.py`,
+    `_bestrec_run/prep_impact_data.py`,
+    `_bestrec_run/run_impact_program.sh`,
+    `_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260713.json`,
+    `_bestrec_run/smoke_FIRB_IS_seed1.json`, and new raw-data provenance files.
+- `uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: 164 cells recomputed; 0 `MISMATCH`; 0 `UNTRACEABLE`; all 12 claim
+    families sourced.
+  - PASS: release manifest verification, MI V2 dual gate, Office
+    descriptive/VOID adjudication.
+- `uv --project _bestrec_run run python paper_tex/scan_pdf.py paper_tex/PAPER_TORS.pdf`
+  - PASS: 39 pages; 0 placeholder/forbidden-claim failures.
+- Source inspection:
+  - `paper_tex/sections/04-experiments.tex` now states total 5-core
+    interactions and the LLOO count rule.
+  - `paper_tex/tables/table_datasets41.tex` includes all active/pending
+    categories with roles and total counts.
+  - `rg "two AR2023|~830k|5.17M|unreviewed concurrent"` no longer finds the old
+    Section 4.1 defects or brittle "unreviewed concurrent" phrasing.
+  - `rg "814,585"` still finds the comparator-paper count in Section 5.1; treat
+    as a labeling/readability risk, not a reopened Section 4.1 defect.
+- Local row-count checks:
+  - Industrial_and_Scientific: total 412,947; train 310,977; valid 50,985; test
+    50,985.
+  - CDs_and_Vinyl: total 1,552,764; train 1,305,012; valid 123,876; test
+    123,876.
+- Impact-program evidence:
+  - `_bestrec_run/impact_program.log` says preconditions passed, then printed a
+    dirty tracked tree at `2026-07-13 00:25:03`, warned, and began
+    `FIRB Industrial_and_Scientific filter k8 seed 20260713`.
+  - `_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260713.json`
+    records `git_commit=f50c7fdd`, `git_dirty_tracked=false`, full-catalog
+    `n_eval=50,985`, and best-by-validation test NDCG@10 0.033774. Because the
+    run started before the commit boundary but recorded clean status at write
+    time, the manifest does not by itself prove clean start-state provenance.
+  - `_bestrec_run/adjudicate_fir_breadth.py` implements a sensible mechanical
+    paired 5-seed rule, but it is untracked, contradicting
+    `PREREG_FIR_BREADTH.md`'s statement that adjudication is committed with the
+    campaign.
+
+### Confirmed Fixes Since Prior Audit
+
+1. **Section 4.1 role/scope inconsistency is fixed.**
+   - The old "two categories" phrasing is gone.
+   - Office is explicitly descriptive/VOID, not confirmatory.
+   - Industrial_and_Scientific and CDs_and_Vinyl are explicitly pending, with no
+     result claimed in this version.
+2. **Dataset counts in the main table are now total counts.**
+   - The table's Industrial/CDs counts match official rounded AR2023 statistics
+     and the local exact row counts.
+   - The LLOO relationship `train = total - 2 * users` is stated in Section 4.1.
+3. **Brittle "unreviewed concurrent work" wording is removed.**
+   - The paper now uses "concurrent arXiv-only work" and "status as of the
+     access date" style phrasing.
+4. **Current printed-paper artifact gate remains green.**
+   - The methodology reframe and Section 4.1 table did not break the 164-cell
+     rebuild or TORS hygiene scan.
+
+### Confirmed Problems
+
+1. **The FIR-BREADTH adjudication and run tooling are not frozen in git even
+   though the pre-registration says the adjudication script is committed with
+   the campaign.**
+   - This undermines the paper's lead process claim if any breadth result is
+     later used.
+   - Concrete fix: commit/hash the adjudicator, driver, data-prep script,
+     encoder script, and raw-data provenance before adjudication; update
+     `RELEASE_MANIFEST.json` once any result is printed. If strict confirmatory
+     purity is required, void/restart with new seeds under a clean committed
+     tooling boundary.
+2. **The first FIR-BREADTH campaign run has start-state provenance ambiguity.**
+   - Program log: dirty tracked tree at run launch.
+   - Result JSON: clean tracked tree at result write.
+   - Concrete fix: either treat the existing FIR-BREADTH run family as
+     exploratory/contaminated, or add an explicit erratum proving that the dirty
+     tracked diffs were documentation-only and that training-code hashes were
+     identical from launch through write. A top-journal reviewer will likely
+     prefer the former.
+3. **Partial results exist while the paper says the campaign outcome is
+   pending.**
+   - This is currently acceptable because no breadth result is claimed, but the
+     paper must not be edited to exploit the observed first seed. Once the
+     campaign finishes, report confirmed/null/void symmetrically and manifest
+     every printed value.
+
+### Plausible Risks Requiring Author Verification
+
+- **The methodology-first reframe raises the standard for process evidence.**
+  It makes the paper more coherent, but also turns any process blemish into a
+  central weakness. If the authors want this framing, they should harden the
+  new campaign rules rather than allow warn-and-proceed dirty-tree behavior.
+- **The 814,585 vs 814,586 interaction-count split may still annoy reviewers.**
+  Keep the +/-1 comparator-pipeline caveat, but label Section 5.1's 814,585 as
+  the HSTU-BLaIR-reported comparator count.
+- **SILLM4Rec remains a direct-inspection item.** The current exclusion sentence
+  is narrow enough, but final submission should either inspect the paper or keep
+  the exclusion carefully metadata-scoped.
+- **The currently running seed may finish while this audit section is being
+  read.** Re-run the status checks before making any release/deposit decision.
+
+### External Fact-Check / Novelty Notes
+
+- Official Amazon Reviews 2023 5-core statistics list
+  Industrial_and_Scientific at 51.0K users / 25.8K items / 412.9K ratings,
+  CDs_and_Vinyl at 123.9K / 89.4K / 1.6M, Musical_Instruments at 57.4K /
+  24.6K / 511.8K, Office_Products at 223.3K / 77.6K / 1.8M, and Video_Games at
+  94.8K / 25.6K / 814.6K. Source:
+  https://amazon-reviews-2023.github.io/data_processing/5core.html
+- The AmazonReviews2023 benchmark README defines `rating_only` as user/item/
+  rating/timestamp records, removes duplicate user-item reviews, applies
+  k-core filtering, and defines `last_out` as leave-last-out with latest review
+  for test, second-latest for validation, and the rest for train. Source:
+  https://github.com/hyp1231/AmazonReviews2023/blob/main/benchmark_scripts/README.md
+- HSTU-BLaIR's repository reports the comparator rows used by the paper:
+  Video_Games HSTU-BLaIR NDCG@10 0.0760, Office_Products 0.0271, and
+  Musical_Instruments 0.0406; it also warns that reproduction may vary by a
+  small margin. Source: https://github.com/snapfinger/HSTU-BLaIR
+- Ferrari Dacrema et al. support the paper's evaluation-trust motivation: their
+  abstract says only 7 of 18 neural recommender algorithms were reproducible
+  with reasonable effort, and 6 of those could often be beaten by simple
+  heuristics. Source: https://arxiv.org/abs/1907.06902
+
+### Concrete Fixes To Make Next
+
+1. Decide whether the current FIR-BREADTH campaign is confirmatory or
+   exploratory. For a top-journal confirmatory claim, the safest action is
+   VOID/restart with a clean committed tool boundary and new seeds.
+2. Commit the impact-program tooling and adjudicators before any further
+   adjudication or Office V3 run is used as evidence.
+3. Add a provenance erratum if any current FIR-BREADTH artifacts are retained:
+   exact start/end commit, dirty tracked files at launch, code hashes, and why
+   start-dirty did or did not void the claim.
+4. Keep all breadth numbers out of the paper until the full paired 5-seed rule
+   is adjudicated and the values are added to the artifact gate/manifest.
+5. Label the Section 5.1 `814,585` interaction count as comparator-reported, or
+   add a short parenthetical: local row total is 814,586; comparator pipeline
+   reports 814,585.
+6. Add one sentence in the methodology-reframe paragraph that this is an
+   auditable case-study discipline, not a claim to have invented
+   pre-registration, artifact evaluation, or standardized benchmarking.
+
+### Open Questions
+
+- Are the maintainers willing to void/restart FIR-BREADTH to preserve a clean
+  confirmatory story, or should it be downgraded to exploratory evidence?
+- Was the dirty tracked tree at FIR-BREADTH launch entirely documentation/PDF
+  state, or did any code or generated table script that could affect claims
+  differ from the eventual commit?
+- Should the run driver enforce clean tracked tree for FIR-BREADTH just as it
+  already does for Office V3, given the paper's new methodology-first framing?
+
+### Running Checklist
+
+- [x] Read automation memory.
+- [x] Locate canonical manuscript sources and PDFs.
+- [x] Check commits and working-tree state after the supplied cutoff.
+- [x] Verify strict rebuild/provenance gate.
+- [x] Verify TORS PDF hygiene scan.
+- [x] Confirm Section 4.1 role table and total-count repair.
+- [x] Verify new Industrial/CDs local row counts.
+- [x] Fact-check AR2023 count/split claims and HSTU-BLaIR comparator values
+      against external sources.
+- [x] Inspect new impact pre-registration, driver, adjudicator, logs, and first
+      result manifest.
+- [ ] Resolve FIR-BREADTH untracked-tooling and start-dirty provenance risk
+      before claiming any breadth result.
+- [ ] Re-run audit after the active FIR-BREADTH job completes or is stopped.
 
 ## Audit Run - 2026-07-12 23:39 Australia/Sydney
 

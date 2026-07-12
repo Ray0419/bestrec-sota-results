@@ -80,3 +80,18 @@ missing/failed dataset-identity assertion; reference-artifact drift (condition 2
 provenance beyond the declared pattern; seed substitution; results overwritten rather than
 appended; any post-hoc change to this document after the first run starts (append-only errata
 with dates are permitted and must be disclosed).
+
+---
+
+## ERRATUM E1 (2026-07-13, appended BEFORE the first V3 run; campaign not yet started)
+
+The FIR-BREADTH segment's clean-tree checkpoint (exit 43, 2026-07-13 06:44) revealed that the
+**external hourly audit process appends to `PAPER_REVIEW_AUDIT.md` on its own cadence**, and the
+responder appends to `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` — both are documentation logs outside
+this campaign's control, and either could dirty the tracked tree mid-run through no action of
+the experiment pipeline (the exact failure mode that voided the V2 EXEC1 campaign via a
+concurrent documentation edit). **Clarification, effective before any V3 run:** condition 3's
+clean-tree requirement exempts exactly these two audit-log files (`PAPER_REVIEW_AUDIT.md`,
+`RESPONSE_TO_PAPER_REVIEW_AUDIT.md`) in per-run manifests; it continues to bind every other
+tracked file — in particular all protocol code, whose identity remains proven by the embedded
+per-run code hashes regardless. No other condition, gate value, seed, or wording changes.

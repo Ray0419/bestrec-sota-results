@@ -3,14 +3,35 @@
 Generated 2026-07-12; synced to the round-7 canonical md (commit `f141cf7`: Figs. 1–3
 embedded, new §10 Ethics and Data Governance, Table-0 parity-row rewording, GrIT + FEARec
 citations) **+ round-8 packaging** (12:34 audit: two-target class-option restructure +
-verified BibTeX metadata fill — see the round-8 sections below). **The markdown remains
+verified BibTeX metadata fill — see the round-8 sections below); subsequent audit rounds and
+the **2026-07-13 FIR-BREADTH sync** (below) are tracked incrementally. **The markdown remains
 canonical** (`CANONICAL_SUBMISSION.md` governs; `PAPER_SUBMISSION.md` is the source of
 record). This directory is a *derived* typeset format per `VENUE_PLAN.md`: format conversion
 only — no content was cut, added, or reworded (two presentation-only additions are disclosed
 under "Conversion decisions" below). Compiled outputs:
-**`paper_tex/PAPER_TORS.pdf` — the gated review artifact — 35 pages, single-column
+**`paper_tex/PAPER_TORS.pdf` — the gated review artifact — 39 pages, single-column
 `[manuscript,review,anonymous]` acmart format, Figs. 1–3 embedded**, plus the untracked
-production preview `PAPER_TORS_acmsmall.pdf` (36 pages, `[acmsmall,screen,review,anonymous]`).
+production preview `PAPER_TORS_acmsmall.pdf` (41 pages, `[acmsmall,screen,review,anonymous]`).
+
+## 2026-07-13 sync: FIR-BREADTH campaign + convolutional novelty boundary
+
+Mirrors the canonical md's FIR-BREADTH working-tree deltas (7 hunks, all covered):
+(1) abstract gained the pre-registered breadth clause (IS +0.0024 / CDs +0.0057, four
+categories in total); (2) §2.2 FIR bullet now "confirmed on four categories, two via the
+pre-registered breadth campaign of §5.2"; (3) §2.3 gained the Caser/NextItNet
+convolutional-prior-art passage (`\citep{tang2018caser}`, `\citep{yuan2019nextitnet}`);
+(4) Table 0 FIR row (prior-art + evidence columns) and the §4.1 dataset-role table rows
+(IS/CDs now "pre-registered FIR-breadth: CONFIRMED") regenerate from the md via the emitter;
+the §4.1 trailing sentence is now Office-V3-only; (5) §5.2 gained the verbatim
+"Pre-registered breadth (two further categories)" paragraph (references
+`PREREG_FIR_BREADTH.md` / `FIR_BREADTH_RESULTS.md`); (6) §8 sidecar sentence now covers Office
+and FIR-breadth sidecars ("hashed into each run's embedded manifest"); (7) `references.bib`
+gained tang2018caser and yuan2019nextitnet — transcribed from the md, with Crossref-verified
+pages/publisher/DOI (10.1145/3159652.3159656 pp. 565–573; 10.1145/3289600.3290975
+pp. 582–590, both ACM/WSDM, checked 2026-07-13). Fidelity repair in passing: the round-14
+WPGRec citation had dropped the md's inline `arXiv:2604.21305` (the bst does not render
+`eprint` on `@misc`) — restored as a `\citep` postnote + in the bib note; the whole-document
+numeral check is back to zero missing md tokens.
 
 ## Round-8: two build targets (class options)
 

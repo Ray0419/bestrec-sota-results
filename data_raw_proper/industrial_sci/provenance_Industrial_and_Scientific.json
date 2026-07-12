@@ -1,0 +1,58 @@
+{
+  "category": "Industrial_and_Scientific",
+  "created_utc": "2026-07-12T14:10:41Z",
+  "updated_utc": "2026-07-12T14:10:41Z",
+  "files": {
+    "Industrial_and_Scientific.csv.gz": {
+      "sha256": "37dc32e707c6a89d2f8c4cf259fdec4e0ac1e2c7bd99c5886ee2c74c0ca99060",
+      "bytes": 7114449,
+      "source_url": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/benchmark/5core/rating_only/Industrial_and_Scientific.csv.gz",
+      "note": "official AR2023 benchmark 5-core rating_only CSV (same source the reference pipeline downloads)"
+    },
+    "meta_Industrial_and_Scientific.jsonl.gz": {
+      "sha256": "0beb251cec166347a3ec3ef23e55ec89f7fb27a6e8e9a0737d6b34cdc184ebcb",
+      "bytes": 281523932,
+      "source_url": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/meta_categories/meta_Industrial_and_Scientific.jsonl.gz",
+      "note": "McAuley-Lab AR2023 raw item metadata jsonl"
+    },
+    "meta_Industrial_and_Scientific.jsonl": {
+      "sha256": "114fcde36f6205bde5d0ebed24613a35e475aa06b285011ed1e892dc26da3942",
+      "bytes": 1130006344,
+      "derived_from": "meta_Industrial_and_Scientific.jsonl.gz"
+    },
+    "Industrial_and_Scientific.jsonl": {
+      "sha256": "e37d923541390143e4c9f09be12b7e8265d60eca85dcb6e446eb7d3b5d88e90e",
+      "bytes": 48317424,
+      "rows": 412947,
+      "derived_from": "Industrial_and_Scientific.csv.gz",
+      "note": "lossless csv->jsonl record conversion for preprocess_5core_standard.load_ratings"
+    }
+  },
+  "preprocess": {
+    "script": "_bestrec_run/preprocess_5core_standard.py",
+    "script_sha256": "16e306f6175415c397db9fa7b63604d6f7b468ece254c9c5aa3fc0f795fb640d",
+    "categories_entry_injected_in_memory": [
+      "../data_raw_proper/industrial_sci",
+      "Industrial_and_Scientific.jsonl"
+    ],
+    "k": 5
+  },
+  "split": {
+    "train": {
+      "rows": 310977,
+      "sha256": "66ed9f7fad153e93d0c1172b231cfb15eeffe5f475eab62063d1b5511bbd7f50"
+    },
+    "valid": {
+      "rows": 50985,
+      "sha256": "1aafbe3e9eaf49dd0296c4eb4167c86ba3b0a71b2d5d77bb9a1670115064b914"
+    },
+    "test": {
+      "rows": 50985,
+      "sha256": "812ca889e85e01bf26f29e9efd87e25ba221e800386a1c6a4bad6a8c08e423b9"
+    },
+    "n_users": 50985,
+    "n_items": 25848,
+    "n_interactions_total": 412947,
+    "note": "input was the official benchmark 5-core corpus, so the recursive 5-core filter is a stability no-op; this records the LLOO split actually consumed by run_sasrec_sbert.py"
+  }
+}

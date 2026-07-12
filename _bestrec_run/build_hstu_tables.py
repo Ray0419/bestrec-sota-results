@@ -601,7 +601,7 @@ PUB_SASREC_OFF = 0.0153     # Liu 2025, published Office_Products SASRec (extern
 # every table family the paper declares; --submission fails if any has no sourced cells
 REQUIRED_FAMILIES = ["table1", "table1a", "table1b", "table1c", "table1d", "table1e",
                      "table541", "table542", "tableV2conf", "table2",
-                     "office_confirmation", "theirs_on_ours"]
+                     "office_confirmation", "theirs_on_ours", "fir_breadth"]
 
 OFFICE_VOID_NOTE = ("VOID under prereg floor check (+44% floor inflation); "
                     "provisional, not counted as a pass")
@@ -1537,6 +1537,28 @@ def build_spec():
     C.append(ext("theirs.pub.mi_mrr", "theirs_on_ours",
                  "published MI HSTU-BLaIR (comparator README)", "MRR", 0.0371,
                  "Liu 2025 README, Musical_Instruments HSTU-BLaIR row (S5.6 table)."))
+
+    # ------- fir_breadth: pre-registered paired filter-vs-no-filter contrast -------
+    # (PREREG_FIR_BREADTH.md; adjudication FIR_BREADTH_RESULTS.md; seeds 20260713-17)
+    FIRB_SEEDS = [20260713, 20260714, 20260715, 20260716, 20260717]
+    FB_NOTE = ("Pre-registered breadth campaign (PREREG_FIR_BREADTH.md, committed before any "
+               "run; frozen V2 config transplanted with zero per-category tuning; fresh seeds "
+               "20260713-17). Internal paired contrast, no comparator. Mechanical adjudication "
+               "in FIR_BREADTH_RESULTS.md; n_eval full-catalog verified there per run.")
+    for cat, short, exp in (
+            ("Industrial_and_Scientific", "is",
+             [chk("mean", 0.0024, 4), chk("ci_lo", 0.0018, 4), chk("ci_hi", 0.0030, 4),
+              chk("pos", 5, mode="count")]),
+            ("CDs_and_Vinyl", "cd",
+             [chk("mean", 0.0057, 4), chk("ci_lo", 0.0049, 4), chk("ci_hi", 0.0064, 4),
+              chk("pos", 5, mode="count")])):
+        FF = [BR + f"results_FIRB_{cat}_filter_seed{s}.json" for s in FIRB_SEEDS]
+        FN = [BR + f"results_FIRB_{cat}_nofilter_seed{s}.json" for s in FIRB_SEEDS]
+        C.append(cell(f"firb.{short}.paired", "fir_breadth",
+                      f"pre-registered FIR breadth: {cat} paired (filter - nofilter)",
+                      "paired 5-seed delta NDCG@10 (best-by-val full catalog)",
+                      FF + FN, "paired_delta", {"a": FF, "b": FN},
+                      exp, 5, conf, seeds=FIRB_SEEDS, notes=FB_NOTE))
 
     return C
 

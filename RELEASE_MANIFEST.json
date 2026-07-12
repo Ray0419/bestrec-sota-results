@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "b41ae88b2ab53829365f8663b5c3be7ff7b6b897",
+  "git_commit": "791de36a636260d73e3d5246a4740e937b528001",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -170,16 +170,16 @@
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     "PAPER_SUBMISSION.md": {
-      "sha256": "b3483ce6bc11619bf82151f1edee7dee1d33e9775bbbc7cd78ef78fb95308a65",
-      "bytes": 129960
+      "sha256": "9b56cfbe39b715045eff7b1841012ffd68a2ca3dc554e33f49c6527e88435fcc",
+      "bytes": 139530
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "5a15abbde5444101361abb27731b1e52607322e37ee7ce079134edeaad9e3079",
-      "bytes": 1326488
+      "sha256": "56c2527c8ca6cd15c2829d5acd9898f036a6cff37ee03bf52ccd50134aae1508",
+      "bytes": 1344931
     },
     "PAPER_DRAFT.md": {
-      "sha256": "6587a4a9853295429a86decf39a57c14f63b90e1f41bb1e28f8398f0ca3e4883",
-      "bytes": 151207
+      "sha256": "f6eb6665092e900cf7ca0fff8c8af67591975191fe4b0dfc477fcc9417e07ed8",
+      "bytes": 161715
     },
     "CANONICAL_SUBMISSION.md": {
       "sha256": "e354c92088070de1d194c03dcb31624df397b72190dcca0b17fc595ea37261dc",
@@ -218,8 +218,8 @@
       "bytes": 13880
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "0fcd6a0c814256680a78010ba39e818f0f586d7a5dacf58dfadc2efe88e0ace2",
-      "bytes": 433752
+      "sha256": "ad2b1232c9ba02ac911e912aa43939ac59128699776e4ea4cb2d0118187225e0",
+      "bytes": 446693
     },
     "_bestrec_run/emit_latex_tables.py": {
       "sha256": "1ac6b422b12416a893c8eb9f79e21729801435d9af4202a84b43f8ecd2e60f86",

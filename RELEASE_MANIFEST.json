@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "95190073f689e081e5e429c97b4ba9ad080e402d",
+  "git_commit": "7a627ef65e468fe77479bdbf503eb8769cd05ff4",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -218,12 +218,12 @@
       "bytes": 12507
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "0094b2af56a960c58805629daed83e5bffc97527baf2f65a2fd828282cd3a424",
-      "bytes": 430794
+      "sha256": "6e80d2ce49f3b2cb02d0f0d88dc055cfbcd082c7646ef30cea0376b87957d490",
+      "bytes": 427335
     },
     "_bestrec_run/emit_latex_tables.py": {
-      "sha256": "2d631b7a785f734704cbc90756a5a2a5c879ff3d5f9cb2d6bdbbbc36196a08d6",
-      "bytes": 24280
+      "sha256": "1ac6b422b12416a893c8eb9f79e21729801435d9af4202a84b43f8ecd2e60f86",
+      "bytes": 24350
     }
   },
   "pinned_parity_artifacts": {

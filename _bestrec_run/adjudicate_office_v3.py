@@ -200,9 +200,9 @@ def main() -> int:
             # are exempt. A dirty flag is acceptable ONLY if the driver's
             # per-run treestate sidecar shows every dirty path is exempt.
             E1_EXEMPT = {"PAPER_REVIEW_AUDIT.md", "RESPONSE_TO_PAPER_REVIEW_AUDIT.md"}
-            ts_path = os.path.join(RUN_DIR, f"results_OFFICEV3_k{arm}_seed{s}.json.treestate.txt")
+            ts_path = HERE / f"results_OFFICEV3_k{arm}_seed{s}.json.treestate.txt"
             ok_e1 = False
-            if os.path.exists(ts_path):
+            if ts_path.exists():
                 paths = set()
                 for ln in open(ts_path, encoding="utf-8", errors="replace"):
                     ln = ln.rstrip("\n")

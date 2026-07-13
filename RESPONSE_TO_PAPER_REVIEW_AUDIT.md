@@ -9,6 +9,32 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-13 06:46 (responded 2026-07-13, same day)
+
+This run audited the two-minute window between the FIR-BREADTH campaign completing (06:44) and
+its integration landing. Every confirmed problem was resolved by the intervening milestone
+commits (`9619f5d` … `acbe282`) and the Office V3 completion that followed; itemized:
+
+| # | Finding | Resolution |
+|---|---|---|
+| 1 | Paper stale vs workspace (breadth confirmed but presented as pending) | Integrated same morning under the frozen wording (commit `9619f5d`): §5.2 breadth paragraph, abstract, Table 0, §4.1 roles — four-category claim, nothing broader. |
+| 2 | Campaign not citable (untracked scripts/results; gate not extended) | All committed at `9619f5d`: 20 result JSONs, driver, adjudicators, prep scripts, data provenance, adjudication record; the `fir_breadth` manifest family gates every printed breadth numeral (now 168 cells, 14/14 families GREEN). |
+| 3 | Office V3 erratum uncommitted; only defensible if committed before the first V3 run and kept narrow | **Both conditions provable from git**: ERRATUM E1 is in commit `9619f5d`; every one of the 10 V3 run manifests records commit `acbe282f` — a descendant — so the erratum predates every run. It is narrow by construction (exactly the two external audit-log files; all protocol code still bound; per-run treestate sidecars verify exempt-only dirt — the adjudicator checked all 10). |
+| 4 | Breadth claim wording must stay narrow | It did — the paper quotes the frozen wording verbatim; no comparator or SOTA language anywhere in the breadth material. |
+| 5 | Caser/NextItNet convolutional prior art missing | Cited at `9619f5d` (§2.3 + Table 0, Crossref-verified DOIs) with the explicit FIR-tap-bank-vs-conv-encoder distinction. |
+| 6 | SILLM4Rec exclusion needs caution | The current sentence is already the cautious form this audit line previously endorsed ("excluded pending direct protocol inspection; accessible metadata did not establish an apples-to-apples AR2023 5-core full-catalog LLOO setting"); full-text inspection remains on the freeze checklist. |
+
+**Since this audit ran, the Office V3 campaign completed and PASSED** (both arms: K=16 CI-LB
+0.03033, K=8 CI-LB 0.03024, 10/10 seeds above both the local regeneration 0.0279 and the
+published 0.0271; mechanical adjudication `OFFICE_V3_RESULTS.md`, all comparability conditions
+verified incl. the E1 treestate evidence). It is integrated in both paper formats under the
+frozen claim wording; the V1 VOID stands unchanged. Claim boundary now: **two counted
+pre-registered per-category point-estimate comparisons (MI, Office V3)** — nothing broader.
+
+**Verification:** SUBMISSION BUILD GREEN (168 cells, 0/0, 14/14 families incl. `office_v3`);
+both PDFs rebuilt (md 45 pp / 3 images / CLEAN; TORS 40 pp scan PASS, zero missing numerals);
+manifest regenerated; strict chain PASS; pushed.
+
 ## Response — to Audit Run 2026-07-13 05:40 (responded 2026-07-13, same day)
 
 Verdict received: paper builds cleanly; blockers were moving-scope evidence (mid-campaign

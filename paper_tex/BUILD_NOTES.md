@@ -9,9 +9,26 @@ canonical** (`CANONICAL_SUBMISSION.md` governs; `PAPER_SUBMISSION.md` is the sou
 record). This directory is a *derived* typeset format per `VENUE_PLAN.md`: format conversion
 only — no content was cut, added, or reworded (two presentation-only additions are disclosed
 under "Conversion decisions" below). Compiled outputs:
-**`paper_tex/PAPER_TORS.pdf` — the gated review artifact — 39 pages, single-column
+**`paper_tex/PAPER_TORS.pdf` — the gated review artifact — 40 pages, single-column
 `[manuscript,review,anonymous]` acmart format, Figs. 1–3 embedded**, plus the untracked
-production preview `PAPER_TORS_acmsmall.pdf` (41 pages, `[acmsmall,screen,review,anonymous]`).
+production preview `PAPER_TORS_acmsmall.pdf` (40 pages, `[acmsmall,screen,review,anonymous]`).
+
+## 2026-07-13 sync (2): OFFICE V3 pre-registered campaign PASSED
+
+Mirrors the canonical md's Office-V3 working-tree deltas (6 hunks, all covered):
+(1) abstract apparatus item (iv) gains the redesigned-successor-passed clause, and the results
+paragraph gains the "second category passed the redesigned pre-registration" sentence
+(K=16 CI-LB 0.03033 / K=8 CI-LB 0.03024, 10/10 seeds above both references); (2) §5.2 gains
+the verbatim "Office_Products V3 (redesigned pre-registration) — PASSED." paragraph
+(`PREREG_OFFICE_V3.md` / `OFFICE_V3_RESULTS.md`; frozen claim wording kept exactly, incl. the
+explicit not-SOTA sentence); (3) the §6.4 category-scope bullet now records V1-VOID-stands +
+V3-passed-and-counted + FIR-breadth internal-contrast scope; (4) Appendix A.0's tail sentence
+is now V1-scoped with the parenthetical V3 note; (5) the §4.1 dataset-role table Office row
+("V1 prereg VOID …; redesigned V3 prereg PASSED") regenerated from the md by the emitter, and
+the §4.1 trailing prose sentence is now "Every pre-registered campaign in this version is
+fully adjudicated (verdicts in §5.2 and Appendix A.0)."; (6) no new references. The scan's
+informational review list grew 14 → 18 — the additions are the new paragraph's explicit SOTA
+*non-claims* and negated superiority wording, as designed; failures remain 0.
 
 ## 2026-07-13 sync: FIR-BREADTH campaign + convolutional novelty boundary
 

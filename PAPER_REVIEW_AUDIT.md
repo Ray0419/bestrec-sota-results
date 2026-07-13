@@ -3303,3 +3303,613 @@ than result invalidation.
       artifacts.
 - [ ] Remove or intentionally archive render scratch files before release.
 - [ ] Move to venue template when target venue is chosen.
+
+## Audit Run - 2026-07-13 07:44 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch: `codex/bestrec-sota-results`
+- HEAD: `acbe282f` (`Respond to PAPER_REVIEW_AUDIT run 05:40: breadth completed+integrated, conv prior art cited, provenance committed`)
+- Tracked working tree before this audit section: clean.
+- Untracked files present:
+  - `_bestrec_run/results_OFFICEV3_k16_seed20260728.json`
+  - `_bestrec_run/results_OFFICEV3_k16_seed20260728.users.jsonl.gz`
+  - `_bestrec_run/results_OFFICEV3_k16_seed20260728.final.users.jsonl.gz`
+  - `_bestrec_run/results_OFFICEV3_k16_seed20260728.json.treestate.txt`
+  - `_bestrec_run/results_OFFICEV3_k16_seed20260729.json.treestate.txt`
+  - `_bestrec_run/smoke_FIRB_IS_seed1.json`
+  - `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`
+  - `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`
+- Current primary manuscript/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_SUBMISSION.pdf`, `paper_tex/main.tex`, `paper_tex/paper-shared.tex`,
+  `paper_tex/PAPER_TORS.pdf`, `paper_tex/sections/*.tex`,
+  `paper_tex/tables/*.tex`, `paper_tex/references.bib`,
+  `PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`,
+  `PREREG_OFFICE_V3.md`, `_bestrec_run/adjudicate_office_v3.py`,
+  `paper_tex/BUILD_NOTES.md`, and `paper_tex/hygiene_scan_output.txt`.
+
+### Verdict
+
+**Scientific/result gate: green for the current manuscript.** I independently
+reran the strict build and it passed: 166 recomputed cells, 0 mismatches,
+0 untraceable values, all 13 declared claim families sourced, release-manifest
+verification OK, MI dual gate PASS, and Office remains descriptive/VOID under
+the earlier prereg.
+
+**Top-journal readiness: still not clean.** The new hard risk is not the FIR
+result; it is the Office V3 provenance/adjudication path. The paper now states
+Office V3 is pending, which is acceptable, but the committed V3 adjudicator has
+a bug in the dirty-tree exemption path that can make the campaign unverifiable
+exactly when the new E1 erratum is needed.
+
+**Live-state update during this audit:** Office V3 started while this audit was
+running via `_bestrec_run/run_impact_program.sh`; k16 seed 20260728 completed
+and k16 seed 20260729 was active. The completed seed recorded
+`git_dirty_tracked=true` at commit `acbe282f` with the treestate sidecar showing
+only `PAPER_REVIEW_AUDIT.md` as dirty, exactly the E1 case. Its final-epoch
+full-catalog NDCG@10 is 0.03060398 (n_eval 223,308), above the V3 reference
+0.0279, but this is 1/10 runs and has no campaign-level status.
+
+### Prioritized Rejection-Risk List
+
+1. **Confirmed blocker for Office V3 evidence, not current FIR claims:
+   the Office V3 adjudicator's E1 path is broken.**
+   `_bestrec_run/adjudicate_office_v3.py` references `os.path` and `RUN_DIR`
+   at lines 203 and 205, but this file never imports `os` and never defines
+   `RUN_DIR`. That code path executes when a run manifest has
+   `git_dirty_tracked != false`, which is exactly the case E1 was added to
+   handle. If the hourly audit/response logs dirty the tree during Office V3,
+   the adjudicator will raise `NameError` instead of verifying the treestate
+   sidecar. This contradicts the response file's claim that per-run treestate
+   sidecars are verified by the adjudicator.
+2. **Confirmed live-campaign provenance risk: Office V3 is now writing
+   untracked result and treestate artifacts while the audit file is dirty.**
+   The completed k16 seed 20260728 result has `git_dirty_tracked=true`; its
+   pre/post treestate sidecar shows only `PAPER_REVIEW_AUDIT.md` as dirty, and
+   the seed 20260729 pre-run sidecar already exists. This should be admissible
+   under E1 if the adjudicator works, but the artifacts are currently untracked
+   and the adjudicator's E1 code path is broken. Treat Office V3 as unaudited
+   until the tool is fixed and the sidecar/result boundary is explicit.
+3. **Confirmed documentation inconsistency: `paper_tex/BUILD_NOTES.md` is
+   partially stale after the FIR-BREADTH sync.** The top of the file says
+   `PAPER_TORS.pdf` is 39 pages and the current `hygiene_scan_output.txt`
+   agrees. Later, the compile-status and directory-inventory sections still say
+   35 pages / 36-page preview and claim ACM CCS concepts and keywords are not
+   provided. `paper-shared.tex` now contains CCSXML, `\ccsdesc`, and `\keywords`.
+   This is low scientific risk but looks careless in an artifact package.
+4. **Plausible literature-risk requiring author verification: SILLM4Rec is
+   closer than the paper's one-sentence exclusion may suggest.** Public ACM
+   metadata says SILLM4Rec experiments use three 5-core Amazon Reviews 2023
+   sub-datasets, and the public repo instructs users to download AR2023 5-core
+   files. However, the repo workflow appears to generate candidate product
+   ranking tasks and image/text preference summaries rather than full-catalog
+   LLOO ranking, so the paper's current "excluded pending direct protocol
+   inspection" stance remains defensible. Before freeze, inspect the ACM PDF
+   directly or cite the repo-level non-comparability reason more explicitly.
+5. **Plausible external-benchmark risk: LensKit Codex now has AR2023 5-core
+   benchmark pages, but the site itself says it is work-in-progress and should
+   not yet be cited or relied upon.** Do not cite it as evidence; keep it on the
+   freeze sweep list because a reviewer may know of it or because it may mature
+   before submission.
+
+### Confirmed Fixes Since Last Audit
+
+- The stale first/only AR2023 language flagged in earlier audits is not present
+  in the current claim wording. The paper now states no protocol-priority claim
+  and separates same-statistics AR2023 5-core LLOO, SID-line filtered-universe
+  work, older Amazon-2014 TIGER/LIGER, and other AR2023-adjacent protocols.
+- The FIR novelty boundary was materially improved. The paper now cites
+  frequency/time-frequency prior art beyond FMLP-Rec/BSARec and explicitly
+  names convolutional sequential-rec prior art (Caser and NextItNet), narrowing
+  the contribution to a left-causal, depthwise FIR regularizer inside an
+  HSTU-style stack.
+- FIR-BREADTH is no longer a mid-campaign partial. `PREREG_FIR_BREADTH.md` was
+  committed at `a7d6733d` before the result/adjudication commit `9619f5d4`, and
+  `FIR_BREADTH_RESULTS.md` mechanically reports both new categories as
+  CONFIRMED under the frozen rule:
+  Industrial_and_Scientific mean paired delta +0.00240, 95% CI
+  [+0.00183, +0.00297], 5/5 positive; CDs_and_Vinyl mean paired delta +0.00566,
+  95% CI [+0.00493, +0.00639], 5/5 positive.
+- The manuscript integrates the FIR-BREADTH result narrowly: four categories in
+  total, zero per-category tuning for the breadth categories, no comparator
+  claim, no SOTA language.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity OK.
+  - PASS: `SUBMISSION BUILD GREEN: 166 cells recomputed from source artifacts; 0 untraceable, 0 paper mismatches, all 13 declared claim families sourced`.
+  - PASS: `RELEASE MANIFEST VERIFY: OK (113 files verified, 0 release-asset files not local)`.
+  - PASS: MI dual gate.
+  - PASS: Office adjudication remains descriptive/VOID.
+- `git status --short`
+  - Tracked tree clean before the audit append.
+  - During the audit, Office V3 started and added the untracked k16 seed
+    20260728 result/user sidecars and seed 20260729 treestate sidecar listed above.
+- `git log --follow -- PREREG_FIR_BREADTH.md`
+  - Confirms prereg commit `a7d6733d` precedes the FIR result integration commit.
+- `git log -- _bestrec_run/results_FIRB_... FIR_BREADTH_RESULTS.md`
+  - Confirms result JSONs and adjudication record landed in `9619f5d4`.
+- Manual source inspection:
+  - `_bestrec_run/adjudicate_office_v3.py`: undefined `os` and `RUN_DIR` in the E1 branch.
+  - `PREREG_OFFICE_V3.md`: E1 exempts exactly `PAPER_REVIEW_AUDIT.md` and
+    `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`.
+  - `paper_tex/BUILD_NOTES.md`: page-count/CCS sections stale relative to current output.
+  - `paper_tex/hygiene_scan_output.txt`: current scan is PASS, 39 pages, no placeholder/forbidden failures.
+- Live Office V3 process/result inspection:
+  - `_bestrec_run/run_impact_program.sh` was active, running Office_Products k16
+    seed 20260729 under `uv`.
+  - Completed seed 20260728: final-epoch full-catalog NDCG@10 0.03060398,
+    n_eval 223,308, `git_dirty_tracked=true`, final per-user sidecar recorded.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR (arXiv:2504.10545v3) reports the comparator-family AR2023 5-core
+  statistics and numbers used by the paper: Video Games 25,612 items /
+  94,762 users / 814,585 interactions and HSTU-BLaIR NDCG@10 0.0760; Office
+  Products NDCG@10 0.0271; Musical Instruments NDCG@10 0.0406.
+  Source: https://arxiv.org/html/2504.10545v3
+- GrIT (arXiv:2602.19728v1) reports AR2023 Video Games full-item-set ranking
+  with matching 5-core statistics and Video Games NDCG@10 0.0588. The paper's
+  "point-estimate observation, not a claim" language is appropriate because
+  training/protocol details have not been fully audited for comparability.
+  Source: https://arxiv.org/html/2602.19728v1
+- WPGRec appears on the official SIGIR 2026 accepted-papers page, supporting
+  the bibliography note that it is accepted rather than merely an unreviewed
+  arXiv preprint. Source: https://sigir2026.org/en-AU/pages/program/accepted-papers
+- Caser and NextItNet are legitimate convolutional sequential-recommendation
+  prior art, so adding them to the FIR novelty boundary was necessary and
+  correct. Sources: https://arxiv.org/abs/1809.07426 and
+  https://arxiv.org/abs/1808.05163
+- Augment or Not? (arXiv:2505.23053) really uses Amazon'23 Musical Instruments
+  and Industrial and Scientific under 5-core leave-one-out and reports MI
+  NDCG@10 0.0282 for LETTER-TIGER in its table. Source:
+  https://arxiv.org/pdf/2505.23053
+- DiffuReason (arXiv:2602.09744) uses a different AR2023 "Video & Games"
+  universe with 67,658 users / 25,535 items / 654,867 interactions, supporting
+  the paper's non-comparability note. Source: https://arxiv.org/pdf/2602.09744
+- SILLM4Rec metadata and repo evidence confirm AR2023 5-core relevance but not
+  apples-to-apples full-catalog LLOO comparability. Sources:
+  https://dl.acm.org/doi/10.1145/3743093.3771011 and
+  https://github.com/MKC-Lab/SILLM4Rec
+- LensKit Codex has AR2023 5-core pages, but its own header says it should not
+  yet be cited or relied upon. Source: https://codex.lenskit.org/amazon/2023-5core/
+
+### Concrete Fixes To Make Next
+
+1. Fix `_bestrec_run/adjudicate_office_v3.py` before any Office V3 result is
+   used: import `os` or use `Path`, define the sidecar directory as
+   `_bestrec_run`, and add a small test/smoke path that exercises the E1 branch
+   with a fake dirty manifest and treestate sidecar.
+2. Decide and document the Office V3 treestate-sidecar boundary. If sidecars
+   are evidence for E1, commit them with the corresponding result JSONs and
+   include them in the adjudication/provenance story; if they are scratch, add
+   an ignore rule and have the adjudicator read only committed sidecars or
+   explicitly recorded run manifests.
+3. Update `paper_tex/BUILD_NOTES.md` to remove stale page counts and the stale
+   "CCS concepts / keywords not provided" warning. Make page counts refer to
+   `hygiene_scan_output.txt` where possible.
+4. Before submission freeze, inspect the SILLM4Rec ACM PDF directly. If it uses
+   candidate ranking, say that explicitly in the paper rather than "pending
+   direct protocol inspection"; if it is full-catalog LLOO, add it to the
+   non-comparable or comparable-preprint paragraph as appropriate.
+5. Keep the current SOTA/non-SOTA wording discipline. The strict scan's SOTA
+   hits are all explicit non-claims; do not shorten these caveats for space.
+
+### Open Questions
+
+- Office V3 is already continuing while this audit has dirtied the tracked tree.
+  The E1 adjudicator path must be fixed before any V3 result can be treated as
+  auditable campaign evidence.
+- Should `data_raw_proper/*/*.csv.gz` raw category archives be committed,
+  ignored, or excluded by policy? The current provenance JSONs are tracked, but
+  the raw gz files are not.
+- Is `smoke_FIRB_IS_seed1.json` intentionally retained as scratch? It predates
+  the FIR-BREADTH final results and should not be confused with claim evidence.
+- Does the final TORS submission package include `BUILD_NOTES.md`? If yes, its
+  stale compile-status section is a visible artifact-quality defect.
+
+### Running Checklist
+
+- [x] Locate canonical manuscript source and compiled artifacts.
+- [x] Read prior cumulative audit tail and response log.
+- [x] Check git status, commit history since the last run, and untracked files.
+- [x] Rerun strict manuscript/artifact gate.
+- [x] Verify FIR-BREADTH prereg/result commit ordering.
+- [x] Verify FIR-BREADTH printed deltas against adjudication record.
+- [x] Spot-check new novelty/prior-art claims against external sources.
+- [x] Spot-check recent AR2023-adjacent comparator coverage.
+- [x] Identify Office V3 adjudicator bug.
+- [x] Detect live Office V3 run and inspect first completed seed metadata.
+- [ ] Fix and smoke-test Office V3 adjudicator E1 path.
+- [ ] Decide Office V3 treestate-sidecar artifact boundary.
+- [ ] Update stale `paper_tex/BUILD_NOTES.md` sections.
+- [ ] Inspect SILLM4Rec full paper before submission freeze.
+- [ ] Re-run strict gate after any fixes.
+
+## Audit Run - 2026-07-13 09:45 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch: `codex/bestrec-sota-results`
+- HEAD: `acbe282f` (`Respond to PAPER_REVIEW_AUDIT run 05:40: breadth completed+integrated, conv prior art cited, provenance committed`)
+- Tracked working tree entering this run: already dirty only because the prior
+  `PAPER_REVIEW_AUDIT.md` section was uncommitted. The strict build did not add
+  any further tracked dirty files.
+- Current source/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/sections/*.tex`, `paper_tex/BUILD_NOTES.md`,
+  `paper_tex/hygiene_scan_output.txt`, `PREREG_OFFICE_V3.md`,
+  `_bestrec_run/adjudicate_office_v3.py`,
+  `_bestrec_run/results_OFFICEV3_k16_seed20260728.json`,
+  `_bestrec_run/results_OFFICEV3_k16_seed20260729.json`,
+  `_bestrec_run/results_OFFICEV3_k16_seed20260730.json`, and their treestate /
+  per-user sidecars where present.
+- Live run state: `uv` + Python process still active from 2026-07-13 09:13:20,
+  consistent with k16 seed 20260731 running. At inspection time there was only
+  `results_OFFICEV3_k16_seed20260731.json.treestate.txt`, no completed seed
+  20260731 result JSON yet.
+
+### Verdict
+
+**Current manuscript remains gate-green, but not submission-clean.** The
+paper's own claimed results still pass the strict artifact gate: HSTU core-block
+parity OK; 166 cells recomputed; 0 mismatches; 0 untraceable values; all 13
+declared claim families sourced; release manifest verified 113 files; MI dual
+gate PASS; legacy Office remains descriptive/VOID.
+
+**Confirmed hard blocker for future Office V3 evidence:** the V3 adjudicator
+does not merely look suspicious statically; it crashes in no-append mode on the
+current results with `NameError: name 'os' is not defined` at the E1 treestate
+path. Therefore any Office V3 campaign result is currently unauditable, even
+though the three completed k16 seeds are numerically above the frozen gate
+reference.
+
+**No current paper overclaim detected for Office V3.** The manuscript still says
+the redesigned V3 preregistration is committed with "outcome pending" and
+explicitly says no V3 result is claimed in this version. That boundary is
+correct while the campaign is live and the adjudicator is broken.
+
+### Prioritized Rejection-Risk List
+
+1. **Confirmed blocker: Office V3 adjudicator E1 path crashes at runtime.**
+   Command run:
+   `uv --project _bestrec_run run python _bestrec_run/adjudicate_office_v3.py --no-append`.
+   It exits 1 with `NameError: name 'os' is not defined` at line 203. This is
+   triggered by the actual completed V3 result manifests, all of which have
+   `git_dirty_tracked=true`. Until this is fixed and smoke-tested, Office V3
+   cannot be used as claim evidence.
+2. **Confirmed live-campaign provenance gap: three completed k16 V3 runs are
+   above the reference but all depend on the broken E1 path.** Current final
+   full-catalog NDCG@10 values: seed 20260728 = 0.03060398, seed 20260729 =
+   0.03052536, seed 20260730 = 0.03045678, all with n_eval 223,308 and all
+   above 0.0279. All three are from commit `acbe282f` with
+   `git_dirty_tracked=true`; treestate sidecars show only
+   `PAPER_REVIEW_AUDIT.md` dirty, which should be E1-admissible if the tool
+   worked.
+3. **Confirmed artifact-boundary risk if Office V3 becomes counted later.**
+   The paper currently says Office and FIR-breadth per-user sidecars are
+   local-only, untracked, hash-embedded, and not part of any counted claim. That
+   is fine for the current manuscript because V3 is pending. If V3 is promoted
+   into a counted claim, this availability/provenance sentence and release
+   manifest boundary must be updated before submission.
+4. **Confirmed documentation defect: `paper_tex/BUILD_NOTES.md` remains stale.**
+   The top section now says `PAPER_TORS.pdf` is 39 pages and the current hygiene
+   scan agrees. Later sections still say 35 review pages / 36 preview pages and
+   still state that ACM CCS concepts and keywords are not provided, even though
+   `paper-shared.tex` now contains CCSXML, `\ccsdesc`, and `\keywords`. This is
+   not a result defect, but it undermines artifact polish.
+5. **Plausible novelty/freshness risk: SILLM4Rec remains under-inspected.**
+   ACM/search metadata says it uses three 5-core Amazon Reviews 2023
+   sub-datasets, and the public repository explicitly downloads AR2023 5-core
+   files. The repository workflow, however, creates candidate product ranking
+   tasks and preference-optimization data, not an obvious full-catalog LLOO
+   benchmark. The current exclusion sentence is defensible only as a temporary
+   freeze-time placeholder.
+
+### Confirmed Fixes / Non-Problems Since The Prior Section
+
+- No new Office V3 overclaim was introduced in the manuscript. The result remains
+  "outcome pending" in the introduction, dataset table, conclusion, and TeX twin.
+- The strict artifact gate still passes after the current workspace inspection.
+- Seed 20260729's missing `*.final.users.jsonl.gz` file is not by itself a
+  defect: its best epoch is 20, matching the final epoch, and the manifest
+  records `user_records_path` with 223,308 rows and a SHA256. The adjudicator
+  comment explicitly treats the best-by-val sidecar as the final sidecar when
+  best epoch equals final epoch.
+- The current FIR-BREADTH manuscript language remains narrow: paired internal
+  filter-vs-no-filter improvements on two additional categories, no comparator
+  claim, no SOTA claim.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --strict`
+  - PASS: exact HSTU core-block parity.
+  - PASS: `SUBMISSION BUILD GREEN: 166 cells recomputed from source artifacts;
+    0 untraceable, 0 paper mismatches, all 13 declared claim families sourced`.
+  - PASS: `RELEASE MANIFEST VERIFY: OK (113 files verified, 0 release-asset
+    files not local)`.
+  - PASS: MI V2 gate.
+  - PASS: legacy Office adjudication remains descriptive/VOID.
+- `uv --project _bestrec_run run python _bestrec_run/adjudicate_office_v3.py --no-append`
+  - FAIL: `NameError: name 'os' is not defined` at the E1 sidecar lookup.
+  - `--no-append` prevented creation of `OFFICE_V3_RESULTS.md`.
+- `git status --short`
+  - Tracked: `PAPER_REVIEW_AUDIT.md` only.
+  - Untracked result/control artifacts: k16 seed 20260728, 20260729, 20260730
+    result JSONs and treestate files; seed 20260731 treestate file; old
+    `_bestrec_run/smoke_FIRB_IS_seed1.json`; raw category gz files for CDs and
+    Industrial.
+  - Ignored local per-user sidecars exist for seeds 20260728, 20260729, and
+    20260730.
+- Office V3 result spot-check:
+  - k16 seed 20260728: final NDCG@10 0.03060398, best 0.03061777, n_eval
+    223,308, final sidecar present.
+  - k16 seed 20260729: final NDCG@10 0.03052536, best 0.03056013, n_eval
+    223,308, best epoch 20, `user_records_path` present.
+  - k16 seed 20260730: final NDCG@10 0.03045678, best 0.03050437, n_eval
+    223,308, final sidecar present.
+- `paper_tex/hygiene_scan_output.txt`
+  - PASS: 39 pages, 0 placeholder/forbidden failures.
+  - SOTA mentions are all review-list informational / negated claim wording.
+
+### External Fact-Check / Novelty Notes
+
+- Official Amazon Reviews'23 documentation describes the dataset as public
+  AR2023 with 571.54M reviews, 48.19M items, 33 domains, rich metadata, and
+  standard splits. Source: https://amazon-reviews-2023.github.io/
+- The official AR2023 benchmark scripts define 5-core processing and
+  leave-last-out splits where each user's latest review is test and second
+  latest is validation. This supports the paper's use of the term LLOO, but
+  also reinforces why timestamp-split LensKit pages are not directly comparable.
+  Source: https://github.com/hyp1231/AmazonReviews2023/blob/main/benchmark_scripts/README.md
+- HSTU-BLaIR's arXiv page states that its Table 2 covers Video Games, Office
+  Products, Musical Instruments, and Steam, and emphasizes Office Products as a
+  sparse dataset where BLaIR improves over SASRec/HSTU. Source:
+  https://arxiv.org/html/2504.10545v3
+- SILLM4Rec remains close enough to require freeze inspection. ACM metadata says
+  the experiments use three 5-core AR2023 sub-datasets; the public repo says to
+  download AR2023 5-core files and then generate image descriptions, user
+  preference summaries, candidate product ranking tasks, and SFT/DPO data.
+  Sources: https://dl.acm.org/doi/10.1145/3743093.3771011 and
+  https://github.com/MKC-Lab/SILLM4Rec
+- LensKit Codex now has Amazon 2023 5-core pages, but the site header says the
+  Codex is work-in-progress and should not yet be cited or relied upon. Its
+  listed AR2023 page uses absolute-timestamp 5-core benchmark files, so it is
+  also not the same LLOO protocol as this paper. Source:
+  https://codex.lenskit.org/amazon/2023-5core/
+
+### Concrete Fixes To Make Next
+
+1. Patch `_bestrec_run/adjudicate_office_v3.py`: replace the `os.path` /
+   undefined `RUN_DIR` use with `HERE / f"results_OFFICEV3_k{arm}_seed{s}.json.treestate.txt"`
+   or define/import the needed names; add a smoke test that exercises E1 with a
+   fake dirty manifest and treestate sidecar.
+2. After fixing, rerun `adjudicate_office_v3.py --no-append` on the current
+   partial campaign and verify it reports missing runs rather than crashing.
+3. Decide the Office V3 per-user sidecar and treestate boundary before any V3
+   claim is integrated: either track/hash the needed sidecars or explicitly
+   keep V3 outside counted claims.
+4. Update `paper_tex/BUILD_NOTES.md` stale page-count and CCS/keyword sections.
+5. Inspect the SILLM4Rec ACM PDF directly before freeze, or revise the paper to
+   cite the repo-level candidate-ranking non-comparability reason instead of a
+   generic "pending direct protocol inspection" statement.
+
+### Open Questions
+
+- Will the current k16 Office V3 run finish all five seeds before the next audit,
+  and will the k8 arm start under the same dirty-tree pattern?
+- Should the running automation dirtying `PAPER_REVIEW_AUDIT.md` be paused during
+  confirmatory campaigns, or is E1 the intended permanent solution?
+- Should ignored Office V3 user sidecars be promoted to tracked/release evidence
+  if V3 becomes a counted claim?
+- Is `BUILD_NOTES.md` included in the final TORS/deposit artifact package? If
+  yes, the stale sections are visible submission defects.
+
+### Running Checklist
+
+- [x] Read automation memory and prior audit tail.
+- [x] Locate canonical manuscript source, TeX twin, PDFs, result files, and
+      preregistration files.
+- [x] Rerun strict manuscript/artifact gate.
+- [x] Confirm Office V3 adjudicator failure dynamically.
+- [x] Inspect current Office V3 result JSONs and treestate sidecars.
+- [x] Verify current paper does not claim Office V3 results.
+- [x] Re-check TeX hygiene scan and stale build notes.
+- [x] Spot-check SILLM4Rec, LensKit Codex, AR2023 docs, and HSTU-BLaIR sources.
+- [ ] Fix and smoke-test Office V3 adjudicator E1 path.
+- [ ] Re-adjudicate Office V3 partial campaign after the fix.
+- [ ] Decide Office V3 evidence/sidecar release boundary.
+- [ ] Update stale `paper_tex/BUILD_NOTES.md`.
+- [ ] Inspect SILLM4Rec full paper before submission freeze.
+
+## Audit Run - 2026-07-13 10:43 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch: `codex/bestrec-sota-results`
+- HEAD: `acbe282f` (`Respond to PAPER_REVIEW_AUDIT run 05:40: breadth completed+integrated, conv prior art cited, provenance committed`)
+- Tracked working tree entering this run: already dirty only because
+  `PAPER_REVIEW_AUDIT.md` contains uncommitted prior audit sections. The strict
+  rebuild did not leave `_bestrec_run/hstu_tables.json` dirty.
+- Current manuscript/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, `paper_tex/sections/*.tex`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/hygiene_scan_output.txt`,
+  `PREREG_OFFICE_V3.md`, `_bestrec_run/adjudicate_office_v3.py`, and current
+  `_bestrec_run/results_OFFICEV3_k16_seed20260728..31.json` result/treestate
+  artifacts.
+- Live run state: `uv` + Python processes from 2026-07-13 10:06:28 remain
+  active. `results_OFFICEV3_k16_seed20260732.json.treestate.txt` exists, but
+  `results_OFFICEV3_k16_seed20260732.json` does not yet exist. No k8 V3 result
+  files are present.
+
+### Verdict
+
+**Current manuscript claims still pass the artifact gate, but Office V3 remains
+unusable as evidence.** The strict rebuild passed in this run: HSTU core-block
+parity OK; 166 empirical cells recomputed; 0 mismatches; 0 untraceable values;
+all 13 declared claim families sourced; release manifest verified 113 files; MI
+dual gate PASS; legacy Office remains descriptive/VOID.
+
+**New since the 09:45 audit:** k16 seed 20260731 completed. Four k16 V3 seeds
+are now numerically above the frozen 0.0279 environment-matched reference, but
+the campaign still has fewer than 5 valid k16 runs, no k8 runs, and a crashing
+adjudicator. Under `PREREG_OFFICE_V3.md`, any arm with fewer than 5 valid runs
+is not claimable, and the full second-category confirmation requires both k16
+and k8 arms to pass.
+
+**No current paper overclaim detected.** The manuscript still frames Office V3
+as outcome-pending and keeps Office outside counted claims. That boundary is
+correct and must not be relaxed until the adjudicator is fixed, seed 20260732
+and the k8 arm complete, and the release/sidecar boundary is decided.
+
+### Prioritized Rejection-Risk List
+
+1. **Confirmed blocker: Office V3 adjudicator still crashes dynamically.**
+   `uv --project _bestrec_run run python _bestrec_run/adjudicate_office_v3.py --no-append`
+   exits 1 with `NameError: name 'os' is not defined` at line 203, in the E1
+   treestate-sidecar path. The source imports `argparse` at line 35 but does not
+   import `os`, and the path expression also relies on undefined `RUN_DIR`.
+   Until this is fixed and smoke-tested, V3 evidence is not auditable.
+2. **Confirmed incomplete campaign: k16 has 4/5 completed seeds and k8 has 0/5.**
+   Final-epoch full-catalog NDCG@10 values for completed k16 runs:
+   20260728 = 0.03060398, 20260729 = 0.03052536, 20260730 = 0.03045678,
+   20260731 = 0.03032775. Four-seed descriptive mean = 0.03047847, sd =
+   0.00011710, t-approx CI lower bound = 0.03029214. This is numerically
+   encouraging, but it is still not the preregistered 5-seed arm test.
+3. **Confirmed provenance/availability boundary risk if V3 is promoted later.**
+   All four completed k16 result JSONs show `git_dirty_tracked=true` at commit
+   `acbe282f`; treestate sidecars show only `PAPER_REVIEW_AUDIT.md` dirty,
+   which should be E1-admissible after the tool fix. The current paper says
+   Office/FIR-breadth per-user sidecars are local-only and not part of counted
+   claims. If V3 becomes counted, that sentence and the release manifest must be
+   updated or reviewers will see an evidence-boundary mismatch.
+4. **Confirmed documentation defect: `paper_tex/BUILD_NOTES.md` remains stale.**
+   Current `hygiene_scan_output.txt` says `PAPER_TORS.pdf` has 39 pages.
+   `pypdf` confirms `PAPER_TORS.pdf` has 39 letter pages and
+   `PAPER_TORS_acmsmall.pdf` has 41 pages, while later `BUILD_NOTES.md`
+   sections still say 35 review pages / 36 preview pages and still claim CCS
+   concepts/keywords are absent despite `paper-shared.tex` containing CCSXML
+   and `\keywords`.
+5. **Plausible freshness/novelty risk requiring author verification:
+   SILLM4Rec remains under-inspected.** ACM/search metadata and the public repo
+   establish AR2023 5-core relevance; the repo workflow appears to build
+   candidate-ranking and SFT/DPO data rather than full-catalog LLOO. The current
+   paper can keep it out of comparable-results claims only if this
+   non-comparability is made explicit or the full ACM PDF is inspected before
+   freeze.
+
+### Confirmed Fixes / Non-Problems Since The Prior Section
+
+- Seed 20260731 now exists as a completed k16 V3 JSON with n_eval 223,308,
+  commit `acbe282f`, `git_dirty_tracked=true`, `best_test_epoch=20`, and
+  final-epoch NDCG@10 0.03032775.
+- Seed 20260732 is still running or incomplete: only its 54-byte pre-run
+  treestate marker exists.
+- The strict gate did not create any new tracked diff outside this audit file.
+- PDF rendering with the bundled Poppler wrappers could not be performed in
+  this Windows run because both `pdfinfo.cmd` and `pdftoppm.cmd` fail with "The
+  system cannot find the path specified." Text/page geometry checks were
+  performed with `pypdf`, and the manuscript hygiene scan remains PASS.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --strict`
+  - PASS: exact HSTU core-block parity.
+  - PASS: `SUBMISSION BUILD GREEN: 166 cells recomputed from source artifacts;
+    0 untraceable, 0 paper mismatches, all 13 declared claim families sourced`.
+  - PASS: `RELEASE MANIFEST VERIFY: OK (113 files verified, 0 release-asset
+    files not local)`.
+  - PASS: MI V2 gate.
+  - PASS: legacy Office adjudication remains descriptive/VOID.
+- `uv --project _bestrec_run run python _bestrec_run/adjudicate_office_v3.py --no-append`
+  - FAIL: `NameError: name 'os' is not defined` at line 203.
+  - `--no-append` prevented creation of `OFFICE_V3_RESULTS.md`.
+- Office V3 k16 result extraction:
+  - seed 20260728: final 0.03060398, best 0.03060573, n_eval 223,308.
+  - seed 20260729: final 0.03052536, best 0.03052536, n_eval 223,308.
+  - seed 20260730: final 0.03045678, best 0.03047156, n_eval 223,308.
+  - seed 20260731: final 0.03032775, best 0.03032775, n_eval 223,308.
+- `git status --short`
+  - Tracked: `PAPER_REVIEW_AUDIT.md`.
+  - Untracked: k16 V3 result/treestate files for seeds 20260728..31,
+    seed 20260732 treestate only, `_bestrec_run/smoke_FIRB_IS_seed1.json`, and
+    raw `data_raw_proper` category gz files.
+- PDF checks:
+  - `pypdf`: `paper_tex/PAPER_TORS.pdf` = 39 pages, 612 x 792 pt.
+  - `pypdf`: `paper_tex/PAPER_TORS_acmsmall.pdf` = 41 pages, 486 x 720 pt.
+  - `pypdf`: `PAPER_SUBMISSION.pdf` = 44 pages, 612 x 792 pt.
+  - `pdftoppm.cmd`: failed before rendering, so no PNG visual inspection was
+    completed this run.
+
+### External Fact-Check / Novelty Notes
+
+- Official AR2023 5-core documentation defines leave-last-out splitting as
+  first N-2 interactions for training, N-1 for validation, and N for testing,
+  while separately documenting absolute-timestamp splitting. This supports the
+  paper's LLOO terminology and its caution against comparing to timestamp-split
+  pages. Source: https://amazon-reviews-2023.github.io/data_processing/5core.html
+- HSTU-BLaIR reports the same AR2023 benchmark family and key comparator
+  numbers: Video Games HSTU-BLaIR NDCG@10 0.0760, Office Products 0.0271, and
+  Musical Instruments 0.0406; it also lists Office Products as 77,551 items,
+  223,308 users, and 1,800,877 interactions. Source:
+  https://arxiv.org/html/2504.10545v3
+- The HSTU-BLaIR public repo says results should reproduce "within a small
+  margin of variability" and documents the released configs/hardware context.
+  This supports treating local comparator regenerations as informative but
+  environment-caveated. Source: https://github.com/snapfinger/HSTU-BLaIR
+- LensKit Codex's AR2023 5-core page uses UCSD absolute-timestamp benchmark
+  files, not this paper's LLOO protocol. It remains a watch item, not an
+  apples-to-apples comparator. Source: https://codex.lenskit.org/amazon/2023-5core/
+- SILLM4Rec's public repo says to download AR2023 5-core files, then generate
+  image descriptions, user preference summaries, candidate product ranking
+  tasks, and SFT/DPO data. That is close enough for a related-work check but
+  not yet evidence of full-catalog LLOO comparability. Source:
+  https://github.com/MKC-Lab/SILLM4Rec
+
+### Concrete Fixes To Make Next
+
+1. Fix `_bestrec_run/adjudicate_office_v3.py` E1 path (`os` import or `Path`
+   rewrite; remove/define `RUN_DIR`), then run `--no-append` and confirm it
+   reports missing/partial campaign status instead of crashing.
+2. Let k16 seed 20260732 finish, then run the fixed V3 adjudicator before
+   starting or trusting any k8 evidence.
+3. Decide whether V3 per-user and treestate sidecars become tracked/release
+   evidence if V3 is integrated into the paper.
+4. Clean `paper_tex/BUILD_NOTES.md`: update 39/41-page counts and remove the
+   stale CCS/keyword warning.
+5. Inspect the SILLM4Rec ACM PDF or revise related work to state the observed
+   candidate-ranking/SFT-DPO non-comparability from the public repo.
+
+### Open Questions
+
+- Is the active 10:06 process seed 20260732 still healthy, and will it emit a
+  result JSON before the next audit?
+- Should hourly audit writes be exempted permanently via E1, or should
+  confirmatory campaigns run with the audit paused to keep manifests clean?
+- Are `data_raw_proper/*/*.csv.gz` intended release assets, ignored local raw
+  caches, or accidental untracked files?
+- Is `BUILD_NOTES.md` included in the final artifact package? If yes, the stale
+  page-count/CCS sections are visible submission defects.
+
+### Running Checklist
+
+- [x] Read automation memory.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, and audit
+      artifacts.
+- [x] Rerun strict manuscript/artifact gate.
+- [x] Confirm Office V3 adjudicator failure dynamically.
+- [x] Inspect completed Office V3 k16 seeds 20260728..31.
+- [x] Confirm seed 20260732 is still incomplete and k8 has not started.
+- [x] Verify current paper still keeps Office V3 outcome-pending.
+- [x] Check PDF page counts and note Poppler wrapper failure.
+- [x] Spot-check AR2023, HSTU-BLaIR, LensKit Codex, and SILLM4Rec sources.
+- [ ] Fix and smoke-test Office V3 adjudicator E1 path.
+- [ ] Re-adjudicate V3 partial campaign after the fix.
+- [ ] Decide V3 sidecar/release boundary.
+- [ ] Update stale `paper_tex/BUILD_NOTES.md`.
+- [ ] Inspect SILLM4Rec full paper before submission freeze.

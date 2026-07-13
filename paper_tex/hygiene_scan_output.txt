@@ -1,11 +1,11 @@
-hygiene scan: PAPER_TORS.pdf | pages: 39
+hygiene scan: PAPER_TORS.pdf | pages: 40
 placeholder+forbidden failures: 0
-review list (SOTA mentions + negated claim-wordings): 15
-  REVIEW negated-ok: paired\s+superiority :: xecute on our hardware, this is a per-category point-estimate comparison, not a paired superiority or general SOTA claim . Our second headline is a dataset-conditional long-tail 
+review list (SOTA mentions + negated claim-wordings): 18
+  REVIEW negated-ok: paired\s+superiority :: xecute on our hardware, this is a per-category point-estimate comparison, not a paired superiority or general SOTA claim. Our second headline is a dataset-conditional long-tail p
   REVIEW negated-ok: pinned(?:[-\s]\w+)?[-\s]reproduction :: Triton kernels have no sm_120 images — proven via WSL), which blocks a faithful pinned reproduction. A late shimmed execution of the reference implementation’s research path (§5.6
   REVIEW negated-ok: pinned(?:[-\s]\w+)?[-\s]reproduction :: luded from the artifact graph) 0.13234 final stronger than ours; not a faithful pinned-environment reproduction Our full model (0.0673) exceeds their published SASRec (0.0573) but does not re
   REVIEW negated-ok: pinned\s+reproduction :: Triton kernels have no sm_120 images — proven via WSL), which blocks a faithful pinned reproduction. A late shimmed execution of the reference implementation’s research path (§5.6
-  REVIEW SOTA-mention :: s a per-category point-estimate comparison, not a paired superiority or general SOTA claim . Our second headline is a dataset-conditional long-tail pattern (an empi
+  REVIEW SOTA-mention :: s a per-category point-estimate comparison, not a paired superiority or general SOTA claim. Our second headline is a dataset-conditional long-tail pattern (an empir
   REVIEW SOTA-mention :: esult as a competitive, fully-attributed, multi-seed contribution rather than a SOTA claim. Contributions: (1) the trustworthy-evaluation apparatus above — immutabl
   REVIEW SOTA-mention :: e Video_Games result a competitive, fully-attributed contribution rather than a SOTA claim. 7. Engineering: a memory-efficient chunked-full-softmax loss (full-softm
   REVIEW SOTA-mention ::  published SASRec 0.0573), shown to be architectural (ID-only ≈0.0656), with no SOTA claim. (The earlier v1-era SASRec-SBERT number 0.05509 ± 0.00035 has been retir
@@ -13,7 +13,10 @@ review list (SOTA mentions + negated claim-wordings): 15
   REVIEW SOTA-mention :: s the benchmark relative to the by-timestamp variant. We therefore do not claim SOTA over TIGER/LIGER/BLaIR. HSTU-BLaIR is the relevant stronger AR2023 Video_Games 
   REVIEW SOTA-mention :: relevant stronger AR2023 Video_Games 5-core reference and blocks a SASRec-SBERT SOTA claim. 2026 semantic-ID / generative retrieval line. Recent 2026 work reports A
   REVIEW SOTA-mention :: on that category is positive with a 95% CI excluding zero — nothing broader, no SOTA language, no comparator statement. The filter is thus multi-seed-confirmed on f
+  REVIEW SOTA-mention :: eration 0.0279; no paired or distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA cla
+  REVIEW SOTA-mention :: distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind. The V1 VOID a
+  REVIEW SOTA-mention :: not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind. The V1 VOID above stands unchanged as its own record (Append
   REVIEW SOTA-mention :: itive text contributor (+0.0009), not a headline. We do not claim a Video_Games SOTA — the published HSTU-BLaIR 0.0760 relies on custom CUDA/Triton kernels that are
   REVIEW SOTA-mention :: ratus these results were produced under. Explicit non-claims: • We do not claim SOTA over TIGER, LIGER, BLaIR, or HSTU-BLaIR; the published HSTU-BLaIR 0.0760 remain
-  REVIEW SOTA-mention :: . We provide our 0.01946 (2-seed mean) as a reference baseline rather than as a SOTA-improvement claim. A future apples-to-apples comparison would require either: •
+  REVIEW SOTA-mention :: . We provide our 0.01946 (2-seed mean) as a reference baseline rather than as a SOTA-improvement claim. A future apples-to-apples comparison would require either: M
 verdict: PASS (review list above is informational)

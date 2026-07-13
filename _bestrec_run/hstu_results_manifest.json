@@ -22,7 +22,8 @@
   "table2",
   "office_confirmation",
   "theirs_on_ours",
-  "fir_breadth"
+  "fir_breadth",
+  "office_v3"
  ],
  "paths_relative_to": "repository root",
  "cells": [
@@ -13347,6 +13348,242 @@
      "paper": 5,
      "mode": "count",
      "recomputed": 5,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "officev3.k16.gate",
+   "table_id": "office_v3",
+   "row_label": "Office V3 pre-registered gate, K=16 (final-epoch FULL-catalog)",
+   "metric": "NDCG@10 mean/sd/95% CI-LB vs local-regen 0.0279",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_OFFICEV3_k16_seed20260728.json",
+    "_bestrec_run/results_OFFICEV3_k16_seed20260729.json",
+    "_bestrec_run/results_OFFICEV3_k16_seed20260730.json",
+    "_bestrec_run/results_OFFICEV3_k16_seed20260731.json",
+    "_bestrec_run/results_OFFICEV3_k16_seed20260732.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    20260728,
+    20260729,
+    20260730,
+    20260731,
+    20260732
+   ],
+   "recompute": {
+    "rule": "final_full_ci",
+    "params": {
+     "files": [
+      "_bestrec_run/results_OFFICEV3_k16_seed20260728.json",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260729.json",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260730.json",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260731.json",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260732.json"
+     ],
+     "expect_n_eval": 223308,
+     "threshold": 0.0279,
+     "seeds": [
+      20260728,
+      20260729,
+      20260730,
+      20260731,
+      20260732
+     ]
+    }
+   },
+   "recompute_rule": "per-seed history[-1].test[NDCG@10] (final-epoch FULL-catalog eval, n_eval asserted; NOT best_test) + mean/sd/95% CI lower bound",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.03047,
+     "mode": "round",
+     "precision": 5
+    },
+    {
+     "name": "sd",
+     "value": 0.00011,
+     "mode": "round",
+     "precision": 5
+    },
+    {
+     "name": "cilb",
+     "value": 0.03033,
+     "mode": "round",
+     "precision": 5
+    },
+    {
+     "name": "n_above",
+     "value": 5,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_OFFICE_V3.md (committed before any run; ERRATUM E1 pre-campaign): gate reference = the ENVIRONMENT-MATCHED local regeneration of the comparator (0.0279 best full-eval, above published 0.0271). Both arms PASSED (OFFICE_V3_RESULTS.md, block 196799e7c46d): 10/10 seeds above both references; per-category point-estimate comparison per the frozen wording -- no paired superiority, not SOTA. The V1 campaign remains VOID (Appendix A.0).",
+   "recomputed": {
+    "mean": 0.030465742440085902,
+    "sd": 0.00010532857813486563,
+    "n": 5,
+    "cilb": 0.03033495973663385,
+    "seed20260728": 0.03060398165336863,
+    "seed20260729": 0.030525355666392022,
+    "seed20260730": 0.03045678265400092,
+    "seed20260731": 0.03032775231005816,
+    "seed20260732": 0.03041483991660979,
+    "n_above": 5.0
+   },
+   "recomputed_value": 0.030465742440085902,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.03047,
+     "mode": "round",
+     "recomputed": 0.030465742440085902,
+     "result": "exact",
+     "rounded": 0.03047
+    },
+    {
+     "name": "sd",
+     "paper": 0.00011,
+     "mode": "round",
+     "recomputed": 0.00010532857813486563,
+     "result": "exact",
+     "rounded": 0.00011
+    },
+    {
+     "name": "cilb",
+     "paper": 0.03033,
+     "mode": "round",
+     "recomputed": 0.03033495973663385,
+     "result": "exact",
+     "rounded": 0.03033
+    },
+    {
+     "name": "n_above",
+     "paper": 5,
+     "mode": "count",
+     "recomputed": 5.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "officev3.k8.gate",
+   "table_id": "office_v3",
+   "row_label": "Office V3 pre-registered gate, K=8 (final-epoch FULL-catalog)",
+   "metric": "NDCG@10 mean/sd/95% CI-LB vs local-regen 0.0279",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_OFFICEV3_k8_seed20260728.json",
+    "_bestrec_run/results_OFFICEV3_k8_seed20260729.json",
+    "_bestrec_run/results_OFFICEV3_k8_seed20260730.json",
+    "_bestrec_run/results_OFFICEV3_k8_seed20260731.json",
+    "_bestrec_run/results_OFFICEV3_k8_seed20260732.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    20260728,
+    20260729,
+    20260730,
+    20260731,
+    20260732
+   ],
+   "recompute": {
+    "rule": "final_full_ci",
+    "params": {
+     "files": [
+      "_bestrec_run/results_OFFICEV3_k8_seed20260728.json",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260729.json",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260730.json",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260731.json",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260732.json"
+     ],
+     "expect_n_eval": 223308,
+     "threshold": 0.0279,
+     "seeds": [
+      20260728,
+      20260729,
+      20260730,
+      20260731,
+      20260732
+     ]
+    }
+   },
+   "recompute_rule": "per-seed history[-1].test[NDCG@10] (final-epoch FULL-catalog eval, n_eval asserted; NOT best_test) + mean/sd/95% CI lower bound",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.03029,
+     "mode": "round",
+     "precision": 5
+    },
+    {
+     "name": "sd",
+     "value": 5e-05,
+     "mode": "round",
+     "precision": 5
+    },
+    {
+     "name": "cilb",
+     "value": 0.03024,
+     "mode": "round",
+     "precision": 5
+    },
+    {
+     "name": "n_above",
+     "value": 5,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_OFFICE_V3.md (committed before any run; ERRATUM E1 pre-campaign): gate reference = the ENVIRONMENT-MATCHED local regeneration of the comparator (0.0279 best full-eval, above published 0.0271). Both arms PASSED (OFFICE_V3_RESULTS.md, block 196799e7c46d): 10/10 seeds above both references; per-category point-estimate comparison per the frozen wording -- no paired superiority, not SOTA. The V1 campaign remains VOID (Appendix A.0).",
+   "recomputed": {
+    "mean": 0.030294289307828782,
+    "sd": 4.589067350277621e-05,
+    "n": 5,
+    "cilb": 0.030237308510687063,
+    "seed20260728": 0.03024789314632,
+    "seed20260729": 0.030367082780669297,
+    "seed20260730": 0.030295437484306017,
+    "seed20260731": 0.030297715792230846,
+    "seed20260732": 0.030263317335617743,
+    "n_above": 5.0
+   },
+   "recomputed_value": 0.030294289307828782,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.03029,
+     "mode": "round",
+     "recomputed": 0.030294289307828782,
+     "result": "exact",
+     "rounded": 0.03029
+    },
+    {
+     "name": "sd",
+     "paper": 5e-05,
+     "mode": "round",
+     "recomputed": 4.589067350277621e-05,
+     "result": "exact",
+     "rounded": 5e-05
+    },
+    {
+     "name": "cilb",
+     "paper": 0.03024,
+     "mode": "round",
+     "recomputed": 0.030237308510687063,
+     "result": "exact",
+     "rounded": 0.03024
+    },
+    {
+     "name": "n_above",
+     "paper": 5,
+     "mode": "count",
+     "recomputed": 5.0,
      "result": "exact"
     }
    ],

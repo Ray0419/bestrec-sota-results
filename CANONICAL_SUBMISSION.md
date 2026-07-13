@@ -7,29 +7,35 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
 
 ## The canonical claim set (nothing broader is claimed anywhere)
 
-1. **MI point-estimate result (externally approved; the only counted per-category comparator
-   win):** fresh 5-seed CI lower bounds exceed the published HSTU-BLaIR Musical_Instruments
+1. **MI point-estimate result (externally approved; the first of two counted per-category
+   comparator wins — see item 3 for Office V3):** fresh 5-seed CI lower bounds exceed the published HSTU-BLaIR Musical_Instruments
    point estimate (0.0406) for both kernels (K=16 CI-LB 0.04096, K=8 CI-LB 0.04083, 10/10 fresh
    seeds above) — per-category point-estimate comparison, not paired superiority, not general
    SOTA. The comparator has additionally been **locally regenerated** by running the reference
    implementation itself (best full-eval epoch NDCG@10 = 0.0406 exactly; environment-caveated
    single run, §5.6 / `THEIRS_ON_OURS_REPORT.md`) — regeneration, never "official reproduction".
    Evidence: `SOTA_CONFIRM_PREREG_V2.md` → `SOTA_CONFIRM_V2_RESULTS.md` (+ errata).
-2. **Causal FIR filter:** multi-seed lever confirmed on two categories (Video_Games +
-   Musical_Instruments). Comparator ablations **complete** (5-seed × 2 arms, manuscript §5.2):
+2. **Causal FIR filter:** multi-seed lever confirmed on **four categories** (Video_Games +
+   Musical_Instruments in development; Industrial_and_Scientific + CDs_and_Vinyl under the
+   pre-registered breadth campaign `PREREG_FIR_BREADTH.md` / `FIR_BREADTH_RESULTS.md`,
+   both CONFIRMED, 10/10 seeds, CIs exclude zero). Comparator ablations **complete** (5-seed × 2 arms, manuscript §5.2):
    the learned kernel carries the effect (fixed moving-average keeps ~59%); the zero-init gate
    is a training convenience. Artifacts: `results_FIRABL_*` (manifest family `tableV2conf`/FIR
    cells).
-3. **Dataset-conditional long-tail pattern** + thinning-intervention evidence
-   (intervention-scoped wording). The pre-registered Office out-of-sample program **completed
-   with an honest verdict**: gate arithmetic passed numerically but the pre-registration is
-   **VOID under its floor check** — Office is **descriptive only, counted in no claim**; the
-   floor anomaly is mechanistically explained (their own SASRec run locally lands +13.9% above
-   its published row; their Office HSTU-BLaIR row, by contrast, regenerates locally at +1.6%,
-   reported descriptively) and the VOID is retained on procedural grounds — the floor check
-   failed as written, and no post-hoc result restores a voided pre-registration
-   (`SOTA_CONFIRM_PREREG_OFFICE.md`, `SOTA_CONFIRM_OFFICE_RESULTS.md`, paper Appendix A.0,
-   `THEIRS_ON_OURS_REPORT.md`).
+3. **Office_Products — V1 VOID stands; V3 PASSED (the second counted comparator win).**
+   The V1 pre-registration is **VOID under its floor check** and stays VOID — descriptive
+   only, counted in no claim; the floor anomaly is mechanistically explained (their own
+   SASRec run locally lands +13.9% above its published row; their Office HSTU-BLaIR row
+   regenerates locally at +1.6%) and no post-hoc result restores a voided pre-registration
+   (`SOTA_CONFIRM_PREREG_OFFICE.md`, `SOTA_CONFIRM_OFFICE_RESULTS.md`, Appendix A.0,
+   `THEIRS_ON_OURS_REPORT.md`). The **redesigned V3 pre-registration PASSED**
+   (`PREREG_OFFICE_V3.md` + ERRATUM E1; `OFFICE_V3_RESULTS.md`): fresh never-inspected
+   seeds 20260728–32, gate vs the environment-matched local regeneration (0.0279 > published
+   0.0271) — K=16 CI-LB **0.03033**, K=8 CI-LB **0.03024**, 10/10 seeds above both
+   references. Claim capped at the frozen wording: per-category point-estimate comparison;
+   no paired superiority; not SOTA of any kind.
+   Also under this item: the **dataset-conditional long-tail pattern** +
+   thinning-intervention evidence (intervention-scoped wording) is unchanged.
 4. TAPE as a modest secondary component; negative results labeled exploratory unless multi-seed.
 5. Reproducibility: provenance manifests, per-user sidecars (MI tracked; Office sidecars
    local-only/untracked, not part of any counted claim), clean-rebuild demonstration, and the

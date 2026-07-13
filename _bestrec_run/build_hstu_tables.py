@@ -601,7 +601,7 @@ PUB_SASREC_OFF = 0.0153     # Liu 2025, published Office_Products SASRec (extern
 # every table family the paper declares; --submission fails if any has no sourced cells
 REQUIRED_FAMILIES = ["table1", "table1a", "table1b", "table1c", "table1d", "table1e",
                      "table541", "table542", "tableV2conf", "table2",
-                     "office_confirmation", "theirs_on_ours", "fir_breadth"]
+                     "office_confirmation", "theirs_on_ours", "fir_breadth", "office_v3"]
 
 OFFICE_VOID_NOTE = ("VOID under prereg floor check (+44% floor inflation); "
                     "provisional, not counted as a pass")
@@ -1559,6 +1559,27 @@ def build_spec():
                       "paired 5-seed delta NDCG@10 (best-by-val full catalog)",
                       FF + FN, "paired_delta", {"a": FF, "b": FN},
                       exp, 5, conf, seeds=FIRB_SEEDS, notes=FB_NOTE))
+
+    # ------- office_v3: redesigned pre-registered confirmation (PASSED) -------
+    V3_SEEDS = [20260728, 20260729, 20260730, 20260731, 20260732]
+    V3_NOTE = ("PREREG_OFFICE_V3.md (committed before any run; ERRATUM E1 pre-campaign): gate "
+               "reference = the ENVIRONMENT-MATCHED local regeneration of the comparator "
+               "(0.0279 best full-eval, above published 0.0271). Both arms PASSED "
+               "(OFFICE_V3_RESULTS.md, block 196799e7c46d): 10/10 seeds above both references; "
+               "per-category point-estimate comparison per the frozen wording -- no paired "
+               "superiority, not SOTA. The V1 campaign remains VOID (Appendix A.0).")
+    for arm, exp3 in ((16, [chk("mean", 0.03047, 5), chk("sd", 0.00011, 5),
+                            chk("cilb", 0.03033, 5), chk("n_above", 5, mode="count")]),
+                      (8, [chk("mean", 0.03029, 5), chk("sd", 0.00005, 5),
+                           chk("cilb", 0.03024, 5), chk("n_above", 5, mode="count")])):
+        V3F = [BR + f"results_OFFICEV3_k{arm}_seed{s}.json" for s in V3_SEEDS]
+        C.append(cell(f"officev3.k{arm}.gate", "office_v3",
+                      f"Office V3 pre-registered gate, K={arm} (final-epoch FULL-catalog)",
+                      "NDCG@10 mean/sd/95% CI-LB vs local-regen 0.0279",
+                      V3F, "final_full_ci",
+                      {"files": V3F, "expect_n_eval": 223308, "threshold": 0.0279,
+                       "seeds": V3_SEEDS},
+                      exp3, 5, conf, seeds=V3_SEEDS, notes=V3_NOTE))
 
     return C
 

@@ -9,6 +9,29 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to the 2026-07-13 risk-list refresh (incl. back-filled runs 00:40 / 01:42 / 02:41 and the 16:49 re-adjudication)
+
+The audit process back-filled three overnight run sections and refreshed the prioritized risk
+list against the post-V3 workspace. The three overnight runs' findings were consolidated into
+the 05:40/06:46 runs already answered (breadth staleness, provenance tracking, erratum
+ordering, Caser/NextItNet — all resolved at commits `9619f5d`…`045d6a6`). The refreshed list's
+three confirmed blockers were V3-integration stragglers; all fixed:
+
+| # | Finding | Resolution |
+|---|---|---|
+| 1 | Office V3 status internally inconsistent (intro, related-work, conclusion, a limitation still said "outcome pending") | **All sites updated** in both papers and the LaTeX twin: each now states the pass with the V1-VOID-stands pairing; the conclusion carries the full arc ("the apparatus caught its own comparability flaw, the redesign removed it by construction, and the fixed protocol passed"). Verified: **zero occurrences of "outcome pending" remain** in the md, tex, or either compiled PDF. |
+| 2 | Availability boundary stale for a *counted* V3 claim | §8 rewritten to state the boundary exactly: the ten V3 result JSONs and per-run tree-state provenance sidecars are **tracked** (every printed V3 claim recomputes from these via the fail-closed gate); per-user sidecars for Office V1/V3 and FIR-breadth are local-only with SHA256s embedded in each run's tracked manifest, inventoried in `OFFICE_V3_RESULTS.md`. |
+| 3 | Three V3 runs have `user_records_final_path = null` vs the prereg's final-sidecar promise | **ERRATUM E2** (dated, post-campaign, disclosure-only): the writer emits a separate `*.final` sidecar only when best-epoch ≠ final-epoch; for the three coinciding runs the regular sidecar *is* the final-epoch record (hash-embedded). A 10-row per-run sidecar inventory is appended to `OFFICE_V3_RESULTS.md`. No data missing; no gate, seed, or wording change. |
+| 6 | Abstract "reference implementation cannot execute" contradicts §5.6 | Fixed to the precise distinction: the **pinned official environment** cannot execute locally; the research path runs only as unpinned, shimmed, environment-caveated regenerations (§5.6). |
+| 7 | BUILD_NOTES staleness (page counts, resolved CCS warning, old hygiene wording) | Fixed: round-8 counts marked historical, CCS warning marked RESOLVED with pointer, and the hygiene description updated to the current claim boundary (V1-as-passed forbidden; V3 citable only per its frozen wording). |
+| 9 | SILLM4Rec exclusion should cite observed evidence | Upgraded in both papers using the audit's own repo findings: "generated candidate-ranking tasks with SFT/DPO workflows rather than full-catalog LLOO ranking, so the accessible evidence indicates a non-interchangeable protocol." |
+| 8 / 10 / 11 | FIR novelty stays narrow; methodology framing stays narrow; scientific boundary | Affirmed — no wording touched beyond the fixes above; the FIR claim remains the leak-free zero-init depthwise FIR regularizer in this artifact-gated setting; the apparatus is framed as an auditable per-paper discipline demonstrated on concrete claims; the boundary list is enforced by the responder's standing rules. |
+
+**Verification:** md 45 pp / 3 images / scan CLEAN; TORS 40 pp scan PASS (review list steady at
+18, all explicit non-claims); numeral fidelity zero-missing; manifest regenerated; strict chain
+PASS (168 cells 0/0, 14/14 families; 113 files verified) → pushed. Items 4–5 of the refreshed
+list are the audit's own fresh-green re-runs of both gates, concurring.
+
 ## Response — to Audit Run 2026-07-13 06:46 (responded 2026-07-13, same day)
 
 This run audited the two-minute window between the FIR-BREADTH campaign completing (06:44) and

@@ -13,6 +13,24 @@ under "Conversion decisions" below). Compiled outputs:
 `[manuscript,review,anonymous]` acmart format, Figs. 1–3 embedded**, plus the untracked
 production preview `PAPER_TORS_acmsmall.pdf` (40 pages, `[acmsmall,screen,review,anonymous]`).
 
+## 2026-07-13 sync (3): post-V3 consistency sweep
+
+Mirrors the canonical md's six-hunk consistency sweep (audit blockers 1/2 + items 6/9), all
+verbatim: (1) abstract — "whose pinned official environment cannot execute on our hardware
+(its research path runs locally only as unpinned, shimmed, environment-caveated regenerations,
+§5.6)"; (2) §1 apparatus item (d) — the redesigned Office pre-registration "subsequently
+**passed on fresh never-inspected seeds** — both kernel arms' CI lower bounds above both
+references (…; §5.2) — while the V1 VOID stands unchanged"; (3) §2 reproducibility paragraph —
+"a redesigned successor that subsequently passed on fresh seeds (…; §5.2), the original VOID
+standing unchanged"; (4) §7 conclusion apparatus recap — "…the apparatus caught its own
+comparability flaw, the redesign removed it by construction, and the fixed protocol passed";
+(5) §8 — tracked V3 result JSONs + per-run tree-state provenance sidecars, per-user sidecars
+(Office V1/V3 + FIR-breadth) local-only with embedded SHA256s, inventory in
+`OFFICE_V3_RESULTS.md`; (6) §5.1 SILLM4Rec exclusion now cites the observed repository
+evidence (generated candidate-ranking tasks with SFT/DPO workflows → non-interchangeable
+protocol). Verified: no "outcome pending"/"outcome-pending" remains anywhere in the compiled
+PDF; scan PASS unchanged (0 failures); numeral fidelity NONE-missing.
+
 ## 2026-07-13 sync (2): OFFICE V3 pre-registered campaign PASSED
 
 Mirrors the canonical md's Office-V3 working-tree deltas (6 hunks, all covered):
@@ -63,7 +81,7 @@ Per ACM's general author workflow (initial journal review submissions in single-
   `paper-shared.tex`; `build.sh`/`build.ps1` compile both and hygiene-scan the review artifact.
 
 Page-count note: acmart's `manuscript` **and** `acmsmall` are both *single-column* formats, so
-the review manuscript does not balloon relative to acmsmall — it lands at 35 pages vs
+the review manuscript does not balloon relative to acmsmall — at the round-8 build it landed at 35 pages vs
 acmsmall's 36 (manuscript uses a larger letter-size text block). The format switch is real and
 verified by page geometry (612×792 pt vs 486×720 pt) and the class option.
 
@@ -288,7 +306,7 @@ plus nothing else.
 ## Compile status
 
 - Review target `tectonic main.tex` (`manuscript`): **0 errors, 0 undefined
-  references/citations**; 35 pages; **one accepted cosmetic overfull** (4.45 pt ≈ 1.6 mm, a
+  references/citations**; 35 pages *(round-8 count; current builds are 40/40 — see header)*; **one accepted cosmetic overfull** (4.45 pt ≈ 1.6 mm, a
   bold enumerate header in §5.4.2 — invisible protrusion; every other overfull was fixed with
   typography-only `\allowbreak` hints, incl. the long `results_USERTITR_...json` artifact name
   and `Beauty_and_PC`).
@@ -298,8 +316,9 @@ plus nothing else.
   - BibTeX "empty address" warnings — conference cities are not in the registry data pulled
     and were not invented (round-8 fill covers volume/number/pages/publisher/DOI); plus the
     deliberately-unfilled entries listed in the round-8 section.
-  - acmart "CCS concepts / keywords not provided" — the canonical md has neither; adding them
-    would be new content. To be supplied at actual submission time if TORS requires them.
+  - ~~acmart "CCS concepts / keywords not provided"~~ — RESOLVED (round-11 audit): CCSXML
+    concepts (Recommender systems 500 / Personalization 300) + `\keywords` now live in
+    `paper-shared.tex`; the warning no longer appears in current builds.
   - Underfull `\vbox`/`\hbox` cosmetics from the review-mode line-number grid and one
     `\vspace` class warning from the `longtable` header — no visual defect.
   - A Fontconfig stderr note from tectonic on Windows (harmless, upstream tectonic issue).
@@ -338,7 +357,7 @@ verdict: PASS (review list above is informational)
 
 Every SOTA mention is an explicit non-claim; every claim-wording occurrence sits in a negation
 context — consistent with the canonical claim set (no broad SOTA, no paired superiority, no
-official/pinned-reproduction language, Office never a passed category).
+official/pinned-reproduction language; Office V1 presented as passed is forbidden — the V1 VOID stands — while Office V3 is a PASSED pre-registration citable only per its frozen wording, PREREG_OFFICE_V3.md).
 
 ## Directory inventory
 

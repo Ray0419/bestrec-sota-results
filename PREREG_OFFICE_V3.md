@@ -95,3 +95,16 @@ clean-tree requirement exempts exactly these two audit-log files (`PAPER_REVIEW_
 `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`) in per-run manifests; it continues to bind every other
 tracked file — in particular all protocol code, whose identity remains proven by the embedded
 per-run code hashes regardless. No other condition, gate value, seed, or wording changes.
+
+## ERRATUM E2 (2026-07-13, appended after campaign completion; disclosure, no gate change)
+
+The prereg stated that final-epoch per-user sidecars (`*.final.users.jsonl.gz`) "are emitted
+and hash-embedded automatically." The run writer emits that separate file **only when the
+best-by-validation epoch differs from the final epoch**; when they coincide, the single regular
+sidecar (`*.users.jsonl.gz`, embedded as `user_records_{path,n,sha256}`) **is** the final-epoch
+per-user record. Three of the ten V3 runs (k16 seeds 20260729/20260731, k8 seed 20260731) hit
+this coincidence: their `user_records_final_path` is null and their regular sidecar is the
+final-epoch record. No per-user data is missing; all ten runs' final-epoch per-user records
+exist and are hash-embedded in the tracked result JSONs. A per-run sidecar inventory is
+appended to `OFFICE_V3_RESULTS.md`. Gate values, seeds, conditions, and claim wording are
+unchanged; this erratum documents emission mechanics only.

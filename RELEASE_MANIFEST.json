@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "9619f5d4710541e4eb7f4f7a832edd4bd4c0ca19",
+  "git_commit": "045d6a6fc4e580755cec75542af83b45ca13dcb3",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -91,7 +91,7 @@
       "sha256": "eb7d57ae024a2d84153b6d0886a1452d0b25b55be63fc347e594ff74f61e7230"
     },
     "_bestrec_run/build_hstu_tables.py": {
-      "sha256": "50fee865261f06fa175518fd1b47105cbaa97438a62723f4578d096c36094449"
+      "sha256": "40199fee1c6ed5c08a47ed9c3ce7712ba3e2731a58141517ebae3443304e367d"
     },
     "_bestrec_run/test_hstu_parity.py": {
       "sha256": "adf28343d5a27841f97f12d680578ddb0e6d9029745608e21e55519aec59396c"
@@ -170,20 +170,20 @@
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     "PAPER_SUBMISSION.md": {
-      "sha256": "7759aad02d84af8ac0b622948cbd3b870c2f7e6d82d18467ac763b32b54a64c0",
-      "bytes": 143641
+      "sha256": "298f53b38402826965a626e90882b9ad29e8ec05e4b2c419c0cd099bbd0e5794",
+      "bytes": 145514
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "9ff77bddb72a67c3250f274c7c9e4f5c2de2e0252515365669a6dd66c9fdcf99",
-      "bytes": 1372397
+      "sha256": "c1091393fd0c247080836fd2ba1eef976f13bfe8668430c1482ad79963b274b1",
+      "bytes": 1381992
     },
     "PAPER_DRAFT.md": {
-      "sha256": "d0f29a471d9ed6ef2b36bd4d4c67ddba2672f692699823588cac8f5b1e75c84e",
-      "bytes": 165826
+      "sha256": "57f8670e0fa0977b6590d6f1ad9963bf20a9faafafbea55d947136d243ea85d2",
+      "bytes": 167699
     },
     "CANONICAL_SUBMISSION.md": {
-      "sha256": "e354c92088070de1d194c03dcb31624df397b72190dcca0b17fc595ea37261dc",
-      "bytes": 5525
+      "sha256": "a697a0868d55f7e90edfdae25c4912def975211ed4398b79c579cc121ce0afad",
+      "bytes": 6102
     },
     "THEIRS_ON_OURS_REPORT.md": {
       "sha256": "615c2c0c762e9d8a92dc29c3b7f593680304b8f2853a65d0acca56f6d2c344a7",
@@ -218,8 +218,8 @@
       "bytes": 13880
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "36dfdefb2ad25d5f1e4d1adce19888232aa0e831c9d464b79ab43823beb49187",
-      "bytes": 453271
+      "sha256": "aeee9015be41cf05aebdc1f3f53a409ffac3f9abbca473c8f775f3baffc94330",
+      "bytes": 457185
     },
     "_bestrec_run/emit_latex_tables.py": {
       "sha256": "81ac05d73e5d1d31b51bd4b246cfcea12f7f1883204d703063358340a1151367",

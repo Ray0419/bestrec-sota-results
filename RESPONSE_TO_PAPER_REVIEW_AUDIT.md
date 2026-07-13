@@ -9,6 +9,47 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-13 20:57 (responded 2026-07-13, same day)
+
+**Verdict acknowledged:** no reject-level defect reproduced — the §6.5 fix verified in source
+and compiled-PDF extraction; strict gate, manifest, MI V2, Office V1 descriptive, and Office V3
+adjudication all green on the auditor's own re-runs. Every remaining item is documentation or
+policy; all are now closed except the one explicitly deferred to the freeze.
+
+### Point-by-point
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1 | No hard rejection defect | Acknowledged; nothing to fix. |
+| CP-2 | `BUILD_NOTES.md` stale 35/36-page references | **Fixed.** The file-tree comment (a current-state diagram, not a log entry) now reads 40 pp / 40 pp; the acmsmall "36 pages" compile-status line carries the same *(round-8 count; current builds are 40/40 — see header)* marker the manuscript line already had. Line 84's "35 pages" already says "at the round-8 build" — explicitly historical, left as log. |
+| Fix-1 | Manifest sync discipline | Acknowledged + open question answered below: the transient dirty state the audit observed **was** the concurrent 19:54-response ritual completing (see timeline). No non-atomic script window exists: `--regen` and the commit are steps 4–5 of the same ritual, and `--verify` (run inside every strict build) fails on any dirty manifested file, so the repo cannot *settle* in that state. |
+| Fix-2 | BUILD_NOTES cleanup | Done (CP-2). |
+| Fix-3 | Sidecar deposit policy | **Decided and stated once, in §8 (md + TeX) and mirrored in `CANONICAL_SUBMISSION.md`:** the tracked-artifact boundary is the intended reproducibility contract (every printed claim recomputes from tracked, hash-manifested artifacts; no dependence on any local-only file); local-only per-user sidecars are supplementary audit material, pre-committed by hash in tracked run manifests, **provided on editorial/reviewer request and deposited as supplementary material upon acceptance** — any later deposit byte-verifiable against the already-tracked hashes. |
+| Fix-4 | SILLM4Rec | **Explicitly marked pending, structurally:** `VENUE_PLAN.md` now has a pre-submission freeze checklist whose item 1 is "SILLM4Rec full-paper inspection — PENDING", with the repo-evidence rationale and the disclosure path if the ACM full text stays inaccessible. The paper's exclusion sentence is unchanged (it rests on repo evidence, which the audit itself confirms). |
+| Fix-5 | Claim-boundary alignment | Standing discipline. Bonus catch while executing this: `VENUE_PLAN.md`'s hygiene-sweep description still carried the **pre-V3** wording "Office never a passed category" — rescoped to "Office **V1** never presented as passed (VOID permanent); Office **V3** only within its frozen wording". Also refreshed `CANONICAL_SUBMISSION.md` stale counts (12→14 families, 164→168 cells) and added the V3/FIR-breadth results-of-record entries. |
+| PR-1 | Sidecar release boundary | Closed by Fix-3. |
+| PR-2 | SILLM4Rec inspection | Closed as explicitly-pending by Fix-4 (freeze-gated, maintainer go-signal required). |
+| PR-3 | Untracked raw breadth archives | **Boundary made explicit** in `FIR_BREADTH_RESULTS.md` ("Data boundary" section): the two `.csv.gz` are intentional local downloads of the public AR2023 release (raw data is never redistributed, same as the four original categories); the derived splits are untracked but pinned — all 20 tracked run JSONs embed split SHA256s under `provenance.data_sha256`, and the preprocessing code is tracked, so every printed breadth cell's dataset identity is byte-verifiable. §8 states the same in one sentence. |
+
+### Open questions answered
+
+- **Transient dirty manifested files:** yes — concurrent work, not a script defect. The audit
+  recorded HEAD `1f48b726`, which predates the two 19:54-response commits; its first strict run
+  landed inside that response's render→commit window (renders done, commit not yet landed), and
+  by the audit's own SHA256 recheck the commits had landed and everything matched. The ritual
+  always ends commit-then-strict, and `--verify` fails on dirty manifested files, so this state
+  cannot persist silently.
+- **Sidecar deposit:** policy now stated once in §8/release docs (Fix-3).
+- **Is `PAPER_SUBMISSION.pdf` live?** Yes, with distinct roles: `PAPER_SUBMISSION.md`/`.pdf` is
+  the canonical reader edition (governs content, per `CANONICAL_SUBMISSION.md`);
+  `paper_tex/PAPER_TORS.pdf` (+ untracked acmsmall preview) is the venue manuscript generated
+  from it. Both stay manifested; neither supersedes the other.
+
+**Ritual:** `render_paper_pdf.py` → 45 pp, scan **CLEAN**; `paper_tex/build.sh` → hygiene
+**PASS**, 40 pp; `update_release_manifest.py --regen`; committed together;
+`rebuild_hstu_submission.py --strict` → exit 0 (**168 cells, 0 mismatch, 0 untraceable, 14/14
+families, 113-file manifest OK**); manifest + refreshed PDFs re-uploaded to both releases.
+
 ## Response — to Audit Run 2026-07-13 19:54 (responded 2026-07-13, same day)
 
 **Verdict acknowledged:** both gates green on the auditor's own fresh re-runs (strict rebuild:

@@ -9,6 +9,54 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-13 19:54 (responded 2026-07-13, same day)
+
+**Verdict acknowledged:** both gates green on the auditor's own fresh re-runs (strict rebuild:
+168 cells / 0 mismatch / 0 untraceable / 14 families / 113-file manifest OK; Office V3
+adjudication PASS with the exact per-seed finals reproduced). The single confirmed blocker —
+the §6.5 Office prose contradiction — is fixed.
+
+### Confirmed problem 1 (risk #1): §6.5 still said "the second-category pass is VOID … and no claim counts Office"
+
+**Fixed — the bullet is now scoped precisely to V1 and states the V3 pass.** The old bullet
+predated the V3 campaign and was never updated when §5.2/§6.4 were; it read as an unscoped
+"Office" status and therefore contradicted the counted V3 pass. Rewritten in all three live
+sources (`PAPER_SUBMISSION.md` §6.5, `PAPER_DRAFT.md` §6.5,
+`paper_tex/sections/06-discussion.tex` line 81) as **"Office_Products status (V1 vs V3,
+stated precisely)"**:
+
+- the **V1** floor check failed (+44%) → the V1 second-category pass is **VOID** and the V1
+  campaign counts in no claim (unchanged, forever);
+- the **redesigned V3** (environment-matched reference, fresh seeds) **passed and is counted**
+  (§5.2) — strictly under its frozen wording: per-category point-estimate comparison, no
+  paired/distributional superiority, not SOTA of any kind;
+- the limitation that genuinely remains is stated in the claim's place: both counted
+  comparisons (MI, Office V3) gate against single-seed published values and a single-run
+  local regeneration, so distributional comparator uncertainty is unquantified.
+
+No caveat was weakened: the bullet still opens with the V1 VOID, and the residual
+single-seed-comparator limitation is now *more* explicit than before. `grep` confirms zero
+occurrences of "no claim counts Office" remain in any live paper source; the phrase survives
+only in audit-history documents quoting the old text.
+
+**Ritual:** `render_paper_pdf.py` → 45 pp, scan **CLEAN**; `paper_tex/build.sh` → hygiene
+verdict **PASS**, both PDFs rebuilt (40 pp); `update_release_manifest.py --regen` (three
+re-rendered artifacts re-hashed); committed together; `rebuild_hstu_submission.py --strict`
+→ exit 0 (**168 cells, 0 mismatch, 0 untraceable, 14/14 families, manifest 113 files OK**);
+refreshed PDFs + manifest re-uploaded to the release.
+
+### Non-blocker risk items (positions restated, no action needed)
+
+- **#4 sidecar boundary / #7 FIR novelty wording / #9 claim boundary:** standing discipline;
+  the fixed §6.5 bullet itself now models the required precision. No live text drifted.
+- **#5 SILLM4Rec:** full-protocol inspection of the ACM PDF remains on the pre-submission
+  freeze checklist (maintainer-gated), as recorded previously. The current repo-evidence-based
+  exclusion rationale stands in both sources.
+- **#6 BUILD_NOTES:** the audit itself notes the historical labels are in place and current
+  page counts (40/40/45) are correctly recorded; left as the append-only build log it is.
+- **#8 methodology-first fit:** framing kept narrow (apparatus demonstrated on concrete
+  empirical claims); no broadening.
+
 ## Response — to the 2026-07-13 risk-list refresh (incl. back-filled runs 00:40 / 01:42 / 02:41 and the 16:49 re-adjudication)
 
 The audit process back-filled three overnight run sections and refreshed the prioritized risk

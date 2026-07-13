@@ -35,3 +35,18 @@ Seeds [20260713, 20260714, 20260715, 20260716, 20260717]; rule frozen in PREREG_
 - frozen claim wording applies: "the causal FIR filter's paired 5-seed improvement on CDs_and_Vinyl (transplanted with zero per-category tuning) is positive with a 95% CI excluding zero." Nothing broader; no SOTA language; no comparator statement.
 
 **Campaign verdicts:** Industrial_and_Scientific: CONFIRMED; CDs_and_Vinyl: CONFIRMED
+
+## Data boundary (release/deposit; added 2026-07-13)
+
+- The raw rating archives (`data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`) are **local downloads of the public
+  Amazon Reviews 2023 release** and are intentionally untracked — the repository does not
+  redistribute raw AR2023 data (same policy as the four original categories).
+- The derived 5-core LLOO splits are likewise untracked but **fully pinned**: every tracked
+  run JSON (`_bestrec_run/results_FIRB_*.json`, 20 files) embeds the exact split SHA256s under
+  `provenance.data_sha256` (train/valid/test), and the preprocessing code that regenerates
+  them from the public raw files is tracked. Dataset identity for every printed breadth cell
+  is therefore byte-verifiable without raw-data redistribution.
+- Per-user evaluation sidecars for these runs remain local-only with SHA256s embedded in each
+  run's tracked manifest, under the same deposit policy as Office V3 (paper §8): provided on
+  editorial/reviewer request; deposited as supplementary material upon acceptance.

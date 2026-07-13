@@ -311,7 +311,7 @@ plus nothing else.
   typography-only `\allowbreak` hints, incl. the long `results_USERTITR_...json` artifact name
   and `Beauty_and_PC`).
 - Preview target `tectonic main-acmsmall.tex` (`acmsmall`): 0 errors, **0 overfull boxes**,
-  36 pages.
+  36 pages *(round-8 count; current builds are 40/40 — see header)*.
 - Remaining warnings (accepted):
   - BibTeX "empty address" warnings — conference cities are not in the registry data pulled
     and were not invented (round-8 fill covers volume/number/pages/publisher/DOI); plus the
@@ -376,8 +376,8 @@ paper_tex/
 ├── scan_pdf.py               # hygiene scanner (exit 1 on any failure)
 ├── hygiene_scan_output.txt   # last scan output (PASS)
 ├── main.pdf                  # tectonic output of the review driver (untracked; = PAPER_TORS.pdf)
-├── PAPER_TORS.pdf            # DELIVERABLE (35 pp, manuscript format, Figs. 1–3 embedded as vector Form XObjects)
-└── PAPER_TORS_acmsmall.pdf   # production preview (36 pp; untracked)
+├── PAPER_TORS.pdf            # DELIVERABLE (40 pp, manuscript format, Figs. 1–3 embedded as vector Form XObjects)
+└── PAPER_TORS_acmsmall.pdf   # production preview (40 pp; untracked)
 ```
 
 Generator script (allowed new file outside `paper_tex/`): `_bestrec_run/emit_latex_tables.py`.

@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "1f48b7265cba03fc89069c3717767e7254c551fb",
+  "git_commit": "3f73fc4d9d8b676e22e5bbb5c59e5014237a1248",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -170,20 +170,20 @@
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     "PAPER_SUBMISSION.md": {
-      "sha256": "ee43465b248e181490e7678460e9547e4f475f38f668c4435dbba6e74603f015",
-      "bytes": 146649
+      "sha256": "3f8344a840e7359803caafd41333d099ade9edf54c505b81bc448b222931c671",
+      "bytes": 147541
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "054c30d1c7dcb419f98f2428dbba8f5692f76e19a4a3760638954b39e4183d00",
-      "bytes": 1385071
+      "sha256": "c49fae2b9d0a66a5f504d8078b6b2d08c4034d15aa554a42e02f4936c8b91200",
+      "bytes": 1386473
     },
     "PAPER_DRAFT.md": {
-      "sha256": "416a990f6b37a3669de5e79e994b8840d5fab175fcf9345b15ae0c4ff01e7de1",
-      "bytes": 168834
+      "sha256": "ac09e138de64a40e4f196fdbaf3fa27e0993989a0e470139883c2eaf2e9b2566",
+      "bytes": 169726
     },
     "CANONICAL_SUBMISSION.md": {
-      "sha256": "a697a0868d55f7e90edfdae25c4912def975211ed4398b79c579cc121ce0afad",
-      "bytes": 6102
+      "sha256": "3f5aa1326f863006d0f1387973505c7597a33766e496daa40f04e906264b47e2",
+      "bytes": 6640
     },
     "THEIRS_ON_OURS_REPORT.md": {
       "sha256": "615c2c0c762e9d8a92dc29c3b7f593680304b8f2853a65d0acca56f6d2c344a7",
@@ -218,8 +218,8 @@
       "bytes": 13880
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "5ac29bce91ed8916b2f94aa1f32046b3f0dadeedf80dabefe76acf4fcdf6285a",
-      "bytes": 458624
+      "sha256": "0160700a5112d54d28e943643ea13ca6718d953cee6914705dc856cb7b15ba00",
+      "bytes": 459337
     },
     "_bestrec_run/emit_latex_tables.py": {
       "sha256": "81ac05d73e5d1d31b51bd4b246cfcea12f7f1883204d703063358340a1151367",

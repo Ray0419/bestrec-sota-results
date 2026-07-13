@@ -37,23 +37,27 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
    Also under this item: the **dataset-conditional long-tail pattern** +
    thinning-intervention evidence (intervention-scoped wording) is unchanged.
 4. TAPE as a modest secondary component; negative results labeled exploratory unless multi-seed.
-5. Reproducibility: provenance manifests, per-user sidecars (MI tracked; Office sidecars
-   local-only/untracked, not part of any counted claim), clean-rebuild demonstration, and the
-   fail-closed artifact gate below.
+5. Reproducibility: provenance manifests, per-user sidecars (MI tracked; Office/FIR-breadth
+   per-user sidecars local-only/untracked, not part of any counted claim), clean-rebuild
+   demonstration, and the fail-closed artifact gate below. **Sidecar deposit policy:** the
+   tracked-artifact boundary is the reproducibility contract (every printed claim recomputes
+   from tracked, hash-manifested artifacts); local-only per-user sidecars are supplementary
+   audit material, hash-pinned in tracked run manifests, provided on editorial/reviewer
+   request and deposited as supplementary material upon acceptance (paper §8).
 
 ## Canonical artifact graph
 
 - Prereg chain: `SOTA_CONFIRM_PREREG_V2.md` (+ `_ERRATA`), `SOTA_CONFIRM_PREREG_OFFICE.md`
 - Results of record: `_bestrec_run/results_SOTACONF_V2_*.json` (+ tracked sidecars +
   `SOTACONF_V2_sidecar_manifest.json`), `_bestrec_run/rebuild_v2/`, `results_OFFICE_*`
-  (present; descriptive/VOID), `results_FIRABL_*` (present), the reference-implementation run
+  (present; descriptive/VOID), `results_FIRABL_*` (present), `results_OFFICEV3_k{16,8}_seed*.json` (+ per-run tree-state sidecars), `_bestrec_run/results_FIRB_*` (20 tracked breadth runs), the reference-implementation run
   artifacts `_bestrec_run/theirs_runs/*/metrics.jsonl` (+ `run_meta.json`, preprocess
   provenance), and the per-table source families enumerated in
-  `_bestrec_run/hstu_results_manifest.json` (12 required claim families)
+  `_bestrec_run/hstu_results_manifest.json` (14 required claim families)
 - Table generation (fail-closed): `_bestrec_run/build_hstu_tables.py` regenerates every
   empirical table from the manifest; **`--submission` exits nonzero** on any UNTRACEABLE cell,
   any printed-numeral MISMATCH, or any required claim family without sourced cells
-  (invariants: 0 mismatch / 0 untraceable / all 12 required families sourced; the authoritative cell count is the strict build's own output — 164 at this writing, and it grows as evidence lands)
+  (invariants: 0 mismatch / 0 untraceable / all 14 required families sourced; the authoritative cell count is the strict build's own output — 168 at this writing, and it grows as evidence lands)
 - Canonical one-command verification: `python _bestrec_run/rebuild_hstu_submission.py --strict`
   (parity test → strict `--submission` build → MI V2 adjudicator → Office adjudicator
   (descriptive/VOID, non-gating)) — passes end-to-end at the submitted commit

@@ -24,7 +24,9 @@ dual-submission policies, so the plan is:
   conversion-checked against the markdown source.
 - Every LaTeX build ends with the same placeholder/claim-hygiene scan as the markdown PDF, plus
   the forbidden-wordings sweep (no broad SOTA, no paired superiority, no
-  official/pinned-reproduction language, Office never a passed category).
+  official/pinned-reproduction language; Office **V1** never presented as passed — its VOID
+  is permanent — and Office **V3** only within its frozen wording: per-category
+  point-estimate comparison, no paired/distributional superiority, not SOTA).
 - The strict gate (`rebuild_hstu_submission.py --strict`) must pass at any commit that changes
   paper content; the LaTeX is regenerated *from* the gated markdown, never edited divergently.
 
@@ -34,3 +36,22 @@ Minting is **deferred** until a venue actually requires it ("skip for now"). The
 hash-manifested GitHub releases (`v0.9-audit-evidence`, `v1.0-deposit`) remain the citable
 artifact reference; everything needed to mint in ~3 clicks stays prepared
 (`DOI_DEPOSIT_INSTRUCTIONS.md`).
+
+## Pre-submission freeze checklist (maintainer go-signal required; none started unprompted)
+
+Status legend: **PENDING** = not yet done, blocks the freeze when reached.
+
+1. **SILLM4Rec full-paper inspection — PENDING.** The current exclusion rationale rests on the
+   public repository's own workflow (image-to-text descriptions, user preference summaries,
+   candidate-product ranking, SFT/DPO data — not established full-catalog LLOO). ACM metadata
+   (AR2023 5-core, NDCG@K) means a reviewer may ask for direct protocol inspection: before
+   freeze, inspect the ACM full text (`10.1145/3743093.3771011`) if accessible and record the
+   verdict here; if inaccessible, the exclusion stands on repo evidence and this item is
+   disclosed as inspection-pending.
+2. Final literature sweep (new AR2023 sequential-rec results since the last audit round).
+3. Cover letter: originality + not-under-review declarations; claim boundary restated
+   (two counted per-category point-estimate comparisons; FIR internal contrast on four
+   categories; no SOTA of any kind; Office V1 VOID permanent).
+4. Table-2 split preference (single wide table vs split) — venue-template decision.
+5. First-page acmart format verification against current TORS author guidelines.
+6. DOI minting (currently deferred by maintainer decision — see above).

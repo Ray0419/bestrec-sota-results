@@ -227,6 +227,8 @@ machinery that makes the second one credible.
 - [x] First version of the interactive explainer `companion_site/explainer.html` (2026-07-18):
       hero, "be the recommender" toy demo, FIR filter slider demo, results figure, V1→V3
       timeline, claim/no-claim panel, FAQ, glossary; light+dark themes; published as an Artifact.
+- [ ] Keep PAPER_WRITING_TEMPLATE.md's quoted numbers in sync with the gated paper whenever
+      results change (same verbatim rule as this document).
 - [ ] Add a small SVG "how the model reads a history" figure (highlighter/attention visual) to
       the explainer §2 and link it from this document.
 - [ ] Add a "thinning intervention" mini-figure (dense→thinned bars showing the text benefit

@@ -1918,9 +1918,9 @@ def render_tables(cells):
         "30k best_test subsample).",
         "",
         "**STATUS: VOID under the prereg floor check (+44% floor inflation) — provisional; "
-        "this V1 campaign is NOT counted as a second-category pass. The separately "
-        "pre-registered Office V3 campaign passed and is counted under its frozen "
-        "per-category point-estimate wording (§5.2).**",
+        "the V1 Office campaign counts in no claim. Office V3 — a separate, redesigned "
+        "pre-registration — passed and is counted under its frozen per-category "
+        "point-estimate wording (§5.2).**",
         "",
         "| arm | per-seed NDCG@10 (final-epoch full) | mean ± sd | 95% CI-LB | vs published 0.0271 |",
         "|---|---|---:|---:|---|",

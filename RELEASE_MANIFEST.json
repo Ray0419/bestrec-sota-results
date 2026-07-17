@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "5fedd07e71ccb4f7ef50e2fa02c313cde3254e85",
+  "git_commit": "882b839abc12a871a874f2538afacef1088caa6d",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -91,7 +91,7 @@
       "sha256": "eb7d57ae024a2d84153b6d0886a1452d0b25b55be63fc347e594ff74f61e7230"
     },
     "_bestrec_run/build_hstu_tables.py": {
-      "sha256": "f106575bc7bd0510820886904af9ee322ff18432db0f00d643ef84a960993343"
+      "sha256": "4dd325726472d06be589a5601a29f89d829297f5b53c015a2eaaaa8fd09a980f"
     },
     "_bestrec_run/test_hstu_parity.py": {
       "sha256": "adf28343d5a27841f97f12d680578ddb0e6d9029745608e21e55519aec59396c"
@@ -214,16 +214,16 @@
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     "PAPER_SUBMISSION.md": {
-      "sha256": "6580e829dd03c10e84b7c130852c2e8820fd14c6fb516e2a908b3ac15172cd8c",
-      "bytes": 148695
+      "sha256": "fa3c9d263e050b420603d910fbe82c37e0965374e5330dbc415ee831ae52fbb9",
+      "bytes": 148686
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "e3fba08381796529ed020ceabccdfcce0048d31ea21eccabd78ed8166c86a394",
-      "bytes": 1393400
+      "sha256": "ed6ba9c240a2a689907024cce8982a61a9758502541fd9a40d74acb3efd0e88c",
+      "bytes": 1393037
     },
     "PAPER_DRAFT.md": {
-      "sha256": "43edcaccbcca93963805c9a81edc6867cf5aa8a9a941a84b3e79e4269a8a0909",
-      "bytes": 170880
+      "sha256": "097b35733fc89d01bfab79571c3087a11e36cdba66b4a3947003c72d3dff4fe5",
+      "bytes": 170871
     },
     "CANONICAL_SUBMISSION.md": {
       "sha256": "3f5aa1326f863006d0f1387973505c7597a33766e496daa40f04e906264b47e2",
@@ -262,8 +262,8 @@
       "bytes": 13880
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "71b7b8b56a0f7f1becb3198e44d720969415e80e1df929717ce5df20372a7403",
-      "bytes": 461912
+      "sha256": "6a40018016a3f428eb482d42559aa4a99f9c10963772c8f845c6f571bfe8356c",
+      "bytes": 461964
     },
     "_bestrec_run/emit_latex_tables.py": {
       "sha256": "81ac05d73e5d1d31b51bd4b246cfcea12f7f1883204d703063358340a1151367",

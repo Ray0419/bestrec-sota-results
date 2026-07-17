@@ -68,6 +68,17 @@ WPGRec citation had dropped the md's inline `arXiv:2604.21305` (the bst does not
 `eprint` on `@misc`) — restored as a `\citep` postnote + in the bib note; the whole-document
 numeral check is back to zero missing md tokens.
 
+---
+
+## ⚠️ Append-only log and reference below this line
+
+**The only authoritative current-state statements in this file are in the header above** (and
+the authoritative page counts are always the latest build's own output). Below: the dated
+"sync"/"Round-N" sections are **point-in-time log entries** — their page counts, warnings, and
+statuses are superseded by later entries and by the header. The reference sections (Toolchain,
+Document class / anonymization, File map) describe the **current** setup and are kept up to
+date in place.
+
 ## Round-8: two build targets (class options)
 
 Per ACM's general author workflow (initial journal review submissions in single-column

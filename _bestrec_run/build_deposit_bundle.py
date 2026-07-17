@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
-"""Build the archival deposit bundle (currently v1.1) deterministically.
+"""Build the archival deposit bundle (currently v1.1.1) deterministically.
 
 The bundle is the small archival companion to the repository: papers, pre-registrations,
 results documentation, protocol code, provenance manifests, audit chain, and the comparator
 reference-run artifacts. Large evidence (splits, text caches, result JSONs) is NOT bundled --
 it is tracked in the repository and byte-pinned by RELEASE_MANIFEST.json, which IS bundled.
 
-Usage:  python _bestrec_run/build_deposit_bundle.py            # writes _release/bestrec_deposit_v1.1.zip
+Usage:  python _bestrec_run/build_deposit_bundle.py            # writes _release/bestrec_deposit_<VERSION>.zip
 """
 import hashlib
 import io
 import os
 import zipfile
 
-VERSION = "v1.1"
+VERSION = "v1.1.1"
 DATE = "2026-07-18"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "_release", f"bestrec_deposit_{VERSION}.zip")
@@ -117,7 +117,7 @@ release-manifest verification -> the pre-registered Musical_Instruments
 dual-kernel gate adjudicator -> the Office_Products V1 adjudicator (VOID under
 its own prereg; descriptive only).
 
-New in {VERSION} (vs v1.0, 2026-07-11):
+New in v1.1/v1.1.1 (vs v1.0, 2026-07-11; v1.1.1 supersedes the v1.1 tag, whose uploaded assets had gone stale against later same-day commits):
   * Office_Products V3 redesigned pre-registration and its PASS record
     (`PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`, `_bestrec_run/adjudicate_office_v3.py`).
   * FIR-breadth pre-registered campaign on two further categories, both CONFIRMED

@@ -1,0 +1,520 @@
+<title>How BEST-Rec Works — A Plain-Language Interactive Tour</title>
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --ink: #1f2733;
+    --ink-2: #4a5568;
+    --muted: #7a8699;
+    --line: #e3e1da;
+    --accent: #0b6e7f;
+    --accent-soft: #e3f0f2;
+    --amber: #9a6b00;
+    --amber-soft: #f7edd8;
+    --good: #1a7a4a;
+    --bad: #b3403a;
+    --chart-blue: #0072B2;
+    --chart-orange: #E69F00;
+    --chart-green: #009E73;
+    --chart-verm: #D55E00;
+    --code-bg: #f1efe9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14181f;
+      --surface: #1c222b;
+      --ink: #e8e9ec;
+      --ink-2: #b7bfcc;
+      --muted: #8792a3;
+      --line: #2e3642;
+      --accent: #4fb3c4;
+      --accent-soft: #16333a;
+      --amber: #d9a53f;
+      --amber-soft: #33290f;
+      --good: #4fc484;
+      --bad: #e07a74;
+      --chart-blue: #56B4E9;
+      --chart-orange: #E69F00;
+      --chart-green: #35c096;
+      --chart-verm: #ee7733;
+      --code-bg: #232a35;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14181f; --surface: #1c222b; --ink: #e8e9ec; --ink-2: #b7bfcc; --muted: #8792a3;
+    --line: #2e3642; --accent: #4fb3c4; --accent-soft: #16333a; --amber: #d9a53f;
+    --amber-soft: #33290f; --good: #4fc484; --bad: #e07a74; --chart-blue: #56B4E9;
+    --chart-orange: #E69F00; --chart-green: #35c096; --chart-verm: #ee7733; --code-bg: #232a35;
+  }
+  :root[data-theme="light"] {
+    --bg: #fbfaf7; --surface: #ffffff; --ink: #1f2733; --ink-2: #4a5568; --muted: #7a8699;
+    --line: #e3e1da; --accent: #0b6e7f; --accent-soft: #e3f0f2; --amber: #9a6b00;
+    --amber-soft: #f7edd8; --good: #1a7a4a; --bad: #b3403a; --chart-blue: #0072B2;
+    --chart-orange: #E69F00; --chart-green: #009E73; --chart-verm: #D55E00; --code-bg: #f1efe9;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font: 16px/1.65 -apple-system, "Segoe UI", system-ui, Roboto, sans-serif;
+    margin: 0; padding: 0 16px 96px;
+  }
+  main { max-width: 760px; margin: 0 auto; }
+  h1, h2, h3 { font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; line-height: 1.25; text-wrap: balance; }
+  h1 { font-size: 2.1rem; margin: 0 0 10px; }
+  h2 { font-size: 1.45rem; margin: 56px 0 10px; padding-top: 18px; border-top: 1px solid var(--line); }
+  h3 { font-size: 1.08rem; margin: 26px 0 6px; }
+  p, li { color: var(--ink-2); max-width: 68ch; }
+  strong { color: var(--ink); }
+  a { color: var(--accent); }
+  .eyebrow { letter-spacing: .14em; text-transform: uppercase; font-size: .72rem; color: var(--accent); font-weight: 700; margin: 40px 0 4px; font-family: -apple-system, "Segoe UI", sans-serif; }
+  header.hero { padding: 56px 0 8px; }
+  .hero .sub { font-size: 1.06rem; color: var(--ink-2); max-width: 62ch; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 6px; }
+  .badge { font-size: .78rem; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-2); background: var(--surface); }
+  .badge.accent { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+  nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 8px; }
+  nav.toc a { font-size: .82rem; text-decoration: none; padding: 5px 11px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--ink-2); }
+  nav.toc a:hover { border-color: var(--accent); color: var(--accent); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin: 18px 0; }
+  .callout { border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 10px 10px 0; padding: 12px 16px; margin: 16px 0; }
+  .callout.amber { border-left-color: var(--amber); background: var(--amber-soft); }
+  .callout p { margin: 6px 0; }
+  .analogy { font-style: italic; }
+  .num { font-variant-numeric: tabular-nums; font-family: ui-monospace, Consolas, monospace; font-size: .93em; }
+  figure { margin: 22px 0; }
+  figcaption { font-size: .82rem; color: var(--muted); margin-top: 8px; max-width: 68ch; }
+  .figwrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+  svg text { font-family: -apple-system, "Segoe UI", sans-serif; }
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 12px 0; }
+  .chip { cursor: pointer; user-select: none; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink-2); border-radius: 999px; padding: 7px 13px; font-size: .86rem; transition: border-color .15s, background .15s; }
+  .chip:hover { border-color: var(--accent); }
+  .chip.on { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .chip:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  button.primary { cursor: pointer; background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: 8px 14px; font-size: .88rem; }
+  .ranked { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 6px; }
+  .ranked li { display: grid; grid-template-columns: 2.1em 1.6em 1fr auto; gap: 8px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; font-size: .9rem; }
+  .ranked .pos { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .ranked .bar { height: 8px; border-radius: 4px; background: var(--chart-blue); min-width: 2px; }
+  .ranked .why { color: var(--muted); font-size: .78rem; }
+  .slider-row { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; margin: 10px 0; }
+  input[type=range] { width: 100%; accent-color: var(--accent); }
+  table.claims { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  table.claims th, table.claims td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.claims th { color: var(--muted); font-weight: 600; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; }
+  .tickgood { color: var(--good); font-weight: 700; }
+  .tickbad { color: var(--bad); font-weight: 700; }
+  .timeline { list-style: none; margin: 18px 0; padding: 0; position: relative; }
+  .timeline::before { content: ""; position: absolute; left: 11px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+  .timeline li { position: relative; padding: 0 0 22px 40px; }
+  .timeline .dot { position: absolute; left: 3px; top: 3px; width: 18px; height: 18px; border-radius: 50%; border: 2.5px solid var(--accent); background: var(--surface); }
+  .timeline li.void .dot { border-color: var(--bad); }
+  .timeline li.pass .dot { border-color: var(--good); background: var(--good); }
+  .timeline .t { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .timeline .h { font-weight: 700; color: var(--ink); }
+  .timeline p { margin: 4px 0 0; font-size: .92rem; }
+  details { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); margin: 10px 0; padding: 0 16px; }
+  summary { cursor: pointer; padding: 13px 0; font-weight: 600; color: var(--ink); }
+  details p { margin-top: 0; }
+  .tooltip { position: fixed; pointer-events: none; background: var(--ink); color: var(--bg); padding: 6px 10px; border-radius: 6px; font-size: .78rem; opacity: 0; transition: opacity .12s; z-index: 10; max-width: 260px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
+  .footnote { font-size: .8rem; color: var(--muted); }
+  code { background: var(--code-bg); border-radius: 4px; padding: 1px 5px; font-size: .88em; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .chip, .tooltip { transition: none; } }
+</style>
+
+<main>
+<header class="hero">
+  <div class="eyebrow" style="margin-top:0">Plain-language companion · Amazon Reviews 2023 study</div>
+  <h1>The Recommender That Shows Its Receipts</h1>
+  <p class="sub">A hands-on, no-jargon tour of our sequential-recommendation research: <strong>how the model works</strong>, <strong>why the novel piece helps</strong>, and — most importantly — <strong>why you can trust every printed number</strong>. Companion to the technical paper; every real number here is copied from it verbatim.</p>
+  <div class="badge-row">
+    <span class="badge accent">168 numbers, all machine-verified</span>
+    <span class="badge">11.6M parameters · ~10 min training</span>
+    <span class="badge">Audited hourly by a rival AI</span>
+  </div>
+  <nav class="toc" aria-label="Sections">
+    <a href="#task">1 · The task</a>
+    <a href="#model">2 · How it thinks</a>
+    <a href="#fir">3 · The shock absorber</a>
+    <a href="#text">4 · When text helps</a>
+    <a href="#trust">5 · Why trust it</a>
+    <a href="#office">6 · The Office story</a>
+    <a href="#claims">7 · Claims</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+</header>
+
+<section id="task">
+  <div class="eyebrow">Section 1</div>
+  <h2 style="border-top:none;padding-top:0">The task: guess the next purchase — from the <em>whole</em> catalog</h2>
+  <p>Someone bought guitar strings in January, a capo in March, a clip-on tuner last week. <strong>What do they buy next?</strong> That's the entire game, called <em>sequential recommendation</em>. Our version is deliberately the hard, honest variant:</p>
+  <ul>
+    <li><strong>Open exam, not multiple choice.</strong> Many papers hide the right answer among 99 decoys. We make the model rank <em>every product in the catalog</em> — 25,612 items for Video Games, 77,551 for Office Products — and check where the true next purchase landed.</li>
+    <li><strong>The answers are hidden from training.</strong> Each person's final purchase is held out; the model is graded on predicting what it never saw.</li>
+  </ul>
+  <div class="callout">
+    <p><strong>How scoring works (NDCG@10):</strong> think of the model's guess as a search-results page. If the true next purchase shows up in the top 10, the model earns credit — more the higher it ranks. On an open exam over tens of thousands of items, good scores look small: <span class="num">0.03–0.07</span> is the competitive range, and third-decimal differences matter the way tenths of a second matter in a sprint.</p>
+  </div>
+</section>
+
+<section id="model">
+  <div class="eyebrow">Section 2</div>
+  <h2>How the model thinks — try being the recommender</h2>
+  <p>The model reads a purchase history like a sentence: <strong>attention</strong> is a learned highlighter (which past items matter for this guess?), <strong>time bias</strong> makes fresher clues count more, and every product carries a <strong>"scent"</strong> — a numeric fingerprint of its title and description, so items that read alike smell alike, even if they were rarely purchased.</p>
+  <div class="card">
+    <h3 style="margin-top:2px">🛒 Toy demo: pick a shopping history, watch the reasoning</h3>
+    <p class="footnote">A hand-made miniature with 5 candidate products and invented weights — for intuition only; no real data. Click up to three items in order:</p>
+    <div class="controls" id="histChips"></div>
+    <div class="controls">
+      <button class="primary" id="clearHist" type="button">Reset history</button>
+      <span class="footnote" id="histEcho"></span>
+    </div>
+    <ol class="ranked" id="rankList" aria-live="polite"></ol>
+    <p class="footnote" style="margin-top:10px">Notice: the <em>most recent</em> pick dominates (time bias), and candidates that <em>smell like</em> your history climb even if nothing identical was bought (text scent). That's the whole intuition — the real model just learns these weights from 1.8&nbsp;million real purchases instead of five invented ones.</p>
+  </div>
+</section>
+
+<section id="fir">
+  <div class="eyebrow">Section 3 · the novel component</div>
+  <h2>The causal FIR filter — a shock absorber for taste</h2>
+  <p>Our main modeling contribution is a tiny idea borrowed from signal processing. The signal flowing through the model — "what is this person into <em>right now</em>?" — is noisy: one impulse buy (a gag gift, a purchase for a friend) jolts it like a pothole. We bolt on an <strong>FIR filter</strong>: engineering-speak for a <em>short, learned weighted average</em> that smooths each moment using only the few moments before it.</p>
+  <ul>
+    <li><span class="analogy">A <strong>shock absorber</strong>: bumps still register; they stop rattling the frame.</span></li>
+    <li><span class="analogy">A <strong>coffee filter</strong>: flavor through, grounds held back.</span></li>
+    <li><span class="analogy">A <strong>moving average</strong> on a stock chart: wiggle becomes trend.</span></li>
+  </ul>
+  <p>Three properties keep it honest: it is <strong>causal</strong> (only ever looks <em>backward</em> — a forecaster allowed yesterday's data, never tomorrow's; even subtle future-peeking is a classic way papers fool themselves), it starts <strong>switched off</strong> (zero-initialized — it must <em>earn</em> influence during training), and it is <strong>tiny</strong> (a knob, not a new engine).</p>
+  <div class="card">
+    <h3 style="margin-top:2px">🎚️ Demo: filter a noisy taste signal</h3>
+    <p class="footnote">Synthetic curve for illustration. The gray line is a person's "true" drifting taste; dots are noisy purchases; the teal line is what the filter recovers — using only past dots at every step.</p>
+    <div class="slider-row">
+      <span style="font-size:.85rem;color:var(--muted)">off</span>
+      <input type="range" id="firSlider" min="0" max="100" value="0" aria-label="Filter strength">
+      <span style="font-size:.85rem;color:var(--muted)">strong</span>
+    </div>
+    <div class="figwrap">
+      <svg id="firSvg" viewBox="0 0 640 240" width="100%" role="img" aria-label="Line chart: noisy signal and its causally filtered version">
+        <line x1="40" y1="200" x2="620" y2="200" stroke="var(--line)" stroke-width="1"/>
+        <text x="40" y="222" fill="var(--muted)" font-size="11">older purchases →</text>
+        <text x="620" y="222" fill="var(--muted)" font-size="11" text-anchor="end">most recent</text>
+        <path id="truthPath" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <g id="noiseDots"></g>
+        <path id="filtPath" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+        <text id="firLabel" x="52" y="30" fill="var(--accent)" font-size="12" font-weight="700"></text>
+      </svg>
+    </div>
+    <p class="footnote">Drag the slider. At zero the model sees raw noise; turned up, the teal line hugs the dashed "true taste" — without ever using a future dot. In the real model this filter improved results on <strong>all four categories tested</strong>; on the two sealed-prediction categories it won <strong>5 out of 5</strong> paired re-runs each: Industrial&nbsp;&amp;&nbsp;Scientific <span class="num">+0.00240</span> (95% CI <span class="num">+0.00183…+0.00297</span>), CDs&nbsp;&amp;&nbsp;Vinyl <span class="num">+0.00566</span> (<span class="num">+0.00493…+0.00639</span>) — with zero per-category tuning.</p>
+  </div>
+</section>
+
+<section id="text">
+  <div class="eyebrow">Section 4 · the finding</div>
+  <h2>Product text helps small catalogs, not big ones</h2>
+  <p>The "scent" fingerprints are not uniformly useful — and pinning down <em>when</em> they help is one of the paper's main findings.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">🏘️ Small-town library</h3>
+      <p style="font-size:.92rem">Musical Instruments, Office Products: sparse borrowing records, so the librarian leans on the <em>blurbs</em>. Text clearly helps — especially for obscure items almost nobody has bought.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">🏙️ Big-city library</h3>
+      <p style="font-size:.92rem">Video Games, Beauty &amp; PC: so much borrowing history that blurbs are redundant. The same text machinery adds roughly nothing on the same measurements.</p>
+    </div>
+  </div>
+  <p>And we didn't stop at correlation: we <strong>thinned</strong> dense catalogs on purpose — retraining on artificially sparsified data while grading on the same exam — to test whether scarcity itself flips text from useless to useful. Practical upshot: <em>whether to wire product text into your recommender depends on your catalog's density. Measure it first.</em></p>
+</section>
+
+<section id="trust">
+  <div class="eyebrow">Section 5 · the machinery</div>
+  <h2>Why trust the numbers: three interlocking mechanisms</h2>
+  <p>This field's quiet failure mode: tiny improvements, many knobs, and every incentive to report your best run. Most of our paper's machinery exists to make that <em>structurally impossible for us</em>.</p>
+  <figure>
+    <div class="figwrap">
+      <svg viewBox="0 0 660 150" width="100%" role="img" aria-label="Pipeline: pre-registration, then experiment, then fail-closed gate, then paper, watched by an hourly auditor">
+        <defs><marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--muted)"/></marker></defs>
+        <g font-size="12">
+          <rect x="8"   y="44" width="140" height="52" rx="9" fill="none" stroke="var(--chart-blue)" stroke-width="2"/>
+          <text x="78"  y="66" text-anchor="middle" fill="var(--ink)" font-weight="700">Sealed contract</text>
+          <text x="78"  y="83" text-anchor="middle" fill="var(--muted)">pre-registration</text>
+          <rect x="180" y="44" width="130" height="52" rx="9" fill="none" stroke="var(--chart-green)" stroke-width="2"/>
+          <text x="245" y="66" text-anchor="middle" fill="var(--ink)" font-weight="700">Experiment</text>
+          <text x="245" y="83" text-anchor="middle" fill="var(--muted)">fresh sealed seeds</text>
+          <rect x="342" y="44" width="140" height="52" rx="9" fill="none" stroke="var(--chart-verm)" stroke-width="2"/>
+          <text x="412" y="66" text-anchor="middle" fill="var(--ink)" font-weight="700">Fail-closed gate</text>
+          <text x="412" y="83" text-anchor="middle" fill="var(--muted)">168 numbers recomputed</text>
+          <rect x="514" y="44" width="132" height="52" rx="9" fill="none" stroke="var(--chart-orange)" stroke-width="2"/>
+          <text x="580" y="66" text-anchor="middle" fill="var(--ink)" font-weight="700">Paper builds</text>
+          <text x="580" y="83" text-anchor="middle" fill="var(--muted)">or refuses to</text>
+          <line x1="148" y1="70" x2="176" y2="70" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#arr)"/>
+          <line x1="310" y1="70" x2="338" y2="70" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#arr)"/>
+          <line x1="482" y1="70" x2="510" y2="70" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#arr)"/>
+          <text x="330" y="132" text-anchor="middle" fill="var(--amber)" font-weight="700">⟲ a rival AI re-audits everything hourly and publishes its complaints</text>
+          <path d="M 78 100 Q 330 118 580 100" fill="none" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="5 4"/>
+        </g>
+      </svg>
+    </div>
+    <figcaption>Fig. 1 — The trust pipeline. Claims are worded before results exist; every printed number must recompute from raw evidence at every build; an independent auditor attacks the whole chain on a schedule.</figcaption>
+  </figure>
+  <h3>5.1 Pre-registration = calling your shot</h3>
+  <p>Before any experiment that could become a claim, we commit a sealed contract to version control: the exact command, settings, <em>fresh never-run</em> random seeds, the pass/fail rule, and the exact sentence we'd be allowed to claim. Like calling the pocket before the pool shot. Misses get published too — the contract is already public, so there's no quiet way to bury one.</p>
+  <h3>5.2 The fail-closed gate = a printer that refuses to bluff</h3>
+  <p>All <strong>168</strong> numbers printed in the paper are wired to the raw files they came from. On every change, a build script recomputes them all and <strong>refuses to build the paper</strong> if one digit disagrees, one origin is untraceable, or one required evidence family is missing. A manifest pins <strong>153 files by cryptographic hash</strong> so evidence can't drift afterward.</p>
+  <h3>5.3 A rival referee, every hour</h3>
+  <p>A different AI system (Codex) re-audits the project hourly — re-running gates, hunting contradictions, fact-checking citations against the live web — and appends complaints to a public file. Every complaint gets a written, versioned answer. Dozens of rounds have run; real defects were caught, fixed, and remain on the record.</p>
+</section>
+
+<section id="office">
+  <div class="eyebrow">Section 6 · the honesty centerpiece</div>
+  <h2>The Office Products story: the machinery catching <em>us</em></h2>
+  <ul class="timeline">
+    <li>
+      <span class="dot"></span>
+      <div class="t">Act 1 · sealed attempt</div>
+      <div class="h">A second-category pre-registration (V1)</div>
+      <p>Musical Instruments had passed cleanly. We sealed a contract for Office Products; results came in comfortably above the published comparator. So far, a win.</p>
+    </li>
+    <li class="void">
+      <span class="dot"></span>
+      <div class="t">Act 1 · the tripwire fires</div>
+      <div class="h" style="color:var(--bad)">VOID — our own referee disallows the goal</div>
+      <p>The contract included a comparability check: our simple-baseline score should roughly match theirs on the same data. Ours landed <strong>+44% higher</strong> — the field was tilted; <em>everything</em> scored high in our environment, so beating their number proved nothing. Under the contract as written: <strong>VOID</strong>. It still says VOID in the paper, and always will.</p>
+    </li>
+    <li>
+      <span class="dot"></span>
+      <div class="t">Act 2 · level the field</div>
+      <div class="h">Run <em>their</em> code on <em>our</em> field</div>
+      <p>We took the comparator's own published code and ran it, unmodified, in our environment (with disclosed compatibility adapters — a foreign plug in our socket). Their method scored <span class="num">0.0279</span> here vs their published <span class="num">0.0271</span> — confirming our environment is generous, and explaining the tilt. Labeled honestly as an environment-caveated single run.</p>
+    </li>
+    <li class="pass">
+      <span class="dot"></span>
+      <div class="t">Act 3 · sealed rematch</div>
+      <div class="h" style="color:var(--good)">V3 — the goal that counts</div>
+      <p>A <strong>new</strong> sealed contract with the fix built in: clear the bar of their-code-on-our-field (<span class="num">0.0279</span>), not just the published number, on fresh never-touched seeds. Result: <strong>10 out of 10</strong> runs cleared both bars; worst-case plausible averages <span class="num">0.03033</span> (K=16) and <span class="num">0.03024</span> (K=8). That pass counts. The V1 VOID stands beside it, forever.</p>
+    </li>
+  </ul>
+  <figure>
+    <div class="figwrap">
+      <svg id="ciSvg" viewBox="0 0 660 250" width="100%" role="img" aria-label="Dot and interval chart of our five-seed results versus comparator reference points, for Musical Instruments and Office Products V3"></svg>
+    </div>
+    <figcaption>Fig. 2 — The two counted comparisons (hover any mark for detail). Whiskers are 95% confidence intervals over 5 fresh seeds; open circles are the comparator's <em>single-run</em> published values (and, for Office, its matched local re-run). Axis zoomed to show detail — differences are a few percent, which is the normal scale on this benchmark. We claim our averages clear these point values; we claim nothing stronger.</figcaption>
+  </figure>
+</section>
+
+<section id="claims">
+  <div class="eyebrow">Section 7</div>
+  <h2>What we claim — and what we refuse to claim</h2>
+  <table class="claims">
+    <tr><th style="width:50%">We claim <span class="tickgood">✓</span></th><th>We refuse to claim <span class="tickbad">✗</span></th></tr>
+    <tr>
+      <td><strong>Musical Instruments:</strong> fresh 5-seed averages clear the published <span class="num">0.0406</span>; CI lower bounds <span class="num">0.04096</span> / <span class="num">0.04083</span>, 10/10 seeds above (sealed prereg).</td>
+      <td><strong>"State of the art"</strong> — on anything. On Video Games our <span class="num">0.0673</span> sits below the published <span class="num">0.0760</span>; we say "competitive." An automatic scan bans SOTA phrasing at every build.</td>
+    </tr>
+    <tr>
+      <td><strong>Office Products (V3):</strong> CI lower bounds <span class="num">0.03033</span> / <span class="num">0.03024</span>, above both <span class="num">0.0279</span> (matched re-run) and <span class="num">0.0271</span> (published), 10/10 seeds (sealed prereg).</td>
+      <td><strong>Statistical superiority over the comparator.</strong> Their numbers are single runs — no error bars exist to beat. Our five dice rolls averaged higher than the one roll they wrote down; we say exactly that, no more.</td>
+    </tr>
+    <tr>
+      <td><strong>FIR filter helps</strong> on all four categories tested — an internal with-vs-without contrast (two categories under sealed prereg, §3).</td>
+      <td>Anything from the <strong>VOID V1 campaign</strong> — permanently.</td>
+    </tr>
+    <tr>
+      <td><strong>Text benefits are dataset-conditional</strong>, supported by deliberate thinning interventions (§4). And the <strong>apparatus itself</strong> is a reusable contribution.</td>
+      <td><strong>Races against concurrent 2026 preprints</strong> whose protocols we haven't audited — we cite them; we don't claim against them.</td>
+    </tr>
+  </table>
+</section>
+
+<section id="faq">
+  <div class="eyebrow">Appendix</div>
+  <h2>FAQ</h2>
+  <details><summary>Why are the scores so small (0.03–0.07)? Is the model bad?</summary>
+    <p>No — it's the open exam. Ranking the one true next purchase against an entire catalog of tens of thousands means even excellent models place it in the top-10 only part of the time. Multiple-choice-style evaluations produce much bigger numbers on the same models; they're just an easier test. Within this exam, third-decimal gaps separate the leaders — like tenths of a second in a sprint.</p>
+  </details>
+  <details><summary>Why five seeds? What's a seed anyway?</summary>
+    <p>Training shuffles data and initializes weights randomly; the seed is the shuffle of that deck. One run can be lucky. Five runs give an average and a spread — and our pass rules use the <em>95% confidence lower bound</em>: "even our unluckiest plausible average still clears the bar."</p>
+  </details>
+  <details><summary>Couldn't you just quietly re-run experiments until they pass?</summary>
+    <p>That's exactly what pre-registration blocks. The contract — command, seeds, pass rule, claim sentence — is committed publicly <em>before</em> the run, with seeds that have never been used. A failed contract can't be un-published; the Office V1 VOID is the standing proof that we honor misses.</p>
+  </details>
+  <details><summary>What does "the paper refuses to build" actually mean?</summary>
+    <p>The PDF is produced by a script that first recomputes all 168 printed numbers from raw result files. Any mismatch, any number whose origin can't be traced, any missing evidence family — the script exits with an error and no PDF is produced. Producing the paper <em>is</em> the proof that every number checks out.</p>
+  </details>
+  <details><summary>Is the FIR filter just a moving average? Why is that publishable?</summary>
+    <p>Mechanically it's close — that's its charm. The contribution is showing that a <em>leak-free, backward-only, starts-at-off</em> version of this fifty-year-old idea reliably improves a modern attention-based recommender across four datasets with zero per-category tuning, inside an evaluation rig where the gain can't be an artifact of cherry-picking. Cheap, safe, repeatable beats big and unverifiable.</p>
+  </details>
+  <details><summary>Why did you run the competitor's code yourselves?</summary>
+    <p>Because published numbers come from <em>their</em> hardware and software; ours differ, and our V1 tripwire proved the difference matters (+44% on a baseline). Running their unmodified code in our environment gives an apples-to-apples bar on our field — clearly labeled as a single, environment-caveated run, which is why the sealed V3 contract requires clearing the published number <em>too</em>.</p>
+  </details>
+  <details><summary>Who audits the auditors?</summary>
+    <p>Everything is in one public repository: the sealed contracts, raw result files with cryptographic hashes, the gate script, the rival AI's complaint log, and our signed responses. Anyone can re-run the single verification command and rebuild all 168 numbers from evidence. Trust ends in a command you can run, not in us.</p>
+  </details>
+</section>
+
+<p class="footnote" style="margin-top:48px">Companion to the technical paper (<code>PAPER_SUBMISSION.md</code> / TORS manuscript). All real numbers copied verbatim from the artifact-gated paper; toy demos are labeled as invented illustrations. The claim boundary of the paper applies to this page: no state-of-the-art claim of any kind, no statistical-superiority claim against single-run comparators, and the Office V1 VOID is permanent.</p>
+</main>
+
+<div class="tooltip" id="tip" role="status"></div>
+
+<script>
+(function () {
+  // ---------- 1. Toy recommender ----------
+  var CATALOG = [
+    { id: "strings", name: "Guitar strings", emoji: "🎸", scent: [0.9, 0.1, 0.0] },
+    { id: "tuner",   name: "Clip-on tuner",  emoji: "🎵", scent: [0.8, 0.2, 0.0] },
+    { id: "capo",    name: "Capo",           emoji: "🪗", scent: [0.85, 0.1, 0.05] },
+    { id: "ink",     name: "Printer ink",    emoji: "🖨️", scent: [0.0, 0.9, 0.1] },
+    { id: "paper",   name: "Copy paper",     emoji: "📄", scent: [0.05, 0.9, 0.05] },
+    { id: "stapler", name: "Stapler",        emoji: "📎", scent: [0.0, 0.8, 0.2] },
+    { id: "game",    name: "Racing game",    emoji: "🎮", scent: [0.0, 0.1, 0.9] },
+    { id: "headset", name: "Gaming headset", emoji: "🎧", scent: [0.1, 0.05, 0.85] }
+  ];
+  var hist = [];
+  var chipsEl = document.getElementById("histChips");
+  var rankEl = document.getElementById("rankList");
+  var echoEl = document.getElementById("histEcho");
+  CATALOG.forEach(function (c) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.textContent = c.emoji + " " + c.name;
+    b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", function () {
+      var i = hist.indexOf(c.id);
+      if (i >= 0) hist.splice(i, 1);
+      else { if (hist.length >= 3) hist.shift(); hist.push(c.id); }
+      render();
+    });
+    b.dataset.id = c.id;
+    chipsEl.appendChild(b);
+  });
+  document.getElementById("clearHist").addEventListener("click", function () { hist = []; render(); });
+  function dot(a, b) { return a[0]*b[0] + a[1]*b[1] + a[2]*b[2]; }
+  function render() {
+    Array.prototype.forEach.call(chipsEl.children, function (b) {
+      var on = hist.indexOf(b.dataset.id) >= 0;
+      b.classList.toggle("on", on); b.setAttribute("aria-pressed", String(on));
+    });
+    echoEl.textContent = hist.length
+      ? "History (old → new): " + hist.map(function (id) { return CATALOG.find(function (c) { return c.id === id; }).name; }).join(" → ")
+      : "No history yet — the model can only guess what's popular.";
+    var scores = CATALOG.filter(function (c) { return hist.indexOf(c.id) < 0; }).map(function (c) {
+      var s = 0.15, why = "popularity floor";
+      if (hist.length) {
+        var recW = [0.2, 0.3, 0.5].slice(-hist.length);
+        var sim = 0;
+        hist.forEach(function (id, i) {
+          var h = CATALOG.find(function (x) { return x.id === id; });
+          sim += recW[i] * dot(h.scent, c.scent);
+        });
+        s += sim;
+        why = "scent match " + sim.toFixed(2) + " (recent items weighted 0.5/0.3/0.2)";
+      }
+      return { c: c, s: s, why: why };
+    }).sort(function (a, b) { return b.s - a.s; });
+    var max = scores[0] ? scores[0].s : 1;
+    rankEl.innerHTML = "";
+    scores.slice(0, 5).forEach(function (r, i) {
+      var li = document.createElement("li");
+      li.innerHTML = '<span class="pos">#' + (i + 1) + '</span><span>' + r.c.emoji + '</span>' +
+        '<div><div>' + r.c.name + '</div><div class="why">' + r.why + '</div></div>' +
+        '<div class="bar" style="width:' + Math.max(6, 90 * r.s / max) + 'px"></div>';
+      rankEl.appendChild(li);
+    });
+  }
+  render();
+
+  // ---------- 2. FIR slider ----------
+  // Deterministic synthetic signal: drifting taste + noise (fixed pseudo-random table).
+  var N = 58, X0 = 44, X1 = 616, Y0 = 196, YS = 150;
+  var noiseTab = [0.31,-0.42,0.18,-0.07,0.44,-0.29,0.12,-0.48,0.26,0.05,-0.35,0.41,-0.14,0.22,-0.44,0.09,0.37,-0.21,0.02,-0.39,0.47,-0.11,0.28,-0.46,0.16,0.33,-0.25,0.06,-0.32,0.43,-0.18,0.24,-0.41,0.13,0.38,-0.27,0.01,-0.36,0.45,-0.09,0.21,-0.47,0.17,0.34,-0.23,0.08,-0.30,0.40,-0.16,0.25,-0.43,0.11,0.36,-0.20,0.03,-0.34,0.46,-0.13];
+  var truth = [], noisy = [];
+  for (var i = 0; i < N; i++) {
+    var t = i / (N - 1);
+    var v = 0.5 + 0.28 * Math.sin(t * 5.2) + 0.14 * Math.sin(t * 11.7 + 1.3);
+    truth.push(v);
+    noisy.push(v + 0.20 * noiseTab[i]);
+  }
+  function xy(i, v) { return (X0 + (X1 - X0) * i / (N - 1)) + "," + (Y0 - YS * v); }
+  function pathOf(arr) { return "M" + arr.map(function (v, i) { return xy(i, v); }).join(" L"); }
+  document.getElementById("truthPath").setAttribute("d", pathOf(truth));
+  var dotsG = document.getElementById("noiseDots");
+  noisy.forEach(function (v, i) {
+    var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    var p = xy(i, v).split(",");
+    c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); c.setAttribute("r", "2.6");
+    c.setAttribute("fill", "var(--chart-orange)"); c.setAttribute("opacity", "0.75");
+    dotsG.appendChild(c);
+  });
+  var filtPath = document.getElementById("filtPath"), firLabel = document.getElementById("firLabel");
+  function applyFIR(strength) {
+    // causal kernel over the past `k` points, geometric weights scaled by strength
+    var k = Math.max(1, Math.round(1 + strength * 7));
+    var out = [];
+    for (var i = 0; i < N; i++) {
+      var num = 0, den = 0;
+      for (var j = 0; j < k; j++) {
+        if (i - j < 0) break;
+        var w = Math.pow(0.72, j);
+        num += w * noisy[i - j]; den += w;
+      }
+      var f = num / den;
+      out.push(noisy[i] * (1 - strength) + f * strength);
+    }
+    return out;
+  }
+  function updateFIR() {
+    var s = document.getElementById("firSlider").value / 100;
+    filtPath.setAttribute("d", pathOf(applyFIR(s)));
+    firLabel.textContent = s === 0 ? "filter off — raw noise" : "filter strength " + Math.round(s * 100) + "% — causal window ≈ " + Math.max(1, Math.round(1 + s * 7)) + " past purchases";
+  }
+  document.getElementById("firSlider").addEventListener("input", updateFIR);
+  updateFIR();
+
+  // ---------- 3. CI dot-interval figure (real numbers, verbatim from the paper) ----------
+  var rows = [
+    { label: "Musical Instruments · K=16", mean: 0.04152, lo: 0.04096, hi: 0.04208, refs: [{ v: 0.0406, name: "published HSTU-BLaIR (single run)" }] },
+    { label: "Musical Instruments · K=8",  mean: 0.04120, lo: 0.04083, hi: 0.04157, refs: [{ v: 0.0406, name: "published HSTU-BLaIR (single run)" }] },
+    { label: "Office Products V3 · K=16",  mean: 0.03047, lo: 0.03033, hi: 0.03061, refs: [{ v: 0.0279, name: "their code on our machine (single run)" }, { v: 0.0271, name: "published HSTU-BLaIR (single run)" }] },
+    { label: "Office Products V3 · K=8",   mean: 0.03029, lo: 0.03024, hi: 0.03034, refs: [{ v: 0.0279, name: "their code on our machine (single run)" }, { v: 0.0271, name: "published HSTU-BLaIR (single run)" }] }
+  ];
+  var svg = document.getElementById("ciSvg"), NS = "http://www.w3.org/2000/svg";
+  var LX = 250, RX = 640, TY = 34, RH = 46;
+  var lo = 0.0262, hi = 0.0428;
+  function sx(v) { return LX + (RX - LX) * (v - lo) / (hi - lo); }
+  function el(tag, attrs, parent) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || svg).appendChild(e); return e;
+  }
+  [0.028, 0.032, 0.036, 0.040].forEach(function (v) {
+    el("line", { x1: sx(v), y1: TY - 12, x2: sx(v), y2: TY + rows.length * RH - 6, stroke: "var(--line)", "stroke-width": 1 });
+    el("text", { x: sx(v), y: TY + rows.length * RH + 14, "text-anchor": "middle", "font-size": 11, fill: "var(--muted)" }).textContent = v.toFixed(3);
+  });
+  el("text", { x: (LX + RX) / 2, y: TY + rows.length * RH + 32, "text-anchor": "middle", "font-size": 11, fill: "var(--muted)" }).textContent = "NDCG@10 (axis zoomed; see caption)";
+  var tip = document.getElementById("tip");
+  function hover(e, on, txt) {
+    if (on) { tip.textContent = txt; tip.style.opacity = 1; tip.style.left = (e.clientX + 14) + "px"; tip.style.top = (e.clientY + 10) + "px"; }
+    else tip.style.opacity = 0;
+  }
+  rows.forEach(function (r, i) {
+    var y = TY + i * RH + 14;
+    el("text", { x: 8, y: y + 4, "font-size": 12, fill: "var(--ink)" }).textContent = r.label;
+    r.refs.forEach(function (ref) {
+      var c = el("circle", { cx: sx(ref.v), cy: y, r: 5.5, fill: "none", stroke: "var(--chart-verm)", "stroke-width": 2 });
+      var hit = el("circle", { cx: sx(ref.v), cy: y, r: 13, fill: "transparent", cursor: "pointer" });
+      ["pointermove", "pointerenter"].forEach(function (ev) { hit.addEventListener(ev, function (e) { hover(e, true, ref.name + ": " + ref.v.toFixed(4)); }); });
+      hit.addEventListener("pointerleave", function (e) { hover(e, false); });
+    });
+    el("line", { x1: sx(r.lo), y1: y, x2: sx(r.hi), y2: y, stroke: "var(--chart-blue)", "stroke-width": 2.5 });
+    [r.lo, r.hi].forEach(function (v) { el("line", { x1: sx(v), y1: y - 5, x2: sx(v), y2: y + 5, stroke: "var(--chart-blue)", "stroke-width": 2.5 }); });
+    el("circle", { cx: sx(r.mean), cy: y, r: 5, fill: "var(--chart-blue)" });
+    var hit2 = el("rect", { x: sx(r.lo) - 10, y: y - 12, width: sx(r.hi) - sx(r.lo) + 20, height: 24, fill: "transparent", cursor: "pointer" });
+    ["pointermove", "pointerenter"].forEach(function (ev) { hit2.addEventListener(ev, function (e) { hover(e, true, r.label + " — our 5-seed mean " + r.mean.toFixed(5) + ", 95% CI " + r.lo.toFixed(5) + "–" + r.hi.toFixed(5) + " (10/10 seeds above every reference)"); }); });
+    hit2.addEventListener("pointerleave", function (e) { hover(e, false); });
+  });
+  var ly = TY + rows.length * RH + 46;
+  el("circle", { cx: 260, cy: ly, r: 5, fill: "var(--chart-blue)" });
+  el("text", { x: 272, y: ly + 4, "font-size": 11.5, fill: "var(--ink-2)" }).textContent = "our 5-seed mean ± 95% CI";
+  el("circle", { cx: 470, cy: ly, r: 5.5, fill: "none", stroke: "var(--chart-verm)", "stroke-width": 2 });
+  el("text", { x: 483, y: ly + 4, "font-size": 11.5, fill: "var(--ink-2)" }).textContent = "comparator (single run)";
+})();
+</script>

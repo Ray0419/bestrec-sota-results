@@ -9,6 +9,68 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-18 00:08 (responded 2026-07-18, same day)
+
+**Verdict acknowledged.** The strict gate, Office V3 adjudicator, and FIR-breadth adjudicator
+were all green on the auditor's own fresh re-runs; the two hard blockers were the Appendix A.0
+contradiction and stale archival packaging. Both are fixed, plus the three documentation items.
+(The machine was off between 2026-07-13 and now, so the 2026-07-15 04:17 run — same five
+confirmed problems — went unanswered until this session; it is covered by this response, and a
+stub section below marks it.)
+
+### Point-by-point (confirmed problems)
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1 | Appendix A.0 still said "confirmed per-category claim remains Musical_Instruments only; Office is not counted" | **Fixed in all three sources** (`PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, `paper_tex/sections/appendix-a0.tex`): now "From **this (V1) campaign**, the confirmed per-category claim remains Musical_Instruments only — the V1 Office campaign is not counted", followed by the V3 pass in one sentence, strictly under its frozen wording, with "the V1 VOID stands unchanged". Compiled-PDF extraction confirms the stale phrase is gone and the new one present. |
+| CP-2 | Generated Office table template preserved the contradiction | **Generator fixed at the source** (`_bestrec_run/build_hstu_tables.py` STATUS note is now V1-scoped with the V3 pointer) → `build_hstu_tables.py --write-manifest` re-run (BUILD GREEN, 168 cells) → `tables/office_confirmation.tex` regenerated via `build.sh`. "NOT counted as a second-category pass" now applies explicitly to "this V1 campaign". |
+| CP-3 | Deposit zip stale (no V3/FIR-breadth evidence, no TORS PDF, no deposit instructions) | **New `bestrec_deposit_v1.1.zip` (65 entries), built by a new tracked, deterministic builder** `_bestrec_run/build_deposit_bundle.py` — adds the four prereg/results docs, both adjudicators, the pinned-parity chain, `paper_tex/PAPER_TORS.pdf`, the completed `office_hstu_blair` reference-run artifacts, the venue/DOI decision docs, and the manifest tool. Published as GitHub release **`v1.1-deposit`**; `DOI_DEPOSIT_INSTRUCTIONS.md` updated (bundle row → v1.1, hash via the `.sha256` sidecar to avoid self-reference; v1.0 kept as the dated snapshot). |
+| CP-4 | BUILD_NOTES stale (claimed 40/40 while acmsmall is 41+ pp; old round-8 counts) | **Refreshed with the true current counts** — after this round's edits: TORS 40 pp (hygiene PASS), acmsmall preview 42 pp, reader PDF 46 pp — plus a header note that the authoritative counts are always the latest build's own output, historical markers on the round-8 numbers, and a sync(4) entry documenting this round. |
+| CP-5 | SILLM4Rec named but uncited | **Formally cited in §5.1 and `references.bib`** (`wu2025sillm4rec`: Wu, Quan, Liu, Huang & Sang, "SILLM4Rec: Self-Improving with Chain of Thought Enhanced Preference Optimization for Multimodal Recommendation", MMAsia 2025, pp. 1–8, DOI 10.1145/3743093.3771011 — metadata verified against the Crossref record; title cross-checked against the public repository README). The exclusion sentence keeps its "pending direct full-text protocol inspection" honesty and now notes the accessible evidence (title, venue metadata, repository workflow) all indicates a non-interchangeable protocol. |
+
+### Manifest / related-work items from the risk list
+
+- **Risk #1 (manifest doesn't name V3/FIR-breadth):** `RELEASE_MANIFEST.json` `result_families`
+  extended with **`OFFICEV3_gate`** (10 result JSONs + 10 tree-state sidecars) and
+  **`FIR_breadth`** (20 result JSONs) — 153 files verified by the strict gate at this commit;
+  the `release` label now names both releases. The data sections remain the immutable
+  v0.9-audit-evidence assets by design.
+- **Risk #8 (UniSGR/DIGER/ACERec):** cited with explicit out-of-scope wording at the end of the
+  §5.1 concurrent-work paragraph — UniSGR (`sun2026unisgr`, arXiv:2607.04068; private industrial
+  logs + online A/B, not public AR2023 LLOO), DIGER (`fu2026diger`, arXiv:2601.19711), ACERec
+  (`xia2026acerec`, arXiv:2602.13573); author lists verified against the arXiv abstracts; "we
+  make no comparison against any of them." The 2026 semantic-planning position paper is
+  **intentionally not cited**: it is a framing/position piece, not an empirical comparator, and
+  the paragraph's scope-out already covers the line generically — recorded here so the omission
+  is a decision, not an accident.
+
+### Open questions answered
+
+- **DOI at submission time vs tracked-artifact boundary:** the paper's stated contract stands
+  (tracked artifacts + sidecars on request); the deposit bundle is now current (v1.1) so either
+  path is ready. DOI minting itself remains deferred by maintainer decision (`VENUE_PLAN.md`).
+- **Is `PAPER_SUBMISSION.pdf` live?** Yes — reader edition of the canonical markdown (46 pp),
+  alongside the TORS manuscript (40 pp) and untracked acmsmall preview (42 pp);
+  `CANONICAL_SUBMISSION.md` governs. Roles restated in `DOI_DEPOSIT_INSTRUCTIONS.md`/bundle README.
+- **SILLM4Rec ACM PDF archival:** full-text inspection remains item 1 (PENDING) of the
+  `VENUE_PLAN.md` pre-submission freeze checklist; the citation no longer depends on it.
+
+**Ritual:** generator fix → `--write-manifest` (BUILD GREEN, 168 cells) → `render_paper_pdf.py`
+(46 pp, scan **CLEAN**) → `build.sh` (hygiene **PASS**, 40 pp) → manifest family extension +
+`--regen` → committed together → `rebuild_hstu_submission.py --strict` exit 0 (**168 cells,
+0 mismatch, 0 untraceable, 14/14 families, 153-file manifest OK**) → pushed → release
+**`v1.1-deposit`** created (zip + sidecar + manifest + both PDFs) → manifest refreshed on
+`v0.9-audit-evidence`.
+
+## Response — to Audit Run 2026-07-15 04:17 (responded 2026-07-18; covered by the 00:08 response above)
+
+The 04:17 run's five confirmed problems are the same five as the 2026-07-18 00:08 run
+(A.0 contradiction, generated-table contradiction, stale deposit zip, stale build notes,
+uncited SILLM4Rec) plus the UniSGR coverage note. Every one is executed in the
+**2026-07-18 00:08 response above**; nothing in the 04:17 section required a distinct action.
+The response lag (the only >same-day lag in this file) was machine downtime between
+2026-07-13 and 2026-07-18, not triage.
+
 ## Response — to Audit Run 2026-07-13 20:57 (responded 2026-07-13, same day)
 
 **Verdict acknowledged:** no reject-level defect reproduced — the §6.5 fix verified in source

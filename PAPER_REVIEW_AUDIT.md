@@ -6,66 +6,5101 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **No current hard numerical/provenance blocker after the 20:57 rerun.** A
-   fresh `rebuild_hstu_submission.py --strict` at `2026-07-13 20:57
+1. **Confirmed reject-level packaging gap: the DOI/deposit bundle is still stale
+   relative to the current claims.** Fresh check at `2026-07-18 00:08
+   Australia/Sydney`: `_release/bestrec_deposit_v1.0.zip` is timestamped
+   `2026-07-11`, contains 48 prefixed entries under
+   `bestrec_deposit_v1.0/`, contains no `PREREG_OFFICE_V3.md`,
+   `OFFICE_V3_RESULTS.md`, `PREREG_FIR_BREADTH.md`, or
+   `FIR_BREADTH_RESULTS.md`, and `DOI_DEPOSIT_INSTRUCTIONS.md` still describes
+   the old 46-file `v1.0-deposit` bundle even though the zip actually has 48
+   entries. `RELEASE_MANIFEST.json` verifies clean for its declared 113-file
+   scope, but its `release` is still `v0.9-audit-evidence`, its date is still
+   `2026-07-12`, and its `result_families` are still the
+   older `MI_gate_EXEC2`, `MI_gate_EXEC2_rest`, `MI_rebuild`, `OFFICE_gate`,
+   `OFFICE_idonly_floor`, and `FIR_ablations` families; it does not name the
+   Office V3 or FIR-breadth prereg/results files. The generated
+   `_bestrec_run/hstu_results_manifest.json` and strict gate do see the new
+   evidence, but the archival/deposit story is incomplete.
+2. **Confirmed source/rendered contradiction: Appendix A.0 still says Office is
+   not counted.** `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`,
+   `paper_tex/sections/appendix-a0.tex`, `PAPER_SUBMISSION.pdf`,
+   `paper_tex/PAPER_TORS.pdf`, and `paper_tex/PAPER_TORS_acmsmall.pdf` still
+   contain "The confirmed per-category claim remains Musical_Instruments only;
+   Office is not counted." Fresh PDF extraction at `2026-07-18 00:08
+   Australia/Sydney` places the stale sentence on
+   `PAPER_SUBMISSION.pdf` page 41, `paper_tex/PAPER_TORS.pdf` page 36, and
+   `paper_tex/PAPER_TORS_acmsmall.pdf` page 37; the generated table also prints
+   "NOT counted as a second-category pass" on TORS page 37. This now conflicts with the
+   abstract/Section 5.2 Office V3 wording that counts Office V3 as the second
+   pre-registered per-category comparison. The generated
+   `paper_tex/tables/office_confirmation.tex` and its source template in
+   `_bestrec_run/build_hstu_tables.py` also still say the confirmed
+   per-category claim remains Musical_Instruments only.
+3. **Confirmed readiness defects in rendered/production presentation.**
+   `paper_tex/PAPER_TORS.pdf` is 40 pages and hygiene-clean, but
+   fresh PDF extraction at `2026-07-18 00:08 Australia/Sydney` confirms
+   `paper_tex/PAPER_TORS_acmsmall.pdf` is 41 pages while
+   `paper_tex/BUILD_NOTES.md` says the production preview is 40 pages/current
+   builds are 40/40 and still embeds old round-8 35/36-page and 35-page hygiene
+   notes. The rendered PDFs have not changed since `2026-07-13`; the previous
+   visual finding that Table 2's caption was stranded at the bottom of TORS
+   page 27 remains a likely presentation defect until a fresh render/visual QA
+   proves otherwise.
+4. **No current hard numerical/provenance blocker in the strict gate.** Fresh
+   `rebuild_hstu_submission.py --strict` at `2026-07-18 00:08
    Australia/Sydney` passes HSTU parity, all `168` recomputed empirical cells,
    `0` paper mismatches, `0` untraceable cells, all `14` claim families, release
-   manifest verification for `113` files, MI V2 adjudication, and the legacy
-   Office V1 descriptive/VOID check.
-2. **The prior Office V1/V3 contradiction is fixed in source and compiled PDF.**
-   `PAPER_SUBMISSION.md` line 526 and `paper_tex/sections/06-discussion.tex`
-   line 81 now distinguish "no claim counts the V1 campaign" from the
-   redesigned V3 pass that is counted under the frozen point-estimate wording.
-   Text extraction from `paper_tex/PAPER_TORS.pdf` finds `redesigned V3` and
-   `no claim counts the V1 campaign`, and does not find stale `no claim counts
-   Office`, `outcome pending`, or `Office never a passed category` wording.
-3. **Office V3 mechanical evidence remains green.** Fresh
-   `adjudicate_office_v3.py --no-append` at `2026-07-13 20:54
-   Australia/Sydney` passes: K=16 mean `0.03047`, sd `0.00011`, CI-LB
-   `0.03033`; K=8 mean `0.03029`, sd `0.00005`, CI-LB `0.03024`; 10/10 seeds
-   exceed both the environment-matched local regeneration `0.0279` and the
-   published `0.0271`; comparability conditions OK.
-4. **Transient manifest/hash failure was observed but is not live after rerun.**
-   An earlier strict run during this audit saw dirty manifested submission docs
-   and reported release-manifest failure. A direct SHA256 check then matched
-   `RELEASE_MANIFEST.json`, `git status` showed only unrelated untracked files,
-   and the strict rerun passed. If this reappears, regenerate the manifest and
-   commit it with the changed submission artifacts.
-5. **Office V3 sidecar documentation is repaired, but the release boundary
-   remains a reviewer-perception risk.** `OFFICE_V3_RESULTS.md` now inventories
-   all ten final-epoch per-user sidecars and explains the three regular-sidecar
-   equals final-epoch cases. The sidecars remain local-only, so the paper must
-   keep the distinction crisp: tracked result JSONs support printed aggregate
-   cells; local-only sidecars support per-user reranking audits but are not
-   shipped unless explicitly deposited.
-6. **SILLM4Rec coverage is improved but still not fully closed.** Both markdown
-   and TeX now cite the public repository's candidate-ranking/SFT-DPO workflow
-   as the concrete non-interchangeability rationale. However, ACM metadata also
-   says SILLM4Rec uses three 5-core Amazon Reviews 2023 datasets and reports
-   NDCG@10, so a top reviewer may still expect direct protocol inspection of
-   the ACM PDF/full paper before final submission.
-7. **Build-note/documentation staleness is now low priority but still untidy.**
-   `paper_tex/BUILD_NOTES.md` marks the old CCS/keyword warning resolved and
-   labels old 35/36-page counts as historical, while current artifacts are
-   `PAPER_TORS.pdf` 40 pages, `PAPER_TORS_acmsmall.pdf` 40 pages, and
-   `PAPER_SUBMISSION.pdf` 45 pages.
-8. **Confirmed causal FIR novelty boundary is much safer but must stay narrow.**
-   The paper cites FMLP-Rec/BSARec plus Caser/NextItNet, repairing earlier
-   under-citation of convolutional sequential recommendation. Keep the claim to
-   a leak-free, left-causal, zero-init depthwise FIR regularizer inside this
-   HSTU-style artifact-gated setting, not to causal/local convolutional
-   sequence modeling in general.
-9. **Methodology-first novelty/fit risk remains.** A top-journal reviewer may
-   still view the "trustworthy-evaluation apparatus" as strong artifact
-   practice rather than a standalone scientific contribution unless the paper
-   keeps the framing narrow: an auditable per-paper discipline demonstrated on
-   concrete empirical claims.
+   manifest verification for `113` declared files, MI V2 adjudication, and the
+   legacy Office V1 descriptive/VOID check.
+5. **Office V3 mechanical evidence remains green, but the Appendix/table prose
+   must be repaired.** Fresh `adjudicate_office_v3.py --no-append` at
+   `2026-07-18 00:08 Australia/Sydney` passes: K=16 mean `0.03047`, sd
+   `0.00011`, CI-LB `0.03033`; K=8 mean `0.03029`, sd `0.00005`, CI-LB
+   `0.03024`; 10/10 seeds exceed both the environment-matched local
+   regeneration `0.0279` and the published `0.0271`; comparability conditions
+   OK. The main narrative has been mostly repaired since earlier audits, but
+   Appendix A.0 and the generated Office V1 table still use the old broad
+   "Office not counted" wording.
+6. **FIR-breadth mechanical evidence remains green, but release packaging is
+   lagging.** Fresh `adjudicate_fir_breadth.py --no-append` at `2026-07-18
+   00:08 Australia/Sydney` confirms `Industrial_and_Scientific` mean
+   `+0.00240`, 95% CI `[+0.00183,+0.00297]`, 5/5 positive, and
+   `CDs_and_Vinyl` mean `+0.00566`, 95% CI `[+0.00493,+0.00639]`, 5/5
+   positive. The 20 tracked FIR-breadth JSONs have one consistent
+   `data_sha256` set per category and sidecar hash fields, but the current
+   deposit bundle does not include their prereg/results documentation.
+7. **SILLM4Rec coverage is better supported, but the citation is not
+   submission-ready.** The public repository documents generated
+   candidate-ranking tasks plus SFT/DPO workflows, and ACM/search metadata says
+   the paper reports Amazon Reviews 2023 5-core NDCG results. This supports
+   non-interchangeability with full-catalog LLOO, but the manuscript mentions
+   SILLM4Rec in Section 5.1 without a formal citation and
+   `paper_tex/references.bib` has no SILLM4Rec entry. Either inspect/archive
+   the ACM PDF directly and cite it, or revise the sentence to cite the public
+   repo/ACM DOI as the concrete exclusion basis.
+8. **Concurrent 2026 generative-retrieval literature remains a novelty/priority
+   pressure point.** The current manuscript cites SID-MLP, Latte, ReSID,
+   ChronoSID, GrIT, Augment-or-Not, and DiffuReason, and the "no comparative
+   claim against concurrent arXiv-only work" fence remains necessary. Fresh
+   search at `2026-07-18` also found or re-confirmed UniSGR (arXiv:2607.04068,
+   semantic-ID generation plus ranking on private Lazada logs), DIGER
+   (arXiv:2601.19711, differentiable semantic IDs), ACERec (arXiv:2602.13573,
+   long semantic IDs), and the 2026 semantic-planning position paper
+   (arXiv:2607.09540). None is a direct AR2023 full-catalog LLOO comparator
+   based on the checked evidence, but at least UniSGR/DIGER/ACERec should be
+   cited or explicitly scoped out if the paper keeps a broad "2026 semantic-ID /
+   generative retrieval line" paragraph.
+9. **Confirmed causal FIR novelty boundary is much safer but must stay narrow.**
+   The paper cites FMLP-Rec/BSARec plus Caser/NextItNet and notes WPGRec-like
+   frequency/wavelet-packet work. Keep the claim to a leak-free, left-causal,
+   zero-init depthwise FIR regularizer inside this HSTU-style artifact-gated
+   setting, not to causal/local convolutional or frequency-domain sequence
+   modeling in general.
 10. **Persistent scientific boundary: no broad SOTA, no paired superiority.** Any
    future abstract, conclusion, cover letter, response file, or release note
-   must keep Video_Games as competitive but not SOTA; MI and Office as
+   must keep Video_Games as competitive but not SOTA; MI and Office V3 as
    per-category point-estimate comparisons against single-run/single-seed
-   comparators; and FIR-BREADTH as an internal paired filter-vs-no-filter
+   comparators; and FIR-breadth as an internal paired filter-vs-no-filter
    result, never a comparator or SOTA claim.
+
+## Audit Run - 2026-07-18 00:08 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74`.
+- Automation memory read from
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`;
+  `CODEX_HOME` is not set in this PowerShell session, so the user-profile Codex
+  home remains the effective memory location.
+- Current run time: `2026-07-18 00:07:32 +10:00`; adjudicators printed
+  `2026-07-18 00:08:48`.
+- Working tree before this audit edit: tracked modification in
+  `PAPER_REVIEW_AUDIT.md`; untracked `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Canonical sources/artifacts inspected this run:
+  `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`,
+  `paper_tex/main.tex`, `paper_tex/paper-shared.tex`,
+  `paper_tex/PAPER_TORS.pdf`, `paper_tex/PAPER_TORS_acmsmall.pdf`,
+  `paper_tex/sections/abstract.tex`,
+  `paper_tex/sections/01-introduction.tex`,
+  `paper_tex/sections/02-related.tex`,
+  `paper_tex/sections/03-method.tex`,
+  `paper_tex/sections/04-experiments.tex`,
+  `paper_tex/sections/05-results.tex`,
+  `paper_tex/sections/06-discussion.tex`,
+  `paper_tex/sections/07-conclusion.tex`,
+  `paper_tex/sections/08-availability.tex`,
+  `paper_tex/sections/appendix-a0.tex`,
+  `paper_tex/tables/office_confirmation.tex`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/hygiene_scan_output.txt`,
+  `paper_tex/references.bib`, `RELEASE_MANIFEST.json`,
+  `DOI_DEPOSIT_INSTRUCTIONS.md`, `_bestrec_run/build_hstu_tables.py`,
+  `_bestrec_run/hstu_results_manifest.json`, `_release/bestrec_deposit_v1.0.zip`.
+
+### Verdict
+
+**The numerical artifact graph remains green, but the paper is still not ready
+for top-journal submission.** The strict rebuild, Office V3 adjudicator, and
+FIR-breadth adjudicator all pass again on July 18. The main narrative is now
+much closer to coherent than the July 15 state: abstract, introduction, related
+work, Section 5.2, discussion, conclusion, and Section 8 all generally carry the
+two-track Office story (V1 VOID, V3 passed and counted only under frozen
+point-estimate wording).
+
+The remaining hard contradiction is narrower but still damaging: Appendix A.0
+and the regenerated Office V1 table still say the confirmed per-category claim
+remains Musical_Instruments only / Office is not counted. That stale wording is
+visible in all live PDFs, so a reviewer can still quote an internal
+contradiction from the submitted artifact.
+
+The second hard blocker is packaging: the current deposit bundle remains the old
+`v1.0-deposit` package and omits the newer Office V3 and FIR-breadth evidence.
+The local strict gate can recompute the claims, but the archival story no longer
+matches the paper's current claim set.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: `168` cells recomputed; `0` untraceable; `0` paper mismatches; all
+    `14` declared claim families sourced.
+  - PASS: release manifest verification OK for `113` declared files.
+  - PASS: MI V2 gate; legacy Office V1 descriptive/VOID check remains OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-18 00:08:48 Australia/Sydney`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, `5/5` seeds
+    above both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, `5/5` seeds
+    above both references.
+  - Dataset identity, reference artifacts, treestate sidecars, code hashes,
+    and data SHA256s verified.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - CONFIRMED at `2026-07-18 00:08:48 Australia/Sydney`, block `9a38ad66bd75`.
+  - Industrial_and_Scientific: mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, `5/5` positive.
+  - CDs_and_Vinyl: mean `+0.00566`, 95% CI `[+0.00493,+0.00639]`,
+    `5/5` positive.
+- PDF extraction with project-managed `uv` Python / `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages; `SILLM4Rec` on page 19;
+    `Office_Products V3` on page 22; stale "Office is not counted" and
+    "Musical_Instruments only" on page 41.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; `SILLM4Rec` on page 18;
+    `Office_Products V3` on page 20; stale "Office is not counted" and
+    "Musical_Instruments only" on page 36; generated "NOT counted as a
+    second-category pass" on page 37.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; `SILLM4Rec` on page 18;
+    `Office_Products V3` on page 20; stale Office wording and generated
+    "NOT counted as a second-category pass" on page 37.
+- Source/release searches
+  - Stale Office wording remains in `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`,
+    `paper_tex/sections/appendix-a0.tex`,
+    `paper_tex/tables/office_confirmation.tex`, and
+    `_bestrec_run/build_hstu_tables.py`.
+  - `paper_tex/references.bib` still has no `SILLM4Rec`, `UniSGR`, `DIGER`,
+    `ACERec`, or semantic-planning entry.
+  - `paper_tex/hygiene_scan_output.txt` remains PASS: `PAPER_TORS.pdf`,
+    40 pages, `0` placeholder/forbidden failures, `20` informational review
+    hits.
+  - `_release/bestrec_deposit_v1.0.zip`: 780,381 bytes, SHA256
+    `8FD3EB58E35E695D910B960B4CACF85C50E23E6FF77EC0A637953655F1D08770`,
+    48 entries under `bestrec_deposit_v1.0/`. It contains no Office V3
+    prereg/results files, no FIR-breadth prereg/results files, no current
+    `paper_tex/PAPER_TORS.pdf`, and no `DOI_DEPOSIT_INSTRUCTIONS.md`.
+  - `DOI_DEPOSIT_INSTRUCTIONS.md` still says the prepared deposit bundle has
+    `46` files and points to GitHub release `v1.0-deposit`; the local zip has
+    48 entries.
+
+### External Fact-Check / Novelty Notes
+
+- Amazon Reviews 2023 official documentation supports the dataset framing:
+  McAuley Lab release, 571.54M reviews, interactions through September 2023,
+  rich metadata, links, and standard splitting. Source:
+  https://amazon-reviews-2023.github.io/
+- HSTU-BLaIR remains the relevant stronger AR2023 5-core reference named by
+  the paper; the arXiv record is current at `2504.10545`. Source:
+  https://arxiv.org/abs/2504.10545
+- SILLM4Rec is now too concrete to leave uncited. ACM metadata says the MMAsia
+  2025 paper uses three 5-core Amazon Reviews 2023 datasets, while the public
+  repository describes image descriptions, user-preference summaries, candidate
+  product-ranking tasks, and SFT/DPO training data. This supports the
+  manuscript's non-interchangeability rationale, but the named exclusion needs
+  a formal citation and preferably a direct protocol note. Sources:
+  https://dl.acm.org/doi/10.1145/3743093.3771011 and
+  https://github.com/MKC-Lab/SILLM4Rec
+- ChronoSID is cited and the checked arXiv abstract supports the manuscript's
+  characterization as semantic-ID generative recommendation with temporal-gap
+  augmentation. Source: https://arxiv.org/abs/2607.03918
+- UniSGR is a current semantic-ID generation-and-ranking paper, but its checked
+  evidence is private/industrial Lazada evaluation plus online A/B testing, not
+  the AR2023 full-catalog LLOO protocol. It is a related-work coverage risk,
+  not a direct comparator. Source: https://arxiv.org/html/2607.04068
+- Additional 2026 semantic-ID/generative-recommendation work found in this run
+  but absent from the bibliography: DIGER, which aligns semantic ID learning
+  with recommendation gradients via differentiable SIDs, and ACERec, which
+  targets long semantic IDs and reports average NDCG@10 improvement across six
+  benchmarks. These are plausible scope-out/citation items if the paper keeps
+  a broad 2026 semantic-ID paragraph. Sources:
+  https://arxiv.org/abs/2601.19711 and https://arxiv.org/abs/2602.13573
+- The 2026 semantic-planning position paper is not a comparator, but it is a
+  current framing paper on raw IDs, semantic IDs, and semantic planning; cite or
+  ignore intentionally, not accidentally. Source:
+  https://arxiv.org/pdf/2607.09540
+
+### Confirmed Problems
+
+1. **Appendix A.0 still contradicts Office V3.** The V1 Office campaign should
+   remain VOID, but the broad "confirmed per-category claim remains
+   Musical_Instruments only; Office is not counted" sentence is false after the
+   separate V3 pre-registration passed and was counted under its narrow frozen
+   wording.
+2. **The generated Office table/template preserves the contradiction.** The
+   stale status line is emitted by `_bestrec_run/build_hstu_tables.py`, so the
+   repair must update the generator, regenerate `paper_tex/tables/office_confirmation.tex`,
+   and rebuild the PDFs.
+3. **The deposit zip is stale.** It omits Office V3, FIR-breadth, current TORS
+   PDF/source boundary material, and current deposit instructions.
+4. **Build notes are stale.** `paper_tex/BUILD_NOTES.md` still mixes current
+   40/40 claims, a current 41-page acmsmall PDF, old 35/36-page notes, and an
+   old 35-page hygiene block.
+5. **SILLM4Rec is named but uncited.** The exclusion is defensible from the
+   public workflow evidence, but top-journal related work should cite the ACM
+   DOI/repo or avoid naming the work.
+
+### Confirmed Fixes / Non-Problems Since The Prior Section
+
+- The main paper narrative is substantially repaired: abstract, introduction,
+  related work, Section 5.2, Section 6.4/6.5, conclusion, and Section 8 now
+  generally distinguish Office V1 VOID from Office V3 PASSED.
+- Section 8 now states a coherent tracked-artifact boundary for Office V3
+  printed claims and local-only per-user sidecars.
+- The strict artifact graph remains green; no numerical mismatch, untraceable
+  empirical cell, missing claim family, or HSTU parity failure was found.
+- Office V3 and FIR-breadth adjudicators remain mechanically green on fresh
+  runs.
+- A manuscript-source search for obvious mojibake markers (`â`, `Ã`, `Â`, `�`)
+  found no matches in `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, or `paper_tex`;
+  the odd glyphs visible in PowerShell output appear to be console decoding of
+  UTF-8 text/PDF extraction rather than source corruption.
+
+### Plausible Risks Requiring Author Verification
+
+- Whether the final submission requires a DOI/deposit at submission time or can
+  rely on the tracked-artifact boundary with sidecars provided on request. The
+  current paper text chooses the latter for per-user sidecars, but the existing
+  deposit instructions still present an obsolete ready-to-mint package.
+- Whether `PAPER_SUBMISSION.pdf` remains a live artifact now that it is 45 pages
+  while TORS review PDF is 40 pages and acmsmall preview is 41 pages.
+- Whether the SILLM4Rec ACM PDF should be directly inspected and archived in
+  the audit chain, or whether the public repo/ACM metadata is enough for a
+  cautious non-comparability statement.
+- Which of UniSGR, DIGER, ACERec, and the semantic-planning position paper
+  should enter the related-work paragraph versus be explicitly out of scope.
+
+### Concrete Fixes To Make Next
+
+1. Replace the Appendix A.0 stale sentence with a two-track statement: V1 Office
+   is VOID and not counted; V3 Office is a separate passed pre-registration
+   counted only as a per-category point-estimate comparison, not paired
+   superiority or SOTA.
+2. Update `_bestrec_run/build_hstu_tables.py` so regenerated
+   `paper_tex/tables/office_confirmation.tex` says the Office V1 table is not
+   counted, while Office V3 is handled separately in Section 5.2.
+3. Regenerate TeX/PDFs and rerun the strict gate plus PDF phrase checks.
+4. Refresh `paper_tex/BUILD_NOTES.md` page counts, compile status, and hygiene
+   block.
+5. Rebuild `_release/bestrec_deposit_v1.0.zip` or create a new deposit version
+   that matches the current Section 8 reproducibility boundary, and update
+   `DOI_DEPOSIT_INSTRUCTIONS.md`.
+6. Add a SILLM4Rec bibliography entry and revise the exclusion sentence to cite
+   the ACM paper/repo evidence; decide whether UniSGR/DIGER/ACERec require
+   citations or explicit scope-out language.
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, release, and audit
+      artifacts.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Re-check PDF page counts and stale Office/SILLM/V3 phrase locations.
+- [x] Re-check DOI/deposit zip contents and hash.
+- [x] Fact-check dataset, comparator, SILLM4Rec, and current semantic-ID
+      related-work claims against external sources.
+- [x] Refresh the current prioritized rejection-risk list.
+- [x] Insert this timestamped audit section.
+- [ ] Repair Appendix A.0 plus generated Office table/template wording.
+- [ ] Rebuild current PDFs after the wording fix.
+- [ ] Refresh build notes and release/deposit package.
+- [ ] Add SILLM4Rec citation and decide UniSGR/DIGER/ACERec scope.
+
+## Audit Run - 2026-07-15 04:17 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74`.
+- Automation memory read from
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`;
+  `$CODEX_HOME` is unset in this PowerShell session, so the user-profile Codex
+  home remains the effective memory location.
+- Current run time: `2026-07-15 04:17:16 +10:00`.
+- Working tree before this audit edit: tracked modification in
+  `PAPER_REVIEW_AUDIT.md`; untracked `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Canonical sources/artifacts inspected this run:
+  `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`,
+  `paper_tex/PAPER_TORS.pdf`, `paper_tex/PAPER_TORS_acmsmall.pdf`,
+  `paper_tex/sections/05-results.tex`,
+  `paper_tex/sections/06-discussion.tex`,
+  `paper_tex/sections/08-availability.tex`,
+  `paper_tex/sections/appendix-a0.tex`,
+  `paper_tex/tables/office_confirmation.tex`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/hygiene_scan_output.txt`,
+  `paper_tex/references.bib`, `PREREG_OFFICE_V3.md`,
+  `OFFICE_V3_RESULTS.md`, `PREREG_FIR_BREADTH.md`,
+  `FIR_BREADTH_RESULTS.md`, `RELEASE_MANIFEST.json`,
+  `DOI_DEPOSIT_INSTRUCTIONS.md`, `_bestrec_run/build_hstu_tables.py`,
+  `_bestrec_run/hstu_results_manifest.json`, and
+  `_release/bestrec_deposit_v1.0.zip`.
+
+### Verdict
+
+**No numerical/provenance failure was found; the paper is still not
+submission-ready.** The strict rebuild, Office V3 adjudicator, and FIR-breadth
+adjudicator all pass again at 04:17. The strongest remaining rejection risk is
+not the numbers; it is that the live appendix and generated Office table still
+say Office is not counted while the abstract, Section 5.2, discussion, and
+availability text count the separate Office V3 pass under its frozen claim.
+
+The release/deposit story is still stale relative to the current claim set.
+Section 8 now states a coherent tracked-artifact boundary, but the actual DOI
+deposit zip remains the old 48-entry package and includes none of the Office V3
+or FIR-breadth prereg/results artifacts. A top-journal reviewer would treat that
+as a packaging/reproducibility defect even though the strict gate verifies its
+declared local scope.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: `168` cells recomputed; `0` untraceable; `0` paper mismatches; all
+    `14` declared claim families sourced.
+  - PASS: release manifest verification OK for `113` declared files.
+  - PASS: MI V2 gate; legacy Office V1 descriptive/VOID check remains OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-15 04:17:37 Australia/Sydney`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, `5/5` seeds
+    above both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, `5/5` seeds
+    above both references.
+  - Dataset identity, reference artifacts, treestate sidecars, code hashes,
+    and data SHA256s verified.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - CONFIRMED at `2026-07-15 04:17:37 Australia/Sydney`, block `9a38ad66bd75`.
+  - Industrial_and_Scientific: mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, `5/5` positive.
+  - CDs_and_Vinyl: mean `+0.00566`, 95% CI `[+0.00493,+0.00639]`,
+    `5/5` positive.
+- PDF extraction with project-managed `uv` Python / `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages; stale Office wording on page 41;
+    `SILLM4Rec` on page 19; `Office_Products V3` on page 22.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; stale Office wording on page 36;
+    `SILLM4Rec` on page 18; `Office_Products V3` on page 20.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; stale "Office is not
+    counted" and generated "NOT counted as a second-category pass" wording on
+    page 37; `SILLM4Rec` on page 18; `Office_Products V3` on page 20.
+- Source/release searches
+  - `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`,
+    `paper_tex/sections/appendix-a0.tex`,
+    `paper_tex/tables/office_confirmation.tex`, and
+    `_bestrec_run/build_hstu_tables.py` still contain the stale
+    `Musical_Instruments only` / `Office is not counted` boundary.
+  - `paper_tex/references.bib` still has no SILLM4Rec or UniSGR entry.
+  - `paper_tex/hygiene_scan_output.txt` remains PASS: `PAPER_TORS.pdf`,
+    40 pages, `0` placeholder/forbidden failures, `20` informational review
+    hits.
+  - `_release/bestrec_deposit_v1.0.zip`: 780,381 bytes, SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`,
+    `48` entries, and `0` matches for `OFFICE_V3`, `PREREG_OFFICE_V3`,
+    `FIR_BREADTH`, `PREREG_FIR_BREADTH`, `PAPER_TORS`,
+    `DOI_DEPOSIT_INSTRUCTIONS`, `results_OFFICEV3`, or `results_FIRB`.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR v3 supports the paper's comparator constants and dataset-stat
+  framing: it evaluates AR2023 5-core Video Games, Office Products, and
+  Musical Instruments, with table values including Video Games HSTU-BLaIR
+  `0.0760`, Office Products `0.0271`, and Musical Instruments `0.0406` for
+  NDCG@10. Source: https://arxiv.org/html/2504.10545v3
+- Amazon Reviews 2023 official documentation supports the dataset framing:
+  McAuley Lab release, 571.54M reviews, interactions through September 2023,
+  rich metadata, links, and standard splitting. Source:
+  https://amazon-reviews-2023.github.io/
+- SILLM4Rec remains a live citation problem, not a direct comparator. The ACM
+  page frames it as a reranking/LLM recommendation paper, and the public GitHub
+  workflow uses AR2023 5-core files but generates candidate-product ranking
+  tasks plus SFT/DPO data. That supports the manuscript's non-interchangeability
+  rationale, but the named exclusion needs a formal citation and/or inspection
+  note. Sources: https://dl.acm.org/doi/10.1145/3743093.3771011 and
+  https://github.com/MKC-Lab/SILLM4Rec
+- UniSGR remains a plausible related-work coverage risk. It is not an AR2023
+  comparator because it reports industrial/private e-commerce evaluation, but it
+  is current semantic-ID generation/ranking work that explicitly unifies
+  generative retrieval with discriminative ranking. Source:
+  https://arxiv.org/html/2607.04068v1
+
+### Confirmed Problems
+
+1. **Appendix A.0 contradicts Office V3.** The V1 Office campaign should remain
+   VOID, but the broad "Office is not counted" sentence is now false because
+   the separate V3 pre-registration passed and is counted under its narrow
+   frozen wording.
+2. **The generated Office table/template preserves the contradiction.**
+   Updating only the prose appendix will not be enough; the generated
+   `office_confirmation.tex` source text in `_bestrec_run/build_hstu_tables.py`
+   must change too.
+3. **The deposit zip is stale.** The current DOI/deposit bundle omits Office
+   V3, FIR-breadth, current TORS PDF, and current deposit instructions.
+4. **Build notes/presentation remain stale.** `PAPER_TORS_acmsmall.pdf` is
+   currently 41 pages while `BUILD_NOTES.md` still says current builds are
+   40/40 and embeds old 35/36-page and 14-hit hygiene notes.
+5. **SILLM4Rec is named but uncited.** The exclusion is directionally
+   defensible, but top-journal related work should cite the ACM DOI/repo or
+   state that direct PDF inspection is pending.
+
+### Plausible Risks Requiring Author Verification
+
+- Whether the final deposit should include local-only Office/FIR per-user
+  sidecars or only the tracked aggregate JSON/provenance boundary. Section 8
+  chooses the latter, but the DOI/deposit package must match that policy.
+- Whether UniSGR, OneRec-style industrial generative-ranking work, or adjacent
+  semantic-ID/ranking unification papers should be cited in the same paragraph
+  as SID-MLP/Latte/ReSID/ChronoSID.
+- Whether `PAPER_SUBMISSION.pdf` remains a live deliverable now that it is 45
+  pages while the TORS review artifact is 40 pages and the acmsmall preview is
+  41 pages.
+
+### Concrete Fixes To Make Next
+
+1. Replace the Appendix A.0 sentence with a two-track statement: V1 Office is
+   VOID and not counted; V3 Office is a separate passed pre-registration counted
+   only as a per-category point-estimate comparison, not paired superiority or
+   SOTA.
+2. Update `_bestrec_run/build_hstu_tables.py` so regenerated
+   `paper_tex/tables/office_confirmation.tex` says the Office V1 table is
+   not counted, while Office V3 is handled separately in Section 5.2.
+3. Regenerate the TeX/PDFs and rerun the strict build plus PDF phrase checks.
+4. Refresh `paper_tex/BUILD_NOTES.md` page counts and hygiene block.
+5. Rebuild `_release/bestrec_deposit_v1.0.zip` or create a new deposit version
+   that matches the current Section 8 reproducibility boundary, and update
+   `DOI_DEPOSIT_INSTRUCTIONS.md`.
+6. Add a SILLM4Rec bibliography entry and revise the exclusion sentence to cite
+   the ACM paper/repo evidence; add or explicitly scope out UniSGR.
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, release, and audit
+      artifacts.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Re-check PDF page counts and stale Office/SILLM/V3 phrase locations.
+- [x] Re-check DOI/deposit zip contents and hash.
+- [x] Fact-check comparator/dataset/related-work claims against external
+      sources.
+- [x] Refresh the current prioritized rejection-risk list.
+- [x] Insert this timestamped audit section.
+- [ ] Repair Appendix A.0 plus generated Office table/template wording.
+- [ ] Rebuild current PDFs after the wording fix.
+- [ ] Refresh build notes and release/deposit package.
+- [ ] Add SILLM4Rec citation and decide UniSGR scope.
+
+## Audit Run - 2026-07-15 02:15 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74`.
+- Automation memory read from
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`;
+  `$CODEX_HOME` remains unset in this PowerShell session, so the user-profile
+  Codex home is the effective memory location.
+- Current run time: `2026-07-15 02:15:49 +10:00`.
+- Working tree before this audit edit: tracked modification in
+  `PAPER_REVIEW_AUDIT.md`; untracked `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Canonical sources/artifacts inspected:
+  `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, `CANONICAL_SUBMISSION.md`,
+  `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, `paper_tex/sections/abstract.tex`,
+  `paper_tex/sections/02-related.tex`, `paper_tex/sections/05-results.tex`,
+  `paper_tex/sections/08-availability.tex`,
+  `paper_tex/sections/appendix-a0.tex`,
+  `paper_tex/tables/table0_novelty.tex`,
+  `paper_tex/tables/office_confirmation.tex`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/hygiene_scan_output.txt`,
+  `paper_tex/references.bib`, `PREREG_OFFICE_V3.md`,
+  `OFFICE_V3_RESULTS.md`, `PREREG_FIR_BREADTH.md`,
+  `FIR_BREADTH_RESULTS.md`, `RELEASE_MANIFEST.json`,
+  `DOI_DEPOSIT_INSTRUCTIONS.md`, `_bestrec_run/build_hstu_tables.py`,
+  `_bestrec_run/hstu_results_manifest.json`, and
+  `_release/bestrec_deposit_v1.0.zip`.
+
+### Verdict
+
+**No new numerical/provenance failure appeared, but the manuscript remains
+rejectable on presentation and packaging.** The strict artifact graph, Office V3
+adjudicator, and FIR-breadth adjudicator all pass again at 02:13. The hard
+submission-facing contradiction is still rendered in all live PDFs: Appendix A.0
+and the generated Office V1 table say Office is not counted, while the
+abstract/Section 5.2 correctly count the separate Office V3 pass.
+
+The packaging blocker is unchanged: the release manifest verifies within its
+declared scope, but the actual DOI/deposit zip is still the old 48-entry bundle
+and contains none of the current Office V3, FIR-breadth, TORS, or deposit
+instruction artifacts. This will look careless to a top-journal reviewer even
+though the Section 8 tracked-artifact policy is now coherent.
+
+This run also found one new **plausible novelty-coverage risk**: UniSGR
+(arXiv:2607.04068, posted 2026-07-05) is a current semantic-ID
+generation-and-ranking paper. It is not a direct AR2023 comparator because it
+uses private Lazada homepage logs, but the manuscript's 2026 generative-retrieval
+paragraph should cite or explicitly scope it out to avoid an "incomplete related
+work" objection.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: `168` cells recomputed; `0` untraceable; `0` paper mismatches; all
+    `14` declared claim families sourced.
+  - PASS: release manifest verification OK for `113` declared files.
+  - PASS: MI V2 gate; legacy Office V1 descriptive/VOID check remains OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-15 02:13:32 Australia/Sydney`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, `5/5` seeds
+    above both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, `5/5` seeds
+    above both references.
+  - Dataset identity, reference artifact hashes, treestate sidecars, code
+    hashes, and data SHA256s verified.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - CONFIRMED at `2026-07-15 02:13:32 Australia/Sydney`, block `9a38ad66bd75`.
+  - Industrial_and_Scientific: mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, `5/5` positive.
+  - CDs_and_Vinyl: mean `+0.00566`, 95% CI `[+0.00493,+0.00639]`,
+    `5/5` positive.
+- PDF extraction with project-managed `uv` Python / `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages; stale Office wording on page 41;
+    `SILLM4Rec` on page 19; `Office_Products V3` on page 22.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; stale Office wording on page 36;
+    `SILLM4Rec` on page 18; `Office_Products V3` on page 20.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; stale Office wording on
+    page 37; `SILLM4Rec` on page 18; `Office_Products V3` on page 20.
+- Source/release searches
+  - `paper_tex/sections/appendix-a0.tex`,
+    `paper_tex/tables/office_confirmation.tex`, and
+    `_bestrec_run/build_hstu_tables.py` still contain the stale
+    `Musical_Instruments only; Office is not counted` boundary.
+  - `paper_tex/references.bib` has the recently added SID-MLP, Latte, GrIT,
+    ReSID, ChronoSID, Augment-or-Not, DiffuReason, FEARec, and WPGRec entries.
+    It still has no SILLM4Rec or UniSGR entry.
+  - `rg "UniSGR|OneRec|VA-PMTP|Task-Aware Tokens"` found no coverage in the
+    paper sources or bibliography.
+  - `paper_tex/hygiene_scan_output.txt` remains PASS: `PAPER_TORS.pdf`, 40
+    pages, `0` placeholder/forbidden failures, `20` informational review hits.
+  - `_release/bestrec_deposit_v1.0.zip`: 780,381 bytes, SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`,
+    `48` entries, and `0` matches for `OFFICE_V3`, `PREREG_OFFICE_V3`,
+    `FIR_BREADTH`, `PREREG_FIR_BREADTH`, `PAPER_TORS`,
+    `DOI_DEPOSIT_INSTRUCTIONS`, `results_OFFICEV3`, or `results_FIRB`.
+  - `git ls-files` confirms Office V3 and FIR-breadth prereg/results JSONs are
+    tracked, including Office V3 treestate sidecars and 20 FIR-breadth result
+    JSONs.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR v3 continues to support the comparator framing: it evaluates AR2023
+  Video Games, Office Products, and Musical Instruments 5-core subsets; the
+  visible table gives the matching Video Games statistics, and the task section
+  states chronological leave-one-out evaluation. Source:
+  https://arxiv.org/html/2504.10545v3
+- Amazon Reviews 2023 official documentation still supports the dataset
+  framing: 571.54M reviews, interactions through September 2023, rich item
+  metadata, links, and standard splits. Source:
+  https://amazon-reviews-2023.github.io/
+- SILLM4Rec remains a live related-work/citation problem. ACM metadata/PDF
+  snippets state that it uses three 5-core AR2023 subdatasets and reports
+  NDCG@K, while the public repo describes generated candidate-product ranking
+  tasks, image-description generation, user-preference summaries, SFT, and DPO.
+  This supports non-interchangeability, not omission. Sources:
+  https://dl.acm.org/doi/10.1145/3743093.3771011 and
+  https://github.com/MKC-Lab/SILLM4Rec
+- UniSGR is new novelty-pressure evidence since the paper's last related-work
+  expansion. It introduces a unified semantic-ID generation/ranking framework
+  with Task-Aware Tokens, VA-PMTP, STARK beam-search/KV-cache engineering, and
+  evaluations on private Lazada homepage logs. Because the dataset is private
+  and not AR2023, it is not a comparator; because it is same-month semantic-ID
+  generative recommendation work, it is a related-work coverage risk. Source:
+  https://arxiv.org/html/2607.04068v1
+- Latte remains correctly treated as same-statistics AR2023 LLOO novelty
+  pressure rather than a validated comparator; its appendix reports NDCG@10
+  values of `0.0331`, `0.0249`, and `0.0515` for Instruments, Scientific, and
+  Games. Source: https://arxiv.org/html/2605.06331
+- ChronoSID remains correctly treated as a different SID-line universe rather
+  than a direct comparator; it uses leave-one-out with generated semantic ID
+  tuples and beam search, and prior audits found its MI statistics differ from
+  the HSTU-BLaIR-family statistics. Source:
+  https://arxiv.org/html/2607.03918
+
+### Confirmed Problems
+
+1. **Appendix A.0 still contradicts Office V3.** The V1 Office campaign can and
+   should remain VOID, but the broad sentence "Office is not counted" is false
+   after the separate V3 pre-registration passed.
+2. **The generated Office table/template will preserve the contradiction.**
+   Repairing only the TeX appendix is insufficient; the generated table and
+   `_bestrec_run/build_hstu_tables.py` wording must also be updated.
+3. **The deposit zip is stale relative to current claims.** The tracked
+   reproducibility boundary is now clearly stated in Section 8, but the archival
+   bundle and DOI instructions still advertise the old package.
+4. **Rendered presentation still has readiness defects.** The acmsmall PDF is
+   41 pages while `BUILD_NOTES.md` still describes current builds as 40/40; the
+   notes also retain older 35/36-page hygiene text. Prior visual audit also
+   found Table 2's caption split from its body.
+5. **SILLM4Rec is still uncited.** The paper names it and excludes it pending
+   direct inspection, but no bibliography entry or inspection note exists.
+6. **UniSGR is missing from related work.** This is a plausible risk, not a hard
+   flaw: it is not a direct benchmark comparator, but it is recent enough and
+   close enough to the semantic-ID line that a strict reviewer may expect a
+   sentence.
+
+### Confirmed Non-Problems
+
+- The strict artifact graph still recomputes the printed empirical cells and
+  sees Office V3 and FIR-breadth evidence.
+- Office V3 aggregate evidence is mechanically green and properly scoped as a
+  point-estimate comparison, not paired superiority or SOTA.
+- FIR-breadth is mechanically green and properly scoped as internal
+  filter-vs-no-filter evidence, not a comparator claim.
+- Section 8's tracked-artifact vs local-only-sidecar policy is now coherent; the
+  unresolved release issue is the stale zip/DOI package, not an undefined
+  reproducibility boundary.
+- The current Section 5.1 "no comparative claim against concurrent arXiv-only
+  work" wording remains necessary and defensible.
+
+### Concrete Fixes To Make Next
+
+1. Rewrite Appendix A.0 so the V1 Office VOID stands, but all global "Office is
+   not counted" wording is qualified as "V1 is not counted; V3 is counted under
+   its separate redesigned pre-registration."
+2. Regenerate/fix `paper_tex/tables/office_confirmation.tex` and
+   `_bestrec_run/build_hstu_tables.py` so the stale V1-only claim cannot return.
+3. Refresh `_release/bestrec_deposit_v1.0.zip`, `_release/SHA256SUMS.txt`, and
+   `DOI_DEPOSIT_INSTRUCTIONS.md`, or mark the existing zip as a historical
+   pre-Office-V3/pre-FIR-breadth bundle and add a current package.
+4. Refresh `paper_tex/BUILD_NOTES.md` against the actual 40-page TORS and
+   41-page acmsmall PDFs; fix the Table 2 caption/body split before final
+   submission.
+5. Add a formal SILLM4Rec citation and a concrete exclusion sentence based on
+   ACM DOI plus the public repo workflow, or archive a full-paper protocol
+   inspection.
+6. Add one related-work sentence for UniSGR: current semantic-ID
+   generation/ranking work on private Lazada logs, not AR2023 and therefore not
+   a direct comparator.
+
+### Open Questions
+
+- Is the current DOI/deposit zip meant to be submission-current, or should the
+  manuscript/release docs label it as a historical package while the tracked
+  repository remains the live reproducibility boundary?
+- Should Appendix A.0 remain in the main submission after V3 passed, or should
+  V1 VOID details move to supplementary material to reduce reader confusion?
+- Can the authors access and archive the SILLM4Rec ACM full text, or should the
+  paper cite the DOI/repo and explicitly state that only public workflow evidence
+  was inspected?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and audit artifacts.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Re-run Office V3 adjudicator dynamically.
+- [x] Re-run FIR-breadth adjudicator dynamically.
+- [x] Extract live PDF page counts and stale Office/SILLM4Rec/Office V3 hits.
+- [x] Check release/deposit zip contents and SHA256.
+- [x] Check bibliography coverage for 2026 semantic-ID/generative retrieval
+      sources.
+- [x] Perform fresh external novelty search; flag UniSGR.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Repair Appendix A.0 and generated Office V1 table/template.
+- [ ] Refresh stale release/deposit packaging and DOI instructions.
+- [ ] Refresh stale `paper_tex/BUILD_NOTES.md` and table layout.
+- [ ] Add/inspect SILLM4Rec citation evidence.
+- [ ] Add/scope UniSGR in the semantic-ID related-work paragraph.
+
+## Audit Run - 2026-07-15 01:13 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory read from
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`;
+  `$CODEX_HOME` is unset in this PowerShell session, so the user-profile Codex
+  home is the effective memory location.
+- Current run time: `2026-07-15 01:16:17 +10:00`.
+- Working tree before this audit edit: tracked modification in
+  `PAPER_REVIEW_AUDIT.md`; untracked `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Canonical sources/artifacts inspected:
+  `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, `CANONICAL_SUBMISSION.md`,
+  `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, `paper_tex/sections/05-results.tex`,
+  `paper_tex/sections/appendix-a0.tex`, `paper_tex/tables/office_confirmation.tex`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/hygiene_scan_output.txt`,
+  `paper_tex/references.bib`, `PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`,
+  `PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`,
+  `RELEASE_MANIFEST.json`, `DOI_DEPOSIT_INSTRUCTIONS.md`,
+  `_bestrec_run/build_hstu_tables.py`,
+  `_bestrec_run/hstu_results_manifest.json`, and
+  `_release/bestrec_deposit_v1.0.zip`.
+
+### Verdict
+
+**The empirical gates remain green, but the paper is still rejectable on a
+submission-facing contradiction and stale release packaging.** Office V3 is
+mechanically supported and correctly described in Section 5.2 / Section 6.5 /
+Section 8, but Appendix A.0 and the generated Office V1 table still state that
+Office is not counted and the confirmed per-category claim remains
+Musical_Instruments only. That sentence is present in the live PDFs, so a
+reviewer will see the contradiction.
+
+The second live blocker is archival: the current strict gate sees Office V3 and
+FIR-breadth evidence, but the deposit zip and DOI instructions still reflect the
+older pre-Office-V3/pre-FIR-breadth bundle. This is a readiness problem even if
+the manuscript itself says DOI minting is deferred.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: `168` cells recomputed; `0` untraceable; `0` paper mismatches; all
+    `14` declared claim families sourced.
+  - PASS: release manifest verification OK for `113` files.
+  - PASS: MI V2 gate; legacy Office V1 descriptive/VOID check remains OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-15 01:13 Australia/Sydney`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, `5/5` seeds
+    above both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, `5/5` seeds
+    above both references.
+  - Comparability conditions OK: dataset identity, reference artifact hashes,
+    treestate sidecars, embedded code hashes, and data SHA256s.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS/CONFIRMED at `2026-07-15 01:16 Australia/Sydney`, block
+    `9a38ad66bd75`.
+  - Industrial_and_Scientific: mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, `5/5` positive.
+  - CDs_and_Vinyl: mean `+0.00566`, 95% CI `[+0.00493,+0.00639]`,
+    `5/5` positive.
+- PDF extraction with project-managed `uv` Python / `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages; "The confirmed per-category claim
+    remains" and "Office is not counted" on page 41; `SILLM4Rec` on page 19;
+    `Office_Products V3` on page 22.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; stale Office wording on page 36;
+    `SILLM4Rec` on page 18; `Office_Products V3` on page 20.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; "Office is not counted" on
+    page 37; `SILLM4Rec` on page 18; `Office_Products V3` on page 20.
+- Source searches
+  - `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, and
+    `paper_tex/sections/appendix-a0.tex` still contain the stale
+    "Musical_Instruments only; Office is not counted" sentence.
+  - `paper_tex/tables/office_confirmation.tex` still says the V1 table is not a
+    second-category pass and that the confirmed per-category claim remains
+    Musical_Instruments only.
+  - `_bestrec_run/build_hstu_tables.py` still contains the generated table
+    template text that will reintroduce this stale boundary.
+  - `paper_tex/references.bib` still has no `SILLM4Rec`,
+    `10.1145/3743093.3771011`, or `MKC-Lab` entry.
+  - `paper_tex/hygiene_scan_output.txt` reports `PAPER_TORS.pdf`, 40 pages,
+    `0` placeholder/forbidden failures, and `20` informational
+    SOTA/negated-claim review hits.
+- `_release/bestrec_deposit_v1.0.zip` check
+  - Timestamp `2026-07-11T22:11:05`, length `780381`, SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`,
+    `48` entries.
+  - Contains `0` matches for `OFFICE_V3`, `PREREG_OFFICE_V3`, `FIR_BREADTH`,
+    `PREREG_FIR_BREADTH`, `PAPER_TORS`, `DOI_DEPOSIT_INSTRUCTIONS`,
+    `results_OFFICEV3`, and `results_FIRB`.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR arXiv v3 continues to support the comparator constants used here:
+  HSTU-BLaIR NDCG@10 is `0.0760` for Video Games, `0.0271` for Office Products,
+  and `0.0406` for Musical Instruments. Source:
+  https://arxiv.org/abs/2504.10545
+- Amazon Reviews 2023's official site confirms the dataset is a 2023 McAuley
+  Lab release with reviews, item metadata, links, 571.54M reviews,
+  interactions through September 2023, and standard splitting. Source:
+  https://amazon-reviews-2023.github.io/
+- SID-MLP is close novelty pressure, not a clean comparator. Its arXiv paper
+  evaluates Musical Instruments, Industrial & Scientific, and Video Games from
+  Amazon Reviews 2023 and reports MI `57,439` users / `24,587` items /
+  `511,836` interactions and Games `94,762` / `25,612` / `814,586`. Source:
+  https://arxiv.org/html/2605.12617
+- Latte is also close novelty pressure. Its arXiv paper reports Amazon Reviews
+  2023 Instruments/Scientific/Game leave-one-out results, including Latte
+  NDCG@10 `0.0331` for Instruments and `0.0515` for Game. Source:
+  https://arxiv.org/pdf/2605.06331
+- GrIT's paper supports the manuscript's statement that it uses matching
+  Video_Games statistics (`94,762` users / `25,612` items / `814,586`
+  interactions), full-item-set evaluation, and Video_Games NDCG@10 `0.0588`.
+  Source: https://arxiv.org/html/2602.19728
+- ChronoSID/ReSID remain a distinct-protocol boundary: ChronoSID reports MI
+  `57,359` users / `23,742` items / `490,522` interactions and VG `94,515` /
+  `24,685` / `772,218`, which differ from the HSTU-BLaIR-family statistics.
+  ReSID reports MI NDCG@10 `0.0346` in its own filtered setup. Sources:
+  https://arxiv.org/html/2607.03918v1 and https://arxiv.org/html/2602.02338v1
+- `Augment or Not?` supports the manuscript's non-comparability framing: it
+  uses AR2023 Musical_Instruments / Industrial_and_Scientific under 5-core
+  leave-one-out and reports LETTER-TIGER MI NDCG@10 `0.0282`. Source:
+  https://arxiv.org/html/2505.23053v1
+- DiffuReason supports the manuscript's non-interchangeable-protocol warning:
+  it reports a "Video & Games" dataset with `67,658` users / `25,535` items /
+  `654,867` interactions, uses rating `> 3` positives, length 20 histories, and
+  full ranking over its item set. Source: https://arxiv.org/pdf/2602.09744
+- SILLM4Rec remains under-cited. ACM metadata identifies a 2025 MMAsia paper
+  using Amazon Reviews 2023 5-core subdatasets and NDCG metrics, while the
+  public repository describes 5-core AR2023 inputs followed by image
+  descriptions, user preference summaries, candidate product ranking tasks, and
+  SFT/DPO training. That supports non-interchangeability with full-catalog LLOO,
+  but the manuscript still needs a formal citation or direct full-paper
+  inspection record. Sources: https://dl.acm.org/doi/10.1145/3743093.3771011
+  and https://github.com/MKC-Lab/SILLM4Rec
+
+### Confirmed Problems
+
+1. **Appendix A.0 remains internally false after Office V3.** The V1 campaign
+   can remain VOID, but the broad "Office is not counted" sentence contradicts
+   the counted V3 campaign.
+2. **The generated Office V1 table and template will reintroduce the same
+   contradiction.** `paper_tex/tables/office_confirmation.tex` and
+   `_bestrec_run/build_hstu_tables.py` still say the confirmed per-category
+   claim remains Musical_Instruments only.
+3. **The deposit bundle is stale relative to current claims.** The local zip and
+   `DOI_DEPOSIT_INSTRUCTIONS.md` still describe the older deposit and omit
+   Office V3, FIR-breadth, and TORS artifacts needed for the current paper.
+4. **Build-note/page-count documentation is not reliable.** The acmsmall preview
+   is 41 pages by fresh extraction, while `paper_tex/BUILD_NOTES.md` still
+   describes the production preview/current builds as 40/40 and embeds older
+   35/36-page hygiene text.
+5. **SILLM4Rec remains a citation-readiness defect.** The paper names it, and
+   accessible evidence supports a non-interchangeable protocol, but a top
+   reviewer can object to an uncited exclusion of a 2025 AR2023/NDCG work.
+
+### Confirmed Non-Problems
+
+- No numerical mismatch, untraceable empirical cell, or strict-gate failure was
+  found.
+- Office V3 aggregate evidence remains mechanically green under its frozen
+  point-estimate wording.
+- FIR-breadth remains mechanically confirmed under the frozen internal
+  filter-vs-no-filter rule.
+- Section 8's tracked-artifact vs local-only-sidecar deposit policy is now
+  coherent; the remaining release problem is the stale deposit bundle, not the
+  manuscript's sidecar boundary wording.
+- The HSTU-BLaIR comparator constants and the 2026 related-work protocol
+  boundaries remain externally supported by the checked sources.
+
+### Concrete Fixes To Make Next
+
+1. Rewrite the Appendix A.0 Office sentence in `PAPER_SUBMISSION.md`,
+   `PAPER_DRAFT.md`, and `paper_tex/sections/appendix-a0.tex`: "The V1 campaign
+   is not counted; the separate V3 campaign passed and is counted only under
+   frozen per-category point-estimate wording."
+2. Update `_bestrec_run/build_hstu_tables.py` and regenerate
+   `paper_tex/tables/office_confirmation.tex` so the Office V1 table cannot
+   reintroduce "Musical_Instruments only" after V3.
+3. Refresh `_release/bestrec_deposit_v1.0.zip`, `_release/SHA256SUMS.txt`, and
+   `DOI_DEPOSIT_INSTRUCTIONS.md`, or explicitly mark the existing deposit as
+   superseded/pre-V3 and create a current `v1.1`/`v1.0-refresh` bundle.
+4. Refresh `paper_tex/BUILD_NOTES.md`: current page counts are TORS 40,
+   acmsmall 41, `PAPER_SUBMISSION.pdf` 45; replace the stale embedded hygiene
+   block with the current 40-page / 20-review-hit PASS block.
+5. Add a formal SILLM4Rec citation/repo note or inspect the ACM PDF directly
+   before freeze; keep the exclusion tied to candidate-ranking/SFT-DPO workflow
+   evidence rather than vague "pending direct protocol inspection" alone.
+
+### Open Questions
+
+- Is the deposit bundle intended to be submission-current now, or should the
+  paper explicitly say release/deposit packaging will be refreshed only at
+  acceptance?
+- Should `RELEASE_MANIFEST.json` gain explicit Office V3 and FIR-breadth
+  documentation/result families, or is `hstu_results_manifest.json` plus git
+  tracking the intended source of truth?
+- Is `PAPER_SUBMISSION.pdf` still a live deliverable now that the TORS artifact
+  is the named review artifact and page counts differ?
+- Can the authors access the SILLM4Rec ACM full text, or should the paper cite
+  ACM metadata plus the public repo workflow as the explicit exclusion basis?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and audit artifacts.
+- [x] Search manuscript, TeX, generated tables, and table generators for stale
+      Office V1/V3 wording.
+- [x] Re-run Office V3 adjudicator dynamically.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Re-run FIR-breadth adjudicator dynamically.
+- [x] Check compiled PDF page counts and stale-phrase locations.
+- [x] Check release/deposit zip contents and SHA256.
+- [x] Fact-check current related-literature claims against HSTU-BLaIR,
+      AR2023, SID-MLP, Latte, GrIT, ReSID/ChronoSID, Augment-or-Not,
+      DiffuReason, and SILLM4Rec sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Repair Appendix A.0 and the generated Office V1 table/template.
+- [ ] Refresh stale release/deposit packaging and DOI instructions.
+- [ ] Refresh stale `paper_tex/BUILD_NOTES.md`.
+- [ ] Add/inspect SILLM4Rec citation evidence.
+
+## Audit Run - 2026-07-14 23:12 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory read:
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  (`$CODEX_HOME` was unset in this shell, so the standard user-profile Codex
+  home was used).
+- Current run time: `2026-07-14 23:12:10 +10:00`.
+- User-provided previous cutoff: `2026-07-14T12:10:43.242Z` (`2026-07-14
+  22:10:43 +10:00`). Before this audit's own commands, the only workspace file
+  newer than that cutoff was `_bestrec_run/hstu_tables.json` at `22:12:00`;
+  `git diff -- _bestrec_run/hstu_tables.json` was empty before the strict run
+  and remains empty after it.
+- Working tree before this audit edit: tracked modification in
+  `PAPER_REVIEW_AUDIT.md`; untracked `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Canonical sources/artifacts inspected:
+  `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, `CANONICAL_SUBMISSION.md`,
+  `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, `paper_tex/sections/*.tex`,
+  `paper_tex/tables/office_confirmation.tex`, `paper_tex/BUILD_NOTES.md`,
+  `paper_tex/hygiene_scan_output.txt`, `paper_tex/references.bib`,
+  `PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`,
+  `PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`,
+  `RELEASE_MANIFEST.json`, `DOI_DEPOSIT_INSTRUCTIONS.md`, and
+  `_release/bestrec_deposit_v1.0.zip`.
+
+### Verdict
+
+**No new source-level repair occurred since the provided cutoff; the empirical
+gate remains green, but the paper is still rejectable on consistency and
+deposit readiness.** The only post-cutoff non-audit artifact was the generated
+`hstu_tables.json`, and it has no git diff. Fresh strict rebuild, Office V3
+adjudication, and FIR-breadth adjudication all pass. The live blocker remains
+the contradiction between counted Office V3 prose and the older Appendix A.0 /
+generated Office V1 table wording that still says the confirmed per-category
+claim is Musical_Instruments only and Office is not counted.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: `168` cells recomputed; `0` untraceable; `0` paper mismatches; all
+    `14` declared claim families sourced.
+  - PASS: release manifest verification OK for `113` files.
+  - PASS: MI V2 gate; legacy Office V1 descriptive/VOID check remains OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 23:12 Australia/Sydney`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, `5/5` seeds
+    above both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, `5/5` seeds
+    above both references.
+  - Comparability conditions OK: dataset identity, reference artifact hashes,
+    treestate sidecars, code hashes, and data SHA256s.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS/CONFIRMED for Industrial_and_Scientific: mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, `5/5` positive.
+  - PASS/CONFIRMED for CDs_and_Vinyl: mean `+0.00566`, 95% CI
+    `[+0.00493,+0.00639]`, `5/5` positive.
+- PDF extraction with project-managed `uv` Python / `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages; stale "Office is not counted" and
+    "confirmed per-category claim remains" on page 41; `SILLM4Rec` on page 19;
+    `Office_Products V3` on page 22.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; stale Office wording on page 36;
+    `SILLM4Rec` on page 18; `Office_Products V3` on page 20.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; stale Office wording on
+    page 37; `SILLM4Rec` on page 18; `Office_Products V3` on page 20.
+- `_release/bestrec_deposit_v1.0.zip` check
+  - Timestamp `2026-07-11T22:11:05`, length `780381`, SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`,
+    `48` entries.
+  - Contains `0` matches for `OFFICE_V3`, `PREREG_OFFICE_V3`, `FIR_BREADTH`,
+    `PREREG_FIR_BREADTH`, `PAPER_TORS`, `DOI_DEPOSIT_INSTRUCTIONS`,
+    `results_OFFICEV3`, and `results_FIRB`.
+- Source searches
+  - `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`,
+    `paper_tex/sections/appendix-a0.tex`,
+    `paper_tex/tables/office_confirmation.tex`, and
+    `_bestrec_run/build_hstu_tables.py` still contain the stale
+    Musical_Instruments-only / Office-not-counted boundary.
+  - `paper_tex/references.bib` still has no `SILLM4Rec`,
+    `10.1145/3743093.3771011`, or `MKC-Lab` entry.
+  - `paper_tex/hygiene_scan_output.txt` still reports `PAPER_TORS.pdf`,
+    40 pages, `0` placeholder/forbidden failures, and `20` informational
+    SOTA/negated-claim review hits.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR arXiv v3 continues to support the comparator constants used here:
+  HSTU-BLaIR NDCG@10 is `0.0760` for Video Games, `0.0271` for Office Products,
+  and `0.0406` for Musical Instruments; the paper states chronological
+  leave-one-out evaluation. Source: https://arxiv.org/html/2504.10545v3
+- Amazon Reviews 2023's official site confirms the dataset is a 2023 McAuley
+  Lab release with reviews, item metadata, links, 571.54M reviews, interactions
+  through September 2023, and standard splitting. Source:
+  https://amazon-reviews-2023.github.io/
+- SID-MLP is close novelty pressure, not a clean comparator. Its arXiv paper
+  evaluates Musical Instruments, Industrial & Scientific, and Video Games from
+  Amazon Reviews 2023 and reports the same 5-core-style statistics for MI
+  (`57,439` users / `24,587` items / `511,836` interactions) and Games
+  (`94,762` / `25,612` / `814,586`) in Appendix C.1. Source:
+  https://arxiv.org/html/2605.12617
+- Latte is also close novelty pressure. Its arXiv table reports Amazon Reviews
+  2023 Instruments/Scientific/Game leave-one-out results, including Latte
+  NDCG@10 `0.0331` for Instruments and `0.0515` for Game, matching the
+  manuscript's cautionary related-work paragraph. Source:
+  https://arxiv.org/html/2605.06331
+- ChronoSID/ReSID remain a distinct-protocol boundary: ChronoSID reports MI
+  `57,359` users / `23,742` items / `490,522` interactions and VG `94,515` /
+  `24,685` / `772,218`, which differ from the HSTU-BLaIR-family statistics.
+  Source: https://arxiv.org/html/2607.03918v1
+- SILLM4Rec remains under-cited. ACM metadata identifies a 2025 MMAsia paper
+  using three Amazon Reviews 2023 5-core subdatasets and NDCG metrics, while
+  the public repository describes 5-core AR2023 inputs followed by image
+  descriptions, user preference summaries, candidate product ranking tasks, and
+  SFT/DPO training. That supports non-interchangeability with full-catalog
+  LLOO, but the manuscript still needs a formal citation or a direct full-paper
+  inspection record. Sources: https://dl.acm.org/doi/10.1145/3743093.3771011
+  and https://github.com/MKC-Lab/SILLM4Rec
+
+### Confirmed Problems
+
+1. **Appendix A.0 remains internally false after Office V3.** The V1 campaign
+   can remain VOID, but the broad "Office is not counted" sentence contradicts
+   the counted V3 campaign.
+2. **The generated Office V1 table and template will reintroduce the same
+   contradiction.** `paper_tex/tables/office_confirmation.tex` and
+   `_bestrec_run/build_hstu_tables.py` still say the confirmed per-category
+   claim remains Musical_Instruments only.
+3. **The deposit bundle is stale relative to current claims.** The local zip and
+   `DOI_DEPOSIT_INSTRUCTIONS.md` still describe the older deposit and omit
+   Office V3, FIR-breadth, and TORS artifacts needed for the current paper.
+4. **Build-note/page-count documentation is not reliable.** The acmsmall preview
+   is 41 pages by fresh extraction, while `paper_tex/BUILD_NOTES.md` still
+   describes the production preview as 40 pages/current builds 40/40 and embeds
+   older 35/36-page hygiene text.
+5. **SILLM4Rec remains a citation-readiness defect.** The paper names it, and
+   accessible evidence supports a non-interchangeable protocol, but a top
+   reviewer can object to an uncited exclusion of a 2025 AR2023/NDCG work.
+
+### Confirmed Non-Problems
+
+- No numerical mismatch, untraceable empirical cell, or strict-gate failure was
+  found.
+- Office V3 aggregate evidence remains mechanically green under its frozen
+  point-estimate wording.
+- FIR-breadth remains mechanically confirmed under the frozen internal
+  filter-vs-no-filter rule.
+- No post-cutoff manuscript source change was found; the only newer generated
+  artifact has an empty git diff after the strict rebuild.
+- The HSTU-BLaIR comparator constants and the SID/ChronoSID protocol-boundary
+  wording remain externally supported by the checked sources.
+
+### Concrete Fixes To Make Next
+
+1. Rewrite the Appendix A.0 Office sentence in `PAPER_SUBMISSION.md`,
+   `PAPER_DRAFT.md`, and `paper_tex/sections/appendix-a0.tex`: "The V1 campaign
+   is not counted; the separate V3 campaign passed and is counted only under
+   frozen per-category point-estimate wording."
+2. Update `_bestrec_run/build_hstu_tables.py` and regenerate
+   `paper_tex/tables/office_confirmation.tex` so the V1 table cannot reintroduce
+   the Musical_Instruments-only boundary.
+3. Rebuild all live PDFs and verify the stale strings are absent from
+   `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`, and
+   `paper_tex/PAPER_TORS_acmsmall.pdf`.
+4. Regenerate or supersede `_release/bestrec_deposit_v1.0.zip`; update
+   `DOI_DEPOSIT_INSTRUCTIONS.md` and/or `RELEASE_MANIFEST.json` so Office V3,
+   FIR-breadth, and current TORS evidence are explicitly covered.
+5. Add a formal SILLM4Rec citation with DOI `10.1145/3743093.3771011` and cite
+   the inspected exclusion basis, or record that the ACM full paper was
+   inaccessible and cite the public repository workflow as the exclusion basis.
+6. Refresh `paper_tex/BUILD_NOTES.md` so current page counts and hygiene state
+   match the live PDFs, with historical round-8 counts clearly separated or
+   removed.
+
+### Open Questions
+
+- Should the stale `bestrec_deposit_v1.0.zip` be replaced in place, or should a
+  new `v1.0.1`/current-deposit bundle supersede it?
+- Should `RELEASE_MANIFEST.json` explicitly name Office V3 and FIR-breadth
+  result families, or is `_bestrec_run/hstu_results_manifest.json` intended as
+  the live evidence layer for generated empirical cells?
+- Can the authors access and archive the SILLM4Rec ACM full text before
+  submission freeze?
+- Is `PAPER_TORS_acmsmall.pdf` a deliverable whose 41-page count must be fixed,
+  or only an untracked local preview?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, table, bibliography, prereg,
+      result, release, and audit artifacts.
+- [x] Check files changed since the user-provided previous cutoff.
+- [x] Re-run the strict rebuild.
+- [x] Re-run Office V3 and FIR-breadth adjudicators.
+- [x] Extract live PDF page counts and stale Office/SILLM4Rec occurrences.
+- [x] Check deposit zip contents and DOI instructions.
+- [x] Fact-check HSTU-BLaIR, AR2023, SID-MLP, Latte, ChronoSID, and SILLM4Rec
+      boundaries against external sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Repair Appendix A.0 and generated Office V1 table wording.
+- [ ] Rebuild PDFs and verify stale Office wording is gone.
+- [ ] Refresh/supersede release/deposit bundle and DOI instructions.
+- [ ] Add/inspect SILLM4Rec formal citation before freeze.
+
+## Audit Run - 2026-07-14 21:10 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74`.
+- Automation memory read:
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  (`$CODEX_HOME` was unset in this shell, so the standard user-profile Codex
+  home was used).
+- Current run time: `2026-07-14 21:10:37 +10:00`.
+- User-provided previous cutoff: `2026-07-14T10:09:11.006Z` (`2026-07-14
+  20:09:11 +10:00`). Before this audit's own commands, the only files newer
+  than that cutoff were `PAPER_REVIEW_AUDIT.md` and
+  `_bestrec_run/hstu_tables.json`; `git diff -- _bestrec_run/hstu_tables.json`
+  remains empty after the strict rebuild.
+- Working tree before this audit edit: tracked modification in
+  `PAPER_REVIEW_AUDIT.md`; untracked `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Canonical sources/artifacts inspected:
+  `CANONICAL_SUBMISSION.md`, `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`,
+  `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, `paper_tex/sections/*.tex`,
+  `paper_tex/tables/office_confirmation.tex`, `paper_tex/BUILD_NOTES.md`,
+  `paper_tex/hygiene_scan_output.txt`, `paper_tex/references.bib`,
+  `PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`,
+  `PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`,
+  `RELEASE_MANIFEST.json`, `DOI_DEPOSIT_INSTRUCTIONS.md`, and
+  `_release/bestrec_deposit_v1.0.zip`.
+
+### Verdict
+
+**The numerical/provenance spine remains green, but the paper is still
+rejectable on internal consistency and release packaging.** The strict rebuild,
+Office V3 adjudicator, FIR-breadth adjudicator, and TORS hygiene scan all pass.
+The live hard problem is that Appendix A.0 and the generated Office V1 table
+still say Office is not counted, while the abstract, Section 5.2, Section 6.4,
+and Section 6.5 count the separate Office V3 pre-registration as the second
+pre-registered per-category comparison.
+
+This run also updates two prior audit lines. First, the Office V3 sidecar
+mechanics are now documented in `PREREG_OFFICE_V3.md` Erratum E2 and
+`OFFICE_V3_RESULTS.md`; that is no longer the live blocker. Second, Section 8
+now gives a coherent tracked-artifact boundary for printed claims versus
+local-only per-user sidecars. The public deposit bundle, however, still predates
+Office V3 and FIR-breadth.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: `168` cells recomputed; `0` untraceable; `0` paper mismatches; all
+    `14` declared claim families sourced.
+  - PASS: release manifest verification OK for `113` files.
+  - PASS: MI V2 gate; legacy Office V1 remains descriptive/VOID.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 21:11 Australia/Sydney`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, `5/5` seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, `5/5` seeds above
+    both references.
+  - Comparability conditions OK: dataset identity, reference artifacts, tree
+    provenance, embedded code hashes, and data SHA256s.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS/CONFIRMED for Industrial_and_Scientific: mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, `5/5` positive.
+  - PASS/CONFIRMED for CDs_and_Vinyl: mean `+0.00566`, 95% CI
+    `[+0.00493,+0.00639]`, `5/5` positive.
+- PDF extraction with `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages; stale "Office is not counted" and
+    "confirmed per-category claim remains" on page 41; `SILLM4Rec` on page 19;
+    `Office_Products V3` on page 22.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; stale Office wording on page 36;
+    `SILLM4Rec` on page 18; `Office_Products V3` on page 20.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; stale Office wording on
+    page 37; `SILLM4Rec` on page 18; `Office_Products V3` on page 20.
+- `paper_tex/hygiene_scan_output.txt`
+  - PASS: `PAPER_TORS.pdf`, 40 pages, `0` placeholder/forbidden failures,
+    `20` informational SOTA/negated-claim review hits.
+- `_release/bestrec_deposit_v1.0.zip` check
+  - Timestamp `2026-07-11T22:11:05`, length `780381`, SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`,
+    `48` entries.
+  - Contains `PAPER_SUBMISSION.pdf` and `RELEASE_MANIFEST.json`.
+  - Contains `0` Office V3 matches, `0` FIR-breadth matches, `0` `PAPER_TORS`
+    matches, and no `DOI_DEPOSIT_INSTRUCTIONS.md`.
+- Source searches
+  - `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`,
+    `paper_tex/sections/appendix-a0.tex`,
+    `paper_tex/tables/office_confirmation.tex`, and
+    `_bestrec_run/build_hstu_tables.py` still contain stale Office-count wording.
+  - `paper_tex/references.bib` still has no `SILLM4Rec`,
+    `10.1145/3743093.3771011`, or `MKC-Lab` entry.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR arXiv v3 confirms the comparator-family dataset statistics and
+  key NDCG constants used by this paper: Video_Games `25,612` items /
+  `94,762` users / `814,585` interactions with HSTU-BLaIR NDCG@10 `0.0760`;
+  Office_Products `77,551` / `223,308` / `1,800,877` with NDCG@10 `0.0271`;
+  Musical_Instruments `24,587` / `57,439` / `511,835` with NDCG@10 `0.0406`.
+  Source: https://arxiv.org/html/2504.10545v3
+- The official Amazon Reviews 2023 site confirms the dataset is a 2023 McAuley
+  Lab release with reviews, item metadata, links, larger/newer interactions,
+  richer metadata, and standard splitting. Source:
+  https://amazon-reviews-2023.github.io/
+- SILLM4Rec remains close enough that it needs formal handling. ACM metadata
+  identifies the paper as an MMAsia 2025 work and search/open snippets say it
+  uses three AR2023 5-core subdatasets and reports NDCG; the public repo,
+  however, instructs users to generate image descriptions, user preference
+  summaries, candidate product ranking tasks, and SFT/DPO training data. That
+  supports non-interchangeability with full-catalog LLOO, but not an uncited
+  dismissal. Sources: https://dl.acm.org/doi/full/10.1145/3743093.3771011 and
+  https://github.com/MKC-Lab/SILLM4Rec
+- ChronoSID's arXiv HTML supports the manuscript's SID-line boundary: it uses
+  AR2023 subsets but reports a processed universe distinct from the
+  HSTU-BLaIR-family statistics, and its table reports ChronoSID/ReSID numbers
+  under that separate protocol. Source: https://arxiv.org/html/2607.03918v1
+
+### Confirmed Problems
+
+1. **Appendix A.0 is still contradictory.** The V1 appendix can and should say
+   the V1 campaign is VOID and not counted, but the broad sentence "Office is
+   not counted" is false after Office V3 passed and is counted under frozen
+   wording.
+2. **The generated Office V1 table repeats the stale claim boundary.**
+   `paper_tex/tables/office_confirmation.tex` says the confirmed per-category
+   claim remains Musical_Instruments only; the template in
+   `_bestrec_run/build_hstu_tables.py` needs the same V1/V3 split or the next
+   table regeneration will reintroduce the contradiction.
+3. **The deposit bundle is stale.** The advertised DOI-ready zip omits Office
+   V3, FIR-breadth, and TORS artifacts now needed to support the current claim
+   set and venue target. `DOI_DEPOSIT_INSTRUCTIONS.md` still describes the old
+   46-file bundle even though the actual zip has 48 entries.
+4. **Build notes are still not a trustworthy current-state document.**
+   `paper_tex/BUILD_NOTES.md` says current builds are 40/40, but the current
+   `PAPER_TORS_acmsmall.pdf` is 41 pages. It also carries historical 35/36-page
+   details that are easy to misread as current.
+5. **SILLM4Rec is named but uncited.** The current repo-evidence exclusion is
+   plausible, but a top reviewer can reasonably object that an MMAsia 2025
+   AR2023 5-core/NDCG work is mentioned without a bibliography entry or direct
+   full-paper inspection record.
+
+### Confirmed Non-Problems
+
+- No new numerical mismatch, untraceable empirical cell, or strict-gate failure
+  was found.
+- Office V3 aggregate evidence is mechanically green, and E2 now explains the
+  three regular-sidecar-equals-final-sidecar cases.
+- Section 8 now states the tracked-artifact boundary coherently: printed claims
+  recompute from tracked artifacts; local-only per-user sidecars are
+  supplementary, hash-pinned audit material.
+- FIR-breadth remains mechanically confirmed under the frozen internal
+  filter-vs-no-filter decision rule.
+- The HSTU-BLaIR comparator constants used for MI, Office, and Video_Games are
+  externally supported by the cited arXiv v3 paper.
+
+### Concrete Fixes To Make Next
+
+1. Rewrite the Appendix A.0 sentence in `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`,
+   and `paper_tex/sections/appendix-a0.tex`: "The V1 campaign is not counted;
+   the separate V3 campaign passed and is counted only under the frozen
+   per-category point-estimate wording."
+2. Update `_bestrec_run/build_hstu_tables.py` and regenerate
+   `paper_tex/tables/office_confirmation.tex` so the generated Office V1 table
+   cannot reintroduce "Musical_Instruments only" wording.
+3. Rebuild `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`, and
+   `paper_tex/PAPER_TORS_acmsmall.pdf`; rerun the hygiene scan and explicitly
+   verify `Office is not counted` is absent from live PDFs.
+4. Regenerate or supersede `_release/bestrec_deposit_v1.0.zip` and update
+   `DOI_DEPOSIT_INSTRUCTIONS.md` so the deposit story includes current Office
+   V3/FIR-breadth prereg/results docs, relevant result JSONs/manifests, and the
+   current TORS artifact, or clearly declares a new release/deposit name.
+5. Add a formal SILLM4Rec citation with DOI `10.1145/3743093.3771011` and cite
+   the inspected exclusion basis, or record that the ACM full paper was
+   inaccessible and cite the public repo workflow as the basis for exclusion.
+6. Refresh `paper_tex/BUILD_NOTES.md` current-state page counts and separate
+   historical round-8 notes from current build status.
+
+### Open Questions
+
+- Should the stale `bestrec_deposit_v1.0.zip` be replaced in place, or should a
+  new `v1.0.1`/current-deposit bundle supersede it?
+- Should `RELEASE_MANIFEST.json` explicitly name Office V3 and FIR-breadth
+  result families, or is `_bestrec_run/hstu_results_manifest.json` the intended
+  live evidence layer for generated empirical cells?
+- Can the authors access the SILLM4Rec ACM full text before submission freeze?
+- Is `PAPER_TORS_acmsmall.pdf` intended to be part of the current deliverable,
+  or only a local preview whose page count should not appear in release notes?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, PDF, TeX, tables, preregistration, result,
+      release, and audit artifacts.
+- [x] Check files changed since the previous automation cutoff.
+- [x] Re-run the strict rebuild.
+- [x] Re-run Office V3 and FIR-breadth adjudicators.
+- [x] Extract live PDF page counts and stale Office/SILLM4Rec occurrences.
+- [x] Check deposit zip contents and DOI instructions.
+- [x] Fact-check HSTU-BLaIR, AR2023, SILLM4Rec, and ChronoSID boundaries against
+      external sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Repair Appendix A.0 and generated Office V1 table wording.
+- [ ] Rebuild PDFs and verify stale Office wording is gone.
+- [ ] Refresh/supersede release/deposit bundle and DOI instructions.
+- [ ] Add/inspect SILLM4Rec formal citation before freeze.
+
+## Audit Run - 2026-07-14 20:10 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory read:
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  (`$CODEX_HOME` was unset in this shell, so the standard user-profile Codex
+  home was used).
+- Current run time: `2026-07-14 20:10:13 +10:00`.
+- User-provided previous cutoff: `2026-07-14T09:07:09.905Z` (`2026-07-14
+  19:07:09 +10:00`). Before this audit's own commands, no files in the
+  workspace had modification times newer than that cutoff.
+- The strict rebuild rewrote `_bestrec_run/hstu_tables.json` at `20:11:31`, but
+  `git diff -- _bestrec_run/hstu_tables.json` is empty.
+- Working tree before this audit edit: tracked modification in
+  `PAPER_REVIEW_AUDIT.md`; untracked `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- This audit edited only `PAPER_REVIEW_AUDIT.md` and the automation memory.
+
+### Verdict
+
+**No new manuscript/result change was found since the user-provided previous
+run, and the empirical gate remains green. The paper is still rejectable on
+consistency and packaging.** The live blocker is not the aggregate evidence:
+Office V3, FIR-breadth, and the 168-cell strict artifact graph all pass. The
+live blocker is that the rendered manuscript still contains the old Appendix
+A.0 statement that Office is not counted, while the abstract and Section 5.2
+count Office V3. The deposit bundle also remains stale and omits the newer
+claim evidence.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 20:11:08`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`; 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`; 5/5 seeds above
+    both references.
+  - Comparability conditions OK; frozen wording remains a per-category
+    point-estimate comparison only, not paired/distributional superiority and
+    not SOTA.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-14 20:11:08`, block `9a38ad66bd75`.
+  - `Industrial_and_Scientific`: paired mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: paired mean `+0.00566`, 95% CI
+    `[+0.00493,+0.00639]`, 5/5 positive.
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS.
+  - HSTU core-block parity exact.
+  - `168` empirical cells recomputed; `0` paper mismatches; `0` untraceable;
+    all `14` declared claim families sourced.
+  - Release manifest verification OK for its declared `113` files.
+  - MI V2 gate OK; legacy Office V1 descriptive/VOID adjudication OK.
+- PDF extraction with `pypdf`
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; `Office is not counted` and
+    `confirmed per-category claim remains` on page 36; `SILLM4Rec` on page 18.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; stale Office phrases on
+    page 37; `SILLM4Rec` on page 18.
+  - `PAPER_SUBMISSION.pdf`: 45 pages; stale Office phrases on page 41;
+    `SILLM4Rec` on page 19.
+  - No `outcome pending` phrase was found in the rendered PDFs.
+- Release/deposit zip check
+  - `_release/bestrec_deposit_v1.0.zip`: timestamp `2026-07-11 22:11:05`,
+    `780381` bytes, SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`,
+    `48` entries.
+  - `0` entries for `OFFICE_V3_RESULTS.md`, `PREREG_OFFICE_V3.md`,
+    `FIR_BREADTH_RESULTS.md`, `PREREG_FIR_BREADTH.md`,
+    `paper_tex/PAPER_TORS.pdf`, `results_OFFICEV3`, or `results_FIRB`.
+  - `RELEASE_MANIFEST.json` result families remain `MI_gate_EXEC2`,
+    `MI_gate_EXEC2_rest`, `MI_rebuild`, `OFFICE_gate`,
+    `OFFICE_idonly_floor`, and `FIR_ablations`; this is internally verified
+    but not aligned with the current Office V3/FIR-breadth deposit needs.
+- Targeted source search
+  - `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, and
+    `paper_tex/sections/appendix-a0.tex` still contain "The confirmed
+    per-category claim remains Musical_Instruments only; Office is not
+    counted."
+  - `PAPER_DRAFT.md` still has a stale opening status line saying Office stays
+    VOID and the V3 outcome is pending.
+  - `paper_tex/references.bib` still has no SILLM4Rec entry, and
+    `VENUE_PLAN.md` still marks SILLM4Rec full-paper inspection pending.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR's public paper/repository still supports the comparator framing:
+  it evaluates AR2023 Video Games, Office Products, and Musical Instruments
+  under a 5-core setup, gives the same category statistics used by this paper,
+  and reports the relevant HSTU-BLaIR NDCG@10 point estimates
+  (`0.0760`, `0.0271`, `0.0406`). Sources:
+  https://arxiv.org/html/2504.10545v3 and https://github.com/snapfinger/HSTU-BLaIR
+- The official Amazon Reviews 2023 site supports the dataset framing and scale:
+  McAuley Lab's 2023 release has reviews, metadata, links, standard splits,
+  `571.54M` reviews, `54.51M` users, `48.19M` items, and interactions through
+  September 2023. Source: https://amazon-reviews-2023.github.io/
+- SILLM4Rec remains close enough to require formal citation or inspection. ACM
+  metadata says it reports experiments on three 5-core Amazon Reviews 2023
+  datasets, while the public repository describes image-description generation,
+  user preference summaries, candidate product ranking tasks, and SFT/DPO data
+  generation. That supports non-interchangeability with full-catalog LLOO, but
+  the manuscript should cite the ACM DOI/repo or inspect the full PDF directly.
+  Sources: https://dl.acm.org/doi/10.1145/3743093.3771011 and
+  https://github.com/MKC-Lab/SILLM4Rec
+- ChronoSID/ReSID remain protocol-pressure related work rather than a direct
+  comparator. ChronoSID's accessible paper reports output-level MI NDCG@10
+  `0.0345` versus ReSID `0.0325` under its own semantic-ID setup, reinforcing
+  that the manuscript's "no comparative claim against concurrent arXiv-only
+  work" fence must remain. Source: https://arxiv.org/html/2607.03918v1
+
+### Confirmed Problems
+
+1. **Appendix A.0 still contradicts the counted Office V3 claim.** The appendix
+   sentence should distinguish the original Office V1 VOID from the separate
+   Office V3 pass; the current wording makes the rendered paper internally
+   inconsistent.
+2. **The deposit/release package is stale.** The zip omits Office V3,
+   FIR-breadth, current TORS PDF, and corresponding prereg/results evidence.
+3. **The build/readiness notes remain inconsistent with rendered artifacts.**
+   `paper_tex/PAPER_TORS_acmsmall.pdf` is 41 pages; `paper_tex/BUILD_NOTES.md`
+   still says the current builds are 40/40 and retains old 35/36-page notes.
+4. **SILLM4Rec is still not submission-ready in the bibliography.** It is
+   discussed in the manuscript, but not formally cited in `references.bib`.
+5. **No current numerical blocker was found.** This is a confirmed non-problem:
+   Office V3, FIR-breadth, and the strict artifact graph all passed on fresh
+   commands this run.
+
+### Concrete Fixes To Make Next
+
+1. Replace the Appendix A.0 sentence with a two-track statement: Office V1
+   remains VOID under the original floor-check preregistration; Office V3 passed
+   under the separate environment-matched preregistration and counts only as a
+   per-category point-estimate comparison.
+2. Rebuild/update the release/deposit bundle so it includes `PREREG_OFFICE_V3.md`,
+   `OFFICE_V3_RESULTS.md`, Office V3 result evidence, `PREREG_FIR_BREADTH.md`,
+   `FIR_BREADTH_RESULTS.md`, FIR-breadth result evidence, and the current TORS
+   artifact, or explicitly document why the deposit boundary excludes them.
+3. Refresh `paper_tex/BUILD_NOTES.md`: remove old 35/36 page-count blocks,
+   correct the acmsmall page count, and replace stale hygiene/readiness notes
+   with the current 40-page TORS hygiene PASS.
+4. Add a SILLM4Rec bibliography entry and cite the exact exclusion basis, or
+   inspect/archive the ACM PDF before freeze.
+5. Decide whether `PAPER_DRAFT.md` is still live. If it is, update its status
+   line and Appendix A.0 text; if it is archival, mark it clearly as stale.
+
+### Open Questions
+
+- Are Office V3 and FIR-breadth artifacts intended to be in the public DOI
+  bundle now that their claims are counted?
+- Should `RELEASE_MANIFEST.json` list Office V3/FIR-breadth result families
+  directly, or is `_bestrec_run/hstu_results_manifest.json` the intended
+  claim-source boundary?
+- Is `PAPER_SUBMISSION.pdf` still a live deliverable despite being 45 pages,
+  while the TORS review artifact is 40 pages?
+- Can the authors access the SILLM4Rec full ACM PDF, or should the paper cite
+  only the DOI/repository-backed protocol evidence?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and audit artifacts.
+- [x] Check files changed since the user-provided previous cutoff.
+- [x] Search manuscript and TeX for stale Office V3 no-claim wording.
+- [x] Re-run Office V3 adjudicator dynamically.
+- [x] Re-run FIR-breadth adjudicator dynamically.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Check compiled PDF page counts and stale-phrase locations.
+- [x] Check deposit zip contents and release-manifest family boundary.
+- [x] Fact-check current comparator/dataset/related-work claims against
+      HSTU-BLaIR, AR2023, SILLM4Rec, and ChronoSID sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Repair Appendix A.0 Office V1/V3 wording.
+- [ ] Refresh stale release/deposit bundle and manifest boundary.
+- [ ] Refresh stale `paper_tex/BUILD_NOTES.md`.
+- [ ] Add/verify SILLM4Rec citation or inspect the full ACM paper.
+
+## Audit Run - 2026-07-14 17:08 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory read:
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  (`$CODEX_HOME` was unset in this shell, so the standard user-profile Codex
+  home was used).
+- Current run time: `2026-07-14 17:08:30 +10:00`.
+- Files with modification times after the previous automation cutoff
+  (`2026-07-14T06:04:06.591Z`): `PAPER_REVIEW_AUDIT.md` and
+  `_bestrec_run/hstu_tables.json`. The strict rebuild rewrote
+  `_bestrec_run/hstu_tables.json` at `17:07:32`, but `git diff --
+  _bestrec_run/hstu_tables.json` is empty.
+- Working tree before this audit edit: tracked modification in
+  `PAPER_REVIEW_AUDIT.md`; untracked `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- This audit edited only `PAPER_REVIEW_AUDIT.md` and the automation memory.
+
+### Verdict
+
+**No new empirical/provenance failure was found, but the submission remains
+rejectable on consistency and packaging.** The Office V3 adjudicator, the
+FIR-breadth adjudicator, and the full strict artifact rebuild are all green.
+The paper still fails the top-journal readiness bar because the live appendix
+and all rendered PDFs still say Office is not counted, while the abstract and
+Section 5.2 count Office V3 under the redesigned pre-registration. The DOI
+deposit zip also remains stale relative to the current claim set.
+
+This run found no manuscript/source/result repair since the prior run. The only
+non-audit file timestamp change was the expected strict-build rewrite of
+`_bestrec_run/hstu_tables.json`, with no content diff.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 17:07:27`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`; 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`; 5/5 seeds above
+    both references.
+  - Comparability conditions OK; frozen wording remains a per-category
+    point-estimate comparison only, with no paired/distributional superiority
+    and no SOTA claim.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-14 17:07:27`, block `9a38ad66bd75`.
+  - `Industrial_and_Scientific`: paired mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: paired mean `+0.00566`, 95% CI
+    `[+0.00493,+0.00639]`, 5/5 positive.
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS.
+  - HSTU core-block parity exact.
+  - `168` empirical cells recomputed; `0` paper mismatches; `0` untraceable;
+    all `14` declared claim families sourced.
+  - Release manifest verification OK for its declared `113` files.
+  - MI V2 gate OK; legacy Office V1 descriptive/VOID adjudication OK.
+- PDF extraction with `pypdf`
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; `Office is not counted` and
+    `confirmed per-category claim remains` on page 36; `SILLM4Rec` on page 18.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; stale Office phrases on
+    page 37; `SILLM4Rec` on page 18.
+  - `PAPER_SUBMISSION.pdf`: 45 pages; stale Office phrases on page 41;
+    `SILLM4Rec` on page 19.
+  - No `outcome pending` phrase was found in the rendered PDFs.
+- Release/deposit zip check
+  - `_release/bestrec_deposit_v1.0.zip`: timestamp `2026-07-11 22:11:05`,
+    `780381` bytes, SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`,
+    `48` entries.
+  - `0` entries for `OFFICE_V3_RESULTS.md`, `PREREG_OFFICE_V3.md`,
+    `FIR_BREADTH_RESULTS.md`, `PREREG_FIR_BREADTH.md`,
+    `paper_tex/PAPER_TORS.pdf`, `results_OFFICEV3`, or `results_FIRB`.
+  - `RELEASE_MANIFEST.json` result families remain `FIR_ablations`,
+    `MI_gate_EXEC2`, `MI_gate_EXEC2_rest`, `MI_rebuild`, `OFFICE_gate`, and
+    `OFFICE_idonly_floor`; `_bestrec_run/hstu_results_manifest.json` does
+    contain Office V3 and FIR-breadth evidence strings.
+- Targeted source search
+  - `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, and
+    `paper_tex/sections/appendix-a0.tex` still contain "The confirmed
+    per-category claim remains Musical_Instruments only; Office is not
+    counted."
+  - `PAPER_DRAFT.md` still has a stale opening status line saying Office stays
+    VOID and the V3 outcome is pending.
+  - `paper_tex/references.bib` still has no SILLM4Rec entry, and
+    `VENUE_PLAN.md` still marks SILLM4Rec full-paper inspection pending.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR's public repository still supports the comparator constants used
+  by this paper: AR2023 Video Games HSTU-BLaIR NDCG@10 `0.0760`, Office
+  Products `0.0271`, and Musical Instruments `0.0406`; it also states the
+  implementation was tested on Ubuntu 22.04 / Python 3.9 / CUDA 12.6 / RTX
+  4090. Source: https://github.com/snapfinger/HSTU-BLaIR
+- The official Amazon Reviews 2023 site supports the dataset framing: McAuley
+  Lab's 2023 release includes reviews, metadata, links, standard splits, and
+  headline scale `571.54M` reviews, `54.51M` users, `48.19M` items, with
+  interactions through September 2023. Source:
+  https://amazon-reviews-2023.github.io/
+- SILLM4Rec remains close enough to require formal handling. Its public
+  repository asks users to download Amazon Reviews 2023 5-core files, generate
+  image descriptions, user preference summaries, candidate product ranking
+  tasks, and SFT/DPO training data. This supports the manuscript's
+  non-interchangeability rationale, but the paper still needs a formal citation
+  or direct ACM full-paper protocol inspection. Sources:
+  https://github.com/MKC-Lab/SILLM4Rec and
+  https://dl.acm.org/doi/10.1145/3743093.3771011
+- The current concurrent-work fence remains necessary: accessible evidence
+  supports treating semantic-ID/generative-retrieval papers as related but not
+  directly claimed-against unless their training/protocol details are audited.
+
+### Confirmed Problems
+
+1. **Appendix A.0 still contradicts the counted Office V3 claim.** The appendix
+   sentence is too broad for the current paper: it should say the V1 campaign is
+   not counted, while the separate V3 campaign passed only under its frozen
+   point-estimate wording.
+2. **The deposit/release package is stale.** The advertised zip and release
+   manifest boundary do not include the Office V3/FIR-breadth prereg/results
+   evidence that the current manuscript and strict gate rely on.
+3. **The production notes/rendered package are inconsistent.** The acmsmall PDF
+   is 41 pages while `paper_tex/BUILD_NOTES.md` still describes 40/40 current
+   builds and retains older 35/36-page historical blocks.
+4. **SILLM4Rec remains under-cited.** The exclusion rationale is plausible, but
+   a named adjacent MMAsia 2025 paper should not be left uncited and
+   inspection-pending in a top-journal submission.
+
+### Plausible Risks / Author Verification Needed
+
+- Confirm whether `_release/bestrec_deposit_v1.0.zip` should be regenerated in
+  place, superseded by a new `v1.0.1`/current bundle, or explicitly marked
+  historical.
+- Confirm whether `PAPER_DRAFT.md` is live. If it is not live, remove it from
+  the submission/release boundary; if it is live, fix its stale Office status.
+- Confirm whether reviewers will get local-only Office/FIR per-user sidecars
+  upon request only, or whether those sidecars should be deposited before
+  review.
+- Confirm whether the SILLM4Rec ACM full text is accessible before freeze.
+
+### Concrete Fixes To Make Next
+
+1. Rewrite the broad Appendix A.0 sentence in `PAPER_SUBMISSION.md`,
+   `PAPER_DRAFT.md`, and `paper_tex/sections/appendix-a0.tex`: V1 remains VOID
+   and non-counted; V3 is separate, passed, and counted only as the frozen
+   point-estimate comparison in Section 5.2.
+2. Re-render `paper_tex/PAPER_TORS.pdf`, `paper_tex/PAPER_TORS_acmsmall.pdf`,
+   and `PAPER_SUBMISSION.pdf`, then rerun PDF hygiene/extraction.
+3. Rebuild or supersede the DOI/deposit package so it includes current PDFs,
+   Office V3 and FIR-breadth prereg/results docs, and either the relevant result
+   JSONs or a manifest that enumerates their hashes.
+4. Refresh `paper_tex/BUILD_NOTES.md` to match the current 40/41/45-page state
+   and remove or clearly historical-label stale old scan blocks.
+5. Add a SILLM4Rec bibliography entry and cite the ACM DOI/repo evidence, or
+   remove the named mention until direct protocol inspection is done.
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and audit artifacts.
+- [x] Check files modified since the previous hourly run.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Extract current PDF page counts and stale Office/SILLM4Rec occurrences.
+- [x] Recheck release/deposit zip contents and manifest result-family boundary.
+- [x] Fact-check current comparator/dataset/SILLM4Rec boundaries against public
+      sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Fix Appendix A.0 Office V1/V3 status.
+- [ ] Refresh release/deposit bundle and manifest boundary.
+- [ ] Refresh `paper_tex/BUILD_NOTES.md`.
+- [ ] Add/inspect SILLM4Rec citation or remove the named exclusion.
+
+## Audit Run - 2026-07-14 16:07 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Automation memory read:
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`.
+- Current run time: `2026-07-14 16:07:15 +10:00`.
+- Files with modification times after the previous automation cutoff
+  (`2026-07-14T05:02:05.396Z`): `PAPER_REVIEW_AUDIT.md` and
+  `_bestrec_run/hstu_tables.json`. The latter was regenerated by the strict
+  build with no content diff (`git diff -- _bestrec_run/hstu_tables.json`
+  empty).
+- Working tree before this audit edit: tracked modification in
+  `PAPER_REVIEW_AUDIT.md`; untracked `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- This audit edited only `PAPER_REVIEW_AUDIT.md` and the automation memory.
+
+### Verdict
+
+**No new hard empirical failure was found, but the paper is still not
+submission-ready.** The Office V3, FIR-breadth, and strict artifact gates remain
+green. The reject-level risks are still presentation and release integrity: live
+sources and PDFs still say Office is not counted in Appendix A.0, while the
+current abstract/results count Office V3; the declared DOI/deposit zip still
+does not contain the Office V3 or FIR-breadth evidence needed for the current
+claim set.
+
+This hour adds one small delta from the prior run: `_bestrec_run/hstu_tables.json`
+has a new filesystem timestamp because the strict build rewrote it, but its
+tracked content is unchanged. There was no manuscript/PDF/release repair after
+the previous audit.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 16:05:43`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`; 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`; 5/5 seeds above
+    both references.
+  - Frozen claim remains a per-category point-estimate comparison only; no
+    paired/distributional superiority and no SOTA claim.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-14 16:05:48`, block `9a38ad66bd75`.
+  - `Industrial_and_Scientific`: paired mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: paired mean `+0.00566`, 95% CI
+    `[+0.00493,+0.00639]`, 5/5 positive.
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS.
+  - HSTU core-block parity exact.
+  - `168` empirical cells recomputed; `0` paper mismatches; `0` untraceable;
+    all `14` declared claim families sourced.
+  - Release manifest verification OK for its declared `113` files.
+  - MI V2 gate OK; legacy Office V1 descriptive/VOID adjudication OK.
+- PDF extraction with project `pypdf`
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; `Office is not counted` and
+    `confirmed per-category claim remains` on page 36; `SILLM4Rec` on page 18.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; stale Office phrases on
+    page 37; `SILLM4Rec` on page 18.
+  - `PAPER_SUBMISSION.pdf`: 45 pages; stale Office phrases on page 41;
+    `SILLM4Rec` on page 19.
+- Release/deposit zip check
+  - `_release/bestrec_deposit_v1.0.zip`: SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`, `48`
+    entries.
+  - `0` entries for `OFFICE_V3_RESULTS.md`, `PREREG_OFFICE_V3.md`,
+    `FIR_BREADTH_RESULTS.md`, `PREREG_FIR_BREADTH.md`,
+    `paper_tex/PAPER_TORS.pdf`, `results_OFFICEV3`, or `results_FIRB`.
+- Targeted source search
+  - `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, and
+    `paper_tex/sections/appendix-a0.tex` still contain "The confirmed
+    per-category claim remains Musical_Instruments only; Office is not
+    counted."
+  - `paper_tex/BUILD_NOTES.md` still says the acmsmall preview is 40 pages,
+    while fresh extraction finds 41 pages.
+  - `paper_tex/references.bib` still lacks a SILLM4Rec entry; `VENUE_PLAN.md`
+    still marks full-paper inspection pending.
+  - `RELEASE_MANIFEST.json` still has the old `result_families` boundary, while
+    `_bestrec_run/hstu_results_manifest.json` does include `results_OFFICEV3_*`
+    and `results_FIRB_*`.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR's repository still supports the comparator constants used by this
+  paper: Video Games HSTU-BLaIR NDCG@10 `0.0760`, Office Products `0.0271`,
+  and Musical Instruments `0.0406`, and documents evaluation on Amazon Reviews
+  2023 subsets plus Steam. Source: https://github.com/snapfinger/HSTU-BLaIR
+- Amazon Reviews 2023 remains correctly framed as a McAuley Lab 2023 dataset
+  with reviews, metadata, links, standard splits, 571.54M reviews, 54.51M users,
+  48.19M items, and interactions through September 2023. Source:
+  https://amazon-reviews-2023.github.io/
+- SILLM4Rec remains a close adjacent work that cannot be left as an uncited
+  aside. Its public repository requires Amazon Reviews 2023 5-core files and
+  builds image-description, user-preference-summary, candidate-ranking, SFT, and
+  DPO workflows; ACM metadata/search text describes reranking tasks. That
+  supports non-interchangeability with full-catalog LLOO, but the manuscript
+  still needs a formal citation or direct full-paper inspection. Sources:
+  https://github.com/MKC-Lab/SILLM4Rec and
+  https://dl.acm.org/doi/10.1145/3743093.3771011
+- Concurrent semantic-ID work still pressures novelty. Latte proposes latent
+  tokens for autoregressive semantic-ID generation and reports AR2023 MI/VG
+  experiments; ChronoSID reports an adjacent SID-line universe and MI N@10
+  values around `0.0345`/`0.0346` under its own protocol. These do not replace
+  the HSTU-BLaIR-family comparator, but they make the manuscript's
+  "no comparative claim against concurrent arXiv-only work" fence necessary.
+  Sources: https://arxiv.org/pdf/2605.06331 and
+  https://arxiv.org/html/2607.03918v1
+
+### Confirmed Problems
+
+1. **Appendix A.0 remains contradictory in both source and PDF.** It must split
+   Office V1 VOID from Office V3 PASS; the current text still collapses them
+   into "Office is not counted."
+2. **The deposit/release boundary remains stale.** A reviewer following the DOI
+   instructions will not receive the current Office V3 or FIR-breadth evidence.
+3. **The production notes remain stale.** The current acmsmall PDF extracts as
+   41 pages, not 40, and old round-8 page-count notes remain.
+4. **SILLM4Rec is still not submission-ready.** The manuscript mentions it by
+   name without a bibliography entry and with full-paper inspection still
+   pending.
+
+### Plausible Risks / Author Verification Needed
+
+- Confirm whether Office V3 and FIR-breadth evidence should be added directly
+  to `RELEASE_MANIFEST.json`, the DOI zip, or both.
+- Confirm whether `PAPER_DRAFT.md` and `PAPER_SUBMISSION.pdf` are live
+  deliverables. If either can circulate, they currently carry the same stale
+  Office contradiction.
+- Confirm whether SILLM4Rec full text is accessible before freeze. If not, cite
+  the public repository/ACM DOI and make the exclusion explicitly evidence-based.
+
+### Concrete Fixes To Make Next
+
+1. Rewrite Appendix A.0 in `paper_tex/sections/appendix-a0.tex`,
+   `PAPER_SUBMISSION.md`, and `PAPER_DRAFT.md`: Office V1 remains VOID; Office
+   V3 separately passed and counts only under frozen point-estimate wording.
+2. Rebuild all PDFs after that fix and rerun PDF hygiene/extraction.
+3. Rebuild the DOI/deposit package and release manifest so Office V3,
+   FIR-breadth, and the current TORS PDF are actually deposited.
+4. Refresh `paper_tex/BUILD_NOTES.md` with the current 40/41/45-page state and
+   remove or clearly historical-label stale round-8 notes.
+5. Add a SILLM4Rec citation/full-paper inspection note, or remove the named
+   mention until it is citable.
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and audit artifacts.
+- [x] Check files modified since the previous hourly run.
+- [x] Rerun Office V3 adjudicator.
+- [x] Rerun FIR-breadth adjudicator.
+- [x] Rerun strict manuscript/artifact gate.
+- [x] Extract current PDF page counts and stale Office/SILLM4Rec occurrences.
+- [x] Recheck release/deposit zip contents and manifest result-family boundary.
+- [x] Fact-check live comparator/dataset/SILLM4Rec/semantic-ID boundaries
+      against public sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Fix Appendix A.0 Office V1/V3 status.
+- [ ] Refresh release/deposit bundle and manifest boundary.
+- [ ] Refresh `paper_tex/BUILD_NOTES.md`.
+- [ ] Add/inspect SILLM4Rec citation or remove the named exclusion.
+
+## Audit Run - 2026-07-14 15:04 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory read:
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`.
+- Current run time: `2026-07-14 15:04:31 +10:00`.
+- Files changed since the previous audit cutoff (`2026-07-14 14:04
+  Australia/Sydney`): only `PAPER_REVIEW_AUDIT.md`. No manuscript source,
+  result JSON, PDF, release, bibliography, figure, or table source had a newer
+  filesystem timestamp.
+- Working tree before this audit edit: tracked modification in
+  `PAPER_REVIEW_AUDIT.md`; untracked `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- This audit edited only `PAPER_REVIEW_AUDIT.md` and the automation memory.
+
+### Verdict
+
+**No new numerical or provenance failure was found, but the paper remains
+unready for a top-journal submission.** Because no manuscript/result artifacts
+changed since the prior run, the live rejection risks are unchanged and now
+freshly re-confirmed: Appendix A.0 contradicts the Office V3 pass, and the
+deposit/release bundle still omits the evidence for current Office V3 and
+FIR-breadth claims.
+
+The strict empirical apparatus is still green. That does not neutralize the
+presentation risk: a reviewer reading the PDF sees Office V1/V3 status mixed in
+one appendix paragraph, while a reviewer following the deposit instructions
+cannot retrieve the current claim families from the declared zip.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 15:03:24`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`; 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`; 5/5 seeds above
+    both references.
+  - Frozen claim remains a per-category point-estimate comparison only; no
+    paired/distributional superiority and no SOTA claim.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-14 15:03:29`, block `9a38ad66bd75`.
+  - `Industrial_and_Scientific`: paired mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: paired mean `+0.00566`, 95% CI
+    `[+0.00493,+0.00639]`, 5/5 positive.
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS.
+  - HSTU core-block parity exact.
+  - `168` empirical cells recomputed; `0` paper mismatches; `0` untraceable;
+    all `14` declared claim families sourced.
+  - Release manifest verification OK for its declared `113` files.
+  - MI V2 gate OK; legacy Office V1 descriptive/VOID adjudication OK.
+- PDF extraction with `pypdf`
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; `Office is not counted` on page 36;
+    `confirmed per-category claim remains` on page 36; `SILLM4Rec` on page 18.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; `Office is not counted` on
+    page 37; `confirmed per-category claim remains` on page 37; `SILLM4Rec` on
+    page 18.
+  - `PAPER_SUBMISSION.pdf`: 45 pages; `Office is not counted` on page 41;
+    `confirmed per-category claim remains` on page 41; `SILLM4Rec` on page 19.
+- Release/deposit zip check
+  - `_release/bestrec_deposit_v1.0.zip`: SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`, `48`
+    entries.
+  - `0` entries for `OFFICE_V3_RESULTS.md`, `PREREG_OFFICE_V3.md`,
+    `FIR_BREADTH_RESULTS.md`, `PREREG_FIR_BREADTH.md`,
+    `paper_tex/PAPER_TORS.pdf`, `results_OFFICEV3`, or `results_FIRB`.
+- Targeted text search
+  - `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, and
+    `paper_tex/sections/appendix-a0.tex` still contain "The confirmed
+    per-category claim remains Musical_Instruments only; Office is not
+    counted."
+  - `paper_tex/BUILD_NOTES.md` still mixes current 40/40 wording with old
+    35/36-page round-8 notes.
+  - `VENUE_PLAN.md` still marks SILLM4Rec full-paper inspection pending.
+  - `paper_tex/references.bib` still lacks a SILLM4Rec entry.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR's public repository still supports the comparator constants used
+  by this paper: Video Games HSTU-BLaIR NDCG@10 `0.0760`, Office Products
+  `0.0271`, and Musical Instruments `0.0406`; it also states experiments cover
+  three Amazon Reviews 2023 subsets and Steam. Source:
+  https://github.com/snapfinger/HSTU-BLaIR
+- The official Amazon Reviews 2023 site and benchmark-script README support the
+  paper's dataset framing: the dataset is a 2023 McAuley Lab release with
+  reviews, metadata, links, standard splits, 5-core filtering, and leave-last-out
+  benchmark files. Sources: https://amazon-reviews-2023.github.io/ and
+  https://github.com/hyp1231/AmazonReviews2023/blob/main/benchmark_scripts/README.md
+- SILLM4Rec remains a close adjacent work, not a safe uncited aside. Its public
+  repo says it uses Amazon Reviews 2023 5-core files, image-to-text conversion,
+  user preference summaries, candidate product ranking tasks, and SFT/DPO data;
+  ACM metadata describes a multimodal recommendation paper using SFT and DPO.
+  This supports non-interchangeability with full-catalog LLOO, but it also
+  means the manuscript needs either a formal citation/full-paper inspection or a
+  more cautious removal. Sources: https://github.com/MKC-Lab/SILLM4Rec and
+  https://dl.acm.org/doi/10.1145/3743093.3771011
+- Latte and ChronoSID remain novelty pressure but not audited comparator
+  replacements. Latte reports AR2023 Instruments/Scientific/Games NDCG@10
+  values including Instruments `0.0331` and Games `0.0515`; ChronoSID reports a
+  distinct SID-line filtered universe, e.g. MI `57,359` users / `23,742` items /
+  `490,522` interactions. Sources: https://arxiv.org/pdf/2605.06331 and
+  https://arxiv.org/html/2607.03918v1
+
+### Confirmed Problems
+
+1. **Appendix A.0 is still contradictory.** It describes the original Office V1
+   pre-registration VOID and then concludes that Office is not counted. That was
+   correct for V1, but it is now false for the separate Office V3
+   pre-registration counted in the abstract and Section 5.2.
+2. **The deposit bundle is stale.** The declared `v1.0` zip lacks Office V3 and
+   FIR-breadth prereg/results documentation and lacks the current TORS PDF,
+   while the manuscript now depends on those claim families.
+3. **Build/readiness notes are internally stale.** `BUILD_NOTES.md` still
+   carries round-8 35/36-page statements, while current extracted PDFs are
+   40/41/45 pages depending on artifact.
+4. **SILLM4Rec is still not submission-ready.** It is mentioned in the
+   manuscript without a bibliography entry, and the venue plan still marks
+   direct full-paper inspection pending.
+
+### Plausible Risks / Author Verification Needed
+
+- Confirm whether Office V3 per-user sidecars are intended to be deposited,
+  supplied on reviewer request, or declared out-of-scope with enough aggregate
+  JSON evidence for reproducibility.
+- Confirm whether `PAPER_DRAFT.md` remains a live draft. If it is live, it must
+  be repaired in lockstep with `PAPER_SUBMISSION.md`; if not, mark it obsolete.
+- Confirm whether `PAPER_SUBMISSION.pdf` is still a deliverable. Its 45-page
+  length and stale Office sentence make it dangerous if circulated alongside the
+  40-page TORS artifact.
+
+### Concrete Fixes To Make Next
+
+1. Rewrite Appendix A.0 so the final Office-status sentence explicitly says:
+   Office V1 remains VOID and not counted; Office V3 is a separate redesigned
+   pre-registration that passed and is counted only under its frozen
+   point-estimate wording.
+2. Rebuild and redeclare the deposit/release package to include Office V3,
+   FIR-breadth, the current TORS PDF, and a manifest boundary that matches the
+   paper's current claim families.
+3. Refresh `paper_tex/BUILD_NOTES.md` to remove old round-8 35/36-page language
+   and report the current 40-page TORS / 41-page acmsmall / 45-page reader-PDF
+   state, or clearly mark historical counts as historical only.
+4. Add a SILLM4Rec bibliography entry and direct inspected exclusion rationale,
+   or remove the named mention until the ACM paper is inspected.
+5. Re-render all live PDFs after the Appendix A.0 fix and rerun the hygiene scan
+   plus strict rebuild before considering the manuscript frozen.
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and audit artifacts.
+- [x] Check files modified since the previous hourly run.
+- [x] Rerun Office V3 adjudicator.
+- [x] Rerun FIR-breadth adjudicator.
+- [x] Rerun strict manuscript/artifact gate.
+- [x] Extract current PDF page counts and stale Office/SILLM4Rec occurrences.
+- [x] Recheck release/deposit zip contents and hash.
+- [x] Fact-check live comparator/dataset/SILLM4Rec/Latte/ChronoSID boundaries
+      against primary public sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Fix Appendix A.0 Office V1/V3 status.
+- [ ] Refresh release/deposit bundle and manifest boundary.
+- [ ] Refresh `paper_tex/BUILD_NOTES.md`.
+- [ ] Add/inspect SILLM4Rec citation or remove the named exclusion.
+
+## Audit Run - 2026-07-14 14:02 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory read:
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`.
+- Current run time: `2026-07-14 14:04:07 +10:00`; main adjudicators completed
+  at `2026-07-14 14:02:05 Australia/Sydney`.
+- Active sources/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`, `paper_tex/main.tex`,
+  `paper_tex/sections/*.tex`, `paper_tex/references.bib`,
+  `paper_tex/PAPER_TORS.pdf`, `paper_tex/PAPER_TORS_acmsmall.pdf`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/hygiene_scan_output.txt`,
+  `CANONICAL_SUBMISSION.md`, `VENUE_PLAN.md`, `RELEASE_MANIFEST.json`,
+  `_bestrec_run/hstu_results_manifest.json`, `_release/bestrec_deposit_v1.0.zip`,
+  `DOI_DEPOSIT_INSTRUCTIONS.md`, `OFFICE_V3_RESULTS.md`,
+  `FIR_BREADTH_RESULTS.md`, and `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`.
+- Working tree before this audit edit: tracked modification in
+  `PAPER_REVIEW_AUDIT.md`; untracked `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- This audit edited only `PAPER_REVIEW_AUDIT.md` and the automation memory.
+
+### Verdict
+
+**No empirical gate failed, but the paper is still not submission-ready.** The
+strict artifact graph, Office V3 adjudicator, FIR-breadth adjudicator, and TORS
+hygiene scan are all green. The top rejection risk remains internal
+contradiction: Appendix A.0 still says "Office is not counted" in live sources
+and rendered PDFs, while the abstract and Section 5.2 count Office V3 as the
+second pre-registered per-category point-estimate comparison.
+
+The second live risk is archival: the tracked result JSONs and strict gate know
+about Office V3 and FIR-breadth, but `RELEASE_MANIFEST.json` and the assembled
+`v1.0` deposit zip still do not. A reviewer following the deposit instructions
+would not receive the evidence for two current claim families.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS.
+  - HSTU core-block parity exact.
+  - `168` cells recomputed; `0` paper mismatches; `0` untraceable cells; all
+    `14` declared claim families sourced.
+  - Release manifest verification OK for its declared `113` files.
+  - MI V2 gate OK; legacy Office V1 descriptive/VOID adjudication OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 14:02:05`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`; 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`; 5/5 seeds above
+    both references.
+  - Frozen claim remains per-category point-estimate only, not paired
+    superiority and not SOTA.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-14 14:02:05`, block `9a38ad66bd75`.
+  - `Industrial_and_Scientific`: paired mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: paired mean `+0.00566`, 95% CI
+    `[+0.00493,+0.00639]`, 5/5 positive.
+- PDF extraction with `pypdf`
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; `Office is not counted` on page 36;
+    `SILLM4Rec` on page 18.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; `Office is not counted` on
+    page 37; `confirmed per-category claim remains Musical_Instruments only`
+    on page 37; `SILLM4Rec` on page 18.
+  - `PAPER_SUBMISSION.pdf`: 45 pages; `Office is not counted` on page 41;
+    `SILLM4Rec` on page 19.
+- Text search
+  - `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, and
+    `paper_tex/sections/appendix-a0.tex` still contain the stale Appendix A.0
+    sentence that the confirmed per-category claim remains Musical_Instruments
+    only and Office is not counted.
+  - `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` still claims those Office sites were
+    fixed and that zero stale occurrences remain; the live sources and PDFs
+    contradict that response.
+  - `paper_tex/references.bib` has no SILLM4Rec entry, although Section 5.1
+    discusses SILLM4Rec by name.
+  - `paper_tex/BUILD_NOTES.md` still contains historical 35/36 page notes and
+    current 40/40 wording, while the current PDFs are 40 pages for TORS and 41
+    pages for acmsmall.
+- Release/deposit check
+  - `_release/bestrec_deposit_v1.0.zip`: 48 entries, 780,381 bytes, SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`.
+  - Deposit zip contains `0` entries for `OFFICE_V3_RESULTS.md`,
+    `PREREG_OFFICE_V3.md`, `FIR_BREADTH_RESULTS.md`, `PREREG_FIR_BREADTH.md`,
+    `paper_tex/PAPER_TORS.pdf`, `results_OFFICEV3`, or `results_FIRB`.
+  - `RELEASE_MANIFEST.json` contains none of `office_v3`, `fir_breadth`,
+    `results_OFFICEV3`, `results_FIRB`, `OFFICE_V3_RESULTS.md`,
+    `FIR_BREADTH_RESULTS.md`, `PREREG_OFFICE_V3.md`, or
+    `PREREG_FIR_BREADTH.md`.
+- TORS hygiene scan
+  - `paper_tex/hygiene_scan_output.txt`: PASS, 40 pages, `0`
+    placeholder/forbidden-claim failures, 20 informational SOTA/non-claim
+    review hits.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR's arXiv record confirms v3 was revised on 2025-06-19 and evaluates
+  three Amazon Reviews 2023 subsets plus Steam; the public repository table
+  reports the comparator constants used here: Video Games HSTU-BLaIR NDCG@10
+  `0.0760`, Office Products `0.0271`, and Musical Instruments `0.0406`.
+  Sources: https://arxiv.org/abs/2504.10545,
+  https://github.com/snapfinger/HSTU-BLaIR
+- The official Amazon Reviews 2023 site supports the dataset framing: McAuley
+  Lab collected the 2023 dataset, it includes reviews, metadata, and links, and
+  provides standard splitting/benchmarking materials. Source:
+  https://amazon-reviews-2023.github.io/
+- Latte (arXiv:2605.06331) reports AR2023 Instruments/Scientific/Games, LOO
+  evaluation, and Table 3 values including Instruments `0.0331` and Games
+  `0.0515`, matching the manuscript's cautious point-estimate summary. Source:
+  https://arxiv.org/pdf/2605.06331
+- ChronoSID (arXiv:2607.03918) reports same-test-instance comparisons against
+  ReSID and frames temporal gap modeling as improving both popular and
+  unpopular regimes, but this is still a SID-line setup rather than an audited
+  apples-to-apples HSTU-BLaIR-family comparison. Source:
+  https://arxiv.org/html/2607.03918v1
+- SILLM4Rec remains close enough to require a formal citation or inspected
+  exclusion. ACM metadata says its experiments use three 5-core Amazon Reviews
+  2023 sub-datasets; the public repo describes image-description generation,
+  user preference summaries, candidate product ranking tasks, and SFT/DPO
+  training data. That supports non-interchangeability with full-catalog LLOO,
+  but does not justify mentioning it without a bibliography entry. Sources:
+  https://dl.acm.org/doi/10.1145/3743093.3771011,
+  https://github.com/MKC-Lab/SILLM4Rec
+- GrIT and Augment-or-Not are appropriately treated as adjacent rather than
+  proven-comparable unless their preprocessing/evaluation details are audited.
+  Sources: https://arxiv.org/pdf/2602.19728,
+  https://arxiv.org/html/2505.23053v1
+
+### Confirmed Problems
+
+1. **Appendix A.0 contradicts the counted Office V3 claim.** The V1 appendix can
+   say V1 is void, but it cannot generically say Office is not counted after
+   V3 is counted in the main paper.
+2. **The deposit/release boundary is stale.** The current deposit package omits
+   Office V3 and FIR-breadth prereg/results docs and result families.
+3. **`RELEASE_MANIFEST.json` is green only for an outdated declared scope.** The
+   strict gate includes the new claim families, but the release manifest text
+   does not name them.
+4. **SILLM4Rec is under-cited.** The sentence is directionally defensible, but a
+   top-journal reviewer will expect a citation and a precise protocol boundary.
+5. **`paper_tex/BUILD_NOTES.md` is stale.** It mixes current 40-page state with
+   old 35/36-page notes and claims a 40/40 current build despite acmsmall being
+   41 pages.
+6. **`PAPER_DRAFT.md` is stale relative to the canonical submission.** It still
+   contains a status note saying Office V3 is pending. If the draft is not live,
+   mark it as archival; otherwise update it.
+
+### Confirmed Non-Problems
+
+- No strict numerical/provenance gate failed.
+- Office V3 aggregate evidence remains mechanically supported.
+- FIR-breadth evidence remains mechanically supported.
+- HSTU-BLaIR comparator constants are externally supported by the public
+  arXiv/repository materials.
+- The TORS hygiene scan is PASS; the detected SOTA strings are informational
+  non-claim/negated-claim contexts.
+
+### Concrete Fixes To Make Next
+
+1. Rewrite Appendix A.0 in `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, and
+   `paper_tex/sections/appendix-a0.tex`: V1 remains VOID and no V1 claim counts;
+   V3 separately passed and counts only under its frozen point-estimate wording.
+2. Rebuild the PDFs after that source fix and verify `Office is not counted` no
+   longer appears in rendered artifacts except in an explicitly V1-scoped form.
+3. Regenerate/supersede the deposit bundle and `DOI_DEPOSIT_INSTRUCTIONS.md` so
+   Office V3 and FIR-breadth prereg/results docs, result JSONs, and TORS PDF are
+   present, or clearly state the new release artifact name.
+4. Update `RELEASE_MANIFEST.json` or its scope note so Office V3 and FIR-breadth
+   are not invisible to the archival manifest.
+5. Add a SILLM4Rec bibliography entry and cite the ACM DOI/repo in Section 5.1,
+   or inspect the ACM PDF and revise the exclusion with page/table-specific
+   evidence.
+6. Refresh `paper_tex/BUILD_NOTES.md` to match current page counts and hygiene
+   output.
+
+### Open Questions
+
+- Is `_release/bestrec_deposit_v1.0.zip` meant to be replaced, or should a
+  `v1.0.1`/new DOI-deposit bundle supersede it?
+- Should Office V3/FIR-breadth per-user sidecars remain local-only until
+  reviewer request, or be deposited now as supplementary evidence?
+- Is `PAPER_DRAFT.md` still a live manuscript source, or should it be marked
+  archival to avoid stale-status review confusion?
+- Can the authors access the SILLM4Rec ACM full text before final freeze?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and audit artifacts.
+- [x] Re-run strict artifact gate.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Check rendered PDFs for stale Office wording.
+- [x] Check release/deposit zip and release manifest scope.
+- [x] Fact-check HSTU-BLaIR, AR2023, Latte, ChronoSID, SILLM4Rec, GrIT, and
+      Augment-or-Not against external sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Repair Appendix A.0 Office V1/V3 contradiction in all live sources/PDFs.
+- [ ] Refresh release/deposit package and manifest boundary.
+- [ ] Add/inspect SILLM4Rec formally before freeze.
+- [ ] Refresh `paper_tex/BUILD_NOTES.md`.
+
+## Audit Run - 2026-07-14 09:58 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory read:
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  (file absent at run start; directory created later for this automation).
+- Last automation run supplied by scheduler: `2026-07-13T22:57:29.048Z`
+  (`2026-07-14 08:57:29 Australia/Sydney`).
+- Current run time: `2026-07-14 09:58:38 +10:00`; main adjudicators completed
+  at `2026-07-14 09:58:57 Australia/Sydney`.
+- Active sources/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`, `paper_tex/sections/*.tex`,
+  `paper_tex/references.bib`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, `paper_tex/BUILD_NOTES.md`,
+  `paper_tex/hygiene_scan_output.txt`, `CANONICAL_SUBMISSION.md`,
+  `VENUE_PLAN.md`, `RELEASE_MANIFEST.json`,
+  `_bestrec_run/hstu_results_manifest.json`, `_release/bestrec_deposit_v1.0.zip`,
+  `DOI_DEPOSIT_INSTRUCTIONS.md`, and `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`.
+- Workspace changes since the last scheduled run: only `PAPER_REVIEW_AUDIT.md`,
+  the prior Table 2 render PNGs under `tmp/pdfs/`, `_bestrec_run/hstu_tables.json`,
+  and `paper_tex/hygiene_scan_output.txt` were newer than `08:57:29`.
+- Working tree before this audit edit: tracked modification in
+  `PAPER_REVIEW_AUDIT.md`; untracked `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- This audit edited only `PAPER_REVIEW_AUDIT.md`.
+
+### Verdict
+
+**No new empirical failure appeared, but the same top-journal blockers remain
+live.** The strict artifact graph, Office V3 adjudicator, FIR-breadth
+adjudicator, and TORS hygiene scan all pass. The paper is still not
+submission-ready because Appendix A.0 and all rendered PDFs still say Office is
+not counted, while the abstract/Section 5.2 count Office V3 as the second
+pre-registered per-category comparison. The release/deposit bundle is also still
+stale relative to Office V3 and FIR-breadth.
+
+The important change since the previous hour is negative evidence: no manuscript
+source changed after the 08:58 audit, so the earlier blockers were not repaired.
+The current run therefore confirms persistence rather than discovering a new
+numerical defect.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS.
+  - HSTU core-block parity exact.
+  - `168` cells recomputed; `0` paper mismatches; `0` untraceable; all `14`
+    declared claim families sourced.
+  - Release manifest verification OK for its declared `113` files.
+  - MI V2 gate OK; legacy Office V1 descriptive/VOID adjudication OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 09:58:56`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`; 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`; 5/5 seeds above
+    both references.
+  - Comparability conditions OK; frozen claim remains per-category
+    point-estimate only, not paired superiority or SOTA.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-14 09:58:57`, block `9a38ad66bd75`.
+  - `Industrial_and_Scientific`: paired mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: paired mean `+0.00566`, 95% CI
+    `[+0.00493,+0.00639]`, 5/5 positive.
+- `uv --project _bestrec_run run python paper_tex\scan_pdf.py paper_tex\PAPER_TORS.pdf`
+  - PASS: 40 pages; `0` placeholder/forbidden-claim failures; 20 informational
+    SOTA/non-claim review hits.
+- PDF extraction with `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages; `Office is not counted` on page 41;
+    `SILLM4Rec` on page 19.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; `Office is not counted` on page 36;
+    `SILLM4Rec` on page 18.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; `Office is not counted` on
+    page 37; `SILLM4Rec` on page 18.
+- Text search
+  - `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, and
+    `paper_tex/sections/appendix-a0.tex` still contain the stale Appendix A.0
+    sentence that the confirmed per-category claim remains Musical_Instruments
+    only and Office is not counted.
+  - `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` still claims those Office status sites
+    were fixed and that zero stale occurrences remain; the live sources and PDFs
+    contradict that response.
+  - `paper_tex/references.bib` has entries for SID-MLP, Latte, ChronoSID,
+    ReSID, GrIT, Augment-or-Not, and DiffuReason, but still has no SILLM4Rec
+    entry.
+  - `paper_tex/BUILD_NOTES.md` still says the acmsmall preview is 40 pages near
+    the top, still embeds old round-8 35/36-page compile notes, and the current
+    `paper_tex/PAPER_TORS_acmsmall.pdf` is 41 pages.
+- Release/deposit check
+  - `_release/bestrec_deposit_v1.0.zip`: SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`, 48
+    entries.
+  - Missing from zip: `PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`,
+    `PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`, and
+    `paper_tex/PAPER_TORS.pdf`.
+  - `DOI_DEPOSIT_INSTRUCTIONS.md` still describes a 46-file `v1.0-deposit`
+    release asset rather than the current Office V3/FIR-breadth claim set.
+
+### External Fact-Check / Novelty Notes
+
+- The official Amazon Reviews 2023 site supports the dataset framing: it
+  describes a 2023 McAuley Lab release with user reviews, item metadata, links,
+  standard splits, and corpus scale of `571.54M` reviews / `54.51M` users /
+  `48.19M` items. Source: https://amazon-reviews-2023.github.io/
+- HSTU-BLaIR v3 continues to support the comparator constants and dataset family:
+  it reports AR2023 5-core Video Games, Office Products, and Musical Instruments
+  statistics matching the paper's protocol family, with HSTU-BLaIR NDCG@10
+  `0.0760`, `0.0271`, and `0.0406`. Source:
+  https://arxiv.org/html/2504.10545v3
+- SID-MLP is a close same-statistics generative-retrieval pressure point: it
+  evaluates AR2023 Musical Instruments, Industrial & Scientific, and Video Games
+  with the HSTU-family statistics (`57,439 / 24,587 / 511,836` for MI and
+  `94,762 / 25,612 / 814,586` for Video Games) and reports multi-seed NDCG
+  values around MI `0.0332` and Games `0.0512` for its distilled variant. Source:
+  https://arxiv.org/html/2605.12617v1
+- ChronoSID/ReSID are correctly fenced as non-interchangeable with this paper's
+  HSTU-BLaIR-family comparison: ChronoSID's Table 1 reports MI `57,359` users /
+  `23,742` items / `490,522` interactions and VG `94,515` / `24,685` /
+  `772,218`, not this paper's MI/VG statistics. Its output-level analysis also
+  reports ChronoSID improvements over ReSID, so it remains relevant literature
+  for the tail/temporal-modeling discussion even if not directly comparable.
+  Source: https://arxiv.org/html/2607.03918v1
+- SILLM4Rec remains close enough that the current no-bibliography posture is
+  risky. Its public repository says the workflow uses AR2023 5-core files and
+  creates image descriptions, user-preference summaries, candidate-product
+  ranking tasks, and SFT/DPO data; ACM/DBLP identify it as an MMAsia 2025 paper
+  with DOI `10.1145/3743093.3771011`. This supports a repository-based
+  non-interchangeability rationale, but a top-journal submission should either
+  inspect/cite the full paper or explicitly cite the repo/DOI as the basis for
+  exclusion. Sources: https://github.com/MKC-Lab/SILLM4Rec,
+  https://dl.acm.org/doi/10.1145/3743093.3771011,
+  https://dblp.org/rec/conf/mmasia/WuQL0025
+
+### Confirmed Problems
+
+1. **Appendix A.0 still contradicts the counted Office V3 claim.** This is in
+   both markdown sources, the TeX appendix, and all rendered PDFs.
+2. **The release/deposit bundle is stale.** A reviewer following the deposit
+   instructions would not receive the Office V3 or FIR-breadth prereg/results
+   evidence.
+3. **`RELEASE_MANIFEST.json` remains narrower than the current public claim
+   family story.** The strict gate sees `office_v3` and `fir_breadth` through
+   `_bestrec_run/hstu_results_manifest.json`, while the public release manifest
+   does not name those families.
+4. **`RESPONSE_TO_PAPER_REVIEW_AUDIT.md` overstates fixes.** It says the Office
+   wording was repaired; live sources and PDFs disprove that.
+5. **`paper_tex/BUILD_NOTES.md` is stale relative to current artifacts.**
+   Current acmsmall is 41 pages, but notes still claim 40 and retain old 35/36
+   page compile-status material.
+6. **SILLM4Rec remains under-cited.** The current exclusion sentence is more
+   concrete than before, but no formal bibliography entry exists.
+
+### Confirmed Non-Problems
+
+- No strict-gate numerical/provenance failure was found.
+- Office V3 still passes mechanically under the frozen per-category
+  point-estimate wording.
+- FIR-breadth still passes mechanically for both added categories.
+- The paper's SID-line/non-comparability fence is factually supported for
+  ChronoSID/ReSID, and the "no comparative claim against concurrent arXiv-only
+  work" stance remains appropriate.
+- The SILLM4Rec repository evidence supports non-interchangeability; the defect
+  is citation/protocol-inspection completeness, not a proven false exclusion.
+
+### Concrete Fixes To Make Next
+
+1. Rewrite Appendix A.0 in `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, and
+   `paper_tex/sections/appendix-a0.tex` so the V1 VOID is scoped to V1 and the
+   V3 pass is counted consistently under its frozen no-SOTA/no-paired-
+   superiority wording.
+2. Re-render `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`, and
+   `paper_tex/PAPER_TORS_acmsmall.pdf`; then re-run PDF extraction for the stale
+   Office phrase.
+3. Regenerate/supersede the deposit bundle and `DOI_DEPOSIT_INSTRUCTIONS.md` so
+   Office V3 and FIR-breadth prereg/results evidence are included or explicitly
+   linked.
+4. Align `RELEASE_MANIFEST.json` with the current claim-family story, or make it
+   explicitly delegate Office V3/FIR-breadth family detail to
+   `_bestrec_run/hstu_results_manifest.json`.
+5. Refresh `paper_tex/BUILD_NOTES.md` for the actual 40-page review PDF and
+   41-page acmsmall preview.
+6. Add a formal SILLM4Rec citation/protocol note, or record that full-paper
+   inspection remains pending and the exclusion rests on repository evidence.
+
+### Open Questions
+
+- Should the stale `_release/bestrec_deposit_v1.0.zip` be replaced in place,
+  superseded as `v1.0.1`, or left historical with a new current release asset?
+- Should `RELEASE_MANIFEST.json` become the single public manifest for Office
+  V3/FIR-breadth, or should it point reviewers to
+  `_bestrec_run/hstu_results_manifest.json` for claim-family detail?
+- Can the authors access the SILLM4Rec ACM PDF/full text before freeze, or
+  should the paper cite the public repo and DOI as the concrete inspected
+  evidence?
+- Is the 41-page acmsmall preview acceptable, or should layout be compressed
+  before any production-preview distribution?
+
+### Running Checklist
+
+- [x] Read automation memory status and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and audit artifacts.
+- [x] Check file changes since the prior scheduled run.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Re-run TORS PDF hygiene scan.
+- [x] Extract PDF page counts and stale phrase locations.
+- [x] Check release zip entries and SHA256.
+- [x] Check current references/literature coverage for SID-MLP, ChronoSID, and
+      SILLM4Rec.
+- [x] Fact-check AR2023, HSTU-BLaIR, SID-MLP, ChronoSID, and SILLM4Rec against
+      external sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Repair Appendix A.0 Office V1/V3 contradiction in all live sources/PDFs.
+- [ ] Refresh the release/deposit package and manifest boundary.
+- [ ] Refresh stale build notes and decide the acmsmall page-count target.
+- [ ] Add/inspect SILLM4Rec formally before freeze.
+
+## Audit Run - 2026-07-14 08:58 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory read:
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  (`Last run: 2026-07-14 08:02 Australia/Sydney`).
+- Current run time: `2026-07-14 08:58:16 +10:00`; main adjudicators completed
+  at `2026-07-14 08:58:45 Australia/Sydney`.
+- Active sources/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`, `paper_tex/main.tex`,
+  `paper_tex/paper-shared.tex`, `paper_tex/sections/*.tex`,
+  `paper_tex/references.bib`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, `paper_tex/BUILD_NOTES.md`,
+  `paper_tex/hygiene_scan_output.txt`, `VENUE_PLAN.md`,
+  `CANONICAL_SUBMISSION.md`, `RELEASE_MANIFEST.json`,
+  `_bestrec_run/hstu_results_manifest.json`, `_release/bestrec_deposit_v1.0.zip`,
+  `DOI_DEPOSIT_INSTRUCTIONS.md`, `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`, and fresh
+  Table 2 page renders.
+- Working tree before this audit edit: tracked modification in
+  `PAPER_REVIEW_AUDIT.md`; untracked `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- This audit edited only `PAPER_REVIEW_AUDIT.md`.
+
+### Verdict
+
+**No empirical gate failed, but the paper is still not top-journal
+submission-ready.** The strict artifact graph, Office V3 adjudicator, FIR
+breadth adjudicator, and TORS hygiene scan all passed again. The live rejection
+risk is therefore not "the numbers do not recompute"; it is that the manuscript
+and release package still tell incompatible stories about what is counted and
+what is deposited.
+
+The most damaging issue remains the Office contradiction: the abstract/Section
+5.2 count Office V3 as a second passed pre-registered per-category comparison,
+but Appendix A.0 in Markdown, TeX, and all rendered PDFs still says the
+confirmed per-category claim is Musical_Instruments only and that Office is not
+counted. A top-journal reviewer will treat this as a basic claim-control failure
+even though the underlying V3 mechanics pass.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS.
+  - HSTU core-block parity exact.
+  - `168` cells recomputed; `0` paper mismatches; `0` untraceable; all `14`
+    declared claim families sourced.
+  - Release manifest verification OK for its declared `113` files.
+  - MI V2 gate OK; legacy Office V1 descriptive/VOID check OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 08:58:45`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`; 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`; 5/5 seeds above
+    both references.
+  - Comparability conditions OK; frozen claim remains per-category
+    point-estimate only, not paired superiority or SOTA.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-14 08:58:45`, block `9a38ad66bd75`.
+  - `Industrial_and_Scientific`: paired mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: paired mean `+0.00566`, 95% CI
+    `[+0.00493,+0.00639]`, 5/5 positive.
+- `uv --project _bestrec_run run python paper_tex\scan_pdf.py paper_tex\PAPER_TORS.pdf`
+  - PASS: 40 pages; `0` placeholder/forbidden-claim failures; 20 informational
+    SOTA/non-claim review hits.
+- PDF extraction with `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages; stale Office non-counted wording on page
+    41; SILLM4Rec on page 19.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; stale Office non-counted wording on
+    page 36; SILLM4Rec on page 18.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; stale Office non-counted
+    wording on page 37; SILLM4Rec on page 18.
+- Text search
+  - `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, and
+    `paper_tex/sections/appendix-a0.tex` still contain the stale Appendix A.0
+    Office V1 sentence.
+  - `PAPER_DRAFT.md` still starts with Draft v3.8 status text saying "Office
+    stays VOID" and Office V3's outcome is pending.
+  - `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` still claims those sites were fixed and
+    that zero stale occurrences remain; the live sources and PDFs contradict
+    that response.
+  - `paper_tex/references.bib` still has no SILLM4Rec entry.
+  - `paper_tex/BUILD_NOTES.md` still contains round-8 `35 pages` / `36 pages`
+    notes and "current builds are 40/40" while `PAPER_TORS_acmsmall.pdf` is 41
+    pages.
+- Release/deposit check
+  - `_release/bestrec_deposit_v1.0.zip`: SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`, 48
+    entries.
+  - Missing from zip: `PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`,
+    `PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`, and
+    `paper_tex/PAPER_TORS.pdf`.
+  - `DOI_DEPOSIT_INSTRUCTIONS.md` still says the deposit is "fully assembled"
+    and describes an older 46-file bundle.
+  - `RELEASE_MANIFEST.json` verifies only its declared scope and still has
+    `result_families` = `MI_gate_EXEC2`, `MI_gate_EXEC2_rest`, `MI_rebuild`,
+    `OFFICE_gate`, `OFFICE_idonly_floor`, and `FIR_ablations`; it does not
+    mention `office_v3`, `fir_breadth`, or their prereg/results docs. The
+    generated `_bestrec_run/hstu_results_manifest.json` does contain
+    `office_v3` and `fir_breadth`.
+- Fresh Table 2 render
+  - Rendered `paper_tex/PAPER_TORS.pdf` pages 27-28 to
+    `tmp/pdfs/tors_table2_20260714_0858-27.png` and
+    `tmp/pdfs/tors_table2_20260714_0858-28.png`.
+  - Visual inspection confirms the caption is stranded at the bottom of page 27
+    while the table body starts on page 28.
+
+### External Fact-Check / Novelty Notes
+
+- The Amazon Reviews 2023 official site still supports the paper's broad dataset
+  framing: it describes a 2023 McAuley Lab release with reviews, item metadata,
+  links, and standard splits, and gives the 571.54M-review scale. Source:
+  https://amazon-reviews-2023.github.io/
+- SILLM4Rec is close enough that omission from the bibliography is risky. ACM
+  and dblp identify it as "SILLM4Rec: Self-Improving with Chain of Thought
+  Enhanced Preference Optimization for Multimodal Recommendation", MMAsia 2025,
+  DOI `10.1145/3743093.3771011`, pages 65:1-65:8. The public repo says it uses
+  AR2023 5-core files, then generates image descriptions, user preference
+  summaries, candidate ranking tasks, and SFT/DPO data. This supports the
+  paper's non-interchangeability rationale, but not a no-citation posture.
+  Sources: https://dl.acm.org/doi/10.1145/3743093.3771011,
+  https://dblp.org/rec/conf/mmasia/WuQL0025,
+  https://github.com/MKC-Lab/SILLM4Rec
+- The current caution around 2026 concurrent semantic-ID/generative-retrieval
+  work remains necessary. Latte and GrIT are real AR2023-adjacent comparator
+  pressure points, but the manuscript's "no comparative claim against concurrent
+  arXiv-only work" fence is appropriate unless their protocols/training details
+  are audited. Sources: https://arxiv.org/abs/2605.06331 and
+  https://arxiv.org/abs/2602.19728
+- The FIR novelty boundary remains appropriately narrow. WPGRec is confirmed as
+  accepted on the SIGIR 2026 accepted-papers page and as a wavelet-packet/time-
+  frequency sequential recommender on arXiv. This reinforces that this paper
+  must claim only the left-causal depthwise FIR regularizer in the HSTU-style
+  artifact-gated setting, not broad time-frequency novelty. Sources:
+  https://arxiv.org/abs/2604.21305 and
+  https://sigir2026.org/en-AU/pages/program/accepted-papers
+
+### Confirmed Problems
+
+1. **Appendix A.0 still contradicts the counted Office V3 claim.** Fix all live
+   sources and rendered artifacts so the old V1 VOID is clearly scoped to V1
+   and the V3 pass is stated consistently.
+2. **The release/deposit package is stale relative to the current claim set.**
+   A reviewer following `DOI_DEPOSIT_INSTRUCTIONS.md` or the deposit zip would
+   not receive the Office V3/FIR-breadth prereg/results evidence or the TORS PDF.
+3. **`RELEASE_MANIFEST.json` and `_bestrec_run/hstu_results_manifest.json` are
+   not aligned at the family-documentation level.** The strict table gate sees
+   the new claim families; the public release manifest does not name them.
+4. **`PAPER_DRAFT.md` carries stale top-level status prose.** Because
+   `CANONICAL_SUBMISSION.md` says `PAPER_DRAFT.md` is a canonical working copy,
+   this is not harmless archive noise.
+5. **`RESPONSE_TO_PAPER_REVIEW_AUDIT.md` overstates fixes.** It says all Office
+   status sites were updated and zero stale occurrences remain, but the live
+   sources/PDFs disprove that. This weakens the response audit trail.
+6. **Table 2 layout remains production-weak.** The caption/body split across
+   pages is not fatal science, but it reads as unpolished for TORS.
+7. **SILLM4Rec is under-cited.** The paper's non-comparability rationale is
+   plausible, but a formal citation and/or direct full-text protocol inspection
+   should be done before freeze.
+
+### Confirmed Non-Problems
+
+- No current hard numerical/provenance failure was found in the strict gate.
+- Office V3's mechanical evidence remains green under its frozen narrow wording.
+- FIR breadth remains confirmed under its frozen internal filter-vs-no-filter
+  wording.
+- The SILLM4Rec public repo evidence supports non-interchangeability with
+  full-catalog LLOO; the problem is incomplete citation/protocol inspection, not
+  a proven false exclusion.
+- The current paper wording around concurrent arXiv-only work is cautious
+  enough; do not convert those point-estimate observations into claims.
+
+### Concrete Fixes To Make Next
+
+1. Rewrite Appendix A.0 in `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, and
+   `paper_tex/sections/appendix-a0.tex` so V1 remains VOID but Office V3 is
+   counted exactly as frozen: per-category point-estimate comparison only; no
+   paired superiority; no SOTA.
+2. Re-render `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`, and
+   `paper_tex/PAPER_TORS_acmsmall.pdf`; then rerun PDF extraction for the stale
+   Office phrase.
+3. Rebuild the deposit/release boundary: include Office V3 and FIR-breadth
+   prereg/results docs, decide whether `paper_tex/PAPER_TORS.pdf` belongs in the
+   deposit zip, update `DOI_DEPOSIT_INSTRUCTIONS.md`, and regenerate any hashes.
+4. Extend or supplement `RELEASE_MANIFEST.json` so the public manifest names
+   `office_v3` and `fir_breadth` or explicitly points to
+   `_bestrec_run/hstu_results_manifest.json` as the source of truth.
+5. Either remove the stale `PAPER_DRAFT.md` status line or update it to the
+   post-V3 reality.
+6. Add a formal SILLM4Rec bibliographic entry and cite it in the exclusion
+   sentence, or inspect the ACM full text and record the exact protocol verdict
+   in `VENUE_PLAN.md`.
+7. Fix Table 2's layout before submission freeze, preferably by splitting the
+   negative-result map or forcing the caption/table body to stay together.
+
+### Open Questions
+
+- Is `_release/bestrec_deposit_v1.0.zip` intended to be regenerated immediately,
+  or should it be superseded by a new `v1.0.1`/freeze bundle after all text
+  fixes land?
+- Should `RELEASE_MANIFEST.json` become the sole public manifest for Office
+  V3/FIR-breadth, or should it explicitly delegate claim-family detail to
+  `_bestrec_run/hstu_results_manifest.json`?
+- Will the authors inspect the SILLM4Rec ACM PDF directly before freeze, or
+  settle for the repository/ACM/dblp evidence plus a cautious non-comparability
+  citation?
+- Is `PAPER_DRAFT.md` truly live/canonical, or should `CANONICAL_SUBMISSION.md`
+  be narrowed to avoid treating old draft status notes as submission evidence?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and response artifacts.
+- [x] Search manuscript and TeX for stale Office V3 pending/no-claim wording.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Check compiled PDF page counts and stale phrase locations.
+- [x] Check TORS PDF hygiene scan.
+- [x] Check release zip entries, SHA256, and public manifest family coverage.
+- [x] Render and visually inspect Table 2 pages 27-28.
+- [x] Fact-check SILLM4Rec, AR2023, Latte/GrIT, and WPGRec-related claims
+      against external sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Repair Appendix A.0 Office V1/V3 contradiction in all live sources/PDFs.
+- [ ] Refresh the release/deposit package and manifest boundary.
+- [ ] Fix or split Table 2 layout.
+- [ ] Add/inspect SILLM4Rec formally before freeze.
+
+## Audit Run - 2026-07-14 07:58 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory read:
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  (`Last run: 2026-07-14 07:01 Australia/Sydney`).
+- Current run time: `2026-07-14 07:58:22 +10:00`; main adjudicators completed
+  at `2026-07-14 07:58:41 Australia/Sydney`.
+- Active sources/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`, `paper_tex/main.tex`,
+  `paper_tex/paper-shared.tex`, `paper_tex/sections/*.tex`,
+  `paper_tex/references.bib`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, `paper_tex/BUILD_NOTES.md`,
+  `paper_tex/hygiene_scan_output.txt`, `VENUE_PLAN.md`,
+  `RELEASE_MANIFEST.json`, `_bestrec_run/hstu_results_manifest.json`,
+  `_release/bestrec_deposit_v1.0.zip`, and refreshed Table 2 page renders.
+- Working tree before this audit edit: tracked modification in
+  `PAPER_REVIEW_AUDIT.md`; untracked `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- This audit edited only `PAPER_REVIEW_AUDIT.md`.
+
+### Verdict
+
+**No new empirical gate failure was found, but the manuscript remains
+not submission-ready.** The hourly rerun confirms the same split: strict
+artifact evidence is green, while top-journal rejection risk is concentrated in
+internal consistency, archival packaging, rendered table quality, and one
+under-cited related-work exclusion.
+
+The most severe live contradiction is unchanged: Appendix A.0 still says
+`Office is not counted` in Markdown, TeX, and all compiled PDFs, while the main
+paper elsewhere counts Office V3 as a passed pre-registered per-category
+comparison. `PAPER_DRAFT.md` also still carries the old Draft v3.8 status note
+saying Office V3 was pending and Office stays VOID.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS.
+  - HSTU core-block parity exact.
+  - `168` cells recomputed; `0` paper mismatches; `0` untraceable; all `14`
+    declared claim families sourced.
+  - Release manifest verification OK for its declared `113` files.
+  - MI V2 gate OK; legacy Office V1 descriptive/VOID check OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 07:58:41`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`; 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`; 5/5 seeds above
+    both references.
+  - Comparability conditions OK; frozen claim remains per-category
+    point-estimate only, not paired superiority or SOTA.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-14 07:58:41`, block `9a38ad66bd75`.
+  - `Industrial_and_Scientific`: paired mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: paired mean `+0.00566`, 95% CI
+    `[+0.00493,+0.00639]`, 5/5 positive.
+- `uv --project _bestrec_run run python paper_tex\scan_pdf.py paper_tex\PAPER_TORS.pdf`
+  - PASS: 40 pages; `0` placeholder/forbidden-claim failures; 20 informational
+    SOTA/non-claim review hits.
+- PDF extraction with `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages; `Office is not counted` on page 41;
+    `SILLM4Rec` on page 19.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; `Office is not counted` on page 36;
+    `SILLM4Rec` on page 18.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; `Office is not counted` on
+    page 37; `SILLM4Rec` on page 18.
+- Text search
+  - `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, and
+    `paper_tex/sections/appendix-a0.tex` still contain the stale Appendix A.0
+    Office V1 wording.
+  - `PAPER_DRAFT.md` still starts with Draft v3.8 status text saying "Office
+    stays VOID" and Office V3's outcome is pending.
+  - `paper_tex/references.bib` still has no SILLM4Rec entry.
+  - `paper_tex/BUILD_NOTES.md` still contains old round-8 `35 pages` /
+    `36 pages` notes despite the current PDF counts.
+- Release/deposit check
+  - `_release/bestrec_deposit_v1.0.zip`: SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`, 48
+    entries.
+  - Missing from zip: `PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`,
+    `PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`, and
+    `paper_tex/PAPER_TORS.pdf`.
+  - `RELEASE_MANIFEST.json` result families remain only `FIR_ablations`,
+    `MI_gate_EXEC2`, `MI_gate_EXEC2_rest`, `MI_rebuild`, `OFFICE_gate`, and
+    `OFFICE_idonly_floor`; it still contains neither `office_v3` nor
+    `fir_breadth`.
+  - `_bestrec_run/hstu_results_manifest.json` still includes `office_v3` and
+    `fir_breadth`.
+- Visual PDF render with direct Poppler executable
+  - Rendered `paper_tex/PAPER_TORS.pdf` pages 27-28 to
+    `tmp/pdfs/tors_table2_20260714_0758-27.png` and
+    `tmp/pdfs/tors_table2_20260714_0758-28.png`.
+  - Visual inspection confirms the Table 2 caption remains stranded at the
+    bottom of page 27 while the table body starts on page 28.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR continues to support the paper's comparator constants and AR2023
+  5-core subset statistics: Video Games `25,612 / 94,762 / 814,585`, Office
+  Products `77,551 / 223,308 / 1,800,877`, Musical Instruments `24,587 /
+  57,439 / 511,835`, with HSTU-BLaIR NDCG@10 `0.0760`, `0.0271`, and
+  `0.0406`. Source: https://arxiv.org/pdf/2504.10545
+- Amazon Reviews 2023 official documentation still supports the high-level
+  dataset framing: 571.54M reviews, 54.51M users, 48.19M items, interactions
+  through September 2023, rich review/item/link metadata, and standard splits.
+  Source: https://amazon-reviews-2023.github.io/
+- SILLM4Rec remains a citation/readiness risk rather than a proven comparator
+  threat. ACM metadata identifies the paper, and the public GitHub workflow
+  says to use AR2023 5-core files, generate image descriptions and preference
+  summaries, create candidate product ranking tasks, and generate SFT/DPO
+  training data. That supports the manuscript's non-interchangeability
+  rationale, but the paper still needs a formal citation or direct full-paper
+  inspection before freeze. Sources: https://dl.acm.org/doi/10.1145/3743093.3771011
+  and https://github.com/MKC-Lab/SILLM4Rec
+- Latte remains close same-family novelty pressure: it uses AR2023 Instruments,
+  Scientific, and Games with leave-one-out splitting and reports Latte NDCG@10
+  `0.0331` on Instruments and `0.0515` on Games. The manuscript's no-claim
+  wording against concurrent arXiv work remains necessary. Source:
+  https://arxiv.org/html/2605.06331
+- GrIT still reports Video Games full-item-set NDCG@10 `0.0588` under matching
+  broad AR2023 Video Games statistics; the paper's point estimate is higher,
+  but the current "point-estimate observation, not a claim" wording remains the
+  safest boundary. Source: https://arxiv.org/html/2602.19728v1
+- ChronoSID/ReSID still use a different filtered universe, e.g. MI `57,359`
+  users / `23,742` items / `490,522` interactions and output-level MI NDCG@10
+  `0.0345` for ChronoSID vs `0.0325` for ReSID, supporting non-interchangeable
+  protocol caveats. Source: https://arxiv.org/html/2607.03918v1
+
+### Confirmed Problems
+
+1. **Appendix A.0 contradiction persists in all live forms.** The phrase
+   `Office is not counted` remains in `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`,
+   `paper_tex/sections/appendix-a0.tex`, and all compiled PDFs.
+2. **`PAPER_DRAFT.md` still carries stale draft-status prose.** Its v3.8
+   status note says Office stays VOID and the V3 outcome is pending, while
+   current paper sections count Office V3.
+3. **The release/deposit boundary is stale.** The deposit zip and
+   `RELEASE_MANIFEST.json` omit Office V3 and FIR-breadth even though the
+   generated HSTU results manifest and printed claims include them.
+4. **Table 2 remains visually defective.** A caption-only page ending followed
+   by the table body on the next page is not production-quality for TORS review.
+5. **SILLM4Rec is still under-cited.** The current exclusion is plausible, but
+   `references.bib` lacks a SILLM4Rec entry and `VENUE_PLAN.md` still marks
+   direct full-paper inspection as pending.
+6. **`paper_tex/BUILD_NOTES.md` is still stale.** Old 35/36-page notes remain
+   alongside current 40/41-page PDF reality.
+
+### Confirmed Non-Problems
+
+- No empirical table mismatch, untraceable value, or strict artifact-graph
+  failure was found on the fresh rerun.
+- Office V3 aggregate evidence remains mechanically green under its frozen
+  point-estimate wording.
+- FIR-breadth evidence remains mechanically green for both internal
+  filter-vs-no-filter categories.
+- The TORS PDF hygiene scan remains PASS with only informational SOTA/non-claim
+  review hits.
+- The major HSTU-BLaIR dataset statistics and NDCG constants remain externally
+  supported by the cited arXiv PDF.
+
+### Concrete Fixes To Make Next
+
+1. Replace the Appendix A.0 sentence in `PAPER_SUBMISSION.md`,
+   `PAPER_DRAFT.md`, and `paper_tex/sections/appendix-a0.tex` with a scoped
+   V1/V3 statement: V1 Office remains VOID; V3 Office is separate, passed under
+   its frozen pre-registration, and is reported in Section 5.2.
+2. Update or mark noncanonical the stale Draft v3.8 status note in
+   `PAPER_DRAFT.md`.
+3. Rebuild `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`, and
+   `paper_tex/PAPER_TORS_acmsmall.pdf`; verify `Office is not counted`
+   disappears from all PDF text.
+4. Regenerate the release/deposit package so Office V3 docs, FIR-breadth docs,
+   the current TORS PDF, and the intended sidecar policy are in the archival
+   bundle/manifest.
+5. Fix Table 2 placement by forcing the caption and table body to travel
+   together, splitting the table, or moving the table to an appendix/landscape
+   presentation.
+6. Add a formal SILLM4Rec bibliography entry or remove the named exclusion until
+   the ACM full text has been inspected.
+7. Refresh `paper_tex/BUILD_NOTES.md` to the current 40-page TORS / 41-page
+   acmsmall state and remove old round-8 page-count language.
+
+### Open Questions
+
+- Is `PAPER_DRAFT.md` still a live source, or should it be explicitly labeled
+  as stale/noncanonical?
+- Should the final DOI/deposit bundle include Office V3 and FIR-breadth
+  per-user sidecars, or only aggregate JSON/treestate evidence?
+- Should `RELEASE_MANIFEST.json` enumerate `office_v3` and `fir_breadth`
+  directly, or should it point readers to `_bestrec_run/hstu_results_manifest.json`
+  as the live claim-family source of truth?
+- Can the authors access the SILLM4Rec ACM PDF before freeze, or should the
+  manuscript cite only the public repository/metadata and soften the exclusion?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate active Markdown, TeX, PDF, figure/table, result, release, and
+      bibliography artifacts.
+- [x] Rerun strict HSTU submission rebuild.
+- [x] Rerun Office V3 adjudicator.
+- [x] Rerun FIR-breadth adjudicator.
+- [x] Rerun TORS PDF hygiene scan.
+- [x] Search live sources for stale Office, pending, SILLM4Rec, and build-note
+      wording.
+- [x] Extract PDF text for stale Office/SILLM occurrences and page counts.
+- [x] Check deposit zip and release-manifest scope.
+- [x] Render and visually inspect TORS Table 2 pages.
+- [x] Fact-check key comparator/dataset/concurrent-literature claims against
+      external sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Scope/fix Appendix A.0 Office V1/V3 wording in all live sources.
+- [ ] Rebuild PDFs after manuscript fix and verify stale phrase removal.
+- [ ] Refresh deposit/release package for Office V3 and FIR-breadth.
+- [ ] Fix Table 2 caption/body layout.
+- [ ] Add/inspect/cite SILLM4Rec or remove the named exclusion.
+- [ ] Refresh `paper_tex/BUILD_NOTES.md`.
+
+## Audit Run - 2026-07-14 06:58 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory read:
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  (`Last run: 2026-07-14 06:01 Australia/Sydney`).
+- Current run time: `2026-07-14 07:01:02 +10:00`; main adjudicators completed
+  at `2026-07-14 06:58:25 Australia/Sydney`.
+- Active manuscript/artifact path inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`, `paper_tex/main.tex`,
+  `paper_tex/main-acmsmall.tex`, `paper_tex/paper-shared.tex`,
+  `paper_tex/sections/*.tex`, `paper_tex/tables/*.tex`,
+  `paper_tex/references.bib`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, `paper_tex/BUILD_NOTES.md`,
+  `paper_tex/hygiene_scan_output.txt`, figures/tables, `VENUE_PLAN.md`,
+  `RELEASE_MANIFEST.json`, `_bestrec_run/hstu_results_manifest.json`,
+  Office V3/FIR-breadth result JSONs, `_release/bestrec_deposit_v1.0.zip`,
+  and `DOI_DEPOSIT_INSTRUCTIONS.md`.
+- Inventory note: one `.docx` exists at
+  `_bestrec_sota_lab/paper_draft/build/lc2c_retrieval_ltr_paper.docx`, but it
+  appears to be a legacy/noncanonical lab draft rather than the active TORS
+  submission path.
+- Working tree before this audit edit: tracked modification in
+  `PAPER_REVIEW_AUDIT.md`; untracked `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- This audit edited only `PAPER_REVIEW_AUDIT.md`.
+
+### Verdict
+
+**The mechanical evidence is green, but the paper is still not
+submission-ready for a top journal.** This run found no new numerical failure:
+the strict rebuild, Office V3 adjudicator, FIR-breadth adjudicator, and TORS PDF
+hygiene scan all pass. The live rejection risks remain presentation and
+archival integrity:
+
+1. Appendix A.0 still contains the unscoped sentence "Office is not counted" in
+   Markdown, TeX, and all compiled PDFs, contradicting the current Office V3
+   counted-claim wording elsewhere.
+2. The DOI/deposit package is stale relative to Office V3 and FIR-breadth, and
+   `RELEASE_MANIFEST.json` still omits those result families even though the
+   generated HSTU manifest includes them.
+3. Table 2 remains visually defective in the TORS PDF: the caption is stranded
+   at the bottom of page 27 and the table body starts on page 28.
+4. SILLM4Rec is still a named exclusion without a formal bibliography entry or
+   direct full-paper protocol inspection.
+5. `PAPER_DRAFT.md` has a stale status line saying Office V3's outcome was
+   pending, despite later body text correctly saying V3 passed.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS.
+  - HSTU core-block parity exact.
+  - `168` cells recomputed; `0` paper mismatches; `0` untraceable; all `14`
+    declared claim families sourced.
+  - Release manifest verification OK for its declared `113` files.
+  - MI V2 gate OK; legacy Office V1 descriptive/VOID check OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 06:58:25`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`; 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`; 5/5 seeds above
+    both references.
+  - Comparability conditions OK; frozen claim remains per-category
+    point-estimate only, not paired superiority or SOTA.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-14 06:58:25`, block `9a38ad66bd75`.
+  - `Industrial_and_Scientific`: paired mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: paired mean `+0.00566`, 95% CI
+    `[+0.00493,+0.00639]`, 5/5 positive.
+- `uv --project _bestrec_run run python paper_tex\scan_pdf.py paper_tex\PAPER_TORS.pdf`
+  - PASS: 40 pages; `0` placeholder/forbidden-claim failures; 20 informational
+    SOTA/non-claim review hits.
+- PDF extraction with `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages; "Office is not counted" on page 41;
+    `SILLM4Rec` on page 19.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; "Office is not counted" on page 36;
+    `SILLM4Rec` on page 18.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; "Office is not counted" on
+    page 37; `SILLM4Rec` on page 18.
+- Visual PDF render with Poppler direct executable
+  - The bundled `pdftoppm.cmd` wrapper failed in this shell, but the real
+    Poppler executable worked:
+    `...\dependencies\native\poppler\Library\bin\pdftoppm.exe`.
+  - Rendered `paper_tex/PAPER_TORS.pdf` pages 27-28 to
+    `tmp/pdfs/tors_table2_20260714_0658-27.png` and `...-28.png`.
+  - Visual inspection confirmed page 27 ends with only the Table 2 caption and
+    page 28 begins the table body.
+- Release/deposit check
+  - `_release/bestrec_deposit_v1.0.zip`: SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`,
+    48 entries.
+  - Missing from zip: `PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`,
+    `PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`, and
+    `paper_tex/PAPER_TORS.pdf`.
+  - `RELEASE_MANIFEST.json` result families remain only `MI_gate_EXEC2`,
+    `MI_gate_EXEC2_rest`, `MI_rebuild`, `OFFICE_gate`,
+    `OFFICE_idonly_floor`, and `FIR_ablations`; it does not contain
+    `office_v3`, `fir_breadth`, `OFFICE_V3_RESULTS`, or
+    `FIR_BREADTH_RESULTS`.
+  - `_bestrec_run/hstu_results_manifest.json` does include `office_v3` and
+    `fir_breadth`.
+- Office V3 sidecar metadata
+  - All 10 Office V3 aggregate JSONs exist.
+  - Three JSONs still lack `provenance.user_records_final_path`:
+    `results_OFFICEV3_k16_seed20260729.json`,
+    `results_OFFICEV3_k16_seed20260731.json`, and
+    `results_OFFICEV3_k8_seed20260731.json`.
+  - Each has `provenance.best_test_epoch = 20` and history length 20, so
+    `user_records_path` may be the final-epoch sidecar, but that remains an
+    author/release-boundary item to state explicitly.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR v3 supports the paper's comparator constants and AR2023 5-core
+  dataset statistics: Video Games `25,612 / 94,762 / 814,585`, Office Products
+  `77,551 / 223,308 / 1,800,877`, Musical Instruments `24,587 / 57,439 /
+  511,835`, and HSTU-BLaIR NDCG@10 `0.0760`, `0.0271`, `0.0406`. Source:
+  https://arxiv.org/html/2504.10545v3
+- Amazon Reviews 2023 official documentation supports the dataset framing:
+  571.54M reviews, 54.51M users, 48.19M items, interactions through September
+  2023, richer metadata, and standard splits. Source:
+  https://amazon-reviews-2023.github.io/
+- SILLM4Rec remains a citation/readiness risk. DBLP/ACM metadata identify it as
+  an MMAsia 2025 paper, pages 65:1-65:8, DOI `10.1145/3743093.3771011`.
+  The public GitHub repository instructs users to build generated image
+  descriptions, preference summaries, candidate product ranking tasks, and SFT
+  / DPO training data from AR2023 5-core files. That supports the manuscript's
+  non-interchangeability rationale, but not a final citation-ready exclusion
+  without citing the ACM paper/repo or inspecting the full paper. Sources:
+  https://github.com/MKC-Lab/SILLM4Rec,
+  https://dl.acm.org/doi/10.1145/3743093.3771011,
+  https://dblp.org/rec/conf/mmasia/WuQL0025
+- Latte / SID-line and ChronoSID remain close novelty pressure. Latte states it
+  uses AR2023 Instruments, Scientific, and Games with leave-one-out splitting;
+  ChronoSID reports semantic-ID temporal augmentation and output-level MI
+  NDCG@10 `0.0345` versus ReSID `0.0325`. GrIT reports full-item-set ranking on
+  AR2023 Video Games with statistics matching this paper's VG family and NDCG
+  evidence that is below this paper's VG point estimate, but the manuscript's
+  "no comparative claim against concurrent arXiv-only work" wording remains
+  necessary because protocols/training details were not fully audited. Sources:
+  https://arxiv.org/html/2605.06331,
+  https://arxiv.org/html/2607.03918v1,
+  https://arxiv.org/html/2602.19728
+
+### Confirmed Problems
+
+1. **Appendix A.0 contradiction persists.** The sentence should be scoped to
+   V1: "no claim counts the V1 campaign." As written, "Office is not counted"
+   conflicts with Office V3 counted as the second pre-registered per-category
+   comparison.
+2. **Stale package/deposit boundary persists.** The strict gate verifies the
+   repository's declared 113-file scope, but the deposit zip and
+   `RELEASE_MANIFEST.json` do not yet reflect the current Office V3 and
+   FIR-breadth claim set.
+3. **Table 2 layout is still not production-quality.** A top-journal reviewer
+   will see a caption separated from its table body in the main review PDF.
+4. **SILLM4Rec is under-cited.** The manuscript names it in Section 5.1, but
+   `paper_tex/references.bib` has no SILLM4Rec entry, and `VENUE_PLAN.md`
+   correctly marks full-paper inspection as pending.
+5. **`PAPER_DRAFT.md` header is stale.** The body has updated Office V3 text,
+   but the draft status line still says V3 outcome was pending and Office stays
+   VOID. If `PAPER_DRAFT.md` is kept, its status header needs repair or
+   explicit noncanonical labeling.
+
+### Confirmed Non-Problems
+
+- The strict artifact graph remains green, with no empirical cell mismatch or
+  untraceable value.
+- Office V3 aggregate evidence remains mechanically green under its frozen
+  point-estimate wording.
+- FIR-breadth evidence remains mechanically green for the two internal
+  filter-vs-no-filter categories.
+- The TORS PDF hygiene scan has no placeholder/forbidden-claim hard failures;
+  SOTA hits are informational non-claim contexts.
+- The major HSTU-BLaIR comparator constants still match external arXiv v3
+  evidence.
+
+### Concrete Fixes To Make Next
+
+1. Replace Appendix A.0's stale sentence in `PAPER_SUBMISSION.md`,
+   `PAPER_DRAFT.md`, and `paper_tex/sections/appendix-a0.tex` with:
+   "The confirmed per-category claim from the V1 campaign remains
+   Musical_Instruments only; no claim counts the V1 Office campaign. The
+   redesigned V3 Office pre-registration is separate and is reported in
+   Section 5.2."
+2. Rebuild the TeX PDFs after that edit and verify the phrase "Office is not
+   counted" disappears from `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`,
+   and `paper_tex/PAPER_TORS_acmsmall.pdf`.
+3. Regenerate the deposit bundle and/or release manifest so Office V3 and
+   FIR-breadth prereg/results docs, the current TORS PDF, and the intended
+   sidecar policy are part of the archival story.
+4. Fix Table 2 placement, likely by moving the caption with the table body,
+   splitting the table, shrinking/rotating the table, or forcing a page break
+   before the caption.
+5. Add a formal SILLM4Rec citation or remove the named exclusion until the ACM
+   full text has been inspected and archived.
+6. Refresh `paper_tex/BUILD_NOTES.md` so page counts, hygiene-hit counts, and
+   historical 35/36-page notes cannot be mistaken for current build facts.
+
+### Open Questions
+
+- Is `PAPER_DRAFT.md` intended to remain a live source, or should it be marked
+  noncanonical now that `PAPER_SUBMISSION.md` and `paper_tex/` are the active
+  submission path?
+- Will the local-only Office V3 and FIR-breadth per-user sidecars be deposited
+  with the final package, or only provided on reviewer/editor request?
+- Should `RELEASE_MANIFEST.json` itself enumerate `office_v3` and
+  `fir_breadth`, or is `_bestrec_run/hstu_results_manifest.json` the intended
+  source of truth for live claim families?
+- Can the authors access the ACM SILLM4Rec PDF before freeze, or should the
+  manuscript cite only the public repository/metadata and soften the exclusion?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Inventory active Markdown/TeX/PDF sources, figures, tables, result files,
+      manifests, release bundle, and legacy docx.
+- [x] Re-run strict HSTU submission rebuild.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Re-run TORS PDF hygiene scan.
+- [x] Extract PDF text for stale Office/SILLM occurrences and page counts.
+- [x] Render and inspect TORS Table 2 pages.
+- [x] Check deposit zip and release-manifest scope.
+- [x] Fact-check key comparator/dataset/concurrent-literature claims against
+      external sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Scope/fix Appendix A.0 Office V1/V3 wording in all live sources.
+- [ ] Rebuild PDFs after manuscript fix and verify stale phrase removal.
+- [ ] Refresh deposit/release package for Office V3 and FIR-breadth.
+- [ ] Fix Table 2 caption/body layout.
+- [ ] Add/inspect/cite SILLM4Rec or remove the named exclusion.
+- [ ] Refresh `paper_tex/BUILD_NOTES.md`.
+
+## Audit Run - 2026-07-14 05:58 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory read:
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  (`Last run: 2026-07-14 04:57 Australia/Sydney`).
+- Current run time: `2026-07-14T06:01:40.3620727+10:00`; main adjudicators
+  completed at `2026-07-14 05:58:22 Australia/Sydney`.
+- Live sources/artifacts inspected: `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`,
+  `PAPER_SUBMISSION.pdf`, `paper_tex/sections/*.tex`,
+  `paper_tex/PAPER_TORS.pdf`, `paper_tex/PAPER_TORS_acmsmall.pdf`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/references.bib`,
+  `paper_tex/tables/table2.tex`, `paper_tex/hygiene_scan_output.txt`,
+  `VENUE_PLAN.md`, `RELEASE_MANIFEST.json`,
+  `_bestrec_run/hstu_results_manifest.json`, Office V3/FIR-breadth result
+  JSONs, `_release/bestrec_deposit_v1.0.zip`, and
+  `DOI_DEPOSIT_INSTRUCTIONS.md`.
+- Working tree before this audit edit: tracked modification only in
+  `PAPER_REVIEW_AUDIT.md`; untracked files still include
+  `_bestrec_run/impact_program.DONE`, `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- This audit edited only `PAPER_REVIEW_AUDIT.md`.
+
+### Verdict
+
+**No new hard numerical failure was found, but the paper remains not
+submission-ready.** The empirical artifact graph is green again, yet a strict
+reviewer can still reject on internal contradiction and packaging:
+
+1. Appendix A.0 in both Markdown and TeX still says "Office is not counted",
+   while the abstract, Section 5.2, and Section 6.4 count Office V3 as a passed
+   redesigned pre-registration.
+2. The DOI/deposit package is stale relative to the live claims: the zip lacks
+   Office V3 and FIR-breadth prereg/results documentation and does not include
+   `paper_tex/PAPER_TORS.pdf`.
+3. The TORS rendered PDF still has a layout defect: Table 2's caption is alone
+   at the bottom of page 27 and the table body starts on page 28.
+4. SILLM4Rec is still named in Section 5.1 without a bibliography entry or full
+   protocol inspection; `VENUE_PLAN.md` correctly marks that inspection as
+   freeze-blocking.
+5. `paper_tex/BUILD_NOTES.md` remains stale: it says the acmsmall preview is 40
+   pages and still embeds old 35/36-page compile notes, but the live acmsmall
+   PDF is 41 pages.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS.
+  - HSTU core-block parity exact.
+  - `168` cells recomputed; `0` paper mismatches; `0` untraceable; all `14`
+    declared claim families sourced.
+  - Release manifest verification OK for its declared `113` files.
+  - MI V2 gate OK; legacy Office V1 descriptive/VOID check OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 05:58:22`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, 5/5 seeds above
+    both references.
+  - Comparability conditions OK; frozen claim remains a per-category
+    point-estimate comparison only.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-14 05:58:22`, block `9a38ad66bd75`.
+  - `Industrial_and_Scientific`: paired mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: paired mean `+0.00566`, 95% CI
+    `[+0.00493,+0.00639]`, 5/5 positive.
+- `uv --project _bestrec_run run python paper_tex\scan_pdf.py paper_tex\PAPER_TORS.pdf`
+  - PASS: 40 pages; `0` placeholder/forbidden-claim failures; 20 informational
+    SOTA/non-claim review hits.
+- PDF extraction with `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages; "Office is not counted" on page 41;
+    `SILLM4Rec` on page 19.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; "Office is not counted" on page 36;
+    `SILLM4Rec` on page 18.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; "Office is not counted" on
+    page 37; `SILLM4Rec` on page 18.
+- Visual PDF render with Poppler direct executable
+  - Rendered `paper_tex/PAPER_TORS.pdf` pages 27-28 to
+    `tmp/pdfs/tors_table2_20260714_0558-27.png` and `...-28.png`.
+  - Confirmed page 27 ends with only the Table 2 caption and page 28 begins the
+    table body.
+- Release/deposit check
+  - `_release/bestrec_deposit_v1.0.zip`: SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`,
+    48 entries, timestamped `2026-07-11`.
+  - Missing from zip: `PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`,
+    `PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`, and
+    `paper_tex/PAPER_TORS.pdf`.
+  - `RELEASE_MANIFEST.json` still has only six older `result_families`
+    (`MI_gate_EXEC2`, `MI_gate_EXEC2_rest`, `MI_rebuild`, `OFFICE_gate`,
+    `OFFICE_idonly_floor`, `FIR_ablations`); generated
+    `_bestrec_run/hstu_results_manifest.json` does include `office_v3` and
+    `fir_breadth`.
+- Office V3 sidecar metadata
+  - All 10 Office V3 aggregate JSONs exist.
+  - Three JSONs still lack `provenance.user_records_final_path`:
+    `results_OFFICEV3_k16_seed20260729.json`,
+    `results_OFFICEV3_k16_seed20260731.json`, and
+    `results_OFFICEV3_k8_seed20260731.json`.
+  - In those files `provenance.best_test_epoch = 20` and the history reaches
+    epoch 20, so the regular `user_records_path` may be the final sidecar, but
+    this remains author/release-boundary verification.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR v3 still supports the comparator constants and dataset statistics
+  used here: AR2023 5-core Video Games, Office Products, and Musical
+  Instruments are listed with 25,612/94,762/814,585; 77,551/223,308/1,800,877;
+  and 24,587/57,439/511,835 item/user/interaction counts, and Table 2 reports
+  HSTU-BLaIR NDCG@10 `0.0760`, `0.0271`, and `0.0406`. Source:
+  https://arxiv.org/html/2504.10545v3
+- The Amazon Reviews 2023 official site confirms the dataset release,
+  571.54M reviews, rich review/metadata/link features, and standard splits.
+  Source: https://amazon-reviews-2023.github.io/
+- The current SILLM4Rec exclusion is directionally supported but not
+  citation-ready. The public repository tells users to process AR2023 5-core
+  files, generate user preference summaries, create candidate-product ranking
+  tasks, and generate SFT/DPO training data. ACM metadata describes the work as
+  re-ranking/candidate sorting, not established full-catalog LLOO. Sources:
+  https://github.com/MKC-Lab/SILLM4Rec and
+  https://dl.acm.org/doi/10.1145/3743093.3771011
+- ChronoSID is a very recent pressure point, not a direct blocker. It reports
+  AR2023/SID-line numbers and output-level MI NDCG@10 `0.0345` for ChronoSID
+  versus `0.0325` for ReSID; its filtered universe remains distinct from the
+  HSTU-BLaIR-family statistics used here. Source:
+  https://arxiv.org/html/2607.03918v1
+- GrIT confirms another close but non-identical AR2023 5-core full-ranking
+  reference family: Video Games 94,762 users / 25,612 items / 814,586
+  interactions and GrIT NDCG@10 `0.0588`. Source:
+  https://arxiv.org/html/2602.19728v1
+- DiffuReason reinforces why the paper must avoid loose Video_Games claims: it
+  uses a "Video & Games" AR2023 universe with 67,658 users / 25,535 items /
+  654,867 interactions, not the HSTU-BLaIR-family 94,762 / 25,612 / ~814,586
+  universe. Source: https://arxiv.org/html/2602.09744v1
+
+### Confirmed Problems
+
+1. **Appendix A.0 is still internally contradictory.** It retains the old Office
+   V1-only conclusion and says Office is not counted, despite the newer Office
+   V3 pass being counted elsewhere.
+2. **The current release/deposit story cannot support the paper's live claims.**
+   The strict gate sees `office_v3` and `fir_breadth`, but the archival zip and
+   top-level release manifest do not carry the corresponding prereg/results
+   files as first-class release families.
+3. **Table 2 remains visually unprofessional in the TORS artifact.** The caption
+   and table body are split across pages; this is a submission-readiness defect
+   even though the hygiene scanner passes.
+4. **SILLM4Rec remains uncited in `references.bib`.** If the method is named in
+   Section 5.1, add a formal citation or remove/soften the mention until the
+   full protocol inspection is done.
+5. **`paper_tex/BUILD_NOTES.md` is stale.** It conflicts with the current
+   acmsmall page count and embeds old hygiene/page-count blocks.
+
+### Plausible Risks / Author Verification
+
+- Office V3 sidecars: confirm whether the regular `user_records_path` is the
+  intended final-epoch sidecar for the three runs whose
+  `user_records_final_path` is missing.
+- SILLM4Rec: direct full-paper inspection may reveal a closer protocol than the
+  public repository implies; keep the "excluded pending direct protocol
+  inspection" wording until resolved.
+- Concurrent 2026 literature: the paper's no-comparative-claim fence remains
+  necessary because several recent arXiv works report AR2023/SID-line numbers
+  near the same benchmark neighborhood.
+
+### Concrete Fixes To Make Next
+
+1. Rewrite Appendix A.0 to split Office V1 and Office V3 cleanly:
+   - V1 remains VOID under the original floor-check pre-registration.
+   - V3 passed under the redesigned environment-matched pre-registration and is
+     counted only under its frozen point-estimate wording.
+2. Regenerate the release/deposit package after deciding the release boundary:
+   include Office V3 and FIR-breadth prereg/results docs, relevant JSONs or
+   manifest entries, and the live `paper_tex/PAPER_TORS.pdf`.
+3. Repair Table 2 pagination by forcing the caption to travel with the table
+   body or splitting the long table intentionally.
+4. Add a SILLM4Rec BibTeX entry and inspect the ACM full text, or remove the
+   named method from the manuscript until inspection is complete.
+5. Refresh `paper_tex/BUILD_NOTES.md` so the page counts, hygiene output, and
+   compile notes reflect the current 40-page review artifact and 41-page
+   acmsmall preview.
+6. Add an Office V3 sidecar erratum/manifest note for the three missing
+   `user_records_final_path` fields.
+
+### Open Questions
+
+- Is `PAPER_SUBMISSION.pdf` still intended as a live deliverable despite being
+  45 pages and carrying the same Appendix A.0 contradiction?
+- Are Office V3 and FIR-breadth sidecars intended for DOI/deposit release, or
+  are aggregate result JSONs plus embedded sidecar hashes the declared boundary?
+- Should `RELEASE_MANIFEST.json` become the single source of truth for
+  `office_v3` and `fir_breadth`, or is `_bestrec_run/hstu_results_manifest.json`
+  intentionally the live empirical manifest?
+- Should the acmsmall build be kept in the workflow if it is only a preview and
+  currently diverges from the documented page count?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and audit artifacts.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Re-run TORS PDF hygiene scan.
+- [x] Extract PDF page counts and stale phrase locations.
+- [x] Render and visually inspect the Table 2 pages.
+- [x] Check release zip and manifest scope.
+- [x] Check Office V3 final-sidecar metadata.
+- [x] Fact-check comparator, dataset, and related-literature pressure points
+      against external sources.
+- [x] Refresh the current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Repair Appendix A.0 Office V1/V3 contradiction.
+- [ ] Regenerate release/deposit package and manifest scope.
+- [ ] Fix Table 2 pagination.
+- [ ] Inspect/cite SILLM4Rec.
+- [ ] Refresh `paper_tex/BUILD_NOTES.md`.
+
+## Audit Run - 2026-07-14 04:57 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory read:
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  (`Last run: 2026-07-14 03:57 Australia/Sydney`).
+- Current run time: `2026-07-14T04:57:41.0221360+10:00`; main adjudicators
+  completed at `2026-07-14 04:58 Australia/Sydney`.
+- Live sources/artifacts inspected: `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`,
+  `PAPER_SUBMISSION.pdf`, `paper_tex/sections/*.tex`,
+  `paper_tex/PAPER_TORS.pdf`, `paper_tex/PAPER_TORS_acmsmall.pdf`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/references.bib`,
+  `paper_tex/tables/table2.tex`, `paper_tex/tables/table0_novelty.tex`,
+  `RELEASE_MANIFEST.json`, `_bestrec_run/hstu_results_manifest.json`,
+  `_release/bestrec_deposit_v1.0.zip`, `DOI_DEPOSIT_INSTRUCTIONS.md`,
+  `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`, `OFFICE_V3_RESULTS.md`, and
+  `FIR_BREADTH_RESULTS.md`.
+- Working tree before this audit edit: tracked modifications in
+  `PAPER_REVIEW_AUDIT.md` and, after the strict rebuild, `_bestrec_run/hstu_tables.json`;
+  untracked files still include `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+
+### Verdict
+
+**The empirical core remains mechanically green, but the paper is still not
+submission-ready.** The current run reproduced the strict gate, Office V3 gate,
+FIR-breadth gate, and TORS hygiene pass. The top rejection risks are all
+paper/release consistency risks:
+
+1. Appendix A.0 still says the confirmed per-category claim is
+   Musical_Instruments only and Office is not counted, contradicting the
+   abstract and Section 5.2 Office V3 pass.
+2. The deposit bundle and DOI instructions still describe the old pre-V3 /
+   pre-FIR-breadth package, while the live artifact graph now requires
+   `office_v3` and `fir_breadth`.
+3. The rendered TORS artifact still strands Table 2's caption at the bottom of
+   page 27 while the table body starts on page 28.
+4. SILLM4Rec is now cautiously worded, but remains uncited in the manuscript and
+   absent from `paper_tex/references.bib`.
+5. `PAPER_DRAFT.md` retains an obsolete status paragraph saying Office stays
+   VOID and V3 is pending; `PAPER_SUBMISSION.md` is cleaner but still inherits
+   the Appendix A.0 contradiction.
+
+### Commands And Evidence Checked
+
+- `git log -1 --pretty='%h %s'`; `git status --short`
+  - HEAD: `174b5a74`.
+  - No source/manuscript changes since the prior run except the cumulative audit
+    work and generated strict-build output.
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS.
+  - HSTU core-block parity exact.
+  - `168` cells recomputed; `0` paper mismatches; `0` untraceable; all `14`
+    declared claim families sourced.
+  - Release manifest verification OK for `113` declared files.
+  - MI V2 gate OK; legacy Office V1 descriptive/VOID check OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 04:58:27`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - Frozen wording remains only a per-category point-estimate comparison, not
+    paired/distributional superiority and not SOTA.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-14 04:58:27`.
+  - `Industrial_and_Scientific`: mean paired delta `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: mean paired delta `+0.00566`, 95% CI
+    `[+0.00493,+0.00639]`, 5/5 positive.
+- `uv --project _bestrec_run run python paper_tex\scan_pdf.py paper_tex\PAPER_TORS.pdf`
+  - PASS: 40 pages; `0` placeholder/forbidden-claim failures; 20
+    informational SOTA/non-claim review hits.
+- PDF text extraction with `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages; stale Office phrases on page 41;
+    `SILLM4Rec` on page 19.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; stale Office phrases on page 36;
+    `SILLM4Rec` on page 18.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; stale Office phrases on
+    page 37; Table 2 text on page 27.
+- Visual PDF render with Poppler direct executable
+  - The PATH wrapper `pdftoppm.cmd` points at a stale internal path, but the
+    actual runtime binary works at
+    `C:\Users\rayxc\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\poppler\Library\bin\pdftoppm.exe`.
+  - Rendered `paper_tex/PAPER_TORS.pdf` pages 27-28 to `tmp/pdfs/`.
+  - Page 27: Table 2 caption alone at the bottom margin area.
+  - Page 28: table body begins at the top of the next page.
+- Deposit zip and manifest checks
+  - `_release/bestrec_deposit_v1.0.zip` SHA256 remains
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`;
+    48 entries.
+  - Zip includes older `SOTA_CONFIRM_PREREG_OFFICE.md` and
+    `SOTA_CONFIRM_OFFICE_RESULTS.md`, but not `PREREG_OFFICE_V3.md`,
+    `OFFICE_V3_RESULTS.md`, `PREREG_FIR_BREADTH.md`,
+    `FIR_BREADTH_RESULTS.md`, or `paper_tex/PAPER_TORS.pdf`.
+  - `RELEASE_MANIFEST.json` still names result families
+    `FIR_ablations`, `MI_gate_EXEC2`, `MI_gate_EXEC2_rest`, `MI_rebuild`,
+    `OFFICE_gate`, and `OFFICE_idonly_floor`.
+  - `_bestrec_run/hstu_results_manifest.json` required families include
+    `office_v3` and `fir_breadth`, which is the live paper's current evidence
+    boundary.
+- Source search
+  - `PAPER_SUBMISSION.md` line 621,
+    `paper_tex/sections/appendix-a0.tex` line 4, and `PAPER_DRAFT.md` line 640
+    still say "The confirmed per-category claim remains Musical_Instruments
+    only; Office is not counted."
+  - `PAPER_DRAFT.md` line 8 still says "Office stays VOID" and "V3 prereg ...
+    outcome is pending."
+  - `paper_tex/references.bib` still has no SILLM4Rec entry.
+  - `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` claims the Office prose contradiction
+    is fixed; live Appendix A.0 proves that claim false.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR still supports the comparator constants used by the paper:
+  AR2023 5-core Video Games NDCG@10 `0.0760`, Office Products `0.0271`, and
+  Musical Instruments `0.0406`, with dataset statistics matching the paper's
+  parity framing. Source: https://arxiv.org/pdf/2504.10545
+- Amazon Reviews 2023 official documentation supports the dataset framing:
+  McAuley Lab 2023 release, `571.54M` reviews, interactions through September
+  2023, richer metadata, and standard splits. Source:
+  https://amazon-reviews-2023.github.io/
+- ChronoSID is correctly treated as a separate SID-line protocol pressure point,
+  not a directly interchangeable HSTU-BLaIR-family comparator: its own table
+  reports MI statistics `57,359` users / `23,742` items / `490,522`
+  interactions, which differ from this paper's HSTU-BLaIR-family MI statistics.
+  Source: https://arxiv.org/html/2607.03918v1
+- SILLM4Rec remains a citation/readiness risk rather than a proved comparator:
+  the public repository describes image-to-text conversion, user-preference
+  summaries, candidate product ranking tasks, and SFT/DPO training data; that
+  supports the paper's non-interchangeability rationale, but a top-journal
+  reviewer will expect a formal citation or direct protocol inspection. Source:
+  https://github.com/MKC-Lab/SILLM4Rec ; ACM DOI:
+  https://dl.acm.org/doi/10.1145/3743093.3771011
+
+### Confirmed Problems
+
+1. **Appendix A.0 contradicts the live Office V3 claim.** The main body now says
+   V3 passed and is counted under frozen narrow wording; Appendix A.0 and the
+   compiled PDFs still say Office is not counted.
+2. **Deposit/DOI package is stale.** The package advertised as ready for DOI
+   minting lacks the Office V3 and FIR-breadth evidence docs now needed to
+   support the live manuscript.
+3. **Table 2 pagination is reviewer-hostile.** Caption and table body split
+   across pages in the TORS PDF; this is visually confirmed, not just inferred
+   from text extraction.
+4. **SILLM4Rec is named without a formal reference.** The sentence is cautious,
+   but a named related work in a top-journal related-results paragraph should
+   be in the bibliography.
+5. **Response-file closure claims are unreliable.** The response file says the
+   Office prose contradiction is fixed; the live source/PDF still contain it.
+
+### Plausible Risks / Author Verification Needed
+
+- The current §8 sidecar boundary may be acceptable, but the deposit/manifest
+  boundary must say the same thing as the live paper. If local-only sidecars are
+  only on request, the DOI package should still include the hash inventories and
+  the V3/FIR result documents.
+- `PAPER_SUBMISSION.pdf` remains 45 pages while TORS is 40 pages and acmsmall is
+  41 pages. Author should decide which PDF is the actual submission/readable
+  artifact and retire or relabel the others.
+- The SILLM4Rec ACM full text should be inspected before freeze if access is
+  available; otherwise cite the DOI/repository and explicitly state that the
+  exclusion is based on accessible repository protocol evidence, not full-paper
+  adjudication.
+- The Poppler command wrappers in the bundled runtime are locally mispointed;
+  direct binaries work. If build scripts ever depend on the wrappers, fix the
+  path or call the `Library\bin` executables directly.
+
+### Concrete Fixes To Make Next
+
+1. Replace the stale Appendix A.0 sentence with V1-scoped language:
+   "The V1 campaign remains counted in no claim; the redesigned V3 campaign is
+   separately reported in §5.2 and counts only under its frozen per-category
+   point-estimate wording."
+2. Regenerate `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`, and
+   `paper_tex/PAPER_TORS_acmsmall.pdf`; re-run `scan_pdf.py` and text-extract
+   for "Office is not counted."
+3. Repackage the release/deposit bundle to include `PREREG_OFFICE_V3.md`,
+   `OFFICE_V3_RESULTS.md`, `PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`,
+   the current manifest(s), and the intended submission PDF; update
+   `DOI_DEPOSIT_INSTRUCTIONS.md` with the new file count/hash.
+4. Update `RELEASE_MANIFEST.json` or add a clear companion manifest that names
+   the live `office_v3` and `fir_breadth` evidence families.
+5. Fix Table 2 with a page-break/float strategy that keeps the caption with the
+   table body, then visually re-render pages 27-28.
+6. Add a SILLM4Rec bibliography entry and cite the Section 5.1 sentence, or
+   remove the named work until direct protocol inspection is complete.
+
+### Open Questions
+
+- Should the DOI package include the TORS PDF, the 45-page reader PDF, or both?
+- Is `RELEASE_MANIFEST.json` intended to be updated for every live claim family,
+  or should `_bestrec_run/hstu_results_manifest.json` become the explicit
+  submission-time claim-family manifest?
+- Should local-only Office/FIR sidecars be deposited now as supplementary files,
+  or is hash-embedded, on-request delivery the chosen policy until acceptance?
+- Can the authors access the SILLM4Rec ACM PDF before freeze?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, release, and audit
+      artifacts.
+- [x] Re-run strict artifact rebuild.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Re-run TORS hygiene scan.
+- [x] Search source and PDFs for stale Office wording.
+- [x] Render and inspect Table 2 PDF pages.
+- [x] Check release/deposit zip and manifest scope.
+- [x] Fact-check current comparator/literature boundary against external
+      HSTU-BLaIR, Amazon Reviews 2023, ChronoSID, and SILLM4Rec sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Repair Appendix A.0 Office V1/V3 wording.
+- [ ] Regenerate PDFs after the wording fix.
+- [ ] Refresh release/deposit package and DOI instructions.
+- [ ] Fix Table 2 caption/body pagination.
+- [ ] Add or remove formal SILLM4Rec citation before submission freeze.
+
+## Audit Run - 2026-07-14 03:57 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory read:
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  (`Last run: 2026-07-14 01:57 Australia/Sydney`).
+- Current run time: `2026-07-14T03:57:20.9427523+10:00`; main adjudicator
+  commands completed at `2026-07-14 03:58 Australia/Sydney`.
+- Canonical/live artifacts inspected this run: `PAPER_SUBMISSION.md`,
+  `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`, `paper_tex/sections/*.tex`,
+  `paper_tex/tables/table2.tex`, `paper_tex/tables/table0_novelty.tex`,
+  `paper_tex/references.bib`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, `paper_tex/BUILD_NOTES.md`,
+  `paper_tex/hygiene_scan_output.txt`, `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`,
+  `CANONICAL_SUBMISSION.md`, `DOI_DEPOSIT_INSTRUCTIONS.md`,
+  `RELEASE_MANIFEST.json`, `_release/bestrec_deposit_v1.0.zip`,
+  `_bestrec_run/hstu_results_manifest.json`, `OFFICE_V3_RESULTS.md`, and
+  `FIR_BREADTH_RESULTS.md`.
+- Working tree before this audit edit: tracked modification only
+  `PAPER_REVIEW_AUDIT.md`; untracked files unchanged from the prior run:
+  `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Temporary visual renders were created under
+  `tmp/hourly-strict-paper-audit-20260714-0357/`, inspected, and then removed.
+
+### Verdict
+
+**No new numerical/provenance failure appeared, but the manuscript remains
+not submission-ready for a top journal.** The strict artifact gate, Office V3
+adjudicator, FIR-breadth adjudicator, and TORS hygiene scan all pass freshly.
+The rejection risk is still in consistency, packaging, and reviewer-facing
+polish:
+
+1. The live source and all PDFs still contain Appendix A.0 wording saying the
+   confirmed per-category claim is Musical_Instruments only and Office is not
+   counted, contradicting the main-body Office V3 pass.
+2. The advertised deposit bundle and DOI instructions still predate Office V3
+   and FIR-breadth, even though the live paper now counts those evidence layers.
+3. Table 2 remains visually broken: the caption is stranded at the bottom of
+   TORS page 27 and the table body starts on page 28.
+4. `paper_tex/BUILD_NOTES.md` still asserts a 40-page acmsmall production
+   preview, while the current `PAPER_TORS_acmsmall.pdf` has 41 pages.
+5. The SILLM4Rec exclusion is better worded than in older drafts, but still
+   lacks a formal citation/BibTeX entry despite appearing in the live
+   related-results paragraph.
+
+### Commands And Evidence Checked
+
+- `Get-Date -Format o`
+  - Current run time: `2026-07-14T03:57:20.9427523+10:00`.
+- `git log -1 --pretty='%h %s'`; `git status --short`
+  - HEAD unchanged from the prior audit: `174b5a74`.
+  - No tracked source/manuscript changes other than the cumulative audit file.
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS.
+  - HSTU core-block parity exact.
+  - `168` cells recomputed; `0` paper mismatches; `0` untraceable; all `14`
+    declared claim families sourced.
+  - Release manifest verification OK for `113` declared files.
+  - MI V2 gate OK; legacy Office V1 descriptive/VOID check OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 03:58:16`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, 5/5 seeds above
+    both `0.0279` and `0.0271`.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-14 03:58:16`.
+  - `Industrial_and_Scientific`: mean paired delta `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: mean paired delta `+0.00566`, 95% CI
+    `[+0.00493,+0.00639]`, 5/5 positive.
+- `uv --project _bestrec_run run python paper_tex\scan_pdf.py paper_tex\PAPER_TORS.pdf`
+  - PASS: 40 pages; `0` placeholder/forbidden-claim failures; 20
+    informational SOTA/non-claim review hits.
+- PDF text extraction with `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages; stale Office phrases on page 41;
+    `SILLM4Rec` on page 19.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; stale Office phrases on page 36;
+    `SILLM4Rec` on page 18.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; stale Office phrases on
+    page 37; `SILLM4Rec` on page 18.
+- Visual PDF render with PyMuPDF and manual image inspection
+  - `paper_tex/PAPER_TORS.pdf` page 27: Table 2 caption appears alone at the
+    bottom of the page.
+  - `paper_tex/PAPER_TORS.pdf` page 28: Table 2 body starts at the top of the
+    next page.
+- Deposit zip inspection
+  - `_release/bestrec_deposit_v1.0.zip` exists, 48 entries, SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`.
+  - It contains `PAPER_SUBMISSION.md` and `PAPER_SUBMISSION.pdf`.
+  - It does not contain `PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`,
+    `PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`, or
+    `paper_tex/PAPER_TORS.pdf`.
+- Manifest comparison
+  - `RELEASE_MANIFEST.json` release: `v0.9-audit-evidence`.
+  - `RELEASE_MANIFEST.json` result families remain only
+    `FIR_ablations`, `MI_gate_EXEC2`, `MI_gate_EXEC2_rest`, `MI_rebuild`,
+    `OFFICE_gate`, and `OFFICE_idonly_floor`.
+  - `_bestrec_run/hstu_results_manifest.json` required families include the
+    current live families `office_v3` and `fir_breadth`.
+- Source search
+  - `PAPER_SUBMISSION.md` line 621 and
+    `paper_tex/sections/appendix-a0.tex` line 4 still say the confirmed
+    per-category claim remains Musical_Instruments only and Office is not
+    counted.
+  - `PAPER_DRAFT.md` line 8 still says Office stays VOID and V3 is pending.
+  - `paper_tex/references.bib` has entries for Latte, ChronoSID, ReSID, GrIT,
+    WPGRec, Augment-or-Not, DiffuReason, FMLP-Rec, BSARec, Caser, NextItNet,
+    TIGER, and LIGER, but no SILLM4Rec entry.
+
+### External Fact-Check / Novelty Notes
+
+- Amazon Reviews 2023 official documentation supports the dataset framing:
+  collected by McAuley Lab, `571.54M` reviews, interactions through September
+  2023, richer metadata, and standard splitting. Source:
+  https://amazon-reviews-2023.github.io/
+- HSTU-BLaIR v3 supports the comparator constants and dataset statistics used
+  as external references: Video Games NDCG@10 `0.0760`, Office Products
+  `0.0271`, Musical Instruments `0.0406`; statistics include Video Games
+  `25,612` items / `94,762` users / `814,585` interactions, Office Products
+  `77,551` / `223,308` / `1,800,877`, and Musical Instruments `24,587` /
+  `57,439` / `511,835`. Source: https://arxiv.org/html/2504.10545v3
+- FMLP-Rec and BSARec confirm that filtering sequential representations and
+  frequency-domain/oversmoothing motivation are prior art, not novel here.
+  Sources: https://arxiv.org/abs/2202.13556 and
+  https://arxiv.org/abs/2312.10325
+- Caser confirms convolutional sequence modeling is old prior art, reinforcing
+  that the paper must not sell the FIR layer as a new convolutional sequence
+  architecture. Source: https://arxiv.org/abs/1809.07426
+- Latte remains a close concurrent pressure point: it reports AR2023
+  Instruments/Scientific/Games LLOO NDCG@10 values including Instruments
+  `0.0331` and Games `0.0515`. The paper's "point-estimate observation, not a
+  comparative claim" wording remains necessary. Source:
+  https://arxiv.org/pdf/2605.06331
+- GrIT also overlaps the AR2023 sequential-recommendation space and explicitly
+  discusses FMLP-Rec, Caser, and BSARec-style prior art. Its presence reinforces
+  the need for a final literature sweep and cautious priority wording. Source:
+  https://arxiv.org/html/2602.19728v1
+- ChronoSID frames a 2026 SID-based generative-recommendation line on Amazon
+  2023 subsets and reports improvements over ReSID; it uses a distinct SID
+  protocol/universe, so the paper's non-interchangeability caveat is
+  appropriate. Source: https://arxiv.org/html/2607.03918v1
+- SILLM4Rec's public repository documents AR2023 5-core data preparation,
+  candidate product ranking tasks, and SFT/DPO training data. That supports
+  exclusion from full-catalog LLOO comparisons, but the paper needs a formal
+  citation and/or direct ACM PDF inspection. Sources:
+  https://github.com/MKC-Lab/SILLM4Rec and
+  https://dl.acm.org/doi/10.1145/3743093.3771011
+
+### Confirmed Problems
+
+1. **Appendix A.0 contradiction persists in source and PDFs.** The Appendix A.0
+   Office V1 text says Office is not counted, while the abstract/body count
+   Office V3 as a passed second pre-registered per-category point-estimate
+   comparison.
+2. **Stale draft status persists.** `PAPER_DRAFT.md` line 8 still says Office
+   V3 is pending.
+3. **Response-file closure claim is false in the live workspace.**
+   `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` claims stale Office sites were fixed,
+   but current `rg` and PDF extraction disprove that.
+4. **Deposit/release layer is stale.** The zip and DOI instructions still point
+   to `v1.0-deposit` and exclude Office V3/FIR-breadth prereg/results files.
+5. **Release-manifest scope is behind the current claim graph.**
+   `RELEASE_MANIFEST.json` lacks `office_v3` and `fir_breadth` result
+   families, while the strict HSTU manifest requires them.
+6. **Table 2 layout is visibly unacceptable.** A top-journal PDF should not
+   strand a dense table caption on one page and the table body on the next.
+7. **SILLM4Rec mention is not properly cited.** The manuscript discusses it in
+   Section 5.1, but `references.bib` has no SILLM4Rec entry and the text has no
+   citation command.
+8. **Build notes remain unreliable as current-state documentation.**
+   `PAPER_TORS_acmsmall.pdf` is 41 pages, while `BUILD_NOTES.md` still says the
+   production preview is 40 pages/current builds are 40/40.
+
+### Plausible Risks / Author Verification Needed
+
+- **SILLM4Rec final protocol boundary:** accessible repository evidence supports
+  non-comparability, but a reviewer may not accept an exclusion of an ACM paper
+  without a direct paper citation and a concise protocol note.
+- **Deposit policy:** Section 8 says local-only sidecars can be provided later;
+  that is defensible only if the public deposit bundle clearly contains the
+  tracked aggregate evidence for every counted printed claim.
+- **Generated-source boundary:** `paper_tex/sections/abstract.tex` says it is
+  generated from `PAPER_SUBMISSION.md`, but both Markdown and TeX contain stale
+  Appendix A.0 text. Fixing only one layer risks reintroducing the contradiction.
+
+### Confirmed Non-Problems This Run
+
+- No strict artifact-gate failure, empirical-cell mismatch, untraceable printed
+  cell, Office V3 adjudicator failure, FIR-breadth adjudicator failure, or PDF
+  hygiene forbidden-claim failure was observed.
+- The current novelty boundary around the FIR layer is scientifically safer
+  than earlier drafts: the paper explicitly cites FMLP-Rec/BSARec, Caser,
+  NextItNet, and WPGRec-like frequency/wavelet prior art, and grades the FIR
+  contribution as incremental.
+- The Section 8 sidecar boundary is clearer than earlier audits: it now
+  distinguishes tracked aggregate evidence from local-only per-user sidecars.
+  The remaining issue is that the external deposit bundle does not match this
+  live contract.
+
+### Concrete Fixes To Make Next
+
+1. Rewrite Appendix A.0 everywhere so it is explicitly Office V1-scoped:
+   Office V1 remains VOID; Office V3 is separate, passed, and counted only
+   under its frozen point-estimate wording.
+2. Update or remove `PAPER_DRAFT.md` line 8 so no live draft says Office V3 is
+   pending.
+3. Add a dated correction to `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` acknowledging
+   that its "zero stale occurrences" statement was false.
+4. Rebuild the deposit bundle after Office V3/FIR-breadth, include the current
+   manuscript/PDF and prereg/results docs, and update
+   `DOI_DEPOSIT_INSTRUCTIONS.md`.
+5. Decide whether `RELEASE_MANIFEST.json` should add `office_v3` and
+   `fir_breadth` families, or explicitly state that
+   `_bestrec_run/hstu_results_manifest.json` is now the live claim-family
+   source of truth.
+6. Fix Table 2 as a float or otherwise keep the caption and body together, then
+   rebuild and visually inspect pages 27-28.
+7. Add a SILLM4Rec BibTeX entry and cite it in Section 5.1, or remove the named
+   paper until the ACM full text is inspected.
+8. Refresh `paper_tex/BUILD_NOTES.md` so current page counts and hygiene output
+   match the files on disk.
+
+### Open Questions
+
+- Should the next archival bundle be `v1.0.1-deposit`, or is the Office V3 /
+  FIR-breadth integration substantial enough to warrant a new release series?
+- Is `RELEASE_MANIFEST.json` intentionally frozen to older release assets, or
+  should it track every current counted claim?
+- Can the authors access the SILLM4Rec ACM PDF before freeze, or should the
+  paper rely only on the public repository/DOI metadata and say so explicitly?
+- Is `PAPER_DRAFT.md` still a live manuscript source, or should it be marked
+  historical to avoid review/package confusion?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and audit artifacts.
+- [x] Search manuscript/TeX/PDFs for stale Office V3 pending/no-claim wording.
+- [x] Re-run strict artifact gate.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Check compiled PDF page counts and hygiene output.
+- [x] Inspect Table 2 page split visually.
+- [x] Inspect release/deposit zip contents and manifest-family scope.
+- [x] Fact-check current dataset/comparator/novelty claims against AR2023,
+      HSTU-BLaIR, FMLP-Rec/BSARec, Caser, Latte, GrIT, ChronoSID, and SILLM4Rec
+      sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Repair Office V1/V3 consistency in Appendix A.0 and generated PDFs.
+- [ ] Rebuild/reissue deposit bundle and update DOI instructions.
+- [ ] Fix Table 2 caption/body split.
+- [ ] Add or remove the SILLM4Rec citation before submission.
+- [ ] Refresh `paper_tex/BUILD_NOTES.md`.
+
+## Audit Run - 2026-07-14 01:57 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory read:
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`.
+- Prior audit section carried forward: `2026-07-14 01:00 Australia/Sydney`.
+- Canonical/live artifacts inspected this run: `PAPER_SUBMISSION.md`,
+  `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`, `paper_tex/sections/*.tex`,
+  `paper_tex/PAPER_TORS.pdf`, `paper_tex/PAPER_TORS_acmsmall.pdf`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/hygiene_scan_output.txt`,
+  `paper_tex/tables/table2.tex`, `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`,
+  `CANONICAL_SUBMISSION.md`, `DOI_DEPOSIT_INSTRUCTIONS.md`,
+  `RELEASE_MANIFEST.json`, `_release/bestrec_deposit_v1.0.zip`,
+  `_bestrec_run/hstu_results_manifest.json`, `OFFICE_V3_RESULTS.md`, and
+  `FIR_BREADTH_RESULTS.md`.
+- Working tree before this audit edit: tracked modification only
+  `PAPER_REVIEW_AUDIT.md`; untracked files:
+  `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Temporary visual renders were created under
+  `tmp/pdfs/hourly-strict-paper-audit-20260714-0157/`, inspected, and then
+  removed.
+
+### Verdict
+
+**No new numerical failure appeared, but the paper is still not ready for a
+top-journal submission.** The strict artifact gate, Office V3 adjudicator, and
+FIR-breadth adjudicator all pass freshly. The rejection risk is instead
+internal consistency, release packaging, and production polish:
+
+1. Appendix A.0 still tells readers that only Musical_Instruments is confirmed
+   and that Office is not counted, while the abstract, Section 5.2, Section
+   6.4/6.5, and `CANONICAL_SUBMISSION.md` count Office V3 as a passed second
+   per-category comparison.
+2. `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` claims the Office inconsistency was
+   fixed everywhere and that zero stale occurrences remain. That response is
+   contradicted by current `rg`, PDF text extraction, and visual rendering.
+3. The deposit instructions and `_release/bestrec_deposit_v1.0.zip` still
+   predate Office V3 and FIR-breadth.
+4. The TORS PDF still has a visible Table 2 caption/body split across pages 27
+   and 28, and `paper_tex/BUILD_NOTES.md` still mixes current statements with
+   old 35/36-page and 40/40 claims even though acmsmall is currently 41 pages.
+
+### Commands And Evidence Checked
+
+- `Get-Date -Format "yyyy-MM-dd HH:mm:ss K"`
+  - Current run time: `2026-07-14 01:57:32 +10:00`.
+- `git status --short`; `git rev-parse --abbrev-ref HEAD`;
+  `git rev-parse --short HEAD`; `git log -1 --pretty=%s`
+  - Branch/HEAD as above.
+  - No tracked source/manuscript changes since the last audit other than the
+    existing `PAPER_REVIEW_AUDIT.md` modification.
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS.
+  - HSTU core-block parity exact.
+  - `168` cells recomputed; `0` paper mismatches; `0` untraceable; all `14`
+    declared claim families sourced.
+  - Release manifest verification OK for `113` declared files.
+  - MI V2 gate OK; legacy Office V1 descriptive/VOID check OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 01:57:33`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, 5/5 seeds above
+    both `0.0279` and `0.0271`.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-14 01:57:33`.
+  - `Industrial_and_Scientific`: mean paired delta `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: mean paired delta `+0.00566`, 95% CI
+    `[+0.00493,+0.00639]`, 5/5 positive.
+- `_bestrec_run/hstu_results_manifest.json` structured check
+  - Required families include `office_v3` and `fir_breadth`.
+  - This confirms the strict internal artifact graph sees the new evidence even
+    though the external/deposit bundle is stale.
+- `rg "Office stays VOID|outcome is pending|Office is not counted|confirmed per-category claim remains|..."`
+  - `PAPER_DRAFT.md` line 8 still says Office stays VOID and V3 is pending.
+  - `PAPER_SUBMISSION.md` line 621 and
+    `paper_tex/sections/appendix-a0.tex` line 4 still say the confirmed
+    per-category claim is Musical_Instruments only and Office is not counted.
+  - `PAPER_SUBMISSION.md` line 334 and
+    `paper_tex/sections/05-results.tex` line 90 say Office V3 passed and is
+    counted under its frozen point-estimate wording.
+  - `PAPER_SUBMISSION.md` line 526 and
+    `paper_tex/sections/06-discussion.tex` line 81 correctly distinguish V1
+    VOID from V3 counted pass.
+- PDF text extraction with `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages; stale Office phrases occur on page 41;
+    `SILLM4Rec` occurs on page 19.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; stale Office phrases occur on page
+    36; `SILLM4Rec` occurs on page 18.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; stale Office phrases occur
+    on page 37; `SILLM4Rec` occurs on page 18.
+- Visual PDF rendering with PyMuPDF and manual image inspection
+  - `paper_tex/PAPER_TORS.pdf` page 27: Table 2 caption appears alone at the
+    bottom of the page.
+  - `paper_tex/PAPER_TORS.pdf` page 28: the Table 2 body starts at the top of
+    the next page, separated from the caption.
+  - `paper_tex/PAPER_TORS.pdf` page 36 and
+    `paper_tex/PAPER_TORS_acmsmall.pdf` page 37 visibly contain the stale
+    Appendix A.0 Office wording.
+- `uv --project _bestrec_run run python paper_tex\scan_pdf.py paper_tex\PAPER_TORS.pdf`
+  - PASS: 40 pages; `0` placeholder/forbidden-claim failures; 20 informational
+    review hits for SOTA/non-claim wording.
+  - This scanner is useful but insufficient: it does not detect the Office
+    V1/V3 semantic contradiction or the caption split.
+- Deposit zip inspection
+  - `_release/bestrec_deposit_v1.0.zip` SHA256:
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`.
+  - 48 entries, all under `bestrec_deposit_v1.0/`.
+  - Contains old `PAPER_SUBMISSION.md`, old `PAPER_SUBMISSION.pdf`,
+    `SOTA_CONFIRM_PREREG_OFFICE.md`, and `SOTA_CONFIRM_OFFICE_RESULTS.md`.
+  - Does not contain `PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`,
+    `PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`, or
+    `paper_tex/PAPER_TORS.pdf`.
+- `RELEASE_MANIFEST.json` structured check
+  - `result_families` are still only `FIR_ablations`, `MI_gate_EXEC2`,
+    `MI_gate_EXEC2_rest`, `MI_rebuild`, `OFFICE_gate`, and
+    `OFFICE_idonly_floor`.
+  - No Office V3 or FIR-breadth family appears in that release-manifest layer,
+    even though strict submission gating now uses `_bestrec_run/hstu_results_manifest.json`.
+- `paper_tex/BUILD_NOTES.md`
+  - Header says review artifact 40 pages and production preview 40 pages, but
+    current `PAPER_TORS_acmsmall.pdf` is 41 pages.
+  - Later compile-status sections still preserve old 35/36-page blocks and an
+    embedded old 35-page hygiene output. Some are labeled historical, but the
+    file now mixes historical and current-state claims in a way that will confuse
+    a reviewer or release maintainer.
+
+### External Fact-Check / Novelty Notes
+
+- Amazon Reviews 2023 official documentation supports the dataset framing:
+  collected by McAuley Lab in 2023, 571.54M reviews, newer interactions through
+  September 2023, richer metadata, and standard splitting.
+  Source: https://amazon-reviews-2023.github.io/
+- HSTU-BLaIR's public repository supports the comparator constants used in the
+  manuscript: Video Games HSTU-BLaIR NDCG@10 `0.0760`, Office Products
+  `0.0271`, and Musical Instruments `0.0406`, on Amazon Reviews 2023 subsets.
+  Source: https://github.com/snapfinger/HSTU-BLaIR
+- Latte is a close concurrent pressure point: it evaluates Instruments,
+  Scientific, and Games from Amazon Reviews 2023 with leave-one-out splitting;
+  Table 1 reports Latte NDCG@10 `0.0331` on Instrument and `0.0515` on Game.
+  The manuscript's "point-estimate observation, not a claim" wording remains
+  necessary. Source: https://arxiv.org/html/2605.06331v1
+- GrIT remains another overlapping AR2023 pressure point: it reports Video Games
+  `94,762` users, `25,612` items, `814,586` interactions and Video Games
+  NDCG@10 `0.0588`. This supports inclusion in related work, not direct
+  superiority. Source: https://arxiv.org/html/2602.19728v1
+- ReSID/ChronoSID continue to justify the manuscript's non-interchangeability
+  caveat for the SID line. ReSID uses a SID-based generative setup and a
+  filtered universe; ChronoSID reports output-level MI NDCG@10 `0.0345` vs
+  ReSID `0.0325`. Sources:
+  https://arxiv.org/html/2602.02338v1 and
+  https://arxiv.org/html/2607.03918v1
+- SILLM4Rec evidence now supports the paper's exclusion rationale better than
+  earlier audits: the public repo instructs users to create candidate product
+  ranking tasks and generate SFT/DPO training data. ACM/search metadata also
+  describes it as a re-ranking task. This supports non-interchangeability with
+  full-catalog LLOO, but a final submission should either cite this concrete
+  basis without vague "pending" language or archive a direct full-paper
+  inspection. Sources: https://github.com/MKC-Lab/SILLM4Rec and
+  https://dl.acm.org/doi/10.1145/3743093.3771011
+
+### Confirmed Problems
+
+1. **Live source/PDF contradiction:** Appendix A.0 still makes an unscoped
+   "Office is not counted" claim while the body counts Office V3.
+2. **Stale draft status:** `PAPER_DRAFT.md` line 8 still says Office stays VOID
+   and V3 is pending.
+3. **Audit-response contradiction:** `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`
+   asserts that all stale Office sites were fixed and zero occurrences remain;
+   current source and PDFs refute that assertion.
+4. **Stale deposit package:** the advertised `v1.0-deposit` zip and DOI
+   instructions do not include Office V3 or FIR-breadth documentation.
+5. **Release-manifest scope mismatch:** the strict submission manifest includes
+   `office_v3` and `fir_breadth`, but `RELEASE_MANIFEST.json` still exposes the
+   older release-evidence families.
+6. **Visible PDF layout defect:** Table 2 caption and body are split across
+   pages 27 and 28 in `paper_tex/PAPER_TORS.pdf`.
+7. **Build notes are not reliable as current-state documentation:** acmsmall is
+   41 pages, while `BUILD_NOTES.md` still says 40/40 in current-state prose and
+   carries older 35/36-page blocks.
+
+### Plausible Risks / Author Verification Needed
+
+- **Deposit policy vs reviewer expectation:** Section 8 says local per-user
+  sidecars can be supplied on request and later deposited. That is defensible
+  for top-journal review only if the public deposit bundle clearly contains the
+  tracked aggregate evidence for every printed claim now being counted.
+- **SILLM4Rec final wording:** the current sentence is defensible but awkward:
+  it says "pending direct protocol inspection" while also stating the repository
+  evidence that supports exclusion. Either inspect the ACM full paper directly
+  or make the repo/ACM re-ranking evidence the explicit final rationale.
+- **Generated TeX source of truth:** if Appendix A.0 is generated from markdown,
+  fixing only TeX or only markdown will recreate the contradiction. Fix the
+  canonical source and regenerate all downstream PDFs.
+
+### Confirmed Non-Problems This Run
+
+- No strict artifact-gate failure, empirical-cell mismatch, untraceable printed
+  cell, Office V3 adjudicator failure, or FIR-breadth adjudicator failure was
+  observed.
+- The current main-body Office V3 wording is narrow where it is present:
+  point-estimate comparison against published `0.0271` and local regeneration
+  `0.0279`, no paired/distributional superiority, and no SOTA claim.
+- The FIR-breadth claim remains correctly scoped as an internal paired
+  filter-vs-no-filter contrast, not a comparator result.
+- The 2026 related-work paragraph remains cautious enough on direct claims,
+  provided it keeps the "no comparative claim against concurrent arXiv-only
+  work" language.
+
+### Concrete Fixes To Make Next
+
+1. Rewrite Appendix A.0 in `PAPER_SUBMISSION.md`,
+   `paper_tex/sections/appendix-a0.tex`, and the generated PDFs so the stale
+   sentence is V1-scoped: V1 remains VOID; V3 is separate, passed, and reported
+   in Section 5.2.
+2. Update or remove `PAPER_DRAFT.md` line 8 so the draft no longer says Office
+   V3 is pending.
+3. Add a short erratum to `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` acknowledging that
+   its "zero stale occurrences" claim was false in the live workspace.
+4. Rebuild and rename the deposit bundle after Office V3/FIR-breadth, then
+   update `DOI_DEPOSIT_INSTRUCTIONS.md` and `CANONICAL_SUBMISSION.md` to point
+   to the new bundle.
+5. Decide whether `RELEASE_MANIFEST.json` should include first-class
+   `office_v3` and `fir_breadth` families, or explicitly document that
+   `_bestrec_run/hstu_results_manifest.json` is the current claim-family source
+   of truth.
+6. Fix Table 2 so its caption and table body stay together, then rebuild and
+   visually inspect at least the affected pages.
+7. Refresh `paper_tex/BUILD_NOTES.md` so current page counts and hygiene output
+   are current and historical blocks are clearly separated.
+8. Finalize the SILLM4Rec exclusion by either inspecting the ACM full paper or
+   revising the sentence to rely on the observed re-ranking/SFT-DPO evidence.
+
+### Open Questions
+
+- Should the next archival bundle be `v1.0.1-deposit`, or should the Office V3
+  and FIR-breadth integration become a new release series?
+- Is `RELEASE_MANIFEST.json` intentionally an older `v0.9-audit-evidence`
+  release manifest, or should it track every current counted claim?
+- Should `PAPER_DRAFT.md` remain a historical draft, or is it still a live
+  deliverable that must be kept internally consistent?
+- Does the venue target tolerate the 41-page acmsmall preview if documented, or
+  does it need layout compaction?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDFs, result files, release manifest,
+      deposit zip, response file, and build notes.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Check strict claim-family manifest for `office_v3` and `fir_breadth`.
+- [x] Search live manuscript sources for stale Office wording.
+- [x] Extract PDF text and page counts from all compiled deliverables.
+- [x] Render and visually inspect affected PDF pages.
+- [x] Inspect deposit zip contents and release-manifest family scope.
+- [x] Fact-check comparator and close-literature boundaries against external
+      sources.
+- [x] Refresh the current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Scope Appendix A.0 to V1 and regenerate all PDFs.
+- [ ] Remove stale `PAPER_DRAFT.md` V3-pending status.
+- [ ] Correct or annotate the false response-file closure claim.
+- [ ] Rebuild current deposit/release bundle.
+- [ ] Fix Table 2 caption/table placement.
+- [ ] Refresh `paper_tex/BUILD_NOTES.md`.
+- [ ] Finalize SILLM4Rec full-paper inspection or rationale wording.
+
+## Audit Run - 2026-07-14 01:00 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory: `$env:CODEX_HOME` was unset in this shell, so this run read
+  the fallback memory path
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`.
+- Canonical sources/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`, `paper_tex/sections/*.tex`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/hygiene_scan_output.txt`,
+  `paper_tex/PAPER_TORS.pdf`, `paper_tex/PAPER_TORS_acmsmall.pdf`,
+  `paper_tex/references.bib`, `CANONICAL_SUBMISSION.md`,
+  `DOI_DEPOSIT_INSTRUCTIONS.md`, `RELEASE_MANIFEST.json`,
+  `_release/bestrec_deposit_v1.0.zip`, `PREREG_OFFICE_V3.md`,
+  `OFFICE_V3_RESULTS.md`, `PREREG_FIR_BREADTH.md`,
+  `FIR_BREADTH_RESULTS.md`, and current Office V3 / FIR-breadth result JSONs.
+- Working tree state before this audit edit: the only tracked modification was
+  `PAPER_REVIEW_AUDIT.md`; untracked files remained
+  `_bestrec_run/impact_program.DONE`, `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`. This audit
+  also generated temporary visual-QA renders under
+  `tmp/pdfs/hourly-strict-paper-audit/`.
+
+### Verdict
+
+**The empirical gates are still green, but the manuscript remains not
+submission-ready for top-journal review.** The blocking risk is no longer the
+aggregate result computation; it is consistency and presentation. The advertised
+deposit bundle predates Office V3 and FIR-breadth, Appendix A.0 and rendered
+PDFs still say Office is not counted despite the current Office V3 pass, and a
+fresh visual render found a table/caption split that will look sloppy to a
+reviewer.
+
+The SILLM4Rec issue improved: accessible ACM/search and repository evidence now
+supports treating it as a candidate re-ranking / SFT-DPO workflow rather than a
+full-catalog LLOO protocol. However, the paper's "pending direct protocol
+inspection" wording should be made more precise or backed by an archived
+full-paper inspection.
+
+### Commands And Evidence Checked
+
+- `Get-Date -Format "yyyy-MM-dd HH:mm:ss K"`
+  - Current run time: `2026-07-14 01:00:30 +10:00`.
+- `git status --short`; `git rev-parse --abbrev-ref HEAD`;
+  `git rev-parse --short HEAD`; `git log -1 --pretty=%s`
+  - Branch/HEAD unchanged from prior audit.
+  - Same tracked/untracked state as above before this audit edit.
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS at this run.
+  - HSTU core-block parity exact; `168` cells recomputed; `0` paper
+    mismatches; `0` untraceable; all `14` declared claim families sourced;
+    release manifest verification OK for `113` files; MI V2 gate OK; legacy
+    Office V1 descriptive/VOID adjudication OK.
+- `uv --project _bestrec_run run python _bestrec_run\update_release_manifest.py --verify`
+  - PASS: `113` files verified, `0` release-asset files not local.
+  - But structured inspection confirms `result_families` still only lists
+    `FIR_ablations`, `MI_gate_EXEC2`, `MI_gate_EXEC2_rest`, `MI_rebuild`,
+    `OFFICE_gate`, and `OFFICE_idonly_floor`.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-14 00:56:48`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, 5/5 seeds above
+    both `0.0279` and `0.0271`.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-14 00:56:48`.
+  - `Industrial_and_Scientific`: paired mean `+0.00240`, sd `0.00046`, 95% CI
+    `[+0.00183, +0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: paired mean `+0.00566`, sd `0.00059`, 95% CI
+    `[+0.00493, +0.00639]`, 5/5 positive.
+- `uv --project _bestrec_run run python paper_tex\scan_pdf.py paper_tex\PAPER_TORS.pdf`
+  - PASS: `PAPER_TORS.pdf` has 40 pages, 0 placeholder/forbidden-claim
+    failures, and 20 informational SOTA/negated-claim review hits.
+- PDF text extraction with `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages; stale phrases `Office is not counted`
+    and `confirmed per-category claim remains` occur on page 41; `SILLM4Rec`
+    occurs on page 19.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; stale Office phrases occur on page
+    36; `SILLM4Rec` occurs on page 18.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; stale Office phrases occur
+    on page 37; `SILLM4Rec` occurs on page 18.
+- Visual PDF rendering with PyMuPDF
+  - Rendered pages 1, 18, 19, 27, 28, 31, and 36 from
+    `paper_tex/PAPER_TORS.pdf`.
+  - Confirmed page 36 visibly contains the stale Appendix A.0 sentence
+    "Office is not counted."
+  - Confirmed Table 2 caption starts alone at the bottom of page 27, while the
+    table body begins at the top of page 28 without the caption beside it.
+  - No clipping or unreadable glyphs observed on the rendered sample pages.
+- Deposit zip inspection with `zipfile`
+  - `_release/bestrec_deposit_v1.0.zip`: SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`, 48
+    entries.
+  - Contains `PAPER_SUBMISSION.md` and `PAPER_SUBMISSION.pdf`.
+  - Contains no `PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`,
+    `PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`, or
+    `paper_tex/PAPER_TORS.pdf`.
+- `rg "Office stays VOID|outcome is pending|Office is not counted|confirmed per-category claim remains" ...`
+  - `PAPER_DRAFT.md` line 8 still says "Office stays VOID" and V3 outcome is
+    pending.
+  - `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, and
+    `paper_tex/sections/appendix-a0.tex` still contain the stale V1-era
+    "Office is not counted" sentence.
+- `rg "PREREG_OFFICE_V3|OFFICE_V3_RESULTS|PREREG_FIR_BREADTH|FIR_BREADTH_RESULTS|v1.0-deposit|bestrec_deposit|46-file" ...`
+  - `CANONICAL_SUBMISSION.md` now names Office V3 and FIR-breadth evidence.
+  - `DOI_DEPOSIT_INSTRUCTIONS.md` still advertises the old 46-file
+    `v1.0-deposit` bundle and points Zenodo upload instructions to
+    `bestrec_deposit_v1.0.zip`.
+
+### External Fact-Check / Novelty Notes
+
+- Amazon Reviews 2023 official documentation supports the dataset framing:
+  collected by McAuley Lab in 2023, `571.54M` reviews, newer interactions
+  through September 2023, richer metadata, and standard splitting. Source:
+  https://amazon-reviews-2023.github.io/
+- HSTU-BLaIR's public repository and arXiv page support the comparator constants
+  used here: Video Games HSTU-BLaIR NDCG@10 `0.0760`, Office Products `0.0271`,
+  and Musical Instruments `0.0406`, on Amazon Reviews 2023 subsets. Sources:
+  https://github.com/snapfinger/HSTU-BLaIR and
+  https://arxiv.org/html/2504.10545v3
+- Latte remains a close concurrent AR2023 5-core LLOO pressure point: it reports
+  experiments on Instruments/Scientific/Games and NDCG@10 values including
+  Instruments `0.0331` and Games `0.0515`. Source:
+  https://arxiv.org/html/2605.06331v1
+- GrIT is another AR2023 pressure point on overlapping categories: it uses the
+  full item set for evaluation, 5-core filtering, leave-one-out, and reports
+  Video Games NDCG@10 `0.0588`. Source:
+  https://arxiv.org/html/2602.19728v1
+- ReSID and ChronoSID continue to support the manuscript's "SID-line filtered
+  universe differs" caveat: ReSID reports Musical Instruments `57,359` users /
+  `23,742` items / `490,522` interactions, and ChronoSID reports ReSID-to-
+  ChronoSID output-level MI N@10 `0.0325` to `0.0345`. Sources:
+  https://arxiv.org/html/2602.02338v1 and
+  https://arxiv.org/html/2607.03918v1
+- SILLM4Rec is now less ambiguous but still needs citation discipline. The ACM
+  DOI/search result identifies the paper as MMAsia 2025 and says it focuses on
+  re-ranking tasks where LLMs sort candidate items; DBLP lists it as MMAsia
+  2025 paper `65:1-65:8`; the public repository instructs users to create
+  candidate product ranking tasks and generate SFT/DPO training data. This is
+  evidence for non-interchangeability with full-catalog LLOO, not evidence that
+  it is irrelevant. Sources:
+  https://dl.acm.org/doi/10.1145/3743093.3771011,
+  https://dblp.org/rec/conf/mmasia/WuQL0025, and
+  https://github.com/MKC-Lab/SILLM4Rec
+
+### Confirmed Problems
+
+1. **The Appendix A.0 Office contradiction is still live in source and PDFs.**
+   The V1 appendix can remain VOID, but its broad sentence must be scoped to the
+   V1 campaign because the body now counts Office V3.
+2. **`PAPER_DRAFT.md` remains stale at the status-line level.** It says Office
+   stays VOID and V3 is pending, contradicting the current Office V3 pass.
+3. **The DOI/deposit bundle is stale.** A reviewer following the current DOI
+   instructions will not receive the Office V3 or FIR-breadth evidence files.
+4. **`paper_tex/BUILD_NOTES.md` is stale.** It says acmsmall is 40 pages and
+   current builds are 40/40 while the live acmsmall PDF is 41 pages.
+5. **Table 2 has a visible caption/table split.** The caption is stranded at the
+   bottom of TORS page 27 and the table body starts on page 28; this is a
+   production-readiness defect even if not a scientific error.
+
+### Plausible Risks / Author Verification Needed
+
+- **SILLM4Rec wording:** the current "pending direct protocol inspection" caveat
+  is conservative, but now that accessible evidence says re-ranking/SFT-DPO, the
+  authors should either cite that concrete basis or archive the inspected ACM
+  PDF. Do not leave the exclusion as vague "metadata did not establish
+  comparability."
+- **Release boundary:** the paper says tracked artifacts are the reproducibility
+  contract and local per-user sidecars are supplementary. That is defensible only
+  if the deposit/release package is updated or the cover letter explicitly
+  explains the tracked-vs-supplementary boundary.
+- **Layout polish:** sampled rendered pages are legible, but only selected pages
+  were visually inspected this run. A full PDF visual pass should follow the
+  caption split fix.
+
+### Confirmed Non-Problems This Run
+
+- No strict artifact-gate failure, table-cell mismatch, untraceable printed
+  cell, Office V3 adjudicator failure, FIR-breadth adjudicator failure, or TORS
+  hygiene-scan failure was observed.
+- The body's Office V3 claim wording remains properly narrow where it is current:
+  a per-category point-estimate comparison against published `0.0271` and local
+  regeneration `0.0279`, not paired/distributional superiority or SOTA.
+- The concurrent-literature paragraph remains cautious enough: it records
+  point-estimate observations and non-comparability caveats rather than claiming
+  superiority over 2026 arXiv-only work.
+
+### Concrete Fixes To Make Next
+
+1. Scope Appendix A.0's broad sentence to V1: "under the V1 pre-registration, no
+   claim counts the V1 campaign; the separate V3 redesign passed and is reported
+   in Section 5.2."
+2. Update or delete `PAPER_DRAFT.md` line 8 so it no longer says Office V3 is
+   pending.
+3. Rebuild the DOI/deposit bundle after Office V3 and FIR-breadth; update
+   `DOI_DEPOSIT_INSTRUCTIONS.md` and release notes to point to the new bundle.
+4. Refresh `paper_tex/BUILD_NOTES.md` with actual TORS/acmsmall page counts and
+   current scan output.
+5. Fix the Table 2 float/caption placement in the LaTeX build, then re-render
+   the full PDF visually.
+6. Replace the SILLM4Rec sentence with a concrete re-ranking/SFT-DPO exclusion
+   rationale, or archive a direct full-paper protocol inspection.
+
+### Open Questions
+
+- Should the archival DOI package be versioned as `v1.0.1-deposit`, or should
+  the release be promoted to a new post-V3/post-FIR major artifact?
+- Does the submission target require the 41-page acmsmall preview to be reduced,
+  or only documented accurately?
+- Should Office V3 and FIR-breadth be first-class `RELEASE_MANIFEST.json`
+  `result_families`, or is `_bestrec_run/hstu_results_manifest.json` intended to
+  remain the source of truth for those claim families?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and audit artifacts.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Verify release-manifest status and inspect result-family scope.
+- [x] Re-run Office V3 adjudicator dynamically.
+- [x] Re-run FIR-breadth adjudicator dynamically.
+- [x] Check rendered PDF page counts, stale phrases, and hygiene scan.
+- [x] Render selected PDF pages for visual QA.
+- [x] Inspect deposit zip contents and DOI instructions.
+- [x] Fact-check comparator and nearby-literature boundaries against external
+      sources.
+- [x] Refresh current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Repair Appendix A.0 Office wording.
+- [ ] Remove stale `PAPER_DRAFT.md` V3-pending status line.
+- [ ] Rebuild current deposit/release package.
+- [ ] Refresh build-note page-count documentation.
+- [ ] Fix Table 2 caption/table placement.
+- [ ] Inspect/archive SILLM4Rec full paper or revise the exclusion rationale.
+
+## Audit Run - 2026-07-13 23:57 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Automation memory: no prior memory file was present for this automation at
+  run start.
+- Canonical sources/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`, `paper_tex/sections/*.tex`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, `CANONICAL_SUBMISSION.md`,
+  `VENUE_PLAN.md`, `RELEASE_MANIFEST.json`, `DOI_DEPOSIT_INSTRUCTIONS.md`,
+  `_release/bestrec_deposit_v1.0.zip`, `PREREG_OFFICE_V3.md`,
+  `OFFICE_V3_RESULTS.md`, `PREREG_FIR_BREADTH.md`,
+  `FIR_BREADTH_RESULTS.md`, and current Office V3 / FIR-breadth result JSONs.
+- Working tree state before this audit edit: the only tracked modification was
+  `PAPER_REVIEW_AUDIT.md`; untracked files remained
+  `_bestrec_run/impact_program.DONE`, `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+
+### Verdict
+
+**No new numerical or adjudication failure was found; the rejection risk is still
+submission-package consistency.** The strict gate, release-manifest verification,
+Office V3 adjudicator, FIR-breadth adjudicator, and TORS hygiene scan all pass
+again. The paper remains vulnerable for the same top-journal reasons: Appendix
+A.0 and the compiled PDFs still contain the broad V1-era sentence that "Office
+is not counted," `PAPER_DRAFT.md` still has a stale V3-pending status line, the
+DOI/deposit bundle still predates Office V3 and FIR-breadth, and `BUILD_NOTES.md`
+still reports historical/current page counts inconsistently with the 41-page
+acmsmall preview.
+
+The core empirical claim set is mechanically stronger than the packaging story.
+A reviewer using the repository can re-run the current strict graph and see the
+new evidence; a reviewer using the advertised `v1.0-deposit` zip cannot.
+
+### Commands And Evidence Checked
+
+- `Get-Date -Format "yyyy-MM-dd HH:mm:ss K"`
+  - Current run time: `2026-07-13 23:57:21 +10:00`.
+- `git diff --name-only` / `git status --short`
+  - Only tracked diff: `PAPER_REVIEW_AUDIT.md`.
+  - Same four untracked local files as the previous audit.
+- `rg "Office is not counted|confirmed per-category claim remains|V3 outcome is pending|outcome pending|not part of any counted claim|Office never a passed category|35 pages|36 pages|current builds are 40/40|SILLM4Rec" ...`
+  - Confirmed `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, and
+    `paper_tex/sections/appendix-a0.tex` still contain the broad Appendix A.0
+    sentence: "The confirmed per-category claim remains Musical_Instruments
+    only; Office is not counted."
+  - Confirmed `PAPER_DRAFT.md` line 8 still says Office stays VOID and V3 is
+    pending.
+  - Confirmed `paper_tex/BUILD_NOTES.md` still contains 35/36-page historical
+    compile lines with "current builds are 40/40", while the live acmsmall PDF
+    is 41 pages.
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS at `2026-07-13 23:57 Australia/Sydney`.
+  - HSTU core-block parity OK; `168` cells recomputed; `0` mismatches; `0`
+    untraceable; all `14` claim families sourced; release manifest OK for `113`
+    files; MI V2 gate OK; legacy Office V1 descriptive/VOID adjudication OK.
+- `uv --project _bestrec_run run python _bestrec_run\update_release_manifest.py --verify`
+  - PASS: `113` files verified, `0` release-asset files not local.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-13 23:57 Australia/Sydney`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, 5/5 seeds above
+    both `0.0279` and `0.0271`.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-13 23:57 Australia/Sydney`.
+  - `Industrial_and_Scientific`: paired mean `+0.00240`, sd `0.00046`, 95% CI
+    `[+0.00183, +0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: paired mean `+0.00566`, sd `0.00059`, 95% CI
+    `[+0.00493, +0.00639]`, 5/5 positive.
+- `uv --project _bestrec_run run python paper_tex\scan_pdf.py paper_tex\PAPER_TORS.pdf`
+  - PASS: `PAPER_TORS.pdf` has 40 pages, 0 placeholder/forbidden-claim
+    failures, and 20 informational SOTA/negated-claim review hits.
+- PDF page-count/text extraction with `pypdf`
+  - `PAPER_SUBMISSION.pdf`: 45 pages, contains `Office is not counted` and
+    `confirmed per-category claim remains`.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages, contains the same two stale phrases.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages, contains the same two stale
+    phrases.
+- Deposit zip inspection with `zipfile`
+  - `_release/bestrec_deposit_v1.0.zip`: last write
+    `2026-07-11T22:11:05.439574`, SHA256
+    `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`,
+    `48` entries under prefix `bestrec_deposit_v1.0/`.
+  - Contains the old prefixed `PAPER_SUBMISSION.md` and
+    `PAPER_SUBMISSION.pdf`, but contains no `PREREG_OFFICE_V3.md`,
+    `OFFICE_V3_RESULTS.md`, `PREREG_FIR_BREADTH.md`,
+    `FIR_BREADTH_RESULTS.md`, or `paper_tex/PAPER_TORS.pdf`.
+  - `DOI_DEPOSIT_INSTRUCTIONS.md` still advertises a 46-file
+    `v1.0-deposit` bundle and points Zenodo upload instructions to
+    `bestrec_deposit_v1.0.zip`.
+
+### External Fact-Check / Novelty Notes
+
+- Amazon Reviews 2023's official site supports the high-level dataset framing:
+  it reports `571.54M` reviews, `54.51M` users, `48.19M` items, and standard
+  splitting; it also lists the relevant categories, including Video_Games,
+  Musical_Instruments, Office_Products, Industrial_and_Scientific, and
+  CDs_and_Vinyl. Sources:
+  https://amazon-reviews-2023.github.io/ and
+  https://amazon-reviews-2023.github.io/data_processing/5core.html
+- HSTU-BLaIR v3 remains the relevant comparator source for the paper's external
+  constants and dataset-statistics family; it evaluates AR2023 5-core Video
+  Games, Office Products, and Musical Instruments. Source:
+  https://arxiv.org/html/2504.10545v3
+- Latte remains a close novelty/priority pressure point but not a direct
+  contradiction to the current non-claim wording. It states that it uses AR2023
+  Instruments, Scientific, and Games with leave-one-out, and its Table 7 lists
+  the same statistics family for Instruments (`57,439` users / `24,587` items /
+  `511,836` interactions), Scientific, and Games (`94,762` / `25,612` /
+  `814,586`). Source: https://arxiv.org/html/2605.06331v1
+- ReSID/ChronoSID support the paper's "SID-line filtered universe differs"
+  caveat: ReSID lists Musical Instruments as `57,359` users / `23,742` items /
+  `490,522` interactions, and ChronoSID reports output-level MI N@10 `0.0345`
+  vs ReSID `0.0325` under that line. Sources:
+  https://arxiv.org/html/2602.02338v1 and
+  https://arxiv.org/html/2607.03918v1
+- SILLM4Rec's public repository supports only a repository-based
+  non-interchangeability rationale: it documents image-description generation,
+  user preference summaries, candidate product ranking tasks, and SFT/DPO data.
+  That does not close full-paper protocol inspection; the ACM paper still needs
+  direct inspection or an explicit "pending direct protocol inspection" caveat.
+  Sources: https://github.com/MKC-Lab/SILLM4Rec and
+  https://dl.acm.org/doi/10.1145/3743093.3771011
+
+### Confirmed Problems
+
+1. **Appendix A.0 still contradicts the live Office V3 claim.** The V1 appendix
+   sentence is historically understandable but too broad in the current paper
+   and PDFs. It must be scoped to the V1 pre-registration only.
+2. **`PAPER_DRAFT.md` still has a stale status line.** It says Office stays VOID
+   and V3 is pending, even though the abstract/body now count the V3 pass.
+3. **The deposit bundle is stale.** The DOI instructions and `v1.0-deposit` zip
+   still point to a pre-Office-V3/pre-FIR-breadth package.
+4. **`BUILD_NOTES.md` is stale/internally inconsistent.** The live acmsmall
+   preview is 41 pages, while the notes still say current builds are 40/40 in
+   the old compile-status block.
+
+### Confirmed Non-Problems
+
+- The strict artifact graph remains green, with all current claim families
+  sourced and no mismatched/untraceable printed cells.
+- Office V3 remains mechanically green under its frozen redesigned claim
+  wording.
+- FIR-breadth remains mechanically green for both new categories.
+- The TORS review PDF hygiene scan remains PASS; the stale Office phrase is a
+  substantive contradiction, not a scanner miss or placeholder failure.
+
+### Concrete Fixes To Make Next
+
+1. Rewrite Appendix A.0's broad sentence to: under the V1 pre-registration, no
+   claim counts the V1 campaign; the later V3 redesign is reported separately
+   in Section 5.2.
+2. Remove or update the `PAPER_DRAFT.md` v3.8 status line so it no longer says
+   V3 is pending.
+3. Rebuild the DOI/deposit bundle after Office V3 and FIR-breadth, and update
+   `DOI_DEPOSIT_INSTRUCTIONS.md` / release notes to point to the new package.
+4. Refresh `paper_tex/BUILD_NOTES.md` for actual page counts and current scan
+   output, or clearly mark the old 35/36-page block as historical without the
+   "current builds are 40/40" phrase.
+5. Before submission freeze, inspect the SILLM4Rec ACM full paper directly if
+   accessible, or keep the exclusion explicitly repository-evidence-based and
+   inspection-pending.
+
+### Open Questions
+
+- Is the stale `v1.0-deposit` bundle still meant for reviewers, or should a
+  post-V3/post-FIR package supersede it immediately?
+- Should the production preview be compressed back to 40 pages, or should 41
+  pages be accepted and documented?
+- Should `RELEASE_MANIFEST.json` name Office V3 and FIR-breadth as first-class
+  result families, or explicitly delegate current per-claim evidence to
+  `_bestrec_run/hstu_results_manifest.json`?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and audit artifacts.
+- [x] Check workspace diff state.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Verify release-manifest status.
+- [x] Re-run Office V3 adjudicator dynamically.
+- [x] Re-run FIR-breadth adjudicator dynamically.
+- [x] Check rendered PDF page counts, stale phrases, and hygiene scan.
+- [x] Inspect deposit zip contents and DOI instructions.
+- [x] Fact-check current dataset/comparator/related-work boundary against
+      external sources.
+- [x] Refresh current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Repair Appendix A.0 Office wording.
+- [ ] Remove stale `PAPER_DRAFT.md` V3-pending status line.
+- [ ] Rebuild current deposit/release package.
+- [ ] Refresh build-note page-count documentation.
+- [ ] Inspect SILLM4Rec full paper or keep the exclusion explicitly pending.
+
+## Audit Run - 2026-07-13 22:59 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Canonical sources/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`, `paper_tex/sections/*.tex`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, `RELEASE_MANIFEST.json`,
+  `_bestrec_run/hstu_results_manifest.json`, `DOI_DEPOSIT_INSTRUCTIONS.md`,
+  `_release/bestrec_deposit_v1.0.zip`, `OFFICE_V3_RESULTS.md`,
+  `PREREG_OFFICE_V3.md`, `FIR_BREADTH_RESULTS.md`,
+  `PREREG_FIR_BREADTH.md`, and current Office V3 / FIR-breadth result JSONs.
+- Working tree state before this audit edit: tracked modification already
+  present in `PAPER_REVIEW_AUDIT.md`; untracked
+  `_bestrec_run/impact_program.DONE`, `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+
+### Verdict
+
+**The numerical gates are green, but the paper is not submission-package ready.**
+The current strict rebuild and both fresh adjudicators pass. The highest current
+top-journal rejection risks are now consistency and archival reproducibility:
+the appendix/PDF still contains a broad "Office is not counted" statement that
+conflicts with the counted Office V3 pass, and the DOI/deposit bundle predates
+both Office V3 and FIR-breadth.
+
+The release-manifest result is nuanced. `update_release_manifest.py --verify`
+passes for the manifest's declared scope, and the generated HSTU manifest sees
+Office V3 and FIR-breadth evidence. But the user-facing deposit instructions and
+zip do not contain the new prereg/results files. A reviewer trying to reproduce
+the submitted claim from the advertised `v1.0-deposit` artifact would not have
+the current evidence set.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS at `2026-07-13 22:56 Australia/Sydney`.
+  - HSTU parity OK; `168` cells recomputed; `0` mismatches; `0` untraceable;
+    all `14` claim families sourced; release manifest OK for `113` declared
+    files; MI V2 gate OK; legacy Office V1 descriptive/VOID adjudication OK.
+- `uv --project _bestrec_run run python _bestrec_run\update_release_manifest.py --verify`
+  - PASS: `113` files verified, `0` release-asset files not local.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-13 22:56 Australia/Sydney`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, 5/5 seeds above
+    both `0.0279` and `0.0271`.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-13 22:56 Australia/Sydney`.
+  - `Industrial_and_Scientific`: paired mean `+0.00240`, sd `0.00046`, 95% CI
+    `[+0.00183, +0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: paired mean `+0.00566`, sd `0.00059`, 95% CI
+    `[+0.00493, +0.00639]`, 5/5 positive.
+- `uv --project _bestrec_run run python paper_tex\scan_pdf.py paper_tex\PAPER_TORS.pdf`
+  - PASS: `PAPER_TORS.pdf` has 40 pages, 0 placeholder/forbidden-claim
+    failures, and 20 informational SOTA/negated-claim review hits.
+- PDF page-count extraction with `pypdf`
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages, 612 x 792 pt.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages, 486 x 720 pt.
+  - `PAPER_SUBMISSION.pdf`: 45 pages, 612 x 792 pt.
+- PDF text extraction with `pypdf`
+  - `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`, and
+    `paper_tex/PAPER_TORS_acmsmall.pdf` all contain `Office is not counted` and
+    `confirmed per-category claim remains`.
+  - No `outcome pending` phrase was found in those PDFs, but `PAPER_DRAFT.md`
+    still contains the old pending-status line.
+- Deposit/release packaging inspection
+  - `_release/bestrec_deposit_v1.0.zip` timestamp: `2026-07-11 22:11`; SHA256
+    matches `DOI_DEPOSIT_INSTRUCTIONS.md`.
+  - Zip entries: 48. It contains `PAPER_SUBMISSION.md` and
+    `PAPER_SUBMISSION.pdf`, but contains no `PAPER_TORS.pdf`, no
+    `PREREG_OFFICE_V3.md`, no `OFFICE_V3_RESULTS.md`, no
+    `PREREG_FIR_BREADTH.md`, and no `FIR_BREADTH_RESULTS.md`.
+  - `RELEASE_MANIFEST.json` `result_families` keys remain:
+    `MI_gate_EXEC2`, `MI_gate_EXEC2_rest`, `MI_rebuild`, `OFFICE_gate`,
+    `OFFICE_idonly_floor`, `FIR_ablations`; the text does not contain
+    `results_OFFICEV3`, `results_FIRB`, `PREREG_OFFICE_V3`, or
+    `PREREG_FIR_BREADTH`.
+  - `_bestrec_run/hstu_results_manifest.json` does contain Office V3 and
+    FIR-breadth evidence strings, so the fail-closed table gate and the public
+    archival bundle are currently not aligned.
+- FIR-breadth JSON provenance scan over `_bestrec_run/results_FIRB*.json`
+  - `20` FIRB JSONs total.
+  - `CDs_and_Vinyl`: 10 files, one unique `data_sha256` set, sidecar hash fields
+    present in 10/10, 0 missing sidecar references.
+  - `Industrial_and_Scientific`: 10 files, one unique `data_sha256` set, sidecar
+    hash fields present in 10/10, 0 missing sidecar references.
+
+### External Fact-Check / Novelty Notes
+
+- Official Amazon Reviews 2023 documentation supports the dataset framing:
+  McAuley Lab's AR2023 site reports `571.54M` reviews, `54.51M` users,
+  `48.19M` items, rich reviews/metadata/links, and standard splitting. Source:
+  https://amazon-reviews-2023.github.io/
+- Official AR2023 5-core processing remains the right source for category and
+  split availability. Source:
+  https://amazon-reviews-2023.github.io/data_processing/5core.html
+- HSTU-BLaIR v3 supports the comparator constants used by the paper: it reports
+  AR2023 5-core Video Games / Office Products / Musical Instruments statistics
+  and NDCG@10 values `0.0760`, `0.0271`, and `0.0406` for HSTU-BLaIR. Source:
+  https://arxiv.org/html/2504.10545v3
+- Latte is closer than a casual related-work paragraph suggests: it uses AR2023
+  Instruments / Scientific / Games, LLOO, and the same MI/VG statistics family;
+  it reports RQ-KMeans Latte NDCG@10 `0.0331` for Instruments and `0.0515` for
+  Games. This supports citation and context, but not direct superiority without
+  protocol audit. Source: https://arxiv.org/html/2605.06331v1
+- ReSID/ChronoSID use a different SID-line filtered universe. ReSID reports
+  Musical Instruments statistics of `57,359` users, `23,742` items, and
+  `490,522` interactions; ChronoSID reports output-level MI NDCG@10 `0.0345`
+  versus ReSID `0.0325`. This supports the paper's non-interchangeability
+  boundary for that line. Sources: https://arxiv.org/html/2602.02338v1 and
+  https://arxiv.org/html/2607.03918v1
+- WPGRec confirms that wavelet/frequency-domain sequential recommendation is an
+  active and broader prior-art line, so the FIR novelty claim must remain
+  narrow. Source: https://arxiv.org/html/2604.21305v1
+- SILLM4Rec's public repository supports the current exclusion rationale: its
+  workflow includes image descriptions, user preference summaries, candidate
+  product ranking tasks, and SFT/DPO training data. The ACM DOI page was
+  located, but direct full-paper protocol inspection was not completed in this
+  run. Sources: https://github.com/MKC-Lab/SILLM4Rec and
+  https://dl.acm.org/doi/10.1145/3743093.3771011
+
+### Confirmed Problems
+
+1. **Archival/deposit package is stale.** The advertised DOI-ready bundle does
+   not include the new Office V3 or FIR-breadth prereg/results evidence, and
+   the instructions still point users to that stale bundle.
+2. **Current PDFs contain contradictory Office counting language.** The main
+   paper counts Office V3; Appendix A.0 still says the confirmed per-category
+   claim remains MI only and Office is not counted. Even if historically
+   intended for V1, it is too broad in the current compiled paper.
+3. **`PAPER_DRAFT.md` has a stale status sentence.** The opening status line says
+   Office stays VOID and V3 is pending, contradicting the live claim set.
+4. **`paper_tex/BUILD_NOTES.md` remains stale.** It says acmsmall is 40 pages and
+   current builds are 40/40, while actual `PAPER_TORS_acmsmall.pdf` is 41 pages;
+   it also embeds an old 35-page hygiene scan block.
+
+### Plausible Risks Requiring Author Verification
+
+1. **Whether `RELEASE_MANIFEST.json` is intended to be complete claim evidence
+   or only a legacy release-asset manifest.** If it is advertised as the
+   reproducibility manifest, it must include or explicitly delegate Office V3
+   and FIR-breadth evidence to `_bestrec_run/hstu_results_manifest.json`.
+2. **Whether the deposit should include local-only per-user sidecars at review
+   time.** The manuscript says they are provided on reviewer/editor request and
+   deposited upon acceptance; some artifact reviewers may expect them in the
+   initial package.
+3. **SILLM4Rec full-paper protocol inspection.** The repository evidence is
+   enough for a cautious exclusion sentence, but a top reviewer may require the
+   ACM PDF to be inspected directly.
+
+### Confirmed Non-Problems
+
+- The strict artifact graph, declared release-manifest verification, MI V2 gate,
+  and legacy Office V1 descriptive/VOID adjudication all pass.
+- Office V3 remains mechanically green under the redesigned
+  environment-matched preregistration.
+- FIR-breadth remains mechanically green for both categories with 5/5 positive
+  paired seeds and CIs excluding zero.
+- The two FIR-breadth result categories have consistent `data_sha256` sets and
+  sidecar hash fields in tracked run JSONs.
+
+### Concrete Fixes To Make Next
+
+1. Rebuild the DOI/deposit bundle after the Office V3 and FIR-breadth changes;
+   include `PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`,
+   `PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`, relevant result JSONs or
+   a manifest that enumerates them, and the current PDFs.
+2. Update `DOI_DEPOSIT_INSTRUCTIONS.md`, `CITATION.cff`, and any release notes
+   from the July 11 `v1.0-deposit` state to a current July 13 package state.
+3. Decide whether `RELEASE_MANIFEST.json` should hash Office V3/FIR-breadth
+   source evidence directly or explicitly state that `_bestrec_run/hstu_results_manifest.json`
+   is the complete per-claim evidence manifest.
+4. Rewrite Appendix A.0's broad Office sentence to be V1-scoped, e.g. "Under
+   this V1 pre-registration, no claim counts the V1 campaign; the later V3
+   redesign is reported separately in Section 5.2."
+5. Remove or update the stale `PAPER_DRAFT.md` opening status line that says V3
+   is pending.
+6. Refresh `paper_tex/BUILD_NOTES.md` for the actual 40/41 page counts and the
+   current 40-page hygiene scan output.
+7. Inspect the SILLM4Rec ACM full paper directly or keep the exclusion as
+   repository-based evidence only.
+
+### Open Questions
+
+- Is `_release/bestrec_deposit_v1.0.zip` still intended to be offered to
+  reviewers, or is a new post-V3/post-FIR package planned?
+- Should the acmsmall preview be compressed back to 40 pages, or should the
+  notes simply document 41 pages?
+- Should Office V3 and FIR-breadth result JSONs become first-class
+  `RELEASE_MANIFEST.json` families?
+- Can the authors access the ACM SILLM4Rec PDF for direct protocol inspection?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and audit artifacts.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Verify release-manifest status.
+- [x] Re-run Office V3 adjudicator dynamically.
+- [x] Re-run FIR-breadth adjudicator dynamically.
+- [x] Check rendered PDF page counts and hygiene scan.
+- [x] Search markdown, TeX, and PDFs for stale Office wording.
+- [x] Inspect deposit zip contents and DOI instructions.
+- [x] Compare `RELEASE_MANIFEST.json` scope to `_bestrec_run/hstu_results_manifest.json`.
+- [x] Check FIR-breadth result JSON hashes and sidecar references.
+- [x] Fact-check AR2023, HSTU-BLaIR, Latte/SID-line, WPGRec, and SILLM4Rec
+      claims against external sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Rebuild current deposit/release package.
+- [ ] Remove broad Office "not counted" wording from Appendix A.0.
+- [ ] Refresh stale build notes and acmsmall page-count documentation.
+- [ ] Inspect SILLM4Rec full paper or keep the exclusion explicitly pending.
+
+## Audit Run - 2026-07-13 21:57 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`
+- Branch/HEAD: `codex/bestrec-sota-results` / `174b5a74` (`Respond to audit
+  run 2026-07-13 20:57 (all fixes executed; open questions answered)`).
+- Canonical sources/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`, `paper_tex/sections/08-availability.tex`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, `RELEASE_MANIFEST.json`,
+  `FIR_BREADTH_RESULTS.md`, `CANONICAL_SUBMISSION.md`, `VENUE_PLAN.md`,
+  `_bestrec_run/results_FIRB_*.json`, `PREREG_FIR_BREADTH.md`,
+  `OFFICE_V3_RESULTS.md`, and current Office V3 result/provenance files.
+- Working tree state before this audit edit: no tracked modifications; untracked
+  `_bestrec_run/impact_program.DONE`, `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+
+### Verdict
+
+**The paper is numerically and provenance-green in the current tree, but not yet
+artifact-polished.** The strict manuscript/artifact rebuild passes after the new
+deposit-policy edits and manifest synchronization. Office V3 and FIR-breadth
+mechanical evidence both remain green. The highest current rejection/readiness
+risk is not a result contradiction; it is presentation/package drift: the
+acmsmall production preview is 41 pages while build notes still describe the
+current deliverables as 40/40.
+
+The new Section 8 deposit policy is a real improvement. It makes the
+tracked-artifact boundary explicit and states that local-only per-user sidecars
+are hash-pinned supplementary audit material. A skeptical reviewer may still
+ask for the sidecars or exact raw-data acquisition path at review time, so the
+deposit policy should be mirrored in the eventual artifact package/release notes,
+not only in the manuscript.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - Initial run during this audit: numerical/artifact table build passed, but
+    release-manifest verification failed for edited `PAPER_SUBMISSION.md` and
+    `PAPER_DRAFT.md`.
+  - Final rerun at `2026-07-13 21:57 Australia/Sydney`: PASS. HSTU parity OK;
+    `168` cells recomputed; `0` mismatches; `0` untraceable; all `14` claim
+    families sourced; release manifest OK for `113` files; MI V2 gate OK;
+    legacy Office V1 descriptive/VOID adjudication OK.
+- `uv --project _bestrec_run run python _bestrec_run\update_release_manifest.py --verify`
+  - PASS: `113` files verified, `0` release-asset files not local.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-13 21:55 Australia/Sydney`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, 5/5 seeds above
+    both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, 5/5 seeds above
+    both `0.0279` and `0.0271`.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - PASS at `2026-07-13 21:57 Australia/Sydney`.
+  - `Industrial_and_Scientific`: paired mean `+0.00240`, sd `0.00046`, 95% CI
+    `[+0.00183, +0.00297]`, 5/5 positive.
+  - `CDs_and_Vinyl`: paired mean `+0.00566`, sd `0.00059`, 95% CI
+    `[+0.00493, +0.00639]`, 5/5 positive.
+- `uv --project _bestrec_run run python paper_tex\scan_pdf.py paper_tex\PAPER_TORS.pdf`
+  - PASS: `PAPER_TORS.pdf` has 40 pages, 0 placeholder/forbidden-claim
+    failures, and 20 informational SOTA/negated-claim review hits.
+- PDF text/page extraction with `pypdf`
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; new deposit-policy wording found.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 41 pages; deposit-policy wording mostly
+    found, but long phrases are split by extraction.
+  - `PAPER_SUBMISSION.pdf`: 45 pages; new tracked-artifact/reviewer-request
+    deposit-policy wording found.
+- FIR-breadth provenance scan over `_bestrec_run/results_FIRB_*.json`
+  - `Industrial_and_Scientific`: 10 run JSONs, 1 unique `data_sha256` set, 0
+    missing sidecars.
+  - `CDs_and_Vinyl`: 10 run JSONs, 1 unique `data_sha256` set, 0 missing
+    sidecars.
+- `rg` over manuscript/build-note sources
+  - Section 8 deposit policy is present in `PAPER_SUBMISSION.md`,
+    `PAPER_DRAFT.md`, and `paper_tex/sections/08-availability.tex`.
+  - `paper_tex/BUILD_NOTES.md` still has historical 35/36-page comments, and
+    now incorrectly says current builds are 40/40 despite the acmsmall PDF being
+    41 pages.
+
+### External Fact-Check / Novelty Notes
+
+- The official Amazon Reviews 2023 site supports the dataset framing and public
+  data boundary: McAuley Lab's AR2023 release includes ratings/reviews,
+  metadata, links, standard splits, and the headline corpus scale
+  (`571.54M` reviews, `54.51M` users, `48.19M` items). Source:
+  https://amazon-reviews-2023.github.io/
+- The official AR2023 5-core processing page lists both FIR-breadth categories
+  and leave-last-out split downloads. It reports `Industrial_and_Scientific`
+  5-core statistics of `51.0K` users, `25.8K` items, `412.9K` ratings, and
+  LLOO split rows `311.0K / 51.0K / 51.0K`; it reports `CDs_and_Vinyl`
+  `123.9K` users, `89.4K` items, `1.6M` ratings, and LLOO split rows
+  `1.3M / 123.9K / 123.9K`. Source:
+  https://amazon-reviews-2023.github.io/data_processing/5core.html
+- HSTU-BLaIR still supports the comparator constants and protocol family used
+  by the paper: the arXiv HTML reports AR2023 5-core Video Games / Office
+  Products / Musical Instruments, LLOO-style chronological evaluation, and
+  NDCG@10 values `0.0760`, `0.0271`, and `0.0406` for HSTU-BLaIR. Source:
+  https://arxiv.org/html/2504.10545v3
+- The HSTU-BLaIR GitHub README still supports the environment caveat: it says
+  the implementation was tested on Ubuntu 22.04, Python 3.9, CUDA 12.6, and a
+  single RTX 4090. Source: https://github.com/snapfinger/HSTU-BLaIR
+- SILLM4Rec's public repository supports the paper's non-interchangeability
+  rationale: its workflow asks users to generate image descriptions, user
+  preference summaries, candidate product ranking tasks, and SFT/DPO training
+  data. This is not established as the same full-catalog LLOO setting, but the
+  ACM page/PDF should still be inspected directly before final freeze. Sources:
+  https://github.com/MKC-Lab/SILLM4Rec and
+  https://dl.acm.org/doi/10.1145/3743093.3771011
+
+### Confirmed Problems
+
+1. **Production-preview page-count inconsistency.** `PAPER_TORS_acmsmall.pdf`
+   is 41 pages by `pypdf`, but `paper_tex/BUILD_NOTES.md` says the current
+   builds are 40/40. Fix either the acmsmall layout or the notes before
+   distributing the production preview.
+2. **Strict manifest can go red during manuscript/PDF update windows.** This
+   run reproduced the failure mode briefly after Section 8 edits. It is green
+   now, but the workflow must always end with manifest verification and strict
+   rebuild after any rendered-paper change.
+
+### Plausible Risks Requiring Author Verification
+
+1. **Supplementary sidecar deposit timing.** Section 8 says local-only per-user
+   sidecars will be provided on editorial/reviewer request and deposited upon
+   acceptance. Confirm this is acceptable for the target venue; some artifact
+   evaluators prefer all supplementary evidence available at first review.
+2. **Raw AR2023 archive instructions.** The untracked raw
+   `Industrial_and_Scientific.csv.gz` and `CDs_and_Vinyl.csv.gz` files are
+   consistent with a no-redistribution policy, but release docs should give the
+   exact official download route and expected hashes.
+3. **SILLM4Rec full-paper inspection.** Public repo evidence supports
+   exclusion, but direct ACM full-paper protocol inspection remains the cleaner
+   top-journal posture.
+
+### Confirmed Non-Problems
+
+- The strict artifact graph, release manifest, MI V2 gate, and Office
+  descriptive/VOID adjudication all pass in the final current-tree rerun.
+- Office V3 remains green under the redesigned frozen point-estimate wording.
+- FIR-breadth remains green for both categories with 5/5 positive paired seeds
+  and CIs excluding zero.
+- The new deposit-policy text appears in markdown, TeX, `PAPER_TORS.pdf`, and
+  `PAPER_SUBMISSION.pdf`.
+- The external AR2023 5-core site supports the existence and broad statistics
+  of the two added breadth categories.
+
+### Concrete Fixes To Make Next
+
+1. Fix `paper_tex/BUILD_NOTES.md` so the current page-count statements match
+   current artifacts, especially `PAPER_TORS_acmsmall.pdf` = 41 pages.
+2. Decide whether to compress the acmsmall production preview back to 40 pages
+   or accept/document 41 pages.
+3. Mirror the Section 8 deposit policy in release notes/artifact packaging:
+   exact raw-data download route, expected raw/split hashes, and how reviewers
+   can obtain local-only per-user sidecars.
+4. Inspect the SILLM4Rec ACM PDF/full paper before freeze, or keep the current
+   exclusion explicitly caveated as repository-based only.
+5. Keep running `update_release_manifest.py --verify` and
+   `rebuild_hstu_submission.py --strict` after every manuscript or rendered-PDF
+   change.
+
+### Open Questions
+
+- Is `PAPER_TORS_acmsmall.pdf` intended to be a real submitted production
+  preview? If yes, is 41 pages acceptable for the target venue?
+- Should local-only Office/FIR-breadth per-user sidecars be deposited before
+  review rather than only upon request/acceptance?
+- Should the untracked raw FIR-breadth archives be accompanied by a small
+  `RAW_DATA_DOWNLOADS.md` with official URLs and SHA256s?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and audit artifacts.
+- [x] Re-run strict manuscript/artifact gate after the Section 8 deposit-policy
+      edits.
+- [x] Verify release-manifest status after the transient mismatch.
+- [x] Re-run Office V3 adjudicator dynamically.
+- [x] Re-run FIR-breadth adjudicator dynamically.
+- [x] Check rendered PDFs for deposit-policy text and page counts.
+- [x] Check FIR-breadth result JSONs for consistent `data_sha256` and sidecar
+      references.
+- [x] Fact-check AR2023 5-core category/split claims against the official site.
+- [x] Fact-check HSTU-BLaIR comparator constants and environment caveat.
+- [x] Re-check SILLM4Rec public repository rationale.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Fix or document the 41-page acmsmall production preview.
+- [ ] Mirror the sidecar/raw-data deposit policy in release packaging.
+- [ ] Inspect SILLM4Rec full paper or leave exclusion explicitly pending.
 
 ## Audit Run - 2026-07-13 20:57 Australia/Sydney
 

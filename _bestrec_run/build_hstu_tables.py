@@ -1917,9 +1917,10 @@ def render_tables(cells):
         "rule = final-epoch FULL-catalog eval, history[-1].test, n_eval=223,308 — NOT the "
         "30k best_test subsample).",
         "",
-        "**STATUS: VOID under the prereg floor check (+44% floor inflation) — provisional, "
-        "NOT counted as a second-category pass; the confirmed per-category claim remains "
-        "Musical_Instruments only (§5.2).**",
+        "**STATUS: VOID under the prereg floor check (+44% floor inflation) — provisional; "
+        "this V1 campaign is NOT counted as a second-category pass. The separately "
+        "pre-registered Office V3 campaign passed and is counted under its frozen "
+        "per-category point-estimate wording (§5.2).**",
         "",
         "| arm | per-seed NDCG@10 (final-epoch full) | mean ± sd | 95% CI-LB | vs published 0.0271 |",
         "|---|---|---:|---:|---|",

@@ -11,7 +11,7 @@ only — no content was cut, added, or reworded (two presentation-only additions
 under "Conversion decisions" below). Compiled outputs:
 **`paper_tex/PAPER_TORS.pdf` — the gated review artifact — 40 pages, single-column
 `[manuscript,review,anonymous]` acmart format, Figs. 1–3 embedded**, plus the untracked
-production preview `PAPER_TORS_acmsmall.pdf` (40 pages, `[acmsmall,screen,review,anonymous]`).
+production preview `PAPER_TORS_acmsmall.pdf` (42 pages, `[acmsmall,screen,review,anonymous]`). *Authoritative page counts are always the latest build's own output (`hygiene_scan_output.txt` for the review target); the counts written in this log are point-in-time.*
 
 ## 2026-07-13 sync (3): post-V3 consistency sweep
 
@@ -306,12 +306,12 @@ plus nothing else.
 ## Compile status
 
 - Review target `tectonic main.tex` (`manuscript`): **0 errors, 0 undefined
-  references/citations**; 35 pages *(round-8 count; current builds are 40/40 — see header)*; **one accepted cosmetic overfull** (4.45 pt ≈ 1.6 mm, a
+  references/citations**; 35 pages *(round-8 count, historical; see header for current)*; **one accepted cosmetic overfull** (4.45 pt ≈ 1.6 mm, a
   bold enumerate header in §5.4.2 — invisible protrusion; every other overfull was fixed with
   typography-only `\allowbreak` hints, incl. the long `results_USERTITR_...json` artifact name
   and `Beauty_and_PC`).
 - Preview target `tectonic main-acmsmall.tex` (`acmsmall`): 0 errors, **0 overfull boxes**,
-  36 pages *(round-8 count; current builds are 40/40 — see header)*.
+  36 pages *(round-8 count, historical; see header for current)*.
 - Remaining warnings (accepted):
   - BibTeX "empty address" warnings — conference cities are not in the registry data pulled
     and were not invented (round-8 fill covers volume/number/pages/publisher/DOI); plus the
@@ -377,9 +377,27 @@ paper_tex/
 ├── hygiene_scan_output.txt   # last scan output (PASS)
 ├── main.pdf                  # tectonic output of the review driver (untracked; = PAPER_TORS.pdf)
 ├── PAPER_TORS.pdf            # DELIVERABLE (40 pp, manuscript format, Figs. 1–3 embedded as vector Form XObjects)
-└── PAPER_TORS_acmsmall.pdf   # production preview (40 pp; untracked)
+└── PAPER_TORS_acmsmall.pdf   # production preview (42 pp at this writing; untracked — see header note on counts)
 ```
 
 Generator script (allowed new file outside `paper_tex/`): `_bestrec_run/emit_latex_tables.py`.
 No canonical file (`PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, `results_*.json`,
 `RELEASE_MANIFEST.json`, `external/HSTU-BLaIR`, audits/responses) was modified.
+
+## Sync (4) — audit 2026-07-18 00:08 response (A.0 two-track fix, SILLM4Rec + 2026 semantic-ID citations)
+
+- `appendix-a0.tex`: the stale broad sentence "The confirmed per-category claim remains
+  Musical_Instruments only; Office is not counted" replaced with the two-track V1/V3 statement
+  (V1 not counted, VOID permanent; V3 passed separately, counted under frozen wording, §5.2) —
+  synced from the same edit in `PAPER_SUBMISSION.md` Appendix A.0.
+- Generated `tables/office_confirmation.tex`: the STATUS note is now V1-scoped with the V3
+  pointer (template fixed in `_bestrec_run/build_hstu_tables.py`; regenerated via
+  `--write-manifest` + `emit_latex_tables.py` inside `build.sh`).
+- `05-results.tex` §5.1: SILLM4Rec now formally cited (`wu2025sillm4rec`, MMAsia 2025,
+  DOI 10.1145/3743093.3771011 — metadata verified via Crossref); added explicit scope-out
+  sentence citing UniSGR (`sun2026unisgr`), DIGER (`fu2026diger`), ACERec (`xia2026acerec`)
+  (authors verified against arXiv abstracts; no comparison made against any of them).
+- `references.bib`: the four entries above appended.
+- Build after sync: review target 40 pages (hygiene PASS), acmsmall preview 42 pages,
+  reader `PAPER_SUBMISSION.pdf` 46 pages. Header note added: authoritative counts are the
+  latest build output; logged counts are point-in-time.

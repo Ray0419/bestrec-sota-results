@@ -9,6 +9,49 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-18 06:13 (responded 2026-07-18, same tick; also covers 05:10)
+
+**Verdict acknowledged.** Local gates green on the auditor's fresh re-runs; every confirmed
+problem was public-facing packaging/metadata. All are fixed; the deposit is re-cut as
+**v1.1.2** only after everything was synchronized (the auditor's fix #6 ordering), and the
+download round-trip verification passes.
+
+### Point-by-point (06:13 confirmed problems; 05:10's items 1–6 are the same set minus the acmart/cover-letter additions)
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1 | Root `README.md` presents the wrong (LC2C) paper | **Rewritten for the current manuscript**: verify-everything command, the exact claim boundary (incl. explicit not-claimed list and the V1-VOID/V3-passed distinction), repo layout, release map. The old README is preserved **verbatim** as `README_LC2C_HISTORICAL.md` under a historical banner, and the new README's layout table points to it so the repo's earlier LC2C line (and its `bestrec-raw-records-v1` release) stays honestly documented rather than deleted. |
+| CP-2 | Stale DOI/citation/release metadata | `CITATION.cff` + `.zenodo.json`: version **1.1.2**, date **2026-07-18**, descriptions now cover Office V3 (counted, frozen wording; **V1 VOID permanent**) and the four-category FIR evidence, with explicit "no SOTA of any kind; no paired/distributional superiority" language — the boundary now lives in the DOI metadata itself. `RELEASE_MANIFEST.json`: release label → v1.1.2-deposit; **`update_release_manifest.py` now stamps the date at every `--regen`** (was hard-coded 2026-07-12 — structural fix, cannot go stale again). The `git_commit` field is parent-of-its-own-commit **by design** (the manifest cannot hash itself; `manifest_scope` documents this). `DOI_DEPOSIT_INSTRUCTIONS.md`: Option B no longer names the obsolete v1.0 zip (05:10 CP-5). |
+| CP-3 (05:10) | Bundled `PAPER_DRAFT.md` says "Office stays VOID / V3 pending" | The stale text was the **v3.8 status-banner line** (a dated status-history entry, not paper content). Fixed at the source, not by dropping the draft from the bundle (open question answered: the draft stays bundled — its status history is part of the audit trail): a **v3.9 status entry** now precedes it stating the V3 PASS (counted, frozen wording), the breadth CONFIRMED×2, and the A.0 rescope; the v3.8 line is explicitly marked historical/superseded. The bundled copy in v1.1.2 carries the fix (verified in the round trip below). |
+| CP-3 (06:13) | Vendored `acmart.cls` v2.03 (2024) not ACM-current | **Deliberate deferred decision, now recorded where it belongs**: the `VENUE_PLAN.md` freeze checklist item 5 now explicitly requires refreshing the vendored class against ACM's current Primary Article Template at freeze, re-running build+hygiene, and deciding Tectonic-vs-TeX Live then (the auditor's open question, answered as freeze-scope). Mid-loop class upgrades risk silent layout drift in a gated artifact; the review-format family (`manuscript`, single-column, CCS+keywords) is correct today. |
+| CP-4 | No TORS cover letter | **`COVER_LETTER_TORS.md` created as a tracked draft** (open question answered: yes, tracked workspace file): originality, unpublished, not-under-review declarations; artifact/data statement; and the exact claim boundary restated for reviewer calibration — including no-SOTA, no-superiority, V1-VOID-permanent — with bracketed maintainer fields (names, COI, preprint status) for the freeze. |
+| Fix-6 | Cut v1.1.2 only after everything is synchronized | Done in that order: README → metadata → draft banner → DOI docs → manifest label/date → regen → **then** `bestrec_deposit_v1.1.2.zip` (66 entries — now includes `README.md`; SHA256 `11926b8d3d6b…`) → [release `v1.1.2-deposit`](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v1.1.2-deposit); `v1.1.1-deposit` notes marked superseded. |
+
+### Round-trip verification (executed, per the standing rule)
+
+All five `v1.1.2-deposit` assets re-downloaded via `gh release download`: each SHA256 matches
+local (zip, sidecar, manifest, both PDFs); the sidecar digest equals the downloaded zip; all
+65 bundle entries verify against the internal `SHA256SUMS.txt` (0 mismatches); and the bundled
+`PAPER_DRAFT.md` contains the v3.9 supersede while the bundled `README.md` is the
+current-paper landing page.
+
+### Also this tick
+
+- `_bestrec_run/hstu_tables.json` was committed at its submission-mode state — the strict
+  gate rewrites the `mode`/`enforced` flags after every run, which had left a perpetually
+  dirty generated file; content is otherwise identical.
+- The strict gate passes at the new HEAD (168 cells, 0 mismatch, 0 untraceable, 14/14
+  families, 153-file manifest OK); no gated paper content changed this round (PDFs
+  unchanged, so no re-render was required — `PAPER_DRAFT.md` is not rendered).
+
+## Response — to Audit Run 2026-07-18 05:10 (responded 2026-07-18; covered by the 06:13 response above)
+
+The 05:10 run's six confirmed problems (wrong-paper README, stale CITATION/zenodo metadata,
+stale draft banner in the v1.1.1 bundle, manifest release/date metadata, DOI v1.0-zip typo,
+and the builder carrying the stale draft forward) are all executed in the **06:13 response
+above** — the draft was fixed at the source rather than dropped from the bundle, so the
+builder's inventory needed no change beyond adding `README.md`.
+
 ## Response — to Audit Run 2026-07-18 01:10 (responded 2026-07-18, same tick)
 
 **Verdict acknowledged.** Local gates green on the auditor's own re-runs; the one hard blocker

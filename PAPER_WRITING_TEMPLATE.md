@@ -119,9 +119,10 @@ separate paragraphs a reviewer can quote apart.
     0.03024), 10/10 seeds above both the environment-matched local regeneration 0.0279 and
     the published 0.0271."* Always in the same breath: per-category point-estimate
     comparison; no paired superiority; not SOTA.
-  - FIR breadth: *"Industrial_and_Scientific paired Δ +0.00240 (95% CI +0.00183…+0.00297);
-    CDs_and_Vinyl +0.00566 (+0.00493…+0.00639); 5/5 seeds positive each; zero per-category
-    tuning."*
+  - FIR breadth (paper-printed precision; full 5-dp values live in `FIR_BREADTH_RESULTS.md`):
+    *"Industrial_and_Scientific paired Δ = +0.0024 ± 0.0005 (95% CI [+0.0018, +0.0030]);
+    CDs_and_Vinyl +0.0057 ± 0.0006 (95% CI [+0.0049, +0.0064]); 5/5 seeds positive each;
+    zero per-category tuning."*
   - Attribution honesty: the VG win over published SASRec (+17.5%) is *architectural, not
     text-driven* — ID-only already reaches ≈0.0656; the whole text stack adds +0.00178 ±
     0.00021 (+2.7%); time bias is the largest classical component (+0.0027); text-sim bias

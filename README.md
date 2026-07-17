@@ -36,8 +36,9 @@ Office V1 adjudicator (descriptive/VOID). Separate mechanical adjudicators:
 - **The leak-free causal FIR filter helps on all four categories tested** — an internal
   paired filter-vs-no-filter contrast (never a comparator claim). Two categories under a
   dedicated pre-registration with zero per-category tuning: Industrial_and_Scientific
-  paired Δ **+0.00240** (95% CI +0.00183…+0.00297), CDs_and_Vinyl **+0.00566**
-  (+0.00493…+0.00639), 5/5 seeds each (`PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`).
+  paired Δ **+0.0024** (95% CI [+0.0018, +0.0030]), CDs_and_Vinyl **+0.0057**
+  (95% CI [+0.0049, +0.0064]), 5/5 seeds each (paper-printed precision; full values in the
+  results file) (`PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`).
 - **Text benefits are dataset-conditional** (help on sparse categories, ≈null on dense ones),
   supported by controlled thinning interventions.
 - **The evaluation apparatus itself** — immutable pre-registration, fail-closed artifact

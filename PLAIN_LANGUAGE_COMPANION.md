@@ -49,12 +49,14 @@ mattering more than others.
   about your next purchase than one from last year. The model gets the timestamps and learns how
   quickly relevance fades — like a detective trusting fresh footprints over old ones.
 - **Product descriptions = every item gets a "scent."** Each product's title and description is
-  converted (by a separate, frozen language model) into a numeric fingerprint. Similar products
+  converted — once, up front, by a separate language model that is never trained further —
+  into a numeric fingerprint. Similar products
   end up with similar fingerprints — two different brands of guitar tuner "smell alike" — so the
   model can reason about a product it has rarely or never seen sold. This is how it handles the
   huge tail of obscure items with only a handful of purchases each.
-- Everything above is small by modern standards: **11.6 million parameters, about 10 minutes of
-  training per run on one consumer graphics card.** No giant language model does the
+- Everything above is small by modern standards: **11.6 million parameters** (the model's
+  internal adjustable dials) and **about 10 minutes of training per run on one consumer
+  graphics card.** No giant language model does the
   recommending; the language model only supplies the frozen "scents" beforehand.
 
 ## 3. The novel component: a causal FIR filter (the "shock absorber")
@@ -83,12 +85,13 @@ Three properties make our version safe and honest:
 2. **Zero-initialized:** the filter starts switched **off** (it initially passes the signal
    through unchanged), and training only turns it up where it genuinely helps. It cannot hurt by
    default; it has to earn its influence.
-3. **Tiny:** a handful of numbers per channel (kernel length 8 or 16) — a knob, not a new engine.
+3. **Tiny:** for each internal signal stream it learns just 8 or 16 blending weights — knobs
+   bolted onto the existing engine, not a new engine.
 
 **Does it help?** Yes, consistently. Adding the filter improved results on **all four categories
 we tested**. On two of them the test was run under a sealed pre-registration (see §5): on
-Industrial & Scientific, the filter added **+0.00240** NDCG@10 (95% confidence interval
-**+0.00183 to +0.00297**), and on CDs & Vinyl **+0.00566** (**+0.00493 to +0.00639**) — in both
+Industrial & Scientific, the filter added **+0.0024** NDCG@10 (95% confidence interval
+**+0.0018 to +0.0030**), and on CDs & Vinyl **+0.0057** (**+0.0049 to +0.0064**) — in both
 cases the filter won on **5 out of 5** paired random restarts, with **zero per-category tuning**
 (the settings were transplanted as-is). In sprint terms: a small but repeatable shave off the lap
 time, on tracks the tuning never saw.
@@ -106,39 +109,38 @@ points is *when* they help:
 
 We went beyond correlation (drawn schematically as Fig. B in the interactive explainer): we **thinned** dense datasets on purpose (training the same model on
 artificially sparsified versions while grading on the same exam) to test whether scarcity itself
-flips text from useless to useful. The paper reports these as controlled, intervention-scoped
-findings. The practical upshot for practitioners: *whether to bother wiring product text into
+flips text from useless to useful. The paper reports these as controlled experiments — we changed one
+thing on purpose and watched the effect — not just observations. The practical upshot for practitioners: *whether to bother wiring product text into
 your recommender depends on your catalog's density — measure it first.*
 
 ## 5. Why you can trust the numbers (the part we care about most)
 
-Recommendation-systems research has a credibility problem: tiny improvements, many knobs, and
-strong incentives to report the best run you ever saw. Most of our paper's machinery exists to
-make that failure mode structurally impossible for us. Three mechanisms:
+Recommendation-systems research has a credibility problem: tiny improvements, many knobs,
+and every incentive to report your best run. Our machinery exists to make that structurally
+impossible for us. Three mechanisms:
 
 ### 5.1 Pre-registration = calling your shot
 
 Before running an experiment that could become a claim, we write a sealed contract into version
 control: the exact command, the exact settings, the random seeds (chosen fresh, **never previously
 run**), the pass/fail rule, and the exact sentence we would be allowed to claim if it passes.
-*Then* we run it. Like calling your pocket before the pool shot, or a scientist depositing a
-sealed prediction envelope before opening the lab. If the result misses, we publish the miss —
-the contract file is already public, so there is no quiet way to discard it.
+*Then* we run it — calling the pocket before the pool shot. If the result misses, we publish
+the miss; the contract is already public, so there is no quiet way to discard it.
 
 ### 5.2 The fail-closed artifact gate = a printer that refuses to bluff
 
 Every number printed in the paper — **168 of them** — is wired to the raw result files it came
 from. At every change, a build script recomputes all 168 from those files and **refuses to build
 the paper** if even one printed digit disagrees with its evidence, one number's origin can't be
-traced, or one required family of evidence is missing. A separate manifest pins **153 files by
-cryptographic hash**, so evidence can't drift after the fact. Analogy: a spreadsheet that
+traced, or one required family of evidence is missing. A separate manifest pins **153 files by digital
+fingerprint (hash)**, so evidence can't quietly change after the fact. Analogy: a spreadsheet that
 physically cannot display a figure it can't re-derive from receipts.
 
 ### 5.3 A rival referee audits us every hour
 
-A *different* AI system (Codex) re-audits the whole project on a schedule — re-running the gates,
-re-checking every claim's wording, searching for contradictions, even fact-checking our citations
-against the live web — and appends its complaints to a public file. We must answer every
+A *different* AI system (Codex) re-audits the whole project on a schedule — re-running the
+gates, hunting contradictions, fact-checking our citations against the live web — and appends
+its complaints to a public file. We must answer every
 complaint in writing, and both the complaints and the answers are part of the repository. Dozens
 of rounds of this adversarial ping-pong have already happened; several real defects were caught
 and fixed this way. It's a chess player whose moves are checked by the opposing team's engine,
@@ -235,9 +237,11 @@ machinery that makes the second one credible.
 - [x] Add a "thinning intervention" mini-figure (dense→thinned bars showing the text benefit
       appearing) to explainer §4 (2026-07-18: Fig. B, two-panel schematic, explicitly labeled
       illustrative — no invented numbers printed).
-- [ ] Read-aloud pass on this document: shorten §5, check every analogy lands for a
-      non-programmer, remove any sentence that requires prior ML knowledge.
-- [ ] Cross-check every number in both companion files against the gated paper after each future
-      results change (numbers must stay verbatim-identical).
+- [x] Read-aloud pass on this document (2026-07-18): §5 tightened; glossed parameters,
+      frozen encoder, channels/kernel, hash; "intervention-scoped" replaced with plain
+      language; one analogy per point.
+- [ ] (standing) Cross-check every number in the companion files and PAPER_WRITING_TEMPLATE.md
+      against the gated paper after each future results change (numbers must stay
+      verbatim-identical). Last full check: 2026-07-18, all matched.
 - [ ] Optional: add a "try different seeds" animation to the FIR demo showing run-to-run spread
       vs the CI-lower-bound idea.

@@ -9,6 +9,43 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-18 01:10 (responded 2026-07-18, same tick)
+
+**Verdict acknowledged.** Local gates green on the auditor's own re-runs; the one hard blocker
+was external: the uploaded `v1.1-deposit` assets had gone stale against HEAD. Root cause
+identified, releases repaired with a fresh tag, and the auditor's download-round-trip
+verification is now executed and recorded below. The two wording/documentation items are also
+done.
+
+### Root cause of the stale upload (open question answered)
+
+Commit `908ddf8b` ("Fix TORS table layout and refresh audit manifest") — made outside the
+responder session after the v1.1 assets were uploaded — rebuilt `paper_tex/PAPER_TORS.pdf`,
+regenerated `RELEASE_MANIFEST.json` / `_bestrec_run/hstu_tables.json`, and re-ran
+`build_deposit_bundle.py` (local zip mtime 00:50), but did not re-upload the GitHub assets.
+So the uploads were a faithful snapshot of the commit they were made at, superseded ~20 minutes
+later. Not a corrupt upload — a stale one, exactly as the audit concluded.
+
+### Point-by-point
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1/CP-2 | Uploaded `v1.1-deposit` assets stale vs local | **Fresh tag cut: [`v1.1.1-deposit`](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v1.1.1-deposit)** (the auditor's own alternative, chosen over in-place clobber to avoid two different zips ever having carried the same version name). Assets: `bestrec_deposit_v1.1.1.zip` (65 entries, SHA256 `70b2612b19e430b8…`) + `.sha256` sidecar + current `RELEASE_MANIFEST.json` + both PDFs, all built at HEAD after this round's fixes. The `v1.1-deposit` release notes now say SUPERSEDED with the root cause; its self-consistent assets remain for history. `DOI_DEPOSIT_INSTRUCTIONS.md` points to v1.1.1. |
+| Fix-5 | Verify by download round trip, not local hashes | **Executed:** all five assets re-downloaded via `gh release download`; SHA256 of each downloaded asset == local (`zip 70b2612b…`, sidecar, manifest, `PAPER_SUBMISSION.pdf ed6ba9c2…`, `PAPER_TORS.pdf 6a400180…`); sidecar digest == downloaded zip; all 64 bundle entries verify against the bundle-internal `SHA256SUMS.txt` (0 mismatches). (First pass of the checker printed 64 false mismatches — a bug in the check script itself, an inverted dict key, disclosed here for the record; the corrected check passes clean.) |
+| CP-3 | V1 appendix/table phrases ("Musical_Instruments only", "NOT counted as a second-category pass") findable in PDFs | **Removed everywhere, using the auditor's suggested wording.** A.0 (both md papers + `appendix-a0.tex`) now opens "**The V1 Office campaign counts in no claim.**" with the MI-unaffected note and the V3 pointer; the generated table STATUS note (template fixed in `build_hstu_tables.py`, regenerated) says the same. PDF text extraction confirms zero hits for either phrase in `PAPER_TORS.pdf` and `PAPER_SUBMISSION.pdf`; caveat strength unchanged (V1 VOID permanent). |
+| CP-4 | `BUILD_NOTES.md` historical blocks easy to misread | **Prominent fence added** before the append-only log: header = only authoritative current state; dated sync/Round-N sections = point-in-time entries superseded by later ones; reference sections (Toolchain, Document class, File map) named as kept-current. |
+| Fix-4 | SILLM4Rec full text | Unchanged: ACM full-text access is not available non-interactively; the citation stands on Crossref-verified metadata + repo evidence, and full-text inspection remains item 1 (PENDING) of the `VENUE_PLAN.md` freeze checklist. |
+
+### Remaining open question answered
+
+- **Re-render `PAPER_SUBMISSION.pdf` for an A.0-only wording change?** Yes — done; both PDFs
+  re-rendered (reader 46 pp scan CLEAN; TORS 40 pp hygiene PASS) and shipped in v1.1.1.
+
+**Ritual:** generator fix → `--write-manifest` (BUILD GREEN, 168 cells) → `render_paper_pdf.py`
+CLEAN → `build.sh` PASS → `--regen` → committed together → `rebuild_hstu_submission.py --strict`
+exit 0 (168 cells, 0/0, 14/14 families, 153-file manifest) → pushed → `v1.1.1-deposit` created →
+v1.1 marked superseded → v0.9 manifest refreshed → **download round-trip PASS**.
+
 ## Response — to Audit Run 2026-07-18 00:08 (responded 2026-07-18, same day)
 
 **Verdict acknowledged.** The strict gate, Office V3 adjudicator, and FIR-breadth adjudicator

@@ -173,6 +173,40 @@
     <ol class="ranked" id="rankList" aria-live="polite"></ol>
     <p class="footnote" style="margin-top:10px">Notice: the <em>most recent</em> pick dominates (time bias), and candidates that <em>smell like</em> your history climb even if nothing identical was bought (text scent). That's the whole intuition — the real model just learns these weights from 1.8&nbsp;million real purchases instead of five invented ones.</p>
   </div>
+  <figure>
+    <div class="figwrap">
+      <svg viewBox="0 0 660 210" width="100%" role="img" aria-label="Diagram: the model highlights relevant and recent past purchases with different weights when predicting the next item">
+        <g font-size="12">
+          <text x="14" y="22" fill="var(--muted)" font-size="11">a purchase history, oldest → newest</text>
+          <!-- history items -->
+          <g text-anchor="middle">
+            <rect x="20"  y="40" width="88" height="44" rx="9" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="64"  y="59">📱 phone case</text><text x="64" y="76" fill="var(--muted)" font-size="10.5">2 years ago</text>
+            <rect x="128" y="40" width="88" height="44" rx="9" fill="var(--amber-soft)" stroke="var(--amber)" stroke-width="2"/>
+            <text x="172" y="59">🎸 strings</text><text x="172" y="76" fill="var(--muted)" font-size="10.5">January</text>
+            <rect x="236" y="40" width="88" height="44" rx="9" fill="var(--amber-soft)" stroke="var(--amber)" stroke-width="2"/>
+            <text x="280" y="59">🪗 capo</text><text x="280" y="76" fill="var(--muted)" font-size="10.5">March</text>
+            <rect x="344" y="40" width="88" height="44" rx="9" fill="var(--amber-soft)" stroke="var(--amber)" stroke-width="3"/>
+            <text x="388" y="59">🎵 tuner</text><text x="388" y="76" fill="var(--muted)" font-size="10.5">last week</text>
+            <rect x="486" y="34" width="150" height="56" rx="9" fill="none" stroke="var(--chart-blue)" stroke-width="2.5" stroke-dasharray="6 4"/>
+            <text x="561" y="57" fill="var(--chart-blue)" font-weight="700">next purchase?</text>
+            <text x="561" y="76" fill="var(--muted)" font-size="10.5">the model's guess</text>
+          </g>
+          <!-- attention arcs (weight = thickness/opacity) -->
+          <g fill="none" stroke="var(--chart-blue)">
+            <path d="M 64 84  Q 240 195 545 92" stroke-width="1"   opacity="0.25"/>
+            <path d="M 172 84 Q 330 180 552 92" stroke-width="2.5" opacity="0.55"/>
+            <path d="M 280 84 Q 400 168 558 92" stroke-width="3.5" opacity="0.75"/>
+            <path d="M 388 84 Q 470 150 561 92" stroke-width="5.5" opacity="0.95"/>
+          </g>
+          <text x="130" y="128" fill="var(--chart-blue)" font-size="11">attention weight = how much each memory is “highlighted” (thicker = more)</text>
+          <text x="130" y="146" fill="var(--amber)" font-size="11">🖍 highlighted: recent items and items that smell like each other (music gear)</text>
+          <text x="14" y="196" fill="var(--muted)" font-size="10.5">Illustrative weights — the real model learns them; the two-year-old phone case gets almost none.</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>Fig. A — Attention as a highlighter. When guessing the next purchase, the model assigns each past item a learned weight: fresher and more related items count for more; stale, unrelated ones fade.</figcaption>
+  </figure>
 </section>
 
 <section id="fir">
@@ -223,6 +257,33 @@
     </div>
   </div>
   <p>And we didn't stop at correlation: we <strong>thinned</strong> dense catalogs on purpose — retraining on artificially sparsified data while grading on the same exam — to test whether scarcity itself flips text from useless to useful. Practical upshot: <em>whether to wire product text into your recommender depends on your catalog's density. Measure it first.</em></p>
+  <figure>
+    <div class="figwrap">
+      <svg viewBox="0 0 660 205" width="100%" role="img" aria-label="Schematic: on a dense catalog text adds almost nothing; after deliberately thinning the same catalog, the text-augmented model pulls ahead">
+        <g font-size="12">
+          <!-- panel 1: dense -->
+          <text x="90" y="24" fill="var(--ink)" font-weight="700">Dense catalog (as-is)</text>
+          <line x1="40" y1="160" x2="290" y2="160" stroke="var(--line)" stroke-width="1"/>
+          <rect x="75"  y="70" width="42" height="90" rx="4" fill="var(--chart-blue)"/>
+          <rect x="139" y="66" width="42" height="94" rx="4" fill="var(--chart-green)"/>
+          <text x="96"  y="178" text-anchor="middle" fill="var(--ink-2)" font-size="11">ID-only</text>
+          <text x="160" y="178" text-anchor="middle" fill="var(--ink-2)" font-size="11">+ text</text>
+          <text x="160" y="58" text-anchor="middle" fill="var(--muted)" font-size="10.5">≈ no gain</text>
+          <!-- panel 2: thinned -->
+          <text x="440" y="24" fill="var(--ink)" font-weight="700">Same catalog, thinned on purpose</text>
+          <line x1="390" y1="160" x2="640" y2="160" stroke="var(--line)" stroke-width="1"/>
+          <rect x="425" y="104" width="42" height="56" rx="4" fill="var(--chart-blue)"/>
+          <rect x="489" y="78"  width="42" height="82" rx="4" fill="var(--chart-green)"/>
+          <text x="446" y="178" text-anchor="middle" fill="var(--ink-2)" font-size="11">ID-only</text>
+          <text x="510" y="178" text-anchor="middle" fill="var(--ink-2)" font-size="11">+ text</text>
+          <path d="M 472 96 Q 480 84 486 90" fill="none" stroke="var(--chart-verm)" stroke-width="2"/>
+          <text x="540" y="70" fill="var(--chart-verm)" font-size="11" font-weight="700">text starts helping</text>
+          <text x="14" y="198" fill="var(--muted)" font-size="10.5">Schematic (bar heights illustrative — measured values and protocols are in the paper's intervention section). Both scores drop when data is thinned; the point is the gap that opens.</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>Fig. B — The thinning intervention, schematically. On the full dense catalog, adding text changes almost nothing. Deliberately starve the same catalog of interactions and the text-augmented model pulls ahead — evidence that <em>scarcity itself</em> is what makes product text valuable.</figcaption>
+  </figure>
 </section>
 
 <section id="trust">

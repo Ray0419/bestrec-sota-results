@@ -41,7 +41,7 @@ meaningful here, the way a tenth of a second is meaningful in a 100 m sprint.
 The model reads a shopping history the way you read a sentence — in order, with some words
 mattering more than others.
 
-- **Attention = a highlighter.** For each prediction, the model decides which past purchases to
+- **Attention = a highlighter** (drawn as Fig. A in the interactive explainer). For each prediction, the model decides which past purchases to
   highlight. Buying a *capo* makes the earlier *guitar strings* very relevant and the two-year-old
   *phone case* irrelevant. The "attention" mechanism is just a learned highlighter: it assigns
   each past item a weight and blends the highlighted items into a guess about what comes next.
@@ -104,7 +104,7 @@ points is *when* they help:
 - On **large, dense catalogs** (Video Games, Beauty), text adds roughly nothing on the same
   measurements. The big-city library has so much borrowing history that the blurbs are redundant.
 
-We went beyond correlation: we **thinned** dense datasets on purpose (training the same model on
+We went beyond correlation (drawn schematically as Fig. B in the interactive explainer): we **thinned** dense datasets on purpose (training the same model on
 artificially sparsified versions while grading on the same exam) to test whether scarcity itself
 flips text from useless to useful. The paper reports these as controlled, intervention-scoped
 findings. The practical upshot for practitioners: *whether to bother wiring product text into
@@ -229,10 +229,12 @@ machinery that makes the second one credible.
       timeline, claim/no-claim panel, FAQ, glossary; light+dark themes; published as an Artifact.
 - [ ] Keep PAPER_WRITING_TEMPLATE.md's quoted numbers in sync with the gated paper whenever
       results change (same verbatim rule as this document).
-- [ ] Add a small SVG "how the model reads a history" figure (highlighter/attention visual) to
-      the explainer §2 and link it from this document.
-- [ ] Add a "thinning intervention" mini-figure (dense→thinned bars showing the text benefit
-      appearing) to explainer §4.
+- [x] Add a small SVG "how the model reads a history" figure (highlighter/attention visual) to
+      the explainer §2 and link it from this document (2026-07-18: Fig. A, attention arcs with
+      weight-as-thickness over a toy history).
+- [x] Add a "thinning intervention" mini-figure (dense→thinned bars showing the text benefit
+      appearing) to explainer §4 (2026-07-18: Fig. B, two-panel schematic, explicitly labeled
+      illustrative — no invented numbers printed).
 - [ ] Read-aloud pass on this document: shorten §5, check every analogy lands for a
       non-programmer, remove any sentence that requires prior ML knowledge.
 - [ ] Cross-check every number in both companion files against the gated paper after each future

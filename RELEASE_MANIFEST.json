@@ -1,11 +1,11 @@
 {
-  "release": "v0.9-audit-evidence (immutable data assets) + v1.1-deposit (document bundle)",
-  "date": "2026-07-12",
+  "release": "v0.9-audit-evidence (immutable data assets) + v1.1.2-deposit (document bundle; supersedes v1.1.1/v1.1/v1.0)",
+  "date": "2026-07-18",
   "license": {
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "882b839abc12a871a874f2538afacef1088caa6d",
+  "git_commit": "c4cb410396d7f1f891c807b32a1c501a6834fc39",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -222,8 +222,8 @@
       "bytes": 1393037
     },
     "PAPER_DRAFT.md": {
-      "sha256": "097b35733fc89d01bfab79571c3087a11e36cdba66b4a3947003c72d3dff4fe5",
-      "bytes": 170871
+      "sha256": "5a3950dc5b748c9dbfe8340ed56beb49c3b460097e0caffa58597603e724e844",
+      "bytes": 171462
     },
     "CANONICAL_SUBMISSION.md": {
       "sha256": "3f5aa1326f863006d0f1387973505c7597a33766e496daa40f04e906264b47e2",
@@ -258,8 +258,8 @@
       "bytes": 2195
     },
     "_bestrec_run/update_release_manifest.py": {
-      "sha256": "c85bf0421230803eb5c720577a60ae93e778ddacc59043f302d17f537e6977e9",
-      "bytes": 13880
+      "sha256": "73f0f5bf454bd3ce8bcb27f1d73e03089f781df35718257eedd5e81704257c2f",
+      "bytes": 14235
     },
     "paper_tex/PAPER_TORS.pdf": {
       "sha256": "6a40018016a3f428eb482d42559aa4a99f9c10963772c8f845c6f571bfe8356c",

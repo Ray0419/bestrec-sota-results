@@ -23,6 +23,7 @@ The manifest cannot hash itself; its own commit is the child of the state it
 describes. RELEASE_MANIFEST.json is therefore excluded from its own sections.
 """
 import argparse
+import datetime as _dt
 import hashlib
 import io
 import json
@@ -270,7 +271,7 @@ def regen(m):
         "the git archive of that commit.")
 
     m["git_commit"] = head_commit()
-    m["date"] = "2026-07-12"
+    m["date"] = _dt.date.today().isoformat()
     m["manifest_scope"] = (
         "Hashes describe the repository files as of git_commit. Kept in sync "
         "MECHANICALLY: rebuild_hstu_submission.py --strict runs "

@@ -53,5 +53,10 @@ Status legend: **PENDING** = not yet done, blocks the freeze when reached.
    (two counted per-category point-estimate comparisons; FIR internal contrast on four
    categories; no SOTA of any kind; Office V1 VOID permanent).
 4. Table-2 split preference (single wide table vs split) — venue-template decision.
-5. First-page acmart format verification against current TORS author guidelines.
+5. First-page acmart format verification against current TORS author guidelines, **including
+   refreshing the vendored `acmart.cls` (currently v2.03, 2024) against ACM's current Primary
+   Article Template** and re-running the full build + hygiene scan; decide then whether the
+   Tectonic-based build compiles the latest class or whether final packaging moves to
+   TeX Live/Overleaf (audit 2026-07-18 06:13, deliberate deferred decision — class upgrades
+   are freeze-scope, not loop-scope).
 6. DOI minting (currently deferred by maintainer decision — see above).

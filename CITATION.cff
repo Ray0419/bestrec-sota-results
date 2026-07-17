@@ -8,8 +8,8 @@ authors:
     # the manuscript itself is anonymized for review.
 repository-code: "https://github.com/Ray0419/bestrec-sota-results"
 license: MIT
-version: "1.0"
-date-released: "2026-07-11"
+version: "1.1.2"
+date-released: "2026-07-18"
 keywords:
   - sequential recommendation
   - Amazon Reviews 2023
@@ -21,9 +21,15 @@ keywords:
 abstract: >-
   Code, pre-registrations, provenance manifests, and evaluation artifacts for
   an HSTU-style pure-PyTorch sequential recommender on the Amazon Reviews 2023
-  5-core benchmark: a strictly causal FIR temporal filter (cross-category
-  confirmed), a pre-registered per-category point-estimate confirmation on
-  Musical_Instruments, a dataset-conditional long-tail pattern with titration
-  interventions, a fail-closed artifact-graph build that recomputes every
-  printed number from source artifacts, and a shim harness that executes the
-  reference comparator implementation locally.
+  5-core benchmark: a strictly causal, zero-initialized FIR temporal filter
+  (positive on all four categories tested; two under a dedicated
+  pre-registration), two counted pre-registered per-category point-estimate
+  comparisons against published single-run HSTU-BLaIR values
+  (Musical_Instruments; Office_Products under the redesigned V3
+  pre-registration with an environment-matched reference — the earlier V1
+  campaign remains VOID by its own tripwire), a dataset-conditional long-tail
+  pattern with thinning interventions, a fail-closed artifact-graph build that
+  recomputes every printed number from source artifacts, and a shim harness
+  that executes the reference comparator implementation locally. No SOTA claim
+  of any kind; no paired or distributional superiority over single-run
+  comparators.

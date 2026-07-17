@@ -6,74 +6,906 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **Confirmed reject-level release-control gap: the uploaded `v1.1-deposit`
-   GitHub release assets are stale relative to the committed local artifacts.**
-   Local `_release/bestrec_deposit_v1.1.zip` is 1,793,411 bytes, SHA256
-   `71a2f120716b032fc7bdadfb3f8a11741cc959fa996d83cf258c210250ed96e7`,
-   65 entries. The downloaded GitHub release asset is 1,793,364 bytes, SHA256
-   `58f7dfc42df03f89e3df884614c59e992dc2034ed8af3ab6cfedbc0ea9a251b4`,
-   also 65 entries, but four payloads differ:
-   `RELEASE_MANIFEST.json`, `SHA256SUMS.txt`, `_bestrec_run/hstu_tables.json`,
-   and `paper_tex/PAPER_TORS.pdf`. The standalone GitHub assets for
-   `PAPER_TORS.pdf` and `RELEASE_MANIFEST.json` also carry the stale remote
-   digests. Fix before DOI/submission: re-upload the current local bundle and
-   sidecar, or cut a clean `v1.1.1-deposit` from HEAD `882b839a`.
-2. **No current hard numerical/provenance blocker in the local strict gate.**
-   Fresh `rebuild_hstu_submission.py --strict` at `2026-07-18 01:09
+1. **Confirmed public-facing repository contradiction: root `README.md` is for
+   an older LC2C cold-item/EASE paper, not the current HSTU/FIR/TORS
+   manuscript.** It still opens with `BEST-Rec v5: SBERT-Augmented EASE +
+   Novel Cold-Item Algorithm (LC2C)`, reports Beauty/Fashion/Instruments/Books
+   warm/cold tables, describes a "strict SOTA repair path", and documents
+   old LC2C reproduction commands. Because the current paper points reviewers to
+   this repository/release, this is now the top submission-readiness risk:
+   reviewers can reasonably conclude the artifact is for the wrong paper.
+2. **Confirmed DOI/citation metadata is stale and bundled.** Local and archived
+   `CITATION.cff` still says version `1.0`, `date-released: 2026-07-11`, and
+   describes only the Musical_Instruments confirmation; bundled `.zenodo.json`
+   likewise omits Office V3 and FIR-breadth/four-category evidence. This will
+   produce misleading DOI/GitHub citation metadata even if the manuscript text
+   is careful.
+3. **Confirmed hard packaging contradiction: the current `v1.1.1` deposit zip
+   includes stale `PAPER_DRAFT.md` text saying `Office stays VOID` and the V3
+   prereg outcome is pending.** The canonical paper now counts Office V3 under
+   frozen narrow wording, but `_release/bestrec_deposit_v1.1.1.zip` and the
+   public GitHub `v1.1.1-deposit` asset contain
+   `bestrec_deposit_v1.1.1/PAPER_DRAFT.md` with that stale status line.
+4. **Confirmed provenance-control gap: `v1.1.1-deposit` fixed the stale upload,
+   but local, bundled, and uploaded `RELEASE_MANIFEST.json` still name
+   superseded `v1.1-deposit`, date `2026-07-12`, and parent commit
+   `882b839a`.** Current HEAD remains `88fc0c7f`; the strict gate verifies file
+   hashes, but it does not make this release/date/commit metadata true.
+5. **Confirmed DOI instruction typo can make the author upload the wrong
+   archive.** `DOI_DEPOSIT_INSTRUCTIONS.md` identifies `v1.1.1-deposit` /
+   `bestrec_deposit_v1.1.1.zip` in the artifact table, but Option B still says
+   to upload `bestrec_deposit_v1.0.zip` from the `v1.1.1-deposit` assets.
+6. **Confirmed venue-template drift: the TeX build vendors `acmart.cls`
+   v2.03 from 2024 while ACM's current submission page tells LaTeX authors to
+   use the latest Primary Article Template.** The current PDF is otherwise in
+   the right review family (`manuscript`, single-column), and CCS concepts plus
+   keywords are present in `paper_tex/paper-shared.tex`; the risk is that the
+   submission package may be returned or questioned for using an obsolete class
+   rather than ACM's current template.
+7. **Confirmed pre-submission package gap: no TORS cover-letter artifact was
+   found.** `VENUE_PLAN.md` lists a cover letter as a freeze task, but the
+   workspace has no cover-letter file declaring originality, unpublished status,
+   and not-under-review status. TORS author guidelines require that declaration
+   in a cover letter, so this blocks a clean ScholarOne-ready package even if
+   the paper PDF itself is ready.
+8. **No current hard numerical blocker in the local strict gate.** Fresh
+   `rebuild_hstu_submission.py --strict` at `2026-07-18 06:13
    Australia/Sydney` passes HSTU parity, all `168` recomputed empirical cells,
    `0` paper mismatches, `0` untraceable cells, all `14` declared claim
-   families, and release-manifest verification for `153` local files.
-3. **Office V3 mechanical evidence remains green.** Fresh
-   `adjudicate_office_v3.py --no-append` at `2026-07-18 01:09
-   Australia/Sydney` passes: K=16 mean `0.03047`, sd `0.00011`, CI-LB
-   `0.03033`; K=8 mean `0.03029`, sd `0.00005`, CI-LB `0.03024`; 10/10 seeds
-   exceed both the environment-matched local regeneration `0.0279` and the
-   published `0.0271`; comparability conditions OK. This remains only a
-   per-category point-estimate comparison, not paired superiority or SOTA.
-4. **FIR-breadth mechanical evidence remains green.** Fresh
-   `adjudicate_fir_breadth.py --no-append` confirms
-   `Industrial_and_Scientific` mean `+0.00240`, 95% CI
-   `[+0.00183,+0.00297]`, 5/5 positive, and `CDs_and_Vinyl` mean `+0.00566`,
-   95% CI `[+0.00493,+0.00639]`, 5/5 positive. This supports only the internal
-   paired filter-vs-no-filter claim, not any comparator claim.
-5. **The old Office contradiction is repaired, but the V1 appendix wording is
-   still skimmable-risky.** Current source/PDF text now scopes the
-   "Musical_Instruments only" and "NOT counted as a second-category pass"
-   language to the old V1 Office campaign and immediately notes that the
-   separate V3 campaign passed and is counted under frozen wording. That is no
-   longer a confirmed contradiction. Still, a top reviewer searching for those
-   phrases can misread the paper; replace them with cleaner V1-only wording
-   such as "The V1 campaign counts in no claim; V3 is reported separately in
-   Section 5.2."
-6. **`paper_tex/BUILD_NOTES.md` remains too easy to misread.** It now has a
-   Sync(4) entry and current counts (TORS 40 pp, acmsmall 42 pp, reader 46 pp),
-   but it still embeds historical 35/36-page compile and hygiene blocks. The
-   file says those are historical; for a submission package, either move old
-   blocks to an archive subsection or add a prominent "historical logs below"
-   divider before round-8 content.
-7. **SILLM4Rec is now cited, but direct full-text protocol inspection remains
-   open.** The manuscript cites the ACM DOI and repository and honestly says
-   exclusion is pending direct full-text inspection. Accessible evidence
-   supports non-interchangeability with full-catalog LLOO, but a reviewer may
-   still ask for the ACM PDF/table protocol to be archived and summarized.
-8. **Concurrent 2026 generative-retrieval coverage is now materially better.**
-   The manuscript cites/scopes SID-MLP, Latte, ReSID, ChronoSID, GrIT,
-   Augment-or-Not, DiffuReason, SILLM4Rec, UniSGR, DIGER, ACERec, FEARec, and
-   WPGRec. Keep the "no comparative claim against concurrent arXiv-only work"
-   fence. The intentionally omitted 2026 semantic-planning position paper is a
-   residual coverage choice, not a direct comparator gap.
-9. **Confirmed causal FIR novelty boundary is much safer but must stay narrow.**
-   The paper cites FMLP-Rec/BSARec plus Caser/NextItNet and notes WPGRec-like
-   frequency/wavelet-packet work. Keep the claim to a leak-free, left-causal,
-   zero-init depthwise FIR regularizer inside this HSTU-style artifact-gated
-   setting, not to causal/local convolutional or frequency-domain sequence
+   families, and release-manifest hash verification for `153` local files.
+9. **Office V3 and FIR-breadth mechanical evidence remain green.** Office V3
+   adjudication at `2026-07-18 06:13` passes under frozen wording: K=16 mean
+   `0.03047`, CI-LB `0.03033`; K=8 mean `0.03029`, CI-LB `0.03024`; all 10
+   seeds above both `0.0279` and `0.0271`; comparability conditions OK.
+   FIR-breadth remains confirmed: `Industrial_and_Scientific` mean `+0.00240`,
+   95% CI `[+0.00183,+0.00297]`, 5/5 positive; `CDs_and_Vinyl` mean
+   `+0.00566`, 95% CI `[+0.00493,+0.00639]`, 5/5 positive. These support only
+   the stated per-category point-estimate and internal paired filter claims,
+   not paired superiority or SOTA.
+10. **The canonical manuscript novelty boundary is currently defensible, but
+   only as narrow/incremental.** External checks support that frequency-domain
+   and time-frequency sequential recommendation are already broad prior art
+   (FMLP-Rec, BSARec, FEARec, WPGRec), and convolutional/causal-convolutional
+   sequence modeling is old prior art (Caser, NextItNet). The safe claim is the
+   leak-free, left-causal, zero-init FIR regularizer inside this HSTU-style
+   artifact-gated setting, not frequency filtering or convolutional sequence
    modeling in general.
-10. **Persistent scientific boundary: no broad SOTA, no paired superiority.** Any
-   future abstract, conclusion, cover letter, response file, or release note
-   must keep Video_Games as competitive but not SOTA; MI and Office V3 as
-   per-category point-estimate comparisons against single-run/single-seed
-   comparators; and FIR-breadth as an internal paired filter-vs-no-filter
-   result, never a comparator or SOTA claim.
+11. **TAPE must stay secondary and incremental.** External checks confirm close
+   prior-art neighborhoods: TIGER semantic IDs, VQ-Rec text-to-discrete-code
+   item representation, and ProtoMF prototypes. The current paper mostly frames
+   TAPE correctly as a small adaptation/ablation; do not elevate it to a
+   headline novelty claim.
+12. **Persistent scientific boundary: no broad SOTA, no paired superiority.**
+   Any future abstract, conclusion, cover letter, response file, release note,
+   DOI metadata, README, or repository landing page must keep Video_Games as
+   competitive but not SOTA; MI and Office V3 as per-category point-estimate
+   comparisons against single-run/single-seed comparators; and FIR-breadth as an
+   internal paired filter-vs-no-filter result, never a comparator or SOTA claim.
+
+## Audit Run - 2026-07-18 06:13 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` /
+  `88fc0c7fd48d01065a628402e6483e8dc2c2c39a`.
+- Current run time: `2026-07-18 06:13:21` through `06:13:39 +10:00` for the
+  dynamic gates; audit documentation completed immediately afterward.
+- Automation memory read from
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  using the `$HOME\.codex` fallback because `CODEX_HOME` is unset in this
+  PowerShell session.
+- Working tree before this audit edit: tracked modifications in
+  `PAPER_REVIEW_AUDIT.md` and `_bestrec_run/hstu_tables.json`; known untracked
+  files remain `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Sources/artifacts inspected this run: `README.md`, `CITATION.cff`,
+  `.zenodo.json`, `DOI_DEPOSIT_INSTRUCTIONS.md`, `RELEASE_MANIFEST.json`,
+  `CANONICAL_SUBMISSION.md`, `PAPER_SUBMISSION.md`, `VENUE_PLAN.md`,
+  `paper_tex/main.tex`, `paper_tex/main-acmsmall.tex`,
+  `paper_tex/paper-shared.tex`, `paper_tex/acmart.cls`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/hygiene_scan_output.txt`,
+  `paper_tex/sections/01-introduction.tex`,
+  `paper_tex/sections/02-related.tex`, and
+  `paper_tex/sections/08-availability.tex`.
+- No manuscript or code source was edited in this run; only this audit file was
+  updated.
+
+### Verdict
+
+**The empirical paper remains green; the submission package remains
+rejectable.** The strict artifact graph, Office V3 adjudicator, and FIR-breadth
+adjudicator all pass again with the same values as the previous hour. The
+current TeX front matter includes CCS concepts and keywords, and the review
+target is single-column `manuscript` format, which is directionally consistent
+with ACM review-submission guidance.
+
+The new submission-readiness finding is template drift: the paper vendors
+`paper_tex/acmart.cls` v2.03 (`2024/02/04`), while ACM's current author page
+instructs LaTeX authors to use the latest Primary Article Template and names a
+later version on that page. This may be acceptable as a local build workaround
+only if the final submission is regenerated with ACM's current template or the
+exception is explicitly tested. A strict editorial check could return the
+manuscript before review for using obsolete template files.
+
+The second new package finding is that no cover-letter artifact exists. This is
+not a scientific defect in the paper, but it is a real TORS submission blocker:
+the venue plan correctly lists a cover letter, and TORS author guidance requires
+a declaration that the work is original, unpublished, and not currently under
+review elsewhere.
+
+The highest scientific/artifact risks are unchanged: the public repository
+landing page is still for the wrong LC2C/EASE paper; DOI/citation metadata and
+the deposit bundle are still stale; and release instructions still contain the
+wrong v1.0 zip reference.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: `168` cells recomputed; `0` untraceable; `0` paper mismatches; all
+    `14` declared claim families sourced.
+  - PASS: release-manifest hash verification OK for `153` files.
+  - PASS: MI V2 gate; legacy Office V1 descriptive/VOID check remains OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-18 06:13:39 Australia/Sydney`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, `5/5` seeds
+    above both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, `5/5` seeds
+    above both references.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - CONFIRMED at `2026-07-18 06:13:39 Australia/Sydney`, block
+    `9a38ad66bd75`.
+  - Industrial_and_Scientific: mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, `5/5` positive.
+  - CDs_and_Vinyl: mean `+0.00566`, 95% CI `[+0.00493,+0.00639]`,
+    `5/5` positive.
+- Claim/package sweep:
+  - `README.md` still describes `BEST-Rec v5: SBERT-Augmented EASE + Novel
+    Cold-Item Algorithm (LC2C)` and old LC2C reproduction paths, not the
+    current HSTU/FIR/TORS artifact.
+  - `CITATION.cff` still reports version `1.0`, date `2026-07-11`, and only
+    the Musical_Instruments confirmation boundary.
+  - `.zenodo.json` still omits Office V3 and FIR-breadth/four-category
+    evidence.
+  - `RELEASE_MANIFEST.json` still names `v1.1-deposit`, date `2026-07-12`, and
+    parent commit `882b839a`.
+  - `DOI_DEPOSIT_INSTRUCTIONS.md` still says Option B should upload
+    `bestrec_deposit_v1.0.zip`.
+- Venue-format sweep:
+  - `paper_tex/main.tex` uses `\documentclass[manuscript,review,anonymous]{acmart}`.
+  - `paper_tex/paper-shared.tex` contains `\acmJournal{TORS}`, CCS XML,
+    `\ccsdesc[500]{Information systems~Recommender systems}`,
+    `\ccsdesc[300]{Information systems~Personalization}`, and a nonempty
+    `\keywords{...}` list.
+  - `paper_tex/acmart.cls` is vendored as
+    `[2024/02/04 v2.03 Typesetting articles for the Association for Computing Machinery]`.
+  - `paper_tex/hygiene_scan_output.txt` remains PASS: `PAPER_TORS.pdf`,
+    40 pages, `0` placeholder/forbidden failures, informational SOTA/non-claim
+    review hits only.
+- Cover-letter search:
+  - File-name and content searches found `VENUE_PLAN.md`'s freeze-checklist
+    item for a cover letter, but no actual cover-letter artifact in the
+    workspace.
+
+### External Fact-Check / Venue Notes
+
+- ACM's current author-submission page says journal manuscripts must use ACM's
+  authoring template, tells authors to submit review manuscripts in single
+  column, instructs LaTeX authors to use the latest Primary Article Template
+  with the `manuscript` option, and states that CCS concepts and keywords are
+  required for articles over two pages. Source:
+  https://www.acm.org/publications/authors/submissions
+- The same ACM page says ACM journal/transaction articles are prepared for
+  print and digital display through ACM's production workflow, so local PDFs are
+  not the final production format; this supports keeping an ACM-current source
+  package ready rather than relying on a vendored 2024 class. Source:
+  https://www.acm.org/publications/authors/submissions
+- The ACM TORS author-guidelines page states that authors must submit a cover
+  letter declaring that the work is original, unpublished, and not currently
+  under review with another journal. Source:
+  https://dl.acm.org/journal/tors/author-guidelines
+- ACM TORS describes its scope as high-quality work on recommender-systems
+  research, so the manuscript topic is venue-relevant; the blocker is package
+  readiness and claim discipline, not gross venue mismatch. Source:
+  https://dl.acm.org/journal/tors
+
+### Confirmed Problems
+
+1. **Root `README.md` still presents the wrong paper.** This remains the top
+   reviewer-facing contradiction.
+2. **DOI/citation/release metadata is still stale.** `CITATION.cff`,
+   `.zenodo.json`, `RELEASE_MANIFEST.json`, and
+   `DOI_DEPOSIT_INSTRUCTIONS.md` still disagree with the current paper
+   boundary.
+3. **The local TeX toolchain is not ACM-current.** The review target is the
+   right format family, but the vendored `acmart.cls` is v2.03 from 2024, not
+   the current ACM template version advertised on ACM's submission page.
+4. **No TORS cover letter exists yet.** This is a submission-package blocker,
+   especially because the paper's delicate claim boundary must be stated
+   consistently in the cover letter.
+
+### Confirmed Non-Problems
+
+- No empirical-cell mismatch, untraceable value, missing claim family, HSTU
+  parity failure, Office V3 adjudicator failure, or FIR-breadth adjudicator
+  failure was found.
+- The compiled TeX front matter now has CCS concepts and keywords.
+- The review PDF target is single-column `manuscript` format and the hygiene
+  scan remains PASS.
+- The availability section is current on the tracked-artifact boundary for
+  Office V3 and FIR-breadth; it no longer carries the older "not counted" sidecar
+  contradiction.
+
+### Concrete Fixes To Make Next
+
+1. Replace root `README.md` with a current HSTU/FIR/TORS artifact README, and
+   archive the old LC2C README if it must be preserved.
+2. Refresh `CITATION.cff`, `.zenodo.json`, `RELEASE_MANIFEST.json`, and
+   `DOI_DEPOSIT_INSTRUCTIONS.md` before any DOI or release action.
+3. Remove or rewrite `PAPER_DRAFT.md` in the deposit builder before rebuilding
+   the next deposit archive.
+4. Test the manuscript with ACM's current Primary Article Template/acmart class,
+   or document a deliberate, editor-approved local-build exception. Rebuild and
+   re-run the hygiene scan after any class/toolchain change.
+5. Create a TORS cover letter that states: originality, unpublished/not under
+   review elsewhere, no broad SOTA claim, MI and Office V3 only as
+   per-category point-estimate comparisons, FIR-breadth only as internal
+   paired filter evidence, and Office V1 permanently VOID.
+6. Cut a clean `v1.1.2-deposit` only after the repository landing page,
+   metadata, manifest, DOI instructions, and bundled file inventory are all
+   synchronized.
+
+### Open Questions
+
+- Can the current Tectonic-based build compile with ACM's latest `acmart`, or
+  does final packaging need TeX Live/Overleaf instead?
+- Should the cover letter be maintained as a tracked workspace file
+  (`COVER_LETTER_TORS.md`) before ScholarOne submission?
+- Should the next deposit omit `PAPER_DRAFT.md` entirely, or keep it only after
+  rewriting it to match `PAPER_SUBMISSION.md`?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Confirm branch, HEAD, dirty tracked files, and known untracked files.
+- [x] Re-run strict artifact graph rebuild.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Search public package files for stale release/DOI/status wording.
+- [x] Check TeX review/prod drivers, shared front matter, CCS concepts, and
+      keyword metadata.
+- [x] Check vendored `acmart.cls` version against ACM submission guidance.
+- [x] Search for a TORS cover-letter artifact.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Replace repository README.
+- [ ] Refresh DOI/citation/release metadata.
+- [ ] Rebuild a clean deposit archive.
+- [ ] Verify ACM-current template compatibility.
+- [ ] Draft and check TORS cover letter.
+
+## Audit Run - 2026-07-18 05:10 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` /
+  `88fc0c7fd48d01065a628402e6483e8dc2c2c39a`.
+- Current run time: `2026-07-18 05:10:51` through `05:16:39 +10:00`;
+  adjudicators printed `2026-07-18 05:12:03` and `05:12:11`.
+- Automation memory read from
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  using the `$HOME\.codex` fallback because `CODEX_HOME` is unset in this
+  PowerShell session.
+- Working tree before this audit edit: tracked modifications in
+  `PAPER_REVIEW_AUDIT.md` and `_bestrec_run/hstu_tables.json`; known untracked
+  files remain `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Sources/artifacts inspected this run: `README.md`, `CITATION.cff`,
+  `.zenodo.json`, `CANONICAL_SUBMISSION.md`, `PAPER_DRAFT.md`,
+  `PAPER_SUBMISSION.md`, live `paper_tex/sections/*.tex`,
+  `paper_tex/tables/table0_novelty.tex`, `paper_tex/references.bib`,
+  `paper_tex/PAPER_TORS.pdf`, `DOI_DEPOSIT_INSTRUCTIONS.md`,
+  `RELEASE_MANIFEST.json`, `_bestrec_run/build_deposit_bundle.py`,
+  `_release/bestrec_deposit_v1.1.1.zip`, the public GitHub release
+  `v1.1.1-deposit`, and fresh PDF renders under
+  `tmp/pdfs/hourly_audit_20260718_0510/`.
+
+### Verdict
+
+**The math is still green; the public artifact story is not.** The strict build,
+Office V3 adjudicator, and FIR-breadth adjudicator all pass again. The compiled
+TORS PDF sample pages render without obvious layout defects.
+
+The new top rejection risk is the repository landing page: `README.md` is still
+for the older LC2C/EASE cold-item paper, with old datasets, old reproduction
+commands, old SOTA language, and old LC2C claims. A reviewer following the
+paper's artifact link would land on a repository that appears to support a
+different manuscript. This is more serious than an archived stale draft because
+it is the default public face of the code release.
+
+The prior packaging blockers also remain confirmed: the uploaded `v1.1.1`
+archive still contains the stale `PAPER_DRAFT.md`, stale manifest metadata, and
+stale DOI manual-upload instruction. `CITATION.cff` and `.zenodo.json` add a
+new DOI-metadata problem: they are bundled, but still describe the earlier
+v1.0/Musical_Instruments-only evidence boundary.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: `168` cells recomputed; `0` untraceable; `0` paper mismatches; all
+    `14` declared claim families sourced.
+  - PASS: release-manifest hash verification OK for `153` files.
+  - PASS: MI V2 gate; legacy Office V1 descriptive/VOID check remains OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-18 05:12:03 Australia/Sydney`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, `5/5` seeds
+    above both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, `5/5` seeds
+    above both references.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - CONFIRMED at `2026-07-18 05:12:11 Australia/Sydney`, block
+    `9a38ad66bd75`.
+  - Industrial_and_Scientific: mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, `5/5` positive.
+  - CDs_and_Vinyl: mean `+0.00566`, 95% CI `[+0.00493,+0.00639]`,
+    `5/5` positive.
+- Public GitHub release check:
+  - `gh release view v1.1.1-deposit --repo Ray0419/bestrec-sota-results` reports
+    uploaded `bestrec_deposit_v1.1.1.zip` digest
+    `sha256:70b2612b19e430b8a1a0ace3576c82805dc95fd40f3e08e6982f041273a4ac6d`,
+    size `1,793,791`, published `2026-07-17T15:34:05Z`.
+  - Local zip hash and sidecar match that digest, so the stale archive content
+    is already public, not local-only drift.
+- Archive inspection:
+  - `_release/bestrec_deposit_v1.1.1.zip` has `65` entries and includes
+    `.zenodo.json`, `CITATION.cff`, `PAPER_DRAFT.md`,
+    `DOI_DEPOSIT_INSTRUCTIONS.md`, `RELEASE_MANIFEST.json`,
+    `PAPER_SUBMISSION.md`, and `paper_tex/PAPER_TORS.pdf`.
+  - Bundled `PAPER_DRAFT.md` contains `Office stays VOID` and
+    `outcome is pending`.
+  - Bundled `RELEASE_MANIFEST.json` reports release
+    `v0.9-audit-evidence (immutable data assets) + v1.1-deposit (document bundle)`,
+    date `2026-07-12`, and commit
+    `882b839abc12a871a874f2538afacef1088caa6d`, not current HEAD `88fc0c7f`.
+  - Bundled `DOI_DEPOSIT_INSTRUCTIONS.md` still contains
+    `upload bestrec_deposit_v1.0.zip` in Option B.
+- Repository/metadata inspection:
+  - `README.md` opens with `BEST-Rec v5: SBERT-Augmented EASE + Novel Cold-Item
+    Algorithm (LC2C)` and reports old Beauty/Fashion/Instruments/Books warm and
+    cold-item LC2C results, not the HSTU/FIR/TORS manuscript.
+  - `CITATION.cff` says `version: "1.0"` and
+    `date-released: "2026-07-11"` and mentions the
+    Musical_Instruments confirmation, but not Office V3 or FIR-breadth.
+  - `.zenodo.json` similarly describes the pre-registered
+    Musical_Instruments point-estimate confirmation and omits Office V3 and the
+    FIR-breadth/four-category claim boundary.
+  - `CANONICAL_SUBMISSION.md` itself is mostly current: it names the HSTU/FIR
+    manuscript, Office V3 pass, four-category FIR evidence, and no-SOTA
+    boundary. The stale files are therefore inconsistent with the canonical
+    source-of-truth file.
+- PDF visual check:
+  - Rendered representative pages `1, 8, 9, 15, 18, 19, 20, 27, 28, 35, 36`
+    of `paper_tex/PAPER_TORS.pdf` with PyMuPDF to
+    `tmp/pdfs/hourly_audit_20260718_0510/`.
+  - Inspected the contact sheet plus dense pages 9 and 28. No clipping,
+    overlapping text, missing glyphs, broken tables, or black-box rendering was
+    observed. Tables are dense but readable at full page scale.
+
+### External Fact-Check / Novelty Notes
+
+- FEARec is a SIGIR 2023 frequency-domain sequential recommendation model that
+  explicitly starts from the claim that self-attention models behave as
+  low-pass filters and designs frequency-domain attention/regularization. This
+  supports the paper's narrow FIR novelty boundary, not a broad frequency
+  novelty claim. Source: https://arxiv.org/abs/2304.09184
+- WPGRec is listed on arXiv as submitted `2026-04-23`, accepted to SIGIR 2026,
+  and uses wavelet-packet/time-frequency modeling plus graph propagation for
+  sequential recommendation. This further broadens the time-frequency prior-art
+  neighborhood. Source: https://arxiv.org/abs/2604.21305
+- Caser already framed sequential recommendation around convolutional sequence
+  embedding in time/latent spaces and local convolutional filters. Source:
+  https://arxiv.org/abs/1809.07426
+- NextItNet already used stacked holed/dilated convolutional layers for next
+  item recommendation, supporting the manuscript's statement that causal
+  convolutional sequence encoders are prior art. Source:
+  https://arxiv.org/abs/1808.05163
+- Amazon Reviews 2023 official materials support the dataset framing as a 2023
+  McAuley Lab release with user reviews, item metadata, links, and standard
+  splitting materials. Source: https://amazon-reviews-2023.github.io/
+- BLaIR public materials support the paper's use of BLaIR as an Amazon Reviews
+  2023 language-item representation family, but do not rescue any stale
+  repository metadata. Sources: https://arxiv.org/html/2403.03952v1 and
+  https://github.com/hyp1231/AmazonReviews2023/blob/main/blair/README.md
+
+### Confirmed Problems
+
+1. **Root `README.md` is for the wrong paper.** This is public-facing and
+   directly conflicts with the current paper title, methods, results, datasets,
+   and reproduction path.
+2. **DOI/citation metadata is stale and bundled.** `CITATION.cff` and
+   `.zenodo.json` will under-describe or misdate the artifact if a DOI is minted
+   from the current release.
+3. **The uploaded `v1.1.1` deposit zip still contains stale `PAPER_DRAFT.md`.**
+   This repeats the Office V3 pending/VOID contradiction inside the public,
+   hashed archive.
+4. **The uploaded and bundled manifest metadata is stale.** It still identifies
+   `v1.1-deposit`, date `2026-07-12`, and commit `882b839a`.
+5. **The DOI manual-upload instruction still names the obsolete v1.0 zip.**
+   This is inside both the workspace file and the current deposit bundle.
+6. **`_bestrec_run/build_deposit_bundle.py` still carries `PAPER_DRAFT.md`
+   forward from the v1.0 inventory.** Unless this is changed, any rebuild will
+   keep reintroducing the stale draft unless the draft itself is updated.
+
+### Confirmed Non-Problems
+
+- No empirical-cell mismatch, untraceable value, or missing claim family was
+  found in the fresh strict rebuild.
+- Office V3 and FIR-breadth adjudicators remain green under their frozen
+  wording.
+- Canonical manuscript/TeX sources continue to keep broad SOTA and paired
+  superiority boundaries narrow.
+- The current TORS PDF sample renders cleanly on inspected pages.
+- The new FEARec/WPGRec/Caser/NextItNet related-work additions move the novelty
+  boundary in the right direction: narrower and more defensible, not broader.
+
+### Concrete Fixes To Make Next
+
+1. Replace root `README.md` with a current HSTU/FIR/TORS artifact README:
+   title, canonical paper files, one-command strict verification, current
+   claim boundaries, release assets, DOI status, and explicit non-SOTA wording.
+   Move the LC2C README to `archive_noncanonical/` if it must be preserved.
+2. Update `CITATION.cff` and `.zenodo.json` before DOI minting: version/date,
+   title if needed, Office V3, FIR-breadth/four-category boundary, no broad
+   SOTA, no paired superiority, and current release URL.
+3. Decide whether `PAPER_DRAFT.md` belongs in the deposit at all. Best fix:
+   remove it from `V10_FILES` in `_bestrec_run/build_deposit_bundle.py`, or
+   rewrite the status header so it cannot contradict `PAPER_SUBMISSION.md`.
+4. Regenerate `RELEASE_MANIFEST.json` so release/date/commit metadata reflect
+   the actual intended deposit boundary.
+5. Fix `DOI_DEPOSIT_INSTRUCTIONS.md` Option B to name
+   `bestrec_deposit_v1.1.1.zip` or the next rebuilt version, not v1.0.
+6. Rebuild and re-upload as a fresh `v1.1.2-deposit` rather than silently
+   replacing `v1.1.1`, so the DOI/reviewer trail is unambiguous.
+7. After rebuilding, verify: local zip hash, sidecar hash, GitHub asset digest,
+   bundled manifest metadata, absence/fixed state of `PAPER_DRAFT.md`, and
+   bundled DOI/Citation/Zenodo metadata.
+
+### Open Questions
+
+- Should the next public artifact be a corrected `v1.1.1` asset replacement or
+  a new `v1.1.2-deposit` release? Reviewer clarity favors `v1.1.2-deposit`.
+- Should `PAPER_DRAFT.md` remain in any archival bundle once
+  `PAPER_SUBMISSION.md` and `paper_tex/PAPER_TORS.pdf` are the canonical
+  manuscript artifacts?
+- Should `README.md` be manuscript-specific, or should it become a short
+  repository index with separate links to the old LC2C and current HSTU/FIR
+  tracks? For top-journal review, manuscript-specific is safer.
+- Does the artifact release need a separate `ARTIFACTS.md` to keep root README
+  concise while still giving reviewers exact commands and claim boundaries?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, release, DOI, citation, README, and
+      audit artifacts.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Inspect public GitHub `v1.1.1-deposit` asset metadata.
+- [x] Inspect local/public zip hash and bundled stale files.
+- [x] Inspect root README, `CITATION.cff`, `.zenodo.json`, and canonical source
+      boundary file.
+- [x] Render and visually inspect representative TORS PDF pages.
+- [x] Fact-check the expanded frequency/convolution prior-art boundary against
+      FEARec, WPGRec, Caser, NextItNet, AR2023, and BLaIR sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Replace or archive stale root README.
+- [ ] Refresh DOI/citation/Zenodo metadata.
+- [ ] Repair or exclude `PAPER_DRAFT.md` from the deposit bundle.
+- [ ] Regenerate manifest release/date/commit metadata.
+- [ ] Fix DOI manual-upload instructions.
+- [ ] Rebuild/re-upload a corrected deposit archive before DOI minting.
+
+## Audit Run - 2026-07-18 04:10 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` /
+  `88fc0c7fd48d01065a628402e6483e8dc2c2c39a`.
+- Current run time: `2026-07-18 04:10:44 +10:00`; adjudicators printed
+  `2026-07-18 04:11:07`.
+- Automation memory read from
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  using the `$HOME\.codex` fallback because `CODEX_HOME` is unset in this
+  PowerShell session.
+- Working tree before this audit edit: tracked modifications in
+  `PAPER_REVIEW_AUDIT.md` and `_bestrec_run/hstu_tables.json`; the latter is
+  the known strict-gate generated-state change from `"mode": "default"` /
+  `"enforced": false` to `"mode": "submission"` / `"enforced": true`. Known
+  untracked files remain `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Sources/artifacts inspected this run: `PAPER_SUBMISSION.md`,
+  `PAPER_DRAFT.md`, `paper_tex/sections/*.tex`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/hygiene_scan_output.txt`,
+  `paper_tex/tables/TABLES_PROVENANCE.json`, `DOI_DEPOSIT_INSTRUCTIONS.md`,
+  `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`, `RELEASE_MANIFEST.json`,
+  `_bestrec_run/build_deposit_bundle.py`,
+  `_release/bestrec_deposit_v1.1.1.zip`, and
+  `_release/bestrec_deposit_v1.1.1.zip.sha256`.
+
+### Verdict
+
+**Numerically green, but archive not submission-clean.** The strict rebuild,
+Office V3 adjudicator, and FIR-breadth adjudicator all pass again. The major
+new finding is packaging, not math: the current `v1.1.1` deposit archive ships
+`PAPER_DRAFT.md`, and that draft still says Office stays VOID while V3 is only
+pending. That directly conflicts with the canonical paper's Office V3 pass.
+
+The previous manifest problem is also confirmed inside the archive: bundled
+`RELEASE_MANIFEST.json` still says `v1.1-deposit`, date `2026-07-12`, and
+`git_commit` `882b839abc12a871a874f2538afacef1088caa6d`. A DOI/package reviewer
+can fairly conclude that the artifact bundle is not provenance-clean even
+though the empirical tables are recomputable.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: `168` cells recomputed; `0` untraceable; `0` paper mismatches; all
+    `14` declared claim families sourced.
+  - PASS: release-manifest hash verification OK for `153` files.
+  - PASS: MI V2 gate; legacy Office V1 descriptive/VOID check remains OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-18 04:11:07 Australia/Sydney`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, `5/5` seeds
+    above both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, `5/5` seeds
+    above both references.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - CONFIRMED at `2026-07-18 04:11:07 Australia/Sydney`, block
+    `9a38ad66bd75`.
+  - Industrial_and_Scientific: mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, `5/5` positive.
+  - CDs_and_Vinyl: mean `+0.00566`, 95% CI `[+0.00493,+0.00639]`,
+    `5/5` positive.
+- Manifest/release-metadata search:
+  - `RELEASE_MANIFEST.json` still begins with
+    `v0.9-audit-evidence (immutable data assets) + v1.1-deposit (document bundle)`.
+  - It still records date `2026-07-12` and `git_commit`
+    `882b839abc12a871a874f2538afacef1088caa6d`, while current HEAD is
+    `88fc0c7fd48d01065a628402e6483e8dc2c2c39a`.
+  - The embedded archive copy has the same stale values.
+- Deposit archive inspection:
+  - `_bestrec_run/build_deposit_bundle.py` includes `PAPER_DRAFT.md`,
+    `PAPER_SUBMISSION.md`, `PAPER_SUBMISSION.pdf`, `RELEASE_MANIFEST.json`,
+    `DOI_DEPOSIT_INSTRUCTIONS.md`, and `paper_tex/PAPER_TORS.pdf` in the
+    v1.1.1 inventory.
+  - `_release/bestrec_deposit_v1.1.1.zip` contains
+    `bestrec_deposit_v1.1.1/PAPER_DRAFT.md`.
+  - The archive copy of `PAPER_DRAFT.md` contains:
+    `Office stays VOID (the V3 prereg is cited only as a committed
+    pre-registration whose outcome is pending, PREREG_OFFICE_V3.md)`.
+  - Local zip SHA256 remains
+    `70b2612b19e430b8a1a0ace3576c82805dc95fd40f3e08e6982f041273a4ac6d`,
+    matching `_release/bestrec_deposit_v1.1.1.zip.sha256`. This confirms the
+    contradictory draft is in the currently hashed archive, not a post-hash
+    local drift.
+- Source consistency scans:
+  - `PAPER_SUBMISSION.md` and live `paper_tex/sections/*.tex` keep the narrow
+    Office V3 wording and explicit non-SOTA / no-paired-superiority boundaries.
+  - `rg` finds the stale Office-pending wording in `PAPER_DRAFT.md` only among
+    manuscript-like sources, plus `paper_tex/BUILD_NOTES.md` entries that say
+    the stale TeX phrase was replaced.
+  - `paper_tex/hygiene_scan_output.txt` remains PASS: 40 pages, 0
+    placeholder/forbidden failures, 20 informational SOTA/nonclaim hits.
+- DOI instructions check:
+  - Artifact table says the current bundle is GitHub release
+    `v1.1.1-deposit` asset `bestrec_deposit_v1.1.1.zip`.
+  - Option B still instructs manual Zenodo upload of `bestrec_deposit_v1.0.zip`
+    "from the `v1.1.1-deposit` release assets, or `_release/` locally", which
+    is internally contradictory and operationally dangerous.
+
+### External Fact-Check / Novelty Notes
+
+- FMLP-Rec already proposes learnable filters for sequential recommendation and
+  motivates them as frequency-domain noise attenuation. Source:
+  https://arxiv.org/abs/2202.13556
+- BSARec frames Transformer self-attention in sequential recommendation as
+  low-pass / oversmoothing and uses Fourier-based mitigation. Source:
+  https://arxiv.org/abs/2312.10325
+- TIGER uses RQ-VAE semantic IDs and autoregressive generative retrieval for
+  recommendation; this supports the paper's claim that TAPE is adjacent to
+  semantic-ID work, not wholly new. Sources:
+  https://arxiv.org/abs/2305.05065 and
+  https://papers.neurips.cc/paper_files/paper/2023/file/20dcab0f14046a5c6b02b61da9f13229-Paper-Conference.pdf
+- VQ-Rec maps item text into discrete item codes for transferable sequential
+  recommendation; this narrows any TAPE novelty claim to its continuous soft
+  text-prototype realization. Source: https://arxiv.org/abs/2210.12316
+- ProtoMF is prototype-based matrix factorization for effective and explainable
+  recommendations; it supports treating prototype use as prior art. Source:
+  https://dl.acm.org/doi/10.1145/3523227.3546756
+- Amazon Reviews 2023 official materials confirm the dataset is a McAuley Lab
+  2023 release with reviews, item metadata, links, and 5-core processing docs.
+  Sources: https://amazon-reviews-2023.github.io/ and
+  https://amazon-reviews-2023.github.io/data_processing/5core.html
+- SILLM4Rec remains a comparison-scope caveat: ACM metadata and accessible
+  pages support its existence and high-level recommender framing, but I did not
+  establish direct full-catalog LLOO comparability from the available public
+  text in this run. Source: https://dl.acm.org/doi/10.1145/3743093.3771011
+
+### Confirmed Problems
+
+1. **The current deposit zip contains a stale, manuscript-like draft that
+   contradicts the canonical Office V3 claim.** This is now the top rejection
+   risk because it is already in the hashed archive.
+2. **The bundled release manifest is metadata-stale.** It verifies local file
+   hashes, but its release/date/commit fields describe neither the current
+   `v1.1.1` archive nor current HEAD.
+3. **The manual DOI upload instructions name the obsolete v1.0 zip.** This can
+   cause the wrong archive to be uploaded even if the v1.1.1 artifact exists.
+4. **`RESPONSE_TO_PAPER_REVIEW_AUDIT.md` still overclaims the manifest fix.**
+   It says the release label now names both releases, but both local and
+   bundled manifests still say only `v1.1-deposit` for the document bundle.
+
+### Confirmed Non-Problems
+
+- The current strict rebuild has no empirical-cell mismatch or untraceable
+  table value.
+- Office V3 remains a narrow pass under its frozen wording; FIR-breadth remains
+  confirmed on the two extra categories.
+- Canonical manuscript sources and TeX sections no longer carry the stale broad
+  Office non-counting phrase.
+- The current TORS hygiene scan passes with no forbidden-claim failures.
+
+### Concrete Fixes To Make Next
+
+1. Decide the status of `PAPER_DRAFT.md`: either update its status header to
+   match the canonical Office V3/V1 two-track statement, or remove it from
+   `_bestrec_run/build_deposit_bundle.py` and state that only
+   `PAPER_SUBMISSION.md` / `paper_tex/PAPER_TORS.pdf` are manuscript sources.
+2. Regenerate `RELEASE_MANIFEST.json` so `release`, `date`, and `git_commit`
+   reflect the actual intended deposit boundary, not the stale `v1.1` /
+   `882b839a` boundary.
+3. Fix `DOI_DEPOSIT_INSTRUCTIONS.md` Option B to name
+   `bestrec_deposit_v1.1.1.zip` or the next rebuilt version, not
+   `bestrec_deposit_v1.0.zip`.
+4. Rebuild `_release/bestrec_deposit_v1.1.1.zip` or cut a fresh
+   `v1.1.2-deposit`, update the sidecar SHA256, and re-upload the release
+   assets. Do not mint a DOI from the current zip.
+5. Keep FIR/TAPE novelty language narrow; do not let DOI metadata, cover
+   letters, README text, or response files call the method broadly novel or
+   SOTA.
+
+### Open Questions
+
+- Should `PAPER_DRAFT.md` remain in any archival bundle at all, given that it is
+  explicitly noncanonical and can carry stale status metadata?
+- What exact commit should `RELEASE_MANIFEST.json` name after the packaging
+  repair: the source state before the regenerated manifest, or the commit that
+  includes the regenerated manifest and rebuilt bundle instructions?
+- Should the next archive be a corrected `v1.1.1` asset replacement or a new
+  `v1.1.2-deposit` release for DOI clarity?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, release, and audit artifacts.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Search source files for stale Office V3 pending/no-claim wording.
+- [x] Inspect deposit builder inventory.
+- [x] Inspect current v1.1.1 zip contents and embedded stale text.
+- [x] Check local zip SHA256 against the sidecar.
+- [x] Fact-check novelty boundaries against FMLP-Rec, BSARec, TIGER, VQ-Rec,
+      ProtoMF, AR2023, and SILLM4Rec public sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Repair or exclude `PAPER_DRAFT.md` from the deposit bundle.
+- [ ] Regenerate manifest release/date/commit metadata.
+- [ ] Fix DOI manual-upload instructions.
+- [ ] Rebuild/re-upload a corrected deposit archive before DOI minting.
+
+## Audit Run - 2026-07-18 03:10 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `88fc0c7f`.
+- Current run time: `2026-07-18 03:10:16 +10:00`; adjudicators printed
+  `2026-07-18 03:11:37`.
+- Automation memory read from
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`;
+  `CODEX_HOME` remains unset in this PowerShell session.
+- Working tree before this audit edit: tracked modification in
+  `_bestrec_run/hstu_tables.json` only, changing generated metadata from
+  `"mode": "default"` / `"enforced": false` to `"mode": "submission"` /
+  `"enforced": true`; known untracked files remain
+  `_bestrec_run/impact_program.DONE`, `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Canonical sources/artifacts inspected this run:
+  `PAPER_SUBMISSION.md`, `PAPER_SUBMISSION.pdf`, `PAPER_DRAFT.md`,
+  `paper_tex/PAPER_TORS.pdf`, `paper_tex/sections/*.tex`,
+  `paper_tex/tables/office_confirmation.tex`, `paper_tex/references.bib`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/hygiene_scan_output.txt`,
+  `DOI_DEPOSIT_INSTRUCTIONS.md`, `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`,
+  `RELEASE_MANIFEST.json`, `_release/bestrec_deposit_v1.1.1.zip`, and GitHub
+  release `v1.1.1-deposit`.
+
+### Verdict
+
+**Numerically green, packaging improved, but still not provenance-clean.** The
+last audit's hard public-release blocker is fixed in the narrow byte sense:
+`v1.1.1-deposit` exists, and GitHub asset digests match local files. The strict
+build, Office V3 adjudicator, and FIR-breadth adjudicator are all green.
+
+The new top rejection risk is subtler but still serious: the manifest shipped
+with those current artifacts still says `v1.1-deposit` and `git_commit`
+`882b839a`, while the repository and DOI instructions now direct reviewers to
+`v1.1.1-deposit` from HEAD `88fc0c7f`. A skeptical reviewer will treat that as
+weak release discipline unless it is corrected before DOI/submission.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: `168` cells recomputed; `0` untraceable; `0` paper mismatches; all
+    `14` declared claim families sourced.
+  - PASS: release-manifest verification OK for `153` files.
+  - PASS: MI V2 gate; legacy Office V1 descriptive/VOID check remains OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-18 03:11:37 Australia/Sydney`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, `5/5` seeds
+    above both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, `5/5` seeds
+    above both references.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - CONFIRMED at `2026-07-18 03:11:37 Australia/Sydney`, block `9a38ad66bd75`.
+  - Industrial_and_Scientific: mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, `5/5` positive.
+  - CDs_and_Vinyl: mean `+0.00566`, 95% CI `[+0.00493,+0.00639]`,
+    `5/5` positive.
+- GitHub/local release hash check
+  - `gh release view v1.1.1-deposit` reports uploaded bundle digest
+    `sha256:70b2612b19e430b8a1a0ace3576c82805dc95fd40f3e08e6982f041273a4ac6d`.
+  - Local `_release/bestrec_deposit_v1.1.1.zip` has the same SHA256 and size
+    `1,793,791` bytes; the `.sha256`, `PAPER_SUBMISSION.pdf`,
+    `paper_tex/PAPER_TORS.pdf`, and `RELEASE_MANIFEST.json` also match the
+    GitHub asset digests.
+  - Release URL checked:
+    https://github.com/Ray0419/bestrec-sota-results/releases/tag/v1.1.1-deposit
+- Manifest metadata check
+  - `RELEASE_MANIFEST.json` line 2 still says
+    `v0.9-audit-evidence (immutable data assets) + v1.1-deposit (document bundle)`.
+  - It records `git_commit` `882b839abc12a871a874f2538afacef1088caa6d`, while
+    current HEAD is `88fc0c7fd48d01065a628402e6483e8dc2c2c39a`.
+  - `DOI_DEPOSIT_INSTRUCTIONS.md` now correctly points to `v1.1.1-deposit`;
+    `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` claims the manifest release label was
+    refreshed, but the checked manifest contradicts that claim.
+- PDF/source extraction with `pypdf` and `rg`
+  - `PAPER_SUBMISSION.pdf`: 46 pages; `Office_Products V3` on page 22;
+    `SILLM4Rec` on page 19; no `Office is not counted`, `NOT counted`, or
+    `Musical_Instruments only` hits.
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; `Office_Products V3` on page 20;
+    `SILLM4Rec` on pages 18 and 36; no old broad Office hits.
+  - `paper_tex/hygiene_scan_output.txt`: PASS, 40 pages, `0`
+    placeholder/forbidden failures, `20` informational review hits.
+- Visual PDF sample
+  - Rendered and inspected TORS pages 1, 18, 20, and 36 via PyMuPDF.
+  - Text and tables are readable; no clipped text or broken glyphs in sampled
+    pages.
+  - Minor risk: page 1 has visible line numbers and a duplicated
+    "Manuscript submitted to ACM" footer; page 20 has a cramped split table
+    header. Confirm these are acceptable under the target ACM review format.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR arXiv v3 confirms AR2023 5-core Video Games, Office Products, and
+  Musical Instruments, plus the comparator NDCG@10 values used here: Video Games
+  `0.0760`, Office Products `0.0271`, Musical Instruments `0.0406`.
+  Source: https://arxiv.org/html/2504.10545v3
+- Amazon Reviews 2023 official site confirms the dataset framing: collected by
+  McAuley Lab, 571.54M reviews, 48.19M items, 33 domains, interactions through
+  September 2023, plus 5-core processing documentation. Sources:
+  https://amazon-reviews-2023.github.io/ and
+  https://amazon-reviews-2023.github.io/data_processing/5core.html
+- SILLM4Rec citation metadata is confirmed via Crossref/DOI: Yuhao Wu, Fang
+  Quan, Maoqi Liu, Xiaowen Huang, Jitao Sang, MMAsia 2025, pages 1-8, DOI
+  `10.1145/3743093.3771011`. The public repository describes candidate-product
+  ranking tasks and SFT/DPO training data, supporting non-interchangeability
+  with full-catalog LLOO. Sources:
+  https://doi.org/10.1145/3743093.3771011 and
+  https://github.com/MKC-Lab/SILLM4Rec
+- FIR novelty boundary remains narrow: FMLP-Rec already uses learnable filters
+  for sequential recommendation, and BSARec already frames self-attention as
+  low-pass/oversmoothing with Fourier-based mitigation. Sources:
+  https://arxiv.org/abs/2202.13556 and https://arxiv.org/abs/2312.10325
+
+### Confirmed Problems
+
+1. **`RELEASE_MANIFEST.json` metadata is stale relative to the current release.**
+   It verifies file hashes but still names `v1.1-deposit` and parent commit
+   `882b839a`, not the current `v1.1.1-deposit` / `88fc0c7f` state.
+2. **`RESPONSE_TO_PAPER_REVIEW_AUDIT.md` overclaims the manifest fix.** It says
+   "the `release` label now names both releases"; the checked manifest does not.
+3. **`PAPER_DRAFT.md` remains unsafe as a manuscript-like artifact.** Its status
+   line still says Office V3 was pending and Office stays VOID. This is
+   noncanonical, but a workspace or bundle sweep could confuse it with a live
+   source.
+4. **PDF review-mode polish needs one final human choice.** The sampled TORS PDF
+   is readable, but the page-1 duplicate footer/line-number presentation should
+   be confirmed against the actual target submission settings.
+
+### Confirmed Non-Problems
+
+- The old broad Office contradiction is gone from canonical Markdown, TeX, and
+  both checked PDFs.
+- The `v1.1.1-deposit` GitHub upload matches local files by SHA256; the previous
+  stale-upload problem is superseded if and only if reviewers are pointed to
+  `v1.1.1-deposit`.
+- Local strict numerical/provenance checks, Office V3 adjudication, and
+  FIR-breadth adjudication are green.
+- SILLM4Rec citation metadata in `paper_tex/references.bib` matches Crossref.
+
+### Concrete Fixes To Make Next
+
+1. Regenerate or patch `RELEASE_MANIFEST.json` so its `release`, `date`, and
+   `git_commit` fields describe the intended `v1.1.1-deposit` source state.
+   Then rebuild `_release/bestrec_deposit_v1.1.1.zip` and re-upload if the
+   manifest is bundled.
+2. Update `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` to say the prior manifest-label
+   fix was incomplete, or amend it after the manifest is actually fixed.
+3. Either archive/rename `PAPER_DRAFT.md` as historical or update its first
+   status line so it cannot contradict the canonical submission.
+4. Confirm the ACM target mode: if line numbers and duplicate footer are not
+   required, render a clean final view; if they are required for review, record
+   that explicitly in `BUILD_NOTES.md`.
+5. Keep the SILLM4Rec caveat unless the ACM full text is directly archived and
+   its evaluation protocol is summarized.
+
+### Open Questions
+
+- Should the manifest's `git_commit` describe the exact commit used to build the
+  release bundle (`88fc0c7f`) or the parent state whose hashes it records? The
+  current text says it should be the source state it describes, but the
+  v1.1.1 release workflow now makes that ambiguous.
+- Is `PAPER_DRAFT.md` supposed to remain a live manuscript source, or should it
+  be clearly marked/excluded from all submission/deposit bundles?
+- Is the visible review-line-number layout in `PAPER_TORS.pdf` the intended ACM
+  review artifact?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate current canonical manuscript, TeX, PDF, release, and result
+      artifacts.
+- [x] Re-run strict manuscript/artifact gate.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Verify `v1.1.1-deposit` GitHub asset digests against local files.
+- [x] Check `RELEASE_MANIFEST.json` release metadata and commit pointer.
+- [x] Search canonical sources and PDFs for stale Office contradiction phrases.
+- [x] Render and inspect representative TORS PDF pages.
+- [x] Fact-check key external claims against HSTU-BLaIR, Amazon Reviews 2023,
+      SILLM4Rec/Crossref, FMLP-Rec, and BSARec sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Fix manifest release/commit metadata and rebuild/re-upload if bundled.
+- [ ] Decide whether `PAPER_DRAFT.md` is historical or live, then align it.
+- [ ] Confirm final ACM PDF review-vs-clean rendering settings.
+- [ ] Inspect SILLM4Rec full paper directly or keep exclusion explicitly pending.
 
 ## Audit Run - 2026-07-18 01:10 Australia/Sydney
 

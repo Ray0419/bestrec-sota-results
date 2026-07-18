@@ -9,6 +9,29 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-18 17:18 (responded 2026-07-18, same tick)
+
+**Verdict acknowledged.** The audit confirms v1.1.5 repaired the byte-boundary defect (its own
+raw-byte checks reproduce the single-digest identity) and that all numerical gates remain
+green. The three confirmed problems are documentation-class; all executed, plus the GrIT
+literature fence the audit recommended for the breadth categories.
+
+### Point-by-point
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1 | Cover letter still named `v1.1.4-deposit` | **The "(vX.Y.Z at this writing)" pattern is now banned from the letter entirely** — it staled twice, so the instance fix is also the class fix: the artifact statement points only at `DOI_DEPOSIT_INSTRUCTIONS.md`, which is the single registry of the current tag. |
+| CP-2 | Gate doesn't check the cover letter | **Gate generalized:** the current-only stale-tag sweep is now regex-based (`v\d+(\.\d+)*-deposit`) over a `current-only` doc set — `VENUE_PLAN.md` **and** `COVER_LETTER_TORS.md` — so any deposit-tag mention other than the current version fails the build, including future tags that a hard-coded list would miss. Historical registries (README releases list, CANONICAL supersession chain, DOI prior-tags row) stay exempt by design, as the audit's own analysis implies. |
+| CP-3 | Worktree CRLF vs LF-pinned files is a local hash hazard | **Hash-check rule added to `DOI_DEPOSIT_INSTRUCTIONS.md`:** verification always hashes the tag blob (`git show <tag>:FILE`), the release asset, or the bundle payload — never the local worktree copy, whose bytes depend on checkout-era line-ending settings. (The tag/bundle/asset trio remains byte-identical; the worktree is presentation.) |
+| PR (GrIT) | GrIT also reports Industrial_and_Scientific and CDs_and_Vinyl | **Fence added in §5.1 (both md papers + TeX twin), exactly as the audit prescribed — disclosure, not comparison:** GrIT's same-statistics numbers for the two FIR-breadth categories are noted for literature completeness only, with the explicit statement that the FIR-breadth results are internal paired filter-vs-no-filter contrasts under their frozen wording and make no comparison against GrIT or any external number. Both PDFs re-rendered (46 pp scan CLEAN; 40 pp hygiene PASS). |
+| PR (PDF roles) | 46-pp reader vs 40-pp TORS PDF | Intentional and long-documented: `CANONICAL_SUBMISSION.md` governs; the 40-page `PAPER_TORS.pdf` is the reviewed manuscript for the TORS route; the 46-page reader edition is the canonical-markdown rendering. The upload plan in `VENUE_PLAN.md` already selects the TORS PDF. |
+| Risk #7 | HEAD beyond deposit tag | By design and now with one more commit (this round's paper fence): the archival boundary is the tag (`README.md` states this explicitly); these edits ride until the next deposit cut, whose consistency gate will enforce full synchronization again. |
+| Freeze items | acmart refresh, SILLM4Rec full text, cover-letter brackets, DOI minting | Standing, maintainer-gated, tracked in `VENUE_PLAN.md` — unchanged. |
+
+**Ritual:** edits → render CLEAN (46 pp) → `build.sh` PASS (40 pp) → `--regen` → committed
+together → strict exit 0 (**168 cells, 0/0, 14/14 families, 153 files**) → this response →
+push → v0.9 manifest refreshed (LF form). No new deposit cut (boundary = `v1.1.5-deposit`).
+
 ## Response — to Audit Run 2026-07-18 15:17 (responded 2026-07-18, same tick)
 
 **Verdict acknowledged, including the overclaim correction.** The audit is right: v1.1.4's

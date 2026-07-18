@@ -29,6 +29,7 @@ import hashlib
 import io
 
 import os
+import sys as _sys
 
 import zipfile
 
@@ -411,15 +412,25 @@ def consistency_gate():
     if man.get("intended_deposit_tag") != "%s-deposit" % VERSION:
         fails.append("RELEASE_MANIFEST intended_deposit_tag (%r) != %s-deposit -- regen with "
                      "--deposit-tag %s-deposit" % (man.get("intended_deposit_tag"), VERSION, VERSION))
+    # Boundary check (audit 2026-07-19 00:35): git_commit is documented as the PARENT
+    # recorded at --regen, so requiring git_commit == HEAD false-fails for a reviewer
+    # rebuilding at the released tag. The real invariant is "the manifest describes THIS
+    # tree", which holds in exactly two ways:
+    #   CUT mode      : fresh regen, pre-commit  -> git_commit == HEAD
+    #   REBUILD mode  : at the tag / descendant  -> --verify-git HEAD passes
     head = _sp.run(["git", "-C", ROOT, "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
-
     mc = _json.loads(read("RELEASE_MANIFEST.json")).get("git_commit")
-
     if mc != head:
-
-        fails.append("RELEASE_MANIFEST git_commit (%s) != HEAD (%s) -- run --regen immediately "
-
-                     "before building, then make ONE commit and tag it" % (str(mc)[:8], head[:8]))
+        vg = _sp.run([_sys.executable, os.path.join(ROOT, "_bestrec_run", "update_release_manifest.py"),
+                      "--verify-git", "HEAD"], capture_output=True, text=True, cwd=ROOT)
+        if vg.returncode != 0:
+            fails.append("manifest does not describe this tree: git_commit (%s) != HEAD (%s) AND "
+                         "--verify-git HEAD failed -- at cut time run --regen immediately before "
+                         "building; at rebuild time check out the deposit tag" % (str(mc)[:8], head[:8]))
+        else:
+            print("boundary: REBUILD mode (--verify-git HEAD OK; git_commit is the documented parent)")
+    else:
+        print("boundary: CUT mode (git_commit == HEAD after fresh --regen)")
 
     if fails:
 
@@ -439,7 +450,15 @@ def consistency_gate():
 
 def main():
 
+    import argparse
+    ap = argparse.ArgumentParser(description="archival deposit bundle builder (fail-closed)")
+    ap.add_argument("--check-only", action="store_true",
+                    help="run the consistency gate and exit without building")
+    args = ap.parse_args()
     consistency_gate()
+    if args.check_only:
+        print("check-only: consistency gate passed; no bundle written")
+        return
 
     missing = [f for f in FILES if not os.path.exists(os.path.join(ROOT, f))]
 
@@ -453,11 +472,17 @@ def main():
 
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
 
+    def zinfo(name):
+        zi = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+        zi.compress_type = zipfile.ZIP_DEFLATED
+        zi.external_attr = 0o644 << 16
+        return zi
+
     sums = []
 
     with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as z:
 
-        z.writestr(PREFIX + "README_DEPOSIT.txt", README)
+        z.writestr(zinfo(PREFIX + "README_DEPOSIT.txt"), README)
 
         sums.append((hashlib.sha256(README.encode("utf-8")).hexdigest(), "README_DEPOSIT.txt"))
 
@@ -472,13 +497,13 @@ def main():
                 data = data.replace(b"\r\n", b"\n")
                 assert b"\r\n" not in data
 
-            z.writestr(PREFIX + rel, data)
+            z.writestr(zinfo(PREFIX + rel), data)
 
             sums.append((hashlib.sha256(data).hexdigest(), rel))
 
         body = "\n".join(f"{d}  {n}" for d, n in sums) + "\n"
 
-        z.writestr(PREFIX + "SHA256SUMS.txt", body)
+        z.writestr(zinfo(PREFIX + "SHA256SUMS.txt"), body)
 
     digest = sha256(OUT)
 

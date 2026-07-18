@@ -6,27 +6,19 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **Confirmed current top blocker: the public release/deposit boundary still
-   does not contain the repaired counted-gate state.** The live workspace at
-   `HEAD = f43f937c` passes `rebuild_hstu_submission.py --strict`, including
-   Office V3 and FIR-breadth verdict parsing. But the current advertised
-   archival tag remains `v1.1.6-deposit` / `60b5f414`, and that zip predates
-   the Office V3 normalized-hash fix and strict counted-adjudicator gate. Fresh
-   `--verify-git v1.1.6-deposit` still fails on
-   `_bestrec_run/rebuild_hstu_submission.py` and
-   `_bestrec_run/update_release_manifest.py`; zip inventory confirms older
-   copies of `README.md`, `OFFICE_V3_RESULTS.md`, `PREREG_OFFICE_V3.md`, and
-   the adjudicator/gate scripts. Before submission or DOI upload, regenerate
-   the manifest at the intended state, commit once, cut a fresh deposit tag and
-   bundle, and update the release docs.
-2. **Confirmed packaging gate blocker: the deposit builder still refuses at
-   HEAD.** `build_deposit_bundle.py --help` does not even display help; it
-   fails closed with `RELEASE_MANIFEST git_commit (07cac600) != HEAD
-   (f43f937c) -- run --regen immediately before building, then make ONE commit
-   and tag it`. This is good fail-closed behavior, but it means the paper is
-   not currently packageable into a synchronized deposit without a manifest
-   regeneration and new release cut.
-3. **Confirmed support-doc drift: `CANONICAL_SUBMISSION.md` still describes an
+1. **Confirmed current top blocker: `v1.1.7-deposit` now archives the fixed
+   gate state, but the deposit builder is not reproducible from the released
+   tag.** `v1.1.7-deposit` exists, points at `1828ed4b`, the GitHub release has
+   the expected assets, the downloaded zip matches its sidecar, and
+   `update_release_manifest.py --verify-git v1.1.7-deposit` passes. However,
+   `_bestrec_run/build_deposit_bundle.py --help` still fails closed at the
+   release commit with `RELEASE_MANIFEST git_commit (f43f937c) != HEAD
+   (1828ed4b)`. The manifest now documents `git_commit` as a parent and adds
+   `intended_deposit_tag = v1.1.7-deposit`, but the builder still enforces the
+   obsolete `git_commit == HEAD` rule. Since the docs say the bundle is built
+   reproducibly by this script, a reviewer trying to rebuild the deposit from
+   the released tag will hit a false failure.
+2. **Confirmed support-doc drift: `CANONICAL_SUBMISSION.md` still describes an
    obsolete strict verification chain.** `README.md` now says the strict build
    gates Office V3 and FIR breadth, and the live strict run confirms that. But
    `CANONICAL_SUBMISSION.md` still summarizes the one-command verification as
@@ -34,14 +26,19 @@ plausible risks.
    (descriptive/VOID, non-gating)`, omitting counted Office V3 and FIR-breadth
    adjudicators. A reviewer will read this as an artifact-contract mismatch
    unless it is synchronized.
-4. **Manifest commit semantics remain reviewer-fragile even though live
-   verification passes.** `update_release_manifest.py --verify` passes for
-   `153` files and `--verify-git HEAD` passes for `128/128` git-backed entries,
-   but `--verify-git 07cac600...` still fails on two scripts because the field
-   records the parent used at `--regen`, not a literally verifying commit.
-   `git_commit_semantics` documents this, but a field named `git_commit` that
-   intentionally should not be verified at its own value remains a plausible
-   artifact-review objection.
+3. **The stale `v1.1.6` public-deposit blocker is closed, but the
+   branch-vs-tag boundary needs disciplined wording.** Current `HEAD =
+   2f13e46a` is one response-only commit past the `v1.1.7-deposit` tag; this is
+   acceptable under the README's "deposit tag, never branch HEAD" policy, and
+   `--verify-git HEAD` still passes. Keep response/audit-log commits out of
+   package claims, and recut only when manifested files change.
+4. **Raw worktree hash checks remain a predictable reviewer trap.** Downloaded
+   `RELEASE_MANIFEST.json`, the `v1.1.7` tag blob, and the LF-normalized
+   worktree file have identical SHA256; the raw Windows worktree file differs
+   because of CRLF bytes. The docs state the tag/blob/bundle hash rule, but an
+   artifact reviewer using `Get-FileHash RELEASE_MANIFEST.json` on a Windows
+   checkout can still see a mismatch unless this is called out near the
+   verification command.
 5. **Venue-template drift remains a freeze blocker.** The TeX build vendors
    `paper_tex/acmart.cls` v2.03 (`2024/02/04`). ACM's current author page says
    LaTeX review submissions should use the Primary Article Template v2.16 and
@@ -93,6 +90,185 @@ plausible risks.
     fields for preprint status, conflicts of interest, suggested/excluded
     reviewers, and author identity remain in `COVER_LETTER_TORS.md`. This is
     fine for a tracked draft, not for ScholarOne upload.
+
+## Audit Run - 2026-07-19 00:35 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD after concurrent response work: `codex/bestrec-sota-results` /
+  `2f13e46ab22a7c554c829e439665e806ee9b8817`.
+- Current deposit tag: `v1.1.7-deposit` /
+  `1828ed4b63bf1fe8cfbbce8a9b693f20d8d66e25`.
+- `HEAD` is one response-log commit past the deposit tag; `git diff
+  v1.1.7-deposit..HEAD` shows only `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`.
+- This section supersedes the 00:28 mid-run section immediately below. During
+  the audit, the branch advanced from `f43f937c` to `1828ed4b` and then to
+  `2f13e46a`; the 00:28 section accurately records the intermediate state, but
+  the current reviewer-facing state is the `v1.1.7` state recorded here.
+- Working tree after this edit: only `PAPER_REVIEW_AUDIT.md` is modified; the
+  known untracked files remain the two raw data archives and the two
+  `_bestrec_run` scratch/smoke files.
+
+### Verdict
+
+The previous public-deposit blocker is substantially repaired. `v1.1.7-deposit`
+exists locally and on GitHub, the DOI/README/CANONICAL metadata now point to
+`v1.1.7`, `--verify-git v1.1.7-deposit` passes, and the downloaded release zip
+matches its sidecar. The release now archives the counted Office V3/FIR-breadth
+gate hardenings that `v1.1.6` lacked.
+
+The new hard artifact-review blocker is rebuildability of the deposit bundle:
+`_bestrec_run/build_deposit_bundle.py` still refuses to run because it compares
+the manifest's parent `git_commit` to `HEAD`, even though the manifest now says
+the literal reviewer target is `intended_deposit_tag`. This is internally
+inconsistent: the manifest verifier accepts `v1.1.7-deposit`, but the bundle
+builder rejects the same released state before even printing help. Because the
+docs say the bundle is built reproducibly by this script, this must be fixed
+before a top-journal artifact review.
+
+The second live support-doc problem is unchanged: `CANONICAL_SUBMISSION.md`
+still describes the strict one-command verification chain without the counted
+Office V3 and FIR-breadth adjudicators.
+
+### Commands And Evidence Checked
+
+- `git log --oneline --decorate -5`
+  - `HEAD = 2f13e46a` response log.
+  - `v1.1.7-deposit = 1828ed4b`.
+  - `f43f937c` was the README-only companion commit before the v1.1.7 cut.
+- `git diff --name-status v1.1.7-deposit..HEAD`
+  - Only `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` differs after the deposit tag.
+- `uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --strict`
+  - PASS: HSTU parity exact, `168` cells recomputed, `149` exact, `19`
+    within-rounding, `0` mismatches, `0` untraceable, all `14` required claim
+    families sourced, manifest verification OK, MI V2 OK, Office V3 OK, FIR
+    breadth OK, older Office V1 descriptive/VOID OK.
+- `uv --project _bestrec_run run python _bestrec_run/update_release_manifest.py --verify`
+  - PASS: `153` files verified.
+- `uv --project _bestrec_run run python _bestrec_run/update_release_manifest.py --verify-git v1.1.7-deposit`
+  - PASS: `128/128` git-backed entries match the git blobs.
+- `uv --project _bestrec_run run python _bestrec_run/update_release_manifest.py --verify-git HEAD`
+  - PASS: `128/128`; the response-only post-tag commit does not disturb the
+    manifest.
+- `uv --project _bestrec_run run python _bestrec_run/build_deposit_bundle.py --help`
+  - FAILS before help/building:
+    `CONSISTENCY GATE FAILED -- bundle NOT built: RELEASE_MANIFEST git_commit
+    (f43f937c) != HEAD (1828ed4b) -- run --regen immediately before building,
+    then make ONE commit and tag it`.
+  - Code inspection confirms the current builder still checks `mc != head`
+    after checking `intended_deposit_tag`, so it has not been updated to the
+    new parent-commit/tag semantics.
+- `gh release view v1.1.7-deposit --repo Ray0419/bestrec-sota-results`
+  - Release exists, not draft, not prerelease.
+  - Assets present: `bestrec_deposit_v1.1.7.zip`,
+    `bestrec_deposit_v1.1.7.zip.sha256`, `PAPER_SUBMISSION.pdf`,
+    `PAPER_TORS.pdf`, and `RELEASE_MANIFEST.json`.
+- Download-hash round trip for `bestrec_deposit_v1.1.7.zip`
+  - Downloaded zip SHA256:
+    `dd76fc1792f3060fb85de18c595d9dec50f14dd1927f8ca77a9c7b4fb9216f34`.
+  - Downloaded sidecar contains the same hash.
+- Local v1.1.7 bundle integrity
+  - `_release/bestrec_deposit_v1.1.7.zip` size `1,803,305` bytes.
+  - Bundle entries: `66`; `SHA256SUMS.txt` rows: `65`; internal mismatches:
+    `0`.
+  - Manifest-listed bundled payloads checked: `7`; mismatches: `0`.
+- Standalone manifest asset line-ending check
+  - Downloaded `RELEASE_MANIFEST.json`, `git show
+    v1.1.7-deposit:RELEASE_MANIFEST.json`, and `git show
+    HEAD:RELEASE_MANIFEST.json` have the same SHA256
+    `3e9ff7dbbb22dface3f93a319e421ec7f9daf9ce990fbf2380abd2b41ac75052`.
+  - Raw Windows worktree `RELEASE_MANIFEST.json` has a different SHA256
+    `747de357...`; LF-normalizing the worktree bytes restores the asset/tag
+    hash. This is consistent with the documented tag/blob/bundle hash policy,
+    but still worth making reviewer-obvious.
+- `CANONICAL_SUBMISSION.md` check
+  - Still says canonical verification is `parity -> strict --submission -> MI
+    V2 -> Office adjudicator (descriptive/VOID, non-gating)`.
+  - It omits the counted Office V3 PASS and FIR-breadth CONFIRMED gates.
+
+### External Fact-Check / Novelty Notes
+
+- The external fact-checks from the 00:28 section remain current: HSTU-BLaIR
+  supports the comparator constants, Amazon Reviews 2023 official docs support
+  the dataset framing, ACM/CTAN still expose template drift relative to the
+  vendored v2.03 `acmart.cls`, and close literature keeps the novelty boundary
+  narrow. Key sources: [HSTU-BLaIR](https://arxiv.org/pdf/2504.10545),
+  [Amazon Reviews 2023](https://amazon-reviews-2023.github.io/),
+  [ACM submissions](https://www.acm.org/publications/authors/submissions),
+  [CTAN acmart](https://ctan.org/pkg/acmart?lang=en),
+  [FMLP-Rec](https://dl.acm.org/doi/10.1145/3485447.3512111),
+  [BSARec](https://arxiv.org/abs/2312.10325),
+  [Latte](https://arxiv.org/pdf/2605.06331),
+  [ReSID](https://arxiv.org/pdf/2602.02338),
+  [ChronoSID](https://arxiv.org/pdf/2607.03918),
+  [GrIT](https://arxiv.org/pdf/2602.19728), and
+  [SILLM4Rec repo](https://github.com/MKC-Lab/SILLM4Rec).
+
+### Confirmed Problems
+
+1. **Deposit builder false-fails under the new manifest semantics.** The
+   verifier accepts `intended_deposit_tag`; the builder still demands
+   `git_commit == HEAD`.
+2. **`CANONICAL_SUBMISSION.md` verification-chain prose is stale.**
+3. **ACM template/line-number freeze item remains open.**
+4. **SILLM4Rec full-text protocol inspection remains pending.**
+5. **Cover-letter maintainer fields remain bracketed.**
+6. **Reader PDF final page remains nearly blank, per the 00:28 render.**
+
+### Confirmed Non-Problems
+
+- `v1.1.7-deposit` exists and verifies against `RELEASE_MANIFEST.json`.
+- The downloaded v1.1.7 zip matches its sidecar and internal SHA rows.
+- The standalone downloaded manifest matches the tag blob and LF-normalized
+  worktree bytes.
+- The strict empirical gate remains green.
+- The current post-tag `HEAD` is response-only and does not disturb manifest
+  verification.
+
+### Concrete Fixes To Make Next
+
+1. Update `build_deposit_bundle.py` so the consistency gate accepts the
+   documented parent-commit/tag model:
+   - require `intended_deposit_tag == VERSION-deposit`;
+   - verify `update_release_manifest.py --verify-git <intended_deposit_tag>`;
+   - stop requiring `git_commit == HEAD` when `git_commit` is explicitly the
+     parent/hash source.
+2. Re-run the builder at a clean release boundary and confirm it prints help
+   and can rebuild byte-stable or intentionally deterministic-equivalent
+   artifacts.
+3. Synchronize `CANONICAL_SUBMISSION.md` with the live strict chain: parity,
+   strict table build, release manifest, MI V2, counted Office V3 PASS,
+   counted FIR-breadth CONFIRMED x2, and descriptive Office V1 VOID.
+4. Put the tag/blob/bundle hash rule next to the verification command so
+   Windows raw-worktree SHA mismatches do not look like corruption.
+5. Resolve acmart/line-number, SILLM4Rec full-text, cover-letter, and reader-PDF
+   final-page freeze items.
+
+### Open Questions
+
+- Should the builder be repaired in `v1.1.8-deposit`, or can a post-tag builder
+  fix ride until the final DOI-minting release?
+- Is reproducibility expected to mean byte-identical zip rebuilds, or verified
+  payload equivalence plus matching `SHA256SUMS.txt`?
+- Will reviewers run the standalone manifest hash from a Windows checkout, or
+  only via the documented `--verify` / `--verify-git` commands?
+
+### Running Checklist
+
+- [x] Detected concurrent branch advance and re-audited the latest state.
+- [x] Verified `v1.1.7-deposit` exists locally and on GitHub.
+- [x] Re-ran strict submission gate.
+- [x] Re-ran manifest verification and git-backed verification at HEAD/tag.
+- [x] Checked v1.1.7 zip sidecar, internal SHA rows, and downloaded asset hash.
+- [x] Compared downloaded manifest to tag blob and LF-normalized worktree.
+- [x] Identified builder consistency-gate contradiction.
+- [x] Rechecked `CANONICAL_SUBMISSION.md` support-doc drift.
+- [x] Updated current prioritized rejection-risk list.
+- [x] Appended this superseding timestamped audit section.
+- [ ] Repair builder consistency semantics.
+- [ ] Synchronize `CANONICAL_SUBMISSION.md` strict-chain prose.
+- [ ] Resolve remaining freeze items.
 
 ## Audit Run - 2026-07-19 00:28 Australia/Sydney
 

@@ -62,8 +62,12 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
   any printed-numeral MISMATCH, or any required claim family without sourced cells
   (invariants: 0 mismatch / 0 untraceable / all 14 required families sourced; the authoritative cell count is the strict build's own output — 168 at this writing, and it grows as evidence lands)
 - Canonical one-command verification: `python _bestrec_run/rebuild_hstu_submission.py --strict`
-  (parity test → strict `--submission` build → MI V2 adjudicator → Office adjudicator
-  (descriptive/VOID, non-gating)) — passes end-to-end at the submitted commit
+  (parity test → strict `--submission` build → release-manifest verification → MI V2
+  adjudicator → **Office V3 adjudicator (counted; build fails unless CAMPAIGN VERDICT:
+  PASS)** → **FIR-breadth adjudicator (counted; both categories must be CONFIRMED)** →
+  Office V1 adjudicator (descriptive/VOID, non-gating)) — passes end-to-end at the
+  submitted commit; `update_release_manifest.py --verify-git <intended_deposit_tag>`
+  additionally checks the manifest against the git blobs at the deposit tag
 - Parity: `_bestrec_run/test_hstu_parity.py` + `HSTU_PARITY_REPORT.md` (bitwise-exact core
   block) and the reference-implementation shim harness `_bestrec_run/fbgemm_shims.py` +
   `theirs_*.py` (`THEIRS_ON_OURS_REPORT.md`)

@@ -24,7 +24,10 @@ Office V3 adjudicator (counted; the build fails unless the campaign verdict is P
 **the FIR-breadth adjudicator (counted; both categories must be CONFIRMED)** → the Office V1
 adjudicator (descriptive/VOID). Every counted campaign's live adjudicator gates the build
 (hardened 2026-07-18); `update_release_manifest.py --verify-git <commit|tag>` additionally
-checks the manifest against the git blobs.
+checks the manifest against the git blobs. **Hash-check rule:** verify digests against the
+tag blob (`git show <tag>:FILE`), the release asset, or the bundle payload — never raw
+Windows worktree bytes, whose CRLF line endings legitimately differ from the LF-pinned
+blobs (`DOI_DEPOSIT_INSTRUCTIONS.md` has the full rule).
 
 ## What is claimed (exactly this, nothing broader)
 

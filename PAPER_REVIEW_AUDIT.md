@@ -6,6 +6,99 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
+1. **Confirmed release/deposit integrity failure: `RELEASE_MANIFEST.json` is
+   not self-consistent with either its recorded `git_commit` or the current
+   `v1.1.5-deposit` bundle payload.** A Git-blob audit of the live manifest's
+   recorded commit (`b41555021625d252e9149ddec6b3dc37015a80e4`) found `25`
+   mismatches across `protocol_code`, `submission_docs`, and `reference_runs`.
+   The already-cut `v1.1.5-deposit` manifest has the same class of defect:
+   against its own recorded commit (`3d4748307ceaf60b742c6357e76cf5c070f24b53`)
+   it has `23` mismatches. Against the actual local
+   `_release/bestrec_deposit_v1.1.5.zip` payload, `RELEASE_MANIFEST.json` has
+   `15` bundled-payload hash mismatches and `8` manifest-listed reference/log
+   files that are not bundled. `SHA256SUMS.txt` inside the zip still verifies
+   all `65` payload rows, so the zip has an internal checksum table, but the
+   manuscript/release claim that `RELEASE_MANIFEST.json` pins the payload/commit
+   boundary is false.
+2. **Confirmed current-deposit boundary is stale for the live submission
+   state.** `HEAD` is `de04d9dcab30d147afa0c8329d67dcb3729fcc87`, six commits
+   after `v1.1.5-deposit` (`a3eaf1b01a14152c48101c7126ae76a956631ea2`). Those
+   commits are not only audit correspondence: they changed `PAPER_DRAFT.md`,
+   `PAPER_SUBMISSION.md`, `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`,
+   `paper_tex/sections/05-results.tex`, `COVER_LETTER_TORS.md`,
+   `DOI_DEPOSIT_INSTRUCTIONS.md`, `RELEASE_MANIFEST.json`,
+   `_bestrec_run/build_deposit_bundle.py`,
+   `_bestrec_run/emit_latex_tables.py`, and both TeX build scripts. The README
+   still says post-deposit commits are only audit responses/companion
+   documentation, which is now inaccurate.
+3. **Confirmed manifest verification gap.** `update_release_manifest.py
+   --verify` passes because it recomputes hashes against the live worktree, but
+   it does not check that those hashes match the Git tree named by
+   `git_commit`, nor that a deposit bundle's bundled payload matches
+   `RELEASE_MANIFEST.json`. This is the process bug that let item 1 survive
+   several "manifest verify OK" runs.
+4. **Confirmed strict-table bypass from the prior audit is fixed in live HEAD,
+   but not in the current deposit tag.** The live worktree has
+   `_bestrec_run/hstu_tables.json` in `"mode": "submission"` with
+   `submission_gate.enforced = true`, zero violations, zero mismatches, and zero
+   untraceable cells. `emit_latex_tables.py` now fail-closes on non-submission
+   JSON, and `paper_tex/build.ps1`/`build.sh` run
+   `build_hstu_tables.py --submission` before emitting tables. However, those
+   hardening changes are after `v1.1.5-deposit`, so a new deposit cut is needed
+   before claiming the archived artifact has this protection.
+5. **No current hard numerical blocker in the live local checks.** Fresh checks
+   at `2026-07-18 20:24 Australia/Sydney` pass the strict table build
+   (`168` cells, `149` exact, `19` within-rounding, `0` mismatches,
+   `0` untraceable, all `14` declared claim families sourced), release-manifest
+   live-worktree verification (`153` files), HSTU parity (max asserted diff
+   `0.000e+00`), Office V3 adjudication, FIR-breadth adjudication, and TORS PDF
+   hygiene (`40` pages, `0` hard failures, `20` informational SOTA/negation
+   hits). These green checks do not rescue the deposit-manifest inconsistency.
+6. **Office V3 and FIR-breadth evidence remain mechanically green but claim
+   boundaries must stay narrow.** Office V3 passes only as a per-category
+   point-estimate comparison: K=16 mean `0.03047`, CI-LB `0.03033`; K=8 mean
+   `0.03029`, CI-LB `0.03024`; all `10` seeds above both `0.0279` and
+   `0.0271`. FIR-breadth remains only an internal paired filter-vs-no-filter
+   claim: Industrial_and_Scientific mean `+0.00240`, CI
+   `[+0.00183,+0.00297]`; CDs_and_Vinyl mean `+0.00566`, CI
+   `[+0.00493,+0.00639]`.
+7. **Venue-template drift remains a freeze blocker.** The TeX build still
+   vendors `paper_tex/acmart.cls` v2.03 from `2024/02/04`. ACM's author page
+   currently instructs review manuscripts to use single-column `manuscript`
+   format with the Primary Article Template LaTeX package v2.16
+   (`2025-08-28`), while CTAN lists production `acmart` v2.19
+   (`2026-06-27`). `VENUE_PLAN.md` records the decision point, but the refresh
+   or explicit freeze decision is still pending.
+8. **SILLM4Rec remains under-inspected.** The paper now cites SILLM4Rec and
+   gives a concrete repository-based non-comparability reason (candidate
+   ranking tasks with SFT/DPO workflows rather than full-catalog LLOO ranking).
+   That is defensible as accessible evidence, but ACM metadata indicates a
+   close AR2023 5-core/NDCG paper, so direct full-text protocol inspection
+   remains a freeze item.
+9. **Office/FIR per-user sidecar policy remains a reviewer-facing
+   reproducibility risk.** The aggregate printed cells source to tracked JSONs,
+   but Office V3 and FIR-breadth per-user sidecars are local-only/untracked and
+   promised for editor/reviewer request or acceptance-time supplement. This is
+   acceptable only if the release/deposit boundary is made honest and reviewers
+   are not told the current deposit already contains all hash-pinned evidence
+   needed for every stated reproducibility layer.
+10. **TORS cover letter remains a maintainer-fill freeze item.** Bracketed
+    fields for identity/contact, conflicts, reviewer suggestions, and preprint
+    status remain. This is fine for a tracked draft, not for ScholarOne upload.
+11. **Related-work/novelty remains narrow and incremental.** Recent
+    semantic-ID/generative recommendation work (SID-MLP, Latte, GrIT, ReSID,
+    ChronoSID, SILLM4Rec, UniSGR, DIGER, ACERec) leaves the contribution best
+    framed as a tightly audited artifact-gated HSTU/FIR study, not as a broad
+    method breakthrough. Keep Video_Games as competitive but not SOTA; MI and
+    Office V3 as per-category point-estimate comparisons; FIR breadth as an
+    internal paired filter claim.
+12. **The audit file itself was stale at the start of this run.** The top
+    current-risk list still named the already-fixed default-mode
+    `hstu_tables.json` state as risk #1. This section supersedes that list; the
+    older list is retained below only as a point-in-time audit-trail snapshot.
+
+## Superseded Prior Rejection-Risk List - 2026-07-18 19:20 Snapshot
+
 1. **Confirmed generated-artifact/state hazard: `_bestrec_run/hstu_tables.json`
    is currently non-submission-mode in the worktree.** The file differs from
    `HEAD` only by `"mode": "default"` and `"submission_gate.enforced": false`.
@@ -89,6 +182,289 @@ plausible risks.
     per-category point-estimate comparisons against single-run/single-seed
     comparators; and FIR breadth as internal paired filter-vs-no-filter
     evidence only.
+
+## Audit Run - 2026-07-18 20:20 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` /
+  `de04d9dcab30d147afa0c8329d67dcb3729fcc87`.
+- Current run time: `2026-07-18 20:20` through `20:27 +10:00`.
+- Automation memory read from
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  using the `$HOME\.codex` fallback because `CODEX_HOME` is unset in this
+  PowerShell session.
+- New commits since the remembered 19:20 audit: `1f72f0b9` enforced the
+  submission-mode table invariant at the JSON, emitter, and TeX-build layers;
+  `de04d9dc` added the written response.
+- Working tree before this audit edit: no tracked modifications; known
+  untracked files remained `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Sources/artifacts inspected this run: `PAPER_REVIEW_AUDIT.md`,
+  `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, `PAPER_SUBMISSION.pdf`,
+  `paper_tex/PAPER_TORS.pdf`, `paper_tex/sections/05-results.tex`,
+  `paper_tex/build.ps1`, `paper_tex/build.sh`, `paper_tex/BUILD_NOTES.md`,
+  `paper_tex/acmart.cls`, `_bestrec_run/hstu_tables.json`,
+  `_bestrec_run/build_hstu_tables.py`, `_bestrec_run/emit_latex_tables.py`,
+  `_bestrec_run/update_release_manifest.py`,
+  `_bestrec_run/build_deposit_bundle.py`, `RELEASE_MANIFEST.json`,
+  `README.md`, `DOI_DEPOSIT_INSTRUCTIONS.md`, `CANONICAL_SUBMISSION.md`,
+  `VENUE_PLAN.md`, `COVER_LETTER_TORS.md`,
+  `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`, the `v1.1.5-deposit` tag, and
+  `_release/bestrec_deposit_v1.1.5.zip`.
+- No manuscript, code, result, or generated table file was edited in this run;
+  only this audit file was updated.
+
+### Verdict
+
+**The previous strict-table bypass is fixed in live HEAD.** A fresh strict
+table build is green, the tracked `hstu_tables.json` is submission-mode, the
+emitter now refuses default-mode JSON, and both TeX build scripts force
+`build_hstu_tables.py --submission`.
+
+**The new top rejection risk is more serious: the current deposit/release
+manifest is not a reliable archival boundary.** The current
+`RELEASE_MANIFEST.json` passes live-worktree verification, but it does not match
+the Git commit it claims to describe. Worse, the already-cut
+`v1.1.5-deposit` bundle's own `RELEASE_MANIFEST.json` does not match many files
+inside the zip. A reviewer who follows the deposit instructions can verify
+`SHA256SUMS.txt`, but cannot trust the manifest as the stated provenance map.
+For a top-journal artifact claim, this is a reject-level reproducibility defect
+until a corrected, bumped deposit is cut.
+
+### Commands And Evidence Checked
+
+- `git status --short --branch`
+  - Before this audit edit: no tracked modifications; four known untracked
+    files listed above.
+- `git rev-parse HEAD`; `git rev-parse v1.1.5-deposit`;
+  `git rev-list --oneline v1.1.5-deposit..HEAD`
+  - `HEAD = de04d9dcab30d147afa0c8329d67dcb3729fcc87`.
+  - `v1.1.5-deposit = a3eaf1b01a14152c48101c7126ae76a956631ea2`.
+  - Six commits after the tag: `2da36ea8`, `22569ee7`, `c5f62a46`,
+    `b4155502`, `1f72f0b9`, `de04d9dc`.
+- `git diff --name-status v1.1.5-deposit..HEAD`
+  - Confirmed post-deposit changes are not just response/companion files:
+    `COVER_LETTER_TORS.md`, `DOI_DEPOSIT_INSTRUCTIONS.md`,
+    `PAPER_DRAFT.md`, `PAPER_SUBMISSION.md`, `PAPER_SUBMISSION.pdf`,
+    `PLAIN_LANGUAGE_COMPANION.md`, `RELEASE_MANIFEST.json`,
+    `_bestrec_run/build_deposit_bundle.py`,
+    `_bestrec_run/emit_latex_tables.py`, `paper_tex/PAPER_TORS.pdf`,
+    `paper_tex/build.ps1`, `paper_tex/build.sh`, and
+    `paper_tex/sections/05-results.tex` changed after the deposit tag.
+- `uv --project _bestrec_run run python _bestrec_run/build_hstu_tables.py --submission --tables-out "$env:TEMP\hstu_tables_submission_audit_20260718_2020.json"`
+  - PASS: `168` cells recomputed OK.
+  - PASS: `149` exact paper checks, `19` within-rounding, `0` MISMATCH,
+    `0` UNTRACEABLE, `4` retired `REMOVED_FROM_PAPER`.
+  - PASS: all `14` declared claim families sourced.
+- `uv --project _bestrec_run run python _bestrec_run/update_release_manifest.py --verify`
+  - PASS against the live worktree: `153` files verified, `0` local missing
+    release-asset files.
+  - This is now evidence of an insufficient verifier, not evidence that the
+    archival boundary is sound.
+- `uv --project _bestrec_run run python _bestrec_run/test_hstu_parity.py`
+  - PASS: HSTU core-block parity exact in all asserted stages; max asserted
+    diff `0.000e+00`.
+- `uv --project _bestrec_run run python paper_tex\scan_pdf.py paper_tex\PAPER_TORS.pdf`
+  - PASS: `40` pages, `0` placeholder/forbidden failures, `20`
+    informational SOTA/negation hits.
+- PDF page-count check:
+  - `paper_tex/PAPER_TORS.pdf`: `40` pages, `612 x 792 pt`.
+  - `PAPER_SUBMISSION.pdf`: `46` pages, `612 x 792 pt`.
+- `uv --project _bestrec_run run python _bestrec_run/adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-18 20:24:11`, block `196799e7c46d`.
+  - K=16 mean `0.03047`, sd `0.00011`, CI-LB `0.03033`, `5/5` seeds above
+    both references.
+  - K=8 mean `0.03029`, sd `0.00005`, CI-LB `0.03024`, `5/5` seeds above
+    both references.
+- `uv --project _bestrec_run run python _bestrec_run/adjudicate_fir_breadth.py --no-append`
+  - CONFIRMED at `2026-07-18 20:24:11`, block `9a38ad66bd75`.
+  - Industrial_and_Scientific: mean `+0.00240`, CI
+    `[+0.00183,+0.00297]`, `5/5` positive.
+  - CDs_and_Vinyl: mean `+0.00566`, CI `[+0.00493,+0.00639]`, `5/5`
+    positive.
+- Manifest Git-blob consistency check against the live
+  `RELEASE_MANIFEST.json`:
+  - Manifest records `git_commit =
+    b41555021625d252e9149ddec6b3dc37015a80e4`.
+  - Across `protocol_code`, `submission_docs`, and `reference_runs`: `37`
+    checked files, `12` OK, `25` mismatches, `0` missing.
+  - Mismatches include `_bestrec_run/build_hstu_tables.py`,
+    `_bestrec_run/run_sasrec_sbert.py`, `PAPER_SUBMISSION.md`,
+    `PAPER_DRAFT.md`, `CANONICAL_SUBMISSION.md`,
+    `THEIRS_ON_OURS_REPORT.md`, `PINNED_ENV_PARITY_REPORT.md`,
+    `_bestrec_run/update_release_manifest.py`, `paper_tex/PAPER_TORS.pdf`,
+    `_bestrec_run/emit_latex_tables.py`, and multiple reference-run artifacts.
+- Manifest Git-blob consistency check inside `v1.1.5-deposit`:
+  - The tag's manifest records `git_commit =
+    3d4748307ceaf60b742c6357e76cf5c070f24b53`.
+  - Against that recorded commit: `37` checked files, `14` OK, `23`
+    mismatches, `0` missing.
+  - Against the tag tree itself: `37` checked files, `14` OK, `23`
+    mismatches, `0` missing.
+- Bundle payload check for `_release/bestrec_deposit_v1.1.5.zip`:
+  - `SHA256SUMS.txt`: `65/65` rows OK, `0` bad, `0` missing.
+  - `RELEASE_MANIFEST.json` vs bundled payload: `29` checkable files, `14`
+    OK, `15` hash mismatches, `8` manifest-listed files missing from the
+    bundle.
+  - Missing from the bundle despite manifest listing: several
+    `tb_logdir_intended.txt` files and reference-run logs, plus two `.gin`
+    reference-run config files.
+- `uv --project _bestrec_run run python _bestrec_run/build_deposit_bundle.py`
+  - FAILS CLOSED before writing a bundle:
+    `RELEASE_MANIFEST git_commit (b4155502) != HEAD (de04d9dc)`.
+  - This gate prevents a new accidental in-place build, but it also means the
+    current docs telling users to upload `bestrec_deposit_v1.1.5.zip` are not
+    aligned with the live submission state.
+
+### External Fact-Check / Novelty Notes
+
+- ACM's submissions page still says review manuscripts should be single-column
+  and the LaTeX path should use the latest Primary Article Template, naming
+  version `2.16` published `2025-08-28`, with `manuscript` class option.
+  Source: https://www.acm.org/publications/authors/submissions
+- CTAN currently lists `acmart` version `2.19` dated `2026-06-27`; local
+  `paper_tex/acmart.cls` remains v2.03 from `2024/02/04`. Source:
+  https://ctan.org/tex-archive/macros/latex/contrib/acmart?lang=en
+- HSTU-BLaIR v3 still supports the paper's comparator constants: AR2023
+  Video Games, Office Products, and Musical Instruments statistics plus
+  HSTU-BLaIR NDCG@10 `0.0760`, `0.0271`, and `0.0406`. Source:
+  https://arxiv.org/html/2504.10545v3
+- ChronoSID is a close July 2026 SID/generative-recommendation preprint, but it
+  reports a different filtered universe (`MI 57,359 / 23,742 / 490,522`,
+  `VG 94,515 / 24,685 / 772,218`) rather than the HSTU-BLaIR-family
+  `57,439 / 24,587 / ~511,835` and `94,762 / 25,612 / ~814,586` statistics.
+  Its main table reports ChronoSID NDCG@10 `0.0346` on MI and `0.0501` on VG,
+  which supports the manuscript's non-interchangeability fence rather than a
+  direct comparator claim. Source: https://arxiv.org/html/2607.03918v1
+- SILLM4Rec repository evidence still supports the paper's cautious exclusion:
+  its public workflow describes AR2023 5-core data preparation, image-to-text
+  descriptions, user preference summaries, candidate product ranking tasks, and
+  SFT/DPO training data. Direct ACM full-text protocol inspection remains
+  stronger if accessible. Sources:
+  https://github.com/MKC-Lab/SILLM4Rec and
+  https://dl.acm.org/doi/10.1145/3743093.3771011
+
+### Confirmed Problems
+
+1. **`RELEASE_MANIFEST.json` records hashes that do not match the commit it
+   names.** The live manifest says it describes `b4155502`, but `25/37`
+   checked Git blobs at that commit do not match the manifest.
+2. **The public/current `v1.1.5-deposit` boundary is internally inconsistent.**
+   The tag's manifest has `23/37` mismatches against both its recorded commit
+   and the tag tree. The local v1.1.5 zip has `15` manifest-vs-payload hash
+   mismatches and `8` manifest-listed files missing.
+3. **The prior "byte-true v1.1.5" conclusion is materially incomplete.**
+   `SHA256SUMS.txt` verifies the zip payload rows, but the bundled
+   `RELEASE_MANIFEST.json` does not verify the same payload. A reviewer will
+   reasonably treat the release manifest, not only `SHA256SUMS.txt`, as the
+   provenance contract.
+4. **`update_release_manifest.py --verify` is too weak for the documented
+   claim.** It can pass while the manifest's `git_commit` boundary is false and
+   while a deposit bundle would not match the manifest.
+5. **The README's branch-vs-deposit explanation is now false.** It says
+   post-deposit commits are audit responses/companion documentation, but
+   post-v1.1.5 commits changed manuscript files, PDFs, the release manifest,
+   deposit tooling, and the LaTeX table-build path.
+6. **The deposit builder is still versioned as `v1.1.5`.** Because v1.1.5 is
+   already cut and defective, the next archival action must be a bumped
+   superseding deposit, not a replacement `v1.1.5` zip.
+
+### Confirmed Fixes / Non-Problems
+
+- The prior default-mode `hstu_tables.json` problem is fixed in live HEAD.
+- Fresh strict table build, HSTU parity, Office V3 adjudication, FIR-breadth
+  adjudication, and TORS PDF hygiene all pass.
+- `SHA256SUMS.txt` inside the local v1.1.5 zip verifies every listed payload
+  row; the defect is specifically that `RELEASE_MANIFEST.json` contradicts
+  those payload bytes and the stated Git boundary.
+- Current related-work wording around ChronoSID/SID-line filtered universes and
+  SILLM4Rec is cautious enough on the accessible evidence.
+
+### Plausible Risks / Items Requiring Author Verification
+
+- Decide the canonical byte domain for release hashes: Git blob bytes, bundled
+  normalized payload bytes, or local worktree bytes. The current system mixes
+  these domains.
+- Decide whether `RELEASE_MANIFEST.json` should describe a commit tree, the
+  deposit zip payload, or both. If both, it needs two explicit sections and a
+  verifier for each.
+- Decide whether all reference-run files listed in `RELEASE_MANIFEST.json`
+  should be bundled. If not, the manifest and bundle README must label them as
+  repository-tracked but non-bundled evidence rather than implying they are in
+  the deposit zip.
+- Confirm whether the next deposit should be `v1.1.6-deposit` and mark
+  `v1.1.5-deposit` superseded for manifest inconsistency, even if its
+  `SHA256SUMS.txt` table is internally valid.
+- Direct SILLM4Rec ACM full-text inspection remains pending before freeze.
+
+### Concrete Fixes To Make Next
+
+1. Add a manifest-boundary verifier that, for every `protocol_code`,
+   `submission_docs`, and `reference_runs` entry, runs the equivalent of
+   `git show <git_commit>:<path> | sha256` and fails on any mismatch.
+2. Add a deposit-bundle verifier that opens the zip, reads bundled
+   `RELEASE_MANIFEST.json`, checks every bundled file named by the manifest,
+   and fails on mismatches or unexpected missing files unless those files are
+   explicitly categorized as non-bundled repository evidence.
+3. Fix the release workflow. A safe pattern is: commit all content changes;
+   run `update_release_manifest.py --regen` as a manifest-only child commit
+   whose `git_commit` is the content commit; verify Git blobs against that
+   recorded commit; build the deposit bundle from that manifest commit; tag the
+   manifest commit. Do not use "edit -> regen -> commit everything together"
+   while `git_commit` is stamped from pre-commit `HEAD`.
+4. Bump `_bestrec_run/build_deposit_bundle.py` from `v1.1.5` to the next patch
+   version, update `README.md`, `DOI_DEPOSIT_INSTRUCTIONS.md`,
+   `CANONICAL_SUBMISSION.md`, `.zenodo.json`, and `CITATION.cff`, and cut a
+   superseding deposit tag/release. Do not overwrite `v1.1.5`.
+5. Mark `v1.1.5-deposit` as superseded due to manifest/payload inconsistency,
+   not merely "post-deposit commits ride until next cut."
+6. Update `README.md` so post-v1.1.5 commits are described accurately: they
+   include paper/build/release hardening changes, not only audit responses.
+7. Keep the acmart refresh decision and SILLM4Rec full-text inspection on the
+   pre-submission freeze checklist.
+
+### Open Questions
+
+- Should `RELEASE_MANIFEST.json` hash Git blobs, normalized release payloads,
+  or both in separate, explicitly named sections?
+- Should the deposit bundle include every `reference_runs.files` entry, or
+  should those entries be moved to a repository-only/release-asset section?
+- Should the strict wrapper fail if `RELEASE_MANIFEST.json.git_commit` is not
+  an ancestor/parent of the current manifest commit with matching blob hashes?
+- Is the next public archival tag intended to be `v1.1.6-deposit`?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate current manuscript, TeX, PDF, cover-letter, release, companion,
+      generated-table, manifest, and deposit-bundle artifacts.
+- [x] Check commits and file changes since `v1.1.5-deposit`.
+- [x] Verify the prior strict-table bypass fix in live code/build scripts.
+- [x] Run strict table build to a temporary output.
+- [x] Verify release manifest against the live worktree.
+- [x] Run HSTU parity test.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Re-run TORS PDF hygiene scan and page-count checks.
+- [x] Compare live `RELEASE_MANIFEST.json` hashes against the recorded
+      `git_commit` tree.
+- [x] Compare `v1.1.5-deposit` manifest hashes against its recorded commit and
+      tag tree.
+- [x] Compare bundled `RELEASE_MANIFEST.json` against
+      `_release/bestrec_deposit_v1.1.5.zip` payload bytes.
+- [x] Verify bundled `SHA256SUMS.txt`.
+- [x] Fact-check ACM/CTAN template state, HSTU-BLaIR constants, ChronoSID
+      non-interchangeability, and SILLM4Rec repository evidence.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Add Git-blob and zip-payload manifest verifiers.
+- [ ] Fix the manifest regeneration/tagging workflow.
+- [ ] Cut a bumped superseding deposit and mark v1.1.5 superseded.
+- [ ] Resolve acmart and SILLM4Rec freeze items.
 
 ## Audit Run - 2026-07-18 19:20 Australia/Sydney
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Build the archival deposit bundle (currently v1.1.5) deterministically.
+"""Build the archival deposit bundle (currently v1.1.6) deterministically.
 
 
 
@@ -34,7 +34,7 @@ import zipfile
 
 
 
-VERSION = "v1.1.5"
+VERSION = "v1.1.6"
 
 DATE = "2026-07-18"
 
@@ -217,8 +217,12 @@ and small evaluation artifacts needed to verify every number printed in the
 paper. Large evidence (data splits, text-encoder caches, per-run result JSONs)
 
 is tracked in the repository and byte-pinned by `RELEASE_MANIFEST.json`
-
 (included here), so nothing printed depends on any file outside the pinned set.
+Boundary relations, stated plainly: `RELEASE_MANIFEST.json` pins the REPOSITORY
+evidence set (a superset of this bundle; its git-backed digests are of
+LF-normalized bytes and equal the git-blob hashes at the release tag);
+`SHA256SUMS.txt` pins exactly THIS bundle's payload bytes. Both hold at the
+release tag; neither describes later branch commits.
 
 
 
@@ -382,6 +386,28 @@ def consistency_gate():
             if m != "%s-deposit" % VERSION:
                 fails.append("%s names stale deposit tag %s (use version-agnostic wording)" % (doc, m))
 
+    # Manifest-vs-bundle cross-check (audit 2026-07-18 20:24): for every file that will be
+    # bundled AND appears in a git-backed manifest section, the manifest digest must equal
+    # the LF-normalized payload hash the bundle will carry.
+    man = _json.loads(read("RELEASE_MANIFEST.json"))
+    man_map = {}
+    for sec in ("protocol_code", "submission_docs"):
+        man_map.update(man.get(sec, {}))
+    man_map.update(man.get("reference_runs", {}).get("files", {}))
+    fam_by_name = {}
+    for fam in man.get("result_families", {}).values():
+        fam_by_name.update(fam)
+    for rel in FILES:
+        ent = man_map.get(rel) or ({"sha256": fam_by_name[rel.rsplit("/", 1)[-1]]}
+                                   if rel.rsplit("/", 1)[-1] in fam_by_name else None)
+        if ent is None:
+            continue
+        data = open(os.path.join(ROOT, rel), "rb").read()
+        if not rel.lower().endswith((".pdf", ".zip", ".gz", ".png")):
+            data = data.replace(b"\r\n", b"\n")
+        if hashlib.sha256(data).hexdigest() != ent["sha256"]:
+            fails.append("bundle payload %s != RELEASE_MANIFEST digest (regen the manifest "
+                         "immediately before building)" % rel)
     head = _sp.run(["git", "-C", ROOT, "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
 
     mc = _json.loads(read("RELEASE_MANIFEST.json")).get("git_commit")

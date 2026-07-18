@@ -73,6 +73,26 @@ def sha(p, _bufsz=1 << 20):
     return h.hexdigest()
 
 
+BINARY_EXT = (".pdf", ".zip", ".gz", ".png", ".pt", ".npz")
+
+
+def sha_norm(p, _bufsz=1 << 20):
+    """SHA256 of LF-normalized bytes for text files; raw for binary types.
+
+    Used for GIT-BACKED sections so digests are platform-independent: they equal the
+    git blob hash content-wise (the index stores LF via .gitattributes) and the
+    LF-normalized deposit-bundle payload hashes. Release-asset sections keep raw sha()
+    because their uploaded asset bytes are immutable as-is. (Audit 2026-07-18 20:24.)
+    """
+    if p.lower().endswith(BINARY_EXT):
+        return sha(p)
+    with open(p, "rb") as f:
+        data = f.read()
+    h = hashlib.sha256()
+    h.update(data.replace(b"\r\n", b"\n"))
+    return h.hexdigest()
+
+
 def build_index():
     skip = {".git", ".venv", "node_modules", "external", "ckpts", "tb",
             "_release", "archive_noncanonical", "__pycache__", "exps"}
@@ -103,7 +123,7 @@ def verify(m):
     bad, missing_asset = [], []
     checked = 0
 
-    def check_named(section, key, digest):
+    def check_named(section, key, digest, hasher=sha):
         nonlocal checked
         cands = locate(idx, key)
         if not cands:
@@ -111,7 +131,7 @@ def verify(m):
                 f"{section}/{key}: MISSING" +
                 ("" if section in RELEASE_ASSET_SECTIONS else " (git-tracked file)"))
             return
-        if any(sha(c) == digest for c in cands):
+        if any(hasher(c) == digest for c in cands):
             checked += 1
         else:
             bad.append(f"{section}/{key}: hash mismatch vs manifest")
@@ -123,7 +143,7 @@ def verify(m):
         ap = os.path.join(ROOT, rel)
         if not os.path.exists(ap):
             bad.append(f"protocol_code/{rel}: MISSING")
-        elif sha(ap) != ent["sha256"]:
+        elif sha_norm(ap) != ent["sha256"]:
             bad.append(f"protocol_code/{rel}: hash mismatch vs manifest")
         else:
             checked += 1
@@ -131,19 +151,19 @@ def verify(m):
         ap = os.path.join(ROOT, rel)
         if not os.path.exists(ap):
             bad.append(f"submission_docs/{rel}: MISSING")
-        elif sha(ap) != ent["sha256"]:
+        elif sha_norm(ap) != ent["sha256"]:
             bad.append(f"submission_docs/{rel}: hash mismatch vs manifest "
                        "(edit without --regen?)")
         else:
             checked += 1
     for fam, files in m.get("result_families", {}).items():
         for fn, digest in files.items():
-            check_named(f"result_families/{fam}", fn, digest)
+            check_named(f"result_families/{fam}", fn, digest, hasher=sha_norm)
     for rel, ent in m.get("reference_runs", {}).get("files", {}).items():
         ap = os.path.join(ROOT, rel)
         if not os.path.exists(ap):
             bad.append(f"reference_runs/{rel}: MISSING (git-tracked file)")
-        elif sha(ap) != ent["sha256"]:
+        elif sha_norm(ap) != ent["sha256"]:
             bad.append(f"reference_runs/{rel}: hash mismatch vs manifest")
         else:
             checked += 1
@@ -198,7 +218,8 @@ def regen(m):
                 drift.append(f"{sec}/{key}")
     for fam, files in m["result_families"].items():
         for fn, digest in files.items():
-            if not any(sha(c) == digest for c in idx.get(fn, [])):
+            cands = idx.get(fn, [])
+            if not any(sha(c) == digest or sha_norm(c) == digest for c in cands):
                 drift.append(f"result_families/{fam}/{fn}")
     if drift:
         print("DATA DRIFT -- ABORTING (released evidence must not change):")
@@ -206,9 +227,17 @@ def regen(m):
             print("  -", d)
         return 2
 
+    # migrate/refresh result_families digests to normalized hashing (content identity is
+    # proven by the drift guard above, which accepts the legacy raw digest)
+    for fam, files in m["result_families"].items():
+        for fn in list(files.keys()):
+            cands = idx.get(fn, [])
+            if cands:
+                files[fn] = sha_norm(cands[0])
+
     changed = []
     for rel, ent in m["protocol_code"].items():
-        new = sha(os.path.join(ROOT, rel))
+        new = sha_norm(os.path.join(ROOT, rel))
         if new != ent.get("sha256"):
             ent["sha256"] = new
             changed.append(rel)
@@ -218,7 +247,7 @@ def regen(m):
         if not os.path.exists(ap):
             print("MISSING submission doc:", rel)
             return 2
-        docs[rel] = {"sha256": sha(ap), "bytes": os.path.getsize(ap)}
+        docs[rel] = {"sha256": sha_norm(ap), "bytes": os.path.getsize(ap)}
     m["submission_docs"] = docs
 
     pp = {}
@@ -244,11 +273,11 @@ def regen(m):
             ap = os.path.join(ad, fn)
             if os.path.isfile(ap):  # skip tb/ event dirs
                 rel = f"{d}/{fn}"
-                rr[rel] = {"sha256": sha(ap), "bytes": os.path.getsize(ap)}
+                rr[rel] = {"sha256": sha_norm(ap), "bytes": os.path.getsize(ap)}
     for rel in REFERENCE_RUN_LOGS:
         ap = os.path.join(ROOT, rel)
         if os.path.exists(ap):
-            rr[rel] = {"sha256": sha(ap), "bytes": os.path.getsize(ap)}
+            rr[rel] = {"sha256": sha_norm(ap), "bytes": os.path.getsize(ap)}
     m["reference_runs"] = {
         "note": ("Git-tracked source artifacts of the local reference-implementation "
                  "runs (THEIRS_ON_OURS_REPORT.md): metrics.jsonl / run_meta.json / gin "
@@ -282,7 +311,13 @@ def regen(m):
         "MECHANICALLY: rebuild_hstu_submission.py --strict runs "
         "update_release_manifest.py --verify, which fails the submission gate "
         "on any hash mismatch, so a manifested file cannot change without a "
-        "--regen + commit. Data sections (splits, text_caches, result_families) "
+        "--regen + commit. Hashing rule (2026-07-18 migration, content identity "
+        "proven under the legacy raw rule at migration time): git-backed sections "
+        "(protocol_code, submission_docs, result_families, reference_runs) digest "
+        "LF-normalized bytes for text files -- platform-independent and equal to "
+        "the git-blob and deposit-payload hashes; release-asset sections (splits, "
+        "text_caches, pinned_parity_artifacts) digest raw bytes because their "
+        "uploaded assets are immutable as-is. Data sections (splits, text_caches, result_families) "
         "are the unchanged v0.9-audit-evidence release assets, byte-verified at "
         "every --regen. The manifest cannot hash itself; its own commit is the "
         "immediate child of the state it describes.")
@@ -307,13 +342,78 @@ def regen(m):
     return 0
 
 
+def verify_git(m, commit):
+    """Compare git-backed manifest sections against the git blobs at `commit`.
+
+    This is the external auditor's check (2026-07-18 20:24) made runnable in-repo:
+    every git-backed digest must equal the SHA256 of the LF-normalized blob bytes.
+    """
+    def blob_norm(path):
+        try:
+            raw = subprocess.check_output(["git", "show", f"{commit}:{path}"], cwd=ROOT)
+        except subprocess.CalledProcessError:
+            return None
+        if path.lower().endswith(BINARY_EXT):
+            data = raw
+        else:
+            data = raw.replace(b"\r\n", b"\n")
+        return hashlib.sha256(data).hexdigest()
+
+    bad = []
+    checked = 0
+    for sec in ("protocol_code", "submission_docs"):
+        for rel, ent in m.get(sec, {}).items():
+            d = blob_norm(rel)
+            if d is None:
+                bad.append(f"{sec}/{rel}: not in git tree {commit[:8]}")
+            elif d != ent["sha256"]:
+                bad.append(f"{sec}/{rel}: manifest != git blob")
+            else:
+                checked += 1
+    for rel, ent in m.get("reference_runs", {}).get("files", {}).items():
+        d = blob_norm(rel)
+        if d is None:
+            bad.append(f"reference_runs/{rel}: not in git tree {commit[:8]}")
+        elif d != ent["sha256"]:
+            bad.append(f"reference_runs/{rel}: manifest != git blob")
+        else:
+            checked += 1
+    ls = subprocess.check_output(["git", "ls-tree", "-r", "--name-only", commit],
+                                 cwd=ROOT, text=True).splitlines()
+    by_name = {}
+    for pth in ls:
+        by_name.setdefault(pth.rsplit("/", 1)[-1], []).append(pth)
+    for fam, files in m.get("result_families", {}).items():
+        for fn, digest in files.items():
+            paths = by_name.get(fn, [])
+            if not paths:
+                bad.append(f"result_families/{fam}/{fn}: not in git tree {commit[:8]}")
+            elif not any(blob_norm(pth) == digest for pth in paths):
+                bad.append(f"result_families/{fam}/{fn}: manifest != git blob")
+            else:
+                checked += 1
+    if bad:
+        print(f"VERIFY-GIT vs {commit[:12]}: {len(bad)} mismatches "
+              f"({checked} OK):")
+        for b in bad:
+            print("  -", b)
+        return 1
+    print(f"VERIFY-GIT vs {commit[:12]}: OK ({checked} git-backed entries match "
+          "the git blobs exactly)")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     g = ap.add_mutually_exclusive_group(required=True)
     g.add_argument("--verify", action="store_true")
     g.add_argument("--regen", action="store_true")
+    g.add_argument("--verify-git", nargs="?", const="HEAD", default=None,
+                   metavar="COMMIT")
     args = ap.parse_args()
     m = json.load(open(MPATH, encoding="utf-8"))
+    if args.verify_git is not None:
+        return verify_git(m, args.verify_git)
     return verify(m) if args.verify else regen(m)
 
 

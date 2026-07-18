@@ -19,9 +19,12 @@ uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --s
 This runs, fail-closed: the bitwise HSTU core-block parity test → the artifact-graph build
 (**every one of the 168 printed empirical numbers recomputed from source artifacts**; exits
 nonzero on any mismatch, untraceable cell, or missing claim family) → release-manifest hash
-verification (153 files) → the pre-registered Musical_Instruments gate adjudicator → the
-Office V1 adjudicator (descriptive/VOID). Separate mechanical adjudicators:
-`_bestrec_run/adjudicate_office_v3.py`, `_bestrec_run/adjudicate_fir_breadth.py`.
+verification (153 files) → the pre-registered Musical_Instruments gate adjudicator → **the
+Office V3 adjudicator (counted; the build fails unless the campaign verdict is PASS)** →
+**the FIR-breadth adjudicator (counted; both categories must be CONFIRMED)** → the Office V1
+adjudicator (descriptive/VOID). Every counted campaign's live adjudicator gates the build
+(hardened 2026-07-18); `update_release_manifest.py --verify-git <commit|tag>` additionally
+checks the manifest against the git blobs.
 
 ## What is claimed (exactly this, nothing broader)
 

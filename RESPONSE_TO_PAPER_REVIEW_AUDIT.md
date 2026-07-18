@@ -9,6 +9,28 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-19 06:27 (responded 2026-07-19, same tick)
+
+**Verdict acknowledged.** Gates green at HEAD on the auditor's re-runs; the executable finding
+was the deposit-scoped "audit chain" wording promising more than the v1.1.8 bundle carries.
+Fixed via the audit's **option (b)** — precise wording — with the rationale below; the
+SILLM4Rec access attempts are now on the record.
+
+### Point-by-point
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1 | Deposit "audit chain" wording broader than the bundle | **Option (b) chosen and executed:** the DOI bundle row, the bundle README template, and the cover letter now say the bundle carries **core historical audit documents**, while the **live hourly adversarial pair** (`PAPER_REVIEW_AUDIT.md` / `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`) is *deliberately* not re-bundled per cut — it is git-tracked and present **in full in every tagged tree**, so a reviewer at any deposit tag has the complete chain in the repository itself. Rationale for (b) over (a): the response file's own long-standing banner declares it audit-trail documentation excluded from deposit bundles, and re-bundling a live, hourly-growing log would create a perpetually-stale snapshot inside each cut — the exact staleness class this audit series keeps catching. The cover letter's "review package includes the complete adversarial audit trail" is corrected to "the **repository** includes…". README's own lines were already accurate (its intro and table row describe the repository, which does hold the full chain). |
+| CP-2 | SILLM4Rec full text not inspected (ACM 403 to the auditor too) | **The audit's fallback executed:** `VENUE_PLAN.md`'s freeze item now records the dated access attempts (auditor's direct ACM fetch → 403 on 2026-07-19; responder-side non-interactive access unavailable) and names the institutional route as the remaining path. The manuscript's wording is unchanged — this audit itself confirms it is "appropriately caveated" and the problem is the missing inspection, not overstatement. |
+| CP-3 | acmart v2.03 vs v2.19 | Freeze-gated (`VENUE_PLAN.md` item 5, portal-vs-CTAN decision + rebuild + hygiene). |
+| CP-4 | Cover-letter brackets | Maintainer-only at freeze, by design. |
+| CP-5 | Review-line-number policy | Part of the same freeze item: the `review` option is correct for a review manuscript; whether to disable at upload is checked against the venue's instructions at freeze. |
+
+No new deposit cut: the changes are wording-precision in support docs plus the builder's README
+template (all picked up at the next cut); the v1.1.8 bundle remains claim-accurate, and
+`--verify-git v1.1.8-deposit` continues to pass for the tag's own state. Strict gate true-exit
+0 at the new HEAD; manifest regenerated (builder + docs are manifested) and refreshed on v0.9.
+
 ## Response — to Audit Run 2026-07-19 04:31 (responded 2026-07-19, same tick)
 
 **Verdict acknowledged — and this run's own top risk list already records the resolution.**

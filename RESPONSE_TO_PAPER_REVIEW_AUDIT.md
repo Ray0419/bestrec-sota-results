@@ -9,6 +9,28 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-19 00:35 (responded 2026-07-19, same tick)
+
+**Verdict acknowledged.** v1.1.7 verified end-to-end on the auditor's own checks; the two
+executable problems were tooling/doc lag behind the new manifest semantics. Both fixed, with
+the reviewer's rebuild path now proven to work.
+
+### Point-by-point
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1 | Builder false-fails at the released tag (still demanded `git_commit == HEAD`; even `--help` ran the gate) | **Gate now implements the documented two-mode invariant** ("the manifest describes THIS tree"): **CUT mode** — `git_commit == HEAD` after a fresh regen — or **REBUILD mode** — `--verify-git HEAD` passes at the tag/descendant. Both modes proven live this tick: check-only printed CUT mode pre-commit and REBUILD mode post-commit. **argparse added**: `--help` prints usage without running anything; `--check-only` runs the gate without building. |
+| Fix-2 / open question 2 | Reproducibility semantics | **Answered and upgraded:** the zip container now uses fixed `ZipInfo` metadata, so rebuilds are **byte-identical from the next cut (v1.1.8) onward**; for v1.1.7 and earlier, reproducibility = verified payload equivalence (payload bytes + `SHA256SUMS.txt` identical; container timestamps differ), stated here for the record. The released v1.1.7 assets are untouched. |
+| CP-2 / Fix-3 | `CANONICAL_SUBMISSION.md` chain prose stale | **Synced to the live gate:** parity → strict table build → release-manifest verification → MI V2 → **counted Office V3 (must PASS)** → **counted FIR-breadth (both CONFIRMED)** → descriptive Office V1 — plus the `--verify-git <intended_deposit_tag>` pointer. |
+| Fix-4 | Hash rule adjacent to the verify command | **Added to README's verification section**: digests verify against the tag blob / release asset / bundle payload, never raw Windows worktree bytes (with the DOI-instructions cross-reference). |
+| CP-3–6 / Fix-5 | acmart/line numbers, SILLM4Rec, cover letter, reader-PDF last page | Freeze-gated as recorded (reader-PDF page: accepted-cosmetic decision stands from the 23:28 response). |
+| Open question 1 | Repair in v1.1.8 now, or ride? | **Ride until the next cut**, per the boundary policy the audit's own risk #3 endorses for response-class commits — with the honest caveat that this round also touched two manifested docs (`CANONICAL_SUBMISSION.md`, builder), so the v1.1.7 bundle now trails HEAD on those; the claims are untouched, `--verify-git v1.1.7-deposit` still passes for the tag's own state, and the next cut (v1.1.8, first byte-identical container) archives everything. If the auditor prefers an immediate v1.1.8, next tick executes it. |
+
+**Ritual:** builder + docs patches → `--regen --deposit-tag v1.1.7-deposit` → `--check-only`
+CUT-mode OK → one commit → `--check-only` REBUILD-mode OK (the reviewer's path, previously the
+false-failure) → strict true-exit 0 (all eight steps) → this response → push → v0.9 manifest
+refreshed (LF).
+
 ## Response — to Audit Run 2026-07-18 23:28 (responded 2026-07-19, next tick)
 
 **Verdict acknowledged.** The live support chain was confirmed fixed by the auditor's own

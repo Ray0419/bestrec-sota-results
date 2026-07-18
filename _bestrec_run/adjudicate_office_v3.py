@@ -76,12 +76,23 @@ with identical prominence.
 """
 
 
+BINARY_EXT = (".pdf", ".zip", ".gz", ".png", ".pt", ".npz")
+
+
 def sha256(p: Path, chunk: int = 1 << 20) -> str:
-    h = hashlib.sha256()
+    """SHA256 under the RELEASE_MANIFEST hash policy: LF-normalized bytes for text
+    files, raw bytes for binary types (PREREG_OFFICE_V3.md ERRATUM E3, 2026-07-18).
+    Condition 2 protects reference-artifact CONTENT identity; the manifest migrated
+    to platform-independent normalized hashing and this comparator follows it."""
+    if str(p).lower().endswith(BINARY_EXT):
+        h = hashlib.sha256()
+        with open(p, "rb") as f:
+            for b in iter(lambda: f.read(chunk), b""):
+                h.update(b)
+        return h.hexdigest()
     with open(p, "rb") as f:
-        for b in iter(lambda: f.read(chunk), b""):
-            h.update(b)
-    return h.hexdigest()
+        data = f.read()
+    return hashlib.sha256(data.replace(b"\r\n", b"\n")).hexdigest()
 
 
 def final_full(d: dict) -> dict:

@@ -6,6 +6,339 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
+1. **Confirmed current top blocker: the live Office V3 adjudicator now VOIDs
+   the Office_Products V3 campaign while the manuscript and `OFFICE_V3_RESULTS.md`
+   still claim it PASSED.** A fresh
+   `uv --project _bestrec_run run python _bestrec_run/adjudicate_office_v3.py --no-append`
+   run at `2026-07-18 21:25 Australia/Sydney` produced
+   `CAMPAIGN VERDICT: VOID`: both k16/k8 numerical arms still pass
+   (`0.03047`, CI-LB `0.03033`; `0.03029`, CI-LB `0.03024`), but condition 2
+   is marked violated because all five `office_hstu_blair` reference artifacts
+   fail the adjudicator's raw SHA256 comparison against `RELEASE_MANIFEST.json`.
+   Manual follow-up shows this is a hash-policy mismatch, not random data drift:
+   the LF-normalized hash of each file matches the manifest exactly, while the
+   raw Windows worktree hash does not. Still, the paper's counted Office V3
+   claim is not submission-safe until the adjudicator, preregistration wording,
+   and strict gate use one explicit hash policy and a fresh PASS block is
+   appended.
+2. **Confirmed strict-gate coverage gap: `rebuild_hstu_submission.py --strict`
+   passes even when the live Office V3 adjudicator says VOID.** The strict
+   rebuild verifies HSTU parity, `168` table cells, release-manifest hashes, and
+   the older MI/Office-V1 adjudication path, then exits PASS. It does not run
+   `_bestrec_run/adjudicate_office_v3.py` or fail on a V3 campaign verdict other
+   than PASS, despite `office_v3` being a required manifest family and the paper
+   counting Office V3 in the abstract and Section 5.2.
+3. **Confirmed prior v1.1.5 release/deposit integrity blocker is fixed in the
+   current `v1.1.6-deposit` bundle, but the manifest boundary wording remains
+   reviewer-fragile.** `--verify` passes for `153` live files;
+   `--verify-git HEAD` and `--verify-git v1.1.6-deposit` each pass with
+   `128/128` git-backed entries; the local
+   `_release/bestrec_deposit_v1.1.6.zip` sidecar matches outer SHA256
+   `f2f5d3bc75bf09415721112015178a216c8a94d358a1e918e88952908c3795e4`;
+   all `65/65` internal SHA rows verify; and `28/28` bundled payloads that are
+   also manifest-listed match. However, `RELEASE_MANIFEST.json` records
+   `git_commit = de04d9dc...`, and `--verify-git de04d9dc...` fails on
+   `CANONICAL_SUBMISSION.md` and `_bestrec_run/update_release_manifest.py`.
+   The actual matching tree is the `v1.1.6-deposit` tag/HEAD descendant where
+   manifested files are unchanged. This is documented as a parent-commit
+   convention, but a field named `git_commit` that does not verify against its
+   own value is still a plausible artifact-review rejection risk.
+4. **Venue-template drift remains a freeze blocker.** The TeX build still
+   vendors `paper_tex/acmart.cls` v2.03 (`2024/02/04`). ACM's author page
+   currently instructs review manuscripts to use the latest Primary Article
+   Template LaTeX package `2.16` and `\documentclass[manuscript]{acmart}` for
+   single-column review, while CTAN lists production `acmart` v2.19
+   (`2026-06-27`). `VENUE_PLAN.md` records this as pending, and the rendered
+   review PDF still has visible red line numbers.
+5. **Office V3 and FIR-breadth per-user sidecar policy remains reviewer-facing
+   reproducibility risk.** Office V3 aggregate JSONs and treestate files are
+   tracked, but the final per-user sidecars are local-only. FIR-breadth
+   aggregate files are tracked and the fresh adjudicator confirms both
+   categories, but reviewer-access language must stay precise: local-only
+   sidecars are supplementary audit material unless actually included in a
+   release/deposit.
+6. **FIR-breadth evidence remains mechanically green but claim boundaries must
+   stay narrow.** A fresh adjudicator run confirms only the internal paired
+   filter-vs-no-filter claim: Industrial_and_Scientific mean `+0.00240`, CI
+   `[+0.00183,+0.00297]`, `5/5` positive; CDs_and_Vinyl mean `+0.00566`, CI
+   `[+0.00493,+0.00639]`, `5/5` positive. No comparator, SOTA, or broader
+   generalization claim is supported by this gate.
+7. **No current hard numerical blocker in the MI strict table checks.** Fresh
+   strict table and rebuild checks pass: `168` cells recomputed, `149` exact,
+   `19` within-rounding, `0` mismatches, `0` untraceable, all `14` declared
+   claim families sourced; HSTU parity max asserted diff remains `0.000e+00`.
+   This does not rescue the Office V3 adjudicator contradiction.
+8. **SILLM4Rec remains close and under-inspected.** The paper now cites
+   SILLM4Rec with a concrete public-repository non-comparability reason
+   (candidate product ranking tasks plus SFT/DPO workflow), and the repo
+   evidence supports caution. But ACM metadata identifies a close Amazon
+   Reviews 2023 5-core/NDCG paper, so direct full-text protocol inspection or
+   more explicit repo-based exclusion remains a freeze item.
+9. **Related-work/novelty remains narrow and incremental.** Recent semantic-ID,
+   generative retrieval, LLM4Rec, and HSTU-BLaIR-adjacent work leaves the
+   contribution best framed as a tightly audited, artifact-gated HSTU/FIR study,
+   not a broad method breakthrough. Keep Video_Games as competitive but not
+   SOTA; MI as a per-category point-estimate comparison; Office V3 only after
+   the adjudicator issue is fixed; FIR breadth as an internal paired filter
+   claim.
+10. **TORS cover letter remains a maintainer-fill freeze item.** Bracketed
+    fields for identity/contact, conflicts, reviewer suggestions, and preprint
+    status remain. This is fine for a tracked draft, not for ScholarOne upload.
+
+## Audit Run - 2026-07-18 21:30 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` /
+  `7c6cd53a3751dcc0938f50731ea06a7092884984`.
+- Current deposit tag checked: `v1.1.6-deposit` /
+  `60b5f414f23b6b58a907b8e552de253986b05800`.
+- New commits since the remembered 20:20 audit: `60b5f414` cut v1.1.6 with
+  platform-independent manifest hashing, `--verify-git`, and bundle
+  cross-checks; `7c6cd53a` added the response. `git diff v1.1.6-deposit..HEAD`
+  shows only `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` changed after the deposit tag.
+- Working tree before this audit edit: no tracked modifications; known
+  untracked files remained `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Sources/artifacts inspected this run: `PAPER_REVIEW_AUDIT.md`,
+  `PAPER_SUBMISSION.md`, `paper_tex/sections/*`, `paper_tex/PAPER_TORS.pdf`,
+  `PAPER_SUBMISSION.pdf`, `paper_tex/acmart.cls`, `paper_tex/BUILD_NOTES.md`,
+  `paper_tex/hygiene_scan_output.txt`, `RELEASE_MANIFEST.json`, `README.md`,
+  `DOI_DEPOSIT_INSTRUCTIONS.md`, `CANONICAL_SUBMISSION.md`,
+  `VENUE_PLAN.md`, `COVER_LETTER_TORS.md`, `PREREG_OFFICE_V3.md`,
+  `OFFICE_V3_RESULTS.md`, `FIR_BREADTH_RESULTS.md`,
+  `_bestrec_run/adjudicate_office_v3.py`,
+  `_bestrec_run/adjudicate_fir_breadth.py`,
+  `_bestrec_run/rebuild_hstu_submission.py`,
+  `_bestrec_run/update_release_manifest.py`,
+  `_bestrec_run/build_deposit_bundle.py`,
+  `_bestrec_run/hstu_results_manifest.json`,
+  `_bestrec_run/hstu_tables.json`, the `v1.1.6-deposit` tag, and
+  `_release/bestrec_deposit_v1.1.6.zip`.
+- Generated current visual samples from `paper_tex/PAPER_TORS.pdf` with
+  PyMuPDF into `tmp/pdfs/paper_audit_20260718_2130/`; no manuscript/source file
+  was edited in this run other than this audit file.
+
+### Verdict
+
+The prior v1.1.5 manifest/bundle defect is materially repaired in v1.1.6:
+the tag, normalized manifest hashes, and bundled payloads now agree under the
+new rules. The new reject-level problem is the Office V3 support chain. The
+manuscript says Office V3 passed and counts it as a second per-category
+comparison, but the live adjudicator now says the campaign is VOID because its
+condition-2 hash check still uses raw bytes after the manifest migrated to
+LF-normalized text hashes. A strict reviewer does not have to infer the
+authors' intent; they can run the adjudicator and quote its VOID verdict.
+
+### Commands And Evidence Checked
+
+- `git status --short --branch`
+  - Before this audit edit: no tracked modifications; four known untracked
+    files listed above.
+- `git rev-parse HEAD`; `git rev-parse v1.1.6-deposit`;
+  `git rev-list --oneline v1.1.6-deposit..HEAD`
+  - `HEAD = 7c6cd53a3751dcc0938f50731ea06a7092884984`.
+  - `v1.1.6-deposit = 60b5f414f23b6b58a907b8e552de253986b05800`.
+  - One post-tag commit: `7c6cd53a`, response only.
+- `uv --project _bestrec_run run python _bestrec_run/update_release_manifest.py --verify`
+  - PASS: `153` files verified, `0` release-asset files not local.
+- `uv --project _bestrec_run run python _bestrec_run/update_release_manifest.py --verify-git`
+  - PASS vs `HEAD`: `128` git-backed entries match.
+- `uv --project _bestrec_run run python _bestrec_run/update_release_manifest.py --verify-git v1.1.6-deposit`
+  - PASS vs the current deposit tag: `128` git-backed entries match.
+- `uv --project _bestrec_run run python _bestrec_run/update_release_manifest.py --verify-git de04d9dcab30d147afa0c8329d67dcb3729fcc87`
+  - FAILS with `2` mismatches: `submission_docs/CANONICAL_SUBMISSION.md` and
+    `submission_docs/_bestrec_run/update_release_manifest.py`. This is the
+    documented parent-commit convention, but it remains a confusing
+    provenance field because `git_commit` does not identify the matching tree.
+- Independent zip audit for `_release/bestrec_deposit_v1.1.6.zip`
+  - Outer SHA256:
+    `f2f5d3bc75bf09415721112015178a216c8a94d358a1e918e88952908c3795e4`.
+  - Sidecar `.sha256`: matches.
+  - Zip entries: `66`; internal `SHA256SUMS.txt` rows: `65/65` OK, `0` bad,
+    `0` missing, `0` extra payloads not in sums.
+  - `RELEASE_MANIFEST.json` vs bundled payloads: `28/28` checkable
+    manifest-listed payloads match under the normalized text hashing rule.
+  - `8` git-backed manifest files are not bundled; this is now documented as
+    repository-superset evidence rather than bundle payload evidence.
+- `uv --project _bestrec_run run python _bestrec_run/build_hstu_tables.py --submission --tables-out $env:TEMP\hstu_tables_submission_audit_20260718_2130.json`
+  - PASS: `168` cells recomputed; `149` exact, `19` within-rounding,
+    `0` MISMATCH, `0` UNTRACEABLE, all `14` declared claim families sourced.
+- `uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --strict`
+  - PASS: HSTU parity, strict table build, release-manifest verification, MI V2
+    gate, and older Office descriptive/VOID check. This did not run Office V3.
+- `uv --project _bestrec_run run python _bestrec_run/test_hstu_parity.py`
+  - PASS: asserted HSTU stages max diff `0.000e+00`.
+- `uv --project _bestrec_run run python _bestrec_run/adjudicate_office_v3.py --no-append`
+  - Fresh block `9b1147c62781` at `2026-07-18 21:25:37`.
+  - Numeric arms PASS: k16 mean `0.03047`, sd `0.00011`, CI-LB `0.03033`;
+    k8 mean `0.03029`, sd `0.00005`, CI-LB `0.03024`; all ten seeds above
+    both `0.0279` and `0.0271`.
+  - Condition 2 FAILS under the adjudicator's raw SHA256 check for all five
+    reference files:
+    `_bestrec_run/theirs_runs/office_hstu_blair/hstu-sampled-softmax-n512-blair.gin`,
+    `metrics.jsonl`, `run_meta.json`, `tb_logdir_intended.txt`, and
+    `_bestrec_run/theirs_runs/office_hstu_blair.log`.
+  - Campaign verdict: `VOID` because comparability conditions are violated.
+- Manual raw-vs-normalized hash check for the five Office reference files:
+  - For every file above, raw SHA256 differs from `RELEASE_MANIFEST.json`, but
+    LF-normalized SHA256 matches the manifest exactly. This pins the cause to
+    stale adjudicator hash semantics after the v1.1.6 manifest migration.
+- `uv --project _bestrec_run run python _bestrec_run/adjudicate_fir_breadth.py --no-append`
+  - CONFIRMED for both categories. Industrial_and_Scientific mean `+0.00240`,
+    CI `[+0.00183,+0.00297]`; CDs_and_Vinyl mean `+0.00566`, CI
+    `[+0.00493,+0.00639]`; both `5/5` positive.
+- `uv --project _bestrec_run run python paper_tex\scan_pdf.py paper_tex\PAPER_TORS.pdf`
+  - PASS: `40` pages, `0` placeholder/forbidden failures, `20`
+    informational SOTA/negation hits.
+- PDF page-count check with `pypdf`
+  - `paper_tex/PAPER_TORS.pdf`: `40` pages, `612 x 792 pt`.
+  - `PAPER_SUBMISSION.pdf`: `46` pages, `612 x 792 pt`.
+- Visual render with PyMuPDF
+  - Rendered pages 1, 2, 3, 27, 28, 39, and 40 at 1.5x. No obvious clipping,
+    unreadable glyphs, broken tables, or margin cutoffs observed in inspected
+    samples. Red line numbers are visible throughout the review PDF.
+  - Poppler wrapper commands `pdfinfo`/`pdftoppm` failed in this shell with
+    "The system cannot find the path specified"; PyMuPDF was used instead.
+
+### External Fact-Check / Novelty And Venue Notes
+
+- ACM's current submissions page says review manuscripts should be
+  single-column and use the Primary Article Template LaTeX package `2.16`
+  with `\documentclass[manuscript]{acmart}`. Source:
+  https://www.acm.org/publications/authors/submissions
+- CTAN currently lists production `acmart` version `2.19` dated
+  `2026-06-27`, while the vendored local class is v2.03 from `2024/02/04`.
+  Source: https://ctan.org/tex-archive/macros/latex/contrib/acmart
+- HSTU-BLaIR remains a close comparator rather than background-only prior art:
+  its paper evaluates Video Games, Office Products, and Musical Instruments
+  from Amazon Reviews 2023 and emphasizes Office sparsity and HSTU-BLaIR gains.
+  Source: https://arxiv.org/html/2504.10545v3
+- SILLM4Rec remains plausibly non-interchangeable with this paper's full-catalog
+  LLOO setting, but it is still close enough to inspect carefully: the public
+  repo asks users to download AR2023 5-core data, create candidate product
+  ranking tasks, and generate SFT/DPO data. Source:
+  https://github.com/MKC-Lab/SILLM4Rec . ACM metadata for the paper identifies
+  experiments on three 5-core Amazon Reviews 2023 sub-datasets. Source:
+  https://dl.acm.org/doi/full/10.1145/3743093.3771011
+
+### Confirmed Problems
+
+1. **Office V3 is currently not supported by its live adjudicator.** The paper
+   counts Office V3 as PASSED, and `OFFICE_V3_RESULTS.md` still records a PASS
+   block from `2026-07-13`, but the current script now produces a VOID verdict
+   under condition 2.
+2. **The Office V3 failure is caused by inconsistent hash semantics across
+   tools.** `RELEASE_MANIFEST.json` and `update_release_manifest.py` now use
+   LF-normalized hashes for git-backed text files. `adjudicate_office_v3.py`
+   still compares raw worktree bytes. On this Windows checkout, all five
+   Office reference artifacts raw-hash drift but normalized-hash match.
+3. **The strict submission rebuild does not protect the counted Office V3
+   claim.** It passes after the V3 adjudicator voids the campaign. For a paper
+   whose lead contribution is fail-closed artifact gating, this gap is
+   reviewer-visible and serious.
+4. **The manifest `git_commit` field remains semantically risky.** The new
+   `--verify-git` evidence passes for `HEAD`/`v1.1.6-deposit`, but not for the
+   literal commit stored in the manifest. Documentation explains the parent
+   convention, but tools and reviewers naturally treat `git_commit` as the
+   tree to verify.
+5. **Venue-template refresh is still pending.** The paper uses a 2024-vintage
+   vendored ACM class while ACM/CTAN current guidance has moved. This may be
+   acceptable only with an explicit portal-tested freeze decision.
+
+### Confirmed Fixes / Non-Problems Since The Prior Section
+
+- The v1.1.6 bundle repairs the prior v1.1.5 manifest-vs-payload mismatch:
+  internal zip sums, sidecar hash, tag-vs-manifest hashes, and bundled
+  manifest-listed payloads are now consistent.
+- The strict table emitter path remains hardened: `hstu_tables.json` is
+  submission-mode, the strict build recomputes all printed empirical cells, and
+  there are no paper mismatches or untraceable cells.
+- FIR-breadth remains mechanically confirmed under the frozen internal paired
+  filter-vs-no-filter wording.
+- The TORS PDF hygiene scan passes and sampled visual renders are legible.
+
+### Plausible Risks / Items Requiring Author Verification
+
+- Does the Office V3 pre-registration's phrase "hash-manifested" legally mean
+  raw worktree bytes, or the current manifest's normalized text-hash rule? If
+  the latter, the adjudicator must be patched and the erratum should state the
+  migration; if the former, v1.1.6's normalized manifest cannot be used as the
+  V3 reference condition without a preregistration erratum.
+- Should `rebuild_hstu_submission.py --strict` run all counted live
+  adjudicators (`adjudicate_office_v3.py` and `adjudicate_fir_breadth.py`) and
+  fail unless each counted campaign returns PASS/CONFIRMED?
+- Should `RELEASE_MANIFEST.json` gain a separate `manifest_tree_commit` or
+  `deposit_tag_commit` field so reviewers have a literal commit to pass to
+  `--verify-git`, instead of overloading `git_commit` with a parent-commit
+  convention?
+- Are red line numbers required by the intended TORS review portal, or should a
+  line-number-free final review PDF be generated for upload?
+
+### Concrete Fixes To Make Next
+
+1. Patch `_bestrec_run/adjudicate_office_v3.py` to use the same hash routine as
+   `update_release_manifest.py` for git-backed text reference files (or record
+   and check both raw and normalized digests explicitly). Re-run it and append a
+   fresh adjudication block; do not submit while the live verdict is VOID.
+2. Extend `_bestrec_run/rebuild_hstu_submission.py --strict` so it runs the
+   Office V3 and FIR-breadth adjudicators and fails on non-PASS/non-CONFIRMED
+   verdicts for counted claims.
+3. Update `PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`, and Section 5.2 only
+   after item 1 is fixed, stating precisely which hash rule verifies condition
+   2 after the v1.1.6 manifest migration.
+4. Replace or supplement `git_commit` with an unambiguous tree/tag field and
+   make a documented command such as `update_release_manifest.py --verify-git
+   <field>` pass without reviewer interpretation.
+5. Finish the ACM template decision: refresh the vendored class or document a
+   portal-tested reason to retain v2.03; decide whether line numbers belong in
+   the upload artifact.
+6. Inspect the SILLM4Rec ACM PDF directly before freeze, or make the exclusion
+   rely only on the public repository workflow with explicit candidate-ranking
+   / SFT-DPO wording.
+
+### Open Questions
+
+- Is Office V3 intended to remain a counted claim after the v1.1.6 hash-rule
+  migration, or should it be temporarily downgraded until the adjudicator is
+  repaired?
+- Should the next deposit be `v1.1.7-deposit` after the Office V3 adjudicator
+  fix, since v1.1.6 currently archives a script that can void a counted claim
+  on Windows?
+- Should local-only Office/FIR per-user sidecars be deposited now, or is
+  aggregate-cell recomputation the declared reproducibility boundary?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDFs, result files, preregistrations,
+      release files, and audit artifacts.
+- [x] Verify new commits and current deposit boundary.
+- [x] Re-run release-manifest live and git-blob verification.
+- [x] Independently audit the v1.1.6 zip, sidecar, internal sums, and
+      manifest-listed bundled payloads.
+- [x] Re-run strict table build and full strict rebuild.
+- [x] Re-run Office V3 adjudicator and isolate the raw-vs-normalized hash
+      contradiction.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Check PDF page counts, hygiene scan, and representative visual renders.
+- [x] Fact-check current ACM template drift, HSTU-BLaIR comparator proximity,
+      and SILLM4Rec workflow evidence.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Repair Office V3 adjudicator hash semantics and append a fresh PASS/VOID
+      block.
+- [ ] Add Office V3/FIR-breadth adjudicator verdicts to the strict submission
+      gate.
+- [ ] Clarify `RELEASE_MANIFEST.json` commit/tag boundary.
+- [ ] Finish ACM template and line-number freeze decision.
+- [ ] Inspect SILLM4Rec full text or keep exclusion strictly repo-evidence-based.
+
+## Superseded Prior Rejection-Risk List - 2026-07-18 20:20 Snapshot
+
 1. **Confirmed release/deposit integrity failure: `RELEASE_MANIFEST.json` is
    not self-consistent with either its recorded `git_commit` or the current
    `v1.1.5-deposit` bundle payload.** A Git-blob audit of the live manifest's

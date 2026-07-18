@@ -40,6 +40,24 @@ def main():
         ok &= run("Release-manifest verification",
                   ["_bestrec_run/update_release_manifest.py", "--verify"])
     ok &= run("MI V2 gate adjudication", ["_bestrec_run/summarize_sota_confirm_v2.py"])
+    if STRICT:
+        # audit 2026-07-18 21:30 CP-3: every COUNTED campaign's live adjudicator must
+        # gate the strict build (exit codes alone don't carry the verdict -- parse it).
+        def run_verdict(label, args, needles):
+            r = subprocess.run([PY] + args, cwd=str(ROOT), capture_output=True, text=True)
+            out = (r.stdout or "") + (r.stderr or "")
+            good = r.returncode == 0 and all(n in out for n in needles)
+            print(f"--- {label}: {'OK' if good else 'FAILED (verdict not confirmed)'}")
+            if not good:
+                print(out[-2000:])
+            return good
+        ok &= run_verdict("Office V3 adjudication (counted; must PASS)",
+                          ["_bestrec_run/adjudicate_office_v3.py", "--no-append"],
+                          ["CAMPAIGN VERDICT: PASS"])
+        ok &= run_verdict("FIR-breadth adjudication (counted; both must CONFIRM)",
+                          ["_bestrec_run/adjudicate_fir_breadth.py", "--no-append"],
+                          ["Industrial_and_Scientific: CONFIRMED",
+                           "CDs_and_Vinyl: CONFIRMED"])
     # Office is VOID/descriptive under its prereg floor check — report, non-gating
     run("Office adjudication (descriptive; VOID under prereg floor check)",
         ["_bestrec_run/office_prereg_tools.py", "adjudicate"], required=False)

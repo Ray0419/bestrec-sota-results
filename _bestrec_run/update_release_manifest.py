@@ -321,6 +321,13 @@ def regen(m):
         "are the unchanged v0.9-audit-evidence release assets, byte-verified at "
         "every --regen. The manifest cannot hash itself; its own commit is the "
         "immediate child of the state it describes.")
+    m["git_commit_semantics"] = (
+        "git_commit is the PARENT commit recorded at --regen; the digests describe "
+        "the worktree that becomes the tree of the manifest's own introducing commit "
+        "(the immediate child). Verify with --verify-git at the introducing commit, "
+        "at any descendant where manifested files are unchanged, or at the deposit "
+        "tag -- NOT at git_commit itself when manifested files changed in the "
+        "introducing commit. (Audit 2026-07-18 21:30.)")
     m.setdefault("supersedes_git_commit", None)
 
     io.open(MPATH, "w", encoding="utf-8").write(json.dumps(m, indent=2) + "\n")
@@ -397,6 +404,11 @@ def verify_git(m, commit):
               f"({checked} OK):")
         for b in bad:
             print("  -", b)
+        stored = m.get("git_commit", "")
+        if commit.startswith(stored[:12]) or stored.startswith(commit[:12]):
+            print("HINT: this commit is the manifest's recorded PARENT; the digests "
+                  "describe its introducing commit's tree. Try --verify-git HEAD or "
+                  "the deposit tag (see git_commit_semantics).")
         return 1
     print(f"VERIFY-GIT vs {commit[:12]}: OK ({checked} git-backed entries match "
           "the git blobs exactly)")

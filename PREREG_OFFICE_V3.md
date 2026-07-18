@@ -108,3 +108,28 @@ final-epoch record. No per-user data is missing; all ten runs' final-epoch per-u
 exist and are hash-embedded in the tracked result JSONs. A per-run sidecar inventory is
 appended to `OFFICE_V3_RESULTS.md`. Gate values, seeds, conditions, and claim wording are
 unchanged; this erratum documents emission mechanics only.
+
+## ERRATUM E3 (2026-07-18, appended after adjudication; hash-policy migration)
+
+**What changed.** On 2026-07-18 the repository's `RELEASE_MANIFEST.json` migrated its
+git-backed digests from raw-worktree-byte SHA256 to **LF-normalized-byte SHA256** for text
+files (platform-independent; equal to the git-blob hashes; content identity at migration was
+proven by the migration's drift guard, which required the legacy raw digest to match before
+rewriting). This pre-registration's condition 2 ("the reference source artifacts must
+hash-match the pinned `RELEASE_MANIFEST.json` entries") protects reference-artifact
+**content identity**; after the manifest migration, `adjudicate_office_v3.py`'s comparator
+was updated the same day to compare under the same normalized policy, so condition 2 again
+tests exactly what it froze: that the five `theirs_runs/office_hstu_blair` source artifacts
+are the same content the campaign gated against.
+
+**What did not change.** No result value, seed, gate threshold, reference reading, or claim
+wording changed. The interval between the manifest migration and the comparator update
+(within 2026-07-18) produced a spurious VOID verdict from the live adjudicator caused solely
+by the policy mismatch (raw-vs-normalized line endings on a Windows checkout); it is
+disclosed symmetrically here and in `OFFICE_V3_RESULTS.md`. A fresh post-migration
+adjudication block is appended to `OFFICE_V3_RESULTS.md` under the updated comparator.
+
+**Boundary note.** This erratum narrows nothing and broadens nothing: the frozen claim
+wording of this pre-registration is unchanged and remains the only wording under which the
+campaign is counted.
+

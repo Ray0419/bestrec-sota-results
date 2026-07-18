@@ -61,3 +61,17 @@ availability statement):
 - k8 seed 20260730: final-epoch sidecar (separate file); n=223308; sha256=722a3c82ab846986...; path=results_OFFICEV3_k8_seed20260730.final.users.jsonl.gz
 - k8 seed 20260731: regular sidecar == final-epoch record (best epoch == final; E2); n=223308; sha256=993136c39d22de48...; path=results_OFFICEV3_k8_seed20260731.users.jsonl.gz
 - k8 seed 20260732: final-epoch sidecar (separate file); n=223308; sha256=7a67563d67692806...; path=results_OFFICEV3_k8_seed20260732.final.users.jsonl.gz
+
+## Post-migration re-adjudication note (2026-07-18; PREREG_OFFICE_V3.md ERRATUM E3)
+
+On 2026-07-18 the repository manifest migrated to LF-normalized digests for git-backed text
+files. For part of that day the live adjudicator's condition-2 comparator (still raw-byte)
+returned a **spurious VOID** against the migrated manifest — a hash-policy mismatch on a
+Windows checkout, not data drift: every reference artifact's normalized hash matched the
+manifest exactly throughout (caught by the 2026-07-18 21:30 external audit). The comparator
+was updated the same day to the manifest's normalized policy (ERRATUM E3), and the
+re-adjudication under the updated comparator reproduced adjudication block `196799e7c46d`
+**bit-identically** (the script's dedup therefore recorded no new block) — the strongest
+possible evidence that no verdict content changed. The strict submission gate now also runs
+this adjudicator as a required step and fails unless the campaign verdict is PASS.
+

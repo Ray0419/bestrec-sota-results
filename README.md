@@ -66,7 +66,7 @@ campaign above is a separate pre-registration that passed under its frozen wordi
 
 ## Releases
 
-- **`v1.1.2-deposit`** (current archival bundle; each deposit release supersedes the previous) — the deposit zip + sidecar hash + manifest + both PDFs, upload verified by download-hash round trip.
+- **`v1.1.3-deposit`** (current archival bundle; each deposit release supersedes the previous) — the deposit zip + sidecar hash + manifest + both PDFs, upload verified by download-hash round trip.
 - **`v0.9-audit-evidence`** — immutable data assets (splits, text caches, historical result families) pinned by `RELEASE_MANIFEST.json`.
 - **`bestrec-raw-records-v1`** — the historical LC2C project's raw records (see `README_LC2C_HISTORICAL.md`).
 

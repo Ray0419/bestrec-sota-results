@@ -7,8 +7,8 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
 
 ## The canonical claim set (nothing broader is claimed anywhere)
 
-1. **MI point-estimate result (externally approved; the first of two counted per-category
-   comparator wins — see item 3 for Office V3):** fresh 5-seed CI lower bounds exceed the published HSTU-BLaIR Musical_Instruments
+1. **MI point-estimate result (externally approved; the first of the two counted
+   per-category point-estimate comparisons — see item 3 for Office V3):** fresh 5-seed CI lower bounds exceed the published HSTU-BLaIR Musical_Instruments
    point estimate (0.0406) for both kernels (K=16 CI-LB 0.04096, K=8 CI-LB 0.04083, 10/10 fresh
    seeds above) — per-category point-estimate comparison, not paired superiority, not general
    SOTA. The comparator has additionally been **locally regenerated** by running the reference
@@ -22,7 +22,8 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
    the learned kernel carries the effect (fixed moving-average keeps ~59%); the zero-init gate
    is a training convenience. Artifacts: `results_FIRABL_*` (manifest family `tableV2conf`/FIR
    cells).
-3. **Office_Products — V1 VOID stands; V3 PASSED (the second counted comparator win).**
+3. **Office_Products — V1 VOID stands; V3 PASSED (the second counted per-category
+   point-estimate comparison).**
    The V1 pre-registration is **VOID under its floor check** and stays VOID — descriptive
    only, counted in no claim; the floor anomaly is mechanistically explained (their own
    SASRec run locally lands +13.9% above its published row; their Office HSTU-BLaIR row
@@ -47,7 +48,9 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
 
 ## Canonical artifact graph
 
-- Prereg chain: `SOTA_CONFIRM_PREREG_V2.md` (+ `_ERRATA`), `SOTA_CONFIRM_PREREG_OFFICE.md`
+- Prereg chain: `SOTA_CONFIRM_PREREG_V2.md` (+ `_ERRATA`), `SOTA_CONFIRM_PREREG_OFFICE.md`,
+  `PREREG_OFFICE_V3.md` (+ ERRATA E1/E2; results `OFFICE_V3_RESULTS.md`),
+  `PREREG_FIR_BREADTH.md` (results `FIR_BREADTH_RESULTS.md`)
 - Results of record: `_bestrec_run/results_SOTACONF_V2_*.json` (+ tracked sidecars +
   `SOTACONF_V2_sidecar_manifest.json`), `_bestrec_run/rebuild_v2/`, `results_OFFICE_*`
   (present; descriptive/VOID), `results_FIRABL_*` (present), `results_OFFICEV3_k{16,8}_seed*.json` (+ per-run tree-state sidecars), `_bestrec_run/results_FIRB_*` (20 tracked breadth runs), the reference-implementation run
@@ -70,8 +73,10 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
   submission-doc/PDF/parity-artifact hashes, kept in sync **mechanically**: the strict
   wrapper runs `update_release_manifest.py --verify` and fails the gate on any drift;
   regenerate with `--regen` (+ commit together) whenever a manifested file changes.
-  GitHub releases: `v0.9-audit-evidence` (data/result/parity assets) and `v1.0-deposit`
-  (DOI-ready archival bundle; `DOI_DEPOSIT_INSTRUCTIONS.md`)
+  GitHub releases: `v0.9-audit-evidence` (data/result/parity assets) and the **current
+  deposit tag** — `v1.1.3-deposit` at this writing; each deposit release supersedes the
+  previous (`v1.0`→`v1.1`→`v1.1.1`→`v1.1.2`→`v1.1.3`), built by the tracked
+  `_bestrec_run/build_deposit_bundle.py` (`DOI_DEPOSIT_INSTRUCTIONS.md`)
 - Audits + responses: `CLAUDE_SOTA_*AUDIT*.md`, `STRICT_*AUDIT*.md` (incl.
   `STRICT_RESUBMISSION_AUDIT_ROUND2_2026-07-11.md`), `RESPONSE_TO_*.md`
 

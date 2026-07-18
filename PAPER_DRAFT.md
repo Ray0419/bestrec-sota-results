@@ -5,6 +5,12 @@
 
 **Authors**: [TBD]
 
+> **Historical status log.** The dated entries below are point-in-time records, newest
+> first; statements in older entries (e.g. the pre-V3 "Office stays VOID / outcome is
+> pending" wording in v3.8) are **superseded, not current claims** — §5.2,
+> `OFFICE_V3_RESULTS.md`, and `CANONICAL_SUBMISSION.md` govern. Current status: Office V3
+> **passed** and is counted under its frozen wording; the V1 VOID stands permanently.
+
 **Status update — Draft v3.9 (2026-07-18):** post-campaign refresh: the **Office V3 pre-registration has since PASSED and is counted** strictly under its frozen per-category point-estimate wording (§5.2; `OFFICE_V3_RESULTS.md`) — the V1 VOID stands unchanged; the FIR-breadth pre-registration **CONFIRMED both** new categories (`FIR_BREADTH_RESULTS.md`); A.0/table wording rescoped to V1-only; SILLM4Rec + UniSGR/DIGER/ACERec cited. The v3.8 line below is a historical status entry superseded on these points.
 
 **Status update — Draft v3.8 (2026-07-13, historical — superseded by v3.9 on the Office V3 and breadth outcomes):** methodology reframe (approach C of `IMPACT_REVISION_PLAN.md`; emphasis reordering only, no claim changes): retitled to lead with the evaluation methodology; the abstract, §1 contributions, and §7 now present the trustworthy-evaluation apparatus (immutable pre-registration, fail-closed artifact gate, comparator-regeneration harness, symmetric self-VOIDing adjudication) as contribution 1, with the FIR/MI/tail findings as its demonstrations; new §2 paragraph on evaluation practice and reproducibility in recommender systems (Ferrari Dacrema et al., 2019; Ferrari Dacrema et al., 2021; Sun et al., 2020 — all metadata verified against arXiv/dblp). Every pre-existing caveat sentence survives verbatim or with strictly added hedging; no claim broadened; Office stays VOID (the V3 prereg is cited only as a committed pre-registration whose outcome is pending, `PREREG_OFFICE_V3.md`).

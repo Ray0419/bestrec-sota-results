@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "c4cb410396d7f1f891c807b32a1c501a6834fc39",
+  "git_commit": "89d7bb695760bb9ab9e140831f24983e4192f064",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -210,7 +210,7 @@
     }
   },
   "sidecars": "see _bestrec_run/SOTACONF_V2_sidecar_manifest.json (tracked) + per-run user_records_sha256 fields",
-  "manifest_scope": "Hashes describe the repository files as of git_commit. Kept in sync MECHANICALLY: rebuild_hstu_submission.py --strict runs update_release_manifest.py --verify, which fails the submission gate on any hash mismatch, so a manifested file cannot change without a --regen + commit. Data sections (splits, text_caches, result_families) are the unchanged v0.9-audit-evidence release assets, byte-verified at every --regen. The manifest cannot hash itself; its own commit is the immediate child of the state it describes.",
+  "manifest_scope": "Hashes describe the repository files as of git_commit \u2014 the parent commit whose tree was hashed at the most recent --regen (the manifest cannot hash itself, so its own commit is the immediate child of that state); commits that touch no manifested file leave the hashes valid without a regen, and every strict build re-verifies all hashes against the live tree. Kept in sync MECHANICALLY: rebuild_hstu_submission.py --strict runs update_release_manifest.py --verify, which fails the submission gate on any hash mismatch, so a manifested file cannot change without a --regen + commit. Data sections (splits, text_caches, result_families) are the unchanged v0.9-audit-evidence release assets, byte-verified at every --regen. The manifest cannot hash itself; its own commit is the immediate child of the state it describes.",
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     "PAPER_SUBMISSION.md": {
@@ -222,12 +222,12 @@
       "bytes": 1393037
     },
     "PAPER_DRAFT.md": {
-      "sha256": "5a3950dc5b748c9dbfe8340ed56beb49c3b460097e0caffa58597603e724e844",
-      "bytes": 171462
+      "sha256": "795f9a530ec31150b29b88c80af994f053f025e4be3578d7b1d9602e6c28df02",
+      "bytes": 171896
     },
     "CANONICAL_SUBMISSION.md": {
-      "sha256": "3f5aa1326f863006d0f1387973505c7597a33766e496daa40f04e906264b47e2",
-      "bytes": 6640
+      "sha256": "a7eedc817be96b274056ba35775cd93f88a45cb4989682995a100d2612cc3ea2",
+      "bytes": 7008
     },
     "THEIRS_ON_OURS_REPORT.md": {
       "sha256": "615c2c0c762e9d8a92dc29c3b7f593680304b8f2853a65d0acca56f6d2c344a7",
@@ -258,8 +258,8 @@
       "bytes": 2195
     },
     "_bestrec_run/update_release_manifest.py": {
-      "sha256": "73f0f5bf454bd3ce8bcb27f1d73e03089f781df35718257eedd5e81704257c2f",
-      "bytes": 14235
+      "sha256": "d7ae045d393ac1b6606a182b0a7832aa4fa772357e73ab53e7a5b47ef35b0a3f",
+      "bytes": 14603
     },
     "paper_tex/PAPER_TORS.pdf": {
       "sha256": "6a40018016a3f428eb482d42559aa4a99f9c10963772c8f845c6f571bfe8356c",

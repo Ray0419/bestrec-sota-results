@@ -33,7 +33,8 @@ dual-submission policies, so the plan is:
 ## DOI (related decision, same date)
 
 Minting is **deferred** until a venue actually requires it ("skip for now"). The
-hash-manifested GitHub releases (`v0.9-audit-evidence`, `v1.0-deposit`) remain the citable
+hash-manifested GitHub releases (`v0.9-audit-evidence` + the current deposit tag —
+`v1.1.3-deposit` at this writing, each superseding the previous) remain the citable
 artifact reference; everything needed to mint in ~3 clicks stays prepared
 (`DOI_DEPOSIT_INSTRUCTIONS.md`).
 
@@ -49,13 +50,15 @@ Status legend: **PENDING** = not yet done, blocks the freeze when reached.
    verdict here; if inaccessible, the exclusion stands on repo evidence and this item is
    disclosed as inspection-pending.
 2. Final literature sweep (new AR2023 sequential-rec results since the last audit round).
-3. Cover letter: originality + not-under-review declarations; claim boundary restated
+3. Cover letter: tracked draft exists (`COVER_LETTER_TORS.md`) with originality +
+   not-under-review declarations and the claim boundary restated; at freeze the maintainer
+   fills the bracketed fields (COI, reviewers, author identity, preprint status)
    (two counted per-category point-estimate comparisons; FIR internal contrast on four
    categories; no SOTA of any kind; Office V1 VOID permanent).
 4. Table-2 split preference (single wide table vs split) — venue-template decision.
 5. First-page acmart format verification against current TORS author guidelines, **including
    refreshing the vendored `acmart.cls` (currently v2.03, 2024) against ACM's current Primary
-   Article Template** and re-running the full build + hygiene scan; decide then whether the
+   Article Template (v2.16, 2025-08-28, per the 2026-07-18 12:16 audit)** and re-running the full build + hygiene scan; decide then whether the
    Tectonic-based build compiles the latest class or whether final packaging moves to
    TeX Live/Overleaf (audit 2026-07-18 06:13, deliberate deferred decision — class upgrades
    are freeze-scope, not loop-scope).

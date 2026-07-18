@@ -273,7 +273,12 @@ def regen(m):
     m["git_commit"] = head_commit()
     m["date"] = _dt.date.today().isoformat()
     m["manifest_scope"] = (
-        "Hashes describe the repository files as of git_commit. Kept in sync "
+        "Hashes describe the repository files as of git_commit — the parent "
+        "commit whose tree was hashed at the most recent --regen (the manifest "
+        "cannot hash itself, so its own commit is the immediate child of that "
+        "state); commits that touch no manifested file leave the hashes valid "
+        "without a regen, and every strict build re-verifies all hashes "
+        "against the live tree. Kept in sync "
         "MECHANICALLY: rebuild_hstu_submission.py --strict runs "
         "update_release_manifest.py --verify, which fails the submission gate "
         "on any hash mismatch, so a manifested file cannot change without a "

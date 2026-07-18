@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Build the archival deposit bundle (currently v1.1.2) deterministically.
+"""Build the archival deposit bundle (currently v1.1.3) deterministically.
 
 The bundle is the small archival companion to the repository: papers, pre-registrations,
 results documentation, protocol code, provenance manifests, audit chain, and the comparator
@@ -13,7 +13,7 @@ import io
 import os
 import zipfile
 
-VERSION = "v1.1.2"
+VERSION = "v1.1.3"
 DATE = "2026-07-18"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "_release", f"bestrec_deposit_{VERSION}.zip")

@@ -9,6 +9,41 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-18 15:17 (responded 2026-07-18, same tick)
+
+**Verdict acknowledged, including the overclaim correction.** The audit is right: v1.1.4's
+"byte-for-byte identical" wording was false — my round-trip compared *normalized* text (the
+comparison code literally stripped CRLF), so what was proven was normalized-text equality,
+while the tag blob (LF) and the asset/bundle copies (CRLF) differed in raw bytes. That wording
+is retracted here; **v1.1.5-deposit makes byte identity actually true**, and the new round trip
+compares raw bytes with no normalization.
+
+### Point-by-point
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1 | Byte-identity claim false (LF vs CRLF) | **Corrected and then made true.** The v1.1.4-era wording is retracted above (kept in the historical response log with this correction; v1.1.4's release notes now state the defect). For v1.1.5, the release boundary is byte-stable: `.gitattributes` pins `eol=lf` for release text artifacts, the builder normalizes every text payload to LF at bundle time (with an assertion), and the standalone manifest asset is uploaded in LF form. **Byte-true round trip: `git show v1.1.5-deposit:RELEASE_MANIFEST.json`, the downloaded asset, and the bundled copy share one SHA256 (`72d0068fa5825d76…`), compared raw.** |
+| CP-2 | `VENUE_PLAN.md` still named v1.1.3 | **Fixed with the class, not the instance:** the DOI paragraph is now version-agnostic (points at `DOI_DEPOSIT_INSTRUCTIONS.md` for the current tag, same pattern as the cover letter), so this file can never carry a stale tag again. Bundled copy verified stale-tag-free. |
+| CP-3 | Consistency gate didn't cover VENUE_PLAN or line endings | **Gate extended:** it now rejects any stale deposit-tag mention in `VENUE_PLAN.md`, and the LF invariant is enforced by construction at write time (normalize + assert per payload; round trip confirms 0 CRLF payloads). |
+| CP-4 | Cross-platform bundle reproducibility undefined | **Defined and implemented:** `.gitattributes` (LF for md/py/json/jsonl/cff/sh/txt/tex/bib/gin/html/yml; binaries marked `-text`) makes fresh clones identical on any OS, and the builder's own normalization makes bundles byte-stable even from a legacy CRLF checkout — a Linux reviewer rebuilding from the tag now gets identical payload bytes and identical `SHA256SUMS.txt`. |
+| CP-5 | Freeze items open (acmart, SILLM4Rec, DOI, cover-letter brackets) | Standing, unchanged, tracked in `VENUE_PLAN.md`'s freeze checklist — all maintainer-gated by design. |
+| Risk #8 | Don't imply branch HEAD is the archival snapshot | `README.md`'s releases section now states explicitly: **the archival boundary is always the deposit tag, never branch HEAD**; post-deposit commits (audit responses, companion documentation) sit outside the deposited snapshot by design. |
+
+### Round-trip (raw bytes, no normalization)
+
+All five `v1.1.5-deposit` assets hash-match local; tag resolves to exactly the release commit;
+**tag blob == manifest asset == bundled manifest, raw** (single digest `72d0068fa5825d76…`);
+0 text payloads contain CRLF; all 65 payload hashes verify; bundled CITATION/zenodo say 1.1.5;
+bundled VENUE_PLAN carries no stale tag. **BYTE-TRUE ROUND-TRIP: PASS.**
+
+**Ritual:** `.gitattributes` + builder + docs edits → `--regen` → consistency gate OK (now incl.
+VENUE_PLAN) → LF bundle built → **one** commit → strict exit 0 (**168 cells, 0/0, 14/14
+families, 153 files**) → push → release at `--target` HEAD → tag==HEAD verified → v1.1.4 notes
+updated with the defect → v0.9 manifest refreshed (LF form) → byte-true round trip PASS. One
+process disclosure: a heredoc-mangled edit briefly broke the builder's byte literals; it was
+caught by the builder's own syntax failure before any bundle was produced and repaired via a
+script file (no artifact was built from the broken state).
+
 ## Response — to Audit Run 2026-07-18 13:16 (responded 2026-07-18, same tick)
 
 **Verdict acknowledged, including the diagnosis of my own workflow defect.** The v1.1.3

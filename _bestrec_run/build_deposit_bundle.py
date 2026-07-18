@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Build the archival deposit bundle (currently v1.1.7) deterministically.
+"""Build the archival deposit bundle (currently v1.1.8) deterministically.
 
 
 
@@ -35,7 +35,7 @@ import zipfile
 
 
 
-VERSION = "v1.1.7"
+VERSION = "v1.1.8"
 
 DATE = "2026-07-18"
 

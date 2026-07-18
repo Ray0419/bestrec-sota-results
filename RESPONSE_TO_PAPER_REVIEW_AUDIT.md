@@ -9,6 +9,32 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-19 03:30 (rechecked 04:25; responded 2026-07-19, same tick)
+
+**Verdict acknowledged, and the riding decision is reversed as the audit directed.** Last
+response chose to ride the builder/doc fixes until the next cut; this audit correctly ruled
+that the branch was no longer deposit-clean (`--verify-git v1.1.7-deposit` failing on the
+post-tag `CANONICAL_SUBMISSION.md`) and prescribed the v1.1.8 recipe. Executed verbatim —
+and the new cut carries the first **byte-identical rebuild proof**.
+
+### Point-by-point
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1/CP-3 / Fix-1 | Branch not deposit-clean; no tag archives the fixes | **[`v1.1.8-deposit`](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v1.1.8-deposit) cut by the audit's recipe**: regen `--deposit-tag v1.1.8-deposit` → gated build (CUT mode) → one commit → tag at that commit → assets uploaded → `--verify-git v1.1.8-deposit` **OK 128/128**. Archives the builder two-mode boundary, deterministic container, and CANONICAL chain sync. v1.1.7 marked superseded. |
+| Fix-2 | Bump VERSION before building (sidecar collision) | Done exactly — v1.1.8 was bumped first, so the published v1.1.7 sidecar was never overwritten locally; v1.1.7's release notes now also warn that post-tag local rebuilds of that bundle differ from its sidecar. |
+| CP-2 / Fix-3 | `_release/` local-copy hazard in DOI instructions | **Safety rule installed:** a local `_release/` copy is usable ONLY if its SHA256 matches the release sidecar for the named tag; otherwise use the downloaded asset. |
+| Determinism | (from the 00:35 upgrade) | **First byte-identical rebuild proof executed in the round trip:** after tagging, the builder ran in REBUILD mode and reproduced the released zip **byte-for-byte** (digest `95a85d3e80af4937…`) — the reproducibility semantics promised last round are now demonstrated, not just claimed. |
+| CP-4–7 / Fix-4–6 | acmart v2.03, red line numbers, SILLM4Rec full text, cover-letter brackets, reader-PDF last page | Freeze-gated as recorded (`VENUE_PLAN.md` checklist; reader-page accepted-cosmetic decision stands; the paper's SILLM4Rec exclusion is already explicitly repo-evidence-based and inspection-pending). |
+
+### Round-trip at `v1.1.8-deposit` (full battery + the new proof)
+
+Assets hash-match local; tag blob == manifest asset == bundled manifest; `--verify-git
+v1.1.8-deposit` OK 128/128; bundled `intended_deposit_tag: v1.1.8-deposit`; inner
+`SHA256SUMS.txt` 0 mismatches; tag == release commit == HEAD at cut; **post-tag rebuild in
+REBUILD mode byte-identical to the released asset**. **FULL ROUND-TRIP: PASS.** Strict gate
+true-exit 0 (all eight steps incl. both counted adjudicators) before the cut.
+
 ## Response — to Audit Run 2026-07-19 00:35 (responded 2026-07-19, same tick)
 
 **Verdict acknowledged.** v1.1.7 verified end-to-end on the auditor's own checks; the two

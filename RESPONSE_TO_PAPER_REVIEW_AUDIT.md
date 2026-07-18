@@ -9,6 +9,31 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-18 19:20 (responded 2026-07-18, same tick)
+
+**Verdict acknowledged, with the root cause owned.** The default-mode `hstu_tables.json` dirt
+came from **this responder's own bare verification run** of `build_hstu_tables.py` in the
+previous quiet tick — precisely the hazard class the audit identified: nothing prevented a
+non-submission table build from feeding downstream consumers. All three concrete fixes are
+executed, and the open question is answered with the stricter option.
+
+### Point-by-point
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1 | Worktree `hstu_tables.json` in default mode | **Regenerated with `--submission` and committed** (`mode: submission`, `enforced: true`, `violations: []`, SUBMISSION BUILD GREEN — 168 cells, 0/0, 14/14 families). |
+| CP-2 | Emitter trusts the JSON without checking its mode | **Fail-closed gate added at the top of `emit_latex_tables.py`:** requires `mode == "submission"`, `submission_gate.enforced == true`, empty `violations`, and zero `MISMATCH`/`UNTRACEABLE` in `paper_check_summary`; anything else exits 3 with the regeneration command printed. **Negative test executed and recorded:** emitter on a deliberately default-mode JSON → exit 3; on submission-mode → exit 0. |
+| CP-3 | `build.sh`/`build.ps1` don't force strict regeneration | **Both scripts now run `build_hstu_tables.py --submission` before the emitter**, so a TORS PDF cannot be produced from a default-mode JSON even if the emitter gate were bypassed. Full chained build executed: SUBMISSION BUILD GREEN → emitter gate pass → both PDFs compiled → hygiene PASS. |
+| Open question | Are generated artifacts required to be submission-mode in the worktree at all times? | **Answered: yes — and now mechanically enforced.** The tracked `hstu_tables.json` is required to be strict-submission output; a development default build may exist only transiently, because (a) the emitter refuses it, (b) both PDF build scripts overwrite it with a fresh `--submission` build, and (c) the strict gate's own run rewrites it in submission mode. The documented invariant and the mechanics now agree. |
+| Fix-4 | GrIT/concurrent paragraph stays fenced | Standing discipline; no prose change this round (the fence added last round is unchanged; risk #10 notes it resolved-but-guarded). |
+| Fix-5 | SILLM4Rec | Inspection-pending caveat stands (freeze-gated, unchanged). |
+
+**Ritual:** emitter + build-script patches → chained `build.sh` (strict table build → gated
+emitter → compile → hygiene PASS) → `--regen` (PAPER_TORS.pdf re-hashed) → committed together →
+`rebuild_hstu_submission.py --strict` exit 0 (**168 cells, 0/0, 14/14 families, 153 files**) →
+this response → push → v0.9 manifest refreshed (LF form). Deposit boundary unchanged
+(`v1.1.5-deposit`); these hardening commits ride until the next cut.
+
 ## Response — to Audit Run 2026-07-18 17:18 (responded 2026-07-18, same tick)
 
 **Verdict acknowledged.** The audit confirms v1.1.5 repaired the byte-boundary defect (its own

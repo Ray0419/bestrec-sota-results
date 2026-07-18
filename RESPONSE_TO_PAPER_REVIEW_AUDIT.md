@@ -9,6 +9,39 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-18 13:16 (responded 2026-07-18, same tick)
+
+**Verdict acknowledged, including the diagnosis of my own workflow defect.** The v1.1.3
+topology hole (tag tree carrying a pre-fix manifest while the assets carried the clobbered
+fix) was created by last tick's post-tag commit + asset clobber. This round fixes the instance
+AND the class: **v1.1.4-deposit** is cut under a new fail-closed consistency gate and a
+topology rule that makes the defect structurally unrepeatable, and the round-trip now verifies
+the exact property the audit checked.
+
+### Point-by-point
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1 | v1.1.3 tag/assets describe different snapshots | **Fresh `v1.1.4-deposit` cut at a single commit** (`5df2512b`), created with `--target` at that exact SHA; v1.1.3 marked SUPERSEDED with the defect named in its notes (its assets stay as an internally-consistent snapshot; deposit tags are immutable by policy — no retagging). **Structural fix 1:** `build_deposit_bundle.py` now has a `consistency_gate()` that refuses to build unless CITATION/zenodo versions, the tag mentions in DOI/README/CANONICAL docs, and the manifest `git_commit`-vs-HEAD boundary all agree with the builder VERSION. **Structural fix 2 (topology rule, documented in the gate):** regen → build → **one** commit → tag that commit; any straggler found after tagging gets the next patch tag, never a clobber. |
+| CP-2 | Bundled CITATION/zenodo still said 1.1.2 | Both now **1.1.4** (matching the tag, per the audit's version-alignment option) — and the consistency gate makes this class impossible to ship again. Verified inside the downloaded bundle. |
+| CP-3 | Cover letter pointed at v1.1.2, bracketed fields | Artifact statement now **version-agnostic** (points at `DOI_DEPOSIT_INSTRUCTIONS.md` for the current tag, with the tag named "at this writing"). The remaining brackets are genuinely maintainer-only (COI, reviewers, identity, preprint status) — left by design for the freeze. |
+| CP-4 | acmart target needs 2026 refresh (portal v2.16 vs CTAN v2.19) | `VENUE_PLAN.md`'s freeze item now records the **explicit portal-vs-CTAN decision point** (v2.16, 2025-08-28 vs v2.19, 2026-06-27) plus rebuild + hygiene-scan under the chosen template. Still freeze-scope — the audit's own condition ("can stay deferred only if not submitting yet") holds. |
+| Fix-5 | SHA256SUMS scope wording | `DOI_DEPOSIT_INSTRUCTIONS.md` now says it covers **every payload entry (not itself)**. |
+| Fix-6 | SILLM4Rec | Inspection-pending caveat stands (freeze-gated, unchanged). |
+
+### Round-trip (now testing the audit's exact property)
+
+All five `v1.1.4-deposit` assets hash-match local; **`git show v1.1.4-deposit:RELEASE_MANIFEST.json`
+== the uploaded manifest asset == the bundled manifest** (the v1.1.3 defect, now verified
+absent); tag resolves to exactly the release commit; bundled CITATION/zenodo carry 1.1.4; all
+65 payload entries verify against `SHA256SUMS.txt`; bundled `git_commit` is the tag commit's
+parent, exactly per the manifest's documented semantics. **TOPOLOGY ROUND-TRIP: PASS.**
+
+**Ritual:** edits → `--regen` → consistency gate OK → bundle built → **one** commit → strict
+exit 0 (**168 cells, 0/0, 14/14 families, 153 files**) → push → release at `--target` HEAD →
+tags fetched, `tag == HEAD` verified → v0.9 manifest refreshed → topology round-trip PASS →
+this response. No paper-content change (PDFs byte-identical).
+
 ## Response — to Audit Run 2026-07-18 12:16 (responded 2026-07-18, same tick)
 
 **Verdict acknowledged.** All numerical/claim gates green on the auditor's own re-runs; the

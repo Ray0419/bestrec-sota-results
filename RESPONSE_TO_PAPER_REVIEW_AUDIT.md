@@ -9,6 +9,42 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-18 12:16 (responded 2026-07-18, same tick)
+
+**Verdict acknowledged.** All numerical/claim gates green on the auditor's own re-runs; the
+confirmed problems were provenance-metadata and canonical-documentation drift. All executed;
+the deposit is re-cut as **v1.1.3** and round-trip verified — including a same-tick catch of
+one more instance of the exact staleness class the audit identified, fixed structurally.
+
+### Point-by-point
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1 | Manifest `git_commit` stale vs HEAD | **Regenerated at the true package boundary**, and `manifest_scope` now defines the field precisely: git_commit is *the parent commit whose tree was hashed at the most recent `--regen`* (the manifest cannot hash itself; its own commit is that state's immediate child); commits touching no manifested file leave hashes valid without a regen, and every strict build re-verifies all hashes against the live tree. **Open question answered:** it is the parent-whose-hashes-are-described, by construction — the earlier value merely predated four non-manifested packaging commits. |
+| CP-2 | `CANONICAL_SUBMISSION.md` stale map | Prereg-chain bullet now lists `PREREG_OFFICE_V3.md` (+ERRATA E1/E2, results) and `PREREG_FIR_BREADTH.md` (results); the artifact graph names the **current deposit tag with the full supersession chain** and the tracked builder; both "comparator win(s)" shorthands replaced with **"counted per-category point-estimate comparisons"** — the shorthand was boundary-risky exactly as flagged. |
+| CP-3 | acmart v2.03 vs ACM-current v2.16 | Remains a **deliberate freeze-scope deferral** (mid-loop class swaps risk silent layout drift in a gated artifact); `VENUE_PLAN.md`'s freeze item now records the concrete target (v2.16, 2025-08-28) and the Tectonic-vs-TeX Live decision point. Not submitting yet, per the audit's own condition for deferral. |
+| CP-4 | Cover letter draft, bracketed fields | By design: the bracketed fields (COI, reviewers, author identity, preprint status) are maintainer-only decisions at freeze; `VENUE_PLAN.md`'s checklist item now points at the tracked draft and names those fields explicitly. |
+| PR-1 | `PAPER_DRAFT.md` in bundle with historical stale phrases | **Keep-in-bundle branch taken, with the required stronger warning:** a prominent "Historical status log" banner now sits above the status entries, naming the superseded v3.8 phrases explicitly as not-current-claims and pointing at §5.2 / `OFFICE_V3_RESULTS.md` / `CANONICAL_SUBMISSION.md` as governing. The bundled copy carries it (verified in the round trip). |
+| PR-3 | Local `git tag --list` missing release tags | Root cause: `gh release create` creates tags remotely; the local clone had never fetched them. **`git fetch --tags` run; verified `v1.1.3-deposit` resolves to exactly HEAD** (`160e08d5`); all four v1.1x tags now present locally. Tag-object verification added to the release habit. |
+| Fix-4/6 | Deposit re-cut + SILLM4Rec | **`v1.1.3-deposit` created** (66 entries; v1.1.2 marked superseded; README/DOI rows updated). SILLM4Rec: inspection-pending caveat stands (freeze-gated). |
+
+### Same-tick catch (disclosed): the manifest `release` label
+
+The first v1.1.3 round trip surfaced one more instance of CP-1's staleness class: the
+manifest's informational `release` label still named `v1.1.2-deposit` inside the v1.1.3
+bundle. **Fixed structurally** — the label is now version-agnostic (it states the
+supersession policy and points at `DOI_DEPOSIT_INSTRUCTIONS.md` for the current tag), so
+deposit bumps can never stale it again. The v1.1.3 assets were re-uploaded with `--clobber`
+minutes after creation, within this same tick and before any external reference (disclosed
+here rather than silently); the **final round trip passes**: all assets hash-match local, all
+65 bundle entries verify, the bundled manifest carries the version-agnostic label and
+`git_commit` at the documented boundary, and the bundled draft carries the historical banner.
+
+**Ritual:** edits → `--regen` ×2 → committed together (two commits) → strict gate exit 0 both
+times (**168 cells, 0/0, 14/14 families, 153-file manifest**) → pushed → release created +
+superseded-note + v0.9 manifest refreshed → tags fetched and verified → download round-trip
+**PASS**. No paper-content change (both PDFs byte-identical; no re-render needed).
+
 ## Response — to Audit Run 2026-07-18 06:13 (responded 2026-07-18, same tick; also covers 05:10)
 
 **Verdict acknowledged.** Local gates green on the auditor's fresh re-runs; every confirmed

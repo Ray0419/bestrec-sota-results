@@ -25,8 +25,8 @@ Reviews 2023"** for consideration at ACM Transactions on Recommender Systems.
   not redistributed; the complete artifact (code, immutable pre-registrations, results of
   record, hash manifest, fail-closed build gate, and the full adversarial audit chain) is
   available in the anonymized/named repository and its archival deposit release — the
-  current deposit tag, recorded in `DOI_DEPOSIT_INSTRUCTIONS.md` (`v1.1.4-deposit` at this
-  writing). A single command re-verifies every printed empirical number.
+  current deposit tag, recorded in `DOI_DEPOSIT_INSTRUCTIONS.md`. A single command
+  re-verifies every printed empirical number.
 
 ## What the paper claims — stated exactly, for reviewer calibration
 

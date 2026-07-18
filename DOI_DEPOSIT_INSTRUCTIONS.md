@@ -26,6 +26,12 @@ without your login. Everything else is done:
 3. Zenodo mints a **version DOI + a concept DOI** within minutes, using `.zenodo.json` for
    metadata. Done.
 
+**Hash-check rule (line endings):** when verifying, always hash the **tag blob**
+(`git show <tag>:FILE`), the **release asset**, or the **bundle payload** — never the local
+worktree copy. A pre-`.gitattributes` Windows checkout can hold CRLF worktree bytes for
+LF-pinned files, so `Get-FileHash` on a worktree file may legitimately differ from the
+byte-identical tag/asset/bundle trio.
+
 ## Option B — Zenodo manual upload (no GitHub linking)
 
 1. https://zenodo.org/uploads/new → upload the **current** bundle `bestrec_deposit_v1.1.5.zip`

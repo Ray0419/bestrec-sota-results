@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Build the archival deposit bundle (currently v1.1.6) deterministically.
+"""Build the archival deposit bundle (currently v1.1.7) deterministically.
 
 
 
@@ -34,7 +34,7 @@ import zipfile
 
 
 
-VERSION = "v1.1.6"
+VERSION = "v1.1.7"
 
 DATE = "2026-07-18"
 
@@ -408,6 +408,9 @@ def consistency_gate():
         if hashlib.sha256(data).hexdigest() != ent["sha256"]:
             fails.append("bundle payload %s != RELEASE_MANIFEST digest (regen the manifest "
                          "immediately before building)" % rel)
+    if man.get("intended_deposit_tag") != "%s-deposit" % VERSION:
+        fails.append("RELEASE_MANIFEST intended_deposit_tag (%r) != %s-deposit -- regen with "
+                     "--deposit-tag %s-deposit" % (man.get("intended_deposit_tag"), VERSION, VERSION))
     head = _sp.run(["git", "-C", ROOT, "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
 
     mc = _json.loads(read("RELEASE_MANIFEST.json")).get("git_commit")

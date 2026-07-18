@@ -321,13 +321,16 @@ def regen(m):
         "are the unchanged v0.9-audit-evidence release assets, byte-verified at "
         "every --regen. The manifest cannot hash itself; its own commit is the "
         "immediate child of the state it describes.")
+    m["hash_parent_commit"] = m.get("git_commit")
     m["git_commit_semantics"] = (
-        "git_commit is the PARENT commit recorded at --regen; the digests describe "
-        "the worktree that becomes the tree of the manifest's own introducing commit "
-        "(the immediate child). Verify with --verify-git at the introducing commit, "
-        "at any descendant where manifested files are unchanged, or at the deposit "
-        "tag -- NOT at git_commit itself when manifested files changed in the "
-        "introducing commit. (Audit 2026-07-18 21:30.)")
+        "git_commit (alias hash_parent_commit) is the PARENT commit recorded at "
+        "--regen; the digests describe the worktree that becomes the tree of the "
+        "manifest's own introducing commit (the immediate child). The LITERAL "
+        "reviewer-facing verification target is intended_deposit_tag when present: "
+        "run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or "
+        "HEAD, or any descendant where manifested files are unchanged). Do NOT "
+        "verify at git_commit itself when manifested files changed in the "
+        "introducing commit. (Audits 2026-07-18 21:30 and 23:28.)")
     m.setdefault("supersedes_git_commit", None)
 
     io.open(MPATH, "w", encoding="utf-8").write(json.dumps(m, indent=2) + "\n")
@@ -406,9 +409,11 @@ def verify_git(m, commit):
             print("  -", b)
         stored = m.get("git_commit", "")
         if commit.startswith(stored[:12]) or stored.startswith(commit[:12]):
+            tag = m.get("intended_deposit_tag")
             print("HINT: this commit is the manifest's recorded PARENT; the digests "
-                  "describe its introducing commit's tree. Try --verify-git HEAD or "
-                  "the deposit tag (see git_commit_semantics).")
+                  "describe its introducing commit's tree. Try --verify-git "
+                  + (repr(tag) if tag else "HEAD or the deposit tag")
+                  + " (see git_commit_semantics).")
         return 1
     print(f"VERIFY-GIT vs {commit[:12]}: OK ({checked} git-backed entries match "
           "the git blobs exactly)")
@@ -422,10 +427,15 @@ def main():
     g.add_argument("--regen", action="store_true")
     g.add_argument("--verify-git", nargs="?", const="HEAD", default=None,
                    metavar="COMMIT")
+    ap.add_argument("--deposit-tag", default=None, metavar="TAG",
+                    help="with --regen: stamp intended_deposit_tag (the literal tag "
+                         "reviewers pass to --verify-git; audit 2026-07-18 23:28)")
     args = ap.parse_args()
     m = json.load(open(MPATH, encoding="utf-8"))
     if args.verify_git is not None:
         return verify_git(m, args.verify_git)
+    if args.regen and args.deposit_tag:
+        m["intended_deposit_tag"] = args.deposit_tag
     return verify(m) if args.verify else regen(m)
 
 

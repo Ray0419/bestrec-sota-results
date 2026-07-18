@@ -1,11 +1,11 @@
 {
-  "release": "v0.9-audit-evidence (immutable data assets) + v1.1.2-deposit (document bundle; supersedes v1.1.1/v1.1/v1.0)",
+  "release": "v0.9-audit-evidence (immutable data assets) + the current deposit tag (deposit releases supersede each other; the current tag and bundle inventory are recorded in DOI_DEPOSIT_INSTRUCTIONS.md)",
   "date": "2026-07-18",
   "license": {
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "89d7bb695760bb9ab9e140831f24983e4192f064",
+  "git_commit": "160e08d5761fd89e6cf5a5f84b1623710092499f",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",

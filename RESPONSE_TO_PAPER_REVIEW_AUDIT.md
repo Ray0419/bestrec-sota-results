@@ -9,6 +9,31 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-19 08:32 (responded 2026-07-19, same tick)
+
+**Verdict acknowledged.** The empirical gates are green; the artifact-readiness finding is
+right: the published v1.1.8 zip's internal README predated both the audit-chain wording
+precision and the counted-adjudicator chain description, and the builder template would have
+repeated it. Fixed at the template, fenced with a content linter, and archived in a fresh
+verified cut — per the audit's own recommendation not to use v1.1.8 as the DOI artifact.
+
+### Point-by-point
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-3 / Fix-1 | Builder README template under-describes the gate | **Template's verification-chain text now states the full eight-step chain in the audit's exact order** (parity → strict table build → manifest verification → MI V2 → COUNTED Office V3 must-PASS → COUNTED FIR-breadth both-CONFIRMED → Office V1 descriptive/VOID). |
+| Fix-2 | Bundle-content linter | **Installed in the consistency gate:** the build refuses if the README template omits the counted gate steps, lacks the core-historical-audit-documents wording, or uses bare "audit chain" phrasing outside a historical scope — CP-1/CP-2's recurrence is now structurally impossible. Bonus proof it works: mid-round the gate refused my own partially-patched state (intended-tag v1.1.9 vs VERSION v1.1.8) exactly as designed. |
+| CP-1/CP-2 | Published v1.1.8 zip carries the stale internal wording | **[`v1.1.9-deposit`](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v1.1.9-deposit) cut** under the full topology recipe; **v1.1.8 marked superseded with an explicit "do not use as the final DOI artifact" note** (the audit's alternative for the published tag). Round-trip verifies the bundled README **content**: counted-chain present, historical-audit wording present, zero bare "audit chain" occurrences. |
+| CP-4 | HEAD drift understated (support-doc/builder changes past the tag) | Closed by the cut: tag == release commit == the state carrying all wording/builder fixes; post-tag drift is again response-only. |
+| CP-5/CP-6 | SILLM4Rec full text; acmart/cover-letter/line-numbers | Freeze-gated as recorded (403 attempts documented in `VENUE_PLAN.md` last tick; institutional route at freeze). |
+
+### Round-trip at `v1.1.9-deposit`
+
+Assets hash-match local; tag blob == manifest asset == bundled manifest; `--verify-git
+v1.1.9-deposit` OK 128/128; bundled README passes all three content checks; inner
+`SHA256SUMS.txt` 0 mismatches; **post-tag rebuild byte-identical**; tag == release commit.
+**FULL ROUND-TRIP: PASS.** Strict gate true-exit 0 before the cut.
+
 ## Response — to Audit Run 2026-07-19 06:27 (responded 2026-07-19, same tick)
 
 **Verdict acknowledged.** Gates green at HEAD on the auditor's re-runs; the executable finding

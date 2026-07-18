@@ -5,16 +5,16 @@
     --surface: #ffffff;
     --ink: #1f2733;
     --ink-2: #4a5568;
-    --muted: #7a8699;
+    --muted: #626e84;
     --line: #e3e1da;
     --accent: #0b6e7f;
     --accent-soft: #e3f0f2;
-    --amber: #9a6b00;
+    --amber: #7d5600;
     --amber-soft: #f7edd8;
     --good: #1a7a4a;
     --bad: #b3403a;
     --chart-blue: #0072B2;
-    --chart-orange: #E69F00;
+    --chart-orange: #9c6500;
     --chart-green: #009E73;
     --chart-verm: #D55E00;
     --code-bg: #f1efe9;
@@ -47,10 +47,10 @@
     --chart-orange: #E69F00; --chart-green: #35c096; --chart-verm: #ee7733; --code-bg: #232a35;
   }
   :root[data-theme="light"] {
-    --bg: #fbfaf7; --surface: #ffffff; --ink: #1f2733; --ink-2: #4a5568; --muted: #7a8699;
-    --line: #e3e1da; --accent: #0b6e7f; --accent-soft: #e3f0f2; --amber: #9a6b00;
+    --bg: #fbfaf7; --surface: #ffffff; --ink: #1f2733; --ink-2: #4a5568; --muted: #626e84;
+    --line: #e3e1da; --accent: #0b6e7f; --accent-soft: #e3f0f2; --amber: #7d5600;
     --amber-soft: #f7edd8; --good: #1a7a4a; --bad: #b3403a; --chart-blue: #0072B2;
-    --chart-orange: #E69F00; --chart-green: #009E73; --chart-verm: #D55E00; --code-bg: #f1efe9;
+    --chart-orange: #9c6500; --chart-green: #009E73; --chart-verm: #D55E00; --code-bg: #f1efe9;
   }
   html { scroll-behavior: smooth; }
   body {
@@ -512,7 +512,7 @@
     var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     var p = xy(i, v).split(",");
     c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); c.setAttribute("r", "2.6");
-    c.setAttribute("fill", "var(--chart-orange)"); c.setAttribute("opacity", "0.75");
+    c.setAttribute("fill", "var(--chart-orange)"); c.setAttribute("opacity", "0.85");
     dotsG.appendChild(c);
   });
   var filtPath = document.getElementById("filtPath"), firLabel = document.getElementById("firLabel");

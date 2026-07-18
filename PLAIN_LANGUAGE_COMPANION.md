@@ -245,6 +245,14 @@ machinery that makes the second one credible.
       clipped legend + axis label on the CI chart (viewBox too short), an off-canvas reference
       label in the sealed-seeds demo, and an overflowing/overlapping two-line caption on Fig. B.
       Re-audit after fixes: ALL 6 SVGS GEOMETRY-CLEAN (with the seeds demo fully rendered).
+- [x] WCAG contrast audit of the explainer design tokens, both themes (2026-07-18): dark theme
+      passed everywhere; light theme had 4 failures (muted footnote text 3.69:1, amber callout
+      4.03:1, orange noise dots 2.25:1 worsened by 0.75 opacity). Fixed: muted #7a8699->#626e84,
+      amber #9a6b00->#7d5600, light chart-orange #E69F00->#9c6500 (dark keeps Okabe-Ito orange,
+      which passes on dark surfaces), dot opacity ->0.85. Re-audit: ALL PASS both themes
+      (text pairs >=4.5:1, graphical marks >=3:1).
+- [ ] (standing) Re-run the contrast audit alongside the geometry audit after any future
+      token/figure change.
 - [ ] (standing) Re-run the SVG geometry audit after any future figure edit (the getBBox
       overflow/overlap script lives in the session log; three of five initial figures had
       invisible defects — this class of bug does not announce itself).

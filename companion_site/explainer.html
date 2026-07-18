@@ -268,7 +268,7 @@
   <p>And we didn't stop at correlation: we <strong>thinned</strong> dense catalogs on purpose — retraining on artificially sparsified data while grading on the same exam — to test whether scarcity itself flips text from useless to useful. Practical upshot: <em>whether to wire product text into your recommender depends on your catalog's density. Measure it first.</em></p>
   <figure>
     <div class="figwrap">
-      <svg viewBox="0 0 660 205" width="100%" role="img" aria-label="Schematic: on a dense catalog text adds almost nothing; after deliberately thinning the same catalog, the text-augmented model pulls ahead">
+      <svg viewBox="0 0 660 228" width="100%" role="img" aria-label="Schematic: on a dense catalog text adds almost nothing; after deliberately thinning the same catalog, the text-augmented model pulls ahead">
         <g font-size="12">
           <!-- panel 1: dense -->
           <text x="90" y="24" fill="var(--ink)" font-weight="700">Dense catalog (as-is)</text>
@@ -287,7 +287,8 @@
           <text x="510" y="178" text-anchor="middle" fill="var(--ink-2)" font-size="11">+ text</text>
           <path d="M 472 96 Q 480 84 486 90" fill="none" stroke="var(--chart-verm)" stroke-width="2"/>
           <text x="540" y="70" fill="var(--chart-verm)" font-size="11" font-weight="700">text starts helping</text>
-          <text x="14" y="198" fill="var(--muted)" font-size="10.5">Schematic (bar heights illustrative — measured values and protocols are in the paper's intervention section). Both scores drop when data is thinned; the point is the gap that opens.</text>
+          <text x="14" y="196" fill="var(--muted)" font-size="10.5">Schematic — bar heights illustrative; measured values and protocols are in the paper's intervention section.</text>
+          <text x="14" y="212" fill="var(--muted)" font-size="10.5">Both scores drop when data is thinned; the point is the gap that opens.</text>
         </g>
       </svg>
     </div>
@@ -365,7 +366,7 @@
   </ul>
   <figure>
     <div class="figwrap">
-      <svg id="ciSvg" viewBox="0 0 660 250" width="100%" role="img" aria-label="Dot and interval chart of our five-seed results versus comparator reference points, for Musical Instruments and Office Products V3"></svg>
+      <svg id="ciSvg" viewBox="0 0 660 292" width="100%" role="img" aria-label="Dot and interval chart of our five-seed results versus comparator reference points, for Musical Instruments and Office Products V3"></svg>
     </div>
     <figcaption>Fig. 2 — The two counted comparisons (hover any mark for detail). Whiskers are 95% confidence intervals over 5 fresh seeds; open circles are the comparator's <em>single-run</em> published values (and, for Office, its matched local re-run). Axis zoomed to show detail — differences are a few percent, which is the normal scale on this benchmark. We claim our averages clear these point values; we claim nothing stronger.</figcaption>
   </figure>
@@ -567,8 +568,7 @@
       });
       REFS.forEach(function (r, i) {
         el("line", { x1: sx(r.v), y1: 34, x2: sx(r.v), y2: AY, stroke: "var(--chart-verm)", "stroke-width": 2, "stroke-dasharray": "5 4" });
-        var t = el("text", { x: sx(r.v), y: i === 0 ? 26 : 46, "text-anchor": i === 0 ? "start" : "end", "font-size": 10.5, fill: "var(--chart-verm)" });
-        t.setAttribute("x", i === 0 ? sx(r.v) + 5 : sx(r.v) - 5);
+        var t = el("text", { x: sx(r.v) + 5, y: i === 0 ? 26 : 46, "text-anchor": "start", "font-size": 10.5, fill: "var(--chart-verm)" });
         t.textContent = "bar: " + r.v.toFixed(4) + " (" + r.name + ")";
       });
       var cap = el("text", { x: LX, y: 176, "font-size": 10.5, fill: "var(--muted)" });

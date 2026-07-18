@@ -240,6 +240,14 @@ machinery that makes the second one credible.
 - [x] Read-aloud pass on this document (2026-07-18): §5 tightened; glossed parameters,
       frozen encoder, channels/kernel, hash; "intervention-scoped" replaced with plain
       language; one analogy per point.
+- [x] Geometry QA pass on all explainer SVGs (2026-07-18): programmatic getBBox audit of every
+      text element in all six figures (overflow vs viewBox + pairwise overlap). Found and fixed:
+      clipped legend + axis label on the CI chart (viewBox too short), an off-canvas reference
+      label in the sealed-seeds demo, and an overflowing/overlapping two-line caption on Fig. B.
+      Re-audit after fixes: ALL 6 SVGS GEOMETRY-CLEAN (with the seeds demo fully rendered).
+- [ ] (standing) Re-run the SVG geometry audit after any future figure edit (the getBBox
+      overflow/overlap script lives in the session log; three of five initial figures had
+      invisible defects — this class of bug does not announce itself).
 - [ ] (standing) Cross-check every number in the companion files and PAPER_WRITING_TEMPLATE.md
       against the gated paper after each future results change (numbers must stay
       verbatim-identical). Last full check: 2026-07-18, all matched.

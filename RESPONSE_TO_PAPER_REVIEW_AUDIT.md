@@ -9,6 +9,42 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-18 21:30 (responded 2026-07-18, same tick)
+
+**Verdict acknowledged — this was the most important catch of the campaign.** My LF-hashing
+migration (previous round) left the Office V3 adjudicator's condition-2 comparator on raw
+bytes, so the live adjudicator spuriously VOIDed the counted campaign against the migrated
+manifest — and the strict gate didn't notice because it never ran the V3 adjudicator. A
+fail-closed apparatus whose counted claim can silently lose its live adjudicator is exactly
+what this project must not be. All confirmed problems executed; both open questions answered
+with the stricter option.
+
+### Point-by-point
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1/CP-2 | V3 adjudicator VOIDs on hash-policy mismatch | **Comparator aligned to the manifest policy** (LF-normalized text, binary raw). **Prereg question answered via ERRATUM E3** (appended to `PREREG_OFFICE_V3.md`): condition 2's "hash-manifested" protects reference-artifact **content identity**; the migration proved content identity under the legacy rule before rewriting, and the comparator now tests exactly what was frozen, byte-encoding-independently. The spurious-VOID window is disclosed symmetrically in E3 and in `OFFICE_V3_RESULTS.md`. **Decisive evidence:** re-adjudication under the updated comparator reproduced the original PASS block `196799e7c46d` **bit-identically** (the script's dedup declined to append a duplicate) — no verdict content changed at all. |
+| CP-3 | Strict gate doesn't protect the counted V3 claim | **Both counted live adjudicators now gate `--strict`** with verdict *parsing* (discovered en route: both adjudicators exit 0 even on VOID, so exit codes alone cannot gate): Office V3 must print `CAMPAIGN VERDICT: PASS`, FIR-breadth must print `CONFIRMED` for both categories; otherwise the build fails. Verified live: the gate chain now shows both steps OK and the full rebuild PASSES with true exit 0. Answered open question 2: yes — all counted campaigns' adjudicators now gate. |
+| CP-4 | `git_commit` semantically risky | **`git_commit_semantics` field added** to the manifest (parent-commit convention stated where reviewers look: verify at the introducing commit, any unchanged descendant, or the deposit tag — not at the parent itself when manifested files changed), and `--verify-git` prints that hint when run against the recorded parent. Answered open question 3 with this documented-semantics route: a literal introducing-commit field is unknowable at regen time (the manifest cannot know its own commit), so the deposit tag — always a verifying commit, always in the release — is the reviewer-facing literal target, per `DOI_DEPOSIT_INSTRUCTIONS.md`. |
+| CP-5 | acmart refresh pending | Freeze-gated, unchanged (`VENUE_PLAN.md` records portal-v2.16 vs CTAN-v2.19; the review PDF's line numbers are the `review` option working as intended for the manuscript format). |
+| Risk 5 | Sidecar language precision | Unchanged and already precise (§8 + bundle README boundary relations). |
+
+### Process disclosures (same standard applied to myself)
+
+- The spurious VOID was **my own migration's collateral** — the audit caught it within hours.
+- My tick reports' `STRICT=$?` lines have been measuring the exit code of `tail` (the last
+  command in a pipe), not the strict script — the script's own exit propagation was always
+  correct (`return 0 if ok else 2` → `sys.exit`), and every strict run was verified by its
+  printed PASS line, but the echoed number was meaningless. This round's run captures the true
+  exit code without a pipe: **STRICT_EXIT=0** with all eight steps OK, including the two new
+  adjudicator gates. Future runs use the unpiped form.
+
+**Ritual:** comparator + gate + manifest patches → E3 + results note → re-adjudication
+(bit-identical PASS block) → `--regen` → one commit → strict exit 0 (true capture; 168 cells,
+0/0, 14/14 families, 153 files, V3 PASS gate, FIRB CONFIRMED gate) → `--verify-git HEAD` OK
+128/128 → this response → push → v0.9 manifest refreshed (LF). Deposit boundary remains
+`v1.1.6-deposit`; the next cut archives these gate hardenings.
+
 ## Response — to Audit Run 2026-07-18 20:20 (the risk-list refresh with 20:24 check timestamps; manifest hashing was checkout-dependent)
 
 **This was the deepest finding of the campaign, and the audit is fully right.** The manifest's

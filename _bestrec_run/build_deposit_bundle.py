@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Build the archival deposit bundle (currently v1.1.4) deterministically.
+"""Build the archival deposit bundle (currently v1.1.5) deterministically.
+
+Text payloads are normalized to LF at bundle time (audit 2026-07-18 15:17), so the bundle
+is byte-stable across Windows/Linux checkouts; .gitattributes pins the same policy in Git.
 
 The bundle is the small archival companion to the repository: papers, pre-registrations,
 results documentation, protocol code, provenance manifests, audit chain, and the comparator
@@ -13,7 +16,7 @@ import io
 import os
 import zipfile
 
-VERSION = "v1.1.4"
+VERSION = "v1.1.5"
 DATE = "2026-07-18"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "_release", f"bestrec_deposit_{VERSION}.zip")
@@ -182,6 +185,11 @@ def consistency_gate():
         fails.append("README.md does not name %s-deposit" % VERSION)
     if "%s-deposit" % VERSION not in read("CANONICAL_SUBMISSION.md"):
         fails.append("CANONICAL_SUBMISSION.md does not name %s-deposit" % VERSION)
+    vp = read("VENUE_PLAN.md")
+    for stale in ("v1.0-deposit", "v1.1-deposit", "v1.1.1-deposit", "v1.1.2-deposit",
+                  "v1.1.3-deposit", "v1.1.4-deposit"):
+        if stale in vp and stale != "%s-deposit" % VERSION:
+            fails.append("VENUE_PLAN.md names stale deposit tag %s (use version-agnostic wording)" % stale)
     head = _sp.run(["git", "-C", ROOT, "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
     mc = _json.loads(read("RELEASE_MANIFEST.json")).get("git_commit")
     if mc != head:
@@ -209,8 +217,12 @@ def main():
         sums.append((hashlib.sha256(README.encode("utf-8")).hexdigest(), "README_DEPOSIT.txt"))
         for rel in sorted(FILES):
             ap = os.path.join(ROOT, rel)
-            z.write(ap, PREFIX + rel)
-            sums.append((sha256(ap), rel))
+            data = open(ap, "rb").read()
+            if not rel.lower().endswith((".pdf", ".zip", ".gz", ".png")):
+                data = data.replace(b"\r\n", b"\n")
+                assert b"\r\n" not in data
+            z.writestr(PREFIX + rel, data)
+            sums.append((hashlib.sha256(data).hexdigest(), rel))
         body = "\n".join(f"{d}  {n}" for d, n in sums) + "\n"
         z.writestr(PREFIX + "SHA256SUMS.txt", body)
     digest = sha256(OUT)

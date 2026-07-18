@@ -33,8 +33,9 @@ dual-submission policies, so the plan is:
 ## DOI (related decision, same date)
 
 Minting is **deferred** until a venue actually requires it ("skip for now"). The
-hash-manifested GitHub releases (`v0.9-audit-evidence` + the current deposit tag —
-`v1.1.3-deposit` at this writing, each superseding the previous) remain the citable
+hash-manifested GitHub releases (`v0.9-audit-evidence` + **the current deposit tag**,
+recorded in `DOI_DEPOSIT_INSTRUCTIONS.md`; each deposit release supersedes the previous)
+remain the citable
 artifact reference; everything needed to mint in ~3 clicks stays prepared
 (`DOI_DEPOSIT_INSTRUCTIONS.md`).
 

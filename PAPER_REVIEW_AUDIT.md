@@ -6,47 +6,52 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **Confirmed release-boundary inconsistency in `v1.1.3-deposit`: the public
-   tag and the uploaded assets do not describe the same source snapshot.**
-   Local and remote tag `v1.1.3-deposit` points to commit
-   `160e08d5761fd89e6cf5a5f84b1623710092499f`, whose repository copy of
-   `RELEASE_MANIFEST.json` still says `v1.1.2-deposit` and records
-   `git_commit = 89d7bb695760bb9ab9e140831f24983e4192f064`. The uploaded
-   `v1.1.3` manifest asset and bundled manifest instead carry the corrected
-   version-agnostic release label and `git_commit =
-   160e08d5761fd89e6cf5a5f84b1623710092499f`. A reviewer checking out the
-   release tag will therefore see stale provenance even though the release
-   asset is fixed. This is now the top pre-submission package blocker.
-2. **Confirmed archive-metadata drift: the `v1.1.3` zip contains
-   `CITATION.cff` and `.zenodo.json` with `version = 1.1.2`.** The current
-   release/DOI instructions say `v1.1.3-deposit`, but DOI metadata inside the
-   bundle still labels the artifact as `1.1.2`. If Zenodo is minted from this
-   state, the version DOI metadata will not match the deposited bundle version.
-3. **Confirmed TORS cover-letter blocker remains.** `COVER_LETTER_TORS.md`
-   still points the artifact statement at `v1.1.2-deposit`, and it still has
-   bracketed maintainer fields for preprint status, conflicts, reviewers, and
-   author identity/contact. The declarations and claim boundary are useful, but
-   this is not ScholarOne-ready.
-4. **Confirmed venue-template drift remains unresolved, and the freeze target
-   needs a 2026 refresh.** The TeX build vendors `paper_tex/acmart.cls` v2.03
-   from `2024/02/04`. ACM's author pages still instruct review manuscripts to
-   use single-column `manuscript` format and the ACM portal's LaTeX package
-   currently names v2.16, but CTAN now lists production `acmart` v2.19
-   (`2026-06-27`). `VENUE_PLAN.md` still names v2.16 as the concrete target;
-   before submission, the authors need an explicit ACM-portal-vs-CTAN decision
-   and a rebuild/hygiene scan under the selected current template.
-5. **Canonical source-map drift from the prior run is largely closed.**
-   `CANONICAL_SUBMISSION.md` now lists Office V3 and FIR breadth in the prereg
-   chain, uses `v1.1.3-deposit`, and avoids the risky "comparator wins"
-   shorthand. This fix is conditional on repairing the release tag/source
-   boundary above.
+1. **Confirmed v1.1.4 byte-boundary drift: the semantic v1.1.3 defect is fixed,
+   but the new "tag tree == bundle == uploaded assets" claim is false
+   byte-for-byte for `RELEASE_MANIFEST.json`.** The uploaded/local/bundled
+   manifest SHA256 is
+   `6a2c337a98ee612e2a66fb80856f0021f0197720694233f1a54e09f7a2e39641`;
+   `git show v1.1.4-deposit:RELEASE_MANIFEST.json` is
+   `caf61ec59d919fa884fa5ee9b0c8a75b8017b5d1713104f3f479492ccb69ee38`.
+   The normalized contents are equal; the difference is entirely CRLF vs LF
+   (`380` CRLF lines in the bundled/uploaded file, `0` in the Git blob). This
+   is not a semantic manifest contradiction, but it invalidates any byte-level
+   "provably identical" statement and can fail a reviewer hash round trip.
+2. **Confirmed residual stale documentation: `VENUE_PLAN.md` still names
+   `v1.1.3-deposit` as the current DOI/deposit tag.** `README.md`,
+   `CANONICAL_SUBMISSION.md`, `DOI_DEPOSIT_INSTRUCTIONS.md`, `CITATION.cff`,
+   `.zenodo.json`, and `COVER_LETTER_TORS.md` now point at the v1.1.4 boundary
+   or use version-agnostic wording, but the builder consistency gate does not
+   check `VENUE_PLAN.md`, so the stale pointer survived.
+3. **Confirmed cross-platform determinism risk in the deposit builder.** There
+   is no `.gitattributes`; local Git has `core.autocrlf=true`; and tracked text
+   files inspected by `git ls-files --eol` are `i/lf w/crlf`. The current bundle
+   is deterministic for this Windows checkout, not necessarily for a Linux
+   checkout or `git archive` source tree. A top-journal artifact reviewer can
+   reasonably ask for LF-normalized source packaging or an explicit
+   line-ending policy.
+4. **The prior hard v1.1.3 release/metadata blockers are semantically repaired
+   by `v1.1.4-deposit`.** Local and remote tag `v1.1.4-deposit` resolve to
+   `5df2512bce92658139c114bcf4c38263b3295b27`; the GitHub release targets that
+   commit; uploaded zip, sidecar, manifest, and PDFs match local hashes; the
+   zip has `66` entries, `65` payload hash rows, `0` missing payloads, and `0`
+   payload hash mismatches; bundled `CITATION.cff` and `.zenodo.json` both say
+   `1.1.4`. This fix is conditional only on resolving/clarifying the byte
+   identity issue above.
+5. **Venue-template drift remains a freeze blocker.** The TeX build still
+   vendors `paper_tex/acmart.cls` v2.03 from `2024/02/04`. ACM's author page
+   still instructs review manuscripts to use single-column `manuscript` format
+   with the ACM Primary Article Template v2.16 (`2025-08-28`), while CTAN lists
+   production `acmart` v2.19 (`2026-06-27`). `VENUE_PLAN.md` now records the
+   portal-vs-CTAN decision point, but the actual refresh/rebuild/hygiene scan
+   is still pending.
 6. **No current hard numerical blocker in the local strict gate.** Fresh
-   `rebuild_hstu_submission.py --strict` at `2026-07-18 13:17
+   `rebuild_hstu_submission.py --strict` at `2026-07-18 15:19
    Australia/Sydney` passes HSTU parity, `168` recomputed empirical cells,
    `0` paper mismatches, `0` untraceable cells, all `14` declared claim
    families, and release-manifest hash verification for `153` local files.
 7. **Office V3 and FIR-breadth mechanical evidence remain green.** Office V3
-   adjudication at `2026-07-18 13:17` passes under frozen wording: K=16 mean
+   adjudication at `2026-07-18 15:19` passes under frozen wording: K=16 mean
    `0.03047`, CI-LB `0.03033`; K=8 mean `0.03029`, CI-LB `0.03024`; all 10
    seeds above both `0.0279` and `0.0271`; comparability conditions OK.
    FIR-breadth remains confirmed: `Industrial_and_Scientific` mean `+0.00240`,
@@ -54,19 +59,26 @@ plausible risks.
    `+0.00566`, 95% CI `[+0.00493,+0.00639]`, 5/5 positive. These support only
    the stated per-category point-estimate and internal paired filter claims,
    not paired superiority or SOTA.
-8. **Plausible related-work risk: SILLM4Rec remains under-inspected.** The
+8. **Current HEAD is beyond the deposit tag, but not in a manifested paper
+   boundary.** HEAD is `3d4748307ceaf60b742c6357e76cf5c070f24b53`, after
+   `v1.1.4-deposit`, with a response-only commit and a companion-site contrast
+   commit (`PLAIN_LANGUAGE_COMPANION.md`, `companion_site/explainer.html`).
+   The strict release-manifest gate still passes. This is acceptable only if
+   the deposit boundary remains the tag/release rather than "latest branch
+   HEAD."
+9. **Plausible related-work risk: SILLM4Rec remains under-inspected.** The
    current paper says direct full-text protocol inspection is pending and
    excludes it based on ACM metadata plus the public repository workflow
-   (candidate-ranking tasks, SFT/DPO data generation) rather than full-catalog
-   LLOO evidence. That exclusion is directionally defensible but still weaker
-   than a full-paper protocol comparison.
-9. **Plausible packaging-risk: `PAPER_DRAFT.md` still contains historical stale
-   phrases, but the banner is now strong.** The bundled draft opens with a
-   warning that the pre-V3 `Office stays VOID / outcome is pending` wording is
-   historical and superseded. This is probably defensible if the draft remains
-   part of the audit trail, but a reviewer keyword search may still surface the
-   stale phrase out of context.
-10. **Persistent scientific boundary: novelty remains narrow/incremental and
+   (image-description generation, user-preference summaries, candidate-product
+   ranking tasks, SFT/DPO data generation) rather than a full-paper protocol
+   comparison. That exclusion is directionally defensible but still weaker than
+   inspecting the paper text.
+10. **TORS cover letter remains a maintainer-fill freeze item.**
+    `COVER_LETTER_TORS.md` no longer points at the old deposit, but bracketed
+    fields for identity/contact, conflicts, reviewer suggestions, and preprint
+    status remain. That is acceptable as a tracked draft, not as a final
+    ScholarOne upload.
+11. **Persistent scientific boundary: novelty remains narrow/incremental and
     must stay framed that way.** FIR is defensible only as a leak-free,
     left-causal, zero-init adaptation inside this HSTU-style artifact-gated
     setting; TAPE remains a secondary soft-prototype ablation. Any future
@@ -75,6 +87,272 @@ plausible risks.
     per-category point-estimate comparisons against single-run/single-seed
     comparators; and FIR breadth as internal paired filter-vs-no-filter
     evidence only.
+
+## Audit Run - 2026-07-18 15:17 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` /
+  `3d4748307ceaf60b742c6357e76cf5c070f24b53`.
+- Current run time: `2026-07-18 15:17:59` through `15:21:31 +10:00` for the
+  dynamic gates and release checks; audit documentation completed immediately
+  afterward.
+- Automation memory read from
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  using the `$HOME\.codex` fallback because `CODEX_HOME` is unset in this
+  PowerShell session.
+- Working tree before this audit edit: no tracked modifications; untracked
+  files remain `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- New commits since the remembered 13:16 run: `5df2512b` cut
+  `v1.1.4-deposit`; `74163ecd` added the response section; `3d474830` changed
+  only companion/explainer material (`PLAIN_LANGUAGE_COMPANION.md`,
+  `companion_site/explainer.html`).
+- Sources/artifacts inspected this run: `PAPER_REVIEW_AUDIT.md`,
+  `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`, `RELEASE_MANIFEST.json`,
+  `CANONICAL_SUBMISSION.md`, `VENUE_PLAN.md`, `README.md`, `CITATION.cff`,
+  `.zenodo.json`, `DOI_DEPOSIT_INSTRUCTIONS.md`, `COVER_LETTER_TORS.md`,
+  `PAPER_SUBMISSION.md`, `paper_tex/main.tex`, `paper_tex/sections/*.tex`,
+  `paper_tex/hygiene_scan_output.txt`, `_bestrec_run/build_deposit_bundle.py`,
+  `_release/bestrec_deposit_v1.1.4.zip`, `_release/*.sha256`, local and remote
+  `v1.1.4-deposit` tag metadata, and downloaded GitHub release assets.
+- No manuscript, code, or package source was edited in this run; only this audit
+  file was updated.
+
+### Verdict
+
+**The empirical paper is still green and the v1.1.3 semantic release defect is
+largely repaired, but the package is not yet freeze-clean.** The new v1.1.4
+release fixes the serious prior contradictions: CFF/Zenodo are now `1.1.4`, the
+cover letter no longer names the old deposit, uploaded assets match local
+hashes, the zip payload hashes verify, and the strict artifact graph still
+passes.
+
+The new top problem is narrower but real: the v1.1.4 response and release title
+say the tag tree and assets are "provably identical," yet the tag's
+`RELEASE_MANIFEST.json` blob is LF-normalized by Git while the uploaded/bundled
+manifest is the Windows working-tree CRLF copy. Normalized content is identical,
+so this is not a stale-manifest semantic defect; byte hashes differ, so the
+public byte-identity claim is false.
+
+The second concrete miss is documentation coverage: `VENUE_PLAN.md` still says
+the current deposit tag is `v1.1.3-deposit`. The new consistency gate does not
+cover that file, even though the bundle includes it.
+
+### Commands And Evidence Checked
+
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS: HSTU core-block parity exact.
+  - PASS: `168` empirical cells recomputed; `0` untraceable; `0` paper
+    mismatches; all `14` declared claim families sourced.
+  - PASS: release-manifest hash verification OK for `153` files.
+  - PASS: MI V2 gate; legacy Office V1 descriptive/VOID check remains OK.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-18 15:19:18 Australia/Sydney`, block `196799e7c46d`.
+  - K=16: mean `0.03047`, sd `0.00011`, 95% CI-LB `0.03033`, `5/5` seeds
+    above both `0.0279` and `0.0271`.
+  - K=8: mean `0.03029`, sd `0.00005`, 95% CI-LB `0.03024`, `5/5` seeds
+    above both references.
+- `uv --project _bestrec_run run python _bestrec_run\adjudicate_fir_breadth.py --no-append`
+  - CONFIRMED at `2026-07-18 15:19:18 Australia/Sydney`, block
+    `9a38ad66bd75`.
+  - Industrial_and_Scientific: mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, `5/5` positive.
+  - CDs_and_Vinyl: mean `+0.00566`, 95% CI `[+0.00493,+0.00639]`,
+    `5/5` positive.
+- Release/tag checks:
+  - Local and remote `v1.1.4-deposit` tag both resolve to
+    `5df2512bce92658139c114bcf4c38263b3295b27`.
+  - `gh release view v1.1.4-deposit` reports `targetCommitish =
+    5df2512bce92658139c114bcf4c38263b3295b27`, not draft, not prerelease,
+    published `2026-07-18T03:31:25Z`.
+  - Downloaded GitHub assets match local hashes:
+    `bestrec_deposit_v1.1.4.zip` =
+    `85ae31b79951c3d2f102f2bd419c0297575dc0bc351b7913893d6486c23de97f`;
+    `RELEASE_MANIFEST.json` =
+    `6a2c337a98ee612e2a66fb80856f0021f0197720694233f1a54e09f7a2e39641`;
+    `PAPER_TORS.pdf` =
+    `6a40018016a3f428eb482d42559aa4a99f9c10963772c8f845c6f571bfe8356c`;
+    `PAPER_SUBMISSION.pdf` =
+    `ed6ba9c240a2a689907024cce8982a61a9758502541fd9a40d74acb3efd0e88c`.
+  - Local `_release/bestrec_deposit_v1.1.4.zip.sha256` matches the local zip
+    hash exactly.
+- Bundle checks:
+  - `_release/bestrec_deposit_v1.1.4.zip` has `66` entries; internal
+    `SHA256SUMS.txt` has `65` payload rows; `0` missing payloads; `0` payload
+    hash mismatches.
+  - Bundled `CITATION.cff` contains `version: "1.1.4"`.
+  - Bundled `.zenodo.json` contains `"version": "1.1.4"`.
+  - Bundled manifest has `git_commit =
+    f05ed267a9c79f9200ccd81468b85008f252a507`, consistent with the documented
+    "parent commit whose tree was hashed" semantics.
+  - `git show v1.1.4-deposit:RELEASE_MANIFEST.json` and the bundled manifest
+    are semantically equal after CRLF-to-LF normalization, but not byte-equal:
+    tag blob SHA256
+    `caf61ec59d919fa884fa5ee9b0c8a75b8017b5d1713104f3f479492ccb69ee38`;
+    bundled/uploaded/local SHA256
+    `6a2c337a98ee612e2a66fb80856f0021f0197720694233f1a54e09f7a2e39641`;
+    tag CRLF count `0`, bundled CRLF count `380`.
+- Line-ending checks:
+  - `.gitattributes`: missing.
+  - `git config --get core.autocrlf`: `true`.
+  - `git ls-files --eol` reports `i/lf w/crlf` for `.zenodo.json`,
+    `CITATION.cff`, `DOI_DEPOSIT_INSTRUCTIONS.md`, `README.md`,
+    `RELEASE_MANIFEST.json`, `VENUE_PLAN.md`, and
+    `_bestrec_run/build_deposit_bundle.py`.
+- Stale-trigger sweep:
+  - `VENUE_PLAN.md` line 37 still says current deposit tag
+    `v1.1.3-deposit`.
+  - `DOI_DEPOSIT_INSTRUCTIONS.md` names `v1.1.4-deposit` and correctly says
+    `SHA256SUMS.txt` covers every payload entry, not itself.
+  - `CANONICAL_SUBMISSION.md` and `COVER_LETTER_TORS.md` now use the v1.1.4
+    boundary or a version-agnostic current-deposit reference.
+- Compiled artifact checks:
+  - `paper_tex/hygiene_scan_output.txt`: PASS, `PAPER_TORS.pdf`, 40 pages,
+    `0` placeholder/forbidden failures, `20` informational SOTA/non-claim
+    review hits.
+
+### External Fact-Check / Venue And Literature Notes
+
+- ACM's author-submission page still instructs authors to submit review
+  manuscripts in single-column format and says LaTeX authors should use
+  `\documentclass[manuscript]{acmart}` with the ACM Primary Article Template
+  v2.16, published August 28, 2025. Source:
+  https://www.acm.org/publications/authors/submissions
+- CTAN lists production `acmart` v2.19 dated `2026-06-27`; its README says the
+  production version is on CTAN and ACM sites, while GitHub is development or
+  experimental. Source:
+  https://ctan.org/tex-archive/macros/latex/contrib/acmart
+- The Amazon Reviews 2023 official page confirms the dataset is a 2023 McAuley
+  Lab release with user reviews, item metadata, links, and standard splits.
+  Source: https://amazon-reviews-2023.github.io/
+- HSTU-BLaIR v3 reports 5-core AR2023 Video Games, Office Products, and Musical
+  Instruments statistics and the comparator NDCG@10 values used by the paper:
+  Video Games `0.0760`, Office Products `0.0271`, Musical Instruments
+  `0.0406`. Source: https://arxiv.org/html/2504.10545v3
+- SILLM4Rec's public repository instructs users to download AR2023 5-core files
+  and then generate image descriptions, user preference summaries, candidate
+  product ranking tasks, and SFT/DPO data. This supports the current
+  non-interchangeability caveat, but it is still weaker than direct full-paper
+  protocol inspection. Source: https://github.com/MKC-Lab/SILLM4Rec
+- FMLP-Rec and BSARec remain strong prior art for frequency-filter motivation:
+  FMLP-Rec proposes learnable frequency-domain filters for sequential
+  recommendation, and BSARec explicitly argues self-attention is low-pass and
+  uses frequency rescaling. This supports the paper's narrow "incremental,
+  left-causal FIR realization" novelty boundary. Sources:
+  https://arxiv.org/abs/2202.13556 and https://arxiv.org/html/2312.10325v1
+
+### Confirmed Problems
+
+1. **v1.1.4's byte-identity claim is false for `RELEASE_MANIFEST.json`.** The
+   contents normalize to the same text, but the tag blob is LF and the release
+   asset/bundle copy is CRLF. The response and release title should not claim
+   byte identity unless the release assets are generated from normalized Git
+   blobs or `.gitattributes` enforces a stable on-disk line ending.
+2. **`VENUE_PLAN.md` still names `v1.1.3-deposit` as current.** Because the
+   deposit bundle includes `VENUE_PLAN.md`, this stale tag pointer can be seen
+   by a reviewer and contradicts the v1.1.4 DOI instructions.
+3. **The new consistency gate is incomplete for files included in the deposit
+   bundle.** It checks README/CANONICAL/DOI/CFF/Zenodo/manifest boundary, but
+   not `VENUE_PLAN.md` and not line-ending/byte-identity invariants.
+4. **Cross-platform bundle reproducibility is not defined.** With no
+   `.gitattributes` and `core.autocrlf=true`, a Linux reviewer rebuilding the
+   bundle from the same tag can produce different text-file bytes and therefore
+   different internal payload hashes.
+5. **Submission freeze items remain open.** The acmart refresh, SILLM4Rec
+   full-text inspection, DOI minting, and cover-letter bracket fields are still
+   pending.
+
+### Confirmed Fixes / Non-Problems
+
+- The prior v1.1.3 semantic/source mismatch is repaired by a fresh v1.1.4 tag
+  and release; local and remote tags agree.
+- The v1.1.4 zip, sidecar, manifest asset, and both PDF release assets match
+  local hashes.
+- The v1.1.4 bundle's internal payload hashes verify with `0` missing and `0`
+  mismatching payloads.
+- Bundled CFF and Zenodo metadata now say `1.1.4`.
+- `DOI_DEPOSIT_INSTRUCTIONS.md` correctly describes `SHA256SUMS.txt` as
+  covering payload entries rather than itself.
+- The strict empirical/artifact graph, Office V3 adjudicator, FIR-breadth
+  adjudicator, and compiled-PDF hygiene scan all remain green.
+- The manuscript's novelty/SOTA boundaries remain cautious on the checked
+  claims: Video_Games is competitive but not SOTA; MI and Office V3 are
+  per-category point-estimate comparisons only; FIR breadth is internal paired
+  filter-vs-no-filter evidence only.
+
+### Plausible Risks / Items Requiring Author Verification
+
+- If the project intends normalized text equality, rather than byte equality,
+  to define the release boundary, say so plainly and remove "provably identical"
+  byte-style wording.
+- If byte-for-byte reproducibility is desired, the builder should read text
+  payloads from Git blobs or normalize them to LF before zipping, and a
+  `.gitattributes` file should pin repository text files.
+- The post-deposit companion commit is probably outside the paper deposit
+  boundary, but the README/DOI docs should avoid implying latest branch HEAD is
+  the archival snapshot.
+- SILLM4Rec remains accessible only through ACM metadata and repository
+  workflow in this audit; full-text protocol inspection is still the stronger
+  freeze-time check.
+
+### Concrete Fixes To Make Next
+
+1. Add an explicit line-ending policy, preferably `.gitattributes` with LF for
+   repository text artifacts that enter releases, then regenerate/rebuild the
+   bundle from normalized content.
+2. Either re-cut a `v1.1.5-deposit` with byte-stable assets or revise the
+   v1.1.4 response/release wording to say "normalized content equal" instead of
+   "tag tree and assets provably identical."
+3. Update `VENUE_PLAN.md`'s DOI section to `v1.1.4-deposit` or make it
+   version-agnostic like the cover letter.
+4. Extend `_bestrec_run/build_deposit_bundle.py::consistency_gate()` to check
+   every bundled documentation file that names the current deposit, including
+   `VENUE_PLAN.md`, and add a release-round-trip check for tag-vs-bundle
+   normalized/byte equality according to the chosen policy.
+5. Keep the freeze checklist live: SILLM4Rec full-text inspection, acmart
+   v2.16-vs-v2.19 decision plus rebuild, DOI minting, and cover-letter
+   maintainer fields.
+
+### Open Questions
+
+- Does the archival standard require byte identity between Git blobs and release
+  text assets, or is normalized textual equivalence sufficient if documented?
+- Should future deposit zips be generated from the tag tree (`git archive` or
+  `git show` blobs) rather than the local working tree?
+- Should `VENUE_PLAN.md` be included in the deposit bundle if it is a live
+  maintainer checklist rather than a stable archival artifact?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate canonical manuscript, TeX, PDF, result, preregistration, release,
+      and audit artifacts.
+- [x] Confirm branch, HEAD, working-tree status, recent commits, and
+      local/remote release-tag state.
+- [x] Inspect response, canonical map, venue plan, DOI instructions,
+      citation/Zenodo metadata, cover letter, release manifest, and bundle
+      builder.
+- [x] Re-run strict artifact graph rebuild.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Verify local and downloaded `v1.1.4` zip/manifest/PDF hashes.
+- [x] Verify zip payload hashes against bundle-internal `SHA256SUMS.txt`.
+- [x] Compare tag `RELEASE_MANIFEST.json` with bundled/uploaded/current
+      `RELEASE_MANIFEST.json`, including line-ending normalization.
+- [x] Check repository line-ending policy and Git EOL status.
+- [x] Check compiled PDF hygiene output.
+- [x] Check ACM/CTAN template guidance, AR2023/HSTU-BLaIR constants,
+      SILLM4Rec public workflow evidence, and frequency-filter prior art.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Define and enforce the tag-vs-bundle byte/normalization policy.
+- [ ] Repair stale `VENUE_PLAN.md` v1.1.3 DOI pointer.
+- [ ] Verify ACM-current template compatibility.
+- [ ] Inspect SILLM4Rec full paper or retain the inspection-pending caveat.
 
 ## Audit Run - 2026-07-18 13:16 Australia/Sydney
 

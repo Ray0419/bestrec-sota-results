@@ -74,8 +74,8 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
   wrapper runs `update_release_manifest.py --verify` and fails the gate on any drift;
   regenerate with `--regen` (+ commit together) whenever a manifested file changes.
   GitHub releases: `v0.9-audit-evidence` (data/result/parity assets) and the **current
-  deposit tag** — `v1.1.4-deposit` at this writing; each deposit release supersedes the
-  previous (`v1.0`→`v1.1`→`v1.1.1`→`v1.1.2`→`v1.1.3`→`v1.1.4`), built by the tracked
+  deposit tag** — `v1.1.5-deposit` at this writing; each deposit release supersedes the
+  previous (`v1.0`→`v1.1`→`v1.1.1`→`v1.1.2`→`v1.1.3`→`v1.1.4`→`v1.1.5`), built by the tracked
   `_bestrec_run/build_deposit_bundle.py` (`DOI_DEPOSIT_INSTRUCTIONS.md`)
 - Audits + responses: `CLAUDE_SOTA_*AUDIT*.md`, `STRICT_*AUDIT*.md` (incl.
   `STRICT_RESUBMISSION_AUDIT_ROUND2_2026-07-11.md`), `RESPONSE_TO_*.md`

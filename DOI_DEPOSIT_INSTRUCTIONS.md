@@ -10,7 +10,7 @@ without your login. Everything else is done:
 
 | prepared artifact | where |
 |---|---|
-| Deposit bundle (65 entries: papers incl. TORS PDF, all preregs + results docs, manifests, audit chain, code incl. adjudicators, comparator-run artifacts, README) | GitHub release **`v1.1.3-deposit`** asset `bestrec_deposit_v1.1.3.zip` (SHA256 in the sidecar asset `bestrec_deposit_v1.1.3.zip.sha256` and in `_release/` locally; bundle-internal `SHA256SUMS.txt` covers every entry; upload verified by a download-hash round trip). Prior deposit tags (`v1.1.2-deposit`, `v1.1.1-deposit`, `v1.1-deposit`, `v1.0-deposit`) remain as dated snapshots, each superseded by the next. Superseded: `v1.1-deposit` (its uploaded assets went stale against later same-day commits — see RESPONSE_TO_PAPER_REVIEW_AUDIT.md, 2026-07-18 01:10). Historical: `v1.0-deposit` / `bestrec_deposit_v1.0.zip` (46 files, SHA256 `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`) remains as the 2026-07-11 snapshot. |
+| Deposit bundle (65 entries: papers incl. TORS PDF, all preregs + results docs, manifests, audit chain, code incl. adjudicators, comparator-run artifacts, README) | GitHub release **`v1.1.4-deposit`** asset `bestrec_deposit_v1.1.4.zip` (SHA256 in the sidecar asset `bestrec_deposit_v1.1.4.zip.sha256` and in `_release/` locally; bundle-internal `SHA256SUMS.txt` covers every payload entry (not itself); upload verified by a download-hash round trip). Prior deposit tags (`v1.1.3-deposit`, `v1.1.2-deposit`, `v1.1.1-deposit`, `v1.1-deposit`, `v1.0-deposit`) remain as dated snapshots, each superseded by the next. Superseded: `v1.1-deposit` (its uploaded assets went stale against later same-day commits — see RESPONSE_TO_PAPER_REVIEW_AUDIT.md, 2026-07-18 01:10). Historical: `v1.0-deposit` / `bestrec_deposit_v1.0.zip` (46 files, SHA256 `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`) remains as the 2026-07-11 snapshot. |
 | Zenodo metadata (title, creators, license, keywords, description) | `.zenodo.json` (repo root — Zenodo's GitHub integration reads it automatically) |
 | Citation metadata | `CITATION.cff` (GitHub renders a "Cite this repository" button from it) |
 | Code/docs license with dataset + vendored-code scope notes | `LICENSE` (MIT — swap before minting if you prefer another) |
@@ -28,8 +28,8 @@ without your login. Everything else is done:
 
 ## Option B — Zenodo manual upload (no GitHub linking)
 
-1. https://zenodo.org/uploads/new → upload the **current** bundle `bestrec_deposit_v1.1.3.zip`
-   (from the `v1.1.3-deposit` release assets, or `_release/` locally).
+1. https://zenodo.org/uploads/new → upload the **current** bundle `bestrec_deposit_v1.1.4.zip`
+   (from the `v1.1.4-deposit` release assets, or `_release/` locally).
 2. Paste the metadata from `.zenodo.json` (title/creators/description/keywords/license).
 3. Publish → DOI minted.
 

@@ -58,7 +58,9 @@ Status legend: **PENDING** = not yet done, blocks the freeze when reached.
 4. Table-2 split preference (single wide table vs split) — venue-template decision.
 5. First-page acmart format verification against current TORS author guidelines, **including
    refreshing the vendored `acmart.cls` (currently v2.03, 2024) against ACM's current Primary
-   Article Template (v2.16, 2025-08-28, per the 2026-07-18 12:16 audit)** and re-running the full build + hygiene scan; decide then whether the
+   Article Template — deciding explicitly between the ACM submission portal's LaTeX package
+   (v2.16, 2025-08-28) and CTAN production acmart (v2.19, 2026-06-27; per the 2026-07-18
+   13:16 audit)** and re-running the full build + hygiene scan; decide then whether the
    Tectonic-based build compiles the latest class or whether final packaging moves to
    TeX Live/Overleaf (audit 2026-07-18 06:13, deliberate deferred decision — class upgrades
    are freeze-scope, not loop-scope).

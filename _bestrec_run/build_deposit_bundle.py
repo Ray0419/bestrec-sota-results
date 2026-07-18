@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Build the archival deposit bundle (currently v1.1.3) deterministically.
+"""Build the archival deposit bundle (currently v1.1.4) deterministically.
 
 The bundle is the small archival companion to the repository: papers, pre-registrations,
 results documentation, protocol code, provenance manifests, audit chain, and the comparator
@@ -13,7 +13,7 @@ import io
 import os
 import zipfile
 
-VERSION = "v1.1.3"
+VERSION = "v1.1.4"
 DATE = "2026-07-18"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "_release", f"bestrec_deposit_{VERSION}.zip")
@@ -155,7 +155,48 @@ def sha256(path):
     return h.hexdigest()
 
 
+def consistency_gate():
+    """Fail-closed: refuse to build a bundle whose surrounding metadata disagrees with VERSION.
+
+    Prevents the staleness class caught by the 2026-07-18 12:16/13:16 audits (bundled
+    CITATION/zenodo/manifest naming an older deposit version than the tag being cut).
+    Also enforces the release-topology rule: build AFTER the manifest regen and BEFORE the
+    single commit that gets tagged, so tag tree == bundle == uploaded assets.
+    """
+    import json as _json
+    import subprocess as _sp
+    plain = VERSION.lstrip("v")
+    fails = []
+
+    def read(rel):
+        with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
+            return f.read()
+
+    if 'version: "%s"' % plain not in read("CITATION.cff"):
+        fails.append("CITATION.cff version != %s" % plain)
+    if _json.loads(read(".zenodo.json")).get("version") != plain:
+        fails.append(".zenodo.json version != %s" % plain)
+    if "bestrec_deposit_%s.zip" % VERSION not in read("DOI_DEPOSIT_INSTRUCTIONS.md"):
+        fails.append("DOI_DEPOSIT_INSTRUCTIONS.md does not name bestrec_deposit_%s.zip" % VERSION)
+    if "%s-deposit" % VERSION not in read("README.md"):
+        fails.append("README.md does not name %s-deposit" % VERSION)
+    if "%s-deposit" % VERSION not in read("CANONICAL_SUBMISSION.md"):
+        fails.append("CANONICAL_SUBMISSION.md does not name %s-deposit" % VERSION)
+    head = _sp.run(["git", "-C", ROOT, "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
+    mc = _json.loads(read("RELEASE_MANIFEST.json")).get("git_commit")
+    if mc != head:
+        fails.append("RELEASE_MANIFEST git_commit (%s) != HEAD (%s) -- run --regen immediately "
+                     "before building, then make ONE commit and tag it" % (str(mc)[:8], head[:8]))
+    if fails:
+        print("CONSISTENCY GATE FAILED -- bundle NOT built:")
+        for f in fails:
+            print("  -", f)
+        raise SystemExit(2)
+    print("consistency gate OK (metadata versions + manifest boundary agree with %s)" % VERSION)
+
+
 def main():
+    consistency_gate()
     missing = [f for f in FILES if not os.path.exists(os.path.join(ROOT, f))]
     if missing:
         for f in missing:

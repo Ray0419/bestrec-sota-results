@@ -240,6 +240,15 @@
     </div>
     <p class="footnote">Drag the slider. At zero the model sees raw noise; turned up, the teal line hugs the dashed "true taste" — without ever using a future dot. In the real model this filter improved results on <strong>all four categories tested</strong>; on the two sealed-prediction categories it won <strong>5 out of 5</strong> paired re-runs each: Industrial&nbsp;&amp;&nbsp;Scientific <span class="num">+0.0024</span> (95% CI <span class="num">+0.0018…+0.0030</span>), CDs&nbsp;&amp;&nbsp;Vinyl <span class="num">+0.0057</span> (<span class="num">+0.0049…+0.0064</span>) — with zero per-category tuning.</p>
   </div>
+  <div class="card">
+    <h3 style="margin-top:2px">🎲 Demo: five sealed seeds, one honest conclusion</h3>
+    <p class="footnote">These are the <strong>real</strong> five runs of the Office Products V3 campaign (K=16 arm; per-seed values from <code>OFFICE_V3_RESULTS.md</code>). Each "seed" is a fresh shuffle of training randomness — sealed in the contract before any run.</p>
+    <div class="controls"><button class="primary" id="seedBtn" type="button">Run the 5 sealed seeds</button><span class="footnote" id="seedEcho">Every run lands slightly differently — that spread is why one run proves little.</span></div>
+    <div class="figwrap">
+      <svg id="seedSvg" viewBox="0 0 660 190" width="100%" role="img" aria-label="Number line showing the five real Office V3 seed results, their mean, the confidence lower bound, and the two reference bars they must clear"></svg>
+    </div>
+    <p class="footnote">The pass rule uses the <strong>95% CI lower bound</strong> — "even our unluckiest plausible average" — not the best or even the average run. Here it lands at <span class="num">0.03033</span>: above the matched re-run bar <span class="num">0.0279</span> and the published bar <span class="num">0.0271</span>, with all 5 seeds individually above both. That, and only that, is what "passed" means in this project.</p>
+  </div>
 </section>
 
 <section id="text">
@@ -529,6 +538,79 @@
   }
   document.getElementById("firSlider").addEventListener("input", updateFIR);
   updateFIR();
+
+  // ---------- 2b. Sealed-seeds demo (real Office V3 K=16 values, OFFICE_V3_RESULTS.md) ----------
+  (function () {
+    var SEEDS = [
+      { label: "20260728", v: 0.03060 }, { label: "20260729", v: 0.03053 },
+      { label: "20260730", v: 0.03046 }, { label: "20260731", v: 0.03033 },
+      { label: "20260732", v: 0.03041 }
+    ];
+    var MEAN = 0.03047, CILB = 0.03033, REFS = [
+      { v: 0.0279, name: "their code on our machine" }, { v: 0.0271, name: "published value" }
+    ];
+    var svg = document.getElementById("seedSvg"), NS = "http://www.w3.org/2000/svg";
+    var LX = 46, RX = 636, AY = 120, lo = 0.0264, hi = 0.0312;
+    function sx(v) { return LX + (RX - LX) * (v - lo) / (hi - lo); }
+    function el(tag, attrs) {
+      var e = document.createElementNS(NS, tag);
+      for (var k in attrs) e.setAttribute(k, attrs[k]);
+      svg.appendChild(e); return e;
+    }
+    function baseScene() {
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+      el("line", { x1: LX, y1: AY, x2: RX, y2: AY, stroke: "var(--line)", "stroke-width": 1.5 });
+      [0.027, 0.028, 0.029, 0.030, 0.031].forEach(function (v) {
+        el("line", { x1: sx(v), y1: AY - 4, x2: sx(v), y2: AY + 4, stroke: "var(--muted)", "stroke-width": 1 });
+        var t = el("text", { x: sx(v), y: AY + 20, "text-anchor": "middle", "font-size": 11, fill: "var(--muted)" });
+        t.textContent = v.toFixed(3);
+      });
+      REFS.forEach(function (r, i) {
+        el("line", { x1: sx(r.v), y1: 34, x2: sx(r.v), y2: AY, stroke: "var(--chart-verm)", "stroke-width": 2, "stroke-dasharray": "5 4" });
+        var t = el("text", { x: sx(r.v), y: i === 0 ? 26 : 46, "text-anchor": i === 0 ? "start" : "end", "font-size": 10.5, fill: "var(--chart-verm)" });
+        t.setAttribute("x", i === 0 ? sx(r.v) + 5 : sx(r.v) - 5);
+        t.textContent = "bar: " + r.v.toFixed(4) + " (" + r.name + ")";
+      });
+      var cap = el("text", { x: LX, y: 176, "font-size": 10.5, fill: "var(--muted)" });
+      cap.textContent = "NDCG@10 on Office Products, final-epoch full-catalog evaluation (axis zoomed to show detail)";
+    }
+    function dropSeed(i) {
+      var s = SEEDS[i];
+      el("circle", { cx: sx(s.v), cy: AY - 26, r: 5, fill: "var(--chart-blue)", opacity: 0.9 });
+      var t = el("text", { x: sx(s.v), y: AY - 36, "text-anchor": "middle", "font-size": 9.5, fill: "var(--chart-blue)" });
+      t.textContent = s.v.toFixed(5);
+    }
+    function finishScene() {
+      el("line", { x1: sx(MEAN), y1: AY - 58, x2: sx(MEAN), y2: AY - 12, stroke: "var(--chart-blue)", "stroke-width": 2.5 });
+      var tm = el("text", { x: sx(MEAN), y: AY - 64, "text-anchor": "middle", "font-size": 11, fill: "var(--chart-blue)", "font-weight": 700 });
+      tm.textContent = "mean 0.03047";
+      el("line", { x1: sx(CILB), y1: AY - 12, x2: sx(CILB), y2: AY + 8, stroke: "var(--good)", "stroke-width": 3 });
+      var tc = el("text", { x: sx(CILB), y: AY + 34, "text-anchor": "middle", "font-size": 11, fill: "var(--good)", "font-weight": 700 });
+      tc.textContent = "CI lower bound 0.03033";
+      var tc2 = el("text", { x: sx(CILB), y: AY + 48, "text-anchor": "middle", "font-size": 10, fill: "var(--good)" });
+      tc2.textContent = "the unluckiest plausible average — still above both bars";
+      document.getElementById("seedEcho").textContent = "All 5 above both bars; the pass rule judges the green marker, not the best run.";
+    }
+    var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var running = false;
+    document.getElementById("seedBtn").addEventListener("click", function () {
+      if (running) return;
+      running = true;
+      baseScene();
+      document.getElementById("seedEcho").textContent = "Rolling the sealed seeds…";
+      if (reduced) {
+        SEEDS.forEach(function (_, i) { dropSeed(i); });
+        finishScene(); running = false; return;
+      }
+      SEEDS.forEach(function (_, i) {
+        setTimeout(function () {
+          dropSeed(i);
+          if (i === SEEDS.length - 1) { setTimeout(function () { finishScene(); running = false; }, 420); }
+        }, 380 * (i + 1));
+      });
+    });
+    baseScene();
+  })();
 
   // ---------- 3. CI dot-interval figure (real numbers, verbatim from the paper) ----------
   var rows = [

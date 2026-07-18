@@ -243,5 +243,8 @@ machinery that makes the second one credible.
 - [ ] (standing) Cross-check every number in the companion files and PAPER_WRITING_TEMPLATE.md
       against the gated paper after each future results change (numbers must stay
       verbatim-identical). Last full check: 2026-07-18, all matched.
-- [ ] Optional: add a "try different seeds" animation to the FIR demo showing run-to-run spread
-      vs the CI-lower-bound idea.
+- [x] Optional: add a "try different seeds" animation to the FIR demo showing run-to-run spread
+      vs the CI-lower-bound idea (2026-07-18: sealed-seeds demo added to explainer sec 3 using the
+      five REAL Office V3 K=16 per-seed finals from OFFICE_V3_RESULTS.md — dots drop one by one,
+      then the mean and the green CI-lower-bound marker land above the two reference bars;
+      respects prefers-reduced-motion; verified live in-browser).

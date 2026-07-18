@@ -133,7 +133,10 @@ Every number printed in the paper — **168 of them** — is wired to the raw re
 from. At every change, a build script recomputes all 168 from those files and **refuses to build
 the paper** if even one printed digit disagrees with its evidence, one number's origin can't be
 traced, or one required family of evidence is missing. A separate manifest pins **153 files by digital
-fingerprint (hash)**, so evidence can't quietly change after the fact. Analogy: a spreadsheet that
+fingerprint (hash)**, so evidence can't quietly change after the fact. And since mid-July,
+each counted result has its own referee wired into that same build: the Office V3 and
+filter-breadth adjudicators re-run every time, and the paper refuses to build unless both
+say PASS — a counted claim can never silently outlive its evidence. Analogy: a spreadsheet that
 physically cannot display a figure it can't re-derive from receipts.
 
 ### 5.3 A rival referee audits us every hour

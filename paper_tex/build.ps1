@@ -11,6 +11,8 @@ $Tectonic = if ($env:TECTONIC) { $env:TECTONIC } else {
 }
 
 Write-Host "== [1/4] regenerate table includes from the artifact graph =="
+& $Python (Join-Path $PSScriptRoot "..\_bestrec_runuild_hstu_tables.py") --submission
+if ($LASTEXITCODE -ne 0) { throw "build_hstu_tables.py --submission failed (strict table build)" }
 & $Python (Join-Path $PSScriptRoot "..\_bestrec_run\emit_latex_tables.py")
 if ($LASTEXITCODE -ne 0) { throw "emit_latex_tables.py failed (numeric cross-check or extraction drift)" }
 

@@ -27,6 +27,9 @@ if [ -z "${TECTONIC:-}" ]; then
 fi
 
 echo "== [1/4] regenerate table includes from the artifact graph =="
+# Strict-submission table build FIRST (audit 2026-07-18 19:20): a TORS PDF must never be
+# produced from a default-mode hstu_tables.json; the emitter also fail-closes on mode.
+"$PYTHON" ../_bestrec_run/build_hstu_tables.py --submission
 "$PYTHON" ../_bestrec_run/emit_latex_tables.py
 
 echo "== [2/4] tectonic compile: review target (manuscript) =="

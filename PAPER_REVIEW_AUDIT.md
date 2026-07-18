@@ -6,22 +6,28 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **Confirmed submission-facing stale deposit pointer in the TORS cover letter.**
-   `COVER_LETTER_TORS.md` still says the current deposit tag is
-   `v1.1.4-deposit` even though the repository, DOI instructions, release, and
-   canonical submission boundary now use `v1.1.5-deposit`. The file is not in
-   the v1.1.5 bundle, so this does not corrupt the deposited artifact, but it
-   would be a visible contradiction if the draft cover letter were uploaded as
-   is. The builder consistency gate also does not inspect this file.
-2. **Confirmed v1.1.5 repairs the prior v1.1.4 byte-boundary defect for the
+1. **Confirmed generated-artifact/state hazard: `_bestrec_run/hstu_tables.json`
+   is currently non-submission-mode in the worktree.** The file differs from
+   `HEAD` only by `"mode": "default"` and `"submission_gate.enforced": false`.
+   A fresh strict build to a temporary output is green, so the numbers are not
+   currently contradicted; the risk is that the tracked generated JSON no longer
+   satisfies the assumption documented by `emit_latex_tables.py` and
+   `paper_tex/BUILD_NOTES.md` ("strict-build JSON"). The LaTeX build scripts run
+   `emit_latex_tables.py` directly and do not themselves force
+   `build_hstu_tables.py --submission` or assert that the JSON was generated in
+   submission mode.
+2. **Confirmed prior cover-letter stale-version blocker is fixed.**
+   `COVER_LETTER_TORS.md` now uses version-agnostic current-deposit wording and
+   points to `DOI_DEPOSIT_INSTRUCTIONS.md`; no `v1.1.4-deposit` occurrence
+   remains in the cover letter, compiled TORS PDF, or canonical paper.
+3. **Confirmed v1.1.5 repairs the prior v1.1.4 byte-boundary defect for the
    deposited package.** Local and remote `v1.1.5-deposit` resolve to
-   `a3eaf1b01a14152c48101c7126ae76a956631ea2`; the GitHub release targets that
-   commit; the uploaded/local zip digest is
+   `a3eaf1b01a14152c48101c7126ae76a956631ea2`; the uploaded/local zip digest is
    `b4faeb42b67a0637e0be667a65e403026bef61c0bec28e7b8294d65a71b1817c`; the
    zip has `66` entries, `65` SHA rows, `0` missing payloads, and `0` payload
    mismatches; and bundled/tag/release `RELEASE_MANIFEST.json` bytes match
    exactly at SHA256 `72d0068fa5825d7608f4ff4f45a5152e951413f57a7b42353802dd7212aef8bb`.
-3. **Residual local-checkout line-ending caveat.** `.gitattributes` now pins LF
+4. **Residual local-checkout line-ending caveat.** `.gitattributes` now pins LF
    and the v1.1.5 builder normalizes text payloads to LF at bundle time, but
    this existing Windows working tree still has CRLF worktree bytes for several
    tracked text files (`RELEASE_MANIFEST.json`, `README.md`, `CITATION.cff`,
@@ -29,20 +35,22 @@ plausible risks.
    a v1.1.5 bundle defect; it is a local-round-trip hazard if future
    instructions compare `Get-FileHash` on the current worktree file to the
    tag/release asset without first using Git-blob or bundle bytes.
-4. **Venue-template drift remains a freeze blocker.** The TeX build still
+5. **Venue-template drift remains a freeze blocker.** The TeX build still
    vendors `paper_tex/acmart.cls` v2.03 from `2024/02/04`. ACM's author page
    currently instructs review manuscripts to use single-column `manuscript`
    format with the ACM Primary Article Template v2.16 (`2025-08-28`), while
    CTAN lists production `acmart` v2.19 (`2026-06-27`). `VENUE_PLAN.md` records
    the portal-vs-CTAN decision point, but the refresh/rebuild/hygiene pass is
    still pending.
-5. **No current hard numerical blocker in the local strict gate.** Fresh
-   `rebuild_hstu_submission.py --strict` at `2026-07-18 17:19
-   Australia/Sydney` passes HSTU parity, `168` recomputed empirical cells,
-   `0` paper mismatches, `0` untraceable cells, all `14` declared claim
-   families, and release-manifest hash verification for `153` local files.
-6. **Office V3 and FIR-breadth mechanical evidence remain green.** Office V3
-   adjudication at `2026-07-18 17:19` passes under frozen wording: K=16 mean
+6. **No current hard numerical blocker in the local strict gate.** Fresh
+   strict checks at `2026-07-18 19:23 Australia/Sydney` pass HSTU parity,
+   `168` recomputed empirical cells, `0` paper mismatches, `0` untraceable
+   cells, all `14` declared claim families, and release-manifest hash
+   verification for `153` local files. The strict table check was deliberately
+   written to a temporary JSON to avoid overwriting the currently modified
+   worktree copy.
+7. **Office V3 and FIR-breadth mechanical evidence remain green.** Office V3
+   adjudication at `2026-07-18 19:23` passes under frozen wording: K=16 mean
    `0.03047`, CI-LB `0.03033`; K=8 mean `0.03029`, CI-LB `0.03024`; all 10
    seeds above both `0.0279` and `0.0271`; comparability conditions OK.
    FIR-breadth remains confirmed: `Industrial_and_Scientific` mean `+0.00240`,
@@ -50,29 +58,29 @@ plausible risks.
    `+0.00566`, 95% CI `[+0.00493,+0.00639]`, 5/5 positive. These support only
    the stated per-category point-estimate and internal paired filter claims,
    not paired superiority or SOTA.
-7. **Current HEAD is beyond the deposit tag, but only by response text.** HEAD
-   is `2da36ea8a3c8b4809389af4105932acc3ffcf0d9`, one commit after
-   `v1.1.5-deposit`, changing only `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`. This
-   is acceptable only if the archival boundary remains the deposit tag/release,
-   not "latest branch HEAD."
-8. **Plausible related-work risk: SILLM4Rec remains under-inspected.** The
+8. **Current HEAD is beyond the deposit tag by audit-response and companion
+   documentation commits.** HEAD is
+   `b41555021625d252e9149ddec6b3dc37015a80e4`, after
+   `v1.1.5-deposit`. The post-deposit commits fix/answer audit issues and add
+   companion-documentation checks; this is acceptable only if the archival
+   boundary remains the deposit tag/release, not "latest branch HEAD."
+9. **Plausible related-work risk: SILLM4Rec remains under-inspected.** The
    current paper discloses direct full-text protocol inspection as pending and
    excludes SILLM4Rec based on ACM metadata plus the public repository workflow
    (image-description generation, user-preference summaries, candidate-product
    ranking tasks, SFT/DPO training data). That exclusion is directionally
    defensible but still weaker than inspecting the ACM paper itself.
-9. **Plausible literature-coverage risk for FIR breadth categories.** GrIT's
-   arXiv paper reports AR2023 same-statistics numbers not only for Video_Games
-   but also for `Industrial_and_Scientific` and `CDs_and_Vinyl`. The manuscript
-   correctly avoids external comparator claims for FIR breadth, but before
-   freeze it should either mention these as concurrent, unaudited external
-   context or state explicitly that FIR breadth is an internal paired
-   filter-vs-no-filter claim only.
-10. **TORS cover letter remains a maintainer-fill freeze item.** In addition to
-    the stale v1.1.4 parenthetical above, bracketed fields for identity/contact,
-    conflicts, reviewer suggestions, and preprint status remain. That is
-    acceptable as a tracked draft, not as a final ScholarOne upload.
-11. **Persistent scientific boundary: novelty remains narrow/incremental and
+10. **GrIT FIR-breadth literature fence is now present, but should stay guarded.**
+    The manuscript now explicitly says GrIT also reports
+    `Industrial_and_Scientific` and `CDs_and_Vinyl` numbers and that the paper's
+    FIR-breadth result is only an internal paired filter-vs-no-filter contrast.
+    That resolves the prior omission, but any future prose must avoid converting
+    this into a comparator claim.
+11. **TORS cover letter remains a maintainer-fill freeze item.** Bracketed
+    fields for identity/contact, conflicts, reviewer suggestions, and preprint
+    status remain. That is acceptable as a tracked draft, not as a final
+    ScholarOne upload.
+12. **Persistent scientific boundary: novelty remains narrow/incremental and
     must stay framed that way.** FIR is defensible only as a leak-free,
     left-causal, zero-init adaptation inside this HSTU-style artifact-gated
     setting; TAPE remains a secondary soft-prototype ablation. Any future
@@ -81,6 +89,256 @@ plausible risks.
     per-category point-estimate comparisons against single-run/single-seed
     comparators; and FIR breadth as internal paired filter-vs-no-filter
     evidence only.
+
+## Audit Run - 2026-07-18 19:20 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Branch/HEAD: `codex/bestrec-sota-results` /
+  `b41555021625d252e9149ddec6b3dc37015a80e4`.
+- Current run time: `2026-07-18 19:20:41` through `19:23:13 +10:00` for
+  local validation commands; audit text written immediately after.
+- Automation memory read from
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`
+  using the `$HOME\.codex` fallback because `CODEX_HOME` remains unset in this
+  PowerShell session.
+- New commits since the remembered 17:18 audit: `22569ee7` fixes the
+  cover-letter current-deposit wording, generalizes the deposit gate, adds the
+  GrIT breadth fence, and refreshes PDFs/manifests; `c5f62a46` answers that
+  audit in writing; `b4155502` updates the plain-language companion's standing
+  number-source map.
+- Working tree before this audit edit: tracked modification only in
+  `_bestrec_run/hstu_tables.json`; untracked files remain
+  `_bestrec_run/impact_program.DONE`, `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Sources/artifacts inspected this run: `PAPER_REVIEW_AUDIT.md`,
+  `PAPER_SUBMISSION.md`, `paper_tex/sections/*.tex`,
+  `_bestrec_run/hstu_tables.json`, `git show HEAD:_bestrec_run/hstu_tables.json`,
+  `_bestrec_run/build_hstu_tables.py`, `_bestrec_run/rebuild_hstu_submission.py`,
+  `_bestrec_run/emit_latex_tables.py`, `paper_tex/build.ps1`,
+  `paper_tex/BUILD_NOTES.md`, `paper_tex/hygiene_scan_output.txt`,
+  `paper_tex/tables/TABLES_PROVENANCE.json`, `COVER_LETTER_TORS.md`,
+  `CANONICAL_SUBMISSION.md`, `README.md`, `DOI_DEPOSIT_INSTRUCTIONS.md`,
+  `VENUE_PLAN.md`, and `PLAIN_LANGUAGE_COMPANION.md`.
+- No manuscript, code, result, or generated table file was edited in this run;
+  only this audit file was updated. The strict table build was deliberately
+  redirected to a temp JSON at
+  `C:\Users\rayxc\AppData\Local\Temp\hstu_tables_submission_audit_hourly.json`
+  to avoid overwriting the user's modified worktree artifact.
+
+### Verdict
+
+**The prior cover-letter and GrIT-breadth issues were materially fixed.** The
+cover letter no longer names `v1.1.4-deposit`, and Section 5.1 now fences GrIT's
+Industrial_and_Scientific / CDs_and_Vinyl numbers as literature context only,
+not a comparator claim.
+
+**The new top rejection risk is a generated-artifact integrity gap, not a
+numerical contradiction.** The current worktree copy of
+`_bestrec_run/hstu_tables.json` has been regenerated in default mode
+(`"mode": "default"`, `"submission_gate.enforced": false`) while the committed
+`HEAD` version is submission mode. `emit_latex_tables.py` and
+`paper_tex/BUILD_NOTES.md` both state/assume the JSON is strict-build output, but
+the LaTeX build path does not assert that condition or run
+`build_hstu_tables.py --submission` before emitting tables. A top-journal
+reviewer would read this as a bypass path around the claimed fail-closed
+artifact discipline, even though the strict gate itself still passes when
+invoked.
+
+### Commands And Evidence Checked
+
+- `git diff -- _bestrec_run/hstu_tables.json`
+  - Confirmed the only tracked data-artifact diff is:
+    `"mode": "submission" -> "default"` and
+    `"submission_gate.enforced": true -> false`.
+  - No cell values, tables, warnings, violations, or sources changed in this
+    diff.
+- `uv --project _bestrec_run run python _bestrec_run/build_hstu_tables.py --submission --tables-out "$env:TEMP\hstu_tables_submission_audit_hourly.json"`
+  - PASS: `168` cells recomputed OK.
+  - PASS: `149` exact paper checks, `19` within-rounding, `0` MISMATCH,
+    `0` UNTRACEABLE, `4` retired `REMOVED_FROM_PAPER`.
+  - PASS: all `14` declared claim families sourced.
+- `uv --project _bestrec_run run python _bestrec_run/update_release_manifest.py --verify`
+  - PASS: `153` files verified, `0` release-asset files missing locally.
+- `uv --project _bestrec_run run python _bestrec_run/test_hstu_parity.py`
+  - PASS: HSTU core-block parity exact in all asserted stages; max asserted
+    diff `0.000e+00`.
+- `uv --project _bestrec_run run python _bestrec_run/adjudicate_office_v3.py --no-append`
+  - PASS at `2026-07-18 19:23:13`, block `196799e7c46d`.
+  - K=16 mean `0.03047`, sd `0.00011`, CI-LB `0.03033`, `5/5` seeds above
+    both `0.0279` and `0.0271`.
+  - K=8 mean `0.03029`, sd `0.00005`, CI-LB `0.03024`, `5/5` seeds above both
+    references; comparability conditions OK.
+- `uv --project _bestrec_run run python _bestrec_run/adjudicate_fir_breadth.py --no-append`
+  - CONFIRMED at `2026-07-18 19:23:13`, block `9a38ad66bd75`.
+  - Industrial_and_Scientific: mean `+0.00240`, 95% CI
+    `[+0.00183,+0.00297]`, `5/5` positive.
+  - CDs_and_Vinyl: mean `+0.00566`, 95% CI `[+0.00493,+0.00639]`,
+    `5/5` positive.
+- `uv --project _bestrec_run run python paper_tex\scan_pdf.py paper_tex\PAPER_TORS.pdf`
+  - PASS: `40` pages, `0` placeholder/forbidden failures, `20` informational
+    SOTA/negated-claim review hits.
+- `rg "v1\.1\.4-deposit|outcome pending|not part of any counted claim|Office never a passed category|SILLM4Rec|GrIT" ...`
+  - Confirmed `COVER_LETTER_TORS.md` now uses version-agnostic deposit wording.
+  - Confirmed the compiled/canonical paper contains the new GrIT breadth fence
+    and no stale Office pending/no-claim wording.
+- `paper_tex/BUILD_NOTES.md` and `_bestrec_run/emit_latex_tables.py`
+  - Confirmed both describe `hstu_tables.json` as strict `--submission` output.
+  - Confirmed `paper_tex/build.ps1` runs only `emit_latex_tables.py` before TeX
+    compilation and hygiene scanning; it does not regenerate or assert the
+    strict table JSON itself.
+
+### External Fact-Check / Novelty Notes
+
+- ACM's submissions page still instructs review manuscripts to use
+  single-column `manuscript` format and names Primary Article Template LaTeX
+  v2.16 for review submissions. Source:
+  https://www.acm.org/publications/authors/submissions
+- CTAN lists production `acmart` v2.19 dated `2026-06-27`; the local vendored
+  `paper_tex/acmart.cls` remains v2.03 (`2024/02/04`). Source:
+  https://ctan.org/tex-archive/macros/latex/contrib/acmart?lang=en
+- Amazon Reviews 2023's official site confirms a 2023 McAuley Lab release with
+  reviews, item metadata, links, standard splits, and 571.54M reviews. Source:
+  https://amazon-reviews-2023.github.io/
+- HSTU-BLaIR v3 confirms the manuscript's comparator constants: Video Games
+  HSTU-BLaIR NDCG@10 `0.0760`, Office Products `0.0271`, Musical Instruments
+  `0.0406`, with the same AR2023 5-core category statistics used by the
+  manuscript. Source: https://arxiv.org/html/2504.10545v3
+- GrIT confirms the manuscript's new literature fence: it uses AR2023
+  Video Games, Industrial & Scientific, and CDs & Vinyl with matching 5-core
+  statistics, standard leave-one-out, and full-item-set ranking; reported
+  GrIT NDCG@10 values include Video Games `0.0588`, Industrial & Scientific
+  `0.0286`, and CDs & Vinyl `0.0608`. Source:
+  https://arxiv.org/html/2602.19728v1
+- SID-MLP confirms another close same-statistics AR2023 semantic-ID line:
+  Table 10 uses Musical Instruments `57,439 / 24,587 / 511,836`, Industrial &
+  Scientific `50,985 / 25,848 / 412,947`, and Video Games
+  `94,762 / 25,612 / 814,586`, with leave-one-out evaluation. Its reported
+  Sid-Mlp++ NDCG@10 values in Table 14 (`0.0328`, `0.0244`, `0.0486`) do not
+  threaten the paper's MI/Video_Games point-estimate framing, but the paper is
+  right to cite it as same-statistics concurrent context. Source:
+  https://arxiv.org/html/2605.12617v1
+- UniSGR is correctly out of scope for AR2023 full-catalog LLOO comparison: it
+  is an industrial semantic-ID generation-plus-ranking framework using
+  multi-scenario pretraining, scenario-specific alignment, and online A/B
+  testing on a real e-commerce platform. Source:
+  https://arxiv.org/html/2607.04068v1
+- DIGER is also correctly out of scope: it studies differentiable semantic IDs
+  on B-Shop, I-Shop, and Yelp, with full-item-set leave-one-out, not this
+  AR2023 HSTU-BLaIR category family. Source:
+  https://arxiv.org/html/2601.19711v3
+- ACERec is correctly out of scope for AR2023 claims: it uses the older
+  Amazon Reviews collection cited to McAuley et al. (2015) across Sports,
+  Beauty, Toys, Instruments, Office, and Baby, not AR2023. Source:
+  https://arxiv.org/html/2602.13573v1
+- SILLM4Rec remains a plausible under-inspection risk. The public repository
+  supports the manuscript's non-comparability caveat because it generates image
+  descriptions, user preference summaries, candidate ranking tasks, and SFT/DPO
+  data; direct ACM full-text inspection is still better if accessible. Source:
+  https://github.com/MKC-Lab/SILLM4Rec
+
+### Confirmed Problems
+
+1. **`_bestrec_run/hstu_tables.json` is in default mode in the current worktree.**
+   This contradicts the standing submission-ready invariant that this generated
+   JSON is strict `--submission` output. The strict output to temp is green, but
+   the checked-in worktree artifact should not remain in non-submission mode.
+2. **The LaTeX build path trusts `hstu_tables.json` without checking its mode.**
+   `emit_latex_tables.py` says the source JSON is strict-build output, but it
+   only loads the file and cross-checks numbers; it does not require
+   `mode == "submission"`, `submission_gate.enforced == true`, and zero
+   violations.
+3. **`paper_tex/build.ps1`/`build.sh` do not force strict table regeneration.**
+   They run the emitter, compile TeX, and scan the PDF. If the JSON was last
+   produced by a default build, the PDF build can still succeed while the
+   artifact-provenance claim says it used strict-build JSON.
+
+### Confirmed Fixes / Non-Problems
+
+- The stale cover-letter `v1.1.4-deposit` parenthetical is fixed.
+- The GrIT breadth-category caveat is now present in the manuscript and TeX
+  result section.
+- The empirical numbers remain mechanically supported under a fresh strict
+  table build to a temp output; no mismatches or untraceable cells were found.
+- Release-manifest verification, HSTU parity, Office V3 adjudication,
+  FIR-breadth adjudication, and TORS PDF hygiene all passed.
+- The current post-deposit HEAD changes are response/companion/support
+  documentation; the release boundary still needs to remain the `v1.1.5-deposit`
+  tag rather than branch HEAD.
+
+### Plausible Risks / Items Requiring Author Verification
+
+- Decide whether generated artifacts are required to be submission-mode clean in
+  the worktree at all times, or whether only the strict command output is
+  authoritative. The current documentation implies the former.
+- If authors intentionally allow default-mode table builds during development,
+  the JSON should carry a loud non-submission warning and the LaTeX emitter
+  should refuse it for submission builds.
+- Direct SILLM4Rec ACM full-text inspection remains pending. Repository-based
+  exclusion is plausible but weaker than full-paper protocol inspection.
+- The vendored `acmart.cls` remains materially old relative to both ACM's review
+  template guidance and CTAN production. This is still a venue-freeze decision,
+  not just a cosmetic issue.
+
+### Concrete Fixes To Make Next
+
+1. Regenerate `_bestrec_run/hstu_tables.json` with
+   `uv --project _bestrec_run run python _bestrec_run/build_hstu_tables.py --submission`
+   before any submission freeze or PDF rebuild, and commit the strict-mode JSON.
+2. Add a fail-closed assertion at the start of `_bestrec_run/emit_latex_tables.py`:
+   require `mode == "submission"`, `submission_gate.enforced is true`,
+   `submission_gate.violations == []`, `paper_check_summary.MISMATCH == 0`, and
+   `paper_check_summary.UNTRACEABLE == 0`.
+3. Preferably make `paper_tex/build.ps1` and `paper_tex/build.sh` run
+   `build_hstu_tables.py --submission` before `emit_latex_tables.py`, so a
+   clean TORS PDF cannot be produced from a default-mode generated JSON.
+4. Keep the GrIT/SID-MLP/Latte/ChronoSID/DiffuReason paragraph fenced as
+   "point-estimate/literature context only"; do not add any comparative claim
+   against concurrent arXiv work without protocol-level audit.
+5. Inspect the SILLM4Rec ACM full text if available, or retain the current
+   explicit "pending direct full-text protocol inspection" caveat.
+6. Make the acmart decision before freeze: either update to the current ACM/CTAN
+   package and rebuild/hygiene-scan, or document why the Tectonic-compatible
+   vendored v2.03 class is the chosen review artifact.
+
+### Open Questions
+
+- Was `_bestrec_run/hstu_tables.json` intentionally left in default mode after a
+  development run, or should the automation restore/commit the strict-mode JSON?
+- Should `emit_latex_tables.py` be treated as a submission-only tool that refuses
+  default-mode JSON, or should it accept default mode only under an explicit
+  `--dev` flag?
+- Is the ACM SILLM4Rec full text accessible to the authors for a final protocol
+  comparison?
+- Will the final TORS upload use the 40-page `paper_tex/PAPER_TORS.pdf` and not
+  the reader-format `PAPER_SUBMISSION.pdf`?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Locate current manuscript, TeX, PDF, cover-letter, release, companion, and
+      generated-table artifacts.
+- [x] Check commits since the prior remembered run.
+- [x] Inspect working-tree status and diff for `_bestrec_run/hstu_tables.json`.
+- [x] Run strict table build to a temporary output.
+- [x] Verify release manifest.
+- [x] Run HSTU parity test.
+- [x] Re-run Office V3 adjudicator.
+- [x] Re-run FIR-breadth adjudicator.
+- [x] Re-run TORS PDF hygiene scan.
+- [x] Search stale version and stale Office wording.
+- [x] Inspect LaTeX emitter/build path for strict-mode enforcement.
+- [x] Fact-check ACM/CTAN, AR2023, HSTU-BLaIR, GrIT, SID-MLP, UniSGR, DIGER,
+      ACERec, and SILLM4Rec sources.
+- [x] Update current prioritized rejection-risk list.
+- [x] Append this timestamped audit section.
+- [ ] Restore/commit strict-mode `_bestrec_run/hstu_tables.json`.
+- [ ] Add mode/assertion gate to `_bestrec_run/emit_latex_tables.py`.
+- [ ] Make `paper_tex/build.*` force or verify strict table JSON before TeX.
+- [ ] Inspect SILLM4Rec full text or keep the current caveat.
+- [ ] Resolve the acmart class-version decision before freeze.
 
 ## Audit Run - 2026-07-18 17:18 Australia/Sydney
 

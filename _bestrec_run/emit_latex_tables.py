@@ -434,6 +434,27 @@ def main():
     tj = json.load(io.open(TABLES_JSON, encoding="utf-8"))
     manifest = json.load(io.open(MANIFEST_JSON, encoding="utf-8"))
 
+    # Fail-closed source-JSON gate (audit 2026-07-18 19:20): this emitter documents its source
+    # as strict --submission output, so refuse anything else (a bare/default build_hstu_tables
+    # run leaves mode="default" and must not silently feed a submission PDF).
+    sg = tj.get("submission_gate", {})
+    pcs = tj.get("paper_check_summary", tj.get("paper-check", {}))
+    problems = []
+    if tj.get("mode") != "submission":
+        problems.append("mode=%r (need 'submission')" % tj.get("mode"))
+    if sg.get("enforced") is not True:
+        problems.append("submission_gate.enforced=%r (need true)" % sg.get("enforced"))
+    if sg.get("violations"):
+        problems.append("submission_gate.violations non-empty: %r" % (sg.get("violations"),))
+    if pcs and (pcs.get("MISMATCH", 0) != 0 or pcs.get("UNTRACEABLE", 0) != 0):
+        problems.append("paper-check MISMATCH/UNTRACEABLE nonzero: %r" % (pcs,))
+    if problems:
+        print("FATAL: hstu_tables.json is not strict-submission output:")
+        for p in problems:
+            print("  -", p)
+        print("Regenerate with: build_hstu_tables.py --submission")
+        raise SystemExit(3)
+
     blocks = md_table_blocks(md_lines)
     if len(blocks) != len(REGISTRY):
         raise SystemExit("FATAL: md has %d pipe tables, registry expects %d -- md drifted, update registry"

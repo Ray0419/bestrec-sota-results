@@ -257,8 +257,14 @@ machinery that makes the second one credible.
       overflow/overlap script lives in the session log; three of five initial figures had
       invisible defects — this class of bug does not announce itself).
 - [ ] (standing) Cross-check every number in the companion files and PAPER_WRITING_TEMPLATE.md
-      against the gated paper after each future results change (numbers must stay
-      verbatim-identical). Last full check: 2026-07-18, all matched.
+      against its DECLARED SOURCE after each future results/paper change. Source map (codified
+      2026-07-18 after the GrIT-fence commit's sweep): result values and comparator numbers ->
+      PAPER_SUBMISSION.md verbatim (at the paper's printed precision); Office V3 per-seed
+      finals -> OFFICE_V3_RESULTS.md (the explainer names this source in its own text); the
+      168-cell count -> the strict gate's own BUILD GREEN output (mirrored in
+      CANONICAL_SUBMISSION.md); the 153-file count -> the strict gate's manifest-verification
+      output. Last full check: 2026-07-18 post-GrIT-fence — every number verified against its
+      source; no drift.
 - [x] Optional: add a "try different seeds" animation to the FIR demo showing run-to-run spread
       vs the CI-lower-bound idea (2026-07-18: sealed-seeds demo added to explainer sec 3 using the
       five REAL Office V3 K=16 per-seed finals from OFFICE_V3_RESULTS.md — dots drop one by one,

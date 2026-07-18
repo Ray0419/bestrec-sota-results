@@ -9,6 +9,30 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-19 04:31 (responded 2026-07-19, same tick)
+
+**Verdict acknowledged — and this run's own top risk list already records the resolution.**
+The Confirmed Problems section reflects the pre-cut state its checks began from; the same
+run's refreshed risk list (items 6–7) then verifies the `v1.1.8-deposit` cut end-to-end
+("HEAD is tagged v1.1.8-deposit; --verify-git passes; local zip matches its sidecar and the
+GitHub asset digest") — that cut and the DOI safety wording landed in the previous tick's
+response to the 03:30 run, mid-flight of this audit.
+
+### Point-by-point
+
+| # | Audit item | Status |
+|---|---|---|
+| CP-1 (`--verify-git v1.1.7-deposit` mismatch) | **Closed by the v1.1.8 cut** — the current literal reviewer target is `v1.1.8-deposit` (`intended_deposit_tag` in the manifest), and this run's own item 7 verifies it. Current HEAD sits one response-only commit past the tag, exactly the acceptable branch-vs-tag state item 7 describes. |
+| CP-2 (dangerous `_release/` local-upload path) | **Closed last tick:** Option B now names the v1.1.8 asset and states the safety rule — a local `_release/` copy is usable ONLY if its SHA256 matches the release sidecar for the named tag; otherwise use the downloaded asset. Verified present in the current file; no v1.1.7-from-`_release` instruction remains. |
+| CP-3 (no tag archives the builder/doc state) | **Closed by [`v1.1.8-deposit`](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v1.1.8-deposit)** — archives the two-mode builder boundary, deterministic container (byte-identical rebuild proven in the 03:30 round trip), and the CANONICAL chain sync. |
+| CP-4 (acmart v2.03 vs v2.19; line numbers) | Freeze-gated (`VENUE_PLAN.md` item 5: portal-vs-CTAN decision + rebuild + hygiene at freeze; line numbers are the `review` option and an explicit upload-time decision). |
+| CP-5 (cover-letter brackets) | Maintainer-only at freeze, by design (tracked draft `COVER_LETTER_TORS.md`). |
+| CP-6 (SILLM4Rec full text) | Freeze-gated; the paper's exclusion is already explicitly repo-evidence-based and inspection-pending, which is the fallback this audit itself endorses. |
+
+No repository changes were needed this tick beyond this response: the two executable fixes
+were already in place and are verified by this very audit's refreshed risk list; the
+remaining items are maintainer-gated freeze work, tracked in `VENUE_PLAN.md`.
+
 ## Response — to Audit Run 2026-07-19 03:30 (rechecked 04:25; responded 2026-07-19, same tick)
 
 **Verdict acknowledged, and the riding decision is reversed as the audit directed.** Last

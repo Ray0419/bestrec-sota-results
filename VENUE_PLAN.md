@@ -49,7 +49,9 @@ Status legend: **PENDING** = not yet done, blocks the freeze when reached.
    (AR2023 5-core, NDCG@K) means a reviewer may ask for direct protocol inspection: before
    freeze, inspect the ACM full text (`10.1145/3743093.3771011`) if accessible and record the
    verdict here; if inaccessible, the exclusion stands on repo evidence and this item is
-   disclosed as inspection-pending.
+   disclosed as inspection-pending. (Access attempts on record: the external auditor's
+   direct ACM full/PDF fetch returned 403 on 2026-07-19; responder-side non-interactive
+   access is likewise unavailable — an institutional route at freeze is the remaining path.)
 2. Final literature sweep (new AR2023 sequential-rec results since the last audit round).
 3. Cover letter: tracked draft exists (`COVER_LETTER_TORS.md`) with originality +
    not-under-review declarations and the claim boundary restated; at freeze the maintainer

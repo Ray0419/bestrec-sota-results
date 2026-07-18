@@ -12,7 +12,8 @@ is byte-stable across Windows/Linux checkouts; .gitattributes pins the same poli
 
 The bundle is the small archival companion to the repository: papers, pre-registrations,
 
-results documentation, protocol code, provenance manifests, audit chain, and the comparator
+results documentation, protocol code, provenance manifests, core historical audit
+documents, and the comparator
 
 reference-run artifacts. Large evidence (splits, text caches, result JSONs) is NOT bundled --
 
@@ -211,7 +212,10 @@ This bundle is the archival companion to the manuscript
 
 `paper_tex/PAPER_TORS.pdf` (ACM TORS manuscript format). It contains the code,
 
-pre-registrations, results documentation, provenance manifests, audit chain,
+pre-registrations, results documentation, provenance manifests, core historical
+audit documents (the live hourly adversarial chain -- `PAPER_REVIEW_AUDIT.md` /
+`RESPONSE_TO_PAPER_REVIEW_AUDIT.md` -- is git-tracked and present in full in every
+tagged tree rather than re-bundled per cut),
 
 and small evaluation artifacts needed to verify every number printed in the
 

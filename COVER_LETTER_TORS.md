@@ -23,7 +23,8 @@ Reviews 2023"** for consideration at ACM Transactions on Recommender Systems.
 - **Conflicts of interest.** [Maintainer: list, or state none.]
 - **Data and artifacts.** The public Amazon Reviews 2023 dataset (McAuley Lab) is used and
   not redistributed; the complete artifact (code, immutable pre-registrations, results of
-  record, hash manifest, fail-closed build gate, and the full adversarial audit chain) is
+  record, hash manifest, fail-closed build gate, and the full adversarial audit chain —
+  the live hourly chain is git-tracked in every tagged tree) is
   available in the anonymized/named repository and its archival deposit release — the
   current deposit tag, recorded in `DOI_DEPOSIT_INSTRUCTIONS.md`. A single command
   re-verifies every printed empirical number.
@@ -60,7 +61,7 @@ rejects broader wording) is:
 The manuscript is a full-length evaluation-methodology + empirical study aimed at TORS's
 scope on rigorous, reproducible recommender-systems research: every empirical statement is
 pre-registered or explicitly labeled exploratory, all 168 printed numbers rebuild from
-hash-pinned artifacts, and the review package includes the complete adversarial audit trail
+hash-pinned artifacts, and the repository includes the complete adversarial audit trail
 (dozens of hourly audit rounds by an independent system, each answered point-by-point in
 writing).
 

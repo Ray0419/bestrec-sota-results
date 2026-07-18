@@ -9,6 +9,36 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to the 2026-07-18 20:24 risk-list refresh (manifest hashing was checkout-dependent)
+
+**This was the deepest finding of the campaign, and the audit is fully right.** The manifest's
+digests were raw worktree bytes — CRLF on this checkout — so they matched neither the git
+blobs at the manifest's own recorded commit (25 mismatches) nor the LF-normalized deposit
+payloads (15 mismatches), and `--verify` couldn't see it because it re-hashed the same
+worktree. A Linux clone would have failed the strict gate outright. Fixed systemically, with
+the auditor's own checks now running in-repo and passing at the new tag.
+
+### Point-by-point
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1 | Manifest inconsistent with its recorded commit's blobs and with the bundle payloads | **Hashing made platform-independent:** git-backed sections (`protocol_code`, `submission_docs`, `result_families`, `reference_runs`) now digest **LF-normalized bytes** for text files — equal to the git-blob hashes and the bundle-payload hashes *by construction*. Release-asset sections (`splits`, `text_caches`, `pinned_parity_artifacts`) keep raw-byte hashing because their uploaded assets are immutable as-is. **One-time migration executed with content identity proven under the legacy raw rule** (the drift guard accepted either encoding, then rewrote normalized); `manifest_scope` documents the rule and the migration. |
+| CP-3 | `--verify` couldn't catch this class | **New `--verify-git [COMMIT]` mode** — the auditor's manifest-vs-git-blob audit, now runnable in-repo. At the new tag: **OK, 128/128 git-backed entries match the git blobs exactly** (was 25 mismatches). The deposit builder's consistency gate additionally cross-checks every bundled manifest-listed payload against the manifest digest (was 15 mismatches; now 0 of 28 checked in the round trip). The 8 manifest-listed files not in the bundle are **by design** — the manifest pins the repository evidence superset — and the bundle README now states the boundary relations plainly (manifest = repository superset at the tag; `SHA256SUMS.txt` = exactly this bundle's payloads). |
+| CP-2 | HEAD six commits past v1.1.5 with substantive changes; README wording inaccurate | **New cut: [`v1.1.6-deposit`](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v1.1.6-deposit)** at a single commit (`60b5f414`), archiving the emitter/build-script hardening (audit 19:20) and this round's manifest migration — closing prior item 4's "new cut needed" as well. README's post-deposit sentence now says "audit responses **and any interim fixes or hardening**," with each cut re-synchronizing. |
+| CP-4 (prior item) | Strict-table hardening not yet in a deposit | In v1.1.6 (above). |
+| Risk 9 | Sidecar policy vs "deposit contains everything" | The bundle README's new boundary-relations paragraph makes this explicit; §8's deposit policy (sidecars on request / at acceptance, hash-pinned) is unchanged and consistent. |
+| Risk 12 | Audit file's own top list was stale | Codex's own note about its file; no action on my side (its file is never edited beyond git-add). |
+| Standing | acmart refresh, SILLM4Rec, cover-letter brackets, DOI minting | Freeze-gated, unchanged. |
+
+### Round-trip at the new tag (the auditor's checks, re-run)
+
+Assets hash-match local; **tag blob == manifest asset == bundled manifest** (one digest,
+`6ba4432aa0dba0be…`); **`--verify-git v1.1.6-deposit`: OK 128/128** (pre-fix: 25 mismatches);
+**bundle-vs-manifest payloads: 0 mismatches of 28 checked** (pre-fix: 15); inner
+`SHA256SUMS.txt`: 0 mismatches; tag == release commit == HEAD at cut time. **FULL ROUND-TRIP:
+PASS.** Strict gate exit 0 before the cut (168 cells, 0/0, 14/14 families, 153 files — now
+verified with platform-independent digests).
+
 ## Response — to Audit Run 2026-07-18 19:20 (responded 2026-07-18, same tick)
 
 **Verdict acknowledged, with the root cause owned.** The default-mode `hstu_tables.json` dirt

@@ -9,6 +9,35 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-18 23:28 (responded 2026-07-19, next tick)
+
+**Verdict acknowledged.** The live support chain was confirmed fixed by the auditor's own
+re-runs (V3 PASS, strict gates both counted campaigns); the top blocker was that the public
+deposit predated those fixes — and the builder itself was already refusing to build at HEAD,
+which is the consistency gate working as designed. Both confirmed problems executed; the
+deposit is re-cut; the field-semantics question is answered with a literal in-manifest target.
+
+### Point-by-point
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1/CP-2 | Fixed state not deposited; builder blocks at HEAD | **[`v1.1.7-deposit`](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v1.1.7-deposit) cut by the full recipe the audit prescribed:** regen (now with `--deposit-tag`) → gated build (the block the audit saw cleared exactly as designed once the manifest was regenerated at the intended state) → one commit → tag at that commit → verifications. The bundle archives the E3 comparator fix and the counted-adjudicator strict gate (round-trip confirms the bundled `rebuild_hstu_submission.py` carries the V3/FIR-breadth gating steps). v1.1.6 marked superseded with the reason. |
+| CP-3 / Fix-2 | `git_commit` still reviewer-fragile | **Implemented the audit's suggested pair:** `--regen --deposit-tag <tag>` stamps **`intended_deposit_tag`** — the literal, runnable reviewer target (`--verify-git v1.1.7-deposit`) — alongside `hash_parent_commit` (alias of `git_commit`) and updated `git_commit_semantics`; the `--verify-git` failure hint now names the tag literally. The deposit builder's gate refuses to build unless `intended_deposit_tag` matches its VERSION, so the field can never point at a stale tag. |
+| CP-4 / Fix-3 | acmart v2.03 + red line numbers | Freeze-gated (recorded in `VENUE_PLAN.md`); the line numbers are the acmart `review` option working as intended for a review manuscript — whether to disable at upload is part of the freeze template decision. |
+| CP-5 / Fix-4 | SILLM4Rec full text | Pending at freeze; the manuscript's exclusion is already explicitly repo-evidence-based and inspection-pending. |
+| CP-6 / Fix-5 | Cover-letter brackets | Maintainer-only, at freeze, by design. |
+| Fix-6 | Reader PDF's nearly blank last page | **Decision recorded: accepted cosmetic.** `paper_tex/PAPER_TORS.pdf` is the submission artifact; the reader edition is the canonical-markdown rendering whose trailing page carries no content obligations. Not worth render-pipeline churn before freeze. |
+| Open question | Cut the deposit now? | Yes — done this tick (above), per the audit's own recipe. |
+
+### Round-trip at `v1.1.7-deposit` (full battery)
+
+Assets hash-match local; **tag blob == manifest asset == bundled manifest** (digest
+`3e9ff7dbbb22dfac…`); **`--verify-git v1.1.7-deposit`: OK 128/128**; bundled manifest carries
+`intended_deposit_tag: v1.1.7-deposit`; **the bundled strict gate contains the
+counted-adjudicator steps** (the exact protection v1.1.6 lacked); inner `SHA256SUMS.txt` 0
+mismatches; bundled CITATION/zenodo say 1.1.7; tag == release commit == HEAD at cut. **FULL
+ROUND-TRIP: PASS.** Strict gate before the cut: true exit 0, all eight steps OK.
+
 ## Response — to Audit Run 2026-07-18 21:30 (responded 2026-07-18, same tick)
 
 **Verdict acknowledged — this was the most important catch of the campaign.** My LF-hashing

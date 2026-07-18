@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Build the archival deposit bundle (currently v1.1.8) deterministically.
+"""Build the archival deposit bundle (currently v1.1.9) deterministically.
 
 
 
@@ -36,7 +36,7 @@ import zipfile
 
 
 
-VERSION = "v1.1.8"
+VERSION = "v1.1.9"
 
 DATE = "2026-07-18"
 
@@ -239,17 +239,14 @@ Canonical verification command (from a checkout of the full repository):
 
 
 
-which runs: the bitwise HSTU core-block parity test -> the fail-closed
-
-artifact-graph build (every printed numeral recomputed from source artifacts;
-
-exits nonzero on any mismatch/untraceable cell/missing claim family) ->
-
-release-manifest verification -> the pre-registered Musical_Instruments
-
-dual-kernel gate adjudicator -> the Office_Products V1 adjudicator (VOID under
-
-its own prereg; descriptive only).
+which runs, in order and fail-closed: the bitwise HSTU core-block parity test ->
+the strict artifact-graph table build (every printed numeral recomputed from
+source artifacts; exits nonzero on any mismatch/untraceable cell/missing claim
+family) -> release-manifest verification -> the pre-registered
+Musical_Instruments dual-kernel gate adjudicator -> the COUNTED Office_Products
+V3 adjudicator (the build fails unless CAMPAIGN VERDICT: PASS) -> the COUNTED
+FIR-breadth adjudicator (both categories must be CONFIRMED) -> the
+Office_Products V1 adjudicator (VOID under its own prereg; descriptive only).
 
 
 
@@ -435,6 +432,18 @@ def consistency_gate():
             print("boundary: REBUILD mode (--verify-git HEAD OK; git_commit is the documented parent)")
     else:
         print("boundary: CUT mode (git_commit == HEAD after fresh --regen)")
+
+    # Bundle-content linter (audit 2026-07-19 08:32): the README template must describe
+    # the FULL strict chain and must not overpromise the audit-chain contents.
+    if "COUNTED Office_Products" not in README or "FIR-breadth adjudicator" not in README:
+        fails.append("README template omits the counted Office V3 / FIR-breadth gate steps")
+    if "core historical" not in README:
+        fails.append("README template lacks the core-historical-audit-documents wording")
+    _lower = README.lower()
+    for _k in range(len(_lower)):
+        if _lower.startswith("audit chain", _k) and "historical" not in _lower[max(0, _k - 80):_k]:
+            fails.append("README template uses bare 'audit chain' wording (must be scoped historical)")
+            break
 
     if fails:
 

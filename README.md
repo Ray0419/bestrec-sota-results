@@ -72,7 +72,7 @@ campaign above is a separate pre-registration that passed under its frozen wordi
 
 ## Releases
 
-- **`v1.1.8-deposit`** (current archival bundle; each deposit release supersedes the previous) — the deposit zip + sidecar hash + manifest + both PDFs, upload verified by download-hash round trip. **The archival boundary is always the deposit tag, never branch HEAD** (post-deposit commits — audit responses and any interim fixes or hardening — sit outside the deposited snapshot by design; each new deposit cut re-synchronizes and supersedes the previous tag).
+- **`v1.1.9-deposit`** (current archival bundle; each deposit release supersedes the previous) — the deposit zip + sidecar hash + manifest + both PDFs, upload verified by download-hash round trip. **The archival boundary is always the deposit tag, never branch HEAD** (post-deposit commits — audit responses and any interim fixes or hardening — sit outside the deposited snapshot by design; each new deposit cut re-synchronizes and supersedes the previous tag).
 - **`v0.9-audit-evidence`** — immutable data assets (splits, text caches, historical result families) pinned by `RELEASE_MANIFEST.json`.
 - **`bestrec-raw-records-v1`** — the historical LC2C project's raw records (see `README_LC2C_HISTORICAL.md`).
 

@@ -6,83 +6,367 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **SILLM4Rec remains the highest live novelty/related-work risk.** The
+1. **Published `v1.1.8` deposit docs remain stale despite the source wording
+   fix.** The branch-level source now narrows the live-hourly-audit boundary,
+   but the already-published `bestrec_deposit_v1.1.8.zip` still contains
+   `README_DEPOSIT.txt` saying the bundle includes the "audit chain" and an
+   old bundled `DOI_DEPOSIT_INSTRUCTIONS.md` row saying the same. The zip also
+   omits `PAPER_REVIEW_AUDIT.md` and `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`.
+   This is a confirmed published-artifact/documentation mismatch. It does not
+   break any empirical number, but it should block using `v1.1.8` as the final
+   DOI upload unless a new cut or explicit release-note erratum is made.
+2. **The deposit README verification-chain prose is stale.** Both the
+   published `README_DEPOSIT.txt` and the current
+   `_bestrec_run/build_deposit_bundle.py` README template describe
+   `rebuild_hstu_submission.py --strict` as running MI V2 and Office V1, but
+   omit the now-counted Office V3 and FIR-breadth adjudicator gates. The
+   executable strict gate is correct; the artifact-facing instructions are not.
+   A next deposit cut will carry this defect unless the template is repaired
+   before building.
+3. **SILLM4Rec remains the highest live novelty/related-work risk.** The
    manuscript's current wording is appropriately cautious ("excluded pending
    direct full-text protocol inspection"), and the public repository supports
    the non-comparability rationale by describing generated candidate-ranking
-   tasks plus SFT/DPO training data. But ACM/search metadata says SILLM4Rec runs
-   experiments on three AR2023 5-core sub-datasets and reports NDCG@1/5/10,
-   making it too close for a top-journal novelty screen. Direct ACM full/PDF
-   access returned 403 in this audit, so before freeze either obtain the paper
-   through an institutional route or keep the exclusion explicitly
-   evidence-limited and non-final.
-2. **The v1.1.8 deposit omits the live hourly audit chain despite broad audit-chain
-   wording.** `README.md` lists `PAPER_REVIEW_AUDIT.md` /
-   `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` as the hourly adversarial audit chain,
-   while `DOI_DEPOSIT_INSTRUCTIONS.md` says the deposit bundle includes the
-   "audit chain." The actual `bestrec_deposit_v1.1.8.zip` includes selected
-   older audit/response files but not the current hourly audit/response pair.
-   This does not affect empirical recomputation, but it is a reviewer-facing
-   selectivity risk. Either bundle these two files in the next deposit cut or
-   narrow the wording to "selected historical audit documents."
-3. **Venue-template drift remains a freeze blocker.** The TeX build vendors
-   `paper_tex/acmart.cls` v2.03 (`2024/02/04`). ACM's current author page says
-   LaTeX review submissions should use the latest Primary Article Template and
-   `\documentclass[manuscript]{acmart}` for single-column review, while CTAN
-   lists production `acmart` v2.19 (`2026-06-27`). `VENUE_PLAN.md` records the
-   class refresh as pending, and the rendered TORS PDF still has visible red
-   line numbers. This is acceptable only if the target venue expects review
-   line numbers at upload.
-4. **TORS cover letter remains a maintainer-fill freeze item.** Bracketed
-   fields for preprint status, conflicts of interest, suggested/excluded
-   reviewers, and author identity remain in `COVER_LETTER_TORS.md`. This is
-   fine for a tracked draft, not for ScholarOne upload.
-5. **Office V3 and FIR-breadth per-user sidecar policy remains
+   tasks plus SFT/DPO training data. But ACM metadata says SILLM4Rec runs
+   experiments on three AR2023 5-core sub-datasets and reports NDCG@K, making
+   it too close for a top-journal novelty screen. Direct ACM full/PDF access
+   remains unavailable in this environment; before freeze, use institutional
+   access or keep the exclusion explicitly evidence-limited and non-final.
+4. **Branch drift past the current deposit tag is no longer response-only.**
+   Current HEAD `9adca7fa` is three commits past `v1.1.8-deposit`
+   (`72749c05`) and changes support/deposit files:
+   `COVER_LETTER_TORS.md`, `DOI_DEPOSIT_INSTRUCTIONS.md`,
+   `PAPER_REVIEW_AUDIT.md`, `RELEASE_MANIFEST.json`,
+   `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`, `VENUE_PLAN.md`, and
+   `_bestrec_run/build_deposit_bundle.py`. None is a manifest-scoped empirical
+   input, and the README correctly says the archival boundary is the tag, not
+   branch HEAD. Still, the previous "response-only drift" characterization is
+   now false, and the next public deposit must synchronize the support docs.
+5. **Venue-template drift remains a freeze blocker.** The TeX build vendors
+   `paper_tex/acmart.cls` v2.03 (`2024/02/04`). ACM's author page says LaTeX
+   review submissions should use the latest Primary Article Template and
+   `\documentclass[manuscript]{acmart}` for single-column review; CTAN lists
+   production `acmart` v2.19 (`2026-06-27`). `VENUE_PLAN.md` records the class
+   refresh as pending, and the TORS PDF still uses review line numbers. This is
+   acceptable only if the target venue expects review line numbers at upload.
+6. **TORS cover letter remains a maintainer-fill freeze item, with one
+   remaining ambiguity.** Bracketed fields for preprint status, conflicts of
+   interest, suggested/excluded reviewers, and author identity remain in
+   `COVER_LETTER_TORS.md`. Also, the revised data/artifacts bullet still uses
+   "complete artifact ... available in the repository and its archival deposit
+   release" near the full-audit-chain parenthetical; before upload, make the
+   repository-vs-deposit boundary unambiguous in that sentence.
+7. **Office V3 and FIR-breadth per-user sidecar policy remains
    reviewer-facing reproducibility risk.** Office V3 aggregate JSONs and
    treestate files are tracked, and final per-user sidecars are hash-embedded
    and locally present, but those sidecar archives are not in the current
-   deposit. FIR-breadth aggregate files are tracked and both categories confirm.
-   The paper's "tracked-artifact boundary is the reproducibility contract;
-   local-only sidecars are supplementary/on request" wording must stay explicit.
-6. **Related-work and novelty boundaries are still narrow and incremental.**
-   Latte, SID-MLP, GrIT, ReSID, and ChronoSID are all close AR2023/sequential
-   or semantic-ID comparators. The current manuscript mostly handles this by
-   not making broad SOTA claims, but the contribution must stay framed as a
-   tightly audited, artifact-gated HSTU/FIR evaluation apparatus plus an
-   incremental left-causal FIR regularizer, not as a broad recommender
-   architecture breakthrough.
-7. **No current hard numerical blocker in the strict empirical checks.** Fresh
-   strict rebuild passes at current HEAD `7608af24`: HSTU parity exact, `168` table
-   cells recomputed, `149` exact, `19` within-rounding, `0` mismatches, `0`
-   untraceable, all `14` declared claim families sourced, release-manifest
-   verification OK, MI V2 gate OK, Office V3 PASS, FIR breadth CONFIRMED x2.
-8. **The prior hard deposit-boundary blocker remains closed, with response-only
-   HEAD drift disclosed.** Current HEAD `7608af24` is two response/audit commits
-   past `v1.1.8-deposit` (`72749c05`), and the diff is limited to
-   `PAPER_REVIEW_AUDIT.md` and `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`.
-   `--verify-git HEAD`, `--verify-git v1.1.8-deposit`, strict rebuild, and
-   deposit-builder check-only all pass. `README.md` explicitly says the
-   archival boundary is the deposit tag, never branch HEAD. Keep this discipline:
-   any future manifested-file change must be followed by another cut or by
-   explicit branch-vs-tag wording.
-9. **Office V1/V3 prose is now mostly consistent but must stay narrow.** The
+   deposit. FIR-breadth aggregate files are tracked and both categories
+   confirm. The paper's "tracked-artifact boundary is the reproducibility
+   contract; local-only sidecars are supplementary/on request" wording must
+   stay explicit.
+8. **Related-work and novelty boundaries are still narrow and incremental.**
+   Latte, SID-MLP, GrIT, ReSID, ChronoSID, Augment-or-Not, DiffuReason, and
+   SILLM4Rec are all close AR2023/sequential, LLM-rec, or semantic-ID
+   neighbors. The current manuscript mostly handles this by not making broad
+   SOTA claims, but the contribution must stay framed as a tightly audited,
+   artifact-gated HSTU/FIR evaluation apparatus plus an incremental
+   left-causal FIR regularizer, not as a broad recommender architecture
+   breakthrough.
+9. **No current hard numerical blocker in the strict empirical checks.** Fresh
+   strict rebuild passes at current HEAD `9adca7fa`: HSTU parity exact, `168`
+   table cells recomputed, `149` exact, `19` within-rounding, `0` mismatches,
+   `0` untraceable, all `14` declared claim families sourced,
+   release-manifest verification OK, MI V2 gate OK, Office V3 PASS, FIR
+   breadth CONFIRMED x2, Office V1 descriptive/VOID.
+10. **Office V1/V3 prose is now mostly consistent but must stay narrow.** The
    manuscript distinguishes V1 VOID/descriptive from redesigned V3 PASSED and
    counted. The supported wording remains only per-category point-estimate
    comparison against single-run comparator values; no paired superiority,
    distributional superiority, Office SOTA, AR2023 SOTA, or general SOTA.
-10. **FIR-breadth evidence is mechanically green but claim boundaries must stay
+11. **FIR-breadth evidence is mechanically green but claim boundaries must stay
    narrow.** Fresh adjudication confirms only the internal paired
    filter-vs-no-filter claim: Industrial_and_Scientific mean `+0.00240`, 95%
    CI `[+0.00183,+0.00297]`, `5/5` positive; CDs_and_Vinyl mean `+0.00566`,
    95% CI `[+0.00493,+0.00639]`, `5/5` positive. No external comparator,
    SOTA, or broader generalization claim is supported by this gate.
-11. **PDF presentation is legible but still not freeze-polished.** `PAPER_TORS.pdf`
-   is 40 pages; `PAPER_TORS_acmsmall.pdf` is 42 pages; `PAPER_SUBMISSION.pdf`
-   is 46 pages. Text extraction found no stale Office pending/no-claim phrases
-   and no TODO/TBD placeholders. Visual samples were legible, but TORS still
-   shows red line numbers and the reader PDF ends with a nearly blank final
-   page. Treat this as cosmetic unless the upload target forbids line numbers
-   or the reader PDF is used as a deliverable.
+12. **PDF presentation is legible but still not freeze-polished.**
+   `PAPER_TORS.pdf` is 40 pages; `PAPER_TORS_acmsmall.pdf` is 42 pages;
+   `PAPER_SUBMISSION.pdf` is 46 pages. Text extraction found no stale Office
+   pending/no-claim phrases and no TODO/TBD placeholders. Treat line numbers as
+   an upload-policy decision and the reader PDF's nearly blank final page as
+   cosmetic unless that PDF becomes the deliverable.
+
+## Audit Run - 2026-07-19 08:32 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Automation memory read from
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `9adca7fa`
+  (`Respond to audit run 2026-07-19 06:27 (audit-chain wording made literal;
+  403 attempts recorded)`).
+- Current deposit tag: `v1.1.8-deposit` / `72749c05`.
+- Diff from `v1.1.8-deposit` to HEAD:
+  `COVER_LETTER_TORS.md`, `DOI_DEPOSIT_INSTRUCTIONS.md`,
+  `PAPER_REVIEW_AUDIT.md`, `RELEASE_MANIFEST.json`,
+  `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`, `VENUE_PLAN.md`, and
+  `_bestrec_run/build_deposit_bundle.py`.
+- Working tree before this audit edit: no tracked modifications. Known
+  untracked files remain `_bestrec_run/impact_program.DONE`,
+  `_bestrec_run/smoke_FIRB_IS_seed1.json`,
+  `data_raw_proper/cds_vinyl/CDs_and_Vinyl.csv.gz`, and
+  `data_raw_proper/industrial_sci/Industrial_and_Scientific.csv.gz`.
+- Canonical manuscript/artifacts inspected: `PAPER_SUBMISSION.md`,
+  `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, `paper_tex/sections/*`,
+  `paper_tex/acmart.cls`, `paper_tex/hygiene_scan_output.txt`, `README.md`,
+  `CANONICAL_SUBMISSION.md`, `DOI_DEPOSIT_INSTRUCTIONS.md`,
+  `COVER_LETTER_TORS.md`, `VENUE_PLAN.md`, `RELEASE_MANIFEST.json`,
+  `_bestrec_run/rebuild_hstu_submission.py`,
+  `_bestrec_run/update_release_manifest.py`,
+  `_bestrec_run/build_deposit_bundle.py`, and the local/released
+  `_release/bestrec_deposit_v1.1.8.zip`.
+- This run edited only `PAPER_REVIEW_AUDIT.md` and the automation memory
+  outside the workspace.
+
+### Verdict
+
+No empirical rejection blocker was found. The current strict gate passes at
+HEAD, including the counted Office V3 and FIR-breadth adjudicators, and
+manifest verification passes against both HEAD and the `v1.1.8-deposit` tag.
+The manuscript PDFs remain clean of stale Office-pending/no-claim phrases and
+TODO/TBD placeholders.
+
+The new confirmed rejection risk is deposit-documentation drift. The response
+to the 06:27 audit narrowed source wording and chose not to re-bundle the live
+hourly audit pair, but the already-published `v1.1.8` zip still carries the old
+internal README/DOI text. A reviewer using the actual DOI upload candidate sees
+the bundle claim "audit chain" while the live hourly audit/response pair is not
+inside the zip. The same internal README also describes the strict verification
+chain without the counted Office V3 and FIR-breadth adjudicator gates, although
+the executable gate does run them. This is not a result failure; it is an
+artifact-readiness failure.
+
+My top-journal recommendation: do not use `bestrec_deposit_v1.1.8.zip` as the
+final DOI artifact without either a new deposit cut (`v1.1.9`) or an explicit
+release-note erratum that tells reviewers to rely on the repository/tag for the
+live audit pair and on the current source README/CANONICAL for the strict-chain
+description.
+
+### Commands And Evidence Checked
+
+- `Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzz'`
+  - Run time: `2026-07-19 08:32:09 +10:00`.
+- `git status --short`; `git log --oneline --decorate -8`;
+  `git diff --name-status v1.1.8-deposit..HEAD`
+  - Current HEAD: `9adca7fa`.
+  - Current deposit tag: `v1.1.8-deposit` at `72749c05`.
+  - No tracked working-tree changes before this audit edit.
+  - Post-tag diff contains the seven support/audit files listed above, not
+    only audit/response files.
+- `uv --project _bestrec_run run python _bestrec_run\rebuild_hstu_submission.py --strict`
+  - PASS.
+  - HSTU parity exact (`0.000e+00` max diff).
+  - `168` cells recomputed; `149` exact; `19` within-rounding; `0`
+    mismatches; `0` untraceable; all `14` declared claim families sourced.
+  - Release-manifest verification OK.
+  - MI V2 gate OK.
+  - Counted Office V3 adjudication OK (`CAMPAIGN VERDICT: PASS`).
+  - Counted FIR-breadth adjudication OK (`Industrial_and_Scientific:
+    CONFIRMED`, `CDs_and_Vinyl: CONFIRMED`).
+  - Office V1 adjudication remains descriptive/VOID.
+- `uv --project _bestrec_run run python _bestrec_run\update_release_manifest.py --verify-git HEAD`
+  - PASS: `128` git-backed entries match HEAD blobs exactly.
+- `uv --project _bestrec_run run python _bestrec_run\update_release_manifest.py --verify-git v1.1.8-deposit`
+  - PASS: `128` git-backed entries match the tag blobs exactly.
+- `uv --project _bestrec_run run python _bestrec_run\build_deposit_bundle.py --check-only`
+  - PASS in rebuild mode; no bundle written.
+  - Important limitation: this check does not prove that the already-published
+    zip contains the post-tag source wording.
+- Structured manifest-scope check over the seven post-tag changed files
+  - None of the seven files changed since `v1.1.8-deposit` is a structured
+    `RELEASE_MANIFEST.json` entry. This explains why manifest verification is
+    green while branch/deposit support-doc drift still exists.
+- `Get-FileHash _release/bestrec_deposit_v1.1.8.zip`;
+  `gh release view v1.1.8-deposit --repo Ray0419/bestrec-sota-results --json ...`
+  - Local zip SHA256:
+    `95a85d3e80af4937932ec71af59faf51e23fa19899fd0f9c71638c849e1c057a`.
+  - GitHub release asset digest is the same.
+  - Release published `2026-07-18T18:30:43Z`; assets include the zip, sidecar,
+    `PAPER_SUBMISSION.pdf`, `PAPER_TORS.pdf`, and `RELEASE_MANIFEST.json`.
+- Zip content inspection of `_release/bestrec_deposit_v1.1.8.zip`
+  - Includes `README_DEPOSIT.txt`, `DOI_DEPOSIT_INSTRUCTIONS.md`, `README.md`,
+    `RELEASE_MANIFEST.json`, `VENUE_PLAN.md`,
+    `_bestrec_run/adjudicate_office_v3.py`,
+    `_bestrec_run/adjudicate_fir_breadth.py`, and
+    `_bestrec_run/update_release_manifest.py`.
+  - Does not include `PAPER_REVIEW_AUDIT.md` or
+    `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`.
+  - Bundled `DOI_DEPOSIT_INSTRUCTIONS.md` still says the deposit bundle
+    includes the "audit chain."
+  - Bundled `README_DEPOSIT.txt` still says the bundle contains "audit chain."
+  - Bundled `README_DEPOSIT.txt`'s verification-chain prose names MI V2 and
+    Office V1 but omits counted Office V3 and FIR-breadth adjudicators.
+- Source text inspection
+  - Current `README.md` and `CANONICAL_SUBMISSION.md` correctly describe the
+    strict chain including Office V3 and FIR-breadth gates.
+  - Current `_bestrec_run/build_deposit_bundle.py` README template still omits
+    those two counted adjudicator gates.
+  - Current `DOI_DEPOSIT_INSTRUCTIONS.md` narrows the bundle wording to "core
+    historical audit documents" and states the live hourly audit chain is
+    git-tracked rather than re-bundled per cut.
+- PDF text/page check with project Python and `pypdf`
+  - `paper_tex/PAPER_TORS.pdf`: 40 pages; no TODO/TBD; no stale Office
+    pending/no-claim phrases; 2 SILLM4Rec mentions.
+  - `paper_tex/PAPER_TORS_acmsmall.pdf`: 42 pages; same clean stale-phrase and
+    placeholder result; 2 SILLM4Rec mentions.
+  - `PAPER_SUBMISSION.pdf`: 46 pages; same clean stale-phrase and placeholder
+    result; 1 SILLM4Rec mention.
+- `paper_tex/hygiene_scan_output.txt`
+  - PASS on `PAPER_TORS.pdf`, 40 pages, 0 placeholder/forbidden-claim
+    failures, 20 informational SOTA/negated-claim review hits.
+- `Select-String paper_tex/acmart.cls`
+  - Local vendored class is `2024/02/04 v2.03`.
+
+### External Fact-Check / Novelty Notes
+
+- HSTU-BLaIR remains the right external point-estimate comparator for the
+  manuscript's two counted category claims. Its arXiv/GitHub materials evaluate
+  Video Games, Office Products, and Musical Instruments AR2023 subsets and list
+  HSTU-BLaIR NDCG@10 values `0.0760`, `0.0271`, and `0.0406`. Sources:
+  https://arxiv.org/html/2504.10545v3 and
+  https://github.com/snapfinger/HSTU-BLaIR
+- Amazon Reviews 2023's official site confirms the dataset's scale, 2023
+  collection, rich review/metadata/link fields, and standard splitting. This
+  supports only the manuscript's high-level dataset framing, not any
+  paper-specific preprocessing claim. Source:
+  https://amazon-reviews-2023.github.io/
+- SILLM4Rec remains close enough to require caution. ACM metadata says the work
+  uses three AR2023 5-core sub-datasets and NDCG@K metrics; the public
+  repository describes image-description generation, user preference summaries,
+  candidate-product ranking tasks, and SFT/DPO training data. This supports a
+  non-comparability rationale but is not a substitute for direct full-text
+  protocol inspection. Sources:
+  https://dl.acm.org/doi/10.1145/3743093.3771011 and
+  https://github.com/MKC-Lab/SILLM4Rec
+- ACM's author page says LaTeX review manuscripts should use the latest Primary
+  Article Template with `\documentclass[manuscript]{acmart}` for single-column
+  review; CTAN lists `acmart` v2.19 dated 2026-06-27. Sources:
+  https://www.acm.org/publications/authors/submissions and
+  https://ctan.org/pkg/acmart?lang=en
+- Recent related work remains dense around the paper's claimed territory:
+  Latte (arXiv:2605.06331) modifies semantic-ID generation and reports NDCG@10
+  gains; SID-MLP (arXiv:2605.12617) is a distilled generative recommender;
+  GrIT (arXiv:2602.19728) claims sequential-rec improvements; ChronoSID
+  (arXiv:2607.03918) adds temporal gap tokens to semantic-ID recommendation;
+  Augment-or-Not (arXiv:2505.23053) benchmarks LLM recommenders; DiffuReason
+  (arXiv:2602.09744) targets sequential recommendation with latent reasoning
+  and refinement. The manuscript's cautious no-SOTA framing is still necessary.
+  Sources: https://arxiv.org/abs/2605.06331,
+  https://arxiv.org/abs/2605.12617, https://arxiv.org/abs/2602.19728,
+  https://arxiv.org/abs/2607.03918, https://arxiv.org/abs/2505.23053,
+  https://arxiv.org/abs/2602.09744
+
+### Confirmed Problems
+
+1. **The actual `v1.1.8` zip still has broad audit-chain wording.** Source
+   docs were narrowed after the cut, but the published zip is byte-identical to
+   the GitHub asset and still contains the old internal README/DOI wording.
+   If uploaded to Zenodo as-is, a reviewer can reasonably ask why the live
+   hourly audit pair is missing from a bundle that says it contains the audit
+   chain.
+2. **The actual `v1.1.8` zip's verification README under-describes the strict
+   gate.** It omits the counted Office V3 and FIR-breadth adjudicator checks.
+   The executable script is correct; the artifact-facing text is stale.
+3. **The current bundle-builder README template still under-describes the
+   strict gate.** A future `v1.1.9` cut would repeat problem 2 unless
+   `_bestrec_run/build_deposit_bundle.py` is updated before building.
+4. **The top risk list and prior memory understated HEAD drift.** HEAD is no
+   longer only audit/response commits past the tag. It has support-doc and
+   builder-template changes that are not present in the current deposit.
+5. **SILLM4Rec full-text protocol inspection remains missing.** The current
+   manuscript wording is caveated and defensible, but the full-text gap is a
+   real novelty-screen weakness.
+6. **ACM template/class drift, cover-letter placeholders, and line-number
+   policy remain freeze blockers.**
+
+### Confirmed Non-Problems
+
+- The strict empirical gate remains green at current HEAD, including counted
+  Office V3 and FIR-breadth live adjudicators.
+- Manifest verification passes against both HEAD and `v1.1.8-deposit`.
+- The paper PDFs contain no TODO/TBD placeholders and no stale Office
+  pending/no-claim phrases.
+- Current source `README.md`, `CANONICAL_SUBMISSION.md`, and
+  `DOI_DEPOSIT_INSTRUCTIONS.md` are directionally correct about the strict
+  chain and live-audit boundary; the defect is that the published zip and
+  builder README template lag behind.
+- HSTU-BLaIR comparator constants remain externally supported by primary
+  comparator materials.
+
+### Concrete Fixes To Make Next
+
+1. Patch `_bestrec_run/build_deposit_bundle.py`'s `README` text so the canonical
+   verification command says, in order: HSTU parity, strict table build,
+   release-manifest verification, MI V2, counted Office V3 PASS, counted
+   FIR-breadth CONFIRMED x2, Office V1 descriptive/VOID.
+2. Add a bundle-content linter/check to prevent this recurrence:
+   - generated or zipped `README_DEPOSIT.txt` must not contain bare "audit
+     chain" without the "core historical / live hourly chain is git-tracked"
+     qualifier;
+   - generated or zipped `README_DEPOSIT.txt` must mention Office V3 and
+     FIR-breadth in the strict verification-chain paragraph.
+3. Cut a new `v1.1.9-deposit` if the artifact is going to DOI/Zenodo:
+   bump version first, regenerate any necessary metadata, build, inspect the
+   actual zip contents, verify the GitHub asset digest, and record the new tag.
+4. If a new cut is intentionally deferred, add a release-note erratum or DOI
+   instruction warning that `v1.1.8`'s internal README/DOI wording is stale and
+   that branch source contains the corrected deposit-boundary language.
+5. Inspect SILLM4Rec through institutional ACM access or keep the manuscript's
+   exclusion explicitly marked as public-repo-evidence-only.
+6. Resolve ACM class version and line-number policy at TORS freeze; update
+   `acmart.cls` or document the portal-specific reason for retaining v2.03.
+7. Fill all `COVER_LETTER_TORS.md` maintainer placeholders before upload and
+   make its repository-vs-deposit sentence unambiguous.
+
+### Open Questions
+
+- Should `v1.1.9-deposit` be cut immediately for documentation hygiene, or only
+  at the final DOI/submission freeze?
+- Should the live hourly audit pair remain repository-only, or should future
+  DOI bundles include a frozen copy despite the staleness risk?
+- Should the release manifest expand to cover bundled support docs and the
+  bundle builder itself, or is zip-level `SHA256SUMS.txt` plus git-tag scope the
+  intended contract?
+- Can SILLM4Rec full text be obtained before freeze?
+- Does the final TORS upload require review line numbers, or should the upload
+  PDF remove them while preserving double anonymity?
+
+### Running Checklist
+
+- [x] Read automation memory from the fallback Codex home path.
+- [x] Located canonical manuscript, TeX, PDFs, release docs, manifest, builder,
+      audit/response files, and local deposit zip.
+- [x] Compared current HEAD against `v1.1.8-deposit`.
+- [x] Re-ran strict empirical gate at current HEAD.
+- [x] Verified release manifest against HEAD and `v1.1.8-deposit`.
+- [x] Ran deposit-builder check-only.
+- [x] Inspected actual published/local `v1.1.8` zip contents and internal
+      README/DOI text.
+- [x] Checked which post-tag changed files are manifest-scoped.
+- [x] Checked PDF page counts and stale-phrase/placeholder extraction.
+- [x] Checked local `acmart.cls` version and hygiene scan.
+- [x] Fact-checked active novelty/template risks against HSTU-BLaIR,
+      SILLM4Rec, AR2023, ACM, CTAN, and recent arXiv neighbors.
+- [x] Updated the current prioritized rejection-risk list.
+- [x] Prepended this timestamped audit section.
+- [ ] Patch bundle README verification-chain prose.
+- [ ] Add a bundle-content linter for audit-chain and strict-chain wording.
+- [ ] Decide whether to cut `v1.1.9-deposit` before DOI/submission.
+- [ ] Inspect SILLM4Rec full text.
+- [ ] Resolve ACM template/version and line-number decisions.
+- [ ] Fill TORS cover-letter placeholders.
 
 ## Audit Run - 2026-07-19 06:27 Australia/Sydney
 

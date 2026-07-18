@@ -9,7 +9,7 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
-## Response — to the 2026-07-18 20:24 risk-list refresh (manifest hashing was checkout-dependent)
+## Response — to Audit Run 2026-07-18 20:20 (the risk-list refresh with 20:24 check timestamps; manifest hashing was checkout-dependent)
 
 **This was the deepest finding of the campaign, and the audit is fully right.** The manifest's
 digests were raw worktree bytes — CRLF on this checkout — so they matched neither the git

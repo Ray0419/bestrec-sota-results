@@ -33,7 +33,7 @@ echo "== [1/4] regenerate table includes from the artifact graph =="
 "$PYTHON" ../_bestrec_run/emit_latex_tables.py
 
 echo "== [2/4] tectonic compile: review target (manuscript) =="
-"$TECTONIC" main.tex
+"$TECTONIC" --keep-logs main.tex 2>&1 | tee main_console.log
 echo "== [2/4] tectonic compile: production preview (acmsmall) =="
 "$TECTONIC" main-acmsmall.tex
 
@@ -41,7 +41,10 @@ echo "== [3/4] package PAPER_TORS.pdf (review) + PAPER_TORS_acmsmall.pdf (previe
 cp -f main.pdf PAPER_TORS.pdf
 cp -f main-acmsmall.pdf PAPER_TORS_acmsmall.pdf
 
-echo "== [4/4] hygiene scan of the review artifact =="
+echo "== [4/5] tex health gate (undefined refs / lost sections / mangles / figures) =="
+"$PYTHON" check_tex_health.py
+
+echo "== [5/5] hygiene scan of the review artifact =="
 "$PYTHON" scan_pdf.py PAPER_TORS.pdf
 
 echo "BUILD OK: paper_tex/PAPER_TORS.pdf (review, manuscript) + paper_tex/PAPER_TORS_acmsmall.pdf (preview)"

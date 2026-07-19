@@ -70,6 +70,18 @@ for pat in NEGATABLE:
         else:
             failures.append(("forbidden-claim (no negation context): " + pat, ctx(norm, m)))
 
+# ---- 2b. retracted-claim negative-presence sweep (2026-07-19; audits 17:56/18:53/19:56) --
+RETRACTED_PATS = [
+    r"powered\s+null", r"statistically\s+equivalent\s+to\s+zero", r"TOST-equivalent",
+    r"no\s+representation-side\s+lever", r"spectrally\s+irreducible",
+    r"binding\s+tail\s+resource", r"connectivity\s+binds", r"tail\s+law",
+    r"causal\s+decomposition", r"bitwise-exact", r"first\s+widely-cited",
+    r"\(R2\)\s+alone", r"whole\s+double[- ]dissociation",
+]
+for pat in RETRACTED_PATS:
+    for m in re.finditer(pat, norm, re.I):
+        failures.append(("retracted-claim: " + pat, ctx(norm, m)))
+
 # ---- 3. SOTA / state-of-the-art sweep (flag + list, manual review; never hard-fail) -
 for m in re.finditer(r"state[-\s]of[-\s]the[-\s]art|\bSOTA\b", norm, re.I):
     review.append(("SOTA-mention", ctx(norm, m)))

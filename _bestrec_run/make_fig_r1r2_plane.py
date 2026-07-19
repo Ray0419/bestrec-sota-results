@@ -10,7 +10,7 @@ This typesets the matched-R1 double dissociation (PAPER_DRAFT.md sections 5.4.1 
 5.4.2) in its native 2-D form. The two resource axes:
   R1 = interactions / item  (interaction COUNT / global density)
   R2 = users / item         (collaborative CONNECTIVITY)
-The plane makes the load-bearing causal point visual: thinning VG along R1 to MI's
+The plane renders the descriptive contrast visually: thinning VG along R1 to MI's
 exact density (interaction-mode rho=0.66) keeps the tail a NULL, but thinning VG
 along R2 to MI's connectivity (user-mode rho_user=0.66) at the SAME R1 flips the
 tail POSITIVE -- so the binding tail resource is connectivity (R2), not count (R1).
@@ -64,7 +64,7 @@ PTS = [
 
 fig, ax = plt.subplots(figsize=(8.2, 6.4))
 
-# ---- shaded connectivity bands (R2 axis is the binding tail resource) --------
+# ---- shaded connectivity bands (R2 is the targeted axis; descriptive) --------
 ax.axhspan(2.0, 2.55, color=C_WIN, alpha=0.07, zorder=0)
 ax.axhspan(3.30, 3.95, color=C_NULL, alpha=0.07, zorder=0)
 ax.text(27.6, 2.40, "low connectivity\n(R2 $\\lesssim$ 2.5)\n$\\Rightarrow$ text WINS tail",
@@ -102,8 +102,8 @@ for lbl, r1, r2, ratio, dlt, pf, col, mk in PTS:
 
 ax.set_xlabel("R1 = interactions / item  (count / global density)  $\\rightarrow$ denser")
 ax.set_ylabel("R2 = users / item  (collaborative connectivity)  $\\rightarrow$ more connected")
-ax.set_title("The (R1, R2) resource plane: connectivity (R2), not count (R1),\n"
-             "binds the long-tail text advantage")
+ax.set_title("The (R1, R2) resource plane: the user-thinned (R2) point crosses;\n"
+             "the count-thinned (R1) point does not (descriptive contrast)")
 ax.set_xlim(13.5, 28.0)
 ax.set_ylim(2.05, 3.95)
 ax.grid(alpha=0.3)
@@ -114,7 +114,7 @@ leg = [
     Line2D([0], [0], marker="o", color="w", markerfacecolor=C_WIN,
            markeredgecolor="black", markersize=11, label="tail text-WIN (CI excl 0 / sign 5/5)"),
     Line2D([0], [0], marker="o", color="w", markerfacecolor=C_NULL,
-           markeredgecolor="black", markersize=11, label="tail NULL (powered)"),
+           markeredgecolor="black", markersize=11, label="tail null (no significant difference)"),
     Line2D([0], [0], color=C_INT, lw=2.2, label="interaction-thin (R1$\\downarrow$): tail-inert"),
     Line2D([0], [0], color=C_USR, lw=2.2, label="user-thin (R2$\\downarrow$): tail-binding"),
 ]

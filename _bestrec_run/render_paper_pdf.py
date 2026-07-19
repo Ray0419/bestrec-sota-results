@@ -59,7 +59,15 @@ rd = PdfReader(PDF)
 text = "\n".join((pg.extract_text() or "") for pg in rd.pages)
 pats = [r"\bTODO\b", r"\bTBD\b", r"\bFIXME\b", r"\bXXX\b", r"PLACEHOLDER",
         r"lorem", r"\(v3\.\d\)", r"\[TK", r"\?\?\?", r"\bDEAD\b", r"\bkilled\b",
-        r"0\.0100"]
+        r"0\.0100",
+        # retracted-claim negative-presence sweep (audits 2026-07-19 17:56 CP-2 /
+        # 18:53 CP-1 / 19:56 P1+P3): fail if any retracted claim-form resurfaces.
+        r"(?i)powered\s+null", r"(?i)statistically\s+equivalent\s+to\s+zero",
+        r"(?i)TOST-equivalent", r"(?i)no\s+representation-side\s+lever",
+        r"(?i)spectrally\s+irreducible", r"(?i)binding\s+tail\s+resource",
+        r"(?i)connectivity\s+binds", r"(?i)tail\s+law", r"(?i)causal\s+decomposition",
+        r"(?i)bitwise-exact", r"(?i)first\s+widely-cited", r"(?i)\(R2\)\s+alone",
+        r"(?i)whole\s+double[- ]dissociation"]
 hits = []
 for p in pats:
     for m in re.finditer(p, text, re.I if p in (r"lorem", r"PLACEHOLDER") else 0):

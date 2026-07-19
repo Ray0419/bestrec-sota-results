@@ -305,6 +305,37 @@ def rule_welch(p):
     df = (va + vb) ** 2 / (va ** 2 / (len(da) - 1) + vb ** 2 / (len(db) - 1))
     return {"diff": ma - mb, "t": t, "df": df, "p": t_two_sided_p(t, df)}
 
+def rule_welch_2arm(p):
+    m = p.get("metric", "NDCG@10")
+    xa = [pop(f, p["stratum"], m) for f in p["a"]]
+    xb = [pop(f, p["stratum"], m) for f in p["b"]]
+    ma, mb = mean(xa), mean(xb)
+    va, vb = sstd(xa) ** 2 / len(xa), sstd(xb) ** 2 / len(xb)
+    se = math.sqrt(va + vb)
+    t = (ma - mb) / se
+    df = (va + vb) ** 2 / (va ** 2 / (len(xa) - 1) + vb ** 2 / (len(xb) - 1))
+    tc95, tc90 = t_ppf(0.975, df), t_ppf(0.95, df)
+    return {"diff": ma - mb, "t": t, "df": df, "p": t_two_sided_p(t, df),
+            "ci95_lo": ma - mb - tc95 * se, "ci95_hi": ma - mb + tc95 * se,
+            "ci90_lo": ma - mb - tc90 * se, "ci90_hi": ma - mb + tc90 * se,
+            "n_units": float(min(len(xa), len(xb)))}
+
+def rule_welch_4arm(p):
+    m = p.get("metric", "NDCG@10")
+    groups = [[pop(f, p["stratum"], m) for f in p[k]]
+              for k in ("a_text", "a_id", "b_text", "b_id")]
+    signs = (1.0, -1.0, -1.0, 1.0)
+    est = sum(sg * mean(g) for sg, g in zip(signs, groups))
+    comp = [sstd(g) ** 2 / len(g) for g in groups]
+    varsum = sum(comp)
+    t = est / math.sqrt(varsum)
+    df = varsum ** 2 / sum(v ** 2 / (len(g) - 1) for v, g in zip(comp, groups))
+    tc = t_ppf(0.975, df)
+    se = math.sqrt(varsum)
+    return {"est": est, "t": t, "df": df, "p": t_two_sided_p(t, df),
+            "ci_lo": est - tc * se, "ci_hi": est + tc * se,
+            "n_units": float(min(len(g) for g in groups))}
+
 def rule_mde_paired(p):
     m = p.get("metric", "NDCG@10")
     d = [pop(a, p["stratum"], m) - pop(b, p["stratum"], m)
@@ -387,7 +418,8 @@ def rule_log_scan(p):
                 vals.append(float(mt.group(1)))
     if not vals:
         raise ValueError(f"regex {p['regex']!r} matched nothing")
-    return {"mean": mean(vals), "min": min(vals), "max": max(vals),
+    return {"n_units": float(len(vals)),
+            "mean": mean(vals), "min": min(vals), "max": max(vals),
             "n": float(len(vals))}
 
 def rule_sign_test(p):
@@ -626,6 +658,8 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "pop_single": "single run by_popularity[stratum][{m}]",
         "dd_paired": "per-seed ((a_text-a_id) - (b_text-b_id)) on by_popularity[stratum][{m}]; mean/sd/t/CI",
         "welch": "Welch two-sample t on per-seed paired tail deltas (a vs b)",
+        "welch_2arm": "independent-arm Welch t/df/p + 90/95% CIs on per-arm by_popularity[stratum][{m}] (a vs b)",
+        "welch_4arm": "four-group Welch-Satterthwaite contrast (a_text-a_id)-(b_text-b_id) on by_popularity[stratum][{m}]",
         "mde_paired": "(t_{0.95,n-1}+t_{0.80,n-1}) * sd/sqrt(n) of per-seed paired deltas",
         "tost_ci90": "90% CI of per-seed paired deltas vs equivalence margin",
         "ci_lower": "mean - t_{0.975,n-1} * sd/sqrt(n) of best_test[{m}]",
@@ -963,21 +997,48 @@ def build_spec():
 
     # ---------------- Table 1d: text-vs-ID tail contrast ----------------
     C.append(cell("t1d.mi.tail", "table1d", "Musical_Instruments (sparse)",
-                  "tail delta NDCG@10 (paired, 5-seed)", MIT_T + MIT_I, "pop_paired_delta",
+                  "tail delta NDCG@10 (same-seed-number, 5-seed; descriptive)",
+                  MIT_T + MIT_I, "pop_paired_delta",
                   {"a": MIT_T, "b": MIT_I, "stratum": "tail",
                    "expect_n_eval": NEVAL_MI, "expect_n": TAILN_MI},
                   [chk("mean", 0.000335, 6), chk("sd", 0.000195, 6),
-                   chk("pos", 5, mode="count"), chk("ci_lo", 0.00009, 5),
-                   chk("ci_hi", 0.00058, 5), chk("ci_lo", 0.0, mode="gt")],
-                  5, conf, seeds=S0812))
+                   chk("pos", 5, mode="count")],
+                  5, conf, seeds=S0812,
+                  notes="Arms are NOT initialization-paired (S5.3 randomization disclosure, "
+                        "2026-07-19); the same-seed-number delta stats are descriptive and "
+                        "the inferential CI now comes from t1d.mi.welch."))
+    C.append(cell("t1d.mi.welch", "table1d", "MI tail: independent-arm Welch",
+                  "Welch t/p + 95% CI (text vs id per-arm tail values)",
+                  MIT_T + MIT_I, "welch_2arm",
+                  {"a": MIT_T, "b": MIT_I, "stratum": "tail"},
+                  [chk("diff", 0.000335, 6), chk("t", 3.94, 2),
+                   chk("p", 0.014, mode="approx", tol=0.002),
+                   chk("ci95_lo", 0.000109, 6), chk("ci95_hi", 0.000562, 6),
+                   chk("ci95_lo", 0.0, mode="gt")],
+                  5, conf, seeds=S0812,
+                  notes="The conservative independent-arm analysis of the MI tail win "
+                        "(added 2026-07-19 with the pairing retraction)."))
+    C.append(cell("t1d.vg.welch", "table1d", "VG tail: independent-arm Welch",
+                  "Welch p + 90% CI (equivalence NOT established at the retracted margin)",
+                  TEXT5 + IDONLY5, "welch_2arm",
+                  {"a": TEXT5, "b": IDONLY5, "stratum": "tail"},
+                  [chk("diff", -0.000148, 6),
+                   chk("p", 0.22, mode="approx", tol=0.02),
+                   chk("ci90_lo", -0.000360, 6), chk("ci90_hi", 0.000063, 6)],
+                  5, conf, seeds=S0812,
+                  notes="90% CI [-0.000360,+0.000063] is NOT contained in the retracted "
+                        "data-derived margin +-0.000335 -> no equivalence claim survives "
+                        "(2026-07-19 retraction, S5.3)."))
     C.append(cell("t1d.vg.tail", "table1d", "Video_Games (dense)",
-                  "tail delta NDCG@10 (paired, 5-seed)", TEXT5 + IDONLY5, "pop_paired_delta",
+                  "tail delta NDCG@10 (same-seed-number, 5-seed; descriptive)",
+                  TEXT5 + IDONLY5, "pop_paired_delta",
                   {"a": TEXT5, "b": IDONLY5, "stratum": "tail",
                    "expect_n_eval": NEVAL_VG, "expect_n": TAILN_VG},
                   [chk("mean", -0.000148, 6), chk("sd", 0.000179, 6),
                    chk("pos", 2, mode="count")], 5, conf, seeds=S0812))
     C.append(cell("t1d.beauty.tail", "table1d", "Beauty_and_PC (dense)",
-                  "tail delta NDCG@10 (paired, 3-seed)", BT_T + BT_I, "pop_paired_delta",
+                  "tail delta NDCG@10 (same-seed-number, 3-seed; exploratory)",
+                  BT_T + BT_I, "pop_paired_delta",
                   {"a": BT_T, "b": BT_I, "stratum": "tail", "expect_n": TAILN_B},
                   [chk("mean", -0.0000078, 7), chk("sd", 0.000020, 6),
                    chk("pos", 1, mode="count")], 3, expl, seeds=["20260608", "20260609", "20260610"],
@@ -985,9 +1046,10 @@ def build_spec():
                         "(n_eval=729,576) both arms; seed09 pair is stratified-eval (212,245) both "
                         "arms; seed10 pairs a stratified TEXT run against a full-eval ID run. The "
                         "tail bucket (n=71,522) is identical across all six files, so the tail "
-                        "contrast is bucket-consistent, but the seed10 pair is not user-set-matched."))
+                        "contrast is bucket-consistent, but the seed10 pair is not user-set-matched. "
+                        "Never equivalence-tested (no MDE/TOST nodes); exploratory only (S5.3)."))
     C.append(cell("t1d.mi.tail_hr", "table1d", "MI tail replication on HR@10",
-                  "tail delta HR@10 (paired, 5-seed)", MIT_T + MIT_I, "pop_paired_delta",
+                  "tail delta HR@10 (same-seed-number, 5-seed)", MIT_T + MIT_I, "pop_paired_delta",
                   {"a": MIT_T, "b": MIT_I, "stratum": "tail", "metric": "HR@10",
                    "expect_n_eval": NEVAL_MI, "expect_n": TAILN_MI},
                   [chk("mean", 0.00109, 5), chk("sd", 0.00065, 5), chk("pos", 5, mode="count")],
@@ -1005,22 +1067,26 @@ def build_spec():
                    "expect_n_eval": NEVAL_MI},
                   [chk("mean", 0.00527, 5)], 5, conf))
     C.append(cell("t1d.welch", "table1d", "cross-dataset difference MI - VG",
-                  "Welch t on per-seed tail deltas", MIT_T + MIT_I + TEXT5 + IDONLY5, "welch",
+                  "four-arm Welch-Satterthwaite contrast (independence-style; corrected 2026-07-19)",
+                  MIT_T + MIT_I + TEXT5 + IDONLY5, "welch_4arm",
                   {"a_text": MIT_T, "a_id": MIT_I, "b_text": TEXT5, "b_id": IDONLY5,
                    "stratum": "tail"},
-                  [chk("diff", 0.000484, 6), chk("t", 4.09, 2),
-                   chk("p", 0.004, mode="approx", tol=0.001)], 5, conf))
-    C.append(cell("t1d.vg.mde", "table1d", "VG powered-null minimum detectable effect",
-                  "MDE (paired t, 80% power, one-sided alpha 0.05, n=5)",
-                  TEXT5 + IDONLY5, "mde_paired",
-                  {"a": TEXT5, "b": IDONLY5, "stratum": "tail"},
-                  [chk("mde", 0.000246, 6), chk("mde", 0.000335, mode="lt")], 5, conf,
-                  notes="Gate: MDE < MI's native effect 0.000335 (the 'powered null' claim)."))
-    C.append(cell("t1d.vg.tost", "table1d", "VG TOST equivalence vs MI margin",
-                  "90% CI of paired tail delta", TEXT5 + IDONLY5, "tost_ci90",
-                  {"a": TEXT5, "b": IDONLY5, "stratum": "tail", "margin": 0.000335},
-                  [chk("lo", -0.000319, 6), chk("hi", 0.000023, 6),
-                   chk("equivalent", 1, mode="count")], 5, conf))
+                  [chk("est", 0.000484, 6), chk("t", 3.51, 2),
+                   chk("p", 0.0054, mode="approx", tol=0.001)], 5, conf,
+                  notes="Replaces the per-seed-delta Welch (t=4.09) whose units were the "
+                        "invalidly-paired same-seed differences (2026-07-19 correction)."))
+    C.append(unt("t1d.vg.mde", "table1d", "VG powered-null MDE (RETIRED)",
+                 "MDE 0.000246 (retired print, no longer in the paper)", [],
+                 "RETRACTED 2026-07-19 (audits 18:53 CP-1 / 19:56 P1): the paired-design MDE "
+                 "assumed initialization-paired arms (false; S5.3 disclosure) and backed the "
+                 "withdrawn powered-null claim. TOMBSTONE: no recomputation.",
+                 status="REMOVED_FROM_PAPER"))
+    C.append(unt("t1d.vg.tost", "table1d", "VG TOST equivalence vs MI margin (RETIRED)",
+                 "90% CI [-0.000319,+0.000023] vs margin +-0.000335 (retired print)", [],
+                 "RETRACTED 2026-07-19: paired TOST with a data-derived margin (= the observed "
+                 "MI point estimate); the independent-arm 90% CI [-0.000360,+0.000063] is not "
+                 "contained in that margin (t1d.vg.welch). TOMBSTONE: no recomputation.",
+                 status="REMOVED_FROM_PAPER"))
 
     # ---------------- Table 1e: interaction-thinning titration ladder ----------------
     RUNGS = [
@@ -1059,14 +1125,13 @@ def build_spec():
                           5, conf, seeds=S0812,
                           notes="kept-interactions/item is quoted from the frozen run logs "
                                 "(see make_table_5_4_titration.py); alpha = ipi/23."))
-    C.append(cell("t1e.alpha066", "table1e", "alpha(rho=0.66) = ipi/d_eff (RETIRED)", "ratio",
-                  [TITRLOG066], "const_ratio", {"num": 16.109, "den": 23.0},
-                  [], None, "exploratory",
-                  notes="RETRACTED 2026-07-19 (audit 14:53/15:51): the d_eff=23 denominator "
-                        "came from the withdrawn spectral analysis (intervention-enforced "
-                        "rank; 23 matches no released artifact). Value removed from the "
-                        "manuscript; provenance history only.",
-                  status="REMOVED_FROM_PAPER"))
+    C.append(unt("t1e.alpha066", "table1e", "alpha(rho=0.66) = ipi/d_eff (RETIRED)",
+                 "ratio 0.700 (retired print, no longer in the paper)", [],
+                 "RETRACTED 2026-07-19 (audits 14:53/15:51/17:56 CP-2): the d_eff=23 "
+                 "denominator came from the withdrawn spectral analysis (intervention-"
+                 "enforced rank; 23 matches no released artifact). TOMBSTONE: the retired "
+                 "quantity is no longer recomputed anywhere in the graph; provenance "
+                 "history only.", status="REMOVED_FROM_PAPER"))
     RUNG_FILES = [(r[2], r[3]) for r in RUNGS]
     DENS = [r[1] for r in RUNGS]
     C.append(cell("t1e.spearman.head_ndcg", "table1e", "Spearman rho_s(head delta vs density)",
@@ -1124,11 +1189,21 @@ def build_spec():
                   {"a": UT66T, "b": UT66I, "stratum": "tail",
                    "expect_n_eval": NEVAL_VG, "expect_n": TAILN_VG},
                   [chk("mean", 0.000178, 6), chk("sd", 0.000153, 6),
-                   chk("pos", 5, mode="count"), chk("t", 2.6, 1, mode="approx", tol=0.15)],
+                   chk("pos", 5, mode="count")],
                   5, conf, seeds=S0812,
                   notes="users/item 2.44 and interactions/item 16.12 are run-log quantities. "
                         "Paper sd corrected 2026-07-11 (was 0.000137): recomputed sample-std "
                         "0.0001535 rounds to 0.000153, now printed in the S5.4.2 table."))
+    C.append(cell("t542.u066.welch", "table542", "user-thinned rho=0.66: independent-arm Welch",
+                  "Welch t/p + 95% CI on per-arm tail values (within-rung; corrected 2026-07-19)",
+                  UT66T + UT66I, "welch_2arm",
+                  {"a": UT66T, "b": UT66I, "stratum": "tail"},
+                  [chk("diff", 0.000178, 6), chk("t", 1.58, 2),
+                   chk("p", 0.164, mode="approx", tol=0.01),
+                   chk("ci95_lo", -0.000095, 6), chk("ci95_hi", 0.000451, 6)],
+                  5, conf, seeds=S0812,
+                  notes="CI includes zero: the within-rung effect is sign-consistent but not "
+                        "significant under the corrected independent-arm analysis."))
     C.append(cell("t542.u066.tail_ratio", "table542", "user-thinned rho=0.66", "tail text/ID ratio",
                   UT66T + UT66I, "pop_ratio", {"a": UT66T, "b": UT66I, "stratum": "tail"},
                   [chk("ratio", 1.046, 3)], 5, conf))
@@ -1136,26 +1211,41 @@ def build_spec():
                   UT66T + UT66I, "pop_ratio", {"a": UT66T, "b": UT66I, "stratum": "head"},
                   [chk("ratio", 1.039, 3)], 5, conf))
     C.append(cell("t542.u066.dd_vs_full", "table542", "dd vs full-density anchor",
-                  "paired diff-of-deltas (tail NDCG@10)",
+                  "same-seed diff-of-deltas (tail NDCG@10; descriptive)",
                   UT66T + UT66I + TEXT5 + IDONLY5, "dd_paired",
                   {"a_text": UT66T, "a_id": UT66I, "b_text": TEXT5, "b_id": IDONLY5,
                    "stratum": "tail"},
                   [chk("mean", 0.000326, 6), chk("sd", 0.000210, 6),
-                   chk("t", 3.47, 2), chk("ci_lo", 0.000065, 6), chk("ci_hi", 0.000587, 6),
-                   chk("pos", 5, mode="count"), chk("ci_lo", 0.0, mode="gt")],
-                  5, conf))
-    C.append(cell("t542.u066.signtest", "table542", "dd vs full anchor", "one-sided sign-test p",
-                  UT66T + UT66I + TEXT5 + IDONLY5, "sign_test",
-                  {"a": UT66T, "b": UT66I, "stratum": "tail"},
-                  [chk("p", 0.031, 3)], 5, conf,
-                  notes="5/5 positive -> p = 0.5^5 = 0.03125."))
+                   chk("pos", 5, mode="count")],
+                  5, conf,
+                  notes="Descriptive only (2026-07-19): the former paired t=3.47 / "
+                        "CI-excludes-0 inference is retracted with the pairing assumption; "
+                        "the valid inference is t542.u066.dd_welch (p=0.058, CI includes 0)."))
+    C.append(cell("t542.u066.dd_welch", "table542", "dd vs full anchor: four-group Welch",
+                  "Welch-Satterthwaite contrast (user066_text-user066_id)-(full_text-full_id)",
+                  UT66T + UT66I + TEXT5 + IDONLY5, "welch_4arm",
+                  {"a_text": UT66T, "a_id": UT66I, "b_text": TEXT5, "b_id": IDONLY5,
+                   "stratum": "tail"},
+                  [chk("est", 0.000326, 6), chk("t", 2.09, 2),
+                   chk("p", 0.058, mode="approx", tol=0.005),
+                   chk("ci_lo", -0.000014, 6), chk("ci_hi", 0.000666, 6)],
+                  5, conf,
+                  notes="NOT significant (p=0.058; CI includes zero): the S5.4.2 finding is "
+                        "downgraded to suggestive/descriptive (2026-07-19)."))
+    C.append(unt("t542.u066.signtest", "table542", "dd sign test (RETIRED)",
+                 "one-sided p = 0.031 (retired print, no longer in the paper)", [],
+                 "RETRACTED 2026-07-19: the sign test treated per-seed dd values as "
+                 "exchangeable paired blocks; the arms are not initialization-paired "
+                 "(S5.3). The 5/5 sign count remains reported descriptively in "
+                 "t542.u066.dd_vs_full. TOMBSTONE: no recomputation.",
+                 status="REMOVED_FROM_PAPER"))
     C.append(cell("t542.matchedR1.tail", "table542", "matched-R1: (user - interaction) at rho=0.66",
-                  "tail delta difference", UT66T + UT66I + T066_T + T066_I, "dd_paired",
+                  "tail delta difference (descriptive level contrast)", UT66T + UT66I + T066_T + T066_I, "dd_paired",
                   {"a_text": UT66T, "a_id": UT66I, "b_text": T066_T, "b_id": T066_I,
                    "stratum": "tail"},
                   [chk("mean", 0.000286, 6)], 5, conf))
     C.append(cell("t542.matchedR1.head", "table542", "matched-R1: (user - interaction) at rho=0.66",
-                  "head delta difference", UT66T + UT66I + T066_T + T066_I, "dd_paired",
+                  "head delta difference (descriptive level contrast)", UT66T + UT66I + T066_T + T066_I, "dd_paired",
                   {"a_text": UT66T, "a_id": UT66I, "b_text": T066_T, "b_id": T066_I,
                    "stratum": "head"},
                   [chk("mean", -0.000475, 6)], 5, conf,
@@ -1331,7 +1421,11 @@ def build_spec():
                    chk("ci_lo", -0.00025, 5), chk("ci_hi", 0.00045, 5)],
                   5, conf, seeds=S0812,
                   notes="The only Table-2 probe at full 5-seed power (pre-declared); CI includes "
-                        "zero -> not actionable."))
+                        "zero -> not actionable. Cadence caveat (2026-07-19): conn-gate arms "
+                        "evaluated at epochs {10,20} vs every epoch for the base -> unequal "
+                        "best-by-val checkpoint opportunities; the tail CI-includes-zero verdict "
+                        "is cadence-insensitive but the small overall delta is not, and no claim "
+                        "rests on its sign."))
     C.append(cell("t2.conngate.overall", "table2", "conn-gate overall (flat)",
                   "paired delta NDCG@10 vs MI V2-text stack", CONNG + MIT_T, "paired_delta",
                   {"a": CONNG, "b": MIT_T},
@@ -1340,10 +1434,13 @@ def build_spec():
                   CONNG_LOGS, "log_scan",
                   {"files": CONNG_LOGS,
                    "regex": r"conn-gate alpha = ([0-9.]+)"},
-                  [chk("mean", 0.0011, 4)], 5, expl,
+                  [chk("mean", 0.0011, 4)], 4, expl,
                   notes="The learned alpha is not embedded in the result JSONs (fields null); it "
-                        "is parsed from the tracked run logs. All per-seed values (0.00107-0.00110) "
-                        "round to 0.0011 < init 0.0025."))
+                        "is parsed from the tracked run logs. Declared n corrected 5->4 "
+                        "(2026-07-19, audit 20:57): the driver log records seeds 09-12; the "
+                        "seed-20260608 k8 log predates the alpha print line, so only 4/5 "
+                        "values are recoverable (0.00107-0.00110, all rounding to 0.0011 "
+                        "< init 0.0025)."))
     C.append(cell("t2.seq200", "table2", "max_seq_len 200 / seq > 50 (F1)",
                   "directional: no gain vs full-stack baselines", [F1S, H2], "delta_means",
                   {"a": [F1S], "b": [H2]},
@@ -1793,28 +1890,33 @@ def render_tables(cells):
     ])
 
     T["table1d"] = "\n".join([
-        "**Table 1d (regenerated): text − ID tail-tercile NDCG@10 contrast (paired, per-seed).**",
+        "**Table 1d (regenerated): text − ID tail-tercile NDCG@10 contrast (same-seed-number "
+        "arms — NOT initialization-paired; §5.3 randomization disclosure).**",
         "",
         "| dataset | tail Δ NDCG@10 | seeds positive | evidence |",
         "|---|---:|---:|---|",
-        f"| Musical_Instruments (sparse) | {PD('t1d.mi.tail')} , 95% CI "
-        f"[{by_id['t1d.mi.tail']['recomputed']['ci_lo']:+.5f}, "
-        f"{by_id['t1d.mi.tail']['recomputed']['ci_hi']:+.5f}] | "
-        f"{int(by_id['t1d.mi.tail']['recomputed']['pos'])}/5 | confirmatory |",
-        f"| Video_Games (dense) | {PD('t1d.vg.tail')} | {int(by_id['t1d.vg.tail']['recomputed']['pos'])}/5 | confirmatory (powered null) |",
-        f"| Beauty_and_PC (dense) | {PD('t1d.beauty.tail', 7)} | {int(by_id['t1d.beauty.tail']['recomputed']['pos'])}/3 | exploratory (3-seed) |",
+        f"| Musical_Instruments (sparse) | {PD('t1d.mi.tail')} , Welch 95% CI "
+        f"[{by_id['t1d.mi.welch']['recomputed']['ci95_lo']:+.6f}, "
+        f"{by_id['t1d.mi.welch']['recomputed']['ci95_hi']:+.6f}] | "
+        f"{int(by_id['t1d.mi.tail']['recomputed']['pos'])}/5 | confirmatory (independent-arm Welch) |",
+        f"| Video_Games (dense) | {PD('t1d.vg.tail')} | {int(by_id['t1d.vg.tail']['recomputed']['pos'])}/5 | null — equivalence claim RETRACTED 2026-07-19 (§5.3) |",
+        f"| Beauty_and_PC (dense) | {PD('t1d.beauty.tail', 7)} | {int(by_id['t1d.beauty.tail']['recomputed']['pos'])}/3 | exploratory (3-seed; mixed eval geometry) |",
         "",
         f"MI tail HR replication: {PD('t1d.mi.tail_hr', 5)}; hits/seed "
         f"{by_id['t1d.mi.tail_hits_text']['recomputed']['hits']:.1f} vs "
         f"{by_id['t1d.mi.tail_hits_id']['recomputed']['hits']:.1f}; MI head Δ "
-        f"{by_id['t1d.mi.head_abs']['recomputed']['mean']:+.5f}. Cross-dataset Welch: MI−VG = "
-        f"{by_id['t1d.welch']['recomputed']['diff']:+.6f}, t = "
+        f"{by_id['t1d.mi.head_abs']['recomputed']['mean']:+.5f}. MI independent-arm Welch: t = "
+        f"{by_id['t1d.mi.welch']['recomputed']['t']:.2f}, p = "
+        f"{by_id['t1d.mi.welch']['recomputed']['p']:.3f}. VG independent-arm Welch: p = "
+        f"{by_id['t1d.vg.welch']['recomputed']['p']:.2f}, 90% CI "
+        f"[{by_id['t1d.vg.welch']['recomputed']['ci90_lo']:+.6f}, "
+        f"{by_id['t1d.vg.welch']['recomputed']['ci90_hi']:+.6f}] — NOT contained in the retracted "
+        f"±0.000335 margin (no equivalence claim). Cross-dataset four-arm Welch–Satterthwaite: "
+        f"MI−VG = {by_id['t1d.welch']['recomputed']['est']:+.6f}, t = "
         f"{by_id['t1d.welch']['recomputed']['t']:.2f}, df = "
         f"{by_id['t1d.welch']['recomputed']['df']:.1f}, p = "
-        f"{by_id['t1d.welch']['recomputed']['p']:.4f}. VG MDE = "
-        f"{by_id['t1d.vg.mde']['recomputed']['mde']:.6f} (< MI effect); TOST 90% CI "
-        f"[{by_id['t1d.vg.tost']['recomputed']['lo']:+.6f}, "
-        f"{by_id['t1d.vg.tost']['recomputed']['hi']:+.6f}] ⊂ ±0.000335.",
+        f"{by_id['t1d.welch']['recomputed']['p']:.4f}. (The former paired-CI/MDE/TOST nodes are "
+        f"tombstoned — retracted 2026-07-19.)",
     ])
 
     rows1e = []
@@ -1866,16 +1968,19 @@ def render_tables(cells):
         f"| VG interaction-thinned ρ=0.66 | {R('t541.rho066.tail_ratio','ratio',3)} | "
         f"{PD('t1e.rho066.tail_ndcg')} | {R('t541.rho066.head_ratio','ratio',3)} |",
         f"| **VG user-thinned ρ_user=0.66** | **{R('t542.u066.tail_ratio','ratio',3)}** | "
-        f"**{PD('t542.u066.tail')}, t={by_id['t542.u066.tail']['recomputed']['t']:.2f}** | "
+        f"**{PD('t542.u066.tail')}** (Welch p = "
+        f"{by_id['t542.u066.welch']['recomputed']['p']:.2f}, n.s.) | "
         f"{R('t542.u066.head_ratio','ratio',3)} |",
         f"| MI native | {R('t541.mi.tail_ratio','ratio',3)} | {PD('t1d.mi.tail')} | "
         f"{R('t541.mi.head_ratio','ratio',3)} |",
         "",
-        f"dd vs full anchor: {PD('t542.u066.dd_vs_full')}, t = "
-        f"{by_id['t542.u066.dd_vs_full']['recomputed']['t']:.2f}, 95% CI "
-        f"[{by_id['t542.u066.dd_vs_full']['recomputed']['ci_lo']:+.6f}, "
-        f"{by_id['t542.u066.dd_vs_full']['recomputed']['ci_hi']:+.6f}]; sign-test p = "
-        f"{by_id['t542.u066.signtest']['recomputed']['p']:.4f}. Matched-R1 (user − interaction): tail "
+        f"dd vs full anchor (descriptive): {PD('t542.u066.dd_vs_full')}; four-group Welch "
+        f"t = {by_id['t542.u066.dd_welch']['recomputed']['t']:.2f}, p = "
+        f"{by_id['t542.u066.dd_welch']['recomputed']['p']:.3f}, 95% CI "
+        f"[{by_id['t542.u066.dd_welch']['recomputed']['ci_lo']:+.6f}, "
+        f"{by_id['t542.u066.dd_welch']['recomputed']['ci_hi']:+.6f}] — includes zero: suggestive, "
+        f"NOT significant (the former paired t/sign-test inference is retracted 2026-07-19). "
+        f"Matched-R1 (user − interaction): tail "
         f"{by_id['t542.matchedR1.tail']['recomputed']['mean']:+.6f}, head "
         f"{by_id['t542.matchedR1.head']['recomputed']['mean']:+.6f} (diff-of-diffs "
         f"{by_id['t542.matchedR1.tail']['recomputed']['mean'] - by_id['t542.matchedR1.head']['recomputed']['mean']:+.6f}). "
@@ -1975,17 +2080,18 @@ def render_tables(cells):
     t2rows.append(f"| CF1 cue-fusion | V2 (VG) / MI k16 | {by_id['t2.cf1.vg']['recomputed']['delta']:+.5f} / "
                   f"{by_id['t2.cf1.mi']['recomputed']['mean']:+.5f} | gate → 0 | 1 / 5 |")
     cg = by_id["t2.conngate.tail"]["recomputed"]
-    t2rows.append(f"| conn-gate (MI, 5-seed) | MI V2-text stack | tail {cg['mean']:+.5f} ± "
+    t2rows.append(f"| conn-gate (MI, 5-seed; cadence-caveated) | MI V2-text stack | tail {cg['mean']:+.5f} ± "
                   f"{cg['sd']:.5f}, 95% CI [{cg['ci_lo']:+.5f}, {cg['ci_hi']:+.5f}] | α = "
-                  f"{by_id['t2.conngate.alpha']['recomputed']['mean']:.5f} (voted off) | 5 |")
+                  f"{by_id['t2.conngate.alpha']['recomputed']['mean']:.5f} (voted off; 4/5 logs) | 5 |")
     t2rows.append(f"| max_seq_len 200 (F1, directional) | full-stack baselines | "
                   f"{by_id['t2.seq200']['recomputed']['delta']:+.5f} (no gain) | n/a | 1 |")
     t2rows.append(f"| cosine scoring (D1, directional) | dot baselines | "
                   f"{by_id['t2.cosine']['recomputed']['delta']:+.5f} (≤0) | n/a | 1 |")
     T["table2"] = "\n".join([
         "**Table 2 (regenerated): systematic negative-result map.** All single-seed rows are "
-        "exploratory (audit F6); only conn-gate (and the titration nulls of §5.3–§5.4) carry "
-        "confirmatory weight.",
+        "exploratory (audit F6); only conn-gate (cadence-caveated) and the titration nulls of "
+        "§5.3–§5.4 carry confirmatory weight; the former VG/Beauty equivalence claims are "
+        "retracted (§5.3).",
         "",
         "| Lever | Base | Δ NDCG@10 (recomputed) | learned scalar | n |",
         "|---|---|---:|---|---:|"] + t2rows)
@@ -2037,14 +2143,18 @@ def write_manifest(path):
         "rerun_submission_gate": "_bestrec_run/.venv/Scripts/python "
                                  "_bestrec_run/build_hstu_tables.py --submission",
         "recompute_tolerance": TOL,
-        "evidence_class_rule": "confirmatory = >=5-seed multi-seed family or pre-declared "
-                               "confirmation; exploratory = single-seed / <5-seed / post-hoc "
-                               "(audit F6). external = published comparator constant.",
+        "evidence_class_rule": "confirmatory labels are reserved for pre-declared prospective "
+                               "campaigns and their frozen-protocol locks -- selection timing, "
+                               "not seed count, is the criterion (corrected 2026-07-19; the "
+                               "full cell-by-cell taxonomy audit against this criterion is "
+                               "queued). exploratory = single-seed / post-hoc; external = "
+                               "published comparator constant.",
         "status_semantics": "OK = sourced + recomputed + drift-gated. UNTRACEABLE = paper "
                             "prints it, no on-disk source (warning; FATAL in --submission). "
                             "REMOVED_FROM_PAPER = value retired from the manuscript "
-                            "2026-07-11; provenance history only, non-blocking/non-warning "
-                            "in both modes. EXTERNAL_PUBLISHED = cited constant.",
+                            "(2026-07-11/2026-07-19 retirements); TOMBSTONED: no "
+                            "recomputation, counted in the retired total, non-blocking in "
+                            "both modes. EXTERNAL_PUBLISHED = cited constant.",
         "required_families": REQUIRED_FAMILIES,
         "paths_relative_to": "repository root",
         "cells": cells,
@@ -2094,6 +2204,14 @@ def verify(manifest_path, tables_path, submission=False):
                 errors.append(f"(b) {c['cell_id']}.{k}: recomputed {v!r} drifts from "
                               f"manifest {sv!r} by more than {TOL}")
         c["recomputed"] = rec  # use fresh values downstream
+        # gate (n): declared-vs-recomputed sample count (audit 2026-07-19 20:57)
+        for nk in ("n", "n_units"):
+            nv = rec.get(nk)
+            if nv is not None and c.get("n_seeds") is not None \
+                    and c["status"] not in ("REMOVED_FROM_PAPER", "EXTERNAL_PUBLISHED") \
+                    and int(round(float(nv))) != int(c["n_seeds"]):
+                errors.append(f"(n) {c['cell_id']}: recomputed {nk}="
+                              f"{int(round(float(nv)))} != declared n_seeds {c['n_seeds']}")
         n_ok += 1
     # paper comparison (warning in default mode; FATAL in --submission)
     paper_report = {"exact": [], "within_rounding": [], "MISMATCH": [],

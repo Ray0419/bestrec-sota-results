@@ -7,8 +7,8 @@
  "rerun": "_bestrec_run/.venv/Scripts/python _bestrec_run/build_hstu_tables.py",
  "rerun_submission_gate": "_bestrec_run/.venv/Scripts/python _bestrec_run/build_hstu_tables.py --submission",
  "recompute_tolerance": 5e-05,
- "evidence_class_rule": "confirmatory = >=5-seed multi-seed family or pre-declared confirmation; exploratory = single-seed / <5-seed / post-hoc (audit F6). external = published comparator constant.",
- "status_semantics": "OK = sourced + recomputed + drift-gated. UNTRACEABLE = paper prints it, no on-disk source (warning; FATAL in --submission). REMOVED_FROM_PAPER = value retired from the manuscript 2026-07-11; provenance history only, non-blocking/non-warning in both modes. EXTERNAL_PUBLISHED = cited constant.",
+ "evidence_class_rule": "confirmatory labels are reserved for pre-declared prospective campaigns and their frozen-protocol locks -- selection timing, not seed count, is the criterion (corrected 2026-07-19; the full cell-by-cell taxonomy audit against this criterion is queued). exploratory = single-seed / post-hoc; external = published comparator constant.",
+ "status_semantics": "OK = sourced + recomputed + drift-gated. UNTRACEABLE = paper prints it, no on-disk source (warning; FATAL in --submission). REMOVED_FROM_PAPER = value retired from the manuscript (2026-07-11/2026-07-19 retirements); TOMBSTONED: no recomputation, counted in the retired total, non-blocking in both modes. EXTERNAL_PUBLISHED = cited constant.",
  "required_families": [
   "table1",
   "table1a",
@@ -3287,7 +3287,7 @@
    "cell_id": "t1d.mi.tail",
    "table_id": "table1d",
    "row_label": "Musical_Instruments (sparse)",
-   "metric": "tail delta NDCG@10 (paired, 5-seed)",
+   "metric": "tail delta NDCG@10 (same-seed-number, 5-seed; descriptive)",
    "evidence_class": "confirmatory",
    "status": "OK",
    "source_files": [
@@ -3350,26 +3350,9 @@
      "name": "pos",
      "value": 5,
      "mode": "count"
-    },
-    {
-     "name": "ci_lo",
-     "value": 9e-05,
-     "mode": "round",
-     "precision": 5
-    },
-    {
-     "name": "ci_hi",
-     "value": 0.00058,
-     "mode": "round",
-     "precision": 5
-    },
-    {
-     "name": "ci_lo",
-     "value": 0.0,
-     "mode": "gt"
     }
    ],
-   "notes": "",
+   "notes": "Arms are NOT initialization-paired (S5.3 randomization disclosure, 2026-07-19); the same-seed-number delta stats are descriptive and the inferential CI now comes from t1d.mi.welch.",
    "recomputed": {
     "mean": 0.0003352902252472483,
     "sd": 0.00019452409480809598,
@@ -3403,29 +3386,276 @@
      "mode": "count",
      "recomputed": 5,
      "result": "exact"
-    },
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "t1d.mi.welch",
+   "table_id": "table1d",
+   "row_label": "MI tail: independent-arm Welch",
+   "metric": "Welch t/p + 95% CI (text vs id per-arm tail values)",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_MI_TAIL_V2_text_seed20260608.json",
+    "_bestrec_run/results_MI_TAIL_V2_text_seed20260609.json",
+    "_bestrec_run/results_MI_TAIL_V2_text_seed20260610.json",
+    "_bestrec_run/results_MI_TAIL_V2_text_seed20260611.json",
+    "_bestrec_run/results_MI_TAIL_V2_text_seed20260612.json",
+    "_bestrec_run/results_MI_TAIL_idonly_seed20260608.json",
+    "_bestrec_run/results_MI_TAIL_idonly_seed20260609.json",
+    "_bestrec_run/results_MI_TAIL_idonly_seed20260610.json",
+    "_bestrec_run/results_MI_TAIL_idonly_seed20260611.json",
+    "_bestrec_run/results_MI_TAIL_idonly_seed20260612.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    "20260608",
+    "20260609",
+    "20260610",
+    "20260611",
+    "20260612"
+   ],
+   "recompute": {
+    "rule": "welch_2arm",
+    "params": {
+     "a": [
+      "_bestrec_run/results_MI_TAIL_V2_text_seed20260608.json",
+      "_bestrec_run/results_MI_TAIL_V2_text_seed20260609.json",
+      "_bestrec_run/results_MI_TAIL_V2_text_seed20260610.json",
+      "_bestrec_run/results_MI_TAIL_V2_text_seed20260611.json",
+      "_bestrec_run/results_MI_TAIL_V2_text_seed20260612.json"
+     ],
+     "b": [
+      "_bestrec_run/results_MI_TAIL_idonly_seed20260608.json",
+      "_bestrec_run/results_MI_TAIL_idonly_seed20260609.json",
+      "_bestrec_run/results_MI_TAIL_idonly_seed20260610.json",
+      "_bestrec_run/results_MI_TAIL_idonly_seed20260611.json",
+      "_bestrec_run/results_MI_TAIL_idonly_seed20260612.json"
+     ],
+     "stratum": "tail"
+    }
+   },
+   "recompute_rule": "independent-arm Welch t/df/p + 90/95% CIs on per-arm by_popularity[stratum][NDCG@10] (a vs b)",
+   "paper": [
     {
-     "name": "ci_lo",
-     "paper": 9e-05,
+     "name": "diff",
+     "value": 0.000335,
      "mode": "round",
-     "recomputed": 9.375665994086063e-05,
-     "result": "exact",
-     "rounded": 9e-05
+     "precision": 6
     },
     {
-     "name": "ci_hi",
-     "paper": 0.00058,
+     "name": "t",
+     "value": 3.94,
      "mode": "round",
-     "recomputed": 0.000576823790553636,
-     "result": "exact",
-     "rounded": 0.00058
+     "precision": 2
     },
     {
-     "name": "ci_lo",
+     "name": "p",
+     "value": 0.014,
+     "mode": "approx",
+     "tol": 0.002
+    },
+    {
+     "name": "ci95_lo",
+     "value": 0.000109,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci95_hi",
+     "value": 0.000562,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci95_lo",
+     "value": 0.0,
+     "mode": "gt"
+    }
+   ],
+   "notes": "The conservative independent-arm analysis of the MI tail win (added 2026-07-19 with the pairing retraction).",
+   "recomputed": {
+    "diff": 0.0003352902252472484,
+    "t": 3.9367495249949465,
+    "df": 4.493300135059339,
+    "p": 0.013567722689307326,
+    "ci95_lo": 0.00010871714663869222,
+    "ci95_hi": 0.0005618633038558046,
+    "ci90_lo": 0.00015930099348280817,
+    "ci90_hi": 0.0005112794570116886,
+    "n_units": 5.0
+   },
+   "recomputed_value": 0.0003352902252472484,
+   "paper_check": [
+    {
+     "name": "diff",
+     "paper": 0.000335,
+     "mode": "round",
+     "recomputed": 0.0003352902252472484,
+     "result": "exact",
+     "rounded": 0.000335
+    },
+    {
+     "name": "t",
+     "paper": 3.94,
+     "mode": "round",
+     "recomputed": 3.9367495249949465,
+     "result": "exact",
+     "rounded": 3.94
+    },
+    {
+     "name": "p",
+     "paper": 0.014,
+     "mode": "approx",
+     "recomputed": 0.013567722689307326,
+     "result": "within_tol"
+    },
+    {
+     "name": "ci95_lo",
+     "paper": 0.000109,
+     "mode": "round",
+     "recomputed": 0.00010871714663869222,
+     "result": "exact",
+     "rounded": 0.000109
+    },
+    {
+     "name": "ci95_hi",
+     "paper": 0.000562,
+     "mode": "round",
+     "recomputed": 0.0005618633038558046,
+     "result": "exact",
+     "rounded": 0.000562
+    },
+    {
+     "name": "ci95_lo",
      "paper": 0.0,
      "mode": "gt",
-     "recomputed": 9.375665994086063e-05,
+     "recomputed": 0.00010871714663869222,
      "result": "qual_ok"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "t1d.vg.welch",
+   "table_id": "table1d",
+   "row_label": "VG tail: independent-arm Welch",
+   "metric": "Welch p + 90% CI (equivalence NOT established at the retracted margin)",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_TAIL_V2_text_VG.json",
+    "_bestrec_run/results_TAIL_V2_text_seed20260609_VG.json",
+    "_bestrec_run/results_TAIL_V2_text_seed20260610_VG.json",
+    "_bestrec_run/results_TAIL_V2_text_seed20260611_VG.json",
+    "_bestrec_run/results_TAIL_V2_text_seed20260612_VG.json",
+    "_bestrec_run/results_TAIL_idonly_VG.json",
+    "_bestrec_run/results_TAIL_idonly_seed20260609_VG.json",
+    "_bestrec_run/results_TAIL_idonly_seed20260610_VG.json",
+    "_bestrec_run/results_TAIL_idonly_seed20260611_VG.json",
+    "_bestrec_run/results_TAIL_idonly_seed20260612_VG.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    "20260608",
+    "20260609",
+    "20260610",
+    "20260611",
+    "20260612"
+   ],
+   "recompute": {
+    "rule": "welch_2arm",
+    "params": {
+     "a": [
+      "_bestrec_run/results_TAIL_V2_text_VG.json",
+      "_bestrec_run/results_TAIL_V2_text_seed20260609_VG.json",
+      "_bestrec_run/results_TAIL_V2_text_seed20260610_VG.json",
+      "_bestrec_run/results_TAIL_V2_text_seed20260611_VG.json",
+      "_bestrec_run/results_TAIL_V2_text_seed20260612_VG.json"
+     ],
+     "b": [
+      "_bestrec_run/results_TAIL_idonly_VG.json",
+      "_bestrec_run/results_TAIL_idonly_seed20260609_VG.json",
+      "_bestrec_run/results_TAIL_idonly_seed20260610_VG.json",
+      "_bestrec_run/results_TAIL_idonly_seed20260611_VG.json",
+      "_bestrec_run/results_TAIL_idonly_seed20260612_VG.json"
+     ],
+     "stratum": "tail"
+    }
+   },
+   "recompute_rule": "independent-arm Welch t/df/p + 90/95% CIs on per-arm by_popularity[stratum][NDCG@10] (a vs b)",
+   "paper": [
+    {
+     "name": "diff",
+     "value": -0.000148,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "p",
+     "value": 0.22,
+     "mode": "approx",
+     "tol": 0.02
+    },
+    {
+     "name": "ci90_lo",
+     "value": -0.00036,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci90_hi",
+     "value": 6.3e-05,
+     "mode": "round",
+     "precision": 6
+    }
+   ],
+   "notes": "90% CI [-0.000360,+0.000063] is NOT contained in the retracted data-derived margin +-0.000335 -> no equivalence claim survives (2026-07-19 retraction, S5.3).",
+   "recomputed": {
+    "diff": -0.00014842607605737752,
+    "t": -1.3682991577174233,
+    "df": 5.9472791922847605,
+    "p": 0.22065590294088622,
+    "ci95_lo": -0.0004144259299607994,
+    "ci95_hi": 0.00011757377784604435,
+    "ci90_lo": -0.0003595474203568669,
+    "ci90_hi": 6.269526824211183e-05,
+    "n_units": 5.0
+   },
+   "recomputed_value": -0.00014842607605737752,
+   "paper_check": [
+    {
+     "name": "diff",
+     "paper": -0.000148,
+     "mode": "round",
+     "recomputed": -0.00014842607605737752,
+     "result": "exact",
+     "rounded": -0.000148
+    },
+    {
+     "name": "p",
+     "paper": 0.22,
+     "mode": "approx",
+     "recomputed": 0.22065590294088622,
+     "result": "within_tol"
+    },
+    {
+     "name": "ci90_lo",
+     "paper": -0.00036,
+     "mode": "round",
+     "recomputed": -0.0003595474203568669,
+     "result": "exact",
+     "rounded": -0.00036
+    },
+    {
+     "name": "ci90_hi",
+     "paper": 6.3e-05,
+     "mode": "round",
+     "recomputed": 6.269526824211183e-05,
+     "result": "exact",
+     "rounded": 6.3e-05
     }
    ],
    "paper_check_class": "exact"
@@ -3434,7 +3664,7 @@
    "cell_id": "t1d.vg.tail",
    "table_id": "table1d",
    "row_label": "Video_Games (dense)",
-   "metric": "tail delta NDCG@10 (paired, 5-seed)",
+   "metric": "tail delta NDCG@10 (same-seed-number, 5-seed; descriptive)",
    "evidence_class": "confirmatory",
    "status": "OK",
    "source_files": [
@@ -3541,7 +3771,7 @@
    "cell_id": "t1d.beauty.tail",
    "table_id": "table1d",
    "row_label": "Beauty_and_PC (dense)",
-   "metric": "tail delta NDCG@10 (paired, 3-seed)",
+   "metric": "tail delta NDCG@10 (same-seed-number, 3-seed; exploratory)",
    "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
@@ -3595,7 +3825,7 @@
      "mode": "count"
     }
    ],
-   "notes": "Heterogeneous eval geometry disclosed: seed08 pair is full-eval (n_eval=729,576) both arms; seed09 pair is stratified-eval (212,245) both arms; seed10 pairs a stratified TEXT run against a full-eval ID run. The tail bucket (n=71,522) is identical across all six files, so the tail contrast is bucket-consistent, but the seed10 pair is not user-set-matched.",
+   "notes": "Heterogeneous eval geometry disclosed: seed08 pair is full-eval (n_eval=729,576) both arms; seed09 pair is stratified-eval (212,245) both arms; seed10 pairs a stratified TEXT run against a full-eval ID run. The tail bucket (n=71,522) is identical across all six files, so the tail contrast is bucket-consistent, but the seed10 pair is not user-set-matched. Never equivalence-tested (no MDE/TOST nodes); exploratory only (S5.3).",
    "recomputed": {
     "mean": -7.777953323745908e-06,
     "sd": 1.9936717797838546e-05,
@@ -3637,7 +3867,7 @@
    "cell_id": "t1d.mi.tail_hr",
    "table_id": "table1d",
    "row_label": "MI tail replication on HR@10",
-   "metric": "tail delta HR@10 (paired, 5-seed)",
+   "metric": "tail delta HR@10 (same-seed-number, 5-seed)",
    "evidence_class": "confirmatory",
    "status": "OK",
    "source_files": [
@@ -3923,7 +4153,7 @@
    "cell_id": "t1d.welch",
    "table_id": "table1d",
    "row_label": "cross-dataset difference MI - VG",
-   "metric": "Welch t on per-seed tail deltas",
+   "metric": "four-arm Welch-Satterthwaite contrast (independence-style; corrected 2026-07-19)",
    "evidence_class": "confirmatory",
    "status": "OK",
    "source_files": [
@@ -3951,7 +4181,7 @@
    "n_seeds": 5,
    "seeds": [],
    "recompute": {
-    "rule": "welch",
+    "rule": "welch_4arm",
     "params": {
      "a_text": [
       "_bestrec_run/results_MI_TAIL_V2_text_seed20260608.json",
@@ -3984,57 +4214,60 @@
      "stratum": "tail"
     }
    },
-   "recompute_rule": "Welch two-sample t on per-seed paired tail deltas (a vs b)",
+   "recompute_rule": "four-group Welch-Satterthwaite contrast (a_text-a_id)-(b_text-b_id) on by_popularity[stratum][NDCG@10]",
    "paper": [
     {
-     "name": "diff",
+     "name": "est",
      "value": 0.000484,
      "mode": "round",
      "precision": 6
     },
     {
      "name": "t",
-     "value": 4.09,
+     "value": 3.51,
      "mode": "round",
      "precision": 2
     },
     {
      "name": "p",
-     "value": 0.004,
+     "value": 0.0054,
      "mode": "approx",
      "tol": 0.001
     }
    ],
-   "notes": "",
+   "notes": "Replaces the per-seed-delta Welch (t=4.09) whose units were the invalidly-paired same-seed differences (2026-07-19 correction).",
    "recomputed": {
-    "diff": 0.00048371630130462565,
-    "t": 4.088372850413314,
-    "df": 7.947533151404892,
-    "p": 0.003542555683427046
+    "est": 0.0004837163013046259,
+    "t": 3.5073452586440004,
+    "df": 10.339304388254137,
+    "p": 0.00537961689094854,
+    "ci_lo": 0.00017778350018197802,
+    "ci_hi": 0.0007896491024272738,
+    "n_units": 5.0
    },
-   "recomputed_value": 0.00048371630130462565,
+   "recomputed_value": 0.0004837163013046259,
    "paper_check": [
     {
-     "name": "diff",
+     "name": "est",
      "paper": 0.000484,
      "mode": "round",
-     "recomputed": 0.00048371630130462565,
+     "recomputed": 0.0004837163013046259,
      "result": "exact",
      "rounded": 0.000484
     },
     {
      "name": "t",
-     "paper": 4.09,
+     "paper": 3.51,
      "mode": "round",
-     "recomputed": 4.088372850413314,
+     "recomputed": 3.5073452586440004,
      "result": "exact",
-     "rounded": 4.09
+     "rounded": 3.51
     },
     {
      "name": "p",
-     "paper": 0.004,
+     "paper": 0.0054,
      "mode": "approx",
-     "recomputed": 0.003542555683427046,
+     "recomputed": 0.00537961689094854,
      "result": "within_tol"
     }
    ],
@@ -4043,177 +4276,40 @@
   {
    "cell_id": "t1d.vg.mde",
    "table_id": "table1d",
-   "row_label": "VG powered-null minimum detectable effect",
-   "metric": "MDE (paired t, 80% power, one-sided alpha 0.05, n=5)",
-   "evidence_class": "confirmatory",
-   "status": "OK",
-   "source_files": [
-    "_bestrec_run/results_TAIL_V2_text_VG.json",
-    "_bestrec_run/results_TAIL_V2_text_seed20260609_VG.json",
-    "_bestrec_run/results_TAIL_V2_text_seed20260610_VG.json",
-    "_bestrec_run/results_TAIL_V2_text_seed20260611_VG.json",
-    "_bestrec_run/results_TAIL_V2_text_seed20260612_VG.json",
-    "_bestrec_run/results_TAIL_idonly_VG.json",
-    "_bestrec_run/results_TAIL_idonly_seed20260609_VG.json",
-    "_bestrec_run/results_TAIL_idonly_seed20260610_VG.json",
-    "_bestrec_run/results_TAIL_idonly_seed20260611_VG.json",
-    "_bestrec_run/results_TAIL_idonly_seed20260612_VG.json"
-   ],
-   "n_seeds": 5,
+   "row_label": "VG powered-null MDE (RETIRED)",
+   "metric": "MDE 0.000246 (retired print, no longer in the paper)",
+   "evidence_class": "exploratory",
+   "status": "REMOVED_FROM_PAPER",
+   "source_files": [],
+   "n_seeds": null,
    "seeds": [],
-   "recompute": {
-    "rule": "mde_paired",
-    "params": {
-     "a": [
-      "_bestrec_run/results_TAIL_V2_text_VG.json",
-      "_bestrec_run/results_TAIL_V2_text_seed20260609_VG.json",
-      "_bestrec_run/results_TAIL_V2_text_seed20260610_VG.json",
-      "_bestrec_run/results_TAIL_V2_text_seed20260611_VG.json",
-      "_bestrec_run/results_TAIL_V2_text_seed20260612_VG.json"
-     ],
-     "b": [
-      "_bestrec_run/results_TAIL_idonly_VG.json",
-      "_bestrec_run/results_TAIL_idonly_seed20260609_VG.json",
-      "_bestrec_run/results_TAIL_idonly_seed20260610_VG.json",
-      "_bestrec_run/results_TAIL_idonly_seed20260611_VG.json",
-      "_bestrec_run/results_TAIL_idonly_seed20260612_VG.json"
-     ],
-     "stratum": "tail"
-    }
-   },
-   "recompute_rule": "(t_{0.95,n-1}+t_{0.80,n-1}) * sd/sqrt(n) of per-seed paired deltas",
-   "paper": [
-    {
-     "name": "mde",
-     "value": 0.000246,
-     "mode": "round",
-     "precision": 6
-    },
-    {
-     "name": "mde",
-     "value": 0.000335,
-     "mode": "lt"
-    }
-   ],
-   "notes": "Gate: MDE < MI's native effect 0.000335 (the 'powered null' claim).",
-   "recomputed": {
-    "mde": 0.00024641076440947075
-   },
-   "recomputed_value": 0.00024641076440947075,
-   "paper_check": [
-    {
-     "name": "mde",
-     "paper": 0.000246,
-     "mode": "round",
-     "recomputed": 0.00024641076440947075,
-     "result": "exact",
-     "rounded": 0.000246
-    },
-    {
-     "name": "mde",
-     "paper": 0.000335,
-     "mode": "lt",
-     "recomputed": 0.00024641076440947075,
-     "result": "qual_ok"
-    }
-   ],
-   "paper_check_class": "exact"
+   "recompute": null,
+   "recompute_rule": null,
+   "paper": [],
+   "notes": "RETRACTED 2026-07-19 (audits 18:53 CP-1 / 19:56 P1): the paired-design MDE assumed initialization-paired arms (false; S5.3 disclosure) and backed the withdrawn powered-null claim. TOMBSTONE: no recomputation.",
+   "recomputed": null,
+   "recomputed_value": null,
+   "paper_check": [],
+   "paper_check_class": "REMOVED_FROM_PAPER"
   },
   {
    "cell_id": "t1d.vg.tost",
    "table_id": "table1d",
-   "row_label": "VG TOST equivalence vs MI margin",
-   "metric": "90% CI of paired tail delta",
-   "evidence_class": "confirmatory",
-   "status": "OK",
-   "source_files": [
-    "_bestrec_run/results_TAIL_V2_text_VG.json",
-    "_bestrec_run/results_TAIL_V2_text_seed20260609_VG.json",
-    "_bestrec_run/results_TAIL_V2_text_seed20260610_VG.json",
-    "_bestrec_run/results_TAIL_V2_text_seed20260611_VG.json",
-    "_bestrec_run/results_TAIL_V2_text_seed20260612_VG.json",
-    "_bestrec_run/results_TAIL_idonly_VG.json",
-    "_bestrec_run/results_TAIL_idonly_seed20260609_VG.json",
-    "_bestrec_run/results_TAIL_idonly_seed20260610_VG.json",
-    "_bestrec_run/results_TAIL_idonly_seed20260611_VG.json",
-    "_bestrec_run/results_TAIL_idonly_seed20260612_VG.json"
-   ],
-   "n_seeds": 5,
+   "row_label": "VG TOST equivalence vs MI margin (RETIRED)",
+   "metric": "90% CI [-0.000319,+0.000023] vs margin +-0.000335 (retired print)",
+   "evidence_class": "exploratory",
+   "status": "REMOVED_FROM_PAPER",
+   "source_files": [],
+   "n_seeds": null,
    "seeds": [],
-   "recompute": {
-    "rule": "tost_ci90",
-    "params": {
-     "a": [
-      "_bestrec_run/results_TAIL_V2_text_VG.json",
-      "_bestrec_run/results_TAIL_V2_text_seed20260609_VG.json",
-      "_bestrec_run/results_TAIL_V2_text_seed20260610_VG.json",
-      "_bestrec_run/results_TAIL_V2_text_seed20260611_VG.json",
-      "_bestrec_run/results_TAIL_V2_text_seed20260612_VG.json"
-     ],
-     "b": [
-      "_bestrec_run/results_TAIL_idonly_VG.json",
-      "_bestrec_run/results_TAIL_idonly_seed20260609_VG.json",
-      "_bestrec_run/results_TAIL_idonly_seed20260610_VG.json",
-      "_bestrec_run/results_TAIL_idonly_seed20260611_VG.json",
-      "_bestrec_run/results_TAIL_idonly_seed20260612_VG.json"
-     ],
-     "stratum": "tail",
-     "margin": 0.000335
-    }
-   },
-   "recompute_rule": "90% CI of per-seed paired deltas vs equivalence margin",
-   "paper": [
-    {
-     "name": "lo",
-     "value": -0.000319,
-     "mode": "round",
-     "precision": 6
-    },
-    {
-     "name": "hi",
-     "value": 2.3e-05,
-     "mode": "round",
-     "precision": 6
-    },
-    {
-     "name": "equivalent",
-     "value": 1,
-     "mode": "count"
-    }
-   ],
-   "notes": "",
-   "recomputed": {
-    "lo": -0.00031938027209162687,
-    "hi": 2.2528119976872145e-05,
-    "equivalent": 1.0
-   },
-   "recomputed_value": -0.00031938027209162687,
-   "paper_check": [
-    {
-     "name": "lo",
-     "paper": -0.000319,
-     "mode": "round",
-     "recomputed": -0.00031938027209162687,
-     "result": "exact",
-     "rounded": -0.000319
-    },
-    {
-     "name": "hi",
-     "paper": 2.3e-05,
-     "mode": "round",
-     "recomputed": 2.2528119976872145e-05,
-     "result": "exact",
-     "rounded": 2.3e-05
-    },
-    {
-     "name": "equivalent",
-     "paper": 1,
-     "mode": "count",
-     "recomputed": 1.0,
-     "result": "exact"
-    }
-   ],
-   "paper_check_class": "exact"
+   "recompute": null,
+   "recompute_rule": null,
+   "paper": [],
+   "notes": "RETRACTED 2026-07-19: paired TOST with a data-derived margin (= the observed MI point estimate); the independent-arm 90% CI [-0.000360,+0.000063] is not contained in that margin (t1d.vg.welch). TOMBSTONE: no recomputation.",
+   "recomputed": null,
+   "recomputed_value": null,
+   "paper_check": [],
+   "paper_check_class": "REMOVED_FROM_PAPER"
   },
   {
    "cell_id": "t1e.rho100.head_ndcg",
@@ -6811,30 +6907,20 @@
    "cell_id": "t1e.alpha066",
    "table_id": "table1e",
    "row_label": "alpha(rho=0.66) = ipi/d_eff (RETIRED)",
-   "metric": "ratio",
+   "metric": "ratio 0.700 (retired print, no longer in the paper)",
    "evidence_class": "exploratory",
    "status": "REMOVED_FROM_PAPER",
-   "source_files": [
-    "_bestrec_run/run_TITRATE_idonly_rho066_VG.log"
-   ],
+   "source_files": [],
    "n_seeds": null,
    "seeds": [],
-   "recompute": {
-    "rule": "const_ratio",
-    "params": {
-     "num": 16.109,
-     "den": 23.0
-    }
-   },
-   "recompute_rule": "ratio of quoted run-log constants",
+   "recompute": null,
+   "recompute_rule": null,
    "paper": [],
-   "notes": "RETRACTED 2026-07-19 (audit 14:53/15:51): the d_eff=23 denominator came from the withdrawn spectral analysis (intervention-enforced rank; 23 matches no released artifact). Value removed from the manuscript; provenance history only.",
-   "recomputed": {
-    "value": 0.7003913043478261
-   },
-   "recomputed_value": 0.7003913043478261,
+   "notes": "RETRACTED 2026-07-19 (audits 14:53/15:51/17:56 CP-2): the d_eff=23 denominator came from the withdrawn spectral analysis (intervention-enforced rank; 23 matches no released artifact). TOMBSTONE: the retired quantity is no longer recomputed anywhere in the graph; provenance history only.",
+   "recomputed": null,
+   "recomputed_value": null,
    "paper_check": [],
-   "paper_check_class": "exact"
+   "paper_check_class": "REMOVED_FROM_PAPER"
   },
   {
    "cell_id": "t1e.spearman.head_ndcg",
@@ -8488,13 +8574,6 @@
      "name": "pos",
      "value": 5,
      "mode": "count"
-    },
-    {
-     "name": "t",
-     "value": 2.6,
-     "mode": "approx",
-     "precision": 1,
-     "tol": 0.15
     }
    ],
    "notes": "users/item 2.44 and interactions/item 16.12 are run-log quantities. Paper sd corrected 2026-07-11 (was 0.000137): recomputed sample-std 0.0001535 rounds to 0.000153, now printed in the S5.4.2 table.",
@@ -8531,13 +8610,142 @@
      "mode": "count",
      "recomputed": 5,
      "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "t542.u066.welch",
+   "table_id": "table542",
+   "row_label": "user-thinned rho=0.66: independent-arm Welch",
+   "metric": "Welch t/p + 95% CI on per-arm tail values (within-rung; corrected 2026-07-19)",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_USERTITR_text_rho066_s08_VG.json",
+    "_bestrec_run/results_USERTITR_text_rho066_s09_VG.json",
+    "_bestrec_run/results_USERTITR_text_rho066_s10_VG.json",
+    "_bestrec_run/results_USERTITR_text_rho066_s11_VG.json",
+    "_bestrec_run/results_USERTITR_text_rho066_s12_VG.json",
+    "_bestrec_run/results_USERTITR_idonly_rho066_s08_VG.json",
+    "_bestrec_run/results_USERTITR_idonly_rho066_s09_VG.json",
+    "_bestrec_run/results_USERTITR_idonly_rho066_s10_VG.json",
+    "_bestrec_run/results_USERTITR_idonly_rho066_s11_VG.json",
+    "_bestrec_run/results_USERTITR_idonly_rho066_s12_VG.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    "20260608",
+    "20260609",
+    "20260610",
+    "20260611",
+    "20260612"
+   ],
+   "recompute": {
+    "rule": "welch_2arm",
+    "params": {
+     "a": [
+      "_bestrec_run/results_USERTITR_text_rho066_s08_VG.json",
+      "_bestrec_run/results_USERTITR_text_rho066_s09_VG.json",
+      "_bestrec_run/results_USERTITR_text_rho066_s10_VG.json",
+      "_bestrec_run/results_USERTITR_text_rho066_s11_VG.json",
+      "_bestrec_run/results_USERTITR_text_rho066_s12_VG.json"
+     ],
+     "b": [
+      "_bestrec_run/results_USERTITR_idonly_rho066_s08_VG.json",
+      "_bestrec_run/results_USERTITR_idonly_rho066_s09_VG.json",
+      "_bestrec_run/results_USERTITR_idonly_rho066_s10_VG.json",
+      "_bestrec_run/results_USERTITR_idonly_rho066_s11_VG.json",
+      "_bestrec_run/results_USERTITR_idonly_rho066_s12_VG.json"
+     ],
+     "stratum": "tail"
+    }
+   },
+   "recompute_rule": "independent-arm Welch t/df/p + 90/95% CIs on per-arm by_popularity[stratum][NDCG@10] (a vs b)",
+   "paper": [
+    {
+     "name": "diff",
+     "value": 0.000178,
+     "mode": "round",
+     "precision": 6
     },
     {
      "name": "t",
-     "paper": 2.6,
+     "value": 1.58,
+     "mode": "round",
+     "precision": 2
+    },
+    {
+     "name": "p",
+     "value": 0.164,
      "mode": "approx",
-     "recomputed": 2.589173143777221,
+     "tol": 0.01
+    },
+    {
+     "name": "ci95_lo",
+     "value": -9.5e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci95_hi",
+     "value": 0.000451,
+     "mode": "round",
+     "precision": 6
+    }
+   ],
+   "notes": "CI includes zero: the within-rung effect is sign-consistent but not significant under the corrected independent-arm analysis.",
+   "recomputed": {
+    "diff": 0.00017771347810619648,
+    "t": 1.5840303075579405,
+    "df": 6.153585261100537,
+    "p": 0.1630477328062309,
+    "ci95_lo": -9.515494914940097e-05,
+    "ci95_hi": 0.0004505819053617939,
+    "ci90_lo": -3.932269581826767e-05,
+    "ci90_hi": 0.0003947496520306606,
+    "n_units": 5.0
+   },
+   "recomputed_value": 0.00017771347810619648,
+   "paper_check": [
+    {
+     "name": "diff",
+     "paper": 0.000178,
+     "mode": "round",
+     "recomputed": 0.00017771347810619648,
+     "result": "exact",
+     "rounded": 0.000178
+    },
+    {
+     "name": "t",
+     "paper": 1.58,
+     "mode": "round",
+     "recomputed": 1.5840303075579405,
+     "result": "exact",
+     "rounded": 1.58
+    },
+    {
+     "name": "p",
+     "paper": 0.164,
+     "mode": "approx",
+     "recomputed": 0.1630477328062309,
      "result": "within_tol"
+    },
+    {
+     "name": "ci95_lo",
+     "paper": -9.5e-05,
+     "mode": "round",
+     "recomputed": -9.515494914940097e-05,
+     "result": "exact",
+     "rounded": -9.5e-05
+    },
+    {
+     "name": "ci95_hi",
+     "paper": 0.000451,
+     "mode": "round",
+     "recomputed": 0.0004505819053617939,
+     "result": "exact",
+     "rounded": 0.000451
     }
    ],
    "paper_check_class": "exact"
@@ -8684,7 +8892,7 @@
    "cell_id": "t542.u066.dd_vs_full",
    "table_id": "table542",
    "row_label": "dd vs full-density anchor",
-   "metric": "paired diff-of-deltas (tail NDCG@10)",
+   "metric": "same-seed diff-of-deltas (tail NDCG@10; descriptive)",
    "evidence_class": "confirmatory",
    "status": "OK",
    "source_files": [
@@ -8760,35 +8968,12 @@
      "precision": 6
     },
     {
-     "name": "t",
-     "value": 3.47,
-     "mode": "round",
-     "precision": 2
-    },
-    {
-     "name": "ci_lo",
-     "value": 6.5e-05,
-     "mode": "round",
-     "precision": 6
-    },
-    {
-     "name": "ci_hi",
-     "value": 0.000587,
-     "mode": "round",
-     "precision": 6
-    },
-    {
      "name": "pos",
      "value": 5,
      "mode": "count"
-    },
-    {
-     "name": "ci_lo",
-     "value": 0.0,
-     "mode": "gt"
     }
    ],
-   "notes": "",
+   "notes": "Descriptive only (2026-07-19): the former paired t=3.47 / CI-excludes-0 inference is retracted with the pairing assumption; the valid inference is t542.u066.dd_welch (p=0.058, CI includes 0).",
    "recomputed": {
     "mean": 0.00032613955416357373,
     "sd": 0.0002102698308043757,
@@ -8817,51 +9002,20 @@
      "rounded": 0.00021
     },
     {
-     "name": "t",
-     "paper": 3.47,
-     "mode": "round",
-     "recomputed": 3.4682589055759556,
-     "result": "exact",
-     "rounded": 3.47
-    },
-    {
-     "name": "ci_lo",
-     "paper": 6.5e-05,
-     "mode": "round",
-     "recomputed": 6.50550753453845e-05,
-     "result": "exact",
-     "rounded": 6.5e-05
-    },
-    {
-     "name": "ci_hi",
-     "paper": 0.000587,
-     "mode": "round",
-     "recomputed": 0.000587224032981763,
-     "result": "exact",
-     "rounded": 0.000587
-    },
-    {
      "name": "pos",
      "paper": 5,
      "mode": "count",
      "recomputed": 5,
      "result": "exact"
-    },
-    {
-     "name": "ci_lo",
-     "paper": 0.0,
-     "mode": "gt",
-     "recomputed": 6.50550753453845e-05,
-     "result": "qual_ok"
     }
    ],
    "paper_check_class": "exact"
   },
   {
-   "cell_id": "t542.u066.signtest",
+   "cell_id": "t542.u066.dd_welch",
    "table_id": "table542",
-   "row_label": "dd vs full anchor",
-   "metric": "one-sided sign-test p",
+   "row_label": "dd vs full anchor: four-group Welch",
+   "metric": "Welch-Satterthwaite contrast (user066_text-user066_id)-(full_text-full_id)",
    "evidence_class": "confirmatory",
    "status": "OK",
    "source_files": [
@@ -8889,57 +9043,150 @@
    "n_seeds": 5,
    "seeds": [],
    "recompute": {
-    "rule": "sign_test",
+    "rule": "welch_4arm",
     "params": {
-     "a": [
+     "a_text": [
       "_bestrec_run/results_USERTITR_text_rho066_s08_VG.json",
       "_bestrec_run/results_USERTITR_text_rho066_s09_VG.json",
       "_bestrec_run/results_USERTITR_text_rho066_s10_VG.json",
       "_bestrec_run/results_USERTITR_text_rho066_s11_VG.json",
       "_bestrec_run/results_USERTITR_text_rho066_s12_VG.json"
      ],
-     "b": [
+     "a_id": [
       "_bestrec_run/results_USERTITR_idonly_rho066_s08_VG.json",
       "_bestrec_run/results_USERTITR_idonly_rho066_s09_VG.json",
       "_bestrec_run/results_USERTITR_idonly_rho066_s10_VG.json",
       "_bestrec_run/results_USERTITR_idonly_rho066_s11_VG.json",
       "_bestrec_run/results_USERTITR_idonly_rho066_s12_VG.json"
      ],
+     "b_text": [
+      "_bestrec_run/results_TAIL_V2_text_VG.json",
+      "_bestrec_run/results_TAIL_V2_text_seed20260609_VG.json",
+      "_bestrec_run/results_TAIL_V2_text_seed20260610_VG.json",
+      "_bestrec_run/results_TAIL_V2_text_seed20260611_VG.json",
+      "_bestrec_run/results_TAIL_V2_text_seed20260612_VG.json"
+     ],
+     "b_id": [
+      "_bestrec_run/results_TAIL_idonly_VG.json",
+      "_bestrec_run/results_TAIL_idonly_seed20260609_VG.json",
+      "_bestrec_run/results_TAIL_idonly_seed20260610_VG.json",
+      "_bestrec_run/results_TAIL_idonly_seed20260611_VG.json",
+      "_bestrec_run/results_TAIL_idonly_seed20260612_VG.json"
+     ],
      "stratum": "tail"
     }
    },
-   "recompute_rule": "one-sided binomial sign test on per-seed paired deltas",
+   "recompute_rule": "four-group Welch-Satterthwaite contrast (a_text-a_id)-(b_text-b_id) on by_popularity[stratum][NDCG@10]",
    "paper": [
     {
-     "name": "p",
-     "value": 0.031,
+     "name": "est",
+     "value": 0.000326,
      "mode": "round",
-     "precision": 3
-    }
-   ],
-   "notes": "5/5 positive -> p = 0.5^5 = 0.03125.",
-   "recomputed": {
-    "p": 0.03125,
-    "pos": 5.0
-   },
-   "recomputed_value": 0.03125,
-   "paper_check": [
+     "precision": 6
+    },
+    {
+     "name": "t",
+     "value": 2.09,
+     "mode": "round",
+     "precision": 2
+    },
     {
      "name": "p",
-     "paper": 0.031,
+     "value": 0.058,
+     "mode": "approx",
+     "tol": 0.005
+    },
+    {
+     "name": "ci_lo",
+     "value": -1.4e-05,
      "mode": "round",
-     "recomputed": 0.03125,
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.000666,
+     "mode": "round",
+     "precision": 6
+    }
+   ],
+   "notes": "NOT significant (p=0.058; CI includes zero): the S5.4.2 finding is downgraded to suggestive/descriptive (2026-07-19).",
+   "recomputed": {
+    "est": 0.000326139554163574,
+    "t": 2.0898846398306574,
+    "df": 12.097521851229356,
+    "p": 0.058404524375585486,
+    "ci_lo": -1.3574047665218319e-05,
+    "ci_hi": 0.0006658531559923663,
+    "n_units": 5.0
+   },
+   "recomputed_value": 0.000326139554163574,
+   "paper_check": [
+    {
+     "name": "est",
+     "paper": 0.000326,
+     "mode": "round",
+     "recomputed": 0.000326139554163574,
      "result": "exact",
-     "rounded": 0.031
+     "rounded": 0.000326
+    },
+    {
+     "name": "t",
+     "paper": 2.09,
+     "mode": "round",
+     "recomputed": 2.0898846398306574,
+     "result": "exact",
+     "rounded": 2.09
+    },
+    {
+     "name": "p",
+     "paper": 0.058,
+     "mode": "approx",
+     "recomputed": 0.058404524375585486,
+     "result": "within_tol"
+    },
+    {
+     "name": "ci_lo",
+     "paper": -1.4e-05,
+     "mode": "round",
+     "recomputed": -1.3574047665218319e-05,
+     "result": "exact",
+     "rounded": -1.4e-05
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.000666,
+     "mode": "round",
+     "recomputed": 0.0006658531559923663,
+     "result": "exact",
+     "rounded": 0.000666
     }
    ],
    "paper_check_class": "exact"
   },
   {
+   "cell_id": "t542.u066.signtest",
+   "table_id": "table542",
+   "row_label": "dd sign test (RETIRED)",
+   "metric": "one-sided p = 0.031 (retired print, no longer in the paper)",
+   "evidence_class": "exploratory",
+   "status": "REMOVED_FROM_PAPER",
+   "source_files": [],
+   "n_seeds": null,
+   "seeds": [],
+   "recompute": null,
+   "recompute_rule": null,
+   "paper": [],
+   "notes": "RETRACTED 2026-07-19: the sign test treated per-seed dd values as exchangeable paired blocks; the arms are not initialization-paired (S5.3). The 5/5 sign count remains reported descriptively in t542.u066.dd_vs_full. TOMBSTONE: no recomputation.",
+   "recomputed": null,
+   "recomputed_value": null,
+   "paper_check": [],
+   "paper_check_class": "REMOVED_FROM_PAPER"
+  },
+  {
    "cell_id": "t542.matchedR1.tail",
    "table_id": "table542",
    "row_label": "matched-R1: (user - interaction) at rho=0.66",
-   "metric": "tail delta difference",
+   "metric": "tail delta difference (descriptive level contrast)",
    "evidence_class": "confirmatory",
    "status": "OK",
    "source_files": [
@@ -9036,7 +9283,7 @@
    "cell_id": "t542.matchedR1.head",
    "table_id": "table542",
    "row_label": "matched-R1: (user - interaction) at rho=0.66",
-   "metric": "head delta difference",
+   "metric": "head delta difference (descriptive level contrast)",
    "evidence_class": "confirmatory",
    "status": "OK",
    "source_files": [
@@ -11446,7 +11693,7 @@
      "precision": 5
     }
    ],
-   "notes": "The only Table-2 probe at full 5-seed power (pre-declared); CI includes zero -> not actionable.",
+   "notes": "The only Table-2 probe at full 5-seed power (pre-declared); CI includes zero -> not actionable. Cadence caveat (2026-07-19): conn-gate arms evaluated at epochs {10,20} vs every epoch for the base -> unequal best-by-val checkpoint opportunities; the tail CI-includes-zero verdict is cadence-insensitive but the small overall delta is not, and no claim rests on its sign.",
    "recomputed": {
     "mean": 0.00010040741854941224,
     "sd": 0.0002830055326000973,
@@ -11574,7 +11821,7 @@
     "_bestrec_run/run_CONNGATE_MI_k8_seed20260608.log",
     "_bestrec_run/run_CONNGATE_5seed_driver.log"
    ],
-   "n_seeds": 5,
+   "n_seeds": 4,
    "seeds": [],
    "recompute": {
     "rule": "log_scan",
@@ -11595,8 +11842,9 @@
      "precision": 4
     }
    ],
-   "notes": "The learned alpha is not embedded in the result JSONs (fields null); it is parsed from the tracked run logs. All per-seed values (0.00107-0.00110) round to 0.0011 < init 0.0025.",
+   "notes": "The learned alpha is not embedded in the result JSONs (fields null); it is parsed from the tracked run logs. Declared n corrected 5->4 (2026-07-19, audit 20:57): the driver log records seeds 09-12; the seed-20260608 k8 log predates the alpha print line, so only 4/5 values are recoverable (0.00107-0.00110, all rounding to 0.0011 < init 0.0025).",
    "recomputed": {
+    "n_units": 4.0,
     "mean": 0.00108,
     "min": 0.00107,
     "max": 0.0011,

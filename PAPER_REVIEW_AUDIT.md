@@ -6,69 +6,552 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **SILLM4Rec remains the main novelty/related-work inspection risk.** The
-   manuscript now cites SILLM4Rec and gives a concrete, cautious reason for
-   excluding it from direct comparison: the public repository describes
-   generated candidate-ranking tasks and SFT/DPO workflows rather than an
-   established full-catalog LLOO protocol. That is defensible, but still not a
-   substitute for direct full-text protocol inspection because ACM/metadata
-   sources identify it as MMAsia 2025 work using AR2023 5-core data and NDCG.
-   Keep the "pending direct full-text protocol inspection" caveat unless an
-   institutional ACM PDF read confirms non-comparability.
-2. **Venue-template and upload-policy checks remain freeze blockers.** The TeX
-   build vendors `paper_tex/acmart.cls` v2.03 (`2024/02/04`), while CTAN now
-   lists production `acmart` v2.19 (`2026-06-27`). `VENUE_PLAN.md` correctly
-   defers the refresh decision, but submission should not proceed until the
-   current TORS/ACM author instructions are checked for class version,
-   anonymous mode, review line numbers, and first-page metadata.
-3. **DOI/deposit instructions have small but confirmed v1.1.9 metadata drift.**
-   The `v1.1.9` release itself exists, the uploaded zip hash matches the local
-   sidecar, and the manifest verifies against the tag. However,
-   `DOI_DEPOSIT_INSTRUCTIONS.md` still says the zip has `65` entries while the
-   actual `bestrec_deposit_v1.1.9.zip` has `66`, and the internal
-   `README_DEPOSIT.txt` date comes from `_bestrec_run/build_deposit_bundle.py`
-   (`DATE = "2026-07-18"`) while the release body describes v1.1.9 as a
-   `2026-07-19` cut. This is not empirical, but exact DOI-facing metadata
-   should be cleaned before minting.
-4. **TORS cover letter remains a maintainer-fill freeze item, with one wording
-   ambiguity.** Bracketed fields for preprint status, conflicts of interest,
-   suggested/excluded reviewers, and author identity remain. The data/artifacts
-   sentence also still puts "complete artifact" and "archival deposit release"
-   close to the live-audit-chain parenthetical; before upload, make the
-   repository-vs-deposit boundary unambiguous in the cover letter, matching the
-   now-correct `v1.1.9` README.
-5. **Untracked raw-data/run byproducts remain local release-hygiene hazards.**
-   The deterministic deposit builder uses an explicit file list and excludes
-   them, so the current release is not affected. But `git status` still shows
-   untracked raw AR2023 archives and run byproducts, and `git check-ignore`
-   does not ignore them. Add ignore rules or a release-preflight assertion if
-   manual packaging or broad `git add` workflows are possible.
-6. **Office V3/FIR per-user sidecar policy remains reviewer-facing.** The
-   tracked-artifact boundary is explicit and the strict gate does not depend on
-   local-only per-user sidecars. Still, because Office V3 is counted and
-   FIR-breadth is pre-registered, keep stating that aggregate printed claims
-   recompute from tracked JSON/manifest artifacts and that sidecars are
-   supplementary, hash-pinned, and available on request/deposit at acceptance.
-7. **The contribution remains intentionally incremental.** The paper's safest
-   top-journal framing is not "new recommender architecture" or broad SOTA. It
-   is an artifact-gated evaluation discipline plus an incremental left-causal
-   FIR adaptation, a modest TAPE ablation, and a narrow dataset-conditional
-   text-benefit finding, all under full-catalog AR2023 5-core LLOO.
-8. **No current hard numerical blocker in the strict empirical checks.** Fresh
-   strict rebuild passes at current HEAD `3877b3c8`: HSTU parity exact, `168`
-   table cells recomputed, `149` exact, `19` within-rounding, `0` mismatches,
-   `0` untraceable, all `14` declared claim families sourced, manifest
-   verification OK, MI V2 gate OK, Office V3 PASS, FIR breadth CONFIRMED x2,
-   and Office V1 descriptive/VOID.
-9. **The previous `v1.1.8` deposit-readiness blocker is closed by
-   `v1.1.9-deposit`.** The old release is marked superseded/not final-DOI
-   material, and the `v1.1.9` bundle README now states the full strict chain and
-   historical-audit boundary. Current branch drift past the tag is one response
-   file only: `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`.
-10. **PDF presentation is currently acceptable but not freeze-polished.**
-    `PAPER_TORS.pdf` is 40 pages and hygiene PASS; `PAPER_TORS_acmsmall.pdf`
-    is 42 pages; `PAPER_SUBMISSION.pdf` is 46 pages. Treat line numbers,
-    class version, and final first-page formatting as upload-policy decisions.
+1. **[CONFIRMED, rejection-level] The lead “every empirical table cell”
+   assertion is false.** The paper repeats that the fail-closed manifest
+   enumerates and recomputes every empirical table cell. Yet generated Table A1
+   contains more than twenty manuscript-owned experimental values while its
+   provenance explicitly says `family=md-only` and `checked: 0`. The dataset
+   table likewise prints quantitative counts and result-status labels under
+   `checked: 0`. A gate that knowingly passes unverified empirical tables is
+   not fail-closed.
+2. **[CONFIRMED, rejection-level] The release manifest binds all ten
+   `MI_rebuild` claims to the wrong same-named files.** It records the hashes of
+   the main EXEC2 JSONs, not the distinct `rebuild_v2` JSONs consumed by the
+   strict table graph. Basename-only lookup lets verification find a different
+   path with the expected hash and still report PASS. Thus “128/128
+   git-backed entries verified” does not establish the claimed clean-rebuild
+   binding.
+3. **[CONFIRMED, rejection-level] Public-release claims advertise about
+   1.09 GB of v0.9 split/cache assets that are not on any release.** The live
+   `v0.9-audit-evidence` release contains only a parity zip and a manifest.
+   Twelve derived splits and four text caches called immutable v0.9 release
+   assets in `README.md`/`RELEASE_MANIFEST.json` exist only in ignored local
+   directories. The verifier treats their absence as `SKIPPED-missing`, so a
+   fresh clone can pass without the advertised evidence.
+4. **[CONFIRMED] The lead methodological contribution is demonstrated but not
+   evaluated.** There is no fault-injection corpus, detection-recall/false-pass
+   measurement, runtime/maintenance cost, independent clean-room rerun, or
+   comparison with existing reproducibility and artifact-review practice. The
+   newly found false pass and untracked tables directly expose this gap.
+5. **[CONFIRMED] The novelty framing omits close methodological prior art.**
+   Related work cites three recommender-evaluation papers but does not engage
+   the TORS 2026 methodological-standards editorial, preregistration/TOP
+   guidance, ACM artifact review and badging, provenance standards, or prior
+   executable/continuous research-compendium systems. The defensible novelty
+   is domain-specific integration and operationalization, not a new general
+   evaluation doctrine.
+6. **[CONFIRMED] The abstract and contribution spine are not top-journal
+   ready.** The canonical Markdown abstract is roughly 1,600 words, spans six
+   paragraphs, and pushes the TORS Introduction to page 3. Eight heterogeneous
+   contributions mix methodology, incremental modeling, empirical patterns,
+   negative results, implementation, and debugging. This obscures the paper's
+   already modest and deliberately incremental scientific contribution.
+7. **[CONFIRMED] Evidence labels and some inferential language are too
+   permissive.** The manifest defines any ≥5-seed family as confirmatory even
+   when post-hoc, while preregistration is an alternative route. Five
+   post-selection seeds do not make a hypothesis confirmatory. “Mean ± SD
+   bands non-overlapping” is also not a paired inferential test for same-seed
+   arms; paired differences and intervals/tests should be reported instead.
+8. **[CONFIRMED] The comparative baseline spine remains weak for a top
+   journal.** The paper discusses modern baselines, but the auditable
+   same-statistics comparison is primarily popularity, published single-seed
+   points, and one environment-caveated local comparator regeneration. The
+   numerical disclaimers are responsible, but they do not substitute for
+   strong, tuned, multi-seed, protocol-matched baselines and ablations.
+9. **[CONFIRMED] Deposit/release governance still yields false assurance.**
+   At descendant HEAD `697f38421c04`, the v1.1.9 check reports `REBUILD mode`
+   and exits zero although post-tag bundle inputs changed; only 28 of 64
+   bundled payloads are manifest-covered. The source DOI instructions now say
+   66 zip entries, but still say 51 result JSONs rather than 81, and the
+   already-published v1.1.9 zip retains the earlier 65-entry internal wording.
+   Source and release dates also mix July 18 UTC and July 19 Sydney.
+10. **[CONFIRMED WITH CAVEAT] Numerical table reconstruction remains green,
+    but this does not clear the provenance defects above.** The strict graph
+    recomputes 168 declared cells (149 exact, 19 within rounding, zero numeric
+    mismatches/untraceable), and MI/Office/FIR gates pass. Those tests support
+    the declared numerical families; they cannot validate omitted tables,
+    missing public assets, or wrong-path manifest binding.
+11. **[AUTHOR VERIFICATION] “Immutable preregistration” overstates independently
+    verifiable timing.** The repository is currently private and the relevant
+    history is not an independent public timestamp or registry. Internal Git
+    ordering supports the authors' sequence, but Git alone does not prove to a
+    reviewer that history was frozen before outcomes. Use “version-controlled
+    predeclared protocol” unless an independent pre-outcome timestamp exists.
+12. **[CONFIRMED SUBMISSION BLOCKER] The TORS driver uses the wrong review
+    mode.** Current TORS guidance requires `manuscript,screen` and no line
+    numbers, and states that review is single-blind. The source instead uses
+    `manuscript,review,anonymous`, produces line numbers, and the venue plan
+    assumes double anonymity. The vendored ACM class is also outdated. Lower
+    freeze defects include a one-line orphan on reader-PDF page 46, Office V1
+    wording that momentarily appears to contradict V3 PASS, and “10 fresh
+    seeds” where “five seeds per kernel / ten arm-runs” is exact.
+
+## Audit Run - 2026-07-19 12:57 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Automation memory read first from
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`.
+- Branch/HEAD: `codex/bestrec-sota-results` / `697f38421c04`
+  (`Respond to audit run 2026-07-19 09:34...`); working tree was clean before
+  this audit edit.
+- Deposit tag: `v1.1.9-deposit` / `44b6429e`. Seven files differ between the
+  tag and HEAD: `.gitignore`, `COVER_LETTER_TORS.md`,
+  `DOI_DEPOSIT_INSTRUCTIONS.md`, this audit, `RELEASE_MANIFEST.json`,
+  `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`, and
+  `_bestrec_run/build_deposit_bundle.py`.
+- No workspace file had a modification time later than the automation's
+  supplied last-run time. This run therefore deep-audited the current snapshot
+  rather than treating an author edit as presumptively correct.
+- Sources and artifacts inspected include `PAPER_SUBMISSION.md` and PDF,
+  `paper_tex/PAPER_TORS.pdf`, TeX sections and generated tables,
+  `TABLES_PROVENANCE.json`, `hstu_results_manifest.json`,
+  `RELEASE_MANIFEST.json`, release/update/build scripts, release bundles and
+  GitHub assets, preregistrations/adjudicators, the bibliography, cover letter,
+  venue plan, and prior author responses.
+- Per `CANONICAL_SUBMISSION.md`, `PAPER_SUBMISSION.md` plus its reader PDF are
+  canonical; the `paper_tex/` manuscript and TORS PDFs are derived submission
+  artifacts. Claims were checked against both layers for drift.
+- PDF visual review rendered TORS pages 1, 18, 32, 34, and 40 and reader pages
+  1 and 46 with Poppler. The sampled TORS pages were legible and unclipped.
+- This run changes no manuscript, result, table, release, or analysis code. It
+  updates only this cumulative audit and the automation memory.
+
+### Strict Reviewer Verdict
+
+**Current recommendation: reject in present form, with encouragement to
+resubmit after a major methodological and presentation rebuild.**
+
+The reason is not a newly found numerical disagreement. The declared strict
+table graph still reproduces its 168 cells. The problem is more fundamental:
+the paper's lead contribution is a fail-closed, reviewer-rerunnable assurance
+apparatus, yet the apparatus (a) knowingly leaves empirical tables unchecked,
+(b) verifies a clean-rebuild family against the wrong same-named files, and
+(c) passes when more than a gigabyte of advertised public evidence is absent.
+Those are direct counterexamples to the central claim, not peripheral release
+cosmetics.
+
+The scientific recommender contribution is deliberately described by the
+authors as incremental. It could still support a focused paper, but the
+current 40-page review manuscript and approximately 1,600-word abstract place
+more weight on the unevaluated assurance apparatus than the evidence can
+carry. The paper needs either to formally evaluate and harden that apparatus,
+or to reframe it as a worked reproducibility engineering case study and make
+the recommender result the disciplined center of the submission.
+
+### What Passed
+
+- HSTU protocol-parity reconstruction: exact.
+- Strict table graph: `168` declared cells; `149` exact, `19` within printed
+  rounding, `0` numerical mismatches, `0` untraceable; `14/14` declared result
+  families pass.
+- MI dual-kernel gate: PASS; K=16 lower bound `0.04096` and K=8 lower bound
+  `0.04083`.
+- Office V3: PASS; lower bounds `0.03033` and `0.03024`.
+- FIR breadth: both additional categories adjudicate CONFIRMED.
+- Published `bestrec_deposit_v1.1.9.zip` is internally intact: `66` entries,
+  `65` checksum rows, no checksum mismatch; local and GitHub SHA256 agree
+  (`0998423d...`).
+- `.gitignore` now covers the raw-data/run byproducts flagged by the previous
+  audit; the cover-letter repository/deposit boundary and source-side 66-entry
+  wording were also repaired.
+
+These passes support the values inside the declared graph. They do not rescue
+omitted empirical tables or make a path-ambiguous/public-asset-skipping
+manifest fail-closed.
+
+### Confirmed Problems
+
+#### CP-1 — “Every empirical table cell” is contradicted by the build output
+
+The abstract, introduction, related work, contribution list, conclusion, and
+availability statement repeatedly claim that a manifest enumerates or
+recomputes every empirical table cell/printed empirical claim. However:
+
+- `paper_tex/tables/tableA1.tex:3` states
+  `family=md-only (pandoc-converted; no JSON family)` and
+  `check={"checked": 0, ...}`.
+- That table prints 22 experimental variants with manuscript-owned NDCG@10
+  values, percentage deltas, discontinuation decisions, and seed-specific
+  results. It is plainly empirical, not merely expository.
+- `paper_tex/tables/table_datasets41.tex:3` is also `checked: 0` while printing
+  six datasets' user/item/interaction counts and Office/FIR result-status
+  labels.
+- `emit_latex_tables.py` deliberately emits zero-check provenance for
+  `md-only` tables, while the required-family graph omits them.
+
+This is a confirmed false universal claim. A fail-closed gate cannot silently
+permit any empirical table with `checked: 0`.
+
+**Required fix:** enumerate every manuscript-owned numerical/status cell with
+an exact source path and recomputation rule; make `checked: 0` on an empirical
+table a build failure; add a scanner that compares all emitted table keys
+against the graph; and regression-test the failure by injecting an altered
+Table A1 value. If the evidence no longer exists, retire the table rather than
+narrowing the gate around it. Only after coverage is complete should “every”
+return to the abstract.
+
+#### CP-2 — `MI_rebuild` manifest verification resolves the wrong files
+
+The `MI_rebuild` family in `RELEASE_MANIFEST.json` repeats the hashes of the
+main EXEC2 result JSONs. The strict table graph actually consumes ten distinct
+files under `_bestrec_run/rebuild_v2/`. Direct normalized-hash comparison found:
+
+- `10/10` manifest `MI_rebuild` hashes match the main files;
+- `0/10` match the actual `rebuild_v2` files;
+- all ten main/rebuild pairs share basenames but have different hashes.
+
+For example, K=16 seed 20260618 is recorded as main-file hash
+`87aa5b6b...`, while the rebuild artifact hashes to `79994666...`.
+`update_release_manifest.py` locates result files by basename and accepts
+`any` matching path. It therefore finds the main file and reports the rebuild
+entry verified. This is a false PASS caused by path aliasing.
+
+The result values are not shown to be corrupt: Git tracks the rebuild files,
+and the strict table graph reads them. What fails is the claimed release-level
+hash binding and the assurance supplied by “128/128 git-backed entries.”
+
+**Required fix:** store repository-relative paths, not basenames, for every
+result entry; verify exactly that path; reject duplicate logical identities and
+ambiguous basenames; regenerate the manifest; add a collision test using two
+same-named/different-hash fixtures; and cut a new release after the corrected
+manifest passes at the exact tag.
+
+#### CP-3 — Advertised v0.9 release assets are not publicly released
+
+Live GitHub release inspection found only two assets on
+`v0.9-audit-evidence`: `pinned_env_parity_artifacts.zip` and
+`RELEASE_MANIFEST.json`. No release contains the split or text-cache assets
+described in `README.md` and `RELEASE_MANIFEST.json` as immutable v0.9 release
+assets.
+
+- Missing advertised derived assets: 12 splits totaling `575,390,759` bytes
+  and four text caches totaling `515,173,376` bytes.
+- Total: `1,090,564,135` bytes.
+- They exist in ignored local directories but not in the v0.9, v1.1.9, or
+  current Git trees.
+- Result JSONs are Git-tracked rather than v0.9 assets; some current result
+  families did not even exist at v0.9.
+- The update verifier converts absent split/cache paths to
+  `SKIPPED-missing` rather than failure. A fresh clone can therefore PASS while
+  the files called release assets are unavailable.
+
+This is not proof that the current printed metrics are wrong; the strict
+numeric graph uses tracked aggregate JSONs. It is a confirmed public
+reproducibility and documentation contradiction.
+
+**Required fix:** either upload byte-identical assets with a public index and
+verify download-to-hash from a genuinely clean clone, or explicitly describe
+them as local/regenerable but not released. Missing items represented as
+release assets must fail verification. Test the entire advertised workflow in
+CI from a fresh clone without the authors' ignored directories.
+
+#### CP-4 — The assurance apparatus has no formal evaluation
+
+The apparatus is positioned as the lead method, but the research questions and
+experiments evaluate model components and text effects rather than the
+apparatus itself. The paper offers a successful build, a retired result, a VOID
+episode, and parity controls, but no systematic evidence about:
+
+- detection recall for realistic paper/artifact faults;
+- false-pass and false-alarm rates;
+- coverage of tables, prose claims, figures, and release artifacts;
+- runtime and author-maintenance burden;
+- robustness to ambiguous paths, missing downloads, stale generated files,
+  dirty trees, post-tag drift, rounding, and contradictory adjudicators;
+- an independent reviewer/clean-room rerun; or
+- comparison with a conventional manual audit or established artifact
+  evaluation workflow.
+
+CP-1 through CP-3 are exactly the kinds of faults that such an evaluation
+should include, and the current apparatus misses them.
+
+**Required fix:** create a preregistered fault corpus covering altered values,
+wrong rounding, seed swaps, stale tables, missing artifacts, basename
+collisions, code drift, dirty trees, post-tag changes, contradictory verdicts,
+and unchecked tables. Report detection rate, false positives, runtime, and
+coverage; have an independent operator reproduce the result from the public
+release. Otherwise demote the apparatus from “lead methodological
+contribution” to “case-study workflow.”
+
+#### CP-5 — The novelty claim is under-situated
+
+The related-work subsection on evaluation practice cites Ferrari Dacrema
+2019/2021 and Sun 2020. That is not enough for a 2026 paper whose lead claim is
+reproducibility methodology. Close literature and standards that must be
+engaged include:
+
+- Jannach and Chen, *Improving Methodological Standards in Recommender Systems
+  Offline Evaluation* (TORS, 2026), [DOI
+  10.1145/3800587](https://doi.org/10.1145/3800587).
+- Pineau et al., the NeurIPS reproducibility program, checklists, code
+  submission, and community process ([JMLR
+  2021](https://www.jmlr.org/papers/v22/20-303.html)).
+- Nosek et al. on preregistration/prediction versus postdiction
+  ([PNAS 2018](https://pubmed.ncbi.nlm.nih.gov/29531091/)) and the
+  [Transparency and Openness Promotion guidelines](https://doi.org/10.1126/science.aab2374).
+- [ACM Artifact Review and
+  Badging](https://www.acm.org/publications/policies/artifact-review-and-badging-current)
+  and [W3C PROV](https://www.w3.org/TR/prov-overview/).
+- Beaulieu-Jones and Greene's Docker/CI “continuous analysis” with an
+  automatically rerunnable reviewer audit trail
+  ([Nature Biotechnology 2017](https://pmc.ncbi.nlm.nih.gov/articles/PMC6103790/)).
+
+The most defensible novelty is narrower: integration of printed-cell-to-source
+mapping, comparator regeneration, retirement, and symmetric VOID handling in
+one recommender case study. Do not imply that preregistration, provenance,
+executable compendia, or artifact-gated reviewing is new.
+
+#### CP-6 — Abstract, structure, and contribution scope are uncompetitive
+
+- The canonical Markdown abstract is approximately `1,600` words, six
+  paragraphs, and citation-heavy. In the 40-page TORS PDF, the Introduction
+  begins on page 3.
+- It previews many negative probes, implementation diagnoses, release details,
+  and eight separate contributions before the reader reaches the paper.
+- The full canonical manuscript is roughly `19,600` words.
+- The lead methodological contribution and the stated research questions are
+  misaligned: the RQs concern recommender mechanisms/text, not apparatus
+  performance.
+
+**Required fix:** rewrite the abstract as one paragraph of roughly 200–300
+words: problem, scoped method/case study, two or three strongest results,
+limitations/non-claim. Reduce the contribution list to at most three coherent
+items. Move engineering/debugging inventories and most negative probes to
+supplementary material. Make the title, RQs, abstract, and experiment spine
+answer the same question.
+
+#### CP-7 — “Confirmatory” labeling and paired inference need correction
+
+`hstu_results_manifest.json:10` defines confirmatory evidence as a ≥5-seed
+family **or** a preregistered confirmation, and the results section repeats
+that cells are confirmatory when preregistered or ≥5-seed. This conflates
+replication count with prospective hypothesis status. A post-hoc five-seed
+study remains exploratory unless it is a separate, prospectively frozen
+confirmation.
+
+Table 1 also calls improvements “bands non-overlapping” using mean ± sample
+SD. For same-seed arms, non-overlap of marginal SD bands is not a paired
+inferential analysis. The inferential object is the within-seed difference;
+see NIST's [paired-observation
+guidance](https://www.itl.nist.gov/div898/handbook/prc/section3/prc311.htm).
+
+**Required fix:** split labels into at least `preregistered-confirmatory`,
+`multi-seed exploratory/replication`, `single-seed exploratory`, and
+`external constant`. For paired arms, print per-seed deltas, mean delta, 95%
+CI, and a named paired test/effect-size procedure. Define hypothesis families
+and multiplicity handling; do not rely on uncorrected p-values across a large
+search map.
+
+#### CP-8 — Baseline evidence is too weak for the breadth of presentation
+
+Section 4.2 names popularity, SASRec, BERT4Rec, TIGER, BLaIR, and LIGER, but
+the auditable same-statistics spine does not execute a strong set of tuned,
+multi-seed, protocol-matched modern baselines. The main comparison combines
+popularity, published single-seed constants, an environment-caveated one-run
+port/regeneration, and many internal ablations. The manuscript responsibly
+calls its comparator claims per-category point-estimate comparisons and not
+general SOTA; that caveat prevents a false SOTA claim but does not provide the
+comparative evidence expected for a top journal.
+
+**Required fix:** run the strongest feasible sequence and text-aware baselines
+under the identical split, catalog, evaluation, tuning budget, and multiple
+seeds; report tuning spaces and compute. If this cannot be done, sharply narrow
+the scientific claims and treat the work as a methodology case study rather
+than a competitive recommender paper.
+
+#### CP-9 — TORS submission mode is currently non-compliant
+
+The official TORS [Submitting a Manuscript
+guidance](https://dl.acm.org/journal/tors/author-guidelines#submittingms)
+instructs authors to remove line numbers and to change
+`\documentclass[manuscript,screen,review]{acmart}` to
+`\documentclass[manuscript,screen]{acmart}`. The [peer-review
+policy](https://dl.acm.org/journal/tors/author-guidelines#peer-review-process)
+states that reviews are single-blind.
+
+Current `paper_tex/main.tex:11` instead uses
+`\documentclass[manuscript,review,anonymous]{acmart}`, and the rendered PDF has
+line numbers. `VENUE_PLAN.md` calls TORS double-anonymous. The line-number and
+`review` conflict is direct. Removing `anonymous` follows from the stated
+single-blind model, although that option is not separately named in the
+verified policy text.
+
+The project also vendors `acmart` v2.03 (2024-02-04). ACM's current [author
+submission page](https://www.acm.org/publications/authors/submissions) lists a
+newer primary article template, and [CTAN](https://ctan.org/pkg/acmart) lists
+v2.19. Refresh the class/template through an official distribution and rebuild
+before submission; do not hand-edit the class.
+
+#### CP-10 — Release/tag governance and documentation still drift
+
+- `build_deposit_bundle.py --check-only` at descendant HEAD reports
+  `boundary: REBUILD mode` and exits zero even though seven files differ from
+  `v1.1.9-deposit` and current bundled content would differ.
+- Only `28/64` bundle payloads are covered by the manifest comparison; 36 are
+  skipped. The response's statement that the builder is manifested is false:
+  `_bestrec_run/build_deposit_bundle.py` is absent from
+  `RELEASE_MANIFEST.json`/the manifest updater's submission-document list.
+- `DOI_DEPOSIT_INSTRUCTIONS.md` now correctly says the zip has 66 entries, but
+  still says 51 result JSONs. The intended current physical inventory is 81
+  JSONs plus 10 tree-state sidecars (91 entries); the 81 JSONs have only 71
+  unique basenames because ten main/rebuild names collide.
+- The already-published v1.1.9 zip is intact but contains the old internal
+  65-entry wording. That is source-versus-release drift, not zip corruption.
+- `CITATION.cff`/DOI status use July 18 while the manifest/builder use July 19
+  Sydney. The time convention is not explicit throughout.
+
+**Required fix:** correct the result inventory, adopt one explicit date/time
+convention, manifest every builder input plus the builder, compare exact
+paths/content, and fail when an existing release version/tag is rebuilt from a
+non-identical commit. Cut v1.1.10 (or later); never create different bytes
+under the v1.1.9 identity.
+
+#### CP-11 — Local wording and layout defects remain
+
+- The heading “Office_Products (second-category attempt) — descriptive only”
+  and sentence “We therefore treat Office as descriptive evidence” appear
+  immediately before Office V3 PASSED. Qualify these as **Office V1** so the
+  retained VOID cannot be misread as contradicting the counted V3 result.
+- “10 never-inspected fresh seeds” means five unique seed IDs evaluated under
+  two kernels. Use “five pre-specified seeds per kernel; ten arm-runs.”
+  The clean replay after EXEC1 is disclosed and numerically consistent, but it
+  is a replay after those seed outcomes existed.
+- The reader `PAPER_SUBMISSION.pdf` has 46 pages, and page 46 contains only the
+  continuation “preprocessing and re-running our pipeline.” Remove this orphan
+  at freeze.
+- Sampled TORS pages had no clipping or broken figures, but the first page
+  carries review line numbers and draft-style ACM footer material. Re-evaluate
+  it after applying the correct TORS mode/template.
+
+### Factual And Literature Checks
+
+#### SILLM4Rec comparison is resolved, not pending
+
+The stale audit treated full-text protocol inspection as outstanding. Official
+ACM HTML now resolves it:
+
+- [`4.1.1/Table 2](https://dl.acm.org/doi/10.1145/3743093.3771011#sec-4-1-1):
+  500 disjoint Video_Games test users.
+- [`4.1.3](https://dl.acm.org/doi/10.1145/3743093.3771011#sec-4-1-3):
+  histories capped at the most recent 20 items.
+- [`4.1.4](https://dl.acm.org/doi/10.1145/3743093.3771011#sec-4-1-4):
+  one last-interaction positive plus nine randomly selected negatives.
+- [Table 1](https://dl.acm.org/doi/10.1145/3743093.3771011#tab1):
+  Video_Games NDCG@10 `0.6073` under that sampled ten-candidate setup.
+
+Therefore `0.6073` is not a full-catalog comparator and should not be placed
+beside this paper's full-catalog values. Replace “pending direct full-text
+inspection” with this confirmed protocol distinction and cite the exact
+sections. This clears a comparator ambiguity; it does not strengthen the
+paper's novelty.
+
+#### Preregistration timing is not independently established
+
+At audit time, `gh repo view` reports the repository as PRIVATE. The relevant
+Git commits exist in the stated order, but the preregistration-introducing
+commits show no valid Git signature (`%G? = N`). Private, unsigned Git history
+is internal provenance; commit timestamps and ancestry are not an independent
+pre-outcome registry.
+
+This is an author-verification issue, not evidence of misconduct. If an OSF,
+Zenodo, institutional archive, transparency log, signed tag, or other
+independent timestamp predates the runs, cite it. Otherwise replace
+“immutable preregistration” with “version-controlled predeclared protocol,”
+state the limitation, and preregister any new confirmation externally before
+running it.
+
+### Plausible Risks / Author Verification
+
+1. **Independent timing:** provide a non-rewriteable external timestamp for
+   each claim called preregistered, or narrow the term as above.
+2. **Public reproducibility:** decide whether the split/cache files are meant
+   to be downloadable evidence or merely regenerable local derivatives. The
+   current documents say both.
+3. **Apparatus positioning:** decide whether the primary paper is about the
+   assurance method or the recommender finding. The current RQs and evidence
+   support different centers.
+4. **Statistical plan:** identify the prospectively declared hypothesis
+   families, multiplicity policy, and which five-seed results were selected
+   after inspecting exploratory runs.
+5. **Baseline feasibility:** document which current text-aware/sequence
+   baselines can be executed fairly and which exclusions are resource or
+   protocol constraints.
+6. **Sidecar availability:** Office/FIR per-user sidecars are locally
+   hash-pinned but not public. Confirm the editor's artifact/deposit
+   expectation before relying on “available on request.”
+7. **Submission metadata:** fill cover-letter identity, COI, preprint, and
+   reviewer fields only after the TORS single-blind policy is reflected
+   consistently across the venue plan and TeX driver.
+
+### Concrete Fix Order
+
+1. **Stop claiming fail-closed coverage until it is true:** graph Table A1 and
+   every other empirical table/status cell; fail on empirical `checked: 0`.
+2. **Repair exact-path provenance:** path-qualify `MI_rebuild` entries, reject
+   basename collisions, regenerate, and add collision/fault tests.
+3. **Make the public artifact story truthful:** publish the missing assets or
+   remove release-asset claims; test from a clean public clone.
+4. **Evaluate or demote the lead method:** run the fault corpus and independent
+   rerun, or reframe it as case-study engineering.
+5. **Rewrite the paper's front end:** 200–300-word abstract, at most three
+   contributions, aligned title/RQs/experiments, leaner main paper.
+6. **Correct evidence classes and statistics:** separate preregistered from
+   multi-seed exploratory evidence; use paired differences/intervals and
+   explicit multiplicity policy.
+7. **Strengthen same-protocol baselines** or narrow the scientific claim to
+   what the existing comparator evidence supports.
+8. **Add the missing methodological literature** and state the narrower
+   domain-specific integration claim.
+9. **Apply current TORS mode/template:** `manuscript,screen`, no line numbers;
+   reconcile single-blind identities and rebuild/visually inspect every page.
+10. **Cut a new coherent release:** manifest builder and every payload, correct
+    inventory/date wording, fail on descendant rebuilds, and publish new bytes
+    only under a new version.
+11. **Clean local wording/layout:** Office V1 qualifier, seed/arm terminology,
+    SILLM4Rec protocol citation, and the orphaned reader-PDF line.
+
+### Open Questions
+
+1. Can the authors produce an independent pre-run timestamp for MI, Office V3,
+   and FIR-breadth preregistrations?
+2. Where are the 12 split and four cache files that the live documentation
+   calls v0.9 release assets?
+3. Are the underlying artifacts for Table A1 still available so every value
+   can be recomputed, or must the table be retired?
+4. Will the paper formally evaluate the assurance apparatus, or reframe it as
+   a worked engineering practice?
+5. Which tuned, protocol-matched modern baselines can be added under a fair
+   compute budget?
+6. What is the intended canonical release-date convention: UTC publication
+   date or Australia/Sydney build date?
+
+### Running Checklist
+
+- [x] Locate manuscript sources, TeX, PDFs, figures/tables, references,
+      manifests, results, preregistrations, release builders, and deposits.
+- [x] Read automation memory and preserve earlier timestamped audits.
+- [x] Re-run the declared numerical/parity/MI/Office/FIR checks read-only.
+- [x] Inspect generated table provenance rather than trusting the global PASS.
+- [x] Compare manifest hashes to exact main and rebuild paths.
+- [x] Inspect live GitHub release inventories and fresh-clone availability.
+- [x] Fact-check SILLM4Rec's exact evaluation protocol from official full text.
+- [x] Fact-check current TORS submission mode and review policy.
+- [x] Render and visually inspect representative/final PDF pages.
+- [ ] Remove or fully gate every empirical `md-only` table.
+- [ ] Correct `MI_rebuild` path binding and add collision regression tests.
+- [ ] Publish missing assets or correct every v0.9 release-asset claim.
+- [ ] Evaluate the apparatus with a fault corpus and independent rerun.
+- [ ] Rewrite and shorten the abstract/contribution/RQ spine.
+- [ ] Reclassify post-hoc multi-seed evidence and repair paired inference.
+- [ ] Add strong same-statistics baselines or narrow the paper's center.
+- [ ] Add close reproducibility/preregistration/provenance literature.
+- [ ] Rebuild under current TORS `manuscript,screen` guidance without line
+      numbers and resolve single-blind author presentation.
+- [ ] Cut a path-exact, fresh-clone-tested next release; do not overwrite
+      v1.1.9.
+- [ ] Remove the reader-PDF orphan and complete cover-letter fields.
 
 ## Audit Run - 2026-07-19 09:34 Australia/Sydney
 

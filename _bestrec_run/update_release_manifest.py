@@ -125,6 +125,17 @@ def verify(m):
 
     def check_named(section, key, digest, hasher=sha):
         nonlocal checked
+        if "/" in key:  # path-qualified (CP-2, audit 2026-07-19 12:57): exact path only
+            ap = os.path.join(ROOT, key.replace("/", os.sep))
+            if not os.path.exists(ap):
+                (missing_asset if section in RELEASE_ASSET_SECTIONS else bad).append(
+                    f"{section}/{key}: MISSING (exact path)")
+                return
+            if hasher(ap) == digest:
+                checked += 1
+            else:
+                bad.append(f"{section}/{key}: hash mismatch vs manifest (exact path)")
+            return
         cands = locate(idx, key)
         if not cands:
             (missing_asset if section in RELEASE_ASSET_SECTIONS else bad).append(
@@ -218,7 +229,17 @@ def regen(m):
                 drift.append(f"{sec}/{key}")
     for fam, files in m["result_families"].items():
         for fn, digest in files.items():
+            if "/" in fn:  # path-qualified: exact file must match
+                ap = os.path.join(ROOT, fn.replace("/", os.sep))
+                if not (os.path.exists(ap) and sha_norm(ap) == digest):
+                    drift.append(f"result_families/{fam}/{fn}")
+                continue
             cands = idx.get(fn, [])
+            hashes = {sha_norm(c) for c in cands}
+            if len(hashes) > 1:
+                drift.append(f"result_families/{fam}/{fn}: AMBIGUOUS basename "
+                             "(multiple distinct-hash files) -- path-qualify this entry")
+                continue
             if not any(sha(c) == digest or sha_norm(c) == digest for c in cands):
                 drift.append(f"result_families/{fam}/{fn}")
     if drift:
@@ -231,6 +252,11 @@ def regen(m):
     # proven by the drift guard above, which accepts the legacy raw digest)
     for fam, files in m["result_families"].items():
         for fn in list(files.keys()):
+            if "/" in fn:
+                ap = os.path.join(ROOT, fn.replace("/", os.sep))
+                if os.path.exists(ap):
+                    files[fn] = sha_norm(ap)
+                continue
             cands = idx.get(fn, [])
             if cands:
                 files[fn] = sha_norm(cands[0])
@@ -395,6 +421,15 @@ def verify_git(m, commit):
         by_name.setdefault(pth.rsplit("/", 1)[-1], []).append(pth)
     for fam, files in m.get("result_families", {}).items():
         for fn, digest in files.items():
+            if "/" in fn:  # exact tree path (CP-2)
+                d = blob_norm(fn)
+                if d is None:
+                    bad.append(f"result_families/{fam}/{fn}: not in git tree {commit[:8]}")
+                elif d != digest:
+                    bad.append(f"result_families/{fam}/{fn}: manifest != git blob (exact path)")
+                else:
+                    checked += 1
+                continue
             paths = by_name.get(fn, [])
             if not paths:
                 bad.append(f"result_families/{fam}/{fn}: not in git tree {commit[:8]}")

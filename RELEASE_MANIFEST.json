@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "3877b3c82abd8d26f93463a9a1c208343d5323d8",
+  "git_commit": "697f38421c046e74f4805ed995441788b2cd164f",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -102,111 +102,111 @@
   },
   "result_families": {
     "MI_gate_EXEC2": {
-      "results_SOTACONF_V2_k16_MI_seed20260618.json": "87aa5b6ba21dd9a77ff5c5617540cdc387f55a2fe05fdbda8ca5be74a44ab705",
-      "results_SOTACONF_V2_k16_MI_seed20260619.json": "003983b5d9f43d796556cdf63e5b72db3343e03956f0b29fe097953fd2c361ed",
-      "results_SOTACONF_V2_k8_MI_seed20260618.json": "8b6de9a5c41602bc2e4db0570d0ba35c6ddbf5435dc2a537ddae9836bf930320",
-      "results_SOTACONF_V2_k8_MI_seed20260619.json": "5bba7cd01dbd009d5a1cb7c5c24efe5ac63ec3eeb93b50b04d9be93bdb8a3063"
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260618.json": "87aa5b6ba21dd9a77ff5c5617540cdc387f55a2fe05fdbda8ca5be74a44ab705",
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260619.json": "003983b5d9f43d796556cdf63e5b72db3343e03956f0b29fe097953fd2c361ed",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260618.json": "8b6de9a5c41602bc2e4db0570d0ba35c6ddbf5435dc2a537ddae9836bf930320",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260619.json": "5bba7cd01dbd009d5a1cb7c5c24efe5ac63ec3eeb93b50b04d9be93bdb8a3063"
     },
     "MI_gate_EXEC2_rest": {
-      "results_SOTACONF_V2_k16_MI_seed20260620.EXEC1.json": "2046b27c04ae11376b2305ff2c129262062ce0c50b3228cf5908e51a8169ce5a",
-      "results_SOTACONF_V2_k16_MI_seed20260620.json": "e8831fa3e3c5e7c3662ff31deb1f0d099f00d87479b36cd17943b31861fec166",
-      "results_SOTACONF_V2_k16_MI_seed20260621.EXEC1.json": "e9f6079f9dda93262ab50fd287418304397a4762224fe79207e0f5c87ad1cc33",
-      "results_SOTACONF_V2_k16_MI_seed20260621.json": "fbf1b11d6523fc69943b9118539f4d9da46b7cf91a607bd5b42e38f8729f3dd4",
-      "results_SOTACONF_V2_k16_MI_seed20260622.EXEC1.json": "7105ee74b99a33f664e1c8476499368841f603ab5a26393a04f3cee17d8bc65d",
-      "results_SOTACONF_V2_k16_MI_seed20260622.json": "bf979a77fc6fa32ea4fd2d0874f3a945d52b3e812b2dc3fef2d1eab8becf2050",
-      "results_SOTACONF_V2_k8_MI_seed20260620.EXEC1.json": "c9bba66710a9ea1b0d24e9b2bc8e3a04ce76e2bc28a01af2c4e3627a5d359e8c",
-      "results_SOTACONF_V2_k8_MI_seed20260620.json": "cac772d48ec0517ccb67ed26653fce19a0e12cb0661da098717396815634c6b2",
-      "results_SOTACONF_V2_k8_MI_seed20260621.EXEC1.json": "ac7de6f5fab50e965a3435a93547191dce4938f3531e573fe8e2427c47f9f696",
-      "results_SOTACONF_V2_k8_MI_seed20260621.json": "032ba290a54116b68b543790a1281e8ab49d2b0eca450f627cc23aad374d997d",
-      "results_SOTACONF_V2_k8_MI_seed20260622.EXEC1.json": "3fbf2f21ab7df7130aef6e4b3fc1941e6d7c4c6f826327d107af38089e9a0b2e",
-      "results_SOTACONF_V2_k8_MI_seed20260622.json": "f8031a196abf743b5a7833362102737ca7434883fedb21c670557d00216ce77d"
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260620.EXEC1.json": "2046b27c04ae11376b2305ff2c129262062ce0c50b3228cf5908e51a8169ce5a",
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260620.json": "e8831fa3e3c5e7c3662ff31deb1f0d099f00d87479b36cd17943b31861fec166",
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260621.EXEC1.json": "e9f6079f9dda93262ab50fd287418304397a4762224fe79207e0f5c87ad1cc33",
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260621.json": "fbf1b11d6523fc69943b9118539f4d9da46b7cf91a607bd5b42e38f8729f3dd4",
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260622.EXEC1.json": "7105ee74b99a33f664e1c8476499368841f603ab5a26393a04f3cee17d8bc65d",
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260622.json": "bf979a77fc6fa32ea4fd2d0874f3a945d52b3e812b2dc3fef2d1eab8becf2050",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260620.EXEC1.json": "c9bba66710a9ea1b0d24e9b2bc8e3a04ce76e2bc28a01af2c4e3627a5d359e8c",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260620.json": "cac772d48ec0517ccb67ed26653fce19a0e12cb0661da098717396815634c6b2",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260621.EXEC1.json": "ac7de6f5fab50e965a3435a93547191dce4938f3531e573fe8e2427c47f9f696",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260621.json": "032ba290a54116b68b543790a1281e8ab49d2b0eca450f627cc23aad374d997d",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260622.EXEC1.json": "3fbf2f21ab7df7130aef6e4b3fc1941e6d7c4c6f826327d107af38089e9a0b2e",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260622.json": "f8031a196abf743b5a7833362102737ca7434883fedb21c670557d00216ce77d"
     },
     "MI_rebuild": {
-      "results_SOTACONF_V2_k16_MI_seed20260618.json": "87aa5b6ba21dd9a77ff5c5617540cdc387f55a2fe05fdbda8ca5be74a44ab705",
-      "results_SOTACONF_V2_k16_MI_seed20260619.json": "003983b5d9f43d796556cdf63e5b72db3343e03956f0b29fe097953fd2c361ed",
-      "results_SOTACONF_V2_k16_MI_seed20260620.json": "e8831fa3e3c5e7c3662ff31deb1f0d099f00d87479b36cd17943b31861fec166",
-      "results_SOTACONF_V2_k16_MI_seed20260621.json": "fbf1b11d6523fc69943b9118539f4d9da46b7cf91a607bd5b42e38f8729f3dd4",
-      "results_SOTACONF_V2_k16_MI_seed20260622.json": "bf979a77fc6fa32ea4fd2d0874f3a945d52b3e812b2dc3fef2d1eab8becf2050",
-      "results_SOTACONF_V2_k8_MI_seed20260618.json": "8b6de9a5c41602bc2e4db0570d0ba35c6ddbf5435dc2a537ddae9836bf930320",
-      "results_SOTACONF_V2_k8_MI_seed20260619.json": "5bba7cd01dbd009d5a1cb7c5c24efe5ac63ec3eeb93b50b04d9be93bdb8a3063",
-      "results_SOTACONF_V2_k8_MI_seed20260620.json": "cac772d48ec0517ccb67ed26653fce19a0e12cb0661da098717396815634c6b2",
-      "results_SOTACONF_V2_k8_MI_seed20260621.json": "032ba290a54116b68b543790a1281e8ab49d2b0eca450f627cc23aad374d997d",
-      "results_SOTACONF_V2_k8_MI_seed20260622.json": "f8031a196abf743b5a7833362102737ca7434883fedb21c670557d00216ce77d"
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k16_MI_seed20260618.json": "7999466623b797d1121f0f366fd1d957da888e82c25533f7acc22d1f8735de48",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k16_MI_seed20260619.json": "c61d98180f603534379779c215027ae1685bdc42f6f3ac6438f37122ab6b45a6",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k16_MI_seed20260620.json": "4c4893f257c6fa15183dcbf676d6c3ee7bef1761fc0cf9509949f533ae34c1b1",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k16_MI_seed20260621.json": "d7d852fb5eeb478326be682a7b0c741fb6f5dc68cc1127cd443de97f1b5be90f",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k16_MI_seed20260622.json": "1eaf9f21980e1e141104e3b8a6758655fd7f36ab570da92837a72ec2e6793742",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k8_MI_seed20260618.json": "bc13ee7d81432cee97f142d4aa8bd518d9975562510df9e482b4c5bfb162f77f",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k8_MI_seed20260619.json": "22be139ce926b0a2ef3c85dd2f036e7e5fa1fc205fcfd9e9dec00b0deb852ee5",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k8_MI_seed20260620.json": "2dc8b9ec38aa443708d508fef1b0244058896f546b4755e0063c49a00c2ace6c",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k8_MI_seed20260621.json": "67973cd6dc99bdc2e824f8d062aec29c4d1593d1f3dfca481a3188524745d678",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k8_MI_seed20260622.json": "a89ead29ef1d2a7bc5820829e05e8401e18ed14c3a20262104af65a15042dc94"
     },
     "OFFICE_gate": {
-      "results_OFFICE_k16_seed20260623.json": "8089354b2aa557e35e301c2b096b7014674a43028b839ae9377ba425ee1fe651",
-      "results_OFFICE_k16_seed20260624.json": "d6cc059aea712c5a70632a32ebc408485cef661ed81b9d156253c1157a14eba3",
-      "results_OFFICE_k16_seed20260625.json": "f3c82c7743aa89e898741c661af9e9a2983bb1591bcb3930d82cca1517b61681",
-      "results_OFFICE_k16_seed20260626.json": "beec1b599d276c3e1fd4ebb0e39c5052b039ac515e319229e26fd1e87a0d9cba",
-      "results_OFFICE_k16_seed20260627.json": "aaf86369f7a103220c6c4c4c1f1379d2b5c4853b9451a0d365432dbae0fb7f53",
-      "results_OFFICE_k8_seed20260623.json": "eb936ae34613c8b51cba9873a4528fa867555da81cb7e6d2d9101a94c44c27a6",
-      "results_OFFICE_k8_seed20260624.json": "c50868a186504586e934525e247470713c8c9db0128d06ad1aaf3ead651d6b44",
-      "results_OFFICE_k8_seed20260625.json": "365129ea44ca0e4ba28482f18d37041b8c1802178330b4dddfca36580c1bf055",
-      "results_OFFICE_k8_seed20260626.json": "853730711690cb94dc1c5a8b6c8e6a81d0ed1b5beb7fa6dae308bc0c3694bd34",
-      "results_OFFICE_k8_seed20260627.json": "0ca82e5533e9ba7081b4a76cc37faa475ca48c69b99b789af931070ad5825c04"
+      "_bestrec_run/results_OFFICE_k16_seed20260623.json": "8089354b2aa557e35e301c2b096b7014674a43028b839ae9377ba425ee1fe651",
+      "_bestrec_run/results_OFFICE_k16_seed20260624.json": "d6cc059aea712c5a70632a32ebc408485cef661ed81b9d156253c1157a14eba3",
+      "_bestrec_run/results_OFFICE_k16_seed20260625.json": "f3c82c7743aa89e898741c661af9e9a2983bb1591bcb3930d82cca1517b61681",
+      "_bestrec_run/results_OFFICE_k16_seed20260626.json": "beec1b599d276c3e1fd4ebb0e39c5052b039ac515e319229e26fd1e87a0d9cba",
+      "_bestrec_run/results_OFFICE_k16_seed20260627.json": "aaf86369f7a103220c6c4c4c1f1379d2b5c4853b9451a0d365432dbae0fb7f53",
+      "_bestrec_run/results_OFFICE_k8_seed20260623.json": "eb936ae34613c8b51cba9873a4528fa867555da81cb7e6d2d9101a94c44c27a6",
+      "_bestrec_run/results_OFFICE_k8_seed20260624.json": "c50868a186504586e934525e247470713c8c9db0128d06ad1aaf3ead651d6b44",
+      "_bestrec_run/results_OFFICE_k8_seed20260625.json": "365129ea44ca0e4ba28482f18d37041b8c1802178330b4dddfca36580c1bf055",
+      "_bestrec_run/results_OFFICE_k8_seed20260626.json": "853730711690cb94dc1c5a8b6c8e6a81d0ed1b5beb7fa6dae308bc0c3694bd34",
+      "_bestrec_run/results_OFFICE_k8_seed20260627.json": "0ca82e5533e9ba7081b4a76cc37faa475ca48c69b99b789af931070ad5825c04"
     },
     "OFFICE_idonly_floor": {
-      "results_OFFICE_idonly_seed20260623.json": "05466d5422a8a0d848cf1862375c32cf1a4293e4c0b004e87b3ed9b0fd11b4e6",
-      "results_OFFICE_idonly_seed20260624.json": "c2fae4e1e3470642046d0d896ec50d2db5af6ba60aeae58484b51739b4434b59",
-      "results_OFFICE_idonly_seed20260625.json": "7ee0fc807a33ce3839433be160d94e388c88f378e643ad6616567d21f2408441",
-      "results_OFFICE_idonly_seed20260626.json": "92400e42338fc17d4bc8f2c7b33b2b291aa9e8fd27b3abb1d2acc9fd2371736d",
-      "results_OFFICE_idonly_seed20260627.json": "149ddaddd5b60f1f163f33be2e3ae13272469409e3b9dc7aaaf2ad941311af7b"
+      "_bestrec_run/results_OFFICE_idonly_seed20260623.json": "05466d5422a8a0d848cf1862375c32cf1a4293e4c0b004e87b3ed9b0fd11b4e6",
+      "_bestrec_run/results_OFFICE_idonly_seed20260624.json": "c2fae4e1e3470642046d0d896ec50d2db5af6ba60aeae58484b51739b4434b59",
+      "_bestrec_run/results_OFFICE_idonly_seed20260625.json": "7ee0fc807a33ce3839433be160d94e388c88f378e643ad6616567d21f2408441",
+      "_bestrec_run/results_OFFICE_idonly_seed20260626.json": "92400e42338fc17d4bc8f2c7b33b2b291aa9e8fd27b3abb1d2acc9fd2371736d",
+      "_bestrec_run/results_OFFICE_idonly_seed20260627.json": "149ddaddd5b60f1f163f33be2e3ae13272469409e3b9dc7aaaf2ad941311af7b"
     },
     "FIR_ablations": {
-      "results_FIRABL_fixedavg_MI_seed20260608.json": "4e3dfaa2774df9f8ddc14ca1d562c2fe52e0ca520c593ca3440d5179b200d9a2",
-      "results_FIRABL_fixedavg_MI_seed20260609.json": "b2bceb1521347e5c62f8d36e252743aa3c601876a5e8cda2f758e6e83c0295ae",
-      "results_FIRABL_fixedavg_MI_seed20260610.json": "cfb0a2e571712aff30b7d5b6554556e40c37661113922b6c7b3f427f9bb5951d",
-      "results_FIRABL_fixedavg_MI_seed20260611.json": "490aaf3a36a45d06f06557e339d7fa4e2a9fb7901ffb09a8269afb5ef6294e10",
-      "results_FIRABL_fixedavg_MI_seed20260612.json": "734727462b2113c1036115d9ab12b3018180de8512b76a7d222d34d255590127",
-      "results_FIRABL_nogate_MI_seed20260608.json": "8846a38f5b9f51b691921260aab9779b36b854a754c5c6938b73202f1c6817ac",
-      "results_FIRABL_nogate_MI_seed20260609.json": "04602a62d145caf2cfa6d0a298b0a8a5cd62f19dff96c40a7bfc6fc18ff6552b",
-      "results_FIRABL_nogate_MI_seed20260610.json": "9cfc56a02bbdece33bdc4ce6ed3fe03eeae50dcb06e1c6c19a7bfa2ecd5203c2",
-      "results_FIRABL_nogate_MI_seed20260611.json": "90d7e23bd45a1f36535ca6b2fb95b764f84918c3f8d1e20fdb60f1a4f8308390",
-      "results_FIRABL_nogate_MI_seed20260612.json": "cb71c74ce56a1927c4bf060fa3dac9d32cae7e898590c11ee774b82a5ebb8d67"
+      "_bestrec_run/results_FIRABL_fixedavg_MI_seed20260608.json": "4e3dfaa2774df9f8ddc14ca1d562c2fe52e0ca520c593ca3440d5179b200d9a2",
+      "_bestrec_run/results_FIRABL_fixedavg_MI_seed20260609.json": "b2bceb1521347e5c62f8d36e252743aa3c601876a5e8cda2f758e6e83c0295ae",
+      "_bestrec_run/results_FIRABL_fixedavg_MI_seed20260610.json": "cfb0a2e571712aff30b7d5b6554556e40c37661113922b6c7b3f427f9bb5951d",
+      "_bestrec_run/results_FIRABL_fixedavg_MI_seed20260611.json": "490aaf3a36a45d06f06557e339d7fa4e2a9fb7901ffb09a8269afb5ef6294e10",
+      "_bestrec_run/results_FIRABL_fixedavg_MI_seed20260612.json": "734727462b2113c1036115d9ab12b3018180de8512b76a7d222d34d255590127",
+      "_bestrec_run/results_FIRABL_nogate_MI_seed20260608.json": "8846a38f5b9f51b691921260aab9779b36b854a754c5c6938b73202f1c6817ac",
+      "_bestrec_run/results_FIRABL_nogate_MI_seed20260609.json": "04602a62d145caf2cfa6d0a298b0a8a5cd62f19dff96c40a7bfc6fc18ff6552b",
+      "_bestrec_run/results_FIRABL_nogate_MI_seed20260610.json": "9cfc56a02bbdece33bdc4ce6ed3fe03eeae50dcb06e1c6c19a7bfa2ecd5203c2",
+      "_bestrec_run/results_FIRABL_nogate_MI_seed20260611.json": "90d7e23bd45a1f36535ca6b2fb95b764f84918c3f8d1e20fdb60f1a4f8308390",
+      "_bestrec_run/results_FIRABL_nogate_MI_seed20260612.json": "cb71c74ce56a1927c4bf060fa3dac9d32cae7e898590c11ee774b82a5ebb8d67"
     },
     "OFFICEV3_gate": {
-      "results_OFFICEV3_k16_seed20260728.json": "1ebc1a05c0e07a4d2f3428e2d09db1f7067b5cdd94e67e69f1021e30adaad29a",
-      "results_OFFICEV3_k16_seed20260728.json.treestate.txt": "67a9c6fb52489c8214c8786e7f9a655f193828abcb827cb20b77f964224bcbf8",
-      "results_OFFICEV3_k16_seed20260729.json": "45f1b00d3b2797acfd897af75b79254aa10bfa0cb1a760ee19b36fbf17069f36",
-      "results_OFFICEV3_k16_seed20260729.json.treestate.txt": "412c3fc6141dc95548324e9d53656aa5f9a52cc6fa0e895ff37099ecb620774c",
-      "results_OFFICEV3_k16_seed20260730.json": "3c2aacfa7faf0526bae239f83d19d5e9cd5dba08726838bfcf6761544dc32602",
-      "results_OFFICEV3_k16_seed20260730.json.treestate.txt": "a1ae2bbac5f6d4f314ba0a8c474bdb85a8acf792f0fed1c23faf1f352a0e8057",
-      "results_OFFICEV3_k16_seed20260731.json": "2233b6f716e58a3d1831c9932fdffeca678d92c9aec486cee24384537cd3fbf0",
-      "results_OFFICEV3_k16_seed20260731.json.treestate.txt": "6c8f565eeccb58bdc83599c3e8fe64794519bfde9357c086dfb24b20ad227332",
-      "results_OFFICEV3_k16_seed20260732.json": "d86db85510db2776f244ae627d5a73df948f0a204b53388bd36b9521f384e2f8",
-      "results_OFFICEV3_k16_seed20260732.json.treestate.txt": "af9aa688d73922479fc244932b6137d45043d9a6ed4823672b9a243ef5557407",
-      "results_OFFICEV3_k8_seed20260728.json": "b64df9dc3061b401a493f96d9d88ffa8eb1dde28318906e8389e9943d5c4af85",
-      "results_OFFICEV3_k8_seed20260728.json.treestate.txt": "74cf84fae2595108c60baa2dc9a214b9e7b1c873c4861a410c49065a1aa32460",
-      "results_OFFICEV3_k8_seed20260729.json": "b11990ccf40f4e5db713219507d8b47a0593426ae1299517d2cf992248da8d12",
-      "results_OFFICEV3_k8_seed20260729.json.treestate.txt": "36dd870b002fac8963d89097dfe4951bb0b5d4e199afa179d7999e3060414b15",
-      "results_OFFICEV3_k8_seed20260730.json": "7a615a7b6176270ca0c8bbbe3d222a08757927012fb3ec48e3c76c613dd4f6e5",
-      "results_OFFICEV3_k8_seed20260730.json.treestate.txt": "de207a91049f69a44ce73d4a2e72bc28a7c78b067c983b8dfadf20f6e117eef9",
-      "results_OFFICEV3_k8_seed20260731.json": "ddf32b792bfbc1d44d22ffbe40b88655de5c421e38b810316b1f22584f059c9c",
-      "results_OFFICEV3_k8_seed20260731.json.treestate.txt": "6c3a82abea9afa3ae8c56229863c332be0673fb090dc4a02bca60673c472cd14",
-      "results_OFFICEV3_k8_seed20260732.json": "d6014ec2b948bd92d9020a9ea48d4a1c566707d1c7b17b6fc0bd3de916cfa658",
-      "results_OFFICEV3_k8_seed20260732.json.treestate.txt": "a15e84cd47072d3261db3bee60ea7d00b881cca74a9495c6413fefbb98dc98ea"
+      "_bestrec_run/results_OFFICEV3_k16_seed20260728.json": "1ebc1a05c0e07a4d2f3428e2d09db1f7067b5cdd94e67e69f1021e30adaad29a",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260728.json.treestate.txt": "67a9c6fb52489c8214c8786e7f9a655f193828abcb827cb20b77f964224bcbf8",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260729.json": "45f1b00d3b2797acfd897af75b79254aa10bfa0cb1a760ee19b36fbf17069f36",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260729.json.treestate.txt": "412c3fc6141dc95548324e9d53656aa5f9a52cc6fa0e895ff37099ecb620774c",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260730.json": "3c2aacfa7faf0526bae239f83d19d5e9cd5dba08726838bfcf6761544dc32602",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260730.json.treestate.txt": "a1ae2bbac5f6d4f314ba0a8c474bdb85a8acf792f0fed1c23faf1f352a0e8057",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260731.json": "2233b6f716e58a3d1831c9932fdffeca678d92c9aec486cee24384537cd3fbf0",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260731.json.treestate.txt": "6c8f565eeccb58bdc83599c3e8fe64794519bfde9357c086dfb24b20ad227332",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260732.json": "d86db85510db2776f244ae627d5a73df948f0a204b53388bd36b9521f384e2f8",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260732.json.treestate.txt": "af9aa688d73922479fc244932b6137d45043d9a6ed4823672b9a243ef5557407",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260728.json": "b64df9dc3061b401a493f96d9d88ffa8eb1dde28318906e8389e9943d5c4af85",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260728.json.treestate.txt": "74cf84fae2595108c60baa2dc9a214b9e7b1c873c4861a410c49065a1aa32460",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260729.json": "b11990ccf40f4e5db713219507d8b47a0593426ae1299517d2cf992248da8d12",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260729.json.treestate.txt": "36dd870b002fac8963d89097dfe4951bb0b5d4e199afa179d7999e3060414b15",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260730.json": "7a615a7b6176270ca0c8bbbe3d222a08757927012fb3ec48e3c76c613dd4f6e5",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260730.json.treestate.txt": "de207a91049f69a44ce73d4a2e72bc28a7c78b067c983b8dfadf20f6e117eef9",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260731.json": "ddf32b792bfbc1d44d22ffbe40b88655de5c421e38b810316b1f22584f059c9c",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260731.json.treestate.txt": "6c3a82abea9afa3ae8c56229863c332be0673fb090dc4a02bca60673c472cd14",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260732.json": "d6014ec2b948bd92d9020a9ea48d4a1c566707d1c7b17b6fc0bd3de916cfa658",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260732.json.treestate.txt": "a15e84cd47072d3261db3bee60ea7d00b881cca74a9495c6413fefbb98dc98ea"
     },
     "FIR_breadth": {
-      "results_FIRB_Industrial_and_Scientific_filter_seed20260713.json": "530e0fa46a1d1a4a7f908df92f20b1717752a44d5259213030d3abb6622f532f",
-      "results_FIRB_Industrial_and_Scientific_filter_seed20260714.json": "9c229dd316ffedf6c562a68780f4abcf7c636732c2427055da7eacff9de20c3d",
-      "results_FIRB_Industrial_and_Scientific_filter_seed20260715.json": "7ecf9709b0b66053219983e833b7cdd47594e5e0560de6f62c71f2223063483a",
-      "results_FIRB_Industrial_and_Scientific_filter_seed20260716.json": "b71ac6992497762ef3f75df47a6c22886b289685396e41150cd5a7d975ed2eec",
-      "results_FIRB_Industrial_and_Scientific_filter_seed20260717.json": "30305404d7a1ab958613321d90d08ffb49acd3f87c8a06e9e8c6928f70637faa",
-      "results_FIRB_Industrial_and_Scientific_nofilter_seed20260713.json": "081b69cbc1f8ee24a20fbeb481f6a3783b61445de7f8a6a725e2e8f90d29f91e",
-      "results_FIRB_Industrial_and_Scientific_nofilter_seed20260714.json": "8dd9e331351ba5d902c727651daae73cfcb7ff09fe0edfbd3d64d21397cba3b1",
-      "results_FIRB_Industrial_and_Scientific_nofilter_seed20260715.json": "66a7361ff762c9f8e7514aaaba8bda8d4a4c189bd9cccc4f27f09a2303295a4b",
-      "results_FIRB_Industrial_and_Scientific_nofilter_seed20260716.json": "9b0d93ca4fd80939e0f1ba27ef58aee41badde4dbf8a5ef331fd66357a00f12f",
-      "results_FIRB_Industrial_and_Scientific_nofilter_seed20260717.json": "3ede06794f9fd5c82cac116f7d28cb2c87fa2c9b6abaf2c49e914fafbfe91441",
-      "results_FIRB_CDs_and_Vinyl_filter_seed20260713.json": "4e48c1b64a22b99256a9dec4f324a4bad6fef4cfaa89c8aaff4cb49553381c03",
-      "results_FIRB_CDs_and_Vinyl_filter_seed20260714.json": "8609c14765d267e5d75a3d9cc2ef1c4944e9fd0a355859d8075c514553a7204f",
-      "results_FIRB_CDs_and_Vinyl_filter_seed20260715.json": "20ff931d41595157eaf4fb4e4fb42869cb1aab14f35bbe5f3975a13abff7dd4a",
-      "results_FIRB_CDs_and_Vinyl_filter_seed20260716.json": "fdf4504fe1b6478003f49b616d3d3ad4fb98f9a18c7e232d022ae127d3637a72",
-      "results_FIRB_CDs_and_Vinyl_filter_seed20260717.json": "9ad6ece462dd283ab4b7e3dd9f019029618acbd6a3fc8318efdd59814e6598c2",
-      "results_FIRB_CDs_and_Vinyl_nofilter_seed20260713.json": "911c4abfaa69db9ff2a3d508b047c272578992fa0579f04f9bf82dae56078afe",
-      "results_FIRB_CDs_and_Vinyl_nofilter_seed20260714.json": "0e978e21b1565cd8e5094a8d9944ec6a6979ddcb3b2f50e26fa078be7a35bacf",
-      "results_FIRB_CDs_and_Vinyl_nofilter_seed20260715.json": "aa88cb35225434df03c879bae2fcf5dc11b53b340e788de1d5f50f054a4a3b20",
-      "results_FIRB_CDs_and_Vinyl_nofilter_seed20260716.json": "4b84e283973a061a074c5fab79e1ddbdd6288ac3917cb4eea78d1d60bcc6a188",
-      "results_FIRB_CDs_and_Vinyl_nofilter_seed20260717.json": "931b1ef04c192e35cd743f3139daff1c90c57b11b0f8912e75339384d1626f69"
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260713.json": "530e0fa46a1d1a4a7f908df92f20b1717752a44d5259213030d3abb6622f532f",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260714.json": "9c229dd316ffedf6c562a68780f4abcf7c636732c2427055da7eacff9de20c3d",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260715.json": "7ecf9709b0b66053219983e833b7cdd47594e5e0560de6f62c71f2223063483a",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260716.json": "b71ac6992497762ef3f75df47a6c22886b289685396e41150cd5a7d975ed2eec",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260717.json": "30305404d7a1ab958613321d90d08ffb49acd3f87c8a06e9e8c6928f70637faa",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260713.json": "081b69cbc1f8ee24a20fbeb481f6a3783b61445de7f8a6a725e2e8f90d29f91e",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260714.json": "8dd9e331351ba5d902c727651daae73cfcb7ff09fe0edfbd3d64d21397cba3b1",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260715.json": "66a7361ff762c9f8e7514aaaba8bda8d4a4c189bd9cccc4f27f09a2303295a4b",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260716.json": "9b0d93ca4fd80939e0f1ba27ef58aee41badde4dbf8a5ef331fd66357a00f12f",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260717.json": "3ede06794f9fd5c82cac116f7d28cb2c87fa2c9b6abaf2c49e914fafbfe91441",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260713.json": "4e48c1b64a22b99256a9dec4f324a4bad6fef4cfaa89c8aaff4cb49553381c03",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260714.json": "8609c14765d267e5d75a3d9cc2ef1c4944e9fd0a355859d8075c514553a7204f",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260715.json": "20ff931d41595157eaf4fb4e4fb42869cb1aab14f35bbe5f3975a13abff7dd4a",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260716.json": "fdf4504fe1b6478003f49b616d3d3ad4fb98f9a18c7e232d022ae127d3637a72",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260717.json": "9ad6ece462dd283ab4b7e3dd9f019029618acbd6a3fc8318efdd59814e6598c2",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260713.json": "911c4abfaa69db9ff2a3d508b047c272578992fa0579f04f9bf82dae56078afe",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260714.json": "0e978e21b1565cd8e5094a8d9944ec6a6979ddcb3b2f50e26fa078be7a35bacf",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260715.json": "aa88cb35225434df03c879bae2fcf5dc11b53b340e788de1d5f50f054a4a3b20",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260716.json": "4b84e283973a061a074c5fab79e1ddbdd6288ac3917cb4eea78d1d60bcc6a188",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260717.json": "931b1ef04c192e35cd743f3139daff1c90c57b11b0f8912e75339384d1626f69"
     }
   },
   "sidecars": "see _bestrec_run/SOTACONF_V2_sidecar_manifest.json (tracked) + per-run user_records_sha256 fields",
@@ -214,16 +214,16 @@
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     "PAPER_SUBMISSION.md": {
-      "sha256": "46dc5d5d17b3915c83d5d8a70b4448d43afa0e33528163cc870bc6360d223b34",
-      "bytes": 149053
+      "sha256": "ced0b9dd568c89ae9125704011fa66fa7f90e0054e0a615eb2164650fb68ac9b",
+      "bytes": 150141
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "c765e751b2c20aba06bfa591ab6b9d1004b3840c2dba2af7910aad7a45fd1531",
-      "bytes": 1394547
+      "sha256": "745c8b593f995b984da15c52d5f10f69f85fa9e5ea5d4e0ede6c193b4bcc77a5",
+      "bytes": 1390453
     },
     "PAPER_DRAFT.md": {
-      "sha256": "12af4d08391f80acabee7d9b36be6fe40fadbe7cad571455c083931b63d4da60",
-      "bytes": 172263
+      "sha256": "318d302f11dd80023c1599e8169505b7a4b5b94623cb6f16d22a115540fa6347",
+      "bytes": 173351
     },
     "CANONICAL_SUBMISSION.md": {
       "sha256": "88b1d7737c08061d7cfc9231b0fa0fdd67526812db1dd0e502cd390bb1f681d5",
@@ -258,12 +258,12 @@
       "bytes": 3390
     },
     "_bestrec_run/update_release_manifest.py": {
-      "sha256": "640c15b5dda0f6433f280d494363b1954592473a40bb3731ab4b1a1a693d573a",
-      "bytes": 20570
+      "sha256": "aaa49d5aa7b5465e95e43f3cfd6747f2627c83f16cff0062518fcce357f77ac8",
+      "bytes": 22345
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "55a603a93acb13717b32dccbd6887f34cdc5d3e333a302becdfa509e42650fe9",
-      "bytes": 462800
+      "sha256": "ea485828b723c73d45e63336678300f9175ced12cbf10166d5c3889cd7a8d452",
+      "bytes": 464882
     },
     "_bestrec_run/emit_latex_tables.py": {
       "sha256": "e0fda8670639cb16b3bcbad8d7c607537c7e01a46de3e1745d38875ff4aec092",
@@ -379,5 +379,5 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.1.9-deposit",
-  "hash_parent_commit": "3877b3c82abd8d26f93463a9a1c208343d5323d8"
+  "hash_parent_commit": "697f38421c046e74f4805ed995441788b2cd164f"
 }

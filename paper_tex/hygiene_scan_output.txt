@@ -1,22 +1,22 @@
-hygiene scan: PAPER_TORS.pdf | pages: 40
+hygiene scan: PAPER_TORS.pdf | pages: 41
 placeholder+forbidden failures: 0
 review list (SOTA mentions + negated claim-wordings): 20
-  REVIEW negated-ok: paired\s+superiority :: d regenerations, §5.6), this is a per-category point-estimate comparison, not a paired superiority or general SOTA claim . Our second headline is a dataset-conditional long-tail 
+  REVIEW negated-ok: paired\s+superiority ::  regenerations, § 5.6), this is a per-category point-estimate comparison, not a paired superiority or general SOTA claim . Our second headline is a dataset-conditional long-tail 
   REVIEW negated-ok: paired\s+superiority :: strictly under its frozen wording: a per-category point-estimate comparison; no paired superiority; not SOTA of any kind. The limitation that remains: both counted comparisons (M
   REVIEW negated-ok: pinned(?:[-\s]\w+)?[-\s]reproduction :: Triton kernels have no sm_120 images — proven via WSL), which blocks a faithful pinned reproduction. A late shimmed execution of the reference implementation’s research path (§5.6
   REVIEW negated-ok: pinned(?:[-\s]\w+)?[-\s]reproduction :: luded from the artifact graph) 0.13234 final stronger than ours; not a faithful pinned-environment reproduction Our full model (0.0673) exceeds their published SASRec (0.0573) but does not re
   REVIEW negated-ok: pinned\s+reproduction :: Triton kernels have no sm_120 images — proven via WSL), which blocks a faithful pinned reproduction. A late shimmed execution of the reference implementation’s research path (§5.6
   REVIEW SOTA-mention :: s a per-category point-estimate comparison, not a paired superiority or general SOTA claim . Our second headline is a dataset-conditional long-tail pattern (an empi
-  REVIEW SOTA-mention :: esult as a competitive, fully-attributed, multi-seed contribution rather than a SOTA claim. Contributions: (1) the trustworthy-evaluation apparatus above — immutabl
+  REVIEW SOTA-mention :: esult as a competitive, fully-attributed, multi-seed contribution rather than a SOTA claim. Manuscript submitted to ACM 105 106 107 108 109 110 111 112 113 114 115 
   REVIEW SOTA-mention :: e Video_Games result a competitive, fully-attributed contribution rather than a SOTA claim. 7. Engineering: a memory-efficient chunked-full-softmax loss (full-softm
   REVIEW SOTA-mention ::  published SASRec 0.0573), shown to be architectural (ID-only ≈0.0656), with no SOTA claim. (The earlier v1-era SASRec-SBERT number 0.05509 ± 0.00035 has been retir
   REVIEW SOTA-mention :: rry no confirmatory weight. 5.1 Video_Games — multi-seed reference numbers (NOT SOTA) Our headline result (Table 1) is built on the HSTU-style pure-PyTorch encoder 
   REVIEW SOTA-mention :: s the benchmark relative to the by-timestamp variant. We therefore do not claim SOTA over TIGER/LIGER/BLaIR. HSTU-BLaIR is the relevant stronger AR2023 Video_Games 
   REVIEW SOTA-mention :: relevant stronger AR2023 Video_Games 5-core reference and blocks a SASRec-SBERT SOTA claim. 2026 semantic-ID / generative retrieval line. Recent 2026 work reports A
   REVIEW SOTA-mention :: on that category is positive with a 95% CI excluding zero — nothing broader, no SOTA language, no comparator statement. The filter is thus multi-seed-confirmed on f
-  REVIEW SOTA-mention :: eration 0.0279; no paired or distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA cla
-  REVIEW SOTA-mention :: distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind. The V1 VOID a
-  REVIEW SOTA-mention :: not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind. The V1 VOID above stands unchanged as its own record (Append
+  REVIEW SOTA-mention :: eration 0.0279; no paired or distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Manuscript submitted to ACM 1041 1042 1043 1044
+  REVIEW SOTA-mention :: distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Manuscript submitted to ACM 1041 1042 1043 1044 1045 1046 1047 1048 1049 105
+  REVIEW SOTA-mention :: Registered, Artifact-Gated Evaluation 21 Amazon Reviews 2023, and not a general-SOTA claim of any kind. The V1 VOID above stands unchanged as its own record (Append
   REVIEW SOTA-mention :: n wording: a per-category point-estimate comparison; no paired superiority; not SOTA of any kind. The limitation that remains: both counted comparisons (MI, Office 
   REVIEW SOTA-mention :: itive text contributor (+0.0009), not a headline. We do not claim a Video_Games SOTA — the published HSTU-BLaIR 0.0760 relies on custom CUDA/Triton kernels that are
   REVIEW SOTA-mention :: ratus these results were produced under. Explicit non-claims: • We do not claim SOTA over TIGER, LIGER, BLaIR, or HSTU-BLaIR; the published HSTU-BLaIR 0.0760 remain

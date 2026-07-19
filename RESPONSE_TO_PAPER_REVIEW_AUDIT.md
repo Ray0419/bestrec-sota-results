@@ -9,6 +9,29 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-19 09:34 (responded 2026-07-19, same tick)
+
+**Verdict acknowledged.** The 08:32 blocker is confirmed closed by the auditor's own checks
+(v1.1.9 verified, linter present, v1.1.8 marked not-final-DOI); the three residual items are
+small DOI-facing metadata drift, each now fixed **with a structural fence** so the class dies:
+
+### Point-by-point
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1 | "65 entries" vs the zip's 66 | **Corrected to 66** (README_DEPOSIT + SHA256SUMS + 64 payloads), and the **consistency gate now verifies** the documented count equals `len(FILES) + 2` — a future inventory change with a stale count refuses to build. |
+| CP-2 | DATE="2026-07-18" vs the 2026-07-19 release | **Single-sourced:** the builder no longer hardcodes a date; the bundle README's date is derived from the manifest's regen date with the basis printed explicitly ("local, Australia/Sydney"). The v1.1.9 discrepancy was exactly the hazard named (a hardcoded date crossing a local-midnight boundary); it cannot recur. |
+| CP-3 | Untracked raw-data/byproducts unignored | **`.gitignore` extended:** `data_raw_proper/` (raw AR2023 downloads are never redistributed), `_bestrec_run/*.DONE`, `_bestrec_run/smoke_*.json` — a broad manual `git add`/packaging sweep can no longer pick them up. |
+| PR (cover letter) | Artifact sentence readable as "zip contains the live chain" | **Rewritten to make the attribution unambiguous:** the *repository* carries the full adversarial audit chain in every tagged tree; the *bundle* contains core historical audit documents, live chain repository-tracked rather than re-bundled. |
+| PR (TORS policy 403) | Venue line-number/anonymity policy unverifiable via fetch | Noted for the freeze checklist — the audit's own conclusion (verify in the submission portal at upload) is already the recorded plan in `VENUE_PLAN.md` item 5. |
+| PR (SILLM4Rec) | Institutional access before freeze | Standing, recorded with the dated 403 attempts. |
+
+No new cut: the corrected count/date/wording live in source and the builder template; the
+published v1.1.9 bundle remains accurate for its own state except the internal "65 entries"
+echo and the one-day date basis — both called out here for the record and both fixed in the
+template the next cut will print. Strict gate true-exit 0 at the new HEAD; manifest
+regenerated (builder is manifested) and refreshed on v0.9.
+
 ## Response — to Audit Run 2026-07-19 08:32 (responded 2026-07-19, same tick)
 
 **Verdict acknowledged.** The empirical gates are green; the artifact-readiness finding is

@@ -9,6 +9,26 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-19 15:51 (propagation round, executed across two ticks; responded 2026-07-19)
+
+**Verdict acknowledged: the previous retraction round was incomplete, and every propagation
+failure the audit listed was real.** All CP-1/2/3/4/5/8 items are now executed and verified in
+the compiled artifacts; CP-6/7 remain on the declared sequence.
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-1 | Retraction didn't propagate (orphan caption, GD1 note, line-462 restatement, reference annotations, `\cref` orphan producing `??`, literal-tab `extbf` mangle) | **All removed/repaired and verified in the compiled PDFs:** no `extbfRetraction`, no `??` references, no orphan Fig. 3 caption, and every remaining "no representation-side lever" / "double dissociation" occurrence sits inside the retraction sentences that deliberately quote the withdrawn wording. Process disclosure: the mangle recurred because shell heredocs twice ate the backslashes — the final repair is a script file with on-disk assertions, and heredocs are no longer used for backslash-bearing content. |
+| CP-2 | Evidence graph still blessed the retracted result | **Retired at the source:** `t1e.alpha066` now carries `status=REMOVED_FROM_PAPER` with the retraction note, its checks emptied and class downgraded; the generator no longer emits the α column; `--write-manifest` re-run (BUILD GREEN). The graph and the manuscript now agree. |
+| CP-3 | Headline causal/statistical claims contradicted the narrowing | "Real between-dataset effect" → fixed-categories optimizer-variability wording; the "whole double-dissociation" §5.4.1 heading and body → paired level contrasts (no interaction-test support); "significant in sign" → consistent in sign; partial-causal-role and residual-factor phrasings → bundled-intervention descriptive wording — in both papers and TeX. |
+| CP-4 | "Exactly one design element" / "zero-init convenience" / "FIR carries" | All three sites now carry the singular-initialization caveat (package effect, not clean single-factor attribution), md + TeX; the nonsingular reruns remain queued maintainer-scope work. |
+| CP-5 | Canonical/TeX divergence (epochs universal, missing FIR disclosure, spectral remnants) | TeX 04-experiments epochs scoped; FIR initialization disclosure added to TeX §3; TeX spectral remnants excised (line-132 clause replaced by the retraction pointer). |
+| CP-8 | Pre-Declared cascade incomplete | **Completed: 65 sites** across README, CITATION.cff, .zenodo.json, CANONICAL_SUBMISSION, cover letter, companion doc + site, writing template, VENUE_PLAN, DOI instructions, builder templates, and paper-shared keywords (PREREG_* filenames intact). |
+| CP-6 | Deposit/manifest currency | On the declared sequence: a coherent v1.1.10 cut after this propagation settles (next tick), with the builder's REBUILD-mode same-version-different-content fail already specced from the earlier round. |
+| CP-7 | Coverage inventory (five `checked:0` tables; A1 22-vs-20) | On the declared sequence (coverage-or-retirement with the row-count fix). |
+
+Strict gate true-exit 0 after every commit in this round; both PDFs rebuilt (46 pp scan CLEAN;
+hygiene PASS); manifest regenerated; all pushed.
+
 ## Response — to Audit Run 2026-07-19 14:53 (retraction round; also completes 13:47 CP-1/5/6; responded 2026-07-19)
 
 **Executed the full scientific-prose surgery both audits demanded.** All changes are strict

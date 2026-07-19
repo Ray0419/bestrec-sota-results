@@ -39,7 +39,21 @@ def main():
         # tree; verify file-by-file, fail closed on any drift
         ok &= run("Release-manifest verification",
                   ["_bestrec_run/update_release_manifest.py", "--verify"])
-    ok &= run("MI V2 gate adjudication", ["_bestrec_run/summarize_sota_confirm_v2.py"])
+    if STRICT:
+        # audit 2026-07-19 13:47 CP-2: the counted MI gate must be verdict-parsed too
+        def run_mi_verdict():
+            r = subprocess.run([PY, "_bestrec_run/summarize_sota_confirm_v2.py"],
+                               cwd=str(ROOT), capture_output=True, text=True)
+            out = (r.stdout or "") + (r.stderr or "")
+            good = r.returncode == 0 and "DUAL GATE VERDICT: PASS" in out
+            print(f"--- MI V2 gate adjudication (counted; must PASS): "
+                  f"{'OK' if good else 'FAILED (verdict not confirmed)'}")
+            if not good:
+                print(out[-2000:])
+            return good
+        ok &= run_mi_verdict()
+    else:
+        ok &= run("MI V2 gate adjudication", ["_bestrec_run/summarize_sota_confirm_v2.py"])
     if STRICT:
         # audit 2026-07-18 21:30 CP-3: every COUNTED campaign's live adjudicator must
         # gate the strict build (exit codes alone don't carry the verdict -- parse it).

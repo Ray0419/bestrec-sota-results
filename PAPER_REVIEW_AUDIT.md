@@ -6,6 +6,475 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
+1. **[CONFIRMED, rejection-level] The paper's BBP/MP "spectral
+   irreducibility" result does not measure what the paper and figure claim.**
+   The reported detectability values are computed before training from item
+   frequencies, embedding dimension, and assumed spike strengths only; no item
+   embedding or singular vector is read. The plotted `rho` is a squared
+   eigenvector-overlap formula, not a fraction of items or directions above an
+   empirical edge. The claimed 24/64 low rank is measured only after the GD1
+   intervention repeatedly hard-thresholds and overwrites the item table, so it
+   cannot establish that the untreated table is intrinsically low-rank. The
+   paper also hard-codes `d_eff=23`, while the two released intervention runs
+   report ranks 24 and 22.
+2. **[CONFIRMED, rejection-level] The strict Musical_Instruments gate can
+   print FAIL and still be accepted as PASS.**
+   `_bestrec_run/summarize_sota_confirm_v2.py` sets `overall_pass=False` for
+   missing runs, failed hashes, dirty provenance, or a failed numerical gate,
+   but unconditionally returns zero. The canonical strict wrapper checks only
+   that return code. A deliberate missing-directory probe printed
+   `DUAL GATE VERDICT: FAIL`, exited zero, and was labeled `OK` by the wrapper.
+3. **[CONFIRMED, rejection-level] The advertised v0.9 split/cache evidence is
+   still absent from the live release and the verifier is explicitly
+   fail-open for it.** The release contains only a 9.9 MB parity zip and the
+   manifest. Twelve splits plus four caches totaling 1,090,564,135 bytes are
+   still called immutable release assets, but exist only in ignored local
+   directories. A synthetic missing-asset probe printed `SKIPPED-missing`,
+   returned zero, and reported manifest verification OK. The repository is
+   private at audit time.
+4. **[CONFIRMED] The response narrowed the table-coverage wording but did not
+   make the apparatus fail-closed.** The abstract now admits two tables are
+   outside the 168-cell graph, yet it still says every empirical finding is
+   "produced and policed." Table A1 is a 22-row experimental scan with
+   manuscript-owned values and decisions under `checked: 0`; it is also
+   repeatedly mislabeled a 20-variant scan. The dataset/status table remains
+   `checked: 0`, and `CANONICAL_SUBMISSION.md` still claims every printed claim
+   and empirical table recomputes.
+5. **[CONFIRMED, rejection-level] The central mechanism decomposition exceeds
+   its own inference.** The paper first calls the head/tail pattern a tested,
+   "Nieuwenhuis-safe" double dissociation, then concedes the
+   stratum-by-density/slope interaction is nonsignificant. It nevertheless
+   concludes that connectivity, rather than representation, binds the tail.
+   The matched user-thinning and interaction-thinning arms also differ in user
+   composition, history preservation, item degrees, and graph topology; fixing
+   one dropped-user subset while varying only model seeds omits intervention-
+   subset uncertainty. "Connectivity alone" is therefore not identified.
+6. **[CONFIRMED] Several result summaries are internally inconsistent.** The
+   "7-rung" density ladder contains six rungs; NDCG reverses once and HR
+   repeatedly reverses despite "monotone on both metrics" wording; TAPE is a
+   capacity-adding multi-seed positive while the paper says no capacity-adding
+   mechanism produced a multi-seed gain; and FIR contributes 77--82% of the MI
+   lift while the abstract says it "alone carries" transfer. The MI ablation
+   also compares a four-seed base with five-seed treatment arms.
+7. **[CONFIRMED] Training-seed replication is used to support a broader
+   population claim than it can identify.** Five optimizer reruns on each of
+   two fixed categories quantify training stochasticity, not uncertainty over
+   categories, users, or datasets. Calling the Welch contrast a "real
+   between-dataset effect" overstates the inferential unit.
+8. **[CONFIRMED] The lead assurance apparatus remains unevaluated and
+   under-situated.** There is no fault corpus, detection recall/false-pass
+   measurement, coverage metric for tables/figures/prose/releases, independent
+   clean-room rerun, or cost comparison. The unchecked tables, wrong-path bug,
+   missing-asset skip, and zero-exit failed adjudicator are direct missed-fault
+   examples. Related work still omits close reproducibility, preregistration,
+   provenance, and artifact-review systems.
+9. **[CONFIRMED] The scientific novelty and baseline spine remain too weak for
+   the breadth of presentation.** Close causal-convolution recommenders
+   C3SASR and HyenaRec, and close long-tail/text work TASTE and AlterRec, are
+   absent. The exact HSTU/FIR placement may be a narrow adaptation, but the
+   general causal-convolution and text-helps-tail ideas are prior art. The
+   same-statistics comparison still lacks a strong set of tuned, multi-seed,
+   protocol-matched modern baselines.
+10. **[CONFIRMED] The abstract and contribution spine are not top-journal
+    ready.** The reader abstract still occupies most of pages 1--4 and is
+    roughly 1,600 words; eight heterogeneous contributions mix governance,
+    incremental modeling, negative probes, implementation, and debugging. The
+    title/RQs/experiments still do not formally evaluate the claimed lead
+    method.
+11. **[CONFIRMED SUBMISSION BLOCKER] The TORS artifact still uses the wrong
+    review mode.** The current driver is `manuscript,review,anonymous` with line
+    numbers, while current TORS guidance says `manuscript,screen`, no line
+    numbers, and single-blind review. The vendored `acmart` class is outdated.
+    The 41-page rendered PDF is legible, but page 28 is almost entirely blank
+    because of float/page-break behavior and several large tables are dense.
+12. **[CONFIRMED WITH CAVEAT] The ordinary numerical graph is green, and the
+    prior exact-path `MI_rebuild` defect is fixed, but neither fact clears the
+    validity failures above.** The strict run recomputes 168 declared cells
+    (149 exact, 19 rounded, zero numeric mismatch/untraceable), and the current
+    manifest verifies 153 local files. The new exact-path keys correctly bind
+    all ten rebuild artifacts. These are real fixes; they do not validate an
+    excluded table, a misinterpreted figure, a missing release asset, or a
+    failed adjudicator whose process exits zero.
+
+## Audit Run - 2026-07-19 13:47 Australia/Sydney
+
+### Audited State
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Automation memory was read before the audit from
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`.
+- The run began at HEAD `697f38421c04`. While review was in progress, the
+  workspace advanced to `e58c5826` and then `33c3c183511c`, applying a first
+  response round to the 12:57 audit. This section audits the newer HEAD rather
+  than the stale starting snapshot.
+- The incoming commits changed manuscript wording, the release manifest and
+  verifier, the response log, and both canonical PDFs. They did not change the
+  underlying result JSONs used by the 168-cell numerical graph.
+- Canonical and derived sources inspected include `PAPER_SUBMISSION.md`,
+  `PAPER_DRAFT.md`, `CANONICAL_SUBMISSION.md`, `README.md`, the complete
+  `paper_tex/` source, bibliography and generated tables, result/manifests,
+  adjudicators, release/update scripts, the live GitHub release inventory, and
+  prior audit responses.
+- `PAPER_SUBMISSION.pdf` was freshly rendered to 46 PNG pages and
+  `paper_tex/PAPER_TORS.pdf` to 41 PNG pages with Poppler. All pages were
+  reviewed in contact sheets; pages 1, 9, 10, 28, 29, 41 and reader pages 1 and
+  46 were inspected individually. No clipping, overlap, or broken glyphs was
+  found. The current layout defects are density, review-mode line numbers, a
+  mostly blank TORS page 28, and awkward Markdown bullet conversion on reader
+  page 46.
+- This audit changes only `PAPER_REVIEW_AUDIT.md` and the automation memory. It
+  does not edit the manuscript, results, analysis code, release, or PDFs.
+
+### Strict Reviewer Verdict
+
+**Reject in present form; major methodological repair is required before a
+top-journal submission.**
+
+The exact-path manifest repair is correct and should be retained. It closes the
+specific `MI_rebuild` basename-aliasing bug found at 12:57. The ordinary strict
+run also remains numerically green. However, this audit found two deeper
+counterexamples to the paper's central trust claim:
+
+1. the counted MI adjudicator can explicitly fail and still be accepted by the
+   canonical strict wrapper; and
+2. a load-bearing mechanism figure assigns item-embedding/SVD semantics to a
+   frequency-only power formula and presents an intervention-created rank as a
+   property of the untreated table.
+
+These are not presentational quibbles. One is a direct fail-open execution path
+in a claimed fail-closed method; the other invalidates the paper's strongest
+representation-versus-connectivity mechanism argument. The public artifact
+story also remains false for 1.09 GB of advertised assets, and the causal
+double-dissociation language exceeds the admitted nonsignificant interaction.
+
+### Confirmed Fixes Since The 12:57 Audit
+
+1. **Exact-path `MI_rebuild` binding is fixed.** The ten manifest keys now use
+   repository-relative `_bestrec_run/rebuild_v2/...` paths and the hashes match
+   the actual rebuild files. `update_release_manifest.py` verifies path-qualified
+   entries exactly and rejects ambiguous distinct-hash basenames during regen.
+   Current `--verify` reports `OK (153 files verified)`.
+2. **The broad table-coverage sentence was narrowed.** The paper now says the
+   gate contains 168 cells across 14 artifact-gated result families and
+   explicitly acknowledges two Markdown-converted tables outside the graph.
+   This is more truthful, although the remaining universal sentence and
+   "fail-closed" framing still overreach.
+3. **Preregistration timing language was narrowed.** The main front matter now
+   says version-controlled/pre-declared and discloses the absence of an
+   independent timestamp. `immutable` still survives in the conclusion,
+   README, and cover letter and should be harmonized.
+4. **SILLM4Rec is now correctly resolved.** The paper states the official
+   sampled protocol (500 users, history cap 20, one positive plus nine
+   negatives) and does not treat its 0.6073 as a full-catalog comparator.
+5. **Office V1 and seed/arm wording improved.** The affected prose now
+   distinguishes the retained V1 VOID and uses five seeds per kernel / ten
+   arm-runs rather than implying ten unique seed IDs.
+
+### Dynamic Commands And Evidence
+
+- `rebuild_hstu_submission.py --strict` at `33c3c183511c`:
+  - HSTU core-block parity exact;
+  - 168 cells recomputed, 149 exact and 19 within rounding;
+  - 0 mismatches, 0 untraceable, 14/14 declared claim families;
+  - current local manifest `OK (153 files verified)`;
+  - MI ordinary data: K=16 CI-LB `0.04096`, K=8 CI-LB `0.04083`, 5/5
+    seeds above 0.0406 in each arm;
+  - Office V3 and both FIR-breadth categories passed their current gates;
+  - wrapper printed `SUBMISSION REBUILD: PASS`.
+- MI failure-propagation probe:
+  - `summarize_sota_confirm_v2.py __definitely_missing_artifact_dir__` printed
+    ten missing seeds and `DUAL GATE VERDICT: FAIL`;
+  - process exit code was `0`;
+  - `rebuild_hstu_submission.run(...)` then printed the probe as `OK` and
+    returned `True`.
+- Missing release-asset probe:
+  - calling `update_release_manifest.verify()` on a synthetic absent split
+    printed `SKIPPED-missing (release asset)`;
+  - it returned `0` and reported verification `OK` with zero verified files.
+- Live `v0.9-audit-evidence` inventory at audit time:
+  - `pinned_env_parity_artifacts.zip` (`9,886,033` bytes);
+  - `RELEASE_MANIFEST.json` (`26,991` bytes, refreshed to the current exact-path
+    manifest during this audit);
+  - no split or text-cache assets; repository visibility `PRIVATE`.
+- PDF inspection:
+  - reader: 46 letter pages;
+  - TORS review artifact: 41 letter pages;
+  - no render corruption; TORS page 28 contains only roughly ten lines of text
+    above a large blank area, and the line-numbered review format persists.
+
+### Confirmed Problems
+
+#### CP-1 - The BBP/MP figure and "spectral irreducibility" conclusion are invalid as stated
+
+`PAPER_SUBMISSION.md:422` says an analysis of the Video_Games item table finds
+zero reliably detectable tail/mid singular directions at `ell=2`, reports a
+Gavish-Donoho rank of 24/64, and concludes that no representation-side lever
+can rescue the tail.
+
+The generating code does something materially different:
+
+- `_bestrec_run/run_sasrec_sbert.py:2568-2588` runs before training and reads
+  only train item frequencies, `d_model`, and fixed `ell in {2,4,8}`. It never
+  reads the item embedding table, a covariance matrix, a singular value, or a
+  singular vector.
+- The formula is the squared asymptotic sample/population eigenvector overlap
+  from a spiked-covariance model. In that theory `ell` is a population spike
+  strength and the output is a continuous overlap, not SVD rank and not the
+  fraction of items clearing an empirical edge.
+- `_bestrec_run/make_fig_bbp_irreducibility.py:32-35,104-110,157-165`
+  relabels the average overlap as a fraction of items/directions reliably
+  estimable and calls `ell` the "SVD rank used." Those semantics are not
+  produced by the experiment.
+- `_bestrec_run/run_sasrec_sbert.py:2617-2636` computes a hard-thresholded SVD
+  after every epoch and overwrites the item table with the truncated matrix.
+  The final `spectral_effective_rank=24` is therefore a property enforced by
+  the GD1 intervention. It does not show the untreated table is "genuinely
+  low-rank." A repeat intervention reports 22, not 24.
+- Table 1e uses a hard-coded `D_EFF=23.0` and says it comes from this analysis.
+  No released result reports rank 23; the main text simultaneously says 24.
+
+The numerical JSON fields are reproduced, but their interpretation is not.
+The figure, the `d_eff` normalization, and every "spectrally irreducible / no
+representation lever can rescue it" conclusion must be withdrawn until a
+valid, prospectively specified analysis of untreated embeddings is performed
+under justified noise/model assumptions.
+
+#### CP-2 - The counted MI gate is fail-open
+
+`_bestrec_run/summarize_sota_confirm_v2.py:28-69` correctly tracks failures in
+`overall_pass`; line 70 nevertheless always executes `return 0`.
+`_bestrec_run/rebuild_hstu_submission.py:42` invokes this adjudicator through a
+helper that defines success only as `returncode == 0`. Unlike the later Office
+V3 and FIR-breadth calls, it does not parse a required verdict string.
+
+This creates a direct false-PASS path for missing files, bad hashes, dirty-run
+provenance, mixed commits, CI failure, or insufficient positive seeds. The
+ordinary MI data currently pass, but a fail-closed gate is defined by its
+behavior on failures, not by its behavior on one green snapshot.
+
+**Required repair:** return nonzero when `overall_pass` is false; make the
+wrapper require both exit zero and an exact `DUAL GATE VERDICT: PASS` token;
+add unit/integration tests for each failure branch, including missing runs,
+hash drift, dirty provenance, mixed commits, CI-LB failure, and too few
+positive seeds.
+
+#### CP-3 - Missing public assets remain a direct release contradiction
+
+`README.md:76`, `DOI_DEPOSIT_INSTRUCTIONS.md:17`, and
+`RELEASE_MANIFEST.json` describe the splits/caches as immutable v0.9 release
+assets. The live release has none of them. The manifest contains 12 split
+entries totaling 575,390,759 bytes and four cache entries totaling 515,173,376
+bytes. The current local verification reports zero absent assets only because
+the ignored local copies are present; the synthetic probe confirms a clean
+clone skips absence and succeeds.
+
+Either publish byte-identical assets with a public index and test download-to-
+hash from an unauthenticated fresh clone, or rewrite all documents to say they
+are local/regenerable derivatives and make clear which reproduction claims do
+not depend on them. A file described as a release asset must not be skippable.
+
+#### CP-4 - Table coverage and Table A1 are still contradictory
+
+- `paper_tex/tables/tableA1.tex:3` remains `family=md-only`, `checked: 0`.
+- `PAPER_SUBMISSION.md:641-662` contains 22 numbered rows, while the heading,
+  caption, surrounding prose, TeX section, and generated table repeatedly say
+  20 variants.
+- The table contains real experimental NDCG values, deltas, seed-specific
+  results, and stop decisions; calling it "expository" does not make it
+  non-empirical.
+- `paper_tex/tables/table_datasets41.tex:3` also remains `checked: 0` while
+  printing counts and result-status labels.
+- The abstract still says every empirical finding is produced and policed;
+  `CANONICAL_SUBMISSION.md:44,60-61`, builder comments, and manifest metadata
+  retain broader universal wording.
+
+Narrowing the gate to "everything already inside the gate" is tautological,
+not fail-closed coverage. Add a scanner that inventories every numerical,
+categorical-status, figure, and table claim and fails on any unclassified item.
+
+#### CP-5 - The double-dissociation and connectivity-only conclusion are unsupported
+
+- `PAPER_SUBMISSION.md:378` says the same-intervention head/tail contrast tests
+  the stratum-by-density interaction and is "Nieuwenhuis-safe."
+- Lines 397 and 428 explicitly say the interaction/slope difference is not
+  significant. A level difference cannot be called a statistically supported
+  double dissociation when its stated interaction test fails.
+- Line 401 says any difference between user-thinning and interaction-thinning
+  at matched interactions/item is attributable to connectivity alone. Dropping
+  whole users also changes user composition, history-length distribution,
+  item degrees, topology, and which events survive. Those are bundled
+  interventions, not a one-factor isolation.
+- The same dropped-user subset is fixed and only model seed varies, so the CI
+  omits uncertainty from the user-removal intervention.
+- Five training seeds on two fixed categories cannot establish a population
+  "between-dataset effect"; they quantify optimization variability conditional
+  on those exact data and test users.
+
+Remove "double dissociation," "alone," "closes the mechanism," and causal
+decomposition language unless a valid interaction/contrast and independently
+resampled intervention replicates support them. The current defensible claim is
+a conditional pattern under two bundled thinning procedures.
+
+#### CP-6 - Result narration contains checkable internal contradictions
+
+- Six rungs are listed in the code/table, but the paper says seven and applies
+  a `x7` multiplicity statement.
+- Head NDCG falls from 0.002544 to 0.002520 once; HR changes direction multiple
+  times. "Climbs monotonically" and "monotone on both metrics" are false.
+- TAPE is a capacity-adding term with positive one- and four-seed deltas, yet
+  the negative-map thesis says no capacity-adding mechanism produced a
+  multi-seed gain.
+- The paper treats one failed seed as sufficient to reject many probes while
+  elsewhere acknowledging most negative rows lack confirmatory power. Those
+  rows can document exploration; they cannot bound the ceiling.
+- FIR supplies most, not all, of the MI lift; label smoothing remains positive.
+  The four-seed base versus five-seed arms also breaks the stated paired-seed
+  convention.
+
+#### CP-7 - Novelty, terminology, and source synchronization need repair
+
+- [C3SASR](https://arxiv.org/abs/2211.01297) already combines causal
+  convolution with self-attention for local sequential context, and
+  [HyenaRec](https://arxiv.org/abs/2603.25027) uses causal/gated convolutional
+  filters in sequential recommendation. Neither is discussed. The categorical
+  FIR "New" statement should be narrowed to the exact HSTU placement and tested
+  against a matched causal-convolution baseline.
+- [TASTE](https://arxiv.org/abs/2308.14029) already connects text matching to
+  long-tail/popularity-bias improvement, and
+  [AlterRec](https://arxiv.org/abs/2402.08921) studies ID-text dominance by
+  popularity. The paper's defensible contribution is the exact paired
+  cross-category/intervention study, not the general tail-text insight.
+- The 5-core protocol removes zero-history items, so the frequency-tercile
+  result is warm-item long-tail evaluation, not strict cold start. Replace
+  "rare/cold" and "cold-start gate" unless a real cold-item split is added.
+- The canonical Markdown reference list omits four works named in its own
+  prose while the derived TeX bibliography adds them, contradicting the stated
+  no-divergence policy. Nieuwenhuis and Tilman are invoked but uncited.
+
+### External Fact-Check Notes
+
+- The spiked-covariance source for the implemented formula defines `ell` as a
+  population spike and the formula as eigenvector cosine/overlap, not an item
+  fraction or SVD rank: [Donoho, Gavish, and Johnstone, 2018](https://pmc.ncbi.nlm.nih.gov/articles/PMC6152949/).
+- Gavish-Donoho hard thresholding is a low-rank matrix-denoising operator that
+  sets empirical singular values below a threshold to zero; applying it every
+  epoch necessarily produces a truncated table and does not diagnose an
+  untreated table by itself: [IEEE DOI 10.1109/TIT.2014.2323359](https://doi.org/10.1109/TIT.2014.2323359).
+- A comparison of two effects requires a direct test of their difference; one
+  pattern versus another is not established by separate level statements:
+  [Nieuwenhuis, Forstmann, and Wagenmakers, 2011](https://pubmed.ncbi.nlm.nih.gov/21878926/).
+- The official SILLM4Rec full text confirms its sampled ten-candidate protocol,
+  so the new non-comparability sentence is correct:
+  [ACM DOI 10.1145/3743093.3771011](https://dl.acm.org/doi/10.1145/3743093.3771011).
+- Current TORS author guidance still says `manuscript,screen`, removal of line
+  numbers, and single-blind review:
+  [TORS author guidelines](https://dl.acm.org/journal/tors/author-guidelines).
+- The apparatus should be positioned against the recent TORS methodological-
+  standards editorial, ACM artifact review/badging, TOP guidance, W3C PROV,
+  and the NeurIPS reproducibility program. Its defensible novelty is an
+  integrated recommender-specific implementation/case study, not a new general
+  governance doctrine.
+
+### Plausible Risks / Author Verification
+
+1. **Origin of `d_eff=23`:** no checked artifact reports 23. Confirm whether it
+   is an undocumented average of intervention ranks 24 and 22, a selected
+   value, or an error. None supports calling it an untreated-table rank.
+2. **BBP model validity:** even a corrected embedding analysis would need a
+   justified sampling/noise model, unit of observation, spike definition, and
+   uncertainty analysis before a BBP threshold can support impossibility
+   language.
+3. **Preregistration timing:** provide independent pre-outcome timestamps for
+   any campaign still called preregistered, or consistently use
+   version-controlled/pre-declared throughout.
+4. **Public evidence boundary:** confirm whether the split/cache files will be
+   released, regenerated in CI, or removed from the advertised release scope.
+5. **Intervention uncertainty:** confirm whether alternative dropped-user and
+   dropped-event subsets exist. One fixed intervention realization cannot
+   support the current CI as if subset selection were irrelevant.
+6. **Paper center:** decide whether the paper is primarily an assurance-method
+   paper or a recommender case study. The current RQs evaluate the latter while
+   the title/abstract lead with the former.
+
+### Concrete Fix Order
+
+1. **Withdraw Figure 3 and all BBP/irreducibility-derived conclusions now.**
+   Remove `d_eff=23`/alpha claims or replace them with a justified, independent
+   quantity. If the analysis is retained, run it on untreated checkpoints,
+   define the random-matrix model correctly, compute the claimed empirical
+   objects, quantify uncertainty, and validate labels against the formula.
+2. **Make the MI gate actually fail closed.** Return nonzero on every failed
+   verdict, parse the exact PASS token in the wrapper, and add negative tests
+   for every failure branch.
+3. **Repair the public artifact contract.** Upload and independently download-
+   verify the 16 missing assets, or remove every release-asset claim and stop
+   treating missing evidence as verification success.
+4. **Complete claim coverage.** Gate Table A1, dataset/status values, figures,
+   prose numerics and categorical verdicts; correct 20 versus 22; fail the build
+   on any empirical `checked: 0` or unclassified claim.
+5. **Downgrade and re-test the mechanism claims.** Drop unsupported double-
+   dissociation/causal/"alone" language; directly test the relevant
+   interaction; vary intervention subsets as well as model seeds; state the
+   inferential population honestly.
+6. **Correct internal result narration.** Six rungs, non-monotone trend wording,
+   TAPE/capacity exception, FIR-most-not-alone, balanced paired seeds, and
+   exploratory-negative labels.
+7. **Add close prior art and matched baselines.** C3SASR/HyenaRec for causal
+   convolution, TASTE/AlterRec for tail text, and the missing assurance-method
+   literature; run the strongest feasible protocol-matched baselines.
+8. **Rewrite the front end.** One 200--300 word abstract, at most three aligned
+   contributions, RQs that evaluate the claimed lead method, and most probe
+   inventory moved to supplement.
+9. **Apply current TORS packaging.** Update the official ACM class, switch to
+   `manuscript,screen`, remove line numbers, reconcile single-blind identity
+   handling, fix page 28/large-table flow, and inspect every rebuilt page.
+10. **Cut a new coherent deposit only after the above gates pass from a fresh,
+    unauthenticated clone.** Do not mutate an existing release identity.
+
+### Open Questions
+
+1. Is there an untreated baseline checkpoint from which a real item-embedding
+   spectrum and rank can be computed, or is Figure 3 based only on the
+   repeatedly truncated GD1 model?
+2. What exact calculation produced `d_eff=23`, given released ranks 24 and 22?
+3. Why does the MI adjudicator return success after any failed gate, and what
+   test previously asserted failure propagation?
+4. Where can an unauthenticated reviewer download the 12 splits and four text
+   caches named as v0.9 release assets?
+5. Were user-thinning conclusions replicated across independently sampled
+   dropped-user sets, or only across model initializations on one fixed subset?
+6. Will the assurance apparatus receive a formal fault-injection evaluation,
+   or be demoted to a worked engineering case study?
+7. Which causal-convolution and text-aware baselines can be run on the exact
+   full-catalog LLOO protocol before submission?
+
+### Running Checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Re-baseline after concurrent author commits advanced HEAD.
+- [x] Inspect canonical Markdown, TeX, bibliography, tables, figures, scripts,
+      results, manifests, release assets, and response files.
+- [x] Re-run the ordinary strict numerical/parity/MI/Office/FIR chain.
+- [x] Test failure propagation with a deliberately missing MI artifact set.
+- [x] Test release verification with a deliberately missing release asset.
+- [x] Inspect BBP/MP formulas, figure generator, intervention code, and result
+      JSONs against the paper's semantics.
+- [x] Render and inspect all 46 reader and 41 TORS PDF pages.
+- [x] Fact-check BBP interpretation, interaction inference, close FIR/tail
+      literature, SILLM4Rec protocol, and current TORS instructions.
+- [x] Update the current prioritized rejection-risk list.
+- [x] Add this timestamped audit section.
+- [ ] Withdraw or correctly re-run the spectral irreducibility analysis.
+- [ ] Fix MI failure exit/propagation and add negative regression tests.
+- [ ] Publish or truthfully reclassify the missing split/cache assets.
+- [ ] Gate all empirical tables/figures/prose and correct Table A1's count.
+- [ ] Repair interaction, intervention, and inferential-unit claims.
+- [ ] Add close prior art and strong protocol-matched baselines.
+- [ ] Rewrite the abstract/contribution/RQ spine.
+- [ ] Rebuild under current TORS mode/template and re-inspect every page.
+
+## Previous Prioritized Rejection-Risk List (superseded by the 13:47 audit)
+
 1. **[CONFIRMED, rejection-level] The lead “every empirical table cell”
    assertion is false.** The paper repeats that the fail-closed manifest
    enumerates and recomputes every empirical table cell. Yet generated Table A1

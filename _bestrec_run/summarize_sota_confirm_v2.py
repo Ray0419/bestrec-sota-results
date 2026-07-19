@@ -67,7 +67,8 @@ def main():
     if any(dirty for _, dirty in commits):
         print("  WARNING: dirty tracked tree during runs — VOID per prereg"); overall_pass = False
     print(f"\n=== DUAL GATE VERDICT: {'PASS' if overall_pass else 'FAIL'} ===")
-    return 0
+    # audit 2026-07-19 13:47 CP-2: this counted gate was fail-open (always returned 0)
+    return 0 if overall_pass else 2
 
 
 if __name__ == "__main__":

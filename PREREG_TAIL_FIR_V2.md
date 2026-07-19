@@ -83,3 +83,27 @@ enabling tie-safe, exposure-separated, row-level reanalysis by anyone.
 
 - 2026-07-20: frozen; smoke parity validated; OTS stamp requested; campaign launched
   (sequential background queue).
+
+## ERRATUM E1 (2026-07-20, before any IS/CDs run existed and before any adjudication)
+
+The mechanical flag emitter had a bug: the FIRB template configs carry
+`zfusion_sweep: ""` (an inert empty-string default), and emitting `--zfusion-sweep`
+with an empty value made argparse reject all 32 IS/CDs commands instantly (every one
+failed at argument parsing; zero training steps ran). The MI and VG arms (32 runs)
+completed normally under the original frozen command list.
+
+Repair: the generator now skips empty-string/empty-list/empty-dict values (argparse
+defaults). The regenerated `_bestrec_run/tfv2_commands.txt` has sha256
+`75d045a81eb21e1ed889008fb0bbb45fc0dba4e94cd3aabb84a637a944891f0b`; the 32 MI/VG lines
+are byte-identical to the original frozen list (verified programmatically) — only the
+32 IS/CDs lines changed (the spurious flag removed). Decision rules, endpoints, seeds,
+and analysis are UNCHANGED.
+
+Exposure disclosure (honesty): while diagnosing the queue exit, the tail of run 1's
+console log (results_TFV2_MI_text_seed20260801: best-epoch summary block) was read
+before this erratum. No other run output was inspected; no rule depends on it; the
+adjudicator (`adjudicate_tfv2.py`) was committed before any further inspection and
+remains fully mechanical.
+
+- 2026-07-20: E1 recorded; amended file re-stamped (`PREREG_TAIL_FIR_V2.md.ots`
+  regenerated; the pre-E1 proof is preserved in git history); IS/CDs queue relaunched.

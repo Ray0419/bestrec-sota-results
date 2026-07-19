@@ -37,8 +37,8 @@ SKIP_KEYS = {"seed", "out", "category"}  # category is the positional argument
 def flags_from_config(cfg):
     parts = []
     for k, v in cfg.items():
-        if k in SKIP_KEYS or v is None:
-            continue
+        if k in SKIP_KEYS or v is None or v == "" or v == [] or v == {}:
+            continue  # empty values are argparse defaults; emitting them breaks flags (E1)
         flag = "--" + k.replace("_", "-")
         if isinstance(v, bool):
             if v:

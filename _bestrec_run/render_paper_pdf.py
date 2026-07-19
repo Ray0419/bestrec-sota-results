@@ -72,6 +72,17 @@ hits = []
 for p in pats:
     for m in re.finditer(p, text, re.I if p in (r"lorem", r"PLACEHOLDER") else 0):
         hits.append((p, text[max(0, m.start()-60):m.end()+60].replace("\n", " ")))
+# cell-count parity gate (audit 2026-07-20 00:01): the manuscript's printed
+# artifact-gated cell count must equal the manifest's recomputed-cell count.
+import json as _json
+_man = _json.load(open(os.path.join(os.path.dirname(__file__), "hstu_results_manifest.json"),
+                       encoding="utf-8"))
+_nrec = sum(1 for c in _man["cells"] if c.get("recompute") is not None)
+_mm = re.search(r"(\d{3})\s+(?:artifact-gated|cells across)", src)
+if not _mm:
+    hits.append(("cell-count", "manuscript lacks an 'NNN cells across' count statement"))
+elif int(_mm.group(1)) != _nrec:
+    hits.append(("cell-count", f"manuscript says {_mm.group(1)} but manifest recomputes {_nrec}"))
 n_img = _count_images(rd)
 if "figures/fig_" in src and n_img == 0:
     hits.append(("figures", "manuscript references figures but the PDF embeds 0 images"))

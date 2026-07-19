@@ -138,7 +138,7 @@ def adjudicate():
                 pass
     if hits["text"].get(10) and hits["id"].get(10):
         N = hits["text"]["n"][0] * len(hits["text"]["n"])
-        out.append("- **P1 tail contrast (pooled hits text vs id)**: ")
+        out.append("- **P1 tail contrast (pooled hits text vs id; z RETRACTED 2026-07-19 as inference — clustered repeated users, descriptive counts only; see manuscript/office.tailwelch.* cells)**: ")
         from math import erf, sqrt
         for K in (10, 20, 50, 100):
             ht, hi = sum(hits["text"][K]), sum(hits["id"][K])
@@ -146,7 +146,7 @@ def adjudicate():
             se = sqrt(max(pp * (1 - pp) * 2 / N, 1e-12))
             z = (ht / N - hi / N) / se if se > 0 else 0
             pv = 2 * (1 - 0.5 * (1 + erf(abs(z) / sqrt(2))))
-            out.append(f"@{K}: {ht} vs {hi} (z={z:.2f}, p={pv:.4f})  ")
+            out.append(f"@{K}: {ht} vs {hi} (retracted-z record: {z:.2f})  ")
         out.append("\n")
     # floor
     try:

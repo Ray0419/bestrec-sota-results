@@ -21,6 +21,11 @@ re-running with unchanged inputs appends nothing.
 Exit codes: --report (default) always 0. --gate exits 1 if any category is
 VOID or incomplete (NULL is a legitimate pre-registered outcome, not a gate
 failure). --no-append skips the results-file write (validation use).
+
+NOTE (2026-07-20): this adjudicator verifies the FROZEN RULE AS WRITTEN (a paired
+t). The pairing premise is now known false (manuscript S5.3); 'CONFIRMED' here is a
+mechanical frozen-rule outcome whose paired interpretation is withdrawn. The strict
+gate consumes it as an artifact-integrity check, not as valid paired inference.
 """
 from __future__ import annotations
 

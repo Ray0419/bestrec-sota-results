@@ -4440,7 +4440,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.002212517406576536,
     "sd": 0.00024053446585292854,
@@ -4548,7 +4548,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.004238414341052399,
     "sd": 0.0007650841862958805,
@@ -4656,7 +4656,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": -0.00014842607605737736,
     "sd": 0.00017931176190672362,
@@ -4764,7 +4764,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0001284403669724772,
     "sd": 0.0005824062476368394,
@@ -4872,7 +4872,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0023890334157901233,
     "sd": 0.00026729913385642196,
@@ -4980,7 +4980,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.004082902140413386,
     "sd": 0.0008295095143595997,
@@ -5088,7 +5088,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.00016452918033574068,
     "sd": 0.0003696796105353107,
@@ -5196,7 +5196,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0008073394495412847,
     "sd": 0.0007118225593126909,
@@ -5304,7 +5304,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.002544233292230638,
     "sd": 0.0004913353098207352,
@@ -5412,7 +5412,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.004939632991206494,
     "sd": 0.0008915915770818797,
@@ -5520,7 +5520,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 3.914816769624869e-05,
     "sd": 0.00031032854824774225,
@@ -5628,7 +5628,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.00011009174311926648,
     "sd": 0.000765931429898782,
@@ -5736,7 +5736,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0025204857770895457,
     "sd": 0.0004207378135275229,
@@ -5844,7 +5844,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.00486894562727967,
     "sd": 0.0007649666207076967,
@@ -5952,7 +5952,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0005370064646955323,
     "sd": 0.0003863441572245068,
@@ -6060,7 +6060,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0006605504587155961,
     "sd": 0.0009953177141369181,
@@ -6168,7 +6168,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.002663578471688935,
     "sd": 0.0003982671529464231,
@@ -6276,7 +6276,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0044674414001753095,
     "sd": 0.0010816321641420896,
@@ -6384,7 +6384,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 5.600870772996206e-05,
     "sd": 0.0005518733556081064,
@@ -6492,7 +6492,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.00023853211009174265,
     "sd": 0.001086681660171452,
@@ -6600,7 +6600,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0035404078639170917,
     "sd": 0.0004164262800664785,
@@ -6708,7 +6708,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.005720021488958632,
     "sd": 0.0009036156810796771,
@@ -6816,7 +6816,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": -0.00010813816136401961,
     "sd": 0.0005028234353932916,
@@ -6924,7 +6924,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 7.339449541284414e-05,
     "sd": 0.001164812495273679,
@@ -13629,7 +13629,7 @@
    "table_id": "fir_breadth",
    "row_label": "pre-declared FIR breadth: Industrial_and_Scientific paired (filter - nofilter)",
    "metric": "paired 5-seed delta NDCG@10 (best-by-val full catalog)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260713.json",
@@ -13696,7 +13696,7 @@
      "mode": "count"
     }
    ],
-   "notes": "Pre-declared breadth campaign (PREREG_FIR_BREADTH.md, committed before any run; frozen V2 config transplanted with zero per-category tuning; fresh seeds 20260713-17). Internal paired contrast, no comparator. Mechanical adjudication in FIR_BREADTH_RESULTS.md; n_eval full-catalog verified there per run.",
+   "notes": "Pre-declared breadth campaign (PREREG_FIR_BREADTH.md, committed before any run; frozen V2 config transplanted with zero per-category tuning; fresh seeds 20260713-17). Internal paired contrast, no comparator. Mechanical adjudication in FIR_BREADTH_RESULTS.md; n_eval full-catalog verified there per run. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0024015865758802712,
     "sd": 0.0004613256858539702,
@@ -13747,7 +13747,7 @@
    "table_id": "fir_breadth",
    "row_label": "pre-declared FIR breadth: CDs_and_Vinyl paired (filter - nofilter)",
    "metric": "paired 5-seed delta NDCG@10 (best-by-val full catalog)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260713.json",
@@ -13814,7 +13814,7 @@
      "mode": "count"
     }
    ],
-   "notes": "Pre-declared breadth campaign (PREREG_FIR_BREADTH.md, committed before any run; frozen V2 config transplanted with zero per-category tuning; fresh seeds 20260713-17). Internal paired contrast, no comparator. Mechanical adjudication in FIR_BREADTH_RESULTS.md; n_eval full-catalog verified there per run.",
+   "notes": "Pre-declared breadth campaign (PREREG_FIR_BREADTH.md, committed before any run; frozen V2 config transplanted with zero per-category tuning; fresh seeds 20260713-17). Internal paired contrast, no comparator. Mechanical adjudication in FIR_BREADTH_RESULTS.md; n_eval full-catalog verified there per run. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.005663298288636808,
     "sd": 0.0005887929382977914,

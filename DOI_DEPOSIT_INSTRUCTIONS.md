@@ -14,7 +14,7 @@ without your login. Everything else is done:
 | Zenodo metadata (title, creators, license, keywords, description) | `.zenodo.json` (repo root — Zenodo's GitHub integration reads it automatically) |
 | Citation metadata | `CITATION.cff` (GitHub renders a "Cite this repository" button from it) |
 | Code/docs license with dataset + vendored-code scope notes | `LICENSE` (MIT — swap before minting if you prefer another) |
-| Hashes for the large artifacts NOT in the bundle (splits, caches, 51 result JSONs) + submission docs/PDF/parity artifacts | `RELEASE_MANIFEST.json` (self-policing: verified against the tree by `rebuild_hstu_submission.py --strict` at every rebuild) + the `v0.9-audit-evidence` release assets |
+| Hashes for the large artifacts NOT in the bundle (splits, caches — hash-pinned but NOT yet public release assets (upload pending); per-run result JSONs are git-tracked) + submission docs/PDF/parity artifacts | `RELEASE_MANIFEST.json` (self-policing: verified against the tree by `rebuild_hstu_submission.py --strict` at every rebuild) + the `v0.9-audit-evidence` release assets |
 
 ## Option A — Zenodo GitHub integration (recommended, ~3 clicks)
 

@@ -1168,7 +1168,7 @@ def build_spec():
                           [chk("mean", pm, 6), chk("sd", ps, 6), chk("pos", pp, mode="count")],
                           5, conf, seeds=S0812,
                           notes="kept-interactions/item is quoted from the frozen run logs "
-                                "(see make_table_5_4_titration.py); alpha = ipi/23."))
+                                "(see make_table_5_4_titration.py)."))
     C.append(unt("t1e.alpha066", "table1e", "alpha(rho=0.66) = ipi/d_eff (RETIRED)",
                  "ratio 0.700 (retired print, no longer in the paper)", [],
                  "RETRACTED 2026-07-19 (audits 14:53/15:51/17:56 CP-2): the d_eff=23 "
@@ -1764,7 +1764,10 @@ def build_spec():
     # selection-timing taxonomy sweep (2026-07-19, audit 22:08): confirmatory labels are
     # reserved for the pre-declared prospective campaigns; every other multi-seed cell is
     # exploratory (multi-seed post-hoc: precision-improved, not confirmatory).
-    PREDECLARED_PREFIXES = ("v2conf.", "officev3.", "firb.", "t2.conngate.")
+    # firb.* removed 2026-07-20 (audit 00:01): the frozen breadth rule is a paired t whose
+    # pairing premise is false; its cells stay as frozen-rule records but are NOT
+    # confirmatory. Welch companions are post-hoc (exploratory).
+    PREDECLARED_PREFIXES = ("v2conf.", "officev3.", "t2.conngate.")
     for c0 in C:
         if c0.get("evidence_class") == "confirmatory" and \
                 (not c0["cell_id"].startswith(PREDECLARED_PREFIXES)

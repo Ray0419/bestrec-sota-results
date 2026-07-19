@@ -15,9 +15,10 @@ The bundle is the small archival companion to the repository: papers, pre-declar
 results documentation, protocol code, provenance manifests, core historical audit
 documents, and the comparator
 
-reference-run artifacts. Large evidence (splits, text caches, result JSONs) is NOT bundled --
+reference-run artifacts. Large evidence is NOT bundled -- result JSONs are git-tracked;
 
-it is tracked in the repository and byte-pinned by RELEASE_MANIFEST.json, which IS bundled.
+splits/text caches are SHA-256-pinned by RELEASE_MANIFEST.json (which IS bundled) but are
+not yet public release assets (upload pending).
 
 
 
@@ -227,10 +228,13 @@ tagged tree rather than re-bundled per cut),
 
 and small evaluation artifacts needed to verify every number printed in the
 
-paper. Large evidence (data splits, text-encoder caches, per-run result JSONs)
+paper. Large evidence is hash-pinned by `RELEASE_MANIFEST.json` (included
 
-is tracked in the repository and byte-pinned by `RELEASE_MANIFEST.json`
-(included here), so nothing printed depends on any file outside the pinned set.
+here): per-run result JSONs are git-tracked, while the data splits and
+text-encoder caches are SHA-256-pinned but NOT yet public release assets
+(upload pending a maintainer decision) --- external verification of those
+payloads currently requires regeneration from the public AR2023 dumps via the
+tracked preprocessing code, hash-verifiable against the manifest.
 Boundary relations, stated plainly: `RELEASE_MANIFEST.json` pins the REPOSITORY
 evidence set (a superset of this bundle; its git-backed digests are of
 LF-normalized bytes and equal the git-blob hashes at the release tag);
@@ -296,9 +300,10 @@ pre-declared per-category point-estimate comparisons (Musical_Instruments;
 
 Office_Products V3 under its frozen wording); Office V1 remains VOID and is
 
-never counted; the causal FIR filter is confirmed on four categories as an
+never counted; the causal FIR filter is supported on four categories as an
 
-internal paired contrast; no SOTA claim of any kind; no paired or
+internal same-seed contrast (the frozen breadth rule fired; its paired interpretation
+is withdrawn --- independent-arm Welch is the primary analysis); no SOTA claim of any kind; no paired or
 
 distributional superiority over any comparator.
 

@@ -130,7 +130,7 @@ axC.text(2.15, 1.18, "user-thinning $\\rightarrow$ MI:\ntail moves toward MI\n(d
 axC.set_xticks(xc)
 axC.set_xticklabels(regimes, fontsize=7.5)
 axC.set_ylabel("text-arm / ID-arm  tail (or head) NDCG@10 ratio")
-axC.set_title("(C) Two-axis descriptive contrast\n(user-thinned point crosses; count-thinned does not)")
+axC.set_title("(C) Two-axis descriptive contrast\n(user-thinned point shifts positive (sugg.); count-thinned does not)")
 axC.set_ylim(0.93, 1.32)
 axC.legend(fontsize=8, loc="upper left")
 axC.grid(alpha=0.3)

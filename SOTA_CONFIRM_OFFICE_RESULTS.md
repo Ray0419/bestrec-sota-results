@@ -1,3 +1,10 @@
+> **ERRATUM (2026-07-20).** The pooled two-proportion z statistics recorded below are
+> **retracted as inference** (2026-07-19, audit 22:08): the same 36,610 tail users are
+> evaluated under every seed and both arms, so the seed-summed rows are clustered repeated
+> observations, not independent trials. The counts stand as descriptive record; the valid
+> model-seed-level analysis is in the manuscript (independent-arm Welch; graph cells
+> `office.tailwelch.*`). This record is preserved unmodified below.
+
 
 
 > **FINAL STATUS: OFFICE IS VOID UNDER THE PRE-REGISTERED FLOOR CHECK.** Any

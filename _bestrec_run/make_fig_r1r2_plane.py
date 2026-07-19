@@ -98,8 +98,8 @@ for lbl, r1, r2, ratio, dlt, pf, col, mk, dx, dy, ha in PTS:
 
 ax.set_xlabel("R1 = interactions / item  (count / global density)  $\\rightarrow$ denser")
 ax.set_ylabel("R2 = users / item  (collaborative connectivity)  $\\rightarrow$ more connected")
-ax.set_title("The (R1, R2) resource plane: the user-thinned (R2) point crosses;\n"
-             "the count-thinned (R1) point does not (descriptive contrast)")
+ax.set_title("The (R1, R2) resource plane: the user-thinned (R2) point shifts positive\n"
+             "(suggestive, p=0.058); the count-thinned (R1) point does not (descriptive)")
 ax.set_xlim(13.5, 28.0)
 ax.set_ylim(2.00, 4.00)
 ax.grid(alpha=0.3)
@@ -116,7 +116,7 @@ leg = [
     Line2D([0], [0], marker="o", color="w", markerfacecolor=C_NULL,
            markeredgecolor="black", markersize=11, label="tail null (no significant difference)"),
     Line2D([0], [0], color=C_INT, lw=2.2, label="interaction-thin (R1$\\downarrow$): tail-inert"),
-    Line2D([0], [0], color=C_USR, lw=2.2, label="user-thin (R2$\\downarrow$): tail crossing (descriptive)"),
+    Line2D([0], [0], color=C_USR, lw=2.2, label="user-thin (R2$\\downarrow$): positive shift (suggestive)"),
 ]
 ax.legend(handles=leg, fontsize=8, loc="lower right", framealpha=0.93)
 
@@ -124,7 +124,7 @@ fig.text(0.5, -0.02,
          "AR2023 5-core LLOO, full-catalog NDCG@10; VG runs 5-seed best-by-val "
          "(n_eval=94,762, tail_n=10,900 frozen), Beauty 2-3 seed. The two VG "
          "thinned points share R1$\\approx$16.2 (matched count) but differ in R2; "
-         "only the R2-thinned point crosses to a tail win, beside MI.",
+         "only the R2-thinned point moves to a positive tail point estimate beside MI (suggestive).",
          ha="center", fontsize=7.6, color="#444444")
 
 png = OUT / "fig_r1r2_plane.png"

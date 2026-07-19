@@ -1,3 +1,11 @@
+> **ERRATUM (2026-07-20).** The frozen decision rule this record adjudicates is a paired
+> Student-t whose pairing premise is now known to be false: same-numbered seeds are not
+> initialization-paired (the optional Conv1d is constructed before the shared encoder;
+> manuscript §5.3). The 'CONFIRMED' verdicts below stand as mechanical outcomes of the
+> frozen rule executed as written; their **paired interpretation is withdrawn**, and the
+> manuscript's primary analysis is the independent-arm Welch (both 95% CIs exclude zero;
+> graphed as `firb.*.welch`, exploratory class). This record is preserved unmodified below.
+
 # FIR-BREADTH campaign results (PREREG_FIR_BREADTH.md)
 
 Mechanical adjudication blocks appended by `_bestrec_run/adjudicate_fir_breadth.py`.

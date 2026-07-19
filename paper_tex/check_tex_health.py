@@ -99,7 +99,8 @@ else:
 # ---- [H6] figure-generator sources must not carry retracted statistics ----------
 import glob as _g2
 FIG_BANNED = ("t=3.47", "-0.000018", '"0/2"', "binding", "tail law", "causal decomposition",
-              "CI excl 0)", "paired text-ID", "powered")
+              "CI excl 0)", "paired text-ID", "powered", "tail-win band",
+              "crosses to a tail win", "point crosses")
 for f in _g2.glob(os.path.join(HERE, "..", "_bestrec_run", "make_fig_*.py")):
     src = io.open(f, encoding="utf-8", errors="replace").read()
     for patb in FIG_BANNED:

@@ -9,6 +9,28 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-19 14:53 (retraction round; also completes 13:47 CP-1/5/6; responded 2026-07-19)
+
+**Executed the full scientific-prose surgery both audits demanded.** All changes are strict
+narrowings or disclosures; strict gate true-exit 0 after (168 cells, 0 mismatch, 0
+untraceable; both PDFs rebuilt and text-verified).
+
+| # | Item | Action |
+|---|---|---|
+| 14:53 CP-2 / 13:47 CP-1 | Spectral claims rejection-level while still in PDFs | **Retracted in both papers and the TeX twin:** Fig. 3 removed (reader PDF now 2 images); Table 1e's α=ipp/d_eff column removed (a display-derived column from the retracted d_eff — the gated NDCG/HR cells are untouched); the Refined-verdict paragraph replaced with a dated retraction stating exactly what the audit proved (frequencies-only computation, overlap-not-fraction, intervention-enforced rank 24/22, unsourced 23). Disclosed en route: the TeX twin never carried the verdict prose (a pre-existing md/tex divergence) — it now carries the retraction. |
+| 14:53 CP-3 | "Pre-Registered" overstates | **Retitled: "Pre-Declared, Artifact-Gated Evaluation…"** and ~100 body/tables sites harmonized to pre-declared/pre-declaration (md + tex + generator templates; PREREG_* filenames untouched). **Cascade note: README/CITATION/zenodo/cover-letter/companion titles still carry the old title — first item next tick.** |
+| 14:53 CP-1 | FIR init is singular; weight decay is the undisclosed bootstrap | **Disclosure added to §3** exactly as found (both task gradients zero at g=0/delta start; Adam's coupled weight decay perturbs the delta tap; wd=0 makes the parameterization an absorbing no-op; fixed-average/no-gate arms don't share the singular start, so those ablations alter the optimization path too). **Nonsingular-reparameterization reruns queued and flagged to the maintainer (GPU work).** |
+| 13:47 CP-5 / 14:53 CP-7 | Causal/decomposition language exceeds design | "Double dissociation" (7 sites), "connectivity alone," "Nieuwenhuis-safe," "closes the mechanism" all replaced with bundled-intervention conditional-pattern wording, incl. the fixed-draw and two-category-contrast caveats. |
+| 13:47 CP-6 / 14:53 CP-8 | Narration contradictions | seven-rung/×7 → six-rung/×6; monotonicity claims corrected to the actual reversals; the 40-epoch universal scoped (pre-declared campaigns train 20 per their frozen configs). |
+| (prior tick) 13:47 CP-2 | MI gate fail-open | Fixed and verified in the previous response. |
+
+**Still open, in order:** title cascade across packaging (next tick, with a v1.1.10 cut per
+14:53 CP-4 only after these repairs settle); asset-story fail-not-skip (CP-5); A1
+coverage-or-retirement + 22-vs-20 (CP-6); TORS mode + acmart; citations round (C3SASR,
+HyenaRec, TASTE, AlterRec + methodological set); TAPE-vs-negative-map sentence.
+**Maintainer-scope:** FIR nonsingular reruns; resampled-intervention replicates; apparatus
+evaluation; front-end rewrite; public asset upload vs regenerable wording.
+
 ## Response — to Audit Run 2026-07-19 13:47 (round 1: the fail-open counted gate; retractions sequenced next)
 
 **Verdict acknowledged.** This audit lands two findings of the highest class: a counted gate

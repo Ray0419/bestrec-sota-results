@@ -481,6 +481,9 @@ plausible risks.
   analysis plan timestamped independently before outcomes were inspected?
 - [ ] **Author verification:** Can the final Office per-user predictions and
   exact user/target IDs be regenerated for every seed and arm?
+- [ ] **Author verification:** Quantify equal-timestamp groups and split-
+  boundary ties, declare one deterministic tie policy, and rerun/sensitivity-
+  check if the counts are nontrivial.
 - [ ] Recompute MI, VG, Beauty, and Office with a zero-frequency bin and
   tie-safe positive-frequency bins; release membership hashes and row-level
   results.
@@ -491,9 +494,10 @@ plausible risks.
 - [ ] Propagate narrowed claims identically through abstract, introduction,
   results, figures, conclusion, TeX, reader PDF, TORS PDF, response log, and
   release metadata.
-- [ ] Keep the strict 168-cell graph green, but add checks for actual sample
-  counts, required sections/figures, undefined references, retirement residue,
-  final sidecar geometry, and literal release-tag identity.
+- [ ] Restore the full strict build, keep the 168 declared cells green, and
+  extend checks to every load-bearing sample count/statistic, required
+  section/figure, undefined reference, stale figure annotation, final sidecar
+  geometry, and literal release-tag identity.
 - [ ] Obtain an independent statistical review after the estimand and
   dependency structure are fixed.
 - [ ] Maintain verdict **reject** until every confirmed blocker in the current

@@ -92,7 +92,7 @@ Three properties make our version safe and honest:
 we tested**. On two of them the test was run under a sealed pre-declaration (see §5): on
 Industrial & Scientific, the filter added **+0.0024** NDCG@10 (95% confidence interval
 **+0.0018 to +0.0030**), and on CDs & Vinyl **+0.0057** (**+0.0049 to +0.0064**) — in both
-cases the filter won on **5 out of 5** paired random restarts, with **zero per-category tuning**
+cases the filter won on **5 out of 5** seeded re-runs (same seed numbers in both arms; the paper discloses these arms are not initialization-paired), with **zero per-category tuning**
 (the settings were transplanted as-is). In sprint terms: a small but repeatable shave off the lap
 time, on tracks the tuning never saw.
 

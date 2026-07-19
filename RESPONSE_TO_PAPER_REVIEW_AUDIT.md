@@ -9,6 +9,69 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-19 20:57 (fourth of four unanswered runs; combined round, responded 2026-07-19)
+
+Four runs (17:56, 18:53, 19:56, 20:57) audited the same HEAD and were answered in one
+combined execution round (commit `3fd1e141`). Every number printed below was independently
+re-verified from the artifacts this tick before being written into the paper.
+
+| # | 20:57 item | Action |
+|---|---|---|
+| 1 | Tail mixes zero-train targets; the 5-core "removes cold users and items" sentence is false | **Verified and disclosed.** Recomputed the mixture from the split files, replicating the evaluator's cohorting exactly — MI: 31 zero-train items / 106 of 8,800 tail target rows; VG: 85 / 345 of 10,900 — matching the audit's table. §2.1's 5-core sentence corrected; a §5.3 "Cohort-definition defects" paragraph + §6.5 limitation now state the mixture, that aggregates cannot localize the effect, that per-row sidecars are not in the release, and that subgroup reanalysis is a queued required rerun for any future confirmatory version. |
+| 2 | Mechanism-map: "R2 alone"; conn-gate checkpoint-grid asymmetry | "Attributable to connectivity (R2) alone" excised — replaced by a bundled-scheme-contrast statement listing what co-varies (user composition, histories, item degrees, per-epoch example/target/batch/update counts, topology). The conn-gate cadence asymmetry ({10,20} vs every epoch) is disclosed in §5.5, the Table 2 row, and §6.5; the row's CI-includes-zero tail verdict is cadence-insensitive, and no claim now rests on the overall delta's sign (an equal-cadence rerun is queued maintainer-scope work). |
+| 3 | conn-gate α declared n=5 but only 4 log matches | **Confirmed and fixed:** the seed-20260608 k8 log predates the alpha print line; the cell now declares the recovered n = 4 with a disclosure note, and the verifier gained a generic fail-closed declared-vs-recomputed sample-count gate (`n`/`n_units`) for every cell that exposes one. |
+| 4 | Pre-core deduplication undocumented | §3.1 now documents the rule (duplicate (user,item) collapsed, earliest kept), its position before k-core, per-category removed-row counts for **all six** categories (MI 41,888/3,017,439 = 1.39% and Office 156,363/12,845,712 = 1.22% from retained logs; IS/CDs 0 — rating-only sources are already unique; VG 69,115/4,624,615 = 1.49% and Beauty 320,078/23,911,390 = 1.34% regenerated this tick from the raw dumps), and the untested keep-latest sensitivity as a disclosed limitation. |
+| 5 | UniSRec wrong authors; priority overclaim; RecFormer/ZESRec; Beauty n=1 vs n=2 | UniSRec's author list corrected in the md references and `references.bib` (it carried VQ-Rec's authors); "first widely-cited" deleted and banned by the scanners; ZESRec + RecFormer added to §2 and the bibliography with a no-priority-claim statement; the §6.4 "baseline is n=1" contradiction corrected to n=2 (the A.2 exact-mean/percentage reconciliation is queued with the appendix coverage round); UniT is queued for the citations round. |
+
+Strict gate true-exit 0; both PDFs rebuilt and scanned (reader 47 pp, scan CLEAN; TORS 43 pp,
+health gate + hygiene PASS).
+
+## Response — to Audit Run 2026-07-19 19:56 (pairing/equivalence retraction; responded 2026-07-19, same combined round)
+
+| # | Item | Action |
+|---|---|---|
+| P1 | Same-seed labels do not create paired arms; VG equivalence fails under independence | **Fully retracted and rebuilt.** §5.3 now opens with a load-bearing randomization disclosure (text arm consumes RNG before the shared backbone; probe deltas quoted). Every paired-inference node is tombstoned (t1d.vg.mde, t1d.vg.tost, t542.u066.signtest); Table 1d is relabeled "same-seed-number arms — NOT initialization-paired". MI is recast as an independent-arm robustness result (Welch t=3.94, df≈4.5, p=0.014, 95% CI [+0.000109,+0.000562] — re-verified from the per-arm JSONs, matching the audit); VG's powered-null/TOST claim is **retracted** (margin was the observed MI estimate; independent-arm 90% CI [−0.000360,+0.000063] ⊄ ±0.000335); Beauty is exploratory with its mixed eval geometry disclosed (the 20260610 pair: stratified text n_eval=212,245 vs full ID 729,576). The cross-dataset stat is now the four-arm Welch–Satterthwaite (t=3.51, df≈10.3, p=0.0054), replacing the invalid per-seed-delta Welch. **Beyond the audit's ask:** the §5.4.2 dd and within-rung stats also fail under the corrected analysis (dd +0.000326, p=0.058, CI [−0.00001,+0.00067] includes zero; within-rung p=0.16), so the user-titration finding is downgraded to a suggestive, descriptive result everywhere (abstract, §5.4.1–5.4.2, conclusion, figure captions, artifact graph — new `welch_2arm`/`welch_4arm` cells carry the valid inference). |
+| P2 | Tail terciles split ties by ASIN order; no membership/per-user sidecars | Disclosed with re-verified tie counts (MI: 2,418 freq-6 items straddle the tail/mid cut, 195 tail-side; VG: 2,071 / 1,389) in §5.3 + §6.5; "nominal tercile" wording adopted; the tie-safe rerun with released membership/per-user sidecars is queued as required for any future confirmatory tail version. |
+| P3 | Figure generator preserves retracted strength | Both generators de-causaled ("tail pattern", "head tracks thinning / tail does not — level contrasts", "user-thinned point crosses; count-thinned does not"; VG panel label "null (equiv. not estab.)", Beauty "null (exploratory)"; panel-A CI switched to the Welch CI) and both figures regenerated; the reader PDF embeds the new Fig. 1, and the TORS PDF now embeds **both** figures; captions carry the fixed-draw/not-paired limitation. "tail law"/"causal decomposition"/"connectivity binds" are banned by the new scanner sweeps. |
+| Lit | BLaIR ACL 2026 + config pin; FAERec/SADA/TADA/CITIES | Queued for the dedicated citations round (next ticks), together with 18:53's and 17:56's lists. |
+| QA | §3→§2.1 and §7→§5.6 cross-refs; `\nocite{*}` | Both semantic cross-references fixed in md + TeX (including 03-method's §7). `\nocite{*}` retained this round deliberately: removing it silently shrinks the printed reference list until a cited/uncited audit lands — scheduled with the citations round so both change together. |
+
+## Response — to Audit Run 2026-07-19 18:53 (Beauty/VG equivalence + parity scope; responded 2026-07-19, same combined round)
+
+| # | Item | Action |
+|---|---|---|
+| CP-1 | Beauty has no powered-equivalence evidence; VG margin data-derived | Executed via the 19:56 retraction above: Beauty removed from every powered/TOST/confirmatory sentence and caption (abstract, intro, §4.1 table, §5.3, §5.5, conclusion, Fig. 1); the VG margin's data-derived origin is disclosed and the equivalence claim retracted outright (stronger than a sensitivity analysis). "powered null" / "statistically equivalent to zero" / "TOST-equivalent" are scanner-banned. |
+| CP-2 | HSTU parity is a constrained-point test | Every "bitwise-exact" claim rescoped to the mirrored aligned configuration (identity affine norms, zeroed extra uvqk bias, ε 1e-6, dropout off, eval mode) at all five sites (attribution table, §3.2, method, intro non-claims, §6.5), with the trained block named a strict-superset HSTU-style variant and no trained-checkpoint equivalence claimed; "bitwise-exact" is scanner-banned (the §5.6 fbgemm CPU-operator bit-exactness claim is distinct and stands). |
+| CP-3 | Causal narrowing self-contradictions | The (R2)-alone sentence, the 380/412/419-vs-422 level-contrast contradiction, the §5.5 binding-resource clause and its mangled restatement are all rewritten to one vocabulary: descriptive level contrasts under bundled interventions on one fixed draw; headings updated; "binding tail resource" scanner-banned. |
+| CP-4 | FIR same-seed pairing weaker than stated; mechanism state unreleased | The not-initialization-paired disclosure now covers FIR arms; the breadth result is additionally reported as conservative independent-arm Welch CIs (re-verified: IS [+0.0019,+0.0029], CDs [+0.0050,+0.0063] — both exclude zero, matching the audit) and the treatment is described as the FIR-plus-initialization/optimizer package. Tap/gate/checkpoint release and nonsingular common-parameterization reruns remain queued maintainer-scope work. |
+| SR | Analyst-level test adaptation | The evidence-class criterion is now selection timing, not seed count (conventions ¶, manifest rule text, §6.5 bullet); the full cell-by-cell taxonomy audit is queued. Which test outputs were visible before each pre-declared campaign is already documented per-campaign in the prereg files; a consolidated statement is queued with that audit. |
+| Lit | SAGE-Rec, IDA-SR, R2Rec, DynamicRec | Queued for the citations round. |
+
+## Response — to Audit Run 2026-07-19 17:56 (TORS spine restoration; responded 2026-07-19, same combined round)
+
+| # | Item | Action |
+|---|---|---|
+| CP-1 | TORS derivative lost §5.4–5.4.2, tables, figures; 17 unresolved refs; extbf mangle; hygiene gate blind | **Restored and gated.** 05-results.tex now carries the full §5.4/5.4.1/5.4.2 spine (Table 1e + both mechanism tables + both figures, all labels defined), generated from the canonical md by a deterministic converter so the two artifacts share one source of truth; the TORS PDF went 35→43 pages with 2 figure XObjects and zero unresolved references; the `extbfInitialization` mangle is fixed. A new fail-closed `check_tex_health.py` gate (wired into build.sh) fails the build on: undefined refs in the teed compile log, ref-without-label targets, mangled control sequences, missing required section/figure labels, <2 embedded figures, or "??" in the extracted PDF text. |
+| CP-2 | Spectral retirement lacks a negative-presence invariant | t1e.alpha066 is a true tombstone (no recomputation; the retired count now includes it — 8 retired cells); both PDF scanners gained a 13-pattern retracted-claim sweep (no-representation-side-lever, spectrally-irreducible, tail-law, causal-decomposition, powered-null, TOST-equivalent, bitwise-exact, connectivity-binds, binding-tail-resource, (R2)-alone, whole-double-dissociation, first-widely-cited, statistically-equivalent-to-zero); the retraction note itself no longer quotes the withdrawn wording verbatim, and the reader-p.32 restatement is rewritten. |
+| CP-3 | Mechanism inference exceeds the experimental unit | Executed (see 18:53 CP-3 / 19:56 P1); independent thinning draws + planned interaction analysis remain queued maintainer-scope. |
+| CP-4 | Evidence classes must encode selection timing | Criterion changed in the conventions ¶ + manifest `evidence_class_rule`; §6.5 bullet added; cell-by-cell taxonomy audit queued. |
+| CP-5 | Public reproducibility asserted, not demonstrated | §8 now states the truth verbatim: repository private (reviewer access on request), v0.9 release carries only the parity ZIP + manifest, the 12 splits (~575 MB) + 4 caches (~515 MB) are local hash-pinned artifacts not yet public, and "full release" is scoped to exactly that. Missing-asset fail-not-skip is bound to the v1.1.10 deposit work (next tick, already specced); the public-upload/public-repo decisions are queued with the maintainer. |
+| Lit/venue | C3SASR…RecBole, TIGER cold-start, COS wording, acmart | Citations round (next ticks) + maintainer-gated venue/front-end items (abstract rewrite, acmart upgrade, portal check). |
+| OQ | Root BEST-Rec PDF | It is the maintainer's separate earlier manuscript, not part of this submission; it is not manifested, bundled, or cited by the canonical papers (noncanonical; disposition is the maintainer's call). |
+
+**Process disclosure (own collateral):** shell-heredoc backslash mangling recurred twice this
+tick; both instances were caught before touching repo files (script-file policy), and the new
+H3 gate now fails the build on any that slip through. The companion doc/site "paired re-runs"
+wording was also corrected to match the retraction.
+
+**Declared sequence for the next ticks:** (1) v1.1.10 deposit cut with literal-tag check-only,
+REBUILD-mode same-version-different-content failure, and missing-asset fail-not-skip;
+(2) the coverage inventory (five `checked:0` tables, Table A1 22-vs-20, A.2 exact means);
+(3) the consolidated citations round (BLaIR ACL 2026 + config pin, ZESRec/RecFormer done,
+UniT, FAERec, SADA, TADA, CITIES, SAGE-Rec, IDA-SR, R2Rec, DynamicRec, C3SASR, HyenaRec,
+FreqRec, LLM-ESR, TASTE, AlterRec, Elliot, DaisyRec 2.0, RecBole, TIGER cold-vs-warm-tail
+terminology, `\nocite{*}` + cited-audit); (4) the graph evidence-class taxonomy audit.
+
 ## Response — to Audit Run 2026-07-19 15:51 (propagation round, executed across two ticks; responded 2026-07-19)
 
 **Verdict acknowledged: the previous retraction round was incomplete, and every propagation

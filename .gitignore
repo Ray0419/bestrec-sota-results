@@ -52,3 +52,7 @@ _release/
 /_paper_render.html
 /tmp/
 /paper_tex/main.pdf
+# raw AR2023 downloads (never redistributed) + runner byproducts (audit 2026-07-19 09:34)
+data_raw_proper/
+_bestrec_run/*.DONE
+_bestrec_run/smoke_*.json

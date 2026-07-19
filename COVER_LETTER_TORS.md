@@ -23,10 +23,11 @@ Reviews 2023"** for consideration at ACM Transactions on Recommender Systems.
 - **Conflicts of interest.** [Maintainer: list, or state none.]
 - **Data and artifacts.** The public Amazon Reviews 2023 dataset (McAuley Lab) is used and
   not redistributed; the complete artifact (code, immutable pre-registrations, results of
-  record, hash manifest, fail-closed build gate, and the full adversarial audit chain —
-  the live hourly chain is git-tracked in every tagged tree) is
-  available in the anonymized/named repository and its archival deposit release — the
-  current deposit tag, recorded in `DOI_DEPOSIT_INSTRUCTIONS.md`. A single command
+  record, hash manifest, and fail-closed build gate) is available in the anonymized/named
+  repository — which also carries the **full adversarial audit chain** in every tagged
+  tree — and in its archival deposit release (the current deposit tag, recorded in
+  `DOI_DEPOSIT_INSTRUCTIONS.md`; the bundle contains core historical audit documents,
+  with the live hourly chain repository-tracked rather than re-bundled). A single command
   re-verifies every printed empirical number.
 
 ## What the paper claims — stated exactly, for reviewer calibration

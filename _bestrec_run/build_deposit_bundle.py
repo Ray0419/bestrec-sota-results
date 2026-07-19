@@ -38,7 +38,15 @@ import zipfile
 
 VERSION = "v1.1.9"
 
-DATE = "2026-07-18"
+def _manifest_date():
+    # DOI-facing date basis is explicit and single-sourced (audit 2026-07-19 09:34):
+    # the manifest's regen date (stamped local time, Australia/Sydney).
+    import json as _j
+    with open(os.path.join(ROOT, "RELEASE_MANIFEST.json"), encoding="utf-8") as f:
+        return _j.load(f).get("date", "unknown") + " (local, Australia/Sydney)"
+
+
+DATE = None  # resolved at build time via _manifest_date()
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -200,7 +208,7 @@ FILES = V10_FILES + V11_ADDITIONS
 
 
 
-README = f"""BEST-Rec / HSTU-style causal-FIR study -- DOI deposit bundle {VERSION} ({DATE})
+README_TMPL = """BEST-Rec / HSTU-style causal-FIR study -- DOI deposit bundle {VERSION} ({DATE})
 
 ================================================================================
 
@@ -366,6 +374,9 @@ def consistency_gate():
 
         fails.append(".zenodo.json version != %s" % plain)
 
+    n_entries = len(FILES) + 2
+    if "(%d entries" % n_entries not in read("DOI_DEPOSIT_INSTRUCTIONS.md"):
+        fails.append("DOI_DEPOSIT_INSTRUCTIONS.md entry count != %d (README+SHA256SUMS+payloads)" % n_entries)
     if "bestrec_deposit_%s.zip" % VERSION not in read("DOI_DEPOSIT_INSTRUCTIONS.md"):
 
         fails.append("DOI_DEPOSIT_INSTRUCTIONS.md does not name bestrec_deposit_%s.zip" % VERSION)
@@ -435,6 +446,7 @@ def consistency_gate():
 
     # Bundle-content linter (audit 2026-07-19 08:32): the README template must describe
     # the FULL strict chain and must not overpromise the audit-chain contents.
+    README = README_TMPL.format(VERSION=VERSION, DATE=_manifest_date())
     if "COUNTED Office_Products" not in README or "FIR-breadth adjudicator" not in README:
         fails.append("README template omits the counted Office V3 / FIR-breadth gate steps")
     if "core historical" not in README:
@@ -495,6 +507,7 @@ def main():
 
     with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as z:
 
+        README = README_TMPL.format(VERSION=VERSION, DATE=_manifest_date())
         z.writestr(zinfo(PREFIX + "README_DEPOSIT.txt"), README)
 
         sums.append((hashlib.sha256(README.encode("utf-8")).hexdigest(), "README_DEPOSIT.txt"))

@@ -55,7 +55,7 @@ for r in sorted(refs - labels):
 
 # ---- [H3] mangled control sequences --------------------------------------------
 for f, s in srcs.items():
-    for m in re.finditer(r"(?<![\\A-Za-z])(?:extbf|extit|exttt|mph|itemize|numerate)\{", s):
+    for m in re.finditer(r"(?<![\\A-Za-z])(?:extbf|extit|exttt|mph|itemize|numerate|ef|abel|nput|ection|aption|egin)\{", s):
         ln = s.count("\n", 0, m.start()) + 1
         fails.append(f"H3: mangled control sequence in {os.path.basename(f)}:{ln}: "
                      f"{s[max(0, m.start()-30):m.end()+20]!r}")
@@ -95,6 +95,27 @@ else:
     for m in re.finditer(r"(?:§|Fig\.|Figure|Table|Section)\s*\?\?", text):
         fails.append("H5: unresolved '??' reference in PDF text: "
                      + text[max(0, m.start() - 50):m.end() + 20].replace("\n", " "))
+
+# ---- [H6] figure-generator sources must not carry retracted statistics ----------
+import glob as _g2
+FIG_BANNED = ("t=3.47", "-0.000018", '"0/2"', "binding", "tail law", "causal decomposition",
+              "CI excl 0)", "paired text-ID", "powered")
+for f in _g2.glob(os.path.join(HERE, "..", "_bestrec_run", "make_fig_*.py")):
+    src = io.open(f, encoding="utf-8", errors="replace").read()
+    for patb in FIG_BANNED:
+        if patb in src:
+            i = src.find(patb)
+            fails.append(f"H6: retracted/stale string {patb!r} in {os.path.basename(f)}: "
+                         f"...{src[max(0, i-40):i+40]!r}...")
+
+# ---- [H7] duplicated load-bearing table titles in the compiled PDF ---------------
+if os.path.exists(pdf_path):
+    UNIQUE_TITLES = ("interaction-thinning density-titration ladder",)
+    flat = re.sub(r"\s+", " ", text)
+    for tt in UNIQUE_TITLES:
+        cnt = flat.count(tt)
+        if cnt > 1:
+            fails.append(f"H7: table title appears {cnt}x in the PDF (duplicate caption): {tt!r}")
 
 try:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")

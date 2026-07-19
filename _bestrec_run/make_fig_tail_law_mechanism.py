@@ -7,7 +7,7 @@ connectivity).
 ALL numbers are hard-coded from the LOCKED, 3x-supervisor-audited tables in
 PAPER_DRAFT.md (sections 5.3 Table 1d, 5.4 titration ladder, 5.4.1 + 5.4.2
 double-dissociation tail/head text/ID ratio tables). NOTHING is recomputed here
--- this is typesetting of already-locked, leak-free, best-by-val paired text-ID
+-- this is typesetting of already-locked, best-by-val same-seed-number text-ID
 results (AR2023 5-core LLOO, full-catalog masked eval, n_eval=94,762,
 tail_n=10,900 frozen). Produced by the EXPERIMENT agent as sanctioned CPU-only
 paper-finishing work (supervisor cycle-11, 2026-06-21), zero GPU contention.
@@ -45,12 +45,12 @@ plt.rcParams.update({
 fig, axes = plt.subplots(1, 3, figsize=(15, 4.6))
 
 # ================================================================== Panel A
-# 5.3 Table 1d: text - ID tail-tercile NDCG@10 contrast (paired, per-seed).
+# 5.3 Table 1d: text - ID tail contrast (same-seed-number arms; NOT initialization-paired).
 axA = axes[0]
 ds      = ["Musical_Instr.\n(sparse)", "Video_Games\n(dense)", "Beauty_&_PC\n(dense)"]
-tailD   = [ 0.000335, -0.000148, -0.000018]
+tailD   = [ 0.000335, -0.000148, -0.0000078]
 tailErr = [ 0.000195,  0.000179,  0.000000]   # MI/VG 5-seed sd; Beauty 2-3 seed (no band)
-posfrac = ["5/5", "2/5", "0/2"]
+posfrac = ["5/5", "2/5", "1/3"]
 verdict = ["text WINS\nthe tail", "null\n(equiv. not estab.)", "null\n(exploratory)"]
 cols    = [C_WIN, C_NULL, C_NULL]
 x = np.arange(len(ds))
@@ -125,7 +125,7 @@ axC.text(0.5, 0.945, "interaction-thinning:\ntail FLAT (no crossing)",
          ha="center", fontsize=7, color=C_NULL)
 axC.annotate("", xy=(3, 1.276), xytext=(1, 0.971),
              arrowprops=dict(arrowstyle="-|>", color=C_WIN, lw=2))
-axC.text(2.15, 1.18, "user-thinning $\\rightarrow$ MI:\nconnectivity LIFTS tail\n(dd +0.000326, t=3.47,\nCI excl 0)",
+axC.text(2.15, 1.18, "user-thinning $\\rightarrow$ MI:\ntail moves toward MI\n(dd +0.000326; suggestive,\np=0.058, CI incl 0)",
          ha="center", fontsize=7, color=C_WIN)
 axC.set_xticks(xc)
 axC.set_xticklabels(regimes, fontsize=7.5)

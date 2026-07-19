@@ -26,6 +26,9 @@ This protocol matches TIGER \citep{rajput2023tiger} and LIGER \citep{yang2024lig
 \textbf{Pre-core deduplication (disclosed 2026-07-19).} Before k-core filtering, duplicate \texttt{(user, item)} interactions are collapsed to a single event, keeping the \textbf{earliest} timestamped occurrence (first-exposure convention). This step is material and was previously undocumented in the paper: it removes 41,888 of 3,017,439 raw rows on Musical\_Instruments (1.39\%), 69,115 of 4,624,615 on Video\_Games (1.49\%), 320,078 of 23,911,390 on Beauty\_and\_PC (1.34\%), and 156,363 of 12,845,712 on Office\_Products (1.22\%); the FIR-breadth categories were preprocessed from AR2023 rating-only exports whose (user, item) pairs are already unique (0 rows removed on Industrial\_and\_Scientific and CDs\_and\_Vinyl). Deduplication can change k-core membership, sequence order, and held-out targets; sensitivity to a keep-latest rule is untested (a disclosed limitation). (The MI/Office counts are from the retained preprocessing logs; the VG/Beauty logs were not retained, and their counts were regenerated 2026-07-19 from the raw dumps with the released deterministic script.)
 
 
+\textbf{Timestamp-tie policies (disclosed 2026-07-19; two distinct deterministic rules).} Two tie-breaking rules operate at different stages and were previously undocumented. (i) Preprocessing stable-sorts each user's interactions by timestamp only, so for equal-timestamp events the raw-file order decides both which duplicate survives deduplication and which event lands on a leave-two-out split boundary. (ii) The trainer later re-sorts each user's train sequence by \texttt{(timestamp, item\_index)}, so within-train equal-timestamp order is decided by reindexed item ID. Both rules are deterministic given the released raw dumps and code. Measured scale (2026-07-19, from the released splits): on Musical\_Instruments, 3 of 57,439 users (0.01\%) have test-target timestamp equal to the validation-target timestamp, 3 have validation equal to the last train timestamp, and 12 (user, timestamp) groups cover 24 of 511,836 rows; on Video\_Games the counts are 4 and 8 of 94,762 users and 61 groups covering 122 of 814,586 rows (0.01\%). At this scale the tie policies cannot materially affect any reported number; we nevertheless document them as part of the exact preprocessing contract.
+
+
 \subsection{Model architecture}\label{sec:3.2}
 
 \textbf{Shared item-feature construction (both encoder families).} For each item $i$:
@@ -49,7 +52,7 @@ The item feature passed into the encoder is $f_i = e_i + \Phi(s_i)$. Sequences a
 
 \subsection{Choice of projection \ensuremath{\Phi}}\label{sec:3.3}
 
-Following our cross-pipeline transfer study (\S\ref{sec:5.2}), we compare two designs for $\Phi$:
+Following our cross-pipeline transfer study (Appendix A.1), we compare two designs for $\Phi$:
 
 \begin{itemize}
 \tightlist
@@ -85,6 +88,9 @@ def chunked_full_softmax_loss(hidden, targets, model, item_chunk):
 This bounds peak memory by \texttt{(batch,\ item\_chunk)} instead of \texttt{(batch,\ n\_items)} and allows proper full-softmax training at the 207k-item Beauty\_and\_\allowbreak Personal\_Care scale on a 16 GB GPU.
 
 
+Memory-efficient exact cross-entropy has published precedent (Cut Cross-Entropy, ICLR 2025, computes exact CE without materializing the full logit matrix); our chunked variant is independent implementation engineering in the same spirit, claimed only as engineering. 
+
+
 \subsection{Evaluation protocol}\label{sec:3.6}
 
 We score each user against the \textbf{full catalog} of 207k items (Beauty\_and\_\allowbreak PC) or 25k items (Video\_Games). For the held-out test item, we compute the rank under dot-product scoring (after masking train+val items the user has already seen) and report NDCG@10, HR@10, MRR. We use the standard SASRec test-time convention of including the validation item in the input sequence \citep{kang2018sasrec}.
@@ -100,7 +106,7 @@ We do not claim a wholly new recommender architecture. Our architectural additio
 \begin{equation*}
   e_i = \mathrm{id}_i + \Phi(t_i) + A_i P,
 \end{equation*}
-where $\mathrm{id}_i$ is the learned per-item embedding and $\Phi$ the frozen-text projection. Items in the same semantic neighborhood share the learnable capacity $A_i P$ --- the shared-structure benefit of TIGER-style semantic IDs \citep{rajput2023tiger} without discrete codes or an autoregressive decoder. Because $A$ is frozen and $P$ is zero-init, TAPE is an exact no-op at initialization and recovers the baseline. TAPE is adjacent to TIGER (discrete RQ-VAE IDs), VQ-Rec (PQ codes), and ProtoMF (prototype matrix factorization for explainability); it differs only in realization --- a frozen text-derived soft assignment gating a learnable prototype table inside a sequential recommender --- and we present it as a small adaptation of these prior ideas tested as a secondary ablation, not as a headline contribution. Default K = 512.
+where $\mathrm{id}_i$ is the learned per-item embedding and $\Phi$ the learned projection of the frozen text embeddings. Items in the same semantic neighborhood share the learnable capacity $A_i P$ --- the shared-structure benefit of TIGER-style semantic IDs \citep{rajput2023tiger} without discrete codes or an autoregressive decoder. Because $A$ is frozen and $P$ is zero-init, TAPE is an exact no-op at initialization and recovers the baseline. TAPE is adjacent to TIGER (discrete RQ-VAE IDs), VQ-Rec (PQ codes), and ProtoMF (prototype matrix factorization for explainability); it differs only in realization --- a frozen text-derived soft assignment gating a learnable prototype table inside a sequential recommender --- and we present it as a small adaptation of these prior ideas tested as a secondary ablation, not as a headline contribution. Default K = 512.
 
 \textbf{(b) Strictly causal FIR temporal filter.} BSARec \citep[Thm 3.1]{shin2024bsarec} analyzes vanilla Transformer self-attention as low-pass in the sequential-recommendation setting. We hypothesize that the HSTU-style pointwise aggregation used here can benefit from a similar local high-frequency inductive bias; the empirical ablation (\S\ref{sec:5.1}--\S\ref{sec:5.2}) tests this hypothesis. We insert, immediately before the HSTU stack, one \textbf{per-channel learnable FIR filter} as a zero-init gated residual on the sequence embeddings $x \in \mathbb{R}^{B\times L\times d}$:
 \begin{equation*}

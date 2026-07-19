@@ -13,12 +13,12 @@ This typesets the matched-R1 double dissociation (PAPER_DRAFT.md sections 5.4.1 
 The plane renders the descriptive contrast visually: thinning VG along R1 to MI's
 exact density (interaction-mode rho=0.66) keeps the tail a NULL, but thinning VG
 along R2 to MI's connectivity (user-mode rho_user=0.66) at the SAME R1 flips the
-tail POSITIVE -- so the binding tail resource is connectivity (R2), not count (R1).
+tail moves positive -- a descriptive contrast along the connectivity (R2) axis.
 
 ALL coordinates and verdicts are hard-coded from the LOCKED, 3x-supervisor-audited
 tables in PAPER_DRAFT.md (5.3 Table 1d; 5.4.1 ratio table lines 322-326; 5.4.2
 user-mode table; dataset sizes line 170). NOTHING is recomputed -- this is
-typesetting of already-locked, leak-free, best-by-val paired text-ID results
+typesetting of already-locked, best-by-val same-seed-number text-ID results
 (AR2023 5-core LLOO, full-catalog masked eval, n_eval=94,762, tail_n=10,900 frozen
 on the VG runs). Produced by the EXPERIMENT agent as sanctioned CPU-only
 paper-finishing work (supervisor cycle-11), zero GPU contention.
@@ -56,7 +56,7 @@ plt.rcParams.update({
 #          pos-seed string, verdict-colour, marker)
 PTS = [
     ("VG full\n(natural)",            24.5, 3.70, 0.971, -0.000148, "2/5", C_NULL, "s"),
-    ("Beauty native\n(natural)",      24.9, 3.51, None,  -0.000018, "0/2", C_NULL, "s"),
+    ("Beauty native\n(natural)",      24.9, 3.51, None,  -0.0000078, "1/3", C_NULL, "s"),
     ("VG int-thin\n$\\rho$=0.66",     16.2, 3.40, 0.971, -0.000108, "1/5", C_NULL, "o"),
     ("VG user-thin\n$\\rho_u$=0.66",  16.1, 2.44, 1.046, +0.000178, "5/5", C_WIN,  "o"),
     ("MI native\n(natural)",          16.2, 2.34, 1.276, +0.000335, "5/5", C_WIN,  "D"),
@@ -86,7 +86,7 @@ ax.text(20.3, 3.74, "interaction-thinning\n(R1 $\\downarrow$, R2 held)\ntail sta
 ax.annotate("", xy=(16.1, 2.44), xytext=(24.5, 3.70),
             arrowprops=dict(arrowstyle="-|>", color=C_USR, lw=2.2,
                             connectionstyle="arc3,rad=-0.18"), zorder=2)
-ax.text(21.6, 2.78, "user-thinning\n(R2 $\\downarrow$ at matched R1)\ntail FLIPS positive\n(dd +0.000326, t=3.47,\nCI excl 0)",
+ax.text(21.6, 2.78, "user-thinning\n(R2 $\\downarrow$ at matched R1)\ntail moves positive\n(dd +0.000326; suggestive,\np=0.058, CI incl 0)",
         ha="center", va="center", fontsize=8, color=C_USR)
 
 # ---- scatter points ----------------------------------------------------------
@@ -116,7 +116,7 @@ leg = [
     Line2D([0], [0], marker="o", color="w", markerfacecolor=C_NULL,
            markeredgecolor="black", markersize=11, label="tail null (no significant difference)"),
     Line2D([0], [0], color=C_INT, lw=2.2, label="interaction-thin (R1$\\downarrow$): tail-inert"),
-    Line2D([0], [0], color=C_USR, lw=2.2, label="user-thin (R2$\\downarrow$): tail-binding"),
+    Line2D([0], [0], color=C_USR, lw=2.2, label="user-thin (R2$\\downarrow$): tail crossing (descriptive)"),
 ]
 ax.legend(handles=leg, fontsize=8, loc="lower left", framealpha=0.93)
 

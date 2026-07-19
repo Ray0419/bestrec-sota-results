@@ -176,7 +176,7 @@
    "table_id": "table1",
    "row_label": "+ full bias stack (TAPE+time+text-sim+pos-rab)",
    "metric": "NDCG@10 mean +- sd",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_H2_reg50_VG.json",
@@ -221,7 +221,7 @@
      "precision": 4
     }
    ],
-   "notes": "Seed-08 member is results_H2_reg50_VG.json (the 'H2' ls0 stack of ANALYSIS_LOG); seeds 09-12 are results_BEST_VG_seed*.",
+   "notes": "Seed-08 member is results_H2_reg50_VG.json (the 'H2' ls0 stack of ANALYSIS_LOG); seeds 09-12 are results_BEST_VG_seed*. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.06366034024341549,
     "sd": 0.0003175692474833545,
@@ -410,7 +410,7 @@
    "table_id": "table1",
    "row_label": "+ label smoothing e=0.2 (U2)",
    "metric": "NDCG@10 mean +- sd",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_U2_ls02_VG.json",
@@ -455,7 +455,7 @@
      "precision": 4
     }
    ],
-   "notes": "Paper corrected 2026-07-11 (was 0.0002): recomputed sample-std 0.00027 rounds half-up to 0.0003, which the paper now prints.",
+   "notes": "Paper corrected 2026-07-11 (was 0.0002): recomputed sample-std 0.00027 rounds half-up to 0.0003, which the paper now prints. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0649402313180909,
     "sd": 0.00027316686810892,
@@ -487,7 +487,7 @@
    "table_id": "table1",
    "row_label": "+ label smoothing",
    "metric": "delta vs bias stack",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_U2_ls02_VG.json",
@@ -541,7 +541,7 @@
      "precision": 4
     }
    ],
-   "notes": "Table 1 prints +0.0012 (difference of rounded endpoints); the S5.1/Table-0 single-flag figure +0.0013 is the direct 5-seed mean difference (0.00128).",
+   "notes": "Table 1 prints +0.0012 (difference of rounded endpoints); the S5.1/Table-0 single-flag figure +0.0013 is the direct 5-seed mean difference (0.00128). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "delta": 0.00127989107467541,
     "a_mean": 0.0649402313180909,
@@ -573,7 +573,7 @@
    "table_id": "table1",
    "row_label": "+ causal FIR filter K=8 -> full model (V2)",
    "metric": "NDCG@10 mean +- sd (6-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_V2_ls02_filter8_VG.json",
@@ -621,7 +621,7 @@
      "precision": 4
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.06733738616433897,
     "sd": 0.00026111018695743196,
@@ -653,7 +653,7 @@
    "table_id": "table1",
    "row_label": "full model",
    "metric": "delta vs +LS",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_V2_ls02_filter8_VG.json",
@@ -699,7 +699,7 @@
      "precision": 4
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "delta": 0.00239715484624807,
     "a_mean": 0.06733738616433897,
@@ -723,7 +723,7 @@
    "table_id": "table1",
    "row_label": "full model",
    "metric": "combined delta vs bias stack (prose)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_V2_ls02_filter8_VG.json",
@@ -773,7 +773,7 @@
      "sfield": "mean"
     }
    ],
-   "notes": "Direct 6-seed difference is +0.00368 (rounds to 0.0037); the paper's +0.0036 is the difference of rounded endpoints 0.0673-0.0637.",
+   "notes": "Direct 6-seed difference is +0.00368 (rounds to 0.0037); the paper's +0.0036 is the difference of rounded endpoints 0.0673-0.0637. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "delta": 0.00367704592092348,
     "a_mean": 0.06733738616433897,
@@ -797,7 +797,7 @@
    "table_id": "table1",
    "row_label": "(isolation) causal filter only, no LS (V1b)",
    "metric": "NDCG@10 mean +- sd",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_V1b_causalfilter_k8_VG.json",
@@ -842,7 +842,7 @@
      "precision": 4
     }
    ],
-   "notes": "Recomputed mean 0.065150 rounds (half-up) to 0.0652.",
+   "notes": "Recomputed mean 0.065150 rounds (half-up) to 0.0652. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.06515014308174064,
     "sd": 0.00028690934489618904,
@@ -874,7 +874,7 @@
    "table_id": "table1",
    "row_label": "(isolation) causal filter only",
    "metric": "delta vs bias stack",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_V1b_causalfilter_k8_VG.json",
@@ -918,7 +918,7 @@
      "precision": 4
     }
    ],
-   "notes": "Also the S5.1 'causal filter alone +0.0015' single-flag figure.",
+   "notes": "Also the S5.1 'causal filter alone +0.0015' single-flag figure. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "delta": 0.0014898028383251438,
     "a_mean": 0.06515014308174064,
@@ -942,7 +942,7 @@
    "table_id": "table1",
    "row_label": "(isolation) ID-only (no SBERT/no text-sim/no prototypes)",
    "metric": "NDCG@10 mean +- sd",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_idonly_VG.json",
@@ -987,7 +987,7 @@
      "precision": 4
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.06557853563110949,
     "sd": 0.00022548755708177832,
@@ -1019,7 +1019,7 @@
    "table_id": "table1",
    "row_label": "text stack minus ID-only (same seeds)",
    "metric": "paired delta NDCG@10 mean +- sd",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_V2_text_VG.json",
@@ -1075,7 +1075,7 @@
      "precision": 5
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0017790322000439673,
     "sd": 0.0002070790033085215,
@@ -1111,7 +1111,7 @@
    "table_id": "table1",
    "row_label": "text stack vs ID-only",
    "metric": "percent overall",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_V2_text_VG.json",
@@ -1155,7 +1155,7 @@
      "precision": 1
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "pct": 2.712826968341179
    },
@@ -1177,7 +1177,7 @@
    "table_id": "table1",
    "row_label": "full model vs published SASRec 0.0573",
    "metric": "percent (headline +17.5%)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_V2_ls02_filter8_VG.json",
@@ -1212,7 +1212,7 @@
      "precision": 1
     }
    ],
-   "notes": "Denominator is the published (external) SASRec 0.0573 of Liu 2025. Paper corrected 2026-07-11 (was +17.6%, the superseded 5-seed mean): the 6-seed mean 0.067337 gives +17.5%, now printed consistently (abstract, S2.2, S5.1, S8).",
+   "notes": "Denominator is the published (external) SASRec 0.0573 of Liu 2025. Paper corrected 2026-07-11 (was +17.6%, the superseded 5-seed mean): the 6-seed mean 0.067337 gives +17.5%, now printed consistently (abstract, S2.2, S5.1, S8). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "pct": 17.517253340905725,
     "a_mean": 0.06733738616433897,
@@ -1236,7 +1236,7 @@
    "table_id": "table1",
    "row_label": "ID-only vs published SASRec 0.0573",
    "metric": "percent (~ +14%)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_idonly_VG.json",
@@ -1269,7 +1269,7 @@
      "precision": 0
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "pct": 14.447706162494756,
     "a_mean": 0.06557853563110949,
@@ -1293,7 +1293,7 @@
    "table_id": "table1",
    "row_label": "kernel sweep K=16",
    "metric": "NDCG@10 mean +- sd",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_KSWEEP_k16_seed20260608_VG.json",
@@ -1338,7 +1338,7 @@
      "precision": 4
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.067627993618819,
     "sd": 0.00022121880099911653,
@@ -1925,6 +1925,65 @@
    "paper_check_class": "exact"
   },
   {
+   "cell_id": "t1.pop_ratio",
+   "table_id": "table1",
+   "row_label": "headline vs popularity floor (ratio assertion)",
+   "metric": "percent above the popularity floor (paper: ~5.4x)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_V2_ls02_filter8_VG.json",
+    "_bestrec_run/results_V2_ls02_filter8_seed20260609_VG.json",
+    "_bestrec_run/results_V2_ls02_filter8_seed20260610_VG.json",
+    "_bestrec_run/results_V2_ls02_filter8_seed20260611_VG.json",
+    "_bestrec_run/results_V2_ls02_filter8_seed20260612_VG.json",
+    "_bestrec_run/results_V2_confirm_seed20260613_VG.json",
+    "_bestrec_run/results_5core_Video_Games.json"
+   ],
+   "n_seeds": 6,
+   "seeds": [],
+   "recompute": {
+    "rule": "pct_change",
+    "params": {
+     "a": [
+      "_bestrec_run/results_V2_ls02_filter8_VG.json",
+      "_bestrec_run/results_V2_ls02_filter8_seed20260609_VG.json",
+      "_bestrec_run/results_V2_ls02_filter8_seed20260610_VG.json",
+      "_bestrec_run/results_V2_ls02_filter8_seed20260611_VG.json",
+      "_bestrec_run/results_V2_ls02_filter8_seed20260612_VG.json",
+      "_bestrec_run/results_V2_confirm_seed20260613_VG.json"
+     ],
+     "denom_const": 0.0125
+    }
+   },
+   "recompute_rule": "100 * (mean(a)/denom - 1), best_test[NDCG@10]",
+   "paper": [
+    {
+     "name": "pct",
+     "value": 438.7,
+     "mode": "approx",
+     "tol": 3.0
+    }
+   ],
+   "notes": "Asserts the S5.1 ratio sentence (corrected 2026-07-19 from the wrong 4.1x to ~5.4x = 0.0673/0.0125): exact-value gate for a prose ratio (audit 22:08).",
+   "recomputed": {
+    "pct": 438.6990893147117,
+    "a_mean": 0.06733738616433897,
+    "denom": 0.0125
+   },
+   "recomputed_value": 438.6990893147117,
+   "paper_check": [
+    {
+     "name": "pct",
+     "paper": 438.7,
+     "mode": "approx",
+     "recomputed": 438.6990893147117,
+     "result": "within_tol"
+    }
+   ],
+   "paper_check_class": "within_rounding"
+  },
+  {
    "cell_id": "t1a.popularity.ndcg",
    "table_id": "table1a",
    "row_label": "popularity floor",
@@ -2376,7 +2435,7 @@
    "table_id": "table1c",
    "row_label": "+ label smoothing only",
    "metric": "NDCG@10 mean +- sd",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_lsonly_seed08.json",
@@ -2427,7 +2486,7 @@
      "precision": 5
     }
    ],
-   "notes": "Paper quotes both 0.0391 +- 0.0001 (table) and 0.03914 +- 0.00013 (prose).",
+   "notes": "Paper quotes both 0.0391 +- 0.0001 (table) and 0.03914 +- 0.00013 (prose). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0391392325170438,
     "sd": 0.00013397391420383325,
@@ -2467,7 +2526,7 @@
    "table_id": "table1c",
    "row_label": "+ LS only",
    "metric": "delta vs base",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_lsonly_seed08.json",
@@ -2509,7 +2568,7 @@
      "precision": 4
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "delta": 0.0008316095948517344,
     "a_mean": 0.0391392325170438,
@@ -2533,7 +2592,7 @@
    "table_id": "table1c",
    "row_label": "+ LS only",
    "metric": "share of combined k16 lift",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_lsonly_seed08.json",
@@ -2587,7 +2646,7 @@
      "precision": 0
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "pct": 25.80348173527125,
     "lift": 0.0008316095948517344,
@@ -2611,7 +2670,7 @@
    "table_id": "table1c",
    "row_label": "+ causal filter only (k16)",
    "metric": "NDCG@10 mean",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_filteronly_seed08.json",
@@ -2650,7 +2709,7 @@
      "precision": 4
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.04079236132863881,
     "sd": 0.0002695622846083042,
@@ -2674,7 +2733,7 @@
    "table_id": "table1c",
    "row_label": "+ filter only",
    "metric": "delta vs base",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_filteronly_seed08.json",
@@ -2716,7 +2775,7 @@
      "precision": 4
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "delta": 0.0024847384064467445,
     "a_mean": 0.04079236132863881,
@@ -2740,7 +2799,7 @@
    "table_id": "table1c",
    "row_label": "+ filter only",
    "metric": "share of combined k16 lift",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_filteronly_seed08.json",
@@ -2794,7 +2853,7 @@
      "precision": 0
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "pct": 77.09735732318775,
     "lift": 0.0024847384064467445,
@@ -2818,7 +2877,7 @@
    "table_id": "table1c",
    "row_label": "+ both = V2 (k16)",
    "metric": "NDCG@10 mean +- sd",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_V2_ls02_filter16_seed20260608.json",
@@ -2863,7 +2922,7 @@
      "precision": 4
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.04153048099763927,
     "sd": 0.00019848590988330047,
@@ -2895,7 +2954,7 @@
    "table_id": "table1c",
    "row_label": "+ both = V2 (k16)",
    "metric": "delta vs base",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_V2_ls02_filter16_seed20260608.json",
@@ -2937,7 +2996,7 @@
      "precision": 4
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "delta": 0.003222858075447206,
     "a_mean": 0.04153048099763927,
@@ -2961,7 +3020,7 @@
    "table_id": "table1c",
    "row_label": "V2 k8 (MI headline stack)",
    "metric": "NDCG@10 mean +- sd",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_V2_ls02_filter8.json",
@@ -3006,7 +3065,7 @@
      "precision": 4
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0413447460253928,
     "sd": 0.0005258671435175956,
@@ -3038,7 +3097,7 @@
    "table_id": "table1c",
    "row_label": "filter share of k8 combined lift",
    "metric": "percent",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_filteronly_seed08.json",
@@ -3092,7 +3151,7 @@
      "precision": 0
     }
    ],
-   "notes": "Paper: '82% vs the k8 headline stack'; ~80% claims use tol 5pp.",
+   "notes": "Paper: '82% vs the k8 headline stack'; ~80% claims use tol 5pp. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "pct": 81.8122388199593,
     "lift": 0.0024847384064467445,
@@ -3116,7 +3175,7 @@
    "table_id": "table1c",
    "row_label": "V2 k8 vs MI base",
    "metric": "percent (+7.9%)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_V2_ls02_filter8.json",
@@ -3158,7 +3217,7 @@
      "precision": 1
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "pct": 7.92824736050457,
     "a_mean": 0.0413447460253928,
@@ -3228,7 +3287,7 @@
    "table_id": "table1c",
    "row_label": "V2 k8 vs plain SASRec (MI)",
    "metric": "percent (+57%)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_V2_ls02_filter8.json",
@@ -3264,7 +3323,7 @@
      "precision": 0
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "pct": 56.80070914584303,
     "a_mean": 0.0413447460253928,
@@ -3288,7 +3347,7 @@
    "table_id": "table1d",
    "row_label": "Musical_Instruments (sparse)",
    "metric": "tail delta NDCG@10 (same-seed-number, 5-seed; descriptive)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_TAIL_V2_text_seed20260608.json",
@@ -3352,7 +3411,7 @@
      "mode": "count"
     }
    ],
-   "notes": "Arms are NOT initialization-paired (S5.3 randomization disclosure, 2026-07-19); the same-seed-number delta stats are descriptive and the inferential CI now comes from t1d.mi.welch.",
+   "notes": "Arms are NOT initialization-paired (S5.3 randomization disclosure, 2026-07-19); the same-seed-number delta stats are descriptive and the inferential CI now comes from t1d.mi.welch. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0003352902252472483,
     "sd": 0.00019452409480809598,
@@ -3395,7 +3454,7 @@
    "table_id": "table1d",
    "row_label": "MI tail: independent-arm Welch",
    "metric": "Welch t/p + 95% CI (text vs id per-arm tail values)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_TAIL_V2_text_seed20260608.json",
@@ -3475,7 +3534,7 @@
      "mode": "gt"
     }
    ],
-   "notes": "The conservative independent-arm analysis of the MI tail win (added 2026-07-19 with the pairing retraction).",
+   "notes": "The conservative independent-arm analysis of the MI tail win (added 2026-07-19 with the pairing retraction). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "diff": 0.0003352902252472484,
     "t": 3.9367495249949465,
@@ -3543,7 +3602,7 @@
    "table_id": "table1d",
    "row_label": "VG tail: independent-arm Welch",
    "metric": "Welch p + 90% CI (equivalence NOT established at the retracted margin)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_V2_text_VG.json",
@@ -3612,7 +3671,7 @@
      "precision": 6
     }
    ],
-   "notes": "90% CI [-0.000360,+0.000063] is NOT contained in the retracted data-derived margin +-0.000335 -> no equivalence claim survives (2026-07-19 retraction, S5.3).",
+   "notes": "90% CI [-0.000360,+0.000063] is NOT contained in the retracted data-derived margin +-0.000335 -> no equivalence claim survives (2026-07-19 retraction, S5.3). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "diff": -0.00014842607605737752,
     "t": -1.3682991577174233,
@@ -3665,7 +3724,7 @@
    "table_id": "table1d",
    "row_label": "Video_Games (dense)",
    "metric": "tail delta NDCG@10 (same-seed-number, 5-seed; descriptive)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_V2_text_VG.json",
@@ -3729,7 +3788,7 @@
      "mode": "count"
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": -0.00014842607605737736,
     "sd": 0.00017931176190672362,
@@ -3868,7 +3927,7 @@
    "table_id": "table1d",
    "row_label": "MI tail replication on HR@10",
    "metric": "tail delta HR@10 (same-seed-number, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_TAIL_V2_text_seed20260608.json",
@@ -3927,7 +3986,7 @@
      "mode": "count"
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0010909090909090907,
     "sd": 0.0006508100483307432,
@@ -3970,7 +4029,7 @@
    "table_id": "table1d",
    "row_label": "MI tail hits/seed (text arm)",
    "metric": "HR@10 x n",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_TAIL_V2_text_seed20260608.json",
@@ -4004,7 +4063,7 @@
      "tol": 0.5
     }
    ],
-   "notes": "Paper: '~29.6 vs 20.0 hits/seed'.",
+   "notes": "Paper: '~29.6 vs 20.0 hits/seed'. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "hits": 29.6
    },
@@ -4025,7 +4084,7 @@
    "table_id": "table1d",
    "row_label": "MI tail hits/seed (ID arm)",
    "metric": "HR@10 x n",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_TAIL_idonly_seed20260608.json",
@@ -4059,7 +4118,7 @@
      "tol": 0.5
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "hits": 20.0
    },
@@ -4080,7 +4139,7 @@
    "table_id": "table1d",
    "row_label": "MI head delta (largest absolute text lift)",
    "metric": "head delta NDCG@10",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_TAIL_V2_text_seed20260608.json",
@@ -4126,7 +4185,7 @@
      "precision": 5
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.005268682345927689,
     "sd": 0.0007721843517519381,
@@ -4154,7 +4213,7 @@
    "table_id": "table1d",
    "row_label": "cross-dataset difference MI - VG",
    "metric": "four-arm Welch-Satterthwaite contrast (independence-style; corrected 2026-07-19)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_TAIL_V2_text_seed20260608.json",
@@ -4235,7 +4294,7 @@
      "tol": 0.001
     }
    ],
-   "notes": "Replaces the per-seed-delta Welch (t=4.09) whose units were the invalidly-paired same-seed differences (2026-07-19 correction).",
+   "notes": "Replaces the per-seed-delta Welch (t=4.09) whose units were the invalidly-paired same-seed differences (2026-07-19 correction). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "est": 0.0004837163013046259,
     "t": 3.5073452586440004,
@@ -4316,7 +4375,7 @@
    "table_id": "table1e",
    "row_label": "rho=1.00 (kept inter./item 24.405, run-log value)",
    "metric": "head delta NDCG@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_V2_text_VG.json",
@@ -4381,7 +4440,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.002212517406576536,
     "sd": 0.00024053446585292854,
@@ -4424,7 +4483,7 @@
    "table_id": "table1e",
    "row_label": "rho=1.00 (kept inter./item 24.405, run-log value)",
    "metric": "head delta HR@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_V2_text_VG.json",
@@ -4489,7 +4548,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.004238414341052399,
     "sd": 0.0007650841862958805,
@@ -4532,7 +4591,7 @@
    "table_id": "table1e",
    "row_label": "rho=1.00 (kept inter./item 24.405, run-log value)",
    "metric": "tail delta NDCG@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_V2_text_VG.json",
@@ -4597,7 +4656,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": -0.00014842607605737736,
     "sd": 0.00017931176190672362,
@@ -4640,7 +4699,7 @@
    "table_id": "table1e",
    "row_label": "rho=1.00 (kept inter./item 24.405, run-log value)",
    "metric": "tail delta HR@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_V2_text_VG.json",
@@ -4705,7 +4764,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0001284403669724772,
     "sd": 0.0005824062476368394,
@@ -4748,7 +4807,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.94 (kept inter./item 22.947, run-log value)",
    "metric": "head delta NDCG@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho094_s08_VG.json",
@@ -4813,7 +4872,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0023890334157901233,
     "sd": 0.00026729913385642196,
@@ -4856,7 +4915,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.94 (kept inter./item 22.947, run-log value)",
    "metric": "head delta HR@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho094_s08_VG.json",
@@ -4921,7 +4980,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.004082902140413386,
     "sd": 0.0008295095143595997,
@@ -4964,7 +5023,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.94 (kept inter./item 22.947, run-log value)",
    "metric": "tail delta NDCG@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho094_s08_VG.json",
@@ -5029,7 +5088,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.00016452918033574068,
     "sd": 0.0003696796105353107,
@@ -5072,7 +5131,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.94 (kept inter./item 22.947, run-log value)",
    "metric": "tail delta HR@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho094_s08_VG.json",
@@ -5137,7 +5196,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0008073394495412847,
     "sd": 0.0007118225593126909,
@@ -5180,7 +5239,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.91 (kept inter./item 22.21, run-log value)",
    "metric": "head delta NDCG@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho091_s08_VG.json",
@@ -5245,7 +5304,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.002544233292230638,
     "sd": 0.0004913353098207352,
@@ -5288,7 +5347,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.91 (kept inter./item 22.21, run-log value)",
    "metric": "head delta HR@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho091_s08_VG.json",
@@ -5353,7 +5412,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.004939632991206494,
     "sd": 0.0008915915770818797,
@@ -5396,7 +5455,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.91 (kept inter./item 22.21, run-log value)",
    "metric": "tail delta NDCG@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho091_s08_VG.json",
@@ -5461,7 +5520,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 3.914816769624869e-05,
     "sd": 0.00031032854824774225,
@@ -5504,7 +5563,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.91 (kept inter./item 22.21, run-log value)",
    "metric": "tail delta HR@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho091_s08_VG.json",
@@ -5569,7 +5628,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.00011009174311926648,
     "sd": 0.000765931429898782,
@@ -5612,7 +5671,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.88 (kept inter./item 21.484, run-log value)",
    "metric": "head delta NDCG@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho088_s08_VG.json",
@@ -5677,7 +5736,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0025204857770895457,
     "sd": 0.0004207378135275229,
@@ -5720,7 +5779,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.88 (kept inter./item 21.484, run-log value)",
    "metric": "head delta HR@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho088_s08_VG.json",
@@ -5785,7 +5844,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.00486894562727967,
     "sd": 0.0007649666207076967,
@@ -5828,7 +5887,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.88 (kept inter./item 21.484, run-log value)",
    "metric": "tail delta NDCG@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho088_s08_VG.json",
@@ -5893,7 +5952,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0005370064646955323,
     "sd": 0.0003863441572245068,
@@ -5936,7 +5995,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.88 (kept inter./item 21.484, run-log value)",
    "metric": "tail delta HR@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho088_s08_VG.json",
@@ -6001,7 +6060,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0006605504587155961,
     "sd": 0.0009953177141369181,
@@ -6044,7 +6103,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.78 (kept inter./item 19.03, run-log value)",
    "metric": "head delta NDCG@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho078_s08_VG.json",
@@ -6109,7 +6168,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.002663578471688935,
     "sd": 0.0003982671529464231,
@@ -6152,7 +6211,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.78 (kept inter./item 19.03, run-log value)",
    "metric": "head delta HR@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho078_s08_VG.json",
@@ -6217,7 +6276,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0044674414001753095,
     "sd": 0.0010816321641420896,
@@ -6260,7 +6319,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.78 (kept inter./item 19.03, run-log value)",
    "metric": "tail delta NDCG@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho078_s08_VG.json",
@@ -6325,7 +6384,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 5.600870772996206e-05,
     "sd": 0.0005518733556081064,
@@ -6368,7 +6427,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.78 (kept inter./item 19.03, run-log value)",
    "metric": "tail delta HR@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITR_text_rho078_s08_VG.json",
@@ -6433,7 +6492,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.00023853211009174265,
     "sd": 0.001086681660171452,
@@ -6476,7 +6535,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.66 (kept inter./item 16.109, run-log value)",
    "metric": "head delta NDCG@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITRATE_text_rho066_VG.json",
@@ -6541,7 +6600,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0035404078639170917,
     "sd": 0.0004164262800664785,
@@ -6584,7 +6643,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.66 (kept inter./item 16.109, run-log value)",
    "metric": "head delta HR@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITRATE_text_rho066_VG.json",
@@ -6649,7 +6708,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.005720021488958632,
     "sd": 0.0009036156810796771,
@@ -6692,7 +6751,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.66 (kept inter./item 16.109, run-log value)",
    "metric": "tail delta NDCG@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITRATE_text_rho066_VG.json",
@@ -6757,7 +6816,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": -0.00010813816136401961,
     "sd": 0.0005028234353932916,
@@ -6800,7 +6859,7 @@
    "table_id": "table1e",
    "row_label": "rho=0.66 (kept inter./item 16.109, run-log value)",
    "metric": "tail delta HR@10 (paired, 5-seed)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITRATE_text_rho066_VG.json",
@@ -6865,7 +6924,7 @@
      "mode": "count"
     }
    ],
-   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23.",
+   "notes": "kept-interactions/item is quoted from the frozen run logs (see make_table_5_4_titration.py); alpha = ipi/23. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 7.339449541284414e-05,
     "sd": 0.001164812495273679,
@@ -6927,7 +6986,7 @@
    "table_id": "table1e",
    "row_label": "Spearman rho_s(head delta vs density)",
    "metric": "NDCG@10",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_V2_text_VG.json",
@@ -7114,7 +7173,7 @@
      "precision": 2
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "rho": -0.9428571428571428
    },
@@ -7136,7 +7195,7 @@
    "table_id": "table1e",
    "row_label": "Spearman rho_s(head delta vs density)",
    "metric": "HR@10",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_V2_text_VG.json",
@@ -7324,7 +7383,7 @@
      "precision": 2
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "rho": -0.7142857142857143
    },
@@ -7346,7 +7405,7 @@
    "table_id": "table1e",
    "row_label": "Spearman rho_s(tail delta vs density)",
    "metric": "NDCG@10",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_V2_text_VG.json",
@@ -7533,7 +7592,7 @@
      "precision": 2
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "rho": -0.14285714285714285
    },
@@ -7555,7 +7614,7 @@
    "table_id": "table541",
    "row_label": "VG full density",
    "metric": "tail text-arm NDCG@10 mean",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_V2_text_VG.json",
@@ -7588,7 +7647,7 @@
      "precision": 6
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.004919178623486636,
     "sd": 0.00011015713117504376,
@@ -7612,7 +7671,7 @@
    "table_id": "table541",
    "row_label": "VG full density",
    "metric": "tail ID-arm NDCG@10 mean",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_idonly_VG.json",
@@ -7645,7 +7704,7 @@
      "precision": 6
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.005067604699544014,
     "sd": 0.00021610042984895902,
@@ -7669,7 +7728,7 @@
    "table_id": "table541",
    "row_label": "VG full density",
    "metric": "tail text/ID ratio",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_V2_text_VG.json",
@@ -7714,7 +7773,7 @@
      "precision": 3
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "ratio": 0.9707108022709954,
     "a_mean": 0.004919178623486636,
@@ -7738,7 +7797,7 @@
    "table_id": "table541",
    "row_label": "VG full density",
    "metric": "head text/ID ratio",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_V2_text_VG.json",
@@ -7783,7 +7842,7 @@
      "precision": 3
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "ratio": 1.026264897597128,
     "a_mean": 0.08645108709429764,
@@ -7807,7 +7866,7 @@
    "table_id": "table541",
    "row_label": "VG thinned -> MI-density (rho=0.66)",
    "metric": "tail text-arm NDCG@10 mean",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITRATE_text_rho066_VG.json",
@@ -7840,7 +7899,7 @@
      "precision": 6
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0035690496157935693,
     "sd": 0.0003128894653261143,
@@ -7864,7 +7923,7 @@
    "table_id": "table541",
    "row_label": "VG thinned -> MI-density (rho=0.66)",
    "metric": "tail ID-arm NDCG@10 mean",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITRATE_idonly_rho066_VG.json",
@@ -7897,7 +7956,7 @@
      "precision": 6
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0036771877771575893,
     "sd": 0.00025953108959828194,
@@ -7921,7 +7980,7 @@
    "table_id": "table541",
    "row_label": "VG thinned -> MI-density (rho=0.66)",
    "metric": "tail text/ID ratio",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITRATE_text_rho066_VG.json",
@@ -7966,7 +8025,7 @@
      "precision": 3
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "ratio": 0.9705921568553648,
     "a_mean": 0.0035690496157935693,
@@ -7990,7 +8049,7 @@
    "table_id": "table541",
    "row_label": "VG thinned -> MI-density (rho=0.66)",
    "metric": "head text/ID ratio",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITRATE_text_rho066_VG.json",
@@ -8035,7 +8094,7 @@
      "precision": 3
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "ratio": 1.0488709281277095,
     "a_mean": 0.07598445588087517,
@@ -8059,7 +8118,7 @@
    "table_id": "table541",
    "row_label": "MI native",
    "metric": "tail text-arm NDCG@10 mean",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_TAIL_V2_text_seed20260608.json",
@@ -8092,7 +8151,7 @@
      "precision": 6
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0015509305448813198,
     "sd": 0.00018481046137641747,
@@ -8116,7 +8175,7 @@
    "table_id": "table541",
    "row_label": "MI native",
    "metric": "tail ID-arm NDCG@10 mean",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_TAIL_idonly_seed20260608.json",
@@ -8149,7 +8208,7 @@
      "precision": 6
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0012156403196340714,
     "sd": 4.597985270736718e-05,
@@ -8173,7 +8232,7 @@
    "table_id": "table541",
    "row_label": "MI native",
    "metric": "tail text/ID ratio",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_TAIL_V2_text_seed20260608.json",
@@ -8218,7 +8277,7 @@
      "precision": 3
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "ratio": 1.2758136759960188,
     "a_mean": 0.0015509305448813198,
@@ -8242,7 +8301,7 @@
    "table_id": "table541",
    "row_label": "MI native",
    "metric": "head text/ID ratio",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_TAIL_V2_text_seed20260608.json",
@@ -8287,7 +8346,7 @@
      "precision": 3
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "ratio": 1.1005479018608502,
     "a_mean": 0.05766840674016812,
@@ -8311,7 +8370,7 @@
    "table_id": "table541",
    "row_label": "text-arm tail starvation full->rho0.66",
    "metric": "percent",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITRATE_text_rho066_VG.json",
@@ -8356,7 +8415,7 @@
      "precision": 1
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "pct": -27.446228548133444
    },
@@ -8378,7 +8437,7 @@
    "table_id": "table541",
    "row_label": "ID-arm tail starvation full->rho0.66",
    "metric": "percent",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TITRATE_idonly_rho066_VG.json",
@@ -8423,7 +8482,7 @@
      "precision": 1
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "pct": -27.43735955789004
    },
@@ -8445,7 +8504,7 @@
    "table_id": "table541",
    "row_label": "MI tail relative text gain",
    "metric": "percent (+27.6%)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_MI_TAIL_V2_text_seed20260608.json",
@@ -8490,7 +8549,7 @@
      "precision": 1
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "pct": 27.58136759960188
    },
@@ -8512,7 +8571,7 @@
    "table_id": "table542",
    "row_label": "VG user-thinned rho_user=0.66 (users/item 2.44)",
    "metric": "within-rung tail delta NDCG@10",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_USERTITR_text_rho066_s08_VG.json",
@@ -8576,7 +8635,7 @@
      "mode": "count"
     }
    ],
-   "notes": "users/item 2.44 and interactions/item 16.12 are run-log quantities. Paper sd corrected 2026-07-11 (was 0.000137): recomputed sample-std 0.0001535 rounds to 0.000153, now printed in the S5.4.2 table.",
+   "notes": "users/item 2.44 and interactions/item 16.12 are run-log quantities. Paper sd corrected 2026-07-11 (was 0.000137): recomputed sample-std 0.0001535 rounds to 0.000153, now printed in the S5.4.2 table. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0001777134781061964,
     "sd": 0.0001534773441159898,
@@ -8619,7 +8678,7 @@
    "table_id": "table542",
    "row_label": "user-thinned rho=0.66: independent-arm Welch",
    "metric": "Welch t/p + 95% CI on per-arm tail values (within-rung; corrected 2026-07-19)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_USERTITR_text_rho066_s08_VG.json",
@@ -8694,7 +8753,7 @@
      "precision": 6
     }
    ],
-   "notes": "CI includes zero: the within-rung effect is sign-consistent but not significant under the corrected independent-arm analysis.",
+   "notes": "CI includes zero: the within-rung effect is sign-consistent but not significant under the corrected independent-arm analysis. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "diff": 0.00017771347810619648,
     "t": 1.5840303075579405,
@@ -8755,7 +8814,7 @@
    "table_id": "table542",
    "row_label": "user-thinned rho=0.66",
    "metric": "tail text/ID ratio",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_USERTITR_text_rho066_s08_VG.json",
@@ -8800,7 +8859,7 @@
      "precision": 3
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "ratio": 1.045546895690351,
     "a_mean": 0.004079482751568332,
@@ -8824,7 +8883,7 @@
    "table_id": "table542",
    "row_label": "user-thinned rho=0.66",
    "metric": "head text/ID ratio",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_USERTITR_text_rho066_s08_VG.json",
@@ -8869,7 +8928,7 @@
      "precision": 3
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "ratio": 1.03942016776086,
     "a_mean": 0.08083175589315823,
@@ -8893,7 +8952,7 @@
    "table_id": "table542",
    "row_label": "dd vs full-density anchor",
    "metric": "same-seed diff-of-deltas (tail NDCG@10; descriptive)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_USERTITR_text_rho066_s08_VG.json",
@@ -8973,7 +9032,7 @@
      "mode": "count"
     }
    ],
-   "notes": "Descriptive only (2026-07-19): the former paired t=3.47 / CI-excludes-0 inference is retracted with the pairing assumption; the valid inference is t542.u066.dd_welch (p=0.058, CI includes 0).",
+   "notes": "Descriptive only (2026-07-19): the former paired t=3.47 / CI-excludes-0 inference is retracted with the pairing assumption; the valid inference is t542.u066.dd_welch (p=0.058, CI includes 0). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.00032613955416357373,
     "sd": 0.0002102698308043757,
@@ -9016,7 +9075,7 @@
    "table_id": "table542",
    "row_label": "dd vs full anchor: four-group Welch",
    "metric": "Welch-Satterthwaite contrast (user066_text-user066_id)-(full_text-full_id)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_USERTITR_text_rho066_s08_VG.json",
@@ -9109,7 +9168,7 @@
      "precision": 6
     }
    ],
-   "notes": "NOT significant (p=0.058; CI includes zero): the S5.4.2 finding is downgraded to suggestive/descriptive (2026-07-19).",
+   "notes": "NOT significant (p=0.058; CI includes zero): the S5.4.2 finding is downgraded to suggestive/descriptive (2026-07-19). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "est": 0.000326139554163574,
     "t": 2.0898846398306574,
@@ -9187,7 +9246,7 @@
    "table_id": "table542",
    "row_label": "matched-R1: (user - interaction) at rho=0.66",
    "metric": "tail delta difference (descriptive level contrast)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_USERTITR_text_rho066_s08_VG.json",
@@ -9256,7 +9315,7 @@
      "precision": 6
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.000285851639470216,
     "sd": 0.0005256490455557621,
@@ -9284,7 +9343,7 @@
    "table_id": "table542",
    "row_label": "matched-R1: (user - interaction) at rho=0.66",
    "metric": "head delta difference (descriptive level contrast)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_USERTITR_text_rho066_s08_VG.json",
@@ -9353,7 +9412,7 @@
      "precision": 6
     }
    ],
-   "notes": "diff-of-diffs tail-head = +0.000761 with opposite signs (see both cells).",
+   "notes": "diff-of-diffs tail-head = +0.000761 with opposite signs (see both cells). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": -0.000474851242500568,
     "sd": 0.0007514928184818618,
@@ -9381,7 +9440,7 @@
    "table_id": "table542",
    "row_label": "down-limb rho_user=0.50",
    "metric": "tail delta NDCG@10",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_USERTITR_text_rho050_s08_VG.json",
@@ -9445,7 +9504,7 @@
      "mode": "count"
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.00023562813262341986,
     "sd": 0.0005323695797396597,
@@ -9488,7 +9547,7 @@
    "table_id": "table542",
    "row_label": "down-limb rho_user=0.40 (floor artifact)",
    "metric": "tail delta NDCG@10",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_USERTITR_text_rho040_s08_VG.json",
@@ -9546,7 +9605,7 @@
      "mode": "count"
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": -0.001544721406741506,
     "sd": 0.000994366964484926,
@@ -9581,7 +9640,7 @@
    "table_id": "table542",
    "row_label": "rho_user=0.40 TEXT-arm tail collapse",
    "metric": "tail text NDCG@10 mean",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_USERTITR_text_rho040_s08_VG.json",
@@ -9614,7 +9673,7 @@
      "precision": 5
     }
    ],
-   "notes": "Paper: 'falls to 0.00218 ~ 44% of the full-density anchor 0.00494'.",
+   "notes": "Paper: 'falls to 0.00218 ~ 44% of the full-density anchor 0.00494'. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0021755786825319624,
     "sd": 0.0008834129358879116,
@@ -9638,7 +9697,7 @@
    "table_id": "table542",
    "row_label": "rho_user=0.40 TEXT-arm tail HR",
    "metric": "tail text HR@10 mean",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_USERTITR_text_rho040_s08_VG.json",
@@ -9672,7 +9731,7 @@
      "precision": 5
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.004220183486238533,
     "sd": 0.0016462714169657212,
@@ -9696,7 +9755,7 @@
    "table_id": "table542",
    "row_label": "full-density TEXT-arm tail HR anchor",
    "metric": "tail text HR@10 mean",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TAIL_V2_text_VG.json",
@@ -9730,7 +9789,7 @@
      "precision": 4
     }
    ],
-   "notes": "Was the one 2026-07-11 repair miss: the paper printed 0.0100 while the recomputed 5-seed mean 0.0099266 rounds to 0.0099. Manuscript corrected to 0.0099 ('tail HR 0.00422 vs 0.0099') in both PAPER_SUBMISSION.md S5.4.2 and PAPER_DRAFT.md on 2026-07-11; expectation updated to match. Never waived: the gate stayed fail-closed until the manuscript changed.",
+   "notes": "Was the one 2026-07-11 repair miss: the paper printed 0.0100 while the recomputed 5-seed mean 0.0099266 rounds to 0.0099. Manuscript corrected to 0.0099 ('tail HR 0.00422 vs 0.0099') in both PAPER_SUBMISSION.md S5.4.2 and PAPER_DRAFT.md on 2026-07-11; expectation updated to match. Never waived: the gate stayed fail-closed until the manuscript changed. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.009926605504587157,
     "sd": 0.00022843852473373836,
@@ -9754,7 +9813,7 @@
    "table_id": "table542",
    "row_label": "rho_user=0.40 ID-arm tail (holds)",
    "metric": "tail id NDCG@10 mean",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_USERTITR_idonly_rho040_s08_VG.json",
@@ -9788,7 +9847,7 @@
      "tol": 0.0002
     }
    ],
-   "notes": "Paper: 'the ID arm holds ~0.0037'.",
+   "notes": "Paper: 'the ID arm holds ~0.0037'. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.0037203000892734677,
     "sd": 0.00013713685941464006,
@@ -11179,7 +11238,7 @@
    "table_id": "table2",
    "row_label": "X1/Y1 base band: V2 5-seed",
    "metric": "NDCG@10 mean +- sd (seeds 08-12)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_V2_ls02_filter8_VG.json",
@@ -11224,7 +11283,7 @@
      "precision": 4
     }
    ],
-   "notes": "",
+   "notes": "[Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.06735040289835864,
     "sd": 0.0002897454001915093,
@@ -11552,7 +11611,7 @@
    "table_id": "table2",
    "row_label": "CF1 cue-fusion gate (MI, 5-seed)",
    "metric": "paired delta NDCG@10 vs MI V2 k16",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_CF1_cuefusion_MI.json",
@@ -11595,7 +11654,7 @@
      "mode": "bound_abs"
     }
    ],
-   "notes": "Recomputed -0.00063 (dead, no gain).",
+   "notes": "Recomputed -0.00063 (dead, no gain). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": -0.0006297544121507375,
     "sd": 0.00025173704740567263,
@@ -11969,7 +12028,7 @@
    "table_id": "office_confirmation",
    "row_label": "K=16 fresh seeds 20260623-27 (prereg OFFICE, gated)",
    "metric": "final-epoch full-catalog NDCG@10 per seed + mean +- sd, 95% CI-LB",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_OFFICE_k16_seed20260623.json",
@@ -12045,7 +12104,7 @@
      "tol": 0.5
     }
    ],
-   "notes": "Pre-declared (SOTA_CONFIRM_PREREG_OFFICE.md, frozen before the raw data finished downloading; zero category-specific tuning). Headline = history[-1].test with n_eval asserted == 223,308; best_test is the 30k subsample and is NOT used. Paper prints 0.03042 +- 0.00008 (CI-LB 0.03032), all seeds above published 0.0271, '~+12% margin' -- but the S5.2 Office paragraph itself declares the pass VOID under the failed prereg floor check; see office.floor.",
+   "notes": "Pre-declared (SOTA_CONFIRM_PREREG_OFFICE.md, frozen before the raw data finished downloading; zero category-specific tuning). Headline = history[-1].test with n_eval asserted == 223,308; best_test is the 30k subsample and is NOT used. Paper prints 0.03042 +- 0.00008 (CI-LB 0.03032), all seeds above published 0.0271, '~+12% margin' -- but the S5.2 Office paragraph itself declares the pass VOID under the failed prereg floor check; see office.floor. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "status_note": "VOID under prereg floor check (+44% floor inflation); provisional, not counted as a pass",
    "recomputed": {
     "mean": 0.030423137988352084,
@@ -12115,7 +12174,7 @@
    "table_id": "office_confirmation",
    "row_label": "K=8 fresh seeds 20260623-27 (prereg OFFICE, gated)",
    "metric": "final-epoch full-catalog NDCG@10 per seed + mean +- sd, 95% CI-LB",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_OFFICE_k8_seed20260623.json",
@@ -12191,7 +12250,7 @@
      "tol": 0.5
     }
    ],
-   "notes": "Same headline rule as office.k16.gate (final-epoch full-catalog, n_eval=223,308). Paper prints 0.03033 +- 0.00018 (CI-LB 0.03010).",
+   "notes": "Same headline rule as office.k16.gate (final-epoch full-catalog, n_eval=223,308). Paper prints 0.03033 +- 0.00018 (CI-LB 0.03010). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "status_note": "VOID under prereg floor check (+44% floor inflation); provisional, not counted as a pass",
    "recomputed": {
     "mean": 0.03032760783134327,
@@ -12261,7 +12320,7 @@
    "table_id": "office_confirmation",
    "row_label": "fresh seeds above published 0.0271 (both kernels)",
    "metric": "count of final-epoch full-catalog NDCG@10 > 0.0271",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_OFFICE_k16_seed20260623.json",
@@ -12310,7 +12369,7 @@
      "mode": "count"
     }
    ],
-   "notes": "Paper: 'all 10 fresh seeds above the published HSTU-BLaIR point estimate 0.0271' -- reported as provisional, not as a counted pass.",
+   "notes": "Paper: 'all 10 fresh seeds above the published HSTU-BLaIR point estimate 0.0271' -- reported as provisional, not as a counted pass. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "status_note": "VOID under prereg floor check (+44% floor inflation); provisional, not counted as a pass",
    "recomputed": {
     "count": 10.0,
@@ -12333,7 +12392,7 @@
    "table_id": "office_confirmation",
    "row_label": "ID-only arm, fresh seeds 20260623-27 (prereg OFFICE)",
    "metric": "final-epoch full-catalog NDCG@10 per seed + mean +- sd",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_OFFICE_idonly_seed20260623.json",
@@ -12383,7 +12442,7 @@
      "mode": "info"
     }
    ],
-   "notes": "Pre-declared 5-seed contrast arm (text stack removed). The overall arm mean is not printed in the manuscript (info checks only; values protected by the manifest drift gate); it exists as the ID side of the descriptive tail contrast (office.tail.hits*).",
+   "notes": "Pre-declared 5-seed contrast arm (text stack removed). The overall arm mean is not printed in the manuscript (info checks only; values protected by the manifest drift gate); it exists as the ID side of the descriptive tail contrast (office.tail.hits*). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.028395716866820818,
     "sd": 4.693888422768732e-05,
@@ -12419,7 +12478,7 @@
    "table_id": "office_confirmation",
    "row_label": "plain ID-only SASRec floor run (seed 20260623)",
    "metric": "best_test NDCG@10 (floor check vs published SASRec 0.0153)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_OFFICE_sasrecfloor_seed20260623.json"
@@ -12449,7 +12508,7 @@
      "precision": 4
     }
    ],
-   "notes": "The prereg comparability condition (SOTA_CONFIRM_PREREG_OFFICE.md: floor 'must be at or below' the published-SASRec neighborhood) FAILED: 0.02208 is +44% above published 0.0153, so the Office second-category pass is VOID under the prereg as written (paper S5.2/Appendix A.0 disclose this; the matched comparator-baseline run is COMPLETE — their own SASRec run locally lands +13.9% above its published row, THEIRS_ON_OURS_REPORT.md S4.1 — and the VOID is deliberately retained). Floor is read from best_test exactly as adjudicated by office_prereg_tools.py (the floor rule predates the final-full headline rule and was scored on best_test).",
+   "notes": "The prereg comparability condition (SOTA_CONFIRM_PREREG_OFFICE.md: floor 'must be at or below' the published-SASRec neighborhood) FAILED: 0.02208 is +44% above published 0.0153, so the Office second-category pass is VOID under the prereg as written (paper S5.2/Appendix A.0 disclose this; the matched comparator-baseline run is COMPLETE — their own SASRec run locally lands +13.9% above its published row, THEIRS_ON_OURS_REPORT.md S4.1 — and the VOID is deliberately retained). Floor is read from best_test exactly as adjudicated by office_prereg_tools.py (the floor rule predates the final-full headline rule and was scored on best_test). [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "status_note": "floor check FAILED vs prereg condition",
    "recomputed": {
     "value": 0.0220777148309893
@@ -12480,7 +12539,7 @@
    "table_id": "office_confirmation",
    "row_label": "floor inflation vs published SASRec 0.0153",
    "metric": "percent (+44%)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_OFFICE_sasrecfloor_seed20260623.json"
@@ -12507,7 +12566,7 @@
      "precision": 0
     }
    ],
-   "notes": "Recomputed +44.3%; the paper prints '+44% ABOVE the published SASRec (0.0153)'. This is the quantity that voids the Office pass.",
+   "notes": "Recomputed +44.3%; the paper prints '+44% ABOVE the published SASRec (0.0153)'. This is the quantity that voids the Office pass. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "status_note": "floor check FAILED vs prereg condition",
    "recomputed": {
     "pct": 44.2987897450281,
@@ -12588,20 +12647,13 @@
      "name": "id_hits",
      "value": 268,
      "mode": "count"
-    },
-    {
-     "name": "z",
-     "value": 3.8,
-     "mode": "approx",
-     "tol": 0.05
     }
    ],
-   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-declared confirmation of the tail rule.",
+   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-declared confirmation of the tail rule. Pooled-z RETRACTED 2026-07-19 (audit 22:08): clustered repeated users, not independent trials; see office.tailwelch.* for valid model-seed-level inference.",
    "status_note": "descriptive post-hoc pattern evidence only; the pre-declared Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
    "recomputed": {
     "text_hits": 364.0,
     "id_hits": 268.0,
-    "z": 3.821975335225754,
     "pooled_n": 183050.0
    },
    "recomputed_value": 364.0,
@@ -12619,13 +12671,6 @@
      "mode": "count",
      "recomputed": 268.0,
      "result": "exact"
-    },
-    {
-     "name": "z",
-     "paper": 3.8,
-     "mode": "approx",
-     "recomputed": 3.821975335225754,
-     "result": "within_tol"
     }
    ],
    "paper_check_class": "exact"
@@ -12693,12 +12738,11 @@
      "mode": "count"
     }
    ],
-   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-declared confirmation of the tail rule.",
+   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-declared confirmation of the tail rule. Pooled-z RETRACTED 2026-07-19 (audit 22:08): clustered repeated users, not independent trials; see office.tailwelch.* for valid model-seed-level inference.",
    "status_note": "descriptive post-hoc pattern evidence only; the pre-declared Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
    "recomputed": {
     "text_hits": 586.0,
     "id_hits": 414.0,
-    "z": 5.446561287164066,
     "pooled_n": 183050.0
    },
    "recomputed_value": 586.0,
@@ -12783,12 +12827,11 @@
      "mode": "count"
     }
    ],
-   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-declared confirmation of the tail rule.",
+   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-declared confirmation of the tail rule. Pooled-z RETRACTED 2026-07-19 (audit 22:08): clustered repeated users, not independent trials; see office.tailwelch.* for valid model-seed-level inference.",
    "status_note": "descriptive post-hoc pattern evidence only; the pre-declared Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
    "recomputed": {
     "text_hits": 1170.0,
     "id_hits": 739.0,
-    "z": 9.890302292704154,
     "pooled_n": 183050.0
    },
    "recomputed_value": 1170.0,
@@ -12871,20 +12914,13 @@
      "name": "id_hits",
      "value": 1247,
      "mode": "count"
-    },
-    {
-     "name": "z",
-     "value": 13.0,
-     "mode": "approx",
-     "tol": 0.05
     }
    ],
-   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-declared confirmation of the tail rule.",
+   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-declared confirmation of the tail rule. Pooled-z RETRACTED 2026-07-19 (audit 22:08): clustered repeated users, not independent trials; see office.tailwelch.* for valid model-seed-level inference.",
    "status_note": "descriptive post-hoc pattern evidence only; the pre-declared Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
    "recomputed": {
     "text_hits": 1983.0,
     "id_hits": 1247.0,
-    "z": 13.007711175889494,
     "pooled_n": 183050.0
    },
    "recomputed_value": 1983.0,
@@ -12902,13 +12938,252 @@
      "mode": "count",
      "recomputed": 1247.0,
      "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "office.tailwelch.hr10",
+   "table_id": "office_confirmation",
+   "row_label": "Office tail HR@10: model-seed independent-arm Welch (k8 vs ID-only)",
+   "metric": "per-seed tail n_hit@10/n, final-epoch full eval; Welch t/CI",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260627.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260623.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260624.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260625.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260626.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260627.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    "20260623",
+    "20260624",
+    "20260625",
+    "20260626",
+    "20260627"
+   ],
+   "recompute": {
+    "rule": "final_full_tail_welch",
+    "params": {
+     "a": [
+      "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260627.json"
+     ],
+     "b": [
+      "_bestrec_run/results_OFFICE_idonly_seed20260623.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260624.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260625.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260626.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260627.json"
+     ],
+     "k": 10,
+     "stratum": "tail",
+     "expect_n_eval": 223308
+    }
+   },
+   "recompute_rule": "independent-arm Welch on per-seed n_hit@K/n tail rates, final-epoch full eval",
+   "paper": [
+    {
+     "name": "delta",
+     "value": 0.000524,
+     "mode": "round",
+     "precision": 6
     },
     {
-     "name": "z",
-     "paper": 13.0,
-     "mode": "approx",
-     "recomputed": 13.007711175889494,
-     "result": "within_tol"
+     "name": "t",
+     "value": 7.26,
+     "mode": "round",
+     "precision": 2
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.00036,
+     "mode": "round",
+     "precision": 5
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.00069,
+     "mode": "round",
+     "precision": 5
+    }
+   ],
+   "notes": "Replaces the retracted pooled two-proportion z (audit 22:08): the trained model per arm is the inferential unit; same direction, valid geometry. Final per-user sidecars for a fully clustered analysis are a queued release item. Descriptive pattern evidence only (the pre-declared tail prediction was VOID).",
+   "recomputed": {
+    "delta": 0.0005244468724392242,
+    "t": 7.256917881777161,
+    "df": 7.9989552384994616,
+    "p": 8.75215317187256e-05,
+    "ci_lo": 0.000357791527601781,
+    "ci_hi": 0.0006911022172766674,
+    "n_units": 5.0
+   },
+   "recomputed_value": 0.0005244468724392242,
+   "paper_check": [
+    {
+     "name": "delta",
+     "paper": 0.000524,
+     "mode": "round",
+     "recomputed": 0.0005244468724392242,
+     "result": "exact",
+     "rounded": 0.000524
+    },
+    {
+     "name": "t",
+     "paper": 7.26,
+     "mode": "round",
+     "recomputed": 7.256917881777161,
+     "result": "exact",
+     "rounded": 7.26
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.00036,
+     "mode": "round",
+     "recomputed": 0.000357791527601781,
+     "result": "exact",
+     "rounded": 0.00036
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.00069,
+     "mode": "round",
+     "recomputed": 0.0006911022172766674,
+     "result": "exact",
+     "rounded": 0.00069
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "office.tailwelch.hr100",
+   "table_id": "office_confirmation",
+   "row_label": "Office tail HR@100: model-seed independent-arm Welch (k8 vs ID-only)",
+   "metric": "per-seed tail n_hit@100/n, final-epoch full eval; Welch t/CI",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+    "_bestrec_run/results_OFFICE_k8_seed20260627.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260623.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260624.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260625.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260626.json",
+    "_bestrec_run/results_OFFICE_idonly_seed20260627.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    "20260623",
+    "20260624",
+    "20260625",
+    "20260626",
+    "20260627"
+   ],
+   "recompute": {
+    "rule": "final_full_tail_welch",
+    "params": {
+     "a": [
+      "_bestrec_run/results_OFFICE_k8_seed20260623.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260624.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260625.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260626.json",
+      "_bestrec_run/results_OFFICE_k8_seed20260627.json"
+     ],
+     "b": [
+      "_bestrec_run/results_OFFICE_idonly_seed20260623.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260624.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260625.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260626.json",
+      "_bestrec_run/results_OFFICE_idonly_seed20260627.json"
+     ],
+     "k": 100,
+     "stratum": "tail",
+     "expect_n_eval": 223308
+    }
+   },
+   "recompute_rule": "independent-arm Welch on per-seed n_hit@K/n tail rates, final-epoch full eval",
+   "paper": [
+    {
+     "name": "delta",
+     "value": 0.004021,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "t",
+     "value": 16.75,
+     "mode": "round",
+     "precision": 2
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.00347,
+     "mode": "round",
+     "precision": 5
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.00457,
+     "mode": "round",
+     "precision": 5
+    }
+   ],
+   "notes": "Replaces the retracted pooled two-proportion z (audit 22:08): the trained model per arm is the inferential unit; same direction, valid geometry. Final per-user sidecars for a fully clustered analysis are a queued release item. Descriptive pattern evidence only (the pre-declared tail prediction was VOID).",
+   "recomputed": {
+    "delta": 0.004020759355367387,
+    "t": 16.751083803706805,
+    "df": 7.95356916533739,
+    "p": 1.7395659103601327e-07,
+    "ci_lo": 0.003466686689685755,
+    "ci_hi": 0.004574832021049019,
+    "n_units": 5.0
+   },
+   "recomputed_value": 0.004020759355367387,
+   "paper_check": [
+    {
+     "name": "delta",
+     "paper": 0.004021,
+     "mode": "round",
+     "recomputed": 0.004020759355367387,
+     "result": "exact",
+     "rounded": 0.004021
+    },
+    {
+     "name": "t",
+     "paper": 16.75,
+     "mode": "round",
+     "recomputed": 16.751083803706805,
+     "result": "exact",
+     "rounded": 16.75
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.00347,
+     "mode": "round",
+     "recomputed": 0.003466686689685755,
+     "result": "exact",
+     "rounded": 0.00347
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.00457,
+     "mode": "round",
+     "recomputed": 0.004574832021049019,
+     "result": "exact",
+     "rounded": 0.00457
     }
    ],
    "paper_check_class": "exact"
@@ -13581,6 +13856,242 @@
      "mode": "count",
      "recomputed": 5,
      "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "firb.is.welch",
+   "table_id": "fir_breadth",
+   "row_label": "FIR breadth Industrial_and_Scientific: independent-arm Welch (filter vs no-filter)",
+   "metric": "Welch 95% CI on per-arm best_test NDCG@10 (robustness companion)",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260713.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260714.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260715.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260716.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260717.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260713.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260714.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260715.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260716.json",
+    "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260717.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    "20260713",
+    "20260714",
+    "20260715",
+    "20260716",
+    "20260717"
+   ],
+   "recompute": {
+    "rule": "welch_2arm_bt",
+    "params": {
+     "a": [
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260713.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260714.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260715.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260716.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260717.json"
+     ],
+     "b": [
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260713.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260714.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260715.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260716.json",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260717.json"
+     ]
+    }
+   },
+   "recompute_rule": "independent-arm Welch t/df/p + 95% CI on per-arm best_test[NDCG@10] (a vs b)",
+   "paper": [
+    {
+     "name": "diff",
+     "value": 0.0024,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "ci95_lo",
+     "value": 0.0019,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "ci95_hi",
+     "value": 0.0029,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "ci95_lo",
+     "value": 0.0,
+     "mode": "gt"
+    }
+   ],
+   "notes": "Graphs the independent-arm robustness CIs printed alongside the pre-declared same-seed analysis (2026-07-19; the arms are not initialization-paired, S5.3 disclosure). Part of the pre-declared breadth campaign family.",
+   "recomputed": {
+    "diff": 0.0024015865758802712,
+    "t": 10.906610867124693,
+    "df": 7.998762616827039,
+    "p": 4.429983333233053e-06,
+    "ci95_lo": 0.0018938011813208855,
+    "ci95_hi": 0.002909371970439657,
+    "n_units": 5.0
+   },
+   "recomputed_value": 0.0024015865758802712,
+   "paper_check": [
+    {
+     "name": "diff",
+     "paper": 0.0024,
+     "mode": "round",
+     "recomputed": 0.0024015865758802712,
+     "result": "exact",
+     "rounded": 0.0024
+    },
+    {
+     "name": "ci95_lo",
+     "paper": 0.0019,
+     "mode": "round",
+     "recomputed": 0.0018938011813208855,
+     "result": "exact",
+     "rounded": 0.0019
+    },
+    {
+     "name": "ci95_hi",
+     "paper": 0.0029,
+     "mode": "round",
+     "recomputed": 0.002909371970439657,
+     "result": "exact",
+     "rounded": 0.0029
+    },
+    {
+     "name": "ci95_lo",
+     "paper": 0.0,
+     "mode": "gt",
+     "recomputed": 0.0018938011813208855,
+     "result": "qual_ok"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "firb.cd.welch",
+   "table_id": "fir_breadth",
+   "row_label": "FIR breadth CDs_and_Vinyl: independent-arm Welch (filter vs no-filter)",
+   "metric": "Welch 95% CI on per-arm best_test NDCG@10 (robustness companion)",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260713.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260714.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260715.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260716.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260717.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260713.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260714.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260715.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260716.json",
+    "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260717.json"
+   ],
+   "n_seeds": 5,
+   "seeds": [
+    "20260713",
+    "20260714",
+    "20260715",
+    "20260716",
+    "20260717"
+   ],
+   "recompute": {
+    "rule": "welch_2arm_bt",
+    "params": {
+     "a": [
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260713.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260714.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260715.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260716.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260717.json"
+     ],
+     "b": [
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260713.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260714.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260715.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260716.json",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260717.json"
+     ]
+    }
+   },
+   "recompute_rule": "independent-arm Welch t/df/p + 95% CI on per-arm best_test[NDCG@10] (a vs b)",
+   "paper": [
+    {
+     "name": "diff",
+     "value": 0.0057,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "ci95_lo",
+     "value": 0.005,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "ci95_hi",
+     "value": 0.0063,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "ci95_lo",
+     "value": 0.0,
+     "mode": "gt"
+    }
+   ],
+   "notes": "Graphs the independent-arm robustness CIs printed alongside the pre-declared same-seed analysis (2026-07-19; the arms are not initialization-paired, S5.3 disclosure). Part of the pre-declared breadth campaign family.",
+   "recomputed": {
+    "diff": 0.005663298288636799,
+    "t": 23.926417468202022,
+    "df": 4.660528807513192,
+    "p": 4.666089880704377e-06,
+    "ci95_lo": 0.005041275737688595,
+    "ci95_hi": 0.006285320839585004,
+    "n_units": 5.0
+   },
+   "recomputed_value": 0.005663298288636799,
+   "paper_check": [
+    {
+     "name": "diff",
+     "paper": 0.0057,
+     "mode": "round",
+     "recomputed": 0.005663298288636799,
+     "result": "exact",
+     "rounded": 0.0057
+    },
+    {
+     "name": "ci95_lo",
+     "paper": 0.005,
+     "mode": "round",
+     "recomputed": 0.005041275737688595,
+     "result": "exact",
+     "rounded": 0.005
+    },
+    {
+     "name": "ci95_hi",
+     "paper": 0.0063,
+     "mode": "round",
+     "recomputed": 0.006285320839585004,
+     "result": "exact",
+     "rounded": 0.0063
+    },
+    {
+     "name": "ci95_lo",
+     "paper": 0.0,
+     "mode": "gt",
+     "recomputed": 0.005041275737688595,
+     "result": "qual_ok"
     }
    ],
    "paper_check_class": "exact"

@@ -6,23 +6,26 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
-1. **[CONFIRMED SUBMISSION BLOCKER] The TORS source and compiled review PDF
-   omit the whole mechanism section while claiming that it is present.**
-   `paper_tex/sections/05-results.tex:95` has Section 5.3 and line 121 jumps
-   directly to the source-labelled Section 5.5; there is no `sec:5.4`,
-   `sec:5.4.1`, or `sec:5.4.2` label and no input of `table1e.tex`,
-   `table541.tex`, or `table542.tex`. The compiled TORS PDF consequently has
-   17 unresolved-reference glyphs, renumbers the negative-result map as 5.4,
-   and contains neither titration figure. This is a loss of core evidence,
-   not a cosmetic conversion difference.
-2. **[CONFIRMED SUBMISSION BLOCKER] Patch-corrupted TeX is reader-visible and
-   the hygiene gate falsely passes it.** `paper_tex/sections/03-method.tex:94`
-   contains a literal tab plus `extbf{Initialization...}`; TORS page 12 prints
-   `extbfInitialization disclosure`. `paper_tex/sections/05-results.tex:82-84`
-   splits two `\S\ref{sec:3}` commands into `\S` plus literal
-   `ef{sec:3}`. `paper_tex/hygiene_scan_output.txt` nevertheless reports zero
-   failures because the scanner neither checks the TeX log/undefined labels
-   nor asserts required sections, tables, figures, and control sequences.
+1. **[CONFIRMED SUBMISSION BLOCKER] Both submitted PDFs still publish
+   retracted and stale figure evidence.** The 47-page reader and rebuilt
+   43-page TORS both embed Figure 1 with `dd +0.000326, t=3.47, CI excl 0`,
+   although the surrounding corrected analysis is independent-arm `p=0.058`
+   with a zero-including CI. The same figure prints Beauty as `-0.000018, 0/2`
+   while the paper's live estimate is `-0.0000078, 1/3`. Figure 2 retains
+   "binding"/"tail-binding" and paired language. Rasterization hides the
+   reader's labels from text scans, while the TORS health gate checks figure
+   presence but not their content. Regenerate every figure copy and fail the
+   build on the retired numeric/causal strings.
+2. **[CONFIRMED SUBMISSION BLOCKER] The TORS spine is restored, but its new
+   health gate still passes reader-visible corruption and contradictions.**
+   Section 5.4/5.4.1/5.4.2, Tables 1e/541/542, and both figures now exist, and
+   the prior `extbfInitialization` defect is fixed. However,
+   `paper_tex/sections/05-results.tex:82-84` still splits two
+   `\S\ref{sec:3}` commands into `\S` plus literal `ef{sec:3}`, so TORS page
+   20 prints `§efsec:3`. TORS page 24 also duplicates the Table 1e
+   title/provenance paragraph. `check_tex_health.py` nevertheless passes 32
+   sources, 39 labels, and 27 reference targets because it does not match
+   `ef{...}`, compare load-bearing figure values, or detect duplicate captions.
 3. **[CONFIRMED, rejection-level] The BBP/spectral retraction remains
    incomplete despite a genuine graph fix.** The concurrent patch now
    tombstones the invalid alpha cell, counts it among eight retirements, and
@@ -31,9 +34,10 @@ plausible risks.
    retracted `alpha=0.700` after saying that column was removed;
    `_bestrec_run/make_table_5_4_titration.py:17-18,66,117,130,145-146` still
    derives and prints `d_eff=23`/`alpha=0.700`; the draft's submission notes
-   still advertise the old BBP result; and the TORS derivative was not rebuilt.
-   Tombstoning one graph node does not remove contradictory generator,
-   manuscript, and submission-artifact residue.
+   still advertise the old BBP result; and `05-results.tex:154` carries the
+   same alpha residue into the rebuilt TORS. Tombstoning one graph node does
+   not remove contradictory generator, manuscript, and submission-artifact
+   residue.
 4. **[CONFIRMED, rejection-level] The headline text-versus-ID experiments are
    not actually seed-paired.** The text-arm constructor creates randomly
    initialized SBERT-projection and distillation modules before the position
@@ -43,13 +47,14 @@ plausible risks.
    probe kept `item_emb` exact but produced max shared-parameter differences of
    `0.10354` (`pos_emb`), `0.07856` (`uvqk`), and `0.07918` (`out`), after
    which batch shuffling and dropout also consume different RNG states. The
-   concurrent root/graph patch genuinely retracts the VG paired MDE/TOST and
+   current source/graph genuinely retracts the VG paired MDE/TOST and
    adds independent-arm MI/VG/cross-dataset diagnostics: MI remains positive
    (Welch p about 0.014), the MI-VG contrast remains (p=0.0054), and VG's 90%
-   CI `[-0.000360,+0.000063]` does not establish equivalence. But TeX/TORS
-   still present the old paired analysis, and no arm was rerun from a common
-   initialization. Clone a common backbone with explicit RNG streams or retain
-   independent-arm inference consistently in every artifact.
+   CI `[-0.000360,+0.000063]` does not establish equivalence. That correction
+   now reaches TeX/TORS prose, but no arm was rerun from a common initialization
+   and both figures retain retired paired statistics. Clone a common backbone
+   with explicit RNG streams, or use independent-arm inference consistently in
+   every table, figure, graph cell, and conclusion.
 5. **[CONFIRMED, rejection-level] The headline tail cohort is neither tie-safe
    nor restricted to positive-frequency long-tail items.** Items are first
    sorted by string ID, then stable-sorted only by train frequency and cut at
@@ -67,23 +72,22 @@ plausible risks.
    effect unknowable. Pre-specify a zero-frequency bin and tie-safe positive-
    frequency bins, rerun or recompute row-level results, and release cohort
    membership before interpreting a tail-specific mechanism.
-6. **[CONFIRMED, rejection-level propagation failure] Beauty was falsely
-   promoted from an exploratory three-seed result to powered equivalence.** The
-   concurrent root Markdown, reader PDF, and graph now correctly retract the
-   VG equivalence and call Beauty exploratory; this is a genuine partial fix.
-   But the unchanged TORS abstract, introduction, dataset table, results, and
-   conclusion still call VG and Beauty powered/TOST-equivalent. Beauty has no
-   MDE/TOST, only three seeds, and one unmatched evaluation-user pair. It must
-   remain exploratory in every derivative unless rerun on matched users with a
-   prospectively fixed SESOI and an actual equivalence test.
-7. **[CONFIRMED, rejection-level] The causal/statistical narrowing propagated
-   only to root prose, not the submission system.** One fixed thinning draw,
-   bundled changes, and a nonsignificant interaction support only descriptive
-   sensitivity claims. The new reader text correctly downgrades user thinning
-   to independent-arm `p=0.058`, but the unchanged TeX/TORS still prints the
-   paired `t=3.47`, a zero-excluding CI, partial-causal-role, and binding-tail-
-   resource language. Both regenerated figures also retain `t=3.47, CI excl
-   0`; the R1/R2 generator still says "binding" and "paired." Exact replay
+6. **[CONFIRMED, rejection-level figure/data contradiction] Beauty is now
+   correctly exploratory in prose, but not in the figures.** Root and TORS
+   prose/graph retract the former powered-equivalence framing. Yet both figure
+   generators and both PDFs still print the obsolete two-seed Beauty estimate
+   `-0.000018, 0/2`, not the live three-seed `-0.0000078, 1/3`. Beauty also has
+   one unmatched evaluation-user pair and no MDE/TOST. Correct the figures and
+   keep the result exploratory unless it is rerun on matched users with a
+   prospectively fixed SESOI and actual equivalence test.
+7. **[CONFIRMED, rejection-level] The causal/statistical narrowing remains
+   internally inconsistent.** One fixed thinning draw, bundled changes, and a
+   nonsignificant interaction support only descriptive sensitivity claims.
+   Root and main TORS results now correctly downgrade user thinning to
+   independent-arm `p=0.058`, but both figures retain `t=3.47, CI excl 0`, the
+   R1/R2 generator still says "binding" and "paired," and
+   `07-conclusion.tex:21`/TORS page 36 still asserts a "real partial causal
+   role" from a "paired level contrast." Exact replay
    confirms that interaction/user thinning changes examples, target positions,
    batch count, optimizer updates, and scheduler trajectory: user mode has
    25.3% fewer updates but 8.35% more target positions. Separately, the
@@ -104,8 +108,9 @@ plausible risks.
    Industrial/CDs breadth claims: the comparison changes the filter and the
    shared HSTU initialization together. The concurrent reader now calls this
    an FIR-plus-initialization/optimizer package and quotes independent-arm
-   breadth CIs, but those replacement CIs have no artifact-graph nodes and the
-   TeX/TORS still claim paired FIR confirmation. Common nonsingular,
+   breadth CIs, but those replacement CIs have no artifact-graph nodes and
+   `05-results.tex:80`/TORS still calls the frozen breadth tests paired and
+   "Both confirmed." Common nonsingular,
    weight-decay-controlled backbones must be cloned into both arms and rerun;
    the independent statistics and learned mechanism state must be graphed and
    released.
@@ -117,19 +122,22 @@ plausible risks.
    norms and the bias, uses epsilon 1e-5, and places dropout after rather than
    before the output projection. The test itself reports max block difference
    0.01663 for the default-epsilon case; no released checkpoints establish that
-   the learned superset stayed at the reference point. The current reader now
-   discloses this aligned-configuration boundary, but unchanged TeX/TORS does
-   not. State it consistently, or test the actual train-mode block/configuration.
+   the learned superset stayed at the reference point. Both current manuscripts
+   now disclose the aligned-configuration boundary, a genuine reporting fix.
+   The remaining method claim must stay at equation/path equivalence at that
+   constrained point unless the actual train-mode block is tested.
 10. **[CONFIRMED ASSURANCE DEFECT] The numerical graph has improved, but green
    still overstates assurance.** The current graph passes 168 cells (149 exact,
    19 rounded, zero mismatch/untraceable, 14/14 declared families), now counts
    eight retirement tombstones, corrects conn-gate alpha to recovered `n=4`,
    and checks declared sample counts. Those are genuine fixes. Yet its new
    policy reserves confirmatory labels for prospectively selected work while
-   generated Table 1d still calls the post-hoc MI Welch result confirmatory and
-   Table 2 gives titration nulls confirmatory weight. Newly load-bearing FIR
-   Welch CIs are not graph nodes, TeX completeness and stale figure numerics are
-   not gated, and the current full rebuild fails release-manifest verification.
+   the manifest still labels developmental VG cells, post-hoc MI/VG tail work,
+   user-titration levels, CF1, and even VOID Office V1 cells confirmatory.
+   Newly load-bearing FIR Welch CIs are not graph nodes. The current strict
+   rebuild and HEAD manifest verification pass, but stale figure numerics,
+   malformed `ef{...}`, duplicated captions, and public availability are not
+   gated.
    The Office pooled-tail z also treats the same 36,610 users under five seeds
    and both arms as 183,050 independent Bernoulli trials; this is not
    generically "conservative," and final-full-evaluation per-user sidecars are
@@ -141,14 +149,14 @@ plausible risks.
    is still captioned “20-variant” while listing rows 1-22. The bundle
    `--check-only` branch also returns before its missing-file scan (a latent
    fail-open, although all 64 currently listed payload files exist).
-12. **[CONFIRMED RELEASE BLOCKER] The named v1.1.9 deposit is stale, and the
-   concurrent repair is itself manifest-dirty.** A current literal
-   `--verify-git v1.1.9-deposit` fails on nine files (119 OK). On the current
-   working tree, the strict submission rebuild fails release verification with
-   eight hash/dirty-file problems spanning the graph builder and both Markdown/
-   PDF submission artifacts. `build_deposit_bundle.py --check-only` still
-   masks the literal target failure through HEAD "REBUILD mode" while naming
-   v1.1.9. No new immutable, verified tag exists.
+12. **[CONFIRMED RELEASE BLOCKER] Current HEAD verifies, but the named v1.1.9
+   deposit remains stale.** The full strict rebuild passes at
+   current HEAD `e2a7ef1a`, and HEAD verifies all 128 git-backed entries. A literal
+   `--verify-git v1.1.9-deposit` still fails nine files (119 OK), including both
+   PDFs, both Markdown manuscripts, the canonical-submission file, and build/
+   release tools. Published release assets also have old PDF sizes.
+   `build_deposit_bundle.py --check-only` can still mask the target failure
+   through HEAD "REBUILD mode." No new immutable verified tag exists.
 13. **[CONFIRMED REPRODUCIBILITY BLOCKER] The claimed release is not available
    to an external reviewer.** The GitHub repository is private. The live
    `v0.9-audit-evidence` release still contains only the parity ZIP and a
@@ -190,14 +198,11 @@ plausible risks.
     memory-efficient exact cross-entropy, or reproducible evaluation in
     general.
 15. **[CONFIRMED FACTUAL/REPORTING DEFECTS] Protocol and bibliography wording
-     still needs correction.** The concurrent reader now correctly distinguishes
-     TIGER/LIGER's Amazon 2014 protocol, discloses the zero-training-frequency
-     mixture, corrects UniSRec authors, and adds ZESRec/RecFormer. None of those
-     changes reached TeX/TORS or `references.bib`: the BibTeX UniSRec entry still
-     copies the wrong author list, and the TeX positioning still omits earlier
-     ZESRec. Post-5-core last-out splitting does reintroduce zero-training-
-     interaction targets, so the disclosure must propagate and the subgroup
-     must be analyzed rather than merely noted. BLaIR metadata
+     still needs correction.** Current reader and TORS now distinguish
+     TIGER/LIGER's Amazon 2014 protocol, disclose the zero-training-frequency
+     mixture, correct UniSRec authors, and add ZESRec/RecFormer. Those are
+     genuine fixes. The subgroup is still not analyzed, however, and several
+     other metadata/arithmetic defects remain. BLaIR metadata
      mixes arXiv v1-specific facts with an unpinned citation; the HSTU-BLaIR
     title is wrong; and “immutable” git pre-declarations overstate commit-order
     evidence. Five unique seeds run under two kernels should be reported as
@@ -222,15 +227,14 @@ plausible risks.
 16. **[CONFIRMED WRITING/SUBMISSION RISK] The front end and venue artifact are
     not journal-ready.** The canonical abstract is about 1,737 words in seven
     paragraphs and occupies most of four reader pages; the raw TeX abstract is
-    about 1,865 tokens before command cleanup. The 35-page TORS PDF is dense,
-   line-numbered, anonymous, missing the paper's two figures, and built with
-   vendored `acmart` v2.03 while CTAN's current release is v2.19. The exact
-   TORS portal mode still requires author verification. Two semantic cross-
-   references are wrong despite compiling: the attribution table is in Section
-   2.1, not the cited Section 3, and the hardware-execution limitation is in
-   Section 5.6, not the cited Section 7. A third method cross-reference sends
-   the projection-design comparison to FIR Section 5.2 even though the actual
-   cross-pipeline scan is Appendix A.1. `paper-shared.tex` also uses
+    about 1,865 tokens before command cleanup. The rebuilt 43-page TORS PDF now
+   contains the two figures but remains dense, line-numbered, anonymous, and
+   built with vendored `acmart` v2.03 while CTAN's current release is v2.19.
+   Figure labels are extremely small, and Table 1e's title/provenance is visibly
+   duplicated. The exact TORS portal mode still requires author verification.
+   The method cross-reference still sends the projection-design comparison to
+   FIR Section 5.2 even though the actual cross-pipeline scan is Appendix A.1;
+   two `§efsec:3` strings also survive. `paper-shared.tex` uses
    `\nocite{*}`, forcing every BibTeX record into the PDF and masking dead or
    unused references.
 17. **[CONFIRMED MANUSCRIPT-IDENTITY RISK] A second, unwatermarked paper PDF
@@ -244,10 +248,12 @@ plausible risks.
 18. **[CONFIRMED PARTIAL FIXES / AUTHOR VERIFICATION REQUIRED]** The
     Pre-Declared title now cascades through metadata; the orphan spectral
     caption, Table 2 “figure retained” note, and malformed retraction command
-    were fixed; and the declared numerical cells remain green. The concurrent
-    reader patch also adds several valid retractions/disclosures, but the full
-    strict rebuild is now red on release-manifest drift and TORS is unchanged.
-    Those repairs do not close the blockers above. Authors must still verify
+    were fixed; the Section 5.4 TORS spine/figures are restored; the statistical
+    retractions and major disclosures mostly propagate; and both the declared
+    numerical cells and current HEAD manifest are green. Those repairs do not
+    close the blockers above: figures, TORS conclusion/availability, cohort and
+    randomization, inference, novelty, and public-release issues remain. Authors
+    must still verify
     the venue's current template/anonymity rules, supply any independent
     pre-outcome timestamp, repeat thinning across independent subsets, and
     demonstrate a public fresh-clone reconstruction.
@@ -257,50 +263,52 @@ plausible risks.
 ### Audited State and Strict Verdict
 
 - Workspace: `C:\Users\rayxc\Documents\R`.
-- Automation memory was read before inspection. HEAD is still
-  `f789bc7e1d3d14aacc8401213321cf8aa055da38`; no commit has landed since the
-  last audit. At the start, the only pre-existing working-tree change was this
-  cumulative audit. Between 22:02 and 22:04, however, a concurrent uncommitted
-  repair patch appeared in 14 non-audit files: both root Markdown manuscripts,
-  the reader PDF, graph/generator/renderer code and outputs, two figures, and
-  `paper_tex/scan_pdf.py`. These changes were preserved as user-owned and
-  audited in place; no TeX section, TeX table, or bibliography file changed.
+- Automation memory was read before inspection. This run began at HEAD
+  `f789bc7e1d3d14aacc8401213321cf8aa055da38`. A concurrent repair appeared
+  during review and was committed at 22:16 as
+  `3fd1e141f04600c579eb80ad0a1a30de6e1b14a5`. A follow-up at 22:19 changed
+  only the audit response and companion wording; current HEAD is
+  `e2a7ef1ada26936c240b2c45107d4d65d738fa53`. The paper-repair commit changes 46 files,
+  including both manuscript formats, graph/generator code, figures, the release
+  manifest, and the TORS source/PDF. The final working tree is clean except for
+  this cumulative audit.
 - The repaired reader PDF is now SHA-256
   `853127b1999de138d730e6020d09aa7efcb6a1f7034479f3fa95ad6ecf3e891d`
-  (47 pages), while the unchanged TORS PDF remains
-  `9252cac5a9fb347d4948eabbc710943b660273de5b733d99000d68f2c6bb6435`
-  (35 pages).
-- **Strict reviewer verdict: reject in present form.** The concurrent patch
-  makes several genuine disclosure/statistical repairs in the reader edition,
-  but the submission is now manifest-dirty, those repairs do not propagate to
-  TORS, and the underlying cohort/randomization defects remain. This hour also
-  adds a confirmed invalid independence assumption in the Office significance
-  calculation and materially closer literature that narrows both headline
-  novelty claims.
+  (47 pages). The rebuilt TORS PDF is SHA-256
+  `86c5ec456610066ca51cd090402bf4b6df6754261d0e4bf2fd31f21d38a0dc46`
+  (43 pages).
+- **Strict reviewer verdict: reject in present form.** The new commit closes the
+  former missing-Section-5.4 and malformed-initialization blockers and makes
+  substantial statistical/disclosure progress. It does not repair the tail
+  estimand or experimental randomization; both submitted PDFs still embed
+  retracted figure statistics; TORS retains several reader-visible
+  contradictions; Office inference pseudoreplicates users; novelty is
+  materially narrower than claimed; and the public release remains stale and
+  inaccessible.
 
 ### Fresh Artifact, Numerical, and Visual Checks
 
-- On the current uncommitted patch, the strict numerical graph passes 168 cells
+- On current HEAD, the strict numerical graph passes 168 cells
   (149 exact, 19 rounding, zero mismatch/untraceable), now counts eight retired
   tombstones, covers 14/14 declared families, and retains exact constrained-
   point HSTU parity. The default-epsilon diagnostic remains non-exact at
-  maximum block difference `1.663e-02`. The *submission rebuild nevertheless
-  fails*: release-manifest verification reports eight problems, including hash
-  mismatches for the graph builder and both Markdown/PDF submission artifacts
-  plus dirty manifested-file failures. The new repair is not a releasable,
-  reproducible state.
+  maximum block difference `1.663e-02`. The full strict submission rebuild now
+  passes and verifies 153 release-manifest files; the standalone HEAD check
+  passes all 128 git-backed entries. These are genuine integrity improvements,
+  not validation of ungraphed inference, rasterized figure text, cohort rules,
+  or public availability.
 - The current explicit `v1.1.9-deposit` check still failed on nine files (119
-  passed). The advertised deposit remains neither the committed HEAD nor the
-  concurrent reader revision.
-- Fresh renders of the new 47-page reader confirm that its abstract still
-  occupies four dense pages. The new prose retracts the invalid VG/Beauty
-  equivalence and downgrades user thinning, but the rendered Figure 1 still
-  encodes the old `dd +0.000326, t=3.47, CI excl 0` result in panel C. TORS page
-  12 still visibly prints `extbfInitialization disclosure`; page 21 still
-  presents obsolete `paired`, `powered NULL`, and `TOST-equivalent` claims.
-  These are reader-visible contradictions, not just source-lint findings.
+  passed). The advertised deposit remains different from current committed
+  HEAD and both rebuilt PDFs.
+- Fresh renders of the 47-page reader confirm that its abstract still occupies
+  four dense pages. The 43-page TORS now visibly contains repaired initialization
+  prose, all of Section 5.4, Tables 1e/541/542, and both figures. But TORS page
+  20 prints malformed `§efsec:3`; page 24 embeds Figure 1's retracted
+  `dd +0.000326, t=3.47, CI excl 0` and stale Beauty `-0.000018, 0/2` values,
+  then duplicates the Table 1e title/provenance paragraph. These remain
+  reader-visible defects despite the new health gate passing.
 
-### Concurrent Uncommitted Repair Patch: Genuine Progress, Still Incomplete
+### Concurrent Commit `3fd1e141`: Genuine Progress, Still Incomplete
 
 - **[CONFIRMED GENUINE FIXES]** The root Markdown and regenerated reader now
   retract the paired VG MDE/TOST claim, classify Beauty as three-seed
@@ -314,26 +322,37 @@ plausible risks.
   repository/assets are not public. The graph genuinely tombstones the paired
   VG MDE/TOST, paired user-thinning sign test, and invalid alpha ratio; it adds
   independent-arm Welch rules and an actual sample-count gate.
-- **[CONFIRMED PROPAGATION FAILURE]** No canonical TeX section/table changed.
-  `paper_tex/sections/05-results.tex` still defines own-arm comparisons as
-  seed-paired, reports VG as powered/TOST-equivalent, uses the old paired
-  `t=4.09`, and retains paired/significant titration and conn-gate language.
-  The TORS abstract, introduction, tables, and conclusion therefore contradict
-  the repaired reader edition.
+- **[CONFIRMED GENUINE TORS REPAIR]** Section 5.4/5.4.1/5.4.2, Tables
+  1e/541/542, and both vector figures are restored; the TORS grew from 35 to 43
+  pages. The `extbfInitialization` corruption is fixed. The paired-equivalence
+  retractions, independent-arm tail analysis, cohort/dedup disclosures,
+  aligned-parity boundary, conn-gate caveats, and UniSRec/ZESRec/RecFormer
+  corrections largely propagated. `paper_tex/check_tex_health.py` passes 32
+  sources, 39 labels, and 27 reference targets.
+- **[CONFIRMED REMAINING TORS DEFECTS]** `05-results.tex:82-84` still breaks two
+  `\S\ref{sec:3}` commands into `\S` plus `ef{sec:3}`; TORS page 20 visibly
+  prints `§efsec:3`, and the new health regex does not detect it. The wrong
+  projection-study Section 5.2 reference, learned-versus-"frozen" projection,
+  `n=5` versus six-seed headline, incorrect `4.1x` ratio, and malformed
+  `4x e20-seed` label all remain in TORS. `07-conclusion.tex` still says a
+  "real partial causal role" and "paired level contrast" despite the corrected
+  independent-arm `p=0.058`; availability still omits the private/missing-assets
+  disclosure; and Table 1e's title/provenance is printed twice on page 24.
 - **[CONFIRMED FIGURE CONTRADICTION]** Both updated figure generators still
-  print the retracted user-thinning annotation `t=3.47, CI excl 0`;
+  print the retracted user-thinning annotation `t=3.47, CI excl 0` and stale
+  Beauty `-0.000018, 0/2` rather than the paper's `-0.0000078, 1/3`;
   `_bestrec_run/make_fig_r1r2_plane.py` also retains "binding," "paired," and
   "tail-binding" wording. The new scanner searches some obsolete prose but
-  does not fail on that numerical annotation, so the regenerated figures and
-  47-page reader can pass while contradicting the new text.
+  not those raster/vector annotations. Both PDFs therefore contradict their
+  corrected surrounding prose while all build gates pass.
 - **[CONFIRMED GRAPH-COVERAGE GAP]** The reader newly asserts independent-arm
   FIR-breadth CIs for Industrial/Scientific and CDs/Vinyl, but the artifact
   graph still contains only `firb.is.paired` and `firb.cd.paired` nodes. The
   replacement load-bearing statistics are hard-coded outside the claimed
   fail-closed graph. In addition, the graph policy now says selection timing,
-  not seed count, defines confirmatory evidence, while generated Table 1d still
-  labels the post-hoc MI tail Welch result confirmatory and Table 2 still gives
-  titration nulls confirmatory weight.
+  not seed count, defines confirmatory evidence, while developmental VG cells,
+  post-hoc MI/VG tail work, user-titration levels, CF1, and even VOID Office V1
+  cells still carry confirmatory labels.
 - **[CONFIRMED RETAINED CONTRADICTIONS]** The abstract/contributions still say
   "full release" while the new availability paragraph admits a private repo
   and 12 missing splits plus four missing caches. The FIR breadth sentence
@@ -349,7 +368,7 @@ plausible risks.
   geometry.** `paper_tex/sections/05-results.tex:4` and
   `PAPER_SUBMISSION.md:234` call the pooled-tail two-proportion z statistic
   unpaired and "conservative," with user-evaluation as the unit. But
-  `_bestrec_run/build_hstu_tables.py:1545-1570` sums hits over five model seeds
+  `_bestrec_run/build_hstu_tables.py:475-494,1556-1566` sums hits over five model seeds
   and sets each arm's denominator to `36,610 x 5 = 183,050`. The same 36,610
   tail users/targets are evaluated under every seed and under both arms, so
   these are clustered repeated observations, not 183,050 independent trials.
@@ -459,10 +478,11 @@ plausible risks.
    tie-safe cohorts separating training-frequency zero from positive-frequency
    tail, rerun common-backbone text/ID arms, and generate final per-user
    sidecars for valid clustered/model-level inference.
-2. Rebuild the TORS source from the canonical manuscript, restoring Section
-   5.4, its tables and figures, all cross-references, and the narrowed
-   randomization/causal language. Fail the build on undefined references,
-   malformed commands, or missing required inclusions.
+2. Repair both figure generators and every copied figure; fix `§efsec:3`, the
+   stale causal conclusion, missing release disclosure, duplicated Table 1e
+   caption, arithmetic/seed labels, and remaining cross-reference/projection
+   contradictions in TORS. Extend the build gate to inspect figure text and
+   fail on malformed commands, retired statistics, and duplicate captions.
 3. Reframe novelty against SimRec, TASIF/DLFS-Rec/DIFF, NOVA/DIF-SR, direct
    cold-start work, and prior reproducibility workflows. Add appropriate
    baselines or narrow claims to the exact HSTU configuration actually tested.
@@ -494,7 +514,7 @@ plausible risks.
 - [ ] Propagate narrowed claims identically through abstract, introduction,
   results, figures, conclusion, TeX, reader PDF, TORS PDF, response log, and
   release metadata.
-- [ ] Restore the full strict build, keep the 168 declared cells green, and
+- [ ] Keep the full strict build and 168 declared cells green, and
   extend checks to every load-bearing sample count/statistic, required
   section/figure, undefined reference, stale figure annotation, final sidecar
   geometry, and literal release-tag identity.

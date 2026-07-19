@@ -488,10 +488,11 @@ def rule_final_full_tail_hits(p):
     ht, ns = pooled(p["a"])
     hi, _ = pooled(p["b"])
     N = ns[0] * len(ns)
-    pp = (ht + hi) / (2.0 * N)
-    se = math.sqrt(max(pp * (1.0 - pp) * 2.0 / N, 1e-12))
-    z = (ht / N - hi / N) / se if se > 0 else 0.0
-    return {"text_hits": float(ht), "id_hits": float(hi), "z": z, "pooled_n": float(N)}
+    # z RETRACTED 2026-07-19 (audit 22:08): the same tail users recur under every seed
+    # and both arms, so the N seed-summed rows are clustered repeated observations, not
+    # independent Bernoulli trials; no z is computed. Counts stay descriptive; the valid
+    # model-seed-level inference lives in the final_full_tail_welch cells.
+    return {"text_hits": float(ht), "id_hits": float(hi), "pooled_n": float(N)}
 
 def rule_final_full_single(p):
     """single run's final-epoch FULL-catalog metric (n_eval asserted)."""
@@ -499,6 +500,39 @@ def rule_final_full_single(p):
     return {"value": float(t[p.get("metric", "NDCG@10")])}
 
 # ---- reference implementation run locally ("theirs on ours", 2026-07-11) ----
+def rule_final_full_tail_welch(p):
+    K, stratum = p["k"], p.get("stratum", "tail")
+    def rates(files):
+        out = []
+        for f in files:
+            bp = _final_full_test(f, p["expect_n_eval"])["by_popularity"][stratum]
+            out.append(bp[f"n_hit@{K}"] / bp["n"])
+        return out
+    a, b = rates(p["a"]), rates(p["b"])
+    ma, mb = mean(a), mean(b)
+    va, vb = sstd(a) ** 2 / len(a), sstd(b) ** 2 / len(b)
+    se = math.sqrt(va + vb)
+    t = (ma - mb) / se
+    df = (va + vb) ** 2 / (va ** 2 / (len(a) - 1) + vb ** 2 / (len(b) - 1))
+    tc = t_ppf(0.975, df)
+    return {"delta": ma - mb, "t": t, "df": df, "p": t_two_sided_p(t, df),
+            "ci_lo": ma - mb - tc * se, "ci_hi": ma - mb + tc * se,
+            "n_units": float(min(len(a), len(b)))}
+
+def rule_welch_2arm_bt(p):
+    m = p.get("metric", "NDCG@10")
+    xa = [bt_metric(f, m) for f in p["a"]]
+    xb = [bt_metric(f, m) for f in p["b"]]
+    ma, mb = mean(xa), mean(xb)
+    va, vb = sstd(xa) ** 2 / len(xa), sstd(xb) ** 2 / len(xb)
+    se = math.sqrt(va + vb)
+    t = (ma - mb) / se
+    df = (va + vb) ** 2 / (va ** 2 / (len(xa) - 1) + vb ** 2 / (len(xb) - 1))
+    tc = t_ppf(0.975, df)
+    return {"diff": ma - mb, "t": t, "df": df, "p": t_two_sided_p(t, df),
+            "ci95_lo": ma - mb - tc * se, "ci95_hi": ma - mb + tc * se,
+            "n_units": float(min(len(xa), len(xb)))}
+
 def rule_theirs_jsonl(p):
     """metric from a reference-implementation local run's metrics.jsonl (a tee of
     every value their trainer writes to TensorBoard; THEIRS_ON_OURS_REPORT.md).
@@ -670,6 +704,8 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "json_scalar": "learned scalar read from result JSON",
         "json_path": "value read from JSON at path",
         "log_scan": "scalar(s) parsed from run log(s) by regex",
+        "final_full_tail_welch": "independent-arm Welch on per-seed n_hit@K/n tail rates, final-epoch full eval",
+        "welch_2arm_bt": "independent-arm Welch t/df/p + 95% CI on per-arm best_test[{m}] (a vs b)",
         "sign_test": "one-sided binomial sign test on per-seed paired deltas",
         "const_ratio": "ratio of quoted run-log constants",
         "final_full_ci": "per-seed history[-1].test[{m}] (final-epoch FULL-catalog eval, "
@@ -873,6 +909,14 @@ def build_spec():
                   notes="Paper corrected 2026-07-11 (was -0.0001): recomputed 4-seed paired "
                         "mean -0.000047 rounds half-up to -0.00005, which S5.1 now prints. "
                         "Table 2's '+-0.0001 (4)' bound form also passes."))
+
+    C.append(cell("t1.pop_ratio", "table1", "headline vs popularity floor (ratio assertion)",
+                  "percent above the popularity floor (paper: ~5.4x)",
+                  V26 + [POPF], "pct_change", {"a": V26, "denom_const": 0.0125},
+                  [chk("pct", 438.7, mode="approx", tol=3.0)], 6, expl,
+                  notes="Asserts the S5.1 ratio sentence (corrected 2026-07-19 from the "
+                        "wrong 4.1x to ~5.4x = 0.0673/0.0125): exact-value gate for a "
+                        "prose ratio (audit 22:08)."))
 
     # ---------------- Table 1a: protocol-parity baselines ----------------
     C.append(cell("t1a.popularity.ndcg", "table1a", "popularity floor", "NDCG@10",
@@ -1543,15 +1587,13 @@ def build_spec():
                   notes="Recomputed +44.3%; the paper prints '+44% ABOVE the published "
                         "SASRec (0.0153)'. This is the quantity that voids the Office pass."))
     for K, chks in ((10, [chk("text_hits", 364, mode="count"),
-                          chk("id_hits", 268, mode="count"),
-                          chk("z", 3.8, mode="approx", tol=0.05)]),
+                          chk("id_hits", 268, mode="count")]),
                     (20, [chk("text_hits", 586, mode="count"),
                           chk("id_hits", 414, mode="count")]),
                     (50, [chk("text_hits", 1170, mode="count"),
                           chk("id_hits", 739, mode="count")]),
                     (100, [chk("text_hits", 1983, mode="count"),
-                           chk("id_hits", 1247, mode="count"),
-                           chk("z", 13.0, mode="approx", tol=0.05)])):
+                           chk("id_hits", 1247, mode="count")])):
         C.append(cell(f"office.tail.hits{K}", "office_confirmation",
                       f"pooled tail hits @{K} (text = k8 arm vs ID-only)",
                       f"n_hit@{K} summed over 5 seeds, final-epoch full eval "
@@ -1567,7 +1609,29 @@ def build_spec():
                             "@20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md "
                             "(final adjudication) and manifested here for completeness. "
                             "Audit F7: usable only as descriptive pattern evidence, never as "
-                            "a pre-declared confirmation of the tail rule."))
+                            "a pre-declared confirmation of the tail rule. Pooled-z RETRACTED "
+                            "2026-07-19 (audit 22:08): clustered repeated users, not "
+                            "independent trials; see office.tailwelch.* for valid "
+                            "model-seed-level inference."))
+    for K, dchk, tchk, lochk, hichk in (
+            (10, chk("delta", 0.000524, 6), chk("t", 7.26, 2),
+             chk("ci_lo", 0.00036, 5), chk("ci_hi", 0.00069, 5)),
+            (100, chk("delta", 0.004021, 6), chk("t", 16.75, 2),
+             chk("ci_lo", 0.00347, 5), chk("ci_hi", 0.00457, 5))):
+        C.append(cell(f"office.tailwelch.hr{K}", "office_confirmation",
+                      f"Office tail HR@{K}: model-seed independent-arm Welch (k8 vs ID-only)",
+                      f"per-seed tail n_hit@{K}/n, final-epoch full eval; Welch t/CI",
+                      OFF8 + OFFID, "final_full_tail_welch",
+                      {"a": OFF8, "b": OFFID, "k": K, "stratum": "tail",
+                       "expect_n_eval": NEVAL_OFF_FULL},
+                      [dchk, tchk, lochk, hichk], 5, expl, seeds=SOFF,
+                      notes="Replaces the retracted pooled two-proportion z (audit 22:08): "
+                            "the trained model per arm is the inferential unit; same "
+                            "direction, valid geometry. Final per-user sidecars for a fully "
+                            "clustered analysis are a queued release item. Descriptive "
+                            "pattern evidence only (the pre-declared tail prediction was "
+                            "VOID)."))
+
 
     # ------- theirs-on-ours: the reference implementation executed locally -------
     # (S5.6 + Appendix A.0 resolution; full recipe/provenance THEIRS_ON_OURS_REPORT.md)
@@ -1660,6 +1724,22 @@ def build_spec():
                       FF + FN, "paired_delta", {"a": FF, "b": FN},
                       exp, 5, conf, seeds=FIRB_SEEDS, notes=FB_NOTE))
 
+    for cat, short, dv, lo, hi in (("Industrial_and_Scientific", "is", 0.0024, 0.0019, 0.0029),
+                                   ("CDs_and_Vinyl", "cd", 0.0057, 0.0050, 0.0063)):
+        FF = [BR + f"results_FIRB_{cat}_filter_seed{s}.json" for s in FIRB_SEEDS]
+        FN = [BR + f"results_FIRB_{cat}_nofilter_seed{s}.json" for s in FIRB_SEEDS]
+        C.append(cell(f"firb.{short}.welch", "fir_breadth",
+                      f"FIR breadth {cat}: independent-arm Welch (filter vs no-filter)",
+                      "Welch 95% CI on per-arm best_test NDCG@10 (robustness companion)",
+                      FF + FN, "welch_2arm_bt", {"a": FF, "b": FN},
+                      [chk("diff", dv, 4), chk("ci95_lo", lo, 4), chk("ci95_hi", hi, 4),
+                       chk("ci95_lo", 0.0, mode="gt")],
+                      5, conf, seeds=[str(x) for x in FIRB_SEEDS],
+                      notes="Graphs the independent-arm robustness CIs printed alongside the "
+                            "pre-declared same-seed analysis (2026-07-19; the arms are not "
+                            "initialization-paired, S5.3 disclosure). Part of the pre-declared "
+                            "breadth campaign family."))
+
     # ------- office_v3: redesigned pre-declared confirmation (PASSED) -------
     V3_SEEDS = [20260728, 20260729, 20260730, 20260731, 20260732]
     V3_NOTE = ("PREREG_OFFICE_V3.md (committed before any run; ERRATUM E1 pre-campaign): gate "
@@ -1681,6 +1761,17 @@ def build_spec():
                        "seeds": V3_SEEDS},
                       exp3, 5, conf, seeds=V3_SEEDS, notes=V3_NOTE))
 
+    # selection-timing taxonomy sweep (2026-07-19, audit 22:08): confirmatory labels are
+    # reserved for the pre-declared prospective campaigns; every other multi-seed cell is
+    # exploratory (multi-seed post-hoc: precision-improved, not confirmatory).
+    PREDECLARED_PREFIXES = ("v2conf.", "officev3.", "firb.", "t2.conngate.")
+    for c0 in C:
+        if c0.get("evidence_class") == "confirmatory" and \
+                not c0["cell_id"].startswith(PREDECLARED_PREFIXES):
+            c0["evidence_class"] = "exploratory"
+            c0["notes"] = (c0.get("notes", "") + " [Evidence class set to exploratory under "
+                           "the selection-timing criterion, 2026-07-19: multi-seed post-hoc "
+                           "development/analysis work, not a pre-declared campaign.]").strip()
     return C
 
 # ---------------------------------------------------------------- compute & verify
@@ -1813,14 +1904,14 @@ def render_tables(cells):
         "|---|---:|---:|---:|---|",
         f"| HSTU-style encoder, plain | {R('t1.plain.ndcg','value')} | 1 | — | exploratory |",
         f"| + TAPE-512 | {R('t1.tape.ndcg','value')} | 1 | {by_id['t1.tape.delta']['recomputed']['delta']:+.4f} | exploratory |",
-        f"| + full bias stack | {MS('t1.bias_stack.ndcg')} | 5 | {by_id['t1.bias_stack.delta']['recomputed']['delta']:+.4f} vs plain | confirmatory |",
-        f"| + label smoothing ε=0.2 | {MS('t1.ls.ndcg')} | 5 | {by_id['t1.ls.delta']['recomputed']['delta']:+.4f} | confirmatory |",
+        f"| + full bias stack | {MS('t1.bias_stack.ndcg')} | 5 | {by_id['t1.bias_stack.delta']['recomputed']['delta']:+.4f} vs plain | multi-seed (post-hoc) |",
+        f"| + label smoothing ε=0.2 | {MS('t1.ls.ndcg')} | 5 | {by_id['t1.ls.delta']['recomputed']['delta']:+.4f} | multi-seed (post-hoc) |",
         f"| **+ causal FIR filter K=8 → full model** | **{MS('t1.full.ndcg')}** | **6** | "
-        f"**{by_id['t1.full.delta']['recomputed']['delta']:+.4f}** | confirmatory |",
-        f"| *(isolation)* causal filter only, no LS | {MS('t1.v1b.ndcg')} | 5 | {by_id['t1.v1b.delta']['recomputed']['delta']:+.4f} vs stack | confirmatory |",
+        f"**{by_id['t1.full.delta']['recomputed']['delta']:+.4f}** | multi-seed (post-hoc) |",
+        f"| *(isolation)* causal filter only, no LS | {MS('t1.v1b.ndcg')} | 5 | {by_id['t1.v1b.delta']['recomputed']['delta']:+.4f} vs stack | multi-seed (post-hoc) |",
         f"| *(isolation)* ID-only | {MS('t1.idonly.ndcg')} | 5 | text adds {by_id['t1.text_add.paired']['recomputed']['mean']:+.5f} "
-        f"({by_id['t1.text_add.pct']['recomputed']['pct']:+.1f}%) | confirmatory |",
-        f"| kernel sweep K=16 | {MS('t1.ksweep.k16')} | 5 | — | confirmatory |",
+        f"({by_id['t1.text_add.pct']['recomputed']['pct']:+.1f}%) | multi-seed (post-hoc) |",
+        f"| kernel sweep K=16 | {MS('t1.ksweep.k16')} | 5 | — | multi-seed (post-hoc) |",
         f"| kernel sweep K=4 / K=50 (3-seed) | {by_id['t1.ksweep.k4']['recomputed']['a_mean']:.4f} / "
         f"{by_id['t1.ksweep.k50']['recomputed']['a_mean']:.4f} | 3 | robustness only | exploratory |",
         "",
@@ -1873,7 +1964,7 @@ def render_tables(cells):
         "",
         "| Configuration | NDCG@10 | Δ vs base | share of k16 combined lift |",
         "|---|---:|---:|---:|",
-        f"| MI SBERT+TAPE base (4×e20) | {MS('t1c.base.ndcg')} | — | — |",
+        f"| MI SBERT+TAPE base (four 20-epoch seeds) | {MS('t1c.base.ndcg')} | — | — |",
         f"| + label smoothing only (5-seed) | {MS('t1c.lsonly.ndcg', 5)} | "
         f"{by_id['t1c.lsonly.delta']['recomputed']['delta']:+.4f} | "
         f"{by_id['t1c.lsonly.share']['recomputed']['pct']:.0f}% |",
@@ -1898,7 +1989,7 @@ def render_tables(cells):
         f"| Musical_Instruments (sparse) | {PD('t1d.mi.tail')} , Welch 95% CI "
         f"[{by_id['t1d.mi.welch']['recomputed']['ci95_lo']:+.6f}, "
         f"{by_id['t1d.mi.welch']['recomputed']['ci95_hi']:+.6f}] | "
-        f"{int(by_id['t1d.mi.tail']['recomputed']['pos'])}/5 | confirmatory (independent-arm Welch) |",
+        f"{int(by_id['t1d.mi.tail']['recomputed']['pos'])}/5 | multi-seed post-hoc (independent-arm Welch) |",
         f"| Video_Games (dense) | {PD('t1d.vg.tail')} | {int(by_id['t1d.vg.tail']['recomputed']['pos'])}/5 | null — equivalence claim RETRACTED 2026-07-19 (§5.3) |",
         f"| Beauty_and_PC (dense) | {PD('t1d.beauty.tail', 7)} | {int(by_id['t1d.beauty.tail']['recomputed']['pos'])}/3 | exploratory (3-seed; mixed eval geometry) |",
         "",
@@ -2019,7 +2110,7 @@ def render_tables(cells):
     hitrows = []
     for K in (10, 20, 50, 100):
         h = by_id[f"office.tail.hits{K}"]["recomputed"]
-        hitrows.append(f"@{K}: {int(h['text_hits'])} vs {int(h['id_hits'])} (z={h['z']:.1f})")
+        hitrows.append(f"@{K}: {int(h['text_hits'])} vs {int(h['id_hits'])} (descriptive counts; pooled z retracted 2026-07-19)")
     T["office_confirmation"] = "\n".join([
         "**office_confirmation (regenerated): second-category pre-declared confirmation — "
         "Office_Products** (SOTA_CONFIRM_PREREG_OFFICE.md; fresh seeds 20260623–27; headline "

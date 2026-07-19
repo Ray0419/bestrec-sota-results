@@ -119,3 +119,12 @@ retained**: the gate values remain provisional/descriptive, never a confirmatory
 - floor SASRec NDCG@10 = 0.02208 (published SASRec 0.0153; must not be far ABOVE it)
 
 **P2 DUAL GATE: PASS**
+
+## FINAL ADJUDICATION — prereg-compliant headline (final-epoch FULL-catalog eval; supersedes the earlier best_test-based sections above)
+> NOTE: 'P2 DUAL GATE' below reports the gate ARITHMETIC only (CI-LBs vs 0.0271). The pre-registration as a whole is VOID — the floor check failed (+44% above the published SASRec; anomaly explained and VOID deliberately retained, see THEIRS_ON_OURS_REPORT.md S4.1 and the paper's Appendix A.0). Gate values are provisional/descriptive, never a confirmatory pass.
+- **ARM k16**: ['0.03041', '0.03055', '0.03042', '0.03031', '0.03043'] mean 0.03042 sd 0.00008 CI-LB 0.03032 (5/5 > 0.0271) -> PASS
+- **ARM k8**: ['0.03035', '0.03036', '0.03048', '0.03043', '0.03002'] mean 0.03033 sd 0.00018 CI-LB 0.03010 (5/5 > 0.0271) -> PASS
+- **P1 tail contrast (pooled hits text vs id; z RETRACTED 2026-07-19 as inference — clustered repeated users, descriptive counts only; see manuscript/office.tailwelch.* cells)**: @10: 364 vs 268 (retracted-z record: 3.82)  @20: 586 vs 414 (retracted-z record: 5.45)  @50: 1170 vs 739 (retracted-z record: 9.89)  @100: 1983 vs 1247 (retracted-z record: 13.01)  
+- floor SASRec NDCG@10 = 0.02208 (published SASRec 0.0153; must not be far ABOVE it)
+
+**P2 DUAL GATE: PASS**

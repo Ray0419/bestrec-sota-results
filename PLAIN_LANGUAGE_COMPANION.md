@@ -1,6 +1,6 @@
 # The Plain-Language Companion
 
-*A non-technical guide to the paper "Pre-Registered, Artifact-Gated Evaluation for Sequential
+*A non-technical guide to the paper "Pre-Declared, Artifact-Gated Evaluation for Sequential
 Recommendation: Causal FIR Filtering and Dataset-Conditional Text Benefits on Amazon Reviews 2023."*
 
 This document explains, without jargon, **what we built, how it works, why it works, and why you
@@ -89,7 +89,7 @@ Three properties make our version safe and honest:
    bolted onto the existing engine, not a new engine.
 
 **Does it help?** Yes, consistently. Adding the filter improved results on **all four categories
-we tested**. On two of them the test was run under a sealed pre-registration (see §5): on
+we tested**. On two of them the test was run under a sealed pre-declaration (see §5): on
 Industrial & Scientific, the filter added **+0.0024** NDCG@10 (95% confidence interval
 **+0.0018 to +0.0030**), and on CDs & Vinyl **+0.0057** (**+0.0049 to +0.0064**) — in both
 cases the filter won on **5 out of 5** paired random restarts, with **zero per-category tuning**
@@ -119,7 +119,7 @@ Recommendation-systems research has a credibility problem: tiny improvements, ma
 and every incentive to report your best run. Our machinery exists to make that structurally
 impossible for us. Three mechanisms:
 
-### 5.1 Pre-registration = calling your shot
+### 5.1 Pre-declaration = calling your shot
 
 Before running an experiment that could become a claim, we write a sealed contract into version
 control: the exact command, the exact settings, the random seeds (chosen fresh, **never previously
@@ -153,7 +153,7 @@ every hour, in public.
 
 This is the paper's honesty centerpiece, and the best illustration of why the machinery matters.
 
-**Act 1 — the disallowed goal.** We pre-registered a second-category attempt on Office Products
+**Act 1 — the disallowed goal.** We pre-declared a second-category attempt on Office Products
 (the first, Musical Instruments, had passed cleanly). The results looked great — comfortably
 above the published comparator. But the sealed contract contained a **comparability tripwire**: a
 sanity check that our simple-baseline score should roughly match the comparator paper's
@@ -184,13 +184,13 @@ machinery that makes the second one credible.
 
 - On **Musical Instruments**: our fresh 5-seed averages beat the published comparator point value
   (0.0406) with 95% CI lower bounds of **0.04096** (K=16) and **0.04083** (K=8), 10/10 seeds
-  above, under a sealed pre-registration.
+  above, under a sealed pre-declaration.
 - On **Office Products (V3)**: as told above — CI lower bounds **0.03033** / **0.03024**, above
-  both 0.0279 (matched reference) and 0.0271 (published), 10/10 seeds, sealed pre-registration.
+  both 0.0279 (matched reference) and 0.0271 (published), 10/10 seeds, sealed pre-declaration.
 - The **causal FIR filter** helps on all four categories tested (two under sealed
-  pre-registration, listed in §3), as an internal with-vs-without comparison.
+  pre-declaration, listed in §3), as an internal with-vs-without comparison.
 - **Text benefits are dataset-conditional** (§4), supported by controlled thinning interventions.
-- The **evaluation apparatus itself** (pre-registration + fail-closed gate + adversarial audit)
+- The **evaluation apparatus itself** (pre-declaration + fail-closed gate + adversarial audit)
   is a contribution other researchers can copy.
 
 **We deliberately do NOT claim:**
@@ -215,7 +215,7 @@ machinery that makes the second one credible.
 | Leave-last-one-out | Hide each person's final purchase; grade the model on predicting it. |
 | Seed | The shuffle of the random deck; a different seed = an honest re-run of the same experiment. |
 | 95% CI lower bound | "Even our unluckiest plausible average still clears this." |
-| Pre-registration | The sealed contract written before the experiment: command, seeds, pass rule, claim sentence. |
+| Pre-declaration | The sealed contract written before the experiment: command, seeds, pass rule, claim sentence. |
 | VOID | Our own referee disallowed the result under the sealed contract; permanently on record. |
 | Fail-closed gate | The build refuses to print any number it cannot recompute from raw evidence. |
 | FIR filter | A short, fixed-length weighted average — the shock absorber of §3. |

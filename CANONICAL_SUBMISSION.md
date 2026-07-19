@@ -17,19 +17,19 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
    Evidence: `SOTA_CONFIRM_PREREG_V2.md` → `SOTA_CONFIRM_V2_RESULTS.md` (+ errata).
 2. **Causal FIR filter:** multi-seed lever confirmed on **four categories** (Video_Games +
    Musical_Instruments in development; Industrial_and_Scientific + CDs_and_Vinyl under the
-   pre-registered breadth campaign `PREREG_FIR_BREADTH.md` / `FIR_BREADTH_RESULTS.md`,
+   pre-declared breadth campaign `PREREG_FIR_BREADTH.md` / `FIR_BREADTH_RESULTS.md`,
    both CONFIRMED, 10/10 seeds, CIs exclude zero). Comparator ablations **complete** (5-seed × 2 arms, manuscript §5.2):
    the learned kernel carries the effect (fixed moving-average keeps ~59%); the zero-init gate
    is a training convenience. Artifacts: `results_FIRABL_*` (manifest family `tableV2conf`/FIR
    cells).
 3. **Office_Products — V1 VOID stands; V3 PASSED (the second counted per-category
    point-estimate comparison).**
-   The V1 pre-registration is **VOID under its floor check** and stays VOID — descriptive
+   The V1 pre-declaration is **VOID under its floor check** and stays VOID — descriptive
    only, counted in no claim; the floor anomaly is mechanistically explained (their own
    SASRec run locally lands +13.9% above its published row; their Office HSTU-BLaIR row
-   regenerates locally at +1.6%) and no post-hoc result restores a voided pre-registration
+   regenerates locally at +1.6%) and no post-hoc result restores a voided pre-declaration
    (`SOTA_CONFIRM_PREREG_OFFICE.md`, `SOTA_CONFIRM_OFFICE_RESULTS.md`, Appendix A.0,
-   `THEIRS_ON_OURS_REPORT.md`). The **redesigned V3 pre-registration PASSED**
+   `THEIRS_ON_OURS_REPORT.md`). The **redesigned V3 pre-declaration PASSED**
    (`PREREG_OFFICE_V3.md` + ERRATUM E1; `OFFICE_V3_RESULTS.md`): fresh never-inspected
    seeds 20260728–32, gate vs the environment-matched local regeneration (0.0279 > published
    0.0271) — K=16 CI-LB **0.03033**, K=8 CI-LB **0.03024**, 10/10 seeds above both

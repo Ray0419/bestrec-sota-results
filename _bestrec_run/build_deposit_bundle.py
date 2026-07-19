@@ -10,7 +10,7 @@ is byte-stable across Windows/Linux checkouts; .gitattributes pins the same poli
 
 
 
-The bundle is the small archival companion to the repository: papers, pre-registrations,
+The bundle is the small archival companion to the repository: papers, pre-declarations,
 
 results documentation, protocol code, provenance manifests, core historical audit
 documents, and the comparator
@@ -220,7 +220,7 @@ This bundle is the archival companion to the manuscript
 
 `paper_tex/PAPER_TORS.pdf` (ACM TORS manuscript format). It contains the code,
 
-pre-registrations, results documentation, provenance manifests, core historical
+pre-declarations, results documentation, provenance manifests, core historical
 audit documents (the live hourly adversarial chain -- `PAPER_REVIEW_AUDIT.md` /
 `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` -- is git-tracked and present in full in every
 tagged tree rather than re-bundled per cut),
@@ -250,7 +250,7 @@ Canonical verification command (from a checkout of the full repository):
 which runs, in order and fail-closed: the bitwise HSTU core-block parity test ->
 the strict artifact-graph table build (every printed numeral recomputed from
 source artifacts; exits nonzero on any mismatch/untraceable cell/missing claim
-family) -> release-manifest verification -> the pre-registered
+family) -> release-manifest verification -> the pre-declared
 Musical_Instruments dual-kernel gate adjudicator -> the COUNTED Office_Products
 V3 adjudicator (the build fails unless CAMPAIGN VERDICT: PASS) -> the COUNTED
 FIR-breadth adjudicator (both categories must be CONFIRMED) -> the
@@ -260,11 +260,11 @@ Office_Products V1 adjudicator (VOID under its own prereg; descriptive only).
 
 New in v1.1/v1.1.1 (vs v1.0, 2026-07-11; v1.1.1 supersedes the v1.1 tag, whose uploaded assets had gone stale against later same-day commits):
 
-  * Office_Products V3 redesigned pre-registration and its PASS record
+  * Office_Products V3 redesigned pre-declaration and its PASS record
 
     (`PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`, `_bestrec_run/adjudicate_office_v3.py`).
 
-  * FIR-breadth pre-registered campaign on two further categories, both CONFIRMED
+  * FIR-breadth pre-declared campaign on two further categories, both CONFIRMED
 
     (`PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`, `_bestrec_run/adjudicate_fir_breadth.py`).
 
@@ -292,7 +292,7 @@ New in v1.1/v1.1.1 (vs v1.0, 2026-07-11; v1.1.1 supersedes the v1.1 tag, whose u
 
 Claim boundary (unchanged; `CANONICAL_SUBMISSION.md` governs): two counted
 
-pre-registered per-category point-estimate comparisons (Musical_Instruments;
+pre-declared per-category point-estimate comparisons (Musical_Instruments;
 
 Office_Products V3 under its frozen wording); Office V1 remains VOID and is
 

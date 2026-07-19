@@ -302,12 +302,12 @@
   <p>This field's quiet failure mode: tiny improvements, many knobs, and every incentive to report your best run. Most of our paper's machinery exists to make that <em>structurally impossible for us</em>.</p>
   <figure>
     <div class="figwrap">
-      <svg viewBox="0 0 660 150" width="100%" role="img" aria-label="Pipeline: pre-registration, then experiment, then fail-closed gate, then paper, watched by an hourly auditor">
+      <svg viewBox="0 0 660 150" width="100%" role="img" aria-label="Pipeline: pre-declaration, then experiment, then fail-closed gate, then paper, watched by an hourly auditor">
         <defs><marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--muted)"/></marker></defs>
         <g font-size="12">
           <rect x="8"   y="44" width="140" height="52" rx="9" fill="none" stroke="var(--chart-blue)" stroke-width="2"/>
           <text x="78"  y="66" text-anchor="middle" fill="var(--ink)" font-weight="700">Sealed contract</text>
-          <text x="78"  y="83" text-anchor="middle" fill="var(--muted)">pre-registration</text>
+          <text x="78"  y="83" text-anchor="middle" fill="var(--muted)">pre-declaration</text>
           <rect x="180" y="44" width="130" height="52" rx="9" fill="none" stroke="var(--chart-green)" stroke-width="2"/>
           <text x="245" y="66" text-anchor="middle" fill="var(--ink)" font-weight="700">Experiment</text>
           <text x="245" y="83" text-anchor="middle" fill="var(--muted)">fresh sealed seeds</text>
@@ -327,7 +327,7 @@
     </div>
     <figcaption>Fig. 1 — The trust pipeline. Claims are worded before results exist; every printed number must recompute from raw evidence at every build; an independent auditor attacks the whole chain on a schedule.</figcaption>
   </figure>
-  <h3>5.1 Pre-registration = calling your shot</h3>
+  <h3>5.1 Pre-declaration = calling your shot</h3>
   <p>Before any experiment that could become a claim, we commit a sealed contract to version control: the exact command, settings, <em>fresh never-run</em> random seeds, the pass/fail rule, and the exact sentence we'd be allowed to claim. Like calling the pocket before the pool shot. Misses get published too — the contract is already public, so there's no quiet way to bury one.</p>
   <h3>5.2 The fail-closed gate = a printer that refuses to bluff</h3>
   <p>All <strong>168</strong> numbers printed in the paper are wired to the raw files they came from. On every change, a build script recomputes them all and <strong>refuses to build the paper</strong> if one digit disagrees, one origin is untraceable, or one required evidence family is missing. A manifest pins <strong>153 files by cryptographic hash</strong> so evidence can't drift afterward. And each counted result has its own referee inside that build: the Office V3 and filter-breadth adjudicators re-run every time, and the build fails unless both say PASS — a counted claim can never silently outlive its evidence.</p>
@@ -342,7 +342,7 @@
     <li>
       <span class="dot"></span>
       <div class="t">Act 1 · sealed attempt</div>
-      <div class="h">A second-category pre-registration (V1)</div>
+      <div class="h">A second-category pre-declaration (V1)</div>
       <p>Musical Instruments had passed cleanly. We sealed a contract for Office Products; results came in comfortably above the published comparator. So far, a win.</p>
     </li>
     <li class="void">
@@ -406,7 +406,7 @@
     <p>Training shuffles data and initializes weights randomly; the seed is the shuffle of that deck. One run can be lucky. Five runs give an average and a spread — and our pass rules use the <em>95% confidence lower bound</em>: "even our unluckiest plausible average still clears the bar."</p>
   </details>
   <details><summary>Couldn't you just quietly re-run experiments until they pass?</summary>
-    <p>That's exactly what pre-registration blocks. The contract — command, seeds, pass rule, claim sentence — is committed publicly <em>before</em> the run, with seeds that have never been used. A failed contract can't be un-published; the Office V1 VOID is the standing proof that we honor misses.</p>
+    <p>That's exactly what pre-declaration blocks. The contract — command, seeds, pass rule, claim sentence — is committed publicly <em>before</em> the run, with seeds that have never been used. A failed contract can't be un-published; the Office V1 VOID is the standing proof that we honor misses.</p>
   </details>
   <details><summary>What does "the paper refuses to build" actually mean?</summary>
     <p>The PDF is produced by a script that first recomputes all 168 printed numbers from raw result files. Any mismatch, any number whose origin can't be traced, any missing evidence family — the script exits with an error and no PDF is produced. Producing the paper <em>is</em> the proof that every number checks out.</p>

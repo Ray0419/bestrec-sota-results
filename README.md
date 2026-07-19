@@ -1,9 +1,9 @@
-# Pre-Registered, Artifact-Gated Evaluation for Sequential Recommendation
+# Pre-Declared, Artifact-Gated Evaluation for Sequential Recommendation
 
 **Causal FIR Filtering and Dataset-Conditional Text Benefits on Amazon Reviews 2023.**
 
 This repository is the complete artifact for the manuscript (ACM TORS submission format):
-code, pre-registrations, results of record, provenance manifests, the fail-closed build
+code, pre-declarations, results of record, provenance manifests, the fail-closed build
 gate, and the full adversarial audit chain. The canonical paper is
 [`PAPER_SUBMISSION.md`](PAPER_SUBMISSION.md) (reader PDF: `PAPER_SUBMISSION.pdf`); the
 venue manuscript is `paper_tex/PAPER_TORS.pdf` (generated from the canonical markdown —
@@ -19,7 +19,7 @@ uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --s
 This runs, fail-closed: the bitwise HSTU core-block parity test → the artifact-graph build
 (**every one of the 168 printed empirical numbers recomputed from source artifacts**; exits
 nonzero on any mismatch, untraceable cell, or missing claim family) → release-manifest hash
-verification (153 files) → the pre-registered Musical_Instruments gate adjudicator → **the
+verification (153 files) → the pre-declared Musical_Instruments gate adjudicator → **the
 Office V3 adjudicator (counted; the build fails unless the campaign verdict is PASS)** →
 **the FIR-breadth adjudicator (counted; both categories must be CONFIRMED)** → the Office V1
 adjudicator (descriptive/VOID). Every counted campaign's live adjudicator gates the build
@@ -31,7 +31,7 @@ blobs (`DOI_DEPOSIT_INSTRUCTIONS.md` has the full rule).
 
 ## What is claimed (exactly this, nothing broader)
 
-- **Two counted pre-registered per-category point-estimate comparisons** vs published
+- **Two counted pre-declared per-category point-estimate comparisons** vs published
   HSTU-BLaIR values (single-run comparators; no paired or distributional superiority is
   claimed, and no SOTA claim of any kind is made):
   - **Musical_Instruments**: fresh 5-seed 95% CI lower bounds **0.04096** (K=16) / **0.04083**
@@ -41,20 +41,20 @@ blobs (`DOI_DEPOSIT_INSTRUCTIONS.md` has the full rule).
     above (`PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`).
 - **The leak-free causal FIR filter helps on all four categories tested** — an internal
   paired filter-vs-no-filter contrast (never a comparator claim). Two categories under a
-  dedicated pre-registration with zero per-category tuning: Industrial_and_Scientific
+  dedicated pre-declaration with zero per-category tuning: Industrial_and_Scientific
   paired Δ **+0.0024** (95% CI [+0.0018, +0.0030]), CDs_and_Vinyl **+0.0057**
   (95% CI [+0.0049, +0.0064]), 5/5 seeds each (paper-printed precision; full values in the
   results file) (`PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`).
 - **Text benefits are dataset-conditional** (help on sparse categories, ≈null on dense ones),
   supported by controlled thinning interventions.
-- **The evaluation apparatus itself** — immutable pre-registration, fail-closed artifact
+- **The evaluation apparatus itself** — immutable pre-declaration, fail-closed artifact
   gate, comparator regeneration, symmetric self-VOIDing — demonstrated end to end.
 
 **Explicitly not claimed:** state-of-the-art on anything (on Video_Games our 0.0673 sits
 below the published 0.0760 — "competitive, not SOTA"); statistical superiority over
-single-run comparators; anything from the Office **V1** campaign, whose pre-registered
+single-run comparators; anything from the Office **V1** campaign, whose pre-declared
 floor check failed and whose **VOID stands permanently** (Appendix A.0) — the redesigned V3
-campaign above is a separate pre-registration that passed under its frozen wording.
+campaign above is a separate pre-declaration that passed under its frozen wording.
 
 ## Layout
 
@@ -63,7 +63,7 @@ campaign above is a separate pre-registration that passed under its frozen wordi
 | `PAPER_SUBMISSION.md` / `.pdf`, `PAPER_DRAFT.md` | Canonical paper (reader edition) and working draft with status history |
 | `paper_tex/` | Generated ACM TORS LaTeX twin + `PAPER_TORS.pdf` + hygiene scanner |
 | `_bestrec_run/` | All preprocessing/training/eval code, gates, adjudicators, result JSONs of record |
-| `SOTA_CONFIRM_PREREG_V2.md`, `PREREG_OFFICE_V3.md`, `PREREG_FIR_BREADTH.md` (+ results files) | Immutable pre-registrations and their adjudicated outcomes |
+| `SOTA_CONFIRM_PREREG_V2.md`, `PREREG_OFFICE_V3.md`, `PREREG_FIR_BREADTH.md` (+ results files) | Immutable pre-declarations and their adjudicated outcomes |
 | `RELEASE_MANIFEST.json` | Self-policing SHA256 manifest (verified inside the strict gate) |
 | `PAPER_REVIEW_AUDIT.md` / `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` | The hourly adversarial audit chain (a second AI system) and point-by-point responses |
 | `DOI_DEPOSIT_INSTRUCTIONS.md`, `VENUE_PLAN.md` | Archival/deposit and venue decisions |

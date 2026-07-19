@@ -7,7 +7,7 @@
  "rerun": "_bestrec_run/.venv/Scripts/python _bestrec_run/build_hstu_tables.py",
  "rerun_submission_gate": "_bestrec_run/.venv/Scripts/python _bestrec_run/build_hstu_tables.py --submission",
  "recompute_tolerance": 5e-05,
- "evidence_class_rule": "confirmatory = >=5-seed multi-seed family or pre-registered confirmation; exploratory = single-seed / <5-seed / post-hoc (audit F6). external = published comparator constant.",
+ "evidence_class_rule": "confirmatory = >=5-seed multi-seed family or pre-declared confirmation; exploratory = single-seed / <5-seed / post-hoc (audit F6). external = published comparator constant.",
  "status_semantics": "OK = sourced + recomputed + drift-gated. UNTRACEABLE = paper prints it, no on-disk source (warning; FATAL in --submission). REMOVED_FROM_PAPER = value retired from the manuscript 2026-07-11; provenance history only, non-blocking/non-warning in both modes. EXTERNAL_PUBLISHED = cited constant.",
  "required_families": [
   "table1",
@@ -2291,7 +2291,7 @@
      "mode": "info"
     }
    ],
-   "notes": "Published per-category point estimate targeted by the pre-registered V2 confirmation.",
+   "notes": "Published per-category point estimate targeted by the pre-declared V2 confirmation.",
    "recomputed": null,
    "recomputed_value": null,
    "paper_check": [],
@@ -6810,10 +6810,10 @@
   {
    "cell_id": "t1e.alpha066",
    "table_id": "table1e",
-   "row_label": "alpha(rho=0.66) = ipi/d_eff",
+   "row_label": "alpha(rho=0.66) = ipi/d_eff (RETIRED)",
    "metric": "ratio",
-   "evidence_class": "confirmatory",
-   "status": "OK",
+   "evidence_class": "exploratory",
+   "status": "REMOVED_FROM_PAPER",
    "source_files": [
     "_bestrec_run/run_TITRATE_idonly_rho066_VG.log"
    ],
@@ -6827,29 +6827,13 @@
     }
    },
    "recompute_rule": "ratio of quoted run-log constants",
-   "paper": [
-    {
-     "name": "value",
-     "value": 0.7,
-     "mode": "round",
-     "precision": 3
-    }
-   ],
-   "notes": "ipi=16.109 quoted from run_TITRATE_idonly_rho066_VG.log; d_eff=23 from the S5.4 BBP/Gavish-Donoho analysis.",
+   "paper": [],
+   "notes": "RETRACTED 2026-07-19 (audit 14:53/15:51): the d_eff=23 denominator came from the withdrawn spectral analysis (intervention-enforced rank; 23 matches no released artifact). Value removed from the manuscript; provenance history only.",
    "recomputed": {
     "value": 0.7003913043478261
    },
    "recomputed_value": 0.7003913043478261,
-   "paper_check": [
-    {
-     "name": "value",
-     "paper": 0.7,
-     "mode": "round",
-     "recomputed": 0.7003913043478261,
-     "result": "exact",
-     "rounded": 0.7
-    }
-   ],
+   "paper_check": [],
    "paper_check_class": "exact"
   },
   {
@@ -9636,7 +9620,7 @@
      "mode": "gt"
     }
    ],
-   "notes": "Pre-registered (SOTA_CONFIRM_PREREG_V2.md); gate = CI-LB > published 0.0406. evidence_class confirmatory + pre-registered.",
+   "notes": "Pre-declared (SOTA_CONFIRM_PREREG_V2.md); gate = CI-LB > published 0.0406. evidence_class confirmatory + pre-declared.",
    "recomputed": {
     "mean": 0.04151923035383019,
     "sd": 0.0004496779784515568,
@@ -9980,7 +9964,7 @@
      "mode": "count"
     }
    ],
-   "notes": "From-scratch regeneration (commit 2a5003e) must independently pass the pre-registered dual gate.",
+   "notes": "From-scratch regeneration (commit 2a5003e) must independently pass the pre-declared dual gate.",
    "recomputed": {
     "k16_cilb": 0.040923868816762514,
     "k8_cilb": 0.04083776847124571,
@@ -11813,7 +11797,7 @@
      "tol": 0.5
     }
    ],
-   "notes": "Pre-registered (SOTA_CONFIRM_PREREG_OFFICE.md, frozen before the raw data finished downloading; zero category-specific tuning). Headline = history[-1].test with n_eval asserted == 223,308; best_test is the 30k subsample and is NOT used. Paper prints 0.03042 +- 0.00008 (CI-LB 0.03032), all seeds above published 0.0271, '~+12% margin' -- but the S5.2 Office paragraph itself declares the pass VOID under the failed prereg floor check; see office.floor.",
+   "notes": "Pre-declared (SOTA_CONFIRM_PREREG_OFFICE.md, frozen before the raw data finished downloading; zero category-specific tuning). Headline = history[-1].test with n_eval asserted == 223,308; best_test is the 30k subsample and is NOT used. Paper prints 0.03042 +- 0.00008 (CI-LB 0.03032), all seeds above published 0.0271, '~+12% margin' -- but the S5.2 Office paragraph itself declares the pass VOID under the failed prereg floor check; see office.floor.",
    "status_note": "VOID under prereg floor check (+44% floor inflation); provisional, not counted as a pass",
    "recomputed": {
     "mean": 0.030423137988352084,
@@ -12151,7 +12135,7 @@
      "mode": "info"
     }
    ],
-   "notes": "Pre-registered 5-seed contrast arm (text stack removed). The overall arm mean is not printed in the manuscript (info checks only; values protected by the manifest drift gate); it exists as the ID side of the descriptive tail contrast (office.tail.hits*).",
+   "notes": "Pre-declared 5-seed contrast arm (text stack removed). The overall arm mean is not printed in the manuscript (info checks only; values protected by the manifest drift gate); it exists as the ID side of the descriptive tail contrast (office.tail.hits*).",
    "recomputed": {
     "mean": 0.028395716866820818,
     "sd": 4.693888422768732e-05,
@@ -12364,8 +12348,8 @@
      "tol": 0.05
     }
    ],
-   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-registered confirmation of the tail rule.",
-   "status_note": "descriptive post-hoc pattern evidence only; the pre-registered Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
+   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-declared confirmation of the tail rule.",
+   "status_note": "descriptive post-hoc pattern evidence only; the pre-declared Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
    "recomputed": {
     "text_hits": 364.0,
     "id_hits": 268.0,
@@ -12461,8 +12445,8 @@
      "mode": "count"
     }
    ],
-   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-registered confirmation of the tail rule.",
-   "status_note": "descriptive post-hoc pattern evidence only; the pre-registered Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
+   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-declared confirmation of the tail rule.",
+   "status_note": "descriptive post-hoc pattern evidence only; the pre-declared Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
    "recomputed": {
     "text_hits": 586.0,
     "id_hits": 414.0,
@@ -12551,8 +12535,8 @@
      "mode": "count"
     }
    ],
-   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-registered confirmation of the tail rule.",
-   "status_note": "descriptive post-hoc pattern evidence only; the pre-registered Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
+   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-declared confirmation of the tail rule.",
+   "status_note": "descriptive post-hoc pattern evidence only; the pre-declared Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
    "recomputed": {
     "text_hits": 1170.0,
     "id_hits": 739.0,
@@ -12647,8 +12631,8 @@
      "tol": 0.05
     }
    ],
-   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-registered confirmation of the tail rule.",
-   "status_note": "descriptive post-hoc pattern evidence only; the pre-registered Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
+   "notes": "Paper (S5.2) prints the @10 and @100 pooled counts with z; the @20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md (final adjudication) and manifested here for completeness. Audit F7: usable only as descriptive pattern evidence, never as a pre-declared confirmation of the tail rule.",
+   "status_note": "descriptive post-hoc pattern evidence only; the pre-declared Office tail prediction was scored VOID (connectivity 2.89 in the pre-declared ambiguous zone)",
    "recomputed": {
     "text_hits": 1983.0,
     "id_hits": 1247.0,
@@ -13120,7 +13104,7 @@
   {
    "cell_id": "firb.is.paired",
    "table_id": "fir_breadth",
-   "row_label": "pre-registered FIR breadth: Industrial_and_Scientific paired (filter - nofilter)",
+   "row_label": "pre-declared FIR breadth: Industrial_and_Scientific paired (filter - nofilter)",
    "metric": "paired 5-seed delta NDCG@10 (best-by-val full catalog)",
    "evidence_class": "confirmatory",
    "status": "OK",
@@ -13189,7 +13173,7 @@
      "mode": "count"
     }
    ],
-   "notes": "Pre-registered breadth campaign (PREREG_FIR_BREADTH.md, committed before any run; frozen V2 config transplanted with zero per-category tuning; fresh seeds 20260713-17). Internal paired contrast, no comparator. Mechanical adjudication in FIR_BREADTH_RESULTS.md; n_eval full-catalog verified there per run.",
+   "notes": "Pre-declared breadth campaign (PREREG_FIR_BREADTH.md, committed before any run; frozen V2 config transplanted with zero per-category tuning; fresh seeds 20260713-17). Internal paired contrast, no comparator. Mechanical adjudication in FIR_BREADTH_RESULTS.md; n_eval full-catalog verified there per run.",
    "recomputed": {
     "mean": 0.0024015865758802712,
     "sd": 0.0004613256858539702,
@@ -13238,7 +13222,7 @@
   {
    "cell_id": "firb.cd.paired",
    "table_id": "fir_breadth",
-   "row_label": "pre-registered FIR breadth: CDs_and_Vinyl paired (filter - nofilter)",
+   "row_label": "pre-declared FIR breadth: CDs_and_Vinyl paired (filter - nofilter)",
    "metric": "paired 5-seed delta NDCG@10 (best-by-val full catalog)",
    "evidence_class": "confirmatory",
    "status": "OK",
@@ -13307,7 +13291,7 @@
      "mode": "count"
     }
    ],
-   "notes": "Pre-registered breadth campaign (PREREG_FIR_BREADTH.md, committed before any run; frozen V2 config transplanted with zero per-category tuning; fresh seeds 20260713-17). Internal paired contrast, no comparator. Mechanical adjudication in FIR_BREADTH_RESULTS.md; n_eval full-catalog verified there per run.",
+   "notes": "Pre-declared breadth campaign (PREREG_FIR_BREADTH.md, committed before any run; frozen V2 config transplanted with zero per-category tuning; fresh seeds 20260713-17). Internal paired contrast, no comparator. Mechanical adjudication in FIR_BREADTH_RESULTS.md; n_eval full-catalog verified there per run.",
    "recomputed": {
     "mean": 0.005663298288636808,
     "sd": 0.0005887929382977914,
@@ -13356,7 +13340,7 @@
   {
    "cell_id": "officev3.k16.gate",
    "table_id": "office_v3",
-   "row_label": "Office V3 pre-registered gate, K=16 (final-epoch FULL-catalog)",
+   "row_label": "Office V3 pre-declared gate, K=16 (final-epoch FULL-catalog)",
    "metric": "NDCG@10 mean/sd/95% CI-LB vs local-regen 0.0279",
    "evidence_class": "confirmatory",
    "status": "OK",
@@ -13474,7 +13458,7 @@
   {
    "cell_id": "officev3.k8.gate",
    "table_id": "office_v3",
-   "row_label": "Office V3 pre-registered gate, K=8 (final-epoch FULL-catalog)",
+   "row_label": "Office V3 pre-declared gate, K=8 (final-epoch FULL-catalog)",
    "metric": "NDCG@10 mean/sd/95% CI-LB vs local-regen 0.0279",
    "evidence_class": "confirmatory",
    "status": "OK",

@@ -6,7 +6,7 @@
 
 Dear Editors-in-Chief,
 
-We submit the manuscript **"Pre-Registered, Artifact-Gated Evaluation for Sequential
+We submit the manuscript **"Pre-Declared, Artifact-Gated Evaluation for Sequential
 Recommendation: Causal FIR Filtering and Dataset-Conditional Text Benefits on Amazon
 Reviews 2023"** for consideration at ACM Transactions on Recommender Systems.
 
@@ -22,7 +22,7 @@ Reviews 2023"** for consideration at ACM Transactions on Recommender Systems.
   submission. [Maintainer: update if an arXiv preprint is posted before submission.]
 - **Conflicts of interest.** [Maintainer: list, or state none.]
 - **Data and artifacts.** The public Amazon Reviews 2023 dataset (McAuley Lab) is used and
-  not redistributed; the complete artifact (code, immutable pre-registrations, results of
+  not redistributed; the complete artifact (code, immutable pre-declarations, results of
   record, hash manifest, and fail-closed build gate) is available in the anonymized/named
   repository — which also carries the **full adversarial audit chain** in every tagged
   tree — and in its archival deposit release (the current deposit tag, recorded in
@@ -35,24 +35,24 @@ Reviews 2023"** for consideration at ACM Transactions on Recommender Systems.
 To pre-empt ambiguity, the claim boundary the paper enforces mechanically (a build-time scan
 rejects broader wording) is:
 
-1. **Two counted pre-registered per-category point-estimate comparisons** against published
+1. **Two counted pre-declared per-category point-estimate comparisons** against published
    HSTU-BLaIR values, which are single-run comparators: Musical_Instruments (fresh 5-seed
    95% CI lower bounds 0.04096 / 0.04083 vs published 0.0406) and Office_Products under the
-   redesigned V3 pre-registration (CI lower bounds 0.03033 / 0.03024 vs both the
+   redesigned V3 pre-declaration (CI lower bounds 0.03033 / 0.03024 vs both the
    environment-matched local regeneration 0.0279 and the published 0.0271). **No paired or
    distributional superiority is claimed, and no state-of-the-art claim of any kind is
    made** (on Video_Games our headline sits below the published comparator and is described
    as competitive, not SOTA).
-2. **The earlier Office V1 campaign is VOID** by its own pre-registered comparability
+2. **The earlier Office V1 campaign is VOID** by its own pre-declared comparability
    tripwire and counts in no claim; the VOID is reported permanently and symmetrically
    alongside the passed V3 redesign.
 3. **A leak-free, left-causal, zero-initialized depthwise FIR filter** improves results on
    all four categories tested — an internal paired filter-vs-no-filter contrast (two
-   categories under a dedicated pre-registration with zero per-category tuning), never a
+   categories under a dedicated pre-declaration with zero per-category tuning), never a
    comparator claim.
 4. **Dataset-conditional text benefits**: frozen-text features help sparse categories and
    are ≈null on dense ones, supported by controlled thinning interventions.
-5. **The evaluation apparatus itself** — immutable pre-registration, a fail-closed
+5. **The evaluation apparatus itself** — immutable pre-declaration, a fail-closed
    artifact gate that recomputes all printed numbers from source artifacts at every build,
    comparator regeneration, and symmetric self-VOIDing adjudication — is presented as a
    reusable per-paper discipline, demonstrated end to end on the claims above.
@@ -61,7 +61,7 @@ rejects broader wording) is:
 
 The manuscript is a full-length evaluation-methodology + empirical study aimed at TORS's
 scope on rigorous, reproducible recommender-systems research: every empirical statement is
-pre-registered or explicitly labeled exploratory, all 168 printed numbers rebuild from
+pre-declared or explicitly labeled exploratory, all 168 printed numbers rebuild from
 hash-pinned artifacts, and the repository includes the complete adversarial audit trail
 (dozens of hourly audit rounds by an independent system, each answered point-by-point in
 writing).

@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software or its evaluation artifacts, please cite it as below."
-title: "Pre-Registered, Artifact-Gated Evaluation for Sequential Recommendation: Causal FIR Filtering and Dataset-Conditional Text Benefits on Amazon Reviews 2023 (code and evaluation artifacts)"
+title: "Pre-Declared, Artifact-Gated Evaluation for Sequential Recommendation: Causal FIR Filtering and Dataset-Conditional Text Benefits on Amazon Reviews 2023 (code and evaluation artifacts)"
 type: software
 authors:
   - name: "Ray0419"
@@ -17,16 +17,16 @@ keywords:
   - text-augmented recommendation
   - causal FIR filter
   - reproducibility
-  - pre-registration
+  - pre-declaration
 abstract: >-
-  Code, pre-registrations, provenance manifests, and evaluation artifacts for
+  Code, pre-declarations, provenance manifests, and evaluation artifacts for
   an HSTU-style pure-PyTorch sequential recommender on the Amazon Reviews 2023
   5-core benchmark: a strictly causal, zero-initialized FIR temporal filter
   (positive on all four categories tested; two under a dedicated
-  pre-registration), two counted pre-registered per-category point-estimate
+  pre-declaration), two counted pre-declared per-category point-estimate
   comparisons against published single-run HSTU-BLaIR values
   (Musical_Instruments; Office_Products under the redesigned V3
-  pre-registration with an environment-matched reference — the earlier V1
+  pre-declaration with an environment-matched reference — the earlier V1
   campaign remains VOID by its own tripwire), a dataset-conditional long-tail
   pattern with thinning interventions, a fail-closed artifact-graph build that
   recomputes every printed number from source artifacts, and a shim harness

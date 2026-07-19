@@ -1059,11 +1059,14 @@ def build_spec():
                           5, conf, seeds=S0812,
                           notes="kept-interactions/item is quoted from the frozen run logs "
                                 "(see make_table_5_4_titration.py); alpha = ipi/23."))
-    C.append(cell("t1e.alpha066", "table1e", "alpha(rho=0.66) = ipi/d_eff", "ratio",
+    C.append(cell("t1e.alpha066", "table1e", "alpha(rho=0.66) = ipi/d_eff (RETIRED)", "ratio",
                   [TITRLOG066], "const_ratio", {"num": 16.109, "den": 23.0},
-                  [chk("value", 0.700, 3)], None, conf,
-                  notes="ipi=16.109 quoted from run_TITRATE_idonly_rho066_VG.log; d_eff=23 from "
-                        "the S5.4 BBP/Gavish-Donoho analysis."))
+                  [], None, "exploratory",
+                  notes="RETRACTED 2026-07-19 (audit 14:53/15:51): the d_eff=23 denominator "
+                        "came from the withdrawn spectral analysis (intervention-enforced "
+                        "rank; 23 matches no released artifact). Value removed from the "
+                        "manuscript; provenance history only.",
+                  status="REMOVED_FROM_PAPER"))
     RUNG_FILES = [(r[2], r[3]) for r in RUNGS]
     DENS = [r[1] for r in RUNGS]
     C.append(cell("t1e.spearman.head_ndcg", "table1e", "Spearman rho_s(head delta vs density)",
@@ -1818,16 +1821,17 @@ def render_tables(cells):
     for tag, rho, ipi in (("100", 1.00, 24.405), ("094", 0.94, 22.947), ("091", 0.91, 22.210),
                           ("088", 0.88, 21.484), ("078", 0.78, 19.030), ("066", 0.66, 16.109)):
         rows1e.append(
-            f"| {rho:.2f} | {ipi:.3f} | {ipi/23.0:.3f} | "
+            f"| {rho:.2f} | {ipi:.3f} | "
             f"{PD(f't1e.rho{tag}.head_ndcg')} | {PD(f't1e.rho{tag}.head_hr')} | "
             f"{PD(f't1e.rho{tag}.tail_ndcg')} | {PD(f't1e.rho{tag}.tail_hr')} |")
     T["table1e"] = "\n".join([
         "**Table 1e (regenerated): interaction-thinning density-titration ladder** "
         "(paired text−ID, best-by-val; 5 seeds/rung; n_eval=94,762, tail_n=10,900; "
-        "kept-inter./item quoted from run logs; α = ipi/23).",
+        "kept-inter./item quoted from run logs; the former α=ipi/d_eff column is "
+        "RETRACTED with the spectral analysis, 2026-07-19).",
         "",
-        "| ρ | kept inter./item | α | head ΔNDCG@10 | head ΔHR@10 | tail ΔNDCG@10 | tail ΔHR@10 |",
-        "|---|---|---|---|---|---|---|"] + rows1e + [
+        "| ρ | kept inter./item | head ΔNDCG@10 | head ΔHR@10 | tail ΔNDCG@10 | tail ΔHR@10 |",
+        "|---|---|---|---|---|---|"] + rows1e + [
         "",
         f"Spearman ρ_s vs density: head NDCG {by_id['t1e.spearman.head_ndcg']['recomputed']['rho']:+.2f}, "
         f"head HR {by_id['t1e.spearman.head_hr']['recomputed']['rho']:+.2f}, "

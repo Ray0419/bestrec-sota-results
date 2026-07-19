@@ -1,6 +1,6 @@
 # Write the Paper Yourself — A Guided Template
 
-*A section-by-section scaffold for writing "Pre-Registered, Artifact-Gated Evaluation for
+*A section-by-section scaffold for writing "Pre-Declared, Artifact-Gated Evaluation for
 Sequential Recommendation" in your own words. Companion documents:
 [`PLAIN_LANGUAGE_COMPANION.md`](PLAIN_LANGUAGE_COMPANION.md) explains the ideas;
 this file teaches you to write them. The current gated paper
@@ -44,7 +44,7 @@ standing audit; internalize them as *writing* rules:
 - When in doubt: **narrower is always allowed, broader never is.**
 
 **The evidence rule.** If you write a number, you must be able to name the artifact it comes
-from. If you write a claim, you must be able to name the pre-registration or label it
+from. If you write a claim, you must be able to name the pre-declaration or label it
 exploratory/descriptive. If you can't — the sentence doesn't go in.
 
 **The caveat rule.** A caveat is part of the result, not an apology after it. Write the
@@ -91,8 +91,8 @@ separate paragraphs a reviewer can quote apart.
 
 - **Job:** State what was run, on what data, so that §5 can be read without trust.
 - **Recipe:** (1) Dataset table with *roles* — which categories serve which claim (VG =
-  multi-seed reference numbers; MI + Office = pre-registered comparisons; IS + CDs =
-  pre-registered breadth; Beauty = hard transfer/appendix). (2) Baselines, including the
+  multi-seed reference numbers; MI + Office = pre-declared comparisons; IS + CDs =
+  pre-declared breadth; Beauty = hard transfer/appendix). (2) Baselines, including the
   published comparators you compare *descriptively*. (3) The experimental design: 6 seeds
   (20260608–13) for the headline, 5 for each ablation rung, mean ± sample std, best-by-val.
   (4) Hardware honesty: one consumer GPU (RTX 5060 Ti, 16 GB), ~10 min/seed on VG; the model
@@ -100,7 +100,7 @@ separate paragraphs a reviewer can quote apart.
 - **Your key numbers:** VG 94,762 users / 25,612 items; MI 57,439 / 24,587; Office 223,308
   / 77,551; the comparator pipeline's statistics match ours exactly on users/items,
   interactions within ±1.
-- **Pitfall:** Every pre-registered campaign must be traceable here to its frozen document
+- **Pitfall:** Every pre-declared campaign must be traceable here to its frozen document
   (`SOTA_CONFIRM_PREREG_V2.md`, `PREREG_OFFICE_V3.md`, `PREREG_FIR_BREADTH.md`) — the
   reader should be able to check that the design you describe is the design you froze.
 
@@ -143,10 +143,10 @@ separate paragraphs a reviewer can quote apart.
   distributional comparator uncertainty is unquantified; the pinned official environment
   cannot execute locally, so reference runs are environment-caveated.
 - **How to tell the Office story (the paper's honesty centerpiece):** three beats, always
-  together — (i) V1 passed numerically but its pre-registered floor check failed (our
+  together — (i) V1 passed numerically but its pre-declared floor check failed (our
   plain-SASRec floor landed +44% above their published SASRec), so V1 is VOID and stays
   VOID; (ii) running the comparator's own unmodified code in our environment produced 0.0279
-  vs their published 0.0271, explaining the tilt; (iii) the redesigned V3 pre-registration
+  vs their published 0.0271, explaining the tilt; (iii) the redesigned V3 pre-declaration
   gated against that environment-matched reference on fresh seeds and passed. Never let a
   paragraph contain only beat (iii).
 - **Pitfall:** A limitation you name is a footnote; a limitation a reviewer finds is a
@@ -169,7 +169,7 @@ separate paragraphs a reviewer can quote apart.
 - **Job:** Earn the read: problem → why hard → what you did → contributions, one page.
 - **Recipe:** (1) Open with the field's credibility problem (tiny deltas, many knobs,
   selective reporting) — that motivates the *apparatus as contribution 1*. (2) State the
-  demonstrations: the FIR filter, the two pre-registered confirmations, the
+  demonstrations: the FIR filter, the two pre-declared confirmations, the
   dataset-conditional text finding. (3) A numbered contributions list where every item maps
   to a section and a table. (4) End with the scope sentence (what this paper does not
   claim) — putting it in §1 disarms the reviewer early.
@@ -202,7 +202,7 @@ separate paragraphs a reviewer can quote apart.
 ### Block 10 · Title + last look
 
 - **Job:** The title states the contribution class honestly: methodology first, findings
-  second. Current form — *"Pre-Registered, Artifact-Gated Evaluation for Sequential
+  second. Current form — *"Pre-Declared, Artifact-Gated Evaluation for Sequential
   Recommendation: Causal FIR Filtering and Dataset-Conditional Text Benefits on Amazon
   Reviews 2023"* — is a good pattern: apparatus : findings : dataset. Yours may differ, but
   keep that order of emphasis.

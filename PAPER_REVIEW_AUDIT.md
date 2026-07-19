@@ -6,6 +6,455 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
+1. **[CONFIRMED, rejection-level] The BBP/MP retraction is incomplete and the
+   current paper contradicts itself.** `PAPER_SUBMISSION.md:422` withdraws the
+   figure, effective-rank normalization, and every no-rescue conclusion, but
+   the orphan Fig. 3 caption remains at line 425, Table 2 says the figure is
+   retained at line 445, the no-representation-side-rescue conclusion returns
+   at line 462, and three references still advertise Fig. 3. The TeX retains a
+   reference to the deleted figure and its retraction command is malformed;
+   the compiled TORS PDF consequently contains `??` references and a visibly
+   broken `extbfRetraction` line.
+2. **[CONFIRMED, rejection-level] The supposedly retracted spectral cells are
+   still generated and certified as confirmatory evidence.** The paper says
+   the alpha/effective-rank cells are removed and marked
+   `REMOVED_FROM_PAPER`, yet `_bestrec_run/build_hstu_tables.py` still creates
+   `t1e.alpha066` with hard-coded denominator 23 and status `OK`, the current
+   `hstu_results_manifest.json` calls it confirmatory and exact, and
+   `hstu_tables.json` still renders the alpha column. A green numerical gate
+   therefore currently certifies evidence the manuscript itself says is
+   invalid.
+3. **[CONFIRMED, rejection-level] The causal/statistical mechanism narrative
+   remains broader than the new caveat.** The narrowed paragraph admits two
+   bundled interventions, a nonsignificant interaction, one fixed
+   intervention draw, and no population between-dataset inference. Elsewhere
+   the paper still calls the contrast a real between-dataset effect, a whole
+   double dissociation, significant in sign, attributable to connectivity,
+   and evidence for a residual content factor. Five optimizer seeds sharing
+   `subsample_seed=0` do not estimate intervention-subset uncertainty.
+4. **[CONFIRMED, rejection-level pending reruns] The singular FIR bootstrap is
+   now disclosed only in the canonical Markdown; the claimed one-factor
+   comparator interpretation is still unsupported.** The delta kernel and
+   zero gate give zero task gradients; coupled Adam weight decay starts the
+   kernel, and `weight_decay=0` is an absorbing no-op. Fixed-average and
+   no-gate arms do not share that path. The manuscript nevertheless says each
+   arm changes exactly one element and attributes the result to kernel shape
+   and gate convenience. Nonsingular common-parameterization reruns are still
+   queued, and the TORS source/PDF omits the disclosure entirely.
+5. **[CONFIRMED SUBMISSION BLOCKER] The canonical Markdown and TORS artifact
+   are scientifically divergent and the new TORS PDF is broken.** TeX still
+   says all headline configurations use 40 epochs and every component rung
+   uses five seeds, omits the FIR bootstrap disclosure, retains the withdrawn
+   spectral conclusion, and emits unresolved references. The TORS PDF cannot
+   be treated as a generated equivalent of the canonical paper.
+6. **[CONFIRMED SUBMISSION BLOCKER] The named v1.1.9 deposit is stale while the
+   bundle check masks the mismatch.** Literal
+   `--verify-git v1.1.9-deposit` fails on eight files, including both PDFs,
+   both Markdown manuscripts, and release tooling. `--verify-git HEAD` passes,
+   while `build_deposit_bundle.py --check-only` still reports v1.1.9 OK by
+   silently validating HEAD/rebuild mode. Live release PDF hashes and sizes do
+   not match the current files.
+7. **[CONFIRMED, reproducibility blocker] The advertised split/cache evidence
+   remains unavailable.** The live v0.9 release has only the parity ZIP and a
+   manifest; twelve split files plus four text caches named by the current
+   manifest total 1,090,564,135 bytes but are not release assets. The verifier
+   explicitly skips missing assets and succeeds, and the repository is
+   private. “Full release” is not currently true for an external reviewer.
+8. **[CONFIRMED] Artifact-gate coverage is materially incomplete.** Five
+   paper tables have `checked: 0`, including the dataset/status table, novelty
+   table, attribution table, older baselines, and empirical Table A1. Table A1
+   says 20 variants but contains 22 numbered rows. The dirty generated
+   manifest also shows that regenerated semantic evidence can drift without
+   appearing in the displayed paper.
+9. **[CONFIRMED] The Pre-Declared retitle is only partial.** The manuscript
+   title is repaired, but `README.md`, `COVER_LETTER_TORS.md`, `CITATION.cff`,
+   `.zenodo.json`, `CANONICAL_SUBMISSION.md`, the plain-language companion,
+   TeX keywords/status labels, companion site, and deposit-builder templates
+   still say Pre-Registered or pre-registration.
+   A future bundle can therefore reintroduce the unsupported term.
+10. **[CONFIRMED] The novelty/baseline spine remains incomplete.** The paper
+    does not discuss C3SASR's causal convolution before self-attention,
+    HyenaRec's gated long convolution for sequential recommendation, or
+    NeurIPS 2024 LLM-ESR's semantic/collaborative long-tail recommender. The
+    defensible contribution remains a narrow HSTU/depthwise-FIR adaptation and
+    paired empirical study, not the general convolutional or text-for-tail
+    ideas.
+11. **[CONFIRMED] Several checkable prose and design statements remain false or
+    internally inconsistent.** The “7-rung” ladder has six rungs; the reported
+    Bonferroni factor is still seven; head NDCG and HR have reversals despite a
+    monotone-both-metrics claim; the generic 40-epoch sentence conflicts with
+    the parenthetical 20-epoch campaigns; “alone carries” conflicts with the
+    paper's own 77–82% attribution; the MI base has four seeds despite generic
+    five-seed wording; and five seed IDs run in two arms are mislabeled “10/10
+    seeds” rather than ten arm-runs or 5/5 per arm.
+12. **[CONFIRMED FIX WITH A MAJOR CAVEAT] The ordinary numeric graph remains
+    green.** The strict rebuild recomputed 168 cells (149 exact, 19 rounded,
+    zero mismatch/untraceable; 14/14 families), and MI, Office V3, FIR breadth,
+    and HEAD-boundary checks pass. This is useful integrity evidence, but it
+    does not detect the retraction contradiction, false TeX claims, unresolved
+    references, excluded tables, or missing public assets.
+13. **[CONFIRMED] The front end and submission artifact are not top-journal
+    ready.** The canonical abstract is 1,782 words in seven paragraphs and
+    advertises eight heterogeneous contributions. The 35-page TORS PDF uses an
+    outdated vendored `acmart` v2.03, review/anonymous mode with line numbers,
+    and stale build notes that disagree on page and figure counts; the hygiene
+    scan falsely reports no undefined references.
+14. **[AUTHOR VERIFICATION REQUIRED] Formal venue mode, independent protocol
+    timing, intervention generality, and external reproducibility remain
+    unresolved.** Verify the current TORS portal requirements directly; supply
+    an independent pre-outcome timestamp if any exists; repeat thinning across
+    independently sampled subsets; and demonstrate a clean-room reconstruction
+    from assets actually available to reviewers.
+
+## Audit Run - 2026-07-19 15:51 Australia/Sydney
+
+### Audited State and Strict Verdict
+
+- Workspace: `C:\Users\rayxc\Documents\R`.
+- Prior automation memory was read from
+  `C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md`.
+- Audited HEAD: `b89b40a972ed9e5b8b828fb320f02c7ede67a647`, compared with the
+  prior audited `ba100f99cc16c9f088f37eddbdfdde1313616bbf`. The two new
+  commits are the 2026-07-19 retraction/retitle revision and its response log.
+- Before this audit edit, `_bestrec_run/hstu_results_manifest.json` was already
+  modified in the worktree. Its observed drift changes “pre-registered” to
+  “pre-declared”; it was preserved and not attributed to this audit.
+- Inspected: canonical Markdown, TeX sources, both PDFs, generated tables and
+  manifests, strict/release tooling, result metadata, live GitHub release
+  inventories, support metadata, bibliography, and closely related primary
+  literature. This run changes only this cumulative audit and automation
+  memory; it does not repair manuscript or generated artifacts.
+- **Strict reviewer verdict: reject in present form.** The incoming revision
+  makes three real honesty improvements—Pre-Declared in the manuscript title,
+  explicit withdrawal of the invalid BBP analysis, and disclosure of the FIR
+  optimizer bootstrap—but the correction cascade is incomplete. The same
+  revision leaves mutually exclusive claims in the paper, preserves invalid
+  spectral cells as confirmatory artifacts, and produces a TORS PDF with
+  unresolved references and a malformed retraction. These are submission
+  blockers independent of the positive numeric integrity checks.
+
+### What Was Genuinely Repaired
+
+1. **Terminology in the manuscript itself:** `PAPER_SUBMISSION.md` and the main
+   title now say **Pre-Declared**, which is defensible given commit-order
+   evidence without an independent registry timestamp.
+2. **Spectral claim admission:** `PAPER_SUBMISSION.md:422` accurately states
+   that the old BBP quantity used train frequencies rather than an empirical
+   embedding spectrum, that its overlap formula was misdescribed, and that
+   the effective rank came from an intervention. The decision to retract is
+   scientifically correct.
+3. **FIR initialization disclosure:** `PAPER_SUBMISSION.md:95` now explains the
+   delta-kernel/zero-gate singularity, the role of coupled Adam weight decay,
+   the `weight_decay=0` absorbing no-op, and the fact that current comparator
+   arms do not share the same optimization path.
+4. **Epoch qualification in canonical Markdown:** line 222 now identifies the
+   MI, Office V3, and FIR-breadth campaigns as 20 epochs, although it leaves a
+   contradictory blanket 40-epoch sentence and does not update TeX.
+5. **Numerical integrity:** the strict rebuild and four named campaign gates
+   remain green. No ordinary table-value mismatch was found in the 168 gated
+   cells.
+
+### Dynamic Verification Evidence
+
+- `_bestrec_run/.venv/Scripts/python.exe
+  _bestrec_run/rebuild_hstu_submission.py --strict` — **PASS**: HSTU parity;
+  168 cells, 149 exact, 19 rounding, zero mismatch/untraceable, four retired,
+  all 14 families; 153 local manifest files; MI V2, Office V3, and both FIR
+  breadth outcomes. Office V1 remains correctly VOID.
+- `update_release_manifest.py --verify-git HEAD` — **PASS**, 128 tracked files.
+- `update_release_manifest.py --verify-git v1.1.9-deposit` — **FAIL**, eight
+  mismatches: `summarize_sota_confirm_v2.py`, `build_hstu_tables.py`, both
+  Markdown manuscripts, both PDFs, `rebuild_hstu_submission.py`, and
+  `update_release_manifest.py`.
+- `build_deposit_bundle.py --check-only` — **PASS despite that literal tag
+  failure**, because the check uses rebuild/HEAD mode while continuing to label
+  the target v1.1.9. This is a governance defect, not reassuring evidence.
+- Live `gh` release inventory for
+  [v0.9-audit-evidence](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence)
+  contains only `pinned_env_parity_artifacts.zip` and
+  `RELEASE_MANIFEST.json`. The 12 splits and four caches named in the current
+  manifest are absent. The code at `update_release_manifest.py:207-218`
+  explicitly skips a missing release asset rather than failing.
+- Current reader PDF: 46 pages, 1,242,767 bytes. Current TORS PDF: 35 pages,
+  307,844 bytes. Live v1.1.9 copies are 1,394,547 and 462,800 bytes,
+  respectively, and have different SHA-256 hashes.
+- Target-rendered reader pages 29–32 and TORS pages 23–25 at 144 dpi. Visual
+  inspection confirms the reader's retained Fig. 3 caption and reinstated
+  spectral conclusion, plus the TORS `??` references and malformed
+  `extbfRetraction` line. No clipping caused these defects; they are source/
+  compilation failures.
+- Canonical abstract: 1,782 words, seven paragraphs; whole canonical document:
+  21,394 words.
+
+### Confirmed Problems in the Revision
+
+#### CP-1 — The retraction did not propagate through prose, tables, references, or PDF
+
+`PAPER_SUBMISSION.md:422` withdraws the BBP/MP figure, `d_eff`, and **every**
+no-rescue conclusion. The following remain simultaneously:
+
+- line 425: an orphan Fig. 3 spectral-irreducibility caption;
+- line 445: GD1 is rejected with “BBP irreducibility figure (Fig. 3)
+  retained”;
+- line 462: “spectral-irreducibility analysis ... no representation-side
+  lever can rescue the dense-catalog tail” and a connectivity-binding claim;
+- lines 571, 577, and 588: BBP, Marchenko–Pastur, and Gavish–Donoho references
+  are still annotated as supporting Fig. 3;
+- `paper_tex/sections/05-results.tex:130`: `\cref{fig:bbp_irreducibility}`
+  survives after the figure/label is removed;
+- `paper_tex/sections/05-results.tex:147`: a literal tab followed by
+  `extbf{Retraction...}` is missing the `\t` of `\textbf`.
+
+The consequences are visible in the compiled artifacts. Reader-PDF page 29
+prints the valid retraction, page 30 prints the orphan Fig. 3 caption, and page
+32 reinstates the withdrawn no-rescue conclusion. TORS-PDF page 23 contains
+literal `??` section/figure references, and page 25 prints
+`extbfRetraction (2026-07-19).` The hygiene report nevertheless says 0
+undefined references. This is a confirmed false negative in the submission
+quality gate.
+
+#### CP-2 — The evidence graph contradicts the retraction
+
+The Table 1e note at `PAPER_SUBMISSION.md:365` says the former alpha/effective-
+rank cells are removed and marked `REMOVED_FROM_PAPER`. In the current
+artifacts:
+
+- `_bestrec_run/build_hstu_tables.py:1062-1066` still creates
+  `t1e.alpha066`, with denominator 23, evidence class confirmatory, and status
+  `OK`;
+- `_bestrec_run/build_hstu_tables.py:1817-1830` still regenerates the full
+  alpha column;
+- `_bestrec_run/hstu_results_manifest.json:6811-6853` still records that cell
+  as confirmatory, `OK`, and an exact paper check;
+- `_bestrec_run/hstu_tables.json:36` still renders `alpha=ipi/23`.
+
+The displayed table was manually narrowed and its provenance check count
+dropped, allowing strict mode to pass while the invalid generator output
+remains authoritative. This is more serious than a stale sentence: the paper's
+claimed fail-closed evidence graph currently blesses a retracted result.
+
+#### CP-3 — The causal/statistical narrowing is contradicted by headline claims
+
+The new paragraph at line 422 correctly says that user thinning is bundled,
+the interaction test is nonsignificant, the fixed draw omits subset
+uncertainty, and the two-category contrast is not population inference. Yet:
+
+- line 18 and the contribution/RQ text still infer a partial causal role and a
+  dataset-specific residual content factor;
+- line 352 calls the optimizer-seed contrast “a real between-dataset effect”;
+- lines 380 and 390 retain “whole double-dissociation” framing;
+- line 412 calls a 5x5 level contrast “significant in sign” while explicitly
+  admitting no interaction-test support;
+- later mechanism prose continues to treat connectivity as the binding
+  resource and to attribute the intervention contrast to connectivity.
+
+All model seeds use the same `subsample_seed=0`. Seed-wise optimizer variation
+cannot substitute for independent intervention draws. The manuscript must
+either add multiple independently sampled thinned datasets and a planned
+interaction analysis, or retreat to a descriptive within-dataset sensitivity
+result with no isolated-mechanism, population, double-dissociation, or residual-
+factor language.
+
+#### CP-4 — FIR disclosure is real, but the causal comparator claim is not yet repaired
+
+The new Markdown disclosure establishes that the headline parameterization
+has zero task gradients at initialization and begins moving only through Adam's
+coupled `weight_decay=1e-5`; with zero decay it remains an identity/no-op. This
+means current fixed-average and no-gate arms alter both the structural element
+and the optimization path. Nevertheless `PAPER_SUBMISSION.md:327` and
+`paper_tex/sections/05-results.tex:82` still say each arm changes exactly one
+element, that learned kernel shape carries the effect, and that the zero gate
+is merely a convenience. The abstract/contributions still say FIR “alone
+carries” transfer.
+
+This remains rejection-level until the queued nonsingular reruns use a common
+learnable parameterization and include `weight_decay=0`, gate/kernel trajectory,
+and initialization controls. Until those exist, the result may be presented as
+an empirical package effect, not a clean causal attribution to learned kernel
+shape or gate design.
+
+#### CP-5 — Canonical/TeX divergence is now substantive
+
+`paper_tex/sections/04-experiments.tex:32` still states all headline runs train
+40 epochs and every per-component rung has five seeds, contradicting the 20-
+epoch campaigns and four-seed MI base. The TeX omits the FIR initialization
+disclosure and retains withdrawn spectral claims. The reader PDF and TORS PDF
+therefore support materially different scientific narratives. A top-journal
+submission cannot designate both as canonical.
+
+#### CP-6 — Release/deposit assurance remains misleading
+
+`RELEASE_MANIFEST.json` names `v1.1.9-deposit`; literal verification now fails
+on eight files, and the live PDFs do not match current local hashes/sizes. The
+bundle builder's hard-coded v1.1.9 metadata and HEAD fallback permit a green
+check anyway. Separately, the v0.9 verifier treats absent 1.09 GB split/cache
+assets as skips, not errors, while the paper claims a full release. These
+defects prevent an external reviewer from reconstructing the claimed evidence
+boundary.
+
+#### CP-7 — Gate coverage and semantic consistency are insufficient
+
+`paper_tex/tables/TABLES_PROVENANCE.json` reports `checked: 0` for five tables:
+attribution, novelty, dataset/status, older baselines, and Table A1. Table A1's
+caption/prose says 20 variants, but rows are numbered 1–22. The successful
+strict build therefore demonstrates arithmetic consistency only within its
+declared subset; it cannot support the paper's broader “every artifact-gated
+cell” rhetoric without a precise inventory of excluded empirical cells.
+
+#### CP-8 — The Pre-Declared terminology cascade is incomplete
+
+The title repair has not reached repository metadata and submission support:
+`README.md`, `COVER_LETTER_TORS.md`, `CITATION.cff`, `.zenodo.json`,
+`CANONICAL_SUBMISSION.md`, `PLAIN_LANGUAGE_COMPANION.md`, the companion site,
+`paper_tex/paper-shared.tex` keywords, visible `prereg` status labels, and
+`_bestrec_run/build_deposit_bundle.py` templates still say Pre-Registered or
+pre-registration.
+This creates contradictory reviewer-facing metadata and guarantees recurrence
+on the next bundle build unless fixed at the generator/template level.
+
+#### CP-9 — Six-rung and monotonicity contradictions remain
+
+`PAPER_SUBMISSION.md:360` calls a six-value ladder (1.00, .94, .91, .88, .78,
+.66) seven-rung; line 363 applies Bonferroni `x7`; line 362 says the head rises
+smoothly and is monotone on both metrics despite NDCG 0.002544 -> 0.002520 and
+multiple HR reversals. Line 376 partially admits one NDCG reversal but still
+says HR is rising. Correct the rung count, multiplicity family, and qualitative
+description, then recompute any adjusted inference.
+
+#### CP-10 — Seed-count language and paired-power claims need correction
+
+`paper_tex/tables/table1c.tex:11` has a four-seed base while the graph and
+generic methods prose describe five-seed treatment-minus-base cells. A paired
+four-common-seed recomputation still supports FIR (`p=0.0065`), but label
+smoothing is marginal (`p=0.057`), so the direction survives while the stated
+design and certainty do not. MI and Office each use five unique seed IDs in two
+arms: “10/10 seeds” is false independence language and must be “ten arm-runs”
+or “5/5 seeds per arm.” Audit every CI/test for the actual common paired set.
+
+### Novelty and External Fact-Check Delta
+
+- **C3SASR is close prior art:** the 2022 paper explicitly places cheap causal
+  convolutions before self-attention to fuse local predecessor context with a
+  sequence representation in sequential recommendation. It is not the exact
+  HSTU/depthwise/gated FIR implementation, but it makes a broad causal-
+  convolution novelty claim untenable without direct comparison and precise
+  differentiation. Primary source: [C3SASR, arXiv:2211.01297](https://arxiv.org/abs/2211.01297).
+- **HyenaRec is a current convolutional comparator:** it applies gated long
+  polynomial convolution to sequential recommendation and is relevant to any
+  2026 claim about convolutional sequence modeling in this domain. Primary
+  source: [HyenaRec, arXiv:2603.25027](https://arxiv.org/abs/2603.25027).
+- **LLM-ESR directly bears on the tail-text framing:** the NeurIPS 2024 work
+  combines LLM semantic embeddings with collaborative signals for long-tail
+  sequential recommendation. It does not erase this paper's dataset-conditional
+  result, but it must appear in the related-work and novelty boundary. Primary
+  source: [LLM-ESR, NeurIPS 2024 proceedings](https://proceedings.neurips.cc/paper_files/paper/2024/hash/2f0728449cb3150189d765fc87afc913-Abstract-Conference.html).
+- **The broader semantic-tail line also predates this paper:** TASTE and
+  AlterRec are relevant neighboring work and should be included alongside
+  LLM-ESR, with protocol differences stated rather than omitted. Primary
+  sources: [TASTE, arXiv:2308.14029](https://arxiv.org/abs/2308.14029) and
+  [AlterRec, arXiv:2402.08921](https://arxiv.org/abs/2402.08921).
+- **The current framing of FMLP-Rec/BSARec is not the main citation defect.**
+  Their full-sequence filtering/low-pass motivation is broadly supported; the
+  problem is claiming a wide causal-convolution boundary while omitting closer
+  causal/gated-convolution recommenders. Primary sources:
+  [FMLP-Rec](https://arxiv.org/abs/2202.13556) and
+  [BSARec, AAAI](https://ojs.aaai.org/index.php/AAAI/article/view/28747).
+- **[AUTHOR VERIFICATION]** `PAPER_SUBMISSION.md:56` calls UniSRec “the first
+  widely-cited” PLM text sequential recommender. “Widely-cited” is undefined
+  and no systematic priority search is supplied. Remove the priority phrase or
+  document a reproducible literature-search basis.
+- The vendored `acmart.cls` reports v2.03, while CTAN currently lists v2.19
+  dated 2026-06-27. Class currency is confirmed; the exact TORS portal mode is
+  **not** inferred from CTAN and still requires author verification. Source:
+  [CTAN acmart package](https://ctan.org/pkg/acmart).
+
+### Concrete Fixes in Dependency Order
+
+1. **Complete the retraction at the generator level.** Remove the orphan
+   caption, retained Table 2 verdict, no-rescue paragraph, Fig. 3 reference
+   annotations, TeX `\cref`, stale label, and any current-paper spectral
+   assets. Mark every alpha/effective-rank cell `REMOVED_FROM_PAPER`, delete the
+   alpha renderer and hard-coded 23, regenerate the manifest/tables, and make
+   strict mode fail if a retracted cell remains `OK` or confirmatory.
+2. **Regenerate TeX from the corrected canonical source.** Fix `\textbf`, add
+   the FIR bootstrap disclosure, scope epoch/seed statements by campaign,
+   remove all withdrawn claims, rebuild both PDFs, and require zero unresolved
+   references/warnings plus text-level parity for critical disclosures.
+3. **Do the nonsingular FIR experiment before restoring mechanistic language.**
+   Use common parameterizations/initialization across arms, include zero weight
+   decay, log early gate/kernel gradients and trajectories, and report the
+   prospectively frozen five-seed comparison. Narrow “alone carries,” kernel-
+   shape, and gate-convenience claims until then.
+4. **Choose inference or description for thinning.** For inference, generate
+   multiple independent subsets per rung, model subset and optimizer
+   uncertainty, predeclare the interaction, and correct multiplicity. Otherwise
+   remove “real between-dataset,” causal role, connectivity alone/binding,
+   double dissociation, significant-in-sign, and residual content-factor
+   language everywhere.
+5. **Extend the gate from numbers to semantics.** Cover all empirical tables;
+   assert Table A1 row count, ladder rung count, campaign epochs/seeds,
+   retraction status, PDF/source disclosure parity, zero unresolved refs, and
+   clean generated artifacts. Distinguish explicitly any expository cells that
+   are intentionally outside the graph.
+6. **Repair the related-work/novelty boundary.** Add C3SASR, HyenaRec, and
+   LLM-ESR; compare mechanism, architecture, data regime, evaluation, and tail
+   claim. State novelty as the HSTU-specific leak-free FIR adaptation and this
+   paired empirical audit, subject to the rerun.
+7. **Freeze a new deposit only after all upstream artifacts agree.** Remove
+   hard-coded v1.1.9 fallbacks, require literal tag verification in check-only
+   mode, cut a new immutable tag, and verify release assets against it from a
+   clean clone.
+8. **Make reproducibility claims externally true.** Upload the exact splits and
+   caches (or a deterministic public reconstruction route) and make missing
+   required assets fatal. If access cannot be public, narrow “full release” and
+   state reviewer-access limitations prominently.
+9. **Cascade Pre-Declared through templates and metadata.** Fix the generator
+   first, then rebuild README, cover letter, CFF, Zenodo metadata, companion,
+   canonical pointers, and release bundle; scan for `pre-reg` variants.
+10. **Rewrite the front end.** Reduce the abstract to the journal's actual
+    limit, likely roughly 200–300 words pending portal verification; center two
+    or three supported contributions; move audit mechanics and negative-probe
+    inventory out of the abstract; update `acmart`; and verify final TORS mode
+    directly against the live submission instructions.
+
+### Open Questions for the Authors
+
+1. Are the prospectively specified nonsingular FIR reruns complete, and can
+   their frozen plan, common initialization, and zero-decay control be shown?
+2. Should invalid BBP artifacts be retained only in a clearly historical
+   archive, or removed entirely from the current paper's evidence graph?
+3. Do independently sampled interaction- and user-thinning datasets exist, or
+   is `subsample_seed=0` the only intervention draw at every rung?
+4. Where can an unauthenticated reviewer obtain and hash-check the 12 splits
+   and four caches currently absent from v0.9?
+5. Which exact review-mode/class/line-number instructions does the current
+   TORS submission portal show? Supply a dated capture or authoritative link.
+6. Which single artifact is intended to be canonical for reviewers until the
+   Markdown/TeX divergence is removed?
+
+### Running Checklist
+
+- [x] Read prior automation memory and compared the new commit range.
+- [x] Preserved the pre-existing dirty generated-manifest change.
+- [x] Re-ran strict numeric/campaign validation.
+- [x] Tested HEAD and literal tagged release boundaries.
+- [x] Inspected live release assets and verifier behavior.
+- [x] Inspected canonical Markdown, TeX, both PDFs, tables, manifests, and
+      support metadata.
+- [x] Checked close novelty claims against primary literature.
+- [x] Distinguished confirmed defects, plausible risks, and author-verification
+      items.
+- [ ] Complete the BBP retraction cascade and delete invalid graph cells.
+- [ ] Regenerate TeX/PDFs with zero unresolved references and disclosure parity.
+- [ ] Run nonsingular FIR controls before mechanistic attribution.
+- [ ] Repeat thinning over independent intervention draws or narrow claims.
+- [ ] Extend the evidence gate to all empirical tables and semantic invariants.
+- [ ] Publish required assets and create a new self-consistent deposit tag.
+- [ ] Complete the Pre-Declared metadata/template cascade.
+- [ ] Rewrite the abstract and verify live TORS format requirements.
+
+## Prior Prioritized Rejection-Risk List (superseded 2026-07-19 15:51)
+
 1. **[CONFIRMED, rejection-level] The BBP/MP "spectral irreducibility"
    result still does not measure the objects claimed in the paper or Figure
    3.** The diagnostic is computed before training from item frequencies,

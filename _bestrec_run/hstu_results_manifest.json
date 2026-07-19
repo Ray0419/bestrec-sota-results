@@ -13865,7 +13865,7 @@
    "table_id": "fir_breadth",
    "row_label": "FIR breadth Industrial_and_Scientific: independent-arm Welch (filter vs no-filter)",
    "metric": "Welch 95% CI on per-arm best_test NDCG@10 (robustness companion)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260713.json",
@@ -13932,7 +13932,7 @@
      "mode": "gt"
     }
    ],
-   "notes": "Graphs the independent-arm robustness CIs printed alongside the pre-declared same-seed analysis (2026-07-19; the arms are not initialization-paired, S5.3 disclosure). Part of the pre-declared breadth campaign family.",
+   "notes": "Graphs the independent-arm robustness CIs printed alongside the pre-declared same-seed analysis (2026-07-19; the arms are not initialization-paired, S5.3 disclosure). Part of the pre-declared breadth campaign family. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "diff": 0.0024015865758802712,
     "t": 10.906610867124693,
@@ -13983,7 +13983,7 @@
    "table_id": "fir_breadth",
    "row_label": "FIR breadth CDs_and_Vinyl: independent-arm Welch (filter vs no-filter)",
    "metric": "Welch 95% CI on per-arm best_test NDCG@10 (robustness companion)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260713.json",
@@ -14050,7 +14050,7 @@
      "mode": "gt"
     }
    ],
-   "notes": "Graphs the independent-arm robustness CIs printed alongside the pre-declared same-seed analysis (2026-07-19; the arms are not initialization-paired, S5.3 disclosure). Part of the pre-declared breadth campaign family.",
+   "notes": "Graphs the independent-arm robustness CIs printed alongside the pre-declared same-seed analysis (2026-07-19; the arms are not initialization-paired, S5.3 disclosure). Part of the pre-declared breadth campaign family. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "diff": 0.005663298288636799,
     "t": 23.926417468202022,

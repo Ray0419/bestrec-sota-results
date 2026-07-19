@@ -481,19 +481,18 @@ def main():
                     help="run the consistency gate and exit without building")
     args = ap.parse_args()
     consistency_gate()
-    if args.check_only:
-        print("check-only: consistency gate passed; no bundle written")
-        return
 
+    # payload-completeness scan runs in BOTH modes (audit 23:08: the check-only branch
+    # previously returned before this scan -- a latent fail-open).
     missing = [f for f in FILES if not os.path.exists(os.path.join(ROOT, f))]
-
     if missing:
-
         for f in missing:
-
             print("MISSING:", f)
-
         raise SystemExit(2)
+
+    if args.check_only:
+        print("check-only: consistency gate + payload-completeness scan passed; no bundle written")
+        return
 
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
 

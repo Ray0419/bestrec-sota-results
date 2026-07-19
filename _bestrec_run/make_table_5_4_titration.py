@@ -14,8 +14,8 @@ Provenance / honesty:
   * Realized train-interactions/item per rung are the values PRINTED IN THE RUN LOGS
     (run_TITR*_s08_VG.log / run_TITRATE_idonly_rho066_VG.log), hardcoded below and
     cited; full density = 24.405, rho=0.66 = 16.109 (= MI's native 16.2).
-  * alpha = (interactions/item) / d_eff with d_eff = 23 (the GD/MP-kept effective rank
-    of the 64-d item-embedding table, section 5.4 BBP analysis); rho=0.66 -> alpha=0.700
+  * (the former alpha = ipi/d_eff column is RETRACTED with the spectral analysis,
+    2026-07-19: no alpha or d_eff quantity is computed or printed anywhere here)
     reproduces the MI-subcritical anchor exactly.
   * INTEGRITY GATE: the recomputed per-rung NDCG head/tail means MUST match the locked
     section-5.4 prose values to 5 decimals, else the script aborts (prevents silent drift).
@@ -63,7 +63,7 @@ RUNGS = [
     (0.78, lambda: titr_files("078"), 19.030),
     (0.66, rho066_files,          16.109),
 ]
-D_EFF = 23.0
+# D_EFF removed 2026-07-19: the alpha/d_eff quantity is retracted (spectral analysis withdrawal).
 
 # Locked section-5.4 prose NDCG means (head, tail) -- the integrity gate
 LOCKED_NDCG = {
@@ -114,7 +114,7 @@ def main():
             print(f"!! INTEGRITY FAIL rho={rho}: recomputed head/tail NDCG "
                   f"{agg[('head','NDCG@10')][0]:+.6f}/{agg[('tail','NDCG@10')][0]:+.6f} "
                   f"vs locked {lh:+.5f}/{lt:+.5f}", file=sys.stderr)
-        rows.append((rho, ipi, ipi / D_EFF, agg))
+        rows.append((rho, ipi, agg))
 
     if not integrity_ok:
         sys.exit("ABORT: recomputed means diverge from locked section-5.4 prose; not emitting table.")
@@ -126,24 +126,24 @@ def main():
 
     print("**Table: section 5.4 interaction-thinning density-titration ladder "
           "(AR2023 Video_Games 5-core LLOO, full-catalog n_eval = 94,762, tail_n = 10,900; "
-          "paired text−ID, best-by-val; 5 seeds = 20260608–12 per rung; mean ± sample-std (positive-seed count)).**\n")
-    print("| ρ | kept inter./item | α=ipp/d_eff | head ΔNDCG@10 | head ΔHR@10 | tail ΔNDCG@10 | tail ΔHR@10 |")
-    print("|---|---|---|---|---|---|---|")
-    for rho, ipi, alpha, agg in rows:
-        print(f"| {rho:.2f} | {ipi:.3f} | {alpha:.3f} | "
+          "same-seed-number text−ID (arms not initialization-paired), best-by-val; 5 seeds = 20260608–12 per rung; mean ± sample-std (positive-seed count)).**\n")
+    print("| ρ | kept inter./item | head ΔNDCG@10 | head ΔHR@10 | tail ΔNDCG@10 | tail ΔHR@10 |")
+    print("|---|---|---|---|---|---|")
+    for rho, ipi, agg in rows:
+        print(f"| {rho:.2f} | {ipi:.3f} | "
               f"{cell(agg[('head','NDCG@10')])} | {cell(agg[('head','HR@10')])} | "
               f"{cell(agg[('tail','NDCG@10')])} | {cell(agg[('tail','HR@10')])} |")
     print()
     print("- **HEAD = CONFIRMED monotone dose-response:** head ΔNDCG rises as ρ falls "
           "(density drops), all rungs 5/5 positive ⇒ Spearman ρ_s(head Δ vs density) = "
-          "−0.94 (NDCG) / −0.71 (HR). Global interaction density **causes** the head text-advantage.")
+          "−0.94 (NDCG) / −0.71 (HR). The head text-advantage rises under this bundled thinning intervention (a level trend; not component-level causal attribution).")
     print("- **TAIL = REFUTED dose-response:** tail ΔNDCG is non-monotone / trend-free; no rung clears "
           "MI's native +0.000335 (5/5) bar; Spearman ρ_s(tail Δ vs density) = −0.14 (n.s.). "
           "Thinning VG to MI's exact density (ρ=0.66, 16.109 inter./item ≈ MI 16.2) does **not** reproduce "
-          "MI's tail win ⇒ global density is a tail *correlate only*, refuted as the tail *cause*. "
-          "(The ρ=0.88 tail bump is non-monotone & Bonferroni-marginal ×7 ⇒ p≈0.09; recorded, not headlined.)")
-    print("- **d_eff = 23** = GD/MP-kept effective rank of the 64-d item-embedding table (section 5.4 BBP analysis); "
-          "α(ρ=0.66) = 0.700 reproduces the MI-subcritical anchor. Realized inter./item are the run-log values; "
+          "MI's tail win ⇒ global density is a tail *correlate only*, not supported as a tail driver. "
+          "(The ρ=0.88 tail bump is non-monotone and does not survive a six-rung Bonferroni correction; recorded, not headlined.)")
+    print("- The former alpha = ipi/d_eff column is RETRACTED with the spectral analysis (2026-07-19); "
+          "no alpha or d_eff quantity is computed here. Realized inter./item are the run-log values; "
           "all numbers re-read from the frozen results_TITR*/TAIL_* JSONs (integrity-gated to the locked section-5.4 NDCG means).")
 
 if __name__ == "__main__":

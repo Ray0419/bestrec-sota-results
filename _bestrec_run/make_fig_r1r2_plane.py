@@ -42,6 +42,7 @@ OUT.mkdir(exist_ok=True)
 C_WIN = "#2ca02c"   # tail text-WIN
 C_NULL = "#7f7f7f"  # tail null
 C_USR = "#1f77b4"   # user-thin (connectivity) intervention arrow
+C_SUG = "#e69f00"   # suggestive point (n.s. under independent-arm analysis)
 C_INT = "#d62728"   # interaction-thin (count) intervention arrow
 
 plt.rcParams.update({
@@ -54,23 +55,19 @@ plt.rcParams.update({
 
 # point = (label, R1 interactions/item, R2 users/item, tail ratio, tail Delta,
 #          pos-seed string, verdict-colour, marker)
+# point = (label, R1, R2, ratio, delta, pos-string, colour, marker, dx, dy, ha)
 PTS = [
-    ("VG full\n(natural)",            24.5, 3.70, 0.971, -0.000148, "2/5", C_NULL, "s"),
-    ("Beauty native\n(natural)",      24.9, 3.51, None,  -0.0000078, "1/3", C_NULL, "s"),
-    ("VG int-thin\n$\\rho$=0.66",     16.2, 3.40, 0.971, -0.000108, "1/5", C_NULL, "o"),
-    ("VG user-thin\n$\\rho_u$=0.66",  16.1, 2.44, 1.046, +0.000178, "5/5", C_WIN,  "o"),
-    ("MI native\n(natural)",          16.2, 2.34, 1.276, +0.000335, "5/5", C_WIN,  "D"),
+    ("VG full\n(natural)",            24.5, 3.70, 0.971, -0.000148, "2/5", C_NULL, "s", 1.4, -0.04, "left"),
+    ("Beauty native\n(natural)",      24.9, 3.51, None,  -0.0000078, "1/3", C_NULL, "s", 0.0, -0.14, "center"),
+    ("VG int-thin\n$\\rho$=0.66",     16.2, 3.40, 0.971, -0.000108, "1/5", C_NULL, "o", 0.0, -0.14, "center"),
+    ("VG user-thin\n$\\rho_u$=0.66",  16.1, 2.44, 1.046, +0.000178, "5/5", C_SUG,  "o", -1.7, 0.14, "center"),
+    ("MI native\n(natural)",          16.2, 2.34, 1.276, +0.000335, "5/5", C_WIN,  "D", 1.9, -0.06, "center"),
 ]
 
 fig, ax = plt.subplots(figsize=(8.2, 6.4))
 
-# ---- shaded connectivity bands (R2 is the targeted axis; descriptive) --------
-ax.axhspan(2.0, 2.55, color=C_WIN, alpha=0.07, zorder=0)
-ax.axhspan(3.30, 3.95, color=C_NULL, alpha=0.07, zorder=0)
-ax.text(27.6, 2.40, "low connectivity\n(R2 $\\lesssim$ 2.5)\n$\\Rightarrow$ text WINS tail",
-        ha="right", va="center", fontsize=8.5, color=C_WIN, fontweight="bold")
-ax.text(27.6, 3.62, "high connectivity\n(R2 $\\gtrsim$ 3.5)\n$\\Rightarrow$ tail NULL",
-        ha="right", va="center", fontsize=8.5, color=C_NULL, fontweight="bold")
+# No shaded bands or threshold texts (audit 2026-07-19 23:08): five regime points
+# cannot support a deterministic connectivity threshold; the plot stays descriptive.
 
 # ---- the matched-R1 vertical: same count (R1~16.2), different connectivity ----
 ax.plot([16.15, 16.15], [2.44, 3.40], color="black", lw=1.0, ls=":", zorder=1)
@@ -90,35 +87,38 @@ ax.text(21.6, 2.78, "user-thinning\n(R2 $\\downarrow$ at matched R1)\ntail moves
         ha="center", va="center", fontsize=8, color=C_USR)
 
 # ---- scatter points ----------------------------------------------------------
-for lbl, r1, r2, ratio, dlt, pf, col, mk in PTS:
+for lbl, r1, r2, ratio, dlt, pf, col, mk, dx, dy, ha in PTS:
     ax.scatter([r1], [r2], s=230, c=col, marker=mk, edgecolors="black",
                linewidths=1.2, zorder=5)
     ratio_s = f"ratio {ratio:.3f}" if ratio is not None else "ratio n/a"
-    dy = 0.10 if r2 < 3.0 else -0.10
     va = "bottom" if dy > 0 else "top"
     ax.annotate(f"{lbl}\n$\\Delta$={dlt:+.6f} ({pf})\n{ratio_s}",
-                xy=(r1, r2), xytext=(r1, r2 + dy),
-                ha="center", va=va, fontsize=7.6)
+                xy=(r1, r2), xytext=(r1 + dx, r2 + dy),
+                ha=ha, va=va, fontsize=7.6)
 
 ax.set_xlabel("R1 = interactions / item  (count / global density)  $\\rightarrow$ denser")
 ax.set_ylabel("R2 = users / item  (collaborative connectivity)  $\\rightarrow$ more connected")
 ax.set_title("The (R1, R2) resource plane: the user-thinned (R2) point crosses;\n"
              "the count-thinned (R1) point does not (descriptive contrast)")
 ax.set_xlim(13.5, 28.0)
-ax.set_ylim(2.05, 3.95)
+ax.set_ylim(2.00, 4.00)
 ax.grid(alpha=0.3)
 
 # legend proxies
 from matplotlib.lines import Line2D
 leg = [
-    Line2D([0], [0], marker="o", color="w", markerfacecolor=C_WIN,
-           markeredgecolor="black", markersize=11, label="tail text-WIN (CI excl 0 / sign 5/5)"),
+    Line2D([0], [0], marker="D", color="w", markerfacecolor=C_WIN,
+           markeredgecolor="black", markersize=11,
+           label="tail text-WIN (MI native: Welch 95% CI excludes 0)"),
+    Line2D([0], [0], marker="o", color="w", markerfacecolor=C_SUG,
+           markeredgecolor="black", markersize=11,
+           label="suggestive only (user-thinned: p=0.058, n.s.; descriptive)"),
     Line2D([0], [0], marker="o", color="w", markerfacecolor=C_NULL,
            markeredgecolor="black", markersize=11, label="tail null (no significant difference)"),
     Line2D([0], [0], color=C_INT, lw=2.2, label="interaction-thin (R1$\\downarrow$): tail-inert"),
     Line2D([0], [0], color=C_USR, lw=2.2, label="user-thin (R2$\\downarrow$): tail crossing (descriptive)"),
 ]
-ax.legend(handles=leg, fontsize=8, loc="lower left", framealpha=0.93)
+ax.legend(handles=leg, fontsize=8, loc="lower right", framealpha=0.93)
 
 fig.text(0.5, -0.02,
          "AR2023 5-core LLOO, full-catalog NDCG@10; VG runs 5-seed best-by-val "

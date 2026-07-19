@@ -4,7 +4,132 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List
+## Current Prioritized Rejection-Risk List (2026-07-19 23:08 Australia/Sydney)
+
+1. **[CONFIRMED, rejection-level] The headline tail estimand remains
+   definition-sensitive and cannot be audited at row level.** The evaluator
+   sorts items by train frequency and cuts exact index thirds
+   (`_bestrec_run/run_sasrec_sbert.py:1387-1397`), so items tied at a boundary
+   are assigned by stable item-ID order rather than by a scientific rule. The
+   nominal tail also includes held-out targets with zero training frequency:
+   106/8,800 Musical_Instruments tail rows, 345/10,900 Video_Games rows, and
+   1,040/71,522 Beauty rows. Musical_Instruments' reported gain is only about
+   9.6 extra HR@10 hits per seed, yet final row-level sidecars needed to remove
+   zero-frequency targets and recompute tie-safe strata are unavailable. The
+   paper now discloses the defect, but disclosure does not identify the claimed
+   positive-frequency long-tail effect. Separate true-cold from positive-
+   frequency items, use tie-safe bins, and rerun/recompute every headline tail
+   statistic before retaining the mechanism narrative.
+2. **[CONFIRMED, rejection-level] FIR attribution and its confirmatory wording
+   remain invalid.** Constructing the optional filter consumes RNG before the
+   shared HSTU layers (`run_sasrec_sbert.py:478-518`), so same-numbered FIR and
+   no-FIR runs do not share encoder initialization. The gate/kernel start is
+   also a singular no-op whose learning begins only through coupled Adam weight
+   decay; the comparator arms do not share that path. Nevertheless,
+   `PAPER_SUBMISSION.md:327-329` and `paper_tex/sections/05-results.tex:78-80`
+   still call the breadth tests paired and "Both confirmed." The new
+   independent-arm Welch intervals are graphed, but they are post-hoc
+   replacements for the pre-declared paired rule and should not inherit a
+   confirmatory label. Clone a common backbone/RNG state, use a nonsingular
+   weight-decay-controlled parameterization, release learned taps/gates, rerun,
+   and adjudicate with the analysis actually pre-declared.
+3. **[CONFIRMED, rejection-level] The spectral/BBP retraction is incomplete.**
+   The invalid graph cell is tombstoned, but `PAPER_SUBMISSION.md:384`,
+   `PAPER_DRAFT.md:409`, and the compiled PDFs still describe the MI-density
+   rung "at alpha=0.700" after saying that alpha was retracted.
+   `_bestrec_run/make_table_5_4_titration.py:17-18,130,145` still derives or
+   prints `d_eff=23`/`alpha=0.700`, and `PAPER_DRAFT.md:781` still advertises
+   the withdrawn column. Remove the concept from generators, source, PDF, and
+   drafting notes, then add a negative-presence gate for both terms.
+4. **[CONFIRMED REPRODUCIBILITY BLOCKER] The release remains inaccessible and
+   the named deposit is stale.** The manuscript now truthfully says the
+   repository is private and that 12 split files plus four text caches
+   (approximately 1.09 GB) are not public (`PAPER_SUBMISSION.md:557`), so an
+   external reviewer still cannot perform a clean reproduction. HEAD verifies
+   all 128 git-backed manifest entries, but literal verification against
+   `v1.1.9-deposit` fails nine files, including both PDFs and both Markdown
+   manuscripts. In addition, `build_deposit_bundle.py --check-only` returns at
+   lines 483-486 before the missing-payload scan at 488-496. Publish a fresh,
+   immutable, clean-clone-tested release and make check-only validate payload
+   existence.
+5. **[CONFIRMED NOVELTY/CITATION BLOCKER] The new literature discussion is an
+   unfinished process note, not submission prose.** `PAPER_SUBMISSION.md:106`
+   and `paper_tex/sections/02-related.tex:59` literally say identifiers are
+   "pending full bibliography entries" and name 11 works without citations or
+   BibTeX records. Closest omitted precedents include C3SASR, AdaMCT, TedRec,
+   AlterRec, Elliot, and DaisyRec 2.0. C3SASR/AdaMCT make causal/local
+   convolution plus attention known, TedRec makes FFT-based text-ID contextual
+   fusion known, and SimRec already reports rare/unseen-item gains that grow on
+   sparse data. The defensible novelty is an incremental exact combination and
+   evaluation, not the generic filter, tail, fusion, or reproducibility ideas.
+6. **[CONFIRMED SUBMISSION BLOCKER] The current TORS PDF and headline figures
+   are structurally unreadable despite passing the text-health gate.** The
+   44-page review PDF's abstract spans pages 1-3 (about 1,850 Markdown words);
+   its dataset table on
+   page 15 visibly collides category/role columns; the Table 1b caption is
+   orphaned on page 17 while the table starts on page 18; Tables 1d/2 and
+   several figure labels are too small; and page 7 contains a large avoidable
+   gap. In the source PNG, the R1/R2 point labels visibly print on top of one
+   another, while the three-panel figure's B/C headings collide. The 49-page
+   reader ends with a nearly empty page 49. Rebuild tables as landscape/
+   continued tables or split them, shorten the abstract radically, redesign
+   both figures, and visually inspect every final page at normal size.
+7. **[CONFIRMED FACTUAL/REPORTING DEFECTS] Several statements remain false or
+   self-contradictory.** The related-work sentence jointly says Mecos and RecGPT
+   address "true zero-history items," although Mecos is explicitly few-shot /
+   limited-interaction cold start and RecGPT evaluates heterogeneous zero-shot
+   and short-history settings. The HSTU-BLaIR BibTeX entry has only `Liu` and
+   gives the title as "...Generative Sequential Recommendation" rather than
+   the v3 title "...Generative Recommender"; it omits the KDD 2025 workshop.
+   Table A1 is called a 20-variant scan but visibly lists rows 1-22. Correct the
+   factual wording, metadata, and table identity before submission.
+8. **[CONFIRMED ASSURANCE DEFECT] A green build still covers only part of the
+   paper.** The strict graph now recomputes 173 cells (153 exact, 20 rounded,
+   zero mismatch/untraceable; 14/14 families) and is valuable. Five generated
+   tables nevertheless declare `checked: 0` (attribution, novelty,
+   dataset/status, older baselines, and Table A1), raster/visual layout is not
+   gated, and the two post-hoc FIR Welch cells are labeled confirmatory even
+   though the frozen rule was paired. Passing automation is evidence of
+   internal consistency only, not validity, novelty, release completeness, or
+   submission readiness.
+9. **[CONFIRMED METHOD-SCOPE RISK] HSTU parity remains constrained rather than
+   train-time parity.** Exactness is demonstrated only after identity affine
+   norms, zeroing the extra `uvqk` bias, matching epsilon, disabling dropout,
+   and evaluating. The trained model changes those choices; no released
+   checkpoint establishes equivalence. Current disclosure is materially
+   improved, but claims must remain "HSTU-style" and aligned-point/equation
+   parity only.
+10. **[CONFIRMED FIGURE CONTRADICTION / CAUSAL-INTERPRETATION RISK] The R1/R2
+    figure still upgrades nonsignificant evidence into a "win."**
+    `_bestrec_run/make_fig_r1r2_plane.py:61,68-71,114-115` colors the
+    user-thinned point green, labels the region "low connectivity ... text
+    WINS tail," and groups it under "CI excl 0 / sign 5/5," even though the
+    within-rung independent-arm test is nonsignificant and the difference-of-
+    differences is only `p=0.058`, CI including zero. More generally, each
+    thinning mode uses one fixed draw and changes examples, targets, updates,
+    and scheduler trajectory; the
+    user-thinning result is correctly downgraded to `p=0.058`. Conn-gate arms
+    used a different checkpoint cadence from the base. These studies support
+    descriptive sensitivity patterns, not a general density/connectivity
+    cause, and should be framed accordingly throughout.
+11. **[AUTHOR VERIFICATION REQUIRED] "Immutable" pre-declarations are
+    overclaimed.** `PAPER_SUBMISSION.md:540` and
+    `paper_tex/sections/07-conclusion.tex:4` call git pre-declarations
+    immutable despite no independent timestamp and a documented commit-
+    equality deviation. Preserve the version-controlled audit trail, but use
+    "committed before execution according to repository history" unless an
+    independent pre-outcome timestamp is supplied.
+12. **[CONFIRMED PARTIAL REPAIRS] Several former blockers are genuinely
+    closed and should stay closed.** Both PDFs now carry the independent-arm
+    user-thinning result (`p=0.058`, CI includes zero) and the live Beauty
+    value (`-0.0000078`, 1/3); the malformed `efsec` text and duplicated Table
+    1e caption are gone; Office pooled-z inference is retracted and replaced by
+    model-seed Welch cells; the replacement FIR Welch intervals are in the
+    graph; taxonomy is substantially narrowed; and the private/missing-assets
+    disclosure reaches TORS. Do not regress these fixes while resolving items
+    1-11.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-19 23:08)
 
 1. **[CONFIRMED SUBMISSION BLOCKER] Both submitted PDFs still publish
    retracted and stale figure evidence.** The 47-page reader and rebuilt
@@ -257,6 +382,268 @@ plausible risks.
     the venue's current template/anonymity rules, supply any independent
     pre-outcome timestamp, repeat thinning across independent subsets, and
     demonstrate a public fresh-clone reconstruction.
+
+## Audit Run - 2026-07-19 23:08 Australia/Sydney
+
+### Audited State and Strict Verdict
+
+- Workspace: `C:\Users\rayxc\Documents\R`. Automation memory was read before
+  inspection. `CANONICAL_SUBMISSION.md` identifies `PAPER_SUBMISSION.md` as the
+  submission source, `PAPER_DRAFT.md` as the working copy, and `paper_tex/` as
+  the generated ACM TORS derivative. There is no canonical Word manuscript;
+  the only `.docx` found is under the explicitly noncanonical
+  `_bestrec_sota_lab/paper_draft/` tree. Three legacy PDFs remain at repository
+  root alongside the canonical reader, so accidental-artifact selection remains
+  an author workflow risk even though the canonical note resolves identity.
+- This run observed an active repair and then audited the committed state at
+  HEAD `8345aef166b233f93404e45d9fb390aef4e40bf1`. The substantive repair is
+  commit `ad3ae07c`; `8345aef1` adds the audit response. The working tree was
+  clean before this audit edit.
+- Current reader: `PAPER_SUBMISSION.pdf`, 49 pages, 1,270,805 bytes, SHA-256
+  `45cf0acfc862315f2c9b712183f09299a3a1179f6ffea3d0a42a77c1cf0dd4b8`,
+  created 2026-07-19 22:42:52 Sydney. Current venue artifact:
+  `paper_tex/PAPER_TORS.pdf`, 44 pages, 446,007 bytes, SHA-256
+  `eb85abb796f763f42a0dcbdb4237318cccd1f073903309fdf1899f2eecfc15f1`,
+  created 2026-07-19 22:43:52 Sydney.
+- **Strict reviewer verdict: reject in present form, with meaningful progress.**
+  The current commit repairs the previous stale-statistic, malformed-reference,
+  pooled-z, and availability-disclosure failures. It still leaves the headline
+  tail estimand unverifiable, FIR attribution/inference confounded, a withdrawn
+  spectral parameter in live artifacts, a substantively misleading headline
+  figure, an unfinished citation round, no public clean reproduction path, and
+  a visibly broken TORS layout.
+
+### Fresh Automated, Source, Release, and Visual Checks
+
+- `_bestrec_run/build_hstu_tables.py --submission`: **PASS**; 173 cells
+  recomputed, eight retirement tombstones, 153 exact, 20 within rounding, zero
+  mismatch/untraceable, all 14 declared claim families sourced.
+- `paper_tex/check_tex_health.py`: **PASS**; 32 sources, 39 labels, 27 reference
+  targets. `paper_tex/scan_pdf.py`: **PASS**; 44 pages, zero placeholder/
+  forbidden failures, 20 informational claim-wording matches. These tools do
+  not assess causal validity, novelty, readability, cohort definitions, or
+  public availability.
+- `update_release_manifest.py --verify-git HEAD`: **PASS**, all 128 git-backed
+  entries match. The same command against `v1.1.9-deposit`: **FAIL**, nine
+  mismatches / 119 matches. The mismatches are
+  `summarize_sota_confirm_v2.py`, `build_hstu_tables.py`, both Markdown
+  manuscripts, both compiled PDFs, `CANONICAL_SUBMISSION.md`,
+  `rebuild_hstu_submission.py`, and `update_release_manifest.py`.
+- `build_deposit_bundle.py --check-only`: **PASS**, but this does not establish
+  payload completeness: the branch returns at lines 483-486 before the missing-
+  file scan at 488-496. This is a confirmed latent fail-open even though no
+  current payload absence was established locally.
+- Both PDFs were rasterized with Poppler and every page inspected. The reader's
+  approximately 1,850-word, seven-paragraph abstract occupies roughly its first
+  three pages; the TORS abstract likewise spans pages 1-3. The TORS dataset table
+  on page 15 has visibly colliding text; Table 1b's caption is orphaned across
+  pages 17-18; Tables 1d/2 and several figure labels are too small at normal
+  page scale; page 7 has a large unused gap. Reader page 49 contains only a short
+  closing appendix fragment.
+- The original headline PNGs were also inspected. `fig_r1r2_plane.png` has
+  multiple point labels printed over one another around R1 approximately 16 /
+  R2 approximately 2.4-2.7. In `fig_tail_law_mechanism.png`, the panel B and C
+  titles collide. This is not cosmetic polish: the former also encodes the
+  nonsignificant user-thinned point as a green tail win.
+
+### Confirmed Repairs Since the 22:08 Audit
+
+- **Figures and TORS corruption:** both compiled PDFs now show the corrected
+  user-thinning inference (`p=0.058`, CI includes zero) and current Beauty
+  estimate (`-0.0000078`, 1/3); the retired `t=3.47, CI excl 0` and
+  `-0.000018, 0/2` values are gone. The visible `efsec` corruption and duplicate
+  Table 1e caption are also gone.
+- **Office inference:** the pooled two-proportion z test that counted recurring
+  users under seeds/arms as independent is explicitly retracted. The graph now
+  contains model-seed independent-arm Welch results. This closes the specific
+  pseudoreplication claim, while leaving small-n and missing user-sidecar limits.
+- **Artifact graph:** the independent FIR breadth Welch intervals now have graph
+  nodes, and most post-hoc multi-seed cells were downgraded to exploratory. The
+  blanket prefix rule still wrongly allows the post-hoc `firb.*.welch` cells to
+  inherit `confirmatory` status.
+- **Reporting scope:** TORS now contains the private-repository and missing-
+  asset disclosure; the causal conclusion is more cautious; the HSTU claim is
+  scoped to an aligned configuration; the conn-gate cadence mismatch is
+  disclosed; the seed-count wording distinguishes five seeds per arm from ten
+  arm-runs; several ratios, cross-references, and projection descriptions were
+  corrected.
+
+### Confirmed Remaining Problems
+
+1. **Tail cohort and missing row-level evidence.** The exact-index tercile
+   implementation (`run_sasrec_sbert.py:1387-1397`) makes the result depend on
+   arbitrary ordering within frequency ties and mixes true zero-train-exposure
+   targets with positive-frequency long-tail targets. The manuscript discloses
+   the counts but cannot answer the decisive question because the necessary
+   final row sidecars are absent. Disclosure is not a robustness analysis.
+2. **FIR treatment is not a clean filter contrast.** Text modules are
+   constructed before shared position/encoder layers
+   (`run_sasrec_sbert.py:405-438`), and the optional FIR `Conv1d` is constructed
+   before the HSTU stack (`:478-518`). Thus both text-vs-ID and FIR-vs-no-FIR
+   same-seed comparisons can alter the shared initialization/RNG path. The FIR
+   learning path is additionally coupled to Adam weight decay. The correct
+   estimand is presently a filter-plus-initialization/optimizer package, not a
+   component effect.
+3. **Invalid paired breadth conclusion survives.** The preregistration freezes
+   a paired Student-t rule (`PREREG_FIR_BREADTH.md:54-65`), but the arms are not
+   initialization-paired. `PAPER_SUBMISSION.md:327-329` and
+   `05-results.tex:78-80` nevertheless preserve "paired," "Both confirmed,"
+   and paired CIs as the verdict. Independent-arm Welch intervals are a useful
+   post-hoc robustness check, not execution of the frozen rule; graph cells
+   `firb.is.welch` and `firb.cd.welch` are incorrectly labeled confirmatory by
+   the prefix allowlist at `build_hstu_tables.py:1764-1771`.
+4. **Incomplete spectral retraction.** Live prose still says "at alpha=0.700"
+   (`PAPER_SUBMISSION.md:384`; `PAPER_DRAFT.md:409`; TORS results), the generator
+   still carries/prints `d_eff=23` and alpha, and drafting notes still advertise
+   the withdrawn table. A reader encounters a numerical claim after being told
+   that the quantity was invalid and removed.
+5. **Misleading R1/R2 figure.** The green shading/text says low connectivity
+   implies "text WINS tail," and the legend groups the user-thinned point under
+   "CI excl 0 / sign 5/5" (`make_fig_r1r2_plane.py:61,68-71,114-115`). Yet the
+   manuscript says its within-rung independent test is nonsignificant and the
+   difference-of-differences is merely suggestive (`p=0.058`, CI includes zero).
+   The plot must use neutral/descriptive encoding and cannot draw a deterministic
+   threshold from these five regime points.
+6. **Unfinished bibliography and novelty boundary.** The submission literally
+   carries an internal process note — "identifiers cited pending full
+   bibliography entries" — at `PAPER_SUBMISSION.md:106` /
+   `02-related.tex:59`. None of the 11 named works has a BibTeX record or normal
+   citation. `\nocite{*}` (`paper-shared.tex:79-81`) cannot repair missing
+   entries and instead masks dead-entry hygiene.
+7. **Factual and table contradictions.** The joint Mecos/RecGPT "true zero-
+   history items" statement conflates different cold-start settings. The
+   HSTU-BLaIR entry at `references.bib:167-171` is missing Yijun Liu's given
+   name, adds "Sequential Recommendation" to the v3 title, and omits its KDD
+   2025 workshop status. Table A1 says 20 variants but contains numbered rows
+   1-22 (`PAPER_SUBMISSION.md:649-676`; `paper_tex/tables/tableA1.tex`).
+8. **Release is disclosed but not delivered.** `PAPER_SUBMISSION.md:557`
+   acknowledges the private repository and missing approximately 1.09 GB of
+   split/cache assets. This is honest, but it remains a top-journal
+   reproducibility blocker. The deposit tag is also nine files behind current
+   HEAD.
+9. **Assurance boundary.** Five generated tables are explicitly `checked: 0`:
+   attribution, novelty, dataset/status, older baselines, and Table A1. The
+   current green graph therefore does not justify "every table cell" language
+   without the paper's artifact-gated qualifier, and it does not detect the
+   20-versus-22 error or visual failures.
+
+### Novelty and Factual Checks Against Primary Sources
+
+- [C3SASR](https://arxiv.org/abs/2211.01297) already combines cheap causal
+  convolution with self-attentive sequential recommendation, and
+  [AdaMCT](https://doi.org/10.1145/3583780.3614773) combines a local
+  convolutional filter with global Transformer attention. These do not prove
+  that the exact zero-init depthwise FIR + HSTU + all-position + full-catalog
+  combination is known, but they make the broad causal/local-convolution-with-
+  attention claim incremental.
+- [TedRec](https://arxiv.org/abs/2402.18166) performs sequence-level text-ID
+  fusion in the frequency domain and relates it to contextual convolution;
+  [AlterRec](https://aclanthology.org/2025.ijcnlp-long.12/) directly studies
+  failure of naive ID/text fusion. Both belong in the closest-work boundary.
+- [SimRec](https://www.amazon.science/publications/simrec-mitigating-the-cold-start-problem-in-sequential-recommendation-by-integrating-item-similarity)
+  explicitly evaluates rare (fewer than ten) and unseen items and reports
+  larger benefits on sparse than dense datasets. The present tail contribution
+  should therefore be graded as an incremental full-catalog/cross-category
+  extension or replication, not "moderate" without stronger differentiation.
+- [Elliot](https://arxiv.org/abs/2103.02590) is an executable reproducible
+  recommender-evaluation framework, and
+  [DaisyRec 2.0](https://arxiv.org/abs/2206.10848) standardizes rigorous
+  evaluation after reviewing 141 papers. The exact per-cell/self-VOIDing bundle
+  may still be distinctive, but its novelty requires comparison against these
+  frameworks rather than only general accountability papers.
+- The [official Mecos record](https://ojs.aaai.org/index.php/AAAI/article/view/16601)
+  describes limited/few interactions, not a universal zero-history-item setup.
+  [RecGPT](https://aclanthology.org/2025.emnlp-main.513.pdf) contains both
+  zero-shot transfer language and short-history cold-start experiments, so the
+  current joint one-clause characterization is too coarse.
+- [HSTU-BLaIR v3](https://arxiv.org/abs/2504.10545v3) gives the exact title
+  "HSTU-BLaIR: Lightweight Contrastive Text Embedding for Generative
+  Recommender," author Yijun Liu, and KDD 2025 LLMs for E-Commerce workshop
+  status. The current bibliography metadata does not match it.
+
+### Plausible Risks and Author Verification
+
+- **[PLAUSIBLE]** The paper still evaluates only early additive frozen-text
+  fusion, while nearby decoupled/alternative fusion methods exist. The newly
+  narrowed prose is appropriate; ensure the abstract, captions, and conclusion
+  never generalize the observed text-vs-ID behavior beyond this construction.
+- **[PLAUSIBLE]** Seed-level Welch inference with five trained models per arm is
+  a defensible improvement over pooled users but offers limited uncertainty
+  resolution and no user-clustered population inference. Do not describe it as
+  closing all statistical uncertainty.
+- **[AUTHOR VERIFICATION REQUIRED]** Supply independent evidence that each
+  claimed pre-declaration preceded outcome access, or replace "immutable" with
+  auditable repository-history wording. The documented commit-equality
+  deviation makes the stronger adjective especially unsafe.
+- **[AUTHOR VERIFICATION REQUIRED]** Confirm the exact TORS portal's current
+  anonymity, source-package, and template requirements. The generic ACM
+  `[manuscript,review,anonymous]` mode is plausible and review line numbers are
+  expected; the substantive layout defects, not line numbering itself, are the
+  confirmed formatting problem.
+- **[AUTHOR VERIFICATION REQUIRED]** Remove or watermark the three legacy root
+  PDFs, or document why they cannot be mistaken for submission artifacts.
+
+### Concrete Fix Order
+
+1. **P0 empirical validity:** export final per-row records; create a zero-
+   frequency bin and tie-safe positive-frequency strata; recompute MI/VG/Beauty
+   tail estimates and the cross-dataset contrast. Retract the headline tail
+   mechanism if the MI result is subgroup-driven.
+2. **P0 FIR validity:** clone a common initialized backbone into FIR/no-FIR
+   arms, control RNG streams and optimizer bootstrap, rerun the four-category
+   comparison, publish taps/gates, and adjudicate an analysis matched to the
+   design. Until then remove paired/confirmed/component-causal language.
+3. **P0 artifact truth:** delete all alpha/`d_eff` residue; recode the R1/R2
+   figure as descriptive with neutral colors; fix overlapping labels/titles;
+   correct Table A1's count; rebuild both PDFs and visually inspect every page.
+4. **P1 scholarship:** turn the literature process note into cited prose; add
+   C3SASR, AdaMCT, TedRec, AlterRec, SimRec, Elliot, and DaisyRec; correct
+   Mecos/RecGPT and HSTU-BLaIR metadata; narrow novelty grades.
+5. **P1 reproducibility:** publish a clean repository snapshot and all promised
+   assets (or a tested regeneration path), mint a new immutable tag, make
+   `--check-only` scan payloads, and verify a fresh clone against that tag.
+6. **P1 presentation:** replace the approximately 1,850-word abstract with a
+   conventional concise abstract; split/rotate malformed tables; remove orphan
+   captions and empty-page residue; verify normal-size readability.
+7. **P2 assurance/wording:** graph or manually lock the five unchecked tables,
+   replace prefix-based evidence taxonomy with cell-level provenance, remove
+   "immutable" absent external timestamping, and retain the aligned-only HSTU
+   parity boundary.
+
+### Open Questions
+
+1. Can final row-level records be regenerated for every headline tail arm, and
+   do the MI results survive removal of zero-frequency targets plus tie-safe
+   strata?
+2. Can the FIR/no-FIR arms be rerun from an actually cloned backbone, or will
+   the paired/confirmatory claims be retracted before submission?
+3. What independent timestamp, if any, establishes outcome-blind
+   pre-declaration beyond mutable repository history?
+4. Which two rows in Table A1 are replications/ablations rather than variants,
+   or should the caption simply say 22 entries?
+5. When will the current 128-entry manifest, 12 splits, four caches, and both
+   current PDFs be available from one immutable public tag?
+6. Is ACM TORS the confirmed submission target, and has the exact current
+   portal accepted the source/PDF package in its present review mode?
+
+### Running Checklist
+
+- [x] Read prior automation memory and preserve cumulative history.
+- [x] Identify the canonical source, TeX derivative, PDFs, appendices,
+      figures, bibliography, results, and legacy/noncanonical artifacts.
+- [x] Recompute the 173-cell strict graph and verify all 14 declared families.
+- [x] Run TeX health and PDF hygiene scans.
+- [x] Render and inspect all 49 reader pages and all 44 TORS pages.
+- [x] Inspect both headline source PNGs at original resolution.
+- [x] Verify current HEAD manifest and explicitly test the named deposit tag.
+- [x] Fact-check closest novelty/factual claims against primary sources.
+- [x] Separate genuine repairs from remaining defects.
+- [ ] Recompute headline tail results with zero-frequency/tie-safe cohorts.
+- [ ] Rerun FIR comparisons from cloned common initializations.
+- [ ] Remove all spectral-retraction residue and misleading figure encodings.
+- [ ] Finish bibliography integration and correct metadata/factual wording.
+- [ ] Produce a readable, concise, visually clean submission package.
+- [ ] Publish and clean-clone-verify an immutable complete release.
 
 ## Audit Run - 2026-07-19 22:08 Australia/Sydney
 

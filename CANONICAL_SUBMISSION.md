@@ -15,10 +15,14 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
    implementation itself (best full-eval epoch NDCG@10 = 0.0406 exactly; environment-caveated
    single run, §5.6 / `THEIRS_ON_OURS_REPORT.md`) — regeneration, never "official reproduction".
    Evidence: `SOTA_CONFIRM_PREREG_V2.md` → `SOTA_CONFIRM_V2_RESULTS.md` (+ errata).
-2. **Causal FIR filter:** multi-seed lever confirmed on **four categories** (Video_Games +
+2. **Causal FIR filter:** multi-seed lever supported on **four categories** (Video_Games +
    Musical_Instruments in development; Industrial_and_Scientific + CDs_and_Vinyl under the
-   pre-declared breadth campaign `PREREG_FIR_BREADTH.md` / `FIR_BREADTH_RESULTS.md`,
-   both CONFIRMED, 10/10 seeds, CIs exclude zero). Comparator ablations **complete** (5-seed × 2 arms, manuscript §5.2):
+   pre-declared breadth campaign `PREREG_FIR_BREADTH.md` / `FIR_BREADTH_RESULTS.md` —
+   both categories fired the frozen decision rule ("CONFIRMED" per its mechanical
+   adjudication), with the rule's *paired interpretation withdrawn* 2026-07-19 (same-seed
+   arms are not initialization-paired; manuscript §5.3): the primary supported analysis is
+   the conservative post-hoc independent-arm Welch, both 95% CIs excluding zero; the
+   treatment is the FIR-plus-initialization/optimizer package). Comparator ablations **complete** (5-seed × 2 arms, manuscript §5.2):
    the learned kernel carries the effect (fixed moving-average keeps ~59%); the zero-init gate
    is a training convenience. Artifacts: `results_FIRABL_*` (manifest family `tableV2conf`/FIR
    cells).
@@ -85,3 +89,7 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
   `STRICT_RESUBMISSION_AUDIT_ROUND2_2026-07-11.md`), `RESPONSE_TO_*.md`
 
 Old-track artifacts (`archive_noncanonical/`, `_bestrec_sota_lab/paper_draft/`) feed nothing here.
+
+## Noncanonical root-level PDFs (disambiguation note, 2026-07-19)
+
+Three legacy PDFs at the repository root are **not** part of this submission and must not be mistaken for submission artifacts: `BERT-Embedded Self-attention Transformer Recommender (BEST-Rec)_ Tackling Sparsity and Cold-Starts.pdf`, `BEST_Rec_v4_Sections_3-8.pdf`, and `BEST_Rec_v4_Sections_3-8_Elaborated.pdf` — they are the maintainer's separate earlier manuscript line (noncanonical, unmanifested, never cited by the canonical papers; disposition is the maintainer's call). The only canonical root PDF is `PAPER_SUBMISSION.pdf` (reader rendering); the venue artifact is `paper_tex/PAPER_TORS.pdf`.

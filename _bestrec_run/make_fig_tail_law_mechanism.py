@@ -36,13 +36,13 @@ C_TAIL = "#1f77b4"
 
 plt.rcParams.update({
     "font.size": 10,
-    "axes.titlesize": 11,
+    "axes.titlesize": 9,
     "axes.titleweight": "bold",
     "figure.dpi": 140,
     "savefig.bbox": "tight",
 })
 
-fig, axes = plt.subplots(1, 3, figsize=(15, 4.6))
+fig, axes = plt.subplots(1, 3, figsize=(15.6, 4.8))
 
 # ================================================================== Panel A
 # 5.3 Table 1d: text - ID tail contrast (same-seed-number arms; NOT initialization-paired).
@@ -135,6 +135,7 @@ axC.set_ylim(0.93, 1.32)
 axC.legend(fontsize=8, loc="upper left")
 axC.grid(alpha=0.3)
 
+fig.tight_layout(pad=1.4, w_pad=2.8, rect=(0, 0, 1, 0.90))
 fig.suptitle(
     "Dataset-conditional long-tail pattern and its two-axis descriptive contrast (bundled interventions; one fixed draw) "
     "(AR2023 5-core LLOO, full-catalog, NDCG@10; all values 5-seed best-by-val "

@@ -1767,7 +1767,8 @@ def build_spec():
     PREDECLARED_PREFIXES = ("v2conf.", "officev3.", "firb.", "t2.conngate.")
     for c0 in C:
         if c0.get("evidence_class") == "confirmatory" and \
-                not c0["cell_id"].startswith(PREDECLARED_PREFIXES):
+                (not c0["cell_id"].startswith(PREDECLARED_PREFIXES)
+                 or c0["cell_id"].endswith(".welch")):
             c0["evidence_class"] = "exploratory"
             c0["notes"] = (c0.get("notes", "") + " [Evidence class set to exploratory under "
                            "the selection-timing criterion, 2026-07-19: multi-seed post-hoc "

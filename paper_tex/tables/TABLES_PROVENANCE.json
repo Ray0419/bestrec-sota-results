@@ -251,8 +251,8 @@
    "out": "tableA1.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    653,
-    676
+    664,
+    687
    ],
    "family": "md-only (pandoc-converted; no JSON family)",
    "crosscheck": {

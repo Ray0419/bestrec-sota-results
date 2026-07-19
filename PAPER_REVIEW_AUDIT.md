@@ -6,6 +6,569 @@ plausible risks.
 
 ## Current Prioritized Rejection-Risk List
 
+1. **[CONFIRMED, rejection-level] The BBP/MP "spectral irreducibility"
+   result still does not measure the objects claimed in the paper or Figure
+   3.** The diagnostic is computed before training from item frequencies,
+   embedding dimension, and assumed spike strengths; it reads no embedding,
+   singular value, or singular vector. Its rho is an eigenvector-overlap
+   formula, not a fraction of items/directions above an empirical edge. The
+   reported rank is measured after a hard-threshold intervention overwrites
+   the embedding table, and no released artifact reports the hard-coded
+   d_eff=23.
+2. **[CONFIRMED, rejection-level] The headline causal-FIR parameterization is
+   singular at initialization and silently relies on optimizer L2 decay to
+   begin learning.** A delta kernel makes y=x while the scalar gate is exactly
+   zero in x+g(y-x), so task-loss gradients are exactly zero for both the gate
+   and kernel. A direct torch 2.2.2 probe reproduced zero gradients; the first
+   Adam step changes the kernel only because weight_decay=1e-5 is applied.
+   Fixed-average and no-gate ablations do not share this bootstrap, so the
+   claimed one-factor attribution is confounded and the method description is
+   incomplete.
+3. **[CONFIRMED, high credibility risk] "Pre-Registered" in the title and
+   repeated campaign labels is unsupported by the disclosed evidence.** The
+   paper admits the plans are only commit-ordered and have no independent
+   external timestamp; the campaign files contain git evidence but no registry
+   record or reviewer link. Standard preregistration guidance defines the
+   practice as submitting an advance plan to a registry. The defensible term
+   is pre-declared or pre-specified unless a genuine pre-outcome registration
+   exists.
+4. **[CONFIRMED, rejection-level] The central mechanism decomposition exceeds
+   its inference.** The paper calls the pattern a tested double dissociation
+   while admitting the ladder interaction is nonsignificant. User-thinning
+   changes user composition, histories, degrees, and topology together, and
+   all five optimizer seeds reuse one subsample_seed=0 intervention draw.
+   "Connectivity alone," a causal decomposition, and an identified residual
+   content factor therefore do not follow.
+5. **[CONFIRMED, rejection-level] The advertised v0.9 split/cache evidence is
+   absent from the live release and its verifier is fail-open.** Twelve splits
+   plus four caches totaling 1,090,564,135 bytes are called release assets but
+   are not attached; missing assets are printed as SKIPPED and verification
+   returns success. The live repository is private.
+6. **[CONFIRMED SUBMISSION BLOCKER] The current manifest and the advertised
+   current deposit do not describe the same paper.** RELEASE_MANIFEST.json
+   names v1.1.9-deposit as the literal reviewer-facing target, but
+   --verify-git v1.1.9-deposit fails on seven files, including both manuscript
+   PDFs, both canonical Markdown copies, the verifier, the wrapper, and the MI
+   adjudicator. HEAD passes. The release assets also have different sizes and
+   hashes from the current canonical PDFs.
+7. **[CONFIRMED] The artifact gate still excludes empirical content it is
+   rhetorically used to certify.** Table A1 and the dataset/status table remain
+   family=md-only and checked:0. Table A1 has 22 experimental rows but is
+   repeatedly called a 20-variant scan. The six dataset-count rows do match the
+   local CSVs exactly in this audit, but neither those values nor their
+   PASS/VOID/CONFIRMED status labels are in the fail-closed graph.
+8. **[CONFIRMED] The methods and result narrative contain multiple checkable
+   contradictions.** The paper says every headline configuration trains 40
+   epochs, while MI, Office V3, and FIR-breadth artifacts specify 20. The
+   seven-rung ladder has six rungs; NDCG and HR reverse despite monotonic
+   wording; TAPE contradicts the no-positive-capacity-probe thesis; FIR
+   contributes 77--82% rather than "alone" carrying transfer; and the MI
+   ablation compares a four-seed base with five-seed treatment arms.
+9. **[CONFIRMED] Statistical and comparator conclusions remain broader than
+   their evidence.** Optimizer reruns on fixed datasets do not estimate
+   category or intervention-subset uncertainty. The cross-dataset Welch test
+   cannot establish a population-level "real between-dataset effect." Two
+   unpinned, nondeterministic, single reference runs cannot decompose the
+   Office floor anomaly completely or exclude split/evaluation effects.
+10. **[CONFIRMED] The assurance apparatus is under-evaluated and uses
+    reproducibility terminology too broadly.** There is no fault corpus,
+    detection-recall/false-pass estimate, coverage metric, independent audit,
+    or clean-room rerun. ACM terminology classifies same-team same-setup reruns
+    as repeatability, not independent reproducibility. The repaired MI
+    adjudicator still accepts missing commit/dirty fields and arbitrary n_eval
+    when used alone, and the generated hstu_tables.json embeds an OS-specific
+    path separator.
+11. **[CONFIRMED] The novelty and baseline spine is incomplete.** C3SASR and
+    HyenaRec are close convolutional sequential recommenders; TASTE, AlterRec,
+    and especially NeurIPS 2024 LLM-ESR directly establish semantic/text
+    benefits for long-tail recommendation. None is cited. The defensible
+    novelty is a narrow HSTU/AR2023 adaptation and paired empirical study, not
+    the general causal-convolution or text-helps-tail ideas.
+12. **[CONFIRMED] The front end is not top-journal ready.** The abstract is
+    1,849 words and occupies four reader-PDF pages; eight heterogeneous
+    contributions mix governance, modeling, negative probes, implementation,
+    and debugging. The title/RQs/experiments do not formally evaluate the
+    claimed lead apparatus.
+13. **[CONFIRMED SUBMISSION BLOCKER] The TORS artifact still uses
+    manuscript,review,anonymous with line numbers although current TORS
+    guidance says manuscript,screen, remove line numbers, and single-blind
+    review.** The vendored acmart is v2.03 while CTAN lists v2.19. The 41-page
+    PDF renders legibly, but page 28 is nearly blank and several tables are too
+    dense.
+14. **[CONFIRMED FIX WITH CAVEAT] The ordinary numerical graph is green and
+    the prior MI exit-code defect is fixed.** The strict run recomputed 168
+    cells (149 exact, 19 rounded, zero mismatch/untraceable; 14/14 families),
+    and the all-missing MI probe now exits 2. These are real repairs, but they
+    do not validate the FIR learning mechanism, BBP semantics, excluded
+    tables, missing assets, stale deposit, or causal claims above.
+
+## Audit Run - 2026-07-19 14:53 Australia/Sydney
+
+### Audited State
+
+- Workspace: C:\Users\rayxc\Documents\R.
+- Prior automation memory was read from
+  C:\Users\rayxc\.codex\automations\hourly-strict-paper-audit\memory.md.
+- Audited HEAD: ba100f99cc16c9f088f37eddbdfdde1313616bbf. The worktree was
+  clean before this audit edit.
+- Since the prior audited commit 33c3c183511c, two commits changed only the
+  cumulative audit, release manifest, response log, MI summarizer, and strict
+  wrapper. PAPER_SUBMISSION.md, PAPER_DRAFT.md, paper_tex, figures, and the
+  result JSONs are unchanged.
+- Canonical sources, TeX derivatives, generated tables, result manifests,
+  adjudicators, release tooling, live GitHub release inventories, preregistration
+  files, and prior responses were inspected. Important novelty, terminology,
+  and venue claims were checked against primary/official sources.
+- PAPER_SUBMISSION.pdf was rendered to 46 PNG pages and
+  paper_tex/PAPER_TORS.pdf to 41 PNG pages. All 87 pages were inspected in
+  contact sheets; reader pages 1, 30, and 46 and TORS page 28 were inspected at
+  full resolution. There is no clipping, overlap, or broken glyph rendering.
+- This run updates PAPER_REVIEW_AUDIT.md and automation memory only. It does
+  not edit the manuscript, analysis code, results, release, or PDFs.
+
+### Strict Reviewer Verdict
+
+**Reject in present form; major methodological and artifact repair is required
+before a top-journal submission.**
+
+The incoming MI fail-open repair works: the true data pass, an all-missing
+directory now returns exit code 2, and the strict wrapper requires both exit
+zero and the PASS verdict token. That closes the exact defect reported in the
+previous audit.
+
+It does not materially change the paper verdict. No manuscript claim was
+repaired in the incoming commits, and this audit found three additional
+load-bearing problems:
+
+1. the causal-FIR module cannot receive any task-loss gradient at its stated
+   initialization and starts moving only because Adam's L2 decay perturbs the
+   delta kernel;
+2. the title calls the study pre-registered even though the disclosed evidence
+   is pre-declaration in git without a registry or independent timestamp; and
+3. the manifest's named reviewer target, v1.1.9-deposit, fails its own
+   --verify-git command on seven files.
+
+The first confounds the headline architectural attribution, the second
+overstates the study design, and the third breaks the claimed single
+reviewer-facing artifact boundary. The BBP figure, causal decomposition,
+missing release assets, incomplete table coverage, novelty gaps, and venue
+packaging defects also remain live.
+
+### Confirmed Fixes And Non-Problems Since The Prior Audit
+
+1. **The MI process-status defect is fixed.**
+   _bestrec_run/summarize_sota_confirm_v2.py now returns 2 when its verdict is
+   FAIL. _bestrec_run/rebuild_hstu_submission.py requires return code 0 and the
+   DUAL GATE VERDICT: PASS token. An all-missing directory printed FAIL and
+   exited 2; an in-memory return-zero-plus-FAIL simulation was rejected.
+2. **The ordinary strict chain remains green.** It reproduced 168 cells: 149
+   exact and 19 within rounding, with zero mismatch/untraceable and all 14
+   declared families sourced. MI V2, Office V3, and both FIR-breadth gates
+   passed; Office V1 remained descriptive and VOID.
+3. **Exact-path result binding remains repaired.** All ten MI_rebuild entries
+   resolve to the rebuild_v2 paths and hashes. --verify-git HEAD passed for all
+   128 git-backed entries.
+4. **The six dataset-table counts are numerically correct.** A fresh streaming
+   scan of train/valid/test CSVs exactly reproduced every printed users, items,
+   and total-interaction count. The problem is gate coverage, not those six
+   numbers.
+5. **SILLM4Rec is now handled correctly.** The paper labels its official
+   500-user, ten-candidate sampled evaluation as non-comparable to this
+   full-catalog protocol.
+6. **Current PDFs are technically renderable.** No page has clipping,
+   overlap, missing content, or corrupted glyphs. Layout and venue-mode
+   problems remain below.
+
+### Dynamic Commands And Evidence
+
+- Strict rebuild at ba100f99:
+  - core HSTU parity max difference 0.0;
+  - 168 cells, 149 exact, 19 rounded, zero mismatch/untraceable;
+  - 14/14 declared families sourced;
+  - local release-manifest verification: 153 files;
+  - MI V2, Office V3, and both FIR-breadth adjudicators passed;
+  - final exit 0 and SUBMISSION REBUILD: PASS.
+- MI negative probe:
+  - ten missing files;
+  - DUAL GATE VERDICT: FAIL;
+  - exit code 2.
+- FIR gradient probe under torch 2.2.2+cu121:
+  - max absolute y-x at initialization: 0.0;
+  - gate task gradient: 0.0;
+  - kernel task gradient: 0.0;
+  - first Adam step with weight_decay=1e-5 changed the kernel by about
+    9.99e-4 while the gate remained zero.
+- Git-boundary checks:
+  - --verify-git HEAD: PASS, 128 entries;
+  - --verify-git v1.1.9-deposit: FAIL, seven mismatches;
+  - mismatches: summarize_sota_confirm_v2.py, PAPER_SUBMISSION.md,
+    PAPER_SUBMISSION.pdf, PAPER_DRAFT.md, rebuild_hstu_submission.py,
+    update_release_manifest.py, and paper_tex/PAPER_TORS.pdf;
+  - build_deposit_bundle.py --check-only nevertheless passed its HEAD-oriented
+    consistency check.
+- Live releases:
+  - repository visibility: PRIVATE;
+  - v0.9-audit-evidence contains only pinned_env_parity_artifacts.zip
+    (9,886,033 bytes) and RELEASE_MANIFEST.json;
+  - no named split or text-cache assets are attached;
+  - v1.1.9 PAPER_SUBMISSION.pdf is 1,394,547 bytes versus current 1,390,453;
+  - v1.1.9 PAPER_TORS.pdf is 462,800 bytes versus current 464,882.
+- Dataset-table independent scan:
+  - Video_Games: 94,762 users, 25,612 items, 814,586 interactions;
+  - Musical_Instruments: 57,439 / 24,587 / 511,836;
+  - Office_Products: 223,308 / 77,551 / 1,800,878;
+  - Beauty_and_Personal_Care: 729,576 / 207,649 / 6,624,441;
+  - Industrial_and_Scientific: 50,985 / 25,848 / 412,947;
+  - CDs_and_Vinyl: 123,876 / 89,370 / 1,552,764.
+- Manuscript/PDF checks:
+  - abstract: 1,849 words, seven non-empty source paragraphs, reader pages 1-4;
+  - reader PDF: 46 letter pages;
+  - TORS PDF: 41 letter pages with line numbers;
+  - TORS page 28 contains roughly ten lines above a nearly empty page.
+
+### Confirmed Problems
+
+#### CP-1 - The causal-FIR learning mechanism is singular and the ablation attribution is confounded
+
+The paper and code initialize the depthwise kernel to an exact causal delta and
+the residual gate to g=0, then compute x_new=x+g(y-x). At that point y=x
+exactly. Therefore the gate gradient is proportional to y-x and is zero, while
+the kernel gradient is multiplied by g and is also zero.
+
+The implementation places every parameter in torch.optim.Adam with
+weight_decay=1e-5. PyTorch Adam's coupled L2 term changes the nonzero delta tap
+even when the data-loss gradient is zero. Only after this optimizer-induced
+perturbation makes y different from x can the zero gate receive a task
+gradient. A direct probe reproduced exactly that sequence.
+
+This matters scientifically:
+
+- the optimizer regularizer is part of the method's learning mechanism but is
+  not disclosed as such;
+- with weight decay disabled, the stated full parameterization is an absorbing
+  no-op and cannot learn;
+- the fixed-average arm starts with y different from x, so its gate can learn
+  immediately;
+- the no-gate arm fixes g=1, so its kernel receives a task gradient
+  immediately; and
+- those arms therefore change the optimization path as well as the named
+  design component, contrary to the "exactly one design element" framing.
+
+Required repair: reparameterize the filter so at least one task gradient is
+nonzero at initialization, or state and test the optimizer bootstrap
+explicitly. Run weight_decay=0 and trajectory diagnostics, log gate and kernel
+norms from the first step, and rerun the multi-seed filter/no-filter,
+fixed-average, and no-gate comparisons under a nonsingular common
+parameterization.
+
+#### CP-2 - The BBP/MP figure remains scientifically invalid as labeled
+
+No manuscript or code change touched this issue. The plotted rho values are
+computed before training from frequency, dimension, and fixed ell values. The
+code does not inspect the item-embedding spectrum. The figure relabels the
+formula as an item/direction fraction and calls ell an SVD rank. The effective
+rank is then measured after the GD1 intervention repeatedly truncates and
+overwrites the table. Released intervention runs report 24 and 22; the
+titration hard-codes 23.
+
+The response promises a later retraction, but Figure 3, Table 1e's alpha
+normalization, and the "no representation-side lever can rescue it" conclusion
+remain in both current PDFs. Until they are removed or replaced by a
+prospectively specified untreated-checkpoint analysis, this is a
+rejection-level misinterpretation.
+
+#### CP-3 - The title and campaign labels overstate pre-declaration as preregistration
+
+PAPER_SUBMISSION.md and paper_tex/paper-shared.tex still begin with
+"Pre-Registered." The body repeatedly says pre-registration and
+pre-registered campaign. Yet the abstract explicitly says the evidence is
+commit-ordered and carries no independent external timestamp. Searching all
+five campaign-plan files found commit/freeze language but no OSF record,
+registry identifier, DOI, or anonymized reviewer link.
+
+The Center for Open Science defines preregistration as specifying an advance
+research plan and submitting it to a registry, and stresses sharing a
+reviewable link. Git history can support honest pre-declaration, but a later
+deposit cannot retroactively establish independent preregistration timing.
+Retitle the paper and harmonize every campaign label to pre-declared or
+pre-specified unless the authors can produce a genuine pre-outcome registry
+record.
+
+#### CP-4 - The reviewer-facing manifest target and current deposit are stale
+
+RELEASE_MANIFEST.json says intended_deposit_tag=v1.1.9-deposit and describes
+that tag as the literal reviewer-facing verification target. The prescribed
+command fails on seven entries. Only HEAD passes. The current release PDFs have
+different hashes and sizes from the canonical files, and the tag is seven
+commits behind HEAD.
+
+README.md acknowledges that post-deposit commits can sit outside the archival
+snapshot, but DOI_DEPOSIT_INSTRUCTIONS.md, CANONICAL_SUBMISSION.md, and the
+manifest still call v1.1.9 current. That is not a coherent submission boundary,
+especially because post-tag manuscript changes narrow material claims. Cut a
+new immutable tag and release only after the scientific repairs, then require
+the strict wrapper and bundle checker to verify that exact tag.
+
+#### CP-5 - Large advertised release assets remain unavailable and optional to verification
+
+The v0.9 release still has only a parity zip and manifest. The 12 split and four
+cache entries total 1,090,564,135 bytes and exist locally, ignored and
+untracked. update_release_manifest.py intentionally classifies their absence as
+SKIPPED-missing and returns zero. The repository is private, so even the small
+release inventory is not unauthenticated reviewer access.
+
+Either publish the exact assets in a durable, public archive and test a
+download-to-hash path from a fresh unauthenticated environment, or remove
+release-asset wording and state precisely what must be regenerated. Missing
+evidence cannot count as successful verification.
+
+#### CP-6 - Empirical coverage remains incomplete despite correct dataset counts
+
+paper_tex/tables/tableA1.tex and table_datasets41.tex remain md-only with
+checked:0. The six numeric dataset rows were independently confirmed in this
+run, which is useful evidence but not a repair to the claimed fail-closed
+system. Table A1 still has 22 numbered experimental variants while its heading,
+caption, prose, and TeX call it a 20-variant scan. The dataset table also embeds
+PASS, VOID, and CONFIRMED status claims that are not checked by the numeric
+scan.
+
+The abstract's "every empirical finding ... produced and policed" sentence and
+the broader CANONICAL_SUBMISSION.md contract remain false. Add an inventory
+that classifies every empirical numeral, status, figure, and table and fails on
+unchecked content, or retire the excluded material and narrow the universal
+claim.
+
+#### CP-7 - Mechanism and statistical claims still exceed the design
+
+The ladder interaction is admitted nonsignificant, yet the paper calls the
+result a tested, Nieuwenhuis-safe double dissociation. The matched user- and
+interaction-thinning arms do not differ only in connectivity: dropping users
+also changes user composition, histories, item degrees, and graph topology.
+All reported model seeds reuse one intervention draw, so their intervals omit
+subset uncertainty.
+
+The matched-R1 contrast is positive across those fixed model seeds, but that
+does not identify "connectivity alone" or a unique residual content factor.
+Similarly, the cross-dataset Welch test compares optimizer stochasticity on
+two fixed categories and cannot establish a population-level real
+between-dataset effect. Replace the causal/decomposition language with a
+conditional pattern under bundled interventions, and resample intervention
+subsets before making stronger claims.
+
+#### CP-8 - Training and result narration contains false universal statements
+
+- PAPER_SUBMISSION.md says every headline configuration in sections 5.1-5.4
+  trains for 40 epochs. MI V2, its clean rebuild, Office V3, and FIR-breadth
+  artifacts specify 20 epochs.
+- The interaction ladder lists six rho values but is called seven-rung and
+  applies an x7 multiplicity statement.
+- Head NDCG falls once and HR changes direction repeatedly; "monotone on both
+  metrics" and "climbs monotonically" are false.
+- A four-seed TAPE cross-check is positive, contradicting the claim that every
+  capacity-adding mechanism was neutral or harmful.
+- FIR contributes most, not all, of the MI lift; "alone carries" is too strong.
+- The MI base row has four seeds while treatment arms have five, breaking the
+  stated paired convention.
+
+Report campaign-specific epoch budgets, correct the ladder/multiplicity and
+trend language, state the TAPE and FIR exceptions, and use balanced paired
+seeds or an explicitly unpaired analysis.
+
+#### CP-9 - The Office anomaly is not fully decomposed by two single reference runs
+
+The paper says the +44% Office floor-check failure is decomposed entirely into
+published-row conservatism and baseline-strength protocol differences, leaving
+nothing attributable to split or evaluation. The immediately following caveat
+admits the reference runs are single, nondeterministic, unpinned, on a
+different GPU, and shimmed.
+
+Those observations support an environment-specific consistency diagnosis.
+They do not uniquely apportion the gap or exclude split/evaluation effects.
+Narrow "decomposes entirely" and "nothing attributable" to what was actually
+observed.
+
+#### CP-10 - The assurance apparatus is not independently evaluated
+
+The paper leads with a trust apparatus but does not measure its fault-detection
+recall, false-pass rate, claim coverage, rerun cost, or usability, and no
+independent team has executed the full chain. The current audit history itself
+contains missed faults: unchecked tables, basename aliasing, absent assets,
+the former zero-exit adjudicator, a stale intended tag, and the BBP semantic
+mislabel.
+
+ACM defines same-team same-setup reruns as repeatability and reserves
+reproducibility/results validation for an independent team. The manuscript's
+"reproducibly improve" language and governance positioning should be aligned
+with that terminology. The repaired MI adjudicator also remains semantically
+incomplete when used alone: it prints n_eval without validating it and accepts
+missing git_commit/git_dirty_tracked fields. The table builder catches the
+canonical n_eval today, but the adjudicator is not independently fail-closed.
+
+#### CP-11 - Close prior work and matched baselines are missing
+
+The paper does not cite:
+
+- C3SASR, which inserts causal convolutions into self-attentive sequential
+  recommendation;
+- HyenaRec, which uses gated convolutional kernels for sequential
+  recommendation;
+- TASTE, which uses text matching to reduce popularity bias and help
+  long-tail/cold items;
+- AlterRec, which addresses ID dominance in ID-text fusion for long-tail
+  session recommendation; or
+- NeurIPS 2024 LLM-ESR, which directly combines semantic embeddings with
+  sequential recommenders for long-tail users/items across multiple
+  backbones.
+
+Protocols differ, so their numbers are not direct comparators. They are
+nevertheless central to the novelty boundary. The paper should narrow its
+general claims, cite and compare mechanisms, and run the strongest feasible
+protocol-matched causal-convolution and semantic long-tail baselines.
+
+#### CP-12 - Front-end and TORS submission readiness remain poor
+
+The abstract is 1,849 words and spans reader pages 1-4. It contains seven
+source paragraphs and much of the paper's methods/results inventory. Eight
+contributions mix an assurance method, an incremental filter, a text
+component, negative-result cataloging, implementation, and debugging. The
+paper needs a 200-300 word abstract and at most three aligned contributions.
+
+The TORS source still uses manuscript,review,anonymous; the rendered PDF has
+line numbers, while current TORS guidance says manuscript,screen, no line
+numbers, and single-blind review. The vendored acmart is v2.03 dated 2024-02-04;
+CTAN lists v2.19 dated 2026-06-27. Page 28 is nearly empty, several tables are
+too dense, and the reader appendix ends awkwardly on page 46.
+
+### External Fact-Check And Novelty Sources
+
+- Preregistration requires an advance plan submitted to a registry, and the
+  review link matters:
+  https://www.cos.io/initiatives/prereg
+- ACM distinguishes same-team repeatability from different-team
+  reproducibility and requires an independent audit for Artifacts Evaluated:
+  https://www.acm.org/publications/policies/artifact-review-and-badging-current
+- LLM-ESR, NeurIPS 2024, directly targets long-tail sequential recommendation
+  with semantic embeddings:
+  https://papers.neurips.cc/paper_files/paper/2024/hash/2f0728449cb3150189d765fc87afc913-Abstract-Conference.html
+- C3SASR is prior causal-convolution sequential recommendation:
+  https://arxiv.org/abs/2211.01297
+- HyenaRec uses gated convolutional kernels for fast sequential recommendation:
+  https://arxiv.org/abs/2603.25027
+- TASTE explicitly links text matching to reduced popularity bias and long-tail
+  benefits:
+  https://arxiv.org/abs/2308.14029
+- Peer-reviewed AlterRec source:
+  https://aclanthology.org/2025.ijcnlp-long.12/
+- Current TORS submission guidance:
+  https://dl.acm.org/journal/tors/author-guidelines#submittingms
+- Current acmart package page, version 2.19:
+  https://ctan.org/pkg/acmart
+- Spiked-covariance interpretation used to check the BBP formula:
+  https://pmc.ncbi.nlm.nih.gov/articles/PMC6152949/
+
+### Plausible Risks / Author Verification
+
+1. **Registry evidence:** confirm whether any plan was registered outside the
+   repository before outcomes were visible. If so, provide its permanent,
+   time-stamped, anonymized reviewer link and map each campaign to it.
+2. **FIR optimizer dependence:** confirm whether any filter run used a
+   parameter group or optimizer setting different from the visible all-parameter
+   Adam call. The released argv and code inspected here show no exception.
+3. **Untreated spectrum:** confirm whether an untreated checkpoint exists for
+   a valid embedding-spectrum analysis and explain the origin of d_eff=23.
+4. **Intervention draws:** confirm whether independently sampled dropped-user
+   or dropped-event subsets exist. The released records inspected here use
+   subsample_seed=0.
+5. **Public evidence boundary:** state whether the 16 large assets will be
+   publicly deposited, regenerated in CI, or removed from the release contract.
+6. **Paper center:** decide whether the submission is an assurance-method paper
+   or a recommender case study. The title and abstract lead with the former,
+   while the RQs and experiments mainly evaluate the latter.
+7. **TIGER/LIGER wording:** verify every statement that the AR2023 protocol
+   "matches TIGER/LIGER." Those papers use older Amazon data; at most the
+   split/filter convention may match.
+
+### Concrete Fix Order
+
+1. **Repair and re-test the FIR parameterization.** Make the initialization
+   nonsingular, disclose optimizer dependence, add weight-decay and early-step
+   trajectory ablations, and rerun the multi-seed filter attribution under a
+   common optimization path.
+2. **Withdraw Figure 3 and every BBP/d_eff/irreducibility conclusion now.**
+   Retire dependent Table 1e cells or replace them only after a valid untreated
+   embedding analysis.
+3. **Retitle and relabel the design honestly.** Use pre-declared/pre-specified
+   unless genuine registry records exist; remove immutable/preregistered
+   language that lacks independent evidence.
+4. **Downgrade and re-test the mechanism claims.** Remove double dissociation,
+   connectivity alone, closes the mechanism, and uniquely decomposed wording;
+   directly test the required contrasts and vary intervention subsets.
+5. **Restore one coherent artifact boundary.** Publish or truthfully
+   reclassify the 16 missing assets, make absence fatal when assets are
+   promised, cut a new tag, and require every wrapper/bundle check to verify
+   that exact tag from a clean unauthenticated clone.
+6. **Complete empirical coverage.** Gate or retire Table A1 and dataset/status
+   claims, correct 20 versus 22, and inventory figures/prose/categorical
+   verdicts as well as table numerals.
+7. **Correct methods/results narration.** Report 20-versus-40 epoch budgets by
+   campaign, six rungs, non-monotone trends, TAPE/FIR exceptions, and balanced
+   pairing.
+8. **Add close literature and matched baselines.** Include LLM-ESR, TASTE,
+   AlterRec, C3SASR, HyenaRec, and the missing assurance literature; run or
+   justify the strongest protocol-matched baselines.
+9. **Evaluate or demote the assurance contribution.** Build a fault corpus,
+   measure detection coverage/false passes, obtain an independent clean-room
+   rerun, and use ACM repeatability/reproducibility terminology correctly.
+10. **Rewrite and repackage.** Produce a 200-300 word abstract, at most three
+    aligned contributions/RQs, current TORS mode/template, no line numbers,
+    improved table flow, and a fresh page-by-page inspection.
+
+### Open Questions
+
+1. What happens to the causal FIR under weight_decay=0, and why was the
+   optimizer bootstrap absent from the method and ablation interpretation?
+2. Is any genuine registry record available for the title's
+   "Pre-Registered" claim?
+3. Is there an untreated checkpoint supporting a real item-embedding spectrum,
+   and what exact calculation produced d_eff=23?
+4. Why does the current manifest name a tag that fails its own prescribed
+   verification command?
+5. Where can an unauthenticated reviewer obtain the 12 splits and four caches?
+6. Were any thinning conclusions replicated over independently sampled
+   intervention subsets?
+7. Will the lead apparatus receive a formal independent evaluation, or be
+   reframed as an engineering case study?
+
+### Running Checklist
+
+- [x] Read automation memory before auditing.
+- [x] Identify the canonical manuscript and compare HEAD with the prior audit.
+- [x] Confirm that manuscript, PDF, figures, and result artifacts are unchanged
+      since the prior audited commit.
+- [x] Re-run the strict 168-cell/parity/MI/Office/FIR chain.
+- [x] Test the repaired MI failure path.
+- [x] Verify HEAD and the named deposit tag against the manifest.
+- [x] Inspect the live v0.9 and v1.1.9 release inventories.
+- [x] Recompute all six dataset-table count rows from local CSVs.
+- [x] Derive and reproduce the zero-gradient FIR initialization behavior.
+- [x] Inspect BBP, table-coverage, significance, intervention, and baseline
+      evidence.
+- [x] Render and inspect all 46 reader and 41 TORS PDF pages.
+- [x] Fact-check preregistration, ACM artifact terminology, close literature,
+      SILLM4Rec, TORS guidance, and acmart version.
+- [x] Update the prioritized rejection-risk list and add this timestamped run.
+- [ ] Repair and reconfirm the FIR design under a nonsingular common
+      parameterization.
+- [ ] Withdraw or correctly rerun the spectral analysis.
+- [ ] Replace unsupported preregistration terminology or provide registry
+      evidence.
+- [ ] Publish/reclassify the missing assets and cut a coherent current tag.
+- [ ] Complete gate coverage and correct internal result narration.
+- [ ] Repair causal/statistical scope and add close matched baselines.
+- [ ] Rewrite the abstract/contribution/RQ spine and rebuild TORS packaging.
+
+## Previous Prioritized Rejection-Risk List (superseded by the 14:53 audit)
+
 1. **[CONFIRMED, rejection-level] The paper's BBP/MP "spectral
    irreducibility" result does not measure what the paper and figure claim.**
    The reported detectability values are computed before training from item

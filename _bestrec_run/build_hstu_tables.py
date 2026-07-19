@@ -7,10 +7,10 @@ Contract
 --------
 The manifest `_bestrec_run/hstu_results_manifest.json` enumerates every empirical
 table-cell family of PAPER_DRAFT.md (Table 1, 1a, 1b-local, 1c, 1d, 1e, the section-5.4.1
-arm-ratio table, the section-5.4.2 user-titration table, the section-5.2 pre-registered
+arm-ratio table, the section-5.4.2 user-titration table, the section-5.2 pre-declared
 V2 confirmation, and Table 2), each with: source result JSONs, a declarative recompute
 rule, the recomputed value(s), seed counts, and an evidence_class label
-(confirmatory = >=5-seed multi-seed family or pre-registered confirmation;
+(confirmatory = >=5-seed multi-seed family or pre-declared confirmation;
  exploratory  = single-seed / <5-seed / post-hoc).
 
 Default mode (no flags):
@@ -907,7 +907,7 @@ def build_spec():
                  "NDCG@10", 0.0760, "Published comparator; hardware-blocked locally."))
     C.append(ext("t1b.pub.hstublair_mi", "table1b", "HSTU-BLaIR MI (Liu 2025, published)",
                  "NDCG@10", PUB_HSTUBLAIR_MI,
-                 "Published per-category point estimate targeted by the pre-registered V2 confirmation."))
+                 "Published per-category point estimate targeted by the pre-declared V2 confirmation."))
 
     # ---------------- Table 1c: MI per-lever isolation ----------------
     C.append(cell("t1c.base.ndcg", "table1c", "MI SBERT+TAPE base (4 x e20 seeds)", "NDCG@10 mean +- sd",
@@ -1193,15 +1193,15 @@ def build_spec():
                   [chk("mean", 0.0037, 4, mode="approx", tol=0.0002)], 5, conf,
                   notes="Paper: 'the ID arm holds ~0.0037'."))
 
-    # ---------------- S5.2 pre-registered V2 confirmation (SOTACONF_V2) ----------------
+    # ---------------- S5.2 pre-declared V2 confirmation (SOTACONF_V2) ----------------
     C.append(cell("v2conf.k16", "tableV2conf", "K=16 fresh seeds 20260618-22 (EXEC2, gated)",
                   "NDCG@10 mean +- sd, 95% CI lower bound", SC16, "ci_lower",
                   {"files": SC16, "expect_n_eval": NEVAL_MI},
                   [chk("mean", 0.04152, 5), chk("sd", 0.00045, 5), chk("cilb", 0.04096, 5),
                    chk("cilb", PUB_HSTUBLAIR_MI, mode="gt")],
                   5, conf, seeds=S1822,
-                  notes="Pre-registered (SOTA_CONFIRM_PREREG_V2.md); gate = CI-LB > published "
-                        "0.0406. evidence_class confirmatory + pre-registered."))
+                  notes="Pre-declared (SOTA_CONFIRM_PREREG_V2.md); gate = CI-LB > published "
+                        "0.0406. evidence_class confirmatory + pre-declared."))
     C.append(cell("v2conf.k8", "tableV2conf", "K=8 fresh seeds 20260618-22 (EXEC2, gated)",
                   "NDCG@10 mean +- sd, 95% CI lower bound", SC8, "ci_lower",
                   {"files": SC8, "expect_n_eval": NEVAL_MI},
@@ -1223,7 +1223,7 @@ def build_spec():
                   {"k16": RB16, "k8": RB8, "threshold": PUB_HSTUBLAIR_MI},
                   [chk("pass", 1, mode="count")], 10, conf,
                   notes="From-scratch regeneration (commit 2a5003e) must independently pass the "
-                        "pre-registered dual gate."))
+                        "pre-declared dual gate."))
 
     # ---------------- Table 2: negative-result map ----------------
     def t2delta(cid, row, run, basef, paper_delta, prec, notes="", base_label="H2 ls0 stack (seed08)"):
@@ -1356,12 +1356,12 @@ def build_spec():
                         "sampled-pair: D2 samp512+cos 0.05814 < D3 samp512+dot 0.06072 "
                         "(results_D2_samp512cos_VG.json / results_D3_samp512_VG.json)."))
 
-    # ---------------- office_confirmation: pre-registered second category ----------------
+    # ---------------- office_confirmation: pre-declared second category ----------------
     # (audit F3.) SOTA_CONFIRM_PREREG_OFFICE.md, fresh seeds 20260623-27, config carried
     # over from MI unchanged. HEADLINE RULE: final-epoch FULL-catalog eval
     # (history[-1].test, n_eval=223,308) -- NOT best_test (the 30k best-by-val
     # subsample). Mirrors office_prereg_tools.py::_final_full. The dual gate passes
-    # numerically on both kernels BUT the pre-registered floor check FAILED
+    # numerically on both kernels BUT the pre-declared floor check FAILED
     # (floor 0.02208 = +44% above published SASRec 0.0153), so the family is
     # provisional/VOID under the prereg -- the paper counts MI only (S5.2).
     C.append(cell("office.k16.gate", "office_confirmation",
@@ -1375,7 +1375,7 @@ def build_spec():
                    chk("n_above", 5, mode="count"),
                    chk("pct_vs_pub", 12.0, mode="approx", tol=0.5)],
                   5, conf, seeds=SOFF, status_note=OFFICE_VOID_NOTE,
-                  notes="Pre-registered (SOTA_CONFIRM_PREREG_OFFICE.md, frozen before the raw "
+                  notes="Pre-declared (SOTA_CONFIRM_PREREG_OFFICE.md, frozen before the raw "
                         "data finished downloading; zero category-specific tuning). Headline = "
                         "history[-1].test with n_eval asserted == 223,308; best_test is the "
                         "30k subsample and is NOT used. Paper prints 0.03042 +- 0.00008 "
@@ -1412,7 +1412,7 @@ def build_spec():
                   {"files": OFFID, "seeds": SOFF, "expect_n_eval": NEVAL_OFF_FULL},
                   [chk("mean", 0.02840, mode="info"), chk("sd", 0.00005, mode="info")],
                   5, conf, seeds=SOFF,
-                  notes="Pre-registered 5-seed contrast arm (text stack removed). The overall "
+                  notes="Pre-declared 5-seed contrast arm (text stack removed). The overall "
                         "arm mean is not printed in the manuscript (info checks only; values "
                         "protected by the manifest drift gate); it exists as the ID side of "
                         "the descriptive tail contrast (office.tail.hits*)."))
@@ -1461,13 +1461,13 @@ def build_spec():
                        "expect_n_eval": NEVAL_OFF_FULL, "expect_n": TAILN_OFF},
                       chks, 5, expl, seeds=SOFF,
                       status_note="descriptive post-hoc pattern evidence only; the "
-                                  "pre-registered Office tail prediction was scored VOID "
+                                  "pre-declared Office tail prediction was scored VOID "
                                   "(connectivity 2.89 in the pre-declared ambiguous zone)",
                       notes="Paper (S5.2) prints the @10 and @100 pooled counts with z; the "
                             "@20/@50 counts are printed in SOTA_CONFIRM_OFFICE_RESULTS.md "
                             "(final adjudication) and manifested here for completeness. "
                             "Audit F7: usable only as descriptive pattern evidence, never as "
-                            "a pre-registered confirmation of the tail rule."))
+                            "a pre-declared confirmation of the tail rule."))
 
     # ------- theirs-on-ours: the reference implementation executed locally -------
     # (S5.6 + Appendix A.0 resolution; full recipe/provenance THEIRS_ON_OURS_REPORT.md)
@@ -1538,10 +1538,10 @@ def build_spec():
                  "published MI HSTU-BLaIR (comparator README)", "MRR", 0.0371,
                  "Liu 2025 README, Musical_Instruments HSTU-BLaIR row (S5.6 table)."))
 
-    # ------- fir_breadth: pre-registered paired filter-vs-no-filter contrast -------
+    # ------- fir_breadth: pre-declared paired filter-vs-no-filter contrast -------
     # (PREREG_FIR_BREADTH.md; adjudication FIR_BREADTH_RESULTS.md; seeds 20260713-17)
     FIRB_SEEDS = [20260713, 20260714, 20260715, 20260716, 20260717]
-    FB_NOTE = ("Pre-registered breadth campaign (PREREG_FIR_BREADTH.md, committed before any "
+    FB_NOTE = ("Pre-declared breadth campaign (PREREG_FIR_BREADTH.md, committed before any "
                "run; frozen V2 config transplanted with zero per-category tuning; fresh seeds "
                "20260713-17). Internal paired contrast, no comparator. Mechanical adjudication "
                "in FIR_BREADTH_RESULTS.md; n_eval full-catalog verified there per run.")
@@ -1555,12 +1555,12 @@ def build_spec():
         FF = [BR + f"results_FIRB_{cat}_filter_seed{s}.json" for s in FIRB_SEEDS]
         FN = [BR + f"results_FIRB_{cat}_nofilter_seed{s}.json" for s in FIRB_SEEDS]
         C.append(cell(f"firb.{short}.paired", "fir_breadth",
-                      f"pre-registered FIR breadth: {cat} paired (filter - nofilter)",
+                      f"pre-declared FIR breadth: {cat} paired (filter - nofilter)",
                       "paired 5-seed delta NDCG@10 (best-by-val full catalog)",
                       FF + FN, "paired_delta", {"a": FF, "b": FN},
                       exp, 5, conf, seeds=FIRB_SEEDS, notes=FB_NOTE))
 
-    # ------- office_v3: redesigned pre-registered confirmation (PASSED) -------
+    # ------- office_v3: redesigned pre-declared confirmation (PASSED) -------
     V3_SEEDS = [20260728, 20260729, 20260730, 20260731, 20260732]
     V3_NOTE = ("PREREG_OFFICE_V3.md (committed before any run; ERRATUM E1 pre-campaign): gate "
                "reference = the ENVIRONMENT-MATCHED local regeneration of the comparator "
@@ -1574,7 +1574,7 @@ def build_spec():
                            chk("cilb", 0.03024, 5), chk("n_above", 5, mode="count")])):
         V3F = [BR + f"results_OFFICEV3_k{arm}_seed{s}.json" for s in V3_SEEDS]
         C.append(cell(f"officev3.k{arm}.gate", "office_v3",
-                      f"Office V3 pre-registered gate, K={arm} (final-epoch FULL-catalog)",
+                      f"Office V3 pre-declared gate, K={arm} (final-epoch FULL-catalog)",
                       "NDCG@10 mean/sd/95% CI-LB vs local-regen 0.0279",
                       V3F, "final_full_ci",
                       {"files": V3F, "expect_n_eval": 223308, "threshold": 0.0279,
@@ -1883,7 +1883,7 @@ def render_tables(cells):
 
     k16, k8 = by_id["v2conf.k16"]["recomputed"], by_id["v2conf.k8"]["recomputed"]
     T["tableV2conf"] = "\n".join([
-        "**§5.2 (regenerated): pre-registered dual-kernel V2 confirmation "
+        "**§5.2 (regenerated): pre-declared dual-kernel V2 confirmation "
         "(SOTACONF_V2, fresh seeds 20260618–22, EXEC2 gated artifacts, n_eval=57,439).**",
         "",
         "| kernel | fresh 5-seed NDCG@10 | 95% CI lower bound | vs published 0.0406 |",
@@ -1912,14 +1912,14 @@ def render_tables(cells):
         h = by_id[f"office.tail.hits{K}"]["recomputed"]
         hitrows.append(f"@{K}: {int(h['text_hits'])} vs {int(h['id_hits'])} (z={h['z']:.1f})")
     T["office_confirmation"] = "\n".join([
-        "**office_confirmation (regenerated): second-category pre-registered confirmation — "
+        "**office_confirmation (regenerated): second-category pre-declared confirmation — "
         "Office_Products** (SOTA_CONFIRM_PREREG_OFFICE.md; fresh seeds 20260623–27; headline "
         "rule = final-epoch FULL-catalog eval, history[-1].test, n_eval=223,308 — NOT the "
         "30k best_test subsample).",
         "",
         "**STATUS: VOID under the prereg floor check (+44% floor inflation) — provisional; "
         "the V1 Office campaign counts in no claim. Office V3 — a separate, redesigned "
-        "pre-registration — passed and is counted under its frozen per-category "
+        "pre-declaration — passed and is counted under its frozen per-category "
         "point-estimate wording (§5.2).**",
         "",
         "| arm | per-seed NDCG@10 (final-epoch full) | mean ± sd | 95% CI-LB | vs published 0.0271 |",
@@ -1938,7 +1938,7 @@ def render_tables(cells):
         f"{int(by_id['office.count_above']['recomputed']['count'])}/10 (provisional; not a "
         f"counted pass). Pooled tail hits, text (k8 arm) vs ID-only, final-epoch full eval "
         f"(tail n=36,610/seed): " + "; ".join(hitrows) + " — descriptive post-hoc pattern "
-        "evidence only (the pre-registered Office tail prediction was scored VOID: "
+        "evidence only (the pre-declared Office tail prediction was scored VOID: "
         "connectivity 2.89 in the pre-declared ambiguous zone).",
     ])
 
@@ -2033,7 +2033,7 @@ def write_manifest(path):
         "rerun_submission_gate": "_bestrec_run/.venv/Scripts/python "
                                  "_bestrec_run/build_hstu_tables.py --submission",
         "recompute_tolerance": TOL,
-        "evidence_class_rule": "confirmatory = >=5-seed multi-seed family or pre-registered "
+        "evidence_class_rule": "confirmatory = >=5-seed multi-seed family or pre-declared "
                                "confirmation; exploratory = single-seed / <5-seed / post-hoc "
                                "(audit F6). external = published comparator constant.",
         "status_semantics": "OK = sourced + recomputed + drift-gated. UNTRACEABLE = paper "

@@ -9,6 +9,50 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-19 13:47 (round 1: the fail-open counted gate; retractions sequenced next)
+
+**Verdict acknowledged.** This audit lands two findings of the highest class: a counted gate
+that could never fail (CP-2) and a scientific analysis whose printed interpretation is not
+what the code computes (CP-1). Round 1 executes CP-2 completely; the retraction rounds are
+declared below with their exact targets, because rushing surgery on load-bearing scientific
+prose in one tick is how new errors get made.
+
+### Executed this round
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-2 | Counted MI gate fail-open (`return 0` unconditionally; wrapper checks exit code only) | **Fixed both layers:** the adjudicator returns 2 whenever `overall_pass` is false, and the strict wrapper now requires **exit 0 AND the exact `DUAL GATE VERDICT: PASS` token** — the same pattern the Office V3 / FIR-breadth gates already use. Verified live: the strict chain prints "MI V2 gate adjudication (counted; must PASS): OK" and passes end-to-end with true exit 0. The audit's fuller failure-branch test battery joins the fault-corpus work item. |
+
+### Declared next rounds (in order; targets quoted so nothing can be silently dropped)
+
+1. **CP-1 retraction (next tick):** withdraw from both papers + TeX: the "spectrally
+   irreducible / no representation-side lever can rescue the tail" conclusions (line ~422
+   region), the BBP/MP figure (`make_fig_bbp_irreducibility`), and Table 1e's `d_eff=23`
+   normalization (no artifact reports 23; the 24 was enforced by the GD1 intervention, not
+   measured) — replaced by a dated retraction note in the retirement pattern; the gated
+   Table-1e cells retire via `build_hstu_tables` + `--write-manifest`, and the narrowed
+   universal's cell count becomes count-agnostic (build-output-authoritative).
+2. **CP-5 (same round):** remove "double dissociation" (7 occurrences), "connectivity
+   alone," and "closes the mechanism" — the supported statement is a conditional pattern
+   under two bundled thinning interventions with fixed user-removal draws.
+3. **CP-6 (same round):** six rungs not seven (and the ×7 multiplicity line), the false
+   "climbs monotonically"/"monotone on both metrics" claims, the TAPE-vs-negative-map
+   contradiction, and the paired-seed convention breach note.
+4. **CP-7 + 12:57 CP-5 (citations round):** C3SASR, HyenaRec, TASTE, AlterRec + the
+   methodological set (Jannach & Chen, Pineau, Nosek, TOP, badging, PROV, Beaulieu-Jones);
+   "rare/cold" → warm-item long-tail terminology; md-vs-TeX bibliography sync (Nieuwenhuis,
+   Tilman cited properly).
+5. **CP-3/CP-4 + 12:57 items:** public-asset truth-up with fail-not-skip; Table A1
+   coverage-or-retirement (incl. the 22-vs-20 row-count contradiction) and the datasets
+   table; then TORS mode (`manuscript,screen`, single-blind) + acmart; governance v1.1.10.
+
+### Flagged to the maintainer (unchanged from 12:57, now with 13:47 additions)
+
+Front-end rewrite; apparatus fault-corpus evaluation or demotion; tuned modern baselines or
+sharper narrowing; independent prereg timestamps; **plus 13:47's:** whether a corrected,
+prospectively-specified embedding-spectrum analysis is worth running at all, and a matched
+causal-convolution baseline for the FIR novelty test.
+
 ## Response — to Audit Run 2026-07-19 12:57 (round 1 of a sequenced execution; responded 2026-07-19)
 
 **This is the deepest audit of the campaign — a full top-journal review simulation with 11

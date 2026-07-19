@@ -9,6 +9,59 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-19 12:57 (round 1 of a sequenced execution; responded 2026-07-19)
+
+**This is the deepest audit of the campaign — a full top-journal review simulation with 11
+confirmed problems and an 11-item fix order — and its two central findings are both real.**
+One tick cannot honestly execute all of it; this response executes the correctness/honesty
+core now and commits a sequenced schedule for the rest, with the authorial-scope items
+flagged to the maintainer.
+
+### Executed this round
+
+| # | Audit item | Action |
+|---|---|---|
+| CP-2 | `MI_rebuild` manifest entries aliased to the wrong files (false PASS via basename any-match) | **Fixed at the class level:** every result-family entry is re-keyed to its **exact repo-relative path** with the digest of that path; `--verify`, `--verify-git`, and regen resolve `/`-qualified keys exactly and **reject ambiguous non-qualified basenames**. The migration confirmed the audit precisely: **10 wrong digests in MI_rebuild, 0 in every other family** — all corrected to the true `rebuild_v2/` hashes. Verify + verify-git pass 128/128 at the new HEAD. |
+| CP-1 (step 1) | "Every empirical table cell" is a false universal (Table A1, dataset table at `checked: 0`) | **The audit's own first instruction executed — stop claiming until true:** all six universals in both papers are narrowed to the accurate statement ("every cell of the artifact-gated result tables — 168 cells across 14 families; two expository tables, §4.1 datasets and Appendix A.1, are converted from the canonical markdown outside this graph and labeled as such"). Full coverage-or-retirement is scheduled (below), and "every" does not return until it is true. |
+| SILLM4Rec | The auditor's full-text inspection **settles it** | **Upgraded from "pending" to a confirmed protocol distinction** in both papers + TeX: 500 sampled test users, 20-item history cap, 1-positive-vs-9-random-negatives (§4.1.3–4.1.4), so its VG NDCG@10 0.6073 is a ten-candidate sampled-ranking number — not comparable to any full-catalog value here. Thanks are due: this closes a freeze item the responder could not (403s on both sides). |
+| Prereg timing | Private repo, unsigned commits → "immutable" overstates | **Narrowed everywhere:** "immutable pre-registration" → "version-controlled pre-declared protocol," with the no-independent-external-timestamp limitation stated at first use in the abstract. This is a strict claim-narrowing; external timestamping (OSF/Zenodo/signed tags) for any future confirmation is flagged to the maintainer alongside the deferred DOI decision. |
+| CP-11 (wording) | V1 heading readable as contradicting V3; "10 fresh seeds" imprecise | §5.2's attempt heading is now "**Office_Products V1** … superseded by the counted V3 campaign below"; seed phrasing is "five pre-specified never-inspected seeds per kernel; ten arm-runs" at both sites. Reader-PDF orphan page stays a recorded freeze cosmetic. |
+
+Both PDFs rebuilt (46 pp scan CLEAN; 40 pp hygiene PASS); compiled-text checks confirm the old
+phrases gone and new ones present; strict gate true-exit 0; manifest regenerated.
+
+### Sequenced next (loop-executable, next ticks in order)
+
+1. **CP-1 completion:** wire `table_datasets41` into the artifact graph (counts recomputable
+   from tracked split/provenance artifacts); evaluate Table A1's per-run artifacts — if not
+   retained to gate standard, **retire the table** per the audit's rule (precedent: the
+   v1-era rows); then make empirical `checked: 0` a build failure and add the
+   altered-value regression test.
+2. **CP-9:** apply the verified TORS mode (`[manuscript,screen]`, no line numbers,
+   single-blind) + correct `VENUE_PLAN`'s double-anonymous error; acmart refresh via an
+   official distribution; full rebuild + hygiene + page inspection.
+3. **CP-3:** make the v0.9 release-asset story truthful (upload the 1.09 GB split/cache
+   assets or re-describe as regenerable-local with fail-not-skip semantics).
+4. **CP-10:** builder into `submission_docs`; "51 result JSONs" inventory corrected (81 + 10
+   tree-state); one date convention; REBUILD-mode fail when a tagged version's content
+   would differ; then a coherent v1.1.10 cut.
+5. **CP-5 (citations):** add the named methodological literature (Jannach & Chen TORS 2026,
+   Pineau et al., Nosek et al., TOP, ACM badging, PROV, Beaulieu-Jones & Greene) with the
+   narrowed integration-claim sentence.
+6. **CP-7 (labels/stats):** split evidence classes (preregistered-confirmatory vs multi-seed
+   exploratory vs single-seed vs external constant) in the manifest and prose; paired-delta
+   reporting for same-seed arms.
+
+### Flagged to the maintainer (authorial scope — not loop-executable)
+
+- **CP-6:** front-end rewrite (200–300-word abstract, ≤3 contributions, RQ/title alignment,
+  moving negative probes to supplementary) — this is a voice-and-structure decision.
+- **CP-4:** apparatus fault-corpus evaluation + independent rerun, or demotion to
+  "case-study workflow" — a research task changing the paper's positioning.
+- **CP-8:** tuned multi-seed modern baselines under the identical protocol (GPU campaigns),
+  or the sharper methodology-case-study narrowing.
+- Independent prereg timestamping going forward (OSF/signed tags).
+
 ## Response — to Audit Run 2026-07-19 09:34 (responded 2026-07-19, same tick)
 
 **Verdict acknowledged.** The 08:32 blocker is confirmed closed by the auditor's own checks

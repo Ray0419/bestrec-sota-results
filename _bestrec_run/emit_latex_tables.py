@@ -342,7 +342,7 @@ REGISTRY = [
          colspec=r"p{0.10\linewidth}p{0.115\linewidth}p{0.15\linewidth}p{0.185\linewidth}p{0.165\linewidth}p{0.10\linewidth}", size=r"\footnotesize",
          family=None, allow=set()),
     dict(key="table_datasets41", fp="category", out="table_datasets41.tex",
-         env="tabularx", colspec=r"p{0.155\linewidth}p{0.36\linewidth}rrr", size=r"\small",
+         env="tabularx", colspec=r">{\raggedright\arraybackslash}p{0.20\linewidth}>{\raggedright\arraybackslash}p{0.30\linewidth}rrr", size=r"\footnotesize",
          # S4.1 role-based dataset table (round-15 audit): md-only; dataset stats are
          # protocol facts recorded in prereg/provenance files, not result-JSON cells
          family=None, allow=set()),

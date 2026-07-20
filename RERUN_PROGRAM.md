@@ -36,11 +36,10 @@ This file is the loop's tracker; quiet ticks service THIS program before compani
       now-true public state.
 
 ## 4. Front-end rewrite + typography — QUEUED (next ticks)
-- [ ] Replace the ~1,800-word abstract with a conventional concise abstract (question,
-      design, primary results with uncertainty, contribution boundary); move the long
-      version to an appendix "Extended summary".
-- [ ] TORS dataset-table column collisions (p15) — controlled widths/landscape.
-- [ ] TORS-legible variant of the three-panel figure (stacked layout for column width).
+- [x] Concise ~225-word abstract in place (2026-07-20); long form moved verbatim to
+      Appendix E ("Extended summary") in both formats.
+- [x] Dataset table: raggedright wrapped columns (0.20/0.30 linewidth) + footnotesize.
+- [x] Three-panel figure now a rotated full-page float in TORS (~30% larger type).
 - [ ] Re-render, rebuild, full gate chain.
 
 ## 5. External timestamps + venue check — IN PROGRESS

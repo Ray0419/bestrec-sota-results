@@ -59,7 +59,15 @@ PINNED_PARITY_FILES = [
     "setup_pinned_env.sh", "negative_control.py", "negative_control.log",
 ]
 # sections whose files ship only as v0.9-audit-evidence release assets
-RELEASE_ASSET_SECTIONS = {"splits", "text_caches", "pinned_parity_artifacts"}
+ARGS = None
+RELEASE_ASSET_SECTIONS = {"splits", "text_caches", "pinned_parity_artifacts", "tfv2_sidecars"}
+RELEASE_URL = ("https://github.com/Ray0419/bestrec-sota-results/releases/download/"
+               "v0.9-audit-evidence/")
+AUX_GRAPH_SOURCES = [
+    "_bestrec_sota_lab/runs/hstu_blair_eval_export_full_20260609_fg/hstu_blair_eval_export_summary.json",
+    "_bestrec_run/run_CONNGATE_MI_k8_seed20260608.log",
+    "_bestrec_run/run_CONNGATE_5seed_driver.log",
+]
 
 
 def sha(p, _bufsz=1 << 20):
@@ -147,7 +155,7 @@ def verify(m):
         else:
             bad.append(f"{section}/{key}: hash mismatch vs manifest")
 
-    for sec in ("splits", "text_caches"):
+    for sec in ("splits", "text_caches", "tfv2_sidecars"):
         for key, ent in m.get(sec, {}).items():
             check_named(sec, key, ent["sha256"])
     for rel, ent in m.get("protocol_code", {}).items():
@@ -194,7 +202,7 @@ def verify(m):
         dirty = subprocess.check_output(["git", "status", "--porcelain", "-uno"],
                                         cwd=ROOT, text=True).splitlines()
         manifested = set()
-        for sec in ("protocol_code", "submission_docs"):
+        for sec in ("protocol_code", "submission_docs", "aux_graph_sources"):
             manifested.update(m.get(sec, {}).keys())
         for ln in dirty:
             rel = ln[3:].strip().replace("\\", "/")
@@ -204,8 +212,39 @@ def verify(m):
     except Exception as e:
         print("  (git dirty-check skipped:", e, ")")
 
+    if missing_asset and getattr(ARGS, "fetch_missing", False):
+        import urllib.request
+        still = []
+        for w in missing_asset:
+            sec_key = w.split(":")[0]
+            key = sec_key.split("/", 1)[1] if "/" in sec_key else sec_key
+            sec = sec_key.split("/", 1)[0]
+            ent = m.get(sec, {}).get(key)
+            if not isinstance(ent, dict) or "sha256" not in ent:
+                still.append(w + " [no manifest entry to fetch against]")
+                continue
+            name = key if key.endswith((".csv", ".npy", ".gz", ".zip", ".json")) else key + ".csv"
+            url = RELEASE_URL + os.path.basename(name)
+            try:
+                h = hashlib.sha256()
+                with urllib.request.urlopen(url, timeout=120) as r:
+                    for chunk in iter(lambda: r.read(1 << 20), b""):
+                        h.update(chunk)
+                if h.hexdigest() == ent["sha256"]:
+                    checked += 1
+                    print(f"FETCH-VERIFIED release asset: {key}")
+                else:
+                    still.append(w + " [remote hash mismatch]")
+            except Exception as e:
+                still.append(w + f" [fetch failed: {e}]")
+        missing_asset = still
     for w in missing_asset:
         print("  SKIPPED-missing (release asset):", w)
+    if missing_asset and not getattr(ARGS, "allow_missing_assets", False):
+        bad.append(f"{len(missing_asset)} release-class asset(s) missing locally and not "
+                   "fetch-verified (fail-closed 2026-07-20, audit 16:53; use "
+                   "--fetch-missing to stream-verify from the release, or "
+                   "--allow-missing-assets to explicitly waive)")
     if bad:
         print(f"RELEASE MANIFEST VERIFY: FAIL ({len(bad)} problem(s); "
               f"{checked} files verified)")
@@ -288,6 +327,34 @@ def regen(m):
                  "v0.9-audit-evidence. Source of truth is the script + commands."),
         "files": pp,
     }
+
+    # tfv2_sidecars (release-asset class; immutable once written -- drift aborts)
+    import glob as _g
+    tv = m.get("tfv2_sidecars", {})
+    for ap in sorted(_g.glob(os.path.join(ROOT, "_bestrec_run", "results_TFV2_*.users.jsonl.gz"))):
+        key = os.path.basename(ap)
+        dig = sha(ap)
+        if key in tv and tv[key]["sha256"] != dig:
+            print("DATA DRIFT -- ABORTING: tfv2_sidecars/" + key)
+            return 2
+        tv[key] = {"sha256": dig, "bytes": os.path.getsize(ap)}
+    m["tfv2_sidecars"] = tv
+    # IS/CDs splits join the immutable splits inventory (added 2026-07-20; audit 16:53)
+    for cat in ("Industrial_and_Scientific", "CDs_and_Vinyl"):
+        for part in ("train", "valid", "test"):
+            key = f"{cat}.{part}"
+            if key not in m["splits"]:
+                ap = os.path.join(ROOT, "data_5core", "5core", "last_out", f"{cat}.{part}.csv")
+                m["splits"][key] = {"sha256": sha(ap), "bytes": os.path.getsize(ap)}
+    # aux graph sources (git-backed; formerly ignored local-only cell inputs)
+    ax = {}
+    for rel in AUX_GRAPH_SOURCES:
+        ap = os.path.join(ROOT, rel.replace("/", os.sep))
+        if not os.path.exists(ap):
+            print("MISSING aux graph source:", rel)
+            return 2
+        ax[rel] = {"sha256": sha_norm(ap), "bytes": os.path.getsize(ap)}
+    m["aux_graph_sources"] = ax
 
     rr = {}
     for d in REFERENCE_RUN_DIRS:
@@ -397,7 +464,7 @@ def verify_git(m, commit):
 
     bad = []
     checked = 0
-    for sec in ("protocol_code", "submission_docs"):
+    for sec in ("protocol_code", "submission_docs", "aux_graph_sources"):
         for rel, ent in m.get(sec, {}).items():
             d = blob_norm(rel)
             if d is None:
@@ -466,6 +533,8 @@ def main():
                     help="with --regen: stamp intended_deposit_tag (the literal tag "
                          "reviewers pass to --verify-git; audit 2026-07-18 23:28)")
     args = ap.parse_args()
+    global ARGS
+    ARGS = args
     m = json.load(open(MPATH, encoding="utf-8"))
     if args.verify_git is not None:
         return verify_git(m, args.verify_git)

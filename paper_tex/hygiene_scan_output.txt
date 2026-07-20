@@ -1,12 +1,9 @@
-hygiene scan: PAPER_TORS.pdf | pages: 50
+hygiene scan: PAPER_TORS.pdf | pages: 47
 placeholder+forbidden failures: 0
-review list (SOTA mentions + negated claim-wordings): 22
+review list (SOTA mentions + negated claim-wordings): 17
   REVIEW negated-ok: paired\s+superiority :: nvironment-matched regeneration) — point-estimate comparisons, not SOTA and not paired superiority; (ii) a leak-free causal FIR filter is supported on four categories and confirm
   REVIEW negated-ok: paired\s+superiority :: strictly under its frozen wording: a per-category point-estimate comparison; no paired superiority; not SOTA of any kind. The limitation that remains: both counted comparisons (M
-  REVIEW negated-ok: paired\s+superiority ::  regenerations, § 5.6), this is a per-category point-estimate comparison, not a paired superiority or general SOTA claim . Our second headline is a dataset-conditional long-tail 
   REVIEW negated-ok: pinned(?:[-\s]\w+)?[-\s]reproduction :: luded from the artifact graph) 0.13234 final stronger than ours; not a faithful pinned-environment reproduction Our full model (0.0673) exceeds their published SASRec (0.0573) but does not re
-  REVIEW negated-ok: pinned(?:[-\s]\w+)?[-\s]reproduction :: Triton kernels have no sm_120 images — proven via WSL), which blocks a faithful pinned reproduction. A late shimmed execution of the reference implementation’s research path (§ 5.
-  REVIEW negated-ok: pinned\s+reproduction :: Triton kernels have no sm_120 images — proven via WSL), which blocks a faithful pinned reproduction. A late shimmed execution of the reference implementation’s research path (§ 5.
   REVIEW SOTA-mention ::  and 0.0279 environment-matched regeneration) — point-estimate comparisons, not SOTA and not paired superiority; (ii) a leak-free causal FIR filter is supported on 
   REVIEW SOTA-mention :: e Video_Games result a competitive, fully-attributed contribution rather than a SOTA claim. 7. Engineering: a memory-efficient chunked-full-softmax loss (full-softm
   REVIEW SOTA-mention ::  published SASRec 0.0573), shown to be architectural (ID-only ≈0.0656), with no SOTA claim. (The earlier v1-era SASRec-SBERT number 0.05509 ± 0.00035 has been retir
@@ -21,6 +18,4 @@ review list (SOTA mentions + negated claim-wordings): 22
   REVIEW SOTA-mention :: itive text contributor (+0.0009), not a headline. We do not claim a Video_Games SOTA — the published HSTU-BLaIR 0.0760 relies on custom CUDA/Triton kernels that are
   REVIEW SOTA-mention :: ratus these results were produced under. Explicit non-claims: • We do not claim SOTA over TIGER, LIGER, BLaIR, or HSTU-BLaIR; the published HSTU-BLaIR 0.0760 remain
   REVIEW SOTA-mention :: . We provide our 0.01946 (2-seed mean) as a reference baseline rather than as a SOTA-improvement claim. A future apples-to-apples comparison would require either: •
-  REVIEW SOTA-mention :: s a per-category point-estimate comparison, not a paired superiority or general SOTA claim . Our second headline is a dataset-conditional long-tail pattern (an empi
-  REVIEW SOTA-mention :: esult as a competitive, fully-attributed, multi-seed contribution rather than a SOTA claim. Contributions: (1) the trustworthy-evaluation apparatus above — version-
 verdict: PASS (review list above is informational)

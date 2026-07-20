@@ -61,7 +61,7 @@ rejects broader wording) is:
 
 The manuscript is a full-length evaluation-methodology + empirical study aimed at TORS's
 scope on rigorous, reproducible recommender-systems research: every empirical statement is
-pre-declared or explicitly labeled exploratory, all 168 printed numbers rebuild from
+pre-declared or explicitly labeled exploratory, all 175 printed numbers rebuild from
 hash-pinned artifacts, and the repository includes the complete adversarial audit trail
 (dozens of hourly audit rounds by an independent system, each answered point-by-point in
 writing).

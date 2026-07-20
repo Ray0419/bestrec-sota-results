@@ -4,7 +4,226 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-20 14:52 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-20 16:53 Australia/Sydney)
+
+1. **[CONFIRMED, rejection-level prospective-integrity failure] TFV2 is a
+   complete exploratory rerun, not a prospective confirmation.** The protocol
+   was committed before launch, but the executable adjudicator entered Git
+   after treatment outcomes had been printed in this audit, all MI/VG outcomes
+   preceded the repair of 32 invalid IS/CD commands, and the first completed
+   adjudication crashed before a post-outcome guard was added. Fixed queue
+   length and disclosure do not restore a never-inspected analysis.
+2. **[CONFIRMED clean-boundary failure, newly reproduced] A clean checkout at
+   the submitted commit cannot run the advertised 175-cell gate.** A detached
+   clean worktree at `88be9e3` exited 2, recomputed only 172 cells, and exposed
+   three `OK` cells backed by ignored/untracked files: the HSTU-BLaIR port's
+   NDCG/HR cells use an ignored summary JSON, while the conn-gate alpha cell
+   uses two ignored logs. TFV2 then crashed on a missing split CSV; HSTU parity
+   also requires an uninitialized submodule that the one-command README does
+   not initialize. The release verifier nevertheless printed `OK` while
+   skipping 25 absent release assets.
+3. **[CONFIRMED public/release contradiction] The public paper and repository
+   overstate what is released.** All 64 TFV2 result JSONs are tracked, but the
+   107 distinct referenced sidecars are local, ignored, and zero are tracked;
+   `RELEASE_MANIFEST.json` has no TFV2 family. The release API exposes 18
+   uploaded assets (the UI's 20 includes two automatic source archives), not 20
+   uploaded evidence assets. Section 8 says TFV2 sidecars are Git-tracked;
+   Appendix E says the public repository is private and uploads are pending;
+   the public README still says private, 173 cells, no independent timestamp,
+   and assets not uploaded.
+4. **[CONFIRMED favorable arithmetic; exploratory interpretation only] The
+   completed 8-vs-8 family is arithmetically correct.** Independent
+   recomputation again gives E1 +0.000420 (p=0.00221), E2 +0.002131
+   (p=1.01e-10), and E3 +0.005770 (p=3.26e-10), all passing the implemented
+   Holm thresholds. All 64 selected sidecars match their embedded hashes,
+   row/user coverage, and aggregate metrics locally. This supports the reported
+   treatment estimates, not their prospective label or public reproducibility.
+5. **[CONFIRMED narrow mechanism boundary] The MI effect is concentrated in
+   the single frequency-5 boundary group.** Boundary-only delta is +0.001379
+   (p=3.26e-6; 2,291 test rows, 1,375 unique target items), while excluding
+   frequency 5 gives +0.000071 (p=0.517). Across all four TFV2 categories,
+   zero-training-exposure targets have zero hits through rank 100. The paper
+   must say `frequency-5-heavy positive-tail pattern`, not broad rare-item or
+   cold-start rescue.
+6. **[CONFIRMED timestamp overclaim] The OTS proof remains pending and is not
+   bound to canonical Git bytes.** The last successful inspection found only
+   pending calendar attestations, no Bitcoin attestation, and a digest of the
+   CRLF worktree rather than the LF Git blob. `Externally timestamped` remains
+   unsupported; `stamp requested, proof pending` is the defensible wording.
+7. **[CONFIRMED FIR attribution defect] The favorable contrasts identify a
+   FIR-plus-initialization-plus-optimizer package, not the filter alone.** The
+   zero-gate/delta start is singular, task gradients initially vanish, and
+   Adam's coupled weight decay bootstraps learning. Comparator arms change
+   parameters and optimization paths. Remaining `filter contributes/carries`
+   wording is stronger than the experiment.
+8. **[CONFIRMED novelty/baseline weakness] Closest systems remain discussed but
+   unbenchmarked.** The paper itself calls AlphaFuse its closest omitted
+   frozen-text-plus-ID comparator; LLM-ESR, FAERec, LLM2Rec, ConvFormer,
+   C3SASR, and AdaMCT further narrow the semantic-tail and local-convolution
+   claims. The exact zero-init/left-causal/HSTU/full-catalog combination may be
+   distinct, but a top-journal contribution needs a direct comparator or a
+   reproducible protocol-based exclusion, plus the still-open text-permutation,
+   target/split-parity, and parameter-matched FIR controls.
+9. **[CONFIRMED citation error] The AdaMCT bibliography entry is factually
+   wrong.** `jiang2023adamct` lists five authors; the primary record lists nine
+   (Juyong Jiang, Peiyan Zhang, Yingtao Luo, Chaozhuo Li, Jae Boum Kim, Kai
+   Zhang, Senzhang Wang, Xing Xie, Sunghun Kim) and DOI
+   `10.1145/3583780.3614773`. This undermines the manuscript's claimed complete
+   attribution table until corrected and rechecked.
+10. **[CONFIRMED submission-package drift] The declared source of truth and
+    cover letter no longer govern the paper.** `CANONICAL_SUBMISSION.md` still
+    says 14 families, omits TFV2 from its gate chain, and promises that every
+    printed claim uses tracked artifacts. `COVER_LETTER_TORS.md` still says 168
+    cells, calls the FIR contrast paired, and promises every empirical number
+    is reverified. The manuscript, README, canonical ledger, cover letter,
+    manifest, release, and response cannot all be submitted as one coherent
+    artifact.
+11. **[CONFIRMED process-gate defect] Local campaign completion and scientific
+    validity remain separable.** The TFV2 runner continues failures, touches a
+    DONE marker unconditionally, never invokes adjudication, and leaves every
+    result marked dirty-tracked. The wrapper recognizes a success string from
+    a mutable adjudicator but does not validate sidecar rows, formulas, hashes,
+    epochs, argv/config identity, or provenance.
+12. **[CONFIRMED visual/submission-readiness blocker] The concise abstract is a
+    real fix, but both PDFs remain bloated and poorly paginated.** A fresh
+    all-page raster pass reconfirms the 54-page reader and 50-page TORS builds,
+    duplicate former abstract in Appendix E, nearly empty final pages, a major
+    void on TORS page 5, a sideways full-page Fig. 1 on TORS page 26, a small
+    Fig. 2, and a dense tiny Table 2 on TORS page 32. No clipping or broken
+    reference glyphs were found.
+13. **[AUTHOR VERIFICATION, ethics/data-rights risk]** The manuscript says the
+    data were used `under its research terms` and categorically declares IRB
+    review inapplicable, while the dataset maintainer says it cannot assign a
+    license and users must establish applicable legal/ethical compliance. The
+    basis for publishing roughly 575 MB of derived split files and the local
+    institutional human-subject determination should be documented before ACM
+    submission.
+14. **[CONFIRMED Windows reproducibility hazard] A normal nested checkout can
+    fail before any test runs.** Two tracked TensorBoard filenames are 230
+    characters long; with default `core.longpaths` unset, a worktree under this
+    ordinary Windows document path failed with `Filename too long`. Rename the
+    files or document/test `core.longpaths` and a short checkout root.
+15. **[CONFIRMED baseline/power weakness]** Many Table 2 rows remain n=1 probes
+    labeled `Rejected`, `neutral`, or `harmful`; a single run cannot power those
+    conclusions or bound a ceiling. Seed-level intervals quantify optimizer
+    variability on fixed datasets/splits, not category-population uncertainty;
+    `supported on four categories` must remain fixed-dataset wording.
+16. **[CONFIRMED engineering integrity; do not overread]** The local strict
+    build passes 175 cells/15 families, TeX health passes 33/40/27, the three
+    TFV2 endpoint values independently reproduce, and current PDFs contain no
+    broken refs or clipping. These are genuine engineering positives, not cures
+    for chronology, omitted public inputs, invalid attribution, weak baselines,
+    or contradictory submission materials.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-20 16:53)
+
+1. **[CONFIRMED, rejection-level prospective-integrity failure] The completed
+   TFV2 arithmetic is not a prospective confirmation.** The protocol was
+   committed at 01:26, but the promised executable adjudicator did not enter
+   Git until 05:59. By 02:48 this cumulative audit had already opened all eight
+   MI-text artifacts plus the first ID control, reconstructed rows/cohorts, and
+   printed every treatment-arm outcome. The first outcome-bearing pilot and
+   five reused seeds also predated the freeze; all MI/VG outcomes existed before
+   the 32 invalid FIR commands were repaired and re-stamped. The committed
+   adjudication later printed `ALL PASS` and then crashed in a secondary before
+   a post-outcome code fix. A fixed run-to-completion queue prevents optional
+   stopping; it does not make a post-result analysis implementation prospective.
+2. **[CONFIRMED reproducibility/assurance failure] The local green gate cannot
+   be reproduced from the stated public boundary.** The 16:36 strict command
+   passes 175 cells/15 families only because this machine has 107 ignored TFV2
+   sidecars and IS/CD split CSVs. Zero TFV2 sidecars are Git-tracked or attached
+   to `v0.9-audit-evidence`; `RELEASE_MANIFEST.json` contains no TFV2 entry and
+   no IS/CD split assets. The cell graph carries E2/E3 only, while E1 and all
+   secondaries are delegated to a text-search wrapper around an adjudicator
+   that does not validate row counts, target/rank formulas, sidecar hashes,
+   selected epochs, argv/config identity, or run provenance.
+3. **[CONFIRMED favorable arithmetic; exploratory interpretation only] The
+   completed 8-vs-8 primary family is numerically correct and Holm-PASS.** E1
+   MI positive-tail is +0.000420 (p=0.00221, 95% CI
+   [+0.000181,+0.000660]); E2 IS overall is +0.002131 (p=1.01e-10,
+   [+0.001862,+0.002400]); E3 CDs overall is +0.005770 (p=3.26e-10,
+   [+0.005275,+0.006266]). These are useful multi-seed estimates of the stated
+   packages; the chronology above prevents the `confirmatory` label.
+4. **[CONFIRMED mechanism-boundary result] E1 is boundary-frequency evidence,
+   not general rare-item or cold-start rescue.** Removing the frequency-5
+   boundary group gives +0.000071, p=0.517, CI crossing zero. Across all four
+   categories, all 16,480 validation-selected zero-exposure evaluations miss
+   through rank 100; all 26,640 locally preserved selected/final evaluations do
+   likewise. The paper now reports this negative result and withdraws cold-start
+   capability, which must not regress.
+5. **[CONFIRMED timestamp overclaim] The current OTS files do not establish the
+   independently verifiable timestamp the abstract and results claim.** `ots
+   info` shows three `PendingAttestation` objects and no embedded Bitcoin
+   attestation. The proof commits to the Windows CRLF worktree SHA-256
+   `d6dc8088...a5483b2`, not the committed LF Git-blob content SHA-256
+   `399041b0...5a0a`. At present it is pending and not bound to the canonical Git
+   bytes across platforms.
+6. **[CONFIRMED front-matter/release contradictions] The new 218-word abstract
+   is concise but factually stronger than the artifacts.** It says all 175 cells
+   recompute from released artifacts and that per-user sidecars are public.
+   Neither is true for TFV2. Section 8 likewise says TFV2 sidecars are
+   Git-tracked and calls the release 20 assets; the API exposes 18 uploaded
+   assets (the UI count can include two automatic source archives). Appendix E,
+   copied verbatim from the former abstract, still says the repository is
+   private and the split/cache assets await upload. The paper now contradicts
+   itself front-to-back as well as contradicting the public boundary.
+7. **[CONFIRMED novelty/citation gap] Three closer works are still absent.**
+   ConvFormer (2023) already uses per-channel temporal convolution and an
+   all-position next-item loss; *Let It Go? Not Quite* (RecSys 2025) studies
+   frozen content initialization plus bounded trainable deltas under true-cold
+   and frequency-stratified evaluation; LLM2Rec (KDD 2025) compares CF-aware
+   language embeddings with BLaIR/LLMEmb using SASRec and AR2023 full ranking.
+   No exact predecessor was found for the full zero-init gate + left-only
+   padding + pre-HSTU placement package, so that exact realization remains the
+   defensible novelty boundary.
+8. **[CONFIRMED FIR attribution defect] The favorable FIR contrasts identify a
+   package, not the filter alone.** The arm adds parameters and changes
+   initialization/optimizer trajectories; the delta-kernel/zero-gate start
+   initially blocks task gradient to filter weights. The manuscript now admits
+   a package effect, but remaining “filter contributes/carries” phrasing and the
+   causal-filter novelty table still read more component-specifically than the
+   experiment warrants.
+9. **[CONFIRMED baseline/power weakness] The evidence hierarchy remains too
+   broad for top-journal claims.** The SASRec-family protocol-parity table keeps
+   only popularity as the internal baseline, while many Table 2 rows use one
+   seed yet are labeled `Rejected`, `neutral`, or `harmful`. The paper now states
+   unequal power, but disclosure does not convert single-run probes into powered
+   negative evidence; a prospective MDE/power rationale for 8 runs per arm is
+   also absent.
+10. **[CONFIRMED process-gate defect] Campaign completion and scientific
+    adjudication remain separable in unsafe ways.** The runner still uses
+    `set -uo pipefail`, continues after failed commands, and unconditionally
+    touches `TFV2_CAMPAIGN.DONE`; it never invokes adjudication. The tracked
+    cohort JSONs are not consumed by the adjudicator, and the completed result
+    family remains `git_dirty_tracked=true` in all 64 JSONs.
+11. **[CONFIRMED submission-readiness blocker, partly improved] The PDFs are
+    cleaner but still not journal-ready.** The new abstract fits page 1 and the
+    old page-15 collision is gone. However, moving the former ~1,900-word
+    abstract verbatim to Appendix E expands the reader to 54 pages and TORS to
+    50, duplicates the paper's claims, preserves stale prose, and leaves TORS
+    page 50 almost empty. TORS also has major whitespace voids on pages 5 and
+    31, a tiny dense Table 2 on page 32, and a sideways full-page Fig. 1 on page
+    26; Fig. 2 remains undersized. No clipping or broken glyphs were found.
+12. **[PLAUSIBLE overgeneralization; controls still open]** The manuscript
+    discloses but has not run a target/split-parity audit or an item-text
+    permutation control. It also lacks a parameter-/initialization-matched FIR
+    control and a stronger frozen-text/content-init comparator. Semantic
+    attribution and component-level mechanism language therefore remain
+    provisional.
+13. **[CONFIRMED engineering integrity; do not overread]** All 64 TFV2 JSONs
+    are tracked; their 107 distinct locally referenced sidecars exist and match
+    embedded SHA-256s; complete E3 selected-checkpoint statistics independently
+    reproduce; HSTU core parity is bitwise exact at the asserted settings; and
+    the local 153-file manifest check passes. These are real engineering wins,
+    not cures for chronology, release incompleteness, or scientific scope.
+14. **[CONFIRMED manuscript repairs; do not regress]** The obsolete p=0.0054
+    cross-category headline is now explicitly historical/retracted and replaced
+    by p=0.13; `brand` was corrected to Amazon `store`/seller with the frozen
+    cache-label misnomer disclosed; public repository status, 175 cells, the
+    all-category zero-exposure failure, boundary sensitivity, and selected vs
+    final rank convention are now stated in the main body.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-20 16:36)
 
 1. **[CONFIRMED, rejection-level prospective-integrity failure] TFV2 remains
    exploratory/aborted.** Outcome-bearing runs preceded the analysis program,
@@ -1649,6 +1868,724 @@ plausible risks.
     the venue's current template/anonymity rules, supply any independent
     pre-outcome timestamp, repeat thinning across independent subsets, and
     demonstrate a public fresh-clone reconstruction.
+
+## Audit Run - 2026-07-20 16:53 Australia/Sydney
+
+### Audited state and strict verdict
+
+- **Fixed cutoff:** 2026-07-20 16:53:33 Australia/Sydney.
+- **Branch/HEAD:** `codex/bestrec-sota-results` at
+  `88be9e3c62a3669038482299c45cd95bf2bf1d3a`; `origin` resolves to the same
+  commit. No manuscript, code, result JSON, PDF, reference, or release-manifest
+  commit landed after the 16:36 audit. The only pre-existing working-tree change
+  was this cumulative audit.
+- **Canonical artifacts inspected:** `PAPER_SUBMISSION.md` / PDF,
+  `paper_tex/paper-shared.tex`, every `paper_tex/sections/*.tex`, tables,
+  `references.bib`, `paper_tex/PAPER_TORS.pdf`, `CANONICAL_SUBMISSION.md`,
+  `COVER_LETTER_TORS.md`, `README.md`, `RELEASE_MANIFEST.json`, the TFV2
+  preregistration/adjudicator/64 JSONs/107 referenced sidecars, the 175-cell
+  graph, ignored source artifacts, and the public GitHub release.
+- **PDF identity:** reader 54 pages, 1,334,971 bytes, SHA-256
+  `a27a6bb089b24ab37fe12e4e76c8213e2a6ede7990bcfa2d04476d6dc527bcb8`;
+  TORS 50 pages, 474,118 bytes, SHA-256
+  `e2930136f6fb35b7d875577c83fb164bbe17c106eebcda67f0c5892abb5999aa`.
+- **Verdict: reject in present form / major methodological and artifact
+  revision.** The empirical estimates are locally reproducible and favorable,
+  but the new clean-checkout experiment directly falsifies the abstract's
+  released-artifact claim. TFV2 chronology remains incompatible with a
+  prospective-confirmation label. The paper package also contains a new
+  confirmed citation error and multiple stale documents that would give editors
+  mutually incompatible claim sets.
+
+### Fresh dynamic checks
+
+| check | result at cutoff |
+|---|---|
+| Local `rebuild_hstu_submission.py --strict` | exit 0; 175 cells (155 exact, 20 rounding), 15 families; manifest says 153 local files verified |
+| Current `adjudicate_tfv2.py --no-append` | exit 0; E1/E2/E3 reproduce and implemented Holm verdict is ALL PASS |
+| Independent TFV2 SciPy/sidecar recomputation | matches endpoint values; 64 selected sidecars match embedded hashes, row/user coverage, and JSON aggregates (max floating discrepancy `1.9e-15`) |
+| `paper_tex/check_tex_health.py` | PASS: 33 sources, 40 labels, 27 reference targets |
+| Clean detached worktree, same HEAD | exit 2; 172/175 graph cells, three missing ignored sources, TFV2 missing split, parity dependency absent |
+| Public release API | repository public; 18 uploaded assets, not 20 uploaded evidence files |
+| Fresh raster inspection | all 54 reader + 50 TORS pages rendered; no clipping/broken refs; known float/density/duplicate-appendix defects persist |
+
+The render used the bundled Poppler executable after its command wrapper pointed
+to a nonexistent internal path. Six contact sheets plus the affected full pages
+were inspected. The exact temporary render directory was removed with a scoped
+`git clean` after a dry run; no source PDF was modified.
+
+### Newly confirmed rejection-level clean-boundary defect
+
+The paper's most important new failure is not merely the already-known TFV2
+sidecar omission. Three graph cells that the local build labels `OK` depend on
+ignored, untracked, unreleased files:
+
+1. `t1b.port.final_ndcg` and `t1b.port.final_hr` read
+   `_bestrec_sota_lab/runs/hstu_blair_eval_export_full_20260609_fg/hstu_blair_eval_export_summary.json`.
+   The file exists locally, is ignored by
+   `_bestrec_sota_lab/runs/.gitignore`, and is absent from Git and both release
+   boundaries.
+2. `t2.conngate.alpha` reads
+   `_bestrec_run/run_CONNGATE_MI_k8_seed20260608.log` and
+   `_bestrec_run/run_CONNGATE_5seed_driver.log`. Both are local, ignored by
+   `_bestrec_run/run_*.log`, untracked, and unreleased.
+
+A short-path clean worktree at the exact audited commit therefore produced:
+
+- only 172 recomputable graph cells and three explicit source violations;
+- `RELEASE MANIFEST VERIFY: OK` while skipping 25 missing `release asset` files;
+- a TFV2 `FileNotFoundError` on
+  `data_5core/5core/last_out/Musical_Instruments.train.csv` before it could
+  reach the missing sidecars;
+- HSTU parity import failure because the fresh worktree lacks the initialized
+  `generative_recommenders` submodule/dependency and the one-command README does
+  not include a submodule-init step;
+- exit code 2 and `SUBMISSION REBUILD: FAIL`.
+
+This directly refutes all statements that `every printed claim recomputes from
+tracked, hash-manifested artifacts with no local-only dependency`. Even if all
+107 TFV2 sidecars and the IS/CD inputs were deposited, these three older cells
+would still keep the clean gate red.
+
+The first attempt to create the clean worktree under the repository's ordinary
+`tmp/` path failed before checkout: two tracked TensorBoard event filenames are
+230 characters relative to the root, and Windows Git with `core.longpaths`
+unset reported `Filename too long`. A very short `C:\rtf2a_...` root was needed
+to reach the scientific checks. This is a separate reproducibility defect for a
+repository advertised as executable on consumer Windows.
+
+### TFV2 arithmetic and the narrower scientific interpretation
+
+The completed numbers remain internally sound:
+
+| endpoint | delta | p | 95% CI | implemented Holm |
+|---|---:|---:|---:|---:|
+| E1 MI tie-safe positive tail, text - ID | +0.000420195 | 0.002208 | [+0.000180881,+0.000659509] | PASS |
+| E2 IS overall, filter - no-filter | +0.002131207 | 1.01e-10 | [+0.001862,+0.002400] | PASS |
+| E3 CDs overall, filter - no-filter | +0.005770294 | 3.26e-10 | [+0.005275,+0.006266] | PASS |
+
+New boundary-only recomputation sharpens E1's scope. The frequency-5 group by
+itself is +0.00137878 (t=7.43, p=3.26e-6, 95% CI approximately
+[+0.000980,+0.001777]) over 2,291 test rows / 1,375 unique target items. Removing
+that group gives +0.000071, p=0.517. Thus the whole-group endpoint passes exactly
+as defined, but the evidence is a frequency-5-heavy cohort effect, not a smooth
+rare-item benefit. The all-category zero-exposure result remains 0 hits through
+rank 100.
+
+All 64 TFV2 JSONs are Git-tracked. Their 107 distinct referenced sidecars exist
+locally and were revalidated, but `.gitignore:37` excludes them and `git ls-files`
+returns zero. `RELEASE_MANIFEST.json` has no TFV2 family. Local arithmetic is not
+public reconstruction.
+
+### Submission-package truth and document control
+
+The manuscript sources have not been propagated consistently into the files an
+editor or reviewer is likely to read first:
+
+- `README.md` still calls the repository private, says 173 cells, omits TFV2
+  from the strict chain, says no independent external timestamp exists, and
+  says the split/cache assets are not uploaded. The repository is public, the
+  local graph says 175/15, and the release now has those 16 data assets.
+- `CANONICAL_SUBMISSION.md` says 14 claim families at lines 63/67, omits TFV2
+  from its preregistration and adjudicator chain, and retains a tracked-only
+  contract that the clean test disproves.
+- `COVER_LETTER_TORS.md` says 168 cells, promises every printed number is
+  reverified, describes the four-category FIR comparison as paired, and states
+  that every empirical claim is either pre-declared or exploratory while the
+  paper calls TFV2 confirmatory despite the documented chronology.
+- Main Section 8 says TFV2 per-user sidecars and JSONs are Git-tracked; only the
+  JSONs are. It says `20 assets total`; GitHub's release API enumerates 18
+  uploads, with the UI count inflated by automatic source archives.
+- Appendix E repeats the former abstract and says the repository is private and
+  split/cache assets await upload. It also says pre-declarations have no
+  independent timestamp, then later calls TFV2 externally timestamped, and
+  points to a Section 6.5 blanket limitation that no longer says this.
+- Section 5.3 says tie-safe sensitivity is `unquantified on the released
+  artifacts` immediately before reporting the now-quantified TFV2 boundary and
+  absolute-band sensitivities. If it means only the original runs, say so.
+
+These are not harmless historical notes: the abstract, availability statement,
+README, canonical ledger, cover letter, and Appendix E assert mutually exclusive
+facts about the evidence submitted to review.
+
+### Citation, novelty, journal-fit, and ethics fact-checks
+
+**Confirmed citation error.** `paper_tex/references.bib` entry
+`jiang2023adamct` lists only Jiang, J. B. Kim, Luo, K. Zhang, and S. Kim. The
+primary record lists nine authors: Juyong Jiang, Peiyan Zhang, Yingtao Luo,
+Chaozhuo Li, Jae Boum Kim, Kai Zhang, Senzhang Wang, Xing Xie, and Sunghun Kim;
+CIKM 2023; DOI `10.1145/3583780.3614773`. Correct the entry and audit all
+hand-entered 2025/2026 metadata.
+
+**Novelty/baseline risk.** AlphaFuse explicitly preserves frozen language space
+while learning collaborative ID information and evaluates long-tail settings;
+LLM-ESR targets long-tail users/items with LLM semantics; FAERec adaptively
+fuses ID/LLM embeddings for tail items; LLM2Rec compares CF-aware semantic
+embeddings with BLaIR/LLMEmb using SASRec; ConvFormer, C3SASR, and AdaMCT narrow
+the local/depthwise convolution boundary. The exact FIR realization may remain
+distinct, but the paper cannot demonstrate a top-journal empirical advance
+without at least the closest comparator or an executable exclusion analysis.
+
+This is especially material for TORS. Its current methodological guidance asks
+authors to share the complete set of artifacts required to replicate the full
+experiment and to systematically tune competing models. The present clean-clone
+failure and omitted closest comparator conflict directly with that stated bar.
+
+**Author verification - data rights and human-subject determination.** The
+McAuley Lab maintainer states that it is not in a position to assign a license
+or dictate dataset usage terms, while emphasizing research use plus applicable
+ethical/legal duties. The paper's phrase `used under its research terms` reads
+as if a license or terms grant was established. Because the release republishes
+roughly 575 MB of derived split CSVs, obtain and document the redistribution
+basis. Likewise, replace the categorical `IRB / human-subjects review is not
+applicable` with the actual institutional determination or policy basis; public
+or pseudonymized data does not by itself let the manuscript adjudicate every
+jurisdiction's requirement.
+
+### Fresh visual inspection
+
+All 104 pages were rasterized and inspected from the unchanged PDFs.
+
+- **Confirmed improvements:** the concise abstract fits on page 1 in both
+  builds; the prior table collision is gone; the widened dataset table is
+  legible; no clipping, missing figure, `??` reference, or broken glyph was
+  found.
+- **Confirmed remaining defects:** reader page 54 contains one short paragraph
+  and otherwise blank space; TORS page 5 is less than half full; TORS page 26 is
+  a sideways full-page three-panel figure; TORS page 31 has a large bottom void;
+  TORS page 32 is a dense, small-font full-page table; TORS page 50 contains only
+  three short lines. Reader Fig. 2 on page 30 and the TORS counterpart remain
+  small. Appendix E begins on reader page 45 / TORS page 47 and duplicates the
+  former long abstract while preserving false status prose.
+
+The paper still reads as a chronological audit dossier rather than a focused
+journal argument. Moving the old abstract to an appendix changed page count,
+not editorial burden.
+
+### Confirmed problems
+
+1. TFV2 cannot be labeled prospective/confirmatory on the public chronology.
+2. A clean checkout cannot reproduce the 175-cell gate; three older `OK` cells
+   and TFV2 depend on local-only inputs.
+3. The release verifier is fail-open for 25 missing assets while printing `OK`.
+4. TFV2 sidecar-public/Git-tracked statements are false; uploaded-asset counts
+   conflate 18 uploads with two automatic archives.
+5. The MI tail endpoint is dominated by the frequency-5 boundary group and has
+   no zero-exposure retrieval.
+6. FIR component language exceeds the identifiable treatment package.
+7. README, canonical ledger, cover letter, Section 8, and Appendix E disagree
+   with one another and with the public repository.
+8. AdaMCT has a wrong author list, and the closest semantic-tail/filter systems
+   are not experimentally addressed.
+9. The Windows checkout can fail on overlong tracked filenames.
+10. The PDF package remains oversized, duplicate, and poorly paginated.
+
+### Plausible risks / author verification required
+
+- Produce the institutional/legal basis for AR2023-derived split
+  redistribution and the IRB/not-human-subject determination.
+- State whether any author, not only the automated audit, used interim test logs
+  in design decisions. The repository proves visibility, not every human act.
+- Explain the prospective power/MDE rationale for eight runs per arm. Realized
+  intervals are post-hoc, and seeds do not represent dataset uncertainty.
+- Confirm the exact TORS submission mode, anonymity, supplementary-material,
+  and artifact/data-governance requirements in the live portal.
+- Determine whether the long filenames also break typical reviewer ZIP extract
+  paths and GitHub Desktop, not only this worktree command.
+
+### Concrete fixes in priority order
+
+1. **Relabel TFV2 everywhere** as a complete outcome-visible exploratory rerun;
+   retain exact estimates and negative sensitivities; say OTS proof pending.
+2. **Make a fresh public clone truly green.** Track/deposit the three ignored
+   source artifacts, all exact TFV2 sidecars, and required split inputs; add
+   them to the manifest; initialize/fetch submodules automatically; make missing
+   release assets fatal or fetch-and-hash them before verification.
+3. **Replace the TFV2 string gate with structured validation:** rows/users,
+   targets, rank/NDCG/HR formulas, selected epochs, seed/config/argv, hashes,
+   provenance, serialized cohorts, E1, and every printed secondary.
+4. **Synchronize the submission package** from one generated claim manifest:
+   abstract, Section 8, README, `CANONICAL_SUBMISSION.md`, cover letter, response,
+   release notes, and deposit. Remove Appendix E rather than preserving a
+   superseded abstract verbatim.
+5. **Repair Windows checkoutability** by renaming the two event files or
+   testing/documenting `core.longpaths` plus a short root.
+6. **Narrow the scientific claim** to a frequency-5-heavy positive-tail pattern
+   and FIR-plus-initialization/optimizer package; run the parameter-matched FIR,
+   text-permutation, split/target-parity, and strongest frozen-semantic baseline
+   controls.
+7. **Correct AdaMCT and audit the bibliography.** Add or benchmark AlphaFuse,
+   LLM-ESR, FAERec, LLM2Rec, and ConvFormer with explicit protocol differences.
+8. **Document data governance**: redistribution basis, institutional review
+   determination, sidecar privacy/linkage assessment, and retention policy.
+9. **Edit for TORS readers:** delete duplicate Appendix E, split Table 2,
+   enlarge Fig. 2, avoid a sideways Fig. 1 if the portal does not support it,
+   and remove float-created blank pages.
+
+### Evidence and primary-source links added/rechecked this run
+
+- Public repository: <https://github.com/Ray0419/bestrec-sota-results>
+- v0.9 release: <https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence>
+- TORS methodological standards: <https://doi.org/10.1145/3800587>
+- AdaMCT primary record: <https://arxiv.org/abs/2205.08776>
+- AlphaFuse: <https://arxiv.org/abs/2504.19218>
+- LLM-ESR official proceedings record:
+  <https://papers.neurips.cc/paper_files/paper/2024/hash/2f0728449cb3150189d765fc87afc913-Abstract-Conference.html>
+- FAERec: <https://arxiv.org/abs/2604.03688>
+- LLM2Rec: <https://arxiv.org/abs/2506.21579>
+- ConvFormer: <https://arxiv.org/abs/2308.02925>
+- Dataset maintainer's license/terms statement:
+  <https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023/discussions/1>
+- ACM human-participants policy:
+  <https://www.acm.org/publications/policies/research-involving-human-participants-and-subjects>
+
+### Open questions
+
+- Where will the exact 107 TFV2 sidecars, IS/CD inputs, ignored HSTU summary,
+  and conn-gate logs be deposited under one immutable checksum inventory?
+- Why does the clean graph count 172 while the abstract guarantees 175 from
+  released artifacts, and why does manifest verification pass with 25 assets
+  absent?
+- Will the authors accept the public chronology and relabel TFV2, or can they
+  produce a genuinely earlier executable adjudicator that was inaccessible to
+  outcomes? None was found.
+- Is the claim the complete FIR treatment package or the filter parameter
+  itself? If the latter, when will the nonsingular parameter-/initialization-
+  matched control run?
+- What license/permission and institutional review determination cover the
+  released derivatives and per-user rank sidecars?
+- Which single document is authoritative when README, canonical ledger, cover
+  letter, paper, response, and release notes disagree?
+
+### Running checklist
+
+- [x] Read prior automation memory and preserve the cumulative audit.
+- [x] Fix an immutable cutoff and confirm local/remote HEAD identity.
+- [x] Re-run the local 175-cell strict build, TFV2 adjudicator, and TeX health.
+- [x] Independently recompute TFV2 endpoints, sidecar integrity, and the
+      frequency-5 boundary-only effect.
+- [x] Run the strict command from a detached clean worktree at the same commit.
+- [x] Audit every `OK` graph source against Git tracking/ignore/release state.
+- [x] Enumerate the live GitHub release API assets and public status.
+- [x] Inspect README, canonical ledger, cover letter, Section 8, and Appendix E
+      for claim drift.
+- [x] Fact-check AdaMCT metadata, closest literature, TORS methodology guidance,
+      dataset terms, and ACM human-participant policy.
+- [x] Rasterize and inspect every page of both PDFs; remove exact temp renders.
+- [ ] Relabel TFV2 and complete/verify the OTS proof against canonical bytes.
+- [ ] Make the full 175-cell gate pass from a normal fresh public clone.
+- [ ] Deposit/manifest TFV2 and the three older ignored graph sources.
+- [ ] Replace fail-open release skipping and the TFV2 success-string wrapper.
+- [ ] Synchronize README/canonical/cover/paper/release/response from one claim
+      boundary.
+- [ ] Correct AdaMCT and add/exclude the closest baselines rigorously.
+- [ ] Resolve data-rights, IRB determination, and sidecar-governance questions.
+- [ ] Fix Windows long-path checkout and the remaining PDF layout defects.
+
+## Audit Run - 2026-07-20 16:36 Australia/Sydney
+
+### Audited state and strict verdict
+
+- **Workspace/branch:** `C:\Users\rayxc\Documents\R`,
+  `codex/bestrec-sota-results`.
+- **Fixed cutoff:** `88be9e3c62a3669038482299c45cd95bf2bf1d3a`, clean and
+  pushed at 16:36 Australia/Sydney. This commit replaces the former long abstract
+  with a 218-whitespace-token abstract, moves the old text to Appendix E,
+  regenerates both PDFs, widens the dataset table, and rotates Fig. 1 to a
+  full-page TORS float. The immediately preceding `c87338f1` changes only the
+  response ledger; the substantive TFV2 fold-in is in `28c3fbf6`/`c124493c`.
+- **Canonical sources/artifacts:** `PAPER_SUBMISSION.md` and
+  `PAPER_SUBMISSION.pdf` for the reader edition; `paper_tex/` and
+  `paper_tex/PAPER_TORS.pdf` for the TORS artifact, per
+  `CANONICAL_SUBMISSION.md`.
+- **Current PDFs:** reader 54 pages, 1,334,971 bytes, SHA-256
+  `a27a6bb089b24ab37fe12e4e76c8213e2a6ede7990bcfa2d04476d6dc527bcb8`;
+  TORS 50 pages, 474,118 bytes, SHA-256
+  `e2930136f6fb35b7d875577c83fb164bbe17c106eebcda67f0c5892abb5999aa`.
+- **Local assurance result:** `uv --project _bestrec_run run python
+  _bestrec_run/rebuild_hstu_submission.py --strict` exits 0: HSTU asserted
+  stages match exactly, 175 cells recompute (155 exact, 20 within rounding), all
+  15 declared families are present, and 153 manifest files verify.
+- **Strict reviewer recommendation: REJECT in present form / major scientific
+  and artifact revision required.** The completed TFV2 effect estimates are
+  favorable and arithmetically reproducible on this machine, but the prospective
+  chronology, timestamp claim, public release boundary, and paper's description
+  of those facts do not survive audit. A green local build is not a green
+  confirmatory study.
+- **Change scope:** this audit edits only `PAPER_REVIEW_AUDIT.md`. It does not
+  modify manuscripts, PDFs, results, sidecars, commands, code, manifests,
+  preregistration files, proofs, figures, tables, or releases.
+
+### Material changes since the 14:52 audit
+
+1. **TFV2 finished.** All 64 selected-checkpoint run JSONs are present and
+   tracked: 16 each for MI, VG, IS, and CDs. Commits `12b0d438` and `28c3fbf6`
+   record the completed family and fold its estimates into both manuscripts.
+2. **Several old paper contradictions were genuinely repaired.** The former
+   p=0.0054 MI-minus-VG headline is now a historical/retracted value; the
+   repaired contrast is +0.000247, p=0.13. The paper now exposes the
+   zero-exposure failure across all categories, the nonsignificant
+   exclude-boundary sensitivity, the `rank0` convention, the `store`/seller
+   field, the public repository state, and the 175-cell count.
+3. **The response does not resolve the status dispute.**
+   `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` elects to retain the confirmatory label,
+   arguing that the queue was run-to-completion and that the adjudicator was
+   committed before inspection. The second statement is contradicted by the
+   repository's own 02:48 audit record; the first does not cure a post-result
+   analysis implementation.
+4. **Front-end presentation improved, but truthfulness did not.** Commit
+   `88be9e3c` makes the abstract concise and page-1 readable. It also elevates
+   the false claims that every gated value recomputes from released artifacts
+   and that per-user sidecars are public. Moving the old abstract verbatim to
+   Appendix E preserves stale private/upload-pending language and adds redundant
+   pages instead of resolving it.
+
+### Fresh verification performed
+
+#### 1. Artifact inventory and integrity
+
+- Exactly **64/64 TFV2 JSONs** are tracked. All 64 record
+  `provenance.git_dirty_tracked=true`; their recorded code-state commits split
+  between `4a07a132...` and `43fa87be...`.
+- The JSONs reference **107 distinct selected/final per-user sidecars**. All 107
+  exist locally and their bytes match the embedded SHA-256s. The 64 selected
+  sidecars are complete; final-epoch sidecars are supplemental and exist for
+  only 43 distinct runs.
+- **Zero TFV2 sidecars are tracked.** The public Git tree contains the 64 JSONs,
+  four serialized cohort files, commands/programs, two `.ots` files, and the
+  adjudication record, but not the 107 sidecars, campaign logs, failure ledger,
+  or DONE marker.
+- `RELEASE_MANIFEST.json` has **zero `TFV2`/`tfv2` entries**. Its 12 split assets
+  cover Video_Games, Musical_Instruments, Office_Products, and
+  Beauty_and_Personal_Care—not Industrial_and_Scientific or CDs_and_Vinyl.
+- The public v0.9 release exposes **18 uploaded assets**: 12 split CSVs, four
+  text caches, `pinned_env_parity_artifacts.zip`, and
+  `RELEASE_MANIFEST.json`. GitHub's page-level count may include the two
+  auto-generated source archives; those are not uploaded evidence assets.
+
+#### 2. Independent primary and secondary recomputation
+
+Running the current adjudicator against the preserved local files gives:
+
+| endpoint | estimate | t / df | p | 95% CI | Holm |
+|---|---:|---:|---:|---:|---:|
+| E1 MI positive-frequency tail, text − ID | +0.000420 | 3.79 / 13.2 | 0.00221 | [+0.000181,+0.000660] | PASS at 0.05 |
+| E2 IS overall, filter − no-filter | +0.002131 | 16.99 / 14.0 | 1.01e-10 | [+0.001862,+0.002400] | PASS at 0.0167 |
+| E3 CDs overall, filter − no-filter | +0.005770 | 26.12 / 9.6 | 3.26e-10 | [+0.005275,+0.006266] | PASS at 0.025 |
+
+The current mechanical order is E2, E3, E1, and all three pass the frozen Holm
+thresholds. This confirms the arithmetic, not the claimed prospective status.
+The secondaries also reproduce:
+
+- MI zero-exposure: exactly 0.0 in both arms, with zero between-run variance;
+- MI tail excluding frequency-5 boundary: +0.000071, p=0.517, 95% CI
+  [-0.000159,+0.000302];
+- MI absolute frequency band 1--6: +0.000546, p=0.00385;
+- MI positive-tail HR@10: +0.001150, p=4.32e-5;
+- VG repaired positive-tail: +0.000173, p=0.141;
+- four-arm MI-minus-VG contrast: +0.000247, p=0.127;
+- IS/CDs positive-tail package deltas: +0.000775 and +0.002329.
+
+For CDs E3, direct recomputation gives selected-checkpoint arm means
+0.0660739828 versus 0.0603036884 and the exact +0.0057702944 difference above.
+An exhaustive two-sided label permutation gives 2/12,870 = 0.0001554 for both
+the overall and tie-safe tail separations. That robustness is favorable but
+post-hoc and does not change the evidence class.
+
+#### 3. True zero-exposure evaluation is universally negative
+
+The four tie-safe cohorts and every locally available TFV2 sidecar were read
+again. `rank0 < 100` is never observed:
+
+| category | zero-exposure items | selected files/rows | all local files/rows | hits through rank 100 | best `rank0` |
+|---|---:|---:|---:|---:|---:|
+| MI | 31 | 16 / 1,696 | 31 / 3,286 | 0 | 2,685 |
+| VG | 85 | 16 / 5,520 | 19 / 6,555 | 0 | 1,519 |
+| IS | 94 | 16 / 5,312 | 32 / 10,624 | 0 | 1,893 |
+| CDs | 52 | 16 / 3,952 | 25 / 6,175 | 0 | 4,350 |
+
+Totals are 0/16,480 validation-selected and 0/26,640 selected/final physical
+evaluations. The best ordinary one-based position is 1,520. The current paper's
+explicit “no cold-start capability” statement is correct and should remain.
+
+#### 4. The Git chronology falsifies “before any output was inspected”
+
+- `PREREG_TAIL_FIR_V2.md` entered Git at **01:26:34** in `3681b490`.
+- By the cumulative audit's fixed **02:48** cutoff, eight MI-text JSONs and one
+  ID JSON existed. `PAPER_REVIEW_AUDIT.md` lines 4876--4939 record independent
+  row/hash/cohort validation and print selected/final NDCG and HR for every one
+  of those completed treatment runs.
+- `_bestrec_run/adjudicate_tfv2.py` first entered Git only at **05:59:44** in
+  `43fa87be`, over three hours after that inspection. Its docstring nevertheless
+  says it was committed before any campaign result was inspected.
+- The preregistration's own E1 disclosure admits that seed 20260801's
+  best-epoch summary was read while diagnosing the queue. Meanwhile, all MI/VG
+  outputs existed before the 32 non-parsing IS/CD commands were replaced and
+  the amended file was re-stamped.
+- The first committed completed output (`12b0d438`) printed the three PASS
+  values, then raised `ZeroDivisionError` in the all-zero MI secondary. The
+  degenerate-variance guard and final output were committed after all outcomes
+  in `28c3fbf6`.
+
+This is not an allegation based on hidden intent; it is the order of files and
+printed values in the public audit trail. The family can be reported as a
+complete, transparently outcome-visible exploratory rerun. It cannot be called
+an executable-first, never-inspected confirmation.
+
+#### 5. The local strict gate is narrower than its name
+
+- The artifact graph contains only `tfv2.is.e2` and `tfv2.cds.e3`. E1,
+  zero-exposure, boundary sensitivity, HR, VG, the cross-dataset contrast, and
+  tail secondaries are not graph cells.
+- The wrapper launches the current mutable `adjudicate_tfv2.py` and searches
+  stdout for `PRIMARY FAMILY VERDICT: ALL PASS`. The program opens local split
+  CSVs and ignored sidecars directly; the four tracked serialized cohort JSONs
+  are not inputs.
+- `sidecar_means()` checks only that a gzip file exists, then averages any rows
+  whose `target_item_id` is in the recomputed set. It does not verify row count,
+  unique user coverage, target agreement, rank/NDCG/HR identities, file SHA,
+  filename/seed/config/argv, selected epoch, or provenance commit/dirty state.
+- `overall_means()` reads `best_test.NDCG@10` from a named JSON without checking
+  its internal provenance or the corresponding sidecar.
+- The campaign runner continues failures and touches
+  `TFV2_CAMPAIGN.DONE` unconditionally. It never calls the adjudicator.
+
+Accordingly, “175 cells locally reproduce” is true, while “every printed claim
+recomputes from released, hash-manifested artifacts with no local-only
+dependency” is false.
+
+#### 6. The external timestamp is not yet independently verifiable
+
+- `ots info PREREG_TAIL_FIR_V2.md.ots` reports three pending calendar
+  attestations and no Bitcoin attestation in the proof. The local `ots verify`
+  command did not produce a successful block attestation.
+- The proof's file digest is
+  `d6dc8088b379464e9aba1d850f685830b8ff4bd4aba9c6f5b6c27c054a5483b2`,
+  matching the CRLF Windows worktree. The exact committed LF blob hashes to
+  `399041b0301920d428a6d24d8724425777dd47e12c29db462775e2504a4f5a0a`.
+- OpenTimestamps' own documentation distinguishes pending calendar commitments
+  from a complete proof that verifies against a Bitcoin block. The paper may
+  say “OTS stamp requested; proof pending” now, not “independently externally
+  timestamped” without qualification.
+
+#### 7. Public-state and manuscript truth check
+
+- GitHub's API reports the repository **public** and the branch current through
+  the audited cutoff.
+- The new abstract says the gate recomputes all 175 cells from released
+  artifacts and that “code, data derivatives, per-user sidecars, and the
+  adversarial audit chain are public.” TFV2 E1 depends on untracked sidecars;
+  IS/CD inputs are outside the stated release; the claim is false as written.
+- Main §8 says TFV2 sidecars and JSONs are Git-tracked. Only the JSONs are.
+- Appendix E's copied contribution paragraph says the same repository is
+  private and its split/cache assets await upload. This obsolete paragraph
+  appears in both canonical formats and on the nearly empty final TORS page.
+- The response file repeats that the adjudicator preceded inspection and that
+  sidecars were released. A response ledger is not a correction to the paper or
+  to the artifact boundary.
+
+#### 8. Fresh novelty check against primary records
+
+Three close works are not named anywhere in the canonical manuscript, TeX
+sources, bibliography, or this audit's prior novelty list:
+
+1. **ConvFormer (Wang et al., 2023)** replaces the attention mixer with a
+   per-channel temporal convolution, residual Add+Norm, and all-position
+   next-item training. Its default circular padding and mixer replacement differ
+   from this paper's left-only zero-init gated pre-HSTU residual, but it is a
+   materially closer filter/convolution prior than a Caser/NextItNet-only
+   boundary.
+2. **Let It Go? Not Quite (Pembek et al., RecSys 2025)** holds content
+   embeddings fixed while learning a bounded per-item delta and evaluates true
+   cold/frequency-stratified behavior. It narrows TAPE novelty to the shared
+   prototype parameterization and this paper's cross-category intervention—not
+   frozen semantic anchoring or bounded adaptation generally.
+3. **LLM2Rec (He et al., KDD 2025)** learns CF-aware semantic embeddings and
+   compares BLaIR/LLMEmb with SASRec on AR2023 5-core full ranking over three
+   runs. Its dataset counts differ, so numeric comparison is not justified; it
+   nevertheless makes the current MiniLM/BLaIR encoder scan visibly narrow.
+
+No exact predecessor was found for the complete zero-init gate + left-only
+padding + pre-HSTU placement + full-catalog AR2023 realization. The proper
+novelty claim is that exact combination, not causal/depthwise temporal
+convolution or frozen-content adaptation in general.
+
+#### 9. Fresh full-document visual inspection
+
+- Both current PDFs were rasterized with Poppler and **all 104 pages** were
+  inspected. Temporary renders were removed after inspection.
+- **Confirmed improvement:** the 218-token abstract fits on reader and TORS page
+  1; the earlier page-15 collision is gone; the widened dataset table is more
+  legible; no clipping, overlapping glyphs, missing figures, or broken
+  characters were found.
+- **Remaining defects:** Appendix E repeats the former ~1,900-word abstract,
+  adding about five reader pages and three TORS pages while duplicating and
+  contradicting the paper. Reader page 54 and TORS page 50 are mostly empty;
+  TORS pages 5 and 31 have large whitespace voids before floats; Table 2 is a
+  tiny dense full-page object on TORS page 32; Fig. 1 is now a sideways full-page
+  object on TORS page 26, requiring rotation; Fig. 2 remains small on reader
+  page 30/TORS page 30. The reference run is extremely dense. This remains an
+  audit ledger, not a focused journal narrative.
+
+### Confirmed interpretation
+
+1. **The TFV2 numbers should be preserved and relabeled, not discarded.** They
+   are complete 8-vs-8 estimates with unusually strong local artifact checks.
+   Report them as exploratory/retrospective because outcomes preceded the
+   executable analysis and repairs.
+2. **E1 supports a narrow frequency-5-heavy pattern.** The pre-declared whole-
+   group tail passes, the band 1--6 passes, and HR passes; the effect disappears
+   when the boundary group is excluded, and zero-exposure performance is
+   uniformly null. “Positive-frequency tail under this cohort rule” is accurate;
+   “rare items generally,” “cold-start,” or a broad tail mechanism is not.
+3. **E2/E3 support the full FIR-plus-initialization/optimizer treatment.** They
+   do not identify a pure filter parameter effect without an initialization-
+   and parameter-matched control.
+4. **The strict build establishes internal arithmetic consistency only.** It
+   cannot certify chronology, novelty, power, prose truth, public availability,
+   or clean-clone reproducibility, and its current TFV2 program does not perform
+   the artifact validations its paper-level rhetoric implies.
+
+### Plausible risks / author verification required
+
+- **Selection exposure:** Did any author—not only the automated auditor—read
+  per-epoch test logs or audit outputs before the run family completed? The
+  repository proves outcome visibility, not every human decision. This does not
+  rescue confirmation, but it matters for the exact disclosure.
+- **Run-count rationale:** What prospective MDE, arm variance, target effect,
+  and power calculation selected 8 runs per arm? A realized CI after the fact is
+  not a prospective sample-size calculation.
+- **Immutable timestamp:** Can the authors produce a completed proof tied to a
+  canonical binary digest that predates the relevant runs? If not, the external-
+  timestamp claim must stay pending.
+- **Public sidecar governance:** Where, if anywhere, are the byte-identical 107
+  sidecars publicly deposited? Before deposit, verify pseudonymous user-ID risk,
+  license/terms, retention, and whether ranks permit linkage attacks.
+- **Submission target:** Has the exact TORS call/template, abstract policy,
+  supplementary-material policy, and anonymous artifact route been checked in
+  the live portal? The manuscript's journal fit cannot be inferred from a local
+  acmart build alone.
+
+### Concrete fixes, in priority order
+
+1. **Relabel TFV2 everywhere now.** Replace `confirm`, `confirmed`,
+   `confirmatory`, `never-inspected`, and unqualified `externally timestamped`
+   with “complete outcome-visible exploratory rerun; pre-specified endpoints but
+   executable adjudicator committed after outcomes; OTS proof pending.” Keep the
+   exact estimates and every negative secondary. Correct the adjudicator
+   docstring and response ledger rather than leaving known false chronology.
+2. **If confirmation is essential, run a truly new campaign.** Use never-run
+   seeds; commit a content-validating adjudicator and immutable manifest before
+   launching; suppress or sequester test metrics until completion; make the
+   runner fail-fast and atomic; bind every input/output to one clean commit;
+   pre-specify missing/corrupt/tie/checkpoint policies and MDE/power; do not
+   repair the program after any outcome exists.
+3. **Make the public gate real.** Deposit/track the 107 exact sidecars and the
+   IS/CD split inputs or a deterministic fetch-and-hash recipe that works
+   unattended; add them to `RELEASE_MANIFEST.json`; add E1 and all printed
+   secondaries as structured graph cells; consume the serialized cohort files;
+   validate rows/users/targets/ranks/metrics/epochs/argv/config/hashes/provenance;
+   run the strict command from a fresh public clone and publish the transcript.
+4. **Truth-up every release sentence.** Say “18 uploaded assets plus GitHub's
+   automatic source archives” if both counts are useful. Remove the sidecar-
+   public/Git-tracked claims until a linked deposit exists. Delete Appendix E's
+   stale private/upload-pending paragraph and any claim that local-only TFV2
+   values are released-artifact cells.
+5. **Complete the timestamp proof correctly.** Upgrade/verify the OTS proofs,
+   stamp a canonical Git-blob or explicitly binary-normalized file, document the
+   verified Bitcoin block/date, and add a fail-closed digest check. Until then,
+   state “calendar attestations pending.”
+6. **Add the three close comparators to related work and the attribution table.**
+   Narrow FIR novelty against ConvFormer; narrow frozen-text/TAPE novelty against
+   *Let It Go? Not Quite*; position the encoder scan against LLM2Rec. Do not copy
+   their numbers into a comparison table unless protocols and dataset counts are
+   reconciled.
+7. **Run the disclosed controls.** At minimum: item-text permutation; target and
+   split-parity audit; cloned-backbone/parameter-matched FIR treatment; and a
+   stronger frozen-content/bounded-delta comparator. Convert n=1 `Rejected` rows
+   to “single-run probe; inconclusive” or add powered replications.
+8. **Delete Appendix E rather than relocating the old abstract.** Keep the new
+   concise abstract, integrate only nonduplicate details into the relevant
+   methods/results/limitations paragraphs, split Table 2, enlarge Fig. 2, and
+   fix the p5/p31/p50 float voids. Decide whether a sideways Fig. 1 is acceptable
+   under the live TORS submission policy.
+9. **Cut a synchronized deposit only after the clean-clone check.** The deposit
+   should name one commit, manifest, PDFs, analysis program, all counted
+   artifacts, licenses, checksums, and a single command whose success does not
+   depend on ignored workstation files.
+
+### Evidence and fact-check sources added this run
+
+- Public repository and audited branch:
+  <https://github.com/Ray0419/bestrec-sota-results>
+- Stated v0.9 release boundary:
+  <https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence>
+- OpenTimestamps overview and proof states:
+  <https://opentimestamps.org/>
+- OpenTimestamps client documentation (pending versus Bitcoin-confirmed proof):
+  <https://github.com/opentimestamps/opentimestamps-client>
+- ConvFormer primary record: <https://arxiv.org/abs/2308.02925>
+- *Let It Go? Not Quite* primary records:
+  <https://doi.org/10.1145/3705328.3748038> and
+  <https://arxiv.org/abs/2507.19473>
+- LLM2Rec primary records: <https://doi.org/10.1145/3711896.3737029> and
+  <https://arxiv.org/abs/2506.21579>
+
+### Open questions
+
+- Will the authors accept the repository-demonstrable TFV2 status as exploratory,
+  or produce an earlier executable adjudicator that was genuinely frozen and
+  inaccessible to outcome-bearing files? No such artifact was found.
+- Where is the public URI and immutable checksum inventory for the 107 TFV2
+  sidecars and the IS/CD inputs needed by E1/E2/E3?
+- Why does the current public abstract say all sidecars are public while main §8
+  and Appendix E tell mutually incompatible release stories?
+- Will the pending OTS objects be upgraded and re-bound to canonical Git bytes,
+  or will timestamp language be narrowed?
+- Is the scientific claim intended to be the complete FIR package or the filter
+  alone? If the latter, when will the initialization-/parameter-matched control
+  be run?
+- What prospective power/MDE justified 8 runs per arm, and which Table 2
+  negative claims will receive multi-seed replication?
+- What exact TORS submission call and supplementary-material policy govern the
+  50-page artifact and sideways figure?
+
+### Running checklist
+
+- [x] Locate and identify canonical Markdown, TeX, PDFs, figures, tables,
+  appendices, bibliography, code, results, proofs, and release manifests.
+- [x] Freeze a clean pushed cutoff and record canonical hashes/page counts.
+- [x] Verify all 64 TFV2 JSONs and all 107 locally referenced sidecar hashes.
+- [x] Independently recompute the 8-vs-8 primary family and secondaries.
+- [x] Audit selected/final zero-exposure ranks across all four categories.
+- [x] Re-run HSTU parity, the 175-cell local build, manifest check, and all
+  current adjudicators.
+- [x] Verify public repository state and enumerate the 18 uploaded release
+  assets.
+- [x] Inspect Git chronology and the committed 02:48 outcome table.
+- [x] Inspect current OTS proof state and canonical-byte mismatch.
+- [x] Run a fresh primary-source novelty sweep for filter and frozen-text work.
+- [x] Rasterize and visually inspect every page of both current PDFs; remove
+  temporary renders.
+- [ ] Relabel TFV2 as complete exploratory evidence or execute a new valid
+  prospective campaign.
+- [ ] Remove false `before inspection`, `external timestamp`, and sidecar-public
+  claims from source, TeX, abstract, conclusion, appendix, README, response, and
+  strict-wrapper labels.
+- [ ] Deposit and manifest TFV2 sidecars plus IS/CD inputs.
+- [ ] Harden adjudication with content/provenance validation and structured cells
+  for E1 plus all printed secondaries.
+- [ ] Prove the strict command from a clean public clone.
+- [ ] Add ConvFormer, *Let It Go? Not Quite*, and LLM2Rec with a narrowed novelty
+  boundary.
+- [ ] Run text-permutation, target/split-parity, FIR package-isolation, and
+  stronger frozen-content controls.
+- [ ] Replace single-run negative verdicts or replicate them with prospective
+  power.
+- [ ] Delete the duplicate Appendix E summary and repair the remaining PDF float,
+  table, and figure issues.
+- [ ] Verify the exact live TORS call, anonymity, artifact, data-governance, and
+  supplementary-material requirements immediately before submission.
 
 ## Audit Run - 2026-07-20 14:52 Australia/Sydney
 

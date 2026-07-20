@@ -64,11 +64,11 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
 - Table generation (fail-closed): `_bestrec_run/build_hstu_tables.py` regenerates every
   empirical table from the manifest; **`--submission` exits nonzero** on any UNTRACEABLE cell,
   any printed-numeral MISMATCH, or any required claim family without sourced cells
-  (invariants: 0 mismatch / 0 untraceable / all 14 required families sourced; the authoritative cell count is the strict build's own output — 175 at this writing, and it grows as evidence lands)
+  (invariants: 0 mismatch / 0 untraceable / all 15 required families sourced; the authoritative cell count is the strict build's own output — 175 at this writing, and it grows as evidence lands)
 - Canonical one-command verification: `python _bestrec_run/rebuild_hstu_submission.py --strict`
   (parity test → strict `--submission` build → release-manifest verification → MI V2
   adjudicator → **Office V3 adjudicator (counted; build fails unless CAMPAIGN VERDICT:
-  PASS)** → **FIR-breadth adjudicator (counted; both categories must be CONFIRMED)** →
+  PASS)** → **TFV2 repaired-estimand adjudicator (counted; externally timestamped prereg; ALL PASS required)** → **FIR-breadth frozen-rule adjudicator (artifact-integrity; paired interpretation withdrawn)** →
   Office V1 adjudicator (descriptive/VOID, non-gating)) — passes end-to-end at the
   submitted commit; `update_release_manifest.py --verify-git <intended_deposit_tag>`
   additionally checks the manifest against the git blobs at the deposit tag

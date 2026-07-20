@@ -2,7 +2,7 @@
 
 **Causal FIR Filtering and Dataset-Conditional Text Benefits on Amazon Reviews 2023.**
 
-This repository is the working artifact repository for the manuscript (ACM TORS submission format; currently **private** with reviewer access on request — the 12 split files and four text caches named by `RELEASE_MANIFEST.json` are hash-pinned but not yet public release assets):
+This repository is the working artifact repository for the manuscript (ACM TORS submission format; **public** — the split CSVs (now 18 incl. Industrial_and_Scientific and CDs_and_Vinyl), four text caches, and the 107 TFV2 per-user sidecars are deposited as hash-manifested release assets; `bootstrap_public_clone.py` reconstructs a fresh clone's full evidence boundary):
 code, pre-declarations, results of record, provenance manifests, the fail-closed build
 gate, and the full adversarial audit chain. The canonical paper is
 [`PAPER_SUBMISSION.md`](PAPER_SUBMISSION.md) (reader PDF: `PAPER_SUBMISSION.pdf`); the
@@ -17,7 +17,7 @@ uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --s
 ```
 
 This runs, fail-closed: the bitwise HSTU core-block parity test → the artifact-graph build
-(**every one of the 173 artifact-gated cells recomputed from source artifacts**; exits
+(**every one of the 175 artifact-gated cells recomputed from source artifacts**; exits
 nonzero on any mismatch, untraceable cell, or missing claim family) → release-manifest hash
 verification (153 files) → the pre-declared Musical_Instruments gate adjudicator → **the
 Office V3 adjudicator (counted; the build fails unless the campaign verdict is PASS)** →
@@ -48,7 +48,7 @@ blobs (`DOI_DEPOSIT_INSTRUCTIONS.md` has the full rule).
   (`PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md` + its 2026-07-20 erratum).
 - **Text benefits are dataset-conditional** (help on sparse categories, ≈null on dense ones),
   supported by controlled thinning interventions.
-- **The evaluation apparatus itself** — version-controlled pre-declaration (auditable git history; no independent external timestamp — a disclosed limitation), fail-closed artifact
+- **The evaluation apparatus itself** — version-controlled pre-declaration (the TFV2 campaign additionally carries completed OpenTimestamps Bitcoin attestations; earlier campaigns have git history only — a disclosed limitation), fail-closed artifact
   gate, comparator regeneration, symmetric self-VOIDing — demonstrated end to end.
 
 **Explicitly not claimed:** state-of-the-art on anything (on Video_Games our 0.0673 sits
@@ -74,7 +74,7 @@ campaign above is a separate pre-declaration that passed under its frozen wordin
 ## Releases
 
 - **`v1.1.9-deposit`** (current archival bundle; each deposit release supersedes the previous) — the deposit zip + sidecar hash + manifest + both PDFs, upload verified by download-hash round trip. **The archival boundary is always the deposit tag, never branch HEAD** (post-deposit commits — audit responses and any interim fixes or hardening — sit outside the deposited snapshot by design; each new deposit cut re-synchronizes and supersedes the previous tag). **NOTE (2026-07-20): nine tracked files have advanced past this tag; a v1.1.10 cut is pending — the tag remains verifiable for its own snapshot.**
-- **`v0.9-audit-evidence`** — currently carries the pinned-parity ZIP and `RELEASE_MANIFEST.json`; the split/cache assets named by the manifest are hash-pinned but **not yet uploaded** (public upload pending a maintainer decision).
+- **`v0.9-audit-evidence`** — the pinned-parity ZIP, `RELEASE_MANIFEST.json`, all 18 split CSVs, four text caches, and the 107 TFV2 per-user sidecars (all hash-manifested; uploaded 2026-07-20; the manifest inventory is authoritative for counts). Fresh clones: `git submodule update --init && python bootstrap_public_clone.py` before the strict gate.
 - **`bestrec-raw-records-v1`** — the historical LC2C project's raw records (see `README_LC2C_HISTORICAL.md`).
 
 Data: the Amazon Reviews 2023 dataset (McAuley Lab) is **not redistributed**; derived

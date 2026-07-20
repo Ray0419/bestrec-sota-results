@@ -1,4 +1,4 @@
-hygiene scan: PAPER_TORS.pdf | pages: 48
+hygiene scan: PAPER_TORS.pdf | pages: 49
 placeholder+forbidden failures: 0
 review list (SOTA mentions + negated claim-wordings): 17
   REVIEW negated-ok: paired\s+superiority :: nvironment-matched regeneration) — point-estimate comparisons, not SOTA and not paired superiority; (ii) a leak-free causal FIR filter — as the FIR-plus-initialization/optimizer 
@@ -6,7 +6,7 @@ review list (SOTA mentions + negated claim-wordings): 17
   REVIEW negated-ok: pinned(?:[-\s]\w+)?[-\s]reproduction :: luded from the artifact graph) 0.13234 final stronger than ours; not a faithful pinned-environment reproduction Our full model (0.0673) exceeds their published SASRec (0.0573) but does not re
   REVIEW SOTA-mention ::  and 0.0279 environment-matched regeneration) — point-estimate comparisons, not SOTA and not paired superiority; (ii) a leak-free causal FIR filter — as the FIR-plu
   REVIEW SOTA-mention :: e Video_Games result a competitive, fully-attributed contribution rather than a SOTA claim. 7. Engineering: a memory-efficient chunked-full-softmax loss (full-softm
-  REVIEW SOTA-mention ::  published SASRec 0.0573), shown to be architectural (ID-only ≈0.0656), with no SOTA claim. (The earlier v1-era SASRec-SBERT number 0.05509 ± 0.00035 has been retir
+  REVIEW SOTA-mention ::  published SASRec 0.0573), shown to be architectural (ID-only ≈0.0656), with no SOTA claim. (The earlier v1-era SASRec-SBERT number 0.05509± 0.00035 has been retire
   REVIEW SOTA-mention :: rry no confirmatory weight. 5.1 Video_Games — multi-seed reference numbers (NOT SOTA) Our headline result (Table 1) is built on the HSTU-style pure-PyTorch encoder 
   REVIEW SOTA-mention :: s zero training occurrences (§5.3 cohort disclosure). We therefore do not claim SOTA over TIGER/LIGER/BLaIR. HSTU-BLaIR is the relevant stronger AR2023 Video_Games 
   REVIEW SOTA-mention :: relevant stronger AR2023 Video_Games 5-core reference and blocks a SASRec-SBERT SOTA claim. 2026 semantic-ID / generative retrieval line. Recent 2026 work reports A
@@ -17,5 +17,5 @@ review list (SOTA mentions + negated claim-wordings): 17
   REVIEW SOTA-mention :: n wording: a per-category point-estimate comparison; no paired superiority; not SOTA of any kind. The limitation that remains: both counted comparisons (MI, Office 
   REVIEW SOTA-mention :: itive text contributor (+0.0009), not a headline. We do not claim a Video_Games SOTA — the published HSTU-BLaIR 0.0760 relies on custom CUDA/Triton kernels that are
   REVIEW SOTA-mention :: ratus these results were produced under. Explicit non-claims: • We do not claim SOTA over TIGER, LIGER, BLaIR, or HSTU-BLaIR; the published HSTU-BLaIR 0.0760 remain
-  REVIEW SOTA-mention :: . We provide our 0.01946 (2-seed mean) as a reference baseline rather than as a SOTA-improvement claim. A future apples-to-apples comparison would require either: •
+  REVIEW SOTA-mention :: . We provide our 0.01946 (2-seed mean) as a reference baseline rather than as a SOTA-improvement claim. A future apples-to-apples comparison would require either: M
 verdict: PASS (review list above is informational)

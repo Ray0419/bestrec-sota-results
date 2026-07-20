@@ -92,7 +92,4 @@ whose maintainers state they are not in a position to assign a license or dictat
 usage terms (that statement is not an affirmative permission grant, and we do not
 treat it as one — manuscript §10). Derived data assets are redistributed on the
 dataset's public research availability with attribution, takedown honored
-immediately on maintainer, platform, or venue request. For double-anonymous
-review, the manuscript PDF is anonymized; this named repository is the
-post-acceptance record, and anonymized artifact access at review time follows the
-journal's current instructions.
+immediately on maintainer, platform, or venue request. TORS review is single-blind (per the current author guidelines), so this named repository is cited directly from the manuscript; author metadata in the manuscript is a maintainer-supplied field before submission.

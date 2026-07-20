@@ -131,6 +131,18 @@ _orph9 = [k for k in _keys9 if k not in _cited9]
 if _orph9:
     fails.append(f"H9: {len(_orph9)} bib entr{'y' if len(_orph9) == 1 else 'ies'} "
                  f"never cited by any command: {_orph9[:6]}")
+# reverse direction (audit 01:01: the one-way check missed an undefined citation
+# that visibly rendered as '?'): every cited key must have a bib entry, and the
+# BibTeX 'didn't find a database entry' warning is fatal.
+_undef9 = sorted(set(_cited9) - set(_keys9))
+if _undef9:
+    fails.append(f"H9: {len(_undef9)} citation key(s) with NO bib entry "
+                 f"(renders as '?'): {_undef9[:6]}")
+_log9 = os.path.join(HERE, "main_console.log")
+if os.path.exists(_log9):
+    _lt9 = io.open(_log9, encoding="utf-8", errors="replace").read()
+    for _w9 in re.findall(r"didn't find a database entry for \"([^\"]+)\"", _lt9):
+        fails.append(f"H9: BibTeX undefined-entry warning for {_w9!r} (fatal)")
 
 # ---- [H8] duplicated prose sentences (source AND compiled PDF) -------------------
 # Added 2026-07-20 (audit 17:54): the generated Ethics section carried interleaved

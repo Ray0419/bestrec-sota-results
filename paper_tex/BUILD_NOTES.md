@@ -177,7 +177,7 @@ prints line numbers, as TORS expects for submission.
 | §8 Code and Data Availability | `sections/08-availability.tex` |
 | §9 Acknowledgments | `sections/09-acknowledgments.tex` |
 | §10 Ethics and Data Governance (round-7) | `sections/10-ethics.tex` |
-| References | `references.bib` (+ `\nocite{*}` in `main.tex`; see below) |
+| References | `references.bib` — 76 entries, every one cited by a real command; `\nocite{*}` removed 2026-07-21 (H9 enforces both directions) |
 | Appendix A.0 (Office_Products) | `sections/appendix-a0.tex` |
 | Appendix A (A.1–A.3, Beauty) | `sections/appendix-a.tex` |
 

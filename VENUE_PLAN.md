@@ -16,7 +16,7 @@ dual-submission policies, so the plan is:
 
 - The **markdown files remain canonical** (`CANONICAL_SUBMISSION.md` governs); LaTeX is a
   *generated/derived* submission format under `paper_tex/`.
-- ACM `acmart` class (TORS: `manuscript`/`acmsmall` journal format, double-anonymous review;
+- ACM `acmart` class (TORS: `manuscript`/`acmsmall` journal format, single-blind review per the current TORS author guidelines (corrected 2026-07-21; the earlier double-anonymous assumption was wrong);
   RecSys: `sigconf`).
 - **Artifact-gated numbers are never retyped by hand** (standing audit requirement): result
   tables are generated from `_bestrec_run/hstu_tables.json` /

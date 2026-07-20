@@ -2,9 +2,9 @@
 
 Dear Editors,
 
-We submit "BEST-Rec: an artifact-gated evaluation study of text-augmented
-HSTU-style sequential recommendation on Amazon Reviews 2023" for consideration as
-a full research article.
+We submit "Pre-Declared, Artifact-Gated Evaluation for Sequential Recommendation: Causal FIR Filtering and Dataset-Conditional Text Benefits on Amazon Reviews 2023" for consideration as a full research article.
+
+**Declarations (per the TORS author guidelines):** this work is original, it has not been published previously, and it is not simultaneously under review or submitted elsewhere. [Maintainer: affirm at submission.]
 
 **What the paper is.** An evaluation-first study built around a fail-closed
 apparatus: version-controlled pre-declarations, a build gate that recomputes all
@@ -57,10 +57,7 @@ maintainers' public statement is not an affirmative permission grant, and that
 the redistribution basis is flagged for venue-level review with immediate
 takedown honored — manuscript §10). Dense sidecar identifiers are
 deterministically linkable to the platform's pseudonymous identifiers through the
-released splits, a linkage surface §10 states rather than obscures. The
-manuscript PDF is anonymized for double-anonymous review; the named public
-repository and deposit are the post-acceptance record, and we will follow the
-journal's current instructions on anonymized artifact access at review time.
+released splits, a linkage surface §10 states rather than obscures. TORS review is **single-blind** (per the current author guidelines), so the public repository and deposit are named directly: https://github.com/Ray0419/bestrec-sota-results (releases `v0.9-audit-evidence` and the archival deposit tags).
 
 **Adversarial review disclosure.** Throughout preparation the manuscript was
 subjected to an hourly adversarial audit by an **author-operated automation**
@@ -79,5 +76,4 @@ Suggested reviewers / excluded reviewers: [Maintainer: optional.]
 
 Thank you for your consideration.
 
-[Author name(s) and contact — withheld in the anonymized review copy; TORS review is
-double-anonymous and the manuscript PDF carries no identifying information.]
+[Maintainer: real author name(s), affiliation(s), and corresponding-author contact — required; TORS review is single-blind.]

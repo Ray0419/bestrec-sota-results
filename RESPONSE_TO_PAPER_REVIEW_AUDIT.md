@@ -9,6 +9,28 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-21 01:01 (responded 2026-07-21)
+
+First: the visible `?` citation was a regression **this loop introduced** in the
+citation-graph round (removing `he2016ups` while a `\citealp` in Appendix A.1
+still used it — the one-directional H9 could not see it). The audit is right, and
+the gate is now bidirectional so the class of error is closed, not just the case.
+
+| # | Audit item | Action |
+|---|---|---|
+| 1 | TORS policy: review is SINGLE-blind; class options/cover/README claim double-anonymous; title mismatch; missing declarations | **Adopted.** `main.tex` → `[manuscript,screen]`, `main-acmsmall.tex` → `[acmsmall,screen]` (no review line numbers, no anonymous option); double-anonymous claims corrected to single-blind in cover, README, VENUE_PLAN (with a dated correction note); the cover now submits the **exact canonical title verbatim** and carries the three required declarations (original / unpublished / not simultaneously under review, flagged for maintainer affirmation); §8 names the resolvable public URL openly. **Author/affiliation/contact metadata cannot be invented by this automation** — the byline fields are now explicit `[Maintainer: …]` requirements (an intentionally loud placeholder), listed as the blocking manual step; `\country` satisfies the class check the anonymous mode had masked. `acmart` v2.03→v2.19 upgrade and the 20–35-page length target are queued with the synthesis edit. |
+| 2 | Undefined citation `he2016ups` visible as `?`; H9 one-directional; FAERec double note; BLaIR-ACL incomplete; BUILD_NOTES stale | `he2016ups` **restored** from the authoritative record (He & McAuley, WWW 2016, DOI 10.1145/2872427.2883037) with a note owning the wrong removal — md/TeX reference parity is back (the md had kept it; the bib removal was the error). FAERec's doubled `note` merged; BLaIR-ACL completed (pages 3251–3265, DOI 10.18653/v1/2026.acl-long.147). **H9 is now bidirectional** (cited-key ⊆ bib-key AND bib-key ⊆ cited-key) and BibTeX's "didn't find a database entry" warning is fatal. BUILD_NOTES's "32 references + nocite" row corrected. |
+| 3 | Table 0 still says "confirmed by the repaired-estimand TFV2 campaign" | Fixed at the md source (the emitted table regenerates from it): now "replicated by the pre-declared, outcome-visible repaired-estimand TFV2 campaign (… not confirmatory — §5.3)". Emitter cross-checks pass. |
+| 4 | Density/content mechanism underidentified | Narrowed to the audit's supported wording: the intro no longer says "regime-dependent on catalog density" — it states a dataset-conditional **observation** with **mechanism unresolved** (tested density intervention did not reproduce it; no content mechanism identified; permutation control unrun); the "decomposed … into a connectivity-associated component plus a residual dataset-specific content component" sentence is replaced by "**undecomposed** … the mechanism is unresolved" (connectivity suggestive-only at p = 0.058). The title's "Dataset-Conditional" is retained as the observational label only — its first §5.3 use now cannot be read mechanistically. |
+| 5 | Negative-map reach ("neutral or harmful", "no tested axis explains", ceiling) | Remaining occurrences swept: conclusion's "(every capacity-adding probe neutral or harmful …)" → "(no capacity-adding probe showed a benefit at tested power — mostly single-seed …)"; "it is not explained by any of the modeling axes we could test" → "observations that leave the gap unexplained, not exclusions". (The §5.5 ceiling sentence was already demoted last round.) |
+| 6 | Cover internal inconsistencies (paired wording; auditor identity; no resolvable URL) | "no paired inference appears anywhere" → "**no retained claim relies on paired inference** (frozen paired outputs printed with their interpretation withdrawn)"; the manuscript's "concurrent external auditor/audits" phrasing is now "author-operated audit automation" **matching the cover**; the availability statement names the repository URL and release tags directly (single-blind permits it). |
+| 7 | Deposit stale again (two post-tag commits) | Stated honestly rather than re-tagged mid-motion: §8 now says the tree has advanced past `v1.1.11-deposit`, the gate blocks stale rebuilds, and **v1.1.12 is cut only after the venue-package/synthesis edits complete** — exactly the audit's own "finish content first, only then redeposit" order. |
+| 8 | Comparators/controls; governance determinations; synthesis/length | Unchanged status, restated: AlphaFuse/permutation/parity/matched-FIR are maintainer-scope experiments; institutional/legal/venue determinations are author-level facts this automation cannot manufacture; the synthesis-and-length edit (24.9k words → venue range, abstract shortening, ledger relocation, void/overfull/metadata pass) is the declared next major round. |
+
+Post-round state: strict exit 0 (175 cells / 15 families; 269 files); emitter checks
+pass; reader 55 pp CLEAN; TORS BUILD OK under `[manuscript,screen]` with H1–H9 (H9
+bidirectional); no `?` markers (the he2016ups citation resolves again); pushed.
+
 ## Response — to Audit Run 2026-07-20 22:57 (responded 2026-07-21; this response ships INSIDE the v1.1.11-deposit commit so the tag cannot be stale against it)
 
 | # | Audit item | Action |

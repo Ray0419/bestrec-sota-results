@@ -9,6 +9,49 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-20 17:54 (responded 2026-07-20; commit `9603902e`)
+
+First, the process answer this audit is owed. Open question 2 asks why the previous
+implementation commit and response claimed force-added sources and long-path renames
+that are absent from its diff. The honest answer: the shell step that performed the
+force-add and renames failed partway through a compound command, `git add -A` silently
+skips ignored files, and the commit message and response were written from the intended
+plan rather than from a verified diff. That is a process failure, not an intent to
+misstate — and it is exactly the failure mode this project exists to catch. This round,
+every structural claim below was verified by `git ls-files` / `git ls-tree` / a live
+flag invocation before being written down, and the verification commands are in the
+audit-loop transcript.
+
+| # | Confirmed problem | Action (verified this round) |
+|---|---|---|
+| 1 | Venue Ethics source/PDF corrupted; health scans green | `10-ethics.tex` **regenerated as a whole-section single conversion** (the corruption came from line-level splicing of a multi-line paragraph — that method is retired). New **H8 gate**: any sentence ≥ 60 chars duplicated within one section/table source, or ≥ 80 chars duplicated in the compiled PDF body (References excluded — the concurrent-preprint boilerplate note legitimately repeats), fails the build. H8 immediately caught a second, real editorial duplicate — the §2.3 novelty-boundary sentence repeated verbatim at the top of §3 — now deduplicated (§3 cross-references §2.3). Both venue formats rebuild PASS. |
+| 2 | TFV2 outcome-visible; Bitcoin attestations postdate first result | **Adopted in full.** New §5.3 disclosure **(vii)** states the exact chronology: Git commit 01:26:34 AEST → first result ≈ 01:36:02 → earliest Bitcoin attestation block 958749 at 01:48:23 (amended prereg proof ≈ 06:11:59, CRLF-worktree digest noted); OpenTimestamps proves existence before an attested time, not before launch; the pre-launch freeze rests on Git history alone. **TFV2 is relabeled outcome-visible and NOT confirmatory** under the paper's own taxonomy — in the abstract, §5.2, §5.3 block, §6.5 taxonomy bullet, §7, README, CANONICAL chain label, the strict-step label, and a dedicated cover-letter disclosure ("so the editors hear it from us first"). New disclosure **(viii)**: the 8-seed size had no prospective MDE/power rationale; realized CIs are post-outcome precision summaries. |
+| 3 | Three graph sources still ignored/untracked | **Actually force-added this time** (`git add -f`; `git ls-files` shows all three; `--verify-git HEAD` now prints **OK, 131 git-backed entries**). Normal `--verify` now hashes `aux_graph_sources` too (269 files verified). |
+| 4 | Bootstrap omits parity; released ZIP stale; HSTU-BLaIR undeclared; orphan gitlink | The **nine current pinned-parity files are uploaded as individual release assets** (the July-11 ZIP is retained as a historical asset; §8 names the July-20 manifest authoritative where they differ). `bootstrap_public_clone.py` now covers `pinned_parity_artifacts`. **`external/HSTU-BLaIR` is a declared submodule** (`.gitmodules` URL `snapfinger/HSTU-BLaIR`, gitlink pinned at `40a27879` — the parity-exact commit the audit itself confirmed; directory contents untouched per the audit's own no-modify rule). The **orphan `AmazonReviews2023` gitlink is removed** (index-only; it was an optional local aid) so `git submodule update --init` no longer exits 128. |
+| 5 | `--fetch-missing`/`--allow-missing-assets` dead; verify omits aux section | Both flags are **registered on the parser** (the prior patch's insertion regex matched `ap.add_argument("--regen"` but the code says `g.add_argument` — the conditional skipped silently; this round's edit is anchor-asserted and smoke-tested live). The fetch path now resolves pinned-parity nested entries and no longer appends `.csv` to non-split names. |
+| 6 | Windows long paths unrenamed | **Actually renamed** (`git mv` → `tb_events_{a,b}.tfevents`); longest tracked path is now **196 characters** (verified over `git ls-files`). The from-zero clone test below runs with `core.longpaths=false` to prove a default checkout works. |
+| 7 | §8/README/CANONICAL/ledger inconsistent | Synced to measured values: §8 — 18 splits, 107 sidecars, nine parity assets, auditor-matched 129 digests, manifest authoritative; README — 269-file verification, TFV2 in the strict chain, and the v1.1.9 truth (**157 tracked paths beyond the tag; `--verify-git v1.1.9-deposit` fails against the current manifest by design; v1.1.10 after the from-zero pass**); CANONICAL — 15 families both places + relabeled TFV2 chain step. |
+| 8 | Headline exceeds frequency-5 / package evidence | Propagated everywhere the auditor named: abstract (both findings reworded — "frequency-5-heavy pattern, not a smooth rare-item benefit"; "FIR-plus-initialization/optimizer package, the bundle our design can attribute"), intro contributions 2–3, Table 1d verdict cell, Fig. 1 panel-A title + caption, §6.5, §7 (twice), cover letter. "Confirmed by" → "replicated by" for TFV2 everywhere. |
+| 9 | Comparators/controls unrun | Unchanged status, honestly restated: LLM2Rec/ConvFormer/LLM-ESR/FAERec citations are the next literature round; AlphaFuse benchmark-or-exclusion and the matched-FIR/permutation/split-parity controls are maintainer-scope experiments (§2.3/§6.5 already disclose them as open). |
+| 10 | Governance needs verification; sidecar ID contradiction | §10 rewritten to facts: the maintainer statement is **"not an affirmative permission grant, and we do not treat it as one"** — redistribution rests on public research availability + attribution + immediate takedown, **flagged for venue-level review rather than asserted as a right**; ACM author-responsibility accepted explicitly; sidecars carry **dense remapped indices (`user_id` 0, 1, 2, …), not hashes**, deterministically linkable to platform pseudonyms via the released splits — "exactly as pseudonymous as the public dataset itself, no more"; retention/removal procedure stated. The contradictory "platform's hashed user identifiers" sentence is gone. |
+| T2 | n=1 probes stated as verdicts | Table 2 column is now "Verdict (observational at n=1)"; all 15 single-seed "Rejected —" rows now read "**No benefit observed (single-seed probe)** —"; the "not for want of trying" sentence is downgraded to observational with the power note. |
+
+**From-zero public-clone verification (fix #6):** launched this round at commit
+`9603902e` — default Windows clone (`core.longpaths=false`), `git submodule update
+--init` (now includes HSTU-BLaIR), full `bootstrap_public_clone.py` (138 release
+assets incl. the nine parity files), then the strict command. The transcript will be
+reported verbatim in the next response; §8's "clean-clone sweep queued" wording stays
+until it passes, and v1.1.10 will be cut at the first commit where it does.
+
+Remaining open questions answered: the submission artifact is `paper_tex/PAPER_TORS.pdf`
+(both venue PDFs now carry the clean regenerated Ethics section); the authoritative
+parity state is the July-20 manifest (nine individual assets), with the July-11 ZIP
+retained as history; the intended HSTU-BLaIR supply is the declared submodule above.
+
+Post-round state: strict exit 0 (175 cells / 15 families); manifest verify **269
+files**; `--verify-git HEAD` OK (131 git-backed); reader 52 pp CLEAN; TORS BUILD OK
+with H1–H8; pushed and release-synced.
+
 ## Response — to Audit Run 2026-07-20 16:53 (clean-boundary round; responded 2026-07-20)
 
 The clean-worktree experiment was the decisive finding of this run and it was correct:

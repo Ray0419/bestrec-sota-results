@@ -7,7 +7,7 @@ review list (SOTA mentions + negated claim-wordings): 17
   REVIEW SOTA-mention ::  and 0.0279 environment-matched regeneration) — point-estimate comparisons, not SOTA and not paired superiority; (ii) a leak-free causal FIR filter — as the FIR-plu
   REVIEW SOTA-mention :: e Video_Games result a competitive, fully-attributed contribution rather than a SOTA claim. 7. Engineering: a memory-efficient chunked-full-softmax loss (full-softm
   REVIEW SOTA-mention ::  published SASRec 0.0573), shown to be architectural (ID-only ≈0.0656), with no SOTA claim. (The earlier v1-era SASRec-SBERT number 0.05509 ± 0.00035 has been retir
-  REVIEW SOTA-mention :: rry no confirmatory weight. 5.1 Video_Games — multi-seed reference numbers (NOT SOTA) Our headline result (Table 1) is built on the HSTU-style pure-PyTorch encoder 
+  REVIEW SOTA-mention :: 28 829 830 831 832 16 Anon. 5.1 Video_Games — multi-seed reference numbers (NOT SOTA) Our headline result (Table 1) is built on the HSTU-style pure-PyTorch encoder 
   REVIEW SOTA-mention :: s zero training occurrences (§5.3 cohort disclosure). We therefore do not claim SOTA over TIGER/LIGER/BLaIR. HSTU-BLaIR is the relevant stronger AR2023 Video_Games 
   REVIEW SOTA-mention :: relevant stronger AR2023 Video_Games 5-core reference and blocks a SASRec-SBERT SOTA claim. 2026 semantic-ID / generative retrieval line. Recent 2026 work reports A
   REVIEW SOTA-mention ::  contrast of the FIR-plus-initialization/optimizer package; nothing broader, no SOTA language, no comparator statement. The filter package is thus multi-seed-suppor

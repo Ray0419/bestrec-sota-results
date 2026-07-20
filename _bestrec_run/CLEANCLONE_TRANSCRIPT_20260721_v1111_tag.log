@@ -1,0 +1,138 @@
++ W=/c/Users/rayxc/AppData/Local/Temp/pcv1111
++ rm -rf /c/Users/rayxc/AppData/Local/Temp/pcv1111
++ mkdir -p /c/Users/rayxc/AppData/Local/Temp/pcv1111
++ cd /c/Users/rayxc/AppData/Local/Temp/pcv1111
++ git -c core.longpaths=false clone --branch v1.1.11-deposit https://github.com/Ray0419/bestrec-sota-results r
+Cloning into 'r'...
+Note: switching to '26eff2dd0b857a043ec759a23be33a871551b1a9'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Updating files:  79% (1091/1370)Updating files:  80% (1096/1370)Updating files:  81% (1110/1370)Updating files:  82% (1124/1370)Updating files:  83% (1138/1370)Updating files:  84% (1151/1370)Updating files:  85% (1165/1370)Updating files:  86% (1179/1370)Updating files:  87% (1192/1370)Updating files:  88% (1206/1370)Updating files:  89% (1220/1370)Updating files:  90% (1233/1370)Updating files:  91% (1247/1370)Updating files:  92% (1261/1370)Updating files:  93% (1275/1370)Updating files:  94% (1288/1370)Updating files:  95% (1302/1370)Updating files:  96% (1316/1370)Updating files:  97% (1329/1370)Updating files:  98% (1343/1370)Updating files:  99% (1357/1370)Updating files: 100% (1370/1370)Updating files: 100% (1370/1370), done.
++ cd r
++ git submodule update --init
++ tail -4
+Cloning into 'C:/Users/rayxc/AppData/Local/Temp/pcv1111/r/external/liger'...
+Submodule path '_bestrec_sota_lab/third_party/MELT': checked out 'dd7542f652695097d624a3e131796908485f4004'
+Submodule path 'external/HSTU-BLaIR': checked out '40a27879ec22648657b5abc77915a7cc88c66cfd'
+Submodule path 'external/liger': checked out 'b6ccc37af5ee623ddc1d1ead3490c31aaeaf4524'
++ PY=/c/Users/rayxc/Documents/R/_bestrec_run/.venv/Scripts/python
++ PYTHONIOENCODING=utf-8
++ /c/Users/rayxc/Documents/R/_bestrec_run/.venv/Scripts/python bootstrap_public_clone.py
++ tail -3
+fetching negative_control.py (2,154 bytes)
+fetching negative_control.log (409 bytes)
+bootstrap: 138 assets in place, 0 failures
++ PYTHONIOENCODING=utf-8
++ /c/Users/rayxc/Documents/R/_bestrec_run/.venv/Scripts/python _bestrec_run/rebuild_hstu_submission.py --strict
+C:\Users\rayxc\AppData\Local\Temp\pcv1111\r\external\HSTU-BLaIR\generative_recommenders\research\modeling\sequential\hstu.py:297: SyntaxWarning: invalid escape sequence '\s'
+  x: (\sum_i N_i, D) x float.
+C:\Users\rayxc\AppData\Local\Temp\pcv1111\r\external\HSTU-BLaIR\generative_recommenders\research\modeling\sequential\hstu.py:473: SyntaxWarning: invalid escape sequence '\s'
+  x: (\sum_i N_i, D) x float
+C:\Users\rayxc\AppData\Local\Temp\pcv1111\r\external\HSTU-BLaIR\generative_recommenders\research\modeling\sequential\hstu.py:732: SyntaxWarning: invalid escape sequence '\s'
+  past_embeddings: (B, N, D) x float or (\sum_b N_b, D) x float.
+torch 2.11.0+cu128 | CPU | float32 | D=32 H=2 B=2 L=8 | dropout=0 eval
+reference commit 40a27879 (HSTU-BLaIR, Meta research hstu.py)
+--------------------------------------------------------------------------
+comparison                                        max|diff|   mean|diff|
+--------------------------------------------------------------------------
+A. end-to-end (no rab)                            0.000e+00    0.000e+00
+B. end-to-end (with rab)                          0.000e+00    0.000e+00
+  stage 1: norm_in                                0.000e+00    0.000e+00
+  stage 2: uvqk split [u]                         0.000e+00    0.000e+00
+  stage 2: uvqk split [v]                         0.000e+00    0.000e+00
+  stage 2: uvqk split [q]                         0.000e+00    0.000e+00
+  stage 2: uvqk split [k]                         0.000e+00    0.000e+00
+  stage 3: attention output                       0.000e+00    0.000e+00
+  stage 4: norm_attn * u gate                     0.000e+00    0.000e+00
+  stage 5: out proj + residual                    0.000e+00    0.000e+00
+  (sanity) ref staged == ref.forward              0.000e+00    0.000e+00
+  (sanity) ours staged == ours.forward            0.000e+00    0.000e+00
+C. eps 1e-5 vs 1e-6 (informational)               1.663e-02    3.367e-03
+--------------------------------------------------------------------------
+PASS: all asserted stages agree within 1e-05 (cases A, B end-to-end; stages 1-5).
+mode                : submission
+cells recomputed OK : 175
+retired cells       : 8 REMOVED_FROM_PAPER (provenance history; non-blocking)
+paper-check         : {'exact': 155, 'within_rounding': 20, 'MISMATCH': 0, 'UNTRACEABLE': 0, 'REMOVED_FROM_PAPER': 8}
+
+SUBMISSION BUILD GREEN: 175 cells recomputed from source artifacts; 0 untraceable, 0 paper mismatches, all 15 declared claim families sourced; tables written to C:\Users\rayxc\AppData\Local\Temp\pcv1111\r\_bestrec_run\hstu_tables.json
+RELEASE MANIFEST VERIFY: OK (269 files verified, 0 release-asset files not local)
+(identical adjudication already recorded in results file; append skipped)
+
+## FINAL ADJUDICATION — prereg-compliant headline (final-epoch FULL-catalog eval; supersedes the earlier best_test-based sections above)
+> NOTE: 'P2 DUAL GATE' below reports the gate ARITHMETIC only (CI-LBs vs 0.0271). The pre-registration as a whole is VOID — the floor check failed (+44% above the published SASRec; anomaly explained and VOID deliberately retained, see THEIRS_ON_OURS_REPORT.md S4.1 and the paper's Appendix A.0). Gate values are provisional/descriptive, never a confirmatory pass.
+- **ARM k16**: ['0.03041', '0.03055', '0.03042', '0.03031', '0.03043'] mean 0.03042 sd 0.00008 CI-LB 0.03032 (5/5 > 0.0271) -> PASS
+- **ARM k8**: ['0.03035', '0.03036', '0.03048', '0.03043', '0.03002'] mean 0.03033 sd 0.00018 CI-LB 0.03010 (5/5 > 0.0271) -> PASS
+- **P1 tail contrast (pooled hits text vs id; z RETRACTED 2026-07-19 as inference — clustered repeated users, descriptive counts only; see manuscript/office.tailwelch.* cells)**: @10: 364 vs 268 (retracted-z record: 3.82)  @20: 586 vs 414 (retracted-z record: 5.45)  @50: 1170 vs 739 (retracted-z record: 9.89)  @100: 1983 vs 1247 (retracted-z record: 13.01)  
+- floor SASRec NDCG@10 = 0.02208 (published SASRec 0.0153; must not be far ABOVE it)
+
+**P2 DUAL GATE: PASS**
+
+
+=== HSTU core-block parity test ===
+--- HSTU core-block parity test: OK
+
+=== Artifact-graph table build (strict) ===
+--- Artifact-graph table build (strict): OK
+
+=== Release-manifest verification ===
+--- Release-manifest verification: OK
+--- MI V2 gate adjudication (counted; must PASS): OK
+--- Office V3 adjudication (counted; must PASS): OK
+--- TFV2 repaired-estimand adjudication (counted integrity gate; Git-declared frozen rules; outcome-visible per S5.3(vii); ALL PASS required): OK
+--- FIR-breadth frozen-rule adjudication (artifact-integrity: verifies the recorded pre-declared rule fired; its paired interpretation is withdrawn, manuscript S5.2): OK
+
+=== Office adjudication (descriptive; VOID under prereg floor check) ===
+--- Office adjudication (descriptive; VOID under prereg floor check): OK
+
+=== SUBMISSION REBUILD: PASS ===
++ RC=0
++ PYTHONIOENCODING=utf-8
++ /c/Users/rayxc/Documents/R/_bestrec_run/.venv/Scripts/python _bestrec_run/update_release_manifest.py --verify-git v1.1.11-deposit
+VERIFY-GIT vs v1.1.11-depo: OK (131 git-backed entries match the git blobs exactly)
++ RC2=0
++ echo '=== PDF hash comparison: clone tree vs released assets ==='
+=== PDF hash comparison: clone tree vs released assets ===
++ sha256sum PAPER_SUBMISSION.pdf paper_tex/PAPER_TORS.pdf
+5e5147d925ba979ed0f4cb158ee7fee45f341574d69df8347031980ceb3ee1f3 *PAPER_SUBMISSION.pdf
+56d82f3dc431bbadf6fe0068762640d0bb86042c5262c6af985227e1577c13d7 *paper_tex/PAPER_TORS.pdf
++ curl -sL -o /tmp/rel_reader.pdf https://github.com/Ray0419/bestrec-sota-results/releases/download/v1.1.11-deposit/PAPER_SUBMISSION.pdf
++ curl -sL -o /tmp/rel_tors.pdf https://github.com/Ray0419/bestrec-sota-results/releases/download/v1.1.11-deposit/PAPER_TORS.pdf
++ sha256sum /tmp/rel_reader.pdf /tmp/rel_tors.pdf
+5e5147d925ba979ed0f4cb158ee7fee45f341574d69df8347031980ceb3ee1f3 */tmp/rel_reader.pdf
+56d82f3dc431bbadf6fe0068762640d0bb86042c5262c6af985227e1577c13d7 */tmp/rel_tors.pdf
+++ sha256sum PAPER_SUBMISSION.pdf
+++ cut '-d ' -f1
++ A=5e5147d925ba979ed0f4cb158ee7fee45f341574d69df8347031980ceb3ee1f3
+++ sha256sum /tmp/rel_reader.pdf
+++ cut '-d ' -f1
++ B=5e5147d925ba979ed0f4cb158ee7fee45f341574d69df8347031980ceb3ee1f3
+++ sha256sum paper_tex/PAPER_TORS.pdf
+++ cut '-d ' -f1
++ C=56d82f3dc431bbadf6fe0068762640d0bb86042c5262c6af985227e1577c13d7
+++ sha256sum /tmp/rel_tors.pdf
+++ cut '-d ' -f1
++ D=56d82f3dc431bbadf6fe0068762640d0bb86042c5262c6af985227e1577c13d7
++ '[' 5e5147d925ba979ed0f4cb158ee7fee45f341574d69df8347031980ceb3ee1f3 = 5e5147d925ba979ed0f4cb158ee7fee45f341574d69df8347031980ceb3ee1f3 ']'
++ '[' 56d82f3dc431bbadf6fe0068762640d0bb86042c5262c6af985227e1577c13d7 = 56d82f3dc431bbadf6fe0068762640d0bb86042c5262c6af985227e1577c13d7 ']'
++ PDFOK=0
++ echo 'CLEANCLONE_TAG_STRICT_EXIT=0 VERIFYGIT_TAG_EXIT=0 PDF_HASH_MATCH_EXIT=0'
+CLEANCLONE_TAG_STRICT_EXIT=0 VERIFYGIT_TAG_EXIT=0 PDF_HASH_MATCH_EXIT=0
++ '[' 0 -eq 0 ']'
++ '[' 0 -eq 0 ']'
++ '[' 0 -eq 0 ']'
++ exit 0

@@ -17,7 +17,8 @@ while IFS= read -r cmd; do
     continue
   fi
   echo "[$n/64] RUN: $name  ($(date '+%H:%M:%S'))"
-  if ! PYTHONIOENCODING=utf-8 bash -c "$cmd" > "_bestrec_run/tfv2_logs/${name}.log" 2>&1; then
+  echo "==== attempt $(date '+%F %H:%M:%S') ====" >> "_bestrec_run/tfv2_logs/${name}.log"
+  if ! PYTHONIOENCODING=utf-8 bash -c "$cmd" >> "_bestrec_run/tfv2_logs/${name}.log" 2>&1; then
     echo "[$n/64] FAILED: $name (see log)" | tee -a _bestrec_run/tfv2_logs/FAILURES.log
   fi
 done < _bestrec_run/tfv2_commands.txt

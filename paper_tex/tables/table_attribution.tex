@@ -12,7 +12,7 @@ BERT4Rec & \citet{sun2019bert4rec} & one of 20 ablation baselines \\
 MiniLM \texttt{all-MiniLM-L6-v2} (384-d) & \citet{reimers2019sbert}; \citet{wang2020minilm} & default frozen item-text encoder \\
 BLaIR \texttt{blair-roberta-base} (768-d) & \citet{hou2024blair} (arXiv:2403.03952) & alternative frozen item-text encoder \\
 2-layer MLP adaptor \texttt{{[}768,\ 300,\ 64{]}} Dropout+ReLU & \citet{hou2024blair} (SASRecText, in \texttt{external/\allowbreak AmazonReviews2023/\allowbreak seq\_rec\_results/}) & \texttt{-\/-mlp-adaptor} flag \\
-Rich-text content concatenation (title + cats + brand) & derived from \citet{hou2024blair} preprocessing & \texttt{encode\_richtext\_5core.py} \\
+Rich-text content concatenation (title + categories + store name) & derived from \citet{hou2024blair} preprocessing & \texttt{encode\_richtext\_5core.py} \\
 Amazon Reviews 2023 dataset & \citet{hou2024blair} & all benchmarks \\
 TIGER / LIGER & \citet{rajput2023tiger} / \citet{yang2024liger} & published comparator numbers \\
 \bottomrule

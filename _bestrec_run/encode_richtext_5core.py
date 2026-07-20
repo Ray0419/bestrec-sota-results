@@ -1,5 +1,9 @@
 """Encode 5-core Amazon Reviews 2023 items with a RICH text representation
-(title + category hierarchy + main_category + brand) using SBERT MiniLM.
+(title + category hierarchy + main_category + store name) using SBERT MiniLM.
+MISNOMER NOTE (2026-07-20): the template literal 'brand:' actually carries the
+AR2023 `store` field (store/seller name). The literal is frozen into the cached
+strings and must NOT be changed (it would invalidate all frozen-text caches);
+the papers document it as a misnomer.
 Caches to `cache_5core/richtext_titles_<category>.npy`.
 
 Citations:

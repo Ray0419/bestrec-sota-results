@@ -1,4 +1,4 @@
-hygiene scan: PAPER_TORS.pdf | pages: 46
+hygiene scan: PAPER_TORS.pdf | pages: 48
 placeholder+forbidden failures: 0
 review list (SOTA mentions + negated claim-wordings): 20
   REVIEW negated-ok: paired\s+superiority :: d regenerations, §5.6), this is a per-category point-estimate comparison, not a paired superiority or general SOTA claim . Our second headline is a dataset-conditional long-tail 

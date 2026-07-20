@@ -78,6 +78,8 @@ We state the paper's limitations explicitly, for reviewers:
 \item
   \textbf{Evidence-class labels encode selection timing (corrected 2026-07-19).} Only pre-declared prospective campaigns are confirmatory; multi-seed development results (e.g., the \S\ref{sec:5.1} attribution rungs) improve precision but remain post-hoc; a full graph-taxonomy audit against this criterion is queued.
 \item
+  \textbf{Text-permutation and sequence-split parity controls have not been run.} The +2.7\% text-stack attribution to semantic alignment is provisional --- an item-text permutation control (embedding marginals held fixed) could reattribute part of it to added representation structure --- and comparator target-multiplicity parity under the all-position objective is asserted from protocol identity, not demonstrated by a dedicated audit. Both are disclosed open experiments (\S\ref{sec:2.3}).
+\item
   \textbf{The thinning interventions are synthetic dataset manipulations.} The interaction- and user-mode titrations are controlled interventions on the training data, not causal identification of the real-world process that generated the datasets; all ``driver''/``causal role'' language is scoped to these interventions.
 \item
   \textbf{Pre-declaration deviation (disclosed).} The confirmation runs executed at a documentation-only descendant commit of the pre-declaration's introducing commit, so the pre-declared commit-equality rule was not literally satisfied; code identity is demonstrated by empty protocol-file diffs and manifest code hashes, and the deviation is disclosed in \texttt{SOTA\_CONFIRM\_PREREG\_V2\_ERRATA.md} (E3) rather than claimed away (\S\ref{sec:5.2}).

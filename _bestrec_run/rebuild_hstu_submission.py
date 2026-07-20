@@ -68,6 +68,10 @@ def main():
         ok &= run_verdict("Office V3 adjudication (counted; must PASS)",
                           ["_bestrec_run/adjudicate_office_v3.py", "--no-append"],
                           ["CAMPAIGN VERDICT: PASS"])
+        ok &= run_verdict("TFV2 repaired-estimand adjudication (counted; externally "
+                          "timestamped prereg; ALL PASS required)",
+                          ["_bestrec_run/adjudicate_tfv2.py"],
+                          ["PRIMARY FAMILY VERDICT: ALL PASS"])
         ok &= run_verdict("FIR-breadth frozen-rule adjudication (artifact-integrity: verifies the recorded pre-declared rule fired; its paired interpretation is withdrawn, manuscript S5.2)",
                           ["_bestrec_run/adjudicate_fir_breadth.py", "--no-append"],
                           ["Industrial_and_Scientific: CONFIRMED",

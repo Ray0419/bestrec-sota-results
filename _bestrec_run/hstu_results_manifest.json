@@ -23,7 +23,8 @@
   "office_confirmation",
   "theirs_on_ours",
   "fir_breadth",
-  "office_v3"
+  "office_v3",
+  "tfv2"
  ],
  "paths_relative_to": "repository root",
  "cells": [
@@ -14091,6 +14092,282 @@
      "paper": 0.0,
      "mode": "gt",
      "recomputed": 0.005041275737688595,
+     "result": "qual_ok"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "tfv2.is.e2",
+   "table_id": "tfv2",
+   "row_label": "TFV2 Industrial_and_Scientific: independent-arm Welch (filter vs no-filter, 8v8)",
+   "metric": "overall NDCG@10 Welch diff/t/95% CI (pre-declared, Holm family)",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_TFV2_IS_filter_seed20260821.json",
+    "_bestrec_run/results_TFV2_IS_filter_seed20260822.json",
+    "_bestrec_run/results_TFV2_IS_filter_seed20260823.json",
+    "_bestrec_run/results_TFV2_IS_filter_seed20260824.json",
+    "_bestrec_run/results_TFV2_IS_filter_seed20260825.json",
+    "_bestrec_run/results_TFV2_IS_filter_seed20260826.json",
+    "_bestrec_run/results_TFV2_IS_filter_seed20260827.json",
+    "_bestrec_run/results_TFV2_IS_filter_seed20260828.json",
+    "_bestrec_run/results_TFV2_IS_nofilter_seed20260831.json",
+    "_bestrec_run/results_TFV2_IS_nofilter_seed20260832.json",
+    "_bestrec_run/results_TFV2_IS_nofilter_seed20260833.json",
+    "_bestrec_run/results_TFV2_IS_nofilter_seed20260834.json",
+    "_bestrec_run/results_TFV2_IS_nofilter_seed20260835.json",
+    "_bestrec_run/results_TFV2_IS_nofilter_seed20260836.json",
+    "_bestrec_run/results_TFV2_IS_nofilter_seed20260837.json",
+    "_bestrec_run/results_TFV2_IS_nofilter_seed20260838.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [],
+   "recompute": {
+    "rule": "welch_2arm_bt",
+    "params": {
+     "a": [
+      "_bestrec_run/results_TFV2_IS_filter_seed20260821.json",
+      "_bestrec_run/results_TFV2_IS_filter_seed20260822.json",
+      "_bestrec_run/results_TFV2_IS_filter_seed20260823.json",
+      "_bestrec_run/results_TFV2_IS_filter_seed20260824.json",
+      "_bestrec_run/results_TFV2_IS_filter_seed20260825.json",
+      "_bestrec_run/results_TFV2_IS_filter_seed20260826.json",
+      "_bestrec_run/results_TFV2_IS_filter_seed20260827.json",
+      "_bestrec_run/results_TFV2_IS_filter_seed20260828.json"
+     ],
+     "b": [
+      "_bestrec_run/results_TFV2_IS_nofilter_seed20260831.json",
+      "_bestrec_run/results_TFV2_IS_nofilter_seed20260832.json",
+      "_bestrec_run/results_TFV2_IS_nofilter_seed20260833.json",
+      "_bestrec_run/results_TFV2_IS_nofilter_seed20260834.json",
+      "_bestrec_run/results_TFV2_IS_nofilter_seed20260835.json",
+      "_bestrec_run/results_TFV2_IS_nofilter_seed20260836.json",
+      "_bestrec_run/results_TFV2_IS_nofilter_seed20260837.json",
+      "_bestrec_run/results_TFV2_IS_nofilter_seed20260838.json"
+     ]
+    }
+   },
+   "recompute_rule": "independent-arm Welch t/df/p + 95% CI on per-arm best_test[NDCG@10] (a vs b)",
+   "paper": [
+    {
+     "name": "diff",
+     "value": 0.002131,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "t",
+     "value": 16.99,
+     "mode": "round",
+     "precision": 2
+    },
+    {
+     "name": "ci95_lo",
+     "value": 0.001862,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci95_hi",
+     "value": 0.0024,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci95_lo",
+     "value": 0.0,
+     "mode": "gt"
+    }
+   ],
+   "notes": "PREREG_TAIL_FIR_V2 (externally timestamped before launch); PASS under Holm with E1 (adjudicate_tfv2.py gates the strict chain; verbatim record TFV2_ADJUDICATION.md).",
+   "recomputed": {
+    "diff": 0.0021312074182535216,
+    "t": 16.98557918284387,
+    "df": 13.968691225738135,
+    "p": 1.0062119533414702e-10,
+    "ci95_lo": 0.001862041050459324,
+    "ci95_hi": 0.0024003737860477195,
+    "n_units": 8.0
+   },
+   "recomputed_value": 0.0021312074182535216,
+   "paper_check": [
+    {
+     "name": "diff",
+     "paper": 0.002131,
+     "mode": "round",
+     "recomputed": 0.0021312074182535216,
+     "result": "exact",
+     "rounded": 0.002131
+    },
+    {
+     "name": "t",
+     "paper": 16.99,
+     "mode": "round",
+     "recomputed": 16.98557918284387,
+     "result": "exact",
+     "rounded": 16.99
+    },
+    {
+     "name": "ci95_lo",
+     "paper": 0.001862,
+     "mode": "round",
+     "recomputed": 0.001862041050459324,
+     "result": "exact",
+     "rounded": 0.001862
+    },
+    {
+     "name": "ci95_hi",
+     "paper": 0.0024,
+     "mode": "round",
+     "recomputed": 0.0024003737860477195,
+     "result": "exact",
+     "rounded": 0.0024
+    },
+    {
+     "name": "ci95_lo",
+     "paper": 0.0,
+     "mode": "gt",
+     "recomputed": 0.001862041050459324,
+     "result": "qual_ok"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "tfv2.cds.e3",
+   "table_id": "tfv2",
+   "row_label": "TFV2 CDs_and_Vinyl: independent-arm Welch (filter vs no-filter, 8v8)",
+   "metric": "overall NDCG@10 Welch diff/t/95% CI (pre-declared, Holm family)",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_TFV2_CDs_filter_seed20260861.json",
+    "_bestrec_run/results_TFV2_CDs_filter_seed20260862.json",
+    "_bestrec_run/results_TFV2_CDs_filter_seed20260863.json",
+    "_bestrec_run/results_TFV2_CDs_filter_seed20260864.json",
+    "_bestrec_run/results_TFV2_CDs_filter_seed20260865.json",
+    "_bestrec_run/results_TFV2_CDs_filter_seed20260866.json",
+    "_bestrec_run/results_TFV2_CDs_filter_seed20260867.json",
+    "_bestrec_run/results_TFV2_CDs_filter_seed20260868.json",
+    "_bestrec_run/results_TFV2_CDs_nofilter_seed20260871.json",
+    "_bestrec_run/results_TFV2_CDs_nofilter_seed20260872.json",
+    "_bestrec_run/results_TFV2_CDs_nofilter_seed20260873.json",
+    "_bestrec_run/results_TFV2_CDs_nofilter_seed20260874.json",
+    "_bestrec_run/results_TFV2_CDs_nofilter_seed20260875.json",
+    "_bestrec_run/results_TFV2_CDs_nofilter_seed20260876.json",
+    "_bestrec_run/results_TFV2_CDs_nofilter_seed20260877.json",
+    "_bestrec_run/results_TFV2_CDs_nofilter_seed20260878.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [],
+   "recompute": {
+    "rule": "welch_2arm_bt",
+    "params": {
+     "a": [
+      "_bestrec_run/results_TFV2_CDs_filter_seed20260861.json",
+      "_bestrec_run/results_TFV2_CDs_filter_seed20260862.json",
+      "_bestrec_run/results_TFV2_CDs_filter_seed20260863.json",
+      "_bestrec_run/results_TFV2_CDs_filter_seed20260864.json",
+      "_bestrec_run/results_TFV2_CDs_filter_seed20260865.json",
+      "_bestrec_run/results_TFV2_CDs_filter_seed20260866.json",
+      "_bestrec_run/results_TFV2_CDs_filter_seed20260867.json",
+      "_bestrec_run/results_TFV2_CDs_filter_seed20260868.json"
+     ],
+     "b": [
+      "_bestrec_run/results_TFV2_CDs_nofilter_seed20260871.json",
+      "_bestrec_run/results_TFV2_CDs_nofilter_seed20260872.json",
+      "_bestrec_run/results_TFV2_CDs_nofilter_seed20260873.json",
+      "_bestrec_run/results_TFV2_CDs_nofilter_seed20260874.json",
+      "_bestrec_run/results_TFV2_CDs_nofilter_seed20260875.json",
+      "_bestrec_run/results_TFV2_CDs_nofilter_seed20260876.json",
+      "_bestrec_run/results_TFV2_CDs_nofilter_seed20260877.json",
+      "_bestrec_run/results_TFV2_CDs_nofilter_seed20260878.json"
+     ]
+    }
+   },
+   "recompute_rule": "independent-arm Welch t/df/p + 95% CI on per-arm best_test[NDCG@10] (a vs b)",
+   "paper": [
+    {
+     "name": "diff",
+     "value": 0.00577,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "t",
+     "value": 26.12,
+     "mode": "round",
+     "precision": 2
+    },
+    {
+     "name": "ci95_lo",
+     "value": 0.005275,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci95_hi",
+     "value": 0.006266,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci95_lo",
+     "value": 0.0,
+     "mode": "gt"
+    }
+   ],
+   "notes": "PREREG_TAIL_FIR_V2 (externally timestamped before launch); PASS under Holm with E1 (adjudicate_tfv2.py gates the strict chain; verbatim record TFV2_ADJUDICATION.md).",
+   "recomputed": {
+    "diff": 0.005770294402534772,
+    "t": 26.121458543066268,
+    "df": 9.561519914733926,
+    "p": 3.2580713079344774e-10,
+    "ci95_lo": 0.005275016257043926,
+    "ci95_hi": 0.006265572548025618,
+    "n_units": 8.0
+   },
+   "recomputed_value": 0.005770294402534772,
+   "paper_check": [
+    {
+     "name": "diff",
+     "paper": 0.00577,
+     "mode": "round",
+     "recomputed": 0.005770294402534772,
+     "result": "exact",
+     "rounded": 0.00577
+    },
+    {
+     "name": "t",
+     "paper": 26.12,
+     "mode": "round",
+     "recomputed": 26.121458543066268,
+     "result": "exact",
+     "rounded": 26.12
+    },
+    {
+     "name": "ci95_lo",
+     "paper": 0.005275,
+     "mode": "round",
+     "recomputed": 0.005275016257043926,
+     "result": "exact",
+     "rounded": 0.005275
+    },
+    {
+     "name": "ci95_hi",
+     "paper": 0.006266,
+     "mode": "round",
+     "recomputed": 0.006265572548025618,
+     "result": "exact",
+     "rounded": 0.006266
+    },
+    {
+     "name": "ci95_lo",
+     "paper": 0.0,
+     "mode": "gt",
+     "recomputed": 0.005275016257043926,
      "result": "qual_ok"
     }
    ],

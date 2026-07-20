@@ -11,9 +11,13 @@ This file is the loop's tracker; quiet ticks service THIS program before compani
       `tfv2_commands.txt`, config parity exact).
 - [x] Campaign launched (sequential single-GPU queue: MI → IS → CDs → VG; 64 runs;
       resumable; logs `_bestrec_run/tfv2_logs/`).
-- [ ] Write + commit `adjudicate_tfv2.py` BEFORE inspecting any result.
-- [ ] Adjudicate when the queue finishes; report per-endpoint verdicts; update papers
-      strictly under the prereg wording (pass or fail).
+- [x] `adjudicate_tfv2.py` committed before inspection (+ degenerate-bin reporting guard).
+- [x] ADJUDICATED 2026-07-20: **E1/E2/E3 ALL PASS under Holm** (TFV2_ADJUDICATION.md).
+      Honest secondaries folded into the papers verbatim: zero-exposure bin degenerate
+      at 0.0 both arms; exclude-boundary sensitivity n.s. (boundary-group concentration
+      stated); cross-dataset MI-VG contrast DID NOT replicate (p=0.13; descriptive now).
+      Papers updated; tfv2 graph family + counted strict-gate step wired (175 cells /
+      15 families).
 
 ## 2. FIR cloned-backbone / valid-design rerun (P0) — IN PROGRESS (same campaign)
 - Executed as the IS/CDs arms of PREREG_TAIL_FIR_V2 under the pre-specified

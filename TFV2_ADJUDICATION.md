@@ -13,14 +13,11 @@ Holm (alpha 0.05):
 PRIMARY FAMILY VERDICT: ALL PASS
 
 Secondary (descriptive; no gates):
-Traceback (most recent call last):
-  File "C:\Users\rayxc\Documents\R\_bestrec_run\adjudicate_tfv2.py", line 254, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "C:\Users\rayxc\Documents\R\_bestrec_run\adjudicate_tfv2.py", line 222, in main
-    print(f"  {label}: {fmt(welch(at2, ai2))}")
-                            ^^^^^^^^^^^^^^^
-  File "C:\Users\rayxc\Documents\R\_bestrec_run\adjudicate_tfv2.py", line 98, in welch
-    df = (va / na + vb / nb) ** 2 / ((va / na) ** 2 / (na - 1) + (vb / nb) ** 2 / (nb - 1))
-         ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-ZeroDivisionError: float division by zero
+  MI zero-exposure: diff +0.000000 (degenerate bin: zero between-seed variance in both arms; no t/CI)
+  MI tail excl-boundary: diff +0.000071, t=0.67, df=13.9, p=5.17e-01, 95% CI [-0.000159, +0.000302]
+  MI band[1,6]: diff +0.000546, t=3.48, df=13.5, p=3.85e-03, 95% CI [+0.000208, +0.000883]
+  MI tail HR@10: diff +0.001150, t=5.88, df=13.7, p=4.32e-05, 95% CI [+0.000730, +0.001570]
+  VG positive-tail (boundary freq 6): diff +0.000173, t=1.56, df=14.0, p=1.41e-01, 95% CI [-0.000065, +0.000411]
+  four-arm (MI-VG) tail contrast: est +0.000247, t=1.57, df=27.2, p=1.27e-01
+  IS positive-tail (filter-nofilter): diff +0.000775, t=5.19, df=12.9, p=1.76e-04, 95% CI [+0.000453, +0.001098]
+  CDs positive-tail (filter-nofilter): diff +0.002329, t=21.80, df=14.0, p=3.33e-12, 95% CI [+0.002100, +0.002558]

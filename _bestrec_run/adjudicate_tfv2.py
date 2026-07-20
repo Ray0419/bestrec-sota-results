@@ -94,7 +94,10 @@ def welch(a, b):
     va = sum((x - ma) ** 2 for x in a) / (na - 1)
     vb = sum((x - mb) ** 2 for x in b) / (nb - 1)
     se = math.sqrt(va / na + vb / nb)
-    t = (ma - mb) / se if se > 0 else float("inf")
+    if se == 0:  # degenerate bin (identical per-seed means, e.g. all-zero zero-exposure NDCG)
+        return {"diff": ma - mb, "t": float("nan"), "df": float("nan"), "p": float("nan"),
+                "lo": ma - mb, "hi": ma - mb, "n": (na, nb), "degenerate": True}
+    t = (ma - mb) / se
     df = (va / na + vb / nb) ** 2 / ((va / na) ** 2 / (na - 1) + (vb / nb) ** 2 / (nb - 1))
     tc = t_ppf(0.975, df)
     return {"diff": ma - mb, "t": t, "df": df, "p": t_sf(abs(t), df),
@@ -163,6 +166,9 @@ def overall_means(short, arm):
     return out, None
 
 def fmt(w):
+    if w.get("degenerate"):
+        return (f"diff {w['diff']:+.6f} (degenerate bin: zero between-seed variance in both "
+                f"arms; no t/CI)")
     return (f"diff {w['diff']:+.6f}, t={w['t']:.2f}, df={w['df']:.1f}, p={w['p']:.2e}, "
             f"95% CI [{w['lo']:+.6f}, {w['hi']:+.6f}]")
 

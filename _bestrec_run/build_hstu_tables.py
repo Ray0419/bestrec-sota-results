@@ -667,7 +667,7 @@ PUB_SASREC_OFF = 0.0153     # Liu 2025, published Office_Products SASRec (extern
 # every table family the paper declares; --submission fails if any has no sourced cells
 REQUIRED_FAMILIES = ["table1", "table1a", "table1b", "table1c", "table1d", "table1e",
                      "table541", "table542", "tableV2conf", "table2",
-                     "office_confirmation", "theirs_on_ours", "fir_breadth", "office_v3"]
+                     "office_confirmation", "theirs_on_ours", "fir_breadth", "office_v3", "tfv2"]
 
 OFFICE_VOID_NOTE = ("VOID under prereg floor check (+44% floor inflation); "
                     "provisional, not counted as a pass")
@@ -1740,6 +1740,28 @@ def build_spec():
                             "initialization-paired, S5.3 disclosure). Part of the pre-declared "
                             "breadth campaign family."))
 
+    # ------- tfv2: pre-declared repaired-estimand campaign (PREREG_TAIL_FIR_V2) -------
+    # Externally timestamped (OpenTimestamps); independent 8-vs-8 arms; adjudicated
+    # 2026-07-20 (TFV2_ADJUDICATION.md; E1 gated via the strict-chain verdict step).
+    for short, cat, cid, dv, tv, lo, hi in (
+            ("IS", "Industrial_and_Scientific", "tfv2.is.e2", 0.002131, 16.99, 0.001862, 0.002400),
+            ("CDs", "CDs_and_Vinyl", "tfv2.cds.e3", 0.005770, 26.12, 0.005275, 0.006266)):
+        FF2 = [BR + f"results_TFV2_{short}_filter_seed{s2}.json"
+               for s2 in ({"IS": range(20260821, 20260829), "CDs": range(20260861, 20260869)}[short])]
+        FN2 = [BR + f"results_TFV2_{short}_nofilter_seed{s2}.json"
+               for s2 in ({"IS": range(20260831, 20260839), "CDs": range(20260871, 20260879)}[short])]
+        C.append(cell(cid, "tfv2",
+                      f"TFV2 {cat}: independent-arm Welch (filter vs no-filter, 8v8)",
+                      "overall NDCG@10 Welch diff/t/95% CI (pre-declared, Holm family)",
+                      FF2 + FN2, "welch_2arm_bt", {"a": FF2, "b": FN2},
+                      [chk("diff", dv, 6), chk("t", tv, 2),
+                       chk("ci95_lo", lo, 6), chk("ci95_hi", hi, 6),
+                       chk("ci95_lo", 0.0, mode="gt")],
+                      8, conf,
+                      notes="PREREG_TAIL_FIR_V2 (externally timestamped before launch); "
+                            "PASS under Holm with E1 (adjudicate_tfv2.py gates the strict "
+                            "chain; verbatim record TFV2_ADJUDICATION.md)."))
+
     # ------- office_v3: redesigned pre-declared confirmation (PASSED) -------
     V3_SEEDS = [20260728, 20260729, 20260730, 20260731, 20260732]
     V3_NOTE = ("PREREG_OFFICE_V3.md (committed before any run; ERRATUM E1 pre-campaign): gate "
@@ -1767,7 +1789,7 @@ def build_spec():
     # firb.* removed 2026-07-20 (audit 00:01): the frozen breadth rule is a paired t whose
     # pairing premise is false; its cells stay as frozen-rule records but are NOT
     # confirmatory. Welch companions are post-hoc (exploratory).
-    PREDECLARED_PREFIXES = ("v2conf.", "officev3.", "t2.conngate.")
+    PREDECLARED_PREFIXES = ("v2conf.", "officev3.", "t2.conngate.", "tfv2.")
     for c0 in C:
         if c0.get("evidence_class") == "confirmatory" and \
                 (not c0["cell_id"].startswith(PREDECLARED_PREFIXES)

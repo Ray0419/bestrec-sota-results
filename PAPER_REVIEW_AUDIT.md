@@ -4,19 +4,712 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-20 05:46 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-20 14:52 Australia/Sydney)
+
+1. **[CONFIRMED, rejection-level prospective-integrity failure] TFV2 remains
+   exploratory/aborted.** Outcome-bearing runs preceded the analysis program,
+   five MI text seeds had already been inspected, the FIR repair followed 32
+   failed frozen commands, and MI/VG outcomes were committed with the later
+   adjudicator. Exact completion of the queue cannot restore prospective
+   confirmatory status.
+2. **[CONFIRMED FAVORABLE BUT INCOMPLETE E3] CDs has 8/8 filter runs and only
+   5/8 controls at the fixed cutoff.** Selected overall means are 0.0660739828
+   versus 0.0602901037 (incomplete delta +0.0057838791; Welch p=5.29434e-6,
+   95% CI [+0.005070623,+0.006497135]). The tie-safe positive-tail delta is
+   +0.0022740766 (p=2.60384e-9). Complete arm separation gives an exhaustive
+   permutation p=1/1,287, but these outcome-visible 8-vs-5 diagnostics are not
+   frozen 8-vs-8 E3, a stopping result, or a Holm verdict.
+3. **[CONFIRMED MANUSCRIPT-RESULT CONTRADICTION] The paper still presents
+   p=0.0054 as a headline MI-minus-VG tail result, while the repaired tie-safe
+   four-arm contrast is null.** The corrected contrast is +0.0002469628,
+   p=0.127249969, 95% CI [-0.000075048,+0.000568974]. TFV2 remains absent from
+   both source trees, and the venue text still calls the rerun queued and the
+   sensitivity unquantified.
+4. **[CONFIRMED FAVORABLE COMPLETE RAW E2; NOT CONFIRMATORY] The repaired IS
+   8-vs-8 package result remains large and internally stable.** Selected
+   overall NDCG@10 is 0.0333598751 versus 0.0312286676, delta +0.0021312074,
+   Welch p=1.006e-10. It concerns a FIR-plus-initialization/optimizer package
+   within an outcome-compromised family, not an isolated filter or a valid
+   family-level confirmation.
+5. **[CONFIRMED NEGATIVE UNSEEN-TARGET RESULT; AUDIT RANK CORRECTION] No
+   audited TFV2 category retrieves a zero-training-exposure target through
+   rank 100.** The 13 cutoff-eligible CDs selections give 0/3,211 and all 20
+   distinct selected/final sidecars give 0/4,940. The minimum stored value is
+   `rank0=4551`, hence ordinary one-based rank 4,552; prior wording that called
+   4,551 the best rank was off by one unless read explicitly as `rank0`.
+6. **[CONFIRMED ADJUDICATOR/RUNNER FAILURE] The promised mechanical gate still
+   cannot issue a trustworthy complete verdict.** At the cutoff it lacks
+   no-filter seeds 20260876--78; once live seed 76 appeared after cutoff, the
+   gate reported seed 77 missing and then again raised `ZeroDivisionError` on
+   the all-zero MI secondary stratum. It validates neither artifact contents
+   nor provenance, and the fail-open runner never calls it before an
+   unconditional, currently stale DONE marker.
+7. **[CONFIRMED MACHINE-READABLE ESTIMAND CONTRADICTION] `by_popularity.tail`
+   is not the frozen tie-safe tail.** In the 8-vs-5 snapshot its arm delta is
+   +0.0022478365 versus +0.0022740766 on the correct cohort. It mixes every
+   zero-exposure item, the complete frequency-1--5 tail, and an ID-order subset
+   of frequency 6. Similar direction does not make the estimands equivalent.
+8. **[CONFIRMED RELEASE/RECONSTRUCTION GAP] TFV2 remains outside a clean
+   reviewer boundary.** The JSONs are untracked; sidecars/logs are ignored;
+   TFV2 is absent from both manifests; IS/CD inputs are absent from the TFV2
+   boundary; and rankings cannot be regenerated without checkpoints, logits,
+   or an equivalent reconstruction artifact.
+9. **[CONFIRMED FIR ATTRIBUTION DEFECT] The favorable FIR comparisons identify
+   a package, not the filter alone.** Treatment adds parameters and changes
+   initialization/optimizer dynamics; the zero-gate/delta-kernel start gives
+   filter components zero task gradient until weight decay moves the system.
+10. **[CONFIRMED NOVELTY/CITATION GAP] The closest-work boundary is still
+    incomplete.** AlphaFuse directly preserves frozen language structure while
+    learning collaborative ID information and reports long-tail settings;
+    DWSRec reshapes pretrained text geometry; SIDSRec separates semantic and
+    collaborative channels before fusion; and BFDRec adds recent multi-scale
+    frequency-domain modeling. These join the already omitted CCFRec, LLMEmb,
+    ASER, AKT-Rec, LLM-ESR, SAGE-Rec, FAERec, SpecTran, and TADA.
+11. **[PLAUSIBLE OVERGENERALIZATION; AUTHOR VERIFICATION] Two missing controls
+    limit the text and training claims.** The paper does not map its
+    all-position objective to the target/split taxonomy highlighted by the
+    2026 sequence-splitting reproducibility study, and it has no item-text
+    permutation control preserving representation marginals. Comparator parity
+    and whether gains require correctly aligned semantics therefore remain
+    untested.
+12. **[PLAUSIBLE OVERGENERALIZATION] ACE weakens the negative-map narrative.**
+    ACE reports gains from controlled reshaping of anisotropic language
+    embeddings. It does not invalidate this paper's particular GD1 run, but it
+    requires every capacity-restricting-only and reusable-negative conclusion
+    to be scoped strictly to the exact probes, data, and environment tested.
+13. **[CONFIRMED DATA-DESCRIPTION ERROR] The paper says rich text includes
+    `brand`, but both encoders read Amazon's `store` field and relabel it
+    `brand`.** The official schema distinguishes store name from brand within
+    `details`. Correct the description, or regenerate the evidence chain using
+    the actual brand field.
+14. **[CONFIRMED BASELINE/POWER WEAKNESS] The evidence hierarchy remains
+    overstated.** Table 1a claims SASRec-family protocol parity while retaining
+    only popularity. Table 2 labels many n=1 probes rejected/neutral/harmful
+    and claims to bound a ceiling; a single seed establishes none of those
+    conclusions.
+15. **[CONFIRMED PUBLIC-STATE, LINEAGE, AND ASSURANCE CONTRADICTIONS]** GitHub
+    identifies the repository as public and the v0.9 page exposes 20 assets
+    while paper/README/release prose still says private or upload pending. The
+    TIGER preprocessing-equivalence statement is false. TeX health, HSTU parity,
+    and the 153-file manifest pass, but exclude TFV2 and cannot test chronology,
+    estimands, power, novelty, or prose truth; `CANONICAL_SUBMISSION.md` also
+    retains a stale 168-cell note against the current 173-cell manuscript.
+16. **[CONFIRMED SUBMISSION-READINESS BLOCKERS] The unchanged manuscripts are
+    not top-journal ready.** Fresh rendering reconfirms a four-page reader
+    abstract and three-page TORS abstract, the page-7 whitespace void, severe
+    page-15 table collisions, undersized figures on pages 25/29, and the tiny
+    dense page-32 table. The paper reads as an audit ledger rather than a
+    focused journal contribution.
+17. **[CONFIRMED ARTIFACT REPAIRS; DO NOT REGRESS]** Control seeds 20260874--75
+    are internally coherent across 371,628 new physical rows. Current CDs
+    coverage is 2,477,520 rows across 20 selected/final sidecars; selected- and
+    final-epoch diagnostics agree. This credits engineering integrity without
+    upgrading scientific status. The supplied previous-run timestamp now
+    matches the persisted 13:51 audit, so the earlier process-record ambiguity
+    does not recur.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-20 14:52)
+
+1. **[CONFIRMED, rejection-level prospective-integrity failure] TFV2 remains
+   exploratory/aborted.** Outcome-bearing runs preceded the analysis program,
+   five MI text seeds had already been inspected, the FIR repair followed 32
+   failed frozen commands, and MI/VG outcomes were committed with the later
+   adjudicator. Completing the queue cannot retrospectively make this family
+   confirmatory.
+2. **[CONFIRMED FAVORABLE BUT INCOMPLETE E3] CDs has 8/8 filter runs and only
+   3/8 controls at the fixed cutoff.** The selected overall means are
+   0.0660739828 versus 0.0606560877 (incomplete delta +0.0054178951; Welch
+   p=0.00017094, 95% CI [+0.004728124,+0.006107666]). The tie-safe positive-tail
+   means are 0.0070951357 versus 0.0047926983 (delta +0.0023024374;
+   p=0.00001804). These sequentially visible 8-vs-3 calculations are descriptive
+   diagnostics, not the frozen 8-vs-8 E3, a stopping result, or a Holm verdict.
+3. **[CONFIRMED MANUSCRIPT-RESULT CONTRADICTION] The paper still presents
+   p=0.0054 as a headline MI-minus-VG tail result, while the repaired tie-safe
+   four-arm contrast is null.** The complete contrast is +0.0002469628,
+   p=0.127249969, 95% CI [-0.000075048,+0.000568974]; boundary-excluded and
+   band-1--6 sensitivities are also nonsignificant. TFV2 is absent from both
+   source trees, and venue prose still calls the rerun queued/unquantified.
+4. **[CONFIRMED FAVORABLE COMPLETE RAW E2; NOT CONFIRMATORY] The repaired IS
+   8-vs-8 package result remains large and internally stable.** Selected
+   overall NDCG@10 is 0.0333598751 versus 0.0312286676, delta +0.0021312074,
+   Welch p=1.006e-10. It concerns a FIR-plus-initialization/optimizer package
+   under an outcome-compromised family, not an isolated filter or a
+   confirmatory family result.
+5. **[CONFIRMED NEGATIVE UNSEEN-TARGET RESULT] No audited TFV2 category has
+   retrieved a zero-training-exposure target through rank 100.** The current
+   11 selected CDs sidecars contain 0/2,717 such hits; all 17 selected/final
+   CDs sidecars contain 0/4,199 (best rank 4,551). MI, VG, IS, and CDs all fail
+   this test, so any benefit concerns already-seen low-frequency items rather
+   than item cold-start rescue.
+6. **[CONFIRMED ADJUDICATOR/RUNNER FAILURE] The promised mechanical gate still
+   cannot issue a trustworthy complete verdict.** It reports E3 missing at
+   no-filter seed 20260874 and then raises `ZeroDivisionError` on an all-zero
+   secondary stratum. It validates neither sidecar content nor provenance,
+   returns success for incomplete primary families, and is not called by the
+   fail-open, overwrite-prone, non-atomic runner before its unconditional DONE.
+7. **[CONFIRMED MACHINE-READABLE ESTIMAND CONTRADICTION] `by_popularity.tail`
+   is not the frozen tie-safe tail.** For the current 8-vs-3 snapshot, its
+   delta is +0.0022733731 versus +0.0023024374 on the correct cohort. It mixes
+   every zero-exposure item, the complete frequency-1--5 tail, and an ID-order
+   subset of frequency 6. The similar direction does not validate the label.
+8. **[CONFIRMED RELEASE/RECONSTRUCTION GAP] TFV2 remains outside a clean
+   reviewer boundary.** The JSONs are untracked; sidecars/logs are ignored;
+   no TFV2 object is in either manifest; IS/CD inputs are absent from the
+   declared TFV2 boundary; and rankings cannot be regenerated without
+   checkpoints, logits, or an equivalent reconstruction artifact.
+9. **[CONFIRMED ASSURANCE-CLAIM FAILURE] Green legacy checks are not a
+   scientific validity certificate.** TeX health passes 32 sources/39 labels/
+   27 reference targets, HSTU parity reports zero asserted differences, and
+   the 153-file manifest verifies, but all exclude TFV2 and cannot test
+   chronology, estimands, power, multiplicity, novelty, or truth of prose.
+10. **[CONFIRMED FIR ATTRIBUTION DEFECT] The favorable FIR comparisons identify
+    a package, not the filter alone.** Treatment adds 513 parameters and
+    changes initialization/optimizer dynamics; the zero-gate/delta-kernel
+    start gives filter components zero task gradient until weight decay moves
+    the system.
+11. **[CONFIRMED NOVELTY/CITATION BLOCKER] Two more omitted primary works narrow
+    the contribution.** CCFRec already combines text-derived semantic codes,
+    shared learnable code embeddings, and item-ID information; LLMEmb already
+    reports semantic-embedding gains concentrated among 1--4-interaction
+    items. TAPE's defensible distinction is its continuous soft assignment and
+    zero-initialized additive realization, while the tail claim must be scoped
+    to this full-catalog construction. ASER, AKT-Rec, LLM-ESR, SAGE-Rec,
+    FAERec, SpecTran, and TADA also remain insufficiently compared.
+12. **[CONFIRMED DATA-DESCRIPTION ERROR] The paper says rich text includes
+    `brand`, but both encoders read Amazon's `store` field and relabel it
+    `brand`.** The official schema distinguishes store from brand in `details`.
+    Correct the description, or regenerate the evidence chain using true brand.
+13. **[CONFIRMED BASELINE/POWER WEAKNESS] The evidence hierarchy remains
+    overstated.** Table 1a claims SASRec-family protocol parity but retains only
+    popularity. Table 2 labels many n=1 probes rejected/neutral/harmful and
+    claims to bound a ceiling; a single seed establishes none of those claims.
+14. **[CONFIRMED PUBLIC-STATE AND LINEAGE CONTRADICTIONS]** The repository and
+    v0.9 release are public with all 12 splits and four caches while paper,
+    README, DOI, and tracker prose says private/upload pending. The TIGER
+    comparison also calls preprocessing equivalent although TIGER uses an
+    older Amazon corpus and a different filtering procedure.
+15. **[CONFIRMED SUBMISSION-READINESS BLOCKERS] The unchanged manuscripts are
+    not top-journal ready.** The reader abstract spans four pages; the TORS
+    abstract spans three; page 7 is mostly blank; page 15 has severe table
+    wrapping/collision; figures on pages 25/29 are undersized; and page 32 is a
+    tiny, over-dense table. The article reads as an audit ledger rather than a
+    focused journal contribution.
+16. **[CONFIRMED ARTIFACT REPAIRS; DO NOT REGRESS]** Seed 20260868 completes the
+    eight-run filter arm, and control seeds 20260871--73 are internally
+    coherent. The five newly in-scope selected/final sidecars add 619,380
+    physical rows; current CDs coverage is 2,105,892 rows across 17 sidecars.
+    This credits arithmetic/provenance integrity without upgrading status.
+17. **[AUTHOR/OPERATOR VERIFICATION] The scheduler record again has no matching
+    persisted audit.** Automation metadata says the last run was 12:50, while
+    memory ends at 12:18 and the cumulative file ends at the 11:49 cutoff.
+    Determine whether this denotes a wake-up, a failed write, or a lost review.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-20 13:51)
+
+1. **[CONFIRMED, rejection-level prospective-integrity failure] TFV2 remains
+   exploratory/aborted.** Outcome-bearing runs preceded the analysis program,
+   five MI text seeds had already been inspected, the FIR repair followed 32
+   failed frozen commands, and MI/VG outcomes were committed with the later
+   adjudicator. More exact runs cannot retrospectively make this family
+   confirmatory.
+2. **[CONFIRMED INCOMPLETE E3] CDs has 7/8 filter runs and 0/8 controls at the
+   fixed cutoff.** All seven treatment bundles are internally coherent;
+   selected overall NDCG@10 averages 0.0661053726 (SD 0.0002517414), and the
+   tie-safe positive-tail mean is 0.0071150348 (SD 0.0002233347). These are
+   one-arm descriptions, not an effect, confidence interval, p-value, E3
+   result, breadth claim, or Holm-family verdict.
+3. **[CONFIRMED MANUSCRIPT-RESULT CONTRADICTION] The paper still presents
+   p=0.0054 as a headline MI-minus-VG tail result, while the repaired tie-safe
+   four-arm contrast is null.** The complete contrast is +0.0002469628,
+   p=0.127249969, 95% CI [-0.000075048,+0.000568974]; boundary-excluded and
+   band-1--6 sensitivities are also nonsignificant. TFV2 is absent from both
+   source trees; venue prose still calls the sensitivity unquantified and the
+   rerun queued. Every headline occurrence and that stale status must be fixed
+   before submission.
+4. **[CONFIRMED FAVORABLE COMPLETE RAW E2; NOT CONFIRMATORY] The repaired IS
+   8-vs-8 package result remains large and internally stable.** Selected
+   overall NDCG@10 is 0.0333598751 versus 0.0312286676, delta +0.0021312074,
+   Welch p=1.006e-10, 95% CI [+0.001862041,+0.002400374]. It concerns a
+   FIR-plus-initialization/optimizer package under an outcome-compromised
+   family, not an isolated filter or a confirmatory family result.
+5. **[CONFIRMED NEGATIVE UNSEEN-TARGET RESULT] No audited TFV2 category has
+   retrieved a zero-training-exposure target through rank 100.** Across all 12
+   physical CDs selected/final sidecars there are 0/2,964 such hits (best rank
+   4,713), extending the all-zero MI, VG, and IS result. Any surviving benefit
+   concerns already-seen low-frequency items, not item cold-start rescue.
+6. **[CONFIRMED ADJUDICATOR/RUNNER FAILURE] The promised mechanical gate still
+   cannot issue a trustworthy complete verdict.** It stops first on missing
+   filter seed 20260868, has no controls, skips Holm unless all endpoints exist,
+   and still raises `ZeroDivisionError` for equal all-zero arms. The runner
+   continues failures, overwrites logs, trusts path existence, never invokes
+   adjudication, and can write a stale DONE marker unconditionally.
+7. **[CONFIRMED MACHINE-READABLE ESTIMAND CONTRADICTION; AUDIT CORRECTION]
+   `by_popularity.tail` is not the frozen tie-safe tail.** The earlier audit
+   incorrectly said the CDs legacy cohort split frequency 5. It actually
+   contains all 52 zero-frequency items, all 26,210 frequency-1--5 items, and
+   an ID-order subset of frequency 6 (3,528/9,782 items); no correct-tail item
+   is omitted. Its seven-seed selected mean is 0.0071860469, 0.9981% above the
+   correct-tail mean. The label remains invalid even though the corrected
+   boundary diagnosis is narrower.
+8. **[CONFIRMED RELEASE/RECONSTRUCTION GAP] TFV2 remains outside a clean
+   reviewer boundary.** The new JSONs are untracked; sidecars/logs are ignored;
+   no TFV2 object is in either manifest; IS/CD inputs are absent from the
+   release; and ranks cannot be independently regenerated without checkpoints
+   or logits.
+9. **[CONFIRMED ASSURANCE-CLAIM FAILURE] A green legacy rebuild is not a
+   validity certificate and is not even cross-platform byte-deterministic.**
+   The wrapper again recomputed 173 cells and verified 153 files, but excludes
+   TFV2 and cannot test chronology, estimands, power, multiplicity, novelty, or
+   prose. Under WSL it changed the generated manifest path separator while
+   still reporting PASS; the incidental change was restored. The gate must
+   compare regenerated artifacts with a declared canonical representation.
+10. **[CONFIRMED FIR ATTRIBUTION DEFECT] The favorable IS comparison identifies
+    a package, not the filter alone.** Treatment adds 513 parameters and changes
+    initialization/optimizer dynamics; the zero-gate/delta-kernel start gives
+    filter components zero task gradient until weight decay moves the system.
+11. **[CONFIRMED NOVELTY/CITATION BLOCKER; PLAUSIBLE CLOSE PRIOR ART]** The
+    closely adjacent 2026 ASER work already reports domain- and frequency-
+    dependent effects of frozen review-derived representations under Amazon
+    full-ranking evaluation, while AKT-Rec addresses head-to-tail semantic-ID
+    transfer. LLM-ESR, SAGE-Rec, FAERec, SpecTran, TADA, and related recent
+    work also remain insufficiently compared. TAPE/FIR novelty must be stated
+    equation-by-equation and protocol-by-protocol, not as a broad first claim.
+12. **[CONFIRMED DATA-DESCRIPTION ERROR] The paper says rich text includes
+    `brand`, but both encoders read Amazon's `store` field and relabel it
+    `brand`.** The official schema distinguishes store from brand in `details`.
+    Correct the description to store/seller name; switching to actual brand
+    would require regenerated embeddings, runs, tables, and claims.
+13. **[CONFIRMED BASELINE/POWER WEAKNESS] The evidence hierarchy remains
+    overstated.** Table 1a claims SASRec-family protocol parity but retains only
+    a popularity floor after untraceable rows were removed. Table 2 calls many
+    n=1 probes neutral/harmful and claims a ceiling; a single seed establishes
+    none of those conclusions.
+14. **[CONFIRMED PUBLIC-STATE AND LINEAGE CONTRADICTIONS]** The repository and
+    v0.9 release are public while paper/README/DOI prose says private/upload
+    pending. The TIGER comparison also calls the preprocessing equivalent even
+    though TIGER filters users with fewer than five reviews rather than using
+    the paper's iterative user-and-item 5-core pipeline.
+15. **[CONFIRMED SUBMISSION-READINESS BLOCKERS] The unchanged manuscripts are
+    not top-journal ready.** The reader abstract is roughly 1,800 words/four
+    pages; the 46-page TORS build has a three-page abstract, page-7 whitespace
+    void, severe page-15 table wrapping/collision, undersized figures on pages
+    25/29, and a tiny dense page-32 table. The paper reads as an audit ledger
+    rather than a focused journal article.
+16. **[CONFIRMED REPAIRS; DO NOT REGRESS]** CDs seeds 20260864--67 add seven
+    physical sidecars (867,132 rows); across seeds 20260861--67 all 1,486,512
+    physical rows, targets, ranks, formulas, configs, commands, histories,
+    aggregates, and recorded hashes validate. No TFV2 value entered the paper.
+    This credits artifact integrity without upgrading scientific status.
+17. **[AUTHOR VERIFICATION] The scheduler record is ambiguous.** Automation
+    metadata reports a 10:47 run, but the cumulative file and memory contain no
+    distinct section after the 09:48 cutoff. Authors should determine whether a
+    run failed to persist or the timestamp records a wake-up rather than a
+    completed audit; do not silently treat the gap as reviewed state.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-20 11:49)
+
+1. **[CONFIRMED, rejection-level prospective-integrity failure] TFV2 remains
+   exploratory/aborted.** Outcome-bearing runs preceded the analysis program,
+   five MI text seeds had already been inspected, the FIR repair followed 32
+   failed frozen commands, and MI/VG outcomes were committed with the later
+   adjudicator. Completing more runs cannot restore a prospective family.
+2. **[CONFIRMED INCOMPLETE E3] CDs now has 3/8 filter runs and 0/8 controls at
+   the fixed cutoff.** The selected filter-only mean is 0.0660894479
+   (SD 0.0003685418); the epoch-20 mean is 0.0661188384. These are coherent
+   one-arm descriptions, not a treatment estimate, interval, p-value, E3
+   verdict, breadth claim, or Holm-family result.
+3. **[CONFIRMED FAVORABLE COMPLETE RAW E2; NOT CONFIRMATORY] The repaired IS
+   8-vs-8 package result remains large and internally stable.** Selected overall
+   NDCG@10 is 0.0333598751 versus 0.0312286676, delta +0.0021312074, Welch
+   p=1.006e-10, 95% CI [+0.001862041,+0.002400374]. It is exploratory evidence
+   for a FIR-plus-initialization/optimizer package, not an isolated filter or
+   family-level confirmation.
+4. **[CONFIRMED MANUSCRIPT-RESULT CONTRADICTION] The paper still reports the
+   MI-minus-VG tail gap as p=0.0054 although the repaired tie-safe rerun is
+   null.** The complete four-arm contrast is +0.0002469628, p=0.12725, 95% CI
+   [-0.000075048,+0.000568974]; exclude-boundary and band-1--6 sensitivities are
+   also nonsignificant. The false value remains in every headline location.
+5. **[CONFIRMED ADJUDICATOR/RUNNER FAILURE] The promised TFV2 gate still cannot
+   issue a durable complete verdict.** It reports E3 missing at seed 20260864,
+   then crashes on the all-zero MI secondary stratum. Missing primary families
+   otherwise return success; aggregate JSONs are trusted without validating
+   sidecars; the runner never invokes the gate, continues failures, overwrites
+   logs, writes non-atomically, and retains a stale DONE marker.
+6. **[CONFIRMED NEGATIVE UNSEEN-TARGET RESULT] No audited TFV2 category has
+   retrieved a zero-training-exposure target through rank 100.** The five
+   distinct current CDs sidecars add 1,235 zero-exposure row-evaluations with
+   zero hits (best rank 4,713), extending the all-zero MI, VG, and IS findings.
+   Any surviving effect concerns already-seen rare items, not cold-start rescue.
+7. **[CONFIRMED MACHINE-READABLE ESTIMAND CONTRADICTION] The JSON field
+   `by_popularity.tail` remains a different cohort from the frozen tie-safe
+   tail.** In the three CDs filter selections its mean is 0.0072631984 versus
+   0.0071737445 on the correct positive-frequency cohort (+1.25%); it mixes all
+   zero-exposure rows and splits frequency boundaries. IS and VG show larger,
+   inferentially material distortions.
+8. **[CONFIRMED RELEASE/RECONSTRUCTION GAP] TFV2 remains outside a clean
+   reviewer boundary.** IS/CD JSONs are untracked; all sidecars/logs are ignored;
+   no TFV2 object is in either manifest; IS/CD splits and caches are absent from
+   the release; ranks cannot be regenerated without checkpoints/logits.
+9. **[CONFIRMED FIR ATTRIBUTION DEFECT] The favorable IS comparison identifies
+   a package, not the filter alone.** Treatment adds 513 parameters and changes
+   initialization/optimizer dynamics; the zero-gate/delta-kernel start gives
+   the filter components zero task gradient until weight decay moves the system.
+10. **[CONFIRMED PUBLIC-STATE CONTRADICTION] Public reality and manuscript
+    prose still disagree.** GitHub is public and v0.9 exposes 18 uploaded assets
+    (20 downloads only when two generated source archives are counted), while
+    the paper says private/upload pending. The remote manifest is stale, and the
+    genuinely absent TFV2 IS/CD inputs require a separately scoped disclosure.
+11. **[CONFIRMED NOVELTY/CITATION BLOCKER; PLAUSIBLE NEW ADJACENCY]** LLM-ESR,
+    SAGE-Rec, FAERec, and SpecTran remain absent from the source. BIPCL is also
+    close 2026 prototype-based prior art: it uses shared user/item intent
+    prototypes integrated into representations. TAPE may still differ through
+    frozen text-derived assignments and its additive zero-initialized table,
+    but generic prototype soft-assignment is not a defensible novelty boundary.
+12. **[CONFIRMED DATA-DESCRIPTION ERROR] The paper says rich text includes
+    `brand`, but both encoders read Amazon's `store` field and relabel it
+    `brand`.** Amazon Reviews 2023 defines `store` as store name and places brand
+    inside `details`. Correct the paper and code label to store/seller name;
+    switching to actual brand would require regenerated embeddings and results.
+13. **[CONFIRMED BASELINE/POWER WEAKNESS] The paper's evidence hierarchy is
+    still overstated.** Table 1a claims SASRec-family protocol-parity baselines
+    but retains only popularity after untraceable rows were removed. Table 2
+    labels many n=1 probes neutral/harmful and claims to bound a ceiling; a
+    single seed cannot establish neutrality, harm, or an empirical ceiling.
+14. **[CONFIRMED SUBMISSION-READINESS BLOCKERS] The unchanged manuscripts are
+    not top-journal ready.** The reader abstract is about 1,801 words/four pages;
+    the 46-page TORS build has a three-page abstract, page-7 whitespace void,
+    severe page-15 table collision, undersized figures on pages 25/29, and a
+    tiny dense table on page 32. The narrative is an audit ledger, not a focused
+    journal article.
+15. **[CONFIRMED ASSURANCE-CLAIM FAILURE] A green legacy build is arithmetic
+    traceability, not a validity certificate.** The fresh rebuild recomputes
+    173 cells with zero mismatch/untraceable values and verifies 153 files, but
+    omits TFV2 and cannot enforce chronology, estimand validity, multiplicity,
+    release completeness, statistical power, or claimability.
+16. **[CONFIRMED REPAIRS; DO NOT REGRESS]** The two new CDs bundles contribute
+    three sidecars and 371,628 rows that validate exactly; selected epochs,
+    commands, configs, targets, ranks, formulas, code/data/cache/sidecar hashes,
+    and selected/final aggregates agree. Seed 20260863 selected epoch 20, so its
+    lack of a duplicate final sidecar is expected. No TFV2 value entered the
+    paper.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-20 09:48)
+
+1. **[CONFIRMED, rejection-level prospective-integrity failure] TFV2 remains
+   exploratory/aborted even though one repaired endpoint is now complete.**
+   Outcome-bearing smoke/full runs preceded the analysis program, five MI text
+   seeds had been inspected in an earlier campaign, all MI/VG outcomes existed
+   before the adjudicator commit, and the FIR repair followed 32 failed frozen
+   commands. Sequentially visible later outcomes and exact artifacts cannot
+   restore a confirmatory family.
+2. **[CONFIRMED FAVORABLE COMPLETE RAW E2; NOT CONFIRMATORY] The repaired IS
+   8-vs-8 package effect is large and internally stable.** Validation-selected
+   overall NDCG@10 is 0.0333598751 versus 0.0312286676, delta +0.0021312074,
+   Welch p=1.006e-10, 95% CI [+0.001862041,+0.002400374]. Epoch-20 final and
+   tie-safe positive-tail readings agree. This is frozen-rule-compatible
+   exploratory evidence for the FIR-plus-initialization/optimizer package, not
+   an isolated filter effect or a family-level pass: E3 and Holm are absent.
+3. **[CONFIRMED INCOMPLETE E3] CDs has one filter run and no control at the
+   cutoff.** Seed 20260861 is internally sound (selected overall NDCG@10
+   0.0660551387; final 0.0662381915), but a one-arm observation supports no
+   treatment estimate, interval, p-value, or category-generalization claim.
+4. **[CONFIRMED MANUSCRIPT-RESULT CONTRADICTION] The paper still says the
+   cross-dataset tail gap is p=0.0054 although the tie-safe full rerun is
+   null.** The corrected MI-minus-VG difference of differences is
+   +0.0002469628, p=0.12725, 95% CI [-0.000075048,+0.000568974]; complete VG
+   is itself null and boundary-sensitive. The false value remains in the
+   abstract, introduction, novelty table, results, and conclusion.
+5. **[CONFIRMED ADJUDICATOR/RUNNER FAILURE] The promised gate still cannot
+   produce a complete trustworthy verdict.** It now prints E1 and the complete
+   raw E2, reports E3 missing, then exits 1 on the all-zero MI secondary
+   stratum. It trusts aggregate JSON for E2/E3 and omits artifact validation.
+   The runner never invokes it, continues after failure, overwrites logs, skips
+   any extant JSON, writes non-atomically, and retains a stale DONE marker while
+   the queue runs.
+6. **[CONFIRMED NEGATIVE UNSEEN-TARGET RESULT] TFV2 has not retrieved a single
+   zero-training-exposure target through rank 100 in any audited category.**
+   The completed IS design contributes 10,624 selected/final row-evaluations
+   with zero hits; the first CDs filter run adds 494 more. MI and VG already
+   showed the same floor. Any surviving effect concerns already-seen rare
+   items, not unseen-item or cold-start rescue.
+7. **[CONFIRMED MACHINE-READABLE ESTIMAND CONTRADICTION] The JSON field
+   `by_popularity.tail` remains a different cohort from the frozen tail.** In
+   complete IS it mixes zero-exposure rows and splits the frequency-5 boundary;
+   its selected delta (+0.0006369812) is 17.9% below the tie-safe delta
+   (+0.0007754657). **Audit correction:** in CDs it includes all 247
+   zero-exposure rows, every positive-frequency 1--5 row, and an ID-order
+   subset of frequency 6; no correct-tail row is omitted. It still must not
+   feed inference under a frozen positive-frequency-tail label.
+8. **[CONFIRMED RELEASE/RECONSTRUCTION GAP] TFV2 is still outside a clean
+   reviewer boundary.** All IS/CD JSONs are untracked, selected/final sidecars
+   and logs are ignored, every repaired JSON records a tracked-dirty tree, and
+   no TFV2 object is in `RELEASE_MANIFEST.json`. IS/CD splits and caches are
+   absent from the public release; ranks cannot be regenerated without model
+   checkpoints/logits.
+9. **[CONFIRMED FIR ATTRIBUTION DEFECT] The favorable IS comparison identifies
+   a package, not the filter alone.** The treatment has 513 extra parameters
+   and a different initialization/optimizer path; the zero-gate/delta-kernel
+   start initially gives the filter components zero task gradient. The new E2
+   arithmetic strengthens the package observation while leaving component
+   attribution unresolved.
+10. **[CONFIRMED PUBLIC-STATE CONTRADICTION] Public reality and manuscript
+    prose still disagree.** GitHub identifies the repository as public and the
+    v0.9 release exposes 18 assets, including 12 legacy splits and four caches.
+    The paper, TeX availability section, README, and DOI instructions still say
+    private/upload pending. IS/CD inputs remain genuinely absent, so the repair
+    must distinguish legacy from TFV2 scope.
+11. **[CONFIRMED NOVELTY/CITATION BLOCKER] The closest semantic-tail work is
+    still absent and the TIGER lineage statement is false.** LLM-ESR combines
+    semantic/collaborative views for long-tail SR; SAGE-Rec transfers fuzzy
+    semantic head prototypes to tail items; FAERec adaptively gates and aligns
+    semantic/ID spaces for tail-item SR. TIGER used Amazon-2014 data and a
+    user-only minimum-review filter, not this iterative AR2023 user-and-item
+    5-core. The narrow FIR implementation may be distinct, but the broad text/
+    tail and TAPE novelty framing is overstated.
+12. **[CONFIRMED CURRENT-LITERATURE/PROVENANCE GAP] SpecTran, BLaIR, and
+    MiniLM need version-accurate treatment.** SIGIR-2026 SpecTran is not prior
+    art for a temporal FIR, but it is close to the manuscript's spectral text-
+    embedding discussion. BLaIR checkpoint facts derive from arXiv v1 while the
+    unversioned record now points to a revised ACL-2026 paper; the MiniLM model
+    card key exists but is not cited and the runtime revision is unpinned.
+13. **[CONFIRMED SUBMISSION-READINESS BLOCKERS] The unchanged manuscripts are
+    not top-journal ready.** The 51-page reader has an approximately 1,801-word,
+    four-page abstract. The 46-page TORS PDF has a three-page abstract, a page-7
+    whitespace void, severe page-15 table wrapping/collision, undersized figures
+    on pages 25/29, and a print-hostile dense table on page 32. The narrative is
+    an audit ledger rather than a focused journal article.
+14. **[CONFIRMED ASSURANCE-CLAIM FAILURE] A green legacy build remains
+    arithmetic traceability, not a validity certificate.** The fresh rebuild
+    again recomputes 173 cells with no mismatch/untraceable value and verifies
+    153 files, but excludes TFV2, requires favorable invalid legacy FIR strings,
+    and cannot enforce chronology, estimand validity, release completeness, or
+    claimability.
+15. **[CONFIRMED REPAIRS; DO NOT REGRESS]** The four new result bundles and
+    eight sidecars validate across 553,662 rows; selected epochs, commands,
+    configs, targets, ranks, formulas, code/data/cache/sidecar hashes, and
+    selected/final aggregates agree. Complete IS remains positive across frozen
+    cohorts and final checkpoints, and no TFV2 value entered the paper. Preserve
+    these engineering successes while quarantining the scientific claims.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-20 08:47)
+
+1. **[CONFIRMED, rejection-level prospective-integrity failure] TFV2 remains
+   exploratory/aborted.** Outcome-bearing smoke/full runs preceded the analysis
+   program, five MI text seeds had been inspected in an earlier campaign, all
+   MI/VG outcomes existed before the adjudicator commit, and the FIR repair
+   followed 32 failed frozen commands. The same commit contains outcome-rich
+   audit text despite the erratum's narrower inspection account. Later exact
+   artifacts and favorable interim values cannot restore the claimed freeze.
+2. **[CONFIRMED FAVORABLE BUT INCOMPLETE IS INTERIM] The repaired IS package
+   effect is promising, not E2.** At the cutoff, filter is complete (8/8) but
+   no-filter is only 5/8: selected NDCG@10 is 0.0333598751 versus 0.0311970720,
+   an unplanned interim delta +0.0021628030 (Welch p=8.05e-7, 95% CI
+   [+0.001809873,+0.002515733]). Final-epoch and tie-safe-tail readings agree in
+   direction. E2 nevertheless requires 8-vs-8, E3 has no successful run, Holm
+   is unavailable, and outcomes are sequentially visible. This corroborates an
+   IS FIR-plus-initialization/optimizer package effect; it is not a primary pass
+   or clean filter attribution.
+3. **[CONFIRMED NEGATIVE FULL VG RESULT] The completed 8-vs-8 frozen-tail
+   contrast does not establish a text benefit.** Frequencies 1--6 give text
+   0.0055924706 versus ID 0.0054192382, delta +0.0001732325, Welch p=0.14118,
+   95% CI [-0.000065007,+0.000411472]. Excluding boundary frequency 6 reverses
+   the sign (delta -0.0001160536, p=0.29946). No win, equivalence, or generic
+   semantic-tail claim follows.
+4. **[CONFIRMED MANUSCRIPT-RESULT CONTRADICTION] The tie-safe full MI-minus-VG
+   contrast is null, but the paper repeatedly says p=0.0054.** The reconstructed
+   difference of differences is +0.0002469628, p=0.12725, 95% CI
+   [-0.000075048,+0.000568974]. The abstract, introduction, contribution list,
+   novelty table, results, and conclusion retain the older defective-cohort
+   significance claim. A stale related-work sentence also still calls FIR
+   breadth "paired" after the pairing interpretation was withdrawn.
+5. **[CONFIRMED ADJUDICATOR/RUNNER FAILURE] The promised gate cannot complete
+   or fail closed.** `adjudicate_tfv2.py` still exits 1 on the all-zero MI
+   stratum, trusts aggregate JSON for E2/E3, and omits row/config/hash/provenance
+   checks. Missing primary arms otherwise produce `NOT ADJUDICABLE` without a
+   nonzero return. The runner never calls the gate, continues after failure,
+   overwrites attempt logs, skips any extant JSON, writes JSON non-atomically,
+   and retains a stale DONE marker while the repair queue runs.
+6. **[CONFIRMED MACHINE-READABLE ESTIMAND CONTRADICTION] `by_popularity.tail`
+   is still the wrong cohort.** For IS it contains 10,592 rows, mixes all 332
+   zero-exposure rows, and splits the frequency-5 boundary by item ID; the frozen
+   positive-frequency cohort contains 11,362 rows. At the cutoff, the complete
+   filter arm's legacy mean is 0.0021477287 versus 0.0029175549 on the correct
+   cohort, 26.39% lower. VG previously changed sign under this defect.
+7. **[CONFIRMED NEGATIVE UNSEEN-TARGET RESULT] Semantic features and FIR do not
+   retrieve zero-training-exposure targets through rank 100 in any audited TFV2
+   dataset.** All 8,632 cutoff IS selected/final run-row evaluations are misses,
+   adding to the all-zero MI and VG findings. Any surviving benefit concerns
+   already-seen positive-frequency items, not unseen-item or cold-start rescue.
+8. **[CONFIRMED CHECKPOINT/INTERIM-INSPECTION RISK] Test outcomes remain visible
+   at every epoch and after every sequential arm.** The IS selected and final
+   interim deltas happen to agree, but this does not cure the absence of a
+   blinded analysis holder, a complete checkpoint policy, or an outcome-hidden
+   family adjudication. Do not promote the favorable 8-vs-5 look.
+9. **[CONFIRMED RELEASE/RECONSTRUCTION GAP] TFV2 remains outside a clean
+   reviewer boundary.** At the cutoff all 13 IS JSONs were untracked, all 76
+   TFV2 selected/final sidecars and all logs were ignored, every new JSON
+   recorded `git_dirty_tracked=true`, and `RELEASE_MANIFEST.json` had no TFV2
+   entries. The public release has no IS/CD split CSVs or caches, so a clean
+   reviewer clone cannot adjudicate E2/E3 or regenerate their ranks.
+10. **[CONFIRMED FIR ATTRIBUTION DEFECT] The treatment is a package, not an
+    isolated filter effect.** The filter arm has 513 extra parameters and a
+    different initialization/optimizer path; the zero-gate/delta-kernel start
+    gives the filter components zero task gradient until optimizer dynamics
+    move them. The new IS interim supports the package direction only. The
+    legacy strict build still requires favorable old breadth outcomes.
+11. **[CONFIRMED PUBLIC-STATE CONTRADICTION] Public reality and manuscript prose
+    still disagree.** GitHub identifies the repository as public and the v0.9
+    API exposes 18 uploaded assets, including 12 splits and four caches. The
+    paper, TeX availability section, README, and DOI instructions still say the
+    repository is private and those assets await upload. IS/CD inputs remain
+    genuinely absent, so the correction must distinguish old and TFV2 scope.
+12. **[CONFIRMED NOVELTY/CITATION BLOCKER] The closest semantic-tail literature
+    remains absent.** LLM-ESR combines semantic and collaborative views for
+    long-tail sequential recommendation; SAGE-Rec transfers semantic head-item
+    prototypes to tail items; FAERec adaptively fuses and aligns semantic/ID
+    spaces for tail-item SR. None appears in the source or bibliography. The
+    TIGER preprocessing-equivalence sentence also remains unsupported.
+13. **[CONFIRMED SUBMISSION-READINESS BLOCKERS] The unchanged manuscripts are
+    not top-journal ready.** The 51-page reader has an approximately 1,801-word,
+    four-page abstract. The 46-page TORS PDF has a three-page abstract, a page-7
+    whitespace void, page-15 table collision/wrapping, undersized figures on
+    pages 25/29, and a tiny dense table on page 32. The narrative reads as an
+    audit ledger more than a focused journal article.
+14. **[CONFIRMED ASSURANCE-CLAIM FAILURE] A green legacy build is arithmetic
+    traceability, not a validity certificate.** The fresh run again recomputes
+    173 cells with no mismatches and passes TeX health, but excludes TFV2,
+    accepts favorable invalid legacy FIR evidence, and cannot enforce chronology,
+    estimand validity, release completeness, or claimability.
+15. **[CONFIRMED REPAIRS; DO NOT REGRESS]** All 1,325,610 cutoff IS selected/
+    final rows validate exactly, selected epochs are the validation maxima, the
+    regenerated commands/configs/hashes match, selected-versus-final direction
+    is stable, and no TFV2 interim value entered the manuscript. Preserve these
+    engineering successes while quarantining TFV2 and fixing the scientific and
+    submission-level defects above.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-20 07:46)
+
+1. **[CONFIRMED, rejection-level prospective-integrity failure] TFV2 remains
+   exploratory/aborted.** Outcome-bearing smoke/full runs preceded the analysis
+   program, five MI text seeds had already been inspected in an earlier
+   campaign, all MI/VG outcomes existed before the adjudicator commit, and the
+   repaired FIR queue began only after the original 32 FIR commands failed.
+   The same commit's audit text documents MI/VG row inspection and p-values,
+   contradicting the erratum's global claim that only MI run 1 had been read.
+   Provenance is also sampled near run completion rather than launch: the first
+   MI log began under `3681b490...`, then its JSON recorded `4a07a132...` after
+   that commit landed mid-training. Internally sound later rows cannot restore
+   the claimed freeze.
+2. **[CONFIRMED NEGATIVE FULL VG RESULT] The completed 8-vs-8 frozen-tail
+   contrast does not establish a text benefit.** Frequencies 1--6 give text
+   0.0055924706 versus ID 0.0054192382, delta +0.0001732325, Welch p=0.14118,
+   95% CI [-0.000065007,+0.000411472]. Excluding boundary frequency 6 reverses
+   the sign (delta -0.0001160536, p=0.29946). The legacy JSON tail is also
+   negative. No win, equivalence, or generic semantic-tail claim follows.
+3. **[CONFIRMED MANUSCRIPT-RESULT CONTRADICTION] The tie-safe full four-arm
+   MI-minus-VG contrast is null.** The reconstructed difference of differences
+   is +0.0002469628, p=0.12725, 95% CI
+   [-0.000075048,+0.000568974]. The abstract, contribution list, novelty table,
+   and conclusion still call the cross-dataset gap significant at p=0.0054
+   using the defective nominal cohorts. Even though TFV2 is not confirmatory,
+   this internally verified negative rerun cannot be omitted from revision.
+4. **[CONFIRMED ADJUDICATOR/RUNNER FAILURE] The promised gate cannot complete
+   or fail closed.** `adjudicate_tfv2.py` reproducibly exits 1 with
+   `ZeroDivisionError` on the all-zero MI stratum. It validates only filename
+   existence, trusts JSON summaries for E2/E3, omits row/provenance/digest/config
+   checks, and is not invoked by the runner. Missing primaries otherwise only
+   print `NOT ADJUDICABLE` and would return zero; result JSONs are written
+   non-atomically and skipped forever on mere path existence. The runner
+   continues after errors and retains the stale 05:56 DONE marker while the
+   repaired queue is active.
+5. **[CONFIRMED INCOMPLETE E2] Five repaired IS filter runs are valid artifacts,
+   not a treatment effect.** All 509,850 selected/final rows validate exactly;
+   the selected one-arm mean is 0.0332996571 (SD 0.0002102997). At the cutoff,
+   however, only five of eight filter seeds and zero no-filter seeds existed,
+   while E3 was wholly absent. No E2 delta, interval, p-value, Holm verdict, or
+   confirmation is estimable.
+6. **[CONFIRMED MACHINE-READABLE ESTIMAND CONTRADICTION] The wrong object is
+   still exposed as `by_popularity.tail`.** On VG it changes the complete
+   contrast's sign and undershoots the correct text mean by 15.01%. On the five
+   IS filter runs, its mean is 0.0021835939 versus 0.002980107 on the frozen
+   positive-frequency cohort, 26.73% lower; it mixes all 332 zero-exposure rows
+   with an ID-order subset of the frequency-5 boundary.
+7. **[CONFIRMED NEGATIVE UNSEEN-TARGET RESULT] Semantic features retrieve no
+   zero-training-exposure target through rank 100 in any audited TFV2 dataset.**
+   VG is 0/5,520 across all 16 selected runs plus 0/1,035 in three distinct text
+   finals. IS is 0/3,320 across five selected and five final runs. MI previously
+   showed the same all-zero result across its complete design. Any surviving
+   statement concerns already-seen positive-frequency items only.
+8. **[CONFIRMED CHECKPOINT/TEST-INSPECTION FORK] Test output remains visible at
+   every evaluation epoch.** Using validation-selected VG checkpoints gives
+   p=0.141; replacing the three distinct text selections with epoch-40 finals
+   gives p=0.0518, still nonsignificant but materially more favorable. The five
+   IS filter selections occur at epochs [15,16,14,13,15], and final-epoch use
+   shifts the one-arm mean by -0.48%. The selected rule is defensible only if it
+   remains fixed and hidden from outcome-driven revision.
+9. **[CONFIRMED RELEASE/RECONSTRUCTION GAP] The new evidence is outside a clean
+   reviewer boundary.** All 60 cutoff TFV2 sidecars/finals and every TFV2 log
+   are ignored; five IS JSONs are untracked; every new JSON records
+   `git_dirty_tracked=true`; checkpoints/logits/tie counts/filter weights are
+   absent. The public release also lacks all six IS/CD split CSVs and both text
+   caches, and the local manifest does not list them, so a clean clone cannot
+   run the new adjudicator or regenerate E2/E3 ranks. The amended preregistration
+   timestamp proof binds CRLF working-tree bytes rather than the canonical LF
+   blob and both amended proofs remain pending calendar attestations rather than
+   completed Bitcoin attestations.
+10. **[CONFIRMED FIR ATTRIBUTION DEFECT] The old breadth claim remains a package
+    result, not a clean filter effect.** The delta-kernel/zero-gate start gives
+    both filter components zero task gradient and bootstraps through Adam weight
+    decay; treatment also changes initialization/optimizer dynamics and adds 513
+    parameters. The strict legacy build still requires favorable old breadth
+    strings. Use a cloned-backbone nonsingular design or narrow/VOID the claim.
+11. **[CONFIRMED PUBLIC-STATE CONTRADICTION] Public reality and manuscript prose
+    still disagree.** The repository is public and the v0.9 API lists 18 assets,
+    including the advertised 12 splits and four caches, while the paper and
+    README say private/missing. Those 12 splits cover only VG/MI/Office/Beauty,
+    not the claimed IS/CD breadth endpoints; the manifest remains pinned to an
+    older commit.
+12. **[CONFIRMED NOVELTY/CITATION BLOCKER] The closest semantic-tail literature
+    remains absent.** LLM-ESR, SAGE-Rec, and FAERec directly overlap semantic/
+    collaborative long-tail SR; SAGE-Rec's fuzzy head-to-tail prototype transfer
+    is especially adjacent to TAPE. The paper also falsely says its iterative
+    AR2023 user-and-item 5-core pipeline matches TIGER, whose primary paper says
+    it filters users with fewer than five reviews on the older dataset.
+13. **[CONFIRMED SUBMISSION-READINESS BLOCKERS] The unchanged manuscripts are
+    not top-journal ready.** The TORS abstract spans three pages; page 7 is mostly
+    blank; page 15 has colliding/wrapped table content; pages 25/29 use undersized
+    figures; and page 32 is an over-dense tiny table. The reader abstract remains
+    about 1,801 words over four pages. Topic fit is plausible; execution is not.
+14. **[CONFIRMED ASSURANCE-CLAIM FAILURE] A green 173-cell legacy build is not a
+    validity certificate.** It excludes TFV2, trusts favorable invalid FIR
+    outcomes, and cannot enforce the paper's advertised prospective, fail-closed,
+    symmetric discipline. Separate arithmetic traceability, prospective validity,
+    endpoint outcome, release completeness, and claimability.
+15. **[CONFIRMED REPAIRS; DO NOT REGRESS]** The amended 64-command SHA is correct;
+    the empty-string removal is exactly scoped; all cutoff IS selected/final rows
+    and the two new VG controls pass target/rank/formula/hash/config/epoch checks;
+    and no TFV2 interim number entered the manuscript. These engineering successes
+    do not cure chronology, negative outcomes, missing endpoints, release gaps,
+    novelty, or presentation defects.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-20 06:45)
 
 1. **[CONFIRMED, rejection-level prospective-integrity failure] TFV2 remains
    exploratory/aborted even if its remaining jobs finish.** Outcome-bearing
    smoke/full runs preceded the promised adjudicator, five MI text seeds had
    already been inspected in an earlier campaign, half the frozen command file
-   is invalid, and outcomes were visible while the analysis program and control
-   arm were incomplete. Later arithmetic cannot restore the claimed freeze.
-2. **[CONFIRMED REALIZED FAMILY FAILURE] All 32 frozen FIR jobs failed and the
-   three-endpoint Holm family does not exist.** The bare `--zfusion-sweep`
-   option killed jobs 17--48; `_bestrec_run/adjudicate_tfv2.py` is still absent;
-   and the fail-open runner continues after errors and will unconditionally
-   create an ignored DONE marker after queue exhaustion.
+   was invalid, and outcomes were visible while the analysis program and control
+   arm were incomplete. A post-cutoff erratum repairs the invalid FIR commands,
+   but it was committed after all MI/VG outcomes existed and had been audited.
+   Later arithmetic cannot restore the claimed freeze.
+2. **[CONFIRMED REALIZED FAMILY/ADJUDICATOR FAILURE] All 32 originally frozen FIR
+   jobs failed, and the promised gate is still unusable.** The bare
+   `--zfusion-sweep` option killed jobs 17--48. Commit `43fa87b` genuinely removes
+   only that empty flag and the first repaired IS job completes, but the new
+   adjudicator crashes on the known all-zero MI stratum (`ZeroDivisionError`).
+   The unchanged runner still continues after errors and leaves the stale 05:56
+   DONE marker in place throughout the live repair queue. Post-cutoff outcomes
+   remain deferred; this is not a clean confirmatory family.
 3. **[CONFIRMED INCOMPLETE/NULL VG SNAPSHOT] The complete eight-run VG text arm
    plus six of eight controls does not establish a tail effect.** On the frozen
    frequency-1--6 cohort, text is 0.0055924706 and ID is 0.0053920437, delta
@@ -44,7 +737,7 @@ plausible risks.
    is favorable but not confirmatory and is boundary-dependent.** Frequencies
    1--5 yield delta +0.0004201952 and p=0.002208, while excluding frequency 5
    yields delta +0.000071384 and p=0.517. Chronology, the absent E2/E3 family,
-   and the missing adjudicator bar an E1 verdict.
+   and the nonprospective, crashing adjudicator bar an E1 verdict.
 8. **[CONFIRMED CHECKPOINT/TEST-INSPECTION FORK] The driver evaluates and prints
    test outcomes at every evaluation epoch, while no prospective adjudicator
    fixes selected/final handling.** Three VG text runs select epoch 30. Replacing
@@ -58,10 +751,11 @@ plausible risks.
    Use a cloned-backbone, nonsingular, weight-decay-controlled design or narrow
    the claim to a package and VOID the old confirmation label.
 10. **[CONFIRMED PROVENANCE/RELEASE DEFECT] The live TFV2 evidence remains
-    mutable and outside a reviewer-accessible boundary.** At the cutoff 30 JSONs
-    were untracked; row sidecars, logs, and DONE markers were ignored; every new
-    JSON recorded `git_dirty_tracked=true`; and provenance was sampled at run
-    end rather than launch. Embedded hashes are valuable but not a release.
+    outside a reviewer-reconstructable boundary.** At the cutoff 30 JSONs were
+    untracked. Commit `43fa87b` later tracks all 32 MI/VG JSONs, but zero TFV2
+    row sidecars or logs; DONE remains ignored. A clean clone therefore cannot
+    run the new adjudicator. Every result also records old HEAD `4a07a132`,
+    `git_dirty_tracked=true`, and end-sampled rather than launch provenance.
 11. **[CONFIRMED PUBLIC-STATE CONTRADICTION] The public repository exposes all
     12 split and four cache payloads, while the manuscript, README, and
     availability section say the repository is private and the assets await
@@ -71,8 +765,12 @@ plausible risks.
     is still absent.** LLM-ESR (NeurIPS 2024), SAGE-Rec (WWW 2026), and FAERec
     (SIGIR 2026 full paper) directly overlap semantic/collaborative long-tail
     sequential recommendation; SAGE-Rec's fuzzy prototype transfer is
-    especially adjacent to TAPE. Add direct method/protocol comparisons and
-    keep the novelty claim explicitly incremental.
+    especially adjacent to TAPE. The paper also incorrectly says its AR2023
+    user-and-item 5-core pipeline matches TIGER's older Amazon-2014 protocol,
+    and Table 0 omits LLMSQRec even though the prose concedes its adjacent
+    semantic-ID-prototype construction. TAPE itself rests on a single-flag n=1
+    gain plus only a small four-seed cross-check. Correct the lineage, add
+    direct comparisons, and keep the novelty claim explicitly incremental.
 13. **[CONFIRMED SUBMISSION-READINESS BLOCKERS] The unchanged manuscripts are
     not top-journal ready.** The reader abstract is about 1,801 words over four
     pages and the TORS abstract spans three; TORS page 7 is mostly blank, page
@@ -88,8 +786,10 @@ plausible risks.
     sidecars and all three distinct VG finals are internally sound: 1,610,954
     rows validate for targets, ranks, formulas, hashes, configs, and selected
     epochs. The frozen whole-frequency cohort and zero-exposure split are
-    reconstructable. These engineering successes do not cure prospective,
-    endpoint-family, cohort-label, release, novelty, or presentation defects.
+    reconstructable. The post-cutoff command diff is also genuinely limited to
+    removing the empty FIR flag. These engineering successes do not cure
+    prospective, endpoint-family, adjudicator, cohort-label, release, novelty,
+    or presentation defects.
 
 ## Superseded Prioritized Rejection-Risk List (state before 2026-07-20 05:46)
 
@@ -950,13 +1650,2210 @@ plausible risks.
     pre-outcome timestamp, repeat thinning across independent subsets, and
     demonstrate a public fresh-clone reconstruction.
 
+## Audit Run - 2026-07-20 14:52 Australia/Sydney
+
+### Audited state and strict verdict
+
+- **Workspace/branch:** `C:\Users\rayxc\Documents\R`,
+  `codex/bestrec-sota-results`.
+- **Canonical boundary:** `CANONICAL_SUBMISSION.md` identifies
+  `PAPER_SUBMISSION.md` and `PAPER_SUBMISSION.pdf` as canonical; the TORS LaTeX
+  tree and `paper_tex/PAPER_TORS.pdf` are generated venue artifacts.
+- **HEAD at the fixed cutoff:**
+  `43fa87be402f770e6e1a8d09dceb64792dd730b0`, unchanged. Canonical manuscript,
+  PDF, TeX, bibliography, figure, table, protocol, and code blobs all match
+  HEAD. The Markdown SHA-256 is still `737fc73c...`, the reader PDF
+  `b24ff14f...`, and the TORS PDF `93265672...`.
+- **Fixed empirical cutoff:** 2026-07-20 14:52:27.809 Australia/Sydney. Newly
+  in scope are CDs no-filter seeds 20260874--75. Seed 20260876 was still
+  running at cutoff and completed at 14:54:32, 124 seconds later; it and every
+  later artifact are excluded from the reported calculations. A later
+  diagnostic gate invocation necessarily saw seed 76 and is labeled as
+  post-cutoff state rather than silently folded into the audit estimand.
+- **Process record:** supplied automation metadata reports the previous run at
+  13:51:06 Australia/Sydney, matching the persisted 13:51 audit and its
+  13:51:56 cutoff. The prior apparent scheduler-record gap does not recur.
+- **Reviewer recommendation: REJECT in present form; preserve TFV2 as
+  exploratory/aborted.** Two exact controls strengthen the descriptive CDs
+  package effect but leave three controls, formal E3, Holm, prospective status,
+  the corrected headline, component attribution, release completeness,
+  comparator coverage, and submission layout unresolved.
+- **Change scope:** this run edits only `PAPER_REVIEW_AUDIT.md`. It does not
+  change or stop the live queue, manuscript, result bundles, or generated
+  publication artifacts.
+
+### Fresh verification performed
+
+1. **[CONFIRMED ARTIFACT INTEGRITY; NOT E3] The two new control bundles and
+   three physical sidecars are internally coherent.** Seed 20260874 selected
+   epoch 20; seed 20260875 selected epoch 18 and therefore correctly emitted a
+   distinct epoch-20 sidecar.
+
+   | arm | seed | selected epoch | selected overall | epoch-20 overall | tie-safe tail selected | tie-safe tail epoch 20 |
+   |---|---:|---:|---:|---:|---:|---:|
+   | no-filter | 20260874 | 20 | 0.0600078466 | same | 0.0046785558 | same |
+   | no-filter | 20260875 | 18 | 0.0594744088 | 0.0595959631 | 0.0050486446 | 0.0050879902 |
+
+   The seed-74 JSON/sidecar SHA-256 prefixes are `6344bfd2...` and
+   `d4f40401...`; seed 75 is `5ceb3fc6...`, with selected/final sidecars
+   `981249e6...` and `80d7d6aa...`. Embedded commands exactly match the
+   amended 64-line command file (`75d045a8...`); split, cache, and code hashes
+   match current bytes; configurations match the frozen arm template; and both
+   JSONs record HEAD `43fa87be...` with `git_dirty_tracked=true`.
+
+   Streaming validation covered 371,628 rows. Every sidecar contains exactly
+   123,876 sorted unique users, exact held-out targets, valid
+   `rank0` in `[0,89369]`, exact NDCG/HR/RR formulas, exact legacy popularity
+   buckets, exact @20/@50/@100 hit counts, and JSON/history aggregate agreement
+   within 2.9e-15. Both logs contain 20 epoch summaries and 40 completed
+   evaluations with no error/warning/NaN token.
+
+   **State-record defect:** the successful retry overwrote the original
+   per-seed failure logs, while `tfv2_logs/FAILURES.log` still calls those same
+   seeds failed. File creation/modification times expose the overwrite, but the
+   original failure payload is no longer available. The campaign state is not
+   append-only or self-consistent.
+
+2. **[CONFIRMED FAVORABLE INCOMPLETE CONTRAST; NO FROZEN DECISION]** Across
+   eight filter and five cutoff-eligible control selections:
+
+   - overall NDCG@10 is 0.0660739828 versus 0.0602901037, delta
+     +0.0057838791, Welch t=20.9430, df=4.9234, p=5.29434e-6, 95% CI
+     [+0.0050706228,+0.0064971354];
+   - the tie-safe positive-frequency tail is 0.0070951357 versus 0.0048210591,
+     delta +0.0022740766, p=2.60384e-9, 95% CI
+     [+0.0020248842,+0.0025232690];
+   - tie-safe tail HR@10 differs by +0.0045612669, p=2.98839e-7, 95% CI
+     [+0.0040246795,+0.0050978543]; and
+   - every filter value exceeds every control value; exhaustive raw-difference
+     and studentized permutations both give 1/1,287 = 0.000777 for overall and
+     tie-safe tail.
+
+   Final-epoch sensitivity is nearly identical: overall delta +0.0057599161
+   (p=3.14949e-6) and tie-safe-tail delta +0.0022707737 (p=6.52513e-9).
+   Validation checkpoint choice therefore does not explain this partial gap.
+   Nevertheless, these are sequentially visible 8-vs-5 diagnostics selected
+   from an unfinished family. They are not the preregistered 8-vs-8 E3, a
+   license to stop, or an input to valid Holm adjudication.
+
+3. **[CONFIRMED COHORT AND TRUE-COLD RESULTS; AUDIT CORRECTION]** CDs has
+   89,370 items, including 52 with zero training frequency. The nearest-third
+   tie-safe positive tail is the complete frequency-1--5 set: 26,210 items and
+   19,260 test rows per run. The legacy JSON tail instead contains every
+   zero-exposure item, that complete tail, and an ID-order subset of frequency
+   6. In the current snapshot its delta is +0.0022478365 rather than the
+   correct +0.0022740766.
+
+   Every selected run contains 247 zero-exposure targets. The 13 selected
+   sidecars give 0/3,211 hits through @100; all 20 distinct selected/final
+   sidecars give 0/4,940. Zero-exposure MRR itself is null (delta
+   +1.1741e-7, Welch p=0.5307, permutation p=0.6053). The minimum stored value
+   is `rank0=4551`, so the human one-based position is rank 4,552. Prior audit
+   sections that called 4,551 the best rank used the zero-based field without
+   saying so; the current record corrects that off-by-one wording.
+
+4. **[CONFIRMED GATE AND ASSURANCE FAILURE]** At the fixed cutoff the
+   deterministic gate would first lack control seed 20260876. When invoked
+   after seed 76 completed, it instead printed E1/E2, reported E3 missing at
+   seed 20260877, and exited 1 with the same `ZeroDivisionError` at
+   `adjudicate_tfv2.py:98` on the all-zero MI secondary stratum. This live-state
+   race is another reason to bind adjudication to an immutable snapshot.
+
+   Narrow legacy checks remain green: TeX health passes 32 sources, 39 labels,
+   and 27 reference targets; HSTU aligned cases pass at asserted max difference
+   zero (while the documented epsilon sensitivity is 0.01663); local manifest
+   verification passes 153 files; and `--verify-git HEAD` passes 128 git-backed
+   entries. These checks exclude TFV2 and cannot validate chronology,
+   estimands, statistical power, novelty, or prose truth.
+
+5. **[CONFIRMED UNCHANGED MANUSCRIPT CONTRADICTIONS]** The corrected tie-safe
+   MI-minus-VG contrast remains +0.0002469628, p=0.127249969, yet p=0.0054 is
+   still printed in the reader abstract, contribution list, introduction,
+   novelty table, results, and conclusion, and in the corresponding TeX
+   locations. The source still calls the sensitivity unquantified and the rerun
+   queued. It also retains stale paired phrasing, public/private and upload
+   contradictions, `brand` labels for Amazon's `store`, a popularity-only
+   parity table, n=1 negative/ceiling claims, and the stale 168-cell canonical
+   note.
+
+   Current external checks again identify the GitHub repository as **Public**
+   and the v0.9 release page as **Assets 20**, while the official Amazon Reviews
+   2023 schema defines `store` as store name and places brand information within
+   `details`. These are factual contradictions, not stylistic preferences.
+
+6. **[CONFIRMED FRESH NOVELTY GAPS; PLAUSIBLE PROTOCOL RISKS]** Newly checked
+   primary literature adds four direct comparison obligations:
+
+   - **AlphaFuse (SIGIR 2025)** preserves language-embedding structure while
+     learning collaborative ID information in its null space and explicitly
+     evaluates long-tail settings. It is a particularly close omitted comparator
+     for the paper's frozen-text-plus-ID scope.
+   - **DWSRec (AAAI 2024)** transforms anisotropic pretrained text embeddings
+     using dual-view whitening; **SIDSRec (SIGIR 2026)** separately models
+     semantic and collaborative channels before fusion. Both narrow the claim
+     that this paper has adequately mapped frozen-text/ID design space.
+   - **BFDRec (SIGIR 2026)** adds energy-aware multi-scale frequency modeling
+     and dynamic gating. It does not anticipate the exact left-causal depthwise
+     FIR, but belongs in the closest frequency-domain comparison.
+   - **ACE (SIGIR 2026)** reports gains from a linear-autoencoder reshaping of
+     anisotropic LLM embeddings. It does not refute this paper's GD1 run, but it
+     makes a general capacity-restricting-only interpretation untenable; the
+     negative map must remain implementation- and environment-specific.
+
+   Two controls are also missing. The SIGIR 2026 sequence-splitting audit shows
+   that splitting method, target strategy, and loss jointly change rankings and
+   target distributions. This paper must map its all-position objective to that
+   taxonomy and demonstrate comparator parity; equivalence is not assumed. The
+   SIGIR 2026 attribute-utilization analysis uses item-attribute shuffling to
+   test whether models use aligned attributes. An item-text permutation control
+   preserving embedding marginals is needed before the paper attributes its
+   +2.7% stack lift to semantic alignment rather than added representation
+   structure.
+
+7. **[CONFIRMED UNCHANGED PDF DEFECTS]** The bundled Poppler wrapper and
+   dependency loader failed, so this run used the available PyMuPDF 1.27.2.3
+   fallback, rendered the high-risk pages at 2x resolution, and inspected them
+   directly. The 51-page reader still devotes pages 1--4 to the abstract. The
+   46-page TORS build still devotes pages 1--3 to it; page 7 leaves more than
+   half the page blank; page 15 visibly runs category names into the role text;
+   page 25 compresses a three-panel figure into tiny labels; page 29 leaves a
+   small figure above a large void; and page 32 is a dense tiny-font table.
+   The exact temporary render directory was removed after inspection.
+
+### Confirmed interpretation and rejection-level consequences
+
+#### 1. A strong partial effect is still not E3
+
+- The current CDs filter/control separation is large, directionally stable,
+  and insensitive to validation-versus-final checkpoint choice.
+- Three controls were missing at the immutable cutoff, test metrics remained
+  visible throughout the queue, and the family was already prospectively
+  compromised. Small p-values cannot repair those design facts.
+- The honest label is a favorable incomplete exploratory diagnostic. Preserve
+  it immutably, let the pre-specified descriptive completion finish, and do not
+  use it as a stopping or confirmatory result.
+
+#### 2. Exact files do not make false claims true
+
+- Row-level target, rank, metric, command, and digest validation materially
+  strengthens confidence that seeds 74--75 mean what their files say.
+- It does not make the legacy tail equal the frozen cohort, demonstrate unseen
+  item retrieval, isolate the FIR component, release a reconstruction boundary,
+  or turn p=0.0054 into the repaired p=0.12725.
+- The overwritten retry logs and contradictory `FAILURES.log` also show why
+  append-only campaign state is part of scientific reproducibility, not an
+  optional engineering polish.
+
+#### 3. The contribution boundary needs another narrowing pass
+
+- AlphaFuse is now the closest omitted language/ID comparator; DWSRec, SIDSRec,
+  and BFDRec belong in the equation/protocol comparison table.
+- ACE requires the negative-map conclusion to stay local to tested probes.
+- Sequence-target construction and an attribute-permutation control are not
+  merely citations: they are experiments needed to interpret the claimed text
+  gain and protocol parity.
+
+### Plausible risks and author verification required
+
+- **[AUTHOR VERIFICATION]** Did anyone inspect per-epoch test values while the
+  unfinished queue ran, and could visibility affect continuation or reporting?
+- **[AUTHOR VERIFICATION]** What prospective power/MDE calculation supports
+  eight optimizer seeds per arm on one fixed split?
+- **[AUTHOR VERIFICATION]** Why are test metrics evaluated and logged at all 20
+  epochs when checkpoint selection is nominally validation-only?
+- **[AUTHOR VERIFICATION]** How does the all-position training construction map
+  to the sequence-splitting/target-strategy taxonomy, and are every comparator's
+  target multiplicities genuinely matched?
+- **[AUTHOR VERIFICATION]** Does a text-permutation control retain any of the
+  +2.7% stack lift? If so, semantic attribution must be reduced accordingly.
+- **[AUTHOR VERIFICATION]** Was `store` intentionally treated as brand, and how
+  often do the two fields differ by category?
+- **[AUTHOR VERIFICATION]** Which journal template, anonymity mode, line-number
+  policy, and page limit govern the intended upload?
+- **[AUTHOR VERIFICATION]** What governance permits publication of the per-user
+  sidecars or checkpoint/logit equivalents needed for rank reconstruction?
+
+### External fact-check and novelty sources
+
+- [Public GitHub repository](https://github.com/Ray0419/bestrec-sota-results)
+  and [v0.9 release](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence)
+- [Amazon Reviews 2023 official schema](https://amazon-reviews-2023.github.io/)
+- [AlphaFuse primary manuscript](https://arxiv.org/abs/2504.19218) and
+  [official SIGIR DOI](https://doi.org/10.1145/3726302.3729894)
+- [DWSRec official AAAI proceedings](https://ojs.aaai.org/index.php/AAAI/article/view/28786)
+- [SIDSRec official SIGIR DOI](https://doi.org/10.1145/3805712.3809874)
+- [BFDRec official SIGIR DOI](https://doi.org/10.1145/3805712.3809730)
+- [ACE primary manuscript](https://arxiv.org/abs/2605.29322)
+- [Sequence-splitting reproducibility paper](https://arxiv.org/abs/2604.05309)
+- [Attribute-utilization analysis DOI](https://doi.org/10.1145/3805712.3809839)
+- [CCFRec primary manuscript](https://arxiv.org/abs/2503.12183) and
+  [LLMEmb official AAAI proceedings](https://ojs.aaai.org/index.php/AAAI/article/view/33327)
+
+### Concrete fixes in dependency order
+
+1. Quarantine TFV2 as exploratory/aborted and preserve every success, failure,
+   retry, log, cutoff, and partial calculation immutably. Do not call E2/E3
+   confirmatory.
+2. Withdraw p=0.0054 everywhere. Replace it with the repaired MI, VG, and
+   MI-minus-VG estimates, boundary sensitivities, and zero-exposure result.
+3. Let controls 76--78 finish only as the pre-specified descriptive completion;
+   do not stop or promote based on visible 8-vs-5 results.
+4. Replace the runner/adjudicator with tested fail-closed, snapshot-bound,
+   atomic, append-only tooling that validates rows, cohorts, hashes, configs,
+   selected epochs, missing/zero-variance cases, Holm logic, and DONE state.
+5. Remove or rename `by_popularity.tail`; publish explicit zero-exposure and
+   tie-safe positive-frequency objects with one-based rank labels and automated
+   boundary tests.
+6. Publish a reviewer-complete TFV2 reconstruction boundary after governance
+   review: inputs, JSONs, sidecars/logs, campaign state, adjudication, manifests,
+   and checkpoints/logits or an equivalent rank-regeneration mechanism.
+7. Reparameterize FIR so arms share a nonsingular initialization and optimizer
+   path; rerun adequately powered factor-isolating ablations.
+8. Add AlphaFuse, DWSRec, SIDSRec, BFDRec, ACE, and the previously listed close
+   works to an equation/protocol/estimand comparison. Benchmark AlphaFuse under
+   the same full-catalog split or justify its exclusion explicitly.
+9. Add an all-position/sequence-split parity audit and an item-text permutation
+   control before retaining semantic-text attribution.
+10. Correct `brand` to store/seller name, or regenerate the rich-text chain if
+    actual brand was intended.
+11. Retain tuned in-pipeline baselines and power negative ablations before using
+    rejected/neutral/harmful/ceiling language.
+12. Reconcile public/private, release, tracker, TIGER-lineage, and 168/173-cell
+    statements.
+13. Cut the abstract radically, reflow page 15, enlarge pages 25/29, split page
+    32, remove the page-7 void, and visually approve one canonical submission
+    PDF.
+
+### Open questions
+
+- Will the authors withdraw p=0.0054 before promoting the complete CDs output?
+- Will the frozen 8-vs-5 interim remain preserved and explicitly labeled after
+  controls 76--78 become visible?
+- Why do all four TFV2 categories have zero unseen-target hits through @100?
+- Which serialized cohort and rank convention may feed future tables/figures?
+- Does the text lift survive item-text shuffling with embedding marginals held
+  fixed?
+- Is the all-position objective protocol-equivalent to the cited comparators
+  after accounting for target multiplicity?
+- What exact distinction remains after AlphaFuse, CCFRec, LLMEmb, SIDSRec,
+  ASER, AKT-Rec, SAGE-Rec, and related work are compared equation by equation?
+
+### Running checklist
+
+- [x] Read automation memory and preserve the cumulative audit.
+- [x] Fix the cutoff at 14:52:27.809 and exclude seed 76+ results.
+- [x] Confirm unchanged HEAD and canonical manuscript/PDF hashes.
+- [x] Validate control seeds 74--75 across 371,628 new physical rows.
+- [x] Recompute 8-vs-5 selected/final, tie-safe, permutation, and uncertainty
+      diagnostics.
+- [x] Recompute zero-exposure behavior and correct the rank0/one-based wording.
+- [x] Recheck gate failure, runner state, manifests, TeX health, and parity.
+- [x] Recheck headline, release, metadata, baseline, and power contradictions.
+- [x] Perform a fresh primary-source novelty and protocol-control review.
+- [x] Render and visually inspect the reader and TORS high-risk pages.
+- [x] Remove this run's exact temporary render directory.
+- [x] Update this prioritized list and append this timestamped audit.
+- [ ] Quarantine TFV2 and withdraw p=0.0054, paired wording, and cold-start
+      implications in the actual manuscript.
+- [ ] Repair the gate, estimands, release, attribution controls, comparator
+      coverage, metadata, baselines, and PDF layout before external review.
+
+## Audit Run - 2026-07-20 13:51 Australia/Sydney
+
+### Audited state and strict verdict
+
+- **Workspace/branch:** `C:\Users\rayxc\Documents\R`,
+  `codex/bestrec-sota-results`.
+- **Canonical boundary:** `CANONICAL_SUBMISSION.md` identifies
+  `PAPER_SUBMISSION.md` and `PAPER_SUBMISSION.pdf` as canonical; the TORS LaTeX
+  tree and `paper_tex/PAPER_TORS.pdf` are generated venue artifacts.
+- **HEAD at the fixed cutoff:**
+  `43fa87be402f770e6e1a8d09dceb64792dd730b0`, unchanged from the prior
+  documented audit. The Markdown SHA-256 remains `737fc73c...`, the reader PDF
+  `b24ff14f...`, and the TORS PDF `93265672...`. No manuscript, TeX,
+  bibliography, figure, table, PDF, protocol, code, or committed-result repair
+  landed. `_bestrec_run/hstu_tables.json` was touched at 12:02 but remains
+  byte-identical to HEAD.
+- **Fixed empirical cutoff:** 2026-07-20 13:51:56.420 Australia/Sydney. Newly
+  in-scope are CDs filter seed 20260868 and no-filter seeds 20260871--73.
+  Seed 20260874 had only a zero-byte active log at cutoff. Its later 13:58
+  result and every later write are excluded even though they became visible
+  during this review.
+- **Process-record caveat:** supplied automation metadata says the previous run
+  was at 12:50, but automation memory ends at 12:18 and this file previously
+  ended at the 11:49 cutoff. This run does not invent a missing review and
+  flags the discrepancy for operator verification.
+- **Reviewer recommendation: REJECT in present form; preserve TFV2 as
+  exploratory/aborted.** Exact new artifacts and a favorable incomplete
+  8-vs-3 contrast do not restore prospective status, complete E3/Holm, repair
+  the false headline, or cure attribution, novelty, baseline, release, and
+  presentation defects.
+- **Change scope:** this run edits only `PAPER_REVIEW_AUDIT.md`. The live queue,
+  manuscript, results, and generated artifacts were not modified or stopped.
+
+### Fresh verification performed
+
+1. **[CONFIRMED ARTIFACT INTEGRITY; NOT E3] The four newly scoped result
+   bundles are internally coherent.** For filter seed 20260868 and controls
+   20260871--73, embedded commands exactly match their unique frozen command;
+   code/data hashes match current bytes; all record HEAD `43fa87be...` and
+   `git_dirty_tracked=true`. Each JSON contains 20 contiguous full-validation
+   and full-test epochs with 123,876 users; logs contain 20 matching epoch
+   summaries and 40 completed evaluations without error/NaN tokens.
+
+   | arm | seed | selected epoch | selected overall | epoch-20 overall | tie-safe tail selected | tie-safe tail epoch 20 |
+   |---|---:|---:|---:|---:|---:|---:|
+   | filter | 20260868 | 19 | 0.0658542543 | 0.0657670083 | 0.0069558417 | 0.0069445213 |
+   | no-filter | 20260871 | 20 | 0.0604889872 | same | 0.0047355409 | same |
+   | no-filter | 20260872 | 20 | 0.0610406082 | same | 0.0049856678 | same |
+   | no-filter | 20260873 | 20 | 0.0604386676 | same | 0.0046568861 | same |
+
+   Streaming validation of the five newly in-scope physical sidecars covered
+   619,380 rows. Every sidecar has exactly 123,876 sorted unique users,
+   exact held-out target mapping, valid full-catalog ranks, exact NDCG/HR/RR
+   formulas, exact legacy bucket assignments, matching compressed-file hashes,
+   and aggregate agreement with JSON/history to at most about 3.1e-15. Seed
+   20260868 correctly has separate selected and final sidecars; all three
+   controls selected epoch 20, so no duplicate final sidecar is expected.
+
+   Current CDs coverage through cutoff is 991,008 filter-selected rows,
+   743,256 distinct filter-final rows, and 371,628 control-selected rows:
+   2,105,892 physical rows across 17 sidecars.
+
+2. **[CONFIRMED FAVORABLE INCOMPLETE CONTRAST; NO DECISION]** Across all eight
+   filter selections, overall NDCG@10 is 0.0660739828 (SD 0.0002494050).
+   Across the three available controls it is 0.0606560877 (SD 0.0003339536).
+   The sequential 8-vs-3 diagnostic is +0.0054178951, Welch t=25.55,
+   df=2.89, p=0.00017094, 95% CI [+0.004728124,+0.006107666]. The tie-safe
+   positive-tail diagnostic is +0.0023024374, p=0.00001804, 95% CI
+   [+0.001972528,+0.002632347]. These calculations describe visible partial
+   data; they are not the frozen 8-vs-8 E3, do not justify stopping, and cannot
+   enter Holm. Reporting their small p-values without that qualification would
+   be outcome-dependent cherry-picking.
+
+3. **[CONFIRMED COHORT DEFINITION; LEGACY FIELD STILL WRONG]** CDs has 89,370
+   items, including 52 with zero training frequency. The tie-safe nearest-third
+   positive tail is every frequency-1--5 item: 26,210 items and 19,260 test
+   rows. Adding the entire 9,782-item frequency-6 group would be farther from
+   the target third, so it is excluded.
+
+   The JSON legacy tail instead has 29,790 items/20,661 rows: all 52
+   zero-frequency items (247 rows), the full correct positive tail, and the
+   stable-ID first 3,528/9,782 frequency-6 items (1,154 rows). In the current
+   8-vs-3 snapshot, its arm delta is +0.0022733731 rather than the correct
+   +0.0023024374. Directional agreement does not make the cohorts equivalent.
+
+4. **[CONFIRMED NEGATIVE TRUE-COLD RESULT]** Every CDs selected run has 247
+   zero-exposure test rows. The current 11 selected sidecars contain 0/2,717
+   hits through rank 100; all 17 selected/final sidecars contain 0/4,199, with
+   best rank 4,551. Together with MI, VG, and IS, the complete audited record
+   says no TFV2 category retrieves a never-seen target through @100. Positive
+   effects must be scoped to already-seen rare items.
+
+5. **[CONFIRMED GATE FAILURE]** The mechanical adjudicator prints E1 and E2,
+   reports E3 not adjudicable because no-filter seed 20260874 is missing, and
+   then crashes with `ZeroDivisionError` on the all-zero MI secondary stratum.
+   It still does not validate sidecar rows or hashes, incomplete primary
+   families are not a failing exit, and the unchanged runner never invokes it,
+   continues failed commands, overwrites retry logs, writes final paths
+   non-atomically, and can emit DONE unconditionally.
+
+6. **[CONFIRMED MANUSCRIPT CONTRADICTION] The repaired MI-minus-VG result is
+   still absent.** Independent recomputation remains +0.0002469628,
+   p=0.127249969; exclude-boundary p=0.227377 and band-1--6 p=0.0641123. The
+   manuscript nevertheless prints p=0.0054 in the abstract, introduction,
+   novelty table, results, and conclusion. Neither source tree names TFV2;
+   `paper_tex/sections/05-results.tex` still calls the tie-safe rerun queued and
+   unquantified, and still contains internally inconsistent paired wording.
+
+7. **[CONFIRMED RELEASE AND ASSURANCE GAP]** The new JSONs are untracked,
+   sidecars/logs are ignored, TFV2 is absent from both manifests, and rankings
+   cannot be reconstructed without checkpoints/logits. TeX health passes 32
+   sources, 39 labels, and 27 reference targets; HSTU parity reports zero
+   asserted differences; and the 153-file legacy manifest verifies. Those
+   checks exclude TFV2 and cannot validate chronology, cohort meaning, power,
+   multiplicity, novelty, or manuscript truth.
+
+8. **[CONFIRMED PERSISTENT CLAIM/DOCUMENTATION ERRORS]** The source still calls
+   the repository private and its split/cache assets pending although GitHub is
+   public and the release exposes all 12 splits and four caches. It calls
+   Amazon's `store` field `brand`; Table 1a claims SASRec-family parity while
+   retaining only popularity; and Table 2 treats many n=1 probes as rejected,
+   neutral, or harmful before claiming an empirical ceiling.
+
+9. **[CONFIRMED NOVELTY COVERAGE GAP] Two omitted published works further
+   narrow TAPE and the tail-text story.** CCFRec (KDD 2025) derives discrete
+   semantic codes from multiple text views, associates them with shared
+   learnable embeddings, and integrates raw ID information. TAPE differs in
+   continuous soft assignments, a zero-initialized additive table, and a
+   simpler objective, but the broad text-derived shared-code/prototype idea is
+   prior art. LLMEmb (AAAI 2025) reports semantic-embedding gains concentrated
+   among items with 1--4 interactions. Its tuned LLM embeddings, sampled-100
+   evaluation, and three-seed protocol differ, so the exact full-catalog AR2023
+   finding survives only as construction- and protocol-specific, not as a new
+   general low-popularity-text insight. No closer new FIR-specific work was
+   found beyond the already documented filter/convolution literature.
+
+10. **[CONFIRMED UNCHANGED PDF DEFECTS]** Direct Poppler rendering and visual
+    inspection reconfirmed that the 51-page reader devotes pages 1--4 to the
+    abstract. In the 46-page TORS PDF, the abstract spans pages 1--3, page 7 is
+    mostly blank, page 15 has severe table-cell wrapping/collision, figures on
+    pages 25 and 29 are undersized, and page 32 is an extremely dense tiny-font
+    table. No clipping repair or submission-focused condensation landed.
+
+### Confirmed interpretation and rejection-level consequences
+
+#### 1. The partial CDs result is scientifically interesting but not decisive
+
+- The visible filter-control gap is large and directionally consistent with
+  the earlier breadth result.
+- Only three of eight control seeds existed at cutoff; test outcomes were
+  logged after every epoch and visible while the queue continued.
+- The only honest label is an incomplete exploratory diagnostic. Completing
+  the queue may improve precision but cannot restore the compromised family.
+
+#### 2. Artifact correctness does not repair claim correctness
+
+- Exact row mappings, formulas, hashes, and histories materially strengthen
+  confidence that the four new bundles mean what their files say.
+- They do not make the wrong legacy tail equal the frozen cohort, supply
+  unseen-item retrieval, isolate FIR from initialization/optimizer changes, or
+  correct p=0.0054.
+- The paper must separate `zero_exposure`, `positive_frequency_primary`,
+  boundary sensitivity, and legacy nominal terciles in data and prose.
+
+#### 3. The novelty boundary is now narrower still
+
+- CCFRec predates the broad text-derived shared-code plus collaborative-ID
+  construction; LLMEmb predates a general semantic-embedding benefit for very
+  low-popularity items.
+- A defensible paper can claim only the specific continuous zero-init TAPE
+  realization and the scoped full-catalog dataset-conditional observation,
+  after direct equation/protocol comparisons and withdrawal of broad priority.
+
+### Plausible risks and author verification required
+
+- **[AUTHOR/OPERATOR VERIFICATION]** What happened during the reported 12:50
+  scheduler run, and is there a lost log or failed write?
+- **[AUTHOR VERIFICATION]** Did humans inspect per-epoch test results while the
+  queue ran, and could visibility affect continuation, stopping, or changes?
+- **[AUTHOR VERIFICATION]** What prospective power/MDE calculation supports
+  eight optimizer seeds per arm on one fixed split?
+- **[AUTHOR VERIFICATION]** Why is test evaluation performed and logged at all
+  20 epochs when selection is nominally validation-only?
+- **[AUTHOR VERIFICATION]** Was `store` intentionally used as a seller-name
+  proxy, and how often does it differ from actual brand in each category?
+- **[AUTHOR VERIFICATION]** Which journal/template/anonymity/page-limit policy
+  governs the final upload?
+- **[AUTHOR VERIFICATION]** What governance permits publishing per-user
+  sidecars or sufficient checkpoint/logit artifacts for rank reconstruction?
+
+### External fact-check and novelty sources
+
+- [Amazon Reviews 2023 official schema](https://amazon-reviews-2023.github.io/)
+- [CCFRec primary manuscript](https://arxiv.org/abs/2503.12183) and
+  [official KDD DOI](https://doi.org/10.1145/3711896.3736869)
+- [LLMEmb official AAAI proceedings](https://ojs.aaai.org/index.php/AAAI/article/view/33327)
+- [ASER primary manuscript](https://arxiv.org/abs/2603.02709)
+- [AKT-Rec primary manuscript](https://arxiv.org/abs/2605.23310)
+- [LLM-ESR official NeurIPS proceedings](https://proceedings.neurips.cc/paper_files/paper/2024/hash/2f0728449cb3150189d765fc87afc913-Abstract-Conference.html)
+- [TIGER official NeurIPS paper](https://papers.nips.cc/paper_files/paper/2023/file/20dcab0f14046a5c6b02b61da9f13229-Paper-Conference.pdf)
+- [Public repository](https://github.com/Ray0419/bestrec-sota-results) and
+  [v0.9 release](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence)
+
+### Concrete fixes in dependency order
+
+1. Quarantine TFV2 as exploratory/aborted and preserve every success, partial,
+   failure, log, and cutoff immutably. Do not call E2/E3 confirmatory.
+2. Withdraw p=0.0054 everywhere. Replace it with repaired MI, VG, and MI-minus-
+   VG estimates, sensitivity intervals, and the all-zero unseen-target result.
+3. Let the remaining controls finish only as a pre-specified descriptive
+   completion; do not stop or promote based on the visible 8-vs-3 result.
+4. Replace the runner/adjudicator with tested fail-closed, atomic, append-only
+   tooling that validates rows, cohorts, hashes, configs, selected epochs,
+   missing/zero-variance cases, Holm logic, and DONE state.
+5. Remove or rename `by_popularity.tail`; publish explicit zero-exposure and
+   tie-safe positive-frequency objects plus automated boundary tests.
+6. Publish a reviewer-complete TFV2 reconstruction boundary after governance
+   review: inputs, JSONs, sidecars/logs, state, adjudication, manifests, and
+   checkpoints/logits or an equivalent rank-regeneration mechanism.
+7. Reparameterize FIR so comparisons share a nonsingular initialization and
+   optimizer path; rerun adequately powered factor-isolating ablations.
+8. Correct `brand` to store/seller name, or regenerate the entire rich-text
+   chain if actual brand is intended.
+9. Retain tuned in-pipeline baselines and power negative ablations before using
+   rejected/neutral/harmful/ceiling language.
+10. Add an equation/protocol/estimand comparison table covering CCFRec,
+    LLMEmb, ASER, AKT-Rec, LLM-ESR, SAGE-Rec, FAERec, SpecTran, and TADA.
+11. Reconcile public/private, release, tracker, and TIGER-lineage statements.
+12. Cut the abstract radically, reflow page 15, enlarge pages 25/29, split page
+    32, remove the page-7 void, and visually approve one canonical PDF.
+
+### Open questions
+
+- Will the authors withdraw p=0.0054 before promoting any further output?
+- Why did all treatment runs complete before the first successful control?
+- Will the incomplete 8-vs-3 contrast remain immutable and explicitly labeled
+  after the remaining controls become visible?
+- Why do all four categories have zero unseen-target hits through rank 100?
+- Which serialized cohort is allowed to feed future tables and figures?
+- What tuned retained baseline supports the +17.5% narrative?
+- What is TAPE's exact surviving distinction after CCFRec, LLMEmb, ASER,
+  AKT-Rec, SAGE-Rec, and related work are compared equation by equation?
+
+### Running checklist
+
+- [x] Read automation memory and preserve the cumulative audit.
+- [x] Fix the evidence cutoff at 13:51:56.420 and exclude seed 74+ outputs.
+- [x] Confirm unchanged HEAD and canonical manuscript/PDF hashes.
+- [x] Validate seed 68 and control seeds 71--73 across 619,380 new rows.
+- [x] Recompute current overall/tie-safe-tail diagnostics and uncertainty.
+- [x] Recompute CDs zero-exposure and legacy-cohort behavior.
+- [x] Recheck adjudicator, runner, manifests, and reconstruction boundary.
+- [x] Re-run TeX health, HSTU parity, and legacy manifest verification.
+- [x] Recheck headline, queued/paired prose, metadata, baseline, and power claims.
+- [x] Perform a fresh primary-source novelty check for adjacent work.
+- [x] Re-render and visually inspect both canonical and TORS high-risk pages.
+- [x] Update this prioritized list and append this timestamped audit.
+- [ ] Quarantine TFV2 and withdraw p=0.0054, paired wording, and cold-start
+      implications in the actual manuscript.
+- [ ] Repair the evidence gate, estimands, release, metadata, baselines,
+      novelty coverage, and PDF layout before external review.
+
+## Audit Run - 2026-07-20 11:49 Australia/Sydney
+
+### Audited state and strict verdict
+
+- **Workspace/branch:** `C:\Users\rayxc\Documents\R`,
+  `codex/bestrec-sota-results`.
+- **Canonical submission boundary:** `CANONICAL_SUBMISSION.md` identifies
+  `PAPER_SUBMISSION.md` and `PAPER_SUBMISSION.pdf` as canonical; the TORS LaTeX
+  tree and `paper_tex/PAPER_TORS.pdf` are generated venue artifacts.
+- **HEAD at the fixed cutoff:**
+  `43fa87be402f770e6e1a8d09dceb64792dd730b0`, unchanged from the prior
+  recorded audit. The canonical Markdown SHA-256 remains
+  `737fc73c0482d065a5a3bb6edd2be9d82b2988974a7a4a5fe5a85fb7de90fcb`;
+  the reader PDF remains `b24ff14f...` and TORS PDF `93265672...`. No paper,
+  TeX, bibliography, figure, table, PDF, protocol, code, or committed-result
+  repair landed.
+- **Fixed empirical cutoff:** 2026-07-20 11:49:44.220 Australia/Sydney. The
+  newly in-scope complete outputs are CDs filter seeds 20260864--67. Seed
+  20260868 had only a zero-byte active log at the cutoff and is excluded, as
+  are all later writes even if they completed during this review.
+- **Process-record caveat:** the automation metadata supplied for this wake-up
+  says the last run was 10:47, but the cumulative audit and automation memory
+  contain no separate persisted section after the 09:48 cutoff. This review
+  treats 09:48 as the last documented state and flags the discrepancy for
+  author/operator verification.
+- **Reviewer recommendation: REJECT in present form; preserve TFV2 as
+  exploratory/aborted.** Four more exact treatment bundles do not supply a
+  control arm, restore prospective status, repair the contradicted headline,
+  or cure the release, novelty, baseline, attribution, and presentation gaps.
+- **Change scope:** this run edits only `PAPER_REVIEW_AUDIT.md`. Live jobs and
+  result artifacts were not modified or stopped. A strict WSL rebuild changed
+  one path separator in `_bestrec_run/hstu_tables.json` while returning PASS;
+  the generated file was restored byte-for-byte to its prior tracked object.
+
+### Fresh verification performed
+
+1. **[CONFIRMED REPAIR; NOT E3] Four new treatment bundles are internally
+   coherent.** Seeds 20260864--67 add four JSONs, four validation-selected
+   sidecars, three distinct epoch-20 sidecars, and four complete logs. Seed
+   20260865 selected epoch 20, so no duplicate final sidecar is expected. The
+   seven new physical sidecars contain 867,132 rows.
+
+   Across CDs filter seeds 20260861--67, independent streaming validation
+   covered all 1,486,512 rows in 12 physical sidecars. Every sidecar has the
+   expected 123,876 unique test users and targets; ranks are finite and in
+   range; NDCG@10, HR@10, and RR reproduce from `rank0`; history, validation
+   argmax, selected/final policy, JSON aggregates, configs, commands, and
+   sidecar digests agree. JSON aggregation discrepancies are at most 3.61e-15.
+   The split, cache, driver, and frozen-command hashes also match current bytes.
+
+   | seed | selected epoch | overall selected | overall epoch 20 | tie-safe tail selected | tie-safe tail epoch 20 |
+   |---:|---:|---:|---:|---:|---:|
+   | 20260861 | 17 | 0.0660551387 | 0.0662381915 | 0.0071605586 | 0.0071738647 |
+   | 20260862 | 17 | 0.0664739446 | 0.0663790632 | 0.0068170614 | 0.0067954206 |
+   | 20260863 | 20 | 0.0657392605 | 0.0657392605 | 0.0075436135 | 0.0075436135 |
+   | 20260864 | 19 | 0.0663704665 | 0.0663446864 | 0.0071780341 | 0.0071691044 |
+   | 20260865 | 20 | 0.0661533576 | 0.0661533576 | 0.0070560025 | 0.0070560025 |
+   | 20260866 | 19 | 0.0659784080 | 0.0659837908 | 0.0070479990 | 0.0070856060 |
+   | 20260867 | 19 | 0.0659670321 | 0.0659892873 | 0.0070019746 | 0.0070294820 |
+
+   The seven-seed selected overall mean is 0.0661053726 (SD 0.0002517414),
+   and the epoch-20 mean is 0.0661182339 (SD 0.0002284948). The tie-safe tail
+   selected mean is 0.0071150348 (SD 0.0002233347). With 0/8 no-filter runs,
+   none of these quantities estimates a filter effect or completes E3.
+
+2. **[CONFIRMED AUDIT CORRECTION] The CDs legacy-tail defect was previously
+   described incorrectly.** CDs has 89,370 items and 123,876 test rows. The
+   frozen positive-frequency tail is every frequency-1--5 item: 26,210 items
+   and 19,260 rows. The legacy 29,790-item cohort contains all 52 zero-frequency
+   items, all 26,210 frequency-1--5 items, and 3,528 of 9,782 frequency-6 items
+   selected by stable item ID. Its 20,661 rows are 247 zero-exposure rows,
+   19,260 correct-tail rows, and 1,154 frequency-6 rows. It therefore splits
+   frequency 6, not frequency 5, and omits no correct-tail row.
+
+   The seven selected legacy readings average 0.0071860469 versus 0.0071150348
+   on the frozen cohort (+0.0000710121, +0.9981%). This corrected diagnosis does
+   not validate the legacy field: it still mixes zero exposure with an added
+   boundary subset and must not be used as a tie-safe positive-tail estimand.
+
+3. **[CONFIRMED NEGATIVE RESULT] True unseen-target retrieval remains zero.**
+   Across the seven selected CDs checkpoints, all 1,729 zero-exposure row
+   evaluations miss through rank 100 (best rank 4,713). Across all 12 physical
+   CDs selected/final sidecars, all 2,964 miss through rank 100. MI, VG, IS,
+   and CDs therefore all fail this audited unseen-target test. The paper must
+   not translate positive-frequency effects into item-cold-start rescue.
+
+4. **[CONFIRMED ABSENT CONTRAST] E3 and its family verdict still do not
+   exist.** At cutoff there are 7/8 filter JSONs and 0/8 no-filter JSONs or
+   sidecars; the eight old no-filter logs are short parser-failure logs. No
+   treatment-minus-control effect, uncertainty interval, p-value, E3 decision,
+   or Holm decision can be computed. Visible stability within one arm is not a
+   substitute for a comparator.
+
+5. **[CONFIRMED GATE FAILURE] The adjudicator and campaign runner remain
+   unfit for evidence generation.** Static inspection shows adjudication first
+   stops on absent filter seed 20260868 and then on absent controls; Holm is
+   skipped unless all three endpoint objects exist; equal all-zero arms still
+   cause a Welch `ZeroDivisionError`. The runner lacks fail-fast behavior,
+   overwrites retry logs, skips on file existence without content validation,
+   writes final paths non-atomically, never calls the adjudicator, and touches
+   DONE unconditionally. No stored complete adjudication object exists.
+
+6. **[CONFIRMED MANUSCRIPT CONTRADICTION] The central p=0.0054 claim remains
+   false under the repaired declared estimand.** The complete selected MI/VG
+   sidecars yield MI delta +0.0004201952 (p=0.002208), VG delta +0.0001732325
+   (p=0.141180), and MI-minus-VG +0.0002469628, p=0.127249969, 95% CI
+   [-0.000075048,+0.000568974]. The paper repeats p=0.0054 in the abstract,
+   introduction, novelty table, results, conclusion, and canonical Markdown.
+   This is a rejection-level mismatch between the claim and repaired evidence.
+   Neither manuscript source tree names TFV2. Venue results line 120 still says
+   the tie-safe sensitivity is unquantified and its rerun queued, although that
+   rerun already nullified the headline. Line 78 also retains “same-seed paired
+   per its frozen pre-declared wording” for FIR breadth even though the response
+   and later paragraph withdraw the pairing premise. These are undisclosed and
+   internally contradictory status statements, not merely queued limitations.
+
+7. **[CONFIRMED RELEASE GAP] Exact arithmetic is not independent
+   reproducibility.** The seven CDs JSONs are untracked; sidecars/logs are
+   ignored; neither release manifest includes TFV2; IS/CD inputs are absent
+   from v0.9; and no checkpoint or logits can regenerate recorded ranks. All
+   seven JSONs also record a tracked-dirty tree at output time. A reviewer can
+   audit formulas but cannot reconstruct the trained rankings from the public
+   boundary.
+
+8. **[CONFIRMED FALSE-GREEN REBUILD] The legacy wrapper passes despite a
+   platform-dependent generated artifact.** A strict WSL run again passed HSTU
+   parity, recomputed 173 cells (153 exact, 20 rounded, 0 mismatch/untraceable),
+   sourced 14/14 families, and verified 153 manifest files. Yet
+   `build_hstu_tables.py` serializes a manifest path with `os.path.relpath`, so
+   WSL wrote `/` where the tracked Windows output uses `\`; the wrapper still
+   returned PASS. The release updater calls these outputs deterministic while
+   intentionally excluding them from content hashes. The incidental output was
+   restored; the confirmed assurance bug remains. TeX health separately passes
+   32 sources, 39 labels, and 27 reference targets, but neither check validates
+   scientific claims.
+
+9. **[CONFIRMED BASELINE, POWER, AND ATTRIBUTION FAILURES]** Table 1a says it
+   establishes SASRec-family protocol parity, but retains only a popularity
+   floor after SASRec/SBERT/BLaIR rows were removed as untraceable. The +17.5%
+   narrative therefore rests on an external single-seed comparison. Table 2
+   calls many n=1 probes neutral or harmful and claims to bound a ceiling; it
+   has insufficient power for any such conclusion. Separately, both rich-text
+   encoders read Amazon's `store` field while the paper and code call it brand;
+   the official schema stores brand under `details`.
+
+10. **[CONFIRMED NOVELTY COVERAGE GAP; PLAUSIBLE CLOSE ADJACENCY] Fresh 2026
+    literature further narrows the defensible contribution.** ASER studies
+    frozen review-distilled representations on Amazon-2014 five-core domains
+    with leave-one-out full ranking and reports domain- and frequency-dependent
+    effects. That is not the same mechanism or dataset vintage, but it is
+    directly adjacent to the paper's claimed dataset-conditional tail-text
+    finding and is absent. AKT-Rec uses semantic clusters, individual
+    embeddings, an activity gate, and asymmetric head-to-tail transfer; its
+    industrial CTR task differs, but its mechanism is close enough to require
+    an equation-level TAPE comparison. TADA, FACL, MuSTRec, LLM-ESR, SAGE-Rec,
+    FAERec, and SpecTran also require an explicit protocol/mechanism matrix.
+
+11. **[CONFIRMED PUBLIC/LINEAGE CONTRADICTIONS]** The repository is publicly
+    accessible and v0.9 lists 20 assets when two generated source archives are
+    counted (18 uploaded assets), while the paper, README, and DOI instructions
+    still say private/upload pending. The paper also describes TIGER's
+    preprocessing as equivalent, but TIGER's primary paper uses Amazon through
+    July 2014 and filters users with fewer than five reviews; that is not this
+    iterative AR2023 user-and-item 5-core pipeline.
+
+12. **[CONFIRMED UNCHANGED SUBMISSION DEFECTS]** The canonical PDFs are
+    byte-unchanged. The 51-page reader retains an approximately 1,800-word,
+    four-page abstract. The 46-page TORS artifact retains a three-page abstract,
+    the page-7 whitespace void, page-15 wrapping/collision, undersized figures
+    on pages 25 and 29, and a tiny dense table on page 32. Mechanical PDF/TeX
+    health does not make this presentation top-journal ready.
+
+### Confirmed interpretation and rejection-level consequences
+
+#### 1. Seven exact treatment runs still provide no treatment effect
+
+- The new bundles materially improve confidence in row arithmetic and training
+  provenance for one arm.
+- They cannot answer filter versus no filter, cannot complete E3 or Holm, and
+  cannot reverse the outcome-compromised TFV2 chronology.
+- Do not promote the seven-seed mean or sequential apparent stability into the
+  paper as causal, comparative, or confirmatory evidence.
+
+#### 2. The tail/cold-start headline must be rewritten before submission
+
+- The repaired MI-minus-VG contrast is p=0.12725, not p=0.0054.
+- All four categories have zero audited unseen-target hits through rank 100.
+- The legacy CDs tail includes the complete correct positive tail plus zero-
+  exposure and a split frequency-6 boundary; earlier audit text saying it split
+  frequency 5 is corrected above.
+- Separate `zero_exposure`, `positive_frequency_primary`,
+  `boundary_excluded`, and `band_1_6` objects and claims.
+
+#### 3. The assurance graph and release do not support the paper's rhetoric
+
+- Passing numerical cells and TeX references says nothing about chronology,
+  power, novelty, baseline adequacy, or truth of prose.
+- Cross-platform regeneration can change a generated artifact without failing.
+- A public reviewer still cannot reconstruct TFV2 rankings or reproduce the
+  purported confirmatory family from the declared release.
+
+### Plausible risks and author verification required
+
+- **[AUTHOR VERIFICATION]** Was there a genuine 10:47 audit whose write failed,
+  or is the scheduler timestamp only a wake-up record? Preserve any lost log.
+- **[AUTHOR VERIFICATION]** Did visible treatment-arm or epoch-wise test results
+  influence whether the queue continued, stopped, or changed? No blinded
+  outcome holder is documented.
+- **[AUTHOR VERIFICATION]** What prospective power/MDE calculation justifies
+  eight optimizer seeds per arm on one fixed split?
+- **[AUTHOR VERIFICATION]** How often does `store` differ from actual brand in
+  each category, and was seller/store intentionally used as a proxy?
+- **[PLAUSIBLE NOVELTY RISK]** Does ASER's per-frequency analysis or AKT-Rec's
+  gating/cluster equations overlap more closely after full equation-level
+  comparison than their high-level descriptions indicate?
+- **[AUTHOR VERIFICATION]** Which exact journal/template/anonymity policy is
+  intended, and what page/word limits apply to the submitted artifact?
+- **[AUTHOR VERIFICATION]** What governance review permits release of per-user
+  sidecars, checkpoints, or sufficient rank-regeneration artifacts?
+
+### External fact-check and novelty sources
+
+- [Amazon Reviews 2023 official schema](https://amazon-reviews-2023.github.io/)
+- [ASER primary manuscript](https://arxiv.org/abs/2603.02709)
+- [AKT-Rec primary manuscript](https://arxiv.org/abs/2605.23310)
+- [TADA primary manuscript](https://arxiv.org/abs/2601.10933)
+- [FACL primary manuscript](https://arxiv.org/abs/2601.17057)
+- [MuSTRec primary manuscript](https://arxiv.org/abs/2602.07207)
+- [LLM-ESR, official NeurIPS 2024 proceedings](https://proceedings.neurips.cc/paper_files/paper/2024/hash/2f0728449cb3150189d765fc87afc913-Abstract-Conference.html)
+- [SAGE-Rec, official ACM DOI](https://doi.org/10.1145/3774904.3792456)
+- [FAERec primary manuscript](https://arxiv.org/abs/2604.03688)
+- [SpecTran primary manuscript](https://arxiv.org/abs/2601.21986)
+- [TIGER, official NeurIPS 2023 paper](https://papers.nips.cc/paper_files/paper/2023/file/20dcab0f14046a5c6b02b61da9f13229-Paper-Conference.pdf)
+- [Public repository](https://github.com/Ray0419/bestrec-sota-results) and
+  [v0.9 release](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence)
+
+### Concrete fixes in dependency order
+
+1. Quarantine TFV2 as exploratory/aborted and preserve successful, partial,
+   and failed attempts immutably. Do not call E2/E3 confirmatory.
+2. Withdraw p=0.0054 everywhere. Replace it with the repaired MI, VG, and
+   MI-minus-VG estimates, all relevant sensitivity intervals, and the all-zero
+   unseen-target result.
+3. Freeze a cutoff-complete inventory for the exploratory CDs campaign. If the
+   remaining runs finish, validate them without retroactively changing status.
+4. Replace the runner/adjudicator with pretested, fail-closed, atomic,
+   append-only tooling that validates exact rows, cohorts, hashes, configs,
+   checkpoint policy, missing/zero-variance cases, and Holm logic before DONE.
+5. Replace/rename `by_popularity.tail` and publish explicit cohort definitions.
+   Add an automated tie-boundary test, including the corrected CDs frequency-6
+   boundary case.
+6. Make generated paths canonical (for example, POSIX-normalized relative
+   paths), then make strict rebuilds fail whenever regenerated tracked outputs
+   differ from the declared clean artifact set.
+7. Publish a reviewer-complete TFV2 boundary after governance review: IS/CD
+   inputs, JSONs, sidecars/logs, campaign state, adjudication output, current
+   manifests, and checkpoints/logits or another rank-regeneration mechanism.
+8. Correct `brand` to store/seller name, or regenerate the entire rich-text
+   evidence chain if actual brand is scientifically intended.
+9. Add retained tuned in-pipeline baselines and adequately powered ablations.
+   Relabel the present negative map as exploratory screening and remove
+   neutral/harmful/ceiling language.
+10. Add an equation/protocol/estimand comparison table for ASER, AKT-Rec, TADA,
+    FACL, MuSTRec, LLM-ESR, SAGE-Rec, FAERec, and SpecTran; correct TIGER.
+11. Reconcile public/private and release statements. Then radically shorten
+    the abstract, reflow page 15, enlarge pages 25/29, split page 32, remove the
+    page-7 void, and visually inspect one canonical submission PDF.
+
+### Open questions
+
+- Will the authors withdraw p=0.0054 before promoting any further run?
+- Why were treatment runs allowed to accumulate visibly before any controls?
+- What comparator and prospective decision rule will replace the compromised
+  TFV2 family, if any future confirmatory claim is attempted?
+- Why do all four categories have zero unseen-target hits through rank 100?
+- Which tail cohort is scientifically primary, and which serialized object may
+  downstream tables consume?
+- What tuned, retained baseline supports the +17.5% narrative?
+- What is the precise surviving TAPE/FIR distinction after ASER, AKT-Rec,
+  SAGE-Rec, and other 2026 work are compared at equation level?
+
+### Running checklist
+
+- [x] Read automation memory and preserve the cumulative audit.
+- [x] Fix the evidence cutoff at 11:49:44.220 and exclude seed 68+.
+- [x] Confirm unchanged HEAD and canonical manuscript/PDF hashes.
+- [x] Validate seeds 64--67 and all 1,486,512 aggregate physical sidecar rows.
+- [x] Recompute selected/final CDs summaries and zero-exposure retrieval.
+- [x] Correct the prior frequency-5/frequency-6 cohort diagnosis.
+- [x] Recheck adjudicator, runner, manifests, reconstruction boundary, and
+      untracked/ignored artifact state.
+- [x] Re-run the strict legacy rebuild and document its cross-platform
+      false-green path-separator change; restore the incidental output.
+- [x] Re-run TeX health and distinguish mechanical from scientific validity.
+- [x] Recheck headline, baselines, power language, metadata, public state,
+      TIGER lineage, and recent novelty adjacencies.
+- [x] Reinspect the unchanged high-risk PDF pages and submission layout.
+- [x] Update this prioritized list and append this timestamped audit.
+- [ ] Quarantine TFV2 and withdraw p=0.0054, paired wording, and cold-start
+      implications in the actual manuscript.
+- [ ] Repair the evidence gate, estimands, release, metadata, baselines,
+      novelty coverage, and PDF layout before seeking external review.
+
+## Audit Run - 2026-07-20 09:48 Australia/Sydney
+
+### Audited state and strict verdict
+
+- **Workspace/branch:** `C:\Users\rayxc\Documents\R`,
+  `codex/bestrec-sota-results`.
+- **Canonical paper boundary:** `CANONICAL_SUBMISSION.md` identifies
+  `PAPER_SUBMISSION.md` and `PAPER_SUBMISSION.pdf` as canonical; the TORS LaTeX
+  and `paper_tex/PAPER_TORS.pdf` are generated venue artifacts. The repository's
+  other root PDFs and `_bestrec_sota_lab/paper_draft/` are noncanonical.
+- **HEAD at the fixed cutoff:**
+  `43fa87be402f770e6e1a8d09dceb64792dd730b0`, unchanged from the prior run.
+  No manuscript, TeX, bibliography, figure, table, PDF, preregistration,
+  experimental-code, or committed-result repair landed.
+- **Fixed empirical cutoff:** 2026-07-20 09:48:29.995 Australia/Sydney. The new
+  complete outputs are CDs filter seeds 20260862 and 20260863. Seed 20260864
+  was actively training from 09:28:08 with an empty mutable log at the cutoff;
+  it and every later output are excluded even if they complete during this run.
+  Its JSON did appear post-cutoff and was left uninspected and untouched.
+- **Reviewer recommendation: REJECT in present form; preserve TFV2 as
+  exploratory/aborted.** The two new bundles are mechanically sound, but E3 is
+  only 3/8 filter runs with no control. The chronology failure, contradicted
+  headline, broken gate, release gap, weak evidence hierarchy, novelty gaps,
+  and submission defects remain dispositive.
+- **Change scope:** this run edits only `PAPER_REVIEW_AUDIT.md`. The live queue
+  was not stopped or modified. The strict rebuild rewrote
+  `_bestrec_run/hstu_tables.json` byte-identically to HEAD.
+
+### Fresh verification performed
+
+1. **Both new result bundles and all three new sidecars are internally
+   coherent.** Seed 20260862 supplies validation-selected and epoch-20 final
+   sidecars; seed 20260863 selects epoch 20, so its selected sidecar is also the
+   final reading and no duplicate final file is expected. Independent streaming
+   validation covered 371,628 rows. Every file has 123,876 unique users; user
+   and target IDs exactly match an independently rebuilt sorted-union mapping;
+   ranks are in range; NDCG@10, HR@10, and reciprocal rank reproduce exactly
+   from `rank0`; JSON overall and legacy-bucket aggregates agree within
+   3.7e-15; and embedded sidecar SHA-256 digests match actual bytes.
+
+   Both runs have 20 complete history rows with no error/NaN signature. The
+   recorded selected epochs 17 and 20 are the first strict validation-NDCG
+   maxima. Their `argv` token streams exactly match frozen command lines 34 and
+   35; realized configs and split/cache/driver hashes match current bytes. Both
+   embed HEAD `43fa87be...` and `git_dirty_tracked=true`. End-sampled dirty
+   provenance, absent checkpoints/logits, and ignored sidecars remain defects;
+   they do not negate the internal arithmetic checks.
+
+2. **The current CDs filter arm is a stable-looking one-arm description, not
+   E3.** The complete-at-cutoff values are:
+
+   | seed | selected epoch | overall selected | overall epoch 20 | correct positive tail selected | legacy JSON tail selected |
+   |---:|---:|---:|---:|---:|---:|
+   | 20260861 | 17 | 0.0660551387 | 0.0662381915 | 0.0071605586 | 0.0072921516 |
+   | 20260862 | 17 | 0.0664739446 | 0.0663790632 | 0.0068170614 | 0.0069343724 |
+   | 20260863 | 20 | 0.0657392605 | 0.0657392605 | 0.0075436135 | 0.0075630712 |
+
+   The selected overall mean is 0.0660894479 (SD 0.0003685418); the epoch-20
+   mean is 0.0661188384 (SD 0.0003361856). The correct-tail selected mean is
+   0.0071737445 (SD 0.0003634555). With 0/8 no-filter runs, no causal contrast,
+   CI, p-value, E3 outcome, breadth generalization, or Holm verdict exists.
+   Sequentially visible one-arm stability is not evidence of treatment effect.
+
+3. **The cohort defect and true cold-start floor persist.** CDs has 89,370
+   items and 123,876 test users. Fifty-two zero-training-exposure items account
+   for 247 test targets. The frozen whole-frequency positive tail is frequencies
+   1--5: 26,210 items/19,260 test rows. Excluding boundary frequency 5 leaves
+   12,664 items/13,609 rows; absolute band 1--6 has 35,992 items/24,050 rows.
+
+   **Audit correction:** the legacy `by_popularity.tail` instead has 20,661
+   rows: all 247 zero-exposure rows, all 19,260 positive-frequency 1--5 rows,
+   and 1,154 rows from an ID-order subset of frequency 6. It does not split
+   frequency 5 or omit the frozen correct-tail rows. Across the three current
+   selected readings its mean is 1.25% above the correct-tail mean; direction
+   and size are data-dependent, so the field remains unsafe for inference.
+   Across all five distinct current CDs selected/final sidecars,
+   zero-exposure targets have 0/1,235 hits through rank 100; best rank is 4,713.
+   This extends the all-zero unseen-target finding across MI, VG, IS, and CDs.
+
+4. **The mechanical adjudicator remains unusable.** A fresh direct run prints
+   E1, complete raw E2, and `E3: NOT ADJUDICABLE` because CDs seed 20260864 is
+   missing, then exits 1 with `ZeroDivisionError` at
+   `_bestrec_run/adjudicate_tfv2.py:98` on the all-zero MI secondary stratum.
+   Missing primary families otherwise do not cause a nonzero exit, Holm runs
+   only when all three endpoints exist, and the function returns 0
+   unconditionally after its report. It trusts aggregate JSON for E2/E3 and
+   omits row, cohort, hash, config, and checkpoint-policy validation.
+
+   The campaign runner still continues after failures, overwrites retry logs,
+   skips on path existence, writes JSON directly to final paths, never invokes
+   adjudication, and unconditionally touches DONE. Its 05:56 DONE marker and
+   03:47 failure ledger coexist with the live 09:28 seed-64 process.
+
+5. **The repaired tie-safe rerun directly contradicts a headline manuscript
+   claim.** Recomputing all complete MI/VG selected sidecars gives MI delta
+   +0.0004201952 (p=0.002208), VG delta +0.0001732325 (p=0.141180), and the
+   four-arm MI-minus-VG contrast +0.0002469628, t=1.5732, df=27.151,
+   p=0.127249969. The exclude-boundary four-arm sensitivity is p=0.227 and the
+   band-1--6 sensitivity is p=0.0641. The paper nevertheless repeats p=0.0054
+   at `PAPER_SUBMISSION.md:18,22,38,104,358,542`,
+   `paper_tex/sections/abstract.tex:8,12`,
+   `paper_tex/sections/01-introduction.tex:20`,
+   `paper_tex/tables/table0_novelty.tex:21`,
+   `paper_tex/sections/05-results.tex:116`, and
+   `paper_tex/sections/07-conclusion.tex:6`.
+
+6. **The baseline and negative-result narratives exceed their evidence.**
+   `paper_tex/sections/05-results.tex:9` says Table 1a reports SASRec-family
+   text baselines establishing protocol parity, but
+   `paper_tex/tables/table1a.tex` contains only a popularity floor. The same
+   section at line 17 admits the SASRec/SBERT/BLaIR rows were removed as
+   untraceable. The +17.5% narrative therefore rests on an external single-seed
+   published SASRec number, not a retained tuned in-pipeline baseline.
+
+   Table 2 calls its probes "all neutral or harmful," while its caption admits
+   unequal power and many n=1 rows. The prose at
+   `paper_tex/sections/05-results.tex:233` explicitly says a one-seed miss does
+   not warrant five seeds and line 243 says the map bounds an in-environment
+   ceiling. Failure to improve once cannot establish neutrality, harm, or a
+   ceiling. Relabel this as an exploratory screening log and remove inferential
+   language unless each retained conclusion is adequately powered.
+
+7. **A newly checked metadata claim is factually mislabeled.** The ethics
+   section (`paper_tex/sections/10-ethics.tex:4`) and attribution table
+   (`paper_tex/tables/table_attribution.tex:15`; canonical Markdown lines 73
+   and 569) say rich text uses titles, categories, and brand. Both encoders
+   actually read `d.get("store")` and emit it as `brand:`
+   (`_bestrec_run/encode_richtext_5core.py:89-94` and
+   `_bestrec_run/encode_blair_richtext_5core.py:78-83`). The official AR2023
+   schema defines `store` as store name and places brand inside the `details`
+   dictionary. Upstream Hou preprocessing uses title/features/categories/
+   description, not this store composition. The present implementation is a
+   custom title/category/store encoding, not the attributed brand composition.
+
+8. **Novelty coverage remains incomplete, with one new plausible adjacency.**
+   LLM-ESR, SAGE-Rec, FAERec, and SpecTran remain absent. BIPCL (arXiv v1 April
+   2026) explicitly uses shared user/item intent prototypes integrated into
+   representations. It is not exact TAPE prior art: TAPE uses frozen text-
+   derived item assignments and an additive zero-initialized table. It does
+   mean prototype soft-assignment/integration is not itself novel. Add an
+   equation-level comparison and narrow the surviving distinction. The false
+   TIGER preprocessing-equivalence sentence also remains unchanged.
+
+9. **Fresh legacy checks are green but exclude the validity failures above.**
+   The strict wrapper passes exact aligned HSTU core parity, recomputes 173
+   cells (153 exact, 20 within rounding, zero mismatch/untraceable), sources
+   14/14 declared families, and verifies 153 files. TeX health passes 32
+   sources/39 labels/27 reference targets; `git diff --check` passes. The
+   wrapper contains no TFV2 path, continues to gate favorable legacy FIR
+   breadth outcomes, and cannot validate chronology, cohort semantics,
+   statistical power, novelty, or prose truth.
+
+10. **Public/release facts remain internally contradictory.** Anonymous GitHub
+    access confirms the repository is public. The release page says "Assets
+    20" because it includes two generated source archives; the API still lists
+    18 uploaded assets: 12 legacy split CSVs, four legacy caches, a manifest,
+    and a parity archive. IS/CD TFV2 inputs are absent, and the remote manifest
+    SHA differs from the current local manifest. The paper/README/DOI text still
+    says the repository is private and all 12 splits/four caches await upload.
+
+11. **The unchanged PDFs retain the known submission defects.** Hashes remain
+    `b24ff14f...` for the 51-page reader and `93265672...` for the 46-page TORS
+    build. After the bundled Poppler wrapper again failed to resolve its path,
+    PyMuPDF rendered TORS pages 1--3, 7, 15, 25, 29, and 32. Contact-sheet and
+    original-resolution inspection reconfirmed the three-page abstract, page-7
+    whitespace void, severe page-15 table wrapping/collision, undersized
+    figures on pages 25/29, and the tiny dense page-32 table. No new clipping,
+    black boxes, missing glyphs, or unresolved-reference artifacts appeared.
+    The exact temporary render directory was removed after inspection.
+
+### Confirmed interpretation and rejection-level consequences
+
+#### 1. E3 remains absent despite three clean treatment runs
+
+- The filter-arm values are credible descriptions of three trained models.
+- They say nothing about filter-minus-no-filter without controls and cannot
+  complete the preregistered family or rescue its broken chronology.
+- Do not publish a sequential one-arm mean as evidence of breadth.
+
+#### 2. The current tail/cold-start story cannot survive unchanged
+
+- The repaired MI-minus-VG contrast is p=0.127, not p=0.0054.
+- All four audited categories remain at zero unseen-target hits through @100.
+- The machine-readable tail fields do not implement the frozen tie-safe
+  estimands. A strict revision must replace the headline and separate
+  zero-exposure, positive-frequency, boundary-excluded, and absolute-band bins.
+
+#### 3. The paper's assurance and evidence hierarchy are overstated
+
+- A green 173-cell graph does not cover TFV2, chronology, power, or claimability.
+- A popularity-only table cannot establish SASRec-family protocol parity.
+- Single-seed screening failures cannot establish neutral/harmful mechanisms or
+  bound a ceiling.
+- Mislabeling `store` as brand makes the data-use and attribution descriptions
+  false even if the current embeddings remain byte-stable.
+
+### Plausible risks and author verification required
+
+- What prospective power/MDE calculation justified eight independent runs per
+  arm? Seed intervals on one split quantify optimizer variability only.
+- Did visible epoch-wise test metrics or sequential arm completion influence
+  inspection, continuation, or planned prose? No blinded outcome holder exists.
+- How often does AR2023 `store` differ from `details.Brand` in each evaluated
+  category? The semantic magnitude is unmeasured; the labeling error is already
+  confirmed regardless of overlap.
+- Does BIPCL's full method contain a closer assignment or additive-integration
+  analogue than its abstract reveals? Until an equation-level comparison is
+  documented, treat it as a plausible novelty risk, not exact prior art.
+- Can LLM-ESR, SAGE-Rec, and FAERec be run on the exact AR2023 full-catalog
+  split? If not, provide a protocol/equation comparison and narrow the claim.
+- What governance review will precede release of per-user TFV2 sidecars?
+
+### External fact-check sources
+
+- [Amazon Reviews 2023 official schema](https://amazon-reviews-2023.github.io/)
+- [BIPCL primary manuscript](https://arxiv.org/abs/2604.02833)
+- [LLM-ESR, official NeurIPS 2024 proceedings](https://proceedings.neurips.cc/paper_files/paper/2024/hash/2f0728449cb3150189d765fc87afc913-Abstract-Conference.html)
+- [SAGE-Rec, official ACM DOI](https://doi.org/10.1145/3774904.3792456)
+- [FAERec primary manuscript](https://arxiv.org/abs/2604.03688)
+- [SpecTran primary manuscript](https://arxiv.org/abs/2601.21986)
+- [TIGER, official NeurIPS 2023 paper](https://papers.nips.cc/paper_files/paper/2023/file/20dcab0f14046a5c6b02b61da9f13229-Paper-Conference.pdf)
+- [Public repository](https://github.com/Ray0419/bestrec-sota-results) and
+  [v0.9 release](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence)
+
+### Concrete fixes in dependency order
+
+1. Quarantine TFV2 as exploratory/aborted and preserve all successful and
+   failed attempts immutably. Never promote partial/complete E2 or E3 to a
+   confirmatory family result.
+2. Withdraw p=0.0054 everywhere; report the complete tie-safe MI/VG estimates,
+   boundary sensitivities, and all-zero unseen-target result. Remove stale
+   paired FIR and cold-start implication wording.
+3. Let the current queue finish only as exploratory evidence. Freeze one
+   cutoff-complete inventory and independently validate every E3 artifact before
+   any descriptive full-family report.
+4. Replace the gate/runner with fail-closed, pretested, atomic, append-only
+   machinery that validates exact rows, cohorts, hashes, configs, checkpoints,
+   missing/zero-variance states, and Holm logic before marking completion.
+5. Remove/rename legacy `by_popularity.tail`; publish explicit
+   `zero_exposure`, `positive_frequency_primary`, `boundary_excluded`, and
+   `band_1_6` objects plus enough checkpoint/tie evidence to regenerate ranks.
+6. Correct `brand` to `store/seller name` throughout paper, code labels, and
+   attribution. If actual brand is scientifically intended, regenerate every
+   affected embedding, run, table, figure, and claim under a new protocol.
+7. Replace Table 1a's SASRec-family parity claim with retained tuned baselines,
+   or narrow it to a popularity floor. Relabel Table 2 as single-seed screening
+   and remove neutral/harmful/ceiling conclusions not supported by power.
+8. Correct public/private and release prose; publish IS/CD inputs plus TFV2
+   JSONs, sidecars, logs, state, adjudication, current manifests, and suitable
+   rank-regeneration artifacts after governance review.
+9. Add equation/protocol comparisons for BIPCL, LLM-ESR, SAGE-Rec, FAERec, and
+   SpecTran; correct TIGER lineage and keep TAPE/FIR novelty explicitly narrow.
+10. Cut the abstract radically, reflow page 15, enlarge pages 25/29, split page
+    32, remove page-7 whitespace, and visually inspect one canonical review PDF.
+
+### Open questions
+
+- Will the authors retract p=0.0054 before any further results are promoted?
+- Will CDs controls be allowed to finish without inspecting/acting on sequential
+  treatment outcomes, and will the result remain explicitly exploratory?
+- Why do all four categories have zero unseen-target hits through rank 100?
+- Which tail cohort is scientifically intended and which machine-readable field
+  will downstream tables be permitted to consume?
+- Was `store` deliberately chosen as a seller/manufacturer proxy, or was actual
+  brand intended? Where is that custom composition justified?
+- What tuned, retained in-pipeline baseline supports the +17.5% narrative?
+- What remains distinct about TAPE after equation-level SAGE-Rec/BIPCL review?
+
+### Running checklist
+
+- [x] Read automation memory and preserve the cumulative audit.
+- [x] Freeze the empirical boundary at 09:48:29.995; exclude live seed 64+.
+- [x] Confirm unchanged HEAD and canonical source/PDF hashes.
+- [x] Validate two new JSONs/three sidecars across 371,628 rows.
+- [x] Rebuild CDs tie-safe cohorts, legacy cohort, and zero-exposure results.
+- [x] Reproduce the missing-E3 plus zero-variance adjudicator crash.
+- [x] Re-run strict 173-cell rebuild, manifest verification, TeX health, and
+      diff hygiene.
+- [x] Recompute the repaired MI/VG four-arm contradiction and sensitivities.
+- [x] Audit baseline/power language and verify `store` versus `brand` against
+      source code and the official dataset schema.
+- [x] Recheck novelty/public-release facts and add primary-source links.
+- [x] Render and visually inspect the known high-risk TORS pages; remove temps.
+- [x] Update the prioritized rejection-risk list and append this run.
+- [ ] Quarantine TFV2 and withdraw p=0.0054, paired wording, and unseen-item
+      implications.
+- [ ] Repair the gate/runner, release boundary, estimands, metadata wording,
+      baselines, negative-map power, novelty coverage, and PDF layout.
+
+## Audit Run - 2026-07-20 08:47 Australia/Sydney
+
+### Audited state and strict verdict
+
+- **Workspace/branch:** `C:\Users\rayxc\Documents\R`,
+  `codex/bestrec-sota-results`.
+- **HEAD at the fixed cutoff:**
+  `43fa87be402f770e6e1a8d09dceb64792dd730b0`, unchanged from the prior
+  audit. `git diff 43fa87be..HEAD` is empty. No manuscript, TeX, bibliography,
+  figure, table, PDF, preregistration, experimental-code, or committed-result
+  repair landed.
+- **Fixed empirical cutoff:** 2026-07-20 08:47:45.778 Australia/Sydney. The
+  new in-scope outputs are IS no-filter seeds 20260836--38 and CDs filter seed
+  20260861. CDs filter seed 20260862 had no JSON or sidecar at the cutoff and is
+  excluded even if it completed later. The live queue was not stopped, edited,
+  or inspected through mutable partial output.
+- **Reviewer recommendation: REJECT in present form; preserve TFV2 as
+  exploratory/aborted.** Complete IS E2 arithmetic is highly favorable and
+  mechanically sound. It still cannot repair the family-level chronology,
+  absent E3/Holm verdict, crashing gate, fail-open runner, package attribution,
+  release boundary, contradicted manuscript p-value, or submission defects.
+- **Change scope:** this run edits only `PAPER_REVIEW_AUDIT.md`. The strict
+  legacy rebuild regenerated its ordinary tables byte-identically; no other
+  tracked diff resulted.
+
+### Fresh verification performed
+
+1. **All four new run bundles are internally coherent.** Independent streaming
+   validation covered four JSONs and eight validation-selected/final sidecars,
+   totaling 553,662 rows: 305,910 IS rows and 247,752 CDs rows. Every sidecar
+   has the expected unique user set; user and target IDs match an independently
+   reconstructed sorted split mapping; ranks are in range; `ndcg10`, `hr10`,
+   and `rr` reproduce from `rank0` (within floating summation precision);
+   selected/final JSON aggregates reproduce; embedded gzip digests match actual
+   SHA-256 values; split, cache, and code hashes match current bytes; realized
+   configs and `argv` match the repaired frozen command list; and all histories
+   contain 20 epochs without NaN/error signatures.
+
+   The validation-selected epochs are IS no-filter [15,16,9] for seeds
+   20260836--38 and CDs filter epoch 17 for seed 20260861. Each is the first
+   strict validation-NDCG maximum in its history. All four JSONs embed HEAD
+   `43fa87be...` and exact hashes, but also `git_dirty_tracked=true`; provenance
+   was sampled at output time rather than launch. No checkpoint/logit/tie
+   artifact exists, so the recorded ranks are internally auditable but cannot
+   be regenerated independently.
+
+2. **The completed frozen IS 8-vs-8 endpoint is strongly favorable
+   arithmetically.** Runs, not the repeated 50,985 users, are the inferential
+   units. The old +0.0021628030, p=8.05e-7 value was an 8-vs-5 interim and is
+   superseded by the complete comparison below.
+
+   | complete IS reading | filter (n=8) | no-filter (n=8) | filter - no-filter | Welch p | 95% CI |
+   |---|---:|---:|---:|---:|---:|
+   | overall selected | 0.0333598751 | 0.0312286676 | +0.0021312074 | 1.006e-10 | [+0.001862041,+0.002400374] |
+   | overall epoch-20 final | 0.0332048636 | 0.0310466229 | +0.0021582407 | 8.59e-9 | [+0.001839282,+0.002477199] |
+   | tie-safe positive tail, selected | 0.0029175549 | 0.0021420892 | +0.0007754657 | 1.76e-4 | [+0.000452681,+0.001098250] |
+   | tail excluding boundary f=5, selected | 0.0023794217 | 0.0016707387 | +0.0007086831 | 1.01e-4 | [+0.000427072,+0.000990294] |
+   | absolute band f=1--6, selected | 0.0035914273 | 0.0026894886 | +0.0009019387 | 5.76e-5 | [+0.000578426,+0.001225451] |
+   | legacy JSON `tail`, selected | 0.0021477287 | 0.0015107475 | +0.0006369812 | 1.02e-4 | [+0.000384163,+0.000889799] |
+
+   Every filter run exceeds every no-filter run; a post-hoc exact allocation
+   permutation gives the minimum attainable two-sided p=2/12,870=0.0001554,
+   and all 49 leave-one-per-arm 7-vs-7 checks remain positive. These robustness
+   facts reduce concern that one run alone drives the estimate. They do not
+   upgrade status: E3 is incomplete, Holm cannot run, outcomes were sequentially
+   visible, and the family adjudicator was written after MI/VG outcomes.
+
+3. **The IS cohort repair changes the machine-readable estimand, and the true
+   unseen-item boundary stays at zero.** The split has 25,848 items and
+   94 zero-training-exposure items yielding 332 test rows. The frozen nearest-
+   third positive-frequency tail is all frequencies 1--5: 9,453 items/11,362
+   test rows. Excluding frequency 5 gives 5,901 items/8,725 rows; band 1--6
+   gives 12,060 items/13,751 rows.
+
+   The legacy `by_popularity.tail` instead mixes the zero-exposure rows with an
+   item-ID-selected subset of the frequency-5 boundary. Its complete selected
+   delta is 17.9% below the correct tie-safe delta; its filter-arm mean is
+   26.39% below the correct filter tail. Across all 16 IS selected sidecars and
+   all 16 final readings, all 10,624 zero-exposure row-evaluations miss through
+   rank 100 (best rank 1,893). The favorable package effect therefore concerns
+   already-seen positive-frequency items, not new/unseen items.
+
+4. **The first CDs repair is a valid one-arm description, not E3.** The split
+   has 89,370 items, 52 zero-exposure items/247 test rows, and a frozen
+   positive-frequency tail of frequencies 1--5 (26,210 items/19,260 test rows).
+   Seed 20260861 selected overall NDCG@10 is 0.0660551387 at epoch 17; epoch-20
+   final is 0.0662381915. Correct-tail selected/final values are 0.0071605586/
+   0.0071738647. All 247 zero-exposure rows miss through rank 100 at both
+   readings. At cutoff there is one filter run and no no-filter run, so no
+   delta, interval, p-value, E3 outcome, breadth generalization, or Holm result
+   is estimable.
+
+   **Audit correction:** CDs also exposes a different legacy-tail defect. Its
+   JSON tail has 20,661 test rows: all 247 zero-exposure rows, all 19,260
+   positive-frequency 1--5 rows, and 1,154 rows from an ID-order subset of
+   frequency 6. It does not split frequency 5 or omit the frozen correct-tail
+   rows. The selected legacy mean (0.0072921516) is not the frozen-tail mean;
+   its direction relative to the correct mean does not cure the invalid label.
+
+5. **The mechanical adjudicator still crashes before a complete report.** A
+   direct read-only run prints E1, the corrected complete E2
+   (+0.002131, p=1.01e-10), and `E3: NOT ADJUDICABLE` for missing CDs seed
+   20260862, then exits 1 with `ZeroDivisionError` at
+   `_bestrec_run/adjudicate_tfv2.py:98` on the all-zero MI secondary stratum.
+   It reads E2/E3 directly from aggregate JSON and does not validate rows,
+   targets, ranks, formulas, commands, configs, selected/final policy, or
+   digests. Without the later zero-variance crash, missing primary families
+   would still return exit 0.
+
+6. **The runner remains fail-open and its state markers contradict reality.**
+   It continues after any failed command, overwrites a job's prior log on retry,
+   skips solely on JSON path existence, writes JSON directly to the final path,
+   never invokes adjudication, and unconditionally touches DONE. The stale
+   `TFV2_CAMPAIGN.DONE` timestamp remains 05:56:28 while the repaired CDs queue
+   runs. `FAILURES.log` still lists all 32 original IS/CD parser failures even
+   where the overwritten per-job logs now document success. Neither DONE nor
+   file existence is a trustworthy gate.
+
+7. **The release boundary still excludes every new result needed for E2/E3.**
+   All 16 IS and current CDs JSONs are untracked; selected/final sidecars, logs,
+   and DONE are ignored; `RELEASE_MANIFEST.json` lists no TFV2 artifact. The
+   public release lacks IS/CD splits and caches. Exact embedded hashes are
+   useful tamper evidence, but a reviewer cannot fetch a declared bundle,
+   rebuild the cohorts, regenerate ranks, or run E2/E3 from a clean clone.
+
+8. **No manuscript correction landed.** The false cross-dataset p=0.0054
+   remains at `PAPER_SUBMISSION.md:18,22,38,104,358,542`,
+   `paper_tex/sections/abstract.tex:8,12`,
+   `paper_tex/sections/01-introduction.tex:20`,
+   `paper_tex/tables/table0_novelty.tex:21`,
+   `paper_tex/sections/05-results.tex:116`, and
+   `paper_tex/sections/07-conclusion.tex:6`; the complete tie-safe value is
+   p=0.12725. `PAPER_SUBMISSION.md:306` and
+   `paper_tex/sections/05-results.tex:57` still call the FIR comparisons
+   paired. `paper_tex/sections/06-discussion.tex:48,79` retains queued-work
+   prose, and `CANONICAL_SUBMISSION.md:67` still says 168 cells while the live
+   graph has 173. No TFV2 value has entered the paper, which is correct and must
+   be preserved until the evidence is honestly rewritten.
+
+9. **Fresh legacy checks are green but do not cover TFV2 validity.** The strict
+   rebuild again passes exact HSTU core parity, recomputes 173 cells (153 exact,
+   20 within rounding, zero mismatch/untraceable), sources 14/14 declared
+   families, and verifies 153 local files. `--verify-git HEAD` passes all 128
+   git-backed entries; TeX health passes 32 sources/39 labels/27 reference
+   targets; `git diff --check` passes. The wrapper still excludes TFV2 and
+   requires favorable legacy FIR breadth outcomes whose paired interpretation
+   has been withdrawn.
+
+10. **Public availability prose is still false in both directions.** Anonymous
+    GitHub/API inspection identifies the repository as public and v0.9 as an
+    18-asset release containing 12 legacy split CSVs, four legacy text caches,
+    the manifest, and parity archive. `README.md:5,77`,
+    `PAPER_SUBMISSION.md:22,557`, `paper_tex/sections/abstract.tex:12`,
+    `paper_tex/sections/08-availability.tex:6`, and
+    `DOI_DEPOSIT_INSTRUCTIONS.md:17` still say private/upload pending. The
+    proper repair must say legacy inputs are public while IS/CD TFV2 inputs are
+    not.
+
+11. **The novelty boundary remains materially incomplete.** Primary sources
+    confirm: LLM-ESR already combines cached semantic and collaborative views
+    for long-tail sequential recommendation; SAGE-Rec uses fuzzy semantic
+    prototype transfer from head to tail items, closely adjacent to TAPE;
+    FAERec adaptively gates and aligns semantic/ID embeddings specifically for
+    tail-item SR. None occurs in source or bibliography. TIGER's official paper
+    uses Amazon Reviews through July 2014 and filters users with fewer than five
+    reviews; it does not document the manuscript's iterative AR2023 user-and-
+    item 5-core, so the repeated “matches TIGER/LIGER” claim is false.
+
+    A fresh SIGIR-2026 check also identifies SpecTran, a full paper using a
+    spectral-domain adapter for LLM semantic embeddings in SR. It does not
+    anticipate this paper's temporal left-causal FIR, so no exact-prior-art
+    claim is made. It does require citation and a clean distinction from the
+    manuscript's separate, retracted embedding-spectrum discussion. The
+    narrow FIR implementation may survive as incremental engineering; the broad
+    text/tail/TAPE novelty framing does not survive unchanged.
+
+12. **Encoder provenance is version-incomplete.** The BLaIR 10%-sample/
+    RoBERTa-base checkpoint facts come from arXiv v1, while the unversioned
+    record now resolves to a materially revised ACL-2026 paper. The official
+    checkpoint page supports revision
+    `88adfe2b621cb202dee9aabb19b59de8f622844c`, but scripts do not pin it. The
+    MiniLM model-card BibTeX key exists yet is not cited in compiled TeX. No
+    evidence of mixed local weights was found; the confirmed defect is
+    incomplete attribution and non-reproducible revision selection.
+
+13. **The unchanged PDFs retain the known submission defects.** Canonical
+    hashes remain `b24ff14f...` for the 51-page reader and `93265672...` for the
+    46-page TORS PDF. A fresh PyMuPDF render and visual inspection of TORS pages
+    1--3, 7, 15, 25, 29, and 32 reconfirmed: the abstract consumes three pages;
+    page 7 has a large whitespace void; page 15 has severe category/role
+    wrapping and collision; the figures on pages 25/29 are undersized; and page
+    32 is a tiny, dense table. No new clipping, missing glyph, or black-box
+    defect appeared. The renderer fallback was used because the bundled
+    Poppler wrapper could not resolve its dependency path; temporary PNGs were
+    removed after inspection.
+
+### Confirmed interpretation and rejection-level consequences
+
+#### 1. Preserve the complete IS result, but label it correctly
+
+- It is not a fragile partial look: all eight runs per arm exist, artifacts and
+  frozen cohorts validate, all filter values exceed all controls, and selected/
+  final readings agree.
+- It estimates the FIR-plus-initialization/optimizer package on one fixed IS
+  split. It does not identify the FIR component alone and does not establish
+  unseen-item retrieval.
+- It is not a confirmatory family result. E3 and Holm do not exist, the
+  adjudicator was committed after E1-family outcomes, and the runner/gate do not
+  enforce the preregistered boundary.
+
+#### 2. The manuscript's current tail story is untenable
+
+- Complete VG provides no robust text-tail win and reverses under its boundary
+  sensitivity.
+- Complete tie-safe MI--VG is p=0.127, not p=0.0054.
+- MI, VG, IS, and the first CDs run retrieve no zero-training-exposure target
+  through rank 100.
+- A strict revision must present legacy versus tie-safe cohorts, positive-
+  frequency scope, boundary sensitivities, and the unseen-target negative result.
+
+#### 3. The advertised assurance apparatus is not demonstrated by TFV2
+
+- Parser-invalid frozen commands, outcome-exposed repair, a crashing/non-
+  validating adjudicator, a fail-open runner, stale DONE, ignored evidence, and
+  missing release inputs are realized failures, not hypothetical edge cases.
+- The 173-cell legacy graph remains useful arithmetic traceability. It does not
+  certify chronology, estimand validity, complete multiplicity, component
+  attribution, release reconstruction, or claimability.
+
+### Plausible risks and author verification required
+
+- What prospective power/MDE calculation justified eight independent runs per
+  arm? The preregistration supplies no variance or power basis.
+- Seed-level intervals on one fixed split measure optimizer variability, not
+  uncertainty across splits, catalog draws, or a target population.
+- Strict-better `rank0` values cannot expose score-tie prevalence. Checkpoints,
+  logits, or tie summaries are needed to regenerate and sensitivity-test ranks.
+- Did visible epoch-wise test metrics or sequential arm completion influence
+  any inspection, continuation, or planned prose? No improper intervention is
+  inferred, but no blinded holder or outcome firewall existed.
+- Would equal-parameter cloned-backbone controls retain the IS difference, or
+  is some/all of it due to the 513-parameter and optimizer-path package?
+- Can LLM-ESR, SAGE-Rec, and FAERec be run under the exact AR2023 full-catalog
+  split? If not, the paper needs an explicit equation/protocol comparison and a
+  narrower novelty claim rather than an implied empirical displacement.
+- What governance and de-identification review will precede release of the
+  per-user TFV2 sidecars?
+
+### External fact-check sources
+
+- [LLM-ESR, official NeurIPS 2024 proceedings](https://proceedings.neurips.cc/paper_files/paper/2024/hash/2f0728449cb3150189d765fc87afc913-Abstract-Conference.html)
+- [SAGE-Rec, official ACM DOI](https://doi.org/10.1145/3774904.3792456)
+- [FAERec primary manuscript](https://arxiv.org/abs/2604.03688) and
+  [official SIGIR 2026 program](https://sigir2026.org/SIGIR2026_program.pdf)
+- [SpecTran primary manuscript](https://arxiv.org/abs/2601.21986) and
+  [official ACM DOI](https://doi.org/10.1145/3805712.3809701)
+- [TIGER, official NeurIPS 2023 paper](https://papers.nips.cc/paper_files/paper/2023/file/20dcab0f14046a5c6b02b61da9f13229-Paper-Conference.pdf)
+- [LIGER primary manuscript](https://arxiv.org/abs/2411.18814)
+- [BLaIR arXiv v1](https://arxiv.org/pdf/2403.03952v1),
+  [ACL 2026 record](https://aclanthology.org/2026.acl-long.147/), and
+  [official checkpoint revision](https://huggingface.co/hyp1231/blair-roberta-base/tree/main)
+- [all-MiniLM-L6-v2 official model card](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
+- [Public repository](https://github.com/Ray0419/bestrec-sota-results) and
+  [v0.9 evidence release](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence)
+
+### Concrete fixes in dependency order
+
+1. Quarantine TFV2 as exploratory/aborted and preserve every successful and
+   failed attempt immutably. Do not relabel complete E2 as confirmatory.
+2. Withdraw p=0.0054 everywhere; add the complete tie-safe MI/VG results,
+   boundary sensitivities, and all-zero unseen-target findings. Remove stale
+   paired FIR wording and distinguish temporal causality from treatment
+   attribution.
+3. Allow the live queue to finish only as exploratory evidence. Freeze one
+   cutoff-complete inventory and independently validate E3 before reporting a
+   descriptive three-endpoint family; never backfill a confirmatory label.
+4. Replace the adjudicator with a pretested fail-closed implementation that
+   validates exact files, rows, targets, ranks, formulas, commands, configs,
+   code/data/cache/sidecar hashes, selected/final policy, nonempty/zero-variance
+   cohorts, and Holm logic. Separate artifact completeness from scientific
+   PASS/FAIL in machine-readable output.
+5. Replace the runner with an explicit state manifest: retire stale DONE on
+   restart, stop on first failure, use append-only attempt logs and atomic
+   output, validate before skip, invoke adjudication, and mark completion only
+   after exact artifact verification.
+6. Remove/rename `by_popularity.tail`; emit explicit `zero_exposure`,
+   `positive_frequency_primary`, `boundary_excluded`, and `band_1_6` objects,
+   and make downstream use of the legacy field fail closed.
+7. Publish IS/CD splits and caches plus all TFV2 JSONs, sidecars, logs, state,
+   adjudication output, and a current manifest. Include enough checkpoint/tie
+   evidence to regenerate ranks, subject to privacy/governance review.
+8. Narrow FIR attribution to the package or run a cloned-backbone,
+   equal-parameter, nonsingular, weight-decay-controlled component experiment.
+9. Correct TIGER/LIGER lineage and public/private prose; add equation/protocol
+   comparisons for LLM-ESR, SAGE-Rec, FAERec, and SpecTran. Version BLaIR
+   citations/checkpoints explicitly and cite/pin the MiniLM model card.
+10. Cut the abstract radically, reflow page 15, enlarge pages 25/29, split page
+    32, remove the page-7 void, remove queued-work prose, synchronize 168/173,
+    and visually inspect one canonical review build before submission.
+
+### Open questions
+
+- Will the authors retract p=0.0054 now that the complete tie-safe contrast is
+  p=0.127, and will the correction propagate to every source and rendered PDF?
+- Will complete IS be frozen as favorable exploratory package evidence rather
+  than promoted while E3/Holm and prospective family integrity remain absent?
+- Why does every audited TFV2 category have zero hits through rank 100 for all
+  zero-training-exposure targets, and what cold-start wording will be withdrawn?
+- Which cohort is scientifically intended: legacy index-order tercile,
+  nearest-third whole-frequency tail, boundary-excluded tail, or band 1--6?
+- Who will own blinded analysis/test access and immutable state in any valid
+  successor campaign?
+- Where will IS/CD inputs, sidecars, logs, and checkpoint/tie evidence be
+  deposited for credential-free reconstruction?
+- What remains distinct about TAPE after an equation-level SAGE-Rec comparison,
+  and what remains distinct about the broad tail/text claim after LLM-ESR and
+  FAERec?
+
+### Running checklist
+
+- [x] Read automation memory and preserve the cumulative audit.
+- [x] Freeze the empirical boundary at 08:47:45.778 and exclude CDs seed 62+.
+- [x] Confirm unchanged HEAD, source/PDF hashes, and tracked-diff scope.
+- [x] Validate four new JSONs/eight sidecars across 553,662 rows.
+- [x] Recompute complete IS selected/final, tie-safe, boundary-excluded,
+      band-1--6, legacy-tail, exact-permutation, and zero-exposure readings.
+- [x] Audit the first CDs run, split cohorts, legacy-tail membership, and
+      zero-exposure ranks without treating it as a contrast.
+- [x] Reproduce adjudicator failure and inspect runner/log/DONE/state behavior.
+- [x] Re-run strict 173-cell rebuild, manifest/HEAD verification, TeX health,
+      and diff hygiene.
+- [x] Recheck primary novelty sources, TIGER lineage, encoder provenance, and
+      public release state.
+- [x] Render and visually inspect the known high-risk TORS pages under the PDF
+      workflow.
+- [x] Update the prioritized rejection-risk list and append this run.
+- [ ] Quarantine TFV2 and withdraw p=0.0054, paired wording, and unseen-item
+      implications.
+- [ ] Implement and independently test a complete fail-closed successor before
+      any new outcome-bearing confirmatory campaign.
+- [ ] Repair release scope, FIR attribution, novelty coverage, encoder pins,
+      public-state prose, abstract, tables, figures, and evidence hierarchy.
+
+## Audit Run - 2026-07-20 07:46 Australia/Sydney
+
+### Audited state and strict verdict
+
+- **Workspace/branch:** `C:\Users\rayxc\Documents\R`,
+  `codex/bestrec-sota-results`.
+- **HEAD at the fixed cutoff:**
+  `43fa87be402f770e6e1a8d09dceb64792dd730b0`, unchanged from the prior
+  audit. `git diff 43fa87be..HEAD` is empty: no manuscript, TeX, bibliography,
+  figure, table, PDF, experimental code, preregistration, or committed result
+  repair landed.
+- **Fixed empirical cutoff:** 2026-07-20 07:46:02.843 Australia/Sydney. It
+  includes IS filter seeds 20260821--28 and no-filter seeds 20260831--35.
+  No-filter seed 20260836 was still running and completed at 07:48:32, so it
+  and every later artifact are deliberately excluded from this audit's
+  calculations.
+- **Reviewer recommendation: REJECT in present form; preserve TFV2 as
+  exploratory/aborted.** The cutoff adds a strong-looking but incomplete IS
+  package-effect interim. It does not cure the broken prospective chronology,
+  incomplete 8-vs-8 E2, wholly absent E3, unavailable Holm family, crashing
+  gate, null corrected MI--VG contrast, release gap, or manuscript/layout
+  defects.
+- **Change scope:** this audit edits only `PAPER_REVIEW_AUDIT.md`. It did not
+  stop, edit, restart, or otherwise disturb the live TFV2 queue. The project
+  strict build rewrote its ordinary generated table output byte-identically;
+  no additional tracked diff resulted.
+
+### Fresh verification performed
+
+1. **The cutoff-bounded IS artifacts are internally exact.** Independent
+   streaming validation covered all 13 result JSONs and all 26 selected/final
+   sidecars: 1,325,610 rows total, of which 815,760 rows are new relative to
+   the prior 06:45 cutoff. Every sidecar has exactly 50,985 unique users. User
+   and target IDs match the independently reconstructed split mapping; ranks
+   are in range; `ndcg10`, `hr10`, and `rr` reproduce exactly from `rank0`;
+   JSON overall and legacy-bucket aggregates reproduce; embedded and actual
+   gzip SHA-256 digests agree; split, cache, and code hashes agree; frozen
+   commands match embedded `argv`; and arm configurations are exact. Filter
+   uses `causal_filter=true`, K=8 and 11,750,463 parameters; no-filter uses
+   `causal_filter=false`, inert K=50 and 11,749,950 parameters.
+
+   The filter validation-selected epochs are [15,16,14,13,15,16,15,13]; the
+   five cutoff no-filter epochs are [15,16,16,18,14]. Each is the strict
+   maximum validation NDCG recorded in its history. The successful no-filter
+   logs contain no warning, error, or NaN signature. This is strong artifact
+   integrity, but it is not a complete endpoint or prospective-validity result.
+
+2. **The IS direction is favorable and stable, but the comparison is an
+   unplanned 8-vs-5 interim.** Training runs, not the repeated 50,985 users,
+   are the inferential units.
+
+   | cutoff IS reading | filter | no-filter | filter - no-filter | Welch p | 95% CI |
+   |---|---:|---:|---:|---:|---:|
+   | overall selected | 0.0333598751 (n=8) | 0.0311970720 (n=5) | +0.0021628030 | 8.05e-7 | [+0.001809873,+0.002515733] |
+   | overall epoch-20 final | 0.0332048636 (n=8) | 0.0310440238 (n=5) | +0.0021608398 | 1.51e-5 | [+0.001746527,+0.002575152] |
+   | tie-safe positive tail, selected | 0.0029175549 (n=8) | 0.0021884057 (n=5) | +0.0007291492 | 8.20e-5 | [+0.000466526,+0.000991772] |
+   | legacy JSON `tail`, selected | 0.0021477287 (n=8) | 0.0015422082 (n=5) | +0.0006055205 | 3.04e-5 | [+0.000411945,+0.000799096] |
+
+   The overall delta is close to and statistically compatible with the older
+   reported IS package-effect magnitude (+0.0024); it creates no new numerical
+   contradiction and is a genuine favorable descriptive observation. It is
+   **not E2**: three no-filter seeds were absent, E3 had no successful result,
+   the Holm family could not be run, and every sequential outcome was visible.
+   The stable selected/final direction is a confirmed non-problem; it does not
+   repair the family or chronology.
+
+3. **The corrected IS cohorts remain materially different from the machine-
+   readable legacy tail.** The split has 25,848 items, 94 zero-training-
+   exposure items, and 332 zero-exposure test rows. The frozen nearest-third
+   positive-frequency primary contains all frequencies 1--5: 9,453 items and
+   11,362 test rows. Excluding boundary frequency 5 gives 5,901 items/8,725
+   rows; band [1,6] gives 12,060 items/13,751 rows. The incomplete contrasts are
+   favorable on both sensitivities (+0.0006678411, p=1.28e-4; +0.0008187522,
+   p=3.43e-6), but remain secondary and incomplete.
+
+   The JSON legacy `by_popularity.tail` instead has 8,616 items/10,592 test
+   rows. It mixes all 94 zero-exposure items/all 332 rows with only 2,621 of
+   3,552 frequency-5 items, selected by stable item-ID order. Across the full
+   filter arm its mean is 26.39% below the correct positive-frequency mean.
+   Favorable signs in this snapshot do not make the two estimands interchangeable.
+
+4. **The unseen-target result stays uniformly negative.** Across all 13 IS
+   selected sidecars and all 13 final sidecars, every one of the 8,632 repeated
+   zero-exposure row evaluations misses through rank 100. The five new
+   no-filter runs alone contribute 3,320 selected/final misses; their best such
+   rank is still 2,084. MI and VG previously produced the same all-zero result.
+   Neither semantic features nor the FIR package currently supports an unseen-
+   item or cold-start-rescue statement.
+
+5. **The adjudicator still crashes and is not an artifact gate.** A direct
+   run prints E1, reports E2/E3 missing, then exits 1 with `ZeroDivisionError`
+   at `_bestrec_run/adjudicate_tfv2.py:98` when both MI zero-exposure arms have
+   zero variance. E2/E3 read `best_test.NDCG@10` directly from JSON rather than
+   rebuilding it from sidecars; expected rows, unique users, targets, ranks,
+   formulas, commands, configs, digests, selected/final policy, and provenance
+   are not validated. Missing primaries only print `NOT ADJUDICABLE`; without
+   the later crash the program reaches return 0.
+
+6. **The runner's state machine remains fail-open and contradictory.** It
+   continues after failure, overwrites each per-job log on retry, skips any
+   extant JSON without validating completeness, writes result JSON directly to
+   the final path, never invokes adjudication, and unconditionally touches
+   DONE. At the cutoff, the stale `TFV2_CAMPAIGN.DONE` timestamp was still
+   05:56:28 while no-filter seed 20260836 was actively training.
+   `FAILURES.log` still labels all repaired IS jobs as failed while their
+   overwritten per-job logs now document success. File existence and DONE are
+   therefore not trustworthy completion signals.
+
+7. **The reviewer evidence boundary has grown but remains unreconstructable.**
+   At cutoff there are 45 TFV2 JSONs (32 committed MI/VG plus 13 untracked IS)
+   and 76 selected/final sidecars totaling about 93.9 MB. Every sidecar, TFV2
+   log, and DONE marker is ignored; `RELEASE_MANIFEST.json` lists no TFV2
+   artifact. All IS JSONs record the matching HEAD and exact code/data hashes
+   but also `git_dirty_tracked=true`; the historical dirty path set/diff is not
+   embedded. Checkpoints, logits/tie counts, learned filter taps, and gate state
+   are still absent.
+
+8. **The manuscript has not absorbed the corrected evidence.** The source
+   still says the MI--VG cross-dataset gap is significant at p=0.0054 in
+   `PAPER_SUBMISSION.md:18,22,38,104,358,542`,
+   `paper_tex/sections/abstract.tex:8,12`,
+   `paper_tex/sections/01-introduction.tex:20`,
+   `paper_tex/tables/table0_novelty.tex:21`,
+   `paper_tex/sections/05-results.tex:116`, and
+   `paper_tex/sections/07-conclusion.tex:6`. The complete tie-safe 8-vs-8
+   contrast is p=0.12725. In addition, `PAPER_SUBMISSION.md:306` and
+   `paper_tex/sections/05-results.tex:57` still call FIR breadth "paired
+   filter-vs-no-filter contrasts," contradicting the withdrawn pairing
+   interpretation stated elsewhere. `paper_tex/sections/06-discussion.tex:48,79`
+   also contains submission-internal TODO prose (an exact-mean reconciliation
+   and full graph-taxonomy audit are "queued"). `CANONICAL_SUBMISSION.md:67`
+   still says 168 artifact cells while the live gate reports 173. Finally, the
+   conclusion repeatedly names the filter itself as the empirical contribution
+   even though the identified treatment is the FIR-plus-initialization/
+   optimizer package; "causal" is defensible for left-causal sequence flow, not
+   for component-level attribution.
+
+9. **The project's own legacy gates remain arithmetically green but do not
+   cover the new failure mode.** `paper_tex/check_tex_health.py` passes with
+   32 sources, 39 labels, and 27 reference targets. The strict rebuild passes
+   HSTU core parity, recomputes 173 cells (153 exact, 20 within rounding, zero
+   mismatch/untraceable), sources all 14 declared families, and verifies 153
+   manifest files. It still excludes TFV2 and treats favorable legacy FIR
+   breadth outcomes as build requirements. `git diff --check` passes.
+
+10. **Public availability prose remains factually stale.** Direct GitHub and
+    API inspection again finds the repository public and the v0.9 release with
+    18 uploaded assets: 12 split CSVs and four text caches for MI, VG, Office,
+    and Beauty, plus the manifest and parity ZIP. `README.md:5,77`,
+    `PAPER_SUBMISSION.md:22,557`, `paper_tex/sections/08-availability.tex:6`,
+    and `DOI_DEPOSIT_INSTRUCTIONS.md:17` still say private/upload pending. No
+    IS/CD split or cache is among those 18 assets, so the correct statement is
+    not simply "complete": legacy inputs are public; TFV2 E2/E3 inputs are not.
+
+11. **The closest-work omission remains confirmed.** A fresh primary-source
+    check reconfirms that LLM-ESR explicitly combines semantic and collaborative
+    views for long-tail sequential recommendation, while FAERec explicitly
+    uses adaptive semantic/ID fusion plus alignment for tail-item SR. SAGE-Rec's
+    head-prototype-to-tail transfer remains closely adjacent to TAPE. None of
+    LLM-ESR, SAGE-Rec, or FAERec occurs in the manuscript source or bibliography.
+    Exact identity to TAPE is not established; omission of the closest problem/
+    mechanism line and an overstated novelty boundary are established.
+
+12. **No PDF/layout repair landed.** Canonical hashes remain
+    `b24ff14f...` for the 51-page reader and `93265672...` for the 46-page TORS
+    PDF (`PAPER_TORS_acmsmall.pdf` is 47 pages, `d6705ed6...`). The unchanged
+    artifacts retain the approximately 1,801-word/four-page reader abstract,
+    three-page TORS abstract, page-7 whitespace void, page-15 table collision/
+    wrapping, undersized figures on pages 25/29, and tiny dense table on page 32.
+    A fresh 2x PyMuPDF render of TORS pages 1--3, 7, 15, 25, 29, and 32
+    reconfirmed these defects: the abstract consumes nearly all of pages 1--3;
+    page 7 is less than half used; category/role text collides in the page-15
+    table; the page-29 plot is especially small amid large whitespace; and the
+    page-32 table uses print-hostile density. No new clipping, missing-glyph, or
+    black-box defect was detected. This run's eight temporary PNGs and exact
+    render directory were removed after inspection.
+
+### Confirmed interpretation and rejection-level consequences
+
+#### 1. The favorable IS interim deserves preservation, not promotion
+
+- Its row-level artifacts, commands, selected epochs, and hashes are sound.
+- Selected and final readings agree, and its magnitude corroborates the older
+  IS package effect.
+- The frozen design is nevertheless 8-vs-8 and jointly Holm-adjusted with E1
+  and E3. An 8-vs-5 look after sequential output inspection is not E2.
+- Report it only in an immutable exploratory campaign record until all arms are
+  complete and independently verified; even then, TFV2's chronology prevents a
+  confirmatory label.
+
+#### 2. The corrected tail evidence now requires manuscript retraction
+
+- Complete VG does not show a text-tail effect and reverses sign when its
+  boundary frequency is excluded.
+- The complete tie-safe MI--VG contrast is p=0.127, not p=0.0054.
+- Zero-exposure retrieval is uniformly absent across MI, VG, and IS.
+- A strict revision must replace the defective nominal-cohort significance
+  story with both legacy and corrected cohorts, explicitly exploratory status,
+  boundary sensitivities, and the unseen-target negative result.
+
+#### 3. The paper's advertised assurance apparatus is not demonstrated by TFV2
+
+- Frozen commands were not parser-complete, the repair followed outcome
+  inspection, the adjudicator crashes and omits artifact checks, the runner is
+  fail-open, and release inputs are incomplete.
+- A green 173-cell legacy graph remains useful arithmetic traceability. It does
+  not certify prospective chronology, a valid estimand, complete endpoints,
+  release reconstruction, or claimability.
+
+### Plausible risks and author verification required
+
+- The three missing no-filter seeds can change the IS point estimate and
+  interval; no stopping or scientific interpretation should use the favorable
+  partial result.
+- What prospective MDE/power calculation justified eight independent seeds per
+  arm? The preregistration provides no variance/power basis.
+- Seed-level intervals on one fixed split capture optimizer variation, not
+  dataset, split, or population uncertainty.
+- Sidecars use strict-better ranks. Without logits or tie counts, score-tie
+  prevalence and tie-policy sensitivity cannot be audited.
+- Did visible epoch-wise test values or sequential arm histories influence any
+  continuation, inspection, or planned paper update? No intervention is
+  inferred, but no blinded analysis holder exists.
+- Can LLM-ESR, SAGE-Rec, and FAERec be run under this full-catalog AR2023 split,
+  or must the paper restrict itself to a transparent protocol/mechanism table?
+- What review and governance process will apply before per-user sidecars are
+  released?
+
+### External fact-check sources
+
+- LLM-ESR, official NeurIPS 2024 proceedings:
+  https://proceedings.neurips.cc/paper_files/paper/2024/hash/2f0728449cb3150189d765fc87afc913-Abstract-Conference.html
+- SAGE-Rec, ACM DOI record: https://doi.org/10.1145/3774904.3792456
+- FAERec primary manuscript: https://arxiv.org/abs/2604.03688
+- TIGER primary manuscript: https://arxiv.org/abs/2305.05065
+- Public repository: https://github.com/Ray0419/bestrec-sota-results
+- Public v0.9 release:
+  https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence
+- OpenTimestamps client documentation:
+  https://github.com/opentimestamps/opentimestamps-client#usage
+- ACM LaTeX review-format guidance:
+  https://authors.acm.org/binaries/content/assets/publications/taps/latex-best_practices-06-may-2020.pdf
+- ACM TORS scope announcement:
+  https://www.acm.org/binaries/content/assets/press-releases/2022/march/tors-launch.pdf
+
+### Concrete fixes in dependency order
+
+1. Mark TFV2 exploratory/aborted everywhere and preserve every completed and
+   failed attempt immutably. Do not let later completion overwrite its chronology.
+2. Withdraw p=0.0054 from abstract, introduction, novelty table, results, and
+   conclusion. Add the corrected MI/VG whole-frequency 8-vs-8 results,
+   boundary sensitivities, and all-zero unseen-target result.
+3. Let the current queue finish only as exploratory evidence. Do not report the
+   8-vs-5 IS look as E2; independently validate 8-vs-8 and E3 before describing
+   the complete descriptive family.
+4. Replace the adjudicator with a pretested fail-closed implementation that
+   validates the exact artifact set, rows, targets, ranks, formulas, commands,
+   configs, code/data/cache/sidecar hashes, checkpoint policy, nonempty cohorts,
+   zero variance, and Holm logic. Emit separate machine states for artifact
+   completeness and scientific PASS/FAIL.
+5. Replace the runner with an explicit state manifest: clear/retire stale DONE
+   at restart, fail immediately, keep append-only attempt logs, write atomically,
+   validate existing files before skip, invoke adjudication, and create DONE
+   only after exact validation.
+6. Rename/remove legacy `by_popularity.tail`; emit explicit `zero_exposure`,
+   `positive_frequency_primary`, `boundary_excluded`, and `band_1_6` objects,
+   and make downstream use of the old field fail closed.
+7. Publish IS/CD splits and caches plus all TFV2 JSONs, sidecars, logs, state,
+   adjudication output, and a current manifest. Retain sufficient model/tie
+   evidence to regenerate ranks and inspect the learned FIR package.
+8. Narrow the FIR claim to the full package or run a cloned-backbone,
+   equal-parameter, nonsingular, weight-decay-controlled component experiment.
+   Remove the stale "paired" sentences regardless. Delete the queued-work prose
+   and synchronize `CANONICAL_SUBMISSION.md` from 168 to the authoritative live
+   count.
+9. Correct public/private prose and TIGER lineage; add LLM-ESR, SAGE-Rec, FAERec,
+   and LLMSQRec to the bibliography and novelty table with direct protocol and
+   mechanism comparisons.
+10. Compress the abstract radically, reflow page 15, enlarge pages 25/29, split
+    page 32, remove the page-7 void, and visually inspect one canonical review
+    build before submission.
+
+### Open questions
+
+- Will the authors retract the repeated p=0.0054 claim now that the complete
+  tie-safe contrast is p=0.127?
+- Will the favorable incomplete IS result be frozen as exploratory rather than
+  promoted before seeds 36--38, E3, and Holm are available?
+- Which scientific population is intended by the nominal tercile, nearest-third
+  whole-frequency cohort, boundary exclusion, or absolute band, and why should
+  a reader accept a mechanism claim when these choices change the VG sign?
+- Why do all three TFV2 datasets have zero hits through @100 on every
+  zero-training-exposure target?
+- Who will independently own analysis/test access in any valid successor run?
+- Where will the IS/CD inputs and TFV2 evidence be deposited for a credential-
+  free clean reconstruction?
+- What remains distinct between TAPE and the LLM-ESR/SAGE-Rec/FAERec line after
+  aligned tail definitions and protocols?
+
+### Running checklist
+
+- [x] Read automation memory and preserve the cumulative audit.
+- [x] Freeze the empirical boundary at 07:46:02.843 and defer seed 20260836+.
+- [x] Confirm unchanged HEAD, manuscript/PDF hashes, and tracked diff scope.
+- [x] Validate all 13 cutoff IS JSONs and 26 selected/final sidecars across
+      1,325,610 rows.
+- [x] Recompute overall selected/final, positive-tail, boundary-excluded,
+      band-[1,6], legacy-tail, and zero-exposure readings independently.
+- [x] Reproduce the adjudicator crash and inspect missing-arm, artifact, exit,
+      runner, log, JSON-write, and DONE behavior.
+- [x] Re-run TeX health, strict 173-cell rebuild, parity, release-manifest, and
+      diff hygiene checks.
+- [x] Recheck public repository/release state and closest literature against
+      primary sources.
+- [x] Recheck the canonical PDF page counts/hashes and visually inspect the
+      known defect pages under the PDF workflow.
+- [x] Update the prioritized rejection-risk list and append this run.
+- [ ] Quarantine TFV2 and withdraw the p=0.0054 and stale paired wording.
+- [ ] Implement and independently test a complete fail-closed successor before
+      any new outcome-bearing campaign.
+- [ ] Repair release scope, FIR attribution, novelty coverage, abstract, tables,
+      figures, public-state prose, and evidence hierarchy before submission.
+
+## Audit Run - 2026-07-20 06:45 Australia/Sydney
+
+### Audited state and strict verdict
+
+- **Workspace/branch:** `C:\Users\rayxc\Documents\R`,
+  `codex/bestrec-sota-results`.
+- **HEAD at the fixed cutoff:**
+  `43fa87be402f770e6e1a8d09dceb64792dd730b0`. Relative to the prior
+  manuscript cutoff, this commit adds the TFV2 erratum/adjudicator, regenerated
+  commands, and 32 MI/VG JSONs; it does not change the manuscript, TeX,
+  bibliography, figures, tables, or canonical PDFs. The only tracked worktree
+  modification was this cumulative audit.
+- **Fixed empirical cutoff:** 2026-07-20 06:45:02 Australia/Sydney. The complete
+  8-vs-8 MI and VG arms, repaired IS filter seeds 20260821--25, their selected
+  and final sidecars, and the committed erratum/adjudicator existed. IS seed
+  20260826 was still running and completed at 06:46:30, so seed 20260826 and all
+  later artifacts are deliberately excluded. The ignored DONE marker retained
+  its old 05:56:28 timestamp throughout the restarted queue.
+- **Reviewer recommendation: REJECT in present form; quarantine TFV2 as
+  exploratory/aborted.** The newly complete VG endpoint is nonsignificant and
+  boundary-dependent, the tie-safe full MI-minus-VG contrast no longer supports
+  the paper's significant cross-dataset claim, E2/E3 are incomplete, and the
+  adjudicator crashes before producing a verdict. The paper's lead assurance
+  contribution is contradicted by the operation of its own latest campaign.
+- **Change scope:** this audit changes only `PAPER_REVIEW_AUDIT.md`. It did not
+  stop, edit, restart, or otherwise disturb the live queue and did not modify
+  any manuscript, result, sidecar, log, preregistration, release, or source
+  artifact. Read-only diagnostics exclude everything completed after 06:45:02.
+
+### Fresh verification performed
+
+1. **The two newly available VG controls validate exactly.** Streaming checks
+   of ID-only seeds 20260857--58 covered 189,524 rows. Each sidecar has 94,762
+   unique users; every target matches the independently rebuilt test mapping;
+   ranks are in range; NDCG@10, HR@10, and reciprocal-rank formulas are exact;
+   stored and actual gzip hashes match; JSON aggregates reproduce; both runs
+   select epoch 40 by validation; and dataset, seed, command, code, split, and
+   cache identity match the frozen run. Both record end-sampled state
+   `4a07a132...` and `git_dirty_tracked=true`. That commit value is not
+   launch provenance: the first MI log was created at 01:26:49 under HEAD
+   `3681b490...`, commit `4a07a132...` landed at 01:27:55 while training was
+   in progress, and the completed JSON then recorded `4a07a132...`. The driver
+   samples Git state near output time, so this field must not be labeled launch
+   state.
+
+2. **The full 8-vs-8 VG result is negative for the declared tail reading.** The
+   split has 25,612 items, 85 zero-exposure items, and 25,527 positive-frequency
+   items. The nearest-third whole-group primary remains frequencies 1--6: 9,134
+   items and 11,980 test rows. Excluding the boundary leaves frequencies 1--5:
+   7,063 items and 9,856 rows. The absolute band [1,6] duplicates the primary.
+
+   | complete VG reading | text (n=8) | ID (n=8) | text-ID | Welch p | 95% CI for delta |
+   |---|---:|---:|---:|---:|---:|
+   | frozen frequencies 1--6, selected | 0.0055924706 | 0.0054192382 | +0.0001732325 | 0.141180 | [-0.000065007,+0.000411472] |
+   | boundary-excluded frequencies 1--5 | 0.0042677989 | 0.0043838525 | -0.0001160536 | 0.299462 | [-0.000348910,+0.000116803] |
+   | embedded legacy `by_popularity.tail` | 0.0047530814 | 0.0048115583 | -0.0000584770 | 0.568062 | [-0.000273911,+0.000156957] |
+   | frozen frequencies 1--6, text final epochs | 0.0056406337 | 0.0054192382 | +0.0002213955 | 0.051811 | [-0.000001998,+0.000444789] |
+
+   Training runs, not the repeated 94,762 users, are the inferential units. The
+   declared selected-checkpoint reading crosses zero; the prespecified
+   boundary exclusion reverses sign; and even the more favorable post-inspection
+   final-epoch reading remains outside 0.05. This is neither a win nor an
+   equivalence result.
+
+3. **The full tie-safe cross-dataset contrast contradicts the live paper.** On
+   the reconstructed whole-frequency groups, MI gives text 0.0015704373 versus
+   ID 0.0011502421 (delta +0.0004201952); VG gives delta +0.0001732325. The
+   independent four-arm difference of differences is +0.0002469628, t=1.57,
+   df=27.15, p=0.127250, 95% CI
+   [-0.000075048,+0.000568974]. `PAPER_SUBMISSION.md:22,104,542`,
+   `paper_tex/sections/abstract.tex:12`, `paper_tex/tables/table0_novelty.tex:21`,
+   and `paper_tex/sections/07-conclusion.tex:6` still call the cross-dataset gap
+   significant at p=0.0054. That older value comes from the defective nominal
+   cohorts and smaller legacy campaign. TFV2's broken chronology prevents a
+   confirmatory null verdict, but it does not permit the authors to suppress a
+   complete, internally verified, prespecified robustness analysis that removes
+   the manuscript's significance.
+
+4. **The five cutoff-bounded IS filter bundles are internally sound.** Ten
+   selected/final sidecars provide 509,850 rows. Each has exactly 50,985 rows
+   and unique users; every user/target matches the split; there are zero schema,
+   duplicate, rank, formula, seed, dataset, aggregate, or digest errors; and the
+   SBERT cache is a correctly mapped `(25848,384)` float32 matrix. Split/cache/
+   code hashes, configurations, parameter counts, and the amended command list
+   SHA `75d045a81eb21e1ed889008fb0bbb45fc0dba4e94cd3aabb84a637a944891f0b`
+   all match. Selected epochs [15,16,14,13,15] are the actual validation-NDCG
+   maxima; final sidecars reproduce epoch 20. This is a confirmed artifact
+   success, not an endpoint success.
+
+5. **IS remains a one-arm snapshot.** Independent cohort reconstruction gives
+   25,848 items, including 94 zero exposure; the positive-frequency tail ends at
+   frequency 5 and contains 9,453 items/11,362 test rows; excluding frequency 5
+   leaves 5,901/8,725; and band [1,6] contains 12,060/13,751.
+
+   | incomplete IS filter arm | overall NDCG@10 mean +/- SD | 95% t interval | positive-tail NDCG mean +/- SD |
+   |---|---:|---:|---:|
+   | validation-selected (n=5) | 0.033299657 +/- 0.000210300 | [0.033038536,0.033560779] | 0.002980107 +/- 0.000295638 |
+   | epoch-20 final (n=5) | 0.033138805 +/- 0.000206994 | [0.032881789,0.033395822] | 0.003216171 +/- 0.000177419 |
+
+   E2 requires eight filter and eight no-filter runs and is jointly adjusted
+   with E1/E3. At the cutoff there were five filter and zero no-filter results;
+   E3 had no successful result. These one-arm intervals describe training
+   variability only and cannot be reported as evidence for the filter.
+
+6. **IS reproduces the machine-readable tail defect at larger magnitude.** The
+   legacy driver tail contains 8,616 items/10,592 test rows: all 94 zero-exposure
+   items and 332 zero-exposure rows, all frequency-1--4 items, but only
+   2,621/3,552 frequency-5 items and 1,535/2,637 frequency-5 test rows, selected
+   by stable item-ID order. Across the five filter runs its embedded mean is
+   0.0021835939 versus 0.002980107 on the frozen positive-frequency cohort, a
+   26.73% shortfall. The label `tail` therefore denotes a different estimand on
+   every new JSON even when its internal arithmetic is correct.
+
+7. **The zero-exposure boundary remains uniformly negative.** VG has 345 such
+   rows and zero hits through @100 in all 16 selected runs (0/5,520), plus zero
+   in all three distinct text finals (0/1,035). IS has 332 such rows and zero
+   hits through @100 in all five selected and five final runs (0/3,320); its best
+   observed zero-exposure rank is 2,473. MI previously showed zero through @100
+   across its complete selected/final design. The evidence does not support
+   cold-start rescue; any positive reading is confined to previously observed
+   items near a chosen positive-frequency boundary.
+
+8. **The adjudicator fails on the first known edge case.** A direct read-only
+   run prints E1, reports E2/E3 missing, and exits 1 at
+   `_bestrec_run/adjudicate_tfv2.py:98` with `ZeroDivisionError`: both MI
+   zero-exposure arms have all-zero means/variances, so the Welch degrees-of-
+   freedom denominator is zero. It never prints the remaining secondary
+   analyses or a complete markdown verdict. The nondegenerate E1 calculation is
+   numerically correct (delta +0.0004201952, p=0.00220788, 95% CI
+   [+0.000180881,+0.000659509]), and its ordinary finite-input Holm arithmetic
+   is correct; the defect is validation/completeness and zero-variance handling,
+   not the basic Welch formula.
+
+9. **The adjudicator is not the promised artifact gate even after that crash is
+   fixed.** Lines 140--163 check filename existence and average fields. They do
+   not validate row counts, uniqueness, target mapping, formulas, gzip hashes,
+   configs, argv, commands, code/data/cache hashes, `n_items`, dirty state,
+   selected epoch, or selected/final policy. Empty cohorts silently become 0.0.
+   E2/E3 read `best_test.NDCG@10` from JSON rather than recomputing from sidecars,
+   contradicting the preregistration's sidecar-plus-split description. Missing
+   primary arms only print `NOT ADJUDICABLE`; the intended return remains zero,
+   and a scientifically negative complete family would also return zero. A
+   structured operational `family_complete` state must be separated from the
+   scientific PASS/FAIL result and emitted only after all validation succeeds.
+   The code's strict-`<` boundary rule also excludes an exact-distance group tie,
+   while the frozen prose stops only when adding the group would be farther away.
+   These are confirmed code/specification defects; no exact-distance tie is
+   realized in MI/VG/IS at this cutoff.
+
+10. **Completion signaling and history remain contradictory.** The unchanged
+    runner catches failures, continues, never runs the adjudicator, and always
+    touches DONE. The 05:56:28 marker from the failed queue remains during the
+    repair queue. `FAILURES.log` still declares all 32 FIR jobs failed, while
+    shell redirection with `>` overwrites the corresponding per-job failure log
+    as each repaired job succeeds. At the cutoff five IS logs therefore described
+    successes while the aggregate log still described those same jobs as
+    failures. Result JSON is written directly to its final filename, and the
+    runner skips any existing filename, so an interrupted partial JSON can be
+    mistaken permanently for completion. Neither marker nor file existence is a
+    trustworthy state machine.
+
+11. **The reviewer reconstruction boundary is incomplete.** At the cutoff, 32
+    MI/VG JSONs were tracked, five IS JSONs were untracked, and all 60 TFV2
+    selected/final sidecars plus all TFV2 logs and DONE were ignored. Every IS
+    JSON records HEAD `43fa87be...`, exact code/data hashes, and
+    `git_dirty_tracked=true`, but only a Boolean dirty flag, not the historical
+    changed-path/diff digest. No checkpoints, logits, target scores, tie counts,
+    learned gate, or FIR taps are retained, so sidecar ranks and the learned
+    mechanism cannot be independently regenerated from the result bundle.
+
+12. **The amended timestamp proof does not bind the committed preregistration.**
+    The OTS file embeds worktree-CRLF SHA-256 `d6dc8088...`, while commit
+    `43fa87be...` stores canonical-LF SHA-256 `399041b0...`; the committed digest
+    is absent and `.gitattributes` pins Markdown to LF. The command proof does
+    bind the committed `75d045a8...` bytes. Both amended proofs contain three
+    pending calendar attestations but no completed Bitcoin block-header
+    attestation at the cutoff. This is a confirmed byte-identity/completeness
+    defect, not merely a missing local verifier.
+
+13. **The public release cannot supply E2/E3 inputs.** The repository is public
+    and the v0.9 release API lists 18 uploaded assets, including 12 split CSVs
+    and four caches for VG/MI/Office/Beauty. It includes none of the six IS/CD
+    split CSVs or their two text caches. Those eight local files are ignored and
+    absent from `RELEASE_MANIFEST.json`; the new sidecars are absent too. A clean
+    reviewer clone therefore cannot run the adjudicator's IS/CD strata or
+    regenerate their ranks. The local manifest is additionally stamped to old
+    commit `0a6ff046...`, while the public branch is `43fa87be...`.
+
+14. **No manuscript or PDF repair landed.** Git shows no paper-source delta from
+    `4a07a132...` to `43fa87be...`. The canonical hashes remain
+    `b24ff14f...` for the 51-page reader and `93265672...` for the 46-page TORS
+    PDF. Fresh Poppler renders reconfirm the three-page TORS abstract (reader:
+    about 1,801 words/four pages), page-7 whitespace void, page-15 table collision,
+    undersized page-25/page-29 figures, and page-32 tiny dense table. No new
+    clipping, missing glyphs, or black boxes were observed.
+
+15. **Primary-source novelty checks still contradict the positioning.** The
+    source/bibliography contain no LLM-ESR, SAGE-Rec, or FAERec. LLM-ESR combines
+    semantic and collaborative views for long-tail SR; SAGE-Rec transfers from
+    semantic head-item prototypes to tail items; FAERec adaptively gates and
+    aligns semantic/ID spaces for tail-item SR. Exact identity to TAPE is not
+    established, but omission of the closest problem/mechanism line is confirmed.
+    TIGER's primary manuscript explicitly says it filters users with fewer than
+    five reviews; it does not support the paper's claim that the current iterative
+    AR2023 user-and-item 5-core pipeline matches TIGER. The novelty contribution
+    must remain explicitly incremental and directly compared.
+
+### Confirmed problems and required interpretation
+
+#### 1. The complete tie-safe robustness result no longer supports the lead tail claim
+
+- The full VG primary interval crosses zero and its boundary sensitivity is
+  negative.
+- The full tie-safe MI-minus-VG difference is p=0.127, not significant.
+- The live paper repeats p=0.0054 in the abstract, novelty table, and conclusion.
+- A strict revision must retract that significance claim and present both the
+  legacy and corrected cohort analyses, labeling TFV2 exploratory because of
+  chronology rather than selectively retaining the older favorable result.
+
+#### 2. Artifact integrity is necessary but is not treatment identification
+
+- The new IS rows, hashes, targets, formulas, and selected epochs are excellent.
+- There is no control arm at the cutoff, so they estimate no filter effect.
+- Even after controls arrive, the singular start and changed optimizer path make
+  the estimand an FIR-plus-initialization/optimizer package, not an isolated
+  causal-filter component.
+
+#### 3. The advertised assurance apparatus did not govern this campaign
+
+- The frozen commands were not parser-complete, the runner was fail-open, the
+  analysis program arrived after outcomes, test values were visible, the
+  machine-readable tail was wrong, and the new gate crashes.
+- The paper cannot use TFV2 as an end-to-end demonstration of fail-closed,
+  symmetric prospective discipline.
+- A green legacy 173-cell arithmetic graph remains useful traceability, but it
+  does not certify chronology, estimand validity, or claimability.
+
+### Plausible risks and author verification required
+
+- Sidecars use a strict-better score count for rank. Without logits or tie counts,
+  exact score-tie prevalence and the intended tie policy cannot be audited.
+- Every new JSON stores only `git_dirty_tracked=true`. Current evidence suggests
+  the cumulative audit was the tracked change, but the exact historical dirty
+  path set/diff at each run is not embedded and requires author verification.
+- What power/MDE calculation justified eight independent runs per arm? The
+  preregistration says more seeds but gives no prospective variance or power
+  analysis.
+- What population is represented by seed-level Welch intervals on one fixed
+  split? Dataset and split uncertainty remain outside the inference.
+- Did visible epoch-wise test outputs or sequential one-arm histories influence
+  continuation, inspection, or interpretation? No intervention is inferred, but
+  there is no blinded analysis holder or interleaved-arm design.
+- Can LLM-ESR, SAGE-Rec, and FAERec be rerun under the same full-catalog AR2023
+  split, or must the paper limit itself to a transparent protocol/mechanism table?
+- Will per-user artifacts undergo linkability/data-governance review before a
+  public release?
+
+### External fact-check sources
+
+- TIGER primary manuscript (user-only review-count filtering; older Amazon line):
+  https://arxiv.org/abs/2305.05065
+- LLM-ESR, NeurIPS 2024 proceedings:
+  https://proceedings.neurips.cc/paper_files/paper/2024/hash/2f0728449cb3150189d765fc87afc913-Abstract-Conference.html
+- SAGE/SAGE-Rec, WWW 2026 proceedings:
+  https://doi.org/10.1145/3774904.3792456
+- FAERec primary manuscript: https://arxiv.org/abs/2604.03688
+- SIGIR 2026 official program identifying FAERec as a full paper:
+  https://sigir2026.org/SIGIR2026_program.pdf
+- Public repository: https://github.com/Ray0419/bestrec-sota-results
+- Public v0.9 release: https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence
+- OpenTimestamps client documentation (pending versus upgraded proofs):
+  https://github.com/opentimestamps/opentimestamps-client#usage
+- ACM LaTeX review-format guidance:
+  https://authors.acm.org/binaries/content/assets/publications/taps/latex-best_practices-06-may-2020.pdf
+- ACM TORS scope announcement:
+  https://www.acm.org/binaries/content/assets/press-releases/2022/march/tors-launch.pdf
+
+### Concrete fixes in dependency order
+
+1. Mark TFV2 exploratory/aborted everywhere and preserve the complete execution
+   as an immutable audit record. Do not let later endpoint completion overwrite
+   the chronology or rehabilitate a confirmatory label.
+2. Immediately withdraw the manuscript's `four-arm p=0.0054` significance claim.
+   Add the corrected whole-frequency 8-vs-8 MI/VG results, boundary sensitivities,
+   all-zero unseen-target results, and the null p=0.127 contrast with a clear
+   exploratory label.
+3. Replace the adjudicator with a pretested fail-closed implementation that
+   validates the exact expected artifact set, split/sidecar/config/command/code/
+   cache hashes, user/target/rank/formula invariants, selected/final rules, cohort
+   nonemptiness, zero variance, group-boundary ties, and Holm step-down logic.
+   Incomplete or corrupt primary families must exit nonzero without printing a
+   success-like verdict.
+4. Replace the runner's marker logic with an explicit state manifest. Remove a
+   stale DONE marker at restart, fail immediately on any command, preserve
+   attempt-specific append-only logs, write results atomically, invoke the gate,
+   and create DONE only after exact endpoint/artifact validation.
+5. Run any successor campaign in a dedicated clean worktree with genuinely
+   unused seeds, immutable launch-time provenance, blinded test output, randomized
+   or interleaved arms, and a prospective MDE/power justification. Freeze and
+   independently timestamp the complete analysis before even a smoke outcome.
+6. Rename/remove `by_popularity.tail`. Emit explicit `zero_exposure`,
+   `positive_frequency_primary`, `boundary_excluded`, and `absolute_band_1_6`
+   objects with definitions and hard-fail downstream use of the legacy field.
+7. Publish all six IS/CD split files, both exact text caches, every TFV2 JSON,
+   selected/final sidecar, attempt log, failure/state record, adjudicator output,
+   and a current manifest. Include sufficient model state or score/tie evidence
+   to regenerate ranks and verify the learned FIR mechanism. Re-stamp the
+   canonical committed LF bytes, then upgrade and independently verify the OTS
+   proofs.
+8. Narrow the FIR claim to the full optimization package or execute a
+   cloned-backbone, nonsingular, weight-decay-controlled design with equal
+   parameterization and retained filter weights/checkpoints.
+9. Correct TIGER's dataset/filtering lineage; add LLM-ESR, SAGE-Rec, FAERec, and
+   LLMSQRec to the bibliography and reviewer-facing novelty table; directly
+   compare objective, fusion/prototype mechanism, tail definition, datasets,
+   catalog evaluation, and availability.
+10. Synchronize all public/private and asset-availability prose, then compress
+    the abstract, reflow page 15, enlarge pages 25/29, split page 32, remove the
+    page-7 void, and visually inspect one canonical review PDF.
+
+### Open questions
+
+- Will the authors retract the p=0.0054 cross-dataset claim now that the complete
+  tie-safe prespecified contrast is p=0.127?
+- Which scientific population is intended by frequencies 1--5, 1--6, nearest
+  third, or an absolute rarity function, and why does the boundary change sign?
+- Why do all three audited datasets have zero hits through @100 for every
+  zero-training-exposure target despite the semantic-rescue framing?
+- Which checkpoint is irrevocably normative, how are validation ties resolved,
+  and why are test results emitted before that choice is finalized?
+- Who can substantiate the erratum's actor-specific inspection chronology, given
+  that the same commit contains outcome-rich audit text after all MI/VG results?
+- Who will independently own the analysis/test key in a valid successor run?
+- Where are the exact IS/CD split/cache inputs and TFV2 row/log artifacts to be
+  deposited so a credential-free clean clone can adjudicate E2/E3?
+- How will zero variance, empty cohorts, missing primaries, corrupt hashes, and
+  exact-distance boundary ties be represented as machine-readable gate states?
+- Can the filter's learned taps/gate and rank ties be audited without checkpoints
+  or logits, and if not, what sufficient evidence will be retained?
+- What remains methodologically distinct between TAPE and SAGE-Rec/LLM-ESR/
+  FAERec after a full-text comparison under aligned tail definitions?
+
+### Running checklist
+
+- [x] Read automation memory and preserve the cumulative audit history.
+- [x] Freeze the empirical boundary at 06:45:02 and exclude seed 20260826+.
+- [x] Confirm HEAD, worktree scope, and the empty manuscript/PDF source delta.
+- [x] Validate both new VG control sidecars and recompute the full 8-vs-8
+      primary, boundary-excluded, legacy, final-epoch, and zero-exposure readings.
+- [x] Recompute the complete tie-safe MI-minus-VG four-arm contrast.
+- [x] Validate 509,850 IS selected/final rows, commands, configs, hashes,
+      targets, ranks, formulas, aggregates, cache mapping, and selected epochs.
+- [x] Reconstruct IS primary/boundary/band/zero/legacy cohorts independently.
+- [x] Reproduce the adjudicator crash and inspect artifact, exit, Holm, and
+      cohort-boundary semantics.
+- [x] Reconfirm stale DONE, contradictory/overwritten logs, ignored artifacts,
+      non-atomic output, end-sampled provenance, and missing public IS/CD inputs.
+- [x] Compare the amended OTS digests with committed canonical bytes and inspect
+      proof completion state.
+- [x] Recheck public repository/release state and closest literature against
+      primary sources.
+- [x] Render and inspect TORS pages 1--3, 7, 15, 25, 29, and 32 under the PDF
+      workflow; confirm canonical hashes are unchanged.
+- [ ] Quarantine TFV2, preserve it immutably, and withdraw the p=0.0054 claim.
+- [ ] Implement and independently test a complete fail-closed successor before
+      any new outcome-bearing run.
+- [ ] Repair release scope, FIR attribution, novelty coverage, abstract, tables,
+      figures, public-state prose, and evidence hierarchy before submission.
+
 ## Audit Run - 2026-07-20 05:46 Australia/Sydney
 
 ### Audited state and strict verdict
 
 - **Workspace/branch:** `C:\Users\rayxc\Documents\R`,
   `codex/bestrec-sota-results`.
-- **HEAD:** unchanged at
+- **HEAD at the fixed cutoff:** unchanged at
   `4a07a132a6ba560910b18f52724fc6875d4f1949`. No manuscript, TeX,
   bibliography, figure, table, PDF, preregistration, runner, result-code, or
   release-source change landed since the 04:43 audit. The only tracked
@@ -967,6 +3864,15 @@ plausible risks.
   a zero-byte log at the cutoff, so seed 20260857 and later artifacts are
   deliberately deferred. All 32 FIR jobs had failed, the promised adjudicator
   was absent, and `TFV2_CAMPAIGN.DONE` did not exist.
+- **Post-cutoff observation, excluded from all statistics above/below:** ID
+  seeds 20260857 and 20260858 completed at 05:48:35 and 05:56:28, and the
+  runner created `TFV2_CAMPAIGN.DONE` at 05:56:28 despite the 32 recorded FIR
+  failures. This realizes the fail-open marker defect. At 05:59:44 concurrent
+  commit `43fa87be402f770e6e1a8d09dceb64792dd730b0` added an erratum, repaired
+  command list, adjudicator, and the 32 MI/VG JSONs, then relaunched the FIR
+  queue. The full 8-vs-8 VG contrast and every repaired-run outcome are
+  explicitly deferred to the next fixed-cutoff audit. The repair's integrity
+  implications are assessed separately below without changing the cutoff.
 - **Reviewer recommendation: REJECT in present form; preserve TFV2 as an
   exploratory/aborted execution.** The full VG treatment arm is mechanically
   valid, but six controls yield no significant frozen-tail difference, the
@@ -974,9 +3880,10 @@ plausible risks.
   exposed as machine-readable `tail`. More importantly, completion cannot cure
   the already-broken prospective chronology or missing Holm endpoints.
 - **Change scope:** this audit updates only `PAPER_REVIEW_AUDIT.md`. It did not
-  stop, edit, repair, restart, or adjudicate the live queue and did not change
-  any manuscript, result, sidecar, log, preregistration, release, or source
-  artifact.
+  stop, edit, repair, or restart the live queue and did not change any manuscript,
+  result, sidecar, log, preregistration, release, or source artifact. A read-only
+  diagnostic execution of the post-cutoff adjudicator is reported separately
+  below; none of its outcome text enters the fixed-cutoff statistics.
 
 ### Fresh verification performed
 
@@ -1085,6 +3992,26 @@ plausible risks.
     not established, but omission and lack of direct method/protocol comparison
     are confirmed; the defensible contribution remains incremental.
 
+    Two additional source-level positioning errors remain. First,
+    `paper_tex/sections/01-introduction.tex:6`,
+    `paper_tex/sections/02-related.tex:20`, and related prose say the paper's
+    AR2023 iterative user-and-item 5-core LLOO pipeline “matches” or is “used
+    by” TIGER. TIGER evaluates the older Amazon Reviews 2014 line; the broad
+    sequential/leave-out family does not establish preprocessing equivalence or
+    numerical comparability. Second, `paper_tex/tables/table0_novelty.tex:20`
+    positions TAPE only against TIGER/VQ-Rec/ProtoMF, while
+    `paper_tex/sections/02-related.tex:59` itself concedes that LLMSQRec combines
+    frozen semantic embeddings, ID embeddings, and learned prototype/codebook
+    quantization for sparse/long-tail settings. The reviewer-facing novelty
+    table must contain the closest works admitted by the prose.
+
+    TAPE's evidence also remains too weak for an independent method
+    contribution: Table 0 reports +0.0009 from a single-flag n=1 ablation and
+    only +0.0004 in a four-seed cross-check, while the paper calls the effect
+    modest and sub-additive. Treat it as a secondary implementation ablation
+    unless a powered direct comparison against the closest prototype-transfer
+    methods establishes a reproducible incremental gain.
+
 13. **The unchanged PDFs retain severe editorial defects.** Hashes remain
     `b24ff14f...` for the 51-page reader and `93265672...` for the 46-page TORS
     review PDF. Fresh Poppler renders confirm an approximately 1,801-word reader
@@ -1094,6 +4021,70 @@ plausible risks.
     page 32 compresses a dense negative-result table into tiny type. No new
     clipping, black squares, or broken glyphs were found. Topic fit with ACM
     TORS is plausible; presentation and evidence hierarchy remain unsuitable.
+    `paper_tex/BUILD_NOTES.md:12-14` also still calls the review/preview PDFs
+    40/42 pages while the current artifacts are 46/47 pages (the current
+    hygiene output correctly reports 46), a minor but confirmed build-record
+    inconsistency.
+
+### Post-cutoff concurrent erratum assessment (excluded from 05:46 statistics)
+
+1. **The command repair is genuine and narrowly mechanical.** Exact comparison
+   of the old and new 64-line command files shows that MI lines 1--16 and VG
+   lines 49--64 are byte-identical. Each FIR line 17--48 differs only by removal
+   of the empty `--zfusion-sweep` token, and the new file's SHA-256 is the stated
+   `75d045a81eb21e1ed889008fb0bbb45fc0dba4e94cd3aabb84a637a944891f0b`.
+   The repaired IS filter seed 20260821 ran from 05:59:53 to 06:07:41 and wrote
+   a result plus sidecars instead of failing in argparse; seed 20260822 then
+   began. This confirms syntax repair, not confirmatory validity. All live-state
+   counts in this subsection use a separate 06:12:26 post-cutoff snapshot.
+
+2. **The erratum's exposure chronology is contradicted by the repository.** It
+   says only the tail of MI run 1 was read and "No other run output was
+   inspected"; the adjudicator docstring says it was committed before *any*
+   campaign result was inspected. Yet the same commit includes this audit's
+   validation of 852,858 new rows, 1,610,954-row aggregate check, arm means,
+   p-values, and checkpoint sensitivity, after all 32 MI/VG outcomes already
+   existed. A git commit cannot prove file order within the commit. If the claim
+   was intended to describe only one maintainer's personal viewing, say that
+   narrowly and provide an independent access record; it cannot support global
+   pre-outcome blinding. The defensible chronology is: post-outcome for E1/VG,
+   before any *successful* repaired FIR training. The unchanged
+   `RERUN_PROGRAM.md` independently retains unchecked tasks to write/commit the
+   adjudicator before inspection and to stamp the freeze, contradicting the
+   amended status rather than documenting it.
+
+3. **The new adjudicator is currently nonfunctional on known evidence.** A
+   direct read-only execution reproduces E1, reports E2/E3 missing, then exits 1
+   with `ZeroDivisionError` in `welch()` because both MI zero-exposure arms have
+   exactly zero variance. Thus it cannot finish its promised markdown verdict
+   even before the FIR family completes.
+
+4. **It is also a statistical reporter, not a fail-closed artifact gate.** The
+   code checks only filename existence before averaging. It does not validate
+   row counts, unique users, dataset/seed/target mapping, rank/metric formulas,
+   sidecar SHA-256, config/command/code/split/cache hashes, dirty state, selected
+   epoch, or selected-versus-final policy; E2/E3 trust a named JSON field. Empty
+   cohorts silently become 0.0. Missing primary inputs merely print "NOT
+   ADJUDICABLE," and `main()` is designed to return 0 after such a run once the
+   zero-variance crash is fixed. The implementation also uses strict `<` for
+   the nearest-third boundary, whereas the frozen prose says include the next
+   group unless doing so is *further* away; an exact-distance tie is therefore
+   specified differently. These gaps refute the docstring's "implemented here
+   1:1" claim.
+
+5. **The restart remains fail-open and reviewer-irreproducible.** The commit did
+   not change `run_tfv2_campaign.sh` or `.gitignore`. The runner still skips
+   existing MI/VG outcomes, catches each nonzero exit, and unconditionally
+   touches DONE; it never invokes the adjudicator. The stale ignored DONE file
+   from 05:56:28 remains present while only one of 32 repaired FIR jobs has
+   completed, and the old 32-entry aggregate failure log remains. Worse, shell
+   redirection uses `>` to reuse each per-job log path, so the repair queue erases
+   the original parser-failure log one job at a time: seed 20260821's old log was
+   replaced by its success log. Although all 32 MI/VG JSONs are now tracked,
+   zero TFV2 sidecars and zero TFV2 logs are tracked, so a clean clone cannot
+   reproduce the sidecar-based adjudication. Treat the amendment as a transparent
+   repair that may govern future FIR outputs, not as rehabilitation of E1, VG,
+   the original Holm family, or the false "never inspected" premise.
 
 ### Confirmed problems and required interpretation
 
@@ -1151,6 +4142,13 @@ plausible risks.
   review been completed before public deposition?
 - Can SAGE-Rec, LLM-ESR, and FAERec be run on the same full-catalog AR2023 split,
   or must comparison be limited to a transparent protocol/method table?
+- `CANONICAL_SUBMISSION.md:93-95` identifies three root BEST-Rec PDFs as the
+  maintainer's separate earlier manuscript line and says they are never cited.
+  Extracted text confirms that line already uses frozen MiniLM/SBERT semantic
+  item features, but does not by itself establish TAPE's prototype mechanism.
+  The authors must disclose whether it was circulated/submitted and provide a
+  point-by-point BEST-Rec-to-TAPE overlap statement; exact self-anticipation is
+  an author-verification risk, not confirmed here.
 
 ### External fact-check sources
 
@@ -1160,6 +4158,7 @@ plausible risks.
 - SIGIR 2026 program identifying FAERec as a full paper and describing its
   adaptive fusion/alignment: https://sigir2026.org/SIGIR2026_program.pdf
 - FAERec manuscript: https://arxiv.org/abs/2604.03688
+- TIGER primary manuscript: https://arxiv.org/abs/2305.05065
 - Public repository:
   https://github.com/Ray0419/bestrec-sota-results
 - Public v0.9 release and asset inventory:
@@ -1178,9 +4177,11 @@ plausible risks.
    adjudicator that reconstructs whole-frequency cohorts from splits/sidecars,
    rejects legacy JSON tails, fixes selected/final/tie/fallback rules, validates
    expected artifacts, applies Holm, and emits outcome-neutral failure states.
-3. Fix empty-string command serialization and parser-test all 64 commands.
-   Make the runner fail immediately, write outputs atomically, and create DONE
-   only after the exact expected JSON/sidecar/digest/config/endpoints validate.
+3. Retain the verified empty-string serialization repair and parser-test all 64
+   commands. Make the runner fail immediately, preserve rather than overwrite
+   failure logs, invoke adjudication explicitly, write outputs atomically, and
+   create DONE only after the exact expected JSON/sidecar/digest/config/endpoints
+   validate.
 4. Use genuinely unused seeds; randomize or interleave arms; capture clean
    launch-state code/data/tree hashes; hide test outcomes until adjudication;
    and justify model counts with a prospective MDE/power calculation.
@@ -1198,7 +4199,9 @@ plausible risks.
    public/private prose and prove a credential-free clean reconstruction.
 9. Add LLM-ESR, SAGE-Rec, and FAERec to the bibliography and novelty table;
    compare objective, prototype/fusion mechanism, backbone, tail definition,
-   dataset/split, catalog evaluation, and code availability directly.
+   dataset/split, catalog evaluation, and code availability directly. Correct
+   TIGER's dataset/protocol lineage, add LLMSQRec to Table 0, and disclose the
+   status and overlap of the maintainer's earlier BEST-Rec manuscripts.
 10. Replace the four-/three-page abstract with a conventional concise abstract;
     reflow the page-15 table; enlarge figures; split the page-32 table; remove
     the page-7 layout void; and visually inspect one canonical review PDF.
@@ -1219,6 +4222,13 @@ plausible risks.
   released immutably, including ignored row/log artifacts?
 - What exact method-level distinction remains between TAPE and SAGE-Rec after a
   full-text comparison, and can the closest methods be evaluated fairly?
+- Was any root BEST-Rec manuscript publicly circulated or submitted, and which
+  frozen-text/fusion ideas overlap the canonical paper?
+- Who can substantiate the erratum's claimed inspection chronology, and will the
+  literally false global wording be replaced by an actor-specific access log?
+- Who will independently validate the adjudicator's artifacts, cohort boundary,
+  zero-variance behavior, checkpoint policy, exit semantics, and clean-clone
+  reproducibility before it is allowed to label any endpoint?
 
 ### Running checklist
 
@@ -1238,7 +4248,13 @@ plausible risks.
 - [x] Recheck public release state and closest literature against primary
       sources.
 - [x] Render and inspect the critical reader/TORS pages under the PDF workflow.
+- [x] Separately audit post-cutoff commit `43fa87b`, reproduce the repaired FIR
+      launch, stale DONE state, and adjudicator `ZeroDivisionError` without
+      incorporating any post-cutoff outcome into the 05:46 statistics.
 - [ ] Quarantine TFV2 and freeze a complete, fail-closed successor.
+- [ ] Correct the erratum chronology and make the adjudicator validate all
+      provenance/row invariants, handle zero variance, freeze checkpoint policy,
+      and fail nonzero for incomplete or failed primary families.
 - [ ] Repair claim scope, FIR design, release boundary, novelty coverage,
       abstract, tables, figures, and evidence hierarchy before submission.
 

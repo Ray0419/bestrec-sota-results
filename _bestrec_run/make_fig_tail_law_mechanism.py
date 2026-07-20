@@ -70,7 +70,7 @@ for xi, (d, p, v) in enumerate(zip(tailD, posfrac, verdict)):
 axA.set_xticks(x)
 axA.set_xticklabels(ds, fontsize=8.5)
 axA.set_ylabel("tail-tercile  $\\Delta$NDCG@10  (text $-$ ID)")
-axA.set_title("(A) The dataset-conditional tail pattern\n(sparse catalog: text wins the tail)")
+axA.set_title("(A) The dataset-conditional tail pattern\n(sparse catalog: text wins the tail; TFV2: freq-5-heavy)")
 axA.set_ylim(-0.00055, 0.00085)
 axA.grid(axis="y", alpha=0.3)
 

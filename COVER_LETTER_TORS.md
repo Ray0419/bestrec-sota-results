@@ -66,6 +66,8 @@ hash-pinned artifacts, and the repository includes the complete adversarial audi
 (dozens of hourly audit rounds by an independent system, each answered point-by-point in
 writing).
 
+One further disclosure, stated here so the editors hear it from us first: the TFV2 repaired-estimand campaign is pre-declared in Git but **outcome-visible**, and its OpenTimestamps proofs' earliest independently verifiable Bitcoin attestation (block 958749, 2026-07-20 01:48:23 AEST) postdates its first completed result (≈ 01:36 AEST). We therefore do not claim independent external timestamping before launch and do not label that campaign confirmatory; §5.3 disclosure (vii) in the manuscript states the exact chronology.
+
 Suggested reviewers / excluded reviewers: [Maintainer: optional.]
 
 Thank you for your consideration.

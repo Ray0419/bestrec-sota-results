@@ -175,6 +175,14 @@ def verify(m):
                        "(edit without --regen?)")
         else:
             checked += 1
+    for rel, ent in m.get("aux_graph_sources", {}).items():
+        ap2 = os.path.join(ROOT, rel)
+        if not os.path.exists(ap2):
+            bad.append(f"aux_graph_sources/{rel}: MISSING (git-tracked file)")
+        elif sha_norm(ap2) != ent["sha256"]:
+            bad.append(f"aux_graph_sources/{rel}: hash mismatch vs manifest")
+        else:
+            checked += 1
     for fam, files in m.get("result_families", {}).items():
         for fn, digest in files.items():
             check_named(f"result_families/{fam}", fn, digest, hasher=sha_norm)
@@ -219,11 +227,14 @@ def verify(m):
             sec_key = w.split(":")[0]
             key = sec_key.split("/", 1)[1] if "/" in sec_key else sec_key
             sec = sec_key.split("/", 1)[0]
-            ent = m.get(sec, {}).get(key)
+            if sec == "pinned_parity_artifacts":
+                ent = m.get(sec, {}).get("files", {}).get(key)
+            else:
+                ent = m.get(sec, {}).get(key)
             if not isinstance(ent, dict) or "sha256" not in ent:
                 still.append(w + " [no manifest entry to fetch against]")
                 continue
-            name = key if key.endswith((".csv", ".npy", ".gz", ".zip", ".json")) else key + ".csv"
+            name = key + ".csv" if (sec == "splits" and not key.endswith(".csv")) else key
             url = RELEASE_URL + os.path.basename(name)
             try:
                 h = hashlib.sha256()
@@ -532,6 +543,11 @@ def main():
     ap.add_argument("--deposit-tag", default=None, metavar="TAG",
                     help="with --regen: stamp intended_deposit_tag (the literal tag "
                          "reviewers pass to --verify-git; audit 2026-07-18 23:28)")
+    ap.add_argument("--fetch-missing", action="store_true",
+                    help="stream-download + hash-verify missing release-class assets "
+                         "from the public release instead of failing")
+    ap.add_argument("--allow-missing-assets", action="store_true",
+                    help="explicitly waive the fail-closed missing-asset check")
     args = ap.parse_args()
     global ARGS
     ARGS = args

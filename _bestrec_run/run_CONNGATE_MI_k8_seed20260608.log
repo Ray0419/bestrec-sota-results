@@ -1,0 +1,102 @@
+  random seed set to 20260608
+=== Musical_Instruments: load splits ===
+  n_users=57,439  n_items=24,587  pad_id=24587
+  built sequences for 57,439 users
+  built timestamp sequences (12 time buckets)
+  loading SBERT embeddings from C:\Users\rayxc\Documents\R\cache_5core\sbert_titles_Musical_Instruments.npy...
+  TAPE: k-means 24,587 text embeddings into K=512 prototypes (tau=0.05)...
+  TAPE: K=512 mean max-assignment weight = 0.517 (1.0 = hard clustering)
+  conn-gate: TRAIN-only distinct users/item (min=1, median=8, max=1914); cg_alpha=-6 => alpha~0 => additive no-op at start; gates on users/item, NOT freq
+
+=== Build SASRec-SBERT (d=64, layers=4, heads=2) ===
+  total params: 11,185,537  device=cuda
+  57,439 training examples / 225 batches per epoch
+  LR schedule: warmup_cosine (225 warmup + 4275 cosine steps)
+
+=== Train for 20 epochs ===
+  epoch   1  loss=9.6259  (6.0s)
+  epoch   2  loss=9.0934  (5.7s)
+  epoch   3  loss=8.9326  (5.8s)
+  epoch   4  loss=8.8264  (5.7s)
+  epoch   5  loss=8.7469  (5.7s)
+  epoch   6  loss=8.6794  (5.7s)
+  epoch   7  loss=8.6196  (5.7s)
+  epoch   8  loss=8.5673  (5.7s)
+  epoch   9  loss=8.5187  (5.8s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.0s]
+    [10,752/57,439  elapsed 2.0s]
+    [15,872/57,439  elapsed 2.9s]
+    [20,992/57,439  elapsed 3.8s]
+    [26,112/57,439  elapsed 4.7s]
+    [31,232/57,439  elapsed 5.6s]
+    [36,352/57,439  elapsed 6.6s]
+    [41,472/57,439  elapsed 7.5s]
+    [46,592/57,439  elapsed 8.4s]
+    [51,712/57,439  elapsed 9.4s]
+    [56,832/57,439  elapsed 10.3s]
+  eval done in 10.4s
+  by-popularity NDCG@10: tail=0.0015(n=7,762)  mid=0.0061(n=8,169)  head=0.0616(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.0s]
+    [10,752/57,439  elapsed 2.0s]
+    [15,872/57,439  elapsed 2.9s]
+    [20,992/57,439  elapsed 3.8s]
+    [26,112/57,439  elapsed 4.7s]
+    [31,232/57,439  elapsed 5.6s]
+    [36,352/57,439  elapsed 6.5s]
+    [41,472/57,439  elapsed 7.5s]
+    [46,592/57,439  elapsed 8.4s]
+    [51,712/57,439  elapsed 9.4s]
+    [56,832/57,439  elapsed 10.3s]
+  eval done in 10.4s
+  by-popularity NDCG@10: tail=0.0010(n=8,800)  mid=0.0051(n=8,657)  head=0.0576(n=39,982)
+  epoch  10  loss=8.4757  val_NDCG=0.0456  test_NDCG=0.0410  test_HR=0.0737  (5.8s)
+  epoch  11  loss=8.4371  (5.7s)
+  epoch  12  loss=8.4027  (5.8s)
+  epoch  13  loss=8.3715  (5.7s)
+  epoch  14  loss=8.3453  (5.8s)
+  epoch  15  loss=8.3227  (5.7s)
+  epoch  16  loss=8.3032  (5.8s)
+  epoch  17  loss=8.2880  (5.7s)
+  epoch  18  loss=8.2804  (5.7s)
+  epoch  19  loss=8.2725  (5.8s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.0s]
+    [10,752/57,439  elapsed 1.9s]
+    [15,872/57,439  elapsed 2.9s]
+    [20,992/57,439  elapsed 3.8s]
+    [26,112/57,439  elapsed 4.7s]
+    [31,232/57,439  elapsed 5.6s]
+    [36,352/57,439  elapsed 6.5s]
+    [41,472/57,439  elapsed 7.4s]
+    [46,592/57,439  elapsed 8.4s]
+    [51,712/57,439  elapsed 9.3s]
+    [56,832/57,439  elapsed 10.2s]
+  eval done in 10.3s
+  by-popularity NDCG@10: tail=0.0023(n=7,762)  mid=0.0076(n=8,169)  head=0.0612(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.0s]
+    [10,752/57,439  elapsed 1.9s]
+    [15,872/57,439  elapsed 2.8s]
+    [20,992/57,439  elapsed 3.8s]
+    [26,112/57,439  elapsed 4.7s]
+    [31,232/57,439  elapsed 5.6s]
+    [36,352/57,439  elapsed 6.5s]
+    [41,472/57,439  elapsed 7.4s]
+    [46,592/57,439  elapsed 8.4s]
+    [51,712/57,439  elapsed 9.3s]
+    [56,832/57,439  elapsed 10.2s]
+  eval done in 10.3s
+  by-popularity NDCG@10: tail=0.0021(n=8,800)  mid=0.0067(n=8,657)  head=0.0572(n=39,982)
+  epoch  20  loss=8.2710  val_NDCG=0.0456  test_NDCG=0.0412  test_HR=0.0735  (5.8s)
+
+=== Best by val NDCG@10 ===
+  val_NDCG=0.0456
+  test: {'NDCG@10': 0.0411844263950021, 'HR@10': 0.07348665540834624, 'MRR': 0.03768250648928008, 'n_eval': 57439, 'by_popularity': {'tail': {'NDCG@10': 0.002126797994747859, 'HR@10': 0.004545454545454545, 'n': 8800}, 'mid': {'NDCG@10': 0.0066907227598240445, 'HR@10': 0.013053020676908859, 'n': 8657}, 'head': {'NDCG@10': 0.05724963379563173, 'HR@10': 0.10174578560352159, 'n': 39982}}}
+
+wrote _bestrec_run\results_CONNGATE_MI_k8_seed20260608.json

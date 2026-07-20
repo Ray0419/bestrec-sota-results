@@ -4,7 +4,103 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-20 16:53 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-20 17:54 Australia/Sydney)
+
+1. **[CONFIRMED, submission-blocking source/render corruption] The generated
+   venue paper repeats and interleaves the Ethics section.**
+   `paper_tex/sections/10-ethics.tex` contains three overlapping copies and
+   sentence fragments across lines 4--43. The corruption is visible across
+   TORS pages 39--40 and `acmsmall` pages 40--41. Both TeX health and the PDF
+   hygiene scan nevertheless report PASS, so the present render gate is not a
+   sufficient submission-readiness check.
+2. **[CONFIRMED, rejection-level prospective-integrity failure] TFV2 remains
+   exploratory, not an independently prelaunch-timestamped confirmation.** The
+   upgraded OTS proofs contain valid Bitcoin attestations, but the original-state
+   proof's earliest attested block is 01:48:23 AEST, after the first result at
+   01:36; the amended prereg proof is anchored only after the MI/VG outcomes and
+   the run-1 inspection. The adjudicator also entered Git after outcomes existed
+   and after this audit had printed treatment values. A prelaunch Git commit is
+   real evidence of ordering; the completed OTS proof does not independently
+   establish the stronger prelaunch claim.
+3. **[CONFIRMED clean-boundary failure] The claimed three force-tracked graph
+   sources did not enter Git.** `--verify-git HEAD` fails on the HSTU-BLaIR
+   summary JSON and two conn-gate logs; all remain ignored/untracked. A clean
+   graph therefore still has only 172/175 reconstructable cells even though the
+   dirty local tree passes 175/15. The response and commit message claiming this
+   was repaired are contradicted by the commit tree.
+4. **[CONFIRMED bootstrap/verifier failure] The new public-clone path cannot
+   reconstruct the advertised strict boundary.** `bootstrap_public_clone.py`
+   fetches 18 splits, four caches, and 107 TFV2 sidecars but omits all nine
+   pinned-parity files. The documented `--fetch-missing` and
+   `--allow-missing-assets` switches are not registered by `argparse`, local
+   verification never hashes `aux_graph_sources`, and `git submodule update
+   --init` cannot supply ignored `external/HSTU-BLaIR` because `.gitmodules`
+   does not declare it.
+5. **[CONFIRMED genuine release repair plus false submission prose] The remote
+   evidence upload is real, but the paper/package still misdescribe it.** The
+   release has 131 uploaded assets; all 129 split/cache/TFV2-sidecar GitHub
+   digests match the manifest. Section 8 still says 12 splits and 20 assets,
+   falsely says the three auxiliary graph files are tracked, and advertises an
+   unusable fetch mode. README still reports a 153-file chain and omits TFV2;
+   the canonical ledger says both 14 and 15 families; the current deposit tag
+   fails verification and is 157 paths behind HEAD, not nine.
+6. **[CONFIRMED favorable arithmetic; exploratory interpretation only] The
+   completed 8-vs-8 values remain internally supported.** E1 is +0.000420
+   (p=0.00221), E2 +0.002131 (p=1.01e-10), and E3 +0.005770 (p=3.26e-10), with
+   the implemented Holm family passing. The new commit changes neither the
+   result JSONs nor the graph; the prior independent 64-sidecar reconstruction
+   remains applicable. This supports estimates, not the confirmatory label.
+7. **[CONFIRMED headline overgeneralization] The MI result is a
+   frequency-5-heavy positive-tail pattern, not a broad rare-item advantage.**
+   Excluding frequency 5 gives +0.000071, p=.52; the cross-dataset contrast is
+   p=.13; zero-exposure targets never hit through rank 100. Section 5.3 now says
+   this correctly, but the abstract, introduction, novelty table/figure caption,
+   and conclusion still say `rare-item tail`, `long-tail pattern`, or
+   `confirmed` without the boundary qualification.
+8. **[CONFIRMED FIR attribution defect] The favorable comparisons identify an
+   FIR-plus-initialization-plus-optimizer package, not the filter alone.** The
+   methods/results disclose the singular zero-gate/delta start and Adam weight-
+   decay bootstrap, but the abstract, introduction, and conclusion still call
+   the causal FIR filter itself confirmed. A nonsingular parameter- and
+   initialization-matched control remains required for component attribution.
+9. **[CONFIRMED novelty/baseline weakness] The closest systems remain
+   acknowledged but unbenchmarked.** AlphaFuse is now called the closest omitted
+   comparator; LLM-ESR, FAERec, LLM2Rec, ConvFormer, C3SASR, and AdaMCT further
+   narrow the semantic-tail/local-convolution boundary. The exact realization
+   may be distinct, but a top-journal empirical contribution still needs the
+   strongest comparator or an executable protocol exclusion, plus item-text
+   permutation, target/split-parity, and matched-FIR controls.
+10. **[AUTHOR VERIFICATION, data-rights/privacy risk]** The maintainer statement
+    cited by the paper expressly does not grant a license, yet the manuscript
+    says derived split CSVs are redistributed `on that basis`. No institutional
+    review determination was sought. The Ethics text also calls released
+    sidecar users platform hashes even though sampled sidecars contain dense
+    integer `user_id` values; the deterministic split/sidecar linkage and the
+    redistribution, retention, and removal basis require author/legal review.
+11. **[CONFIRMED Windows reproducibility hazard] The claimed long-path rename
+    did not occur.** Both 230-character TensorBoard paths remain byte-for-byte
+    in the tree. A normally nested checkout can therefore still fail with
+    `Filename too long` unless `core.longpaths` and a short root are used.
+12. **[CONFIRMED visual/submission-readiness blocker, partly improved]** Removing
+    stale Appendix E reduced the reader/TORS builds to 50/47 pages and removed
+    that contradiction; no clipping, missing figure, `??`, or broken glyph was
+    found in the all-page raster pass. However, the Ethics corruption is severe,
+    TORS page 5 remains underfilled, Fig. 1 is sideways on page 26, pages 31--32
+    retain major void/density problems, Table 2 is undersized, and the final
+    reader/acmsmall pages remain only partly filled.
+13. **[CONFIRMED baseline/power weakness]** Many Table 2 rows remain n=1 probes
+    labeled `Rejected`, `neutral`, or `harmful`; one run cannot power those
+    conclusions or bound a ceiling. Seed intervals quantify optimizer variation
+    on fixed splits, not population/category uncertainty; the prospective MDE
+    rationale for eight runs per arm remains absent.
+14. **[CONFIRMED engineering positives; do not overread]** The dirty local strict
+    command passes 175 cells/15 families and 266 implemented manifest checks;
+    AdaMCT metadata is repaired; all 129 remote evidence digests match; Appendix
+    E is gone; and detailed Section 5.3 boundary wording is accurate. These real
+    fixes do not cure the corrupted venue source, chronology, clean-clone
+    failures, untracked graph sources, or unsupported scientific scope.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-20 17:54)
 
 1. **[CONFIRMED, rejection-level prospective-integrity failure] TFV2 is a
    complete exploratory rerun, not a prospective confirmation.** The protocol
@@ -1868,6 +1964,424 @@ plausible risks.
     the venue's current template/anonymity rules, supply any independent
     pre-outcome timestamp, repeat thinning across independent subsets, and
     demonstrate a public fresh-clone reconstruction.
+
+## Audit Run - 2026-07-20 17:54 Australia/Sydney
+
+### Audited state and strict verdict
+
+- **Fixed workspace cutoff:** 2026-07-20 17:54:25 Australia/Sydney.
+- **Branch/HEAD:** `codex/bestrec-sota-results` at
+  `22eae1e915434b84e332dc83a7060e740ec6fdb4`, clean before this audit.
+  `1ad9c9cb` is the implementation response to the 16:53 audit;
+  `22eae1e` changes only `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` and implements no
+  additional repair.
+- **Canonical artifacts inspected:** the canonical Markdown and reader PDF,
+  all generated TeX sections/tables/references, both current venue PDFs,
+  canonical ledger, cover letter, README, release manifest/updater/bootstrap,
+  strict wrapper and graph, OTS proof chain, current public release, closest
+  literature, and data-governance statements.
+- **Verdict: reject in present form / major revision.** The remote TFV2/data
+  upload is now genuine and the numerical endpoints remain locally supported.
+  However, a fully bootstrapped public clone still fails the strict submission
+  command, three graph sources and the HSTU dependency remain outside Git, the
+  verifier/bootstrap repair is incomplete, the venue Ethics section is visibly
+  corrupted, and the front/back matter still overstates the timestamp, tail,
+  and component-attribution evidence.
+
+### What genuinely changed since 16:53
+
+The response is not wholly cosmetic. These fixes were independently confirmed:
+
+1. The live `v0.9-audit-evidence` release now has **131 uploaded assets**:
+   18 split CSVs, four text caches, 107 TFV2 sidecars, one pinned-parity ZIP,
+   and `RELEASE_MANIFEST.json`. All **129** split/cache/sidecar asset digests
+   exposed by the GitHub API match the local manifest.
+2. A clean bootstrap downloaded and hash-verified all 129 assets (about
+   1.37 GB) with `bootstrap: 129 assets in place, 0 failures`; TFV2 then
+   adjudicated successfully in the isolated clone.
+3. The AdaMCT bibliography entry now has the correct nine authors and DOI
+   `10.1145/3583780.3614773`.
+4. Section 5.3 now prints the frequency-5-only effect (+0.001379) and the null
+   exclude-boundary sensitivity (+0.000071, p=.52), with the defensible phrase
+   `frequency-5-heavy positive-tail pattern`.
+5. Obsolete Appendix E was removed from both venue builds. The reader/TORS page
+   counts fell from 54/50 to 50/47.
+6. The Markdown Ethics section no longer makes the categorical claim that IRB
+   is inapplicable; it says no institutional determination was sought.
+7. The OTS files now contain actual Bitcoin block-header attestations rather
+   than only pending-calendar objects. Their cryptographic paths were
+   independently parsed and checked against the public block headers below.
+
+These are real improvements. They do not establish the stronger clean-clone or
+prospective claims made in the same response.
+
+### Fresh dynamic checks
+
+| check | result at audited HEAD |
+|---|---|
+| Dirty local `rebuild_hstu_submission.py --strict` | PASS: 175 cells, 0 mismatch, 0 untraceable, 15 families; normal manifest verifier reports 266 files |
+| Fully isolated public clone + complete 129-asset bootstrap | FAIL: HSTU parity dependency absent; graph 172/175; manifest nine pinned-parity files missing; MI/V3/TFV2/FIR adjudicators otherwise pass |
+| `update_release_manifest.py --verify-git HEAD` | FAIL: three `aux_graph_sources` are not in the Git tree (128 other Git-backed checks pass) |
+| `--verify-git v1.1.9-deposit` | FAIL: 14 mismatches; 157 paths differ between the tag and HEAD |
+| advertised `--fetch-missing` | argparse error, exit 2: option is not registered |
+| advertised `--allow-missing-assets` | argparse error, exit 2: option is not registered |
+| Public release API | 131 uploaded assets; all 129 manifest-governed split/cache/TFV2 asset names, sizes, and SHA-256 digests match |
+| Full bootstrap | 129/129 downloads hash-match; TFV2 missing-input defect is genuinely repaired |
+| Released pinned-parity ZIP | ZIP digest matches, but five of nine extracted files disagree with the current manifest |
+| TeX health | PASS: 32 sources, 39 labels, 27 ref targets; fails to detect the duplicated Ethics prose |
+| PDF hygiene | PASS: 47 pages, no placeholder/forbidden failure; fails to detect the duplicated Ethics prose |
+| All-page visual/text inspection | reader 50 pages, TORS 47, acmsmall 49; no clipping/`??`/missing figure, but venue Ethics is corrupted and prior layout issues remain |
+
+The strict local command rewrote `hstu_tables.json` byte-identically; Git status
+remained clean. The isolated clone, its 1.37 GB downloads, and exact PDF render
+directory were removed after inspection.
+
+### Clean-boundary repair is still false
+
+The implementation commit says three ignored graph sources were force-tracked,
+the long TensorBoard names were renamed, and a generic submodule step repairs
+parity. None of those changes is present in its tree.
+
+**Three missing graph sources.** The exact files remain ignored and untracked:
+
+- `_bestrec_sota_lab/runs/hstu_blair_eval_export_full_20260609_fg/`
+  `hstu_blair_eval_export_summary.json` (two HSTU-port cells);
+- `_bestrec_run/run_CONNGATE_MI_k8_seed20260608.log`;
+- `_bestrec_run/run_CONNGATE_5seed_driver.log` (together source the conn-gate
+  alpha cell).
+
+They are merely listed in the new `aux_graph_sources` manifest section. A
+Git-tree verification reports all three absent. The normal worktree verifier
+does not check that section at all: 266 is exactly the implemented count after
+omitting these three entries from the 269-entry manifest boundary. Its dirty
+check also uses `git status -uno`, so it cannot flag the untracked sources.
+
+**Bootstrap and pinned parity.** `bootstrap_public_clone.py` handles only
+`splits`, `text_caches`, and `tfv2_sidecars`. It therefore leaves nine
+`pinned_parity_artifacts` absent, and the newly fail-closed default verifier
+correctly fails. The release contains only a parity ZIP. Extracting the released
+ZIP does not solve the current boundary: five files have hashes different from
+the current manifest (`inenv_results.json`, both replay JSONs, `pinned_ops.pt`,
+and `pinned_block.pt`). The release ZIP is the July 11 state while the manifest
+was replaced July 20.
+
+**Dead documented options.** Fetch/waiver code exists, but argparse registers
+neither `--fetch-missing` nor `--allow-missing-assets`. Even if registered, the
+per-file pinned-parity fetch path cannot retrieve nine files from a release that
+only exposes their older ZIP.
+
+**Missing parity dependency.** The parity test imports ignored
+`external/HSTU-BLaIR`. `.gitmodules` declares only MELT and liger; it does not
+declare HSTU-BLaIR. Worse, the tree has an `external/AmazonReviews2023` gitlink
+with no `.gitmodules` URL, so the advertised generic command itself exits 128:
+`No url found for submodule path 'external/AmazonReviews2023'`. Manually cloning
+HSTU-BLaIR at the expected commit made parity bitwise exact, confirming that the
+test is scientifically coherent but the dependency instructions are not.
+
+**Windows checkout remains broken.** The same two 230-character TensorBoard
+paths remain tracked. A default nested checkout again failed with `Filename too
+long`; no rename appears in `1ad9c9cb`.
+
+The decisive clean post-bootstrap result was therefore:
+
+```text
+HSTU parity: FAILED (dependency absent)
+Artifact graph: FAILED (172/175; three ignored sources absent)
+Manifest: FAILED (nine pinned-parity files absent)
+MI V2: OK
+Office V3: OK
+TFV2: OK
+FIR breadth: OK
+SUBMISSION REBUILD: FAIL (exit 2)
+```
+
+### Public release is repaired; release prose is not
+
+The GitHub upload is a confirmed non-problem now. The release API supplies a
+SHA-256 digest for every uploaded asset, and all 129 split/cache/sidecar digests
+agree with `RELEASE_MANIFEST.json`. This cures the earlier TFV2 sidecar and
+IS/CD split availability defect.
+
+Current prose nevertheless remains false or stale:
+
+- Section 8 says the release has 12 splits and `20 assets total`, even though it
+  now has 18 splits and 131 uploaded assets.
+- Section 8 says the three auxiliary graph sources are Git-tracked; none is.
+- Section 8 promises `--fetch-missing`; that invocation is rejected.
+- README's strict chain still reports 153 manifest files and omits TFV2, despite
+  the local wrapper running TFV2 and normal verification reporting 266.
+- `CANONICAL_SUBMISSION.md` still says 14 required families at one line and 15
+  at another.
+- README says nine files advanced beyond `v1.1.9-deposit`; the actual diff has
+  157 paths, and literal tag verification fails on 14 manifest checks.
+- The response says the clean boundary is closed while the paper itself still
+  says a clean-clone sweep and `v1.1.10` are queued.
+
+### OTS proof: cryptographically upgraded, chronologically insufficient
+
+The upgraded proof files are valid as OTS data structures. Independent parsing
+found these relevant Bitcoin attestations, and public block headers have the
+expected Merkle roots (the byte-order reversal is the normal Bitcoin display
+convention):
+
+- `TFV2_STATE_ATTESTATION.txt.ots` matches its Git/worktree bytes and binds the
+  original prereg SHA-256 `1fdc73d1...f99` and command SHA-256
+  `525496d4...1a1b`. Its Bitcoin attestations are at heights 958749 and 958761.
+  The earliest block timestamp is **2026-07-20 01:48:23 AEST**.
+- The first TFV2 result file was already complete at approximately
+  **01:36:02 AEST**. The initial Git commit at 01:26:34 predates it, but the
+  Bitcoin attestation proves existence only before the 01:48 block, not before
+  launch.
+- The current amended `PREREG_TAIL_FIR_V2.md.ots` matches the Windows CRLF
+  worktree digest `d6dc8088...a5483b2`, not the canonical LF Git blob digest
+  `399041b0...5a0a`. Its earliest upgraded Bitcoin block is around
+  **06:11:59 AEST**, after the MI/VG outputs and the disclosed run-1 inspection.
+  The current command proof similarly anchors the repaired command file after
+  the failed-command episode.
+
+OpenTimestamps accurately describes a proof as establishing that data existed
+before an attested point in time. It does not backdate the independent Bitcoin
+evidence to the calendar request. Thus the defensible statement is:
+
+> The original protocol and commands were Git-committed before launch; OTS
+> calendar proofs were requested then, but the earliest independently
+> verifiable Bitcoin attestation postdates the first result. The campaign had
+> outcome visibility and a post-output adjudicator and is reported as
+> exploratory.
+
+Calling the campaign `independently externally timestamped before launch` or
+`confirmatory` is not supported by this evidence.
+
+### Scientific-claim audit
+
+**Arithmetic remains favorable.** The new response does not alter the 64 TFV2
+result JSONs or the graph. The prior independent sidecar reconstruction still
+supports E1 +0.000420 (p=.00221), E2 +0.002131 (p=1.01e-10), and E3 +0.005770
+(p=3.26e-10), with the implemented Holm family passing. The release now makes
+the sidecars publicly inspectable. This is a genuine multi-seed result.
+
+**The front matter has not adopted its own boundary analysis.** Section 5.3 now
+correctly says the MI signal is frequency-5-heavy and that excluding that group
+is null. But the abstract says `sparse-catalog tail advantage`; the introduction
+and conclusion say text `wins the rare-item tail`; the novelty table and figure
+retain a broad dataset-conditional long-tail finding. That scope is contradicted
+by the p=.52 exclude-boundary result, the p=.13 MI-minus-VG contrast, the failed
+thinning reproduction, and zero hits through rank 100 for all zero-exposure
+targets. Every headline occurrence needs the exact frequency-5-heavy wording.
+
+**FIR attribution is still internally inconsistent.** TFV2 is explicitly an
+independent-arm estimate of the FIR-plus-initialization/optimizer package, and
+the method explains why the zero gate/delta kernel is singular and Adam weight
+decay bootstraps learning. The abstract, introduction, and conclusion still call
+the FIR filter itself supported/confirmed. Until a nonsingular, parameter- and
+initialization-matched control is run, package-effect wording is required.
+
+**Closest work and controls remain missing.** AdaMCT metadata is repaired, but
+AlphaFuse remains the paper's self-identified closest omitted frozen-text-plus-
+ID comparator. LLM-ESR, FAERec, LLM2Rec, ConvFormer, C3SASR, and AdaMCT narrow
+the semantic-tail and causal/local-convolution space. A top-journal novelty
+claim still needs a direct benchmark or an executable protocol exclusion. The
+item-text permutation, target/split-parity, and matched-FIR controls remain open.
+
+**Negative-map power remains weak.** Table 2 still turns many n=1 probes into
+`Rejected`, `neutral`, or `harmful` conclusions and uses them to argue that the
+ceiling is not for want of trying. These are observations at one seed, not
+powered negative results. The eight-seed TFV2 choice also lacks a prospective
+MDE/power rationale; realized intervals are post-outcome precision summaries.
+
+### Ethics and data-governance audit
+
+The canonical Markdown paragraph is syntactically clean; the generated TeX is
+not. `paper_tex/sections/10-ethics.tex` begins the paragraph twice, inserts a
+complete copy, resumes mid-sentence, inserts another complete copy, and ends
+with a repeated fragment. The resulting TORS/acmsmall PDFs visibly repeat the
+section across two pages. This is an immediate submission blocker and proves the
+current TeX-health/hygiene checks do not test prose identity.
+
+Substantively, the revised wording still needs author verification:
+
+- The McAuley Lab maintainer statement says the maintainers cannot assign a
+  license or dictate usage terms. It is not a permission grant for publishing
+  derived interaction-level split CSVs. `We redistribute ... on that basis`
+  overstates what the cited statement establishes.
+- `No institutional review determination was sought` is factually clearer than
+  `IRB not applicable`, but ACM policy still places applicable institutional,
+  ethical, and legal compliance on the authors and allows requests for
+  supporting documentation.
+- The paragraph first says sidecars contain remapped dense integer IDs, then
+  calls them the platform's hashed identifiers. A sampled released row contains
+  `"user_id": 0`, then 1, 2, etc. Platform pseudonyms appear in the released
+  splits; deterministic mapping plus held-out targets may permit linkage.
+  Assess and state privacy, retention, linkage, and removal procedures rather
+  than calling the sidecars anonymous by construction.
+
+### PDF and writing review
+
+Current identities:
+
+- `PAPER_SUBMISSION.pdf`: 50 pages, 1,300,984 bytes, SHA-256
+  `6b0270e59be94ad06f1f8dce18a902bc13b79b291c735947f95e2ff29f7817dd`.
+- `paper_tex/PAPER_TORS.pdf`: 47 pages, 459,560 bytes, SHA-256
+  `d39ea2e240eac4fd48b45e8dcfe1ad852ca9eb397acca11e567a199a79d1feec`.
+- `paper_tex/PAPER_TORS_acmsmall.pdf`: 49 pages, 468,195 bytes, SHA-256
+  `0f6c380f7105823aba45d162138fe565993c506fd21a1c4d8feddc9ddb65e5b5`.
+
+All pages were rasterized and inspected. Confirmed improvements: Appendix E is
+gone, the concise abstract stays on page 1, the former table collision remains
+fixed, and no clipped object, missing figure, broken glyph, or unresolved `??`
+reference was found.
+
+Confirmed defects: venue Ethics prose is duplicated/interleaved; TORS page 5 is
+underfilled; the three-panel figure remains sideways on page 26; pages 31--32
+retain a large void/dense tiny-table transition; Table 2 remains difficult to
+read; and the reader/acmsmall endings are only partly filled. More broadly, the
+paper still reads like a chronological audit dossier. The deletion of Appendix
+E helps, but the 47--50 page package remains editorially diffuse for a focused
+top-journal argument.
+
+### Confirmed problems
+
+1. Generated venue Ethics source/PDF is corrupted despite green health scans.
+2. TFV2 remains outcome-visible and is not independently proven timestamped
+   before launch by the completed Bitcoin attestations.
+3. Three claimed force-tracked graph inputs remain ignored/untracked; clean
+   graph is 172/175.
+4. Bootstrap omits nine parity artifacts; the released ZIP is stale against
+   five current hashes; HSTU-BLaIR is not a declared submodule.
+5. `--fetch-missing`/`--allow-missing-assets` are dead documented options, and
+   normal manifest verification omits the auxiliary graph section.
+6. Windows long paths were not renamed and still break a normal checkout.
+7. Section 8/README/canonical ledger/deposit/response remain mutually
+   inconsistent despite a genuine 131-asset release.
+8. Headline tail and FIR-filter claims exceed the frequency-5 and package-level
+   evidence disclosed in the body.
+9. Closest comparators and the highest-value attribution/parity controls remain
+   unrun.
+10. Data redistribution, institutional review, and released-identifier linkage
+    require documented author/legal verification.
+
+### Confirmed non-problems / real fixes
+
+- The 131-asset public upload exists; all 129 manifest-governed data/TFV2 asset
+  API digests match.
+- TFV2 runs and adjudicates once those public assets are bootstrapped.
+- E1/E2/E3 arithmetic remains unchanged and previously reproduced.
+- AdaMCT author/DOI metadata is now correct.
+- Appendix E and its stale private/upload prose are gone.
+- Section 5.3 now reports the decisive frequency-5 sensitivity honestly.
+- OTS proofs now contain valid Bitcoin attestations; the defect is the claimed
+  prelaunch chronology, not cryptographic invalidity.
+- The reader Markdown Ethics paragraph is clean; the corruption is in generated
+  venue source/output.
+
+### Evidence and primary-source links added/rechecked
+
+- Public release and asset inventory:
+  https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence
+- GitHub release API:
+  https://api.github.com/repos/Ray0419/bestrec-sota-results/releases/tags/v0.9-audit-evidence
+- OpenTimestamps description and verifier:
+  https://opentimestamps.org/
+- OpenTimestamps client:
+  https://github.com/opentimestamps/opentimestamps-client
+- Bitcoin blocks used by the upgraded proofs:
+  https://blockstream.info/block-height/958749,
+  https://blockstream.info/block-height/958761,
+  https://blockstream.info/block-height/958775,
+  https://blockstream.info/block-height/958776,
+  https://blockstream.info/block-height/958823
+- AdaMCT primary record: https://arxiv.org/abs/2205.08776
+- AlphaFuse: https://arxiv.org/abs/2504.19218
+- LLM-ESR: https://arxiv.org/abs/2405.20646
+- FAERec: https://arxiv.org/abs/2604.03688
+- LLM2Rec: https://arxiv.org/abs/2506.21579
+- ConvFormer: https://arxiv.org/abs/2308.02925
+- Dataset maintainer license/terms statement:
+  https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023/discussions/1
+- ACM research involving human participants/subjects policy:
+  https://www.acm.org/publications/policies/research-involving-human-participants-and-subjects
+
+### Concrete fixes in priority order
+
+1. Replace `paper_tex/sections/10-ethics.tex` with exactly one conversion of the
+   canonical paragraph; rebuild both venue formats; add a source/PDF duplicate-
+   sentence identity check so TeX health cannot pass this corruption again.
+2. Relabel TFV2 everywhere as an outcome-visible exploratory rerun. State the
+   exact OTS chronology: prelaunch Git commit/request, earliest Bitcoin proof
+   after the first result, amended proof after outcome visibility.
+3. Actually force-add/deposit the three graph sources or retire their three
+   cells. Make normal verification hash `aux_graph_sources`, reject untracked
+   entries, and keep `--verify-git HEAD` green.
+4. Repair the clean bootstrap end-to-end: register/document real CLI options;
+   publish a parity archive whose nine contents match the current manifest and
+   download/extract/hash it; declare HSTU-BLaIR correctly; fix or remove the
+   orphan AmazonReviews2023 gitlink.
+5. Rename the two long TensorBoard paths and reproduce a normal nested Windows
+   clone without `core.longpaths` special handling.
+6. Run the entire public-clone command from zero and retain the transcript only
+   after parity, graph, manifest, and all adjudicators pass at one immutable
+   commit/tag.
+7. Synchronize Section 8, README, canonical ledger, cover letter, manifest
+   scope, response, and new deposit: 18 splits, 107 sidecars, 131 uploads,
+   175/15 graph, current verifier count, TFV2 chain, and no false tracked claim.
+8. Propagate `frequency-5-heavy MI positive-tail pattern` and
+   `FIR-plus-initialization/optimizer package` into abstract, introduction,
+   novelty table/figure, discussion, conclusion, and cover letter.
+9. Benchmark AlphaFuse or provide an executable protocol-based exclusion; run
+   the matched-FIR, item-text permutation, and target/split-parity controls.
+10. Replace n=1 negative verdicts with observations or replicate them; add the
+    prospective MDE/power rationale and scope seed intervals to fixed splits.
+11. Obtain/document the redistribution and institutional-review basis; explain
+    dense-ID/platform-pseudonym linkage, retention, access, and removal policy.
+12. Re-edit the venue paper after scientific fixes: upright/legible figures,
+    split Table 2, reduce dossier chronology, and remove float-created voids.
+
+### Open questions
+
+- Will the authors accept the OTS block chronology and relabel TFV2, or do they
+  have independently verifiable pre-01:36 evidence not present in this tree?
+- Why did the implementation commit and response claim force-added sources and
+  long-path renames that are absent from the commit diff?
+- Which parity artifact state is authoritative: the July 11 release ZIP or the
+  July 20 manifest, and where will a matching archive be published?
+- What repository/commit and `.gitmodules` entry are intended to supply
+  `external/HSTU-BLaIR`? What should happen to the orphan AmazonReviews2023
+  gitlink?
+- What permission/legal basis covers publication of derived interaction splits,
+  and what institutional review basis applies?
+- Are dense sidecar IDs linkable to pseudonymous IDs in the released splits,
+  and what privacy assessment governs that joint release?
+- Which exact PDF is the submission artifact? The reader is clean at Ethics,
+  while both venue PDFs contain corrupted duplicated prose.
+- When will a new immutable deposit be cut and verified, given 157 changed paths
+  and the current intended tag's 14 failures?
+
+### Running checklist
+
+- [x] Read automation memory and the prior cumulative audit.
+- [x] Fix HEAD/cutoff and compare the response commit to the prior audited tree.
+- [x] Re-run the dirty local 175-cell/15-family strict command.
+- [x] Query the live release and match all 129 data/TFV2 asset digests.
+- [x] Bootstrap all 129 assets in a fresh isolated public clone.
+- [x] Run the clean strict chain and record graph/parity/manifest/adjudicator
+      outcomes separately.
+- [x] Test Git-tree verification, intended-tag verification, and both advertised
+      missing-asset flags.
+- [x] Inspect Git tracking/ignore state of all three auxiliary graph sources.
+- [x] Inspect `.gitmodules`, the HSTU import boundary, orphan gitlink, and long
+      tracked paths.
+- [x] Download/extract the released pinned-parity ZIP and compare all nine
+      internal hashes with the current manifest.
+- [x] Parse OTS proofs and verify Bitcoin-attestation Merkle roots/block times.
+- [x] Compare the OTS digests with current and historical Git/worktree bytes.
+- [x] Recheck headline tail/FIR scope, AdaMCT metadata, closest work, and
+      governance claims.
+- [x] Rasterize and inspect every page of reader, TORS, and acmsmall PDFs.
+- [x] Update the current prioritized rejection-risk list and append this run.
+- [ ] Repair/rerender the corrupted Ethics section and harden duplicate checks.
+- [ ] Make the public clone pass parity, 175 cells, manifest, and all gates.
+- [ ] Relabel TFV2 and synchronize every submission/release document.
+- [ ] Complete comparator/attribution controls and governance documentation.
 
 ## Audit Run - 2026-07-20 16:53 Australia/Sydney
 

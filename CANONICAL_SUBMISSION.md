@@ -60,7 +60,7 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
   (present; descriptive/VOID), `results_FIRABL_*` (present), `results_OFFICEV3_k{16,8}_seed*.json` (+ per-run tree-state sidecars), `_bestrec_run/results_FIRB_*` (20 tracked breadth runs), the reference-implementation run
   artifacts `_bestrec_run/theirs_runs/*/metrics.jsonl` (+ `run_meta.json`, preprocess
   provenance), and the per-table source families enumerated in
-  `_bestrec_run/hstu_results_manifest.json` (14 required claim families)
+  `_bestrec_run/hstu_results_manifest.json` (15 required claim families)
 - Table generation (fail-closed): `_bestrec_run/build_hstu_tables.py` regenerates every
   empirical table from the manifest; **`--submission` exits nonzero** on any UNTRACEABLE cell,
   any printed-numeral MISMATCH, or any required claim family without sourced cells
@@ -68,7 +68,7 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
 - Canonical one-command verification: `python _bestrec_run/rebuild_hstu_submission.py --strict`
   (parity test → strict `--submission` build → release-manifest verification → MI V2
   adjudicator → **Office V3 adjudicator (counted; build fails unless CAMPAIGN VERDICT:
-  PASS)** → **TFV2 repaired-estimand adjudicator (counted; externally timestamped prereg; ALL PASS required)** → **FIR-breadth frozen-rule adjudicator (artifact-integrity; paired interpretation withdrawn)** →
+  PASS)** → **TFV2 repaired-estimand adjudicator (counted integrity gate; Git-declared frozen rules; outcome-visible — not confirmatory, §5.3 disclosure (vii); ALL PASS required)** → **FIR-breadth frozen-rule adjudicator (artifact-integrity; paired interpretation withdrawn)** →
   Office V1 adjudicator (descriptive/VOID, non-gating)) — passes end-to-end at the
   submitted commit; `update_release_manifest.py --verify-git <intended_deposit_tag>`
   additionally checks the manifest against the git blobs at the deposit tag

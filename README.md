@@ -19,7 +19,7 @@ uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --s
 This runs, fail-closed: the bitwise HSTU core-block parity test → the artifact-graph build
 (**every one of the 175 artifact-gated cells recomputed from source artifacts**; exits
 nonzero on any mismatch, untraceable cell, or missing claim family) → release-manifest hash
-verification (153 files) → the pre-declared Musical_Instruments gate adjudicator → **the
+verification (269 files at the current manifest) → the pre-declared Musical_Instruments gate adjudicator → the TFV2 repaired-estimand adjudicator (outcome-visible — §5.3 chronology) → **the
 Office V3 adjudicator (counted; the build fails unless the campaign verdict is PASS)** →
 **the FIR-breadth adjudicator (counted; both categories must be CONFIRMED)** → the Office V1
 adjudicator (descriptive/VOID). Every counted campaign's live adjudicator gates the build
@@ -48,7 +48,7 @@ blobs (`DOI_DEPOSIT_INSTRUCTIONS.md` has the full rule).
   (`PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md` + its 2026-07-20 erratum).
 - **Text benefits are dataset-conditional** (help on sparse categories, ≈null on dense ones),
   supported by controlled thinning interventions.
-- **The evaluation apparatus itself** — version-controlled pre-declaration (the TFV2 campaign additionally carries completed OpenTimestamps Bitcoin attestations; earlier campaigns have git history only — a disclosed limitation), fail-closed artifact
+- **The evaluation apparatus itself** — version-controlled pre-declaration (the TFV2 campaign carries OpenTimestamps proofs whose earliest Bitcoin attestation postdates its first result — the pre-launch freeze rests on Git history alone, a disclosed limitation stated exactly in §5.3 disclosure (vii)), fail-closed artifact
   gate, comparator regeneration, symmetric self-VOIDing — demonstrated end to end.
 
 **Explicitly not claimed:** state-of-the-art on anything (on Video_Games our 0.0673 sits
@@ -73,7 +73,7 @@ campaign above is a separate pre-declaration that passed under its frozen wordin
 
 ## Releases
 
-- **`v1.1.9-deposit`** (current archival bundle; each deposit release supersedes the previous) — the deposit zip + sidecar hash + manifest + both PDFs, upload verified by download-hash round trip. **The archival boundary is always the deposit tag, never branch HEAD** (post-deposit commits — audit responses and any interim fixes or hardening — sit outside the deposited snapshot by design; each new deposit cut re-synchronizes and supersedes the previous tag). **NOTE (2026-07-20): nine tracked files have advanced past this tag; a v1.1.10 cut is pending — the tag remains verifiable for its own snapshot.**
+- **`v1.1.9-deposit`** (current archival bundle; each deposit release supersedes the previous) — the deposit zip + sidecar hash + manifest + both PDFs, upload verified by download-hash round trip. **The archival boundary is always the deposit tag, never branch HEAD** (post-deposit commits — audit responses and any interim fixes or hardening — sit outside the deposited snapshot by design; each new deposit cut re-synchronizes and supersedes the previous tag). **NOTE (2026-07-20): nine tracked files have advanced past this tag; a v1.1.10 cut is pending — the tag remains verifiable for its own snapshot.** **157 tracked paths have advanced beyond this tag** (the clean-boundary rounds); `--verify-git v1.1.9-deposit` fails against the current manifest by design — v1.1.10 will be cut once the from-zero public-clone verification passes at one immutable commit.
 - **`v0.9-audit-evidence`** — the pinned-parity ZIP, `RELEASE_MANIFEST.json`, all 18 split CSVs, four text caches, and the 107 TFV2 per-user sidecars (all hash-manifested; uploaded 2026-07-20; the manifest inventory is authoritative for counts). Fresh clones: `git submodule update --init && python bootstrap_public_clone.py` before the strict gate.
 - **`bestrec-raw-records-v1`** — the historical LC2C project's raw records (see `README_LC2C_HISTORICAL.md`).
 

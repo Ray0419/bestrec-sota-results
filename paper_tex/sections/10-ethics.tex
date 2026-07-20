@@ -1,9 +1,8 @@
-%% GENERATED from PAPER_SUBMISSION.md (round-7) -- hand-fixed conversion; see BUILD_NOTES.md
+%% GENERATED from PAPER_SUBMISSION.md (regenerated whole-section 2026-07-20, audit 17:54 -- single conversion, no line splicing)
 \section{Ethics and Data Governance}\label{sec:10}
 
 This work uses only the public, pseudonymized \textbf{Amazon Reviews 2023} dataset (Hou et al., 2024;
-This work uses only the public, pseudonymized \textbf{Amazon Reviews 2023} dataset (Hou et al., 2024;
-McAuley Lab), obtained from its official distribution and publicly released for research by the McAuley Lab --- whose maintainers state they are not in a position to assign a license or dictate usage terms --- and we redistribute derived split CSVs on that basis with attribution, removing them on maintainer request. Scope of
+McAuley Lab), obtained from its official distribution. The dataset's maintainers state publicly that they are not in a position to assign a license or dictate usage terms; \textbf{that statement is not an affirmative permission grant, and we do not treat it as one}. We redistribute derived interaction-split CSVs (never the raw dataset) with attribution on the basis of the dataset's public research availability, we will remove them immediately on maintainer, platform, or venue request, and we flag the redistribution basis for venue-level review rather than asserting a legal right. Scope of
 data actually consumed: interaction tuples (pseudonymous user identifiers --- remapped to dense
 integers by our preprocessing --- item identifiers, and timestamps) and \textbf{item metadata text}
 (titles, categories, and store/seller name --- the AR2023 \texttt{store} field; an earlier label said ``brand'', corrected 2026-07-20: the frozen cache text template's literal \texttt{brand:} prefix is retained as-is inside the cached strings and documented as a misnomer, because regenerating the caches would invalidate every frozen-text result) for the frozen text encoders. We do \textbf{not} process review text
@@ -12,32 +11,7 @@ user. Released artifacts follow the same boundary: per-user evaluation sidecars 
 remapped integer IDs, target item IDs, and rank outcomes; the raw dataset is \textbf{not
 redistributed} (our releases carry SHA256 hashes and regeneration scripts instead,
 \texttt{RELEASE\_MANIFEST.json}). No new data was collected and no interaction with human subjects took
-place, so no institutional review determination was sought or is claimed; the data are public, platform-pseudonymized product reviews, and we state that as a fact rather than adjudicating any jurisdiction's requirements (per-user sidecars carry only the platform's hashed user identifiers, an item index, and a rank). Finally, this is an offline evaluation
-study: recommender systems deployed on such data can amplify popularity and exposure biases ---
-our long-tail analyses quantify one aspect of that concern --- and nothing in this paper
-constitutes a deployment claim.
-data actually consumed: interaction tuples (pseudonymous user identifiers --- remapped to dense
-integers by our preprocessing --- item identifiers, and timestamps) and \textbf{item metadata text}
-(titles, categories, and store/seller name --- the AR2023 \texttt{store} field; an earlier label said ``brand'', corrected 2026-07-20: the frozen cache text template's literal \texttt{brand:} prefix is retained as-is inside the cached strings and documented as a misnomer, because regenerating the caches would invalidate every frozen-text result) for the frozen text encoders. We do \textbf{not} process review text
-bodies, ratings-as-text, or product images, and we make no attempt at re-identification of any
-user. Released artifacts follow the same boundary: per-user evaluation sidecars contain only
-remapped integer IDs, target item IDs, and rank outcomes; the raw dataset is \textbf{not
-redistributed} (our releases carry SHA256 hashes and regeneration scripts instead,
-\texttt{RELEASE\_MANIFEST.json}). No new data was collected and no interaction with human subjects took
-This work uses only the public, pseudonymized \textbf{Amazon Reviews 2023} dataset (Hou et al., 2024;
-McAuley Lab), obtained from its official distribution and publicly released for research by the McAuley Lab --- whose maintainers state they are not in a position to assign a license or dictate usage terms --- and we redistribute derived split CSVs on that basis with attribution, removing them on maintainer request. Scope of
-data actually consumed: interaction tuples (pseudonymous user identifiers --- remapped to dense
-integers by our preprocessing --- item identifiers, and timestamps) and \textbf{item metadata text}
-(titles, categories, and store/seller name --- the AR2023 \texttt{store} field; an earlier label said ``brand'', corrected 2026-07-20: the frozen cache text template's literal \texttt{brand:} prefix is retained as-is inside the cached strings and documented as a misnomer, because regenerating the caches would invalidate every frozen-text result) for the frozen text encoders. We do \textbf{not} process review text
-bodies, ratings-as-text, or product images, and we make no attempt at re-identification of any
-user. Released artifacts follow the same boundary: per-user evaluation sidecars contain only
-remapped integer IDs, target item IDs, and rank outcomes; the raw dataset is \textbf{not
-redistributed} (our releases carry SHA256 hashes and regeneration scripts instead,
-\texttt{RELEASE\_MANIFEST.json}). No new data was collected and no interaction with human subjects took
-place, so no institutional review determination was sought or is claimed; the data are public, platform-pseudonymized product reviews, and we state that as a fact rather than adjudicating any jurisdiction's requirements (per-user sidecars carry only the platform's hashed user identifiers, an item index, and a rank). Finally, this is an offline evaluation
-study: recommender systems deployed on such data can amplify popularity and exposure biases ---
-our long-tail analyses quantify one aspect of that concern --- and nothing in this paper
-constitutes a deployment claim.
+place; no institutional review determination was sought or is claimed --- the data are public, platform-pseudonymized product reviews, and we state that as a fact rather than adjudicating any jurisdiction's requirements; ACM policy places responsibility for applicable institutional, ethical, and legal compliance on authors, and we accept it, with this section's factual basis available as supporting documentation on request. \textbf{Sidecar identifier surface, stated exactly:} the released per-user sidecars carry our preprocessing's dense remapped user indices (\texttt{user\_id} 0, 1, 2, \ldots{}), a target-item index, and rank outcomes --- not hashes; those dense indices are deterministically linkable to the platform's pseudonymous identifiers through the released split CSVs, so the sidecars are exactly as pseudonymous as the public dataset itself, no more --- we state this linkage surface plainly instead of calling the sidecars anonymous. Released derivatives are retained under the tagged GitHub release; removal requests (maintainer, platform, or a data subject acting through the platform's pseudonymization) will be honored by deleting the affected assets and regenerating the release manifest. Finally, this is an offline evaluation
 study: recommender systems deployed on such data can amplify popularity and exposure biases ---
 our long-tail analyses quantify one aspect of that concern --- and nothing in this paper
 constitutes a deployment claim.

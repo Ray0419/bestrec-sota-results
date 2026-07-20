@@ -58,3 +58,4 @@ _bestrec_run/*.DONE
 _bestrec_run/smoke_*.json
 _bestrec_run/tfv2_logs/
 _bestrec_run/results_TFV2_*.users.jsonl.gz.tmp
+external/AmazonReviews2023/

@@ -109,6 +109,46 @@ for f in _g2.glob(os.path.join(HERE, "..", "_bestrec_run", "make_fig_*.py")):
             fails.append(f"H6: retracted/stale string {patb!r} in {os.path.basename(f)}: "
                          f"...{src[max(0, i-40):i+40]!r}...")
 
+# ---- [H8] duplicated prose sentences (source AND compiled PDF) -------------------
+# Added 2026-07-20 (audit 17:54): the generated Ethics section carried interleaved
+# duplicate/triplicate sentences that H1-H7 could not see. Any sentence >= 60 chars
+# appearing twice in one section/table source, or in the PDF text, is corruption.
+def _sentences(txt):
+    flatt = re.sub(r"(?m)^%.*$", "", txt)
+    flatt = re.sub(r"\\[a-zA-Z@]+\*?(\[[^\]]*\])?", " ", flatt)
+    flatt = re.sub(r"[{}&$~^]", " ", flatt)
+    flatt = re.sub(r"\s+", " ", flatt)
+    return [x.strip() for x in re.split(r"(?<=\.)\s+", flatt) if len(x.strip()) >= 60]
+
+for f in sorted(_g2.glob(os.path.join(HERE, "sections", "*.tex"))
+                + _g2.glob(os.path.join(HERE, "tables", "*.tex"))):
+    sents = _sentences(io.open(f, encoding="utf-8", errors="replace").read())
+    seen8 = {}
+    for sN in sents:
+        seen8[sN] = seen8.get(sN, 0) + 1
+    dups = [sN for sN, cN in seen8.items() if cN > 1]
+    if dups:
+        fails.append(f"H8: {len(dups)} duplicated sentence(s) in "
+                     f"{os.path.basename(f)}: {dups[0][:80]!r}...")
+if os.path.exists(pdf_path):
+    # body prose only: the References section legitimately repeats a verbatim
+    # concurrent-preprint disclosure note on several entries
+    flat8 = re.sub(r"\s+", " ", text)
+    mref8 = None
+    for mref8 in re.finditer(r"(?i)\bReferences\b", flat8):
+        pass
+    if mref8 is not None and mref8.start() > len(flat8) // 2:
+        flat8 = flat8[:mref8.start()]
+    psents = [x.strip() for x in re.split(r"(?<=\.)\s+", flat8)
+              if len(x.strip()) >= 80]
+    seen8 = {}
+    for sN in psents:
+        seen8[sN] = seen8.get(sN, 0) + 1
+    dups = [sN for sN, cN in seen8.items() if cN > 1]
+    if dups:
+        fails.append(f"H8: {len(dups)} duplicated sentence(s) in the compiled PDF: "
+                     f"{dups[0][:80]!r}...")
+
 # ---- [H7] duplicated load-bearing table titles in the compiled PDF ---------------
 if os.path.exists(pdf_path):
     UNIQUE_TITLES = ("interaction-thinning density-titration ladder",)

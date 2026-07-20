@@ -18,13 +18,17 @@ DEST = {
     "splits": os.path.join("data_5core", "5core", "last_out"),
     "text_caches": "cache_5core",
     "tfv2_sidecars": os.path.join("_bestrec_run",),
+    "pinned_parity_artifacts": os.path.join("_bestrec_run", "theirs_runs", "tmp",
+                                            "pinned_parity"),
 }
 
 def main():
     m = json.load(open(os.path.join(ROOT, "RELEASE_MANIFEST.json"), encoding="utf-8"))
     ok = bad = 0
     for sec, sub in DEST.items():
-        for key, ent in m.get(sec, {}).items():
+        entries = (m.get(sec, {}).get("files", {})
+                   if sec == "pinned_parity_artifacts" else m.get(sec, {}))
+        for key, ent in entries.items():
             name = key + ".csv" if sec == "splits" else key
             dst_dir = os.path.join(ROOT, sub)
             os.makedirs(dst_dir, exist_ok=True)

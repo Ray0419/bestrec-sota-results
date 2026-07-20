@@ -1,4 +1,4 @@
-hygiene scan: PAPER_TORS.pdf | pages: 48
+hygiene scan: PAPER_TORS.pdf | pages: 49
 placeholder+forbidden failures: 0
 review list (SOTA mentions + negated claim-wordings): 17
   REVIEW negated-ok: paired\s+superiority :: nvironment-matched regeneration) — point-estimate comparisons, not SOTA and not paired superiority; (ii) a leak-free causal FIR filter — as the FIR-plus-initialization/optimizer 
@@ -16,6 +16,6 @@ review list (SOTA mentions + negated claim-wordings): 17
   REVIEW SOTA-mention :: not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind. The V1 VOID above stands unchanged as its own record (Append
   REVIEW SOTA-mention :: n wording: a per-category point-estimate comparison; no paired superiority; not SOTA of any kind. The limitation that remains: both counted comparisons (MI, Office 
   REVIEW SOTA-mention :: itive text contributor (+0.0009), not a headline. We do not claim a Video_Games SOTA — the published HSTU-BLaIR 0.0760 relies on custom CUDA/Triton kernels that are
-  REVIEW SOTA-mention :: ratus these results were produced under. Explicit non-claims: • We do not claim SOTA over TIGER, LIGER, BLaIR, or HSTU-BLaIR; the published HSTU-BLaIR 0.0760 remain
+  REVIEW SOTA-mention :: 4 2075 2076 2077 2078 2079 2080 40 Anon. Explicit non-claims: • We do not claim SOTA over TIGER, LIGER, BLaIR, or HSTU-BLaIR; the published HSTU-BLaIR 0.0760 remain
   REVIEW SOTA-mention :: . We provide our 0.01946 (2-seed mean) as a reference baseline rather than as a SOTA-improvement claim. A future apples-to-apples comparison would require either: •
 verdict: PASS (review list above is informational)

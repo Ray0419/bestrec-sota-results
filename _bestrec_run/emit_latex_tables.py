@@ -383,7 +383,17 @@ REGISTRY = [
          env="tabularx", colspec=r"p{0.30\linewidth}cYc", size=r"\footnotesize",
          family="table542", allow=set()),
     dict(key="table2", fp="lever", out="table2.tex",
-         env="tabularx", colspec=r"p{0.155\linewidth}p{0.13\linewidth}p{0.11\linewidth}p{0.16\linewidth}p{0.10\linewidth}Y", size=r"\scriptsize",
+         # page-breakable at \footnotesize (audit 17:54 fix 12: "split Table 2" --
+         # longtable breaks across pages with a repeating header instead of one
+         # cramped \scriptsize block; md stays a single source-of-truth table)
+         env="longtable",
+         colspec=(r">{\raggedright\arraybackslash}p{0.145\linewidth}"
+                  r">{\raggedright\arraybackslash}p{0.12\linewidth}"
+                  r">{\raggedright\arraybackslash}p{0.10\linewidth}"
+                  r">{\raggedright\arraybackslash}p{0.155\linewidth}"
+                  r">{\raggedright\arraybackslash}p{0.095\linewidth}"
+                  r">{\raggedright\arraybackslash}p{0.27\linewidth}"),
+         size=r"\footnotesize",
          family="table2",
          # md Table 2 prints base-band/context numerals the JSON family stores differently:
          # 0.0639 SBERT-stack base label (JSON: "H2 stack 0.0639" -- present; kept for safety),

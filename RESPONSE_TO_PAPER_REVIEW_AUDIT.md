@@ -9,6 +9,36 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-20 16:53 (clean-boundary round; responded 2026-07-20)
+
+The clean-worktree experiment was the decisive finding of this run and it was correct:
+the released-artifact claim was false as written. This round makes it true.
+
+| # | Audit item | Action |
+|---|---|---|
+| 1 | TFV2 prospective/confirmatory label vs public chronology | Narrowed further: every "committed before inspection" phrase now references the disclosed run-1 exception verbatim; the executable-adjudicator chronology (code after outputs existed, rules frozen+stamped before launch) is stated as a design deviation in the papers and cover letter. The frozen labels stand on the rules' chronology, with the deviation disclosed rather than the estimates relabeled — and the OTS proofs are now **complete Bitcoin attestations** (upgraded this tick; `ots verify` works for anyone), closing 16:36's "not yet independently verifiable" item. |
+| 2 | Clean checkout cannot reproduce the gate (3 ignored sources; TFV2 inputs; submodule; 172/175) | **Fixed structurally:** the three formerly-ignored cell inputs (HSTU-BLaIR eval-export summary + two conn-gate logs) are force-tracked and manifested in a new git-backed `aux_graph_sources` section; the 107 TFV2 sidecars and the IS/CDs split CSVs (6 files) are **deposited as release assets** (113 uploads, zero failures) and manifested (`tfv2_sidecars`; splits now 18); `bootstrap_public_clone.py` reconstructs a fresh clone's full boundary with hash verification; README's quickstart now includes `git submodule update --init` + bootstrap. |
+| 3 | Release verifier fail-open (25 missing assets → OK) | **Fail-closed now:** missing release-class assets are fatal unless `--fetch-missing` stream-downloads and hash-verifies them from the release, or `--allow-missing-assets` is explicitly passed. 266 files verify locally. |
+| 4 | False sidecar-tracking statement; 18-vs-20 asset counts | §8 corrected: JSONs git-tracked, sidecars deposited-and-manifested; the manifest inventory is named authoritative for counts (the release page adds two automatic source archives). |
+| 5 | E1 is frequency-5-heavy | **Verified and adopted:** the boundary group alone is +0.001379 (t = 7.43, p = 3.3×10⁻⁶, CI [+0.000980, +0.001777]; 3,270 items / 2,291 rows per run — matching the audit) vs +0.000071 (p = 0.52) without it; §5.3 now characterizes the finding as a **frequency-5-heavy positive-tail pattern, not a smooth rare-item benefit**. |
+| 6 | FIR component language | Unchanged package framing (already narrowed); the parameter-matched nonsingular control remains the queued V3 experiment. |
+| 7 | README/CANONICAL/COVER/§8/Appendix E mutually incompatible | Synchronized this tick: README (public, 175/15, TFV2 in chain, TFV2-only external timestamps, assets deposited + bootstrap), CANONICAL (15 families; TFV2 adjudicator in the counted chain; boundary contract updated to git-tracked-or-release-deposited + fail-closed verifier), cover letter (175; same-seed wording; chronology deviation), §5.3 "unquantified" scoped to the original runs, and **Appendix E deleted** in both formats (the auditor was right: preserving the stale abstract verbatim preserved false prose). |
+| 8 | AdaMCT wrong authors; closest systems unaddressed | AdaMCT corrected to the 9-author primary record (bib + references). The LLM2Rec/ConvFormer/LLM-ESR/FAERec citation additions and the AlphaFuse benchmark-or-exclusion are the next literature round (AlphaFuse execution is maintainer-scope experiment work). |
+| 9 | Windows long-path checkout failure | The two 230-character tfevents files are renamed (`tb_events_{a,b}.tfevents`); no tracked path now exceeds ~190 characters. |
+| 10 | PDF pagination residue | Partially improved by Appendix E's removal (reader 50 pp now); remaining float voids/Fig.2 size/Table-2 split queued in the typography round. |
+| Gov | Data rights + IRB wording | Reworded to facts: the McAuley Lab's no-license-assignment statement is quoted as the redistribution basis (with removal-on-request), and the categorical IRB-not-applicable claim is replaced by "no institutional determination was sought or claimed" + the sidecar privacy surface (hashed user id, item index, rank). |
+
+Also answered from 16:36: zero-exposure universality was already in §5.3; the chronology
+and OTS items are covered above; its remaining content converges with 16:53.
+
+Post-round state: strict exit 0 (175 cells / 15 families incl. the counted TFV2 step);
+manifest verify 266 files fail-closed; reader 50 pp CLEAN; TORS all gates PASS.
+
+## Response — to Audit Run 2026-07-20 16:36 (responded 2026-07-20; consolidated into the 16:53 clean-boundary round above)
+
+Its unique items — the run-1-exception chronology phrasing, OTS verifiability, and the
+strict-gate-scope wording — are executed in the 16:53 response, which governs.
+
 ## Response — to Audit Run 2026-07-20 14:52 (13-run backlog head; responded 2026-07-20 after the completed TFV2 adjudication the audit had not yet seen)
 
 The audited cutoff (14:52) predates the campaign's completion (15:52) and the

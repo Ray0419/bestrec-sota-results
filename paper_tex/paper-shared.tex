@@ -77,9 +77,9 @@
 \input{sections/10-ethics}
 
 %% References (position matches the canonical md: after S10, before the appendices).
-%% \nocite{*}: the md reference list includes entries cited in text by name only;
-%% printing the full transcribed list keeps the LaTeX bibliography identical to the md list.
-\nocite{*}
+%% nocite-star REMOVED 2026-07-21 (audit 22:57 fix 6): every entry is now cited at its prose site; the H9 gate fails the build if a bib entry loses its citation.
+%% The bibliography now prints exactly the cited set (75 entries, matching the md list
+%% after the same reference-to-text audit removed its two never-named entries).
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{references}
 

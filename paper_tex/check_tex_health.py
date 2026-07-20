@@ -109,6 +109,29 @@ for f in _g2.glob(os.path.join(HERE, "..", "_bestrec_run", "make_fig_*.py")):
             fails.append(f"H6: retracted/stale string {patb!r} in {os.path.basename(f)}: "
                          f"...{src[max(0, i-40):i+40]!r}...")
 
+# ---- [H9] citation-graph parity (added 2026-07-21, audit 22:57 fix 6) ------------
+# Every bib entry must be cited by a real citation command; \nocite{*} is banned
+# (it masked 37 orphan/prose-only entries until this round).
+_bib9 = io.open(os.path.join(HERE, "references.bib"), encoding="utf-8",
+                errors="replace").read()
+_keys9 = re.findall(r"@\w+\{([^,\s]+),", _bib9)
+_tex9 = ""
+for f in (_g2.glob(os.path.join(HERE, "sections", "*.tex"))
+          + _g2.glob(os.path.join(HERE, "tables", "*.tex"))
+          + _g2.glob(os.path.join(HERE, "*.tex"))):
+    _tex9 += io.open(f, encoding="utf-8", errors="replace").read()
+if re.search(r"^[^%\n]*\\nocite\{\*\}", _tex9, re.M):
+    fails.append("H9: blanket \\nocite{*} present (masks orphan bib entries)")
+_cited9 = set()
+for c in re.findall(r"\\cite(?:p|t|alp|alt|author|year)?\*?(?:\[[^\]]*\])?\{([^}]+)\}",
+                    _tex9):
+    for k in c.split(","):
+        _cited9.add(k.strip())
+_orph9 = [k for k in _keys9 if k not in _cited9]
+if _orph9:
+    fails.append(f"H9: {len(_orph9)} bib entr{'y' if len(_orph9) == 1 else 'ies'} "
+                 f"never cited by any command: {_orph9[:6]}")
+
 # ---- [H8] duplicated prose sentences (source AND compiled PDF) -------------------
 # Added 2026-07-20 (audit 17:54): the generated Ethics section carried interleaved
 # duplicate/triplicate sentences that H1-H7 could not see. Any sentence >= 60 chars

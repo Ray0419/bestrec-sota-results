@@ -119,6 +119,8 @@ def unimap(s):
 # inside table cells / captions)
 # ---------------------------------------------------------------------------
 CITE = [
+    ("TiSASRec; HSTU (Zhai et al., 2024)",
+     r"TiSASRec \citep{li2020tisasrec}; HSTU \citep{zhai2024hstu}"),
     ("(Kang \\& McAuley, 2018)", r"\citep{kang2018sasrec}"),
     ("Kang \\& McAuley, 2018", r"\citet{kang2018sasrec}"),
     ("(Sun et al., 2019)", r"\citep{sun2019bert4rec}"),

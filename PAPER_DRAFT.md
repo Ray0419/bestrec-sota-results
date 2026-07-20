@@ -614,7 +614,6 @@ constitutes a deployment claim.
 - Bellogín, A., Said, A., 2021. Improving Accountability in Recommender Systems Research Through Reproducibility. User Modeling and User-Adapted Interaction. *(accountability-workflow precedent; §2.3)*
 - Brody, S., Lagziel, S., 2024. SimRec: Mitigating the Cold-Start Problem in Sequential Recommendation by Integrating Item Similarity. RecSys 2024 CARS workshop; arXiv:2410.22136. *(text similarity for rare/unseen items; §2.3 novelty boundary)*
 - Chen, J., Wu, W., Shi, L., Ji, Y., Hu, W., Chen, X., Zheng, W., He, L., 2022. Self-Attentive Sequential Recommendation with Cheap Causal Convolutions. arXiv:2211.01297. *(causal convolution + self-attention precedent; §2.3)*
-- Devlin et al., 2019. BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. NAACL.
 - Ding, H., Ma, Y., Deoras, A., Wang, Y., Wang, H., 2021. Zero-Shot Recommender Systems (ZESRec). arXiv:2105.08318. *(pre-UniSRec text-based sequential recommendation precedent; §2)*
 - Du, X., Yuan, H., Zhao, P., Qu, J., Zhuang, F., Liu, G., Liu, Y., Sheng, V. S., 2023. Frequency Enhanced Hybrid Attention Network for Sequential Recommendation (FEARec). SIGIR. *(the broader frequency/time-frequency SR line, §2.3)*
 - Efron, B., Morris, C., 1973. Stein's Estimation Rule and Its Competitors — an Empirical Bayes Approach. JASA. *(negative-result map: James–Stein shrinkage probe)*

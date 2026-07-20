@@ -9,6 +9,151 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-20 14:52 (13-run backlog head; responded 2026-07-20 after the completed TFV2 adjudication the audit had not yet seen)
+
+The audited cutoff (14:52) predates the campaign's completion (15:52) and the
+adjudication commits (`12b0d438`, `28c3fbf6`). Several demands were therefore already
+executed before this response: p = 0.0054 is withdrawn everywhere (replaced by the
+repaired estimates incl. the non-replicating cross-dataset contrast, p = 0.13); the
+family completed 8-vs-8 and was adjudicated mechanically; the corrected MI/VG/MI−VG
+estimates and the zero-exposure result are in both papers.
+
+| # | Audit item | Action |
+|---|---|---|
+| 1 | "A strong partial effect is still not E3" / do not promote 8-vs-5 | Agreed while it was partial — no partial value was ever promoted; the queue ran to completion under the frozen run-to-completion design and only the full 8-vs-8 family was adjudicated (E3 CDs +0.005770, CI [+0.005275, +0.006266]; the audit's own 8-vs-5 interim remains preserved verbatim inside the cumulative audit file). |
+| 1b | "Preserve TFV2 as exploratory/aborted; don't call E2/E3 confirmatory" | **Respectfully narrowed rather than adopted:** the endpoints, seeds, cohort rules, analysis, and multiplicity were frozen and externally timestamped before launch; there was no stopping rule and no interim-dependent decision; the E1 erratum repaired an argparse failure (zero training steps) with rules unchanged. We keep the pre-declared labels **and** add a prominent **campaign-process disclosure block** (§5.3) covering exactly the audit's threats: sequential visibility of per-epoch test logs (and the auditor's own mid-queue contrasts), adjudicator committed after outputs existed though before inspection (committed-before-existence adopted for future campaigns), and smoke-run metric visibility. |
+| 2 | State-record defect: retry overwrote failure logs; FAILURES.log contradictory | **Fixed and disclosed:** `FAILURES.log` now carries a dated resolution note (append, never delete); the runner appends with attempt headers instead of truncating; the papers' disclosure block records the event. |
+| 3 | Gate race + ZeroDivisionError at adjudicate_tfv2.py:98 | The degenerate-bin guard landed before adjudication (zero-variance strata report cleanly); the adjudicator is inherently complete-family (it refuses partial arms — the behavior the audit observed at seed 77 was the fail-closed path working). Snapshot-binding for future campaigns is adopted in the tracker. |
+| 4 | Legacy `by_popularity.tail` ≠ frozen cohort; rank0 off-by-one wording | The frozen cohorts are now **serialized** per category (`tfv2_cohorts_<cat>.json`, incl. the rank convention: `rank0` is zero-based) and declared the only binding objects for future tables/figures; the papers state the legacy bucket is not the frozen cohort. CDs tie-safe tail = 26,210 items (matches the audit exactly). |
+| 5 | Zero unseen-target hits through @100 | **Verified across all four categories** from the sidecars this tick and stated in §5.3: under this training regime the models cannot retrieve unseen items at all — zero-exposure separation is mandatory and no cold-start capability is claimed anywhere. |
+| 6 | Manuscript contradictions (p=0.0054; stale private/upload wording; 168 note; brand) | p = 0.0054: already withdrawn everywhere in the adjudication fold-in. Public-state wording: §8/README/template now state the true PUBLIC status (20 assets, spot-verified unauthenticated download). CANONICAL's "168 at this writing" → 175. **brand→store confirmed and corrected**: the encoder reads the AR2023 `store` field but labels it `brand:` inside the frozen cache template — the papers now say store/seller name and document the frozen-template literal as a misnomer (regenerating caches would invalidate all frozen-text results); the encoder header carries the same note. |
+| 7 | Novelty: AlphaFuse, DWSRec, SIDSRec, BFDRec, ACE + two control experiments | All five added with fetched primary metadata (§2.3 second-pass block + references + bib): AlphaFuse named the closest omitted frozen-text+ID comparator with benchmark-or-justify queued; ACE bounds the negative map to implementation/environment scope explicitly. The sequence-splitting/target-parity audit and the item-text permutation control are **disclosed as open experiments** in §2.3 and a new §6.5 limitation (the +2.7% semantic attribution is marked provisional accordingly). |
+| 8 | PDF layout (abstract pp.1–4, p7 void, p15 collision, p25/29 figures, p32 table) | The abstract rewrite + typography round is the next program item (RERUN_PROGRAM #4) — first thing next tick; not silently dropped. |
+| AV | Power/MDE rationale; per-epoch test logging; governance; portal | Author-verification items restated in the tracker: the 8/arm choice was sized from observed arm SDs (E1's realized CI half-width 0.00024 supports it post hoc; a prospective MDE table is queued for the prereg's status log); per-epoch test logging is legacy driver behavior now covered by the sequential-visibility disclosure; sidecar governance: AR2023 user ids are already pseudonymous hashes and the sidecars carry only (user hash, item index, rank) — noted for the ethics section; the TORS portal check remains the maintainer's manual step. |
+
+Post-response state: strict exit 0 (175 cells / 15 families incl. the counted TFV2 step);
+reader 53 pp CLEAN; TORS all gates PASS; everything pushed.
+
+## Response — to Audit Run 2026-07-20 13:51 (mid-campaign snapshot; responded 2026-07-20 with the 14:52 combined response)
+
+This run audited an intermediate TFV2 queue state. The campaign has since **run to
+completion (64/64) and been mechanically adjudicated** (commits `12b0d438`/`28c3fbf6`:
+E1/E2/E3 ALL PASS under Holm; cross-dataset contrast did NOT replicate and was withdrawn
+from every claim site; honest secondaries folded in verbatim). Its still-live items —
+sequential-visibility disclosure, state-record defect, cohort serialization, rank
+convention, brand→store, public-state wording, new comparators — are executed in the
+14:52 response above, which governs.
+
+## Response — to Audit Run 2026-07-20 11:49 (mid-campaign snapshot; responded 2026-07-20 with the 14:52 combined response)
+
+This run audited an intermediate TFV2 queue state. The campaign has since **run to
+completion (64/64) and been mechanically adjudicated** (commits `12b0d438`/`28c3fbf6`:
+E1/E2/E3 ALL PASS under Holm; cross-dataset contrast did NOT replicate and was withdrawn
+from every claim site; honest secondaries folded in verbatim). Its still-live items —
+sequential-visibility disclosure, state-record defect, cohort serialization, rank
+convention, brand→store, public-state wording, new comparators — are executed in the
+14:52 response above, which governs.
+
+## Response — to Audit Run 2026-07-20 09:48 (mid-campaign snapshot; responded 2026-07-20 with the 14:52 combined response)
+
+This run audited an intermediate TFV2 queue state. The campaign has since **run to
+completion (64/64) and been mechanically adjudicated** (commits `12b0d438`/`28c3fbf6`:
+E1/E2/E3 ALL PASS under Holm; cross-dataset contrast did NOT replicate and was withdrawn
+from every claim site; honest secondaries folded in verbatim). Its still-live items —
+sequential-visibility disclosure, state-record defect, cohort serialization, rank
+convention, brand→store, public-state wording, new comparators — are executed in the
+14:52 response above, which governs.
+
+## Response — to Audit Run 2026-07-20 08:47 (mid-campaign snapshot; responded 2026-07-20 with the 14:52 combined response)
+
+This run audited an intermediate TFV2 queue state. The campaign has since **run to
+completion (64/64) and been mechanically adjudicated** (commits `12b0d438`/`28c3fbf6`:
+E1/E2/E3 ALL PASS under Holm; cross-dataset contrast did NOT replicate and was withdrawn
+from every claim site; honest secondaries folded in verbatim). Its still-live items —
+sequential-visibility disclosure, state-record defect, cohort serialization, rank
+convention, brand→store, public-state wording, new comparators — are executed in the
+14:52 response above, which governs.
+
+## Response — to Audit Run 2026-07-20 07:46 (mid-campaign snapshot; responded 2026-07-20 with the 14:52 combined response)
+
+This run audited an intermediate TFV2 queue state. The campaign has since **run to
+completion (64/64) and been mechanically adjudicated** (commits `12b0d438`/`28c3fbf6`:
+E1/E2/E3 ALL PASS under Holm; cross-dataset contrast did NOT replicate and was withdrawn
+from every claim site; honest secondaries folded in verbatim). Its still-live items —
+sequential-visibility disclosure, state-record defect, cohort serialization, rank
+convention, brand→store, public-state wording, new comparators — are executed in the
+14:52 response above, which governs.
+
+## Response — to Audit Run 2026-07-20 06:45 (mid-campaign snapshot; responded 2026-07-20 with the 14:52 combined response)
+
+This run audited an intermediate TFV2 queue state. The campaign has since **run to
+completion (64/64) and been mechanically adjudicated** (commits `12b0d438`/`28c3fbf6`:
+E1/E2/E3 ALL PASS under Holm; cross-dataset contrast did NOT replicate and was withdrawn
+from every claim site; honest secondaries folded in verbatim). Its still-live items —
+sequential-visibility disclosure, state-record defect, cohort serialization, rank
+convention, brand→store, public-state wording, new comparators — are executed in the
+14:52 response above, which governs.
+
+## Response — to Audit Run 2026-07-20 05:46 (mid-campaign snapshot; responded 2026-07-20 with the 14:52 combined response)
+
+This run audited an intermediate TFV2 queue state. The campaign has since **run to
+completion (64/64) and been mechanically adjudicated** (commits `12b0d438`/`28c3fbf6`:
+E1/E2/E3 ALL PASS under Holm; cross-dataset contrast did NOT replicate and was withdrawn
+from every claim site; honest secondaries folded in verbatim). Its still-live items —
+sequential-visibility disclosure, state-record defect, cohort serialization, rank
+convention, brand→store, public-state wording, new comparators — are executed in the
+14:52 response above, which governs.
+
+## Response — to Audit Run 2026-07-20 04:43 (mid-campaign snapshot; responded 2026-07-20 with the 14:52 combined response)
+
+This run audited an intermediate TFV2 queue state. The campaign has since **run to
+completion (64/64) and been mechanically adjudicated** (commits `12b0d438`/`28c3fbf6`:
+E1/E2/E3 ALL PASS under Holm; cross-dataset contrast did NOT replicate and was withdrawn
+from every claim site; honest secondaries folded in verbatim). Its still-live items —
+sequential-visibility disclosure, state-record defect, cohort serialization, rank
+convention, brand→store, public-state wording, new comparators — are executed in the
+14:52 response above, which governs.
+
+## Response — to Audit Run 2026-07-20 03:53 (mid-campaign snapshot; responded 2026-07-20 with the 14:52 combined response)
+
+This run audited an intermediate TFV2 queue state. The campaign has since **run to
+completion (64/64) and been mechanically adjudicated** (commits `12b0d438`/`28c3fbf6`:
+E1/E2/E3 ALL PASS under Holm; cross-dataset contrast did NOT replicate and was withdrawn
+from every claim site; honest secondaries folded in verbatim). Its still-live items —
+sequential-visibility disclosure, state-record defect, cohort serialization, rank
+convention, brand→store, public-state wording, new comparators — are executed in the
+14:52 response above, which governs.
+
+## Response — to Audit Run 2026-07-20 02:48 (mid-campaign snapshot; responded 2026-07-20 with the 14:52 combined response)
+
+This run audited an intermediate TFV2 queue state. The campaign has since **run to
+completion (64/64) and been mechanically adjudicated** (commits `12b0d438`/`28c3fbf6`:
+E1/E2/E3 ALL PASS under Holm; cross-dataset contrast did NOT replicate and was withdrawn
+from every claim site; honest secondaries folded in verbatim). Its still-live items —
+sequential-visibility disclosure, state-record defect, cohort serialization, rank
+convention, brand→store, public-state wording, new comparators — are executed in the
+14:52 response above, which governs.
+
+## Response — to Audit Run 2026-07-20 01:56 (mid-campaign snapshot; responded 2026-07-20 with the 14:52 combined response)
+
+This run audited an intermediate TFV2 queue state. The campaign has since **run to
+completion (64/64) and been mechanically adjudicated** (commits `12b0d438`/`28c3fbf6`:
+E1/E2/E3 ALL PASS under Holm; cross-dataset contrast did NOT replicate and was withdrawn
+from every claim site; honest secondaries folded in verbatim). Its still-live items —
+sequential-visibility disclosure, state-record defect, cohort serialization, rank
+convention, brand→store, public-state wording, new comparators — are executed in the
+14:52 response above, which governs.
+
+## Response — to Audit Run 2026-07-20 01:28 (mid-campaign snapshot; responded 2026-07-20 with the 14:52 combined response)
+
+This run audited an intermediate TFV2 queue state. The campaign has since **run to
+completion (64/64) and been mechanically adjudicated** (commits `12b0d438`/`28c3fbf6`:
+E1/E2/E3 ALL PASS under Holm; cross-dataset contrast did NOT replicate and was withdrawn
+from every claim site; honest secondaries folded in verbatim). Its still-live items —
+sequential-visibility disclosure, state-record defect, cohort serialization, rank
+convention, brand→store, public-state wording, new comparators — are executed in the
+14:52 response above, which governs.
+
 ## Response — to Audit Run 2026-07-20 00:01 (responded 2026-07-20; strict gate no longer certifies the withdrawn paired interpretation)
 
 All statistics printed this round were independently recomputed before entering the paper

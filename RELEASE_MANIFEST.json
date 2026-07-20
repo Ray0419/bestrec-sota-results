@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "22eae1e915434b84e332dc83a7060e740ec6fdb4",
+  "git_commit": "51d1260339b093ba1d00d357e20cfdffd7b0ae6a",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -238,16 +238,16 @@
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     "PAPER_SUBMISSION.md": {
-      "sha256": "3c1f2d34443f72f0be5ac17345f71a03f272bed871b02ec3ffde51dd4d3d4be2",
-      "bytes": 176865
+      "sha256": "7a56e9db04e2cb4bf2611c4be7f57b8b79ff4551b9b82cdd717a4932e87b8058",
+      "bytes": 177439
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "76b32d0094b61bf2e8dcda051981d07397a63e42941fe98c4e56a2aec7a88bff",
-      "bytes": 1319078
+      "sha256": "c86db170acc6a89d73627aa89902a61f16c747e06d5ed20f37311161f935f82f",
+      "bytes": 1330974
     },
     "PAPER_DRAFT.md": {
-      "sha256": "8f67a60ecfab9543a4c5535e2c3449266d20396ca1de8ac5a5573fba20404e6d",
-      "bytes": 200081
+      "sha256": "bd6425a5fd4767f14b6ce1886c6c6819acf696a094d3daf4a4968a02cc1e8f8a",
+      "bytes": 200655
     },
     "CANONICAL_SUBMISSION.md": {
       "sha256": "2264178a2caeb3cdefecee2aa5bd15b5945d01508c72384257dddc778ce04859",
@@ -286,8 +286,8 @@
       "bytes": 26789
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "0215239b9d2a01e7159c96c01780120dd3872f693b143e8a44341496fab2cbd4",
-      "bytes": 464445
+      "sha256": "5cc1fb0b96038e12c57da24fee5d93981a0bb6abbf77a4b58cc72f4ee4afc8f8",
+      "bytes": 467489
     },
     "_bestrec_run/emit_latex_tables.py": {
       "sha256": "3b528f717f4e82dd98b1d12ba8f8729a13d304a7519d0a46cdf2dba47f362662",
@@ -403,7 +403,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.1.9-deposit",
-  "hash_parent_commit": "22eae1e915434b84e332dc83a7060e740ec6fdb4",
+  "hash_parent_commit": "51d1260339b093ba1d00d357e20cfdffd7b0ae6a",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",

@@ -42,7 +42,7 @@ plt.rcParams.update({
     "savefig.bbox": "tight",
 })
 
-fig, axes = plt.subplots(1, 3, figsize=(15.6, 4.8))
+fig, axes = plt.subplots(3, 1, figsize=(7.0, 11.4))
 
 # ================================================================== Panel A
 # 5.3 Table 1d: text - ID tail contrast (same-seed-number arms; NOT initialization-paired).
@@ -59,7 +59,7 @@ axA.bar(x, tailD, yerr=tailErr, color=cols, edgecolor="black", linewidth=0.8,
 axA.axhline(0, color="black", linewidth=0.9)
 # MI CI annotation (excludes 0)
 axA.annotate("Welch 95% CI\n[+0.000109, +0.000562]\nexcludes 0",
-             xy=(0, 0.000335), xytext=(0, 0.00060),
+             xy=(0.18, 0.000335), xytext=(0.85, 0.00062),
              ha="center", fontsize=7.5, color=C_WIN,
              arrowprops=dict(arrowstyle="-", color=C_WIN, lw=0.8))
 for xi, (d, p, v) in enumerate(zip(tailD, posfrac, verdict)):
@@ -90,7 +90,7 @@ axB.axhline(0, color="black", lw=0.8, ls=":")
 axB.axhline(0.000335, color=C_WIN, lw=1.3, ls="--",
             label="MI native tail $\\Delta=+0.000335$ (5/5) -- not reached by thinning")
 axB.annotate("MI-equivalent\nglobal density\n($\\rho=0.66$)", xy=(0.66, -0.000108),
-             xytext=(0.70, -0.00060), fontsize=7.5, ha="center",
+             xytext=(0.735, 0.00095), fontsize=7.5, ha="center",
              arrowprops=dict(arrowstyle="->", lw=0.8))
 axB.set_xlabel("interaction-thinning  $\\rho$  (1.0 = full VG  $\\rightarrow$  0.66 = MI global density)")
 axB.set_ylabel("$\\Delta$NDCG@10  (text $-$ ID)")
@@ -125,7 +125,7 @@ axC.text(0.5, 0.945, "interaction-thinning:\ntail FLAT (no crossing)",
          ha="center", fontsize=7, color=C_NULL)
 axC.annotate("", xy=(3, 1.276), xytext=(1, 0.971),
              arrowprops=dict(arrowstyle="-|>", color=C_WIN, lw=2))
-axC.text(2.15, 1.18, "user-thinning $\\rightarrow$ MI:\ntail moves toward MI\n(dd +0.000326; suggestive,\np=0.058, CI incl 0)",
+axC.text(1.62, 1.205, "user-thinning $\\rightarrow$ MI:\ntail moves toward MI\n(dd +0.000326; suggestive,\np=0.058, CI incl 0)",
          ha="center", fontsize=7, color=C_WIN)
 axC.set_xticks(xc)
 axC.set_xticklabels(regimes, fontsize=7.5)
@@ -135,12 +135,12 @@ axC.set_ylim(0.93, 1.32)
 axC.legend(fontsize=8, loc="upper left")
 axC.grid(alpha=0.3)
 
-fig.tight_layout(pad=1.4, w_pad=2.8, rect=(0, 0, 1, 0.90))
+fig.tight_layout(pad=1.4, h_pad=2.6, rect=(0, 0, 1, 0.945))
 fig.suptitle(
-    "Dataset-conditional long-tail pattern and its two-axis descriptive contrast (bundled interventions; one fixed draw) "
-    "(AR2023 5-core LLOO, full-catalog, NDCG@10; all values 5-seed best-by-val "
-    "except Beauty 2-3 seed)",
-    fontsize=10.5, y=1.04)
+    "Dataset-conditional long-tail pattern and its two-axis descriptive contrast\n"
+    "(bundled interventions; one fixed draw; AR2023 5-core LLOO, full-catalog, NDCG@10;\n"
+    "all values 5-seed best-by-val except Beauty 2-3 seed)",
+    fontsize=10.5, y=0.995)
 
 png = OUT / "fig_tail_law_mechanism.png"
 pdf = OUT / "fig_tail_law_mechanism.pdf"

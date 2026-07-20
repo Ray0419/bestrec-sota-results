@@ -37,7 +37,7 @@ import zipfile
 
 
 
-VERSION = "v1.1.9"
+VERSION = "v1.1.10"
 
 def _manifest_date():
     # DOI-facing date basis is explicit and single-sourced (audit 2026-07-19 09:34):

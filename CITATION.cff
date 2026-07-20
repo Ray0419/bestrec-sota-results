@@ -8,8 +8,8 @@ authors:
     # the manuscript itself is anonymized for review.
 repository-code: "https://github.com/Ray0419/bestrec-sota-results"
 license: MIT
-version: "1.1.9"
-date-released: "2026-07-18"
+version: "1.1.10"
+date-released: "2026-07-20"
 keywords:
   - sequential recommendation
   - Amazon Reviews 2023

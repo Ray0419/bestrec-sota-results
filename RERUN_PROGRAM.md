@@ -29,10 +29,10 @@ This file is the loop's tracker; quiet ticks service THIS program before compani
 - [x] 12 splits + 4 caches (1.09 GB) uploading to `v0.9-audit-evidence` (background).
 - [x] Tracked-file secret scan (pattern pass): no credential-shaped hits (jsonl matches
       are product-text false positives).
-- [ ] Verify uploaded asset list + hashes against `RELEASE_MANIFEST.json`.
-- [ ] Flip repository visibility to PUBLIC (maintainer authorized 2026-07-20).
-- [ ] Clean unauthenticated clone: download assets, verify hashes, `--verify-git HEAD`.
-- [ ] Then cut `v1.1.10-deposit` (already specced) and update README/§8/DOI docs to the
+- [x] Verify uploaded asset list + hashes against `RELEASE_MANIFEST.json` (2026-07-20: auditor API sweep matched all 129 data digests; 138 release-class assets incl. nine current parity files).
+- [x] Flip repository visibility to PUBLIC (done 2026-07-20).
+- [x] Clean unauthenticated clone (2026-07-20): from-zero clone + submodules + 138-asset bootstrap + full strict PASS at `9603902e` (`_bestrec_run/CLEANCLONE_TRANSCRIPT_20260720.log`); `--verify-git HEAD` OK.
+- [x] `v1.1.10-deposit` CUT 2026-07-20 (this tick) with README/§8/DOI docs synced to the
       now-true public state.
 
 ## 4. Front-end rewrite + typography — QUEUED (next ticks)
@@ -40,11 +40,11 @@ This file is the loop's tracker; quiet ticks service THIS program before compani
       Appendix E ("Extended summary") in both formats.
 - [x] Dataset table: raggedright wrapped columns (0.20/0.30 linewidth) + footnotesize.
 - [x] Three-panel figure now a rotated full-page float in TORS (~30% larger type).
-- [ ] Re-render, rebuild, full gate chain.
+- [x] Re-render, rebuild, full gate chain (green through the 17:54 round; H8 added).
 
 ## 5. External timestamps + venue check — IN PROGRESS
 - [x] OpenTimestamps chosen (no account creation needed; Bitcoin-anchored).
-- [ ] Stamp `PREREG_TAIL_FIR_V2.md`, `tfv2_commands.txt`, and a HEAD-state attestation;
+- [x] Stamped `PREREG_TAIL_FIR_V2.md`, `tfv2_commands.txt`, HEAD-state attestation; Bitcoin attestations complete — chronology limits disclosed (§5.3 (vii): earliest attestation postdates first result; TFV2 labeled outcome-visible);
       commit the `.ots` proofs; upgrade stamps when calendars aggregate (later tick).
 - [ ] Papers: past campaigns keep the "no independent external timestamp" limitation
       verbatim; the V2 campaign may state its OTS anchoring once proofs are committed.

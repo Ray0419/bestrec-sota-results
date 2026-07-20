@@ -10,7 +10,7 @@ without your login. Everything else is done:
 
 | prepared artifact | where |
 |---|---|
-| Deposit bundle (66 entries: papers incl. TORS PDF, all preregs + results docs, manifests, **core historical audit documents**, code incl. adjudicators, comparator-run artifacts, README — the **live hourly adversarial chain** `PAPER_REVIEW_AUDIT.md` / `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` is deliberately not re-bundled per cut: it is git-tracked and present in full in every tagged tree, per its own historical-log banner) | GitHub release **`v1.1.9-deposit`** asset `bestrec_deposit_v1.1.9.zip` (SHA256 in the sidecar asset `bestrec_deposit_v1.1.9.zip.sha256` and in `_release/` locally; bundle-internal `SHA256SUMS.txt` covers every payload entry (not itself); upload verified by a download-hash round trip). Prior deposit tags (`v1.1.8-deposit` and earlier) remain as dated snapshots, each superseded by the next. Superseded: `v1.1-deposit` (its uploaded assets went stale against later same-day commits — see RESPONSE_TO_PAPER_REVIEW_AUDIT.md, 2026-07-18 01:10). Historical: `v1.0-deposit` / `bestrec_deposit_v1.0.zip` (46 files, SHA256 `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`) remains as the 2026-07-11 snapshot. |
+| Deposit bundle (66 entries: papers incl. TORS PDF, all preregs + results docs, manifests, **core historical audit documents**, code incl. adjudicators, comparator-run artifacts, README — the **live hourly adversarial chain** `PAPER_REVIEW_AUDIT.md` / `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` is deliberately not re-bundled per cut: it is git-tracked and present in full in every tagged tree, per its own historical-log banner) | GitHub release **`v1.1.10-deposit`** asset `bestrec_deposit_v1.1.10.zip` (SHA256 in the sidecar asset `bestrec_deposit_v1.1.10.zip.sha256` and in `_release/` locally; bundle-internal `SHA256SUMS.txt` covers every payload entry (not itself); upload verified by a download-hash round trip). Prior deposit tags (`v1.1.9-deposit` and earlier) remain as dated snapshots, each superseded by the next. Superseded: `v1.1-deposit` (its uploaded assets went stale against later same-day commits — see RESPONSE_TO_PAPER_REVIEW_AUDIT.md, 2026-07-18 01:10). Historical: `v1.0-deposit` / `bestrec_deposit_v1.0.zip` (46 files, SHA256 `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`) remains as the 2026-07-11 snapshot. |
 | Zenodo metadata (title, creators, license, keywords, description) | `.zenodo.json` (repo root — Zenodo's GitHub integration reads it automatically) |
 | Citation metadata | `CITATION.cff` (GitHub renders a "Cite this repository" button from it) |
 | Code/docs license with dataset + vendored-code scope notes | `LICENSE` (MIT — swap before minting if you prefer another) |
@@ -34,7 +34,7 @@ byte-identical tag/asset/bundle trio.
 
 ## Option B — Zenodo manual upload (no GitHub linking)
 
-1. https://zenodo.org/uploads/new → upload the **current** bundle `bestrec_deposit_v1.1.9.zip` from the `v1.1.9-deposit`
+1. https://zenodo.org/uploads/new → upload the **current** bundle `bestrec_deposit_v1.1.10.zip` from the `v1.1.10-deposit`
    release assets. A local `_release/` copy is safe ONLY if its SHA256 matches the release
    sidecar for the named tag (a post-tag rebuild can differ); when in doubt, use the
    downloaded release asset.

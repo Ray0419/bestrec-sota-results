@@ -37,7 +37,7 @@ import zipfile
 
 
 
-VERSION = "v1.1.10"
+VERSION = "v1.1.11"
 
 def _manifest_date():
     # DOI-facing date basis is explicit and single-sourced (audit 2026-07-19 09:34):
@@ -445,7 +445,16 @@ def consistency_gate():
                          "--verify-git HEAD failed -- at cut time run --regen immediately before "
                          "building; at rebuild time check out the deposit tag" % (str(mc)[:8], head[:8]))
         else:
-            print("boundary: REBUILD mode (--verify-git HEAD OK; git_commit is the documented parent)")
+            tag = "%s-deposit" % VERSION
+            tc = _sp.run(["git", "-C", ROOT, "rev-parse", tag + "^{commit}"],
+                         capture_output=True, text=True).stdout.strip()
+            if tc and tc != head:
+                fails.append("REBUILD mode but declared tag %s (%s) is not this tree's "
+                             "commit (%s) -- the deposit is stale against this content; "
+                             "cut a NEW deposit version instead of rebuilding "
+                             "(audit 2026-07-20 22:57)" % (tag, tc[:8], head[:8]))
+            else:
+                print("boundary: REBUILD mode (--verify-git HEAD OK; tag == HEAD)")
     else:
         print("boundary: CUT mode (git_commit == HEAD after fresh --regen)")
 

@@ -368,7 +368,7 @@ REGISTRY = [
          env="tabularx", colspec=r"Yrrr", size=r"\small",
          family="table1c", allow=set()),
     dict(key="table1d", fp="dataset", out="table1d.tex",
-         env="tabularx", colspec=r"p{0.22\linewidth}p{0.10\linewidth}Ycp{0.14\linewidth}", size=r"\small",
+         env="tabularx", colspec=r"p{0.18\linewidth}p{0.09\linewidth}Ycp{0.24\linewidth}", size=r"\small",
          family="table1d", allow=set()),
     dict(key="table1e", fp="ρ", out="table1e.tex",
          env="tabularx", colspec=r"lccYYYY", size=r"\scriptsize",

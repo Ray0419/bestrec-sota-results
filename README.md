@@ -73,7 +73,7 @@ campaign above is a separate pre-declaration that passed under its frozen wordin
 
 ## Releases
 
-- **`v1.1.10-deposit`** (current archival bundle, cut 2026-07-20 at a from-zero-verified state; each deposit release supersedes the previous) — the 66-entry deposit zip + sidecar hash + manifest + both PDFs, upload verified by download-hash. Supersedes `v1.1.9-deposit`, which had accumulated 157 changed tracked paths against the moving branch (the gap the 2026-07-20 17:54 audit measured; `--verify-git v1.1.9-deposit` fails against the current manifest by design). The from-zero public-clone verification passed at `9603902e` (transcript `_bestrec_run/CLEANCLONE_TRANSCRIPT_20260720.log`) and is re-executed at this tag after push, with the transcript committed to the branch.
+- **`v1.1.11-deposit`** (current archival bundle, cut 2026-07-21; each deposit release supersedes the previous) — the 66-entry deposit zip + sidecar hash + manifest + both PDFs. Supersedes `v1.1.10-deposit`, which went stale the same day it was cut (four post-tag content commits — the 22:57 audit's measured drift; the deposition gate now refuses to rebuild a version whose tag no longer matches the tree). The from-zero public-clone verification is re-executed at each pushed tag and its transcript committed to the branch.
 - **`v0.9-audit-evidence`** — the pinned-parity ZIP, `RELEASE_MANIFEST.json`, all 18 split CSVs, four text caches, and the 107 TFV2 per-user sidecars (all hash-manifested; uploaded 2026-07-20; the manifest inventory is authoritative for counts). Fresh clones: `git submodule update --init && python bootstrap_public_clone.py` before the strict gate.
 - **`bestrec-raw-records-v1`** — the historical LC2C project's raw records (see `README_LC2C_HISTORICAL.md`).
 
@@ -81,3 +81,18 @@ Data: the Amazon Reviews 2023 dataset (McAuley Lab) is **not redistributed**; de
 splits/caches are pinned by SHA256 with regeneration scripts.
 
 License: MIT (`LICENSE`). Citation metadata: `CITATION.cff` / `.zenodo.json`.
+
+## License scope (stated exactly; added 2026-07-21)
+
+The repository's MIT license covers **the code in this repository only**. It does
+not and cannot assign a license to the Amazon Reviews 2023 dataset or to the
+derived interaction-split CSVs / text caches / per-user sidecars distributed as
+release assets: those derive from the McAuley Lab's public research release,
+whose maintainers state they are not in a position to assign a license or dictate
+usage terms (that statement is not an affirmative permission grant, and we do not
+treat it as one — manuscript §10). Derived data assets are redistributed on the
+dataset's public research availability with attribution, takedown honored
+immediately on maintainer, platform, or venue request. For double-anonymous
+review, the manuscript PDF is anonymized; this named repository is the
+post-acceptance record, and anonymized artifact access at review time follows the
+journal's current instructions.

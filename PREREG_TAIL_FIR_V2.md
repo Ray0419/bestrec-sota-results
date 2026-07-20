@@ -107,3 +107,32 @@ remains fully mechanical.
 
 - 2026-07-20: E1 recorded; amended file re-stamped (`PREREG_TAIL_FIR_V2.md.ots`
   regenerated; the pre-E1 proof is preserved in git history); IS/CDs queue relaunched.
+
+---
+
+## ERRATUM E2 (2026-07-21; chronology of the external timestamps — conspicuous correction)
+
+The header above states this pre-registration was "committed and
+OpenTimestamps-stamped before the first run" and calls it the project's first
+independent external timestamp. After independent verification of the completed
+Bitcoin attestations (external audit 2026-07-20 22:57 and prior), that claim is
+**corrected as follows and must not be quoted without this erratum**:
+
+- The pre-registration and command file were Git-committed at **01:26:34 AEST,
+  2026-07-20**, and OTS calendar proofs were requested then.
+- The first campaign result file was complete at **≈ 01:36:02 AEST**.
+- The **earliest independently verifiable Bitcoin attestation is block height
+  958749, timestamped 01:48:23 AEST — after the first result** (the amended
+  post-erratum proof anchors ≈ 06:11:59 AEST and matches the CRLF worktree bytes,
+  not the LF Git blob).
+- OpenTimestamps proves existence before an attested time; it does not backdate
+  the Bitcoin evidence to the calendar request. The pre-launch freeze therefore
+  rests on Git history alone, which is not independent evidence.
+- Consequently the campaign is labeled **outcome-visible, not confirmatory**
+  (manuscript §5.3, disclosure (vii)), and the "first independent external
+  timestamp" characterization is withdrawn.
+
+The committed `.ots` proofs bind the pre-E2 revisions of this file (their exact
+digests are recorded in manuscript disclosure (vii)); this appended erratum
+intentionally changes the file's current bytes and is therefore outside those
+proofs — the frozen pre-E2 text is preserved above, unedited, for provenance.

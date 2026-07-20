@@ -51,7 +51,7 @@ ds      = ["Musical_Instr.\n(sparse)", "Video_Games\n(dense)", "Beauty_&_PC\n(de
 tailD   = [ 0.000335, -0.000148, -0.0000078]
 tailErr = [ 0.000195,  0.000179,  0.000000]   # MI/VG 5-seed sd; Beauty 2-3 seed (no band)
 posfrac = ["5/5", "2/5", "1/3"]
-verdict = ["text WINS\nthe tail", "null\n(equiv. not estab.)", "null\n(exploratory)"]
+verdict = ["freq-5-heavy\ntail advantage", "null\n(equiv. not estab.)", "null\n(exploratory)"]
 cols    = [C_WIN, C_NULL, C_NULL]
 x = np.arange(len(ds))
 axA.bar(x, tailD, yerr=tailErr, color=cols, edgecolor="black", linewidth=0.8,
@@ -70,7 +70,7 @@ for xi, (d, p, v) in enumerate(zip(tailD, posfrac, verdict)):
 axA.set_xticks(x)
 axA.set_xticklabels(ds, fontsize=8.5)
 axA.set_ylabel("tail-tercile  $\\Delta$NDCG@10  (text $-$ ID)")
-axA.set_title("(A) The dataset-conditional tail pattern\n(sparse catalog: text wins the tail; TFV2: freq-5-heavy)")
+axA.set_title("(A) The dataset-conditional tail pattern\n(sparse catalog: freq-5-heavy tail advantage)")
 axA.set_ylim(-0.00055, 0.00085)
 axA.grid(axis="y", alpha=0.3)
 

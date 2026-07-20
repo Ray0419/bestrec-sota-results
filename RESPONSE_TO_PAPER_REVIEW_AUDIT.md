@@ -36,12 +36,17 @@ audit-loop transcript.
 | 10 | Governance needs verification; sidecar ID contradiction | §10 rewritten to facts: the maintainer statement is **"not an affirmative permission grant, and we do not treat it as one"** — redistribution rests on public research availability + attribution + immediate takedown, **flagged for venue-level review rather than asserted as a right**; ACM author-responsibility accepted explicitly; sidecars carry **dense remapped indices (`user_id` 0, 1, 2, …), not hashes**, deterministically linkable to platform pseudonyms via the released splits — "exactly as pseudonymous as the public dataset itself, no more"; retention/removal procedure stated. The contradictory "platform's hashed user identifiers" sentence is gone. |
 | T2 | n=1 probes stated as verdicts | Table 2 column is now "Verdict (observational at n=1)"; all 15 single-seed "Rejected —" rows now read "**No benefit observed (single-seed probe)** —"; the "not for want of trying" sentence is downgraded to observational with the power note. |
 
-**From-zero public-clone verification (fix #6):** launched this round at commit
-`9603902e` — default Windows clone (`core.longpaths=false`), `git submodule update
---init` (now includes HSTU-BLaIR), full `bootstrap_public_clone.py` (138 release
-assets incl. the nine parity files), then the strict command. The transcript will be
-reported verbatim in the next response; §8's "clean-clone sweep queued" wording stays
-until it passes, and v1.1.10 will be cut at the first commit where it does.
+**From-zero public-clone verification (fix #6): PASSED, same round.** At commit
+`9603902e`: default Windows clone with `core.longpaths=false` checked out all 1,368
+files (no `Filename too long`); `git submodule update --init` supplied MELT, liger,
+and `external/HSTU-BLaIR` at `40a27879` with no exit-128; `bootstrap_public_clone.py`
+reported **138 assets in place, 0 failures**; the strict command then printed
+`SUBMISSION REBUILD: PASS` — HSTU parity OK, 175-cell graph OK, 269-file manifest
+verification OK, and all adjudicators OK (`CLEANCLONE_STRICT_EXIT=0`). The verbatim
+transcript is retained at `_bestrec_run/CLEANCLONE_TRANSCRIPT_20260720.log`; §8 and
+README now state the pass instead of "queued", and v1.1.10 will be cut at a
+from-zero-verified commit (the pass commit's docs-only descendants are eligible
+after re-verification at the tag commit).
 
 Remaining open questions answered: the submission artifact is `paper_tex/PAPER_TORS.pdf`
 (both venue PDFs now carry the clean regenerated Ethics section); the authoritative

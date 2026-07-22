@@ -887,10 +887,10 @@ def build_spec():
                   {"a": [DEC_TB], "b": [J1]},
                   [chk("delta", 0.0027, 4)], 1, expl, seeds=["20260608"]))
     C.append(cell("t1.decomp1.textsim", "table1", "DECOMP single-flag: text-sim bias",
-                  "delta NDCG@10 (n=1, dead weight)", [DEC_TS, J1], "delta_means",
+                  "delta NDCG@10 (n=1; no observed benefit)", [DEC_TS, J1], "delta_means",
                   {"a": [DEC_TS], "b": [J1]},
                   [chk("delta", 0.0001, mode="bound_abs")], 1, expl,
-                  notes="Paper states 'dead weight (+-0.0001)'; gate is |delta| <= 0.0001."))
+                  notes="Paper states 'no observed benefit (+-0.0001)'; gate is |delta| <= 0.0001."))
     C.append(cell("t1.decomp5.base", "table1", "DECOMP5 4-seed cross-check: HSTU-style base",
                   "NDCG@10 mean", D5J1, "mean_std_metric", {"files": D5J1},
                   [chk("mean", 0.0594, 4)], 4, expl, seeds=S0912))
@@ -1008,10 +1008,10 @@ def build_spec():
     C.append(cell("t1c.filteronly.ndcg", "table1c", "+ FIR package arm (filter component; attribution open) (k16)", "NDCG@10 mean",
                   MIFO, "mean_std_metric", {"files": MIFO, "expect_n_eval": NEVAL_MI},
                   [chk("mean", 0.0408, 4)], 5, conf, seeds=S0812))
-    C.append(cell("t1c.filteronly.delta", "table1c", "+ filter only", "delta vs base",
+    C.append(cell("t1c.filteronly.delta", "table1c", "+ FIR package arm (attribution open)", "delta vs base",
                   MIFO + MIBASE4, "delta_means", {"a": MIFO, "b": MIBASE4},
                   [chk("delta", 0.0025, 4)], 5, conf))
-    C.append(cell("t1c.filteronly.share", "table1c", "+ filter only", "share of combined k16 lift",
+    C.append(cell("t1c.filteronly.share", "table1c", "+ FIR package arm (attribution open)", "share of combined k16 lift",
                   MIFO + MIBASE4 + MIK16, "share_of_lift",
                   {"x": MIFO, "base": MIBASE4, "top": MIK16},
                   [chk("pct", 77.0, 0)], 5, conf))

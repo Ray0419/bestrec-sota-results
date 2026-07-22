@@ -33,7 +33,11 @@ log_path = os.path.join(HERE, "main_console.log")
 if not os.path.exists(log_path):
     fails.append("H1: main_console.log missing (build.sh must tee the tectonic output)")
 else:
-    log = io.open(log_path, encoding="utf-8", errors="replace").read()
+    _raw1 = open(log_path, "rb").read()
+    if _raw1[:2] in (b"\xff\xfe", b"\xfe\xff"):
+        log = _raw1.decode("utf-16", errors="replace")
+    else:
+        log = _raw1.decode("utf-8-sig", errors="replace")
     for pat in (r"Reference `[^']+' on page \d+ undefined", r"Citation `[^']+'[^\n]*undefined",
                 r"There were undefined references"):
         for m in re.finditer(pat, log):

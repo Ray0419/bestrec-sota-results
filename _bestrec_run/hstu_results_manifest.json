@@ -1548,7 +1548,7 @@
    "cell_id": "t1.decomp1.textsim",
    "table_id": "table1",
    "row_label": "DECOMP single-flag: text-sim bias",
-   "metric": "delta NDCG@10 (n=1, dead weight)",
+   "metric": "delta NDCG@10 (n=1; no observed benefit)",
    "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
@@ -1576,7 +1576,7 @@
      "mode": "bound_abs"
     }
    ],
-   "notes": "Paper states 'dead weight (+-0.0001)'; gate is |delta| <= 0.0001.",
+   "notes": "Paper states 'no observed benefit (+-0.0001)'; gate is |delta| <= 0.0001.",
    "recomputed": {
     "delta": 4.366380681873616e-06,
     "a_mean": 0.0588131353660943,
@@ -2732,7 +2732,7 @@
   {
    "cell_id": "t1c.filteronly.delta",
    "table_id": "table1c",
-   "row_label": "+ filter only",
+   "row_label": "+ FIR package arm (attribution open)",
    "metric": "delta vs base",
    "evidence_class": "exploratory",
    "status": "OK",
@@ -2798,7 +2798,7 @@
   {
    "cell_id": "t1c.filteronly.share",
    "table_id": "table1c",
-   "row_label": "+ filter only",
+   "row_label": "+ FIR package arm (attribution open)",
    "metric": "share of combined k16 lift",
    "evidence_class": "exploratory",
    "status": "OK",

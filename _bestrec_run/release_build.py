@@ -70,7 +70,15 @@ def self_test():
                        cwd=os.path.join(ROOT, "paper_tex"), env=env,
                        capture_output=True, text=True, errors="replace")
     sent = "'[Maintainer:' placeholder present"
-    ok = (r.returncode != 0) and (sent in (r.stdout + r.stderr))
+    out_all = r.stdout + r.stderr
+    fail_lines = [l for l in out_all.splitlines() if l.strip().startswith("FAIL")]
+    only_placeholder = fail_lines and all(sent in l for l in fail_lines)
+    ok = (r.returncode != 0) and only_placeholder
+    if fail_lines and not only_placeholder:
+        print("self-test: OTHER failures present (not attributable to the "
+              "placeholder):")
+        for l in fail_lines[:6]:
+            print("   ", l[:110])
     print(f"self-test placeholder gate: exit={r.returncode}; sentinel "
           f"{'FOUND' if sent in (r.stdout + r.stderr) else 'MISSING'}")
     if not ok:

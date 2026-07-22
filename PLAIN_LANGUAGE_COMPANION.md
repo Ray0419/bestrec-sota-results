@@ -58,10 +58,9 @@ text gives the model a head start on items it has seen only a handful of times i
   graphics card.** No giant language model does the
   recommending; the language model only supplies the frozen "scents" beforehand.
 
-## 3. The novel component: a causal FIR filter (the "shock absorber")
+## 3. The FIR add-on (the "shock absorber") — one of two small additions
 
-Our main modeling contribution is a tiny, old-school signal-processing idea transplanted into
-this modern recommender.
+One of the paper's two small architectural additions (self-graded incremental) is a tiny, old-school signal-processing idea transplanted into this modern recommender. Important caveat from the paper: the measured gain is a bundled package effect — filter + starting state + optimizer path — not the filter alone (attribution is open work).
 
 **The problem it fixes:** the signal flowing through the model — "what is this person into right
 now?" — is noisy. One impulse buy (a gag gift, a purchase for someone else) can jerk the model's
@@ -82,8 +81,8 @@ Three properties make our version safe and honest:
    that peeks even slightly ahead would be cheating — leaking the future into the prediction —
    and inflated scores from subtle future-leakage are a known way papers fool themselves.
 2. **Zero-initialized:** the filter starts switched **off** (it initially passes the signal
-   through unchanged), and training only turns it up where it genuinely helps. It cannot hurt by
-   default; it has to earn its influence.
+   through unchanged), and training only turns it up where it genuinely helps. It starts as an exact no-op; its influence is
+   learned (and the measured gain is a package effect — see the paper's §3 caveat).
 3. **Tiny:** for each internal signal stream it learns just 8 or 16 blending weights — knobs
    bolted onto the existing engine, not a new engine.
 
@@ -186,10 +185,10 @@ machinery that makes the second one credible.
   above, under a sealed pre-declaration.
 - On **Office Products (V3)**: as told above — CI lower bounds **0.03033** / **0.03024**, above
   both 0.0279 (matched reference) and 0.0271 (published), 10/10 seeds, sealed pre-declaration.
-- The **causal FIR filter** helps on all four categories tested (two under sealed
-  pre-declaration, listed in §3), as an internal with-vs-without comparison.
-- **Text benefits are per-dataset (heterogeneity not established)** (§4), supported by controlled thinning interventions.
-- The **evaluation apparatus itself** (pre-declaration + fail-closed gate + adversarial audit)
+- The **FIR package arm** shows positive estimates on all four categories tested (two under a
+  Git-committed pre-declaration whose rerun is outcome-visible — paper §5.2/§5.3), as an internal
+  with-vs-without comparison (same seed numbers; arms not initialization-paired).
+- **Text tail benefit: one MI frequency-5 case** (paper §4/§5.3) — cross-dataset heterogeneity is NOT established (interaction p = 0.13) and the thinning intervention did NOT reproduce it (one fixed draw; mechanism unresolved).
   is a contribution other researchers can copy.
 
 **We deliberately do NOT claim:**
@@ -264,7 +263,7 @@ machinery that makes the second one credible.
       PAPER_SUBMISSION.md verbatim (at the paper's printed precision); Office V3 per-seed
       finals -> OFFICE_V3_RESULTS.md (the explainer names this source in its own text); the
       175-cell count -> the strict gate's own BUILD GREEN output (mirrored in
-      CANONICAL_SUBMISSION.md); the 153-file count -> the strict gate's manifest-verification
+      CANONICAL_SUBMISSION.md); the 276-file count -> the strict gate's manifest-verification
       output. Last full check: 2026-07-18 post-GrIT-fence — every number verified against its
       source; no drift.
 - [x] Optional: add a "try different seeds" animation to the FIR demo showing run-to-run spread

@@ -15,7 +15,8 @@
 #   PYTHON   (default: ../_bestrec_run/.venv/Scripts/python.exe)
 #   TECTONIC (default: ~/AppData/Local/tectonic/tectonic.exe, else `tectonic` on PATH)
 set -euo pipefail
-MANIFEST_COMMIT="$(python -c "import json;print(json.load(open('../RELEASE_MANIFEST.json')).get('git_commit',''))" 2>/dev/null || true)"
+SCRIPT_DIR0="$(cd "$(dirname "$0")" && pwd)"
+MANIFEST_COMMIT="$("${PYTHON:-python}" -c "import json,sys;print(json.load(open(sys.argv[1])).get('git_commit',''))" "$SCRIPT_DIR0/../RELEASE_MANIFEST.json" 2>/dev/null || true)"
 export SOURCE_DATE_EPOCH="$(git log -1 --format=%ct ${MANIFEST_COMMIT:-HEAD} 2>/dev/null || git log -1 --format=%ct 2>/dev/null || echo 0)"
 
 # STRICT BY DEFAULT (audit 2026-07-22 12:49 C1: wrappers must not self-waive).
@@ -35,22 +36,17 @@ cd "$(dirname "$0")"
 
 PYTHON="${PYTHON:-../_bestrec_run/.venv/Scripts/python.exe}"
 if [ -z "${TECTONIC:-}" ]; then
-  if [ -x "$HOME/AppData/Local/tectonic/tectonic.exe" ]; then
-    TECTONIC="$HOME/AppData/Local/tectonic/tectonic.exe"
-    if [ ! -x "$TECTONIC" ] && command -v tectonic >/dev/null 2>&1; then
-      TECTONIC="$(command -v tectonic)"
-    fi
-    if [ ! -x "$TECTONIC" ] && [ -n "${LOCALAPPDATA:-}" ] && [ -x "$LOCALAPPDATA/tectonic/tectonic.exe" ]; then
-      TECTONIC="$LOCALAPPDATA/tectonic/tectonic.exe"
-    fi
-    if [ ! -x "$TECTONIC" ]; then
-      echo "FATAL: no tectonic executable (set TECTONIC) -- refusing (audit 14:50)"; exit 6
-    fi
-    echo "tectonic: $TECTONIC"
-  else
-    TECTONIC="tectonic"
-  fi
+  for CAND in "$HOME/AppData/Local/tectonic/tectonic.exe" \
+              "${LOCALAPPDATA:-}/tectonic/tectonic.exe" \
+              "$(command -v tectonic 2>/dev/null || true)"; do
+    if [ -n "$CAND" ] && [ -x "$CAND" ]; then TECTONIC="$CAND"; break; fi
+  done
 fi
+if [ -z "${TECTONIC:-}" ] || [ ! -x "$TECTONIC" ]; then
+  echo "FATAL: no executable tectonic found (set TECTONIC) -- refusing (audit 15:50 P1)"
+  exit 6
+fi
+echo "tectonic: $TECTONIC"
 
 echo "== [1/4] regenerate table includes from the artifact graph =="
 # Strict-submission table build FIRST (audit 2026-07-18 19:20): a TORS PDF must never be

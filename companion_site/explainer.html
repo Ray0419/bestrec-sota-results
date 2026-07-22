@@ -196,7 +196,7 @@
           <g fill="none" stroke="var(--chart-blue)">
             <path d="M 64 84  Q 240 195 545 92" stroke-width="1"   opacity="0.25"/>
             <path d="M 172 84 Q 330 180 552 92" stroke-width="2.5" opacity="0.55"/>
-            <path d="M 280 84 Q 400 175 558 92" stroke-width="3.5" opacity="0.75"/>
+            <path d="M 280 84 Q 400 168 558 92" stroke-width="3.5" opacity="0.75"/>
             <path d="M 388 84 Q 470 150 561 92" stroke-width="5.5" opacity="0.95"/>
           </g>
           <text x="130" y="128" fill="var(--chart-blue)" font-size="11">attention weight = how much each memory is “highlighted” (thicker = more)</text>
@@ -212,7 +212,7 @@
 <section id="fir">
   <div class="eyebrow">Section 3 · the novel component</div>
   <h2>The causal FIR filter — a shock absorber for taste</h2>
-  <p>Our main modeling contribution is a tiny idea borrowed from signal processing. The signal flowing through the model — "what is this person into <em>right now</em>?" — is noisy: one impulse buy (a gag gift, a purchase for a friend) jolts it like a pothole. We bolt on an <strong>FIR filter</strong>: engineering-speak for a <em>short, learned weighted average</em> that smooths each moment using only the few moments before it.</p>
+  <p>One of the paper's two small additions (self-graded incremental) is a tiny idea borrowed from signal processing — measured only as a bundled package effect (filter + starting state + optimizer path). The signal flowing through the model — "what is this person into <em>right now</em>?" — is noisy: one impulse buy (a gag gift, a purchase for a friend) jolts it like a pothole. We bolt on an <strong>FIR filter</strong>: engineering-speak for a <em>short, learned weighted average</em> that smooths each moment using only the few moments before it.</p>
   <ul>
     <li><span class="analogy">A <strong>shock absorber</strong>: bumps still register; they stop rattling the frame.</span></li>
     <li><span class="analogy">A <strong>coffee filter</strong>: flavor through, grounds held back.</span></li>
@@ -386,11 +386,11 @@
       <td><strong>Statistical superiority over the comparator.</strong> Their numbers are single runs — no error bars exist to beat. Our five dice rolls averaged higher than the one roll they wrote down; we say exactly that, no more.</td>
     </tr>
     <tr>
-      <td><strong>FIR filter helps</strong> on all four categories tested — an internal with-vs-without contrast (two categories under sealed prereg, §3).</td>
+      <td><strong>FIR package arm shows positive estimates</strong> on all four categories tested (outcome-visible rerun; attribution open) — an internal with-vs-without contrast (two categories under sealed prereg, §3).</td>
       <td>Anything from the <strong>VOID V1 campaign</strong> — permanently.</td>
     </tr>
     <tr>
-      <td><strong>Text benefits are per-dataset (heterogeneity not established)</strong>, supported by deliberate thinning interventions (§4). And the <strong>apparatus itself</strong> is a reusable contribution.</td>
+      <td><strong>Text tail benefit: one MI frequency-5 case (heterogeneity NOT established, p = 0.13)</strong> — the thinning intervention did not reproduce it; formerly described as supported by deliberate thinning interventions (§4). And the <strong>apparatus itself</strong> is a reusable contribution.</td>
       <td><strong>Races against concurrent 2026 preprints</strong> whose protocols we haven't audited — we cite them; we don't claim against them.</td>
     </tr>
   </table>

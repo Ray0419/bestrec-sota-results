@@ -1,5 +1,7 @@
 param([string]$Draft = "")
-$env:SOURCE_DATE_EPOCH = (git log -1 --format=%ct 2>$null)
+$__mc = (Get-Content -Raw (Join-Path $PSScriptRoot "..\RELEASE_MANIFEST.json") | ConvertFrom-Json).git_commit
+if ($__mc) { $env:SOURCE_DATE_EPOCH = (git log -1 --format=%ct $__mc 2>$null) }
+if (-not $env:SOURCE_DATE_EPOCH) { $env:SOURCE_DATE_EPOCH = (git log -1 --format=%ct 2>$null) }
 $__prevWaiver = $env:DRAFT_WAIVER
 try {
 if ($Draft -ne "") {
@@ -33,7 +35,9 @@ if ($LASTEXITCODE -ne 0) { throw "emit_latex_tables.py failed (numeric cross-che
 
 Write-Host "== [2/4] tectonic compile: review target (manuscript) =="
 $__eap = $ErrorActionPreference; $ErrorActionPreference = "Continue"
-& $Tectonic --keep-logs main.tex 2>&1 | ForEach-Object { "$_" } | Tee-Object -FilePath (Join-Path $PSScriptRoot "main_console.log")
+$__lines = & $Tectonic --keep-logs main.tex 2>&1 | ForEach-Object { "$_" }
+$__lines | ForEach-Object { Write-Host $_ }
+[System.IO.File]::WriteAllLines((Join-Path $PSScriptRoot "main_console.log"), [string[]]$__lines, (New-Object System.Text.UTF8Encoding($false)))
 $__rc = $LASTEXITCODE; $ErrorActionPreference = $__eap
 if ($__rc -ne 0) { throw "tectonic main.tex failed (exit $__rc)" }
 $__log = Get-Content -Raw (Join-Path $PSScriptRoot "main_console.log")

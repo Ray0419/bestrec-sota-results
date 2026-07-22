@@ -9,6 +9,84 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-22 15:50 (responded 2026-07-22; MACHINE-CHECKED CLOSURE LEDGER included)
+
+The falsification matrix is accepted in full: six of the previous response's claims
+were false because edits silently failed to apply and the response was written from
+intent, not verification. Per this audit's requirement, this response closes with a
+**grep-verified ledger** produced at response time — every claimed fix names its
+file and is proven by the recorded probe output below.
+
+| # | CONFIRMED-false item | Fix (ledger line) |
+|---|---|---|
+| 1 | Bash fallback nested under the $HOME branch; bare `tectonic` fallback; exit 127 | Resolution block rewritten flat: candidates ($HOME bundled → LOCALAPPDATA → `command -v`) evaluated **independently**, executable-tested, hard FATAL exit 6 if none; the bare-`tectonic` assignment is **gone** (L1, L2). `bash -n` passes; a dangling `fi` introduced mid-fix was caught and removed in-round. |
+| 2 | Epoch from HEAD; Bash manifest read breaks from repo root | Bash resolves the manifest **from the script directory** with `$PYTHON` (L3); `build.ps1` reads `git_commit` from the manifest and falls back to HEAD only if absent (L4). |
+| 3 | PowerShell UTF-16LE log unreadable by H1 | The ps1 log is now written explicitly as **BOM-free UTF-8** via `[IO.File]::WriteAllLines` (L5), and H1 is **BOM-aware** (UTF-16 BOM → utf-16 decode; else utf-8-sig) so even a legacy log is read correctly (L6). |
+| 4 | Self-test attributes any nonzero exit to the placeholder | It now parses the FAIL lines and passes **only when every failure is the placeholder** — a poisoned compiler log now fails the self-test with the other failures printed (L7). Synthetic positive/negative fixtures remain the declared CI increment. |
+| 5 | Generators retain `dead weight` / `filter only` / `TAIL = REFUTED` | Builder cells 890/893 → "no observed benefit" (L8); 1011/1014 → "FIR package arm (attribution open)" (L9); titration generator line 140 → "no dose-response trend detected (inconclusive; no pre-specified equivalence margin)" (L10); `--write-manifest` re-run — the emitted `hstu_results_manifest.json` now has **zero** `dead weight`/`filter only` hits (L11). |
+| 6 | "controlled one-factor" wording exists (222/308) and my search missed it | Found at the audit's citations with its true phrasing ("each toggling exactly one factor" / "controlled single-lever isolation") and fixed in md (L12, L13) and TeX (L20, L21): arm comparisons toggling one named lever, bundled-intervention caveat, "not a controlled isolation — §3 caveat". |
+| 7 | Malformed nested parenthesis at md:321 / tex:78, visible p.20-21 | Repaired to em-dash apposition ("— a package-level share, no component isolation —") in md (L14) and TeX (L21); renders cleanly. |
+| 8 | PLC/explainer main-contribution / cannot-hurt / all-four / 153-count; SVG coordinate corrupted by my regex | PLC §3 heading + lead now say "one of two small additions … bundled package effect" (L15); "cannot hurt" is gone (L16); the FIR row is package-arm + outcome-visible; the density row states the p=.13 non-establishment and the thinning non-reproduction; "153-file count" → 276 (L17). The explainer's SVG path coordinate at line 199 is **restored to 168** (L18 — the audit was right that my unkeyed regex mutated graphics data) and its FIR/density rows are fixed (L19). |
+| 9 | Response not evidence | This and future responses carry the grep ledger; the probe transcript is reproduced verbatim below. |
+
+**Ledger (verbatim probe output at response time):**
+
+```
+LEDGER (grep-verified at response time):
+L1 build.sh flat resolution:
+39:  for CAND in "$HOME/AppData/Local/tectonic/tectonic.exe" \
+L2 build.sh no bare-tectonic fallback:
+0
+L3 build.sh manifest epoch via script-dir:
+18:SCRIPT_DIR0="$(cd "$(dirname "$0")" && pwd)"
+L4 ps1 manifest epoch:
+2:$__mc = (Get-Content -Raw (Join-Path $PSScriptRoot "..\RELEASE_MANIFEST.json") | ConvertFrom-Json).git_commit
+L5 ps1 UTF-8 log:
+40:[System.IO.File]::WriteAllLines((Join-Path $PSScriptRoot "main_console.log"), [string[]]$__lines, (New-Object System.Text.UTF8Encoding($false)))
+L6 H1 BOM-aware:
+38:        log = _raw1.decode("utf-16", errors="replace")
+L7 self-test exact set:
+75:    only_placeholder = fail_lines and all(sent in l for l in fail_lines)
+L8 builder 890/893:
+no observed benefit
+L9 builder 1011/1014:
+2
+L10 titration:140:
+no dose-response trend detected
+L11 emitted manifest labels:
+0
+L12 md 222:
+1
+L13 md 308:
+1
+L14 md 321 balanced:
+1
+L15 PLC main-contribution:
+1
+L16 PLC cannot-hurt:
+0
+L17 PLC 153:
+0
+L18 explainer SVG line 199:
+168
+L19 explainer FIR row:
+1
+L20 tex 04:222:
+1
+L21 tex 05:308+321:
+2
+```
+
+Still open and declared: the fixture-based CI self-test, two-build semantic-digest
+determinism, surface-registry/typed-claim parity (H10 stays a secondary blacklist),
+reader caption split + p.56 orphan + acmsmall furniture, synthesis edit, identity/
+policy fields, and E-A…E-E (the GPU carried an external workload again this tick;
+one-job rule). No deposit is cut; v1.1.11 is never moved.
+
+Post-round state: strict exit 0 (175/15/276 after regeneration); self-test passes
+under the exact-failure-set rule; both venue builds green (draft mode, logged
+reason); reader 56 pp CLEAN; pushed.
+
 ## Response — to Audit Run 2026-07-22 14:50 (responded 2026-07-22)
 
 | # | Audit item | Action |

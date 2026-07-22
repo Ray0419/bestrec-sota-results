@@ -137,7 +137,7 @@ def main():
     print("- **HEAD = overall rank trend (one reversal; one fixed draw; level contrasts):** head ΔNDCG rises as ρ falls "
           "(density drops), all rungs 5/5 positive ⇒ Spearman ρ_s(head Δ vs density) = "
           "−0.94 (NDCG) / −0.71 (HR). The head text-advantage rises under this bundled thinning intervention (a level trend; not component-level causal attribution).")
-    print("- **TAIL = REFUTED dose-response:** tail ΔNDCG is non-monotone / trend-free; no rung clears "
+    print("- **TAIL: no dose-response trend detected (inconclusive; no pre-specified equivalence margin):** tail ΔNDCG is non-monotone / trend-free; no rung clears "
           "MI's native +0.000335 (5/5) bar; Spearman ρ_s(tail Δ vs density) = −0.14 (n.s.). "
           "Thinning VG to MI's exact density (ρ=0.66, 16.109 inter./item ≈ MI 16.2) does **not** reproduce "
           "MI's tail win ⇒ global density is a tail *correlate only*, not supported as a tail driver. "

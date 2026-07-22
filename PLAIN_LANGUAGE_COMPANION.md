@@ -89,6 +89,8 @@ Three properties make our version safe and honest:
 
 **Update (matched-twin rerun, E-A):** we later retrained the model 24 more times under a frozen, committed-in-advance plan in which the filter-equipped copy and a no-filter twin start from *byte-identical* weights (verified by checksum). The filter twin won by +0.0023 (95% CI +0.0019 to +0.0026) on Musical Instruments — the first direct evidence that the filter itself, not its starting-state side effects, carries a benefit at this configuration. (This does not re-split the older bundled numbers above.)
 
+**Update 2 (recipe add-on, E-F):** under a second frozen, committed-in-advance plan, we blended the model's scores with a classic “customers who bought X also bought Y” matrix (EASE, Steck 2019) — fitted only on training data, blend weight chosen only on validation. On five brand-new seeds it helped every category tested: Musical Instruments 0.0415→0.0440 (the blend's five-seed average now sits above the published 0.0406 single run), Industrial & Scientific 0.0334→0.0360, Video Games 0.0671→0.0703 (still below the published 0.0760). A five-model ensemble of the blend reached 0.0456 on Musical Instruments (ensembles compare only to other ensembles).
+
 ## 4. A finding, not just a gadget: text helps some catalogs and not others
 
 The "scent" fingerprints from product text are not uniformly useful, and one of the paper's main

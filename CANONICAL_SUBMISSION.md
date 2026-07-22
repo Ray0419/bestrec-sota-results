@@ -92,3 +92,10 @@ Old-track artifacts (`archive_noncanonical/`, `_bestrec_sota_lab/paper_draft/`) 
 ## Noncanonical root-level PDFs (disambiguation note, 2026-07-19)
 
 Three legacy PDFs at the repository root are **not** part of this submission and must not be mistaken for submission artifacts: `BERT-Embedded Self-attention Transformer Recommender (BEST-Rec)_ Tackling Sparsity and Cold-Starts.pdf`, `BEST_Rec_v4_Sections_3-8.pdf`, and `BEST_Rec_v4_Sections_3-8_Elaborated.pdf` — they are the maintainer's separate earlier manuscript line (noncanonical, unmanifested, never cited by the canonical papers; disposition is the maintainer's call). The only canonical root PDF is `PAPER_SUBMISSION.pdf` (reader rendering); the venue artifact is `paper_tex/PAPER_TORS.pdf`.
+
+## Pre-declared post-v1.1.11 additions (2026-07-22/23)
+
+Registered here so the claim ledger stays canonical; each entered ONLY through its frozen pre-declaration committed before launch, and each may only narrow further. The FORBIDDEN wordings above remain in force unchanged.
+
+1. **E-A (PREREG_FIR_V3, verdict W-POS):** learned FIR taps vs identity control, +0.002265 [+0.001928, +0.002602] NDCG@10 (MI, frozen V2 config, 8 fresh seeds/arm, per-seed init-state hash equality verified; weight-decay pathway ruled out, A2−A1 p=.95). Supports a FIR-specific component; does NOT retroactively decompose the historical package estimate. Artifacts: results_MI_FIRV3_*, fir_v3_adjudication.json.
+2. **E-F (PREREG_HYBRID_V1, verdicts W-H-POS on MI/IS/VG):** late z-score fusion with train-only EASE changed test NDCG@10 by +0.00244 [+0.00219, +0.00268] (MI), +0.00261 [+0.00211, +0.00310] (IS), +0.00317 [+0.00286, +0.00348] (VG); five fresh seeds each; significance attaches to fused-vs-sequential only. Pre-declared point-estimate rows: MI fused five-seed mean 0.04399 exceeds the published single-run 0.0406; VG 0.07031 remains below 0.0760; MI ensemble5 0.04557 (ensemble frame). Artifacts: results_*_HYBRIDV1_*, hybrid_v1_adjudication.json.

@@ -4,7 +4,298 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-22 23:59 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-23 03:00 Australia/Sydney)
+
+1. **[CONFIRMED, rejection-level confirmation failure]** E-F has exposed the
+   fixed test sets at least 229 times by this cutoff: 216 base epoch tests and
+   13 selected-fusion test passes, producing at least 255 headline system
+   results. The splits were already outcome-visible during development. Fresh
+   optimizer seeds cannot make this an untouched confirmatory study.
+2. **[CONFIRMED encouraging but incomplete VG evidence]** The three eligible VG
+   pairs are all positive: mean fused-minus-sequential NDCG@10 +0.00312095,
+   nominal t(2)=32.41, p=.000951 and 95% CI
+   [+0.00270659,+0.00353532]. VG24 fusion is active/incomplete, VG25 is absent,
+   and the three-seed exact two-sided sign-flip minimum is .25. No VG frozen
+   wording or Holm decision is available.
+3. **[CONFIRMED cross-category scope contradiction]** Fusion gain is
+   overwhelmingly head-target contributed in every eligible category:
+   **99.903% MI, 95.574% IS and 99.75% VG**. Only 5.8%-6.4% of MI,
+   4.37%-5.21% of IS and about 9% of VG users change. This is not evidence of a
+   broad, tail, cold-start or equitable improvement.
+4. **[CONFIRMED incomplete registered family]** Complete pairs are MI 5/5, IS
+   5/5 and VG 3/5. VG24 has only a completed base and launched fusion; VG25,
+   the MI ensemble, full adjudication and a no-extras evidence inventory are
+   absent. Strong partial point estimates do not close the family.
+5. **[CONFIRMED urgent E-G sequestration defect]** E-G's exact prefix contains
+   32 wait messages and no result/test. The live waiter already loaded the old
+   driver, so editing its file alone will not remove the Stage-1 test block.
+   Stop and restart it with validation-only Stage 1 and an atomic, fail-closed
+   E-F success gate before E-F reaches done=31.
+6. **[CONFIRMED E-G validity and implementation failures]** The method is not
+   kNN, duplicates an internal history-centroid text scorer, can promote with
+   zero text weight, searches about 116 candidates per seed on one validation
+   set, merges zero exposure with frequency 1-5, materializes dense U-by-I
+   matrices, lacks the promised no-EASE path and omits both Beauty splits while
+   claiming all catalogs.
+7. **[CONFIRMED inefficient E-F algorithm]** Thirteen fusions performed 65
+   dense inversions consuming 74.27 minutes, 33.2% of campaign time. Only 12
+   category/lambda fits were unique; 53 inversions were avoidable across seeds.
+   The declared B_cache is unused, and the 13 immediately repeated selected-
+   lambda inversions alone cost 14.74 minutes.
+8. **[CONFIRMED weak provenance and mutable evidence]** All eligible bases say
+   git_dirty_tracked=true; VG artifacts postdate and are absent from eligible
+   HEAD. Fusion reports/checkpoints omit critical source, data, environment,
+   state and content bindings. Status lags the live subprocess by one and is
+   non-atomic; skip-by-path and permissive checkpoint loading remain unsafe.
+9. **[CONFIRMED adjudicator under-enforcement; PLAUSIBLE future misreporting]**
+   The frozen adjudicator does not enforce exact grids/argmax, checkpoints,
+   NPZs, sidecars, finiteness, two-way config equality, full provenance or a
+   no-extras inventory. Its no-SciPy fallback uses a normal p-value for n=5
+   while silently hard-coding a t critical value. SciPy is present in the live
+   venv, so current arithmetic is not yet affected, but the gate is not portable
+   or fail-closed.
+10. **[CONFIRMED ensemble readiness/scaling gap]** The pending MI ensemble
+    retains full validation and test U-by-I matrices, uses permissive
+    strict=False loading, lacks complete provenance and has no matched
+    equal-budget ensemble baseline. The driver also overrides the evaluator's
+    w=0 default with a strictly positive-weight grid, forcing some EASE
+    contribution even if validation would prefer none.
+11. **[CONFIRMED small-n and generalization limitation]** MI/IS have five
+    optimizer seeds and VG only three on one split each. Parametric seed-level
+    intervals do not cover users, items, splits, categories or future time.
+    Exact sign sensitivity, more seeds and untouched split/temporal replication
+    are required.
+12. **[CONFIRMED carried-forward E-A validity failure]** E-A's arithmetic
+    reconciles, but false executed-code provenance, dirty execution, reused seed
+    IDs, 480 exposed epoch tests, wrong independent-Welch geometry, missing
+    capacity placebo and unregistered mechanism wording remain blockers.
+13. **[CONFIRMED manuscript/public inconsistency]** No manuscript, TeX,
+    bibliography, table, figure, PDF or public artifact changed. E-A's queued-
+    versus-complete, Welch-versus-paired and unsupported pathway contradictions
+    remain. E-F/E-G should stay out of claim-bearing surfaces.
+14. **[CONFIRMED release-boundary failure]** The 138-entry HEAD manifest omits
+    most E-A/E-F/E-G protocols, code, checkpoints, sidecars, arrays and
+    adjudications; v1.1.11 still fails 17 entries. Live logs and untracked large
+    checkpoints are not released or reproducible evidence.
+15. **[CONFIRMED narrow novelty boundary; PLAUSIBLE incremental-contribution
+    rejection]** E-F is established EASE/sequential score fusion. E-G's
+    similarity, content-profile and ensemble components are preceded by Fossil,
+    FISSA, SimRec, RecFormer, UniSRec and EnsRec and duplicate an internal
+    scorer. Strong matched baselines or theory are needed to establish more
+    than systems integration.
+16. **[CONFIRMED visual/writing blockers; AUTHOR VERIFICATION]** Byte-identical
+    PDFs retain author/institution placeholders, an awkward E-A paragraph split,
+    mostly blank final pages, missing bookmarks/metadata and untagged TeX.
+    Author order, ORCIDs, funding, conflicts, automation disclosure, ethics,
+    licensing and redistribution authority remain unresolved.
+17. **[CONFIRMED artifact-integrity progress, not acceptance evidence]** All 13
+    eligible fusion packages reconcile externally and select the true validation
+    argmax. This reduces ordinary file-corruption risk; it does not repair
+    holdout reuse, head concentration, incomplete VG/ensemble/adjudication,
+    provenance or mechanism ambiguity. Recommendation remains **reject / not
+    ready**.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-23 03:00)
+
+1. **[CONFIRMED, rejection-level confirmation failure]** E-F now has ten
+   complete base/fusion pairs (five MI and five IS), but it is not an
+   independent confirmatory study. The same fixed test splits were repeatedly
+   exposed during development and this campaign; the cutoff-safe lower bound is
+   **213 test evaluations** (200 epoch tests, ten fusion tests and at least
+   three VG checkpoint-producing tests). Fresh optimizer seeds do not refresh
+   a reused holdout.
+2. **[CONFIRMED encouraging descriptive result, not publication-grade
+   validation]** IS fused-minus-sequential NDCG@10 is positive in all five
+   seeds: mean +0.00260931, paired t(4)=14.62, nominal p=.000127 and 95% CI
+   [+0.00211390,+0.00310473]. MI remains +0.00243853, nominal p=1.02e-5.
+   These estimates describe two outcome-visible fixed splits; they do not prove
+   fresh-data, item, user, category or temporal generalization.
+3. **[CONFIRMED scope/mechanism contradiction]** The weighted gain is
+   overwhelmingly head-target contributed: **99.903% for MI and 95.574% for
+   IS**. Only 5.8%-6.4% of MI and 4.37%-5.21% of IS users change. IS tail is
+   small positive post-hoc and mid has an interval crossing zero. Do not call
+   the hybrid a broad, tail, sparse-item, cold-start or equitable improvement.
+4. **[CONFIRMED incomplete registered family]** VG has no complete eligible
+   endpoint; only a mutable seed-21 checkpoint existed at cutoff. The registered
+   ensemble, family adjudication, multiplicity inventory and untouched
+   replication are absent. No W-H-POS or published-comparator wording is
+   available, regardless of the two nominal category p-values.
+5. **[CONFIRMED urgent E-G sequestration defect]** E-G is still wait-only: its
+   frozen prefix has 20 wait messages and no status, result, selection, verdict
+   or test output. This is a clean opportunity to remove its Stage-1 test block,
+   which otherwise exposes four MI systems per seed before a later same-split
+   Stage 2.
+6. **[CONFIRMED method misdescription and internal duplication]** E-G is named
+   text-kNN but implements no k or neighbor search. It densely scores every item
+   from a history-centroid MiniLM profile, a scorer principle already present in
+   the trainer's zfusion path. Its defensible new unit is, at most, a
+   frequency-conditioned combination of three established score streams.
+7. **[CONFIRMED invalid E-G attribution/promotion]** E-G searches about 60
+   global plus 56 binned configurations per seed on one validation target set.
+   It may promote with `w_text=0` while merely reselecting EASE, and different
+   seeds may choose different model classes. A +0.0005 point gate after this
+   search is not inferential evidence of an incremental text effect.
+8. **[CONFIRMED false scalability claim]** E-G materializes dense U-by-I seq,
+   EASE and text matrices. One float32 matrix is 5.26 GiB for MI, 64.51 GiB for
+   Office and 564.37 GiB for Beauty. The program has no executable promised
+   no-EASE path and its Stage-2 list omits both Beauty splits while claiming all
+   catalogs.
+9. **[CONFIRMED cold/tail estimand regression]** E-G combines frequency-zero
+   targets with frequency 1-5 targets. On MI, only 62 validation and 106 test
+   targets are true zero-exposure cases, versus 7,644 and 8,693 in the combined
+   bins. This cannot establish new-item cold-start performance.
+10. **[CONFIRMED inefficient E-F implementation]** The frozen E-F prefix shows
+    50 dense EASE inversions consuming 56.49 minutes, although only eight
+    category/lambda fits were needed for MI and IS. Forty-two inversions were
+    redundant. Cache content-addressed fits and use stable factorization/solves
+    rather than repeated explicit inversion.
+11. **[CONFIRMED weak provenance and mutable partial state]** All eligible bases
+    report `git_dirty_tracked=true`; fusion reports and checkpoints omit critical
+    source/data/environment/content bindings. The VG21 mutable checkpoint is not
+    a frozen endpoint. Skip-by-path, permissive loading, non-atomic writes and
+    status-based GPU handoff remain unsafe.
+12. **[CONFIRMED small-n/generalization limitation]** Five optimization seeds
+    cannot diagnose the t-model or estimate split/category generalization. The
+    minimum exact two-sided all-positive sign-flip p is .0625. A descriptive
+    MI-minus-IS effect difference is not significant (mean -0.000171 in MI
+    relative to IS; p=.214), so there is no evidence of category heterogeneity
+    and only two categories have complete outcomes.
+13. **[CONFIRMED carried-forward E-A validity failure]** E-A's arithmetic
+    reconciles, but false executed-code provenance, dirty execution, reused seed
+    IDs, 480 exposed epoch tests, wrong independent-Welch geometry, missing
+    capacity placebo and unregistered mechanism wording remain submission
+    blockers.
+14. **[CONFIRMED manuscript/public inconsistency]** No manuscript, TeX,
+    bibliography, table, figure, PDF or public artifact changed. E-A's
+    completed-versus-queued, Welch-versus-paired and unsupported pathway
+    contradictions therefore remain. Keeping E-F/E-G out of the paper is
+    currently correct.
+15. **[CONFIRMED release-boundary failure]** HEAD verification passes an
+    omissive 138-entry manifest that excludes most E-A/E-F/E-G code, protocols,
+    checkpoints, arrays and adjudications; v1.1.11 still fails 17 entries.
+    Mutable large checkpoints and live logs are not a closed evidence package.
+16. **[CONFIRMED narrow novelty boundary; PLAUSIBLE incremental-contribution
+    rejection]** E-F is established EASE/sequential score fusion. E-G's
+    similarity, content-profile and score-ensemble components are preceded by
+    Fossil, FISSA, SimRec, RecFormer, UniSRec and EnsRec and duplicate an
+    internal scorer. Theory or strong matched baselines are needed to establish
+    more than incremental systems integration.
+17. **[CONFIRMED visual/writing blockers; AUTHOR VERIFICATION]** Byte-identical
+    PDFs retain author/affiliation placeholders, an awkward E-A paragraph split,
+    mostly blank final pages, missing bookmarks/metadata and untagged TeX
+    output. Author order, ORCIDs, funding, conflicts, automation disclosure,
+    ethics, licensing and redistribution authority remain unresolved.
+18. **[CONFIRMED arithmetic integrity progress, not acceptance evidence]** All
+    ten eligible E-F packages reconcile at cutoff and every fusion selection is
+    a validation-grid argmax. This reduces ordinary metric-corruption risk; it
+    does not repair holdout reuse, provenance, incomplete VG/adjudication,
+    mechanism ambiguity or scope overclaim. Recommendation remains **reject /
+    not ready**.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-23 02:00)
+
+1. **[CONFIRMED, rejection-level confirmation failure despite a strong point
+   estimate]** All five MI E-F pairs are positive: fused-minus-sequential
+   NDCG@10 is +0.00243853, paired t(4)=27.63, nominal p=1.02e-5, 95% CI
+   [+0.00219351,+0.00268354]. But MI reuses the outcome-visible development
+   split and E-F had exposed at least 148 test passes by the cutoff. This is a
+   stable exploratory result on one reused split, not fresh confirmation.
+2. **[CONFIRMED scope contradiction] E-F's MI gain is 99.903% head-item
+   contributed.** Five-seed tail and mid deltas are essentially zero
+   (+0.0000014 and +0.0000142); head is +0.0034999. Only 5.8%-6.4% of users
+   change per seed. Do not describe this as broad, tail, cold-start or equitable
+   improvement; show the decomposition beside every aggregate result.
+3. **[CONFIRMED incomplete family]** MI is 5/5, but IS is only 2/5, VG is 0/5,
+   the registered ensemble is absent, eight fusion files are missing, and no
+   adjudication exists. No W-H-POS or published-comparator wording is available.
+   The two-seed IS mean +0.00243967 has a nominal 95% CI spanning zero.
+4. **[CONFIRMED urgent E-G test-sequestration defect]** At this cutoff E-G has
+   no result and its 272-byte log contains only eight wait messages. This is the
+   last clean point to remove its test block: current Stage 1 will expose seq,
+   fused2, selected-global and selected-binned MI test outcomes before proposing
+   a same-split Stage 2 "confirmation." Promotion may read validation only, but
+   later fresh seeds cannot make the already-viewed test data fresh.
+5. **[CONFIRMED method misdescription and internal duplication]** E-G is called
+   "text-kNN," but implements no nearest-neighbor search or k. It computes dense
+   user-profile-to-all-item text similarity, a formula already implemented by
+   the trainer's zfusion evaluation path. The novel unit, if any, is only the
+   three-score/frequency-weighted combination, not text-kNN or content profiling.
+6. **[CONFIRMED false scalability claim]** E-G materializes dense U-by-I seq,
+   EASE, text and fused matrices. One MI float32 score matrix is 5.26 GiB and
+   three are 15.78 GiB before temporaries; Office is 64.51 GiB per matrix and
+   Beauty 564.37 GiB. The code also always loads a fusion JSON and runs dense
+   EASE, so its promised Office/CDs text-only path does not exist. It does not
+   scale to "EVERY catalog."
+7. **[CONFIRMED cold/tail estimand regression]** E-G merges zero-exposure and
+   frequency 1-5 targets into one tail bin, reversing the paper's repaired
+   zero-versus-positive-tail discipline. MI validation has only 62 zero-exposure
+   targets and test has 106, versus 7,644/8,693 combined tail targets. A selected
+   tail gain cannot establish cold-start retrieval.
+8. **[CONFIRMED invalid E-G attribution/promotion rule]** E-G searches roughly
+   60 global and 56 binned combinations per seed, then promotes on the same tail
+   validation metric it maximizes. Because w_text=0 is allowed while the EASE
+   weight is reselected, E-G can "promote" with no text contribution at all.
+   The two seeds share one validation target set, and the +0.0005 gate can
+   represent only a few discounted tail hits. Lock the EASE reference, require a
+   matched no-text control and use nested validation with uncertainty bounds.
+9. **[CONFIRMED "all full datasets" mismatch]** Stage 2 names MI, IS, VG,
+   Office and CDs, but the workspace contains seven full splits and both Beauty
+   categories are omitted. The program simultaneously claims coverage of every
+   catalog and cites Beauty as a target. Freeze an exact dataset inventory and
+   executable path for each category before promising full-dataset validation.
+10. **[CONFIRMED mixed-time commit and irrecoverable partial state]** Commit
+    0feab910 was made mid-E-F after four MI fusion outcomes were visible. It
+    stages a 148,474-byte live log, status done=8, four complete MI pairs, MI25
+    base and a live checkpoint, but not the later MI25 fusion or sidecars. The
+    cutoff IS23 checkpoint was subsequently overwritten, so its exact cutoff
+    epoch/hash is unrecoverable.
+11. **[CONFIRMED weak E-F/E-G provenance and execution gates]** All completed
+    bases say git_dirty_tracked=true; fusion/E-G reports omit source, checkpoint,
+    split, environment and output-array hashes. Checkpoints contain only model
+    state, epoch, val score and prototype assignment. Skip-if-path, non-atomic
+    writes, permissive strict=False loading and status-based GPU handoff remain
+    unsafe.
+12. **[CONFIRMED EASE resource waste]** Seven completed fusion pairs executed
+    35 dense inversions consuming about 38.3 minutes although only eight distinct
+    category/lambda fits were needed; 27 inversions were redundant. IS dense
+    intermediates have a roughly 17.42-GiB lower bound. Cache hashed fits and use
+    factorizations/solves rather than repeated explicit inverse.
+13. **[CONFIRMED small-n inference fragility]** MI's parametric t result assumes
+    a seed-effect distribution that five pairs cannot diagnose. With all five
+    signs positive, the minimum exact two-sided sign-flip p-value is still
+    2/32=.0625. Increase seeds and separate optimization-randomness uncertainty
+    from user/item/split/category generalization.
+14. **[CONFIRMED carried-forward E-A validity failure]** E-A's numerical lift
+    reconciles, but false executed-code provenance, dirty execution, reused seed
+    IDs, 480 exposed test outcomes, wrong independent-Welch geometry, missing
+    capacity placebo and unregistered weight-decay-pathway wording still prevent
+    submission-grade confirmation.
+15. **[CONFIRMED manuscript/public inconsistency]** No manuscript, TeX,
+    bibliography, table, figure or PDF changed. Completed-versus-queued E-A,
+    Welch-versus-paired, legacy-versus-nonsingular and unsupported pathway claims
+    therefore remain. E-F/E-G results are not yet integrated, which is correct.
+16. **[CONFIRMED narrow novelty boundary]** E-G's broad idea is preceded by
+    Fossil, FISSA, SimRec, UniSRec and RecFormer, and its text-profile scorer
+    duplicates an internal comparator. E-F is likewise established-component
+    score fusion. Without theory, exact nearest-neighbor implementation and
+    strong matched baselines, these are incremental systems experiments.
+17. **[CONFIRMED release-boundary failure]** HEAD manifest verification passes
+    138 entries only because E-A/E-F/E-G protocols, code, checkpoints, sidecars,
+    arrays and adjudications are largely omitted; v1.1.11 still fails 17. Commit
+    0feab910 adds about 475 MiB of mutable checkpoints and a live log without a
+    closed evidence inventory.
+18. **[CONFIRMED writing/visual blockers; AUTHOR VERIFICATION]** The byte-
+    identical PDFs retain author/affiliation placeholders, an awkward E-A page
+    break, mostly blank final pages, missing bookmarks/metadata and untagged TeX
+    output. Author order, ORCIDs, funding, conflicts, automation disclosure,
+    ethics, licensing and redistribution authority remain unresolved.
+19. **[CONFIRMED artifact arithmetic progress, not acceptance evidence]** All
+    seven eligible E-F JSON/NPZ/sidecar pairs reconcile exactly; every selection
+    is the validation-grid argmax. This rules out ordinary metric corruption, not
+    holdout reuse, provenance failure, scope overclaim or mechanism ambiguity.
+    Recommendation remains **reject / not ready**.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-23 01:00)
 
 1. **[CONFIRMED, rejection-level confirmatory-validity failure] E-A was
    completed, adjudicated and promoted into the manuscript within roughly five
@@ -3366,6 +3657,1909 @@ plausible risks.
     the venue's current template/anonymity rules, supply any independent
     pre-outcome timestamp, repeat thinning across independent subsets, and
     demonstrate a public fresh-clone reconstruction.
+
+## Audit Run - 2026-07-23 03:00 Australia/Sydney
+
+### Review Verdict
+
+**Recommendation: reject / not ready for top-journal submission.** Three
+complete VG base/fusion pairs are newly eligible. All three improve NDCG@10,
+with mean +0.00312095 and a narrow nominal three-seed interval. The artifacts
+reconcile, the validation selections are genuine argmaxes and HR/MRR improve in
+every seed.
+
+This is neither the registered VG endpoint nor fresh confirmation. VG24 fusion
+was only launched at the cutoff, VG25 and the MI ensemble are absent, and no
+adjudication exists. The campaign has exposed at least 229 full test passes.
+Moreover, 99.75% of the VG weighted gain comes from head targets, matching the
+previous MI and IS concentration. The scientifically supportable description is
+an exploratory, predominantly head-target gain on repeatedly exposed fixed
+splits.
+
+E-G remains wait-only, so its unsafe Stage-1 test block has not yet crossed this
+cutoff. The waiting process already loaded the old driver; a source edit alone
+cannot repair it. It must be stopped and restarted after the test block and
+fail-open launch gate are fixed.
+
+Status labels:
+
+- **CONFIRMED**: reproduced from cutoff-eligible files, exact prefixes/hashes,
+  source code, calculations, unchanged PDF hashes or primary sources.
+- **PLAUSIBLE RISK**: a supported concern needing new evidence.
+- **AUTHOR VERIFICATION**: not decidable from the workspace.
+- **INCOMPLETE / EXCLUDED**: unfinished evidence not used as a final endpoint.
+- **POST-CUTOFF EXCLUDED**: files or bytes created after the fixed boundary.
+
+### Fixed Snapshot and Eligible Scope
+
+| Item | Audited value |
+|---|---|
+| Heartbeat | 2026-07-22T17:00:15.729Z |
+| Fixed local cutoff | 2026-07-23T03:01:21.4500546+10:00 |
+| Fixed UTC cutoff | 2026-07-22T17:01:21.4500546Z |
+| Branch | codex/bestrec-sota-results |
+| HEAD / upstream / merge base | 0feab9101a6094c9859f1702881a7e7d450d0a52 |
+| E-F status | running; done=26; skipped=0; failed=0; elapsed=223.9 minutes |
+| Status bytes | 81; SHA-256 d7e1f9a34f0a891991de496149ee77f53eb5a3321413cf08ea2fe356cb2da433 |
+| E-F fixed prefix | 346,301 bytes; SHA-256 6588b2569ae7e9a834908e7a0273fb5519f675fc03825ee816fb943dfa0150bd |
+| Complete pairs | MI 5/5; IS 5/5; VG 3/5 |
+| Incomplete cutoff state | VG24 base complete; VG24 fusion launched with no eligible inversion/result; VG25 absent |
+| E-G fixed prefix | 1,088 bytes; SHA-256 f7cc6bb7b03098c327ebd0c536aeb25889431c684a427e4ae54779a9a2f960be |
+| E-G eligible state | exactly 32 wait messages; no status, result, selection, verdict or test |
+
+The E-F log confirms 27 completed subprocesses: 14 bases and 13 fusions. The
+persisted done=26 status lags by one because it is updated only after a complete
+base/fusion pair. Four subprocesses remained: VG24 fusion, VG25 base and fusion,
+and the MI ensemble. Successful closure should reach done=31.
+
+There was no new commit or staged delta. The 24 eligible changed/new workspace
+files are limited to the audit/live status/logs and VG21-24 run artifacts. No
+manuscript, TeX, bibliography, table, figure, PDF, release, source or protocol
+file changed. No post-cutoff VG24 fusion byte or later endpoint is used.
+
+### Eligible VG21-23 Results
+
+| Seed | Best epoch | Selected l2,w | Seq test | EASE test | Fused test | Fused-seq |
+|---|---:|---|---:|---:|---:|---:|
+| 20260721 | 30 | 50,.03 | .0667842903 | .0477396381 | .0700111944 | +.0032269041 |
+| 20260722 | 30 | 50,.03 | .0670861985 | .0477396381 | .0702934776 | +.0032072790 |
+| 20260723 | 30 | 50,.03 | .0678401252 | .0477396381 | .0707688064 | +.0029286812 |
+
+All rows have n_eval=94,762. HR@10 deltas are +.00481206, +.00447437 and
++.00471708; MRR deltas are +.00272678, +.00283515 and +.00234069.
+
+The partial three-seed arithmetic is:
+
+| Quantity | Value |
+|---|---:|
+| Sequential mean | .06723687133 |
+| Fused mean | .07035782612 |
+| Mean paired difference | +.00312095479 |
+| Difference SD / SE | .00016680266 / .00009630356 |
+| Paired t statistic | t(2)=32.4075 |
+| Raw two-sided p | .000950802 |
+| Nominal 95% interval | [.00270659400,.00353531558] |
+| Relative mean lift | 4.64% |
+
+The parametric point pattern is strong, but n=3 cannot diagnose its sampling
+model. All signs are positive, yet the minimum exact two-sided sign-flip
+p-value is 2/8=.25. The interval describes optimization-seed dispersion on one
+fixed split, not user, item, split, category or temporal generalization.
+VG24-25 can materially alter the registered estimate and must not be guessed.
+
+### VG Popularity and User Concentration
+
+| Target bucket | Users | Three-seed mean delta | Nominal 95% CI | Share of total gain |
+|---|---:|---:|---:|---:|
+| Tail | 10,900 | +.00027553 | [.00005587,.00049519] | 1.02% |
+| Mid | 13,128 | -.00017302 | [-.00099899,.00065295] | -.77% |
+| Head | 70,734 | +.00417078 | [.00354939,.00479217] | **99.75%** |
+
+Tail is small and below the paper's 0.0005 materiality scale; mid is
+inconclusive and slightly negative. These post-hoc, uncorrected endpoints should
+constrain scope, not become a new claim.
+
+Only 8.97%, 9.11% and 9.02% of users change:
+
+| Seed | Positive | Negative | Unchanged |
+|---|---:|---:|---:|
+| 20260721 | 4,485 | 4,012 | 86,265 |
+| 20260722 | 4,549 | 4,085 | 86,128 |
+| 20260723 | 4,490 | 4,056 | 86,216 |
+
+Across the three currently observed categories, head contribution is 99.903%
+for MI, 95.574% for IS and 99.75% for VG. A headline aggregate bar without
+these decompositions would be materially misleading.
+
+### VG Integrity and Validation Selection
+
+All three eligible VG packages pass the external reconstruction checks:
+
+- NPZ keys are exactly users, seq_ndcg, fused_ndcg and ease_ndcg.
+- IDs are unique, sorted and exactly 0 through 94,761; every value is finite.
+- NPZ means reproduce JSON within 3.97e-10.
+- IDs match the base sidecars and sequential NDCG differs by at most 2.98e-8.
+- Best/final sidecars contain 94,762 unique users and their physical hashes
+  match embedded provenance.
+- Checkpoints are epoch 30, match base best-validation and fusion ckpt_epoch,
+  and reconstruct sequential NDCG within 6.80e-10 to 8.82e-10.
+- Every config matches the frozen reference keys; physical split/cache hashes
+  and trainer SHA 187ba732f5d7810ee4feace5c3e0579c95874132d32effacb8eab676b54c2c9d
+  reconcile.
+- Every report has the frozen 4-by-8 grid and selects its true validation
+  argmax.
+
+Validation runner-up gaps are .0001579731, .0001948076 and .0000689592.
+All three select w=.03 and l2=50, the lower l2 boundary. This stability is
+descriptive; it also suggests the optimum may lie outside the registered grid.
+Do not widen the grid mid-family. A future validation-only preregistration
+should include lower l2 values, a tie band and the no-fusion control.
+
+Hashes:
+
+| Seed | Checkpoint SHA-256 | Fusion JSON SHA-256 | Fusion NPZ SHA-256 |
+|---|---|---|---|
+| 21 | 4a0461de541795446d349fb8274af2a5dba4bc166077c2e411a3b8f54bc5a2a2 | 12093bf3ad29027b51c54997c6d75b7391497564088002766b88cf43fbadc4ad | 3fdf5415b6c4b71bbab36d717bcd722c13efc8a1cfb990568aa2928e08704ea7 |
+| 22 | d906097852627e6bbbabb7585392b0f82e5bd33988c3ab895db23aed712910b3 | ea8bd524a1d726a39aeeb645ed71fa5aa4b7df9f1319779756e13f54912ee232 | 2b19281c05024cc50548284a7b5e50cb909217714d55905e68d5a4ecc807e028 |
+| 23 | 96af4176d5a1467440856400b81c7b488c928069c283c35bcac8f93314ec4c0f | 193aaa68d0c21fe20f664bde5012f5fef8e6e83b81fe100edc1b816697d58838 | 075d257e6f04824a8cfc9b3cfb71c6d50ddd3b1a04467a0c6b66eb12eb97ffba |
+
+Passing arithmetic does not repair provenance. Every VG base says
+git_dirty_tracked=true; all artifacts postdate and are absent from eligible
+HEAD. Fusion JSONs bind no checkpoint, source, data, commit, NPZ or environment
+hash. Checkpoints contain only state, epoch, validation score and prototype
+assignment, with no config, source/data/environment, optimizer/RNG or self-hash.
+
+### Test Exposure and Outcome Visibility
+
+The exact prefix contains:
+
+- 216 base epoch-level test evaluations: MI 100, IS 100 and VG 16;
+- 13 selected-fusion test passes, each printing seq, EASE and fused outcomes;
+- at least 229 full test passes and 255 system-level headline result lines;
+- repeated selected-test dictionaries and popularity output beyond that lower
+  bound; and
+- no logged failure.
+
+VG24 completed 40 epochs and exposed test at epochs 10, 20, 30 and 40. Its base
+selected epoch 40 and wrote a base JSON/per-user sidecar, then launched fusion.
+Because no VG24 fusion inversion, validation result, TEST line or output was
+eligible, it is excluded from the paired effect table.
+
+The preregistration says the fusion test is evaluated once, but the base trainer
+repeatedly reports test throughout training. Source selection is by validation,
+yet investigators and logs see the test trajectory. Together with prior R+
+development on the same splits, this is adaptive holdout reuse, not a sealed
+replication. Primary work on
+[adaptive holdout reuse](https://arxiv.org/abs/1506.02629) explains why repeated
+outcome access can overfit the holdout even when individual selection rules do
+not directly read test.
+
+Required disposition: finish the current ledger without claim-bearing
+adaptation, label it exploratory, and confirm only on a genuinely untouched
+temporal/external test through a test-once sealed evaluator.
+
+### EASE Runtime and Memory Defect
+
+The 13 complete fusions performed 65 explicit dense inversions:
+
+| Category | Matrix | Inversions | Inversion time |
+|---|---:|---:|---:|
+| MI | 24,587 squared | 25 | 1,574.5 s |
+| IS | 25,848 squared | 25 | 1,815.1 s |
+| VG | 25,612 squared | 15 | 1,066.3 s |
+| Total | - | 65 | 4,455.9 s / 74.27 min |
+
+Only 12 category/lambda matrices are unique. Fifty-three of 65 inversions are
+therefore avoidable across seeds. Even within one fusion, the selected lambda is
+immediately inverted a fifth time; those 13 repeats cost 884.4 seconds or 14.74
+minutes. Inversion alone consumed 33.2% of elapsed campaign time.
+
+The source declares B_cache={} but never stores or reads it. ease_B describes a
+solve but calls numpy.linalg.inv, then holds G, P and a float64 B temporary
+while casting. The category peaks implied by those dense arrays are roughly
+15.8-17.4 GiB before sparse X, evaluation arrays, BLAS workspace and the model.
+
+Algorithm repair:
+
+1. Retain or safely spool the already selected B to remove the fifth inversion.
+2. Build X-transpose-X once per category and bind it to split/item-map hashes.
+3. Reuse one eigendecomposition across lambdas or use stable Cholesky/LDL
+   solves; report residuals and conditioning.
+4. Cache only content-addressed factors/selected matrices to control the
+   2.3-2.5 GiB-per-matrix storage cost.
+5. Preflight peak RAM and scratch space; record wall time, RAM/GPU RAM, I/O and
+   energy beside quality.
+6. Prospectively validate sparse/top-k or iterative approximations for larger
+   catalogs rather than claiming dense scalability.
+
+### E-G Still Wait-Only
+
+The E-G prefix contains exactly 32 repetitions of "E-F still running; waiting
+300 s" and nothing else. No E-G selection, promotion, result, test or
+adjudication exists. Source and EXPERIMENT_PROGRAM are unchanged, so all prior
+method, estimand, selection, scale and provenance findings carry.
+
+The current gate launches for every state other than literal running. Missing,
+corrupt, aborted, unknown and complete_with_failures states therefore release
+E-G; stale running waits forever. A transient non-atomic status read could also
+overlap GPU work. The already-running waiter imported the old driver, so fixes
+require process restart.
+
+Before launch:
+
+1. Stop the waiter and remove Stage-1 test evaluation.
+2. Require an atomically written, schema-valid E-F record with state=complete,
+   failed=0 and done+skipped=31.
+3. Acquire an exclusive process/GPU lease.
+4. Hash and validate both base JSONs, checkpoints, fusion JSONs, split CSVs,
+   embedding cache and source.
+5. Enforce strict state loading, deterministic state, finite/schema checks,
+   atomic outputs and content-aware resume.
+6. Refactor dense U-by-I scoring into bounded streaming or audited ANN before
+   any larger-category run.
+
+### Adjudicator and Ensemble Readiness
+
+The adjudicator cannot complete at this cutoff. Static inspection finds that it
+does not enforce its own exact-grid claim, validation argmax, checkpoints, NPZs,
+sidecars, finiteness, two-way config equality, exact reconstruction, complete
+provenance or a no-extras inventory. It accepts a roughly 0.0005 reconstruction
+drift even though observed numerical drift is below 1e-9.
+
+Its SciPy-free branch silently substitutes a normal p-value for a five-seed t
+test while hard-coding t critical 2.776. The live venv currently imports SciPy
+1.17.1, so that branch is not expected in this run, but the environment is not
+hash-bound and the fallback is scientifically invalid. Remove it or fail closed
+when the registered inference backend is unavailable; record the library and
+version in adjudication.
+
+The pending MI ensemble has additional gaps:
+
+- val_sum and test_sum each occupy about 5.26 GiB, and seq_z_matrix allocates a
+  third full matrix, yielding at least 15.78 GiB before EASE/model temporaries;
+- checkpoints load with strict=False;
+- the output lacks full source/data/checkpoint/environment hashes and popularity
+  cohorts;
+- there is no equal-budget sequential ensemble or calibrated stacking baseline;
+  and
+- ensemble_fuse_eval defaults to a w=0 candidate, but the driver overrides it
+  with the strictly positive preregistered grid, forcing an EASE contribution
+  even if validation would prefer no fusion.
+
+Do not compare a five-model ensemble to a single published run as evidence of
+method superiority. Add a matched five-checkpoint sequential-only ensemble,
+stream/memory-map bounded score blocks, strict loads, complete provenance and a
+no-fusion validation candidate in a future frozen design.
+
+### Novelty and Literature Boundary
+
+No method byte changed, so the previous novelty boundary remains. Primary
+sources confirm:
+
+- [EASE](https://arxiv.org/abs/1905.03375) establishes the closed-form shallow
+  collaborative model used by E-F.
+- [Fossil](https://arxiv.org/abs/1609.09152) fuses similarity and sequential
+  dynamics for sparse recommendation.
+- [FISSA](https://csse.szu.edu.cn/staff/panwk/publications/Conference-RecSys-20-FISSA.pdf)
+  fuses item-similarity and self-attention models.
+- [EnsRec](https://arxiv.org/abs/2512.17820) studies simple ID/text sequential
+  ensembling.
+
+The supportable E-F contribution is an empirical application of established
+score fusion; E-G, if repaired, is a frequency-conditioned combination of three
+established scorers. Fossil, FISSA and EnsRec remain absent from the
+bibliography. No invention claim for similarity-sequential fusion, semantic
+profiling, closed-form collaborative scoring or ID/text ensembling is defensible.
+
+### Manuscript, Release, Public and PDF Delta
+
+No manuscript, TeX, bibliography, table, figure, PDF, public artifact, source,
+protocol or release-manifest byte changed. E-F/E-G remaining outside the paper
+is correct. All E-A queued-versus-complete, Welch-versus-paired,
+provenance/mechanism and missing-placebo contradictions remain.
+
+The HEAD manifest still verifies 138 entries only by excluding most E-A/E-F/E-G
+inputs and outputs; v1.1.11 still fails 17. The live status/log and untracked
+checkpoints/results are not released evidence. A future release must wait for
+all writers, hash-bind the complete evidence graph, externalize large
+checkpoints and cut a fresh verified deposit boundary.
+
+The PDF skill's hash-stability check found all PDFs byte-identical to the last
+full visual inspection, so no redundant render tree was created:
+
+| PDF | SHA-256 | Pages | Carried blocker |
+|---|---|---:|---|
+| PAPER_SUBMISSION.pdf | 214d4682872ede8eb42d3fa72197ceec5195b6dbbdce824deac856a1e9791e7f | 57 | author placeholder; no bookmarks; mostly blank p.57 |
+| paper_tex/PAPER_TORS.pdf | 5ef68536dd84c008c0311dc013df16ba5c5fcd4da8f050be84155c2cdaf6681f | 50 | untagged; placeholder headers; E-A split pp.20-21; mostly blank p.50 |
+| paper_tex/PAPER_TORS_acmsmall.pdf | 15f75cfd17c419096f7ea61c16051bc6bcb0bb217ba8a0254f3532c2fa3d1246 | 51 | untagged; author/institution/country placeholders |
+
+### Experimental, Writing and Figure Repair
+
+Immediate experimental priorities:
+
+1. Keep all current E-F results explicitly exploratory; do not retrofit
+   confirmation or Holm wording.
+2. Finish VG/ensemble only to close the immutable ledger, without adapting the
+   claim or next design to visible outcomes.
+3. Use an untouched temporal/external test with a sealed test-once evaluator.
+4. Increase seeds and add split/category resampling; preregister paired primary
+   inference, exact sensitivity, multiplicity and minimum effects.
+5. Separate frequency zero, positive-frequency tail, mid and head before data
+   access and create an item-held-out temporal cold-start split.
+6. Add sequence-only, EASE-only, original two-score fusion, matched ensemble,
+   learned stacking/calibration, equal-weight, frequency-only and closest
+   published comparators.
+7. Require a clean, immutable source/config/data/cache/checkpoint/environment
+   bundle and a no-extras artifact inventory.
+
+Current audit-safe wording while VG remains incomplete (do not integrate it
+into the manuscript yet):
+
+> On repeatedly exposed fixed splits, late EASE score fusion increased mean
+> NDCG@10 across five MI seeds, five IS seeds and the currently complete VG
+> seeds. Weighted gains were predominantly head-target contributed. These are
+> exploratory optimizer-seed replications, not untouched-test confirmation.
+
+Do not print the partial VG p-value in the abstract, call the small tail point
+material, or use broad/tail/cold/general/SOTA wording.
+
+Required displays:
+
+- paired seed slopes and forest intervals for each category and bucket;
+- a 100% stacked improved/worsened/unchanged-user panel;
+- l2-by-w validation heatmaps with runner-up gaps and boundary/tie markers;
+- a category-by-frequency table separating zero from 1-5;
+- a cumulative test-access staircase by experiment, epoch and system;
+- accuracy/latency/peak-RAM/energy frontiers for cached factorization,
+  streaming exact evaluation and any approximation;
+- an ablation table with no-fusion, matched ensemble, internal zfusion and
+  frequency-only controls; and
+- a provenance table linking every cell to immutable hashes and adjudication.
+
+### Open Questions and Author Verification
+
+1. Was the already-loaded E-G waiter stopped before its old test block ran?
+2. What untouched temporal/external holdout can support confirmation?
+3. Why do all three current category effects derive 95.6%-99.9% from head
+   targets, and what manuscript claim survives that decomposition?
+4. Will VG24-25, ensemble and adjudication be archived without outcome-driven
+   design changes?
+5. Why is the selected VG l2 at the lower grid boundary in every eligible seed?
+6. Why is B_cache unused and why is the selected matrix inverted again?
+7. What uncertainty source supports claims beyond optimizer randomness?
+8. Who verifies author order, affiliations, ORCIDs, funding, conflicts, ethics,
+   automation disclosure, data licenses and redistribution rights?
+
+### Running Submission Checklist
+
+- [x] Freeze Git/filesystem/log-prefix cutoff.
+- [x] Reconcile five MI, five IS and three VG complete fusion packages.
+- [x] Recompute partial VG paired statistics and exact-sign limit.
+- [x] Decompose VG by target popularity and changed-user coverage.
+- [x] Verify VG grids, argmax, sidecars, checkpoints and hashes.
+- [x] Bound test exposure at 229 passes / 255 headline outcomes.
+- [x] Audit EASE inversion/runtime/memory waste.
+- [x] Verify E-G remains wait-only and source/protocol are unchanged.
+- [x] Audit adjudicator and ensemble readiness.
+- [x] Confirm no manuscript/public/release/PDF delta.
+- [x] Apply PDF hash-stability and carry the prior visual inspection.
+- [ ] Stop/restart E-G with validation-only Stage 1 and a fail-closed gate.
+- [ ] Complete VG24-25 and ensemble only as exploratory evidence.
+- [ ] Run strengthened no-extras adjudication and archive immutable hashes.
+- [ ] Create an untouched, sealed test-once confirmation.
+- [ ] Add seeds and split/category uncertainty.
+- [ ] Separate zero exposure from positive-frequency tail.
+- [ ] Cache EASE factors/matrices and eliminate repeated inversions.
+- [ ] Stream or memory-map ensemble/E-G scoring.
+- [ ] Add matched baselines and a no-fusion candidate.
+- [ ] Reconcile E-A and every manuscript/public claim surface.
+- [ ] Extend release inventory to all evidence inputs/outputs.
+- [ ] Resolve author, venue, accessibility, ethics and legal metadata.
+
+### Files Changed by This Audit
+
+- PAPER_REVIEW_AUDIT.md: added this cutoff-safe review and refreshed the current
+  rejection-risk list.
+- No manuscript, source, experiment, result, checkpoint, status, log,
+  bibliography, figure, table, release or PDF artifact was edited.
+- No temporary PDF render tree was created because all PDF hashes were
+  unchanged from the prior complete visual inspection.
+
+## Audit Run - 2026-07-23 02:00 Australia/Sydney
+
+### Review Verdict
+
+**Recommendation: reject / not ready for top-journal submission.** E-F now has
+five complete MI and five complete IS base/fusion pairs. IS is positive in all
+five seeds and its mean fused-minus-sequential NDCG@10 is +0.00260931; MI
+remains +0.00243853. The new IS artifacts reconcile exactly enough to rule out
+ordinary result-file arithmetic corruption.
+
+This is strong descriptive evidence on two fixed splits, not fresh
+confirmation. Those splits are outcome-visible, the frozen E-F evidence proves
+at least 213 test evaluations, VG and the registered ensemble are incomplete,
+and no family adjudication exists. Both category effects are also strongly
+head-target concentrated: 99.903% of MI and 95.574% of IS weighted gain comes
+from head targets. The evidence does not support a broad tail, sparse-item,
+cold-start or equitable-benefit claim.
+
+E-G remains wait-only and has produced no eligible result. Its source and
+protocol were not repaired during the hour. This is an urgent operational
+window: the already-running waiter loaded the old driver into memory, so merely
+editing the file will not prevent its Stage-1 test block. If that experiment is
+still waiting, stop it, make Stage 1 validation-only, and restart it only after
+fail-closed gating.
+
+Status labels:
+
+- **CONFIRMED**: reproduced from cutoff-eligible files, exact prefixes/hashes,
+  source code, calculations, unchanged PDF hashes or primary sources.
+- **PLAUSIBLE RISK**: a supported concern needing new evidence.
+- **AUTHOR VERIFICATION**: not decidable from the workspace.
+- **INCOMPLETE / EXCLUDED**: unfinished evidence not used as a final endpoint.
+- **POST-CUTOFF EXCLUDED**: files or bytes created after the fixed boundary.
+
+### Fixed Snapshot and Eligible Scope
+
+| Item | Audited value |
+|---|---|
+| Heartbeat | 2026-07-22T16:00:15.054Z |
+| Fixed local cutoff | 2026-07-23T02:00:37.4275230+10:00 |
+| Fixed UTC cutoff | 2026-07-22T16:00:37.4275230Z |
+| Branch | codex/bestrec-sota-results |
+| HEAD / upstream / merge base | 0feab9101a6094c9859f1702881a7e7d450d0a52 |
+| Previous audited HEAD | 0feab9101a6094c9859f1702881a7e7d450d0a52 |
+| E-F status | running; done=20; skipped=0; failed=0; elapsed=169.2 minutes |
+| E-F fixed log prefix | 292,596 bytes; SHA-256 bae5e8ea7cd1d9073fcf9c027aba0e064d3662cfbc145fe9682ccedae5de2ff6 |
+| Complete E-F pairs | MI seeds 20260721-20260725; IS seeds 20260721-20260725 |
+| Incomplete E-F evidence | VG seed20260721 checkpoint only |
+| E-G eligible state | 20 wait messages; no status, result, selection, verdict or test |
+| E-G fixed log prefix | 680 bytes; SHA-256 34d0469990a7abe504612eb5d334983b9c06cef33e42d7685966d2f30b2cc3d0 |
+
+There was no new commit. The eligible additions since the prior cutoff are the
+complete IS23-25 artifact sextets, updated live E-F status/log bytes, the
+wait-only E-G prefix and one VG21 checkpoint. The E-F prefix ends immediately
+after the VG21 run marker and contains no logged VG epoch or result. Any later
+VG JSON, sidecar, fusion outcome, E-G launch or log byte is post-cutoff and is
+not used here.
+
+### Exact IS Five-Seed Result
+
+| Seed | Best epoch | Selected l2,w | Seq test | EASE test | Fused test | Fused-seq |
+|---|---:|---|---:|---:|---:|---:|
+| 20260721 | 15 | 500,.04 | .0329924834 | .0257407813 | .0356565736 | +.0026640902 |
+| 20260722 | 11 | 200,.03 | .0337263125 | .0261678453 | .0359415543 | +.0022152418 |
+| 20260723 | 12 | 200,.03 | .0334617717 | .0261678453 | .0356539519 | +.0021921802 |
+| 20260724 | 10 | 100,.05 | .0336006452 | .0262979977 | .0366840894 | +.0030834442 |
+| 20260725 | 17 | 200,.04 | .0332401065 | .0261678453 | .0361317218 | +.0028916152 |
+
+All rows have n_eval=50,985. Checkpoint reconstruction differs from the
+recorded sequential test score by only 2.35e-10 to 5.10e-10. HR@10 and MRR
+increase in every seed:
+
+- HR deltas: +.00425615, +.00207904, +.00296166, +.00423654, +.00390311.
+- MRR deltas: +.00218014, +.00232711, +.00195120, +.00267296, +.00256345.
+
+### Statistical Interpretation
+
+| Quantity | MI | IS |
+|---|---:|---:|
+| Sequential mean | .04155200795 | .03340426386 |
+| Fused mean | .04399053462 | .03601357819 |
+| Mean paired difference | +.00243852667 | +.00260931433 |
+| Difference SD | .00019732847 | .00039899480 |
+| Paired t statistic | t(4)=27.6327 | t(4)=14.6233 |
+| Raw two-sided p | 1.02018e-5 | .000127220 |
+| Nominal 95% interval | [.002193511,.002683542] | [.002113897,.003104732] |
+| Relative mean lift | 5.87% | 7.81% |
+
+If the registered family were exactly the three category tests and its p-values
+were valid, both raw values would remain below the strictest Holm threshold
+.05/3 regardless of VG. That arithmetic is not an adjudication: VG, ensemble
+and the complete integrity inventory are missing, and repeated holdout exposure
+invalidates a strict confirmatory interpretation.
+
+All five signs are positive in each category, but with n=5 the minimum exact
+two-sided sign-flip p-value is 2/32=.0625. The t model covers optimizer-seed
+variation on one split, not users, items, splits, categories or future time.
+
+IS-minus-MI gain is +0.00017079. A descriptive numeric-seed-paired interval is
+[-0.00015009,+0.00049167], p=.214; an unpaired Welch sensitivity gives
+[-0.00031943,+0.00066100], p=.425. Numeric seeds do not create a principled
+cross-category pair, and this contrast was not preregistered. There is no
+evidence that the absolute effect differs by category; IS's larger percentage
+mostly reflects its lower baseline.
+
+### Popularity and User-Level Concentration
+
+| Category/bucket | Users | Mean NDCG delta | Seed-level 95% CI | Share of total gain |
+|---|---:|---:|---:|---:|
+| MI tail | 8,800 | +.00000141 | [-.00011825,+.00012106] | .009% |
+| MI mid | 8,657 | +.00001423 | [-.00032936,+.00035781] | .088% |
+| MI head | 39,982 | +.00349985 | [.00318159,.00381811] | **99.903%** |
+| IS tail | 10,592 | +.00021073 | [.00005630,.00036517] | 1.678% |
+| IS mid | 9,237 | +.00039576 | [-.00002718,.00081869] | 2.748% |
+| IS head | 31,156 | +.00408102 | [.00326307,.00489897] | **95.574%** |
+
+The IS tail point is consistently positive but below the paper's own 0.0005
+materiality scale; the mid interval spans zero. These popularity analyses are
+post-hoc and uncorrected. Their legitimate use is to narrow the claim, not
+create a new confirmatory tail result.
+
+Changed-user coverage is 5.80%-6.38% for MI and 4.37%-5.21% for IS. IS
+positive/negative/unchanged counts are:
+
+| Seed | Positive | Negative | Unchanged |
+|---|---:|---:|---:|
+| 20260721 | 1,298 | 1,155 | 48,532 |
+| 20260722 | 1,213 | 1,071 | 48,701 |
+| 20260723 | 1,207 | 1,023 | 48,755 |
+| 20260724 | 1,450 | 1,208 | 48,327 |
+| 20260725 | 1,329 | 1,119 | 48,537 |
+
+An aggregate gain bar would hide that 94.8%-95.6% of IS users have identical
+NDCG@10 and that most weighted improvement is head-target ranking.
+
+### Artifact Integrity and Selection Fragility
+
+All ten complete MI/IS packages pass the externally reconstructed checks. For
+new IS23-25 specifically:
+
+- NPZ keys are exactly users, seq_ndcg, fused_ndcg and ease_ndcg.
+- IDs are unique, sorted and exactly 0 through 50,984; all values are finite.
+- NPZ means reproduce fusion JSON within 2.46e-10.
+- IDs match the base best-epoch sidecar and sequential NDCG differs by at most
+  2.98e-8.
+- Best/final sidecar counts and embedded hashes reconcile.
+- Configs match every frozen reference key; data/cache hashes match physical
+  files; trainer SHA remains 187ba732f5d7810ee4feace5c3e0579c95874132d32effacb8eab676b54c2c9d.
+- Every IS report contains the frozen 4-by-8 grid and selects its true
+  validation argmax.
+
+New NPZ SHA-256 values:
+
+- IS23 94815f346ba128592e08fcd9e434990fd3aa08cc7f409ec8aa8316e58540097e
+- IS24 79bb3e6bc322d6903e51f722cfed9d7862bcd4e87af08cbafa18c819d7ead23d
+- IS25 6e36e16c857e7fa1dcdd13b60ed86bb61f031e4e1b86c83948f57d76ce47740c
+
+New checkpoint SHA-256 values:
+
+- IS23 5f6f42b04949e9b4375690ce455d7ea5c2e96b4e208539c8f752e2ef73f44fce
+- IS24 1c7a58b1869dad9c67ee5ce1ef32c6d90f6a37fe6eacd4e68200b5d4e6e861a4
+- IS25 a0cb0556490b8b5ef81f3619f53f7641b33e1ae234f0b947528a743f3ced5c03
+
+New fusion-JSON SHA-256 values:
+
+- IS23 38dcd46b6241ba32248e2183c5e1362a81d47a7b6153440d7b17561c7bcf4c3a
+- IS24 674ac1b30b9d684c7dfba5cf21c42f87500203a15bce783b0994f4e58130ec80
+- IS25 9fb9dc05fb534df6b01b961f64d23595df5177706354767c8f3796ff1158eab3
+
+Best-versus-runner-up validation gaps are .00010645, .00004625,
+.000000998, .00007946 and .00001218. IS23 is effectively tied; selected l2
+spans 100-500 and w spans .03-.05. Publish heatmaps and a preregistered tie
+tolerance. Do not interpret the selected hyperparameters mechanistically.
+
+Passing arithmetic checks do not repair provenance. Every base says
+git_dirty_tracked=true; all IS packages are working-tree artifacts absent from
+eligible HEAD. Fusion reports omit code, checkpoint, data, NPZ, commit and
+environment hashes. Checkpoints store only model state, epoch, validation score
+and prototype assignment, without config, source/data/environment, optimizer/
+RNG state or a self-hash.
+
+### Test Exposure, VG Partial State and Runtime
+
+The frozen prefix contains:
+
+- 200 base epoch-level test evaluations, 20 for each completed MI/IS base;
+- ten fusion test evaluations, which print 30 system-level TEST lines;
+- 50 EASE inversions; and
+- no logged failure.
+
+The eligible VG21 checkpoint has mtime 01:58:52.732, SHA-256
+4a0461de541795446d349fb8274af2a5dba4bc166077c2e411a3b8f54bc5a2a2,
+epoch 30 and validation NDCG .07590598676. The trainer evaluates every ten
+epochs and writes the checkpoint after evaluation, proving at least three more
+test passes even though their log lines had not entered the fixed prefix.
+Therefore the exact cutoff-safe lower bound is **213 test evaluations**.
+
+VG21 remains an incomplete mutable checkpoint, not a final selected endpoint.
+No base JSON, final/best sidecar or fusion JSON was eligible. Do not infer its
+test score, later best epoch or eventual sign.
+
+The 50 EASE inversions consumed about 3,389.6 seconds, 56.49 minutes or one
+third of elapsed campaign time. Only eight category/l2 fits were needed across
+MI and IS, making 42/50 inversions redundant. IS dense intermediates have a
+roughly 17.42-GiB lower bound before factorization workspace.
+
+Repair:
+
+1. Build each category Gram matrix once and bind it to split/item-map hashes.
+2. Cache four category/lambda solutions with content-addressed filenames.
+3. Reuse the selected fit; do not refit at test.
+4. Replace repeated explicit inverse with Cholesky/LDL solves or one reusable
+   symmetric eigendecomposition and report conditioning/residuals.
+5. Report wall time, peak RAM/GPU RAM, I/O and energy beside quality.
+
+### E-G Remains Clean but Requires Process-Level Intervention
+
+The exact E-G prefix contains 20 repetitions of "E-F still running; waiting
+300 s." No E-G status, result, selection, promotion, test or adjudication exists.
+Source and EXPERIMENT_PROGRAM are byte-unchanged, so every E-G defect from the
+01:00 review carries.
+
+The waiting Python process already imported the old driver. Editing
+run_eg_coldfuse_explore.py alone will not affect that process. If it is still
+waiting, the safe action is:
+
+1. Stop the waiter before E-F finishes.
+2. Remove the Stage-1 test block and emit validation/promotion evidence only.
+3. Require an atomic E-F success record with state=complete, failed=0 and the
+   expected 31 completed/skipped jobs, plus an exclusive GPU/process lease.
+4. Validate and hash both MI base JSONs, checkpoints, fusion JSONs, split CSVs,
+   embedding cache and source commit.
+5. Restart only after strict checkpoint loading, finite/schema checks, atomic
+   output and provenance-aware skip-existing checks are implemented.
+
+Current missing, corrupt, aborted, unknown or complete-with-failures E-F status
+can all launch E-G because only literal running blocks; stale running can hang
+forever. This is not a valid execution gate.
+
+All scientific problems also remain:
+
+- no nearest-neighbor search despite the text-kNN name;
+- duplication of the trainer's history-centroid semantic scorer;
+- w_text=0 can promote after EASE re-selection;
+- roughly 116 validation candidates per seed and no nested selection;
+- frequency zero mixed with frequency 1-5;
+- dense U-by-I seq/EASE/text matrices and no promised no-EASE path;
+- different model classes may be selected by different seeds;
+- no exact source/checkpoint/data/NPZ/environment binding; and
+- Stage 2 omits both Beauty splits while claiming all full datasets.
+
+### Novelty Fact-Check Refreshed
+
+There is no new method byte this hour, and the primary-source comparison still
+narrows the contribution:
+
+- [EASE](https://arxiv.org/abs/1905.03375) already establishes the closed-form
+  shallow linear recommender used in E-F.
+- [Fossil](https://arxiv.org/abs/1609.09152) explicitly fuses similarity and
+  sequential dynamics for sparse recommendation.
+- [FISSA](https://csse.szu.edu.cn/staff/panwk/publications/Conference-RecSys-20-FISSA.pdf)
+  fuses item-similarity and self-attention models.
+- [EnsRec](https://arxiv.org/abs/2512.17820) studies simple inference-time
+  ensembling of independently trained ID and text sequential recommenders.
+
+The supportable novelty claim is an empirical evaluation of EASE/sequential
+score fusion and, if repaired, a frequency-conditioned three-score combination.
+It is not the invention of similarity-sequential fusion, semantic profiling,
+ID/text ensembling or closed-form collaborative scoring. Fossil, FISSA and
+EnsRec remain absent from the bibliography.
+
+### Manuscript, Release, Public and PDF Delta
+
+No manuscript, TeX, bibliography, table, figure, PDF, public artifact or release
+manifest byte changed. E-F/E-G staying outside the paper is correct while VG,
+ensemble and adjudication are incomplete. Every E-A contradiction remains:
+completed versus queued, independent Welch versus paired design, unsupported
+"weight decay changed nothing" wording, missing capacity placebo and no
+coherent integration into abstract/introduction/table/conclusion.
+
+HEAD manifest verification still passes 138 entries only by omitting most
+E-A/E-F/E-G protocols, code, checkpoints, sidecars, arrays and adjudications.
+Verification against v1.1.11 still fails 17 entries. The release is not a
+closed evidence package.
+
+The PDF skill's hash-stability rule found all three PDFs byte-identical to the
+prior full visual inspection, so no redundant render tree was created:
+
+| PDF | SHA-256 | Pages | Carried blocker |
+|---|---|---:|---|
+| PAPER_SUBMISSION.pdf | 214d4682872ede8eb42d3fa72197ceec5195b6dbbdce824deac856a1e9791e7f | 57 | author placeholder; no bookmarks; mostly blank p.57 |
+| paper_tex/PAPER_TORS.pdf | 5ef68536dd84c008c0311dc013df16ba5c5fcd4da8f050be84155c2cdaf6681f | 50 | untagged; placeholder headers; E-A paragraph split pp.20-21; mostly blank p.50 |
+| paper_tex/PAPER_TORS_acmsmall.pdf | 15f75cfd17c419096f7ea61c16051bc6bcb0bb217ba8a0254f3532c2fa3d1246 | 51 | untagged; author/institution/country placeholders |
+
+### Experimental, Writing and Figure Repair
+
+Immediate experimental priorities:
+
+1. Preserve current E-F only as exploratory evidence; do not retrofit a
+   confirmatory label.
+2. Finish VG/ensemble only to close the exploratory ledger and do not inspect
+   them while redesigning the next study.
+3. Use a genuinely untouched temporal or external test through a sealed
+   one-shot evaluator.
+4. Increase seeds and add split/category resampling; define paired primary
+   inference, exact sensitivity, multiplicity and a minimum effect prospectively.
+5. Separate frequency zero, positive-frequency tail, mid and head before any
+   data access; create an item-held-out temporal split for cold-start.
+6. Add sequence-only, EASE-only, text-profile-only, original two-score fusion,
+   same-weight no-text, equal three-way, learned stacking, frequency-only,
+   shuffled/permuted-text and closest-published baselines.
+7. Freeze source/config/data/cache/checkpoint/environment hashes and require a
+   no-extras, content-addressed artifact inventory.
+
+Recommended E-F wording:
+
+> Across five optimization seeds on each of two previously exposed fixed
+> splits, score fusion increased mean NDCG@10 by +0.002439 on MI and +0.002609
+> on IS. Weighted gains were predominantly head-target contributed (99.903%
+> and 95.574%). These are exploratory fixed-split replications, not fresh-test
+> confirmation.
+
+Do not lead with nominal p-values, call the IS tail point confirmatory, or use
+tail/cold/general/SOTA wording.
+
+Required result displays:
+
+- paired seed slopes plus forest intervals for MI/IS and overall/tail/mid/head;
+- a 100% stacked improved/worsened/unchanged-user panel;
+- validation l2-by-w heatmaps with runner-up gaps and a tie band;
+- a category-by-target-frequency count table separating zero from 1-5;
+- a cumulative test-access ledger by experiment and system;
+- accuracy/latency/peak-RAM/energy frontiers for cached factorization,
+  streaming exact evaluation and any ANN approximation;
+- an ablation table including internal zfusion and same-weight no-text controls;
+  and
+- a provenance table linking every reported cell to content hashes and its
+  adjudication decision.
+
+For E-G, replace text-kNN with "history-centroid semantic scorer" unless actual
+neighbors are implemented. Remove "training-free," "every catalog" and
+"confirmatory" unless the implementation and evidence support them.
+
+### Open Questions and Author Verification
+
+1. Was the already-loaded E-G waiter stopped before its old test block could run?
+2. Which untouched temporal/external holdout will support confirmation?
+3. Is the target aggregate accuracy, sparse warm-item ranking, new-item
+   cold-start or user cold-start?
+4. Why should a 95%-99.9% head-contributed gain support the paper's stated
+   mechanism or audience value?
+5. What single E-G algorithm/meta-selection rule would be carried across seeds?
+6. What uncertainty source supports claims beyond optimizer randomness on one
+   fixed split?
+7. Why are checkpoints mutable and unbound to source/config/data/environment?
+8. Who verifies author order, affiliations, ORCIDs, funding, conflicts, ethics,
+   automation disclosure, data licenses and redistribution rights?
+
+### Running Submission Checklist
+
+- [x] Freeze Git/filesystem/log-prefix cutoff.
+- [x] Reconcile five MI and five IS E-F artifact packages.
+- [x] Recompute MI/IS paired inference and exact-sign sensitivity.
+- [x] Decompose both categories by popularity and changed-user coverage.
+- [x] Verify all IS grids select their true validation argmax.
+- [x] Bound test exposure at 213 and isolate VG21 as partial evidence.
+- [x] Verify E-G is wait-only and its source/protocol are unchanged.
+- [x] Refresh primary-source novelty comparison.
+- [x] Confirm no manuscript/public/release/PDF delta.
+- [x] Apply PDF hash-stability rule and carry prior visual inspection.
+- [ ] Stop/restart the loaded E-G waiter with a validation-only driver.
+- [ ] Complete VG and ensemble only as exploratory evidence.
+- [ ] Run full no-extras adjudication and archive immutable hashes.
+- [ ] Create an untouched, sealed test-once confirmation.
+- [ ] Add seeds and split/category uncertainty with prospective multiplicity.
+- [ ] Separate zero exposure from positive-frequency tail.
+- [ ] Cache EASE fits and replace repeated inversions with stable solves.
+- [ ] Stream E-G scoring/ranking or validate ANN recall and resource tradeoffs.
+- [ ] Add a real no-EASE path or remove unsupported categories.
+- [ ] Reconcile E-A and all manuscript/public claim surfaces.
+- [ ] Extend release inventory to every evidence input/output.
+- [ ] Resolve author, venue, accessibility, ethics and legal metadata.
+
+### Files Changed by This Audit
+
+- PAPER_REVIEW_AUDIT.md: added this cutoff-safe review and refreshed the current
+  rejection-risk list.
+- No manuscript, source, experiment, result, checkpoint, status, log,
+  bibliography, figure, table, release or PDF artifact was edited.
+- No temporary PDF render tree was created because all PDF hashes were identical
+  to the prior complete visual inspection.
+
+## Audit Run - 2026-07-23 01:00 Australia/Sydney
+
+### Review Verdict
+
+**Recommendation: reject / not ready for top-journal submission.** The main new
+scientific fact is encouraging but narrow: all five registered MI E-F seed pairs
+now show a positive fused-minus-sequential NDCG@10 difference. Exact result and
+per-user artifacts reconcile, and the five-seed mean is +0.00243853. Within this
+fixed outcome-visible split, the signal is stable.
+
+It is not fresh confirmation. MI is the same test split used repeatedly during
+R+ development and during E-F training; at least 148 E-F test passes had occurred
+by this cutoff. The registered IS/VG family is incomplete and no adjudication
+exists. More importantly for interpretation, 99.903% of the MI gain is
+head-item contributed: tail and mid effects are essentially zero. The current
+result supports only a predominantly head-target accuracy improvement on one
+reused dataset split.
+
+Commit 0feab910 adds a proposed E-G cold/sparse text-fusion experiment while E-F
+is still running. At the cutoff, E-G has produced no result and has not evaluated
+test; its log contains only wait messages. That clean boundary matters because
+the committed E-G script is poised to expose four MI test systems per seed
+before proposing a later "confirmatory" study on the same split. It should be
+changed to validation-only development before it runs.
+
+E-G also has material method and implementation defects. It is called text-kNN
+but performs no k-nearest-neighbor operation; the dense content-profile formula
+already exists in the trainer. Its promotion can pass with zero text weight, its
+tail bin conflates true zero exposure with frequency 1-5, and its dense U-by-I
+matrices make the "scales to every catalog" statement false by hundreds of
+gigabytes on larger categories.
+
+Status labels:
+
+- **CONFIRMED**: reproduced from cutoff-eligible files, exact prefixes/hashes,
+  source code, Git objects, calculations, unchanged PDF hashes or primary
+  sources.
+- **PLAUSIBLE RISK**: a supported concern needing new evidence.
+- **AUTHOR VERIFICATION**: not decidable from the workspace.
+- **INCOMPLETE / EXCLUDED**: unfinished evidence not used as a final endpoint.
+- **POST-CUTOFF EXCLUDED**: files or bytes created after the fixed boundary.
+
+### Fixed Snapshot and Eligible Scope
+
+| Item | Audited value |
+|---|---|
+| Heartbeat | 2026-07-22T15:00:14.444Z |
+| Fixed local cutoff | 2026-07-23T01:00:42.1692850+10:00 |
+| Fixed UTC cutoff | 2026-07-22T15:00:42.1692850Z |
+| Branch | codex/bestrec-sota-results |
+| HEAD / upstream / merge base | 0feab9101a6094c9859f1702881a7e7d450d0a52 |
+| Previous audited HEAD | de364eaee0ef89ba4b481c826032dffb2c64b173 |
+| E-F status | running; done=14; skipped=0; failed=0; elapsed=116.6 minutes |
+| E-F fixed log prefix | 210,260 bytes; SHA-256 4e5d3e45c5f1573e6265590af2277054481a489e779438652677583dffb22c22 |
+| Complete E-F pairs | MI seeds 20260721-20260725; IS seeds 20260721-20260722 |
+| Incomplete E-F evidence | IS seed 20260723 checkpoint only |
+| E-G eligible state | wait-only; no status, result, selection or test outcome |
+| E-G fixed log prefix | 272 bytes; SHA-256 626fb6178eaa7e20ac82d6c253b8a6748099c0526a3f08b303e535f544d1c869 |
+
+The E-G prefix contains exactly eight repetitions of "E-F still running;
+waiting 300 s." No post-cutoff E-F endpoint, IS23 checkpoint content, E-G result
+or E-G test output is used. The mutable IS23 checkpoint was overwritten after
+the cutoff; its exact cutoff epoch and SHA can no longer be recovered from the
+workspace. This itself demonstrates why mutable checkpoint paths are inadequate
+for synchronized review.
+
+### Commit 0feab910: Mixed-Time Delta
+
+Relative to de364eae, commit 0feab910 changes exactly 24 paths with 16,487
+insertions and one deletion. It:
+
+- adds fuse_cold_eval.py and run_eg_coldfuse_explore.py;
+- adds the E-G work-program entry;
+- commits four complete MI E-F base/fusion packages for seeds 21-24;
+- commits the MI25 base/checkpoint but not its later fusion result;
+- replaces the previously committed live MI21 checkpoint with its final
+  validation-selected checkpoint;
+- commits an E-F status snapshot at done=8 and a 148,474-byte live log;
+- captures a mid-edit version of this audit; and
+- does not change any manuscript, TeX, bibliography, table, figure, PDF,
+  public artifact or release manifest.
+
+The commit was created at 00:21:21+10 while MI25 fusion was running and after
+four MI fusion test outcomes were visible. The working cutoff status later says
+done=14. The five MI checkpoints in the commit occupy about 453.6 MiB, and the
+MI25 fusion/sidecars used below are not reproducible from the commit alone.
+This is another non-atomic repository snapshot, not a closed evidence package.
+Large checkpoints should live in a content-addressed store, Git LFS or release
+assets after run closure, not be repeatedly replaced in ordinary Git history.
+
+### E-F Exact Cutoff-Eligible Results
+
+Seven complete base-plus-fusion pairs are eligible:
+
+| Category | Seed | Best epoch | Selected l2,w | Seq test | EASE test | Fused test | Fused-seq |
+|---|---:|---:|---|---:|---:|---:|---:|
+| MI | 20260721 | 15 | 100,.04 | .0414347133 | .0322105209 | .0439155284 | +.0024808152 |
+| MI | 20260722 | 14 | 200,.03 | .0417794281 | .0321263521 | .0438970882 | +.0021176601 |
+| MI | 20260723 | 14 | 100,.03 | .0419710956 | .0322105209 | .0443730524 | +.0024019568 |
+| MI | 20260724 | 14 | 200,.03 | .0415603471 | .0321263521 | .0441538079 | +.0025934608 |
+| MI | 20260725 | 12 | 50,.03 | .0410144556 | .0318098001 | .0436131961 | +.0025987405 |
+| IS | 20260721 | 15 | 500,.04 | .0329924834 | .0257407813 | .0356565736 | +.0026640902 |
+| IS | 20260722 | 11 | 200,.03 | .0337263125 | .0261678453 | .0359415543 | +.0022152418 |
+
+All MI rows have n_eval=57,439 and IS rows n_eval=50,985. Checkpoint
+reconstruction differs from recorded base best-test NDCG by only
+3.45e-10 to 6.57e-10. MI HR@10 and MRR improve in every seed; mean deltas
+are +0.00351329 and +0.00208991 respectively.
+
+### MI Five-Seed Inference: Numerically Strong, Scientifically Narrow
+
+The registered paired MI arithmetic is:
+
+| Quantity | Value |
+|---|---:|
+| Sequential mean NDCG@10 | 0.04155200795 |
+| Fused mean NDCG@10 | 0.04399053462 |
+| Mean paired difference | +0.00243852667 |
+| Difference SD / SE | 0.00019732847 / 0.00008824797 |
+| Paired t statistic | t(4)=27.6327 |
+| Nominal two-sided p | 1.02018e-5 |
+| Nominal 95% t interval | [+0.00219351102,+0.00268354232] |
+| Relative mean lift | 5.87% |
+
+This raw parametric p would fall below any threshold in a three-test Holm
+family, and the interval lies above the registered +0.0005 margin. It is still
+premature to issue W-H-POS:
+
+- IS seeds 23-25 and all five VG pairs are absent;
+- the registered ensemble is absent;
+- no adjudication artifact exists; and
+- the implemented adjudicator does not enforce the full provenance/inventory
+  requirements described below.
+
+The t test estimates variability across five optimization seeds on one fixed
+dataset split. It does not sample users, items, splits, categories or future
+data. Five seeds cannot diagnose normality. All five signs are positive, but an
+exact two-sided sign-flip test has minimum attainable p=2/32=.0625. Report the
+parametric result transparently, add an exact sensitivity, increase seeds and
+avoid implying population/dataset generalization.
+
+IS has only two complete pairs. Its mean delta is +0.00243966598, nominal
+t(1)=10.8708, p=.0584, with interval
+[-0.000411914,+0.005291246]. It is descriptive partial evidence, not an IS
+finding.
+
+### Confirmed E-F Head Concentration
+
+The five-seed MI popularity decomposition is:
+
+| Target bucket | Users | Mean NDCG delta | Seed-level 95% CI | Weighted contribution |
+|---|---:|---:|---:|---:|
+| Tail | 8,800 | +0.00000141 | [-0.00011825,+0.00012106] | +0.000000216 |
+| Mid | 8,657 | +0.00001423 | [-0.00032936,+0.00035781] | +0.000002144 |
+| Head | 39,982 | +0.00349985 | [+0.00318159,+0.00381811] | +0.002436167 |
+
+Head targets account for 99.903% of the overall lift. Tail and mid are
+indistinguishable from zero at this precision. This analysis is post-hoc because
+E-F did not preregister popularity endpoints, but it is essential scope evidence.
+The hybrid is not currently a tail, sparse-item, cold-start or broadly
+distributed improvement.
+
+Per-user changes are also sparse. MI changed-user fractions are 6.38%, 5.88%,
+5.95%, 5.97% and 5.80%; IS is 4.81% and 4.48%. Across MI seeds, roughly
+1,755-1,916 users improve and 1,512-1,748 worsen while more than 53,700 are
+exactly unchanged. A single aggregate bar would conceal both concentration
+dimensions.
+
+### E-F Integrity Checks That Passed
+
+For all seven complete pairs:
+
+- NPZ keys are exactly users, seq_ndcg, fused_ndcg and ease_ndcg.
+- User IDs are unique, sorted and exactly 0 through n_eval-1.
+- Every value is finite.
+- NPZ means reproduce fusion JSON within 3.35e-10.
+- User IDs exactly match base best-epoch sidecars.
+- Sequential per-user NDCG matches the base sidecar within 2.98e-8.
+- Best/final sidecar row counts and embedded hashes reconcile.
+- Every fusion report contains the exact four-lambda by eight-weight grid, and
+  the selected pair is its global validation argmax.
+- All base configs match every frozen reference key; seeds, checkpoint saving,
+  FIR-off state, split hashes and text-cache hashes are correct.
+- Trainer SHA is constant at 187ba732... across eligible bases.
+
+NPZ SHA-256 values:
+
+- MI21 f86de2b49bb41f00dede42d813a2f85c1e0f041dc3a990837b1d83b1c4cdd77c
+- MI22 6247d56ea11995434f22e95bc95ae659e505c2f3a67ef114961318680c399a44
+- MI23 ce4de6346b22355b14af2d4fb5a216e64cfbaf076a71b38f4f3990d4c2faa95b
+- MI24 b3bfdfc9fc9fa2a74f8d61435da2d929c255001298d392f1fd9efd255f44389b
+- MI25 3294e5809590dbc1dd2050f0bea775e5a41f11b036cb1047d2b3b62636cf5a06
+- IS21 32a537dda7fd919c9bbc35f656f703b49bea5d6c541bad48d2279e824db634d0
+- IS22 65ff874e5b6a21bceb3fb07418c571d6e042309f6fe4ac5dbfd9423073830001
+
+These hashes are not embedded in fusion JSON or checked by adjudication.
+Validation runner-up gaps are extremely small: 0.0000121 to 0.0001064. Lambda
+selection spans both grid boundaries 50 and 500; weight is more stable at .03
+or .04. Publish validation heatmaps and predefine a tie/sensitivity rule. A
+future untouched study should include w=0 so validation may choose no fusion.
+
+### Confirmed E-F Test Exposure and Provenance Failure
+
+The fixed prefix contains exactly 140 base epoch-level test evaluations, seven
+fusion test passes and 35 EASE inversions. The existence of the cutoff IS23
+checkpoint proves at least one additional test evaluation because the trainer
+saves it only after evaluation. The cutoff lower bound is therefore 148 test
+passes. The full registered design still implies roughly 236.
+
+The preregistration itself acknowledges that R+ design followed many probes on
+the same MI test split. Fresh random initializations do not restore test
+independence. Adaptive holdout reuse can bias apparently stable findings; see
+[Generalization in Adaptive Data Analysis and Holdout Reuse](https://arxiv.org/abs/1506.02629)
+and
+[Preserving Statistical Validity in Adaptive Data Analysis](https://arxiv.org/abs/1411.2664).
+Current E-F should be described as a fresh-seed replication on a previously
+exposed fixed split.
+
+Every base result says git_dirty_tracked=true. MI bases name de364eae; IS bases
+name 0feab910 even though the E-F source did not change. Fusion reports contain
+no commit, source, checkpoint, data, NPZ or environment hashes. Each checkpoint
+stores only state_dict, epoch, val_NDCG10 and proto_assign; no config, source,
+data, environment, optimizer/RNG state or self-hash is bound.
+
+The adjudicator remains fail-open in important ways. It does not require exact
+complete grids/argmax, checkpoints, NPZs, sidecars, finite schemas, full two-way
+config equality, exact checkpoint epoch/content, launch commit/source/data
+provenance, a mandatory ensemble or a no-extras artifact inventory. The eligible
+rows satisfy the checks it happens to implement, but those checks are too weak
+for submission evidence.
+
+### E-F Algorithm and Runtime Delta
+
+The seven completed pairs performed 35 dense inversions consuming about 38.34
+minutes. Only eight distinct category/lambda matrices were scientifically
+needed: four for MI and four for IS. Twenty-seven inversions were redundant
+because each category/lambda EASE fit is independent of sequential seed, and the
+selected fit was needlessly recomputed.
+
+Lower-bound dense intermediates are about 15.76 GiB for MI and 17.42 GiB for
+IS before factorization workspace. Required repair:
+
+1. Build X and X-transpose-X once per category and bind them to split/item-map
+   hashes.
+2. Cache each category/lambda solution with a content-addressed filename.
+3. Reuse the selected solution rather than refitting.
+4. Use Cholesky/LDL solves or one symmetric eigendecomposition across lambdas,
+   not repeated explicit inverse.
+5. Record conditioning, residuals, finite checks, peak CPU/GPU RAM, time, I/O
+   and energy.
+6. Validate sparse/top-k approximations prospectively for larger catalogs.
+
+### E-G Cutoff State: No Result Yet
+
+E-G is explicitly labeled exploratory and non-claim-bearing in
+EXPERIMENT_PROGRAM. At this cutoff, that label is accurate: the driver has not
+left its E-F wait loop. No selection, performance number, promotion decision,
+test evaluation, preregistration or adjudication exists. Any artifact appearing
+later is post-cutoff.
+
+Source inspection also confirms one positive: target bins use training
+frequency only; model/text/EASE hyperparameters are selected on validation;
+parameters are fixed before the test block; and the promotion driver reads only
+validation fields. No direct test-label leakage exists in the selection code.
+The problems below concern imminent outcome exposure, estimand validity,
+method attribution, scale and evidence binding.
+
+### Confirmed E-G Problem 1: Stage 1 Will Contaminate Stage 2
+
+fuse_cold_eval.py lines 265-301 evaluates four MI test systems for each seed:
+sequential only, E-F fused2, selected-global fused3 and selected-binned fused3.
+The program then proposes PREREG_COLDFUSE_V1 on MI and calls that later stage
+confirmatory. "Test evaluated once per reported system" means four exposed
+systems per seed, not one sealed study-level reveal.
+
+The mechanical promotion driver reads validation only, but authors, logs and
+artifacts will expose test before Stage 2 design. Since E-G has not run, the
+cleanest repair remains available:
+
+1. Delete or disable the Stage-1 test block.
+2. Write only validation sweeps, selected configuration and promotion evidence.
+3. Freeze a single Stage-2 algorithm and adjudicator without seeing any E-G test.
+4. Use a genuinely untouched temporal/external test for confirmation.
+
+If Stage 1 test is allowed to run, any later same-split MI study must be labeled
+outcome-visible replication, regardless of fresh optimizer seeds.
+
+### Confirmed E-G Problem 2: It Is Not kNN and Is Not a New Scorer Principle
+
+text_z_matrix averages all input-history MiniLM vectors, optionally with
+exp-0.9 recency weights, then densely dots that centroid against every item.
+There is no k, neighbor retrieval, neighbor aggregation or ANN index. The
+accurate name is history-centroid semantic scorer or all-history content-profile
+similarity.
+
+The same core formula already exists in run_sasrec_sbert.py lines 1547-1575:
+the zfusion evaluation comparator creates a mean unit-text history profile,
+scores all items by cosine/dot product and z-normalizes it for late fusion.
+E-G adds EASE and train-frequency-conditioned weights, but does not introduce
+content profiling. Rename the method and run a byte-/metric-level equivalence
+test against the internal comparator.
+
+The sequential base already consumes the same MiniLM cache. E-G is therefore a
+second scoring view of an existing modality, not the introduction of text into
+an ID-only system. Attribution needs text-only, seq+text without EASE,
+EASE+text, global-versus-binned, uniform-versus-recency, same-last-50 versus
+full-history, frequency-bias-only, shuffled-text/random-feature and ID-only-base
+controls.
+
+### Confirmed E-G Problem 3: Promotion Can Succeed Without Text
+
+Each MI seed searches 60 global configurations:
+
+- two profiles;
+- five EASE weights; and
+- six text weights.
+
+It then searches 56 monotone binned text-weight triples, 116 selected candidates
+per seed in total. The promotion driver accepts either the global or binned
+winner independently in each seed, so the two seeds can pass with different
+model classes and hyperparameters. There is no single algorithm to carry into
+Stage 2.
+
+More seriously, w_text=0 is in the grid while w_EASE is reselected. A changed
+EASE weight with no text contribution can improve tail validation and satisfy
+the "text" promotion rule. Required repair:
+
+- freeze the original E-F EASE weight or compare every candidate with a matched
+  no-text system at the same EASE weight;
+- require a strictly positive incremental text effect;
+- predefine one architecture/meta-selection rule shared across seeds;
+- use nested development/promotion data or cross-fitting; and
+- require seed-level uncertainty bounds, not point estimates.
+
+The current noninferiority and tail gates are point estimates with no
+uncertainty or multiplicity. Both seeds share the same validation targets.
+On MI, validation tail n=7,644 and +0.0005 equals only 3.822 total discounted
+gain units, roughly four rank-1 hits. A future decision should use an
+intersection-union rule: lower bound for overall difference above the negative
+margin and lower bound for the prespecified sparse/cold benefit above its
+minimum effect, with the category/endpoint family declared.
+
+### Confirmed E-G Problem 4: The Cold Estimand Is Conflated
+
+E-G defines tail as train frequency <=5. On MI:
+
+| Evaluation split | Frequency-zero targets | Combined <=5 targets | Total |
+|---|---:|---:|---:|
+| Validation | 62 | 7,644 | 57,439 |
+| Test | 106 | 8,693 | 57,439 |
+
+Only 31 catalog items have zero training frequency. Nearly all "tail" evidence
+therefore concerns sparse warm items with one to five interactions, not true
+unseen-item retrieval. The paper's repaired TFV2 analysis deliberately
+separated zero exposure from positive-frequency tail; E-G regresses to the
+previously rejected mixture.
+
+The five-core filter is also applied before leave-last-out, so the catalog is
+transductively future-filtered rather than a strict production new-item split.
+Use "sparse-item tail" for frequency 1-5, report frequency zero separately with
+hit counts/MRR/HR@100, and create an item-held-out temporal cold-start split for
+any genuine cold-start claim. Empty-user histories generate a zero profile, so
+this method does not solve user cold-start.
+
+### Confirmed E-G Problem 5: "Scales to Every Catalog" Is False
+
+text_z_matrix allocates a full float32 U-by-I score matrix. Imported
+seq_z_matrix and ease_z_matrix do the same; rank_by_bin only chunks an already
+materialized matrix. Exact one-matrix footprints from the canonical category
+counts are:
+
+| Category | One float32 U-by-I matrix |
+|---|---:|
+| MI | 5.26 GiB |
+| IS | 4.91 GiB |
+| VG | 9.04 GiB |
+| Office | 64.51 GiB |
+| CDs | 41.24 GiB |
+| Beauty | 564.37 GiB |
+
+MI retains at least seq, EASE and text matrices, 15.78 GiB, before base/F
+temporaries; practical peak can exceed 25 GiB. Office text-only would exceed
+129 GiB for two scorers, and Beauty exceeds 1.1 TiB. E-G avoids an item-item
+text inversion, but it is not catalog-scalable.
+
+The current source also unconditionally:
+
+- loads a fusion JSON;
+- requires selected EASE lambda and weight; and
+- computes dense EASE.
+
+There is no executable Office/CDs seq+text no-EASE path, despite the Stage-2
+promise. Implement and test --no-ease before naming those categories.
+
+Exact algorithm repair:
+
+1. Stream bounded user and candidate blocks; never materialize U-by-I.
+2. In pass one, compute per-user scorer means/variances. Text moments can be
+   derived from global embedding moments/covariance.
+3. In pass two, compute target scores and strictly-better counts for every
+   prespecified configuration in vectorized bounded chunks.
+4. Cache normalized embeddings, frequency maps and EASE fits by source/data
+   hash.
+5. For approximate serving, build a FAISS/HNSW text index, union text and
+   seq/EASE top-k candidates, rerank exactly and report candidate recall plus
+   quality-memory-latency tradeoffs.
+
+If actual kNN/ANN is implemented, preregister k, index, search parameters,
+candidate-union size and approximation-recall gates. Otherwise remove kNN from
+the name.
+
+### Confirmed E-G Problem 6: Driver and Provenance Fail Open
+
+- Missing, corrupt, aborted or unknown E-F status is treated as GPU-free; only
+  the literal "running" state blocks launch.
+- The driver validates only base JSON existence, not fusion JSON, checkpoint,
+  cache, split or source bundle.
+- Skip-if-JSON-exists ignores missing/corrupt NPZ and mismatched content.
+- There is no OS/GPU lease, structured preflight, exact upstream success token
+  or expected completed-job count.
+- Status/verdict and output JSON/NPZ writes are non-atomic.
+- Checkpoint loading uses strict=False and does not reject or record missing/
+  unexpected keys.
+- The report omits resolved argv/config, commit, source, checkpoint, split,
+  text-cache, dependency/device and NPZ hashes.
+- The NPZ omits target IDs, exact frequency, ranks, HR and component scores.
+- No finite/schema/output-inventory check is enforced.
+- Strictly-greater tie ranking gives every tied item the best tied rank. Add a
+  deterministic benchmark-consistent tie rule and explicit zero-profile checks.
+
+Require an exact verified E-F-complete token with zero failures, an exclusive
+GPU lease, immutable content-addressed inputs, strict state loading, atomic
+temp/fsync/rename writes and an independent reconstruction gate before any run
+is eligible.
+
+### E-G Dataset-Scope and Novelty Fact-Check
+
+The workspace has seven full train splits: All_Beauty,
+Beauty_and_Personal_Care, CDs_and_Vinyl, Industrial_and_Scientific,
+Musical_Instruments, Office_Products and Video_Games. Stage 2 names only MI,
+IS, VG, Office and CDs, while its prose says "all full datasets" and "every
+catalog." Both Beauty categories are omitted; Books has no corresponding full
+split. Freeze an exact dataset inventory and per-category executable mode.
+
+E-G's broad idea is established:
+
+- [Fossil](https://arxiv.org/abs/1609.09152) fuses similarity models with
+  sequential dynamics for sparse recommendation.
+- [FISSA](https://csse.szu.edu.cn/staff/panwk/publications/Conference-RecSys-20-FISSA.pdf)
+  fuses item-similarity models with self-attention.
+- [SimRec](https://arxiv.org/abs/2410.22136) uses item similarity for rare and
+  unseen sequential targets and is already cited by this paper.
+- [RecFormer](https://arxiv.org/abs/2305.13731) and
+  [UniSRec](https://arxiv.org/abs/2206.05941) establish text-based transferable
+  and cold/low-resource sequential recommendation.
+- [EnsRec](https://arxiv.org/abs/2512.17820) directly narrows simple ID/text
+  inference-time score ensembling.
+
+Fossil, FISSA and EnsRec are absent from the current bibliography. E-G should
+be framed as an incremental implementation/empirical evaluation of a
+three-scorer, frequency-conditioned combination. It cannot claim text profiling,
+similarity-sequential fusion, cold-start use of content or late score fusion as
+novel. "Training-free" should be replaced with "no additional task-specific
+scorer fitting": MiniLM is pretrained and the fusion weights are selected.
+
+Minimum matched baselines include sequence only, EASE only, text-profile only,
+the original E-F two-way fusion, fixed equal three-way fusion, global learned
+linear/ridge stacking, frequency-only calibration, FISSA/EnsRec/SimRec-style
+comparators or documented protocol exclusions, and equal-compute ensembles.
+
+### Manuscript, Release, Public and PDF Delta
+
+No manuscript, TeX, bibliography, figure, table or PDF byte changed. E-F and
+E-G remain outside the paper, which is correct while they are incomplete.
+Every previously confirmed E-A contradiction carries forward:
+
+- nonsingular E-A is "queued" in methods but complete in results;
+- the paper uses independent Welch despite matched seed/initialization blocks;
+- "weight decay changed nothing" overstates non-significance;
+- E-A remains absent from abstract, introduction, Table 0, conclusion and a
+  generated evidence table; and
+- causal/FIR-specific wording lacks a parameter-matched placebo.
+
+RELEASE_MANIFEST remains bound to commit 5f330553. Its protocol/result allowlist
+contains no HYBRID or E-G entries, and build_deposit_bundle likewise omits their
+protocols, code, status, checkpoints, results and arrays. HEAD verification
+passes 138 entries only because those surfaces are out of scope; verification
+against v1.1.11-deposit still fails 17 entries. The eligible deposit ZIP has
+zero hybrid artifacts.
+
+The PDF skill's hash-stability check confirms the three PDFs are byte-identical
+to the prior full visual inspection, so no redundant 158-page rerender was
+performed:
+
+| PDF | SHA-256 | Pages | Carried visual finding |
+|---|---|---:|---|
+| PAPER_SUBMISSION.pdf | 214d4682872ede8eb42d3fa72197ceec5195b6dbbdce824deac856a1e9791e7f | 57 | Author placeholder; no bookmarks; mostly blank p.57 |
+| paper_tex/PAPER_TORS.pdf | 5ef68536dd84c008c0311dc013df16ba5c5fcd4da8f050be84155c2cdaf6681f | 50 | Untagged; placeholder running headers; E-A split pp.20-21; mostly blank p.50 |
+| paper_tex/PAPER_TORS_acmsmall.pdf | 15f75cfd17c419096f7ea61c16051bc6bcb0bb217ba8a0254f3532c2fa3d1246 | 51 | Untagged; author/institution/country placeholders |
+
+No clipping, overlap, corrupt glyphs or unreadable figure was previously found.
+The identity/accessibility/page-flow problems remain submission blockers. ACM's
+[official LaTeX best practices](https://authors.acm.org/binaries/content/assets/publications/taps/latex-best_practices-06-may-2020.pdf)
+require semantic structure and text alternatives and distinguish journal
+production from review modes.
+
+### Immediate Experimental and Statistical Repair
+
+1. Keep E-G Stage 1 validation-only; do not execute its current test block.
+2. Mark current E-F MI as a stable exploratory head-item gain on a reused split.
+3. Complete no current family for confirmatory prose; reserve untouched temporal
+   or external tests and use a sealed evaluator.
+4. Increase seed count, predefine paired inference/exact sensitivity and report
+   which population each uncertainty source covers.
+5. Redesign E-G promotion to require incremental text benefit over a matched
+   no-text control at the same EASE weight.
+6. Separate frequency zero from 1-5 and use an actual item-held-out/temporal
+   cold-start evaluation.
+7. Use nested validation/cross-fitting and freeze one shared architecture and
+   meta-selection rule before promotion.
+8. Bind every run to immutable source/config/data/checkpoint/cache/environment
+   hashes and fail on dirty or changed state.
+9. Replace permissive status/path reuse with exact content-addressed inventories,
+   locks and atomic writes.
+10. Keep all current E-F/E-G numbers out of abstract, conclusion and SOTA/
+    confirmatory language until an untouched adjudicated family exists.
+
+### Algorithm Optimization and Implementation Guidance
+
+1. Cache eight current EASE category/lambda fits and eliminate the 27 redundant
+   inversions already observed.
+2. Replace inverse with stable factorization/solves and report numerical
+   residuals/conditioning.
+3. Refactor E-G into bounded streaming passes for exact evaluation; do not keep
+   seq/EASE/text/fused U-by-I arrays simultaneously.
+4. Derive or stream z-score moments rather than materializing full score axes.
+5. Cache one text score for global/binned systems instead of recomputing the
+   same profile on test.
+6. Add a real --no-ease path before running Office/CDs or remove them from scope.
+7. If approximate retrieval is required, use ANN plus exact reranking and
+   publish recall-quality-latency-memory curves.
+8. Add deterministic tie/mask handling, finite checks and unit tests against
+   the existing trainer evaluator.
+9. Store checkpoints and arrays in a hashed artifact service; keep only manifests
+   and small immutable results in Git.
+
+### Writing, Table and Figure Guidance
+
+For E-F, the first sentence must state evidence status and scope:
+"Across five optimization seeds on the previously exposed MI split, EASE score
+fusion increased mean NDCG@10 by +0.002439; 99.903% of the weighted gain came
+from head targets. This is exploratory replication, not fresh-data
+confirmation." Do not lead with the nominal p-value or published comparator.
+
+For E-G, use "history-centroid semantic score" and "sparse-item" until an
+item-held-out cold study exists. Describe the exact profiles, z-score scope,
+frequency bins, weight grid, selected rule, candidate universe, tie handling
+and memory complexity. Remove "kNN," "every catalog," "training-free" and
+"confirmatory" unless the implementation/evidence is changed.
+
+Required eventual figures/tables:
+
+- E-F paired seed slopes and a forest plot for overall/tail/mid/head effects;
+- a 100% stacked changed-improved/changed-worsened/unchanged user panel;
+- E-F validation l2-by-w heatmaps with top-runner gaps;
+- E-G validation-only global/binned selection maps with the no-text matched
+  control visibly identified;
+- separate frequency-zero and frequency-1-5 hit/rank distributions;
+- exact per-category target counts and a test-access ledger;
+- an accuracy/latency/peak-RAM/energy frontier for exact streaming versus ANN;
+- an ablation table including internal zfusion, E-F, text-only, frequency-only,
+  random/permuted text and closest published comparators; and
+- a provenance table linking every cell to source, split, config, checkpoint,
+  sidecar/NPZ, environment and adjudication hashes.
+
+Do not show an aggregate "cold" bar, a five-seed p-value without raw points, or
+a quality result without its head-contribution and changed-user coverage.
+
+### Open Questions and Author Verification
+
+1. Will E-G be stopped before its current test block, or must all later MI E-G
+   work be relabeled outcome-visible?
+2. What genuinely untouched temporal/category/external holdout can support
+   E-F/E-G confirmation?
+3. Is the scientific target true frequency-zero item cold-start, sparse warm
+   items, user cold-start or aggregate accuracy? These require different splits.
+4. Why may two E-G seeds promote different model classes/hyperparameters, and
+   what single algorithm would Stage 2 test?
+5. Can E-G promotion currently pass with w_text=0, and if so what makes it a
+   text-element promotion?
+6. Which seven workspace categories constitute "all full datasets," and why are
+   both Beauty splits omitted?
+7. What peak RAM/GPU measurements support any scalability statement?
+8. Did E-G design use the visible MI21-24 fusion outcomes, and how will that
+   adaptation be disclosed?
+9. What source of uncertainty supports claims beyond optimization randomness on
+   one fixed split?
+10. Who verifies author order, affiliations, ORCIDs, funding, conflicts, ethics,
+    data licenses, automation disclosure and redistribution rights?
+
+### Running Submission Checklist
+
+- [x] Freeze exact Git/filesystem/log-prefix cutoff.
+- [x] Reconcile five MI and two IS E-F JSON/NPZ/sidecar pairs.
+- [x] Recompute MI paired inference and exact-sign sensitivity limit.
+- [x] Decompose E-F by popularity target and changed-user coverage.
+- [x] Verify E-F grid argmax and checkpoint reconstruction.
+- [x] Verify E-G is wait-only with no eligible test exposure.
+- [x] Audit E-G source, promotion, memory complexity and novelty boundary.
+- [x] Confirm no manuscript/PDF/release-manifest delta.
+- [x] Apply PDF hash-stability rule and carry forward visual inspection.
+- [ ] Stop E-G Stage 1 before test or relabel all later same-split work.
+- [ ] Redesign E-G promotion so text must add value over a matched control.
+- [ ] Separate frequency zero from frequency 1-5 and create a true cold split.
+- [ ] Implement exact streaming or audited ANN; remove false scale claims.
+- [ ] Implement/test a no-EASE path before Office/CDs.
+- [ ] Complete E-F IS/VG/ensemble only as exploratory evidence.
+- [ ] Create an untouched, sealed test-once confirmation.
+- [ ] Freeze full paired inference, multiplicity and prospective power.
+- [ ] Make checkpoints/runs content-addressed, strict and atomic.
+- [ ] Extend adjudication and release inventory to all inputs/outputs.
+- [ ] Reconcile E-A manuscript contradictions and causal language.
+- [ ] Add required related work and matched baselines.
+- [ ] Resolve author, venue, accessibility, ethics and legal metadata.
+
+### Files Changed by This Audit
+
+- PAPER_REVIEW_AUDIT.md: added this cutoff-safe review and refreshed the current
+  rejection-risk list.
+- No manuscript, source, experiment, result, checkpoint, status, log,
+  bibliography, figure, table, release or PDF artifact was edited.
+- No temporary PDF render tree was created because all PDF hashes are identical
+  to the prior full visual inspection.
+
+## Audit Run - 2026-07-22 23:59 Australia/Sydney
+
+### Review Verdict
+
+**Recommendation: reject / not ready for top-journal submission.** E-A is now
+complete, and its result files are unusually internally coherent. Across eight
+matched seeds, the learned FIR arms are consistently above frozen identity, and
+an independently recomputed paired analysis gives a tight positive interval for
+A1-A0. This is credible descriptive evidence that the implemented learned arm
+performed better in this particular outcome-visible campaign.
+
+It is not a valid confirmation. The last seed block crosses trainer versions;
+seed-20 A1 certifies source bytes it did not execute; all summaries record a
+dirty tracked tree; five allegedly fresh seed IDs had appeared in prior result
+files; the test split was evaluated 480 times; and the completed result was
+adjudicated, written into three manuscript surfaces and committed within minutes.
+The paper then extends a non-significant A2-A1 comparison into an unregistered
+equivalence/pathway claim. Those defects affect evidence status and causal
+interpretation even though the central arithmetic reproduces.
+
+E-F has also begun. The three cutoff-eligible Musical_Instruments fusion pairs
+show a stable positive exploratory lift, but the campaign is incomplete and
+reuses the exact test split that informed earlier method development. At least
+77 E-F test passes had occurred by the cutoff. Its checkpoints, driver,
+adjudicator and dense EASE implementation remain non-atomic, weakly bound and
+needlessly expensive.
+
+Status labels used below:
+
+- **CONFIRMED**: directly reproduced from cutoff-eligible files, exact hashes,
+  code, Git objects, calculations or rendered pages.
+- **PLAUSIBLE RISK**: a supported concern that needs new evidence or an
+  independent study.
+- **AUTHOR VERIFICATION**: not decidable from the workspace.
+- **INCOMPLETE / EXCLUDED**: unfinished evidence not used for an endpoint.
+- **POST-CUTOFF EXCLUDED**: files or bytes created after the fixed boundary.
+
+### Fixed Snapshot and Scope
+
+| Item | Audited value |
+|---|---|
+| Heartbeat | 2026-07-22T13:58:13.572Z |
+| Fixed filesystem cutoff | 2026-07-22T23:59:35.4340404+10:00 |
+| UTC cutoff | 2026-07-22T13:59:35.4340404Z |
+| Branch | codex/bestrec-sota-results |
+| HEAD / upstream / merge base | de364eaee0ef89ba4b481c826032dffb2c64b173 |
+| Previous audited HEAD | 5f33055324d847004b4f5db883b9aa54a0b19e0e |
+| E-A cutoff state | complete; 24/24; 0 failed; 301.2 minutes |
+| E-A fixed log prefix | 652,826 bytes; SHA-256 0a97696fa7aae0113623e92aba82673d0fd167fe144f709196ac328b16531017 |
+| E-F cutoff state | running; 6 completed jobs; 0 failed; 49.2 minutes |
+| E-F fixed log prefix | 111,076 bytes; SHA-256 e18412354b92a80d03dc806b9fc2d2c1482ca62fab6b55b9472f236b1be336f1 |
+| Eligible E-F result pairs | MI seeds 20260721, 20260722 and 20260723 |
+| Incomplete E-F evidence | seed 20260724 checkpoint only; no eligible base summary |
+| Post-cutoff repository movement | HEAD later advanced at 00:21:21+10 to 0feab910; the E-G commit is excluded |
+
+The working tree contained live E-F log/checkpoint writes plus untracked E-F
+artifacts. Only bytes and files eligible at the fixed cutoff are used below.
+Later seed-24 completion or other post-cutoff outputs are deliberately excluded.
+The subsequent 0feab910 E-G commit occurred while this audit was being written;
+none of its code, claims or artifacts is evaluated in this timestamped section.
+
+### Repository Delta and Non-Atomic Evidence Promotion
+
+Commit de364eae was created at 23:07:20+10, less than five minutes after the
+E-A log completed at 23:02:31. Relative to 5f330553 it changes 24 files with
+3,219 insertions and 43 deletions. It adds the last E-A summary, an E-A
+adjudication JSON, new E-A manuscript prose and early E-F runtime artifacts.
+
+The commit message declares E-A adjudicated W-POS, says learned FIR taps beat
+identity by +0.002265, calls the A2-A1 p-value evidence against a weight-decay
+pathway, labels the PDFs clean, and notes that E-F took the GPU. This compresses
+completion, outcome inspection, interpretation, writing, rendering and commit
+into a few minutes, before the next hourly independent audit. A strict
+confirmatory workflow should instead close immutable artifacts, run a
+precommitted adjudicator, generate a review packet, and hold manuscript promotion
+until protocol-deviation review is complete.
+
+The same commit captured E-F seed-21's live checkpoint at epoch 7, SHA-256
+ff0b84abc14ed881bf97e70530b194c326d5889b95090f3213535ed663535dbf.
+Training later overwrote that tracked path with the epoch-15 checkpoint,
+SHA-256 6c2879808e73b58b16d1dc148dcac13cd0bf6dd3beaf5386868533a46479ecda.
+The result records de364eae even though the process launched under parent
+5f330553. The E-F code did not change between those commits, but the recorded
+commit is not a launch snapshot and checking it out does not recover the
+checkpoint actually used for fusion. This is another mixed-time repository
+object, not an immutable evidence bundle.
+
+### E-A Final Artifact Audit
+
+All 24 summaries and 47 unique sidecars are cutoff-eligible. There are 24
+selected sidecars and 23 separate final sidecars because seed-15 A1 selected
+epoch 20. Exact file hashes, declared hashes, row counts, user IDs, selected
+epochs, aggregate NDCG/HR/MRR, popularity-bucket metrics and best-validation
+epochs reconcile. Each sidecar has exactly 57,439 users. In total the histories
+contain 480 test outcomes, 960 validation-plus-test passes and 27,570,720
+user-test rows.
+
+The final seed-20 A2 result is:
+
+| Field | Value |
+|---|---:|
+| Best epoch | 16 |
+| Validation NDCG@10 | 0.045878591152 |
+| Test NDCG@10 | 0.041653936445 |
+| Test HR@10 | 0.074548651613 |
+| Test MRR | 0.037961969334 |
+| Tail / mid / head NDCG | 0.001506776043 / 0.006938095311 / 0.058007046551 |
+| Final FIR L2 | 5.10771799 |
+| Summary SHA-256 | 43f622bc... |
+
+Final arm means and seed-level sample standard deviations are:
+
+| Arm | Mean NDCG@10 | SD |
+|---|---:|---:|
+| A0 identity | 0.039295001970 | 0.000303821476 |
+| A1 learned, backbone WD | 0.041559811251 | 0.000324552296 |
+| A2 learned, zero FIR WD | 0.041570100546 | 0.000327193607 |
+
+The correct matched-seed diagnostic analysis is:
+
+| Contrast | Mean | Paired SD | t(7) | Two-sided p | Paired 95% CI |
+|---|---:|---:|---:|---:|---:|
+| A1-A0 | +0.002264809282 | 0.000231965385 | 27.6155 | 2.10e-8 | [+0.002070881366,+0.002458737197] |
+| A2-A0 | +0.002275098576 | - | 25.0949 | 4.07e-8 | [+0.002060722270,+0.002489474881] |
+| A2-A1 | +0.000010289294 | 0.000081850349 | 0.3556 | 0.7327 | [-0.000058139310,+0.000078717898] |
+
+The frozen adjudicator JSON also reproduces exactly: independent-Welch A1-A0
+is +0.002264809, t=14.4091, df=13.9394, p=9.16e-10, with interval
+[+0.001927557,+0.002602062]. Its W-POS arithmetic is internally correct. The
+problem is that independent Welch discards the explicit common-seed and
+common-initialization blocks. CUDA nondeterminism adds within-block noise; it
+does not convert matched observations into independent samples. The direction
+survives and is even more precise under the proper paired analysis, but that
+does not repair the registered lifecycle.
+
+### Confirmed E-A Provenance and Protocol Failures
+
+1. **False executed-code hash.** The first 22 summaries used trainer SHA
+   ce4fc1... under commit f2963ada. Seed-20 A1 loaded that old program, but the
+   shared file was edited at 22:48 while the process ran. Exit-time provenance
+   reopened the file and records new SHA 187ba7..., despite having executed the
+   old code and lacking the new save-checkpoint config key. Seed-20 A2 then used
+   the new source and config. The edit appears serialization-only for E-A, but
+   the claimed executable identity is demonstrably false.
+2. **Dirty execution.** All 24 summaries record git_dirty_tracked=true.
+   Launch-time commit, loaded-code bytes, dirty diff, environment and RNG bundle
+   are not frozen as one object.
+3. **False literal freshness.** The preregistration says the eight seeds were
+   never used in any prior result file. Seeds 20260713 through 20260717 each
+   occur in four pre-prereg FIRB summaries on Industrial_and_Scientific and
+   CDs_and_Vinyl, 20 files total. Seeds 20260718 through 20260720 were not found
+   in that result scan. At most these were fresh for this MI campaign, subject
+   to cross-workspace author verification.
+4. **No test sequestration.** Test is evaluated, printed and persisted every
+   epoch. Validation selects the endpoint, so no direct max-test epoch selection
+   was found, but authors and automation had the entire test trajectory.
+5. **Wrong primary geometry.** The preregistration and adjudicator use
+   independent Welch for matched blocks. A paired contrast, exact sign-flip
+   sensitivity and paired equivalence analysis should have been frozen.
+6. **Fixed-order confounding.** Every seed uses A0 then A1 then A2. No
+   counterbalancing or system telemetry separates arm from wall-clock position.
+7. **Program mismatch.** EXPERIMENT_PROGRAM still describes five fresh seeds,
+   a full factorial, a cloned checkpoint and diagnostics that do not match the
+   actual three-arm, eight-seed execution.
+8. **Adjudicator provenance gaps.** The artifact lacks its own timestamp,
+   preregistration/adjudicator/input/result/environment hashes and exact sidecar
+   inventory. Its gates do not enforce full config, code/commit/dirty equality,
+   selected/final histories, finiteness or unexpected files.
+
+The post-outcome adjudicator edit between f2963ada and de364eae is limited to
+NumPy-scalar serialization and the statistics reproduce. That narrows the
+likely numerical effect to zero; it does not make the executable precommitted.
+
+### Confirmed E-A Interpretation Problems
+
+The A1 arm makes 1,024 FIR coefficients trainable while A0 freezes identity.
+There is no active, parameter-matched non-temporal placebo. A1-A0 can therefore
+reflect temporal filtering, generic trainable capacity, optimizer-group
+differences or their interaction. The paper cannot call this FIR-specific
+mechanism evidence until that comparator is added.
+
+The preregistered practical margin applies to A1-A0. No secondary A2-A1
+equivalence margin or pathway-identification test was frozen. The manuscript's
+new language that zero FIR weight decay “changed nothing” and that the effect
+“does not run through the weight-decay pathway” converts failure to detect a
+difference into evidence of absence. The paired interval is informative, but
+the defensible wording is: “No sensitivity to the tested FIR weight-decay
+setting was detected; A2-A1 was +0.0000103, paired 95% CI
+[-0.0000581,+0.0000787]. This secondary result was not a preregistered
+equivalence or mediation test.”
+
+The preregistration restricts outcome language but does not pre-freeze that new
+A2 pathway sentence. More fundamentally, a successful nonsingular three-arm
+study cannot by itself prove that the historical singular-package bootstrap
+effect had the same cause.
+
+Popularity decomposition further limits the mechanism claim:
+
+| Stratum | A1-A0 mean NDCG difference | Share of weighted total |
+|---|---:|---:|
+| Tail | +0.000699217 | 4.73% |
+| Mid | +0.001603970 | 10.67% |
+| Head | +0.002752481 | 84.60% |
+
+Extra-hit shares are approximately 6.54% tail, 12.05% mid and 81.41% head.
+Positive tail rates are worth reporting, but the aggregate result is
+head-dominated and cannot substantiate a tail-specific mechanism.
+
+### E-F Cutoff-Safe Partial Result Audit
+
+Exactly three complete base-plus-fusion MI pairs are eligible:
+
+| Seed | Best epoch | Selected l2,w | Val seq | Val fused | Test seq | Test EASE | Test fused | Delta |
+|---:|---:|---|---:|---:|---:|---:|---:|---:|
+| 20260721 | 15 | 100, .04 | .0460564783 | .0484805858 | .0414347133 | .0322105209 | .0439155284 | +.0024808152 |
+| 20260722 | 14 | 200, .03 | .0461114937 | .0484618882 | .0417794281 | .0321263521 | .0438970882 | +.0021176601 |
+| 20260723 | 14 | 100, .03 | .0464675594 | .0487837250 | .0419710956 | .0322105209 | .0443730524 | +.0024019568 |
+
+The three-seed exploratory mean delta is +0.00233347735, SD 0.00019101696;
+the nominal df=2 interval is [+0.00185896491,+0.00280798979]. HR deltas are
++0.00414353, +0.00292484 and +0.00308153; MRR deltas are +0.00193806,
++0.00187375 and +0.00222288. These values are descriptive only. The campaign
+has not reached 5/5 MI seeds, has no eligible IS or VG results, and cannot
+complete the registered three-category Holm family or issue W-H-POS.
+
+Each fusion JSON contains the exact frozen 4 by 8 validation grid and selects
+its global validation maximum. However, the selected l2 runner-up gaps are only
+0.00003416, 0.00009766 and 0.00003006, suggesting selection instability.
+The grid also lacks w=0, so validation cannot reject fusion.
+
+All three NPZ files contain finite, aligned arrays for users, sequential,
+fused and EASE NDCG over IDs 0 through 57,438. Means reproduce JSON within
+3.35e-10; sequential rows match the corresponding base sidecar within 2.98e-8.
+NPZ hashes are f86de2..., 6247d5... and ce4de6..., but those hashes are not
+embedded or adjudicated. Exactly zero fused-minus-sequential per-user delta
+occurs for 93.62%, 94.12% and 94.05% of users. Report changed, positive,
+negative and zero fractions and their conditional magnitudes; the mean alone
+hides that only about 6% of users change rank utility.
+
+### Confirmed E-F Holdout-Reuse Failure
+
+The E-F preregistration acknowledges that R+ was developed after many MI test
+probes, yet E-F uses that identical train/validation/test split. New random seeds
+sample optimization randomness, not fresh held-out information. Adaptive reuse
+can overfit a holdout even without direct gradient access; see
+[Generalization in Adaptive Data Analysis and Holdout Reuse](https://arxiv.org/abs/1506.02629)
+and
+[Preserving Statistical Validity in Adaptive Data Analysis](https://arxiv.org/abs/1411.2664).
+
+At the cutoff, the fixed log visibly contains 72 base epoch-level test rows.
+The eligible seed-24 epoch-14 checkpoint is saved only after that epoch's test
+pass, establishing at least 74 base tests, plus three fusion tests: at least 77
+E-F test passes. The complete design would perform roughly 220 base tests, 15
+per-seed fusion tests and one ensemble test, about 236 passes, despite “single
+test evaluation” language.
+
+No direct label leakage was found inside the fuser: EASE fits training data,
+validation selects l2 and w, and the test history is formed according to the
+declared protocol. The confirmed defect is human/experimental test exposure and
+adaptive reuse. Current E-F must be labeled exploratory. A valid confirmation
+needs a genuinely untouched temporal/data holdout or evaluation server,
+validation-only training, a sealed checkpoint-and-hyperparameter manifest and
+one externally authorized reveal.
+
+### E-F Driver, Checkpoint and Adjudicator Defects
+
+- Finished checkpoints store only state_dict, epoch, validation NDCG and
+  prototype assignment. They omit full config, code/data hashes, self-hash,
+  optimizer/RNG state and environment.
+- Skip-if-any-path-exists trusts stale, partial or mismatched JSON. Checkpoint,
+  NPZ and sidecar hashes are not required before skipping.
+- Checkpoint and status writes are non-atomic. Status omits current task, total,
+  PID, heartbeat and staleness and remained at done=6 throughout seed-24 work.
+- Preflight relies on trainer help-text substrings and does not structurally
+  validate fuser/ensembler commands. False values are omitted and can inherit
+  changed future defaults.
+- Mutable reference JSONs are not SHA-pinned, and the fuser imports current
+  trainer source later, allowing reconstruction code to change mid-campaign.
+- The adjudicator makes checkpoints, NPZs and the ensemble optional; accepts
+  extra files; does not require full grids or validation argmax; ignores many
+  config and FIR fields; and omits category, run path, epoch, hash, user,
+  finiteness, schema, split and source checks.
+- Reconstruction tolerance is 0.0005, as large as the scientific equivalence
+  margin, although observed numerical drift is below 6.6e-10. Tighten to a
+  justified near-machine tolerance.
+- With n=5, the smallest attainable two-sided exact sign-flip p-value is
+  2/32=0.0625. Increase seeds and prospectively power against a justified
+  smallest effect of interest.
+
+### E-F Algorithm and Resource Optimization
+
+MI has 24,587 items. One dense float32 item matrix is approximately 2.252 GiB
+and one float64 matrix is approximately 4.504 GiB. Gram, inverse/solution,
+float64 coefficient and float32 coefficient matrices can exceed 15.76 GiB
+before factorization workspace and model state.
+
+The cutoff log records 15 inversions taking about 60.5 to 62.8 seconds each.
+Only four distinct category/l2 solutions were necessary: EASE is identical
+across sequential seeds for a fixed training split and l2, and the selected
+matrix already existed. The declared B_cache is unused.
+
+Required optimization:
+
+1. Build sparse X and G=X-transpose-X once per category and bind them to the
+   exact train/item-map hashes.
+2. Cache the four category/l2 fits across seeds with content-addressed names.
+3. Reuse the selected fit instead of recomputing it.
+4. Replace explicit inverse with Cholesky/LDL solves or a single symmetric
+   eigendecomposition reused across regularization values; record residuals,
+   conditioning and finite checks.
+5. Validate lower precision against the current float64 reference and report
+   peak host/GPU RAM, wall time, I/O and energy.
+6. For larger catalogs, preregister a sparse/top-k approximation and a fidelity
+   bound; do not silently swap methods mid-study.
+
+The [EASE paper](https://arxiv.org/abs/1905.03375) establishes the closed-form
+shallow component. A targeted primary-source search did not locate this exact
+EASE-plus-HSTU standardized-score fusion, but search absence is not proof of
+novelty. Add same-protocol EASE-only, sequential-only, unstandardized mean,
+validation-calibrated scalar, learned linear/ridge stacker and equal-compute
+ensemble baselines. A top-journal algorithm claim also needs theory or a clear
+generalizable principle beyond combining established scorers.
+
+### Manuscript, Release and PDF Delta
+
+The E-A result was added as prose to PAPER_SUBMISSION.md, the draft and the TeX
+results section, but not integrated into the abstract, introduction, Table 0,
+conclusion or a dedicated auditable table. An earlier passage still says the
+nonsingular rerun is queued, creating a direct completed-versus-pending
+contradiction. The statistical-conventions section still broadly describes the
+paper's own arm comparisons as Welch. The limitations discussion still says
+same-seed arms are not initialization-paired without carving out E-A.
+
+The new paragraph says eight fresh seeds, supports FIR-specific attribution,
+“changed nothing,” and excludes a weight-decay pathway. Respectively, those
+claims conflict with prior seed files, the missing capacity placebo, the lack of
+secondary equivalence and the absence of mediation/pathway identification.
+Rewrite the evidence status before propagating the result elsewhere.
+
+HEAD release-manifest verification passes 138 entries, while the tagged
+v1.1.11 deposit still fails 17. The pass is misleadingly narrow:
+PREREG_FIR_V3, the E-A driver/adjudicator, many results, all relevant sidecars,
+E-F protocol/code/results/checkpoints/arrays and the adjudication chain remain
+outside the graph. The new acmsmall PDF also changed but is not tracked in the
+same evidence boundary. Manifest coverage, not merely verification of an
+omissive manifest, is required.
+
+Because the PDFs changed, they were rerendered and visually inspected under the
+PDF audit workflow:
+
+| Artifact | SHA-256 | Pages | Confirmed visual/accessibility finding |
+|---|---|---:|---|
+| PAPER_SUBMISSION.pdf | 214d4682872ede8eb42d3fa72197ceec5195b6dbbdce824deac856a1e9791e7f | 57 | Tagged, but no bookmarks or useful Author/Subject/Keywords; p.57 is about 85% blank |
+| paper_tex/PAPER_TORS.pdf | 5ef68536dd84c008c0311dc013df16ba5c5fcd4da8f050be84155c2cdaf6681f | 50 | Untagged; maintainer/author placeholder header; E-A paragraph splits pp.20-21; p.50 mostly blank |
+| paper_tex/PAPER_TORS_acmsmall.pdf | 15f75cfd17c419096f7ea61c16051bc6bcb0bb217ba8a0254f3532c2fa3d1246 | 51 | Untagged; readable new paragraph but unresolved template furniture |
+
+The render is mechanically readable, but “clean” is too strong: layout waste,
+placeholder identity, accessibility, missing navigation and overly dense prose
+are submission blockers that literal overflow gates do not detect.
+
+### Concrete Experimental and Statistical Repair
+
+1. Freeze a clean detached worktree or container; capture launch-time source,
+   tree, config, dependency, data/split and RNG hashes; prohibit commits and
+   shared-source edits until every process exits.
+2. Mark current E-A and E-F as exploratory/outcome-visible. Do not use their
+   nominal p-values as fresh confirmatory evidence.
+3. Create an untouched data/temporal holdout or external evaluation service.
+   Train and tune without test-file access; seal selected checkpoints and
+   analysis choices; reveal test once.
+4. Use randomized or counterbalanced arm order and record GPU temperature,
+   clocks, utilization, memory, power and competing load.
+5. Use seed-block paired contrasts as primary, plus exact randomization/sign
+   sensitivity and paired TOST only for prospectively justified margins.
+6. Increase seed count based on prospective power for the smallest effect of
+   interest. Do not power from a selected development effect.
+7. Add an active 1,024-parameter non-temporal placebo and equalize optimizer
+   groups/trainable counts before claiming FIR-specific mechanism.
+8. Save and hash the validation-selected checkpoint, optimizer/RNG state,
+   signed taps, lag ordering, gradients/moments, residual/input norms,
+   activation diagnostics and frequency response. Label final-epoch diagnostics
+   separately.
+9. Make adjudication fail closed on an exact no-extras inventory, canonical full
+   config, source/data/environment/checkpoint/sidecar/NPZ hashes, finite domains,
+   per-user identities, selected epoch and reconstructed metrics.
+10. Publish a transparent test-access ledger with every automated and human
+    reveal, including historical R+ probes.
+
+### Writing, Table and Figure Repair
+
+Use one evidence-status paragraph before any E-A number: this was an eight-seed
+fresh-initialization replication on an already outcome-visible MI split, with a
+mid-run provenance fault, and is therefore exploratory. Replace causal language
+with the exact matched contrasts and intervals. Reconcile queued/completed,
+Welch/paired and legacy/nonsingular statements everywhere, then shorten the
+main text substantially by moving forensic history and operational narrative to
+an appendix or repository report.
+
+After a clean study, provide:
+
+- a paired seed slope plot and paired-contrast forest plot with multiplicity and
+  the prospectively justified practical margin;
+- an explicit active-placebo panel and selected-checkpoint signed tap/lag/
+  frequency-response figure;
+- validation learning curves with selected epochs marked, but no tuning-facing
+  test curves;
+- a tail/mid/head panel showing cohort sizes, absolute effects, added hits and
+  weighted contribution shares together;
+- for E-F, validation-only l2-by-w heatmaps including w=0, paired
+  sequential/EASE/fused seed points and category-wise adjusted intervals;
+- changed/positive/negative/zero per-user fractions and conditional effect
+  distributions;
+- compute tables for matrix size, solver, dtype, condition/residual, cache hit,
+  peak RAM, time and energy; and
+- one provenance table linking every displayed value to summary, sidecar,
+  selected checkpoint, config, source, split, environment and adjudication hash.
+
+Use vector output, colorblind-safe palettes, direct labels, final-size readable
+type, informative captions and alt text/tagging. Repair the paragraph/page
+breaks, trailing near-empty pages, bookmarks, PDF metadata, identity placeholders
+and template furniture before external circulation.
+
+### Open Questions and Author Verification
+
+1. Did any author, notebook, other workspace or external run use seeds
+   20260718-20260725 or inspect their outcomes before either preregistration?
+2. What independent timestamp proves each protocol, executable and analysis
+   bundle existed before relevant outcome access?
+3. Exactly which historical MI test probes informed R+ and E-F design, and can
+   an untouched replacement holdout be created?
+4. Was the manuscript's rapid E-A promotion reviewed by anyone independent of
+   the experiment operator?
+5. What trainable parameter counts and optimizer groups applied to every arm,
+   and can a capacity-matched placebo be defined without outcome adaptation?
+6. What target journal and anonymity policy govern author headers, metadata,
+   supplemental evidence, code/data availability and automation disclosure?
+7. Who verifies author order, affiliations, ORCIDs, funding, conflicts, ethics,
+   data licenses and redistribution rights?
+
+### Running Submission Checklist
+
+- [x] Freeze exact cutoff and hash eligible E-A/E-F log prefixes.
+- [x] Reconcile all 24 E-A summaries and 47 sidecars.
+- [x] Recompute matched E-A contrasts independently.
+- [x] Reproduce the frozen E-A adjudicator arithmetic.
+- [x] Verify E-A source-mutation and false-hash timeline.
+- [x] Audit three cutoff-eligible E-F JSON/NPZ pairs.
+- [x] Quantify E-F test access, checkpoint race and dense-solver cost.
+- [x] Rerender and visually inspect changed PDFs.
+- [ ] Retract confirmatory W-POS/pathway language from submission surfaces.
+- [ ] Mark current E-A and E-F evidence exploratory and disclose deviations.
+- [ ] Freeze a clean immutable execution/adjudication bundle.
+- [ ] Create a genuinely untouched, test-once confirmation.
+- [ ] Add paired inference, prospective power and capacity-matched placebo.
+- [ ] Save selected checkpoint diagnostics and complete provenance hashes.
+- [ ] Optimize/cache EASE and publish resource/fidelity measurements.
+- [ ] Expand the release manifest to every protocol, input, result and sidecar.
+- [ ] Reconcile abstract/introduction/Table 0/results/limitations/conclusion.
+- [ ] Complete author, venue, ethics, license and automation disclosures.
+- [ ] Rebuild tagged, navigable, metadata-complete PDFs and inspect every page.
+
+### Files Changed by This Audit
+
+- PAPER_REVIEW_AUDIT.md: added this cumulative cutoff-safe review and refreshed
+  the prioritized rejection-risk list.
+- No manuscript, code, result, checkpoint, figure, bibliography, release or PDF
+  artifact was edited.
+- Temporary PDF render pages used for visual verification were removed after
+  inspection.
 
 ## Audit Run - 2026-07-22 22:57 Australia/Sydney
 

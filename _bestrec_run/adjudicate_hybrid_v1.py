@@ -101,7 +101,9 @@ def main():
         se = sd / math.sqrt(len(d))
         t = m / se if se > 0 else float("inf")
         p, tc = t_p_two_sided(t, len(d) - 1)
-        ci = (m - tc * se, m + tc * se)
+        # native casts (scipy returns numpy scalars; json.dump rejects them)
+        p, tc = float(p), float(tc)
+        ci = (float(m - tc * se), float(m + tc * se))
         rows[c] = {"mean_delta": m, "sd": sd, "t": t, "p": p, "ci": ci,
                    "per_seed": details[c],
                    "fused_mean": sum(fused_means[c]) / len(fused_means[c])}
@@ -114,7 +116,7 @@ def main():
     alive = True
     for rank, c in enumerate(order):
         thr = ALPHA / (3 - rank)
-        sig = alive and rows[c]["p"] <= thr
+        sig = bool(alive and rows[c]["p"] <= thr)
         if not sig:
             alive = False
         rows[c]["holm_significant"] = sig

@@ -46,6 +46,7 @@ blobs (`DOI_DEPOSIT_INSTRUCTIONS.md` has the full rule).
   Industrial_and_Scientific Δ **+0.0024** [+0.0019, +0.0029], CDs_and_Vinyl **+0.0057**
   [+0.0050, +0.0063]; the treatment is the FIR-plus-initialization/optimizer package)
   (`PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md` + its 2026-07-20 erratum).
+- **Pre-declared fresh-seed hybrid (E-F, 2026-07-23):** late z-score fusion with train-only EASE (Steck 2019) lifted test NDCG@10 on all three categories tested (MI +0.0024, IS +0.0026, VG +0.0032; Holm-corrected paired t, fresh seeds 20260721-25); the MI fused five-seed mean 0.04399 exceeds the published single-run 0.0406 (point-estimate comparison, environment-caveated; see PAPER_SUBMISSION.md §5.7).
 - **Text tail benefit: one MI frequency-5-heavy case** (cross-dataset heterogeneity not established, interaction p = 0.13; the thinning intervention did NOT explain it — one fixed draw; mechanism unresolved).
 - **The evaluation apparatus itself** — version-controlled pre-declaration (the TFV2 campaign carries OpenTimestamps proofs whose earliest Bitcoin attestation postdates its first result — the pre-launch freeze rests on Git history alone, a disclosed limitation stated exactly in §5.3 disclosure (vii)), fail-closed artifact
   gate, comparator regeneration, symmetric self-VOIDing — demonstrated end to end.

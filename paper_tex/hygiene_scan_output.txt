@@ -1,4 +1,4 @@
-hygiene scan: PAPER_TORS.pdf | pages: 49
+hygiene scan: PAPER_TORS.pdf | pages: 50
 placeholder+forbidden failures: 0
 review list (SOTA mentions + negated claim-wordings): 19
   REVIEW negated-ok: paired\s+superiority :: .0271 published and 0.0279 environment-matched regeneration) — not SOTA and not paired superiority; (ii) a leak-free causal FIR filter — attributed as the FIR-plus-initialization

@@ -87,6 +87,8 @@ Three properties make our version safe and honest:
 
 **Does it help?** The **package arm** (filter + starting state + optimizer path — the paper is explicit that these cannot be separated yet) showed positive estimates on **all four categories tested**. The two breadth categories were re-run as fully independent 8-vs-8 arms under a Git-committed plan whose rerun was **outcome-visible** (paper §5.3): Industrial & Scientific **+0.0021** NDCG@10 (Welch 95% CI **+0.0019 to +0.0024**) and CDs & Vinyl **+0.0058** (**+0.0053 to +0.0063**). An earlier paired reading of the original runs was **withdrawn** (the arms were never initialization-paired) — the numbers above are the repaired, independent-arm ones.
 
+**Update (matched-twin rerun, E-A):** we later retrained the model 24 more times under a frozen, committed-in-advance plan in which the filter-equipped copy and a no-filter twin start from *byte-identical* weights (verified by checksum). The filter twin won by +0.0023 (95% CI +0.0019 to +0.0026) on Musical Instruments — the first direct evidence that the filter itself, not its starting-state side effects, carries a benefit at this configuration. (This does not re-split the older bundled numbers above.)
+
 ## 4. A finding, not just a gadget: text helps some catalogs and not others
 
 The "scent" fingerprints from product text are not uniformly useful, and one of the paper's main

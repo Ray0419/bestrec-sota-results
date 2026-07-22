@@ -22,7 +22,7 @@ result." This file is the durable worklist the quiet-tick loop services (priorit
 
 ## Worklist (top unchecked item first; one lifecycle stage per tick is fine)
 
-- [ ] **E-A. Nonsingular matched-FIR factorial (audit 10:47 design adopted).**
+- [x] **E-A. Nonsingular matched-FIR factorial (audit 10:47 design adopted).**
   Question: does learnable causal FIR filtering add value separate from the
   gate/initialization/optimizer package? Design (E-A1 + E-A2): represent the
   kernel as `delta + DELTA` with `DELTA=0` init and the residual multiplier
@@ -38,8 +38,8 @@ result." This file is the durable worklist the quiet-tick loop services (priorit
   `run_ea_fir_v3.py` committed 2026-07-22 (this commit, BEFORE launch;
   preflight validated 38 flags against the trainer) -> [x] launched
   2026-07-22 immediately after this commit (sequential background driver;
-  ~24 x 10 min) -> [ ] adjudicate (mechanical; runs once all 24 files exist)
-  -> [ ] integrate (frozen wordings W-POS/W-NEG/W-EQUIV/W-INC only).
+  ~24 x 10 min) -> [x] adjudicated 2026-07-22: **W-POS** (A1-A0 +0.002265 [+0.001928, +0.002602], Welch t=14.4, Holm-SIG; A2-A1 +0.000010 p=.95 -> no weight-decay pathway; integrity gates passed, adjudicator exit 0)
+  -> [x] integrated 2026-07-22 (frozen W-POS wording, §5.2 of the papers + PLC; historical package framing unchanged).
   Implementation: `--fir-v3 {learned,frozen}` nonsingular y=x+conv_DELTA(x),
   DELTA=0 init; unit-verified: identical cross-arm init per seed, exact
   identity at init, gradient-active at the zero point, frozen control.
@@ -91,6 +91,8 @@ result." This file is the durable worklist the quiet-tick loop services (priorit
   start only when E-A/E-B are queued or done.
 
 ## Log
+
+- 2026-07-22 (late): E-A COMPLETE -- 24/24 runs, adjudicated W-POS (+0.002265 [+0.001928, +0.002602] Holm-SIG; wd-pathway ruled out), integrated under the frozen wording; E-F launched (chained, running).
 
 - 2026-07-22: E-A/E-B/E-C/E-D specs upgraded to the audit 10:47 factorial /
   multi-map / training-parity / constraint designs; E-C2 added.

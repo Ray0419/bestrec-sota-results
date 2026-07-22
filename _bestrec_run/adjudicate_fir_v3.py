@@ -107,15 +107,18 @@ def main():
     rows = []
     for name, xa, xb in contrasts:
         est, t, df, p, ci = welch(xa, xb)
-        rows.append({"contrast": name, "est": est, "t": t, "df": df,
-                     "p": p, "ci": ci})
+        # cast to native Python types (scipy returns numpy scalars, which
+        # break json.dump); serialization-only, no analysis change
+        rows.append({"contrast": name, "est": float(est), "t": float(t),
+                     "df": float(df), "p": float(p),
+                     "ci": (float(ci[0]), float(ci[1]))})
     # Holm over the three contrasts
     order = sorted(range(3), key=lambda i: rows[i]["p"])
     holm_sig = {}
     alive = True
     for rank, i in enumerate(order):
         thr = ALPHA / (3 - rank)
-        sig = alive and rows[i]["p"] <= thr
+        sig = bool(alive and rows[i]["p"] <= thr)
         if not sig:
             alive = False
         holm_sig[i] = sig

@@ -70,19 +70,19 @@ for xi, (d, p, v) in enumerate(zip(tailD, posfrac, verdict)):
 axA.set_xticks(x)
 axA.set_xticklabels(ds, fontsize=8.5)
 axA.set_ylabel("tail-tercile  $\\Delta$NDCG@10  (text $-$ ID)")
-axA.set_title("(A) The dataset-conditional tail pattern\n(sparse catalog: freq-5-heavy tail advantage)")
+axA.set_title("(A) Per-dataset tail estimates -- MI freq-5 case\n(MI$-$VG interaction p = 0.13: heterogeneity NOT established)")
 axA.set_ylim(-0.00055, 0.00085)
 axA.grid(axis="y", alpha=0.3)
 
 # ================================================================== Panel B
-# 5.4 titration ladder: head Delta monotone vs density (CONFIRMED cause);
-# tail Delta trend-free (REFUTED cause). x = thinning rho (1.0 -> 0.66).
+# 5.4 titration ladder: head Delta rank-trend vs density (level contrasts,
+# one fixed subset draw); tail Delta trend-free. x = thinning rho (1.0 -> 0.66).
 axB = axes[1]
 rho     = [1.00, 0.94, 0.91, 0.88, 0.78, 0.66]
 headD   = [0.00221, 0.00239, 0.00254, 0.00252, 0.00266, 0.00354]
 tailDl  = [-0.000148, 0.000165, 0.000039, 0.000537, 0.000056, -0.000108]
 axB.plot(rho, headD, "-o", color=C_HEAD, lw=2, ms=6,
-         label="HEAD $\\Delta$ (monotone, $\\rho_s=-0.94$): head tracks thinning")
+         label="HEAD $\\Delta$ (overall rank trend $\\rho_s=-0.94$; one reversal;\none fixed subset draw): head tracks thinning")
 axB.plot(rho, tailDl, "-s", color=C_TAIL, lw=2, ms=6,
          label="TAIL $\\Delta$ (trend-free, $\\rho_s=-0.14$ n.s.): tail does not")
 axB.axhline(0, color="black", lw=0.8, ls=":")
@@ -120,11 +120,11 @@ for xi, r in zip(xc, tailR):
              fontweight="bold")
 # annotate the two mechanism arrows
 axC.annotate("", xy=(1, 0.971), xytext=(0, 0.971),
-             arrowprops=dict(arrowstyle="-|>", color=C_NULL, lw=2))
+             arrowprops=dict(arrowstyle="-", color=C_NULL, lw=1.2, ls="--"))
 axC.text(0.5, 0.945, "interaction-thinning:\ntail FLAT (no crossing)",
          ha="center", fontsize=7, color=C_NULL)
 axC.annotate("", xy=(3, 1.276), xytext=(1, 0.971),
-             arrowprops=dict(arrowstyle="-|>", color=C_WIN, lw=2))
+             arrowprops=dict(arrowstyle="-", color=C_WIN, lw=1.2, ls="--"))
 axC.text(1.62, 1.205, "user-thinning $\\rightarrow$ MI:\ntail moves toward MI\n(dd +0.000326; suggestive,\np=0.058, CI incl 0)",
          ha="center", fontsize=7, color=C_WIN)
 axC.set_xticks(xc)
@@ -137,9 +137,9 @@ axC.grid(alpha=0.3)
 
 fig.tight_layout(pad=1.4, h_pad=2.6, rect=(0, 0, 1, 0.945))
 fig.suptitle(
-    "Dataset-conditional long-tail pattern and its two-axis descriptive contrast\n"
-    "(bundled interventions; one fixed draw; AR2023 5-core LLOO, full-catalog, NDCG@10;\n"
-    "all values 5-seed best-by-val except Beauty 2-3 seed)",
+    "The MI frequency-5 tail case and its two-axis descriptive contrast\n"
+    "(cross-dataset heterogeneity not established, MI$-$VG interaction p = 0.13; bundled\n"
+    "interventions; one fixed draw; AR2023 5-core LLOO, full-catalog, NDCG@10; 5-seed best-by-val except Beauty 2-3 seed)",
     fontsize=10.5, y=0.995)
 
 png = OUT / "fig_tail_law_mechanism.png"

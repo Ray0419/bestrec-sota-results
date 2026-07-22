@@ -109,6 +109,43 @@ for f in _g2.glob(os.path.join(HERE, "..", "_bestrec_run", "make_fig_*.py")):
             fails.append(f"H6: retracted/stale string {patb!r} in {os.path.basename(f)}: "
                          f"...{src[max(0, i-40):i+40]!r}...")
 
+# ---- [H10] cascade/stale-phrase gate (added 2026-07-22, audit 10:47 problem 1) ----
+# The md->TeX mirror failed silently: withdrawn phrases survived in compiled
+# sections while the canonical md moved on. Ban them in BOTH the compiled sources
+# and the extracted PDF text. Placeholders are fatal only in submission mode.
+H10_BANNED = ("external auditor", "exactly the commit carrying",
+              "orthogonal to global density", "regime-dependent on catalog density",
+              "every capacity-adding probe was neutral",
+              "wins the rare-item tail", "dataset-conditional long-tail pattern",
+              "pre-registered")
+H10_BANNED_RE = (r"residual[^.\n]{0,60}content component",)
+_all10 = "\n".join(io.open(f, encoding="utf-8", errors="replace").read()
+                   for f in (_g2.glob(os.path.join(HERE, "sections", "*.tex"))
+                             + _g2.glob(os.path.join(HERE, "tables", "*.tex"))))
+for _b10 in H10_BANNED:
+    if _b10 in _all10:
+        fails.append(f"H10: stale/withdrawn phrase in compiled sources: {_b10!r}")
+for _br10 in H10_BANNED_RE:
+    m10 = re.search(_br10, _all10)
+    if m10:
+        fails.append(f"H10: stale/withdrawn pattern in compiled sources: {m10.group(0)[:60]!r}")
+if os.path.exists(pdf_path):
+    _flat10 = re.sub(r"\s+", " ", text)
+    for _b10 in H10_BANNED:
+        if _b10 in _flat10:
+            fails.append(f"H10: stale/withdrawn phrase in the compiled PDF: {_b10!r}")
+    for _br10 in H10_BANNED_RE:
+        m10 = re.search(_br10, _flat10)
+        if m10:
+            fails.append(f"H10: stale/withdrawn pattern in the compiled PDF: {m10.group(0)[:60]!r}")
+    if "[Maintainer:" in _flat10:
+        msg10 = ("H10: '[Maintainer:' placeholder present in the PDF (byline/contact "
+                 "fields pending) -- FATAL in submission mode")
+        if os.environ.get("SUBMISSION_MODE") == "1":
+            fails.append(msg10)
+        else:
+            print("  NOTE", msg10)
+
 # ---- [H9] citation-graph parity (added 2026-07-21, audit 22:57 fix 6) ------------
 # Every bib entry must be cited by a real citation command; \nocite{*} is banned
 # (it masked 37 orphan/prose-only entries until this round).

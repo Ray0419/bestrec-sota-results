@@ -4,7 +4,106 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-21 01:01 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-22 10:47 Australia/Sydney)
+
+1. **[CONFIRMED, hard submission blocker] The claimed canonical-to-submission
+   cascade is broken.** The repaired Markdown says the tail mechanism is
+   unresolved, the audit is author-operated, the deposit is stale, and the
+   negative map is power-limited. The TeX imported by the venue drivers and the
+   compiled TORS PDF still say the effect is density-regime-dependent, globally
+   density-orthogonal, partly a residual content component, audited by an
+   external auditor, cut at the exact v1.1.11 commit, and supported by every
+   capacity-adding probe being neutral/harmful. The response file claims these
+   exact sweeps succeeded. Regenerate every derived section from one canonical
+   source and add a semantic prose-parity gate; numeric-cell gates cannot detect
+   this failure.
+2. **[CONFIRMED, rejection-level statistical/headline overclaim] The
+   `Dataset-Conditional Text Benefits` title is not supported by a significant
+   between-dataset contrast.** The MI within-dataset estimate is significant,
+   VG/Beauty are not, but the repaired MI-minus-VG interaction is `p=.13`.
+   Difference in significance is not evidence of a significant difference.
+   The density intervention also fails to reproduce the MI tail result and the
+   effect vanishes after excluding frequency 5 (`p=.52`). Retitle and report a
+   single MI frequency-5-boundary case until a prospectively powered interaction
+   supports heterogeneity.
+3. **[CONFIRMED, visible single-blind package failure] Real author, affiliation,
+   country, short-author, contact, and declaration fields remain loud
+   `[Maintainer: ...]` placeholders in both venue PDFs and the cover.** The
+   running header repeats the placeholder on alternate pages, yet
+   `scan_pdf.py` reports zero placeholder failures because it does not scan for
+   `Maintainer:` or missing author/contact metadata. The `acmsmall` preview also
+   renders bare article-number/DOI fields. Fill the real metadata and make a
+   submission-mode placeholder/metadata gate fatal.
+4. **[CONFIRMED, visible figure/table defects] The current PDFs contain layout
+   failures despite green health scans.** Figure 1's caption collides with the
+   footer on TORS page 26 and `acmsmall` page 27; `acmsmall` page 23 merges
+   `Musical_Instruments` and `sparse`; the reader slices Figure 1 through panel
+   C across pages 28--29; and the appendix caption is orphaned across pages
+   48--49, where Table A1 also has colliding cells. Figure 1 labels a
+   one-reversal trend `monotone`,
+   contradicting the prose, and visually presents one significant plus two
+   nonsignificant estimates as a dataset-conditional pattern without showing
+   the `p=.13` interaction. Repair the layout and redesign the figure around
+   estimates, intervals, and the interaction test.
+5. **[CONFIRMED attribution defect] FIR remains an
+   FIR-plus-initialization-plus-optimizer package, not an isolated filter
+   effect.** The zero gate/delta kernel is an absorbing no-op whose learning is
+   bootstrapped by Adam weight decay, and comparator arms do not share the same
+   construction/RNG path. Run a gradient-active, common-parameterization
+   factorial over kernel, gate, and weight decay with cloned backbone/RNG/data
+   streams; otherwise delete filter-only and learned-kernel mechanism language.
+6. **[CONFIRMED evidence-taxonomy/statistical overreach] Outcome-visible TFV2
+   and mostly single-seed screening rows are still promoted too strongly.** The
+   abstract says `pre-registered`, Markdown line 323 still says `confirmed`,
+   TeX contains further `confirmed` labels, and the negative map assigns
+   confirmatory weight to nulls without equivalence margins or prospective
+   power. Use `pre-declared`, reserve confirmation for independent pre-outcome
+   evidence, and call `n=1` rows screening observations only.
+7. **[CONFIRMED missing comparator/controls; PLAUSIBLE novelty rejection]**
+   AlphaFuse is the admitted closest omitted frozen-text-plus-ID comparator;
+   FAERec and other adaptive semantic/ID fusion work further narrow the tail
+   novelty. Item-text permutation, dimension-matched random features,
+   target-multiplicity/evaluation parity, and the nonsingular FIR control remain
+   unrun. Run these under the exact split/full-catalog protocol or reposition
+   the paper as a bounded evaluation case study rather than a new tail law.
+8. **[CONFIRMED uncertainty-design weakness] Optimizer seeds on one fixed split
+   do not support population or cross-dataset claims.** Split/draw, user,
+   category, checkpoint-selection, and comparator uncertainty are not modeled;
+   TFV2 used a resource-based seed count without prospective MDE; Beauty mixes
+   evaluation geometries. Add repeated split draws and hierarchical/bootstrap
+   uncertainty at the intended inference level, or explicitly limit all
+   inference to these fixed artifacts.
+9. **[CONFIRMED release drift, partly disclosed] The Markdown now honestly says
+   `v1.1.11-deposit` is stale, but the venue TeX falsely calls it the exact
+   current commit.** At the audit cutoff the paper was five commits beyond tag
+   `26eff2dd`; a plan-only commit arrived after cutoff. The deposition guard is
+   correctly fail-closed. Do not cut v1.1.12 until source parity, metadata,
+   scientific wording, and visual defects are fixed; then verify the literal tag
+   and uploaded bytes from a fresh public clone.
+10. **[CONFIRMED writing/build-documentation problem; PLAUSIBLE desk-reject
+    risk]** The paper is about 24,910 plain-text words and renders to 55/48/50
+    pages. The abstract is improved to 211 words and `acmart` is current v2.19,
+    but `BUILD_NOTES.md` still documents superseded anonymous/review options and
+    page counts, and the documented Windows `build.ps1` fails at line 14 because
+    its `build_hstu_tables.py` path contains byte `0x08`. Repair the wrapper,
+    move audit chronology/retractions/the full negative-probe inventory to a
+    supplement, and target a 10--14k-word scientific narrative and the venue's
+    usual 20--35 `acmsmall` pages.
+11. **[AUTHOR/INSTITUTION/LEGAL VERIFICATION, governance risk]** Public split
+    CSVs retain platform-pseudonymous IDs, ASINs, ratings, and timestamps, with
+    sidecars linkable to those records. A maintainer statement is not a license
+    grant and no institutional determination is documented. Obtain written
+    ethics/legal/venue determinations and a data-specific redistribution basis,
+    or withdraw linkable derivatives; keep MIT explicitly scoped to software.
+12. **[CONFIRMED engineering progress, do not overread]** The class upgrade,
+    shorter abstract, restored `he2016ups`, bidirectional citation-key check,
+    single-blind class options, Table 0 taxonomy repair, and reproducible TFV2
+    arithmetic are real improvements. They establish artifact arithmetic and
+    partial package repair, not semantic source parity, a dataset-conditioned
+    effect, a content/density mechanism, filter-only attribution, population
+    uncertainty, or superiority to an unrun comparator.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-22 10:47)
 
 1. **[CONFIRMED, hard submission blocker] The package violates the current
    TORS review and cover-letter instructions.** TORS now states single-blind
@@ -2157,6 +2256,456 @@ plausible risks.
     the venue's current template/anonymity rules, supply any independent
     pre-outcome timestamp, repeat thinning across independent subsets, and
     demonstrate a public fresh-clone reconstruction.
+
+## Audit Run - 2026-07-22 10:47 Australia/Sydney
+
+### Audited state and strict verdict
+
+- **Fixed workspace cutoff:** 2026-07-22 10:47:16 Australia/Sydney.
+- **Audited branch/commit:** `codex/bestrec-sota-results` at
+  `96e63c049bcd186031dcc7b1575fe95fd15b453b`, initially clean and locally even
+  with its tracking branch. The prior audited commit was
+  `fececadd5899bfa86c84c60b510a290313b9eda5`.
+- **Concurrent post-cutoff change:** commit
+  `9f853a51a5adb6c5e6cbefa487ec8f6d95a25017` arrived at 10:51 and adds only
+  `EXPERIMENT_PROGRAM.md`. It does not change the paper, PDFs, results, or
+  validators, but its proposed experiments are plans, not evidence. It is
+  excluded from the cutoff findings and should be audited as execution evidence
+  in the next run.
+- **Change set since the prior audit:** three commits, 22 files, 854 insertions
+  and 259 deletions. The commits claim to repair the prior review, restore the
+  missing citation, strengthen H9, adopt single-blind TORS settings, upgrade
+  `acmart`, compress the abstract, and rebuild the package.
+- **Artifacts inspected:** canonical Markdown and reader PDF; both TeX drivers,
+  the shared source, all generated sections/tables, bibliography and logs;
+  cover, response, README, venue/canonical ledgers and build notes; manifest,
+  deposit/tag validators and the public GitHub record; result graph and
+  adjudicators; all 153 pages of the three PDFs; the current class release; and
+  the primary literature/statistical sources linked below.
+- **Verdict: reject in present form / major revision.** Several prior repairs
+  are genuine, and the result graph remains arithmetically strong. The actual
+  venue PDF nevertheless contradicts the canonical manuscript and the response
+  on load-bearing scientific and release claims. Submission metadata is visibly
+  missing, the Windows build path is broken, and multiple figure/table defects
+  are visible. The title still converts a nonsignificant interaction into a
+  dataset-conditioned claim.
+
+### Genuine progress since the 2026-07-21 audit
+
+These changes are confirmed and should be preserved:
+
+1. `paper_tex/main.tex` now uses `[manuscript,screen]` and
+   `main-acmsmall.tex` uses `[acmsmall,screen]`; the former anonymous/review
+   options and line numbers are gone.
+2. The exact canonical title and the originality/unpublished/not-under-review
+   declaration text were added to the cover, although author affirmation and
+   identity fields remain placeholders.
+3. `he2016ups` was restored. No `?` citation marker appears in the current
+   PDFs, and H9 now checks recognized citation keys in both directions.
+4. Table 0 now calls TFV2 an outcome-visible replication rather than
+   confirmation.
+5. The abstract is 211 words and explicitly retains the frequency-5 sensitivity,
+   outcome-visible qualification, and unresolved-mechanism statement.
+6. The vendored class identifies itself as `acmart` v2.19, matching the
+   [current CTAN production release dated 2026-06-27](https://ctan.org/pkg/acmart).
+7. The canonical Markdown availability paragraph now honestly says the tree has
+   advanced beyond `v1.1.11-deposit` and that v1.1.12 must wait for the content
+   boundary.
+8. The strict reconstruction remains deterministic: governed hashes were
+   unchanged before and after the full pass.
+
+### Fresh dynamic and release checks
+
+| check | result at the fixed cutoff |
+|---|---|
+| `_bestrec_run/.venv/Scripts/python.exe _bestrec_run/rebuild_hstu_submission.py --strict` | **PASS:** exact HSTU parity; 175 cells; 0 mismatches/untraceable; 15 families; 269 manifest files; all counted adjudicators green |
+| governed hashes before/after strict pass | **identical:** result manifest, tables JSON, table provenance, both submitted PDFs, and release manifest |
+| `update_release_manifest.py --verify` | **PASS:** 269 files, no missing release assets |
+| `update_release_manifest.py --verify-git HEAD` | **PASS:** 131 Git-backed entries |
+| `update_release_manifest.py --verify-git v1.1.11-deposit` | **FAIL:** five mismatches (`PAPER_SUBMISSION.md/.pdf`, `PAPER_DRAFT.md`, `PAPER_TORS.pdf`, `emit_latex_tables.py`) |
+| `build_deposit_bundle.py --check-only` | **FAIL as designed:** tag `26eff2dd` is not cutoff tree `96e63c04` |
+| `paper_tex/check_tex_health.py` | **PASS:** 32 sources, 39 labels, 27 reference targets |
+| H9 | **PASS with qualification:** set-bidirectional for regex-recognized raw TeX citations, but not restricted to the compiled include graph and not a complete BibTeX-warning gate |
+| `paper_tex/build.ps1` | **FAIL before regeneration:** line 14 contains byte `0x08` inside the `build_hstu_tables.py` path, producing an invalid Python argument |
+| BibTeX | no undefined citation, but **123 metadata warnings** remain; FAERec's note repeats its verification phrase |
+| PDF hygiene scan | reports zero placeholders, despite visible `[Maintainer: ...]` identity/contact fields |
+| visual audit | 55 reader + 48 TORS + 50 `acmsmall` = **153 pages inspected** |
+| PDF metadata | reader title remains `_paper_render.html`; venue PDFs identify `acmart` v2.19 |
+| remote GitHub check | repository is public; the official remote exposes tag commit `26eff2dd` and post-cutoff branch commit `9f853a51` |
+
+The GitHub connector used here confirms the live repository and commits but does
+not expose release-asset enumeration, so the remote release ZIP/PDF bytes were
+not independently downloaded again in this run. The literal local tag mismatch,
+five governed-file failures, and functioning stale-tag guard are independently
+confirmed. The [public repository](https://github.com/Ray0419/bestrec-sota-results),
+[v1.1.11 tag commit](https://github.com/Ray0419/bestrec-sota-results/commit/26eff2dd0b857a043ec759a23be33a871551b1a9),
+and [post-cutoff plan commit](https://github.com/Ray0419/bestrec-sota-results/commit/9f853a51a5adb6c5e6cbefa487ec8f6d95a25017)
+are resolvable.
+
+### Confirmed problem 1: the canonical-to-TeX repair cascade failed
+
+The project promises one generated submission spine, but the artifacts now tell
+materially different stories:
+
+| issue | canonical Markdown/current intent | venue TeX/current PDF | response claim |
+|---|---|---|---|
+| density mechanism | `PAPER_SUBMISSION.md:28` says the mechanism is unresolved and the density intervention did not reproduce the effect | `01-introduction.tex:20` says benefit is regime-dependent on catalog density; `05-results.tex:179,183` calls it density-orthogonal and supplies a positive sparse-text mechanism | response line 24 says the regime/content language was swept |
+| decomposition | Markdown conclusion line 543 says undecomposed; item-text permutation is unrun at line 532 | `05-results.tex:221` and `07-conclusion.tex:6,21` retain a connectivity/content decomposition and residual content component | response line 24 says the residual component was replaced |
+| audit actor | Markdown line 360 calls it author-operated | `05-results.tex:127` and `08-availability.tex:6` call it an external auditor | response line 26 says actor phrasing was harmonized |
+| deposit status | Markdown line 558 says v1.1.11 is stale and v1.1.12 awaits synthesis | `08-availability.tex:6` says v1.1.11 is current and was cut at exactly the commit carrying the sentence | response line 27 says deposit honesty was fixed |
+| negative-map scope | Markdown conclusion line 545 says no benefit at tested power, mostly single-seed | `07-conclusion.tex:8` still says every capacity-adding probe was neutral or harmful | response line 25 says this residue was swept |
+| paired wording | the paper prints withdrawn historical paired outputs | cover line 50 says no paired inference appears anywhere | response line 26 says it now reads `no retained claim relies on paired inference` |
+
+`paper_tex/paper-shared.tex:68-75` imports the stale section files, and text
+extraction from the tracked TORS PDF confirms the withdrawn phrases. This is
+therefore a compiled-submission defect, not just dormant source. Worse, the
+canonical Markdown itself still contradicts its narrowed introduction:
+`PAPER_SUBMISSION.md:401-403` calls the effect density-invariant/orthogonal and
+describes an intact discriminative text corpus as the binding positive mechanism;
+lines 428, 469, and 552 retain residual/latent content-connectivity language.
+
+**Why the gates missed it.** The strict wrapper verifies model parity, generated
+table cells, manifests, and adjudicators. It has no normalized prose or source
+cascade check. H9 verifies citation-key sets, not semantic agreement. The PDF
+scanner searches a short token list and does not include author placeholders or
+withdrawn scientific phrases.
+
+**Required engineering fix:**
+
+1. Stop maintaining Markdown and venue prose independently. Generate every
+   `sections/*.tex` body from one canonical Markdown/AST during every build.
+2. Delete derived section files before generation, compile only freshly emitted
+   outputs, and fail if the committed generated tree differs afterward.
+3. Record a source-slice/AST digest in each generated section and in a cascade
+   manifest. Verify that all included sections carry the current digest.
+4. Add a compiled-include-graph scan and extracted-PDF scan for forbidden stale
+   phrases (`external auditor`, `exactly the commit`, `orthogonal to global
+   density`, `residual ... content component`, `every capacity-adding`).
+5. Treat the response as a claim-bearing artifact: a repair may be marked closed
+   only after canonical source, generated TeX, extracted PDF, cover, and response
+   all pass the same assertion.
+
+### Confirmed problem 2: the headline makes an invalid heterogeneity inference
+
+The title and Figure 1 call the effect `dataset-conditional`. The actual repaired
+evidence is:
+
+- a significant within-MI frequency-5-heavy estimate;
+- no significant tail estimate detected on VG and exploratory Beauty;
+- repaired MI-minus-VG interaction `p=.13`;
+- removing frequency 5 gives `p=.52`;
+- matching VG to MI's global density does not reproduce the MI result;
+- the user-thinning contrast is suggestive at `p=.058`, with its interval
+  including zero.
+
+One significant estimate and two nonsignificant estimates do not establish a
+significant difference between datasets. This is the exact error discussed by
+Gelman and Stern in
+[“The Difference Between Significant and Not Significant Is Not Itself Statistically Significant”](https://sites.stat.columbia.edu/gelman/research/unpublished/signif3.pdf).
+The manuscript acknowledges the `p=.13` interaction but then keeps the
+interaction-like title and graphic label anyway.
+
+**Required scientific fix:** until a prospectively powered dataset-by-treatment
+interaction is supported, replace the claim with `an MI frequency-5-boundary
+case on the audited split; cross-dataset heterogeneity not established`.
+A defensible working title is:
+
+> **Artifact-Gated Evaluation of Text-Augmented Sequential Recommendation: An
+> FIR–Optimizer Package and a Musical-Instruments Frequency-5 Case Study**
+
+If the authors want a dataset-conditional contribution, predeclare a hierarchical
+interaction model across categories and repeated split draws, define the minimum
+heterogeneity effect of interest, and power the study for the interaction rather
+than comparing separate significance labels.
+
+### Methods, results, and algorithm-optimization guidance
+
+#### FIR attribution
+
+The source initializes a delta kernel with gate `g=0`, applies
+`x + g(conv(x)-x)`, and uses global Adam weight decay. At that start the task
+gradient cannot cleanly identify a filter-only effect; the current result is a
+package effect. A no-decay failure would prove dependence of this singular
+parameterization on weight decay, not by itself prove that FIR filtering causes
+the gain.
+
+Use a common, gradient-active parameterization and a factorial design:
+
+| priority | design | decision it supports |
+|---|---|---|
+| **E-A1: nonsingular FIR** | Represent the causal kernel as `delta + Δ`, initialize `Δ=0`, fix the residual multiplier at 1 for the primary test, and compare learned `Δ` with an identity/1-tap control in the same block | isolates whether learnable causal taps add value without a zero-gradient gate |
+| **E-A2: optimizer factor** | Cross learned-vs-fixed taps with weight decay on/off; optionally cross learned-vs-fixed gate only as a secondary factorial | separates the FIR component, gate, and decay interactions |
+| **common random numbers** | Initialize one backbone checkpoint, clone it for every arm, preserve identical data order/dropout streams, parameter groups, stopping rule, and checkpoint cadence | removes the current constructor/RNG-path confound |
+| **diagnostics** | save per-step gate/tap gradients, impulse/frequency responses, optimizer moments, parameter/FLOP/latency deltas, and all checkpoints | shows whether and how the treatment becomes active |
+
+Use fresh predeclared seeds; for a top-journal population claim, repeat across
+multiple split draws rather than adding only optimizer seeds to one split.
+
+#### Text semantics and tail mechanism
+
+Run a **frequency-stratified item-text permutation** control. Freeze several
+independent permutation maps before training, permute within train-frequency bins
+(especially frequency 5), and cross permutation-map draws with optimizer seeds.
+One map plus five training seeds does not quantify map uncertainty. Add a
+dimension-matched random/orthogonal-feature arm so aligned text can be separated
+from generic extra representation capacity or regularization. The decisive
+contrast is aligned text versus frequency-matched permuted text on the same
+split, with the frequency-5 interaction predeclared.
+
+Do not describe intact or discriminative content as the mechanism before this
+control. If aligned and permuted features perform similarly, semantic
+attribution is refuted even if the text-stack package retains a gain.
+
+#### Evaluation geometry and comparator parity
+
+The post-cutoff E-C plan proposes a single-target-per-user evaluation, but the
+existing protocol appendix already states that evaluation has one held-out test
+target per user. The open parity question is **training** target multiplicity:
+all-position sequence splitting, example construction, masking, and loss
+weighting. Audit and, if needed, rerun a next-target-only versus all-position
+training factor under the same evaluation universe.
+
+Run [AlphaFuse](https://arxiv.org/abs/2504.19218) under the identical AR2023
+5-core split, maximum history, full-catalog ranking, and seed budget, or give a
+reproducible executable exclusion showing the exact incompatibility. A narrative
+exclusion alone will not eliminate novelty risk. The 2026
+[FAERec preprint](https://arxiv.org/abs/2604.03688) directly targets semantic/ID
+fusion for tail-item sequential recommendation, further raising the baseline
+bar even though protocols differ.
+
+#### Statistical design
+
+- Treat `n=1` probe rows as screening records, not supported nulls or a ceiling.
+- Predeclare a smaller confirmatory probe family with equal seed/checkpoint
+  budgets, a prospective MDE/equivalence margin, and multiplicity control.
+- Separate uncertainty sources: users/items within a split, optimizer seeds,
+  thinning/permutation maps, split draws, categories, and external comparator
+  estimates. A user bootstrap cannot substitute for split/category uncertainty.
+- Use a hierarchical model or a stratified bootstrap matching the intended
+  inferential population. If only the frozen artifacts are inferential targets,
+  state that limitation prominently and stop making population/dataset claims.
+- Replicate thinning across independently sampled subsets; current intervals
+  condition on one subset draw.
+- Explore a train-frequency-conditioned text gate only **after** the semantic and
+  attribution controls. Use train frequency only, a monotone/regularized gate,
+  a held-out development rule, and a predeclared head-harm constraint; never use
+  test frequency or the frequency-5 result to tune on the test set.
+
+### Writing and submission-readiness guidance
+
+The manuscript is approximately 24,910 plain-text words, with a 211-word
+abstract. The reader/TORS/`acmsmall` PDFs are 55/48/50 pages. The abstract repair
+is good; the paper still reads as a forensic ledger rather than a synthesized
+journal article.
+
+Recommended main-paper spine (target roughly 10--14k words and 20--35
+`acmsmall` pages):
+
+1. problem and exact contribution boundary;
+2. related work organized by evaluation integrity, FIR/causal convolution, and
+   semantic/ID fusion—not by audit chronology;
+3. protocol and artifact-gate method;
+4. FIR package experiment, with attribution limitation;
+5. MI frequency-5 case and formal cross-dataset non-result;
+6. decisive controls/comparators;
+7. limitations, governance, and reproducibility.
+
+Move the dated audit history, validator implementation detail, retraction
+chronology, old Beauty scan, full negative-probe inventory, and long artifact
+filenames to a supplement/repository ledger. Keep one compact deviation table in
+the article. Replace `pre-registered` with `pre-declared` unless a genuinely
+independent registry/time boundary exists. Correct `an version-controlled`,
+remove internal metadata-verification notes from references, and shorten the
+cover to: exact title; 3--4 contributions at supported strength; TORS fit; data/
+ethics/release statement; declarations; real author/contact block.
+
+### Figure and table redesign guidance
+
+All 153 pages were rasterized and inspected. Confirmed visible defects:
+
+- real author/institution/country/contact placeholders on all first pages and
+  `[Maintainer: short author list]` on every even venue page;
+- bare DOI/article fields in the `acmsmall` preview;
+- Figure 1 caption/footer collision on TORS page 26 and `acmsmall` page 27;
+- Figure 1 physically sliced through panel C across reader pages 28--29 with no
+  continuation marker;
+- `Musical_Instrumentssparse` collision in Table 1d on `acmsmall` page 23;
+- Table 1a caption orphaned on TORS page 16, table beginning page 17;
+- Table A1 caption orphaned on `acmsmall` page 48, with multiple row/column
+  collisions on page 49;
+- Figure 2 is undersized in all three artifacts;
+- a 47--50 pt overfull filename line near `05-results.tex:229-230`, plus many
+  severe underfull boxes matching the visible voids/table spacing;
+- reader metadata title `_paper_render.html` and large page voids.
+
+Figure 1 also contains a factual graphic error: panel B's legend calls the head
+series `monotone`, while the values and prose show an adjacent reversal. Panel A
+colors MI as a green win and the others as nulls without displaying the failed
+`p=.13` interaction; panel C draws directional mechanism-like arrows around a
+`p=.058` estimate whose interval crosses zero.
+
+Redesign as follows:
+
+1. **Panel A: forest plot**, not win/null bars. Plot each dataset effect with
+   95% interval on one scale; label Beauty exploratory; print the formal
+   MI-minus-VG interaction estimate and `p=.13` beside the panel.
+2. **Panel B: rank-trend plot** with intervals at each thinning rung and the
+   label `overall rank trend; one reversal; one fixed subset draw`. Remove
+   `monotone` and any causal wording.
+3. **Frequency sensitivity panel:** show MI frequency 5 versus frequency >5
+   effects/intervals directly; this is more decision-relevant than a sparse-vs-
+   dense color story.
+4. **Panel C/Figure 2:** if retained, remove connection/trajectory arrows,
+   enlarge labels, show uncertainty intervals, and state `p=.058; CI crosses 0`
+   in the graphic. Prefer moving it to the supplement until multi-draw evidence
+   exists.
+5. Keep each figure plus caption wholly above the footer. Split large panels
+   into explicitly numbered figures rather than slicing a bitmap across pages.
+6. Use `tabularx`/fixed ragged-right columns, explicit padding and safe line
+   breaks for Table 1d; use landscape or a supplementary table for A1. Enforce
+   `\needspace`/float rules so captions stay with headers and first rows.
+7. Add a final PDF-geometry gate using extracted text bounding boxes to detect
+   caption/footer intersections and table-cell overlap, but retain human
+   all-page review as the final release step.
+
+No broken glyph, unresolved citation marker, empty page, or ordinary page-edge
+clipping was found. Those positives do not offset the confirmed collisions and
+split figure.
+
+### Package, citation, and release guidance
+
+- Fill the real single-blind byline, affiliation, country, short-author list,
+  corresponding contact, and cover affirmation. Add `Maintainer:` and missing
+  author/contact/DOI fields to a fatal submission-mode scan.
+- Repair `paper_tex/build.ps1:14` by removing the embedded backspace and add the
+  Windows wrapper to CI. The direct Python strict path passing does not excuse a
+  documented public command that fails.
+- Restrict H9 to the actual compiled include graph, strip comments, parse all
+  citation commands robustly, and scan both `.log` and `.blg`. Classify which of
+  the 123 metadata warnings are acceptable; fix proceedings/volume/page/publisher
+  fields and the duplicated FAERec note rather than advertising warning-free
+  health.
+- Synchronize `BUILD_NOTES.md` with the live drivers and class; remove claims
+  that v2.19 came from TeX Live 2023-final.
+- Cut no new deposit until the scientific wording, canonical cascade, Windows
+  build, metadata, and visual package are final. Then tag the exact content
+  commit, upload byte-identical artifacts, verify the literal tag, and retain a
+  new default-Windows clean-clone/bootstrap/strict transcript.
+
+### Fact-check sources and scope
+
+- The official
+  [TORS author guidelines](https://dl.acm.org/journal/tors/author-guidelines?doi=10.1145%2Ftors&publicationCode=tors)
+  were directly verified in the previous audit on 2026-07-21 as single-blind,
+  requiring the `[manuscript,screen]` workflow and cover declarations. The
+  dynamic page could not be re-rendered in this run's restricted browser, so
+  authors should confirm the live page once more immediately before submission.
+- [CTAN](https://ctan.org/pkg/acmart) currently lists production `acmart` v2.19,
+  dated 2026-06-27; the class upgrade is confirmed current.
+- [Gelman and Stern (2006)](https://sites.stat.columbia.edu/gelman/research/unpublished/signif3.pdf)
+  directly supports the critique of inferring heterogeneity from one significant
+  and one nonsignificant result.
+- [AlphaFuse](https://arxiv.org/abs/2504.19218) learns ID embeddings in the null
+  space of language embeddings and evaluates long-tail settings; it is a close,
+  admitted omitted comparator.
+- [FAERec](https://arxiv.org/abs/2604.03688) explicitly targets LLM/ID fusion for
+  tail-item sequential recommendation, reinforcing that broad semantic-tail
+  novelty is already crowded.
+- The data-license/governance caveat remains supported by the
+  [dataset-maintainer statement](https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023/discussions/1)
+  and ACM's
+  [research involving human participants and subjects policy](https://www.acm.org/publications/policies/research-involving-human-participants-and-subjects).
+
+### Plausible risks and items requiring author verification
+
+**Plausible top-journal risks:** even after prose repair, the architectural
+novelty may remain incremental; the artifact-gate contribution is demonstrated
+on one project rather than independently validated; a long case-study manuscript
+may be judged out of proportion to the scientific contribution; and a documented
+exclusion rather than an AlphaFuse run may be insufficient for reviewers.
+
+**Author/institution/editor verification required:**
+
+- real authors, affiliations, country, corresponding contact, conflicts,
+  reviewer suggestions, and signed originality/no-concurrent-review declaration;
+- exact TORS article type, current live template, and whether the repository/
+  preprint plan satisfies the current review workflow;
+- institutional/legal/venue determination for linkable split/sidecar
+  derivatives and a data-specific redistribution basis;
+- the intended inference population and a prospective MDE/power justification;
+- whether all post-cutoff experiments will be completed before submission;
+- the final immutable tag/release/DOI and a fresh remote asset round-trip.
+
+### Prioritized repair order
+
+1. **P0 -- restore truth:** choose one canonical source; regenerate all TeX;
+   delete stale mechanism/actor/deposit/negative-map language everywhere;
+   rerun semantic and extracted-PDF gates.
+2. **P0 -- stop submission:** fill real identity/declaration metadata, repair the
+   Windows wrapper, and fix Figure 1/Table 1d/Table A1/footer collisions.
+3. **P1 -- narrow the headline:** remove dataset-conditional title/figure
+   framing; use the MI frequency-5 case wording and `pre-declared` taxonomy.
+4. **P1 -- run decision-changing evidence:** nonsingular matched FIR factorial,
+   multi-map frequency-stratified permutation/random-feature controls, training-
+   target parity, AlphaFuse, and multiple thinning draws.
+5. **P1 -- repair inference:** formal interactions, split/category uncertainty,
+   prospective MDE/equivalence, equal-power negative probes.
+6. **P2 -- synthesize:** shorten the main paper, move the forensic ledger and old
+   Beauty material to a supplement, redesign figures/tables, and rewrite the
+   cover.
+7. **P2 -- governance and release:** document determinations, rerender/inspect
+   every page, cut one immutable final tag, and verify the public bytes from zero.
+
+### Open questions
+
+- Which file is the executable canonical source, and why did a claimed generated
+  cascade update only a subset of TeX sections?
+- Will the title be narrowed now, or will the authors run a prospectively powered
+  cross-dataset interaction study first?
+- What inferential population is intended: these exact frozen users/splits,
+  Amazon categories, or recommender deployments more generally?
+- Why does the current E-C plan target single-target evaluation when the protocol
+  already has one held-out test target per user? Is training-example multiplicity
+  the actual unresolved parity issue?
+- Will permutation uncertainty, thinning-subset uncertainty, and split
+  uncertainty be represented, not just optimizer seeds?
+- Can AlphaFuse and one current adaptive semantic/ID fusion baseline be executed
+  on the exact protocol before review?
+- Who will supply and affirm the single-blind author/contact/declaration fields?
+- What documented authority supports redistribution of the linkable derivatives?
+- Which exact final commit/tag/release will the editor receive, and can a default
+  Windows clean clone reproduce it byte-for-byte?
+
+### Running top-journal checklist
+
+- [x] Strict arithmetic/provenance rebuild passes 175 cells/15 families/269 files.
+- [x] Governed artifacts remain byte-identical across the strict pass.
+- [x] HEAD Git-backed manifest verification passes 131 entries.
+- [x] Stale-tag guard correctly rejects v1.1.11 against the cutoff tree.
+- [x] `he2016ups` restored; no visible undefined citation marker.
+- [x] Recognized TeX citation keys checked in both directions.
+- [x] Single-blind class options adopted and line numbers removed.
+- [x] `acmart` upgraded to current v2.19.
+- [x] Abstract reduced to 211 words.
+- [x] All 153 current PDF pages rasterized and inspected.
+- [ ] One canonical source deterministically regenerates every compiled section.
+- [ ] Canonical, TeX, PDF, cover, README, and response agree semantically.
+- [ ] Dataset-conditional/density/content claims limited to supported evidence.
+- [ ] `pre-registered`/`confirmed` taxonomy consistent with outcome visibility.
+- [ ] FIR component isolated from gate/initialization/optimizer effects.
+- [ ] Item-text permutation/random-feature and training-parity controls complete.
+- [ ] AlphaFuse/current fusion baseline run on the exact protocol or scope narrowed.
+- [ ] Split/subset/map/category uncertainty and prospective power addressed.
+- [ ] `n=1` probes labeled screening only; ceiling/exclusion language removed.
+- [ ] Real single-blind metadata and cover affirmation supplied; no placeholders.
+- [ ] Windows `build.ps1` succeeds from a clean clone.
+- [ ] BibTeX metadata warnings triaged; compiled citation graph clean.
+- [ ] Figure 1/footer and reader split repaired; Figure 1 statistical labels fixed.
+- [ ] Table 1d/A1 collisions, orphan captions, voids, and 50 pt overflow repaired.
+- [ ] Reader/final PDF metadata meaningful; no bare DOI/article fields.
+- [ ] Manuscript synthesized to journal length and narrative style.
+- [ ] Ethics/legal/data-redistribution determinations documented.
+- [ ] Final literal tag and uploaded assets match and pass fresh public-clone QA.
 
 ## Audit Run - 2026-07-21 01:01 Australia/Sydney
 

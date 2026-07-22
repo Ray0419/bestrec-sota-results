@@ -18,8 +18,19 @@ old = io.open(HTML, encoding="utf-8").read()
 head = old.split("<body>", 1)[0] + "<body>"
 if "break-inside" not in head:  # audit: no dangling table cells across page breaks
     head = head.replace("td,th{", "tr{break-inside:avoid}\ntd,th{", 1)
-if "img{" not in head:  # embedded figures scale to text width
-    head = head.replace("@page{", "img{max-width:100%;display:block;margin:10px auto}\n@page{", 1)
+if "img{" not in head:  # embedded figures scale to text width; never slice across pages
+    head = head.replace("@page{", "img{max-width:100%;max-height:92vh;display:block;"
+                        "margin:10px auto;page-break-inside:avoid;"
+                        "break-inside:avoid}\n@page{", 1)
+# PDF metadata title comes from <title> (audit 10:47: it advertised the html filename)
+TITLE = next((ln.lstrip("# ").strip() for ln in src.split("\n") if ln.startswith("# ")),
+             "BEST-Rec artifact-gated evaluation study")
+import re as _re
+if "<title>" in head:
+    head = _re.sub(r"<title>.*?</title>", "<title>" + TITLE + "</title>", head,
+                   count=1, flags=_re.S)
+else:
+    head = head.replace("<body>", "<title>" + TITLE + "</title>\n<body>", 1)
 io.open(HTML, "w", encoding="utf-8").write(head + body + "</body></html>")
 print("html written:", len(body), "chars body")
 

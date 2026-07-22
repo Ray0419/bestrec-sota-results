@@ -2,7 +2,7 @@
 
 Dear Editors,
 
-We submit "Pre-Declared, Artifact-Gated Evaluation for Sequential Recommendation: Causal FIR Filtering and Dataset-Conditional Text Benefits on Amazon Reviews 2023" for consideration as a full research article.
+We submit "Artifact-Gated Evaluation of Text-Augmented Sequential Recommendation: An FIR-Optimizer Package and a Musical-Instruments Frequency-5 Case Study on Amazon Reviews 2023" for consideration as a full research article.
 
 **Declarations (per the TORS author guidelines):** this work is original, it has not been published previously, and it is not simultaneously under review or submitted elsewhere. [Maintainer: affirm at submission.]
 

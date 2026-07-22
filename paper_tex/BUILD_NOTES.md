@@ -139,7 +139,7 @@ invented) plus the deliberately-left entries above.
 | Tool | Version | Location | Notes |
 |---|---|---|---|
 | Tectonic | 0.16.9 | `C:\Users\rayxc\AppData\Local\tectonic\tectonic.exe` | winget has no Tectonic package ("No package found"); installed the official prebuilt `x86_64-pc-windows-msvc` binary from the GitHub release `tectonic@0.16.9`. Self-contained; fetches TeX packages on demand. MiKTeX was NOT needed. |
-| acmart class | v2.19 (2026/06/27; upgraded 2026-07-21 per audit 01:01) | vendored `paper_tex/acmart.cls` | Tectonic's bundled acmart predates the TORS journal option ("Incorrect journal TORS"), so the class is vendored from the TeX Live 2023-final package archive (matches Tectonic's kernel era; the current CTAN acmart v2.1x targets the newer tagging-enabled LaTeX kernel). `ACM-Reference-Format.bst` vendored from the same package. |
+| acmart class | v2.19 (2026/06/27) | vendored `paper_tex/acmart.cls` | Tectonic's bundled acmart predates the TORS journal option, so the class is vendored; v2.19 was extracted from the current TeX Live package archive on 2026-07-21 (audit 01:01) and builds under tectonic with one `\texorpdfstring` fix for math in a section title. `ACM-Reference-Format.bst` remains the previously vendored copy. |
 | pandoc | 3.10 | `C:\Users\rayxc\AppData\Local\Pandoc\pandoc` | `-f gfm+smart -t latex` for all md→tex conversion. |
 | Python | 3.12.13 | `_bestrec_run/.venv/Scripts/python.exe` | pypdf 6.10.2 for the hygiene scan. |
 

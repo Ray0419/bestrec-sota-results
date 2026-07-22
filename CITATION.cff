@@ -5,7 +5,7 @@ type: software
 authors:
   - name: "Ray0419"
     # Replace with legal name(s) before minting the DOI if de-anonymizing;
-    # the manuscript itself is anonymized for review.
+    # TORS review is single-blind: real author metadata is required in the manuscript (maintainer-supplied).
 repository-code: "https://github.com/Ray0419/bestrec-sota-results"
 license: MIT
 version: "1.1.11"
@@ -15,15 +15,13 @@ keywords:
   - Amazon Reviews 2023
   - HSTU
   - text-augmented recommendation
-  - causal FIR filter
+  - FIR treatment package (left-causal FIR filter)
   - reproducibility
   - pre-declaration
 abstract: >-
   Code, pre-declarations, provenance manifests, and evaluation artifacts for
   an HSTU-style pure-PyTorch sequential recommender on the Amazon Reviews 2023
-  5-core benchmark: a strictly causal, zero-initialized FIR temporal filter
-  (positive on all four categories tested; two under a dedicated
-  pre-declaration), two counted pre-declared per-category point-estimate
+  5-core benchmark: a strictly causal, zero-initialized FIR temporal filter — measured only as the bundled FIR-initialization-optimizer treatment package (component attribution open) — with positive within-category package estimates on all four categories tested ( two under a dedicated pre-declaration; the rerun is outcome-visible, not confirmatory), two counted pre-declared per-category point-estimate
   comparisons against published single-run HSTU-BLaIR values
   (Musical_Instruments; Office_Products under the redesigned V3
   pre-declaration with an environment-matched reference — the earlier V1

@@ -16,7 +16,7 @@ review list (SOTA mentions + negated claim-wordings): 19
   REVIEW SOTA-mention :: not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind. The V1 VOID above stands unchanged as its own record (Append
   REVIEW SOTA-mention :: n wording: a per-category point-estimate comparison; no paired superiority; not SOTA of any kind. The limitation that remains: both counted comparisons (MI, Office 
   REVIEW SOTA-mention :: itive text contributor (+0.0009), not a headline. We do not claim a Video_Games SOTA — the published HSTU-BLaIR 0.0760 relies on custom CUDA/Triton kernels that are
-  REVIEW SOTA-mention :: ratus these results were produced under. Explicit non-claims: • We do not claim SOTA over TIGER, LIGER, BLaIR, or HSTU-BLaIR; the published HSTU-BLaIR 0.0760 remain
+  REVIEW SOTA-mention :: anuscript submitted to ACM 40 [Maintainer: short author list] • We do not claim SOTA over TIGER, LIGER, BLaIR, or HSTU-BLaIR; the published HSTU-BLaIR 0.0760 remain
   REVIEW SOTA-mention :: to the branch. The public record resolves at https://github.com/Ray0419/bestrec-sota-results (releases: v0.9-audit-evidence for working assets; v1.1.11-deposit for 
   REVIEW SOTA-mention :: . We provide our 0.01946 (2-seed mean) as a reference baseline rather than as a SOTA-improvement claim. A future apples-to-apples comparison would require either: •
   REVIEW placeholder :: '[Maintainer:' byline fields pending (DRAFT_WAIVER=1 -- logged, non-fatal)

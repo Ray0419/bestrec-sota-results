@@ -68,7 +68,7 @@ We state the paper's limitations explicitly, for reviewers:
 \item
   \textbf{The tail finding is AR2023-limited and small in absolute terms.} It rests on three AR2023 categories (Musical\_Instruments, Video\_Games, Beauty\_and\_\allowbreak PC); the MI tail effect (+0.000335 NDCG@10, \textasciitilde30 hits/seed base) is a large relative but small absolute effect, and the pattern is not replicated on non-Amazon domains.
 \item
-  \textbf{The negative probes are not all equally powered.} Most Table 2 rows are single-seed exploratory probes; only the multi-seed pre-declared negatives carry confirmatory weight (\S\ref{sec:5.5}).
+  \textbf{The negative probes are not all equally powered.} Most Table 2 rows are single-seed exploratory probes; only the multi-seed pre-declared negatives were run at full pre-declared power (no null is thereby confirmed --- the equivalence framework is withdrawn) (\S\ref{sec:5.5}).
 \item
   \textbf{Same-seed arms are not initialization-paired (corrected 2026-07-19).} The text/ID, FIR/no-FIR, and titration arm pairs share seed numbers, not initializations: treatment-specific modules are constructed before the shared backbone, consuming RNG, so backbone initialization, batch order, and dropout streams differ between arms (\S\ref{sec:5.3} disclosure). All paired-inference language has been withdrawn; the retained inferential statements are independent-arm (Welch/Satterthwaite), which cost the VG equivalence claim (retracted) and the \S\ref{sec:5.4.2} dd significance (downgraded to suggestive). The TFV2 rerun campaign (\S\ref{sec:5.3}/\S\ref{sec:5.2}) is independent-arm \textbf{by pre-declared design}, closing this defect for the superseding evidence.
 \item

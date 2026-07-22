@@ -1,4 +1,5 @@
 param([string]$Draft = "")
+$env:SOURCE_DATE_EPOCH = (git log -1 --format=%ct 2>$null)
 $__prevWaiver = $env:DRAFT_WAIVER
 try {
 if ($Draft -ne "") {
@@ -6,8 +7,8 @@ if ($Draft -ne "") {
   "DRAFT BUILD (waiver logged): $Draft" | Tee-Object -FilePath (Join-Path $PSScriptRoot "draft_waiver.log")
 } else { Remove-Item Env:DRAFT_WAIVER -ErrorAction SilentlyContinue }
 # Build the TORS LaTeX derivative (PowerShell twin of build.sh; two targets, round-8).
-#   review target : main.tex          [manuscript,manuscript,screen (single-blind)]      -> PAPER_TORS.pdf (gated)
-#   preview target: main-acmsmall.tex [acmsmall,screen,manuscript,screen (single-blind)] -> PAPER_TORS_acmsmall.pdf (untracked)
+#   review target : main.tex          [manuscript,screen]      -> PAPER_TORS.pdf (gated)
+#   preview target: main-acmsmall.tex [acmsmall,screen] -> PAPER_TORS_acmsmall.pdf (untracked)
 $ErrorActionPreference = "Stop"
 Set-Location $PSScriptRoot
 
@@ -24,10 +25,16 @@ if ($LASTEXITCODE -ne 0) { throw "build_hstu_tables.py --submission failed (stri
 if ($LASTEXITCODE -ne 0) { throw "emit_latex_tables.py failed (numeric cross-check or extraction drift)" }
 
 Write-Host "== [2/4] tectonic compile: review target (manuscript) =="
-& $Tectonic --keep-logs main.tex 2>&1 | Tee-Object -FilePath (Join-Path $PSScriptRoot "main_console.log")
+$__eap = $ErrorActionPreference; $ErrorActionPreference = "Continue"
+& $Tectonic --keep-logs main.tex 2>&1 | ForEach-Object { "$_" } | Tee-Object -FilePath (Join-Path $PSScriptRoot "main_console.log")
+$__rc = $LASTEXITCODE; $ErrorActionPreference = $__eap
+if ($__rc -ne 0) { throw "tectonic main.tex failed (exit $__rc)" }
 if ($LASTEXITCODE -ne 0) { throw "tectonic compile failed (main.tex)" }
 Write-Host "== [2/4] tectonic compile: production preview (acmsmall) =="
-& $Tectonic main-acmsmall.tex
+$__eap = $ErrorActionPreference; $ErrorActionPreference = "Continue"
+& $Tectonic main-acmsmall.tex 2>&1 | ForEach-Object { "$_" }
+$__rc = $LASTEXITCODE; $ErrorActionPreference = $__eap
+if ($__rc -ne 0) { throw "tectonic main-acmsmall.tex failed (exit $__rc)" }
 if ($LASTEXITCODE -ne 0) { throw "tectonic compile failed (main-acmsmall.tex)" }
 
 Write-Host "== [3/4] package PAPER_TORS.pdf (review) + PAPER_TORS_acmsmall.pdf (preview, untracked) =="

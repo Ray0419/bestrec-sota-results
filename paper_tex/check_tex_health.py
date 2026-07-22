@@ -117,13 +117,25 @@ H10_BANNED = ("external auditor", "exactly the commit carrying",
               "orthogonal to global density", "regime-dependent on catalog density",
               "every capacity-adding probe was neutral",
               "wins the rare-item tail", "dataset-conditional long-tail pattern",
-              "pre-registered")
+              "pre-registered",
+              # audit 2026-07-22 13:50 problems 3/4:
+              "carries the generalization", "carries the cross-category",
+              "near-additively", "orthogonal axes", "dead weight confirmed",
+              "confirmed under the valid", "cannot manufacture",
+              "carry confirmatory weight", "a unidentified",
+              "never seen sold", "168 cells", "153 files")
 H10_BANNED_RE = (r"residual[^.\n]{0,60}content component",)
+_pub10 = [os.path.join(HERE, "..", rel) for rel in (
+    "PAPER_SUBMISSION.md", "README.md", "COVER_LETTER_TORS.md", "CANONICAL_SUBMISSION.md",
+    "PLAIN_LANGUAGE_COMPANION.md", "CITATION.cff", ".zenodo.json",
+    os.path.join("companion_site", "explainer.html"))]
 _all10 = "\n".join(io.open(f, encoding="utf-8", errors="replace").read()
                    for f in (_g2.glob(os.path.join(HERE, "sections", "*.tex"))
-                             + _g2.glob(os.path.join(HERE, "tables", "*.tex"))))
+                             + _g2.glob(os.path.join(HERE, "tables", "*.tex"))
+                             + [f for f in _pub10 if os.path.exists(f)]))
+_all10_low = _all10.lower()
 for _b10 in H10_BANNED:
-    if _b10 in _all10:
+    if _b10.lower() in _all10_low:
         fails.append(f"H10: stale/withdrawn phrase in compiled sources: {_b10!r}")
 for _br10 in H10_BANNED_RE:
     m10 = re.search(_br10, _all10)

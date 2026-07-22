@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build the TORS LaTeX derivative (two targets, round-8; see VENUE_PLAN.md + BUILD_NOTES.md):
-#   1. DEFAULT REVIEW TARGET  : main.tex          [manuscript,manuscript,screen (single-blind)]      -> PAPER_TORS.pdf (gated artifact)
-#   2. PRODUCTION PREVIEW     : main-acmsmall.tex [acmsmall,screen,manuscript,screen (single-blind)] -> PAPER_TORS_acmsmall.pdf (untracked)
+#   1. DEFAULT REVIEW TARGET  : main.tex          [manuscript,screen]      -> PAPER_TORS.pdf (gated artifact)
+#   2. PRODUCTION PREVIEW     : main-acmsmall.tex [acmsmall,screen] -> PAPER_TORS_acmsmall.pdf (untracked)
 #
 # Steps (fail-closed at each stage):
 #   [1] regenerate paper_tex/tables/*.tex from the artifact graph
@@ -15,13 +15,17 @@
 #   PYTHON   (default: ../_bestrec_run/.venv/Scripts/python.exe)
 #   TECTONIC (default: ~/AppData/Local/tectonic/tectonic.exe, else `tectonic` on PATH)
 set -euo pipefail
+export SOURCE_DATE_EPOCH="$(git log -1 --format=%ct 2>/dev/null || echo 0)"
 
 # STRICT BY DEFAULT (audit 2026-07-22 12:49 C1: wrappers must not self-waive).
 # A draft build needs an explicit, logged reason:  ./build.sh --draft "reason"
-if [ "$1" = "--draft" ]; then
-  if [ -z "$2" ]; then echo "FATAL: --draft requires a reason"; exit 2; fi
+if [ "${1:-}" = "--draft" ]; then
+  if [ -z "${2:-}" ]; then echo "FATAL: --draft requires a reason"; exit 2; fi
   export DRAFT_WAIVER=1
-  echo "DRAFT BUILD (waiver logged): $2" | tee draft_waiver.log
+  SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+  W_LINE="$(date -u +%Y-%m-%dT%H:%M:%SZ) DRAFT BUILD (waiver): $2"
+  echo "$W_LINE" >> "$SCRIPT_DIR/draft_waiver.log"
+  echo "$W_LINE"
   shift 2
 else
   unset DRAFT_WAIVER

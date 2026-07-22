@@ -51,7 +51,7 @@ mattering more than others.
   converted — once, up front, by a separate language model that is never trained further —
   into a numeric fingerprint. Similar products
   end up with similar fingerprints — two different brands of guitar tuner "smell alike" — so the
-  model can reason about a product it has rarely or never seen sold. This is how it handles the
+text gives the model a head start on items it has seen only a handful of times in training. (Important honesty note: for items with ZERO training exposure the paper found text does NOT help at all — zero hits through rank 100 in every rerun category — so no cold-start ability is claimed.)
   huge tail of obscure items with only a handful of purchases each.
 - Everything above is small by modern standards: **11.6 million parameters** (the model's
   internal adjustable dials) and **about 10 minutes of training per run on one consumer
@@ -131,7 +131,7 @@ the miss; the contract is already public, so there is no quiet way to discard it
 Every number printed in the paper — **168 of them** — is wired to the raw result files it came
 from. At every change, a build script recomputes all 168 from those files and **refuses to build
 the paper** if even one printed digit disagrees with its evidence, one number's origin can't be
-traced, or one required family of evidence is missing. A separate manifest pins **153 files by digital
+traced, or one required family of evidence is missing. A separate manifest pins **276 files (current count; the release manifest is authoritative) by digital
 fingerprint (hash)**, so evidence can't quietly change after the fact. And since mid-July,
 each counted result has its own referee wired into that same build: the Office V3 and
 filter-breadth adjudicators re-run every time, and the paper refuses to build unless both

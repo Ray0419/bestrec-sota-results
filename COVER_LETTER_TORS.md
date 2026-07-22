@@ -16,7 +16,7 @@ VOID by its own frozen rule and is reported as such, permanently.
 
 **The findings, at their exact strength.**
 
-1. Two pre-registered per-category point-estimate comparisons pass against the
+1. Two pre-declared per-category point-estimate comparisons pass against the
    published HSTU-BLaIR numbers (Musical_Instruments and Office_Products V3, the
    latter also against an environment-matched local regeneration). These are
    point-estimate comparisons under our reproduced protocol — not SOTA claims of

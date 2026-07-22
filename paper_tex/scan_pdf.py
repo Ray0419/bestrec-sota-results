@@ -86,6 +86,16 @@ for pat in RETRACTED_PATS:
 for m in re.finditer(r"state[-\s]of[-\s]the[-\s]art|\bSOTA\b", norm, re.I):
     review.append(("SOTA-mention", ctx(norm, m)))
 
+# placeholder gate (audit 2026-07-22 11:48 C3): strict by default, logged waiver
+_txt = "\n".join(pages)
+if "[Maintainer:" in _txt:
+    if os.environ.get("DRAFT_WAIVER") == "1":
+        review.append(("placeholder", "'[Maintainer:' byline fields pending "
+                       "(DRAFT_WAIVER=1 -- logged, non-fatal)"))
+    else:
+        failures.append(("placeholder", "'[Maintainer:' present -- set "
+                         "DRAFT_WAIVER=1 to build a draft"))
+
 # ---- report -------------------------------------------------------------------------
 out = io.StringIO()
 print("hygiene scan:", os.path.basename(PDF), "| pages:", len(rd.pages), file=out)

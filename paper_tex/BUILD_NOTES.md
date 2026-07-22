@@ -10,8 +10,8 @@ record). This directory is a *derived* typeset format per `VENUE_PLAN.md`: forma
 only — no content was cut, added, or reworded (two presentation-only additions are disclosed
 under "Conversion decisions" below). Compiled outputs:
 **`paper_tex/PAPER_TORS.pdf` — the gated review artifact — 40 pages, single-column
-`[manuscript,review,anonymous]` acmart format, Figs. 1–3 embedded**, plus the untracked
-production preview `PAPER_TORS_acmsmall.pdf` (42 pages, `[acmsmall,screen,review,anonymous]`). *Authoritative page counts are always the latest build's own output (`hygiene_scan_output.txt` for the review target); the counts written in this log are point-in-time.*
+`[manuscript,screen] (single-blind; corrected 2026-07-21)` acmart format, Figs. 1–3 embedded**, plus the untracked
+production preview `PAPER_TORS_acmsmall.pdf` (42 pages, `[acmsmall,screen]`). *Authoritative page counts are always the latest build's own output (`hygiene_scan_output.txt` for the review target); the counts written in this log are point-in-time.*
 
 ## 2026-07-13 sync (3): post-V3 consistency sweep
 
@@ -84,9 +84,9 @@ date in place.
 Per ACM's general author workflow (initial journal review submissions in single-column
 `manuscript` format; VENUE_PLAN.md: "TORS: `manuscript`/`acmsmall` journal format"):
 
-- `main.tex` — **default review target**: `\documentclass[manuscript,review,anonymous]{acmart}`
+- `main.tex` — **default review target**: `\documentclass[manuscript,screen] (single-blind; corrected 2026-07-21){acmart}`
   → `PAPER_TORS.pdf` (the manifest-gated review artifact; letter-size 612×792 pt page).
-- `main-acmsmall.tex` — **production preview**: `[acmsmall,screen,review,anonymous]`
+- `main-acmsmall.tex` — **production preview**: `[acmsmall,screen]`
   → `PAPER_TORS_acmsmall.pdf` (6.75in×10in page; **untracked**, see `paper_tex/.gitignore`).
 - Both are two-line drivers sharing every preamble command and the full body via
   `paper-shared.tex`; `build.sh`/`build.ps1` compile both and hygiene-scan the review artifact.
@@ -150,10 +150,10 @@ exit on any hit). Tool paths overridable via `PYTHON` / `TECTONIC` env vars.
 
 ## Document class / anonymization
 
-Default review target (`main.tex`): `\documentclass[manuscript,review,anonymous]{acmart}` —
+Default review target (`main.tex`): `\documentclass[manuscript,screen] (single-blind; corrected 2026-07-21){acmart}` —
 ACM's single-column review format, producing the manifest-gated `PAPER_TORS.pdf`. Production
 preview (`main-acmsmall.tex`, untracked output `PAPER_TORS_acmsmall.pdf`):
-`\documentclass[acmsmall,screen,review,anonymous]{acmart}`. Both drivers share
+`\documentclass[acmsmall,screen]{acmart}`. Both drivers share
 `paper-shared.tex`, which sets `\acmJournal{TORS}`,
 `\citestyle{acmauthoryear}`, `\setcopyright{none}`, `\settopmatter{printacmref=false}`,
 `\acmDOI{}` (suppresses the class's `10.1145/nnnnnnn` stub on the review manuscript).
@@ -374,8 +374,8 @@ official/pinned-reproduction language; Office V1 presented as passed is forbidde
 
 ```
 paper_tex/
-├── main.tex                  # REVIEW driver: [manuscript,review,anonymous] (round-8 default target)
-├── main-acmsmall.tex         # PREVIEW driver: [acmsmall,screen,review,anonymous] (untracked output)
+├── main.tex                  # REVIEW driver: [manuscript,screen] (single-blind; corrected 2026-07-21) (round-8 default target)
+├── main-acmsmall.tex         # PREVIEW driver: [acmsmall,screen] (untracked output)
 ├── paper-shared.tex          # shared preamble commands + full document body (both drivers input this)
 ├── references.bib            # transcribed md list (32 entries incl. 5 concurrent preprints; round-8 verified metadata)
 ├── acmart.cls                # vendored v2.19 (current CTAN; upgraded 2026-07-21) — TORS-capable, tectonic-compatible

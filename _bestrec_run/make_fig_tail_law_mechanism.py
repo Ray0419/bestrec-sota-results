@@ -45,34 +45,35 @@ plt.rcParams.update({
 fig, axes = plt.subplots(3, 1, figsize=(7.0, 11.4))
 
 # ================================================================== Panel A
-# 5.3 Table 1d: text - ID tail contrast (same-seed-number arms; NOT initialization-paired).
+# TFV2 forest (audit 2026-07-22 11:48 C1: ONE estimand per panel -- all three rows
+# are TFV2 tie-safe positive-frequency-tail Welch contrasts, 8 fresh seeds/arm,
+# zero-exposure separated; verbatim source: TFV2_ADJUDICATION.md. The historical
+# defective-cohort Table-1d values are NOT plotted (the table prints them).
 axA = axes[0]
-ds      = ["Musical_Instr.\n(sparse)", "Video_Games\n(dense)", "Beauty_&_PC\n(dense)"]
-tailD   = [ 0.000335, -0.000148, -0.0000078]
-tailErr = [ 0.000195,  0.000179,  0.000000]   # MI/VG 5-seed sd; Beauty 2-3 seed (no band)
-posfrac = ["5/5", "2/5", "1/3"]
-verdict = ["freq-5-heavy\ntail advantage", "null\n(equiv. not estab.)", "null\n(exploratory)"]
-cols    = [C_WIN, C_NULL, C_NULL]
-x = np.arange(len(ds))
-axA.bar(x, tailD, yerr=tailErr, color=cols, edgecolor="black", linewidth=0.8,
-        capsize=5, width=0.6, error_kw=dict(elinewidth=1.2))
-axA.axhline(0, color="black", linewidth=0.9)
-# MI CI annotation (excludes 0)
-axA.annotate("Welch 95% CI\n[+0.000109, +0.000562]\nexcludes 0",
-             xy=(0.18, 0.000335), xytext=(0.85, 0.00062),
-             ha="center", fontsize=7.5, color=C_WIN,
-             arrowprops=dict(arrowstyle="-", color=C_WIN, lw=0.8))
-for xi, (d, p, v) in enumerate(zip(tailD, posfrac, verdict)):
-    yoff = 0.00004 if d >= 0 else -0.00010
-    axA.text(xi, d + yoff + (0.00004 if d >= 0 else -0.00006),
-             f"{d:+.6f}\n{p} seeds +", ha="center",
-             va="bottom" if d >= 0 else "top", fontsize=7.5)
-axA.set_xticks(x)
-axA.set_xticklabels(ds, fontsize=8.5)
-axA.set_ylabel("tail-tercile  $\\Delta$NDCG@10  (text $-$ ID)")
-axA.set_title("(A) Per-dataset tail estimates -- MI freq-5 case\n(MI$-$VG interaction p = 0.13: heterogeneity NOT established)")
-axA.set_ylim(-0.00055, 0.00085)
-axA.grid(axis="y", alpha=0.3)
+rows = [
+    # label, estimate, ci_lo, ci_hi, note
+    ("MI  text$-$ID tail\n(8v8, freq-5-heavy)", 0.000420, 0.000181, 0.000660,
+     "p = 0.0022  Holm-PASS"),
+    ("VG  text$-$ID tail\n(8v8)", 0.000173, -0.000065, 0.000411, "p = 0.14  n.s."),
+    ("MI$-$VG interaction\n(four-arm)", 0.000247, -0.000076, 0.000570,
+     "p = 0.13  n.s.\nheterogeneity NOT established"),
+]
+yA = np.arange(len(rows))[::-1]
+for (lab, est, lo, hi, note), y in zip(rows, yA):
+    col = C_WIN if lo > 0 else C_NULL
+    axA.errorbar(est, y, xerr=[[est - lo], [hi - est]], fmt="s", color=col,
+                 ms=7, capsize=4, elinewidth=1.4)
+    axA.text(hi + 0.00004, y, note, va="center", fontsize=7.2, color=col)
+    axA.text(est, y - 0.30, f"{est:+.6f}", ha="center", va="top", fontsize=7.2)
+axA.axvline(0, color="black", lw=0.9, ls=":")
+axA.set_ylim(-0.75, 2.45)
+axA.set_yticks(yA)
+axA.set_yticklabels([r[0] for r in rows], fontsize=8)
+axA.set_xlabel("tie-safe positive-frequency-tail  $\\Delta$NDCG@10  (Welch 95% CI)")
+axA.set_title("(A) TFV2 repaired-estimand tail contrasts (one estimand; outcome-visible campaign)\n"
+              "provenance: TFV2_ADJUDICATION.md; cohorts tfv2_cohorts_*.json; data CSV alongside this figure")
+axA.set_xlim(-0.00035, 0.00125)
+axA.grid(axis="x", alpha=0.3)
 
 # ================================================================== Panel B
 # 5.4 titration ladder: head Delta rank-trend vs density (level contrasts,
@@ -100,10 +101,9 @@ axB.legend(fontsize=6.6, loc="upper left", framealpha=0.92)
 axB.grid(alpha=0.3)
 
 # ================================================================== Panel C
-# 5.4.1 + 5.4.2: tail & head text/ID ratio across the four mechanism regimes.
-# interaction-thinning leaves the tail ratio FLAT (0.971->0.971); user-thinning
-# (= lower connectivity, full histories kept) LIFTS it 0.971->1.046 toward MI's
-# 1.276 => connectivity is a confirmed PARTIAL tail cause.
+# 5.4.1 + 5.4.2: tail & head text/ID ratio across the four regimes (descriptive;
+# one fixed draw; the user-thinning shift is suggestive only, p=.058 CI incl 0 --
+# no cause is asserted).
 axC = axes[2]
 regimes = ["VG full\n(ipi 24.5,\nu/i 3.70)",
            "VG int-thin\n$\\rho$=0.66\n(16.2, ~3.4)",
@@ -148,3 +148,23 @@ fig.savefig(png)
 fig.savefig(pdf)
 print("WROTE", png)
 print("WROTE", pdf)
+
+# machine-readable figure provenance (audit 2026-07-22 11:48 C1)
+import hashlib
+csv = OUT / "fig_tail_law_mechanism_data.csv"
+code_hash = hashlib.sha256(open(__file__, "rb").read()).hexdigest()[:16]
+with open(csv, "w", encoding="utf-8", newline="\n") as f:
+    f.write("panel,series,label,x,estimate,ci_lo,ci_hi,n_per_arm,estimator,analysis_id\n")
+    for (lab, est, lo, hi, note) in rows:
+        f.write(f"A,tfv2_forest,\"{lab.replace(chr(10), ' ')}\",,"
+                f"{est},{lo},{hi},8,Welch-95CI-tie-safe-tail,TFV2_ADJUDICATION.md\n")
+    for r, h, t in zip(rho, headD, tailDl):
+        f.write(f"B,head_delta,,{r},{h},,,5,level-contrast-one-draw,S5.4-titration\n")
+        f.write(f"B,tail_delta,,{r},{t},,,5,level-contrast-one-draw,S5.4-titration\n")
+    for reg, tr, hr2 in zip(regimes, tailR, headR):
+        f.write(f"C,tail_ratio,\"{reg.replace(chr(10), ' ')}\",,{tr},,,5,"
+                f"ratio-descriptive-one-draw,S5.4.1-5.4.2\n")
+        f.write(f"C,head_ratio,\"{reg.replace(chr(10), ' ')}\",,{hr2},,,5,"
+                f"ratio-descriptive-one-draw,S5.4.1-5.4.2\n")
+    f.write(f"#,generator_sha256_16,{code_hash},,,,,,,\n")
+print("WROTE", csv, "| generator hash", code_hash)

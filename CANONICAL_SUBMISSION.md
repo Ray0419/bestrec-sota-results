@@ -39,7 +39,7 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
    0.0271) — K=16 CI-LB **0.03033**, K=8 CI-LB **0.03024**, 10/10 seeds above both
    references. Claim capped at the frozen wording: per-category point-estimate comparison;
    no paired superiority; not SOTA of any kind.
-   Also under this item: the **dataset-conditional long-tail pattern** +
+   Also under this item: the **MI frequency-5 tail case** +
    thinning-intervention evidence (intervention-scoped wording) is unchanged.
 4. TAPE as a modest secondary component; negative results labeled exploratory unless multi-seed.
 5. Reproducibility: provenance manifests, per-user sidecars (MI tracked; Office/FIR-breadth

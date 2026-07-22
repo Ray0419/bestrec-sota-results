@@ -134,7 +134,7 @@ def main():
               f"{cell(agg[('head','NDCG@10')])} | {cell(agg[('head','HR@10')])} | "
               f"{cell(agg[('tail','NDCG@10')])} | {cell(agg[('tail','HR@10')])} |")
     print()
-    print("- **HEAD = CONFIRMED monotone dose-response:** head ΔNDCG rises as ρ falls "
+    print("- **HEAD = overall rank trend (one reversal; one fixed draw; level contrasts):** head ΔNDCG rises as ρ falls "
           "(density drops), all rungs 5/5 positive ⇒ Spearman ρ_s(head Δ vs density) = "
           "−0.94 (NDCG) / −0.71 (HR). The head text-advantage rises under this bundled thinning intervention (a level trend; not component-level causal attribution).")
     print("- **TAIL = REFUTED dose-response:** tail ΔNDCG is non-monotone / trend-free; no rung clears "

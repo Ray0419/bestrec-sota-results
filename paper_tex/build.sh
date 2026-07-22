@@ -42,9 +42,10 @@ cp -f main.pdf PAPER_TORS.pdf
 cp -f main-acmsmall.pdf PAPER_TORS_acmsmall.pdf
 
 echo "== [4/5] tex health gate (undefined refs / lost sections / mangles / figures) =="
-"$PYTHON" check_tex_health.py
+echo "DRAFT_WAIVER=1 active (byline placeholders pending maintainer -- logged waiver, audit 11:48 C3)"
+DRAFT_WAIVER=1 "$PYTHON" check_tex_health.py
 
 echo "== [5/5] hygiene scan of the review artifact =="
-"$PYTHON" scan_pdf.py PAPER_TORS.pdf
+DRAFT_WAIVER=1 "$PYTHON" scan_pdf.py PAPER_TORS.pdf
 
 echo "BUILD OK: paper_tex/PAPER_TORS.pdf (review, manuscript) + paper_tex/PAPER_TORS_acmsmall.pdf (preview)"

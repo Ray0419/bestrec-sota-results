@@ -1,7 +1,7 @@
 # The Plain-Language Companion
 
 *A non-technical guide to the paper "Pre-Declared, Artifact-Gated Evaluation for Sequential
-Recommendation: Causal FIR Filtering and Dataset-Conditional Text Benefits on Amazon Reviews 2023."*
+Recommendation: Causal FIR Filtering and a Musical-Instruments Frequency-5 Case Study on Amazon Reviews 2023."*
 
 This document explains, without jargon, **what we built, how it works, why it works, and why you
 can trust the numbers** — using everyday examples and analogies. It is documentation for
@@ -189,7 +189,7 @@ machinery that makes the second one credible.
   both 0.0279 (matched reference) and 0.0271 (published), 10/10 seeds, sealed pre-declaration.
 - The **causal FIR filter** helps on all four categories tested (two under sealed
   pre-declaration, listed in §3), as an internal with-vs-without comparison.
-- **Text benefits are dataset-conditional** (§4), supported by controlled thinning interventions.
+- **Text benefits are per-dataset (heterogeneity not established)** (§4), supported by controlled thinning interventions.
 - The **evaluation apparatus itself** (pre-declaration + fail-closed gate + adversarial audit)
   is a contribution other researchers can copy.
 

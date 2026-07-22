@@ -18,7 +18,7 @@ result." This file is the durable worklist the quiet-tick loop services (priorit
 - Negative and failed-improvement outcomes are integrated with the same
   prominence as wins (negative-result map discipline).
 - Integration path: results → `build_hstu_tables.py` cells → full ritual
-  (render CLEAN, build.sh PASS H1–H9, manifest --regen, strict exit 0) → papers.
+  (render CLEAN, build.sh PASS H1–H10, manifest --regen, strict exit 0) → papers.
 
 ## Worklist (top unchecked item first; one lifecycle stage per tick is fine)
 

@@ -140,11 +140,11 @@ if os.path.exists(pdf_path):
             fails.append(f"H10: stale/withdrawn pattern in the compiled PDF: {m10.group(0)[:60]!r}")
     if "[Maintainer:" in _flat10:
         msg10 = ("H10: '[Maintainer:' placeholder present in the PDF (byline/contact "
-                 "fields pending) -- FATAL in submission mode")
-        if os.environ.get("SUBMISSION_MODE") == "1":
-            fails.append(msg10)
+                 "fields pending) -- strict by default")
+        if os.environ.get("DRAFT_WAIVER") == "1":
+            print("  NOTE", msg10, "[DRAFT_WAIVER=1 active -- logged, non-fatal]")
         else:
-            print("  NOTE", msg10)
+            fails.append(msg10 + " -- set DRAFT_WAIVER=1 to build a draft")
 
 # ---- [H9] citation-graph parity (added 2026-07-21, audit 22:57 fix 6) ------------
 # Every bib entry must be cited by a real citation command; \nocite{*} is banned

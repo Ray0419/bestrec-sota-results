@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software or its evaluation artifacts, please cite it as below."
-title: "Pre-Declared, Artifact-Gated Evaluation for Sequential Recommendation: Causal FIR Filtering and Dataset-Conditional Text Benefits on Amazon Reviews 2023 (code and evaluation artifacts)"
+title: "Artifact-Gated Evaluation of Text-Augmented Sequential Recommendation: An FIR-Optimizer Package and a Musical-Instruments Frequency-5 Case Study on Amazon Reviews 2023 (code and evaluation artifacts)"
 type: software
 authors:
   - name: "Ray0419"
@@ -27,7 +27,7 @@ abstract: >-
   comparisons against published single-run HSTU-BLaIR values
   (Musical_Instruments; Office_Products under the redesigned V3
   pre-declaration with an environment-matched reference — the earlier V1
-  campaign remains VOID by its own tripwire), a dataset-conditional long-tail
+  campaign remains VOID by its own tripwire), a per-dataset (heterogeneity not established) long-tail
   pattern with thinning interventions, a fail-closed artifact-graph build that
   recomputes every printed number from source artifacts, and a shim harness
   that executes the reference comparator implementation locally. No SOTA claim

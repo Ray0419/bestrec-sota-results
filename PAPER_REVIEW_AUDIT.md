@@ -4,7 +4,100 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-22 10:47 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-22 11:48 Australia/Sydney)
+
+1. **[CONFIRMED, rejection-level evidence error] Figure 1 combines estimates
+   and a statistical test from different analyses.** Panel A plots the old
+   defective nominal-tercile values (`+.000335`, `-.000148`, `-.0000078`) but
+   annotates the separate tie-safe TFV2 MI-minus-VG test (`p=.13`; TFV2 arm
+   estimates `+.000420`, `+.000173`). Its original displayed-bar comparison was
+   `p=.0054` on the invalid cohort. The caption then calls the hybrid plot TFV2.
+   Sample SDs are unlabeled as such, Beauty's nonzero uncertainty is forcibly
+   hidden, and panels B/C show no seed/draw uncertainty. Rebuild the panel from
+   one estimand and its matching intervals/test, or remove it.
+2. **[CONFIRMED, hard package/governance blocker] The source-to-submission
+   cascade and its gates remain broken.** The main title and central
+   heterogeneity caveat were repaired, but old title/claims remain in `README`,
+   `CITATION.cff`, `.zenodo.json`, canonical/companion files, and claim-bearing
+   generators. The venue TeX/PDF still contains four variants of
+   `dataset-conditional`. H10 is a case-sensitive exact-string blacklist over a
+   narrow TeX/PDF subset, is not Markdown--TeX parity, and is not called by the
+   Windows build. Generate all public artifacts from a canonical claim manifest
+   and add normalized semantic parity plus repository-wide stale-claim scans.
+3. **[CONFIRMED, visible single-blind submission blocker] Author identity and
+   declarations are absent.** Both venue PDFs repeat `[Maintainer: ...]` in the
+   author block/running head, while `scan_pdf.py` passes. The fatal placeholder
+   check only runs when `SUBMISSION_MODE=1`, but neither build entry point sets
+   it. Fill legal names, affiliations, country, corresponding-author/contact and
+   ORCID fields, required cover declarations, and any ACM-required generative-AI
+   disclosure; make the submission build fail closed.
+4. **[CONFIRMED evidence-taxonomy/statistical overreach] The paper still calls
+   outcome-visible or withdrawn-pairing results `confirmed` and gives nulls
+   confirmatory weight without equivalence evidence.** TFV2 is described as both
+   confirmed and non-confirmatory; FIR breadth remains `CONFIRMED`; mostly
+   single-seed, outcome-stopped probes are promoted as a systematic negative
+   map. Separate mechanical artifact PASS from scientific evidence status and
+   reserve null claims for prospectively powered equivalence/SES or a justified
+   Bayesian ROPE analysis.
+5. **[CONFIRMED attribution defect] FIR is still a
+   filter-plus-initialization-plus-optimizer package, not an isolated filter
+   effect.** The manuscript nevertheless says the learned shape carries the
+   effect, calls component gains near-additive/orthogonal without an interaction
+   test, and uses mechanism language that its own experiment plan forbids until
+   permutation controls are run. Complete a common-parameterization factorial
+   over kernel/gate/weight decay with cloned RNG/data streams, or limit every
+   claim and title to the bundled package.
+6. **[CONFIRMED missing controls/comparator; PLAUSIBLE novelty rejection]** The
+   nonsingular FIR control, item-text permutation, matched random features,
+   target-multiplicity/evaluation parity, repeated subset draws, constrained
+   gate optimization, and AlphaFuse-style comparator remain plans, not results.
+   AlphaFuse already targets frozen-text/ID long-tail fusion, while FAERec further
+   narrows adaptive semantic/ID fusion novelty. Either run the preregistered
+   program with held-out confirmation or reposition as an artifact-audit case
+   study and validate the apparatus across independent projects.
+7. **[CONFIRMED uncertainty and selection weakness] One fixed split plus
+   optimizer seeds cannot support population, cross-dataset, or tail-law
+   conclusions.** Split/draw, user, category, checkpoint-selection, comparator,
+   and map uncertainty are not modeled; Beauty mixes evaluation geometries; one
+   failed seed sometimes stopped further runs. Add hierarchical inference over
+   users, splits/draws, maps and seeds, or explicitly bound inference to the
+   frozen artifacts and call the negative map a screening log.
+8. **[CONFIRMED reproducibility hazard] Retracted claims remain executable and
+   tracked.** The BBP irreducibility figure/generator still asserts a withdrawn
+   impossibility result, the titration generator still emits `CONFIRMED monotone
+   dose-response`, and the current figure generator still emits `confirmed
+   PARTIAL tail cause`. Quarantine retracted artifacts, repair generators before
+   rerun, and include every claim-bearing script in submission gates.
+9. **[CONFIRMED writing/visual defects; PLAUSIBLE desk-reject risk]** The article
+   is about 25,710 plain-text words and 55/49/51 reader/TORS/`acmsmall` pages;
+   Section 5 alone is about 10,901 words. Figure 2 uses smooth connected curves
+   without uncertainty and visually implies a transition, two figures lack ACM
+   `\Description{}` text, venue output has prominent placeholders/bare DOI
+   furniture, bibliography validation emits 123 warnings, and several prose
+   errors/combative phrases remain. Target one coherent 10--14k-word narrative,
+   move forensic chronology to a supplement, simplify figures to estimates and
+   intervals, and complete copy/reference editing.
+10. **[CONFIRMED release/metadata drift]** Public metadata still carries the old
+    title and withdrawn claims; `.zenodo.json` mislabels FIR breadth as paired;
+    `CITATION.cff` identifies only `Ray0419`; and no submission-ready archive can
+    be trusted while title, claim, author, and generated-artifact parity fail.
+    Regenerate metadata, run strict gates from a fresh clone, then cut and verify
+    a new tag/deposit byte-for-byte.
+11. **[AUTHOR/INSTITUTION/LEGAL VERIFICATION]** The repository says the source
+    Amazon data are not redistributed while publishing linkable derived
+    split/cache/sidecar records with pseudonymous user IDs, ASINs, ratings, and
+    timestamps. Obtain written redistribution, ethics, and venue determinations;
+    state precisely that only upstream raw archives are excluded if true, and
+    keep MIT licensing scoped to software.
+12. **[CONFIRMED progress, do not overread]** The new narrow title is synchronized
+    across the main manuscript/cover/TeX, the abstract and conclusion now call
+    heterogeneity unresolved, the reader metadata and pagination improved, the
+    build-wrapper byte defect is fixed, and the experiment program is much more
+    credible. These are real editorial/engineering repairs, but no new experiment
+    was completed and none resolves the hybrid figure, attribution, comparator,
+    uncertainty, or author-metadata blockers above.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-22 11:48)
 
 1. **[CONFIRMED, hard submission blocker] The claimed canonical-to-submission
    cascade is broken.** The repaired Markdown says the tail mechanism is
@@ -40,11 +133,10 @@ plausible risks.
    `Musical_Instruments` and `sparse`; the reader slices Figure 1 through panel
    C across pages 28--29; and the appendix caption is orphaned across pages
    48--49, where Table A1 also has colliding cells. Figure 1 labels a
-   one-reversal trend `monotone`,
-   contradicting the prose, and visually presents one significant plus two
-   nonsignificant estimates as a dataset-conditional pattern without showing
-   the `p=.13` interaction. Repair the layout and redesign the figure around
-   estimates, intervals, and the interaction test.
+   one-reversal trend `monotone`, contradicting the prose, and visually presents
+   one significant plus two nonsignificant estimates as a dataset-conditional
+   pattern without showing the `p=.13` interaction. Repair the layout and
+   redesign the figure around estimates, intervals, and the interaction test.
 5. **[CONFIRMED attribution defect] FIR remains an
    FIR-plus-initialization-plus-optimizer package, not an isolated filter
    effect.** The zero gate/delta kernel is an absorbing no-op whose learning is
@@ -54,8 +146,8 @@ plausible risks.
    streams; otherwise delete filter-only and learned-kernel mechanism language.
 6. **[CONFIRMED evidence-taxonomy/statistical overreach] Outcome-visible TFV2
    and mostly single-seed screening rows are still promoted too strongly.** The
-   abstract says `pre-registered`, Markdown line 323 still says `confirmed`,
-   TeX contains further `confirmed` labels, and the negative map assigns
+   abstract says `pre-registered`, Markdown line 323 still says `confirmed`, TeX
+   contains further `confirmed` labels, and the negative map assigns
    confirmatory weight to nulls without equivalence margins or prospective
    power. Use `pre-declared`, reserve confirmation for independent pre-outcome
    evidence, and call `n=1` rows screening observations only.
@@ -2256,6 +2348,546 @@ plausible risks.
     the venue's current template/anonymity rules, supply any independent
     pre-outcome timestamp, repeat thinning across independent subsets, and
     demonstrate a public fresh-clone reconstruction.
+
+## Audit Run - 2026-07-22 11:48 Australia/Sydney
+
+### Audited state and strict verdict
+
+- **Fixed workspace cutoff:** 2026-07-22 11:48:57 Australia/Sydney
+  (2026-07-22 01:48:57 UTC).
+- **Audited branch/commit:** codex/bestrec-sota-results at
+  6c166bac7a9f506b993ee3b3990978d517ec0b45, clean and locally synchronized
+  with origin/codex/bestrec-sota-results at the cutoff. The previous audited
+  cutoff was 96e63c049bcd186031dcc7b1575fe95fd15b453b.
+- **Change since the previous cutoff:** two commits, principally a new
+  EXPERIMENT_PROGRAM and a title/claim/figure/build repair. There is no newly
+  completed experiment; this run therefore treats every experimental item in
+  the program as proposed work, not evidence.
+- **Primary manuscript:** PAPER_SUBMISSION.md, approximately 25,710
+  whitespace-delimited words; abstract approximately 211 words; Section 5 alone
+  approximately 10,901 words.
+- **Compiled artifacts:** PAPER_SUBMISSION.pdf (reader edition) 55 pages,
+  paper_tex/main.pdf 49 pages, and paper_tex/main-acmsmall.pdf 51 pages.
+- **Strict recommendation:** **reject in the present form; encourage resubmission
+  after evidence-provenance repair and a decisive experimental revision.** The
+  narrower title and central caveats are genuine improvements, but Figure 1 now
+  contains a hybrid statistical representation, public metadata/generators
+  retain withdrawn claims, and the scientific taxonomy still promotes
+  outcome-visible or underpowered null results beyond what they establish.
+- **Scope of edits in this run:** only PAPER_REVIEW_AUDIT.md and automation
+  memory are updated. No manuscript, result, figure, table, build, or release
+  artifact is silently altered.
+
+### Genuine progress since the prior audit
+
+1. **[CONFIRMED] Main-title synchronization improved.** PAPER_SUBMISSION.md,
+   COVER_LETTER_TORS.md, and paper_tex/paper-shared.tex now use:
+   “Artifact-Gated Evaluation of Text-Augmented Sequential Recommendation: An
+   FIR-Optimizer Package and a Musical-Instruments Frequency-5 Case Study on
+   Amazon Reviews 2023.”
+2. **[CONFIRMED] The central heterogeneity caveat improved.** The abstract,
+   results summary, and conclusion now say the MI-minus-VG contrast is p=.13,
+   call TFV2 outcome-visible rather than confirmatory, and state that
+   cross-dataset heterogeneity and the mechanism remain unresolved.
+3. **[CONFIRMED] Figure labelling improved locally.** The p=.13 interaction and
+   head reversal are visible, and panel-C connectors are no longer arrows.
+   This is an editorial improvement, not a remedy for the hybrid-data problem
+   documented below.
+4. **[CONFIRMED] Build and reader repairs are real.** The Windows wrapper's
+   stray control byte is gone, reader-PDF metadata now carries the new title,
+   and the previous reader split/orphan defects were targeted.
+5. **[CONFIRMED] The experiment plan is materially stronger.**
+   EXPERIMENT_PROGRAM.md proposes a nonsingular FIR factorial, repeated
+   permutation maps, training-target parity, repeated thinning draws,
+   constrained gating, and an AlphaFuse comparison. None is checked complete.
+6. **[CONFIRMED] The installed ACM class is current.** acmart.cls reports v2.19,
+   consistent with the live CTAN release dated 2026-06-27.
+
+### PDF render and visual verification
+
+- **Fresh renders inspected:** all pages of the 55-page reader, 49-page TORS
+  manuscript, and 51-page acmsmall preview were rendered to PNG; twelve contact
+  sheets and targeted full-resolution pages were visually inspected.
+- **Artifact hashes:** reader
+  17F981DDFAF5C5658EE0A81FD5AD3B11E78EFB828989C5FBD497158E1EB3109B;
+  TORS
+  0F5734622A60673D3BE785DFF4E23A70B9B386F071135EDE19A817037F6576BF;
+  acmsmall
+  B14D332D27B906BBA3A98D8985B68C068D516B682926E1746951564AC8BE27D1.
+- **[CONFIRMED fixed]** Reader Figure 1 is now wholly on page 28; its title
+  metadata is correct. TORS Table 1a now keeps caption/table together, TORS
+  Table 1d no longer joins the category and density fields, the acmsmall Figure
+  1 caption no longer touches its footer, and TORS Table A1 begins with its
+  caption.
+- **[CONFIRMED still defective]** TORS page 26 Figure 1 caption still collides
+  with “Manuscript submitted to ACM.” The acmsmall Table 1d caption is stranded
+  at the bottom of page 23 and page 24 visibly prints
+  “Musical_Instrumentssparse.” The acmsmall Table A1 caption is stranded on page
+  49 while the table begins on page 50.
+- **[CONFIRMED still defective]** Figure 2 is undersized in all three artifacts;
+  its curved connectors visually imply a transition without draw/seed
+  uncertainty. The acmsmall novelty table on pages 7--8 is over-dense and
+  severely stretched/hyphenated.
+- **[CONFIRMED production-furniture defects]** The first pages and alternating
+  running heads retain author placeholders. acmsmall prints a bare DOI URL,
+  “7-ART,” and “Article . Publication date” furniture. TORS page 49 is mostly
+  blank after a page-count regression.
+- **[CONFIRMED log defects]** main_console.log retains a roughly
+  47.37--50.29-point overfull box at results lines 229--230 (long provenance
+  filename) and a 2.91-point overfull discussion line. No unresolved
+  citation/reference marker was observed in the compiled artifacts.
+
+### Confirmed problems and concrete remedies
+
+#### C1. Figure 1 is a hybrid-evidence artifact
+
+- _bestrec_run/make_fig_tail_law_mechanism.py plots historical defective
+  nominal-tercile estimates for panel A: MI +.000335, VG -.000148, Beauty
+  -.0000078.
+- The panel annotates p=.13 from a different, tie-safe TFV2 analysis whose
+  MI/VG arm estimates are +.000420 and +.000173. The comparison originally
+  associated with the displayed historical bars was p=.0054 on the defective
+  cohort.
+- PAPER_SUBMISSION.md and paper_tex/sections/05-results.tex describe the plot
+  as frequency-5-heavy under TFV2. That statement is false for the displayed
+  bars.
+- Error bars are sample SDs rather than confidence intervals and are not
+  identified. Beauty has nonzero variability in source data but its error bar
+  is forcibly set to zero. Panels B/C omit draw/seed uncertainty.
+- The TeX caption says all panels are bundled interventions on one fixed draw,
+  although panel A is a cross-dataset observational comparison.
+
+**Required fix:** rebuild panel A wholly from the TFV2 arm-level values and a
+matching uncertainty/test specification, or label the historical cohort
+unambiguously and put TFV2 in a separate panel. Do not show any estimate beside
+a test computed from another estimand. Publish the plotted CSV, estimator,
+interval definition, analysis ID, and code hash as machine-readable figure
+provenance. Prefer an interaction forest plot over three significance-coded
+bars.
+
+#### C2. Source, metadata, and compiled claims still diverge
+
+- The old title or withdrawn dataset-conditional framing remains in README.md,
+  CITATION.cff, .zenodo.json, CANONICAL_SUBMISSION.md,
+  PLAIN_LANGUAGE_COMPANION.md, and companion_site/explainer.html.
+- .zenodo.json still calls FIR breadth an internal paired contrast even though
+  the manuscript withdrew pairing.
+- The venue source and extracted venue PDFs retain four variants of
+  dataset-conditional, including “dataset-conditional, frequency-5-heavy
+  pattern.” The reader PDF no longer contains the phrase. This is direct
+  evidence that the claimed canonical cascade is still not functioning.
+- COVER_LETTER_TORS.md still says two analyses were pre-registered and says no
+  paired inference appears anywhere; the more accurate statement is that no
+  retained claim should rely on the withdrawn paired inference.
+- The response-to-audit document reports global sweeps as fixed even though
+  these instances survive.
+
+**Required fix:** define one machine-readable claim manifest containing the
+canonical title, evidence-status labels, forbidden/retracted claims, analysis
+IDs, release tag, and venue declarations. Generate or validate Markdown, TeX,
+cover, README, website, CFF, Zenodo, figures, tables, and response files against
+that manifest. A release must fail if any public artifact differs.
+
+#### C3. H10 and the submission build fail open
+
+- paper_tex/check_tex_health.py is an exact, case-sensitive blacklist over a
+  small set of TeX sections/tables and extracted PDF text. It is useful as a
+  regression check but is not Markdown--TeX parity.
+- CANONICAL_SUBMISSION.md says TeX is generated from Markdown, whereas
+  BUILD_NOTES.md says it was converted once and is now hand-maintained.
+- The Windows build does not invoke check_tex_health.py at all.
+- The Unix build invokes it without SUBMISSION_MODE=1. Default mode therefore
+  passes with a note for the author placeholder; submission mode fails.
+- scan_pdf.py passes both venue PDFs despite roughly 30 extracted
+  “[Maintainer:” occurrences in each.
+- BUILD_NOTES.md and build.ps1 comments still describe obsolete
+  review/anonymous options and a 32-reference state, while the actual drivers
+  use manuscript/screen and acmsmall/screen and references.bib has 76 entries.
+- EXPERIMENT_PROGRAM.md still calls the gate family H1--H9 even after adding
+  H10. The current full validator batch did not complete in this audit, so this
+  run does not record a fresh all-gates PASS for commit 6c166bac.
+
+**Required fix:** make strict submission checks the default and require an
+explicit, logged DRAFT_WAIVER for nonfatal placeholders. Run identical gates on
+Windows/Linux. Add normalized stable-block parity, case-insensitive
+repository-wide forbidden-claim scanning, title/author/declaration validation,
+and a fresh-clone rebuild comparison. Do not describe H10 as prose parity.
+
+#### C4. Evidence labels contradict the design
+
+- PAPER_SUBMISSION.md says FIR is “confirmed under” TFV2 while also saying TFV2
+  is not confirmatory.
+- The manuscript/table still labels FIR breadth CONFIRMED despite the withdrawn
+  pairing.
+- Nonsignificant findings are assigned confirmatory weight without prospective
+  equivalence bounds, a smallest effect size of interest, adequate power, or a
+  justified Bayesian ROPE.
+- A single failed seed sometimes stopped further evaluation, which is
+  outcome-dependent allocation. The resulting map cannot support “systematic”
+  neutrality/harm language.
+
+**Required fix:** use separate dimensions:
+
+- **artifact status:** PASS/FAIL for a frozen mechanical rule;
+- **analysis timing:** pre-outcome, outcome-visible, or retrospective;
+- **inference status:** descriptive, exploratory, confirmatory, or equivalence;
+- **replication status:** single run, repeated optimizer seeds, repeated
+  data/split draws, or independent external replication.
+
+Never translate artifact PASS into scientific confirmation. Label the current
+negative map a screening/search log and remove it from the contribution list
+unless every selected probe receives the same predeclared budget.
+
+#### C5. FIR attribution remains unidentified
+
+- The package varies FIR construction, initialization, and Adam/weight-decay
+  dynamics together. Comparator arms do not share a fully common
+  parameterization and RNG path.
+- The paper nevertheless says the learned kernel shape carries the effect and
+  calls +.0012 + .0015 -> +.0036 near-additive on orthogonal axes. The +.0009
+  excess is 33% of the component sum; neither additivity nor orthogonality was
+  tested.
+- The paper says FIR generalizes cross-category while the component pattern
+  differs, without a formal component-by-category interaction.
+- The title says FIR-Optimizer even though initialization is part of the
+  bundled intervention.
+
+**Required fix:** until the factorial below is complete, describe only an
+observed package effect and name all package components. Remove learned-shape,
+filter-only, additivity, orthogonality, and generalization claims.
+
+#### C6. Mechanism prose remains stronger than the completed evidence
+
+- The thinning result is one fixed subset draw, yet the manuscript uses
+  “density-INVARIANT,” says thinning cannot manufacture the result, and calls
+  text-rich sparsity the binding difference/positive mechanism.
+- EXPERIMENT_PROGRAM.md itself says no content-mechanism prose should appear
+  until the item-text permutation experiment is complete.
+- The residual explanation is not identified: item mix, text quality,
+  temporal composition, optimization, user composition, and protocol artifacts
+  remain live alternatives.
+
+**Required fix:** write only: “Under this one predeclared thinning draw, the
+estimate did not move toward MI; this neither establishes density invariance nor
+identifies content as the mechanism.” Call category-specific text quality one
+untested explanation.
+
+#### C7. Retracted claims remain rerunnable
+
+- figures/fig_bbp_irreducibility.pdf and .png remain tracked despite the paper's
+  retraction of the BBP impossibility claim.
+- _bestrec_run/make_fig_bbp_irreducibility.py still emits the withdrawn claim.
+- _bestrec_run/make_table_5_4_titration.py still emits “CONFIRMED monotone
+  dose-response” despite a reversal.
+- _bestrec_run/make_fig_tail_law_mechanism.py still emits “confirmed PARTIAL
+  tail cause.”
+- BUILD_NOTES.md still says the retracted BBP figure is embedded as Figure 3.
+
+**Required fix:** move retracted artifacts to an excluded archive with a
+machine-readable RETRACTED status, or delete them from release scope after
+preserving history in version control. Repair generators before any rerun and
+scan generated text/labels as part of H10's successor.
+
+### Algorithm and experiment optimization program
+
+#### E-A. Identify FIR, initialization, and optimizer effects
+
+1. Predeclare one primary estimand: the full package versus a
+   parameter-count- and compute-matched active control. Treat all components and
+   interactions as secondary with multiplicity control.
+2. Use a common module shape in every arm. Factor kernel parameterization
+   (delta/fixed/learned), gate initialization (zero/small nonzero/constrained),
+   and optimizer decay (Adam versus AdamW; decay on/off for gate/kernel). Do not
+   let the presence of a module change unrelated RNG draws.
+   State explicitly that the cloned backbone is the common step-0
+   initialization, not a separately trained checkpoint. Separate FIR-parameter
+   decay from global-backbone decay; global AdamW on/off is a different
+   intervention.
+3. Clone backbone weights, minibatch order, negative samples, evaluation
+   candidates, checkpoint schedule, and RNG states. Validate equality before the
+   first intervention-specific operation.
+4. Log gradients at step 0 and early steps, gate trajectory, kernel norm/shape,
+   decay contribution, effective impulse response, and training loss. A nominal
+   “learned” arm that has zero gradient is not an attribution control.
+5. Analyze package and factorial contrasts with seed as a blocked replicate;
+   test component interactions explicitly. Add a held-out category/domain
+   because MI generated the current hypothesis.
+
+#### E-B. Test whether item-text content matters
+
+1. Freeze train-only popularity bins and all permutation maps before outcome
+   inspection.
+2. Compare true text, item-permuted text within popularity bin, global
+   permutation, dimension-matched random features, norm-matched noise, and an
+   ID-only control. Preserve missingness and embedding-norm distributions.
+3. Repeat multiple independent maps and optimizer seeds. Treat the independent
+   map, not each map-by-seed run, as the semantic-randomization unit; model map
+   and seed variation hierarchically or use randomization inference. One
+   permutation is not a mechanism test.
+4. Keep target construction, number of training targets, full-catalog
+   evaluation, checkpoint selection, and compute fixed across arms.
+
+#### E-C. Estimate density-intervention uncertainty
+
+1. Repeat independently sampled thinning subsets, each with multiple optimizer
+   seeds. Store draw manifests before training.
+2. Define the primary density estimand and interaction prospectively; report
+   draw-level estimates and a hierarchical draw/seed interval.
+3. Avoid “invariant” or “cannot” language unless a prospectively justified
+   equivalence region is supported.
+4. Keep training-target parity separate from comparator parity. Matching
+   next-target versus all-position objectives establishes objective sensitivity
+   only; a faithful comparator also requires matching example construction,
+   position weighting, masking, and checkpoint selection.
+
+#### E-D. Re-evaluate the frequency-5 boundary
+
+1. Treat MI frequency 5 as hypothesis-generating. Confirm on a prospectively
+   chosen external category/domain or later data snapshot.
+2. Define frequency bins using training interactions only and freeze tie rules.
+   Report continuous frequency-response estimates with uncertainty rather than
+   selecting the visually favorable cutoff.
+3. Predefine whether inference targets the frequency-5 subgroup, a slope, a
+   discontinuity, or a package-by-frequency interaction. Do not mix these
+   estimands.
+
+#### E-E. Add the closest comparator under protocol parity
+
+1. Implement AlphaFuse or obtain its authors' reference implementation and
+   document every deviation. Match backbone, data split, full-catalog candidate
+   set, target multiplicity, text encoder, parameter/compute budget, tuning
+   budget, and checkpoint rule.
+2. Define infeasibility/exclusion criteria before seeing outcomes. “Could not
+   port” is not a comparative result unless the fidelity audit is published.
+3. Add a simple frozen-text-plus-ID projection/gating baseline and the strongest
+   recent adaptive fusion/alignment comparator feasible under the same protocol.
+
+### Figure and table repair guide
+
+1. **Figure 1:** replace hybrid bars with a forest plot of matched arm contrasts,
+   95% intervals, per-arm seed counts, the between-dataset interaction, and a
+   provenance footnote. Do not encode significance using filled versus empty
+   bars.
+2. **Figure 2:** remove smoothed/interpolating curves that imply a transition
+   from sparse discrete observations. Use points plus intervals/faint per-seed
+   values, or remove the figure until repeated draws support it. It is currently
+   partly redundant with Figure 1 panel C.
+3. **Accessibility:** add meaningful ACM \Description{...} text after both
+   includegraphics calls; define colors/markers redundantly and verify grayscale
+   legibility.
+4. **Tables:** replace CONFIRMED/PASS cells with the multidimensional evidence
+   taxonomy above. Put analysis ID, cohort rule, n, estimand, interval, timing,
+   and multiplicity status in every claim-bearing table.
+5. **Layout:** shorten long filenames in prose/tables, reflow the underfull
+   novelty table, fix the approximately 50-point overfull results line, remove
+   bare DOI/article-number furniture from the preview, and visually inspect
+   every page after rebuilding.
+
+### Writing, structure, and venue-readiness guide
+
+1. **Choose one paper identity.**
+   - For an **evaluation-apparatus paper**, center the artifact-gated method,
+     validate it on multiple independent projects, compare it with existing
+     reproducibility/evaluation frameworks, and demote FIR/tail findings to a
+     case study.
+   - For an **algorithm paper**, complete E-A/E-B/E-E plus held-out replication
+     and make one identified package/algorithm effect the contribution.
+   The current manuscript attempts both and delivers neither at top-journal
+   depth.
+2. **Narrow the title further if the algorithm route is retained.** A defensible
+   working option is: “Artifact-Gated Evaluation of Additive Frozen-Text
+   Sequential Recommendation: An FIR--Optimizer Package and a Frequency-5 Case
+   Study.” Use “left-causal FIR” rather than “causal FIR” where causal
+   identification could be inferred.
+3. **Cut aggressively.** Target a 10,000--14,000-word main narrative and roughly
+   the venue's usual 20--35 acmsmall pages. Move retraction chronology, run
+   inventory, full negative-probe log, and forensic gate transcripts to a
+   versioned supplement.
+4. **Restructure:** problem/estimand -> related work and novelty boundary ->
+   protocol -> primary results -> prespecified robustness -> limitations ->
+   ethics/reproducibility. Do not make the audit chronology the scientific
+   spine.
+5. **Copyedit known defects:** “an version-controlled,” “a unidentified,”
+   “val=0.076-class inflation,” and malformed reference prose such as “former
+   the retracted ... use retracted.” Replace adversarial audit language with
+   neutral scientific statements.
+6. **Limitations:** explicitly state fixed-artifact inference, outcome-visible
+   analyses, outcome-dependent probe allocation, mixed Beauty geometry,
+   unmodeled split/user/map uncertainty, comparator omission, and the absence of
+   mechanism identification.
+7. **Submission package:** complete legal author, affiliation, country,
+   short-author, corresponding-author/contact, ORCID, conflict, funding,
+   originality, unpublished/not-under-review, data/ethics, and generative-AI
+   disclosures. Author verification is required; automation must not invent
+   these fields.
+
+### Build, release, and data-governance repair guide
+
+**Current release state:** RELEASE_MANIFEST.json records parent 9f853a51 and
+still targets v1.1.11-deposit, while the audited HEAD is 6c166bac and
+git describe reports v1.1.11-deposit-7-g6c166bac. The availability section now
+discloses the stale boundary honestly, but no immutable deposit or public
+fresh-clone reconstruction covers the repaired manuscript.
+
+1. Make a submission target that sets strict mode internally, runs all claim,
+   placeholder, citation, reference, accessibility, and PDF checks, and refuses
+   a draft waiver.
+2. Replace handwritten dual-source prose with generated stable blocks or a
+   bidirectional normalized comparison. Include cover/metadata/web/generators,
+   not just TeX sections.
+3. Export a figure-data manifest recording source files, hashes, estimator,
+   cohort, uncertainty definition, and analysis ID for each panel.
+4. Quarantine retracted outputs and fail if any release artifact depends on
+   them.
+5. Run deterministic builds on Windows and Linux from a fresh clone; compare
+   normalized PDF text, table cells, embedded figure hashes, and metadata.
+6. Regenerate README, CFF, Zenodo, website, cover, response, and checksums from
+   the canonical manifest before tagging. Verify the literal public tag and
+   uploaded bytes.
+7. Clarify that upstream raw Amazon archives are not redistributed if that is
+   what is meant. Separately enumerate the derived splits/caches/sidecars that
+   are distributed and document the legal/ethical basis for each. MIT must not
+   be presented as a data-license grant.
+
+### External fact checks and novelty boundary
+
+- **TORS author instructions (live check 2026-07-22):**
+  https://dl.acm.org/journal/tors/author-guidelines. The page identifies
+  single-blind review, manuscript/screen acmart submission without review line
+  numbers, author/contact requirements, cover declarations, and a usual
+  20--35-page acmsmall range for original research. The current class option is
+  correct; the 51-page acmsmall artifact and missing author data remain risks.
+- **Current ACM class:** https://ctan.org/pkg/acmart reports v2.19 dated
+  2026-06-27; the repository's class file matches.
+- **Closest admitted comparator:** AlphaFuse,
+  https://arxiv.org/abs/2504.19218, was accepted at SIGIR 2025 and reports
+  frozen language-embedding/ID fusion evaluated on cold-start and long-tail
+  settings. Omitting an implementation comparison materially weakens novelty
+  and empirical positioning.
+- **Recent novelty pressure:** FAERec,
+  https://arxiv.org/abs/2604.03688, submitted 2026-04-04, proposes adaptive
+  ID/LLM fusion and alignment for tail-item sequential recommendation. This
+  does not automatically invalidate the FIR package, but it makes a broad
+  text-for-tail novelty claim implausible without a precise distinction and
+  protocol-matched comparison.
+- **Statistical interpretation:** Gelman and Stern,
+  https://sites.stat.columbia.edu/gelman/research/unpublished/signif3.pdf,
+  explain why a significant estimate in one group and a nonsignificant estimate
+  in another do not establish a significant difference. The direct interaction
+  remains the relevant test; here it is p=.13.
+- **ACM authorship/AI policy:**
+  https://www.acm.org/publications/policies/new-acm-policy-on-authorship
+  requires identifiable accountable human authors, ORCID before eRights, and
+  full disclosure when generative-AI tools create content. The current
+  “author-operated automation” wording is not a clear disclosure of what tools
+  created or revised text, code, figures, tables, or citations.
+- **ACM human-participant policy:**
+  https://www.acm.org/publications/policies/research-involving-human-participants-and-subjects.
+  The author/institution must determine and document how the policy and local
+  rules apply to linkable public-derived interaction records; this audit cannot
+  supply an ethics determination.
+
+### Plausible risks requiring further evidence
+
+1. **[PLAUSIBLE] Novelty may be incremental.** FIR temporal mixing can still be
+   a useful engineering package, but the current evidence does not isolate it
+   from initialization/optimizer effects or show superiority to close text/ID
+   fusion methods.
+2. **[PLAUSIBLE] The apparent frequency-5 result may be a selected local
+   boundary.** It was discovered in the same category now used to motivate the
+   claim and disappears beyond that bin. Prospective external replication is
+   needed.
+3. **[PLAUSIBLE] Text quality may matter, but is not identified.** The density
+   intervention rules out little from one draw; only content-preserving
+   permutations/random controls across maps can address the proposed mechanism.
+4. **[PLAUSIBLE] TORS fit may be weak even after hygiene repairs.** A very long
+   forensic case study without a clean systems/algorithm contribution could be
+   desk-rejected. The apparatus route needs cross-project validation; the
+   algorithm route needs decisive experiments.
+5. **[PLAUSIBLE] Public derived data may be legally or ethically
+   redistributable, but the repository does not document enough to verify it.**
+
+### Items requiring author/institution verification
+
+- Legal author names, order, affiliations, country, corresponding author,
+  contact details, ORCIDs, and CRediT roles.
+- Originality, unpublished status, absence of simultaneous review, conflicts,
+  funding, prior-paper overlap, and consent to submit.
+- Exact generative-AI tools and whether they created/revised text, code, data,
+  tables, graphs, or citations; provide a full ACM-compliant disclosure.
+- Ethics/institutional determination and the licensing/redistribution basis for
+  every public derived Amazon record.
+- Whether “pre-declared” statements have independently timestamped,
+  outcome-inaccessible records and whether any result was inspected first.
+- Which target article type TORS should apply and whether the editor has agreed
+  to a length exception.
+
+### Prioritized repair order
+
+1. Withdraw or regenerate Figure 1 immediately; do not circulate the hybrid
+   representation.
+2. Freeze all claim-bearing sources and repair the canonical manifest/cascade,
+   including retracted generators and metadata.
+3. Make author/placeholders, source parity, claim taxonomy, accessibility, and
+   cover declarations fatal in a real cross-platform submission build.
+4. Decide apparatus versus algorithm identity and cut the main text.
+5. Run E-A and E-B with pre-outcome manifests; add held-out replication and
+   repeated draws/maps.
+6. Run E-E comparator parity and report infeasibility only under frozen rules.
+7. Redesign figures/tables, add uncertainty and \Description text, and complete
+   bibliography/copy/layout QA.
+8. Obtain author/institutional governance decisions, regenerate all public
+   metadata, build from a fresh clone, and only then cut a new tag/deposit.
+
+### Open questions
+
+1. Which exact TFV2 arm-level values and interval estimator should replace the
+   historical panel-A bars?
+2. Is the intended contribution the artifact-gated evaluation method or the
+   FIR/optimizer package?
+3. What independent category/domain is genuinely held out from hypothesis
+   generation?
+4. Can AlphaFuse be reproduced under the identical split, full-catalog
+   candidate set, target multiplicity, encoder, and tuning budget?
+5. What smallest scientifically relevant effect will define equivalence for
+   null claims?
+6. What independently timestamped records establish which analyses were
+   pre-outcome?
+7. What legal/ethics determination supports redistribution of the derived
+   interaction records?
+8. What exact generative-AI contribution disclosure is accurate?
+
+### Running checklist
+
+- [x] Freeze a commit/time cutoff and compare against the prior audited state.
+- [x] Recheck main Markdown, TeX, cover, metadata, generators, experiment plan,
+      build scripts, logs, and compiled PDFs.
+- [x] Verify the repaired title/central caveats and current acmart version.
+- [x] Recheck novelty against AlphaFuse and FAERec primary records.
+- [x] Verify live ACM authorship/AI policy and TORS venue instructions.
+- [x] Recompute page counts, rough word counts, source divergence, build-mode
+      behavior, and bibliography warnings.
+- [ ] Regenerate Figure 1 from one coherent estimand/test and expose source data.
+- [ ] Remove all stale title/dataset-conditional/paired/confirmed-mechanism text
+      from every public and executable artifact.
+- [ ] Replace H10 with real canonical-source parity plus repository-wide
+      claim/metadata gates.
+- [ ] Make the submission build fail closed on author/contact/ORCID/declaration,
+      AI-disclosure, accessibility, and placeholder defects.
+- [ ] Complete E-A nonsingular FIR/initialization/optimizer factorial.
+- [ ] Complete E-B repeated text-permutation/random-feature controls.
+- [ ] Repeat thinning across independent draws and model draw/seed uncertainty.
+- [ ] Confirm the frequency-5 hypothesis on an independent held-out source.
+- [ ] Add AlphaFuse and simple protocol-matched frozen-text/ID comparators.
+- [ ] Convert the negative map to a screening log or give every probe a frozen,
+      equal replication budget with equivalence targets.
+- [ ] Quarantine retracted artifacts and repair all claim-bearing generators.
+- [ ] Add \Description text and redesign both figures around estimates and
+      uncertainty.
+- [ ] Cut/restructure the main paper and complete copy/reference/layout QA.
+- [ ] Obtain author, policy, ethics, data-license, and disclosure verification.
+- [ ] Rebuild on Windows/Linux from a fresh clone and verify public tag/deposit
+      bytes before release.
 
 ## Audit Run - 2026-07-22 10:47 Australia/Sydney
 

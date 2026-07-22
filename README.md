@@ -1,6 +1,6 @@
 # Pre-Declared, Artifact-Gated Evaluation for Sequential Recommendation
 
-**Causal FIR Filtering and Dataset-Conditional Text Benefits on Amazon Reviews 2023.**
+**Causal FIR Filtering and a Musical-Instruments Frequency-5 Case Study on Amazon Reviews 2023.**
 
 This repository is the working artifact repository for the manuscript (ACM TORS submission format; **public** — the split CSVs (now 18 incl. Industrial_and_Scientific and CDs_and_Vinyl), four text caches, and the 107 TFV2 per-user sidecars are deposited as hash-manifested release assets; `bootstrap_public_clone.py` reconstructs a fresh clone's full evidence boundary):
 code, pre-declarations, results of record, provenance manifests, the fail-closed build
@@ -46,7 +46,7 @@ blobs (`DOI_DEPOSIT_INSTRUCTIONS.md` has the full rule).
   Industrial_and_Scientific Δ **+0.0024** [+0.0019, +0.0029], CDs_and_Vinyl **+0.0057**
   [+0.0050, +0.0063]; the treatment is the FIR-plus-initialization/optimizer package)
   (`PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md` + its 2026-07-20 erratum).
-- **Text benefits are dataset-conditional** (help on sparse categories, ≈null on dense ones),
+- **Text benefits are per-dataset (heterogeneity not established)** (help on sparse categories, ≈null on dense ones),
   supported by controlled thinning interventions.
 - **The evaluation apparatus itself** — version-controlled pre-declaration (the TFV2 campaign carries OpenTimestamps proofs whose earliest Bitcoin attestation postdates its first result — the pre-launch freeze rests on Git history alone, a disclosed limitation stated exactly in §5.3 disclosure (vii)), fail-closed artifact
   gate, comparator regeneration, symmetric self-VOIDing — demonstrated end to end.

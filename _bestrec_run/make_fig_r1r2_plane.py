@@ -75,14 +75,14 @@ ax.plot([16.15, 16.15], [2.44, 3.40], color="black", lw=1.0, ls=":", zorder=1)
 # interaction-thinning arrow: VG full -> VG int-thin (drops R1, holds R2) = NULL
 ax.annotate("", xy=(16.2, 3.40), xytext=(24.5, 3.70),
             arrowprops=dict(arrowstyle="-|>", color=C_INT, lw=2.2,
-                            connectionstyle="arc3,rad=0.08"), zorder=2)
+                            linestyle="--", linewidth=1.0), zorder=2)
 ax.text(20.3, 3.74, "interaction-thinning\n(R1 $\\downarrow$, R2 held)\ntail stays NULL",
         ha="center", va="bottom", fontsize=8, color=C_INT)
 
 # user-thinning arrow: VG full -> VG user-thin (drops R2 at matched R1) = WIN
 ax.annotate("", xy=(16.1, 2.44), xytext=(24.5, 3.70),
             arrowprops=dict(arrowstyle="-|>", color=C_USR, lw=2.2,
-                            connectionstyle="arc3,rad=-0.18"), zorder=2)
+                            linestyle="--", linewidth=1.0), zorder=2)
 ax.text(21.6, 2.78, "user-thinning\n(R2 $\\downarrow$ at matched R1)\ntail moves positive\n(dd +0.000326; suggestive,\np=0.058, CI incl 0)",
         ha="center", va="center", fontsize=8, color=C_USR)
 

@@ -27,7 +27,13 @@ Write-Host "== [3/4] package PAPER_TORS.pdf (review) + PAPER_TORS_acmsmall.pdf (
 Copy-Item -Force main.pdf PAPER_TORS.pdf
 Copy-Item -Force main-acmsmall.pdf PAPER_TORS_acmsmall.pdf
 
-Write-Host "== [4/4] hygiene scan of the review artifact =="
+Write-Host "== [4/5] tex health gate (H1-H10; parity with build.sh) =="
+$env:DRAFT_WAIVER = "1"
+Write-Host "DRAFT_WAIVER=1 active (byline pending; logged waiver)"
+& $Python check_tex_health.py
+if ($LASTEXITCODE -ne 0) { throw "tex health gate FAILED" }
+
+Write-Host "== [5/5] hygiene scan of the review artifact =="
 & $Python scan_pdf.py PAPER_TORS.pdf
 if ($LASTEXITCODE -ne 0) { throw "hygiene scan FAILED" }
 

@@ -4,7 +4,179 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-22 21:57 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-22 23:59 Australia/Sydney)
+
+1. **[CONFIRMED, rejection-level confirmatory-validity failure] E-A was
+   completed, adjudicated and promoted into the manuscript within roughly five
+   minutes, but its registered evidence chain is not intact.** The trainer
+   changed during seed-20 A1, that process certified source bytes it did not
+   execute, A2 then ran the new source, all 24 summaries admit a dirty tracked
+   tree, five seed IDs were not globally fresh, and 480 epoch-level test results
+   were exposed. The numerical lift is reproducible as descriptive evidence; the
+   W-POS label is not submission-grade confirmation.
+2. **[CONFIRMED, false provenance] Seed-20 A1 records the new on-disk trainer
+   hash although it executed the old loaded program.** Seed-20 A2 then crosses
+   to the new source/config schema. The inactive checkpoint diff appears
+   numerically irrelevant, but the triplet is not an immutable experiment.
+   Rerun from a clean, read-only, content-addressed image.
+3. **[CONFIRMED, outcome exposure and adaptive-holdout risk]** E-A performed 480
+   full test passes over 27,570,720 user-test rows. E-F reuses the same previously
+   exposed Musical_Instruments split and had performed at least 77 more test
+   passes by this cutoff. Fresh initializations do not create fresh test data.
+   Treat both campaigns as exploratory and confirm only on an untouched holdout
+   or sealed external evaluator.
+4. **[CONFIRMED encouraging numerical pattern, not evidentiary closure]** Across
+   eight matched blocks, A1-A0 NDCG@10 is +0.00226481 with a proper paired 95%
+   interval [+0.00207088,+0.00245874]. A2-A1 is only +0.00001029 with interval
+   [-0.00005814,+0.00007872]. The direction is real in these artifacts, but
+   source mutation, test exposure and registered-condition deviations prevent a
+   confirmatory or causal headline.
+5. **[CONFIRMED analysis/reporting overclaim]** The frozen adjudicator reproduces
+   its independent-Welch result, but the registered common-seed/common-
+   initialization design is paired. The manuscript's new “changed nothing” and
+   “does not run through weight decay” statements are not a preregistered
+   equivalence test and cannot rule out a pathway. Report the paired contrast and
+   say only that no sensitivity was detected within the observed interval.
+6. **[CONFIRMED mechanism-identification gap]** A1 adds 1,024 trainable FIR
+   coefficients relative to frozen identity, without an active parameter-matched
+   placebo. The experiment therefore cannot isolate temporal filtering from
+   generic added capacity, and nonsingular E-A cannot by itself identify the
+   cause of the historical singular-package result.
+7. **[CONFIRMED manuscript contradiction and incomplete integration]** New E-A
+   prose reports a completed rerun while an earlier passage still says that rerun
+   is queued. The result is absent from the abstract, introduction, Table 0,
+   conclusion, release-manifest evidence graph and a dedicated result table. A
+   blanket statistical-conventions passage also still describes own-arm
+   comparisons as Welch. Do not patch prose locally; regenerate all surfaces
+   from a typed claim/evidence registry.
+8. **[CONFIRMED E-F is partial exploratory evidence only]** Three eligible MI
+   seed pairs show fused-minus-sequential NDCG +0.00233348 on average, but only
+   3/5 MI seeds exist, no IS/VG results exist, and the Holm family is incomplete.
+   About 94% of per-user deltas are exactly zero, and validation runner-up gaps
+   are tiny. No W-H-POS decision is available.
+9. **[CONFIRMED E-F checkpoint/repository race]** Commit de364eae captured a live
+   seed-21 checkpoint at epoch 7; training later overwrote that tracked path with
+   epoch 15, while the result names de364eae even though the process launched
+   under its parent. The recorded commit cannot reproduce the checkpoint used
+   for fusion. Use immutable, atomically named checkpoint bundles.
+10. **[CONFIRMED E-F algorithm and resource defect]** For MI, dense EASE
+    intermediates can exceed 15.76 GiB before factorization workspace. Fifteen
+    inversions were observed although only four distinct category/lambda
+    solutions were needed. Cache by data/category/lambda hash, reuse the selected
+    fit, and use factorization/solves rather than repeated explicit inverse.
+11. **[CONFIRMED weak adjudication and resume gates]** E-A and E-F gates omit
+    exact inventory, immutable input/source/environment hashes, strict checkpoint
+    reconstruction, finite/schema checks and fail-closed resume semantics. E-F
+    also treats ensemble/NPZ/checkpoint evidence as optional and tolerates drift
+    as large as its scientific margin.
+12. **[CONFIRMED scope limitation]** E-A tests one K on one category, and 84.60%
+    of the A1-A0 aggregate lift is head-contributed. E-F's current lift changes
+    rankings for only about 6% of users. Neither supports tail-mechanism or broad
+    generality claims without prespecified cohort/category/kernel studies.
+13. **[CONFIRMED component prior art; PLAUSIBLE incremental-novelty rejection]**
+    E-F combines established EASE and sequential scoring through standardized
+    score fusion. A targeted primary-source search found no exact duplicate, but
+    search absence is not novelty proof. Without theory and matched calibration,
+    linear-fusion and equal-budget baselines, this reads as systems integration.
+14. **[CONFIRMED release-boundary failure]** HEAD manifest verification passes
+    only because E-A/E-F protocols, sidecars, checkpoints, arrays and
+    adjudications are largely omitted. The v1.1.11 deposit still has 17
+    mismatches, and de364eae again mixes live E-F artifacts with completed E-A
+    prose. Publish one closed append-only inventory after all writers exit.
+15. **[CONFIRMED writing/visual submission blockers]** The main manuscript
+    remains roughly 26k words. New E-A prose is dense, the TORS paragraph splits
+    across pages, reader p.57 and TORS p.50 are mostly blank, headers retain
+    author placeholders, PDFs lack useful bookmarks/metadata, and the TeX PDFs
+    remain untagged.
+16. **[AUTHOR/INSTITUTION/LEGAL VERIFICATION]** Author identity/order,
+    affiliation, contact, ORCID, funding, conflicts, automation/GenAI disclosure,
+    ethics, licensing and redistribution authority remain unresolved.
+17. **[CONFIRMED implementation progress, not acceptance evidence]** All 24 E-A
+    summaries and 47 sidecars reconcile exactly; the three eligible E-F JSON/NPZ
+    pairs also reconstruct. These checks rule out ordinary metric/file
+    corruption, not experimental invalidity. Recommendation remains **reject /
+    not ready**.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-22 23:59)
+
+1. **[CONFIRMED, rejection-level execution-integrity failure] The trainer was
+   edited while E-A run 23 was executing, and that result records code bytes it
+   did not run.** Seed-20 A1 loaded the old trainer, the file changed mid-process,
+   and exit-time provenance reread the new file. Its recorded SHA is therefore
+   demonstrably false. Run 24 then used a different executable. Treat the family
+   as exploratory; rerun the affected block or all arms from an immutable image.
+2. **[CONFIRMED, rejection-level outcome exposure] E-A had 23/24 summaries but
+   466 full test outcomes at the cutoff.** The completed histories expose 460
+   epoch-level tests and incomplete seed-20 A2 exposes six more, all over 57,439
+   users. Status hides partial-child progress. Do not use final adjudication as
+   confirmation; quarantine test in a fresh replication.
+3. **[CONFIRMED primary-analysis misspecification, materially large]** Seven
+   complete matched seed blocks give A1-A0 paired SE 0.0000829 versus Welch SE
+   0.0001724, while A2-A1's Welch SE is 5.64 times its paired SE. Independent
+   Welch discards the frozen common-seed/common-initialization design. Make
+   paired contrasts, exact sign-flip sensitivity and paired equivalence primary.
+4. **[CONFIRMED encouraging but non-publishable exploratory pattern]** Seven-
+   block A1-A0 NDCG is +0.002304 and A2-A0 +0.002311; A2-A1 is +0.000007.
+   Seed-20 A1-A0 is separately +0.001987. Outcome exposure, seed reuse, source
+   mutation, partial completion and a misspecified frozen test prohibit
+   confirmatory, causal or headline claims.
+5. **[CONFIRMED endpoint/mechanism mismatch] Twenty-two of 23 selected endpoints,
+   including 14/15 learned endpoints, differ from epoch 20, but E-A diagnostics
+   are final-only.** The artifacts save no selected model. Save and hash the
+   validation winner and bind every metric, tap, response and figure to it.
+6. **[CONFIRMED E-F confirmation failure]** The newly committed hybrid prereg
+   promises a one-time test, yet its base trainer evaluates and logs test every
+   epoch (or every tenth epoch for VG) before testing fusion again. The E-F
+   adjudicator, resume logic, checkpoint writes and reconstruction gate are not
+   fail-closed. Any launched campaign is outcome-visible, not confirmation.
+7. **[CONFIRMED E-F algorithm/resource risk]** The fuser forms approximately
+   4.50-GiB dense float64 item matrices and explicitly inverts them five times
+   per category/seed, about 75 inversions for the campaign, although EASE depends
+   only on category, training split and lambda. Cache at most 12 distinct solves,
+   use factorization/solve rather than inverse, and benchmark memory and time.
+8. **[CONFIRMED preregistration/order defects]** Five E-A seeds called fresh had
+   prior filenames; the claimed 2x2 has three cells; every block uses A0-A1-A2;
+   parameter groups differ; and no checkpoint is cloned. E-F fresh-seed status is
+   not verified outside this workspace and its n=5 power borrows a selected
+   development effect. Disclose and independently preregister the actual design.
+9. **[CONFIRMED execution/adjudication defect across families]** Skip-on-path,
+   mutable inputs, unlocked/non-atomic status and checkpoints, partial schemas,
+   missing finite/hash/inventory checks, environment-dependent small-sample
+   p-values and permissive reconstruction can certify stale or corrupt evidence.
+   Use immutable launches, atomic artifact bundles, locks and exact schemas.
+10. **[CONFIRMED scope and mechanism limitation]** E-A tests K=16 only on
+    Musical_Instruments and cannot establish historical package attribution,
+    cross-category generality or tail specificity. About 84.92% of the seven-
+    block A1 aggregate gain and 81.86% of extra hits are head-contributed. Add a
+    trainable parameter-matched placebo and untouched category/kernel studies.
+11. **[CONFIRMED mixed-time release boundary]** Commit 5f330553 stages a live
+    log prefix that ends during run 23 alongside later run-23 results/status. It
+    adds 23 summaries but omits 45 sidecars and most E-A/E-F protocol surfaces
+    from the release manifest; the working log remains tracked-modified. Publish
+    only coherent, immutable post-run inventories.
+12. **[CONFIRMED component prior art; PLAUSIBLE incremental-novelty rejection]**
+    E-F combines known EASE scoring with a sequential scorer and standardized
+    score fusion. No exact duplicate was found in a targeted primary-source
+    search, but absent theory and matched ablations this is systems engineering,
+    not a demonstrated top-journal algorithmic contribution.
+13. **[CONFIRMED existing paper/public contradictions]** No manuscript/public
+    byte changed. Main/TeX/PDF/public artifacts still overattribute FIR and retain
+    incompatible refutation, mechanism, density and all-four language behind
+    partial literal gates. Use a typed claim registry and regenerate all surfaces.
+14. **[CONFIRMED release, writing and visual blockers]** The reviewer-facing
+    v1.1.11 deposit still has 17 mismatches; the roughly 26k-word main remains an
+    audit diary; and byte-identical PDFs retain the split caption, near-empty
+    reader p.56, tiny tables, placeholders, stale claims and accessibility gaps.
+15. **[AUTHOR/INSTITUTION/LEGAL VERIFICATION]** Author identity/order,
+    affiliation, contact, ORCID, funding, conflicts, manuscript-level
+    GenAI/automation disclosure and redistribution authority remain unresolved.
+16. **[CONFIRMED implementation progress, not evidentiary closure]** All 23
+    summaries and 45 distinct sidecars pass metric, config, initialization,
+    data, hash, count and alignment checks. This rules out ordinary result-file
+    corruption, but not false executed-code provenance or protocol validity. The
+    recommendation remains **reject / not ready**.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-22 22:57)
 
 1. **[CONFIRMED, rejection-level protocol violation] E-A is outcome-visible after
    18/24 completed summaries and 372 printed epoch-level test outcomes.** The
@@ -3194,6 +3366,511 @@ plausible risks.
     the venue's current template/anonymity rules, supply any independent
     pre-outcome timestamp, repeat thinning across independent subsets, and
     demonstrate a public fresh-clone reconstruction.
+
+## Audit Run - 2026-07-22 22:57 Australia/Sydney
+
+### Review Verdict
+
+**Recommendation: reject / not ready for top-journal submission.** This cutoff
+contains 23 of 24 E-A summaries: seven complete A0/A1/A2 seed blocks and a
+separate seed-20 A0/A1 pair. All completed summaries and every referenced
+sidecar are internally coherent. The learned FIR variants remain descriptively
+above identity, while A1 and A2 remain practically indistinguishable. Those are
+useful exploratory facts, not confirmation.
+
+The decisive new finding is an execution-provenance failure. The shared trainer
+was edited while seed-20 A1 was running. That process had loaded the old source,
+but at exit the provenance routine reread the modified file and recorded the new
+SHA-256. The summary therefore names code it did not execute. The immediately
+following A2 run loaded the new source. Even though the added checkpoint branch
+is inactive for E-A and likely numerically inert, E-A is no longer one immutable
+experiment and its executed-code record is demonstrably false.
+
+Outcome exposure also reached 466 complete test passes: 460 in the 23 eligible
+histories plus six from the unfinished twenty-fourth run. A new E-F hybrid
+protocol was committed and its waiter launched, but source inspection shows that
+its claimed test-once confirmation still calls the existing trainer, which
+evaluates test repeatedly during base training. Its dense EASE implementation,
+adjudicator, checkpoint, resume and release paths are also not submission-grade.
+No E-F result or post-cutoff E-A artifact is used in this audit.
+
+Status labels in this section mean:
+
+- **CONFIRMED**: reproduced from the frozen commit/filesystem/log-prefix boundary,
+  exact hashes, independent calculations, code or unchanged rendered artifacts.
+- **PLAUSIBLE RISK**: supported concern requiring new evidence, environmental
+  measurement, independent replication or a venue decision.
+- **AUTHOR VERIFICATION**: cannot be established from the workspace.
+- **INCOMPLETE / EXCLUDED**: operational evidence from an unfinished run that is
+  not used as an endpoint or matched-block result.
+- **POST-CUTOFF EXCLUDED**: created, changed or completed after the frozen
+  boundary and deliberately not inspected as result evidence.
+
+### Fixed Snapshot and Scope
+
+| Item | Audited value |
+|---|---|
+| Heartbeat | 2026-07-22T12:57:14.650Z |
+| Fixed filesystem cutoff | 2026-07-22T22:57:55.0659289+10:00 (12:57:55.0659289Z) |
+| Branch | codex/bestrec-sota-results |
+| HEAD / upstream / merge base | 5f33055324d847004b4f5db883b9aa54a0b19e0e |
+| Previous audited HEAD | f2963ada2ed5202944679964c7fc2de94ab6e267 |
+| Cutoff tracked state | `_bestrec_run/logs/ea_fir_v3.log` modified by the live driver |
+| Eligible E-A status | running; 23/24, 0 skipped, 0 failed, elapsed 290.9 minutes |
+| Complete E-A blocks | seeds 20260713 through 20260719 |
+| Separate incomplete block evidence | seed 20260720 A0/A1 complete; A2 incomplete and excluded |
+| Eligible sidecars | 45 distinct gzip files: 23 selected and 22 separate final |
+| Incomplete log evidence | seed-20 A2 has six complete epochs and six test passes |
+| E-A fixed log prefix | 633,964 bytes; SHA-256 `fffe28d09522923cdef5a73f1fa618693c419a44d59e44789237efd262922852` |
+| Manuscript/PDF delta | none; all three PDFs are byte-identical |
+
+The cutoff log contains all 24 run markers, 466 completed epoch rows and 932
+completed evaluation passes: one validation and one test pass for each epoch.
+Later bytes and the eventual A2 seed-20 summary/adjudication are post-cutoff and
+excluded. No E-A adjudication artifact existed at the boundary.
+
+### Repository and Experiment Delta
+
+Commit `5f330553` was created at 22:52:34+10, after seed-20 A1 finished and
+while the immediate A2 handoff was under way. Relative to `f2963ada`, it changes
+34 files with 67,968 insertions and four deletions. It:
+
+- adds `PREREG_HYBRID_V1.md` and the E-F driver, fuser, ensembler and adjudicator;
+- adds an opt-in `--save-ckpt` branch to the shared trainer;
+- commits E-A status, 23 E-A result JSONs and a prefix of the live E-A log;
+- updates `EXPERIMENT_PROGRAM.md`, the release manifest and this audit; and
+- does not change the manuscript, TeX, bibliography, figures, public companion
+  or any PDF.
+
+This is not a coherent experiment snapshot. The committed log blob ends during
+run-23 epoch-13 test evaluation at 15,872 of 57,439 users, while the same tree
+contains the later completed run-23 result and a status count of 23. Normalized
+to LF, that staged blob is a byte-for-byte prefix of the cutoff log. Staging a
+file while a process is writing it produced a mixed-time tree. The working log
+remained tracked-modified after the commit.
+
+### Eligible Result Inventory Delta
+
+The prior section inventories seeds 20260713--20260718. The five newly eligible
+summaries are:
+
+| Seed | Arm | Summary SHA-256 prefix | Best epoch | Test NDCG@10 | HR@10 | MRR |
+|---:|---|---|---:|---:|---:|---:|
+| 20260719 | A0 identity | b0bbb3e0 | 17 | 0.0392080613 | 0.0702658472 | 0.0359592762 |
+| 20260719 | A1 learned, backbone WD | 2ecab517 | 15 | 0.0418595104 | 0.0753669110 | 0.0379372340 |
+| 20260719 | A2 learned, zero FIR WD | 29b98222 | 15 | 0.0419733893 | 0.0757673358 | 0.0379448813 |
+| 20260720 | A0 identity | e733d5a2 | 16 | 0.0396335947 | 0.0716412194 | 0.0360895286 |
+| 20260720 | A1 learned, backbone WD | a1a20ddc | 16 | 0.0416210321 | 0.0744790125 | 0.0379452083 |
+
+Seed-20 A2 is absent from this table because it had no eligible summary. The
+seed-20 A1-A0 difference is +0.001987437351 NDCG, +0.002837793137 HR and
++0.001855679727 MRR. Its tail/mid/head NDCG differences are respectively
++0.000651968632, +0.001715221877 and +0.002340313498. These values are reported
+only as an incomplete matched pair and are not pooled with the seven complete
+blocks.
+
+### Exploratory Seven-Block Description Only
+
+No current p-value, confidence interval, Holm flag or equivalence label is a
+valid confirmatory decision. The intervals below diagnose the analysis geometry
+after outcome exposure; they are not preregistered evidence.
+
+| Arm / contrast | Mean NDCG@10 | Sample SD or paired-difference SD | Paired SE where applicable |
+|---|---:|---:|---:|
+| A0 | 0.039246631580 | 0.000293010104 | - |
+| A1 | 0.041551065423 | 0.000349536821 | - |
+| A2 | 0.041558123988 | 0.000351510330 | - |
+| A1 - A0 | +0.002304433843 | 0.000219366380 | 0.000082912698 |
+| A2 - A0 | +0.002311492409 | 0.000253673774 | 0.000095879674 |
+| A2 - A1 | +0.000007058566 | - | 0.000033206372 |
+
+All seven A1-A0 and A2-A0 differences are positive. A1-A0's paired descriptive
+95% interval is [+0.002101553779, +0.002507313907]. Its independent-Welch SE is
+0.000172391129, 2.079 times the paired SE. A2-A0's Welch/paired ratio is 1.804.
+For A2-A1 the paired interval is [-0.000074194499, +0.000088311630], while
+independent Welch uses an SE of 0.000187363475, 5.642 times the paired SE. The
+two learned-arm variants remain indistinguishable on this evidence.
+
+Secondary means agree:
+
+- A1-A0: HR +0.003661026729; MRR +0.002025985287.
+- A2-A0: HR +0.003703307608; MRR +0.002022029931.
+- A2-A1: HR +0.000042280879; MRR -0.000003955356.
+
+The relevant unit for inference is the seed block, not 57,439 user rows. Common
+seeds, identical within-seed initialization and common evaluation identities
+create matched observations. Independent Welch is therefore scientifically
+misspecified even if its conservative loss of precision happens not to reverse
+a learned-versus-identity conclusion here. A new replication should freeze
+paired contrasts, an exact sign-flip/randomization sensitivity, paired
+equivalence and familywise control before seeing outcomes.
+
+### Popularity-Stratum Interpretation
+
+For A1-A0, seven-block within-stratum NDCG differences are:
+
+| Stratum | Users | Mean within-stratum difference | Weighted contribution | Share of aggregate |
+|---|---:|---:|---:|---:|
+| Tail | 8,800 | +0.000705966995 | +0.000108158386 | 4.69% |
+| Mid | 8,657 | +0.001588076732 | +0.000239349227 | 10.39% |
+| Head | 39,982 | +0.002811362255 | +0.001956926229 | 84.92% |
+
+Average additional HR@10 hits are 13.57 tail, 24.57 mid and 172.14 head;
+81.86% of the extra hits are head hits. A2-A0 is likewise 85.64% head-
+contributed. Positive relative tail rates do not establish a tail-focused causal
+mechanism. Report cohort sizes, absolute gains, added-hit counts and weighted
+contributions together. If tail utility is central, preregister a macro-stratum
+estimand or tail-aware objective and test it on untouched data.
+
+### Integrity Checks That Passed
+
+The eligible result artifacts are unusually coherent at the data/result layer:
+
+- All 23 summaries and all 45 distinct referenced gzip sidecars predate the
+  cutoff. All declared and actual sidecar SHA-256 values match and are unique.
+- Every sidecar expands to exactly 57,439 valid rows, for 2,584,755 rows total.
+  UID/rank identities, NDCG/HR/RR arithmetic, overall metrics and tail/mid/head
+  counts and means reproduce the summaries within 2.28e-15.
+- Every sidecar has the same `(user,target,popularity bucket)` identity map;
+  counts are 8,800 tail, 8,657 mid and 39,982 head.
+- Train/validation/test interaction counts, data hashes, runtime environment,
+  57,439 users, 24,587 items and 11,186,046 total parameters are invariant.
+- Configs differ only in intended seed, output path, FIR mode and FIR weight
+  decay. Each seed has exact cross-arm initialization equality; all eight seed
+  initialization hashes are distinct.
+- Identity-arm FIR taps are exactly zero and learned final diagnostics are finite
+  and nonzero.
+- The ordered 23-summary inventory fingerprint is
+  `4405ed6715427ab72c7a4fccbe8a868bfc3915ddb9129033a941b54b62855f61`;
+  the sidecar-declaration inventory fingerprint is
+  `4f78bbd4fae18bd02867c122efc013d67aa125b0d2798909c01d12fbfbf611c1`.
+
+These checks reject ordinary truncation, metric-reconstruction, row-alignment
+and accidental cross-arm data defects. They do **not** validate the code that ran:
+all 23 summaries say `git_dirty_tracked=true`, and the exit-time source hash is
+now known to misattribute seed-20 A1.
+
+### Confirmed Problem 1: Executed-Code Provenance Is False
+
+The fixed timeline is decisive:
+
+1. Seed-20 A0 finished at approximately 22:42:58+10.
+2. The sequential driver immediately started seed-20 A1 from the old `f2963ada`
+   trainer.
+3. The shared trainer file was replaced at 22:48:18.771+10 while A1 was active.
+4. A1 finished and wrote its summary at 22:52:14.848+10.
+5. Commit `5f330553` was created at 22:52:34+10 during the A2 handoff/start.
+
+The first 22 eligible summaries report raw trainer SHA
+`ce4fc1c6...98b40`. Seed-20 A1 alone reports the new raw SHA
+`187ba732...c9d`, still claims commit `f2963ada`, and lacks the newly added
+checkpoint configuration field. The provenance routine computes its code hash
+near result writing by reopening `__file__`; it did not cache the executed bytes
+at process start. A1 therefore executed the old in-memory program but certified
+the new on-disk file. Run 24 began after the file replacement and used the new
+program.
+
+The numerical E-A path probably did not change because `--save-ckpt` defaults
+off. That does not rescue evidentiary integrity: executable identity must be
+demonstrated, not inferred from a supposedly inactive diff.
+
+Required repair:
+
+1. Freeze a clean worktree/container and compute the executable bundle digest
+   before launch.
+2. Copy or import code only from that immutable bundle; prohibit shared-source
+   writes while any child is alive.
+3. Cache the loaded source/config digest at process start, embed it in every
+   artifact, recheck disk state at exit and fail if it changed.
+4. Record commit, canonical tree hash, dirty diff hash, argv, environment lock,
+   driver/adjudicator hashes and per-process start/end time.
+5. Rerun at least the complete seed-20 block, preferably the entire family, if
+   it is ever to support inference. The current family remains exploratory.
+
+### Confirmed Problem 2: Outcome Exposure Is Larger Than Status
+
+Each of the 23 eligible histories stores 20 full test evaluations, giving 460
+test outcomes and 26,421,940 user-test rows. The fixed run-24 log prefix adds six
+more complete test passes, for 466 outcomes and 26,766,574 user-test rows. Status
+still says 23 because it updates only after a child exits.
+
+Twenty-two of 23 selected endpoints differ from epoch 20, including 20/21 in
+the seven complete blocks and 14/15 learned endpoints. Fourteen selected epochs
+differ from the epoch having the maximum observed test NDCG. That supports the
+claim that code selected on validation rather than internal max-test, but it does
+not establish outcome quarantine: complete test curves were printed and stored.
+
+Required repair is architectural, not rhetorical: train/validate without test
+labels or test output, atomically freeze the selected checkpoint and all analysis
+choices, then permit one separately authorized held-out test evaluation. The
+current E-A family must be disclosed as outcome-visible exploratory work.
+
+### Confirmed Problem 3: Selected Metrics and Mechanism Diagnostics Diverge
+
+Only seed-15 A1 selected epoch 20. E-A does not save the validation-selected
+model, yet reports selected-epoch test metrics beside final-epoch FIR norm and
+lag diagnostics. The largest selected-minus-final NDCG gap is +0.000683979 for
+seed-17 A1. Reviewers cannot tell whether the taps shown as mechanism evidence
+belong to the model that generated the headline result.
+
+Save the selected checkpoint, optimizer/RNG state, signed taps, explicit lag
+ordering, gradient and optimizer moments, residual/input norm, activation
+statistics and impulse/frequency response. Hash them atomically and bind the
+endpoint sidecar, table row and figure to that checkpoint. Label final-epoch
+diagnostics separately as trajectory evidence.
+
+### Confirmed Problem 4: E-F Is Not a Confirmatory Test-Once Design
+
+The new E-F preregistration says fusion test is evaluated once after validation
+grid selection. Its driver nevertheless invokes the current trainer with
+`eval_every=1` on Musical_Instruments and Industrial_and_Scientific and every ten
+epochs on Video_Games. The trainer evaluates and logs test at those checkpoints;
+fusion then evaluates test again. At minimum this creates 20, 20 and four base
+test looks per seed before the advertised one-time fused test.
+
+Other confirmed E-F protocol defects are:
+
+- Musical_Instruments is called the primary category, while another clause says
+  Holm correction is across all three categories. The primary family and the
+  role of unadjusted versus adjusted alpha are ambiguous.
+- Five seeds are too few for stable small-sample inference, and the power claim
+  borrows a favorable effect selected during outcome-visible R+ development.
+  Winner's-curse risk is not addressed.
+- Current-workspace result filenames contain no E-F seed 20260721--20260725,
+  but freshness across R+ workspaces, notebooks and untracked outputs is not
+  mechanically established. **AUTHOR VERIFICATION** is required.
+- Reconstruction may differ from the recorded sequential NDCG by nearly
+  0.0005, the entire practical-equivalence margin, while still passing.
+- Checkpoints use direct non-atomic `torch.save`, contain no checkpoint SHA,
+  optimizer/RNG state or full code/data/split/config identity, and are loaded
+  with `strict=False` plus warnings for missing/unexpected keys.
+- The driver skips any existing path, performs weak help-text preflight, writes
+  status non-atomically and can treat missing/corrupt prerequisite status as a
+  free GPU. A stale JSON can be paired with a stale/missing checkpoint.
+- The adjudicator does not enforce the exact 31-artifact inventory, rejects no
+  extras, makes ensemble input effectively optional, omits exact grid, full
+  config, checkpoint, NPZ, data/code/hash and finite-value gates, and can let NaN
+  pass the drift comparison.
+- If SciPy is unavailable, n=5 p-values silently use a normal approximation
+  while another branch uses t critical values. Zero variance maps to infinite t
+  even when the mean difference is zero.
+- Statistical significance and practical equivalence are not expressed as a
+  clean hierarchy, and familywise equivalence is not controlled.
+- Mean five-seed results are placed beside published single-run point estimates.
+  Even with a caveat, this is an incommensurate and promotional comparison, not
+  superiority evidence.
+
+If E-F has begun, label it development/outcome-visible. Confirmation requires a
+new launch after true test sequestration, strict checkpoint reconstruction,
+unambiguous estimands/families, external seed-registry checks and an exact
+fail-closed adjudicator.
+
+### Confirmed Problem 5: Dense EASE Is Needlessly Recomputed
+
+The E-F fuser materializes a dense float64 item Gram matrix and uses
+`numpy.linalg.inv` for every lambda. At 24,587 items, one dense float64 matrix is
+about 4.50 GiB before additional matrices, factorization workspace and GPU copies.
+The current loop performs four grid inversions plus a selected-lambda inversion
+for each of 15 category/seed jobs: about 75 O(n^3) inversions. EASE depends on
+category, training split and lambda, not the sequential-model seed, so at most 12
+distinct category/lambda solutions are needed and the selected one should be
+reused.
+
+Algorithm and systems repair:
+
+1. Cache each category/lambda artifact by training-interaction hash, item map,
+   lambda, solver version, dtype and code hash.
+2. Use a linear solve or Cholesky/symmetric factorization rather than forming an
+   explicit inverse; verify conditioning and residuals.
+3. Reuse the selected grid solution rather than invert again.
+4. Measure peak host/GPU memory, factorization time, cache I/O and numerical
+   error before claiming the eight-hour budget.
+5. If dense exact EASE is infeasible, preregister a separate blocked or sparse
+   top-k approximation with a fidelity study; do not silently change algorithms.
+6. Keep score normalization train-derived and frozen, document whether moments
+   are global or per-user, and test zero-variance/finite-score cases.
+
+[EASE](https://arxiv.org/abs/1905.03375) already establishes the closed-form
+shallow autoencoder component. [SASRec](https://arxiv.org/abs/1808.09781)
+establishes the self-attentive sequential component. A targeted primary-source
+search did not identify this exact EASE-plus-HSTU standardized-score fusion, but
+absence from a targeted search is not proof of novelty. With known components,
+no theory and no matched same-protocol ablation against simpler calibration or
+linear ensembles, the contribution is currently system integration rather than
+a top-journal algorithmic advance.
+
+### Release, Manuscript, Public and PDF Delta
+
+`update_release_manifest.py --verify-git HEAD` passes 138 entries at the new
+HEAD. Verification against `v1.1.11-deposit` still fails 17 entries. The manifest
+updates the trainer but does not govern `PREREG_HYBRID_V1.md`, E-F driver,
+adjudicator, fuser, ensembler, reference inputs or output schema. It also omits
+most E-A protocol surfaces, the 45 sidecars, complete logs, checkpoint inventory
+and adjudication. The 23 summary JSONs are committed while their sidecars are not.
+Raw result-source hashes and LF-normalized release hashes also use different
+normalization conventions without an explicit mapping.
+
+No manuscript, TeX, bibliography, figure, public surface or PDF byte changed.
+The EASE citation is not yet integrated into the manuscript bibliography. All
+prior historical-attribution, claim-parity, novelty, length, identity, policy and
+legal blockers therefore remain. The PDFs are still exactly:
+
+| Artifact | SHA-256 | Pages | Carried-forward visual result |
+|---|---|---:|---|
+| PAPER_SUBMISSION.pdf | 3595059a05f29a02612fbae28820fcaceeb9281eb03b576c48611791b63bb354 | 56 | caption split pp.28--29; near-empty p.56; tiny tables; incomplete metadata |
+| paper_tex/PAPER_TORS.pdf | 9308005466907386fcb3ed0bfaf5e94abc808ee897180d1830d5ff8d28e1b366 | 49 | untagged; placeholders; tiny content; stale claims |
+| paper_tex/PAPER_TORS_acmsmall.pdf | f050ed849cf9d27b9e70d3f99866e0748afff2e1f8b05c0f5f307e26fb40f407 | 51 | untagged; placeholders; bare DOI and Article furniture |
+
+Because the PDF/source/figure hashes are unchanged, no new render could reveal
+a different layout. The prior full 156-page visual inspection applies exactly;
+no temporary render tree was created this hour.
+
+### Concrete Experimental, Algorithm and Reproducibility Repairs
+
+1. **Stop editing live experiments.** Run each family from a read-only clean
+   checkout/container with a signed launch manifest and exclusive family/GPU lock.
+2. **Test once.** Keep test inaccessible during optimization; restore the frozen
+   validation winner and execute one quarantined pass only after all decisions
+   and artifact hashes are sealed.
+3. **Use paired inference.** Make seed-block contrasts primary; add exact
+   sign-flip sensitivity, paired equivalence and prospective multiplicity control.
+4. **Use truly unused seeds.** Query a canonical cross-workspace registry, not
+   filenames in one directory, and publish the registry/hash before launch.
+5. **Counterbalance order.** Freeze a Latin square or randomized schedule and log
+   GPU temperature, clocks, utilization, power, memory and competing load.
+6. **Save the actual selected model.** Atomically publish checkpoint, optimizer,
+   RNG, config, code, split/cache and sidecar hashes as one validated bundle.
+7. **Match capacity.** Add a trainable 1,024-parameter non-temporal placebo before
+   attributing learned-arm gains to temporal filtering rather than extra capacity.
+8. **Broaden carefully.** Confirm FIR across untouched categories and kernel
+   widths; confirm hybrid fusion against sequential-only, EASE-only, calibrated
+   mean, learned linear weight and equally budgeted ensemble baselines.
+9. **Optimize EASE safely.** Cache category/lambda solutions, solve rather than
+   invert, reuse selected artifacts and report conditioning, fidelity, peak RAM,
+   time and energy.
+10. **Fail closed.** Validate exact artifact count, no extras, schema, finite
+    domains, full canonical config, hashes, selected epoch, per-user identity and
+    reconstructed metrics before adjudication.
+11. **Publish coherent snapshots.** Never stage live logs/status. After terminal
+    success, atomically close files and generate one append-only inventory with
+    byte counts, hashes, timestamps and process exit states.
+12. **Verify numerical equivalence.** Require strict checkpoint load and
+    near-machine reconstruction tolerance, far below the scientific margin.
+
+### Figure and Table Repairs
+
+Do not place the current E-A or any current E-F values in submission headline
+figures. After a clean replication, provide:
+
+- a paired seed slope plot and paired-contrast forest plot with adjusted
+  intervals and a justified practical margin;
+- a run-order/system-time panel aligned with GPU telemetry;
+- selected-versus-final endpoint differences;
+- signed selected-checkpoint FIR heatmaps, lag/impulse/frequency response and a
+  parameter-matched placebo comparison;
+- tail/mid/head absolute effects, cohort sizes, added-hit counts and weighted
+  aggregate shares in the same panel;
+- for E-F, per-seed sequential/EASE/fused paired slopes, the full frozen
+  validation grid, calibration details and a category-wise forest plot;
+- an EASE compute table showing matrix dimension, solver, dtype, conditioning,
+  cache reuse, peak RAM, wall time and failure rate;
+- a quality-latency-memory-energy Pareto plot; and
+- one provenance table linking every plotted number to summary, sidecar,
+  checkpoint, config, code, split, environment and adjudication hashes.
+
+Use vector output, colorblind-safe palettes, direct labels, final-size readable
+type, alt text/tagging and captions that identify estimand, experimental unit,
+uncertainty, multiplicity and evidence status. Fix the reader caption split and
+near-empty final page; eliminate template placeholders and bare metadata.
+
+### Writing and Submission Repairs
+
+- Rewrite all current E-A language as exposed exploratory evidence; disclose the
+  mid-run code mutation, false code hash, repeated test looks, reused seeds,
+  fixed order, analysis correction and selected/final mismatch.
+- Do not call current E-F confirmatory. State that its base test path violates
+  sequestration and restart only after architectural correction.
+- Separate the historical FIR package, E-A redesigned FIR and E-F hybrid system;
+  none identifies the causal share of the others.
+- Frame hybrid novelty narrowly as an evaluated integration unless theory and
+  same-budget component/ensemble ablations demonstrate more.
+- Add Steck's EASE paper and direct fusion/calibration comparators to Related
+  Work; keep published single-run point estimates out of superiority tables.
+- Cut the approximately 26k-word main to a 10--14k scientific narrative. Move
+  audit chronology, retractions, gates and operations transcripts to supplement.
+- Rewrite the abstract around problem, method, frozen estimand, datasets,
+  uncertainty and bounded conclusion; remove PASS/confirmed/refuted/workflow
+  self-praise and causal/mechanism language unsupported by the design.
+- Generate manuscript, TeX, captions, public companion, response and metadata
+  from one typed, existence-checked claim registry.
+- Choose a target journal only after current length, anonymity, artifact,
+  AI-disclosure, accessibility, data-license and supplement rules are verified.
+
+### Author, Policy and Legal Verification
+
+**AUTHOR/INSTITUTION/LEGAL VERIFICATION:** author identity/order, affiliation,
+country, contact, ORCID, funding, conflicts, manuscript-level GenAI/automation
+disclosure, originality/simultaneous-submission status, privacy/ethics and
+redistribution authority cannot be established from the workspace.
+
+Obtain institutional confirmation and the exact target venue/article policy.
+Verify every dataset/model/code license, derived-data redistribution right and
+whether external R+ development exposed any proposed E-F seed or test result.
+
+### Open Questions
+
+1. Who edited the trainer during E-A, and who viewed the 466 test outcomes?
+2. Will E-A be explicitly archived as exploratory, with seed-20 rerun only in a
+   separately frozen confirmation rather than silently replaced?
+3. Did any R+ workspace, notebook, console or untracked artifact use E-F seeds
+   20260721--20260725 before preregistration?
+4. Has E-F already exposed base-test outcomes, and will it be stopped/restarted
+   under true sequestration if confirmation is intended?
+5. What independent scientific basis supports E-F's 0.0005 equivalence margin
+   and its n=5 power calculation after selection of the favorable development
+   effect?
+6. Can exact dense EASE fit within measured RAM/time for all categories, and why
+   are category/lambda solutions recomputed per sequential seed?
+7. Will E-F enforce strict checkpoint reconstruction, exact artifact inventory,
+   finite values and one unambiguous category/multiplicity family?
+8. Can a parameter-matched placebo and simpler fusion baselines separate novel
+   structure from capacity and generic score averaging?
+9. Will one immutable release inventory cover preregistration through
+   adjudication, including sidecars/checkpoints/logs and raw/normalized hashes?
+10. Who can attest author identity, disclosures, licensing and submission facts?
+
+### Running Checklist
+
+- [x] Freeze a timestamp, commit and exact live-log byte-prefix boundary.
+- [x] Exclude incomplete seed-20 A2 and all post-cutoff outcomes.
+- [x] Hash and reconstruct all 23 summaries and 45 referenced sidecars.
+- [x] Verify seven complete matched blocks and keep seed-20 A0/A1 separate.
+- [x] Prove the seed-20 A1 executed-code/source-hash contradiction from timeline,
+  config and provenance implementation.
+- [x] Inspect the E-F preregistration, driver, trainer integration, fuser,
+  checkpoint path and adjudicator before accepting its confirmatory label.
+- [x] Verify the current manifest at HEAD and preserve the 17-failure deposit
+  result.
+- [x] Confirm manuscript, figure and PDF byte identity; carry forward the prior
+  complete visual audit without redundant rendering.
+- [ ] Mark the full E-A family exploratory and disclose all outcome exposure and
+  source mutation before using any number in paper/public artifacts.
+- [ ] Build an immutable, test-quarantined, paired, counterbalanced replication
+  with a canonical unused-seed registry.
+- [ ] Patch E-F test sequestration, exact estimands/families, strict checkpoints,
+  adjudication, locks, resume and atomic artifact publication before relaunch.
+- [ ] Replace repeated dense inversions with hashed cached solves and publish
+  measured memory/runtime/fidelity evidence.
+- [ ] Add parameter-matched FIR and simple calibrated-fusion baselines.
+- [ ] Regenerate manuscript/public/PDF surfaces from a typed claim registry and
+  perform a new visual/accessibility review only after bytes change.
+- [ ] Resolve author, policy, ethics, licensing and redistribution verification.
+
+### Files Changed by This Audit
+
+- `PAPER_REVIEW_AUDIT.md` - updated cumulatively with this 22:57 fixed-cutoff
+  review. No manuscript, code, result, status, log, figure, public or PDF artifact
+  was edited by the reviewer.
 
 ## Audit Run - 2026-07-22 21:57 Australia/Sydney
 

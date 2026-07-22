@@ -62,6 +62,40 @@ result." This file is the durable worklist the quiet-tick loop services (priorit
   `ea_fir_v3_status.json`; ~8 h sequential; resumable) -> [ ] adjudicate ->
   [ ] integrate (frozen wordings only; Steck 2019 bib entry required at the
   integration commit).
+- [ ] **E-G. Cold-start / sparse-tail fusion element (maintainer directive
+  2026-07-23: "add element that help cold start or sparse dataset problem,
+  keep running experiments, once there's evidence of improvement verify
+  with all full datasets").** Element: training-free **text-kNN third
+  scorer** (frozen MiniLM embeddings, L2-normalized; user profile =
+  uniform or exp-0.9-decayed mean of input-history embeddings; score =
+  profile . e_i) fused as `z(seq) + w_e z(ease) + w_t(bin) z(text)`, with
+  w_t global or per TRAIN-frequency bin (tail <=5 / mid 6-20 / head >20;
+  never test frequency; monotone nonincreasing in frequency per the E-D
+  constraint). Needs no item-item inversion -> scales to EVERY catalog
+  incl. Office/CDs/Beauty where dense EASE is infeasible, and can score
+  near-zero-exposure items, which the zero-exposure study showed the
+  sequential model cannot rank. Honesty anchor: the paper's zero-hit
+  cold-item finding (sequential model) stands; this element is a different
+  retrieval mechanism and must earn its own evidence.
+  **Stage 1 (exploratory, post-hoc label):** `fuse_cold_eval.py` on TWO E-F
+  MI checkpoints (seeds 20260721-22), all selection on VAL; frozen grids
+  w_e {0,.02,.03,.04,.06}+selected, w_t {0,.01,.02,.05,.1,.2}; per-bin
+  target-frequency NDCG reported; test evaluated once per reported system.
+  **Promotion rule (VAL-only, mechanical, `run_eg_coldfuse_explore.py`):**
+  promote iff on BOTH seeds some selected system has (a) val overall >=
+  fused2 val overall - 0.0002 AND (b) val tail-bin NDCG@10 gain >= +0.0005.
+  **Stage 2 (only if promoted): PREREG_COLDFUSE_V1** -- frozen wording +
+  fresh seeds + mechanical adjudicator committed BEFORE launch; scope =
+  the maintainer's full-dataset verification: MI/IS/VG (seq+EASE+text vs
+  seq+EASE) AND Office_Products/CDs_and_Vinyl with new base checkpoints
+  (seq+text vs seq; EASE dropped where the dense inversion is infeasible
+  -- declared, not silent); per-category Holm; tail-bin co-primary
+  endpoint; no SOTA wording.
+  Lifecycle: [x] element + exploratory driver committed 2026-07-23 ->
+  [x] stage-1 launched 2026-07-23 chained behind E-F (waits on
+  `ef_hybrid_v1_status.json`) -> [ ] promotion precheck -> [ ] (if
+  promoted) freeze PREREG_COLDFUSE_V1 -> [ ] full-dataset confirmatory ->
+  [ ] adjudicate -> [ ] integrate.
 - [ ] **E-B. Frequency-stratified item-text permutation + random-feature
   control (audit 10:47 design adopted).** Freeze SEVERAL independent permutation
   maps before training (map uncertainty is real); permute within

@@ -9,9 +9,9 @@ canonical** (`CANONICAL_SUBMISSION.md` governs; `PAPER_SUBMISSION.md` is the sou
 record). This directory is a *derived* typeset format per `VENUE_PLAN.md`: format conversion
 only — no content was cut, added, or reworded (two presentation-only additions are disclosed
 under "Conversion decisions" below). Compiled outputs:
-**`paper_tex/PAPER_TORS.pdf` — the gated review artifact — 40 pages, single-column
+**`paper_tex/PAPER_TORS.pdf` — the gated review artifact — 49 pages (page count varies by revision), single-column
 `[manuscript,screen] (single-blind; corrected 2026-07-21)` acmart format, Figs. 1–3 embedded**, plus the untracked
-production preview `PAPER_TORS_acmsmall.pdf` (42 pages, `[acmsmall,screen]`). *Authoritative page counts are always the latest build's own output (`hygiene_scan_output.txt` for the review target); the counts written in this log are point-in-time.*
+production preview `PAPER_TORS_acmsmall.pdf` (51 pages at this writing, `[acmsmall,screen]`). *Authoritative page counts are always the latest build's own output (`hygiene_scan_output.txt` for the review target); the counts written in this log are point-in-time.*
 
 ## 2026-07-13 sync (3): post-V3 consistency sweep
 
@@ -409,6 +409,6 @@ No canonical file (`PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, `results_*.json`,
   sentence citing UniSGR (`sun2026unisgr`), DIGER (`fu2026diger`), ACERec (`xia2026acerec`)
   (authors verified against arXiv abstracts; no comparison made against any of them).
 - `references.bib`: the four entries above appended.
-- Build after sync: review target 40 pages (hygiene PASS), acmsmall preview 42 pages,
+- Build after sync: review target 49 pages (page count varies by revision) (hygiene PASS), acmsmall preview 42 pages,
   reader `PAPER_SUBMISSION.pdf` 46 pages. Header note added: authoritative counts are the
   latest build output; logged counts are point-in-time.

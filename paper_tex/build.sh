@@ -15,7 +15,8 @@
 #   PYTHON   (default: ../_bestrec_run/.venv/Scripts/python.exe)
 #   TECTONIC (default: ~/AppData/Local/tectonic/tectonic.exe, else `tectonic` on PATH)
 set -euo pipefail
-export SOURCE_DATE_EPOCH="$(git log -1 --format=%ct 2>/dev/null || echo 0)"
+MANIFEST_COMMIT="$(python -c "import json;print(json.load(open('../RELEASE_MANIFEST.json')).get('git_commit',''))" 2>/dev/null || true)"
+export SOURCE_DATE_EPOCH="$(git log -1 --format=%ct ${MANIFEST_COMMIT:-HEAD} 2>/dev/null || git log -1 --format=%ct 2>/dev/null || echo 0)"
 
 # STRICT BY DEFAULT (audit 2026-07-22 12:49 C1: wrappers must not self-waive).
 # A draft build needs an explicit, logged reason:  ./build.sh --draft "reason"
@@ -36,6 +37,16 @@ PYTHON="${PYTHON:-../_bestrec_run/.venv/Scripts/python.exe}"
 if [ -z "${TECTONIC:-}" ]; then
   if [ -x "$HOME/AppData/Local/tectonic/tectonic.exe" ]; then
     TECTONIC="$HOME/AppData/Local/tectonic/tectonic.exe"
+    if [ ! -x "$TECTONIC" ] && command -v tectonic >/dev/null 2>&1; then
+      TECTONIC="$(command -v tectonic)"
+    fi
+    if [ ! -x "$TECTONIC" ] && [ -n "${LOCALAPPDATA:-}" ] && [ -x "$LOCALAPPDATA/tectonic/tectonic.exe" ]; then
+      TECTONIC="$LOCALAPPDATA/tectonic/tectonic.exe"
+    fi
+    if [ ! -x "$TECTONIC" ]; then
+      echo "FATAL: no tectonic executable (set TECTONIC) -- refusing (audit 14:50)"; exit 6
+    fi
+    echo "tectonic: $TECTONIC"
   else
     TECTONIC="tectonic"
   fi

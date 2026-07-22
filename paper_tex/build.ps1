@@ -4,7 +4,7 @@ $__prevWaiver = $env:DRAFT_WAIVER
 try {
 if ($Draft -ne "") {
   $env:DRAFT_WAIVER = "1"
-  "DRAFT BUILD (waiver logged): $Draft" | Tee-Object -FilePath (Join-Path $PSScriptRoot "draft_waiver.log")
+  "$(Get-Date -Format o) DRAFT BUILD (waiver): $Draft" | Tee-Object -Append -FilePath (Join-Path $PSScriptRoot "draft_waiver.log")
 } else { Remove-Item Env:DRAFT_WAIVER -ErrorAction SilentlyContinue }
 # Build the TORS LaTeX derivative (PowerShell twin of build.sh; two targets, round-8).
 #   review target : main.tex          [manuscript,screen]      -> PAPER_TORS.pdf (gated)
@@ -15,8 +15,15 @@ Set-Location $PSScriptRoot
 $Python = if ($env:PYTHON) { $env:PYTHON } else { Join-Path $PSScriptRoot "..\_bestrec_run\.venv\Scripts\python.exe" }
 $Tectonic = if ($env:TECTONIC) { $env:TECTONIC } else {
     $cand = Join-Path $env:LOCALAPPDATA "tectonic\tectonic.exe"
-    if (Test-Path $cand) { $cand } else { "tectonic" }
+    if (Test-Path $cand) { $cand } else {
+        $gc = Get-Command tectonic -ErrorAction SilentlyContinue
+        if ($gc) { $gc.Source } else { $null }
+    }
 }
+if (-not $Tectonic -or -not (Test-Path $Tectonic)) {
+    throw "FATAL: no tectonic executable found (set TECTONIC or install to LOCALAPPDATA\tectonic) -- refusing a false-success build (audit 14:50 P1)"
+}
+Write-Host "tectonic: $Tectonic"
 
 Write-Host "== [1/4] regenerate table includes from the artifact graph =="
 & $Python (Join-Path $PSScriptRoot "..\_bestrec_run\build_hstu_tables.py") --submission
@@ -29,6 +36,13 @@ $__eap = $ErrorActionPreference; $ErrorActionPreference = "Continue"
 & $Tectonic --keep-logs main.tex 2>&1 | ForEach-Object { "$_" } | Tee-Object -FilePath (Join-Path $PSScriptRoot "main_console.log")
 $__rc = $LASTEXITCODE; $ErrorActionPreference = $__eap
 if ($__rc -ne 0) { throw "tectonic main.tex failed (exit $__rc)" }
+$__log = Get-Content -Raw (Join-Path $PSScriptRoot "main_console.log")
+if ($__log -notmatch 'Writing [`]?main\.pdf') {
+    throw "tectonic main.tex: completion marker 'Writing main.pdf' missing from log (audit 14:50 P1)"
+}
+if ($__log -match 'command not found|CommandNotFound') {
+    throw "tectonic log contains a tool-not-found error"
+}
 if ($LASTEXITCODE -ne 0) { throw "tectonic compile failed (main.tex)" }
 Write-Host "== [2/4] tectonic compile: production preview (acmsmall) =="
 $__eap = $ErrorActionPreference; $ErrorActionPreference = "Continue"

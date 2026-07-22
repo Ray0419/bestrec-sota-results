@@ -38,6 +38,13 @@ else:
                 r"There were undefined references"):
         for m in re.finditer(pat, log):
             fails.append("H1: " + log[m.start():m.start() + 90].replace("\n", " "))
+    # audit 2026-07-22 14:50 P1: a log is only evidence if the compiler FINISHED
+    if not re.search(r"Writing `?main(-acmsmall)?\.pdf", log):
+        fails.append("H1: compiler completion marker missing from main_console.log "
+                     "(no 'Writing main.pdf' -- stale or failed build)")
+    for badpat in ("command not found", "CommandNotFound", "error: cannot open"):
+        if badpat in log:
+            fails.append(f"H1: tool-error class in log: {badpat!r}")
 
 # ---- collect sources on the compiled path --------------------------------------
 srcs = {}
@@ -141,8 +148,18 @@ for _br10 in H10_BANNED_RE:
     m10 = re.search(_br10, _all10)
     if m10:
         fails.append(f"H10: stale/withdrawn pattern in compiled sources: {m10.group(0)[:60]!r}")
+_extra10 = ""
+for _p10 in (os.path.join(HERE, "PAPER_TORS_acmsmall.pdf"),
+             os.path.join(HERE, "..", "PAPER_SUBMISSION.pdf")):
+    if os.path.exists(_p10):
+        try:
+            from pypdf import PdfReader as _R10
+            _extra10 += "\n".join((pg.extract_text() or "")
+                                   for pg in _R10(_p10).pages)
+        except Exception as _e10:
+            fails.append(f"H10: could not extract {os.path.basename(_p10)}: {_e10}")
 if os.path.exists(pdf_path):
-    _flat10 = re.sub(r"\s+", " ", text)
+    _flat10 = re.sub(r"\s+", " ", text + " " + _extra10)
     for _b10 in H10_BANNED:
         if _b10 in _flat10:
             fails.append(f"H10: stale/withdrawn phrase in the compiled PDF: {_b10!r}")

@@ -128,8 +128,8 @@ the miss; the contract is already public, so there is no quiet way to discard it
 
 ### 5.2 The fail-closed artifact gate = a printer that refuses to bluff
 
-Every number printed in the paper — **168 of them** — is wired to the raw result files it came
-from. At every change, a build script recomputes all 168 from those files and **refuses to build
+Every number printed in the paper — **175 of them** — is wired to the raw result files it came
+from. At every change, a build script recomputes all 175 from those files and **refuses to build
 the paper** if even one printed digit disagrees with its evidence, one number's origin can't be
 traced, or one required family of evidence is missing. A separate manifest pins **276 files (current count; the release manifest is authoritative) by digital
 fingerprint (hash)**, so evidence can't quietly change after the fact. And since mid-July,
@@ -263,7 +263,7 @@ machinery that makes the second one credible.
       2026-07-18 after the GrIT-fence commit's sweep): result values and comparator numbers ->
       PAPER_SUBMISSION.md verbatim (at the paper's printed precision); Office V3 per-seed
       finals -> OFFICE_V3_RESULTS.md (the explainer names this source in its own text); the
-      168-cell count -> the strict gate's own BUILD GREEN output (mirrored in
+      175-cell count -> the strict gate's own BUILD GREEN output (mirrored in
       CANONICAL_SUBMISSION.md); the 153-file count -> the strict gate's manifest-verification
       output. Last full check: 2026-07-18 post-GrIT-fence — every number verified against its
       source; no drift.

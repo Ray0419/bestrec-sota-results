@@ -796,7 +796,7 @@
   {
    "cell_id": "t1.v1b.ndcg",
    "table_id": "table1",
-   "row_label": "(isolation) causal filter only, no LS (V1b)",
+   "row_label": "(isolation) FIR package arm (filter component; attribution open), no LS (V1b)",
    "metric": "NDCG@10 mean +- sd",
    "evidence_class": "exploratory",
    "status": "OK",
@@ -873,7 +873,7 @@
   {
    "cell_id": "t1.v1b.delta",
    "table_id": "table1",
-   "row_label": "(isolation) causal filter only",
+   "row_label": "(isolation) FIR package arm (filter component; attribution open)",
    "metric": "delta vs bias stack",
    "evidence_class": "exploratory",
    "status": "OK",
@@ -2669,7 +2669,7 @@
   {
    "cell_id": "t1c.filteronly.ndcg",
    "table_id": "table1c",
-   "row_label": "+ causal filter only (k16)",
+   "row_label": "+ FIR package arm (filter component; attribution open) (k16)",
    "metric": "NDCG@10 mean",
    "evidence_class": "exploratory",
    "status": "OK",

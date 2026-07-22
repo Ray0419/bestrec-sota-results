@@ -13,7 +13,7 @@ HSTU-style encoder, plain & 0.0588 & 1 & --- \\
 + full bias stack (TAPE + time + text-sim + pos-rab) & 0.0637 \ensuremath{\pm} 0.0003 & 5 & +0.0049 vs plain (+8.3\%) \\
 + label smoothing \ensuremath{\varepsilon}=0.2 \citep{szegedy2016rethinking} & 0.0649 \ensuremath{\pm} 0.0003 & 5 & +0.0012 (bands non-overlapping) \\
 \textbf{+ causal FIR filter K=8 (ours) \ensuremath{\rightarrow} full model} & \textbf{0.0673 \ensuremath{\pm} 0.0003} & \textbf{6} & \textbf{+0.0024 (bands non-overlapping)} \\
-\emph{(isolation)} causal filter only, no label smoothing & 0.0652 \ensuremath{\pm} 0.0003 & 5 & +0.0015 vs the 0.0637 stack \\
+\emph{(isolation)} FIR package arm (filter component; attribution open), no label smoothing & 0.0652 \ensuremath{\pm} 0.0003 & 5 & +0.0015 vs the 0.0637 stack \\
 \emph{(isolation)} ID-only (no SBERT / no text-sim / no prototypes) & \ensuremath{\approx}0.0656 \ensuremath{\pm} 0.0002 & 5 & text adds only +0.0018 (+2.7\%) overall \\
 \bottomrule
 \end{tabularx}

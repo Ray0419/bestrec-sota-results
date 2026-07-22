@@ -837,12 +837,12 @@ def build_spec():
                   6, conf,
                   notes="Direct 6-seed difference is +0.00368 (rounds to 0.0037); the paper's "
                         "+0.0036 is the difference of rounded endpoints 0.0673-0.0637."))
-    C.append(cell("t1.v1b.ndcg", "table1", "(isolation) causal filter only, no LS (V1b)",
+    C.append(cell("t1.v1b.ndcg", "table1", "(isolation) FIR package arm (filter component; attribution open), no LS (V1b)",
                   "NDCG@10 mean +- sd", V1B, "mean_std_metric",
                   {"files": V1B, "expect_n_eval": NEVAL_VG},
                   [chk("mean", 0.0652, 4), chk("sd", 0.0003, 4)], 5, conf, seeds=S0812,
                   notes="Recomputed mean 0.065150 rounds (half-up) to 0.0652."))
-    C.append(cell("t1.v1b.delta", "table1", "(isolation) causal filter only", "delta vs bias stack",
+    C.append(cell("t1.v1b.delta", "table1", "(isolation) FIR package arm (filter component; attribution open)", "delta vs bias stack",
                   V1B + STACK5, "delta_means", {"a": V1B, "b": STACK5},
                   [chk("delta", 0.0015, 4)], 5, conf,
                   notes="Also the S5.1 'causal filter alone +0.0015' single-flag figure."))
@@ -1005,7 +1005,7 @@ def build_spec():
                   MILS + MIBASE4 + MIK16, "share_of_lift",
                   {"x": MILS, "base": MIBASE4, "top": MIK16},
                   [chk("pct", 26.0, 0)], 5, conf))
-    C.append(cell("t1c.filteronly.ndcg", "table1c", "+ causal filter only (k16)", "NDCG@10 mean",
+    C.append(cell("t1c.filteronly.ndcg", "table1c", "+ FIR package arm (filter component; attribution open) (k16)", "NDCG@10 mean",
                   MIFO, "mean_std_metric", {"files": MIFO, "expect_n_eval": NEVAL_MI},
                   [chk("mean", 0.0408, 4)], 5, conf, seeds=S0812))
     C.append(cell("t1c.filteronly.delta", "table1c", "+ filter only", "delta vs base",
@@ -1934,7 +1934,7 @@ def render_tables(cells):
         f"| + label smoothing ε=0.2 | {MS('t1.ls.ndcg')} | 5 | {by_id['t1.ls.delta']['recomputed']['delta']:+.4f} | multi-seed (post-hoc) |",
         f"| **+ causal FIR filter K=8 → full model** | **{MS('t1.full.ndcg')}** | **6** | "
         f"**{by_id['t1.full.delta']['recomputed']['delta']:+.4f}** | multi-seed (post-hoc) |",
-        f"| *(isolation)* causal filter only, no LS | {MS('t1.v1b.ndcg')} | 5 | {by_id['t1.v1b.delta']['recomputed']['delta']:+.4f} vs stack | multi-seed (post-hoc) |",
+        f"| *(isolation)* FIR package arm (filter component; attribution open), no LS | {MS('t1.v1b.ndcg')} | 5 | {by_id['t1.v1b.delta']['recomputed']['delta']:+.4f} vs stack | multi-seed (post-hoc) |",
         f"| *(isolation)* ID-only | {MS('t1.idonly.ndcg')} | 5 | text adds {by_id['t1.text_add.paired']['recomputed']['mean']:+.5f} "
         f"({by_id['t1.text_add.pct']['recomputed']['pct']:+.1f}%) | multi-seed (post-hoc) |",
         f"| kernel sweep K=16 | {MS('t1.ksweep.k16')} | 5 | — | multi-seed (post-hoc) |",
@@ -1994,7 +1994,7 @@ def render_tables(cells):
         f"| + label smoothing only (5-seed) | {MS('t1c.lsonly.ndcg', 5)} | "
         f"{by_id['t1c.lsonly.delta']['recomputed']['delta']:+.4f} | "
         f"{by_id['t1c.lsonly.share']['recomputed']['pct']:.0f}% |",
-        f"| + causal filter only (k16, 5-seed) | {R('t1c.filteronly.ndcg')} | "
+        f"| + FIR package arm (filter component; attribution open) (k16, 5-seed) | {R('t1c.filteronly.ndcg')} | "
         f"{by_id['t1c.filteronly.delta']['recomputed']['delta']:+.4f} | "
         f"{by_id['t1c.filteronly.share']['recomputed']['pct']:.0f}% |",
         f"| + both = V2 (k16, 5-seed) | {MS('t1c.v2k16.ndcg')} | "
@@ -2205,9 +2205,10 @@ def render_tables(cells):
     t2rows.append(f"| cosine scoring (D1, directional) | dot baselines | "
                   f"{by_id['t2.cosine']['recomputed']['delta']:+.5f} (≤0) | n/a | 1 |")
     T["table2"] = "\n".join([
-        "**Table 2 (regenerated): systematic negative-result map.** All single-seed rows are "
-        "exploratory (audit F6); only conn-gate (cadence-caveated) and the titration nulls of "
-        "§5.3–§5.4 carry confirmatory weight; the former VG/Beauty equivalence claims are "
+        "**Table 2 (regenerated): screening log of capacity-adding probes.** All single-seed rows are "
+        "exploratory (audit F6); conn-gate (cadence-caveated) and the titration nulls of "
+        "§5.3–§5.4 were run at full pre-declared power (no null thereby confirmed — the "
+        "equivalence framework is withdrawn); the former VG/Beauty equivalence claims are "
         "retracted (§5.3).",
         "",
         "| Lever | Base | Δ NDCG@10 (recomputed) | learned scalar | n |",

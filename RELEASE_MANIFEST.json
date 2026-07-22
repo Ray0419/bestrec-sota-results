@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "803b2bab44809a07c6497223170a32028b393d93",
+  "git_commit": "361ba8b1f674c3a92e4ba5a0c6784266606765b5",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -115,7 +115,7 @@
       "sha256": "0eaad74a57698a878e5aaa2e7d0e314232b53759c4c449b509b34867cb9d18bc"
     },
     "_bestrec_run/build_hstu_tables.py": {
-      "sha256": "88b427d60d71283dbb60a53ba108921c0259636c3939b3f49855245341ff31e4"
+      "sha256": "11982bddf2409d07f7671c7d0ad0b531d9b670451c0e4bed9dd7309d716ad6a3"
     },
     "_bestrec_run/test_hstu_parity.py": {
       "sha256": "adf28343d5a27841f97f12d680578ddb0e6d9029745608e21e55519aec59396c"
@@ -238,16 +238,16 @@
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     "PAPER_SUBMISSION.md": {
-      "sha256": "b0549762bf5461b882914c080f08fe18f47f73ee10f706a5c9df1b8c1832baad",
-      "bytes": 185522
+      "sha256": "d34031d2de20a3a4fbe2fee0b7524237c77e070eb70ede2e6eb148ba4c811530",
+      "bytes": 185889
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "027cf5ed419c312e73ffe48b66c9647cf6aade7ace88de349c6cbc622613a315",
-      "bytes": 1385413
+      "sha256": "c384be27aabeb13c2e0d39c3a27d119b7bb57dc0ae0c3da51f58a20d9ab48d96",
+      "bytes": 1388011
     },
     "PAPER_DRAFT.md": {
-      "sha256": "97b94c8bdb3fc1df8220350b4cbf51557c301cf50b1f18d2accbea6e7df88389",
-      "bytes": 208868
+      "sha256": "c72f9e811ac6fdb09ba699701d8f46e3692724f5ab934f14050cb4c59ec291ff",
+      "bytes": 209245
     },
     "CANONICAL_SUBMISSION.md": {
       "sha256": "af0542c6e51052c3097cc43c39a20a6b3e2281cd5baad4087b089c9996856838",
@@ -286,8 +286,8 @@
       "bytes": 27959
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "764260258d318d7436086d5615f69c41ff1c23b2249bde73c38041a580d05ab9",
-      "bytes": 451444
+      "sha256": "ce582496964c7c63fcd32a86fe065ad31a103cc6837f342e612ca9f0e6d956da",
+      "bytes": 451740
     },
     "_bestrec_run/emit_latex_tables.py": {
       "sha256": "5ccb9f225cba000d3b38d89b2a53743aeb0e2f851f2f396006cc3a871e96d3b3",
@@ -403,7 +403,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.1.11-deposit",
-  "hash_parent_commit": "803b2bab44809a07c6497223170a32028b393d93",
+  "hash_parent_commit": "361ba8b1f674c3a92e4ba5a0c6784266606765b5",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",

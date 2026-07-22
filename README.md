@@ -39,7 +39,7 @@ blobs (`DOI_DEPOSIT_INSTRUCTIONS.md` has the full rule).
   - **Office_Products (V3)**: CI lower bounds **0.03033** (K=16) / **0.03024** (K=8) vs both
     the environment-matched local regeneration 0.0279 and the published 0.0271; 10/10 seeds
     above (`PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`).
-- **The leak-free causal FIR filter is supported on all four categories tested** — an internal
+- **The FIR package arm (filter + initialization + optimizer path — components not separable yet) shows positive estimates on all four categories tested** — an internal
   same-seed filter-vs-no-filter contrast (never a comparator claim; same-numbered seeds are
   NOT initialization-paired — the frozen breadth rule's paired interpretation is withdrawn,
   and the primary analysis is independent-arm Welch, both 95% CIs excluding zero:

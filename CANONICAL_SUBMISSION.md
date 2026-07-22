@@ -15,7 +15,7 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
    implementation itself (best full-eval epoch NDCG@10 = 0.0406 exactly; environment-caveated
    single run, §5.6 / `THEIRS_ON_OURS_REPORT.md`) — regeneration, never "official reproduction".
    Evidence: `SOTA_CONFIRM_PREREG_V2.md` → `SOTA_CONFIRM_V2_RESULTS.md` (+ errata).
-2. **Causal FIR filter:** multi-seed lever supported on **four categories** (Video_Games +
+2. **FIR treatment package (filter + initialization + optimizer path):** multi-seed package-arm estimates positive on **four categories** (Video_Games +
    Musical_Instruments in development; Industrial_and_Scientific + CDs_and_Vinyl under the
    pre-declared breadth campaign `PREREG_FIR_BREADTH.md` / `FIR_BREADTH_RESULTS.md` —
    both categories fired the frozen decision rule ("CONFIRMED" per its mechanical

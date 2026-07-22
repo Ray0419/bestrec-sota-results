@@ -134,7 +134,11 @@ H10_BANNED = ("external auditor", "exactly the commit carrying",
               "near-additively", "orthogonal axes", "dead weight confirmed",
               "confirmed under the valid", "cannot manufacture",
               "carry confirmatory weight", "a unidentified",
-              "never seen sold", "168 cells", "153 files")
+              "never seen sold", "168 cells", "153 files",
+              # audit 16:51 additions:
+              "dead-weight", "single-lever isolation", "per-lever isolation",
+              "double/refuting", "qualitative refutation", "density-inert",
+              "rival AI", "independent auditor", "supports the robustness")
 H10_BANNED_RE = (r"residual[^.\n]{0,60}content component",)
 _pub10 = [os.path.join(HERE, "..", rel) for rel in (
     "PAPER_SUBMISSION.md", "README.md", "COVER_LETTER_TORS.md", "CANONICAL_SUBMISSION.md",

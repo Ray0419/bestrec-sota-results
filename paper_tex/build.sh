@@ -15,9 +15,6 @@
 #   PYTHON   (default: ../_bestrec_run/.venv/Scripts/python.exe)
 #   TECTONIC (default: ~/AppData/Local/tectonic/tectonic.exe, else `tectonic` on PATH)
 set -euo pipefail
-SCRIPT_DIR0="$(cd "$(dirname "$0")" && pwd)"
-MANIFEST_COMMIT="$("${PYTHON:-python}" -c "import json,sys;print(json.load(open(sys.argv[1])).get('git_commit',''))" "$SCRIPT_DIR0/../RELEASE_MANIFEST.json" 2>/dev/null || true)"
-export SOURCE_DATE_EPOCH="$(git log -1 --format=%ct ${MANIFEST_COMMIT:-HEAD} 2>/dev/null || git log -1 --format=%ct 2>/dev/null || echo 0)"
 
 # STRICT BY DEFAULT (audit 2026-07-22 12:49 C1: wrappers must not self-waive).
 # A draft build needs an explicit, logged reason:  ./build.sh --draft "reason"
@@ -47,6 +44,17 @@ if [ -z "${TECTONIC:-}" ] || [ ! -x "$TECTONIC" ]; then
   exit 6
 fi
 echo "tectonic: $TECTONIC"
+
+# epoch AFTER tool/python resolution (audit 16:51 P1); fail closed on unreadable manifest
+SCRIPT_DIR0="$(cd "$(dirname "$0")" 2>/dev/null && pwd || true)"
+if [ -z "$SCRIPT_DIR0" ]; then SCRIPT_DIR0="$(pwd)"; fi   # already inside the script dir
+MANIFEST_COMMIT="$("$PYTHON" -c "import json,sys;print(json.load(open(sys.argv[1])).get('git_commit',''))" "$SCRIPT_DIR0/../RELEASE_MANIFEST.json" 2>/dev/null || true)"
+if [ -z "$MANIFEST_COMMIT" ] && [ "${ALLOW_HEAD_EPOCH:-}" != "1" ]; then
+  echo "FATAL: cannot read git_commit from RELEASE_MANIFEST.json (set ALLOW_HEAD_EPOCH=1 to override for dev builds)"; exit 7
+fi
+export SOURCE_DATE_EPOCH="$(git log -1 --format=%ct ${MANIFEST_COMMIT:-HEAD} 2>/dev/null || echo 0)"
+# carry env across the WSL->Windows boundary (audit 16:51: exports do not cross by default)
+export WSLENV="DRAFT_WAIVER/w:SOURCE_DATE_EPOCH/w:PYTHONIOENCODING/w:${WSLENV:-}"
 
 echo "== [1/4] regenerate table includes from the artifact graph =="
 # Strict-submission table build FIRST (audit 2026-07-18 19:20): a TORS PDF must never be

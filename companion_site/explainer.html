@@ -131,7 +131,7 @@
   <div class="badge-row">
     <span class="badge accent">175 numbers, all machine-verified</span>
     <span class="badge">11.6M parameters · ~10 min training</span>
-    <span class="badge">Audited hourly by a rival AI</span>
+    <span class="badge">Stress-tested hourly by author-operated audit automation</span>
   </div>
   <nav class="toc" aria-label="Sections">
     <a href="#task">1 · The task</a>
@@ -320,12 +320,12 @@
           <line x1="148" y1="70" x2="176" y2="70" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#arr)"/>
           <line x1="310" y1="70" x2="338" y2="70" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#arr)"/>
           <line x1="482" y1="70" x2="510" y2="70" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#arr)"/>
-          <text x="330" y="132" text-anchor="middle" fill="var(--amber)" font-weight="700">⟲ a rival AI re-audits everything hourly and publishes its complaints</text>
+          <text x="330" y="132" text-anchor="middle" fill="var(--amber)" font-weight="700">⟲ a author-operated audit automation re-audits everything hourly and publishes its complaints</text>
           <path d="M 78 100 Q 330 118 580 100" fill="none" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="5 4"/>
         </g>
       </svg>
     </div>
-    <figcaption>Fig. 1 — The trust pipeline. Claims are worded before results exist; every printed number must recompute from raw evidence at every build; an independent auditor attacks the whole chain on a schedule.</figcaption>
+    <figcaption>Fig. 1 — The trust pipeline. Counted claims are worded before results exist (development results are post-hoc and the largest rerun was outcome-visible — see the paper); every printed number must recompute from raw evidence at every build; an author-operated audit automation attacks the whole chain on a schedule.</figcaption>
   </figure>
   <h3>5.1 Pre-declaration = calling your shot</h3>
   <p>Before any experiment that could become a claim, we commit a sealed contract to version control: the exact command, settings, <em>fresh never-run</em> random seeds, the pass/fail rule, and the exact sentence we'd be allowed to claim. Like calling the pocket before the pool shot. Misses get published too — the contract is already public, so there's no quiet way to bury one.</p>
@@ -418,7 +418,7 @@
     <p>Because published numbers come from <em>their</em> hardware and software; ours differ, and our V1 tripwire proved the difference matters (+44% on a baseline). Running their unmodified code in our environment gives an apples-to-apples bar on our field — clearly labeled as a single, environment-caveated run, which is why the sealed V3 contract requires clearing the published number <em>too</em>.</p>
   </details>
   <details><summary>Who audits the auditors?</summary>
-    <p>Everything is in one public repository: the sealed contracts, raw result files with cryptographic hashes, the gate script, the rival AI's complaint log, and our signed responses. Anyone can re-run the single verification command and rebuild all 175 numbers from evidence. Trust ends in a command you can run, not in us.</p>
+    <p>Everything is in one public repository: the sealed contracts, raw result files with cryptographic hashes, the gate script, the author-operated audit automation's complaint log, and our point-by-point written responses. Anyone can re-run the single verification command and rebuild all 175 numbers from evidence. Trust ends in a command you can run, not in us.</p>
   </details>
 </section>
 

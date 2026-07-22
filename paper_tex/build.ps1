@@ -6,7 +6,9 @@ $__prevWaiver = $env:DRAFT_WAIVER
 try {
 if ($Draft -ne "") {
   $env:DRAFT_WAIVER = "1"
-  "$(Get-Date -Format o) DRAFT BUILD (waiver): $Draft" | Tee-Object -Append -FilePath (Join-Path $PSScriptRoot "draft_waiver.log")
+  $__wl = "$(Get-Date -Format o) DRAFT BUILD (waiver): $Draft"
+Write-Host $__wl
+[System.IO.File]::AppendAllText((Join-Path $PSScriptRoot "draft_waiver.log"), $__wl + [Environment]::NewLine, (New-Object System.Text.UTF8Encoding($false)))
 } else { Remove-Item Env:DRAFT_WAIVER -ErrorAction SilentlyContinue }
 # Build the TORS LaTeX derivative (PowerShell twin of build.sh; two targets, round-8).
 #   review target : main.tex          [manuscript,screen]      -> PAPER_TORS.pdf (gated)

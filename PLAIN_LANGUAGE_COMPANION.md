@@ -86,13 +86,7 @@ Three properties make our version safe and honest:
 3. **Tiny:** for each internal signal stream it learns just 8 or 16 blending weights — knobs
    bolted onto the existing engine, not a new engine.
 
-**Does it help?** Yes, consistently. Adding the filter improved results on **all four categories
-we tested**. On two of them the test was run under a sealed pre-declaration (see §5): on
-Industrial & Scientific, the filter added **+0.0024** NDCG@10 (95% confidence interval
-**+0.0018 to +0.0030**), and on CDs & Vinyl **+0.0057** (**+0.0049 to +0.0064**) — in both
-cases the filter won on **5 out of 5** seeded re-runs (same seed numbers in both arms; the paper discloses these arms are not initialization-paired), with **zero per-category tuning**
-(the settings were transplanted as-is). In sprint terms: a small but repeatable shave off the lap
-time, on tracks the tuning never saw.
+**Does it help?** The **package arm** (filter + starting state + optimizer path — the paper is explicit that these cannot be separated yet) showed positive estimates on **all four categories tested**. The two breadth categories were re-run as fully independent 8-vs-8 arms under a Git-committed plan whose rerun was **outcome-visible** (paper §5.3): Industrial & Scientific **+0.0021** NDCG@10 (Welch 95% CI **+0.0019 to +0.0024**) and CDs & Vinyl **+0.0058** (**+0.0053 to +0.0063**). An earlier paired reading of the original runs was **withdrawn** (the arms were never initialization-paired) — the numbers above are the repaired, independent-arm ones.
 
 ## 4. A finding, not just a gadget: text helps some catalogs and not others
 
@@ -101,13 +95,13 @@ points is *when* they help:
 
 - On **small, sparse catalogs** (Musical Instruments, Office Products), text helps clearly —
   especially for **obscure items**. Analogy: in a small-town library with no borrowing records
-  for most books, a librarian leans on the blurbs. Text is the blurb.
+  for most books, a librarian leans on the blurbs. Text is the blurb. (This picture is a **hypothesis**, not deployment advice: the cross-dataset difference was NOT statistically established — p = 0.13 — and the thinning experiment below did not reproduce it.)
 - On **large, dense catalogs** (Video Games, Beauty), text adds roughly nothing on the same
   measurements. The big-city library has so much borrowing history that the blurbs are redundant.
 
 We went beyond correlation (drawn schematically as Fig. B in the interactive explainer): we **thinned** dense datasets on purpose (training the same model on
 artificially sparsified versions while grading on the same exam) to test whether scarcity itself
-flips text from useless to useful. The paper reports these as controlled experiments — we changed one
+flips text from useless to useful. The paper reports these as bundled interventions on one fixed subset draw (many things change together when you thin) — we changed one
 thing on purpose and watched the effect — not just observations. The practical upshot for practitioners: *whether to bother wiring product text into
 your recommender depends on your catalog's density — measure it first.*
 
@@ -119,16 +113,12 @@ impossible for us. Three mechanisms:
 
 ### 5.1 Pre-declaration = calling your shot
 
-Before running an experiment that could become a claim, we write a sealed contract into version
-control: the exact command, the exact settings, the random seeds (chosen fresh, **never previously
-run**), the pass/fail rule, and the exact sentence we would be allowed to claim if it passes.
-*Then* we run it — calling the pocket before the pool shot. If the result misses, we publish
-the miss; the contract is already public, so there is no quiet way to discard it.
+For the **counted claims** we write the contract into version control first: exact command, settings, fresh seeds, pass/fail rule, and the exact sentence we may claim. *Then* we run it. Honesty note: not everything in the paper had that timing — development results are labeled post-hoc, and the biggest rerun (TFV2) was **outcome-visible** while it ran (the paper's §5.3 discloses the exact chronology). Misses are published either way — the VOID Office V1 campaign is the standing example.
 
 ### 5.2 The fail-closed artifact gate = a printer that refuses to bluff
 
-Every number printed in the paper — **175 of them** — is wired to the raw result files it came
-from. At every change, a build script recomputes all 175 from those files and **refuses to build
+Every one of the **175 artifact-gated table cells** is wired to the raw result files it came
+from. At every change, a build script recomputes all 175 gated cells from those files (two expository tables are conventional prose) and **refuses to build
 the paper** if even one printed digit disagrees with its evidence, one number's origin can't be
 traced, or one required family of evidence is missing. A separate manifest pins **276 files (current count; the release manifest is authoritative) by digital
 fingerprint (hash)**, so evidence can't quietly change after the fact. And since mid-July,

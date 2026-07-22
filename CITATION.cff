@@ -27,7 +27,7 @@ abstract: >-
   pre-declaration with an environment-matched reference — the earlier V1
   campaign remains VOID by its own tripwire), a per-dataset (heterogeneity not established) long-tail
   pattern with thinning interventions, a fail-closed artifact-graph build that
-  recomputes every printed number from source artifacts, and a shim harness
+  recomputes all 175 artifact-gated table cells from source artifacts, and a shim harness
   that executes the reference comparator implementation locally. No SOTA claim
   of any kind; no paired or distributional superiority over single-run
   comparators.

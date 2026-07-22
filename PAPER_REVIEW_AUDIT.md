@@ -4,7 +4,86 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-22 15:50 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-22 16:51 Australia/Sydney)
+
+1. **[CONFIRMED, rejection-level audit-integrity contradiction] The newest
+   response's closure ledger is false and is not machine-checkable.** It says the
+   companion/explainer all-four and density story was fixed, yet the principal
+   narratives still publish filter-level improvements, withdrawn paired intervals,
+   a one-change density experiment and deployment advice. It also reports zero
+   generator `dead weight` hits while a hyphenated `dead-weight bound` survives.
+   The ledger is pasted grep output, not an executable test. Replace it with a
+   committed assertion suite that checks required files, typed claims and prohibited
+   semantic variants, and do not report closure until every surface is regenerated.
+2. **[CONFIRMED, rejection-level release contradiction] PowerShell is repaired, but
+   the advertised Bash/WSL build is still neither green nor reproducible.** The
+   no-tool path now exits 6, but manifest parsing invokes bare `python` before
+   Python resolution and silently falls back to HEAD epoch. WSL does not propagate
+   `DRAFT_WAIVER` or `SOURCE_DATE_EPOCH` to Windows Python/Tectonic, so an explicit
+   draft build exits 2 and stamps wall-clock time. Resolve Python first, use native
+   tools consistently or configure `WSLENV`, fail closed on manifest-read failure,
+   and add Windows/WSL CI fixtures.
+3. **[CONFIRMED statistical/attribution defect] FIR is still a confounded
+   initialization--optimizer package, not a filter isolation.** The paper disclaims
+   controlled isolation but still says `single-lever`, `dissociates`, `per-lever
+   isolation`, `filter's share`, about 80% contribution, transfer and kernel
+   generalization. E-A is unrun. Use package-arm wording only, then run a nonsingular
+   matched factorial with cloned checkpoints/RNG/optimizer state and independently
+   varied FIR, initialization/gate and weight decay.
+4. **[CONFIRMED inference-taxonomy defect] The manuscript simultaneously calls the
+   tail result inconclusive/not refuted and `confirming`, `refuting`, an unaffected
+   `refutation`, `density-inertness`, a positive mechanism and support for
+   robustness.** One fixed thinning map, no prospective equivalence margin/MDE, a
+   nonsignificant interaction and an uncorrected six-rung trend cannot support those
+   labels. Report estimates and intervals; repeat independent maps crossed with
+   seeds; predeclare multiplicity and equivalence criteria.
+5. **[CONFIRMED gate-design defect] H10 still passes material source/PDF
+   contradictions.** It is a narrow, partly case-sensitive exact blacklist over
+   only selected files; it omits the draft, shared TeX, generators and generated
+   JSON, and conditionally skips PDFs. It misses `dead weight`, hyphenated variants,
+   paraphrases and cross-surface inconsistencies. Replace it with an existence-
+   checked surface registry and typed claim-parity validation; keep blacklists only
+   as a secondary regression layer.
+6. **[CONFIRMED missing evidence; PLAUSIBLE novelty rejection] No experiment,
+   preregistration, raw result, numeric result leaf, baseline, ablation, uncertainty
+   estimate or bibliography source changed; E-A--E-E remain unchecked.** WPGRec,
+   AlphaFuse and FAERec occupy nearby frequency and language/ID-tail space. Complete
+   matched FIR isolation, frequency-stratified multi-map permutation/random-feature
+   controls, training-target parity, independent thinning maps and a closest-
+   protocol AlphaFuse comparison before asserting top-journal algorithmic novelty.
+7. **[CONFIRMED public-record contradiction] Public and metadata surfaces remain
+   stronger than the canonical caveats.** The companion/explainer contradict their
+   own later correction, overstate graph coverage as every printed number, prescribe
+   sparse/dense deployment, and contain broken/orphan fragments. README and
+   canonical-submission metadata still headline filter-level four-category support;
+   CFF/Zenodo overstate regeneration. Generate these surfaces from the same claim
+   registry and remove causal guidance not supported by the experiments.
+8. **[CONFIRMED release-boundary/reproducibility defect]** The default release exits
+   1, no attestation is produced, the stale deposit correctly exits 2, and release
+   scripts/gates, reader regeneration, figures, attestation and ignored acmsmall PDF
+   remain outside the manifest/deposit boundary. No run-local freshness binding or
+   two-build semantic digest exists. Manifest every release input/output, rebuild in
+   clean directories twice, compare a documented semantic digest and cut a new tag.
+9. **[CONFIRMED writing/visual blocker]** The 26,098-word main manuscript remains an
+   audit diary rather than a journal synthesis. All 156 PDF pages render without
+   gross corruption, but the reader caption splits across pp.28--29, p.56 is nearly
+   empty, tables/annotations are cramped, and trajectories omit seed/map uncertainty.
+   Move chronology to a supplement, reduce the body to a focused synthesis, reflow
+   the page, enlarge visuals and add uncertainty/accessibility layers.
+10. **[AUTHOR/INSTITUTION/LEGAL VERIFICATION]** Real author, affiliation, country,
+    contact, ORCID, funding, conflict and manuscript-level GenAI/automation
+    disclosure remain unresolved. Claims of a `rival AI`, `independent auditor` and
+    `signed responses` also need evidence or removal. Independently confirm
+    authorship, approval, ethics, originality, licenses and redistribution rights.
+11. **[CONFIRMED progress, do not overread]** Bash now fails honestly when no tool
+    exists; PowerShell draft build, UTF-8 logging, manifest epoch, BOM-aware H1 and
+    poisoned-log self-test behave correctly; artifact graph/manifest checks pass;
+    the malformed FIR parenthesis and SVG coordinate are fixed; and no gross render
+    failure was found. These repairs do not close scientific attribution, public
+    parity, cross-platform release proof, identity or novelty. Recommendation:
+    **reject / not ready**.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-22 16:51)
 
 1. **[CONFIRMED, rejection-level release contradiction] Neither advertised venue
    build entry point can complete on the audited Windows host.** Bash still exits
@@ -2712,6 +2791,395 @@ plausible risks.
     the venue's current template/anonymity rules, supply any independent
     pre-outcome timestamp, repeat thinning across independent subsets, and
     demonstrate a public fresh-clone reconstruction.
+
+## Audit Run - 2026-07-22 16:51 Australia/Sydney
+
+### Review Verdict
+
+**Recommendation: reject / not ready for top-journal submission.** Commit
+`be23ba13` repairs several real build and wording defects, but the accompanying
+response again claims closure that the live sources and runtime behavior disprove.
+PowerShell can now compile a valid draft with a manifest-bound epoch, whereas the
+advertised Bash/WSL path still loses its draft waiver and epoch when it launches
+Windows executables. More importantly, no scientific evidence changed: E-A--E-E
+remain unrun, the FIR component remains confounded with initialization and optimizer
+path, and the manuscript/public record still promotes contradictory isolation,
+refutation, mechanism and density claims.
+
+Status labels in this section mean:
+
+- **CONFIRMED**: reproduced from current files, commands, diffs, or rendered
+  artifacts.
+- **PLAUSIBLE RISK**: a reviewer concern supported by the record but requiring a
+  targeted experiment or venue decision.
+- **AUTHOR VERIFICATION**: cannot be established independently from this workspace.
+
+### Fixed Snapshot and Scope
+
+| Item | Audited value |
+|---|---|
+| Fixed filesystem cutoff | `2026-07-22T16:52:58.1508183+10:00` (`06:52:58.1508183Z`) |
+| Branch | `codex/bestrec-sota-results` |
+| Audited HEAD | `be23ba13eb05f954be519b20b0415204d7a6ec4c` |
+| Previous audited HEAD / manifest commit | `d5c2f1f52143f64493b86a5cf5428602cd07400d` |
+| New commit | `be23ba13`, response-described as closing all six false items |
+| Delta | 19 files, 638 insertions, 65 deletions; most insertions are prior audit/response text |
+| Initial tracked/untracked state | clean |
+| New experiment/result/bibliography evidence | none |
+
+The audit inspected the canonical and draft Markdown, TeX sections/tables, all three
+compiled PDFs, public companion/HTML, README and submission metadata, generator and
+generated JSON, result/experiment program, release/build/health/deposit machinery,
+and the newest response. It executed native PowerShell and Bash/WSL paths, health
+and self-test variants, manifest/deposit checks, compared the scientific delta, and
+rendered all PDF pages. The isolated release worktree and 219 temporary PDF-render
+files were removed after verification; the source checkout remained clean before
+this audit-file update.
+
+### Evidence Delta: Genuine Repairs Versus No Scientific Advance
+
+**CONFIRMED genuine repairs:**
+
+- Bash syntax is valid and a missing compiler now produces an explicit exit 6
+  rather than command-not-found exit 127.
+- PowerShell writes a BOM-free UTF-8 console log, H1 reads both UTF-8 and legacy
+  UTF-16 BOM logs, and the explicit PowerShell draft build exits 0 with
+  `BUILD OK`.
+- PowerShell uses manifest commit `d5c2f1f` epoch `1784697738`; its compiled
+  PDF CreationDate is `D:20260722052218`.
+- The self-test accepts the valid placeholder-only failure and rejects a poisoned
+  compiler log with the additional H1 failures.
+- Artifact graph verification passes at 175 cells / 15 families with zero mismatch
+  or untraceable cells. Manifest verification passes at 276 worktree files and 138
+  Git-backed entries.
+- The malformed FIR parenthesis now renders correctly, the explainer SVG control
+  point is restored to 168, public count text says 276, and several exact generator
+  labels were softened.
+
+**CONFIRMED no scientific delta:**
+
+- No experiment, preregistration, raw run/seed result, figure-data CSV,
+  `EXPERIMENT_PROGRAM.md`, or bibliography source changed.
+- Recursive comparison of `hstu_results_manifest.json` finds exactly four
+  string-label changes and zero numeric changes; `hstu_tables.json` has zero
+  changed leaves. Release-manifest changes are hashes/bytes/commit metadata only.
+- `PAPER_SUBMISSION.md` changes three prose lines. Its numeric-token multiset adds
+  only the new section cross-reference 3; no score, seed count, CI, p-value,
+  baseline, ablation, correction or effect changes.
+- The bibliography is byte-identical across commits (Git blob
+  `adb17b66b7c8d82d9d88faeb641264eeed2030e6`; current SHA-256
+  `a6d06d52be081c6cb8883237602c36df6cac72b678900385662c4b89257da177`).
+- E-A, E-B, E-C, E-C2, E-D and E-E remain unchecked. Therefore no causal,
+  attribution, robustness, novelty, comparator or generalization claim gained
+  evidentiary support.
+
+### Response-to-Evidence Falsification Matrix
+
+| Response claim | Current evidence | Status |
+|---|---|---|
+| Both venue builds are green in draft mode | Explicit PowerShell draft exits 0; explicit Bash/WSL draft exits **2** because Windows Python does not receive the WSL waiver | **CONFIRMED false as a cross-platform claim** |
+| Both wrappers use the manifest epoch | PowerShell does; Bash invokes bare Python before resolving `PYTHON`, gets no manifest commit and uses HEAD epoch `1784701569` | **CONFIRMED false for Bash** |
+| Generator manifest has zero dead-weight/filter-only hits | `build_hstu_tables.py:1403` and generated JSON `:10992` retain `dead-weight bound`; the ledger searched only the space-separated spelling | **CONFIRMED false** |
+| PLC/explainer all-four and density wording was fixed | Later summary rows were softened, but PLC `:89-112` and explainer `:241,256-295` retain the stronger story | **CONFIRMED false / partial edit** |
+| Controlled/isolation problem was repaired | Exact phrases changed at two cited lines, but `single-lever`, `isolation`, `dissociates`, filter share/contribution and generalization remain throughout source/TeX/PDF | **CONFIRMED lexical-only repair** |
+| Closure is machine-checked | The response contains a pasted grep transcript and occurrence counts; no executable closure-ledger test was added | **CONFIRMED false** |
+| Reader is 56 pages and clean | Page count and gross layout are sound, but scientific contradictions, caption split, tiny elements and near-empty p.56 remain | **Partly true; CLEAN is overbroad** |
+
+The repair response should be treated as an unverified assertion log, not release
+evidence. Every future closure row should point to an executable assertion, its
+expected result, the exact required surface set, and an immutable output digest.
+
+### Executed Release and Gate Matrix
+
+| Command/check | Exit | Audit interpretation |
+|---|---:|---|
+| `bash -n paper_tex/build.sh` | 0 | Shell syntax healthy. |
+| Default Bash, no compiler | 6 | Genuine fix: honest tool-resolution failure. |
+| Default PowerShell, no compiler | 1 | Honest tool-resolution failure. |
+| PowerShell explicit bundled Tectonic, strict | 1 | Compile succeeds; only maintainer placeholder blocks. |
+| PowerShell explicit bundled Tectonic, draft | **0** | `BUILD OK`; health and scan pass. |
+| Bash explicit bundled Tectonic, draft, isolated worktree | **2** | Both PDFs compile, but Windows Python sees strict mode. |
+| Self-test with valid log / poisoned log | 0 / 4 | Correct placeholder-only attribution; poisoned log rejected. |
+| Health valid log, strict / waiver | 2 / 0 | Correct placeholder behavior. |
+| Health poisoned log, strict / waiver | 2 / 2 | H1 cannot be waived. |
+| Legacy UTF-16LE log with waiver | 0 | BOM-aware H1 works. |
+| PDF scan strict / waiver | 1 / 0 | Placeholder is the expected distinction. |
+| `release_build.py` default | 1 | Empirical stage passes; venue fails honestly without compiler. |
+| Manifest worktree / Git-backed verification | 0 / 0 | 276 / 138 entries verify. |
+| Deposit `--check-only` | 2 | Correctly reports stale immutable tag. |
+| Release attestation | absent | End-to-end release proof not produced. |
+
+### Confirmed Problem 1: Bash/WSL Release Semantics Remain Broken
+
+1. **Manifest epoch:** `build.sh:19` invokes `${PYTHON:-python}` before the
+   working Python default is assigned near line 36. Bare `python` is absent in
+   the audited WSL environment, so manifest parsing silently returns an empty
+   commit and the wrapper falls back to current HEAD. A release build must fail
+   closed if its declared manifest cannot be read or resolved.
+2. **Cross-boundary environment:** `DRAFT_WAIVER=1` and
+   `SOURCE_DATE_EPOCH` exported inside WSL do not automatically reach Windows
+   `python.exe` and `tectonic.exe`. Consequently Bash draft health acts strict
+   and the explicit PDF uses wall-clock CreationDate
+   `D:20260722065824`, not manifest time `D:20260722052218`.
+3. **Mixed log encoding:** PowerShell can create `draft_waiver.log` as UTF-16LE
+   while Bash appends UTF-8, yielding one invalid mixed-encoding record.
+4. **Boundary and freshness:** release scripts/gates, attestation, reader build,
+   figures and ignored acmsmall output remain outside manifest/deposit hashes.
+   There is no run ID, input digest, fresh-output check, or two-build semantic
+   comparison. The compiler-version probe also ignores an explicit `TECTONIC`
+   path.
+
+**Required release repair:** resolve and validate Python after changing to the
+script directory, then parse the manifest with an explicit path. Either use native
+Linux tools throughout Bash or explicitly carry required variables through
+`WSLENV`; test both modes in CI. Write both waiver logs as BOM-free UTF-8. Record
+the resolved compiler path/version and bind every input, command, log, gate and
+output to a run-local attestation. Build twice in clean directories and compare a
+documented semantic digest before cutting a new immutable deposit.
+
+### Confirmed Problem 2: FIR Attribution Is Still Not Identified
+
+The edit now says `not a controlled isolation`, but surrounding text still
+asserts:
+
+- `single-lever 5-seed isolation` in the contribution list;
+- arms `toggling one named lever` despite bundled interventions;
+- `(isolation)`, `dissociates` and `per-lever isolation` in results/tables;
+- the `filter's share` is 77--82%, the package contributes about 3x/80%, and
+  filter kernel robustness generalizes; and
+- a filter-level four-category contribution in public/metadata surfaces.
+
+The arms differ in filter state, a singular starting state, weight-decay bootstrap,
+optimizer trajectory and, in other contrasts, representation components. Same seed
+numbers are not initialization pairing. Until E-A, the only defensible estimand is
+the **observed FIR-plus-initialization/optimizer package-arm difference**.
+
+**Immediate writing repair:** remove `single-lever`, `isolation`,
+`dissociates`, `filter's share`, `contributes`, filter transfer/kernel
+generalization and component-level causal wording from Markdown, TeX, tables,
+captions, generators, JSON, metadata, public pages and PDFs. State the arm
+definitions, non-pairing, estimates, intervals and attribution limitation once.
+
+**E-A identification and algorithm-optimization design:**
+
+- Use an exact-identity, gradient-active residual parameterization such as
+  `y = x + causal_conv(theta, x)` with `theta = 0`, so task gradients
+  reach the FIR parameters immediately; include an identity/one-tap control in the
+  identical block.
+- Instantiate one superset model and clone the backbone, parameter ordering, RNG,
+  data/negative-sample/dropout streams, optimizer state/groups, stopping rule,
+  validation calls and checkpoint cadence across arms.
+- Factorialize FIR training versus control, initialization/gate state, and
+  FIR-specific/backbone weight decay. Predeclare endpoint, seed count,
+  multiplicity, MDE and category-replication rule; use common random numbers only
+  where pairing is real.
+- Log tap/gate gradients, optimizer moments, impulse/frequency responses, effective
+  kernels, parameter/FLOP deltas, latency and memory.
+- After identification, implement training as grouped/depthwise `Conv1d` and
+  autoregressive inference with a K-step ring buffer. Benchmark exact-output
+  parity, throughput, p50/p95 latency, memory, MACs and energy against identity at
+  realistic sequence lengths.
+
+### Confirmed Problem 3: Null, Mechanism and Robustness Labels Contradict the Design
+
+The same section says no tail trend was detected and the null is not refuted, then
+uses `double/refuting`, `confirming on one stratum, refuting on the other`,
+`The refutation is unaffected`, `positive mechanism behind the refutation`,
+`density-inertness` and `qualitative refutation`. Another paragraph says a CI
+includes zero and makes no robustness claim, then says it supports robustness.
+Equivalent language persists in TeX and every current PDF.
+
+One fixed subset draw cannot estimate draw-to-draw uncertainty. There is no
+prospective equivalence margin or MDE; the cross-dataset interaction is
+nonsignificant; and the six-rung head Spearman p=.017 is exploratory, uncorrected
+within the analysis family and has a reversal. Failure to reject is not evidence of
+inertness, equivalence or refutation.
+
+**Required statistical repair:**
+
+- Say `no trend detected; inconclusive at the available precision without a
+  prospective equivalence margin`. Report estimates, intervals, timing class and
+  multiplicity rather than PASS/confirm/refute labels.
+- E-C2: freeze multiple independent thinning maps before training, cross maps with
+  optimizer seeds, and estimate map/seed variance using a hierarchical model or
+  map-level and seed-level bootstrap.
+- Predeclare a scientifically meaningful equivalence/noninferiority margin and MDE,
+  power the design for it, and predeclare the interaction/trend family.
+- Separate a dataset intervention from a claim about the real-world data-generating
+  mechanism; the current bundled level contrast does not identify causation.
+
+### Confirmed Problem 4: Public Claims and H10 Governance Are Unsafe
+
+`PLAIN_LANGUAGE_COMPANION.md` still:
+
+- says the filter improved all four categories and prints withdrawn paired
+  intervals/5-of-5 claims at lines 89--94;
+- calls thinning a one-change experiment and turns an unestablished sparse/dense
+  difference into deployment advice at lines 102--112;
+- implies universal preregistration at lines 122--126;
+- says all 175 printed numbers are gated although the manuscript excludes two
+  expository tables; and
+- contains the old broken fragment at lines 54--55 plus a new orphan near line 192.
+
+`companion_site/explainer.html` repeats the all-four claim and density
+prescription, and its figure/ARIA/caption says scarcity makes text valuable.
+Later on the same page it correctly says thinning did not reproduce the result.
+README and `CANONICAL_SUBMISSION.md` still headline filter-level four-category
+support. CFF/Zenodo say every printed number is regenerated.
+
+H10 cannot certify these surfaces. It checks a fixed subset of named files, skips
+the draft/shared source/generators/generated JSON, conditionally scans PDFs, and
+uses narrow exact/case-sensitive patterns. That is why `dead weight`,
+`dead-weight bound`, confirm/refute variants and semantic contradictions pass.
+
+**Structural fix:**
+
+1. Define a required surface registry and fail when any source, mirror, generator,
+   emitted artifact, metadata file, figure label/data file or PDF is absent.
+2. Define typed claim records: ID, estimand, arms/treatment bundle, estimate/unit,
+   uncertainty, multiplicity, seeds/maps, true pairing, selection timing,
+   preregistration, inference status, attribution scope and approved wording.
+3. Generate claim-bearing tables/public summaries where practical; otherwise parse
+   and compare their typed fields. Regenerate to a temporary directory and compare
+   semantic output with checked-in artifacts.
+4. Add normalized case/Unicode/whitespace and semantic assertions as a secondary
+   layer. Commit the closure ledger as an executable CI test, not response prose.
+
+### Mechanism, Baseline and Novelty Program
+
+No novelty evidence changed. Primary-source comparison continues to show a crowded
+neighborhood:
+
+- [WPGRec](https://arxiv.org/abs/2604.21305) uses undecimated wavelet packets,
+  graph propagation and adaptive subband fusion. The manuscript can claim a narrow
+  left-causal depthwise-FIR difference, not broad time-frequency novelty. The
+  [SIGIR 2026 accepted-paper list](https://sigir2026.org/en-AU/pages/program/accepted-papers)
+  identifies it as a short paper.
+- [AlphaFuse](https://arxiv.org/abs/2504.19218) learns ID embeddings in the null
+  space of language embeddings and evaluates long-tail/cold-start behavior. It
+  remains the closest omitted frozen-language/ID comparator.
+- [FAERec](https://arxiv.org/abs/2604.03688) uses adaptive ID/LLM gating and
+  alignment in the tail-fusion space. The official
+  [SIGIR 2026 program](https://sigir2026.org/SIGIR2026_program.pdf) lists it as a
+  full paper; the manuscript's arXiv-only reference status should be updated.
+
+This does not prove the paper has no novelty, but it makes a broad algorithmic claim
+**plausibly rejectable** without:
+
+- E-B: multiple frozen frequency-stratified text permutations crossed with seeds
+  plus matched random/orthogonal features, testing aligned text versus
+  frequency-matched permutation with a preregistered frequency-5 interaction;
+- E-C: next-target-only versus all-position training under identical evaluation,
+  masking, weighting and candidate universe;
+- E-C2: independent thinning maps and map/seed uncertainty;
+- E-E: AlphaFuse on the exact AR2023 5-core full-catalog LLOO split/candidate
+  universe, or a fully executable protocol-mismatch exclusion; and
+- comparable parameter count, tuning budget, compute/latency and uncertainty for
+  every baseline. Keep E-D deferred until E-A/E-B identify a safe target.
+
+### Writing and Submission Readiness
+
+The canonical Markdown is 26,098 words, the draft is 29,226 words, and the venue
+paper remains 49--51 pages. The paper still reads as a forensic audit/retraction
+diary and repeats caveats instead of presenting a compact argument. It also contains
+copy defects such as `an version-controlled` and `would be the same a
+val≈0.076-class inflation`; the draft retains a long historical withdrawn-claims
+block that should not remain in a manuscript source.
+
+Target a 10--14k-word journal synthesis plus a separate provenance/forensic
+supplement. Structure the abstract as problem, exact treatment bundle, two or three
+effects with uncertainty, one boundary/negative result and the principal
+limitation. In the introduction, separate the apparatus contribution from the
+incremental algorithmic contribution and compare WPGRec/AlphaFuse/FAERec in one
+compact matrix. Keep one canonical source and generate TeX/public mirrors instead
+of independently editing them.
+
+### PDF and Figure Audit
+
+| Artifact | SHA-256 | Pages / bytes | Metadata and visual result |
+|---|---|---:|---|
+| `PAPER_SUBMISSION.pdf` | `79a4e4d968076be4db6f29906784afde8aa7c474f2d6e39e96f417485843023a` | 56 / 1,389,023 | Tagged, Lang/title present; no author/subject/keywords; one maintainer hit; caption split pp.28--29; p.56 nearly empty. |
+| `paper_tex/PAPER_TORS.pdf` | `4b8f805335874950dbcb7faff3b7f46cc0032a0820a57f17c46b23e2325b0166` | 49 / 452,155 | Untagged; no author/keywords; 30 maintainer hits; tracked and byte-identical to `main.pdf`. |
+| ignored `paper_tex/PAPER_TORS_acmsmall.pdf` | `c76106ad9826545758cdaaa45fbdaee071a8c4091c9fa40ed60a315e19c3b7df` | 51 / 459,473 | Untagged/untracked; 30 maintainer hits; bare DOI and `Article .` on every page; byte-identical to `main-acmsmall.pdf`. |
+
+All 156 pages were rendered with Poppler and inspected across 19 contact sheets;
+high-risk pages were rechecked at 240 DPI. No page is missing or fully blank and no
+gross clipping, overlap, broken glyph or missing figure was found. The fixed
+parenthesis is visually correct. This is a useful gross-layout baseline, not a clean
+submission verdict. Raw PDF reproducibility remains unresolved: dates and hashes
+change across builds without scientific changes.
+
+**Figure/layout fixes:**
+
+1. Keep reader Figure 1 with its complete caption or shorten/move methodological
+   detail so pp.28--29 do not split one sentence.
+2. Replace the explainer's causal density graphic with the TFV2 MI/VG estimates and
+   interaction interval; label thinning as `one fixed draw; no draw uncertainty;
+   did not reproduce MI`. Remove causal arrows and scarcity prescriptions.
+3. After E-C2, show both seed and map uncertainty in trajectories and visually
+   distinguish predeclared, outcome-visible and exploratory panels. Until then,
+   place the one-map limitation inside the panel.
+4. Split/move the novelty matrix, enlarge annotations, use accessible colors and
+   ragged-right text, and test grayscale. Reflow the p.56 orphan.
+5. Fill real furniture only after the venue/anonymity decision; produce tagged
+   venue PDFs with alt text, logical reading order, table headers, embedded-font
+   checks, bookmarks and links.
+
+### Author, Policy and Submission Verification
+
+**AUTHOR/INSTITUTION/LEGAL VERIFICATION:** placeholders remain in
+`PAPER_SUBMISSION.md:3` and `paper_tex/paper-shared.tex:37-42`; CFF/Zenodo use
+`Ray0419`. No funding, conflict-of-interest or manuscript-level GenAI/automation
+disclosure was found. The manuscript calls the audit author-operated while the
+explainer calls it a `rival AI` and `independent auditor` and refers to
+`signed responses`. Those governance claims require substantiation or removal.
+
+Before submission, independently confirm the legal author list/order and all-author
+approval, affiliation/country/contact/ORCID, funding and conflicts, accurate
+AI-assistance disclosure, originality/simultaneous-submission status, ethics/privacy,
+derived-data redistribution rights and upstream code/model licenses. Check the
+selected venue's current rules, including the
+[ACM authorship policy](https://www.acm.org/publications/policies/new-acm-policy-on-authorship).
+
+### Open Questions Requiring Author Decision or New Evidence
+
+1. Is the principal contribution an evaluation/provenance apparatus, an incremental
+   FIR package, or a scoped empirical boundary result? The current paper markets all
+   three and does not yet support a top-journal algorithm claim.
+2. Will E-A, E-B, E-C2 and E-E be executed, or should all component/mechanism/
+   deployment/novelty claims be narrowed now?
+3. What prospective equivalence margin/MDE is meaningful for the tail result, and
+   how many independent thinning maps can be afforded?
+4. Is Bash/WSL a supported release path? If yes, will it use native Linux tools or
+   an explicitly tested `WSLENV` contract for Windows tools?
+5. Which venue/article type and anonymity regime is intended, and is acmsmall a
+   required tracked deliverable?
+6. Who is authorized to attest authorship, disclosure, licensing and submission
+   facts, and where will that signed record live?
+
+### Running Checklist
+
+- [x] Freeze HEAD/cutoff and inspect the complete delta.
+- [x] Prove that no new scientific numeric/reference evidence landed.
+- [x] Execute PowerShell and Bash/WSL build variants, health/self-test and release.
+- [x] Verify artifact graph, manifest and stale deposit behavior.
+- [x] Render and inspect all 156 PDF pages; remove 219 temporary render files.
+- [x] Recheck novelty neighbors against primary/official sources.
+- [ ] Repair Bash manifest/Python ordering and WSL environment propagation.
+- [ ] Standardize waiver-log encoding and add native Windows/Linux/WSL CI fixtures.
+- [ ] Add run freshness/input binding, two-build semantic comparison and attestation.
+- [ ] Manifest release scripts/gates, reader/figures and every required PDF/output.
+- [ ] Replace H10/grep ledger with a required typed surface-parity registry.
+- [ ] Remove every stale public, metadata, generator, TeX and PDF contradiction.
+- [ ] Complete E-A nonsingular matched FIR factorial and only then optimize it.
+- [ ] Complete E-B semantic controls, E-C target parity and E-C2 independent maps.
+- [ ] Complete or executably exclude AlphaFuse/FAERec closest-protocol baselines.
+- [ ] Re-estimate claims with declared multiplicity, MDE/equivalence and map/seed
+      uncertainty.
+- [ ] Rewrite the main paper and companions from one canonical claim source.
+- [ ] Reflow figures/pages and deliver accessible, metadata-complete PDFs.
+- [ ] Resolve venue/identity/ORCID/funding/COI/GenAI/licensing/ethics fields.
+- [ ] Produce a fresh-clone no-waiver release and cut a new immutable deposit.
 
 ## Audit Run - 2026-07-22 15:50 Australia/Sydney
 

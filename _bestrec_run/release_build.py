@@ -90,6 +90,9 @@ def main():
     if "--self-test" in sys.argv:
         self_test()
         return
+    run("closure ledger (executable assertions)",
+        [PY, os.path.join(ROOT, "_bestrec_run", "closure_ledger.py")],
+        sentinel="CLOSURE LEDGER: PASS")
     run("empirical strict chain",
         [PY, os.path.join(ROOT, "_bestrec_run", "rebuild_hstu_submission.py"), "--strict"])
     run("venue builds (STRICT; no waiver)", venue_build_cmd(),

@@ -1400,7 +1400,7 @@ def build_spec():
     C.append(t2delta("t2.textinit", "text-init / warm-start (S1)", S1, H2, -0.0003, 4))
     C.append(t2delta("t2.ema", "EMA / SWA weight averaging (R1)", R1, H2, 0.0001, 4))
     C.append(cell("t2.textsim4", "table2", "text-sim bias (4-seed DECOMP5 isolation)",
-                  "paired delta NDCG@10, dead-weight bound", D5TS + D5J1, "paired_delta",
+                  "same-seed-record delta NDCG@10, no-benefit bound (paired premise withdrawn)", D5TS + D5J1, "paired_delta",
                   {"a": D5TS, "b": D5J1},
                   [chk("mean", 0.0001, mode="bound_abs")], 4, expl,
                   notes="Table-2 row prints '+-0.0001 (4)': gate is |4-seed paired mean| <= "

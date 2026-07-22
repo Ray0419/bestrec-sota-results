@@ -10989,7 +10989,7 @@
    "cell_id": "t2.textsim4",
    "table_id": "table2",
    "row_label": "text-sim bias (4-seed DECOMP5 isolation)",
-   "metric": "paired delta NDCG@10, dead-weight bound",
+   "metric": "same-seed-record delta NDCG@10, no-benefit bound (paired premise withdrawn)",
    "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [

@@ -63,6 +63,15 @@ ARGS = None
 RELEASE_ASSET_SECTIONS = {"splits", "text_caches", "pinned_parity_artifacts", "tfv2_sidecars"}
 RELEASE_URL = ("https://github.com/Ray0419/bestrec-sota-results/releases/download/"
                "v0.9-audit-evidence/")
+FIGURE_ASSETS = [
+    "figures/fig_tail_law_mechanism_data.csv",
+    "figures/fig_tail_law_mechanism.png",
+    "figures/fig_tail_law_mechanism.pdf",
+    "figures/fig_r1r2_plane.png",
+    "figures/fig_r1r2_plane.pdf",
+    "_bestrec_run/make_fig_tail_law_mechanism.py",
+    "_bestrec_run/make_fig_r1r2_plane.py",
+]
 AUX_GRAPH_SOURCES = [
     "_bestrec_sota_lab/runs/hstu_blair_eval_export_full_20260609_fg/hstu_blair_eval_export_summary.json",
     "_bestrec_run/run_CONNGATE_MI_k8_seed20260608.log",
@@ -173,6 +182,15 @@ def verify(m):
         elif sha_norm(ap) != ent["sha256"]:
             bad.append(f"submission_docs/{rel}: hash mismatch vs manifest "
                        "(edit without --regen?)")
+        else:
+            checked += 1
+    for rel, ent in m.get("figure_assets", {}).items():
+        ap2 = os.path.join(ROOT, rel)
+        h = sha_norm(ap2) if rel.endswith((".py", ".csv")) else sha(ap2)
+        if not os.path.exists(ap2):
+            bad.append(f"figure_assets/{rel}: MISSING (git-tracked file)")
+        elif h != ent["sha256"]:
+            bad.append(f"figure_assets/{rel}: hash mismatch vs manifest")
         else:
             checked += 1
     for rel, ent in m.get("aux_graph_sources", {}).items():
@@ -366,6 +384,15 @@ def regen(m):
             return 2
         ax[rel] = {"sha256": sha_norm(ap), "bytes": os.path.getsize(ap)}
     m["aux_graph_sources"] = ax
+    fa = {}
+    for rel in FIGURE_ASSETS:
+        ap = os.path.join(ROOT, rel.replace("/", os.sep))
+        if not os.path.exists(ap):
+            print("MISSING figure asset:", rel)
+            return 2
+        fa[rel] = {"sha256": (sha_norm(ap) if rel.endswith((".py", ".csv")) else sha(ap)),
+                   "bytes": os.path.getsize(ap)}
+    m["figure_assets"] = fa
 
     rr = {}
     for d in REFERENCE_RUN_DIRS:
@@ -475,7 +502,8 @@ def verify_git(m, commit):
 
     bad = []
     checked = 0
-    for sec in ("protocol_code", "submission_docs", "aux_graph_sources"):
+    for sec in ("protocol_code", "submission_docs", "aux_graph_sources",
+                "figure_assets"):
         for rel, ent in m.get(sec, {}).items():
             d = blob_norm(rel)
             if d is None:

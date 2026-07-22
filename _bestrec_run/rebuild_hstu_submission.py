@@ -74,8 +74,8 @@ def main():
                           ["PRIMARY FAMILY VERDICT: ALL PASS"])
         ok &= run_verdict("FIR-breadth frozen-rule adjudication (artifact-integrity: verifies the recorded pre-declared rule fired; its paired interpretation is withdrawn, manuscript S5.2)",
                           ["_bestrec_run/adjudicate_fir_breadth.py", "--no-append"],
-                          ["Industrial_and_Scientific: CONFIRMED",
-                           "CDs_and_Vinyl: CONFIRMED"])
+                          ["Industrial_and_Scientific: ARTIFACT-PASS",
+                           "CDs_and_Vinyl: ARTIFACT-PASS"])
     # Office is VOID/descriptive under its prereg floor check — report, non-gating
     run("Office adjudication (descriptive; VOID under prereg floor check)",
         ["_bestrec_run/office_prereg_tools.py", "adjudicate"], required=False)

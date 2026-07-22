@@ -281,7 +281,7 @@ plus nothing else.
    them as `figure` floats — `\includegraphics[width=\linewidth]` of the **canonical PDF
    vector figures** via `\graphicspath{{../figures/}}` (`fig_tail_law_mechanism.pdf` after the
    §5.3 cross-dataset-significance block = Fig. 1; `fig_r1r2_plane.pdf` after the §5.4.2
-   MI-matched-connectivity paragraph = Fig. 2; `fig_bbp_irreducibility.pdf` after the
+<!-- BBP figure RETRACTED and quarantined under retracted_archive/ (2026-07-22) -->
    "Refined verdict" paragraph = Fig. 3) — with `\caption` = the md caption text (the md's
    duplicated italic caption line collapses into the single LaTeX caption; LaTeX supplies the
    "Fig. N." prefix, so the md's "Fig. N:" prefix is not repeated inside the caption body).

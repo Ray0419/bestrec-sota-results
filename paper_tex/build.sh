@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build the TORS LaTeX derivative (two targets, round-8; see VENUE_PLAN.md + BUILD_NOTES.md):
-#   1. DEFAULT REVIEW TARGET  : main.tex          [manuscript,review,anonymous]      -> PAPER_TORS.pdf (gated artifact)
-#   2. PRODUCTION PREVIEW     : main-acmsmall.tex [acmsmall,screen,review,anonymous] -> PAPER_TORS_acmsmall.pdf (untracked)
+#   1. DEFAULT REVIEW TARGET  : main.tex          [manuscript,manuscript,screen (single-blind)]      -> PAPER_TORS.pdf (gated artifact)
+#   2. PRODUCTION PREVIEW     : main-acmsmall.tex [acmsmall,screen,manuscript,screen (single-blind)] -> PAPER_TORS_acmsmall.pdf (untracked)
 #
 # Steps (fail-closed at each stage):
 #   [1] regenerate paper_tex/tables/*.tex from the artifact graph
@@ -15,6 +15,17 @@
 #   PYTHON   (default: ../_bestrec_run/.venv/Scripts/python.exe)
 #   TECTONIC (default: ~/AppData/Local/tectonic/tectonic.exe, else `tectonic` on PATH)
 set -euo pipefail
+
+# STRICT BY DEFAULT (audit 2026-07-22 12:49 C1: wrappers must not self-waive).
+# A draft build needs an explicit, logged reason:  ./build.sh --draft "reason"
+if [ "$1" = "--draft" ]; then
+  if [ -z "$2" ]; then echo "FATAL: --draft requires a reason"; exit 2; fi
+  export DRAFT_WAIVER=1
+  echo "DRAFT BUILD (waiver logged): $2" | tee draft_waiver.log
+  shift 2
+else
+  unset DRAFT_WAIVER
+fi
 cd "$(dirname "$0")"
 
 PYTHON="${PYTHON:-../_bestrec_run/.venv/Scripts/python.exe}"
@@ -42,10 +53,9 @@ cp -f main.pdf PAPER_TORS.pdf
 cp -f main-acmsmall.pdf PAPER_TORS_acmsmall.pdf
 
 echo "== [4/5] tex health gate (undefined refs / lost sections / mangles / figures) =="
-echo "DRAFT_WAIVER=1 active (byline placeholders pending maintainer -- logged waiver, audit 11:48 C3)"
-DRAFT_WAIVER=1 "$PYTHON" check_tex_health.py
+"$PYTHON" check_tex_health.py
 
 echo "== [5/5] hygiene scan of the review artifact =="
-DRAFT_WAIVER=1 "$PYTHON" scan_pdf.py PAPER_TORS.pdf
+"$PYTHON" scan_pdf.py PAPER_TORS.pdf
 
 echo "BUILD OK: paper_tex/PAPER_TORS.pdf (review, manuscript) + paper_tex/PAPER_TORS_acmsmall.pdf (preview)"

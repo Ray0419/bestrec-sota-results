@@ -212,7 +212,11 @@ def main() -> int:
              f"Seeds {SEEDS}; rule frozen in PREREG_FIR_BREADTH.md.\n"
              + body
              + "\n**Campaign verdicts:** "
-             + "; ".join(f"{c}: {v}" for c, v in verdicts.items()) + "\n")
+             + "; ".join(
+                 f"{c}: " + ("ARTIFACT-PASS (legacy frozen-rule token CONFIRMED; "
+                             "paired premise withdrawn -- artifact integrity only)"
+                             if v == "CONFIRMED" else v)
+                 for c, v in verdicts.items()) + "\n")
     print(block)
 
     if not args.no_append:

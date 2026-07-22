@@ -46,8 +46,7 @@ OpenTimestamps proofs' earliest independently verifiable Bitcoin attestation
 (≈ 01:36 AEST) — we therefore do not claim independent external timestamping
 before launch and do not label that campaign confirmatory (§5.3, disclosure
 (vii); the frozen pre-registration carries a dated chronology erratum). Same-seed
-arms are **not** initialization-paired (§5.3 randomization disclosure); no paired
-inference appears anywhere, and formerly paired analyses are retracted in place.
+arms are **not** initialization-paired (§5.3 randomization disclosure); no retained claim relies on the withdrawn paired inference (the historical paired outputs are printed only together with their withdrawal).
 
 **Data and artifacts.** The public repository releases code, derived
 interaction-split CSVs, frozen text caches, and per-user evaluation sidecars as

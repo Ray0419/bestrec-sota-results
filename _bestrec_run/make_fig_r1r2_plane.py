@@ -64,7 +64,7 @@ PTS = [
     ("MI native\n(natural)",          16.2, 2.34, 1.276, +0.000335, "5/5", C_WIN,  "D", 1.9, -0.06, "center"),
 ]
 
-fig, ax = plt.subplots(figsize=(8.2, 6.4))
+fig, ax = plt.subplots(figsize=(11.1, 8.6))
 
 # No shaded bands or threshold texts (audit 2026-07-19 23:08): five regime points
 # cannot support a deterministic connectivity threshold; the plot stays descriptive.

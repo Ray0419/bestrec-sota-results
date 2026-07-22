@@ -1,21 +1,12 @@
 #!/usr/bin/env python
 """
-Generate the v3.4-spine headline figure: the dataset-conditional long-tail pattern
-and its two-axis descriptive contrast (interaction-density vs collaborative
-connectivity).
-
-ALL numbers are hard-coded from the LOCKED, 3x-supervisor-audited tables in
-PAPER_DRAFT.md (sections 5.3 Table 1d, 5.4 titration ladder, 5.4.1 + 5.4.2
-double-dissociation tail/head text/ID ratio tables). NOTHING is recomputed here
--- this is typesetting of already-locked, best-by-val same-seed-number text-ID
-results (AR2023 5-core LLOO, full-catalog masked eval, n_eval=94,762,
-tail_n=10,900 frozen). Produced by the EXPERIMENT agent as sanctioned CPU-only
-paper-finishing work (supervisor cycle-11, 2026-06-21), zero GPU contention.
-
-Attribution of the underlying method: HSTU=Zhai 2024; causal spectral filter
-adapted leak-free from FMLP/Zhou 2022 + BSARec/Shin 2024; text stack (SBERT
-features / text-sim bias / TAPE prototypes)=Hou 2024 / Liu 2025
-(arXiv:2504.10545); SASRec=Kang & McAuley 2018; label smoothing=Szegedy 2016.
+Generate Figure 1: (A) TFV2 repaired-estimand tail contrasts (single estimand,
+Welch 95% CIs, 8 fresh seeds/arm; source TFV2_ADJUDICATION.md; outcome-visible
+campaign) and (B-C) exploratory one-fixed-draw titration/ratio panels (5-seed
+summaries; descriptive; no draw uncertainty). Historical Table-1d values are
+NOT plotted (the table prints them). A machine-readable provenance CSV is
+emitted beside the figure. Panel B/C values are typeset from the locked tables
+in the canonical paper (5.4 / 5.4.1-5.4.2).
 """
 import matplotlib
 matplotlib.use("Agg")
@@ -138,8 +129,8 @@ axC.grid(alpha=0.3)
 fig.tight_layout(pad=1.4, h_pad=2.6, rect=(0, 0, 1, 0.945))
 fig.suptitle(
     "The MI frequency-5 tail case and its two-axis descriptive contrast\n"
-    "(cross-dataset heterogeneity not established, MI$-$VG interaction p = 0.13; bundled\n"
-    "interventions; one fixed draw; AR2023 5-core LLOO, full-catalog, NDCG@10; 5-seed best-by-val except Beauty 2-3 seed)",
+    "(A: TFV2, 8 independent seeds/arm, outcome-visible; B-C: one fixed subset draw,\n"
+    "5-seed summaries, no draw uncertainty; heterogeneity not established, p = 0.13; AR2023 5-core LLOO, NDCG@10)",
     fontsize=10.5, y=0.995)
 
 png = OUT / "fig_tail_law_mechanism.png"

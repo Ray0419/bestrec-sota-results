@@ -21,10 +21,9 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
    both categories fired the frozen decision rule ("CONFIRMED" per its mechanical
    adjudication), with the rule's *paired interpretation withdrawn* 2026-07-19 (same-seed
    arms are not initialization-paired; manuscript §5.3): the primary supported analysis is
-   the conservative post-hoc independent-arm Welch, both 95% CIs excluding zero; the
+   the post-hoc independent-arm Welch (the earlier 'conservative' characterization is retracted), both 95% CIs excluding zero; the
    treatment is the FIR-plus-initialization/optimizer package). Comparator ablations **complete** (5-seed × 2 arms, manuscript §5.2):
-   the learned kernel carries the effect (fixed moving-average keeps ~59%); the zero-init gate
-   is a training convenience. Artifacts: `results_FIRABL_*` (manifest family `tableV2conf`/FIR
+   the fixed moving-average arm keeps ~59% of the gain — an observation confounded by the shared singular start (§3): no learned-shape attribution is claimed; the zero-init gate comparison is confounded by the singular-initialization bootstrap. Artifacts: `results_FIRABL_*` (manifest family `tableV2conf`/FIR
    cells).
 3. **Office_Products — V1 VOID stands; V3 PASSED (the second counted per-category
    point-estimate comparison).**

@@ -1,7 +1,6 @@
 # The Plain-Language Companion
 
-*A non-technical guide to the paper "Pre-Declared, Artifact-Gated Evaluation for Sequential
-Recommendation: Causal FIR Filtering and a Musical-Instruments Frequency-5 Case Study on Amazon Reviews 2023."*
+*A non-technical guide to the paper "Artifact-Gated Evaluation of Text-Augmented Sequential Recommendation: An FIR-Optimizer Package and a Musical-Instruments Frequency-5 Case Study on Amazon Reviews 2023."*
 
 This document explains, without jargon, **what we built, how it works, why it works, and why you
 can trust the numbers** — using everyday examples and analogies. It is documentation for

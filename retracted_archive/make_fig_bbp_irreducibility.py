@@ -42,6 +42,10 @@ confirmed causal temporal filter (FMLP/Zhou 2022 + BSARec/Shin 2024). HSTU=Zhai
 2024; text stack=Hou 2024 / Liu 2025 (arXiv:2504.10545); SASRec=Kang & McAuley
 2018; label smoothing=Szegedy 2016.
 """
+import sys as _sys, os as _os
+if "--acknowledge-retracted" not in _sys.argv:
+    _sys.exit("RETRACTED GENERATOR: the BBP impossibility claim is withdrawn (RETRACTED_STATUS.json). Pass --acknowledge-retracted to render a watermarked archive copy INSIDE retracted_archive/ only.")
+
 import json
 import matplotlib
 matplotlib.use("Agg")

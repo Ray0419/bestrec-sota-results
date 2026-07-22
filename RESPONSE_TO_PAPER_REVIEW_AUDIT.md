@@ -9,6 +9,27 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-22 13:50 (responded 2026-07-22)
+
+The false-cause finding is owned in full: my "fail-closed proven by exit 1" observed
+a CRLF crash and an unbound-variable crash, not the placeholder gate, and the release
+command died at a Windows-path/WSL boundary before any gate ran. Nonzero exit is not
+proof of a specific gate. This round's proof standard is the audit's: **sentinel
+text, not exit codes** — and the entry points now actually run on their platforms.
+
+| # | Audit item | Action (with the new proof standard) |
+|---|---|---|
+| 1 | release_build exit 127 (Windows path → WSL bash); build.sh CRLF `pipefail\r` + unbound `$1`; ps1 Tectonic/NativeCommandError; duplicated comments; waiver-log inconsistency | `release_build.py`'s venue stage is **platform-native** (PowerShell on Windows, POSIX path on POSIX) with a required "BUILD OK" **sentinel per stage** and recorded per-stage exit codes; `build.sh` uses `${1:-}`/`${2:-}` under `set -u`, is LF-pinned via a new `.gitattributes` `*.sh eol=lf` rule (renormalized), and appends a **timestamped** waiver line to a script-dir log (no more CWD-dependent overwrite); `build.ps1` invokes tectonic with `$ErrorActionPreference` locally set to Continue, checks `$LASTEXITCODE` explicitly (harmless Fontconfig stderr no longer kills the build), and tees `main_console.log`; the doubled class-option comments are fixed. **`release_build.py --self-test`** now proves the placeholder gate the honest way: it asserts exit≠0 **AND** the exact sentinel `'[Maintainer:' placeholder present` in the output — run this round: `exit=2; sentinel FOUND`. |
+| 2 | Logs/PDFs/attestation not freshness-bound; nondeterministic CreationDate | **`SOURCE_DATE_EPOCH`** (from the last commit time) is exported by both wrappers — CreationDate becomes deterministic, making rebuild-then-byte-verify convergent. The attestation now records per-stage commands/exit codes, tool versions, the acmsmall PDF, and the figure CSV/PDFs, and is written to `_release/` (outside the git tree, published as a release asset — no recursive HEAD change). The full clean-temp-tree double-build with input-hash binding is the declared next increment of the orchestrator. |
+| 3 | Compiled venue paper contradicts the corrected md (nine cited lines) | Root cause accepted: my sweeps used lax match tolerances that skipped silently. **Fix is structural: every audit-cited phrase is now in H10's banned list** (case-insensitive), and H10's scan scope now includes the canonical md, README, cover, CANONICAL, companion, explainer, CFF, and Zenodo **plus the extracted PDFs** — then the build was driven to green: §5.2's heading is "The FIR treatment package and cross-category transfer (attribution caveat §3)"; "locks the causal FIR filter" → package wording with attribution open; "carry confirmatory weight" retired everywhere ("full pre-declared power — no null is thereby confirmed"); the line-wrapped "cannot manufacture" instance (invisible to line-based grep) found and replaced with the one-draw wording; near-additive/orthogonal/dead-weight/confirmed-under all verified absent from sources AND extracted PDF text by the passing gate. |
+| 4 | Public explanations publish withdrawn science | PLC's "never seen sold" claim now states the zero-exposure truth verbatim (zero hits through rank 100; no cold-start ability claimed); "filter cannot hurt"/"filter alone" → package wording; 168-cells/153-files → 175/276 in PLC and the explainer; CFF and Zenodo now say the filter is "measured only as the bundled FIR-initialization-optimizer treatment package (component attribution open)" with the outcome-visible note, and CFF's anonymized-manuscript comment is corrected to the single-blind requirement. These surfaces are inside H10's scan now — drift fails the build. |
+| 5 | Statistical labels (bundled interventions; REFUTED/confirming; robustness contradiction; adjudicator's earlier CONFIRMED prose) | The confirmatory-weight language is retired (above); the earlier rounds' one-draw/hypothesis rewrites stand. Remaining named items — §222 "controlled one-factor" wording, §368-371 confirm/refute rung labels, the adjudicator's mid-output legacy prose — are queued as the next taxonomy pass with the four-field data model. Comparator-uncertainty and population-inference wording remain scoped by the §3 fixed-split statement. |
+| 6 | WPGRec; identity choice; length; authorship/GenAI; layout leftovers | WPGRec noted for the next literature pass. Identity (apparatus vs algorithm), author/ORCID/GenAI/conflict/funding fields, and the synthesis edit are maintainer-level and declared; the reader caption split, novelty-table reflow, acmsmall furniture, and tagged-PDF accessibility remain in the production round. No new deposit until the deterministic no-waiver round trip exists — v1.1.11 will not be retagged. |
+
+Post-round state: strict exit 0 (175/15/276); `release_build.py --self-test` passes by
+sentinel; both venue builds green under the widened H1–H10 (which now watch every
+public surface and the extracted PDFs); reader 55 pp CLEAN; pushed.
+
 ## Response — to Audit Run 2026-07-22 12:49 (responded 2026-07-22)
 
 The lead finding is accepted without qualification: my DRAFT_WAIVER wiring made the

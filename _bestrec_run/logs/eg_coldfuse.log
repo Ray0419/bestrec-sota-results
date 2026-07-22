@@ -36,3 +36,39 @@ E-F still running; waiting 300 s
 E-F still running; waiting 300 s
 E-F still running; waiting 300 s
 E-F state = 'complete' -> GPU free, starting E-G
+=== E-G exploratory cold-fusion: Musical_Instruments seed 20260721 (fused2 ref l2=100.0, w=0.04) ===
+  train-freq bins: tail(<= 5) 8,000 items (freq==0: 31), mid 12,628, head 3,959
+  [val] seq z-matrix ...
+  [val] ease z-matrix (l2=100.0) ...
+  EASE l2=100.0: inverted 24587x24587 in 62.0s
+  fused2 VAL: overall 0.04848 tail 0.00241 (n=7,644)
+  [val] text z-matrix (uniform) ...
+  [val] text z-matrix (exp0.9) ...
+  global sweep done (370s). tail-best under non-inferiority: {'profile': 'uniform', 'we': 0.03, 'wt': 0.2} tail 0.00291
+  binned sweep done. tail-best: {'profile': 'uniform', 'we': 0.03, 'wt_tail': 0.2, 'wt_mid': 0.0, 'wt_head': 0.0} tail 0.00448
+  [test] building matrices ...
+  TEST fused3-global: overall 0.04380 (fused2 0.04392) tail 0.00182 (fused2 tail 0.00140)
+  TEST fused3-binned: overall 0.04388 (fused2 0.04392) tail 0.00374 (fused2 tail 0.00140)
+wrote C:\Users\rayxc\Documents\R\_bestrec_run\results_Musical_Instruments_COLDFUSE_explore_seed20260721.json
+=== E-G exploratory cold-fusion: Musical_Instruments seed 20260722 (fused2 ref l2=200.0, w=0.03) ===
+  train-freq bins: tail(<= 5) 8,000 items (freq==0: 31), mid 12,628, head 3,959
+  [val] seq z-matrix ...
+  [val] ease z-matrix (l2=200.0) ...
+  EASE l2=200.0: inverted 24587x24587 in 59.3s
+  fused2 VAL: overall 0.04846 tail 0.00205 (n=7,644)
+  [val] text z-matrix (uniform) ...
+  [val] text z-matrix (exp0.9) ...
+  global sweep done (360s). tail-best under non-inferiority: {'profile': 'exp0.9', 'we': 0.04, 'wt': 0.2} tail 0.00257
+  binned sweep done. tail-best: {'profile': 'exp0.9', 'we': 0.04, 'wt_tail': 0.2, 'wt_mid': 0.0, 'wt_head': 0.0} tail 0.00427
+  [test] building matrices ...
+  TEST fused3-global: overall 0.04400 (fused2 0.04390) tail 0.00213 (fused2 tail 0.00160)
+  TEST fused3-binned: overall 0.04389 (fused2 0.04390) tail 0.00336 (fused2 tail 0.00160)
+wrote C:\Users\rayxc\Documents\R\_bestrec_run\results_Musical_Instruments_COLDFUSE_explore_seed20260722.json
+Traceback (most recent call last):
+  File "C:\Users\rayxc\Documents\R\_bestrec_run\run_eg_coldfuse_explore.py", line 94, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "C:\Users\rayxc\Documents\R\_bestrec_run\run_eg_coldfuse_explore.py", line 67, in main
+    d = json.load(open(out, encoding="utf-8"))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\rayxc\\Documents\\R\\_bestrec_run\\results_MI_COLDFUSE_explore_seed20260721.json'

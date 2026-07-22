@@ -40,7 +40,8 @@ def main():
     outs = []
     for seed in SEEDS:
         base = os.path.join(HERE, f"results_MI_HYBRIDV1_base_seed{seed}.json")
-        out = os.path.join(HERE, f"results_MI_COLDFUSE_explore_seed{seed}.json")
+        out = os.path.join(
+            HERE, f"results_Musical_Instruments_COLDFUSE_explore_seed{seed}.json")
         outs.append(out)
         if os.path.exists(out):
             print(f"[skip existing] {os.path.basename(out)}", flush=True)

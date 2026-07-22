@@ -1,0 +1,61 @@
+{
+  "rule": {
+    "noninferiority": 0.0002,
+    "tail_min_gain": 0.0005
+  },
+  "per_seed": [
+    {
+      "seed": 20260721,
+      "rows": {
+        "selected_global": {
+          "overall_ok": true,
+          "tail_gain": 0.0004982559476047754,
+          "combo": {
+            "profile": "uniform",
+            "we": 0.03,
+            "wt": 0.2
+          }
+        },
+        "selected_binned": {
+          "overall_ok": true,
+          "tail_gain": 0.002071712864562869,
+          "combo": {
+            "profile": "uniform",
+            "we": 0.03,
+            "wt_tail": 0.2,
+            "wt_mid": 0.0,
+            "wt_head": 0.0
+          }
+        }
+      },
+      "seed_ok": true
+    },
+    {
+      "seed": 20260722,
+      "rows": {
+        "selected_global": {
+          "overall_ok": true,
+          "tail_gain": 0.0005238966550678015,
+          "combo": {
+            "profile": "exp0.9",
+            "we": 0.04,
+            "wt": 0.2
+          }
+        },
+        "selected_binned": {
+          "overall_ok": true,
+          "tail_gain": 0.0022169973235577345,
+          "combo": {
+            "profile": "exp0.9",
+            "we": 0.04,
+            "wt_tail": 0.2,
+            "wt_mid": 0.0,
+            "wt_head": 0.0
+          }
+        }
+      },
+      "seed_ok": true
+    }
+  ],
+  "promote": true
+}

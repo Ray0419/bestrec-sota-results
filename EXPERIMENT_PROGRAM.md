@@ -91,10 +91,20 @@ result." This file is the durable worklist the quiet-tick loop services (priorit
   -- declared, not silent); per-category Holm; tail-bin co-primary
   endpoint; no SOTA wording.
   Lifecycle: [x] element + exploratory driver committed 2026-07-23 ->
-  [x] stage-1 launched 2026-07-23 chained behind E-F (waits on
-  `ef_hybrid_v1_status.json`) -> [ ] promotion precheck -> [ ] (if
-  promoted) freeze PREREG_COLDFUSE_V1 -> [ ] full-dataset confirmatory ->
-  [ ] adjudicate -> [ ] integrate.
+  [x] stage-1 launched 2026-07-23 chained behind E-F (both seeds ran;
+  driver filename fix for the precheck path, evals untouched) ->
+  [x] promotion precheck 2026-07-23: **PROMOTE** (VAL rule passed on both
+  seeds; binned tail gains +0.00207 / +0.00222 vs fused2, overall
+  noninferior; TEST tail 0.00140->0.00374 and 0.00160->0.00336 at
+  overall cost <= 0.00004 -- `eg_coldfuse_explore_verdict.json`) ->
+  [x] PREREG_COLDFUSE_V1 frozen + `fuse_cold_confirm.py` (streaming, all
+  catalog sizes) + `run_coldfuse_confirm.py` + `adjudicate_coldfuse_v1.py`
+  committed 2026-07-23 BEFORE launch; 5 categories x 5 FRESH seeds
+  20260736-40 (20260728-32 block consumed by Office V3); MI/IS/VG vs
+  fused2, OFFICE/CDS vs seq (EASE infeasible, declared); co-primary
+  tail-bin delta, Holm(5), tail margin +/-0.0005, cost margin -0.0005 ->
+  [x] launched 2026-07-23 (~10 h sequential, resumable) ->
+  [ ] adjudicate -> [ ] integrate (frozen wordings W-C-* only).
 - [ ] **E-B. Frequency-stratified item-text permutation + random-feature
   control (audit 10:47 design adopted).** Freeze SEVERAL independent permutation
   maps before training (map uncertainty is real); permute within

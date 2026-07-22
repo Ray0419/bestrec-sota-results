@@ -139,7 +139,7 @@ invented) plus the deliberately-left entries above.
 | Tool | Version | Location | Notes |
 |---|---|---|---|
 | Tectonic | 0.16.9 | `C:\Users\rayxc\AppData\Local\tectonic\tectonic.exe` | winget has no Tectonic package ("No package found"); installed the official prebuilt `x86_64-pc-windows-msvc` binary from the GitHub release `tectonic@0.16.9`. Self-contained; fetches TeX packages on demand. MiKTeX was NOT needed. |
-| acmart class | v2.03 (2024/02/04) | vendored `paper_tex/acmart.cls` | Tectonic's bundled acmart predates the TORS journal option ("Incorrect journal TORS"), so the class is vendored from the TeX Live 2023-final package archive (matches Tectonic's kernel era; the current CTAN acmart v2.1x targets the newer tagging-enabled LaTeX kernel). `ACM-Reference-Format.bst` vendored from the same package. |
+| acmart class | v2.19 (2026/06/27; upgraded 2026-07-21 per audit 01:01) | vendored `paper_tex/acmart.cls` | Tectonic's bundled acmart predates the TORS journal option ("Incorrect journal TORS"), so the class is vendored from the TeX Live 2023-final package archive (matches Tectonic's kernel era; the current CTAN acmart v2.1x targets the newer tagging-enabled LaTeX kernel). `ACM-Reference-Format.bst` vendored from the same package. |
 | pandoc | 3.10 | `C:\Users\rayxc\AppData\Local\Pandoc\pandoc` | `-f gfm+smart -t latex` for all md→tex conversion. |
 | Python | 3.12.13 | `_bestrec_run/.venv/Scripts/python.exe` | pypdf 6.10.2 for the hygiene scan. |
 
@@ -378,7 +378,7 @@ paper_tex/
 ├── main-acmsmall.tex         # PREVIEW driver: [acmsmall,screen,review,anonymous] (untracked output)
 ├── paper-shared.tex          # shared preamble commands + full document body (both drivers input this)
 ├── references.bib            # transcribed md list (32 entries incl. 5 concurrent preprints; round-8 verified metadata)
-├── acmart.cls                # vendored v2.03 (TL2023-final) — TORS-capable, tectonic-compatible
+├── acmart.cls                # vendored v2.19 (current CTAN; upgraded 2026-07-21) — TORS-capable, tectonic-compatible
 ├── ACM-Reference-Format.bst  # vendored ACM bibliography style
 ├── .gitignore                # main.pdf, main-acmsmall.pdf, PAPER_TORS_acmsmall.pdf + TeX intermediates
 ├── sections/*.tex            # 13 converted section files (see file map; incl. round-7 10-ethics.tex)

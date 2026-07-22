@@ -9,6 +9,44 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-22 16:51 Australia/Sydney (responded 2026-07-22; commits `4e7e1c53` + `9fe81f40`; MACHINE-CHECKED: `closure_ledger.py` exit 0, venue build exit 0, strict chain exit 0)
+
+**Verdict accepted.** The falsification matrix was right again: the prior response
+claimed closures that the live tree disproved, and — new failure mode this round —
+my *first* sweep inside this very round left isolation-family residue that only a
+gate could be trusted to find. Both sweeps below are therefore enumerated by
+executable checks, not by this prose: `_bestrec_run/closure_ledger.py` (wired as the
+first `release_build.py` stage, sentinel `CLOSURE LEDGER: PASS`) and the widened H10
+now ban every phrase family this audit cited, across sources, mirrors, generators,
+emitted JSON, public pages, and all three extracted PDFs. This response cites exit
+codes; the assertions live in the repo.
+
+Two commits this round: `4e7e1c53` (main round) and `9fe81f40` (second pass after my
+own residue grep — details in row 6, owned as a first-sweep failure).
+
+| # | Audit item (16:51) | Action taken | Verification |
+|---|---|---|---|
+| 1 | P1.1 Bash parses manifest with bare `python` before `PYTHON` is assigned; silently falls back to HEAD epoch | Epoch block moved AFTER tool/Python resolution; manifest parsed with `"$PYTHON"` and an absolute path; **fail-closed exit 7** if `git_commit` is unreadable, overridable only by explicit `ALLOW_HEAD_EPOCH=1` (dev builds) | `paper_tex/build.sh` (epoch section); bash draft build now prints `BUILD OK`, exit 0 |
+| 2 | P1.2 `DRAFT_WAIVER`/`SOURCE_DATE_EPOCH` exported in WSL do not reach Windows `python.exe`/`tectonic.exe`; Bash draft acted strict (exit 2) | `WSLENV="DRAFT_WAIVER/w:SOURCE_DATE_EPOCH/w:PYTHONIOENCODING/w"` exported before compile | Runtime proof, not prose: the same Bash draft invocation that the audit measured at exit 2 now exits 0 — the waiver observably crossed the boundary |
+| 3 | P1.3 mixed waiver-log encoding (ps1 UTF-16LE vs bash UTF-8) | `build.ps1` now appends via `[System.IO.File]::AppendAllText(..., UTF8Encoding($false))`; both writers emit BOM-free UTF-8 lines | `closure_ledger.py` asserts the `UTF8Encoding($false)` property |
+| 4 | P1.4 no attestation / run binding / two-build comparison | `release_build.py` writes `_release/release_attestation.json` (stages, tool versions, reader+TORS+acmsmall+figure hashes) per run | **Two-build semantic-digest comparison remains OPEN** (declared; queued with CI fixtures). No determinism claim is made anywhere — the byte-determinism claim was withdrawn earlier |
+| 5 | FM row: "generator manifest has zero dead-weight hits" was false (`build_hstu_tables.py:1403`, JSON:10992 — hyphenated spelling escaped the grep) | Cell relabeled "same-seed-record delta NDCG@10, no-benefit bound (paired premise withdrawn)"; `--write-manifest` rerun (BUILD GREEN, 175 cells); ledger greps builder+emitted JSON+titration for BOTH spellings plus `causal filter only`, `TAIL = REFUTED`, `per-lever`, `single-lever`, `dissociat` | `closure_ledger.py` exit 0 |
+| 6 | P2 isolation family: `single-lever`, `isolation`, `dissociates`, `filter's share`, `toggling one named lever` persisted throughout | **First sweep left residue; owned.** Second pass (`9fe81f40`) removed every live occurrence: `dissociates the two supported/confirmed regularizers` → "separates the two supported regularizers at the arm level (bundled arms; no component isolation)"; `restate the dissociation` → "restate the arm-level contrast"; `no interaction-supported dissociation` → "…separation"; `single-lever 5-seed arm comparison/isolation` → "two-arm 5-seed comparison (§3 caveat)" (md + stale intro TeX line); `A single-lever arm comparison` → "A two-arm comparison"; Table 1c `per-lever` → "arm-by-arm" (md caption + builder emission + regenerated TeX); `toggling one named lever` → "toggling one named configuration flag" (bundled-interventions parenthetical kept, md + §4 TeX); `the filter's share is 77%` → "the package arm's share is 77%" | Zero live occurrences by grep across md/TeX/builder/public; H10 + ledger now ban the family (incl. the U+2019 apostrophe variant for PDF extraction), so recurrence fails the build. NOTE for future audits: `PAPER_DRAFT.md` HISTORICAL DRAFT NOTES trailer retains banned tokens **by design** (banner-quarantined withdrawn-claims record) |
+| 7 | P3 refute/mechanism labels contradict the design | `double/refuting`, `qualitative refutation`, `density-inert(ness)`, `supports the robustness`, dose-response `REFUTED` all replaced with estimate+interval+"inconclusive; no pre-specified equivalence margin" wording; §5.5 is a screening log with outcome-dependent allocation disclosed; head Spearman p=.017 labeled exploratory and uncorrected; each phrase is now H10-banned | Venue build exit 0 with H10 green over sources+PDFs |
+| 8 | P4 PLC: withdrawn paired intervals, all-four story, one-change framing, universal-prereg implication, 175-numbers overreach, broken fragments 54–55 and ~192 | "Does it help?" block now prints the TFV2 independent-arm Welch CIs (IS +0.0021 [+0.0019,+0.0024]; CDs +0.0058 [+0.0053,+0.0063]) labeled outcome-visible, with the withdrawn-pairing note; librarian rule = hypothesis with MI−VG p=.13; thinning = bundled intervention; prereg paragraph = mixed-timing truth (incl. VOID V1 example); scope = "all 175 artifact-gated table cells"; stranded line-55 fragment deleted and the dice analogy tightened (second pass) | PLC is a ledger surface; exit 0 |
+| 9 | P4 explainer: rival-AI/independent-auditor/signed-responses governance fiction; all-four + density prescription | Governance text now says author-operated audit automation with point-by-point written responses; FIR/density rows carry package-arm wording + p=.13 | **Density GRAPHIC replacement with TFV2 estimates still QUEUED** (declared, editorial track) |
+| 10 | P4 README/CANONICAL/CFF/Zenodo filter-level headlines | Package-arm headlines everywhere; CFF/Zenodo scope = "all 175 artifact-gated table cells", component attribution open, TFV2 outcome-visible | Ledger surfaces; exit 0 |
+| 11 | FM row: "closure is machine-checked" was false (pasted grep transcript) | Now true in the only sense that counts: `_bestrec_run/closure_ledger.py` is an executable test (8 public surfaces × 22 banned phrases + wrapper/generator/encoding property assertions), runs as the FIRST `release_build.py` stage | `CLOSURE LEDGER: PASS`, exit 0, cited here instead of prose |
+| 12 | H10 governance too narrow; typed registry demanded | H10 +15 phrases this round (both hyphenation/apostrophe variants); scans sources, tables, all public surfaces, and extracted text of all three PDFs | **Typed claim registry remains OPEN**; H10+ledger are the declared bridge, not the destination |
+| 13 | Writing: 26k words reads as forensic diary; synthesis + supplement split | QUEUED (editorial track B): 10–14k synthesis, provenance supplement, reader Fig-1 caption split, p.56 orphan, acmsmall furniture, tagged/accessible PDFs | Unchanged this round; honestly listed as not done |
+| 14 | Author/policy fields; governance substantiation | Maintainer-manual items (byline/ORCID/funding/COI/GenAI disclosure); placeholder stays fatal in strict mode; draft builds carry a logged waiver reason | `draft_waiver.log` |
+| 15 | E-A–E-E unrun; no scientific delta | Correct, and still true after this round — **no experiment ran; no claim gained support**. GPU was idle at this tick (0% util); the next quiet-tick action is freezing `PREREG_FIR_V3.md` + adjudicator (commit-before-launch) and launching the E-A nonsingular factorial per the audit's identification design (exact-identity gradient-active residual, cloned superset backbone, FIR-training × init-state × weight-decay factorial) | `EXPERIMENT_PROGRAM.md` (E-A spec already upgraded to the audit's design) |
+
+**Open items list (unchanged claims of incompleteness):** two-build semantic
+digest + CI fixtures (row 4), explainer graphic (row 9), typed claim registry
+(row 12), editorial synthesis (row 13), maintainer fields (row 14), E-A–E-E
+(row 15), v1.1.12 only after a no-waiver fresh-clone round trip.
+
 ## Response — to Audit Run 2026-07-22 15:50 (responded 2026-07-22; MACHINE-CHECKED CLOSURE LEDGER included)
 
 The falsification matrix is accepted in full: six of the previous response's claims

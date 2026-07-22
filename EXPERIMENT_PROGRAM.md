@@ -34,8 +34,15 @@ result." This file is the durable worklist the quiet-tick loop services (priorit
   stopping rule, checkpoint cadence. Diagnostics: per-step gate/tap gradients,
   impulse/frequency responses, optimizer moments, parameter/FLOP deltas, all
   checkpoints. MI, 20-epoch frozen config, 5 fresh pre-declared seeds/arm.
-  Lifecycle: [ ] `PREREG_FIR_V3.md` + adjudicator committed -> [ ] launch ->
-  [ ] adjudicate -> [ ] integrate.
+  Lifecycle: [x] `PREREG_FIR_V3.md` + `adjudicate_fir_v3.py` +
+  `run_ea_fir_v3.py` committed 2026-07-22 (this commit, BEFORE launch;
+  preflight validated 38 flags against the trainer) -> [x] launched
+  2026-07-22 immediately after this commit (sequential background driver;
+  ~24 x 10 min) -> [ ] adjudicate (mechanical; runs once all 24 files exist)
+  -> [ ] integrate (frozen wordings W-POS/W-NEG/W-EQUIV/W-INC only).
+  Implementation: `--fir-v3 {learned,frozen}` nonsingular y=x+conv_DELTA(x),
+  DELTA=0 init; unit-verified: identical cross-arm init per seed, exact
+  identity at init, gradient-active at the zero point, frozen control.
 - [ ] **E-B. Frequency-stratified item-text permutation + random-feature
   control (audit 10:47 design adopted).** Freeze SEVERAL independent permutation
   maps before training (map uncertainty is real); permute within

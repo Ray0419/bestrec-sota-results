@@ -340,6 +340,7 @@ class SASRecSBERT(nn.Module):
                   n_experts=0, text_init_emb=False, cl_aux=False,
                   causal_filter=False, filter_kernel=50,
                   causal_filter_fixed_avg=False, causal_filter_no_gate=False,
+                  fir_v3="off", fir_v3_kernel=16,
                   niche_share=False, niche_pop=None,
                   js_shrink=False, item_freq=None,
                   heat_target=False, heat_nbr_idx=None, heat_nbr_sim=None,
@@ -502,6 +503,23 @@ class SASRecSBERT(nn.Module):
             if causal_filter_no_gate:
                 del self.filter_gate
                 self.register_buffer("filter_gate", torch.ones(1), persistent=False)
+
+        # E-A (PREREG_FIR_V3): NONSINGULAR causal-FIR parameterization.
+        # y = x + conv_DELTA(x) with DELTA zero-init: exact identity at step 0
+        # AND gradient-active from step 0 (dL/dDELTA != 0 at the zero point --
+        # no zero-gradient gate, no weight-decay bootstrap needed to move).
+        # "frozen" registers the SAME module with requires_grad=False so both
+        # arms share parameter registration order, RNG consumption, and init.
+        self.fir_v3 = None
+        if fir_v3 != "off":
+            Kv = int(fir_v3_kernel)
+            self.fir_v3_kernel_len = Kv
+            self.fir_v3 = nn.Conv1d(d_model, d_model, kernel_size=Kv,
+                                    groups=d_model, bias=False)
+            with torch.no_grad():
+                self.fir_v3.weight.zero_()
+            if fir_v3 == "frozen":
+                self.fir_v3.weight.requires_grad_(False)
 
         # Sequence encoder: softmax Transformer (SASRec default) or
         # HSTU-style pointwise-attention stack (Zhai et al., 2024; cited).
@@ -914,6 +932,12 @@ class SASRecSBERT(nn.Module):
             xt = F.pad(xt, (K - 1, 0))                      # LEFT-pad only -> causal
             y = self.causal_filter(xt).transpose(1, 2)      # (B, L, d)
             x = x + self.filter_gate * (y - x)
+
+        # E-A nonsingular FIR (see __init__): left-pad only => strictly causal.
+        if self.fir_v3 is not None:
+            Kv = self.fir_v3_kernel_len
+            x = x + self.fir_v3(
+                F.pad(x.transpose(1, 2), (Kv - 1, 0))).transpose(1, 2)
 
         # Shared additive attention bias (B, H, L, L) from time buckets and/or
         # text similarity; None when neither feature is active.
@@ -1879,6 +1903,16 @@ def main():
                           "causal here for the all-position next-item loss). Tests whether "
                           "attention's low-pass oversmoothing is an in-environment "
                           "bottleneck. Gate zero-init => exact no-op at start. Default OFF.")
+    ap.add_argument("--fir-v3", choices=["off", "learned", "frozen"], default="off",
+                    help="E-A (PREREG_FIR_V3) nonsingular causal FIR: y=x+conv_DELTA(x), "
+                         "DELTA=0 init (exact identity at init, gradient-active from "
+                         "step 0). 'frozen' = identity control arm (same parameter "
+                         "registration, RNG consumption, and init as 'learned').")
+    ap.add_argument("--fir-v3-kernel", type=int, default=16,
+                    help="E-A FIR kernel length (taps).")
+    ap.add_argument("--fir-v3-wd", choices=["backbone", "zero"], default="backbone",
+                    help="weight decay on the E-A FIR taps: 'backbone' = same 1e-5 as "
+                         "all other params; 'zero' = exclude the taps from decay.")
     ap.add_argument("--filter-kernel", type=int, default=50,
                      help="FIR kernel length K for --causal-filter (default 50 = "
                           "max_seq_len). Kernel init = causal delta (all-pass) so the "
@@ -2492,6 +2526,8 @@ def main():
                          causal_filter_fixed_avg=args.filter_fixed_avg,
                          causal_filter_no_gate=args.filter_no_gate,
                          filter_kernel=args.filter_kernel,
+                         fir_v3=args.fir_v3,
+                         fir_v3_kernel=args.fir_v3_kernel,
                          niche_share=(args.niche_share_beta != 0.0),
                          niche_pop=niche_pop,
                          js_shrink=args.js_shrink,
@@ -2537,7 +2573,27 @@ def main():
                           num_workers=0, collate_fn=collate_batch, drop_last=False)
     print(f"  {len(dataset):,} training examples / {len(loader):,} batches per epoch")
 
-    opt = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-5)
+    # E-A: auditable proof that every arm of a seed starts from ONE state.
+    import hashlib as _hl
+    _h = _hl.sha256()
+    _sd0 = model.state_dict()
+    for _k in sorted(_sd0.keys()):
+        _h.update(_k.encode())
+        _h.update(_sd0[_k].detach().cpu().contiguous().numpy().tobytes())
+    init_state_sha256 = _h.hexdigest()
+    del _sd0
+    print(f"  init_state_sha256 = {init_state_sha256}")
+
+    if args.fir_v3 == "learned" and args.fir_v3_wd == "zero":
+        # E-A wd factor: exclude the FIR taps from weight decay (two groups).
+        fir_ids = {id(p) for p in model.fir_v3.parameters()}
+        opt = torch.optim.Adam(
+            [{"params": [p for p in model.parameters() if id(p) not in fir_ids],
+              "weight_decay": 1e-5},
+             {"params": list(model.fir_v3.parameters()), "weight_decay": 0.0}],
+            lr=args.lr, weight_decay=1e-5)
+    else:
+        opt = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-5)
 
     # Optional LR schedule (warmup + cosine decay)
     scheduler = None
@@ -2911,6 +2967,14 @@ def main():
         provenance["user_records_final_sha256"] = _sha256(str(frec_path))
         print(f"wrote {frec_path} ({len(fu['user_id']):,} FINAL-epoch per-user records)")
 
+    fir_v3_final_l2 = None
+    fir_v3_lag_profile = None
+    if getattr(model, "fir_v3", None) is not None:
+        _w = model.fir_v3.weight.detach().cpu()          # (d, 1, K)
+        fir_v3_final_l2 = float(_w.norm().item())
+        fir_v3_lag_profile = [float(v) for v in _w.abs().mean(dim=(0, 1))]
+        print(f"  fir_v3 final ||DELTA||_2 = {fir_v3_final_l2:.6f}")
+
     out = {
         "category": args.category, "config": vars(args),
         "n_users": n_users, "n_items": n_items, "n_params": n_params,
@@ -2926,6 +2990,12 @@ def main():
         "learned_conn_gate_slope": learned_conn_gate_slope,
         "spectral_effective_rank": spectral_eff_rank,
         "spectral_bbp_rho_by_tercile": spectral_bbp_rho,
+        "fir_v3": args.fir_v3,
+        "fir_v3_kernel": args.fir_v3_kernel,
+        "fir_v3_wd": args.fir_v3_wd,
+        "init_state_sha256": init_state_sha256,
+        "fir_v3_final_l2": fir_v3_final_l2,
+        "fir_v3_final_absmean_per_lag": fir_v3_lag_profile,
     }
     with out_path.open("w") as f:
         json.dump(out, f, indent=2)

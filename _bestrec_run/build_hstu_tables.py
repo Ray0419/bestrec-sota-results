@@ -987,7 +987,7 @@ def build_spec():
                  "NDCG@10", PUB_HSTUBLAIR_MI,
                  "Published per-category point estimate targeted by the pre-declared V2 confirmation."))
 
-    # ---------------- Table 1c: MI per-lever isolation ----------------
+    # ---------------- Table 1c: MI arm-by-arm comparison ----------------
     C.append(cell("t1c.base.ndcg", "table1c", "MI SBERT+TAPE base (4 x e20 seeds)", "NDCG@10 mean +- sd",
                   MIBASE4, "mean_std_metric", {"files": MIBASE4, "expect_n_eval": NEVAL_MI},
                   [chk("mean", 0.0383, 4), chk("sd", 0.0004, 4)], 4, expl, seeds=S0912,
@@ -1985,7 +1985,7 @@ def render_tables(cells):
     ])
 
     T["table1c"] = "\n".join([
-        "**Table 1c (regenerated): Musical_Instruments per-lever isolation — NDCG@10, best-by-val, "
+        "**Table 1c (regenerated): Musical_Instruments arm-by-arm comparison — NDCG@10, best-by-val, "
         "n_eval=57,439 (recomputed).**",
         "",
         "| Configuration | NDCG@10 | Δ vs base | share of k16 combined lift |",

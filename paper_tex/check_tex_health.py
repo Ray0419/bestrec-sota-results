@@ -138,7 +138,10 @@ H10_BANNED = ("external auditor", "exactly the commit carrying",
               # audit 16:51 additions:
               "dead-weight", "single-lever isolation", "per-lever isolation",
               "double/refuting", "qualitative refutation", "density-inert",
-              "rival AI", "independent auditor", "supports the robustness")
+              "rival AI", "independent auditor", "supports the robustness",
+              # audit 16:51 second pass (isolation-family residue):
+              "single-lever", "per-lever", "dissociat",
+              "toggling one named lever", "filter's share", "filter’s share")
 H10_BANNED_RE = (r"residual[^.\n]{0,60}content component",)
 _pub10 = [os.path.join(HERE, "..", rel) for rel in (
     "PAPER_SUBMISSION.md", "README.md", "COVER_LETTER_TORS.md", "CANONICAL_SUBMISSION.md",

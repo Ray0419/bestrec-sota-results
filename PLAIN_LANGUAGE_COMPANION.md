@@ -52,7 +52,6 @@ mattering more than others.
   into a numeric fingerprint. Similar products
   end up with similar fingerprints — two different brands of guitar tuner "smell alike" — so the
 text gives the model a head start on items it has seen only a handful of times in training. (Important honesty note: for items with ZERO training exposure the paper found text does NOT help at all — zero hits through rank 100 in every rerun category — so no cold-start ability is claimed.)
-  huge tail of obscure items with only a handful of purchases each.
 - Everything above is small by modern standards: **11.6 million parameters** (the model's
   internal adjustable dials) and **about 10 minutes of training per run on one consumer
   graphics card.** No giant language model does the
@@ -188,8 +187,7 @@ machinery that makes the second one credible.
   automatic scan for forbidden phrases at every build.
 - **Statistical superiority over the comparator.** Their published numbers are single runs. We
   can say our multi-seed average clears their point value; we cannot honestly say "significantly
-  better," because a single run has no error bars to compare against. (Analogy: our average of
-  five dice rolls beat the one roll they wrote down — that is exactly what we say, and no more.)
+  better," because a single run has no error bars to compare against. (Analogy: our five-roll average beat the single roll they wrote down — that is exactly what we say, and no more.)
 - Anything from the **VOID V1 campaign** (§6, Act 1), forever.
 - Comparisons against concurrent 2026 preprints whose protocols we haven't audited — we cite
   them, we don't race them.

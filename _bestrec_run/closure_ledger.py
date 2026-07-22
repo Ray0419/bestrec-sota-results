@@ -39,7 +39,7 @@ for rel in ("_bestrec_run/build_hstu_tables.py",
             "_bestrec_run/hstu_results_manifest.json",
             "_bestrec_run/make_table_5_4_titration.py"):
     for bad in ("dead weight", "dead-weight", "causal filter only",
-                "TAIL = REFUTED"):
+                "TAIL = REFUTED", "per-lever", "single-lever", "dissociat"):
         absent(rel, bad)
 
 # manuscript / public surfaces
@@ -51,7 +51,9 @@ BANNED = ("dead weight", "dead-weight bound", "cannot manufacture",
           "per-lever isolation", "qualitative refutation", "density-inert",
           "supports the robustness", "rival AI", "independent auditor",
           "double/refuting", "near-additively", "168 cells", "153 files",
-          "cannot hurt by default", "never seen sold")
+          "cannot hurt by default", "never seen sold",
+          "single-lever", "per-lever", "dissociat",
+          "toggling one named lever", "filter's share")
 for rel in SURFACES:
     for bad in BANNED:
         absent(rel, bad)

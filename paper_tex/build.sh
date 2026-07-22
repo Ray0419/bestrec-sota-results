@@ -7,7 +7,7 @@
 #   [1] regenerate paper_tex/tables/*.tex from the artifact graph
 #       (_bestrec_run/emit_latex_tables.py: hstu_tables.json + hstu_results_manifest.json
 #        + mechanical pandoc conversion of the canonical md tables; numeric cross-check inside)
-#   [2] tectonic compile of BOTH targets (self-contained; vendored acmart.cls v2.03 + ACM-Reference-Format.bst)
+#   [2] tectonic compile of BOTH targets (self-contained; vendored acmart.cls v2.19 (2026-06-27; upgraded 2026-07-21) + ACM-Reference-Format.bst)
 #   [3] package PAPER_TORS.pdf (review) + PAPER_TORS_acmsmall.pdf (preview)
 #   [4] placeholder / forbidden-claim hygiene scan of the REVIEW artifact (scan_pdf.py; nonzero exit on any hit)
 #

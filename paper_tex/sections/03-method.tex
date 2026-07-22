@@ -50,7 +50,7 @@ The item feature passed into the encoder is $f_i = e_i + \Phi(s_i)$. Sequences a
 \textbf{Baseline encoder --- SASRec-SBERT (protocol parity and the superseded Appendix A.1 scans only).} The SASRec-family baseline follows \citet{kang2018sasrec}: a 2-layer pre-norm Transformer encoder (d=64, n\_heads=2, FFN dim=4d, GELU activation) followed by a final LayerNorm, using the same item-feature construction. \textbf{No headline number uses this encoder}; it appears as the per-category parity/floor baseline and in the superseded Beauty scan (Appendix A.1).
 
 
-\subsection{Choice of projection \ensuremath{\Phi}}\label{sec:3.3}
+\subsection{Choice of projection \texorpdfstring{\ensuremath{\Phi}}{Phi}}\label{sec:3.3}
 
 Following our cross-pipeline transfer study (Appendix A.1), we compare two designs for $\Phi$:
 

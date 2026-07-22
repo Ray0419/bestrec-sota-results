@@ -2001,6 +2001,9 @@ def main():
                           "Default 0.0 = OFF (bit-identical no-op). Source: Goldberg & "
                           "Richardson 1987; CS analogues DPP/PD/logit-adjustment cited.")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--save-ckpt", action="store_true",
+                    help="E-F (PREREG_HYBRID_V1): persist the best-val weights "
+                         "(suffix .best.pt) for post-hoc hybrid fusion eval.")
     ap.add_argument("--conn-gate", action="store_true",
                      help="NOVEL cold-start application: connectivity-gated ID<->text "
                           "fusion. Gates the mix on TRAIN distinct users/item (the causal "
@@ -2776,6 +2779,26 @@ def main():
                 best_test_metrics = test_metrics
                 best_test_user_records = _test_urec
                 best_test_epoch = epoch
+                # E-F (PREREG_HYBRID_V1; ported from the R+ campaign): persist
+                # the best-val checkpoint for post-hoc hybrid fusion eval.
+                if args.save_ckpt:
+                    ckpt_path = (Path(args.out).with_suffix(".best.pt")
+                                 if args.out else Path("best.pt"))
+                    # With EMA active the metrics above were computed on the
+                    # EMA weights, so save those; otherwise the live weights.
+                    sd = ema if ema is not None else model.state_dict()
+                    _extra = {}
+                    if getattr(model, "use_prototypes", False):
+                        # proto_assign_* are persistent=False buffers (absent
+                        # from state_dict); save them so fusion eval can
+                        # reconstruct the model without re-running
+                        # (non-deterministic) k-means.
+                        _extra["proto_assign"] = [
+                            getattr(model, f"proto_assign_{li}").cpu()
+                            for li in range(model.n_proto_levels)]
+                    torch.save({"state_dict": {k: v.cpu() for k, v in sd.items()},
+                                "epoch": epoch,
+                                "val_NDCG10": best_val_ndcg, **_extra}, ckpt_path)
         else:
             print(f"  epoch {epoch:>3d}  loss={train_loss:.4f}  ({ep_time:.1f}s)")
         history.append(log)

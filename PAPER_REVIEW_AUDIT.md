@@ -4,7 +4,410 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-22 16:51 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-22 21:57 Australia/Sydney)
+
+1. **[CONFIRMED, rejection-level protocol violation] E-A is outcome-visible after
+   18/24 completed summaries and 372 printed epoch-level test outcomes.** The
+   extra 12 outcomes belong to the incomplete nineteenth run and are absent from
+   status, which updates only when a child exits. Finish unchanged only as
+   exploratory evidence; confirmation requires unused seeds and test quarantine.
+2. **[CONFIRMED primary-analysis misspecification, materially large]** Common
+   seeds, matched initialization and common data form blocks, yet independent
+   Welch is primary. Across six blocks, A1-A0 paired SE is 0.000070 versus Welch
+   SE 0.000195, 2.77 times larger; A2-A1's ratio is 5.93. Predeclare paired
+   contrasts, exact sign-flip sensitivity and paired TOST in a new replication.
+3. **[CONFIRMED promising but non-publishable exploratory pattern]** Six-block
+   A1-A0 NDCG is +0.002247 and A2-A0 +0.002236, positive in all six blocks and
+   strata; A2-A1 is -0.000011. The first filename-unused seed block is also
+   positive, but outcome exposure, partial n=6/8, reused seeds and invalid primary
+   analysis prohibit confirmatory or manuscript claims.
+4. **[CONFIRMED endpoint/mechanism mismatch] Seventeen of 18 endpoints, including
+   11/12 learned arms, are not epoch 20, but FIR diagnostics are final-only.**
+   Selected A2-A1 is -0.000011 while final A2-A1 is +0.000030. Save/hash the
+   validation-selected model and extract signed taps, gradients, moments and
+   response at that exact checkpoint.
+5. **[CONFIRMED order/runtime confound, now observed]** Every block runs
+   A0-A1-A2; average arm positions are about +12.52/+25.04 minutes. Run 18, an A2,
+   was 14.12% slower than runs 1--17, and the last block averaged 5.33% slower
+   than the first five. This is not proof of metric bias, but without telemetry
+   arm and system time cannot be separated. Counterbalance and log GPU state.
+6. **[CONFIRMED preregistration/program contradictions]** Five of eight seeds
+   called fresh were previously used; the claimed 2x2 factorial has three cells;
+   parameter groups differ; no checkpoint is cloned; and the margin's historical
+   denominator is misstated. Rename this a three-arm ablation and disclose every
+   deviation before an independently frozen replication.
+7. **[CONFIRMED execution/adjudication defect]** Mutable code/config are reopened
+   per run; resume trusts any path; writes/status are non-atomic and unlocked;
+   failures can still produce complete status; and the adjudicator is partial,
+   non-finite-tolerant, numerically wrong at zero SE and environment-dependent.
+   Rebuild execution and adjudication around one strict immutable schema.
+8. **[CONFIRMED scope and mechanism limitation]** E-A tests only K=16 on
+   Musical_Instruments and cannot identify historical package attribution,
+   cross-category generality or tail specificity. About 84.36% of the six-block
+   A1 aggregate NDCG gain and 80.92% of extra hits are head-contributed. Add a
+   trainable parameter-matched placebo and clean kernel/category replication.
+9. **[CONFIRMED release-boundary defect]** Preregistration, program, driver,
+   adjudicator, reference config, order, summaries, 35 sidecars, log and status
+   remain outside the manifest/deposit chain. Summaries are untracked, sidecars
+   ignored and dirty diffs unidentified. Freeze an append-only family inventory.
+10. **[CONFIRMED prior-art boundary; PLAUSIBLE incremental-novelty rejection]**
+    The manuscript correctly cites C3SASR causal convolution and FMLP-Rec/BSARec
+    filtering, leaving only a narrow realization claim. It still omits RecSys
+    2025's Let It Go? Not Quite frozen-content trainable-delta comparator; WPGRec,
+    AlphaFuse, FAERec and AKT-Rec add frequency/text-tail pressure.
+11. **[CONFIRMED existing paper/public contradictions]** No manuscript/public
+    byte changed. Main/TeX/PDF/public artifacts still overattribute FIR and retain
+    incompatible refutation, mechanism, density and all-four language behind
+    partial literal gates. Use a typed claim registry and regenerate all surfaces.
+12. **[CONFIRMED release, writing and visual blockers]** The reviewer-facing
+    v1.1.11 deposit still has 17 mismatches; the roughly 26k-word main remains an
+    audit diary; and byte-identical PDFs retain the split caption, near-empty
+    reader p.56, tiny tables, placeholders, stale claims and accessibility gaps.
+13. **[AUTHOR/INSTITUTION/LEGAL VERIFICATION]** Author identity/order,
+    affiliation, contact, ORCID, funding, conflicts, manuscript-level
+    GenAI/automation disclosure and redistribution authority remain unresolved.
+14. **[CONFIRMED progress and immediate optimization]** Eighteen summaries and
+    35 sidecars pass metric, config, initialization, data, hash, count and row-
+    alignment checks. Test-once from the best-validation checkpoint would save
+    about 89 GPU-minutes already and 119 minutes over 24 runs. Despite genuine
+    implementation progress, the recommendation remains **reject / not ready**.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-22 21:57)
+
+1. **[CONFIRMED, rejection-level protocol violation] E-A is outcome-visible at
+   14/24 summaries and has exposed 280 epoch-level test evaluations.** Four
+   complete three-arm blocks and an A0/A1 pair from seed 20260717 were visible
+   before the planned one-time adjudication. Preserve and finish unchanged only
+   as exploratory evidence; confirmation requires a fresh unused-seed,
+   outcome-quarantined replication.
+2. **[CONFIRMED statistical-design defect, now strongly material]** The run uses
+   common seeds, matched initialization and common data but makes independent
+   Welch primary. Across the four complete blocks, A0/A1 NDCG correlation is
+   0.976; the Welch SE is 0.000241 versus paired SE 0.000081, almost 3.0 times
+   larger. Use seed-block paired contrasts, exact sign-flip/randomization
+   sensitivity and paired TOST prospectively; do not retrofit this exposed run.
+3. **[CONFIRMED promising but non-publishable partial pattern]** Four-block
+   descriptive A1-A0 NDCG is +0.002188, A2-A0 +0.002160 and A2-A1 -0.000029.
+   Learned-versus-identity differences are positive in every complete block and
+   stratum, while the two weight-decay arms are nearly indistinguishable. This is
+   n=4/8, already exposed, partly seed-reused and not valid confirmatory evidence.
+4. **[CONFIRMED endpoint/mechanism mismatch] Thirteen of 14 selected endpoints,
+   including eight of nine learned arms, are not epoch 20, yet FIR diagnostics
+   are final-only.** Four-block selected A2-A1 is -0.000029 while final-epoch
+   A2-A1 is +0.000034. Save and hash the validation-selected checkpoint and
+   extract signed taps, gradients, optimizer state and frequency response there.
+5. **[CONFIRMED execution/evidence-integrity defect]** Code/config remain mutable
+   during the queue; resume trusts any existing path; summary/status writes are
+   non-atomic and unlocked; a failed run can still end with status complete; and
+   the live log needs an externally captured byte-prefix hash. Use an immutable
+   launch, locks, atomic promotion, validated resume and closed per-run logs.
+6. **[CONFIRMED preregistration falsehood and order confound]** Five of eight
+   seeds called fresh were previously used, and every block runs fixed
+   A0-A1-A2 order. Completion intervals look stable, but treatment remains
+   inseparable from approximately +12.4/+24.8 minutes of wall-clock position and
+   no GPU telemetry exists. Disclose reuse and counterbalance the replication.
+7. **[CONFIRMED analysis/adjudicator mismatch]** The program calls E-A a 2x2
+   factorial although the identity-plus-zero-WD cell is absent. The adjudicator
+   ignores most frozen config/provenance/sidecar fields, does not enforce exactly
+   24, accepts non-finite values, mishandles zero variance, changes distributions
+   if SciPy is absent and omits its promised paired t. Rebuild it fail-closed.
+8. **[CONFIRMED scope and mechanism limitation]** E-A tests FIR utility only in
+   the new K=16 Musical_Instruments configuration. It cannot decompose the
+   historical initialization-optimizer package, prove 77--82%/3x attribution or
+   establish tail specificity: about 83.8% of the four-block A1 aggregate NDCG
+   gain is head-contributed. Add a trainable parameter-matched placebo, multiple
+   kernels/categories and selected-checkpoint mechanism diagnostics.
+9. **[CONFIRMED release-boundary defect]** Preregistration, program, driver,
+   adjudicator, reference config, launch plan, summaries, sidecars and logs remain
+   outside the manifest/deposit/strict chain; summaries are untracked and
+   sidecars ignored. Freeze an append-only experiment-family inventory with
+   start-time, dirty-diff, result, log-prefix and adjudication hashes.
+10. **[CONFIRMED citation omission; PLAUSIBLE novelty rejection]** The claimed
+    complete attribution table omits RecSys 2025's Let It Go? Not Quite, which
+    already uses a bounded trainable delta over frozen content embeddings in
+    SASRec, five seeds and rare-item analysis. TAPE differs through shared soft
+    prototypes but needs direct positioning/comparison. FMLP-Rec/BSARec already
+    occupy learnable filtering; WPGRec, AlphaFuse, FAERec and AKT-Rec add pressure.
+11. **[CONFIRMED existing paper/public contradictions]** No manuscript or public
+    surface changed. Main/TeX/PDF/public artifacts still overattribute FIR, retain
+    incompatible refutation/mechanism/density language and pass partial literal
+    closure gates. Use package-arm/inconclusive wording and a typed,
+    existence-checked claim registry before regenerating all surfaces.
+12. **[CONFIRMED release, writing and visual blockers]** The clean-clone release
+    remains unattested/deadlocked, the roughly 26k-word main remains an audit
+    diary, and all three PDFs are byte-identical to the prior 156-page audit:
+    caption split, near-empty reader p.56, tiny tables, placeholders, stale claims
+    and accessibility gaps persist. Redesign release order, cut the main body to
+    10--14k words and rebuild accessible figures/PDFs.
+13. **[AUTHOR/INSTITUTION/LEGAL VERIFICATION]** Author identity/order,
+    affiliation, contact, ORCID, funding, conflicts, manuscript-level
+    GenAI/automation disclosure and redistribution authority remain unresolved.
+    Verify with the authors/institution and target venue before submission.
+14. **[CONFIRMED progress and immediate optimization]** Fourteen summaries and
+    27 referenced sidecars pass config/init/data/code/hash/count/alignment checks.
+    Testing only once from a saved best-validation checkpoint would reduce the
+    planned 480 test looks to 24 and save about 118 GPU-minutes over 24 runs.
+    Progress is real; the recommendation remains **reject / not ready**.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-22 20:56)
+
+1. **[CONFIRMED, rejection-level protocol violation] E-A is outcome-visible at
+   9/24 summaries and has already exposed 180 epoch-level test evaluations.**
+   Three complete seed blocks now exist, but the author-operated audit and streamed
+   logs saw outcomes before the planned one-time adjudication. Preserve and finish
+   the run unchanged as exploratory; confirm only with a fresh unused-seed,
+   outcome-quarantined replication.
+2. **[CONFIRMED statistical-design defect, now empirically material]** The matched
+   design still makes independent Welch primary. Across the three exposed blocks,
+   A0/A1 NDCG correlation is 0.991, paired-difference SD is 0.000190, and Welch's
+   SE is about 2.45 times the paired SE. Use seed-block paired contrasts, exact
+   sign-flip/randomization sensitivity and paired TOST prospectively; do not
+   retrofit this partial run as confirmation.
+3. **[CONFIRMED promising but non-publishable partial pattern]** Descriptive mean
+   A1-A0 NDCG is +0.002210 across three blocks; A2-A0 is +0.002167; A2-A1 is
+   -0.000043. The learned-vs-identity differences are consistent so far and the
+   two WD variants are nearly indistinguishable, but n=3/8, prior outcome access,
+   reused seeds and no valid adjudication prohibit inference or manuscript claims.
+4. **[CONFIRMED endpoint/mechanism mismatch] Eight of nine selected endpoints are
+   not the final epoch, including five of six learned arms, yet all FIR tap
+   diagnostics are final-only.** Selected versus final endpoints change the tiny
+   A2-A1 sign. Save/hash the best-validation checkpoint and report signed taps,
+   gradients, optimizer state and frequency response at that exact checkpoint.
+5. **[CONFIRMED execution/evidence-integrity defect]** Code/config remain mutable
+   across the queue; resume trusts any existing path; writes/status are non-atomic
+   and unlocked; failed runs can still end with status complete; default Windows
+   preflight fails under cp1252; and an open log exposes stale size/mtime metadata.
+   Use an immutable launch, per-run logs, byte-prefix hashes, strict validation,
+   locks and atomic promotion.
+6. **[CONFIRMED preregistration falsehood and order confound]** Five of eight
+   seeds called fresh were previously used, and all blocks run fixed A0-A1-A2
+   order. Runtime is stable so far, but temperature/power/utilization/load telemetry
+   is absent. Disclose prior use; use genuinely unused seeds and a frozen
+   counterbalanced order in replication.
+7. **[CONFIRMED analysis/adjudicator mismatch]** The program calls E-A a 2x2
+   factorial although the identity+zero-WD cell is absent. The adjudicator ignores
+   most frozen config/data/code/sidecar fields, does not enforce exactly 24,
+   accepts NaN/Infinity, mishandles zero variance, silently changes distributions
+   when SciPy fails and omits its promised paired t. Implement the full cell set or
+   stop calling it factorial; fail closed on one canonical schema and environment.
+8. **[CONFIRMED scope limitation]** E-A can estimate FIR utility only in the new
+   K=16 Musical_Instruments configuration. It cannot decompose the historical
+   singular initialization-optimizer package, establish 77--82%/3x attribution,
+   or prove cross-category generality. Add a trainable parameter-matched placebo,
+   kernel/category replication and honest historical-package wording.
+9. **[CONFIRMED release-boundary defect]** Preregistration, program, driver,
+   adjudicator, reference config, launch plan, summaries, sidecars and logs remain
+   outside the manifest/deposit/strict chain; summaries are untracked and sidecars
+   ignored. Freeze an append-only experiment-family inventory with start-time and
+   result/adjudication hashes.
+10. **[CONFIRMED citation omission; PLAUSIBLE novelty rejection]** The claimed
+    complete attribution table omits RecSys 2025's *Let It Go? Not Quite*, which
+    already uses a bounded trainable delta over frozen content embeddings in SASRec,
+    five seeds and rare-item analysis. TAPE differs through shared soft prototypes,
+    but needs direct positioning/comparison. WPGRec, AlphaFuse, FAERec and AKT-Rec
+    add further frequency/text-tail pressure.
+11. **[CONFIRMED existing paper/public contradictions]** Main/TeX/PDF/public
+    surfaces did not change and still overattribute FIR, retain incompatible
+    refutation/mechanism/density language, and pass partial literal closure gates.
+    Use package-arm/inconclusive wording and a typed, existence-checked claim
+    registry before regenerating every surface.
+12. **[CONFIRMED release, writing and visual blockers]** The clean-clone release
+    remains unattested/deadlocked, the roughly 26k-word main remains an audit diary,
+    and all three PDFs are byte-identical to the prior 156-page visual audit:
+    caption split, near-empty reader p.56, tiny tables, placeholders, stale claims
+    and accessibility gaps remain. Redesign release order, cut the body to 10--14k
+    words and rebuild accessible figures/PDFs.
+13. **[AUTHOR/INSTITUTION/LEGAL VERIFICATION]** Author identity/order, affiliation,
+    contact, ORCID, funding, conflicts, manuscript-level GenAI/automation
+    disclosure and redistribution authority remain unresolved. Verify these with
+    the authors/institution and target venue before submission.
+14. **[CONFIRMED progress and immediate optimization]** Nine summaries and 17
+    referenced sidecars pass config/init/data/hash/count/alignment checks, and the
+    low-level FIR operator passes identity/gradient/frozen-control probes. Evaluating
+    test once from the saved best-val checkpoint would remove 19 test looks and
+    save about 293 seconds per run (roughly 117 GPU-minutes over 24). Progress is
+    real; the recommendation remains **reject / not ready**.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-22 19:55)
+
+1. **[CONFIRMED, rejection-level protocol violation] The 24-run E-A campaign is
+   now outcome-visible after only 4 summaries (one complete seed block) existed at
+   the fixed cutoff.** This author-operated hourly audit opened those partial
+   outcomes before the single planned adjudication, while the preregistration says
+   `no interim looks`. The trainer also prints test metrics every epoch and writes
+   each arm result sequentially, with no blinding or access barrier. Preserve the
+   current campaign as exploratory; do not retrofit its rules. For confirmatory
+   evidence, preregister a fresh replication using unused seeds and quarantine or
+   encrypt arm outcomes until every frozen run and integrity check completes.
+2. **[CONFIRMED statistical-design defect] The experiment deliberately matches
+   arms by seed, initial state and random streams but makes an independent 8-vs-8
+   Welch test primary.** The experimental unit is the seed block; CUDA
+   nondeterminism does not erase that blocking. Use paired/blocked contrasts (or a
+   prospectively frozen seed-block model/randomization test) as primary and Welch
+   only as sensitivity. One completed block cannot support inference or a paper
+   claim.
+3. **[CONFIRMED execution/provenance defect] E-A is not an immutable experiment.**
+   The driver reopens mutable code/reference configuration for every run, does not
+   bind HEAD/dirty state or a command-plan digest, skips any existing filename
+   without validation, lacks locks/atomic writes, and the adjudicator ignores most
+   frozen fields. Run a detached clean worktree/container from one signed launch
+   manifest; atomically validate every output and bind code, data, configuration,
+   command, environment and RNG-state hashes.
+4. **[CONFIRMED launch reproducibility failure] Default Windows preflight exits 1.**
+   The trainer's help text contains a Unicode arrow that cannot be encoded by the
+   piped cp1252 console; the driver ignores the help return code/stderr and scans
+   partial stdout. The active run therefore depended on an unrecorded UTF-8
+   override or console state. Set and record UTF-8 explicitly, require return code
+   zero, expose stderr, and replace help-string probing with a real dry-run parser.
+5. **[CONFIRMED preregistration falsehood / selection risk] Five of the eight
+   seeds called `fresh--never used` already occur in tracked FIR-breadth results.**
+   Seeds 20260713--20260717 were used previously; only 20260718--20260720 have no
+   prior tracked result filename. Disclose the complete prior-use inventory and
+   selection process; use a genuinely unused, prospectively sampled seed set for
+   the confirmatory replication.
+6. **[CONFIRMED endpoint/mechanism mismatch] The analyzed endpoint is the
+   best-validation epoch, but the reported FIR tap norm/profile comes from the
+   final epoch.** No best checkpoint is retained, so the diagnostic cannot explain
+   the selected endpoint. Store the best checkpoint, signed taps, gradients,
+   optimizer state and impulse/frequency response at the selected epoch; retain
+   final-epoch values only as separately labeled trajectory diagnostics.
+7. **[CONFIRMED adjudication defects] The frozen adjudicator can approve materially
+   drifted runs and mishandles edge cases.** It omits most model/data/evaluation and
+   provenance fields; silently changes Welch to a normal approximation when SciPy
+   fails; returns `p=1` for unequal zero-variance samples; emits nonstandard
+   infinities; and its verdict can call a statistically nonzero but practically
+   negligible effect supportive. Pin/fail closed on the analysis environment,
+   validate finite strict JSON, gate the complete frozen schema, and predeclare
+   statistical significance, equivalence and A2 weight-decay sensitivity jointly.
+8. **[CONFIRMED limited scope] The four partial results do not repair the paper.**
+   Only seed 20260713 has A0/A1/A2; seed 20260714 has A0 only. The one-block learned
+   arms are descriptively above identity, but there is no uncertainty, no valid
+   family adjudication and no category replication. E-A at most estimates FIR
+   utility at one K=16 MI configuration; it cannot decompose the historical
+   singular package difference or establish cross-category/general algorithmic
+   novelty.
+9. **[CONFIRMED release-boundary defect] The new preregistration, program, driver,
+   adjudicator, reference configuration and partial outputs are outside the
+   release manifest/deposit/strict chain.** Result sidecars are ignored and the
+   summaries are untracked. Add an experiment-family manifest with launch-time
+   hashes now, then an append-only inventory of all summaries, sidecars,
+   adjudication inputs/outputs and failure logs after completion; never overwrite
+   evidence in place.
+10. **[CONFIRMED existing paper contradictions]** Main/TeX/PDF/public surfaces
+    still overattribute the historical unmatched initialization--optimizer package
+    to `causal filter alone`, retain confirm/refute/mechanism/density language, and
+    let partial H10/closure blacklists pass those claims. Until a valid replication,
+    use package-arm/inconclusive wording and generate every public surface from a
+    typed, existence-checked claim registry.
+11. **[PLAUSIBLE novelty rejection]** WPGRec, AlphaFuse and FAERec already occupy
+    nearby frequency-modeling and language/ID-tail space. E-A alone lacks
+    frequency-matched random/permuted semantic controls, target-parity ablations,
+    repeated thinning maps, cross-category replication and a closest-protocol
+    AlphaFuse comparator. Complete these before claiming top-journal algorithmic
+    novelty.
+12. **[CONFIRMED writing/visual blocker]** The roughly 26k-word main manuscript
+    remains an audit diary. All 156 unchanged PDF pages render without gross
+    corruption, but the reader splits a caption across pp.28--29, p.56 is nearly
+    empty, tables/annotations are cramped, and figures omit seed/map uncertainty.
+    Reduce the body to a 10--14k-word scientific narrative, move chronology to a
+    supplement, reflow the figures and add uncertainty/accessibility layers.
+13. **[AUTHOR/INSTITUTION/LEGAL VERIFICATION]** Real author, affiliation, country,
+    contact, ORCID, funding, conflict and manuscript-level GenAI/automation
+    disclosure remain unresolved; redistribution authority is explicitly uncertain.
+    Verify authorship, approval, ethics, originality, licenses, data governance and
+    venue policy before submission.
+14. **[CONFIRMED progress, do not overread]** The FIR-v3 operator itself passes
+    independent state-parity, exact-identity, gradient-reachability and frozen-
+    control probes; four summaries and their sidecars are structurally complete at
+    cutoff. This is genuine implementation progress, not confirmatory evidence.
+    The current recommendation remains **reject / not ready**.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-22 18:54)
+
+1. **[CONFIRMED, rejection-level audit-integrity contradiction] The new executable
+   closure ledger passes while the exact prohibited claims it purports to close
+   remain live.** Its generator scan covers only three files and selected literal
+   spellings; its public registry omits the canonical draft, all TeX/PDFs,
+   `hstu_tables.json`, and most emitted artifacts. It misses `causal filter alone`,
+   `(isolation)`, `filter share`, and `DECOMP5 isolation` in the generator and JSON.
+   Replace string absence with a required, existence-checked surface registry and
+   typed semantic claim parity; test negated safe uses separately from unsupported
+   paraphrases.
+2. **[CONFIRMED, rejection-level release contradiction] The response says the
+   Bash/WSL draft route exits 0, but the documented Windows-Python route exits 7.**
+   Windows Python cannot open the unconverted `/mnt/c/.../RELEASE_MANIFEST.json`;
+   only the `ALLOW_HEAD_EPOCH=1` escape makes the draft run. Convert paths with
+   `wslpath -w` or use native Linux tools, reject unresolved/nonpositive epochs,
+   and test the exact advertised command in CI.
+3. **[CONFIRMED, release-design deadlock] No current path can produce a valid
+   release attestation.** A fresh committed-only release exits 2 before venue
+   build because ignored assets are absent; strict venue build later rejects the
+   author placeholder; same-epoch Tectonic builds are byte-nondeterministic; and
+   the post-build manifest then rejects the PDF just rebuilt. Define a semantic PDF
+   digest or normalize output, separate immutable inputs from generated outputs,
+   attest failures as well as successes, and cut a fresh deposit only after a
+   clean-clone end-to-end run.
+4. **[CONFIRMED statistical/attribution defect] FIR remains an unmatched
+   initialization--optimizer package, not an identified filter component.** Main,
+   TeX, table JSON and public prose still say `causal filter alone`, 77--82% filter
+   share, roughly 3x/80% contribution, robustness and larger contributor. Until a
+   valid E-A, use package-arm wording only; then use cloned states/common random
+   numbers and a gradient-active FIR factorial with the matched block as the
+   primary analysis.
+5. **[CONFIRMED inference contradiction] The manuscript correctly admits no
+   equivalence margin and an inconclusive tail result, yet TeX/PDFs still say
+   confirming/refuting, unaffected refutation, positive mechanism and refuted.**
+   A bundled one-map thinning intervention and nonsignificant interaction cannot
+   establish density causation, equivalence or mechanism. Report estimates and
+   intervals, repeat independent maps crossed with seeds, and predeclare the
+   interaction/equivalence family.
+6. **[CONFIRMED public-record contradiction] The plain-language companion and
+   explainer still overstate all-four filter benefit, withdrawn paired intervals,
+   sparse/dense deployment guidance, universal preregistration, graph coverage and
+   PDF success.** They also retain `rival referee`/different-AI variants and copy
+   defects. Generate public/metadata wording from the same typed evidence registry
+   and delete causal advice unsupported by the experiment.
+7. **[CONFIRMED provenance/gate defect] H10 and the manifest cannot prove source
+   parity.** H10 is a narrow, partly case-sensitive blacklist that omits canonical,
+   generator and JSON surfaces; the claimed Markdown-to-TeX derivation has no
+   section generator/parity check; core release scripts and TeX sections are
+   outside the manifest. Register and hash all authoritative inputs, mechanically
+   compare semantic fields across Markdown/TeX/PDF/public outputs, and fail on any
+   missing surface.
+8. **[CONFIRMED no fixed-scope scientific advance; PLAUSIBLE novelty rejection]**
+   At the audited cutoff no result, preregistration, experiment-program,
+   bibliography, baseline, ablation or numeric result leaf changed; E-A--E-E were
+   unrun. WPGRec, AlphaFuse and FAERec occupy nearby frequency and language/ID-tail
+   space. Complete the identifying experiments and closest-protocol baseline before
+   marketing a top-journal algorithmic contribution.
+9. **[POST-CUTOFF DESIGN ALERT; AUTHOR ACTION REQUIRED] E-A was committed and
+   launched only after the fixed audit cutoff, so its outcomes are excluded here,
+   but its frozen analysis plan is unsafe.** It falsely calls seeds 20260713--20
+   never-used, makes independent-arm Welch primary despite deliberately matched
+   per-seed states/common random numbers, mislabels the equivalence-margin
+   denominator, and the adjudicator does not enforce most frozen configuration or
+   provenance fields. Stop/blind outcome access if still possible, correct and
+   recommit the plan, make paired/block inference primary, and otherwise label this
+   campaign exploratory.
+10. **[CONFIRMED writing/visual blocker]** The 26,156-word main manuscript remains
+    an audit diary. All 156 pages render without gross corruption, but the reader
+    splits a caption across pp.28--29, p.56 is nearly empty, tables/annotations are
+    cramped, and uncertainty visuals omit map-level variation. Reduce the body to a
+    10--14k-word scientific narrative, move chronology to a supplement, reflow the
+    figures and add seed/map uncertainty and accessibility layers.
+11. **[AUTHOR/INSTITUTION/LEGAL VERIFICATION]** Real author, affiliation, country,
+    contact, ORCID, funding, conflict and manuscript-level GenAI/automation
+    disclosure remain unresolved; redistribution authority is explicitly uncertain.
+    Verify authorship, approval, ethics, originality, licenses, data governance and
+    venue policy before submission.
+12. **[CONFIRMED progress, do not overread]** The executable ledger and first
+    release stage now exist; native PowerShell draft/UTF-8 logging, H1 waiver
+    behavior, artifact graph and selected manifest checks work; several labels and
+    public metadata were softened; and rendering is grossly intact. These are real
+    engineering improvements, but the current recommendation remains **reject / not
+    ready**.
+
+## Superseded Prioritized Rejection-Risk List (state before 2026-07-22 17:52)
 
 1. **[CONFIRMED, rejection-level audit-integrity contradiction] The newest
    response's closure ledger is false and is not machine-checkable.** It says the
@@ -2791,6 +3194,2589 @@ plausible risks.
     the venue's current template/anonymity rules, supply any independent
     pre-outcome timestamp, repeat thinning across independent subsets, and
     demonstrate a public fresh-clone reconstruction.
+
+## Audit Run - 2026-07-22 21:57 Australia/Sydney
+
+### Review Verdict
+
+**Recommendation: reject / not ready for top-journal submission.** The fixed
+cutoff contains 18 of 24 E-A summaries: six complete A0/A1/A2 seed blocks.
+Both learned FIR variants are descriptively above identity in every block and
+popularity stratum, including the first block whose seed was not found in prior
+result filenames. The two weight-decay variants remain effectively tied. This is
+genuine and encouraging implementation evidence, but it is not admissible
+confirmatory evidence: the campaign is outcome-visible, only 6/8 blocks are
+complete, five seeds were reused despite being called fresh, system time is
+confounded with arm, and the frozen primary test ignores the matched block.
+
+The live-log boundary makes the protocol failure more severe than the summary
+count suggests. Although status says 18 completed jobs, the nineteenth run had
+already printed 12 complete epoch-level test outcomes. The cutoff therefore
+contains 372 exposed test results, not 360. Runtime drift also became visible:
+the most recent A2 run was 14.12% slower than the preceding-run average. This is
+not proof that metrics are biased, but fixed A0-A1-A2 order means a reviewer
+cannot separate treatment from system time without counterbalancing or telemetry.
+
+No manuscript, TeX, bibliography, figure, public page, release metadata or PDF
+changed. All historical attribution, novelty, claim-parity, release, writing,
+visual, identity and legal blockers therefore remain.
+
+Status labels in this section mean:
+
+- **CONFIRMED**: reproduced from the fixed commit and explicitly frozen file or
+  log-prefix boundary, exact hashes, independent calculations, code or unchanged
+  rendered artifacts.
+- **PLAUSIBLE RISK**: a supported concern requiring completed evidence,
+  environmental telemetry, external replication or a venue decision.
+- **AUTHOR VERIFICATION**: cannot be established from the workspace.
+- **INCOMPLETE / EXCLUDED**: visible operational evidence from an unfinished run
+  that is not included in any endpoint or matched-block result.
+- **POST-CUTOFF EXCLUDED**: created or completed after the frozen boundary.
+
+### Fixed Snapshot and Scope
+
+| Item | Audited value |
+|---|---|
+| Heartbeat | 2026-07-22T11:56:41.577Z |
+| Fixed filesystem cutoff | 2026-07-22T21:57:35.6641610+10:00 (11:57:35.6641610Z) |
+| Branch | codex/bestrec-sota-results |
+| HEAD / upstream / merge base | f2963ada2ed5202944679964c7fc2de94ab6e267 |
+| Previous audited HEAD | f2963ada2ed5202944679964c7fc2de94ab6e267 |
+| Tracked state | only PAPER_REVIEW_AUDIT.md modified by the cumulative audit |
+| Eligible E-A summaries | running; 18/24, 0 skipped, 0 failed, status elapsed 225.4 minutes |
+| Complete blocks | seeds 20260713 through 20260718 |
+| Eligible sidecars | 35 distinct gzip files: 18 selected and 17 separate final |
+| Incomplete operational evidence | run 19, A0 seed 20260719, 12 complete epochs plus validation epoch 13 |
+| Result exclusion | no incomplete run-19 endpoint or post-cutoff file enters the six-block analysis |
+
+The live-log prefix is exactly 506,314 bytes with SHA-256
+6d6b0f33961b732db3ce0af8705f3d5a48fbdff6447318c3dcfaa08f17068c82.
+It contains 18 completed runs, 12 complete epoch summaries from run 19, one
+additional completed validation pass and the beginning of the next test pass.
+Later bytes were not read. The status file was captured before the cutoff; it
+updates only after the child process exits and therefore understates live
+outcome exposure while a job is running.
+
+### Eligible Result Inventory
+
+| Seed | Arm | Summary SHA-256 prefix | Best epoch | Test NDCG@10 | HR@10 | MRR |
+|---:|---|---|---:|---:|---:|---:|
+| 20260713 | A0 identity | bfc0fd48 | 16 | 0.0394623706 | 0.0706836818 | 0.0360761392 |
+| 20260713 | A1 learned, backbone WD | 25a39093 | 13 | 0.0416996788 | 0.0746531103 | 0.0379756432 |
+| 20260713 | A2 learned, zero FIR WD | d2148fac | 13 | 0.0415565070 | 0.0745138321 | 0.0378353945 |
+| 20260714 | A0 identity | 6fa46553 | 18 | 0.0397464061 | 0.0710841066 | 0.0363448710 |
+| 20260714 | A1 learned, backbone WD | d4580e65 | 16 | 0.0421316569 | 0.0754539599 | 0.0382553460 |
+| 20260714 | A2 learned, zero FIR WD | c59847c0 | 16 | 0.0421277111 | 0.0754191403 | 0.0382641611 |
+| 20260715 | A0 identity | 16e18323 | 13 | 0.0393065907 | 0.0709274187 | 0.0359898866 |
+| 20260715 | A1 learned, backbone WD | 2869befc | 20 | 0.0413139535 | 0.0733647870 | 0.0379344574 |
+| 20260715 | A2 learned, zero FIR WD | abaa1bd3 | 19 | 0.0413316241 | 0.0734518359 | 0.0379216251 |
+| 20260716 | A0 identity | e797b25a | 12 | 0.0391315543 | 0.0710144675 | 0.0356237787 |
+| 20260716 | A1 learned, backbone WD | a3e0dab5 | 11 | 0.0412555317 | 0.0740959975 | 0.0376125332 |
+| 20260716 | A2 learned, zero FIR WD | 2f897972 | 11 | 0.0412700159 | 0.0741308170 | 0.0376202883 |
+| 20260717 | A0 identity | 5beab243 | 14 | 0.0388759156 | 0.0701439788 | 0.0355519350 |
+| 20260717 | A1 learned, backbone WD | 3891abf0 | 14 | 0.0413604840 | 0.0736955727 | 0.0378522285 |
+| 20260717 | A2 learned, zero FIR WD | ca682802 | 14 | 0.0413102935 | 0.0734866554 | 0.0378619576 |
+| 20260718 | A0 identity | 1072292b | 14 | 0.0389955225 | 0.0707359111 | 0.0355394369 |
+| 20260718 | A1 learned, backbone WD | 90fcb805 | 16 | 0.0412366426 | 0.0738522607 | 0.0376997784 |
+| 20260718 | A2 learned, zero FIR WD | d43f23fd | 14 | 0.0413373271 | 0.0740089486 | 0.0377912253 |
+
+Every selected epoch exactly reproduces the validation-NDCG argmax. Thirteen of
+18 selected epochs differ from the epoch having maximum observed test NDCG,
+which argues against an internal max-test selector. It does not establish
+blinding: test results are evaluated, printed and stored after every epoch.
+
+### Exploratory Six-Block Description Only
+
+No p-value, confidence interval, Holm decision, equivalence decision or
+confirmatory verdict is valid at this partial, outcome-visible cutoff.
+
+| Arm / contrast | Six seed values for NDCG@10 | Mean | Sample SD |
+|---|---|---:|---:|
+| A0 | 0.039462371, 0.039746406, 0.039306591, 0.039131554, 0.038875916, 0.038995522 | 0.039253060 | 0.000320435 |
+| A1 | 0.041699679, 0.042131657, 0.041313954, 0.041255532, 0.041360484, 0.041236643 | 0.041499658 | 0.000352721 |
+| A2 | 0.041556507, 0.042127711, 0.041331624, 0.041270016, 0.041310293, 0.041337327 | 0.041488913 | 0.000328686 |
+| A1 - A0 | +0.002237308, +0.002385251, +0.002007363, +0.002123977, +0.002484568, +0.002241120 | +0.002246598 | 0.000172186 |
+| A2 - A0 | +0.002094136, +0.002381305, +0.002025033, +0.002138462, +0.002434378, +0.002341805 | +0.002235853 | 0.000170768 |
+| A2 - A1 | -0.000143172, -0.000003946, +0.000017671, +0.000014484, -0.000050191, +0.000100684 | -0.000010745 | 0.000081240 |
+
+Descriptive secondary metrics agree:
+
+- A1-A0 mean HR@10 is +0.003421021 and MRR is +0.002033990.
+- A2-A0 mean HR@10 is +0.003403611 and MRR is +0.002028101.
+- A2-A1 is effectively zero: HR -0.000017410 and MRR -0.000005889.
+- Both learned-minus-identity NDCG differences are positive in all six blocks.
+- A2-A1 is positive in three blocks and negative in three.
+- A1's mean NDCG is 5.72% above the A0 mean, but relative percentages do not
+  establish practical significance or transportability.
+
+Seed 20260718 was not found in prior result filenames and its learned-minus-
+identity contrasts are consistent with the first five blocks. That weakens a
+claim that the pattern is solely an artifact of reused seed numbers. One exposed
+unused-seed block is still not an independent confirmatory replication.
+
+### Popularity-Stratum Interpretation
+
+The six-block A1-A0 difference is positive within every stratum:
+
+| Stratum | Users | Mean within-stratum NDCG difference | Weighted contribution | Share of aggregate |
+|---|---:|---:|---:|---:|
+| Tail | 8,800 | +0.000727830 | +0.000111508 | 4.96% |
+| Mid | 8,657 | +0.001592265 | +0.000239981 | 10.68% |
+| Head | 39,982 | +0.002722555 | +0.001895110 | 84.36% |
+
+Average additional HR@10 hits are about 14.17 tail, 23.33 mid and 159.00 head;
+80.92% of the extra hits are head hits. A2-A0 is similar: 4.94% tail, 10.16%
+mid and 84.90% head contribution. A positive tail rate is not the same as a
+tail-focused mechanism. If the paper centers tail utility, show absolute effects,
+cohort sizes, hit counts and aggregate contribution, and test a preregistered
+macro-stratum objective or tail-aware loss in an untouched study.
+
+### Integrity Checks That Passed
+
+The 18 completed summaries and their referenced artifacts remain internally
+coherent:
+
+- Configurations differ only in seed, output path, FIR mode and FIR-specific
+  weight decay.
+- All three arms share the same initialization hash within every seed; the six
+  seeds have six different initialization hashes.
+- Every run reports 11,186,046 total parameters, 57,439 evaluation users,
+  24,587 items, the same commit, branch, host/runtime/GPU and data/code hashes.
+- All 35 referenced sidecars predate the cutoff. Their actual SHA-256 values and
+  57,439-row counts match provenance.
+- Recomputed overall and popularity metrics match within 2.3e-15.
+- Every sidecar has sequential unique user IDs and exactly aligned user, target
+  and popularity-bucket identities across arms and seeds.
+- Popularity bucket counts are always 8,800 tail, 8,657 mid and 39,982 head.
+- A0 final tap L2 is exactly zero; all learned arms have nonzero final tap L2.
+- Seed-15 A1 selects epoch 20, so the selected sidecar also represents final.
+  Its null distinct-final path is coherent but schema-inconsistent; emit an
+  explicit final-equals-selected alias.
+- No warning, error, NaN, OOM or traceback occurs in the frozen log prefix.
+
+These checks rule out obvious file corruption, row misalignment and metric
+reconstruction failure. They do not repair outcome exposure, statistical
+misspecification, fixed-order confounding, checkpoint mismatch or incomplete
+provenance. Every summary still records git_dirty_tracked=true without dirty
+paths or a diff hash.
+
+### Confirmed Problem 1: Outcome Exposure Exceeds the Summary Count
+
+The 18 completed histories contain 360 validation and 360 test evaluations.
+The fixed log prefix additionally contains 12 completed epoch summaries from the
+unfinished nineteenth run, validation for its thirteenth epoch and the start of
+the next test pass. At cutoff:
+
+- 372 complete test outcomes had been printed;
+- 373 validation passes had completed;
+- another test pass was in progress; and
+- status still reported 18 because it updates only after the child exits.
+
+This directly contradicts no-interim-look wording and creates a human adaptation
+channel. Required handling remains:
+
+1. Finish the current family without changing arms, seeds, order, epochs,
+   stopping, exclusions, margin, analysis or sample size.
+2. Archive and label the entire family exploratory/outcome-visible.
+3. Disclose the first exposure time and who saw the streamed outcomes.
+4. Do not convert the final adjudicator output into confirmatory evidence.
+5. Confirm only with unused seeds, immutable execution and quarantined test
+   output.
+
+### Confirmed Problem 2: Matched Blocking Is the Primary Analysis
+
+Across six blocks:
+
+| Contrast | Cross-arm correlation | Paired SE | Independent-Welch SE | Welch / paired |
+|---|---:|---:|---:|---:|
+| A1 - A0 | 0.8735 | 0.00007029 | 0.00019455 | 2.77 |
+| A2 - A0 | 0.8619 | 0.00006972 | 0.00018740 | 2.69 |
+| A2 - A1 | 0.9740 | 0.00003317 | 0.00019683 | 5.93 |
+
+Independent Welch violates the common-seed/common-initialization dependence and
+discards most of the precision, especially for the two learned arms. CUDA
+nondeterminism adds within-block noise; it does not make observations independent.
+NIST's blocked-design guidance describes treatment comparison within blocks:
+https://www.itl.nist.gov/div898/handbook/pri/section3/pri332.htm.
+
+Do not repair the frozen rule after seeing outcomes and call the current run
+confirmatory. Report original and corrected analyses only as exploratory
+sensitivity. A new study should make paired seed contrasts primary, use an exact
+2^8 sign-flip/randomization sensitivity, paired TOST/equivalence, Holm control
+across the three contrasts and power based on paired-difference SD. Users are
+measurement rows, not independent treatment assignments.
+
+### Confirmed Problem 3: Endpoint and Mechanism Refer to Different Models
+
+Selected epochs are:
+
+- A0: 16, 18, 13, 12, 14, 14;
+- A1: 13, 16, 20, 11, 14, 16; and
+- A2: 13, 16, 19, 11, 14, 14.
+
+Seventeen of 18 endpoints differ from epoch 20; 11/12 learned endpoints differ.
+Selected-minus-final mean NDCG is -0.000050039 for A0, +0.000226526 for A1 and
++0.000185351 for A2. Four important contrasts therefore depend on checkpoint:
+
+| Contrast | Selected-checkpoint mean | Epoch-20 mean |
+|---|---:|---:|
+| A1 - A0 | +0.002246598 | +0.001970033 |
+| A2 - A0 | +0.002235853 | +0.002000463 |
+| A2 - A1 | -0.000010745 | +0.000030430 |
+
+Yet the trainer saves no model checkpoint. It retains selected metrics and
+sidecars in memory, then extracts FIR L2 and absolute lag profiles from epoch 20.
+A2's final L2 exceeds A1 by a consistent mean 0.04613 while selected ranking is
+indistinguishable. The norm change is not evidence of benefit.
+
+Required:
+
+- save and hash the best-validation model, optimizer and RNG state atomically;
+- restore that checkpoint before the only held-out test pass;
+- extract signed taps, lag mapping, norm, gradients/moments, residual/input norm,
+  activations and impulse/frequency response from the selected model;
+- report final-only diagnostics separately as trajectory evidence; and
+- bind every endpoint, sidecar and figure to its checkpoint hash.
+
+### Confirmed Problem 4: Evaluation Dominates Runtime
+
+For the first 18 completed runs, the prefix records:
+
+- 11,250.0 seconds in validation/test evaluation;
+- 2,097.2 seconds in training epochs;
+- 13,347.2 seconds of logged core work; and
+- 84.29% of core time in evaluation.
+
+Test alone consumed 5,641.1 seconds, or 42.26% of core time. Keep per-epoch
+validation, checkpoint its winner and test once:
+
+- remove 342 redundant test passes from the 18 completed runs;
+- save about 5,359 seconds, or 89.32 GPU-minutes, already;
+- project about 119.09 GPU-minutes saved over 24 runs; and
+- reduce planned test exposure from 480 outcomes to 24.
+
+Status elapsed 225.4 minutes after 18 completed runs is 12.522 minutes/run,
+projecting about 5.01 hours rather than the registered approximately four hours:
+a 25.2% operations-budget miss.
+
+### Confirmed Problem 5: Fixed Order Meets Runtime Drift
+
+Every block is A0, then A1, then A2, giving average arm positions of about
++12.52 and +25.04 minutes. The newest evidence is no longer flat:
+
+- run 18, A2 seed 20260718, logged 839.6 seconds of evaluation plus training,
+  14.12% above the runs-1--17 mean of 735.74 seconds;
+- the last block averaged 774.17 seconds/run, 5.33% above the first five blocks'
+  734.98 seconds/run.
+
+This does not prove a quality bias: the metrics may be robust to the slowdown.
+It does prove that treatment is inseparable from system time and that a prior
+claim of stable runtime no longer holds. No GPU temperature, utilization, clock,
+power, memory or competing-load telemetry exists.
+
+For confirmation, freeze a Latin-square or randomized arm schedule before launch,
+log per-run telemetry, hold background load constant and include start/end UTC
+and hardware state in the immutable family manifest.
+
+### Confirmed Problem 6: Program, Preregistration and Execution Diverge
+
+The program describes a learned/identity by WD-on/off factorial, a secondary gate
+factor, one cloned backbone checkpoint, identical parameter groups, five fresh
+seeds, per-step gradients/moments/responses/FLOPs and all checkpoints. Execution
+has three cells, no gate factor, independently reconstructed matched states,
+eight seeds, final-only tap summaries and no checkpoint.
+
+Additional contradictions:
+
+- A2 has two optimizer groups while A0/A1 have one, contrary to identical
+  parameter-group wording.
+- Total-parameter reporting hides that A0 has exactly 1,024 fewer trainable FIR
+  coefficients.
+- Seeds 20260713--20260717 occur in tracked prior FIRB result filenames.
+- The margin rationale calls +0.0032 the historical FIR-package lift, while
+  manuscript Table 1c identifies +0.0032 as FIR plus label smoothing and +0.0025
+  as the FIR package. A margin of 0.0008 is 32%, not 25%, of the relevant lift.
+- No-interim-look wording is operationally false.
+
+Rename the executable design a three-arm exploratory ablation. Correct the margin
+rationale with an external scientific SESOI, record trainable counts and exact
+optimizer groups/numeric weight decay, and preregister the actual design before
+collecting untouched outcomes.
+
+### Confirmed Problem 7: Execution and Adjudication Are Not Fail-Closed
+
+The driver:
+
+- reopens mutable trainer/reference files between runs;
+- has no immutable launch plan, clean-HEAD/environment gate or family/GPU lock;
+- writes status and summaries directly rather than atomically;
+- skips any existing path without JSON/schema/config/hash/sidecar validation;
+- performs no per-job GPU telemetry despite the program;
+- ignores preflight help return code/stderr/encoding and uses substring checks;
+- can write final state complete after a child failure; and
+- reports invocation-local ran/skipped counts rather than validated family state.
+
+The adjudicator:
+
+- uses independent Welch as primary;
+- validates only a small config subset;
+- does not reject extra family files or non-finite JSON;
+- accepts empty shared initialization hashes;
+- returns t=0, p=1, infinite df for unequal zero-SE samples;
+- silently substitutes a normal approximation if SciPy is missing;
+- omits full reference/argv/data/code/environment/history/endpoint/sidecar/hash
+  gates; and
+- labels any tiny significant W-POS effect mechanistic support before considering
+  practical relevance.
+
+Use one canonical strict schema; temporary files plus flush/fsync and atomic
+rename; exclusive locks; validate-before-skip resume; explicit aborted and
+complete-with-failures states; pinned exact statistical routines; finite/domain
+checks; full input inventory; separate statistical-difference and practical-
+relevance decisions; and a timestamped adjudication hash.
+
+### Confirmed Problem 8: The Experiment Is Outside the Release Boundary
+
+The current manifest's normalized trainer hash matches, and a fresh
+verify-git HEAD check passes all 138 selected entries. Its intended
+v1.1.11-deposit check still fails 17 entries. More importantly, the manifest
+omits the preregistration, program, E-A driver, adjudicator, reference config,
+order, results, sidecars, log, status and eventual adjudication. Summaries are
+untracked; sidecars are ignored.
+
+Freeze an append-only family inventory containing:
+
+- preregistration timestamp/hash, campaign ID and external SESOI rationale;
+- commit, clean/dirty diff, full code/config/split/cache/environment hashes;
+- trainable parameter counts, optimizer groups and exact run order;
+- per-run start/end UTC, exit state, log and telemetry hashes;
+- selected-checkpoint, selected/final sidecar and summary hashes; and
+- one exact adjudication input inventory and output hash.
+
+### Novelty and Citation Fact-Check
+
+This hour's primary-source search confirms that the manuscript has already cited
+the strongest causal-convolution precedent:
+
+- [C3SASR](https://arxiv.org/abs/2211.01297) explicitly combines cheap causal
+  convolution with self-attention in sequential recommendation. The manuscript
+  cites it and appropriately narrows the claim to its zero-init gated,
+  left-causal depthwise FIR placement under an HSTU-style all-position objective.
+- [FMLP-Rec](https://arxiv.org/abs/2202.13556) already establishes learnable
+  frequency filtering for sequential recommendation.
+
+The remaining omission is material:
+
+- [Let It Go? Not Quite](https://arxiv.org/abs/2507.19473) freezes content
+  embeddings and adds a small trainable delta; prior full-method inspection found
+  SASRec, five-seed multi-dataset experiments and rare/cold-item analysis. TAPE's
+  shared soft prototypes differ from a bounded per-item correction, but the broad
+  frozen-content-plus-trainable-residual space is occupied.
+- [WPGRec](https://arxiv.org/abs/2604.21305) adds multiresolution wavelet-packet
+  temporal modeling and adaptive subband fusion.
+- [AlphaFuse](https://arxiv.org/abs/2504.19218), FAERec
+  (https://arxiv.org/abs/2604.03688) and AKT-Rec
+  (https://arxiv.org/abs/2605.23310) add frozen-language/collaborative fusion and
+  long-tail pressure.
+
+No exact duplicate of the narrow causal-FIR/TAPE realization was identified.
+The defensible contribution remains incremental and empirical. It requires
+causalized FMLP/BSARec-style baselines, the omitted frozen-content residual
+comparator, parameter-matched controls, identical objectives/protocols and clean
+cross-category replication.
+
+### Manuscript, Public, Release and PDF Delta
+
+No committed manuscript, TeX, bibliography, table, figure, companion, metadata
+or PDF byte changed from f2963ada. Prior confirmed problems remain:
+
+- historical FIR attribution exceeds a singular initialization/optimizer package;
+- refutation, mechanism, density and all-four language conflicts across surfaces;
+- literal closure/H10 gates omit or miss paraphrased/generator/public claims;
+- the reviewer deposit is stale and the experiment family is ungoverned;
+- the approximately 26k-word main body reads as an audit diary;
+- author, policy, disclosure and redistribution facts are unresolved.
+
+The PDFs remain byte-identical:
+
+| Artifact | SHA-256 | Pages | Carried-forward visual result |
+|---|---|---:|---|
+| PAPER_SUBMISSION.pdf | 3595059a05f29a02612fbae28820fcaceeb9281eb03b576c48611791b63bb354 | 56 | caption split pp.28--29; near-empty p.56; tiny tables; incomplete metadata |
+| paper_tex/PAPER_TORS.pdf | 9308005466907386fcb3ed0bfaf5e94abc808ee897180d1830d5ff8d28e1b366 | 49 | untagged; placeholders; tiny content; stale claims |
+| paper_tex/PAPER_TORS_acmsmall.pdf | f050ed849cf9d27b9e70d3f99866e0748afff2e1f8b05c0f5f307e26fb40f407 | 51 | untagged; placeholders; bare DOI and Article furniture |
+
+Because every PDF, source and figure byte is unchanged, re-rendering cannot
+reveal a new layout state. The prior full 156-page visual inspection applies
+exactly. The PDF workflow therefore created no new render tree this hour.
+
+### Concrete Algorithm and Experimental Repairs
+
+1. **Test once.** Validate each epoch, atomically save the validation winner,
+   freeze every decision, restore it and run one quarantined held-out test.
+2. **Use blocked inference.** Make paired seed contrasts primary, with exact
+   sign-flip sensitivity, paired equivalence and multiplicity control.
+3. **Counterbalance order.** Freeze a Latin square/random schedule and collect
+   GPU temperature, clocks, utilization, power, memory and load telemetry.
+4. **Match capacity.** Add a trainable 1,024-parameter non-temporal placebo to
+   distinguish FIR structure from generic trainable capacity.
+5. **Separate development from confirmation.** Do not choose A1 or A2 from the
+   exposed near-tie. Use an a priori default or a separate development study.
+6. **Save the actual model.** Bind selected checkpoint, optimizer/RNG state,
+   signed taps, response and sidecars with hashes.
+7. **Optimize streaming inference.** Maintain a K-step ring buffer for O(Kd)
+   causal updates and O(Kd) state; benchmark grouped Conv1d against a fused
+   rolling-window kernel.
+8. **Remove allocation waste.** Preallocate buffers; avoid repeated
+   pad/transpose/copy; document device, dtype and memory layout.
+9. **Verify numerics.** Test offline/streaming equality, state reset, masks,
+   checkpoint reload, no-future Jacobian dependence, impulse response and mixed-
+   precision finite gradients.
+10. **If tail is central, optimize it honestly.** Predeclare a macro-stratum
+    objective or tail-aware loss and test it on untouched seeds/categories.
+11. **Benchmark the full tradeoff.** Report total/trainable parameters,
+    MACs/FLOPs, memory, throughput, p50/p95 latency, energy and wall time for
+    identity, FIR, placebo and closest comparators.
+
+### Figure and Table Repairs
+
+After a clean replication, build:
+
+- a paired seed slope plot with every block and actual arm order;
+- a paired-contrast forest plot with adjusted intervals and justified SESOI;
+- a system-time/run-order panel aligned with GPU telemetry;
+- selected-versus-final endpoint differences;
+- signed selected-checkpoint tap heatmaps and impulse/frequency responses;
+- absolute tail/mid/head effects with cohort sizes, hit counts and aggregate
+  shares;
+- validation curves with selected epochs marked and no test curves in tuning
+  displays;
+- a compute-quality Pareto plot; and
+- one provenance table linking every number to summary, sidecar, checkpoint,
+  config, code and environment hashes.
+
+Use vector output, colorblind-safe palettes, direct labels, readable final-size
+type, alt text/tagging and captions that name estimand, unit, uncertainty,
+multiplicity and evidence status. Do not put partial E-A values into submission
+figures.
+
+### Writing and Submission Repairs
+
+- Cut the main body to a 10--14k scientific narrative; move audit chronology,
+  retractions, gate transcripts and operational logs to a supplement.
+- Rewrite the abstract around problem, narrow method, estimand, datasets,
+  uncertainty and bounded conclusion; remove workflow self-praise.
+- Call E-A a three-arm exploratory ablation and disclose outcome exposure,
+  reused seeds, fixed order, runtime drift and analysis correction.
+- State experimental unit, block, endpoint, SESOI and multiplicity once.
+- Replace PASS, confirmed, refuted, mechanism, causal share and complete-
+  attribution language with estimates, intervals and scope.
+- Separate historical package evidence from the redesigned FIR study.
+- Add Let It Go? Not Quite to Related Work and the novelty matrix.
+- Generate manuscript, tables, captions, public companion and metadata from one
+  typed existence-checked claim registry.
+- Select a target journal only after current length, scope, review mode,
+  artifact, AI-disclosure, accessibility and supplement requirements are checked.
+
+### Author, Policy and Legal Verification
+
+**AUTHOR/INSTITUTION/LEGAL VERIFICATION:** author identity/order, affiliation,
+country, contact, ORCID, funding, conflicts, manuscript-level GenAI/automation
+disclosure and redistribution authority cannot be established from the workspace.
+
+Obtain institutional confirmation of names/order and approval, affiliation and
+contact/ORCID, funding/conflicts, AI/automation disclosure, originality and
+simultaneous-submission status, privacy/ethics, all data/model/code licenses,
+derived-data redistribution and the exact target venue/article/anonymity policy.
+
+### Open Questions
+
+1. Will the final six jobs finish without scientific or operational adaptation,
+   and will the entire family remain exploratory?
+2. Who viewed the 372 test outcomes, including the incomplete nineteenth run?
+3. What caused the 14.12% runtime increase on run 18, and did GPU state change?
+4. Why were five previously used seeds called fresh?
+5. What external scientific basis supports the 0.0008 margin after correcting
+   the 0.0032-versus-0.0025 denominator?
+6. Will confirmation use unused seeds, paired inference, counterbalanced order,
+   immutable execution and test quarantine?
+7. Will selected checkpoints and selected-model mechanism diagnostics be saved?
+8. Can a parameter-matched placebo separate FIR structure from added capacity?
+9. Will Let It Go? Not Quite and causalized filtering baselines receive
+   same-protocol comparisons?
+10. Will the release inventory govern this experiment family from launch through
+    adjudication?
+11. Who can attest identity, disclosures, licensing and submission facts?
+
+### Running Checklist
+
+- [x] Freeze an 18-summary boundary and exact 506,314-byte live-log prefix.
+- [x] Separate incomplete run-19 exposure from eligible endpoint analysis.
+- [x] Validate 18 configs, matched initialization/data/code fields and 35
+      sidecars.
+- [x] Recompute endpoints, aggregate/popularity metrics and row alignment.
+- [x] Describe six complete blocks without confirmatory inference.
+- [x] Quantify paired covariance, SE loss, stratum contribution and endpoint drift.
+- [x] Audit 372 test outcomes, timing, fixed order, runtime drift and stale status.
+- [x] Reaudit driver, resume, checkpoint, program and adjudicator semantics.
+- [x] Recheck primary causal-convolution/filter/text-residual novelty sources.
+- [x] Rerun manifest verify-git for HEAD and the declared deposit tag.
+- [x] Verify no manuscript/public/release/PDF byte delta.
+- [ ] Finish the current family unchanged and archive it as exploratory.
+- [ ] Preserve a full immutable final inventory and original adjudication.
+- [ ] Preregister an unused-seed, paired, counterbalanced, blinded replication.
+- [ ] Save selected checkpoints and signed selected-model diagnostics.
+- [ ] Implement atomic validated resume, locks, telemetry and fail-closed
+      adjudication.
+- [ ] Add parameter-matched and closest-literature comparators.
+- [ ] Rewrite/regenerate all manuscript and public surfaces from typed claims.
+- [ ] Complete clean-clone release, author/policy/legal verification and
+      accessible PDF sign-off.
+
+### Files Changed and Serious Contradictions
+
+This audit intentionally changes only PAPER_REVIEW_AUDIT.md. It does not edit the
+running campaign, results, sidecars, log, manuscript, source, figures or PDFs.
+Newly sharpened contradictions are:
+
+- status says 18 while the log exposes 12 test outcomes from run 19;
+- no-interim-look wording versus 372 printed test outcomes;
+- matched execution versus independent Welch primary;
+- selected endpoints versus final-only FIR diagnostics and no checkpoint;
+- selected A2-A1 below zero versus final A2-A1 above zero;
+- fixed treatment order versus newly visible runtime drift;
+- a claimed factorial/identical-group design versus three cells and unequal
+  optimizer groups;
+- the margin's claimed 25% basis versus 32% of the relevant package lift; and
+- coherent result artifacts versus exclusion from the reviewer-facing release
+  boundary.
+
+## Audit Run - 2026-07-22 20:56 Australia/Sydney
+
+### Review Verdict
+
+**Recommendation: reject / not ready for top-journal submission.** At the fixed
+cutoff, the exploratory E-A queue had produced 14 of 24 summaries: four complete
+A0/A1/A2 seed blocks plus A0 and A1 for seed 20260717. The learned FIR arms are
+descriptively above identity in every complete block and every popularity
+stratum, while the two FIR weight-decay variants are almost indistinguishable.
+That is promising implementation evidence, not confirmatory evidence. Outcomes
+were visible before the planned adjudication, only 4/8 three-arm blocks were
+complete, five seeds had prior result use despite being called fresh, and the
+frozen primary analysis violates the deliberately matched design.
+
+The new block makes the analysis defect harder to dismiss. Across four complete
+blocks, A0/A1 NDCG correlation is 0.976. Independent Welch gives a descriptive
+SE almost three times the paired SE. It also strengthens the checkpoint mismatch:
+13 of 14 endpoints, including eight of nine learned endpoints, are selected
+before epoch 20, but all FIR mechanism diagnostics describe epoch 20. The tiny
+A2-A1 contrast changes sign between selected and final checkpoints.
+
+No manuscript, TeX, bibliography, figure, public page, release metadata or PDF
+changed. The partial results therefore cannot repair the paper's historical FIR
+attribution, tail-mechanism, claim-parity, novelty, release, writing, visual,
+identity or legal blockers.
+
+Status labels in this section mean:
+
+- **CONFIRMED**: reproduced from the fixed commit and eligible file set, exact
+  hashes, independent calculations, code, the frozen log prefix or unchanged
+  rendered artifacts.
+- **PLAUSIBLE RISK**: a supported reviewer concern requiring a completed
+  experiment, environmental evidence, external replication or venue decision.
+- **AUTHOR VERIFICATION**: cannot be established from the workspace.
+- **POST-CUTOFF EXCLUDED**: created or completed after the frozen boundary and
+  not used in this audit.
+
+### Fixed Snapshot and Scope
+
+| Item | Audited value |
+|---|---|
+| Heartbeat | 2026-07-22T10:56:10.738Z |
+| Fixed filesystem cutoff | 2026-07-22T20:56:57.1669538+10:00 (10:56:57.1669538Z) |
+| Branch | codex/bestrec-sota-results |
+| HEAD / upstream / merge base | f2963ada2ed5202944679964c7fc2de94ab6e267 |
+| Previous audited HEAD | f2963ada2ed5202944679964c7fc2de94ab6e267 |
+| Tracked state | only PAPER_REVIEW_AUDIT.md modified by the cumulative audit |
+| Eligible E-A state | running; 14/24 summaries, 0 skipped, 0 failed, 173.5 minutes |
+| Complete blocks | seeds 20260713 through 20260716 |
+| Incomplete block | seed 20260717 A0/A1 only |
+| Eligible sidecars | 27 referenced gzip files: 14 selected and 13 distinct final |
+| Post-cutoff boundary | A2 seed 20260717 and all later output are excluded |
+
+The fixed live-log prefix is exactly 381,119 bytes with SHA-256
+b51cbf616c1a43a5faacd2f2cb772834e56040652ec6cce5f254d055b60ca645.
+It contains 14 complete runs and only the start marker for run 15 afterward.
+This byte boundary is necessary because size and modification-time metadata for
+an open Windows log can lag its readable content. The eligible summary names and
+hashes were frozen independently; no post-cutoff result was read.
+
+### Eligible Result Inventory
+
+| Seed | Arm | Summary SHA-256 prefix | Best epoch | Test NDCG@10 | HR@10 | MRR |
+|---:|---|---|---:|---:|---:|---:|
+| 20260713 | A0 identity | bfc0fd48 | 16 | 0.0394623706 | 0.0706836818 | 0.0360761392 |
+| 20260713 | A1 learned, backbone WD | 25a39093 | 13 | 0.0416996788 | 0.0746531103 | 0.0379756432 |
+| 20260713 | A2 learned, zero FIR WD | d2148fac | 13 | 0.0415565070 | 0.0745138321 | 0.0378353945 |
+| 20260714 | A0 identity | 6fa46553 | 18 | 0.0397464061 | 0.0710841066 | 0.0363448710 |
+| 20260714 | A1 learned, backbone WD | d4580e65 | 16 | 0.0421316569 | 0.0754539599 | 0.0382553460 |
+| 20260714 | A2 learned, zero FIR WD | c59847c0 | 16 | 0.0421277111 | 0.0754191403 | 0.0382641611 |
+| 20260715 | A0 identity | 16e18323 | 13 | 0.0393065907 | 0.0709274187 | 0.0359898866 |
+| 20260715 | A1 learned, backbone WD | 2869befc | 20 | 0.0413139535 | 0.0733647870 | 0.0379344574 |
+| 20260715 | A2 learned, zero FIR WD | abaa1bd3 | 19 | 0.0413316241 | 0.0734518359 | 0.0379216251 |
+| 20260716 | A0 identity | e797b25a | 12 | 0.0391315543 | 0.0710144675 | 0.0356237787 |
+| 20260716 | A1 learned, backbone WD | a3e0dab5 | 11 | 0.0412555317 | 0.0740959975 | 0.0376125332 |
+| 20260716 | A2 learned, zero FIR WD | 2f897972 | 11 | 0.0412700159 | 0.0741308170 | 0.0376202883 |
+| 20260717 | A0 identity | 5beab243 | 14 | 0.0388759156 | 0.0701439788 | 0.0355519350 |
+| 20260717 | A1 learned, backbone WD | 3891abf0 | 14 | 0.0413604840 | 0.0736955727 | 0.0378522285 |
+
+The endpoint is the test record at the validation-NDCG argmax. Recomputing all
+20 history rows reproduces every selected epoch and metric. Ten of 14 selected
+epochs are not the test-NDCG maximum, which is evidence against an internal
+max-test selector. It is not evidence of outcome blinding: every test curve was
+printed and retained. Thirteen selected epochs are not epoch 20.
+
+### Exploratory Matched-Block Description Only
+
+No p-value, interval, Holm decision, equivalence decision or confirmatory verdict
+is valid at this partial, outcome-visible cutoff. The table below uses only the
+four complete three-arm blocks:
+
+| Arm / contrast | Seed values for NDCG@10 | Mean | Sample SD |
+|---|---|---:|---:|
+| A0 | 0.039462371, 0.039746406, 0.039306591, 0.039131554 | 0.039411730 | 0.000260848 |
+| A1 | 0.041699679, 0.042131657, 0.041313954, 0.041255532 | 0.041600205 | 0.000405412 |
+| A2 | 0.041556507, 0.042127711, 0.041331624, 0.041270016 | 0.041571465 | 0.000390738 |
+| A1 - A0 | +0.002237308, +0.002385251, +0.002007363, +0.002123977 | +0.002188475 | 0.000161314 |
+| A2 - A0 | +0.002094136, +0.002381305, +0.002025033, +0.002138462 | +0.002159734 | 0.000154912 |
+| A2 - A1 | -0.000143172, -0.000003946, +0.000017671, +0.000014484 | -0.000028741 | 0.000076880 |
+
+Descriptive secondary metrics are directionally similar:
+
+- A1-A0 mean HR@10 is +0.003464545 and mean MRR is +0.001935826.
+- A2-A0 mean HR@10 is +0.003451488 and mean MRR is +0.001901698.
+- A2-A1 remains close to zero: HR -0.000013057 and MRR -0.000034128.
+- A2's final tap L2 exceeds A1 by a stable approximately 0.046, but selected
+  ranking outcomes are indistinguishable. Larger final norm is not performance
+  evidence.
+
+Seed 20260717 is a valid A0/A1 matched pair but an incomplete three-arm block, so
+it is kept outside the table and every family-level summary. Its eligible
+descriptive A1-A0 difference is +0.002484568 overall, with tail +0.000796281,
+mid +0.001383830 and head +0.003094493. Do not combine this pair with the
+four-block three-contrast analysis or interpret it before A2 is frozen.
+
+### Popularity-Stratum Interpretation
+
+The four-block A1-A0 result is positive within every stratum, but the aggregate
+gain is overwhelmingly head-contributed:
+
+| Stratum | Users | Mean within-stratum NDCG difference | Weighted contribution | Share of aggregate |
+|---|---:|---:|---:|---:|
+| Tail | 8,800 | +0.000701789 | +0.000107518 | 4.91% |
+| Mid | 8,657 | +0.001634488 | +0.000246344 | 11.26% |
+| Head | 39,982 | +0.002635643 | +0.001834612 | 83.83% |
+
+The corresponding mean extra HR@10 hits are about 14.75 tail, 22.75 mid and
+161.50 head, or 199 in total. A2-A0 is nearly identical: about 4.96% tail,
+11.16% mid and 83.89% head. Relative tail percentages can look large because the
+tail baseline is tiny. The current files do not support a strong tail-specific
+FIR mechanism; plots must show absolute effects, cohort sizes, hit counts and
+aggregate contribution.
+
+### Integrity Checks That Passed
+
+The cutoff-eligible artifacts are internally coherent:
+
+- After removing seed, output path, FIR mode and FIR-specific weight decay, all
+  configurations have canonical common-config SHA-256
+  23b7b650b88fbd0a25f55519824c7d5ae3675cf25033c1d0763c98940f054977.
+- Treatment settings are exactly A0 frozen/backbone, A1 learned/backbone and A2
+  learned/zero, all K=16 with the legacy filter disabled.
+- Initialization hashes match exactly across arms within all four complete seeds
+  and across the eligible A0/A1 seed-17 pair.
+- Every run reports 11,186,046 total parameters, 57,439 evaluation users,
+  24,587 items, the same commit, host/runtime/GPU and data hashes.
+- All 27 referenced gzip files exist. Actual SHA-256 values and 57,439-row counts
+  match provenance. A1 seed 20260715 selects epoch 20, so its final path is
+  coherently null rather than a missing distinct sidecar.
+- Independently recomputed NDCG@10, HR@10 and MRR agree to floating-point
+  precision. Rank-to-metric formulas, popularity aggregates and finite-value
+  checks pass.
+- Ordered user, target and popularity identities agree across every eligible
+  arm and seed; their common fingerprint is
+  caf288255ced14b3cdf08d3852414a3f1e1e44732d148d00a24d6cbc20b8b89f.
+- Actual train/validation/test row counts are 396,958/57,439/57,439 and their
+  hashes, the cache hash and the three listed code hashes match provenance.
+- A0 final tap L2 is exactly zero; every learned arm has nonzero final tap L2.
+- The frozen log prefix contains no warning, error, NaN, OOM or traceback.
+
+These passes rule out several mundane corruption explanations. They do not
+repair prospectivity, the wrong statistical unit/model, fixed-order confounding,
+checkpoint mismatch or incomplete provenance. Every summary records
+git_dirty_tracked=true without identifying the dirty paths or diff hash.
+
+### Confirmed Problem 1: Outcome Visibility Has Worsened
+
+The frozen log contains exactly 280 validation evaluations and 280 full-test
+evaluations across 14 runs, plus 14 best-endpoint disclosures. The summaries
+retain all 20 test records. This conflicts with the preregistration's no-interim-
+looks rule and creates a human adaptation/selective-reporting channel even though
+the code selects the endpoint by validation.
+
+Required handling:
+
+1. Preserve and finish the present family without changing arms, seeds, order,
+   epochs, stopping, exclusions, margin, analysis or sample size.
+2. Label the complete family exploratory/outcome-visible and disclose when
+   outcomes first became visible.
+3. Do not turn the planned adjudicator output into confirmatory evidence merely
+   because all 24 jobs eventually finish.
+4. For confirmation, use genuinely unused seeds, an immutable launch,
+   counterbalanced arm order and quarantined test output.
+
+### Confirmed Problem 2: The Primary Analysis Discards the Block
+
+Across four blocks, A0/A1 NDCG correlation is 0.9758 and A0/A2 is 0.9650.
+These estimates are unstable at n=4, but they demonstrate strong seed co-movement.
+For A1-A0, independent Welch has descriptive SE 0.00024104 while the paired
+SE is 0.00008066, a ratio of 2.99. CUDA nondeterminism adds noise inside a block;
+it does not make the common-seed, common-initialization observations independent.
+
+NIST's blocked-design guidance describes treatment comparison within blocks:
+https://www.itl.nist.gov/div898/handbook/pri/section3/pri332.htm.
+
+Do not change the rule after exposure and call this run confirmatory. Report the
+frozen and corrected analyses only as exploratory sensitivity. For a new
+replication, predeclare seed-block paired contrasts, an exact 2^8 sign-flip or
+randomization sensitivity, paired TOST/equivalence and Holm control across the
+three paired contrasts. Power from the paired-difference SD. The 57,439 user
+rows are measurements, not independent treatment assignments.
+
+### Confirmed Problem 3: Mechanism Diagnostics Describe Another Model
+
+Selected epochs for the four complete blocks are:
+
+- A0: 16, 18, 13 and 12;
+- A1: 13, 16, 20 and 11; and
+- A2: 13, 16, 19 and 11.
+
+Eight of nine eligible learned endpoints differ from epoch 20. Yet tap L2 and
+lag profiles are read only from the live final model, and no best-validation
+checkpoint is saved. Across four blocks:
+
+| Contrast | Selected checkpoint mean | Epoch-20 mean |
+|---|---:|---:|
+| A1 - A0 | +0.002188475 | +0.001952989 |
+| A2 - A0 | +0.002159734 | +0.001987251 |
+| A2 - A1 | -0.000028741 | +0.000034261 |
+
+The small weight-decay contrast changes sign. Seed-17 A1 is especially clear:
+selected epoch 14 NDCG is 0.041360484, while epoch 20 is 0.040676505, a decline
+of 0.000683979. Final taps cannot explain the analyzed endpoint.
+
+Required repair:
+
+- atomically save and hash the full best-validation checkpoint;
+- restore it before the sole held-out test pass;
+- extract signed per-channel taps, L2, first-step and selected-step gradients,
+  optimizer moments, residual/input norm, activations and impulse/frequency
+  response from that checkpoint;
+- label final diagnostics separately as trajectory evidence; and
+- specify lag order and coefficient signs in the schema.
+
+### Confirmed Problem 4: Test-Once Is Faster and Cleaner
+
+The fixed prefix gives mean evaluation costs of 15.428 seconds for validation and
+15.495 seconds for test. Keep validation each epoch, save the best checkpoint,
+then test it once:
+
+- 19 full-test passes removed per run;
+- about 4,121.5 seconds, or 68.69 GPU-minutes, saved over the 14 eligible runs;
+- about 117.76 GPU-minutes saved over all 24 planned runs; and
+- planned test exposure reduced from 480 evaluations to 24.
+
+Observed inter-completion intervals are 738.685--749.710 seconds, averaging about
+12.39 minutes. That projects near 4.96 hours for 24 runs, not the registered
+approximately four hours. There is no gross slowdown in the prefix, but runtime
+budgeting should be corrected.
+
+### Confirmed Problem 5: Order, Resume, Status and Provenance Are Unsafe
+
+Every seed runs A0, then A1, then A2, so arm is confounded with approximately
++12.4 and +24.8 minutes of wall-clock position. Stable intervals do not remove
+that confound, and the log has no GPU temperature, utilization, clock, power,
+memory or competing-load telemetry. Freeze a Latin-square/counterbalanced order
+before the replication and record telemetry.
+
+The execution path also remains non-evidence-grade:
+
+- resume skips any existing pathname without parsing or validating JSON, schema,
+  config, hashes, sidecars or campaign identity;
+- summary and status writes are direct, non-atomic and unlocked;
+- a killed partial output can be treated as complete forever;
+- no exclusive family/GPU lock prevents concurrent drivers;
+- mutable code and reference config are reread between sequential jobs;
+- a subprocess failure can still leave final status labeled complete;
+- ran/skipped are invocation-local rather than family-completeness counts;
+- preflight ignores help return code/stderr and checks substrings rather than
+  parsed values; and
+- a single shared open log lacks embedded start/end and prefix attestations.
+
+Use an immutable worktree/container, normalized signed command/config manifest,
+explicit UTF-8, exclusive locks, temporary run directories, flush/fsync plus
+atomic rename, validate-before-skip resume, closed per-run logs and explicit
+running/aborted/complete-with-failures/complete states.
+
+### Confirmed Problem 6: Program and Adjudicator Are Not Fail-Closed
+
+The experiment program promises five seeds, a cloned checkpoint, gate/factorial
+work, per-step gradients, optimizer moments, responses, FLOPs and all
+checkpoints. The actual preregistration uses eight seeds, three arms, newly
+constructed same-seed states and final-only tap summaries. Identity plus zero
+FIR WD is absent and structurally degenerate because identity taps are frozen.
+Call this a three-arm ablation, not a 2x2 factorial.
+
+The adjudicator:
+
+- uses independent Welch despite common-random-number blocks;
+- returns p=1 when SE is zero even for unequal constant samples;
+- silently substitutes a normal approximation if SciPy is unavailable;
+- lacks finite/NaN and domain checks;
+- does not enforce exactly the frozen 24 inputs;
+- does not validate full config, endpoint/history consistency, n-eval,
+  provenance, dirty diff, code/data hashes or sidecar hashes;
+- omits its promised paired t; and
+- lets W-POS/W-NEG precede practical-equivalence logic, conflating statistical
+  difference with practical relevance.
+
+Build one canonical strict schema. Pin or internally implement the statistical
+environment, fail closed, recompute endpoints and hashes from source artifacts,
+separate difference from SESOI decisions and emit a timestamped immutable input
+inventory plus adjudication hash.
+
+### Confirmed Problem 7: Release Boundary Excludes the Experiment
+
+All 14 summaries, the status file and log are untracked; user sidecars are
+ignored. Stored code provenance covers the trainer and two legacy scripts but
+omits the actual E-A driver, adjudicator, preregistration, reference config,
+environment lock and dirty diff. The current release manifest verifies 138
+entries against HEAD, but its named v1.1.11-deposit target has 17 mismatches.
+
+Create an append-only experiment-family inventory containing:
+
+- preregistration timestamp/hash and immutable campaign ID;
+- commit, clean/dirty diff, environment and hardware identity;
+- full code, config, split, cache and command-plan hashes;
+- frozen counterbalanced run order;
+- start/end UTC, exit state, per-run log and telemetry hashes;
+- selected-checkpoint and selected/final sidecar hashes; and
+- one exact result inventory and adjudication hash.
+
+### Novelty and Citation Fact-Check
+
+The manuscript already acknowledges that learnable filtering and frequency-domain
+motivation are not new. [FMLP-Rec](https://arxiv.org/abs/2202.13556) introduced
+learnable frequency filters for sequential recommendation and reports eight
+datasets. The defensible FIR claim is therefore a narrow causal implementation
+and evaluation claim, not a new filtering paradigm.
+
+The claimed complete attribution table still omits
+[Let It Go? Not Quite](https://arxiv.org/abs/2507.19473). Its primary abstract
+explicitly freezes content-derived embeddings and adds a small trainable delta to
+adapt them while limiting drift. Full-method inspection in the prior audit found
+SASRec, five-seed multi-dataset experiments and rare/cold-item analysis. TAPE is
+different because it learns shared soft-cluster prototypes rather than a bounded
+per-item correction, but the broad frozen-content-plus-trainable-residual space
+is occupied. Add a direct citation, a precise difference table and preferably a
+same-protocol comparator.
+
+Further current pressure remains:
+
+- [WPGRec](https://arxiv.org/abs/2604.21305) uses multiresolution wavelet-packet
+  temporal modeling, graph propagation and adaptive subband fusion; its primary
+  page reports four benchmarks and SIGIR 2026 acceptance.
+- [AlphaFuse](https://arxiv.org/abs/2504.19218) preserves language semantics
+  while injecting collaborative ID information and evaluates long-tail/cold-start
+  settings.
+- FAERec: https://arxiv.org/abs/2604.03688.
+- AKT-Rec: https://arxiv.org/abs/2605.23310.
+
+This fact-check does not establish that the exact causal FIR or TAPE realization
+is already published. It does make a broad top-journal novelty claim implausible
+without causalized FMLP/BSARec comparators, frozen-language residual comparators,
+parameter-matched controls, identical training/evaluation targets and evidence
+beyond one new category/configuration.
+
+### Manuscript, Public, Release and PDF Delta
+
+No committed manuscript, TeX, bibliography, table, figure, companion, metadata
+or PDF byte changed from f2963ada. Therefore all previously confirmed issues
+remain:
+
+- historical FIR/component attribution exceeds the singular package evidence;
+- confirm/refute/mechanism/density language is inconsistent across surfaces;
+- public all-four, coverage and preregistration stories conflict with the
+  cautious internal account;
+- closure/H10 uses partial literal blacklists rather than typed claim parity;
+- clean-clone release, attestation, freshness and deposit order remain unresolved;
+- the main body is approximately 26k words and structured like an audit diary;
+- identity, policy and legal fields remain unverified.
+
+The three PDFs are byte-identical to the prior full visual audit:
+
+| Artifact | SHA-256 | Pages | Carried-forward visual result |
+|---|---|---:|---|
+| PAPER_SUBMISSION.pdf | 3595059a05f29a02612fbae28820fcaceeb9281eb03b576c48611791b63bb354 | 56 | caption split pp.28--29; near-empty p.56; tiny tables; incomplete metadata |
+| paper_tex/PAPER_TORS.pdf | 9308005466907386fcb3ed0bfaf5e94abc808ee897180d1830d5ff8d28e1b366 | 49 | untagged; placeholders; tiny content; stale claims |
+| paper_tex/PAPER_TORS_acmsmall.pdf | f050ed849cf9d27b9e70d3f99866e0748afff2e1f8b05c0f5f307e26fb40f407 | 51 | untagged; placeholders; bare DOI and Article furniture |
+
+Because every PDF byte and every source/figure byte is unchanged, a redundant
+rerender cannot reveal a new layout state. The prior 156-page visual sign-off
+applies exactly; no PDF temporary tree was created this hour.
+
+### Concrete Algorithm and Experimental Repairs
+
+1. **Quarantine test outcomes.** Validate each epoch, atomically checkpoint the
+   validation winner, freeze all training decisions, restore it and test once.
+2. **Use the actual block.** Make paired seed contrasts primary, with exact
+   sign-flip sensitivity, paired equivalence and multiplicity control.
+3. **Counterbalance order.** Freeze a Latin-square arm schedule and collect
+   temperature, clocks, utilization, power, memory and competing-load telemetry.
+4. **Add a capacity placebo.** Match A1's 1,024 trainable FIR coefficients with a
+   trainable non-temporal control so FIR structure is separated from extra
+   capacity.
+5. **Separate tuning from confirmation.** Choose K, FIR WD and any tap
+   parameterization on development data before unused-seed replication. The
+   exposed A1/A2 near-tie must not choose the winner.
+6. **Make streaming causal inference explicit.** Maintain a K-step ring buffer
+   and compute each depthwise FIR update in O(Kd) time with O(Kd) state. Benchmark
+   grouped Conv1d against a fused rolling-window kernel, including reset, mask and
+   left-padding equivalence.
+7. **Avoid allocation overhead.** Preallocate rolling buffers, avoid repeated
+   pad/transpose/copy operations and document memory layout/device/dtype.
+8. **Test numerical behavior.** Verify offline-streaming equality, no-future
+   Jacobian dependence, checkpoint reload identity, impulse response, signed
+   coefficients and finite gradients under mixed precision.
+9. **Benchmark the whole tradeoff.** Report quality, total/trainable parameters,
+   MACs/FLOPs, peak memory, throughput, p50/p95 latency, energy and wall time for
+   identity, FIR, placebo and closest comparators.
+10. **Replicate scope.** Cross at least two kernel lengths and multiple categories
+    after the design is frozen; do not infer generality from Musical_Instruments.
+
+### Figure and Table Repairs
+
+After a clean replication, replace promotional diagrams with:
+
+- a paired seed slope plot with every block and frozen arm order visible;
+- a paired-contrast forest plot with adjusted intervals and the justified
+  practical-equivalence margin;
+- selected-versus-final endpoint differences;
+- signed selected-checkpoint tap heatmaps plus impulse/frequency responses;
+- absolute tail/mid/head differences with user counts, hit counts and weighted
+  aggregate contribution;
+- validation curves with selected epochs marked, excluding test curves from
+  tuning displays;
+- a compute-quality Pareto plot for identity, FIR, placebo and closest baselines;
+  and
+- one provenance table mapping every reported number to result, sidecar,
+  checkpoint, config and code hashes.
+
+Use vector figures, colorblind-safe palettes, direct labels, readable type at
+final column width, alt text/tagging and captions that state estimand, unit,
+uncertainty, multiplicity and evidence status. Keep partial E-A numbers out of
+the submission figures.
+
+### Writing and Submission Repairs
+
+- Reduce the main body to a 10--14k scientific narrative; move audit chronology,
+  retractions, gate transcripts and run logs to a supplement.
+- Rewrite the abstract around problem, method, preregistered estimand, datasets,
+  uncertainty and bounded conclusion; omit workflow self-praise.
+- Call E-A a three-arm exploratory ablation, not a confirmatory 2x2 factorial.
+- State experimental unit, blocking, endpoint, SESOI, multiplicity and outcome
+  exposure once and consistently.
+- Replace PASS, confirmed, refuted, mechanism, causal share and complete
+  attribution language with estimates, intervals and explicit scope.
+- Distinguish historical package effects from the redesigned FIR experiment.
+- Add Let It Go? Not Quite and current frequency/frozen-language comparators to
+  Related Work and the novelty matrix.
+- Generate abstract, tables, captions, public companion, metadata and response
+  from one typed claim registry with existence and semantic-parity checks.
+- Choose a journal only after checking current scope, length, review mode, data/
+  code, AI-disclosure, accessibility and supplementary-material requirements.
+
+### Author, Policy and Legal Verification
+
+**AUTHOR/INSTITUTION/LEGAL VERIFICATION:** author identity/order, affiliation,
+country, contact, ORCID, funding, conflicts, manuscript-level GenAI/automation
+disclosure and redistribution authority cannot be established from the workspace.
+
+Before submission, obtain author and institutional confirmation of legal names
+and order, approval, affiliation/contact/ORCID, funding/conflicts, AI and
+automation disclosure, originality/simultaneous-submission status, privacy and
+ethics, data/model/code licenses, derived-data redistribution and the exact
+target venue/article/anonymity policy.
+
+### Open Questions
+
+1. Will all remaining E-A jobs finish without scientific or operational
+   adaptation, and will the whole family be labeled exploratory?
+2. Who viewed the 280 test evaluations, and did exposure affect any decision?
+3. Why were five previously used seeds described as fresh?
+4. What external scientific rationale supports the plus/minus 0.0008 SESOI?
+5. Will confirmation use unused seeds, paired inference, counterbalanced order,
+   immutable execution and test quarantine?
+6. Will selected checkpoints and selected-epoch mechanism diagnostics be saved?
+7. Will the design be renamed a three-arm ablation?
+8. Can a parameter-matched non-temporal placebo separate FIR structure from
+   additional trainable capacity?
+9. Will Let It Go? Not Quite and causalized FMLP/BSARec receive same-protocol
+   comparisons?
+10. Will E-B, E-C, E-C2 and E-E be completed or will claims be narrowed?
+11. Who can attest identity, disclosures, licensing, launch state and submission
+    facts?
+
+### Running Checklist
+
+- [x] Freeze a synchronized 14-summary boundary and fixed live-log prefix hash.
+- [x] Exclude A2 seed 20260717 and every later output.
+- [x] Validate 14 configs, initialization/data/code fields and 27 sidecars.
+- [x] Recompute endpoints, aggregate/popularity metrics and row identity.
+- [x] Describe four complete blocks without confirmatory inference.
+- [x] Keep the incomplete seed-17 block separate.
+- [x] Quantify paired covariance, SE loss and stratum contribution.
+- [x] Compare selected and final endpoints/diagnostics.
+- [x] Audit 280 test looks, timing, order, resume/status and adjudicator.
+- [x] Recheck primary novelty sources and unchanged citation boundary.
+- [x] Verify no manuscript/public/release/PDF byte delta.
+- [ ] Finish the current queue unchanged and archive it as exploratory.
+- [ ] Preserve an immutable final inventory and original adjudication.
+- [ ] Preregister and run an unused-seed, paired, counterbalanced, blinded
+      replication.
+- [ ] Save selected checkpoints and selected-epoch signed diagnostics.
+- [ ] Implement atomic validated resume, locks and fail-closed adjudication.
+- [ ] Add parameter-matched and closest-literature comparators.
+- [ ] Rewrite/regenerate every manuscript and public surface from typed claims.
+- [ ] Complete clean-clone release, author/policy/legal verification and
+      accessible PDF sign-off.
+
+### Files Changed and Serious Contradictions
+
+This audit intentionally changes only PAPER_REVIEW_AUDIT.md. It does not modify
+the running campaign, manuscript, source, figures, results, sidecars, logs or
+PDFs. Serious contradictions newly sharpened at this cutoff are:
+
+- the no-interim-look promise versus 280 visible test evaluations;
+- matched common-random-number execution versus independent Welch primary;
+- validation-selected endpoints versus final-only mechanism diagnostics;
+- selected A2-A1 below zero versus final A2-A1 above zero;
+- a claimed 2x2 factorial versus three actual arms;
+- a registered approximately four-hour budget versus approximately 4.96 hours
+  projected from observed completions; and
+- an internally coherent result family that remains outside the immutable
+  release/provenance boundary.
+
+## Audit Run - 2026-07-22 19:55 Australia/Sydney
+
+### Review Verdict
+
+**Recommendation: reject / not ready for top-journal submission.** At the fixed
+cutoff, the exploratory E-A queue had produced nine summaries: three complete
+A0/A1/A2 seed blocks. The learned FIR arms are descriptively and consistently
+above identity in those three blocks, and the two FIR weight-decay variants are
+nearly indistinguishable. This is encouraging implementation evidence, but it is
+not valid confirmatory evidence: the campaign is already outcome-visible, only
+3/8 blocks are complete, five seeds were reused despite a contrary statement,
+and the frozen primary analysis discards the deliberately matched block.
+
+The additional results make two earlier design criticisms concrete. First, the
+cross-arm NDCG correlation is about 0.99 and the paired-difference SD is far below
+the independent-arm SD, so independent Welch is materially inefficient for this
+design. Second, eight of nine selected endpoints are not the final epoch, yet the
+only tap diagnostics describe the final model. The reported mechanism record
+therefore refers to a different model than the analyzed endpoint in eight runs.
+
+No committed manuscript, TeX, bibliography, figure, public page, metadata or PDF
+changed. The partial results cannot repair historical FIR attribution, public
+claim parity, novelty, release, writing, visual, identity or legal blockers.
+
+Status labels in this section mean:
+
+- **CONFIRMED**: reproduced from the fixed commit and eligible file set, exact
+  hashes, independent calculations, code, logs or unchanged rendered artifacts.
+- **PLAUSIBLE RISK**: supported reviewer concern requiring a complete experiment,
+  environmental evidence or venue decision.
+- **AUTHOR VERIFICATION**: cannot be established from the workspace.
+- **POST-CUTOFF EXCLUDED**: created or completed after the frozen boundary and not
+  used in this audit.
+
+### Fixed Snapshot and Scope
+
+| Item | Audited value |
+|---|---|
+| Heartbeat | 2026-07-22T09:55:39.796Z |
+| Fixed filesystem cutoff | 2026-07-22T19:56:19.5630063+10:00 (09:56:19.5630063Z) |
+| Branch | codex/bestrec-sota-results |
+| HEAD / upstream / merge base | f2963ada2ed5202944679964c7fc2de94ab6e267 |
+| Previous audited HEAD | f2963ada2ed5202944679964c7fc2de94ab6e267 |
+| Tracked state | only PAPER_REVIEW_AUDIT.md modified by the cumulative audit |
+| Eligible E-A state | running; 9/24 summaries, 0 skipped, 0 failed, 111.7 minutes |
+| Complete blocks | seeds 20260713, 20260714 and 20260715 |
+| Eligible sidecars | 17 referenced gzip files; all selected/final files required by the summaries |
+| Post-cutoff boundary | run 10 had launched; its output and every later result are excluded |
+
+The result summaries are written once and were frozen by explicit filename and
+hash. The shared append-only log is less trustworthy as a cutoff mechanism:
+while open on Windows, its observed size and LastWriteTime metadata lagged its
+content. Future audits must freeze a byte length and prefix hash at the cutoff,
+or use closed immutable per-run logs with start/end UTC and SHA-256. Mtime alone
+is not safe for a live log.
+
+### Eligible Result Inventory
+
+| Seed | Arm | Summary SHA-256 prefix | Best epoch | Test NDCG@10 | HR@10 | MRR | Final tap L2 |
+|---:|---|---|---:|---:|---:|---:|---:|
+| 20260713 | A0 identity | bfc0fd48 | 16 | 0.0394623706 | 0.0706836818 | 0.0360761392 | 0 |
+| 20260713 | A1 learned, backbone WD | 25a39093 | 13 | 0.0416996788 | 0.0746531103 | 0.0379756432 | 5.05385 |
+| 20260713 | A2 learned, zero FIR WD | d2148fac | 13 | 0.0415565070 | 0.0745138321 | 0.0378353945 | 5.10054 |
+| 20260714 | A0 identity | 6fa46553 | 18 | 0.0397464061 | 0.0710841066 | 0.0363448710 | 0 |
+| 20260714 | A1 learned, backbone WD | d4580e65 | 16 | 0.0421316569 | 0.0754539599 | 0.0382553460 | 4.96540 |
+| 20260714 | A2 learned, zero FIR WD | c59847c0 | 16 | 0.0421277111 | 0.0754191403 | 0.0382641611 | 5.01142 |
+| 20260715 | A0 identity | 16e18323 | 13 | 0.0393065907 | 0.0709274187 | 0.0359898866 | 0 |
+| 20260715 | A1 learned, backbone WD | 2869befc | 20 | 0.0413139535 | 0.0733647870 | 0.0379344574 | 5.07580 |
+| 20260715 | A2 learned, zero FIR WD | abaa1bd3 | 19 | 0.0413316241 | 0.0734518359 | 0.0379216251 | 5.12325 |
+
+The selected endpoint is always the test metric at the validation-NDCG argmax.
+This was recomputed from all 20 history rows and matches exactly in every
+summary. Seven of nine selected epochs are not the test-NDCG maximum; this is
+evidence against an internal max-test selector, not evidence of outcome blinding.
+Every test curve was still printed and retained.
+
+### Exploratory Matched-Block Description Only
+
+No p-value, confidence interval, Holm decision, equivalence decision or
+confirmatory verdict is valid at this partial outcome-visible cutoff. The
+following describes only the three eligible blocks:
+
+| Arm / contrast | Seed values for NDCG@10 | Mean | Sample SD |
+|---|---|---:|---:|
+| A0 | 0.039462371, 0.039746406, 0.039306591 | 0.039505122 | 0.000223003 |
+| A1 | 0.041699679, 0.042131657, 0.041313954 | 0.041715096 | 0.000409070 |
+| A2 | 0.041556507, 0.042127711, 0.041331624 | 0.041671947 | 0.000410407 |
+| A1 - A0 | +0.002237308, +0.002385251, +0.002007363 | +0.002209974 | 0.000190421 |
+| A2 - A0 | +0.002094136, +0.002381305, +0.002025033 | +0.002166825 | 0.000188931 |
+| A2 - A1 | -0.000143172, -0.000003946, +0.000017671 | -0.000043149 | 0.000087294 |
+
+Descriptive secondary metrics are directionally similar:
+
+- A1-A0 mean HR@10 is +0.003592217 and mean MRR is +0.001918183.
+- A2-A0 mean HR@10 is +0.003563200 and mean MRR is +0.001870095.
+- A2-A1 is close to zero: mean HR -0.000029016 and MRR -0.000048089.
+
+The result does not look tail-specific in absolute contribution. For A1-A0,
+mean stratum NDCG differences are +0.000699 tail, +0.001802 mid and +0.002631
+head. After weighting by 8,800/8,657/39,982 users, the tail contributes about
+4.8% of the aggregate NDCG gain, mid 12.3% and head 82.9%. The corresponding
+mean extra HR@10 hits are about 14.7 tail, 26.3 mid and 165.3 head. Relative tail
+percentages can look large because the baseline is tiny; figures must show
+absolute effects, stratum sizes and hit counts to avoid a tail-benefit illusion.
+
+**Interpretation boundary:** the first three blocks are descriptively consistent
+with FIR utility in this exact K=16 Musical_Instruments configuration and with
+little FIR-weight-decay sensitivity. They do not identify the historical package
+effect, establish practical significance, generalize to another category or
+authorize a paper update.
+
+### Integrity Checks That Passed
+
+The eligible evidence is structurally strong despite its protocol status:
+
+- All nine configurations are identical outside seed, output path, FIR mode and
+  FIR-specific weight decay.
+- Within each seed, A0/A1/A2 initialization hashes are exactly equal.
+- All runs use 57,439 evaluation users, 24,587 items, 11,186,046 total parameters,
+  one commit, one normalized trainer hash, one host/runtime/GPU and identical
+  train/validation/test/text-cache hashes.
+- All 17 referenced gzip SHA-256 values and row counts match. Each contains
+  57,439 unique users, finite metrics, the correct dataset/seed and exact
+  rank-to-NDCG/HR/RR formulas.
+- Reconstructed aggregate metrics match within 1.92e-15; all popularity fields
+  and counts match within 3.96e-16.
+- Every sidecar has the same ordered user/target/popularity identity digest, so
+  rows align exactly across arms, endpoints and seeds.
+- A1 seed 20260715 selects epoch 20, so selected and final are the same record.
+  Its single sidecar is coherent, not missing. The schema should nevertheless
+  declare final_alias_of_selected explicitly or always emit both logical paths.
+- Frozen A0 tap L2 is exactly zero. Learned tap L2 is nonzero in every A1/A2 run.
+
+Every summary also says git_dirty_tracked=true. The trainer hash mitigates one
+code uncertainty, but the dirty path/diff is not embedded and the driver,
+preregistration, adjudicator, reference configuration and environment are not
+bound. Total parameter count is equal, but trainable parameter count and optimizer
+group membership are not recorded.
+
+### Confirmed Problem 1: Outcome Visibility Has Worsened
+
+Each of the nine summaries stores test metrics for all 20 epochs: 180 full-test
+looks were already available at the cutoff. The shared log prints them live.
+This directly conflicts with the stated no-interim-look rule and creates a human
+adaptation/selective-reporting channel even though the code selects the endpoint
+by validation.
+
+The only defensible handling is:
+
+1. Preserve the current family and complete it without changing seeds, arms,
+   epochs, stopping, exclusions, margin, analysis or sample size.
+2. Label it exploratory/outcome-visible and identify the first exposure time.
+3. Do not treat the full 24-run adjudicator as prospectively confirmatory merely
+   because the remaining jobs finish.
+4. For confirmation, preregister genuinely unused seeds, counterbalanced order,
+   immutable execution and test-outcome quarantine before launch.
+
+### Confirmed Problem 2: Blocking Is Material, Not Cosmetic
+
+Across only three blocks, A0/A1 NDCG correlation is 0.991 and A0/A2 is 0.997.
+These correlations are unstable at n=3 and are not evidence by themselves, but
+they demonstrate that seed-level outcomes co-move strongly. The descriptive
+Welch SE for A1-A0 is about 0.000269, versus paired SE about 0.000110, a ratio of
+approximately 2.45.
+
+The frozen independent primary therefore discards a large amount of design
+information. CUDA nondeterminism does not make matched observations independent.
+NIST describes blocked analysis as comparing treatments within blocks while
+accounting for the block effect:
+https://www.itl.nist.gov/div898/handbook/pri/section3/pri332.htm.
+
+Do not change the frozen rule and call this run confirmatory after seeing these
+data. Report original and corrected analyses as exploratory sensitivity only.
+For the new replication, use paired contrasts as primary, exact 2^8 sign-flip or
+randomization sensitivity, paired TOST/equivalence and Holm control across the
+three paired contrasts. Power from the paired-difference SD, not independent-arm
+SD. The 57,439 users are measurement rows, not independent treatment units.
+
+### Confirmed Problem 3: Mechanism Diagnostics Describe the Wrong Checkpoint
+
+Best epochs are:
+
+- A0: 16, 18, 13;
+- A1: 13, 16, 20; and
+- A2: 13, 16, 19.
+
+Eight of nine selected endpoints are not epoch 20; five of six learned endpoints
+are not epoch 20. Yet FIR L2 and absolute-lag profiles are read only from the
+final model. The selected-minus-final NDCG differences range from -0.000318 to
++0.000273. More importantly, selected A2-A1 averages -0.000043 while final
+A2-A1 averages +0.000025. The tiny WD contrast changes sign across checkpoints.
+
+No selected checkpoint exists, so the final taps cannot explain the analyzed
+endpoint. Required:
+
+- save/hash the validation-selected full checkpoint;
+- extract signed per-channel taps, L2, gradients, optimizer moments,
+  residual/input norm, activations and impulse/frequency response at that
+  checkpoint;
+- retain final diagnostics only as separately labeled trajectory evidence;
+- document lag ordering and coefficient signs; and
+- plot selected and final behavior together if trajectory differences matter.
+
+### Confirmed Problem 4: Test-once Is Both Faster and Cleaner
+
+The log shows one full test pass costs about 15.4 seconds. Testing every epoch
+adds roughly 19 unnecessary test passes:
+
+- about 293 seconds saved per run;
+- about 39% of the observed approximately 12.4-minute run time; and
+- about 117 GPU-minutes saved over 24 runs.
+
+The optimized confirmatory lifecycle is simple: evaluate validation each epoch,
+atomically save a checkpoint when validation improves, then run the held-out test
+once after all training decisions are frozen. This removes repeated outcome
+exposure and materially reduces compute without changing the estimand.
+
+### Confirmed Problem 5: Driver, Status, Log and Resume Are Not Evidence-Grade
+
+The previous defects remain and one new failure semantic is confirmed:
+
+- a failed subprocess increments failed and breaks, but the driver still writes a
+  final status state of complete before exiting 1;
+- status is session-local and non-atomic;
+- resume treats any existing filename as complete without JSON/schema/config/hash/
+  sidecar validation;
+- summaries and sidecars are not written in one locked atomic transaction;
+- code and the reference JSON are reopened between sequential runs;
+- no commit/clean-tree/config/command-plan guard prevents mid-queue drift;
+- default Windows preflight fails under cp1252, while the successful launch
+  environment is not recorded;
+- preflight ignores help return code/stderr and validates substring presence, not
+  value parsing; and
+- the one shared open log has stale filesystem metadata and no cutoff prefix hash.
+
+Fix with an immutable detached worktree/container, one signed normalized config
+and command manifest, explicit UTF-8, strict dry-run parsing, per-family and
+per-run locks, temporary run directories, atomic promotion after full validation,
+closed per-run logs, start/end attestations and validate-before-skip resume.
+
+### Confirmed Problem 6: Program and Adjudicator Do Not Match Their Claims
+
+EXPERIMENT_PROGRAM calls E-A a learned/identity by WD-on/off factorial, but only
+three cells exist. Identity plus zero FIR WD is absent and, because identity taps
+are frozen, would be structurally degenerate. This is a three-arm ablation, not an
+estimable 2x2 interaction. The program also promises a cloned checkpoint, gate
+factor, five seeds, gradients/moments/responses/FLOPs and all checkpoints, while
+the run uses scratch same-seed states, no gate, eight seeds and final tap summaries.
+
+The adjudicator additionally:
+
+- ignores extra family summaries instead of enforcing exactly the frozen 24;
+- lets a missing legacy-filter field pass because missing is falsey;
+- does not require learned taps to be nonzero or init hashes to be strict 64-hex;
+- omits full config, data/code/commit/dirty, history, n-eval, endpoint and sidecar
+  validation;
+- accepts Python NaN/Infinity and has no finite/domain checks;
+- returns p=1 for unequal zero-variance samples;
+- silently substitutes a normal approximation if SciPy fails;
+- promises paired t sensitivity but emits only paired mean/SD; and
+- can overwrite adjudication without a timestamped input inventory or output hash.
+
+Rename the current design a three-arm ablation. Build one canonical schema and
+strict JSON validator, pin/fail closed on the statistical environment, implement
+correct degenerate limits, recompute selected endpoints and hashes from source
+artifacts, and create one immutable adjudication whose input inventory is hashed.
+
+### Confirmed Problem 7: Scope Still Does Not Reach Historical Attribution
+
+The partial result is close in scale to the historical package increment, but
+similar magnitude is not identification. E-A can estimate learned FIR versus
+identity in the redesigned K=16 MI stack. It cannot retrospectively assign the
+historical unmatched initialization/optimizer package difference, its 77--82%
+share, the claimed 3x contribution or four-category transfer to FIR.
+
+The learned arms also have 1,024 more trainable coefficients than frozen identity.
+Add a trainable parameter-matched placebo with no temporal structure to distinguish
+filtering from generic trainable capacity. Then cross kernel length and category,
+and replicate with a clean blocked design before component or generality language.
+
+### Novelty and Citation Fact-Check
+
+The manuscript and bibliography did not change, but a material adjacent paper is
+missing from the claimed complete attribution table:
+
+- [Let It Go? Not Quite](https://arxiv.org/abs/2507.19473), published at RecSys
+  2025, freezes content-based embeddings and learns a bounded per-item delta in
+  SASRec. It reports five-seed experiments on three datasets/modalities and
+  analyzes cold and low-frequency items. TAPE is not identical: it uses frozen
+  soft text-cluster assignments gating a shared prototype table rather than a
+  bounded per-item correction. But the broad frozen-content-plus-trainable-residual
+  space and rare-item analysis are occupied. Add the citation and a same-protocol
+  comparison or explain the exclusion precisely.
+- [WPGRec](https://arxiv.org/abs/2604.21305) retains the frequency-modeling
+  pressure through multiscale wavelet packets and adaptive subband fusion.
+- [AlphaFuse](https://arxiv.org/abs/2504.19218) remains a close frozen-language/
+  collaborative-ID comparator for long-tail settings.
+- [FAERec](https://arxiv.org/abs/2604.03688) and
+  [AKT-Rec](https://arxiv.org/abs/2605.23310) add adaptive language/ID fusion,
+  alignment, activity-aware gating and head-to-tail transfer.
+
+This does not prove the exact FIR or TAPE realization is already known. It does
+make a broad top-journal algorithm claim implausible without direct comparators,
+frequency-matched semantic controls, training-target parity, independent thinning
+maps, category replication and a clear advantage beyond small incremental design.
+
+### Manuscript, Public, Release and PDF Delta
+
+There is no committed delta from the prior audit:
+
+- no manuscript, TeX, bibliography, table, figure, companion, metadata or PDF
+  byte changed;
+- historical FIR/component attribution, confirm/refute/mechanism/density and
+  public all-four/coverage/preregistration contradictions remain;
+- closure/H10 remain partial literal blacklists rather than typed claim parity;
+- preregistration, program, driver, adjudicator, reference config, result
+  summaries, sidecars and logs remain outside the manifest/deposit/strict chain;
+- summaries are untracked and gzip sidecars ignored; and
+- the clean-clone release/attestation/deposit deadlock remains.
+
+Do not insert any 3-block metric into the paper. Build an append-only
+experiment-family manifest containing launch-time hashes now and exact
+summary/sidecar/log/adjudication hashes after completion. Keep historical
+package-arm wording until a clean replication closes attribution.
+
+The PDFs are byte-identical to the full visual audit one hour earlier:
+
+| Artifact | SHA-256 | Pages | Carried-forward visual result |
+|---|---|---:|---|
+| PAPER_SUBMISSION.pdf | 3595059a05f29a02612fbae28820fcaceeb9281eb03b576c48611791b63bb354 | 56 | caption split pp.28--29; near-empty p.56; tiny tables; incomplete metadata |
+| paper_tex/PAPER_TORS.pdf | 9308005466907386fcb3ed0bfaf5e94abc808ee897180d1830d5ff8d28e1b366 | 49 | untagged; placeholders; tiny content; stale scientific claims |
+| paper_tex/PAPER_TORS_acmsmall.pdf | f050ed849cf9d27b9e70d3f99866e0748afff2e1f8b05c0f5f307e26fb40f407 | 51 | untagged; placeholders; bare DOI and Article . furniture |
+
+Because every PDF byte is identical and no source/figure changed, a redundant
+rerender cannot reveal a new layout state; the prior 156-page, 120/240-DPI visual
+sign-off applies exactly. No PDF temp tree was created this hour.
+
+### Algorithm, Figure and Writing Recommendations
+
+**Algorithm/implementation:**
+
+1. Adopt validation-only training plus one quarantined test pass.
+2. Use a K-step ring buffer for token-by-token inference; benchmark grouped
+   depthwise Conv1d versus a fused rolling-window kernel.
+3. Preallocate buffers, avoid repeated pad/transpose allocations and record
+   memory layout assumptions.
+4. Verify offline versus streaming equality, state reset, padding/masks,
+   checkpoint reload and no-future Jacobian dependence.
+5. Benchmark quality, trainable/total parameters, MACs/FLOPs, peak memory,
+   throughput, p50/p95 latency, energy and end-to-end wall time.
+6. Add a parameter-matched non-temporal placebo, multiple K values and cross-
+   category replication.
+
+**Figures/tables after clean replication:**
+
+- paired seed slope plot showing every block and frozen arm order;
+- paired-contrast forest with adjusted intervals and justified equivalence margin;
+- selected-versus-final endpoint plot;
+- signed selected-checkpoint tap heatmap and impulse/frequency response;
+- absolute tail/mid/head effects with user counts, hit counts and contribution to
+  the aggregate, not relative percentages alone;
+- validation curves with selected epochs marked and no test curves in the tuning
+  display; and
+- compute-quality Pareto plot for identity, FIR, placebo and closest comparator.
+
+**Writing:**
+
+- reduce the approximately 26k-word main body to a 10--14k scientific narrative;
+- move audit chronology, retractions, run logs and gate transcripts to a supplement;
+- state the treatment bundle, experimental unit, endpoint and evidence timing once;
+- label E-A exploratory/outcome-visible and keep its partial values out;
+- add Let It Go? Not Quite to related work and the novelty matrix;
+- replace PASS/refute/confirm/mechanism language with estimates, intervals and
+  scope; and
+- generate abstract, tables, public companion and metadata from one typed claim
+  registry.
+
+### Author, Policy and Legal Verification
+
+**AUTHOR/INSTITUTION/LEGAL VERIFICATION:** author/affiliation/contact placeholders,
+Ray0419 metadata, missing ORCID/funding/COI and absent manuscript-level
+GenAI/automation disclosure remain. Redistribution authority remains explicitly
+uncertain.
+
+Independently verify legal author names/order and approval, affiliation/country/
+contact/ORCID, funding/conflicts, AI and automation disclosure, originality and
+simultaneous-submission status, privacy/ethics, data/model/code licenses,
+derived-data redistribution and the target venue/article/anonymity policy.
+
+### Open Questions
+
+1. Will the remaining E-A jobs finish without any scientific or operational
+   adaptation, and will the whole family be labeled exploratory?
+2. Who viewed the 180 epoch-level test outcomes, and were any decisions made after
+   exposure?
+3. Why were five previously used seeds selected?
+4. What scientific SESOI justifies plus/minus 0.0008?
+5. Will the confirmatory replication use unused seeds, paired/blocked inference,
+   counterbalanced order, immutable launch and test quarantine?
+6. Will selected checkpoints and selected-epoch mechanism diagnostics be saved?
+7. Will the design be renamed a three-arm ablation or expanded to an estimable
+   factorial?
+8. Will Let It Go? Not Quite receive a same-protocol TAPE comparison?
+9. Will E-B, E-C, E-C2 and E-E be completed or will claims be narrowed?
+10. Who can attest identity, disclosures, licensing, launch state and submission
+    facts?
+
+### Running Checklist
+
+- [x] Freeze a synchronized fixed cutoff and explicit nine-summary inventory.
+- [x] Exclude run 10 and later outputs.
+- [x] Validate all nine configs, initialization/data/code fields and 17 referenced
+      sidecars.
+- [x] Recompute selected endpoints, overall/popularity metrics and row alignment.
+- [x] Describe three paired blocks without confirmatory inference.
+- [x] Quantify matched covariance, paired-difference variability and stratum
+      contribution.
+- [x] Compare selected and final endpoints/diagnostics.
+- [x] Audit 180 test looks, timing, driver/status/log/resume and adjudicator.
+- [x] Verify no manuscript/public/release/PDF byte delta.
+- [x] Recheck novelty and identify the missing RecSys 2025 close paper.
+- [x] Reuse the exact prior visual sign-off only after confirming PDF byte identity.
+- [ ] Preserve/finish current E-A without adaptation and label it exploratory.
+- [ ] Preregister a fresh unused-seed, paired/blocked, counterbalanced,
+      outcome-quarantined replication.
+- [ ] Replace per-epoch test evaluation with one test pass from the saved best-val
+      checkpoint.
+- [ ] Implement immutable launch, strict preflight, locks, atomic writes, per-run
+      logs, validated resume and durable failure status.
+- [ ] Build a full-schema finite-data adjudicator with immutable input inventory.
+- [ ] Save selected checkpoints and selected/final signed mechanism diagnostics.
+- [ ] Add parameter-matched placebo, K/category replication and remaining E-B--E-E
+      controls.
+- [ ] Add Let It Go? Not Quite and closest-protocol comparisons.
+- [ ] Manifest the full experiment family and release it from a clean clone.
+- [ ] Remove stale attribution/refutation/density/public claims and regenerate
+      every surface from a typed claim registry.
+- [ ] Rewrite the paper and rebuild accessible, metadata-complete PDFs.
+- [ ] Resolve venue, identity, ORCID, funding, COI, AI disclosure, licenses,
+      redistribution and ethics.
+
+## Audit Run - 2026-07-22 18:54 Australia/Sydney
+
+### Review Verdict
+
+**Recommendation: reject / not ready for top-journal submission.** Commit
+f2963ada contains a genuinely improved, gradient-active identity-initialized FIR
+operator and a new 24-run E-A campaign. At the fixed cutoff, however, only four
+summaries existed: one complete A0/A1/A2 seed block and the next seed's A0.
+Those partial outcomes have now been inspected by this author-operated audit
+before the preregistered one-time adjudication. This is an interim look under the
+plain meaning of the campaign's own no-interim-looks rule. The current campaign
+must therefore be preserved and reported as exploratory/outcome-visible, not
+used as the confirmatory repair.
+
+Even apart from that contamination, the frozen primary analysis is wrong for the
+matched-seed experiment, five of eight seeds are not fresh, the default Windows
+preflight fails, the sequential launch is mutable and non-atomic, the
+adjudicator does not enforce most frozen fields, and mechanism diagnostics come
+from a different epoch than the selected endpoint. No manuscript, TeX, figure,
+bibliography, public page or PDF changed. The historical FIR attribution,
+null/refutation language, public contradictions, novelty gap, release deadlock,
+writing/visual blockers and author/legal unknowns therefore remain.
+
+Status labels in this section mean:
+
+- **CONFIRMED**: reproduced from the fixed-cutoff commit, eligible files,
+  commands, hashes, independent probes or rendered artifacts.
+- **PLAUSIBLE RISK**: a reviewer concern supported by the record but requiring a
+  targeted experiment, environmental evidence or venue decision.
+- **AUTHOR VERIFICATION**: cannot be established independently from this
+  workspace.
+- **POST-CUTOFF EXCLUDED**: created after the fixed filesystem cutoff and not
+  opened or used in this audit.
+
+### Fixed Snapshot, Moving-Target Boundary and Scope
+
+| Item | Audited value |
+|---|---|
+| Heartbeat | 2026-07-22T08:54:11.086Z |
+| Fixed filesystem cutoff | 2026-07-22T18:55:07.6032775+10:00 (08:55:07.6032775Z) |
+| Branch | codex/bestrec-sota-results |
+| Audited HEAD / upstream / merge base | f2963ada2ed5202944679964c7fc2de94ab6e267 |
+| Previous audited HEAD | e6e7a2940a0beefd0cb17bdee57351c91abd8ea3 |
+| Tracked state at cutoff | PAPER_REVIEW_AUDIT.md modified by the prior audit; no other tracked modification |
+| Eligible E-A state | running; 4/24 summaries, 0 skipped, 0 failed; 49.7 minutes elapsed |
+| Eligible untracked summaries | A0/A1/A2 seed 20260713; A0 seed 20260714 |
+| Eligible ignored sidecars | best and final per-user gzip JSONL for each of the four summaries |
+| Later files | all files created or modified after the cutoff are POST-CUTOFF EXCLUDED |
+
+The f2963ada delta is six files, 483 insertions and 6 deletions:
+EXPERIMENT_PROGRAM.md, RELEASE_MANIFEST.json, PREREG_FIR_V3.md,
+run_sasrec_sbert.py, run_ea_fir_v3.py and adjudicate_fir_v3.py. It changes no
+canonical/draft manuscript, TeX section, table, bibliography, figure, public
+companion, metadata or compiled PDF. The commit preceded the first eligible
+summary timestamp, which is consistent with a local commit-before-result order,
+but this is not an independent timestamp or launch attestation.
+
+The fixed cutoff is essential. The live campaign continued while this audit was
+written; later results are excluded even if they now exist. Nothing in this
+section should be read as a rolling 24-run analysis.
+
+### What Genuinely Improved
+
+**CONFIRMED implementation progress:**
+
+- An independent CPU probe found identical full-state hashes and parameter order
+  across A0, A1 and A2 at initialization.
+- A0 and A1 initial encoded outputs were bit-exact in the probe.
+- The learned FIR tap received a nonzero gradient; the frozen A0 tap has
+  requires-grad false and remains exactly zero.
+- The implementation left-pads the sequence and applies a depthwise Conv1d
+  residual, so it uses current/past positions without future leakage. In strict
+  signal-processing terminology it is causal/nonfuture, not necessarily
+  strictly causal because the current-position coefficient is included.
+- A2 isolates FIR-specific weight decay through a separate optimizer group.
+- All three scripts compile. The adjudicator correctly refuses to adjudicate the
+  committed tree when all 24 summaries are absent.
+- The independent power recomputation agrees with the note's approximately
+  0.0006 MDE under its stated independent-sample assumptions. The problem is that
+  those assumptions do not match the blocked experiment.
+
+These checks establish a sound low-level operator repair. They do not validate
+the launch protocol, statistical analysis, endpoint attribution or paper claim.
+
+### Fixed-Cutoff Partial Result Inventory
+
+The last eligible status snapshot was written at 18:50:59 local:
+
+    {"state":"running","ran":4,"skipped":0,"failed":0,
+     "total":24,"elapsed_min":49.7}
+
+No formal adjudication artifact existed. The four eligible summaries are:
+
+| Seed / arm | Best epoch | Best val NDCG@10 | Selected test NDCG@10 | HR@10 | MRR | Final tap L2 |
+|---|---:|---:|---:|---:|---:|---:|
+| 20260713 / A0 identity | 16 | 0.0441097359 | 0.0394623706 | 0.0706836818 | 0.0360761392 | 0 |
+| 20260713 / A1 learned, backbone WD | 13 | 0.0462029576 | 0.0416996788 | 0.0746531103 | 0.0379756432 | 5.0538477898 |
+| 20260713 / A2 learned, zero FIR WD | 13 | 0.0461757541 | 0.0415565070 | 0.0745138321 | 0.0378353945 | 5.1005377769 |
+| 20260714 / A0 identity | 18 | 0.0441546264 | 0.0397464061 | 0.0710841066 | 0.0363448710 | 0 |
+
+For the sole complete seed block, arithmetic differences are:
+
+| Contrast | NDCG@10 | HR@10 | MRR |
+|---|---:|---:|---:|
+| A1 - A0 | +0.0022373082 | +0.0039694284 | +0.0018995039 |
+| A2 - A0 | +0.0020941364 | +0.0038301502 | +0.0017592552 |
+| A2 - A1 | -0.0001431718 | -0.0001392782 | -0.0001402487 |
+
+**These are one-block descriptive differences only. They are not an estimate
+with uncertainty, a trend, a significance result, an ablation verdict or
+evidence for a manuscript claim.** Seed 20260714 has no eligible learned arm, so
+it contributes no matched contrast.
+
+The following integrity checks passed for the eligible artifacts:
+
+- The three seed-20260713 configurations have 86 keys and differ only in intended
+  FIR mode, FIR weight decay and output path. A0 seed 20260713 versus A0 seed
+  20260714 differs only in seed and output path.
+- All four use 57,439 evaluation users, 24,587 items and 11,186,046 total
+  parameters, and carry identical train/validation/test/text-cache hashes.
+- The three seed-20260713 arms share initialization hash ff85b20d...c2fc.
+  Seed-20260714 A0 has d6a8d686...e76e.
+- All eight best/final sidecars exist, contain exactly 57,439 rows and match their
+  embedded SHA-256 values. Recomputed per-user means match the summaries.
+- Across the three seed-20260713 best-epoch sidecars, all user IDs and target
+  items align with zero mismatches.
+- The result trainer hash matches the CRLF-normalized committed f2963ada trainer.
+  Every summary nevertheless records git_dirty_tracked=true and contains no dirty
+  path inventory or diff digest.
+- A0 taps are exactly zero. The A1/A2 final profiles for this one seed are nearly
+  identical, but this is final-epoch, one-seed descriptive behavior only.
+
+The summaries are untracked and the sidecars are ignored. Passing these manual
+checks does not make them immutable or release-bound.
+
+### Confirmed Problem 1: The No-Interim-Look Rule Has Been Broken
+
+PREREG_FIR_V3.md says adjudication is to occur once after all 24 runs and prohibits
+interim looks. In practice:
+
+1. The trainer computes, prints and stores test NDCG/HR every epoch.
+2. The driver streams those logs and writes each summary/sidecar arm by arm.
+3. Arms always run seed-major in fixed A0, A1, A2 order.
+4. No access firewall, blinding, encryption, quarantine or delayed test-evaluation
+   stage exists.
+5. This hourly audit is author-operated and has now inspected the first complete
+   seed triplet while the campaign is still running.
+
+There is no evidence that the code selected an epoch by test outcome; its selected
+endpoint is best by validation. The confirmed defect is outcome exposure before
+the planned single adjudication, creating an adaptation and selective-reporting
+risk and directly contradicting the literal protocol.
+
+**Required response:**
+
+- Preserve all current files and logs. Do not delete, rename, silently replace or
+  retroactively edit the preregistration.
+- Finish the current queue without adapting arms, seeds, epochs, stopping,
+  exclusions, margin, analysis or sample size, if operationally safe.
+- Label the campaign exploratory/outcome-visible and record this audit timestamp
+  as the first known interim exposure.
+- Before a confirmatory rerun, sample genuinely unused seeds prospectively,
+  counterbalance arm order, freeze a full launch manifest and sequester test
+  evaluation or encrypt/quarantine outputs until every checkpoint is frozen.
+
+### Confirmed Problem 2: The Primary Statistic Ignores the Experimental Block
+
+The preregistration deliberately uses the same seeds, identical starting states
+and common random numbers across A0/A1/A2. The initialization hashes confirm that
+matching for the eligible seed. Yet independent 8-vs-8 Welch tests are primary
+and a paired analysis is only called descriptive.
+
+CUDA nondeterminism adds residual noise; it does not remove the seed block. NIST
+describes randomized-block analysis as comparing treatment levels within each
+block while accounting for the block effect:
+https://www.itl.nist.gov/div898/handbook/pri/section3/pri332.htm. The planned
+independent test discards covariance, so its standard error may be conservative
+or anti-conservative depending on the observed cross-arm correlation.
+
+The adjudicator also fails to implement its promised paired t sensitivity: it
+reports only the paired mean and SD. Treating 57,439 users as independent
+replicates would be pseudoreplication because the intervention is assigned at the
+seed/run level.
+
+**Prospective replication analysis:**
+
+1. Make the within-seed A1-A0, A2-A0 and A2-A1 differences the primary data.
+2. Use a paired t interval plus an exact 2^8 sign-flip/randomization sensitivity,
+   or a prospectively frozen seed-block mixed model.
+3. Apply the frozen family correction to the three paired contrasts.
+4. Perform equivalence with a paired TOST/paired CI and a scientifically justified
+   smallest effect of interest.
+5. Report the independent Welch analysis only as a sensitivity.
+6. Base power on the paired-difference SD, which is presently unknown. The
+   independent SD=0.0004 calculation cannot determine paired power.
+
+Because a complete block has already been viewed, changing the current primary
+analysis would be outcome-aware. Report both the originally frozen and corrected
+analysis transparently for this exploratory run; preregister the corrected
+blocked analysis for a new confirmation.
+
+### Confirmed Problem 3: Seed Freshness and Order Claims Are Unsafe
+
+PREREG_FIR_V3.md calls seeds 20260713 through 20260720 fresh and never used in a
+prior result file. At f2963ada:
+
+- seeds 20260713 through 20260717 each occur in four tracked FIR-breadth result
+  JSONs, covering CDs_and_Vinyl and Industrial_and_Scientific filter/nofilter
+  arms;
+- 20260718 and 20260719 have no prior tracked filename match; and
+- 20260720 appears in transcripts but not a tracked result JSON.
+
+Thus the literal never-used statement is false for five of eight seeds. Reuse
+does not automatically invalidate a prospectively chosen cross-dataset seed set,
+but it creates a selection concern and must be disclosed. Author verification is
+required on whether any earlier seed outcomes informed this sequence.
+
+Every seed also runs A0 then A1 then A2. Arm is therefore confounded with
+wall-clock position, cache warming, thermals, background load and any environment
+drift. The first eligible intervals appear operationally similar, but four runs
+cannot rule this out.
+
+**Fix:** do not silently swap seeds/order after launch. For the new replication,
+generate and timestamp an unused seed list independently of outcomes; freeze a
+Latin-square/counterbalanced or prospectively randomized arm schedule; and log
+GPU clock, temperature, utilization, power, wall time, memory and competing load.
+
+### Confirmed Problem 4: Launch, Resume and Preflight Are Not Reproducible
+
+The driver is a mutable queue, not an immutable experiment:
+
+- It reloads the reference JSON and trainer path before every run. Code,
+  configuration and defaults can change between sequential arms.
+- It does not require HEAD=f2963ada, a clean tracked tree, the expected trainer or
+  driver hash, a reference-config digest or a signed 24-command plan.
+- The trainer hashes the file at process end. If the file changes during a run,
+  the recorded hash may describe bytes that were not the executed program.
+- Resume skips any existing summary filename without validating JSON, full
+  configuration, hashes, sidecars or completion. There is no exclusive lock,
+  atomic temporary directory, atomic summary replace or concurrent-driver guard.
+- A crash can leave overwritten sidecars or a truncated summary, which a later
+  resume may skip or the adjudicator may consume.
+
+Default Windows preflight is also broken. Piped help output encounters a Unicode
+arrow and exits 1 under cp1252. The driver ignores the return code/stderr and scans
+partial stdout, then reports all FIR flags absent. The live run therefore depended
+on an unrecorded UTF-8 environment/console state.
+
+**Execution repair:**
+
+1. Launch from an immutable detached worktree/container at a declared commit.
+2. Freeze one normalized full configuration and a 24-command JSON manifest before
+   execution; hash preregistration, driver, trainer, adjudicator, reference config,
+   environment lock and data.
+3. Capture code hashes at process start, the full command/environment, clean-tree
+   proof, Python/NumPy/Torch/CUDA/DataLoader RNG states and optimizer schema.
+4. Set UTF-8 explicitly; require preflight return code zero; expose stderr; use a
+   true parse/config dry run rather than help-string substring search.
+5. Use an O_EXCL family lock and per-run temporary directory. Validate every
+   summary and sidecar before atomic rename and before any resume skip.
+6. Make status cumulative and explicit; current ran/skipped fields are
+   session-local and can misstate overall completeness after resume.
+
+### Confirmed Problem 5: Endpoint and Mechanism Diagnostics Refer to Different Models
+
+Best-test metrics are captured at the best-validation epoch, but FIR tap L2 and
+lag profile are read from the live final-epoch model. Both eligible learned arms
+select epoch 13 while their tap diagnostics come from epoch 20. No selected
+checkpoint is saved, so the mechanism data cannot explain or reproduce the
+analyzed endpoint.
+
+The current absolute-lag profile also discards coefficient sign, phase and channel
+heterogeneity. Its order is undocumented: under the left padding and PyTorch
+cross-correlation convention, array index 0 corresponds to lag 15 and index 15 to
+lag 0. Learned final taps show that optimization eventually moved the kernel, but
+do not prove the promised step-zero gradient was recorded.
+
+**Fix:**
+
+- save and hash the full best-validation checkpoint and selected epoch;
+- extract signed per-channel taps, L2, residual/input norm ratio, activations,
+  gradients and optimizer moments from that checkpoint;
+- persist the step-zero gradient before the first optimizer update;
+- label final-epoch diagnostics as trajectory-only;
+- plot selected-checkpoint signed tap heatmaps, lag profiles and frequency/impulse
+  responses with explicit lag orientation; and
+- verify offline/streaming parity and no future-position Jacobian dependence.
+
+### Confirmed Problem 6: Frozen Adjudication Is Incomplete and Has Numerical Bugs
+
+The preregistration freezes architecture, data, evaluation, loss, label smoothing,
+optimizer, schedule, batch, epochs and candidate universe. The adjudicator checks
+only arm flags, kernel, category, epoch count, seed and the legacy-filter flag.
+It omits:
+
+- encoder, dimensions, layers, heads, dropout, max length and frozen text state;
+- learning rate, scheduler, warm-up, batch, loss, label smoothing and all
+  optimizer groups;
+- train/validation/test/cache hashes, data paths, n-eval, full candidate universe
+  and per-user sidecar integrity;
+- exact command, commit, dirty diff, trainer/driver/adjudicator/prereg hashes and
+  environment;
+- 20 finite history epochs, correct best-by-validation recomputation, selected
+  checkpoint and selected-epoch diagnostics.
+
+Additional confirmed defects:
+
+- For unequal constant samples, the zero-standard-error branch returns t=0 and
+  p=1 instead of the infinite-statistic limit.
+- A SciPy error silently replaces Welch t with a normal approximation at n=8,
+  changing the frozen analysis by environment.
+- Degenerate output can contain nonstandard Infinity; finite/domain and strict-JSON
+  validation are absent.
+- A1's planned paired sensitivity lacks a paired t/p/CI.
+- Outcome logic can call a statistically nonzero but entirely
+  practically-negligible CI supportive. A2 disagreement does not modify the A1
+  component verdict.
+
+**Fix:** pin and require the statistical environment; fail closed on any missing
+dependency; implement finite/domain/strict-JSON validation and correct degenerate
+limits; recompute endpoints from raw histories/sidecars; compare a canonical full
+schema/digest; and define a joint decision table for statistical significance,
+equivalence/SESOI and A2 weight-decay sensitivity. State explicitly that using a
+95% rather than conventional 90% CI for two one-sided alpha=.05 equivalence is a
+conservative design choice.
+
+### Confirmed Problem 7: E-A Cannot Identify the Historical Package Effect
+
+E-A tests a learned K=16 FIR against identity at one Musical_Instruments
+configuration, with A2 probing FIR-specific weight decay. If executed validly, it
+can estimate FIR utility in that new configuration. It cannot retrospectively
+decompose the historical singular package-arm difference, prove that FIR caused
+77--82% of the published package lift, or establish cross-category generality.
+
+The frozen verdict language overbridges:
+
+- A positive A1 would support an E-A FIR effect in this configuration, not identify
+  the historical package delta.
+- Equivalence within plus/minus 0.0008 would rule out effects at or beyond that
+  margin in this configuration; it would not prove the historical package
+  difference cannot involve FIR.
+- The margin is described as 25% of a historical package-arm combined lift of
+  0.0032, although 0.0032 is the full combined lift and the package increment is
+  described elsewhere as about 0.0025. A post-hoc fraction is not a scientific
+  SESOI rationale.
+
+The learned arm also adds 1,024 trainable FIR coefficients. Add an active,
+trainable parameter-matched placebo to separate temporal filtering from generic
+extra capacity. Then replicate across categories and kernel choices before any
+general claim.
+
+### Experiment Program and Release Boundary
+
+EXPERIMENT_PROGRAM.md still promises a cloned checkpoint, a learned-vs-fixed gate
+factor, identical parameter groups, per-step gradients, optimizer moments,
+impulse/frequency responses, FLOPs, all checkpoints and five seeds. The implemented
+E-A uses from-scratch same-seed initialization, three arms/eight seeds, a separate
+A2 optimizer group, no gate factor and a much narrower record. It says
+unit-verified, but no committed unit test or transcript exists. Add a tracked test
+covering:
+
+- A0/A1/A2 state and output equality before optimization;
+- learned-tap gradient under the real chunked-softmax loss;
+- frozen-tap no movement after an optimizer step;
+- FIR-specific weight-decay grouping and optimizer state;
+- causal Jacobian/no-future dependence;
+- complete config round trip and strict result validation; and
+- resume/lock/crash/atomic-write negative cases.
+
+RELEASE_MANIFEST.json updates the trainer's normalized hash and parent only. It
+does not include PREREG_FIR_V3.md, EXPERIMENT_PROGRAM.md, the driver,
+adjudicator, reference result/config or a launch plan. Its Git verification still
+covers 138 entries, and the stale v1.1.11 deposit remains invalid. The result
+summaries are untracked and the sidecars ignored.
+
+Create an experiment-family manifest now, without changing the running protocol:
+record preregistration/driver/trainer/adjudicator/reference/launch-plan hashes and
+the launch attestation. After completion, append exact hashes for all 24 summaries,
+all sidecars, logs, failures and one immutable adjudication whose input inventory
+is itself hashed. Wire it into strict release only after the integrity checks are
+complete. Never overwrite an evidence artifact in place.
+
+### Manuscript, Public Claims and Novelty: No f296 Repair
+
+Because f296 changes no paper/public source or compiled artifact, the previous
+confirmed contradictions remain:
+
+- historical unmatched FIR-plus-initialization/optimizer arms are still described
+  as causal filter alone, approximately 3x/80% contribution, four-category filter
+  support and the larger contributor;
+- TeX/PDFs retain confirming/refuting, unaffected refutation, positive mechanism
+  and density-consistent language despite no prospective margin, one fixed
+  thinning map and a nonsignificant interaction;
+- the plain-language companion/explainer retain all-four, withdrawn paired
+  intervals and sparse/dense deployment guidance;
+- closure/H10 remain partial literal blacklists rather than typed semantic parity;
+  and
+- canonical/draft/public/TeX/PDF source authority is still unresolved.
+
+Do not add any f296 partial metric to the manuscript. Until a clean blocked
+replication and remaining identifying studies exist, replace FIR component claims
+with the complete historical package-arm estimand and replace null/refutation
+claims with estimates, intervals and inconclusive-at-current-precision wording.
+
+The current primary-source novelty check remains materially unchanged:
+
+- WPGRec uses an undecimated stationary wavelet-packet tree, matched-scale graph
+  propagation and adaptive energy/spectral-flatness fusion:
+  https://arxiv.org/abs/2604.21305.
+- AlphaFuse learns ID signals in the null space of language embeddings and reports
+  cold-start/long-tail experiments: https://arxiv.org/abs/2504.19218.
+- FAERec adaptively gates and aligns ID/LLM embeddings for tail-item sequential
+  recommendation: https://arxiv.org/abs/2604.03688.
+
+These papers do not duplicate the exact proposed operator, but they narrow broad
+frequency-domain and language/ID-tail novelty. E-A alone is insufficient. Complete
+frequency-matched random-feature/permuted-text controls, training-target parity,
+repeated map-by-seed thinning, cross-category replication and an exact-protocol
+AlphaFuse comparison or executable exclusion.
+
+### Algorithm Optimization and Reproducibility Guidance
+
+Once scientific identity is secured, optimize the FIR without changing its
+estimand:
+
+1. **Streaming kernel:** maintain a per-layer/channel K-step ring buffer and compute
+   only the newest causal response, avoiding full-sequence left-padding and
+   recomputation during autoregressive inference.
+2. **Training kernel:** benchmark grouped depthwise Conv1d against a fused
+   tap-weighted rolling-window kernel; select by measured throughput, not assumed
+   FLOPs.
+3. **Precision:** verify FP32/TF32/BF16 behavior against a high-precision oracle,
+   including the zero-tap identity and long-sequence accumulation error.
+4. **Cache:** preallocate and reuse causal buffers; avoid per-step tensor creation
+   and layout transposes; document contiguous/layout assumptions.
+5. **Ablation:** separate kernel length, dilation, weight decay, gate, parameter
+   count and initialization in a nonsingular factorial. Include a trainable
+   parameter-matched placebo.
+6. **Correctness gates:** test batched/offline versus token-by-token streaming
+   equality, state reset, mixed sequence lengths, padding/masks, checkpoint reload,
+   deterministic CPU reference and no-future Jacobian.
+7. **Report:** quality with paired uncertainty, parameters/trainable parameters,
+   MACs/FLOPs, peak memory, throughput, p50/p95 latency, energy and wall-clock
+   training cost at realistic batch and sequence lengths.
+
+Do not optimize on the held-out test curves. Freeze validation-selected checkpoints
+first and run the test evaluator once after the outcome quarantine opens.
+
+### Writing and Figure Repair
+
+The roughly 26,156-word main manuscript remains an audit/retraction chronology.
+For a journal-facing rewrite:
+
+1. Reduce the body to roughly 10--14k words. Move run histories, response
+   transcripts, claim retractions and detailed gate logs to a supplement.
+2. Abstract: state the exact treatment bundle, analysis unit, two or three
+   uncertainty-bearing results, one negative boundary and the main identification
+   limitation. Do not mention a partial E-A result.
+3. Introduction: distinguish the reusable evaluation/provenance apparatus from
+   incremental FIR/TAPE modeling and state one falsifiable contribution per
+   paragraph.
+4. Methods: define every arm once; show treatment, seed block, endpoint-selection
+   and outcome-sequestration flow; state which evidence is prospective,
+   outcome-visible or exploratory.
+5. Results: lead with paired effect/CI forests and robustness; remove PASS,
+   confirmed, refuted and mechanism labels unless backed by a prospective decision
+   rule.
+6. Related work: add a concise comparison matrix for WPGRec, AlphaFuse, FAERec and
+   exact-protocol baselines, covering representation, fusion/filter, tail
+   definition, candidate universe, tuning budget and uncertainty.
+7. Limitations/ethics/reproducibility: consolidate repeated caveats and state
+   author-operated automation, interim visibility, data rights and external
+   verification limits plainly.
+
+Recommended post-replication figures:
+
+- paired seed slope plot for A0/A1/A2, with arm order and failed/missing runs shown;
+- forest plot of paired contrasts with multiplicity-adjusted intervals and the
+  justified equivalence margin;
+- validation learning curves with selected epochs marked; keep test curves out of
+  the tuning display;
+- signed selected-checkpoint tap heatmap, channel distribution, lag profile and
+  frequency response with lag orientation documented;
+- intervention uncertainty plot crossing optimizer seeds with independent
+  thinning maps; and
+- compute/quality Pareto chart for identity, FIR and closest comparator.
+
+Use accessible colors, direct labels, grayscale checks, readable minimum text,
+complete captions, alt text, logical reading order and machine-readable data.
+
+### PDF and Figure Audit
+
+No PDF byte changed between e6e7a294 and f2963ada:
+
+| Artifact | SHA-256 | Pages / bytes | Result |
+|---|---|---:|---|
+| PAPER_SUBMISSION.pdf | 3595059a05f29a02612fbae28820fcaceeb9281eb03b576c48611791b63bb354 | 56 / 1,388,758 | Tagged reader; no gross corruption; Fig. 1 caption split pp.28--29; p.56 near-empty; dense/tiny tables |
+| paper_tex/PAPER_TORS.pdf | 9308005466907386fcb3ed0bfaf5e94abc808ee897180d1830d5ff8d28e1b366 | 49 / 452,360 | Untagged; author/maintainer placeholders; tiny dense content; stale claims |
+| paper_tex/PAPER_TORS_acmsmall.pdf | f050ed849cf9d27b9e70d3f99866e0748afff2e1f8b05c0f5f307e26fb40f407 | 51 / 459,565 | Untagged; placeholders, bare DOI and Article . furniture; stale claims |
+
+All 156 pages were rendered at 120 DPI and inspected across 21 contact sheets;
+61 high-risk pages were inspected at 240 DPI. No missing/blank page, gross
+clipping/overlap, broken glyph or missing figure was found. The reader caption
+still splits mid-caption across pp.28--29 and its final page is nearly empty.
+Novelty/attribution tables and figure annotations remain too small, and the
+figures contain no seed/map uncertainty.
+
+Accessibility is unchanged: the reader is tagged and has limited alt/table
+structure, but extensive NonStruct content, incomplete metadata and no
+bookmarks/link annotations; both venue PDFs are untagged and have no alt
+structure. Venue CreationDate predates the current manifest/source chronology,
+so build provenance remains non-atomic/stale-looking.
+
+After visual sign-off, only the exact temporary render tree for this run was
+deleted and verified absent.
+
+### Author, Policy and Legal Verification
+
+**AUTHOR/INSTITUTION/LEGAL VERIFICATION:** identity placeholders remain in
+Markdown and TeX, CITATION.cff uses Ray0419, and no complete funding,
+competing-interest, ORCID or manuscript-level GenAI/automation disclosure was
+found. Redistribution authority remains explicitly uncertain.
+
+Before submission, independently verify legal author names/order and all-author
+approval, affiliation/country/contact/ORCID, funding/conflicts, accurate AI and
+automation disclosure, originality/simultaneous-submission status, privacy/ethics,
+derived-data redistribution authority, model/data/code licenses, target venue,
+article type and anonymity policy.
+
+### Open Questions Requiring Author Decision or New Evidence
+
+1. Will the current E-A queue be preserved unchanged and explicitly labeled
+   exploratory/outcome-visible?
+2. Did any person or automation view earlier per-epoch test logs before this audit,
+   and were any operational or scientific decisions made afterward?
+3. Why were five previously used seeds selected, and were their prior outcomes
+   consulted?
+4. What scientifically meaningful minimum FIR effect justifies the equivalence
+   margin?
+5. Will a fresh unused-seed replication use paired/block inference, counterbalanced
+   arm order, outcome quarantine and an immutable launch?
+6. Will E-B, E-C, E-C2 and E-E be completed, or will semantic, density and novelty
+   claims be narrowed now?
+7. Which exact checkpoint/model do mechanism diagnostics intend to explain?
+8. Who can attest launch time, clean state, identity, disclosures, licenses and
+   submission facts?
+
+### Running Checklist
+
+- [x] Freeze the filesystem cutoff and exclude later campaign files.
+- [x] Inspect the f296 scientific/code/release delta.
+- [x] Audit exactly the four eligible summaries and eight sidecars.
+- [x] Recompute the one eligible matched contrast and label it non-inferential.
+- [x] Verify config parity, initialization, data hashes, sidecar hashes/counts and
+      aligned user/target rows.
+- [x] Independently probe FIR identity, gradient reachability and frozen control.
+- [x] Reproduce seed reuse, matched-analysis mismatch, endpoint/diagnostic mismatch,
+      preflight failure and adjudicator edge cases.
+- [x] Verify manifest/deposit scope and no manuscript/public/PDF delta.
+- [x] Recheck closest literature against primary sources.
+- [x] Render and inspect all 156 PDF pages plus targeted high-resolution pages.
+- [x] Remove only the signed-off render tree and verify absence.
+- [ ] Preserve the current E-A family and disclose this interim outcome exposure.
+- [ ] Complete the current queue without adaptation or treat any deviation as a
+      new exploratory protocol.
+- [ ] Preregister a fresh unused-seed, paired/blocked, counterbalanced replication
+      with quarantined test outcomes.
+- [ ] Freeze a complete canonical config/launch manifest and immutable execution
+      environment.
+- [ ] Repair preflight, locks, atomic writes, resume validation and cumulative
+      status.
+- [ ] Replace the adjudicator with full-schema/provenance/finite-data validation
+      and corrected paired statistics.
+- [ ] Save selected checkpoints and selected-epoch mechanism diagnostics.
+- [ ] Add a parameter-matched active placebo and cross-category/kernel replication.
+- [ ] Manifest the full experiment family and append-only result/adjudication
+      inventory.
+- [ ] Complete semantic controls, target parity, independent thinning maps and the
+      closest-protocol comparator.
+- [ ] Remove stale attribution/refutation/density/public claims and regenerate all
+      paper surfaces from a typed claim registry.
+- [ ] Implement and benchmark the streaming/fused FIR with correctness gates.
+- [ ] Rewrite the manuscript and rebuild accessible, metadata-complete PDFs.
+- [ ] Resolve venue, identity, ORCID, funding, COI, AI disclosure, licenses,
+      redistribution and ethics.
+- [ ] Produce a clean-clone, two-build release and fresh immutable deposit.
+
+## Audit Run - 2026-07-22 17:52 Australia/Sydney
+
+### Review Verdict
+
+**Recommendation: reject / not ready for top-journal submission.** The fixed
+`e6e7a294` snapshot contains useful release engineering and wording repairs, but
+the accompanying response again equates passing literal-string checks with
+scientific and release closure. The new executable closure ledger exits 0 while
+the generator, emitted JSON, Markdown, TeX, PDFs and public pages retain the
+confounded FIR attribution and incompatible refutation/density story. The advertised
+Bash/WSL command still exits 7, the full release cannot reach attestation, and its
+build-then-verify ordering rejects a byte-nondeterministic PDF it has just built.
+No scientific result, preregistration or comparison changed at the fixed cutoff.
+
+A post-cutoff commit launched E-A while this audit was running. Its outcome values
+were deliberately not inspected, but its frozen plan has urgent design defects:
+it calls previously used seed numbers fresh and makes an independent-arm Welch
+test primary despite exact per-seed matched starting states and common random
+numbers. Unless corrected before outcome access, this campaign should be treated
+as exploratory rather than as the planned confirmatory repair.
+
+Status labels in this section mean:
+
+- **CONFIRMED**: reproduced from fixed-snapshot files, commands, diffs or rendered
+  artifacts.
+- **PLAUSIBLE RISK**: a reviewer concern supported by the record but requiring a
+  targeted experiment or venue decision.
+- **AUTHOR VERIFICATION**: cannot be established independently from this workspace.
+- **POST-CUTOFF ALERT**: observed after the fixed cutoff and excluded from the
+  fixed-snapshot verdict; recorded only to prevent avoidable evidence contamination.
+
+### Fixed Snapshot, Moving-Target Boundary and Scope
+
+| Item | Audited value |
+|---|---|
+| Heartbeat | `2026-07-22T07:52:40.120Z` |
+| Fixed filesystem cutoff | `2026-07-22T17:53:07.4477256+10:00` (`07:53:07.4477256Z`) |
+| Branch at cutoff | `codex/bestrec-sota-results`, clean and synchronized |
+| Audited HEAD | `e6e7a2940a0beefd0cb17bdee57351c91abd8ea3` |
+| Previous audited HEAD | `be23ba13eb05f954be519b20b0415204d7a6ec4c` |
+| Fixed-scope commits | `4e7e1c53` repair; `9fe81f40` lexical second pass; `e6e7a294` response only |
+| Delta | 26 files, 679 insertions, 97 deletions; about 24 files / 171 insertions / 97 deletions after excluding prior-audit and response prose |
+| New scientific evidence at cutoff | none |
+| Post-cutoff state, excluded | `f2963ada2ed5202944679964c7fc2de94ab6e267` landed about 17:59 and was observed one commit ahead at launch; E-A launched about 18:01 and produced untracked logs/results |
+
+The fixed audit covered the canonical/draft Markdown, TeX sections and tables,
+three compiled PDFs, public companion/HTML, metadata, generator and generated JSON,
+experiment program/results inventory, release/build/health/deposit machinery,
+figures and the newest response. It executed release and gate variants in an
+isolated detached worktree, compared the scientific delta, refreshed the novelty
+check against primary/official sources, and rendered every PDF page. Isolated
+release artifacts were removed. Post-cutoff result **contents and outcome values
+were not opened**.
+
+### Evidence Delta: Genuine Engineering Repairs, No Scientific Advance
+
+**CONFIRMED genuine repairs:**
+
+- `_bestrec_run/closure_ledger.py` is now executable and is wired as the first
+  release stage. It exits 0 on the fixed snapshot.
+- Native PowerShell draft compilation exits 0 with `BUILD OK`; strict compilation
+  exits 1 only at the maintainer placeholder. Console and waiver logs are BOM-free
+  UTF-8, and strict/waived H1 behavior is correct.
+- The artifact graph and selected Git-backed manifest checks pass. Several main
+  and public labels were narrowed from filter to package wording; PLC now reports
+  the TFV2 independent-arm intervals and discloses mixed selection timing.
+- README, canonical-submission metadata, CFF and Zenodo wording moved partway from
+  universal-number claims toward the package/175-cell boundary.
+
+**CONFIRMED no scientific delta at `e6e7a294`:**
+
+- No raw result, preregistration, `EXPERIMENT_PROGRAM.md`, bibliography, baseline,
+  ablation, adjudication or parity-report artifact changed.
+- `hstu_results_manifest.json` changes one metric label only.
+  `hstu_tables.json` changes the Table 1c caption only; no numeric result leaf
+  changes.
+- The added public confidence intervals restate existing TFV2 values. They are not
+  a new run, new split, new seed, new correction or new comparison.
+- E-A, E-B, E-C, E-C2, E-D and E-E were unchecked and
+  `PREREG_FIR_V3.md` did not exist at the cutoff. The response itself admits that
+  no experiment ran and no scientific claim gained support.
+
+Therefore the fixed delta is a terminology/release patch, not an empirical,
+methodological or novelty advance.
+
+### Confirmed Problem 1: Executable Closure Is Still False Closure
+
+Both declared checks pass:
+
+| Check | Exit | What it actually establishes |
+|---|---:|---|
+| `closure_ledger.py` | 0 | Selected literal strings are absent from a partial file list. |
+| H10 with `DRAFT_WAIVER=1` | 0 | Selected exact blacklist items and the waived identity placeholder are absent from another partial list. |
+
+They do **not** establish the response's claimed cross-surface closure:
+
+- `closure_ledger.py:38-43` scans only three generator files and selected
+  spellings. Its public list at `:45-59` omits `PAPER_DRAFT.md`, all TeX and PDFs,
+  `hstu_tables.json`, and most generated artifacts.
+- `check_tex_health.py:127-180` uses an exact partial blacklist and a fixed source
+  set that omits the canonical working draft, generators and emitted JSON; PDF
+  matching is case-sensitive and PDF presence is conditional.
+- A safe negation fixture, `No single-lever isolation is claimed.`, is rejected by
+  both gates, while the unsupported paraphrase `The FIR module alone accounts for
+  the observed gain.` passes both. This is simultaneously a lexical false positive
+  and a semantic false negative.
+- Whole-manuscript Markdown-to-TeX derivation is asserted but not implemented.
+  The wrappers regenerate tables only; no section-level generator or semantic
+  parity check exists.
+
+Concrete fixed-snapshot residue disproves the response's zero-residue claim:
+
+- `build_hstu_tables.py:840,845,849,1937,1938`: `(isolation)`;
+  `:848`: `causal filter alone +0.0015`; `:1027,2003`: `filter share`;
+  `:1402`: `DECOMP5 isolation`.
+- `hstu_results_manifest.json:799,876,944`: `(isolation)`;
+  `:3099`: `filter share`; `:10991`: `DECOMP5 isolation`.
+- `hstu_tables.json:35` contains two isolation rows, a causal-filter headline and
+  filter robustness wording; `:38` reports `filter share 82%`.
+
+**Required governance repair:** create one required surface registry covering
+canonical Markdown, draft/historical material, TeX/shared source, generators,
+generated JSON, table fragments, figures/data, public pages, metadata and every
+required PDF. For each claim, store an ID, estimand, exact arm bundle, estimate,
+unit, uncertainty scope, multiplicity, true pairing/block, seeds/maps/splits,
+selection timing, preregistration class, attribution scope and approved wording.
+Generate or parse these fields across surfaces, fail on missing surfaces or
+semantic mismatch, and retain normalized string blacklists only as a secondary
+regression layer.
+
+### Confirmed Problem 2: Release Execution and Proof Cannot Close
+
+| Fixed-snapshot probe | Exit/result | Interpretation |
+|---|---:|---|
+| Native PowerShell draft / strict | 0 / 1 | Draft compiles; strict correctly rejects maintainer placeholder. |
+| Health strict / draft waiver | 2 / 0 | Expected identity-only distinction. |
+| Release self-test | 0 | Synthetic placeholder case works, but does not prove live release. |
+| Intended WSL Windows-Python draft | **7** | Linux manifest path is passed verbatim to Windows Python and cannot be opened. |
+| WSL draft with `ALLOW_HEAD_EPOCH=1` | 0 | Escape hatch masks manifest-path failure; not the claimed strict route. |
+| WSL strict with the escape | 2 | Correctly stops at placeholder. |
+| Full `release_build.py` in committed-only tree | **2** | Fails during empirical chain on absent ignored externals/assets; no venue/deposit/attestation stage. |
+| Manifest `--verify-git HEAD` / full `--verify` | 0 / 2 | 138 Git-backed entries pass; 138 release assets are absent in a clean clone. |
+| Deposit `--check-only` | 2 | `v1.1.11-deposit` is 18 commits behind and has 16 mismatches. |
+| Release attestation | absent | Failures leave no run record. |
+
+Additional confirmed design defects:
+
+1. **WSL path conversion:** the response's exact Windows-venv route passes
+   `/mnt/c/.../RELEASE_MANIFEST.json` to `python.exe`. Convert every Windows-tool
+   argument with `wslpath -w` or run native Linux Python/Tectonic end to end.
+2. **Not fail-closed:** an invalid manifest commit becomes epoch 0 in Bash and
+   silently falls back to HEAD in PowerShell. Require a resolvable commit and a
+   positive, manifest-derived epoch; prohibit fallback in release mode.
+3. **Nondeterministic build/manifest deadlock:** two consecutive native draft
+   builds under the same epoch both exit 0 but differ:
+   TORS `ceb7bc70...` vs `4ba5786d...` and acmsmall `733be3d9...` vs
+   `b6ffe899...`. The extracted TORS text digest is stable, but raw PDF `/ID` and
+   bytes differ. The orchestrator builds first and then verifies the pinned raw PDF,
+   so it rejects its own new output.
+4. **Checked-in epoch mismatch:** both venue PDFs carry CreationDate
+   `D:20260722062609-00'00'` (the prior `be23ba13` epoch), while the fixed manifest
+   declares parent `4e7e1c53` / `2026-07-22T07:35:58Z`. The reader carries
+   wall-clock `D:20260722074620+00'00'`. The current artifacts are therefore not
+   manifest-epoch builds.
+5. **Stale-output binding:** the orchestrator does not regenerate the reader PDF or
+   figures, yet a future attestation would hash them. Success would therefore not
+   prove those outputs came from the current inputs/run.
+6. **Incomplete provenance:** release scripts, health/closure gates, TeX sections
+   and acmsmall machinery are outside the manifest. The manifest refers to parent
+   `4e7e1c53` while current second-pass TeX is `9fe81f40`.
+7. **Weak attestation design:** it is written only after total success and omits
+   dirty-tree state, source/tool-script digests, exact environment/epoch/waiver,
+   input-to-output freshness and the actual compiler path; its version lookup can
+   report a different Tectonic than the one used.
+
+**Required release repair:** split immutable inputs from generated outputs; record
+and hash the complete command, environment, source tree, compiler and gates at run
+start; build in a clean output directory; prove freshness; normalize PDF metadata
+or compare a documented semantic digest (text, page geometry, fonts, links,
+embedded objects and rendered-page hashes); make failure attestations durable; run
+the exact native Windows and WSL commands in CI; then make a fresh clone reproduce
+the release twice before cutting a new immutable tag.
+
+### Confirmed Problem 3: FIR Attribution Remains Unidentified
+
+The fixed manuscript now sometimes says `package arm`, but still makes component
+claims that its unmatched bundled design cannot support:
+
+- `PAPER_SUBMISSION.md:27` says the package accounts for most of the lift.
+- `:253` says `causal filter alone`, describes the result as robust across K and
+  presents causal-filter attribution.
+- `:308-321` reports 77--82% shares, about 3x/80% contribution and says the
+  baseline does not learn the bias as reliably.
+- `:543` calls FIR the larger contributor.
+- `paper_tex/sections/05-results.tex:13,72` preserves `causal filter alone`,
+  `dead weight` and filter transfer/robustness; `07-conclusion.tex:6` preserves
+  the larger-contributor attribution.
+
+The arms differ in FIR state, singular initialization, weight-decay bootstrap and
+optimizer trajectory; same seed numbers were not true initialization pairing in
+the historical comparison. At the cutoff, the only identified quantity was the
+**observed FIR-plus-initialization/optimizer package-arm difference**.
+
+**Immediate writing repair:** remove `alone`, `isolation`, `share`,
+`contributes`, `larger contributor` and filter-level transfer/robustness from all
+sources and generated artifacts. State the complete arm definitions, lack of
+pairing, estimates, intervals and attribution limitation once.
+
+**Identification and algorithm-optimization repair:**
+
+- Use a gradient-active residual FIR, identity at initialization, with one superset
+  model cloned across arms. Clone backbone parameters, parameter ordering, optimizer
+  groups/state, data order, negative samples, dropout streams, validation calls,
+  checkpoint cadence and stopping rule.
+- Cross FIR learning with FIR-specific weight decay/gate state. Analyze the
+  per-seed matched block as designed; independent-arm inference can be a
+  sensitivity analysis, not the confirmatory default.
+- Predeclare endpoint, effect/equivalence estimands, multiplicity, MDE, seed count,
+  stopping and category-replication rule before launch.
+- Log gradient reachability, tap/gate gradients, optimizer moments, impulse and
+  frequency responses, effective kernels and all checkpoints.
+- For deployment, implement a stateful K-step ring buffer or fused grouped
+  depthwise kernel. Verify exact offline/streaming parity, then report quality,
+  parameters, MACs/FLOPs, peak memory, throughput, p50/p95 latency and energy
+  against the identity control at realistic sequence lengths and batch sizes.
+
+### Confirmed Problem 4: Null, Refutation and Density Claims Conflict
+
+`PAPER_SUBMISSION.md:371` correctly says no equivalence margin exists and the tail
+result is inconclusive. Yet `:403,434,543` still says refutation/refuted/refuting;
+`05-results.tex:141,149,184,231` says confirming/refuting, `The refutation is
+unaffected`, `positive mechanism behind the refutation` and `refuted`; and
+`07-conclusion.tex:6` says `refuting, not confirming`. The main also calls one
+bundled, one-map R1 intervention a `controlled thinning contrast` (`:469`) despite
+admitting the fixed draw, bundled changes, omitted subset uncertainty and
+nonsignificant interaction.
+
+Failure to reject is not equivalence. A one-map synthetic intervention cannot
+estimate map uncertainty or identify real-world density as the cause. Required:
+
+- replace confirm/refute/inert/mechanism labels with the estimate, interval,
+  analysis timing and `inconclusive at available precision`;
+- run E-C2 with several prospectively frozen independent thinning maps crossed
+  with optimizer seeds;
+- estimate map and seed variance hierarchically or with a two-level bootstrap;
+- predeclare a scientifically meaningful equivalence margin/MDE and the full
+  interaction/trend multiplicity family; and
+- keep dataset-intervention conclusions separate from real-world causal mechanism.
+
+### Confirmed Problem 5: Public and Canonical Surfaces Contradict the Caveats
+
+Some PLC and metadata wording genuinely improved, but the live record still says:
+
+- `PLAIN_LANGUAGE_COMPANION.md:95-105`: small/sparse catalogs benefit, large/dense
+  catalogs do not, plus a practitioner density prescription despite interaction
+  `p=.13` and failure of the thinning reproduction.
+- `:129`: `rival referee` for author-operated automation; `:181` is an orphan
+  fragment. The page implies all counted claims are protected despite the false
+  closure above.
+- `companion_site/explainer.html:241`: the filter improved all four, with withdrawn
+  paired intervals; `:256,268,295` turns density into deployment guidance and says
+  scarcity makes text valuable.
+- `:331,409` implies universal prospective sealing; `:333,412,421` conflates 175
+  gated cells with every printed number and treats PDF production as proof;
+  `:415` says the filter reliably improves four datasets without cherry-picking.
+  `:323` says `a author-operated` and `:334` retains `rival referee`.
+- `CANONICAL_SUBMISSION.md:3-4` names `PAPER_DRAFT.md` as canonical, yet its
+  delete-before-submission trailer at `PAPER_DRAFT.md:772+` retains searchable
+  withdrawn claims about confirmed/refuted density and filter-alone generalization.
+
+Move the historical/retraction diary outside the canonical/deposit boundary.
+Generate the PLC, explainer, README, CFF and archive metadata from the typed claim
+registry. Do not use `rival`, `independent` or `signed` for an author-operated
+automation unless independence and signatures are actually established.
+
+### Post-Cutoff E-A Design Alert -- Outcomes Excluded
+
+Commit `f2963ada` and all later files are outside the fixed verdict. This subsection
+audits design only because the campaign was launched during the review; no metric
+value was inspected.
+
+1. **[CONFIRMED literal falsehood / selection risk]**
+   `PREREG_FIR_V3.md:56-57` calls seeds 20260713--20260720 fresh and never used in
+   any prior result file. At least 20260713--20260717 already occur throughout
+   committed FIRB result filenames for Industrial_and_Scientific and CDs_and_Vinyl.
+   Replace this with the exact prior-use inventory and explain why the sequence was
+   chosen without looking at relevant MI E-A outcomes.
+2. **[CONFIRMED analysis-design mismatch]** Lines `58-59` deliberately create
+   exact per-seed matched initial states/common random numbers, while `:69-80` makes
+   8-vs-8 Welch primary and paired-by-seed analysis descriptive. CUDA nondeterminism
+   does not erase the experimental block; it is the post-start randomness the
+   matched design is intended to control. NIST defines observations as paired when
+   the ith values correspond and analyzes paired differences
+   ([NIST paired observations](https://www.itl.nist.gov/div898/handbook/prc/section3/prc311.htm));
+   its randomized-block model explicitly includes block effects
+   ([NIST randomized blocks](https://www.itl.nist.gov/div898/handbook/pri/section3/pri332.htm)).
+   Make the per-seed contrast/block model primary; use Welch only as sensitivity.
+3. **[CONFIRMED margin-rationale inconsistency]** `:72-75` calls +0.0032 the
+   historical `package-arm combined lift` while the paper distinguishes the full
+   combined lift (+0.0032) from the package-arm increment (+0.0025). Recalculate
+   and justify the margin from a scientific minimum important effect, not a
+   mislabeled post-hoc fraction.
+4. **[CONFIRMED incomplete integrity gate]** The prereg freezes encoder, dimension,
+   layers, heads, dropout, loss/smoothing, batch, schedule, data/evaluation and
+   candidate universe (`:39-48`), but `adjudicate_fir_v3.py:64-75` checks only
+   arm flags, kernel, category, epochs, seed and absence of the legacy filter.
+   It does not bind code commit/clean tree, data hashes, full command, n-eval,
+   reference config or most frozen hyperparameters.
+5. **[CONFIRMED evidence gap]** `EXPERIMENT_PROGRAM.md:44-45` says
+   `unit-verified`, but no committed test or verification transcript was found.
+   Its original diagnostics promise per-step gradients, optimizer moments,
+   impulse/frequency response, FLOPs and all checkpoints, while the visible
+   implementation records a much narrower subset.
+
+**Immediate author decision:** if outcomes have not been viewed, stop or quarantine
+the run, correct and commit the preregistration/adjudicator, use genuinely
+preselected seeds and relaunch. If any outcome has been viewed, preserve the
+current files, label the campaign exploratory/outcome-visible, and preregister a
+fresh replication with a new seed set and complete configuration/provenance gate.
+
+### Novelty and Closest-Literature Check
+
+No novelty claim or bibliography changed in the fixed delta, but the boundary was
+rechecked against primary/official sources:
+
+- [WPGRec](https://arxiv.org/abs/2604.21305) uses an undecimated stationary wavelet
+  packet tree, subband graph propagation and adaptive energy/spectral-flatness
+  fusion; the official
+  [SIGIR 2026 accepted-paper list](https://sigir2026.org/en-AU/pages/program/accepted-papers)
+  identifies it as a short paper. This narrows any broad frequency-domain novelty
+  claim to the paper's specific left-causal depthwise FIR/package design.
+- [AlphaFuse](https://arxiv.org/abs/2504.19218) preserves language semantics while
+  learning ID signals in the language-embedding null space and evaluates
+  cold-start/long-tail settings. It remains the closest omitted frozen-language/ID
+  comparator.
+- [FAERec](https://arxiv.org/abs/2604.03688) adaptively gates ID and LLM embeddings
+  and aligns them at item/feature levels for tail-item sequential recommendation.
+  The official [SIGIR 2026 program](https://sigir2026.org/SIGIR2026_program.pdf)
+  lists it as a full paper.
+
+This does not prove absence of novelty, but the manuscript itself grades the
+algorithmic additions incremental. A top-journal algorithm claim remains
+**plausibly rejectable** without E-B frequency-matched semantic controls, E-C
+target-multiplicity parity, E-C2 map/seed uncertainty, and an exact-protocol
+AlphaFuse comparison or executable exclusion. Match every baseline on data,
+candidate universe, evaluation, tuning budget, parameters, compute and uncertainty.
+
+### Writing and Submission Readiness
+
+The main manuscript is about 26,156 whitespace-delimited words; the draft is about
+29,284. The body still reads as a forensic audit and retraction chronology rather
+than a focused journal argument.
+
+**Concrete rewrite:**
+
+1. Target a 10--14k-word scientific body and move run histories, claim
+   retractions, gate transcripts and extended provenance to a supplement.
+2. Abstract: problem; exact treatment bundle; two or three estimates with
+   uncertainty; one boundary/negative result; principal identification limitation.
+3. Introduction: separate the reusable evaluation apparatus from the incremental
+   FIR/TAPE package and state one falsifiable contribution per paragraph.
+4. Related work: use a compact matrix for WPGRec, AlphaFuse, FAERec and closest
+   protocol baselines; distinguish frequency representation, text/ID fusion,
+   intervention unit, evaluation protocol and evidence gap.
+5. Methods/experiments: define arms once, show the estimand and analysis unit,
+   distinguish prospective/outcome-visible/exploratory evidence, and move audit
+   chronology out of results.
+6. Results: lead with effect estimates and intervals, then robustness/negative
+   results; remove PASS/refute/confirm labels not backed by a predeclared decision
+   rule.
+7. End with one limitations/ethics/reproducibility synthesis, not repeated caveats
+   throughout every section.
+
+### PDF and Figure Audit
+
+| Artifact | SHA-256 | Pages / bytes | Visual and metadata result |
+|---|---|---:|---|
+| `PAPER_SUBMISSION.pdf` | `3595059a05f29a02612fbae28820fcaceeb9281eb03b576c48611791b63bb354` | 56 / 1,388,758 | Tagged reader; no gross corruption; Figure 1 caption splits pp.28--29; p.56 nearly empty; dense tables/annotations. |
+| `paper_tex/PAPER_TORS.pdf` | `9308005466907386fcb3ed0bfaf5e94abc808ee897180d1830d5ff8d28e1b366` | 49 / 452,360 | Untagged; maintainer/author placeholders; tiny dense text/tables; stale scientific wording remains. |
+| `paper_tex/PAPER_TORS_acmsmall.pdf` | `f050ed849cf9d27b9e70d3f99866e0748afff2e1f8b05c0f5f307e26fb40f407` | 51 / 459,565 | Untagged; maintainer placeholders, bare DOI and `Article .` furniture; stale wording remains. |
+
+All 156 pages were rendered with Poppler and inspected across 21 contact sheets;
+18 reader, 21 TORS and 22 acmsmall high-risk pages were rechecked at 240 DPI. No
+page is missing or fully blank, and no gross clipping, overlap, broken glyph or
+missing figure was found. The reader has a structure tree, language metadata and
+figure alt text, but no bookmarks/link annotations or complete document metadata;
+the venue PDFs are untagged and lack alt structure. This is only a gross-layout
+pass; it does not make the PDFs scientifically or submission clean. The exact
+temporary render tree and its nested comparison-worktree registration were removed
+after sign-off and verified absent.
+
+**Figure/layout fixes:**
+
+- Keep reader Figure 1 and its complete caption together; move technical caption
+  detail to the text/supplement and reflow the p.56 orphan.
+- Replace the explainer's causal density schematic with actual MI/VG estimates and
+  interaction intervals. Label the thinning panel `one fixed draw; no map
+  uncertainty; did not reproduce MI` and remove causal arrows/prescriptions.
+- After E-C2, plot both optimizer-seed and thinning-map uncertainty, with distinct
+  styling for prospective, outcome-visible and exploratory panels.
+- Enlarge novelty tables/annotations, use accessible colors, test grayscale, add
+  alt text/logical reading order/table headers/bookmarks/links, and produce tagged
+  venue PDFs.
+- Put real author/venue furniture in only after the anonymity regime is decided.
+
+### Author, Policy and Legal Verification
+
+**AUTHOR/INSTITUTION/LEGAL VERIFICATION:** `PAPER_SUBMISSION.md:3` and
+`paper_tex/paper-shared.tex:37-42` retain identity placeholders; `CITATION.cff`
+uses `Ray0419`. No funding, competing-interest, ORCID or manuscript-level
+GenAI/automation disclosure was found. `PAPER_SUBMISSION.md:567` explicitly leaves
+the redistribution basis uncertain.
+
+Before submission, independently verify legal author names/order and all-author
+approval, affiliation/country/contact/ORCID, funding/conflicts, accurate AI
+assistance disclosure, originality/simultaneous-submission status, privacy/ethics,
+derived-data redistribution authority and upstream code/model licenses. Confirm
+the target venue and current policy; do not rely on an automated audit for facts
+that require institutional or author attestation.
+
+### Open Questions Requiring Author Decision or New Evidence
+
+1. Is the intended top-journal contribution the evaluation/provenance apparatus,
+   the incremental FIR package, or an empirical boundary result? The current paper
+   markets all three.
+2. Was any E-A outcome viewed after `f2963ada` launched? If yes, will the current
+   campaign be preserved as exploratory and followed by a clean preregistered
+   replication?
+3. What scientific minimum important FIR effect justifies the equivalence margin,
+   and why should a matched design be analyzed as independent?
+4. Will E-B, E-C, E-C2 and E-E be executed, or will semantic, density and novelty
+   claims be narrowed now?
+5. Is WSL a supported release path, and will it use native Linux tools or a fully
+   tested path/environment bridge to Windows tools?
+6. What semantic PDF reproducibility contract will replace the impossible raw-hash
+   build-then-verify ordering?
+7. Which venue/article type/anonymity regime is intended, and who can attest
+   identity, disclosures, licensing and submission facts?
+
+### Running Checklist
+
+- [x] Freeze a clean cutoff and distinguish the later moving target.
+- [x] Inspect the complete fixed delta and prove there is no new scientific
+      numeric/reference evidence.
+- [x] Execute closure/H10, including semantic false-positive/negative fixtures.
+- [x] Execute native PowerShell, intended WSL, invalid-manifest and full-release
+      paths in an isolated committed-only worktree.
+- [x] Verify selected manifest/deposit behavior and two same-epoch PDF builds.
+- [x] Recheck WPGRec, AlphaFuse and FAERec against primary/official sources.
+- [x] Render and inspect all 156 pages across all three PDFs.
+- [x] Audit the post-cutoff preregistration design without reading outcome values.
+- [ ] Correct or quarantine post-cutoff E-A; make block/paired inference primary
+      and bind every frozen configuration/provenance field.
+- [ ] Replace the closure/H10 blacklists with a required typed surface-parity
+      registry and semantic tests.
+- [ ] Remove every stale FIR attribution, refutation, density and public overclaim;
+      regenerate all source and rendered surfaces.
+- [ ] Repair WSL path conversion and fail closed on any manifest/epoch failure.
+- [ ] Redesign build/manifest/attestation ordering around fresh outputs and a
+      documented semantic PDF digest.
+- [ ] Manifest all authoritative sources, scripts, gates, TeX sections, figures and
+      required outputs.
+- [ ] Complete E-A valid replication, E-B semantic controls, E-C target parity,
+      E-C2 independent maps and E-E closest-protocol comparison.
+- [ ] Report declared multiplicity, scientifically justified margins/MDE, true
+      pairing and map/seed/split uncertainty.
+- [ ] Benchmark the optimized FIR ring buffer/fused kernel for exactness, quality,
+      latency, throughput, memory, FLOPs and energy.
+- [ ] Rewrite the body, public companion and explainer from one claim registry.
+- [ ] Reflow figures/pages and deliver accessible, metadata-complete PDFs.
+- [ ] Resolve venue, identity, ORCID, funding, COI, GenAI, licensing and ethics.
+- [ ] Produce two fresh-clone releases, attest successes/failures and cut a new
+      immutable deposit.
 
 ## Audit Run - 2026-07-22 16:51 Australia/Sydney
 

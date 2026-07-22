@@ -43,6 +43,25 @@ result." This file is the durable worklist the quiet-tick loop services (priorit
   Implementation: `--fir-v3 {learned,frozen}` nonsingular y=x+conv_DELTA(x),
   DELTA=0 init; unit-verified: identical cross-arm init per seed, exact
   identity at init, gradient-active at the zero point, frozen control.
+- [ ] **E-F. EASE late-fusion hybrid, fresh-seed confirmation (adopted from
+  the R+ side campaign 2026-07-22 per maintainer instruction).** R+ found on
+  MI (historical seeds, outcome-visible) that z-score late fusion with
+  train-only EASE (Steck 2019) lifted test NDCG@10 from 0.04153 to
+  0.04396±0.00035 (all 5 seeds; independently re-verified from raw per-user
+  records). E-F is the confirmatory replication: 3 categories (MI primary;
+  IS, VG secondary) x 5 FRESH seeds 20260721-25, frozen l2/w grids, val-only
+  selection, paired-by-construction seq-vs-fused contrast, Holm across
+  categories, +/-0.0005 equivalence margin, frozen wordings incl.
+  published-comparator point-estimate rows (no SOTA wording ever).
+  Office/CDs/Beauty/Books excluded (dense EASE infeasible at catalog size;
+  sparse/kNN variant would need its own prereg).
+  Lifecycle: [x] `PREREG_HYBRID_V1.md` + `adjudicate_hybrid_v1.py` +
+  `run_ef_hybrid_v1.py` + ported `fuse_ease_eval.py`/`ensemble_fuse_eval.py`
+  + trainer `--save-ckpt` committed 2026-07-22 (this commit, BEFORE launch)
+  -> [x] launched 2026-07-22 chained behind E-A's GPU job (driver waits on
+  `ea_fir_v3_status.json`; ~8 h sequential; resumable) -> [ ] adjudicate ->
+  [ ] integrate (frozen wordings only; Steck 2019 bib entry required at the
+  integration commit).
 - [ ] **E-B. Frequency-stratified item-text permutation + random-feature
   control (audit 10:47 design adopted).** Freeze SEVERAL independent permutation
   maps before training (map uncertainty is real); permute within

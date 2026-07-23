@@ -91,6 +91,8 @@ Three properties make our version safe and honest:
 
 **Update 2 (recipe add-on, E-F):** under a second frozen, committed-in-advance plan, we blended the model's scores with a classic “customers who bought X also bought Y” matrix (EASE, Steck 2019) — fitted only on training data, blend weight chosen only on validation. On five brand-new seeds it helped every category tested: Musical Instruments 0.0415→0.0440 (the blend's five-seed average now sits above the published 0.0406 single run), Industrial & Scientific 0.0334→0.0360, Video Games 0.0671→0.0703 (still below the published 0.0760). A five-model ensemble of the blend reached 0.0456 on Musical Instruments (ensembles compare only to other ensembles).
 
+**Update 3 (rare-item helper, E-G):** we added a third, fit-free signal — “which items *sound like* what this user already bought,” from product-text similarity — applied ONLY to items bought five-or-fewer times in training (weight picked on validation). Under a third frozen plan, five brand-new seeds per category, it raised rare-item accuracy on **all five catalogs** (deltas +0.0011 to +0.0048 on the ≤5-purchase bin; the biggest win on CDs & Vinyl) with overall accuracy essentially unchanged. Three honest footnotes: it did nothing for items with ZERO training purchases (nothing in our system retrieves those); popular items pay a small, measured price — the gain is a *redistribution* toward rare items, not free accuracy; and every run picked the largest allowed weight, so the true best weight may be larger (untested).
+
 ## 4. A finding, not just a gadget: text helps some catalogs and not others
 
 The "scent" fingerprints from product text are not uniformly useful, and one of the paper's main

@@ -4,7 +4,118 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-23 09:01 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-23 15:59 Australia/Sydney)
+
+1. **[CONFIRMED, rejection-level post-outcome protocol amendment]** The frozen
+   ColdFuse Gate 5 literally fails every MI and VG run. After 24/25 outcomes
+   were visible and committed, `ce8cfaaf` made a normalized replacement rule
+   govern and doubled the adjudicator. A rule can avoid reading metric fields
+   yet still be chosen by humans after outcomes are known. This is an
+   outcome-visible protocol deviation, not a preregistered integrity pass.
+2. **[CONFIRMED no-interim-look violation / incomplete family]** The prereg says
+   adjudication occurs once, after all 25 confirmations exist. At cutoff only
+   24/25 exist; Office36 has neither a base JSON nor confirmation, no final
+   adjudication exists, and the earlier commit summarizes all 24 outcomes. No
+   Office or five-category family verdict is valid.
+3. **[CONFIRMED zero-exposure estimand/capability failure]** Every one of 10,194
+   repeated seed-user observations whose target has zero train interactions is
+   unchanged with NDCG/hits exactly zero. The executable endpoint includes
+   frequency zero in `freq<=5`, while the frozen standing sentence says such
+   items are outside every counted claim. The evidence is near-threshold
+   sparse-**warm** reranking, not item-cold-start retrieval.
+4. **[CONFIRMED systematic utility redistribution]** Across the 24 eligible
+   panels, tail hits rise by 1,727 while mid/head hits fall by 1,462, leaving
+   only 265 net hits. Overall there are 3,476 improved versus 7,706 worsened
+   user-seed rows. Completed-category results are positive on the registered
+   tail endpoint, but the method primarily reallocates exposure rather than
+   producing broad, cost-free utility.
+5. **[CONFIRMED fragile inference]** MI, IS, VG and CDs each have an ordinary
+   five-seed t-test raw p below .01, which would mechanically survive Holm(5)
+   conditional on valid gates. In all four categories, however, exact
+   two-sided sign and Wilcoxon tests equal the n=5 minimum p=.0625. Optimizer
+   seeds on one exposed split do not represent user, item, catalog, time or
+   domain uncertainty.
+6. **[CONFIRMED boundary-censored policy]** All **24/24** eligible runs select
+   the same maximum-tail/minimum-mid-head grid point,
+   `exp0.9/(tail=.2,mid=0,head=0)`; the runner-up is always the same weights
+   with a uniform profile. The optimum is not bracketed and the small profile
+   gaps do not identify recency decay robustly.
+7. **[CONFIRMED adjudicator-v2 assurance gap]** The normalized Gate-5 proof is
+   tautological: extras are keys absent from the reference, while the compared
+   flag set is generated only from reference keys, so `extras_on_cmdline` must
+   be empty. The code does not inspect actual argv/parser defaults or prove
+   extras disabled. Candidate completeness is count-only; NPZ checking omits
+   target-bin validity, user identity/order, metric reconstruction and hashes;
+   zero-SD t handling remains invalid; and the generic sign test returns 1.0
+   for 4/5 rather than .375.
+8. **[CONFIRMED test-sequestration failure]** Exact frozen log prefixes contain
+   420 base epoch-test passes, 15 fusion passes and 24 confirmation passes:
+   **459 logged and minimum actual full test-data passes**. A live retry was not
+   process-snapshotted, so no exact upper bound is recoverable. The manuscript's
+   repaired E-F sentence does not cure the broader exposed-holdout design.
+9. **[CONFIRMED operational/provenance failure]** Office36 failed three times
+   (Windows checkpoint-save error 1224, CUDA illegal-memory access, then OOM)
+   and a fourth attempt was live. Retries restart rather than resume and reuse
+   the same checkpoint path; a better epoch-15 partial checkpoint was
+   overwritten by a new epoch-1/2 attempt. This directly contradicts the
+   preregistration's “nothing is ever overwritten” promise.
+10. **[CONFIRMED misleading status ledger]** The cutoff status says
+    `running, done=0, skipped=45, failed=0, elapsed=0.0` despite 63 successful
+    main steps, one main failure, two completed retry failures and more than 12
+    campaign wall-hours. It is attempt-local, stale by 31.5 minutes and
+    repeatedly overwritten; it is not an auditable campaign ledger.
+11. **[CONFIRMED heterogeneous, under-bound provenance]** Twenty-three of 24
+    base JSONs report a dirty tracked tree; confirmations do not bind code,
+    data, checkpoints or sidecars; checkpoints are ignored and have no stored
+    final-model digest. Backfill3 launched under `ce8cfaaf`, ran across the
+    `030a90d3` HEAD change, and computes provenance at serialization rather than
+    launch. A later Office36 output can therefore report the wrong execution
+    boundary.
+12. **[CONFIRMED false release/build assurance for printed E-F]** Live manifest
+    verification passes its scoped 276 files and 138 Git blobs, but the manifest
+    and strict build contain zero HYBRID/COLDFUSE families and never invoke the
+    E-F adjudicator. This contradicts README/Section 8 statements that every
+    counted/printed claim is hash-manifested and gated. The declared
+    `v1.1.11-deposit` is 27 commits behind and fails with 17 mismatches.
+13. **[CONFIRMED checkpoint-retention contradiction]** Fifteen tracked E-F
+    checkpoints were deleted and `.gitignore` now says checkpoint hashes are in
+    result JSONs, but searches find only initialization-state hashes, not final
+    checkpoint hashes. E-F and E-G regeneration/rank reconstruction therefore
+    rely on unbound local files.
+14. **[CONFIRMED manuscript partial repair; new consistency errors]** The E-F
+    raw p values, trainer test exposure and “completed campaigns” wording were
+    corrected in Markdown/TeX and render cleanly. The new exposure sentence
+    points to Section 3 although the disclosure is in Section 5.3; the verdict
+    locator omits E-F Section 5.7; E-G is still called exploratory despite a
+    promoted 24/25 Stage 2; and E-F remains absent from abstract, introduction,
+    methods, related work, conclusion and the artifact graph.
+15. **[CONFIRMED adjacent prior art; PLAUSIBLE incremental novelty]** AlphaFuse,
+    DWSRec, SIDSRec, BFDRec, ACE, WPGRec and the newly identified LLM2Emb
+    substantially narrow broad frozen-text/ID, frequency, long-tail and fusion
+    novelty. LLM2Emb is especially close because it uses a popularity-gated
+    balance of ID and LLM embeddings for long-tail sequential recommendation.
+    This does not prove the exact FIR/history-centroid construction is known;
+    it makes only a narrow empirical/engineering contribution defensible.
+16. **[CONFIRMED severe algorithmic waste]** The campaign performed 90 dense
+    EASE inversions taking 6,165.3 seconds although there are only 12 unique
+    category-lambda matrices. Content-addressed reuse could avoid 78 fits and
+    about 5,360.1 seconds without changing the estimator. The retry design also
+    discarded at least 17 additional Office epochs.
+17. **[CONFIRMED PDF/submission blockers]** Current reader/TORS/ACM-small PDFs
+    are 58/51/52 pages. The corrected passage is unclipped, but TORS gained a
+    mostly blank page 51, still splits a sentence awkwardly across pages 20-21,
+    and retains author/institution/country/short-author placeholders. Reader
+    page 58 is mostly blank with a malformed inline list and has no bookmarks;
+    venue PDFs are untagged. Portal/template/page-limit compliance remains
+    author verification.
+18. **[CONFIRMED carried-forward validity blockers]** Beauty is omitted from an
+    “all categories” question; the holdout is repeatedly exposed; uncertainty
+    is seed-only; same-protocol baselines and causal controls remain weak; the
+    paper is roughly 27k words and venue-dense; ethics/privacy/licensing and
+    final journal fit remain incomplete. Recommendation remains **reject / not
+    ready**.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-23 09:01 Australia/Sydney)
 
 1. **[CONFIRMED, rejection-level zero-exposure capability/estimand failure]** All five eligible
    seeds in each of MI, IS and VG produce exactly zero change for genuinely
@@ -110,6 +221,550 @@ plausible risks.
     dirty earlier campaigns, seed-only uncertainty, weak comparator framing,
     stale archival deposit and a roughly 26,852-word/50-page narrative remain
     independent rejection risks. Recommendation remains **reject / not ready**.
+
+## Audit Run - 2026-07-23 15:59 Australia/Sydney
+
+### Reviewer verdict
+
+**Reject / not ready for a top journal.** The interval completes CDs and four
+Office seeds and thereby strengthens the descriptive cross-category pattern.
+It does not produce a valid confirmatory family. Office36 is missing, the
+registered no-interim-look rule was violated, and the governing Gate-5 rule and
+adjudicator were materially changed only after 24/25 outcomes had been seen and
+committed. The new rule is also not implemented as claimed.
+
+The strongest defensible summary at this cutoff is:
+
+> On one exposed fixed split per category, a validation-selected
+> history-centroid text score consistently reranks items seen roughly one to
+> five times in training. Four completed five-seed categories have small
+> ordinary seed-t p values, but exact sign/Wilcoxon sensitivity is p=.0625 in
+> every category, all zero-training-frequency targets remain unretrieved,
+> mid/head utility falls, and all 24 eligible runs select the same unbracketed
+> grid boundary. Office is incomplete, MI/VG fail the literal frozen integrity
+> gate, and the replacement gate was adopted after outcomes. These are
+> descriptive, outcome-visible protocol-deviation results, not a clean
+> preregistered five-category confirmation.
+
+This can become a useful empirical paper about sparse-warm redistribution,
+failure boundaries and evaluation governance. It cannot presently support
+true cold-start capability, broad semantic causation, cost-free utility, a
+completed Holm family or a pristine preregistered-confirmation claim.
+
+### Frozen evidence boundary
+
+- Cutoff local: `2026-07-23T15:59:29.1723080+10:00`.
+- Cutoff UTC: `2026-07-23T05:59:29.1723080Z`.
+- HEAD = upstream = merge base:
+  `030a90d39e3f1c848f455a438a3883d44672a55f`.
+- Previous audit cutoff HEAD:
+  `2830c4b2b7ae16b45ee88c2196187e4f3b91c14b`.
+- Previous audit file SHA-256:
+  `ddfa277e9c0a0783a8a8717f0928ada20094904eab3ee574d778e56982f71c5a`.
+- Exact main log prefix (`_bestrec_run/logs/coldfuse_confirm.log`):
+  933,385 bytes, 22,973 content lines, terminal newline, SHA-256
+  `dafa421888ff218af90f0b08bef05a0bcae4e902c52b7472ee97887ed78bf9b8`.
+  Final line:
+  `COLDFUSE CONFIRM DONE: 63 ran, 0 skipped, 1 failed, 653.8 min`.
+- Exact completed retry 1 log: 62,130 bytes, 1,532 lines, SHA-256
+  `22e180e5e88fbee9309115df4e8d1a5984d5dd7b2f225544a130b2509268329a`.
+- Exact completed retry 2 log: 5,807 bytes, 91 lines, SHA-256
+  `5d7503fe3b9a2bf99834733105dea0b28c05ae404bb02e75eeffd95903174a9d`.
+- Exact retry 3 cutoff prefix: 11,847 bytes, 261 content lines, **no
+  terminal newline**, SHA-256
+  `6a0430afa6ac9c75293e2c8e0aa0fe56d38cb9ab486f993c5f51e7fd4cca5852`.
+  Final text: `  evaluating 223,308 users in batches of 512...`. The tracked
+  file grew after cutoff; all later bytes are excluded.
+- Exact status at cutoff: 79 bytes, SHA-256
+  `6c444b285da95e390b76dbcbc8dda29b90295c4f6370ccde41ee00fa75c02cf5`,
+  mtime `15:27:57.0576746+10:00`:
+  `{"state":"running","done":0,"skipped":45,"failed":0,"elapsed_min":0.0}`.
+- Office36's partial checkpoint had recorded size 298,498,565 bytes and mtime
+  `15:59:05.0372730+10:00`; it was overwritten after cutoff at 16:01:25 before
+  a cutoff digest was retained. Its cutoff content is now unrecoverable.
+- Eligible manuscript SHA-256:
+  `236006c958e46be94af6aee37adb42f8bb99dbec71ea754e0f72d965b62635ca`.
+  Bibliography and shared TeX were unchanged.
+- Eligible PDFs: reader 58 pages, SHA-256
+  `d32acf7e4b8ce8cc8a56bed672ca981b1639eb4f3fda32a330476aed8bc6c675`;
+  TORS 51 pages,
+  `213ea3def3f1d0b58b14c4e0bfb9001a9131108ec2538408d723d80dd7fa09de`;
+  ACM-small 52 pages,
+  `0c2f060eee3592513aefce363f7d073bd3df0aa6b022d9043e1022871cac7f59`.
+
+The interval has three eligible commits. `cf17748d` records the 24/25 result
+state, `ce8cfaaf` changes Gate 5 and the adjudicator, and `030a90d3` corrects
+manuscript statements and rebuilds PDFs/manifest. Live retry-3 bytes and the
+subsequently overwritten Office checkpoint are post-boundary mutable state and
+were not used as evidence.
+
+**Post-cutoff observation, excluded from this audit:** while this review was
+being written, the status and retry-3 log changed and new Office36 base,
+Office36 confirmation/NPZ and `coldfuse_v1_adjudication.json` paths appeared in
+the worktree. Several manuscript, release, TeX/table, bibliography and PDF
+paths then also began changing concurrently. None of those later contents were
+used here. The next audit must freeze and verify them as a new evidence
+boundary; their appearance cannot retroactively repair the post-outcome
+Gate-5/no-interim/provenance defects documented above.
+
+### Campaign completion, failures and test exposure
+
+The main driver's `63 ran` field means 63 **successful subprocesses**, not 63
+launches. There are 64 main `[run]` markers: 63 successes and one failed
+Office36 base. Its dependent confirmation was never launched. The unique
+cutoff completion is therefore 63/65 steps (96.9%) and 24/25 confirmation cells
+(96%): 24 base JSONs, all 15 MI/IS/VG fusion JSONs and 24 confirmations.
+
+| Attempt | Frozen state | Full test passes | Terminal outcome |
+|---|---:|---:|---|
+| Main | 653.8 min | 403 base + 15 fusion + 24 confirm = 442 | Office36 base failed after epoch-3 test; driver continued |
+| Retry 1 | 32.3 min | 15 | CUDA illegal-memory-access after Office36 epoch 15 |
+| Retry 2 | 1.9 min | 0 | CUDA OOM while copying SBERT features |
+| Retry 3 at cutoff | about 31.56 min, live | 2 | no failure yet; next validation evaluation in progress |
+| **Frozen total** | about 12.02 wall-hours | **459 minimum** | 3 failed launches + 1 live launch; no Office36 result |
+
+The main Office failure is a PyTorch checkpoint-save error with Windows code
+1224. The local authoritative `net helpmsg 1224` translation is: “The requested
+operation cannot be performed on a file with a user-mapped section open.” The
+presence of an open mapping is confirmed; whether it belonged to an auditor,
+antivirus, indexer or another process requires author verification.
+
+Across the four logs there are 67 launches, 171 skip events, three tracebacks/
+failed launches, one live launch and 63 successful steps. Office36 alone logs
+3 + 15 + 2 = 20 test epochs across attempts without yielding a base JSON. The
+status file is 1,892.115 seconds stale and erases the main success/failure plus
+both retry failures. It also undercounts the retry's eventual 63 skips and says
+zero elapsed after more than 31 minutes. This is not a cumulative state machine.
+
+**Required operational fix:** use an immutable attempt directory and ID for
+every launch; write append-only JSONL events with launch-time commit, dirty
+diff/hash, command, phase, category, seed, heartbeat and error; update a derived
+campaign summary atomically; save checkpoints to a new temporary pathname and
+rename only after a successful, hashed write; never inspect a live checkpoint
+in place. Resume optimizer/model/RNG state from the latest verified checkpoint
+instead of restarting to the same path.
+
+### Quantitative result audit at the cutoff
+
+The ordinary t results below reproduce the eligible JSON/NPZs. Office is shown
+only as an explicitly incomplete four-seed descriptive sensitivity.
+
+| Category | n | Tail mean (ordinary 95% t CI) | Raw t p | Exact sign / Wilcoxon p | Overall | Mid | Head | Frozen-gate status |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| MI | 5 | +.00217491 [.00195882,.00239101] | 9.757e-6 | .0625 / .0625 | +.00005153 | -.00066945 | -.00013952 | **literal Gate 5 FAIL** |
+| IS | 5 | +.00242576 [.00217845,.00267308] | 1.081e-5 | .0625 / .0625 | +.00009619 | -.00074026 | -.00046729 | literal pass |
+| VG | 5 | +.00337401 [.00304642,.00370160] | 8.900e-6 | .0625 / .0625 | +.00004620 | -.00087479 | -.00018872 | **literal Gate 5 FAIL** |
+| CDs | 5 | +.00480802 [.00471919,.00489686] | 1.176e-8 | .0625 / .0625 | +.00011495 | -.00124536 | -.00044701 | literal pass |
+| Office | 4 | +.00115966 [.00106949,.00124984] | 3.210e-5 | .125 / .125 | -.00000021 | -.00030251 | -.00018574 | **incomplete; not adjudicable** |
+
+**[CONFIRMED conditional arithmetic, not a family verdict]** MI, IS, VG and CDs
+all have raw p<.01, so each would reject under any Holm ordering across five
+categories if the registered t model and all integrity gates were valid. This
+does not rescue the family: Office is absent, MI/VG fail literal Gate 5, the
+no-interim condition was broken and the governing rule was amended after
+outcomes. Office's n=4 p value cannot enter the frozen Holm procedure.
+
+The exact sensitivity is central, not decorative. With five unanimously
+positive differences, .0625 is the smallest two-sided sign/Wilcoxon p available.
+The ordinary t tests derive their tiny p values from unusually low between-seed
+dispersion, not from independent dataset replication. Confidence intervals
+must be labeled optimizer-seed intervals conditional on one fixed exposed
+split, not generalization intervals.
+
+### Zero-frequency failure and benefit/harm accounting
+
+Exact split reconstruction passes for every eligible CD/Office record and the
+previously audited MI/IS/VG records: stable user order, unique users, target-bin
+membership and recorded aggregates reproduce. The following counts are across
+repeated seed-user panels, not independent people.
+
+| Category | Eligible seeds | f0 targets/seed | Repeated f0 observations, all unchanged | Tail hit gain | Mid+head hit loss | Net hit change | Overall improved / worsened rows |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| MI | 5 | 106 | 530 | +174 | -137 | +37 | 301 / 629 |
+| IS | 5 | 332 | 1,660 | +262 | -194 | +68 | 494 / 958 |
+| VG | 5 | 345 | 1,725 | +303 | -267 | +36 | 630 / 1,346 |
+| CDs | 5 | 247 | 1,235 | +701 | -581 | +120 | 1,560 / 3,294 |
+| Office | 4 | 1,261 | 5,044 | +287 | -283 | +4 | 491 / 1,479 |
+| **Total** | **24** | - | **10,194** | **+1,727** | **-1,462** | **+265** | **3,476 / 7,706** |
+
+Every f0 row has reference=selected NDCG@10=0, zero hits and no changed rank
+outcome. Office is even null through frequency one. CDs' f0...f5 mean deltas are
+`0, .000780, .000982, .003337, .004830, .007947`; f4-f5 supply 82.54% of the
+endpoint gain. Office's n=4 sequence is
+`0, 0, .000201, .001046, .001402, .002546`; f4-f5 supply 76.33%. Thus the new
+categories reinforce a rising near-threshold warm-item response, not recovery
+of unseen items.
+
+For CDs, 82.9% of 701 gained tail hits are cancelled by 581 lost mid/head hits.
+For Office, 98.6% of 287 tail hits are cancelled by 283 losses elsewhere. The
+registered overall-cost margin can pass while many more rows worsen than
+improve. A top-journal paper needs stakeholder-relevant subgroup harm limits,
+not only an aggregate noninferiority allowance.
+
+**Fix to the estimand:** split the endpoint into `f0` and positive-frequency
+`f1-5` before selection; reserve cold-start language for a protocol that makes
+unseen candidates retrievable (metadata-only item branch, item-disjoint or
+catalog-arrival holdout); keep sparse-warm results under that exact label. Add
+mid/head noninferiority constraints or present the full Pareto frontier rather
+than calling an aggregate-margin pass “no cost.”
+
+### Candidate selection and mechanism identification
+
+All 24 eligible runs choose `exp0.9/(.2,0,0)`, the maximum registered tail
+weight and minimum mid/head weights. The runner-up is always uniform with those
+same weights. CD has only 26-28 feasible candidates per seed; Office has 38.
+CD's selected-vs-runner validation-tail gaps range .000074-.000327 and Office's
+.000076-.000088. These small, repeated boundary solutions show that the grid
+does not bracket the optimum and weakly separates the temporal profile.
+
+Do not expand the grid on this test set and call the result confirmatory. For a
+new frozen study:
+
+1. choose a wider tail-weight range from validation-only pilot data or another
+   category, with at least one point above .2 and finer spacing around the
+   selected region;
+2. include independent frequency-only, random-feature, text-permutation,
+   pure-text and uniform/recency controls;
+3. constrain per-bin harm and overall utility, or preregister a multi-objective
+   Pareto decision rather than maximizing tail alone;
+4. report profile uncertainty/near-ties rather than naming exp0.9 as an
+   identified mechanism; and
+5. repeat on a fresh temporal/catalog split with more independent seeds.
+
+### Frozen protocol versus post-outcome adjudicator v2
+
+`PREREG_COLDFUSE_V1.md:84-85` freezes “No interim looks; adjudication runs once,
+after all 25 confirm files exist.” Lines 97-98 require literal base-config
+equality apart from a named allowlist. Lines 121-125 say literal-zero items are
+outside every counted claim. Lines 67-69 promise outputs including checkpoints
+and say nothing is overwritten. All four propositions are contradicted by the
+observed execution.
+
+The launch adjudicator was 6,514 bytes. After the main log ended and commit
+`cf17748d` described 24 outcomes, `ce8cfaaf` replaced it with a 12,839-byte v2
+and a document making normalized Gate 5 governing. The normalization may be a
+reasonable rule for a **future** protocol, and the extra keys plausibly are
+inactive parser-era defaults. It cannot retroactively become the frozen rule.
+
+The v2 implementation also falls short of its prose:
+
+- `extras` is defined as run-config keys absent from `ref_cfg`, while
+  `driver_flags(ref_cfg)` iterates only `ref_cfg`; `extras_on_cmdline` is empty
+  by construction. Actual command lines, parser defaults, values and semantic
+  no-op behavior are not verified.
+- Sweep completeness checks only `len(sweep)-1 == 40`; it does not compare the
+  40 candidate identities with the exact frozen set or require every validation
+  value finite.
+- NPZ checks cover selected array lengths and NDCG finiteness, not target-bin
+  length/range, unique/order-matched users, aggregate reconstruction, HR/RR,
+  target item/frequency or file/input hashes.
+- Gate 1 names expected files but does not reject undeclared extra seed files
+  despite “exactly” in the preregistration.
+- Zero-SD t handling can emit infinite t and p=0. The exact sign helper reports
+  .0625 for unanimity but incorrectly returns 1.0 for every non-unanimous split;
+  for 4/5 or 1/5 the exact two-sided value is .375.
+- `--gate5-report` is a diagnostic that can exit successfully with only four
+  Office rows; it is not proof of campaign readiness.
+
+**Required disposition:** preserve and publish the original literal Gate-5
+FAIL for MI/VG; present normalized-v2 output only as a post-outcome sensitivity;
+label E-G outcome-visible/protocol-deviated; version and hash both adjudicators;
+then run an independent fresh replication under a prospectively frozen,
+actually enforced normalized rule. Do not describe an eventual v2 PASS on the
+current outputs as preregistered confirmation.
+
+### Provenance, manifest and public-release audit
+
+Manifest verification against the live tree passes 276 scoped files; all
+138/138 Git-backed entries match HEAD. This is a genuine scoped non-problem.
+It does not establish the paper's universal availability claim:
+
+- `RELEASE_MANIFEST.json` has zero HYBRID or COLDFUSE result families and does
+  not bind their preregistrations, active fusers or adjudicators as a campaign
+  chain.
+- `_bestrec_run/rebuild_hstu_submission.py` gates MI V2, Office V3, TFV2 and
+  FIR breadth, but never invokes `adjudicate_hybrid_v1.py` or
+  `adjudicate_coldfuse_v1.py`. README's “Every counted campaign” statement and
+  Section 8's “every printed claim” statement are therefore false for printed
+  E-F.
+- The declared `v1.1.11-deposit` is 27 commits behind HEAD. Git-manifest
+  verification against it reports 17 mismatches (121 matches), including
+  manuscript/PDF/code/figure drift and one absent figure-data file.
+- Git now tracks 106 COLDFUSE-named and 47 HYBRID-named paths, but their local
+  checkpoints and many user sidecars are ignored. Confirm NPZs contain only
+  users, target bin and reference/selected NDCG; confirmation JSONs do not bind
+  code, data, checkpoint, sidecar or NPZ hashes.
+- Fifteen previously tracked E-F `.best.pt` files were deleted. `.gitignore`
+  says their hashes are recorded in results JSONs, but the JSONs expose
+  `init_state_sha256`, not a final checkpoint digest.
+- Twenty-three of 24 eligible base JSONs record `git_dirty_tracked=true`; the
+  dirty diffs are not preserved. The live tracked retry log itself made the
+  working tree dirty and was committed once while still growing.
+
+**Fix:** add explicit E-F/E-G families to the manifest and artifact graph; make
+their adjudicators strict-build gates; bind launch-time commit, dirty patch,
+command, environment, split/item map, code, initial state, selected checkpoint,
+all inputs and all outputs in one immutable per-attempt manifest; deposit the
+required checkpoint/sidecar objects content-addressed or state a truthful
+regeneration boundary; verify a newly cut deposit tag from a clean clone only
+after the family is complete.
+
+### Manuscript and writing audit
+
+**Confirmed repairs:** the Markdown and TeX now give E-F raw p values as MI
+1.0e-5, IS 1.3e-4 and VG 9.0e-6; distinguish the fusion stage's selected-pair
+test pass from trainer per-epoch test curves; and narrow “every pre-declared
+campaign” to campaigns that completed. The revised passage is visible and
+unclipped in all three PDFs.
+
+**Remaining/new problems:**
+
+1. Section 5.7 says the trainer exposure is disclosed in Section 3, but the
+   general disclosure is in Section 5.3 process disclosure (i). Add the fact to
+   Methods or fix the cross-reference.
+2. Section 4.1 points completed-campaign verdicts only to Section 5.2 and
+   Appendix A.0, omitting E-F Section 5.7 and other result blocks. Use precise
+   per-campaign locators or “at the relevant result blocks.”
+3. Section 5.7 still says E-G is “under exploratory study.” By cutoff Stage 1
+   promoted and pre-declared Stage 2 is 24/25. Correct wording: “advanced to an
+   ongoing pre-declared five-category study; results withheld pending complete
+   adjudication.”
+4. Keeping E-G numerical outcomes out of the manuscript while Office is missing
+   is correct. Do not insert partial Office or conditional Holm claims.
+5. E-F is still an orphaned Results addition. If it remains counted, add a
+   short prospective method, related-work comparator rationale, contribution
+   boundary, conclusion synthesis, limitations and artifact mapping. Do not
+   simply enlarge the already overloaded abstract.
+6. Section 8 and README overstate build/release coverage. Enumerate which
+   campaigns are graph-gated and which are not; either integrate E-F fully or
+   remove the universal language.
+7. When E-G is eventually reported, use “near-threshold sparse-warm
+   redistribution” and explicitly state that f0 is a complete retrieval failure.
+   Avoid “training-free system”: only the added scorer has no task-specific
+   training; the full recommender contains trained sequential/reference models.
+8. The manuscript is roughly 27,000 words plus a very dense appendix. Move
+   audit chronology, failed campaigns and implementation ledgers to structured
+   supplementary material; keep the main paper centered on one methodological
+   claim and two or three decisive empirical results.
+
+Suggested honest E-G sentence if the current campaign must be mentioned:
+
+> A five-category outcome-visible study was 24/25 complete at the audit cutoff.
+> Four completed categories showed positive ordinary seed-t tail endpoints,
+> but the registered family was not adjudicable, literal Gate 5 failed for MI
+> and VG, and a replacement gate was adopted after outcomes; we therefore treat
+> the current estimates as protocol-deviated descriptive evidence pending an
+> independent replication.
+
+### Algorithm and experimental optimization guidance
+
+1. **Sequester test evaluation.** Remove test computation from the trainer and
+   fusion sweep. Train/early-stop on training+validation only, freeze the chosen
+   systems, and evaluate reference and selected system exactly once on a fresh
+   untouched temporal/catalog holdout.
+2. **Cache EASE by immutable inputs.** Ninety inversions consumed 6,165.3 s but
+   represent only 12 unique category-lambda matrices. Key a cache by train-split
+   hash, item-map hash, lambda, solver, dtype and code hash; verify residual,
+   ordering and a prediction checksum before reuse. This avoids 78 fits and
+   about 5,360.1 s (89.3 min) without changing predictions.
+3. **Vectorize the fusion grid.** Precompute reference/text z-scores, target-bin
+   masks and candidate weights once; evaluate all candidates in blocks with one
+   stable seen-item correction. Emit the complete candidate-key set and hashes,
+   not only a count.
+4. **Make retries resumable.** Save model, optimizer, scheduler, scaler and RNG
+   state at immutable epochs; validate a checksum before resume. A failed
+   serialization must not erase the prior best checkpoint.
+5. **Use a cold-capable branch for f0.** Score unseen catalog items from metadata
+   without requiring learned ID state; add an item-arrival/item-disjoint split,
+   reachability@K and rank diagnostics. If f0 remains unreachable, remove it
+   from the benefit endpoint and state that limitation prominently.
+6. **Optimize a declared utility objective.** Add category-specific mid/head
+   and overall harm floors, or select on a preregistered Pareto rule. Report the
+   number and severity of harmed users/items, not only mean NDCG.
+7. **Bracket hyperparameters prospectively.** Expand weights/profile families
+   only on a separate development boundary, then freeze them. A 24/24 maximum
+   is evidence the current grid is censored, not permission to tune on test.
+8. **Strengthen uncertainty.** Increase seeds, add split/time/item bootstrap or
+   repeated temporal splits, foreground exact sign/Wilcoxon results, and test
+   category heterogeneity rather than ranking category point estimates.
+
+### Figure and table plan
+
+1. **Category forest + seed dots:** tail deltas for all seeds/categories,
+   ordinary conditional intervals, exact sign/Wilcoxon p, and an explicit
+   missing Office36 marker. Use a distinct visual treatment for literal-gate
+   fail versus pass.
+2. **Frequency response:** f0...f5 deltas with cohort sizes and absolute hit
+   counts. Keep the f0 zero line prominent and label f4-f5 concentration.
+3. **Utility-flow panel:** tail hit gain, mid/head loss, net hits and
+   improved/worsened rows. A diverging bar or small alluvial plot is more honest
+   than a single green “win.”
+4. **Validation Pareto frontier:** tail gain versus overall/mid/head cost for
+   every candidate, highlighting the selected boundary and uniform near-tie.
+5. **Protocol timeline:** prereg commit, main completion/outcome commit, Gate-5
+   amendment, manuscript correction and each retry failure. This makes the
+   selection/provenance boundary reviewable at a glance.
+6. Export plots as vector PDF/SVG, use color-blind-safe hues and direct labels,
+   keep type readable at one-column width, and state whether intervals are over
+   optimizer seeds, users or splits in every caption.
+
+### External fact-check and novelty refresh
+
+The paper's broad novelty boundary remains narrow. This is not a comprehensive
+prior-art search, but the following primary/publisher sources directly support
+the overlap assessment:
+
+- [AlphaFuse arXiv record](https://arxiv.org/abs/2504.19218) describes learning
+  ID embeddings in the null space of language embeddings and reports long-tail
+  and cold-start-user experiments. The paper cites it, correctly making it a
+  close omitted baseline rather than a new discovery.
+- The official [AAAI DWSRec page](https://ojs.aaai.org/index.php/AAAI/article/view/28786)
+  confirms dual-view whitening of pretrained text embeddings for sequential
+  recommendation, published in AAAI 2024.
+- The official [SIGIR 2026 program](https://sigir2026.org/SIGIR2026_program.pdf)
+  confirms SIDSRec's separate semantic/collaborative channels and late fusion,
+  BFDRec's energy-aware multi-scale frequency model/dynamic gate, ACE's linear-
+  autoencoder anisotropy control and WPGRec's wavelet-packet gated fusion. The
+  manuscript's metadata and high-level descriptions of these works are
+  directionally supported.
+- The publisher page for
+  [LLM2Emb](https://www.sciencedirect.com/science/article/pii/S0957417426022840)
+  describes a two-stage LLM embedding framework with a popularity-gated balance
+  of ID and LLM embeddings and explicit long-tail gains. It is very close to
+  any broad frequency-conditioned text/ID-fusion claim and is not in the current
+  manuscript.
+- The recent [SISA-Rec preprint](https://arxiv.org/abs/2607.11168) uses gated
+  BERT-text/ID fusion and sparse Amazon evaluations. It is a current adjacent
+  preprint, not by itself a priority proof or an apples-to-apples baseline.
+
+**Novelty disposition:** retain claims only for the exact zero-init left-causal
+depthwise FIR/optimizer package, the exact artifact-gating workflow after it is
+truthfully repaired, and the measured sparse-warm benefit/harm map under this
+protocol. Do not claim novelty for text+ID fusion, semantic scoring of rare
+items, frequency-conditioned weighting, simple score ensembling, cold-start or
+filter/gate concepts. Add LLM2Emb to the closest-work matrix and either benchmark
+AlphaFuse/LLM2Emb under the same full-catalog split or give a concrete,
+protocol-based exclusion.
+
+### PDF and submission-readiness audit
+
+Because all PDFs changed, the PDF workflow rendered every page of all three
+eligible artifacts and inspected contact sheets plus targeted full-resolution
+pages (first pages, revised E-F pages, the TORS 20-21 transition and all final
+pages).
+
+**Confirmed visual non-problem:** the revised E-F text is present, readable and
+not clipped or overlapped. No black boxes or obvious global clipping were found.
+
+**Confirmed blockers:**
+
+- TORS expanded from 50 to 51 pages; page 51 uses only about its upper quarter.
+- TORS page 20 ends mid-sentence/parenthetical and page 21 resumes with
+  `p=.95)`, preserving an awkward reading break.
+- TORS and ACM-small show maintainer/real-author/institution/country and
+  short-author placeholders on page 1/running heads. TORS is single-blind, so
+  these must be real submission metadata, not placeholders.
+- Reader page 58 is mostly blank and renders the final alternatives inline as
+  `either: - Running ... or - Adopting ...` instead of a proper list.
+- The reader is tagged but has zero document outlines/bookmarks. Venue PDFs
+  have outlines but no structure tree/tagging.
+- The paper remains exceptionally dense. Verify current TORS portal/template,
+  anonymous/single-blind mode, page/word limits, accessibility, supplementary
+  file policy and required author/affiliation/contact fields before freeze.
+
+**Fix:** repair the source list and pagination rather than hand-editing PDFs;
+replace every placeholder; shorten/move appendix material; rebuild all three;
+then rerender every page and repeat metadata, outline, tagging, font and visual
+checks.
+
+### Prioritized repair sequence
+
+**P0 - before any result integration**
+
+1. Freeze and preserve all current logs/artifacts; do not rewrite history.
+2. Mark the current E-G campaign incomplete, outcome-visible and protocol-
+   deviated. Publish original-v1 and amended-v2 adjudicator hashes/results.
+3. Stop overwriting checkpoint/status paths; implement immutable attempt
+   manifests and an append-only ledger.
+4. Decide the f0 estimand contradiction and remove cold-start language unless a
+   true unseen-item protocol is executed.
+5. Do not run or report a final Holm verdict until Office36 exists **and** the
+   campaign is correctly classified; an eventual current-v2 pass remains a
+   sensitivity, not frozen confirmation.
+
+**P1 - scientific recovery**
+
+1. Run a new independent, test-sequestered replication under a frozen normalized
+   config rule that actually checks parser defaults/argv and exact artifacts.
+2. Add text-permutation, frequency-only, random-feature, pure-text and closest-
+   system controls; bracket the policy grid prospectively.
+3. Add mid/head harm guardrails and repeat across independent temporal/catalog
+   splits with stronger uncertainty.
+4. Integrate E-F/E-G into the artifact graph, manifest and strict build; cut and
+   fresh-clone-verify a new deposit.
+
+**P2 - paper/venue quality**
+
+1. Re-center abstract/introduction/conclusion around one defensible contribution
+   and reduce the main narrative substantially.
+2. Add the five compact figures/tables above and remove chronology dumps from
+   the main text.
+3. Correct cross-references, Stage-2 status, release statements and novelty
+   matrix.
+4. Replace metadata placeholders, fix pagination/list rendering, rebuild and
+   visually/accessibility-QA all PDFs.
+
+### Open questions for the authors
+
+1. Which process held the Office36 checkpoint mapping at the Windows-1224
+   failure: the audit, antivirus/indexing, another Python process or something
+   else? Is there a process/open-handle log?
+2. Why were Gate 5 and its adjudicator changed after the 24-outcome commit, and
+   will the authors agree to label the change post-outcome rather than
+   “outcome-independent”?
+3. Is there any launch-time snapshot proving the exact code/dirty diff used by
+   retry 3 as HEAD changed during execution?
+4. Why does the frozen prose exclude f0 while the executable endpoint includes
+   it? Which estimand is intended?
+5. What maximum mid/head harm is acceptable for the intended deployment, and
+   who chose the current aggregate margin?
+6. Is Beauty deliberately excluded from the five-category campaign? If so, why
+   does the research question say “ALL paper categories”?
+7. Are final E-F/E-G checkpoints and all sidecars intended for deposit? If not,
+   what exact reviewer-verifiable regeneration boundary replaces them?
+8. Will LLM2Emb/AlphaFuse be run under the same full-catalog protocol, or what
+   precise protocol/resource exclusion justifies omission?
+9. Which PDF is the actual submission artifact, and what current TORS portal
+   rule permits its length and requires its metadata/accessibility state?
+10. What ethics/privacy approval, dataset license analysis and author/contact
+    metadata will accompany submission?
+
+### Running checklist
+
+- [x] Read automation memory and prior cumulative audit.
+- [x] Freeze exact main/retry log prefixes, status, cutoff and Git boundary.
+- [x] Separate post-cutoff live-log/checkpoint mutations from eligible evidence.
+- [x] Reconstruct campaign steps, launches, failures, runtime and minimum test
+      exposure.
+- [x] Audit all 24 eligible confirmation cells and CD/Office per-bin results.
+- [x] Recompute ordinary/exact sensitivity, hit transfer and help/harm counts.
+- [x] Compare literal preregistered gates with the post-outcome decision/code.
+- [x] Audit adjudicator-v2 sweep, NPZ, sign-test and provenance enforcement.
+- [x] Verify the scoped release manifest against HEAD and the declared deposit
+      tag; inspect strict-build coverage and checkpoint retention.
+- [x] Check Markdown/TeX propagation and stale/inaccurate cross-references.
+- [x] Render and visually inspect every page of all changed PDFs, plus targeted
+      full-resolution pages and PDF structure/outlines.
+- [x] Refresh closest-work facts against primary/publisher sources.
+- [x] Add algorithm, statistical, writing, figure, PDF and release fixes.
+- [x] Update the current rejection-risk list and append this audit section.
+- [ ] Preserve original and amended adjudicator outputs as separate artifacts.
+- [ ] Implement immutable attempt/checkpoint/provenance logging.
+- [ ] Resolve f0 estimand and add subgroup harm constraints.
+- [ ] Run an independently frozen, test-sequestered replication.
+- [ ] Integrate E-F/E-G into the strict graph/manifest/deposit.
+- [ ] Repair manuscript cross-references/status/availability/novelty wording.
+- [ ] Replace submission placeholders, shorten, rebuild and re-QA all PDFs.
 
 ## Audit Run - 2026-07-23 09:01 Australia/Sydney
 

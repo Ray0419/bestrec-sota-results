@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "ce8cfaafa987f55b4248d9646fe1504c79a3b87f",
+  "git_commit": "030a90d39e3f1c848f455a438a3883d44672a55f",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -122,6 +122,51 @@
     },
     "_bestrec_run/preprocess_5core_standard.py": {
       "sha256": "16e306f6175415c397db9fa7b63604d6f7b468ece254c9c5aa3fc0f795fb640d"
+    },
+    "PREREG_FIR_V3.md": {
+      "sha256": "1b52176b3f2931585b770c4f2036142583d7e66b125e32482cc43ed7c0e9a074"
+    },
+    "PREREG_HYBRID_V1.md": {
+      "sha256": "fdade94547eefe9c749e3a9769a4a3ba857bb2f45c9df56cae9d1a6beea0b0fb"
+    },
+    "PREREG_COLDFUSE_V1.md": {
+      "sha256": "faaf80c8f3f003a109bb097acb9a000860f38b063f91ff0f5ce7f81411754f76"
+    },
+    "GATE5_CONFORMANCE_DECISION.md": {
+      "sha256": "faa06bde93723a240e356d89f86e4c8369bd66a4651ce84b7f6ee03ce5360e6d"
+    },
+    "_bestrec_run/fuse_ease_eval.py": {
+      "sha256": "c67da1cc825ff633bfc47b39f8e2fcd168e7c98f292c9a4545b74bd802be42c9"
+    },
+    "_bestrec_run/ensemble_fuse_eval.py": {
+      "sha256": "e5e41c56a2cb558b34ed06d919dab49bae3fa645f1d26be720da3841587e1a53"
+    },
+    "_bestrec_run/fuse_cold_eval.py": {
+      "sha256": "32d2de709befc579cdc79c8a4918ae48fee015e7da02ff38559d0157e6fc3ad2"
+    },
+    "_bestrec_run/fuse_cold_confirm.py": {
+      "sha256": "70bf7650afe2de4c8e7731a7cced37d621cbc6b4fd533683a16282b09a4261b7"
+    },
+    "_bestrec_run/run_ea_fir_v3.py": {
+      "sha256": "dacef548efd2875c82c77306f6150c7677c98d2b59680ec2ae7e5745c2cde9e6"
+    },
+    "_bestrec_run/run_ef_hybrid_v1.py": {
+      "sha256": "558d50cd6223e03a2f25f6963927d334064752f73787dfde9eff8491a7658ccd"
+    },
+    "_bestrec_run/run_eg_coldfuse_explore.py": {
+      "sha256": "1d3cb318699a1a40809a235ea2163f47d9620ee9f99fe413996f611b0155b9cf"
+    },
+    "_bestrec_run/run_coldfuse_confirm.py": {
+      "sha256": "4ebcd3402732c94d8fd2703471e52e24a4746240b7282b92be3ccbf2b302ed79"
+    },
+    "_bestrec_run/adjudicate_fir_v3.py": {
+      "sha256": "962fe2731ffdd225e0093c1b9493841ef9ac11308f2a7ea0cab49583ed20c873"
+    },
+    "_bestrec_run/adjudicate_hybrid_v1.py": {
+      "sha256": "c377a2ca14694ff2263ae949b28fe417d74644776f22e1ff5e44afde0146b29b"
+    },
+    "_bestrec_run/adjudicate_coldfuse_v1.py": {
+      "sha256": "2b57348ff3ad39960f022a36d5dda07f9965c2a889ed9e77c9d6398886dc994c"
     }
   },
   "result_families": {
@@ -231,6 +276,138 @@
       "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260715.json": "aa88cb35225434df03c879bae2fcf5dc11b53b340e788de1d5f50f054a4a3b20",
       "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260716.json": "4b84e283973a061a074c5fab79e1ddbdd6288ac3917cb4eea78d1d60bcc6a188",
       "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260717.json": "931b1ef04c192e35cd743f3139daff1c90c57b11b0f8912e75339384d1626f69"
+    },
+    "FIR_V3_matched_arm": {
+      "results_MI_FIRV3_a0ident_seed20260713.json": "4949c020cefd82c2f55b715dfbd3a3486f5c746fcd0433ead4bb72b6fee13b7c",
+      "results_MI_FIRV3_a0ident_seed20260714.json": "5ac6aff28e774460eb0c5c9d9379644b6bbf61fcb2024ff70bd3b5435106a1dc",
+      "results_MI_FIRV3_a0ident_seed20260715.json": "3282958188bb5812fbded4db89da7a4a73acdcbfeb1d4cb7af2807ea7826fd6d",
+      "results_MI_FIRV3_a0ident_seed20260716.json": "7f95204dd237ff2cdcc52bfdc2105ace71d8067799768a299d51283aa4d196ee",
+      "results_MI_FIRV3_a0ident_seed20260717.json": "b8c2c47eb71b0499006a0210f1c8aeade98c4e34281fcfd6916454d44550119b",
+      "results_MI_FIRV3_a0ident_seed20260718.json": "6284b9c130803eb90921c39ea75d2a8868a9454806890a6f2a4571cbddbeb8e1",
+      "results_MI_FIRV3_a0ident_seed20260719.json": "433b9b7ac589624254b5c53abe5dda34dcdc4578ea45c528f164ce3a98b15a4d",
+      "results_MI_FIRV3_a0ident_seed20260720.json": "6ba31166d346eaae5d7329212f1611c42e9364f6ee18bb0a56e06dceb0586ed5",
+      "results_MI_FIRV3_a1learned_seed20260713.json": "1ea8d62837d0debd086208f98c69d8789b1abda6aba67917d3bf21ae04519f23",
+      "results_MI_FIRV3_a1learned_seed20260714.json": "c4ff42add55ee1c16982a81501fab5aa6c627663d497070f53e7ef61295cd6bd",
+      "results_MI_FIRV3_a1learned_seed20260715.json": "9066d530c6f607274f34e1376c75cb464d430904528ec46b9ab5fdd8922f2733",
+      "results_MI_FIRV3_a1learned_seed20260716.json": "4a23feaaacb886d7d25ffd4b9ad841568b47234c703a49d1fd8f62e48dc27bf4",
+      "results_MI_FIRV3_a1learned_seed20260717.json": "7484ad13db6b329b26b753ee863fd0b7ebb1800269804bf0e63274d669a5c94e",
+      "results_MI_FIRV3_a1learned_seed20260718.json": "49c2391c2ca17513fa2436570d7e5e396f8b98d693b4ea5911b43ce8aab32036",
+      "results_MI_FIRV3_a1learned_seed20260719.json": "3dcd0f57b6e7a1e04b24dcf39882238af8e0d262fd25bab2d159b7c48f288a0c",
+      "results_MI_FIRV3_a1learned_seed20260720.json": "8f60b5e4796b978a6982d86d810ac5788d925e3b4a99b8309eb56e34fe57fc3e",
+      "results_MI_FIRV3_a2learnedwd0_seed20260713.json": "f0d671b1668916976d03dd71d3e09f5839017be530f51270cdfa4fb1412b782a",
+      "results_MI_FIRV3_a2learnedwd0_seed20260714.json": "5400a494e980f896ace38b17c8694a22f00f83f9c756222befde392cc38b5aab",
+      "results_MI_FIRV3_a2learnedwd0_seed20260715.json": "3f5f28b0555dc217e9a2ee7d4446ad7042c19dba1089fed5fbc6870217e5c94b",
+      "results_MI_FIRV3_a2learnedwd0_seed20260716.json": "e6d82af771268df918fd4e3c96ef9709f8789d5ff03c57f3a98097d171c14c32",
+      "results_MI_FIRV3_a2learnedwd0_seed20260717.json": "d25b681099ef37f2cd6e7d8387a3ae1f64a9881a01602a2dfe4ca7ab64f46fd7",
+      "results_MI_FIRV3_a2learnedwd0_seed20260718.json": "69197f7f0acd63a5871345f4b192cadaa642e2184493ff3e08c13413467d26ea",
+      "results_MI_FIRV3_a2learnedwd0_seed20260719.json": "72b1ec69af467793a93683d4de9ce72f3014d9e70f1536404d499b64282b02e7",
+      "results_MI_FIRV3_a2learnedwd0_seed20260720.json": "ec6e31a808f3f977fef2f40c359b2b157c8c32d71c97f627f3df8ce4216cdeec",
+      "fir_v3_adjudication.json": "426c0a63e0ce19f53d98f7cb96751fcb0ffb0bf47a067db9667c3093dc6687e2"
+    },
+    "HYBRID_V1_fresh_seed": {
+      "results_IS_HYBRIDV1_base_seed20260721.fusion.json": "df909a356c089f87375bc46fa8633b9fd0bc1f3d84030ea3edb4395fa71458c1",
+      "results_IS_HYBRIDV1_base_seed20260721.json": "0185facc4962080c76269dbbf22ecc91a46d8e92c724213c8d77d42e8b512ac9",
+      "results_IS_HYBRIDV1_base_seed20260722.fusion.json": "3f556a40a67e334cb73a1e412a6ac0a3758c8baf64650ebad294a0e08fa01410",
+      "results_IS_HYBRIDV1_base_seed20260722.json": "caf6d593f78f9029dde16999ae6342aba0a5ec88ec71f32b9b40942fe1b26106",
+      "results_IS_HYBRIDV1_base_seed20260723.fusion.json": "ff48fbf258eb5a16b415bc5195ca7c20c1aa506a19859925f9f118a90b87ba13",
+      "results_IS_HYBRIDV1_base_seed20260723.json": "da3083f61c7b43bbf035f116ae9d680b16174a194c4c40a31c14724f85edae56",
+      "results_IS_HYBRIDV1_base_seed20260724.fusion.json": "5c8bb7a0a7f37ad88b111e3e80f6508f855f8bd7e9a27c0dd197e6152fb63e36",
+      "results_IS_HYBRIDV1_base_seed20260724.json": "42dd6c523d5453398790e5056ed8059025384caf41bfc52ccb889b4a023d82ab",
+      "results_IS_HYBRIDV1_base_seed20260725.fusion.json": "b3c957b79addefae0de06b9351a9859ce99b5c45b50326c07c3d13e298c62e6d",
+      "results_IS_HYBRIDV1_base_seed20260725.json": "433d8d79b8b82ddbafca6d75145dcdc01ef072f39c42afd977fafc2ab82a08b7",
+      "results_MI_HYBRIDV1_base_seed20260721.fusion.json": "a2480ab7770fff8d2116398c981628528db9011f8fe202ad311ecc714d663efd",
+      "results_MI_HYBRIDV1_base_seed20260721.json": "dcfe99cc5eb6091df61565f96cbd7a34a82d633f0e8ae4947bc3557a6d6ef14f",
+      "results_MI_HYBRIDV1_base_seed20260722.fusion.json": "6fe3fca594203c57bae1cb2432523a79befce7dda6f821b08ba1f025d083eab8",
+      "results_MI_HYBRIDV1_base_seed20260722.json": "cdf60b1a0bf212b050d95c9a3e871cf52ccc816697409e4fe892c77e6157f12b",
+      "results_MI_HYBRIDV1_base_seed20260723.fusion.json": "ed3dbf040ac8f73145344315cc7f2d870b6901bae3ac20e2848491d474a23c55",
+      "results_MI_HYBRIDV1_base_seed20260723.json": "a31eda8e67519523793b2c70977e2d7cf667ccfb588a385f0c1b83ca02d8d5d0",
+      "results_MI_HYBRIDV1_base_seed20260724.fusion.json": "5392f08cd9b3dd67b7d1e726be4cd7a817645e2c61a4f787fe12d156593dcacb",
+      "results_MI_HYBRIDV1_base_seed20260724.json": "ba59d60cbd2245642cfc11fab0b2f9736592942ce342405d8c2619f66fd8f7f0",
+      "results_MI_HYBRIDV1_base_seed20260725.fusion.json": "9dda6cb9d3ed17c2cbc299b3d86d3132100a06d43d6e47cd6a6612dc321664bd",
+      "results_MI_HYBRIDV1_base_seed20260725.json": "ef174ad6aa5fcd19bef42d293d15e3870d7a0f94808421250f74d45964340bed",
+      "results_VG_HYBRIDV1_base_seed20260721.fusion.json": "c0ec8686fcad84d0868b9be7ab74e796252d1f34015d39f79ac9747720dc1da5",
+      "results_VG_HYBRIDV1_base_seed20260721.json": "ec62fa032f457739f0ac7d332ce4b32c71362c520844f3be63c786fc8d6102ff",
+      "results_VG_HYBRIDV1_base_seed20260722.fusion.json": "2f9d3b6fe23da1e15878a699942fa0d2bbfc385610f47454a4b3f5e4d6dac6d2",
+      "results_VG_HYBRIDV1_base_seed20260722.json": "56e4649dd5e4585c85893c226c4b97f6b7d74bb0aaf65a0c784d523da1da4951",
+      "results_VG_HYBRIDV1_base_seed20260723.fusion.json": "b9a00a89b9dbd79ebe94f401bb4df41bc30a438cf54d852111a572dc47af3f52",
+      "results_VG_HYBRIDV1_base_seed20260723.json": "69953dc171c299b7f623562bef5c9fa033ed11747c89da12f6b00504e9f188bc",
+      "results_VG_HYBRIDV1_base_seed20260724.fusion.json": "55618c42ece5728e88839594b6b0cd38f03d21b7187c34ec861fdd4b447e3455",
+      "results_VG_HYBRIDV1_base_seed20260724.json": "de0ccc6f8f1ed0c440cfda34407d3749ddb124bafaa84b283a0996ac440f4f4f",
+      "results_VG_HYBRIDV1_base_seed20260725.fusion.json": "959fe6279994fef3825d5a2c39b65b29307d7e5629d5e9c141bddd85ad40bd8e",
+      "results_VG_HYBRIDV1_base_seed20260725.json": "d078f2f01f623bef2b7d756977cebc6d547b21cf653aa0fd9ecb72154569522d",
+      "results_MI_HYBRIDV1_ensemble5.json": "290c27d071d5460ee000909a463860f1838dc65125a10d5f121c43ba473cb178",
+      "hybrid_v1_adjudication.json": "f8cd0bd1d631c5dde9f63a34cf4e9f390852e62d93330ba734afd593fee48e82"
+    },
+    "COLDFUSE_V1_sparse_warm": {
+      "results_CDS_COLDFUSE_base_seed20260736.json": "8c3a0ddcea676f724450c98db57bd66fab4d31b1fccd06343b1f0d90cdc4ff31",
+      "results_CDS_COLDFUSE_base_seed20260737.json": "53f8f73aa5e35eea89cbab13bfe3c471de7f1530db840e25d854e2299d8eaf0d",
+      "results_CDS_COLDFUSE_base_seed20260738.json": "8ae87316b469566c319563604941bb92bcfde22f75243dc765e558d7cc9d6284",
+      "results_CDS_COLDFUSE_base_seed20260739.json": "4581f7a67fe1f94f112ecbb9613781a951267cc05489e312f29ea2ab5ccb2fa5",
+      "results_CDS_COLDFUSE_base_seed20260740.json": "fddf2d53eabe4dcb6f09a8dc037d6f873294743e95bd0b24bba68396319e1799",
+      "results_IS_COLDFUSE_base_seed20260736.fusion.json": "3ecc2f30eb0cb2dbe231368819dd5c6af11433f19d1a6d01466721c134cba2d7",
+      "results_IS_COLDFUSE_base_seed20260736.json": "600a6cd14a89121b1b39ac6fc6198bfb7083039c7ae4450557b7f202046fba7f",
+      "results_IS_COLDFUSE_base_seed20260737.fusion.json": "e3ae03266f48ea130de69ed11d03c6982c6466cfc8aea59cf5524821720621fa",
+      "results_IS_COLDFUSE_base_seed20260737.json": "1b6aabb1f980812c0464a9d7712a7effab8aad4995397a526f28eae5b13b96df",
+      "results_IS_COLDFUSE_base_seed20260738.fusion.json": "e9c39a80a3238b5391a11883390f352b3a542ece8b55bc1d24b3aa98bff20375",
+      "results_IS_COLDFUSE_base_seed20260738.json": "acde64e07ab36967386ed35e6d377d610224e9a0b4c64ceb9bf211e79ef6e3ca",
+      "results_IS_COLDFUSE_base_seed20260739.fusion.json": "d7f726c6beed86c0cc494cc5a23a8c0430b428be958f991cf0911e89dacc0b39",
+      "results_IS_COLDFUSE_base_seed20260739.json": "16557e04c7b511263383fe3c2af59aadf7a36500d39260648e8cb39ab27614cb",
+      "results_IS_COLDFUSE_base_seed20260740.fusion.json": "a8906576915c6767be420ccc9bb96270a27e460260ee0957c4f14c2d1890aa9a",
+      "results_IS_COLDFUSE_base_seed20260740.json": "0d2aa5331b24a245cd25d64a99268dce69b0c2da210e17b9952530e2c76398fd",
+      "results_MI_COLDFUSE_base_seed20260736.fusion.json": "299e11f1f1061c2bc63578f1794b868820db55234cfcd63db51e80c99af3de3d",
+      "results_MI_COLDFUSE_base_seed20260736.json": "446cffa28f70ac0e805c5ae82eb138ea1a403b279b97c18091a2abc45d9b84ab",
+      "results_MI_COLDFUSE_base_seed20260737.fusion.json": "238a1de2fa7a694b2ec2b738f846baad7a287183ad37c9392870c8742f72e939",
+      "results_MI_COLDFUSE_base_seed20260737.json": "10ed1e983c0e4567f2a78b5ac802bc6f8bbd4756d4e26525b3b15f7368edd791",
+      "results_MI_COLDFUSE_base_seed20260738.fusion.json": "0e605dc320c937ec46bd880543398f77773acc5198f1a33fb84f2a412b5afa91",
+      "results_MI_COLDFUSE_base_seed20260738.json": "fe07591cc0da596dec46cf768e0ae8e759a5d0ff1042abaa2773a97825d2f5ad",
+      "results_MI_COLDFUSE_base_seed20260739.fusion.json": "8e2a184a874b5f52daeaf34238f6d1a38b902e8d970a84965a16d45418c0494f",
+      "results_MI_COLDFUSE_base_seed20260739.json": "6bd16ed9e4e412c5fd1975a43d35331d52b17c06e2af71d9231ea49e9289f0df",
+      "results_MI_COLDFUSE_base_seed20260740.fusion.json": "4a462080acd2b8ef87471db545ac73b38e3a5385326e47d55dc08449961f202e",
+      "results_MI_COLDFUSE_base_seed20260740.json": "1123d38e565f0951edb73bdf04d5f408b1335652392ed6bda84d474c8bda053d",
+      "results_OFFICE_COLDFUSE_base_seed20260736.json": "81b0fc3effc647d2ff7afe52a5391ae52086f91d2854f83c9d1efe7947619a79",
+      "results_OFFICE_COLDFUSE_base_seed20260737.json": "418e091eb1ff683aca57d968b95dbc15599edeea1d5f1a8fe5ab8ab4035acf76",
+      "results_OFFICE_COLDFUSE_base_seed20260738.json": "1bbe2bd37e53a5f6f11a7f2a7ff3ed73db14959e2a939f811f44ec1a8259929a",
+      "results_OFFICE_COLDFUSE_base_seed20260739.json": "149126a0ef4c49389dc06274a5226f685bdf7d1faec12c5613aff35d1e56e039",
+      "results_OFFICE_COLDFUSE_base_seed20260740.json": "415a19d9bd486428169635cd2e918e4a0e3e9ecb3a9f862a4c2ef4cd27b336ce",
+      "results_VG_COLDFUSE_base_seed20260736.fusion.json": "fa51c6adc7bc125985aeed91d03f0e064224c5412f75f6734bd9ce07cf6022de",
+      "results_VG_COLDFUSE_base_seed20260736.json": "decb805cb3f9adee41f28d4fed47b91b6f617a997b2002c428060a999b52e4f1",
+      "results_VG_COLDFUSE_base_seed20260737.fusion.json": "6f3e7af55cd46a674150b3402693bec680131d19aa8b79e96916c35ed8d55ba0",
+      "results_VG_COLDFUSE_base_seed20260737.json": "beacde4f87e48cbbcc4b9fec594bed8454977d4d9d0265453f3ffdbfeb3d506f",
+      "results_VG_COLDFUSE_base_seed20260738.fusion.json": "1caaf2b526d317b0f06572a99ac0d11703b711c657be79ce59240db237b66fa1",
+      "results_VG_COLDFUSE_base_seed20260738.json": "9c010483bd2fdcdede1114c4a580628da59450a7245e53509daa8ff86c42329a",
+      "results_VG_COLDFUSE_base_seed20260739.fusion.json": "5345e12d1ebf67c3efadf4672751d9efd0d2d9c5816536dfa0ac9c7986b2af49",
+      "results_VG_COLDFUSE_base_seed20260739.json": "696f58c6947ff3d3ea855ef51f9850ef04309a7938b72cf21a6762fdc0447089",
+      "results_VG_COLDFUSE_base_seed20260740.fusion.json": "6c5774e0fe3be9ab359688978a2558558ed7fb9b28d9f623eb02270e5b150cef",
+      "results_VG_COLDFUSE_base_seed20260740.json": "56c0428acca45857e2a0bd395b457bad0b997c82ebb784de572bbf8258f00119",
+      "results_CDs_and_Vinyl_COLDFUSE_confirm_seed20260736.json": "16d3da7b5b9e27faa9345c5da53f6a782d81e5adf0b8c6644bb9f56fdc45ed55",
+      "results_CDs_and_Vinyl_COLDFUSE_confirm_seed20260737.json": "75126c75303e1e19e0ea1a5e12f5808f43a5f0056039107040aef7c80874eae0",
+      "results_CDs_and_Vinyl_COLDFUSE_confirm_seed20260738.json": "5a634a3843866a1750abfb67f949b87b0c93904e21a971c2065c9e408aa613b3",
+      "results_CDs_and_Vinyl_COLDFUSE_confirm_seed20260739.json": "0a5b98919004db12e3177b651d731efcbde84a6e435d44b35966dfe292803a7d",
+      "results_CDs_and_Vinyl_COLDFUSE_confirm_seed20260740.json": "c1dec6a24f8102212f14665d4e6e7ae385576e93b6bb98b131a3d49f881f180b",
+      "results_Industrial_and_Scientific_COLDFUSE_confirm_seed20260736.json": "137cf484d33703df0471627f8557fa084a707faa87ca8505ce538b5875beec7d",
+      "results_Industrial_and_Scientific_COLDFUSE_confirm_seed20260737.json": "177e0544046e45f31ec6cf2d968d6329faee7b717e464f3267c08ce17606c5db",
+      "results_Industrial_and_Scientific_COLDFUSE_confirm_seed20260738.json": "512ce42b5a01b9db994a35cdd72f4acedabafac7ea46ada7c908970cc0356941",
+      "results_Industrial_and_Scientific_COLDFUSE_confirm_seed20260739.json": "7ea79a6491a05dac9700b44047836310054f047bc29c680f39fbbb472fe505b7",
+      "results_Industrial_and_Scientific_COLDFUSE_confirm_seed20260740.json": "b7eb047f14367caea6f61ffec8e700a6dba70a9f73f65447dc1ae81b5cf7b460",
+      "results_Musical_Instruments_COLDFUSE_confirm_seed20260736.json": "bd2030e045fb1d429acf762a3d608a9901867bbff79d376347655decf1300bb2",
+      "results_Musical_Instruments_COLDFUSE_confirm_seed20260737.json": "0dcb9e6d0c3c487dc7716cf80fa4630cc38ed3a082ad80b7c5e8b69d6c0acef7",
+      "results_Musical_Instruments_COLDFUSE_confirm_seed20260738.json": "41d82c901a10d269f42a924e44cf156a8c7d3f94cb00cb977b5859c06f42d528",
+      "results_Musical_Instruments_COLDFUSE_confirm_seed20260739.json": "752680b1314eed02fe4f37000f14a65b30d887cf7b4cc85fe4dba7eadf941fdc",
+      "results_Musical_Instruments_COLDFUSE_confirm_seed20260740.json": "c1c87f796792363c1efbcb6a538124a77dde32ff1c6ec9aef00f928ceeeb46af",
+      "results_Office_Products_COLDFUSE_confirm_seed20260736.json": "b87ac2ecb7a1f659f2a1e8fbedb2bab9ebbb83dd02bc0aeb97e9d323f61f7a13",
+      "results_Office_Products_COLDFUSE_confirm_seed20260737.json": "706fd5907eddbbe1ea395a6a2a65403ca0154ddd6441bfe56fd2a221c4a7a121",
+      "results_Office_Products_COLDFUSE_confirm_seed20260738.json": "e371ae1a565c3d0ba4da5d5ac3847278b1d786588d315f91db31f6a2c50090f6",
+      "results_Office_Products_COLDFUSE_confirm_seed20260739.json": "b12bd9171b6139f71f32e4a5bff10fd31ba5d99b15b4eddf3e3b2f657c28a312",
+      "results_Office_Products_COLDFUSE_confirm_seed20260740.json": "c8f4b4189c357d7f9edc8fc53aa0c8f5f68254d9338dea2dd976b021cc380eaa",
+      "results_Video_Games_COLDFUSE_confirm_seed20260736.json": "88e05218670ffdcccf5d46027e5db5b8ca66d3d17843ab2adf78c8dd7575ebf5",
+      "results_Video_Games_COLDFUSE_confirm_seed20260737.json": "d8530cd323726c946361f02f3a2be8f586a3602365106bead865f743cd8f7c74",
+      "results_Video_Games_COLDFUSE_confirm_seed20260738.json": "620ff7ac2501c3b23c441d161dc434fb5586146f93868788fcef23f49c6f9681",
+      "results_Video_Games_COLDFUSE_confirm_seed20260739.json": "ce1fe1a683163a5676b74852f400fcde1cd64604073f0a233b5edf3caa78779c",
+      "results_Video_Games_COLDFUSE_confirm_seed20260740.json": "9a676b27f12660aecc22a907856315f37657a485786da2249bac61c69ae9631b",
+      "results_Musical_Instruments_COLDFUSE_explore_seed20260721.json": "9fdb3433b7082b1ee3bfb6a790ff03ae628e69dbc18d9eb0b82044c91cc41c54",
+      "results_Musical_Instruments_COLDFUSE_explore_seed20260722.json": "64fcff3e537319873a4f972d17e050b6984165bc2a1b5bf96a52a1f86004d164",
+      "eg_coldfuse_explore_verdict.json": "ef1f142891ea29bb15bf5f3e9d58da10f7e3d8ad125f58ebb9e1507d3c5f08ec",
+      "coldfuse_v1_adjudication.json": "9e599de1fb9c3edea2f4ebc1b0373919a3a89ffe2ca5bf658aa0632095140c99"
     }
   },
   "sidecars": "see _bestrec_run/SOTACONF_V2_sidecar_manifest.json (tracked) + per-run user_records_sha256 fields",
@@ -238,20 +415,20 @@
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     "PAPER_SUBMISSION.md": {
-      "sha256": "2cbdaf45acb4509f79742d152555694b70ad94e3ee037b6bbd230987c170e345",
-      "bytes": 192155
+      "sha256": "5e320b8e4cad77f1c2688ea6560a66021e26ccb1d5b794ead279eb5fcd2114b9",
+      "bytes": 200336
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "d32acf7e4b8ce8cc8a56bed672ca981b1639eb4f3fda32a330476aed8bc6c675",
-      "bytes": 1403858
+      "sha256": "1c1444929fa4a55e64f2333f1fb14d651e88fc984a8d89e322158a2e7869b36f",
+      "bytes": 1424715
     },
     "PAPER_DRAFT.md": {
-      "sha256": "fa5c88614f58ab44245098e3e8266da64e6518360f0cbd26fbed71e985928a68",
-      "bytes": 215517
+      "sha256": "49c83c2f02674cd6df5eddfe724a7bba1200944a2b1558727ce4054adbb9313f",
+      "bytes": 223698
     },
     "CANONICAL_SUBMISSION.md": {
-      "sha256": "3a4ffd4baadbaad930db97a0d2675adf5329779b28f6ac09f4433f07be3fe0af",
-      "bytes": 10158
+      "sha256": "41c16c2702567f2a48e5d227aa39728e8ed30c1f629edbddec2e61d1dcd46797",
+      "bytes": 10835
     },
     "THEIRS_ON_OURS_REPORT.md": {
       "sha256": "6bff70f42aba38c629adbf374a445c9a73ed6c01a529fdf12e06e9becfbd52ed",
@@ -286,8 +463,8 @@
       "bytes": 27959
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "213ea3def3f1d0b58b14c4e0bfb9001a9131108ec2538408d723d80dd7fa09de",
-      "bytes": 460321
+      "sha256": "59c48d1346aebdcef38ef52e32851d3c9b9ceb4ed18f2f725e69cef4484ffcce",
+      "bytes": 471207
     },
     "_bestrec_run/emit_latex_tables.py": {
       "sha256": "5ccb9f225cba000d3b38d89b2a53743aeb0e2f851f2f396006cc3a871e96d3b3",
@@ -403,7 +580,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.1.11-deposit",
-  "hash_parent_commit": "ce8cfaafa987f55b4248d9646fe1504c79a3b87f",
+  "hash_parent_commit": "030a90d39e3f1c848f455a438a3883d44672a55f",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",

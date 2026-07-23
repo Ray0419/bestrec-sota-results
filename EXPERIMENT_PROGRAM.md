@@ -61,7 +61,7 @@ result." This file is the durable worklist the quiet-tick loop services (priorit
   -> [x] launched 2026-07-22 chained behind E-A's GPU job (driver waits on
   `ea_fir_v3_status.json`; ran 264 min, 31/31 jobs, 0 failures) -> [x] adjudicated 2026-07-23: **W-H-POS on all three categories** (MI +0.00244 [+0.00219,+0.00268]; IS +0.00261 [+0.00211,+0.00310]; VG +0.00317 [+0.00286,+0.00348]; all Holm-SIG; W-H-PUB-MI fires: fused mean 0.04399 > published 0.0406; VG 0.07031 < 0.0760 stated honestly; ensemble5 0.04557; integrity gates passed, adjudicator exit 0)
   -> [x] integrated 2026-07-23 (papers §5.7 + Steck 2019 bib entry + PLC + README + CANONICAL post-deposit ledger; frozen-wording deviation DISCLOSED: 'pre-registered' -> 'pre-declared', the manuscript's uniform term, gate-enforced synonym).
-- [ ] **E-G. Cold-start / sparse-tail fusion element (maintainer directive
+- [x] **E-G. Cold-start / sparse-tail fusion element (maintainer directive
   2026-07-23: "add element that help cold start or sparse dataset problem,
   keep running experiments, once there's evidence of improvement verify
   with all full datasets").** Element: training-free **text-kNN third
@@ -103,8 +103,8 @@ result." This file is the durable worklist the quiet-tick loop services (priorit
   20260736-40 (20260728-32 block consumed by Office V3); MI/IS/VG vs
   fused2, OFFICE/CDS vs seq (EASE infeasible, declared); co-primary
   tail-bin delta, Holm(5), tail margin +/-0.0005, cost margin -0.0005 ->
-  [x] launched 2026-07-23 (~10 h sequential, resumable) ->
-  [ ] adjudicate -> [ ] integrate (frozen wordings W-C-* only).
+  [x] launched 2026-07-23 (first pass 63 jobs/653.8 min; Office-36 base needed FOUR attempts -- file-lock 1224, CUDA illegal-access at epoch 15, CUDA alloc failure, then success with expandable_segments; every other run first-try) -> [x] adjudicated 2026-07-23 (gates v2 + GATE5_CONFORMANCE_DECISION.md dual verdicts): **W-C-POS x5** -- tail +0.00217 MI / +0.00243 IS / +0.00337 VG / +0.00114 OFFICE / +0.00481 CDS, all Holm-SIG, all no-material-cost; frequency-0 never moved; all selections at grid ceiling; sign-test floor .0625 disclosed ->
+  [x] integrated 2026-07-23 (papers §5.8 with the audit-mandated framing: sparse-warm redistribution naming, f0 erratum, mid/head costs at equal prominence, boundary + sensitivity + outcome-visibility disclosures, §5.3.1->§5.3 frozen-pointer fix disclosed; +5 related-work citations with verified metadata; PLC Update 3; README; CANONICAL ledger entry 3).
 - [ ] **E-B. Frequency-stratified item-text permutation + random-feature
   control (audit 10:47 design adopted).** Freeze SEVERAL independent permutation
   maps before training (map uncertainty is real); permute within

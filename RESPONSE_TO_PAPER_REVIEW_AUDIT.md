@@ -9,6 +9,49 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-23 09:01 Australia/Sydney (responded 2026-07-23; MACHINE-CHECKED: coldfuse adjudicator v2 exit 0 with dual Gate-5 verdicts, venue build exit 0, strict chain exit 0)
+
+**Verdict accepted; the Gate-5 catch was correct and is resolved by your own
+prescribed remedy, in the auditable order (decision dated and committed BEFORE
+the full-set adjudication ran).** The campaign has since completed 25/25 and
+been adjudicated W-C-POS on all five categories under the corrected gates; it
+is integrated as a **sparse-warm redistribution** result — your defensible
+wording — with the f0 null, mid/head costs, sensitivity floor, boundary
+selection, and outcome visibility at equal prominence (§5.8).
+
+| # | Audit item (09:01) | Action | Verification |
+|---|---|---|---|
+| 1 | Gate 5 literal-vs-implemented contradiction (36/38 extra keys on MI/VG; adjudicator checked only seed/category) | `GATE5_CONFORMANCE_DECISION.md` (dated, integrity-only, committed at `ce8cfaaf` BEFORE any full-set adjudication): literal verdict recorded per category (MI/VG FAIL-literal; IS/OFFICE/CDS PASS-literal); normalized rule governs with a mechanical outcome-independent proof (extras absent from the driver's reconstructed command line ⇒ parser defaults ⇒ feature-disabled no-ops); both outputs ship in `coldfuse_v1_adjudication.json`; `--gate5-report` prints the diffs with no statistics | `--gate5-report` reproduces your exact counts (MI 36, VG 38, IS 0) |
+| 2 | Adjudicator gaps: Gate 1 fusion files, Gate 2 sweep completeness/argmax, expected-ref provenance, finiteness, NPZ checks; SciPy fallback risk | All implemented in adjudicator v2: 15 fusion JSONs enforced; 40-candidate sweep completeness; selection argmax recomputed from the recorded sweep under the frozen rule and required to equal the recorded choice; expected reference independently loaded and provenance-equal; metric finiteness; NPZ row counts/finiteness; SciPy hard-required (exit 2, no normal-approximation substitution) | Adjudicator source + exit 0 on 25/25 |
+| 3 | FALSE: "all three raw p ≤ 0.0001" (IS = 1.27e-4) | Corrected to exact per-category raw p in §5.7 (md + tex) | Commit `030a90d3` |
+| 4 | FALSE: "one test evaluation per seed" (trainer logs per-epoch test) | Corrected: fusion stage evaluates test once at the selected pair; the trainer's standing per-epoch best-by-val test logging is disclosed as such and is never a fusion selection input | Commit `030a90d3` |
+| 5 | FALSE: "every pre-declared campaign is fully adjudicated" | Narrowed to "every pre-declared campaign that has completed" | Commit `030a90d3` |
+| 6 | Office/CDs incomplete at cutoff; no family verdict before 25/25 | Honored: no verdict was issued before 25/25. Now complete: Office-36 required FOUR attempts (file-lock 1224; CUDA illegal access at epoch 15; CUDA alloc failure; success with expandable_segments) — disclosed in §5.8 and EXPERIMENT_PROGRAM; only the successful run produced artifacts | `coldfuse_v1_adjudication.json` |
+| 7 | Adjudication (conditional at your cutoff) | **W-C-POS ×5**: tail +0.00217 [+0.00196,+0.00239] MI / +0.00243 [+0.00218,+0.00267] IS / +0.00337 [+0.00305,+0.00370] VG / +0.00114 [+0.00105,+0.00123] OFFICE / +0.00481 [+0.00472,+0.00490] CDS; all Holm-significant; every overall CI above the −0.0005 cost margin; only the no-material-cost sentence used (no positive-overall claim) | Adjudicator print + JSON |
+| 8 | Framing: sparse-warm not cold start; f0 endpoint/standing-sentence tension; mid/head costs; sign-test floor; boundary selection; outcome visibility; "fresh" definition | §5.8 carries ALL of it at equal prominence: title says "a redistribution result, not cold start"; f0-in-registered-bin erratum stated (no f0 target moved in any run; effect carried by f1–5, concentrating at f4–5); per-category mid/head means printed (exploratory, unadjusted); sign-test floor p=.0625 disclosed; all 25 selections at the grid ceiling (unbracketed; exp0.9 weakly separated); audit-observed mid-campaign visibility disclosed; "fresh = previously unused optimizer seeds on the same exposed test partitions" verbatim-spirit | §5.8, md+tex, build exit 0 |
+| 9 | Naming: retire "text-kNN"/"cold-start method"/"training-free system" | Paper uses "validation-selected, evaluation-time, history-centroid text fusion"; the scorer fits no parameters but the recommender is stated NOT training-free | §5.8 first paragraph |
+| 10 | Five missing related works | All five added with metadata verified against arXiv listings (real author lists): Wang et al. 2024 (LM prior), Collins et al. 2025 (EnsRec), Liu et al. 2023 (UCC/SIGIR), Lichtenberg et al. 2025 (DenseRec), Wang et al. 2025 (MME-SID/CIKM); cited in §5.8 positioning alongside existing TedRec/SimRec; H9 bidirectional citation gate green | `references.bib` + build exit 0 |
+| 11 | Manifest/deposit: no E-F/E-G families or protocol entries | `RELEASE_MANIFEST.json` now carries three new result families (FIR_V3_matched_arm, HYBRID_V1_fresh_seed, COLDFUSE_V1_sparse_warm — 100+ hashed artifacts) and 15 new protocol_code entries (3 preregs + Gate-5 decision + drivers/evaluators/adjudicators); digests computed with the manifest's own normalized hasher; --regen clean. The IMMUTABLE deposit update (bundle + NPZ sidecars + clean-clone verify + new tag) remains OPEN by design — scheduled with the v1.1.12 no-waiver round trip; v1.1.11 is never moved | manifest diff in this commit; strict exit 0 |
+| 12 | Ops: checkpoint overwrite during training; append-only ledgers; run freshness; EASE cache (89.3 min avoidable) | Recorded as the operational spec for the NEXT campaign (immutable per-epoch/content-addressed checkpoints, append-only events, verified EASE cache, holdout discipline). Not retrofitted mid-campaign: E-G's artifacts are complete and hashed as-run | EXPERIMENT_PROGRAM note |
+| 13 | E-F confined to Results; synthesis/thesis choice | OPEN, acknowledged: abstract/intro/methods/related-work placement for E-F/E-G is the synthesis-rewrite track's first job (10–14k words, one thesis, chronology to supplement) | declared |
+| 14 | Open questions 1–9 | (1) sparse-warm only — now in the section title; (2) sequential outcome visibility documented in §5.8(v); (3) Gate 5 via the public decision + `--gate5-report` independent check; (4) Beauty excluded for catalog size AND no frozen headline config — target population = the five governed categories, stated; (5) an untouched temporal/catalog holdout does not currently exist — adopted as the next-study requirement; (6) mid/head tradeoff = application decision, stated in §5.8(ii); (7) deposit boundary = the future v1.1.12 tag; (8) checkpoints are local (hashes in results JSONs), dirty-diff/full-sidecar release folded into the deposit plan; (9) byline/venue metadata remain maintainer-manual | §5.8 + this table |
+
+Standing boundary: no SOTA wording anywhere; the counted comparisons are
+unchanged; every new sentence entered through its frozen wording or a
+disclosed narrowing.
+
+## Response — to Audit Run 2026-07-23 08:00 Australia/Sydney (responded 2026-07-23; superseded in depth by the 09:01 run — every 08:00 item is answered above, mapped below)
+
+| 08:00 item | Where resolved |
+|---|---|
+| IS complete/positive but f0 unchanged, mid/head lose, edge-of-grid policy (12/12 runs) | 09:01 rows 7–8: confirmed on 25/25 and integrated with exactly that framing (sparse-warm redistribution; f0 erratum; mid/head means printed; ceiling selection disclosed) |
+| VG only 2 seeds at cutoff | VG completed 5/5 the same day; adjudicated W-C-POS |
+| "Dense history-centroid semantic scorer" naming | Adopted (§5.8; "text-kNN" retired) |
+| Exact sign tests do not reject | Disclosed as the n=5 sensitivity floor (§5.8(iii)); registered ordinary t governs |
+| Family incomplete and outcome-visible | No verdict was issued before 25/25; visibility disclosed (§5.8(v)) |
+| Protocol/artifact/provenance gaps (same family as 09:01's) | Adjudicator v2 + Gate-5 decision + manifest families (09:01 rows 1–2, 11) |
+| Statistical redesign & novelty fact-check (shared with 09:01) | 09:01 rows 8, 10, 12–13 |
+
 ## Response — to Audit Run 2026-07-22 16:51 Australia/Sydney (responded 2026-07-22; commits `4e7e1c53` + `9fe81f40`; MACHINE-CHECKED: `closure_ledger.py` exit 0, venue build exit 0, strict chain exit 0)
 
 **Verdict accepted.** The falsification matrix was right again: the prior response

@@ -1,3 +1,9 @@
+# ⛔ VOID / SUPERSEDED (audit 2026-07-23 22:00, accepted BEFORE any valid import)
+
+**This E-B protocol is VOID.** The audit confirmed three design defects, all found before any results were imported (no `eb-cloud-results` branch existed; the one exploratory pod run died and is discarded, not imported): (1) the primary test pooled 3 maps × 3 optimizer seeds as n=9 independent vs n=3 aligned — pseudoreplication (the 3 seeds are shared, so runs are crossed repeated measures); (2) the random control cache was NOT row-normalized (~19.6× the aligned row norm), so it tested scale destruction, not just semantic destruction (fixed in `make_control_caches.py`); (3) deterministic shard-by-arm allocation aliased arm with pod/GPU/software on heterogeneous cloud pods. A corrected **PREREG_TEXTPERM_V2** must freeze BEFORE any run: seed-block paired analysis (n=3 paired, or +8–10 fresh seed blocks with map as a crossed factor + mixed model / block-permutation test), row-norm-matched random control + a covariance/anisotropy-matched null, randomized complete seed blocks (each pod runs one aligned + one permuted + one random for the SAME seed; environment recorded and modeled), a pinned container digest + lockfile (frozen environment), finer within-f1–5 frequency strata, and sealed endpoint handling (no plaintext endpoint committed pre-adjudication; SHA256SUMS verified before any read). The text below is retained only as the voided original.
+
+---
+
 # PREREG_TEXTPERM_V1 — E-B: Training-Level Text-Permutation and Random-Feature Controls (FROZEN; CLOUD EXECUTION DECLARED)
 
 **Status: FROZEN at commit time; committed BEFORE any run is launched.

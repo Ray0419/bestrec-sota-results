@@ -1,11 +1,11 @@
 {
   "release": "v0.9-audit-evidence (immutable data assets) + the current deposit tag (deposit releases supersede each other; the current tag and bundle inventory are recorded in DOI_DEPOSIT_INSTRUCTIONS.md)",
-  "date": "2026-07-23",
+  "date": "2026-07-24",
   "license": {
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "12242f61d6c897fd196649f30502a703776986b6",
+  "git_commit": "d9bb1d4b40f3d0597053e5a032c65470740369e7",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -100,7 +100,7 @@
   },
   "protocol_code": {
     "_bestrec_run/run_sasrec_sbert.py": {
-      "sha256": "9f6a463706f6eb4bf83512d35a97eb07ad050ca5e2dc891aec3c6423da525120"
+      "sha256": "bc5441c6b6ce0b6f7d84cf4d9120e240540f847865455582b340bf2229670e0b"
     },
     "_bestrec_run/run_sota_confirm_v2.sh": {
       "sha256": "0c7fa2a4e58e0d442c4a6c3af510c5d62bcd5b238bfe5346ea060bc742fa1b1a"
@@ -136,7 +136,7 @@
       "sha256": "faa06bde93723a240e356d89f86e4c8369bd66a4651ce84b7f6ee03ce5360e6d"
     },
     "_bestrec_run/fuse_ease_eval.py": {
-      "sha256": "c67da1cc825ff633bfc47b39f8e2fcd168e7c98f292c9a4545b74bd802be42c9"
+      "sha256": "1228cb7ccd6d5667612439243902269d2351a07a38339110182acbe05711a4a6"
     },
     "_bestrec_run/ensemble_fuse_eval.py": {
       "sha256": "e5e41c56a2cb558b34ed06d919dab49bae3fa645f1d26be720da3841587e1a53"
@@ -420,20 +420,20 @@
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     "PAPER_SUBMISSION.md": {
-      "sha256": "503d8b631f446d5233b39860ff7e4bf864d6781959d93db3ca9a9e10bf818212",
-      "bytes": 202652
+      "sha256": "72be2d20beb8da95d8aeef4cb9140ff24126512264f857236645c5720c71867b",
+      "bytes": 203132
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "3d53f09843c8aaf6cb0d6008fb01810b0927143f5dff1601d9d1045a8412c2f4",
-      "bytes": 1428144
+      "sha256": "fe84b22196008cdd1bd7d0544f1a11d5397b82ecffa693bb79a96eff754719e0",
+      "bytes": 1429306
     },
     "PAPER_DRAFT.md": {
-      "sha256": "392e30c803ca4562074b279f2539ec44fda3de0d223547319edeedff38fe4c84",
-      "bytes": 226014
+      "sha256": "b63865482fab674e867ae3d9b2d3944996e37eecbb696565ecb160ee94c6539c",
+      "bytes": 226494
     },
     "CANONICAL_SUBMISSION.md": {
-      "sha256": "5a030e75c338492760be0db45b6a0915beb405b7cbc325a675d4b8956ce85425",
-      "bytes": 11069
+      "sha256": "142abe093a878f8e3777baf2b979a8f806b22be19098dfa9c32110d2c4644864",
+      "bytes": 11331
     },
     "THEIRS_ON_OURS_REPORT.md": {
       "sha256": "6bff70f42aba38c629adbf374a445c9a73ed6c01a529fdf12e06e9becfbd52ed",
@@ -468,8 +468,8 @@
       "bytes": 27959
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "bf1d14836f2cd73386fa0edef35a499ca2bb9136cd3785a6106770723f3d85b3",
-      "bytes": 473363
+      "sha256": "ec55ddee4b4ad992b515d09ce9abd0335a2c3a8f555b6c1f098092615a2ca21d",
+      "bytes": 473966
     },
     "_bestrec_run/emit_latex_tables.py": {
       "sha256": "5ccb9f225cba000d3b38d89b2a53743aeb0e2f851f2f396006cc3a871e96d3b3",
@@ -585,7 +585,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.1.11-deposit",
-  "hash_parent_commit": "12242f61d6c897fd196649f30502a703776986b6",
+  "hash_parent_commit": "d9bb1d4b40f3d0597053e5a032c65470740369e7",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",

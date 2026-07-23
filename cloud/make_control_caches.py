@@ -67,8 +67,14 @@ def main():
                 np.save(dst + ".tmp.npy", P)
                 os.replace(dst + ".tmp.npy", dst)
             report[f"{cat}__{kind}"] = sha(dst)
+        # audit 2026-07-23 22:00: the random control MUST match the aligned
+        # cache's row norm (canonical rows are L2-normalized to 1.0). An
+        # un-normalized N(0,1) row has norm ~sqrt(d)~19.6, so the old cache
+        # tested "semantic destruction PLUS a 19.6x scale intervention".
+        # Row-normalize to isolate semantic content.
         rng = np.random.default_rng(RANDOM_SEED)
         Rm = rng.standard_normal(E.shape).astype(E.dtype)
+        Rm /= np.clip(np.linalg.norm(Rm, axis=1, keepdims=True), 1e-8, None)
         dst = os.path.join(out_dir, f"{cat}__random.npy")
         if not os.path.exists(dst):
             np.save(dst + ".tmp.npy", Rm)

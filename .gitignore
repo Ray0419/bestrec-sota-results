@@ -73,3 +73,14 @@ cache_5core/controls/
 # verified EASE cache: regenerable, keyed+digest-checked by fuse_ease_eval.ease_B
 _bestrec_run/ease_cache/
 cloud/returns/
+
+# audit 2026-07-23 22:00 ROOT-CAUSE FIX: sequestered-campaign endpoint
+# artifacts must NEVER be committed before one-time adjudication (a git add -A
+# on an unrelated commit exposed 14 partial E-G2 confirm JSON/NPZ mid-run).
+# These are regenerable from the seed-deterministic commands; only the FINAL
+# adjudication JSON is committed, after the full family is sealed.
+_bestrec_run/results_*COLDFUSE2*
+_bestrec_run/results_*COLDFUSE3*
+_bestrec_run/results_*TEXTPERM*
+_bestrec_run/results_*.finaleval.json
+_bestrec_run/results_*.finaleval.perusers.npz

@@ -9,6 +9,29 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-23 22:00 Australia/Sydney (responded 2026-07-24; MACHINE-CHECKED: render CLEAN 61pp, venue build exit 0, closure ledger PASS, strict chain green after commit; E-A/E-F/E-G adjudicator gates all OK)
+
+**Verdict accepted; the central finding is correct and owned.** When I committed the cloud-harness commit `df5afc9f` with `git add -A`, it swept **14 in-progress E-G2 COLDFUSE2 confirm JSON/NPZ pairs** into git and pushed them to the public branch ~59 minutes before E-G2's declared 40-file one-time adjudication. That is the exact no-interim exposure E-G2 was built to prevent, committed by an unrelated `git add -A` rather than by any endpoint-reporting code — but structural secrecy failed regardless. E-G2 is reclassified **exposed / protocol-deviated** and can no longer become counted by finishing. The root cause is fixed structurally.
+
+| # | Audit item (22:00) | Action | Verification |
+|---|---|---|---|
+| 1 | E-G2 endpoint exposure via `git add -A` (14 confirm artifacts pushed mid-campaign) | **Accepted.** E-G2 reclassified exposed/protocol-deviated in EXPERIMENT_PROGRAM, CANONICAL, README; the 54 already-committed COLDFUSE2 artifacts are **preserved for forensics** (not deleted); the still-running local campaign may finish only as descriptive data, never confirmatory | commit diff; program/canonical/readme |
+| 2 | ROOT CAUSE: sequestered artifacts committable | **Structural fix:** `.gitignore` now excludes `results_*COLDFUSE2*`, `*COLDFUSE3*`, `*TEXTPERM*`, `*.finaleval.*` — no `git add -A` can ever sweep an in-progress campaign's endpoints again; only the final sealed adjudication JSON is committed | `.gitignore` |
+| 3 | E-G3 is the only remaining counted path | Registered in the worklist with (a) **repository sequestration** (endpoints gitignored until a sealed one-time adjudication; only completion hashes committed pre-seal), (b) the 8 confirmed adjudicator fixes, (c) all-eight-seed structural-null encoding, (d) frozen environment — to freeze-before-launch in a later tick | EXPERIMENT_PROGRAM E-G3 |
+| 4 | E-B frozen with invalid independence / control / environment | **PREREG_TEXTPERM_V1 VOIDED** (banner). No results imported (no `eb-cloud-results` branch; the one exploratory pod run died and is discarded). PREREG_TEXTPERM_V2 requirements recorded: seed-block paired analysis (no n=9 pseudoreplication), row-norm-matched random + covariance-matched null, randomized complete seed blocks (arm not aliased with pod), frozen container/lockfile, finer f1–5 strata, sealed endpoints | PREREG_TEXTPERM_V1 banner |
+| 5 | Random control ~19.6× aligned row norm (scale confound) | **Fixed** in `make_control_caches.py`: random rows are now L2-normalized to match the aligned cache (norm 1.0) | make_control_caches.py diff |
+| 6 | Strict release gate RED (trainer/fuser changed after manifest refresh) | `--regen` run; papers/manifest/PDFs committed together; strict chain green (E-A W-POS, E-F W-H-POS×3, E-G sensitivity all gate OK) | strict exit 0 (post-commit) |
+| 7 | §5.8 "PREREG_COLDFUSE_V1 … is the confirmation" contradicts the section's own classification | Replaced with "the registered but … outcome-visible, protocol-deviated campaign" (md+tex) | §5.8 |
+| 8 | §5.8 "only the successful Office run produced artifacts" understates partials | Corrected: three failed attempts produced/overwrote partial checkpoints/logs (disclosed; pre-atomic-write) | §5.8 |
+| 9 | §5.8 "training-free" | Corrected: the added scorer is parameter-free; the recommender it augments is trained (not a training-free system) | §5.8 |
+| 10 | §5.8 f0 "outside every counted claim" | Corrected: f0 sits INSIDE E-G1's registered ≤5 denominator; no positive f0 claim; f0 is an exact top-10 null | §5.8 |
+| 11 | §5.8 "complete retrieval failure" overbroad | Scoped to HR/NDCG@10 = 0 on these fixed full-catalog splits; does not prove failure at every rank / other candidate generators | §5.8 |
+| 12 | Two "GPU lanes" share one device (contention, not parallelism) | Accepted; recorded — future campaigns bind one job per GPU or benchmark concurrency first; the parallelism note already stated it changes wall-clock only | EXPERIMENT_PROGRAM |
+| 13 | E-G1 numbers reproduce; classification prominent | Confirmed by the audit; f1–5 (f0-excluded) recomputation noted for the E-G1 record | (no change needed) |
+| 14 | LLM2Emb citation still missing (DOI 10.1016/j.eswa.2026.133375) | **Queued, not fabricated:** the DOI is known but I could not independently verify the author list (publisher 403); it enters with verified metadata at the E-G3/E-E integration, not with guessed authors | response honesty |
+
+**Deferred (disclosed, not silently dropped):** the full E-G3 prereg + hardened adjudicator (8 fixes) and PREREG_TEXTPERM_V2 are design-and-freeze tasks for a later tick (committed-before-launch); the §5.8 four-paragraph rewrite + forensic supplement is the editorial track; LLM2Emb citation awaits verified authorship. **No claim was broadened; the counted set (MI V2, Office V3) is unchanged; E-G1 and E-G2 are both exposed/descriptive-only.**
+
 ## Response — to Audit Run 2026-07-23 15:59 Australia/Sydney (responded 2026-07-23; MACHINE-CHECKED: v3 sensitivity adjudicator exit 0 with classification embedded, strict chain exit 0 now gating E-A/E-F/E-G, venue build exit 0)
 
 **Verdict accepted without reservation.** The three central charges are correct

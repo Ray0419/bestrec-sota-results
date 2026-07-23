@@ -4,7 +4,138 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-23 15:59 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-23 22:00 Australia/Sydney)
+
+1. **[CONFIRMED, rejection-level E-G2 no-interim breach]** E-G2 was frozen as
+   the sole test-sequestered route to counted status, yet commit `df5afc9f`
+   added and pushed **14/40 plaintext confirmation JSONs and their 14 NPZ
+   sidecars while the campaign was running**. This violates both the frozen
+   “adjudicator is the first reader” design and the explicit endpoint-commit
+   ban in `EXPERIMENT_PROGRAM.md`. No human interim analysis is evidenced and
+   no partial value was read in this audit, but public availability means
+   sequestration was not enforced. E-G2 is now exposed/protocol-deviated and
+   cannot restore confirmatory status by deleting or completing the files.
+2. **[CONFIRMED incomplete E-G2 family]** At the fixed cutoff, the append-only
+   ledger contained 51/104 completed steps and 18/40 completed confirmation
+   cells (MI 7, IS 6, VG 2, Office 2, CDs 1), with two training jobs in flight,
+   no campaign-end event and no adjudication. Any five-category result,
+   control attribution, Holm family or integration is premature.
+3. **[CONFIRMED, outcome-dependent E-G2 analysis defect]** The frozen design
+   selects the reference when no validation candidate is feasible, implying a
+   zero `SEL-REF` endpoint for that seed. The adjudicator instead drops every
+   structural-null seed before all endpoint, cost and control analyses. That
+   changes the frozen n=8/df=7 estimand conditional on the result, biases away
+   from nulls and can crash all-null or sparse-non-null cases.
+4. **[CONFIRMED E-G2 enforcement gap]** The adjudicator only tests that a
+   ledger file and checkpoint-hash string exist; it does not verify launch
+   commit/diff, commands, done coverage, failures, campaign completion or the
+   checkpoint bytes. Exact-set checking omits fusion/NPZ/checkpoint extras;
+   test/NPZ finiteness and all registered aggregates are not fail-closed; the
+   registered control t/p/CI outputs are discarded; C4 is never analyzed; and
+   the first completeness decision occurs only after existing test artifacts
+   have already been opened.
+5. **[CONFIRMED unsafe E-G2 execution/resume]** `skip-if-exists` trusts a path,
+   while base/fusion/confirm JSONs and the confirm JSON+NPZ bundle are not
+   atomic. A crash after JSON but before NPZ is permanently skipped. Counters
+   are shared across threads without a lock, commands are lossy joined strings,
+   dirty hashing omits staged/untracked files, output hashes are absent, and
+   both nominal GPU lanes use the same default GPU. The new cache removes major
+   repeated inversion cost, but its metadata are unlocked/non-atomic and not
+   bound into result artifacts.
+6. **[CONFIRMED E-G1 remains descriptive despite successful completion]** The
+   full 25-run E-G1 arithmetic independently matches the v3 sensitivity
+   adjudication and the manuscript. Nevertheless, literal Gate 5 fails MI/VG,
+   outcomes were exposed mid-campaign, and the corrected gate/adjudicator came
+   after outcome visibility. All five ordinary seed-t/Holm results are
+   sensitivity-only; exact sign and Wilcoxon tests are `p=.0625` in every
+   category on one repeatedly exposed split.
+7. **[CONFIRMED redistribution and mechanism limitation]** All 25 E-G1
+   mid-bin effects and all 25 head-bin effects are negative; 85.83% of added
+   tail hits are cancelled outside the tail, and Office loses eight net hits.
+   Frequency zero is an exact top-10 null in all five categories, MI and Office
+   frequency one are also null, and gains concentrate at frequencies 4-5. With
+   no valid frequency-only/random/permuted control campaign, semantic
+   attribution is unsupported.
+8. **[CONFIRMED E-G1 boundary censoring]** Every one of 25 validation selections
+   chooses the same old grid ceiling, `exp0.9/(tail=.2,mid=0,head=0)`. The
+   E-G2 bracket is wider, but its exposed/incomplete status means it cannot yet
+   repair this inference. The current evidence does not identify a robust
+   optimum or recency profile.
+9. **[CONFIRMED, design-breaking E-B pseudoreplication]** The frozen E-B test
+   pools three permutation maps across the same three optimizer seeds as nine
+   independent observations and Welch-compares them with three aligned runs.
+   Map outcomes within a seed share initialization/minibatch randomness and
+   are repeated measures, not nine independent seeds. The primary standard
+   error, CI and p value are therefore not defensible. E-B has no imported
+   result locally at cutoff, so this can still be prospectively replaced.
+10. **[CONFIRMED E-B environment-treatment confounding]** Heterogeneous pods
+    are allowed, but the deterministic shard layout is not arm-balanced: MI
+    aligned runs occur only on shards 0-2; VG aligned runs occur on shards 0
+    and 7, with two aligned VG seeds on shard 7. Pod/environment effects can be
+    aliased with arms, while the analysis ignores environment. The bootstrap
+    checks out a moving branch and installs unpinned dependencies; a later
+    orchestrator alternatively runs eight shards four-at-a-time on one GPU.
+11. **[CONFIRMED E-B control confound]** Canonical MiniLM rows have mean L2 norm
+    1.000; the frozen N(0,1) random rows have mean norm about 19.57 and enter
+    the additive projection path unnormalized. The random comparison therefore
+    changes semantics and input scale. The “frequency-matched” permutation
+    preserves only four broad bins although the observed signal is sharply
+    concentrated at exact frequencies 4-5.
+12. **[CONFIRMED E-B integrity/sequestration design mismatch]** The control
+    generator refuses to overwrite existing caches, so the adjudicator's
+    claimed regeneration simply re-hashes whatever is present. It never
+    verifies the promised tar/SHA256SUMS before reading, accepts any one shard
+    ledger, does not bind the actual checkpoint loaded, ignores extra
+    finaleval/NPZ files, and omits promised sign tests and several descriptive
+    CIs. The post-freeze all-pod script can push plaintext final endpoints
+    before adjudication and does not fail the overall job on background shard
+    failures.
+13. **[CONFIRMED release gate is red]** Manifest verification checks 418 files
+    but fails on changed `run_sasrec_sbert.py` and `fuse_ease_eval.py`;
+    `--verify-git HEAD` likewise reports two mismatches. The E-G2/E-B protocol
+    code is not in `protocol_code`, and `v1.1.11-deposit` is 35 commits behind
+    HEAD. The canonical one-command strict submission cannot currently pass
+    its manifest gate.
+14. **[CONFIRMED manuscript contradictions after partial repair]** Section 5.8
+    first says nothing is confirmation, then calls `PREREG_COLDFUSE_V1` “the
+    confirmation”; it overstates one-time test evaluation, ambiguously calls
+    the element training-free, says failed Office attempts produced no
+    artifacts, calls a deviated result a pre-declared boundary, and says all
+    three adjudicator versions are separate artifacts although v2 code is only
+    recoverable from Git history. “Complete retrieval failure” is not scoped
+    to the observed top-10 metrics. Canonical/README/response surfaces also
+    still call E-G2 the sole independent path to counted status, which is now
+    false.
+15. **[CONFIRMED close prior art; PLAUSIBLE only incremental novelty]** The
+    paper's new AlphaFuse/DWSRec/SIDSRec/BFDRec/ACE/LLM2Rec positioning is a
+    useful narrowing, but publisher-verifiable **LLM2Emb** is still omitted and
+    is directly close in its popularity-gated ID/LLM fusion for long-tail
+    sequential recommendation. The new **SISA-Rec** preprint also uses gated
+    ID/text fusion and semantic alignment in sparse sequential recommendation.
+    The defensible contribution remains a narrow empirical/engineering package
+    and failure map, not broad text/ID, long-tail, frequency or fusion novelty.
+16. **[CONFIRMED PDF/submission blockers despite clean rendering]** Fresh full
+    renders of the reader/TORS/ACM-small PDFs (60/53/55 pages) show no clipping
+    or overlap. However, both venue PDFs visibly contain real-author,
+    institution, country and short-author maintainer placeholders; both are
+    untagged, while the reader has no outline. Reader page 28 and the final ACM
+    page waste substantial space. Portal mode, author identity, licenses,
+    accessibility and journal length limits remain author verification.
+17. **[CONFIRMED writing/fit burden]** The canonical Markdown contains about
+    29,142 word-like tokens and the reader is 60 pages. Operational forensics,
+    superseded analyses and audit history overwhelm the scientific throughline.
+    A top-journal revision needs one clear estimand, a compact results spine,
+    protocol deviations in a concise limitations box, and most forensic detail
+    moved to versioned supplementary material.
+18. **[CONFIRMED carried-forward validity blockers]** All headline uncertainty
+    remains optimizer-seed-only on historically exposed fixed splits; there is
+    no fresh temporal/catalog-arrival holdout, data-split replication or
+    external-dataset confirmation. Beauty remains outside the claimed
+    five-category transfer study; close methods are discussed more than
+    benchmarked; ethics/legal/license and sidecar-linkability decisions require
+    named-author verification. Recommendation remains **reject / not ready**.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-23 15:59 Australia/Sydney)
 
 1. **[CONFIRMED, rejection-level post-outcome protocol amendment]** The frozen
    ColdFuse Gate 5 literally fails every MI and VG run. After 24/25 outcomes
@@ -221,6 +352,634 @@ plausible risks.
     dirty earlier campaigns, seed-only uncertainty, weak comparator framing,
     stale archival deposit and a roughly 26,852-word/50-page narrative remain
     independent rejection risks. Recommendation remains **reject / not ready**.
+
+## Audit Run - 2026-07-23 22:00 Australia/Sydney
+
+### Reviewer verdict
+
+**Reject / not ready for a top journal.** The authors made several real and
+important repairs after the preceding audit: E-G1 completed, its numerical
+claims reproduce, its outcome-visible/protocol-deviated classification is now
+prominent, the literal MI/VG gate failure is disclosed, and the E-G2 trainer
+and fusion stages avoid test scoring. Those gains are outweighed by a repeat of
+the exact governance failure the replacement campaign was meant to prevent.
+
+E-G2 was launched as the **only** path by which the sparse-warm finding could
+become counted. Before that campaign completed, a cloud-harness commit added
+and pushed 14 plaintext E-G2 confirmation JSON/NPZ pairs. This makes the claim
+that no interim access was “enforced by design” false even though no human
+interim analysis is evidenced, the operational log prints no endpoint values,
+and this audit deliberately did not read any partial value. E-G2 must be
+preserved for forensics and reclassified as exposed/protocol-deviated. It
+cannot be repaired into confirmation by finishing the remaining seeds.
+
+The proposed E-B training-level control is also not launch-ready. Its n=3
+aligned versus pooled n=9 permuted Welch test pseudoreplicates three maps that
+reuse the same three seed blocks; deterministic shard allocation aliases arms
+with potentially heterogeneous pods; and the random control is approximately
+19.6 times larger in row norm than the aligned embeddings. Because no E-B
+results were found locally and no `eb-cloud-results` remote branch existed at
+the cutoff, the protocol can still be superseded prospectively rather than
+post-outcome.
+
+The strongest defensible scientific statement remains:
+
+> On one historically exposed fixed split per category, an outcome-visible,
+> protocol-deviated evaluation-time history-centroid text score consistently
+> reallocates top-10 rank utility toward items with roughly 1-5 training
+> interactions, especially frequencies 4-5. The full 25-run arithmetic is
+> internally reproducible, but exact five-seed tests cannot reject, every
+> mid/head mean is negative, 85.83% of added tail hits are cancelled outside
+> the tail, and frequency-zero targets remain a complete top-10 null. No valid
+> control study currently identifies semantic alignment as the cause.
+
+That is potentially useful descriptive evidence and a valuable negative
+governance case study. It is not a clean independent confirmation, a cold-item
+retrieval result, a broad utility improvement, or strong architectural
+novelty.
+
+### Frozen evidence boundary
+
+- Operative cutoff local: `2026-07-23T22:00:00.3161641+10:00`.
+- Operative cutoff UTC: `2026-07-23T12:00:00.3161641Z`.
+- HEAD = upstream = merge base:
+  `64ffd3405a7bc40ba242bd22526bea1383d22109`.
+- E-G2 preregistration/launch-code commit:
+  `1206e7296f1dc4fe5b4edad4fd83612844fa0526`, committed at
+  `2026-07-23T16:54:41+10:00`; ledger launch at 16:54:51, with clean empty-diff
+  SHA `e3b0c442...` and no patch.
+- Mid-campaign endpoint-artifact commit:
+  `df5afc9f3f43f35f8ed43903b7d66781bd084791`, committed at
+  `2026-07-23T21:00:40+10:00` and pushed to
+  `origin/codex/bestrec-sota-results` seconds later.
+- Previous cumulative audit: 2,399,872 bytes, SHA-256
+  `7958e051dd87a95e59ce345399d50a99a4e27b06ac4d0b40fdf5a3ec19fb2401`.
+- Exact E-G2 ledger prefix: 51,091 bytes, 105 JSON events, SHA-256
+  `44eaeb93f389854f59dfb581023b7606daba42e48ae14664f7a8f7a8cb5c4303`.
+  It contains one campaign launch, 53 step launches, 51 step completions,
+  zero failure/skip events and no campaign end.
+- Exact E-G2 status: 101 bytes, SHA-256
+  `5e061f29d66833782433da0a8faf7221d60f9e7864400f9e0d75426eb336505d`,
+  reporting `running`, `done=51`, `skipped=0`, `failed=0`.
+- Exact E-G2 log prefix: 363,672 bytes, 8,859 content lines plus terminal
+  newline, SHA-256
+  `9e2b9613c357739fecb01aef240806689eb9494f66f98f0ca090fdb8b054150e`.
+  Structural scanning found 18 confirm start/complete/write triplets and no
+  numeric test-endpoint pattern. The tracked live file grew after cutoff;
+  later bytes and files are excluded from this run.
+- Frozen code hashes: `PREREG_COLDFUSE_V2.md`
+  `03afdea80d310074b318ce01080137e21db88f9bd9e355abc93ccb8e3eb501e7`;
+  runner `bb1a58343fb611fd45704200944e8f19ff0eac5288d7f8f19c8e8d064142205c`;
+  adjudicator
+  `8f73ef51ba6a473cfc8e2c2f825f35e3c93f597a6fe6a26212176335044e41cf`.
+- This audit inspected E-G2 filenames, byte prefixes, hashes, ledgers, status,
+  stdout and source code only. **No E-G2 confirmation JSON/NPZ metric value was
+  opened or read.**
+
+### What changed since 15:59
+
+#### Confirmed repairs
+
+- E-G1 completed 25/25 and is now explicitly classified as
+  outcome-visible/protocol-deviated. The literal frozen Gate-5 failure for MI
+  and VG governs; the normalized gate and v3 adjudicator are labeled
+  post-outcome sensitivity.
+- E-G1's full five-category numbers, Holm ordering, intervals, exact-test
+  limits and selection records independently reproduce from the retained
+  artifacts.
+- E-G2 prospectively separates f0 from the f1-5 endpoint, expands the
+  validation grid to 84 candidates, adds overall/mid/head guardrails and four
+  controls, trains with `best_test=null`, performs fusion with
+  `val_only=true/test=null`, records checkpoint digests and uses an append-only
+  ledger.
+- Content-addressed EASE reuse is effective. The cutoff log shows 12 new
+  inversions and 63 verified cache hits across 75 eligible calls, avoiding the
+  old campaign's repeated dense inversions.
+- The current reader, TORS and ACM-small PDFs fully render with no observed
+  clipping, overlap, missing page or corrupted figure.
+
+#### New or reopened failures
+
+- The E-G2 endpoint push repeats the no-interim exposure pattern immediately
+  after the paper adopted a “never again” endpoint-commit rule.
+- The prospective E-G2 adjudicator does not implement several of the
+  integrity and analysis guarantees claimed by its preregistration.
+- E-B was frozen with invalid independence assumptions and control/environment
+  confounds before any evidence was imported.
+- Core trainer/fuser changes made after the manifest refresh leave the strict
+  release gate red.
+- Several manuscript and canonical-ledger sentences still describe E-G1 as a
+  confirmation and E-G2 as an independent future path despite the new facts.
+
+### E-G1: completed descriptive evidence
+
+The v3 sensitivity results and manuscript tail numbers reproduce exactly:
+
+- MI `+0.002174914` [0.001958816, 0.002391012], raw
+  `p=9.7573e-6`;
+- IS `+0.002425764` [0.002178450, 0.002673079], raw
+  `p=1.0812e-5`;
+- VG `+0.003374011` [0.003046419, 0.003701604], raw
+  `p=8.9004e-6`;
+- Office `+0.001135668` [0.001045381, 0.001225954], raw
+  `p=4.0116e-6`;
+- CDs `+0.004808024` [0.004719187, 0.004896860], raw
+  `p=1.1764e-8`.
+
+These are the registered tail-bin values that include f0 rows in the
+denominator. Recomputing the intended positive-frequency f1-5 estimand gives
+MI `+0.002201762`, IS `+0.002496646`, VG `+0.003492115`, Office
+`+0.001176468` and CDs `+0.004869684`. The distinction matters because f0 is
+an exact null, not because it reverses the direction.
+
+The ordinary seed-t arithmetic rejects after Holm in all five categories, but
+the exact sign and exact Wilcoxon tests are `p=.0625` everywhere, the smallest
+two-sided value available at n=5. The reported intervals are optimizer-seed
+intervals conditional on a fixed exposed split; they do not sample users,
+items, catalogs, time periods, data construction or domains.
+
+The utility pattern is not a broad gain:
+
+- all 25 mid deltas and all 25 head deltas are negative;
+- tail hits rise by 1,785 while mid/head hits fall by 1,532, so 85.83% of tail
+  gains are cancelled and only 253 net hits remain;
+- Office gains 345 tail hits but loses 353 mid/head hits, for eight fewer
+  overall hits;
+- all f0 observations are exact top-10 nulls; MI and Office f1 are exact nulls;
+- frequencies 4-5 carry 70-84% of the category tail gain; and
+- all 25 runs select the same maximum old-grid tail weight with zero mid/head
+  weights.
+
+The manuscript now discloses much of this, which is good. It should go one
+step further: call the result an **outcome-visible, protocol-deviated
+sparse-warm rank redistribution sensitivity**, not “the confirmation,” not a
+semantic mechanism, and not a free accuracy improvement. “Complete retrieval
+failure” must be scoped to the observed full-catalog top-10 HR/NDCG endpoints;
+the artifacts do not prove failure at every rank or under a different
+candidate generator.
+
+### E-G2: progress, exposure and code audit
+
+At cutoff, completed steps were MI 21/24, IS 18/24, VG 6/24, Office 4/16 and
+CDs 2/16: 51/104 total. The 18 complete seed-category pipelines were MI seeds
+41-47, IS 41-46, VG 41-42, Office 41-42 and CDs 41. Two training steps (IS47
+and CDs42) were in flight. The structural checks that can be performed without
+reading test values are favorable: all 18 bases have `no_test_eval=true`,
+`save_ckpt=true`, `best_test=null`; all 15 relevant fusion files have
+`val_only=true` and `test=null`; all 18 completed checkpoint files exist and
+their actual SHA-256 matches the digest recorded by the base artifact.
+
+Those implementation successes do not cure the central violation. Commit
+`df5afc9f` contains 54 partial COLDFUSE2 artifacts, including 14 confirm JSONs
+and 14 NPZs for MI41-45, IS41-45, VG41-42, Office41 and CDs41. The branch at
+cutoff matches its remote. The files were therefore externally accessible
+about 59 minutes before cutoff and before the declared 40-file completion and
+one-time adjudication. Repository visibility and whether any person opened a
+value require author verification; structural secrecy nevertheless failed.
+
+The adjudicator has additional confirmed defects that must be fixed in any
+successor rather than patched post-outcome here:
+
+| Confirmed defect | Consequence | Required successor design |
+|---|---|---|
+| Completeness is checked only after opening every available confirm file | An early adjudicator invocation becomes the first reader of a partial family before returning NOT READY | Run a metadata-only sealed-manifest preflight first; open no metric-bearing file unless the exact complete set, hashes and completion event pass |
+| Structural-null seeds are filtered out | Outcome-dependent n and upward-biased conditional estimand; frozen df=7 wording becomes false | Encode `SEL=REF`, all deltas=0 and keep all eight seeds, or freeze a category-level null rule before launch |
+| Ledger gate is existence-only | Launch commit, dirty state, commands, failures, done coverage and campaign completion are not enforced | Parse an exact event schema; require one launch, exact JSON argv, one successful completion per planned step, no unresolved failure and one terminal event |
+| Checkpoint digest is presence-only | The model evaluated need not be the model whose digest is printed | Hash the actual checkpoint before load; match base, final-eval, ledger and sealed manifest digests |
+| Exact-set gate omits fusion/NPZ/checkpoint extras | Undeclared or mismatched sidecars can enter unnoticed | Require exact sets and per-file hashes for every base, fusion, checkpoint, confirm JSON and NPZ |
+| Test/NPZ values are not comprehensively finite/shape checked | NaN can evade `abs(...) > tol`; corrupt keys/shapes can crash outside the promised integrity exit | Validate schema, exact system names, shape, finite values, bins recomputed from frozen data and every aggregate before analysis |
+| Control tests retain only means and omit C4 | Registered t/p/CI and W2-CTRL reporting are not implemented | Persist full paired estimates, t/df/p/CI, sign diagnostics and all C1-C4 summaries; define safe behavior for near-zero/negative denominators |
+| f0 wording is unconditional | “Remained a complete failure” can be printed although the code only records whether f0 moved | Condition wording on both reference and selected HR/NDCG being exactly zero, and scope it to top-k |
+| JSON/NPZ outputs and resume are not atomic | A partial JSON causes an existence-based permanent skip | Write a temporary artifact bundle, fsync/hash it, atomically rename a completion manifest, and skip only a fully verified bundle |
+
+The nominal two GPU lanes also run on the same default device: there is no
+per-lane `CUDA_VISIBLE_DEVICES` or device assignment. On a one-GPU machine this
+is contention, not multi-GPU parallelism. Use a resource-aware queue; on
+multi-GPU hosts bind one lane to one device, and on one GPU benchmark whether
+concurrency helps before enabling it. Freeze deterministic CUDA/CUBLAS settings
+if bitwise or near-bitwise reproducibility is claimed.
+
+The EASE cache is a genuine optimization but needs hardening: its roughly
+30.9-GB matrix set uses unlocked, non-atomic metadata, a truncated input key,
+and no solver/library/code version; result artifacts do not bind the matrix
+digest. Use a full interaction-array SHA plus l2, dtype, solver, library and
+code hashes; lock and atomically publish cache+metadata; record the matrix
+digest in fusion/confirm artifacts and verify it during adjudication.
+
+### E-B: prospective design audit before launch
+
+No imported `results_*_TEXTPERM_*`, cloud shard ledger or return bundle was
+found, and `git ls-remote --heads origin eb-cloud-results` returned no branch
+at cutoff. A pod could exist outside the workspace, so launch status still
+requires author confirmation. Assuming it has not started, replace the frozen
+V1 protocol now; do not silently edit it.
+
+#### Statistical design
+
+The primary analysis treats permA/B/C for optimizer seeds 49-51 as nine
+independent observations against three aligned observations. They are crossed
+repeated measures: runs sharing a seed inherit the same initialization,
+minibatch/dropout stream and other seed-conditioned randomness. Pooling them
+as independent underestimates uncertainty when within-seed correlation is
+positive.
+
+The minimum defensible repair is:
+
+1. for each seed, average the three permuted maps and compute the paired
+   aligned-minus-permuted contrast;
+2. analyze those seed-block contrasts, making the current effective n=3 and
+   explicitly acknowledging that no useful confirmatory inference is possible;
+3. preferably add at least 8-10 genuinely fresh optimizer seed blocks, retain
+   multiple maps as a crossed factor, and fit a prespecified mixed model or a
+   seed-block randomization/permutation test;
+4. report the map-to-map variance separately rather than converting maps into
+   pseudo-seeds; and
+5. freeze multiplicity and equivalence procedures, including which confidence
+   level implements equivalence.
+
+The four broad frequency bins are not enough for the observed mechanism:
+the E-G1 effect concentrates at exact frequencies 4-5. Add exact-frequency or
+narrow-band permutation strata inside f1-5 where counts permit, and report
+whether residual frequency leakage predicts the result.
+
+#### Environment and scheduling
+
+The committed shards are deterministically imbalanced by arm. For MI, aligned
+appears only on shards 0/1/2, permA on 3/4/5, random on 4/5/6 and the remaining
+permuted arms elsewhere. For VG, two aligned seeds share shard 7 and the third
+is on shard 0. The README assigns one shard per heterogeneous pod, so pod,
+software and GPU effects can mimic an arm effect. The alternative
+`run_all_pod.sh` executes all eight shards four-at-a-time on one unassigned GPU,
+creating a different protocol and possible resource interference.
+
+Create randomized complete seed blocks: every pod/environment should run one
+aligned, one map-averaged/permutation and one random arm for the same seed, or
+rotate arms through environments with a Latin-square schedule. Record and
+model environment; prefer one job per GPU. Pin a container digest, exact Git
+commit, CUDA/torch/NumPy/SciPy versions and dependency lockfile. The current
+bootstrap checks out the moving branch and installs current packages, which is
+not a frozen environment.
+
+#### Control construction
+
+The canonical MiniLM cache rows have mean norm 1.000000; the generated random
+rows have mean norm 19.577 (SD about 0.708). The trainer places these raw rows
+in a frozen embedding table and feeds them to the learned projection without
+input normalization in the additive path. Thus the random comparison tests
+semantic destruction plus a roughly 19.6-fold scale intervention.
+
+Use at least two controls:
+
+- row-normalized Gaussian features with exactly matched row norms; and
+- a covariance/anisotropy-matched null, e.g. whiten empirical embeddings,
+  apply a frozen random orthogonal transform or resample in whitened space,
+  recolor, then rematch row norms.
+
+The within-bin row permutation remains the strongest distribution-preserving
+semantic-destruction control, but it should be stratified finely enough that
+frequency cannot explain the contrast. Give every arm the same tuning budget;
+report both “same selected policy” and independently validation-tuned controls
+if those answer different questions.
+
+#### Cloud integrity and sealing
+
+- `make_control_caches.py` writes only when a file is absent. During
+  adjudication it therefore does not regenerate an existing cache; it trusts
+  and re-hashes it. Generate into a fresh temporary directory, compare against
+  a preregistered expected digest, then delete or archive the temp copy.
+- The preregistration says SHA256SUMS will be verified before reading, but the
+  adjudicator never opens a checksum or tar. Add a fail-closed importer that
+  verifies all eight signed/hashed bundles and per-file hashes before
+  extraction.
+- Require all eight shard ledgers and exact jobs/events/environments. The
+  current “any ledger exists” test is not a campaign gate.
+- Hash the `.best.pt` actually loaded by `eval_final_model.py` and compare it
+  to the base, ledger and final-eval records. Merely copying the base's hash
+  string does not bind the loaded bytes.
+- The shard tar is built before the terminal `shard_end` ledger event and no
+  independent tar digest is emitted. Close the ledger first, then seal and
+  digest the bundle.
+- Do not `git add` or push plaintext endpoints before adjudication. Store
+  endpoint payloads outside the repository with restrictive ACLs, or encrypt
+  them to a separate adjudication key. Commit only non-sensitive completion
+  hashes until the full family is sealed.
+- Make background failure fatal. The current shell lacks a reliable aggregate
+  exit check and can announce/push a partial family.
+
+### Manuscript, claim and consistency audit
+
+#### Confirmed numeric consistency
+
+The E-G1 estimates, confidence intervals, ordinary p values, Holm order,
+negative mid/head direction, f0 null and 25/25 ceiling selection in Section
+5.8 match the retained sensitivity artifacts. This is a meaningful repair.
+
+#### Confirmed prose contradictions to fix now
+
+1. Section 5.8 says “nothing in this section is a pre-declared confirmation”
+   and two lines later says `PREREG_COLDFUSE_V1 ... is the confirmation`.
+   Replace the latter with “the registered, subsequently protocol-deviated
+   campaign.”
+2. “Test was evaluated once per seed” must be qualified to the confirm stage.
+   The trainer logged per-epoch test curves, and MI/IS/VG fusion artifacts
+   scored test before the confirmation pass.
+3. “Only the successful Office run produced artifacts” is false as a general
+   statement: failed attempts produced/overwrote partial checkpoints and logs.
+   Say exactly which final result artifacts survived and disclose partial
+   attempt artifacts/overwrites.
+4. Calling the element “training-free” conflicts with the preceding paragraph.
+   Only the added evaluation-time scorer is parameter-free; it consumes a
+   trained sequential model and fitted EASE where applicable.
+5. “Pre-declared boundary under one governed protocol” should become
+   “originally pre-declared, protocol-deviated descriptive boundary.”
+6. E-G1's f0 observations are inside its registered `freq<=5` denominator, so
+   they are not “outside every counted claim.” Say there is no positive f0
+   claim; E-G2 intended, but failed, to place f0 outside its endpoint.
+7. Scope “complete retrieval failure” to HR/NDCG at k=10 on these fixed splits.
+8. If v2 adjudicator code is retained only in Git history, say so. Do not claim
+   that v1/v2/v3 scripts all exist as separate current files.
+9. Reclassify E-G2 everywhere: `PAPER_SUBMISSION.md`, README,
+   `CANONICAL_SUBMISSION.md`, `EXPERIMENT_PROGRAM.md`, response documents and
+   any plain-language companion must not call it independent, sequestered or
+   the sole path to counted status.
+
+#### Recommended rewrite
+
+Reduce Section 5.8 to four body paragraphs:
+
+1. **Question and design:** one sentence on the history-centroid reranker and
+   one sentence on the five-category/seed scope.
+2. **Result:** one compact forest plot and a small table with f1-5, overall,
+   mid and head estimates.
+3. **Interpretation:** “sparse-warm redistribution; not f0 retrieval; semantic
+   mechanism untested.”
+4. **Protocol status and limitation:** a boxed sentence stating outcome
+   visibility, literal gate failure, exact-test floor and exposed fixed split.
+
+Move attempt chronology, adjudicator version forensics, hashes, command-level
+gate discussion and superseded wordings to a versioned supplement. Preserve
+them, but do not make reviewers reconstruct the scientific contribution from
+an audit log embedded in the results section.
+
+### Novelty and literature fact-check
+
+The manuscript now correctly narrows broad novelty and explicitly recognizes
+AlphaFuse, DWSRec, SIDSRec, BFDRec, ACE, LLM-ESR, FAERec and LLM2Rec. The
+“incremental” labels are more credible than the earlier framing.
+
+Two current omissions remain:
+
+- The publisher page for [LLM2Emb: A two-stage LLM-based embedding framework
+  for long-tail sequential recommendation](https://www.sciencedirect.com/science/article/pii/S0957417426022840)
+  verifies the title, authors, DOI `10.1016/j.eswa.2026.133375`, popularity-
+  gated ID/LLM fusion and long-tail focus. It is not the distinct LLMEmb or
+  LLM2Rec paper. The response's “could not be independently verified” premise
+  is no longer available; cite and compare it or give a protocol-based reason
+  not to benchmark it.
+- The July 2026 preprint [SISA-Rec](https://arxiv.org/abs/2607.11168) uses
+  gated BERT-text/ID fusion, semantic-similarity attention and contrastive
+  alignment on sparse Amazon sequential data. As a fresh preprint it is not
+  automatically a required baseline, but it should be screened and the review
+  date recorded.
+
+[AlphaFuse](https://arxiv.org/abs/2504.19218) remains the closest established
+ID/text representation baseline and its ACM DOI is
+`10.1145/3726302.3729894`. Discussion alone is insufficient for a top-journal
+empirical claim: benchmark AlphaFuse and at least one strong adaptive semantic
+fusion model under the identical full-catalog split, or state a principled
+resource/protocol exclusion and lower the comparative claim.
+
+### Release and reproducibility audit
+
+- `update_release_manifest.py --verify`: **FAIL**, 418 files verified and two
+  mismatches (`_bestrec_run/run_sasrec_sbert.py`,
+  `_bestrec_run/fuse_ease_eval.py`).
+- `update_release_manifest.py --verify-git HEAD`: **FAIL**, 280 Git-backed
+  entries OK and the same two mismatches.
+- `RELEASE_MANIFEST.json`: 67,885 bytes, SHA-256
+  `98dcaa9e5a87692e1fb1a80dc8d0a95ebb5489261893590bec73509bdb914730`.
+- E-G2/E-B preregistrations, adjudicators and cloud runner are not included in
+  the manifest's `protocol_code` family. They must be added before any related
+  result is submitted, not merely left as unstructured repository files.
+- `v1.1.11-deposit` is 35 commits behind HEAD. It cannot be named as the
+  current deposit for the present paper state.
+
+Do not regenerate the manifest while E-G2 is live merely to turn the light
+green. First quarantine the deviated campaign, stabilize the manuscript and
+protocol code, add the intended new protocol files explicitly, regenerate once,
+run the full strict chain in a fresh clone against the exact commit, and cut a
+new immutable tag. Preserve the old tag and manifests for provenance.
+
+### PDF, figure, table and submission-readiness audit
+
+Fresh PDF QA under the PDF skill rendered and visually inspected every page:
+
+| Artifact | Pages | SHA-256 | Structural/visual result |
+|---|---:|---|---|
+| `PAPER_SUBMISSION.pdf` | 60 | `3d53f09843c8aaf6cb0d6008fb01810b0927143f5dff1601d9d1045a8412c2f4` | Tagged; no clipping/overlap; no PDF outline; page 28 has large forced whitespace before Figure 1 |
+| `paper_tex/PAPER_TORS.pdf` | 53 | `bf1d14836f2cd73386fa0edef35a499ca2bb9136cd3785a6106770723f3d85b3` | 17 top-level outline entries; untagged; clean render; author/affiliation placeholders visible |
+| `paper_tex/main-acmsmall.pdf` | 55 | `a2909c148eba9acdb35d80d4f143881bf317ba94bc51f52ac21b00bcdee201dd` | Same venue content; untagged; clean render; final page mostly blank and placeholders visible |
+
+All figures are legible at page scale, but the main evidence figure is too
+compound: it mixes a forest estimate, a density titration and a ratio plot.
+For revision:
+
+1. create one **protocol-status-labeled forest plot** with per-category f1-5
+   estimates and seed dots; put a red/gray banner in the caption:
+   “outcome-visible, protocol-deviated sensitivity; not confirmatory”;
+2. create one **utility trade-off plot** with f1-5 gain on x and mid/head or
+   overall change on y, a zero-loss quadrant, seed trajectories and category
+   labels;
+3. create one **exact-frequency plot** for f0-f5 with denominators and CIs,
+   showing the f4-5 concentration and f0/f1 nulls rather than hiding them in a
+   combined tail average;
+4. move protocol chronology into a small timeline in the supplement, marking
+   preregistration, launch, first endpoint artifact, endpoint push, completion
+   and adjudication;
+5. use colorblind-safe colors, direct labels, consistent decimal precision and
+   vector output; captions must state estimator, n, CI construction,
+   multiplicity, split exposure and evidence class; and
+6. remove redundant evidence tables from the body. One primary-results table,
+   one baseline table and one ablation/control table are enough.
+
+The visible source placeholders at `paper_tex/paper-shared.tex:37-42` are a
+submission blocker in the chosen single-blind mode. Replace them with real
+author/affiliation/country/short-author metadata or deliberately switch to the
+venue's currently required anonymous mode after author verification. Verify
+portal instructions, page/word limits, accessibility, supplementary-material
+rules, code/data license and ethics statement at the moment of submission.
+
+### Algorithm and experimental optimization guidance
+
+The next scientific campaign should not be “E-G3 on the same test split with
+more seeds.” It should change what is learned and what uncertainty is sampled.
+
+#### 1. Solve the actual f0/cold-item problem
+
+The current evaluation-time reranker changes near-threshold warm ranks but not
+true zero-exposure top-10 retrieval. Build a candidate-generation path that can
+introduce unseen/catalog-arrival items:
+
+- define an item-disjoint temporal or catalog-arrival holdout before feature
+  generation;
+- encode new items using text only and retrieve them with ANN against a
+  user/history text representation;
+- merge semantic candidates with the collaborative generator under a frozen
+  union/dedup/calibration rule; and
+- report coverage, recall@K, NDCG@K and calibration separately for f0, f1,
+  f2, ..., f5, not only a pooled tail.
+
+This is the architectural change needed for a cold-start claim. Reweighting a
+full-catalog score vector on a historically exposed split is not enough.
+
+#### 2. Optimize utility under explicit constraints
+
+Replace the pointwise validation rule with a preregistered constrained
+multi-objective procedure. For example, maximize f1-5 validation NDCG subject
+to lower confidence bounds for overall, mid and head changes exceeding chosen
+noninferiority margins. Estimate those bounds by seed-block cross-validation,
+not by single-run validation points. Plot the Pareto frontier and select a
+policy by an application-declared utility function. If no feasible policy
+exists, select the reference and record a zero-delta structural null.
+
+Do not search a wider grid on any already exposed test partition. On a new
+development split, use constrained Bayesian optimization or an isotonic
+coarse-to-fine search with a fixed evaluation budget and prespecified tie
+breaking. The old 25/25 ceiling result justifies expanding the validation
+domain, not reading the old test again.
+
+#### 3. Learn frequency-conditioned fusion without leakage
+
+Instead of a three-weight hand grid, fit a small monotone gating function of
+**train-only** log frequency and uncertainty, with weights constrained to be
+nonnegative and nonincreasing toward the head. Train/tune it by nested or
+cross-fitted validation so the same observations do not choose and estimate
+the policy. Compare:
+
+- aligned text;
+- within-exact-frequency permuted text;
+- frequency-only scalar prior;
+- norm/covariance-matched random features;
+- pure-text retrieval; and
+- a strong learned adaptive-fusion baseline such as AlphaFuse-class or
+  popularity-gated fusion.
+
+The primary mechanism contrast should be aligned minus finely permuted text
+within paired seed/environment blocks. Frequency-only share is unstable when
+the selected effect is near zero; report the absolute contrast and CI before
+any ratio.
+
+#### 4. Improve compute and failure handling
+
+- Keep the verified EASE cache, but bind a full cache digest and solver/env
+  identity into every artifact.
+- Use one immutable attempt directory per launch and one atomic bundle per
+  step. Resume only a hash-verified completed step; otherwise restart into a
+  new attempt path.
+- Assign GPUs explicitly. A queue should know device memory, run one heavy job
+  per GPU and co-schedule only measured-safe small jobs.
+- Record JSON argv arrays, PID/host/device/container/commit/data/code hashes,
+  heartbeats and terminal states in a hash-chained ledger.
+- Add a dry-run gate that generates the exact planned artifact names and
+  confirms none can be tracked/pushed before launch.
+- Make test evaluation a separate sealed service. Training workers should
+  receive only validation metrics; the service should release endpoint values
+  once, after exact family completion, to the frozen adjudicator.
+
+#### 5. Strengthen statistical evidence
+
+- Use at least 8-10 fresh seed blocks for the primary controlled contrast and
+  preserve pairing across all stochastic arms.
+- Add multiple independent data splits or temporal windows; seed replication
+  alone is not generalization evidence.
+- Report hierarchical uncertainty across seed, split and category, with
+  per-category estimates retained rather than assuming one universal effect.
+- Use exact/randomization tests appropriate to the blocked design and report
+  effect sizes/intervals whether or not significance is reached.
+- Freeze a clinically/application-meaningful utility margin before data access;
+  `±0.0005` needs stakeholder or decision-theoretic justification.
+
+### Concrete repair order
+
+#### P0 — before any more result integration or E-B launch
+
+- [ ] Stop calling E-G2 sequestered/independent/countable; preserve the commit
+  and reclassify it as exposed/protocol-deviated on every surface.
+- [ ] Do not run the E-G2 adjudicator on the partial family and do not inspect
+  the remaining endpoint artifacts for confirmatory purposes.
+- [ ] Version a successor E-G protocol with wholly fresh seeds **and a new
+  holdout**, sealed output storage, metadata-only completeness preflight and
+  fixed structural-null handling.
+- [ ] Supersede E-B V1 before launch: paired seed blocks, valid map treatment,
+  matched random scale/covariance, randomized environment balance and a pinned
+  container/commit.
+- [ ] Disable plaintext endpoint pushes in both local and cloud workflows;
+  add pre-commit/pre-push guards for `confirm`, `finaleval` and per-user files.
+- [ ] Correct the Section 5.8 contradictions and stale E-G2 status statements.
+
+#### P1 — before a submission build
+
+- [ ] Implement exact ledger/checkpoint/artifact/cache verification and atomic
+  bundle/resume semantics.
+- [ ] Complete every registered E-B analysis in code, including blocked
+  inference, sign/randomization diagnostics, CIs and exact checksum import.
+- [ ] Benchmark or explicitly exclude LLM2Emb, AlphaFuse and one adaptive
+  semantic-fusion baseline under the same protocol.
+- [ ] Rebuild the primary figure/table set around redistribution and protocol
+  status; move forensics and superseded analyses to the supplement.
+- [ ] Regenerate/extend the manifest only after source freeze; run the full
+  strict chain in a clean clone and cut a new deposit tag.
+
+#### P2 — submission readiness
+
+- [ ] Replace venue author/affiliation placeholders and verify single-/double-
+  blind mode, current template, portal and length limits.
+- [ ] Reduce the 29k-token manuscript materially; target one contribution and
+  one coherent evidence hierarchy.
+- [ ] Add a clear ethics/legal/license statement for public review data and
+  linkable remapped-user sidecars; name the responsible author decision.
+- [ ] Tag PDFs for accessibility, add reader bookmarks, remove forced blank
+  pages and verify figures in grayscale and at 100% print size.
+
+### Open questions requiring author verification
+
+1. Was the GitHub repository public or accessible to any collaborator when
+   `df5afc9f` was pushed, and did any person/tool open a confirm artifact before
+   family completion? The protocol is structurally breached either way, but
+   the answer determines the exposure narrative.
+2. Has any E-B pod actually launched outside this workspace? If yes, preserve
+   but quarantine it as a V1 pilot; do not alter its preregistration or promote
+   its results after seeing them.
+3. What fresh temporal/catalog-arrival holdout can be created without reusing
+   the repeatedly inspected partitions?
+4. Who chose the noninferiority margins and what application utility supports
+   them, given the observed tail-versus-mid/head transfer?
+5. Is the submission target definitely ACM TORS, and does its current portal
+   require the single-blind author metadata shown by the source?
+6. Which code/data/output licenses permit redistribution of split files,
+   embeddings, checkpoints and linkable per-user sidecars?
+7. What institutional/legal determination governs use of the Amazon review
+   data and release of deterministic mappings to platform pseudonyms?
+
+### Running checklist update
+
+- [x] Freeze HEAD/upstream and live-file byte prefixes at a timestamped cutoff.
+- [x] Avoid reading partial E-G2 metric values.
+- [x] Independently reproduce completed E-G1 statistics and utility counts.
+- [x] Audit E-G2 preregistration, runner, confirmer, adjudicator, ledger,
+  checkpoint structure and cache behavior.
+- [x] Audit E-B preregistration, shard allocation, controls, cloud runner and
+  adjudicator before local evidence import.
+- [x] Re-run current release-manifest and Git-bound verification.
+- [x] Re-render and visually inspect every page of all three current PDFs.
+- [x] Refresh close-literature checks with publisher/arXiv sources.
+- [ ] Reclassify E-G2 on all manuscript/release/program surfaces.
+- [ ] Supersede E-B V1 before any launch.
+- [ ] Repair E-G2/E-B adjudicators and sealed execution architecture.
+- [ ] Obtain genuinely fresh holdout data and seed blocks.
+- [ ] Rebuild figures/tables and condense the manuscript.
+- [ ] Restore a green clean-clone release gate and cut a current deposit tag.
+- [ ] Complete author, venue, ethics, privacy and licensing verification.
 
 ## Audit Run - 2026-07-23 15:59 Australia/Sydney
 

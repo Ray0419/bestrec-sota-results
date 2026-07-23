@@ -49,7 +49,7 @@ Parallelism changes wall-clock only — never analysis, seeds, or artifacts.
 
 ## Worklist (top unchecked item first; one lifecycle stage per tick is fine)
 
-- [ ] **E-G2. Independent test-sequestered replication of the sparse-warm
+- [~] **E-G2 — EXPOSED / PROTOCOL-DEVIATED (audit 2026-07-23 22:00, accepted): a `git add -A` on the cloud-harness commit (df5afc9f, 2026-07-23 21:00) swept 14 in-progress COLDFUSE2 confirm JSON/NPZ pairs into git and pushed them to the public branch ~59 min before the declared 40-file one-time adjudication — the SAME no-interim exposure E-G2 existed to prevent. E-G2 CANNOT become counted by finishing; it is reclassified as a second EXPOSED descriptive replication (preserved for forensics; the running local campaign is allowed to finish only as descriptive data, NOT confirmatory). Root cause fixed: sequestered endpoint artifacts are now gitignored (`results_*COLDFUSE2/3*`, `*TEXTPERM*`, `*.finaleval.*`) so no commit can sweep them; only the final sealed adjudication JSON is ever committed. The 8 confirmed adjudicator defects (metadata-only sealed preflight, structural-null handling, exact ledger-event schema, hash-the-loaded-checkpoint, exact sidecar sets, full finite/shape/bin checks, full C1–C4 t/CI persistence, conditional f0 wording, atomic bundle+resume) move to E-G3. — original text:** Independent test-sequestered replication of the sparse-warm
   text-fusion result (audit 15:59 P1 design; the ONLY path to any counted
   status for the E-G finding).** Requirements to freeze in
   PREREG_COLDFUSE_V2 BEFORE launch: (1) trainer/fusion variants with TEST
@@ -170,7 +170,7 @@ Parallelism changes wall-clock only — never analysis, seeds, or artifacts.
   preserved + hashed; v2's cmdline "proof" was vacuous -- v3 value-checks
   extras against the same-era reference config). §5.8 now carries the
   classification paragraph; estimates are descriptive only, NO confirmatory
-  status; E-G2 (top of worklist) is the sole path to counted status.
+  status; E-G2 was intended as that path but is now EXPOSED (audit 22:00). The sole remaining path to counted status is **E-G3** — a fresh campaign with (a) REPOSITORY sequestration (endpoint artifacts gitignored until a sealed one-time adjudication; only completion hashes committed pre-seal), (b) the 8 adjudicator fixes above, (c) all-eight-seed structural-null encoding, and (d) frozen environment — to be FROZEN and committed before launch in a later tick.
 - [ ] **E-B. Frequency-stratified item-text permutation + random-feature
   control — CLOUD-READY (PREREG_TEXTPERM_V1 frozen 2026-07-23 BEFORE
   launch; RunPod execution declared prospectively; maintainer accepted the

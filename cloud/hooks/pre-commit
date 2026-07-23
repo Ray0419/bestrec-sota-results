@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# SEAL pre-commit hook (E-G3 custody; audit 2026-07-24). Rejects staging of
+# any sequestered-campaign endpoint artifact, INCLUDING `git add -f` bypasses
+# of .gitignore. Override for a genuine non-endpoint file only:
+#   git commit --no-verify
+set -u
+HERE="$(git rev-parse --show-toplevel)"
+. "$HERE/cloud/hooks/seal_patterns.sh"
+staged="$(git diff --cached --name-only)"
+[ -z "$staged" ] && exit 0
+bad="$(printf '%s\n' "$staged" | grep -E "$SEAL_PATTERNS" || true)"
+if [ -n "$bad" ]; then
+  echo "==================================================================" >&2
+  echo "SEAL HOOK: refusing to commit sequestered endpoint artifact(s):" >&2
+  printf '  %s\n' $bad >&2
+  echo "Endpoint metric files must stay OUT of git until a sealed one-time" >&2
+  echo "adjudication (E-G1/E-G2 were exposed exactly this way). Store them in" >&2
+  echo "the out-of-repo sealed directory; commit only signed completion hashes." >&2
+  echo "==================================================================" >&2
+  exit 1
+fi
+exit 0

@@ -2990,6 +2990,15 @@ def main():
         provenance["user_records_final_sha256"] = _sha256(str(frec_path))
         print(f"wrote {frec_path} ({len(fu['user_id']):,} FINAL-epoch per-user records)")
 
+    # audit 2026-07-23 15:59: bind the FINAL best checkpoint by digest, not
+    # only the initial state.
+    best_ckpt_sha256 = None
+    if args.save_ckpt and args.out:
+        _cp = Path(args.out).with_suffix(".best.pt")
+        if _cp.exists():
+            best_ckpt_sha256 = _sha256(str(_cp))
+            print(f"  best_ckpt_sha256 = {best_ckpt_sha256}")
+
     fir_v3_final_l2 = None
     fir_v3_lag_profile = None
     if getattr(model, "fir_v3", None) is not None:
@@ -3017,6 +3026,7 @@ def main():
         "fir_v3_kernel": args.fir_v3_kernel,
         "fir_v3_wd": args.fir_v3_wd,
         "init_state_sha256": init_state_sha256,
+        "best_ckpt_sha256": best_ckpt_sha256,
         "fir_v3_final_l2": fir_v3_final_l2,
         "fir_v3_final_absmean_per_lag": fir_v3_lag_profile,
     }

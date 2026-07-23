@@ -20,7 +20,45 @@ result." This file is the durable worklist the quiet-tick loop services (priorit
 - Integration path: results → `build_hstu_tables.py` cells → full ritual
   (render CLEAN, build.sh PASS H1–H10, manifest --regen, strict exit 0) → papers.
 
+## Standing OPS rules addendum (audit 2026-07-23 15:59, adopted for every
+## future campaign)
+
+- Immutable attempt directory + attempt ID per launch; append-only JSONL
+  event ledger (launch commit, dirty diff/hash, command, phase, category,
+  seed, heartbeat, error); derived status updated atomically (temp+rename).
+- Checkpoints written to a temporary path and renamed only after a hashed
+  successful write; never inspect or overwrite a live checkpoint; resume
+  from the last verified checkpoint instead of restarting into the same path.
+- NO endpoint extraction, commit, or reporting before a campaign's declared
+  completion when its prereg carries a no-interim clause (E-G violated this;
+  never again). Training-log progress lines are operational monitoring and
+  stay out of reports.
+- Test evaluation sequestered from trainers/sweeps in new campaigns; frozen
+  final systems evaluated once on the declared holdout.
+- EASE (and similar) fits cached by input hashes with verification.
+
 ## Worklist (top unchecked item first; one lifecycle stage per tick is fine)
+
+- [ ] **E-G2. Independent test-sequestered replication of the sparse-warm
+  text-fusion result (audit 15:59 P1 design; the ONLY path to any counted
+  status for the E-G finding).** Requirements to freeze in
+  PREREG_COLDFUSE_V2 BEFORE launch: (1) trainer/fusion variants with TEST
+  EVALUATION REMOVED (train/val only; frozen final systems evaluated once);
+  (2) normalized config rule written prospectively and enforced by the
+  committed adjudicator (value-checked against parser defaults/argv);
+  (3) prospectively bracketed grid (tail weight points above 0.2, finer
+  spacing near 0.2) chosen on validation-only pilot or another category;
+  (4) control arms: frequency-only boost, dimension-matched random-feature,
+  within-frequency text-permutation, pure-text, uniform-vs-recency profile;
+  (5) mid/head noninferiority guardrails or a preregistered Pareto decision
+  rule (no aggregate-only margin); (6) f0 excluded from the benefit endpoint
+  (named f1-5 low-frequency warm); a separate cold-capable metadata-only
+  branch + item-disjoint/arrival holdout if cold-start language is ever to
+  be used; (7) more seeds (>=8/arm) + exact-test prominence; (8) full OPS
+  addendum above (immutable attempts, sequestered test, cached EASE);
+  (9) LLM2Emb + AlphaFuse benchmark-or-exclusion folded in or explicitly
+  deferred to E-E with rationale. Lifecycle: [ ] design + prereg freeze ->
+  [ ] launch -> [ ] adjudicate -> [ ] integrate.
 
 - [x] **E-A. Nonsingular matched-FIR factorial (audit 10:47 design adopted).**
   Question: does learnable causal FIR filtering add value separate from the
@@ -104,7 +142,16 @@ result." This file is the durable worklist the quiet-tick loop services (priorit
   fused2, OFFICE/CDS vs seq (EASE infeasible, declared); co-primary
   tail-bin delta, Holm(5), tail margin +/-0.0005, cost margin -0.0005 ->
   [x] launched 2026-07-23 (first pass 63 jobs/653.8 min; Office-36 base needed FOUR attempts -- file-lock 1224, CUDA illegal-access at epoch 15, CUDA alloc failure, then success with expandable_segments; every other run first-try) -> [x] adjudicated 2026-07-23 (gates v2 + GATE5_CONFORMANCE_DECISION.md dual verdicts): **W-C-POS x5** -- tail +0.00217 MI / +0.00243 IS / +0.00337 VG / +0.00114 OFFICE / +0.00481 CDS, all Holm-SIG, all no-material-cost; frequency-0 never moved; all selections at grid ceiling; sign-test floor .0625 disclosed ->
-  [x] integrated 2026-07-23 (papers §5.8 with the audit-mandated framing: sparse-warm redistribution naming, f0 erratum, mid/head costs at equal prominence, boundary + sensitivity + outcome-visibility disclosures, §5.3.1->§5.3 frozen-pointer fix disclosed; +5 related-work citations with verified metadata; PLC Update 3; README; CANONICAL ledger entry 3).
+  [x] integrated 2026-07-23 (papers §5.8 with the audit-mandated framing: sparse-warm redistribution naming, f0 erratum, mid/head costs at equal prominence, boundary + sensitivity + outcome-visibility disclosures, §5.3.1->§5.3 frozen-pointer fix disclosed; +5 related-work citations with verified metadata; PLC Update 3; README; CANONICAL ledger entry 3)
+  -> [x] RECLASSIFIED 2026-07-23 per audit 15:59 (accepted): OUTCOME-VISIBLE,
+  PROTOCOL-DEVIATED -- the no-interim clause was violated (mid-campaign
+  endpoint commits/reports by the operator); literal Gate 5 FAILS MI/VG and
+  GOVERNS; the gate/adjudicator amendment postdates 24/25 outcome visibility
+  (sensitivity only; v1 as-launched, v2 post-outcome, v3 corrected all
+  preserved + hashed; v2's cmdline "proof" was vacuous -- v3 value-checks
+  extras against the same-era reference config). §5.8 now carries the
+  classification paragraph; estimates are descriptive only, NO confirmatory
+  status; E-G2 (top of worklist) is the sole path to counted status.
 - [ ] **E-B. Frequency-stratified item-text permutation + random-feature
   control (audit 10:47 design adopted).** Freeze SEVERAL independent permutation
   maps before training (map uncertainty is real); permute within

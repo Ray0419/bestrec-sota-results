@@ -76,6 +76,22 @@ def main():
                           ["_bestrec_run/adjudicate_fir_breadth.py", "--no-append"],
                           ["Industrial_and_Scientific: ARTIFACT-PASS",
                            "CDs_and_Vinyl: ARTIFACT-PASS"])
+        # audit 2026-07-23 15:59: printed E-F/E-G results must be graph-gated.
+        ok &= run_verdict("E-A FIR_V3 matched-arm adjudication (pre-declared; "
+                          "W-POS required)",
+                          ["_bestrec_run/adjudicate_fir_v3.py"],
+                          ["VERDICT: W-POS"])
+        ok &= run_verdict("E-F HYBRID_V1 fresh-seed adjudication (pre-declared; "
+                          "W-H-POS x3 required)",
+                          ["_bestrec_run/adjudicate_hybrid_v1.py"],
+                          ["VERDICT MI: W-H-POS", "VERDICT IS: W-H-POS",
+                           "VERDICT VG: W-H-POS"])
+        ok &= run_verdict("E-G COLDFUSE sensitivity adjudication (outcome-visible/"
+                          "protocol-deviated; artifact-reproduction gate ONLY, "
+                          "no confirmatory status)",
+                          ["_bestrec_run/adjudicate_coldfuse_v1.py"],
+                          ["CLASSIFICATION: post-outcome sensitivity "
+                           "adjudication (v3)"])
     # Office is VOID/descriptive under its prereg floor check — report, non-gating
     run("Office adjudication (descriptive; VOID under prereg floor check)",
         ["_bestrec_run/office_prereg_tools.py", "adjudicate"], required=False)

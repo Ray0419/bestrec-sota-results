@@ -60,5 +60,9 @@ _bestrec_run/tfv2_logs/
 _bestrec_run/results_TFV2_*.users.jsonl.gz.tmp
 external/AmazonReviews2023/
 
-# model checkpoints (E-F/E-G fusion bases): local artifacts, hashes recorded in results JSONs
+# model checkpoints (E-F/E-G fusion bases): local artifacts. NOTE (audit
+# 2026-07-23 15:59): results JSONs record init_state_sha256 (initial state),
+# and runs after 2026-07-23 also record best_ckpt_sha256 (final checkpoint);
+# earlier E-F/E-G checkpoints have no recorded final digest -- their
+# regeneration boundary is the seed-deterministic training command.
 _bestrec_run/*.best.pt

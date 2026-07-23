@@ -22,7 +22,7 @@ nonzero on any mismatch, untraceable cell, or missing claim family) → release-
 verification (276 files at the current manifest) → the pre-declared Musical_Instruments gate adjudicator → the TFV2 repaired-estimand adjudicator (outcome-visible — §5.3 chronology) → **the
 Office V3 adjudicator (counted; the build fails unless the campaign verdict is PASS)** →
 **the FIR-breadth adjudicator (artifact-integrity: the frozen rule's legacy CONFIRMED tokens are checked mechanically; the paired premise is withdrawn and no inferential confirmation is implied)** → the Office V1
-adjudicator (descriptive/VOID). Every counted campaign's live adjudicator gates the build
+adjudicator (descriptive/VOID). Each campaign's live adjudicator gates the build (MI V2, Office V3, TFV2, FIR breadth, E-A, E-F; the E-G adjudicator also gates as an artifact-reproduction check but confers no confirmatory status — see PAPER_SUBMISSION.md §5.8)
 (hardened 2026-07-18); `update_release_manifest.py --verify-git <commit|tag>` additionally
 checks the manifest against the git blobs. **Hash-check rule:** verify digests against the
 tag blob (`git show <tag>:FILE`), the release asset, or the bundle payload — never raw
@@ -47,7 +47,7 @@ blobs (`DOI_DEPOSIT_INSTRUCTIONS.md` has the full rule).
   [+0.0050, +0.0063]; the treatment is the FIR-plus-initialization/optimizer package)
   (`PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md` + its 2026-07-20 erratum).
 - **Pre-declared fresh-seed hybrid (E-F, 2026-07-23):** late z-score fusion with train-only EASE (Steck 2019) lifted test NDCG@10 on all three categories tested (MI +0.0024, IS +0.0026, VG +0.0032; Holm-corrected paired t, fresh seeds 20260721-25); the MI fused five-seed mean 0.04399 exceeds the published single-run 0.0406 (point-estimate comparison, environment-caveated; see PAPER_SUBMISSION.md §5.7).
-- **Pre-declared sparse-warm text fusion (E-G, 2026-07-23):** a validation-selected history-centroid text scorer, weighted only on the train-frequency ≤5 bin, raised tail-bin test NDCG@10 on ALL FIVE categories (+0.0011 to +0.0048; Holm-corrected paired t; overall cost within the pre-specified margin everywhere). A redistribution result, not cold start: frequency-0 targets never moved; mid/head pay a small measured price (PAPER_SUBMISSION.md §5.8).
+- **Sparse-warm text-fusion study (E-G, 2026-07-23; OUTCOME-VISIBLE, PROTOCOL-DEVIATED — descriptive only):** a validation-selected history-centroid text scorer raised tail-bin test NDCG@10 on all five categories (+0.0011 to +0.0048) at aggregate cost within margin, BUT the campaign's no-interim clause was violated, the literal config gate fails MI/VG, and the gate was amended after outcomes; no confirmatory status is claimed and an independent replication (E-G2) is registered (PAPER_SUBMISSION.md §5.8).
 - **Text tail benefit: one MI frequency-5-heavy case** (cross-dataset heterogeneity not established, interaction p = 0.13; the thinning intervention did NOT explain it — one fixed draw; mechanism unresolved).
 - **The evaluation apparatus itself** — version-controlled pre-declaration (the TFV2 campaign carries OpenTimestamps proofs whose earliest Bitcoin attestation postdates its first result — the pre-launch freeze rests on Git history alone, a disclosed limitation stated exactly in §5.3 disclosure (vii)), fail-closed artifact
   gate, comparator regeneration, symmetric self-VOIDing — demonstrated end to end.

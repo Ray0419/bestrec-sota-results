@@ -172,7 +172,20 @@ Parallelism changes wall-clock only — never analysis, seeds, or artifacts.
   classification paragraph; estimates are descriptive only, NO confirmatory
   status; E-G2 (top of worklist) is the sole path to counted status.
 - [ ] **E-B. Frequency-stratified item-text permutation + random-feature
-  control (audit 10:47 design adopted).** Freeze SEVERAL independent permutation
+  control — CLOUD-READY (PREREG_TEXTPERM_V1 frozen 2026-07-23 BEFORE
+  launch; RunPod execution declared prospectively; maintainer accepted the
+  cloud plan).** Harness committed: cloud/bootstrap_pod.sh (hash-verified
+  asset bootstrap via bootstrap_public_clone.py), make_control_caches.py
+  (deterministic permuted/random caches, rngs 1001-1003/2001, local
+  re-derivation = adjudicator provenance gate; hashes recorded),
+  eval_final_model.py (sequestered single test pass), make_shards_eb.py
+  (30 pipelines -> 8 balanced shards ~62 min each), run_shard.py (OPS
+  ledger + env capture + hashed tar return); seeds 20260749-51; primary =
+  aligned-vs-permuted f1-5 Welch, Holm(2), margin ±0.0005, MDE honesty
+  stated; adjudicate_textperm_v1.py committed. Lifecycle: [x] prereg +
+  harness frozen -> [ ] pods provisioned (maintainer) -> [ ] shards run ->
+  [ ] returns verified + adjudicated -> [ ] integrate.
+  Original design notes (audit 10:47): Freeze SEVERAL independent permutation
   maps before training (map uncertainty is real); permute within
   train-frequency bins (frequency 5 especially); cross permutation-map draws
   with optimizer seeds; add a dimension-matched random/orthogonal-feature arm

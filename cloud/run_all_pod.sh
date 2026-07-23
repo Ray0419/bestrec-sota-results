@@ -35,7 +35,7 @@ if [ -n "${GIT_PUSH_TOKEN:-}" ]; then
       eb-cloud-results && echo "== RESULTS PUSHED: branch eb-cloud-results ==" \
       || echo "PUSH FAILED (check token)"
 else
-  echo "== no GIT_PUSH_TOKEN; serving cloud/returns on :8888 =="
-  echo "   (stop Jupyter first, then open the 8888 proxy URL to download)"
-  cd cloud/returns && python -m http.server 8888
+  echo "== no GIT_PUSH_TOKEN set: results are in cloud/returns/*.tar.gz =="
+  echo "   download them via the Jupyter file browser, or re-run with a token."
 fi
+echo "== E-B POD RUN COMPLETE =="

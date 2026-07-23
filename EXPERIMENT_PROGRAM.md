@@ -20,6 +20,16 @@ result." This file is the durable worklist the quiet-tick loop services (priorit
 - Integration path: results → `build_hstu_tables.py` cells → full ritual
   (render CLEAN, build.sh PASS H1–H10, manifest --regen, strict exit 0) → papers.
 
+## Maintainer parallelism directive (2026-07-23)
+
+"can you speed up and run more things simultaneously, we have a lot of
+cpu/gpu/npu resources idle" — recorded and adopted: the ONE-GPU-JOB rule is
+amended to a TWO-LANE memory-budgeted GPU schedule (small-category lane A +
+large-category lane B, peak ~13 GB < 16 GB); CPU-side work (EASE cache,
+builds, adjudication, editorial agents) parallelizes freely; the NPU is
+unusable by the torch stack (no backend) and is honestly out of scope.
+Parallelism changes wall-clock only — never analysis, seeds, or artifacts.
+
 ## Standing OPS rules addendum (audit 2026-07-23 15:59, adopted for every
 ## future campaign)
 
@@ -57,8 +67,17 @@ result." This file is the durable worklist the quiet-tick loop services (priorit
   be used; (7) more seeds (>=8/arm) + exact-test prominence; (8) full OPS
   addendum above (immutable attempts, sequestered test, cached EASE);
   (9) LLM2Emb + AlphaFuse benchmark-or-exclusion folded in or explicitly
-  deferred to E-E with rationale. Lifecycle: [ ] design + prereg freeze ->
-  [ ] launch -> [ ] adjudicate -> [ ] integrate.
+  deferred to E-E with rationale. Lifecycle: [x] PREREG_COLDFUSE_V2.md +
+  adjudicate_coldfuse_v2.py + fuse_cold_confirm2.py + run_eg2_parallel.py +
+  trainer --no-test-eval + fusion --val-only + verified EASE cache + atomic
+  checkpoints + OPS ledger committed 2026-07-23 BEFORE launch (preflight 5/5;
+  sequestration = structural: test values never printed, adjudicator is the
+  first reader; 8 fresh seeds 20260741-48; bracketed grid to 0.6; guardrails;
+  f0 excluded from endpoint; C1-C4 control arms; two GPU lanes) ->
+  [x] launched 2026-07-23 (~11 h wall, lanes A+B) -> [ ] adjudicate (once,
+  after all 40 confirm files) -> [ ] integrate (frozen W2-* wordings only;
+  LLM2Emb/AlphaFuse benchmark-or-exclusion decision recorded at
+  integration).
 
 - [x] **E-A. Nonsingular matched-FIR factorial (audit 10:47 design adopted).**
   Question: does learnable causal FIR filtering add value separate from the

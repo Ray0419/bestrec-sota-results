@@ -79,7 +79,13 @@ def build_model_from_config(cfg, n_items, pad_id, sbert_emb, proto_assign):
 
 
 def ease_B(train_inters, n_users, n_items, l2):
-    """Closed-form EASE item-item weight matrix (float64 CPU solve)."""
+    """Closed-form EASE item-item weight matrix (float64 CPU solve).
+
+    VERIFIED CACHE (audit 2026-07-23 15:59 optimization, adopted): keyed by
+    SHA-256 of the exact (rows, cols) interaction arrays + n_items + l2; the
+    stored matrix's own digest is verified on load. Identical inputs ->
+    identical matrix, ~70s saved per repeat fit."""
+    import hashlib
     import scipy.sparse as sp
     rows = np.fromiter((u for (u, _, _, _) in train_inters), dtype=np.int64,
                        count=len(train_inters))
@@ -87,6 +93,25 @@ def ease_B(train_inters, n_users, n_items, l2):
                        count=len(train_inters))
     X = sp.csr_matrix((np.ones(len(rows), dtype=np.float64), (rows, cols)),
                       shape=(n_users, n_items))
+    h = hashlib.sha256()
+    h.update(rows.tobytes())
+    h.update(cols.tobytes())
+    h.update(f"|{n_users}|{n_items}|{float(l2)}|f32v1".encode())
+    key = h.hexdigest()[:24]
+    cdir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "ease_cache")
+    os.makedirs(cdir, exist_ok=True)
+    bpath = os.path.join(cdir, f"ease_{key}.npy")
+    mpath = os.path.join(cdir, f"ease_{key}.meta.json")
+    if os.path.exists(bpath) and os.path.exists(mpath):
+        meta = json.load(open(mpath, encoding="utf-8"))
+        bh = hashlib.sha256(open(bpath, "rb").read()).hexdigest()
+        if (meta.get("input_key") == key and meta.get("b_sha256") == bh
+                and meta.get("n_items") == n_items):
+            B = np.load(bpath)
+            print(f"  EASE l2={l2}: verified cache hit ({key})")
+            return X, B
+        print(f"  EASE l2={l2}: cache verification FAILED ({key}); refitting")
     G = np.asarray((X.T @ X).todense(), dtype=np.float64)
     G[np.diag_indices(n_items)] += l2
     t0 = time.time()
@@ -94,7 +119,14 @@ def ease_B(train_inters, n_users, n_items, l2):
     print(f"  EASE l2={l2}: inverted {n_items}x{n_items} in {time.time()-t0:.1f}s")
     B = -P / np.diag(P)[None, :]          # B_ij = -P_ij / P_jj
     B[np.diag_indices(n_items)] = 0.0
-    return X, B.astype(np.float32)
+    B = B.astype(np.float32)
+    tmp = bpath + ".tmp"
+    np.save(tmp, B)
+    os.replace(tmp + ".npy" if os.path.exists(tmp + ".npy") else tmp, bpath)
+    json.dump({"input_key": key, "n_items": n_items, "l2": float(l2),
+               "b_sha256": hashlib.sha256(open(bpath, "rb").read()).hexdigest()},
+              open(mpath, "w", encoding="utf-8"))
+    return X, B
 
 
 def fused_eval(model, user_seqs, eval_inters, n_items, pad_id, max_seq_len,
@@ -205,6 +237,10 @@ def main():
     ap.add_argument("--fusion-weights", type=str,
                     default="0.1,0.2,0.3,0.4,0.5,0.6,0.8,1.0,1.5,2.0")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--val-only", action="store_true",
+                    help="E-G2 sequestration: run the validation sweep and "
+                         "record the selected (l2, w) WITHOUT any test pass; "
+                         "the frozen confirmatory evaluator scores test once.")
     args = ap.parse_args()
 
     run = json.load(open(args.run_json))
@@ -285,6 +321,17 @@ def main():
     val_ndcg, l2_sel, w_sel = best
     print(f"\n=== selected on VAL: l2={l2_sel}, w={w_sel} "
           f"(val fused NDCG@10={val_ndcg:.5f}) ===")
+    if args.val_only:
+        report["selected"] = {"l2": l2_sel, "w": w_sel,
+                              "val_fused_ndcg": val_ndcg}
+        report["test"] = None
+        report["val_only"] = True
+        out = Path(args.out) if args.out else \
+            Path(args.run_json).with_name(Path(args.run_json).stem
+                                          + ".fusion.json")
+        json.dump(report, open(out, "w"), indent=1)
+        print(f"wrote {out} (VAL-ONLY; test sequestered)")
+        return
     _, B_sel = ease_B(train_inters, n_users, n_items, l2_sel)
     B_gpu = torch.from_numpy(B_sel).to(DEVICE)
     del B_sel

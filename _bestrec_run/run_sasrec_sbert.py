@@ -2004,6 +2004,11 @@ def main():
     ap.add_argument("--save-ckpt", action="store_true",
                     help="E-F (PREREG_HYBRID_V1): persist the best-val weights "
                          "(suffix .best.pt) for post-hoc hybrid fusion eval.")
+    ap.add_argument("--no-test-eval", action="store_true",
+                    help="E-G2 sequestration: never score the test split "
+                         "during training; best_test is null and final "
+                         "systems are evaluated once by the frozen "
+                         "confirmatory evaluator.")
     ap.add_argument("--conn-gate", action="store_true",
                      help="NOVEL cold-start application: connectivity-gated ID<->text "
                           "fusion. Gates the mix on TRAIN distinct users/item (the causal "
@@ -2742,7 +2747,13 @@ def main():
             # manufactured the c3 "val>>test gap". Headline unaffected (kernel off).
             val_time_extra = ({u: [t // 1000] for u, _, _, t in valid_inters}
                               if (args.time_bias or args.time_decay_kernel) else None)
-            test_metrics = evaluate(model, user_seqs, test_inters, n_items, pad_id,
+            # E-G2 test sequestration: with --no-test-eval the test split is
+            # NEVER scored during training; final systems are evaluated once,
+            # post hoc, by the frozen confirmatory evaluator.
+            if args.no_test_eval:
+                test_metrics = None
+            else:
+                test_metrics = evaluate(model, user_seqs, test_inters, n_items, pad_id,
                                       args.max_seq_len, DEVICE, extra_history=test_extra,
                                       subsample_users=subs,
                                       stratify_head=args.eval_stratify_head,
@@ -2763,17 +2774,22 @@ def main():
             # Per-user records: keep them OUT of the (per-epoch) history log —
             # stash only the best-by-val epoch's copy for the sidecar artifact.
             val_metrics.pop("_user_records", None)
-            _test_urec = test_metrics.pop("_user_records", None)
+            _test_urec = (test_metrics.pop("_user_records", None)
+                          if test_metrics is not None else None)
             # A-F4 (resubmission audit): always retain the LAST eval's records too —
             # when periodic evals are subsampled, the final epoch is the full-catalog
             # headline eval and needs its own per-user sidecar.
             final_test_user_records = _test_urec
             final_test_epoch = epoch
             log["val"] = val_metrics
-            log["test"] = test_metrics
-            print(f"  epoch {epoch:>3d}  loss={train_loss:.4f}  val_NDCG={val_metrics['NDCG@10']:.4f}  "
-                  f"test_NDCG={test_metrics['NDCG@10']:.4f}  test_HR={test_metrics['HR@10']:.4f}  "
-                  f"({ep_time:.1f}s)")
+            if test_metrics is not None:
+                log["test"] = test_metrics
+                print(f"  epoch {epoch:>3d}  loss={train_loss:.4f}  val_NDCG={val_metrics['NDCG@10']:.4f}  "
+                      f"test_NDCG={test_metrics['NDCG@10']:.4f}  test_HR={test_metrics['HR@10']:.4f}  "
+                      f"({ep_time:.1f}s)")
+            else:
+                print(f"  epoch {epoch:>3d}  loss={train_loss:.4f}  val_NDCG={val_metrics['NDCG@10']:.4f}  "
+                      f"[test sequestered]  ({ep_time:.1f}s)")
             if val_metrics["NDCG@10"] > best_val_ndcg:
                 best_val_ndcg = val_metrics["NDCG@10"]
                 best_test_metrics = test_metrics
@@ -2796,9 +2812,14 @@ def main():
                         _extra["proto_assign"] = [
                             getattr(model, f"proto_assign_{li}").cpu()
                             for li in range(model.n_proto_levels)]
+                    # OPS addendum (audit 15:59): atomic write -- serialize to
+                    # a temp path, then rename; a failed save never destroys
+                    # the previous best checkpoint.
+                    _tmp_ckpt = ckpt_path.with_suffix(".tmp.pt")
                     torch.save({"state_dict": {k: v.cpu() for k, v in sd.items()},
                                 "epoch": epoch,
-                                "val_NDCG10": best_val_ndcg, **_extra}, ckpt_path)
+                                "val_NDCG10": best_val_ndcg, **_extra}, _tmp_ckpt)
+                    os.replace(str(_tmp_ckpt), str(ckpt_path))
         else:
             print(f"  epoch {epoch:>3d}  loss={train_loss:.4f}  ({ep_time:.1f}s)")
         history.append(log)

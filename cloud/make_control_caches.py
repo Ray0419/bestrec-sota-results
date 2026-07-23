@@ -43,7 +43,7 @@ def sha(p):
 
 
 def main():
-    out_dir = os.path.join(ROOT, "cache_5core", "controls")
+    out_dir = os.path.join(ROOT, "cache_5core", "controls_v2")  # audit 03:59: NEW versioned root; the old un-normalized random caches are not reused
     os.makedirs(out_dir, exist_ok=True)
     report = {}
     for cat in CATS:
@@ -63,9 +63,8 @@ def main():
                 idx = np.where(bins == b)[0]
                 P[idx] = P[rng.permutation(idx)]
             dst = os.path.join(out_dir, f"{cat}__{kind}.npy")
-            if not os.path.exists(dst):
-                np.save(dst + ".tmp.npy", P)
-                os.replace(dst + ".tmp.npy", dst)
+            np.save(dst + ".tmp.npy", P)
+            os.replace(dst + ".tmp.npy", dst)
             report[f"{cat}__{kind}"] = sha(dst)
         # audit 2026-07-23 22:00: the random control MUST match the aligned
         # cache's row norm (canonical rows are L2-normalized to 1.0). An
@@ -76,9 +75,8 @@ def main():
         Rm = rng.standard_normal(E.shape).astype(E.dtype)
         Rm /= np.clip(np.linalg.norm(Rm, axis=1, keepdims=True), 1e-8, None)
         dst = os.path.join(out_dir, f"{cat}__random.npy")
-        if not os.path.exists(dst):
-            np.save(dst + ".tmp.npy", Rm)
-            os.replace(dst + ".tmp.npy", dst)
+        np.save(dst + ".tmp.npy", Rm)
+        os.replace(dst + ".tmp.npy", dst)
         report[f"{cat}__random"] = sha(dst)
     for k, v in sorted(report.items()):
         print(f"CACHE {k} sha256={v}")

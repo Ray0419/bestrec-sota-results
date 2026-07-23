@@ -51,6 +51,12 @@ def welch(x, y):
 
 
 def main():
+    print("VOID: PREREG_TEXTPERM_V1 (E-B) was tombstoned (audit 2026-07-23 "
+          "22:00) for pseudoreplication (n=9 pool of 3 shared seeds), an "
+          "un-normalized random control (~19.6x norm), and arm/pod aliasing. "
+          "This adjudicator is DISABLED. A corrected PREREG_TEXTPERM_V2 in a "
+          "new code namespace is required before any run.")
+    return 3
     # regenerate control caches locally and hash them (determinism gate)
     r = subprocess.run([sys.executable,
                         os.path.join(ROOT, "cloud", "make_control_caches.py")],

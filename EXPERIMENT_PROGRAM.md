@@ -169,7 +169,7 @@ Parallelism changes wall-clock only — never analysis, seeds, or artifacts.
   classification paragraph; estimates are descriptive only, NO confirmatory
   status; E-G2 was intended as that path but is now EXPOSED (audit 22:00). The sole remaining path to counted status is **E-G3** — a fresh campaign with (a) REPOSITORY sequestration (endpoint artifacts gitignored until a sealed one-time adjudication; only completion hashes committed pre-seal), (b) the 8 adjudicator fixes above, (c) all-eight-seed structural-null encoding, and (d) frozen environment — to be FROZEN and committed before launch in a later tick.
 - [ ] **E-B. Frequency-stratified item-text permutation + random-feature
-  control — CLOUD-READY (PREREG_TEXTPERM_V1 frozen 2026-07-23 BEFORE
+  control — DISABLED/VOID (PREREG_TEXTPERM_V1 tombstoned audit 22:00; adjudicator + cloud launch paths hard-refuse; a corrected PREREG_TEXTPERM_V2 in a new code namespace is required before any run). Original notes: (PREREG_TEXTPERM_V1 frozen 2026-07-23 BEFORE
   launch; RunPod execution declared prospectively; maintainer accepted the
   cloud plan).** Harness committed: cloud/bootstrap_pod.sh (hash-verified
   asset bootstrap via bootstrap_public_clone.py), make_control_caches.py

@@ -4,7 +4,108 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-23 22:00 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-24 03:59 Australia/Sydney)
+
+1. **[CONFIRMED, rejection-level manuscript/protocol contradiction]** The
+   canonical ledger, README and program correctly classify E-G2 as exposed and
+   non-countable, but the actual manuscript, TeX and all three PDFs still call
+   E-G2 the registered independent, test-sequestered route to confirmation.
+   `PREREG_COLDFUSE_V2.md` remains unbannered `FROZEN`, says the adjudicator is
+   the first reader and says this campaign alone can confer counted status;
+   the unchanged adjudicator can still emit `W2-POS`. Tombstone E-G2 on every
+   surface and make its adjudicator fail closed or descriptive-only.
+2. **[CONFIRMED, remedy is not independent]** The proposed E-G3 adds repository
+   secrecy but no new holdout. Fresh optimizer seeds on the same historically
+   exposed partitions test seed stability, not independent generalization.
+   Any countable successor needs a prospectively frozen, genuinely untouched
+   temporal/catalog-arrival or external-domain test set held by a separate
+   evaluation service; otherwise it too is descriptive.
+3. **[CONFIRMED false sealing claim]** `.gitignore` is a mitigation, not a
+   security boundary: 54 COLDFUSE2 artifacts are already tracked, tracked
+   updates remain committable, and `git add -f` bypasses ignore rules. The live
+   E-B cloud script literally force-adds plaintext endpoint JSON/NPZ files.
+   Claims that “no commit can sweep” endpoints or that only adjudication can be
+   committed are false.
+4. **[CONFIRMED incomplete E-G2 family]** At the fixed cutoff E-G2 was still
+   `running`: 90/104 phases and 34/40 pipelines complete, with VG47 training in
+   flight, no campaign-end event and no adjudication. Missing were six bases,
+   two VG fusions, six confirmations and six NPZs. No new five-category result,
+   control attribution or Holm family exists; this audit read no endpoint
+   metric value.
+5. **[CONFIRMED prior E-G2 exposure remains dispositive]** The public working
+   branch retains 14 confirmation JSONs plus 14 NPZs committed mid-campaign.
+   The later 20 pairs are ignored/untracked, but that does not undo the breach.
+   The program's “about 59 minutes before adjudication” wording is also false:
+   it was about 59 minutes before the prior audit cutoff, and no adjudication
+   has occurred.
+6. **[CONFIRMED E-G2 analysis/integrity defects remain executable]** The frozen
+   adjudicator opens available endpoints before a metadata-only completeness
+   gate, drops structural-null seeds, does not parse the exact ledger or rehash
+   checkpoints, omits exact sidecar sets and full finite/bin checks, discards
+   registered control inference, omits C4 and can print unconditional f0
+   wording. Non-atomic bundles and path-only resume remain unsafe.
+7. **[CONFIRMED E-B lifecycle contradiction]** `PREREG_TEXTPERM_V1.md` now has
+   a clear VOID/SUPERSEDED banner, but `EXPERIMENT_PROGRAM.md` still calls V1
+   `CLOUD-READY`; the V1 runner, shards and adjudicator remain launchable and
+   no V2 exists. The all-pod script can announce completion and push/stop after
+   background shard failure. Disable V1 mechanically before any further pod
+   action.
+8. **[CONFIRMED ineffective E-B cache repair]** The generator now normalizes a
+   newly constructed random matrix but saves only when the destination is
+   absent. Existing MI/VG random caches remain at mean row norm about 19.58,
+   not 1.0, and the adjudicator merely re-hashes them. The response's “fixed”
+   claim is false for realized caches. Version, regenerate to a fresh directory,
+   verify norms/source/config/digest and fail on any pre-existing mismatch.
+9. **[CONFIRMED E-B design defects; no imported result evidenced]** V1 still
+   pseudoreplicates three maps sharing three seed blocks as n=9, aliases arms
+   with heterogeneous pods, uses broad frequency bins, trusts ledger/hash
+   presence and omits promised exact tests/CIs. No local TEXTPERM endpoints,
+   shard ledgers, returns or remote result branch were found. The assertion
+   that a pod died/discarded is **AUTHOR VERIFICATION**, not evidenced locally.
+10. **[CONFIRMED release/deposit contradiction]** Current-worktree manifest
+    verification is genuinely green (420 files; 282 Git-backed), repairing the
+    prior two mismatches. But the named `v1.1.11-deposit` is 37 commits behind
+    and fails current `--verify-git` with 161 mismatches, while deposit
+    instructions still say it is ready to upload. The strict wrapper checks the
+    worktree only, and `protocol_code` still omits core E-G2/E-B surfaces.
+11. **[CONFIRMED E-G1 remains descriptive]** Full 25-run arithmetic still
+    matches the retained sensitivity output, but literal Gate 5 fails MI/VG,
+    outcomes were visible before completion and correction, and all inference
+    is optimizer-seed-only on one exposed split. Ordinary Holm results do not
+    cure exact sign/Wilcoxon `p=.0625` in every category.
+12. **[CONFIRMED redistribution/mechanism limitation]** Every E-G1 mid and head
+    seed effect is negative; 85.83% of tail-hit gains are cancelled outside the
+    tail, Office loses eight net hits, frequency zero is only an observed top-10
+    null, and all 25 selections hit the old grid ceiling. No valid control study
+    identifies semantic alignment as the cause.
+13. **[CONFIRMED remaining prose overclaims]** Section 5.8 still says test was
+    evaluated once per seed despite trainer/fusion/confirm passes; calls an f0
+    HR/NDCG@10 null “provably does nothing”; and calls the boundary pre-declared
+    under one governed protocol despite the protocol deviation. It also claims
+    all three E-G1 adjudicator versions exist as separate current artifacts,
+    while the 12,839-byte post-outcome v2 script remains recoverable only from
+    Git history.
+14. **[CONFIRMED close prior art; PLAUSIBLE incremental novelty]** LLM2Emb is
+    still omitted despite publisher-verifiable popularity-gated ID/LLM fusion
+    for long-tail sequential recommendation; SISA-Rec is a recent adjacent
+    sparse semantic/ID method. The defensible novelty is a narrow empirical
+    package and governance/failure map, not broad text/ID, frequency, long-tail
+    or fusion novelty.
+15. **[CONFIRMED PDF/submission blockers]** Full visual QA of the changed
+    reader/TORS/ACM PDFs (61/53/55 pages) found no clipping, overlap or corrupt
+    figure, but all display maintainer/author metadata placeholders. Venue PDFs
+    are untagged; reader has no outline and page 61 contains only one wrapped
+    line. The manuscript is about 29,650 word-like tokens and remains far too
+    audit-dense for a clear top-journal scientific narrative.
+16. **[CONFIRMED carried-forward validity blockers; AUTHOR VERIFICATION for
+    governance items]** There is no fresh split, temporal replication or
+    external-domain confirmation; Beauty remains outside the five-category
+    transfer study; close baselines are discussed more than benchmarked; and
+    ethics, licenses, sidecar linkability, conflicts, author metadata, blind
+    mode and portal limits remain unresolved. Recommendation remains **reject /
+    not ready**.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-23 22:00 Australia/Sydney)
 
 1. **[CONFIRMED, rejection-level E-G2 no-interim breach]** E-G2 was frozen as
    the sole test-sequestered route to counted status, yet commit `df5afc9f`
@@ -352,6 +453,398 @@ plausible risks.
     dirty earlier campaigns, seed-only uncertainty, weak comparator framing,
     stale archival deposit and a roughly 26,852-word/50-page narrative remain
     independent rejection risks. Recommendation remains **reject / not ready**.
+
+## Audit Run - 2026-07-24 03:59 Australia/Sydney
+
+### Reviewer verdict
+
+**Reject / not ready for a top journal.** The interval contains real repairs:
+the current manifest now verifies, E-G1 is more honestly described, E-B V1 is
+tombstoned in its preregistration, and the rebuilt PDFs are visually intact.
+Those repairs do not yet control the submission. The actual manuscript still
+calls exposed E-G2 the independent route to confirmation; E-G2's own frozen
+protocol and executable adjudicator retain that false status; the void E-B V1
+remains launchable; and the named deposit tag is red despite “ready to upload”
+instructions.
+
+No new scientific result is available at this cutoff. E-G2 is incomplete and
+irrevocably exposed; E-B has no locally evidenced imported result. This audit
+therefore inspected only source, provenance, filenames, ledgers, hashes and
+PDF structure for those families. **No E-G2 confirmation JSON/NPZ or E-B
+final-evaluation metric value was opened.**
+
+The strongest defensible scientific statement remains:
+
+> On one historically exposed fixed split per category, an outcome-visible,
+> protocol-deviated evaluation-time history-centroid score consistently
+> reallocates top-10 utility toward items with roughly 1-5 training
+> interactions. The result is seed-stable but not independently replicated;
+> mid/head effects are uniformly negative, most tail-hit gains are cancelled,
+> true frequency-zero targets remain an observed top-10 null, and no valid
+> control campaign identifies semantic alignment as the mechanism.
+
+### Frozen evidence boundary
+
+- Operative cutoff local: `2026-07-24T03:59:22.3334790+10:00`.
+- Operative cutoff UTC: `2026-07-23T17:59:22.3334790Z`.
+- HEAD = upstream = merge base:
+  `d24d540c880710118c96f9ec81ad93a1e57a115f`.
+- Previous cumulative audit: 2,445,163 bytes, SHA-256
+  `d3c288f3707875efb2df6082aa77e733fe37d8f3aabcc9a5dc0bee4a4aeec66a`.
+- E-G2 ledger: 88,349 bytes, 182 JSONL records, SHA-256
+  `4d1b16f278c4ec618d1d06df8d4dad81a3178fdd508ec8d6e8050464010058c3`.
+- E-G2 status: 101 bytes, SHA-256
+  `8278f49c6a4d1f9412bfa6bf57edae6e3c5af171df4f374b0b39c06823f97c77`;
+  `running`, `done=90`, `skipped=0`, `failed=0`.
+- E-G2 log: 719,805 bytes, 17,749 lines, SHA-256
+  `1509881b53affd0b0da1fcb680d169813f3d903f9d2143813db3ebc350f8080b`.
+  Structural scanning found no printed numeric test endpoint, traceback,
+  warning or error at the cutoff.
+- Current release manifest: 67,885 bytes, SHA-256
+  `40c5b43ccf65676e3aad936841ba38b4d0cd95ab6782d9119a956625e2aec9e1`.
+
+The three live E-G2 files were last written at 03:56:30-31, before the fixed
+cutoff, so their whole-file hashes are exact rather than reconstructed
+prefixes. Later growth is excluded.
+
+### What changed since 22:00
+
+#### Confirmed repairs
+
+- `CANONICAL_SUBMISSION.md`, README and the top of `EXPERIMENT_PROGRAM.md`
+  now say E-G2 is exposed/protocol-deviated and that a future E-G3 is the only
+  proposed counted path.
+- `PREREG_TEXTPERM_V1.md` now opens with a prominent VOID/SUPERSEDED banner and
+  lists the pseudoreplication, random-scale and environment-allocation defects.
+- Section 5.8 now correctly calls `PREREG_COLDFUSE_V1` registered but
+  protocol-deviated, distinguishes the parameter-free added scorer from the
+  trained recommender, discloses failed Office partial checkpoints/logs and
+  scopes the frequency-zero statement to observed top-10 metrics in the
+  detailed results paragraph.
+- Current-worktree manifest verification is green: 420 files verify and all
+  282 Git-backed entries match HEAD.
+- The random-control generator's newly constructed matrix is row-normalized in
+  source. This is the right intended transformation, although the realized
+  cache repair did not occur because existing destinations are retained.
+- Full renders of all three changed PDFs show no clipping, overlap, missing
+  figure, corrupt glyph or table running outside its page.
+
+#### New or reopened failures
+
+- The manuscript and compiled papers did not receive the E-G2 reclassification.
+- E-G2's own preregistration and adjudicator still claim/test confirmatory
+  status and can emit ordinary W2 verdicts.
+- E-B is void in its preregistration but active in the program and scripts.
+- The E-B cache change leaves the actual unnormalized random caches untouched.
+- The new ignore patterns do not enforce secrecy and are directly bypassed by
+  `cloud/run_all_pod.sh`.
+- The local manifest is green but the named deposit tag and upload instructions
+  are stale; core E-G2/E-B governed surfaces remain outside `protocol_code`.
+
+### E-G2: cutoff progress without endpoint inspection
+
+The ledger contains one campaign launch, 91 phase launches, 90 successful
+phase completions, zero failure/skip events and no terminal campaign event.
+One job was in flight at cutoff: VG seed 20260747 training. Exact completion:
+
+| Category | Completed phases | Complete pipelines |
+|---|---:|---:|
+| Musical Instruments | 24/24 | 8/8 |
+| Industrial and Scientific | 24/24 | 8/8 |
+| Video Games | 18/24 | 6/8 |
+| Office Products | 12/16 | 6/8 |
+| CDs and Vinyl | 12/16 | 6/8 |
+| **Total** | **90/104** | **34/40** |
+
+By phase, 34/40 training, 22/24 fusion and 34/40 confirmation steps were
+complete. The cutoff had 34 base JSONs, 22 val-only fusion JSONs, 34 confirm
+JSONs with 34 NPZs and 34 checkpoints. Structural checks are favorable but do
+not restore status: every base records `no_test_eval=true`, `save_ckpt=true`
+and `best_test=null`; all 34 checkpoint bytes match the recorded digest; all 22
+fusion files record `val_only=true`, `test=null` and `recorded_best_test=null`;
+and config/data/environment invariants pass across completed cells. The log
+shows 12 EASE inversions plus 98 verified cache hits, confirming that
+content-addressed reuse materially reduced repeated inversions.
+
+Missing at cutoff were six bases, two VG fusion files, six confirm JSONs and
+six NPZs. No `coldfuse_v2_adjudication.json` exists. The historical public
+exposure remains exactly 14 tracked confirm JSONs plus 14 tracked NPZs, along
+with 14 base and 12 fusion files: 54 tracked COLDFUSE2 artifacts total. Later
+ignored files are not a second public push, but they cannot undo the first.
+
+#### E-G2 controls required now
+
+1. Add an exposure erratum to `PREREG_COLDFUSE_V2.md` while preserving the
+   immutable launch blob/commit. Replace “first reader” and “can grant counted
+   status” with an explicit `EXPOSED_PROTOCOL_DEVIATED` classification.
+2. Disable the current adjudicator's confirmatory exit path. If E-G2 is ever
+   summarized, use a separate descriptive-only tool whose output carries the
+   exposure classification and cannot be imported as W2 evidence.
+3. Do not merely run E-G3 with fresh seeds on the same fixed test split. Freeze
+   a new temporal/catalog-arrival or external-domain holdout before any
+   feature/tuning access and place it behind a separate custodian or evaluation
+   service. Fresh seeds on an exposed split establish seed stability only.
+4. Store metric-bearing outputs outside Git, encrypted or ACL-restricted.
+   Commit only signed completion hashes before the family is sealed. Add
+   pre-commit, pre-push and CI deny rules; `.gitignore` alone is insufficient.
+5. Before any metric read, require a metadata-only exact-set preflight: one
+   terminal campaign event, all planned steps, no unresolved failure, exact
+   JSON argv, clean launch boundary, exact file/hashes and actual checkpoint
+   rehashes.
+6. Keep all eight registered seeds. Encode validation infeasibility as the
+   frozen reference/zero-delta structural null instead of deleting the seed.
+7. Write one atomic hashed bundle per pipeline, including JSON, NPZ and
+   checkpoint binding. Resume only a verified complete bundle.
+
+### E-B: void status, cache and cloud harness
+
+No local TEXTPERM base JSON, finaleval JSON/NPZ, shard ledger or return bundle
+was found, and no current remote `eb-cloud-results` branch exists. Thus there
+is no locally evidenced imported E-B result. The new statement that an
+exploratory pod died and was discarded is an author assertion: no provider
+event, pod ID, failure log or return digest in this workspace proves it, and
+absence of a current branch cannot exclude a transient/deleted branch.
+
+V1 must not remain runnable. `EXPERIMENT_PROGRAM.md` still labels it
+`CLOUD-READY`; its adjudicator still pools three permutation maps sharing the
+same three seeds as n=9 against aligned n=3; and the cloud orchestrator still
+launches all shards. The orchestrator uses `git add -f` on plaintext endpoint
+JSON/NPZs, pushes them before adjudication, then stops the pod. A bare
+background `wait` does not collect every shard status, so it can announce
+completion and push a partial family; commit failure is ignored, allowing an
+old-branch push followed by shutdown.
+
+The realized random controls remain invalid:
+
+| Cache | Mean row norm | SHA-256 |
+|---|---:|---|
+| `Musical_Instruments__random.npy` | 19.5771 | `bca9ff7c4bb92af590857691c37f3d2809cf3872546f9a208cbfb5cc77be042e` |
+| `Video_Games__random.npy` | 19.5765 | `956ea2a73953c2cd6aa70cf9a47c1e583c5e26772dcb510c831e67d263d3f8ba` |
+
+`make_control_caches.py` constructs normalized replacements but writes only
+when `dst` is absent; the V1 adjudicator calls the same generator and trusts
+the surviving file's printed hash. A future V2 must use a new versioned cache
+root, generate expected bytes in a fresh directory, verify shape/dtype/source
+digest and per-row norms, then atomically publish the exact expected files.
+Use paired seed blocks or a crossed mixed/randomization model, randomize whole
+seed blocks across environments, pin a container digest and compare aligned
+text with finely frequency-matched permutation plus norm/covariance-matched
+null features.
+
+### Manuscript, claims and writing
+
+#### Confirmed contradictions to fix before another build
+
+1. `PAPER_SUBMISSION.md:503`, `PAPER_DRAFT.md:530` and TeX Results line 279
+   still say E-G2 is the registered independent route to confirmation. The
+   stale sentence is visible in reader PDF page 42, TORS page 37 and ACM-small
+   page 38. State that E-G2 is exposed and that no current replication can
+   confer counted status.
+2. “Test was evaluated once per seed” is false without a stage qualifier. The
+   E-G1 trainer evaluated test during training, the fusion evaluator made
+   another pass for MI/IS/VG, and the confirmer made a final REF/SEL pass. Say
+   exactly “the confirmation evaluator made one final paired pass,” then
+   disclose the upstream exposures.
+3. “Measured, pre-declared ... under one governed protocol” overstates a
+   protocol-deviated descriptive analysis. Replace it with “observed,
+   protocol-deviated sparse-warm redistribution on these fixed splits.”
+4. “Where it provably does nothing (frequency zero)” exceeds the evidence.
+   Replace with “where no HR/NDCG@10 change was observed for frequency-zero
+   targets on these splits.”
+5. Do not say all three E-G1 adjudicator scripts are separately preserved in
+   the current tree. The original and corrected scripts are current; the
+   12,839-byte post-outcome v2 script is recoverable from Git history and its
+   output is retained. State that exact distinction and bind the historical
+   blob in the release manifest.
+6. Replace the literal `but---per` Markdown/reader rendering with normal
+   punctuation and revise README's stale “276 files” count to 420.
+
+#### Writing and figure plan
+
+The manuscript is approximately 29,650 word-like tokens. Preserve the forensic
+record in a versioned supplement, but reduce the scientific body to one
+estimand and one evidence hierarchy:
+
+- **Question/design:** one paragraph defining sparse-warm f1-5, the exposed
+  split and evidence classes.
+- **Primary result:** a compact table plus a forest plot of per-category f1-5
+  effects with seed dots and a visible “protocol-deviated descriptive” banner.
+- **Trade-off:** a plot of f1-5 gain versus overall/mid/head change, with the
+  zero-loss quadrant and category labels.
+- **Boundary:** an exact-frequency f0-f5 panel with denominators, uncertainty
+  and top-k scope, showing concentration at f4-5 rather than a pooled tail only.
+- **Governance:** one small supplement timeline for preregistration, launch,
+  first endpoint, public push, completion and adjudication. Do not place a
+  confirmatory-looking chronology or p-value table in the main result spine.
+
+Use vector output, colorblind-safe palettes, direct labels, consistent decimal
+precision and captions stating estimator, n, CI construction, multiplicity,
+split exposure, endpoint scope and evidence class. One baseline table, one
+primary-results table and one ablation/control table should replace the many
+overlapping forensic tables.
+
+### Statistical and algorithmic guidance
+
+- Treat seed replication, split replication and domain replication as distinct
+  uncertainty sources. Use at least 8-10 paired seed blocks **within each of
+  multiple untouched temporal/split blocks**; report hierarchical or blocked
+  uncertainty rather than only optimizer-seed t intervals.
+- Freeze an application-supported utility function and noninferiority margins.
+  Select a policy using lower confidence bounds for overall/mid/head constraints
+  on development folds; retain a zero-delta reference when no policy is
+  feasible. Plot the validation Pareto frontier.
+- To make a genuine f0/cold-item claim, use an item-disjoint catalog-arrival
+  holdout and a text-only semantic candidate generator/ANN index, then combine
+  semantic and collaborative candidates under a frozen deduplication and
+  calibration rule. A full-catalog reranker on an exposed split cannot establish
+  new-item retrieval.
+- For mechanism identification, compare aligned text, exact-frequency
+  permutation, frequency-only prior, norm/covariance-matched random features,
+  pure-text retrieval and a strong learned adaptive fusion baseline within the
+  same paired seed/environment blocks.
+- Keep content-addressed EASE reuse, but bind solver, array, item-order, code,
+  environment and residual digests into each result. Use immutable attempt
+  directories, explicit GPU assignment, hash-chained JSON argv/events and one
+  atomic sealed artifact bundle per step.
+
+### Novelty and source check
+
+No novelty wording or cited-literature set changed in this interval, so a new
+search was not used to manufacture novelty churn. The prior primary-source
+checks remain directly relevant:
+
+- The publisher page for [LLM2Emb: A two-stage LLM-based embedding framework
+  for long-tail sequential recommendation](https://www.sciencedirect.com/science/article/pii/S0957417426022840)
+  verifies the paper, DOI `10.1016/j.eswa.2026.133375` and its popularity-gated
+  ID/LLM long-tail focus. It remains omitted from the manuscript.
+- [SISA-Rec](https://arxiv.org/abs/2607.11168) is a recent adjacent gated
+  text/ID and semantic-alignment method for sparse sequential recommendation.
+- [AlphaFuse](https://arxiv.org/abs/2504.19218), ACM DOI
+  `10.1145/3726302.3729894`, remains a close established adaptive ID/text
+  representation baseline.
+
+These works do not prove that the exact FIR/history-centroid implementation is
+known. They do make broad text/ID, adaptive-fusion, long-tail or frequency
+novelty indefensible. Benchmark the closest feasible methods under the same
+full-catalog protocol or lower the comparative claim and document exclusions.
+
+### Release and deposit audit
+
+- `_bestrec_run/update_release_manifest.py --verify`: **PASS**, 420 files.
+- `--verify-git HEAD`: **PASS**, 282 Git-backed entries.
+- `v1.1.11-deposit..HEAD`: 37 commits.
+- Current manifest against `v1.1.11-deposit`: **FAIL**, 161 mismatches and 121
+  matching entries.
+- `DOI_DEPOSIT_INSTRUCTIONS.md` nevertheless says everything is prepared and
+  explicitly instructs upload of v1.1.11. Add a prominent STOP/STALE banner;
+  do not upload it as the current paper/release.
+- The strict build wrapper verifies the current worktree but does not prove the
+  declared tag. Report “current-tree gate green; named deposit gate red.”
+- `protocol_code` still omits E-G2/E-B preregistrations, adjudicators,
+  evaluators and cloud drivers. Manifest regeneration only updates existing
+  keys, so add a negative completeness gate that discovers governed-file
+  patterns missing from the manifest.
+
+After manuscript/protocol stabilization, regenerate in a fresh clone, run the
+strict chain against the exact commit, create a new immutable tag, verify the
+manifest against that tag and round-trip the actual deposit bundle. Preserve
+v1.1.11 as historical provenance, not as the current upload target.
+
+### PDF, figure and submission-readiness audit
+
+Every page of every changed PDF was rendered and visually inspected, followed
+by full-resolution checks of title and final pages:
+
+| Artifact | Pages | SHA-256 | Result |
+|---|---:|---|---|
+| `PAPER_SUBMISSION.pdf` | 61 | `fe84b22196008cdd1bd7d0544f1a11d5397b82ecffa693bb79a96eff754719e0` | Tagged; no outline; no clipping; p61 has one line |
+| `paper_tex/PAPER_TORS.pdf` | 53 | `ec55ddee4b4ad992b515d09ce9abd0335a2c3a8f555b6c1f098092615a2ca21d` | 17 outline entries; untagged; no clipping |
+| `paper_tex/main-acmsmall.pdf` | 55 | `0a83039c910dd1aa140bf0f2d491a70492352ed0599dae2e52bc5bda5f1abe50` | 17 outline entries; untagged; no clipping |
+
+All three title pages visibly contain maintainer/author metadata placeholders;
+the journal PDFs also show institution/country/short-author placeholders in
+front matter or running heads. These are submission blockers in the current
+single-blind-looking build. Replace them with real metadata or deliberately
+switch to the portal-required anonymous mode after author verification. Remove
+the reader's one-line final page, add reader bookmarks, tag the venue PDFs and
+verify current portal/template, length, supplementary, accessibility and blind
+review rules immediately before submission.
+
+### Concrete repair order
+
+#### P0 — stop false status and unsafe execution
+
+- [ ] Replace E-G2's confirmatory sentence in manuscript, draft and TeX;
+  rebuild all PDFs.
+- [ ] Banner/tombstone `PREREG_COLDFUSE_V2.md`; disable W2 confirmatory exits
+  and label any later E-G2 summary descriptive/exposed.
+- [ ] Disable E-B V1 program, adjudicator and pod launch paths; require a
+  separate V2 preregistration and code namespace.
+- [ ] Remove every plaintext endpoint Git push and all `git add -f` endpoint
+  patterns; use outside-repository sealed storage plus enforceable hooks/CI.
+- [ ] Regenerate/version E-B controls from fresh expected bytes and prove
+  realized norms/digests before use.
+- [ ] Put a STOP/STALE banner on deposit instructions and do not upload
+  `v1.1.11-deposit` as the current release.
+
+#### P1 — make a successor scientifically and operationally valid
+
+- [ ] Obtain a genuinely untouched temporal/catalog-arrival or external
+  holdout under a separate evaluator; do not count same-split E-G3.
+- [ ] Implement metadata-only completeness, exact ledger/file/hash gates,
+  structural-null retention, atomic bundles and deterministic paired controls.
+- [ ] Add multiple split blocks and paired seed/environment inference; justify
+  utility margins and report uncertainty beyond optimizer seeds.
+- [ ] Add closest comparable baselines or explicitly lower/exclude claims with
+  protocol/resource justification.
+- [ ] Move forensic history to the supplement and rebuild the three-figure,
+  three-table scientific spine described above.
+
+#### P2 — release and submission readiness
+
+- [ ] Add all governed protocol/code surfaces to manifest scope plus an
+  automatic missing-member gate; cut and verify a new immutable deposit tag.
+- [ ] Replace author/institution/country/short-author placeholders and verify
+  target journal, blind mode, template, portal and length rules.
+- [ ] Resolve ethics, licensing, conflicts, funding, privacy and linkable
+  per-user sidecar decisions with named author responsibility.
+- [ ] Tag PDFs, add bookmarks, remove the one-line page and recheck every page
+  at print size and in grayscale.
+
+### Open questions requiring author verification
+
+1. Was the endpoint-bearing branch public or collaborator-accessible, and did
+   any person or automated report open an E-G2 endpoint before completion?
+2. What provider evidence supports the statement that an E-B pod launched,
+   died and was discarded: pod ID, timestamps, failure log and return digest?
+3. Is there a truly untouched temporal/catalog-arrival or external test set,
+   and who can serve as independent evaluation custodian?
+4. Who selected the current utility/noninferiority margins, and what
+   application cost function justifies them given the observed cross-bin harm?
+5. Is ACM TORS the final target, what blind-review mode does its current portal
+   require, and what exact body/supplement length limits apply?
+6. Which licenses and institutional determinations cover the review data,
+   embeddings, checkpoints, mappings and linkable per-user sidecars?
+7. Who will own the new immutable release/tag/deposit round trip and certify
+   that the uploaded bundle matches the manuscript commit?
+
+### Running checklist update
+
+- [x] Freeze an exact HEAD/upstream and live-file cutoff.
+- [x] Avoid reading incomplete E-G2/E-B metric payloads.
+- [x] Audit E-G2 progress, structural artifacts, log leakage and code status.
+- [x] Audit E-B VOID status, realized caches, cloud runner and adjudicator.
+- [x] Verify the current manifest and separately test the named deposit tag.
+- [x] Render and visually inspect every page of all three current PDFs.
+- [x] Recheck manuscript/TeX/canonical/program/response consistency.
+- [x] Carry forward primary-source novelty evidence where claims are unchanged.
+- [ ] Propagate E-G2 exposure and E-B VOID status to all executable surfaces.
+- [ ] Replace repository endpoint handling with a real sealed evaluation path.
+- [ ] Freeze a successor on a genuinely untouched holdout.
+- [ ] Correct statistical controls, caches, ledgers and atomic artifacts.
+- [ ] Condense the paper and rebuild figures/tables around one estimand.
+- [ ] Cut and round-trip a current manifest-complete deposit.
+- [ ] Complete author, venue, ethics, privacy and licensing verification.
 
 ## Audit Run - 2026-07-23 22:00 Australia/Sydney
 

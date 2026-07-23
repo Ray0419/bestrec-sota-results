@@ -80,6 +80,15 @@ def t_ci(vals, label):
 
 
 def main():
+    import sys as _sys
+    if "--descriptive-only" not in _sys.argv:
+        print("EXPOSED_PROTOCOL_DEVIATED: E-G2 was exposed (git add -A pushed "
+              "14 in-progress confirm artifacts pre-adjudication; audit "
+              "2026-07-23 22:00). Confirmatory adjudication is DISABLED. No "
+              "W2-POS/NEG/EQUIV verdict can be emitted or imported. Re-run "
+              "with --descriptive-only to produce a DESCRIPTIVE, "
+              "NON-COUNTED summary that carries this classification.")
+        return 3
     CK = cand_keys()
     era = json.load(open(os.path.join(HERE, SAME_ERA_REF),
                          encoding="utf-8"))["config"]
@@ -265,13 +274,13 @@ def main():
         lo, hi = r["f15"]["ci"]
         gates_ok = all(r[k]["gate_pass"] for k in COST_GATES)
         if r["holm_significant"] and r["f15"]["mean"] > 0:
-            verdicts[c] = "W2-POS" if gates_ok else "W2-POS-COST"
+            verdicts[c] = "W2-POS (DESCRIPTIVE-ONLY; EXPOSED, not counted)" if gates_ok else "W2-POS-COST"
         elif r["holm_significant"] and r["f15"]["mean"] < 0:
-            verdicts[c] = "W2-NEG"
+            verdicts[c] = "W2-NEG (DESCRIPTIVE-ONLY; EXPOSED)"
         elif -F15_MARGIN < lo and hi < F15_MARGIN:
-            verdicts[c] = "W2-EQUIV"
+            verdicts[c] = "W2-EQUIV (DESCRIPTIVE-ONLY; EXPOSED)"
         else:
-            verdicts[c] = "W2-INC"
+            verdicts[c] = "W2-INC (DESCRIPTIVE-ONLY; EXPOSED)"
         print(f"VERDICT {c}: {verdicts[c]}")
     family = ("W2-SEM-FAIL" if sem_fail >= 3 else "semantic-alignment "
               "interpretation retained")

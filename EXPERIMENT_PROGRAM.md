@@ -74,10 +74,7 @@ Parallelism changes wall-clock only — never analysis, seeds, or artifacts.
   sequestration = structural: test values never printed, adjudicator is the
   first reader; 8 fresh seeds 20260741-48; bracketed grid to 0.6; guardrails;
   f0 excluded from endpoint; C1-C4 control arms; two GPU lanes) ->
-  [x] launched 2026-07-23 (~11 h wall, lanes A+B) -> [ ] adjudicate (once,
-  after all 40 confirm files) -> [ ] integrate (frozen W2-* wordings only;
-  LLM2Emb/AlphaFuse benchmark-or-exclusion decision recorded at
-  integration).
+  [x] launched 2026-07-23 (lanes A+B) -> [x] COMPLETED 2026-07-24 (104/104 steps, 40/40 confirm files, 0 failures, 818.7 min; campaign_end in ledger) but EXPOSED per audit 22:00 -> [x] NOT adjudicated for a counted result and NOT integrated: E-G2 is descriptive-only forensic data (the completed confirm/NPZ artifacts are gitignored and retained locally; only the pre-exposure 54 committed partials remain in public history as the exposure record). Its defect-listed v2 adjudicator is superseded by E-G3's hardened one; no E-G2 number enters the manuscript.
 
 - [x] **E-A. Nonsingular matched-FIR factorial (audit 10:47 design adopted).**
   Question: does learnable causal FIR filtering add value separate from the

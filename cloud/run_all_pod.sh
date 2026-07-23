@@ -31,11 +31,24 @@ if [ -n "${GIT_PUSH_TOKEN:-}" ]; then
       _bestrec_run/results_*_TEXTPERM_*.perusers.npz 2>/dev/null
   git -c user.email=pod@runpod -c user.name=runpod-eb \
       commit -m "E-B cloud results (pod $(hostname))" || true
-  git push "https://${GIT_PUSH_TOKEN}@github.com/Ray0419/bestrec-sota-results.git" \
-      eb-cloud-results && echo "== RESULTS PUSHED: branch eb-cloud-results ==" \
-      || echo "PUSH FAILED (check token)"
+  if git push "https://${GIT_PUSH_TOKEN}@github.com/Ray0419/bestrec-sota-results.git" \
+        eb-cloud-results; then
+    echo "== RESULTS PUSHED: branch eb-cloud-results =="
+    # Results are safely in git -> stop this pod to end the rent (audit trail
+    # is on GitHub; the pod can be redeployed cheaply if ever needed).
+    if command -v runpodctl >/dev/null 2>&1 && [ -n "${RUNPOD_POD_ID:-}" ]; then
+      echo "== STOPPING POD ${RUNPOD_POD_ID} to end billing =="
+      runpodctl remove pod "$RUNPOD_POD_ID" \
+        || runpodctl stop pod "$RUNPOD_POD_ID" \
+        || echo "SELF-STOP FAILED -- stop the pod manually in the console"
+    else
+      echo "runpodctl/RUNPOD_POD_ID unavailable -- stop the pod manually"
+    fi
+  else
+    echo "PUSH FAILED (check token) -- pod left RUNNING so nothing is lost"
+  fi
 else
   echo "== no GIT_PUSH_TOKEN set: results are in cloud/returns/*.tar.gz =="
-  echo "   download them via the Jupyter file browser, or re-run with a token."
+  echo "   download them via the Jupyter file browser; pod left RUNNING."
 fi
 echo "== E-B POD RUN COMPLETE =="

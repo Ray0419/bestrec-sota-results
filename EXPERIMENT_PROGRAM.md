@@ -30,6 +30,10 @@ builds, adjudication, editorial agents) parallelizes freely; the NPU is
 unusable by the torch stack (no backend) and is honestly out of scope.
 Parallelism changes wall-clock only — never analysis, seeds, or artifacts.
 
+## Manifest completeness gate (audit 2026-07-24 03:59, done 2026-07-24)
+
+`update_release_manifest.py --verify` now runs a NEGATIVE COMPLETENESS gate: every tracked GOVERNED file (`PREREG_*.md`, `_bestrec_run/adjudicate_*.py`, `cloud/**`) must be a `protocol_code` key or the gate FAILS. This closed a real silent gap — 21 governed surfaces (including the counted-campaign preregs FIR_BREADTH / OFFICE_V3 / TAIL_FIR_V2 and their adjudicators, plus the new seal hooks) were missing and are now bound. Governed code can no longer escape the manifest unnoticed.
+
 ## Standing OPS rules addendum (audit 2026-07-23 15:59, adopted for every
 ## future campaign)
 

@@ -274,6 +274,24 @@ def verify(m):
                    "fetch-verified (fail-closed 2026-07-20, audit 16:53; use "
                    "--fetch-missing to stream-verify from the release, or "
                    "--allow-missing-assets to explicitly waive)")
+    # audit 2026-07-24 03:59: NEGATIVE COMPLETENESS GATE. Every tracked GOVERNED
+    # file (preregistrations, adjudicators, cloud drivers/hooks) must be a
+    # manifest key, so governed surfaces cannot silently escape protocol_code.
+    _keys = set(m.get("protocol_code", {})) | set(m.get("submission_docs", {}))
+    try:
+        _tracked = subprocess.run(["git", "ls-files"], cwd=ROOT,
+                                  capture_output=True, text=True).stdout.split()
+    except Exception:
+        _tracked = []
+    for _t in _tracked:
+        _gov = ((_t.startswith("PREREG_") and _t.endswith(".md"))
+                or (_t.startswith("_bestrec_run/adjudicate_") and _t.endswith(".py"))
+                or _t.startswith("cloud/"))
+        if _gov and _t not in _keys:
+            bad.append(f"governed-completeness: {_t} matches a governed "
+                       "pattern (prereg/adjudicator/cloud) but is not in "
+                       "protocol_code -- add it (audit 2026-07-24)")
+
     if bad:
         print(f"RELEASE MANIFEST VERIFY: FAIL ({len(bad)} problem(s); "
               f"{checked} files verified)")

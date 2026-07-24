@@ -71,7 +71,13 @@ E-E is claim-bearing the moment a head-to-head number is reported. Therefore:
 
 - [x] data exporter (verified on Office + VG)
 - [x] isolated-env + clone setup script
-- [ ] run `setup_ee_env.sh` (fetches external code — do when ready to port)
-- [ ] AlphaFuse loader adapter + local smoke test
-- [ ] freeze PREREG_EE / adjudicate_ee, OR write the exclusion note
-- [ ] (only then) final runs, adjudicate, integrate
+- [x] AlphaFuse cloned + code read; **`ADAPTER_SPEC.md`** pins the data contract
+  and settles the question: **head-to-head is FEASIBLE, not an exclusion** —
+  AlphaFuse's eval is full-catalog LLOO top-k (same estimand as ours), with three
+  disclosed deviations (MiniLM substituted for OpenAI text-embedding-3;
+  sampled-neg training; our split only). Embedding join verified (re-index via
+  `asin2idx_<cat>.json`, not a naive slice).
+- [ ] `build_alphafuse_dataset.py` (the re-index join) + `alphafuse_minilm.patch`
+  + local smoke test on VG
+- [ ] freeze PREREG_EE / adjudicate_ee (benchmark path now expected)
+- [ ] (only then) final runs on a rented A100, adjudicate, integrate

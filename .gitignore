@@ -84,3 +84,9 @@ _bestrec_run/results_*COLDFUSE3*
 _bestrec_run/results_*TEXTPERM*
 _bestrec_run/results_*.finaleval.json
 _bestrec_run/results_*.finaleval.perusers.npz
+
+# E-E setup: regenerable interchange export, external baseline clones, isolated venv
+ee_baselines/export/
+ee_baselines/AlphaFuse/
+ee_baselines/LLM2Emb/
+ee_baselines/.venv_ee/

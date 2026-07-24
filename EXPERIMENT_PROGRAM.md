@@ -207,7 +207,7 @@ Parallelism changes wall-clock only — never analysis, seeds, or artifacts.
   pre-declared head-harm constraint; the frequency-5 finding must never tune
   anything on test).** Stage 1 exploratory (2 seeds MI, labeled post-hoc);
   promote to prereg only on band-consistent dev signal.
-- [ ] **E-E. AlphaFuse benchmark-or-exclusion (closest omitted comparator).**
+- [~] **E-E. AlphaFuse/LLM2Emb benchmark-or-exclusion — SETUP STARTED 2026-07-24 (maintainer: 'set up a machine I can run E-E').** `ee_baselines/` created (isolated from the pinned env): `export_ar2023_for_baselines.py` DONE + VERIFIED (our exact 5-core LLOO split -> clean interchange JSONL; Office 223,308/77,551 and VG 94,762/25,612 both match recorded counts, 100% title coverage); `setup_ee_env.sh` (isolated `.venv_ee` + clones public Hugo-Chinn/AlphaFuse + installs its deps); `README_EE.md` (run steps + frozen-before-report governance + exclusion-path rule). Remaining: run setup (fetch external code), adapt AlphaFuse's loader to the export, local smoke test, then FREEZE PREREG_EE/adjudicate_ee (or write the exclusion note) BEFORE any head-to-head number; final runs want a rented A100 only after the port is proven locally. Original: **E-E. AlphaFuse benchmark-or-exclusion (closest omitted comparator).**
   Adapt the released AlphaFuse code to AR2023 5-core full-catalog LLOO
   (MI first). If the protocol port is infeasible under documented constraints,
   write the executable exclusion note the audits accept instead. Largest item;

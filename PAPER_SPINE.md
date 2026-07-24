@@ -55,6 +55,23 @@ Protocol -> Primary results -> Ablations (after E-E V2 factorial adjudicates) ->
 Negatives/boundary -> Intro/abstract -> Related work -> Limitations -> figures ->
 move forensics to supplement -> full render + tex mirror + H1–H9 + strict.
 
+## Locked decisions (maintainer, 2026-07-24)
+- **Target: MODERATE ~18k words / ~28pp** — relocate/compress superseded material
+  and the worst density, but KEEP more caveat detail in the main body. The trim
+  therefore comes from prose density + redundancy, NOT from deleting honest
+  retractions/caveats (e.g. the superseded appendices A.1–A.3 contain real
+  retractions — tighten, do not gut).
+- **Author metadata: leave a clear TODO** (the `**Authors**: [maintainer to
+  supply …]` marker already present stays until the maintainer fills it).
+- **Method (proven): anchor-span replacement in Python** (match stable start/end
+  anchors, replace the span — immune to em-dash/§/curly-quote typography),
+  count-verified; every increment: render "scan: CLEAN" + paper-check 0 mismatch
+  + strict exit 0 + commit. Canonical md now; paper_tex mirror reconciled at the
+  end (PAPER_TORS.pdf hash-stable meanwhile).
+- **Progress:** Abstract (~400→235w) + front-matter redundancy done + verified
+  (28,411 → 28,306w). Remaining ≈ 10k words of density to trim, section by
+  section, per the spine order above.
+
 ## Guardrails (unchanged)
 Counted set = MI V2 + Office V3 only; FORBIDDEN list applies verbatim; every
 paper edit runs the full ritual (render "scan: CLEAN", tex build H1–H9, strict

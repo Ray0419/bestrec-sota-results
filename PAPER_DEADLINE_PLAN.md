@@ -51,3 +51,4 @@ reorganises/tightens and invents no results.
   prose + the new Supplement S.4/S.5 structure into paper_tex/sections, rebuild
   (H1–H9); this is the heavy, less-automatable piece; (c) **M4 deposit** tag +
   from-zero verify. Author metadata stays a TODO.
+- 2026-07-25 ~03:30 (tick) — audit 21:59 answered + rewrite advanced: E-E V2 relabeled (representation-package/outcome-visible/NOT countable); abstract 'pass'->'met a predeclared threshold under environment caveats'; §2.2 8-item inventory subordinated to the 3 headline claims; 'Every retraction' universal claim removed. All gate-green. Heavy remaining (stretch, ~4.5h to deadline): cut Results §5.3-§5.4 (number-dense; move forensics to Supplement), figures (Fig1->forest plot; page-61 list), **M3 paper_tex reconcile** (still stale + placeholders), **M4 deposit**. Author metadata = human TODO; acceptance unchanged.

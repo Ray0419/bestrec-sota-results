@@ -1,4 +1,4 @@
-# Artifact-Gated Evaluation of Text-Augmented Sequential Recommendation: An FIR-Optimizer Package and a Musical-Instruments Frequency-5 Case Study on Amazon Reviews 2023
+# Artifact-Gated Evaluation of Text-Augmented Sequential Recommenders
 
 **Authors**: [maintainer to supply before submission — TORS review is single-blind and the manuscript must carry real author/affiliation/contact metadata; withheld only in this public working copy]
 
@@ -656,9 +656,9 @@ constitutes a deployment claim.
 
 **Completed HSTU-BLaIR check (2026-07-12).** The resolution above inferred that the published HSTU-BLaIR 0.0271 was "plausibly" conservative as well; running their Office HSTU-BLaIR configuration end-to-end locally **tested and did not support that inference**: it lands at final-epoch NDCG@10 **0.0275** (best full eval 0.0279), i.e. **+1.6%/+2.8% above the published 0.0271** — the flagship comparator row regenerates in this environment (margins comparable to the Musical_Instruments regeneration), unlike the SASRec row (+13.9%). Descriptively, the (VOID) gate values 0.03042/0.03033 sit ≈+9% above both the published value and its local regeneration. **The VOID nonetheless stands**: the pre-declared floor check failed as written, and no post-hoc result — favorable or not — restores a voided pre-declaration. These numbers are environment-caveated single-run regenerations, reported as descriptive evidence only; the V1 campaign recorded in this appendix remains counted in no claim. (A redesigned V3 pre-declaration — new never-inspected seeds, environment-matched reference — subsequently **passed** and is reported in §5.2; the V1 VOID stands unchanged.)
 
-## Supplementary Material (S.1–S.3) — superseded earlier-stage supporting study (Beauty_and_Personal_Care)
+## Supplementary Material
 
-> *Optional supporting material; not required for the main results (§1–§7). Retained in full for reproducibility and as the honest record of a superseded earlier stage.*
+> *This supplement contains (a) **S.1–S.3**: a superseded earlier-stage Beauty_and_Personal_Care supporting study — optional, not required for the main results; and (b) **S.4–S.5**: the full result tables for §5.5 (screening log) and §5.4 (titration ladder), which are CURRENT results relocated here only for main-body length. The superseded/optional qualifier applies to S.1–S.3 only.*
 
 > **Why this is an appendix:** the material below is an earlier-stage Beauty_and_Personal_Care reproducibility study (the 20-variant cross-pipeline scan, its 2-seed signal, and the retracted LIGER-gap audit). It predates and does not belong to the headline spine (causal FIR filter + MI frequency-5 tail case + competitive-overall Video_Games result, §1–§7). It is retained verbatim for the reproducibility and negative-result record only, and is referenced from §6.1–§6.2 as supporting context. The live Beauty result that enters the tail pattern (§5.3) is the text−ID tail contrast, not these single-seed sampled-softmax scans.
 

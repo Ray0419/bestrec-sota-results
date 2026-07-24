@@ -290,7 +290,7 @@ def verify(m):
         _tracked = []
     else:
         _tracked = [x for x in _r.stdout.split(chr(0)) if x]
-    _drv = ("run_ea_", "run_ef_", "run_eg", "run_coldfuse", "fuse_cold",
+    _drv = ("run_ea_", "run_ef_", "run_eg", "run_ee", "run_coldfuse", "fuse_cold",
             "fuse_ease", "ensemble_fuse")
     for _t in _tracked:
         _base = _t.split("/")[-1]
@@ -360,6 +360,26 @@ def regen(m):
             cands = idx.get(fn, [])
             if cands:
                 files[fn] = sha_norm(cands[0])
+
+    # audit 2026-07-24 (E-E freeze): keep protocol_code in lock-step with the
+    # governed-completeness gate -- auto-register any tracked governed file
+    # (prereg / adjudicator / campaign driver / DESIGN) that is missing, so a
+    # newly frozen pre-registration can never be committed unregistered.
+    _gr = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT,
+                         stdout=subprocess.PIPE)
+    _gdrv = ("run_ea_", "run_ef_", "run_eg", "run_ee", "run_coldfuse",
+             "fuse_cold", "fuse_ease", "ensemble_fuse")
+    for _t in [x for x in _gr.stdout.decode().split(chr(0)) if x]:
+        _b = _t.split("/")[-1]
+        _isgov = ((_t.startswith("PREREG_") and _t.endswith(".md"))
+                  or (_t.startswith("_bestrec_run/adjudicate_") and _t.endswith(".py"))
+                  or (_t.startswith("_bestrec_run/") and _t.endswith(".py")
+                      and any(_b.startswith(d) for d in _gdrv))
+                  or _t.endswith("_DESIGN.md"))
+        if _isgov and _t not in m["protocol_code"]:
+            _gap = os.path.join(ROOT, _t.replace("/", os.sep))
+            if os.path.exists(_gap):
+                m["protocol_code"][_t] = {"sha256": sha_norm(_gap)}
 
     changed = []
     for rel, ent in m["protocol_code"].items():

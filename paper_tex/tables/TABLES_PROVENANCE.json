@@ -157,30 +157,12 @@
    }
   },
   {
-   "key": "table1e",
-   "out": "table1e.tex",
-   "source": "PAPER_SUBMISSION.md",
-   "md_lines": [
-    376,
-    383
-   ],
-   "family": "hstu_tables.json:table1e",
-   "crosscheck": {
-    "table": "table1e",
-    "checked": 54,
-    "exact": 54,
-    "within_1ulp": 0,
-    "allowlisted": 0,
-    "fail": []
-   }
-  },
-  {
    "key": "table541",
    "out": "table541.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    393,
-    397
+    384,
+    388
    ],
    "family": "hstu_tables.json:table541",
    "crosscheck": {
@@ -197,8 +179,8 @@
    "out": "table542.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    414,
-    419
+    405,
+    410
    ],
    "family": "hstu_tables.json:table542",
    "crosscheck": {
@@ -211,30 +193,12 @@
    }
   },
   {
-   "key": "table2",
-   "out": "table2.tex",
-   "source": "PAPER_SUBMISSION.md",
-   "md_lines": [
-    447,
-    468
-   ],
-   "family": "hstu_tables.json:table2",
-   "crosscheck": {
-    "table": "table2",
-    "checked": 33,
-    "exact": 17,
-    "within_1ulp": 13,
-    "allowlisted": 3,
-    "fail": []
-   }
-  },
-  {
    "key": "table56_theirs",
    "out": "table56_theirs.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    478,
-    484
+    446,
+    452
    ],
    "family": "hstu_results_manifest.json:theirs_on_ours(+published constants)",
    "crosscheck": {
@@ -251,14 +215,50 @@
    "out": "tableA1.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    707,
-    730
+    673,
+    696
    ],
    "family": "md-only (pandoc-converted; no JSON family)",
    "crosscheck": {
     "table": "tableA1",
     "checked": 0,
     "note": "md-only table; no JSON family"
+   }
+  },
+  {
+   "key": "table2",
+   "out": "table2.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    748,
+    769
+   ],
+   "family": "hstu_tables.json:table2",
+   "crosscheck": {
+    "table": "table2",
+    "checked": 33,
+    "exact": 17,
+    "within_1ulp": 13,
+    "allowlisted": 3,
+    "fail": []
+   }
+  },
+  {
+   "key": "table1e",
+   "out": "table1e.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    777,
+    784
+   ],
+   "family": "hstu_tables.json:table1e",
+   "crosscheck": {
+    "table": "table1e",
+    "checked": 54,
+    "exact": 54,
+    "within_1ulp": 0,
+    "allowlisted": 0,
+    "fail": []
    }
   },
   {

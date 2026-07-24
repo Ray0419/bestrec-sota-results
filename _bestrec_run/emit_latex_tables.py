@@ -372,9 +372,6 @@ REGISTRY = [
     dict(key="table1d", fp="dataset", out="table1d.tex",
          env="tabularx", colspec=r"p{0.18\linewidth}p{0.09\linewidth}Ycp{0.24\linewidth}", size=r"\small",
          family="table1d", allow=set()),
-    dict(key="table1e", fp="ρ", out="table1e.tex",
-         env="tabularx", colspec=r"lccYYYY", size=r"\scriptsize",
-         family="table1e", allow=set()),
     dict(key="table541", fp="regime (interactions/item)", out="table541.tex",
          env="tabularx", colspec=r"p{0.24\linewidth}cccccY", size=r"\footnotesize",
          family="table541",
@@ -384,7 +381,12 @@ REGISTRY = [
     dict(key="table542", fp="regime (int/item, users/item)", out="table542.tex",
          env="tabularx", colspec=r"p{0.30\linewidth}cYc", size=r"\footnotesize",
          family="table542", allow=set()),
-    dict(key="table2", fp="lever", out="table2.tex",
+    dict(key="table56_theirs", fp="run (their code, their data, their eval)", out="table56_theirs.tex",
+         env="tabularx", colspec=r"Yccc", size=r"\small",
+         family="__manifest_theirs__", allow=set()),
+    dict(key="tableA1", fp="#", out="tableA1.tex",
+         env="tabularx", colspec=r"cYrr", size=r"\footnotesize",
+         family=None, allow=set()),    dict(key="table2", fp="lever", out="table2.tex",
          # page-breakable at \footnotesize (audit 17:54 fix 12: "split Table 2" --
          # longtable breaks across pages with a repeating header instead of one
          # cramped \scriptsize block; md stays a single source-of-truth table)
@@ -404,12 +406,10 @@ REGISTRY = [
          # 0.00053 conn-gate single-seed context, 0.0011/0.0025 conn-gate scalar-vs-init.
          allow={"0.0489", "0.0725", "0.0649", "0.0673", "0.0674", "0.0653",
                 "0.00053", "0.0011", "0.0025", "0.0002", "0.0003"}),
-    dict(key="table56_theirs", fp="run (their code, their data, their eval)", out="table56_theirs.tex",
-         env="tabularx", colspec=r"Yccc", size=r"\small",
-         family="__manifest_theirs__", allow=set()),
-    dict(key="tableA1", fp="#", out="tableA1.tex",
-         env="tabularx", colspec=r"cYrr", size=r"\footnotesize",
-         family=None, allow=set()),
+    dict(key="table1e", fp="ρ", out="table1e.tex",
+         env="tabularx", colspec=r"lccYYYY", size=r"\scriptsize",
+         family="table1e", allow=set()),
+
 ]
 
 JSON_ONLY = [

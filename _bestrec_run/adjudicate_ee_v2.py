@@ -66,16 +66,22 @@ def main():
     on = load_arm(cat, "alphafuse")   # fusion ON
     off = load_arm(cat, "sasrec")     # fusion OFF
 
-    out = {"experiment": "E-E V2 fusion factorial", "category": cat,
-           "arm_ON": "AlphaFuse (null-space fusion)",
-           "arm_OFF": "SASRec (ID-only, no fusion)",
+    out = {"experiment": "E-E V2 representation-package contrast "
+           "(OUTCOME-VISIBLE, PROTOCOL-DEVIATED, NON-COUNTABLE)",
+           "category": cat,
+           "arm_ON": "AlphaFuse package (frozen text + null-space + 64-d "
+           "trainable ID residual)",
+           "arm_OFF": "SASRec 128-d ID-only",
+           "classification": "OUTCOME_VISIBLE_PROTOCOL_DEVIATED_NONCOUNTABLE",
+           "countable": False, "import_allowed": False,
+           "manuscript_allowed": False,
            "required_seeds": REQ_SEEDS}
     e_on, e_off = arm_ok(on), arm_ok(off)
     if e_on or e_off:
         out["verdict"] = "INCOMPLETE"
         out["reason"] = {"ON": e_on, "OFF": e_off}
         _emit(out)
-        return 0
+        return 2
 
     agg = {"ON": {}, "OFF": {}}
     for tag, arm in (("ON", on), ("OFF", off)):
@@ -93,7 +99,7 @@ def main():
         m, sd = mean_sd(deltas)
         paired[k] = {"per_seed_delta": [round(d, 6) for d in deltas],
                      "mean": round(m, 6), "sd": round(sd, 6)}
-    out["fusion_effect_ON_minus_OFF"] = paired
+    out["representation_package_contrast_ON_minus_OFF"] = paired
     out["label"] = ("DESCRIPTIVE representation-package ablation (audit "
                     "2026-07-24 21:59): the arms differ in text, "
                     "initialization, capacity and parameter allocation "
@@ -108,7 +114,8 @@ def main():
                     "best-system claim; MiniLM-384 substitution disclosed. "
                     "NOT countable; a clean E-E V3 (fresh unseen seeds, "
                     "full-history masking, fail-closed) is required.")
-    out["verdict"] = "REPORTABLE"
+    out["verdict"] = "DESCRIPTIVE_ONLY"
+    out["sign_test_note"] = "3/3 nominal seed deltas positive; exact two-sided sign p=0.25; a positive pilot direction only"
     _emit(out)
     return 0
 

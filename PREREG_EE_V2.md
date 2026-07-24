@@ -1,3 +1,5 @@
+> **TOMBSTONE (audit 2026-07-25 04:00): the as-frozen protocol below (down to ERRATUM E1) is SUPERSEDED, NON-NORMATIVE and NON-COUNTABLE.** The V2 factorial as executed is OUTCOME-VISIBLE / protocol-deviated / representation-package-confounded. The AUTHORITATIVE disposition is ERRATUM E1 (bottom) + the hardened `adjudicate_ee_v2.py`, which emits `classification=OUTCOME_VISIBLE_PROTOCOL_DEVIATED_NONCOUNTABLE, countable=false, import_allowed=false, manuscript_allowed=false, verdict=DESCRIPTIVE_ONLY` and a `representation_package_contrast` (NOT a fusion effect). The original lines and the 6464d581 output are retained UNCHANGED as immutable forensic artifacts; this correction is ADDITIVE, not a history rewrite. No E-E V2 value is countable or manuscript-permitted; a clean E-E V3 is required.
+
 # PREREG_EE_V2 — matched-backbone fusion factorial (the countable E-E test)
 
 **Status: FROZEN before the factorial runs exist (committed-before-existence,

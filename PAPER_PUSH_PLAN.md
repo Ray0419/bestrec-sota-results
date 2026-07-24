@@ -60,7 +60,11 @@ at a time (RTX 5060 Ti). Never weaken a caveat to close a finding.
       adjudicator, run, adjudicate, integrate (negative outcomes reported with
       equal prominence).
 
-### WS4 — Synthesis rewrite (BIGGEST acceptance lever)
+### WS4 — Synthesis rewrite (BIGGEST acceptance lever) — STARTED 2026-07-24
+- [~] **Spine blueprint done: `PAPER_SPINE.md`** (target structure, per-section
+  word budgets, content-migration map, submission-readiness fix list, section-at-
+  a-time execution order). Next: execute the spine section by section, each its
+  own commit + full ritual (render CLEAN, tex H1–H9, strict exit 0).
 - [ ] Restructure to a tight scientific spine (20–35pp acmsmall): method +
       elements + honest empirics + the negative/rigor findings as the
       contribution; move the correction-ledger/forensics to a supplement; remove

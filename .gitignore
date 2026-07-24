@@ -97,3 +97,5 @@ send.log
 ee_smoke_vg.log
 _bestrec_run/results_EE_*.log
 _bestrec_run/results_EE_*.json
+_bestrec_run/ee_v2_adjudication.json
+_bestrec_run/results_EE_*.prev*

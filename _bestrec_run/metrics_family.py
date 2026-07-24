@@ -38,11 +38,13 @@ def family_from_rank0(rank0, cutoffs=CUTOFFS):
         return {"n_eval": 0}
     out = {"n_eval": n}
     inv_log = 1.0 / np.log2(r + 2.0)          # DCG gain per user (single target)
+    rr = 1.0 / (r + 1.0)                        # reciprocal rank per user
     for k in cutoffs:
         within = r < k
         out[f"HR@{k}"] = float(within.mean())            # = Recall@{k}
         out[f"NDCG@{k}"] = float(np.where(within, inv_log, 0.0).mean())
-    out["MRR"] = float((1.0 / (r + 1.0)).mean())
+        out[f"MRR@{k}"] = float(np.where(within, rr, 0.0).mean())
+    out["MRR"] = float(rr.mean())              # unrestricted (always resolves)
     return out
 
 

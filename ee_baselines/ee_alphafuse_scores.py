@@ -38,14 +38,15 @@ sys.path.insert(0, os.path.join(ROOT, "_bestrec_run"))
 from metrics_family import family_from_rank0  # noqa: E402
 
 
-def key_words(data_dir, seed):
-    # AlphaFuse train.py parse_args defaults + our FROZEN E-E overrides.
+def key_words(data_dir, seed, model_type="AlphaFuse"):
+    # AlphaFuse train.py parse_args defaults + our FROZEN E-E overrides. model_type
+    # selects the matched-backbone factorial arm: AlphaFuse (fusion) / SASRec (ID).
     return dict(random_seed=seed, lr=0.001, lr_delay_rate=0.99, lr_delay_epoch=100,
                 epoch=500, data=f"ourdata", cuda=0, l2_decay=1e-6, batch_size=256,
                 num_blocks=2, num_heads=1, dropout_rate=0.1, loss_type="infoNCE",
                 neg_ratio=64, temperature=0.07, beta=0.1,
                 language_model_type="minilm", language_embs_scale=40,
-                hidden_dim=128, ID_embs_init_type="zeros", model_type="AlphaFuse",
+                hidden_dim=128, ID_embs_init_type="zeros", model_type=model_type,
                 SR_aligement_type="con", null_thres=None, null_dim=64,
                 item_frequency_flag=False, standardization=True, cover=False,
                 ID_space="singular", inject_space="singular",
@@ -56,21 +57,25 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--category", default="Video_Games")
     ap.add_argument("--seed", type=int, default=22)
+    ap.add_argument("--model_type", default="AlphaFuse",
+                    choices=["AlphaFuse", "SASRec"])
     ap.add_argument("--batch_size", type=int, default=256)
     args = ap.parse_args()
     cat = args.category
     data_dir = os.path.join(DATA, cat)
     ckpt = os.path.join(AF, "saved", "ourdata",
-                        f"{cat}AlphaFuse_rs{args.seed}_IDdim128_Textdim64_"
-                        f"0.001_infoNCE.pth")
+                        f"{cat}{args.model_type}_rs{args.seed}_IDdim128_"
+                        f"Textdim64_0.001_infoNCE.pth")
     if not os.path.exists(ckpt):
         raise SystemExit(f"no checkpoint {ckpt}")
 
-    from models.backbone_SASRec import AlphaFuse  # noqa: E402
+    from models.backbone_SASRec import AlphaFuse, SASRec  # noqa: E402
+    ModelCls = {"AlphaFuse": AlphaFuse, "SASRec": SASRec}[args.model_type]
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     n_items = int(pd.read_pickle(os.path.join(data_dir, "data_statis.df"))
                   ["item_num"][0])
-    model = AlphaFuse(device, **key_words(data_dir, args.seed)).to(device)
+    model = ModelCls(device, **key_words(data_dir, args.seed,
+                                         args.model_type)).to(device)
     model.load_state_dict(torch.load(ckpt, map_location=device))
     model.eval()
 
@@ -97,7 +102,7 @@ def main():
                 ranks_nomask.append(target_rank0(scores[k], tgt, seen, False))
     fam_mask = family_from_rank0(ranks_mask)
     fam_nomask = family_from_rank0(ranks_nomask)
-    out = {"experiment": "E-E V2 (dev probe)", "arm": "AlphaFuse",
+    out = {"experiment": "E-E V2", "arm": args.model_type,
            "category": cat, "seed": args.seed, "n_users": len(ranks_mask),
            "shared_evaluator": True,
            "family_shared_masked": {k: round(v, 6) for k, v in fam_mask.items()},
@@ -107,7 +112,8 @@ def main():
                    "pilot's AlphaFuse NDCG@10 (validates the wrapper); masked is "
                    "the shared-policy number."}
     outp = os.path.join(ROOT, "_bestrec_run",
-                        f"results_EE_{cat}_alphafuse_shared_seed{args.seed}.json")
+                        f"results_EE_{cat}_{args.model_type.lower()}_shared_"
+                        f"seed{args.seed}.json")
     json.dump(out, open(outp, "w"), indent=1)
     print(f"seed {args.seed}: unmasked NDCG@10={fam_nomask['NDCG@10']:.5f} "
           f"HR@10={fam_nomask['HR@10']:.5f}  (should match pilot)")

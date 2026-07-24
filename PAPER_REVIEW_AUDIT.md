@@ -4,7 +4,108 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-24 16:00 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-24 21:59 Australia/Sydney)
+
+1. **[CONFIRMED, rejection-level preregistration contradiction]** E-E V2
+   cannot be described as prospective or countable. The shared-evaluator ON
+   outputs were built and inspected before the V2 freeze (`a19781f3`, 18:21;
+   freeze `7b3cf952`, 19:23), and the frozen protocol expressly reuses those ON
+   checkpoints while claiming that no factorial run had been executed or read.
+   Classify this launch as outcome-visible, protocol-deviated descriptive
+   evidence regardless of its eventual result. Only a fresh V3 frozen before
+   unseen ON *and* OFF runs can support prospective language.
+2. **[CONFIRMED, evaluator mismatch]** The E-E wrapper masks only the adapter's
+   last 50 input interactions, whereas the paper evaluator masks the complete
+   train-plus-validation history. A static scan found 453 of 94,762 VG users
+   (0.478%; maximum history 472) exceed 50. ON and OFF therefore share an
+   internal estimand, but it is not the manuscript's counted convention and
+   cannot support the proposed secondary whole-system comparison. Pass full
+   histories independently of model input and add cross-implementation tests.
+3. **[CONFIRMED, unsafe run lifecycle]** No tracked V2 runner, immutable attempt
+   directory, append-only ledger, environment lock or atomic completion record
+   exists. The live shell skips a seed when a checkpoint filename exists even
+   though upstream training overwrites that file on each validation
+   improvement, before completion. Replace this with a governed runner and
+   skip only a hash-bound terminal bundle plus completion sentinel.
+4. **[CONFIRMED, fail-open adjudication and absent reconstructability]** The V2
+   wrapper writes aggregate JSONs, not promised user/target/rank sidecars or
+   checkpoint/source/data/environment hashes. The adjudicator trusts a Boolean
+   evaluator flag and supplied finite values; it does not validate experiment,
+   category, arm, configuration, users, ranges, monotonicity, duplicates,
+   provenance or metric reconstruction. `INCOMPLETE` exits zero. Make the gate
+   schema-strict, reconstruct every metric, reject extras/duplicates, and fail
+   incomplete campaigns nonzero.
+5. **[CONFIRMED, causal label overstates the factorial]** Fusion ON uses frozen
+   projected text plus a 64-dimensional trainable ID residual; OFF uses a
+   128-dimensional learned ID embedding. Text injection, initialization,
+   trainable capacity and parameter allocation all change. Call it an
+   **AlphaFuse representation-package ablation**, or add capacity-, parameter-
+   and initialization-matched controls before claiming null-space fusion is the
+   isolated factor.
+6. **[CONFIRMED, weak inference and selection mismatch]** Three same-number
+   seeds do not create controlled paired randomness across different parameter
+   shapes, and no rank sidecars support paired-user or clustered uncertainty.
+   Both arms select checkpoints with AlphaFuse's native unmasked validation
+   evaluator before masked final scoring. Freeze the actual selection estimand,
+   use the shared masked validation evaluator, add at least eight fresh seeds,
+   and distinguish optimizer-seed from user/item uncertainty.
+7. **[CONFIRMED, literal package is not submittable]** The designated TORS TeX
+   and PDF did not receive the Markdown rewrite and still contain the older
+   abstract/introduction. Author, institution, country and running-author
+   placeholders remain. The current reader is 61 pages, the TORS PDF 53 pages,
+   and the manuscript about 28,306 words (Results about 13,290), far from the
+   9--13k-word spine target. Rebuild all formats from one semantic source after
+   filling metadata and completing the rewrite.
+8. **[CONFIRMED, closest-literature gap; PLAUSIBLE incremental novelty]**
+   LLM2Emb is absent despite directly combining collaborative language
+   embeddings, preference adaptation and popularity-gated text/ID fusion for
+   long-tail sequential recommendation. Add Zhang et al. (2026), DOI
+   `10.1016/j.eswa.2026.133375`, benchmark it under the same protocol or give an
+   executable exclusion, and narrow the frequency-5/novelty claim. Complete the
+   AlphaFuse citation with DOI `10.1145/3726302.3729894` and pages 1614--1623.
+9. **[CONFIRMED, release manifest overclaims completeness]** Current-tree
+   manifest checks pass, and E-E seal coverage is repaired, but the shared
+   evaluator, wrapper, metric family, adapter, exporter, setup/environment and
+   experiment program remain outside manifest governance. The negative
+   completeness gate does not discover these transitive dependencies. Add a
+   declarative campaign dependency manifest and bind all code, data, config,
+   environment and external-source hashes.
+10. **[CONFIRMED, repository controls are advisory]** Current HEAD is two local
+    commits ahead of upstream with no CI covering them; the branch has no
+    protection/ruleset. The shallow current-tree seal workflow misses
+    add-then-delete history, the pre-push new-branch range is ineffective, and
+    matching is case-sensitive/path-only. Require a protected, trusted-base,
+    full-history, pinned-action check with immutable path-plus-blob allowances.
+11. **[CONFIRMED, named deposit is obsolete]** `v1.1.11-deposit` is 63 commits
+    and 399 changed paths behind HEAD and fails Git-bound verification with 196
+    mismatches. Do not cite it as the current archival bundle. Cut and verify a
+    fresh-clone deposit only after scientific and manuscript stabilization.
+12. **[CONFIRMED, central evidence remains bounded]** Primary claims compare
+    multi-seed estimates from this system against fixed published or locally
+    regenerated comparator point estimates without comparator uncertainty.
+    This is not a paired superiority test. Preserve point-estimate language,
+    provide equal validation-only tuning, and report parameter/compute/latency
+    budgets plus stronger seed and item/user-clustered uncertainty.
+13. **[CONFIRMED, figures and terminology invite overinterpretation]** The
+    three-panel main figure is too dense; the resource plane duplicates content
+    and visually connects unrelated conditions while labeling outcomes
+    `WIN`/`NULL` without uncertainty or an equivalence margin. Use a neutral
+    forest plot with per-seed dots and intervals, move titration/resource panels
+    to the supplement, and replace `tail null`, `double result`, `refutation`
+    and `pass against` with estimand-specific descriptive wording.
+14. **[CONFIRMED, release/universality wording remains false]** The canonical
+    abstract still says every retraction/negative result/design defect is
+    reported and broadly implies complete released artifacts; the official TeX
+    is even less qualified. State exact public/local artifact counts and
+    exclusions. Git exclusion is not independent custody or public release.
+15. **[CONFIRMED carried blockers; AUTHOR VERIFICATION]** E-G3 remains a
+    contradictory design without an independent custodian or implemented
+    temporal pipeline; E-G2 remains exposed/protocol-deviated/non-countable.
+    Final portal/template/page-limit, authorship/contact metadata, ethics/privacy
+    approval, dataset/model licenses and permission for all figures still need
+    author confirmation. Recommendation remains **reject / not ready**.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-24 16:00 Australia/Sydney)
 
 1. **[CONFIRMED, rejection-level protocol mismatch]** The new E-E AlphaFuse
    run does not evaluate the same candidate set as the paper's system.
@@ -679,6 +780,268 @@ plausible risks.
     dirty earlier campaigns, seed-only uncertainty, weak comparator framing,
     stale archival deposit and a roughly 26,852-word/50-page narrative remain
     independent rejection risks. Recommendation remains **reject / not ready**.
+
+## Audit Run - 2026-07-24 21:59 Australia/Sydney
+
+### Fixed boundary, scope and reviewer verdict
+
+**Fixed cutoff:** `2026-07-24T21:59:42.4981652+10:00`
+(`2026-07-24T11:59:42.4981652Z`). Repository state was clean at
+`57287b4ffcf6eca82386bd2140d0e24804c52854`; upstream and merge base were
+`7e093c493d1e5897bd20bb4897c7c575babe7255`, so the reviewed state was two
+commits ahead of the remotely archived branch. Writes and processes after this
+boundary are outside this audit.
+
+**Reject / not ready for a top journal.** The package has made real engineering
+progress: the invalid E-E V1 pilot is quarantined, both E-E arms now have one
+shared score-to-rank implementation, MRR cutoffs have been added, E-E endpoint
+paths are sealed, E-B's normal bootstrap path now hard-refuses, and the new
+paper spine correctly identifies a TORS-style rigor/reproducibility paper as the
+viable target. The reader PDF was rebuilt cleanly.
+
+The scientific odds have not improved, because the nominal replacement E-E V2
+is itself outcome-visible before freeze and still does not reproduce the
+paper's candidate policy. It also lacks the promised ranks, provenance and
+fail-closed execution/adjudication. The official TORS source is stale and has
+author placeholders. My subjective calibration is:
+
+| Submission state | Eventual acceptance chance | Main reason |
+|---|---:|---|
+| Literal current TORS PDF/package | **below 1%** (conservative envelope **0--3%**) | Placeholders and stale official source make technical return or desk rejection likely before the scientific blockers are reached. |
+| Metadata/parity fixed; current science unchanged | **3--7%** (point estimate **about 5%**) | Closest-comparator evidence is not prospective/countable, external validation is design-only, and release claims exceed the artifacts. |
+| Compact rewrite + fresh valid E-E successor + LLM2Emb treatment + stronger uncertainty + new deposit | **15--25%** | Could become a credible TORS evaluation/reproducibility paper, with bounded novelty and external validity. |
+| Those repairs + independently custodied prospective temporal validation and demonstrated reusable workflow | **25--40%** | Would answer the largest validity and generalizability objections. |
+
+For a novelty-dominant flagship rather than TORS, use roughly half of the last
+two ranges. These are reviewer judgements, not venue base-rate estimates.
+
+**Endpoint-sequestration note:** no live E-E V2 result, log, checkpoint or
+adjudication payload value was opened, parsed, compared or reported. Structural
+metadata only showed all three reused ON checkpoint/result filenames, one OFF
+checkpoint filename while that seed was still training, and no OFF shared
+result, rank sidecar or V2 adjudication file. No scientific conclusion can be
+drawn from that incomplete structure.
+
+### Confirmed repairs since the 16:00 audit
+
+- **V1 quarantine:** `PREREG_EE.md` now calls the pilot protocol-deviated and
+  non-countable; the old adjudicator gates both arms/exact seeds/shared
+  evaluation and emits `PILOT_NONCOUNTABLE`.
+- **Shared evaluator:** `ee_shared_eval.py` and `metrics_family.py` parse, and
+  their synthetic tests pass. Both V2 arms can use the same strict-greater tie
+  code and HR/NDCG/MRR cutoffs.
+- **Endpoint controls:** `.gitignore` and `cloud/hooks/seal_patterns.sh` now
+  include canonical `results_EE_*`; the deletion/untracking hook fix is sound.
+- **E-B refusal:** `cloud/bootstrap_pod.sh` exits 3 before cloning, installing
+  or generating anything. The normal command-line revival path is closed.
+- **Current-tree manifest:** 460 files verify and 322 Git-backed entries bind to
+  HEAD; the V2 preregistration and adjudicator are registered.
+- **Writing direction:** `PAPER_SPINE.md` has the right high-level paper type,
+  and the canonical Markdown abstract is tighter and scopes per-user sidecar
+  availability. These are plans/partial edits, not submission readiness.
+- **Reader rendering:** all 61 pages of `PAPER_SUBMISSION.pdf` were rendered and
+  visually inspected. No clipping, overlap, corrupt glyphs or off-page tables
+  were found.
+
+### E-E V2: confirmed contradiction and method defects
+
+| Finding | Status and evidence | Required fix |
+|---|---|---|
+| Outcome visibility predates freeze | **CONFIRMED.** Shared ON evaluation was validated at `a19781f3` (18:21), while V2 froze at `7b3cf952` (19:23). `PREREG_EE_V2.md:6` says no factorial run was executed/read, but lines 36--40 reuse the inspected ON checkpoints and lines 52--54 record the read dev probe. | Label V2 outcome-visible/protocol-deviated descriptive evidence. Freeze V3 before unseen ON and OFF checkpoints/ranks exist. |
+| Candidate policy differs from paper | **CONFIRMED.** `ee_alphafuse_scores.py:99--102` derives `seen` from the left-padded input; `build_alphafuse_dataset.py:87--102` truncates it to 50. The paper scores a length-50 input but masks the complete history (`run_sasrec_sbert.py:1509--1526,1626--1630`). A static export scan found 453/94,762 users above 50 (0.478%; max 472). | Pass complete train+validation histories separately, align repeated-target semantics, and conformance-test both evaluators on synthetic and real metadata. |
+| No governed terminal lifecycle | **CONFIRMED.** There is no V2 runner. The ad-hoc queue skips on checkpoint existence, but upstream `train.py` overwrites that checkpoint on intermediate validation improvements. At cutoff, a checkpoint existed while its seed was still training. | Use immutable attempt directories, atomic checkpoints/results, a terminal completion record, full command/config hashes and an append-only ledger. Never infer completion from filename existence. |
+| Provenance and rank custody absent | **CONFIRMED.** The wrapper writes aggregate metrics directly and labels them `DEV PROBE, NOT countable`; it records no per-user ranks, checkpoint SHA, source/data/adapter/evaluator/env/hardware/best-epoch/command bundle. | Write compressed `int32` rank sidecars keyed by stable user/target IDs; hash and atomically seal every dependency and attempt. |
+| Adjudicator is fail-open | **CONFIRMED.** It accepts supplied finite values and a self-asserted Boolean, silently overwrites duplicate seed keys, ignores unreadable extras, accepts arbitrary categories, validates no identity/config/hash/user/range/monotonicity, reconstructs nothing, and exits 0 on `INCOMPLETE`. It emits paired deltas for four metrics rather than the promised family. | Enforce an exact schema and filename set; reject extras/duplicates; verify identities and hashes; reconstruct the full family from ranks; require identical users; return nonzero on every incomplete/malformed state; write an immutable atomic verdict. |
+| Not a one-factor mechanism test | **CONFIRMED.** ON combines frozen projected text with a 64-d trainable ID residual; OFF uses a 128-d learned ID embedding, both with zero initialization. Text, initialization, capacity and parameter allocation change together. | Rename to a representation-package ablation or add standard-init ID-only, zero/shuffled-text, random-basis and capacity/parameter-matched controls. Report trainable parameters, FLOPs, memory and latency. |
+| Pairing/selection weak | **CONFIRMED.** Same numeric seeds do not imply common randomness across different parameter shapes. Three seeds are descriptive. Checkpoints are selected with the native unmasked validation evaluator, then tested with the shared masked evaluator. | Use shared masked validation/test evaluation; freeze separate RNG streams or analyze arms independently; use at least eight fresh seeds and preregister seed-level plus user/item-clustered uncertainty. |
+
+**Interpretation ceiling:** even after the current launch completes, it cannot be
+made prospectively countable retroactively. With honest labeling and integrity
+repairs it may be useful as a post-hoc matched-backbone representation-package
+ablation. It is not a causal isolation of null-space fusion and not a fair
+superiority test against the paper's full stack.
+
+### Algorithm and experiment optimization guidance
+
+1. Replace the current `batch x catalogue` materialization and per-user CPU
+   copy/loop with exact chunked rank counting: compute each target score once,
+   stream item-score chunks, apply complete-history masking from a CSR/scatter
+   representation, and accumulate strictly-greater counts. This preserves the
+   registered tie rule while reducing scoring memory from
+   `O(batch * catalogue)` to `O(batch * chunk)`.
+2. Stream user/target/rank rows into an attempt-local temporary sidecar; verify
+   row count, rank bounds and hashes, then rename atomically. Adjudication should
+   recompute HR/NDCG/MRR rather than trust aggregates.
+3. Separate the within-AlphaFuse package ablation from the secondary
+   whole-system comparison. Give whole systems equal validation-only search
+   budgets and identical evaluator/selection rules.
+4. Use seeded deterministic shuffling rather than the current user-clustered
+   `shuffle=False` row order. If paired inference is claimed, freeze shared
+   backbone initialization and independent, synchronized generators for sample
+   order/negatives/dropout; otherwise use independent-arm inference.
+5. Validate all eligible catalogue scores for finiteness, not only target
+   scores; freeze rank bounds and run tie-policy sensitivity where exact ties
+   can be material.
+6. For the broader FIR claim, use a small nonzero residual scale plus near-delta
+   zero-sum taps so gradients do not depend on coupled Adam weight decay. Run a
+   factorial over structure, initialization, gate, Adam/AdamW and weight decay.
+7. For TAPE/tail claims, add frequency-matched text permutations or random
+   features, multiple thinning/split draws, target-item clustered uncertainty
+   and category interactions. Do not infer a mechanism from the current
+   frequency-5 association.
+
+### Manuscript, novelty, figures and journal fit
+
+**Confirmed submission mismatch.** The Markdown rewrite was not propagated to
+`paper_tex/sections/abstract.tex`, `01-introduction.tex` or `PAPER_TORS.pdf`.
+The official source therefore retains the old all-sidecars-public wording and
+redundant/awkward introduction. `paper-shared.tex:37--42` still prints author,
+institution, country and short-author placeholders. The reader is 61 pages and
+the TORS PDF is 53; the manuscript is about 28,306 words, with about 13,290 in
+Results. The two recent rewrite commits removed only about 102 words. A spine
+document is not yet an executed rewrite.
+
+**Claims/writing.** Replace the eight-item contribution inventory with three
+claims: reusable evaluation discipline, bounded FIR package evidence, and the
+Musical-Instruments tail observation. Say `versioned pre-declarations with
+disclosed outcome visibility`, not that preregistration/test sequestration is
+the whole paper's backbone. Replace `pass against published numbers` with
+`met a predeclared threshold relative to a fixed published point estimate under
+the stated environment caveats`. Remove the universal `Every retraction...`
+sentence. Cut Results 5.3--5.4 from roughly 5,300 words to 1,000--1,500 and move
+chronology, interim-visibility history, scan tables and failed-campaign
+forensics to a clearly labeled artifact supplement.
+
+**Figures/tables.** Page 29's three-panel Figure 1 is legible only at full-page
+zoom and invites causal reading through connected conditions; panel C has no
+uncertainty. Page 34's Figure 2 is small, duplicative and labels `WIN`/`NULL`
+without a significance/equivalence basis. Replace the main visual with a
+neutral forest plot showing per-seed dots and intervals. Retain a compact
+claim--evidence--status table and parameter-matched ablation table; move the
+titration/resource plane and prose-dense audit tables to the supplement. Page
+61 is almost blank and contains a malformed inline `either: - Running... or -
+Adopting...` list; repair pagination/list markup before rebuilding.
+
+**Closest literature and novelty fact-check.** AlphaFuse's primary paper learns
+ID embeddings in a language-embedding null space and reports three datasets,
+including long-tail settings; this supports treating it as a required close
+comparator, not a peripheral mention
+([AlphaFuse primary record](https://arxiv.org/abs/2504.19218), DOI
+[`10.1145/3726302.3729894`](https://doi.org/10.1145/3726302.3729894)). LLM2Emb
+explicitly combines collaborative semantic tuning, preference adaptation and
+popularity-gated ID/text fusion for long-tail sequential recommendation, with
+its strongest semantic-vs-ID separation described in the low-popularity 3--6
+group; this is unusually close to the paper's frequency-5 story
+([publisher record](https://www.sciencedirect.com/science/article/pii/S0957417426022840),
+DOI [`10.1016/j.eswa.2026.133375`](https://doi.org/10.1016/j.eswa.2026.133375)).
+LLM2Emb is not the already cited LLM2Rec. Benchmark it or state a reproducible
+resource/data exclusion and narrow novelty.
+
+**TORS fit.** TORS explicitly welcomes evaluation protocols,
+reproducibility papers and registered reports
+([ACM TORS launch](https://www.acm.org/binaries/content/assets/press-releases/2022/march/tors-launch.pdf)).
+Its 2026 methodological essay prioritizes rigorous offline evaluation and
+reproducible practice ([Jannach & Chen,
+2026](https://doi.org/10.1145/3800587)). This paper is directionally in scope
+only if the artifact workflow is formalized as a reusable threat model/schema,
+demonstrates failure-detection value beyond a self-audit, gives baselines equal
+treatment, and keeps test outcomes out of model/protocol selection. Current
+repeated outcome visibility and uneven comparator treatment cut against that
+positioning.
+
+### Release, custody and reproducibility audit
+
+- **Manifest:** current-tree verification succeeds, but only the V2 prereg and
+  adjudicator are registered. `ee_shared_eval.py`, `ee_alphafuse_scores.py`,
+  `metrics_family.py`, adapter/exporter/spec/setup/environment and
+  `EXPERIMENT_PROGRAM.md` are unbound. The statement that governed code can no
+  longer escape is false.
+- **Remote/CI:** HEAD is ahead two commits, so the latest source/reader/manifest
+  state has no remote archive or CI run. The branch-protection API/rules report
+  no effective required rule. CI currently checks only the final shallow tree.
+- **Seal:** canonical E-E coverage is repaired, but a simulated new-branch
+  pre-push returned success because it diffed the working tree against HEAD;
+  add-then-delete files across a push also escape the net-tree scan. Policy is
+  mutable, path-only and case-sensitive.
+- **Deposit:** `v1.1.11-deposit` is 63 commits/399 paths behind; Git-bound
+  verification reports 196 mismatches (126 entries OK) and exits 1. Manuscript
+  and README references to it as current are false.
+- **E-G3:** the correction banner recognizes independent custody, but the body
+  still retains locally decryptable/item-arrival/full-period language. No
+  custodian, frozen V3 protocol, temporal builder/retrieval/runner/adjudicator or
+  prediction-only handoff exists. It remains a design, not evidence.
+- **E-G2:** the top-level exposed/protocol-deviated/non-countable label is
+  correct, but subordinate status vocabulary and manifest/ledger gaps remain.
+
+### Prioritized repair sequence
+
+1. **Stop scientific integration of E-E V2.** Preserve it as outcome-visible
+   descriptive material and do not let eventual endpoint values influence the
+   V3 design.
+2. **Freeze E-E V3 before execution.** Use fresh unseen ON/OFF seeds; complete-
+   history masking; the same masked validation/test evaluator; exact tie/target
+   rules; at least eight seeds; explicit uncertainty/multiplicity; matched
+   controls; full source/data/config/environment/checkpoint identities.
+3. **Implement a fail-closed campaign runner/adjudicator.** Immutable attempts,
+   atomic completion, rank sidecars, reconstructive metrics, exact schemas,
+   duplicate/extra rejection, nonzero incomplete status and a transitive
+   manifest are mandatory before launch.
+4. **Resolve closest literature.** Add complete AlphaFuse metadata and
+   LLM2Emb; benchmark fairly or document executable exclusions and narrow the
+   novelty/tail claim.
+5. **Execute the paper spine.** Rewrite to 9--13k main-text words; separate
+   counted, descriptive and void evidence; replace causal/status jargon; move
+   forensics to the supplement; redesign figures/tables.
+6. **Unify and rebuild artifacts.** Fill authorship/contact metadata, generate
+   Markdown/TeX/reader/TORS/ACM artifacts from one semantic source, run textual
+   parity checks, render every page and repair tagging/accessibility.
+7. **Rebuild release custody.** Protect the branch, scan introduced history
+   against trusted immutable policy, bind every campaign dependency, verify a
+   fresh clone, then cut a new immutable deposit.
+8. **Only then add independent validation.** Implement an external-custodian
+   temporal protocol and prediction-only return path; do not call E-G3 evidence
+   until that execution exists.
+
+### Open questions requiring author verification
+
+- Who are the final authors, affiliations, corresponding author and contact
+  email, and has everyone approved the current contribution/accountability
+  statement?
+- Can genuinely fresh AlphaFuse ON and OFF checkpoints be trained without
+  reading or adapting to any new endpoint, and who will hold endpoint custody?
+- Is the scientific intent a representation-package ablation or a causal test
+  of null-space fusion? The controls and wording differ materially.
+- Can LLM2Emb be run under the same data/licensing/compute constraints? If not,
+  what exact executable exclusion will be documented?
+- Which per-user artifacts cannot be public, for what privacy/license reason,
+  and what independent reconstruction route will replace public release?
+- What is the final TORS article type, and have current portal/template,
+  accessibility, ethics/privacy and dataset/model-license requirements been
+  checked by the authors?
+
+### Running checklist
+
+- [x] Freeze repository/PDF boundary and exclude later live writes.
+- [x] Do not inspect or report live E-E/E-G2 endpoint values.
+- [x] Verify current-tree manifest and Git-bound HEAD entries.
+- [x] Run shared-evaluator/metric-family synthetic checks.
+- [x] Render and inspect all 61 pages of the changed reader PDF.
+- [x] Confirm E-E endpoint seal and E-B bootstrap refusal repairs.
+- [ ] Reclassify E-E V2 as outcome-visible/protocol-deviated descriptive.
+- [ ] Freeze fresh E-E V3 before any ON/OFF endpoint exists.
+- [ ] Align full-history masking, target eligibility and checkpoint selection.
+- [ ] Add tracked runner, immutable attempts, atomic terminal sentinels and
+      rank-sidecar reconstruction.
+- [ ] Add every transitive E-E artifact and external dependency to the manifest.
+- [ ] Add at least eight fresh seeds and matched capacity/init/text controls.
+- [ ] Add LLM2Emb and complete AlphaFuse bibliography/benchmark treatment.
+- [ ] Rewrite main text to 9--13k words and move audit chronology to supplement.
+- [ ] Replace causal/dichotomous figures with neutral uncertainty-first plots.
+- [ ] Fill author/contact metadata and rebuild semantically identical PDFs.
+- [ ] Establish required branch protection/full-history seal enforcement.
+- [ ] Verify a clean clone and cut a new immutable archival deposit.
+- [ ] Implement independently custodied E-G3 before citing external validation.
+- [ ] Obtain author confirmation on ethics/privacy/licensing/portal compliance.
 
 ## Audit Run - 2026-07-24 16:00 Australia/Sydney
 

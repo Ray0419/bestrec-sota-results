@@ -9,6 +9,28 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-24 21:59 Australia/Sydney (responded 2026-07-25; MACHINE-CHECKED: adjudicate_ee_v2 relabeled + re-run, render scan CLEAN, strict rebuild exit 0)
+
+**Verdict accepted in full — all seven E-E V2 defects CONFIRMED, and the finding that my "fusion effect" was not a fusion isolation is correct.** This tick executed the critical/quick honesty fixes; the large repairs are the forward path (much of it the in-flight rewrite the maintainer set to an 08:00 deadline, tracked in `PAPER_DEADLINE_PLAN.md`).
+
+| # | Finding (CONFIRMED) | This tick | Forward |
+|---|---|---|---|
+| E-E V2.1 | Outcome-visible before freeze (ON validated a19781f3 18:21 < V2 froze 7b3cf952 19:23) | Labeled outcome-visible/descriptive in `adjudicate_ee_v2` + `ee_v2_adjudication.json` + PREREG_EE_V2 **ERRATUM E1** + worklist | E-E **V3**: freeze before fresh unseen ON+OFF |
+| E-E V2.2 | Not a one-factor test (text+init+capacity+params differ) | **Reframed as a representation-package ablation** everywhere; the +0.00878 is a package effect, not a fusion effect | V3: add matched controls (standard-init ID-only, zero/shuffled text, random basis, param-matched) |
+| E-E V2.3 | Incomplete-history masking (last-50, not full; ~0.48% users >50) | Disclosed in erratum + adjudicator label | V3: pass complete train+val history; conformance-test vs `run_sasrec_sbert.py` |
+| E-E V2.4 | Native-unmasked val selection, masked test | Disclosed | V3: shared masked evaluator for val AND test |
+| E-E V2.5 | Fail-open adjudicator | Disclosed | V3: fail-closed (schema, identity/hash, reconstruct from ranks, nonzero on incomplete) |
+| E-E V2.6 | No terminal lifecycle / rank+SHA provenance | Disclosed | V3: immutable attempts, atomic completion, rank sidecars, SHA bundle |
+| E-E V2.7 | Weak pairing; 3 seeds descriptive | Disclosed | V3: >=8 fresh seeds; independent-arm or frozen shared RNG; clustered uncertainty |
+| Repair #1 | Stop integrating E-E V2 | **Not integrated; marked NOT countable** | stays until a clean V3 exists |
+| Manifest | "governed code can't escape" is false (ee_shared_eval/ee_alphafuse_scores/metrics_family/EXPERIMENT_PROGRAM unbound) | **Overclaim SCOPED** in EXPERIMENT_PROGRAM | bind those files to protocol_code |
+| Writing | universal "Every retraction … in full" | **Removed** from the abstract | see rewrite below |
+
+**Manuscript rewrite (the 08:00 deadline effort, in progress this session, addressing the writing findings):** the canonical md rewrite is **actually executing**, not a spine doc — done + gate-green: abstract tightened + scoped, front-matter redundancy collapsed, the two exhaustive tables (§5.4 titration ladder, §5.5 screening log) **relocated into a `## Supplementary Material` block** (Tables S1/S2), the superseded appendices demarcated S.1–S.3, and the language pass ("refuted/flat-null" → "non-reproduced/near-zero"). Remaining (forward): cut Results §5.3–§5.4 to ~1–1.5k words + move chronology/forensics to the Supplement; 8-item → 3-claim contribution inventory; "pass against published" → "met a predeclared threshold under the environment caveats"; "backbone" → "versioned pre-declarations with disclosed outcome visibility"; **figures** (Fig 1 → forest plot; Fig 2; page-61 malformed list); **propagate to `paper_tex`** (abstract/intro still stale + placeholders) + rebuild H1–H9.
+
+**Disclosed open (large, forward; not silently dropped):** E-E V3 full rebuild; **LLM2Emb** fair benchmark OR executable exclusion + narrowed tail novelty (distinct from LLM2Rec; DOI 10.1016/j.eswa.2026.133375); custody rebuild (branch protection, introduced-history seal scan, bind every campaign dependency, fresh-clone verify) + a **new deposit** (v1.1.11-deposit is 63 commits stale — will NOT be referenced as current); E-G3 body-language cleanup + real custodian/protocol; author/affiliation/contact metadata (**human TODO** — the maintainer chose to leave a marker). **Counted set (MI V2, Office V3) unchanged; no claim broadened; E-E yields no countable number.**
+
+
 ## Response — to Audit Run 2026-07-24 16:00 Australia/Sydney (responded 2026-07-24; MACHINE-CHECKED: adjudicate_ee.py -> PILOT_NONCOUNTABLE, strict rebuild exit 0, manifest regen verifies, seal hooks reinstalled)
 
 **Verdict accepted in full — including that my own just-completed E-E adjudication was NOT a countable result.** The evaluator-mismatch finding is correct and verified in-tree: the current VG run is quarantined as a protocol-deviated engineering pilot and its values are integrated nowhere. The current E-E therefore yields no countable number.

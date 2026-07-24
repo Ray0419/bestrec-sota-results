@@ -1,5 +1,13 @@
 # PREREG_EE — closest-comparator benchmark: AlphaFuse (SIGIR 2025) on our split
 
+> **READ ERRATUM E2 (bottom) FIRST.** The current VG launch is QUARANTINED as a
+> protocol-deviated, NON-COUNTABLE engineering pilot (`adjudicate_ee.py` returns
+> `PILOT_NONCOUNTABLE`). The estimand-equality claims in the body below —
+> "identical estimand", "same full-catalog LLOO", "apples-to-apples", "contrast
+> is the fusion architecture", "dimension-agnostic" — are **RETRACTED** (the two
+> arms use different evaluators: AlphaFuse does not mask seen items, ours does).
+> E-E V2 requirements are in E2. Body retained verbatim for the audit trail.
+
 **Status: FROZEN before any real E-E run exists (committed-before-existence,
 §5.3 disclosure ii).** Smoke test (2-epoch dev probe, 2026-07-24) confirmed the
 port runs; NO real run has been executed or read at freeze time. This file fixes
@@ -105,3 +113,39 @@ forbidden-token list itself. The edit cannot change the verdict or any number
 disclaimer text); verify via `git diff` that only the two strings changed. The
 VG numbers in `ee_adjudication.json` were produced by the pre-erratum
 adjudicator's identical computation.
+
+## ERRATUM E2 (2026-07-24 16:00 audit, ACCEPTED) — RETRACTION + PILOT QUARANTINE
+The audit correctly showed the current VG launch is **not a countable
+closest-comparator result**. VERIFIED: the two arms use DIFFERENT evaluators, so
+NOT the same estimand — AlphaFuse's `utils.evaluate` ranks the catalogue WITHOUT
+masking the user's consumed items; our paper evaluator masks the full train+val
+history before ranking (`run_sasrec_sbert.py:1626-1630`, `final[k, items]=-inf`).
+Masking removes distractors and inflates our arm, confounding the gap.
+
+**RETRACTED for this launch:** "identical estimand", "same full-catalog LLOO",
+"apples-to-apples", "the contrast is the fusion architecture", and
+"dimension-agnostic". The MiniLM-384 substitution also changes the text geometry
+AlphaFuse's null-space SVD is built on, so this is a controlled **AlphaFuse-style
+MiniLM port, not a faithful reproduction**, and the whole systems (not just
+fusion) differ (model family, dims, loss, optimiser, tuning, biases).
+
+**QUARANTINE:** the current 3-seed VG run is a **protocol-deviated engineering
+PILOT** (`adjudicate_ee.py` now returns `PILOT_NONCOUNTABLE`). Its values and
+wording are NOT integrated into any paper.
+
+**E-E V2 (required before any countable comparison):**
+1. ONE shared exact-rank evaluator used UNCHANGED by both arms; freeze seen-item
+   masking, catalogue eligibility, dedup, tie policy, cutoffs, val selection;
+   synthetic unit tests for seen-item + tie cases.
+2. Primary test = matched-backbone factorial (AlphaFuse fusion on/off) under that
+   evaluator with EQUAL validation-only tuning budgets; two full systems kept
+   only as a SECONDARY descriptive comparison; report params/FLOPs/mem/latency.
+3. Exact provenance: register filenames, seeds, sizes, SHA-256; require exactly
+   the registered files (no extras); Arm B mandatory per category; missing →
+   INCOMPLETE with nonzero exit. (Also corrects the E1 comparator note: our VG
+   fourth recorded seed is 09, not 19.)
+4. Immutable attempt dirs + append-only hash-chained ledger + atomic writes;
+   per-user rank sidecars (so HR/NDCG + clustered CIs + tail strata reconstruct).
+5. Pin upstream AlphaFuse full SHA + licence + lockfile/container + clean state +
+   hardware; endpoints sealed OUTSIDE the repo; register per-prefix/preprocessing
+   parity (or a sensitivity) before launch; add `results_EE_*` to seal patterns.

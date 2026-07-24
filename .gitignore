@@ -96,3 +96,4 @@ runpodctl.exe
 send.log
 ee_smoke_vg.log
 _bestrec_run/results_EE_*.log
+_bestrec_run/results_EE_*.json

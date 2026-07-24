@@ -4,6 +4,13 @@
 # or after manual clone: bash cloud/bootstrap_pod.sh
 set -euo pipefail
 
+# HARD-REFUSED (audit 2026-07-24 16:00): PREREG_TEXTPERM_V1 / E-B is VOID (design
+# defects: pseudoreplication n=9 from 3 shared seeds, un-normalized random control,
+# arm/pod aliasing). This bootstrap cloned + installed + generated caches for the
+# voided launcher; it now refuses at entry so the void campaign cannot be revived.
+echo "REFUSED: E-B (PREREG_TEXTPERM_V1) is VOID; bootstrap disabled. See cloud/README.md." >&2
+exit 3
+
 REPO="https://github.com/Ray0419/bestrec-sota-results.git"
 BRANCH="codex/bestrec-sota-results"
 WORK="${WORK:-/workspace/R}"

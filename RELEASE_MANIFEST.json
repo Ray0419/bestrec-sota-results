@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "69addfe7c010d8f260f38d9e7a9526286e3be2ae",
+  "git_commit": "e89bd99b4bbd648ef519670e123e2a982927fb9a",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -205,7 +205,7 @@
       "sha256": "5399241340a2c2dd51d7d8724d60f2e337d5ed0d1d90a4286de6f3f9b5aab150"
     },
     "cloud/bootstrap_pod.sh": {
-      "sha256": "cccd11231d59e26aec6181c207febcba920fb5c5bcb0b52784bc25abbe7e90af"
+      "sha256": "e1dea99fa2b807581f2cff15332a8091efefedeb7935344e736b6c3ac4d77223"
     },
     "PREREG_FIR_BREADTH.md": {
       "sha256": "b6590547739e32876579bfeddd6b90dc6b7ebc128b20c378660179c7d23f90b9"
@@ -232,7 +232,7 @@
       "sha256": "dfa20b0ae277c2fd6510f9bbf9cf33017c1d25ae04f39e701976a02d4d8b9cc8"
     },
     "cloud/hooks/pre-commit": {
-      "sha256": "5ce6eb60e23e7e85ea145e5181dfcbb71198e15860b1f1c764a6a558cfad47b1"
+      "sha256": "be558e298d1b2fe2d9eaa28f266545d8ef468fe1d68a8a965d5dda2599bfd95c"
     },
     "cloud/hooks/pre-push": {
       "sha256": "965ed6d5c09567586c633028da8734a93adfefdc9e0653901f13201d5fd025b0"
@@ -241,7 +241,7 @@
       "sha256": "0dcaf8765c3c05ecd6b99a35242427ce96470fb6ff1dbbce6b3d8bda1eb31631"
     },
     "cloud/hooks/seal_patterns.sh": {
-      "sha256": "0fb3a773f51e9bc98f6cb5e4234051b6a30d9d6cd63b0060fbd149ed69eba10f"
+      "sha256": "c8ae87b85f43ddfbd79b0d5825f009f0ae8d7bde14e0c3bc9065e7ef19f37f44"
     },
     "cloud/install_seal_hooks.sh": {
       "sha256": "52f43bddadc4335c1f6bfe8a8e454d9041bd05a9b9b1ea40f6b389679a9e78a9"
@@ -277,10 +277,10 @@
       "sha256": "97fb8608bebb8a6fe0b987aa4b2907e90c73db036c98716b2c9c5a2091ee62ee"
     },
     "PREREG_EE.md": {
-      "sha256": "79318040f39b540abbe24f1b700b847b7880e0087a9fa078f1148cef5e069b57"
+      "sha256": "713816adedd18e6d6d98460bd6de82f3570bb643b2d0b31e22cf8198d145ac50"
     },
     "_bestrec_run/adjudicate_ee.py": {
-      "sha256": "3ebf75596e23ffed1570b898ab225cd6ca98e46a8e1990562d9a73e09fc31f91"
+      "sha256": "a61c5e7571bd2d567692bafb7e6f4c2966af0e34aad9d8bace6f41caecc7a611"
     },
     "_bestrec_run/run_ee.py": {
       "sha256": "10c40c512a07c202d008d55a10c99c41fd3691d94cf484675dbaaeb52a6c5c59"
@@ -699,7 +699,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.1.11-deposit",
-  "hash_parent_commit": "69addfe7c010d8f260f38d9e7a9526286e3be2ae",
+  "hash_parent_commit": "e89bd99b4bbd648ef519670e123e2a982927fb9a",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",

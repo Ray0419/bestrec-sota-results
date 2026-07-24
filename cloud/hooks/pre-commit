@@ -6,7 +6,9 @@
 set -u
 HERE="$(git rev-parse --show-toplevel)"
 . "$HERE/cloud/hooks/seal_patterns.sh"
-staged="$(git diff --cached --name-only)"
+# --diff-filter=AM: only ADDED/MODIFIED staged files. Deleting/untracking a sealed
+# endpoint (re-sealing it) must NOT be blocked (audit 2026-07-24 16:00).
+staged="$(git diff --cached --name-only --diff-filter=AM)"
 [ -z "$staged" ] && exit 0
 bad="$(printf '%s\n' "$staged" | grep -E "$SEAL_PATTERNS" || true)"
 if [ -n "$bad" ]; then

@@ -126,6 +126,34 @@ def main():
         }
 
     out["disclosed_deviations"] = per_seed[0].get("deviations", [])
+    # audit 2026-07-24 16:00 countability gates (ERRATUM E2). A cross-evaluator
+    # comparison is NOT the same estimand: AlphaFuse's eval ranks the catalogue
+    # WITHOUT masking the user's consumed items; our paper evaluator masks the
+    # full train+val history (run_sasrec_sbert.py:1626-1630) before ranking.
+    # Masking removes distractors and inflates our arm, so a shared exact-rank
+    # evaluator is REQUIRED before any countable comparison. Absent it, the run
+    # is a protocol-deviated engineering PILOT.
+    seeds_present = sorted(int(r.get("seed", -1)) for r in per_seed)
+    parity = all(r.get("provenance", {}).get("shared_evaluator") is True
+                 for r in per_seed)
+    gates = []
+    if seeds_present != [22, 23, 24]:
+        gates.append(f"seeds {seeds_present} != registered [22,23,24]")
+    if not parity:
+        gates.append("no shared-evaluator estimand parity (AlphaFuse eval does "
+                     "not mask seen items; ours does) -- cross-evaluator")
+    if b_ndcg10 is None:
+        gates.append("Arm B comparator provenance missing")
+    if gates:
+        out["verdict"] = "PILOT_NONCOUNTABLE"
+        out["quarantine_reasons"] = gates
+        out["reporting_class"] = ("protocol-deviated engineering PILOT; NOT "
+                                   "countable; values must NOT be integrated; "
+                                   "superseded by E-E V2 (one shared exact-rank "
+                                   "evaluator, matched factorial, equal tuning, "
+                                   "exact provenance, per-user ranks).")
+        _emit(out)
+        return 0
     out["verdict"] = "REPORTABLE"
     out["reporting_class"] = ("environment-caveated point-estimate comparison; "
                               "descriptive only; NOT confirmatory; no best-system "

@@ -95,7 +95,10 @@
    "per-prefix train expansion is our adapter's disclosed choice",
    "single environment; point estimate, no cross-env variance"
   ],
-  "verdict": "REPORTABLE",
-  "reporting_class": "environment-caveated point-estimate comparison; descriptive only; NOT confirmatory; no best-system or ranking claim is asserted; NOT part of the counted set (MI V2, Office V3)."
+  "verdict": "PILOT_NONCOUNTABLE",
+  "quarantine_reasons": [
+   "no shared-evaluator estimand parity (AlphaFuse eval does not mask seen items; ours does) -- cross-evaluator"
+  ],
+  "reporting_class": "protocol-deviated engineering PILOT; NOT countable; values must NOT be integrated; superseded by E-E V2 (one shared exact-rank evaluator, matched factorial, equal tuning, exact provenance, per-user ranks)."
  }
 }

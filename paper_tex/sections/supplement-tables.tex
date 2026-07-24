@@ -1,0 +1,20 @@
+%% Supplement tables relocated from the body to mirror the canonical PAPER_SUBMISSION.md
+%% "## Supplementary Material" structure (S.4 = screening log Table S1; S.5 = titration
+%% ladder Table S2). The tables themselves are non-float, \textbf-captioned blocks emitted
+%% by _bestrec_run/emit_latex_tables.py from the md; this file only supplies the S.4/S.5
+%% section frames and \input positions. See BUILD_NOTES.md.
+\section*{S.4 --- Screening-log detail (full probe table)}
+
+\begin{quote}
+\emph{Supplement to \S\ref{sec:5.5} --- the full search record. Each row's \ensuremath{\Delta} is versus its stated base; most rows are single-seed exploratory probes (power note in \S\ref{sec:5.5}).}
+\end{quote}
+
+\input{tables/table2}
+
+\section*{S.5 --- Titration ladder (full six rungs)}
+
+\begin{quote}
+\emph{Supplement to \S\ref{sec:5.4}; integrity-gated against the \S\ref{sec:5.4} prose values by \texttt{\_bestrec\_run/make\_table\_5\_4\_titration.py}.}
+\end{quote}
+
+\input{tables/table1e}

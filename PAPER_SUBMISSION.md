@@ -517,11 +517,7 @@ Two single-run results (their configurations as shipped, 101 epochs; our RTX 506
 
 ### 6.1 What does cross-pipeline transfer reveal? (Appendix A.1 supporting study)
 
-The next two subsections discuss the 20-variant Beauty_and_PC cross-pipeline scan (Appendix A.1) — supporting/reproducibility material, not part of the headline spine (the causal FIR filter, the MI frequency-5 tail case, and the competitive Video_Games result of §5).
-
-Our 20-variant scan finds one small positive cross-pipeline transfer signal, and the clean ablation (Appendix A.1) attributes it to **text content, not the projection layer**: the winning variant swaps MiniLM-titles for **BLaIR + rich item text** (with the MLP adaptor of Hou et al., 2024, present as part of that bundle), while the isolating ablation — MiniLM + MLP adaptor alone — is *negative* (0.01889 vs the ≈0.0190 Linear baseline). Published architectural choices therefore do not universally transfer (heavy dropout from the same source does not, and the adaptor's parametric form alone does not either); what transfers is the recommendation-tuned text encoder plus richer item text, observed on this protocol only as a bundle with its adaptor.
-
-We accordingly make no claim about the adaptor's expressive form in isolation: an earlier draft's hypothesis that the 2-layer MLP "denoises" the text features is **not supported** by the clean ablation (Appendix A.1), and any such account would have to attach to the inseparable BLaIR-rich-text + MLP bundle, not to the projection layer itself.
+The 20-variant Beauty_and_PC cross-pipeline scan (Appendix A.1) is supporting material, not part of the headline spine (the causal FIR filter, the MI frequency-5 tail case, and the Video_Games result of §5). It finds one small positive transfer signal, which the clean ablation attributes to **text content, not the projection layer**: the winning variant swaps MiniLM-titles for BLaIR + rich item text (bundled with the Hou et al. (2024) MLP adaptor), whereas MiniLM + MLP adaptor alone is *negative* (0.01889 vs the ≈0.0190 Linear baseline). Published architectural choices thus do not universally transfer; what transfers is the recommendation-tuned text encoder plus richer item text, observed only as a bundle with its adaptor. We accordingly make no claim about the adaptor's form in isolation — the earlier "MLP denoises the text" hypothesis is not supported by the clean ablation.
 
 ### 6.2 What does NOT cross over?
 

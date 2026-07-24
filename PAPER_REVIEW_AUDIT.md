@@ -4,7 +4,112 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-24 09:59 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-24 16:00 Australia/Sydney)
+
+1. **[CONFIRMED, rejection-level protocol mismatch]** The new E-E AlphaFuse
+   run does not evaluate the same candidate set as the paper's system.
+   AlphaFuse's released evaluator ranks all items without masking a user's seen
+   history, whereas the local evaluator masks train-plus-validation history.
+   The preregistration's claims of an "identical estimand," "same full-catalog
+   LLOO" and an apples-to-apples fusion comparison are therefore false. Treat
+   every current E-E output as an engineering pilot; void it for scientific
+   reporting and freeze a corrected E-E V2 before rerunning.
+2. **[CONFIRMED, comparison does not isolate fusion]** Arm B is the project's
+   richer full stack (different architecture, capacity, loss, time/text biases,
+   prototypes, optimiser, training rows and selection), not a matched SASRec
+   backbone differing only in fusion. AlphaFuse also receives no comparable
+   validation-only tuning budget. At most this is a whole-pipeline positioning
+   comparison. Add a matched backbone factorial and equal per-dataset tuning,
+   or narrow the conclusion accordingly.
+3. **[CONFIRMED, E-E adjudicator cannot report]** Its forbidden-substring scan
+   rejects `sota` and `superior`, while its own `REPORTABLE` text contains "NOT
+   SOTA" and "not a superiority claim." The reportable path therefore exits
+   before writing. Replace the substring test with positive-claim tests and
+   unit-test the exact reportable payload.
+4. **[CONFIRMED, fail-open E-E provenance]** The registered four-seed VG
+   comparator notation does not match the broad glob used by code: the glob
+   finds seeds 10--12 and misses the actual seed 09. The Office comparator glob
+   finds nothing, yet AlphaFuse alone can still be labelled reportable. The
+   runner/adjudicator also fail to enforce exact seeds `{22,23,24}`, category,
+   epoch, configuration, unique membership, complete metrics, dataset/code/
+   checkpoint hashes or a clean source tree. Bind exact filenames and digests
+   and make every incomplete case fail nonzero.
+5. **[CONFIRMED, insufficient statistical evidence]** Three aggregate AlphaFuse
+   seed files, compared with different pre-existing local seeds, provide no
+   per-user ranks, paired inference, user/item-clustered uncertainty,
+   tail-stratified evidence or independent metric reconstruction. They also do
+   not directly test the central frequency-1-to-5 claim. Export rank sidecars,
+   register multiplicity and strata, and use materially stronger uncertainty
+   evidence.
+6. **[CONFIRMED, port fidelity unresolved]** Per-prefix row expansion and
+   user-clustered ordering have not been verified against AlphaFuse's original
+   preprocessing. Replacing its published text embeddings with 384-dimensional
+   MiniLM changes the covariance/null-space object central to the method. Call
+   this an **AlphaFuse-style MiniLM port**, document every deviation, pin the
+   external SHA/environment/export/adapter hashes and run a registered
+   preprocessing sensitivity.
+7. **[CONFIRMED, closest-literature gap]** The manuscript still identifies
+   AlphaFuse as the closest omitted comparator, and the current manuscript
+   contains no valid E-E result. LLM2Emb is another directly relevant 2026
+   collaborative-semantic/popularity-gated method but has no citation,
+   benchmark or principled exclusion. Benchmark both fairly or narrow the
+   novelty and tail-mechanism claims.
+8. **[CONFIRMED, external validation remains design-only]** E-G3's correction
+   banner now recognizes independent custody, point-in-time catalogues,
+   censoring and non-reconstructible labels, but the contradictory old
+   locally-decryptable/item-arrival design remains below it. No custodian,
+   temporal builder, frozen V3 preregistration, cold-capable retrieval branch
+   or prediction-only adjudicator exists. This is a plan, not evidence.
+9. **[CONFIRMED, release and seal still overclaimed]** Current-tree manifest
+   checks pass, but critical E-E adapter/export/setup files are outside its
+   governed protocol-code list; the AlphaFuse clone follows mutable `main`; and
+   E-E endpoints are absent from seal patterns. The GitHub workflow is useful
+   but scans a mutable current tree/path list, not added-and-deleted history or
+   trusted blob digests, and there is no verified branch-protection evidence.
+10. **[CONFIRMED, named deposit is obsolete]** `v1.1.11-deposit` is now 51
+    commits behind and fails Git-bound manifest verification with 194
+    mismatches. README, canonical source, manuscript, TeX and lower deposit
+    instructions still call it current or archival. Cut no replacement until
+    the scientific/protocol content is stable; then verify a fresh clone and
+    immutable tag.
+11. **[CONFIRMED, manuscript universals are false]** The abstract says every
+    retraction/design defect is reported and all code, derivatives and per-user
+    sidecars are public although some Office/FIR sidecars remain local-only.
+    The reproducibility section says every printed claim recomputes even though
+    the gate covers a bounded set of cells/artifacts. Replace universals with
+    exact scope, counts and exclusions.
+12. **[CONFIRMED, submission package is administratively unfinished]** Current
+    title pages retain maintainer placeholders for authors, affiliations and
+    contact metadata; `PAPER_DRAFT.md` includes "Drafting notes (delete before
+    submission)" and retracted causal language. Literal submission of these
+    artifacts is likely to be returned before substantive review. Fill metadata
+    and exclude or clean the noncanonical draft.
+13. **[CONFIRMED, remaining semantic/writing drift]** The largest
+    confirming/refuting/positive-mechanism drift was repaired in TeX and venue
+    PDFs, but canonical Markdown still says "candidate ... explanation behind
+    the refutation" and repeatedly labels nonsignificance a "tail null" despite
+    acknowledging that no equivalence margin was registered. Use
+    "non-reproduction/inconclusive estimate" consistently and add a semantic
+    parity gate across Markdown, TeX, figures and PDFs.
+14. **[CONFIRMED, presentation burden]** The 53-page TORS and 61-page reader
+    PDFs render cleanly, but the paper is audit-dense and diffuse. Figure 1 is
+    overloaded; key panels omit seed/draw intervals; Figure 2 duplicates the
+    causal-looking win/null story; the reader ends with an almost empty page.
+    Keep one interval-rich forest/stratum plot in the main paper, move protocol
+    chronology and resource-plane exploration to the supplement, and cut the
+    main narrative by roughly 40--50%.
+15. **[CONFIRMED, disabled-campaign boundary incomplete]** The E-B lower-level
+    Python entry points now refuse and the README warns VOID, but
+    `cloud/bootstrap_pod.sh` still clones, installs and produces caches before
+    printing the launch command. Hard-refuse it at entry or archive it outside
+    runnable paths; no E-B V2 controls/preregistration currently exist.
+16. **[CONFIRMED, core evidential ceiling]** The strongest result still rests on
+    historically exposed fixed splits, outcome-visible development and
+    seed-level uncertainty. It does not establish temporal or population
+    generalisation, a semantic mechanism, genuine cold start, or a broad
+    algorithmic advance. Recommendation remains **reject / not ready**.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-24 09:59 Australia/Sydney)
 
 1. **[CONFIRMED, rejection-level false custody claim]** E-G3 exists only as a
    design note, and its proposed test labels are not genuinely withheld. The
@@ -574,6 +679,311 @@ plausible risks.
     dirty earlier campaigns, seed-only uncertainty, weak comparator framing,
     stale archival deposit and a roughly 26,852-word/50-page narrative remain
     independent rejection risks. Recommendation remains **reject / not ready**.
+
+## Audit Run - 2026-07-24 16:00 Australia/Sydney
+
+### Reviewer verdict and acceptance calibration
+
+**Reject / not ready for a top journal.** The package is materially more honest
+than it was at the prior audit: the worst venue-PDF mechanism/refutation drift
+has been repaired, the current-tree manifest verifies, GitHub CI now invokes the
+seal check, E-B's Python launch surfaces refuse, and E-E has moved from a wish
+to a real AlphaFuse-style port. Those are genuine improvements.
+
+They do not yet create a publishable closest-comparator result. The current E-E
+campaign uses a different candidate eligibility rule from the paper's model,
+does not isolate fusion, lacks equal tuning and paired rank evidence, has
+incorrect/missing comparator provenance, is not sealed or fully pinned, and has
+an adjudicator that rejects its own reportable wording. It must be treated as an
+engineering pilot. E-G3 remains design-only, the deposit is obsolete, and the
+submission PDFs still carry author placeholders.
+
+My subjective probability calibration, conditional on a TORS-like top
+recommender-systems methods/reproducibility journal rather than a venue base-rate
+calculation, is:
+
+| Submission state | Eventual acceptance chance | Main reason |
+|---|---:|---|
+| Literal current PDFs/package | **0--3%** | Incomplete author metadata plus scientific/release blockers make technical return or desk rejection likely. |
+| Metadata filled, current science otherwise unchanged | **3--7%** (point estimate about **5%**) | The self-declared closest comparator is still omitted in valid form; external validation is not real; claims and release state remain inconsistent. |
+| Fair E-E V2, exact provenance/rank sidecars, LLM2Emb addressed, deposit rebuilt, compact rewrite | **15--25%** | This could become a credible TORS reproducibility/methodological paper, though novelty and external validity would remain bounded. |
+| Those repairs plus genuinely independent-custodian prospective temporal validation | **25--40%** | A clean out-of-sample result would answer the largest validity objection. |
+
+These are reviewer judgments, not statistically estimated probabilities. For a
+novelty-dominant flagship, use roughly half the latter ranges. A rigorous null
+result against AlphaFuse would not damage the repaired paper; a positive result
+under the current mismatched protocol would.
+
+### Frozen evidence boundary
+
+- Operative cutoff local: 2026-07-24T16:00:12.3760998+10:00.
+- Operative cutoff UTC: 2026-07-24T06:00:12.3760998Z.
+- HEAD = upstream = merge base:
+  69addfe7c010d8f260f38d9e7a9526286e3be2ae; worktree clean at cutoff.
+- Previous cumulative audit: 2,521,196 bytes, SHA-256
+  a62a4f9a48f97e4a62f31a481bca9a1eae7326f39259d74992ded6b06f93626f.
+- Current release manifest: 72,777 bytes, SHA-256
+  1a2f50fef96c212f1528b5f6e07121888c3bcf4c737c21a5e1b7b1b8976da7b8.
+- Current manifest verification: 458 local files verified, zero missing; 320
+  Git-backed entries match HEAD.
+- Reader PDF: 61 pages, 1,430,096 bytes, SHA-256
+  4862fa9ade59e2a350bf1291a9226b020b35c5c1be0dfedb16a7c21d255a248a.
+- TORS PDF: 53 pages, 474,608 bytes, SHA-256
+  de6f8ef7bfe137ae86278392e84ce4d2ca99178da8ec66c7af6728c893f351d5.
+- ACM-small PDF: 55 pages, 482,645 bytes, SHA-256
+  3b365cc8ac3c12689bf21da5fe90fadcd7b1f666c1be11a2cc9debf9a2a6811d.
+
+The fixed cutoff excludes later writes from the live E-E process. **This audit
+did not open, parse, compare or report any E-E partial endpoint value or any
+E-G2 endpoint value.** It used only source, protocol, filenames, timestamps,
+sizes, hashes, process metadata and structural log checks for the live campaign.
+At cutoff, one E-E result file and two logs existed structurally; the three-seed
+family and adjudication were incomplete.
+
+### Confirmed progress since 09:59
+
+- The TeX and venue PDFs no longer contain the earlier “confirming on one
+  stratum,” “refuting, not confirming,” “positive mechanism,” “refutation is
+  unaffected” or “mechanism behind the refutation” claims. The mechanism is now
+  described as unresolved/candidate and the result as non-reproduction.
+- E-B's lower-level Python shard, run and final-evaluation entry points now
+  refuse at program entry, and its README identifies the campaign as VOID.
+- E-G2's descriptive output now carries a top-level
+  EXPOSED_PROTOCOL_DEVIATED_NON_COUNTABLE classification and removes the
+  “first reader” runtime claim.
+- E-G3's correction banner accurately concedes that locally regenerable labels
+  are not custody, full-period 5-core leaks across a cutoff, review timestamps
+  do not establish item arrival, and an independent custodian is required.
+- The manifest's current-tree and Git-blob verification pass, and a GitHub
+  workflow now runs the seal script on pushes and pull requests.
+- E-E now has a preregistration, exporter/adapter, runner, metric-family helper
+  and adjudicator. The freeze commit preceded the launch-only commit.
+- All 169 pages across the three PDFs were rendered with the prescribed PDF
+  workflow. No clipping, overlap, corrupt glyphs, missing figures or tables
+  outside page bounds was found.
+
+### E-E: why the current closest-comparator run is not countable
+
+#### 1. Different evaluator, different estimand
+
+AlphaFuse's released evaluation path calls model prediction and top-k over the
+non-padding catalogue without masking the user's consumed history. The local
+paper evaluator explicitly masks the full train-plus-validation history before
+ranking the held-out target. Consequently the candidate set, target rank and
+metric can differ even with the same split. The E-E preregistration's
+“identical estimand,” “same full-catalog LLOO,” “apples-to-apples” and
+fusion-only wording must be retracted for this launch.
+
+**Fix:** implement one local exact-rank evaluator used unchanged by both arms;
+freeze seen-item masking, catalogue eligibility, deduplication, ties, cutoffs
+and validation selection; add synthetic tests that exercise seen-item and tie
+cases; rerun both arms from clean attempts.
+
+#### 2. Whole systems differ, not only fusion
+
+The local comparator is the project's best full stack: it differs from
+AlphaFuse in model family, dimensions/layers, loss, optimiser/schedule,
+training-row construction, ordering, time/text biases, prototypes and
+selection. AlphaFuse is run with a chosen published recipe but no comparable
+VG/Office validation search, while the local system was extensively tuned.
+Sharing MiniLM text does not isolate fusion architecture.
+
+**Fix:** make the primary test a matched-backbone factorial with AlphaFuse
+fusion on/off under one evaluator and equal validation-only search budgets.
+Retain the two full systems only as a secondary descriptive comparison. Report
+parameters, FLOPs, peak memory and latency.
+
+#### 3. The reportable path self-destructs
+
+The adjudicator's forbidden list contains the substrings “superior” and “sota.”
+Its own admissible report says “no superiority claim” and “NOT SOTA,” so the
+post-generation scan necessarily exits before a reportable file is written.
+
+**Fix:** validate a fixed approved schema/template or detect affirmative
+overclaims semantically; explicitly unit-test the exact reportable and
+incomplete payloads.
+
+#### 4. Frozen comparator identity is wrong
+
+The VG preregistration denotes four seeds ending 10, 11, 12 and 19, but the
+actual intended fourth file is seed 09. The broad code glob selects only
+10--12 and can silently absorb later files. No Office comparator file matches,
+yet the code can label an AlphaFuse-only summary reportable.
+
+**Fix:** register exact filenames, seeds, sizes and SHA-256 digests; require
+exactly the registered files and no extras; require Arm B for every category;
+make missing provenance INCOMPLETE with a nonzero exit.
+
+#### 5. Run identity and scientific payload are under-specified
+
+The runner accepts arbitrary category, seed and epoch despite the frozen set.
+The adjudicator requires merely three glob matches, not exactly distinct
+seeds 22, 23 and 24; it does not bind category, arm, epoch, configuration,
+source/environment/split/adapter/checkpoint hashes, exact deviations or every
+metric for every seed. Retries overwrite logs/checkpoints; outputs are not
+atomic or append-ledgered. The three aggregate files contain no per-user rank
+sidecar. The shared metric helper documents MRR@k but emits only unrestricted
+MRR, and it does not yet validate rank bounds or define a deterministic tie
+policy.
+
+**Fix:** use immutable attempt directories, an append-only signed/hash-chained
+event ledger and atomic writes. Fail closed before values on exact run identity,
+clean code, full hashes, schema, finite/range/metric-family checks and mandatory
+comparator presence. Export target item and per-user ranks so HR/NDCG can be
+reconstructed and paired user/item-clustered intervals and tail strata can be
+reported.
+
+#### 6. Port, environment and seal are not frozen
+
+The external AlphaFuse clone was at full SHA
+b501a0540b609370df995ad06fb245859b10a18a, but setup shallow-clones mutable
+main and does not enforce that SHA. The runner records only an abbreviated SHA
+after launch, not dirty state. The advertised isolated environment is unpinned
+and the live launch used a different existing environment. Export/adapter
+products and critical adapter/export/setup/metrics sources are not all governed
+by the release manifest. E-E endpoint names are absent from seal patterns, so a
+forced add bypasses both hook and CI.
+
+Per-prefix expansion and user-clustered ordering also remain unverified against
+the authors' preprocessing. MiniLM changes the text geometry that AlphaFuse's
+SVD/null-space construction uses. This is a controlled **AlphaFuse-style
+MiniLM port**, not a faithful reproduction.
+
+**Fix:** pin the full upstream source archive/SHA, licence note, lockfile or
+container, clean state, hardware, exporter/adapter/product hashes and all
+transitive protocol code. Add E-E to a trusted deny policy and store endpoints
+outside the repository. Register a source/sample-parity or preprocessing
+sensitivity before launch.
+
+### Novelty and related-work fact-check
+
+- [AlphaFuse](https://doi.org/10.1145/3726302.3729894) is a SIGIR 2025 method
+  whose text/collaborative fusion is close enough that an omitted or mismatched
+  comparison is a material novelty gap. The current manuscript itself calls it
+  the closest omitted comparator.
+- [LLM2Emb](https://doi.org/10.1016/j.eswa.2026.133375) is a distinct 2026
+  collaborative-semantic embedding method with popularity-gated long-tail
+  balancing. It is directly relevant to the paper's tail framing and cannot be
+  collapsed into AlphaFuse. Add a fair benchmark, or document a reproducible
+  exclusion and narrow the novelty claim.
+- The official ACM TORS methods editorial,
+  [Recommender Systems Experimental Evaluation: A Manifesto](https://doi.org/10.1145/3800587),
+  emphasizes complete pipeline reproducibility, verified and appropriately
+  tuned baselines, per-dataset hyperparameter optimization, common splits/equal
+  treatment, significance or confidence intervals, and hardware disclosure.
+  The present E-E fails several of these stated expectations.
+
+### Release, governance and external-validation findings
+
+- The GitHub seal workflow is a real improvement, and observed current runs are
+  green. However, the branch is not protected; the policy/allowlist can be
+  changed on the branch; checks inspect current paths rather than the complete
+  added-and-deleted blob history; the allowlist has paths rather than trusted
+  blob digests; and E-E is not covered. Green CI is therefore advisory.
+- Current manifest verification is green, but its discovery rules are curated.
+  Critical E-E exporter, adapter, setup, specification and metric sources are
+  missing from the transitive governed set. Target-tree negative completeness
+  is not established by verify-git.
+- The named deposit is now 51 commits/393 changed paths behind HEAD and has 194
+  Git-bound manifest mismatches, while several public-facing files still call
+  it current. Do not upload it.
+- E-B's Python execution surfaces refuse, but bootstrap_pod.sh still clones,
+  installs, generates caches and points to the voided launcher. Hard-refuse it
+  immediately or archive the V1 body.
+- E-G3's banner is scientifically honest, but the body still says “resolves,”
+  retains global 5-core/item-arrival/local AES-label language, and has no
+  PREREG_EG3, builder, runner, retrieval branch, custodian or adjudicator.
+  Rewrite the document so superseded text cannot be mistaken for a design.
+- E-G2 remains appropriately non-countable. Its subordinate labels can still
+  emit bare W2-POS-COST/W2-SEM-FAIL strings and should be namespaced
+  EXPOSED/DESCRIPTIVE with import_allowed=false.
+
+### Writing, figures and submission readiness
+
+The PDF rendering itself is healthy, but the communication burden is not.
+
+- All title pages still show a maintainer placeholder rather than real author,
+  affiliation, country, short-author and contact metadata. This alone prevents
+  literal submission readiness.
+- The reader PDF's final page is nearly empty. The paper is approximately
+  28,000-plus words and the 53-page TORS rendering reads as an audit dossier
+  rather than a focused article.
+- Figure 1 is an overloaded three-panel composite. Its resource-plane and fixed
+  illustrative draw lack intervals/sensitivity. Figure 2 repeats the same
+  causal-looking tail/head arrow story and uses “null” as a categorical outcome
+  without an equivalence design.
+- Canonical Markdown still contains “candidate ... explanation behind the
+  refutation,” “flat tail null” and related language. Nonsignificance is not
+  evidence of equivalence or a confirmed null.
+- The abstract's “every”/“all public” claims conflict with local-only
+  Office/FIR sidecars, and “every printed claim recomputes” exceeds the gate's
+  actual bounded coverage.
+- PAPER_DRAFT.md includes a “Drafting notes (delete before submission)” section
+  and old causal/refutation claims. It must be excluded from the deposit or
+  cleaned as rigorously as the canonical source.
+
+**Fix:** reduce the main paper to one scientific spine: question, protocol,
+primary evidence, closest fair comparators, limitations and reproducibility.
+Move campaign chronology, governance forensics and most negative-result detail
+to a labelled supplement. Replace the current figures with one forest/stratum
+plot showing per-seed dots and confidence intervals plus a compact matched
+ablation. Use “estimate crosses zero / no evidence of a trend / non-reproduced”
+instead of “null/refuted.” Run a semantic parity check across Markdown, TeX,
+captions and extracted PDF text before rebuilding.
+
+### Mandatory repair order
+
+1. Quarantine current E-E outputs as protocol-deviated engineering-pilot
+   artifacts; do not integrate their values or wording.
+2. Freeze E-E V2 with one evaluator, exact provenance, matched factorial/equal
+   tuning, immutable attempts, per-user ranks and fail-closed adjudication.
+3. Add AlphaFuse/LLM2Emb to related work and either run fair comparisons or make
+   precise executable exclusions and narrow novelty.
+4. Complete a genuinely independent prospective temporal design, or state
+   clearly that external validity remains untested.
+5. Narrow universal reproducibility/publicity claims; reconcile E-G3, E-B,
+   E-G2 and seal prose with implemented controls.
+6. Compress and redesign the paper/figures; fill author metadata; exclude the
+   unsafe draft.
+7. Rebuild and inspect PDFs, update the full transitive manifest, cut a new
+   immutable deposit tag, and verify from a fresh clone.
+
+### Open questions requiring author verification
+
+- Which exact venue and article type are intended, and has the current template,
+  review model and submission checklist been confirmed with the journal?
+- Who is the independent E-G3 custodian, what non-reconstructible/future data
+  will they hold, and what signed prediction-only interface can they operate?
+- Can both AlphaFuse and the local model be rerun under one identical evaluator
+  and equal tuning budget, including per-user ranks and tail strata?
+- Is LLM2Emb code/data access sufficient for a fair port? If not, what
+  documented, reproducible exclusion will replace the absent comparison?
+- Which sidecars are actually public in the intended deposit, and which printed
+  claims are outside the artifact gate?
+- What author, affiliation, funding, ethics/IRB determination, data licence and
+  conflict-of-interest metadata must be added?
+
+### Running checklist
+
+- [x] Freeze a clean evidence boundary before inspecting live campaign metadata.
+- [x] Avoid opening/reporting E-E partial endpoints and E-G2 endpoints.
+- [x] Verify current manifest and HEAD/upstream identity.
+- [x] Render and visually inspect all current PDF pages.
+- [x] Confirm the major venue-PDF claim repair.
+- [ ] Void current E-E for scientific reporting and register E-E V2.
+- [ ] Use one exact evaluator and matched/equally tuned comparator design.
+- [ ] Enforce exact seeds/config/category/epoch/hashes and mandatory Arm B.
+- [ ] Add per-user ranks, paired/clustered intervals, strata and multiplicity.
+- [ ] Pin the external source, adapter/export products and environment.
+- [ ] Cover E-E endpoints and transitive protocol code with trusted controls.
+- [ ] Address AlphaFuse and LLM2Emb fairly in results/related work.
+- [ ] Implement genuine independent-custodian temporal validation.
+- [ ] Reconcile E-G3 body, E-B bootstrap, E-G2 labels and seal claims.
+- [ ] Narrow universal publicity/recompute claims.
+- [ ] Replace null/refutation language and add source/PDF semantic parity tests.
+- [ ] Compress the manuscript and redesign uncertainty-poor figures.
+- [ ] Fill author/submission metadata and exclude or clean PAPER_DRAFT.md.
+- [ ] Cut and fresh-clone verify a new immutable deposit tag.
 
 ## Audit Run - 2026-07-24 09:59 Australia/Sydney
 

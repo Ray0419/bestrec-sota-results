@@ -93,3 +93,5 @@ ee_baselines/.venv_ee/
 ee_baselines/ours_DiT/
 ee_ez_vg_inputs.tar.gz
 runpodctl.exe
+send.log
+ee_smoke_vg.log

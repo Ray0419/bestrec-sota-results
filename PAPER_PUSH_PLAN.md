@@ -49,9 +49,13 @@ at a time (RTX 5060 Ti). Never weaken a caveat to close a finding.
       what each component adds under the frozen ablation wordings.
 
 ### WS3 — Finish the designed experiments (sequential, prereg-before-launch)
-- [ ] E-E: FREEZE PREREG_EE + adjudicate_ee, then run AlphaFuse + our stack on
-      VG (+ Office, counted) locally; adjudicate; integrate as a caveated
-      closest-comparator row. (Data adapter already built + validated.)
+- [~] E-E: adapter built + validated; **local smoke test PASSED 2026-07-24**
+      (AlphaFuse trains + full-catalog-evals on our VG data end-to-end, ~2s/eval
+      — full local runs are feasible, no rental needed). NEXT: FREEZE PREREG_EE +
+      adjudicate_ee (pin AlphaFuse's own recommended config + seeds + metric + 3
+      disclosed deviations + caveated wording), then run AlphaFuse + our stack on
+      VG (+ Office counted); adjudicate; integrate as a caveated closest-comparator
+      row (no superiority). Smoke numbers are a dev probe, NOT recorded.
 - [ ] E-C / E-C2 / E-D: robustness/ablation studies — each freeze prereg +
       adjudicator, run, adjudicate, integrate (negative outcomes reported with
       equal prominence).

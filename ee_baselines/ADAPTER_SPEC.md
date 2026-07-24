@@ -127,6 +127,10 @@ default to per-prefix expansion (the family norm) and DISCLOSE it.
       spot-checks. Output tree gitignored (`ee_baselines/ours_DiT/`).
 - [ ] confirm train-row expansion vs one downloaded sample `train_data.df`
       (default per-prefix, disclosed) — pre-freeze gate, not a build blocker
-- [ ] AlphaFuse-env smoke test (their `train.py` in `.venv_ee`) — a few epochs,
-      confirm it trains + prints full-catalog NDCG@10/HR@10
+- [x] **smoke test PASSED (local, 2026-07-24)**: their `train.py` ran on our VG
+      data via the main venv (torch 2.11/cu128) end-to-end — 5.0M-param model,
+      build→train 2 epochs (val NDCG@20 0.0326→0.0378)→full-catalog test,
+      natively emitting HR/NDCG/MRR@{5,10,20,50}, ~2s/eval. DEV PROBE only
+      (unconverged, no prereg) — numbers not recorded. No `.venv_ee` needed; the
+      main venv has all AlphaFuse deps.
 - [ ] freeze PREREG_EE / adjudicate_ee → final runs (Office counted + VG)

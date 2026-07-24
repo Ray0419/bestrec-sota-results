@@ -78,3 +78,36 @@ shared masked evaluator, AlphaFuse's null-space text/ID fusion changes NDCG@10 b
 We report this as a within-method ablation on our split under the disclosed
 MiniLM-384 substitution; it is not a comparison to our own model and asserts no
 best-system claim."
+
+## ERRATUM E1 (2026-07-24 21:59 audit, ACCEPTED) — V2 is descriptive, not countable
+The audit CONFIRMED seven defects; V2 is preserved as OUTCOME-VISIBLE / protocol-
+deviated DESCRIPTIVE material and is NOT integrated:
+1. **Outcome-visible before freeze:** the ON arm's shared-masked scores were
+   validated at `a19781f3` (18:21) before V2 froze at `7b3cf952` (19:23) — so V2
+   is descriptive, not confirmatory (§5.3 disclosure vii class).
+2. **NOT a one-factor fusion isolation:** ON (frozen projected text + 64-d
+   trainable ID residual) vs OFF (128-d learned ID) change text, initialization,
+   capacity AND parameter allocation together. Reframed as a **representation-
+   package ablation**; the +0.00878±0.00137 is a package effect, not a null-space
+   fusion effect.
+3. **Incomplete-history masking:** `ee_shared_eval` masks the length-50 input, not
+   the full paper history (`run_sasrec_sbert.py` masks train+val complete); ~0.48%
+   of users have >50 history. Not the paper's estimand for those users.
+4. **Selection mismatch:** checkpoints chosen by AlphaFuse's native UNMASKED
+   validation, then tested under the shared masked evaluator.
+5. **Fail-open adjudicator:** accepts self-asserted `shared_evaluator`, exits 0 on
+   INCOMPLETE, no identity/hash/rank checks, no reconstruction from ranks.
+6. **No terminal lifecycle / provenance:** ad-hoc queue (completion inferred from
+   filename), no immutable attempts, no per-user rank sidecars, no SHA bundle.
+7. **Weak pairing:** same numeric seeds != common randomness across arm shapes;
+   3 seeds descriptive.
+
+**E-E V3 (required before any countable/integrated use):** fresh UNSEEN ON+OFF
+seeds (>=8); complete-history masking; the SAME masked evaluator for validation
+selection AND test; exact tie/target rules + synthetic+real conformance test vs
+`run_sasrec_sbert.py`; fail-closed runner+adjudicator (immutable attempts, atomic
+completion, rank sidecars, reconstructive metrics, exact schema, nonzero on
+incomplete); full source/data/config/env/checkpoint identities; a
+representation-package framing OR added controls (standard-init ID-only,
+zero/shuffled text, random basis, capacity/param-matched); report params/FLOPs/
+mem/latency; independent-arm inference or frozen shared RNG streams.

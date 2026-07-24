@@ -94,11 +94,20 @@ def main():
         paired[k] = {"per_seed_delta": [round(d, 6) for d in deltas],
                      "mean": round(m, 6), "sd": round(sd, 6)}
     out["fusion_effect_ON_minus_OFF"] = paired
-    out["label"] = ("DESCRIPTIVE within-method ablation of AlphaFuse's text/ID "
-                    "null-space fusion on our VG split under one shared masked "
-                    "evaluator; PAIRED by seed; NON-INFERENTIAL; not a comparison "
-                    "to our own model; no best-system or ranking claim asserted; "
-                    "MiniLM-384 substitution disclosed.")
+    out["label"] = ("DESCRIPTIVE representation-package ablation (audit "
+                    "2026-07-24 21:59): the arms differ in text, "
+                    "initialization, capacity and parameter allocation "
+                    "TOGETHER, so this is NOT a causal isolation of "
+                    "null-space fusion. OUTCOME-VISIBLE (the ON arm was "
+                    "scored before the V2 freeze) -> descriptive, not "
+                    "confirmatory. Masking is INCOMPLETE (derived from the "
+                    "length-50 input, not the full paper history; ~0.48% "
+                    "of users have >50 history). Adjudicator is not yet "
+                    "fail-closed / rank-reconstructive. PAIRED by seed; "
+                    "NON-INFERENTIAL; not a comparison to our stack; no "
+                    "best-system claim; MiniLM-384 substitution disclosed. "
+                    "NOT countable; a clean E-E V3 (fresh unseen seeds, "
+                    "full-history masking, fail-closed) is required.")
     out["verdict"] = "REPORTABLE"
     _emit(out)
     return 0

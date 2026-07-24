@@ -15,7 +15,9 @@ while read -r local_ref local_sha remote_ref remote_sha; do
   else
     range="$remote_sha..$local_sha"
   fi
-  bad="$(git diff --name-only "$range" 2>/dev/null | grep -E "$SEAL_PATTERNS" || true)"
+  # --diff-filter=AM: only ADDED/MODIFIED. Removing/untracking a sealed endpoint
+  # (re-sealing) must NOT block a push (audit 2026-07-24 16:00).
+  bad="$(git diff --name-only --diff-filter=AM "$range" 2>/dev/null | grep -E "$SEAL_PATTERNS" || true)"
   if [ -n "$bad" ]; then
     echo "SEAL HOOK (pre-push): endpoint artifact(s) in pushed commits ($range):" >&2
     printf '  %s\n' $bad >&2

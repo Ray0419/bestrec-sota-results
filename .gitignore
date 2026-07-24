@@ -90,3 +90,4 @@ ee_baselines/export/
 ee_baselines/AlphaFuse/
 ee_baselines/LLM2Emb/
 ee_baselines/.venv_ee/
+ee_baselines/ours_DiT/

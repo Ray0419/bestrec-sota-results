@@ -116,6 +116,17 @@ default to per-prefix expansion (the family norm) and DISCLOSE it.
       (embeddings = `*_emb.pickle` not `.npy`; pad=item_num, left-pad, last-pos
       state; loader string-generic so no patch)
 - [x] comparability decision: **head-to-head feasible** (3 disclosed deviations)
-- [ ] download one sample dataset to lock the train-row expansion convention
-- [ ] `build_alphafuse_dataset.py` (re-index join + left-pad) + local smoke test
-- [ ] freeze PREREG_EE / adjudicate_ee → final runs
+- [x] `build_alphafuse_dataset.py` written + **locally validated on VG**: writes
+      `train/val/test_data.df` + `data_statis.df` + `minilm_emb.pickle` to
+      `ee_baselines/ours_DiT/data/ourdata/<cat>/` (the `--data`-compatible path,
+      no `train.py` patch). VG = 94,762 users / 25,612 items / L=50; train
+      530,300 rows (= 625,062−94,762, per-prefix), val/test 94,762; emb
+      `(25612,384)`. Re-read through AlphaFuse's exact `pd.read_pickle`+`np.stack`
+      and its **`SeqDataset`+`DataLoader`+mask** path: batches `(256,50)` long,
+      every last position real (`mask[:,-1].all()`), 20/20 emb-alignment
+      spot-checks. Output tree gitignored (`ee_baselines/ours_DiT/`).
+- [ ] confirm train-row expansion vs one downloaded sample `train_data.df`
+      (default per-prefix, disclosed) — pre-freeze gate, not a build blocker
+- [ ] AlphaFuse-env smoke test (their `train.py` in `.venv_ee`) — a few epochs,
+      confirm it trains + prints full-catalog NDCG@10/HR@10
+- [ ] freeze PREREG_EE / adjudicate_ee → final runs (Office counted + VG)

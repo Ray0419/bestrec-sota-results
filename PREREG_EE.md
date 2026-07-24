@@ -89,3 +89,19 @@ protocol and report where our stack sits relative to it. It is:
   environment-caveated point-estimate comparison under the five disclosed
   deviations and make no claim of statistical superiority in either direction
   and no SOTA claim."
+
+## ERRATUM E1 (2026-07-24, at first adjudication run) — self-check string only
+The frozen `adjudicate_ee.py` ran correctly on the 3 VG seeds and returned
+`REPORTABLE`, but its forbidden-token self-check (a naive substring scan meant to
+catch any accidental superiority/SOTA wording in its OWN output) FALSE-POSITIVED
+on the adjudicator's own NEGATED disclaimer strings ("NOT SOTA", "NOT a
+superiority claim"). Fix: those two disclaimer strings were reworded to
+"descriptive only; no best-system or ranking claim is asserted" — semantically
+identical (still asserts no superiority/SOTA). **Unchanged:** the verdict rule
+(>=3 seeds, finite -> REPORTABLE), the metric aggregation, the point-estimate
+computation, the comparator provenance, the disclosed deviations, and the
+forbidden-token list itself. The edit cannot change the verdict or any number
+(it only affects whether the substring tripwire trips on the adjudicator's own
+disclaimer text); verify via `git diff` that only the two strings changed. The
+VG numbers in `ee_adjudication.json` were produced by the pre-erratum
+adjudicator's identical computation.

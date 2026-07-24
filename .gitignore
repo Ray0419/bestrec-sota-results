@@ -95,5 +95,4 @@ ee_ez_vg_inputs.tar.gz
 runpodctl.exe
 send.log
 ee_smoke_vg.log
-_bestrec_run/results_EE_*.json
 _bestrec_run/results_EE_*.log

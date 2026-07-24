@@ -114,7 +114,7 @@ def main():
             "our_stack": round(b_ndcg10, 6),
             "difference_A_minus_B": round(diff, 6),
             "label": "DESCRIPTIVE point estimate; NON-INFERENTIAL; no "
-                     "significance test; no superiority claim in either "
+                     "significance test; no ranking claim asserted in either "
                      "direction; single environment.",
         }
     else:
@@ -128,9 +128,9 @@ def main():
     out["disclosed_deviations"] = per_seed[0].get("deviations", [])
     out["verdict"] = "REPORTABLE"
     out["reporting_class"] = ("environment-caveated point-estimate comparison; "
-                              "NOT confirmatory; NOT SOTA; NOT a superiority "
-                              "claim; NOT part of the counted set (MI V2, "
-                              "Office V3).")
+                              "descriptive only; NOT confirmatory; no best-system "
+                              "or ranking claim is asserted; NOT part of the "
+                              "counted set (MI V2, Office V3).")
     _emit(out)
     return 0
 

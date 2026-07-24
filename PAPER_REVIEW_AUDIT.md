@@ -4,7 +4,127 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-24 21:59 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-25 04:00 Australia/Sydney)
+
+1. **[CONFIRMED, submission-blocking package failure]** The literal journal
+   package is not the improved reader. The official TORS PDF is still a
+   53-page, untagged, stale build; its TeX abstract retains the stronger
+   “pass against published” and universal “Every retraction” wording, and
+   author, institution, country, and running-head placeholders remain in
+   paper-shared.tex:37--42. The hygiene scan succeeds only with
+   DRAFT_WAIVER=1. Port the moderated Markdown source into TeX, remove every
+   placeholder, rebuild, and require the unwaived hygiene scan plus
+   source-to-source semantic parity before submission.
+2. **[CONFIRMED, E-E V2 cannot count]** The committed E-E V2 aggregate is
+   directionally positive (AlphaFuse-package ON minus OFF NDCG@10 =
+   +0.008778, SD 0.001371; all three nominal seed deltas positive), but the ON
+   outputs had already been inspected before the V2 “freeze,” and the result
+   was first committed as “REPORTABLE” before a post-outcome erratum
+   reclassified it. This is outcome-visible, protocol-deviated descriptive
+   evidence, not prospective confirmation, and it does not raise the paper's
+   acceptance probability. Freeze a fresh V3 before unseen ON and OFF work.
+3. **[CONFIRMED, contradictory formal disposition]** PREREG_EE_V2.md:1--80
+   still calls the campaign frozen, countable, one-factor and causally
+   interpretable; its appended erratum retracts those statements. Meanwhile,
+   adjudicate_ee_v2.py and ee_v2_adjudication.json retain “fusion factorial,”
+   fusion_effect_ON_minus_OFF and REPORTABLE machine fields while free text
+   says non-countable. Put a tombstone at the top and emit one unambiguous
+   machine classification:
+   OUTCOME_VISIBLE_PROTOCOL_DEVIATED_NONCOUNTABLE, countable=false,
+   import_allowed=false and manuscript_allowed=false.
+4. **[CONFIRMED, E-E estimand and selection mismatch]** The wrapper masks only
+   the last-50 model input, whereas the manuscript masks complete
+   train-plus-validation history; 453/94,762 VG users (0.478%, maximum history
+   472) exceed 50. Checkpoints were selected with native unmasked validation
+   and evaluated with the last-50 masked wrapper. Separate full evaluation
+   history from truncated model input and select both arms with the identical
+   fully masked validation evaluator.
+5. **[CONFIRMED, E-E is not a one-factor causal ablation]** ON uses frozen
+   projected text plus a 64-dimensional learned ID residual; OFF uses a
+   128-dimensional pure-ID embedding with different initialization and
+   parameter allocation. Call the result a representation-package contrast.
+   To identify null-space fusion, compare identical real-text architectures
+   differing only in the constraint, and add parameter-, capacity-,
+   initialization- and tuning-matched controls.
+6. **[CONFIRMED, E-E evidence is non-reconstructible and fail-open]** The
+   tracked adjudication omits exact input names and hashes, per-seed arm
+   values, user/target/rank rows, user count, checkpoint/source/data/config/
+   environment hashes, selected epochs, commands and hardware. The
+   adjudicator silently skips unreadable files, overwrites duplicate seeds,
+   trusts supplied booleans/metrics, accepts arbitrary categories and exits
+   zero for INCOMPLETE. Make attempts immutable, write atomically, reject
+   extras and duplicates, reconstruct all metrics from rank sidecars, and
+   return nonzero unless the frozen schema is complete.
+7. **[CONFIRMED, inference is inadequate]** Three nominal seed pairs yield an
+   exact two-sided sign-test p-value of 0.25 even though all deltas are
+   positive. Different parameter shapes also consume randomness differently,
+   weakening seed-number pairing. Run at least eight fresh seeds per arm,
+   predeclare independent-arm or synchronized-RNG inference, multiplicity,
+   and user/item-clustered sensitivity; do not use significance language for
+   V2.
+8. **[CONFIRMED, closest-literature coverage is incomplete]** AlphaFuse is
+   still merely “queued,” and the manuscript omits LLMEmb, LLM2Emb and
+   SAGE-Rec, all directly relevant to semantic/collaborative fusion and
+   low-popularity or long-tail sequential recommendation. Add an executable
+   exclusion or valid benchmark and narrow novelty to the measured boundary
+   plus artifact-gating implementation. The official SIGIR 2026 program does
+   confirm SIDSRec, BFDRec and ACE, but the bibliography still lacks complete
+   proceedings metadata.
+9. **[CONFIRMED, FIR mechanism remains unidentified]** With a zero gate and
+   zero delta, task gradients into the FIR path are exactly zero; coupled Adam
+   weight decay is the initiating perturbation. The fixed/no-gate comparator
+   is not the same optimization path. Run a common nonsingular
+   parameterization factorial: Adam versus AdamW, weight decay on/off, gate
+   fixed/trainable, residual zero-init convolution versus current
+   parameterization, and report response spectra, parameters, FLOPs, latency
+   and peak memory.
+10. **[CONFIRMED, uncertainty ceiling]** Reported intervals are optimizer-seed
+    dispersion on one repeatedly exposed split. They do not quantify
+    user/item sampling, split, temporal or comparator uncertainty. Keep every
+    interval labeled seed-conditional; add user/target clustered bootstrap,
+    multiple split or thinning draws, and preferably a prospective temporal
+    holdout. A lower confidence bound above a fixed published point estimate
+    is not a superiority test.
+11. **[CONFIRMED, excessive length and conflicting plan]** The reader is
+    28,260 words total, 22,720 before References and 61 pages; Results alone
+    are about 12,250 words. PAPER_SPINE.md simultaneously states 9--13k and
+    about 18k/28-page targets. Choose one venue-compatible ceiling, cut
+    repeated audit chronology and comparator inventories from the main paper,
+    and move per-rung/probe tables and forensic history to a separately
+    labeled supplement.
+12. **[CONFIRMED, visual and accessibility defects]** Figure 1 is overloaded
+    and tiny; Figure 2 largely duplicates its panel C and uses connected lines
+    plus WIN/NULL labels that look inferential. Page 58 exposes raw inline list
+    markup; page 61 is an orphan continuation with roughly 70% blank space.
+    The reader is tagged but has no bookmarks; venue PDFs have outlines but
+    are untagged. Replace the headline graphic with a neutral forest plot with
+    per-seed points and intervals, move titration/resource panels to the
+    supplement, fix continuation captions/pagination, and ship a tagged PDF
+    with bookmarks and alt text.
+13. **[CONFIRMED, release boundary is false/stale]** The named
+    v1.1.11-deposit is 78 commits and 401 changed paths behind HEAD, and
+    verification reports 196 manifest mismatches. README, deposit
+    instructions and manuscript availability language still conflict about
+    whether it is current. Cut a new immutable deposit only after dependency
+    closure, DOI issuance and verification from a clean checkout.
+14. **[CONFIRMED, manifest and CI seals are narrower than their rhetoric]**
+    Current-tree verification is green only for a curated manifest that omits
+    the tracked E-E adjudication and most evaluator/builder/dependency files.
+    GitHub seal workflows are green, but the branch has no effective
+    protection and the workflow checks path presence rather than scientific
+    semantics or manifest closure. Expand the manifest, test add/delete/case
+    changes and semantic gates, and require protected checks.
+15. **[PLAUSIBLE RISK / AUTHOR VERIFICATION]** The apparatus may be useful,
+    but it is demonstrated only in this repository and checks arithmetic and
+    selected provenance more convincingly than causal, statistical or
+    external validity. Claims such as “trustworthy-evaluation apparatus
+    demonstrated end-to-end,” “full power,” “ceiling was not left
+    unexplored,” “monotonic,” and “refutes” remain too broad for the evidence.
+    Demonstrate the workflow on another repository or label portability as
+    future work; replace verdict words with estimates, intervals and explicit
+    scope.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-24 21:59 Australia/Sydney)
 
 1. **[CONFIRMED, rejection-level preregistration contradiction]** E-E V2
    cannot be described as prospective or countable. The shared-evaluator ON
@@ -780,6 +900,390 @@ plausible risks.
     dirty earlier campaigns, seed-only uncertainty, weak comparator framing,
     stale archival deposit and a roughly 26,852-word/50-page narrative remain
     independent rejection risks. Recommendation remains **reject / not ready**.
+
+## Audit Run - 2026-07-25 04:00 Australia/Sydney
+
+### Fixed cutoff and review scope
+
+- Audit cutoff captured at 2026-07-25T04:00:18.1745496+10:00
+  (2026-07-24T18:00:18.1745496Z).
+- Repository state: clean and synchronized at
+  75accec13b1713d60cea649f53827c33e7305b58; HEAD, upstream and merge-base
+  are identical (0 ahead / 0 behind).
+- Comparison boundary: prior audited HEAD
+  57287b4ffcf6eca82386bd2140d0e24804c52854 to the fixed cutoff: 15 commits,
+  11 changed paths, 749 insertions and 88 deletions.
+- Priority artifacts inspected: PAPER_SUBMISSION.md/PDF, PAPER_SPINE.md,
+  PAPER_DEADLINE_PLAN.md, EXPERIMENT_PROGRAM.md, PREREG_EE_V2.md,
+  adjudicate_ee_v2.py, the **tracked committed**
+  ee_v2_adjudication.json, RELEASE_MANIFEST.json, deposit instructions,
+  paper_tex sources and TORS/acmsmall PDFs, relevant evaluators/builders, and
+  repository/CI state.
+- Boundary discipline: no ignored or live endpoint result, checkpoint, log or
+  rank payload was opened. The tracked adjudication JSON was inspected because
+  the authors committed it as the formal release/disposition artifact. That
+  distinction matters: this audit reports the committed aggregate, not private
+  endpoint evidence.
+- PDF review followed the PDF skill's render-and-inspect workflow. All 61
+  reader pages were rendered at 110 dpi, all eight contact sheets were
+  inspected, and pages 1, 6, 29, 34 and 58--61 were checked at full
+  resolution. The official 53-page TORS and 55-page acmsmall builds were also
+  compared for freshness, metadata and accessibility.
+- Only this cumulative audit and automation memory are being updated; no
+  manuscript, experiment, result, figure, release or code claim is silently
+  repaired by this review.
+
+### Strict verdict and acceptance calibration
+
+**Verdict: reject / not submission-ready. Acceptance probability has not
+materially improved.** The committed E-E direction is encouraging as a pilot,
+but it is outcome-visible, package-confounded, weakly powered and
+non-reconstructible; it cannot be imported as prospective evidence. More
+decisively, the literal journal package remains stale and contains submission
+placeholders.
+
+These are judgment ranges, not statistical probabilities:
+
+| state actually submitted | estimated acceptance chance | reason |
+|---|---:|---|
+| Literal current TORS package | below 1%; conservative envelope 0--3% | stale TeX, placeholders, untagged 53-page PDF, overlength, missing closest evidence |
+| TeX/Markdown parity, metadata, compression and visual repair only | 4--8% | removes desk-review failures but leaves the scientific ceiling |
+| Plus valid E-E V3, identified FIR factorial, stronger uncertainty and new complete deposit | 15--25% | credible top-journal review candidate, still vulnerable on novelty/generalization |
+| Plus independently custodied prospective temporal validation and apparatus portability on another repository | 25--40% | stronger validation and broader contribution |
+
+For a novelty-dominant flagship rather than a methods/reproducibility-oriented
+journal, roughly halve the last two ranges.
+
+### What changed since the prior audit
+
+#### Confirmed repairs
+
+1. The repository is now pushed and synchronized. The prior two-commit
+   local-only state is repaired, and the current push/PR seal jobs are green.
+2. The Markdown abstract now replaces “pass against published” with the
+   narrower “met a predeclared threshold” phrasing and moderates the universal
+   retraction claim.
+3. The long related-work inventory has been subordinated in Markdown, and the
+   intended S.4/S.5 relocations are present in the reader.
+4. EXPERIMENT_PROGRAM.md now admits that its tracked manifest is intentionally
+   scoped and omits dependencies, removing one earlier universal-closure
+   overclaim.
+5. The Markdown manuscript does **not** import the E-E V2 number. This is the
+   scientifically correct choice.
+
+These repairs improve honesty and workflow state, but they do not cure the
+literal package or evidential defects below.
+
+#### Serious new contradiction: E-E V2 outcome and disposition
+
+The tracked aggregate is internally arithmetically consistent:
+
+| arm/contrast | NDCG@10 mean | seed SD | strict finding |
+|---|---:|---:|---|
+| AlphaFuse-package ON | 0.048379 | 0.000455 | descriptive only |
+| ID-package OFF | 0.039601 | 0.001732 | descriptive only |
+| ON minus OFF | +0.008778 | 0.001371 | 3/3 nominal seed deltas positive; exact two-sided sign p=0.25 |
+
+HR/NDCG/MRR monotonicity and aggregate arithmetic pass for the values in the
+tracked JSON. That does **not** validate provenance, reconstruction, masking,
+selection, pairing or causal interpretation.
+
+The chronology is disqualifying:
+
+1. Shared-mask ON outputs were validated/read at commit a19781f3 on July 24
+   18:21.
+2. V2 was labeled “frozen” only at 7b3cf952 on July 24 19:23 and expressly
+   reused those ON checkpoints.
+3. OFF launch followed at 83bddf83 on July 24 20:18.
+4. Commit 6464d581 on July 25 02:36 declared
+   “ADJUDICATED -> REPORTABLE” and “AlphaFuse null-space fusion helps.”
+5. Only after seeing that outcome, commit dc9f5669 at 02:42 rewrote the
+   preregistration, adjudicator and output label to describe the package as
+   outcome-visible and non-countable.
+
+This is a post-outcome correction, not a prospective adjudication. Preserve
+both states for forensic transparency, but make the correction mechanically
+authoritative. The current hybrid is unsafe: structured fields still say
+“fusion factorial,” fusion_effect_ON_minus_OFF and REPORTABLE, while free text
+says package-confounded, incomplete-mask, non-inferential and not countable.
+
+**Required immediate repair:**
+
+- Put a warning/tombstone before line 1 of PREREG_EE_V2.md: the original
+  lines 1--80 are superseded, non-normative and not countable.
+- Preserve the as-frozen protocol and 6464d581 output as immutable forensic
+  artifacts; create a separate correction/disposition rather than rewriting
+  history in place.
+- Set classification =
+  OUTCOME_VISIBLE_PROTOCOL_DEVIATED_NONCOUNTABLE, countable=false,
+  import_allowed=false, manuscript_allowed=false and verdict =
+  DESCRIPTIVE_ONLY. Reserve REPORTABLE for evidence permitted in the paper.
+- Remove “fusion effect” and “one-factor” from formal keys. Use
+  representation_package_contrast because text injection, dimensional
+  allocation, initialization and trainable capacity all differ.
+
+#### Evaluator, inference and reconstructability failures
+
+- ee_alphafuse_scores.py derives the seen set from the model's truncated
+  length-50 input, while the paper evaluator masks the complete
+  train-plus-validation history. build_alphafuse_dataset.py performs that
+  truncation. The affected 453/94,762 users are a minority, but estimand
+  identity is binary: the two implementations are not the same evaluator.
+- Training selected checkpoints using native unmasked validation, then applied
+  the last-50 masked test evaluator. Both arms must be selected and tested
+  under the same frozen fully masked convention.
+- Three seed labels do not create reliable paired inference when arm shapes
+  consume RNG differently. Even accepting the nominal pairing, 3/3 positive
+  signs give p=0.25. The aggregate supports “positive pilot direction,” no
+  stronger language.
+- The adjudicator globs files, silently skips unreadable inputs, overwrites
+  duplicate seed records, accepts arbitrary categories, trusts a Boolean
+  evaluator flag and supplied metrics, and tests only exact seed keys plus
+  finiteness. It does not bind experiment identity, arm, config, epoch,
+  ordered users, target IDs, ranks, source, dataset, environment or checkpoint
+  hashes. INCOMPLETE exits zero.
+- The tracked output cannot be independently rebuilt: it omits exact input
+  file names/hashes, per-seed arm values, n_users, user/target/rank rows,
+  selected epochs, commands, source/data/config/environment/checkpoint hashes
+  and hardware.
+- Only four paired metrics are adjudicated despite the broader promised metric
+  family. Output overwrites are not atomic.
+- The shared evaluator checks that the target score is finite but does not
+  reject non-target NaNs. NaNs fail strict-greater comparisons and can
+  spuriously improve ranks. Require every eligible score to be finite before
+  accumulation.
+
+### Algorithm and experiment optimization plan
+
+#### E-E V3: make it scientifically countable
+
+1. Freeze one immutable V3 package **before** any new arm is trained or
+   evaluated. Use at least eight fresh seeds per arm and, if feasible, an
+   independent custodian for labels and adjudication.
+2. Separate full evaluation history from the length-50 model input. Build one
+   full-history CSR/scatter mask and use the identical masked validation
+   evaluator for checkpoint selection and masked test evaluation.
+3. Decide the estimand in advance:
+   - for a package effect, compare AlphaFuse with standard-initialized ID-only
+     under resource and tuning parity;
+   - for a null-space causal effect, keep real-text architecture,
+     initialization, capacity and optimization identical and change only the
+     null-space constraint.
+4. Add zero-text, shuffled-text, random-basis/unconstrained-fusion and
+   parameter/capacity controls. Report parameter count, FLOPs, peak memory,
+   latency and tuning budget.
+5. Predeclare confidence intervals, the multiplicity family and the analysis
+   unit. If arms cannot share synchronized randomness, analyze them as
+   independent arms. Add user- and target-clustered sensitivity.
+6. Store each attempt in an immutable directory. Write a terminal sentinel
+   atomically only after ranks, metadata and hashes exist. Reject incomplete,
+   duplicate, extra or schema-mismatched attempts with nonzero exit.
+7. Release ordered per-user rank sidecars with user and target IDs, exact
+   input/output/checkpoint/source/data/config/environment hashes, selected
+   epoch, command and hardware. Reconstruct every table metric from those
+   ranks in the gate.
+
+For exact full-catalog scoring, do not materialize a batch-by-catalogue matrix.
+Compute user/item scores in catalogue chunks, compute each target score once,
+mask full histories with CSR/scatter indices, accumulate strict-greater counts
+into int32 ranks and release the resulting rank vector atomically. This keeps
+working memory O(batch × chunk) rather than O(batch × catalogue), while
+preserving exact ranks. Add synthetic and real conformance tests for ties,
+repeated items, target masking, long histories, catalogue boundaries and all
+eligible-score finiteness.
+
+#### FIR mechanism: remove the singular-start ambiguity
+
+Run one predeclared factorial with a shared nonsingular parameterization:
+
+- optimizer: Adam versus AdamW;
+- weight decay: zero versus current value;
+- gate: fixed versus trainable;
+- FIR path: residual zero-initialized convolution versus the current
+  zero-gate/zero-delta construction;
+- common initialization, parameter count and search budget across arms.
+
+Report impulse/frequency response, parameter count, FLOPs, latency, peak
+memory and seed-conditional plus user-clustered uncertainty. Until that
+factorial exists, describe the result as the **FIR-plus-initialization/
+optimizer package**, not an isolated filter mechanism.
+
+### Novelty and citation fact-check
+
+Primary-source checks narrow the contribution further:
+
+- [AlphaFuse, SIGIR 2025](https://doi.org/10.1145/3726302.3729894) already
+  learns ID embeddings in the null space of language embeddings and evaluates
+  long-tail settings. It is the closest representation-package comparator.
+- [LLMEmb, AAAI 2025](https://doi.org/10.1609/aaai.v39i11.33327) uses
+  supervised contrastive fine-tuning plus recommendation adaptation for
+  low-popularity sequential recommendation. It is absent from the manuscript.
+- [LLM2Emb, Expert Systems with Applications
+  2026](https://doi.org/10.1016/j.eswa.2026.133375) explicitly combines
+  preference-aware LLM embeddings with popularity-gated ID/text fusion. It is
+  especially close to the paper's frequency-5 observation and is absent.
+- [SAGE-Rec, WWW 2026](https://doi.org/10.1145/3774904.3792456) uses global
+  LLM semantic alignment to improve long-tail users/items while addressing the
+  head-tail tradeoff. It is absent.
+- The [official SIGIR 2026
+  program](https://sigir2026.org/SIGIR2026_program.pdf) confirms SIDSRec
+  (short), ACE (short) and BFDRec (full), so these citations are real; however,
+  paper_tex/references.bib:562--575 gives only title/authors/year/SIGIR and
+  must be completed with track, proceedings pages and DOI when available.
+- [Jannach and Chen's TORS methods
+  guidance](https://doi.org/10.1145/3800587) reinforces the need to expose
+  design choices and avoid evaluation conclusions that outrun the protocol.
+
+**Novelty judgment:** the semantic-tail phenomenon and text/ID fusion axis are
+already crowded. The defensible contribution is not “text helps tails,”
+null-space fusion, convolution, gating, or exact chunked softmax. It is a
+bounded empirical map under an executable protocol plus a specific
+artifact-gating workflow. Even that workflow is currently demonstrated in
+only one repository, so describe portability as unverified unless a second
+case study is supplied.
+
+### Manuscript, structure and claim audit
+
+- Exact fixed-blob counts: 28,260 words total; 24,921 through References;
+  22,720 through Ethics; Results about 12,250; Sections 5.3 and 5.4 together
+  about 5,117; supplement about 2,387.
+- PAPER_SPINE.md:16 says 9--13k main words, while lines 58--60 lock about 18k
+  and about 28 pages. The current 61-page reader satisfies neither. Resolve
+  the plan before calling it “submission-shaped.”
+- The 167-character title is too long. A workable alternative is:
+  **Artifact-Gated Evaluation of Text-Augmented Sequential Recommenders**.
+- The moderated abstract is an improvement but remains numeric and jargon
+  heavy. Its “trustworthy-evaluation apparatus demonstrated end-to-end”
+  phrasing exceeds what arithmetic/provenance gates establish. Use:
+  problem → method → at most two bounded findings → implication, and say
+  “artifact consistency and selected protocol checks.”
+- “Full power,” “ceiling was not left unexplored,” “refutes,” and an asserted
+  monotonic response overstate mainly outcome-dependent or single-seed probes.
+  One reported head-NDCG reversal also conflicts with “monotonic.” Replace
+  categorical verdicts with estimates, intervals and limitations.
+- Seed intervals are appropriately disclosed as conditional on one fixed
+  split in places, but enforce that label globally and add the missing
+  clustered/split/temporal uncertainty discussion.
+- The supplement heading at PAPER_SUBMISSION.md:659 still says S.1--S.3 even
+  though S.4 and S.5 occur at lines 742 and 775. “Optional/superseded”
+  language conflicts with using those sections as current-result support.
+- AlphaFuse remains “queued” at line 98 even though the V2 pilot has now
+  happened but is non-countable. State that status explicitly and point to a
+  fresh V3. PAPER_SPINE.md still plans V2 for a main ablation; remove it.
+
+### PDF and figure audit
+
+The reader has no clipping, overlap, corrupt glyphs or off-page tables. This is
+a genuine repair. Its remaining visual defects are still submission-relevant:
+
+- Page 1 lacks authors and carries the overlong title.
+- Page 29 places three dense panels in one figure; labels are too small and the
+  panel-C lines imply ordered/causal trajectories without uncertainty. The
+  caption spills to page 30.
+- Page 34's Figure 2 is largely duplicative and uses visually dichotomous
+  WIN/NULL labels without equivalence or significance support.
+- Page 58 exposes raw inline “either: - Running ... or - Adopting ...” list
+  syntax.
+- Pages 58--61 contain dense supplement tables; page 61 is only an unlabeled
+  continuation and mostly blank.
+- The reader PDF is 61 pages, 1,431,876 bytes, SHA-256
+  5d4c04f1fc9e1249f6f2e4514fc7ef25f137b21ed21dd9a9c62b93ff626052bb.
+  It is tagged but has zero bookmarks/outlines.
+- The official TORS PDF remains 53 pages, SHA-256 beginning de6f8e, last built
+  July 24 10:23, and untagged; acmsmall is 55 pages and also untagged.
+
+**Figure repair:** lead with one neutral forest plot showing every seed point,
+mean and interval. Put the parameter-matched ablation in a separate compact
+table. Move titration/resource planes to the supplement, remove connected
+lines unless x is truly ordered and repeated, and replace WIN/NULL with
+descriptive estimate/interval labels. Use consistent axes, color-blind-safe
+encoding, readable type at final column width and captions that state sample
+unit, interval construction and non-inferential status.
+
+### Release, provenance and governance audit
+
+- RELEASE_MANIFEST verification of the current tree passes for 460 files, and
+  Git verification at HEAD passes for its 322 Git entries. This is **curated
+  scope**, not repository or dependency closure.
+- The V2 manifest section includes PREREG_EE_V2.md and the adjudicator but
+  omits the tracked adjudication JSON, shared evaluator, AlphaFuse wrapper,
+  metric family, builder, exporter, adapter specification, setup/environment
+  and experiment program. A formal result whose output and dependencies are
+  omitted is not independently releasable.
+- Verification against v1.1.11-deposit returns 196 mismatches (126 entries
+  still match). The tag is 78 commits and 401 changed paths behind HEAD.
+  DOI_DEPOSIT_INSTRUCTIONS.md still quotes older, smaller staleness figures;
+  README and manuscript availability language conflict over whether the tag
+  is current or merely the last deposit boundary.
+- GitHub push and PR seals are green, but effective branch rules are empty and
+  rulesets are zero. The workflows check shallow current-tree paths and do not
+  establish manifest completeness, scientific semantics, new-branch behavior,
+  deletion/case handling or deposit reproducibility.
+
+### Prioritized concrete fix sequence
+
+1. **Today:** quarantine E-E V2 mechanically; remove REPORTABLE/fusion-effect
+   semantics; tombstone the preregistration; keep the number out of the paper.
+2. **Today:** choose one canonical semantic source, port the moderated content
+   into TeX, fill metadata, rebuild TORS and fail hygiene without a waiver.
+3. **Next:** cut to the declared journal limit. Remove repeated audit history,
+   status prose and exhaustive comparator inventories from the main narrative.
+4. **Next:** redesign Figures 1--2 and fix S.1--S.5 numbering, raw list markup,
+   continuation captions, pagination, bookmarks, tags and alt text.
+5. **Science:** freeze and execute E-E V3; run the nonsingular FIR factorial;
+   add clustered/split/temporal uncertainty and the item-text permutation
+   control.
+6. **Novelty:** add AlphaFuse, LLMEmb, LLM2Emb and SAGE-Rec treatment, with
+   executable benchmark-or-exclusion logic and complete metadata.
+7. **Release:** expand manifest dependency closure, enforce semantic CI under
+   branch protection, reproduce from a clean checkout, then cut and verify a
+   new immutable DOI deposit.
+
+### Open questions requiring author verification
+
+1. What is the actual target venue and binding word/page policy? The paper
+   cannot be optimized simultaneously for the conflicting 9--13k and 18k
+   plans.
+2. Who will supply final authors, affiliations, country, short author list,
+   corresponding author and acknowledgments?
+3. Will the scientific claim target a representation-package effect or an
+   isolated null-space mechanism? V3 controls differ materially.
+4. Can fresh ON and OFF V3 work be custodied independently, and are at least
+   eight new seeds computationally feasible?
+5. Can ordered user/target/rank artifacts and exact data/checkpoint hashes be
+   publicly deposited without licensing or privacy restrictions?
+6. Which intervals will be primary: seed-conditional, user-clustered,
+   target-clustered, split-level or temporal? State the estimand and sampling
+   unit.
+7. Will the apparatus be demonstrated on a second repository, or will the
+   contribution be explicitly scoped as a single-case workflow?
+8. Is v1.1.11-deposit to be retained only as a historical snapshot, and what
+   repository state will define the next DOI deposit?
+
+### Running checklist
+
+- [x] Fixed clean cutoff and compared it with the prior audited commit.
+- [x] Inspected the tracked E-E disposition without opening ignored/live
+  endpoint payloads.
+- [x] Recomputed basic E-E aggregate arithmetic and monotonic metric checks.
+- [x] Ran shared-evaluator and metric-family self-tests at the cutoff.
+- [x] Verified current-tree manifest and HEAD Git-manifest checks.
+- [x] Verified that the named deposit fails current verification.
+- [x] Rendered and visually inspected all reader pages plus targeted full-size
+  pages.
+- [x] Checked official TORS/acmsmall freshness, metadata and tagging.
+- [x] Fact-checked AlphaFuse, LLMEmb, LLM2Emb, SAGE-Rec and SIGIR 2026 titles
+  against primary/official sources.
+- [ ] Tombstone and mechanically quarantine E-E V2.
+- [ ] Freeze and execute reconstructible, unseen-arm E-E V3.
+- [ ] Run parameter-matched FIR factorial and stronger uncertainty analyses.
+- [ ] Add missing closest literature and complete proceedings metadata.
+- [ ] Achieve canonical-source parity and rebuild the official journal PDF.
+- [ ] Remove all submission placeholders and pass hygiene without waiver.
+- [ ] Meet one declared venue length/page limit.
+- [ ] Redesign figures and repair supplement/accessibility defects.
+- [ ] Establish full release dependency closure and protected semantic CI.
+- [ ] Reproduce from a clean checkout and issue a new verified DOI deposit.
 
 ## Audit Run - 2026-07-24 21:59 Australia/Sydney
 

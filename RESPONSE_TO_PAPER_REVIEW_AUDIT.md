@@ -9,6 +9,22 @@ timestamped response section below. The newest section always addresses the audi
 > later sections supersede. This file is an audit-trail document, **not** submission-package
 > metadata (`CANONICAL_SUBMISSION.md` governs), and is not included in deposit bundles.
 
+## Response — to Audit Run 2026-07-25 04:00 Australia/Sydney (responded 2026-07-25; MACHINE-CHECKED: adjudicate_ee_v2 -> DESCRIPTIVE_ONLY/non-countable, render scan CLEAN, strict rebuild exit 0)
+
+**Verdict accepted, including the "post-outcome correction" contradiction.** The audit is right that my E-E V2 relabel was applied AFTER the REPORTABLE result, leaving structured fields ("fusion factorial / REPORTABLE") fighting the prose. This tick made the disposition mechanically authoritative and did the quick manuscript fixes; the large items are the forward path (much of it the in-flight 08:00 rewrite).
+
+| # | Finding (CONFIRMED) | This tick | Forward |
+|---|---|---|---|
+| Required repair | E-E V2 hybrid unsafe (fields say fusion/REPORTABLE, text says non-countable) | **`adjudicate_ee_v2` now emits `classification=OUTCOME_VISIBLE_PROTOCOL_DEVIATED_NONCOUNTABLE, countable=false, import_allowed=false, manuscript_allowed=false, verdict=DESCRIPTIVE_ONLY`; renamed `fusion_effect`→`representation_package_contrast`; arm labels de-fused; INCOMPLETE now exits nonzero; sign-test note (3/3, exact two-sided p=0.25). PREREG_EE_V2 TOMBSTONE prepended (as-frozen lines superseded/non-normative/non-countable, preserved as immutable forensic; correction additive).** Structured fields and prose now agree | — |
+| Evaluator | Incomplete-history masking (last-50 not full); native-unmasked selection; non-target NaN not rejected; non-reconstructible; 4/12 metrics; non-atomic | Disclosed in PREREG_EE_V2 E1 | E-E **V3**: full-history CSR mask, same masked evaluator for val+test, reject all non-finite eligible scores, chunked O(batch×chunk) scoring, rank sidecars, reconstruct metrics in the gate |
+| Pairing | 3/3 positive = p=0.25; "positive pilot direction" only | sign-test note added | V3: ≥8 fresh seeds, clustered uncertainty, independent-arm |
+| Title | 167 chars too long | **Shortened to "Artifact-Gated Evaluation of Text-Augmented Sequential Recommenders"** (audit's alt) | — |
+| Supplement | heading said S.1–S.3 but S.4/S.5 (current tables) sit under it, mislabeled superseded | **Heading neutralised + note distinguishes superseded S.1–S.3 from CURRENT S.4–S.5** | — |
+| Abstract/claims (already) | "pass"→threshold; inventory 8→3; "Every retraction" removed; V2 not imported to md | acknowledged done | abstract voice polish ("artifact consistency + selected protocol checks", not "apparatus end-to-end"); replace "full power/refutes/monotonic" with estimates+intervals; global fixed-split caveat |
+
+**Disclosed open (large, forward; not dropped):** E-E **V3** full rebuild (above); **FIR nonsingular factorial** (optimizer×decay×gate×init; until then keep "FIR-plus-init/optimizer package"); **citations** — add LLMEmb (AAAI 2025, 10.1609/aaai.v39i11.33327), LLM2Emb (ESWA 2026, 10.1016/j.eswa.2026.133375), SAGE-Rec (WWW 2026) and benchmark-or-exclusion + narrow the tail novelty; complete SIDSRec/ACE/BFDRec bib entries; **manuscript** cut §5.3–§5.4 (~5,117→1–1.5k words) + reconcile PAPER_SPINE (9–13k vs 18k) + remove V2-as-main-ablation from the spine; **figures** (Fig 1 → forest plot; Fig 2; page-58 raw list; page-61 blank; **tagging/bookmarks**); **propagate to `paper_tex`** (stale + placeholders + untagged — the #1 desk-review blocker); **fresh deposit** (v1.1.11 is 63 commits stale — not referenced as current); custody (branch protection, add-then-delete seal gap); author/affiliation/contact metadata (**human TODO**). **Counted set (MI V2, Office V3) unchanged; no claim broadened; E-E yields no countable number.**
+
+
 ## Response — to Audit Run 2026-07-24 21:59 Australia/Sydney (responded 2026-07-25; MACHINE-CHECKED: adjudicate_ee_v2 relabeled + re-run, render scan CLEAN, strict rebuild exit 0)
 
 **Verdict accepted in full — all seven E-E V2 defects CONFIRMED, and the finding that my "fusion effect" was not a fusion isolation is correct.** This tick executed the critical/quick honesty fixes; the large repairs are the forward path (much of it the in-flight rewrite the maintainer set to an 08:00 deadline, tracked in `PAPER_DEADLINE_PLAN.md`).

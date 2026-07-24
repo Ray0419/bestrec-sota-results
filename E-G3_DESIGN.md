@@ -1,3 +1,11 @@
+> **CORRECTIONS (audit 2026-07-24 09:59, accepted).** Two claims in the design below were overstated and are corrected here:
+>
+> 1. **Custody is not genuine withholding as drafted.** Because the authors retain the public full-period AR2023 data, the frozen cutoff, and a deterministic builder, any 'locally encrypted labels' can be regenerated at will — that is not withholding. A COUNTABLE successor requires an **independent custodian / evaluation service** that ALONE possesses non-reconstructible test labels and joins them to **signed, prediction-only** submissions (the model side emits ranked lists/scores; it never sees or computes on labels). The 'confirm evaluator writes metric payloads' vs 'adjudicator is the only label reader' wording was contradictory: the model side writes PREDICTIONS only; the custodian computes metrics. Absent such a custodian, E-G3 on locally-held labels is at best another seed-stability check, not a confirmation.
+>
+> 2. **The temporal split as drafted leaks and mis-names the cold subset.** Applying AR2023 5-core over the FULL period uses post-cutoff activity for k-core membership (leakage); a pre-cut-only k-core instead excludes genuinely zero-history items. The official timestamp is REVIEW time, not product-release/availability, and the metadata expose no launch field — so 'item-arrival cold' is unsupported. The corrected design uses a **causal pre-cut user cohort**, a **point-in-time candidate/metadata snapshot**, an explicit **forecast horizon + censoring rule**, and names the subset **'first-observed-interaction cold'** (not 'item-arrival cold') unless external availability evidence is obtained.
+
+---
+
 # E-G3 DESIGN NOTE — the clean, countable sparse-warm replication (DESIGN stage; NOT yet frozen, NOT launched)
 
 **Status: DESIGN only.** This note resolves the three structural problems that

@@ -277,20 +277,34 @@ def verify(m):
     # audit 2026-07-24 03:59: NEGATIVE COMPLETENESS GATE. Every tracked GOVERNED
     # file (preregistrations, adjudicators, cloud drivers/hooks) must be a
     # manifest key, so governed surfaces cannot silently escape protocol_code.
-    _keys = set(m.get("protocol_code", {})) | set(m.get("submission_docs", {}))
-    try:
-        _tracked = subprocess.run(["git", "ls-files"], cwd=ROOT,
-                                  capture_output=True, text=True).stdout.split()
-    except Exception:
+    # audit 2026-07-24 09:59 #9: widened patterns, NUL-safe listing, fail-closed
+    # on git error (was a silent except -> []). protocol_code only (submission_docs
+    # is not code custody). Governed = preregs, adjudicators, campaign run_*/fuse_*
+    # drivers, *_DESIGN.md, cloud/**, and CI workflows.
+    _keys = set(m.get("protocol_code", {}))
+    _r = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT,
+                        capture_output=True, text=True)
+    if _r.returncode != 0:
+        bad.append("governed-completeness: `git ls-files` failed -- cannot "
+                   "prove governed coverage (fail-closed)")
         _tracked = []
+    else:
+        _tracked = [x for x in _r.stdout.split(chr(0)) if x]
+    _drv = ("run_ea_", "run_ef_", "run_eg", "run_coldfuse", "fuse_cold",
+            "fuse_ease", "ensemble_fuse")
     for _t in _tracked:
+        _base = _t.split("/")[-1]
         _gov = ((_t.startswith("PREREG_") and _t.endswith(".md"))
                 or (_t.startswith("_bestrec_run/adjudicate_") and _t.endswith(".py"))
+                or (_t.startswith("_bestrec_run/") and _t.endswith(".py")
+                    and any(_base.startswith(d) for d in _drv))
+                or _t.endswith("_DESIGN.md")
+                or _t.startswith(".github/workflows/")
                 or _t.startswith("cloud/"))
         if _gov and _t not in _keys:
             bad.append(f"governed-completeness: {_t} matches a governed "
-                       "pattern (prereg/adjudicator/cloud) but is not in "
-                       "protocol_code -- add it (audit 2026-07-24)")
+                       "pattern but is not in protocol_code -- add it "
+                       "(audit 2026-07-24 09:59)")
 
     if bad:
         print(f"RELEASE MANIFEST VERIFY: FAIL ({len(bad)} problem(s); "

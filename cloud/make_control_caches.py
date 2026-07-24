@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """PREREG_TEXTPERM_V1 control caches — DETERMINISTIC (frozen rng; NumPy
-Philox is platform-stable, so every pod and the local adjudicator produce
+NumPy default_rng (PCG64) is platform-stable across the pinned NumPy, so every pod and the local adjudicator produce
 byte-identical caches; the adjudicator re-derives and hash-matches them).
 
 Per category (MI, VG):

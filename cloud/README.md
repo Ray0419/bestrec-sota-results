@@ -1,3 +1,9 @@
+# VOID (audit 2026-07-24): E-B / PREREG_TEXTPERM_V1 is TOMBSTONED.
+
+**Do NOT run any command in this file.** The E-B design is void (pseudoreplication, un-normalized random control, arm/pod aliasing); its execution scripts (`bootstrap_pod.sh`, `make_shards_eb.py`, `run_shard.py`, `eval_final_model.py`, `run_all_pod.sh`) hard-refuse. The shard files under `cloud/shards/` and any `controls/` references are stale (the generator now targets `controls_v2/`). A corrected PREREG_TEXTPERM_V2 in a new code namespace is required before any run. The text below is retained only as the voided original.
+
+---
+
 # Cloud fleet (RunPod) — operator guide
 
 Everything here is launch-ready; the prereg (PREREG_TEXTPERM_V1.md) is

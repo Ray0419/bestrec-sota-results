@@ -1,6 +1,6 @@
 # ⛔ STOP -- STALE (audit 2026-07-24 03:59): DO NOT UPLOAD v1.1.11-deposit AS THE CURRENT RELEASE.
 
-`v1.1.11-deposit` is **37 commits behind HEAD**; the current manifest mismatches it in 161 entries (manuscript/PDF/code/figure drift). The strict chain verifies the CURRENT WORKTREE (green), NOT this tag (named-deposit gate = RED). v1.1.11 is preserved as historical provenance only. A NEW immutable deposit must be cut and fresh-clone-verified AFTER manuscript/protocol stabilization (E-G3 clean path + author metadata). The instructions below are retained for the eventual procedure but MUST NOT be executed against v1.1.11 now.
+`v1.1.11-deposit` is **42+ commits behind HEAD**; the current manifest mismatches it in ~189 entries (manuscript/PDF/code/figure drift). The strict chain verifies the CURRENT WORKTREE (green), NOT this tag (named-deposit gate = RED). v1.1.11 is preserved as historical provenance only. A NEW immutable deposit must be cut and fresh-clone-verified AFTER manuscript/protocol stabilization (E-G3 clean path + author metadata). The instructions below are retained for the eventual procedure but MUST NOT be executed against v1.1.11 now.
 
 ---
 

@@ -78,4 +78,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import sys as _s
+    print("VOID: E-B / PREREG_TEXTPERM_V1 is tombstoned (audit 2026-07-24); "
+          "this script hard-refuses. A corrected PREREG_TEXTPERM_V2 in a new "
+          "namespace is required before any run.", file=_s.stderr)
+    _s.exit(3)

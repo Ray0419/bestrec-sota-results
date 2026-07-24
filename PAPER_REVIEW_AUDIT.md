@@ -4,7 +4,128 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-24 03:59 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-24 09:59 Australia/Sydney)
+
+1. **[CONFIRMED, rejection-level false custody claim]** E-G3 exists only as a
+   design note, and its proposed test labels are not genuinely withheld. The
+   authors retain the public full-period AR2023 interactions, the frozen cutoff
+   and a deterministic builder, so a locally encrypted copy of derived labels
+   can be regenerated at will. The design also says a confirm evaluator writes
+   metric payloads while the adjudicator is the only label reader; both cannot
+   be true. A countable successor requires an independent custodian/evaluation
+   service that alone possesses non-reconstructible labels and joins them to
+   signed prediction-only submissions.
+2. **[CONFIRMED, enforcement claim disproved]** The new seal is advisory, not a
+   repository or server boundary. No workflow invokes `ci_seal_check.sh`; fresh
+   clones do not install the hooks; `--no-verify` bypasses them; and a simulated
+   standard new-branch pre-push at HEAD returned exit 0. The pre-push net-diff
+   logic also misses add-then-delete endpoint blobs, while CI scans only the
+   HEAD path set against a mutable name-only allowlist. Claims that CI catches
+   hook-less clones, that sealing is DONE, or that it would have stopped both
+   earlier exposures are false.
+3. **[CONFIRMED E-B V1 is still launchable]** The tombstoned adjudicator and
+   top-level orchestrator now refuse, but `cloud/README.md` still says the
+   campaign is launch-ready and gives exact commands; `bootstrap_pod.sh`,
+   `make_shards_eb.py`, `run_shard.py`, eight V1 shard files and
+   `eval_final_model.py` remain active. The sharder points to old `controls/`
+   while the generator now writes `controls_v2/`, so a fresh launch can waste
+   compute and fail selectively. The response's “all P0 execution paths
+   disabled” claim is false.
+4. **[CONFIRMED temporal-design leakage and estimand ambiguity]** E-G3 proposes
+   applying AR2023 5-core before a global time cut. Full-period k-core membership
+   uses future activity, while pre-cut-only k-core would exclude genuinely
+   zero-history items. The official timestamp is review time, not product
+   release time, and the item metadata expose no launch/availability field;
+   “item-arrival cold” is therefore unsupported. Define a causal pre-cut user
+   cohort, a point-in-time candidate/metadata snapshot, a forecast horizon and
+   censoring rule, and call the subset “first-observed-interaction cold” unless
+   external availability evidence exists.
+5. **[CONFIRMED manuscript/compiled-paper claim drift]** Canonical Markdown now
+   calls the thinning result inconclusive and the mechanism untested, but the
+   current TeX/PDF says “confirming on one stratum, refuting on the other,” “the
+   refutation is unaffected,” and “the positive mechanism.” The canonical
+   conclusion itself still calls the check “refuting” despite saying no
+   prospective equivalence margin exists. A figure legend equates
+   nonsignificance with a “tail null.” This is a current scientific-claim
+   contradiction, not cosmetic drift.
+6. **[CONFIRMED ambiguous E-G2 descriptive runtime]** E-G2 completed 104/104
+   phases with zero recorded failure, but remains exposed and uncountable. The
+   no-flag adjudicator correctly refuses before reading endpoints; with
+   `--descriptive-only`, however, it still prints “first reader,” can emit bare
+   `W2-POS-COST` and `W2-SEM-FAIL`, and writes a generic adjudication JSON with
+   no top-level exposed/countability/import classification. It can still be
+   misread by humans or downstream tooling as a confirmatory result.
+7. **[CONFIRMED stale chronology and sealing prose]** The E-G2 erratum/program
+   say the exposure occurred about 59 minutes before a declared one-time
+   adjudication, although no E-G2 adjudication occurred. They also say ignore
+   rules mean no commit can sweep endpoints and only a final adjudication JSON
+   will be committed. The accurate record is: the exposure commit carried 54
+   COLDFUSE2 files, including 14 confirm JSON/NPZ **pairs** (28 confirmation
+   artifacts); completion later remained descriptive and unadjudicated.
+8. **[CONFIRMED deposit contradiction]** The STOP banner is directionally
+   correct but already stale: `v1.1.11-deposit` is 42 commits behind and the
+   current manifest has 189 mismatches against it (126 entries match), not
+   37/161. README, canonical, manuscript, TeX and lower deposit instructions
+   still call that tag current, the last verified content boundary, archival or
+   ready to upload. The current tree verifies; the named deposit does not.
+9. **[CONFIRMED manifest-scope overclaim]** The new negative-completeness gate is
+   a useful repair and current verification passes 453 files/315 Git blobs, but
+   it governs only root `PREREG_*.md`, `adjudicate_*.py` and `cloud/**` names.
+   It omits `E-G3_DESIGN.md`, the E-G2 completion record, general build/run/fuse
+   drivers, workflows and environment locks; accepts governed files merely in
+   `submission_docs`; ignores `git ls-files` failure; and is not NUL-safe.
+   “Every governed surface can no longer escape” is unproved.
+10. **[CONFIRMED incomplete E-B control repair]** Old unnormalised random caches
+    were removed and the generator now targets a versioned root, but no
+    `controls_v2` artifacts exist and no V2 preregistration exists. Its docstring
+    falsely promises Philox while `default_rng` uses PCG64, names the old output
+    root and omits normalization. Unit-norm random rows also do not necessarily
+    match every source row's norm or covariance/anisotropy.
+11. **[CONFIRMED no new scientific result]** E-G2 completion is an operational
+    record only: no endpoint value was opened in this audit, no E-G2
+    adjudication artifact exists, and no number was integrated. Its done events
+    carry no output/checkpoint/environment digests, the ledger is not signed or
+    hash-chained, and the completed ignored endpoints have no immutable content
+    manifest. That is adequate only for the stated descriptive/non-counted
+    disposition.
+12. **[CONFIRMED E-G1 evidence remains limited]** The retained result is
+    outcome-visible, protocol-deviated optimizer-seed stability on one repeatedly
+    exposed split. Literal Gate 5 fails MI/VG; exact sign/Wilcoxon inference is
+    weak at five seeds; mid/head effects are uniformly negative; most tail-hit
+    gain is cancelled; true frequency-zero targets show only an observed top-10
+    null; all selections hit the old grid ceiling; and valid causal controls are
+    absent.
+13. **[CONFIRMED close prior art; PLAUSIBLE incremental novelty]** AlphaFuse and
+    LLM2Emb directly cover language/ID integration and long-tail sequential
+    recommendation. The manuscript's defensible novelty remains the particular
+    FIR/optimizer package, narrow empirical case study, and unusually detailed
+    governance/failure map. It cannot claim broad novelty in semantic fusion,
+    frequency-aware fusion, long-tail recommendation, temporal evaluation or
+    ANN cold-item retrieval without head-to-head benchmarks or a documented
+    exclusion.
+14. **[CONFIRMED writing and figure burden]** The canonical source is about
+    28,438 word-like tokens, the TORS review PDF is 53 pages and forensic
+    chronology dominates the scientific throughline. `PAPER_DRAFT.md` still
+    contains an explicit “delete before submission” section and stale causal
+    declarations. The R1/R2 legend mislabels nonsignificance; E-G needs a
+    compact trust-boundary/timeline and retrieval-versus-reranking decomposition,
+    not more forensic prose in the body.
+15. **[CONFIRMED PDF/submission blockers; AUTHOR VERIFICATION for portal rules]**
+    Full render-and-visual review of all 169 pages found no clipping, overlap,
+    corrupt figure or unreadable table. But every title page still displays
+    maintainer/author/institution/country placeholders; the two venue PDFs are
+    untagged; the reader has no outline and an almost-empty final page. Current
+    portal mode, article type and length allowance still require named-author
+    verification.
+16. **[CONFIRMED carried-forward validity/readiness blockers; AUTHOR
+    VERIFICATION where stated]** No untouched externally held test set, temporal
+    replication or external-domain confirmation exists; Beauty is outside the
+    five-category transfer study; close baselines are discussed more than
+    benchmarked; and ethics, data-license/redistribution, sidecar linkability,
+    conflicts, author metadata and accessibility are unresolved. Recommendation
+    remains **reject / not ready**.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-24 03:59 Australia/Sydney)
 
 1. **[CONFIRMED, rejection-level manuscript/protocol contradiction]** The
    canonical ledger, README and program correctly classify E-G2 as exposed and
@@ -453,6 +574,686 @@ plausible risks.
     dirty earlier campaigns, seed-only uncertainty, weak comparator framing,
     stale archival deposit and a roughly 26,852-word/50-page narrative remain
     independent rejection risks. Recommendation remains **reject / not ready**.
+
+## Audit Run - 2026-07-24 09:59 Australia/Sydney
+
+### Reviewer verdict
+
+**Reject / not ready for a top journal.** This interval contains material and
+welcome governance progress. The paper, draft, TeX and PDFs now state that E-G2
+was exposed and cannot confer counted status; E-G2 completed without a recorded
+phase failure but was not adjudicated or integrated; the E-B V1 adjudicator and
+top-level orchestrator refuse; the current manifest verifies; and E-G3 is
+explicitly labelled design-only.
+
+The main problem has moved rather than closed. The proposed E-G3 remedy is not
+yet an untouched, independently held evaluation. Its labels are deterministic
+functions of public full-period data that remain available to the authors, so
+encrypting one locally generated copy does not prevent reconstruction. The
+supposed seal has no server workflow and a confirmed new-branch bypass. Lower-
+level E-B V1 entry points remain launchable. In addition, the current compiled
+TORS paper is scientifically stronger than the canonical Markdown on the
+thinning result and mechanism. These are submission-controlling failures.
+
+No new scientific result is available at this cutoff. **This audit did not open,
+parse or report any E-G2 confirmation JSON/NPZ metric value.** It inspected only
+source, commit history, filenames, sizes, hashes, completion ledgers, structural
+metadata, release controls and rendered pages for E-G2.
+
+The strongest defensible scientific statement is unchanged:
+
+> On historically exposed fixed splits, an outcome-visible,
+> protocol-deviated evaluation-time history-centroid score shows optimizer-seed
+> stability for reallocating top-10 utility toward frequency-1-to-5 items. It is
+> descriptive, not independent confirmation; it does not demonstrate genuine
+> item cold start, semantic causation or population/temporal generalization, and
+> it carries systematic mid/head costs.
+
+### Frozen evidence boundary
+
+- Operative cutoff local: `2026-07-24T09:59:18.3783951+10:00`.
+- Operative cutoff UTC: `2026-07-23T23:59:18.3783951Z`.
+- HEAD = upstream = merge base:
+  `425f04633027b4be25750b9c17d85ffee2c67a49`; worktree clean at cutoff.
+- Previous cumulative audit: 2,474,572 bytes, SHA-256
+  `3999eb5c4d1ebf2a0d90f415b312799b595914cf6ac9d1ccc3ef20e816a96b4b`.
+- E-G2 ledger: 101,708 bytes, 210 records, SHA-256
+  `cd8429bf2c58b946c2c7c9b074953d91f914a844230325bbe2ec9e296c9df14b`.
+- E-G2 status: 103 bytes, SHA-256
+  `79d147fc3ab3d4d5871bc9215163c2e79b8499b516cafe5f7e2d544cb1c00d8a`;
+  `complete`, `done=104`, `skipped=0`, `failed=0`, timestamp
+  `2026-07-23T20:33:35.311906Z`.
+- E-G2 log: 868,622 bytes, 21,495 CRLF lines, SHA-256
+  `8e68b48c718aef39593481da57f489383ec1a2dd9a267d438b88dada7ff53d07`.
+- Current release manifest: 72,159 bytes, SHA-256
+  `f7aa3a63bc1af8b7e3a3ce26e49c04f5f86a0e8baf6488406739f74a2b143aba`.
+- PDF artifacts:
+  - reader, 61 pages, 1,430,029 bytes, SHA-256
+    `0486593cbb67b554ce9fcc7edc81c86cbf843593065b22a579ad3d1fc6e918e4`;
+  - TORS review, 53 pages, 474,310 bytes, SHA-256
+    `9b210a547b38e48e485625fa2d7b7411850446b2c0d9d25dd0579b8a36085984`;
+  - ACM-small, 55 pages, 482,486 bytes, SHA-256
+    `5c3388b89e9c1a4febf9e7dc82759e04ad0d2d08b8be6a6dbe9d47763b1d9ec9`.
+
+All three E-G2 completion blobs were last written at the terminal event and were
+unchanged in the completion commit. The fixed cutoff excludes any later edit.
+
+### What changed since 03:59
+
+#### Confirmed repairs
+
+- Section 5.8 in Markdown, draft and TeX now says E-G2 was intended as a
+  replication but was exposed before adjudication, confers no counted status
+  and contributes no current number. The reader and both venue PDFs carry this
+  classification.
+- `PREREG_COLDFUSE_V2.md` now has a prominent exposed/protocol-deviated erratum.
+  `_bestrec_run/adjudicate_coldfuse_v2.py` refuses without
+  `--descriptive-only` before it opens metric-bearing artifacts.
+- E-G2 completed structurally: all 104 planned phase executions have matching
+  successful terminal records, and a campaign-end event exists.
+- `PREREG_TEXTPERM_V1.md`, its adjudicator and `cloud/run_all_pod.sh` now refuse
+  V1 adjudication/orchestration. Old unnormalised random control files were
+  removed and the generator targets a new `controls_v2` namespace.
+- Deposit instructions now begin with a conspicuous STOP/STALE warning.
+- The release-manifest verifier has a new negative-completeness check and the
+  current tree passes 453 file checks plus 315 Git-backed blob checks.
+- `E-G3_DESIGN.md` clearly says DESIGN only, not frozen and not launched. It
+  correctly recognizes that a new estimand, custody, structural-null retention,
+  exact integrity gates, environment pinning and a cold-capable retrieval branch
+  are needed.
+- Every page of all three current PDFs renders without clipping, overlap,
+  missing figures, corrupt glyphs or tables outside the page.
+
+#### New, reopened or still-overclaimed failures
+
+- E-G3's local encrypted-label plan is reconstructible from public raw data and
+  its evaluator/adjudicator roles contradict each other.
+- Seal hooks are installed only in this clone, no workflow invokes the CI script,
+  and the pre-push new-branch path has a reproduced false-negative.
+- E-B V1 remains launchable below the top-level disabled wrapper.
+- TeX and the compiled venue PDFs retain stronger mechanism/refutation language
+  than the canonical source.
+- E-G2's optional descriptive output remains machine-ambiguous.
+- Release/deposit and manifest-completeness claims remain broader than the
+  implemented checks.
+
+### E-G2 completion: operational closure only
+
+The completion ledger is internally coherent without opening any endpoint
+payload. It contains exactly one campaign launch, 104 phase launches, 104 phase
+completions and one campaign end; every recorded return code is zero. The phase
+plan and completion are:
+
+| Phase | Planned | Completed |
+|---|---:|---:|
+| Train | 40 | 40 |
+| Fusion | 24 | 24 |
+| Confirm | 40 | 40 |
+| **Total** | **104** | **104** |
+
+The five-category structural inventory is complete: MI/IS/VG have 24 phases
+each and Office/CDs have 16 each. Locally there are 40 base JSONs, 24 val-only
+fusion JSONs, 40 confirmation JSONs, 40 confirmation NPZs and 40 checkpoints.
+The confirmation payloads remained opaque to this audit. The terminal event
+records 818.7 minutes wall time, 104 done, zero skipped and zero failed.
+
+This completion does **not** repair the exposure. The tracked exposure set is
+exactly 54 COLDFUSE2 paths: 14 bases, 12 fusions, 14 confirm JSONs and 14 confirm
+NPZs. Thus the accurate wording is “54 artifacts committed in the exposure
+commit, including 14 confirmation JSON/NPZ pairs,” not “14 artifacts” and not
+“pre-exposure artifacts.” The remaining complete endpoints are ignored/local.
+No `coldfuse_v2_adjudication.json` was produced and no E-G2 number entered the
+paper.
+
+The completion record also has limits:
+
+- done events contain return code and duration but no output digest, checkpoint
+  digest, environment digest or signed command identity;
+- the JSONL is append-only by convention, not hash-chained or signed;
+- ignored completed endpoint files have no frozen external content manifest;
+- ledger/status/log are Git-tracked but absent from `RELEASE_MANIFEST.json`.
+
+Those gaps are acceptable only because E-G2 is explicitly non-counted forensic
+material. Do not elevate “104/104” into scientific integrity or confirmation.
+
+### E-G2 descriptive adjudicator: fail closed all the way
+
+The initial guard is a real repair: a normal invocation exits 3 before result
+files are read. The `--descriptive-only` path is not yet safe for downstream use:
+
+- the runtime banner still says it is the “first reader of sequestered test
+  values”;
+- a positive estimate with a failed cost gate receives bare `W2-POS-COST`;
+- the family output remains bare `W2-SEM-FAIL` or “semantic-alignment
+  interpretation retained”;
+- the generic `coldfuse_v2_adjudication.json` schema has no top-level
+  `classification`, `counted`, `import_allowed`, exposure reason, launch hash or
+  descriptive-only namespace.
+
+This directly contradicts `RESPONSE_TO_PAPER_REVIEW_AUDIT.md`'s claim that every
+W2 string carries the exposed/descriptive qualifier. Either delete the runtime
+path entirely or rename its output to, for example,
+`coldfuse_v2_descriptive_exposed.json`, use neutral `D2-*` labels, hard-code
+`classification=EXPOSED_PROTOCOL_DEVIATED`, `counted=false` and
+`import_allowed=false`, and make every importer reject it from counted claims.
+
+### Endpoint sealing: the new controls are not an enforcement boundary
+
+The versioned hooks parse and the current manual check passes, but the stronger
+claims in `EXPERIMENT_PROGRAM.md` and `E-G3_DESIGN.md` do not follow.
+
+1. **No CI exists.** There is no `.github/workflows` directory and no strict
+   build invocation of `cloud/ci_seal_check.sh`. A hook-less clone is therefore
+   not checked automatically.
+2. **Confirmed new-branch bypass.** For a zero remote SHA, pre-push sets the
+   range to the local commit and runs `git diff --name-only <commit>`, comparing
+   the commit with the clean worktree. A synthetic standard new-branch push
+   record at HEAD returned `exit=0`, even though the HEAD tree contains the 54
+   allowlisted matching paths.
+3. **History is not scanned.** Existing-branch logic compares only remote and
+   local endpoint trees; a secret added and deleted in an intermediate commit
+   remains in pushed history while the net diff is clean. CI likewise scans
+   only the HEAD tree.
+4. **The exception is mutable and name-only.** The 54-file allowlist has no
+   expected blob OID/SHA, exposure commit or mutation rule. Changing an
+   allowlisted payload passes. A branch can weaken the regex or expand the
+   allowlist in the same change.
+5. **Hooks are advisory.** `git commit --no-verify` and `git push --no-verify`
+   bypass them, and fresh clones do not install them automatically.
+6. **Coverage is incomplete.** The case-sensitive regex does not match E-G1's
+   plain COLDFUSE names despite the “would have stopped both exposures” claim;
+   several lowercase, compressed, renamed-label and alternate-finaleval names
+   evade it. Line parsing is not NUL-safe.
+
+Required repair:
+
+- add a protected, required server-side workflow that scans **every introduced
+  commit and blob** from the trusted merge base, using the trusted base-branch
+  policy rather than the proposed branch's mutable policy;
+- enumerate new commits with `rev-list` and inspect each with root-aware
+  `diff-tree`, NUL-delimited; reject endpoint-like content even if later deleted;
+- bind each forensic exception to exact path + blob OID/SHA + exposure commit;
+- require CODEOWNER review for policy/allowlist changes and prohibit self-
+  amendments in an endpoint-bearing change;
+- make every E-G3 driver resolve its output root and abort if the path is inside
+  any Git worktree; keep labels/endpoints in a separately controlled service,
+  not merely a differently named local directory.
+
+Until this is deployed and tested on new branch, force-add, policy-mutation,
+allowlist-mutation and add-then-delete cases, call the hooks **local guardrails**,
+not structural secrecy or completed CI enforcement.
+
+### E-G3 design audit: holdout, custody, estimand and statistics
+
+#### Official-data fact-check
+
+The official AR2023 dataset documentation defines `timestamp` as **time of the
+review**, and its item metadata fields include title, ratings, descriptions,
+price and parent ASIN but no product launch/availability timestamp. Therefore
+the first review after `T*` is not evidence that the product arrived then; it is
+only the first observed review interaction in this dataset. See the
+[official AR2023 dataset card](https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023/blob/9ac2e0be0124e4738c17c5917e2bc79d6107026c/README.md).
+
+The official processing page explicitly presents 5-core/de-duplication **before
+data splitting** and already supplies absolute-timestamp train/validation/test
+splits with fixed `t1`/`t2`. A new temporal protocol is still useful, but neither
+temporal splitting nor this basic construction is novel, and blindly applying
+full-period 5-core before `T*` future-conditions the cohort. See
+[AR2023 5-core processing](https://amazon-reviews-2023.github.io/data_processing/5core.html).
+
+This concern is established more broadly: global-timeline violations create
+offline recommendation leakage ([Ji et al., 2023](https://doi.org/10.1145/3569930)),
+and a recent sequential-recommendation study finds model rankings and validity
+depend materially on split/target choice; its global-temporal **First** target
+was less aligned than Last/Random/Successive alternatives
+([Gusak et al., 2025](https://doi.org/10.1145/3705328.3748164)). E-G3 currently
+chooses the first post-cut interaction without addressing that evidence.
+
+#### Why the proposed encrypted holdout is reconstructible
+
+`E-G3_DESIGN.md` proposes recording the raw-data SHA, committing a deterministic
+builder and cutoff, and encrypting the derived target-label file under
+`%LOCALAPPDATA%`. Because the raw interaction corpus is public and available to
+the authors, the builder and `T*` regenerate the same targets. Encryption at
+rest protects that particular file, not the information. The phrase
+“structurally incapable of reading test labels” is false under this design.
+
+The custodian also cannot be only a local role separation. A confirm evaluator
+cannot write metric payloads without either labels or an oracle, while the next
+paragraph says only the adjudicator reads labels. Correct architecture:
+
+1. authors receive only pre-cut histories, a point-in-time candidate snapshot,
+   public feature schema and a frozen submission interface;
+2. author code emits signed predictions/top-K item IDs and nonmetric completion
+   metadata only;
+3. an independent custodian alone holds a non-reconstructible future/private
+   label partition, joins predictions to labels, computes all endpoints and
+   applies the frozen gates;
+4. the service emits one signed verdict plus the predeclared disclosure bundle,
+   with an append-only access/replay log.
+
+If local encryption is used as defense in depth, specify authenticated
+encryption such as AES-GCM or ChaCha20-Poly1305, nonce and associated-data rules,
+envelope/key ownership, frozen public key and campaign ID, signed commitments,
+access log, rollback-resistant consume marker and key revocation. “AES to an
+adjudication key” is not an operational custody protocol.
+
+#### Causal temporal cohort and candidate universe
+
+Before any builder is written, freeze:
+
+- **user eligibility from pre-`T*` interactions only**, including minimum
+  history and duplicate/timestamp-tie rules;
+- a separate point-in-time item catalog and metadata snapshot available at
+  prediction time; never use future `rating_number`, `average_rating`, price or
+  later-edited text as features;
+- exact target definition, forecast window, censoring and treatment of users
+  with no event in-window;
+- parent-ASIN/duplicate resolution, cross-category users and candidate leakage;
+- a label-free cutoff-selection algorithm based on minimum cohort/event counts,
+  not endpoint quality;
+- a documented overlap audit against every historical split/artifact.
+
+Do not run full-future k-core then split. A practical design is a pre-cut warm
+user cohort plus a point-in-time full catalog that may contain items with zero
+pre-cut interactions. Label the latter “zero-pre-cut-review-interaction” unless
+an external catalog source proves actual product availability/release. Reserve
+one final block behind the custodian; earlier rolling-origin blocks may be
+development/robustness blocks but cease to be untouched after feedback.
+
+#### Retrieval and reranking must be separated
+
+The proposed text-only ANN branch changes the candidate generator, while the
+paper otherwise says full-catalog scoring. It therefore mixes retrieval recall
+with reranking quality. Start with deterministic exact normalized-cosine search
+(`IndexFlatIP` when cosine vectors are normalized) as the reference; Faiss's
+[official index guide](https://github.com/facebookresearch/faiss/wiki/Faiss-indexes)
+documents the exact and approximate index tradeoffs. If exact search is
+infeasible:
+
+- freeze the embedding snapshot, item order, library/container, index type,
+  construction/search parameters, dedup, score calibration and index hash;
+- compare ANN candidates against exact-search recall@K and report latency,
+  memory and repeatability;
+- give REF and SEL the identical candidate union/budget;
+- use a factorial table separating candidate generator (collaborative/text/
+  union) from reranker (REF/SEL), plus pure-text and no-text controls;
+- report candidate coverage/recall separately from conditional reranking
+  NDCG/HR and end-to-end utility.
+
+#### Statistical design required before freeze
+
+The design's “at least 8-10 seeds” is a rule of thumb, not a power analysis.
+The preregistration must define:
+
+- the user/item/time-block estimand and hierarchical model or cluster-robust
+  resampling unit;
+- anticipated event counts, minimum detectable effect and minimum number of
+  cold targets per category/block;
+- one primary endpoint, category/block aggregation and multiplicity across
+  secondary endpoints, controls and policy comparisons;
+- missing/failing run and structural-null rules fixed before outcomes;
+- application-supported mid/head/latency margins and a frozen utility rule;
+- simultaneous intervals/robustness checks across temporal blocks;
+- no adaptation after an early block unless a predeclared sequential design
+  with error spending is used.
+
+Optimizer seeds quantify pipeline stochasticity. They do not replace user/item
+sampling, time-block replication, catalog shift or external-domain uncertainty.
+
+### E-B V1: partial disable, broken namespace and control design
+
+The V1 preregistration is clearly void; the adjudicator hard-returns 3 before
+data reads; and `run_all_pod.sh` exits 3. Those are genuine repairs. They do not
+support the response's claim that V1 execution is structurally disabled:
+
+- `cloud/README.md` says “Everything here is launch-ready” and gives exact pod,
+  shard and first-reader instructions;
+- `bootstrap_pod.sh` installs dependencies, regenerates caches and tells the
+  operator to run a shard;
+- `make_shards_eb.py` regenerates all 30 V1 pipelines; `run_shard.py` executes
+  any supplied shard and packages endpoints; `eval_final_model.py` remains a
+  live metric-bearing evaluator;
+- eight tracked `eb_shard*.json` files still define the full V1 experiment.
+
+The active harness is now internally inconsistent. Bootstrap writes
+`cache_5core/controls_v2`, but the sharder and frozen shard JSONs reference
+`cache_5core/controls`. The old directory has six permutation files and no
+random files; `controls_v2` does not exist. Aligned jobs can begin consuming GPU
+while control jobs later fail.
+
+Hard-refuse V1 at the top of **every** entry point, archive/remove V1 shard files,
+and replace the cloud guide with a VOID banner. Any successor must use an E-B2
+namespace, separate output root and new preregistration. For controls:
+
+- correct the generator documentation: `default_rng` is not Philox; either use
+  `Generator(Philox(seed))` explicitly or accurately record PCG64, NumPy version
+  and realized digests;
+- match each source row's realized norm rather than assume exact one;
+- prefer covariance/anisotropy-matched nulls (for example whiten-random-recolour)
+  and exact-frequency permutations;
+- cross map and optimizer seed in the analysis, randomize arms within machine/
+  seed blocks, and freeze the paired/hierarchical estimator before launch.
+
+### Manuscript, TeX, claim and writing audit
+
+#### Section 5.8 repair landed, but wording remains too strong
+
+The E-G2 reclassification is now present across current paper surfaces, the
+single final paired confirmation pass is distinguished from upstream test
+exposures, and frequency-zero wording is scoped to observed HR/NDCG@10. However,
+“intended independent/clean replication” is still inaccurate because E-G2 reused
+the historically exposed split. Use “intended run-sequestered replication on
+the same historically exposed split.” Replace “sole remaining path” with “only
+proposed path, contingent on a not-yet-frozen untouched holdout and independent
+custody.”
+
+#### Current TeX/PDF contradict the canonical source
+
+The Markdown says the thinning tail result is inconclusive, has no prospective
+equivalence margin and leaves the mechanism untested. The generated TeX says:
+
+- “confirming on one stratum, refuting on the other”
+  (`paper_tex/sections/05-results.tex:143`);
+- “The refutation is unaffected” (`:151`);
+- “This is the positive mechanism behind the refutation” (`:186`).
+
+These strings appear in the current TORS PDF on pages 26, 28 and 29. The
+canonical conclusion and current PDFs also say “refuting, not confirming,
+central check” despite the methods paragraph saying it is not a powered
+refutation. Rename consistently to a **non-reproduction/inconclusive check** and
+say “candidate untested explanation.” Add phrase-level parity assertions to the
+Markdown-to-TeX build for every claim-status sentence, not only numeric cells.
+
+This drift also falsifies `CANONICAL_SUBMISSION.md`'s assertion that TeX is
+generated output “never edited divergently.” Make canonical-to-TeX generation
+one-way and reproducible, or stop making that assurance. The broader statement
+that “every printed claim recomputes” is also too wide: the 175-cell graph covers
+declared numerical cells/campaign verdicts, not citations, novelty, expository
+tables, prose or external constants. Narrow it to “every artifact-gated
+numerical cell and enumerated campaign verdict within the declared graph,” and
+list exclusions.
+
+The abstract needs the same discipline. It says all per-user sidecars are public,
+while Section 8 says Office V1/V3 and FIR-breadth sidecars remain local and only
+hash-pinned/on request. State exactly which TFV2 sidecars are deposited and
+which are not. Replace the universal “Every retraction, negative result, and
+design defect is reported in full” with “Known material retractions and
+protocol deviations are disclosed”; the current audit itself demonstrates that
+the universal is not supportable.
+
+README's opening says FIR component isolation is open, although completed E-A
+supports a FIR-specific matched-arm estimate. Preserve the correct nuance:
+E-A supports a FIR-specific component prospectively, but it does not
+retroactively decompose the historical FIR-plus-initialization/optimizer package.
+
+The R1/R2 figure generator labels grey points “tail null (no significant
+difference).” Nonsignificance is not a demonstrated null. Use “difference not
+detected / inconclusive” and avoid encoding a verdict in the color constant
+name.
+
+#### Availability and release prose contradict the STOP banner
+
+README calls `v1.1.11-deposit` the current archival bundle; canonical,
+manuscript and TeX call it the current deposit tag/last verified content
+boundary; and line 43 of the deposit guide still instructs uploading its
+“current” bundle. Replace these everywhere with “latest historical deposit
+snapshot; stale relative to this manuscript; not the submission deposit,” and
+disable obsolete operational steps rather than relying on a banner above them.
+
+README's strict-chain sentence still says 420 manifest files while the verifier
+checks 453. Generate the count or omit it. Fix “an version-controlled” to “a
+version-controlled.” Correct the false “about 59 minutes before adjudication”
+chronology and the false ignore/seal claims.
+
+#### Structure and journal fit
+
+The canonical manuscript contains about 28,438 word-like tokens; the TORS review
+PDF is 53 pages. The Results section has become a forensic log interleaved with
+the science. For a top-journal revision:
+
+1. state one thesis and two primary estimands in the abstract/introduction;
+2. keep the counted evidence in one compact results spine;
+3. move launch chronology, superseded adjudicators, retry narratives and full
+   audit forensics to a versioned supplement with a one-page deviations table;
+4. retain limitations at equal prominence without making them the narrative;
+5. delete/quarantine `PAPER_DRAFT.md`'s explicit “Drafting notes (delete before
+   submission)” and stale causal-status declarations;
+6. do not append E-G3 as another long section—replace the current E-G forensic
+   block if a valid result eventually exists.
+
+### Novelty and closest-work check
+
+E-G3's temporal split, semantic retrieval and text/ID fusion are not by
+themselves novel. The manuscript already narrows architectural novelty in
+Section 5.8, which is appropriate. Two particularly close methods remain
+benchmark-or-explain-away obligations, and they are distinct rather than one
+generic adaptive-fusion class:
+
+- [AlphaFuse](https://arxiv.org/abs/2504.19218) learns ID information in the
+  null space of language embeddings and evaluates long-tail/cold-start settings.
+- [LLM2Emb](https://doi.org/10.1016/j.eswa.2026.133375) combines collaborative
+  and semantic embeddings with popularity-gated fusion for long-tail sequential
+  recommendation.
+
+Neither proves the exact FIR/history-centroid/custody package is known. They do
+make broad claims about frozen-language fusion, adaptive long-tail weighting or
+semantic/collaborative integration indefensible. Predeclare objective closest-
+baseline criteria: implement them under the same temporal/candidate protocol or
+document a concrete incompatibility, parameter/compute budget and expected
+direction. The most defensible contribution is an auditable empirical package
+and failure map, not a new general fusion family.
+
+### Manifest, release and deposit audit
+
+Current-tree checks are genuinely green:
+
+- `update_release_manifest.py --verify`: 453 files, zero missing release assets;
+- `--verify-git HEAD`: 315 Git-backed entries match the HEAD blobs;
+- HEAD, upstream and merge base are identical at the cutoff.
+
+The negative-completeness change is useful but incomplete. Its governed-name
+definition omits the E-G3 design, E-G2 completion files, general `run_*`,
+`fuse_*`, `eval_*`, temporal builders, workflows, lockfiles and container
+definitions. It combines `protocol_code` and `submission_docs` rather than
+requiring governed files in the protocol registry. `git ls-files` return status
+is ignored, whitespace splitting is unsafe, `--regen` rehashes existing keys
+instead of discovering new governed files, and `--verify-git <tree>` does not
+run the tree-level completeness test.
+
+Use an explicit/generated governed inventory with exact campaign roots and file
+roles; parse `git ls-files -z` with checked return status; fail on missing and
+unexpected entries; add synthetic negative tests; apply the same inventory to
+the target tree in `--verify-git`.
+
+The named deposit remains red. `v1.1.11-deposit` is 42 commits behind HEAD; the
+current manifest compared with that tag reports 189 mismatches (172 absent,
+17 blob mismatches; 126 entries match). The STOP banner's 37/161 counts and all
+“current tag” prose are stale. Do not upload, move or silently rebuild the tag.
+After scientific stabilization, cut a new immutable tag, run current-tree plus
+named-tag manifest/completeness checks, rebuild from a fresh public clone and
+round-trip-download/hash the actual release bundle.
+
+### PDF, figure and submission-readiness audit
+
+Following the PDF workflow, all 61 + 53 + 55 pages were rendered and inspected,
+with title, changed-results and final pages checked at full resolution. No page
+has clipping, overlap, a corrupt/missing figure, unreadable table or broken
+glyph. This is a confirmed visual repair.
+
+Remaining blockers:
+
+- reader page 61 contains only a short continuation paragraph and is almost
+  entirely blank;
+- all title pages visibly contain maintainer/author metadata placeholders; TORS
+  also shows placeholder short-author text in running heads;
+- TORS and ACM-small PDFs are untagged; the reader has no outline;
+- the scientific claim drift above is present in the visually clean PDFs;
+- current TORS article type, single-blind identity requirements and portal
+  length policy remain author verification.
+
+The two mechanism figures also overstate the evidence visually. In the full-
+page three-panel composite, panel B's legend obscures early points, panels B/C
+connect means or ratios with causal-looking lines but show no seed/draw
+uncertainty, and panel C has dense overlapping annotation. The separate R1/R2
+plane largely duplicates panel C; large arrows plus “tail stays NULL” make a
+one-draw, corrected `p=.058` association look identified, while the legend
+equates nonsignificance with a null result. Retain the scientifically useful
+comparison, but replace lines/arrows with neutral point/range glyphs, show seed
+dots and draw sensitivity or move the mechanism panels to supplement, use
+“difference not detected (inconclusive),” remove `sugg.` shorthand, and put
+provenance filenames in the caption/supplement rather than the plot title.
+
+Required/recommended visuals for a valid E-G3 result:
+
+1. **custody trust-boundary diagram:** author/repo/prediction producer, signed
+   hashes only, external label vault, independent scorer, one-time verdict;
+2. **temporal/censoring timeline:** pre-cut cohort, validation cut, `T*`, point-
+   in-time catalog, target window, censoring and non-overlapping blocks;
+3. **retrieval-reranking matrix:** equal-K collaborative/text/union retrieval
+   crossed with REF/SEL reranking, exact-retrieval recall and end-to-end NDCG;
+4. **category x temporal-block forest plot:** simultaneous intervals and event
+   counts, with optimizer-seed and block uncertainty distinguished;
+5. **validation Pareto plot:** tail benefit versus mid/head/latency guardrails,
+   frozen selection marked before test release.
+
+### Concrete repair order
+
+#### P0 — before any E-G3 freeze, E-B launch or new paper build
+
+1. Retract “seal DONE/CI catches/structurally incapable/would stop both” claims;
+   implement protected required history-scanning CI using trusted policy and
+   digest-bound forensic exceptions.
+2. Hard-refuse E-B V1 in `bootstrap_pod.sh`, `make_shards_eb.py`, `run_shard.py`
+   for V1 shard IDs and `eval_final_model.py`; archive shards and replace the
+   launch-ready cloud guide with a tombstone.
+3. Rewrite E-G3 custody so authors emit predictions only and an independent
+   custodian alone owns non-reconstructible labels and metrics. Freeze AEAD,
+   keys, ACL, logging, signing and replay/consume policy.
+4. Redesign the temporal cohort before writing the builder: pre-cut eligibility,
+   point-in-time catalog/metadata, cutoff rule, horizon/censoring, overlap audit,
+   target choice and one final non-adaptive block.
+5. Remove TeX/Markdown/PDF refutation/mechanism contradictions, rebuild all
+   PDFs and add claim-phrase parity tests.
+6. Hard-disable or uniformly reclassify the E-G2 descriptive adjudicator and
+   its machine-readable output.
+7. Synchronize every deposit surface; disable the stale upload steps and remove
+   volatile counts or generate them.
+
+#### P1 — build a scientifically valid successor
+
+1. Write and test the temporal snapshot builder on synthetic data, including
+   future-k-core, metadata-time, tie, duplicate, censoring and overlap failures.
+2. Implement prediction-only bundles, content-addressed atomic outputs, signed
+   completion commitments and an independent scoring service.
+3. Establish exact retrieval first; add deterministic ANN only with frozen
+   parameters and exact-recall/latency/memory validation.
+4. Freeze estimands, power/MDE, cold-event minima, hierarchical/clustered
+   inference, multiplicity, structural-null/missing-run rules and utility
+   margins in `PREREG_COLDFUSE_V3.md` before any test access.
+5. Run exact-frequency permutation, frequency-only, covariance-matched random,
+   pure-text, no-text and closest-method controls in crossed seed/environment
+   blocks.
+6. Expand the generated manifest inventory to all builders/drivers/evaluators,
+   workflow policy, environment locks, completion records and signed service
+   artifacts; test negative completeness on both worktree and target tag.
+
+#### P2 — submission and release readiness
+
+1. Rewrite to a concise journal narrative; move forensic history and superseded
+   material to supplement; fix figure semantics and final-page whitespace.
+2. Supply real author/affiliation/contact/short-author metadata after confirming
+   the portal's single-blind mode, article type and length policy.
+3. Complete ethics/privacy, dataset/license/redistribution, sidecar-linkability,
+   conflicts, funding and accessibility statements with named-author sign-off.
+4. Generate tagged/accessible PDFs and machine-readable alt text where the
+   venue workflow permits.
+5. Only after stabilization, cut and fresh-clone-verify a new immutable deposit
+   tag and bundle; never move `v1.1.11-deposit`.
+
+### Open questions requiring author verification
+
+1. Who, institutionally and technically, can act as an independent E-G3
+   custodian, and what non-public/non-reconstructible label data can that party
+   alone possess?
+2. Is the aim a public-data prospective temporal holdout (honest but author-
+   reconstructible) or a genuinely external confirmation service? These support
+   different claim strength.
+3. What exact product/catalog evidence was available at prediction time? If no
+   availability timestamp exists, will “item-arrival” be removed?
+4. Which target definition is scientifically intended—first, last, random or
+   successive event in a frozen forecast window—and why, given the recent
+   split-strategy evidence?
+5. Will all temporal blocks remain sealed until one family adjudication, or can
+   early blocks inform later choices? If the latter, what sequential error
+   control governs?
+6. Is E-G2's forensic descriptive runtime needed at all, or may it be permanently
+   disabled to eliminate classification risk?
+7. Is any E-B successor still planned? If yes, who will approve a new V2 design
+   before any cloud provisioning?
+8. What current TORS article type, submission-mode flags and length limits apply
+   to this 53-page review PDF?
+9. Who approves public redistribution/licensing of derived splits, caches and
+   per-user sidecars, and what linkage/re-identification assessment exists?
+10. Will the authors accept the narrower contribution—FIR/optimizer package plus
+    empirical governance/failure map—if closest-method benchmarks do not support
+    a broader fusion claim?
+
+### Running checklist update
+
+- [x] E-G2 exposure/non-countability propagated to manuscript, draft, TeX and
+  current PDFs.
+- [x] E-G2 preregistration visibly tombstoned.
+- [x] Normal E-G2 adjudicator invocation refuses before endpoint reads.
+- [x] E-G2 operational campaign complete 104/104 with terminal ledger event.
+- [x] No E-G2 endpoint metric value opened or reported in this audit.
+- [x] E-B V1 adjudicator and top-level orchestrator refuse.
+- [x] Old unnormalised E-B random cache artifacts removed; versioned output root
+  selected in source.
+- [x] Current manifest verifies 453 files and 315 HEAD blobs.
+- [x] Deposit instructions have a visible STOP/STALE banner.
+- [x] E-G3 explicitly labelled design-only/not frozen/not launched.
+- [x] All 169 current PDF pages rendered and visually inspected; no clipping or
+  overlap found.
+- [ ] Remove every remaining E-G2 confirmatory/first-reader label and make any
+  descriptive schema machine-unambiguously non-counted.
+- [ ] Correct E-G2 exposure chronology, artifact counts and ignore/seal claims.
+- [ ] Hard-disable every E-B V1 launch/eval surface and archive shard configs.
+- [ ] Create an independent, non-reconstructible E-G3 custody arrangement.
+- [ ] Define causal pre-cut cohort, point-in-time catalog/metadata, target window,
+  censoring, overlap audit and one final held-out temporal block.
+- [ ] Implement required protected CI scanning introduced history with trusted
+  immutable policy and digest-bound exceptions.
+- [ ] Separate prediction production, label joining, metric computation and
+  signed adjudication.
+- [ ] Freeze exact retrieval and candidate-generation/reranking factorial before
+  any ANN approximation.
+- [ ] Freeze power, estimands, multiplicity, hierarchical inference, missing-run
+  handling and utility margins before launch.
+- [ ] Benchmark AlphaFuse and LLM2Emb or provide concrete documented exclusions.
+- [ ] Repair Markdown/TeX/PDF claim parity and figure nonsignificance wording.
+- [ ] Broaden/generated manifest completeness; fail closed on Git enumeration;
+  apply it to the named target tree.
+- [ ] Synchronize all stale deposit prose; cut no new tag until the science and
+  author metadata stabilize.
+- [ ] Condense the manuscript and move forensic chronology/superseded analyses
+  to supplement; remove draft-only notes.
+- [ ] Supply author metadata and resolve ethics, privacy, license, accessibility,
+  conflicts and current portal requirements.
+
+### Audit action
+
+Updated this cumulative audit only. No manuscript, protocol, code, result,
+endpoint, figure, PDF or release artifact was edited. Temporary rendered-page
+copies under `tmp/pdfs/audit_20260724_0959/` are ignored and not part of the
+paper or release boundary.
+
+**Post-cutoff concurrency note.** After the fixed 09:59 evidence boundary and
+while this audit entry was being written, a separate process began modifying
+manuscript/protocol/code/manifest/workflow surfaces in the shared workspace.
+Those uncommitted post-cutoff changes are not attributed to this audit, were not
+folded into the verdict above and require a fresh, stable-cutoff review in the
+next run. This entry deliberately preserves the clean `425f0463` boundary.
 
 ## Audit Run - 2026-07-24 03:59 Australia/Sydney
 

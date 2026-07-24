@@ -120,4 +120,7 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.stderr.write("VOID: E-B / PREREG_TEXTPERM_V1 is tombstoned (audit "
+                     "2026-07-24); this shard runner hard-refuses. A corrected "
+                     "PREREG_TEXTPERM_V2 in a new namespace is required.\n")
+    sys.exit(3)

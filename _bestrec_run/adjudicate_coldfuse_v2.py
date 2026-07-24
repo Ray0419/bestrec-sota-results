@@ -223,7 +223,7 @@ def main():
             print("  -", m)
         return 3
 
-    print("PREREG_COLDFUSE_V2 adjudication (mechanical; first reader of the "
+    print("PREREG_COLDFUSE_V2 DESCRIPTIVE-ONLY summary -- EXPOSED, NON-COUNTABLE (audit 22:00/03:59); NOT a first reader, NOT confirmatory (mechanical; the "
           "sequestered test values)")
     rows = {}
     for tag in CATS:
@@ -288,7 +288,7 @@ def main():
 
     outp = os.path.join(HERE, "coldfuse_v2_adjudication.json")
     with open(outp, "w", encoding="utf-8") as f:
-        json.dump({"verdicts": verdicts, "family_semantic": family,
+        json.dump({"classification": "EXPOSED_PROTOCOL_DEVIATED_NON_COUNTABLE", "countable": False, "note": "E-G2 exposed by git add -A pre-adjudication; descriptive only; no W2 verdict is importable as evidence", "verdicts": verdicts, "family_semantic": family,
                    "rows": rows, "alpha": ALPHA, "margin": F15_MARGIN,
                    "cost_gates": COST_GATES}, f, indent=2)
     print(f"wrote {outp}")

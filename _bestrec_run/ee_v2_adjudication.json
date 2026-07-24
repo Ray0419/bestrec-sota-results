@@ -1,0 +1,153 @@
+{
+ "experiment": "E-E V2 fusion factorial",
+ "category": "Video_Games",
+ "arm_ON": "AlphaFuse (null-space fusion)",
+ "arm_OFF": "SASRec (ID-only, no fusion)",
+ "required_seeds": [
+  22,
+  23,
+  24
+ ],
+ "arm_family_mean_sd": {
+  "ON": {
+   "HR@5": {
+    "mean": 0.058399,
+    "sd": 0.000588
+   },
+   "HR@10": {
+    "mean": 0.090124,
+    "sd": 0.0007
+   },
+   "HR@20": {
+    "mean": 0.133014,
+    "sd": 0.00071
+   },
+   "HR@50": {
+    "mean": 0.209022,
+    "sd": 0.001195
+   },
+   "NDCG@5": {
+    "mean": 0.038188,
+    "sd": 0.000404
+   },
+   "NDCG@10": {
+    "mean": 0.048379,
+    "sd": 0.000455
+   },
+   "NDCG@20": {
+    "mean": 0.059171,
+    "sd": 0.000467
+   },
+   "NDCG@50": {
+    "mean": 0.074187,
+    "sd": 0.000568
+   },
+   "MRR@5": {
+    "mean": 0.031572,
+    "sd": 0.00037
+   },
+   "MRR@10": {
+    "mean": 0.035738,
+    "sd": 0.000392
+   },
+   "MRR@20": {
+    "mean": 0.038673,
+    "sd": 0.000402
+   },
+   "MRR@50": {
+    "mean": 0.041057,
+    "sd": 0.000417
+   }
+  },
+  "OFF": {
+   "HR@5": {
+    "mean": 0.047628,
+    "sd": 0.00247
+   },
+   "HR@10": {
+    "mean": 0.07427,
+    "sd": 0.002923
+   },
+   "HR@20": {
+    "mean": 0.110431,
+    "sd": 0.003381
+   },
+   "HR@50": {
+    "mean": 0.176308,
+    "sd": 0.00404
+   },
+   "NDCG@5": {
+    "mean": 0.031039,
+    "sd": 0.001593
+   },
+   "NDCG@10": {
+    "mean": 0.039601,
+    "sd": 0.001732
+   },
+   "NDCG@20": {
+    "mean": 0.048692,
+    "sd": 0.001857
+   },
+   "NDCG@50": {
+    "mean": 0.061703,
+    "sd": 0.001988
+   },
+   "MRR@5": {
+    "mean": 0.025611,
+    "sd": 0.001314
+   },
+   "MRR@10": {
+    "mean": 0.029114,
+    "sd": 0.001367
+   },
+   "MRR@20": {
+    "mean": 0.031582,
+    "sd": 0.001407
+   },
+   "MRR@50": {
+    "mean": 0.033646,
+    "sd": 0.001427
+   }
+  }
+ },
+ "fusion_effect_ON_minus_OFF": {
+  "NDCG@10": {
+   "per_seed_delta": [
+    0.010205,
+    0.008657,
+    0.007471
+   ],
+   "mean": 0.008778,
+   "sd": 0.001371
+  },
+  "HR@10": {
+   "per_seed_delta": [
+    0.018625,
+    0.015228,
+    0.013708
+   ],
+   "mean": 0.015854,
+   "sd": 0.002518
+  },
+  "MRR@10": {
+   "per_seed_delta": [
+    0.007643,
+    0.006637,
+    0.005593
+   ],
+   "mean": 0.006624,
+   "sd": 0.001025
+  },
+  "NDCG@50": {
+   "per_seed_delta": [
+    0.014038,
+    0.012417,
+    0.010995
+   ],
+   "mean": 0.012483,
+   "sd": 0.001523
+  }
+ },
+ "label": "DESCRIPTIVE within-method ablation of AlphaFuse's text/ID null-space fusion on our VG split under one shared masked evaluator; PAIRED by seed; NON-INFERENTIAL; not a comparison to our own model; no best-system or ranking claim asserted; MiniLM-384 substitution disclosed.",
+ "verdict": "REPORTABLE"
+}

@@ -37,6 +37,17 @@ boundary (MI V2, Office V3; FORBIDDEN list) applies verbatim; the rewrite
 reorganises/tightens and invents no results.
 
 ## Progress log
-- 2026-07-25 00:1x — 9 rewrite commits: abstract, front matter, §3.7, §5.5, §6.1,
-  §6.5 tightened; Supplement boundary S.1–S.3 established. 28,411 -> ~28,115 words,
-  61 -> 60 pp. (Relocation step 1 structural; word drop comes with the table moves.)
+- 2026-07-25 00:1x — 9 commits: abstract, front matter, §3.7, §5.5, §6.1, §6.5
+  tightened; Supplement boundary S.1–S.3 established.
+- 2026-07-25 00:55 — **M1 relocation DONE + M2 language DONE (ahead of schedule):**
+  §5.5 screening-log table -> Supplement Table S1 (§S.4); §5.4 titration ladder ->
+  Supplement Table S2 (§S.5); language pass (assertive "refuted/flat-null" ->
+  "non-reproduced/near-zero/no detected trend", disclaimers + numbers kept). 12
+  rewrite commits; every one render-CLEAN + paper-check 0 mismatch + strict exit 0.
+  Main body is now structurally submission-shaped (exhaustive tables + superseded
+  material live in the Supplement).
+- REMAINING to 08:00: (a) optional further tightening of intro/related/conclusion
+  (plateaus under keep-caveats); (b) **M3 paper_tex reconcile** — mirror the md
+  prose + the new Supplement S.4/S.5 structure into paper_tex/sections, rebuild
+  (H1–H9); this is the heavy, less-automatable piece; (c) **M4 deposit** tag +
+  from-zero verify. Author metadata stays a TODO.

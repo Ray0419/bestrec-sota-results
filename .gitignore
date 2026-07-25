@@ -99,3 +99,8 @@ _bestrec_run/results_EE_*.log
 _bestrec_run/results_EE_*.json
 _bestrec_run/ee_v2_adjudication.json
 _bestrec_run/results_EE_*.prev*
+
+# Canonical-FIR breadth campaign endpoints (sealed until adjudication; PREREG_FIR_CANONICAL_BREADTH)
+_bestrec_run/results_*_FIRCANON_*.json
+_bestrec_run/results_*_FIRCANON_*.perusers.npz
+_bestrec_run/fir_canonical_breadth_status.json

@@ -1,6 +1,6 @@
-hygiene scan: PAPER_TORS.pdf | pages: 41
+hygiene scan: PAPER_TORS.pdf | pages: 40
 placeholder+forbidden failures: 0
-review list (SOTA mentions + negated claim-wordings): 18
+review list (SOTA mentions + negated claim-wordings): 19
   REVIEW negated-ok: paired\s+superiority :: .0271 published and 0.0279 environment-matched regeneration) — not SOTA and not paired superiority; (ii) a minimal gradient-active causal FIR residual is isolated from its identi
   REVIEW negated-ok: pinned(?:[-\s]\w+)?[-\s]reproduction :: luded from the artifact graph) 0.13234 final stronger than ours; not a faithful pinned-environment reproduction Our full model (0.0673) exceeds their published SASRec (0.0573) but does not re
   REVIEW SOTA-mention :: /0.03024 vs 0.0271 published and 0.0279 environment-matched regeneration) — not SOTA and not paired superiority; (ii) a minimal gradient-active causal FIR residual
@@ -8,7 +8,8 @@ review list (SOTA mentions + negated claim-wordings): 18
   REVIEW SOTA-mention :: published SASRec 0.0573), shown to be architectural (ID-only ≈0.0656), with no SOTA claim. (The earlier v1-era SASRec-SBERT number 0.05509 ± 0.00035 has been retir
   REVIEW SOTA-mention :: rry no confirmatory weight. 5.1 Video_Games — multi-seed reference numbers (NOT SOTA) Our headline result (Table 1) is built on the HSTU-style pure-PyTorch encoder
   REVIEW SOTA-mention :: s zero training occurrences (§5.3 cohort disclosure). We therefore do not claim SOTA over TIGER/LIGER/BLaIR. HSTU-BLaIR is the relevant stronger AR2023 Video_Games
-  REVIEW SOTA-mention :: relevant stronger AR2023 Video_Games 5-core reference and blocks a SASRec-SBERT SOTA claim. 2026 semantic-ID / generative retrieval line. Recent 2026 work reports A
+  REVIEW SOTA-mention :: relevant stronger AR2023 Video_Games 5-core reference and blocks a SASRec-SBERT SOTA claim. Concurrent protocol landscape. SID-MLP [ Guo et al. 2026, arXiv:2605.126
+  REVIEW SOTA-mention :: r (0.0125). These are efficiency and sanity-check observations, not priority or SOTA claims. 5.2 Canonical causal FIR isolation and cross-category transfer (legacy-
   REVIEW SOTA-mention :: sus-identity improvement under the frozen configuration—no external comparator, SOTA, or distributional-superiority claim. The artifact gate binds both printed resu
   REVIEW SOTA-mention :: contrast of the FIR-plus-initialization/optimizer package; nothing broader, no SOTA language, no comparator statement. The filter package is thus multi-seed-suppor
   REVIEW SOTA-mention :: eration 0.0279; no paired or distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA cla

@@ -24,29 +24,7 @@ The HSTU-BLaIR paper reports on AR2023 Video\_Games 5-core LLOO with identical d
 
 \textbf{Our full model (0.0673) exceeds their published SASRec (0.0573) but does not reach their HSTU (0.0741) or HSTU-BLaIR (0.0760) on Video\_Games.} Our local compatibility-port HSTU-BLaIR run reached final full-eval NDCG@10 \texttt{0.07382} (the best-epoch reading exists only in an unretained WSL log and is excluded from the artifact graph); the run is stronger than SASRec-SBERT but carries SM120/fbgemm validity caveats.
 
-What this paper provides relative to HSTU-BLaIR:
-
-\begin{itemize}
-\tightlist
-\item
-  Multi-seed std (n=5 vs their n=1)
-\item
-  Same-protocol multi-seed text-vs-ID ablation (ID-only vs text-augmented) under matched training (the earlier 3-method encoder ablation was retired with its v1-era rows; see the manifest's RETIRED entries)
-\item
-  Open-source preprocessing pipeline
-\item
-  Compact SASRec implementation details and bug fixes
-\end{itemize}
-
-What this paper does NOT provide:
-
-\begin{itemize}
-\tightlist
-\item
-  A new leaderboard result; HSTU-BLaIR's reported 0.0760 remains the stronger external reference.
-\item
-  A faithful pinned-environment end-to-end HSTU-BLaIR reproduction. (The encoder core block matches the reference research code exactly at a mirrored aligned configuration --- equation/path equivalence, not trained-configuration identity --- \S\ref{sec:3.2}, and the reference implementation's research path runs locally under data-movement shims as environment-caveated single-run regenerations, \S\ref{sec:5.6} --- but a pinned-GPU end-to-end reproduction on compatible hardware remains future work.)
-\end{itemize}
+Relative to HSTU-BLaIR, this paper contributes multi-seed internal ablations, a released preprocessing path, and implementation diagnostics---not a leaderboard result. The reported 0.0760 remains the stronger Video\_Games reference. Core-block equality at one aligned configuration (\S\ref{sec:3.2}) and environment-caveated local regenerations (\S\ref{sec:5.6}) do not constitute a pinned end-to-end reproduction.
 
 \textbf{Older published baselines on different protocols} (NOT directly comparable; for context only):
 
@@ -54,17 +32,9 @@ What this paper does NOT provide:
 
 \textbf{Comparability caveat}: TIGER and LIGER evaluate on the older Amazon Reviews 2014 dataset, not AR2023. The BLaIR paper does evaluate on AR2023 Video\_Games but uses a by-timestamp split (no k-core filter) and a different downstream architecture (UniSRec), producing numbers \textasciitilde{}3-4\ensuremath{\times} lower than our 5-core LLOO numbers. The 5-core filter guarantees \ensuremath{\ge}5 interactions per user and item in the full filtered sequence (which substantially eases the benchmark relative to the by-timestamp variant); note that after the leave-last-out split a small set of items retains zero \emph{training} occurrences (\S\ref{sec:5.3} cohort disclosure). We therefore do \textbf{not} claim SOTA over TIGER/LIGER/BLaIR. HSTU-BLaIR is the relevant stronger AR2023 Video\_Games 5-core reference and blocks a SASRec-SBERT SOTA claim.
 
-\textbf{2026 semantic-ID / generative retrieval line.} Recent 2026 work reports Amazon Reviews 2023 numbers in three distinct, non-interchangeable setups. (i) \textbf{Same-statistics AR2023 5-core LLOO} (the HSTU-BLaIR protocol family we evaluate in): the concurrent preprints \textbf{SID-MLP} \citep[arXiv:2605.12617]{guo2026sidmlp} and \textbf{Latte} \citep[arXiv:2605.06331]{hou2026latte} report leave-one-out numbers on the same MI/VG dataset statistics (Latte reports MI NDCG@10 0.0331 and VG 0.0515). \textbf{GrIT} \citep[arXiv:2602.19728]{shyam2026grit} likewise reports Video\_Games numbers on matching 5-core statistics with full-item-set ranking (NDCG@10 0.0588); our 5-seed 0.0673 \ensuremath{\pm} 0.0003 is numerically higher, but we have not audited concurrent preprints' training and protocol details for full comparability, so we record this as a point-estimate observation, not a claim. (GrIT also reports same-statistics numbers for Industrial\_and\_Scientific and CDs\_and\_Vinyl --- the two categories of our pre-declared FIR-breadth campaign; we note this for literature completeness only: the FIR-breadth results are internal paired filter-vs-no-filter contrasts under their frozen wording and make no comparison against GrIT or any external number.) We cite these works for completeness of the protocol family and make \textbf{no comparative claim} against concurrent arXiv-only work; their published point estimates do not alter the comparator choice --- the published HSTU-BLaIR 0.0406 remains the strongest Musical\_Instruments reference we know of in this family, and it is the point estimate our pre-declared confirmation exceeds (\S\ref{sec:5.2}). (ii) \textbf{The SID line's own filtered universe}: \textbf{ReSID} \citep[arXiv:2602.02338]{liang2026resid} reports MI NDCG@10 = 0.0346 in its main ranking table under its own filtering; \textbf{ChronoSID} \citep[arXiv:2607.03918]{huang2026chronosid}, in its output-level MI table, reports 0.0345 for ChronoSID versus 0.0325 for its ReSID reproduction. Each uses the SID line's filtered universe (57,359 users / 23,742 items / 490,522 interactions), which differs from the 57,439 / 24,587 / \textasciitilde511,835 HSTU-BLaIR-family statistics we and the comparator share; metrics and protocols are not interchangeable across the two lines, so we discuss this line rather than claim against it. (iii) \textbf{Older Amazon-2014 protocols}: TIGER/LIGER numbers predate AR2023 and are not comparable (\S\ref{sec:2.1}, Appendix A.3). (iv) \textbf{Other AR2023-adjacent, non-interchangeable protocols}: \emph{Augment or Not?}~\citep[arXiv:2505.23053]{huang2025augment} benchmarks LLM recommenders on AR2023 Musical\_Instruments / Industrial\_and\_Scientific under 5-core leave-one-out (best listed MI NDCG@10 0.0282); \textbf{DiffuReason}~\citep[arXiv:2602.09744]{jiang2026diffureason} evaluates an AR2023 ``Video \& Games'' universe with different rating filtering and statistics (67,658 users / 25,535 items / 654,867 interactions, vs this family's 94,762 / 25,612 / \textasciitilde814,586), so its HSTU-backbone numbers are not comparable to any number in this paper --- we cite it precisely to flag that non-comparability, which also reinforces why we make no Video\_Games claims. A further candidate, \textbf{SILLM4Rec} \citep[MMAsia 2025; DOI 10.1145/3743093.3771011]{wu2025sillm4rec}, is excluded on a now-confirmed protocol distinction (full text inspected 2026-07-19): its evaluation samples 500 disjoint Video\_Games test users, caps histories at the most recent 20 items, and ranks one held-out positive against nine randomly selected negatives (its \S4.1.3--4.1.4), so its reported Video\_Games NDCG@10 of 0.6073 (its Table 1) is a ten-candidate sampled-ranking number, not comparable to any full-catalog value in this paper. Finally, three further 2026 semantic-ID works are cited for coverage and are explicitly out of scope: \textbf{UniSGR} \citep[arXiv:2607.04068]{sun2026unisgr} evaluates semantic-ID generation-plus-ranking on private industrial logs with online A/B testing, not public AR2023 LLOO; \textbf{DIGER} \citep[arXiv:2601.19711]{fu2026diger} studies differentiable semantic-ID learning; \textbf{ACERec} \citep[arXiv:2602.13573]{xia2026acerec} targets long semantic IDs across six benchmarks. Per the checked evidence none evaluates the AR2023 full-catalog LLOO protocol family on our categories, and we make no comparison against any of them.
+\textbf{Concurrent protocol landscape.} SID-MLP \citep[arXiv:2605.12617]{guo2026sidmlp}, Latte \citep[arXiv:2605.06331]{hou2026latte}, and GrIT \citep[arXiv:2602.19728]{shyam2026grit} report same-statistics AR2023 LLOO results; ReSID \citep[arXiv:2602.02338]{liang2026resid} and ChronoSID \citep[arXiv:2607.03918]{huang2026chronosid} use a different filtered universe; \emph{Augment or Not?}~\citep[arXiv:2505.23053]{huang2025augment}, DiffuReason \citep[arXiv:2602.09744]{jiang2026diffureason}, and SILLM4Rec \citep[MMAsia 2025]{wu2025sillm4rec} use non-interchangeable filtering or sampled-ranking setups; UniSGR \citep[arXiv:2607.04068]{sun2026unisgr} uses private logs; and DIGER \citep[arXiv:2601.19711]{fu2026diger} and ACERec \citep[arXiv:2602.13573]{xia2026acerec} address related semantic-ID problems outside this exact public protocol. We cite these works for coverage and make \textbf{no comparison against concurrent preprints}. HSTU-BLaIR remains the published external anchor for the counted point-estimate comparisons (\S\ref{sec:5.2}).
 
-What we \emph{can} claim:
-
-\begin{itemize}
-\tightlist
-\item
-  Among our HSTU-style full-catalog AR2023 5-core LLOO runs, SASRec-SBERT is a strong, simple, compact baseline --- with no priority claim for the protocol: HSTU-BLaIR published AR2023 5-core numbers before this work, and 2026 preprints report further AR2023 LLOO numbers on the same dataset statistics (the concurrent-preprint paragraph in \S\ref{sec:5.1}). It is using only 11.6M parameters and \textasciitilde10 min of training on a single consumer GPU.
-\item
-  Compared to a popularity floor (0.0125), our model achieves a \ensuremath{\approx}5.4\ensuremath{\times} improvement, indicating the model is learning meaningful sequential structure rather than just popularity.
-\end{itemize}
+Within our own full-catalog runs, the 11.6M-parameter model trains in about 10 minutes on one consumer GPU and reaches \ensuremath{\approx}5.4\ensuremath{\times} the popularity floor (0.0125). These are efficiency and sanity-check observations, not priority or SOTA claims.
 
 
 \subsection{Canonical causal FIR isolation and cross-category transfer (legacy-package attribution caveat \S\ref{sec:3})}\label{sec:5.2}

@@ -53,21 +53,23 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
 
 - Prereg chain: `SOTA_CONFIRM_PREREG_V2.md` (+ `_ERRATA`), `SOTA_CONFIRM_PREREG_OFFICE.md`,
   `PREREG_OFFICE_V3.md` (+ ERRATA E1/E2; results `OFFICE_V3_RESULTS.md`),
-  `PREREG_FIR_BREADTH.md` (results `FIR_BREADTH_RESULTS.md`)
+  `PREREG_FIR_BREADTH.md` (results `FIR_BREADTH_RESULTS.md`), and
+  `PREREG_FIR_CANONICAL_BREADTH.md` (mechanical verdict
+  `_bestrec_run/fir_canonical_breadth_adjudication.json`)
 - Results of record: `_bestrec_run/results_SOTACONF_V2_*.json` (+ tracked sidecars +
   `SOTACONF_V2_sidecar_manifest.json`), `_bestrec_run/rebuild_v2/`, `results_OFFICE_*`
   (present; descriptive/VOID), `results_FIRABL_*` (present), `results_OFFICEV3_k{16,8}_seed*.json` (+ per-run tree-state sidecars), `_bestrec_run/results_FIRB_*` (20 tracked breadth runs), the reference-implementation run
-  artifacts `_bestrec_run/theirs_runs/*/metrics.jsonl` (+ `run_meta.json`, preprocess
+  artifacts `_bestrec_run/results_*_FIRCANON_*.json` (32 matched-initialization canonical-breadth runs), `_bestrec_run/theirs_runs/*/metrics.jsonl` (+ `run_meta.json`, preprocess
   provenance), and the per-table source families enumerated in
-  `_bestrec_run/hstu_results_manifest.json` (15 required claim families)
+  `_bestrec_run/hstu_results_manifest.json` (16 required claim families)
 - Table generation (fail-closed): `_bestrec_run/build_hstu_tables.py` regenerates every
   empirical table from the manifest; **`--submission` exits nonzero** on any UNTRACEABLE cell,
   any printed-numeral MISMATCH, or any required claim family without sourced cells
-  (invariants: 0 mismatch / 0 untraceable / all 15 required families sourced; the authoritative cell count is the strict build's own output — 175 at this writing, and it grows as evidence lands)
+  (invariants: 0 mismatch / 0 untraceable / all 16 required families sourced; the authoritative cell count is the strict build's own output — 177 at this writing, and it grows as evidence lands)
 - Canonical one-command verification: `python _bestrec_run/rebuild_hstu_submission.py --strict`
   (parity test → strict `--submission` build → release-manifest verification → MI V2
   adjudicator → **Office V3 adjudicator (counted; build fails unless CAMPAIGN VERDICT:
-  PASS)** → **TFV2 repaired-estimand adjudicator (counted integrity gate; Git-declared frozen rules; outcome-visible — not confirmatory, §5.3 disclosure (vii); ALL PASS required)** → **FIR-breadth frozen-rule adjudicator (artifact-integrity; paired interpretation withdrawn)** →
+  PASS)** → **TFV2 repaired-estimand adjudicator (counted integrity gate; Git-declared frozen rules; outcome-visible — not confirmatory, §5.3 disclosure (vii); ALL PASS required)** → **FIR-breadth frozen-rule adjudicator (artifact-integrity; paired interpretation withdrawn)** → **E-A canonical FIR adjudicator** → **canonical FIR breadth adjudicator (`CANON-BREADTH-POS` required)** →
   Office V1 adjudicator (descriptive/VOID, non-gating)) — passes end-to-end at the
   submitted commit; `update_release_manifest.py --verify-git <intended_deposit_tag>`
   additionally checks the manifest against the git blobs at the deposit tag

@@ -23,6 +23,7 @@
   "office_confirmation",
   "theirs_on_ours",
   "fir_breadth",
+  "fir_canonical_breadth",
   "office_v3",
   "tfv2"
  ],
@@ -14093,6 +14094,412 @@
      "mode": "gt",
      "recomputed": 0.005041275737688595,
      "result": "qual_ok"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "fircanon.is.paired",
+   "table_id": "fir_canonical_breadth",
+   "row_label": "canonical FIR breadth: Industrial_and_Scientific matched-init (learned - identity)",
+   "metric": "paired 8-seed delta NDCG@10 (best-by-val full catalog; Holm family)",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260810.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260811.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260812.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260813.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260814.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260815.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260816.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260817.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260810.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260811.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260812.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260813.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260814.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260815.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260816.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260817.json",
+    "_bestrec_run/fir_canonical_breadth_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260810,
+    20260811,
+    20260812,
+    20260813,
+    20260814,
+    20260815,
+    20260816,
+    20260817
+   ],
+   "recompute": {
+    "rule": "paired_delta_adjudicated",
+    "params": {
+     "a": [
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260810.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260811.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260812.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260813.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260814.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260815.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260816.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260817.json"
+     ],
+     "b": [
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260810.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260811.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260812.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260813.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260814.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260815.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260816.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260817.json"
+     ],
+     "adjud": "_bestrec_run/fir_canonical_breadth_adjudication.json",
+     "category": "Industrial_and_Scientific",
+     "seeds": [
+      20260810,
+      20260811,
+      20260812,
+      20260813,
+      20260814,
+      20260815,
+      20260816,
+      20260817
+     ],
+     "expect_verdict": "CANON-BREADTH-POS",
+     "expect_kernel": 16,
+     "expect_epochs": 20
+    }
+   },
+   "recompute_rule": "matched-init paired (a-b) best_test[NDCG@10], with frozen configuration, initialization hashes, statistics, verdict, and Holm decision cross-checked against the mechanical adjudication JSON",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.00211,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.00182,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.002399,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "t",
+     "value": 17.2344,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "paired_p",
+     "value": 5.438952e-07,
+     "mode": "approx",
+     "tol": 1e-12
+    },
+    {
+     "name": "pos",
+     "value": 8,
+     "mode": "count"
+    },
+    {
+     "name": "holm_significant",
+     "value": 1,
+     "mode": "count"
+    },
+    {
+     "name": "passed",
+     "value": 1,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_FIR_CANONICAL_BREADTH.md was committed before launch with its mechanical adjudicator. Canonical gradient-active FIR vs delta=0 identity; matched initialization per category/seed; K=16, 20 epochs, one frozen configuration and zero category tuning. Internal contrast only: no SOTA, external-comparator, or distributional-superiority claim. Verdict CANON-BREADTH-POS; both categories PASS under Holm.",
+   "recomputed": {
+    "mean": 0.002109953205166592,
+    "sd": 0.000346274664034667,
+    "n": 8,
+    "pos": 8,
+    "t": 17.234436986821787,
+    "ci_lo": 0.0018204603414033152,
+    "ci_hi": 0.0023994460689298687,
+    "paired_p": 5.438952312440149e-07,
+    "holm_significant": 1.0,
+    "passed": 1.0
+   },
+   "recomputed_value": 0.002109953205166592,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.00211,
+     "mode": "round",
+     "recomputed": 0.002109953205166592,
+     "result": "exact",
+     "rounded": 0.00211
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.00182,
+     "mode": "round",
+     "recomputed": 0.0018204603414033152,
+     "result": "exact",
+     "rounded": 0.00182
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.002399,
+     "mode": "round",
+     "recomputed": 0.0023994460689298687,
+     "result": "exact",
+     "rounded": 0.002399
+    },
+    {
+     "name": "t",
+     "paper": 17.2344,
+     "mode": "round",
+     "recomputed": 17.234436986821787,
+     "result": "exact",
+     "rounded": 17.2344
+    },
+    {
+     "name": "paired_p",
+     "paper": 5.438952e-07,
+     "mode": "approx",
+     "recomputed": 5.438952312440149e-07,
+     "result": "within_tol"
+    },
+    {
+     "name": "pos",
+     "paper": 8,
+     "mode": "count",
+     "recomputed": 8,
+     "result": "exact"
+    },
+    {
+     "name": "holm_significant",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    },
+    {
+     "name": "passed",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "fircanon.cd.paired",
+   "table_id": "fir_canonical_breadth",
+   "row_label": "canonical FIR breadth: CDs_and_Vinyl matched-init (learned - identity)",
+   "metric": "paired 8-seed delta NDCG@10 (best-by-val full catalog; Holm family)",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260810.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260811.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260812.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260813.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260814.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260815.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260816.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260817.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260810.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260811.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260812.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260813.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260814.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260815.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260816.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260817.json",
+    "_bestrec_run/fir_canonical_breadth_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260810,
+    20260811,
+    20260812,
+    20260813,
+    20260814,
+    20260815,
+    20260816,
+    20260817
+   ],
+   "recompute": {
+    "rule": "paired_delta_adjudicated",
+    "params": {
+     "a": [
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260810.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260811.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260812.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260813.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260814.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260815.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260816.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260817.json"
+     ],
+     "b": [
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260810.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260811.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260812.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260813.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260814.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260815.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260816.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260817.json"
+     ],
+     "adjud": "_bestrec_run/fir_canonical_breadth_adjudication.json",
+     "category": "CDs_and_Vinyl",
+     "seeds": [
+      20260810,
+      20260811,
+      20260812,
+      20260813,
+      20260814,
+      20260815,
+      20260816,
+      20260817
+     ],
+     "expect_verdict": "CANON-BREADTH-POS",
+     "expect_kernel": 16,
+     "expect_epochs": 20
+    }
+   },
+   "recompute_rule": "matched-init paired (a-b) best_test[NDCG@10], with frozen configuration, initialization hashes, statistics, verdict, and Holm decision cross-checked against the mechanical adjudication JSON",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.00615,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.005849,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.00645,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "t",
+     "value": 48.3917,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "paired_p",
+     "value": 4.210648e-10,
+     "mode": "approx",
+     "tol": 1e-12
+    },
+    {
+     "name": "pos",
+     "value": 8,
+     "mode": "count"
+    },
+    {
+     "name": "holm_significant",
+     "value": 1,
+     "mode": "count"
+    },
+    {
+     "name": "passed",
+     "value": 1,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_FIR_CANONICAL_BREADTH.md was committed before launch with its mechanical adjudicator. Canonical gradient-active FIR vs delta=0 identity; matched initialization per category/seed; K=16, 20 epochs, one frozen configuration and zero category tuning. Internal contrast only: no SOTA, external-comparator, or distributional-superiority claim. Verdict CANON-BREADTH-POS; both categories PASS under Holm.",
+   "recomputed": {
+    "mean": 0.006149939577244724,
+    "sd": 0.0003594556957078956,
+    "n": 8,
+    "pos": 8,
+    "t": 48.39165472555069,
+    "ci_lo": 0.005849427095233965,
+    "ci_hi": 0.006450452059255484,
+    "paired_p": 4.210648144350517e-10,
+    "holm_significant": 1.0,
+    "passed": 1.0
+   },
+   "recomputed_value": 0.006149939577244724,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.00615,
+     "mode": "round",
+     "recomputed": 0.006149939577244724,
+     "result": "exact",
+     "rounded": 0.00615
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.005849,
+     "mode": "round",
+     "recomputed": 0.005849427095233965,
+     "result": "exact",
+     "rounded": 0.005849
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.00645,
+     "mode": "round",
+     "recomputed": 0.006450452059255484,
+     "result": "exact",
+     "rounded": 0.00645
+    },
+    {
+     "name": "t",
+     "paper": 48.3917,
+     "mode": "round",
+     "recomputed": 48.39165472555069,
+     "result": "exact",
+     "rounded": 48.3917
+    },
+    {
+     "name": "paired_p",
+     "paper": 4.210648e-10,
+     "mode": "approx",
+     "recomputed": 4.210648144350517e-10,
+     "result": "within_tol"
+    },
+    {
+     "name": "pos",
+     "paper": 8,
+     "mode": "count",
+     "recomputed": 8,
+     "result": "exact"
+    },
+    {
+     "name": "holm_significant",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    },
+    {
+     "name": "passed",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
     }
    ],
    "paper_check_class": "exact"

@@ -229,6 +229,58 @@ def rule_paired_delta(p):
     d = [bt_metric(a, m) - bt_metric(b, m) for a, b in zip(p["a"], p["b"])]
     return paired_stats(d)
 
+def rule_paired_delta_adjudicated(p):
+    """Recompute a matched-init paired contrast and bind it to its frozen adjudication."""
+    out = rule_paired_delta(p)
+    adjud = load(p["adjud"])
+    cat = p["category"]
+    seeds = [int(s) for s in p["seeds"]]
+    if adjud.get("verdict") != p["expect_verdict"]:
+        raise ValueError(f"adjudication verdict drift for {cat}")
+    if adjud.get("kernel") != p["expect_kernel"] or adjud.get("epochs") != p["expect_epochs"]:
+        raise ValueError(f"frozen canonical-FIR configuration drift for {cat}")
+    if [int(s) for s in adjud.get("seeds", [])] != seeds:
+        raise ValueError(f"adjudication seed drift for {cat}")
+    if not adjud.get("passed", {}).get(cat) or not adjud.get("holm", {}).get(cat, {}).get("significant"):
+        raise ValueError(f"adjudication no longer records a Holm-significant pass for {cat}")
+
+    for seed, learned_file, identity_file in zip(seeds, p["a"], p["b"]):
+        learned, identity = load(learned_file), load(identity_file)
+        for arm, expected_mode in ((learned, "learned"), (identity, "frozen")):
+            if arm.get("category") != cat or int(arm["config"]["seed"]) != seed:
+                raise ValueError(f"category/seed drift for {cat} seed {seed}")
+            if arm.get("fir_v3") != expected_mode:
+                raise ValueError(f"canonical-FIR arm drift for {cat} seed {seed}")
+            if arm.get("fir_v3_kernel") != p["expect_kernel"] or \
+                    arm["config"].get("epochs") != p["expect_epochs"]:
+                raise ValueError(f"canonical-FIR run configuration drift for {cat} seed {seed}")
+        if learned.get("init_state_sha256") != identity.get("init_state_sha256"):
+            raise ValueError(f"matched-initialization failure for {cat} seed {seed}")
+        recorded_hashes = adjud["init_hash_by_cat_seed"][cat][str(seed)]
+        if recorded_hashes.get("a1learned") != learned.get("init_state_sha256") or \
+                recorded_hashes.get("a0ident") != identity.get("init_state_sha256"):
+            raise ValueError(f"adjudicated initialization hash drift for {cat} seed {seed}")
+        if abs(float(identity.get("fir_v3_final_l2", float("nan")))) > 1e-12:
+            raise ValueError(f"identity arm moved from delta=0 for {cat} seed {seed}")
+
+    recorded = adjud["per_category"][cat]
+    expected = {
+        "mean": float(recorded["paired_mean"]),
+        "ci_lo": float(recorded["paired_ci"][0]),
+        "ci_hi": float(recorded["paired_ci"][1]),
+        "t": float(recorded["paired_t"]),
+        "pos": int(recorded["sign_pos"]),
+    }
+    for name, value in expected.items():
+        if abs(float(out[name]) - value) > 1e-12:
+            raise ValueError(f"adjudicated {name} drift for {cat}: {out[name]} != {value}")
+    out["paired_p"] = t_two_sided_p(out["t"], out["n"] - 1)
+    if abs(out["paired_p"] - float(recorded["paired_p"])) > 1e-12:
+        raise ValueError(f"adjudicated paired-p drift for {cat}")
+    out["holm_significant"] = 1.0
+    out["passed"] = 1.0
+    return out
+
 def rule_pct_of_paired(p):
     """mean paired (a-b) delta as a percent of mean(b)."""
     m = p.get("metric", "NDCG@10")
@@ -667,7 +719,8 @@ PUB_SASREC_OFF = 0.0153     # Liu 2025, published Office_Products SASRec (extern
 # every table family the paper declares; --submission fails if any has no sourced cells
 REQUIRED_FAMILIES = ["table1", "table1a", "table1b", "table1c", "table1d", "table1e",
                      "table541", "table542", "tableV2conf", "table2",
-                     "office_confirmation", "theirs_on_ours", "fir_breadth", "office_v3", "tfv2"]
+                     "office_confirmation", "theirs_on_ours", "fir_breadth",
+                     "fir_canonical_breadth", "office_v3", "tfv2"]
 
 OFFICE_VOID_NOTE = ("VOID under prereg floor check (+44% floor inflation); "
                     "provisional, not counted as a pass")
@@ -681,6 +734,7 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "best_val": "single run best_val_NDCG10",
         "delta_means": "mean(a) - mean(b) of best_test[{m}]",
         "paired_delta": "mean/sd over seeds of per-seed paired (a-b) best_test[{m}]",
+        "paired_delta_adjudicated": "matched-init paired (a-b) best_test[{m}], with frozen configuration, initialization hashes, statistics, verdict, and Holm decision cross-checked against the mechanical adjudication JSON",
         "pct_of_paired": "100 * mean per-seed (a-b) / mean(b), best_test[{m}]",
         "pct_change": "100 * (mean(a)/denom - 1), best_test[{m}]",
         "share_of_lift": "100 * (mean(x)-mean(base)) / (mean(top)-mean(base))",
@@ -1735,10 +1789,41 @@ def build_spec():
                       [chk("diff", dv, 4), chk("ci95_lo", lo, 4), chk("ci95_hi", hi, 4),
                        chk("ci95_lo", 0.0, mode="gt")],
                       5, conf, seeds=[str(x) for x in FIRB_SEEDS],
-                      notes="Graphs the independent-arm robustness CIs printed alongside the "
-                            "pre-declared same-seed analysis (2026-07-19; the arms are not "
-                            "initialization-paired, S5.3 disclosure). Part of the pre-declared "
-                            "breadth campaign family."))
+                       notes="Graphs the independent-arm robustness CIs printed alongside the "
+                             "pre-declared same-seed analysis (2026-07-19; the arms are not "
+                             "initialization-paired, S5.3 disclosure). Part of the pre-declared "
+                             "breadth campaign family."))
+
+    # ------- fir_canonical_breadth: canonical gradient-active FIR vs identity -------
+    # Frozen matched-initialization design; one K/epoch configuration, zero category tuning.
+    FIRCAN_SEEDS = list(range(20260810, 20260818))
+    FIRCAN_ADJ = BR + "fir_canonical_breadth_adjudication.json"
+    FIRCAN_NOTE = ("PREREG_FIR_CANONICAL_BREADTH.md was committed before launch with its "
+                   "mechanical adjudicator. Canonical gradient-active FIR vs delta=0 identity; "
+                   "matched initialization per category/seed; K=16, 20 epochs, one frozen "
+                   "configuration and zero category tuning. Internal contrast only: no SOTA, "
+                   "external-comparator, or distributional-superiority claim. Verdict "
+                   "CANON-BREADTH-POS; both categories PASS under Holm.")
+    for cat, short, mu, lo, hi, tv, pv in (
+            ("Industrial_and_Scientific", "is", 0.002110, 0.001820, 0.002399,
+             17.2344, 5.438952e-7),
+            ("CDs_and_Vinyl", "cd", 0.006150, 0.005849, 0.006450,
+             48.3917, 4.210648e-10)):
+        A1 = [BR + f"results_{cat}_FIRCANON_a1learned_seed{s}.json" for s in FIRCAN_SEEDS]
+        A0 = [BR + f"results_{cat}_FIRCANON_a0ident_seed{s}.json" for s in FIRCAN_SEEDS]
+        C.append(cell(f"fircanon.{short}.paired", "fir_canonical_breadth",
+                      f"canonical FIR breadth: {cat} matched-init (learned - identity)",
+                      "paired 8-seed delta NDCG@10 (best-by-val full catalog; Holm family)",
+                      A1 + A0 + [FIRCAN_ADJ], "paired_delta_adjudicated",
+                      {"a": A1, "b": A0, "adjud": FIRCAN_ADJ, "category": cat,
+                       "seeds": FIRCAN_SEEDS, "expect_verdict": "CANON-BREADTH-POS",
+                       "expect_kernel": 16, "expect_epochs": 20},
+                      [chk("mean", mu, 6), chk("ci_lo", lo, 6), chk("ci_hi", hi, 6),
+                       chk("t", tv, 4), chk("paired_p", pv, mode="approx", tol=1e-12),
+                       chk("pos", 8, mode="count"),
+                       chk("holm_significant", 1, mode="count"),
+                       chk("passed", 1, mode="count")],
+                      8, conf, seeds=FIRCAN_SEEDS, notes=FIRCAN_NOTE))
 
     # ------- tfv2: pre-declared repaired-estimand campaign (PREREG_TAIL_FIR_V2) -------
     # Externally timestamped (OpenTimestamps); independent 8-vs-8 arms; adjudicated
@@ -1789,7 +1874,7 @@ def build_spec():
     # firb.* removed 2026-07-20 (audit 00:01): the frozen breadth rule is a paired t whose
     # pairing premise is false; its cells stay as frozen-rule records but are NOT
     # confirmatory. Welch companions are post-hoc (exploratory).
-    PREDECLARED_PREFIXES = ("v2conf.", "officev3.", "t2.conngate.", "tfv2.")
+    PREDECLARED_PREFIXES = ("v2conf.", "officev3.", "t2.conngate.", "tfv2.", "fircanon.")
     for c0 in C:
         if c0.get("evidence_class") == "confirmatory" and \
                 (not c0["cell_id"].startswith(PREDECLARED_PREFIXES)

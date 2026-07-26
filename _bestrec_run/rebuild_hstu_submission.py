@@ -3,10 +3,9 @@
 
     uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --strict
 
-Runs, in order: (1) the HSTU core-block parity test, (2) the artifact-graph
-table build (strict/fail-closed mode when --strict), (3) the MI V2 gate
-adjudicator, (4) the Office adjudicator (reported as VOID/descriptive under its
-prereg floor check). Exits nonzero if any strict step fails."""
+Runs the HSTU parity test, fail-closed artifact graph, release-manifest check,
+all counted or paper-printed campaign adjudicators, and the descriptive Office
+V1 adjudicator. Exits nonzero if any strict step fails."""
 import subprocess
 import sys
 from pathlib import Path
@@ -81,6 +80,12 @@ def main():
                           "W-POS required)",
                           ["_bestrec_run/adjudicate_fir_v3.py"],
                           ["VERDICT: W-POS"])
+        ok &= run_verdict("Canonical FIR breadth adjudication (pre-declared; "
+                          "matched-init CANON-BREADTH-POS required)",
+                          ["_bestrec_run/adjudicate_fir_canonical_breadth.py"],
+                          ["VERDICT: CANON-BREADTH-POS",
+                           "Industrial_and_Scientific: Holm",
+                           "CDs_and_Vinyl: Holm"])
         ok &= run_verdict("E-F HYBRID_V1 fresh-seed adjudication (pre-declared; "
                           "W-H-POS x3 required)",
                           ["_bestrec_run/adjudicate_hybrid_v1.py"],

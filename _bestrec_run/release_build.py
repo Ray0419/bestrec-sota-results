@@ -2,7 +2,7 @@
 """ONE authoritative release command (audit 2026-07-22 12:49 C1, first cut).
 
 Runs, in order, with NO waiver accepted:
-  1. the empirical strict chain (parity, 175 cells, manifests, adjudicators)
+  1. the empirical strict chain (parity, artifact cells, manifests, adjudicators)
   2. both venue PDF builds in STRICT mode (placeholder = failure)
   3. release-manifest worktree + HEAD-git verification
   4. deposit-tag consistency check (must fail if the declared tag is stale)

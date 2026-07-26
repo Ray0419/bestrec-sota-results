@@ -1,23 +1,25 @@
 hygiene scan: PAPER_TORS.pdf | pages: 54
 placeholder+forbidden failures: 0
-review list (SOTA mentions + negated claim-wordings): 19
-  REVIEW negated-ok: paired\s+superiority :: .0271 published and 0.0279 environment-matched regeneration) — not SOTA and not paired superiority; (ii) a leak-free causal FIR filter, attributed as an FIR-plus-initialization/o
+review list (SOTA mentions + negated claim-wordings): 21
+  REVIEW negated-ok: paired\s+superiority :: .0271 published and 0.0279 environment-matched regeneration) — not SOTA and not paired superiority; (ii) a minimal gradient-active causal FIR residual is isolated from its identi
   REVIEW negated-ok: paired\s+superiority :: strictly under its frozen wording: a per-category point-estimate comparison; no paired superiority; not SOTA of any kind. The limitation that remains: both counted comparisons (M
   REVIEW negated-ok: pinned(?:[-\s]\w+)?[-\s]reproduction :: luded from the artifact graph) 0.13234 final stronger than ours; not a faithful pinned-environment reproduction Our full model (0.0673) exceeds their published SASRec (0.0573) but does not re
-  REVIEW SOTA-mention :: /0.03024 vs 0.0271 published and 0.0279 environment-matched regeneration) — not SOTA and not paired superiority; (ii) a leak-free causal FIR filter, attributed as a
+  REVIEW SOTA-mention :: /0.03024 vs 0.0271 published and 0.0279 environment-matched regeneration) — not SOTA and not paired superiority; (ii) a minimal gradient-active causal FIR residual
+  REVIEW SOTA-mention :: -corrected) — internal filter-vs-identity contrasts, not external-comparator or SOTA claims; (iii) a Musical_Instruments tail advantage of frozen text features surv
   REVIEW SOTA-mention :: e Video_Games result a competitive, fully-attributed contribution rather than a SOTA claim. 7. Engineering: a memory-efficient chunked-full-softmax loss (full-softm
-  REVIEW SOTA-mention ::  published SASRec 0.0573), shown to be architectural (ID-only ≈0.0656), with no SOTA claim. (The earlier v1-era SASRec-SBERT number 0.05509 ± 0.00035 has been retir
-  REVIEW SOTA-mention :: rry no confirmatory weight. 5.1 Video_Games — multi-seed reference numbers (NOT SOTA) Our headline result (Table 1) is built on the HSTU-style pure-PyTorch encoder 
-  REVIEW SOTA-mention :: s zero training occurrences (§5.3 cohort disclosure). We therefore do not claim SOTA over TIGER/LIGER/BLaIR. HSTU-BLaIR is the relevant stronger AR2023 Video_Games 
+  REVIEW SOTA-mention :: published SASRec 0.0573), shown to be architectural (ID-only ≈0.0656), with no SOTA claim. (The earlier v1-era SASRec-SBERT number 0.05509 ± 0.00035 has been retir
+  REVIEW SOTA-mention :: rry no confirmatory weight. 5.1 Video_Games — multi-seed reference numbers (NOT SOTA) Our headline result (Table 1) is built on the HSTU-style pure-PyTorch encoder
+  REVIEW SOTA-mention :: s zero training occurrences (§5.3 cohort disclosure). We therefore do not claim SOTA over TIGER/LIGER/BLaIR. HSTU-BLaIR is the relevant stronger AR2023 Video_Games
   REVIEW SOTA-mention :: relevant stronger AR2023 Video_Games 5-core reference and blocks a SASRec-SBERT SOTA claim. 2026 semantic-ID / generative retrieval line. Recent 2026 work reports A
-  REVIEW SOTA-mention ::  contrast of the FIR-plus-initialization/optimizer package; nothing broader, no SOTA language, no comparator statement. The filter package is thus multi-seed-suppor
+  REVIEW SOTA-mention :: sus-identity improvement under the frozen configuration—no external comparator, SOTA, or distributional-superiority claim. The artifact gate binds both printed resu
+  REVIEW SOTA-mention :: contrast of the FIR-plus-initialization/optimizer package; nothing broader, no SOTA language, no comparator statement. The filter package is thus multi-seed-suppor
   REVIEW SOTA-mention :: eration 0.0279; no paired or distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA cla
   REVIEW SOTA-mention :: distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind. The V1 VOID a
   REVIEW SOTA-mention :: not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind. The V1 VOID above stands unchanged as its own record (Append
-  REVIEW SOTA-mention :: n wording: a per-category point-estimate comparison; no paired superiority; not SOTA of any kind. The limitation that remains: both counted comparisons (MI, Office 
+  REVIEW SOTA-mention :: n wording: a per-category point-estimate comparison; no paired superiority; not SOTA of any kind. The limitation that remains: both counted comparisons (MI, Office
   REVIEW SOTA-mention :: ipt submitted to ACM Artifact-Gated Evaluation 43 We do not claim a Video_Games SOTA — the published HSTU-BLaIR 0.0760 relies on custom CUDA/Triton kernels that are
   REVIEW SOTA-mention :: ratus these results were produced under. Explicit non-claims: • We do not claim SOTA over TIGER, LIGER, BLaIR, or HSTU-BLaIR; the published HSTU-BLaIR 0.0760 remain
-  REVIEW SOTA-mention :: to the branch. The public record resolves at https://github.com/Ray0419/bestrec-sota-results (releases: v0.9-audit-evidence for working assets; v1.1.11-deposit for 
+  REVIEW SOTA-mention :: to the branch. The public record resolves at https://github.com/Ray0419/bestrec-sota-results (releases: v0.9-audit-evidence for working assets; v1.1.11-deposit for
   REVIEW SOTA-mention :: . We provide our 0.01946 (2-seed mean) as a reference baseline rather than as a SOTA-improvement claim. A future apples-to-apples comparison would require either: •
   REVIEW placeholder :: '[Maintainer:' byline fields pending (DRAFT_WAIVER=1 -- logged, non-fatal)
 verdict: PASS (review list above is informational)

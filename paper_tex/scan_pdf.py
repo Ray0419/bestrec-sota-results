@@ -33,7 +33,7 @@ norm = re.sub(r"-\n(?=[a-z])", "", raw)
 norm = re.sub(r"\s+", " ", norm)
 
 def ctx(text, m, w=80):
-    return text[max(0, m.start() - w):m.end() + w].replace("\n", " ")
+    return text[max(0, m.start() - w):m.end() + w].replace("\n", " ").strip()
 
 failures = []
 review = []

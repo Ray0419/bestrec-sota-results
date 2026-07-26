@@ -340,7 +340,8 @@ class SASRecSBERT(nn.Module):
                   n_experts=0, text_init_emb=False, cl_aux=False,
                   causal_filter=False, filter_kernel=50,
                   causal_filter_fixed_avg=False, causal_filter_no_gate=False,
-                  fir_v3="off", fir_v3_kernel=16,
+                   fir_v3="off", fir_v3_kernel=16,
+                   fir_control="off", fir_control_kernel=16,
                   niche_share=False, niche_pop=None,
                   js_shrink=False, item_freq=None,
                   heat_target=False, heat_nbr_idx=None, heat_nbr_sim=None,
@@ -520,6 +521,47 @@ class SASRecSBERT(nn.Module):
                 self.fir_v3.weight.zero_()
             if fir_v3 == "frozen":
                 self.fir_v3.weight.requires_grad_(False)
+
+        # Phase-3 active controls.  Every active arm is an exact identity map
+        # at initialization and has a nonzero gradient path at that point.  We
+        # restore the CPU RNG after constructing the arm-specific module so
+        # later backbone modules receive exactly the same initialization for
+        # every arm, even when their parameter shapes differ.
+        self.fir_control = str(fir_control)
+        self.fir_control_module = None
+        self.fir_control_alpha = None
+        if self.fir_control != "off":
+            if self.fir_control not in {
+                    "identity", "learned", "fixed_ma", "fixed_hp",
+                    "shared", "nonlinear"}:
+                raise ValueError(f"unknown fir_control={self.fir_control!r}")
+            Kc = int(fir_control_kernel)
+            if Kc < 1:
+                raise ValueError("fir_control_kernel must be >= 1")
+            self.fir_control_kernel_len = Kc
+            _rng_before_control = torch.random.get_rng_state()
+            if self.fir_control in {"identity", "learned", "nonlinear"}:
+                self.fir_control_module = nn.Conv1d(
+                    d_model, d_model, kernel_size=Kc,
+                    groups=d_model, bias=False)
+                with torch.no_grad():
+                    self.fir_control_module.weight.zero_()
+                if self.fir_control == "identity":
+                    self.fir_control_module.weight.requires_grad_(False)
+            elif self.fir_control == "shared":
+                self.fir_control_module = nn.Conv1d(
+                    1, 1, kernel_size=Kc, bias=False)
+                with torch.no_grad():
+                    self.fir_control_module.weight.zero_()
+            else:
+                # Fixed filters have a learned zero-init mixing scalar.  Thus
+                # their kernels stay fixed while the arm remains active from
+                # the first optimizer step.
+                self.fir_control_alpha = nn.Parameter(torch.zeros(1))
+                self.register_buffer(
+                    "fir_control_template",
+                    torch.full((1, 1, Kc), 1.0 / Kc))
+            torch.random.set_rng_state(_rng_before_control)
 
         # Sequence encoder: softmax Transformer (SASRec default) or
         # HSTU-style pointwise-attention stack (Zhai et al., 2024; cited).
@@ -938,6 +980,29 @@ class SASRecSBERT(nn.Module):
             Kv = self.fir_v3_kernel_len
             x = x + self.fir_v3(
                 F.pad(x.transpose(1, 2), (Kv - 1, 0))).transpose(1, 2)
+
+        # Phase-3 matched-backbone causal-filter controls.
+        if self.fir_control != "off":
+            Kc = self.fir_control_kernel_len
+            xt = x.transpose(1, 2)
+            xp = F.pad(xt, (Kc - 1, 0))
+            if self.fir_control in {"identity", "learned"}:
+                delta = self.fir_control_module(xp)
+                x = x + delta.transpose(1, 2)
+            elif self.fir_control == "nonlinear":
+                delta = F.gelu(self.fir_control_module(xp))
+                x = x + delta.transpose(1, 2)
+            elif self.fir_control == "shared":
+                Bc, Dc, Lc = xt.shape
+                delta = self.fir_control_module(
+                    xp.reshape(Bc * Dc, 1, xp.shape[-1]))
+                delta = delta.reshape(Bc, Dc, Lc)
+                x = x + delta.transpose(1, 2)
+            else:
+                w = self.fir_control_template.expand(self.d_model, -1, -1)
+                ma = F.conv1d(xp, w, groups=self.d_model)
+                signal = ma - xt if self.fir_control == "fixed_ma" else xt - ma
+                x = x + self.fir_control_alpha * signal.transpose(1, 2)
 
         # Shared additive attention bias (B, H, L, L) from time buckets and/or
         # text similarity; None when neither feature is active.
@@ -1913,6 +1978,15 @@ def main():
     ap.add_argument("--fir-v3-wd", choices=["backbone", "zero"], default="backbone",
                     help="weight decay on the E-A FIR taps: 'backbone' = same 1e-5 as "
                          "all other params; 'zero' = exclude the taps from decay.")
+    ap.add_argument(
+        "--fir-control",
+        choices=["off", "identity", "learned", "fixed_ma", "fixed_hp",
+                 "shared", "nonlinear"], default="off",
+        help="Phase-3 matched-backbone active-control arm. All active arms "
+             "are strictly causal and exact identity maps at initialization. "
+             "Use only one frozen arm per run.")
+    ap.add_argument("--fir-control-kernel", type=int, default=16,
+                    help="Phase-3 causal-control kernel length (frozen at 16).")
     ap.add_argument("--filter-kernel", type=int, default=50,
                      help="FIR kernel length K for --causal-filter (default 50 = "
                           "max_seq_len). Kernel init = causal delta (all-pass) so the "
@@ -2162,6 +2236,11 @@ def main():
                           "K_ww for invertibility in --krige-cold. Fixed numerical "
                           "regularizer, not learned.")
     args = ap.parse_args()
+
+    if args.fir_control != "off" and args.fir_v3 != "off":
+        ap.error("--fir-control and --fir-v3 are mutually exclusive")
+    if args.fir_control != "off" and args.causal_filter:
+        ap.error("--fir-control and --causal-filter are mutually exclusive")
 
     # Set random seeds for reproducibility (per-seed runs for multi-seed CI).
     import random
@@ -2534,8 +2613,10 @@ def main():
                          causal_filter_fixed_avg=args.filter_fixed_avg,
                          causal_filter_no_gate=args.filter_no_gate,
                          filter_kernel=args.filter_kernel,
-                         fir_v3=args.fir_v3,
-                         fir_v3_kernel=args.fir_v3_kernel,
+                          fir_v3=args.fir_v3,
+                          fir_v3_kernel=args.fir_v3_kernel,
+                          fir_control=args.fir_control,
+                          fir_control_kernel=args.fir_control_kernel,
                          niche_share=(args.niche_share_beta != 0.0),
                          niche_pop=niche_pop,
                          js_shrink=args.js_shrink,
@@ -2562,7 +2643,10 @@ def main():
                          cred_route_train=args.cred_route_train,
                          cred_k=args.cred_k).to(DEVICE)
     n_params = sum(p.numel() for p in model.parameters())
-    print(f"  total params: {n_params:,}  device={DEVICE}")
+    n_trainable_params = sum(p.numel() for p in model.parameters()
+                             if p.requires_grad)
+    print(f"  total params: {n_params:,} ({n_trainable_params:,} trainable)  "
+          f"device={DEVICE}")
 
     # Weight-space EMA (SWA-style) shadow for eval only. Passive: never feeds
     # back into training, so the optimization trajectory is bit-identical to the
@@ -2589,8 +2673,16 @@ def main():
         _h.update(_k.encode())
         _h.update(_sd0[_k].detach().cpu().contiguous().numpy().tobytes())
     init_state_sha256 = _h.hexdigest()
+    _hb = _hl.sha256()
+    for _k in sorted(_sd0.keys()):
+        if not _k.startswith("fir_control_"):
+            _hb.update(_k.encode())
+            _hb.update(_sd0[_k].detach().cpu().contiguous().numpy().tobytes())
+    backbone_init_sha256 = _hb.hexdigest()
     del _sd0
     print(f"  init_state_sha256 = {init_state_sha256}")
+    if args.fir_control != "off":
+        print(f"  backbone_init_sha256 = {backbone_init_sha256}")
 
     if args.fir_v3 == "learned" and args.fir_v3_wd == "zero":
         # E-A wd factor: exclude the FIR taps from weight decay (two groups).
@@ -3028,9 +3120,21 @@ def main():
         fir_v3_lag_profile = [float(v) for v in _w.abs().mean(dim=(0, 1))]
         print(f"  fir_v3 final ||DELTA||_2 = {fir_v3_final_l2:.6f}")
 
+    fir_control_final_l2 = None
+    fir_control_alpha = None
+    fir_control_lag_profile = None
+    if getattr(model, "fir_control_module", None) is not None:
+        _cw = model.fir_control_module.weight.detach().cpu()
+        fir_control_final_l2 = float(_cw.norm().item())
+        fir_control_lag_profile = [
+            float(v) for v in _cw.abs().mean(dim=(0, 1))]
+    if getattr(model, "fir_control_alpha", None) is not None:
+        fir_control_alpha = float(model.fir_control_alpha.detach().cpu().item())
+
     out = {
         "category": args.category, "config": vars(args),
         "n_users": n_users, "n_items": n_items, "n_params": n_params,
+        "n_trainable_params": n_trainable_params,
         "provenance": provenance,
         "history": history,
         "zfusion_sweep": zfusion_sweep,
@@ -3050,6 +3154,12 @@ def main():
         "best_ckpt_sha256": best_ckpt_sha256,
         "fir_v3_final_l2": fir_v3_final_l2,
         "fir_v3_final_absmean_per_lag": fir_v3_lag_profile,
+        "fir_control": args.fir_control,
+        "fir_control_kernel": args.fir_control_kernel,
+        "backbone_init_sha256": backbone_init_sha256,
+        "fir_control_final_l2": fir_control_final_l2,
+        "fir_control_alpha": fir_control_alpha,
+        "fir_control_final_absmean_per_lag": fir_control_lag_profile,
     }
     with out_path.open("w") as f:
         json.dump(out, f, indent=2)

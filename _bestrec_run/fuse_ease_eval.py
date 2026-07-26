@@ -75,6 +75,8 @@ def build_model_from_config(cfg, n_items, pad_id, sbert_emb, proto_assign):
         causal_filter_no_gate=cfg.get("filter_no_gate", False),
         fir_v3=cfg.get("fir_v3", "off"),
         fir_v3_kernel=cfg.get("fir_v3_kernel", 16),
+        fir_control=cfg.get("fir_control", "off"),
+        fir_control_kernel=cfg.get("fir_control_kernel", 16),
     )
 
 

@@ -1,23 +1,36 @@
 %% GENERATED from PAPER_SUBMISSION.md (pandoc) -- hand-fixed conversion; see BUILD_NOTES.md
 \section{Conclusion}\label{sec:7}
 
-The contribution of this paper we most hope outlives its numbers is the evaluation apparatus: designated confirmatory comparisons frozen in immutable, git-committed pre-declarations and run on never-inspected fresh seeds (\S\ref{sec:5.2}); a fail-closed artifact gate that recomputes every artifact-gated table cell from released per-seed artifacts at build time and retires what it cannot recompute (published comparator values are pinned as labeled external constants; \S\ref{sec:2.2}); a comparator-regeneration harness that executes the unmodified reference implementation locally under data-movement shims, turning the published gate value from a transcribed constant into a locally regenerated quantity (environment-caveated single-run regenerations, \S\ref{sec:5.6}); and symmetric, self-VOIDing adjudication --- the Office\_Products pre-declaration was VOIDed by its own floor check when it caught a comparability failure, and stays VOID (Appendix A.0); the redesigned Office pre-declaration subsequently passed on fresh never-inspected seeds (\texttt{PREREG\_OFFICE\_V3.md}; \S\ref{sec:5.2}) --- the apparatus caught its own comparability flaw, the redesign removed it by construction, and the fixed protocol passed. The empirical findings below are what that apparatus certifies --- and, just as prominently, what it refuses to certify.
+This paper contributes a narrow causal-filter module and an evaluation discipline for
+testing it. The discipline combines git-frozen protocols, a fail-closed artifact graph,
+environment-caveated comparator regeneration, and symmetric adjudication. Its value is
+illustrated by the Office\_Products V1 campaign: its own floor check VOIDed the
+comparison, and that verdict remains in the record even though a redesigned protocol
+later passed on fresh seeds.
 
-We build on an HSTU-style pure-PyTorch implementation of HSTU based on the published architecture (Zhai et al., 2024) for AR2023 5-core full-catalog LLOO recommendation and contribute two defensible, multi-seed-supported findings. \textbf{(1) A strictly causal FIR temporal filter} --- a minimal, gradient-active, identity-initialized adaptation of the bidirectional frequency filters of FMLP-Rec/BSARec --- is cleanly isolated under matched initialization on three categories: Musical\_Instruments +0.002265 {[}0.001928, 0.002602{]}, Industrial\_and\_Scientific +0.002110 {[}0.001820, 0.002399{]}, and CDs\_and\_Vinyl +0.006150 {[}0.005849, 0.006450{]}, with one frozen zero-tuning configuration for the latter two and both breadth results 8/8 positive and Holm-PASS. These are internal filter-versus-identity results; the older zero-gated runs remain attributed only to the FIR-plus-initialization/optimizer package. \textbf{(2) A MI frequency-5 tail case}: comparing the text stack to its ID-only ablation on nominal train-frequency terciles, text shows a \textbf{frequency-5-heavy positive-tail advantage} on the \emph{sparse} Musical\_Instruments catalog (5-seed \ensuremath{\Delta} +0.000335, independent-arm Welch 95\% CI excludes 0, HR-replicated), while no significant tail difference was detected on the dense Video\_Games and Beauty\_and\_PC catalogs (the former powered-equivalence claims are retracted --- the arms are not initialization-paired and the margin was data-derived, \S\ref{sec:5.3}), with the MI tail effect replicated by the pre-declared repaired-estimand TFV2 campaign (+0.000420, 95\% CI {[}+0.000181, +0.000660{]}, Holm-PASS; outcome-visible, not confirmatory, and frequency-5-heavy --- \S\ref{sec:5.3}); the cross-dataset difference did not replicate as significant under TFV2 and is reported descriptively. An interaction-thinning titration yields a \textbf{split result} --- the head text-advantage tracks thinning while the tail effect does not (level contrasts under a bundled intervention; a correlate only) --- which we report as an inconclusive, not-confirming central check: with no prospective equivalence margin the near-zero tail is not a refuted null. A complementary \textbf{user-mode titration} moves in the predicted direction at MI-matched connectivity (dd = +0.000326; all five same-seed dd positive) but is \textbf{not significant under the corrected independent-arm analysis (p = 0.058) --- a suggestive, descriptive result} (\S\ref{sec:5.4.2}; the 5\ensuremath{\times}5 matched-R1 level contrast is likewise descriptive), leaving the MI tail win \textbf{undecomposed}: the connectivity association is suggestive only (p = 0.058) and no content mechanism is identified (the item-text permutation control has not been run) --- the mechanism is unresolved. These titrations are controlled interventions on the dataset, not causal identification of the real-world generative process.
+The main empirical result is an identity-initialized, gradient-active, strictly causal
+FIR residual. Matched-initialization contrasts isolate gains over identity on
+Musical\_Instruments (+0.002265, 95\% CI [0.001928, 0.002602]),
+Industrial\_and\_Scientific (+0.002110 [0.001820, 0.002399]), and
+CDs\_and\_Vinyl (+0.006150 [0.005849, 0.006450]). The latter two use one frozen
+configuration with no category-specific tuning. These are internal
+filter-versus-identity results, not external comparator or SOTA claims; the
+active-control study remains the next mechanism test.
 
-On Video\_Games our full stack reaches \textbf{NDCG@10 = 0.0673 \ensuremath{\pm} 0.0003 (6-seed)}, +17.5\% over published SASRec (0.0573), but we show this win is \textbf{architectural}: an ID-only model already reaches \ensuremath{\approx}0.0656, and the frozen-text stack adds only +2.7\% overall. TAPE is reported honestly as a modest sub-additive text contributor (+0.0009), not a headline. \textbf{We do not claim a Video\_Games SOTA} --- the published HSTU-BLaIR 0.0760 relies on custom CUDA/Triton kernels that are hardware-incompatible with our sm\_120 GPU (proven). The empirical contribution is the narrowly scoped canonical causal FIR module, the frequency-5-heavy tail pattern, the HSTU-style implementation, and a screening log of capacity-adding probes (none showed a benefit at tested power --- mostly single-seed --- several with a learned scalar the model drove to zero), plus the engineering (chunked-full-softmax, eval caching, NaN-trap diagnosis); the lead contribution is the evaluation apparatus these results were produced under.
+The secondary result is narrower. Frozen text features improve the repaired
+Musical\_Instruments frequency-tail endpoint (+0.000420 [0.000181, 0.000660]),
+but the gain concentrates at train frequency 5; removing that boundary group leaves no
+detected effect. The corresponding cross-dataset contrast is nonsignificant, and
+thinning interventions do not identify a tail mechanism. We therefore report a
+dataset-specific frequency-5 case, not a general cross-dataset result. TAPE, late fusion,
+sparse-warm redistribution, and the probe screen are supporting or descriptive studies,
+not additional headline contributions.
 
-\textbf{Explicit non-claims:}
-
-\begin{itemize}
-\tightlist
-\item
-  We do \textbf{not} claim SOTA over TIGER, LIGER, BLaIR, or HSTU-BLaIR; the published HSTU-BLaIR 0.0760 remains the stronger external reference (its pinned stack is not installable here, and the \S\ref{sec:5.6} shimmed runs did not include Video\_Games).
-\item
-  The ``57\% gap to LIGER on Beauty\_and\_\allowbreak PC'' framing from an earlier version of this work was apples-to-oranges (LIGER reports on Amazon 2014, not AR2023) and is retracted.
-\item
-  Our claimed additions are deliberately small: the causal FIR filter (an incremental adaptation of prior frequency-filter ideas), the MI frequency-5 tail case (an empirical finding, not a law), and the TAPE ablation (a modest text-prototype term); SASRec, SBERT, MiniLM, BLaIR, HSTU, label smoothing, and the AR2023 dataset are all prior work, cited at point of use.
-\item
-  The tail win is a large \emph{relative} gain on a small absolute base; we always report relative, absolute, and hit-count together. The tail \emph{mechanism} remains \textbf{open} (\S\ref{sec:5.4.2}): the user-mode titration moves in the predicted direction at MI-matched connectivity but is \textbf{not significant under the corrected independent-arm analysis} (p = 0.058; a suggestive, descriptive result), the matched-R1 comparison is a level contrast only, and an unidentified residual dataset-specific component remains (a content interpretation is one hypothesis, untested --- permutation control unrun); no paired-contrast or causal-role claim is made.
-\end{itemize}
+The evidence has important limits: uncertainty is over optimizer seeds on reused fixed
+splits; comparator uncertainty is not distributionally matched; several campaigns are
+outcome-visible or protocol-deviated; and no item-text permutation control, temporal
+split replication, or deployment study has been completed. The defensible contribution
+is thus modular rather than architectural: a small causal FIR realization, its measured
+internal effect under the stated protocol, and an auditable record that preserves nulls,
+deviations, and VOID outcomes alongside positive results.
 

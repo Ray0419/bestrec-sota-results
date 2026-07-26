@@ -50,9 +50,18 @@ We do not claim a wholly new recommender architecture. Our architectural additio
 \end{itemize}
 
 
-\subsection{Novelty boundary}\label{sec:2.3}
+\subsection{Claim boundary}\label{sec:2.3}
 
-Table 0 states, component by component, what is prior art, what we reuse, what we change, the evidence behind each claim, and an honest novelty grade. Nothing in this paper is graded above ``moderate''; the two architectural additions are graded ``incremental'' by design. The frequency/time-frequency line in sequential recommendation is broader than the two works we adapt --- e.g. frequency-aware hybrid-attention models such as FEARec \citep{du2023fearec} and, more recently, wavelet-packet models such as WPGRec \citep[arXiv:2604.21305]{liu2026wpgrec} --- and our boundary is correspondingly narrow: what we add is only the left-causal, depthwise-FIR form of the idea inside an HSTU-style stack trained with an all-position next-item objective under full-catalog AR2023 5-core LLOO evaluation. Convolutional sequence modeling is likewise long-established prior art --- Caser \citep{tang2018caser} encodes sequences with horizontal/vertical convolutions, and NextItNet \citep{yuan2019nextitnet} stacks dilated \emph{causal} convolutions as the entire sequence encoder --- and our filter is deliberately not such an architecture: it is a single \textbf{depthwise, linear FIR tap bank} (no nonlinearity, no channel mixing, zero-initialized to an exact no-op) inserted as a bias-like component inside an attention stack. The claimed contribution is the leak-free FIR form of a frequency-filter \emph{regularizer} under the all-position objective --- not convolutional sequence encoding.
+Table 0 separates prior work from the paper's actual claim boundary. Frequency
+filtering (including FEARec and WPGRec) and causal convolution (including Caser and
+NextItNet) predate this work
+\citep{du2023fearec,liu2026wpgrec,tang2018caser,yuan2019nextitnet}, as do residual
+identity initialization, HSTU, frozen text encoders, and label smoothing. Our claim is limited to the
+gradient-active left-causal depthwise-FIR residual used before an HSTU-style stack under
+an all-position objective, together with its matched internal evaluation. The historical
+zero-gated realization is singular at initialization and remains package-attributed;
+only the nonsingular canonical realization supports a FIR-specific interpretation
+(\S\ref{sec:3}, \S\ref{sec:5.2}).
 
 \input{tables/table0_novelty}
 

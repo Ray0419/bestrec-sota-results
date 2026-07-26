@@ -1,93 +1,28 @@
 %% GENERATED from PAPER_SUBMISSION.md (pandoc) -- hand-fixed conversion; see BUILD_NOTES.md
 \section{Discussion}\label{sec:6}
 
-\subsection{What does cross-pipeline transfer reveal? (Appendix A.1 supporting study)}\label{sec:6.1}
+\subsection{Interpretation}\label{sec:6.1}
 
-The next two subsections discuss the 20-variant Beauty\_and\_PC cross-pipeline scan (Appendix A.1) --- supporting/reproducibility material, not part of the headline spine (the causal FIR filter, the MI frequency-5 tail case, and the competitive Video\_Games result of \S\ref{sec:5}).
+The main result is deliberately modular: a gradient-active causal FIR residual improves the same sequential backbone over an exact identity control under matched initialization on three categories. This isolates the module within the tested configuration; it does not show that frequency filtering is universally beneficial, that the complete system is a new architecture, or that the module alone explains historical package-arm gains. The breadth studies are internal filter-versus-identity comparisons, not external-comparator or SOTA evidence.
 
-Our 20-variant scan finds one small positive cross-pipeline transfer signal, and the clean ablation (Appendix A.1) attributes it to \textbf{text content, not the projection layer}: the winning variant swaps MiniLM-titles for \textbf{BLaIR + rich item text} (with the MLP adaptor of \citet{hou2024blair} present as part of that bundle), while the isolating ablation --- MiniLM + MLP adaptor alone --- is \emph{negative} (0.01889 vs the \ensuremath{\approx}0.0190 Linear baseline). Published architectural choices therefore do not universally transfer (heavy dropout from the same source does not, and the adaptor's parametric form alone does not either); what transfers is the recommendation-tuned text encoder plus richer item text, observed on this protocol only as a bundle with its adaptor.
+The supporting text studies sharpen that boundary. Frozen text features add only +2.7\% overall on Video\_Games, and TAPE is sub-additive (+0.0009 in one seed; +0.0004 in the four-seed check). The repaired MI analysis finds a small frequency-5-heavy benefit rather than cold-start capability: zero-exposure targets receive no hits through rank 100, the exclude-boundary sensitivity is nonsignificant, and the MI--VG contrast does not replicate. The Beauty\_and\_PC scan (Appendix A.1) likewise attributes its small transfer signal to the bundled BLaIR-rich-text representation, not to the MLP adaptor in isolation.
 
-We accordingly make no claim about the adaptor's expressive form in isolation: an earlier draft's hypothesis that the 2-layer MLP ``denoises'' the text features is \textbf{not supported} by the clean ablation (Appendix A.1), and any such account would have to attach to the inseparable BLaIR-rich-text + MLP bundle, not to the projection layer itself.
+\subsection{Practical implications}\label{sec:6.2}
 
+The FIR residual is attractive because it is small, causal, and detachable: it can be initialized as the identity and added without changing the item scorer or evaluation protocol. In this implementation, chunked full softmax makes 207k-item training feasible, cached item features substantially reduce evaluation cost, and right-padding with a causal-only mask avoids the NaN failure observed with the former masking path. Conversely, heavy dropout, removal of learned item embeddings, and simple subsequence augmentation did not transfer in the Beauty supporting study; these are observations under this pipeline, not general exclusions.
 
-\subsection{What does NOT cross over?}\label{sec:6.2}
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Heavy dropout (0.5)}: Hurts in our setup. Beauty\_and\_\allowbreak PC users have median 5 interactions; aggressive regularization probably masks too much signal.
-\item
-  \textbf{Removing learned item embeddings}: The 207k-item catalog appears to demand per-item parameter capacity that the encoder + MLP adaptor cannot fully replace.
-\item
-  \textbf{Subsequence augmentation}: Creates a train-test distribution shift in our protocol. We did not try the longer recipes of Hou et al. (UniSRec uses additional contrastive losses) that might counteract this.
-\end{itemize}
-
-
-\subsection{Engineering takeaways}\label{sec:6.3}
+\subsection{Claim limits and remaining tests}\label{sec:6.3}
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Chunked-full-softmax} is essential at the 207k-item scale; sampled softmax with K=1024 negatives undertrains the catalog ranking.
+  \textbf{Comparator uncertainty.} The counted Musical\_Instruments and Office V3 comparisons are against published single-run point estimates and an environment-matched single-run regeneration; no paired or distributional superiority over HSTU-BLaIR is claimed. The official end-to-end CUDA/Triton system cannot run on the local sm\_120 GPU. Only the research block at an explicitly aligned configuration is numerically matched; trained-checkpoint and end-to-end equivalence are not claimed.
 \item
-  \textbf{Eval item-features caching} is a small but critical optimization for any text-augmented sequential recommender, providing a \textasciitilde10\ensuremath{\times} speedup at d=64 with MLP adaptors.
+  \textbf{Historical versus canonical evidence.} Same-numbered historical arms were not initialization-paired, so their paired interpretations are withdrawn and retained inference is independent-arm Welch/Satterthwaite. The canonical matched-initialization campaigns supersede those runs for FIR attribution. Office V1 remains \textbf{VOID} because its frozen floor gate failed; Office V3 passed only under its own frozen point-estimate wording. Industrial\_and\_Scientific and CDs\_and\_Vinyl support only the internal canonical FIR-versus-identity claim.
 \item
-  \textbf{Right-padding + causal-only mask} avoids a silent NaN-propagation bug that we observed inflating eval NDCG to \textasciitilde0.9955 with left-padding + key-padding-mask + pre-norm.
+  \textbf{Tail and probe scope.} The tail result is AR2023-specific, small in absolute terms, concentrated at train frequency 5, and not replicated on a non-Amazon domain. The original cohorts mixed exposure regimes and split frequency ties; TFV2 repaired those estimands but was outcome-visible and is not classified as confirmatory. Most capacity probes are single-seed screens, and nonsignificance is never interpreted as equivalence.
+\item
+  \textbf{Open controls.} Item-text permutation and objective/target-multiplicity parity controls remain unrun, so the small text-stack gain cannot yet be attributed entirely to semantic alignment. The thinning studies intervene synthetically on one fixed draw and do not identify the real-world data-generating process.
+\item
+  \textbf{Provenance and input scope.} One confirmation campaign ran at a documentation-only descendant of its frozen commit; code hashes and empty protocol-file diffs support code identity, but the literal commit-equality deviation remains disclosed. The canonical model consumes only item IDs, timestamps, and frozen item-text embeddings---never outputs or representations from a comparator model.
 \end{itemize}
-
-
-\subsection{What we don't claim}\label{sec:6.4}
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{A wholly new architecture}: our architectural additions are deliberately small --- a causal FIR adaptation of prior frequency-filter ideas and a soft text-prototype additive term; every other component we use is from prior work.
-\item
-  \textbf{Closing the gap to LIGER on Beauty\_and\_\allowbreak PC}: we do not, and the gap may be partially preprocessing-dependent.
-\item
-  \textbf{Beauty\_and\_PC improvement is statistically certified}: we have only n=2 seeds for the best variant and n=2 for the baseline (Appendix A.2; an earlier ``baseline n=1'' statement here was wrong --- corrected 2026-07-19; the A.2 exact-mean reconciliation is queued with the appendix coverage round).
-\item
-  \textbf{Category scope}: the headline causal-FIR evidence uses Video\_Games and Musical\_Instruments; Beauty\_and\_PC supports the tail-pattern null; Office\_Products: the V1 prereg is \textbf{VOID} (descriptive; anomaly explained by \S\ref{sec:5.6}'s local comparator run, Appendix A.0) and stands; the \textbf{redesigned V3 prereg passed} (\S\ref{sec:5.2}) and is counted as the second pre-declared per-category comparison. The FIR-breadth categories (Industrial\_and\_Scientific, CDs\_and\_Vinyl) carry only the internal same-seed filter contrast (the frozen rule's paired interpretation is withdrawn --- \S\ref{sec:5.2}; independent-arm Welch is the primary analysis). Other categories untested.
-\item
-  \textbf{Model-input hygiene} (a clarification, not a caveat): the canonical model consumes only item IDs, interaction timestamps, and frozen item-text embeddings; no outputs, scores, or embeddings of any baseline or comparator model enter the pipeline as inputs or features (the superseded earlier-stage fusion experiments that did are quarantined in the non-canonical track).
-\end{itemize}
-
-
-\subsection{Limitations}\label{sec:6.5}
-
-We state the paper's limitations explicitly, for reviewers:
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Single published point-estimate comparator.} The Musical\_Instruments comparison (\S\ref{sec:5.2}) is against a single-seed published point estimate (HSTU-BLaIR 0.0406); no paired significance test against the comparator is possible.
-\item
-  \textbf{No executable official END-TO-END HSTU-BLaIR reproduction on local hardware.} The official CUDA/Triton kernels cannot execute on our sm\_120 GPU (\S\ref{sec:5.6}). The CORE research block is verified numerically at a mirrored \textbf{aligned configuration only} (affine LayerNorms set to identity, the extra \texttt{uvqk} bias zeroed, \ensuremath{\varepsilon} aligned to 1e-6, dropout off, eval mode): max abs diff 0.0 at every stage (\texttt{HSTU\_PARITY\_REPORT.md}, which discloses the alignment). The \textbf{trained} configuration is a strict-superset HSTU-style variant (trained affine norms, a \texttt{uvqk} bias, \ensuremath{\varepsilon} = 1e-5, dropout after the output projection), and no trained-checkpoint equivalence is claimed. What we also do not claim is end-to-end system parity (training pipeline, data path, kernels, hyperparameters).
-\item
-  \textbf{TAPE is modest.} +0.0009 single-flag (single-seed; +0.0004 in the 4-seed cross-check), sub-additive --- an ablation-level component, not a headline contribution.
-\item
-  \textbf{The tail finding is AR2023-limited and small in absolute terms.} It rests on three AR2023 categories (Musical\_Instruments, Video\_Games, Beauty\_and\_\allowbreak PC); the MI tail effect (+0.000335 NDCG@10, \textasciitilde30 hits/seed base) is a large relative but small absolute effect, and the pattern is not replicated on non-Amazon domains.
-\item
-  \textbf{The negative probes are not all equally powered.} Most Table S1 rows are single-seed exploratory probes; only the multi-seed pre-declared negatives were run at full pre-declared power (no null is thereby confirmed --- the equivalence framework is withdrawn) (\S\ref{sec:5.5}).
-\item
-  \textbf{Same-seed arms are not initialization-paired (corrected 2026-07-19).} The text/ID, FIR/no-FIR, and titration arm pairs share seed numbers, not initializations: treatment-specific modules are constructed before the shared backbone, consuming RNG, so backbone initialization, batch order, and dropout streams differ between arms (\S\ref{sec:5.3} disclosure). All paired-inference language has been withdrawn; the retained inferential statements are independent-arm (Welch/Satterthwaite), which cost the VG equivalence claim (retracted) and the \S\ref{sec:5.4.2} dd significance (downgraded to suggestive). The TFV2 rerun campaign (\S\ref{sec:5.3}/\S\ref{sec:5.2}) is independent-arm \textbf{by pre-declared design}, closing this defect for the superseding evidence.
-\item
-  \textbf{The tail cohort mixes exposure regimes and splits ties arbitrarily.} The nominal train-frequency tercile mixes zero-train-exposure targets with low-frequency targets (MI: 106 of 8,800 tail rows; VG: 345 of 10,900; Beauty: 1,040 of 71,522; Office: 1,261 of 36,610) and splits boundary frequency-ties by item-ID order (\S\ref{sec:5.3}); per-row outcome sidecars did not exist for the ORIGINAL runs; the pre-declared TFV2 campaign (2026-07-20) has since rerun the tail estimand with released per-row sidecars, tie-safe strata, and a separated zero-exposure bin --- its primary endpoint passed, its exclude-boundary sensitivity did not (the effect concentrates at the boundary frequency group), and the cross-dataset contrast did not replicate as significant (\S\ref{sec:5.3}). The original runs remain unreanalyzable at row level.
-\item
-  \textbf{The conn-gate probe has unequal evaluation cadence and a 4/5-seed scalar record.} The conn-gate arms evaluated at epochs \{10, 20\} vs every epoch for their base (best-by-val checkpoint opportunities unequal; the small overall delta is cadence-sensitive, \S\ref{sec:5.5}), and the learned \ensuremath{\alpha} is recorded in 4 of 5 seed logs (the artifact graph reports the recovered n = 4).
-\item
-  \textbf{Evidence-class labels encode selection timing (corrected 2026-07-19).} Only pre-declared prospective campaigns without outcome visibility are confirmatory --- TFV2 is pre-declared but outcome-visible with post-first-result external timestamps, so it is \textbf{not} labeled confirmatory (\S\ref{sec:5.3} disclosure (vii)); multi-seed development results (e.g., the \S\ref{sec:5.1} attribution rungs) improve precision but remain post-hoc; a full graph-taxonomy audit against this criterion is queued.
-\item
-  \textbf{Text-permutation and sequence-split parity controls have not been run.} The +2.7\% text-stack attribution to semantic alignment is provisional --- an item-text permutation control (embedding marginals held fixed) could reattribute part of it to added representation structure --- and comparator target-multiplicity parity under the all-position objective is asserted from protocol identity, not demonstrated by a dedicated audit. Both are disclosed open experiments (\S\ref{sec:2.3}).
-\item
-  \textbf{The thinning interventions are synthetic dataset manipulations.} The interaction- and user-mode titrations are controlled interventions on the training data, not causal identification of the real-world process that generated the datasets; all ``driver''/``causal role'' language is scoped to these interventions.
-\item
-  \textbf{Pre-declaration deviation (disclosed).} The confirmation runs executed at a documentation-only descendant commit of the pre-declaration's introducing commit, so the pre-declared commit-equality rule was not literally satisfied; code identity is demonstrated by empty protocol-file diffs and manifest code hashes, and the deviation is disclosed in \texttt{SOTA\_CONFIRM\_PREREG\_V2\_ERRATA.md} (E3) rather than claimed away (\S\ref{sec:5.2}).
-\item
-  \textbf{Preprocessing differs from the comparator by exactly one interaction per category} (users and items match exactly on every category; the \ensuremath{\pm}1 originates on the comparator's side of the counting and cannot materially affect leave-last-out evaluation, which ranks one target per user for the identical user sets).
-\item
-  \textbf{No baseline model is used as an input feature.} The canonical model consumes item IDs, timestamps, and frozen item-text embeddings only; no outputs of SASRec, HSTU-BLaIR, DropoutNet, or any comparator feed the model at training or inference time.
-\item
-  \textbf{Office\_Products status (V1 vs V3, stated precisely).} The \textbf{V1} pre-declaration's gate values passed numerically on both kernels but its floor check failed (+44\%), so the V1 second-category pass is \textbf{VOID} despite the completed matched comparator-baseline explanation (\S\ref{sec:5.6}, Appendix A.0) --- the published Office \emph{SASRec} row appears conservative in this environment --- and \textbf{no claim counts the V1 campaign}. The \textbf{redesigned V3} pre-declaration (environment-matched reference, fresh seeds) subsequently \textbf{passed} and is counted (\S\ref{sec:5.2}) --- strictly under its frozen wording: a per-category point-estimate comparison; no paired superiority; not SOTA of any kind. The limitation that remains: both counted comparisons (MI, Office V3) are against single-seed published values and a single-run local regeneration, so distributional comparator uncertainty is unquantified.
-\end{itemize}
-

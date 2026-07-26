@@ -1,4 +1,4 @@
-hygiene scan: PAPER_TORS.pdf | pages: 43
+hygiene scan: PAPER_TORS.pdf | pages: 41
 placeholder+forbidden failures: 0
 review list (SOTA mentions + negated claim-wordings): 18
   REVIEW negated-ok: paired\s+superiority :: .0271 published and 0.0279 environment-matched regeneration) — not SOTA and not paired superiority; (ii) a minimal gradient-active causal FIR residual is isolated from its identi

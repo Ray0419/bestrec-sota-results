@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "4cb723792305c48d202d577ed99fc0194f20529f",
+  "git_commit": "ebe2b93944a3e092b133c09a2b7a9879d9604759",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -115,7 +115,7 @@
       "sha256": "0eaad74a57698a878e5aaa2e7d0e314232b53759c4c449b509b34867cb9d18bc"
     },
     "_bestrec_run/build_hstu_tables.py": {
-      "sha256": "765920d3cc1b5bc54103eba3572c2ca6c0238448cdd7efef9be6d30cb3b5b1a4"
+      "sha256": "d733e370566581cd3322f6abc56c67e7ee0920282ea0616682e107cc63a7d67b"
     },
     "_bestrec_run/test_hstu_parity.py": {
       "sha256": "1656c393adaafb159fd48338b5bced547c11a1540a2d0f09ef7a800474d53bdd"
@@ -713,6 +713,82 @@
       "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260907.json": "da451badc4852079bab5d1fbc3379a29fb6da49474c415a67bb063082ff8d06f",
       "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260908.finaleval.started.json": "be1f50dcfa3a60f98616e4225e265e3e952681952e2cdb6730ac3bb7f2d50934",
       "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260908.json": "aab5ca3f48042da801a535c32b1f97953db6c7cc7b1eb9b2d1b69f9dcf432fa2"
+    },
+    "FIR_POINTWISE_OUTCOME_KNOWN": {
+      "_bestrec_run/fir_pointwise_v1_adjudication.json": "74ba5c69a41d73b0b721fb91c6ee8eed1c71fc6bc707628a71c55f983203f474",
+      "_bestrec_run/fir_pointwise_v1_status.json": "9f5c6bf3f7ac18cbfd72c9494c6d54571a12908fa6795f78c723e27ca8d0a967",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261001.finaleval.json": "2ab90a4927ce6afc64d573f73d1ae4fe677ec501b37bf0566dbc805542bfb8ee",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261001.finaleval.started.json": "47dfc870df06b432779d145b3b9e1e7cfba9ffe58eff79368291161d68d1b2d9",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261001.json": "00fc3763fddd720978f5bab90a3ff1af232d4832fcbe6edbfbaef38f00d9d770",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261002.finaleval.json": "6402823561482095bbced26942eaa7f797812d416cafdd2644b14100ee7877d2",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261002.finaleval.started.json": "50d9fad1c5aadde6d467aa736e147c98debb1630fc50cd186ac95c7187e98fdd",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261002.json": "97551a9fa190734c1d0fe39e92f30320ac90ebd04458d0a58d4c9176863530fa",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261003.finaleval.json": "0bab3a005c7fb960b77d5f5dd43593703950ad4429d52c79a9ecf363fd61d3fd",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261003.finaleval.started.json": "e36abad070da45e70071a431197ad6711ef71e085a9c28125f2c04ef65eb00ee",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261003.json": "fc34dd1911194570df92ea370abe983e5e353571fa33f43eed90d86033248b45",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261004.finaleval.json": "4fbcadd7de74e2929d3a9db3a377d194c39f068dc2165740a281e4479d886887",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261004.finaleval.started.json": "69f92b49265148a23f92ab89e9907ccfef600665d91bcccc275debea671f5643",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261004.json": "fdabb70f82899fe7b45119f4555be11a08488cec339dcb77172eb93b7919e4c0",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261005.finaleval.json": "fcbd63b791d072334f4c5bc503776b860f90ef72052aa78c5cfb9396a7e316ed",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261005.finaleval.started.json": "077021d2837d3ede6aaee52cd9d0e4384273f2e41d109f0b6b6fc71cc331f400",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261005.json": "ea1e62f58a538fb47d03a1c14331c0b0251ba2f02c50fbcde38374c691492c82",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261006.finaleval.json": "131ccd34afe4ef67b7c659890c57dc562ada95ea93f3069fbf59f9579aa99571",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261006.finaleval.started.json": "83cef6a9b8523f093757528f5c0acad330852fba4b1418f65ca8eb167f13c30b",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261006.json": "63ca066038503ffdbe657e9009bd13a7a017f62ffb52dcf10381cdb25b780c6d",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261007.finaleval.json": "e27afa21b0631d5cf447daf7716762b32f22a00f4d3a5b55b1f041d579b6003e",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261007.finaleval.started.json": "8f24a9fdaf74d4e08872e33ffca8bebd0c9bb901af57ae7897b33f06f9e0ad14",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261007.json": "b9903343b0d1ef3e707374dbfd9bda59c36c36cba3c3726417e650949b7d6c60",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261008.finaleval.json": "cf42cf8506488ffbad8ff2bd349c1120c0eeacc52ff1d46a566f800076352529",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261008.finaleval.started.json": "4017c522671733a5e393009cce73b96ef95303c1324705ea826ebcbd77444155",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261008.json": "460a54277e43e111e150af4a61d887a10ed4e9d8ebc6a8d0c14bbc42305fd769",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261001.finaleval.json": "ed094c9ce631c7758f9ffc50fa619a8e97b59a5f9618f31eed25ba99cbba6b82",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261001.finaleval.started.json": "55968efb739f6bd1e42c52b0761f543c9d660b246176d3c555165f4fa2d0d82a",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261001.json": "64c04811a2ce5ff5f9edf914b819347f458f077e1d21a1b76009114cd80b1948",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261002.finaleval.json": "f80b63ccdf3a85c99faa5bdc4c8b14dc9908d260540584a65b6ae4d5c4dc4926",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261002.finaleval.started.json": "d47ecdcaeca042608c33ac81a6fc77c8af18a88a9d30028c0240b41b49805194",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261002.json": "5af62ab536e8a239097f18c7b3ccdeb856d5eada76b99db943a6cbe1943f5be5",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261003.finaleval.json": "ddd20e250bff2e020e97e92d275921a4153d53447cfae3c8528d57d9e66e11e8",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261003.finaleval.started.json": "ac6039d6f2715c91c3b75468fe69267030ed3e69c81c0eba7c10ccdf19a0dfc9",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261003.json": "1cab7996bcc4c2b9c9db5a6c4910e8656881fcb6246e0449aa1c7e7ecc13fc41",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261004.finaleval.json": "0a04a48d337deaa7b87387075bacdcc9241fe3d5dfdacdbce39eb872315d253b",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261004.finaleval.started.json": "076d4e480bf8be93d5ae0b3316cb28020f2ddd6ff181dbca231cc942fde4d057",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261004.json": "4aaeaf31a148d6147611979d304af48093c6ee3becf698fed7b16a8b1b2c135a",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261005.finaleval.json": "478f946cb3a85dd99d770f2f2bd53fe86b7a40f58fd6791f75ad40a870a9c66a",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261005.finaleval.started.json": "1c8dae8921eec2baf6e3244ca7ea955834f17f446185b7628a0ef60b63997412",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261005.json": "2bb4d74afd380fa1ddd7ac21e7586f125a84ea9890feaade106cbf86cb622fbb",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261006.finaleval.json": "d4e1798edc7dc00f7e11c2319ed00f4baa705ea6e5e1a75a2ae8d4240dd20699",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261006.finaleval.started.json": "45f8c768407aa12cdfbb51a0921d3ed841f7f73e90fbf94a8f6fdfaad1f7f526",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261006.json": "1ccba720e085bd104c1df5b6b158820414e0ca61fbd2e18480c4a18f34d0f7d5",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261007.finaleval.json": "41d2ca3b20b152b7201c3234a2773881bdc5f8e8babc5cc82b281d9000751b41",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261007.finaleval.started.json": "747f2be22201b9adcb3eb22d11affc16103a2ae30d9b5a8e7ac72b89bbb01b08",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261007.json": "f6b62d5ef5922cf243112a969ff2259ac2f639fdefbbc887afecbe1a07b08c2c",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261008.finaleval.json": "b09696839ac4ed9982b03a2d02cecd45692e409ec739e1f513a3077570211f00",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261008.finaleval.started.json": "4b57e988478fda66f914ab43dd5c1588fa09d52a57a6389f9abdf84a87652900",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261008.json": "5b7f9051e84f2f537c2be6e23b6df1d92ed99db30fc2563716863ed268fb4b3b",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261001.finaleval.json": "eb0d680af820b5a748fa6ff2556b981ab1ce1668e9225eacdc9a4bcd6fe1f6e3",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261001.finaleval.started.json": "25d754e7e95b790ac0d6be8a20ed42c39e3171f15794e6b6155ec348cdbf76fc",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261001.json": "3213302900a450e05de05072c25a14cc09155aa47e1bea5d328b0476b94c6dfd",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261002.finaleval.json": "d1bb1436942e0ff6eb2d85b577fbd2c3cdb11229abc80ba6e659f836e3c66460",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261002.finaleval.started.json": "e401606d530c670a777a0ce41f56e8a2310662fe05bca3b99390775788b8e51a",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261002.json": "55a283061588fb3f6c593923ddcd4aab56bcb4b7145ff81234a740b48a740388",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.finaleval.json": "0a1dca982c16bf155f7bc2dee97f193e8215b30b47e045cbb1233cc748c8b21d",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.finaleval.started.json": "70124f8a5b4175a7fab944652a5f5738c0d79ec5dfac64603eb581caa0d48add",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.json": "67ae24cafc67ac284bb3cb5e6b3a3a58ed8763c6e264ffac4cb943cc2546acc7",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261004.finaleval.json": "2799140748b9b15ca64482d7bcc54193d92d1089ea7ddc09d200f115853d4afd",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261004.finaleval.started.json": "3210ac1da4c897e9e17593955825010ab9d9ab542925d1109cd6e5e289680d1e",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261004.json": "c5db64a8bedab8d9ff20800538758e60f67302093e92150468806f0a69e0e767",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261005.finaleval.json": "18c42293ee9b7b79930b46905d739a05f39bc15b8aafcb89dbde83c1dd18203a",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261005.finaleval.started.json": "a8746e0162d792818acb67470b7aff7eac11476eefc70cf54cbb497fa71f1c54",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261005.json": "f0d77f4a9909255888cffa194bc042e886ab99c40bcf005f0bb98cc7300a9b8d",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261006.finaleval.json": "26938930263eb90b16c9722894b50820a98569666a6114bc09d03c3a4f179a2c",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261006.finaleval.started.json": "48d524f40677e0ee5437799cd4547c9d1c3bc21850f00cf68eeeb209807fa314",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261006.json": "ae5e2fe0ee84bcb15d12172b5f638ff453cd2d3ddd7d32513f396c367c638651",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261007.finaleval.json": "f7a5d933e56ffe2e8d876db4425446165a07575550eb0724762280edade7c747",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261007.finaleval.started.json": "94a445a335d4f1a34cb236dd4984300732feec031cbddd10965c500c24e418a9",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261007.json": "ca9419ba9fb712904a7b6b47fbc628c1ac698ba55a3b4ed0be20b0e2ab5e29d7",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261008.finaleval.json": "ecee32fc3a3f787e462f1991257b37b031ec34089c9bc671eac7a27996b01c12",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261008.finaleval.started.json": "66c3eb8390f0f1ee0f9210c3d0158b234d79d3d4dadbc80f201c16734ab86d15",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261008.json": "2fc6b261c1e6bcb6cf0a1c0ca389f3cea8c28965cd06434fec828815b74a01cd"
     }
   },
   "sidecars": "see _bestrec_run/SOTACONF_V2_sidecar_manifest.json (tracked) + per-run user_records_sha256 fields",
@@ -728,8 +804,8 @@
       "bytes": 1223
     },
     "README.md": {
-      "sha256": "fa28cc62500ab1092670638ab2c7c66b784f600cd8dd11dddd04c1bb53901649",
-      "bytes": 10210
+      "sha256": "4523d91de62453c16e186ca1598b49257d7b12a190fd94526a2228bf5702d32d",
+      "bytes": 10336
     },
     "DOI_DEPOSIT_INSTRUCTIONS.md": {
       "sha256": "52aeff1ce6209ec39f023a5cbac2d194afe05879c1b4c12dcb8e6c6925f2a7a0",
@@ -740,44 +816,44 @@
       "bytes": 5517
     },
     "PAPER_SUBMISSION.md": {
-      "sha256": "d62ca0e46489cfe5ecc9c84977b26bd4cfbaaaafac7d97a4d76d32b62e388d2e",
-      "bytes": 144000
+      "sha256": "e10f3e3024da0b6c0e55dc22048b19e91e3e1ad53fb192eea71f65da8f3cd5f7",
+      "bytes": 146066
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "0596312b4c1fca53132c8b716b1d2dde34cd00a2c32866b472163308ba4e4bf4",
-      "bytes": 1324663
+      "sha256": "fa24c2fce9dc6277182a1394c52fe9f7760f0477791e848fbea98942d0e46840",
+      "bytes": 1331521
     },
     "PAPER_DRAFT.md": {
       "sha256": "4efe8ffea9fa4748327c16d2c6ef6fa34a547ef164a9af9d13fd6909cb00b7e5",
       "bytes": 226902
     },
     "CANONICAL_SUBMISSION.md": {
-      "sha256": "4aa0485369c6815c8ba1ac396ec0cce6c1c403bf240fecac3dd50699d661fd46",
-      "bytes": 13218
+      "sha256": "c2c3248e98e811a475cd92e921e3021d896148bb24ca6411747ac50c8c039682",
+      "bytes": 14152
     },
     "AUDIT_RESPONSE_2026-07-27.md": {
-      "sha256": "f331d4f784591e3462b8bd6fc0284267a741e4808c6f42abc1db7b04d34bc423",
-      "bytes": 10534
+      "sha256": "538d4664d6186d885e78fa41367f04443980bc66b5b118e87ac91aaa9f42a643",
+      "bytes": 11871
     },
     "COVER_LETTER_TORS.md": {
       "sha256": "9a791f5ad396254c896d8fd340d910ca9199f57c315bdfd3b04b1a48fae1300f",
       "bytes": 4171
     },
     "CLAIM_ARTIFACT_MAP.md": {
-      "sha256": "7f8bf2f16fc95159cbd9a1ca668930aa20776c344d1fb00b56f1f568f75cf18b",
-      "bytes": 10509
+      "sha256": "24465c5edf8bdb75a1daef6fdb29fc72c25f18dc8e0942e2673695bcd91501b7",
+      "bytes": 11334
     },
     "PHASE_COMPLETION_AUDIT_2026-07-28.md": {
-      "sha256": "00bc7fd54340e8e3a6c294641f79cc673eea826fee676134bce0e3418f284ed4",
-      "bytes": 7609
+      "sha256": "13f368588d2e4cbec121bdd2fda34f7aba72f48dfba95e721c874ce9ae2f8b29",
+      "bytes": 8054
     },
     "MOCK_REVIEW_2026-07-27.md": {
-      "sha256": "e104a0605909b9af08d7932d7842ceff67e08e78b321abf35dc9607875e1c1fd",
-      "bytes": 12077
+      "sha256": "f89d207c7093a31d2c64454bbec6e44c4d9abd561e2f2e640a0c7866d59377b7",
+      "bytes": 12349
     },
     "bootstrap_public_clone.py": {
-      "sha256": "5ffae9cefdeb832aa3056bad9121f4b664006bd8a2785dffe5b61e1d52170991",
-      "bytes": 5594
+      "sha256": "f11f02b2a0687307db1989498f56fecc517e9b2444549ce18c5c6c75f7ac39e0",
+      "bytes": 5688
     },
     "THEIRS_ON_OURS_REPORT.md": {
       "sha256": "6bff70f42aba38c629adbf374a445c9a73ed6c01a529fdf12e06e9becfbd52ed",
@@ -804,11 +880,11 @@
       "bytes": 3435
     },
     "_bestrec_run/build_claim_artifact_map.py": {
-      "sha256": "8a50fa84c11a1965166c4f6e9ce81c36410811996f407a8861379b07ac2f01c3",
-      "bytes": 11651
+      "sha256": "b4a9cf9ce6fdb24bbac293e517f5dd262836f234f09af17107c088a4df8e985b",
+      "bytes": 12991
     },
     "_bestrec_run/build_deposit_bundle.py": {
-      "sha256": "638f336808370f8caa45507eb0c5bbd81a322d97ba59d1560fe0fd9f1731a082",
+      "sha256": "b19b58ecc6ee85e532dff805ff284cd2cad696d69b095c2f81d972547b08b393",
       "bytes": 18621
     },
     "_bestrec_run/fbgemm_shims.py": {
@@ -816,16 +892,16 @@
       "bytes": 9762
     },
     "_bestrec_run/rebuild_hstu_submission.py": {
-      "sha256": "23b2b7e5d4ea9a079b6f55e34aec791b25397fcbc27ba8b477dd790f2cbcce0c",
-      "bytes": 6718
+      "sha256": "84e3ebab8d40f1fca47c2aa342e6404286e2d3993c1f5eede17f2ad49228c273",
+      "bytes": 7206
     },
     "_bestrec_run/update_release_manifest.py": {
-      "sha256": "cf3e1db81ac3b9cd489d6188a7c95326b164bfe50f9e03536b09beb653311903",
-      "bytes": 34526
+      "sha256": "31773fdac6bdbd49ef7f7d57afae2089383353859a2fef7a341eb9172c1b57ad",
+      "bytes": 35408
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "b9bee31a403b7f26c2a14afd09420d9b6b63c4b3372bed85a7593fd21d1de916",
-      "bytes": 429554
+      "sha256": "ffbde03113c00c786dd63101981d085f5a74abb5348c7b6ff8ea406afeac4035",
+      "bytes": 431951
     },
     "_bestrec_run/emit_latex_tables.py": {
       "sha256": "1e39233ad7a7c51d3fe9058bfea474ee07c68dc21449b83d649f114f6f17b7f3",
@@ -941,7 +1017,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.2.0-deposit",
-  "hash_parent_commit": "4cb723792305c48d202d577ed99fc0194f20529f",
+  "hash_parent_commit": "ebe2b93944a3e092b133c09a2b7a9879d9604759",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",
@@ -2012,6 +2088,300 @@
     "results_Musical_Instruments_FIRCTRL_shared_seed20260908.finaleval.json": {
       "sha256": "c429571588c360bc5c6175089d47dd84ff14f0c2f1ab81c897a48e18b4e99b8e",
       "bytes": 2630
+    }
+  },
+  "fir_pointwise_finaleval": {
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261001.finaleval.json": {
+      "sha256": "c21497acc7479178ed9ca7fb6b2e08ad0fb5f644bcca138c2bd37e9baef633d0",
+      "bytes": 2674
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261002.finaleval.json": {
+      "sha256": "d418f5edb5a9a5ca8c3d7a5cef01c515e6a8d0b96207798c48246edd28403daf",
+      "bytes": 2658
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261003.finaleval.json": {
+      "sha256": "84edf5d711313cc8323122f60fae8bf0d0edb2d3ffb3d9a9e9400885f855dd23",
+      "bytes": 2663
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261004.finaleval.json": {
+      "sha256": "6d96a155da89ecd3ddb98f8083a646b1af58dd9b26e1045cb4474c264ff2adeb",
+      "bytes": 2661
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261005.finaleval.json": {
+      "sha256": "bd588e5cfa878b0e82904d662e37b1b744227f8ff94314bd7d982016df952515",
+      "bytes": 2658
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261006.finaleval.json": {
+      "sha256": "cd525c601119f7bfd1dc58b2d7b4ebf6820aa887c8bb851e610b10753801d437",
+      "bytes": 2678
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261007.finaleval.json": {
+      "sha256": "da32ccb4aca6b53eca74be51e1d18d6fb4244a801cf40f1ce3cb7760f88ba026",
+      "bytes": 2663
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261008.finaleval.json": {
+      "sha256": "569ab30d915e09a3a719bc1ca44a4cea11cdfeb2df001b419af60990e678e7fb",
+      "bytes": 2677
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261001.finaleval.json": {
+      "sha256": "6aa2f76a49c3a835b697f8d959153a3092f98d3be792c8d63a076280ea3833fe",
+      "bytes": 2672
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261002.finaleval.json": {
+      "sha256": "a3b5631b9306c1415ee8bb29392f112ce6844ec914709335c767940ee0423067",
+      "bytes": 2669
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261003.finaleval.json": {
+      "sha256": "3abb90c91a9fc75ce72a7075b4dc01f4b0dc022a39544c0b715f83f857534cae",
+      "bytes": 2675
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261004.finaleval.json": {
+      "sha256": "1e6d5c42958c786178998d969b5120819f2db5aedd0ab68b04cef191cd856eca",
+      "bytes": 2668
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261005.finaleval.json": {
+      "sha256": "6730dc09d293bc5a30f6dd02f7258e18922e888c6a9f206c535e8beecb9d1d30",
+      "bytes": 2674
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261006.finaleval.json": {
+      "sha256": "f09c2b75284da9dddfae55772014691f87de420bc35cce7b74f56a9d1013d586",
+      "bytes": 2670
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261007.finaleval.json": {
+      "sha256": "100225ae3de08af45a6aee9a02e14893d25371703cf6c7d4a997f1e46cfcb318",
+      "bytes": 2663
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261008.finaleval.json": {
+      "sha256": "b456c2866ff5d886eeed1d9791d7e949a2ffff16fd501a558bbb092f571ae9bc",
+      "bytes": 2656
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261001.finaleval.json": {
+      "sha256": "ef02fa9ead88c2e92716772569c465f5cab93ab6adb06f82a41c0418c6c5d2b3",
+      "bytes": 2665
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261002.finaleval.json": {
+      "sha256": "95394501544307fa504c44894d21431e99bd767dfe2df7b417acb98aa26160a8",
+      "bytes": 2677
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.finaleval.json": {
+      "sha256": "fe8d0f16a25143f2116060cad3078b44bc61331cf1d6be517ea716cae9b7ff43",
+      "bytes": 2681
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261004.finaleval.json": {
+      "sha256": "d032d5efcd49b1a67fc9079373a06832b27b68d19b13d3a52b377e2fea9547d0",
+      "bytes": 2651
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261005.finaleval.json": {
+      "sha256": "3a45f27013e642244c782b1fcb7a4f78a8e44197bef3f8f1a1434ea4fdfbdfa5",
+      "bytes": 2681
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261006.finaleval.json": {
+      "sha256": "41f3ad221bc0e8847ff9eb96acff4d30bf8db58e4faeac7660ae64046f1feb55",
+      "bytes": 2679
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261007.finaleval.json": {
+      "sha256": "69d3af54380f8920841ace49af14add226f55344da12ebaad87db35b5457b284",
+      "bytes": 2679
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261008.finaleval.json": {
+      "sha256": "8338f0a4940a570e18d8a0c8cf8f61f462dafd3c7af32e6657deaecad9e7b207",
+      "bytes": 2678
+    }
+  },
+  "fir_pointwise_sidecars": {
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261001.finaleval.users.npz": {
+      "sha256": "52bb29c4442159e44a3d22cc72ba7262259fc7baf101ca4a543b2b9e20144ec2",
+      "bytes": 642999
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261002.finaleval.users.npz": {
+      "sha256": "ec557b00e6fa2cc2f26739dc50dd45985b53d83046214dcb787d7abd2552496d",
+      "bytes": 642756
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261003.finaleval.users.npz": {
+      "sha256": "b90ca337f38feed5c5f6132d227ca93b9bf94ea54d79c5b749e27d36010ccd81",
+      "bytes": 643613
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261004.finaleval.users.npz": {
+      "sha256": "17bec6b58e3442652f87a90e72d99add40b2b1f87c72a2ede1416df6e20f330a",
+      "bytes": 642693
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261005.finaleval.users.npz": {
+      "sha256": "ba49002f697c01aef2f46ef06b0132da6fb515e5cc1a46859aac79b46446025d",
+      "bytes": 644153
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261006.finaleval.users.npz": {
+      "sha256": "26d1f7a12c08b7db61333c0d3809308966b968392fff01600f2a8ddc38ff9dff",
+      "bytes": 643288
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261007.finaleval.users.npz": {
+      "sha256": "cd61d0501fa21a53c6f0a3a86d943672df7655931d595c7a11faf5a0d88eccc1",
+      "bytes": 644744
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261008.finaleval.users.npz": {
+      "sha256": "14d2f051924f2893451f66dfff17569e3cffcbfd40c0a9c6f54ead330f283c69",
+      "bytes": 644586
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261001.finaleval.users.npz": {
+      "sha256": "ddcaa21f2819de0d1c7a77c440425e9d897d8bca0b44a1f55da911232c9ad154",
+      "bytes": 643015
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261002.finaleval.users.npz": {
+      "sha256": "7a46f5291f28453def086e229dc64344dda22408c10cdddf2e46792d834c8045",
+      "bytes": 641963
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261003.finaleval.users.npz": {
+      "sha256": "a0cefe3764eb83d596b4b60f2be7e5a6fe83a181b62c5d16c83d0f6c362cde2b",
+      "bytes": 643966
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261004.finaleval.users.npz": {
+      "sha256": "985b3ca83ef21a320897c240121907700f46348db3e167a85e817aef15669b20",
+      "bytes": 643358
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261005.finaleval.users.npz": {
+      "sha256": "edd769ac7ecb4e745677b70aada423b7a76cc7d07e9ae77d0d09e8bf735c0d75",
+      "bytes": 643277
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261006.finaleval.users.npz": {
+      "sha256": "d53c013cd9a584370eef6229ca5017475a5ef92b96cc2d8d1442e00d57a45a7c",
+      "bytes": 642758
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261007.finaleval.users.npz": {
+      "sha256": "56adbc2bfc89c4ba883d3a1441fd9d5a9c6566579b83853a268987714bf730ed",
+      "bytes": 642497
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261008.finaleval.users.npz": {
+      "sha256": "8aadabc6eae4e411f4a2233c12cf1c0b7fd1a4dc725c62d8062d0d7724de3ab7",
+      "bytes": 642746
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261001.finaleval.users.npz": {
+      "sha256": "fef329d77560cc110226e9fbc2b061370ccd6d369df7927af84e150cdf1e8679",
+      "bytes": 642690
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261002.finaleval.users.npz": {
+      "sha256": "c05087288035376d2806a2eb8821fc30ad666c57045bc95334dc2d456a2abdb2",
+      "bytes": 644590
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.finaleval.users.npz": {
+      "sha256": "2552631e3547542d03aecac0e0fbc6187f7b7879ce3f8e950b829185ef9a2c2c",
+      "bytes": 643062
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261004.finaleval.users.npz": {
+      "sha256": "3b0cb81c637aaad07f9dec9924b76e71d1816ad01e68b58ec800f2bdbb7ce903",
+      "bytes": 644264
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261005.finaleval.users.npz": {
+      "sha256": "6e1e74a9bca331d3089f7b672b6ce36f239b6776ee4e3abc2f9ef537ed9888d0",
+      "bytes": 644778
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261006.finaleval.users.npz": {
+      "sha256": "cdfa0dc9258c6e81acaf8d8fc8f7b2c529db80faf01efc78d9e2bab88fa52a81",
+      "bytes": 642788
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261007.finaleval.users.npz": {
+      "sha256": "217c84b1f68b3fecefafbbf462cbb7b05b828edbd926714ef40536f2fe24e838",
+      "bytes": 643795
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261008.finaleval.users.npz": {
+      "sha256": "7276b5d2fb986ef02631a3e5cf024a74b5f635c9521ada6f500d64ddbecfa081",
+      "bytes": 642811
+    }
+  },
+  "fir_pointwise_checkpoints": {
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261001.best.pt": {
+      "sha256": "03bf9025a827893ae28259b395499a0cd3e9253104d828b2abc14d1268a43938",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261002.best.pt": {
+      "sha256": "ffcb529c2889a86bcb1c4b7d7096d3f8c135b3a60a11158c5759662498c80455",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261003.best.pt": {
+      "sha256": "c6725b7cf49673aa7a4253560bb29978fc65dd3c6dcc6a5ea61840ca294e3895",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261004.best.pt": {
+      "sha256": "8c6b171109f4045b09a96e47532664b49ed78b27a8b78a6a55edbfa0bde539fa",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261005.best.pt": {
+      "sha256": "b3f4f65faf49057e7ac0b17cf6227d8d3e6f9968763f79ac7d80c08e53e03b66",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261006.best.pt": {
+      "sha256": "113f5812a70ff580f2879e3db22ae5b744eda7f55be9261813c80f7edd7e4342",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261007.best.pt": {
+      "sha256": "6d94158c22aa7ff0907fe03137daae75b00499355b87bd626c47692f4613fce2",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261008.best.pt": {
+      "sha256": "74de5226f7ce8625fd349096f590c64472b037e27b678541b096bb2884f1808f",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261001.best.pt": {
+      "sha256": "cfd070f49429994a1f11c8b7cc80ad21ddd5f6b59acb8e6289545e20d7846803",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261002.best.pt": {
+      "sha256": "16c935e586673d317e3c630dc6fdc7858b22a4c09faa59097718634b04347953",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261003.best.pt": {
+      "sha256": "b2155b1c8f80c88aa11214c96aac7aea976f06ef77f529edcb029dfbf63906fb",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261004.best.pt": {
+      "sha256": "0a5a482d8ac8b56c1a9aa1d1fdda1935f2eda4f9732c23795096fe9e87871e8f",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261005.best.pt": {
+      "sha256": "b076782ba26ab9c03a4ffd2b8d99471a9e4cfa628fa6dd8dfe7863e483edf98b",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261006.best.pt": {
+      "sha256": "e7d65b0f1da3926839a2bf8c21f6e3872ce12ecbafcf68c5c384c2b64cd09a18",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261007.best.pt": {
+      "sha256": "4fd3fe13469602465dee1e11d661e747f66d29430c86cdf24bf56c341e7c3da8",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261008.best.pt": {
+      "sha256": "af25a4cd31281307f632b7a06f9e8d43611d25a556a8ff48667ce5a17dfc63f8",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261001.best.pt": {
+      "sha256": "c5520ae2556c04b475b9b232f589bf5738767a7f1bff111ca1a7cf07bd2bb3f3",
+      "bytes": 95122597
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261002.best.pt": {
+      "sha256": "96a0d3a83cf7c9d4e7c592badc45af6a71776e5400f4f4ca97ffa0cd5d8a1c6d",
+      "bytes": 95122597
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.best.pt": {
+      "sha256": "a9bd050d72266e8e149ad41e17f283501c96fdabce44b1d1c2babc66b83fc993",
+      "bytes": 95122597
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261004.best.pt": {
+      "sha256": "481fde238ff92a30e84b8e0c11dcfd115dca32b7d86336fb459f6e721e949219",
+      "bytes": 95122597
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261005.best.pt": {
+      "sha256": "321cbc6fc4af39052a96bd4a8c1b04f5237fc4bfae6126e005db1c0e0e793a9d",
+      "bytes": 95122597
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261006.best.pt": {
+      "sha256": "1e7f589014ae2acfc8d0c2f65ce5cfc3da366503a9201b3f7654f79a6ea6ee60",
+      "bytes": 95122597
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261007.best.pt": {
+      "sha256": "aa23e8b2fb656409876e476aefbca2e6ff1057fb2449edfd058d93825b582278",
+      "bytes": 95122597
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261008.best.pt": {
+      "sha256": "e535b6b4a6ad26821eccc61e4a9066015bd39a10f70908b8197e957daf015046",
+      "bytes": 95122597
     }
   }
 }

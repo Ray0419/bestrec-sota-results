@@ -27,3 +27,4 @@
 # Preserve those committed bytes verbatim so a clean clone reproduces the raw
 # SHA-256 recorded before the one-shot final evaluation.
 _bestrec_run/results_Musical_Instruments_FIRCTRL_*.json -text whitespace=-cr-at-eol
+_bestrec_run/results_Musical_Instruments_FIRPOINTV1_*.json -text whitespace=-cr-at-eol

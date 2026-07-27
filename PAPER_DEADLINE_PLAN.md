@@ -4,6 +4,20 @@ Maintainer deadline (2026-07-25 ~00:40 Sydney): get the paper **submission-shape
 by **08:00 Sydney**. Cron ticks + continued turns EXECUTE this until then; the
 rewrite (WS4) is the TOP priority over other worklist items until the deadline.
 
+## 2026-07-28 mechanism-phase addendum
+
+- `PREREG_FIR_POINTWISE_V1.md` and its frozen runner/evaluator/adjudicator were
+  committed and pushed before launch.
+- The campaign completed 24/24 TEST-sequestered training runs and 24/24 sealed
+  one-shot final evaluations in 144.2 minutes.
+- The mechanical first reader returned `POINTWISE-FIR-DISCRIMINATED`: learned FIR
+  beats the equal-parameter current-position-only placebo by +0.001941
+  [+0.001788,+0.002095]; pointwise−identity is −0.000069
+  [−0.000200,+0.000061].
+- Claim boundary: temporal access is supported relative to this placebo on
+  outcome-known Musical_Instruments. Shared causal FIR remains competitive, so
+  per-channel-tap necessity and independent confirmation are not claimed.
+
 ## Definition of "done" (honest)
 Submission-SHAPED, not accepted, not metadata-complete:
 - [x/in-progress] Rewrite to the moderate target (main body ≈ 28pp; keep caveats,

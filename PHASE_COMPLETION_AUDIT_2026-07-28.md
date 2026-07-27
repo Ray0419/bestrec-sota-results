@@ -15,11 +15,11 @@ deposit access.
   affiliation, conflict, reviewer, preprint, and legal/licensing decisions. The
   manuscript intentionally retains explicit placeholders rather than invented
   identities.
-- **New experiments:** not silently launched. The local-order intervention and
-  E-B/E-C/E-C2/E-D program would create new outcome-bearing evidence and require
-  a fresh, committed pre-declaration plus compute/custody approval. They are
-  acceptance-upside work, not prerequisites for the paper's present narrow
-  modular claim.
+- **New experiments:** the explicitly authorized parameter-matched pointwise-placebo
+  phase was preregistered, committed, pushed, run with TEST sequestered during all 24
+  training jobs, sealed-evaluated once, and mechanically adjudicated. Other interventions
+  (local order and E-B/E-C/E-C2/E-D) remain new outcome-bearing work requiring their own
+  frozen pre-declarations.
 - **Final DOI/release publication:** blocked on the same metadata/legal decisions
   and authenticated archive access. A deterministic, explicitly unpublished
   candidate bundle can be built locally; no tag, GitHub release, or DOI is
@@ -29,7 +29,7 @@ deposit access.
 
 | phase | status | current evidence |
 |---|---|---|
-| 1. Fail-closed artifact gate | **COMPLETE** | `rebuild_hstu_submission.py --strict` calls the strict table graph, manifest verification, governed adjudicators, HSTU parity, FIR causality, and the generated claim-to-artifact map. The graph currently recomputes 192 active paper cells across 18 families with zero mismatch/untraceable cells. |
+| 1. Fail-closed artifact gate | **COMPLETE** | `rebuild_hstu_submission.py --strict` calls the strict table graph, manifest verification, governed adjudicators, HSTU parity, FIR causality, and the generated claim-to-artifact map. The graph currently recomputes 195 active paper cells across 19 families with zero mismatch/untraceable cells. |
 | 2. Remove or rerun old Table 1a | **COMPLETE (safe-removal path)** | Unretained v1 SASRec rows are excluded from the paper claim set and retained only as explicitly `RETIRED` provenance. No claim depends on them. |
 | 3. Re-adjudicate Office honestly | **COMPLETE** | Office V1 remains permanently `VOID`. The separately pre-declared V3 campaign passes only the narrow environment-caveated, per-category point-estimate rule; it is not promoted to paired, distributional, or SOTA evidence. |
 | 4. Bind Office to the artifact graph | **COMPLETE** | Office V1 and V3 cells, verdicts, external constants, and manuscript wording are graph-backed and drift-gated. |
@@ -46,13 +46,13 @@ deposit access.
 |---|---|---|
 | Canonical nonsingular FIR | **COMPLETE** | Canonical implementation, matched initialization, preregistration, and MI result are integrated. |
 | Canonical breadth transfer | **COMPLETE** | Industrial_and_Scientific and CDs_and_Vinyl breadth results and adjudication are integrated with outcome-visible wording. |
-| Active controls | **COMPLETE** | Fixed, shared, and parameter-matched nonlinear causal controls are integrated. They narrow the conclusion: trainable causal residual arms beat frozen identity, but temporal specificity and learned-tap specificity are not isolated. |
+| Active controls | **COMPLETE** | Fixed, shared, and parameter-matched nonlinear causal controls are integrated. A later equal-parameter current-position-only placebo is also complete: learned FIR beats it while its identity contrast spans zero (`POINTWISE-FIR-DISCRIMINATED`). This supports temporal access relative to that placebo; the competitive shared causal filter still prevents per-channel-tap attribution. |
 | Manuscript rewrite | **COMPLETE** | The paper is organized as a modular-contribution study with the audit apparatus and negative results preserved; the journal-format length is deliberate rather than a conference-short target. |
-| Causality unit test | **COMPLETE** | `test_fir_causality.py` is in the strict chain and checks 16/16 future-perturbation cases. |
+| Causality unit test | **COMPLETE** | `test_fir_causality.py` is in the strict chain and checks 18/18 future-perturbation cases, including the pointwise path and FIR positive control. |
 | Tap/frequency-response diagnostic | **COMPLETE** | Deterministic learned-tap and magnitude-response data/figure are generated from bound checkpoints and included as descriptive mechanism evidence. |
-| Local-order intervention retrain | **NOT RUN — NEW-EXPERIMENT AUTHORITY REQUIRED** | This is a new outcome-bearing intervention, not a missing repair. It requires a new frozen protocol and fresh seeds before launch. The paper explicitly says temporal specificity remains open. |
+| Local-order intervention retrain | **NOT RUN — SEPARATE NEW EXPERIMENT** | The parameter-matched pointwise placebo now addresses temporal versus non-temporal access on outcome-known MI. A local-order intervention would test a different mechanism and still requires a new frozen protocol and fresh seeds; it is not needed to represent the completed placebo result. |
 | Two reproduction paths | **COMPLETE** | Both paths are written in `CLAIM_ARTIFACT_MAP.md`; the public-clone route is automated by `bootstrap_public_clone.py`. |
-| Claim-to-artifact map | **COMPLETE** | `CLAIM_ARTIFACT_MAP.md` is deterministically generated and verified by the strict rebuild. |
+| Claim-to-artifact map | **COMPLETE** | `CLAIM_ARTIFACT_MAP.md` is deterministically generated and verified by the strict rebuild. Its verifier now requires every active cell to appear exactly once, closing the prior six-cell omission. |
 | Manuscript-matched deposit | **CANDIDATE COMPLETE; PUBLICATION BLOCKED** | Candidate metadata and bundle are current, deterministic, and marked unpublished. A final immutable tag/asset/DOI cannot be truthfully created before author/legal verification. |
 | Mock review and cover letter | **COMPLETE as drafts** | Current files reflect the narrowed claims and remaining metadata fields. Maintainer fields remain visibly bracketed. |
 

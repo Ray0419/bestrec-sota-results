@@ -37,6 +37,9 @@ SECTIONS = (
     "fir_control_finaleval",
     "fir_control_sidecars",
     "fir_control_checkpoints",
+    "fir_pointwise_finaleval",
+    "fir_pointwise_sidecars",
+    "fir_pointwise_checkpoints",
 )
 
 

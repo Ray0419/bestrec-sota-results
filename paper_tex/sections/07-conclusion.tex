@@ -9,16 +9,18 @@ comparison, and that verdict remains in the record even though a redesigned prot
 later passed on fresh seeds.
 
 The main empirical result is a family of identity-initialized, gradient-active,
-strictly causal temporal-mixing modules. Learned FIR--identity estimates are positive
+strictly left-causal residual modules. Learned FIR--identity estimates are positive
 on Musical\_Instruments (+0.002265, 95\% CI [0.001928, 0.002602]),
 Industrial\_and\_Scientific (+0.002110 [0.001820, 0.002399]), and
 CDs\_and\_Vinyl (+0.006150 [0.005849, 0.006450]), but these are outcome-visible
-internal estimates. In the active-control study, every temporally active arm improves
+internal estimates. In the active-control study, every trainable left-causal arm improves
 identity; learned taps beat the redundant fixed-filter parameterizations but are not
-separated from shared or parameter-matched nonlinear causal controls. Because no active
-non-temporal placebo was run, the evidence does not isolate temporal structure from
-generic trainable-residual capacity, establish external-comparator superiority, or
-provide independent cross-category confirmation.
+separated from the shared causal filter or parameter-matched nonlinear causal control.
+In the subsequent equal-parameter current-position-only placebo study, pointwise minus
+identity is -0.000069 [-0.000200, +0.000061], while learned FIR minus pointwise is
++0.001941 [+0.001788, +0.002095]. This supports temporal access relative to that
+placebo in this outcome-known MI setting. It does not establish per-channel-tap
+necessity, external-comparator superiority, or independent cross-category confirmation.
 
 The secondary result is narrower. Frozen text features improve the repaired
 Musical\_Instruments frequency-tail endpoint (+0.000420 [0.000181, 0.000660]),

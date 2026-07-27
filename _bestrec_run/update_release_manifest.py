@@ -72,7 +72,9 @@ PINNED_PARITY_FILES = [
 ARGS = None
 RELEASE_ASSET_SECTIONS = {"splits", "text_caches", "pinned_parity_artifacts",
                           "tfv2_sidecars", "fir_control_sidecars",
-                          "fir_control_checkpoints", "fir_control_finaleval"}
+                          "fir_control_checkpoints", "fir_control_finaleval",
+                          "fir_pointwise_sidecars", "fir_pointwise_checkpoints",
+                          "fir_pointwise_finaleval"}
 RELEASE_URL = ("https://github.com/Ray0419/bestrec-sota-results/releases/download/"
                "v0.9-audit-evidence/")
 FIGURE_ASSETS = [
@@ -198,7 +200,8 @@ def verify(m):
 
     for sec in ("splits", "text_caches", "tfv2_sidecars",
                 "fir_control_sidecars", "fir_control_checkpoints",
-                "fir_control_finaleval"):
+                "fir_control_finaleval", "fir_pointwise_sidecars",
+                "fir_pointwise_checkpoints", "fir_pointwise_finaleval"):
         for key, ent in m.get(sec, {}).items():
             check_named(sec, key, ent["sha256"])
     for rel, ent in m.get("protocol_code", {}).items():
@@ -426,6 +429,12 @@ def regen(m):
                     "fir_controls_adjudication.json", "fir_controls_status.json"):
         _ctrl_jsons.extend(_g.glob(os.path.join(ROOT, "_bestrec_run", pattern)))
     add_result_family("FIR_CONTROLS_OUTCOME_KNOWN", _ctrl_jsons)
+    _point_jsons = []
+    for pattern in ("results_Musical_Instruments_FIRPOINTV1_*.json",
+                    "fir_pointwise_v1_adjudication.json",
+                    "fir_pointwise_v1_status.json"):
+        _point_jsons.extend(_g.glob(os.path.join(ROOT, "_bestrec_run", pattern)))
+    add_result_family("FIR_POINTWISE_OUTCOME_KNOWN", _point_jsons)
 
     # audit 2026-07-24 (E-E freeze): keep protocol_code in lock-step with the
     # governed-completeness gate -- auto-register any tracked governed file
@@ -492,7 +501,10 @@ def regen(m):
     for section, pattern in (
             ("fir_control_finaleval", "results_Musical_Instruments_FIRCTRL_*.finaleval.json"),
             ("fir_control_sidecars", "results_Musical_Instruments_FIRCTRL_*.finaleval.users.npz"),
-            ("fir_control_checkpoints", "results_Musical_Instruments_FIRCTRL_*.best.pt")):
+            ("fir_control_checkpoints", "results_Musical_Instruments_FIRCTRL_*.best.pt"),
+            ("fir_pointwise_finaleval", "results_Musical_Instruments_FIRPOINTV1_*.finaleval.json"),
+            ("fir_pointwise_sidecars", "results_Musical_Instruments_FIRPOINTV1_*.finaleval.users.npz"),
+            ("fir_pointwise_checkpoints", "results_Musical_Instruments_FIRPOINTV1_*.best.pt")):
         inventory = m.get(section, {})
         for ap in sorted(_g.glob(os.path.join(ROOT, "_bestrec_run", pattern))):
             key = os.path.basename(ap)

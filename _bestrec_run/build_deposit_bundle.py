@@ -257,7 +257,7 @@ Canonical verification command:
 
     python _bestrec_run/rebuild_hstu_submission.py --strict
 
-It runs fail-closed: bitwise HSTU core-block parity; the strict 192-cell,
+It runs fail-closed: bitwise HSTU core-block parity; the strict 195-cell,
 18-family artifact graph; release-manifest verification; the governed MI,
 TFV2, COUNTED Office_Products V3, FIR-breadth adjudicator, canonical FIR,
 active-control, and reproduction checks; the permanent Office V1 VOID; the

@@ -1,0 +1,8 @@
+{
+  "protocol": "PREREG_FIR_POINTWISE_V1",
+  "started_unix": 1785172844.4171066,
+  "run_json": "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.json",
+  "run_json_sha256": "df22f02e12474be1bddbe300ab2b9d8e13fad4e2a369ac06148e5b61f2948f7d",
+  "checkpoint": "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.best.pt",
+  "checkpoint_sha256": "a9bd050d72266e8e149ad41e17f283501c96fdabce44b1d1c2babc66b83fc993"
+}

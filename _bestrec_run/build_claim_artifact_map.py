@@ -32,20 +32,23 @@ CLAIMS = [
     {
         "id": "C2",
         "claim": "Canonical FIR breadth on Industrial_and_Scientific and CDs_and_Vinyl",
-        "boundary": "Matched-initialization, zero-category-tuning internal robustness plus outcome-visible independent-arm TFV2 estimates; not transfer confirmation.",
-        "tables": ["fir_canonical_breadth", "tfv2"],
+        "boundary": "Historical package breadth plus matched-initialization, zero-category-tuning canonical robustness and outcome-visible independent-arm TFV2 estimates; not transfer confirmation.",
+        "tables": ["fir_breadth", "fir_canonical_breadth", "tfv2"],
         "files": ["PREREG_FIR_CANONICAL_BREADTH.md",
                   "_bestrec_run/adjudicate_fir_canonical_breadth.py",
                   "_bestrec_run/fir_canonical_breadth_adjudication.json"],
     },
     {
         "id": "C3",
-        "claim": "Six-arm active-control boundary",
-        "boundary": "Temporally active residuals improve identity; learned taps do not separate from shared/nonlinear controls; temporal specificity remains unidentified.",
-        "tables": ["fir_controls"],
+        "claim": "Active-control and non-temporal-placebo mechanism boundary",
+        "boundary": "Temporally active residuals improve identity; learned taps do not separate from the shared causal filter, but learned FIR beats an equal-parameter current-position-only placebo in an outcome-known MI study. This isolates temporal access against that placebo, not per-channel necessity or external generalization.",
+        "tables": ["fir_controls", "fir_pointwise"],
         "files": ["PREREG_FIR_CONTROLS.md", "PREREG_FIR_CONTROLS_ERRATA.md",
                   "_bestrec_run/adjudicate_fir_controls.py",
                   "_bestrec_run/fir_controls_adjudication.json",
+                  "PREREG_FIR_POINTWISE_V1.md",
+                  "_bestrec_run/adjudicate_fir_pointwise_v1.py",
+                  "_bestrec_run/fir_pointwise_v1_adjudication.json",
                   "_bestrec_run/test_fir_causality.py"],
     },
     {
@@ -94,7 +97,7 @@ CLAIMS = [
         "id": "C9",
         "claim": "Core HSTU/FIR ablations and text-stack support",
         "boundary": "Internal ablations at their stated seed counts; TAPE is supporting and sub-additive, not a headline architecture claim.",
-        "tables": ["table1", "table1c"],
+        "tables": ["table1", "table1a", "table1c"],
         "files": ["_bestrec_run/run_sasrec_sbert.py"],
     },
     {
@@ -110,8 +113,10 @@ CLAIMS = [
 
 EXPECTED_EVIDENCE = {
     "fir_v3": {"exploratory"},
+    "fir_breadth": {"exploratory"},
     "fir_canonical_breadth": {"exploratory"},
     "fir_controls": {"exploratory"},
+    "fir_pointwise": {"exploratory"},
     "tableV2conf": {"confirmatory"},
     "office_v3": {"confirmatory"},
     "office_confirmation": {"exploratory"},
@@ -121,6 +126,7 @@ EXPECTED_EVIDENCE = {
     "table542": {"exploratory"},
     "table2": {"confirmatory", "exploratory"},
     "table1": {"exploratory"},
+    "table1a": {"exploratory"},
     "table1c": {"exploratory"},
     "table1b": {"exploratory"},
     "theirs_on_ours": {"exploratory"},
@@ -142,6 +148,7 @@ def build() -> str:
 
     errors = []
     rows = []
+    mapped_counts = collections.Counter()
     for spec in CLAIMS:
         mapped = []
         for table in spec["tables"]:
@@ -170,6 +177,19 @@ def build() -> str:
             if not (ROOT / path).exists():
                 errors.append(f"{spec['id']}: missing mapped artifact {path}")
         rows.append((spec, mapped))
+        mapped_counts.update(mapped)
+
+    active_ids = {c["cell_id"] for c in cells if c["status"] == "OK"}
+    mapped_ids = set(mapped_counts)
+    missing = sorted(active_ids - mapped_ids)
+    extras = sorted(mapped_ids - active_ids)
+    duplicates = sorted(cid for cid, count in mapped_counts.items() if count != 1)
+    if missing:
+        errors.append("active cells absent from claim map: " + ", ".join(missing))
+    if extras:
+        errors.append("claim map references non-active cells: " + ", ".join(extras))
+    if duplicates:
+        errors.append("active cells not mapped exactly once: " + ", ".join(duplicates))
 
     if errors:
         raise SystemExit("claim-map validation failed:\n  - " + "\n  - ".join(errors))
@@ -191,6 +211,8 @@ def build() -> str:
         f"active paper checks = **{check_counts['exact']} exact + "
         f"{check_counts['within_rounding']} within rounding**, zero mismatch/untraceable. "
         f"Release manifest date: **{release.get('date', 'unknown')}**.",
+        f"Completeness invariant: **{len(active_ids)}/{len(active_ids)} active cells mapped "
+        "exactly once**.",
         "",
         "## Retained claim map",
         "",

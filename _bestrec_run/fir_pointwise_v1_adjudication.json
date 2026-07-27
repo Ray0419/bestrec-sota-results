@@ -1,0 +1,197 @@
+{
+  "protocol": "PREREG_FIR_POINTWISE_V1",
+  "verdict": "POINTWISE-FIR-DISCRIMINATED",
+  "scope": "internal outcome-known parameter-matched placebo study",
+  "alpha": 0.05,
+  "category": "Musical_Instruments",
+  "kernel_or_width": 16,
+  "seeds": [
+    20261001,
+    20261002,
+    20261003,
+    20261004,
+    20261005,
+    20261006,
+    20261007,
+    20261008
+  ],
+  "means": {
+    "identity": 0.03946462981130523,
+    "learned": 0.04133665639465722,
+    "pointwise": 0.039395207981986646
+  },
+  "values": {
+    "identity": [
+      0.03923900924846405,
+      0.03967962502328431,
+      0.0395651710667911,
+      0.039558056706227814,
+      0.03938397624961498,
+      0.039325804007488134,
+      0.039455009448862516,
+      0.039510386739708914
+    ],
+    "learned": [
+      0.04118174355079225,
+      0.04170474830444996,
+      0.04127166320793517,
+      0.041440375828959826,
+      0.041434919105328254,
+      0.04133555142796261,
+      0.04111864785853178,
+      0.04120560187329789
+    ],
+    "pointwise": [
+      0.03909734515979274,
+      0.03990299978922989,
+      0.03928244793340091,
+      0.03950276844473721,
+      0.039309745008044295,
+      0.039187117748629145,
+      0.039293495775842784,
+      0.03958574399621615
+    ]
+  },
+  "contrasts": {
+    "learned-identity": {
+      "mean": 0.0018720265833519897,
+      "sd": 0.00016107307548338614,
+      "t": 32.87259990975241,
+      "df": 7,
+      "p": 6.240394250378882e-09,
+      "ci95": [
+        0.001737366122336637,
+        0.0020066870443673423
+      ],
+      "per_seed": [
+        0.0019427343023281987,
+        0.00202512328116565,
+        0.0017064921411440725,
+        0.0018823191227320124,
+        0.002050942855713271,
+        0.002009747420474474,
+        0.0016636384096692658,
+        0.0016952151335889731
+      ]
+    },
+    "pointwise-identity": {
+      "mean": -6.942182931858609e-05,
+      "sd": 0.00015625463527180585,
+      "t": -1.256632065683231,
+      "df": 7,
+      "p": 0.24919574647282675,
+      "ci95": [
+        -0.00020005397350743558,
+        6.12103148702634e-05
+      ],
+      "per_seed": [
+        -0.00014166408867131303,
+        0.00022337476594558314,
+        -0.0002827231333901864,
+        -5.5288261490600565e-05,
+        -7.423124157068806e-05,
+        -0.00013868625885898878,
+        -0.00016151367301973224,
+        7.535725650723718e-05
+      ]
+    },
+    "learned-pointwise": {
+      "mean": 0.0019414484126705758,
+      "sd": 0.00018353299469555564,
+      "t": 29.919663005563464,
+      "df": 7,
+      "p": 1.2010282403744905e-08,
+      "ci95": [
+        0.0017880109892957365,
+        0.002094885836045415
+      ],
+      "per_seed": [
+        0.0020843983909995117,
+        0.0018017485152200668,
+        0.001989215274534259,
+        0.001937607384222613,
+        0.002125174097283959,
+        0.0021484336793334627,
+        0.001825152082688998,
+        0.001619857877081736
+      ]
+    }
+  },
+  "holm": {
+    "learned-identity": {
+      "p_raw": 6.240394250378882e-09,
+      "p_holm": 1.8721182751136646e-08,
+      "reject": true
+    },
+    "pointwise-identity": {
+      "p_raw": 0.24919574647282675,
+      "p_holm": 0.24919574647282675,
+      "reject": false
+    },
+    "learned-pointwise": {
+      "p_raw": 1.2010282403744905e-08,
+      "p_holm": 2.402056480748981e-08,
+      "reject": true
+    }
+  },
+  "positive": {
+    "learned-identity": true,
+    "pointwise-identity": false,
+    "learned-pointwise": true
+  },
+  "backbone_hashes": {
+    "20261001": {
+      "identity": "34856d8421ed5f85a3dbcb581075960a8bcd173a973cdeef5be612f501956dc4",
+      "learned": "34856d8421ed5f85a3dbcb581075960a8bcd173a973cdeef5be612f501956dc4",
+      "pointwise": "34856d8421ed5f85a3dbcb581075960a8bcd173a973cdeef5be612f501956dc4"
+    },
+    "20261002": {
+      "identity": "9bfc751dd5cffa9c812c38a879477b4bcaa6c42b038f2378c184dbdeb301cfd7",
+      "learned": "9bfc751dd5cffa9c812c38a879477b4bcaa6c42b038f2378c184dbdeb301cfd7",
+      "pointwise": "9bfc751dd5cffa9c812c38a879477b4bcaa6c42b038f2378c184dbdeb301cfd7"
+    },
+    "20261003": {
+      "identity": "b1a941dbf8338caa154e6a31360098f29887d1ee57d870efe31df5f36bbf96ad",
+      "learned": "b1a941dbf8338caa154e6a31360098f29887d1ee57d870efe31df5f36bbf96ad",
+      "pointwise": "b1a941dbf8338caa154e6a31360098f29887d1ee57d870efe31df5f36bbf96ad"
+    },
+    "20261004": {
+      "identity": "3aff2b3ce93b0efec85567ec40709c39a6d8d7e32f6092dc6a0bed616d149472",
+      "learned": "3aff2b3ce93b0efec85567ec40709c39a6d8d7e32f6092dc6a0bed616d149472",
+      "pointwise": "3aff2b3ce93b0efec85567ec40709c39a6d8d7e32f6092dc6a0bed616d149472"
+    },
+    "20261005": {
+      "identity": "acdd2c90b338f5f5a823f1ae2e887c1650b4e01f5ada2d6a6b09b0ea3a71d2fe",
+      "learned": "acdd2c90b338f5f5a823f1ae2e887c1650b4e01f5ada2d6a6b09b0ea3a71d2fe",
+      "pointwise": "acdd2c90b338f5f5a823f1ae2e887c1650b4e01f5ada2d6a6b09b0ea3a71d2fe"
+    },
+    "20261006": {
+      "identity": "9881dfddfcadde327f7f7cb8a34f9546041e56a9ee5cfc3534f6507ddb5b014e",
+      "learned": "9881dfddfcadde327f7f7cb8a34f9546041e56a9ee5cfc3534f6507ddb5b014e",
+      "pointwise": "9881dfddfcadde327f7f7cb8a34f9546041e56a9ee5cfc3534f6507ddb5b014e"
+    },
+    "20261007": {
+      "identity": "7683d8dd9fe9363f2f054018df9887d4052bc11b6db81ae5fc6ab5e1a60fe97d",
+      "learned": "7683d8dd9fe9363f2f054018df9887d4052bc11b6db81ae5fc6ab5e1a60fe97d",
+      "pointwise": "7683d8dd9fe9363f2f054018df9887d4052bc11b6db81ae5fc6ab5e1a60fe97d"
+    },
+    "20261008": {
+      "identity": "61302ffcbf613f6ec9727adf47f1d17d8c5ad2cb0e64ea2b69a7a661a0fd3983",
+      "learned": "61302ffcbf613f6ec9727adf47f1d17d8c5ad2cb0e64ea2b69a7a661a0fd3983",
+      "pointwise": "61302ffcbf613f6ec9727adf47f1d17d8c5ad2cb0e64ea2b69a7a661a0fd3983"
+    }
+  },
+  "n_trainable_params": {
+    "identity": 1743230,
+    "learned": 1744254,
+    "pointwise": 1744254
+  },
+  "test_split_sha256": "19f3ed965a5adafec9f55575cdbe113556ae5ee156e41591da364cfb89cda36a",
+  "frozen_sha256_lf": {
+    "trainer": "46dbbc2f2a3c86a8410e549f92d70228edc24d0b05d66da0fa081298e2a73ac8",
+    "evaluator": "0dfd22c49d2454d64960777286c29fb0dfe425e4afa0d8ded767542bd517c2c8",
+    "runner": "a9a79eab4c79dddb991e549382a69c8fa0e40a330ef79f57d62eab1a3f7e103d",
+    "structural_test": "6b4ae09d0e007158f2bb201758625ec2c3c14fcabc22c450a686226214aed30c",
+    "preregistration": "e109ae98a825e7fb48cb2ca988c17d3a882c5e5af6fe9de1930e82e16223cfdf"
+  }
+}

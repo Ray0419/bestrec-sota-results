@@ -1,6 +1,6 @@
-# Artifact-Gated Evaluation of Text-Augmented Sequential Recommendation
+# Artifact-Gated Evaluation of a Causal FIR Module for Sequential Recommendation
 
-**An FIR-Optimizer Package and a Musical-Instruments Frequency-5 Case Study on Amazon Reviews 2023.** (The FIR effect is a bundled treatment package — filter + initialization + optimizer path; component isolation is open work, EXPERIMENT_PROGRAM E-A.)
+**A narrow modular contribution on Amazon Reviews 2023, with outcome-known mechanism studies and an artifact-gated audit trail.**
 
 This repository is the working artifact repository for the manuscript (ACM TORS submission format; **public** — the 18 split CSVs, four text caches, 107 TFV2 per-user sidecars, and 144 FIR-control final-evaluation/sidecar/checkpoint files are deposited as hash-manifested release assets; `bootstrap_public_clone.py` reconstructs a fresh clone's full evidence boundary):
 code, pre-declarations, results of record, provenance manifests, the fail-closed build
@@ -17,12 +17,12 @@ uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --s
 ```
 
 This runs, fail-closed: the bitwise HSTU core-block parity test → the artifact-graph build
-(**all 192 artifact-gated cells recomputed from source artifacts**; exits
+(**all 195 artifact-gated cells recomputed from source artifacts**; exits
 nonzero on any mismatch, untraceable cell, or missing claim family) → release-manifest hash
 verification (the live gate reports the authoritative file count) → the pre-declared Musical_Instruments gate adjudicator → the TFV2 repaired-estimand adjudicator (outcome-visible — §5.3 chronology) → **the
 Office V3 adjudicator (counted; the build fails unless the campaign verdict is PASS)** →
 **the FIR-breadth adjudicator (artifact-integrity: the frozen rule's legacy CONFIRMED tokens are checked mechanically; the paired premise is withdrawn and no inferential confirmation is implied)** → the Office V1
-adjudicator (descriptive/VOID). Each campaign's live adjudicator gates the build (MI V2, Office V3, TFV2, FIR breadth, E-A, canonical FIR breadth, FIR active controls, E-F; the E-G adjudicator also gates as an artifact-reproduction check but confers no confirmatory status — see PAPER_SUBMISSION.md §5.8). Canonical breadth and FIR active controls are outcome-known/test-exposed internal studies; their live verdict gates certify artifact reproduction, not independent-confirmation status.
+adjudicator (descriptive/VOID). Each campaign's live adjudicator gates the build (MI V2, Office V3, TFV2, FIR breadth, E-A, canonical FIR breadth, FIR active controls, FIR pointwise placebo, E-F; the E-G adjudicator also gates as an artifact-reproduction check but confers no confirmatory status — see PAPER_SUBMISSION.md §5.8). Canonical breadth and the FIR mechanism studies are outcome-known/test-exposed internal evidence; their live verdict gates certify artifact reproduction, not independent-confirmation status.
 (hardened 2026-07-18); `update_release_manifest.py --verify-git <commit|tag>` additionally
 checks the manifest against the git blobs. **Hash-check rule:** verify digests against the
 tag blob (`git show <tag>:FILE`), the release asset, or the bundle payload — never raw
@@ -44,9 +44,11 @@ blobs (`DOI_DEPOSIT_INSTRUCTIONS.md` has the full rule).
   [+0.001928,+0.002602]), Industrial_and_Scientific +0.002110 (ordinary paired 95% CI
   [+0.001820,+0.002399]), and CDs_and_Vinyl +0.006150 (ordinary paired 95% CI
   [+0.005849,+0.006450]). Active controls show that trainable causal residual arms beat frozen
-  identity under the tested configuration, but do not isolate temporal specificity, learned
-  per-channel taps, or generic trainable-residual capacity. These are internal mechanism
-  estimates, never an independent-confirmation or comparator claim.
+  identity. A subsequent equal-parameter current-position-only placebo is not detectably
+  different from identity (−0.000069 [−0.000200,+0.000061]), while learned FIR beats it
+  (+0.001941 [+0.001788,+0.002095]). This supports temporal access relative to that placebo;
+  the competitive shared causal filter prevents per-channel-tap attribution. These are
+  outcome-known internal mechanism estimates, never an independent-confirmation or comparator claim.
 - **Pre-declared fresh-seed hybrid (E-F, 2026-07-23):** late z-score fusion with train-only EASE (Steck 2019) lifted test NDCG@10 on all three categories tested (MI +0.0024, IS +0.0026, VG +0.0032; ordinary paired 95% CIs with Holm-adjusted decisions, fresh seeds 20260721-25); the MI fused five-seed mean 0.04399 exceeds the published single-run 0.0406 (point-estimate comparison, environment-caveated; see PAPER_SUBMISSION.md §5.7).
 - **Sparse-warm text-fusion study (E-G, 2026-07-23; OUTCOME-VISIBLE, PROTOCOL-DEVIATED — descriptive only):** a validation-selected history-centroid text scorer raised tail-bin test NDCG@10 on all five categories (+0.0011 to +0.0048) at aggregate cost within margin, BUT the campaign's no-interim clause was violated, the literal config gate fails MI/VG, and the gate was amended after outcomes; no confirmatory status is claimed. Its intended clean replication (E-G2) was itself EXPOSED (a git add -A committed 14 in-progress confirm artifacts before adjudication, audit 2026-07-23 22:00); the sole remaining counted path is a future repository-sequestered E-G3 (PAPER_SUBMISSION.md §5.8).
 - **Text tail benefit: one MI frequency-5-heavy case** (cross-dataset heterogeneity not established, interaction p = 0.13; the thinning intervention did NOT explain it — one fixed draw; mechanism unresolved).

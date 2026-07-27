@@ -1,4 +1,4 @@
-hygiene scan: PAPER_TORS.pdf | pages: 41
+hygiene scan: PAPER_TORS.pdf | pages: 42
 placeholder+forbidden failures: 0
 review list (SOTA mentions + negated claim-wordings): 13
   REVIEW negated-ok: pinned(?:[-\s]\w+)?[-\s]reproduction :: luded from the artifact graph) 0.13234 final stronger than ours; not a faithful pinned-environment reproduction Our full model (0.0673) exceeds their published SASRec (0.0573) but does not re

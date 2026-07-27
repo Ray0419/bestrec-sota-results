@@ -98,6 +98,13 @@ def main():
                            "supported active controls: ['fixed_ma', 'fixed_hp', "
                            "'shared', 'nonlinear']",
                            "A retained contrast is not evidence of equivalence."])
+        ok &= run_verdict("FIR pointwise-placebo adjudication (pre-declared but "
+                          "outcome-known internal mechanism study; frozen pointwise "
+                          "verdict required)",
+                          ["_bestrec_run/adjudicate_fir_pointwise_v1.py"],
+                          ["VERDICT: POINTWISE-FIR-DISCRIMINATED",
+                           "learned-pointwise",
+                           "A retained contrast is not evidence of equivalence."])
         ok &= run_verdict("E-F HYBRID_V1 fresh-seed adjudication (pre-declared; "
                           "W-H-POS x3 required)",
                           ["_bestrec_run/adjudicate_hybrid_v1.py"],

@@ -46,7 +46,7 @@ We do not claim a wholly new recommender architecture. Our architectural additio
 \item
   The \textbf{competitive Video\_Games 5-core result} on the HSTU-style pure-PyTorch stack (6-seed NDCG@10 = \textbf{0.0673 \ensuremath{\pm} 0.0003}, +17.5\% over published SASRec 0.0573), shown to be architectural (ID-only \ensuremath{\approx}0.0656), with no SOTA claim. \emph{(The earlier v1-era SASRec-SBERT number 0.05509 \ensuremath{\pm} 0.00035 has been retired from Table 1a: its raw per-seed artifacts predate the artifact manifest and cannot be recomputed, so it survives only as a RETIRED provenance row in the manifest, not as a paper claim.)}
 \item
-  The two added components --- the \textbf{strictly causal FIR temporal filter} (positive matched identity contrasts on three outcome-visible categories; active controls do not isolate temporal specificity or learned taps; \S\ref{sec:5.2}) and \textbf{TAPE} --- plus the \textbf{MI frequency-5 tail case} (\S\ref{sec:5.3}) and its \textbf{interaction-thinning titration} level-contrast result (\S\ref{sec:5.4}). The novelty boundary for each is stated explicitly in Table 0 (\S\ref{sec:2.3}).
+  The two added components --- the \textbf{strictly causal FIR temporal filter} (positive matched identity contrasts on three outcome-visible categories; an equal-parameter non-temporal placebo supports temporal access in MI, while the shared causal control prevents per-channel-tap attribution; \S\ref{sec:5.2}) and \textbf{TAPE} --- plus the \textbf{MI frequency-5 tail case} (\S\ref{sec:5.3}) and its \textbf{interaction-thinning titration} level-contrast result (\S\ref{sec:5.4}). The novelty boundary for each is stated explicitly in Table 0 (\S\ref{sec:2.3}).
 \end{itemize}
 
 
@@ -61,7 +61,8 @@ gradient-active left-causal depthwise-FIR residual used before an HSTU-style sta
 an all-position objective, together with its matched internal evaluation. The historical
 zero-gated realization is singular at initialization and remains package-attributed;
 the nonsingular canonical realization permits a FIR-arm interpretation, while the
-available controls do not isolate temporal specificity from trainable-residual capacity
+an equal-parameter current-position-only placebo supports temporal access relative to
+that placebo, while a shared causal filter prevents attribution to per-channel taps
 (\S\ref{sec:3}, \S\ref{sec:5.2}).
 
 \input{tables/table0_novelty}

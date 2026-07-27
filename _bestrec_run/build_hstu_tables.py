@@ -346,6 +346,67 @@ def rule_fir_control_contrast(p):
     out["holm_reject"] = 1.0 if decision["reject"] else 0.0
     return out
 
+def rule_fir_pointwise_contrast(p):
+    """Recompute the sealed FIR-vs-pointwise placebo contrast and bind its verdict."""
+    def endpoint(rel, expected_arm, expected_seed):
+        rec = load(rel)
+        if (rec.get("protocol") != "PREREG_FIR_POINTWISE_V1"
+                or rec.get("category") != "Musical_Instruments"
+                or rec.get("arm") != expected_arm
+                or int(rec.get("seed", -1)) != int(expected_seed)):
+            raise ValueError(f"FIR-pointwise final-evaluation binding drift in {rel}")
+        selected = int(rec.get("selected_epoch", -1))
+        if not (1 <= selected <= 20):
+            raise ValueError(f"FIR-pointwise selected-epoch out of range in {rel}")
+        train_rel = rel.replace(".finaleval.json", ".json")
+        train = load(train_rel)
+        history = train.get("history", [])
+        selected_rows = [row for row in history if int(row.get("epoch", -1)) == selected]
+        selected_val = float(rec.get("selected_val_NDCG10"))
+        max_val = max(float(row["val"]["NDCG@10"]) for row in history)
+        if (train.get("best_test") is not None or len(selected_rows) != 1
+                or abs(float(selected_rows[0]["val"]["NDCG@10"]) - selected_val) > 1e-12
+                or abs(float(train.get("best_val_NDCG10")) - selected_val) > 1e-12
+                or abs(max_val - selected_val) > 1e-12):
+            raise ValueError(f"FIR-pointwise validation selection binding drift in {rel}")
+        value = rec.get("test", {}).get("NDCG@10")
+        if value is None or not math.isfinite(float(value)):
+            raise ValueError(f"FIR-pointwise endpoint missing/nonfinite in {rel}")
+        return float(value)
+
+    seeds = [int(s) for s in p["seeds"]]
+    av = [endpoint(f, p["a_arm"], s) for f, s in zip(p["a"], seeds)]
+    bv = [endpoint(f, p["b_arm"], s) for f, s in zip(p["b"], seeds)]
+    out = paired_stats([a - b for a, b in zip(av, bv)])
+
+    adjud = load(p["adjud"])
+    if (adjud.get("protocol") != "PREREG_FIR_POINTWISE_V1"
+            or adjud.get("verdict") != "POINTWISE-FIR-DISCRIMINATED"
+            or adjud.get("scope") != "internal outcome-known parameter-matched placebo study"
+            or adjud.get("category") != "Musical_Instruments"
+            or int(adjud.get("kernel_or_width", -1)) != 16
+            or [int(s) for s in adjud.get("seeds", [])] != seeds
+            or int(adjud.get("n_trainable_params", {}).get("learned", -1))
+               != int(adjud.get("n_trainable_params", {}).get("pointwise", -2))):
+        raise ValueError("FIR-pointwise frozen adjudication metadata drift")
+    recorded = adjud["contrasts"][p["contrast"]]
+    decision = adjud["holm"][p["contrast"]]
+    expected = {
+        "mean": float(recorded["mean"]), "sd": float(recorded["sd"]),
+        "t": float(recorded["t"]), "ci_lo": float(recorded["ci95"][0]),
+        "ci_hi": float(recorded["ci95"][1]),
+    }
+    for name, value in expected.items():
+        if abs(float(out[name]) - value) > 1e-12:
+            raise ValueError(f"FIR-pointwise adjudicated {name} drift for "
+                             f"{p['contrast']}: {out[name]} != {value}")
+    out["paired_p"] = t_two_sided_p(out["t"], out["n"] - 1)
+    if abs(out["paired_p"] - float(recorded["p"])) > 1e-12:
+        raise ValueError(f"FIR-pointwise paired-p drift for {p['contrast']}")
+    out["holm_p"] = float(decision["p_holm"])
+    out["holm_reject"] = 1.0 if decision["reject"] else 0.0
+    return out
+
 def rule_pct_of_paired(p):
     """mean paired (a-b) delta as a percent of mean(b)."""
     m = p.get("metric", "NDCG@10")
@@ -814,7 +875,8 @@ PUB_SASREC_OFF = 0.0153     # Liu 2025, published Office_Products SASRec (extern
 REQUIRED_FAMILIES = ["table1", "table1a", "table1b", "table1c", "table1d", "table1e",
                      "table541", "table542", "tableV2conf", "table2",
                      "office_confirmation", "theirs_on_ours", "fir_breadth",
-                     "fir_v3", "fir_canonical_breadth", "fir_controls", "office_v3", "tfv2"]
+                     "fir_v3", "fir_canonical_breadth", "fir_controls",
+                     "fir_pointwise", "office_v3", "tfv2"]
 
 OFFICE_VOID_NOTE = ("VOID under prereg floor check (+44% floor inflation); "
                     "provisional, not counted as a pass")
@@ -831,6 +893,7 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "paired_delta_adjudicated": "matched-init paired (a-b) best_test[{m}], with frozen configuration, initialization hashes, statistics, verdict, and Holm decision cross-checked against the mechanical adjudication JSON",
         "fir_v3_welch_adjudicated": "frozen E-A independent-arm Welch contrast on best_test[{m}], bound to matched initialization hashes, adjudicated statistics, and verdict",
         "fir_control_contrast": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with statistics, frozen verdict, and Holm decision cross-checked against the mechanical active-control adjudication JSON",
+        "fir_pointwise_contrast": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with parameter equality, statistics, frozen verdict, and Holm decision cross-checked against the mechanical pointwise-placebo adjudication JSON",
         "pct_of_paired": "100 * mean per-seed (a-b) / mean(b), best_test[{m}]",
         "pct_change": "100 * (mean(a)/denom - 1), best_test[{m}]",
         "share_of_lift": "100 * (mean(x)-mean(base)) / (mean(top)-mean(base))",
@@ -2028,6 +2091,51 @@ def build_spec():
                        chk("holm_reject", reject, mode="count")],
                       8, "exploratory", seeds=FIRCTRL_SEEDS,
                       notes=FIRCTRL_NOTE))
+
+    # ------- fir_pointwise: pre-declared, outcome-known non-temporal placebo -------
+    FIRPOINT_SEEDS = list(range(20261001, 20261009))
+    FIRPOINT_ADJ = BR + "fir_pointwise_v1_adjudication.json"
+    FIRPOINT_NOTE = ("PREREG_FIR_POINTWISE_V1.md and its mechanical first-reader "
+                     "adjudicator were committed and pushed before launch. Identity, "
+                     "learned K=16 depthwise FIR, and a parameter-matched width-16 "
+                     "current-position-only DCT/GELU/linear residual used exact "
+                     "per-seed matched backbone initialization and sealed one-shot "
+                     "final TEST evaluation. Outcome-known Musical_Instruments "
+                     "mechanism study only: no independent-confirmation, external-"
+                     "comparator, SOTA, equivalence, per-channel-necessity, or "
+                     "cross-domain claim. Frozen verdict POINTWISE-FIR-DISCRIMINATED.")
+    def point_files(arm, suffix):
+        return [BR + f"results_Musical_Instruments_FIRPOINTV1_{arm}_seed{s}{suffix}"
+                for s in FIRPOINT_SEEDS]
+    point_specs = (
+        ("learned_identity", "learned", "identity", "learned-identity",
+         0.001872, 0.001737, 0.002007, 1),
+        ("pointwise_identity", "pointwise", "identity", "pointwise-identity",
+         -0.000069, -0.000200, 0.000061, 0),
+        ("learned_pointwise", "learned", "pointwise", "learned-pointwise",
+         0.001941, 0.001788, 0.002095, 1),
+    )
+    for short, a_arm, b_arm, contrast, mu, lo, hi, reject in point_specs:
+        af = point_files(a_arm, ".finaleval.json")
+        bf = point_files(b_arm, ".finaleval.json")
+        source = af + bf
+        for arm in (a_arm, b_arm):
+            source += point_files(arm, ".json")
+            source += point_files(arm, ".finaleval.started.json")
+            source += point_files(arm, ".finaleval.users.npz")
+        source.append(FIRPOINT_ADJ)
+        C.append(cell(f"firpoint.{short}", "fir_pointwise",
+                      f"FIR pointwise placebo: {contrast}",
+                      "paired 8-seed delta sealed final-test NDCG@10 (one Holm family)",
+                      source, "fir_pointwise_contrast",
+                      {"a": af, "b": bf, "a_arm": a_arm, "b_arm": b_arm,
+                       "contrast": contrast, "adjud": FIRPOINT_ADJ,
+                       "seeds": FIRPOINT_SEEDS},
+                      [chk("mean", mu, 6), chk("ci_lo", lo, 6),
+                       chk("ci_hi", hi, 6),
+                       chk("holm_reject", reject, mode="count")],
+                      8, "exploratory", seeds=FIRPOINT_SEEDS,
+                      notes=FIRPOINT_NOTE))
 
     # ------- tfv2: pre-declared repaired-estimand campaign (PREREG_TAIL_FIR_V2) -------
     # Independent 8-vs-8 arms, but outcome-visible: the first independently verifiable

@@ -62,17 +62,17 @@ evidence release must not be described as the final archival deposit.
 
 **Major concern**
 
-The active-control study does not identify a temporal FIR mechanism. Shared and
-nonlinear causal controls recover similar gains, while no active lag-0 or
-pointwise parameter-matched non-temporal residual was tested. The present
-wording correctly narrows the claim, but that narrowing also weakens the reason
-to prefer this module over generic residual capacity.
+The new preregistered equal-parameter pointwise placebo materially strengthens
+mechanism identification: the pointwise arm is not detectably different from
+identity, while learned FIR beats it under matched initialization and sealed
+evaluation. This supports temporal access relative to that placebo. However,
+the shared causal filter remains statistically unseparated from learned FIR, so
+the evidence still does not identify per-channel taps as necessary or preferable.
 
-**Recommendation: major revision.** Add a preregistered active non-temporal
-placebo and an efficiency-oriented shared/grouped/low-rank comparison. The paper
-can remain publishable if a simpler arm matches FIR, but the contribution must
-then become “a low-cost trainable residual family and its boundary,” not
-learned temporal mixing.
+**Recommendation: major revision.** Add an efficiency-oriented
+shared/grouped/low-rank comparison with preregistered noninferiority margins.
+The current paper can claim a temporal-access benefit against the tested
+non-temporal placebo, but not learned per-channel-tap necessity.
 
 ## Mock reviewer B — evaluation and statistics
 
@@ -103,7 +103,7 @@ reviewer can reasonably treat them as hypothesis-generating.
 
 **Strengths**
 
-1. The strict graph recomputes 192 cells across 18 claim families with no
+1. The strict graph recomputes 195 cells across 19 claim families with no
    mismatch or untraceable cell.
 2. A clean deep-path clone bootstrapped and raw-hash-verified 282/282
    release-only assets, verified 751/751 manifested files, reproduced exact
@@ -142,7 +142,7 @@ reviewer can reasonably treat them as hypothesis-generating.
 ### Still open and acceptance-relevant
 
 - Untouched one-shot confirmation.
-- Active parameter-matched non-temporal placebo.
+- Shared/grouped/low-rank noninferiority and efficiency comparison.
 - Current equal-protocol baseline execution.
 - Repeated temporal-cutoff or hierarchical inference.
 - Construct/deployment sensitivities and cache/item-map binding.
@@ -168,16 +168,19 @@ repair the scientific probability.
 
 ### Gate 2 — identify whether temporal structure matters
 
-1. Freeze a new preregistration before any run or TEST inspection.
-2. Use matched initialization and equal tuning budgets for identity, active
-   lag-0/pointwise non-temporal residual, shared FIR, grouped/low-rank FIR,
-   per-channel FIR, and the existing nonlinear causal comparator.
-3. Predeclare one primary contrast: per-channel FIR versus the active
-   non-temporal placebo. Predeclare a noninferiority margin for the cheaper
-   shared/grouped arms.
+**Current status: primary placebo contrast complete.** The frozen pointwise study
+used matched initialization, equal 1,024-parameter treatment capacity, sealed TEST,
+and a mechanical first reader. It returned `POINTWISE-FIR-DISCRIMINATED`.
+
+1. Freeze the next preregistration before any run or TEST inspection.
+2. Retain the completed identity, pointwise, shared, per-channel FIR, and
+   nonlinear arms; add grouped/low-rank causal FIR variants only if they answer
+   the parsimony question.
+3. Predeclare noninferiority margins for the cheaper shared/grouped arms against
+   per-channel FIR; do not reinterpret the completed pointwise null as equivalence.
 4. Record parameter count, training time, inference latency, peak memory, and
    quality. Report a Pareto frontier rather than accuracy alone.
-5. Adjudicate mechanically even if the placebo matches or wins; narrow the claim
+5. Adjudicate mechanically even if the cheaper causal arm wins; narrow the claim
    immediately in that case.
 
 **Effect if favorable:** closes the largest mechanism objection and can move the

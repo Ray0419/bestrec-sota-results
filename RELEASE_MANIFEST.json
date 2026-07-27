@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "c7ca997ba8d0c9bcccb00491ed4b964a2edb22c1",
+  "git_commit": "2127ff8cb43d9f524db08d9661f66e10b4aa318f",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -118,7 +118,7 @@
       "sha256": "6299337bca07c9c4808dd222c0510274a940a31cc67315c1bcffd72a3c8d78f3"
     },
     "_bestrec_run/test_hstu_parity.py": {
-      "sha256": "adf28343d5a27841f97f12d680578ddb0e6d9029745608e21e55519aec59396c"
+      "sha256": "1656c393adaafb159fd48338b5bced547c11a1540a2d0f09ef7a800474d53bdd"
     },
     "_bestrec_run/preprocess_5core_standard.py": {
       "sha256": "16e306f6175415c397db9fa7b63604d6f7b468ece254c9c5aa3fc0f795fb640d"
@@ -718,6 +718,10 @@
       "sha256": "d958ac3a22a945ec8ec510e5ea9fb2a603fb0286a8fd00cd7c21dc27f00fab4a",
       "bytes": 5681
     },
+    "bootstrap_public_clone.py": {
+      "sha256": "5ffae9cefdeb832aa3056bad9121f4b664006bd8a2785dffe5b61e1d52170991",
+      "bytes": 5594
+    },
     "THEIRS_ON_OURS_REPORT.md": {
       "sha256": "6bff70f42aba38c629adbf374a445c9a73ed6c01a529fdf12e06e9becfbd52ed",
       "bytes": 24043
@@ -731,8 +735,8 @@
       "bytes": 10908
     },
     "_bestrec_run/test_hstu_parity.py": {
-      "sha256": "adf28343d5a27841f97f12d680578ddb0e6d9029745608e21e55519aec59396c",
-      "bytes": 15533
+      "sha256": "1656c393adaafb159fd48338b5bced547c11a1540a2d0f09ef7a800474d53bdd",
+      "bytes": 17483
     },
     "_bestrec_run/test_pinned_env_parity.py": {
       "sha256": "bdc575d736d33f744788a19a70188a585e639a36da7f43ac1277a81f4addc7c2",
@@ -747,8 +751,8 @@
       "bytes": 6496
     },
     "_bestrec_run/update_release_manifest.py": {
-      "sha256": "37eac83352b020611c7f232f66d2d21d267d8363b4f7c3649859036f527550b6",
-      "bytes": 33570
+      "sha256": "8194db90840564e5e8761f2446b2f91b08e1b290a42a824060fc7f667921ea13",
+      "bytes": 33603
     },
     "paper_tex/PAPER_TORS.pdf": {
       "sha256": "c1df1150cbda11f39e9a132b71c2b4e050fb010fdad8688bedbce1fe20114eec",
@@ -868,7 +872,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.1.11-deposit",
-  "hash_parent_commit": "c7ca997ba8d0c9bcccb00491ed4b964a2edb22c1",
+  "hash_parent_commit": "2127ff8cb43d9f524db08d9661f66e10b4aa318f",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",

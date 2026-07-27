@@ -77,6 +77,7 @@ RUN
 from __future__ import annotations
 
 import os
+import subprocess
 import sys
 
 import torch
@@ -140,7 +141,57 @@ _register_fbgemm_fallbacks()
 # ---------------------------------------------------------------------------
 # Imports of both implementations (unmodified).
 # ---------------------------------------------------------------------------
-sys.path.insert(0, os.path.join(ROOT, "external", "HSTU-BLaIR"))
+REFERENCE_COMMIT = "40a27879ec22648657b5abc77915a7cc88c66cfd"
+REFERENCE_URL = "https://github.com/snapfinger/HSTU-BLaIR.git"
+
+
+def _reference_root() -> str:
+    """Return an exact-commit reference checkout without mutating external/."""
+    vendored = os.path.join(ROOT, "external", "HSTU-BLaIR")
+    required = os.path.join(
+        vendored,
+        "generative_recommenders", "research", "modeling", "sequential", "hstu.py",
+    )
+    if os.path.isfile(required):
+        actual = subprocess.check_output(
+            ["git", "-C", vendored, "rev-parse", "HEAD"], text=True
+        ).strip()
+        if actual != REFERENCE_COMMIT:
+            raise RuntimeError(
+                f"external HSTU reference is at {actual}, expected {REFERENCE_COMMIT}"
+            )
+        return vendored
+
+    cached = os.path.join(HERE, "tmp", f"HSTU-BLaIR-{REFERENCE_COMMIT[:8]}")
+    cached_required = os.path.join(
+        cached,
+        "generative_recommenders", "research", "modeling", "sequential", "hstu.py",
+    )
+    if not os.path.isdir(os.path.join(cached, ".git")):
+        if os.path.exists(cached):
+            raise RuntimeError(
+                f"reference cache exists but is not a Git checkout: {cached}"
+            )
+        os.makedirs(os.path.dirname(cached), exist_ok=True)
+        subprocess.run(
+            ["git", "clone", "--filter=blob:none", "--no-checkout", REFERENCE_URL, cached],
+            check=True,
+        )
+    subprocess.run(
+        ["git", "-C", cached, "checkout", "--detach", REFERENCE_COMMIT], check=True
+    )
+    actual = subprocess.check_output(
+        ["git", "-C", cached, "rev-parse", "HEAD"], text=True
+    ).strip()
+    if actual != REFERENCE_COMMIT or not os.path.isfile(cached_required):
+        raise RuntimeError(
+            f"reference checkout verification failed: commit={actual}, file={cached_required}"
+        )
+    print(f"hydrated exact HSTU reference commit {actual} at {cached}")
+    return cached
+
+
+sys.path.insert(0, _reference_root())
 sys.path.insert(0, HERE)
 
 from generative_recommenders.research.modeling.sequential.hstu import (  # noqa: E402

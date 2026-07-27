@@ -37,6 +37,7 @@ MPATH = os.path.join(ROOT, "RELEASE_MANIFEST.json")
 SUBMISSION_DOCS = [
     "PAPER_SUBMISSION.md", "PAPER_SUBMISSION.pdf", "PAPER_DRAFT.md",
     "CANONICAL_SUBMISSION.md", "AUDIT_RESPONSE_2026-07-27.md",
+    "bootstrap_public_clone.py",
     "THEIRS_ON_OURS_REPORT.md",
     "PINNED_ENV_PARITY_REPORT.md", "HSTU_PARITY_REPORT.md",
     "_bestrec_run/test_hstu_parity.py", "_bestrec_run/test_pinned_env_parity.py",

@@ -2,7 +2,7 @@
 
 **An FIR-Optimizer Package and a Musical-Instruments Frequency-5 Case Study on Amazon Reviews 2023.** (The FIR effect is a bundled treatment package — filter + initialization + optimizer path; component isolation is open work, EXPERIMENT_PROGRAM E-A.)
 
-This repository is the working artifact repository for the manuscript (ACM TORS submission format; **public** — the split CSVs (now 18 incl. Industrial_and_Scientific and CDs_and_Vinyl), four text caches, and the 107 TFV2 per-user sidecars are deposited as hash-manifested release assets; `bootstrap_public_clone.py` reconstructs a fresh clone's full evidence boundary):
+This repository is the working artifact repository for the manuscript (ACM TORS submission format; **public** — the 18 split CSVs, four text caches, 107 TFV2 per-user sidecars, and 144 FIR-control final-evaluation/sidecar/checkpoint files are deposited as hash-manifested release assets; `bootstrap_public_clone.py` reconstructs a fresh clone's full evidence boundary):
 code, pre-declarations, results of record, provenance manifests, the fail-closed build
 gate, and the full adversarial audit chain. The canonical paper is
 [`PAPER_SUBMISSION.md`](PAPER_SUBMISSION.md) (reader PDF: `PAPER_SUBMISSION.pdf`); the
@@ -17,9 +17,9 @@ uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --s
 ```
 
 This runs, fail-closed: the bitwise HSTU core-block parity test → the artifact-graph build
-(**every one of the 175 artifact-gated cells recomputed from source artifacts**; exits
+(**all 190 artifact-gated cells recomputed from source artifacts**; exits
 nonzero on any mismatch, untraceable cell, or missing claim family) → release-manifest hash
-verification (420 files at the current manifest) → the pre-declared Musical_Instruments gate adjudicator → the TFV2 repaired-estimand adjudicator (outcome-visible — §5.3 chronology) → **the
+verification (744 files at the current manifest) → the pre-declared Musical_Instruments gate adjudicator → the TFV2 repaired-estimand adjudicator (outcome-visible — §5.3 chronology) → **the
 Office V3 adjudicator (counted; the build fails unless the campaign verdict is PASS)** →
 **the FIR-breadth adjudicator (artifact-integrity: the frozen rule's legacy CONFIRMED tokens are checked mechanically; the paired premise is withdrawn and no inferential confirmation is implied)** → the Office V1
 adjudicator (descriptive/VOID). Each campaign's live adjudicator gates the build (MI V2, Office V3, TFV2, FIR breadth, E-A, canonical FIR breadth, FIR active controls, E-F; the E-G adjudicator also gates as an artifact-reproduction check but confers no confirmatory status — see PAPER_SUBMISSION.md §5.8). Canonical breadth and FIR active controls are outcome-known/test-exposed internal studies; their live verdict gates certify artifact reproduction, not independent-confirmation status.
@@ -75,7 +75,7 @@ campaign above is a separate pre-declaration that passed under its frozen wordin
 ## Releases
 
 - **`v1.1.11-deposit`** (current archival bundle, cut 2026-07-21; each deposit release supersedes the previous) — the 66-entry deposit zip + sidecar hash + manifest + both PDFs. Supersedes `v1.1.10-deposit`, which went stale the same day it was cut (four post-tag content commits — the 22:57 audit's measured drift; the deposition gate now refuses to rebuild a version whose tag no longer matches the tree). The from-zero public-clone verification is re-executed at each pushed tag and its transcript committed to the branch.
-- **`v0.9-audit-evidence`** — the pinned-parity ZIP, `RELEASE_MANIFEST.json`, all 18 split CSVs, four text caches, and the 107 TFV2 per-user sidecars (all hash-manifested; uploaded 2026-07-20; the manifest inventory is authoritative for counts). Fresh clones: `git submodule update --init && python bootstrap_public_clone.py` before the strict gate.
+- **`v0.9-audit-evidence`** — the pinned-parity files/ZIP, `RELEASE_MANIFEST.json`, all 18 split CSVs, four text caches, 107 TFV2 per-user sidecars, and 144 FIR-control final-evaluation/sidecar/checkpoint files (all hash-manifested; FIR-control assets verified remotely by size and digest on 2026-07-27; the manifest inventory is authoritative). Fresh clones: `python bootstrap_public_clone.py` before the strict gate; `git submodule update --init` is optional because the parity test can hydrate the exact pinned HSTU reference commit into its isolated cache.
 - **`bestrec-raw-records-v1`** — the historical LC2C project's raw records (see `README_LC2C_HISTORICAL.md`).
 
 Data: the Amazon Reviews 2023 dataset (McAuley Lab) is **not redistributed**; derived

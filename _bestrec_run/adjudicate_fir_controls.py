@@ -14,6 +14,7 @@ from scipy import stats
 import run_fir_controls as campaign
 
 HERE = Path(__file__).resolve().parent
+FROZEN_TRAINER = HERE / "run_sasrec_sbert_firctrl_frozen.py"
 ALPHA = 0.05
 IDENTITY = "identity"
 LEARNED = "learned"
@@ -98,7 +99,10 @@ def main():
     test_split_hash = None
     missing = []
     evaluator_hash = sha256_lf(HERE / "eval_fir_controls.py")
-    trainer_hash = sha256_lf(HERE / "run_sasrec_sbert.py")
+    # The campaign's exact trainer is preserved as an immutable snapshot so
+    # later, separately preregistered arms can evolve the live trainer without
+    # weakening this completed study's source-provenance check.
+    trainer_hash = sha256_lf(FROZEN_TRAINER)
     if evaluator_hash != FROZEN_SOURCE_HASHES["evaluator"]["canonical_lf"]:
         die("canonical evaluator source digest mismatch")
     if trainer_hash != FROZEN_SOURCE_HASHES["trainer"]["canonical_lf"]:

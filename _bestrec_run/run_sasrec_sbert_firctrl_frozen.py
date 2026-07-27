@@ -533,7 +533,7 @@ class SASRecSBERT(nn.Module):
         if self.fir_control != "off":
             if self.fir_control not in {
                     "identity", "learned", "fixed_ma", "fixed_hp",
-                    "shared", "nonlinear", "pointwise"}:
+                    "shared", "nonlinear"}:
                 raise ValueError(f"unknown fir_control={self.fir_control!r}")
             Kc = int(fir_control_kernel)
             if Kc < 1:
@@ -548,26 +548,6 @@ class SASRecSBERT(nn.Module):
                     self.fir_control_module.weight.zero_()
                 if self.fir_control == "identity":
                     self.fir_control_module.weight.requires_grad_(False)
-            elif self.fir_control == "pointwise":
-                if Kc > d_model:
-                    raise ValueError(
-                        "pointwise placebo width must not exceed d_model")
-                # Parameter-matched non-temporal placebo: deterministic DCT
-                # features of the CURRENT position only, followed by a
-                # zero-initialized learned projection.  With width Kc this has
-                # d_model*Kc trainable parameters, exactly matching a depthwise
-                # d_model-by-Kc FIR, while having no access to prior positions.
-                c = torch.arange(d_model, dtype=torch.float32).view(1, -1)
-                r = torch.arange(Kc, dtype=torch.float32).view(-1, 1)
-                proj = math.sqrt(2.0 / d_model) * torch.cos(
-                    math.pi * (c + 0.5) * r / d_model)
-                proj[0].fill_(math.sqrt(1.0 / d_model))
-                self.register_buffer(
-                    "fir_control_pointwise_projection", proj)
-                self.fir_control_module = nn.Linear(
-                    Kc, d_model, bias=False)
-                with torch.no_grad():
-                    self.fir_control_module.weight.zero_()
             elif self.fir_control == "shared":
                 self.fir_control_module = nn.Conv1d(
                     1, 1, kernel_size=Kc, bias=False)
@@ -1012,11 +992,6 @@ class SASRecSBERT(nn.Module):
             elif self.fir_control == "nonlinear":
                 delta = F.gelu(self.fir_control_module(xp))
                 x = x + delta.transpose(1, 2)
-            elif self.fir_control == "pointwise":
-                # x is (B,L,D); no shifted or earlier position is consulted.
-                features = F.gelu(torch.matmul(
-                    x, self.fir_control_pointwise_projection.transpose(0, 1)))
-                x = x + self.fir_control_module(features)
             elif self.fir_control == "shared":
                 Bc, Dc, Lc = xt.shape
                 delta = self.fir_control_module(
@@ -2006,7 +1981,7 @@ def main():
     ap.add_argument(
         "--fir-control",
         choices=["off", "identity", "learned", "fixed_ma", "fixed_hp",
-                 "shared", "nonlinear", "pointwise"], default="off",
+                 "shared", "nonlinear"], default="off",
         help="Phase-3 matched-backbone active-control arm. All active arms "
              "are strictly causal and exact identity maps at initialization. "
              "Use only one frozen arm per run.")
@@ -3148,18 +3123,11 @@ def main():
     fir_control_final_l2 = None
     fir_control_alpha = None
     fir_control_lag_profile = None
-    fir_control_profile_axis = None
     if getattr(model, "fir_control_module", None) is not None:
         _cw = model.fir_control_module.weight.detach().cpu()
         fir_control_final_l2 = float(_cw.norm().item())
-        if _cw.ndim == 3:
-            fir_control_lag_profile = [
-                float(v) for v in _cw.abs().mean(dim=(0, 1))]
-            fir_control_profile_axis = "lag"
-        else:
-            fir_control_lag_profile = [
-                float(v) for v in _cw.abs().mean(dim=0)]
-            fir_control_profile_axis = "pointwise_dct_feature"
+        fir_control_lag_profile = [
+            float(v) for v in _cw.abs().mean(dim=(0, 1))]
     if getattr(model, "fir_control_alpha", None) is not None:
         fir_control_alpha = float(model.fir_control_alpha.detach().cpu().item())
 
@@ -3192,7 +3160,6 @@ def main():
         "fir_control_final_l2": fir_control_final_l2,
         "fir_control_alpha": fir_control_alpha,
         "fir_control_final_absmean_per_lag": fir_control_lag_profile,
-        "fir_control_profile_axis": fir_control_profile_axis,
     }
     with out_path.open("w") as f:
         json.dump(out, f, indent=2)

@@ -100,6 +100,15 @@ FIR_CONTROL_PROTOCOL_FILES = [
     "_bestrec_run/eval_fir_controls.py",
     "_bestrec_run/run_sasrec_sbert.py",
 ]
+FIR_POINTWISE_PROTOCOL_FILES = [
+    "PREREG_FIR_POINTWISE_V1.md",
+    "_bestrec_run/run_sasrec_sbert_firctrl_frozen.py",
+    "_bestrec_run/run_sasrec_sbert_pointwise_v1_frozen.py",
+    "_bestrec_run/test_fir_pointwise_v1.py",
+    "_bestrec_run/run_fir_pointwise_v1.py",
+    "_bestrec_run/eval_fir_pointwise_v1.py",
+    "_bestrec_run/adjudicate_fir_pointwise_v1.py",
+]
 
 
 def sha(p, _bufsz=1 << 20):
@@ -437,7 +446,7 @@ def regen(m):
             _gap = os.path.join(ROOT, _t.replace("/", os.sep))
             if os.path.exists(_gap):
                 m["protocol_code"][_t] = {"sha256": sha_norm(_gap)}
-    for _t in FIR_CONTROL_PROTOCOL_FILES:
+    for _t in FIR_CONTROL_PROTOCOL_FILES + FIR_POINTWISE_PROTOCOL_FILES:
         _gap = os.path.join(ROOT, _t.replace("/", os.sep))
         if os.path.exists(_gap) and _t not in m["protocol_code"]:
             m["protocol_code"][_t] = {"sha256": sha_norm(_gap)}

@@ -55,7 +55,7 @@ def make_model(encoder: str, arm: str) -> SASRecSBERT:
         elif arm == "legacy":
             model.causal_filter.weight.normal_(mean=0.0, std=0.15)
             model.filter_gate.fill_(0.7)
-        elif arm in {"learned", "nonlinear", "shared"}:
+        elif arm in {"learned", "nonlinear", "shared", "pointwise"}:
             model.fir_control_module.weight.normal_(mean=0.0, std=0.15)
         elif arm in {"fixed_ma", "fixed_hp"}:
             model.fir_control_alpha.fill_(0.7)
@@ -92,6 +92,7 @@ def main() -> int:
         "fixed_hp",
         "shared",
         "nonlinear",
+        "pointwise",
     ]
     for encoder in ("transformer", "hstu"):
         for arm in arms:

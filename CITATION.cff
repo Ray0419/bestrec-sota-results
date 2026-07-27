@@ -1,33 +1,26 @@
 cff-version: 1.2.0
-message: "If you use this software or its evaluation artifacts, please cite it as below."
-title: "Artifact-Gated Evaluation of Text-Augmented Sequential Recommendation: An FIR-Optimizer Package and a Musical-Instruments Frequency-5 Case Study on Amazon Reviews 2023 (code and evaluation artifacts)"
+message: "UNPUBLISHED CANDIDATE: replace creator metadata before citing a released artifact."
+title: "Artifact-Gated Evaluation of a Causal FIR Module for Sequential Recommendation (code and evaluation artifacts)"
 type: software
 authors:
-  - name: "Ray0419"
-    # Replace with legal name(s) before minting the DOI if de-anonymizing;
-    # TORS review is single-blind: real author metadata is required in the manuscript (maintainer-supplied).
+  - name: "CREATOR METADATA REQUIRED BEFORE PUBLICATION"
 repository-code: "https://github.com/Ray0419/bestrec-sota-results"
 license: MIT
-version: "1.1.11"
-date-released: "2026-07-21"
+version: "1.2.0"
 keywords:
   - sequential recommendation
   - Amazon Reviews 2023
   - HSTU
-  - text-augmented recommendation
-  - FIR treatment package (left-causal FIR filter)
+  - causal FIR residual
+  - modular contribution
   - reproducibility
   - pre-declaration
 abstract: >-
-  Code, pre-declarations, provenance manifests, and evaluation artifacts for
-  an HSTU-style pure-PyTorch sequential recommender on the Amazon Reviews 2023
-  5-core benchmark: a strictly causal, zero-initialized FIR temporal filter — measured only as the bundled FIR-initialization-optimizer treatment package (component attribution open) — with positive within-category package estimates on all four categories tested ( two under a dedicated pre-declaration; the rerun is outcome-visible, not confirmatory), two counted pre-declared per-category point-estimate
-  comparisons against published single-run HSTU-BLaIR values
-  (Musical_Instruments; Office_Products under the redesigned V3
-  pre-declaration with an environment-matched reference — the earlier V1
-  campaign remains VOID by its own tripwire), a per-dataset (heterogeneity not established) long-tail
-  pattern with thinning interventions, a fail-closed artifact-graph build that
-  recomputes all 175 artifact-gated table cells from source artifacts, and a shim harness
-  that executes the reference comparator implementation locally. No SOTA claim
-  of any kind; no paired or distributional superiority over single-run
-  comparators.
+  Unpublished candidate metadata for the code, pre-declarations, provenance
+  manifests, and evaluation artifacts accompanying a narrow modular study of a
+  gradient-active left-causal depthwise FIR residual in an HSTU-style sequential
+  recommender. The fail-closed graph recomputes 192 active paper cells across 18
+  families and preserves null, deviated, and VOID outcomes. The evidence does not
+  support broad SOTA, paired superiority over single-run comparators, or isolation
+  of temporal specificity from generic trainable-residual capacity. Replace the
+  author placeholder and verify legal/licensing fields before publication.

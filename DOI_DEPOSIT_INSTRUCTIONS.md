@@ -1,68 +1,65 @@
-# ⛔ STOP -- STALE (audit 2026-07-24 03:59): DO NOT UPLOAD v1.1.11-deposit AS THE CURRENT RELEASE.
+# DOI/deposit candidate — do not publish before metadata verification
 
-`v1.1.11-deposit` is **42+ commits behind HEAD**; the current manifest mismatches it in ~189 entries (manuscript/PDF/code/figure drift). The strict chain verifies the CURRENT WORKTREE (green), NOT this tag (named-deposit gate = RED). v1.1.11 is preserved as historical provenance only. A NEW immutable deposit must be cut and fresh-clone-verified AFTER manuscript/protocol stabilization (E-G3 clean path + author metadata). The instructions below are retained for the eventual procedure but MUST NOT be executed against v1.1.11 now.
+Status as of 2026-07-28: `v1.2.0` is an **unpublished local candidate**, not an
+existing Git tag, GitHub release, archive record, or DOI. The historical
+`v1.1.11-deposit` tag remains provenance only and is stale relative to the
+current manuscript. Do not upload or retag it as current.
 
----
+The deterministic candidate bundle is
+`_release/bestrec_deposit_v1.2.0.zip` (92 entries: 90 tracked
+payloads plus `README_DEPOSIT.txt` and `SHA256SUMS.txt`) and has an adjacent
+`.sha256` sidecar. Rebuild it with:
 
-# DOI deposit — everything is prepared; 3 clicks remain (account required)
+```powershell
+python _bestrec_run/build_deposit_bundle.py --candidate
+```
 
-> **Maintainer decision (2026-07-12): minting deferred** until a venue requires it
-> (`VENUE_PLAN.md`). The hash-manifested GitHub releases remain the citable artifact reference;
-> everything below stays ready.
+Candidate mode validates current metadata, bundle inventory, manifest hashes,
+and worktree content, but deliberately does not require or create a tag. Normal
+mode remains fail-closed and is reserved for rebuilding the exact final tagged
+tree.
 
-Status (2026-07-18, bundle refreshed to **v1.1** — adds Office V3 + FIR-breadth prereg/results docs and adjudicators, the pinned-parity chain, the TORS PDF, the completed Office HSTU-BLaIR reference-run artifacts, and the extended 153-file RELEASE_MANIFEST; built reproducibly by `_bestrec_run/build_deposit_bundle.py`): the deposit is **fully assembled locally**. A DOI itself can only be minted
-by an archive under your account — that is the single step that cannot be done from this machine
-without your login. Everything else is done:
+## Publication blockers
 
-| prepared artifact | where |
-|---|---|
-| Deposit bundle (66 entries: papers incl. TORS PDF, all preregs + results docs, manifests, **core historical audit documents**, code incl. adjudicators, comparator-run artifacts, README — the **live hourly adversarial chain** `PAPER_REVIEW_AUDIT.md` / `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` is deliberately not re-bundled per cut: it is git-tracked and present in full in every tagged tree, per its own historical-log banner) | GitHub release **`v1.1.11-deposit`** asset `bestrec_deposit_v1.1.11.zip` (SHA256 in the sidecar asset `bestrec_deposit_v1.1.11.zip.sha256` and in `_release/` locally; bundle-internal `SHA256SUMS.txt` covers every payload entry (not itself); upload verified by a download-hash round trip). Prior deposit tags (`v1.1.10-deposit` and earlier) remain as dated snapshots, each superseded by the next. Superseded: `v1.1-deposit` (its uploaded assets went stale against later same-day commits — see RESPONSE_TO_PAPER_REVIEW_AUDIT.md, 2026-07-18 01:10). Historical: `v1.0-deposit` / `bestrec_deposit_v1.0.zip` (46 files, SHA256 `8fd3eb58e35e695d910b960b4cacf85c50e23e6ff77ec0a637953655f1d08770`) remains as the 2026-07-11 snapshot. |
-| Zenodo metadata (title, creators, license, keywords, description) | `.zenodo.json` (repo root — Zenodo's GitHub integration reads it automatically) |
-| Citation metadata | `CITATION.cff` (GitHub renders a "Cite this repository" button from it) |
-| Code/docs license with dataset + vendored-code scope notes | `LICENSE` (MIT — swap before minting if you prefer another) |
-| Hashes for the large artifacts NOT in the bundle (splits, caches, TFV2 sidecars, and FIR-control final-evaluation JSONs/per-user sidecars/checkpoints — all public, raw-hash-verified release assets; compact per-run result JSONs are git-tracked) + submission docs/PDF/parity artifacts | `RELEASE_MANIFEST.json` (self-policing: verified against the tree by `rebuild_hstu_submission.py --strict` at every rebuild) + the `v0.9-audit-evidence` release assets |
+Before any tag, release, upload, or DOI mint:
 
-## Option A — Zenodo GitHub integration (recommended, ~3 clicks)
+1. replace `CREATOR METADATA REQUIRED BEFORE PUBLICATION` in `.zenodo.json` and
+   `CITATION.cff` with legal author metadata matching the manuscript;
+2. fill all bracketed author/affiliation/COI/reviewer/preprint fields in the
+   manuscript and `COVER_LETTER_TORS.md`;
+3. verify the selected code license and the redistribution/takedown position for
+   derived Amazon Reviews assets;
+4. rebuild both PDFs and run the strict and clean-clone gates;
+5. regenerate `RELEASE_MANIFEST.json` with the final intended tag;
+6. build the bundle in candidate mode, inspect it, commit, then create the tag;
+7. rebuild in normal mode at that exact tag and compare the zip hash; and
+8. only then upload to GitHub/Zenodo or OSF through the maintainer's authenticated
+   account.
 
-1. Log in at https://zenodo.org with your GitHub account → **GitHub** page
-   (https://zenodo.org/account/settings/github/) → flip the toggle ON for
-   `Ray0419/bestrec-sota-results`.
-2. Publish any **new** release (Zenodo archives releases created *after* the toggle; re-tagging
-   the current deposit tag with a bumped patch version is enough — or ask me and I'll cut it).
-3. Zenodo mints a **version DOI + a concept DOI** within minutes, using `.zenodo.json` for
-   metadata. Done.
+## Final publication procedure
 
-**Hash-check rule (line endings):** when verifying, always hash the **tag blob**
-(`git show <tag>:FILE`), the **release asset**, or the **bundle payload** — never the local
-worktree copy. A pre-`.gitattributes` Windows checkout can hold CRLF worktree bytes for
-LF-pinned files, so `Get-FileHash` on a worktree file may legitimately differ from the
-byte-identical tag/asset/bundle trio.
+### Zenodo GitHub integration
 
-## Option B — Zenodo manual upload (no GitHub linking)
+1. Enable Zenodo's GitHub integration for the repository under the maintainer's
+   authenticated account.
+2. Create the final versioned GitHub release only after the final-tag gate passes.
+3. Confirm that Zenodo imported the verified creator/title/license metadata and
+   the exact release asset.
+4. After minting, record both the version DOI and concept DOI in the manuscript,
+   README, `.zenodo.json`, and `CITATION.cff`, then rebuild once more.
 
-1. https://zenodo.org/uploads/new → upload the **current** bundle `bestrec_deposit_v1.1.11.zip` from the `v1.1.11-deposit`
-   release assets. A local `_release/` copy is safe ONLY if its SHA256 matches the release
-   sidecar for the named tag (a post-tag rebuild can differ); when in doubt, use the
-   downloaded release asset.
-2. Paste the metadata from `.zenodo.json` (title/creators/description/keywords/license).
-3. Publish → DOI minted.
+### Manual Zenodo/OSF upload
 
-## Option C — OSF
+Upload only the zip whose SHA-256 equals its committed/tagged sidecar. Paste the
+verified metadata; never use the placeholder candidate metadata. Preserve the
+bundle-internal `SHA256SUMS.txt`.
 
-1. https://osf.io → new project → OSF Storage → upload the zip.
-2. Enable the DOI in project settings ("Create DOI").
+## Verification boundaries
 
-## After the DOI exists — tell me the DOI string and I will:
-
-- add the `Code and Data Availability` DOI line to both papers (§8) and re-render the PDF,
-- add the DOI badge to `CITATION.cff` (`doi:` field) and the README,
-- update `RESPONSE_TO_RESUBMISSION_AUDIT_2026-07-11.md` Repair-#9 row from
-  "DONE (DOI = user decision)" to fully closed with the identifier,
-- commit + push the finished package.
-
-## Why a DOI can't be minted from here
-
-Zenodo/OSF mint DOIs only inside an authenticated account (ownership, takedown responsibility,
-metadata stewardship). No API token for either service exists on this machine, and creating one
-requires your login. The preparation above reduces your part to authentication + one publish
-click.
+- `RELEASE_MANIFEST.json` pins the repository/public-asset evidence boundary.
+- `SHA256SUMS.txt` pins exactly the payload bytes inside the candidate zip.
+- The adjacent `.zip.sha256` pins the outer zip.
+- For text files, compare the tag blob or LF-normalized bundle payload, not raw
+  CRLF worktree bytes on Windows.
+- A candidate build is preparation only. It is not a claim that an archival
+  record or DOI exists.

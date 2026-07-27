@@ -85,10 +85,12 @@ Everything else is archived (see `archive_noncanonical/README.md`) or marked non
   submission-doc/PDF/parity-artifact hashes, kept in sync **mechanically**: the strict
   wrapper runs `update_release_manifest.py --verify` and fails the gate on any drift;
   regenerate with `--regen` (+ commit together) whenever a manifested file changes.
-  GitHub releases: `v0.9-audit-evidence` (data/result/parity assets) and the **current
-  deposit tag** — `v1.1.11-deposit` at this writing (2026-07-21; supersedes `v1.1.10-deposit`, which went stale to post-tag content commits the same day); each deposit release supersedes the
-  previous (`v1.0`→`v1.1`→…→`v1.1.8`→`v1.1.9`), built by the tracked
-  `_bestrec_run/build_deposit_bundle.py` (`DOI_DEPOSIT_INSTRUCTIONS.md`)
+  GitHub release `v0.9-audit-evidence` supplies data/result/parity assets. The next
+  manuscript-matched deposit is the **unpublished intended candidate**
+  `v1.2.0-deposit`; it is not a tag or release until verified creator/legal metadata is
+  supplied. Historical `v1.1.11-deposit` is stale relative to this manuscript and remains
+  provenance only. The tracked `_bestrec_run/build_deposit_bundle.py --candidate` prepares
+  the current bundle without claiming publication (`DOI_DEPOSIT_INSTRUCTIONS.md`).
 - Audits + responses: `CLAUDE_SOTA_*AUDIT*.md`, `STRICT_*AUDIT*.md` (incl.
   `STRICT_RESUBMISSION_AUDIT_ROUND2_2026-07-11.md`), `RESPONSE_TO_*.md`
 

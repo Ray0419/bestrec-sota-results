@@ -1,19 +1,19 @@
 {
-  "title": "Artifact-Gated Evaluation of Text-Augmented Sequential Recommendation: An FIR-Optimizer Package and a Musical-Instruments Frequency-5 Case Study on Amazon Reviews 2023",
+  "title": "Artifact-Gated Evaluation of a Causal FIR Module for Sequential Recommendation",
   "upload_type": "software",
   "license": "MIT",
   "creators": [
     {
-      "name": "Ray0419"
+      "name": "CREATOR METADATA REQUIRED BEFORE PUBLICATION"
     }
   ],
-  "description": "Code, pre-declarations, provenance manifests, and evaluation artifacts for an HSTU-style pure-PyTorch sequential recommender on the Amazon Reviews 2023 5-core benchmark. Includes: the strictly causal, zero-initialized FIR temporal filter — measured only as the bundled FIR-initialization-optimizer treatment package (component attribution open) — with positive within-category package estimates on the four categories tested ( Industrial_and_Scientific and CDs_and_Vinyl under the dedicated PREREG_FIR_BREADTH.md pre-declaration, internal same-seed contrast (paired interpretation withdrawn; TFV2 independent-arm rerun is the primary evidence, outcome-visible) only); the two counted pre-declared per-category point-estimate comparisons against published single-run HSTU-BLaIR values — Musical_Instruments (SOTA_CONFIRM_PREREG_V2.md) and Office_Products under the redesigned V3 pre-declaration with an environment-matched reference (PREREG_OFFICE_V3.md / OFFICE_V3_RESULTS.md); the earlier Office V1 campaign remains VOID by its own pre-declared tripwire and counts in no claim; the per-dataset (heterogeneity not established) long-tail pattern and thinning interventions; a fail-closed artifact-graph build (build_hstu_tables.py --submission / rebuild_hstu_submission.py --strict) that recomputes all 175 artifact-gated table cells from source artifacts; the bitwise HSTU core-block parity test; the shim harness that executes the reference HSTU-BLaIR implementation locally (THEIRS_ON_OURS_REPORT.md); and the hourly adversarial audit chain with point-by-point responses. No SOTA claim of any kind; no paired or distributional superiority over single-run comparators. The Amazon Reviews 2023 dataset itself is not redistributed; derived splits and caches are identified by SHA256 with regeneration scripts (RELEASE_MANIFEST.json).",
+  "description": "UNPUBLISHED CANDIDATE METADATA. Code, pre-declarations, provenance manifests, and evaluation artifacts for a narrow modular study of a gradient-active left-causal depthwise FIR residual in an HSTU-style sequential recommender on Amazon Reviews 2023. The bundle includes a fail-closed evidence graph that recomputes 192 active paper cells across 18 families, causal future-perturbation tests, learned-tap/frequency-response diagnostics, comparator regeneration records, per-user sidecars, and symmetric retention of null, deviated, and VOID outcomes. The evidence supports only dataset- and configuration-scoped internal FIR estimates plus two environment-caveated per-category point-estimate comparisons; it does not support a broad SOTA claim, paired superiority over single-run comparators, or isolation of temporal specificity from generic trainable-residual capacity. Amazon Reviews 2023 is not redistributed in this bundle; public derived assets and regeneration paths are SHA-256-pinned by RELEASE_MANIFEST.json. Replace the creator placeholder and verify legal/licensing fields before any release or DOI publication.",
   "keywords": [
     "sequential recommendation",
     "Amazon Reviews 2023",
     "HSTU",
-    "text-augmented recommendation",
-    "FIR treatment package (left-causal FIR filter)",
+    "causal FIR residual",
+    "modular contribution",
     "reproducibility",
     "pre-declaration"
   ],
@@ -24,5 +24,5 @@
       "resource_type": "software"
     }
   ],
-  "version": "1.1.11"
+  "version": "1.2.0"
 }

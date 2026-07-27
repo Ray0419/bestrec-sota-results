@@ -35,6 +35,8 @@ def main():
         src = io.open(ROOT / "_bestrec_run" / "build_hstu_tables.py", encoding="utf-8").read()
         build_args.append("--strict-submission" if "--strict-submission" in src else "--submission")
     ok &= run("Artifact-graph table build" + (" (strict)" if STRICT else ""), build_args)
+    ok &= run("Claim-to-artifact map verification",
+              ["_bestrec_run/build_claim_artifact_map.py", "--verify"])
     if STRICT:
         # round-3 audit F1: the release manifest must describe the submitted
         # tree; verify file-by-file, fail closed on any drift

@@ -17190,7 +17190,7 @@
    "table_id": "tfv2",
    "row_label": "TFV2 Industrial_and_Scientific: independent-arm Welch (filter vs no-filter, 8v8)",
    "metric": "overall NDCG@10 Welch diff/t/95% CI (pre-declared, Holm family)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TFV2_IS_filter_seed20260821.json",
@@ -17269,7 +17269,7 @@
      "mode": "gt"
     }
    ],
-   "notes": "PREREG_TAIL_FIR_V2 (externally timestamped before launch); PASS under Holm with E1 (adjudicate_tfv2.py gates the strict chain; verbatim record TFV2_ADJUDICATION.md).",
+   "notes": "PREREG_TAIL_FIR_V2; outcome-visible, not confirmatory. PASS under the frozen Holm arithmetic with E1 (adjudicate_tfv2.py gates artifact integrity in the strict chain; verbatim record TFV2_ADJUDICATION.md).",
    "recomputed": {
     "diff": 0.0021312074182535216,
     "t": 16.98557918284387,
@@ -17328,7 +17328,7 @@
    "table_id": "tfv2",
    "row_label": "TFV2 CDs_and_Vinyl: independent-arm Welch (filter vs no-filter, 8v8)",
    "metric": "overall NDCG@10 Welch diff/t/95% CI (pre-declared, Holm family)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_TFV2_CDs_filter_seed20260861.json",
@@ -17407,7 +17407,7 @@
      "mode": "gt"
     }
    ],
-   "notes": "PREREG_TAIL_FIR_V2 (externally timestamped before launch); PASS under Holm with E1 (adjudicate_tfv2.py gates the strict chain; verbatim record TFV2_ADJUDICATION.md).",
+   "notes": "PREREG_TAIL_FIR_V2; outcome-visible, not confirmatory. PASS under the frozen Holm arithmetic with E1 (adjudicate_tfv2.py gates artifact integrity in the strict chain; verbatim record TFV2_ADJUDICATION.md).",
    "recomputed": {
     "diff": 0.005770294402534772,
     "t": 26.121458543066268,

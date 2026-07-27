@@ -10,8 +10,8 @@ table-cell family of PAPER_DRAFT.md (Table 1, 1a, 1b-local, 1c, 1d, 1e, the sect
 arm-ratio table, the section-5.4.2 user-titration table, the section-5.2 pre-declared
 V2 confirmation, and Table 2), each with: source result JSONs, a declarative recompute
 rule, the recomputed value(s), seed counts, and an evidence_class label
-(confirmatory = >=5-seed multi-seed family or pre-declared confirmation;
- exploratory  = single-seed / <5-seed / post-hoc).
+(confirmatory = prospectively pre-declared with required timing/custody intact;
+ exploratory = single-seed, post-hoc, outcome-visible, or protocol-deviated).
 
 Default mode (no flags):
   1. loads the manifest,
@@ -2030,8 +2030,9 @@ def build_spec():
                       notes=FIRCTRL_NOTE))
 
     # ------- tfv2: pre-declared repaired-estimand campaign (PREREG_TAIL_FIR_V2) -------
-    # Externally timestamped (OpenTimestamps); independent 8-vs-8 arms; adjudicated
-    # 2026-07-20 (TFV2_ADJUDICATION.md; E1 gated via the strict-chain verdict step).
+    # Independent 8-vs-8 arms, but outcome-visible: the first independently verifiable
+    # timestamp postdates the first result and adjudicator timing/custody do not support
+    # confirmation status (manuscript S5.3(vii)).
     for short, cat, cid, dv, tv, lo, hi in (
             ("IS", "Industrial_and_Scientific", "tfv2.is.e2", 0.002131, 16.99, 0.001862, 0.002400),
             ("CDs", "CDs_and_Vinyl", "tfv2.cds.e3", 0.005770, 26.12, 0.005275, 0.006266)):
@@ -2046,10 +2047,11 @@ def build_spec():
                       [chk("diff", dv, 6), chk("t", tv, 2),
                        chk("ci95_lo", lo, 6), chk("ci95_hi", hi, 6),
                        chk("ci95_lo", 0.0, mode="gt")],
-                      8, conf,
-                      notes="PREREG_TAIL_FIR_V2 (externally timestamped before launch); "
-                            "PASS under Holm with E1 (adjudicate_tfv2.py gates the strict "
-                            "chain; verbatim record TFV2_ADJUDICATION.md)."))
+                      8, expl,
+                      notes="PREREG_TAIL_FIR_V2; outcome-visible, not confirmatory. PASS "
+                            "under the frozen Holm arithmetic with E1 (adjudicate_tfv2.py "
+                            "gates artifact integrity in the strict chain; verbatim record "
+                            "TFV2_ADJUDICATION.md)."))
 
     # ------- office_v3: redesigned pre-declared confirmation (PASSED) -------
     V3_SEEDS = [20260728, 20260729, 20260730, 20260731, 20260732]
@@ -2078,7 +2080,7 @@ def build_spec():
     # firb.* removed 2026-07-20 (audit 00:01): the frozen breadth rule is a paired t whose
     # pairing premise is false; its cells stay as frozen-rule records but are NOT
     # confirmatory. Welch companions are post-hoc (exploratory).
-    PREDECLARED_PREFIXES = ("v2conf.", "officev3.", "t2.conngate.", "tfv2.")
+    PREDECLARED_PREFIXES = ("v2conf.", "officev3.", "t2.conngate.")
     for c0 in C:
         if c0.get("evidence_class") == "confirmatory" and \
                 (not c0["cell_id"].startswith(PREDECLARED_PREFIXES)

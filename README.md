@@ -19,7 +19,7 @@ uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --s
 This runs, fail-closed: the bitwise HSTU core-block parity test → the artifact-graph build
 (**all 192 artifact-gated cells recomputed from source artifacts**; exits
 nonzero on any mismatch, untraceable cell, or missing claim family) → release-manifest hash
-verification (744 files at the current manifest) → the pre-declared Musical_Instruments gate adjudicator → the TFV2 repaired-estimand adjudicator (outcome-visible — §5.3 chronology) → **the
+verification (the live gate reports the authoritative file count) → the pre-declared Musical_Instruments gate adjudicator → the TFV2 repaired-estimand adjudicator (outcome-visible — §5.3 chronology) → **the
 Office V3 adjudicator (counted; the build fails unless the campaign verdict is PASS)** →
 **the FIR-breadth adjudicator (artifact-integrity: the frozen rule's legacy CONFIRMED tokens are checked mechanically; the paired premise is withdrawn and no inferential confirmation is implied)** → the Office V1
 adjudicator (descriptive/VOID). Each campaign's live adjudicator gates the build (MI V2, Office V3, TFV2, FIR breadth, E-A, canonical FIR breadth, FIR active controls, E-F; the E-G adjudicator also gates as an artifact-reproduction check but confers no confirmatory status — see PAPER_SUBMISSION.md §5.8). Canonical breadth and FIR active controls are outcome-known/test-exposed internal studies; their live verdict gates certify artifact reproduction, not independent-confirmation status.
@@ -39,13 +39,14 @@ blobs (`DOI_DEPOSIT_INSTRUCTIONS.md` has the full rule).
   - **Office_Products (V3)**: CI lower bounds **0.03033** (K=16) / **0.03024** (K=8) vs both
     the environment-matched local regeneration 0.0279 and the published 0.0271; 10/10 seeds
     above (`PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`).
-- **The FIR package arm (filter + initialization + optimizer path — components not separable yet) shows positive estimates on all four categories tested** — an internal
-  same-seed filter-vs-no-filter contrast (never a comparator claim; same-numbered seeds are
-  NOT initialization-paired — the frozen breadth rule's paired interpretation is withdrawn,
-  and the primary analysis is independent-arm Welch, both 95% CIs excluding zero:
-  Industrial_and_Scientific Δ **+0.0024** [+0.0019, +0.0029], CDs_and_Vinyl **+0.0057**
-  [+0.0050, +0.0063]; the treatment is the FIR-plus-initialization/optimizer package)
-  (`PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md` + its 2026-07-20 erratum).
+- **The canonical gradient-active left-causal FIR residual has positive internal estimates on
+  three outcome-visible categories:** Musical_Instruments +0.002265 (ordinary Welch 95% CI
+  [+0.001928,+0.002602]), Industrial_and_Scientific +0.002110 (ordinary paired 95% CI
+  [+0.001820,+0.002399]), and CDs_and_Vinyl +0.006150 (ordinary paired 95% CI
+  [+0.005849,+0.006450]). Active controls show that trainable causal residual arms beat frozen
+  identity under the tested configuration, but do not isolate temporal specificity, learned
+  per-channel taps, or generic trainable-residual capacity. These are internal mechanism
+  estimates, never an independent-confirmation or comparator claim.
 - **Pre-declared fresh-seed hybrid (E-F, 2026-07-23):** late z-score fusion with train-only EASE (Steck 2019) lifted test NDCG@10 on all three categories tested (MI +0.0024, IS +0.0026, VG +0.0032; ordinary paired 95% CIs with Holm-adjusted decisions, fresh seeds 20260721-25); the MI fused five-seed mean 0.04399 exceeds the published single-run 0.0406 (point-estimate comparison, environment-caveated; see PAPER_SUBMISSION.md §5.7).
 - **Sparse-warm text-fusion study (E-G, 2026-07-23; OUTCOME-VISIBLE, PROTOCOL-DEVIATED — descriptive only):** a validation-selected history-centroid text scorer raised tail-bin test NDCG@10 on all five categories (+0.0011 to +0.0048) at aggregate cost within margin, BUT the campaign's no-interim clause was violated, the literal config gate fails MI/VG, and the gate was amended after outcomes; no confirmatory status is claimed. Its intended clean replication (E-G2) was itself EXPOSED (a git add -A committed 14 in-progress confirm artifacts before adjudication, audit 2026-07-23 22:00); the sole remaining counted path is a future repository-sequestered E-G3 (PAPER_SUBMISSION.md §5.8).
 - **Text tail benefit: one MI frequency-5-heavy case** (cross-dataset heterogeneity not established, interaction p = 0.13; the thinning intervention did NOT explain it — one fixed draw; mechanism unresolved).
@@ -74,7 +75,10 @@ campaign above is a separate pre-declaration that passed under its frozen wordin
 
 ## Releases
 
-- **`v1.1.11-deposit`** (current archival bundle, cut 2026-07-21; each deposit release supersedes the previous) — the 66-entry deposit zip + sidecar hash + manifest + both PDFs. Supersedes `v1.1.10-deposit`, which went stale the same day it was cut (four post-tag content commits — the 22:57 audit's measured drift; the deposition gate now refuses to rebuild a version whose tag no longer matches the tree). The from-zero public-clone verification is re-executed at each pushed tag and its transcript committed to the branch.
+- **`v1.2.0-deposit` (intended candidate; not yet tagged or published).** The current 92-entry
+  candidate bundle is prepared locally and explicitly refuses a normal/tagged build while
+  creator placeholders remain. `v1.1.11-deposit` is a historical snapshot and is stale
+  relative to the present manuscript; it must not be uploaded as current.
 - **`v0.9-audit-evidence`** — the pinned-parity files/ZIP, `RELEASE_MANIFEST.json`, all 18 split CSVs, four text caches, 107 TFV2 per-user sidecars, and 144 FIR-control final-evaluation/sidecar/checkpoint files (all hash-manifested; FIR-control assets verified remotely by size and digest on 2026-07-27; the manifest inventory is authoritative). A complete bootstrap downloads approximately **4.60 GB** across 282 release-only assets. Fresh clones: `python bootstrap_public_clone.py` before the strict gate; `git submodule update --init` is optional because the parity test can hydrate the exact pinned HSTU reference commit into its isolated cache.
 - **`bestrec-raw-records-v1`** — the historical LC2C project's raw records (see `README_LC2C_HISTORICAL.md`).
 

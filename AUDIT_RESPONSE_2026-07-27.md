@@ -49,3 +49,30 @@ across 18 claim families with zero mismatches or untraceable cells, verified
 cover-letter correction and the 16-path causal unit test to the manifest; its
 local strict rebuild verifies 751/751 files. A release tag/DOI deposit should
 repeat the full fresh-clone check after author/legal metadata are finalized.
+
+## 2026-07-28 completion addendum
+
+The continuation audit made four further changes without editing the independent
+audit log:
+
+1. It found a real machine-readable taxonomy defect: TFV2 cells were still
+   labeled `confirmatory` in the generated evidence graph although the paper
+   correctly calls that campaign outcome-visible/non-confirmatory. The graph now
+   labels TFV2 exploratory, and `build_claim_artifact_map.py` asserts the expected
+   evidence class so the error cannot silently recur.
+2. `CLAIM_ARTIFACT_MAP.md` now maps ten manuscript claim groups to exact cell IDs,
+   source artifacts, evidence classes, and both reviewer reconstruction paths.
+   Its deterministic verifier is part of the strict rebuild.
+3. The final literature/venue sweep added SISA-Rec (arXiv:2607.11168) and ASER
+   (arXiv:2603.02709) as concurrent modular-content work, recorded their Amazon
+   Reviews 2014 protocol mismatch, closed the SILLM4Rec inspection item with an
+   explicit access limitation, and verified the current acmart v2.19 build.
+4. `PHASE_COMPLETION_AUDIT_2026-07-28.md` reconciles all ten repair phases and
+   every Claude handoff item. A deterministic 92-entry `v1.2.0` deposit candidate
+   is locally buildable and hash-checked, while normal publish mode refuses to
+   proceed with creator placeholders. No tag, release, or DOI is claimed to exist.
+
+The residual audit blockers are therefore substantive or human-controlled, not
+unfinished local editing: independent temporal/non-Amazon confirmation and the
+matched non-temporal placebo require new preregistered experiments; author,
+conflict, legal, and DOI fields require maintainer authority.

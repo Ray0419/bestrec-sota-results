@@ -35,14 +35,20 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MPATH = os.path.join(ROOT, "RELEASE_MANIFEST.json")
 
 SUBMISSION_DOCS = [
+    ".zenodo.json", "CITATION.cff", "README.md",
+    "DOI_DEPOSIT_INSTRUCTIONS.md", "VENUE_PLAN.md",
     "PAPER_SUBMISSION.md", "PAPER_SUBMISSION.pdf", "PAPER_DRAFT.md",
     "CANONICAL_SUBMISSION.md", "AUDIT_RESPONSE_2026-07-27.md",
-    "COVER_LETTER_TORS.md",
+    "COVER_LETTER_TORS.md", "CLAIM_ARTIFACT_MAP.md",
+    "PHASE_COMPLETION_AUDIT_2026-07-28.md",
+    "MOCK_REVIEW_2026-07-27.md",
     "bootstrap_public_clone.py",
     "THEIRS_ON_OURS_REPORT.md",
     "PINNED_ENV_PARITY_REPORT.md", "HSTU_PARITY_REPORT.md",
     "_bestrec_run/test_hstu_parity.py", "_bestrec_run/test_pinned_env_parity.py",
     "_bestrec_run/test_fir_causality.py",
+    "_bestrec_run/build_claim_artifact_map.py",
+    "_bestrec_run/build_deposit_bundle.py",
     "_bestrec_run/fbgemm_shims.py", "_bestrec_run/rebuild_hstu_submission.py",
     "_bestrec_run/update_release_manifest.py",
     # generated TORS LaTeX (derived output, VENUE_PLAN.md) + its table generator

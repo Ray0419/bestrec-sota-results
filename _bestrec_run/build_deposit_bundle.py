@@ -37,7 +37,7 @@ import zipfile
 
 
 
-VERSION = "v1.1.11"
+VERSION = "v1.2.0"
 
 def _manifest_date():
     # DOI-facing date basis is explicit and single-sourced (audit 2026-07-19 09:34):
@@ -205,116 +205,81 @@ V11_ADDITIONS = [
 
 
 
-FILES = V10_FILES + V11_ADDITIONS
+V12_ADDITIONS = [
+    "AUDIT_RESPONSE_2026-07-27.md",
+    "CLAIM_ARTIFACT_MAP.md",
+    "COVER_LETTER_TORS.md",
+    "MOCK_REVIEW_2026-07-27.md",
+    "PHASE_COMPLETION_AUDIT_2026-07-28.md",
+    "PREREG_FIR_V3.md",
+    "PREREG_FIR_CANONICAL_BREADTH.md",
+    "PREREG_FIR_CANONICAL_BREADTH_ERRATA.md",
+    "PREREG_FIR_CONTROLS.md",
+    "PREREG_FIR_CONTROLS_ERRATA.md",
+    "PREREG_TAIL_FIR_V2.md",
+    "PREREG_EE_V2.md",
+    "bootstrap_public_clone.py",
+    "RESPONSE_TO_PAPER_REVIEW_AUDIT.md",
+    "EXPERIMENT_PROGRAM.md",
+    "figures/fig_fir_response_data.csv",
+    "figures/fig_fir_response.pdf",
+    "_bestrec_run/build_claim_artifact_map.py",
+    "_bestrec_run/build_deposit_bundle.py",
+    "_bestrec_run/test_fir_causality.py",
+    "_bestrec_run/make_fig_fir_response.py",
+    "_bestrec_run/adjudicate_fir_v3.py",
+    "_bestrec_run/adjudicate_fir_canonical_breadth.py",
+    "_bestrec_run/adjudicate_fir_controls.py",
+    "_bestrec_run/adjudicate_tfv2.py",
+    "_bestrec_run/adjudicate_ee_v2.py",
+]
+
+FILES = sorted(set(V10_FILES + V11_ADDITIONS + V12_ADDITIONS))
 
 
 
-README_TMPL = """BEST-Rec / HSTU-style causal-FIR study -- DOI deposit bundle {VERSION} ({DATE})
-
+README_TMPL = """Artifact-gated causal-FIR study -- deposit bundle {VERSION} ({DATE})
 ================================================================================
 
+This bundle is the candidate archival companion to `PAPER_SUBMISSION.md` /
+`PAPER_SUBMISSION.pdf` (reader edition) and `paper_tex/PAPER_TORS.pdf` (ACM
+TORS manuscript format). It contains code, pre-declarations, result records,
+provenance manifests, core historical audit documents, and small evaluation
+artifacts needed to verify paper-facing numbers.
 
+Large evidence is hash-pinned by `RELEASE_MANIFEST.json`: compact per-run JSONs
+are git-tracked, while splits, text caches, and large per-user/checkpoint
+payloads are public release assets. `bootstrap_public_clone.py` hydrates and
+verifies that public evidence boundary. `SHA256SUMS.txt` pins exactly this zip's
+payload bytes; the release manifest pins the larger repository/asset boundary.
 
-This bundle is the archival companion to the manuscript
-
-`PAPER_SUBMISSION.md` / `PAPER_SUBMISSION.pdf` (reader edition) and
-
-`paper_tex/PAPER_TORS.pdf` (ACM TORS manuscript format). It contains the code,
-
-pre-declarations, results documentation, provenance manifests, core historical
-audit documents (the live hourly adversarial chain -- `PAPER_REVIEW_AUDIT.md` /
-`RESPONSE_TO_PAPER_REVIEW_AUDIT.md` -- is git-tracked and present in full in every
-tagged tree rather than re-bundled per cut),
-
-and small evaluation artifacts needed to verify every number printed in the
-
-paper. Large evidence is hash-pinned by `RELEASE_MANIFEST.json` (included
-
-here): per-run result JSONs are git-tracked, while the data splits and
-text-encoder caches are SHA-256-pinned but NOT yet public release assets
-(upload pending a maintainer decision) --- external verification of those
-payloads currently requires regeneration from the public AR2023 dumps via the
-tracked preprocessing code, hash-verifiable against the manifest.
-Boundary relations, stated plainly: `RELEASE_MANIFEST.json` pins the REPOSITORY
-evidence set (a superset of this bundle; its git-backed digests are of
-LF-normalized bytes and equal the git-blob hashes at the release tag);
-`SHA256SUMS.txt` pins exactly THIS bundle's payload bytes. Both hold at the
-release tag; neither describes later branch commits.
-
-
-
-Canonical verification command (from a checkout of the full repository):
-
-
+Canonical verification command:
 
     python _bestrec_run/rebuild_hstu_submission.py --strict
 
+It runs fail-closed: bitwise HSTU core-block parity; the strict 192-cell,
+18-family artifact graph; release-manifest verification; the governed MI,
+TFV2, COUNTED Office_Products V3, FIR-breadth adjudicator, canonical FIR,
+active-control, and reproduction checks; the permanent Office V1 VOID; the
+16-case FIR causality test; and deterministic claim-to-artifact-map verification.
 
+New in the v1.2.0 candidate: canonical nonsingular FIR and breadth campaigns,
+active controls, TFV2 repaired-estimand evidence, learned-tap/frequency-response
+diagnostics, the current audit response/mock review/cover letter, a phase ledger,
+a deterministic claim-to-artifact map, and two public reconstruction paths.
 
-which runs, in order and fail-closed: the bitwise HSTU core-block parity test ->
-the strict artifact-graph table build (every printed numeral recomputed from
-source artifacts; exits nonzero on any mismatch/untraceable cell/missing claim
-family) -> release-manifest verification -> the pre-declared
-Musical_Instruments dual-kernel gate adjudicator -> the COUNTED Office_Products
-V3 adjudicator (the build fails unless CAMPAIGN VERDICT: PASS) -> the COUNTED
-FIR-breadth adjudicator (both categories must be CONFIRMED) -> the
-Office_Products V1 adjudicator (VOID under its own prereg; descriptive only).
+Claim boundary (`CANONICAL_SUBMISSION.md` governs): two counted pre-declared
+per-category point-estimate comparisons; Office V1 remains VOID; canonical FIR
+evidence is outcome-known/test-exposed internal evidence; active controls do not
+isolate temporal specificity from generic trainable-residual capacity; no SOTA
+claim and no paired/distributional superiority over a single-run comparator.
 
+PUBLICATION WARNING: this candidate intentionally contains creator placeholders.
+It is not a published release or DOI. Replace and verify author/legal metadata
+before tagging, uploading, or minting.
 
-
-New in v1.1/v1.1.1 (vs v1.0, 2026-07-11; v1.1.1 supersedes the v1.1 tag, whose uploaded assets had gone stale against later same-day commits):
-
-  * Office_Products V3 redesigned pre-declaration and its PASS record
-
-    (`PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`, `_bestrec_run/adjudicate_office_v3.py`).
-
-  * FIR-breadth pre-declared campaign on two further categories, both CONFIRMED
-
-    (`PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md`, `_bestrec_run/adjudicate_fir_breadth.py`).
-
-  * The pinned-environment parity chain (`PINNED_ENV_PARITY_REPORT.md`,
-
-    `_bestrec_run/test_pinned_env_parity.py`).
-
-  * The completed Office HSTU-BLaIR reference-run artifacts
-
-    (`_bestrec_run/theirs_runs/office_hstu_blair/`).
-
-  * The ACM TORS manuscript PDF (`paper_tex/PAPER_TORS.pdf`), the venue/DOI
-
-    decision records (`VENUE_PLAN.md`, `DOI_DEPOSIT_INSTRUCTIONS.md`), and the
-
-    self-policing manifest tool (`_bestrec_run/update_release_manifest.py`).
-
-  * `RELEASE_MANIFEST.json` now also pins the 20 Office V3 result/tree-state
-
-    files and the 20 FIR-breadth result JSONs (result_families
-
-    `OFFICEV3_gate`, `FIR_breadth`).
-
-
-
-Claim boundary (unchanged; `CANONICAL_SUBMISSION.md` governs): two counted
-
-pre-declared per-category point-estimate comparisons (Musical_Instruments;
-
-Office_Products V3 under its frozen wording); Office V1 remains VOID and is
-
-never counted; the causal FIR filter is supported on four categories as an
-
-internal same-seed contrast (the frozen breadth rule fired; its paired interpretation
-is withdrawn --- independent-arm Welch is the primary analysis); no SOTA claim of any kind; no paired or
-
-distributional superiority over any comparator.
-
-
-
-This bundle was generated by `_bestrec_run/build_deposit_bundle.py` (included
-
-in the repository); `SHA256SUMS.txt` inside the bundle covers every bundled
-
-file.
-
+Generated by `_bestrec_run/build_deposit_bundle.py`; the bundle-internal
+`SHA256SUMS.txt` covers every bundled payload file.
 """
 
 
@@ -337,7 +302,7 @@ def sha256(path):
 
 
 
-def consistency_gate():
+def consistency_gate(candidate=False):
 
     """Fail-closed: refuse to build a bundle whose surrounding metadata disagrees with VERSION.
 
@@ -378,6 +343,13 @@ def consistency_gate():
     if _json.loads(read(".zenodo.json")).get("version") != plain:
 
         fails.append(".zenodo.json version != %s" % plain)
+
+    placeholder = "CREATOR METADATA REQUIRED BEFORE PUBLICATION"
+    has_placeholder = placeholder in read("CITATION.cff") or placeholder in read(".zenodo.json")
+    if has_placeholder and not candidate:
+        fails.append("creator metadata placeholder remains (normal/tagged builds require verified creators; use --candidate for an unpublished local bundle)")
+    if candidate and not has_placeholder:
+        print("candidate warning: creator placeholder has been replaced; verify metadata manually before publication")
 
     n_entries = len(FILES) + 2
     if "(%d entries" % n_entries not in read("DOI_DEPOSIT_INSTRUCTIONS.md"):
@@ -444,6 +416,8 @@ def consistency_gate():
             fails.append("manifest does not describe this tree: git_commit (%s) != HEAD (%s) AND "
                          "--verify-git HEAD failed -- at cut time run --regen immediately before "
                          "building; at rebuild time check out the deposit tag" % (str(mc)[:8], head[:8]))
+        elif candidate:
+            print("boundary: CANDIDATE mode (--verify-git HEAD OK; no tag equality claimed)")
         else:
             tag = "%s-deposit" % VERSION
             tc = _sp.run(["git", "-C", ROOT, "rev-parse", tag + "^{commit}"],
@@ -493,8 +467,10 @@ def main():
     ap = argparse.ArgumentParser(description="archival deposit bundle builder (fail-closed)")
     ap.add_argument("--check-only", action="store_true",
                     help="run the consistency gate and exit without building")
+    ap.add_argument("--candidate", action="store_true",
+                    help="build/validate an explicitly unpublished current-tree candidate without requiring a tag")
     args = ap.parse_args()
-    consistency_gate()
+    consistency_gate(candidate=args.candidate)
 
     # payload-completeness scan runs in BOTH modes (audit 23:08: the check-only branch
     # previously returned before this scan -- a latent fail-open).

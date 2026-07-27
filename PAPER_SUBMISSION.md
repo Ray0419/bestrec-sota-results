@@ -96,6 +96,8 @@ Table 0 separates prior work from the paper's actual claim boundary. Frequency f
 
 **Closest text/ID systems.** AlphaFuse (Hu et al., 2025) learns ID embeddings in the null space of language embeddings and is the closest frozen-text-plus-ID comparator. We attempted an AlphaFuse-style MiniLM port on our Video_Games split, but its first comparison used mismatched seen-item masking; the repaired factorial remained outcome-visible, capacity/initialization-confounded, incompletely masked for long histories, and non-rank-reconstructive. Its governed adjudicator therefore marks it `NONCOUNTABLE` and `manuscript_allowed=false`; no endpoint is imported here. A fresh equal-protocol comparison remains required. DWSRec, SIDSRec, LLM-ESR, LLM2Rec, and FAERec further show that whitening, channel separation, and adaptive semantic/ID fusion are active prior lines. We test only early additive frozen-text fusion, so all text findings are construction-specific; an item-text permutation control remains open.
 
+Two concurrent 2026 preprints reinforce that this is an active modular-content line rather than a priority claim: SISA-Rec injects frozen BERT semantics through gated input fusion and a semantic attention term (Abbasi et al., 2026), while ASER adds review-distilled sensory representations to four existing sequential backbones (Yoon et al., 2026). Their Amazon Reviews 2014 protocols and representation interventions are not numerically interchangeable with our AR2023 FIR study; we cite them for mechanism-family coverage only.
+
 **Tail and reproducibility boundary.** SimRec and LLM-ESR already target text-supported sparse/long-tail recommendation, so our tail contribution is a measured, dataset-specific frequency-5 case rather than a method claim. LLM2Rec also uses Amazon Reviews 2023 with 5-core leave-one-out/full ranking, but its length-10 histories and resulting item universe prevent direct numeric comparison. Elliot, DaisyRec 2.0, accountability workflows, and reproduction audits predate our artifact apparatus; we claim only this paper's combination of per-cell recomputation, provenance tripwires, and symmetric self-VOIDing, not evaluation infrastructure generally.
 
 ## 3. Method
@@ -565,6 +567,9 @@ our long-tail analyses quantify one aspect of that concern — and nothing in th
 constitutes a deployment claim.
 
 ## References
+
+- Abbasi, S., Shah, S. M., Shaikh, R., Aljawarneh, M., 2026. SISA-Rec: A Semantically Integrated Sequential Recommender with Contrastive Alignment. arXiv:2607.11168. *(concurrent modular semantic-integration work on Amazon Reviews 2014; protocol-family coverage only, §2.3)*
+- Yoon, Y. C., Park, C., Koh, K., 2026. Sensory-Aware Sequential Recommendation via Review-Distilled Representations. arXiv:2603.02709. *(concurrent ASER content module on Amazon Reviews 2014; protocol-family coverage only, §2.3)*
 
 
 

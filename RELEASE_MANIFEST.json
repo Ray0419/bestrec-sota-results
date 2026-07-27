@@ -1,11 +1,11 @@
 {
   "release": "v0.9-audit-evidence (immutable data assets) + the current deposit tag (deposit releases supersede each other; the current tag and bundle inventory are recorded in DOI_DEPOSIT_INSTRUCTIONS.md)",
-  "date": "2026-07-27",
+  "date": "2026-07-28",
   "license": {
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "91cba9083e722180b8e2560f0402a368d2e49fba",
+  "git_commit": "21db6dbf3f8fef0e4c5c0e6f5a3d7ddedb69ed72",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -115,7 +115,7 @@
       "sha256": "0eaad74a57698a878e5aaa2e7d0e314232b53759c4c449b509b34867cb9d18bc"
     },
     "_bestrec_run/build_hstu_tables.py": {
-      "sha256": "9aebd729859c6bc50550e6911aa6ded12296768a709a64745dc1a2ea45f1ee13"
+      "sha256": "765920d3cc1b5bc54103eba3572c2ca6c0238448cdd7efef9be6d30cb3b5b1a4"
     },
     "_bestrec_run/test_hstu_parity.py": {
       "sha256": "1656c393adaafb159fd48338b5bced547c11a1540a2d0f09ef7a800474d53bdd"
@@ -698,29 +698,61 @@
   "manifest_scope": "Hashes describe the repository files as of git_commit \u2014 the parent commit whose tree was hashed at the most recent --regen (the manifest cannot hash itself, so its own commit is the immediate child of that state); commits that touch no manifested file leave the hashes valid without a regen, and every strict build re-verifies all hashes against the live tree. Kept in sync MECHANICALLY: rebuild_hstu_submission.py --strict runs update_release_manifest.py --verify, which fails the submission gate on any hash mismatch, so a manifested file cannot change without a --regen + commit. Hashing rule (2026-07-18 migration, content identity proven under the legacy raw rule at migration time): git-backed sections (protocol_code, submission_docs, result_families, reference_runs) digest LF-normalized bytes for text files -- platform-independent and equal to the git-blob and deposit-payload hashes; release-asset sections (splits, text_caches, pinned_parity_artifacts, FIR-control sidecars/checkpoints) digest raw bytes because their uploaded assets are immutable as-is. Data sections (splits, text_caches, result_families) are the unchanged v0.9-audit-evidence release assets, byte-verified at every --regen. The manifest cannot hash itself; its own commit is the immediate child of the state it describes.",
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
+    ".zenodo.json": {
+      "sha256": "28a9bd9d947170cbfee0aa37a6ae5e9d9daafb8e22d22ae868205d77dcb7d713",
+      "bytes": 1783
+    },
+    "CITATION.cff": {
+      "sha256": "f74aefd17554a1cbbb74adb54d957448285a1a1f90f07aecd6ce1b867bebf247",
+      "bytes": 1223
+    },
+    "README.md": {
+      "sha256": "fa28cc62500ab1092670638ab2c7c66b784f600cd8dd11dddd04c1bb53901649",
+      "bytes": 10210
+    },
+    "DOI_DEPOSIT_INSTRUCTIONS.md": {
+      "sha256": "52aeff1ce6209ec39f023a5cbac2d194afe05879c1b4c12dcb8e6c6925f2a7a0",
+      "bytes": 2911
+    },
+    "VENUE_PLAN.md": {
+      "sha256": "8ee875a748316ff37863450514b3296416aa78e51b7cc0651f82ed1ec19e4f9a",
+      "bytes": 5517
+    },
     "PAPER_SUBMISSION.md": {
-      "sha256": "07cbb7f3c1dbea156932295909c22836db2226af74d38d0101fb64b322a66a8a",
-      "bytes": 142960
+      "sha256": "d62ca0e46489cfe5ecc9c84977b26bd4cfbaaaafac7d97a4d76d32b62e388d2e",
+      "bytes": 144000
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "6b858b7884c6ca15a87d1ab51da6be9de22f167d4d7c683a0b8042168f041bd7",
-      "bytes": 1320956
+      "sha256": "0596312b4c1fca53132c8b716b1d2dde34cd00a2c32866b472163308ba4e4bf4",
+      "bytes": 1324663
     },
     "PAPER_DRAFT.md": {
       "sha256": "4efe8ffea9fa4748327c16d2c6ef6fa34a547ef164a9af9d13fd6909cb00b7e5",
       "bytes": 226902
     },
     "CANONICAL_SUBMISSION.md": {
-      "sha256": "bc329bf81ea789837cb42212850f15ce946172dd1b887428dda487541aa191e3",
-      "bytes": 13147
+      "sha256": "4aa0485369c6815c8ba1ac396ec0cce6c1c403bf240fecac3dd50699d661fd46",
+      "bytes": 13218
     },
     "AUDIT_RESPONSE_2026-07-27.md": {
-      "sha256": "7e3aee02165e19c0d11e10ae3be1d9cb05105ffc9e8c5eddb78fe09f162575f4",
-      "bytes": 8877
+      "sha256": "f331d4f784591e3462b8bd6fc0284267a741e4808c6f42abc1db7b04d34bc423",
+      "bytes": 10534
     },
     "COVER_LETTER_TORS.md": {
       "sha256": "9a791f5ad396254c896d8fd340d910ca9199f57c315bdfd3b04b1a48fae1300f",
       "bytes": 4171
+    },
+    "CLAIM_ARTIFACT_MAP.md": {
+      "sha256": "7f8bf2f16fc95159cbd9a1ca668930aa20776c344d1fb00b56f1f568f75cf18b",
+      "bytes": 10509
+    },
+    "PHASE_COMPLETION_AUDIT_2026-07-28.md": {
+      "sha256": "00bc7fd54340e8e3a6c294641f79cc673eea826fee676134bce0e3418f284ed4",
+      "bytes": 7609
+    },
+    "MOCK_REVIEW_2026-07-27.md": {
+      "sha256": "e104a0605909b9af08d7932d7842ceff67e08e78b321abf35dc9607875e1c1fd",
+      "bytes": 12077
     },
     "bootstrap_public_clone.py": {
       "sha256": "5ffae9cefdeb832aa3056bad9121f4b664006bd8a2785dffe5b61e1d52170991",
@@ -750,21 +782,29 @@
       "sha256": "8114670e957b536f0e9e7054a9863efb56772c1cfd93728a1c979852f4622d7c",
       "bytes": 3401
     },
+    "_bestrec_run/build_claim_artifact_map.py": {
+      "sha256": "8a50fa84c11a1965166c4f6e9ce81c36410811996f407a8861379b07ac2f01c3",
+      "bytes": 11651
+    },
+    "_bestrec_run/build_deposit_bundle.py": {
+      "sha256": "638f336808370f8caa45507eb0c5bbd81a322d97ba59d1560fe0fd9f1731a082",
+      "bytes": 18621
+    },
     "_bestrec_run/fbgemm_shims.py": {
       "sha256": "bb661345a50e11c20ccd16dc9699884467dbbc137fb2b26893804de7aecc9d34",
       "bytes": 9762
     },
     "_bestrec_run/rebuild_hstu_submission.py": {
-      "sha256": "5e47190af76e2a6a6386ebf348601403dc2611665db4b435f06212471abd3a9c",
-      "bytes": 6595
+      "sha256": "23b2b7e5d4ea9a079b6f55e34aec791b25397fcbc27ba8b477dd790f2cbcce0c",
+      "bytes": 6718
     },
     "_bestrec_run/update_release_manifest.py": {
-      "sha256": "08c693119809599703849c110aac1d0a450e8484549c0170fed088b46c1a3abc",
-      "bytes": 33831
+      "sha256": "e91a8ee54737a28326629721628affb7b5604776812dd6a5c7f3da8870427bda",
+      "bytes": 34126
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "bd7a61c6460b7ddfe6f2e3f8ebadfcec2662ce889defeb630acea47bfc2fa896",
-      "bytes": 427491
+      "sha256": "b9bee31a403b7f26c2a14afd09420d9b6b63c4b3372bed85a7593fd21d1de916",
+      "bytes": 429554
     },
     "_bestrec_run/emit_latex_tables.py": {
       "sha256": "1e39233ad7a7c51d3fe9058bfea474ee07c68dc21449b83d649f114f6f17b7f3",
@@ -879,8 +919,8 @@
   },
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
-  "intended_deposit_tag": "v1.1.11-deposit",
-  "hash_parent_commit": "91cba9083e722180b8e2560f0402a368d2e49fba",
+  "intended_deposit_tag": "v1.2.0-deposit",
+  "hash_parent_commit": "21db6dbf3f8fef0e4c5c0e6f5a3d7ddedb69ed72",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",

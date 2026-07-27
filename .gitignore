@@ -108,3 +108,9 @@ _bestrec_run/results_*_FIRPOINTV1_*
 _bestrec_run/fir_pointwise_v1_status.json
 _bestrec_run/run_fir_pointwise_v1.log
 _bestrec_run/fir_canonical_breadth_status.json
+
+# Prospective untouched-category Software confirmation V2. Training and final
+# endpoints remain sequestered until the committed adjudicator's first read.
+_bestrec_run/results_*_FIRPROSPV2_*
+_bestrec_run/fir_prospective_sw_v2_status.json
+_bestrec_run/run_fir_prospective_sw_v2.log

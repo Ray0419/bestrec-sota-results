@@ -121,6 +121,12 @@ FIR_PROSPECTIVE_STAGE_A_PROTOCOL_FILES = [
     "_bestrec_run/prepare_software_official_5core.py",
     "_bestrec_run/verify_software_feasibility.py",
     "_bestrec_run/encode_software_titles_frozen.py",
+    "PREREG_FIR_PROSPECTIVE_SW_V2.md",
+    "_bestrec_run/run_sasrec_sbert_software_v2_frozen.py",
+    "_bestrec_run/test_fir_pointwise_v1.py",
+    "_bestrec_run/run_fir_prospective_sw_v2.py",
+    "_bestrec_run/eval_fir_prospective_sw_v2.py",
+    "_bestrec_run/adjudicate_fir_prospective_sw_v2.py",
 ]
 
 
@@ -476,6 +482,13 @@ def regen(m):
     ]
     if all(os.path.exists(p) for p in _dm_v1_feasibility):
         add_result_family("FIR_PROSPECTIVE_DM_V1_FEASIBILITY_VOID", _dm_v1_feasibility)
+    _sw_v2_preparation = [
+        os.path.join(ROOT, "_bestrec_run", "software_acquisition_manifest.json"),
+        os.path.join(ROOT, "_bestrec_run", "software_feasibility.json"),
+        os.path.join(ROOT, "_bestrec_run", "software_title_cache_manifest.json"),
+    ]
+    if all(os.path.exists(p) for p in _sw_v2_preparation):
+        add_result_family("FIR_PROSPECTIVE_SW_V2_PREPARATION", _sw_v2_preparation)
 
     # audit 2026-07-24 (E-E freeze): keep protocol_code in lock-step with the
     # governed-completeness gate -- auto-register any tracked governed file
@@ -557,12 +570,21 @@ def regen(m):
             inventory[key] = {"sha256": dig, "bytes": os.path.getsize(ap)}
         m[section] = inventory
     # IS/CDs splits join the immutable splits inventory (added 2026-07-20; audit 16:53)
-    for cat in ("Industrial_and_Scientific", "CDs_and_Vinyl"):
+    for cat in ("Industrial_and_Scientific", "CDs_and_Vinyl", "Software"):
         for part in ("train", "valid", "test"):
             key = f"{cat}.{part}"
             if key not in m["splits"]:
                 ap = os.path.join(ROOT, "data_5core", "5core", "last_out", f"{cat}.{part}.csv")
                 m["splits"][key] = {"sha256": sha(ap), "bytes": os.path.getsize(ap)}
+    for key, ap in {
+        "sbert_titles_Software.npy": os.path.join(
+            ROOT, "cache_5core", "sbert_titles_Software.npy"),
+        "asin2idx_Software.json": os.path.join(
+            ROOT, "cache_5core", "asin2idx_Software.json"),
+    }.items():
+        if key not in m["text_caches"]:
+            m["text_caches"][key] = {
+                "sha256": sha(ap), "bytes": os.path.getsize(ap)}
     # aux graph sources (git-backed; formerly ignored local-only cell inputs)
     ax = {}
     for rel in AUX_GRAPH_SOURCES:

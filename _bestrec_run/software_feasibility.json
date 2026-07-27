@@ -1,0 +1,52 @@
+{
+  "category": "Software",
+  "checks": {
+    "identical_split_user_sets": true,
+    "minimum_interactions": true,
+    "minimum_items": true,
+    "minimum_three_train_per_user": true,
+    "minimum_users": true,
+    "no_train_test_pair_overlap": true,
+    "no_train_valid_pair_overlap": true,
+    "no_valid_test_pair_overlap": true,
+    "rating_pairs_unique": true,
+    "split_pair_union_equals_rating_only": true,
+    "split_rows_sum_to_rating_only": true,
+    "test_one_per_user": true,
+    "valid_one_per_user": true
+  },
+  "counts": {
+    "interactions": 1276840,
+    "items": 17591,
+    "minimum_train_interactions_per_user": 3,
+    "test": 146396,
+    "train": 984048,
+    "users": 146396,
+    "valid": 146396
+  },
+  "created_utc": "2026-07-27T23:47:15.295564+00:00",
+  "files": {
+    "rating_only": {
+      "bytes": 74057089,
+      "path": "data_5core/5core/rating_only/Software.csv",
+      "sha256": "6538476c9cb20fc983a829d06be796b1929be4f10171b1d551899caf5b3e0590"
+    },
+    "test": {
+      "bytes": 8491035,
+      "path": "data_5core/5core/last_out/Software.test.csv",
+      "sha256": "9e520fff20359a0fc130c8df7c4898f448aa140a90dffd82a64a60192574f863"
+    },
+    "train": {
+      "bytes": 57075093,
+      "path": "data_5core/5core/last_out/Software.train.csv",
+      "sha256": "731c567c20b9cc58ee1270c3e281720f1a50b6e5d24c0494fa31861f17798246"
+    },
+    "valid": {
+      "bytes": 8491035,
+      "path": "data_5core/5core/last_out/Software.valid.csv",
+      "sha256": "3f42eb8e0fe8b54cc4ad854755da29f455540c4a787eaa2744f36864944733c3"
+    }
+  },
+  "protocol": "PREREG_FIR_PROSPECTIVE_SW_V2_PREPARATION",
+  "verdict": "SW-V2-FEASIBLE"
+}

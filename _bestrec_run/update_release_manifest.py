@@ -111,6 +111,12 @@ FIR_POINTWISE_PROTOCOL_FILES = [
     "_bestrec_run/eval_fir_pointwise_v1.py",
     "_bestrec_run/adjudicate_fir_pointwise_v1.py",
 ]
+FIR_PROSPECTIVE_STAGE_A_PROTOCOL_FILES = [
+    "PREREG_FIR_PROSPECTIVE_DM_V1_SELECTION.md",
+    "_bestrec_run/acquire_digital_music_prospective.py",
+    "_bestrec_run/preprocess_5core_standard.py",
+    "_bestrec_run/verify_digital_music_feasibility.py",
+]
 
 
 def sha(p, _bufsz=1 << 20):
@@ -478,7 +484,8 @@ def regen(m):
             _gap = os.path.join(ROOT, _t.replace("/", os.sep))
             if os.path.exists(_gap):
                 m["protocol_code"][_t] = {"sha256": sha_norm(_gap)}
-    for _t in FIR_CONTROL_PROTOCOL_FILES + FIR_POINTWISE_PROTOCOL_FILES:
+    for _t in (FIR_CONTROL_PROTOCOL_FILES + FIR_POINTWISE_PROTOCOL_FILES
+               + FIR_PROSPECTIVE_STAGE_A_PROTOCOL_FILES):
         _gap = os.path.join(ROOT, _t.replace("/", os.sep))
         if os.path.exists(_gap) and _t not in m["protocol_code"]:
             m["protocol_code"][_t] = {"sha256": sha_norm(_gap)}

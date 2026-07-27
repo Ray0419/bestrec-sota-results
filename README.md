@@ -22,7 +22,7 @@ nonzero on any mismatch, untraceable cell, or missing claim family) → release-
 verification (420 files at the current manifest) → the pre-declared Musical_Instruments gate adjudicator → the TFV2 repaired-estimand adjudicator (outcome-visible — §5.3 chronology) → **the
 Office V3 adjudicator (counted; the build fails unless the campaign verdict is PASS)** →
 **the FIR-breadth adjudicator (artifact-integrity: the frozen rule's legacy CONFIRMED tokens are checked mechanically; the paired premise is withdrawn and no inferential confirmation is implied)** → the Office V1
-adjudicator (descriptive/VOID). Each campaign's live adjudicator gates the build (MI V2, Office V3, TFV2, FIR breadth, E-A, E-F; the E-G adjudicator also gates as an artifact-reproduction check but confers no confirmatory status — see PAPER_SUBMISSION.md §5.8)
+adjudicator (descriptive/VOID). Each campaign's live adjudicator gates the build (MI V2, Office V3, TFV2, FIR breadth, E-A, canonical FIR breadth, FIR active controls, E-F; the E-G adjudicator also gates as an artifact-reproduction check but confers no confirmatory status — see PAPER_SUBMISSION.md §5.8). Canonical breadth and FIR active controls are outcome-known/test-exposed internal studies; their live verdict gates certify artifact reproduction, not independent-confirmation status.
 (hardened 2026-07-18); `update_release_manifest.py --verify-git <commit|tag>` additionally
 checks the manifest against the git blobs. **Hash-check rule:** verify digests against the
 tag blob (`git show <tag>:FILE`), the release asset, or the bundle payload — never raw

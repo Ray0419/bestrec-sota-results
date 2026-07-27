@@ -48,7 +48,14 @@ echo "tectonic: $TECTONIC"
 # epoch AFTER tool/python resolution (audit 16:51 P1); fail closed on unreadable manifest
 SCRIPT_DIR0="$(cd "$(dirname "$0")" 2>/dev/null && pwd || true)"
 if [ -z "$SCRIPT_DIR0" ]; then SCRIPT_DIR0="$(pwd)"; fi   # already inside the script dir
-MANIFEST_COMMIT="$("$PYTHON" -c "import json,sys;print(json.load(open(sys.argv[1])).get('git_commit',''))" "$SCRIPT_DIR0/../RELEASE_MANIFEST.json" 2>/dev/null || true)"
+MANIFEST_PATH="$SCRIPT_DIR0/../RELEASE_MANIFEST.json"
+# WSL can execute the bundled Windows Python, but an absolute /mnt/c path passed
+# as argv is not translated by interop. Convert this one absolute argument; all
+# later Python invocations use relative paths and need no special handling.
+if [[ "$PYTHON" == *.exe ]] && command -v wslpath >/dev/null 2>&1; then
+  MANIFEST_PATH="$(wslpath -w "$MANIFEST_PATH")"
+fi
+MANIFEST_COMMIT="$("$PYTHON" -c "import json,sys;print(json.load(open(sys.argv[1])).get('git_commit',''))" "$MANIFEST_PATH" 2>/dev/null || true)"
 if [ -z "$MANIFEST_COMMIT" ] && [ "${ALLOW_HEAD_EPOCH:-}" != "1" ]; then
   echo "FATAL: cannot read git_commit from RELEASE_MANIFEST.json (set ALLOW_HEAD_EPOCH=1 to override for dev builds)"; exit 7
 fi

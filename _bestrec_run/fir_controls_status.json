@@ -1,0 +1,9 @@
+{
+  "state": "complete",
+  "trained": 48,
+  "skipped_train": 0,
+  "evaluated": 48,
+  "skipped_eval": 0,
+  "total": 48,
+  "elapsed_min": 278.3
+}

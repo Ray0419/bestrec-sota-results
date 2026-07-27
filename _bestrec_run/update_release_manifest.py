@@ -36,7 +36,8 @@ MPATH = os.path.join(ROOT, "RELEASE_MANIFEST.json")
 
 SUBMISSION_DOCS = [
     "PAPER_SUBMISSION.md", "PAPER_SUBMISSION.pdf", "PAPER_DRAFT.md",
-    "CANONICAL_SUBMISSION.md", "THEIRS_ON_OURS_REPORT.md",
+    "CANONICAL_SUBMISSION.md", "AUDIT_RESPONSE_2026-07-27.md",
+    "THEIRS_ON_OURS_REPORT.md",
     "PINNED_ENV_PARITY_REPORT.md", "HSTU_PARITY_REPORT.md",
     "_bestrec_run/test_hstu_parity.py", "_bestrec_run/test_pinned_env_parity.py",
     "_bestrec_run/fbgemm_shims.py", "_bestrec_run/rebuild_hstu_submission.py",
@@ -60,7 +61,9 @@ PINNED_PARITY_FILES = [
 ]
 # sections whose files ship only as v0.9-audit-evidence release assets
 ARGS = None
-RELEASE_ASSET_SECTIONS = {"splits", "text_caches", "pinned_parity_artifacts", "tfv2_sidecars"}
+RELEASE_ASSET_SECTIONS = {"splits", "text_caches", "pinned_parity_artifacts",
+                          "tfv2_sidecars", "fir_control_sidecars",
+                          "fir_control_checkpoints", "fir_control_finaleval"}
 RELEASE_URL = ("https://github.com/Ray0419/bestrec-sota-results/releases/download/"
                "v0.9-audit-evidence/")
 FIGURE_ASSETS = [
@@ -76,6 +79,13 @@ AUX_GRAPH_SOURCES = [
     "_bestrec_sota_lab/runs/hstu_blair_eval_export_full_20260609_fg/hstu_blair_eval_export_summary.json",
     "_bestrec_run/run_CONNGATE_MI_k8_seed20260608.log",
     "_bestrec_run/run_CONNGATE_5seed_driver.log",
+]
+FIR_CONTROL_PROTOCOL_FILES = [
+    "PREREG_FIR_CANONICAL_BREADTH_ERRATA.md",
+    "PREREG_FIR_CONTROLS_ERRATA.md",
+    "_bestrec_run/run_fir_controls.py",
+    "_bestrec_run/eval_fir_controls.py",
+    "_bestrec_run/run_sasrec_sbert.py",
 ]
 
 
@@ -164,7 +174,9 @@ def verify(m):
         else:
             bad.append(f"{section}/{key}: hash mismatch vs manifest")
 
-    for sec in ("splits", "text_caches", "tfv2_sidecars"):
+    for sec in ("splits", "text_caches", "tfv2_sidecars",
+                "fir_control_sidecars", "fir_control_checkpoints",
+                "fir_control_finaleval"):
         for key, ent in m.get(sec, {}).items():
             check_named(sec, key, ent["sha256"])
     for rel, ent in m.get("protocol_code", {}).items():
@@ -321,6 +333,13 @@ def verify(m):
 
 def regen(m):
     idx = build_index()
+    # Endpoint JSONs remain sequestered from git even after adjudication under
+    # cloud/hooks/seal_patterns.sh.  Migrate the first local registration into
+    # a release-asset inventory before applying the git-backed drift guard.
+    _ctrl_family = m.get("result_families", {}).get("FIR_CONTROLS_OUTCOME_KNOWN", {})
+    for _rel in list(_ctrl_family):
+        if _rel.endswith(".finaleval.json"):
+            del _ctrl_family[_rel]
     # immutable data must never drift
     drift = []
     for sec in ("splits", "text_caches"):
@@ -361,6 +380,31 @@ def regen(m):
             if cands:
                 files[fn] = sha_norm(cands[0])
 
+    # Canonical-FIR and active-control outcomes were originally sequestered by
+    # gitignore.  Once mechanically adjudicated, register the compact JSON
+    # evidence as immutable git-backed result families.  Per-user arrays and
+    # checkpoints are release assets below because they are binary and large.
+    import glob as _g
+    def add_result_family(name, paths):
+        if name in m["result_families"]:
+            return
+        family = {}
+        for ap in sorted(paths):
+            rel = os.path.relpath(ap, ROOT).replace(os.sep, "/")
+            family[rel] = sha_norm(ap)
+        m["result_families"][name] = family
+
+    add_result_family(
+        "FIR_CANONICAL_BREADTH_OUTCOME_KNOWN",
+        _g.glob(os.path.join(ROOT, "_bestrec_run", "results_*_FIRCANON_*.json"))
+        + [os.path.join(ROOT, "_bestrec_run",
+                        "fir_canonical_breadth_adjudication.json")])
+    _ctrl_jsons = []
+    for pattern in ("results_Musical_Instruments_FIRCTRL_*.json",
+                    "fir_controls_adjudication.json", "fir_controls_status.json"):
+        _ctrl_jsons.extend(_g.glob(os.path.join(ROOT, "_bestrec_run", pattern)))
+    add_result_family("FIR_CONTROLS_OUTCOME_KNOWN", _ctrl_jsons)
+
     # audit 2026-07-24 (E-E freeze): keep protocol_code in lock-step with the
     # governed-completeness gate -- auto-register any tracked governed file
     # (prereg / adjudicator / campaign driver / DESIGN) that is missing, so a
@@ -380,6 +424,10 @@ def regen(m):
             _gap = os.path.join(ROOT, _t.replace("/", os.sep))
             if os.path.exists(_gap):
                 m["protocol_code"][_t] = {"sha256": sha_norm(_gap)}
+    for _t in FIR_CONTROL_PROTOCOL_FILES:
+        _gap = os.path.join(ROOT, _t.replace("/", os.sep))
+        if os.path.exists(_gap) and _t not in m["protocol_code"]:
+            m["protocol_code"][_t] = {"sha256": sha_norm(_gap)}
 
     changed = []
     for rel, ent in m["protocol_code"].items():
@@ -410,7 +458,6 @@ def regen(m):
     }
 
     # tfv2_sidecars (release-asset class; immutable once written -- drift aborts)
-    import glob as _g
     tv = m.get("tfv2_sidecars", {})
     for ap in sorted(_g.glob(os.path.join(ROOT, "_bestrec_run", "results_TFV2_*.users.jsonl.gz"))):
         key = os.path.basename(ap)
@@ -420,6 +467,19 @@ def regen(m):
             return 2
         tv[key] = {"sha256": dig, "bytes": os.path.getsize(ap)}
     m["tfv2_sidecars"] = tv
+    for section, pattern in (
+            ("fir_control_finaleval", "results_Musical_Instruments_FIRCTRL_*.finaleval.json"),
+            ("fir_control_sidecars", "results_Musical_Instruments_FIRCTRL_*.finaleval.users.npz"),
+            ("fir_control_checkpoints", "results_Musical_Instruments_FIRCTRL_*.best.pt")):
+        inventory = m.get(section, {})
+        for ap in sorted(_g.glob(os.path.join(ROOT, "_bestrec_run", pattern))):
+            key = os.path.basename(ap)
+            dig = sha(ap)
+            if key in inventory and inventory[key]["sha256"] != dig:
+                print("DATA DRIFT -- ABORTING: " + section + "/" + key)
+                return 2
+            inventory[key] = {"sha256": dig, "bytes": os.path.getsize(ap)}
+        m[section] = inventory
     # IS/CDs splits join the immutable splits inventory (added 2026-07-20; audit 16:53)
     for cat in ("Industrial_and_Scientific", "CDs_and_Vinyl"):
         for part in ("train", "valid", "test"):
@@ -499,7 +559,8 @@ def regen(m):
         "(protocol_code, submission_docs, result_families, reference_runs) digest "
         "LF-normalized bytes for text files -- platform-independent and equal to "
         "the git-blob and deposit-payload hashes; release-asset sections (splits, "
-        "text_caches, pinned_parity_artifacts) digest raw bytes because their "
+        "text_caches, pinned_parity_artifacts, FIR-control sidecars/checkpoints) "
+        "digest raw bytes because their "
         "uploaded assets are immutable as-is. Data sections (splits, text_caches, result_families) "
         "are the unchanged v0.9-audit-evidence release assets, byte-verified at "
         "every --regen. The manifest cannot hash itself; its own commit is the "

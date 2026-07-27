@@ -8,14 +8,17 @@ illustrated by the Office\_Products V1 campaign: its own floor check VOIDed the
 comparison, and that verdict remains in the record even though a redesigned protocol
 later passed on fresh seeds.
 
-The main empirical result is an identity-initialized, gradient-active, strictly causal
-FIR residual. Matched-initialization contrasts isolate gains over identity on
-Musical\_Instruments (+0.002265, 95\% CI [0.001928, 0.002602]),
+The main empirical result is a family of identity-initialized, gradient-active,
+strictly causal temporal-mixing modules. Learned FIR--identity estimates are positive
+on Musical\_Instruments (+0.002265, 95\% CI [0.001928, 0.002602]),
 Industrial\_and\_Scientific (+0.002110 [0.001820, 0.002399]), and
-CDs\_and\_Vinyl (+0.006150 [0.005849, 0.006450]). The latter two use one frozen
-configuration with no category-specific tuning. These are internal
-filter-versus-identity results, not external comparator or SOTA claims; the
-active-control study remains the next mechanism test.
+CDs\_and\_Vinyl (+0.006150 [0.005849, 0.006450]), but these are outcome-visible
+internal estimates. In the active-control study, every temporally active arm improves
+identity; learned taps beat the redundant fixed-filter parameterizations but are not
+separated from shared or parameter-matched nonlinear causal controls. The evidence
+therefore supports causal temporal mixing in this configuration, not unique necessity
+of learned per-channel FIR coefficients, external-comparator superiority, or
+independent cross-category confirmation.
 
 The secondary result is narrower. Frozen text features improve the repaired
 Musical\_Instruments frequency-tail endpoint (+0.000420 [0.000181, 0.000660]),

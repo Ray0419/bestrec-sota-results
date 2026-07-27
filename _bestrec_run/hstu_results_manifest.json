@@ -24,6 +24,7 @@
   "theirs_on_ours",
   "fir_breadth",
   "fir_canonical_breadth",
+  "fir_controls",
   "office_v3",
   "tfv2"
  ],
@@ -14103,7 +14104,7 @@
    "table_id": "fir_canonical_breadth",
    "row_label": "canonical FIR breadth: Industrial_and_Scientific matched-init (learned - identity)",
    "metric": "paired 8-seed delta NDCG@10 (best-by-val full catalog; Holm family)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260810.json",
@@ -14223,7 +14224,7 @@
      "mode": "count"
     }
    ],
-   "notes": "PREREG_FIR_CANONICAL_BREADTH.md was committed before launch with its mechanical adjudicator. Canonical gradient-active FIR vs delta=0 identity; matched initialization per category/seed; K=16, 20 epochs, one frozen configuration and zero category tuning. Internal contrast only: no SOTA, external-comparator, or distributional-superiority claim. Verdict CANON-BREADTH-POS; both categories PASS under Holm.",
+   "notes": "PREREG_FIR_CANONICAL_BREADTH.md was committed before launch with its mechanical adjudicator. Canonical gradient-active FIR vs delta=0 identity; matched initialization per category/seed; K=16, 20 epochs, one frozen configuration and zero category tuning. The categories were selected after favorable legacy-package outcomes and TEST was evaluated each epoch, so this is outcome-known/test-exposed internal robustness, not independent confirmation. Internal contrast only: no SOTA, external-comparator, or distributional-superiority claim. Ordinary paired-t CIs; Holm-adjusted decisions. Verdict CANON-BREADTH-POS; both categories PASS under Holm. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.002109953205166592,
     "sd": 0.000346274664034667,
@@ -14302,11 +14303,257 @@
    "paper_check_class": "exact"
   },
   {
+   "cell_id": "fircanon.is.hr10",
+   "table_id": "fir_canonical_breadth",
+   "row_label": "canonical FIR breadth supportive: Industrial_and_Scientific learned - identity",
+   "metric": "paired 8-seed delta HR@10 (supportive, ordinary CI)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260810.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260811.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260812.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260813.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260814.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260815.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260816.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260817.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260810.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260811.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260812.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260813.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260814.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260815.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260816.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260817.json",
+    "_bestrec_run/fir_canonical_breadth_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260810,
+    20260811,
+    20260812,
+    20260813,
+    20260814,
+    20260815,
+    20260816,
+    20260817
+   ],
+   "recompute": {
+    "rule": "paired_delta",
+    "params": {
+     "a": [
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260810.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260811.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260812.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260813.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260814.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260815.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260816.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260817.json"
+     ],
+     "b": [
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260810.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260811.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260812.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260813.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260814.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260815.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260816.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260817.json"
+     ],
+     "metric": "HR@10"
+    }
+   },
+   "recompute_rule": "mean/sd over seeds of per-seed paired (a-b) best_test[HR@10]",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.003474,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.002942,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.004006,
+     "mode": "round",
+     "precision": 6
+    }
+   ],
+   "notes": "PREREG_FIR_CANONICAL_BREADTH.md was committed before launch with its mechanical adjudicator. Canonical gradient-active FIR vs delta=0 identity; matched initialization per category/seed; K=16, 20 epochs, one frozen configuration and zero category tuning. The categories were selected after favorable legacy-package outcomes and TEST was evaluated each epoch, so this is outcome-known/test-exposed internal robustness, not independent confirmation. Internal contrast only: no SOTA, external-comparator, or distributional-superiority claim. Ordinary paired-t CIs; Holm-adjusted decisions. Verdict CANON-BREADTH-POS; both categories PASS under Holm. Registered supportive endpoint; no multiplicity-adjusted secondary claim.",
+   "recomputed": {
+    "mean": 0.0034740609983328428,
+    "sd": 0.0006361100690197882,
+    "n": 8,
+    "pos": 8,
+    "t": 15.447213995290129,
+    "ci_lo": 0.0029422596721729883,
+    "ci_hi": 0.004005862324492697
+   },
+   "recomputed_value": 0.0034740609983328428,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.003474,
+     "mode": "round",
+     "recomputed": 0.0034740609983328428,
+     "result": "exact",
+     "rounded": 0.003474
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.002942,
+     "mode": "round",
+     "recomputed": 0.0029422596721729883,
+     "result": "exact",
+     "rounded": 0.002942
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.004006,
+     "mode": "round",
+     "recomputed": 0.004005862324492697,
+     "result": "exact",
+     "rounded": 0.004006
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "fircanon.is.mrr",
+   "table_id": "fir_canonical_breadth",
+   "row_label": "canonical FIR breadth supportive: Industrial_and_Scientific learned - identity",
+   "metric": "paired 8-seed delta MRR (supportive, ordinary CI)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260810.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260811.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260812.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260813.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260814.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260815.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260816.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260817.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260810.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260811.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260812.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260813.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260814.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260815.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260816.json",
+    "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260817.json",
+    "_bestrec_run/fir_canonical_breadth_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260810,
+    20260811,
+    20260812,
+    20260813,
+    20260814,
+    20260815,
+    20260816,
+    20260817
+   ],
+   "recompute": {
+    "rule": "paired_delta",
+    "params": {
+     "a": [
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260810.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260811.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260812.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260813.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260814.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260815.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260816.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260817.json"
+     ],
+     "b": [
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260810.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260811.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260812.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260813.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260814.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260815.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260816.json",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260817.json"
+     ],
+     "metric": "MRR"
+    }
+   },
+   "recompute_rule": "mean/sd over seeds of per-seed paired (a-b) best_test[MRR]",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.001819,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.00157,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.002069,
+     "mode": "round",
+     "precision": 6
+    }
+   ],
+   "notes": "PREREG_FIR_CANONICAL_BREADTH.md was committed before launch with its mechanical adjudicator. Canonical gradient-active FIR vs delta=0 identity; matched initialization per category/seed; K=16, 20 epochs, one frozen configuration and zero category tuning. The categories were selected after favorable legacy-package outcomes and TEST was evaluated each epoch, so this is outcome-known/test-exposed internal robustness, not independent confirmation. Internal contrast only: no SOTA, external-comparator, or distributional-superiority claim. Ordinary paired-t CIs; Holm-adjusted decisions. Verdict CANON-BREADTH-POS; both categories PASS under Holm. Registered supportive endpoint; no multiplicity-adjusted secondary claim.",
+   "recomputed": {
+    "mean": 0.0018193232268310286,
+    "sd": 0.0002986887130428896,
+    "n": 8,
+    "pos": 8,
+    "t": 17.228046922250936,
+    "ci_lo": 0.0015696132136725233,
+    "ci_hi": 0.002069033239989534
+   },
+   "recomputed_value": 0.0018193232268310286,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.001819,
+     "mode": "round",
+     "recomputed": 0.0018193232268310286,
+     "result": "exact",
+     "rounded": 0.001819
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.00157,
+     "mode": "round",
+     "recomputed": 0.0015696132136725233,
+     "result": "exact",
+     "rounded": 0.00157
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.002069,
+     "mode": "round",
+     "recomputed": 0.002069033239989534,
+     "result": "exact",
+     "rounded": 0.002069
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
    "cell_id": "fircanon.cd.paired",
    "table_id": "fir_canonical_breadth",
    "row_label": "canonical FIR breadth: CDs_and_Vinyl matched-init (learned - identity)",
    "metric": "paired 8-seed delta NDCG@10 (best-by-val full catalog; Holm family)",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260810.json",
@@ -14426,7 +14673,7 @@
      "mode": "count"
     }
    ],
-   "notes": "PREREG_FIR_CANONICAL_BREADTH.md was committed before launch with its mechanical adjudicator. Canonical gradient-active FIR vs delta=0 identity; matched initialization per category/seed; K=16, 20 epochs, one frozen configuration and zero category tuning. Internal contrast only: no SOTA, external-comparator, or distributional-superiority claim. Verdict CANON-BREADTH-POS; both categories PASS under Holm.",
+   "notes": "PREREG_FIR_CANONICAL_BREADTH.md was committed before launch with its mechanical adjudicator. Canonical gradient-active FIR vs delta=0 identity; matched initialization per category/seed; K=16, 20 epochs, one frozen configuration and zero category tuning. The categories were selected after favorable legacy-package outcomes and TEST was evaluated each epoch, so this is outcome-known/test-exposed internal robustness, not independent confirmation. Internal contrast only: no SOTA, external-comparator, or distributional-superiority claim. Ordinary paired-t CIs; Holm-adjusted decisions. Verdict CANON-BREADTH-POS; both categories PASS under Holm. [Evidence class set to exploratory under the selection-timing criterion, 2026-07-19: multi-seed post-hoc development/analysis work, not a pre-declared campaign.]",
    "recomputed": {
     "mean": 0.006149939577244724,
     "sd": 0.0003594556957078956,
@@ -14499,6 +14746,2061 @@
      "paper": 1,
      "mode": "count",
      "recomputed": 1.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "fircanon.cd.hr10",
+   "table_id": "fir_canonical_breadth",
+   "row_label": "canonical FIR breadth supportive: CDs_and_Vinyl learned - identity",
+   "metric": "paired 8-seed delta HR@10 (supportive, ordinary CI)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260810.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260811.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260812.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260813.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260814.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260815.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260816.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260817.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260810.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260811.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260812.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260813.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260814.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260815.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260816.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260817.json",
+    "_bestrec_run/fir_canonical_breadth_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260810,
+    20260811,
+    20260812,
+    20260813,
+    20260814,
+    20260815,
+    20260816,
+    20260817
+   ],
+   "recompute": {
+    "rule": "paired_delta",
+    "params": {
+     "a": [
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260810.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260811.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260812.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260813.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260814.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260815.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260816.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260817.json"
+     ],
+     "b": [
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260810.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260811.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260812.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260813.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260814.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260815.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260816.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260817.json"
+     ],
+     "metric": "HR@10"
+    }
+   },
+   "recompute_rule": "mean/sd over seeds of per-seed paired (a-b) best_test[HR@10]",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.010728,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.010295,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.011162,
+     "mode": "round",
+     "precision": 6
+    }
+   ],
+   "notes": "PREREG_FIR_CANONICAL_BREADTH.md was committed before launch with its mechanical adjudicator. Canonical gradient-active FIR vs delta=0 identity; matched initialization per category/seed; K=16, 20 epochs, one frozen configuration and zero category tuning. The categories were selected after favorable legacy-package outcomes and TEST was evaluated each epoch, so this is outcome-known/test-exposed internal robustness, not independent confirmation. Internal contrast only: no SOTA, external-comparator, or distributional-superiority claim. Ordinary paired-t CIs; Holm-adjusted decisions. Verdict CANON-BREADTH-POS; both categories PASS under Holm. Registered supportive endpoint; no multiplicity-adjusted secondary claim.",
+   "recomputed": {
+    "mean": 0.01072847040588976,
+    "sd": 0.0005183546726414792,
+    "n": 8,
+    "pos": 8,
+    "t": 58.54041316618615,
+    "ci_lo": 0.010295115054736969,
+    "ci_hi": 0.01116182575704255
+   },
+   "recomputed_value": 0.01072847040588976,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.010728,
+     "mode": "round",
+     "recomputed": 0.01072847040588976,
+     "result": "exact",
+     "rounded": 0.010728
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.010295,
+     "mode": "round",
+     "recomputed": 0.010295115054736969,
+     "result": "exact",
+     "rounded": 0.010295
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.011162,
+     "mode": "round",
+     "recomputed": 0.01116182575704255,
+     "result": "exact",
+     "rounded": 0.011162
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "fircanon.cd.mrr",
+   "table_id": "fir_canonical_breadth",
+   "row_label": "canonical FIR breadth supportive: CDs_and_Vinyl learned - identity",
+   "metric": "paired 8-seed delta MRR (supportive, ordinary CI)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260810.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260811.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260812.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260813.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260814.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260815.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260816.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260817.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260810.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260811.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260812.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260813.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260814.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260815.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260816.json",
+    "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260817.json",
+    "_bestrec_run/fir_canonical_breadth_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260810,
+    20260811,
+    20260812,
+    20260813,
+    20260814,
+    20260815,
+    20260816,
+    20260817
+   ],
+   "recompute": {
+    "rule": "paired_delta",
+    "params": {
+     "a": [
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260810.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260811.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260812.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260813.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260814.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260815.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260816.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260817.json"
+     ],
+     "b": [
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260810.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260811.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260812.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260813.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260814.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260815.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260816.json",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260817.json"
+     ],
+     "metric": "MRR"
+    }
+   },
+   "recompute_rule": "mean/sd over seeds of per-seed paired (a-b) best_test[MRR]",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.005033,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.00471,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.005356,
+     "mode": "round",
+     "precision": 6
+    }
+   ],
+   "notes": "PREREG_FIR_CANONICAL_BREADTH.md was committed before launch with its mechanical adjudicator. Canonical gradient-active FIR vs delta=0 identity; matched initialization per category/seed; K=16, 20 epochs, one frozen configuration and zero category tuning. The categories were selected after favorable legacy-package outcomes and TEST was evaluated each epoch, so this is outcome-known/test-exposed internal robustness, not independent confirmation. Internal contrast only: no SOTA, external-comparator, or distributional-superiority claim. Ordinary paired-t CIs; Holm-adjusted decisions. Verdict CANON-BREADTH-POS; both categories PASS under Holm. Registered supportive endpoint; no multiplicity-adjusted secondary claim.",
+   "recomputed": {
+    "mean": 0.005033076570190215,
+    "sd": 0.00038667758258731117,
+    "n": 8,
+    "pos": 8,
+    "t": 36.8154010811737,
+    "ci_lo": 0.004709806021222027,
+    "ci_hi": 0.005356347119158404
+   },
+   "recomputed_value": 0.005033076570190215,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.005033,
+     "mode": "round",
+     "recomputed": 0.005033076570190215,
+     "result": "exact",
+     "rounded": 0.005033
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.00471,
+     "mode": "round",
+     "recomputed": 0.004709806021222027,
+     "result": "exact",
+     "rounded": 0.00471
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.005356,
+     "mode": "round",
+     "recomputed": 0.005356347119158404,
+     "result": "exact",
+     "rounded": 0.005356
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "firctrl.a.learned",
+   "table_id": "fir_controls",
+   "row_label": "FIR active control: learned-identity",
+   "metric": "paired 8-seed delta sealed final-test NDCG@10 (Holm family)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.users.npz",
+    "_bestrec_run/fir_controls_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260901,
+    20260902,
+    20260903,
+    20260904,
+    20260905,
+    20260906,
+    20260907,
+    20260908
+   ],
+   "recompute": {
+    "rule": "fir_control_contrast",
+    "params": {
+     "a": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.json"
+     ],
+     "b": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.json"
+     ],
+     "a_arm": "learned",
+     "b_arm": "identity",
+     "family": "family_a",
+     "holm": "holm_a",
+     "contrast": "learned-identity",
+     "adjud": "_bestrec_run/fir_controls_adjudication.json",
+     "seeds": [
+      20260901,
+      20260902,
+      20260903,
+      20260904,
+      20260905,
+      20260906,
+      20260907,
+      20260908
+     ]
+    }
+   },
+   "recompute_rule": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with statistics, frozen verdict, and Holm decision cross-checked against the mechanical active-control adjudication JSON",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.002116,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.00191,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.002322,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "holm_reject",
+     "value": 1,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_FIR_CONTROLS.md was committed before launch with its mechanical first-reader adjudicator. Six matched-initialization arms, K=16, 20 epochs, best-by-validation checkpoint selection, then a sealed one-shot final TEST evaluation. Outcome-known internal active-control study only: no independent-confirmation, external-comparator, SOTA, equivalence, or distributional claim. Frozen verdict CTRL-ACTIVE-CONTROL-SUPPORTED.",
+   "recomputed": {
+    "mean": 0.0021156738685499136,
+    "sd": 0.0002462407645480676,
+    "n": 8,
+    "pos": 8,
+    "t": 24.301538244108094,
+    "ci_lo": 0.0019098114376296365,
+    "ci_hi": 0.0023215362994701907,
+    "paired_p": 5.086464264624954e-08,
+    "holm_p": 2.034585705849979e-07,
+    "holm_reject": 1.0
+   },
+   "recomputed_value": 0.0021156738685499136,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.002116,
+     "mode": "round",
+     "recomputed": 0.0021156738685499136,
+     "result": "exact",
+     "rounded": 0.002116
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.00191,
+     "mode": "round",
+     "recomputed": 0.0019098114376296365,
+     "result": "exact",
+     "rounded": 0.00191
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.002322,
+     "mode": "round",
+     "recomputed": 0.0023215362994701907,
+     "result": "exact",
+     "rounded": 0.002322
+    },
+    {
+     "name": "holm_reject",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "firctrl.a.fixed_ma",
+   "table_id": "fir_controls",
+   "row_label": "FIR active control: fixed_ma-identity",
+   "metric": "paired 8-seed delta sealed final-test NDCG@10 (Holm family)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260908.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.users.npz",
+    "_bestrec_run/fir_controls_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260901,
+    20260902,
+    20260903,
+    20260904,
+    20260905,
+    20260906,
+    20260907,
+    20260908
+   ],
+   "recompute": {
+    "rule": "fir_control_contrast",
+    "params": {
+     "a": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260908.finaleval.json"
+     ],
+     "b": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.json"
+     ],
+     "a_arm": "fixed_ma",
+     "b_arm": "identity",
+     "family": "family_a",
+     "holm": "holm_a",
+     "contrast": "fixed_ma-identity",
+     "adjud": "_bestrec_run/fir_controls_adjudication.json",
+     "seeds": [
+      20260901,
+      20260902,
+      20260903,
+      20260904,
+      20260905,
+      20260906,
+      20260907,
+      20260908
+     ]
+    }
+   },
+   "recompute_rule": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with statistics, frozen verdict, and Holm decision cross-checked against the mechanical active-control adjudication JSON",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.000712,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.000509,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.000915,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "holm_reject",
+     "value": 1,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_FIR_CONTROLS.md was committed before launch with its mechanical first-reader adjudicator. Six matched-initialization arms, K=16, 20 epochs, best-by-validation checkpoint selection, then a sealed one-shot final TEST evaluation. Outcome-known internal active-control study only: no independent-confirmation, external-comparator, SOTA, equivalence, or distributional claim. Frozen verdict CTRL-ACTIVE-CONTROL-SUPPORTED.",
+   "recomputed": {
+    "mean": 0.0007117987376407033,
+    "sd": 0.0002431119632492295,
+    "n": 8,
+    "pos": 8,
+    "t": 8.281249634922863,
+    "ci_lo": 0.000508552050065877,
+    "ci_hi": 0.0009150454252155296,
+    "paired_p": 7.305569959346294e-05,
+    "holm_p": 0.00013038642080935188,
+    "holm_reject": 1.0
+   },
+   "recomputed_value": 0.0007117987376407033,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.000712,
+     "mode": "round",
+     "recomputed": 0.0007117987376407033,
+     "result": "exact",
+     "rounded": 0.000712
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.000509,
+     "mode": "round",
+     "recomputed": 0.000508552050065877,
+     "result": "exact",
+     "rounded": 0.000509
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.000915,
+     "mode": "round",
+     "recomputed": 0.0009150454252155296,
+     "result": "exact",
+     "rounded": 0.000915
+    },
+    {
+     "name": "holm_reject",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "firctrl.a.fixed_hp",
+   "table_id": "fir_controls",
+   "row_label": "FIR active control: fixed_hp-identity",
+   "metric": "paired 8-seed delta sealed final-test NDCG@10 (Holm family)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260908.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.users.npz",
+    "_bestrec_run/fir_controls_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260901,
+    20260902,
+    20260903,
+    20260904,
+    20260905,
+    20260906,
+    20260907,
+    20260908
+   ],
+   "recompute": {
+    "rule": "fir_control_contrast",
+    "params": {
+     "a": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260908.finaleval.json"
+     ],
+     "b": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.json"
+     ],
+     "a_arm": "fixed_hp",
+     "b_arm": "identity",
+     "family": "family_a",
+     "holm": "holm_a",
+     "contrast": "fixed_hp-identity",
+     "adjud": "_bestrec_run/fir_controls_adjudication.json",
+     "seeds": [
+      20260901,
+      20260902,
+      20260903,
+      20260904,
+      20260905,
+      20260906,
+      20260907,
+      20260908
+     ]
+    }
+   },
+   "recompute_rule": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with statistics, frozen verdict, and Holm decision cross-checked against the mechanical active-control adjudication JSON",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.000708,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.00051,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.000907,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "holm_reject",
+     "value": 1,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_FIR_CONTROLS.md was committed before launch with its mechanical first-reader adjudicator. Six matched-initialization arms, K=16, 20 epochs, best-by-validation checkpoint selection, then a sealed one-shot final TEST evaluation. Outcome-known internal active-control study only: no independent-confirmation, external-comparator, SOTA, equivalence, or distributional claim. Frozen verdict CTRL-ACTIVE-CONTROL-SUPPORTED.",
+   "recomputed": {
+    "mean": 0.0007081763986704851,
+    "sd": 0.00023763034381789832,
+    "n": 8,
+    "pos": 8,
+    "t": 8.429164823494247,
+    "ci_lo": 0.0005095124596246636,
+    "ci_hi": 0.0009068403377163066,
+    "paired_p": 6.519321040467533e-05,
+    "holm_p": 0.00013038642080935188,
+    "holm_reject": 1.0
+   },
+   "recomputed_value": 0.0007081763986704851,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.000708,
+     "mode": "round",
+     "recomputed": 0.0007081763986704851,
+     "result": "exact",
+     "rounded": 0.000708
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.00051,
+     "mode": "round",
+     "recomputed": 0.0005095124596246636,
+     "result": "exact",
+     "rounded": 0.00051
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.000907,
+     "mode": "round",
+     "recomputed": 0.0009068403377163066,
+     "result": "exact",
+     "rounded": 0.000907
+    },
+    {
+     "name": "holm_reject",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "firctrl.a.shared",
+   "table_id": "fir_controls",
+   "row_label": "FIR active control: shared-identity",
+   "metric": "paired 8-seed delta sealed final-test NDCG@10 (Holm family)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260908.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.users.npz",
+    "_bestrec_run/fir_controls_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260901,
+    20260902,
+    20260903,
+    20260904,
+    20260905,
+    20260906,
+    20260907,
+    20260908
+   ],
+   "recompute": {
+    "rule": "fir_control_contrast",
+    "params": {
+     "a": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260908.finaleval.json"
+     ],
+     "b": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.json"
+     ],
+     "a_arm": "shared",
+     "b_arm": "identity",
+     "family": "family_a",
+     "holm": "holm_a",
+     "contrast": "shared-identity",
+     "adjud": "_bestrec_run/fir_controls_adjudication.json",
+     "seeds": [
+      20260901,
+      20260902,
+      20260903,
+      20260904,
+      20260905,
+      20260906,
+      20260907,
+      20260908
+     ]
+    }
+   },
+   "recompute_rule": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with statistics, frozen verdict, and Holm decision cross-checked against the mechanical active-control adjudication JSON",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.002197,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.002008,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.002386,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "holm_reject",
+     "value": 1,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_FIR_CONTROLS.md was committed before launch with its mechanical first-reader adjudicator. Six matched-initialization arms, K=16, 20 epochs, best-by-validation checkpoint selection, then a sealed one-shot final TEST evaluation. Outcome-known internal active-control study only: no independent-confirmation, external-comparator, SOTA, equivalence, or distributional claim. Frozen verdict CTRL-ACTIVE-CONTROL-SUPPORTED.",
+   "recomputed": {
+    "mean": 0.0021970912410404263,
+    "sd": 0.00022600925594611624,
+    "n": 8,
+    "pos": 8,
+    "t": 27.49583168922334,
+    "ci_lo": 0.002008142774587512,
+    "ci_hi": 0.0023860397074933408,
+    "paired_p": 2.1599981544189666e-08,
+    "holm_p": 1.0799990772094801e-07,
+    "holm_reject": 1.0
+   },
+   "recomputed_value": 0.0021970912410404263,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.002197,
+     "mode": "round",
+     "recomputed": 0.0021970912410404263,
+     "result": "exact",
+     "rounded": 0.002197
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.002008,
+     "mode": "round",
+     "recomputed": 0.002008142774587512,
+     "result": "exact",
+     "rounded": 0.002008
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.002386,
+     "mode": "round",
+     "recomputed": 0.0023860397074933408,
+     "result": "exact",
+     "rounded": 0.002386
+    },
+    {
+     "name": "holm_reject",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "firctrl.a.nonlinear",
+   "table_id": "fir_controls",
+   "row_label": "FIR active control: nonlinear-identity",
+   "metric": "paired 8-seed delta sealed final-test NDCG@10 (Holm family)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260908.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.users.npz",
+    "_bestrec_run/fir_controls_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260901,
+    20260902,
+    20260903,
+    20260904,
+    20260905,
+    20260906,
+    20260907,
+    20260908
+   ],
+   "recompute": {
+    "rule": "fir_control_contrast",
+    "params": {
+     "a": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260908.finaleval.json"
+     ],
+     "b": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.json"
+     ],
+     "a_arm": "nonlinear",
+     "b_arm": "identity",
+     "family": "family_a",
+     "holm": "holm_a",
+     "contrast": "nonlinear-identity",
+     "adjud": "_bestrec_run/fir_controls_adjudication.json",
+     "seeds": [
+      20260901,
+      20260902,
+      20260903,
+      20260904,
+      20260905,
+      20260906,
+      20260907,
+      20260908
+     ]
+    }
+   },
+   "recompute_rule": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with statistics, frozen verdict, and Holm decision cross-checked against the mechanical active-control adjudication JSON",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.001912,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.001657,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.002166,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "holm_reject",
+     "value": 1,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_FIR_CONTROLS.md was committed before launch with its mechanical first-reader adjudicator. Six matched-initialization arms, K=16, 20 epochs, best-by-validation checkpoint selection, then a sealed one-shot final TEST evaluation. Outcome-known internal active-control study only: no independent-confirmation, external-comparator, SOTA, equivalence, or distributional claim. Frozen verdict CTRL-ACTIVE-CONTROL-SUPPORTED.",
+   "recomputed": {
+    "mean": 0.0019117835320394683,
+    "sd": 0.0003045363949890419,
+    "n": 8,
+    "pos": 8,
+    "t": 17.75597428628549,
+    "ci_lo": 0.0016571847344309435,
+    "ci_hi": 0.002166382329647993,
+    "paired_p": 4.4328812190802314e-07,
+    "holm_p": 1.3298643657240747e-06,
+    "holm_reject": 1.0
+   },
+   "recomputed_value": 0.0019117835320394683,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.001912,
+     "mode": "round",
+     "recomputed": 0.0019117835320394683,
+     "result": "exact",
+     "rounded": 0.001912
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.001657,
+     "mode": "round",
+     "recomputed": 0.0016571847344309435,
+     "result": "exact",
+     "rounded": 0.001657
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.002166,
+     "mode": "round",
+     "recomputed": 0.002166382329647993,
+     "result": "exact",
+     "rounded": 0.002166
+    },
+    {
+     "name": "holm_reject",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "firctrl.b.fixed_ma",
+   "table_id": "fir_controls",
+   "row_label": "FIR active control: learned-fixed_ma",
+   "metric": "paired 8-seed delta sealed final-test NDCG@10 (Holm family)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260908.finaleval.users.npz",
+    "_bestrec_run/fir_controls_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260901,
+    20260902,
+    20260903,
+    20260904,
+    20260905,
+    20260906,
+    20260907,
+    20260908
+   ],
+   "recompute": {
+    "rule": "fir_control_contrast",
+    "params": {
+     "a": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.json"
+     ],
+     "b": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260908.finaleval.json"
+     ],
+     "a_arm": "learned",
+     "b_arm": "fixed_ma",
+     "family": "family_b",
+     "holm": "holm_b",
+     "contrast": "learned-fixed_ma",
+     "adjud": "_bestrec_run/fir_controls_adjudication.json",
+     "seeds": [
+      20260901,
+      20260902,
+      20260903,
+      20260904,
+      20260905,
+      20260906,
+      20260907,
+      20260908
+     ]
+    }
+   },
+   "recompute_rule": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with statistics, frozen verdict, and Holm decision cross-checked against the mechanical active-control adjudication JSON",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.001404,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.001085,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.001723,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "holm_reject",
+     "value": 1,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_FIR_CONTROLS.md was committed before launch with its mechanical first-reader adjudicator. Six matched-initialization arms, K=16, 20 epochs, best-by-validation checkpoint selection, then a sealed one-shot final TEST evaluation. Outcome-known internal active-control study only: no independent-confirmation, external-comparator, SOTA, equivalence, or distributional claim. Frozen verdict CTRL-ACTIVE-CONTROL-SUPPORTED.",
+   "recomputed": {
+    "mean": 0.0014038751309092103,
+    "sd": 0.00038167182740933775,
+    "n": 8,
+    "pos": 8,
+    "t": 10.403593387996215,
+    "ci_lo": 0.0010847894979983644,
+    "ci_hi": 0.0017229607638200562,
+    "paired_p": 1.6472645902355517e-05,
+    "holm_p": 6.372782946962671e-05,
+    "holm_reject": 1.0
+   },
+   "recomputed_value": 0.0014038751309092103,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.001404,
+     "mode": "round",
+     "recomputed": 0.0014038751309092103,
+     "result": "exact",
+     "rounded": 0.001404
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.001085,
+     "mode": "round",
+     "recomputed": 0.0010847894979983644,
+     "result": "exact",
+     "rounded": 0.001085
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.001723,
+     "mode": "round",
+     "recomputed": 0.0017229607638200562,
+     "result": "exact",
+     "rounded": 0.001723
+    },
+    {
+     "name": "holm_reject",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "firctrl.b.fixed_hp",
+   "table_id": "fir_controls",
+   "row_label": "FIR active control: learned-fixed_hp",
+   "metric": "paired 8-seed delta sealed final-test NDCG@10 (Holm family)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260908.finaleval.users.npz",
+    "_bestrec_run/fir_controls_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260901,
+    20260902,
+    20260903,
+    20260904,
+    20260905,
+    20260906,
+    20260907,
+    20260908
+   ],
+   "recompute": {
+    "rule": "fir_control_contrast",
+    "params": {
+     "a": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.json"
+     ],
+     "b": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260908.finaleval.json"
+     ],
+     "a_arm": "learned",
+     "b_arm": "fixed_hp",
+     "family": "family_b",
+     "holm": "holm_b",
+     "contrast": "learned-fixed_hp",
+     "adjud": "_bestrec_run/fir_controls_adjudication.json",
+     "seeds": [
+      20260901,
+      20260902,
+      20260903,
+      20260904,
+      20260905,
+      20260906,
+      20260907,
+      20260908
+     ]
+    }
+   },
+   "recompute_rule": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with statistics, frozen verdict, and Holm decision cross-checked against the mechanical active-control adjudication JSON",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.001407,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.001089,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.001726,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "holm_reject",
+     "value": 1,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_FIR_CONTROLS.md was committed before launch with its mechanical first-reader adjudicator. Six matched-initialization arms, K=16, 20 epochs, best-by-validation checkpoint selection, then a sealed one-shot final TEST evaluation. Outcome-known internal active-control study only: no independent-confirmation, external-comparator, SOTA, equivalence, or distributional claim. Frozen verdict CTRL-ACTIVE-CONTROL-SUPPORTED.",
+   "recomputed": {
+    "mean": 0.0014074974698794285,
+    "sd": 0.00038073332164963343,
+    "n": 8,
+    "pos": 8,
+    "t": 10.456148163154719,
+    "ci_lo": 0.0010891964474187654,
+    "ci_hi": 0.0017257984923400916,
+    "paired_p": 1.5931957367406675e-05,
+    "holm_p": 6.372782946962671e-05,
+    "holm_reject": 1.0
+   },
+   "recomputed_value": 0.0014074974698794285,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.001407,
+     "mode": "round",
+     "recomputed": 0.0014074974698794285,
+     "result": "exact",
+     "rounded": 0.001407
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.001089,
+     "mode": "round",
+     "recomputed": 0.0010891964474187654,
+     "result": "exact",
+     "rounded": 0.001089
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.001726,
+     "mode": "round",
+     "recomputed": 0.0017257984923400916,
+     "result": "exact",
+     "rounded": 0.001726
+    },
+    {
+     "name": "holm_reject",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "firctrl.b.shared",
+   "table_id": "fir_controls",
+   "row_label": "FIR active control: learned-shared",
+   "metric": "paired 8-seed delta sealed final-test NDCG@10 (Holm family)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260908.finaleval.users.npz",
+    "_bestrec_run/fir_controls_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260901,
+    20260902,
+    20260903,
+    20260904,
+    20260905,
+    20260906,
+    20260907,
+    20260908
+   ],
+   "recompute": {
+    "rule": "fir_control_contrast",
+    "params": {
+     "a": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.json"
+     ],
+     "b": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260908.finaleval.json"
+     ],
+     "a_arm": "learned",
+     "b_arm": "shared",
+     "family": "family_b",
+     "holm": "holm_b",
+     "contrast": "learned-shared",
+     "adjud": "_bestrec_run/fir_controls_adjudication.json",
+     "seeds": [
+      20260901,
+      20260902,
+      20260903,
+      20260904,
+      20260905,
+      20260906,
+      20260907,
+      20260908
+     ]
+    }
+   },
+   "recompute_rule": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with statistics, frozen verdict, and Holm decision cross-checked against the mechanical active-control adjudication JSON",
+   "paper": [
+    {
+     "name": "mean",
+     "value": -8.1e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": -0.000337,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.000175,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "holm_reject",
+     "value": 0,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_FIR_CONTROLS.md was committed before launch with its mechanical first-reader adjudicator. Six matched-initialization arms, K=16, 20 epochs, best-by-validation checkpoint selection, then a sealed one-shot final TEST evaluation. Outcome-known internal active-control study only: no independent-confirmation, external-comparator, SOTA, equivalence, or distributional claim. Frozen verdict CTRL-ACTIVE-CONTROL-SUPPORTED.",
+   "recomputed": {
+    "mean": -8.141737249051269e-05,
+    "sd": 0.0003062869879178309,
+    "n": 8,
+    "pos": 4,
+    "t": -0.7518540253479835,
+    "ci_lo": -0.00033747970241276214,
+    "ci_hi": 0.00017464495743173676,
+    "paired_p": 0.47665276265329115,
+    "holm_p": 0.47665276265329104,
+    "holm_reject": 0.0
+   },
+   "recomputed_value": -8.141737249051269e-05,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": -8.1e-05,
+     "mode": "round",
+     "recomputed": -8.141737249051269e-05,
+     "result": "exact",
+     "rounded": -8.1e-05
+    },
+    {
+     "name": "ci_lo",
+     "paper": -0.000337,
+     "mode": "round",
+     "recomputed": -0.00033747970241276214,
+     "result": "exact",
+     "rounded": -0.000337
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.000175,
+     "mode": "round",
+     "recomputed": 0.00017464495743173676,
+     "result": "exact",
+     "rounded": 0.000175
+    },
+    {
+     "name": "holm_reject",
+     "paper": 0,
+     "mode": "count",
+     "recomputed": 0.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "firctrl.b.nonlinear",
+   "table_id": "fir_controls",
+   "row_label": "FIR active control: learned-nonlinear",
+   "metric": "paired 8-seed delta sealed final-test NDCG@10 (Holm family)",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260901.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260902.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260903.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260904.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260905.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260906.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260907.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260908.finaleval.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260901.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260902.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260903.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260904.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260905.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260906.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260907.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260908.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260901.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260902.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260903.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260904.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260905.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260906.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260907.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260908.finaleval.started.json",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260901.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260902.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260903.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260904.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260905.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260906.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260907.finaleval.users.npz",
+    "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260908.finaleval.users.npz",
+    "_bestrec_run/fir_controls_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260901,
+    20260902,
+    20260903,
+    20260904,
+    20260905,
+    20260906,
+    20260907,
+    20260908
+   ],
+   "recompute": {
+    "rule": "fir_control_contrast",
+    "params": {
+     "a": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.json"
+     ],
+     "b": [
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260901.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260902.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260903.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260904.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260905.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260906.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260907.finaleval.json",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260908.finaleval.json"
+     ],
+     "a_arm": "learned",
+     "b_arm": "nonlinear",
+     "family": "family_b",
+     "holm": "holm_b",
+     "contrast": "learned-nonlinear",
+     "adjud": "_bestrec_run/fir_controls_adjudication.json",
+     "seeds": [
+      20260901,
+      20260902,
+      20260903,
+      20260904,
+      20260905,
+      20260906,
+      20260907,
+      20260908
+     ]
+    }
+   },
+   "recompute_rule": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with statistics, frozen verdict, and Holm decision cross-checked against the mechanical active-control adjudication JSON",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.000204,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": -3.8e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.000446,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "holm_reject",
+     "value": 0,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_FIR_CONTROLS.md was committed before launch with its mechanical first-reader adjudicator. Six matched-initialization arms, K=16, 20 epochs, best-by-validation checkpoint selection, then a sealed one-shot final TEST evaluation. Outcome-known internal active-control study only: no independent-confirmation, external-comparator, SOTA, equivalence, or distributional claim. Frozen verdict CTRL-ACTIVE-CONTROL-SUPPORTED.",
+   "recomputed": {
+    "mean": 0.00020389033651044535,
+    "sd": 0.00028968591975230543,
+    "n": 8,
+    "pos": 5,
+    "t": 1.9907386549987216,
+    "ci_lo": -3.829315310402404e-05,
+    "ci_hi": 0.00044607382612491474,
+    "paired_p": 0.08679667373302875,
+    "holm_p": 0.17359334746608993,
+    "holm_reject": 0.0
+   },
+   "recomputed_value": 0.00020389033651044535,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.000204,
+     "mode": "round",
+     "recomputed": 0.00020389033651044535,
+     "result": "exact",
+     "rounded": 0.000204
+    },
+    {
+     "name": "ci_lo",
+     "paper": -3.8e-05,
+     "mode": "round",
+     "recomputed": -3.829315310402404e-05,
+     "result": "exact",
+     "rounded": -3.8e-05
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.000446,
+     "mode": "round",
+     "recomputed": 0.00044607382612491474,
+     "result": "exact",
+     "rounded": 0.000446
+    },
+    {
+     "name": "holm_reject",
+     "paper": 0,
+     "mode": "count",
+     "recomputed": 0.0,
      "result": "exact"
     }
    ],

@@ -281,6 +281,71 @@ def rule_paired_delta_adjudicated(p):
     out["passed"] = 1.0
     return out
 
+def rule_fir_control_contrast(p):
+    """Recompute one sealed FIR active-control contrast and bind it to adjudication.
+
+    Unlike the ordinary training JSONs, this campaign kept TEST sealed until a
+    one-shot final evaluation.  The endpoint therefore lives under ``test`` in
+    the ``*.finaleval.json`` records rather than under ``best_test``.
+    """
+    def endpoint(rel, expected_arm, expected_seed):
+        rec = load(rel)
+        if (rec.get("protocol") != "PREREG_FIR_CONTROLS"
+                or rec.get("category") != "Musical_Instruments"
+                or rec.get("arm") != expected_arm
+                or int(rec.get("seed", -1)) != int(expected_seed)):
+            raise ValueError(f"FIR-control final-evaluation binding drift in {rel}")
+        selected = int(rec.get("selected_epoch", -1))
+        if not (1 <= selected <= 20):
+            raise ValueError(f"FIR-control selected-epoch out of range in {rel}")
+        train_rel = rel.replace(".finaleval.json", ".json")
+        train = load(train_rel)
+        history = train.get("history", [])
+        selected_rows = [row for row in history if int(row.get("epoch", -1)) == selected]
+        selected_val = float(rec.get("selected_val_NDCG10"))
+        max_val = max(float(row["val"]["NDCG@10"]) for row in history)
+        if (train.get("best_test") is not None or len(selected_rows) != 1
+                or abs(float(selected_rows[0]["val"]["NDCG@10"]) - selected_val) > 1e-12
+                or abs(float(train.get("best_val_NDCG10")) - selected_val) > 1e-12
+                or abs(max_val - selected_val) > 1e-12):
+            raise ValueError(f"FIR-control validation selection binding drift in {rel}")
+        value = rec.get("test", {}).get("NDCG@10")
+        if value is None or not math.isfinite(float(value)):
+            raise ValueError(f"FIR-control endpoint missing/nonfinite in {rel}")
+        return float(value)
+
+    seeds = [int(s) for s in p["seeds"]]
+    av = [endpoint(f, p["a_arm"], s) for f, s in zip(p["a"], seeds)]
+    bv = [endpoint(f, p["b_arm"], s) for f, s in zip(p["b"], seeds)]
+    out = paired_stats([a - b for a, b in zip(av, bv)])
+
+    adjud = load(p["adjud"])
+    if (adjud.get("protocol") != "PREREG_FIR_CONTROLS"
+            or adjud.get("verdict") != "CTRL-ACTIVE-CONTROL-SUPPORTED"
+            or adjud.get("category") != "Musical_Instruments"
+            or int(adjud.get("kernel", -1)) != 16
+            or [int(s) for s in adjud.get("seeds", [])] != seeds):
+        raise ValueError("FIR-control frozen adjudication metadata drift")
+    family = adjud[p["family"]]
+    holm = adjud[p["holm"]]
+    recorded = family[p["contrast"]]
+    decision = holm[p["contrast"]]
+    expected = {
+        "mean": float(recorded["mean"]), "sd": float(recorded["sd"]),
+        "t": float(recorded["t"]), "ci_lo": float(recorded["ci95"][0]),
+        "ci_hi": float(recorded["ci95"][1]),
+    }
+    for name, value in expected.items():
+        if abs(float(out[name]) - value) > 1e-12:
+            raise ValueError(f"FIR-control adjudicated {name} drift for "
+                             f"{p['contrast']}: {out[name]} != {value}")
+    out["paired_p"] = t_two_sided_p(out["t"], out["n"] - 1)
+    if abs(out["paired_p"] - float(recorded["p"])) > 1e-12:
+        raise ValueError(f"FIR-control paired-p drift for {p['contrast']}")
+    out["holm_p"] = float(decision["p_holm"])
+    out["holm_reject"] = 1.0 if decision["reject"] else 0.0
+    return out
+
 def rule_pct_of_paired(p):
     """mean paired (a-b) delta as a percent of mean(b)."""
     m = p.get("metric", "NDCG@10")
@@ -720,7 +785,7 @@ PUB_SASREC_OFF = 0.0153     # Liu 2025, published Office_Products SASRec (extern
 REQUIRED_FAMILIES = ["table1", "table1a", "table1b", "table1c", "table1d", "table1e",
                      "table541", "table542", "tableV2conf", "table2",
                      "office_confirmation", "theirs_on_ours", "fir_breadth",
-                     "fir_canonical_breadth", "office_v3", "tfv2"]
+                     "fir_canonical_breadth", "fir_controls", "office_v3", "tfv2"]
 
 OFFICE_VOID_NOTE = ("VOID under prereg floor check (+44% floor inflation); "
                     "provisional, not counted as a pass")
@@ -735,6 +800,7 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "delta_means": "mean(a) - mean(b) of best_test[{m}]",
         "paired_delta": "mean/sd over seeds of per-seed paired (a-b) best_test[{m}]",
         "paired_delta_adjudicated": "matched-init paired (a-b) best_test[{m}], with frozen configuration, initialization hashes, statistics, verdict, and Holm decision cross-checked against the mechanical adjudication JSON",
+        "fir_control_contrast": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with statistics, frozen verdict, and Holm decision cross-checked against the mechanical active-control adjudication JSON",
         "pct_of_paired": "100 * mean per-seed (a-b) / mean(b), best_test[{m}]",
         "pct_change": "100 * (mean(a)/denom - 1), best_test[{m}]",
         "share_of_lift": "100 * (mean(x)-mean(base)) / (mean(top)-mean(base))",
@@ -1801,9 +1867,12 @@ def build_spec():
     FIRCAN_NOTE = ("PREREG_FIR_CANONICAL_BREADTH.md was committed before launch with its "
                    "mechanical adjudicator. Canonical gradient-active FIR vs delta=0 identity; "
                    "matched initialization per category/seed; K=16, 20 epochs, one frozen "
-                   "configuration and zero category tuning. Internal contrast only: no SOTA, "
-                   "external-comparator, or distributional-superiority claim. Verdict "
-                   "CANON-BREADTH-POS; both categories PASS under Holm.")
+                   "configuration and zero category tuning. The categories were selected after "
+                   "favorable legacy-package outcomes and TEST was evaluated each epoch, so this "
+                   "is outcome-known/test-exposed internal robustness, not independent "
+                   "confirmation. Internal contrast only: no SOTA, external-comparator, or "
+                   "distributional-superiority claim. Ordinary paired-t CIs; Holm-adjusted "
+                   "decisions. Verdict CANON-BREADTH-POS; both categories PASS under Holm.")
     for cat, short, mu, lo, hi, tv, pv in (
             ("Industrial_and_Scientific", "is", 0.002110, 0.001820, 0.002399,
              17.2344, 5.438952e-7),
@@ -1824,6 +1893,84 @@ def build_spec():
                        chk("holm_significant", 1, mode="count"),
                        chk("passed", 1, mode="count")],
                       8, conf, seeds=FIRCAN_SEEDS, notes=FIRCAN_NOTE))
+        for metric_name, metric_key, sec_mu, sec_lo, sec_hi in (
+                ("HR@10", "HR@10",
+                 0.003474 if short == "is" else 0.010728,
+                 0.002942 if short == "is" else 0.010295,
+                 0.004006 if short == "is" else 0.011162),
+                ("MRR", "MRR",
+                 0.001819 if short == "is" else 0.005033,
+                 0.001570 if short == "is" else 0.004710,
+                 0.002069 if short == "is" else 0.005356)):
+            C.append(cell(f"fircanon.{short}.{metric_name.lower().replace('@', '').replace('10', '10')}",
+                          "fir_canonical_breadth",
+                          f"canonical FIR breadth supportive: {cat} learned - identity",
+                          f"paired 8-seed delta {metric_name} (supportive, ordinary CI)",
+                          A1 + A0 + [FIRCAN_ADJ], "paired_delta",
+                          {"a": A1, "b": A0, "metric": metric_key},
+                          [chk("mean", sec_mu, 6), chk("ci_lo", sec_lo, 6),
+                           chk("ci_hi", sec_hi, 6)],
+                          8, "exploratory", seeds=FIRCAN_SEEDS,
+                          notes=FIRCAN_NOTE + " Registered supportive endpoint; no "
+                                "multiplicity-adjusted secondary claim."))
+
+    # ------- fir_controls: pre-declared, outcome-known internal mechanism study -------
+    # The campaign was frozen only after the canonical MI identity contrast was known.
+    # It is therefore an active-control mechanism study, not independent confirmation.
+    FIRCTRL_SEEDS = list(range(20260901, 20260909))
+    FIRCTRL_ADJ = BR + "fir_controls_adjudication.json"
+    FIRCTRL_NOTE = ("PREREG_FIR_CONTROLS.md was committed before launch with its "
+                    "mechanical first-reader adjudicator. Six matched-initialization "
+                    "arms, K=16, 20 epochs, best-by-validation checkpoint selection, "
+                    "then a sealed one-shot final TEST evaluation. Outcome-known "
+                    "internal active-control study only: no independent-confirmation, "
+                    "external-comparator, SOTA, equivalence, or distributional claim. "
+                    "Frozen verdict CTRL-ACTIVE-CONTROL-SUPPORTED.")
+    def ctrl_files(arm, suffix):
+        return [BR + f"results_Musical_Instruments_FIRCTRL_{arm}_seed{s}{suffix}"
+                for s in FIRCTRL_SEEDS]
+    ctrl_specs = (
+        ("a.learned", "learned", "identity", "family_a", "holm_a",
+         "learned-identity", 0.002116, 0.001910, 0.002322, 1),
+        ("a.fixed_ma", "fixed_ma", "identity", "family_a", "holm_a",
+         "fixed_ma-identity", 0.000712, 0.000509, 0.000915, 1),
+        ("a.fixed_hp", "fixed_hp", "identity", "family_a", "holm_a",
+         "fixed_hp-identity", 0.000708, 0.000510, 0.000907, 1),
+        ("a.shared", "shared", "identity", "family_a", "holm_a",
+         "shared-identity", 0.002197, 0.002008, 0.002386, 1),
+        ("a.nonlinear", "nonlinear", "identity", "family_a", "holm_a",
+         "nonlinear-identity", 0.001912, 0.001657, 0.002166, 1),
+        ("b.fixed_ma", "learned", "fixed_ma", "family_b", "holm_b",
+         "learned-fixed_ma", 0.001404, 0.001085, 0.001723, 1),
+        ("b.fixed_hp", "learned", "fixed_hp", "family_b", "holm_b",
+         "learned-fixed_hp", 0.001407, 0.001089, 0.001726, 1),
+        ("b.shared", "learned", "shared", "family_b", "holm_b",
+         "learned-shared", -0.000081, -0.000337, 0.000175, 0),
+        ("b.nonlinear", "learned", "nonlinear", "family_b", "holm_b",
+         "learned-nonlinear", 0.000204, -0.000038, 0.000446, 0),
+    )
+    for short, a_arm, b_arm, family, holm_family, contrast, mu, lo, hi, reject in ctrl_specs:
+        af = ctrl_files(a_arm, ".finaleval.json")
+        bf = ctrl_files(b_arm, ".finaleval.json")
+        source = af + bf
+        for arm in (a_arm, b_arm):
+            source += ctrl_files(arm, ".json")
+            source += ctrl_files(arm, ".finaleval.started.json")
+            source += ctrl_files(arm, ".finaleval.users.npz")
+        source.append(FIRCTRL_ADJ)
+        C.append(cell(f"firctrl.{short}", "fir_controls",
+                      f"FIR active control: {contrast}",
+                      "paired 8-seed delta sealed final-test NDCG@10 (Holm family)",
+                      source, "fir_control_contrast",
+                      {"a": af, "b": bf, "a_arm": a_arm, "b_arm": b_arm,
+                       "family": family, "holm": holm_family,
+                       "contrast": contrast, "adjud": FIRCTRL_ADJ,
+                       "seeds": FIRCTRL_SEEDS},
+                      [chk("mean", mu, 6), chk("ci_lo", lo, 6),
+                       chk("ci_hi", hi, 6),
+                       chk("holm_reject", reject, mode="count")],
+                      8, "exploratory", seeds=FIRCTRL_SEEDS,
+                      notes=FIRCTRL_NOTE))
 
     # ------- tfv2: pre-declared repaired-estimand campaign (PREREG_TAIL_FIR_V2) -------
     # Externally timestamped (OpenTimestamps); independent 8-vs-8 arms; adjudicated
@@ -1874,7 +2021,7 @@ def build_spec():
     # firb.* removed 2026-07-20 (audit 00:01): the frozen breadth rule is a paired t whose
     # pairing premise is false; its cells stay as frozen-rule records but are NOT
     # confirmatory. Welch companions are post-hoc (exploratory).
-    PREDECLARED_PREFIXES = ("v2conf.", "officev3.", "t2.conngate.", "tfv2.", "fircanon.")
+    PREDECLARED_PREFIXES = ("v2conf.", "officev3.", "t2.conngate.", "tfv2.")
     for c0 in C:
         if c0.get("evidence_class") == "confirmatory" and \
                 (not c0["cell_id"].startswith(PREDECLARED_PREFIXES)

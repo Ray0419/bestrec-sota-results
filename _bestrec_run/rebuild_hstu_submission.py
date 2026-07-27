@@ -86,6 +86,14 @@ def main():
                           ["VERDICT: CANON-BREADTH-POS",
                            "Industrial_and_Scientific: Holm",
                            "CDs_and_Vinyl: Holm"])
+        ok &= run_verdict("FIR active-control adjudication (pre-declared but "
+                          "outcome-known internal mechanism study; frozen active-control "
+                          "verdict required)",
+                          ["_bestrec_run/adjudicate_fir_controls.py"],
+                          ["VERDICT: CTRL-ACTIVE-CONTROL-SUPPORTED",
+                           "supported active controls: ['fixed_ma', 'fixed_hp', "
+                           "'shared', 'nonlinear']",
+                           "A retained contrast is not evidence of equivalence."])
         ok &= run_verdict("E-F HYBRID_V1 fresh-seed adjudication (pre-declared; "
                           "W-H-POS x3 required)",
                           ["_bestrec_run/adjudicate_hybrid_v1.py"],

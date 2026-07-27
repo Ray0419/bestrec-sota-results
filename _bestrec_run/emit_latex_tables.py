@@ -35,6 +35,7 @@ OUTDIR = os.path.join(ROOT, "paper_tex", "tables")
 PANDOC_CANDIDATES = [
     r"C:\Users\rayxc\AppData\Local\Pandoc\pandoc.exe",
     r"C:\Users\rayxc\AppData\Local\Pandoc\pandoc",
+    "/mnt/c/Users/rayxc/AppData/Local/Pandoc/pandoc.exe",
     "pandoc",
 ]
 

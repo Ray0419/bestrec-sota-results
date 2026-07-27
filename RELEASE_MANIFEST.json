@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "043a120c122275a8f8fcfc9f1f40a601a81d3403",
+  "git_commit": "7a9bae216dd0622584518cbd5700ec33234dc6e4",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -344,6 +344,21 @@
     },
     "_bestrec_run/verify_digital_music_feasibility.py": {
       "sha256": "a1964d2d418f363cc1f4421d7d54bb8f732685c126c5f660e1256b3e3bb48cfd"
+    },
+    "PREREG_FIR_PROSPECTIVE_SW_V2_PREPARATION.md": {
+      "sha256": "2bfdbc30f758e116229c7c863f3e37db82ac4b10325de2bdaa45466cf8d8c8a6"
+    },
+    "_bestrec_run/acquire_software_prospective.py": {
+      "sha256": "c57d59e1da2e31f3423517b2a59f96d2d05d3c2ac7da14b471db39d4cc310685"
+    },
+    "_bestrec_run/prepare_software_official_5core.py": {
+      "sha256": "d9155364d4fe90b6bdb0f2a2183ffa44737cedd1a8d0c2a614281c0dab9fa5af"
+    },
+    "_bestrec_run/verify_software_feasibility.py": {
+      "sha256": "45c9b72fddc6dd9fe97e73d6ea74c4bea2910c86ec6794946d86e923f78c0670"
+    },
+    "_bestrec_run/encode_software_titles_frozen.py": {
+      "sha256": "9b2f4444d5160361c4745796b45f8c35cf0da111c3fb041451d10d5c7c6723ca"
     }
   },
   "result_families": {
@@ -886,8 +901,8 @@
       "bytes": 7206
     },
     "_bestrec_run/update_release_manifest.py": {
-      "sha256": "bc42708793341a2f45c356092980475f1e6c20bc38fa125339750a531de319fc",
-      "bytes": 37433
+      "sha256": "1b3d5957e449cd294d5e70c204284c65c6d6666c7c8cb2fc936de2753c454091",
+      "bytes": 37695
     },
     "paper_tex/PAPER_TORS.pdf": {
       "sha256": "ffbde03113c00c786dd63101981d085f5a74abb5348c7b6ff8ea406afeac4035",
@@ -1007,7 +1022,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.2.0-deposit",
-  "hash_parent_commit": "043a120c122275a8f8fcfc9f1f40a601a81d3403",
+  "hash_parent_commit": "7a9bae216dd0622584518cbd5700ec33234dc6e4",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",

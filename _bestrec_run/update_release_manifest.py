@@ -116,6 +116,11 @@ FIR_PROSPECTIVE_STAGE_A_PROTOCOL_FILES = [
     "_bestrec_run/acquire_digital_music_prospective.py",
     "_bestrec_run/preprocess_5core_standard.py",
     "_bestrec_run/verify_digital_music_feasibility.py",
+    "PREREG_FIR_PROSPECTIVE_SW_V2_PREPARATION.md",
+    "_bestrec_run/acquire_software_prospective.py",
+    "_bestrec_run/prepare_software_official_5core.py",
+    "_bestrec_run/verify_software_feasibility.py",
+    "_bestrec_run/encode_software_titles_frozen.py",
 ]
 
 

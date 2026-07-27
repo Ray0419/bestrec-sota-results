@@ -19,6 +19,18 @@ IDENTITY = "identity"
 LEARNED = "learned"
 CONTROLS = ("fixed_ma", "fixed_hp", "shared", "nonlinear")
 ACTIVE = (LEARNED,) + CONTROLS
+FROZEN_SOURCE_HASHES = {
+    # Stage-2 records captured raw Windows worktree bytes.  The trainer had
+    # CRLF endings; Git stores/checks out the canonical LF blob elsewhere.
+    "trainer": {
+        "recorded_raw": "7bdde0bf615c3e29fada251ba4ec8141032e8e9cc747e0daf8a812711e5d51f4",
+        "canonical_lf": "5620d4e2c2a38bd5a4db7f1b8f01bbbf9ccf9071d19dced7f4be94444261d854",
+    },
+    "evaluator": {
+        "recorded_raw": "36598d47764ce14c79845079f3d7f5af618937460fb001a673ef4136b65d9d02",
+        "canonical_lf": "36598d47764ce14c79845079f3d7f5af618937460fb001a673ef4136b65d9d02",
+    },
+}
 
 
 def sha256(path):
@@ -27,6 +39,12 @@ def sha256(path):
         for block in iter(lambda: f.read(1024 * 1024), b""):
             h.update(block)
     return h.hexdigest()
+
+
+def sha256_lf(path):
+    """Hash the canonical Git representation of a text source file."""
+    data = Path(path).read_bytes().replace(b"\r\n", b"\n")
+    return hashlib.sha256(data).hexdigest()
 
 
 def die(message):
@@ -79,8 +97,12 @@ def main():
     normalized = None
     test_split_hash = None
     missing = []
-    evaluator_hash = sha256(HERE / "eval_fir_controls.py")
-    trainer_hash = sha256(HERE / "run_sasrec_sbert.py")
+    evaluator_hash = sha256_lf(HERE / "eval_fir_controls.py")
+    trainer_hash = sha256_lf(HERE / "run_sasrec_sbert.py")
+    if evaluator_hash != FROZEN_SOURCE_HASHES["evaluator"]["canonical_lf"]:
+        die("canonical evaluator source digest mismatch")
+    if trainer_hash != FROZEN_SOURCE_HASHES["trainer"]["canonical_lf"]:
+        die("canonical trainer source digest mismatch")
 
     for seed in campaign.SEEDS:
         for arm in campaign.ARMS:
@@ -138,12 +160,14 @@ def main():
                 "checkpoint_sha256": sha256(ckpt_path),
                 "started_seal_sha256": sha256(seal_path),
                 "users_sidecar_sha256": sha256(users_path),
-                "evaluator_sha256": evaluator_hash,
-                "trainer_sha256": trainer_hash,
             }
             for key, value in expected.items():
                 if prov.get(key) != value:
                     die(f"{key} mismatch in {final_path.name}")
+            for source in ("evaluator", "trainer"):
+                key = f"{source}_sha256"
+                if prov.get(key) != FROZEN_SOURCE_HASHES[source]["recorded_raw"]:
+                    die(f"recorded raw {key} mismatch in {final_path.name}")
             if test_split_hash is None:
                 test_split_hash = prov.get("test_split_sha256")
             elif prov.get("test_split_sha256") != test_split_hash:

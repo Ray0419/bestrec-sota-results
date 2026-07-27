@@ -25,6 +25,13 @@ classification after the 2026-07-27 audit.
    frozen family cannot be amended after TEST, but they are not counted as
    independent mechanism controls. The channel-shared and parameter-matched
    nonlinear arms are the distinct active controls.
+6. Stage-2 provenance hashed raw worktree source bytes. The trainer was captured
+   with Windows CRLF endings (`7bdde0...51f4`), whereas its exact Git/LF content
+   hashes to `5620d4...d854`. The adjudicator now verifies both facts: every
+   immutable final-evaluation record must retain the frozen raw hash, and the
+   current source must match the frozen canonical LF hash. This portability repair
+   changes no result file or endpoint and prevents a clean checkout from failing
+   solely because of line-ending representation.
 
 The result supports causal temporal mixing/activity because every active arm
 improves identity. Learned taps beat both redundant fixed arms but do not separate

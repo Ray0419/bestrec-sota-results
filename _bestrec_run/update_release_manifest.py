@@ -259,6 +259,24 @@ def verify(m):
         else:
             checked += 1
 
+    # A file has exactly one distribution role.  Git-backed result families are
+    # verified against repository blobs; sequestered endpoint/sidecar/checkpoint
+    # files are verified as release assets.  Listing one file in both classes
+    # makes --verify appear green locally but makes --verify-git and a deposit
+    # rebuild impossible from the committed tree.
+    release_names = set()
+    for sec in RELEASE_ASSET_SECTIONS:
+        entries = m.get(sec, {})
+        if sec == "pinned_parity_artifacts":
+            entries = entries.get("files", {})
+        release_names.update(os.path.basename(k) for k in entries)
+    for fam, files in m.get("result_families", {}).items():
+        for rel in files:
+            if os.path.basename(rel) in release_names:
+                bad.append(
+                    f"distribution-role overlap: result_families/{fam}/{rel} "
+                    "is also registered as a release asset")
+
     # round-9 audit structural fix: a manifested file that is git-dirty means the
     # manifest describes uncommitted content -- a clean clone would not verify.
     try:
@@ -365,6 +383,10 @@ def regen(m):
     for _rel in list(_ctrl_family):
         if _rel.endswith(".finaleval.json"):
             del _ctrl_family[_rel]
+    _point_family = m.get("result_families", {}).get("FIR_POINTWISE_OUTCOME_KNOWN", {})
+    for _rel in list(_point_family):
+        if _rel.endswith(".finaleval.json"):
+            del _point_family[_rel]
     # immutable data must never drift
     drift = []
     for sec in ("splits", "text_caches"):
@@ -434,6 +456,7 @@ def regen(m):
                     "fir_pointwise_v1_adjudication.json",
                     "fir_pointwise_v1_status.json"):
         _point_jsons.extend(_g.glob(os.path.join(ROOT, "_bestrec_run", pattern)))
+    _point_jsons = [p for p in _point_jsons if not p.endswith(".finaleval.json")]
     add_result_family("FIR_POINTWISE_OUTCOME_KNOWN", _point_jsons)
 
     # audit 2026-07-24 (E-E freeze): keep protocol_code in lock-step with the
@@ -593,11 +616,13 @@ def regen(m):
         "(protocol_code, submission_docs, result_families, reference_runs) digest "
         "LF-normalized bytes for text files -- platform-independent and equal to "
         "the git-blob and deposit-payload hashes; release-asset sections (splits, "
-        "text_caches, pinned_parity_artifacts, FIR-control sidecars/checkpoints) "
+        "text_caches, pinned_parity_artifacts, FIR-control and FIR-pointwise "
+        "endpoint/sidecar/checkpoint files) "
         "digest raw bytes because their "
-        "uploaded assets are immutable as-is. Data sections (splits, text_caches, result_families) "
-        "are the unchanged v0.9-audit-evidence release assets, byte-verified at "
-        "every --regen. The manifest cannot hash itself; its own commit is the "
+        "uploaded assets are immutable as-is. The release-only data sections are "
+        "byte-verified at every --regen; result_families are Git-backed compact "
+        "records and must never duplicate a release-only entry. The manifest "
+        "cannot hash itself; its own commit is the "
         "immediate child of the state it describes.")
     m["hash_parent_commit"] = m.get("git_commit")
     m["git_commit_semantics"] = (

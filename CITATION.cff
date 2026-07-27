@@ -19,8 +19,10 @@ abstract: >-
   Unpublished candidate metadata for the code, pre-declarations, provenance
   manifests, and evaluation artifacts accompanying a narrow modular study of a
   gradient-active left-causal depthwise FIR residual in an HSTU-style sequential
-  recommender. The fail-closed graph recomputes 192 active paper cells across 18
-  families and preserves null, deviated, and VOID outcomes. The evidence does not
-  support broad SOTA, paired superiority over single-run comparators, or isolation
-  of temporal specificity from generic trainable-residual capacity. Replace the
-  author placeholder and verify legal/licensing fields before publication.
+  recommender. The fail-closed graph recomputes 195 active paper cells across 19
+  families and preserves null, deviated, and VOID outcomes. An equal-parameter
+  current-position-only placebo supports temporal access relative to that tested
+  placebo in an outcome-known setting; the evidence does not support broad SOTA,
+  paired superiority over single-run comparators, per-channel-tap necessity,
+  independent confirmation, or generalization. Replace the author placeholder
+  and verify legal/licensing fields before publication.

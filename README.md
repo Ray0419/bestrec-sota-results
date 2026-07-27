@@ -77,11 +77,11 @@ campaign above is a separate pre-declaration that passed under its frozen wordin
 
 ## Releases
 
-- **`v1.2.0-deposit` (intended candidate; not yet tagged or published).** The current 92-entry
+- **`v1.2.0-deposit` (intended candidate; not yet tagged or published).** The current 820-entry
   candidate bundle is prepared locally and explicitly refuses a normal/tagged build while
   creator placeholders remain. `v1.1.11-deposit` is a historical snapshot and is stale
   relative to the present manuscript; it must not be uploaded as current.
-- **`v0.9-audit-evidence`** — the pinned-parity files/ZIP, `RELEASE_MANIFEST.json`, all 18 split CSVs, four text caches, 107 TFV2 per-user sidecars, and 144 FIR-control final-evaluation/sidecar/checkpoint files (all hash-manifested; FIR-control assets verified remotely by size and digest on 2026-07-27; the manifest inventory is authoritative). A complete bootstrap downloads approximately **4.60 GB** across 282 release-only assets. Fresh clones: `python bootstrap_public_clone.py` before the strict gate; `git submodule update --init` is optional because the parity test can hydrate the exact pinned HSTU reference commit into its isolated cache.
+- **`v0.9-audit-evidence`** — the mutable audit-evidence store used by the bootstrap path, not the final archival deposit. It contains the pinned-parity files/ZIP, `RELEASE_MANIFEST.json`, all 18 split CSVs, four text caches, 107 TFV2 per-user sidecars, 144 FIR-control endpoint/sidecar/checkpoint files, and 72 FIR-pointwise endpoint/sidecar/checkpoint files. The authoritative bootstrap inventory is **354 release-only assets / 8,274,248,666 bytes (about 7.71 GiB)**; the 72 pointwise assets were downloaded from the public release and hash-verified in a fresh HTTPS clone on 2026-07-28. Fresh clones: `python bootstrap_public_clone.py` before the strict gate; `git submodule update --init` is optional because the parity test can hydrate the exact pinned HSTU reference commit into its isolated cache.
 - **`bestrec-raw-records-v1`** — the historical LC2C project's raw records (see `README_LC2C_HISTORICAL.md`).
 
 Data: the Amazon Reviews 2023 dataset (McAuley Lab) is **not redistributed**; derived

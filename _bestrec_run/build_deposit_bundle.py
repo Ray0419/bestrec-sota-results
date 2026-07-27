@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Build the archival deposit bundle (currently v1.1.9) deterministically.
+"""Build the archival deposit bundle (currently v1.2.0) deterministically.
 
 
 
@@ -17,8 +17,8 @@ documents, and the comparator
 
 reference-run artifacts. Large evidence is NOT bundled -- result JSONs are git-tracked;
 
-splits/text caches are SHA-256-pinned by RELEASE_MANIFEST.json (which IS bundled) but are
-not yet public release assets (upload pending).
+splits/text caches and sealed endpoint/checkpoint evidence are SHA-256-pinned by
+RELEASE_MANIFEST.json (which IS bundled) and hydrated from the audit-evidence release.
 
 
 
@@ -234,7 +234,80 @@ V12_ADDITIONS = [
     "_bestrec_run/adjudicate_ee_v2.py",
 ]
 
-FILES = sorted(set(V10_FILES + V11_ADDITIONS + V12_ADDITIONS))
+
+def _complete_git_evidence_boundary():
+    """Return every Git-backed file needed by the manifest/active cell graph.
+
+    Large release-only inputs stay outside the compact deposit and are hydrated
+    through bootstrap_public_clone.py.  Everything else that the release
+    manifest or an active/retained table cell names is included mechanically;
+    this prevents a new governed experiment from being omitted by a stale
+    hand-maintained bundle list.
+    """
+    import json as _j
+    import subprocess as _sp
+
+    tracked = set(_sp.check_output(
+        ["git", "-C", ROOT, "ls-files"], text=True).splitlines())
+    by_base = {}
+    for rel in tracked:
+        by_base.setdefault(os.path.basename(rel), []).append(rel)
+
+    with open(os.path.join(ROOT, "RELEASE_MANIFEST.json"), encoding="utf-8") as f:
+        man = _j.load(f)
+
+    out = set()
+    for sec in ("protocol_code", "submission_docs", "aux_graph_sources",
+                "figure_assets"):
+        out.update(man.get(sec, {}))
+    out.update(man.get("reference_runs", {}).get("files", {}))
+    for family in man.get("result_families", {}).values():
+        for key in family:
+            if key in tracked:
+                out.add(key)
+                continue
+            candidates = by_base.get(os.path.basename(key), [])
+            if len(candidates) != 1:
+                raise RuntimeError(
+                    "cannot uniquely resolve Git-backed manifest result %r: %r"
+                    % (key, candidates))
+            out.add(candidates[0])
+
+    release_names = set()
+    for sec in ("splits", "text_caches", "tfv2_sidecars",
+                "fir_control_finaleval", "fir_control_sidecars",
+                "fir_control_checkpoints", "fir_pointwise_finaleval",
+                "fir_pointwise_sidecars", "fir_pointwise_checkpoints"):
+        release_names.update(os.path.basename(k) for k in man.get(sec, {}))
+    release_names.update(os.path.basename(k) for k in
+                         man.get("pinned_parity_artifacts", {}).get("files", {}))
+
+    with open(os.path.join(ROOT, "_bestrec_run", "hstu_results_manifest.json"),
+              encoding="utf-8") as f:
+        graph = _j.load(f)
+    uncovered = []
+    for cell in graph.get("cells", []):
+        if cell.get("status") == "REMOVED_FROM_PAPER":
+            continue
+        for rel in cell.get("source_files", []):
+            rel = rel.replace("\\", "/")
+            if rel in tracked:
+                out.add(rel)
+            elif os.path.basename(rel) not in release_names:
+                uncovered.append(rel)
+    if uncovered:
+        raise RuntimeError(
+            "active graph source is neither Git-backed nor a release asset: %s"
+            % sorted(set(uncovered)))
+
+    absent = sorted(rel for rel in out if rel not in tracked)
+    if absent:
+        raise RuntimeError("declared Git evidence is not tracked: %s" % absent)
+    return out
+
+
+FILES = sorted(set(V10_FILES + V11_ADDITIONS + V12_ADDITIONS)
+               | _complete_git_evidence_boundary())
 
 
 

@@ -10,7 +10,7 @@ independence, custody, or construct validity.
 | 1 | **OPEN — author action required** | Author, affiliation, country, contact, and running-header fields remain placeholders. Builds pass only with a logged `DRAFT_WAIVER=1`; no identity was invented. A release build must be rerun without the waiver after real metadata are supplied. |
 | 2 | **OPEN scientific gap; wording closed** | Every headline FIR estimate is explicitly outcome-known/test-exposed. The abstract, contribution ledger, Results, Discussion, and Conclusion make no independent-confirmation claim. Only a genuinely untouched temporal/non-Amazon split with independent one-shot custody can close the evidentiary gap. |
 | 3 | **CLOSED for the named placebo; broader mechanism scope remains bounded** | `PREREG_FIR_POINTWISE_V1.md`, its frozen source hashes, structural test, runner, sealed evaluator, and mechanical adjudicator were committed and pushed before launch. All 24 training runs kept TEST disabled; all 24 selected checkpoints then received one sealed final evaluation. The first reader returned `POINTWISE-FIR-DISCRIMINATED`: learned−identity +0.001872 [+0.001737,+0.002007], pointwise−identity −0.000069 [−0.000200,+0.000061], learned−pointwise +0.001941 [+0.001788,+0.002095], with the first and third contrasts rejecting in one frozen three-test Holm family. The placebo and FIR each have exactly 1,024 trainable parameters, matched per-seed backbone hashes, identity initialization, and nonzero first-step gradients; the placebo has no temporal access. This supports temporal access relative to that placebo in outcome-known MI. It does not establish per-channel necessity because the shared causal filter remains competitive, nor does it supply independent confirmation or cross-domain generalization. The causality suite now covers 18/18 paths. |
-| 4 | **CLOSED after the 22:00 audit** | `bootstrap_public_clone.py` now hydrates and raw-hash-verifies every release section, including all 48 control final-evaluation JSONs, 48 sidecars, and 48 checkpoints. A fresh deep-path Windows clone installed 282/282 release-only assets and passed exact HSTU parity, every adjudicator, Office V1 VOID retention, and the strict graph/manifest gate. The release footprint is documented as approximately 4.60 GB. |
+| 4 | **CLOSED and extended through the pointwise phase** | `bootstrap_public_clone.py` hydrates and raw-hash-verifies every release section, including the 144 control endpoint/sidecar/checkpoint files and 72 pointwise endpoint/sidecar/checkpoint files. A fresh HTTPS clone installed the new pointwise files from the public release, verified the complete 354-asset / 8,274,248,666-byte bootstrap boundary, and passed exact HSTU parity, every adjudicator, Office V1 VOID retention, and the strict graph/manifest gate. |
 | 5 | **CLOSED** | E-A is labeled the frozen independent-arm Welch/Satterthwaite analysis: ordinary 95% Welch CI, df=13.939; its paired-by-seed result is descriptive only. Hybrid intervals are ordinary paired 95% CIs; Holm adjusts p-values/decisions, not intervals. A new health gate forbids the stale labels. |
 | 6 | **OPEN human verification; disclosure closed** | Dirty-tree execution across five commits, absent independent sidecar custody, and the limited local start marker are retained in the main text and erratum. The study remains outcome-known exploratory evidence. Only the maintainer can verify pre-adjudication human/tool visibility. |
 | 7 | **Citation/scope CLOSED; executions OPEN** | FreqRec and WEARec are cited in Table 0, Related Work, Method, and the bibliography; BSARec is correctly scoped to Theorem 1 on repeated softmax attention, not the HSTU-style operator. The governed AlphaFuse port is disclosed as `NONCOUNTABLE`/`manuscript_allowed=false`, with no endpoint imported. Equal-protocol current baselines remain future experimental work. |
@@ -40,17 +40,16 @@ reproducible; it does not turn them into independent confirmation.
 
 ## Reproduction evidence
 
-The numerical manuscript snapshot at commit `43d3594b` was cloned under an ordinary
-deep Windows path. Bootstrap installed and raw-hash-verified 282/282
-release-only assets. The strict replay independently hydrated HSTU-BLaIR commit
-`40a27879`, obtained bitwise core-block parity, recomputed 192/192 active cells
-across 18 claim families with zero mismatches or untraceable cells, verified
-745/745 manifested files, passed every governed adjudicator including
-`CTRL-ACTIVE-CONTROL-SUPPORTED`, retained Office V1 as VOID, and ended
-`SUBMISSION REBUILD: PASS`. The subsequent submission-only update adds the
-cover-letter correction and the 16-path causal unit test to the manifest; its
-local strict rebuild verifies 751/751 files. A release tag/DOI deposit should
-repeat the full fresh-clone check after author/legal metadata are finalized.
+The current manuscript boundary was replayed from both a local clean clone and a
+fresh HTTPS clone. The latter downloaded and raw-hash-verified the 72 pointwise
+assets from the public release while hydrating the older immutable assets, then
+independently hydrated HSTU-BLaIR commit `40a27879`, obtained bitwise core-block
+parity, recomputed 195/195 active cells across 19 claim families with zero
+mismatches or untraceable cells, verified the 914-file manifest boundary, passed
+every governed adjudicator including `CTRL-ACTIVE-CONTROL-SUPPORTED` and
+`POINTWISE-FIR-DISCRIMINATED`, retained Office V1 as VOID, and ended
+`SUBMISSION REBUILD: PASS`. A final archival tag/DOI deposit should repeat the
+full fresh-clone check after author/legal metadata are finalized.
 
 ## 2026-07-28 completion addendum
 
@@ -70,9 +69,12 @@ audit log:
    Reviews 2014 protocol mismatch, closed the SILLM4Rec inspection item with an
    explicit access limitation, and verified the current acmart v2.19 build.
 4. `PHASE_COMPLETION_AUDIT_2026-07-28.md` reconciles all ten repair phases and
-   every Claude handoff item. A deterministic 92-entry `v1.2.0` deposit candidate
-   is locally buildable and hash-checked, while normal publish mode refuses to
-   proceed with creator placeholders. No tag, release, or DOI is claimed to exist.
+   every Claude handoff item. The deposit builder now derives its Git-backed
+   evidence inventory from the release manifest and active cell graph. The
+   deterministic 820-entry `v1.2.0` candidate contains all 535 active Git-backed
+   graph sources plus the current pointwise protocol/adjudication chain; normal
+   publish mode still refuses to proceed with creator placeholders. No tag,
+   archival release, or DOI is claimed to exist.
 
 The residual audit blockers are therefore substantive or human-controlled, not
 unfinished local editing: independent temporal/non-Amazon confirmation, repeated

@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "ebe2b93944a3e092b133c09a2b7a9879d9604759",
+  "git_commit": "a17c2f79a8082df84984f28858658883a0992010",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -717,99 +717,75 @@
     "FIR_POINTWISE_OUTCOME_KNOWN": {
       "_bestrec_run/fir_pointwise_v1_adjudication.json": "74ba5c69a41d73b0b721fb91c6ee8eed1c71fc6bc707628a71c55f983203f474",
       "_bestrec_run/fir_pointwise_v1_status.json": "9f5c6bf3f7ac18cbfd72c9494c6d54571a12908fa6795f78c723e27ca8d0a967",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261001.finaleval.json": "2ab90a4927ce6afc64d573f73d1ae4fe677ec501b37bf0566dbc805542bfb8ee",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261001.finaleval.started.json": "47dfc870df06b432779d145b3b9e1e7cfba9ffe58eff79368291161d68d1b2d9",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261001.json": "00fc3763fddd720978f5bab90a3ff1af232d4832fcbe6edbfbaef38f00d9d770",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261002.finaleval.json": "6402823561482095bbced26942eaa7f797812d416cafdd2644b14100ee7877d2",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261002.finaleval.started.json": "50d9fad1c5aadde6d467aa736e147c98debb1630fc50cd186ac95c7187e98fdd",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261002.json": "97551a9fa190734c1d0fe39e92f30320ac90ebd04458d0a58d4c9176863530fa",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261003.finaleval.json": "0bab3a005c7fb960b77d5f5dd43593703950ad4429d52c79a9ecf363fd61d3fd",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261003.finaleval.started.json": "e36abad070da45e70071a431197ad6711ef71e085a9c28125f2c04ef65eb00ee",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261003.json": "fc34dd1911194570df92ea370abe983e5e353571fa33f43eed90d86033248b45",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261004.finaleval.json": "4fbcadd7de74e2929d3a9db3a377d194c39f068dc2165740a281e4479d886887",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261004.finaleval.started.json": "69f92b49265148a23f92ab89e9907ccfef600665d91bcccc275debea671f5643",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261004.json": "fdabb70f82899fe7b45119f4555be11a08488cec339dcb77172eb93b7919e4c0",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261005.finaleval.json": "fcbd63b791d072334f4c5bc503776b860f90ef72052aa78c5cfb9396a7e316ed",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261005.finaleval.started.json": "077021d2837d3ede6aaee52cd9d0e4384273f2e41d109f0b6b6fc71cc331f400",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261005.json": "ea1e62f58a538fb47d03a1c14331c0b0251ba2f02c50fbcde38374c691492c82",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261006.finaleval.json": "131ccd34afe4ef67b7c659890c57dc562ada95ea93f3069fbf59f9579aa99571",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261006.finaleval.started.json": "83cef6a9b8523f093757528f5c0acad330852fba4b1418f65ca8eb167f13c30b",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261006.json": "63ca066038503ffdbe657e9009bd13a7a017f62ffb52dcf10381cdb25b780c6d",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261007.finaleval.json": "e27afa21b0631d5cf447daf7716762b32f22a00f4d3a5b55b1f041d579b6003e",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261007.finaleval.started.json": "8f24a9fdaf74d4e08872e33ffca8bebd0c9bb901af57ae7897b33f06f9e0ad14",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261007.json": "b9903343b0d1ef3e707374dbfd9bda59c36c36cba3c3726417e650949b7d6c60",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261008.finaleval.json": "cf42cf8506488ffbad8ff2bd349c1120c0eeacc52ff1d46a566f800076352529",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261008.finaleval.started.json": "4017c522671733a5e393009cce73b96ef95303c1324705ea826ebcbd77444155",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261008.json": "460a54277e43e111e150af4a61d887a10ed4e9d8ebc6a8d0c14bbc42305fd769",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261001.finaleval.json": "ed094c9ce631c7758f9ffc50fa619a8e97b59a5f9618f31eed25ba99cbba6b82",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261001.finaleval.started.json": "55968efb739f6bd1e42c52b0761f543c9d660b246176d3c555165f4fa2d0d82a",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261001.json": "64c04811a2ce5ff5f9edf914b819347f458f077e1d21a1b76009114cd80b1948",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261002.finaleval.json": "f80b63ccdf3a85c99faa5bdc4c8b14dc9908d260540584a65b6ae4d5c4dc4926",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261002.finaleval.started.json": "d47ecdcaeca042608c33ac81a6fc77c8af18a88a9d30028c0240b41b49805194",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261002.json": "5af62ab536e8a239097f18c7b3ccdeb856d5eada76b99db943a6cbe1943f5be5",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261003.finaleval.json": "ddd20e250bff2e020e97e92d275921a4153d53447cfae3c8528d57d9e66e11e8",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261003.finaleval.started.json": "ac6039d6f2715c91c3b75468fe69267030ed3e69c81c0eba7c10ccdf19a0dfc9",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261003.json": "1cab7996bcc4c2b9c9db5a6c4910e8656881fcb6246e0449aa1c7e7ecc13fc41",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261004.finaleval.json": "0a04a48d337deaa7b87387075bacdcc9241fe3d5dfdacdbce39eb872315d253b",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261004.finaleval.started.json": "076d4e480bf8be93d5ae0b3316cb28020f2ddd6ff181dbca231cc942fde4d057",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261004.json": "4aaeaf31a148d6147611979d304af48093c6ee3becf698fed7b16a8b1b2c135a",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261005.finaleval.json": "478f946cb3a85dd99d770f2f2bd53fe86b7a40f58fd6791f75ad40a870a9c66a",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261005.finaleval.started.json": "1c8dae8921eec2baf6e3244ca7ea955834f17f446185b7628a0ef60b63997412",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261005.json": "2bb4d74afd380fa1ddd7ac21e7586f125a84ea9890feaade106cbf86cb622fbb",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261006.finaleval.json": "d4e1798edc7dc00f7e11c2319ed00f4baa705ea6e5e1a75a2ae8d4240dd20699",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261006.finaleval.started.json": "45f8c768407aa12cdfbb51a0921d3ed841f7f73e90fbf94a8f6fdfaad1f7f526",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261006.json": "1ccba720e085bd104c1df5b6b158820414e0ca61fbd2e18480c4a18f34d0f7d5",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261007.finaleval.json": "41d2ca3b20b152b7201c3234a2773881bdc5f8e8babc5cc82b281d9000751b41",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261007.finaleval.started.json": "747f2be22201b9adcb3eb22d11affc16103a2ae30d9b5a8e7ac72b89bbb01b08",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261007.json": "f6b62d5ef5922cf243112a969ff2259ac2f639fdefbbc887afecbe1a07b08c2c",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261008.finaleval.json": "b09696839ac4ed9982b03a2d02cecd45692e409ec739e1f513a3077570211f00",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261008.finaleval.started.json": "4b57e988478fda66f914ab43dd5c1588fa09d52a57a6389f9abdf84a87652900",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261008.json": "5b7f9051e84f2f537c2be6e23b6df1d92ed99db30fc2563716863ed268fb4b3b",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261001.finaleval.json": "eb0d680af820b5a748fa6ff2556b981ab1ce1668e9225eacdc9a4bcd6fe1f6e3",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261001.finaleval.started.json": "25d754e7e95b790ac0d6be8a20ed42c39e3171f15794e6b6155ec348cdbf76fc",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261001.json": "3213302900a450e05de05072c25a14cc09155aa47e1bea5d328b0476b94c6dfd",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261002.finaleval.json": "d1bb1436942e0ff6eb2d85b577fbd2c3cdb11229abc80ba6e659f836e3c66460",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261002.finaleval.started.json": "e401606d530c670a777a0ce41f56e8a2310662fe05bca3b99390775788b8e51a",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261002.json": "55a283061588fb3f6c593923ddcd4aab56bcb4b7145ff81234a740b48a740388",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.finaleval.json": "0a1dca982c16bf155f7bc2dee97f193e8215b30b47e045cbb1233cc748c8b21d",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.finaleval.started.json": "70124f8a5b4175a7fab944652a5f5738c0d79ec5dfac64603eb581caa0d48add",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.json": "67ae24cafc67ac284bb3cb5e6b3a3a58ed8763c6e264ffac4cb943cc2546acc7",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261004.finaleval.json": "2799140748b9b15ca64482d7bcc54193d92d1089ea7ddc09d200f115853d4afd",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261004.finaleval.started.json": "3210ac1da4c897e9e17593955825010ab9d9ab542925d1109cd6e5e289680d1e",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261004.json": "c5db64a8bedab8d9ff20800538758e60f67302093e92150468806f0a69e0e767",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261005.finaleval.json": "18c42293ee9b7b79930b46905d739a05f39bc15b8aafcb89dbde83c1dd18203a",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261005.finaleval.started.json": "a8746e0162d792818acb67470b7aff7eac11476eefc70cf54cbb497fa71f1c54",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261005.json": "f0d77f4a9909255888cffa194bc042e886ab99c40bcf005f0bb98cc7300a9b8d",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261006.finaleval.json": "26938930263eb90b16c9722894b50820a98569666a6114bc09d03c3a4f179a2c",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261006.finaleval.started.json": "48d524f40677e0ee5437799cd4547c9d1c3bc21850f00cf68eeeb209807fa314",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261006.json": "ae5e2fe0ee84bcb15d12172b5f638ff453cd2d3ddd7d32513f396c367c638651",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261007.finaleval.json": "f7a5d933e56ffe2e8d876db4425446165a07575550eb0724762280edade7c747",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261007.finaleval.started.json": "94a445a335d4f1a34cb236dd4984300732feec031cbddd10965c500c24e418a9",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261007.json": "ca9419ba9fb712904a7b6b47fbc628c1ac698ba55a3b4ed0be20b0e2ab5e29d7",
-      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261008.finaleval.json": "ecee32fc3a3f787e462f1991257b37b031ec34089c9bc671eac7a27996b01c12",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261008.finaleval.started.json": "66c3eb8390f0f1ee0f9210c3d0158b234d79d3d4dadbc80f201c16734ab86d15",
       "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261008.json": "2fc6b261c1e6bcb6cf0a1c0ca389f3cea8c28965cd06434fec828815b74a01cd"
     }
   },
   "sidecars": "see _bestrec_run/SOTACONF_V2_sidecar_manifest.json (tracked) + per-run user_records_sha256 fields",
-  "manifest_scope": "Hashes describe the repository files as of git_commit \u2014 the parent commit whose tree was hashed at the most recent --regen (the manifest cannot hash itself, so its own commit is the immediate child of that state); commits that touch no manifested file leave the hashes valid without a regen, and every strict build re-verifies all hashes against the live tree. Kept in sync MECHANICALLY: rebuild_hstu_submission.py --strict runs update_release_manifest.py --verify, which fails the submission gate on any hash mismatch, so a manifested file cannot change without a --regen + commit. Hashing rule (2026-07-18 migration, content identity proven under the legacy raw rule at migration time): git-backed sections (protocol_code, submission_docs, result_families, reference_runs) digest LF-normalized bytes for text files -- platform-independent and equal to the git-blob and deposit-payload hashes; release-asset sections (splits, text_caches, pinned_parity_artifacts, FIR-control sidecars/checkpoints) digest raw bytes because their uploaded assets are immutable as-is. Data sections (splits, text_caches, result_families) are the unchanged v0.9-audit-evidence release assets, byte-verified at every --regen. The manifest cannot hash itself; its own commit is the immediate child of the state it describes.",
+  "manifest_scope": "Hashes describe the repository files as of git_commit \u2014 the parent commit whose tree was hashed at the most recent --regen (the manifest cannot hash itself, so its own commit is the immediate child of that state); commits that touch no manifested file leave the hashes valid without a regen, and every strict build re-verifies all hashes against the live tree. Kept in sync MECHANICALLY: rebuild_hstu_submission.py --strict runs update_release_manifest.py --verify, which fails the submission gate on any hash mismatch, so a manifested file cannot change without a --regen + commit. Hashing rule (2026-07-18 migration, content identity proven under the legacy raw rule at migration time): git-backed sections (protocol_code, submission_docs, result_families, reference_runs) digest LF-normalized bytes for text files -- platform-independent and equal to the git-blob and deposit-payload hashes; release-asset sections (splits, text_caches, pinned_parity_artifacts, FIR-control and FIR-pointwise endpoint/sidecar/checkpoint files) digest raw bytes because their uploaded assets are immutable as-is. The release-only data sections are byte-verified at every --regen; result_families are Git-backed compact records and must never duplicate a release-only entry. The manifest cannot hash itself; its own commit is the immediate child of the state it describes.",
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     ".zenodo.json": {
-      "sha256": "28a9bd9d947170cbfee0aa37a6ae5e9d9daafb8e22d22ae868205d77dcb7d713",
-      "bytes": 1783
+      "sha256": "39ee63bfa1e27fb3204ebd74802bb92b7df8fa5db28021d6186b9e42a52fc5ff",
+      "bytes": 1766
     },
     "CITATION.cff": {
-      "sha256": "f74aefd17554a1cbbb74adb54d957448285a1a1f90f07aecd6ce1b867bebf247",
-      "bytes": 1223
+      "sha256": "07885f4b9c07185d55bf741a21b01f383cf02430037ac7b472f787915ade191e",
+      "bytes": 1355
     },
     "README.md": {
-      "sha256": "4523d91de62453c16e186ca1598b49257d7b12a190fd94526a2228bf5702d32d",
-      "bytes": 10336
+      "sha256": "b32836f0a8f8ddebb33a7f3c4c018ec13e3b93eecf2d0137dfeb23cab815ce8f",
+      "bytes": 10492
     },
     "DOI_DEPOSIT_INSTRUCTIONS.md": {
-      "sha256": "52aeff1ce6209ec39f023a5cbac2d194afe05879c1b4c12dcb8e6c6925f2a7a0",
-      "bytes": 2911
+      "sha256": "61109b90b71bada1342d0e600ca81bf384718e7387c1925532e2470db5544b02",
+      "bytes": 2913
     },
     "VENUE_PLAN.md": {
       "sha256": "8ee875a748316ff37863450514b3296416aa78e51b7cc0651f82ed1ec19e4f9a",
@@ -832,8 +808,8 @@
       "bytes": 14152
     },
     "AUDIT_RESPONSE_2026-07-27.md": {
-      "sha256": "538d4664d6186d885e78fa41367f04443980bc66b5b118e87ac91aaa9f42a643",
-      "bytes": 11871
+      "sha256": "804a3fda01fbd424ad913a28836a6175a7ff1facee895c9bce0348aa96ec656e",
+      "bytes": 12056
     },
     "COVER_LETTER_TORS.md": {
       "sha256": "9a791f5ad396254c896d8fd340d910ca9199f57c315bdfd3b04b1a48fae1300f",
@@ -884,8 +860,8 @@
       "bytes": 12991
     },
     "_bestrec_run/build_deposit_bundle.py": {
-      "sha256": "b19b58ecc6ee85e532dff805ff284cd2cad696d69b095c2f81d972547b08b393",
-      "bytes": 18621
+      "sha256": "fc7a0353b6e9c1b33dde6f166f841add8f411b42f462a407e62cea319e3f8e89",
+      "bytes": 21595
     },
     "_bestrec_run/fbgemm_shims.py": {
       "sha256": "bb661345a50e11c20ccd16dc9699884467dbbc137fb2b26893804de7aecc9d34",
@@ -896,8 +872,8 @@
       "bytes": 7206
     },
     "_bestrec_run/update_release_manifest.py": {
-      "sha256": "31773fdac6bdbd49ef7f7d57afae2089383353859a2fef7a341eb9172c1b57ad",
-      "bytes": 35408
+      "sha256": "6619b55fce206bbbc78c510e7fcdd90f16110a72990cb7c3c18810d53076b347",
+      "bytes": 36706
     },
     "paper_tex/PAPER_TORS.pdf": {
       "sha256": "ffbde03113c00c786dd63101981d085f5a74abb5348c7b6ff8ea406afeac4035",
@@ -1017,7 +993,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.2.0-deposit",
-  "hash_parent_commit": "ebe2b93944a3e092b133c09a2b7a9879d9604759",
+  "hash_parent_commit": "a17c2f79a8082df84984f28858658883a0992010",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",

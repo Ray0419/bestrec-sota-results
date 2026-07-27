@@ -1,36 +1,49 @@
 # Response to `PAPER_REVIEW_AUDIT.md` — 2026-07-27
 
-This response maps the current 17-item prioritized rejection-risk list to concrete
-changes. It does not edit or supersede the audit. “Closed” means the submitted
-claim/artifact now matches the available evidence; it does not mean the underlying
-study acquired stronger evidence after the fact.
+This response addresses the 18-item list timestamped 2026-07-27 22:00. It does
+not edit or supersede the independent audit. “Closed” means the manuscript or
+artifact now matches the evidence; it does not retroactively improve study
+independence, custody, or construct validity.
 
-| Audit item | Disposition | Response |
+| Audit item | Current disposition | Response and evidence |
 |---:|---|---|
-| 1 | **Open — author action required** | The public working copy still has author, affiliation, and contact placeholders. No identity was invented. An unwaived venue build remains impossible until the maintainer supplies the metadata. |
-| 2 | **Partly closed; historical custody cannot be repaired** | All final JSONs, STARTED seals, sidecars, and checkpoint hashes are preserved and registered. The correct `*.finaleval.users.npz` suffix is now ignored prospectively. The custody failure and author-visibility question are disclosed in `PREREG_FIR_CONTROLS_ERRATA.md` and §5.2. |
-| 3 | **Closed as a claim boundary; fresh confirmation still open** | Mechanical adjudication now exists and gates the strict build. All nine contrasts are artifact-bound. Fixed MA/HP redundancy, dirty-tree execution, and lack of immutable custody are disclosed. Shared and nonlinear controls prevent learned-tap-specific attribution. No fresh independent-control claim is made. |
-| 4 | **Closed** | Canonical IS/CD cells are relabeled exploratory. Abstract, contribution ledger, method, results, discussion, conclusion, and graph notes call them outcome-known/test-exposed robustness rather than confirmatory transfer. |
-| 5 | **Closing in this release** | The 32 canonical JSONs and adjudication are registered as immutable git-backed evidence. Control JSONs/seals are likewise registered; binary sidecars/checkpoints are raw-hash release assets. Clean-clone verification remains to be executed after the commit and upload. |
-| 6 | **Partly closed** | Prose now states that primary canonical taps used backbone weight decay; p=.95 is neither equivalence nor pathway exclusion. CIs are identified as ordinary paired-t intervals and Holm as p-value/decision adjustment. HR@10 and MRR supportive endpoints are reported and graph-bound; the un-emitted full cutoff family is disclosed and not claimed. |
-| 7 | **Claim boundary closed; sensitivities open** | §3.1 now defines the estimand as ranking the next recorded review event and states that ratings and verified-purchase flags are ignored. Rating/verified-purchase/implicit-event sensitivities remain unrun, so preference, satisfaction, and purchase claims are forbidden. |
-| 8 | **Claim boundary closed; deployment study open** | §3.1 discloses full-history five-core eligibility and fixed post-filter catalogs. Global-time eligibility and query-time catalogs remain untested; no deployment-validity claim is made. |
-| 9 | **Partly closed** | The graph now recomputes 190 cells across 17 families and gates the control adjudicator. Canonical/control result inventories and runner/evaluator hashes are registered. Rank-level transitive completeness and mutation tests remain future assurance work. |
-| 10 | **Open experimental/citation work** | The manuscript already frames novelty as incremental and names AlphaFuse as an omitted comparator. Equal-budget AlphaFuse/FreqRec/WEARec execution is not fabricated. Citation verification and direct-baseline execution remain necessary for a stronger algorithm claim. |
-| 11 | **Open; claims narrowed** | Existing evidence is explicitly outcome-visible. A genuinely untouched temporal or non-Amazon dataset with independently custodied one-shot evaluation is still required for independent confirmation. |
-| 12 | **Open; disclosed** | Item-map/cache fail-closed binding, missingness analysis, shuffled text, and the 2×2 input/output-text design remain unrun. The paper retains these as open controls and makes no semantic-causality claim. |
-| 13 | **Open; claims narrowed** | TFV2 remains outcome-visible and nonconfirmatory; nonsignificance is not equivalence. Item-macro/hierarchical and repeated-draw inference were not added post hoc. |
-| 14 | **Closed for the FIR story** | The abstract now leads with the modular FIR result and active-control boundary. Contribution ledger, Table 0, method, §5.2, discussion, and conclusion are synchronized. |
-| 15 | **In progress** | The current source/result release manifest is being regenerated at the manuscript commit. A fresh portable deposit and clean-clone replay must follow; the stale v1.1.11 tag is not represented as current. |
-| 16 | **Open layout/accessibility work** | Both PDFs will be rebuilt and visually inspected after these changes. Page count, Table 0 density, navigation/tagging, and figure-caption accessibility remain tracked rather than declared solved before inspection. |
-| 17 | **Open — author/legal action required** | Pre-adjudication visibility, author order/identity, venue mode and length, funding/conflicts, ethics review, licenses, and derivative redistribution permission require maintainer verification. |
+| 1 | **OPEN — author action required** | Author, affiliation, country, contact, and running-header fields remain placeholders. Builds pass only with a logged `DRAFT_WAIVER=1`; no identity was invented. A release build must be rerun without the waiver after real metadata are supplied. |
+| 2 | **OPEN scientific gap; wording closed** | Every headline FIR estimate is explicitly outcome-known/test-exposed. The abstract, contribution ledger, Results, Discussion, and Conclusion make no independent-confirmation claim. Only a genuinely untouched temporal/non-Amazon split with independent one-shot custody can close the evidentiary gap. |
+| 3 | **Claim overreach CLOSED; experiment OPEN** | The paper now says only that the tested trainable left-causal residual arms improved frozen identity in this setup. It states that shared/nonlinear arms were not separated from learned taps, MA/HP are redundant, and the absent active lag-0/pointwise non-temporal placebo prevents temporal-specific attribution. A new matched placebo study remains required. |
+| 4 | **CLOSED after the 22:00 audit** | `bootstrap_public_clone.py` now hydrates and raw-hash-verifies every release section, including all 48 control final-evaluation JSONs, 48 sidecars, and 48 checkpoints. A fresh deep-path Windows clone installed 282/282 release-only assets and passed exact HSTU parity, every adjudicator, Office V1 VOID retention, and the strict graph/manifest gate. The release footprint is documented as approximately 4.60 GB. |
+| 5 | **CLOSED** | E-A is labeled the frozen independent-arm Welch/Satterthwaite analysis: ordinary 95% Welch CI, df=13.939; its paired-by-seed result is descriptive only. Hybrid intervals are ordinary paired 95% CIs; Holm adjusts p-values/decisions, not intervals. A new health gate forbids the stale labels. |
+| 6 | **OPEN human verification; disclosure closed** | Dirty-tree execution across five commits, absent independent sidecar custody, and the limited local start marker are retained in the main text and erratum. The study remains outcome-known exploratory evidence. Only the maintainer can verify pre-adjudication human/tool visibility. |
+| 7 | **Citation/scope CLOSED; executions OPEN** | FreqRec and WEARec are cited in Table 0, Related Work, Method, and the bibliography; BSARec is correctly scoped to Theorem 1 on repeated softmax attention, not the HSTU-style operator. The governed AlphaFuse port is disclosed as `NONCOUNTABLE`/`manuscript_allowed=false`, with no endpoint imported. Equal-protocol current baselines remain future experimental work. |
+| 8 | **Claim boundary CLOSED; sensitivities OPEN** | The estimand is next recorded review event, not preference/purchase/deployment engagement. Rating, verified-purchase, keep-latest, real implicit-event, global-time, and query-time-catalog sensitivities remain unrun and are named limitations. |
+| 9 | **Partly CLOSED** | Headline E-A is now represented by two paper-bound `fir_v3` graph cells, making 192 active cells across 18 families with zero mismatch/untraceable cells. Availability text distinguishes the numerical artifact graph, the release manifest, and Table 0’s citation ledger; it no longer claims every printed sentence is hash-manifested. Table 0 intentionally remains `checked: 0` because it is a literature/novelty table, not a numerical-result family. Full transitive rank/source coverage and mutation testing remain open assurance work. |
+| 10 | **Primary paper type CLOSED; validation depth OPEN** | Title, abstract, Introduction, Table 0, Related Work, Discussion, and Conclusion consistently define the paper as an **incremental modular FIR contribution**. The audit/rebuild apparatus is a supporting contribution, not the lead. Current-baseline execution, cross-repository validation, fault injection, and reviewer-usability evidence would strengthen but do not redefine the paper type. |
+| 11 | **CLOSED** | “Transfers,” “cross-category confirmation/transfer,” “FIR-specific interpretation,” and “supports temporal mixing” were removed from the canonical and rendered manuscripts. Shared/nonlinear controls are described as statistically unseparated, never equivalent. The health gate now fails on the stale attribution phrases. |
+| 12 | **CLOSED** | The manuscript names the separately frozen five-test family A and four-test family B, reports all nine Holm-adjusted p-values, labels every CI ordinary paired, and states that neither one global nine-test family nor simultaneous-CI coverage is implied. |
+| 13 | **OPEN; accurately scoped** | Inference remains over optimizer seeds on fixed splits. Retained tests are not equivalence. Repeated temporal cutoffs/splits and hierarchical dataset/user/item inference require new experiments and were not manufactured post hoc. |
+| 14 | **OPEN experiment/opportunity** | The 16-parameter shared arm’s numerical performance is disclosed without a superiority or efficiency claim. Fresh preregistered shared/grouped/low-rank/placebo arms, noninferiority margins, and parameter/latency/memory Pareto curves remain required. |
+| 15 | **OPEN experimental/engineering work** | Cache/item-map binding, metadata-missingness controls, repeated thinning draws, tie-safe sensitivity, and item-macro/hierarchical inference remain incomplete. Claims were narrowed rather than treating these omissions as repaired. |
+| 16 | **OPEN release/deposit item** | The public evidence assets are complete, remotely size/digest checked, and clean-clone replayed, but the mutable `v0.9-audit-evidence` and stale deposit tag are not represented as a final immutable archival deposit. A new versioned release/tag and DOI deposit must be cut only after final author/legal metadata and a final clean-clone replay. |
+| 17 | **Partly CLOSED** | Related Work was condensed; Table 0 was redesigned from six cramped columns to a readable four-column claim ledger; the venue PDF fell from 41 to 40 pages and the reader PDF from 46 to 45; the appendix and supplement overflows were repaired; and targeted visual inspection found no clipping. The final titration block is kept with its heading. Reader bookmarks/tagging, venue PDF tagging, complete accessibility text, and further body-length reduction remain editorial/accessibility work. |
+| 18 | **OPEN — author/legal action required** | Outcome visibility, exact dirty patches, author order/identity, portal mode and length, ethics/privacy review, funding/conflicts, licenses, and derivative-redistribution permission require maintainer verification. |
 
 ## Net claim after the audit
 
-The paper is a modular contribution paper, not a brand-new architecture paper. Its
-defensible result is that several identity-initialized strictly causal temporal-mixing
-modules improve the tested backbone on fixed outcome-visible settings. Learned FIR
-taps are one successful realization, but the active controls do not establish that
-per-channel learned FIR coefficients are uniquely necessary. The evaluation apparatus
-makes that narrower result, the failed claims, and the custody/protocol defects
-reproducible; it does not promote them to independent confirmation.
+This is a modular contribution paper, not a brand-new algorithm or architecture
+paper. The defensible result is narrower: under fixed outcome-visible settings,
+tested trainable left-causal residual arms improved a frozen-identity control.
+Learned per-channel FIR taps are one successful realization, but the present
+controls establish neither learned-tap superiority nor temporal specificity.
+The artifact apparatus makes that boundary, the nulls, and the deviations
+reproducible; it does not turn them into independent confirmation.
+
+## Reproduction evidence
+
+The final manuscript snapshot at commit `43d3594b` was cloned under an ordinary
+deep Windows path. Bootstrap installed and raw-hash-verified 282/282
+release-only assets. The strict replay independently hydrated HSTU-BLaIR commit
+`40a27879`, obtained bitwise core-block parity, recomputed 192/192 active cells
+across 18 claim families with zero mismatches or untraceable cells, verified
+745/745 manifested files, passed every governed adjudicator including
+`CTRL-ACTIVE-CONTROL-SUPPORTED`, retained Office V1 as VOID, and ended
+`SUBMISSION REBUILD: PASS`. A release tag/DOI deposit should repeat this check
+after author/legal metadata are finalized.

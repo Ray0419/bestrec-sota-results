@@ -143,6 +143,12 @@ H10_BANNED = ("external auditor", "exactly the commit carrying",
               "single-lever", "per-lever", "dissociat",
               "toggling one named lever", "filter's share", "filter’s share")
 H10_BANNED_RE = (r"residual[^.\n]{0,60}content component",)
+# Audit 2026-07-27: the md/TeX mirror drifted and silently restored stale
+# attribution, inference labels, counts, and theorem numbering.
+H10_BANNED += ("supports causal temporal mixing", "causal temporal mixing/activity",
+               "Thm 3.1", "Holm-corrected paired t", "190 paper-bound cells",
+               "190 reported cells", "17 claim families")
+H10_BANNED_RE += (r"ordinary paired 95\\?% CI[^.\n]{0,50}0\.002265",)
 _pub10 = [os.path.join(HERE, "..", rel) for rel in (
     "PAPER_SUBMISSION.md", "README.md", "COVER_LETTER_TORS.md", "CANONICAL_SUBMISSION.md",
     "PLAIN_LANGUAGE_COMPANION.md", "CITATION.cff", ".zenodo.json",

@@ -650,6 +650,35 @@ def rule_welch_2arm_bt(p):
             "ci95_lo": ma - mb - tc * se, "ci95_hi": ma - mb + tc * se,
             "n_units": float(min(len(xa), len(xb)))}
 
+def rule_fir_v3_welch_adjudicated(p):
+    """Bind an E-A frozen Welch contrast to runs, initialization, and verdict."""
+    out = rule_welch_2arm_bt(p)
+    adjud = load(p["adjud"])
+    if adjud.get("verdict") != "W-POS":
+        raise ValueError("FIR V3 adjudication verdict drift")
+    rows = {row["contrast"]: row for row in adjud.get("contrasts", [])}
+    if p["contrast"] not in rows:
+        raise ValueError(f"FIR V3 adjudication missing {p['contrast']}")
+    row = rows[p["contrast"]]
+    expected = {"diff": row["est"], "t": row["t"], "df": row["df"],
+                "p": row["p"], "ci95_lo": row["ci"][0],
+                "ci95_hi": row["ci"][1]}
+    for key, value in expected.items():
+        if abs(float(out[key]) - float(value)) > 1e-12:
+            raise ValueError(f"FIR V3 adjudicated {key} drift: {out[key]} != {value}")
+    for seed, af, bf in zip(p["seeds"], p["a"], p["b"]):
+        a, b = load(af), load(bf)
+        if (a["config"].get("seed") != seed or b["config"].get("seed") != seed
+                or a.get("init_state_sha256") != b.get("init_state_sha256")):
+            raise ValueError(f"FIR V3 matched-initialization drift for seed {seed}")
+        frozen = adjud["init_hash_by_seed"][str(seed)]
+        if (frozen.get(p["a_arm"]) != a.get("init_state_sha256")
+                or frozen.get(p["b_arm"]) != b.get("init_state_sha256")):
+            raise ValueError(f"FIR V3 adjudicated initialization drift for seed {seed}")
+    out["holm_significant"] = float(bool(row.get("holm_significant")))
+    out["verdict_w_pos"] = 1.0
+    return out
+
 def rule_theirs_jsonl(p):
     """metric from a reference-implementation local run's metrics.jsonl (a tee of
     every value their trainer writes to TensorBoard; THEIRS_ON_OURS_REPORT.md).
@@ -785,7 +814,7 @@ PUB_SASREC_OFF = 0.0153     # Liu 2025, published Office_Products SASRec (extern
 REQUIRED_FAMILIES = ["table1", "table1a", "table1b", "table1c", "table1d", "table1e",
                      "table541", "table542", "tableV2conf", "table2",
                      "office_confirmation", "theirs_on_ours", "fir_breadth",
-                     "fir_canonical_breadth", "fir_controls", "office_v3", "tfv2"]
+                     "fir_v3", "fir_canonical_breadth", "fir_controls", "office_v3", "tfv2"]
 
 OFFICE_VOID_NOTE = ("VOID under prereg floor check (+44% floor inflation); "
                     "provisional, not counted as a pass")
@@ -800,6 +829,7 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "delta_means": "mean(a) - mean(b) of best_test[{m}]",
         "paired_delta": "mean/sd over seeds of per-seed paired (a-b) best_test[{m}]",
         "paired_delta_adjudicated": "matched-init paired (a-b) best_test[{m}], with frozen configuration, initialization hashes, statistics, verdict, and Holm decision cross-checked against the mechanical adjudication JSON",
+        "fir_v3_welch_adjudicated": "frozen E-A independent-arm Welch contrast on best_test[{m}], bound to matched initialization hashes, adjudicated statistics, and verdict",
         "fir_control_contrast": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with statistics, frozen verdict, and Holm decision cross-checked against the mechanical active-control adjudication JSON",
         "pct_of_paired": "100 * mean per-seed (a-b) / mean(b), best_test[{m}]",
         "pct_change": "100 * (mean(a)/denom - 1), best_test[{m}]",
@@ -1859,6 +1889,33 @@ def build_spec():
                              "pre-declared same-seed analysis (2026-07-19; the arms are not "
                              "initialization-paired, S5.3 disclosure). Part of the pre-declared "
                              "breadth campaign family."))
+
+    # ------- fir_v3: headline E-A frozen Welch contrasts -------
+    FIRV3_SEEDS = list(range(20260713, 20260721))
+    FIRV3_ADJ = BR + "fir_v3_adjudication.json"
+    FIRV3_NOTE = ("PREREG_FIR_V3.md frozen analysis: independent-arm Welch/"
+                  "Satterthwaite despite matched initialization; paired-by-seed "
+                  "difference is descriptive. Outcome-visible internal evidence.")
+    for short, a_arm, b_arm, contrast, mu, lo, hi, df, pv, holm in (
+            ("primary", "a1learned", "a0ident", "A1-A0 (PRIMARY)",
+             0.002265, 0.001928, 0.002602, 13.9394, 9.16123454430081e-10, 1),
+            ("wd", "a2learnedwd0", "a1learned", "A2-A1",
+             0.000010, -0.000339, 0.000360, 13.9991, 0.9505409921847826, 0)):
+        AF = [BR + f"results_MI_FIRV3_{a_arm}_seed{s}.json" for s in FIRV3_SEEDS]
+        BF = [BR + f"results_MI_FIRV3_{b_arm}_seed{s}.json" for s in FIRV3_SEEDS]
+        C.append(cell(f"firv3.{short}.welch", "fir_v3",
+                      f"E-A FIR V3 {contrast} frozen Welch contrast",
+                      "independent-arm Welch 95% CI on best-by-val full-catalog NDCG@10",
+                      AF + BF + [FIRV3_ADJ], "fir_v3_welch_adjudicated",
+                      {"a": AF, "b": BF, "a_arm": a_arm, "b_arm": b_arm,
+                       "contrast": contrast, "adjud": FIRV3_ADJ,
+                       "seeds": FIRV3_SEEDS},
+                      [chk("diff", mu, 6), chk("ci95_lo", lo, 6),
+                       chk("ci95_hi", hi, 6), chk("df", df, 4),
+                       chk("p", pv, mode="approx", tol=1e-12),
+                       chk("holm_significant", holm, mode="count"),
+                       chk("verdict_w_pos", 1, mode="count")],
+                      8, "exploratory", seeds=FIRV3_SEEDS, notes=FIRV3_NOTE))
 
     # ------- fir_canonical_breadth: canonical gradient-active FIR vs identity -------
     # Frozen matched-initialization design; one K/epoch configuration, zero category tuning.

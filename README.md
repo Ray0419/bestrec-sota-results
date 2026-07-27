@@ -17,7 +17,7 @@ uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --s
 ```
 
 This runs, fail-closed: the bitwise HSTU core-block parity test → the artifact-graph build
-(**all 190 artifact-gated cells recomputed from source artifacts**; exits
+(**all 192 artifact-gated cells recomputed from source artifacts**; exits
 nonzero on any mismatch, untraceable cell, or missing claim family) → release-manifest hash
 verification (744 files at the current manifest) → the pre-declared Musical_Instruments gate adjudicator → the TFV2 repaired-estimand adjudicator (outcome-visible — §5.3 chronology) → **the
 Office V3 adjudicator (counted; the build fails unless the campaign verdict is PASS)** →
@@ -46,7 +46,7 @@ blobs (`DOI_DEPOSIT_INSTRUCTIONS.md` has the full rule).
   Industrial_and_Scientific Δ **+0.0024** [+0.0019, +0.0029], CDs_and_Vinyl **+0.0057**
   [+0.0050, +0.0063]; the treatment is the FIR-plus-initialization/optimizer package)
   (`PREREG_FIR_BREADTH.md`, `FIR_BREADTH_RESULTS.md` + its 2026-07-20 erratum).
-- **Pre-declared fresh-seed hybrid (E-F, 2026-07-23):** late z-score fusion with train-only EASE (Steck 2019) lifted test NDCG@10 on all three categories tested (MI +0.0024, IS +0.0026, VG +0.0032; Holm-corrected paired t, fresh seeds 20260721-25); the MI fused five-seed mean 0.04399 exceeds the published single-run 0.0406 (point-estimate comparison, environment-caveated; see PAPER_SUBMISSION.md §5.7).
+- **Pre-declared fresh-seed hybrid (E-F, 2026-07-23):** late z-score fusion with train-only EASE (Steck 2019) lifted test NDCG@10 on all three categories tested (MI +0.0024, IS +0.0026, VG +0.0032; ordinary paired 95% CIs with Holm-adjusted decisions, fresh seeds 20260721-25); the MI fused five-seed mean 0.04399 exceeds the published single-run 0.0406 (point-estimate comparison, environment-caveated; see PAPER_SUBMISSION.md §5.7).
 - **Sparse-warm text-fusion study (E-G, 2026-07-23; OUTCOME-VISIBLE, PROTOCOL-DEVIATED — descriptive only):** a validation-selected history-centroid text scorer raised tail-bin test NDCG@10 on all five categories (+0.0011 to +0.0048) at aggregate cost within margin, BUT the campaign's no-interim clause was violated, the literal config gate fails MI/VG, and the gate was amended after outcomes; no confirmatory status is claimed. Its intended clean replication (E-G2) was itself EXPOSED (a git add -A committed 14 in-progress confirm artifacts before adjudication, audit 2026-07-23 22:00); the sole remaining counted path is a future repository-sequestered E-G3 (PAPER_SUBMISSION.md §5.8).
 - **Text tail benefit: one MI frequency-5-heavy case** (cross-dataset heterogeneity not established, interaction p = 0.13; the thinning intervention did NOT explain it — one fixed draw; mechanism unresolved).
 - **The evaluation apparatus itself** — version-controlled pre-declaration (the TFV2 campaign carries OpenTimestamps proofs whose earliest Bitcoin attestation postdates its first result — the pre-launch freeze rests on Git history alone, a disclosed limitation stated exactly in §5.3 disclosure (vii)), fail-closed artifact
@@ -75,7 +75,7 @@ campaign above is a separate pre-declaration that passed under its frozen wordin
 ## Releases
 
 - **`v1.1.11-deposit`** (current archival bundle, cut 2026-07-21; each deposit release supersedes the previous) — the 66-entry deposit zip + sidecar hash + manifest + both PDFs. Supersedes `v1.1.10-deposit`, which went stale the same day it was cut (four post-tag content commits — the 22:57 audit's measured drift; the deposition gate now refuses to rebuild a version whose tag no longer matches the tree). The from-zero public-clone verification is re-executed at each pushed tag and its transcript committed to the branch.
-- **`v0.9-audit-evidence`** — the pinned-parity files/ZIP, `RELEASE_MANIFEST.json`, all 18 split CSVs, four text caches, 107 TFV2 per-user sidecars, and 144 FIR-control final-evaluation/sidecar/checkpoint files (all hash-manifested; FIR-control assets verified remotely by size and digest on 2026-07-27; the manifest inventory is authoritative). Fresh clones: `python bootstrap_public_clone.py` before the strict gate; `git submodule update --init` is optional because the parity test can hydrate the exact pinned HSTU reference commit into its isolated cache.
+- **`v0.9-audit-evidence`** — the pinned-parity files/ZIP, `RELEASE_MANIFEST.json`, all 18 split CSVs, four text caches, 107 TFV2 per-user sidecars, and 144 FIR-control final-evaluation/sidecar/checkpoint files (all hash-manifested; FIR-control assets verified remotely by size and digest on 2026-07-27; the manifest inventory is authoritative). A complete bootstrap downloads approximately **4.60 GB** across 282 release-only assets. Fresh clones: `python bootstrap_public_clone.py` before the strict gate; `git submodule update --init` is optional because the parity test can hydrate the exact pinned HSTU reference commit into its isolated cache.
 - **`bestrec-raw-records-v1`** — the historical LC2C project's raw records (see `README_LC2C_HISTORICAL.md`).
 
 Data: the Amazon Reviews 2023 dataset (McAuley Lab) is **not redistributed**; derived

@@ -16,14 +16,14 @@ Recommender evaluation is vulnerable to mistuned baselines, incompatible protoco
 and irreproducible result selection
 \citep{ferraridacrema2019worrying,ferraridacrema2021troubling}. We therefore pair
 the method with a per-paper discipline: git-frozen protocols, a fail-closed graph that
-recomputes 190 reported cells across 17 claim families, environment-caveated comparator
+recomputes 192 reported cells across 18 claim families, environment-caveated comparator
 regeneration, and symmetric adjudication. Failures are retained. In particular, the
 original Office\_Products protocol remains VOID after its own floor check exposed an
 environment mismatch, although a redesigned fresh-seed protocol later passed
 (\S\ref{sec:5.2}; Appendix A.0).
 
 Using an HSTU-style pure-PyTorch encoder based on \citet{zhai2024hstu}, we ask whether
-one small causal filtering component survives matched controls and transfers without
+one small causal filtering component survives matched controls and can be reused without
 category-specific tuning. Our contribution ledger is deliberately limited to three
 items:
 
@@ -40,8 +40,8 @@ CDs\_and\_Vinyl (+0.006150 [0.005849, 0.006450]) (\S\ref{sec:5.2}). Because
 these studies reuse outcome-visible splits, they are internal robustness evidence, not
 independent confirmation. On Musical\_Instruments, shared and parameter-matched
 nonlinear causal controls also improve identity and are not separated from learned taps;
-this narrows the supported mechanism to causal temporal mixing rather than uniquely
-learned per-channel FIR coefficients. A frequency-5-heavy Musical\_Instruments
+the absence of an active non-temporal placebo means these controls do not isolate
+temporal structure, learned taps, or generic trainable-residual capacity. A frequency-5-heavy Musical\_Instruments
 text-tail effect is secondary and does not establish cross-dataset heterogeneity
 (\S\ref{sec:5.3}--\S\ref{sec:5.4}).
 \item \textbf{An auditable evaluation record.} Released protocols, artifacts,

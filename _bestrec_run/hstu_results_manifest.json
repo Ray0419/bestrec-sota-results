@@ -23,6 +23,7 @@
   "office_confirmation",
   "theirs_on_ours",
   "fir_breadth",
+  "fir_v3",
   "fir_canonical_breadth",
   "fir_controls",
   "office_v3",
@@ -14095,6 +14096,384 @@
      "mode": "gt",
      "recomputed": 0.005041275737688595,
      "result": "qual_ok"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "firv3.primary.welch",
+   "table_id": "fir_v3",
+   "row_label": "E-A FIR V3 A1-A0 (PRIMARY) frozen Welch contrast",
+   "metric": "independent-arm Welch 95% CI on best-by-val full-catalog NDCG@10",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260713.json",
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260714.json",
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260715.json",
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260716.json",
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260717.json",
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260718.json",
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260719.json",
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260720.json",
+    "_bestrec_run/results_MI_FIRV3_a0ident_seed20260713.json",
+    "_bestrec_run/results_MI_FIRV3_a0ident_seed20260714.json",
+    "_bestrec_run/results_MI_FIRV3_a0ident_seed20260715.json",
+    "_bestrec_run/results_MI_FIRV3_a0ident_seed20260716.json",
+    "_bestrec_run/results_MI_FIRV3_a0ident_seed20260717.json",
+    "_bestrec_run/results_MI_FIRV3_a0ident_seed20260718.json",
+    "_bestrec_run/results_MI_FIRV3_a0ident_seed20260719.json",
+    "_bestrec_run/results_MI_FIRV3_a0ident_seed20260720.json",
+    "_bestrec_run/fir_v3_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260713,
+    20260714,
+    20260715,
+    20260716,
+    20260717,
+    20260718,
+    20260719,
+    20260720
+   ],
+   "recompute": {
+    "rule": "fir_v3_welch_adjudicated",
+    "params": {
+     "a": [
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260713.json",
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260714.json",
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260715.json",
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260716.json",
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260717.json",
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260718.json",
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260719.json",
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260720.json"
+     ],
+     "b": [
+      "_bestrec_run/results_MI_FIRV3_a0ident_seed20260713.json",
+      "_bestrec_run/results_MI_FIRV3_a0ident_seed20260714.json",
+      "_bestrec_run/results_MI_FIRV3_a0ident_seed20260715.json",
+      "_bestrec_run/results_MI_FIRV3_a0ident_seed20260716.json",
+      "_bestrec_run/results_MI_FIRV3_a0ident_seed20260717.json",
+      "_bestrec_run/results_MI_FIRV3_a0ident_seed20260718.json",
+      "_bestrec_run/results_MI_FIRV3_a0ident_seed20260719.json",
+      "_bestrec_run/results_MI_FIRV3_a0ident_seed20260720.json"
+     ],
+     "a_arm": "a1learned",
+     "b_arm": "a0ident",
+     "contrast": "A1-A0 (PRIMARY)",
+     "adjud": "_bestrec_run/fir_v3_adjudication.json",
+     "seeds": [
+      20260713,
+      20260714,
+      20260715,
+      20260716,
+      20260717,
+      20260718,
+      20260719,
+      20260720
+     ]
+    }
+   },
+   "recompute_rule": "frozen E-A independent-arm Welch contrast on best_test[NDCG@10], bound to matched initialization hashes, adjudicated statistics, and verdict",
+   "paper": [
+    {
+     "name": "diff",
+     "value": 0.002265,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci95_lo",
+     "value": 0.001928,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci95_hi",
+     "value": 0.002602,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "df",
+     "value": 13.9394,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "p",
+     "value": 9.16123454430081e-10,
+     "mode": "approx",
+     "tol": 1e-12
+    },
+    {
+     "name": "holm_significant",
+     "value": 1,
+     "mode": "count"
+    },
+    {
+     "name": "verdict_w_pos",
+     "value": 1,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_FIR_V3.md frozen analysis: independent-arm Welch/Satterthwaite despite matched initialization; paired-by-seed difference is descriptive. Outcome-visible internal evidence.",
+   "recomputed": {
+    "diff": 0.0022648092815169413,
+    "t": 14.409116699159123,
+    "df": 13.939443968905419,
+    "p": 9.161234544300794e-10,
+    "ci95_lo": 0.0019275565978982968,
+    "ci95_hi": 0.0026020619651355857,
+    "n_units": 8.0,
+    "holm_significant": 1.0,
+    "verdict_w_pos": 1.0
+   },
+   "recomputed_value": 0.0022648092815169413,
+   "paper_check": [
+    {
+     "name": "diff",
+     "paper": 0.002265,
+     "mode": "round",
+     "recomputed": 0.0022648092815169413,
+     "result": "exact",
+     "rounded": 0.002265
+    },
+    {
+     "name": "ci95_lo",
+     "paper": 0.001928,
+     "mode": "round",
+     "recomputed": 0.0019275565978982968,
+     "result": "exact",
+     "rounded": 0.001928
+    },
+    {
+     "name": "ci95_hi",
+     "paper": 0.002602,
+     "mode": "round",
+     "recomputed": 0.0026020619651355857,
+     "result": "exact",
+     "rounded": 0.002602
+    },
+    {
+     "name": "df",
+     "paper": 13.9394,
+     "mode": "round",
+     "recomputed": 13.939443968905419,
+     "result": "exact",
+     "rounded": 13.9394
+    },
+    {
+     "name": "p",
+     "paper": 9.16123454430081e-10,
+     "mode": "approx",
+     "recomputed": 9.161234544300794e-10,
+     "result": "within_tol"
+    },
+    {
+     "name": "holm_significant",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    },
+    {
+     "name": "verdict_w_pos",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "firv3.wd.welch",
+   "table_id": "fir_v3",
+   "row_label": "E-A FIR V3 A2-A1 frozen Welch contrast",
+   "metric": "independent-arm Welch 95% CI on best-by-val full-catalog NDCG@10",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260713.json",
+    "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260714.json",
+    "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260715.json",
+    "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260716.json",
+    "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260717.json",
+    "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260718.json",
+    "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260719.json",
+    "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260720.json",
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260713.json",
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260714.json",
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260715.json",
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260716.json",
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260717.json",
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260718.json",
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260719.json",
+    "_bestrec_run/results_MI_FIRV3_a1learned_seed20260720.json",
+    "_bestrec_run/fir_v3_adjudication.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20260713,
+    20260714,
+    20260715,
+    20260716,
+    20260717,
+    20260718,
+    20260719,
+    20260720
+   ],
+   "recompute": {
+    "rule": "fir_v3_welch_adjudicated",
+    "params": {
+     "a": [
+      "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260713.json",
+      "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260714.json",
+      "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260715.json",
+      "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260716.json",
+      "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260717.json",
+      "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260718.json",
+      "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260719.json",
+      "_bestrec_run/results_MI_FIRV3_a2learnedwd0_seed20260720.json"
+     ],
+     "b": [
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260713.json",
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260714.json",
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260715.json",
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260716.json",
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260717.json",
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260718.json",
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260719.json",
+      "_bestrec_run/results_MI_FIRV3_a1learned_seed20260720.json"
+     ],
+     "a_arm": "a2learnedwd0",
+     "b_arm": "a1learned",
+     "contrast": "A2-A1",
+     "adjud": "_bestrec_run/fir_v3_adjudication.json",
+     "seeds": [
+      20260713,
+      20260714,
+      20260715,
+      20260716,
+      20260717,
+      20260718,
+      20260719,
+      20260720
+     ]
+    }
+   },
+   "recompute_rule": "frozen E-A independent-arm Welch contrast on best_test[NDCG@10], bound to matched initialization hashes, adjudicated statistics, and verdict",
+   "paper": [
+    {
+     "name": "diff",
+     "value": 1e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci95_lo",
+     "value": -0.000339,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci95_hi",
+     "value": 0.00036,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "df",
+     "value": 13.9991,
+     "mode": "round",
+     "precision": 4
+    },
+    {
+     "name": "p",
+     "value": 0.9505409921847826,
+     "mode": "approx",
+     "tol": 1e-12
+    },
+    {
+     "name": "holm_significant",
+     "value": 0,
+     "mode": "count"
+    },
+    {
+     "name": "verdict_w_pos",
+     "value": 1,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_FIR_V3.md frozen analysis: independent-arm Welch/Satterthwaite despite matched initialization; paired-by-seed difference is descriptive. Outcome-visible internal evidence.",
+   "recomputed": {
+    "diff": 1.028929412118934e-05,
+    "t": 0.06314859569752786,
+    "df": 13.999080339219182,
+    "p": 0.9505409921847818,
+    "ci95_lo": -0.0003391797135099343,
+    "ci95_hi": 0.000359758301752313,
+    "n_units": 8.0,
+    "holm_significant": 0.0,
+    "verdict_w_pos": 1.0
+   },
+   "recomputed_value": 1.028929412118934e-05,
+   "paper_check": [
+    {
+     "name": "diff",
+     "paper": 1e-05,
+     "mode": "round",
+     "recomputed": 1.028929412118934e-05,
+     "result": "exact",
+     "rounded": 1e-05
+    },
+    {
+     "name": "ci95_lo",
+     "paper": -0.000339,
+     "mode": "round",
+     "recomputed": -0.0003391797135099343,
+     "result": "exact",
+     "rounded": -0.000339
+    },
+    {
+     "name": "ci95_hi",
+     "paper": 0.00036,
+     "mode": "round",
+     "recomputed": 0.000359758301752313,
+     "result": "exact",
+     "rounded": 0.00036
+    },
+    {
+     "name": "df",
+     "paper": 13.9991,
+     "mode": "round",
+     "recomputed": 13.999080339219182,
+     "result": "exact",
+     "rounded": 13.9991
+    },
+    {
+     "name": "p",
+     "paper": 0.9505409921847826,
+     "mode": "approx",
+     "recomputed": 0.9505409921847818,
+     "result": "within_tol"
+    },
+    {
+     "name": "holm_significant",
+     "paper": 0,
+     "mode": "count",
+     "recomputed": 0.0,
+     "result": "exact"
+    },
+    {
+     "name": "verdict_w_pos",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
     }
    ],
    "paper_check_class": "exact"

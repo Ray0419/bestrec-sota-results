@@ -464,6 +464,13 @@ def regen(m):
         _point_jsons.extend(_g.glob(os.path.join(ROOT, "_bestrec_run", pattern)))
     _point_jsons = [p for p in _point_jsons if not p.endswith(".finaleval.json")]
     add_result_family("FIR_POINTWISE_OUTCOME_KNOWN", _point_jsons)
+    _dm_v1_feasibility = [
+        os.path.join(ROOT, "FIR_PROSPECTIVE_DM_V1_FEASIBILITY.md"),
+        os.path.join(ROOT, "_bestrec_run", "digital_music_acquisition_manifest.json"),
+        os.path.join(ROOT, "_bestrec_run", "digital_music_feasibility.json"),
+    ]
+    if all(os.path.exists(p) for p in _dm_v1_feasibility):
+        add_result_family("FIR_PROSPECTIVE_DM_V1_FEASIBILITY_VOID", _dm_v1_feasibility)
 
     # audit 2026-07-24 (E-E freeze): keep protocol_code in lock-step with the
     # governed-completeness gate -- auto-register any tracked governed file

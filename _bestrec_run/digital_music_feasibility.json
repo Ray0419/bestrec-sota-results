@@ -1,0 +1,52 @@
+{
+  "category": "Digital_Music",
+  "checks": {
+    "identical_split_user_sets": true,
+    "minimum_interactions": false,
+    "minimum_items": false,
+    "minimum_three_train_per_user": false,
+    "minimum_users": false,
+    "no_train_test_pair_overlap": true,
+    "no_train_valid_pair_overlap": true,
+    "no_valid_test_pair_overlap": true,
+    "rating_pairs_unique": true,
+    "split_pair_union_equals_rating_only": true,
+    "split_rows_sum_to_rating_only": true,
+    "test_one_per_user": true,
+    "valid_one_per_user": true
+  },
+  "counts": {
+    "interactions": 0,
+    "items": 0,
+    "minimum_train_interactions_per_user": 0,
+    "test": 0,
+    "train": 0,
+    "users": 0,
+    "valid": 0
+  },
+  "created_utc": "2026-07-27T23:39:54.404712+00:00",
+  "files": {
+    "rating_only": {
+      "bytes": 38,
+      "path": "data_5core/5core/rating_only/Digital_Music.csv",
+      "sha256": "ee05e544c907fa8e7986e9840768e613ff33a4630c60993514f57bd5cc5e9ebf"
+    },
+    "test": {
+      "bytes": 38,
+      "path": "data_5core/5core/last_out/Digital_Music.test.csv",
+      "sha256": "ee05e544c907fa8e7986e9840768e613ff33a4630c60993514f57bd5cc5e9ebf"
+    },
+    "train": {
+      "bytes": 38,
+      "path": "data_5core/5core/last_out/Digital_Music.train.csv",
+      "sha256": "ee05e544c907fa8e7986e9840768e613ff33a4630c60993514f57bd5cc5e9ebf"
+    },
+    "valid": {
+      "bytes": 38,
+      "path": "data_5core/5core/last_out/Digital_Music.valid.csv",
+      "sha256": "ee05e544c907fa8e7986e9840768e613ff33a4630c60993514f57bd5cc5e9ebf"
+    }
+  },
+  "protocol": "PREREG_FIR_PROSPECTIVE_DM_V1_SELECTION",
+  "verdict": "DM-V1-FEASIBILITY-VOID"
+}

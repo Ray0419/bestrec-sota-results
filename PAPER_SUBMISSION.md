@@ -779,3 +779,9 @@ A future apples-to-apples comparison would require either:
 | 0.88 | 21.484 | +0.002520 ± 0.000421 (5/5) | +0.004869 ± 0.000765 (5/5) | +0.000537 ± 0.000386 (4/5) | +0.000661 ± 0.000995 (4/5) |
 | 0.78 | 19.030 | +0.002664 ± 0.000398 (5/5) | +0.004467 ± 0.001082 (5/5) | +0.000056 ± 0.000552 (2/5) | +0.000239 ± 0.001087 (2/5) |
 | 0.66 | 16.109 | +0.003540 ± 0.000416 (5/5) | +0.005720 ± 0.000904 (5/5) | −0.000108 ± 0.000503 (1/5) | +0.000073 ± 0.001165 (3/5) |
+
+### S.6 — Selected-checkpoint FIR diagnostics
+
+![Fig. S1: Learned residual-tap and effective frequency-response summaries from the eight released selected checkpoints of the outcome-known active-control learned arm. Channels are summarized within each seed; bands are ordinary 95% t intervals over the eight seed summaries. Lag 0 is contemporaneous. These are descriptive fitted-operator diagnostics, not a mechanism or independent-confirmation test; plotted values are released in `figures/fig_fir_response_data.csv`.](figures/fig_fir_response.png)
+
+*Fig. S1: Selected-checkpoint FIR diagnostics. The effective kernel is the residual identity plus the learned Δ taps. The plot establishes neither temporal specificity nor learned-tap superiority; those require the active non-temporal placebo and prospective study described in §6.*

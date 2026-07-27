@@ -106,7 +106,7 @@ reviewer can reasonably treat them as hypothesis-generating.
 1. The strict graph recomputes 192 cells across 18 claim families with no
    mismatch or untraceable cell.
 2. A clean deep-path clone bootstrapped and raw-hash-verified 282/282
-   release-only assets, verified 745/745 manifested files, reproduced exact
+   release-only assets, verified 751/751 manifested files, reproduced exact
    aligned core-block parity, retained the permanent Office V1 VOID, and passed
    the strict rebuild.
 3. The paper preserves null, deviated, refuting, and VOID results.

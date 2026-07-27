@@ -49,7 +49,7 @@ paper-bound cells across 18 claim families from released artifacts. The release
 manifest and strict rebuild preserve positive, null, deviated, and permanently
 VOID outcomes under the same reporting rule. A fresh deep-path Windows clone
 bootstrapped and raw-hash-verified all 282 release-only assets, reproduced exact
-core-block parity against the disclosed HSTU-BLaIR commit, verified 745/745
+core-block parity against the disclosed HSTU-BLaIR commit, verified 751/751
 manifested files, and completed the strict rebuild. The public repository is
 https://github.com/Ray0419/bestrec-sota-results.
 

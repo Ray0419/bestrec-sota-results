@@ -19,3 +19,23 @@
 \end{quote}
 
 \input{tables/table1e}
+
+\section*{S.6 --- Selected-checkpoint FIR diagnostics}
+
+\begingroup
+\renewcommand{\thefigure}{S\arabic{figure}}
+\setcounter{figure}{0}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.96\linewidth]{fig_fir_response.pdf}
+  \caption{Learned residual-tap and effective frequency-response summaries from
+  the eight released selected checkpoints of the outcome-known active-control
+  learned arm. Channels are summarized within each seed; bands are ordinary
+  95\% $t$ intervals over the eight seed summaries. Lag 0 is contemporaneous.
+  These are descriptive fitted-operator diagnostics, not a mechanism or
+  independent-confirmation test; plotted values are released in
+  \texttt{figures/fig\_fir\_response\_data.csv}. The effective kernel is the
+  residual identity plus the learned $\Delta$ taps.}
+  \label{fig:fir-response}
+\end{figure}
+\endgroup

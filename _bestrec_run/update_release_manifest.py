@@ -75,8 +75,12 @@ FIGURE_ASSETS = [
     "figures/fig_tail_law_mechanism.pdf",
     "figures/fig_r1r2_plane.png",
     "figures/fig_r1r2_plane.pdf",
+    "figures/fig_fir_response_data.csv",
+    "figures/fig_fir_response.png",
+    "figures/fig_fir_response.pdf",
     "_bestrec_run/make_fig_tail_law_mechanism.py",
     "_bestrec_run/make_fig_r1r2_plane.py",
+    "_bestrec_run/make_fig_fir_response.py",
 ]
 AUX_GRAPH_SOURCES = [
     "_bestrec_sota_lab/runs/hstu_blair_eval_export_full_20260609_fg/hstu_blair_eval_export_summary.json",

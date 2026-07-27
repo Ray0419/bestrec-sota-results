@@ -2,77 +2,71 @@
 
 Dear Editors,
 
-We submit "Artifact-Gated Evaluation of Text-Augmented Sequential Recommendation: An FIR-Optimizer Package and a Musical-Instruments Frequency-5 Case Study on Amazon Reviews 2023" for consideration as a full research article.
+We submit “Artifact-Gated Evaluation of a Causal FIR Module for Sequential
+Recommendation” for consideration as a full research article in *ACM
+Transactions on Recommender Systems*.
 
-**Declarations (per the TORS author guidelines):** this work is original, it has not been published previously, and it is not simultaneously under review or submitted elsewhere. [Maintainer: affirm at submission.]
+**Required author declarations — verify at submission.** [Maintainer: confirm
+that the work is original, has not been published previously, and is not under
+review or submitted elsewhere; complete authorship, affiliation, funding,
+conflict-of-interest, ethics/privacy, licensing, and corresponding-author
+metadata in the manuscript and submission portal.]
 
-**What the paper is.** An evaluation-first study built around a fail-closed
-apparatus: version-controlled pre-declarations, a build gate that recomputes all
-**175 artifact-gated table cells** from released, hash-manifested artifacts before
-any PDF can be produced (prose numbers outside those cells are conventional
-manuscript text), comparator regeneration under disclosed environment caveats, and
-symmetric self-VOIDing adjudication — one campaign (Office_Products V1) remains
-VOID by its own frozen rule and is reported as such, permanently.
+**Fit and contribution.** The paper evaluates a small, detachable, strictly
+left-causal finite-impulse-response residual for sequential recommendation. It
+is an incremental modular contribution, not a new recommender architecture. We
+believe it fits TORS's interest in recommender-system algorithms and rigorous
+evaluation: the module, its mechanism boundary, and an artifact-gated reporting
+workflow are assessed together.
 
-**The findings, at their exact strength.**
+**Main result at its exact strength.** Matched-initialization internal estimates
+for the trainable causal residual over frozen identity are positive on three
+Amazon Reviews 2023 categories: Musical_Instruments (+0.002265, ordinary Welch
+95% CI [0.001928, 0.002602]), Industrial_and_Scientific (+0.002110 [0.001820,
+0.002399]), and CDs_and_Vinyl (+0.006150 [0.005849, 0.006450]). All are
+outcome-known or test-exposed internal studies, not independent confirmation.
 
-1. Two pre-declared per-category point-estimate comparisons pass against the
-   published HSTU-BLaIR numbers (Musical_Instruments and Office_Products V3, the
-   latter also against an environment-matched local regeneration). These are
-   point-estimate comparisons under our reproduced protocol — not SOTA claims of
-   any kind and not paired or distributional superiority.
-2. A leak-free causal FIR filter is supported on four categories **as the
-   FIR-plus-initialization/optimizer package** — the bundle our design can
-   attribute (a singular zero-gradient initialization means Adam's weight decay
-   participates in the mechanism; §3). No filter-only causal attribution is
-   claimed; the nonsingular matched control that could isolate it is stated as
-   open, unrun work.
-3. The Musical_Instruments tail advantage of frozen text features survives a
-   repaired estimand (tie-safe cohorts, zero-exposure targets separated) but is
-   **frequency-5-heavy**: excluding the boundary-frequency group the tail delta is
-   null, the cross-dataset contrast did not replicate, and zero-exposure targets
-   record zero hits through rank 100 in all four rerun categories — no cold-start
-   capability is claimed. An interaction-thinning titration is reported as a
-   **refuting** keystone (the head effect tracks thinning; the tail effect does
-   not, and the density-matched rung does not reproduce the tail advantage).
+A pre-declared, likewise outcome-known six-arm control study narrows the
+interpretation. Every temporally active arm improves identity after its frozen
+Holm procedures. Learned taps outperform two algebraically redundant fixed
+filter parameterizations, but advantages over a shared-filter control and a
+parameter-matched nonlinear causal control are not established. Because no
+active lag-0 or pointwise parameter-matched non-temporal placebo was run, the
+study does not isolate temporal structure from generic trainable-residual
+capacity and does not claim learned-tap superiority.
 
-**Evidence taxonomy, stated plainly.** Statements in the paper are pre-declared,
-exploratory, post-hoc development analyses (labeled as such — e.g. the §5.1
-attribution rungs), or explicitly retracted; retractions and defects are reported
-in full in the manuscript, not in supplementary material. The TFV2 repaired-
-estimand campaign is pre-declared in Git but **outcome-visible**, and its
-OpenTimestamps proofs' earliest independently verifiable Bitcoin attestation
-(block 958749, 2026-07-20 01:48:23 AEST) postdates its first completed result
-(≈ 01:36 AEST) — we therefore do not claim independent external timestamping
-before launch and do not label that campaign confirmatory (§5.3, disclosure
-(vii); the frozen pre-registration carries a dated chronology erratum). Same-seed
-arms are **not** initialization-paired (§5.3 randomization disclosure); no retained claim relies on the withdrawn paired inference (the historical paired outputs are printed only together with their withdrawal).
+**Secondary results.** Two per-category point estimates exceed published
+HSTU-BLaIR values under explicitly environment-caveated reproduced protocols;
+these are neither general system-ranking claims nor paired/distributional
+superiority claims. A repaired text-tail analysis finds a small
+Musical_Instruments effect concentrated at interaction frequency 5, no hits for
+zero-exposure targets through rank 100, and no replicated cross-dataset
+contrast. We therefore make no cold-start, transfer, or general state-of-the-art
+claim.
 
-**Data and artifacts.** The public repository releases code, derived
-interaction-split CSVs, frozen text caches, and per-user evaluation sidecars as
-hash-manifested assets (the raw dataset is not re-shipped, but we state plainly
-that derived interaction-level splits are redistributed, that the dataset
-maintainers' public statement is not an affirmative permission grant, and that
-the redistribution basis is flagged for venue-level review with immediate
-takedown honored — manuscript §10). Dense sidecar identifiers are
-deterministically linkable to the platform's pseudonymous identifiers through the
-released splits, a linkage surface §10 states rather than obscures. TORS review is **single-blind** (per the current author guidelines), so the public repository and deposit are named directly: https://github.com/Ray0419/bestrec-sota-results (releases `v0.9-audit-evidence` and the archival deposit tags).
+**Why the evidence is inspectable.** A fail-closed graph recomputes 192
+paper-bound cells across 18 claim families from released artifacts. The release
+manifest and strict rebuild preserve positive, null, deviated, and permanently
+VOID outcomes under the same reporting rule. A fresh deep-path Windows clone
+bootstrapped and raw-hash-verified all 282 release-only assets, reproduced exact
+core-block parity against the disclosed HSTU-BLaIR commit, verified 745/745
+manifested files, and completed the strict rebuild. The public repository is
+https://github.com/Ray0419/bestrec-sota-results.
 
-**Adversarial review disclosure.** Throughout preparation the manuscript was
-subjected to an hourly adversarial audit by an **author-operated automation**
-(a separate coding agent instructed to falsify our claims against the public
-artifacts); every round and every point-by-point response is preserved verbatim
-in the repository. We describe this as tooling we ran on ourselves — it is not
-independent review, and we do not present it as such.
+**Material limitations and disclosure.** The manuscript reports outcome
+visibility, dirty-tree execution during one campaign, incomplete independent
+custody, fixed-split seed-level inference, construct/deployment sensitivities
+that were not run, and the absence of untouched confirmation. An author-operated
+adversarial audit and its point-by-point response are preserved in the
+repository; we do not present that tooling as independent peer review. The
+current evidence release is not represented as the final immutable archival
+deposit. [Maintainer: create the final versioned release and DOI deposit only
+after author/legal metadata and redistribution permission have been verified.]
 
-**Open work stated as open.** The closest-comparator benchmark (AlphaFuse), the
-item-text permutation control, the sequence-split/target-multiplicity parity
-control, and the nonsingular matched-FIR initialization control are identified,
-scoped, and unrun; the paper's claims are drawn narrowly enough to stand without
-them, and §6.5 lists them as the decision-relevant next experiments.
-
-Suggested reviewers / excluded reviewers: [Maintainer: optional.]
+Suggested reviewers / excluded reviewers: [Maintainer: optional; verify no
+conflicts under the current portal rules.]
 
 Thank you for your consideration.
 
-[Maintainer: real author name(s), affiliation(s), and corresponding-author contact — required; TORS review is single-blind.]
+[Maintainer: real author name(s), affiliation(s), country, and corresponding-
+author contact required.]

@@ -26,6 +26,8 @@ def run(label, args, required=True):
 def main():
     ok = True
     ok &= run("HSTU core-block parity test", ["_bestrec_run/test_hstu_parity.py"])
+    ok &= run("FIR no-future-leakage unit test",
+              ["_bestrec_run/test_fir_causality.py"])
     build_args = ["_bestrec_run/build_hstu_tables.py"]
     if STRICT:
         # accept either flag spelling of the fail-closed mode

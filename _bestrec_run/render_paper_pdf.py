@@ -13,9 +13,27 @@ import markdown  # noqa: E402
 src = io.open(MD, encoding="utf-8").read()
 body = markdown.markdown(src, extensions=["tables", "fenced_code", "toc"])
 
-# reuse the existing head/style verbatim (+ idempotent additions)
-old = io.open(HTML, encoding="utf-8").read()
-head = old.split("<body>", 1)[0] + "<body>"
+# Reuse an existing local shell when present, but remain self-contained in a
+# pristine clone.  The fallback is the canonical reader-edition style.
+if os.path.exists(HTML):
+    old = io.open(HTML, encoding="utf-8").read()
+    head = old.split("<body>", 1)[0] + "<body>"
+else:
+    head = """<!doctype html><html><head><meta charset='utf-8'><style>
+body{font-family:Charter,Georgia,serif;font-size:10.5pt;line-height:1.5;color:#111;
+max-width:17.2cm;margin:0 auto;padding:1.2cm 0}
+h1{font-size:19pt;line-height:1.2;font-family:'Segoe UI',sans-serif}
+h2{font-size:14pt;margin-top:22pt;font-family:'Segoe UI',sans-serif}
+h3{font-size:11.5pt;font-family:'Segoe UI',sans-serif}
+code{font-family:Consolas,monospace;font-size:9pt;background:#f4f4f4;padding:0 2px}
+pre{background:#f6f6f6;border:1px solid #ddd;padding:8px;font-size:8.5pt;
+overflow-x:hidden;white-space:pre-wrap}
+table{border-collapse:collapse;font-size:8.6pt;margin:10px 0;width:100%}
+td,th{border:1px solid #ccc;padding:3px 6px;text-align:left;vertical-align:top}
+th{background:#f0f0f0;font-family:'Segoe UI',sans-serif}
+blockquote{border-left:3px solid #bbb;margin-left:0;padding-left:12px;color:#444}
+@page{margin:1.6cm}
+</style></head><body>"""
 if "break-inside" not in head:  # audit: no dangling table cells across page breaks
     head = head.replace("td,th{", "tr{break-inside:avoid}\ntd,th{", 1)
 if "img{" not in head:  # embedded figures scale to text width; never slice across pages

@@ -47,6 +47,7 @@ Run:  _bestrec_run/.venv/Scripts/python _bestrec_run/build_hstu_tables.py
 Pure stdlib; CPU-only; read-only on every result artifact.
 """
 import argparse
+import csv
 import hashlib
 import json
 import math
@@ -512,6 +513,33 @@ def rule_fir_prospective_sw_v3_contrast(p):
     out["learned_mean"] = mean(values["learned"])
     out["identity_mean"] = mean(values["identity"])
     out["paired_p"] = t_two_sided_p(out["t"], out["n"] - 1)
+    deltas = [a - b for a, b in zip(values["learned"], values["identity"])]
+    # Exact two-sided sign sensitivity.  This is deliberately descriptive and
+    # does not replace the frozen paired-t decision rule; it shows how the
+    # small-n conclusion changes when only signs, not normality, are used.
+    n_positive = sum(d > 0.0 for d in deltas)
+    n_negative = sum(d < 0.0 for d in deltas)
+    nonzero = n_positive + n_negative
+    tail = min(n_positive, n_negative)
+    out["sign_p_two_sided"] = min(
+        1.0,
+        2.0 * sum(math.comb(nonzero, k) for k in range(tail + 1))
+        / (2.0 ** nonzero),
+    )
+    out["n_positive"] = float(n_positive)
+    for i, delta in enumerate(deltas, start=1):
+        out[f"delta_{i}"] = delta
+    with open(os.path.join(ROOT, p["figure_data"]), newline="", encoding="utf-8") as fp:
+        figure_rows = list(csv.DictReader(fp))
+    if len(figure_rows) != len(seeds):
+        raise ValueError("Software V3 figure-data row-count drift")
+    for row, seed, ident, learn, delta in zip(
+            figure_rows, seeds, values["identity"], values["learned"], deltas):
+        if (int(row["seed"]) != seed
+                or abs(float(row["identity_ndcg10"]) - ident) > 5e-13
+                or abs(float(row["learned_ndcg10"]) - learn) > 5e-13
+                or abs(float(row["delta_ndcg10"]) - delta) > 5e-13):
+            raise ValueError(f"Software V3 figure-data drift for seed {seed}")
     primary = adjud["primary_contrast"]
     expected = {
         "mean": primary["mean"], "sd": primary["sd"], "t": primary["t"],
@@ -2274,6 +2302,7 @@ def build_spec():
         swv3_sources += swv3_files(arm, ".finaleval.started.json")
         swv3_sources += swv3_files(arm, ".finaleval.users.npz")
     swv3_sources += [SWV3_ADJ,
+                     "figures/fig_software_v3_pairs_data.csv",
                      "FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md",
                      BR + "fir_prospective_sw_v3_attempt.json",
                      BR + "fir_prospective_sw_v3_ready.json",
@@ -2297,14 +2326,26 @@ def build_spec():
                   swv3_sources, "fir_prospective_sw_v3_contrast",
                   {"learned": swv3_learned, "identity": swv3_identity,
                    "adjud": SWV3_ADJ, "seeds": SWV3_SEEDS,
+                   "figure_data": "figures/fig_software_v3_pairs_data.csv",
                    "attempt": BR + "fir_prospective_sw_v3_attempt.json",
                    "ready": BR + "fir_prospective_sw_v3_ready.json",
                    "endpoints_complete": BR + "fir_prospective_sw_v3_endpoints_complete.json",
                    "status": BR + "fir_prospective_sw_v3_status.json"},
                   [chk("mean", 0.005062, 6), chk("ci_lo", 0.004591, 6),
                    chk("ci_hi", 0.005533, 6),
+                   chk("sd", 0.000564, 6),
                    chk("learned_mean", 0.120200, 6),
                    chk("identity_mean", 0.115138, 6),
+                   chk("sign_p_two_sided", 0.0078125, 7),
+                   chk("n_positive", 8, mode="count"),
+                   chk("delta_1", 0.0051975481, 10),
+                   chk("delta_2", 0.0043089738, 10),
+                   chk("delta_3", 0.0050821811, 10),
+                   chk("delta_4", 0.0057889687, 10),
+                   chk("delta_5", 0.0054392902, 10),
+                   chk("delta_6", 0.0055166480, 10),
+                   chk("delta_7", 0.0041945430, 10),
+                   chk("delta_8", 0.0049667125, 10),
                    chk("practical_pass", 1, mode="count")],
                   8, "exploratory", seeds=SWV3_SEEDS, notes=SWV3_NOTE))
 

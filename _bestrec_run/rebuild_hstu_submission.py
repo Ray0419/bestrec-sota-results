@@ -38,6 +38,8 @@ def main():
     ok &= run("Artifact-graph table build" + (" (strict)" if STRICT else ""), build_args)
     ok &= run("Claim-to-artifact map verification",
               ["_bestrec_run/build_claim_artifact_map.py", "--verify"])
+    ok &= run("Generated Table 0 claim-ledger verification",
+              ["_bestrec_run/build_table0_claim_ledger.py", "--check"])
     if STRICT:
         # round-3 audit F1: the release manifest must describe the submitted
         # tree; verify file-by-file, fail closed on any drift

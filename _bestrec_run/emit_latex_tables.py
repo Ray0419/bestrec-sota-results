@@ -343,9 +343,9 @@ REGISTRY = [
     dict(key="table_attribution", fp="component", out="table_attribution.tex",
          env="tabularx", colspec=r"p{0.30\linewidth}p{0.24\linewidth}Y", size=r"\small",
          family=None, allow=set()),
-    dict(key="table0_novelty", fp="component", out="table0_novelty.tex",
+    dict(key="table0_novelty", fp="component and reused basis", out="table0_novelty.tex",
          env="longtable",  # page-height table: must be page-breakable
-         colspec=r"p{0.16\linewidth}p{0.25\linewidth}p{0.25\linewidth}p{0.25\linewidth}", size=r"\small", tabcolsep=2,
+         colspec=r"p{0.27\linewidth}p{0.29\linewidth}p{0.38\linewidth}", size=r"\small", tabcolsep=2,
          family=None, allow=set()),
     dict(key="table_datasets41", fp="category", out="table_datasets41.tex",
          env="tabularx", colspec=r">{\raggedright\arraybackslash}p{0.20\linewidth}>{\raggedright\arraybackslash}p{0.30\linewidth}rrr", size=r"\footnotesize",
@@ -445,6 +445,16 @@ def split_json_table_string(s):
 
 
 def main():
+    table0_gate = subprocess.run(
+        [sys.executable, os.path.join(ROOT, "_bestrec_run", "build_table0_claim_ledger.py"),
+         "--check"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+    if table0_gate.returncode != 0:
+        raise SystemExit("FATAL: generated Table 0 drift\n" +
+                         (table0_gate.stdout or "") + (table0_gate.stderr or ""))
     os.makedirs(OUTDIR, exist_ok=True)
     md_lines = io.open(MD, encoding="utf-8").read().split("\n")
     tj = json.load(io.open(TABLES_JSON, encoding="utf-8"))
@@ -519,6 +529,12 @@ def main():
             rep = crosscheck(cfg["key"], src_text, fam_text, cfg["allow"])
             if rep["fail"]:
                 failures.append(rep)
+        elif cfg["key"] == "table0_novelty":
+            rep = {"table": cfg["key"], "checked": 10,
+                   "note": ("generated-region gate passed; ten quantitative FIR fields "
+                            "were formatted from active OK artifact-graph cells; literature "
+                            "attribution remains authored citation prose")}
+            fam_src = "build_table0_claim_ledger.py:hstu_results_manifest.json"
         else:
             rep = {"table": cfg["key"], "checked": 0, "note": "md-only table; no JSON family"}
         tex = render_table(cfg["key"], cfg, caption, blk["text"],

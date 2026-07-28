@@ -224,10 +224,14 @@ V12_ADDITIONS = [
     "EXPERIMENT_PROGRAM.md",
     "figures/fig_fir_response_data.csv",
     "figures/fig_fir_response.pdf",
+    "figures/fig_software_v3_pairs_data.csv",
+    "figures/fig_software_v3_pairs.pdf",
     "_bestrec_run/build_claim_artifact_map.py",
+    "_bestrec_run/build_table0_claim_ledger.py",
     "_bestrec_run/build_deposit_bundle.py",
     "_bestrec_run/test_fir_causality.py",
     "_bestrec_run/make_fig_fir_response.py",
+    "_bestrec_run/make_fig_software_v3_pairs.py",
     "_bestrec_run/adjudicate_fir_v3.py",
     "_bestrec_run/adjudicate_fir_canonical_breadth.py",
     "_bestrec_run/adjudicate_fir_controls.py",
@@ -460,6 +464,56 @@ def consistency_gate(candidate=False):
     # bundled AND appears in a git-backed manifest section, the manifest digest must equal
     # the LF-normalized payload hash the bundle will carry.
     man = _json.loads(read("RELEASE_MANIFEST.json"))
+
+    # Cross-document scientific-boundary checks (audit 2026-07-28 16:04):
+    # derive live cell/family and public-asset counts, then require landing
+    # metadata to state those values.  Candidate mode no longer excuses stale
+    # counts or the withdrawn temporal-isolation wording.
+    graph = _json.loads(read("_bestrec_run/hstu_results_manifest.json"))
+    active_cells = [c for c in graph.get("cells", []) if c.get("status") == "OK"]
+    n_cells = len(active_cells)
+    n_families = len(graph.get("required_families", []))
+    asset_sections = (
+        "splits", "text_caches", "tfv2_sidecars",
+        "fir_control_sidecars", "fir_control_checkpoints", "fir_control_finaleval",
+        "fir_pointwise_sidecars", "fir_pointwise_checkpoints", "fir_pointwise_finaleval",
+        "fir_prospective_sw_v2_sidecars", "fir_prospective_sw_v2_checkpoints",
+        "fir_prospective_sw_v2_finaleval", "fir_prospective_sw_v3_sidecars",
+        "fir_prospective_sw_v3_checkpoints", "fir_prospective_sw_v3_finaleval",
+    )
+    asset_entries = []
+    for section in asset_sections:
+        asset_entries.extend(man.get(section, {}).values())
+    asset_entries.extend(man.get("pinned_parity_artifacts", {}).get("files", {}).values())
+    n_assets = len(asset_entries)
+    asset_bytes = sum(int(entry["bytes"]) for entry in asset_entries)
+
+    metadata = {
+        "README.md": read("README.md"),
+        "CITATION.cff": read("CITATION.cff"),
+        ".zenodo.json": read(".zenodo.json"),
+    }
+    for name in ("README.md", "CITATION.cff", ".zenodo.json"):
+        body = metadata[name]
+        if str(n_cells) not in body or str(n_families) not in body:
+            fails.append(f"{name} omits live graph counts {n_cells}/{n_families}")
+        if "supports temporal access" in body.lower():
+            fails.append(f"{name} retains withdrawn pointwise temporal-access wording")
+    readme = metadata["README.md"]
+    if str(n_assets) not in readme or f"{asset_bytes:,}" not in readme:
+        fails.append("README.md public-asset count/bytes != live release manifest "
+                     f"({n_assets}/{asset_bytes:,})")
+    if "does not isolate temporal access" not in metadata["CITATION.cff"].lower():
+        fails.append("CITATION.cff omits the pointwise compound-control limitation")
+    if "does not isolate temporal access" not in metadata[".zenodo.json"].lower():
+        fails.append(".zenodo.json omits the pointwise compound-control limitation")
+
+    table0 = _sp.run(
+        [_sys.executable, os.path.join(ROOT, "_bestrec_run", "build_table0_claim_ledger.py"),
+         "--check"], capture_output=True, text=True, cwd=ROOT)
+    if table0.returncode != 0:
+        fails.append("generated Table 0 claim ledger is stale against the active graph")
+
     man_map = {}
     for sec in ("protocol_code", "submission_docs"):
         man_map.update(man.get(sec, {}))

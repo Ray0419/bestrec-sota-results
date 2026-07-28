@@ -36,6 +36,7 @@ def build() -> str:
         "firpoint.learned_pointwise": "exploratory",
         "firprosp.swv3.learned_identity": "exploratory",
         "fireff.ml1m.aggregate": "exploratory",
+        "wearec.v1.aggregate": "exploratory",
     }
     for cell_id, evidence_class in required.items():
         cell = cells.get(cell_id)
@@ -50,6 +51,7 @@ def build() -> str:
     pointwise = cells["firpoint.learned_pointwise"]["recomputed"]
     software = cells["firprosp.swv3.learned_identity"]["recomputed"]
     ml1m = cells["fireff.ml1m.aggregate"]["recomputed"]
+    wearec = cells["wearec.v1.aggregate"]["recomputed"]
 
     return "\n".join([
         START,
@@ -61,7 +63,11 @@ def build() -> str:
         "| **HSTU base** — Zhai et al. (2024): pointwise `silu(QKᵀ + rab) V`, per-block normalization, and relative biases | Pure-PyTorch implementation; two spurious normalizations removed | Core-block parity only at a mirrored aligned configuration; no pinned end-to-end reproduction (§3.2, §5.6, §6.3). Prior-work implementation. |",
         "| **BLaIR/SBERT text** — Hou et al. (2024), Reimers & Gurevych (2019), Wang et al. (2020) | Frozen off-the-shelf text features and Hou et al.'s MLP adaptor; no method change | Table 1a encoder comparison. Prior work. |",
         "| **Label smoothing/time bias** — Szegedy et al. (2016); TiSASRec; HSTU (Zhai et al., 2024) | Integrated with this backbone and full-catalog chunked softmax | +0.0013 and +0.0027 single flags (Table 1). Prior work. |",
-        "| **Sequence/frequency filters** — FMLP-Rec, BSARec, FreqRec, WEARec; causal convolutions include Caser, NextItNet, C3SASR, and AdaMCT | None inserted as-is: the first two filters are bidirectional in their original forms and FreqRec/WEARec are larger systems | Motivation and novelty boundary only (§3.7b). Filtering, frequency modeling, and causal convolution are prior art. |",
+        ("| **Sequence/frequency filters** — FMLP-Rec, BSARec, FreqRec, WEARec; causal convolutions include Caser, NextItNet, C3SASR, and AdaMCT "
+         "| The official WEARec model/training code is evaluated under our split, complete-history mask, full-catalog evaluator, cutoff, and tie rule; the others are not inserted as-is "
+         f"| WEARec official-code/equal-evaluation mean {wearec['wearec_mean']:.6f} "
+         f"[{wearec['wearec_ci_lo']:.6f},{wearec['wearec_ci_hi']:.6f}] versus reference "
+         f"{wearec['reference_mean']:.6f}; `WEAREC-BELOW-EXISTING-REFERENCE`. Outcome-known same-investigator feasibility baseline, not equal architecture/loss/schedule/tuning, independent confirmation, or SOTA. Filtering, frequency modeling, and causal convolution are prior art. |"),
         ("| **Causal FIR adaptation (ours)** — the filtering/convolution line above "
          "| Minimal leak-free, gradient-active, identity-initialized left-causal depthwise residual before an HSTU-style all-position stack "
          f"| Outcome-known FIR−identity estimates: MI {signed(mi)}, IS {signed(industrial)}, CDs {signed(cds)}. "

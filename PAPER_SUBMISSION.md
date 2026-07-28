@@ -15,6 +15,7 @@ A frozen Software attempt found learned FIR−identity **+0.005062 [+0.004591, +
 On Musical_Instruments, learned FIR exceeded an equal-parameter current-position-only DCT/GELU placebo by +0.001941 [+0.001788, +0.002095], yet did not separate from a shared causal filter (−0.000081 [−0.000337, +0.000175]).
 Most importantly, a prospectively frozen same-investigator MovieLens 1M study returned **`ML1M-NO-FIR-REPLICATION`**: learned FIR−identity was +0.000000 [−0.000074, +0.000075] (`p_Holm=.995`) and learned FIR−pointwise was +0.000035 [−0.000057, +0.000127] (`p_Holm=.796`).
 Shared (16 parameters), grouped (128), and low-rank (320) FIR arms met the pre-declared 0.000500 noninferiority margin versus the 1,024-parameter learned FIR, but this is only a conditional compression result because the learned-FIR replication gate failed.
+An official-code WEARec run under our evaluator scored 0.05918 [0.05867, 0.05969], below the existing 0.06734 reference; this is outcome-known equal-evaluation evidence, not equal tuning.
 Thus the evidence supports a narrow modular implementation and positive internal Amazon contrasts, not a general FIR benefit, per-channel necessity, or cross-domain generalization.
 A fail-closed graph preserves positive, null, deviated, and VOID outcomes under the same reporting rule.
 
@@ -26,7 +27,7 @@ Sequential recommendation models predict a user's next item from their interacti
 
 Recent benchmarks consolidate evaluation around the Amazon Reviews 2023 (AR2023) dataset (Hou et al., 2024), with reported numbers across two preprocessing variants: a **0-core** variant (no minimum interactions filter, used by Hou et al.'s reference repository at `external/AmazonReviews2023/seq_rec_results/`) and a **5-core** variant (minimum 5 interactions per user/item, used by TIGER, LIGER, and other recent works). Numbers reported under one variant are not directly comparable to numbers reported under the other.
 
-Recommender evaluation is vulnerable to mistuned baselines, incompatible protocols, and irreproducible result selection (Ferrari Dacrema et al., 2019; Ferrari Dacrema et al., 2021). We therefore pair the method with a per-paper discipline: git-frozen protocols, a fail-closed graph that recomputes 197 reported cells across 21 claim families, environment-caveated comparator regeneration, and symmetric adjudication. Failures are retained. In particular, the original Office_Products protocol remains VOID after its own floor check exposed an environment mismatch, although a redesigned fresh-seed protocol later passed (§5.2; Appendix A.0).
+Recommender evaluation is vulnerable to mistuned baselines, incompatible protocols, and irreproducible result selection (Ferrari Dacrema et al., 2019; Ferrari Dacrema et al., 2021). We therefore pair the method with a per-paper discipline: git-frozen protocols, a fail-closed graph that recomputes 198 reported cells across 22 claim families, environment-caveated comparator regeneration, and symmetric adjudication. Failures are retained. In particular, the original Office_Products protocol remains VOID after its own floor check exposed an environment mismatch, although a redesigned fresh-seed protocol later passed (§5.2; Appendix A.0).
 
 Using an HSTU-style pure-PyTorch encoder based on Zhai et al. (2024), we ask whether one small causal filtering component survives matched controls and remains positive under an untuned cross-category reuse. Our contribution ledger is deliberately limited to three items:
 
@@ -96,7 +97,7 @@ Table 0 separates prior work from the paper's actual claim boundary. Frequency f
 | **HSTU base** — Zhai et al. (2024): pointwise `silu(QKᵀ + rab) V`, per-block normalization, and relative biases | Pure-PyTorch implementation; two spurious normalizations removed | Core-block parity only at a mirrored aligned configuration; no pinned end-to-end reproduction (§3.2, §5.6, §6.3). Prior-work implementation. |
 | **BLaIR/SBERT text** — Hou et al. (2024), Reimers & Gurevych (2019), Wang et al. (2020) | Frozen off-the-shelf text features and Hou et al.'s MLP adaptor; no method change | Table 1a encoder comparison. Prior work. |
 | **Label smoothing/time bias** — Szegedy et al. (2016); TiSASRec; HSTU (Zhai et al., 2024) | Integrated with this backbone and full-catalog chunked softmax | +0.0013 and +0.0027 single flags (Table 1). Prior work. |
-| **Sequence/frequency filters** — FMLP-Rec, BSARec, FreqRec, WEARec; causal convolutions include Caser, NextItNet, C3SASR, and AdaMCT | None inserted as-is: the first two filters are bidirectional in their original forms and FreqRec/WEARec are larger systems | Motivation and novelty boundary only (§3.7b). Filtering, frequency modeling, and causal convolution are prior art. |
+| **Sequence/frequency filters** — FMLP-Rec, BSARec, FreqRec, WEARec; causal convolutions include Caser, NextItNet, C3SASR, and AdaMCT | The official WEARec model/training code is evaluated under our split, complete-history mask, full-catalog evaluator, cutoff, and tie rule; the others are not inserted as-is | WEARec official-code/equal-evaluation mean 0.059184 [0.058674,0.059693] versus reference 0.067337; `WEAREC-BELOW-EXISTING-REFERENCE`. Outcome-known same-investigator feasibility baseline, not equal architecture/loss/schedule/tuning, independent confirmation, or SOTA. Filtering, frequency modeling, and causal convolution are prior art. |
 | **Causal FIR adaptation (ours)** — the filtering/convolution line above | Minimal leak-free, gradient-active, identity-initialized left-causal depthwise residual before an HSTU-style all-position stack | Outcome-known FIR−identity estimates: MI +0.002265, IS +0.002110, CDs +0.006150. Software robustness: +0.005062 [+0.004591,+0.005533]. Learned beats the equal-parameter current-only placebo by +0.001941 but does not separate from shared FIR (-0.000081 [-0.000337,+0.000175]). Prospective MovieLens: learned minus identity +0.000000 [-0.000074,+0.000075] and learned minus pointwise +0.000035 [-0.000057,+0.000127]; neither gate passed, so parsimonious-arm NI is conditional only. **Incremental modular contribution; no general FIR benefit or independent confirmation.** |
 | **TAPE (ours)** — TIGER, VQ-Rec, ProtoMF; prototype/semantic-ID motivation | Frozen soft assignments gate a zero-initialized additive prototype table | +0.0009 single flag; +0.0004 four-seed check. Supporting ablation (§5.1). |
 | **Tail/thinning analysis (ours)** — standard popularity strata, MELT, DropoutNet, CLCRec | Per-dataset text−ID tail contrast and matched-R1 interaction/user thinning | MI +0.000420 (outcome-visible); VG null; cross-dataset p=.13; user-mode p=.058. Secondary empirical boundary (§5.3–§5.4). |
@@ -255,7 +256,7 @@ Headline runs use Adam (lr 1e-3, weight decay 1e-5) with gradient clipping (norm
 
 ### 5.1 Video_Games — multi-seed reference numbers (NOT SOTA)
 
-Our headline result (Table 1) is built on the **HSTU-style pure-PyTorch encoder** with the two added components and stacks each lever in a controlled 5-seed ablation; Table 1a reports the SASRec-family text baselines that establish protocol parity; Table 1b compares to the reported HSTU-BLaIR reference and our SM120 compatibility-port reproduction.
+Our headline result (Table 1) is built on the **HSTU-style pure-PyTorch encoder** with the two added components and stacks each lever in a controlled 5-seed ablation; Table 1a retains the traceable within-paper SASRec-family floor; Table 1b combines reported HSTU-BLaIR evidence, our SM120 compatibility port, and an official-code WEARec equal-evaluation feasibility run.
 
 **Table 1: Headline component ablation — NDCG@10 on AR2023 Video_Games 5-core LLOO (full-catalog eval, n_eval = 94,762; 5 seeds = 20260608…20260612 unless noted; the full-model row is 6-seed 20260608…20260613; one flag added per row).**
 
@@ -269,17 +270,17 @@ Our headline result (Table 1) is built on the **HSTU-style pure-PyTorch encoder*
 | *(single-arm)* FIR package arm (filter component; attribution open), no label smoothing | 0.0652 ± 0.0003 | 5 | +0.0015 vs the 0.0637 stack |
 | *(single-arm)* ID-only (no SBERT / no text-sim / no prototypes) | ≈0.0656 ± 0.0002 | 5 | text adds only +0.0018 (+2.7%) overall |
 
-The full model is **+17.5%** over the published SASRec baseline (0.0573, Table 1b) on the identical protocol — but **this win is architectural, not text-driven**: the ID-only ablation already reaches ≈0.0656 (itself +14% over published SASRec), and the entire frozen-text stack (SBERT features + text-sim bias + prototypes) adds only **+0.00178 ± 0.00021 (5-seed, +2.7%)** overall. The two supported regularizers stack with a combined lift whose excess over the component sum is 33% — additivity and orthogonality were NOT tested (loss target vs. embedding spectrum): label smoothing alone +0.0012, causal filter alone +0.0015, combined +0.0036 over the bias stack. Per-component single-flag attribution on the HSTU-style implementation: the **time bias is the largest classical component (+0.0027)**, label smoothing +0.0013, causal filter +0.0015, while **text-similarity bias is no observed benefit (±0.0001, drop candidate)** and **TAPE is sub-additive (+0.0009)**. *(The time-bias, text-sim, and TAPE single-flag figures here are the single-seed seed-20260608 DECOMP values, honestly flagged n=1 (reported inline here, not in a table). A 4-seed multi-seed cross-check — DECOMP5, seeds 20260609–12, HSTU-style base 0.0594 — confirms the ordering: time bias +0.0030 (largest classical component, ≥ the single-seed +0.0027), pos-rab +0.0012, TAPE +0.0004, text-sim −0.00005 (no benefit observed at tested power). The qualitative attribution is unchanged; the only number that materially moves is TAPE, whose multi-seed single-flag lift (+0.0004) is smaller still than the single-seed +0.0009 — further support for its demotion from a headline component.)* The causal filter's gain is robust across kernel lengths K∈{4,8,16,50} (k16 marginally best & tightest, 5-seed 0.0676 ± 0.0002; low kernel sensitivity, §5.4). Every capacity-*adding* probe we tried instead (continuous time-decay kernel, expert heads, text-distillation, dual-text, EMA, CL4SRec, James–Stein shrinkage, niche-competition loss, heat-kernel label smoothing, spectral-shrink, cue-fusion, forced ID→text routing) was neutral or harmful — several with a learned scalar the model itself drove to zero (the negative-result map, tabulated in Table S1, §5.5).
+The full model is **+17.5%** over the published SASRec point estimate (0.0573, Table 1b) on the same reported Video_Games dataset geometry, but published training/evaluation equivalence is not established — and **this difference is architectural, not text-driven**: the ID-only ablation already reaches ≈0.0656 (itself +14% over published SASRec), and the entire frozen-text stack (SBERT features + text-sim bias + prototypes) adds only **+0.00178 ± 0.00021 (5-seed, +2.7%)** overall. The two supported regularizers stack with a combined lift whose excess over the component sum is 33% — additivity and orthogonality were NOT tested (loss target vs. embedding spectrum): label smoothing alone +0.0012, causal filter alone +0.0015, combined +0.0036 over the bias stack. Per-component single-flag attribution on the HSTU-style implementation: the **time bias is the largest classical component (+0.0027)**, label smoothing +0.0013, causal filter +0.0015, while **text-similarity bias shows no observed benefit (±0.0001, removable candidate)** and **TAPE is sub-additive (+0.0009)**. *(The time-bias, text-sim, and TAPE single-flag figures here are the single-seed seed-20260608 DECOMP values, honestly flagged n=1 (reported inline here, not in a table). A 4-seed multi-seed cross-check — DECOMP5, seeds 20260609–12, HSTU-style base 0.0594 — confirms the ordering: time bias +0.0030 (largest classical component, ≥ the single-seed +0.0027), pos-rab +0.0012, TAPE +0.0004, text-sim −0.00005 (no benefit observed at tested power). The qualitative attribution is unchanged; the only number that materially moves is TAPE, whose multi-seed single-flag lift (+0.0004) is smaller still than the single-seed +0.0009 — further support for its demotion from a headline component.)* The causal filter's gain is robust across kernel lengths K∈{4,8,16,50} (k16 marginally best & tightest, 5-seed 0.0676 ± 0.0002; low kernel sensitivity, §5.4). Every capacity-*adding* probe we tried instead (continuous time-decay kernel, expert heads, text-distillation, dual-text, EMA, CL4SRec, James–Stein shrinkage, niche-competition loss, heat-kernel label smoothing, spectral-shrink, cue-fusion, forced ID→text routing) was neutral or harmful — several with a learned scalar the model itself drove to zero (the negative-result map, tabulated in Table S1, §5.5).
 
-**Table 1a: SASRec-family text baselines (protocol-parity check, full-catalog eval).**
+**Table 1a: Traceable within-paper SASRec-family floor (full-catalog eval).**
 
 | Method | NDCG@10 | HR@10 | Notes |
 |---|---:|---:|---|
 | popularity | 0.0125 | 0.0248 | trivial floor (traceable: `results_5core_Video_Games.json`) |
 
-*The v1-era SASRec/SBERT/BLaIR baseline rows and the observations derived from them have been REMOVED per the artifact-graph gate: their per-seed artifacts were not retained and the values are untraceable. Protocol parity is established independently by the dataset-identity statistics (exact user/item match, ±1 interactions on every category), the frozen split hashes, and the per-category floor runs recorded in the pre-declaration results files.*
+*The v1-era SASRec/SBERT/BLaIR baseline rows and the observations derived from them have been REMOVED per the artifact-graph gate: their per-seed artifacts were not retained and the values are untraceable. Exact user/item counts, ±1 interaction agreement, frozen split hashes, and per-category floor runs establish dataset identity and local split traceability only; they do not establish training, implementation, or evaluation parity with a published system.*
 
-**Table 1b: Reported and locally audited HSTU-BLaIR comparator evidence** (Liu, 2025, arXiv:2504.10545):
+**Table 1b: Reported, locally regenerated, and official-code current-comparator evidence** (Liu, 2025; Xu et al., 2026):
 
 The HSTU-BLaIR paper reports on AR2023 Video_Games 5-core LLOO with identical dataset stats to ours (25,612 items / 94,762 users / 814,585 interactions). They train for **100 epochs** following Zhai et al.'s HSTU protocol. Their single-seed numbers:
 
@@ -290,8 +291,11 @@ The HSTU-BLaIR paper reports on AR2023 Video_Games 5-core LLOO with identical da
 | HSTU-OpenAI (TE3L) | 0.0742 | 0.1328 | +10% above our full model |
 | **HSTU-BLaIR (Liu, 2025)** | **0.0760** | **0.1353** | **+13% above our full model; stronger reported reference** |
 | HSTU-BLaIR local SM120 compatibility port (this audit) | 0.07382 final full-eval (exported artifact; the higher best-epoch reading survives only in an unretained WSL log and is excluded from the artifact graph) | 0.13234 final | stronger than ours; not a faithful pinned-environment reproduction |
+| WEARec official model/training code (8 assessment seeds; this audit) | 0.05918 [0.05867, 0.05969] | — | `WEAREC-BELOW-EXISTING-REFERENCE`; −0.00815 [−0.00869, −0.00762] vs our six-seed 0.06734 reference under the shared evaluator |
 
 **Our full model (0.0673) exceeds their published SASRec (0.0573) but does not reach their HSTU (0.0741) or HSTU-BLaIR (0.0760) on Video_Games.** Our local compatibility-port HSTU-BLaIR run reached final full-eval NDCG@10 `0.07382` (the best-epoch reading exists only in an unretained WSL log and is excluded from the artifact graph); the run is stronger than SASRec-SBERT but carries SM120/fbgemm validity caveats.
+
+The separately frozen WEARec campaign used the official AAAI 2026 repository at commit `2087335339b1ead87da6e066ce14e2d33880a95e`. Two official-domain presets were selected by one tuning seed using validation NDCG@10 only; the selected `official_beauty` preset then trained on eight fresh assessment seeds with TEST scoring suppressed until all checkpoints existed. The committed adjudicator's first authorized endpoint read returned **`WEAREC-BELOW-EXISTING-REFERENCE`**: WEARec mean NDCG@10 **0.059184, 95% CI [0.058674, 0.059693]**, versus the existing six-seed full-model reference **0.067337 [0.067063, 0.067611]**. The descriptive outcome-known unpaired Welch contrast is **−0.008154 [−0.008689, −0.007618], p=1.16×10⁻¹¹**. This is narrow official-model/equal-evaluation evidence by the same investigators on an outcome-known split—not independent confirmation, SOTA, a paired experiment, or equality of architecture, loss, schedule, or tuning budgets. The graph replays the released NDCG vectors and Welch arithmetic; private endpoint extraction and HR/MRR raw-vector arithmetic are not publicly replayed.
 
 Relative to HSTU-BLaIR, this paper contributes multi-seed internal ablations, a released preprocessing path, and implementation diagnostics—not a leaderboard result. The reported 0.0760 remains the stronger Video_Games reference. Core-block equality at one aligned configuration (§3.2) and environment-caveated local regenerations (§5.6) do not constitute a pinned end-to-end reproduction.
 
@@ -520,9 +524,10 @@ V3 improves the protocol chronology, but unverified non-visibility of earlier V2
 An equal-parameter current-position-only DCT/GELU placebo does not show a detected improvement over identity, and learned FIR exceeds it under matched initialization.
 This discriminates learned FIR from that compound residual but does not isolate temporal access because basis/rank, activation, channel mixing, and temporal access change together.
 The shared causal filter is also not separated from learned per-channel taps. On MovieLens, shared, grouped, and low-rank FIR arms met the noninferiority margin against learned FIR, but the learned-FIR effect gate failed; parsimony is therefore conditional rather than evidence of useful compression.
+The official-code WEARec feasibility run also scored below our existing full-model reference under the shared evaluator. That outcome is useful current-baseline evidence, but it is not an equal-architecture or equal-tuning comparison and cannot supply independent confirmation.
 The evidence supports neither uniquely learned FIR coefficients, a universal frequency-filter benefit, cross-domain generalization, nor a new end-to-end architecture.
 
-The supporting text studies sharpen that boundary. Frozen text features add only +2.7% overall on Video_Games, and TAPE is sub-additive (+0.0009 in one seed; +0.0004 in the four-seed check). The repaired MI analysis finds a small frequency-5-heavy benefit rather than cold-start capability: zero-exposure targets receive no hits through rank 100, the exclude-boundary sensitivity is nonsignificant, and the MI−VG contrast does not replicate. The Beauty_and_PC scan (Supplement S.1) likewise attributes its small transfer signal to the bundled BLaIR-rich-text representation, not to the MLP adaptor in isolation.
+The supporting text studies sharpen that boundary. Frozen text features add only +2.7% overall on Video_Games, and TAPE is sub-additive (+0.0009 in one seed; +0.0004 in the four-seed check). The repaired MI analysis finds a small frequency-5-heavy benefit rather than cold-start capability: zero-exposure targets receive no hits through rank 100, the exclude-boundary sensitivity is nonsignificant, and the MI−VG contrast does not replicate. In the Beauty_and_PC scan (Supplement S.1), the positive rows bundle BLaIR, richer text, and the MLP adaptor, while the single MiniLM Linear-to-MLP comparison shows no improvement. The scan therefore does not isolate whether encoder, content, projection, or their interactions account for the bundled difference.
 
 ### 6.2 Practical implications
 
@@ -540,6 +545,7 @@ The later pointwise-placebo protocol was precommitted and source-hash-bound but 
 Software V3 used validation-only selection and sealed final evaluation, but V2-output non-visibility is not independently established; we classify it outcome-known/exploratory. Its local seals are hash-linked rather than immutable external custody, and its frozen tag has a disclosed raw-line-ending reference-hash replay defect.
 Office V1 remains **VOID**; Office V3 supports only its frozen point-estimate wording.
 - **Prospective MovieLens boundary.** The non-Amazon study improves selection chronology and TEST sequestration, but it is same-investigator and same-code-lineage on one dataset and one global-time split. Its negative verdict blocks a cross-domain FIR-benefit claim. Noninferiority of the parsimonious arms is conditional on the failed learned-FIR replication gate; it is not equivalence to identity, a deployment utility claim, or independent confirmation. User/item bootstrap intervals are fixed-dataset sensitivities. The public graph can recompute the released aggregate seed vectors but cannot independently replay non-redistributable MovieLens records or private endpoint files.
+- **WEARec current-baseline boundary.** The official model/training code was run under the paper split, complete-history mask, full-catalog evaluator, cutoff, and tie rule after validation-only preset selection. The resulting `WEAREC-BELOW-EXISTING-REFERENCE` verdict is same-investigator evidence on an outcome-known split. Architecture, loss, schedule, and tuning budgets differ; the unpaired Welch contrast is descriptive, and neither independent confirmation nor a SOTA claim follows. The graph replays NDCG vector arithmetic, not private endpoint extraction or unreleased HR/MRR vectors.
 - **Tail and probe scope.** The tail result is AR2023-specific, small in absolute terms, concentrated at train frequency 5, and not replicated on a non-Amazon domain. The original cohorts mixed exposure regimes and split frequency ties; TFV2 repaired those estimands but was outcome-visible and is not classified as confirmatory. Most capacity probes are single-seed screens, and nonsignificance is never interpreted as equivalence.
 - **Open controls.** Item-text permutation and objective/target-multiplicity parity controls remain unrun, so the small text-stack gain cannot yet be attributed entirely to semantic alignment. The thinning studies intervene synthetically on one fixed draw and do not identify the real-world data-generating process.
 - **Provenance and input scope.** One confirmation campaign ran at a documentation-only descendant of its frozen commit; code hashes and empty protocol-file diffs support code identity, but the literal commit-equality deviation remains disclosed. The canonical model consumes only item IDs, timestamps, and frozen item-text embeddings—never outputs or representations from a comparator model.
@@ -579,6 +585,13 @@ the learned-FIR effect gate failed. The evidence therefore supports neither uniq
 necessity of learned per-channel FIR coefficients, a general FIR benefit,
 external-comparator superiority, nor independent cross-category confirmation.
 
+The official-code WEARec current-baseline campaign reached mean NDCG@10 0.059184
+[0.058674, 0.059693], below the existing six-seed full-model reference 0.067337
+[0.067063, 0.067611]; the descriptive unpaired contrast was −0.008154
+[−0.008689, −0.007618]. This closes only the narrow official-code/equal-evaluation
+feasibility check. It does not equalize architectures, losses, schedules, or tuning
+budgets and is not independent confirmation or SOTA evidence.
+
 The secondary result is narrower. Frozen text features improve the repaired
 Musical_Instruments frequency-tail endpoint (+0.000420 [0.000181, 0.000660]), but the gain
 concentrates at train frequency 5; removing that boundary group leaves no detected effect.
@@ -602,7 +615,7 @@ https://github.com/Ray0419/bestrec-sota-results. The tracked
 `RELEASE_MANIFEST.json` binds source code, split derivatives, text caches, result JSONs,
 released per-user sidecars, and the pinned HSTU-BLaIR submodule by SHA-256. Running
 `bootstrap_public_clone.py` fetches and verifies release-class assets; running
-`rebuild_hstu_submission.py --strict` then checks HSTU parity, recomputes the 197
+`rebuild_hstu_submission.py --strict` then checks HSTU parity, recomputes the 198
 artifact-gated cells, verifies the manifest, and executes every governed adjudicator.
 The numerical graph and release manifest have different scopes: every declared empirical
 cell is graph-bound, but not every transitive graph source is separately enumerated in the
@@ -617,6 +630,12 @@ contains the frozen acquisition/training/evaluation code, source and split hashe
 aggregate seed vectors/statistics, and adjudication. Consequently, the public graph
 recomputes the aggregate MovieLens claims but cannot independently replay the private
 record-level endpoint extraction.
+
+The WEARec release contains the frozen official-code adapter, validation-only selection
+record, eight-seed aggregate adjudication, reference-vector identities, and private
+endpoint hashes. Its graph cell independently recomputes the released NDCG summaries and
+descriptive Welch arithmetic. Checkpoints, sealed endpoint files, and per-user sidecars
+remain private, and HR/MRR raw-vector arithmetic is therefore not publicly replayed.
 
 The public `v0.9-audit-evidence` release is the working evidence store. Historical
 campaigns for which checkpoints or per-user records were not retained are labeled as such
@@ -782,11 +801,11 @@ The scan varies five axes: **text encoder** (MiniLM titles/rich-text, BLaIR titl
 
 **2-seed mean of variant 19+20 (BLaIR-rich-text + MLP)**: NDCG@10 = 0.01946, range 0.0002.
 
-**Clean-ablation finding (variant 21, added after audit)**: When we hold the encoder constant at MiniLM and ONLY change projection layer from single-Linear to the SASRecText 2-layer MLP adaptor, NDCG@10 drops slightly from ~0.0190 to 0.01889. **The MLP adaptor by itself does NOT help on this protocol.** The +1.3-2.3% gains we observe with variants 16/19/20 are attributable to the change in text encoder (MiniLM → BLaIR) and the change in text content (titles → rich text), not to the projection layer.
+**Clean-ablation finding (variant 21, added after audit)**: When we hold the encoder constant at MiniLM and ONLY change projection layer from single-Linear to the SASRecText 2-layer MLP adaptor, NDCG@10 drops slightly from ~0.0190 to 0.01889. **No improvement from the MLP adaptor was observed in this single comparison.** The +1.3-2.3% gains in variants 16/19/20 therefore cannot be attributed to the projection layer alone; their bundled encoder/content changes and possible interactions remain unresolved.
 
 Re-analysis of the 20-variant scan:
 
-- **MLP adaptor alone**: no benefit (variant 21 vs 7 = -1.2%)
+- **MLP adaptor alone**: no improvement observed in the single comparison (variant 21 vs 7 = -1.2%)
 - **MiniLM → BLaIR encoder**: small benefit (variant 16 vs 7 = +0.9% NDCG@10, single-seed)
 - **Titles → rich text (BLaIR)**: small additional benefit (variant 19 vs 16 = +0.4%, single-seed)
 - **Removing learned item embedding** (faithful SASRecText): hurts substantially

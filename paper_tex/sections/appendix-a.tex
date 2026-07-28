@@ -18,14 +18,14 @@ The scan varies five axes: \textbf{text encoder} (MiniLM titles/rich-text, BLaIR
 
 \textbf{2-seed mean of variant 19+20 (BLaIR-rich-text + MLP)}: NDCG@10 = 0.01946, range 0.0002.
 
-\textbf{Clean-ablation finding (variant 21, added after audit)}: When we hold the encoder constant at MiniLM and ONLY change projection layer from single-Linear to the SASRecText 2-layer MLP adaptor, NDCG@10 drops slightly from \textasciitilde0.0190 to 0.01889. \textbf{The MLP adaptor by itself does NOT help on this protocol.} The +1.3-2.3\% gains we observe with variants 16/19/20 are attributable to the change in text encoder (MiniLM \ensuremath{\rightarrow} BLaIR) and the change in text content (titles \ensuremath{\rightarrow} rich text), not to the projection layer.
+\textbf{Clean-ablation finding (variant 21, added after audit)}: When we hold the encoder constant at MiniLM and ONLY change projection layer from single-Linear to the SASRecText 2-layer MLP adaptor, NDCG@10 drops slightly from \textasciitilde0.0190 to 0.01889. \textbf{No improvement from the MLP adaptor was observed in this single comparison.} The +1.3--2.3\% gains in variants 16/19/20 therefore cannot be attributed to the projection layer alone; their bundled encoder/content changes and possible interactions remain unresolved.
 
 Re-analysis of the 20-variant scan:
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{MLP adaptor alone}: no benefit (variant 21 vs 7 = -1.2\%)
+  \textbf{MLP adaptor alone}: no improvement observed in the single comparison (variant 21 vs 7 = -1.2\%)
 \item
   \textbf{MiniLM \ensuremath{\rightarrow} BLaIR encoder}: small benefit (variant 16 vs 7 = +0.9\% NDCG@10, single-seed)
 \item

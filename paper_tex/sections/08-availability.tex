@@ -7,7 +7,7 @@ Code, frozen protocols, result artifacts, and build scripts are public at
 result JSONs, released per-user sidecars, and the pinned HSTU-BLaIR submodule by
 SHA-256. Running \texttt{bootstrap\_public\_clone.py} fetches and verifies
 release-class assets; running \texttt{rebuild\_hstu\_submission.py --strict} then
-checks HSTU parity, recomputes the 197 artifact-gated cells, verifies the manifest,
+checks HSTU parity, recomputes the 198 artifact-gated cells, verifies the manifest,
 and executes every governed adjudicator.
 
 The numerical graph and release manifest have different scopes: every declared empirical
@@ -23,6 +23,12 @@ contains the frozen acquisition/training/evaluation code, source and split hashe
 aggregate seed vectors/statistics, and adjudication. Consequently, the public graph
 recomputes the aggregate MovieLens claims but cannot independently replay the private
 record-level endpoint extraction.
+
+The WEARec release contains the frozen official-code adapter, validation-only selection
+record, eight-seed aggregate adjudication, reference-vector identities, and private
+endpoint hashes. Its graph cell independently recomputes the released NDCG summaries and
+descriptive Welch arithmetic. Checkpoints, sealed endpoint files, and per-user sidecars
+remain private, and HR/MRR raw-vector arithmetic is therefore not publicly replayed.
 
 The public \texttt{v0.9-audit-evidence} release is the working evidence store.
 Historical campaigns for which checkpoints or per-user records were not retained are

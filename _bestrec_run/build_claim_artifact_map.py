@@ -137,6 +137,24 @@ CLAIMS = [
                   "figures/fig_fir_efficiency_ml1m_v1_data.csv",
                   "figures/fig_fir_efficiency_ml1m_v1.pdf"],
     },
+    {
+        "id": "C13",
+        "claim": "Official WEARec current-baseline execution under the paper evaluator",
+        "boundary": "WEARec scored below the existing six-seed full-model reference under the paper's shared split, complete-history mask, full-catalog evaluator, cutoff, and tie rule. This is an official-model/equal-evaluation feasibility baseline by the same investigators on an outcome-known split, not independent confirmation, SOTA, a paired experiment, equal architecture/loss/schedule, or equal tuning budgets; the public graph replays released NDCG aggregate arithmetic, not private endpoint extraction or HR/MRR raw-vector arithmetic.",
+        "tables": ["wearec_v1"],
+        "files": ["PREREG_WEAREC_BASELINE_V1.md",
+                  "_bestrec_run/acquire_wearec_baseline_v1.py",
+                  "_bestrec_run/prepare_wearec_baseline_v1.py",
+                  "_bestrec_run/wearec_baseline_v1_common.py",
+                  "_bestrec_run/test_wearec_baseline_v1.py",
+                  "_bestrec_run/run_wearec_baseline_v1.py",
+                  "_bestrec_run/eval_wearec_baseline_v1.py",
+                  "_bestrec_run/run_wearec_campaign_v1.py",
+                  "_bestrec_run/adjudicate_wearec_baseline_v1.py",
+                  "_bestrec_run/wearec_baseline_v1_catalog_manifest.json",
+                  "_bestrec_run/wearec_baseline_v1_selection.json",
+                  "_bestrec_run/wearec_baseline_v1_adjudication.json"],
+    },
 ]
 
 EXPECTED_EVIDENCE = {
@@ -147,6 +165,7 @@ EXPECTED_EVIDENCE = {
     "fir_pointwise": {"exploratory"},
     "fir_prospective_sw_v3": {"exploratory"},
     "fir_efficiency_ml1m_v1": {"exploratory"},
+    "wearec_v1": {"exploratory"},
     "tableV2conf": {"confirmatory"},
     "office_v3": {"confirmatory"},
     "office_confirmation": {"exploratory"},

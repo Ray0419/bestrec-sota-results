@@ -1,14 +1,14 @@
 {
  "generated_by": "build_hstu_tables.py (recomputed from source artifacts; no cached values)",
  "manifest": "_bestrec_run\\hstu_results_manifest.json",
- "mode": "submission",
+ "mode": "default",
  "gates": {
   "missing_sources_or_recompute_failures": [],
   "manifest_drift": [],
   "unsourced_cells": []
  },
  "submission_gate": {
-  "enforced": true,
+  "enforced": false,
   "policy": "fail-closed: UNTRACEABLE cells (d), paper-check MISMATCHes (e), and missing declared claim families (f) are FATAL in --submission (strict resubmission audit 2026-07-11, F1/F3); REMOVED_FROM_PAPER and EXTERNAL_PUBLISHED are non-blocking in both modes",
   "violations": []
  },
@@ -24,7 +24,7 @@
   "t542.u066.signtest"
  ],
  "paper_check_summary": {
-  "exact": 177,
+  "exact": 178,
   "within_rounding": 20,
   "MISMATCH": 0,
   "UNTRACEABLE": 0,

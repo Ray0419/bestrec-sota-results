@@ -721,6 +721,148 @@ def rule_fir_efficiency_ml1m_v1_aggregate(p):
             out[f"{arm}_{name}"] = float(value)
     return out
 
+def rule_wearec_v1_aggregate(p):
+    """Recompute the public WEARec aggregate without replaying private endpoints.
+
+    The sealed TEST endpoints and per-user rank sidecars are private.  The public
+    graph therefore starts from the adjudicator-released NDCG@10 vectors, verifies
+    the six pre-existing reference artifacts and their hashes, and independently
+    recomputes both one-sample summaries and the descriptive Welch contrast.  This
+    is an aggregate arithmetic replay, not independent endpoint extraction.
+    """
+    adjud = load(p["adjud"])
+    seeds = [int(s) for s in p["seeds"]]
+    expected_boundary = (
+        "official 2026 WEARec model/training code under the paper's shared split, "
+        "full-catalog mask, and tie rule; not independent confirmation, SOTA, a "
+        "paired experiment, or equal tuning budgets"
+    )
+    if (adjud.get("protocol") != "PREREG_WEAREC_BASELINE_V1"
+            or adjud.get("evidence_class") != (
+                "prospectively frozen execution on an outcome-known split by the "
+                "same investigators")
+            or adjud.get("claim_boundary") != expected_boundary
+            or adjud.get("upstream", {}).get("url") !=
+                "https://github.com/xhy963319431/WEARec.git"
+            or adjud.get("upstream", {}).get("commit") !=
+                "2087335339b1ead87da6e066ce14e2d33880a95e"
+            or [int(s) for s in adjud.get("assessment_seeds", [])] != seeds
+            or adjud.get("selected_preset") not in
+                {"official_sports", "official_beauty"}
+            or set(adjud.get("validation_selection", {})) !=
+                {"official_sports", "official_beauty"}):
+        raise ValueError("WEARec V1 adjudication metadata drift")
+
+    vectors = adjud.get("vectors", {})
+    wearec = [float(x) for x in vectors.get("wearec_ndcg10", [])]
+    reference = [float(x) for x in vectors.get("existing_reference_ndcg10", [])]
+    if len(wearec) != len(seeds) or len(reference) != len(p["reference_files"]):
+        raise ValueError("WEARec V1 released aggregate-vector drift")
+
+    recorded_hashes = adjud.get("reference_sha256", {})
+    for rel in p["reference_files"]:
+        name = os.path.basename(rel)
+        if not recorded_hashes.get(name) or sha256_file(rel) != recorded_hashes[name]:
+            raise ValueError(f"WEARec V1 reference identity drift: {name}")
+
+    def summarize(values):
+        n = len(values)
+        mu = mean(values)
+        sd = sstd(values)
+        half = t_ppf(0.975, n - 1) * sd / math.sqrt(n)
+        return {"n": float(n), "mean": mu, "sd": sd,
+                "ci_lo": mu - half, "ci_hi": mu + half}
+
+    def verify_summary(label, recomputed, recorded):
+        expected = {"n": recorded["n"], "mean": recorded["mean"],
+                    "sd": recorded["sd"], "ci_lo": recorded["ci95"][0],
+                    "ci_hi": recorded["ci95"][1]}
+        for key, value in expected.items():
+            if abs(float(recomputed[key]) - float(value)) > 1e-12:
+                raise ValueError(f"WEARec V1 {label} {key} drift")
+
+    w = summarize(wearec)
+    r = summarize(reference)
+    verify_summary("WEARec", w, adjud["wearec_ndcg10"])
+    verify_summary("existing reference", r,
+                   adjud["existing_full_model_reference_ndcg10"])
+
+    va = w["sd"] ** 2 / len(wearec)
+    vb = r["sd"] ** 2 / len(reference)
+    se = math.sqrt(va + vb)
+    df = (va + vb) ** 2 / (va * va / (len(wearec) - 1)
+                            + vb * vb / (len(reference) - 1))
+    delta = w["mean"] - r["mean"]
+    t_value = delta / se
+    half = t_ppf(0.975, df) * se
+    contrast = {"delta": delta, "se": se, "t": t_value, "df": df,
+                "p_two_sided_unadjusted": t_two_sided_p(t_value, df),
+                "ci_lo": delta - half, "ci_hi": delta + half}
+    recorded = adjud["descriptive_welch_contrast"]
+    expected = {
+        "delta": recorded["delta"], "se": recorded["se"],
+        "t": recorded["t"], "df": recorded["df"],
+        "p_two_sided_unadjusted": recorded["p_two_sided_unadjusted"],
+        "ci_lo": recorded["ci95_unadjusted"][0],
+        "ci_hi": recorded["ci95_unadjusted"][1],
+    }
+    for key, value in expected.items():
+        if abs(float(contrast[key]) - float(value)) > 1e-12:
+            raise ValueError(f"WEARec V1 descriptive Welch {key} drift")
+
+    if contrast["ci_lo"] > 0.0:
+        verdict = "WEAREC-ABOVE-EXISTING-REFERENCE"
+    elif contrast["ci_hi"] < 0.0:
+        verdict = "WEAREC-BELOW-EXISTING-REFERENCE"
+    else:
+        verdict = "WEAREC-REFERENCE-OVERLAP"
+    if adjud.get("verdict") != verdict:
+        raise ValueError("WEARec V1 verdict drift")
+
+    resources = adjud.get("resources", [])
+    if ([int(row.get("seed", -1)) for row in resources] != seeds
+            or len({int(row.get("n_params", -1)) for row in resources}) != 1):
+        raise ValueError("WEARec V1 resource-vector drift")
+
+    def median(values):
+        ordered = sorted(float(x) for x in values)
+        mid = len(ordered) // 2
+        return (ordered[mid] if len(ordered) % 2
+                else 0.5 * (ordered[mid - 1] + ordered[mid]))
+
+    endpoint_hashes = adjud.get("endpoint_sha256", {})
+    if (set(endpoint_hashes) != {str(seed) for seed in seeds}
+            or any(not re.fullmatch(r"[0-9a-f]{64}", str(value))
+                   for value in endpoint_hashes.values())):
+        raise ValueError("WEARec V1 private endpoint-hash ledger drift")
+
+    out = {
+        "n_units": float(len(wearec)),
+        "wearec_mean": w["mean"], "wearec_sd": w["sd"],
+        "wearec_ci_lo": w["ci_lo"], "wearec_ci_hi": w["ci_hi"],
+        "reference_mean": r["mean"], "reference_sd": r["sd"],
+        "reference_ci_lo": r["ci_lo"], "reference_ci_hi": r["ci_hi"],
+        "delta": contrast["delta"], "delta_ci_lo": contrast["ci_lo"],
+        "delta_ci_hi": contrast["ci_hi"],
+        "p_two_sided_unadjusted": contrast["p_two_sided_unadjusted"],
+        "welch_df": contrast["df"],
+        "verdict_above": float(verdict == "WEAREC-ABOVE-EXISTING-REFERENCE"),
+        "verdict_below": float(verdict == "WEAREC-BELOW-EXISTING-REFERENCE"),
+        "verdict_overlap": float(verdict == "WEAREC-REFERENCE-OVERLAP"),
+        "n_params": float(resources[0]["n_params"]),
+        "best_epoch_median": median(row["best_epoch"] for row in resources),
+        "train_seconds_median": median(row["train_seconds"] for row in resources),
+        "peak_cuda_mib_median": median(row["peak_cuda_memory_bytes"] for row in resources) / 2**20,
+        "eval_seconds_median": median(row["eval_seconds"] for row in resources),
+        "private_endpoint_count": float(len(endpoint_hashes)),
+        "private_endpoint_replay": 0.0,
+    }
+    for index, value in enumerate(wearec, start=1):
+        out[f"wearec_seed_{index}"] = value
+    for index, value in enumerate(reference, start=1):
+        out[f"reference_seed_{index}"] = value
+    return out
+
 def rule_pct_of_paired(p):
     """mean paired (a-b) delta as a percent of mean(b)."""
     m = p.get("metric", "NDCG@10")
@@ -1191,7 +1333,7 @@ REQUIRED_FAMILIES = ["table1", "table1a", "table1b", "table1c", "table1d", "tabl
                      "office_confirmation", "theirs_on_ours", "fir_breadth",
                      "fir_v3", "fir_canonical_breadth", "fir_controls",
                      "fir_pointwise", "fir_prospective_sw_v3",
-                     "fir_efficiency_ml1m_v1", "office_v3", "tfv2"]
+                     "fir_efficiency_ml1m_v1", "wearec_v1", "office_v3", "tfv2"]
 
 OFFICE_VOID_NOTE = ("VOID under prereg floor check (+44% floor inflation); "
                     "provisional, not counted as a pass")
@@ -1211,6 +1353,7 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "fir_pointwise_contrast": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with parameter equality, statistics, frozen verdict, and Holm decision cross-checked against the mechanical pointwise-placebo adjudication JSON",
         "fir_prospective_sw_v3_contrast": "prospective matched-init paired learned-minus-identity sealed one-shot Software TEST NDCG@10, with validation-only checkpoint selection, state and evidence hashes, statistics, practical threshold, and committed adjudicator verdict independently cross-checked",
         "fir_efficiency_ml1m_v1_aggregate": "prospectively frozen same-investigator MovieLens 1M aggregate adjudication: recompute seed-vector means, paired intervals, Holm decisions, noninferiority bounds, and figure-resource rows; private record-level endpoints are not redistributable and are not independently replayed by the public graph",
+        "wearec_v1_aggregate": "prospectively frozen outcome-known same-investigator WEARec aggregate adjudication: verify the six existing reference artifacts and recompute released NDCG@10 seed-vector means, t intervals, and the descriptive unpaired Welch contrast; private sealed endpoints and per-user sidecars are not independently replayed by the public graph",
         "pct_of_paired": "100 * mean per-seed (a-b) / mean(b), best_test[{m}]",
         "pct_change": "100 * (mean(a)/denom - 1), best_test[{m}]",
         "share_of_lift": "100 * (mean(x)-mean(base)) / (mean(top)-mean(base))",
@@ -2533,7 +2676,8 @@ def build_spec():
         "PREREG_FIR_EFFICIENCY_ML1M_V1.md, code, and adjudicator were committed and "
         "pushed before MovieLens acquisition. Ninety-six training runs completed with "
         "TEST bytes sequestered, followed by 96 one-shot sealed evaluations and the "
-        "protocol-designated first endpoint reader. Exact verdict "
+        "protocol-designated adjudicator. Local logs do not establish first human/tool "
+        "access. Exact verdict "
         "ML1M-NO-FIR-REPLICATION: learned FIR did not reject versus identity or the "
         "equal-parameter pointwise arm. Shared/grouped/low-rank noninferiority passes "
         "are conditional numerical compression results and do not imply FIR value when "
@@ -2602,6 +2746,74 @@ def build_spec():
             chk("pointwise_latency_ms_median", 2.120, 3),
         ],
         8, "exploratory", seeds=ML1M_SEEDS, notes=ML1M_NOTE))
+
+    # ------- WEARec V1: official-code equal-evaluation current baseline -------
+    WEAREC_SEEDS = list(range(20262001, 20262009))
+    WEAREC_ADJ = BR + "wearec_baseline_v1_adjudication.json"
+    WEAREC_SELECTION = BR + "wearec_baseline_v1_selection.json"
+    WEAREC_REFERENCES = [
+        BR + "results_V2_ls02_filter8_VG.json",
+        BR + "results_V2_ls02_filter8_seed20260609_VG.json",
+        BR + "results_V2_ls02_filter8_seed20260610_VG.json",
+        BR + "results_V2_ls02_filter8_seed20260611_VG.json",
+        BR + "results_V2_ls02_filter8_seed20260612_VG.json",
+        BR + "results_V2_confirm_seed20260613_VG.json",
+    ]
+    WEAREC_FROZEN = [
+        "PREREG_WEAREC_BASELINE_V1.md",
+        BR + "acquire_wearec_baseline_v1.py",
+        BR + "prepare_wearec_baseline_v1.py",
+        BR + "wearec_baseline_v1_common.py",
+        BR + "test_wearec_baseline_v1.py",
+        BR + "run_wearec_baseline_v1.py",
+        BR + "eval_wearec_baseline_v1.py",
+        BR + "run_wearec_campaign_v1.py",
+        BR + "adjudicate_wearec_baseline_v1.py",
+        BR + "wearec_baseline_v1_catalog_manifest.json",
+    ]
+    WEAREC_NOTE = (
+        "PREREG_WEAREC_BASELINE_V1 froze the official AAAI 2026 WEARec repository "
+        "at commit 2087335339b1ead87da6e066ce14e2d33880a95e, two validation-only "
+        "presets, and eight assessment seeds. All eight checkpoints were selected "
+        "without TEST scoring before eight sealed one-shot evaluations. The "
+        "protocol-designated adjudicator was the first authorized endpoint reader. "
+        "Exact verdict WEAREC-BELOW-EXISTING-REFERENCE: WEARec mean NDCG@10 "
+        "0.059184 [0.058674, 0.059693] versus the existing six-seed full-model "
+        "reference 0.067337 [0.067063, 0.067611]; descriptive outcome-known "
+        "unpaired Welch delta -0.008154 [-0.008689, -0.007618], p=1.16e-11. "
+        "This is official-model/equal-evaluation evidence only: same investigators "
+        "on an outcome-known split, not independent confirmation, SOTA, a paired "
+        "experiment, equal architecture, equal loss/schedule, or equal tuning budgets. "
+        "The public graph recomputes the released NDCG vector arithmetic and verifies "
+        "the reference files and private endpoint-hash ledger; it does not replay "
+        "private endpoint extraction or HR/MRR from unreleased raw vectors.")
+    C.append(cell(
+        "wearec.v1.aggregate", "wearec_v1",
+        "Official WEARec current-baseline run under the paper evaluator",
+        "aggregate NDCG@10 and descriptive existing-reference contrast",
+        [WEAREC_ADJ, WEAREC_SELECTION] + WEAREC_REFERENCES + WEAREC_FROZEN,
+        "wearec_v1_aggregate",
+        {"adjud": WEAREC_ADJ, "seeds": WEAREC_SEEDS,
+         "reference_files": WEAREC_REFERENCES},
+        [
+            chk("verdict_below", 1, mode="count"),
+            chk("n_units", 8, mode="count"),
+            chk("wearec_mean", 0.059184, 6),
+            chk("wearec_ci_lo", 0.058674, 6),
+            chk("wearec_ci_hi", 0.059693, 6),
+            chk("reference_mean", 0.067337, 6),
+            chk("reference_ci_lo", 0.067063, 6),
+            chk("reference_ci_hi", 0.067611, 6),
+            chk("delta", -0.008154, 6),
+            chk("delta_ci_lo", -0.008689, 6),
+            chk("delta_ci_hi", -0.007618, 6),
+            chk("p_two_sided_unadjusted", 1.1567406255137613e-11,
+                mode="approx", tol=1e-14),
+            chk("n_params", 1775682, mode="count"),
+            chk("private_endpoint_count", 8, mode="count"),
+            chk("private_endpoint_replay", 0, mode="count"),
+        ],
+        8, "exploratory", seeds=WEAREC_SEEDS, notes=WEAREC_NOTE))
 
     # ------- tfv2: pre-declared repaired-estimand campaign (PREREG_TAIL_FIR_V2) -------
     # Independent 8-vs-8 arms, but outcome-visible: the first independently verifiable

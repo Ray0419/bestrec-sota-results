@@ -150,6 +150,26 @@ def main():
                   f"{'OK' if good else 'FAILED (verdict not reproduced)'}")
             return good
         ok &= verify_recorded_ml1m_verdict()
+        def verify_recorded_wearec_verdict():
+            path = ROOT / "_bestrec_run" / "wearec_baseline_v1_adjudication.json"
+            try:
+                rec = json.loads(path.read_text(encoding="utf-8"))
+                contrast = rec["descriptive_welch_contrast"]
+                good = (rec.get("protocol") == "PREREG_WEAREC_BASELINE_V1"
+                        and rec.get("verdict") == "WEAREC-BELOW-EXISTING-REFERENCE"
+                        and rec.get("evidence_class") ==
+                            "prospectively frozen execution on an outcome-known split by the same investigators"
+                        and rec.get("selected_preset") == "official_beauty"
+                        and rec.get("assessment_seeds") == list(range(20262001, 20262009))
+                        and float(contrast["ci95_unadjusted"][1]) < 0.0)
+            except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError):
+                good = False
+            print("--- WEARec recorded aggregate verdict "
+                  "(outcome-known official-code/equal-evaluation baseline; graph "
+                  "recomputes released NDCG vectors): "
+                  f"{'OK' if good else 'FAILED (verdict not reproduced)'}")
+            return good
+        ok &= verify_recorded_wearec_verdict()
         ok &= run_verdict("E-F HYBRID_V1 fresh-seed adjudication (pre-declared; "
                           "W-H-POS x3 required)",
                           ["_bestrec_run/adjudicate_hybrid_v1.py"],

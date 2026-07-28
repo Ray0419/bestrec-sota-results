@@ -1,11 +1,11 @@
 {
   "release": "v0.9-audit-evidence (immutable data assets) + the current deposit tag (deposit releases supersede each other; the current tag and bundle inventory are recorded in DOI_DEPOSIT_INSTRUCTIONS.md)",
-  "date": "2026-07-28",
+  "date": "2026-07-29",
   "license": {
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "a384e6f5f12d734a8a34d0667f370b1d38a8ae95",
+  "git_commit": "b804ea02bfc60c0b7d2c157c67d26e26e34cf478",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -135,7 +135,7 @@
       "sha256": "0eaad74a57698a878e5aaa2e7d0e314232b53759c4c449b509b34867cb9d18bc"
     },
     "_bestrec_run/build_hstu_tables.py": {
-      "sha256": "287cf20f9042320e98f622b33d5c6839091ae03ed0210d4aa57b1f489a83e669"
+      "sha256": "58b7955cb5cbef4ec787d25b5355b000077410e0d4a2c6928ac97d4cedbb063f"
     },
     "_bestrec_run/test_hstu_parity.py": {
       "sha256": "1656c393adaafb159fd48338b5bced547c11a1540a2d0f09ef7a800474d53bdd"
@@ -478,6 +478,12 @@
     },
     "_bestrec_run/wearec_baseline_v1_catalog_manifest.json": {
       "sha256": "d71bd08134658fa5e5bde93f9ec91585ab825baabaaf525d4d511e9c6ece7203"
+    },
+    "_bestrec_run/wearec_baseline_v1_selection.json": {
+      "sha256": "8ebec814f6ecdd546fcbbd0272a00570e934b35b36556e1548eafc292f51872b"
+    },
+    "_bestrec_run/wearec_baseline_v1_adjudication.json": {
+      "sha256": "3dab5a28b39323bbace9acf2833cc7925bab902668f8f20c649441149048e6fb"
     }
   },
   "result_families": {
@@ -968,15 +974,15 @@
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     ".zenodo.json": {
-      "sha256": "f1e44aae5d5f9be1c0e20e62e63d50173c3371cf663fb8dfff11ab92c47d80f1",
-      "bytes": 1901
+      "sha256": "dd831797afbefa6ae4263839faca57acb183a40d71f55610d11e499778ffd164",
+      "bytes": 2076
     },
     "CITATION.cff": {
-      "sha256": "1a666a1f6b2f4cf8db05e9c2ff1a63f727aa08e261e66987bb951c0accea8032",
+      "sha256": "5f0de7e48d3b44a6ad165eba99b2eeef8554c00207f6a4fe4f3bb168b8f99987",
       "bytes": 1612
     },
     "README.md": {
-      "sha256": "b5a5d000a5859bb0ef45899b043de9891facd9934a8975b53d2fa6f374008985",
+      "sha256": "edebf3a2797fcde666b6bfcc74fdf5257612a6dee8be5fc85db5ee10bddcb7f9",
       "bytes": 11616
     },
     "DOI_DEPOSIT_INSTRUCTIONS.md": {
@@ -988,36 +994,36 @@
       "bytes": 5517
     },
     "PAPER_SUBMISSION.md": {
-      "sha256": "59d0316e80ad8e143df094278c743ce9a54adc13e1b7c175aea182c84e1c01eb",
-      "bytes": 157682
+      "sha256": "ec1cfa6d7672ff6be9cede61e91643fc538b2be9a8828b560674c9ec76505013",
+      "bytes": 161614
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "cd15f02521cd03977a92635a86317b04688028941fa0cdcab8fd1c358a3a6b77",
-      "bytes": 1567920
+      "sha256": "de2cecf8328339ce3fb92be3df10bf203a3fd24dc825a432d3a26d6a5f6df6c6",
+      "bytes": 1578576
     },
     "PAPER_DRAFT.md": {
-      "sha256": "4efe8ffea9fa4748327c16d2c6ef6fa34a547ef164a9af9d13fd6909cb00b7e5",
-      "bytes": 226902
+      "sha256": "7c181865925630bf244b86840d7752e4a4c4aefdf3a50332cf1f5be858563f89",
+      "bytes": 228974
     },
     "CANONICAL_SUBMISSION.md": {
       "sha256": "512bf01929ec5c0cab4edbd106d9df555b962c76facf09fe524f59f65811c88f",
       "bytes": 17143
     },
     "AUDIT_RESPONSE_2026-07-27.md": {
-      "sha256": "77be8cdd93bff1b1d242e60d4bdbfe3570c668ffa13ca02433b66cffc4f9f687",
-      "bytes": 22534
+      "sha256": "eed14ea72d1b0db9c4b445d32c778cefb0f1b5a2c717577da118ccc478f57b07",
+      "bytes": 25546
     },
     "COVER_LETTER_TORS.md": {
       "sha256": "9a791f5ad396254c896d8fd340d910ca9199f57c315bdfd3b04b1a48fae1300f",
       "bytes": 4171
     },
     "CLAIM_ARTIFACT_MAP.md": {
-      "sha256": "49cf95c2edad0be58cdd821d381b860ff37a6dfec00767c1ea881b0d3eb3631f",
-      "bytes": 14022
+      "sha256": "c8f910c5c84cca2daf9de6c763075d6f8e9c3660eb2c9ccd70ea1ac378900246",
+      "bytes": 15814
     },
     "PHASE_COMPLETION_AUDIT_2026-07-28.md": {
-      "sha256": "967e91e31861f75d641fb828cfcc9d986aca9120f48712b03470ff93453bd3d3",
-      "bytes": 8162
+      "sha256": "fb80404c0767b44460ad4190d533260a75c22428f7dc823dc097af6b2694a0a0",
+      "bytes": 8188
     },
     "MOCK_REVIEW_2026-07-27.md": {
       "sha256": "f89d207c7093a31d2c64454bbec6e44c4d9abd561e2f2e640a0c7866d59377b7",
@@ -1052,12 +1058,12 @@
       "bytes": 3435
     },
     "_bestrec_run/build_claim_artifact_map.py": {
-      "sha256": "3554248299c80651e44aa178a56cd52a98a76005d340dc9a72faeebc02e004b2",
-      "bytes": 15318
+      "sha256": "7bf2fde71237d42ecd14f82716f11964449648e11c1983abbd7cc52f7bd72cbf",
+      "bytes": 16819
     },
     "_bestrec_run/build_table0_claim_ledger.py": {
-      "sha256": "2f39b8ac4fcccd6719a8850d8b3742d5742f7e6e0b08a370ec3128578947c044",
-      "bytes": 6573
+      "sha256": "55cecadebeef010895d19258e58b2a25f90cd8357054222ec850890b945df79c",
+      "bytes": 7080
     },
     "_bestrec_run/build_deposit_bundle.py": {
       "sha256": "c40e6a66efc0a110f6ca7dc8acc47ad9824d20402796a4c244903950543c52a1",
@@ -1076,16 +1082,16 @@
       "bytes": 9762
     },
     "_bestrec_run/rebuild_hstu_submission.py": {
-      "sha256": "3c8d4510ed4062fc2fba46b6c55558dfb02036efd6c0eccf0209584448f36e20",
-      "bytes": 9998
+      "sha256": "92c40d0cb1e293f4c85939e0bf692bfd4b1b64a4cddfe43e1108ef53e3a617c6",
+      "bytes": 11299
     },
     "_bestrec_run/update_release_manifest.py": {
       "sha256": "0ed1d3fa076d4be35c9dd4991b637106120ace76cba79c8339537eab8cd78075",
       "bytes": 44133
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "a216d74b2ae2e655ccc053e3ba51bef1b950af928d0dad6969730ed2a7b79a07",
-      "bytes": 494244
+      "sha256": "b93b8faf5c843eecceeb8ee1d815e02f5ff243ca43daf1a4a8a696f0d7c5ac84",
+      "bytes": 498481
     },
     "paper_tex/build.ps1": {
       "sha256": "fe9f708fe0d190fae02b11af661b03f878606bc71bd520636320e9ebb3e7c756",
@@ -1096,8 +1102,8 @@
       "bytes": 4826
     },
     "_bestrec_run/emit_latex_tables.py": {
-      "sha256": "2247f16b1f0176ed3ed5eadbb41987ae0be0f9096a57cf514d03fb97e440504b",
-      "bytes": 28023
+      "sha256": "154b4bb56fbde4e2950846d4ba8b81597db6876e926a1e2c2808cb34f3a28d9a",
+      "bytes": 28690
     }
   },
   "pinned_parity_artifacts": {
@@ -1209,7 +1215,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.2.0-deposit",
-  "hash_parent_commit": "a384e6f5f12d734a8a34d0667f370b1d38a8ae95",
+  "hash_parent_commit": "b804ea02bfc60c0b7d2c157c67d26e26e34cf478",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",

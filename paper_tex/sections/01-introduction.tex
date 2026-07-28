@@ -16,7 +16,7 @@ Recommender evaluation is vulnerable to mistuned baselines, incompatible protoco
 and irreproducible result selection
 \citep{ferraridacrema2019worrying,ferraridacrema2021troubling}. We therefore pair
 the method with a per-paper discipline: git-frozen protocols, a fail-closed graph that
-recomputes 197 reported cells across 21 claim families, environment-caveated comparator
+recomputes 198 reported cells across 22 claim families, environment-caveated comparator
 regeneration, and symmetric adjudication. Failures are retained. In particular, the
 original Office\_Products protocol remains VOID after its own floor check exposed an
 environment mismatch, although a redesigned fresh-seed protocol later passed
@@ -47,6 +47,9 @@ A prospectively frozen MovieLens 1M study then failed to replicate learned FIR a
 identity or pointwise. Its shared/grouped/low-rank arms met a pre-declared noninferiority
 margin versus learned FIR only conditionally on that failed replication gate. Together
 these results prevent a general filtering or cross-domain claim.
+An official-code WEARec feasibility run under the same evaluator also scored below the
+existing full-model reference; it equalizes evaluation only, not architecture, loss,
+schedule, or tuning, and is neither independent confirmation nor SOTA evidence.
 \item \textbf{An auditable evaluation record.} Released protocols, artifacts,
 sidecars where available, comparator-regeneration code, and a strict rebuild preserve
 positive, null, deviated, and VOID outcomes under the same reporting rule

@@ -1,44 +1,39 @@
-# CURRENT HANDOFF — MovieLens FIR efficiency phase completed (2026-07-28)
+# CURRENT HANDOFF — WEARec current-baseline phase completed (2026-07-29)
 
-The phase frozen at `f425d469b3172fc798e289c9ad3f775c89c19a55` completed all
-96 TEST-sequestered training runs and all 96 sealed one-shot evaluations with no
-recorded errors. The committed adjudicator was the first endpoint reader. Exact
-verdict: **`ML1M-NO-FIR-REPLICATION`**.
+The official-code WEARec campaign completed all two validation-only tuning runs,
+eight fresh assessment trainings, and eight sealed one-shot evaluations with no
+recorded errors. The committed adjudicator was the first authorized endpoint
+reader after campaign completion. Exact verdict:
+**`WEAREC-BELOW-EXISTING-REFERENCE`**.
 
-Primary rating≥4 results over eight matched seed blocks:
+Assessment-seed results under the shared paper evaluator:
 
-- learned−identity: +0.0000002025, 95% CI
-  [−0.0000741725, +0.0000745775], `p_Holm=.995` — FAIL;
-- learned−pointwise: +0.0000350704, 95% CI
-  [−0.0000570717, +0.0001272126], `p_Holm=.796` — FAIL;
-- shared, grouped, and low-rank passed the frozen −0.000500 noninferiority
-  family versus learned, but only conditionally because the learned-FIR effect
-  gate failed.
+- WEARec NDCG@10: 0.0591835101, 95% CI [0.0586740541, 0.0596929662];
+- existing six-seed full-model reference: 0.0673373862, 95% CI
+  [0.0670633678, 0.0676114045];
+- unpaired Welch contrast: −0.0081538760, 95% CI
+  [−0.0086894193, −0.0076183328], `p=1.15674e-11`.
 
-The negative result and conditional parsimony finding are integrated into the
-reader and TORS manuscripts, Table 0, the audit response, a generated table,
-and an aggregate resource figure. The public fail-closed graph now recomputes
-197 active cells across 21 required families with zero mismatches or
-untraceable cells. It recomputes the released aggregate seed-vector, Holm/NI,
-sensitivity, and resource arithmetic but cannot replay the private endpoint
-extraction. This is prospectively frozen same-investigator non-Amazon evidence,
-not independent confirmation, population generalization, equivalence, or a
-deployment-efficiency result.
+The exact negative result is integrated into both manuscripts, Table 0, Table
+1b, the audit response, discussion/conclusion/availability text, and the public
+fail-closed graph. The graph now recomputes 198 active cells across 22 required
+families with zero mismatches or untraceable cells, including the released WEARec
+NDCG vectors, confidence intervals, Welch contrast, verdict, and endpoint-hash
+ledger. Private endpoint extraction and unreleased HR/MRR seed-vector arithmetic
+are not publicly replayed.
 
-MovieLens record rows, transformed splits, checkpoints, per-user sidecars, and
-endpoint files remain private under the ML-1M README. The public repository
-contains only the frozen protocol/code, aggregate adjudication, and aggregate
-figure data. Preserve user-modified `PAPER_REVIEW_AUDIT.md` and unrelated
-untracked QA/tmp files.
+This closes only the **current frequency-baseline half** of audit item 4. It is
+same-investigator evidence on an outcome-known split under equal evaluation;
+architecture, loss, schedule, and tuning budgets differ. It is not independent
+confirmation, a paired experiment, equal-training evidence, or a SOTA claim.
+The clean AlphaFuse-style text+ID comparator remains open and is the next
+empirical phase.
 
-Integration verification at handoff: both PDFs build and pass hygiene scans;
-targeted visual inspection is clean; the 908-entry unpublished deposit candidate
-passes its consistency gate. Commit `b3a603bc` passed the full hydrated pristine-
-clone replay, was pushed, and its release manifest was uploaded last; the
-downloaded manifest matched SHA-256
-`fc2ea08e5291b45c40460bf2e3c3649238f63c00e8b257b0fde6b8829394717b`.
-The phase heartbeat is paused. The only submission blocker outside this phase
-remains the human author/byline metadata.
+Preserve user-modified `PAPER_REVIEW_AUDIT.md` and unrelated untracked QA/tmp
+files. Human author/byline metadata remains the external literal-submission
+blocker and must never be invented. The WEARec integration still requires the
+final release-manifest regeneration, strict committed clean-clone replay, push,
+and release-manifest upload before this handoff can record a final commit/hash.
 
 ---
 

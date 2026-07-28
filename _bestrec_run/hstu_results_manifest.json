@@ -29,6 +29,7 @@
   "fir_pointwise",
   "fir_prospective_sw_v3",
   "fir_efficiency_ml1m_v1",
+  "wearec_v1",
   "office_v3",
   "tfv2"
  ],
@@ -18525,7 +18526,7 @@
      "precision": 3
     }
    ],
-   "notes": "PREREG_FIR_EFFICIENCY_ML1M_V1.md, code, and adjudicator were committed and pushed before MovieLens acquisition. Ninety-six training runs completed with TEST bytes sequestered, followed by 96 one-shot sealed evaluations and the protocol-designated first endpoint reader. Exact verdict ML1M-NO-FIR-REPLICATION: learned FIR did not reject versus identity or the equal-parameter pointwise arm. Shared/grouped/low-rank noninferiority passes are conditional numerical compression results and do not imply FIR value when the learned-FIR replication gate fails. Prospectively frozen same-investigator non-Amazon evidence, not independent confirmation or population generalization. The ML-1M README prohibits redistribution, so the public graph recomputes from the aggregate adjudication vectors and frozen-code hashes but cannot independently replay private record-level endpoints, checkpoints, or per-user sidecars.",
+   "notes": "PREREG_FIR_EFFICIENCY_ML1M_V1.md, code, and adjudicator were committed and pushed before MovieLens acquisition. Ninety-six training runs completed with TEST bytes sequestered, followed by 96 one-shot sealed evaluations and the protocol-designated adjudicator. Local logs do not establish first human/tool access. Exact verdict ML1M-NO-FIR-REPLICATION: learned FIR did not reject versus identity or the equal-parameter pointwise arm. Shared/grouped/low-rank noninferiority passes are conditional numerical compression results and do not imply FIR value when the learned-FIR replication gate fails. Prospectively frozen same-investigator non-Amazon evidence, not independent confirmation or population generalization. The ML-1M README prohibits redistribution, so the public graph recomputes from the aggregate adjudication vectors and frozen-code hashes but cannot independently replay private record-level endpoints, checkpoints, or per-user sidecars.",
    "recomputed": {
     "n_units": 8.0,
     "negative_verdict": 1.0,
@@ -18982,6 +18983,316 @@
      "recomputed": 2.1203000214882195,
      "result": "exact",
      "rounded": 2.12
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "wearec.v1.aggregate",
+   "table_id": "wearec_v1",
+   "row_label": "Official WEARec current-baseline run under the paper evaluator",
+   "metric": "aggregate NDCG@10 and descriptive existing-reference contrast",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/wearec_baseline_v1_adjudication.json",
+    "_bestrec_run/wearec_baseline_v1_selection.json",
+    "_bestrec_run/results_V2_ls02_filter8_VG.json",
+    "_bestrec_run/results_V2_ls02_filter8_seed20260609_VG.json",
+    "_bestrec_run/results_V2_ls02_filter8_seed20260610_VG.json",
+    "_bestrec_run/results_V2_ls02_filter8_seed20260611_VG.json",
+    "_bestrec_run/results_V2_ls02_filter8_seed20260612_VG.json",
+    "_bestrec_run/results_V2_confirm_seed20260613_VG.json",
+    "PREREG_WEAREC_BASELINE_V1.md",
+    "_bestrec_run/acquire_wearec_baseline_v1.py",
+    "_bestrec_run/prepare_wearec_baseline_v1.py",
+    "_bestrec_run/wearec_baseline_v1_common.py",
+    "_bestrec_run/test_wearec_baseline_v1.py",
+    "_bestrec_run/run_wearec_baseline_v1.py",
+    "_bestrec_run/eval_wearec_baseline_v1.py",
+    "_bestrec_run/run_wearec_campaign_v1.py",
+    "_bestrec_run/adjudicate_wearec_baseline_v1.py",
+    "_bestrec_run/wearec_baseline_v1_catalog_manifest.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20262001,
+    20262002,
+    20262003,
+    20262004,
+    20262005,
+    20262006,
+    20262007,
+    20262008
+   ],
+   "recompute": {
+    "rule": "wearec_v1_aggregate",
+    "params": {
+     "adjud": "_bestrec_run/wearec_baseline_v1_adjudication.json",
+     "seeds": [
+      20262001,
+      20262002,
+      20262003,
+      20262004,
+      20262005,
+      20262006,
+      20262007,
+      20262008
+     ],
+     "reference_files": [
+      "_bestrec_run/results_V2_ls02_filter8_VG.json",
+      "_bestrec_run/results_V2_ls02_filter8_seed20260609_VG.json",
+      "_bestrec_run/results_V2_ls02_filter8_seed20260610_VG.json",
+      "_bestrec_run/results_V2_ls02_filter8_seed20260611_VG.json",
+      "_bestrec_run/results_V2_ls02_filter8_seed20260612_VG.json",
+      "_bestrec_run/results_V2_confirm_seed20260613_VG.json"
+     ]
+    }
+   },
+   "recompute_rule": "prospectively frozen outcome-known same-investigator WEARec aggregate adjudication: verify the six existing reference artifacts and recompute released NDCG@10 seed-vector means, t intervals, and the descriptive unpaired Welch contrast; private sealed endpoints and per-user sidecars are not independently replayed by the public graph",
+   "paper": [
+    {
+     "name": "verdict_below",
+     "value": 1,
+     "mode": "count"
+    },
+    {
+     "name": "n_units",
+     "value": 8,
+     "mode": "count"
+    },
+    {
+     "name": "wearec_mean",
+     "value": 0.059184,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "wearec_ci_lo",
+     "value": 0.058674,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "wearec_ci_hi",
+     "value": 0.059693,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "reference_mean",
+     "value": 0.067337,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "reference_ci_lo",
+     "value": 0.067063,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "reference_ci_hi",
+     "value": 0.067611,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "delta",
+     "value": -0.008154,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "delta_ci_lo",
+     "value": -0.008689,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "delta_ci_hi",
+     "value": -0.007618,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "p_two_sided_unadjusted",
+     "value": 1.1567406255137613e-11,
+     "mode": "approx",
+     "tol": 1e-14
+    },
+    {
+     "name": "n_params",
+     "value": 1775682,
+     "mode": "count"
+    },
+    {
+     "name": "private_endpoint_count",
+     "value": 8,
+     "mode": "count"
+    },
+    {
+     "name": "private_endpoint_replay",
+     "value": 0,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_WEAREC_BASELINE_V1 froze the official AAAI 2026 WEARec repository at commit 2087335339b1ead87da6e066ce14e2d33880a95e, two validation-only presets, and eight assessment seeds. All eight checkpoints were selected without TEST scoring before eight sealed one-shot evaluations. The protocol-designated adjudicator was the first authorized endpoint reader. Exact verdict WEAREC-BELOW-EXISTING-REFERENCE: WEARec mean NDCG@10 0.059184 [0.058674, 0.059693] versus the existing six-seed full-model reference 0.067337 [0.067063, 0.067611]; descriptive outcome-known unpaired Welch delta -0.008154 [-0.008689, -0.007618], p=1.16e-11. This is official-model/equal-evaluation evidence only: same investigators on an outcome-known split, not independent confirmation, SOTA, a paired experiment, equal architecture, equal loss/schedule, or equal tuning budgets. The public graph recomputes the released NDCG vector arithmetic and verifies the reference files and private endpoint-hash ledger; it does not replay private endpoint extraction or HR/MRR from unreleased raw vectors.",
+   "recomputed": {
+    "n_units": 8.0,
+    "wearec_mean": 0.059183510122115826,
+    "wearec_sd": 0.0006093819629445835,
+    "wearec_ci_lo": 0.058674054051830384,
+    "wearec_ci_hi": 0.05969296619240127,
+    "reference_mean": 0.06733738616433897,
+    "reference_sd": 0.00026111018695743196,
+    "reference_ci_lo": 0.06706336782820595,
+    "reference_ci_hi": 0.067611404500472,
+    "delta": -0.008153876042223146,
+    "delta_ci_lo": -0.008689419251699889,
+    "delta_ci_hi": -0.007618332832746403,
+    "p_two_sided_unadjusted": 1.1567406255137545e-11,
+    "welch_df": 10.007090599196307,
+    "verdict_above": 0.0,
+    "verdict_below": 1.0,
+    "verdict_overlap": 0.0,
+    "n_params": 1775682.0,
+    "best_epoch_median": 40.5,
+    "train_seconds_median": 2134.6790839000023,
+    "peak_cuda_mib_median": 294.15673828125,
+    "eval_seconds_median": 7.1413993000169285,
+    "private_endpoint_count": 8.0,
+    "private_endpoint_replay": 0.0,
+    "wearec_seed_1": 0.059624832984051294,
+    "wearec_seed_2": 0.059891722520229326,
+    "wearec_seed_3": 0.05887554662399928,
+    "wearec_seed_4": 0.0585100459919559,
+    "wearec_seed_5": 0.0594198164823197,
+    "wearec_seed_6": 0.05880140086911008,
+    "wearec_seed_7": 0.058413212974130775,
+    "wearec_seed_8": 0.059931502531130255,
+    "reference_seed_1": 0.06731228032662745,
+    "reference_seed_2": 0.06694888249428342,
+    "reference_seed_3": 0.06776123627808996,
+    "reference_seed_4": 0.06740918426707242,
+    "reference_seed_5": 0.06732043112571998,
+    "reference_seed_6": 0.06727230249424056
+   },
+   "recomputed_value": 1.0,
+   "paper_check": [
+    {
+     "name": "verdict_below",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    },
+    {
+     "name": "n_units",
+     "paper": 8,
+     "mode": "count",
+     "recomputed": 8.0,
+     "result": "exact"
+    },
+    {
+     "name": "wearec_mean",
+     "paper": 0.059184,
+     "mode": "round",
+     "recomputed": 0.059183510122115826,
+     "result": "exact",
+     "rounded": 0.059184
+    },
+    {
+     "name": "wearec_ci_lo",
+     "paper": 0.058674,
+     "mode": "round",
+     "recomputed": 0.058674054051830384,
+     "result": "exact",
+     "rounded": 0.058674
+    },
+    {
+     "name": "wearec_ci_hi",
+     "paper": 0.059693,
+     "mode": "round",
+     "recomputed": 0.05969296619240127,
+     "result": "exact",
+     "rounded": 0.059693
+    },
+    {
+     "name": "reference_mean",
+     "paper": 0.067337,
+     "mode": "round",
+     "recomputed": 0.06733738616433897,
+     "result": "exact",
+     "rounded": 0.067337
+    },
+    {
+     "name": "reference_ci_lo",
+     "paper": 0.067063,
+     "mode": "round",
+     "recomputed": 0.06706336782820595,
+     "result": "exact",
+     "rounded": 0.067063
+    },
+    {
+     "name": "reference_ci_hi",
+     "paper": 0.067611,
+     "mode": "round",
+     "recomputed": 0.067611404500472,
+     "result": "exact",
+     "rounded": 0.067611
+    },
+    {
+     "name": "delta",
+     "paper": -0.008154,
+     "mode": "round",
+     "recomputed": -0.008153876042223146,
+     "result": "exact",
+     "rounded": -0.008154
+    },
+    {
+     "name": "delta_ci_lo",
+     "paper": -0.008689,
+     "mode": "round",
+     "recomputed": -0.008689419251699889,
+     "result": "exact",
+     "rounded": -0.008689
+    },
+    {
+     "name": "delta_ci_hi",
+     "paper": -0.007618,
+     "mode": "round",
+     "recomputed": -0.007618332832746403,
+     "result": "exact",
+     "rounded": -0.007618
+    },
+    {
+     "name": "p_two_sided_unadjusted",
+     "paper": 1.1567406255137613e-11,
+     "mode": "approx",
+     "recomputed": 1.1567406255137545e-11,
+     "result": "within_tol"
+    },
+    {
+     "name": "n_params",
+     "paper": 1775682,
+     "mode": "count",
+     "recomputed": 1775682.0,
+     "result": "exact"
+    },
+    {
+     "name": "private_endpoint_count",
+     "paper": 8,
+     "mode": "count",
+     "recomputed": 8.0,
+     "result": "exact"
+    },
+    {
+     "name": "private_endpoint_replay",
+     "paper": 0,
+     "mode": "count",
+     "recomputed": 0.0,
+     "result": "exact"
     }
    ],
    "paper_check_class": "exact"

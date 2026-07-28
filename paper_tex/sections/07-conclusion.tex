@@ -36,6 +36,13 @@ failed. The evidence therefore supports neither unique necessity of learned per-
 FIR coefficients, a general FIR benefit, external-comparator superiority, nor
 independent cross-category confirmation.
 
+The official-code WEARec current-baseline campaign reached mean NDCG@10 0.059184
+[0.058674, 0.059693], below the existing six-seed full-model reference 0.067337
+[0.067063, 0.067611]; the descriptive unpaired contrast was -0.008154
+[-0.008689, -0.007618]. This closes only the narrow official-code/equal-evaluation
+feasibility check. It does not equalize architectures, losses, schedules, or tuning
+budgets and is not independent confirmation or SOTA evidence.
+
 The secondary result is narrower. Frozen text features improve the repaired
 Musical\_Instruments frequency-tail endpoint (+0.000420 [0.000181, 0.000660]),
 but the gain concentrates at train frequency 5; removing that boundary group leaves no

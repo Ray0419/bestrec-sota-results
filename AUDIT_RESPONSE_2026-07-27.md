@@ -9,13 +9,13 @@ independence, custody, or construct validity.
 |---:|---|---|
 | 1 | **OPEN — author action required** | Author, affiliation, country, contact, and running-header fields remain placeholders. Builds pass only with a logged `DRAFT_WAIVER=1`; no identity was invented. A release build must be rerun without the waiver after real metadata are supplied. |
 | 2 | **Mechanical result CLOSED; evidence class OPEN pending author attestation** | `Digital_Music` V1 remains `DM-V1-FEASIBILITY-VOID`, and Software V2 remains permanent `SW-V2-INTEGRITY-FAIL`; neither contributes an endpoint. Software V3 was frozen and pushed before launch at tag `fir-prospective-sw-v3-freeze` / commit `9c8f1a16`, permitted a transductive all-split catalog while suppressing TEST scoring, used exclusive-created hash-linked local seals, and invoked the protocol-designated adjudicator after all 16 sealed endpoints existed. The exact verdict is `SW-V3-PRACTICAL-POS`: learned−identity **+0.005062, ordinary paired 95% CI [+0.004591,+0.005533]**, paired-difference SD 0.000563779, paired t(7)=25.39, p=3.75×10⁻⁸, 8/8 positive; the post-hoc two-sided exact sign sensitivity is p=.0078125, and learned/identity means were 0.120200/0.115138. The graph now gates every registered paired difference, the SD, and the sign sensitivity, and the paper includes the requested paired-seed figure. The CI lower bound exceeds the frozen +0.000500 reporting threshold. Tracked evidence cannot establish whether earlier V2 validation output was observed before the V3 freeze, and local logs cannot prove first human/tool access. Unless the authors supply a signed, dated visibility/custody statement, the paper now classifies V3 as outcome-known/exploratory same-team robustness. It is not independent confirmation or cross-domain replication. |
-| 3 | **CLOSED for discrimination from the named compound placebo; temporal isolation remains open** | `PREREG_FIR_POINTWISE_V1.md`, its frozen source hashes, structural test, runner, sealed evaluator, and mechanical adjudicator were committed and pushed before launch. All 24 training runs suppressed TEST scoring and recorded no TEST metrics, but used the pre-existing transductive all-split catalog and executed from a tracked-dirty tree; all 24 selected checkpoints then received one sealed final evaluation. The first reader returned `POINTWISE-FIR-DISCRIMINATED`: learned−identity +0.001872 [+0.001737,+0.002007], pointwise−identity −0.000069 [−0.000200,+0.000061], learned−pointwise +0.001941 [+0.001788,+0.002095], with the first and third contrasts rejecting in one frozen three-test Holm family. The placebo and FIR each have exactly 1,024 trainable parameters and matched backbone hashes, but the compound DCT/GELU placebo also differs in basis/rank, activation, and channel mixing. The study discriminates learned FIR from that tested non-temporal residual on outcome-known MI; it does not isolate temporal access, establish per-channel necessity, or supply independent confirmation/generalization. The causality suite covers 18/18 paths. |
+| 3 | **CLOSED for discrimination from the named compound placebo; temporal isolation remains open** | `PREREG_FIR_POINTWISE_V1.md`, its frozen source hashes, structural test, runner, sealed evaluator, and mechanical adjudicator were committed and pushed before launch. All 24 training runs suppressed TEST scoring and recorded no TEST metrics, but used the pre-existing transductive all-split catalog and executed from a tracked-dirty tree; all 24 selected checkpoints then received one sealed final evaluation. The protocol-designated adjudicator returned `POINTWISE-FIR-DISCRIMINATED`: learned−identity +0.001872 [+0.001737,+0.002007], pointwise−identity −0.000069 [−0.000200,+0.000061], learned−pointwise +0.001941 [+0.001788,+0.002095], with the first and third contrasts rejecting in one frozen three-test Holm family. Local process ordering does not establish first human/tool access. The placebo and FIR each have exactly 1,024 trainable parameters and matched backbone hashes, but the compound DCT/GELU placebo also differs in basis/rank, activation, and channel mixing. The study discriminates learned FIR from that tested non-temporal residual on outcome-known MI; it does not isolate temporal access, establish per-channel necessity, or supply independent confirmation/generalization. The causality suite covers 18/18 paths. |
 | 4 | **Current artifact replay CLOSED; frozen V3 training replay defect disclosed** | `bootstrap_public_clone.py` hydrates and raw-hash-verifies every release section. All 48 Software V3 assets were uploaded, and a fresh HTTPS clone directly downloaded and verified the complete **407-asset / 9,489,409,339-byte** public boundary with zero local reuse. A subsequent pristine clone at pushed commit `9cfe5c1f` re-verified all 407 bytesets, installed the frozen 91-package environment, recomputed 196/196 active cells across 20 families with zero mismatch/untraceable cells, verified the 1,009-file manifest, passed every governed adjudicator, rendered the 47-page reader PDF with `scan: CLEAN`, and passed both ACM targets under the draft waiver. This artifact replay did not rerun V3 training. The audit correctly found that the frozen common module expects the CRLF SHA-256 `a230d17c…` for one MI lineage-reference JSON while a normal tagged checkout produces LF SHA-256 `37c78ef…`; direct clean-tag execution fails that raw input assertion until the historical CRLF representation is restored. `FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md` records both hashes and the descendant preserves the exact CRLF bytes. The reference was not read for runtime configuration, so endpoint arithmetic is unchanged, but frozen-tag portability is not claimed. |
 | 5 | **CLOSED** | E-A is labeled the frozen independent-arm Welch/Satterthwaite analysis: ordinary 95% Welch CI, df=13.939; its paired-by-seed result is descriptive only. Hybrid intervals are ordinary paired 95% CIs; Holm adjusts p-values/decisions, not intervals. A new health gate forbids the stale labels. |
 | 6 | **OPEN human verification; disclosure closed** | Dirty-tree execution across five commits, absent independent sidecar custody, and the limited local start marker are retained in the main text and erratum. The study remains outcome-known exploratory evidence. Only the maintainer can verify pre-adjudication human/tool visibility. |
-| 7 | **Citation/scope CLOSED; executions OPEN** | FreqRec and WEARec are cited in Table 0, Related Work, Method, and the bibliography; BSARec is correctly scoped to Theorem 1 on repeated softmax attention, not the HSTU-style operator. The governed AlphaFuse port is disclosed as `NONCOUNTABLE`/`manuscript_allowed=false`, with no endpoint imported. Equal-protocol current baselines remain future experimental work. |
+| 7 | **Current frequency baseline CLOSED narrowly; clean text+ID comparator OPEN** | FreqRec and WEARec are cited in Table 0, Related Work, Method, and the bibliography; BSARec is correctly scoped to Theorem 1 on repeated softmax attention, not the HSTU-style operator. The prospectively frozen official-code WEARec campaign completed 2/2 validation-only presets, 8/8 TEST-sequestered assessment trainings, and 8/8 sealed evaluations. Its exact verdict is `WEAREC-BELOW-EXISTING-REFERENCE`: WEARec NDCG@10 0.059184 [0.058674,0.059693] versus the existing 0.067337 [0.067063,0.067611] reference; descriptive unpaired delta −0.008154 [−0.008689,−0.007618]. This closes only a narrow official-model/equal-evaluation feasibility baseline, not equal architecture/loss/schedule/tuning budgets, independent confirmation, or SOTA. The governed AlphaFuse port remains `NONCOUNTABLE`/`manuscript_allowed=false`; a fresh clean text+ID comparator is still required. |
 | 8 | **PARTLY CLOSED by prospective construct/time sensitivity** | The Amazon estimand remains next recorded review event, not preference/purchase/deployment engagement. The prospectively frozen MovieLens study now supplies a rating≥4 primary estimand, an all-rating construct sensitivity, and a global 90% time boundary with a training-observed catalog. Its negative verdict is reported. Verified-purchase, keep-latest, real implicit-event, and query-time-catalog sensitivities remain unrun. |
-| 9 | **Numerical graph, claim-map, and Table 0 quantitative provenance CLOSED; mutation depth remains open** | The graph has 197 active cells across 21 required families with zero mismatch/untraceable cells. The new MovieLens cell verifies frozen code hashes and recomputes all released aggregate seed-vector means, paired intervals, Holm/NI decisions, all-rating sensitivities, and every resource-figure row; it explicitly does not claim replay of private record-level endpoints. `build_claim_artifact_map.py` asserts that every active cell is mapped exactly once. `build_table0_claim_ledger.py` generates Table 0’s quantitative FIR fields from active graph cells, and the strict wrapper fails if its marked region drifts. Literature attribution remains citation-checked authored prose. Full mutation/fault-injection depth remains future assurance work. |
+| 9 | **Numerical graph, claim-map, and Table 0 quantitative provenance CLOSED; mutation depth remains open** | The graph has 198 active cells across 22 required families with zero mismatch/untraceable cells. The MovieLens cell verifies frozen code hashes and recomputes released aggregate seed-vector, paired-interval, Holm/NI, sensitivity, and resource arithmetic. The WEARec cell verifies the official-code provenance, six reference artifacts, eight private endpoint hashes, and recomputes released NDCG-vector intervals and the descriptive Welch contrast; neither cell claims replay of private endpoint extraction. `build_claim_artifact_map.py` asserts that every active cell is mapped exactly once. `build_table0_claim_ledger.py` generates Table 0’s quantitative FIR fields from active graph cells, and the strict wrapper fails if its marked region drifts. Literature attribution remains citation-checked authored prose. Full mutation/fault-injection depth remains future assurance work. |
 | 10 | **Primary paper type CLOSED; validation depth OPEN** | Title, abstract, Introduction, Table 0, Related Work, Discussion, and Conclusion consistently define the paper as an **incremental modular FIR contribution**. The audit/rebuild apparatus is a supporting contribution, not the lead. Current-baseline execution, cross-repository validation, fault injection, and reviewer-usability evidence would strengthen but do not redefine the paper type. |
 | 11 | **CLOSED** | “Transfers,” “cross-category confirmation/transfer,” “FIR-specific interpretation,” and “supports temporal mixing” were removed from the canonical and rendered manuscripts. Shared/nonlinear controls are described as statistically unseparated, never equivalent. The health gate now fails on the stale attribution phrases. |
 | 12 | **CLOSED** | The manuscript names the separately frozen five-test family A and four-test family B, reports all nine Holm-adjusted p-values, labels every CI ordinary paired, and states that neither one global nine-test family nor simultaneous-CI coverage is implied. |
@@ -115,7 +115,7 @@ class. The CRLF/LF frozen-reference defect is separately recorded in
 
 The audit's stale-landing-metadata finding is also closed for the mutable current
 boundary: README reports the public asset boundary and the current candidate count;
-CFF/Zenodo metadata report 197 cells across 21 families and no longer claim
+CFF/Zenodo metadata report 198 cells across 22 families and no longer claim
 that the compound placebo isolates temporal access; the public release manifest was
 uploaded last. The final immutable tag, verified creators/legal fields, and DOI remain
 open human-controlled work.
@@ -172,9 +172,10 @@ generalization.
 
 ## 2026-07-28 non-Amazon parsimony phase (outcome integration)
 
-The design-stage phase completed without opening any endpoint before all 96
-TEST-sequestered training runs and 96 sealed evaluations existed. The committed
-adjudicator was then the first endpoint reader. Its exact verdict is
+The design-stage phase completed without the campaign process opening any endpoint
+before all 96 TEST-sequestered training runs and 96 sealed evaluations existed. The
+protocol-designated adjudicator was then invoked in the recorded process sequence;
+local evidence does not establish first human/tool access. Its exact verdict is
 `ML1M-NO-FIR-REPLICATION`.
 
 On the rating≥4 primary global-time split, mean NDCG@10 was 0.052151 learned,
@@ -201,3 +202,35 @@ record-level data; checkpoints, endpoint files, and per-user sidecars therefore 
 private. The public graph expressly does not claim independent replay of private
 endpoint extraction. Audit items 8 and 13 are only partly closed; item 14 is closed
 experimentally with a negative primary result.
+
+## 2026-07-28 current-baseline and presentation response
+
+Audit item 4 requested at least one feasible current equal-evaluation baseline.
+`PREREG_WEAREC_BASELINE_V1.md` froze the official AAAI 2026 WEARec code at
+commit `2087335339b1ead87da6e066ce14e2d33880a95e`, two validation-only presets,
+and eight assessment seeds under the paper's split, full catalog, complete-history
+mask, cutoff, and strict-greater tie rule. The campaign completed all 2 tuning runs,
+8 TEST-sequestered assessment trainings, and 8 sealed one-shot evaluations without
+recorded errors. Only after the status reached complete was the committed adjudicator
+run as the protocol-designated first authorized endpoint reader.
+
+The exact verdict is **`WEAREC-BELOW-EXISTING-REFERENCE`**. WEARec mean NDCG@10
+is **0.059184, 95% CI [0.058674, 0.059693]**; the existing six-seed full-model
+reference is **0.067337 [0.067063, 0.067611]**. The descriptive outcome-known
+unpaired Welch contrast is **−0.008154 [−0.008689, −0.007618], p=1.16×10⁻¹¹**.
+The graph recomputes both released NDCG vectors, both t intervals, the Welch arithmetic,
+the verdict, resource metadata, reference hashes, and the private endpoint-hash ledger.
+It does not replay private endpoint extraction or HR/MRR raw-vector arithmetic.
+
+This result closes only the current frequency-baseline half of audit item 4 as a narrow
+official-model/equal-evaluation feasibility run. It is same-investigator evidence on an
+outcome-known split, not independent confirmation, a paired experiment, equal
+architecture/loss/schedule/tuning budgets, or SOTA. The clean AlphaFuse-style text+ID
+comparison remains open.
+
+The audit's Table 0 readability and abstract-length concerns were also rechecked.
+Table 0 now uses generator-controlled ragged-right columns, additional padding, and
+increased row leading; both ACM targets compile, the hygiene scan passes, and a
+rendered-page inspection found no clipping or overlap across the repeated-header
+page break. The canonical Markdown abstract is 220 words under the repository's
+Unicode-aware count, down from the audit's earlier approximately 275-word snapshot.

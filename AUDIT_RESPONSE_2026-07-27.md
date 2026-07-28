@@ -33,8 +33,9 @@ paper. The defensible result is narrower: under fixed outcome-visible settings,
 tested trainable left-causal residual arms improved a frozen-identity control.
 Learned per-channel FIR taps are one successful realization, but the present
 controls do not establish learned-tap superiority. The matched pointwise-placebo
-study supports temporal access relative to that equal-parameter non-temporal arm,
-but only on the outcome-known MI setting; it is not independent confirmation.
+study discriminates learned FIR from one equal-parameter compound non-temporal
+arm on outcome-known MI, but does not isolate temporal access; it is not
+independent confirmation.
 The artifact apparatus makes that boundary, the nulls, and the deviations
 reproducible; it does not turn them into independent confirmation.
 

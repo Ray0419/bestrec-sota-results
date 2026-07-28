@@ -215,8 +215,8 @@
    "out": "tableA1.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    680,
-    703
+    681,
+    704
    ],
    "family": "md-only (pandoc-converted; no JSON family)",
    "crosscheck": {
@@ -230,8 +230,8 @@
    "out": "table2.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    755,
-    776
+    756,
+    777
    ],
    "family": "hstu_tables.json:table2",
    "crosscheck": {
@@ -248,8 +248,8 @@
    "out": "table1e.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    784,
-    791
+    785,
+    792
    ],
    "family": "hstu_tables.json:table1e",
    "crosscheck": {

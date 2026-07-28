@@ -19046,7 +19046,15 @@
       "_bestrec_run/results_V2_ls02_filter8_seed20260611_VG.json",
       "_bestrec_run/results_V2_ls02_filter8_seed20260612_VG.json",
       "_bestrec_run/results_V2_confirm_seed20260613_VG.json"
-     ]
+     ],
+     "reference_lf_sha256": {
+      "results_V2_ls02_filter8_VG.json": "8e22dcc882af35fb99c9a2f746c1fdd310a1a4158f958bc684477a6b9ca65f48",
+      "results_V2_ls02_filter8_seed20260609_VG.json": "d6f607fe7b7e3943dc9354b87f8639cd10cfae8ba2f09c6a6d2d2f077d24d66e",
+      "results_V2_ls02_filter8_seed20260610_VG.json": "adaa757aac318958b4ef23bd1234d243beacb5215751bbf7d4064ad09c32456d",
+      "results_V2_ls02_filter8_seed20260611_VG.json": "19db16452087a64a66ee98315216675bc13719db5a86a74eaf28556d1bea74f2",
+      "results_V2_ls02_filter8_seed20260612_VG.json": "b4c4df8aa5a7bfec28628f5b1bd5130d7b2f28646020b1472ccaa2eb6cf34658",
+      "results_V2_confirm_seed20260613_VG.json": "4a1f1ac8b9a8e14fa8c98f781c6980292365e9fd5b7e0a2fb96bd4fa82db79f4"
+     }
     }
    },
    "recompute_rule": "prospectively frozen outcome-known same-investigator WEARec aggregate adjudication: verify the six existing reference artifacts and recompute released NDCG@10 seed-vector means, t intervals, and the descriptive unpaired Welch contrast; private sealed endpoints and per-user sidecars are not independently replayed by the public graph",

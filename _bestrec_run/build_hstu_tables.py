@@ -726,7 +726,8 @@ def rule_wearec_v1_aggregate(p):
 
     The sealed TEST endpoints and per-user rank sidecars are private.  The public
     graph therefore starts from the adjudicator-released NDCG@10 vectors, verifies
-    the six pre-existing reference artifacts and their hashes, and independently
+    the six pre-existing Git-backed reference artifacts using the repository's
+    LF-normalized text identity rule, and independently
     recomputes both one-sample summaries and the descriptive Welch contrast.  This
     is an aggregate arithmetic replay, not independent endpoint extraction.
     """
@@ -760,10 +761,18 @@ def rule_wearec_v1_aggregate(p):
         raise ValueError("WEARec V1 released aggregate-vector drift")
 
     recorded_hashes = adjud.get("reference_sha256", {})
+    normalized_hashes = p["reference_lf_sha256"]
     for rel in p["reference_files"]:
         name = os.path.basename(rel)
-        if not recorded_hashes.get(name) or sha256_file(rel) != recorded_hashes[name]:
+        raw_ok = sha256_file(rel) == recorded_hashes.get(name)
+        lf_ok = sha256_lf(rel) == normalized_hashes.get(name)
+        if not (raw_ok or lf_ok):
             raise ValueError(f"WEARec V1 reference identity drift: {name}")
+    artifact_reference = [bt_metric(rel, "NDCG@10")
+                          for rel in p["reference_files"]]
+    if any(abs(a - b) > 1e-15
+           for a, b in zip(artifact_reference, reference)):
+        raise ValueError("WEARec V1 reference vector does not match source artifacts")
 
     def summarize(values):
         n = len(values)
@@ -2759,6 +2768,24 @@ def build_spec():
         BR + "results_V2_ls02_filter8_seed20260612_VG.json",
         BR + "results_V2_confirm_seed20260613_VG.json",
     ]
+    # The adjudicator froze raw Windows working-tree hashes.  Git checkouts use
+    # LF for these tracked JSON files, so the graph accepts either that exact raw
+    # identity or the corresponding canonical LF identity and then recomputes
+    # the reference vector from the JSON content itself.
+    WEAREC_REFERENCE_LF_SHA256 = {
+        "results_V2_ls02_filter8_VG.json":
+            "8e22dcc882af35fb99c9a2f746c1fdd310a1a4158f958bc684477a6b9ca65f48",
+        "results_V2_ls02_filter8_seed20260609_VG.json":
+            "d6f607fe7b7e3943dc9354b87f8639cd10cfae8ba2f09c6a6d2d2f077d24d66e",
+        "results_V2_ls02_filter8_seed20260610_VG.json":
+            "adaa757aac318958b4ef23bd1234d243beacb5215751bbf7d4064ad09c32456d",
+        "results_V2_ls02_filter8_seed20260611_VG.json":
+            "19db16452087a64a66ee98315216675bc13719db5a86a74eaf28556d1bea74f2",
+        "results_V2_ls02_filter8_seed20260612_VG.json":
+            "b4c4df8aa5a7bfec28628f5b1bd5130d7b2f28646020b1472ccaa2eb6cf34658",
+        "results_V2_confirm_seed20260613_VG.json":
+            "4a1f1ac8b9a8e14fa8c98f781c6980292365e9fd5b7e0a2fb96bd4fa82db79f4",
+    }
     WEAREC_FROZEN = [
         "PREREG_WEAREC_BASELINE_V1.md",
         BR + "acquire_wearec_baseline_v1.py",
@@ -2794,7 +2821,8 @@ def build_spec():
         [WEAREC_ADJ, WEAREC_SELECTION] + WEAREC_REFERENCES + WEAREC_FROZEN,
         "wearec_v1_aggregate",
         {"adjud": WEAREC_ADJ, "seeds": WEAREC_SEEDS,
-         "reference_files": WEAREC_REFERENCES},
+         "reference_files": WEAREC_REFERENCES,
+         "reference_lf_sha256": WEAREC_REFERENCE_LF_SHA256},
         [
             chk("verdict_below", 1, mode="count"),
             chk("n_units", 8, mode="count"),

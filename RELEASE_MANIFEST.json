@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "b804ea02bfc60c0b7d2c157c67d26e26e34cf478",
+  "git_commit": "b0c8c7dbc0fa12f5355833dd38e525e6e54a8be7",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -135,7 +135,7 @@
       "sha256": "0eaad74a57698a878e5aaa2e7d0e314232b53759c4c449b509b34867cb9d18bc"
     },
     "_bestrec_run/build_hstu_tables.py": {
-      "sha256": "58b7955cb5cbef4ec787d25b5355b000077410e0d4a2c6928ac97d4cedbb063f"
+      "sha256": "de524041e7862edd67e150d974abe675729427ff1524a7f9f71c108e0df8316e"
     },
     "_bestrec_run/test_hstu_parity.py": {
       "sha256": "1656c393adaafb159fd48338b5bced547c11a1540a2d0f09ef7a800474d53bdd"
@@ -1215,7 +1215,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.2.0-deposit",
-  "hash_parent_commit": "b804ea02bfc60c0b7d2c157c67d26e26e34cf478",
+  "hash_parent_commit": "b0c8c7dbc0fa12f5355833dd38e525e6e54a8be7",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",

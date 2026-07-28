@@ -1,0 +1,138 @@
+{
+  "protocol": "PREREG_FIR_PROSPECTIVE_SW_V3",
+  "execution_git_head": "9c8f1a16f5d8d4a8a95b77d62b229f4cc3540219",
+  "created_unix": 1785216333.8695593,
+  "attempt_sha256": "f8a1fa77db5e0c8d5ad38ba7bc39e646789a2768cbc1dc594d9573c58d2d141f",
+  "training_artifacts": {
+    "identity:20261301": {
+      "run_json": "results_Software_FIRPROSPV3_identity_seed20261301.json",
+      "run_json_sha256": "cdfd836915b493b3fffa1cca5540515d2fd86445270ce7c81560fb5f54fc6120",
+      "checkpoint": "results_Software_FIRPROSPV3_identity_seed20261301.best.pt",
+      "checkpoint_sha256": "cb46bf024ad8a04b4412db04996c50329833fb6f46d9851bad4dbfb3d74f1829"
+    },
+    "learned:20261301": {
+      "run_json": "results_Software_FIRPROSPV3_learned_seed20261301.json",
+      "run_json_sha256": "d84a5a866e2d2343f0181de6f7f7cf496e6c6f09e11221c238da5c6b550cdc73",
+      "checkpoint": "results_Software_FIRPROSPV3_learned_seed20261301.best.pt",
+      "checkpoint_sha256": "924c2f97b575e84794eae02ebcb40c03089178b4f7723a8dc1b8d49c4fbfa83a"
+    },
+    "learned:20261302": {
+      "run_json": "results_Software_FIRPROSPV3_learned_seed20261302.json",
+      "run_json_sha256": "6b059a356b0fde8d45f40c9faa5971004a2d77ee6014022c47507aa29ad52d94",
+      "checkpoint": "results_Software_FIRPROSPV3_learned_seed20261302.best.pt",
+      "checkpoint_sha256": "918375c1089e6a4660d4ade2943141d5478047446cacb5bca9860d2f3e1aa179"
+    },
+    "identity:20261302": {
+      "run_json": "results_Software_FIRPROSPV3_identity_seed20261302.json",
+      "run_json_sha256": "d2aca4848a53f8f061125fa5837ac7ed1bede859252775faa30351bbbe7407d1",
+      "checkpoint": "results_Software_FIRPROSPV3_identity_seed20261302.best.pt",
+      "checkpoint_sha256": "9b02514b3e6975b43bd6bd51e32e0f1df45cc239a55b47556e375ce94bbe2aa3"
+    },
+    "identity:20261303": {
+      "run_json": "results_Software_FIRPROSPV3_identity_seed20261303.json",
+      "run_json_sha256": "8ba64cc62953b9c7bec01d98ee4cdaeb244bb8d7ef42ac1dc779a32e2faf9492",
+      "checkpoint": "results_Software_FIRPROSPV3_identity_seed20261303.best.pt",
+      "checkpoint_sha256": "280823dfdd4efc48d17fafe1734259b5965d3bc06ac7e9c45dc7646c260b3da4"
+    },
+    "learned:20261303": {
+      "run_json": "results_Software_FIRPROSPV3_learned_seed20261303.json",
+      "run_json_sha256": "1fd84c7e462265ec85f6174754a363ce948db4f8b91ad8763e03e05fd75d54cc",
+      "checkpoint": "results_Software_FIRPROSPV3_learned_seed20261303.best.pt",
+      "checkpoint_sha256": "6a0105c7d5df9f45d44d98259fe2407964688045bb528acaf3a3e155dcedaf41"
+    },
+    "learned:20261304": {
+      "run_json": "results_Software_FIRPROSPV3_learned_seed20261304.json",
+      "run_json_sha256": "80487ae8069b9e4c27434248d2ae8633661994f7d41c478d39ec0b610390bb6c",
+      "checkpoint": "results_Software_FIRPROSPV3_learned_seed20261304.best.pt",
+      "checkpoint_sha256": "21bebc63bcd6550c5c893e7e0e11eaeb9da64c7fb8b61e181a134e6479f615e5"
+    },
+    "identity:20261304": {
+      "run_json": "results_Software_FIRPROSPV3_identity_seed20261304.json",
+      "run_json_sha256": "380d91d811a358f92cea56bff3ba3f58e83f95c55aff39f981612843f5c6f69e",
+      "checkpoint": "results_Software_FIRPROSPV3_identity_seed20261304.best.pt",
+      "checkpoint_sha256": "2fbf32bf17dd1f3f5c6fb1b9ced4f25ab8c5c186af7bd7c9c0ce9c9658e570bd"
+    },
+    "identity:20261305": {
+      "run_json": "results_Software_FIRPROSPV3_identity_seed20261305.json",
+      "run_json_sha256": "3cefe8ea8d4318481798b69947bc8e791e08c13c0ba6cc02c1b4ca0523896e91",
+      "checkpoint": "results_Software_FIRPROSPV3_identity_seed20261305.best.pt",
+      "checkpoint_sha256": "9433d7ce0266115977958c77e7a3fa72f7cf21e500d5907f84066cfc1cde014f"
+    },
+    "learned:20261305": {
+      "run_json": "results_Software_FIRPROSPV3_learned_seed20261305.json",
+      "run_json_sha256": "1a877baf5f3223fd8ac5a40bdd107aad6628751cc816837dc4b972ead9588b0f",
+      "checkpoint": "results_Software_FIRPROSPV3_learned_seed20261305.best.pt",
+      "checkpoint_sha256": "32f4ad670425a4894bc336492d94b9a2ee32d1dbe1be8616385f6303d6afab8a"
+    },
+    "learned:20261306": {
+      "run_json": "results_Software_FIRPROSPV3_learned_seed20261306.json",
+      "run_json_sha256": "26dc50bf4866ea089d47375ef12e3cef502021d94864f0660facbfced530b628",
+      "checkpoint": "results_Software_FIRPROSPV3_learned_seed20261306.best.pt",
+      "checkpoint_sha256": "bcdfc9a9b726c6fe39dd42b1faa5c552d913f9ac9d568f3547419627b2f0d26e"
+    },
+    "identity:20261306": {
+      "run_json": "results_Software_FIRPROSPV3_identity_seed20261306.json",
+      "run_json_sha256": "e73ea64d36cd20db961fedfb76eaca4e0a37414bf2243b824131536210da1849",
+      "checkpoint": "results_Software_FIRPROSPV3_identity_seed20261306.best.pt",
+      "checkpoint_sha256": "e6ba3aa37eaa1c917319b500449ad5397390e9cd5563f5230736a4793c078352"
+    },
+    "identity:20261307": {
+      "run_json": "results_Software_FIRPROSPV3_identity_seed20261307.json",
+      "run_json_sha256": "88d1affc3566b6df2f7f3088233d67b9e9a377adef840238db7bf375f264f205",
+      "checkpoint": "results_Software_FIRPROSPV3_identity_seed20261307.best.pt",
+      "checkpoint_sha256": "b88c85599f76debd335656f901e1bfa1986929ceb700dba01242a793b21cef2e"
+    },
+    "learned:20261307": {
+      "run_json": "results_Software_FIRPROSPV3_learned_seed20261307.json",
+      "run_json_sha256": "3c843c71465452c4d466a109b6d0f9b0ec85322edd2cb8cf9d10dc5df707fb50",
+      "checkpoint": "results_Software_FIRPROSPV3_learned_seed20261307.best.pt",
+      "checkpoint_sha256": "23468577cd4ccf75fe30cae04b93f824929bf8b49476d9b1dfdaeb60b818088f"
+    },
+    "learned:20261308": {
+      "run_json": "results_Software_FIRPROSPV3_learned_seed20261308.json",
+      "run_json_sha256": "331c4c0875cd411bb18801a910707f62a5be8fa6d5b91447cd396939e0561ab0",
+      "checkpoint": "results_Software_FIRPROSPV3_learned_seed20261308.best.pt",
+      "checkpoint_sha256": "126994a38aac26afb2e64843b1a298ec7606240f53312a755aba9529709239c3"
+    },
+    "identity:20261308": {
+      "run_json": "results_Software_FIRPROSPV3_identity_seed20261308.json",
+      "run_json_sha256": "294e273fa50f05a8a64231261c49427ecfdae64647084f31b07f5ab8ab7b2fc4",
+      "checkpoint": "results_Software_FIRPROSPV3_identity_seed20261308.best.pt",
+      "checkpoint_sha256": "6a5377e86779f6373734001d87e33bee7c9fda76571a6d65e8590e1f0f3ba80c"
+    }
+  },
+  "backbone_init_sha256": {
+    "20261301": {
+      "identity": "7d4b3ddac51f075f9537299989d91249eec31dcc21a4b09f543026d9798043ca",
+      "learned": "7d4b3ddac51f075f9537299989d91249eec31dcc21a4b09f543026d9798043ca"
+    },
+    "20261302": {
+      "learned": "85adcf5caf15a8e0421d292a55ec7f7a8aa0010ceafb3aa1692cfd705a7ab2c1",
+      "identity": "85adcf5caf15a8e0421d292a55ec7f7a8aa0010ceafb3aa1692cfd705a7ab2c1"
+    },
+    "20261303": {
+      "identity": "2f17f26e883cbe69206d39f353ca0fcbac864e40e846873fb08e013041ea7592",
+      "learned": "2f17f26e883cbe69206d39f353ca0fcbac864e40e846873fb08e013041ea7592"
+    },
+    "20261304": {
+      "learned": "762d523390b56bf1e0a004f757a1c065ced35d4ce8f6118eaca3ef2aed4c897e",
+      "identity": "762d523390b56bf1e0a004f757a1c065ced35d4ce8f6118eaca3ef2aed4c897e"
+    },
+    "20261305": {
+      "identity": "b037356fdac59276458447ae5a42cb77e62cbacf9620371106c917759245e071",
+      "learned": "b037356fdac59276458447ae5a42cb77e62cbacf9620371106c917759245e071"
+    },
+    "20261306": {
+      "learned": "e2f52d280af349d8f4e78b24f68ad307e429b58dea0a169baa5dbc268db9b146",
+      "identity": "e2f52d280af349d8f4e78b24f68ad307e429b58dea0a169baa5dbc268db9b146"
+    },
+    "20261307": {
+      "identity": "3f4fe910afaea29ad96f674131d24ef27c799b9854224bc5149d8bc7ff04e8ec",
+      "learned": "3f4fe910afaea29ad96f674131d24ef27c799b9854224bc5149d8bc7ff04e8ec"
+    },
+    "20261308": {
+      "learned": "6f3cd0ca6ec572d2cdcb65c3cc55dcaf823e96130db1bd59de93d7c099305791",
+      "identity": "6f3cd0ca6ec572d2cdcb65c3cc55dcaf823e96130db1bd59de93d7c099305791"
+    }
+  }
+}

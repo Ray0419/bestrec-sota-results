@@ -27,6 +27,7 @@
   "fir_canonical_breadth",
   "fir_controls",
   "fir_pointwise",
+  "fir_prospective_sw_v3",
   "office_v3",
   "tfv2"
  ],
@@ -17775,6 +17776,239 @@
     },
     {
      "name": "holm_reject",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "firprosp.swv3.learned_identity",
+   "table_id": "fir_prospective_sw_v3",
+   "row_label": "Prospective Software FIR: learned-identity",
+   "metric": "paired 8-seed delta sealed final-test NDCG@10",
+   "evidence_class": "confirmatory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261301.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261302.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261303.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261304.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261305.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261306.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261307.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261308.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261301.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261302.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261303.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261304.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261305.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261306.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261307.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261308.finaleval.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261301.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261302.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261303.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261304.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261305.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261306.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261307.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261308.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261301.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261302.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261303.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261304.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261305.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261306.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261307.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261308.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261301.finaleval.users.npz",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261302.finaleval.users.npz",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261303.finaleval.users.npz",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261304.finaleval.users.npz",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261305.finaleval.users.npz",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261306.finaleval.users.npz",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261307.finaleval.users.npz",
+    "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261308.finaleval.users.npz",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261301.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261302.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261303.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261304.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261305.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261306.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261307.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261308.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261301.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261302.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261303.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261304.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261305.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261306.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261307.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261308.finaleval.started.json",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261301.finaleval.users.npz",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261302.finaleval.users.npz",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261303.finaleval.users.npz",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261304.finaleval.users.npz",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261305.finaleval.users.npz",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261306.finaleval.users.npz",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261307.finaleval.users.npz",
+    "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261308.finaleval.users.npz",
+    "_bestrec_run/fir_prospective_sw_v3_adjudication.json",
+    "_bestrec_run/fir_prospective_sw_v3_attempt.json",
+    "_bestrec_run/fir_prospective_sw_v3_ready.json",
+    "_bestrec_run/fir_prospective_sw_v3_endpoints_complete.json",
+    "_bestrec_run/fir_prospective_sw_v3_status.json"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20261301,
+    20261302,
+    20261303,
+    20261304,
+    20261305,
+    20261306,
+    20261307,
+    20261308
+   ],
+   "recompute": {
+    "rule": "fir_prospective_sw_v3_contrast",
+    "params": {
+     "learned": [
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261301.finaleval.json",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261302.finaleval.json",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261303.finaleval.json",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261304.finaleval.json",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261305.finaleval.json",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261306.finaleval.json",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261307.finaleval.json",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261308.finaleval.json"
+     ],
+     "identity": [
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261301.finaleval.json",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261302.finaleval.json",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261303.finaleval.json",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261304.finaleval.json",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261305.finaleval.json",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261306.finaleval.json",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261307.finaleval.json",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261308.finaleval.json"
+     ],
+     "adjud": "_bestrec_run/fir_prospective_sw_v3_adjudication.json",
+     "seeds": [
+      20261301,
+      20261302,
+      20261303,
+      20261304,
+      20261305,
+      20261306,
+      20261307,
+      20261308
+     ],
+     "attempt": "_bestrec_run/fir_prospective_sw_v3_attempt.json",
+     "ready": "_bestrec_run/fir_prospective_sw_v3_ready.json",
+     "endpoints_complete": "_bestrec_run/fir_prospective_sw_v3_endpoints_complete.json",
+     "status": "_bestrec_run/fir_prospective_sw_v3_status.json"
+    }
+   },
+   "recompute_rule": "prospective matched-init paired learned-minus-identity sealed one-shot Software TEST NDCG@10, with validation-only checkpoint selection, state and evidence hashes, statistics, practical threshold, and committed adjudicator verdict independently cross-checked",
+   "paper": [
+    {
+     "name": "mean",
+     "value": 0.005062,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_lo",
+     "value": 0.004591,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "ci_hi",
+     "value": 0.005533,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "learned_mean",
+     "value": 0.1202,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "identity_mean",
+     "value": 0.115138,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "practical_pass",
+     "value": 1,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_FIR_PROSPECTIVE_SW_V3 was frozen and pushed before launch. All 16 training runs selected checkpoints on validation only with no training-time TEST scores; the committed driver then created immutable READY and endpoint seals, performed one final TEST evaluation per selected checkpoint, and immediately invoked the committed first-reader adjudicator. The transductive all-split item catalog was explicitly predeclared. This is a prospective same-investigator, same-code-lineage, same-Amazon-family Software attempt under local same-user custody, not external escrow, independent confirmation, or cross-domain replication. Frozen verdict SW-V3-PRACTICAL-POS.",
+   "recomputed": {
+    "mean": 0.005061858156165869,
+    "sd": 0.0005637788958622757,
+    "n": 8,
+    "pos": 8,
+    "t": 25.3948791194461,
+    "ci_lo": 0.004590527204051715,
+    "ci_hi": 0.005533189108280023,
+    "learned_mean": 0.12019958348574666,
+    "identity_mean": 0.11513772532958079,
+    "paired_p": 3.749417384102939e-08,
+    "practical_pass": 1.0
+   },
+   "recomputed_value": 0.005061858156165869,
+   "paper_check": [
+    {
+     "name": "mean",
+     "paper": 0.005062,
+     "mode": "round",
+     "recomputed": 0.005061858156165869,
+     "result": "exact",
+     "rounded": 0.005062
+    },
+    {
+     "name": "ci_lo",
+     "paper": 0.004591,
+     "mode": "round",
+     "recomputed": 0.004590527204051715,
+     "result": "exact",
+     "rounded": 0.004591
+    },
+    {
+     "name": "ci_hi",
+     "paper": 0.005533,
+     "mode": "round",
+     "recomputed": 0.005533189108280023,
+     "result": "exact",
+     "rounded": 0.005533
+    },
+    {
+     "name": "learned_mean",
+     "paper": 0.1202,
+     "mode": "round",
+     "recomputed": 0.12019958348574666,
+     "result": "exact",
+     "rounded": 0.1202
+    },
+    {
+     "name": "identity_mean",
+     "paper": 0.115138,
+     "mode": "round",
+     "recomputed": 0.11513772532958079,
+     "result": "exact",
+     "rounded": 0.115138
+    },
+    {
+     "name": "practical_pass",
      "paper": 1,
      "mode": "count",
      "recomputed": 1.0,

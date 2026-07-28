@@ -1,0 +1,135 @@
+{
+  "protocol": "PREREG_FIR_PROSPECTIVE_SW_V3",
+  "execution_git_tag": "fir-prospective-sw-v3-freeze",
+  "execution_git_head": "9c8f1a16f5d8d4a8a95b77d62b229f4cc3540219",
+  "created_unix": 1785200100.0476673,
+  "catalog_policy": "explicit transductive all-split reindex; TEST scoring suppressed until READY",
+  "jobs": [
+    [
+      "identity",
+      20261301
+    ],
+    [
+      "learned",
+      20261301
+    ],
+    [
+      "learned",
+      20261302
+    ],
+    [
+      "identity",
+      20261302
+    ],
+    [
+      "identity",
+      20261303
+    ],
+    [
+      "learned",
+      20261303
+    ],
+    [
+      "learned",
+      20261304
+    ],
+    [
+      "identity",
+      20261304
+    ],
+    [
+      "identity",
+      20261305
+    ],
+    [
+      "learned",
+      20261305
+    ],
+    [
+      "learned",
+      20261306
+    ],
+    [
+      "identity",
+      20261306
+    ],
+    [
+      "identity",
+      20261307
+    ],
+    [
+      "learned",
+      20261307
+    ],
+    [
+      "learned",
+      20261308
+    ],
+    [
+      "identity",
+      20261308
+    ]
+  ],
+  "exact_argv_sha256": {
+    "identity:20261301": "93b443b811fffc24ee57cadb59b87489f4ef5fd32ec164e3562acddfbbf12309",
+    "learned:20261301": "67c2b578ec61f2ea45b8b50feaf9dacca5e89935c8e0cb1edaa9cf073de355b6",
+    "learned:20261302": "5e0ab78265024bf18870e5dbf36442e8c01a3c45b7d9171d993726f2c8fcb187",
+    "identity:20261302": "620122bc6320559504d348c78595eabebdbaf18d1bafa896efa2c8e9d5231c80",
+    "identity:20261303": "4dd22ef2e727cff39397a082ffca8d14c7b0f7030fe1ba78e2a146f8556db4e7",
+    "learned:20261303": "d4fc2445032467c7b49aab13d62384dc5dae60f3e376df0544baea82bbe0dbf5",
+    "learned:20261304": "01506280821de69c57e05d00aeaf172458c775829e572192943611b55a439e4c",
+    "identity:20261304": "4fd96f83245817f60dcc7f50d72f8876a1aa33f2ef3f3cb3cf774e0797fb6d26",
+    "identity:20261305": "72e65215f1e1c6b0f075c84d8d3f6d8fcddd38135ecbed31aee1f0e8221d7fc3",
+    "learned:20261305": "1b9f8cd289560a1e98d416990d809a8d5441f3b82cdfaf0b01d73b8372f0e534",
+    "learned:20261306": "14be044f9d0f59c11442029c9ae17f61a9b1427524a207658155bad3d49df0a5",
+    "identity:20261306": "828fa0f6c79277488946302509a85558ebb7a6f1d40567abf3141683cdae0f6f",
+    "identity:20261307": "f8632a972db95c63476fb32393ba47b5b2681960090940e324fb961ad515ccb5",
+    "learned:20261307": "bcac6cf7816cf17faa95f5047dd8278078fc8df75281ff2dd47ca8f19b330511",
+    "learned:20261308": "eede0a13eb53d767615236f0cb5ed705f96019d8793f79074671ce3f6ed23068",
+    "identity:20261308": "71253cbd56ffa6c7ca610d27e5cee3221dea51168b05e12b9fa1d70c99a966a5"
+  },
+  "runtime": {
+    "python": "3.12.13",
+    "implementation": "cpython",
+    "torch": "2.11.0+cu128",
+    "torch_cuda": "12.8",
+    "numpy": "2.4.4",
+    "scipy": "1.17.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 5060 Ti"
+  },
+  "input_sha256": {
+    "data_5core/5core/last_out/Software.train.csv": "731c567c20b9cc58ee1270c3e281720f1a50b6e5d24c0494fa31861f17798246",
+    "data_5core/5core/last_out/Software.valid.csv": "3f42eb8e0fe8b54cc4ad854755da29f455540c4a787eaa2744f36864944733c3",
+    "data_5core/5core/last_out/Software.test.csv": "9e520fff20359a0fc130c8df7c4898f448aa140a90dffd82a64a60192574f863",
+    "cache_5core/sbert_titles_Software.npy": "2a1d09dea26c9c619a6d52ba2082c58ac23c03a04a7f02be30f5e9441098aa38",
+    "cache_5core/asin2idx_Software.json": "62e6a129e39dcead62922e096d6a36eef2527668a7bb8791822127440d36c7ae"
+  },
+  "reference_sha256": {
+    "_bestrec_run/results_MI_V2_ls02_filter16_seed20260608.json": "a230d17cd4e1683ac0e07e64702587950baf89374083521850c96daeede1ab72",
+    "_bestrec_run/software_feasibility.json": "54d8c6ae086a51ba784f038c438761105634f988ea85ba3c2b65e63f9b8b960d",
+    "_bestrec_run/software_acquisition_manifest.json": "e234452c682b81c21e81efbdb689831ba19971031b6247c261086215f4da2255",
+    "_bestrec_run/software_title_cache_manifest.json": "022aafce6a98e12e43009d4613df4796a2b0850f0326f33ae927e76548fb7b63"
+  },
+  "frozen_file_sha256": {
+    "PREREG_FIR_PROSPECTIVE_SW_V3.md": "1c0b238b020dbc503d4448ebf127b035dcd059e4eb17fb9f6b9ceb07054d89af",
+    "PREREG_FIR_PROSPECTIVE_SW_V2_PREPARATION.md": "2bfdbc30f758e116229c7c863f3e37db82ac4b10325de2bdaa45466cf8d8c8a6",
+    "FIR_PROSPECTIVE_SW_V2_INTEGRITY.md": "2306db13ac6b41db1dc7526c7e97631381b2886d877f210e240359b0eb2dff41",
+    "_bestrec_run/fir_prospective_sw_v3_common.py": "1650c40c2871cfe2d3058777cf01243f564857be2f8205d89774c530a8fda9d8",
+    "_bestrec_run/fir_prospective_sw_v3_environment.json": "bb44221dc43fadb8d8d53475171920c1a685edca684bfe5c8ff8bda383e1b550",
+    "_bestrec_run/run_sasrec_sbert_pointwise_v1_frozen.py": "46dbbc2f2a3c86a8410e549f92d70228edc24d0b05d66da0fa081298e2a73ac8",
+    "_bestrec_run/run_sasrec_sbert.py": "46dbbc2f2a3c86a8410e549f92d70228edc24d0b05d66da0fa081298e2a73ac8",
+    "_bestrec_run/run_sasrec_sbert_software_v3_frozen.py": "6f86818274d0448c7be3643642c75a22a9bb08ef41330f8a9a57ecb62a88fa49",
+    "_bestrec_run/fuse_ease_eval.py": "c5698f18b4d1d7225ff5ecf8741e937451680d4e53eb62ef4d15aac968498b6b",
+    "_bestrec_run/test_fir_pointwise_v1.py": "6b4ae09d0e007158f2bb201758625ec2c3c14fcabc22c450a686226214aed30c",
+    "_bestrec_run/run_fir_prospective_sw_v3.py": "a0a93bf5edd761566e645412435c8c54c163f38f03219c154fb45a8dd078c5a9",
+    "_bestrec_run/eval_fir_prospective_sw_v3.py": "c84df5188d1cff7e19335e33c4941fda1f0a0a7fcf6b770cbaf1b2fb7aedce42",
+    "_bestrec_run/adjudicate_fir_prospective_sw_v3.py": "71d8b9bc47662d2de91142d718634c38f73dbc27584e4c856061896800853d70",
+    "_bestrec_run/pyproject.toml": "2133a3cd16b23339d4fca79d8a7dd6c0bdd11e9c03484f2d7da9896ba1787079",
+    "_bestrec_run/uv.lock": "089dd0943bc3bfb9de8b653e8f400c587a696eea8f6736a3da6ef57928946a3c",
+    "_bestrec_run/software_feasibility.json": "54d8c6ae086a51ba784f038c438761105634f988ea85ba3c2b65e63f9b8b960d",
+    "_bestrec_run/software_acquisition_manifest.json": "e234452c682b81c21e81efbdb689831ba19971031b6247c261086215f4da2255",
+    "_bestrec_run/software_title_cache_manifest.json": "022aafce6a98e12e43009d4613df4796a2b0850f0326f33ae927e76548fb7b63"
+  },
+  "v2_integrity_record_sha256": "2306db13ac6b41db1dc7526c7e97631381b2886d877f210e240359b0eb2dff41"
+}

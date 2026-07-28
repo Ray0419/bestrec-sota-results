@@ -8,6 +8,7 @@ all counted or paper-printed campaign adjudicators, and the descriptive Office
 V1 adjudicator. Exits nonzero if any strict step fails."""
 import subprocess
 import sys
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -105,6 +106,27 @@ def main():
                           ["VERDICT: POINTWISE-FIR-DISCRIMINATED",
                            "learned-pointwise",
                            "A retained contrast is not evidence of equivalence."])
+        def verify_recorded_sw_v3_verdict():
+            path = ROOT / "_bestrec_run" / "fir_prospective_sw_v3_adjudication.json"
+            try:
+                rec = json.loads(path.read_text(encoding="utf-8"))
+                primary = rec["primary_contrast"]
+                good = (rec.get("protocol") == "PREREG_FIR_PROSPECTIVE_SW_V3"
+                        and rec.get("verdict") == "SW-V3-PRACTICAL-POS"
+                        and rec.get("scope") == ("prospective same-investigator, "
+                            "same-code-lineage, same-Amazon-family category attempt; "
+                            "not independent confirmation")
+                        and rec.get("custody_scope") == ("local same-user operational "
+                            "first-reader handoff; no external escrow or independent custody")
+                        and float(primary["ci95"][0]) > float(rec["practical_threshold"])
+                        and float(primary["p_two_sided"]) < float(rec["alpha"]))
+            except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError):
+                good = False
+            print("--- Software V3 prospective recorded adjudication "
+                  "(committed first-reader verdict; graph recomputes all endpoints): "
+                  f"{'OK' if good else 'FAILED (verdict not confirmed)'}")
+            return good
+        ok &= verify_recorded_sw_v3_verdict()
         ok &= run_verdict("E-F HYBRID_V1 fresh-seed adjudication (pre-declared; "
                           "W-H-POS x3 required)",
                           ["_bestrec_run/adjudicate_hybrid_v1.py"],

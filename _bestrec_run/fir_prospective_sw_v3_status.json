@@ -1,0 +1,12 @@
+{
+  "protocol": "PREREG_FIR_PROSPECTIVE_SW_V3",
+  "state": "complete",
+  "trained": 16,
+  "evaluated": 16,
+  "adjudicated": 1,
+  "total_training": 16,
+  "total_evaluation": 16,
+  "elapsed_min": 282.9,
+  "execution_git_head": "9c8f1a16f5d8d4a8a95b77d62b229f4cc3540219",
+  "detail": null
+}

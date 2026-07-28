@@ -47,6 +47,7 @@ Run:  _bestrec_run/.venv/Scripts/python _bestrec_run/build_hstu_tables.py
 Pure stdlib; CPU-only; read-only on every result artifact.
 """
 import argparse
+import hashlib
 import json
 import math
 import os
@@ -179,6 +180,14 @@ def load(rel):
         j = json.load(f)
     _CACHE[rel] = j
     return j
+
+def sha256_file(rel):
+    ap = os.path.join(ROOT, rel)
+    h = hashlib.sha256()
+    with open(ap, "rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
 
 def bt_metric(rel, metric):
     return float(load(rel)["best_test"][metric])
@@ -405,6 +414,119 @@ def rule_fir_pointwise_contrast(p):
         raise ValueError(f"FIR-pointwise paired-p drift for {p['contrast']}")
     out["holm_p"] = float(decision["p_holm"])
     out["holm_reject"] = 1.0 if decision["reject"] else 0.0
+    return out
+
+def rule_fir_prospective_sw_v3_contrast(p):
+    """Recompute and fully bind the prospective Software FIR contrast."""
+    adjud = load(p["adjud"])
+    seeds = [int(s) for s in p["seeds"]]
+    if (adjud.get("protocol") != "PREREG_FIR_PROSPECTIVE_SW_V3"
+            or adjud.get("verdict") != "SW-V3-PRACTICAL-POS"
+            or adjud.get("scope") != ("prospective same-investigator, same-code-lineage, "
+                                      "same-Amazon-family category attempt; not independent "
+                                      "confirmation")
+            or adjud.get("custody_scope") != ("local same-user operational first-reader "
+                                               "handoff; no external escrow or independent "
+                                               "custody")
+            or adjud.get("category") != "Software"
+            or [int(s) for s in adjud.get("seeds", [])] != seeds
+            or abs(float(adjud.get("alpha", -1)) - 0.05) > 1e-15
+            or abs(float(adjud.get("practical_threshold", -1)) - 0.0005) > 1e-15):
+        raise ValueError("Software V3 prospective adjudication metadata drift")
+
+    state_hashes = {
+        p["attempt"]: adjud["attempt_sha256"],
+        p["ready"]: adjud["ready_sha256"],
+        p["endpoints_complete"]: adjud["endpoints_complete_sha256"],
+    }
+    for rel, expected in state_hashes.items():
+        if sha256_file(rel) != expected:
+            raise ValueError(f"Software V3 state-artifact hash drift in {rel}")
+        state = load(rel)
+        if state.get("protocol") != "PREREG_FIR_PROSPECTIVE_SW_V3":
+            raise ValueError(f"Software V3 state-artifact protocol drift in {rel}")
+    status = load(p["status"])
+    if (status.get("protocol") != "PREREG_FIR_PROSPECTIVE_SW_V3"
+            or status.get("state") != "complete"
+            or int(status.get("trained", -1)) != 16
+            or int(status.get("evaluated", -1)) != 16
+            or int(status.get("adjudicated", -1)) != 1):
+        raise ValueError("Software V3 terminal status drift")
+
+    evidence = adjud.get("evidence", {})
+    backbone = adjud.get("backbone_hashes", {})
+    values = {"learned": [], "identity": []}
+    for arm in ("learned", "identity"):
+        for rel, seed in zip(p[arm], seeds):
+            key = f"{arm}:{seed}"
+            ev = evidence.get(key, {})
+            rec = load(rel)
+            if (rec.get("protocol") != "PREREG_FIR_PROSPECTIVE_SW_V3"
+                    or rec.get("category") != "Software"
+                    or rec.get("arm") != arm
+                    or int(rec.get("seed", -1)) != seed
+                    or int(rec.get("test", {}).get("n_eval", -1)) != 146396
+                    or sha256_file(rel) != ev.get("finaleval_sha256")):
+                raise ValueError(f"Software V3 sealed endpoint binding drift in {rel}")
+            selected = int(rec.get("selected_epoch", -1))
+            train_rel = rel.replace(".finaleval.json", ".json")
+            train = load(train_rel)
+            history = train.get("history", [])
+            rows = [row for row in history if int(row.get("epoch", -1)) == selected]
+            selected_val = float(rec.get("selected_val_NDCG10"))
+            if (not 1 <= selected <= 20 or train.get("best_test") is not None
+                    or len(rows) != 1
+                    or abs(float(rows[0]["val"]["NDCG@10"]) - selected_val) > 1e-12
+                    or abs(float(train.get("best_val_NDCG10")) - selected_val) > 1e-12
+                    or abs(max(float(row["val"]["NDCG@10"]) for row in history)
+                           - selected_val) > 1e-12
+                    or sha256_file(train_rel) != ev.get("run_json_sha256")
+                    or train.get("best_ckpt_sha256") != ev.get("checkpoint_sha256")
+                    or train.get("backbone_init_sha256")
+                       != backbone.get(str(seed), {}).get(arm)):
+                raise ValueError(f"Software V3 training/selection binding drift in {rel}")
+            prov = rec.get("provenance", {})
+            if (prov.get("protocol") != "PREREG_FIR_PROSPECTIVE_SW_V3"
+                    or prov.get("execution_git_tag") != "fir-prospective-sw-v3-freeze"
+                    or prov.get("execution_git_head") != adjud.get("execution_git_head")
+                    or prov.get("run_json_sha256") != ev.get("run_json_sha256")
+                    or prov.get("checkpoint_sha256") != ev.get("checkpoint_sha256")
+                    or prov.get("users_sidecar_sha256") != ev.get("users_sha256")
+                    or prov.get("started_seal_sha256") != ev.get("seal_sha256")):
+                raise ValueError(f"Software V3 endpoint provenance drift in {rel}")
+            sidecar = rel.replace(".finaleval.json", ".finaleval.users.npz")
+            seal = rel.replace(".finaleval.json", ".finaleval.started.json")
+            if (sha256_file(sidecar) != ev.get("users_sha256")
+                    or sha256_file(seal) != ev.get("seal_sha256")):
+                raise ValueError(f"Software V3 sealed sidecar/hash drift for {rel}")
+            value = rec.get("test", {}).get("NDCG@10")
+            if value is None or not math.isfinite(float(value)):
+                raise ValueError(f"Software V3 endpoint missing/nonfinite in {rel}")
+            values[arm].append(float(value))
+
+    for seed in seeds:
+        h = backbone.get(str(seed), {})
+        if not h.get("learned") or h.get("learned") != h.get("identity"):
+            raise ValueError(f"Software V3 matched-backbone hash drift for seed {seed}")
+    out = paired_stats([a - b for a, b in zip(values["learned"], values["identity"])])
+    out["learned_mean"] = mean(values["learned"])
+    out["identity_mean"] = mean(values["identity"])
+    out["paired_p"] = t_two_sided_p(out["t"], out["n"] - 1)
+    primary = adjud["primary_contrast"]
+    expected = {
+        "mean": primary["mean"], "sd": primary["sd"], "t": primary["t"],
+        "ci_lo": primary["ci95"][0], "ci_hi": primary["ci95"][1],
+        "paired_p": primary["p_two_sided"],
+        "learned_mean": adjud["means"]["learned"],
+        "identity_mean": adjud["means"]["identity"],
+    }
+    for name, value in expected.items():
+        if abs(float(out[name]) - float(value)) > 1e-12:
+            raise ValueError(f"Software V3 adjudicated {name} drift")
+    out["practical_pass"] = 1.0 if (out["ci_lo"] > 0.0005
+                                           and out["paired_p"] < 0.05) else 0.0
+    if out["practical_pass"] != 1.0:
+        raise ValueError("Software V3 practical-effect verdict no longer reproduces")
     return out
 
 def rule_pct_of_paired(p):
@@ -876,7 +998,7 @@ REQUIRED_FAMILIES = ["table1", "table1a", "table1b", "table1c", "table1d", "tabl
                      "table541", "table542", "tableV2conf", "table2",
                      "office_confirmation", "theirs_on_ours", "fir_breadth",
                      "fir_v3", "fir_canonical_breadth", "fir_controls",
-                     "fir_pointwise", "office_v3", "tfv2"]
+                     "fir_pointwise", "fir_prospective_sw_v3", "office_v3", "tfv2"]
 
 OFFICE_VOID_NOTE = ("VOID under prereg floor check (+44% floor inflation); "
                     "provisional, not counted as a pass")
@@ -894,6 +1016,7 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "fir_v3_welch_adjudicated": "frozen E-A independent-arm Welch contrast on best_test[{m}], bound to matched initialization hashes, adjudicated statistics, and verdict",
         "fir_control_contrast": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with statistics, frozen verdict, and Holm decision cross-checked against the mechanical active-control adjudication JSON",
         "fir_pointwise_contrast": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with parameter equality, statistics, frozen verdict, and Holm decision cross-checked against the mechanical pointwise-placebo adjudication JSON",
+        "fir_prospective_sw_v3_contrast": "prospective matched-init paired learned-minus-identity sealed one-shot Software TEST NDCG@10, with validation-only checkpoint selection, state and evidence hashes, statistics, practical threshold, and committed adjudicator verdict independently cross-checked",
         "pct_of_paired": "100 * mean per-seed (a-b) / mean(b), best_test[{m}]",
         "pct_change": "100 * (mean(a)/denom - 1), best_test[{m}]",
         "share_of_lift": "100 * (mean(x)-mean(base)) / (mean(top)-mean(base))",
@@ -2137,6 +2260,51 @@ def build_spec():
                       8, "exploratory", seeds=FIRPOINT_SEEDS,
                       notes=FIRPOINT_NOTE))
 
+    # ------- fir_prospective_sw_v3: prospective same-user Software attempt -------
+    SWV3_SEEDS = list(range(20261301, 20261309))
+    SWV3_ADJ = BR + "fir_prospective_sw_v3_adjudication.json"
+    def swv3_files(arm, suffix):
+        return [BR + f"results_Software_FIRPROSPV3_{arm}_seed{s}{suffix}"
+                for s in SWV3_SEEDS]
+    swv3_learned = swv3_files("learned", ".finaleval.json")
+    swv3_identity = swv3_files("identity", ".finaleval.json")
+    swv3_sources = swv3_learned + swv3_identity
+    for arm in ("learned", "identity"):
+        swv3_sources += swv3_files(arm, ".json")
+        swv3_sources += swv3_files(arm, ".finaleval.started.json")
+        swv3_sources += swv3_files(arm, ".finaleval.users.npz")
+    swv3_sources += [SWV3_ADJ,
+                     BR + "fir_prospective_sw_v3_attempt.json",
+                     BR + "fir_prospective_sw_v3_ready.json",
+                     BR + "fir_prospective_sw_v3_endpoints_complete.json",
+                     BR + "fir_prospective_sw_v3_status.json"]
+    SWV3_NOTE = ("PREREG_FIR_PROSPECTIVE_SW_V3 was frozen and pushed before launch. "
+                 "All 16 training runs selected checkpoints on validation only with no "
+                 "training-time TEST scores; the committed driver then created immutable "
+                 "READY and endpoint seals, performed one final TEST evaluation per "
+                 "selected checkpoint, and immediately invoked the committed first-reader "
+                 "adjudicator. The transductive all-split item catalog was explicitly "
+                 "predeclared. This is a prospective same-investigator, same-code-lineage, "
+                 "same-Amazon-family Software attempt under local same-user custody, not "
+                 "external escrow, independent confirmation, or cross-domain replication. "
+                 "Frozen verdict SW-V3-PRACTICAL-POS.")
+    C.append(cell("firprosp.swv3.learned_identity", "fir_prospective_sw_v3",
+                  "Prospective Software FIR: learned-identity",
+                  "paired 8-seed delta sealed final-test NDCG@10",
+                  swv3_sources, "fir_prospective_sw_v3_contrast",
+                  {"learned": swv3_learned, "identity": swv3_identity,
+                   "adjud": SWV3_ADJ, "seeds": SWV3_SEEDS,
+                   "attempt": BR + "fir_prospective_sw_v3_attempt.json",
+                   "ready": BR + "fir_prospective_sw_v3_ready.json",
+                   "endpoints_complete": BR + "fir_prospective_sw_v3_endpoints_complete.json",
+                   "status": BR + "fir_prospective_sw_v3_status.json"},
+                  [chk("mean", 0.005062, 6), chk("ci_lo", 0.004591, 6),
+                   chk("ci_hi", 0.005533, 6),
+                   chk("learned_mean", 0.120200, 6),
+                   chk("identity_mean", 0.115138, 6),
+                   chk("practical_pass", 1, mode="count")],
+                  8, "confirmatory", seeds=SWV3_SEEDS, notes=SWV3_NOTE))
+
     # ------- tfv2: pre-declared repaired-estimand campaign (PREREG_TAIL_FIR_V2) -------
     # Independent 8-vs-8 arms, but outcome-visible: the first independently verifiable
     # timestamp postdates the first result and adjudicator timing/custody do not support
@@ -2188,7 +2356,7 @@ def build_spec():
     # firb.* removed 2026-07-20 (audit 00:01): the frozen breadth rule is a paired t whose
     # pairing premise is false; its cells stay as frozen-rule records but are NOT
     # confirmatory. Welch companions are post-hoc (exploratory).
-    PREDECLARED_PREFIXES = ("v2conf.", "officev3.", "t2.conngate.")
+    PREDECLARED_PREFIXES = ("v2conf.", "officev3.", "t2.conngate.", "firprosp.")
     for c0 in C:
         if c0.get("evidence_class") == "confirmatory" and \
                 (not c0["cell_id"].startswith(PREDECLARED_PREFIXES)

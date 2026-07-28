@@ -1,0 +1,13 @@
+{
+  "protocol": "PREREG_FIR_PROSPECTIVE_SW_V3",
+  "started_unix": 1785216842.0344553,
+  "execution_git_tag": "fir-prospective-sw-v3-freeze",
+  "execution_git_head": "9c8f1a16f5d8d4a8a95b77d62b229f4cc3540219",
+  "attempt_sha256": "f8a1fa77db5e0c8d5ad38ba7bc39e646789a2768cbc1dc594d9573c58d2d141f",
+  "ready_sha256": "8f70882a187651cb4dca684111da1fb5e017a6742dec9a7e435e9a9fb3606e0f",
+  "run_json": "results_Software_FIRPROSPV3_identity_seed20261306.json",
+  "run_json_sha256": "e73ea64d36cd20db961fedfb76eaca4e0a37414bf2243b824131536210da1849",
+  "checkpoint": "results_Software_FIRPROSPV3_identity_seed20261306.best.pt",
+  "checkpoint_sha256": "e6ba3aa37eaa1c917319b500449ad5397390e9cd5563f5230736a4793c078352",
+  "exact_argv_sha256": "828fa0f6c79277488946302509a85558ebb7a6f1d40567abf3141683cdae0f6f"
+}

@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "9c8f1a16f5d8d4a8a95b77d62b229f4cc3540219",
+  "git_commit": "7cbc4ef8e52e736c5006d73ee30014ffcdf47ff9",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -135,7 +135,7 @@
       "sha256": "0eaad74a57698a878e5aaa2e7d0e314232b53759c4c449b509b34867cb9d18bc"
     },
     "_bestrec_run/build_hstu_tables.py": {
-      "sha256": "d733e370566581cd3322f6abc56c67e7ee0920282ea0616682e107cc63a7d67b"
+      "sha256": "61a13c4a788651ba8b4f394565c41ab394480f37448f8ccce502755735c4c470"
     },
     "_bestrec_run/test_hstu_parity.py": {
       "sha256": "1656c393adaafb159fd48338b5bced547c11a1540a2d0f09ef7a800474d53bdd"
@@ -862,6 +862,45 @@
     "FIR_PROSPECTIVE_SW_V2_INTEGRITY_VOID": {
       "FIR_PROSPECTIVE_SW_V2_INTEGRITY.md": "2306db13ac6b41db1dc7526c7e97631381b2886d877f210e240359b0eb2dff41",
       "_bestrec_run/fir_prospective_sw_v2_status.json": "9e03ff173a807ec6b47d2e50079b71f1f737652aa64909eafd2af889f41ca177"
+    },
+    "FIR_PROSPECTIVE_SW_V3": {
+      "_bestrec_run/fir_prospective_sw_v3_adjudication.json": "f8eb00629cd1c1672128e874c3d61df3f1d73df39a72cc34bba1bea125d501c3",
+      "_bestrec_run/fir_prospective_sw_v3_attempt.json": "f8a1fa77db5e0c8d5ad38ba7bc39e646789a2768cbc1dc594d9573c58d2d141f",
+      "_bestrec_run/fir_prospective_sw_v3_endpoints_complete.json": "83f3d9b01a6703394f77bb70a8beea1bcb680ab833f3750b1c48225d5d3d9ea9",
+      "_bestrec_run/fir_prospective_sw_v3_ready.json": "8f70882a187651cb4dca684111da1fb5e017a6742dec9a7e435e9a9fb3606e0f",
+      "_bestrec_run/fir_prospective_sw_v3_status.json": "bd9b9b73ae3633895026fb79b8795f310e1fcd6dfde88b7cd80ae9c3a75e0f66",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261301.finaleval.started.json": "be9b49cb5ab754376ec3b8684b4692bd1a76455359b5d0b74ed85e12e3b80c75",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261301.json": "cdfd836915b493b3fffa1cca5540515d2fd86445270ce7c81560fb5f54fc6120",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261302.finaleval.started.json": "c3af3d4ecf3b6b6416a8b1e207ab259188361f7387e842fe842d12cd26694312",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261302.json": "d2aca4848a53f8f061125fa5837ac7ed1bede859252775faa30351bbbe7407d1",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261303.finaleval.started.json": "fcaee462091c0da3db62e60f5d598bb42c729885f699a52757596280464cda35",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261303.json": "8ba64cc62953b9c7bec01d98ee4cdaeb244bb8d7ef42ac1dc779a32e2faf9492",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261304.finaleval.started.json": "67c7275f1842505ad0ad58a5aeeb97389f3f228c765ef96fda48b76d659b3fa9",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261304.json": "380d91d811a358f92cea56bff3ba3f58e83f95c55aff39f981612843f5c6f69e",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261305.finaleval.started.json": "30a04f2cffadfc7bfaf815092effbf4592355e78d5a639889016db17c216d29c",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261305.json": "3cefe8ea8d4318481798b69947bc8e791e08c13c0ba6cc02c1b4ca0523896e91",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261306.finaleval.started.json": "fbb6ebeb41d3c02fade43b34fde54f7bd28332c87c3494f690a4cfac6e8a95d7",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261306.json": "e73ea64d36cd20db961fedfb76eaca4e0a37414bf2243b824131536210da1849",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261307.finaleval.started.json": "8d78fbaad9fde8d0f8b5978ff5ae60cca5658e72b08ea07fe34a7dd73e50baa5",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261307.json": "88d1affc3566b6df2f7f3088233d67b9e9a377adef840238db7bf375f264f205",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261308.finaleval.started.json": "74c93144c91db009a338edd9c7b00df8c0855014a6477f3b0b42b756a1dff8cc",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261308.json": "294e273fa50f05a8a64231261c49427ecfdae64647084f31b07f5ab8ab7b2fc4",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261301.finaleval.started.json": "6a8b177eedf2fbe74d334f2f1b99d559c283c2f004ae5dcf543cc97ca154a450",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261301.json": "d84a5a866e2d2343f0181de6f7f7cf496e6c6f09e11221c238da5c6b550cdc73",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261302.finaleval.started.json": "196c2b2d543b863422333026baa12035774e6c877bf5153208d4772896c21e17",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261302.json": "6b059a356b0fde8d45f40c9faa5971004a2d77ee6014022c47507aa29ad52d94",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261303.finaleval.started.json": "4ab7a69a0bfc313ca0b6a372480d0dbf8676fd927adeb7a7a0e0a72fa13105af",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261303.json": "1fd84c7e462265ec85f6174754a363ce948db4f8b91ad8763e03e05fd75d54cc",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261304.finaleval.started.json": "74699e78aa5d3b9d27f190cf545cd1d886bf714a98cca57da93b94b284c7c2cc",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261304.json": "80487ae8069b9e4c27434248d2ae8633661994f7d41c478d39ec0b610390bb6c",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261305.finaleval.started.json": "45c8d6bd44865472b1417ce79c2788e475c04bd85d622ea36201e3174011f6a8",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261305.json": "1a877baf5f3223fd8ac5a40bdd107aad6628751cc816837dc4b972ead9588b0f",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261306.finaleval.started.json": "70cf0942247af34d2decce212118eec80c57ce194a80f6f56dbe0d94555e42c1",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261306.json": "26dc50bf4866ea089d47375ef12e3cef502021d94864f0660facbfced530b628",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261307.finaleval.started.json": "bb46f6131c3f3915af1aa462e5c778a70acf4fe0b7b84a21ab2a19d729241c1a",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261307.json": "3c843c71465452c4d466a109b6d0f9b0ec85322edd2cb8cf9d10dc5df707fb50",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261308.finaleval.started.json": "dca2ca19d6dc12aad25c333818f5d08e58576780f08fb2161c59186c75f46f27",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261308.json": "331c4c0875cd411bb18801a910707f62a5be8fa6d5b91447cd396939e0561ab0"
     }
   },
   "sidecars": "see _bestrec_run/SOTACONF_V2_sidecar_manifest.json (tracked) + per-run user_records_sha256 fields",
@@ -881,7 +920,7 @@
       "bytes": 10714
     },
     "DOI_DEPOSIT_INSTRUCTIONS.md": {
-      "sha256": "d02a05973ec7458bf4f443be77e3c0434b4f63f473aad6aae03cc92069d97cb3",
+      "sha256": "99a9011431ff4ddc52c5c6dc935ae80f1ad2dd4a7329ed8d967a9dfa3a7e2ace",
       "bytes": 2913
     },
     "VENUE_PLAN.md": {
@@ -889,32 +928,32 @@
       "bytes": 5517
     },
     "PAPER_SUBMISSION.md": {
-      "sha256": "e7a908ec7c8c51e5774dc42e0861dc8c11d5a702cf229b2ceb5b8328bacf3b9f",
-      "bytes": 146743
+      "sha256": "aa4b45e74dec0dbc745316b1760f67ebac6cda307fbef9b48ed4219756df1093",
+      "bytes": 149473
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "7e680ed66c83a278054cab30d1b053dfbb14a76b269f6f800823416bc0aeca6b",
-      "bytes": 1341033
+      "sha256": "1c811cdd90c783e35c841450f95368e34598ed05e323e2712f8db052bd5a474d",
+      "bytes": 1341963
     },
     "PAPER_DRAFT.md": {
       "sha256": "4efe8ffea9fa4748327c16d2c6ef6fa34a547ef164a9af9d13fd6909cb00b7e5",
       "bytes": 226902
     },
     "CANONICAL_SUBMISSION.md": {
-      "sha256": "c2c3248e98e811a475cd92e921e3021d896148bb24ca6411747ac50c8c039682",
-      "bytes": 14152
+      "sha256": "69682d0fb87357fed0ce37f1be5d15e66ac7bca5a21865cecf653d51f466ce2e",
+      "bytes": 15276
     },
     "AUDIT_RESPONSE_2026-07-27.md": {
-      "sha256": "f46e9092f0ce09efb1f48c5d560fb220ce11567d4d2044effc0e24a43299ef5e",
-      "bytes": 14233
+      "sha256": "e2fe7c2b57ab020941fc28ddcf9ad2b918a96eb04e8ff76315a3f2ebae2bab73",
+      "bytes": 14195
     },
     "COVER_LETTER_TORS.md": {
       "sha256": "9a791f5ad396254c896d8fd340d910ca9199f57c315bdfd3b04b1a48fae1300f",
       "bytes": 4171
     },
     "CLAIM_ARTIFACT_MAP.md": {
-      "sha256": "24465c5edf8bdb75a1daef6fdb29fc72c25f18dc8e0942e2673695bcd91501b7",
-      "bytes": 11334
+      "sha256": "5d5b83ce4f30bffb659638399dc0d0066e93c1a87c97308d1e21b14c19b3f219",
+      "bytes": 12347
     },
     "PHASE_COMPLETION_AUDIT_2026-07-28.md": {
       "sha256": "13f368588d2e4cbec121bdd2fda34f7aba72f48dfba95e721c874ce9ae2f8b29",
@@ -953,8 +992,8 @@
       "bytes": 3435
     },
     "_bestrec_run/build_claim_artifact_map.py": {
-      "sha256": "b4a9cf9ce6fdb24bbac293e517f5dd262836f234f09af17107c088a4df8e985b",
-      "bytes": 12991
+      "sha256": "7250eacdee7c2b0372224d9c7301d726ab850472b81c41dae092adb132651e1c",
+      "bytes": 13884
     },
     "_bestrec_run/build_deposit_bundle.py": {
       "sha256": "ea6e5d9928b5ee50c651c4f9b865990aa881890399aed9124cc17c6da63ce045",
@@ -965,16 +1004,16 @@
       "bytes": 9762
     },
     "_bestrec_run/rebuild_hstu_submission.py": {
-      "sha256": "84e3ebab8d40f1fca47c2aa342e6404286e2d3993c1f5eede17f2ad49228c273",
-      "bytes": 7206
+      "sha256": "75c8907b4b6aeeaa72a8f713460bc735a9ab35ebfc7fff3e52814a940834f520",
+      "bytes": 8631
     },
     "_bestrec_run/update_release_manifest.py": {
       "sha256": "41170aa963bb256eb160bceb3c10cfa5bdd6a4f38aa932b3cd9cd0d4d9dcbda0",
       "bytes": 42262
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "0de32b82ec516208bbb3696f3f68e34d75331a5f21463f1c397f0c66b553122e",
-      "bytes": 432771
+      "sha256": "887450c4491ed3020d28cc6d1a151e223cb5cd3117da0bccd77fcb67c322a6cb",
+      "bytes": 434799
     },
     "_bestrec_run/emit_latex_tables.py": {
       "sha256": "1e39233ad7a7c51d3fe9058bfea474ee07c68dc21449b83d649f114f6f17b7f3",
@@ -1090,7 +1129,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.2.0-deposit",
-  "hash_parent_commit": "9c8f1a16f5d8d4a8a95b77d62b229f4cc3540219",
+  "hash_parent_commit": "7cbc4ef8e52e736c5006d73ee30014ffcdf47ff9",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",
@@ -2460,7 +2499,202 @@
   "fir_prospective_sw_v2_finaleval": {},
   "fir_prospective_sw_v2_sidecars": {},
   "fir_prospective_sw_v2_checkpoints": {},
-  "fir_prospective_sw_v3_finaleval": {},
-  "fir_prospective_sw_v3_sidecars": {},
-  "fir_prospective_sw_v3_checkpoints": {}
+  "fir_prospective_sw_v3_finaleval": {
+    "results_Software_FIRPROSPV3_identity_seed20261301.finaleval.json": {
+      "sha256": "074f885ec5fd9a87d9987ae0394aca80ca3b29d9f40d87bdc9a2dd852b0ae613",
+      "bytes": 3316
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261302.finaleval.json": {
+      "sha256": "3ffdd69d3efcd834324f718bcc4450243eacf9ff522d1606493f8a5c5b6bca4d",
+      "bytes": 3317
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261303.finaleval.json": {
+      "sha256": "dfc14cd83a5dbc402ad3d295608f6a369c51c02903f38e7b4babe494d0591771",
+      "bytes": 3316
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261304.finaleval.json": {
+      "sha256": "d3b10a905ada981bfd197abb113accd149549263f47b27ee4b625641f6947ca7",
+      "bytes": 3317
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261305.finaleval.json": {
+      "sha256": "4af81a795791ec813b2deea9bcf364c342a14d3d9813f676d02825eaebdc7597",
+      "bytes": 3313
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261306.finaleval.json": {
+      "sha256": "e1f2ef642621ac8e934ae883a3569001d9c84d19ad1aeec9191c949375d7fcb7",
+      "bytes": 3316
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261307.finaleval.json": {
+      "sha256": "9749eceae60cd416f4f3e81b9b43d9240158fa8d6943869682fcad414f0548e4",
+      "bytes": 3315
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261308.finaleval.json": {
+      "sha256": "782e1f9c636ba2c7cc3efdc903b8e31cd36db7012abbab25e2b7829ea88bef22",
+      "bytes": 3316
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261301.finaleval.json": {
+      "sha256": "14a22100fee449f90e30c2ff3bae6bf50245b9b64500e9700b92fdee6ec53938",
+      "bytes": 3314
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261302.finaleval.json": {
+      "sha256": "66af18f8afb1d50ddad0599bc9dcc34ab72a0cd04615e489b582a058680d45ff",
+      "bytes": 3310
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261303.finaleval.json": {
+      "sha256": "47956090b73ffc0188be89f865d625a20f89302ea66116e6c984a79284ef0a02",
+      "bytes": 3313
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261304.finaleval.json": {
+      "sha256": "d646003ecd5e7de1033e079296408f526b8a17e49e2442a518ad72a54a1d28d0",
+      "bytes": 3312
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261305.finaleval.json": {
+      "sha256": "4e96530b6a551c4214bc9091308531dde5d0739c03e35a7b672ec337396f3abf",
+      "bytes": 3314
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261306.finaleval.json": {
+      "sha256": "0ec62a179ceed8d1b479d87a30417483b10852855557c31d34f9080dfdab9854",
+      "bytes": 3312
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261307.finaleval.json": {
+      "sha256": "cfb6473a85e44a0b978af1ac4a7078753c85dafde3731ada0553af1fb8683164",
+      "bytes": 3312
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261308.finaleval.json": {
+      "sha256": "1e09ee4dc66e222d2a8335974903b8dec706fb366d4a69a83c14248e56ced66b",
+      "bytes": 3310
+    }
+  },
+  "fir_prospective_sw_v3_sidecars": {
+    "results_Software_FIRPROSPV3_identity_seed20261301.finaleval.users.npz": {
+      "sha256": "b436516da7c39db2bf2c172458f05177aa0e027dea45b3d6476fa491b8a65250",
+      "bytes": 1353282
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261302.finaleval.users.npz": {
+      "sha256": "97ad56c843d7559146d1c710d02202318bf9abeb7cb818e4c67d78ab452d68eb",
+      "bytes": 1352136
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261303.finaleval.users.npz": {
+      "sha256": "da7ed836802cf817b3c86f18e8c2a5bf83de939e043cd86dce66aac3adcfa50a",
+      "bytes": 1353192
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261304.finaleval.users.npz": {
+      "sha256": "be1f5b1a762ff305e962028d3205db7f3d1714ec444616df0d3f18a60796cd3d",
+      "bytes": 1352301
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261305.finaleval.users.npz": {
+      "sha256": "be08b2be52f86830439015cd3d0bb905b3b56890c022eb70460ea5578f1c21bd",
+      "bytes": 1352226
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261306.finaleval.users.npz": {
+      "sha256": "aa8233e087dbb54076d00237bcc873d9bbbb1ff56e3ebe1f9ae4452e6ab38a5d",
+      "bytes": 1354123
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261307.finaleval.users.npz": {
+      "sha256": "a61bb390ac05bd3935f5e7212fb02fcc709ce3ef567ec36c727fc70d0ab2e0be",
+      "bytes": 1352806
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261308.finaleval.users.npz": {
+      "sha256": "476457e2508efc6bfacbda9ee268c8668dbbf5d201c671757502047a6ad0aa44",
+      "bytes": 1353466
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261301.finaleval.users.npz": {
+      "sha256": "51ad22a39c20aa0f68bf4d568525e86bfaaf113803f728c130b02f0f4f2697e5",
+      "bytes": 1350666
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261302.finaleval.users.npz": {
+      "sha256": "488a36e3c7a70f19013ad6a1f6254240a5ce1b4e5f1d84486b809e6dbf1090d4",
+      "bytes": 1350744
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261303.finaleval.users.npz": {
+      "sha256": "8865235b93729409247d370f73cc82bc69af93e77e6617a850ce20c9621b5728",
+      "bytes": 1350696
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261304.finaleval.users.npz": {
+      "sha256": "48f5b37247238c9812d442b3fab8988d771f3140b586bb5a2e7c26973aaf5bbd",
+      "bytes": 1350909
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261305.finaleval.users.npz": {
+      "sha256": "0344006e5dcdd351cc40741f46eca9235818876b01294569bbd4a8a62a07add7",
+      "bytes": 1351705
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261306.finaleval.users.npz": {
+      "sha256": "808efd8f5035fc32b6dd245473d8c331a3a6ce228ed5fad00dcc69e13dd50bc2",
+      "bytes": 1350736
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261307.finaleval.users.npz": {
+      "sha256": "b583f492dd552c2d02188d7fb04e7b4241228313c42011934db4ae9609c35f60",
+      "bytes": 1350688
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261308.finaleval.users.npz": {
+      "sha256": "50d52b40ee72a6dbd9062b101f6b0c08fadba4f86ce929582a040785355fd8a1",
+      "bytes": 1351205
+    }
+  },
+  "fir_prospective_sw_v3_checkpoints": {
+    "results_Software_FIRPROSPV3_identity_seed20261301.best.pt": {
+      "sha256": "cb46bf024ad8a04b4412db04996c50329833fb6f46d9851bad4dbfb3d74f1829",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261302.best.pt": {
+      "sha256": "9b02514b3e6975b43bd6bd51e32e0f1df45cc239a55b47556e375ce94bbe2aa3",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261303.best.pt": {
+      "sha256": "280823dfdd4efc48d17fafe1734259b5965d3bc06ac7e9c45dc7646c260b3da4",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261304.best.pt": {
+      "sha256": "2fbf32bf17dd1f3f5c6fb1b9ced4f25ab8c5c186af7bd7c9c0ce9c9658e570bd",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261305.best.pt": {
+      "sha256": "9433d7ce0266115977958c77e7a3fa72f7cf21e500d5907f84066cfc1cde014f",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261306.best.pt": {
+      "sha256": "e6ba3aa37eaa1c917319b500449ad5397390e9cd5563f5230736a4793c078352",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261307.best.pt": {
+      "sha256": "b88c85599f76debd335656f901e1bfa1986929ceb700dba01242a793b21cef2e",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261308.best.pt": {
+      "sha256": "6a5377e86779f6373734001d87e33bee7c9fda76571a6d65e8590e1f0f3ba80c",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261301.best.pt": {
+      "sha256": "924c2f97b575e84794eae02ebcb40c03089178b4f7723a8dc1b8d49c4fbfa83a",
+      "bytes": 68252562
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261302.best.pt": {
+      "sha256": "918375c1089e6a4660d4ade2943141d5478047446cacb5bca9860d2f3e1aa179",
+      "bytes": 68252562
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261303.best.pt": {
+      "sha256": "6a0105c7d5df9f45d44d98259fe2407964688045bb528acaf3a3e155dcedaf41",
+      "bytes": 68252562
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261304.best.pt": {
+      "sha256": "21bebc63bcd6550c5c893e7e0e11eaeb9da64c7fb8b61e181a134e6479f615e5",
+      "bytes": 68252562
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261305.best.pt": {
+      "sha256": "32f4ad670425a4894bc336492d94b9a2ee32d1dbe1be8616385f6303d6afab8a",
+      "bytes": 68252562
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261306.best.pt": {
+      "sha256": "bcdfc9a9b726c6fe39dd42b1faa5c552d913f9ac9d568f3547419627b2f0d26e",
+      "bytes": 68252562
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261307.best.pt": {
+      "sha256": "23468577cd4ccf75fe30cae04b93f824929bf8b49476d9b1dfdaeb60b818088f",
+      "bytes": 68252562
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261308.best.pt": {
+      "sha256": "126994a38aac26afb2e64843b1a298ec7606240f53312a755aba9529709239c3",
+      "bytes": 68252562
+    }
+  }
 }

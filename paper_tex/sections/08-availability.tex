@@ -7,8 +7,13 @@ Code, frozen protocols, result artifacts, and build scripts are public at
 result JSONs, released per-user sidecars, and the pinned HSTU-BLaIR submodule by
 SHA-256. Running \texttt{bootstrap\_public\_clone.py} fetches and verifies
 release-class assets; running \texttt{rebuild\_hstu\_submission.py --strict} then
-checks HSTU parity, recomputes the 190 artifact-gated cells, verifies the manifest,
+checks HSTU parity, recomputes the 196 artifact-gated cells, verifies the manifest,
 and executes every governed adjudicator.
+
+The numerical graph and release manifest have different scopes: every declared empirical
+cell is graph-bound, but not every transitive graph source is separately enumerated in the
+release manifest. Table 0's literature/novelty ledger is citation-checked prose, not a
+numerical graph family. We make no broader ``every printed claim is hash-manifested'' claim.
 
 The public \texttt{v0.9-audit-evidence} release is the working evidence store.
 Historical campaigns for which checkpoints or per-user records were not retained are

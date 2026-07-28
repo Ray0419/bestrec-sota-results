@@ -16,7 +16,7 @@ Recommender evaluation is vulnerable to mistuned baselines, incompatible protoco
 and irreproducible result selection
 \citep{ferraridacrema2019worrying,ferraridacrema2021troubling}. We therefore pair
 the method with a per-paper discipline: git-frozen protocols, a fail-closed graph that
-recomputes 195 reported cells across 19 claim families, environment-caveated comparator
+recomputes 196 reported cells across 20 claim families, environment-caveated comparator
 regeneration, and symmetric adjudication. Failures are retained. In particular, the
 original Office\_Products protocol remains VOID after its own floor check exposed an
 environment mismatch, although a redesigned fresh-seed protocol later passed
@@ -32,12 +32,12 @@ items:
 filters to a strictly left-causal, depthwise residual that is identity-initialized and
 gradient-active under the all-position objective (\S\ref{sec:3}). This is a modular
 component, not a new recommender architecture.
-\item \textbf{Matched internal evidence and a mechanism boundary.} Learned
-FIR--identity estimates are positive on Musical\_Instruments (+0.002265, 95\% CI
-[0.001928, 0.002602]) and under one untuned configuration on
-Industrial\_and\_Scientific (+0.002110 [0.001820, 0.002399]) and
-CDs\_and\_Vinyl (+0.006150 [0.005849, 0.006450]) (\S\ref{sec:5.2}). Because
-these studies reuse outcome-visible splits, they are internal robustness evidence, not
+\item \textbf{Internal evidence, prospective same-user validation, and a mechanism boundary.}
+Learned FIR--identity estimates are positive on three outcome-known category/split settings.
+A separately frozen Software attempt then produced +0.005062 [+0.004591, +0.005533],
+clearing its pre-declared +0.000500 practical threshold with validation-only selection and
+sealed final evaluation. It is prospective, but remains same-investigator,
+same-code-lineage, same-Amazon-family evidence under local same-user custody---not
 independent confirmation. On Musical\_Instruments, learned taps do not separate from a
 shared causal filter, but they beat a parameter-matched current-position-only placebo by
 +0.001941 [+0.001788, +0.002095], while the placebo--identity interval spans zero. This

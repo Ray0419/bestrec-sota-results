@@ -31,9 +31,17 @@ empirical phase.
 
 Preserve user-modified `PAPER_REVIEW_AUDIT.md` and unrelated untracked QA/tmp
 files. Human author/byline metadata remains the external literal-submission
-blocker and must never be invented. The WEARec integration still requires the
-final release-manifest regeneration, strict committed clean-clone replay, push,
-and release-manifest upload before this handoff can record a final commit/hash.
+blocker and must never be invented.
+
+Integration commit `b0c8c7db` and checkout-portability verifier commit
+`346a3327` passed the full local strict gate and a separately hydrated pristine-
+clone replay. All 407 release-only assets verified, both PDFs rebuilt
+byte-identically, and the branch was pushed. `RELEASE_MANIFEST.json` was uploaded
+last to `v0.9-audit-evidence`, re-downloaded, and matched SHA-256
+`edad5b42a89f6097ca9e6513cb48786ac11bcc2577ca5e89e6532f6c10bdd61f`.
+The WEARec heartbeat can now be disabled. The next empirical phase is the fresh
+clean AlphaFuse-style text+ID comparator; do not reuse the outcome-visible V2
+port as countable evidence.
 
 ---
 

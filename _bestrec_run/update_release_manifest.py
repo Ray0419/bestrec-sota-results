@@ -77,7 +77,10 @@ RELEASE_ASSET_SECTIONS = {"splits", "text_caches", "pinned_parity_artifacts",
                           "fir_pointwise_finaleval",
                           "fir_prospective_sw_v2_sidecars",
                           "fir_prospective_sw_v2_checkpoints",
-                          "fir_prospective_sw_v2_finaleval"}
+                          "fir_prospective_sw_v2_finaleval",
+                          "fir_prospective_sw_v3_sidecars",
+                          "fir_prospective_sw_v3_checkpoints",
+                          "fir_prospective_sw_v3_finaleval"}
 RELEASE_URL = ("https://github.com/Ray0419/bestrec-sota-results/releases/download/"
                "v0.9-audit-evidence/")
 FIGURE_ASSETS = [
@@ -130,6 +133,14 @@ FIR_PROSPECTIVE_STAGE_A_PROTOCOL_FILES = [
     "_bestrec_run/run_fir_prospective_sw_v2.py",
     "_bestrec_run/eval_fir_prospective_sw_v2.py",
     "_bestrec_run/adjudicate_fir_prospective_sw_v2.py",
+    "FIR_PROSPECTIVE_SW_V2_INTEGRITY.md",
+    "PREREG_FIR_PROSPECTIVE_SW_V3.md",
+    "_bestrec_run/fir_prospective_sw_v3_common.py",
+    "_bestrec_run/fir_prospective_sw_v3_environment.json",
+    "_bestrec_run/run_sasrec_sbert_software_v3_frozen.py",
+    "_bestrec_run/run_fir_prospective_sw_v3.py",
+    "_bestrec_run/eval_fir_prospective_sw_v3.py",
+    "_bestrec_run/adjudicate_fir_prospective_sw_v3.py",
 ]
 
 
@@ -224,7 +235,10 @@ def verify(m):
                 "fir_pointwise_checkpoints", "fir_pointwise_finaleval",
                 "fir_prospective_sw_v2_sidecars",
                 "fir_prospective_sw_v2_checkpoints",
-                "fir_prospective_sw_v2_finaleval"):
+                "fir_prospective_sw_v2_finaleval",
+                "fir_prospective_sw_v3_sidecars",
+                "fir_prospective_sw_v3_checkpoints",
+                "fir_prospective_sw_v3_finaleval"):
         for key, ent in m.get(sec, {}).items():
             check_named(sec, key, ent["sha256"])
     for rel, ent in m.get("protocol_code", {}).items():
@@ -495,6 +509,12 @@ def regen(m):
     ]
     if all(os.path.exists(p) for p in _sw_v2_preparation):
         add_result_family("FIR_PROSPECTIVE_SW_V2_PREPARATION", _sw_v2_preparation)
+    _sw_v2_integrity = [
+        os.path.join(ROOT, "FIR_PROSPECTIVE_SW_V2_INTEGRITY.md"),
+        os.path.join(ROOT, "_bestrec_run", "fir_prospective_sw_v2_status.json"),
+    ]
+    if all(os.path.exists(p) for p in _sw_v2_integrity):
+        add_result_family("FIR_PROSPECTIVE_SW_V2_INTEGRITY_VOID", _sw_v2_integrity)
     _sw_v2_adjudication = os.path.join(
         ROOT, "_bestrec_run", "fir_prospective_sw_v2_adjudication.json")
     if os.path.exists(_sw_v2_adjudication):
@@ -506,6 +526,20 @@ def regen(m):
         _sw_v2_compact = [
             p for p in _sw_v2_compact if not p.endswith(".finaleval.json")]
         add_result_family("FIR_PROSPECTIVE_SW_V2", _sw_v2_compact)
+    _sw_v3_adjudication = os.path.join(
+        ROOT, "_bestrec_run", "fir_prospective_sw_v3_adjudication.json")
+    if os.path.exists(_sw_v3_adjudication):
+        _sw_v3_compact = []
+        for pattern in ("results_Software_FIRPROSPV3_*.json",
+                        "fir_prospective_sw_v3_adjudication.json",
+                        "fir_prospective_sw_v3_status.json",
+                        "fir_prospective_sw_v3_attempt.json",
+                        "fir_prospective_sw_v3_ready.json",
+                        "fir_prospective_sw_v3_endpoints_complete.json"):
+            _sw_v3_compact.extend(_g.glob(os.path.join(ROOT, "_bestrec_run", pattern)))
+        _sw_v3_compact = [
+            p for p in _sw_v3_compact if not p.endswith(".finaleval.json")]
+        add_result_family("FIR_PROSPECTIVE_SW_V3", _sw_v3_compact)
 
     # audit 2026-07-24 (E-E freeze): keep protocol_code in lock-step with the
     # governed-completeness gate -- auto-register any tracked governed file
@@ -579,7 +613,10 @@ def regen(m):
             ("fir_pointwise_checkpoints", "results_Musical_Instruments_FIRPOINTV1_*.best.pt"),
             ("fir_prospective_sw_v2_finaleval", "results_Software_FIRPROSPV2_*.finaleval.json"),
             ("fir_prospective_sw_v2_sidecars", "results_Software_FIRPROSPV2_*.finaleval.users.npz"),
-            ("fir_prospective_sw_v2_checkpoints", "results_Software_FIRPROSPV2_*.best.pt")):
+            ("fir_prospective_sw_v2_checkpoints", "results_Software_FIRPROSPV2_*.best.pt"),
+            ("fir_prospective_sw_v3_finaleval", "results_Software_FIRPROSPV3_*.finaleval.json"),
+            ("fir_prospective_sw_v3_sidecars", "results_Software_FIRPROSPV3_*.finaleval.users.npz"),
+            ("fir_prospective_sw_v3_checkpoints", "results_Software_FIRPROSPV3_*.best.pt")):
         inventory = m.get(section, {})
         for ap in sorted(_g.glob(os.path.join(ROOT, "_bestrec_run", pattern))):
             key = os.path.basename(ap)

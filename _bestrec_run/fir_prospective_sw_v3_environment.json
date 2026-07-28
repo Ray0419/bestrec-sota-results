@@ -1,0 +1,16 @@
+{
+  "runtime": {
+    "python": "3.12.13",
+    "implementation": "cpython",
+    "torch": "2.11.0+cu128",
+    "torch_cuda": "12.8",
+    "numpy": "2.4.4",
+    "scipy": "1.17.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 5060 Ti"
+  },
+  "lock_sha256": {
+    "_bestrec_run/pyproject.toml": "2133a3cd16b23339d4fca79d8a7dd6c0bdd11e9c03484f2d7da9896ba1787079",
+    "_bestrec_run/uv.lock": "089dd0943bc3bfb9de8b653e8f400c587a696eea8f6736a3da6ef57928946a3c"
+  }
+}

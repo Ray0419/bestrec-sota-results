@@ -280,7 +280,10 @@ def _complete_git_evidence_boundary():
                 "fir_pointwise_sidecars", "fir_pointwise_checkpoints",
                 "fir_prospective_sw_v2_finaleval",
                 "fir_prospective_sw_v2_sidecars",
-                "fir_prospective_sw_v2_checkpoints"):
+                "fir_prospective_sw_v2_checkpoints",
+                "fir_prospective_sw_v3_finaleval",
+                "fir_prospective_sw_v3_sidecars",
+                "fir_prospective_sw_v3_checkpoints"):
         release_names.update(os.path.basename(k) for k in man.get(sec, {}))
     release_names.update(os.path.basename(k) for k in
                          man.get("pinned_parity_artifacts", {}).get("files", {}))

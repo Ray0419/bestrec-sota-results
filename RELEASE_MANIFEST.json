@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "126faf670f71bfe3527ad913db5637a7c3565238",
+  "git_commit": "08f5e2504b451c560a147dd5dd048e3b80525327",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -394,6 +394,30 @@
     },
     "_bestrec_run/eval_fir_prospective_sw_v2.py": {
       "sha256": "c159fd76902c944a38b2d1a1fa6afaa8948a89e1f28388ad68be3980a4119e25"
+    },
+    "FIR_PROSPECTIVE_SW_V2_INTEGRITY.md": {
+      "sha256": "2306db13ac6b41db1dc7526c7e97631381b2886d877f210e240359b0eb2dff41"
+    },
+    "PREREG_FIR_PROSPECTIVE_SW_V3.md": {
+      "sha256": "1c0b238b020dbc503d4448ebf127b035dcd059e4eb17fb9f6b9ceb07054d89af"
+    },
+    "_bestrec_run/fir_prospective_sw_v3_common.py": {
+      "sha256": "1650c40c2871cfe2d3058777cf01243f564857be2f8205d89774c530a8fda9d8"
+    },
+    "_bestrec_run/fir_prospective_sw_v3_environment.json": {
+      "sha256": "bb44221dc43fadb8d8d53475171920c1a685edca684bfe5c8ff8bda383e1b550"
+    },
+    "_bestrec_run/run_sasrec_sbert_software_v3_frozen.py": {
+      "sha256": "6f86818274d0448c7be3643642c75a22a9bb08ef41330f8a9a57ecb62a88fa49"
+    },
+    "_bestrec_run/run_fir_prospective_sw_v3.py": {
+      "sha256": "a0a93bf5edd761566e645412435c8c54c163f38f03219c154fb45a8dd078c5a9"
+    },
+    "_bestrec_run/eval_fir_prospective_sw_v3.py": {
+      "sha256": "c84df5188d1cff7e19335e33c4941fda1f0a0a7fcf6b770cbaf1b2fb7aedce42"
+    },
+    "_bestrec_run/adjudicate_fir_prospective_sw_v3.py": {
+      "sha256": "71d8b9bc47662d2de91142d718634c38f73dbc27584e4c856061896800853d70"
     }
   },
   "result_families": {
@@ -834,6 +858,10 @@
       "_bestrec_run/software_acquisition_manifest.json": "e234452c682b81c21e81efbdb689831ba19971031b6247c261086215f4da2255",
       "_bestrec_run/software_feasibility.json": "54d8c6ae086a51ba784f038c438761105634f988ea85ba3c2b65e63f9b8b960d",
       "_bestrec_run/software_title_cache_manifest.json": "022aafce6a98e12e43009d4613df4796a2b0850f0326f33ae927e76548fb7b63"
+    },
+    "FIR_PROSPECTIVE_SW_V2_INTEGRITY_VOID": {
+      "FIR_PROSPECTIVE_SW_V2_INTEGRITY.md": "2306db13ac6b41db1dc7526c7e97631381b2886d877f210e240359b0eb2dff41",
+      "_bestrec_run/fir_prospective_sw_v2_status.json": "9e03ff173a807ec6b47d2e50079b71f1f737652aa64909eafd2af889f41ca177"
     }
   },
   "sidecars": "see _bestrec_run/SOTACONF_V2_sidecar_manifest.json (tracked) + per-run user_records_sha256 fields",
@@ -853,7 +881,7 @@
       "bytes": 10714
     },
     "DOI_DEPOSIT_INSTRUCTIONS.md": {
-      "sha256": "61109b90b71bada1342d0e600ca81bf384718e7387c1925532e2470db5544b02",
+      "sha256": "d02a05973ec7458bf4f443be77e3c0434b4f63f473aad6aae03cc92069d97cb3",
       "bytes": 2913
     },
     "VENUE_PLAN.md": {
@@ -897,8 +925,8 @@
       "bytes": 12349
     },
     "bootstrap_public_clone.py": {
-      "sha256": "f11f02b2a0687307db1989498f56fecc517e9b2444549ce18c5c6c75f7ac39e0",
-      "bytes": 5688
+      "sha256": "13220770f09cecd484c5accf9951cdeefd077ed912c8bc41783f967225909778",
+      "bytes": 5924
     },
     "THEIRS_ON_OURS_REPORT.md": {
       "sha256": "6bff70f42aba38c629adbf374a445c9a73ed6c01a529fdf12e06e9becfbd52ed",
@@ -929,8 +957,8 @@
       "bytes": 12991
     },
     "_bestrec_run/build_deposit_bundle.py": {
-      "sha256": "40a81b3c05ae3130813de90ab56566dd2e6e7930b8d290104c3b493c706e933d",
-      "bytes": 21749
+      "sha256": "ea6e5d9928b5ee50c651c4f9b865990aa881890399aed9124cc17c6da63ce045",
+      "bytes": 21903
     },
     "_bestrec_run/fbgemm_shims.py": {
       "sha256": "bb661345a50e11c20ccd16dc9699884467dbbc137fb2b26893804de7aecc9d34",
@@ -941,8 +969,8 @@
       "bytes": 7206
     },
     "_bestrec_run/update_release_manifest.py": {
-      "sha256": "68e20f7c0b763d3a28b234084a0d9560cff5223ba66b536020e51aa024108024",
-      "bytes": 40080
+      "sha256": "41170aa963bb256eb160bceb3c10cfa5bdd6a4f38aa932b3cd9cd0d4d9dcbda0",
+      "bytes": 42262
     },
     "paper_tex/PAPER_TORS.pdf": {
       "sha256": "0de32b82ec516208bbb3696f3f68e34d75331a5f21463f1c397f0c66b553122e",
@@ -1062,7 +1090,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.2.0-deposit",
-  "hash_parent_commit": "126faf670f71bfe3527ad913db5637a7c3565238",
+  "hash_parent_commit": "08f5e2504b451c560a147dd5dd048e3b80525327",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",
@@ -2431,5 +2459,8 @@
   },
   "fir_prospective_sw_v2_finaleval": {},
   "fir_prospective_sw_v2_sidecars": {},
-  "fir_prospective_sw_v2_checkpoints": {}
+  "fir_prospective_sw_v2_checkpoints": {},
+  "fir_prospective_sw_v3_finaleval": {},
+  "fir_prospective_sw_v3_sidecars": {},
+  "fir_prospective_sw_v3_checkpoints": {}
 }

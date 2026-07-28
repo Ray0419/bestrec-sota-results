@@ -62,9 +62,12 @@ The unchecked E-B (text permutation/random features), E-C (training-target
 multiplicity parity), E-C2 (thinning-draw replication), and E-D
 (frequency-conditioned text gate) tasks are scientifically useful but optional
 acceptance-upside experiments. They must not be backfilled post hoc into the
-current evidence class. E-E's outcome-visible AlphaFuse package comparison is
-also correctly quarantined from the manuscript's countable claim set; a fresh
-fully governed rerun would be a separate campaign.
+current evidence class. E-E V2's outcome-visible AlphaFuse package comparison
+remains quarantined. A separate E-E V3 protocol is now frozen before any of its
+fresh seeds or endpoints exist; it uses complete-history-masked selection and
+evaluation, sealed first-reader adjudication, and a whole representation-package
+framing. Its eventual result remains outcome-known, same-investigator exploratory
+evidence rather than independent confirmation.
 
 ## Remaining human-controlled submission gate
 

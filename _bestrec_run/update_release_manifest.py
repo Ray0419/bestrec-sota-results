@@ -180,6 +180,17 @@ WEAREC_BASELINE_PROTOCOL_FILES = [
     "_bestrec_run/wearec_baseline_v1_selection.json",
     "_bestrec_run/wearec_baseline_v1_adjudication.json",
 ]
+EE_V3_PROTOCOL_FILES = [
+    "PREREG_EE_V3.md",
+    "_bestrec_run/prepare_ee_v3.py",
+    "_bestrec_run/ee_v3_input_manifest.json",
+    "_bestrec_run/ee_v3_common.py",
+    "_bestrec_run/test_ee_v3.py",
+    "_bestrec_run/run_ee_v3.py",
+    "_bestrec_run/eval_ee_v3.py",
+    "_bestrec_run/run_ee_v3_campaign.py",
+    "_bestrec_run/adjudicate_ee_v3.py",
+]
 
 
 def sha(p, _bufsz=1 << 20):
@@ -601,7 +612,8 @@ def regen(m):
     for _t in (FIR_CONTROL_PROTOCOL_FILES + FIR_POINTWISE_PROTOCOL_FILES
                + FIR_EFFICIENCY_ML1M_PROTOCOL_FILES
                + FIR_PROSPECTIVE_STAGE_A_PROTOCOL_FILES
-               + WEAREC_BASELINE_PROTOCOL_FILES):
+               + WEAREC_BASELINE_PROTOCOL_FILES
+               + EE_V3_PROTOCOL_FILES):
         _gap = os.path.join(ROOT, _t.replace("/", os.sep))
         if os.path.exists(_gap) and _t not in m["protocol_code"]:
             m["protocol_code"][_t] = {"sha256": sha_norm(_gap)}

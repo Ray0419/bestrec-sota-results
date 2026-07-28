@@ -222,6 +222,7 @@ V12_ADDITIONS = [
     "FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md",
     "PREREG_TAIL_FIR_V2.md",
     "PREREG_EE_V2.md",
+    "PREREG_EE_V3.md",
     "bootstrap_public_clone.py",
     "RESPONSE_TO_PAPER_REVIEW_AUDIT.md",
     "EXPERIMENT_PROGRAM.md",
@@ -253,6 +254,7 @@ V12_ADDITIONS = [
     "_bestrec_run/adjudicate_fir_controls.py",
     "_bestrec_run/adjudicate_tfv2.py",
     "_bestrec_run/adjudicate_ee_v2.py",
+    "_bestrec_run/adjudicate_ee_v3.py",
 ]
 
 

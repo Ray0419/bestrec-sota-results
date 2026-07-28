@@ -277,7 +277,10 @@ def _complete_git_evidence_boundary():
     for sec in ("splits", "text_caches", "tfv2_sidecars",
                 "fir_control_finaleval", "fir_control_sidecars",
                 "fir_control_checkpoints", "fir_pointwise_finaleval",
-                "fir_pointwise_sidecars", "fir_pointwise_checkpoints"):
+                "fir_pointwise_sidecars", "fir_pointwise_checkpoints",
+                "fir_prospective_sw_v2_finaleval",
+                "fir_prospective_sw_v2_sidecars",
+                "fir_prospective_sw_v2_checkpoints"):
         release_names.update(os.path.basename(k) for k in man.get(sec, {}))
     release_names.update(os.path.basename(k) for k in
                          man.get("pinned_parity_artifacts", {}).get("files", {}))

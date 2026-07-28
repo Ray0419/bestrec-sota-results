@@ -88,13 +88,15 @@ def main() -> int:
                 writer.writerow(row)
 
     plt.rcParams.update({
-        "font.size": 8.5,
-        "axes.titlesize": 9.5,
-        "axes.labelsize": 8.5,
-        "legend.fontsize": 7.5,
+        "pdf.fonttype": 42,
+        "ps.fonttype": 42,
+        "font.size": 9.5,
+        "axes.titlesize": 10.5,
+        "axes.labelsize": 9.5,
+        "legend.fontsize": 8.5,
         "figure.dpi": 160,
     })
-    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.15))
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.4))
 
     lags = np.arange(kernels.shape[-1])
     axes[0].axhline(0.0, color="#666666", lw=0.7)
@@ -117,17 +119,17 @@ def main() -> int:
                          color="#2a9d8f", alpha=0.2)
     axes[1].set(xlabel="normalized angular frequency (×π)",
                 ylabel="mean channel magnitude",
-                title="B. Effective response |1 + Δ(e^{jω})|")
+                title=r"B. Effective response $|1 + \Delta(e^{j\omega})|$")
     axes[1].grid(alpha=0.22)
     axes[1].legend(frameon=False)
 
     fig.suptitle("Selected-checkpoint FIR diagnostics (8 seed blocks; descriptive)",
-                 fontsize=10.5, fontweight="bold")
+                 fontsize=11, fontweight="bold")
     fig.text(
         0.5, -0.01,
         "Channels are summarized within seed; bands are ordinary 95% t intervals over "
         "eight seed summaries. Outcome-known control campaign; no mechanistic inference.",
-        ha="center", fontsize=7.2, color="#444444",
+        ha="center", fontsize=7.8, color="#444444",
     )
     fig.tight_layout(rect=(0, 0.055, 1, 0.94))
 

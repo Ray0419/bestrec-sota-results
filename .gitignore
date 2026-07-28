@@ -114,3 +114,8 @@ _bestrec_run/fir_canonical_breadth_status.json
 _bestrec_run/results_*_FIRPROSPV2_*
 _bestrec_run/fir_prospective_sw_v2_status.json
 _bestrec_run/run_fir_prospective_sw_v2.log
+
+# MovieLens 1M efficiency/generalization study: the official ML-1M README
+# forbids redistribution without separate permission. Raw, transformed,
+# per-user, checkpoint, and endpoint artifacts stay below this private root.
+_bestrec_run/private_ml1m_v1/

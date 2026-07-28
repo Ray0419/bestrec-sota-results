@@ -122,6 +122,16 @@ FIR_POINTWISE_PROTOCOL_FILES = [
     "_bestrec_run/eval_fir_pointwise_v1.py",
     "_bestrec_run/adjudicate_fir_pointwise_v1.py",
 ]
+FIR_EFFICIENCY_ML1M_PROTOCOL_FILES = [
+    "PREREG_FIR_EFFICIENCY_ML1M_V1.md",
+    "_bestrec_run/acquire_movielens_fir_efficiency_v1.py",
+    "_bestrec_run/run_sasrec_sbert_efficiency_ml1m_v1_frozen.py",
+    "_bestrec_run/test_fir_efficiency_v1.py",
+    "_bestrec_run/test_fir_efficiency_sequestration_v1.py",
+    "_bestrec_run/run_fir_efficiency_ml1m_v1.py",
+    "_bestrec_run/eval_fir_efficiency_ml1m_v1.py",
+    "_bestrec_run/adjudicate_fir_efficiency_ml1m_v1.py",
+]
 FIR_PROSPECTIVE_STAGE_A_PROTOCOL_FILES = [
     "PREREG_FIR_PROSPECTIVE_DM_V1_SELECTION.md",
     "_bestrec_run/acquire_digital_music_prospective.py",
@@ -567,6 +577,7 @@ def regen(m):
             if os.path.exists(_gap):
                 m["protocol_code"][_t] = {"sha256": sha_norm(_gap)}
     for _t in (FIR_CONTROL_PROTOCOL_FILES + FIR_POINTWISE_PROTOCOL_FILES
+               + FIR_EFFICIENCY_ML1M_PROTOCOL_FILES
                + FIR_PROSPECTIVE_STAGE_A_PROTOCOL_FILES):
         _gap = os.path.join(ROOT, _t.replace("/", os.sep))
         if os.path.exists(_gap) and _t not in m["protocol_code"]:

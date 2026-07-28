@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "7c0241b4fd3463e2ceb7a8da08568513e15ec7d6",
+  "git_commit": "7e7052f6d9b72fe16e4f57aec6b6279ced8a8304",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -120,7 +120,7 @@
   },
   "protocol_code": {
     "_bestrec_run/run_sasrec_sbert.py": {
-      "sha256": "46dbbc2f2a3c86a8410e549f92d70228edc24d0b05d66da0fa081298e2a73ac8"
+      "sha256": "f15d3912603c976f8600bf12dfc780536a0cddb1504e39409891fb072066fd56"
     },
     "_bestrec_run/run_sota_confirm_v2.sh": {
       "sha256": "0c7fa2a4e58e0d442c4a6c3af510c5d62bcd5b238bfe5346ea060bc742fa1b1a"
@@ -156,7 +156,7 @@
       "sha256": "faa06bde93723a240e356d89f86e4c8369bd66a4651ce84b7f6ee03ce5360e6d"
     },
     "_bestrec_run/fuse_ease_eval.py": {
-      "sha256": "c5698f18b4d1d7225ff5ecf8741e937451680d4e53eb62ef4d15aac968498b6b"
+      "sha256": "ee9abfd66d1610cc0f6776f9bb76a76a6f3c2456864b24858e108d556101382c"
     },
     "_bestrec_run/ensemble_fuse_eval.py": {
       "sha256": "e5e41c56a2cb558b34ed06d919dab49bae3fa645f1d26be720da3841587e1a53"
@@ -421,6 +421,30 @@
     },
     "FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md": {
       "sha256": "0af3e60c3ea38ebeb3d432230c6abcb440474750fd3610efd7dda34c2d7af0aa"
+    },
+    "PREREG_FIR_EFFICIENCY_ML1M_V1.md": {
+      "sha256": "866f682019a9936ca16ff53a3bbb16465f639aad54c112b6d23d679e48e6021c"
+    },
+    "_bestrec_run/adjudicate_fir_efficiency_ml1m_v1.py": {
+      "sha256": "51316ee3838473efd6e7be28a51a4a160e515d910b85a5af193590ae08e53a40"
+    },
+    "_bestrec_run/acquire_movielens_fir_efficiency_v1.py": {
+      "sha256": "c76d33616e93a46ea937f84762fa3293892ea698ab5be249fc1361ab31e6a47c"
+    },
+    "_bestrec_run/run_sasrec_sbert_efficiency_ml1m_v1_frozen.py": {
+      "sha256": "f15d3912603c976f8600bf12dfc780536a0cddb1504e39409891fb072066fd56"
+    },
+    "_bestrec_run/test_fir_efficiency_v1.py": {
+      "sha256": "106dfc040933d1756c8696c3e6c8a3bb3993de7056ddf5e035316880f76ade59"
+    },
+    "_bestrec_run/test_fir_efficiency_sequestration_v1.py": {
+      "sha256": "ceb730569d749f627f461f98a731b84653a9cea731acfcbcd5cc1a43e924c47c"
+    },
+    "_bestrec_run/run_fir_efficiency_ml1m_v1.py": {
+      "sha256": "205ca48bc567f72acb3efb816d1c8deddf58d56127324da2958dfaad31713c39"
+    },
+    "_bestrec_run/eval_fir_efficiency_ml1m_v1.py": {
+      "sha256": "fb431bf40e714c668a106276142858dfd5939e89a54b1dacee75c9f0e75ecffd"
     }
   },
   "result_families": {
@@ -919,11 +943,11 @@
       "bytes": 1395
     },
     "README.md": {
-      "sha256": "186111518d1b7cf0f0be78fdd7f49911bb898093419ee7717e0a4ef252624830",
+      "sha256": "d9bb7eaac8405828522bd4f888cb32055075b06fe1a82fec862b98a62e078b5e",
       "bytes": 10710
     },
     "DOI_DEPOSIT_INSTRUCTIONS.md": {
-      "sha256": "25892fea49de2aa7ed55ecb2ef92805d629cf4e40ccc0564a7e10c50b985dd30",
+      "sha256": "c9e397ad9a792df45ec85ecd25712fa33cd4d374b1073fa2fef078c5c537f3b3",
       "bytes": 2913
     },
     "VENUE_PLAN.md": {
@@ -947,8 +971,8 @@
       "bytes": 15731
     },
     "AUDIT_RESPONSE_2026-07-27.md": {
-      "sha256": "ac41d6188c4330e244edd9071931fce9c31b55c2d1a89801da08f08f154f37cb",
-      "bytes": 17305
+      "sha256": "b75e157411cec348b6b75f150341aeba0c6f9a60ed71cb954cb85555dd65518d",
+      "bytes": 19340
     },
     "COVER_LETTER_TORS.md": {
       "sha256": "9a791f5ad396254c896d8fd340d910ca9199f57c315bdfd3b04b1a48fae1300f",
@@ -1003,8 +1027,8 @@
       "bytes": 6024
     },
     "_bestrec_run/build_deposit_bundle.py": {
-      "sha256": "cf0ab2533370d057954386614221a700176b0031ff5e8746a22d5afa0a5f94b4",
-      "bytes": 24892
+      "sha256": "01e2863b9ba55281e88f99e299d3c71e20c8083165fbe9ba15ab609aa726421b",
+      "bytes": 25321
     },
     "_bestrec_run/fbgemm_shims.py": {
       "sha256": "bb661345a50e11c20ccd16dc9699884467dbbc137fb2b26893804de7aecc9d34",
@@ -1015,8 +1039,8 @@
       "bytes": 8769
     },
     "_bestrec_run/update_release_manifest.py": {
-      "sha256": "0899c07eb337be1d937e359e90d5f3e496d5cbcc26b9fa85b17958ab0384cadd",
-      "bytes": 42536
+      "sha256": "398de69795ebcc97159a39a23b9b1c2d414a2c17024d34049cea6ae54fdca62a",
+      "bytes": 43058
     },
     "paper_tex/PAPER_TORS.pdf": {
       "sha256": "1646cd041be37eeb86c19e26233f93118458f578d8d28911f548cbac990e8708",
@@ -1136,7 +1160,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.2.0-deposit",
-  "hash_parent_commit": "7c0241b4fd3463e2ceb7a8da08568513e15ec7d6",
+  "hash_parent_commit": "7e7052f6d9b72fe16e4f57aec6b6279ced8a8304",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",

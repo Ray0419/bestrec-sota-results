@@ -77,6 +77,8 @@ def build_model_from_config(cfg, n_items, pad_id, sbert_emb, proto_assign):
         fir_v3_kernel=cfg.get("fir_v3_kernel", 16),
         fir_control=cfg.get("fir_control", "off"),
         fir_control_kernel=cfg.get("fir_control_kernel", 16),
+        fir_control_groups=cfg.get("fir_control_groups", 8),
+        fir_control_rank=cfg.get("fir_control_rank", 4),
     )
 
 

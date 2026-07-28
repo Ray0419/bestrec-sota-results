@@ -75,7 +75,7 @@ audit log:
 4. `PHASE_COMPLETION_AUDIT_2026-07-28.md` reconciles all ten repair phases and
    every Claude handoff item. The deposit builder now derives its Git-backed
    evidence inventory from the release manifest and active cell graph. The
-   deterministic 891-entry `v1.2.0` candidate contains the active Git-backed
+   deterministic 899-entry `v1.2.0` candidate contains the active Git-backed
    graph sources plus the current pointwise protocol/adjudication chain; normal
    publish mode still refuses to proceed with creator placeholders. No tag,
    archival release, or DOI is claimed to exist.
@@ -109,7 +109,7 @@ class. The CRLF/LF frozen-reference defect is separately recorded in
 `FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md`.
 
 The audit's stale-landing-metadata finding is also closed for the mutable current
-boundary: README now reports 407 assets / 9,489,409,339 bytes and the 891-entry
+boundary: README now reports 407 assets / 9,489,409,339 bytes and the 899-entry
 candidate; CFF/Zenodo metadata report 196 cells across 20 families and no longer claim
 that the compound placebo isolates temporal access; the public release manifest was
 uploaded last. The final immutable tag, verified creators/legal fields, and DOI remain
@@ -130,5 +130,37 @@ formatted from active `OK` graph cells, and both the strict rebuild and TeX emit
 if its marked region drifts. The archival candidate gate now derives the live cell,
 family, release-asset, and byte counts and checks README/CFF/Zenodo against them; it also
 rejects the withdrawn temporal-isolation wording and invokes the Table 0 verifier. The
-current candidate has 891 entries. Literature attribution remains authored,
+current candidate has 899 entries. Literature attribution remains authored,
 citation-checked prose rather than a machine-derived novelty claim.
+
+## 2026-07-28 non-Amazon parsimony phase (design-stage response)
+
+Audit items 8, 13, and 14 have advanced from an unspecified future experiment to
+a concrete prospective protocol, but they are **not yet closed**.  The draft
+`PREREG_FIR_EFFICIENCY_ML1M_V1.md` freezes a MovieLens 1M rating≥4 primary
+estimand, a global 90% time boundary, a fixed-point training-observed catalog,
+an all-rating construct sensitivity, and six matched arms: identity, shared,
+grouped, rank≤8 tangent-factorized, per-channel, and equal-parameter pointwise.
+The three parsimonious arms use 16, 128, and 320 trainable filter parameters
+versus 1,024 per-channel parameters.  A 0.000500 NDCG@10 noninferiority margin,
+family-wise inference, user- and item-cluster bootstrap sensitivities, and
+parameter/FLOP/latency/memory/training-time reporting are specified before data
+access.
+
+A pre-freeze static audit found and repaired a recurrence of the earlier TEST
+visibility weakness: with sequestration enabled, the trainer now constructs its
+maps from TRAIN+VALID and neither opens nor hashes TEST bytes.  The deterministic
+split closes user/item eligibility to a fixed point so every sealed target is
+already training-observed; the final evaluator's strict checkpoint load verifies
+that invariant.  Structural tests pass for exact identity at initialization,
+nonzero gradients, parameter counts, no future-token leakage, frozen-evaluator
+reconstruction, and resource instrumentation.
+
+No MovieLens archive, rating record, transformed split, per-user endpoint, or
+experimental outcome has been acquired or inspected.  The official ML-1M README
+prohibits redistribution without separate permission, so the protocol keeps all
+record-level artifacts private and permits only aggregate provenance, hashes,
+statistics, code, and adjudication in the public graph.  The phase may be called
+prospective same-investigator non-Amazon robustness/efficiency evidence after a
+valid outcome; it cannot be called independent confirmation or population-wide
+generalization.

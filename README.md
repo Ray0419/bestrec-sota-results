@@ -79,7 +79,7 @@ campaign above is a separate pre-declaration that passed under its frozen wordin
 
 ## Releases
 
-- **`v1.2.0-deposit` (intended candidate; not yet tagged or published).** The current 886-entry
+- **`v1.2.0-deposit` (intended candidate; not yet tagged or published).** The current 899-entry
   candidate bundle is prepared locally and explicitly refuses a normal/tagged build while
   creator placeholders remain. `v1.1.11-deposit` is a historical snapshot and is stale
   relative to the present manuscript; it must not be uploaded as current.

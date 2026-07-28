@@ -16,7 +16,7 @@ Recommender evaluation is vulnerable to mistuned baselines, incompatible protoco
 and irreproducible result selection
 \citep{ferraridacrema2019worrying,ferraridacrema2021troubling}. We therefore pair
 the method with a per-paper discipline: git-frozen protocols, a fail-closed graph that
-recomputes 196 reported cells across 20 claim families, environment-caveated comparator
+recomputes 197 reported cells across 21 claim families, environment-caveated comparator
 regeneration, and symmetric adjudication. Failures are retained. In particular, the
 original Office\_Products protocol remains VOID after its own floor check exposed an
 environment mismatch, although a redesigned fresh-seed protocol later passed
@@ -32,8 +32,8 @@ items:
 filters to a strictly left-causal, depthwise residual that is identity-initialized and
 gradient-active under the all-position objective (\S\ref{sec:3}). This is a modular
 component, not a new recommender architecture.
-\item \textbf{Internal evidence, frozen same-team robustness, and a mechanism boundary.}
-Learned FIR--identity estimates are positive on three outcome-known category/split settings.
+\item \textbf{Internal evidence, a negative non-Amazon test, and a mechanism boundary.}
+Learned FIR--identity estimates are positive on three outcome-known Amazon category/split settings.
 A separately frozen Software attempt then produced +0.005062 [+0.004591, +0.005533],
 clearing its pre-declared +0.000500 reporting threshold with validation-only selection and
 sealed final evaluation. Because earlier V2 validation-output non-visibility is not
@@ -42,9 +42,11 @@ same-user custody---not confirmation. On Musical\_Instruments, learned taps do n
 shared causal filter, but they beat a parameter-matched current-position-only placebo by
 +0.001941 [+0.001788, +0.002095], while the placebo--identity interval spans zero. This
 discriminates learned FIR from that compound placebo; it does not isolate temporal access,
-establish unique necessity of per-channel taps, show cross-domain generalization, or provide independent confirmation. A frequency-5-heavy Musical\_Instruments
-text-tail effect is secondary and does not establish cross-dataset heterogeneity
-(\S\ref{sec:5.3}--\S\ref{sec:5.4}).
+establish unique necessity of per-channel taps or provide independent confirmation.
+A prospectively frozen MovieLens 1M study then failed to replicate learned FIR against
+identity or pointwise. Its shared/grouped/low-rank arms met a pre-declared noninferiority
+margin versus learned FIR only conditionally on that failed replication gate. Together
+these results prevent a general filtering or cross-domain claim.
 \item \textbf{An auditable evaluation record.} Released protocols, artifacts,
 sidecars where available, comparator-regeneration code, and a strict rebuild preserve
 positive, null, deviated, and VOID outcomes under the same reporting rule

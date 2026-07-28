@@ -373,6 +373,10 @@ REGISTRY = [
     dict(key="table1c", fp="configuration", out="table1c.tex",
          env="tabularx", colspec=r"Yrrr", size=r"\small",
          family="table1c", allow=set()),
+    dict(key="table_ml1m_efficiency", fp="arm", out="table_ml1m_efficiency.tex",
+         env="tabularx",
+         colspec=r"p{0.18\linewidth}rrrrY", size=r"\footnotesize", tabcolsep=2,
+         family="fir_efficiency_ml1m_v1", allow={"0.000500"}),
     dict(key="table1d", fp="dataset", out="table1d.tex",
          env="tabularx", colspec=r"p{0.18\linewidth}p{0.09\linewidth}Yp{0.09\linewidth}p{0.24\linewidth}", size=r"\small",
          tabcolsep=2, family="table1d", allow=set()),
@@ -530,8 +534,8 @@ def main():
             if rep["fail"]:
                 failures.append(rep)
         elif cfg["key"] == "table0_novelty":
-            rep = {"table": cfg["key"], "checked": 10,
-                   "note": ("generated-region gate passed; ten quantitative FIR fields "
+            rep = {"table": cfg["key"], "checked": 14,
+                   "note": ("generated-region gate passed; quantitative FIR fields "
                             "were formatted from active OK artifact-graph cells; literature "
                             "attribution remains authored citation prose")}
             fam_src = "build_table0_claim_ledger.py:hstu_results_manifest.json"

@@ -14,13 +14,13 @@ independence, custody, or construct validity.
 | 5 | **CLOSED** | E-A is labeled the frozen independent-arm Welch/Satterthwaite analysis: ordinary 95% Welch CI, df=13.939; its paired-by-seed result is descriptive only. Hybrid intervals are ordinary paired 95% CIs; Holm adjusts p-values/decisions, not intervals. A new health gate forbids the stale labels. |
 | 6 | **OPEN human verification; disclosure closed** | Dirty-tree execution across five commits, absent independent sidecar custody, and the limited local start marker are retained in the main text and erratum. The study remains outcome-known exploratory evidence. Only the maintainer can verify pre-adjudication human/tool visibility. |
 | 7 | **Citation/scope CLOSED; executions OPEN** | FreqRec and WEARec are cited in Table 0, Related Work, Method, and the bibliography; BSARec is correctly scoped to Theorem 1 on repeated softmax attention, not the HSTU-style operator. The governed AlphaFuse port is disclosed as `NONCOUNTABLE`/`manuscript_allowed=false`, with no endpoint imported. Equal-protocol current baselines remain future experimental work. |
-| 8 | **Claim boundary CLOSED; sensitivities OPEN** | The estimand is next recorded review event, not preference/purchase/deployment engagement. Rating, verified-purchase, keep-latest, real implicit-event, global-time, and query-time-catalog sensitivities remain unrun and are named limitations. |
-| 9 | **Numerical graph, claim-map, and Table 0 quantitative provenance CLOSED; mutation depth remains open** | The graph has 196 active cells across 20 required families with zero mismatch/untraceable cells, including the outcome-known/exploratory Software cell. That cell recomputes all 16 sealed endpoints, validation-only checkpoint selection, matched backbone hashes, state/evidence digests, all eight paired differences, paired SD, exact-sign sensitivity, and the thresholded verdict; its figure-data CSV is cross-checked row by row. `build_claim_artifact_map.py` asserts that every active cell is mapped exactly once. `build_table0_claim_ledger.py` generates Table 0’s quantitative FIR fields from active graph cells, and the strict wrapper fails if its marked region drifts. Literature attribution remains citation-checked authored prose. Full mutation/fault-injection depth remains future assurance work. |
+| 8 | **PARTLY CLOSED by prospective construct/time sensitivity** | The Amazon estimand remains next recorded review event, not preference/purchase/deployment engagement. The prospectively frozen MovieLens study now supplies a rating≥4 primary estimand, an all-rating construct sensitivity, and a global 90% time boundary with a training-observed catalog. Its negative verdict is reported. Verified-purchase, keep-latest, real implicit-event, and query-time-catalog sensitivities remain unrun. |
+| 9 | **Numerical graph, claim-map, and Table 0 quantitative provenance CLOSED; mutation depth remains open** | The graph has 197 active cells across 21 required families with zero mismatch/untraceable cells. The new MovieLens cell verifies frozen code hashes and recomputes all released aggregate seed-vector means, paired intervals, Holm/NI decisions, all-rating sensitivities, and every resource-figure row; it explicitly does not claim replay of private record-level endpoints. `build_claim_artifact_map.py` asserts that every active cell is mapped exactly once. `build_table0_claim_ledger.py` generates Table 0’s quantitative FIR fields from active graph cells, and the strict wrapper fails if its marked region drifts. Literature attribution remains citation-checked authored prose. Full mutation/fault-injection depth remains future assurance work. |
 | 10 | **Primary paper type CLOSED; validation depth OPEN** | Title, abstract, Introduction, Table 0, Related Work, Discussion, and Conclusion consistently define the paper as an **incremental modular FIR contribution**. The audit/rebuild apparatus is a supporting contribution, not the lead. Current-baseline execution, cross-repository validation, fault injection, and reviewer-usability evidence would strengthen but do not redefine the paper type. |
 | 11 | **CLOSED** | “Transfers,” “cross-category confirmation/transfer,” “FIR-specific interpretation,” and “supports temporal mixing” were removed from the canonical and rendered manuscripts. Shared/nonlinear controls are described as statistically unseparated, never equivalent. The health gate now fails on the stale attribution phrases. |
 | 12 | **CLOSED** | The manuscript names the separately frozen five-test family A and four-test family B, reports all nine Holm-adjusted p-values, labels every CI ordinary paired, and states that neither one global nine-test family nor simultaneous-CI coverage is implied. |
-| 13 | **OPEN; accurately scoped** | Inference remains over optimizer seeds on fixed splits. Retained tests are not equivalence. Repeated temporal cutoffs/splits and hierarchical dataset/user/item inference require new experiments and were not manufactured post hoc. |
-| 14 | **OPEN experiment/opportunity** | The 16-parameter shared arm’s numerical performance is disclosed without a superiority or efficiency claim. Fresh preregistered shared/grouped/low-rank/placebo arms, noninferiority margins, and parameter/latency/memory Pareto curves remain required. |
+| 13 | **PARTLY CLOSED; population inference remains open** | The prospective MovieLens phase adds one non-Amazon global-time split, eight matched seed blocks, an all-rating sensitivity, and fixed-dataset user/item cluster bootstrap sensitivities. All six cluster intervals for parsimonious-minus-learned contrasts include zero. Inference still does not sample datasets or repeated cutoffs; the bootstrap intervals are sensitivities, not new independent samples, and no retained null is called equivalence. |
+| 14 | **CLOSED experimentally; primary outcome negative** | A pre-acquisition frozen six-arm MovieLens 1M study tested identity, shared (16 parameters), grouped (128), rank≤8 tangent-factorized (320), learned per-channel (1,024), and equal-parameter pointwise (1,024) over eight exact matched-initialization blocks. It reports the pre-declared 0.000500 noninferiority family and parameter/FLOP/latency/inference-memory/training-memory/time curves. Shared, grouped, and low-rank met the margin versus learned FIR, but learned FIR failed replication versus identity and pointwise; therefore the parsimony result is explicitly conditional and does not establish useful compression or FIR value. Exact verdict: `ML1M-NO-FIR-REPLICATION`. |
 | 15 | **OPEN experimental/engineering work** | Cache/item-map binding, metadata-missingness controls, repeated thinning draws, tie-safe sensitivity, and item-macro/hierarchical inference remain incomplete. Claims were narrowed rather than treating these omissions as repaired. |
 | 16 | **OPEN release/deposit item** | The public evidence assets are complete, remotely size/digest checked, and clean-clone replayed, but the mutable `v0.9-audit-evidence` and stale deposit tag are not represented as a final immutable archival deposit. A new versioned release/tag and DOI deposit must be cut only after final author/legal metadata and a final clean-clone replay. |
 | 17 | **Partly CLOSED** | Related Work was condensed; Table 0 is now a less cramped three-column generated claim ledger; the appendix and supplement overflows were repaired; and targeted visual inspection found no clipping. The Software section now has a two-panel matched-seed/difference figure with zero and +0.000500 reference lines, exact plotted-data CSV, detailed ACM `\Description`, and explicit exploratory/not-independent labeling. Figure S1 has larger labels, descriptive alt text, and embedded Type-0/TrueType fonts rather than Type-3 glyph fonts. Reader bookmarks/tagging, venue PDF tagging, accessibility review of the remaining document, and further body-length reduction remain editorial/accessibility work. |
@@ -41,6 +41,11 @@ same-team robustness; its same investigator, code lineage, Amazon family, and lo
 same-user custody also preclude independent confirmation.
 The artifact apparatus makes that boundary, the nulls, and the deviations
 reproducible; it does not turn them into independent confirmation.
+The prospectively frozen MovieLens 1M study further narrows the boundary: learned FIR
+did not replicate versus identity or pointwise on the non-Amazon primary split. Smaller
+FIR arms met the registered noninferiority margin only relative to that non-replicating
+learned arm, so the paper treats parsimony as conditional numerical compression rather
+than a positive efficiency claim.
 
 ## Reproduction evidence
 
@@ -109,8 +114,8 @@ class. The CRLF/LF frozen-reference defect is separately recorded in
 `FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md`.
 
 The audit's stale-landing-metadata finding is also closed for the mutable current
-boundary: README now reports 407 assets / 9,489,409,339 bytes and the 899-entry
-candidate; CFF/Zenodo metadata report 196 cells across 20 families and no longer claim
+boundary: README reports the public asset boundary and the current candidate count;
+CFF/Zenodo metadata report 197 cells across 21 families and no longer claim
 that the compound placebo isolates temporal access; the public release manifest was
 uploaded last. The final immutable tag, verified creators/legal fields, and DOI remain
 open human-controlled work.
@@ -164,3 +169,35 @@ statistics, code, and adjudication in the public graph.  The phase may be called
 prospective same-investigator non-Amazon robustness/efficiency evidence after a
 valid outcome; it cannot be called independent confirmation or population-wide
 generalization.
+
+## 2026-07-28 non-Amazon parsimony phase (outcome integration)
+
+The design-stage phase completed without opening any endpoint before all 96
+TEST-sequestered training runs and 96 sealed evaluations existed. The committed
+adjudicator was then the first endpoint reader. Its exact verdict is
+`ML1M-NO-FIR-REPLICATION`.
+
+On the rating≥4 primary global-time split, mean NDCG@10 was 0.052151 learned,
+0.052151 identity, and 0.052116 pointwise. Learned−identity was +0.000000 with
+ordinary paired 95% CI [−0.000074,+0.000075] and Holm-adjusted p=.995;
+learned−pointwise was +0.000035 [−0.000057,+0.000127], p_Holm=.796. Neither
+replication gate passed. The all-rating sensitivity agreed: +0.000012
+[−0.000107,+0.000131] and +0.000043 [−0.000082,+0.000168].
+
+Shared, grouped, and rank≤8 low-rank FIR used 16, 128, and 320 trainable filter
+parameters versus 1,024 for learned per-channel FIR. Their candidate−learned
+differences were +0.000060, −0.000027, and +0.000060, with simultaneous lower
+bounds −0.000068, −0.000128, and −0.000033. All passed the frozen −0.000500
+noninferiority boundary after Holm adjustment. This result is reported only as
+conditional numerical compression: the learned-FIR effect prerequisite failed,
+so NI-PASS does not imply FIR utility, superiority, or equivalence to identity.
+Parameter/FLOP/latency/memory/time measurements are plotted and labeled as
+descriptive readings from one GPU.
+
+The public evidence graph binds the aggregate adjudication, recomputes all released
+seed-vector statistics and Holm decisions, verifies the frozen text-file hashes, and
+cross-checks every resource-figure row. The ML-1M README prevents redistribution of
+record-level data; checkpoints, endpoint files, and per-user sidecars therefore remain
+private. The public graph expressly does not claim independent replay of private
+endpoint extraction. Audit items 8 and 13 are only partly closed; item 14 is closed
+experimentally with a negative primary result.

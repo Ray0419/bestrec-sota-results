@@ -4,19 +4,19 @@
 \subsection{Interpretation}\label{sec:6.1}
 
 The main result is deliberately modular and narrowly identified.
-Positive FIR--identity contrasts on three outcome-visible categories are joined by a positive, thresholded Software robustness contrast.
-Together they show that the residual arm improves this backbone in the tested settings.
+Positive FIR--identity contrasts on three outcome-visible Amazon categories are joined by a positive, thresholded Software robustness contrast.
+They show improvement only in those tested Amazon settings: the prospectively frozen MovieLens 1M study did not replicate learned FIR against identity or pointwise.
 V3 improves the protocol chronology, but unverified non-visibility of earlier V2 validation output, same investigator/code lineage/Amazon family, and local custody keep it outcome-known and non-independent.
 An equal-parameter current-position-only DCT/GELU placebo does not show a detected improvement over identity, and learned FIR exceeds it under matched initialization.
 This discriminates learned FIR from that compound residual but does not isolate temporal access because basis/rank, activation, channel mixing, and temporal access change together.
-The shared causal filter is also not separated from learned per-channel taps.
-The evidence establishes neither per-channel-tap necessity, a universal frequency-filter benefit, nor a new end-to-end architecture.
+The shared causal filter is also not separated from learned per-channel taps. On MovieLens, shared, grouped, and low-rank FIR arms met the noninferiority margin against learned FIR, but the learned-FIR effect gate failed; parsimony is therefore conditional rather than evidence of useful compression.
+The evidence establishes neither per-channel-tap necessity, a universal frequency-filter benefit, cross-domain generalization, nor a new end-to-end architecture.
 
 The supporting text studies sharpen that boundary. Frozen text features add only +2.7\% overall on Video\_Games, and TAPE is sub-additive (+0.0009 in one seed; +0.0004 in the four-seed check). The repaired MI analysis finds a small frequency-5-heavy benefit rather than cold-start capability: zero-exposure targets receive no hits through rank 100, the exclude-boundary sensitivity is nonsignificant, and the MI--VG contrast does not replicate. The Beauty\_and\_PC scan (Appendix A.1) likewise attributes its small transfer signal to the bundled BLaIR-rich-text representation, not to the MLP adaptor in isolation.
 
 \subsection{Practical implications}\label{sec:6.2}
 
-The FIR residual is attractive because it is small, causal, and detachable: it can be initialized as the identity and added without changing the item scorer or evaluation protocol. In this implementation, chunked full softmax makes 207k-item training feasible, cached item features substantially reduce evaluation cost, and right-padding with a causal-only mask avoids the NaN failure observed with the former masking path. Conversely, heavy dropout, removal of learned item embeddings, and simple subsequence augmentation did not transfer in the Beauty supporting study; these are observations under this pipeline, not general exclusions.
+The FIR residual is small, causal, and detachable: it can be initialized as the identity and added without changing the item scorer or evaluation protocol. MovieLens resource measurements show no practically meaningful accuracy-resource frontier for learned FIR in the tested setting; latency and peak-memory differences are small, hardware-specific, and subordinate to the failed effect gate. In this implementation, chunked full softmax makes 207k-item training feasible, cached item features substantially reduce evaluation cost, and right-padding with a causal-only mask avoids the NaN failure observed with the former masking path. Conversely, heavy dropout, removal of learned item embeddings, and simple subsequence augmentation did not transfer in the Beauty supporting study; these are observations under this pipeline, not general exclusions.
 
 \subsection{Claim limits and remaining tests}\label{sec:6.3}
 
@@ -32,6 +32,8 @@ Fixed MA/HP are algebraically redundant; shared and nonlinear controls prevent a
 The pointwise study adds a learned-FIR-versus-compound-current-only contrast on outcome-known MI, not temporal isolation or per-channel necessity.
 Software V3 used validation-only selection and sealed final evaluation, but V2-output non-visibility is not independently established; we classify it outcome-known/exploratory. Its local seals are hash-linked rather than immutable external custody, and its frozen tag has a disclosed raw-line-ending reference-hash replay defect.
 Office V1 remains \textbf{VOID}; Office V3 supports only its frozen point-estimate wording.
+\item
+  \textbf{Prospective MovieLens boundary.} The non-Amazon study improves selection chronology and TEST sequestration, but it is same-investigator and same-code-lineage on one dataset and one global-time split. Its negative verdict blocks a cross-domain FIR-benefit claim. Noninferiority of the parsimonious arms is conditional on the failed learned-FIR replication gate; it is not equivalence to identity, a deployment utility claim, or independent confirmation. User/item bootstrap intervals are fixed-dataset sensitivities. The public graph can recompute the released aggregate seed vectors but cannot independently replay non-redistributable MovieLens records or private endpoint files.
 \item
   \textbf{Tail and probe scope.} The tail result is AR2023-specific, small in absolute terms, concentrated at train frequency 5, and not replicated on a non-Amazon domain. The original cohorts mixed exposure regimes and split frequency ties; TFV2 repaired those estimands but was outcome-visible and is not classified as confirmatory. Most capacity probes are single-seed screens, and nonsignificance is never interpreted as equivalence.
 \item

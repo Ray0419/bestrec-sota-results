@@ -7,7 +7,7 @@ Code, frozen protocols, result artifacts, and build scripts are public at
 result JSONs, released per-user sidecars, and the pinned HSTU-BLaIR submodule by
 SHA-256. Running \texttt{bootstrap\_public\_clone.py} fetches and verifies
 release-class assets; running \texttt{rebuild\_hstu\_submission.py --strict} then
-checks HSTU parity, recomputes the 196 artifact-gated cells, verifies the manifest,
+checks HSTU parity, recomputes the 197 artifact-gated cells, verifies the manifest,
 and executes every governed adjudicator.
 
 The numerical graph and release manifest have different scopes: every declared empirical
@@ -16,6 +16,13 @@ release manifest. Table 0's literature attribution remains citation-checked auth
 prose, but its quantitative FIR fields are generated from active graph cells and the
 strict rebuild verifies the generated region. Table 0 is not a separate numerical graph
 family. We make no broader ``every printed claim is hash-manifested'' claim.
+
+MovieLens 1M record rows, transformed splits, checkpoints, endpoint files, and
+per-user sidecars are not redistributed under the ML-1M README. The public release
+contains the frozen acquisition/training/evaluation code, source and split hashes,
+aggregate seed vectors/statistics, and adjudication. Consequently, the public graph
+recomputes the aggregate MovieLens claims but cannot independently replay the private
+record-level endpoint extraction.
 
 The public \texttt{v0.9-audit-evidence} release is the working evidence store.
 Historical campaigns for which checkpoints or per-user records were not retained are

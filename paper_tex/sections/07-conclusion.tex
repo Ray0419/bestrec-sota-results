@@ -27,7 +27,14 @@ identity is -0.000069 [-0.000200, +0.000061], while learned FIR minus pointwise 
 +0.001941 [+0.001788, +0.002095]. This discriminates learned FIR from that
 compound current-only residual in outcome-known MI, but does not isolate temporal
 access. It does not establish per-channel-tap
-necessity, external-comparator superiority, or independent cross-category confirmation.
+necessity. In the prospectively frozen MovieLens 1M study, however, learned FIR did not
+replicate against identity (+0.000000 [-0.000074, +0.000075],
+$p_{\mathrm{Holm}}=.995$) or pointwise (+0.000035 [-0.000057, +0.000127],
+$p_{\mathrm{Holm}}=.796$). Shared, grouped, and low-rank arms met the pre-declared
+noninferiority margin against learned FIR only conditionally: the learned-FIR effect gate
+failed. The evidence therefore supports neither unique necessity of learned per-channel
+FIR coefficients, a general FIR benefit, external-comparator superiority, nor
+independent cross-category confirmation.
 
 The secondary result is narrower. Frozen text features improve the repaired
 Musical\_Instruments frequency-tail endpoint (+0.000420 [0.000181, 0.000660]),

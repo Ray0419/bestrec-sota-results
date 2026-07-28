@@ -190,6 +190,12 @@ def sha256_file(rel):
             h.update(chunk)
     return h.hexdigest()
 
+def sha256_lf(rel):
+    """SHA-256 after normalizing CRLF to LF, matching frozen text-file rules."""
+    ap = os.path.join(ROOT, rel)
+    with open(ap, "rb") as f:
+        return hashlib.sha256(f.read().replace(b"\r\n", b"\n")).hexdigest()
+
 def bt_metric(rel, metric):
     return float(load(rel)["best_test"][metric])
 
@@ -555,6 +561,164 @@ def rule_fir_prospective_sw_v3_contrast(p):
                                            and out["paired_p"] < 0.05) else 0.0
     if out["practical_pass"] != 1.0:
         raise ValueError("Software V3 practical-effect verdict no longer reproduces")
+    return out
+
+def rule_fir_efficiency_ml1m_v1_aggregate(p):
+    """Recompute the public aggregate ML-1M verdict and resource figure.
+
+    Record-level MovieLens inputs, sealed endpoints, checkpoints, and per-user
+    sidecars cannot be redistributed.  This rule therefore fails closed over the
+    public adjudication's aggregate seed vectors and frozen-code hashes.  It
+    independently recomputes the published means, paired intervals, Holm
+    decisions, noninferiority bounds, and every figure-data row, but does not
+    claim an independent replay of the private endpoint extraction.
+    """
+    adjud = load(p["adjud"])
+    seeds = [int(s) for s in p["seeds"]]
+    arms = list(p["arms"])
+    if (adjud.get("protocol") != "PREREG_FIR_EFFICIENCY_ML1M_V1"
+            or adjud.get("verdict") != "ML1M-NO-FIR-REPLICATION"
+            or adjud.get("scope") != ("prospectively frozen same-investigator "
+                                       "non-Amazon robustness and efficiency study")
+            or adjud.get("not_independent_confirmation") is not True
+            or adjud.get("primary_category") != "MovieLens1M_R4"
+            or [int(s) for s in adjud.get("seeds", [])] != seeds
+            or list(adjud.get("arms", [])) != arms
+            or abs(float(adjud.get("alpha", -1)) - 0.05) > 1e-15
+            or abs(float(adjud.get("noninferiority_margin_ndcg10", -1))
+                   - 0.0005) > 1e-15):
+        raise ValueError("MovieLens FIR-efficiency adjudication metadata drift")
+
+    for role, rel in p["frozen_files"].items():
+        expected = adjud.get("frozen_sha256_lf", {}).get(role)
+        if not expected or sha256_lf(rel) != expected:
+            raise ValueError(f"MovieLens FIR-efficiency frozen {role} hash drift")
+
+    values = adjud.get("primary_values", {})
+    if any(len(values.get(arm, [])) != len(seeds) for arm in arms):
+        raise ValueError("MovieLens FIR-efficiency primary seed-vector drift")
+    out = {"n_units": float(len(seeds)), "negative_verdict": 1.0}
+    for arm in arms:
+        observed = [float(x) for x in values[arm]]
+        arm_mean = mean(observed)
+        if abs(arm_mean - float(adjud["primary_means"][arm])) > 1e-12:
+            raise ValueError(f"MovieLens FIR-efficiency {arm} mean drift")
+        out[f"mean_{arm}"] = arm_mean
+
+    def paired_from_vectors(a, b):
+        result = paired_stats([float(x) - float(y) for x, y in zip(a, b)])
+        result["p_two_sided"] = t_two_sided_p(result["t"], result["n"] - 1)
+        return result
+
+    replication_raw = {}
+    for contrast, a_arm, b_arm in (
+            ("learned-identity", "learned", "identity"),
+            ("learned-pointwise", "learned", "pointwise")):
+        rec = paired_from_vectors(values[a_arm], values[b_arm])
+        recorded = adjud["replication"][contrast]
+        expected = {
+            "mean": recorded["mean"], "sd": recorded["sd"],
+            "t": recorded["t"], "ci_lo": recorded["ci"][0],
+            "ci_hi": recorded["ci"][1], "p_two_sided": recorded["p_two_sided"],
+        }
+        for name, expected_value in expected.items():
+            if abs(float(rec[name]) - float(expected_value)) > 1e-12:
+                raise ValueError(f"MovieLens replication {contrast} {name} drift")
+        replication_raw[contrast] = rec["p_two_sided"]
+        prefix = contrast.replace("-", "_")
+        for name in ("mean", "sd", "t", "ci_lo", "ci_hi", "p_two_sided"):
+            out[f"{prefix}_{name}"] = float(rec[name])
+
+    def holm(raw):
+        ordered = sorted(raw, key=raw.get)
+        running, adjusted = 0.0, {}
+        for index, name in enumerate(ordered):
+            running = max(running, (len(ordered) - index) * raw[name])
+            adjusted[name] = min(1.0, running)
+        return adjusted
+
+    for contrast, p_holm in holm(replication_raw).items():
+        recorded = adjud["replication_holm"][contrast]
+        reject = p_holm < 0.05
+        if (abs(p_holm - float(recorded["p_holm"])) > 1e-12
+                or reject != bool(recorded["reject"])
+                or bool(adjud["replication_positive"][contrast]) != reject):
+            raise ValueError(f"MovieLens replication Holm decision drift for {contrast}")
+        prefix = contrast.replace("-", "_")
+        out[f"{prefix}_p_holm"] = p_holm
+        out[f"{prefix}_reject"] = float(reject)
+
+    ni_raw = {}
+    for candidate in ("shared", "grouped", "lowrank"):
+        deltas = [float(x) - float(y)
+                  for x, y in zip(values[candidate], values["learned"])]
+        n, mu, sd = len(deltas), mean(deltas), sstd(deltas)
+        se = sd / math.sqrt(n)
+        t_margin = (mu + 0.0005) / se
+        p_one_sided = t_sf(t_margin, n - 1)
+        simultaneous_lower = mu - t_ppf(1.0 - 0.05 / 3.0, n - 1) * se
+        recorded = adjud["noninferiority"][candidate]
+        expected = {
+            "mean": mu, "sd": sd, "t_margin": t_margin,
+            "p_one_sided": p_one_sided,
+            "simultaneous_lower": simultaneous_lower,
+        }
+        for name, value in expected.items():
+            if abs(float(recorded[name]) - float(value)) > 1e-12:
+                raise ValueError(f"MovieLens noninferiority {candidate} {name} drift")
+        ni_raw[candidate] = p_one_sided
+        out[f"{candidate}_minus_learned"] = mu
+        out[f"{candidate}_simultaneous_lower"] = simultaneous_lower
+
+    for candidate, p_holm in holm(ni_raw).items():
+        recorded = adjud["noninferiority_holm"][candidate]
+        passed = p_holm < 0.05 and out[f"{candidate}_simultaneous_lower"] > -0.0005
+        if (abs(p_holm - float(recorded["p_holm"])) > 1e-12
+                or passed != bool(recorded["reject"])
+                or passed != bool(adjud["noninferiority_pass"][candidate])):
+            raise ValueError(f"MovieLens noninferiority Holm decision drift for {candidate}")
+        out[f"{candidate}_ni_p_holm"] = p_holm
+        out[f"{candidate}_ni_pass"] = float(passed)
+
+    all_view = adjud["all_ratings_sensitivity"]
+    for contrast, key in (("all_learned_identity", "learned_minus_identity"),
+                          ("all_learned_pointwise", "learned_minus_pointwise")):
+        rec = all_view[key]
+        out[f"{contrast}_mean"] = float(rec["mean"])
+        out[f"{contrast}_ci_lo"] = float(rec["ci"][0])
+        out[f"{contrast}_ci_hi"] = float(rec["ci"][1])
+
+    cluster_zero_count = 0
+    for candidate, sensitivity in adjud["cluster_sensitivities"].items():
+        for interval_name in ("user_cluster_percentile_ci95",
+                              "item_cluster_percentile_ci95"):
+            low, high = map(float, sensitivity[interval_name])
+            cluster_zero_count += int(low <= 0.0 <= high)
+    out["cluster_intervals_including_zero"] = float(cluster_zero_count)
+
+    resource = adjud["resource_summary"]["MovieLens1M_R4"]
+    with open(os.path.join(ROOT, p["figure_data"]), newline="", encoding="utf-8") as fp:
+        rows = list(csv.DictReader(fp))
+    if [row.get("arm") for row in rows] != arms:
+        raise ValueError("MovieLens FIR-efficiency figure-data arm order drift")
+    for row in rows:
+        arm = row["arm"]
+        expected = {
+            "filter_trainable_params": adjud["filter_trainable_parameters"][arm],
+            "mean_ndcg10": adjud["primary_means"][arm],
+            "flops_per_user_median": resource[arm]["flops_per_user_median"],
+            "latency_ms_median": resource[arm]["latency_ms_median_across_seeds"],
+            "inference_peak_mib_median":
+                resource[arm]["inference_peak_cuda_memory_bytes_median"] / 2**20,
+            "training_peak_mib_median":
+                resource[arm]["training_peak_cuda_memory_bytes_median"] / 2**20,
+            "training_wall_time_s_median":
+                resource[arm]["training_wall_time_s_median"],
+        }
+        for name, value in expected.items():
+            if abs(float(row[name]) - float(value)) > 5e-12:
+                raise ValueError(f"MovieLens FIR-efficiency figure {arm}.{name} drift")
+            out[f"{arm}_{name}"] = float(value)
     return out
 
 def rule_pct_of_paired(p):
@@ -1026,7 +1190,8 @@ REQUIRED_FAMILIES = ["table1", "table1a", "table1b", "table1c", "table1d", "tabl
                      "table541", "table542", "tableV2conf", "table2",
                      "office_confirmation", "theirs_on_ours", "fir_breadth",
                      "fir_v3", "fir_canonical_breadth", "fir_controls",
-                     "fir_pointwise", "fir_prospective_sw_v3", "office_v3", "tfv2"]
+                     "fir_pointwise", "fir_prospective_sw_v3",
+                     "fir_efficiency_ml1m_v1", "office_v3", "tfv2"]
 
 OFFICE_VOID_NOTE = ("VOID under prereg floor check (+44% floor inflation); "
                     "provisional, not counted as a pass")
@@ -1045,6 +1210,7 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "fir_control_contrast": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with statistics, frozen verdict, and Holm decision cross-checked against the mechanical active-control adjudication JSON",
         "fir_pointwise_contrast": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with parameter equality, statistics, frozen verdict, and Holm decision cross-checked against the mechanical pointwise-placebo adjudication JSON",
         "fir_prospective_sw_v3_contrast": "prospective matched-init paired learned-minus-identity sealed one-shot Software TEST NDCG@10, with validation-only checkpoint selection, state and evidence hashes, statistics, practical threshold, and committed adjudicator verdict independently cross-checked",
+        "fir_efficiency_ml1m_v1_aggregate": "prospectively frozen same-investigator MovieLens 1M aggregate adjudication: recompute seed-vector means, paired intervals, Holm decisions, noninferiority bounds, and figure-resource rows; private record-level endpoints are not redistributable and are not independently replayed by the public graph",
         "pct_of_paired": "100 * mean per-seed (a-b) / mean(b), best_test[{m}]",
         "pct_change": "100 * (mean(a)/denom - 1), best_test[{m}]",
         "share_of_lift": "100 * (mean(x)-mean(base)) / (mean(top)-mean(base))",
@@ -2349,6 +2515,94 @@ def build_spec():
                    chk("practical_pass", 1, mode="count")],
                   8, "exploratory", seeds=SWV3_SEEDS, notes=SWV3_NOTE))
 
+    # ------- fir_efficiency_ml1m_v1: prospective non-Amazon negative replication -------
+    ML1M_ADJ = BR + "fir_efficiency_ml1m_v1_adjudication.json"
+    ML1M_SEEDS = list(range(20261101, 20261109))
+    ML1M_ARMS = ["identity", "shared", "grouped", "lowrank", "learned", "pointwise"]
+    ML1M_FROZEN = {
+        "trainer": BR + "run_sasrec_sbert_efficiency_ml1m_v1_frozen.py",
+        "evaluator": BR + "eval_fir_efficiency_ml1m_v1.py",
+        "runner": BR + "run_fir_efficiency_ml1m_v1.py",
+        "structural_test": BR + "test_fir_efficiency_v1.py",
+        "sequestration_test": BR + "test_fir_efficiency_sequestration_v1.py",
+        "acquisition": BR + "acquire_movielens_fir_efficiency_v1.py",
+        "preregistration": "PREREG_FIR_EFFICIENCY_ML1M_V1.md",
+    }
+    ML1M_FIGURE_DATA = "figures/fig_fir_efficiency_ml1m_v1_data.csv"
+    ML1M_NOTE = (
+        "PREREG_FIR_EFFICIENCY_ML1M_V1.md, code, and adjudicator were committed and "
+        "pushed before MovieLens acquisition. Ninety-six training runs completed with "
+        "TEST bytes sequestered, followed by 96 one-shot sealed evaluations and the "
+        "protocol-designated first endpoint reader. Exact verdict "
+        "ML1M-NO-FIR-REPLICATION: learned FIR did not reject versus identity or the "
+        "equal-parameter pointwise arm. Shared/grouped/low-rank noninferiority passes "
+        "are conditional numerical compression results and do not imply FIR value when "
+        "the learned-FIR replication gate fails. Prospectively frozen same-investigator "
+        "non-Amazon evidence, not independent confirmation or population generalization. "
+        "The ML-1M README prohibits redistribution, so the public graph recomputes from "
+        "the aggregate adjudication vectors and frozen-code hashes but cannot independently "
+        "replay private record-level endpoints, checkpoints, or per-user sidecars.")
+    C.append(cell(
+        "fireff.ml1m.aggregate", "fir_efficiency_ml1m_v1",
+        "MovieLens 1M R4 FIR replication, conditional parsimony, and resources",
+        "aggregate 8-seed paired NDCG@10 and descriptive resource plane",
+        [ML1M_ADJ, ML1M_FIGURE_DATA,
+         BR + "make_fig_fir_efficiency_ml1m_v1.py"] + list(ML1M_FROZEN.values()),
+        "fir_efficiency_ml1m_v1_aggregate",
+        {"adjud": ML1M_ADJ, "seeds": ML1M_SEEDS, "arms": ML1M_ARMS,
+         "frozen_files": ML1M_FROZEN, "figure_data": ML1M_FIGURE_DATA},
+        [
+            chk("negative_verdict", 1, mode="count"),
+            chk("mean_identity", 0.052151, 6),
+            chk("mean_shared", 0.052211, 6),
+            chk("mean_grouped", 0.052125, 6),
+            chk("mean_lowrank", 0.052211, 6),
+            chk("mean_learned", 0.052151, 6),
+            chk("mean_pointwise", 0.052116, 6),
+            chk("learned_identity_mean", 0.000000, 6),
+            chk("learned_identity_ci_lo", -0.000074, 6),
+            chk("learned_identity_ci_hi", 0.000075, 6),
+            chk("learned_identity_p_holm", 0.995, 3),
+            chk("learned_identity_reject", 0, mode="count"),
+            chk("learned_pointwise_mean", 0.000035, 6),
+            chk("learned_pointwise_ci_lo", -0.000057, 6),
+            chk("learned_pointwise_ci_hi", 0.000127, 6),
+            chk("learned_pointwise_p_holm", 0.796, 3),
+            chk("learned_pointwise_reject", 0, mode="count"),
+            chk("shared_minus_learned", 0.000060, 6),
+            chk("shared_simultaneous_lower", -0.000068, 6),
+            chk("shared_ni_p_holm", 0.00000520, mode="approx", tol=5e-9),
+            chk("shared_ni_pass", 1, mode="count"),
+            chk("grouped_minus_learned", -0.000027, 6),
+            chk("grouped_simultaneous_lower", -0.000128, 6),
+            chk("grouped_ni_p_holm", 0.00000520, mode="approx", tol=5e-9),
+            chk("grouped_ni_pass", 1, mode="count"),
+            chk("lowrank_minus_learned", 0.000060, 6),
+            chk("lowrank_simultaneous_lower", -0.000033, 6),
+            chk("lowrank_ni_p_holm", 0.00000143, mode="approx", tol=5e-9),
+            chk("lowrank_ni_pass", 1, mode="count"),
+            chk("all_learned_identity_mean", 0.000012, 6),
+            chk("all_learned_identity_ci_lo", -0.000107, 6),
+            chk("all_learned_identity_ci_hi", 0.000131, 6),
+            chk("all_learned_pointwise_mean", 0.000043, 6),
+            chk("all_learned_pointwise_ci_lo", -0.000082, 6),
+            chk("all_learned_pointwise_ci_hi", 0.000168, 6),
+            chk("cluster_intervals_including_zero", 6, mode="count"),
+            chk("identity_filter_trainable_params", 0, mode="count"),
+            chk("shared_filter_trainable_params", 16, mode="count"),
+            chk("grouped_filter_trainable_params", 128, mode="count"),
+            chk("lowrank_filter_trainable_params", 320, mode="count"),
+            chk("learned_filter_trainable_params", 1024, mode="count"),
+            chk("pointwise_filter_trainable_params", 1024, mode="count"),
+            chk("identity_latency_ms_median", 2.076, 3),
+            chk("shared_latency_ms_median", 2.105, 3),
+            chk("grouped_latency_ms_median", 2.087, 3),
+            chk("lowrank_latency_ms_median", 2.132, 3),
+            chk("learned_latency_ms_median", 2.073, 3),
+            chk("pointwise_latency_ms_median", 2.120, 3),
+        ],
+        8, "exploratory", seeds=ML1M_SEEDS, notes=ML1M_NOTE))
+
     # ------- tfv2: pre-declared repaired-estimand campaign (PREREG_TAIL_FIR_V2) -------
     # Independent 8-vs-8 arms, but outcome-visible: the first independently verifiable
     # timestamp postdates the first result and adjudicator timing/custody do not support
@@ -2533,6 +2787,19 @@ def render_tables(cells):
         return f"{c['mean']:+.{nd}f} ± {c['sd']:.{nd}f} ({int(c['pos'])}/{int(c['n'])})"
 
     T = {}
+    ml1m = by_id["fireff.ml1m.aggregate"]["recomputed"]
+    T["fir_efficiency_ml1m_v1"] = "\n".join([
+        "**MovieLens 1M R4 aggregate FIR replication and conditional parsimony.**",
+        "",
+        "| arm | filter parameters | mean NDCG@10 | arm - learned | simultaneous lower bound | frozen interpretation |",
+        "|---|---:|---:|---:|---:|---|",
+        f"| identity | {int(ml1m['identity_filter_trainable_params'])} | {ml1m['mean_identity']:.6f} | -0.000000 | - | learned replication failed |",
+        f"| shared K=16 | {int(ml1m['shared_filter_trainable_params'])} | {ml1m['mean_shared']:.6f} | {ml1m['shared_minus_learned']:+.6f} | {ml1m['shared_simultaneous_lower']:+.6f} | NI-PASS |",
+        f"| grouped K=16 | {int(ml1m['grouped_filter_trainable_params'])} | {ml1m['mean_grouped']:.6f} | {ml1m['grouped_minus_learned']:+.6f} | {ml1m['grouped_simultaneous_lower']:+.6f} | NI-PASS |",
+        f"| low-rank K=16 | {int(ml1m['lowrank_filter_trainable_params'])} | {ml1m['mean_lowrank']:.6f} | {ml1m['lowrank_minus_learned']:+.6f} | {ml1m['lowrank_simultaneous_lower']:+.6f} | NI-PASS |",
+        f"| learned per-channel K=16 | {int(ml1m['learned_filter_trainable_params']):,} | {ml1m['mean_learned']:.6f} | 0 | - | effect gate failed |",
+        f"| pointwise placebo | {int(ml1m['pointwise_filter_trainable_params']):,} | {ml1m['mean_pointwise']:.6f} | {-ml1m['learned_pointwise_mean']:+.6f} | - | learned-pointwise failed |",
+    ])
     T["table1"] = "\n".join([
         "**Table 1 (regenerated): Headline component ablation — NDCG@10, AR2023 Video_Games "
         "5-core LLOO, full-catalog n_eval=94,762 (values recomputed from manifested artifacts).**",

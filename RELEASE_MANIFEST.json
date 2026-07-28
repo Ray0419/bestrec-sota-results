@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "7e7052f6d9b72fe16e4f57aec6b6279ced8a8304",
+  "git_commit": "dae9ec53a3ce49ab93e5001b7ea9f89b6e5ba23c",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -135,7 +135,7 @@
       "sha256": "0eaad74a57698a878e5aaa2e7d0e314232b53759c4c449b509b34867cb9d18bc"
     },
     "_bestrec_run/build_hstu_tables.py": {
-      "sha256": "43062120c9d9ab99a581fcb819364d706314327b90d640569edde134c2f3edde"
+      "sha256": "287cf20f9042320e98f622b33d5c6839091ae03ed0210d4aa57b1f489a83e669"
     },
     "_bestrec_run/test_hstu_parity.py": {
       "sha256": "1656c393adaafb159fd48338b5bced547c11a1540a2d0f09ef7a800474d53bdd"
@@ -445,6 +445,9 @@
     },
     "_bestrec_run/eval_fir_efficiency_ml1m_v1.py": {
       "sha256": "fb431bf40e714c668a106276142858dfd5939e89a54b1dacee75c9f0e75ecffd"
+    },
+    "_bestrec_run/fir_efficiency_ml1m_v1_adjudication.json": {
+      "sha256": "a0b3a58d60f58bc5ada065af4d14d3025163a2c638a152893ee16156300645a8"
     }
   },
   "result_families": {
@@ -935,19 +938,19 @@
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     ".zenodo.json": {
-      "sha256": "6c7fadad7eb072a090d20941f6c1d52ebdbcd31f3c50324ceedbe37a54477664",
-      "bytes": 1806
+      "sha256": "f1e44aae5d5f9be1c0e20e62e63d50173c3371cf663fb8dfff11ab92c47d80f1",
+      "bytes": 1901
     },
     "CITATION.cff": {
-      "sha256": "66a0e426e9acdaeff7ba3bbc977e6dd855536bcb4ea26999d0600a8ccffcaf90",
-      "bytes": 1395
+      "sha256": "1a666a1f6b2f4cf8db05e9c2ff1a63f727aa08e261e66987bb951c0accea8032",
+      "bytes": 1612
     },
     "README.md": {
-      "sha256": "d9bb7eaac8405828522bd4f888cb32055075b06fe1a82fec862b98a62e078b5e",
-      "bytes": 10710
+      "sha256": "b5a5d000a5859bb0ef45899b043de9891facd9934a8975b53d2fa6f374008985",
+      "bytes": 11616
     },
     "DOI_DEPOSIT_INSTRUCTIONS.md": {
-      "sha256": "c9e397ad9a792df45ec85ecd25712fa33cd4d374b1073fa2fef078c5c537f3b3",
+      "sha256": "2cb0101df263c2ab50d4a1327e7ceda2102f41b25e41a57d8d8fadb5dea721ea",
       "bytes": 2913
     },
     "VENUE_PLAN.md": {
@@ -955,36 +958,36 @@
       "bytes": 5517
     },
     "PAPER_SUBMISSION.md": {
-      "sha256": "7f9dcfb5be7d7284f4aaa173f2eba03fab520255ecc40da93c7ee1b01dea4d31",
-      "bytes": 151412
+      "sha256": "59d0316e80ad8e143df094278c743ce9a54adc13e1b7c175aea182c84e1c01eb",
+      "bytes": 157682
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "129ffba5e123a6f5b63cd14e715d26d91a89aec9b3914925eeb525c254540948",
-      "bytes": 1452983
+      "sha256": "cd15f02521cd03977a92635a86317b04688028941fa0cdcab8fd1c358a3a6b77",
+      "bytes": 1567920
     },
     "PAPER_DRAFT.md": {
       "sha256": "4efe8ffea9fa4748327c16d2c6ef6fa34a547ef164a9af9d13fd6909cb00b7e5",
       "bytes": 226902
     },
     "CANONICAL_SUBMISSION.md": {
-      "sha256": "e56523988b0237141c088411fbea50b460c40a85679d161c53a55e425b529272",
-      "bytes": 15731
+      "sha256": "512bf01929ec5c0cab4edbd106d9df555b962c76facf09fe524f59f65811c88f",
+      "bytes": 17143
     },
     "AUDIT_RESPONSE_2026-07-27.md": {
-      "sha256": "b75e157411cec348b6b75f150341aeba0c6f9a60ed71cb954cb85555dd65518d",
-      "bytes": 19340
+      "sha256": "77be8cdd93bff1b1d242e60d4bdbfe3570c668ffa13ca02433b66cffc4f9f687",
+      "bytes": 22534
     },
     "COVER_LETTER_TORS.md": {
       "sha256": "9a791f5ad396254c896d8fd340d910ca9199f57c315bdfd3b04b1a48fae1300f",
       "bytes": 4171
     },
     "CLAIM_ARTIFACT_MAP.md": {
-      "sha256": "a8804eb36ccb4feaf201da3e5b5f896c51ed120c36d026e2c45551f268a80e2f",
-      "bytes": 12540
+      "sha256": "49cf95c2edad0be58cdd821d381b860ff37a6dfec00767c1ea881b0d3eb3631f",
+      "bytes": 14022
     },
     "PHASE_COMPLETION_AUDIT_2026-07-28.md": {
-      "sha256": "2b2772bb4e090a2e328d6f56821faf9fee1153d231047626d513c3b18cf63c88",
-      "bytes": 8094
+      "sha256": "967e91e31861f75d641fb828cfcc9d986aca9120f48712b03470ff93453bd3d3",
+      "bytes": 8162
     },
     "MOCK_REVIEW_2026-07-27.md": {
       "sha256": "f89d207c7093a31d2c64454bbec6e44c4d9abd561e2f2e640a0c7866d59377b7",
@@ -1019,36 +1022,52 @@
       "bytes": 3435
     },
     "_bestrec_run/build_claim_artifact_map.py": {
-      "sha256": "25caca21715d4ebf128f32ee3de6ba53233e76d28dd4be2718a2e05aa3bc3431",
-      "bytes": 14050
+      "sha256": "3554248299c80651e44aa178a56cd52a98a76005d340dc9a72faeebc02e004b2",
+      "bytes": 15318
     },
     "_bestrec_run/build_table0_claim_ledger.py": {
-      "sha256": "bfdf30ea3d3d20cd22d73c6f922cec9fba5cb05c87c471cd070c0067fea98643",
-      "bytes": 6024
+      "sha256": "2f39b8ac4fcccd6719a8850d8b3742d5742f7e6e0b08a370ec3128578947c044",
+      "bytes": 6573
     },
     "_bestrec_run/build_deposit_bundle.py": {
-      "sha256": "01e2863b9ba55281e88f99e299d3c71e20c8083165fbe9ba15ab609aa726421b",
-      "bytes": 25321
+      "sha256": "c40e6a66efc0a110f6ca7dc8acc47ad9824d20402796a4c244903950543c52a1",
+      "bytes": 25672
+    },
+    "_bestrec_run/normalize_pdf_metadata.py": {
+      "sha256": "63205ef1460cdb6bb2607a10a748c64c8e8b90f162f3e7c01f62976e2464c31c",
+      "bytes": 1992
+    },
+    "_bestrec_run/render_paper_pdf.py": {
+      "sha256": "75564ba3ede61242d53c9e1bdc8f9b382be7e401a86100461eec0590f8c3007e",
+      "bytes": 6299
     },
     "_bestrec_run/fbgemm_shims.py": {
       "sha256": "bb661345a50e11c20ccd16dc9699884467dbbc137fb2b26893804de7aecc9d34",
       "bytes": 9762
     },
     "_bestrec_run/rebuild_hstu_submission.py": {
-      "sha256": "e5abe2289d2700bb344f41c68fd76b82c649217885ba3974acdaf2861560d79f",
-      "bytes": 8769
+      "sha256": "3c8d4510ed4062fc2fba46b6c55558dfb02036efd6c0eccf0209584448f36e20",
+      "bytes": 9998
     },
     "_bestrec_run/update_release_manifest.py": {
-      "sha256": "398de69795ebcc97159a39a23b9b1c2d414a2c17024d34049cea6ae54fdca62a",
-      "bytes": 43058
+      "sha256": "ef99f4107a13b839800ccdefccd45b5103c601f4f6cd9ab55934c27e7b69c1fe",
+      "bytes": 43452
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "1646cd041be37eeb86c19e26233f93118458f578d8d28911f548cbac990e8708",
-      "bytes": 462220
+      "sha256": "a216d74b2ae2e655ccc053e3ba51bef1b950af928d0dad6969730ed2a7b79a07",
+      "bytes": 494244
+    },
+    "paper_tex/build.ps1": {
+      "sha256": "fe9f708fe0d190fae02b11af661b03f878606bc71bd520636320e9ebb3e7c756",
+      "bytes": 4432
+    },
+    "paper_tex/build.sh": {
+      "sha256": "67eeddc1f0024e4d8d1bde8a6376d3753d3a23e6bdeaaf41303e8aee7c2f5c57",
+      "bytes": 4826
     },
     "_bestrec_run/emit_latex_tables.py": {
-      "sha256": "152fd2c252d49390594e19a6ba06f4290ab3af6365baea5108bf080321390b21",
-      "bytes": 27778
+      "sha256": "2247f16b1f0176ed3ed5eadbb41987ae0be0f9096a57cf514d03fb97e440504b",
+      "bytes": 28023
     }
   },
   "pinned_parity_artifacts": {
@@ -1160,7 +1179,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.2.0-deposit",
-  "hash_parent_commit": "7e7052f6d9b72fe16e4f57aec6b6279ced8a8304",
+  "hash_parent_commit": "dae9ec53a3ce49ab93e5001b7ea9f89b6e5ba23c",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",
@@ -1650,6 +1669,18 @@
       "sha256": "b6f03b588a66b4cc677acfb3f4a4417fcb07b3192852615c044e4deb4d7a5ca9",
       "bytes": 27588
     },
+    "figures/fig_fir_efficiency_ml1m_v1_data.csv": {
+      "sha256": "62ebbeb63325c29b814ce28e08555a04e135c4b49932ffb96bde0ef1658c3036",
+      "bytes": 761
+    },
+    "figures/fig_fir_efficiency_ml1m_v1.png": {
+      "sha256": "7a9b63fec6a8097346cb509f95756a1c03a1f53e97125a0da9789d8786a7760f",
+      "bytes": 80287
+    },
+    "figures/fig_fir_efficiency_ml1m_v1.pdf": {
+      "sha256": "c2decf2edc441574e6735603f7d29e103553d860b94d99a6aee4a328dedf3be3",
+      "bytes": 26671
+    },
     "_bestrec_run/make_fig_tail_law_mechanism.py": {
       "sha256": "64a794656d8e0b18fa71ffe3e08aed52ac71195df9637a238d3109367cc96087",
       "bytes": 8169
@@ -1665,6 +1696,10 @@
     "_bestrec_run/make_fig_software_v3_pairs.py": {
       "sha256": "207b19879ab9920846abc95ea9bf3a1d39fe2cc4ecfa3be9ae16c8046fc32ca7",
       "bytes": 4855
+    },
+    "_bestrec_run/make_fig_fir_efficiency_ml1m_v1.py": {
+      "sha256": "38dbe3dfb013c0a5eda1c541218025fd5ff4d3b97bfcbf85ab9772f487f10d2a",
+      "bytes": 5940
     }
   },
   "fir_control_sidecars": {

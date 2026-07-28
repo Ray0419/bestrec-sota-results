@@ -129,6 +129,27 @@ def main():
                   f"{'OK' if good else 'FAILED (verdict not reproduced)'}")
             return good
         ok &= verify_recorded_sw_v3_verdict()
+        def verify_recorded_ml1m_verdict():
+            path = ROOT / "_bestrec_run" / "fir_efficiency_ml1m_v1_adjudication.json"
+            try:
+                rec = json.loads(path.read_text(encoding="utf-8"))
+                replication = rec["replication_positive"]
+                ni = rec["noninferiority_pass"]
+                good = (rec.get("protocol") == "PREREG_FIR_EFFICIENCY_ML1M_V1"
+                        and rec.get("verdict") == "ML1M-NO-FIR-REPLICATION"
+                        and rec.get("not_independent_confirmation") is True
+                        and replication == {
+                            "learned-identity": False,
+                            "learned-pointwise": False,
+                        }
+                        and ni == {"shared": True, "grouped": True, "lowrank": True})
+            except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError):
+                good = False
+            print("--- MovieLens recorded aggregate verdict "
+                  "(private endpoints unavailable; graph recomputes aggregate vectors): "
+                  f"{'OK' if good else 'FAILED (verdict not reproduced)'}")
+            return good
+        ok &= verify_recorded_ml1m_verdict()
         ok &= run_verdict("E-F HYBRID_V1 fresh-seed adjudication (pre-declared; "
                           "W-H-POS x3 required)",
                           ["_bestrec_run/adjudicate_hybrid_v1.py"],

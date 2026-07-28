@@ -73,6 +73,63 @@ The paired-difference sample SD was \textbf{0.000563779}. In registered seed ord
   \label{fig:software_v3_pairs}
 \end{figure}
 
+\textbf{Prospectively frozen non-Amazon replication and efficiency study
+(\texttt{PREREG\_FIR\_EFFICIENCY\_\allowbreak ML1M\_V1.md}; MovieLens 1M; verdict
+\texttt{ML1M-\allowbreak NO-FIR-\allowbreak REPLICATION}).} The protocol and complete execution chain were
+committed and pushed before acquiring MovieLens. The rating-at-least-4 primary view
+used a global 90\% time boundary, a training-observed catalog, 1,033 users, 2,359
+items, and 135,131 training rows. All 96 checkpoints were trained before any TEST
+file was opened or hashed; 96 sealed one-shot evaluations then preceded the
+protocol-designated adjudicator's first endpoint read. This is prospectively frozen
+same-investigator non-Amazon evidence, not independent confirmation or population-wide
+generalization.
+
+The exact primary verdict is negative. Learned FIR did not replicate against identity
+(\textbf{+0.000000, ordinary paired 95\% CI [-0.000074, +0.000075],
+$p_{\mathrm{Holm}}=.995$}) or the equal-parameter pointwise arm
+(\textbf{+0.000035 [-0.000057, +0.000127], $p_{\mathrm{Holm}}=.796$}). Mean
+NDCG@10 was 0.052151 for both learned and identity and 0.052116 for pointwise. The
+all-ratings sensitivity agreed: learned minus identity +0.000012 [-0.000107,
++0.000131] and learned minus pointwise +0.000043 [-0.000082, +0.000168]. All six
+pre-declared user/item cluster percentile intervals for the parsimonious-arm contrasts
+included zero.
+
+\begin{table*}[t]
+\caption{MovieLens 1M R4 primary FIR replication and conditional parsimony. NI-PASS
+uses the frozen 0.000500 noninferiority margin versus learned FIR. Because the
+learned-FIR replication gate failed, NI-PASS is conditional numerical compression,
+not evidence of FIR utility.}
+\label{tab:ml1m-efficiency}
+\input{tables/table_ml1m_efficiency}
+\end{table*}
+
+Shared, grouped, and low-rank passed the frozen noninferiority family
+($p_{\mathrm{Holm}}=5.20\times10^{-6}$, $5.20\times10^{-6}$, and
+$1.43\times10^{-6}$). These are conditional compression findings, not evidence that a
+smaller FIR is useful, because the prerequisite learned-FIR replication contrasts
+failed. Median latency per user was 2.076/2.105/2.087/2.132/2.073/2.120 ms in table
+order; primary-view training peak memory ranged from 580.94 to 583.28 MiB on one RTX
+5060 Ti. The resource plane is descriptive hardware evidence, not a general efficiency
+ranking. Under the ML-1M README, record-level rows, checkpoints, endpoints, and per-user
+sidecars remain private; the public graph verifies frozen code hashes and recomputes all
+reported aggregate-vector arithmetic but cannot independently replay private endpoint
+extraction.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig_fir_efficiency_ml1m_v1.pdf}
+  \Description{Three panels plot the six MovieLens 1M R4 arms' primary eight-seed mean
+  NDCG at 10 against filter parameter count, median latency per user, and median training
+  peak CUDA memory. Shared and low-rank have the highest numerical means, while learned
+  FIR is visually coincident with identity. The resource ranges are narrow and are
+  descriptive measurements on one GPU.}
+  \caption{MovieLens 1M R4 aggregate FIR accuracy-resource plane. Learned FIR failed to
+  replicate versus identity and pointwise. Resource readings are descriptive on one GPU;
+  exact aggregate values are in
+  \texttt{figures/fig\_fir\_efficiency\_ml1m\_v1\_data.csv}.}
+  \label{fig:ml1m-efficiency}
+\end{figure*}
+
 \textbf{Pre-declared breadth (two further categories).} Under \texttt{PREREG\_FIR\_BREADTH.md} (committed before any run; fresh never-inspected seeds 20260713--17; mechanical adjudication in \texttt{FIR\_BREADTH\_RESULTS.md}), the filter was transplanted with \textbf{zero per-category tuning} and tested as a same-seed 5-seed filter-vs-no-filter contrast --- an internal contrast with no comparator involved --- on two categories never used in its development. \textbf{Both categories fired the frozen decision rule}: Industrial\_and\_Scientific same-seed \ensuremath{\Delta} = \textbf{+0.0024 \ensuremath{\pm} 0.0005} (pre-declared paired-analysis 95\% CI {[}+0.0018, +0.0030{]}; 5/5 same-seed differences positive) and CDs\_and\_Vinyl same-seed \ensuremath{\Delta} = \textbf{+0.0057 \ensuremath{\pm} 0.0006} (pre-declared paired-analysis 95\% CI {[}+0.0049, +0.0064{]}; 5/5). \textbf{Analysis-premise correction (2026-07-19):} the frozen rule \emph{as written} is a paired Student-t, but its pairing premise is now known to be false --- same-numbered seeds are not initialization-paired (\S\ref{sec:5.3} randomization disclosure) --- so the pre-declared intervals are reported as executed-as-frozen outputs whose \emph{paired interpretation is withdrawn}; the \textbf{primary supported statement} is the post-hoc independent-arm Welch analysis (we no longer call it conservative: with correlated arms neither interval has a general conservative ordering, and here the Welch intervals are in fact narrower than the paired ones), under which both effects remain positive with 95\% CIs excluding zero (Industrial\_and\_Scientific {[}+0.0019, +0.0029{]}, CDs\_and\_Vinyl {[}+0.0050, +0.0063{]}; graphed as \texttt{firb.*.welch}, evidence-class exploratory since the Welch analysis is post-hoc). Per the frozen claim wording as narrowed by this correction, each result is exactly: \emph{the causal-FIR-filter arm's 5-seed improvement over the no-filter arm on that category is positive with a 95\% CI excluding zero} --- an internal same-seed contrast of the FIR-plus-initialization/optimizer package; nothing broader, no SOTA language, no comparator statement. The filter package is thus multi-seed-supported on \textbf{four categories}, two of them under this pre-declared breadth campaign --- and now \textbf{estimated under the valid independent-arm TFV2 pre-declaration (outcome-visible; not confirmatory --- \S\ref{sec:5.3}(vii))} (below), which supersedes this campaign's withdrawn paired interpretation as the primary FIR evidence.
 
 \textbf{TFV2 independent-arm replication (pre-declared, outcome-visible; adjudicated 2026-07-20).} The \texttt{PREREG\_TAIL\_FIR\_V2.md} campaign (Git-committed frozen rules; outcome-visible --- OTS chronology in \S\ref{sec:5.3}, disclosure (vii)) reran both breadth categories as fully independent 8-vs-8 arms (fresh never-inspected seeds; no pairing premise; per-run sidecars released): Industrial\_and\_Scientific overall \ensuremath{\Delta} = \textbf{+0.002131} (t = 16.99, 95\% CI {[}+0.001862, +0.002400{]}) and CDs\_and\_Vinyl overall \ensuremath{\Delta} = \textbf{+0.005770} (t = 26.12, 95\% CI {[}+0.005275, +0.006266{]}) --- \textbf{both PASS under Holm} (one family with the tail endpoint E1, \S\ref{sec:5.3}). This replaces the withdrawn paired interpretation with a valid pre-declared independent-arm design; the treatment remains the FIR-plus-initialization/optimizer package. Descriptively, the filter's positive-frequency-tail improvements are +0.000775 (IS, p = 2\ensuremath{\times}10$^{-4}$) and +0.002329 (CDs, p = 3\ensuremath{\times}10$^{-12}$).

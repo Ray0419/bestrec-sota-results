@@ -59,7 +59,10 @@ MANIFEST_COMMIT="$("$PYTHON" -c "import json,sys;print(json.load(open(sys.argv[1
 if [ -z "$MANIFEST_COMMIT" ] && [ "${ALLOW_HEAD_EPOCH:-}" != "1" ]; then
   echo "FATAL: cannot read git_commit from RELEASE_MANIFEST.json (set ALLOW_HEAD_EPOCH=1 to override for dev builds)"; exit 7
 fi
-export SOURCE_DATE_EPOCH="$(git log -1 --format=%ct ${MANIFEST_COMMIT:-HEAD} 2>/dev/null || echo 0)"
+# Fixed archival metadata epoch: the release-manifest commit is necessarily a
+# parent of the commit that carries it, so using that commit time makes rebuilt
+# PDF bytes drift after every release cut.
+export SOURCE_DATE_EPOCH="946684800"
 # carry env across the WSL->Windows boundary (audit 16:51: exports do not cross by default)
 export WSLENV="DRAFT_WAIVER/w:SOURCE_DATE_EPOCH/w:PYTHONIOENCODING/w:${WSLENV:-}"
 
@@ -77,6 +80,7 @@ echo "== [2/4] tectonic compile: production preview (acmsmall) =="
 echo "== [3/4] package PAPER_TORS.pdf (review) + PAPER_TORS_acmsmall.pdf (preview, untracked) =="
 cp -f main.pdf PAPER_TORS.pdf
 cp -f main-acmsmall.pdf PAPER_TORS_acmsmall.pdf
+"$PYTHON" ../_bestrec_run/normalize_pdf_metadata.py PAPER_TORS.pdf PAPER_TORS_acmsmall.pdf
 
 echo "== [4/5] tex health gate (undefined refs / lost sections / mangles / figures) =="
 "$PYTHON" check_tex_health.py

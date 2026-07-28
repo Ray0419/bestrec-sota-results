@@ -35,6 +35,7 @@ def build() -> str:
         "firctrl.b.shared": "exploratory",
         "firpoint.learned_pointwise": "exploratory",
         "firprosp.swv3.learned_identity": "exploratory",
+        "fireff.ml1m.aggregate": "exploratory",
     }
     for cell_id, evidence_class in required.items():
         cell = cells.get(cell_id)
@@ -48,6 +49,7 @@ def build() -> str:
     shared = cells["firctrl.b.shared"]["recomputed"]
     pointwise = cells["firpoint.learned_pointwise"]["recomputed"]
     software = cells["firprosp.swv3.learned_identity"]["recomputed"]
+    ml1m = cells["fireff.ml1m.aggregate"]["recomputed"]
 
     return "\n".join([
         START,
@@ -66,7 +68,12 @@ def build() -> str:
          f"Software robustness: {signed(software['mean'])} [{signed(software['ci_lo'])},{signed(software['ci_hi'])}]. "
          f"Learned beats the equal-parameter current-only placebo by {signed(pointwise['mean'])} "
          f"but does not separate from shared FIR ({signed(shared['mean'])} [{signed(shared['ci_lo'])},{signed(shared['ci_hi'])}]). "
-         "**Incremental modular contribution; exploratory same-team evidence, not independent confirmation.** |"),
+         f"Prospective MovieLens: learned minus identity {signed(ml1m['learned_identity_mean'])} "
+         f"[{signed(ml1m['learned_identity_ci_lo'])},{signed(ml1m['learned_identity_ci_hi'])}] "
+         f"and learned minus pointwise {signed(ml1m['learned_pointwise_mean'])} "
+         f"[{signed(ml1m['learned_pointwise_ci_lo'])},{signed(ml1m['learned_pointwise_ci_hi'])}]; "
+         "neither gate passed, so parsimonious-arm NI is conditional only. "
+         "**Incremental modular contribution; no general FIR benefit or independent confirmation.** |"),
         "| **TAPE (ours)** — TIGER, VQ-Rec, ProtoMF; prototype/semantic-ID motivation | Frozen soft assignments gate a zero-initialized additive prototype table | +0.0009 single flag; +0.0004 four-seed check. Supporting ablation (§5.1). |",
         "| **Tail/thinning analysis (ours)** — standard popularity strata, MELT, DropoutNet, CLCRec | Per-dataset text−ID tail contrast and matched-R1 interaction/user thinning | MI +0.000420 (outcome-visible); VG null; cross-dataset p=.13; user-mode p=.058. Secondary empirical boundary (§5.3–§5.4). |",
         END,

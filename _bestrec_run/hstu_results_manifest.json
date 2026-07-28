@@ -28,6 +28,7 @@
   "fir_controls",
   "fir_pointwise",
   "fir_prospective_sw_v3",
+  "fir_efficiency_ml1m_v1",
   "office_v3",
   "tfv2"
  ],
@@ -18178,6 +18179,809 @@
      "mode": "count",
      "recomputed": 1.0,
      "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "fireff.ml1m.aggregate",
+   "table_id": "fir_efficiency_ml1m_v1",
+   "row_label": "MovieLens 1M R4 FIR replication, conditional parsimony, and resources",
+   "metric": "aggregate 8-seed paired NDCG@10 and descriptive resource plane",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/fir_efficiency_ml1m_v1_adjudication.json",
+    "figures/fig_fir_efficiency_ml1m_v1_data.csv",
+    "_bestrec_run/make_fig_fir_efficiency_ml1m_v1.py",
+    "_bestrec_run/run_sasrec_sbert_efficiency_ml1m_v1_frozen.py",
+    "_bestrec_run/eval_fir_efficiency_ml1m_v1.py",
+    "_bestrec_run/run_fir_efficiency_ml1m_v1.py",
+    "_bestrec_run/test_fir_efficiency_v1.py",
+    "_bestrec_run/test_fir_efficiency_sequestration_v1.py",
+    "_bestrec_run/acquire_movielens_fir_efficiency_v1.py",
+    "PREREG_FIR_EFFICIENCY_ML1M_V1.md"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20261101,
+    20261102,
+    20261103,
+    20261104,
+    20261105,
+    20261106,
+    20261107,
+    20261108
+   ],
+   "recompute": {
+    "rule": "fir_efficiency_ml1m_v1_aggregate",
+    "params": {
+     "adjud": "_bestrec_run/fir_efficiency_ml1m_v1_adjudication.json",
+     "seeds": [
+      20261101,
+      20261102,
+      20261103,
+      20261104,
+      20261105,
+      20261106,
+      20261107,
+      20261108
+     ],
+     "arms": [
+      "identity",
+      "shared",
+      "grouped",
+      "lowrank",
+      "learned",
+      "pointwise"
+     ],
+     "frozen_files": {
+      "trainer": "_bestrec_run/run_sasrec_sbert_efficiency_ml1m_v1_frozen.py",
+      "evaluator": "_bestrec_run/eval_fir_efficiency_ml1m_v1.py",
+      "runner": "_bestrec_run/run_fir_efficiency_ml1m_v1.py",
+      "structural_test": "_bestrec_run/test_fir_efficiency_v1.py",
+      "sequestration_test": "_bestrec_run/test_fir_efficiency_sequestration_v1.py",
+      "acquisition": "_bestrec_run/acquire_movielens_fir_efficiency_v1.py",
+      "preregistration": "PREREG_FIR_EFFICIENCY_ML1M_V1.md"
+     },
+     "figure_data": "figures/fig_fir_efficiency_ml1m_v1_data.csv"
+    }
+   },
+   "recompute_rule": "prospectively frozen same-investigator MovieLens 1M aggregate adjudication: recompute seed-vector means, paired intervals, Holm decisions, noninferiority bounds, and figure-resource rows; private record-level endpoints are not redistributable and are not independently replayed by the public graph",
+   "paper": [
+    {
+     "name": "negative_verdict",
+     "value": 1,
+     "mode": "count"
+    },
+    {
+     "name": "mean_identity",
+     "value": 0.052151,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "mean_shared",
+     "value": 0.052211,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "mean_grouped",
+     "value": 0.052125,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "mean_lowrank",
+     "value": 0.052211,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "mean_learned",
+     "value": 0.052151,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "mean_pointwise",
+     "value": 0.052116,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "learned_identity_mean",
+     "value": 0.0,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "learned_identity_ci_lo",
+     "value": -7.4e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "learned_identity_ci_hi",
+     "value": 7.5e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "learned_identity_p_holm",
+     "value": 0.995,
+     "mode": "round",
+     "precision": 3
+    },
+    {
+     "name": "learned_identity_reject",
+     "value": 0,
+     "mode": "count"
+    },
+    {
+     "name": "learned_pointwise_mean",
+     "value": 3.5e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "learned_pointwise_ci_lo",
+     "value": -5.7e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "learned_pointwise_ci_hi",
+     "value": 0.000127,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "learned_pointwise_p_holm",
+     "value": 0.796,
+     "mode": "round",
+     "precision": 3
+    },
+    {
+     "name": "learned_pointwise_reject",
+     "value": 0,
+     "mode": "count"
+    },
+    {
+     "name": "shared_minus_learned",
+     "value": 6e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "shared_simultaneous_lower",
+     "value": -6.8e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "shared_ni_p_holm",
+     "value": 5.2e-06,
+     "mode": "approx",
+     "tol": 5e-09
+    },
+    {
+     "name": "shared_ni_pass",
+     "value": 1,
+     "mode": "count"
+    },
+    {
+     "name": "grouped_minus_learned",
+     "value": -2.7e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "grouped_simultaneous_lower",
+     "value": -0.000128,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "grouped_ni_p_holm",
+     "value": 5.2e-06,
+     "mode": "approx",
+     "tol": 5e-09
+    },
+    {
+     "name": "grouped_ni_pass",
+     "value": 1,
+     "mode": "count"
+    },
+    {
+     "name": "lowrank_minus_learned",
+     "value": 6e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "lowrank_simultaneous_lower",
+     "value": -3.3e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "lowrank_ni_p_holm",
+     "value": 1.43e-06,
+     "mode": "approx",
+     "tol": 5e-09
+    },
+    {
+     "name": "lowrank_ni_pass",
+     "value": 1,
+     "mode": "count"
+    },
+    {
+     "name": "all_learned_identity_mean",
+     "value": 1.2e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "all_learned_identity_ci_lo",
+     "value": -0.000107,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "all_learned_identity_ci_hi",
+     "value": 0.000131,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "all_learned_pointwise_mean",
+     "value": 4.3e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "all_learned_pointwise_ci_lo",
+     "value": -8.2e-05,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "all_learned_pointwise_ci_hi",
+     "value": 0.000168,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "cluster_intervals_including_zero",
+     "value": 6,
+     "mode": "count"
+    },
+    {
+     "name": "identity_filter_trainable_params",
+     "value": 0,
+     "mode": "count"
+    },
+    {
+     "name": "shared_filter_trainable_params",
+     "value": 16,
+     "mode": "count"
+    },
+    {
+     "name": "grouped_filter_trainable_params",
+     "value": 128,
+     "mode": "count"
+    },
+    {
+     "name": "lowrank_filter_trainable_params",
+     "value": 320,
+     "mode": "count"
+    },
+    {
+     "name": "learned_filter_trainable_params",
+     "value": 1024,
+     "mode": "count"
+    },
+    {
+     "name": "pointwise_filter_trainable_params",
+     "value": 1024,
+     "mode": "count"
+    },
+    {
+     "name": "identity_latency_ms_median",
+     "value": 2.076,
+     "mode": "round",
+     "precision": 3
+    },
+    {
+     "name": "shared_latency_ms_median",
+     "value": 2.105,
+     "mode": "round",
+     "precision": 3
+    },
+    {
+     "name": "grouped_latency_ms_median",
+     "value": 2.087,
+     "mode": "round",
+     "precision": 3
+    },
+    {
+     "name": "lowrank_latency_ms_median",
+     "value": 2.132,
+     "mode": "round",
+     "precision": 3
+    },
+    {
+     "name": "learned_latency_ms_median",
+     "value": 2.073,
+     "mode": "round",
+     "precision": 3
+    },
+    {
+     "name": "pointwise_latency_ms_median",
+     "value": 2.12,
+     "mode": "round",
+     "precision": 3
+    }
+   ],
+   "notes": "PREREG_FIR_EFFICIENCY_ML1M_V1.md, code, and adjudicator were committed and pushed before MovieLens acquisition. Ninety-six training runs completed with TEST bytes sequestered, followed by 96 one-shot sealed evaluations and the protocol-designated first endpoint reader. Exact verdict ML1M-NO-FIR-REPLICATION: learned FIR did not reject versus identity or the equal-parameter pointwise arm. Shared/grouped/low-rank noninferiority passes are conditional numerical compression results and do not imply FIR value when the learned-FIR replication gate fails. Prospectively frozen same-investigator non-Amazon evidence, not independent confirmation or population generalization. The ML-1M README prohibits redistribution, so the public graph recomputes from the aggregate adjudication vectors and frozen-code hashes but cannot independently replay private record-level endpoints, checkpoints, or per-user sidecars.",
+   "recomputed": {
+    "n_units": 8.0,
+    "negative_verdict": 1.0,
+    "mean_identity": 0.0521512974596004,
+    "mean_shared": 0.0522113073099036,
+    "mean_grouped": 0.05212499709285893,
+    "mean_lowrank": 0.05221133343033168,
+    "mean_learned": 0.05215149994160289,
+    "mean_pointwise": 0.05211642949333563,
+    "learned_identity_mean": 2.0248200248689646e-07,
+    "learned_identity_sd": 8.896311181427253e-05,
+    "learned_identity_t": 0.006437562450631175,
+    "learned_identity_ci_lo": -7.417254072752719e-05,
+    "learned_identity_ci_hi": 7.457750473250098e-05,
+    "learned_identity_p_two_sided": 0.9950432261121,
+    "learned_pointwise_mean": 3.507044826726001e-05,
+    "learned_pointwise_sd": 0.00011021510636359968,
+    "learned_pointwise_t": 0.9000055475960301,
+    "learned_pointwise_ci_lo": -5.707168653235189e-05,
+    "learned_pointwise_ci_hi": 0.0001272125830668719,
+    "learned_pointwise_p_two_sided": 0.3980207623831784,
+    "learned_pointwise_p_holm": 0.7960415247663568,
+    "learned_pointwise_reject": 0.0,
+    "learned_identity_p_holm": 0.9950432261121,
+    "learned_identity_reject": 0.0,
+    "shared_minus_learned": 5.9807368300710505e-05,
+    "shared_simultaneous_lower": -6.849908460986943e-05,
+    "grouped_minus_learned": -2.650284874395996e-05,
+    "grouped_simultaneous_lower": -0.0001276651391946962,
+    "lowrank_minus_learned": 5.9833488728789665e-05,
+    "lowrank_simultaneous_lower": -3.3328157958966453e-05,
+    "lowrank_ni_p_holm": 1.4312694103362894e-06,
+    "lowrank_ni_pass": 1.0,
+    "grouped_ni_p_holm": 5.19764652859608e-06,
+    "grouped_ni_pass": 1.0,
+    "shared_ni_p_holm": 5.19764652859608e-06,
+    "shared_ni_pass": 1.0,
+    "all_learned_identity_mean": 1.2291189346032988e-05,
+    "all_learned_identity_ci_lo": -0.00010674335619999996,
+    "all_learned_identity_ci_hi": 0.00013132573489206594,
+    "all_learned_pointwise_mean": 4.293634600963537e-05,
+    "all_learned_pointwise_ci_lo": -8.168137267044881e-05,
+    "all_learned_pointwise_ci_hi": 0.00016755406468971955,
+    "cluster_intervals_including_zero": 6.0,
+    "identity_filter_trainable_params": 0.0,
+    "identity_mean_ndcg10": 0.0521512974596004,
+    "identity_flops_per_user_median": 404352.0,
+    "identity_latency_ms_median": 2.075825002975762,
+    "identity_inference_peak_mib_median": 50.67822265625,
+    "identity_training_peak_mib_median": 582.6474609375,
+    "identity_training_wall_time_s_median": 7.716793775558472,
+    "shared_filter_trainable_params": 16.0,
+    "shared_mean_ndcg10": 0.0522113073099036,
+    "shared_flops_per_user_median": 404352.0,
+    "shared_latency_ms_median": 2.1047000191174448,
+    "shared_inference_peak_mib_median": 50.6748046875,
+    "shared_training_peak_mib_median": 582.6455078125,
+    "shared_training_wall_time_s_median": 7.8183218240737915,
+    "grouped_filter_trainable_params": 128.0,
+    "grouped_mean_ndcg10": 0.05212499709285893,
+    "grouped_flops_per_user_median": 404352.0,
+    "grouped_latency_ms_median": 2.087024971842766,
+    "grouped_inference_peak_mib_median": 50.67919921875,
+    "grouped_training_peak_mib_median": 582.64990234375,
+    "grouped_training_wall_time_s_median": 7.685863494873047,
+    "lowrank_filter_trainable_params": 320.0,
+    "lowrank_mean_ndcg10": 0.05221133343033168,
+    "lowrank_flops_per_user_median": 404416.0,
+    "lowrank_latency_ms_median": 2.1321500244084746,
+    "lowrank_inference_peak_mib_median": 50.68115234375,
+    "lowrank_training_peak_mib_median": 583.27978515625,
+    "lowrank_training_wall_time_s_median": 7.784375429153442,
+    "learned_filter_trainable_params": 1024.0,
+    "learned_mean_ndcg10": 0.05215149994160288,
+    "learned_flops_per_user_median": 404352.0,
+    "learned_latency_ms_median": 2.0725500071421266,
+    "learned_inference_peak_mib_median": 50.67822265625,
+    "learned_training_peak_mib_median": 582.6591796875,
+    "learned_training_wall_time_s_median": 7.7809141874313354,
+    "pointwise_filter_trainable_params": 1024.0,
+    "pointwise_mean_ndcg10": 0.05211642949333563,
+    "pointwise_flops_per_user_median": 506752.0,
+    "pointwise_latency_ms_median": 2.1203000214882195,
+    "pointwise_inference_peak_mib_median": 50.13525390625,
+    "pointwise_training_peak_mib_median": 580.939208984375,
+    "pointwise_training_wall_time_s_median": 7.717810153961182
+   },
+   "recomputed_value": 1.0,
+   "paper_check": [
+    {
+     "name": "negative_verdict",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    },
+    {
+     "name": "mean_identity",
+     "paper": 0.052151,
+     "mode": "round",
+     "recomputed": 0.0521512974596004,
+     "result": "exact",
+     "rounded": 0.052151
+    },
+    {
+     "name": "mean_shared",
+     "paper": 0.052211,
+     "mode": "round",
+     "recomputed": 0.0522113073099036,
+     "result": "exact",
+     "rounded": 0.052211
+    },
+    {
+     "name": "mean_grouped",
+     "paper": 0.052125,
+     "mode": "round",
+     "recomputed": 0.05212499709285893,
+     "result": "exact",
+     "rounded": 0.052125
+    },
+    {
+     "name": "mean_lowrank",
+     "paper": 0.052211,
+     "mode": "round",
+     "recomputed": 0.05221133343033168,
+     "result": "exact",
+     "rounded": 0.052211
+    },
+    {
+     "name": "mean_learned",
+     "paper": 0.052151,
+     "mode": "round",
+     "recomputed": 0.05215149994160289,
+     "result": "exact",
+     "rounded": 0.052151
+    },
+    {
+     "name": "mean_pointwise",
+     "paper": 0.052116,
+     "mode": "round",
+     "recomputed": 0.05211642949333563,
+     "result": "exact",
+     "rounded": 0.052116
+    },
+    {
+     "name": "learned_identity_mean",
+     "paper": 0.0,
+     "mode": "round",
+     "recomputed": 2.0248200248689646e-07,
+     "result": "exact",
+     "rounded": 0.0
+    },
+    {
+     "name": "learned_identity_ci_lo",
+     "paper": -7.4e-05,
+     "mode": "round",
+     "recomputed": -7.417254072752719e-05,
+     "result": "exact",
+     "rounded": -7.4e-05
+    },
+    {
+     "name": "learned_identity_ci_hi",
+     "paper": 7.5e-05,
+     "mode": "round",
+     "recomputed": 7.457750473250098e-05,
+     "result": "exact",
+     "rounded": 7.5e-05
+    },
+    {
+     "name": "learned_identity_p_holm",
+     "paper": 0.995,
+     "mode": "round",
+     "recomputed": 0.9950432261121,
+     "result": "exact",
+     "rounded": 0.995
+    },
+    {
+     "name": "learned_identity_reject",
+     "paper": 0,
+     "mode": "count",
+     "recomputed": 0.0,
+     "result": "exact"
+    },
+    {
+     "name": "learned_pointwise_mean",
+     "paper": 3.5e-05,
+     "mode": "round",
+     "recomputed": 3.507044826726001e-05,
+     "result": "exact",
+     "rounded": 3.5e-05
+    },
+    {
+     "name": "learned_pointwise_ci_lo",
+     "paper": -5.7e-05,
+     "mode": "round",
+     "recomputed": -5.707168653235189e-05,
+     "result": "exact",
+     "rounded": -5.7e-05
+    },
+    {
+     "name": "learned_pointwise_ci_hi",
+     "paper": 0.000127,
+     "mode": "round",
+     "recomputed": 0.0001272125830668719,
+     "result": "exact",
+     "rounded": 0.000127
+    },
+    {
+     "name": "learned_pointwise_p_holm",
+     "paper": 0.796,
+     "mode": "round",
+     "recomputed": 0.7960415247663568,
+     "result": "exact",
+     "rounded": 0.796
+    },
+    {
+     "name": "learned_pointwise_reject",
+     "paper": 0,
+     "mode": "count",
+     "recomputed": 0.0,
+     "result": "exact"
+    },
+    {
+     "name": "shared_minus_learned",
+     "paper": 6e-05,
+     "mode": "round",
+     "recomputed": 5.9807368300710505e-05,
+     "result": "exact",
+     "rounded": 6e-05
+    },
+    {
+     "name": "shared_simultaneous_lower",
+     "paper": -6.8e-05,
+     "mode": "round",
+     "recomputed": -6.849908460986943e-05,
+     "result": "exact",
+     "rounded": -6.8e-05
+    },
+    {
+     "name": "shared_ni_p_holm",
+     "paper": 5.2e-06,
+     "mode": "approx",
+     "recomputed": 5.19764652859608e-06,
+     "result": "within_tol"
+    },
+    {
+     "name": "shared_ni_pass",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    },
+    {
+     "name": "grouped_minus_learned",
+     "paper": -2.7e-05,
+     "mode": "round",
+     "recomputed": -2.650284874395996e-05,
+     "result": "exact",
+     "rounded": -2.7e-05
+    },
+    {
+     "name": "grouped_simultaneous_lower",
+     "paper": -0.000128,
+     "mode": "round",
+     "recomputed": -0.0001276651391946962,
+     "result": "exact",
+     "rounded": -0.000128
+    },
+    {
+     "name": "grouped_ni_p_holm",
+     "paper": 5.2e-06,
+     "mode": "approx",
+     "recomputed": 5.19764652859608e-06,
+     "result": "within_tol"
+    },
+    {
+     "name": "grouped_ni_pass",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    },
+    {
+     "name": "lowrank_minus_learned",
+     "paper": 6e-05,
+     "mode": "round",
+     "recomputed": 5.9833488728789665e-05,
+     "result": "exact",
+     "rounded": 6e-05
+    },
+    {
+     "name": "lowrank_simultaneous_lower",
+     "paper": -3.3e-05,
+     "mode": "round",
+     "recomputed": -3.3328157958966453e-05,
+     "result": "exact",
+     "rounded": -3.3e-05
+    },
+    {
+     "name": "lowrank_ni_p_holm",
+     "paper": 1.43e-06,
+     "mode": "approx",
+     "recomputed": 1.4312694103362894e-06,
+     "result": "within_tol"
+    },
+    {
+     "name": "lowrank_ni_pass",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    },
+    {
+     "name": "all_learned_identity_mean",
+     "paper": 1.2e-05,
+     "mode": "round",
+     "recomputed": 1.2291189346032988e-05,
+     "result": "exact",
+     "rounded": 1.2e-05
+    },
+    {
+     "name": "all_learned_identity_ci_lo",
+     "paper": -0.000107,
+     "mode": "round",
+     "recomputed": -0.00010674335619999996,
+     "result": "exact",
+     "rounded": -0.000107
+    },
+    {
+     "name": "all_learned_identity_ci_hi",
+     "paper": 0.000131,
+     "mode": "round",
+     "recomputed": 0.00013132573489206594,
+     "result": "exact",
+     "rounded": 0.000131
+    },
+    {
+     "name": "all_learned_pointwise_mean",
+     "paper": 4.3e-05,
+     "mode": "round",
+     "recomputed": 4.293634600963537e-05,
+     "result": "exact",
+     "rounded": 4.3e-05
+    },
+    {
+     "name": "all_learned_pointwise_ci_lo",
+     "paper": -8.2e-05,
+     "mode": "round",
+     "recomputed": -8.168137267044881e-05,
+     "result": "exact",
+     "rounded": -8.2e-05
+    },
+    {
+     "name": "all_learned_pointwise_ci_hi",
+     "paper": 0.000168,
+     "mode": "round",
+     "recomputed": 0.00016755406468971955,
+     "result": "exact",
+     "rounded": 0.000168
+    },
+    {
+     "name": "cluster_intervals_including_zero",
+     "paper": 6,
+     "mode": "count",
+     "recomputed": 6.0,
+     "result": "exact"
+    },
+    {
+     "name": "identity_filter_trainable_params",
+     "paper": 0,
+     "mode": "count",
+     "recomputed": 0.0,
+     "result": "exact"
+    },
+    {
+     "name": "shared_filter_trainable_params",
+     "paper": 16,
+     "mode": "count",
+     "recomputed": 16.0,
+     "result": "exact"
+    },
+    {
+     "name": "grouped_filter_trainable_params",
+     "paper": 128,
+     "mode": "count",
+     "recomputed": 128.0,
+     "result": "exact"
+    },
+    {
+     "name": "lowrank_filter_trainable_params",
+     "paper": 320,
+     "mode": "count",
+     "recomputed": 320.0,
+     "result": "exact"
+    },
+    {
+     "name": "learned_filter_trainable_params",
+     "paper": 1024,
+     "mode": "count",
+     "recomputed": 1024.0,
+     "result": "exact"
+    },
+    {
+     "name": "pointwise_filter_trainable_params",
+     "paper": 1024,
+     "mode": "count",
+     "recomputed": 1024.0,
+     "result": "exact"
+    },
+    {
+     "name": "identity_latency_ms_median",
+     "paper": 2.076,
+     "mode": "round",
+     "recomputed": 2.075825002975762,
+     "result": "exact",
+     "rounded": 2.076
+    },
+    {
+     "name": "shared_latency_ms_median",
+     "paper": 2.105,
+     "mode": "round",
+     "recomputed": 2.1047000191174448,
+     "result": "exact",
+     "rounded": 2.105
+    },
+    {
+     "name": "grouped_latency_ms_median",
+     "paper": 2.087,
+     "mode": "round",
+     "recomputed": 2.087024971842766,
+     "result": "exact",
+     "rounded": 2.087
+    },
+    {
+     "name": "lowrank_latency_ms_median",
+     "paper": 2.132,
+     "mode": "round",
+     "recomputed": 2.1321500244084746,
+     "result": "exact",
+     "rounded": 2.132
+    },
+    {
+     "name": "learned_latency_ms_median",
+     "paper": 2.073,
+     "mode": "round",
+     "recomputed": 2.0725500071421266,
+     "result": "exact",
+     "rounded": 2.073
+    },
+    {
+     "name": "pointwise_latency_ms_median",
+     "paper": 2.12,
+     "mode": "round",
+     "recomputed": 2.1203000214882195,
+     "result": "exact",
+     "rounded": 2.12
     }
    ],
    "paper_check_class": "exact"

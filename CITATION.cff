@@ -10,6 +10,7 @@ version: "1.2.0"
 keywords:
   - sequential recommendation
   - Amazon Reviews 2023
+  - MovieLens 1M
   - HSTU
   - causal FIR residual
   - modular contribution
@@ -19,10 +20,13 @@ abstract: >-
   Unpublished candidate metadata for the code, pre-declarations, provenance
   manifests, and evaluation artifacts accompanying a narrow modular study of a
   gradient-active left-causal depthwise FIR residual in an HSTU-style sequential
-  recommender. The fail-closed graph recomputes 196 active paper cells across 20
+  recommender. The fail-closed graph recomputes 197 active paper cells across 21
   families and preserves null, deviated, and VOID outcomes. An equal-parameter
   current-position-only placebo discriminates learned FIR from that tested compound
-  placebo in an outcome-known setting but does not isolate temporal access; the evidence does not support broad SOTA,
+  placebo in an outcome-known setting but does not isolate temporal access. A
+  prospectively frozen MovieLens 1M study did not replicate learned FIR versus identity
+  or pointwise; smaller FIR arms met a noninferiority margin only conditionally on that
+  failed effect gate. The evidence does not support broad SOTA,
   paired superiority over single-run comparators, per-channel-tap necessity,
   independent confirmation, or generalization. Replace the author placeholder
   and verify legal/licensing fields before publication.

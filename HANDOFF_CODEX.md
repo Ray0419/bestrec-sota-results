@@ -1,4 +1,45 @@
-# Handoff — canonical-FIR restructuring program (2026-07-25)
+# CURRENT HANDOFF — MovieLens FIR efficiency phase completed (2026-07-28)
+
+The phase frozen at `f425d469b3172fc798e289c9ad3f775c89c19a55` completed all
+96 TEST-sequestered training runs and all 96 sealed one-shot evaluations with no
+recorded errors. The committed adjudicator was the first endpoint reader. Exact
+verdict: **`ML1M-NO-FIR-REPLICATION`**.
+
+Primary rating≥4 results over eight matched seed blocks:
+
+- learned−identity: +0.0000002025, 95% CI
+  [−0.0000741725, +0.0000745775], `p_Holm=.995` — FAIL;
+- learned−pointwise: +0.0000350704, 95% CI
+  [−0.0000570717, +0.0001272126], `p_Holm=.796` — FAIL;
+- shared, grouped, and low-rank passed the frozen −0.000500 noninferiority
+  family versus learned, but only conditionally because the learned-FIR effect
+  gate failed.
+
+The negative result and conditional parsimony finding are integrated into the
+reader and TORS manuscripts, Table 0, the audit response, a generated table,
+and an aggregate resource figure. The public fail-closed graph now recomputes
+197 active cells across 21 required families with zero mismatches or
+untraceable cells. It recomputes the released aggregate seed-vector, Holm/NI,
+sensitivity, and resource arithmetic but cannot replay the private endpoint
+extraction. This is prospectively frozen same-investigator non-Amazon evidence,
+not independent confirmation, population generalization, equivalence, or a
+deployment-efficiency result.
+
+MovieLens record rows, transformed splits, checkpoints, per-user sidecars, and
+endpoint files remain private under the ML-1M README. The public repository
+contains only the frozen protocol/code, aggregate adjudication, and aggregate
+figure data. Preserve user-modified `PAPER_REVIEW_AUDIT.md` and unrelated
+untracked QA/tmp files.
+
+Integration verification at handoff: both PDFs build and pass hygiene scans;
+targeted visual inspection is clean; the 908-entry unpublished deposit candidate
+passes its consistency gate. The final release ritual is commit → strict clean
+replay → push → upload and download-verify `RELEASE_MANIFEST.json`. The only
+submission blocker outside this phase remains the human author/byline metadata.
+
+---
+
+# Historical handoff — canonical-FIR restructuring program (2026-07-25)
 
 **State:** branch `codex/bestrec-sota-results`, HEAD `e055f9d0`, tree clean, all pushed. GPU **idle**.
 Rollback point if needed: tag `pre-fir-restructure-20260725`.

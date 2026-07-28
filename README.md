@@ -1,6 +1,6 @@
 # Artifact-Gated Evaluation of a Causal FIR Module for Sequential Recommendation
 
-**A narrow modular contribution on Amazon Reviews 2023, with outcome-known mechanism studies and an artifact-gated audit trail.**
+**A narrow modular contribution with outcome-known Amazon studies, a negative prospective MovieLens 1M test, and an artifact-gated audit trail.**
 
 This repository is the working artifact repository for the manuscript (ACM TORS submission format; **public** — 407 release-only assets totaling 9,489,409,339 bytes, including the Software V3 endpoint/sidecar/checkpoint set, are deposited as hash-manifested release assets; `bootstrap_public_clone.py` reconstructs a fresh clone's full evidence boundary):
 code, pre-declarations, results of record, provenance manifests, the fail-closed build
@@ -17,12 +17,12 @@ uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --s
 ```
 
 This runs, fail-closed: the bitwise HSTU core-block parity test → the artifact-graph build
-(**all 196 artifact-gated cells across 20 families recomputed from source artifacts**; exits
+(**all 197 artifact-gated cells across 21 families recomputed from public source artifacts**; exits
 nonzero on any mismatch, untraceable cell, or missing claim family) → release-manifest hash
 verification (the live gate reports the authoritative file count) → the pre-declared Musical_Instruments gate adjudicator → the TFV2 repaired-estimand adjudicator (outcome-visible — §5.3 chronology) → **the
 Office V3 adjudicator (counted; the build fails unless the campaign verdict is PASS)** →
 **the FIR-breadth adjudicator (artifact-integrity: the frozen rule's legacy CONFIRMED tokens are checked mechanically; the paired premise is withdrawn and no inferential confirmation is implied)** → the Office V1
-adjudicator (descriptive/VOID). Each campaign's live adjudicator gates the build (MI V2, Office V3, TFV2, FIR breadth, E-A, canonical FIR breadth, FIR active controls, FIR pointwise placebo, E-F; the E-G adjudicator also gates as an artifact-reproduction check but confers no confirmatory status — see PAPER_SUBMISSION.md §5.8). Canonical breadth and the FIR mechanism studies are outcome-known/test-exposed internal evidence; their live verdict gates certify artifact reproduction, not independent-confirmation status.
+adjudicator (descriptive/VOID). Each public campaign's live or recorded verdict gates the build (MI V2, Office V3, TFV2, FIR breadth, E-A, canonical FIR breadth, FIR active controls, FIR pointwise placebo, Software V3, MovieLens `ML1M-NO-FIR-REPLICATION`, E-F; the E-G adjudicator also gates as an artifact-reproduction check but confers no confirmatory status — see PAPER_SUBMISSION.md §5.8). The MovieLens gate recomputes aggregate seed-vector arithmetic because private record-level endpoints are not redistributable; it does not claim independent endpoint replay.
 (hardened 2026-07-18); `update_release_manifest.py --verify-git <commit|tag>` additionally
 checks the manifest against the git blobs. **Hash-check rule:** verify digests against the
 tag blob (`git show <tag>:FILE`), the release asset, or the bundle payload — never raw
@@ -51,6 +51,13 @@ blobs (`DOI_DEPOSIT_INSTRUCTIONS.md` has the full rule).
   temporal access change together;
   the competitive shared causal filter prevents per-channel-tap attribution. These are
   outcome-known internal mechanism estimates, never an independent-confirmation or comparator claim.
+- **The prospectively frozen non-Amazon result is negative:** on MovieLens 1M rating≥4,
+  learned FIR−identity is +0.000000 [−0.000074,+0.000075] (`p_Holm=.995`) and
+  learned FIR−pointwise is +0.000035 [−0.000057,+0.000127] (`p_Holm=.796`), yielding
+  `ML1M-NO-FIR-REPLICATION`. Shared/grouped/low-rank arms (16/128/320 parameters) meet
+  the pre-declared noninferiority margin versus learned FIR (1,024), but only as
+  conditional numerical compression because the learned-FIR effect gate failed. This is
+  same-investigator evidence on one split, not independent confirmation or generalization.
 - **Pre-declared fresh-seed hybrid (E-F, 2026-07-23):** late z-score fusion with train-only EASE (Steck 2019) lifted test NDCG@10 on all three categories tested (MI +0.0024, IS +0.0026, VG +0.0032; ordinary paired 95% CIs with Holm-adjusted decisions, fresh seeds 20260721-25); the MI fused five-seed mean 0.04399 exceeds the published single-run 0.0406 (point-estimate comparison, environment-caveated; see PAPER_SUBMISSION.md §5.7).
 - **Sparse-warm text-fusion study (E-G, 2026-07-23; OUTCOME-VISIBLE, PROTOCOL-DEVIATED — descriptive only):** a validation-selected history-centroid text scorer raised tail-bin test NDCG@10 on all five categories (+0.0011 to +0.0048) at aggregate cost within margin, BUT the campaign's no-interim clause was violated, the literal config gate fails MI/VG, and the gate was amended after outcomes; no confirmatory status is claimed. Its intended clean replication (E-G2) was itself EXPOSED (a git add -A committed 14 in-progress confirm artifacts before adjudication, audit 2026-07-23 22:00); the sole remaining counted path is a future repository-sequestered E-G3 (PAPER_SUBMISSION.md §5.8).
 - **Text tail benefit: one MI frequency-5-heavy case** (cross-dataset heterogeneity not established, interaction p = 0.13; the thinning intervention did NOT explain it — one fixed draw; mechanism unresolved).
@@ -79,7 +86,7 @@ campaign above is a separate pre-declaration that passed under its frozen wordin
 
 ## Releases
 
-- **`v1.2.0-deposit` (intended candidate; not yet tagged or published).** The current 899-entry
+- **`v1.2.0-deposit` (intended candidate; not yet tagged or published).** The current 908-entry
   candidate bundle is prepared locally and explicitly refuses a normal/tagged build while
   creator placeholders remain. `v1.1.11-deposit` is a historical snapshot and is stale
   relative to the present manuscript; it must not be uploaded as current.
@@ -87,7 +94,10 @@ campaign above is a separate pre-declaration that passed under its frozen wordin
 - **`bestrec-raw-records-v1`** — the historical LC2C project's raw records (see `README_LC2C_HISTORICAL.md`).
 
 Data: the Amazon Reviews 2023 dataset (McAuley Lab) is **not redistributed**; derived
-splits/caches are pinned by SHA256 with regeneration scripts.
+splits/caches are pinned by SHA256 with regeneration scripts. MovieLens 1M record rows,
+transformed splits, checkpoints, endpoints, and per-user sidecars are also not
+redistributed under the ML-1M README; only aggregate provenance, statistics, code, and
+adjudication enter the public graph.
 
 License: MIT (`LICENSE`). Citation metadata: `CITATION.cff` / `.zenodo.json`.
 

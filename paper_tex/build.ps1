@@ -1,7 +1,7 @@
 param([string]$Draft = "")
-$__mc = (Get-Content -Raw (Join-Path $PSScriptRoot "..\RELEASE_MANIFEST.json") | ConvertFrom-Json).git_commit
-if ($__mc) { $env:SOURCE_DATE_EPOCH = (git log -1 --format=%ct $__mc 2>$null) }
-if (-not $env:SOURCE_DATE_EPOCH) { $env:SOURCE_DATE_EPOCH = (git log -1 --format=%ct 2>$null) }
+# A fixed archival metadata epoch makes Tectonic's PDF date and file identifier
+# independent of the child commit that carries a freshly regenerated manifest.
+$env:SOURCE_DATE_EPOCH = "946684800"
 $__prevWaiver = $env:DRAFT_WAIVER
 try {
 if ($Draft -ne "") {
@@ -60,6 +60,8 @@ if ($LASTEXITCODE -ne 0) { throw "tectonic compile failed (main-acmsmall.tex)" }
 Write-Host "== [3/4] package PAPER_TORS.pdf (review) + PAPER_TORS_acmsmall.pdf (preview, untracked) =="
 Copy-Item -Force main.pdf PAPER_TORS.pdf
 Copy-Item -Force main-acmsmall.pdf PAPER_TORS_acmsmall.pdf
+& $Python (Join-Path $PSScriptRoot "..\_bestrec_run\normalize_pdf_metadata.py") PAPER_TORS.pdf PAPER_TORS_acmsmall.pdf
+if ($LASTEXITCODE -ne 0) { throw "PDF metadata normalization failed" }
 
 Write-Host "== [4/5] tex health gate (H1-H10; parity with build.sh) =="
 & $Python check_tex_health.py

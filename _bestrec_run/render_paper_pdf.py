@@ -71,6 +71,11 @@ for _ in range(30):
         break
     time.sleep(1)
 assert os.path.exists(PDF), "PDF not produced: " + (r.stderr or "")[-400:]
+
+# Edge stamps wall-clock metadata into otherwise identical output.  Normalize
+# it before scanning or manifesting the PDF.
+from normalize_pdf_metadata import normalize_pdf  # noqa: E402
+normalize_pdf(PDF)
 print("pdf bytes:", os.path.getsize(PDF))
 
 from pypdf import PdfReader  # noqa: E402

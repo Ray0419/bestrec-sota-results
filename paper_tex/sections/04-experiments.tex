@@ -3,7 +3,11 @@
 
 \subsection{Datasets}\label{sec:4.1}
 
-All datasets are AR2023 5-core categories under the same full-catalog LLOO protocol (\S\ref{sec:3.6}). Counts are \textbf{total 5-core interactions} (train = total \ensuremath{-} 2\ensuremath{\times}users, since LLOO holds out one valid and one test interaction per user):
+The primary development and comparator studies use AR2023 5-core categories under the
+full-catalog LLOO protocol (\S\ref{sec:3.6}). A separate prospective robustness and
+efficiency study uses MovieLens 1M \citep{harper2015movielens} under a frozen global-time
+split. AR2023 counts are total 5-core interactions; the MovieLens row reports its
+filtered primary view and training-observed catalog:
 
 \input{tables/table_datasets41}
 
@@ -42,6 +46,16 @@ The tail analysis (\S\ref{sec:5.3}--\S\ref{sec:5.4}) rests on two arm comparison
 \end{itemize}
 
 A separate \textbf{20-variant cross-pipeline transfer scan on Beauty\_and\_\allowbreak PC} --- supporting reproducibility material, not part of the headline spine --- is reported in Appendix A.1.
+
+The MovieLens study used six exact matched-initialization arms over eight pre-specified
+seed blocks: identity, channel-shared K=16, eight-group K=16, rank-at-most-8
+tangent-factorized K=16, per-channel K=16, and an equal-parameter current-position-only
+placebo. Training constructed maps from TRAIN+VALID without opening or hashing TEST
+bytes. After all 96 training runs completed, each selected checkpoint received one
+sealed TEST evaluation. The primary estimand was NDCG@10 on rating-at-least-4 events
+after a global 90\% time boundary; all ratings, user/item cluster bootstraps, and
+resource readings were frozen sensitivities. The three-candidate noninferiority family
+used margin 0.000500 and Holm-adjusted one-sided tests.
 
 
 \subsection{Training details and hardware}\label{sec:4.4}

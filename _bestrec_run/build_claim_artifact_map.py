@@ -122,6 +122,21 @@ CLAIMS = [
                   "_bestrec_run/fir_prospective_sw_v3_adjudication.json",
                   "FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md"],
     },
+    {
+        "id": "C12",
+        "claim": "Prospective MovieLens 1M FIR replication and conditional parsimony",
+        "boundary": "Learned FIR did not replicate versus identity or pointwise. Shared/grouped/low-rank noninferiority versus learned is conditional numerical compression only because the learned-FIR effect gate failed. Prospectively frozen same-investigator non-Amazon evidence, not independent confirmation, equivalence to identity, deployment utility, or population generalization; the public graph cannot replay private ML-1M record-level endpoints.",
+        "tables": ["fir_efficiency_ml1m_v1"],
+        "files": ["PREREG_FIR_EFFICIENCY_ML1M_V1.md",
+                  "_bestrec_run/acquire_movielens_fir_efficiency_v1.py",
+                  "_bestrec_run/run_fir_efficiency_ml1m_v1.py",
+                  "_bestrec_run/eval_fir_efficiency_ml1m_v1.py",
+                  "_bestrec_run/adjudicate_fir_efficiency_ml1m_v1.py",
+                  "_bestrec_run/fir_efficiency_ml1m_v1_adjudication.json",
+                  "_bestrec_run/make_fig_fir_efficiency_ml1m_v1.py",
+                  "figures/fig_fir_efficiency_ml1m_v1_data.csv",
+                  "figures/fig_fir_efficiency_ml1m_v1.pdf"],
+    },
 ]
 
 EXPECTED_EVIDENCE = {
@@ -131,6 +146,7 @@ EXPECTED_EVIDENCE = {
     "fir_controls": {"exploratory"},
     "fir_pointwise": {"exploratory"},
     "fir_prospective_sw_v3": {"exploratory"},
+    "fir_efficiency_ml1m_v1": {"exploratory"},
     "tableV2conf": {"confirmatory"},
     "office_v3": {"confirmatory"},
     "office_confirmation": {"exploratory"},

@@ -3,7 +3,7 @@
 (Edge headless), then placeholder/lab-language scan + page count."""
 import io, os, re, subprocess, sys, time
 
-ROOT = r"C:\Users\rayxc\Documents\R"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MD = os.path.join(ROOT, "PAPER_SUBMISSION.md")
 HTML = os.path.join(ROOT, "_paper_render.html")
 PDF = os.path.join(ROOT, "PAPER_SUBMISSION.pdf")

@@ -90,6 +90,7 @@ _bestrec_run/results_*.finaleval.users.npz
 ee_baselines/export/
 ee_baselines/AlphaFuse/
 ee_baselines/LLM2Emb/
+ee_baselines/WEARec/
 ee_baselines/.venv_ee/
 ee_baselines/ours_DiT/
 ee_ez_vg_inputs.tar.gz
@@ -119,3 +120,9 @@ _bestrec_run/run_fir_prospective_sw_v2.log
 # forbids redistribution without separate permission. Raw, transformed,
 # per-user, checkpoint, and endpoint artifacts stay below this private root.
 _bestrec_run/private_ml1m_v1/
+
+# Official WEARec current-baseline phase: upstream clone, private catalog,
+# checkpoints, validation-only run records, and sealed endpoints are local.
+_bestrec_run/wearec_baseline_v1_private/
+_bestrec_run/wearec_baseline_v1_status.json
+_bestrec_run/run_wearec_baseline_v1.log

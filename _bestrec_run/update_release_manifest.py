@@ -166,6 +166,20 @@ FIR_PROSPECTIVE_STAGE_A_PROTOCOL_FILES = [
     "_bestrec_run/eval_fir_prospective_sw_v3.py",
     "_bestrec_run/adjudicate_fir_prospective_sw_v3.py",
 ]
+WEAREC_BASELINE_PROTOCOL_FILES = [
+    "PREREG_WEAREC_BASELINE_V1.md",
+    "_bestrec_run/acquire_wearec_baseline_v1.py",
+    "_bestrec_run/prepare_wearec_baseline_v1.py",
+    "_bestrec_run/wearec_baseline_v1_common.py",
+    "_bestrec_run/test_wearec_baseline_v1.py",
+    "_bestrec_run/run_wearec_baseline_v1.py",
+    "_bestrec_run/eval_wearec_baseline_v1.py",
+    "_bestrec_run/run_wearec_campaign_v1.py",
+    "_bestrec_run/adjudicate_wearec_baseline_v1.py",
+    "_bestrec_run/wearec_baseline_v1_catalog_manifest.json",
+    "_bestrec_run/wearec_baseline_v1_selection.json",
+    "_bestrec_run/wearec_baseline_v1_adjudication.json",
+]
 
 
 def sha(p, _bufsz=1 << 20):
@@ -586,7 +600,8 @@ def regen(m):
                 m["protocol_code"][_t] = {"sha256": sha_norm(_gap)}
     for _t in (FIR_CONTROL_PROTOCOL_FILES + FIR_POINTWISE_PROTOCOL_FILES
                + FIR_EFFICIENCY_ML1M_PROTOCOL_FILES
-               + FIR_PROSPECTIVE_STAGE_A_PROTOCOL_FILES):
+               + FIR_PROSPECTIVE_STAGE_A_PROTOCOL_FILES
+               + WEAREC_BASELINE_PROTOCOL_FILES):
         _gap = os.path.join(ROOT, _t.replace("/", os.sep))
         if os.path.exists(_gap) and _t not in m["protocol_code"]:
             m["protocol_code"][_t] = {"sha256": sha_norm(_gap)}

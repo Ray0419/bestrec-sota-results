@@ -142,6 +142,8 @@ H10_BANNED = ("external auditor", "exactly the commit carrying",
               # audit 16:51 second pass (isolation-family residue):
               "single-lever", "per-lever", "dissociat",
               "toggling one named lever", "filter's share", "filter’s share")
+H10_BANNED += ("closes the paper's prospective-evidence gap",
+               "immutable READY/evaluation seals", "first endpoint reader")
 H10_BANNED_RE = (r"residual[^.\n]{0,60}content component",)
 # Audit 2026-07-27: the md/TeX mirror drifted and silently restored stale
 # attribution, inference labels, counts, and theorem numbering.

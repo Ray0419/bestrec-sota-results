@@ -135,6 +135,7 @@ FIR_PROSPECTIVE_STAGE_A_PROTOCOL_FILES = [
     "_bestrec_run/adjudicate_fir_prospective_sw_v2.py",
     "FIR_PROSPECTIVE_SW_V2_INTEGRITY.md",
     "PREREG_FIR_PROSPECTIVE_SW_V3.md",
+    "FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md",
     "_bestrec_run/fir_prospective_sw_v3_common.py",
     "_bestrec_run/fir_prospective_sw_v3_environment.json",
     "_bestrec_run/run_sasrec_sbert_software_v3_frozen.py",

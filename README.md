@@ -2,7 +2,7 @@
 
 **A narrow modular contribution on Amazon Reviews 2023, with outcome-known mechanism studies and an artifact-gated audit trail.**
 
-This repository is the working artifact repository for the manuscript (ACM TORS submission format; **public** — the 18 split CSVs, four text caches, 107 TFV2 per-user sidecars, and 144 FIR-control final-evaluation/sidecar/checkpoint files are deposited as hash-manifested release assets; `bootstrap_public_clone.py` reconstructs a fresh clone's full evidence boundary):
+This repository is the working artifact repository for the manuscript (ACM TORS submission format; **public** — 407 release-only assets totaling 9,489,409,339 bytes, including the Software V3 endpoint/sidecar/checkpoint set, are deposited as hash-manifested release assets; `bootstrap_public_clone.py` reconstructs a fresh clone's full evidence boundary):
 code, pre-declarations, results of record, provenance manifests, the fail-closed build
 gate, and the full adversarial audit chain. The canonical paper is
 [`PAPER_SUBMISSION.md`](PAPER_SUBMISSION.md) (reader PDF: `PAPER_SUBMISSION.pdf`); the
@@ -17,7 +17,7 @@ uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --s
 ```
 
 This runs, fail-closed: the bitwise HSTU core-block parity test → the artifact-graph build
-(**all 195 artifact-gated cells recomputed from source artifacts**; exits
+(**all 196 artifact-gated cells across 20 families recomputed from source artifacts**; exits
 nonzero on any mismatch, untraceable cell, or missing claim family) → release-manifest hash
 verification (the live gate reports the authoritative file count) → the pre-declared Musical_Instruments gate adjudicator → the TFV2 repaired-estimand adjudicator (outcome-visible — §5.3 chronology) → **the
 Office V3 adjudicator (counted; the build fails unless the campaign verdict is PASS)** →
@@ -46,7 +46,9 @@ blobs (`DOI_DEPOSIT_INSTRUCTIONS.md` has the full rule).
   [+0.005849,+0.006450]). Active controls show that trainable causal residual arms beat frozen
   identity. A subsequent equal-parameter current-position-only placebo is not detectably
   different from identity (−0.000069 [−0.000200,+0.000061]), while learned FIR beats it
-  (+0.001941 [+0.001788,+0.002095]). This supports temporal access relative to that placebo;
+  (+0.001941 [+0.001788,+0.002095]). This discriminates learned FIR from that compound placebo
+  but does not isolate temporal access because basis/rank, activation, channel mixing, and
+  temporal access change together;
   the competitive shared causal filter prevents per-channel-tap attribution. These are
   outcome-known internal mechanism estimates, never an independent-confirmation or comparator claim.
 - **Pre-declared fresh-seed hybrid (E-F, 2026-07-23):** late z-score fusion with train-only EASE (Steck 2019) lifted test NDCG@10 on all three categories tested (MI +0.0024, IS +0.0026, VG +0.0032; ordinary paired 95% CIs with Holm-adjusted decisions, fresh seeds 20260721-25); the MI fused five-seed mean 0.04399 exceeds the published single-run 0.0406 (point-estimate comparison, environment-caveated; see PAPER_SUBMISSION.md §5.7).
@@ -77,11 +79,11 @@ campaign above is a separate pre-declaration that passed under its frozen wordin
 
 ## Releases
 
-- **`v1.2.0-deposit` (intended candidate; not yet tagged or published).** The current 820-entry
+- **`v1.2.0-deposit` (intended candidate; not yet tagged or published).** The current 886-entry
   candidate bundle is prepared locally and explicitly refuses a normal/tagged build while
   creator placeholders remain. `v1.1.11-deposit` is a historical snapshot and is stale
   relative to the present manuscript; it must not be uploaded as current.
-- **`v0.9-audit-evidence`** — the mutable audit-evidence store used by the bootstrap path, not the final archival deposit. It contains the pinned-parity files/ZIP, `RELEASE_MANIFEST.json`, all 21 split CSVs, six text/cache-map assets, 107 TFV2 per-user sidecars, 144 FIR-control endpoint/sidecar/checkpoint files, and 72 FIR-pointwise endpoint/sidecar/checkpoint files. The authoritative current bootstrap inventory is **359 release-only assets / 8,375,684,035 bytes (about 7.80 GiB)**. The earlier 354-asset boundary, including all 72 pointwise assets, was downloaded and hash-verified in a fresh HTTPS clone on 2026-07-28; the five additional outcome-free Software preparation assets are public and locally manifest-verified, and will receive the same fresh-clone replay in the final post-adjudication ritual. Fresh clones: `python bootstrap_public_clone.py` before the strict gate; `git submodule update --init` is optional because the parity test can hydrate the exact pinned HSTU reference commit into its isolated cache.
+- **`v0.9-audit-evidence`** — the mutable audit-evidence store used by the bootstrap path, not the final archival deposit. It contains the pinned-parity files/ZIP, all 21 split CSVs, six text/cache-map assets, 107 TFV2 per-user sidecars, 144 FIR-control endpoint/sidecar/checkpoint files, 72 FIR-pointwise endpoint/sidecar/checkpoint files, and 48 Software V3 endpoint/sidecar/checkpoint files. The authoritative current bootstrap inventory is **407 release-only assets / 9,489,409,339 bytes (about 8.84 GiB)**. A fresh HTTPS clone downloaded and raw-hash-verified all 407 assets with zero local reuse on 2026-07-28, and the public `RELEASE_MANIFEST.json` was uploaded last. Fresh clones: `python bootstrap_public_clone.py` before the strict gate; `git submodule update --init` is optional because the parity test can hydrate the exact pinned HSTU reference commit into its isolated cache.
 - **`bestrec-raw-records-v1`** — the historical LC2C project's raw records (see `README_LC2C_HISTORICAL.md`).
 
 Data: the Amazon Reviews 2023 dataset (McAuley Lab) is **not redistributed**; derived

@@ -216,6 +216,7 @@ V12_ADDITIONS = [
     "PREREG_FIR_CANONICAL_BREADTH_ERRATA.md",
     "PREREG_FIR_CONTROLS.md",
     "PREREG_FIR_CONTROLS_ERRATA.md",
+    "FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md",
     "PREREG_TAIL_FIR_V2.md",
     "PREREG_EE_V2.md",
     "bootstrap_public_clone.py",
@@ -336,11 +337,11 @@ Canonical verification command:
 
     python _bestrec_run/rebuild_hstu_submission.py --strict
 
-It runs fail-closed: bitwise HSTU core-block parity; the strict 195-cell,
-18-family artifact graph; release-manifest verification; the governed MI,
+It runs fail-closed: bitwise HSTU core-block parity; the strict 196-cell,
+20-family artifact graph; release-manifest verification; the governed MI,
 TFV2, COUNTED Office_Products V3, FIR-breadth adjudicator, canonical FIR,
 active-control, and reproduction checks; the permanent Office V1 VOID; the
-16-case FIR causality test; and deterministic claim-to-artifact-map verification.
+18-case FIR causality test; and deterministic claim-to-artifact-map verification.
 
 New in the v1.2.0 candidate: canonical nonsingular FIR and breadth campaigns,
 active controls, TFV2 repaired-estimand evidence, learned-tap/frequency-response

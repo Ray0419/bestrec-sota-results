@@ -111,15 +111,16 @@ CLAIMS = [
     },
     {
         "id": "C11",
-        "claim": "Prospective Software FIR validation",
-        "boundary": "Pre-declared matched-initialization learned-minus-identity practical-effect result under local same-user operational custody; same investigator, same code lineage, and same Amazon family, so not independent confirmation or cross-domain replication.",
+        "claim": "Frozen Software FIR robustness result",
+        "boundary": "Pre-declared matched-initialization learned-minus-identity practical-effect result, classified outcome-known/exploratory because prior V2 validation-output non-visibility is not independently established; local same-user custody, same investigator, same code lineage, and same Amazon family, so not independent confirmation or cross-domain replication.",
         "tables": ["fir_prospective_sw_v3"],
         "files": ["PREREG_FIR_PROSPECTIVE_SW_V3.md",
                   "_bestrec_run/fir_prospective_sw_v3_common.py",
                   "_bestrec_run/run_fir_prospective_sw_v3.py",
                   "_bestrec_run/eval_fir_prospective_sw_v3.py",
                   "_bestrec_run/adjudicate_fir_prospective_sw_v3.py",
-                  "_bestrec_run/fir_prospective_sw_v3_adjudication.json"],
+                  "_bestrec_run/fir_prospective_sw_v3_adjudication.json",
+                  "FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md"],
     },
 ]
 
@@ -129,7 +130,7 @@ EXPECTED_EVIDENCE = {
     "fir_canonical_breadth": {"exploratory"},
     "fir_controls": {"exploratory"},
     "fir_pointwise": {"exploratory"},
-    "fir_prospective_sw_v3": {"confirmatory"},
+    "fir_prospective_sw_v3": {"exploratory"},
     "tableV2conf": {"confirmatory"},
     "office_v3": {"confirmatory"},
     "office_confirmation": {"exploratory"},

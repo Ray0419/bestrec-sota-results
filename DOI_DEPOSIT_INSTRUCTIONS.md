@@ -6,7 +6,7 @@ existing Git tag, GitHub release, archive record, or DOI. The historical
 current manuscript. Do not upload or retag it as current.
 
 The deterministic candidate bundle is
-`_release/bestrec_deposit_v1.2.0.zip` (885 entries: 883 tracked
+`_release/bestrec_deposit_v1.2.0.zip` (886 entries: 884 tracked
 payloads plus `README_DEPOSIT.txt` and `SHA256SUMS.txt`) and has an adjacent
 `.sha256` sidecar. Rebuild it with:
 

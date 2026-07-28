@@ -122,9 +122,9 @@ def main():
                         and float(primary["p_two_sided"]) < float(rec["alpha"]))
             except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError):
                 good = False
-            print("--- Software V3 prospective recorded adjudication "
-                  "(committed first-reader verdict; graph recomputes all endpoints): "
-                  f"{'OK' if good else 'FAILED (verdict not confirmed)'}")
+            print("--- Software V3 recorded protocol verdict "
+                  "(outcome-known/exploratory manuscript class; graph recomputes all endpoints): "
+                  f"{'OK' if good else 'FAILED (verdict not reproduced)'}")
             return good
         ok &= verify_recorded_sw_v3_verdict()
         ok &= run_verdict("E-F HYBRID_V1 fresh-seed adjudication (pre-declared; "

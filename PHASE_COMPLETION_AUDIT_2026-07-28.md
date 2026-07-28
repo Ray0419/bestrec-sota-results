@@ -29,7 +29,7 @@ deposit access.
 
 | phase | status | current evidence |
 |---|---|---|
-| 1. Fail-closed artifact gate | **COMPLETE** | `rebuild_hstu_submission.py --strict` calls the strict table graph, manifest verification, governed adjudicators, HSTU parity, FIR causality, and the generated claim-to-artifact map. The graph currently recomputes 195 active paper cells across 19 families with zero mismatch/untraceable cells. |
+| 1. Fail-closed artifact gate | **COMPLETE** | `rebuild_hstu_submission.py --strict` calls the strict table graph, manifest verification, governed adjudicators, HSTU parity, FIR causality, and the generated claim-to-artifact map. The graph currently recomputes 196 active paper cells across 20 families with zero mismatch/untraceable cells. |
 | 2. Remove or rerun old Table 1a | **COMPLETE (safe-removal path)** | Unretained v1 SASRec rows are excluded from the paper claim set and retained only as explicitly `RETIRED` provenance. No claim depends on them. |
 | 3. Re-adjudicate Office honestly | **COMPLETE** | Office V1 remains permanently `VOID`. The separately pre-declared V3 campaign passes only the narrow environment-caveated, per-category point-estimate rule; it is not promoted to paired, distributional, or SOTA evidence. |
 | 4. Bind Office to the artifact graph | **COMPLETE** | Office V1 and V3 cells, verdicts, external constants, and manuscript wording are graph-backed and drift-gated. |
@@ -46,7 +46,7 @@ deposit access.
 |---|---|---|
 | Canonical nonsingular FIR | **COMPLETE** | Canonical implementation, matched initialization, preregistration, and MI result are integrated. |
 | Canonical breadth transfer | **COMPLETE** | Industrial_and_Scientific and CDs_and_Vinyl breadth results and adjudication are integrated with outcome-visible wording. |
-| Active controls | **COMPLETE** | Fixed, shared, and parameter-matched nonlinear causal controls are integrated. A later equal-parameter current-position-only placebo is also complete: learned FIR beats it while its identity contrast spans zero (`POINTWISE-FIR-DISCRIMINATED`). This supports temporal access relative to that placebo; the competitive shared causal filter still prevents per-channel-tap attribution. |
+| Active controls | **COMPLETE** | Fixed, shared, and parameter-matched nonlinear causal controls are integrated. A later equal-parameter current-position-only placebo is also complete: learned FIR beats it while its identity contrast spans zero (`POINTWISE-FIR-DISCRIMINATED`). This discriminates learned FIR from that compound placebo but does not isolate temporal access; the competitive shared causal filter still prevents per-channel-tap attribution. |
 | Manuscript rewrite | **COMPLETE** | The paper is organized as a modular-contribution study with the audit apparatus and negative results preserved; the journal-format length is deliberate rather than a conference-short target. |
 | Causality unit test | **COMPLETE** | `test_fir_causality.py` is in the strict chain and checks 18/18 future-perturbation cases, including the pointwise path and FIR positive control. |
 | Tap/frequency-response diagnostic | **COMPLETE** | Deterministic learned-tap and magnitude-response data/figure are generated from bound checkpoints and included as descriptive mechanism evidence. |

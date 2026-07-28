@@ -28,3 +28,4 @@
 # SHA-256 recorded before the one-shot final evaluation.
 _bestrec_run/results_Musical_Instruments_FIRCTRL_*.json -text whitespace=-cr-at-eol
 _bestrec_run/results_Musical_Instruments_FIRPOINTV1_*.json -text whitespace=-cr-at-eol
+_bestrec_run/results_MI_V2_ls02_filter16_seed20260608.json -text whitespace=-cr-at-eol

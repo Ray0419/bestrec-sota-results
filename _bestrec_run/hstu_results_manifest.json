@@ -17787,9 +17787,9 @@
   {
    "cell_id": "firprosp.swv3.learned_identity",
    "table_id": "fir_prospective_sw_v3",
-   "row_label": "Prospective Software FIR: learned-identity",
+   "row_label": "Frozen Software FIR robustness: learned-identity",
    "metric": "paired 8-seed delta sealed final-test NDCG@10",
-   "evidence_class": "confirmatory",
+   "evidence_class": "exploratory",
    "status": "OK",
    "source_files": [
     "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261301.finaleval.json",
@@ -17857,6 +17857,7 @@
     "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261307.finaleval.users.npz",
     "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261308.finaleval.users.npz",
     "_bestrec_run/fir_prospective_sw_v3_adjudication.json",
+    "FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md",
     "_bestrec_run/fir_prospective_sw_v3_attempt.json",
     "_bestrec_run/fir_prospective_sw_v3_ready.json",
     "_bestrec_run/fir_prospective_sw_v3_endpoints_complete.json",
@@ -17951,7 +17952,7 @@
      "mode": "count"
     }
    ],
-   "notes": "PREREG_FIR_PROSPECTIVE_SW_V3 was frozen and pushed before launch. All 16 training runs selected checkpoints on validation only with no training-time TEST scores; the committed driver then created immutable READY and endpoint seals, performed one final TEST evaluation per selected checkpoint, and immediately invoked the committed first-reader adjudicator. The transductive all-split item catalog was explicitly predeclared. This is a prospective same-investigator, same-code-lineage, same-Amazon-family Software attempt under local same-user custody, not external escrow, independent confirmation, or cross-domain replication. Frozen verdict SW-V3-PRACTICAL-POS.",
+   "notes": "PREREG_FIR_PROSPECTIVE_SW_V3 was frozen and pushed before launch. All 16 training runs selected checkpoints on validation only with no training-time TEST scores; the committed driver then created exclusive-created, hash-linked local READY and endpoint seals, performed one final TEST evaluation per selected checkpoint, and invoked the protocol-designated adjudicator. The transductive all-split item catalog was explicitly predeclared. Human non-visibility of earlier V2 validation output cannot be established from tracked evidence, so this same-investigator, same-code-lineage, same-Amazon-family Software attempt is classified outcome-known/exploratory robustness under local same-user custody, not external escrow, independent confirmation, or cross-domain replication. The frozen tag also has a disclosed raw-line-ending reference-hash replay defect; it does not affect endpoint arithmetic. Frozen verdict SW-V3-PRACTICAL-POS.",
    "recomputed": {
     "mean": 0.005061858156165869,
     "sd": 0.0005637788958622757,

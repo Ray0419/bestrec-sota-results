@@ -2260,7 +2260,7 @@ def build_spec():
                       8, "exploratory", seeds=FIRPOINT_SEEDS,
                       notes=FIRPOINT_NOTE))
 
-    # ------- fir_prospective_sw_v3: prospective same-user Software attempt -------
+    # ------- fir_prospective_sw_v3: frozen same-user Software robustness attempt -------
     SWV3_SEEDS = list(range(20261301, 20261309))
     SWV3_ADJ = BR + "fir_prospective_sw_v3_adjudication.json"
     def swv3_files(arm, suffix):
@@ -2274,22 +2274,25 @@ def build_spec():
         swv3_sources += swv3_files(arm, ".finaleval.started.json")
         swv3_sources += swv3_files(arm, ".finaleval.users.npz")
     swv3_sources += [SWV3_ADJ,
+                     "FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md",
                      BR + "fir_prospective_sw_v3_attempt.json",
                      BR + "fir_prospective_sw_v3_ready.json",
                      BR + "fir_prospective_sw_v3_endpoints_complete.json",
                      BR + "fir_prospective_sw_v3_status.json"]
     SWV3_NOTE = ("PREREG_FIR_PROSPECTIVE_SW_V3 was frozen and pushed before launch. "
                  "All 16 training runs selected checkpoints on validation only with no "
-                 "training-time TEST scores; the committed driver then created immutable "
-                 "READY and endpoint seals, performed one final TEST evaluation per "
-                 "selected checkpoint, and immediately invoked the committed first-reader "
-                 "adjudicator. The transductive all-split item catalog was explicitly "
-                 "predeclared. This is a prospective same-investigator, same-code-lineage, "
-                 "same-Amazon-family Software attempt under local same-user custody, not "
-                 "external escrow, independent confirmation, or cross-domain replication. "
+                 "training-time TEST scores; the committed driver then created exclusive-created, "
+                 "hash-linked local READY and endpoint seals, performed one final TEST evaluation "
+                 "per selected checkpoint, and invoked the protocol-designated adjudicator. The "
+                 "transductive all-split item catalog was explicitly predeclared. Human non-visibility "
+                 "of earlier V2 validation output cannot be established from tracked evidence, so this "
+                 "same-investigator, same-code-lineage, same-Amazon-family Software attempt is classified "
+                 "outcome-known/exploratory robustness under local same-user custody, not external escrow, "
+                 "independent confirmation, or cross-domain replication. The frozen tag also has a disclosed "
+                 "raw-line-ending reference-hash replay defect; it does not affect endpoint arithmetic. "
                  "Frozen verdict SW-V3-PRACTICAL-POS.")
     C.append(cell("firprosp.swv3.learned_identity", "fir_prospective_sw_v3",
-                  "Prospective Software FIR: learned-identity",
+                  "Frozen Software FIR robustness: learned-identity",
                   "paired 8-seed delta sealed final-test NDCG@10",
                   swv3_sources, "fir_prospective_sw_v3_contrast",
                   {"learned": swv3_learned, "identity": swv3_identity,
@@ -2303,7 +2306,7 @@ def build_spec():
                    chk("learned_mean", 0.120200, 6),
                    chk("identity_mean", 0.115138, 6),
                    chk("practical_pass", 1, mode="count")],
-                  8, "confirmatory", seeds=SWV3_SEEDS, notes=SWV3_NOTE))
+                  8, "exploratory", seeds=SWV3_SEEDS, notes=SWV3_NOTE))
 
     # ------- tfv2: pre-declared repaired-estimand campaign (PREREG_TAIL_FIR_V2) -------
     # Independent 8-vs-8 arms, but outcome-visible: the first independently verifiable

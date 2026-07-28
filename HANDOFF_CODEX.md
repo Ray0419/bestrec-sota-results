@@ -33,9 +33,12 @@ untracked QA/tmp files.
 
 Integration verification at handoff: both PDFs build and pass hygiene scans;
 targeted visual inspection is clean; the 908-entry unpublished deposit candidate
-passes its consistency gate. The final release ritual is commit → strict clean
-replay → push → upload and download-verify `RELEASE_MANIFEST.json`. The only
-submission blocker outside this phase remains the human author/byline metadata.
+passes its consistency gate. Commit `b3a603bc` passed the full hydrated pristine-
+clone replay, was pushed, and its release manifest was uploaded last; the
+downloaded manifest matched SHA-256
+`fc2ea08e5291b45c40460bf2e3c3649238f63c00e8b257b0fde6b8829394717b`.
+The phase heartbeat is paused. The only submission blocker outside this phase
+remains the human author/byline metadata.
 
 ---
 

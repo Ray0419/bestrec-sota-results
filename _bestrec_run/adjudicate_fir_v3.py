@@ -150,7 +150,7 @@ def main():
           "PREREG_FIR_V3.md §6)")
 
     outp = os.path.join(HERE, "fir_v3_adjudication.json")
-    with open(outp, "w", encoding="utf-8") as f:
+    with open(outp, "w", encoding="utf-8", newline="\n") as f:
         json.dump({"verdict": verdict, "margin": MARGIN, "alpha": ALPHA,
                    "contrasts": rows, "per_arm": vals,
                    "paired_descriptive": {"mean": md, "sd": sdd},

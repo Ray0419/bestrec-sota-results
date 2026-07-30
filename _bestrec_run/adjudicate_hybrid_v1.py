@@ -148,7 +148,7 @@ def main():
         print("  [W-H-ENS] ensemble file absent (secondary; noted)")
 
     outp = os.path.join(HERE, "hybrid_v1_adjudication.json")
-    with open(outp, "w", encoding="utf-8") as fo:
+    with open(outp, "w", encoding="utf-8", newline="\n") as fo:
         json.dump({"verdicts": verdicts, "margin": MARGIN, "alpha": ALPHA,
                    "rows": rows, "published": PUB, "ensemble_mi": ens},
                   fo, indent=2)

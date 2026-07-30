@@ -4148,7 +4148,11 @@ def write_manifest(path):
         "paths_relative_to": "repository root",
         "cells": cells,
     }
-    with open(path, "w", encoding="utf-8") as f:
+    # Force repository-policy LF bytes on Windows as well as POSIX.  The strict
+    # submission gate compares the independently regenerated artifact byte for
+    # byte, so platform-default newline translation would make a pristine
+    # Windows checkout fail even when the JSON is semantically identical.
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
         json.dump(manifest, f, indent=1, ensure_ascii=False)
     print(f"wrote {path} ({len(cells)} cells)")
 
@@ -4270,7 +4274,7 @@ def verify(manifest_path, tables_path, submission=False):
         "paper_mismatch_cells": mismatch_cells,
         "tables": tables,
     }
-    with open(tables_path, "w", encoding="utf-8") as f:
+    with open(tables_path, "w", encoding="utf-8", newline="\n") as f:
         json.dump(out, f, indent=1, ensure_ascii=False)
     # console report
     print(f"mode                : {out['mode']}")

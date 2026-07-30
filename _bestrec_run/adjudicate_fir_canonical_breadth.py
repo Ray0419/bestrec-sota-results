@@ -208,7 +208,7 @@ def main():
         return 2
 
     outp = os.path.join(HERE, "fir_canonical_breadth_adjudication.json")
-    with open(outp, "w", encoding="utf-8") as f:
+    with open(outp, "w", encoding="utf-8", newline="\n") as f:
         json.dump({"verdict": verdict, "alpha": ALPHA, "kernel": KERNEL,
                    "epochs": EPOCHS, "seeds": list(SEEDS),
                    "per_category": per_cat, "holm": holm, "passed": passed,

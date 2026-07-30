@@ -283,7 +283,7 @@ def main():
     }
     out = HERE / "fir_pointwise_v1_adjudication.json"
     tmp = out.with_suffix(".json.tmp")
-    with open(tmp, "w", encoding="utf-8") as f:
+    with open(tmp, "w", encoding="utf-8", newline="\n") as f:
         json.dump(artifact, f, indent=2, allow_nan=False)
     os.replace(tmp, out)
     print("wrote", out)

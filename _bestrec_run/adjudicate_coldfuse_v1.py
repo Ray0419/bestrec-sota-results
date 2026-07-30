@@ -348,7 +348,7 @@ def main():
         print(f"SENSITIVITY VERDICT {c}: {verdicts[c]}")
 
     outp = os.path.join(HERE, "coldfuse_v1_adjudication.json")
-    with open(outp, "w", encoding="utf-8") as f:
+    with open(outp, "w", encoding="utf-8", newline="\n") as f:
         json.dump({"classification": CLASSIFICATION,
                    "adjudicator_versions": {
                        "v1_original_aslaunched": "7931e683f53596042a726b93",

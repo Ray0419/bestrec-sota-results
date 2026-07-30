@@ -275,7 +275,7 @@ def main():
     }
     out_path = HERE / "fir_controls_adjudication.json"
     tmp = out_path.with_suffix(".json.tmp")
-    with open(tmp, "w", encoding="utf-8") as f:
+    with open(tmp, "w", encoding="utf-8", newline="\n") as f:
         json.dump(out, f, indent=2, allow_nan=False)
     os.replace(tmp, out_path)
     print("wrote", out_path)

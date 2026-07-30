@@ -5,7 +5,7 @@
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "67b5ad59cbd4f80928bcd806dd2902958773495a",
+  "git_commit": "2a0130ba10d8da25b156dfdab9f208c244e67cf1",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -135,7 +135,7 @@
       "sha256": "0eaad74a57698a878e5aaa2e7d0e314232b53759c4c449b509b34867cb9d18bc"
     },
     "_bestrec_run/build_hstu_tables.py": {
-      "sha256": "7d3b5be810a4dd1daa2e6bee1aa4192cb234e90b5df178789c3bece2f70af36f"
+      "sha256": "d91956e4a8ba754924c8d08d70e7a3266892963ce4328d0b979fa7da602fc592"
     },
     "_bestrec_run/test_hstu_parity.py": {
       "sha256": "1656c393adaafb159fd48338b5bced547c11a1540a2d0f09ef7a800474d53bdd"
@@ -1024,32 +1024,32 @@
       "bytes": 5517
     },
     "PAPER_SUBMISSION.md": {
-      "sha256": "1ec03987a03082e72489593abeaeb891372f9d634a9491119d6e74aac8bb3830",
-      "bytes": 173243
+      "sha256": "bf9a46a7818e92bdb494271e09d50e0ea64b81b92fec2679eff783d368d8bb96",
+      "bytes": 174601
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "566de0e9f514e35a704fdf060537ba7e43266e1b12b363d2edee1781c295f3d7",
-      "bytes": 1612161
+      "sha256": "4afbbc853a35254f78d55913d28d88910ff66ec24b4ae853bc7d158474aac551",
+      "bytes": 1614336
     },
     "PAPER_DRAFT.md": {
-      "sha256": "83300c5a6fa08b7ea0934f03f874f36b32c54eaa35c69d9cbf554691e3055a6f",
-      "bytes": 234486
+      "sha256": "200427a21e31fba479d3e2a5247330b4e4822719fdb2573880b178031f6e9310",
+      "bytes": 234696
     },
     "CANONICAL_SUBMISSION.md": {
-      "sha256": "0cc70c45a77b0e4ec928028a74ee24627cae307992a841696fc30fdf93b70228",
-      "bytes": 19009
+      "sha256": "6ba5931fefedf77fae9f7558d97620f838ee4de408f95020b36a46fd2d1a714c",
+      "bytes": 19597
     },
     "AUDIT_RESPONSE_2026-07-27.md": {
-      "sha256": "b3c7a7a9da91bb691af56e4c866a841d936183dc7c6c67f071be648cbb93aa6c",
-      "bytes": 31517
+      "sha256": "461118afc1a8950b622b637ae8626e6db7d50ffd332d1f0fa50e03da1a33f82f",
+      "bytes": 34091
     },
     "COVER_LETTER_TORS.md": {
       "sha256": "9a791f5ad396254c896d8fd340d910ca9199f57c315bdfd3b04b1a48fae1300f",
       "bytes": 4171
     },
     "CLAIM_ARTIFACT_MAP.md": {
-      "sha256": "03c853ae270365b75baffefe9b7cc9e783b69694e875830c952fdb56c545f1f6",
-      "bytes": 17385
+      "sha256": "a6ab2eb9c718a940ab1033e8f8a04fc037e1d80ba03e8c8c078c4f535229c209",
+      "bytes": 17520
     },
     "PHASE_COMPLETION_AUDIT_2026-07-28.md": {
       "sha256": "580a075a1a5a2b66dacb8da736746fdf86af5e28026bc5d6823a571bf0592cb8",
@@ -1088,12 +1088,12 @@
       "bytes": 3435
     },
     "_bestrec_run/build_claim_artifact_map.py": {
-      "sha256": "58b7e2d3687f075613e73a8f05fb3b134173c1d7cfca4fbe99a9bf867b99eae0",
-      "bytes": 18287
+      "sha256": "c28b0e173c06011edcfd0518ee1314d48f2adb10f8b44dd91b3159a6b17befa6",
+      "bytes": 18422
     },
     "_bestrec_run/build_table0_claim_ledger.py": {
-      "sha256": "992895115c823fcd017f12224d6e0fa483b110efc3bff4a135e216198f069442",
-      "bytes": 8239
+      "sha256": "b9020b786a2ee10b3b5ce6beeca8b57669a14e04fcb96eb2e8dcc27ce8a2c4eb",
+      "bytes": 8268
     },
     "_bestrec_run/build_deposit_bundle.py": {
       "sha256": "9e958c80aa40b79b54da47e343c6a6cefa9ea8f394cd9a623d8001627d84ba0c",
@@ -1120,8 +1120,8 @@
       "bytes": 44980
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "71daf9e3995430039b08428189db160b057e578d23a36b33f24ba0e065117bab",
-      "bytes": 513008
+      "sha256": "7c3bf4a3d6687d71ec49ade9873084947eb7f64bb0c32165471f6c9013153d97",
+      "bytes": 515244
     },
     "paper_tex/build.ps1": {
       "sha256": "fe9f708fe0d190fae02b11af661b03f878606bc71bd520636320e9ebb3e7c756",
@@ -1245,7 +1245,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.2.0-deposit",
-  "hash_parent_commit": "67b5ad59cbd4f80928bcd806dd2902958773495a",
+  "hash_parent_commit": "2a0130ba10d8da25b156dfdab9f208c244e67cf1",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",

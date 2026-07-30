@@ -67,7 +67,7 @@ def build() -> str:
         ("| **AlphaFuse-style text+ID package** — Hu et al. (2025) "
          "| Official upstream AlphaFuse/SASRec classes under one frozen configuration, with MiniLM-384 substituted for the published text vectors and the paper's complete-history-masked evaluator "
          f"| AlphaFuse-style NDCG@10 {eev3['alphafuse_ndcg_mean']:.6f} "
-         f"[{eev3['alphafuse_ndcg_ci_lo']:.6f},{eev3['alphafuse_ndcg_ci_hi']:.6f}] versus repository SASRec-ID "
+         f"[{eev3['alphafuse_ndcg_ci_lo']:.6f},{eev3['alphafuse_ndcg_ci_hi']:.6f}] versus zero-initialized upstream-class SASRec-ID control "
          f"{eev3['sasrec_id_ndcg_mean']:.6f}; delta {signed(eev3['delta_vs_sasrec_id'])} "
          f"[{signed(eev3['delta_vs_sasrec_id_ci_lo'])},{signed(eev3['delta_vs_sasrec_id_ci_hi'])}], but "
          f"{signed(eev3['delta_vs_existing_reference'])} versus the existing {eev3['existing_reference_mean']:.6f} reference. "

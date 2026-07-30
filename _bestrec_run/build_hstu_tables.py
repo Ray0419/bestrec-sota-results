@@ -1039,7 +1039,7 @@ def rule_ee_v3_aggregate(p):
                 f"assessment_EEV3_{arm}_seed{seed}.finaleval.users.npz"
                 or not re.fullmatch(r"[0-9a-f]{64}", str(row.get("endpoint_sha256", "")))
                 or not re.fullmatch(r"[0-9a-f]{64}", str(row.get("sidecar_sha256", "")))):
-            raise ValueError("E-E V3 endpoint-ledger schema/hash drift")
+            raise ValueError("E-E V3 endpoint-ledger schema/hash-string drift")
         endpoint_hashes.add(row["endpoint_sha256"])
         sidecar_hashes.add(row["sidecar_sha256"])
     if len(endpoint_hashes) != 16 or len(sidecar_hashes) != 16:
@@ -1625,7 +1625,7 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "fir_prospective_sw_v3_contrast": "prospective matched-init paired learned-minus-identity sealed one-shot Software TEST NDCG@10, with validation-only checkpoint selection, state and evidence hashes, statistics, practical threshold, and committed adjudicator verdict independently cross-checked",
         "fir_efficiency_ml1m_v1_aggregate": "prospectively frozen same-investigator MovieLens 1M aggregate adjudication: recompute seed-vector means, paired intervals, Holm decisions, noninferiority bounds, and figure-resource rows; private record-level endpoints are not redistributable and are not independently replayed by the public graph",
         "wearec_v1_aggregate": "prospectively frozen outcome-known same-investigator WEARec aggregate adjudication: verify the six existing reference artifacts and recompute released NDCG@10 seed-vector means, t intervals, and the descriptive unpaired Welch contrast; private sealed endpoints and per-user sidecars are not independently replayed by the public graph",
-        "ee_v3_aggregate": "prospectively frozen outcome-known same-investigator AlphaFuse-style aggregate adjudication: verify the six existing reference artifacts; recompute released NDCG@10/HR@10/MRR seed summaries and descriptive independent-arm Welch contrasts; validate fixed-dataset sensitivity metadata, resource summaries, and the private endpoint/sidecar hash ledger; private endpoint extraction and record-level bootstrap resampling are not independently replayed by the public graph",
+        "ee_v3_aggregate": "prospectively frozen outcome-known same-investigator AlphaFuse-style aggregate adjudication: verify the six existing reference artifacts; recompute released NDCG@10/HR@10/MRR seed summaries and descriptive independent-arm Welch contrasts; validate fixed-dataset sensitivity metadata and resource summaries; check the private endpoint/sidecar ledger's shape, 64-hex syntax, and uniqueness without reading or hashing the private files; private endpoint extraction and record-level bootstrap resampling are not independently replayed by the public graph",
         "pct_of_paired": "100 * mean per-seed (a-b) / mean(b), best_test[{m}]",
         "pct_change": "100 * (mean(a)/denom - 1), best_test[{m}]",
         "share_of_lift": "100 * (mean(x)-mean(base)) / (mean(top)-mean(base))",
@@ -3122,27 +3122,31 @@ def build_spec():
         BR + "adjudicate_ee_v3.py",
     ]
     EEV3_NOTE = (
-        "PREREG_EE_V3 and the designated first-reader adjudicator were committed "
-        "and pushed before launch. Sixteen fresh-seed trainings selected checkpoints "
-        "with complete-history-masked VALID NDCG@10; TEST remained unread until all "
-        "16 training bundles were READY, followed by 16 sealed one-shot evaluations. "
+        "PREREG_EE_V3 and its designated adjudicator were committed and pushed before "
+        "launch. Prelaunch preparation opened the outcome-known combined TRAIN/VALID/TEST "
+        "export and retained only TRAIN histories and VALID targets in the training input. "
+        "Sixteen fresh-seed trainings selected checkpoints with complete-history-masked "
+        "VALID NDCG@10 without loading, hashing, or scoring TEST; after all 16 training "
+        "bundles were READY, 16 sealed one-shot evaluations followed. "
         "The unchanged committed adjudicator returned EEV3-REPORTABLE-OUTCOME-KNOWN. "
         "The AlphaFuse-style MiniLM representation package scored NDCG@10 0.048273 "
-        "[0.048129, 0.048416] versus 0.039024 [0.038106, 0.039941] for the official-"
-        "repository SASRec ID backbone: descriptive independent-arm Welch delta "
+        "[0.048129, 0.048416] versus 0.039024 [0.038106, 0.039941] for a zero-initialized "
+        "upstream-class SASRec ID control: descriptive independent-arm Welch delta "
         "+0.009249 [+0.008329, +0.010169], p=3.48e-08. It remained below the existing "
         "six-seed full-model reference by -0.019065 [-0.019347, -0.018783]. This is "
         "countable current-comparator evidence under shared data/evaluation and a "
         "frozen configuration, but it is outcome-known, same-investigator, and a "
         "whole-package contrast. It does not reproduce AlphaFuse's published text "
-        "encoder, equalize architecture/text availability/initialization/capacity, "
+        "encoder, test upstream-default normal initialization, equalize architecture/"
+        "text availability/initialization/capacity, "
         "isolate null-space fusion, supply independent confirmation, or support SOTA. "
-        "The public graph recomputes released aggregate arithmetic and validates the "
-        "private endpoint/sidecar hash ledger; it cannot replay private endpoint "
-        "extraction or record-level bootstrap resampling.")
+        "The public graph recomputes released aggregate arithmetic and checks the private "
+        "endpoint/sidecar ledger's schema, 64-hex syntax, and uniqueness; it does not read "
+        "or hash the private files or replay record-level bootstrap resampling. The local "
+        "adjudicator checked the private-file digests.")
     C.append(cell(
         "eev3.aggregate", "ee_v3",
-        "AlphaFuse-style MiniLM package versus repository SASRec ID backbone",
+        "AlphaFuse-style MiniLM package versus zero-initialized upstream-class SASRec ID control",
         "aggregate NDCG@10/HR@10/MRR and descriptive Welch contrasts",
         [EEV3_ADJ] + WEAREC_REFERENCES + EEV3_FROZEN,
         "ee_v3_aggregate",

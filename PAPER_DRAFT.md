@@ -1,7 +1,14 @@
+# HISTORICAL NONCANONICAL WORKING DRAFT — DO NOT SUBMIT
+
+This file is retained for provenance and historical drafting context. The sole live
+authored submission source is `PAPER_SUBMISSION.md`; the ACM/TORS venue mirror is under
+`paper_tex/`. Statements and counts below may be superseded and are not part of the
+current source-parity contract.
+
 # Artifact-Gated Evaluation of Text-Augmented Sequential Recommendation: An FIR-Optimizer Package and a Musical-Instruments Frequency-5 Case Study on Amazon Reviews 2023
 
 
-*Reader edition — rendered from the canonical markdown source. The ACM (TORS) review artifact is `paper_tex/PAPER_TORS.pdf` (see `VENUE_PLAN.md`); venue metadata (CCS concepts, keywords) lives in that artifact.*
+*Historical reader-development edition; noncanonical and not for submission.*
 
 **Authors**: [TBD]
 

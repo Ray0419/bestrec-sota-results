@@ -150,6 +150,12 @@ H10_BANNED_RE = (r"residual[^.\n]{0,60}content component",)
 H10_BANNED += ("supports causal temporal mixing", "causal temporal mixing/activity",
                "Thm 3.1", "Holm-corrected paired t", "190 paper-bound cells",
                "190 reported cells", "17 claim families")
+# Audit 2026-07-30: fail closed on the AlphaFuse chronology, private-ledger,
+# comparator-label, and cross-dataset ethics overclaims corrected in this revision.
+H10_BANNED += ("before any TEST read", "validates all endpoint/sidecar hashes",
+               "validates private endpoint/sidecar hashes",
+               "schema/intervals and endpoint hashes", "repository SASRec-ID",
+               "the data are public, platform-pseudonymized product reviews")
 H10_BANNED_RE += (r"ordinary paired 95\\?% CI[^.\n]{0,50}0\.002265",)
 _pub10 = [os.path.join(HERE, "..", rel) for rel in (
     "PAPER_SUBMISSION.md", "README.md", "COVER_LETTER_TORS.md", "CANONICAL_SUBMISSION.md",
@@ -160,6 +166,19 @@ _all10 = "\n".join(io.open(f, encoding="utf-8", errors="replace").read()
                              + _g2.glob(os.path.join(HERE, "tables", "*.tex"))
                              + [f for f in _pub10 if os.path.exists(f)]))
 _all10_low = _all10.lower()
+
+# PAPER_DRAFT.md is retained only as provenance.  This explicit banner prevents a
+# stale working record from being mistaken for a second canonical submission source.
+_draft10_path = os.path.join(HERE, "..", "PAPER_DRAFT.md")
+if os.path.exists(_draft10_path):
+    _draft10_head = io.open(_draft10_path, encoding="utf-8",
+                            errors="replace").read(512)
+    if not _draft10_head.startswith(
+            "# HISTORICAL NONCANONICAL WORKING DRAFT — DO NOT SUBMIT"):
+        fails.append("H10: PAPER_DRAFT.md lacks the required historical/noncanonical banner")
+else:
+    fails.append("H10: PAPER_DRAFT.md missing; historical-source status cannot be checked")
+
 for _b10 in H10_BANNED:
     if _b10.lower() in _all10_low:
         fails.append(f"H10: stale/withdrawn phrase in compiled sources: {_b10!r}")

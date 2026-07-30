@@ -1,4 +1,4 @@
-# CURRENT HANDOFF — July 30 audit-repair phase complete; final release replay pending (2026-07-30)
+# CURRENT HANDOFF — July 30 claim-accuracy phase complete; final release replay pending (2026-07-30)
 
 The latest manuscript/audit phase has completed its local substantive work. The frozen
 pointwise mechanism result remains `POINTWISE-FIR-DISCRIMINATED`: learned FIR minus
@@ -9,8 +9,8 @@ Musical_Instruments evidence against one equal-parameter compound current-only p
 it is not temporal isolation, per-channel necessity, generalization, SOTA, or independent
 confirmation.
 
-The July 30 audit corrections are now mirrored across `PAPER_SUBMISSION.md`,
-`PAPER_DRAFT.md`, ACM TeX, generated tables, bibliography, and
+The July 30 22:07 audit corrections are now mirrored across `PAPER_SUBMISSION.md`, ACM
+TeX, generated tables, the bibliography, the graph/claim-map generators, and
 `AUDIT_RESPONSE_2026-07-27.md` without modifying the user-owned audit. The paper now:
 
 - distinguishes our AR2023 iterative user+item 5-core path from TIGER/LIGER's Amazon
@@ -22,14 +22,24 @@ The July 30 audit corrections are now mirrored across `PAPER_SUBMISSION.md`,
 - removes sample-SD band-overlap inference and labels MovieLens parsimony as conditional
   coefficient-count compression, not compute optimization;
 - fixes figure numbering and the acmsmall dataset-table collision.
+- admits that E-E V3 prelaunch preparation opened the combined TRAIN/VALID/TEST export
+  while retaining only TRAIN/VALID fields, and limits sequestration to fitting/selection;
+- states that the public E-E V3 graph checks ledger schema, hash-string syntax, and
+  uniqueness but does not read or hash the private files (the local adjudicator did);
+- labels the E-E V3 comparator as a zero-initialized upstream-class SASRec-ID control,
+  not upstream-default normal initialization, and leaves normal-init/equal-budget tests open;
+- makes `PAPER_SUBMISSION.md` the sole canonical authored source and marks
+  `PAPER_DRAFT.md` historical/noncanonical with a health-gated do-not-submit banner;
+- separates Amazon and MovieLens ethics/sidecar governance, completes AlphaFuse
+  proceedings metadata, and narrows TIGER preprocessing geometry to what its paper states.
 
 The fail-closed graph recomputes 199 active cells across 23 required families with zero
-mismatch or untraceable cells. The reader PDF is 55 pages with `scan: CLEAN`; both ACM
-targets compile under the logged author-metadata draft waiver, and visual inspection of
-the novelty table, dataset table, MovieLens table, and new reference entries found no
-clipping. The final release-manifest regeneration, strict local replay, scoped commit,
-pristine hydrated-clone replay, push, and release-manifest upload/hash verification remain
-to be executed after this handoff edit.
+mismatch or untraceable cells. The reader PDF is 55 pages with `scan: CLEAN`; the 49-page
+TORS review target and 50-page acmsmall preview compile under the logged author-metadata
+draft waiver. Visual inspection of the revised results, ethics, and AlphaFuse-reference
+pages found no clipping or overlap. The final claim-map write, release-manifest
+regeneration, strict local replay, scoped commit, pristine hydrated-clone replay, push,
+and release-manifest upload/hash verification remain to be executed after this handoff edit.
 
 Do not stage user-modified `PAPER_REVIEW_AUDIT.md` or unrelated untracked QA/tmp files.
 Human author/affiliation/country/contact/running-header metadata remains the literal

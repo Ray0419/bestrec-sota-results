@@ -32,6 +32,7 @@
   "fir_efficiency_ml1m_v1",
   "wearec_v1",
   "ee_v3",
+  "ee_v4",
   "office_v3",
   "tfv2"
  ],
@@ -19715,7 +19716,7 @@
      "mode": "count"
     }
    ],
-   "notes": "PREREG_EE_V3 and its designated adjudicator were committed and pushed before launch. Prelaunch preparation opened the outcome-known combined TRAIN/VALID/TEST export and retained only TRAIN histories and VALID targets in the training input. Sixteen fresh-seed trainings selected checkpoints with complete-history-masked VALID NDCG@10 without loading, hashing, or scoring TEST; after all 16 training bundles were READY, 16 sealed one-shot evaluations followed. The unchanged committed adjudicator returned EEV3-REPORTABLE-OUTCOME-KNOWN. The AlphaFuse-style MiniLM representation package scored NDCG@10 0.048273 [0.048129, 0.048416] versus 0.039024 [0.038106, 0.039941] for a zero-initialized upstream-class SASRec ID control: descriptive independent-arm Welch delta +0.009249 [+0.008329, +0.010169], p=3.48e-08. It remained below the existing six-seed full-model reference by -0.019065 [-0.019347, -0.018783]. This is countable current-comparator evidence under shared data/evaluation and a frozen configuration, but it is outcome-known, same-investigator, and a whole-package contrast. It does not reproduce AlphaFuse's published text encoder, test upstream-default normal initialization, equalize architecture/text availability/initialization/capacity, isolate null-space fusion, supply independent confirmation, or support SOTA. The public graph recomputes released aggregate arithmetic and checks the private endpoint/sidecar ledger's schema, 64-hex syntax, and uniqueness; it does not read or hash the private files or replay record-level bootstrap resampling. The local adjudicator checked the private-file digests.",
+   "notes": "PREREG_EE_V3 and its designated adjudicator were committed and pushed before launch. Prelaunch preparation opened the outcome-known combined TRAIN/VALID/TEST export and retained only TRAIN histories and VALID targets in the training input. Sixteen fresh-seed trainings selected checkpoints with complete-history-masked VALID NDCG@10 without loading, hashing, or scoring TEST; after all 16 training bundles were READY, 16 sealed one-shot evaluations followed. The unchanged committed adjudicator returned EEV3-REPORTABLE-OUTCOME-KNOWN. The AlphaFuse-style MiniLM representation package scored NDCG@10 0.048273 [0.048129, 0.048416] versus 0.039024 [0.038106, 0.039941] for a zero-initialized upstream-class SASRec ID control: descriptive independent-arm Welch delta +0.009249 [+0.008329, +0.010169], p=3.48e-08. It remained below the existing six-seed full-model reference by -0.019065 [-0.019347, -0.018783]. This is countable current-comparator evidence under shared data/evaluation and a frozen configuration, but it is outcome-known, same-investigator, and a whole-package contrast. It does not reproduce AlphaFuse's published text encoder, test the parser-default Normal(0,1) setting (which official recipes may override by dataset), equalize architecture/text availability/initialization/capacity, isolate null-space fusion, supply independent confirmation, or support SOTA. The public graph recomputes released aggregate arithmetic and checks the private endpoint/sidecar ledger's schema, 64-hex syntax, and uniqueness; it does not read or hash the private files or replay record-level bootstrap resampling. The local adjudicator checked the private-file digests.",
    "recomputed": {
     "n_units_per_arm": 8.0,
     "alphafuse_ndcg_mean": 0.04827259824759229,
@@ -20073,6 +20074,410 @@
      "paper": 16,
      "mode": "count",
      "recomputed": 16.0,
+     "result": "exact"
+    },
+    {
+     "name": "private_endpoint_replay",
+     "paper": 0,
+     "mode": "count",
+     "recomputed": 0.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "eev4.aggregate",
+   "table_id": "ee_v4",
+   "row_label": "Parser-default Normal(0,1) SASRec-ID sensitivity",
+   "metric": "aggregate metrics and three descriptive cross-campaign Welch contrasts",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/ee_v4_adjudication.json",
+    "_bestrec_run/ee_v3_adjudication.json",
+    "PREREG_EE_V4.md",
+    "_bestrec_run/ee_v4_common.py",
+    "_bestrec_run/test_ee_v4.py",
+    "_bestrec_run/run_ee_v4.py",
+    "_bestrec_run/eval_ee_v4.py",
+    "_bestrec_run/run_ee_v4_campaign.py",
+    "_bestrec_run/adjudicate_ee_v4.py"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20262301,
+    20262302,
+    20262303,
+    20262304,
+    20262305,
+    20262306,
+    20262307,
+    20262308
+   ],
+   "recompute": {
+    "rule": "ee_v4_aggregate",
+    "params": {
+     "adjud": "_bestrec_run/ee_v4_adjudication.json",
+     "prior_adjud": "_bestrec_run/ee_v3_adjudication.json",
+     "seeds": [
+      20262301,
+      20262302,
+      20262303,
+      20262304,
+      20262305,
+      20262306,
+      20262307,
+      20262308
+     ],
+     "repository_commit": "6d3b404836fb57ee4efdb03846c0ccf2757bbce2",
+     "upstream_commit": "b501a0540b609370df995ad06fb245859b10a18a"
+    }
+   },
+   "recompute_rule": "prospectively frozen outcome-known same-investigator parser-default Normal(0,1) SASRec sensitivity: verify the prior V3 adjudication hash, recompute the released NDCG@10/HR@10/MRR summary and three descriptive cross-campaign Welch contrasts, validate resource medians, and check the private endpoint/sidecar ledger without reading private files; phase/date and initialization remain confounded",
+   "paper": [
+    {
+     "name": "verdict_alphafuse_above_normal_sasrec",
+     "value": 1,
+     "mode": "count"
+    },
+    {
+     "name": "countable_as_normal_init_sensitivity",
+     "value": 1,
+     "mode": "count"
+    },
+    {
+     "name": "independent_confirmation",
+     "value": 0,
+     "mode": "count"
+    },
+    {
+     "name": "general_sota_claim_allowed",
+     "value": 0,
+     "mode": "count"
+    },
+    {
+     "name": "n_units",
+     "value": 8,
+     "mode": "count"
+    },
+    {
+     "name": "normal_ndcg_mean",
+     "value": 0.043065,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "normal_ndcg_ci_lo",
+     "value": 0.042645,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "normal_ndcg_ci_hi",
+     "value": 0.043486,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "normal_hr10_mean",
+     "value": 0.079308,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "normal_hr10_ci_lo",
+     "value": 0.078714,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "normal_hr10_ci_hi",
+     "value": 0.079902,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "normal_mrr_mean",
+     "value": 0.039033,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "alpha_minus_normal",
+     "value": 0.005207,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "alpha_minus_normal_ci_lo",
+     "value": 0.004779,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "alpha_minus_normal_ci_hi",
+     "value": 0.005635,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "alpha_minus_normal_p",
+     "value": 1.0197151662903752e-09,
+     "mode": "approx",
+     "tol": 1e-12
+    },
+    {
+     "name": "normal_minus_zero",
+     "value": 0.004042,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "normal_minus_zero_ci_lo",
+     "value": 0.003089,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "normal_minus_zero_ci_hi",
+     "value": 0.004995,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "normal_minus_reference",
+     "value": -0.024272,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "normal_minus_reference_ci_lo",
+     "value": -0.024728,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "normal_minus_reference_ci_hi",
+     "value": -0.023816,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "private_endpoint_count",
+     "value": 8,
+     "mode": "count"
+    },
+    {
+     "name": "private_endpoint_replay",
+     "value": 0,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_EE_V4 and its adjudicator were committed before launch. Eight fresh parser-default Normal(0,1) SASRec-ID runs completed in four frozen two-process waves, followed by eight sealed evaluations and the committed adjudicator's first endpoint read. Verdict EEV4-ALPHAFUSE-ABOVE-NORMAL-SASREC: normal-init SASRec-ID NDCG@10 0.043065 [0.042645, 0.043486]; the cross-campaign V3 AlphaFuse-style package minus V4 normal-init control is +0.005207 [+0.004779, +0.005635]. Normal-init exceeds the earlier zero-init SASRec-ID control by +0.004042 [+0.003089, +0.004995] but remains below the existing full-model reference by -0.024272 [-0.024728, -0.023816]. This is countable only as outcome-known same-investigator comparator-fairness sensitivity. Phase/date and initialization are confounded; architecture, capacity, and allocation remain unequal. It is not independent confirmation, causal isolation, an equal-budget factorial, or SOTA.",
+   "recomputed": {
+    "verdict_alphafuse_above_normal_sasrec": 1.0,
+    "countable_as_normal_init_sensitivity": 1.0,
+    "independent_confirmation": 0.0,
+    "general_sota_claim_allowed": 0.0,
+    "n_units": 8.0,
+    "normal_ndcg_mean": 0.04306547627645374,
+    "normal_ndcg_ci_lo": 0.04264518677083342,
+    "normal_ndcg_ci_hi": 0.04348576578207406,
+    "normal_hr10_mean": 0.07930789768050484,
+    "normal_hr10_ci_lo": 0.07871373561912934,
+    "normal_hr10_ci_hi": 0.07990205974188033,
+    "normal_mrr_mean": 0.03903295853173157,
+    "alpha_minus_normal": 0.005207121971138547,
+    "alpha_minus_normal_ci_lo": 0.00477933776311841,
+    "alpha_minus_normal_ci_hi": 0.005634906179158683,
+    "alpha_minus_normal_p": 1.019715166290369e-09,
+    "normal_minus_zero": 0.0040419448421724485,
+    "normal_minus_zero_ci_lo": 0.0030886209420436187,
+    "normal_minus_zero_ci_hi": 0.004995268742301278,
+    "normal_minus_reference": -0.024271909887885232,
+    "normal_minus_reference_ci_lo": -0.02472829582891544,
+    "normal_minus_reference_ci_hi": -0.023815523946855023,
+    "private_endpoint_count": 8.0,
+    "private_endpoint_replay": 0.0
+   },
+   "recomputed_value": 1.0,
+   "paper_check": [
+    {
+     "name": "verdict_alphafuse_above_normal_sasrec",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    },
+    {
+     "name": "countable_as_normal_init_sensitivity",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    },
+    {
+     "name": "independent_confirmation",
+     "paper": 0,
+     "mode": "count",
+     "recomputed": 0.0,
+     "result": "exact"
+    },
+    {
+     "name": "general_sota_claim_allowed",
+     "paper": 0,
+     "mode": "count",
+     "recomputed": 0.0,
+     "result": "exact"
+    },
+    {
+     "name": "n_units",
+     "paper": 8,
+     "mode": "count",
+     "recomputed": 8.0,
+     "result": "exact"
+    },
+    {
+     "name": "normal_ndcg_mean",
+     "paper": 0.043065,
+     "mode": "round",
+     "recomputed": 0.04306547627645374,
+     "result": "exact",
+     "rounded": 0.043065
+    },
+    {
+     "name": "normal_ndcg_ci_lo",
+     "paper": 0.042645,
+     "mode": "round",
+     "recomputed": 0.04264518677083342,
+     "result": "exact",
+     "rounded": 0.042645
+    },
+    {
+     "name": "normal_ndcg_ci_hi",
+     "paper": 0.043486,
+     "mode": "round",
+     "recomputed": 0.04348576578207406,
+     "result": "exact",
+     "rounded": 0.043486
+    },
+    {
+     "name": "normal_hr10_mean",
+     "paper": 0.079308,
+     "mode": "round",
+     "recomputed": 0.07930789768050484,
+     "result": "exact",
+     "rounded": 0.079308
+    },
+    {
+     "name": "normal_hr10_ci_lo",
+     "paper": 0.078714,
+     "mode": "round",
+     "recomputed": 0.07871373561912934,
+     "result": "exact",
+     "rounded": 0.078714
+    },
+    {
+     "name": "normal_hr10_ci_hi",
+     "paper": 0.079902,
+     "mode": "round",
+     "recomputed": 0.07990205974188033,
+     "result": "exact",
+     "rounded": 0.079902
+    },
+    {
+     "name": "normal_mrr_mean",
+     "paper": 0.039033,
+     "mode": "round",
+     "recomputed": 0.03903295853173157,
+     "result": "exact",
+     "rounded": 0.039033
+    },
+    {
+     "name": "alpha_minus_normal",
+     "paper": 0.005207,
+     "mode": "round",
+     "recomputed": 0.005207121971138547,
+     "result": "exact",
+     "rounded": 0.005207
+    },
+    {
+     "name": "alpha_minus_normal_ci_lo",
+     "paper": 0.004779,
+     "mode": "round",
+     "recomputed": 0.00477933776311841,
+     "result": "exact",
+     "rounded": 0.004779
+    },
+    {
+     "name": "alpha_minus_normal_ci_hi",
+     "paper": 0.005635,
+     "mode": "round",
+     "recomputed": 0.005634906179158683,
+     "result": "exact",
+     "rounded": 0.005635
+    },
+    {
+     "name": "alpha_minus_normal_p",
+     "paper": 1.0197151662903752e-09,
+     "mode": "approx",
+     "recomputed": 1.019715166290369e-09,
+     "result": "within_tol"
+    },
+    {
+     "name": "normal_minus_zero",
+     "paper": 0.004042,
+     "mode": "round",
+     "recomputed": 0.0040419448421724485,
+     "result": "exact",
+     "rounded": 0.004042
+    },
+    {
+     "name": "normal_minus_zero_ci_lo",
+     "paper": 0.003089,
+     "mode": "round",
+     "recomputed": 0.0030886209420436187,
+     "result": "exact",
+     "rounded": 0.003089
+    },
+    {
+     "name": "normal_minus_zero_ci_hi",
+     "paper": 0.004995,
+     "mode": "round",
+     "recomputed": 0.004995268742301278,
+     "result": "exact",
+     "rounded": 0.004995
+    },
+    {
+     "name": "normal_minus_reference",
+     "paper": -0.024272,
+     "mode": "round",
+     "recomputed": -0.024271909887885232,
+     "result": "exact",
+     "rounded": -0.024272
+    },
+    {
+     "name": "normal_minus_reference_ci_lo",
+     "paper": -0.024728,
+     "mode": "round",
+     "recomputed": -0.02472829582891544,
+     "result": "exact",
+     "rounded": -0.024728
+    },
+    {
+     "name": "normal_minus_reference_ci_hi",
+     "paper": -0.023816,
+     "mode": "round",
+     "recomputed": -0.023815523946855023,
+     "result": "exact",
+     "rounded": -0.023816
+    },
+    {
+     "name": "private_endpoint_count",
+     "paper": 8,
+     "mode": "count",
+     "recomputed": 8.0,
      "result": "exact"
     },
     {

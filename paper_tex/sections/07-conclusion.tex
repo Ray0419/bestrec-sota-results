@@ -51,6 +51,14 @@ supports the value of the tested whole representation package over that ID backb
 it does not isolate null-space fusion, equalize architecture/capacity/tuning, reproduce
 AlphaFuse's published text setting, or provide independent confirmation or SOTA evidence.
 
+A separately frozen parser-default \texttt{Normal(0,1)} SASRec-ID sensitivity reached
+0.043065 [0.042645, 0.043486]. The AlphaFuse-style package remained above it by
++0.005207 [+0.004779, +0.005635], while normal initialization improved SASRec-ID over
+the earlier zero-init arm by +0.004042 [+0.003089, +0.004995]. Because this comparison
+is outcome-known, same-investigator, and cross-campaign, phase/date and initialization
+are confounded. It closes the narrow zero-init sensitivity concern, not initialization
+isolation, equal-budget comparison, independent confirmation, or SOTA.
+
 The secondary result is narrower. Frozen text features improve the repaired
 Musical\_Instruments frequency-tail endpoint (+0.000420 [0.000181, 0.000660]),
 but the gain concentrates at train frequency 5; removing that boundary group leaves no

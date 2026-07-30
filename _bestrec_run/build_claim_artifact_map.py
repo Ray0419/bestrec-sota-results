@@ -189,6 +189,20 @@ CLAIMS = [
                   "_bestrec_run/fir_prospective_sw_v3_adjudication.json",
                   "_bestrec_run/fir_efficiency_ml1m_v1_adjudication.json"],
     },
+    {
+        "id": "C16",
+        "claim": "Parser-default Normal(0,1) SASRec-ID comparator sensitivity",
+        "boundary": "Eight fresh parser-default Normal(0,1) SASRec-ID runs produced NDCG@10 0.043065 [0.042645,0.043486]. The earlier V3 AlphaFuse-style package remains above this control by +0.005207 [+0.004779,+0.005635], while normal initialization improves SASRec-ID over the earlier zero-initialized control by +0.004042 [+0.003089,+0.004995]. This is prospectively frozen but outcome-known same-investigator cross-campaign comparator-fairness sensitivity. Phase/date and initialization are confounded; architecture, capacity, and parameter allocation remain unequal. It is not independent confirmation, causal isolation, an equal-budget factorial, or SOTA. The public graph recomputes released aggregate arithmetic and checks the private endpoint/sidecar ledger without reading private files.",
+        "tables": ["ee_v4"],
+        "files": ["PREREG_EE_V4.md",
+                  "_bestrec_run/ee_v4_common.py",
+                  "_bestrec_run/test_ee_v4.py",
+                  "_bestrec_run/run_ee_v4.py",
+                  "_bestrec_run/eval_ee_v4.py",
+                  "_bestrec_run/run_ee_v4_campaign.py",
+                  "_bestrec_run/adjudicate_ee_v4.py",
+                  "_bestrec_run/ee_v4_adjudication.json"],
+    },
 ]
 
 EXPECTED_EVIDENCE = {
@@ -202,6 +216,7 @@ EXPECTED_EVIDENCE = {
     "fir_efficiency_ml1m_v1": {"exploratory"},
     "wearec_v1": {"exploratory"},
     "ee_v3": {"exploratory"},
+    "ee_v4": {"exploratory"},
     "tableV2conf": {"confirmatory"},
     "office_v3": {"confirmatory"},
     "office_confirmation": {"exploratory"},

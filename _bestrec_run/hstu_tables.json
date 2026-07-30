@@ -24,7 +24,7 @@
   "t542.u066.signtest"
  ],
  "paper_check_summary": {
-  "exact": 180,
+  "exact": 181,
   "within_rounding": 20,
   "MISMATCH": 0,
   "UNTRACEABLE": 0,

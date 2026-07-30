@@ -1251,6 +1251,180 @@ def rule_ee_v3_aggregate(p):
         out[f"existing_reference_ndcg_seed_{index}"] = value
     return out
 
+
+def rule_ee_v4_aggregate(p):
+    """Recompute the public E-E V4 normal-initialization sensitivity.
+
+    The compact adjudication releases the eight optimizer-seed metric vectors,
+    three descriptive independent-arm Welch contrasts, resource summaries, and
+    a hash ledger for private TEST endpoints/sidecars.  The graph verifies those
+    aggregates and the prior V3 adjudication without reading private endpoints.
+    """
+    adjud = load(p["adjud"])
+    prior_path = p["prior_adjud"]
+    prior = load(prior_path)
+    seeds = [int(s) for s in p["seeds"]]
+    expected_boundary = (
+        "Prospectively frozen but outcome-known same-investigator cross-campaign "
+        "sensitivity using the upstream-default-normal-init AlphaFuse-repository "
+        "SASRec class. Phase/date and initialization are confounded; architecture, "
+        "capacity, and parameter allocation remain unequal. This does not isolate "
+        "initialization, establish SOTA, or provide independent confirmation."
+    )
+    prior_meta = adjud.get("prior_public_adjudication", {})
+    if (adjud.get("protocol") != "PREREG_EE_V4"
+            or adjud.get("classification") !=
+                "PROSPECTIVELY_FROZEN_OUTCOME_KNOWN_SAME_INVESTIGATOR_COMPARATOR_FAIRNESS_SENSITIVITY"
+            or adjud.get("verdict") != "EEV4-ALPHAFUSE-ABOVE-NORMAL-SASREC"
+            or adjud.get("claim_boundary") != expected_boundary
+            or adjud.get("countable_as_normal_init_sensitivity") is not True
+            or adjud.get("independent_confirmation") is not False
+            or adjud.get("general_sota_claim_allowed") is not False
+            or adjud.get("initialization") != "upstream CLI default Normal(0,1)"
+            or adjud.get("repository_commit") != p["repository_commit"]
+            or adjud.get("upstream_commit") != p["upstream_commit"]
+            or [int(s) for s in adjud.get("seeds", [])] != seeds
+            or not re.fullmatch(r"[0-9a-f]{64}", str(adjud.get("ready_sha256", "")))
+            or prior_meta.get("file") != os.path.basename(prior_path)
+            or prior_meta.get("sha256") != sha256_file(prior_path)
+            or prior.get("verdict") != "EEV3-REPORTABLE-OUTCOME-KNOWN"):
+        raise ValueError("E-E V4 adjudication metadata drift")
+
+    def summarize(values):
+        n = len(values)
+        mu = mean(values)
+        sd = sstd(values)
+        half = t_ppf(0.975, n - 1) * sd / math.sqrt(n)
+        return {"n": float(n), "mean": mu, "sd": sd,
+                "ci_lo": mu - half, "ci_hi": mu + half}
+
+    def verify_summary(label, recorded, expected_n=None):
+        values = [float(x) for x in recorded.get("vector", [])]
+        expected_n = int(recorded.get("n", -1)) if expected_n is None else expected_n
+        if len(values) != expected_n:
+            raise ValueError(f"E-E V4 {label} seed-vector drift")
+        recomputed = summarize(values)
+        expected = {"n": recorded["n"], "mean": recorded["mean"],
+                    "sd": recorded["sd"], "ci_lo": recorded["ci95"][0],
+                    "ci_hi": recorded["ci95"][1]}
+        for key, value in expected.items():
+            if abs(float(recomputed[key]) - float(value)) > 1e-12:
+                raise ValueError(f"E-E V4 {label} {key} drift")
+        return values, recomputed
+
+    arm_records = adjud.get("arm_seed_summary", {})
+    if set(arm_records) != {"NDCG@10", "HR@10", "MRR"}:
+        raise ValueError("E-E V4 metric-family drift")
+    vectors, summaries = {}, {}
+    for metric in ("NDCG@10", "HR@10", "MRR"):
+        vectors[metric], summaries[metric] = verify_summary(
+            metric, arm_records[metric], len(seeds))
+
+    prior_vectors = {}
+    for key in ("alphafuse_zero_ndcg10", "sasrec_zero_ndcg10",
+                "existing_reference_ndcg10"):
+        prior_vectors[key], _ = verify_summary(key, prior_meta[key])
+
+    def verify_welch(label, first, second, recorded):
+        a, b = summarize(first), summarize(second)
+        va, vb = a["sd"] ** 2 / len(first), b["sd"] ** 2 / len(second)
+        se = math.sqrt(va + vb)
+        df = (va + vb) ** 2 / (va * va / (len(first) - 1)
+                                + vb * vb / (len(second) - 1))
+        delta = a["mean"] - b["mean"]
+        half = t_ppf(0.975, df) * se
+        recomputed = {"delta": delta, "welch_df": df,
+                      "p_two_sided_unadjusted": t_two_sided_p(delta / se, df),
+                      "ci_lo": delta - half, "ci_hi": delta + half}
+        expected = {"delta": recorded["delta"], "welch_df": recorded["welch_df"],
+                    "p_two_sided_unadjusted": recorded["p_two_sided_unadjusted"],
+                    "ci_lo": recorded["ci95"][0], "ci_hi": recorded["ci95"][1]}
+        for key, value in expected.items():
+            if abs(float(recomputed[key]) - float(value)) > 1e-12:
+                raise ValueError(f"E-E V4 {label} Welch {key} drift")
+        direction = ("ABOVE" if recomputed["ci_lo"] > 0.0 else
+                     "BELOW" if recomputed["ci_hi"] < 0.0 else "OVERLAP")
+        if (recorded.get("direction") != direction
+                or recorded.get("estimand") != "first arm minus second arm"
+                or recorded.get("inference_boundary") !=
+                    "descriptive independent-arm Welch on optimizer-seed estimates"):
+            raise ValueError(f"E-E V4 {label} boundary drift")
+        recomputed["direction"] = direction
+        return recomputed
+
+    contrasts = adjud.get("contrasts", {})
+    alpha_minus_normal = verify_welch(
+        "V3 AlphaFuse minus V4 normal SASRec",
+        prior_vectors["alphafuse_zero_ndcg10"], vectors["NDCG@10"],
+        contrasts["v3_alphafuse_zero_minus_v4_sasrec_normal"])
+    normal_minus_zero = verify_welch(
+        "V4 normal SASRec minus V3 zero SASRec", vectors["NDCG@10"],
+        prior_vectors["sasrec_zero_ndcg10"],
+        contrasts["v4_sasrec_normal_minus_v3_sasrec_zero"])
+    normal_minus_reference = verify_welch(
+        "V4 normal SASRec minus existing reference", vectors["NDCG@10"],
+        prior_vectors["existing_reference_ndcg10"],
+        contrasts["v4_sasrec_normal_minus_existing_paper_reference"])
+
+    ledger = adjud.get("endpoint_ledger", [])
+    if (len(ledger) != len(seeds)
+            or [int(row.get("seed", -1)) for row in ledger] != seeds):
+        raise ValueError("E-E V4 endpoint-ledger seed drift")
+    endpoint_hashes, sidecar_hashes = set(), set()
+    for row in ledger:
+        seed = int(row["seed"])
+        if (row.get("arm") != "sasrec_normal"
+                or row.get("endpoint_file") !=
+                    f"assessment_EEV4_sasrec_normal_seed{seed}.finaleval.json"
+                or row.get("sidecar_file") !=
+                    f"assessment_EEV4_sasrec_normal_seed{seed}.finaleval.users.npz"
+                or not re.fullmatch(r"[0-9a-f]{64}", str(row.get("endpoint_sha256", "")))
+                or not re.fullmatch(r"[0-9a-f]{64}", str(row.get("sidecar_sha256", "")))):
+            raise ValueError("E-E V4 endpoint-ledger schema/hash drift")
+        endpoint_hashes.add(row["endpoint_sha256"])
+        sidecar_hashes.add(row["sidecar_sha256"])
+    if len(endpoint_hashes) != 8 or len(sidecar_hashes) != 8:
+        raise ValueError("E-E V4 endpoint-ledger uniqueness drift")
+
+    if (adjud.get("resource_scope") !=
+            "two-process concurrent training waves make wall time unsuitable for hardware-efficiency claims; profiler FLOPs are operator-accounted lower bounds"):
+        raise ValueError("E-E V4 resource-scope drift")
+    for field, recorded in adjud.get("resources", {}).items():
+        values = sorted(float(x) for x in recorded.get("vector", []))
+        if len(values) != len(seeds):
+            raise ValueError(f"E-E V4 {field} resource-vector drift")
+        median = 0.5 * (values[3] + values[4])
+        if abs(median - float(recorded.get("median"))) > 1e-12:
+            raise ValueError(f"E-E V4 {field} resource-median drift")
+
+    ndcg = summaries["NDCG@10"]
+    return {
+        "verdict_alphafuse_above_normal_sasrec": 1.0,
+        "countable_as_normal_init_sensitivity": 1.0,
+        "independent_confirmation": 0.0,
+        "general_sota_claim_allowed": 0.0,
+        "n_units": float(len(seeds)),
+        "normal_ndcg_mean": ndcg["mean"],
+        "normal_ndcg_ci_lo": ndcg["ci_lo"],
+        "normal_ndcg_ci_hi": ndcg["ci_hi"],
+        "normal_hr10_mean": summaries["HR@10"]["mean"],
+        "normal_hr10_ci_lo": summaries["HR@10"]["ci_lo"],
+        "normal_hr10_ci_hi": summaries["HR@10"]["ci_hi"],
+        "normal_mrr_mean": summaries["MRR"]["mean"],
+        "alpha_minus_normal": alpha_minus_normal["delta"],
+        "alpha_minus_normal_ci_lo": alpha_minus_normal["ci_lo"],
+        "alpha_minus_normal_ci_hi": alpha_minus_normal["ci_hi"],
+        "alpha_minus_normal_p": alpha_minus_normal["p_two_sided_unadjusted"],
+        "normal_minus_zero": normal_minus_zero["delta"],
+        "normal_minus_zero_ci_lo": normal_minus_zero["ci_lo"],
+        "normal_minus_zero_ci_hi": normal_minus_zero["ci_hi"],
+        "normal_minus_reference": normal_minus_reference["delta"],
+        "normal_minus_reference_ci_lo": normal_minus_reference["ci_lo"],
+        "normal_minus_reference_ci_hi": normal_minus_reference["ci_hi"],
+        "private_endpoint_count": float(len(ledger)),
+        "private_endpoint_replay": 0.0,
+    }
+
 def rule_pct_of_paired(p):
     """mean paired (a-b) delta as a percent of mean(b)."""
     m = p.get("metric", "NDCG@10")
@@ -1721,7 +1895,7 @@ REQUIRED_FAMILIES = ["table1", "table1a", "table1b", "table1c", "table1d", "tabl
                      "office_confirmation", "theirs_on_ours", "fir_breadth",
                      "fir_v3", "fir_canonical_breadth", "fir_controls",
                      "fir_pointwise", "fir_evidence_summary", "fir_prospective_sw_v3",
-                     "fir_efficiency_ml1m_v1", "wearec_v1", "ee_v3",
+                     "fir_efficiency_ml1m_v1", "wearec_v1", "ee_v3", "ee_v4",
                      "office_v3", "tfv2"]
 
 OFFICE_VOID_NOTE = ("VOID under prereg floor check (+44% floor inflation); "
@@ -1745,6 +1919,7 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "fir_efficiency_ml1m_v1_aggregate": "prospectively frozen same-investigator MovieLens 1M aggregate adjudication: recompute seed-vector means, paired intervals, Holm decisions, noninferiority bounds, and figure-resource rows; private record-level endpoints are not redistributable and are not independently replayed by the public graph",
         "wearec_v1_aggregate": "prospectively frozen outcome-known same-investigator WEARec aggregate adjudication: verify the six existing reference artifacts and recompute released NDCG@10 seed-vector means, t intervals, and the descriptive unpaired Welch contrast; private sealed endpoints and per-user sidecars are not independently replayed by the public graph",
         "ee_v3_aggregate": "prospectively frozen outcome-known same-investigator AlphaFuse-style aggregate adjudication: verify the six existing reference artifacts; recompute released NDCG@10/HR@10/MRR seed summaries and descriptive independent-arm Welch contrasts; validate fixed-dataset sensitivity metadata and resource summaries; check the private endpoint/sidecar ledger's shape, 64-hex syntax, and uniqueness without reading or hashing the private files; private endpoint extraction and record-level bootstrap resampling are not independently replayed by the public graph",
+        "ee_v4_aggregate": "prospectively frozen outcome-known same-investigator parser-default Normal(0,1) SASRec sensitivity: verify the prior V3 adjudication hash, recompute the released NDCG@10/HR@10/MRR summary and three descriptive cross-campaign Welch contrasts, validate resource medians, and check the private endpoint/sidecar ledger without reading private files; phase/date and initialization remain confounded",
         "pct_of_paired": "100 * mean per-seed (a-b) / mean(b), best_test[{m}]",
         "pct_change": "100 * (mean(a)/denom - 1), best_test[{m}]",
         "share_of_lift": "100 * (mean(x)-mean(base)) / (mean(top)-mean(base))",
@@ -3356,6 +3531,70 @@ def build_spec():
             chk("private_endpoint_replay", 0, mode="count"),
         ],
         8, "exploratory", seeds=EEV3_SEEDS, notes=EEV3_NOTE))
+
+    # ------- E-E V4: parser-default Normal(0,1) SASRec-ID sensitivity -------
+    EEV4_SEEDS = list(range(20262301, 20262309))
+    EEV4_ADJ = BR + "ee_v4_adjudication.json"
+    EEV4_FROZEN = [
+        "PREREG_EE_V4.md",
+        BR + "ee_v4_common.py",
+        BR + "test_ee_v4.py",
+        BR + "run_ee_v4.py",
+        BR + "eval_ee_v4.py",
+        BR + "run_ee_v4_campaign.py",
+        BR + "adjudicate_ee_v4.py",
+    ]
+    EEV4_NOTE = (
+        "PREREG_EE_V4 and its adjudicator were committed before launch. Eight fresh "
+        "parser-default Normal(0,1) SASRec-ID runs completed in four frozen two-process "
+        "waves, followed by eight sealed evaluations and the committed adjudicator's "
+        "first endpoint read. Verdict EEV4-ALPHAFUSE-ABOVE-NORMAL-SASREC: normal-init "
+        "SASRec-ID NDCG@10 0.043065 [0.042645, 0.043486]; the cross-campaign V3 "
+        "AlphaFuse-style package minus V4 normal-init control is +0.005207 "
+        "[+0.004779, +0.005635]. Normal-init exceeds the earlier zero-init SASRec-ID "
+        "control by +0.004042 [+0.003089, +0.004995] but remains below the existing "
+        "full-model reference by -0.024272 [-0.024728, -0.023816]. This is countable "
+        "only as outcome-known same-investigator comparator-fairness sensitivity. "
+        "Phase/date and initialization are confounded; architecture, capacity, and "
+        "allocation remain unequal. It is not independent confirmation, causal "
+        "isolation, an equal-budget factorial, or SOTA.")
+    C.append(cell(
+        "eev4.aggregate", "ee_v4",
+        "Parser-default Normal(0,1) SASRec-ID sensitivity",
+        "aggregate metrics and three descriptive cross-campaign Welch contrasts",
+        [EEV4_ADJ, EEV3_ADJ] + EEV4_FROZEN,
+        "ee_v4_aggregate",
+        {"adjud": EEV4_ADJ, "prior_adjud": EEV3_ADJ, "seeds": EEV4_SEEDS,
+         "repository_commit": "6d3b404836fb57ee4efdb03846c0ccf2757bbce2",
+         "upstream_commit": "b501a0540b609370df995ad06fb245859b10a18a"},
+        [
+            chk("verdict_alphafuse_above_normal_sasrec", 1, mode="count"),
+            chk("countable_as_normal_init_sensitivity", 1, mode="count"),
+            chk("independent_confirmation", 0, mode="count"),
+            chk("general_sota_claim_allowed", 0, mode="count"),
+            chk("n_units", 8, mode="count"),
+            chk("normal_ndcg_mean", 0.043065, 6),
+            chk("normal_ndcg_ci_lo", 0.042645, 6),
+            chk("normal_ndcg_ci_hi", 0.043486, 6),
+            chk("normal_hr10_mean", 0.079308, 6),
+            chk("normal_hr10_ci_lo", 0.078714, 6),
+            chk("normal_hr10_ci_hi", 0.079902, 6),
+            chk("normal_mrr_mean", 0.039033, 6),
+            chk("alpha_minus_normal", 0.005207, 6),
+            chk("alpha_minus_normal_ci_lo", 0.004779, 6),
+            chk("alpha_minus_normal_ci_hi", 0.005635, 6),
+            chk("alpha_minus_normal_p", 1.0197151662903752e-09,
+                mode="approx", tol=1e-12),
+            chk("normal_minus_zero", 0.004042, 6),
+            chk("normal_minus_zero_ci_lo", 0.003089, 6),
+            chk("normal_minus_zero_ci_hi", 0.004995, 6),
+            chk("normal_minus_reference", -0.024272, 6),
+            chk("normal_minus_reference_ci_lo", -0.024728, 6),
+            chk("normal_minus_reference_ci_hi", -0.023816, 6),
+            chk("private_endpoint_count", 8, mode="count"),
+            chk("private_endpoint_replay", 0, mode="count"),
+        ],
+        8, "exploratory", seeds=EEV4_SEEDS, notes=EEV4_NOTE))
 
     # ------- tfv2: pre-declared repaired-estimand campaign (PREREG_TAIL_FIR_V2) -------
     # Independent 8-vs-8 arms, but outcome-visible: the first independently verifiable

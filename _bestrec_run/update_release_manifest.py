@@ -201,6 +201,15 @@ EE_V3_PROTOCOL_FILES = [
     "_bestrec_run/run_ee_v3_campaign.py",
     "_bestrec_run/adjudicate_ee_v3.py",
 ]
+EE_V4_PROTOCOL_FILES = [
+    "PREREG_EE_V4.md",
+    "_bestrec_run/ee_v4_common.py",
+    "_bestrec_run/test_ee_v4.py",
+    "_bestrec_run/run_ee_v4.py",
+    "_bestrec_run/eval_ee_v4.py",
+    "_bestrec_run/run_ee_v4_campaign.py",
+    "_bestrec_run/adjudicate_ee_v4.py",
+]
 
 
 def sha(p, _bufsz=1 << 20):
@@ -606,6 +615,12 @@ def regen(m):
         # checkpoints, and status/attempt records remain outside git/release-manifest
         # result families; their digests are bound inside this adjudication.
         add_result_family("EE_V3_OUTCOME_KNOWN", [_ee_v3_adjudication])
+    _ee_v4_adjudication = os.path.join(
+        ROOT, "_bestrec_run", "ee_v4_adjudication.json")
+    if os.path.exists(_ee_v4_adjudication):
+        # Public compact aggregate only. Private endpoints/sidecars and training
+        # bundles remain outside result families; their digests are ledger-bound.
+        add_result_family("EE_V4_NORMAL_INIT_SENSITIVITY", [_ee_v4_adjudication])
 
     # audit 2026-07-24 (E-E freeze): keep protocol_code in lock-step with the
     # governed-completeness gate -- auto-register any tracked governed file
@@ -630,7 +645,8 @@ def regen(m):
                + FIR_EFFICIENCY_ML1M_PROTOCOL_FILES
                + FIR_PROSPECTIVE_STAGE_A_PROTOCOL_FILES
                + WEAREC_BASELINE_PROTOCOL_FILES
-               + EE_V3_PROTOCOL_FILES):
+               + EE_V3_PROTOCOL_FILES
+               + EE_V4_PROTOCOL_FILES):
         _gap = os.path.join(ROOT, _t.replace("/", os.sep))
         if os.path.exists(_gap) and _t not in m["protocol_code"]:
             m["protocol_code"][_t] = {"sha256": sha_norm(_gap)}

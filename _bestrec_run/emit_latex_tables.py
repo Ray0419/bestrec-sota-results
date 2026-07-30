@@ -397,7 +397,7 @@ REGISTRY = [
                   r">{\raggedleft\arraybackslash}p{0.09\linewidth}"
                   r">{\raggedright\arraybackslash}p{0.31\linewidth}"),
          size=r"\small", tabcolsep=3, arraystretch=1.15,
-         family="table1b", extra_families=["table1", "wearec_v1", "ee_v3"],  # comparison column also cites full-model/current-comparator graph cells
+         family="table1b", extra_families=["table1", "wearec_v1", "ee_v3", "ee_v4"],  # comparison column also cites full-model/current-comparator graph cells
          # EXTERNAL_PUBLISHED constants printed only in the md row text (cited from
          # Liu 2025 / Zhai 2024 tables): HR@10 columns + HSTU-OpenAI row + port HR.
          allow={"0.1028", "0.1315", "0.0742", "0.1328", "0.1353", "0.13234"}),

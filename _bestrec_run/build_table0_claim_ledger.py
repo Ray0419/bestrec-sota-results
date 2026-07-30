@@ -38,6 +38,7 @@ def build() -> str:
         "fireff.ml1m.aggregate": "exploratory",
         "wearec.v1.aggregate": "exploratory",
         "eev3.aggregate": "exploratory",
+        "eev4.aggregate": "exploratory",
     }
     for cell_id, evidence_class in required.items():
         cell = cells.get(cell_id)
@@ -54,6 +55,7 @@ def build() -> str:
     ml1m = cells["fireff.ml1m.aggregate"]["recomputed"]
     wearec = cells["wearec.v1.aggregate"]["recomputed"]
     eev3 = cells["eev3.aggregate"]["recomputed"]
+    eev4 = cells["eev4.aggregate"]["recomputed"]
 
     return "\n".join([
         START,
@@ -71,6 +73,9 @@ def build() -> str:
          f"{eev3['sasrec_id_ndcg_mean']:.6f}; delta {signed(eev3['delta_vs_sasrec_id'])} "
          f"[{signed(eev3['delta_vs_sasrec_id_ci_lo'])},{signed(eev3['delta_vs_sasrec_id_ci_hi'])}], but "
          f"{signed(eev3['delta_vs_existing_reference'])} versus the existing {eev3['existing_reference_mean']:.6f} reference. "
+         f"A separately frozen parser-default Normal(0,1) sensitivity scored {eev4['normal_ndcg_mean']:.6f} "
+         f"[{eev4['normal_ndcg_ci_lo']:.6f},{eev4['normal_ndcg_ci_hi']:.6f}]; the package remains above it by "
+         f"{signed(eev4['alpha_minus_normal'])} [{signed(eev4['alpha_minus_normal_ci_lo'])},{signed(eev4['alpha_minus_normal_ci_hi'])}]. "
          "Countable outcome-known same-investigator whole-package evidence; not a published-table reproduction, null-space-fusion isolation, equal architecture/capacity/tuning, independent confirmation, or SOTA. |"),
         "| **Label smoothing/time bias** — Szegedy et al. (2016); TiSASRec; HSTU (Zhai et al., 2024) | Integrated with this backbone and full-catalog chunked softmax | +0.0013 and +0.0027 single flags (Table 1). Prior work. |",
         ("| **Sequence/frequency and linear-time operators** — FMLP-Rec, BSARec, FreqRec, WEARec, TimeWeaver, TV-Rec, HyenaRec, ConvRec, and Mamba4Rec; causal convolutions include Caser, NextItNet, C3SASR, and AdaMCT "

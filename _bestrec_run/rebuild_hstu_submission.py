@@ -200,6 +200,38 @@ def main():
                   f"{'OK' if good else 'FAILED (verdict not reproduced)'}")
             return good
         ok &= verify_recorded_ee_v3_verdict()
+        def verify_recorded_ee_v4_verdict():
+            path = ROOT / "_bestrec_run" / "ee_v4_adjudication.json"
+            try:
+                rec = json.loads(path.read_text(encoding="utf-8"))
+                contrasts = rec["contrasts"]
+                alpha = contrasts["v3_alphafuse_zero_minus_v4_sasrec_normal"]
+                normal_zero = contrasts["v4_sasrec_normal_minus_v3_sasrec_zero"]
+                normal_ref = contrasts["v4_sasrec_normal_minus_existing_paper_reference"]
+                good = (rec.get("protocol") == "PREREG_EE_V4"
+                        and rec.get("verdict") ==
+                            "EEV4-ALPHAFUSE-ABOVE-NORMAL-SASREC"
+                        and rec.get("classification") ==
+                            "PROSPECTIVELY_FROZEN_OUTCOME_KNOWN_SAME_INVESTIGATOR_COMPARATOR_FAIRNESS_SENSITIVITY"
+                        and rec.get("countable_as_normal_init_sensitivity") is True
+                        and rec.get("independent_confirmation") is False
+                        and rec.get("general_sota_claim_allowed") is False
+                        and rec.get("seeds") == list(range(20262301, 20262309))
+                        and alpha.get("direction") == "ABOVE"
+                        and float(alpha["ci95"][0]) > 0.0
+                        and normal_zero.get("direction") == "ABOVE"
+                        and float(normal_zero["ci95"][0]) > 0.0
+                        and normal_ref.get("direction") == "BELOW"
+                        and float(normal_ref["ci95"][1]) < 0.0
+                        and len(rec.get("endpoint_ledger", [])) == 8)
+            except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError):
+                good = False
+            print("--- E-E V4 recorded aggregate verdict "
+                  "(outcome-known cross-campaign normal-init sensitivity; graph "
+                  "recomputes released summaries/contrasts): "
+                  f"{'OK' if good else 'FAILED (verdict not reproduced)'}")
+            return good
+        ok &= verify_recorded_ee_v4_verdict()
         ok &= run_verdict("E-F HYBRID_V1 fresh-seed adjudication (pre-declared; "
                           "W-H-POS x3 required)",
                           ["_bestrec_run/adjudicate_hybrid_v1.py"],

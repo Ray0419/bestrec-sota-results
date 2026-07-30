@@ -228,6 +228,15 @@ for _br10 in H10_BANNED_RE:
     m10 = re.search(_br10, _all10)
     if m10:
         fails.append(f"H10: stale/withdrawn pattern in compiled sources: {m10.group(0)[:60]!r}")
+# The completed V4 sensitivity must be present in both authored publication
+# surfaces with its exact verdict and cross-campaign confounding boundary.
+for _rel10 in ("PAPER_SUBMISSION.md", os.path.join("paper_tex", "sections", "05-results.tex")):
+    _path10 = os.path.join(HERE, "..", _rel10)
+    _body10 = io.open(_path10, encoding="utf-8", errors="replace").read().lower()
+    for _needle10 in ("eev4-alphafuse-above-normal-sasrec",
+                      "phase/date and initialization are confounded"):
+        if _needle10 not in _body10:
+            fails.append(f"H10: completed V4 boundary missing from {_rel10}: {_needle10}")
 # The official AlphaFuse classes were not run through an upstream preprocessing
 # pipeline. Require this boundary in both authored Markdown and the separately
 # maintained TeX mirror so either side cannot drift silently.

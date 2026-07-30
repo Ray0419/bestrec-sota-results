@@ -1,4 +1,4 @@
-# CURRENT HANDOFF — July 30 claim-accuracy phase complete; final release replay pending (2026-07-30)
+# CURRENT HANDOFF — July 30 claim-accuracy phase clean-clone verified (2026-07-30)
 
 The latest manuscript/audit phase has completed its local substantive work. The frozen
 pointwise mechanism result remains `POINTWISE-FIR-DISCRIMINATED`: learned FIR minus
@@ -37,9 +37,11 @@ The fail-closed graph recomputes 199 active cells across 23 required families wi
 mismatch or untraceable cells. The reader PDF is 55 pages with `scan: CLEAN`; the 49-page
 TORS review target and 50-page acmsmall preview compile under the logged author-metadata
 draft waiver. Visual inspection of the revised results, ethics, and AlphaFuse-reference
-pages found no clipping or overlap. The final claim-map write, release-manifest
-regeneration, strict local replay, scoped commit, pristine hydrated-clone replay, push,
-and release-manifest upload/hash verification remain to be executed after this handoff edit.
+pages found no clipping or overlap. Commit `8605f34b` passed the full strict local replay
+and a separately hydrated pristine-clone replay: all 1,054 release-manifest files verified,
+all governed adjudicators passed, and both committed PDFs rebuilt byte-identically. At the
+time of this handoff update, only the branch push and release-manifest upload/download hash
+verification remain as machine-side release actions.
 
 Do not stage user-modified `PAPER_REVIEW_AUDIT.md` or unrelated untracked QA/tmp files.
 Human author/affiliation/country/contact/running-header metadata remains the literal

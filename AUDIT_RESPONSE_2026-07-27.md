@@ -499,13 +499,17 @@ the commit-bound campaign remains untouched:
     visually inspected without clipping, overlap, blank-content loss, or table/figure loss.
 
 18. The focused-package staging commit `6b3a2382` passed the full strict local rebuild before
-    the V4 outcome was available: the generator/artifact equality checks passed, all 200
-    active cells across 24 required families recomputed with zero mismatch or untraceable
-    cells, the claim map and generated Table 0 verified, all governed adjudicators passed,
-    and the release manifest verified 1,069 files with zero missing release assets. This is
-    artifact-integrity evidence, not scientific confirmation or acceptance evidence. It does
-    not close the required post-V4 rebuilt-PDF check, separately hydrated clean-clone replay,
-    final release/upload verification, or human author/contact/legal metadata review.
+    the V4 outcome was available. After V4 integration, commit `4bda1169` passed the full
+    strict local rebuild again: generator/artifact equality checks passed, all 201 active
+    cells across 25 required families recomputed with zero mismatch or untraceable cells,
+    the claim map and generated Table 0 verified, every governed adjudicator passed, and
+    the release manifest verified 1,073 files with zero missing release assets. The 57-page
+    reader, both 33-page main-paper layouts, and 18-page supplement rebuilt successfully;
+    every page containing new V4 text or Table 1b was rendered and visually inspected
+    without clipping, overlap, or missing content. This is artifact-integrity evidence,
+    not scientific confirmation or acceptance evidence. The separately hydrated
+    clean-clone replay, final release/upload verification, and human author/contact/legal
+    metadata review remain open at this checkpoint.
 
 ### Disposition against the 2026-07-30 23:27 prioritized rejection-risk list
 
@@ -524,12 +528,13 @@ source/build defect has direct local evidence; it does not mean the paper is sub
 | 8 | **PARTIAL** | The new MovieLens cohort-flow figure exposes the 1,033/6,040 primary cohort and training-catalog conditioning. Rolling cutoffs, out-of-catalog-as-miss coverage, subgroup uncertainty, and another non-Amazon domain remain open. |
 | 9 | **PARTIAL — RELEASE BLOCKED** | Graph/count metadata and candidate-bundle inventory are mechanically aligned; the stale 908-entry ZIP is rejected. Final creators, V4 counts, tag, rebuilt bundle, upload, and download/hash verification remain open. |
 | 10 | **PARTIAL** | Public guidance now says tables are generated while TeX prose is separately maintained, and the health gate enforces that boundary. The outcome-complete machine-readable clean-clone attestation remains pending. |
-| 11 | **PARTIAL** | The paper is split into a 33-page `acmsmall` main and 18-page supplement with page-by-page visual QA. Final post-V4 rebuild/accessibility checks and real submission metadata remain open. |
+| 11 | **PARTIAL — POST-V4 PDF CHECK CLOSED** | The paper is split into 33-page TORS and `acmsmall` mains plus an 18-page supplement. Post-V4 builds passed, the reader scan was clean, and all pages containing V4 text or Table 1b were visually checked. Real submission metadata and final accessibility/legal review remain open. |
 | 12 | **OPEN HISTORICAL LIMIT** | V3 custody/resume history cannot be repaired retrospectively and external custody was not present. V4 must be reported only under its own frozen lifecycle; it is not independent custody. |
 | 13 | **OPEN — AUTHOR/LEGAL** | Aggregate public arithmetic is replayable; lawful release or independent escrow of private endpoints/sidecars and institutional retention/licensing decisions remain open. |
 | 14 | **OPEN SCIENTIFIC** | WEARec remains an equal-evaluation feasibility run with unequal architecture/training/search history, not an equal-budget matched comparison. |
 | 15 | **OPEN SCIENTIFIC/ENGINEERING** | No true bypass, optimized structured kernel, or counterbalanced latency/memory/energy distribution supports a practical-efficiency claim. |
 | 16 | **CLOSED IN STAGING (EDITORIAL SCOPE)** | The abstract follows one question--evidence--boundary spine; the main includes the FIR evidence map, cohort flow, and comparator-design matrix; chronology/VOID/probe ledgers moved to the supplement. Scientific risks above remain unchanged. |
 
-The V4 verdict is now integrated. Final rebuilt-PDF verification, the archival candidate,
-and human metadata/legal items remain open and will not be marked closed by these source repairs.
+The V4 verdict and post-V4 rebuilt-PDF verification are now integrated. The separately
+hydrated clean-clone attestation, archival candidate, and human metadata/legal items remain
+open and will not be marked closed by these source repairs.

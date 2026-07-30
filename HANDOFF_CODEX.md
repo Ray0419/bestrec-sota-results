@@ -1,4 +1,4 @@
-# CURRENT HANDOFF — July 30 claim-accuracy phase clean-clone verified (2026-07-30)
+# CURRENT HANDOFF — E-E V4 integrated; final release replay pending (2026-07-31)
 
 The latest manuscript/audit phase has completed its local substantive work. The frozen
 pointwise mechanism result remains `POINTWISE-FIR-DISCRIMINATED`: learned FIR minus
@@ -33,15 +33,26 @@ TeX, generated tables, the bibliography, the graph/claim-map generators, and
 - separates Amazon and MovieLens ethics/sidecar governance, completes AlphaFuse
   proceedings metadata, and narrows TIGER preprocessing geometry to what its paper states.
 
-The fail-closed graph recomputes 200 active cells across 24 required families with zero
-mismatch or untraceable cells. The reader PDF is 55 pages with `scan: CLEAN`; the 49-page
-TORS review target and 50-page acmsmall preview compile under the logged author-metadata
-draft waiver. Visual inspection of the revised results, ethics, and AlphaFuse-reference
-pages found no clipping or overlap. Commit `8605f34b` passed the full strict local replay
-and a separately hydrated pristine-clone replay: all 1,054 release-manifest files verified,
-all governed adjudicators passed, and both committed PDFs rebuilt byte-identically. At the
-time of this handoff update, only the branch push and release-manifest upload/download hash
-verification remain as machine-side release actions.
+The fail-closed graph now recomputes 201 active cells across 25 required families with
+zero mismatch or untraceable cells. The E-E V4 normal-initialization sensitivity is now
+complete and integrated. Its exact verdict is
+`EEV4-ALPHAFUSE-ABOVE-NORMAL-SASREC`: normal-init SASRec-ID NDCG@10 is
+0.043065 [0.042645,0.043486], and the V3 AlphaFuse-style package remains above it by
++0.005207 [+0.004779,+0.005635]. Normal initialization also exceeds the earlier V3
+zero-init arm by +0.004042 [+0.003089,+0.004995]. This is prospectively frozen but
+outcome-known, same-investigator, cross-campaign sensitivity evidence. Phase/date and
+initialization are confounded; architecture, capacity, and parameter allocation remain
+unequal. It is not independent confirmation, causal initialization isolation, an
+equal-budget factorial, or SOTA.
+
+Commit `4bda1169` passed the full strict local replay: all 1,073 release-manifest files
+verified, all governed adjudicators passed, and the graph recomputed 201 active cells
+across 25 required families with zero mismatch or untraceable cells. The reader PDF is
+57 pages with `scan: CLEAN`; the focused TORS and acmsmall mains are each 33 pages and
+the reviewer supplement is 18 pages. All pages containing the new V4 text and Table 1b
+were rendered and visually inspected without clipping or overlap. Final handoff/audit
+wording, the separately hydrated pristine-clone replay, attestation commit, push, and
+release-manifest upload/download hash verification remain machine-side release actions.
 
 Do not stage user-modified `PAPER_REVIEW_AUDIT.md` or unrelated untracked QA/tmp files.
 Human author/affiliation/country/contact/running-header metadata remains the literal
@@ -50,13 +61,11 @@ same-investigator/outcome-known positive evidence, a negative MovieLens replicat
 unequal architecture/training/tuning in current-baseline studies, venue mode/length,
 final legal/conflict/funding review, and an immutable DOI-backed deposit.
 
-The next empirical phase is `PREREG_EE_V4`: eight fresh upstream-default-normal-init
-SASRec-ID sensitivity runs in four frozen two-process waves. It directly addresses the
-zero-initialized E-E V3 control limitation while remaining outcome-known, same-investigator,
-cross-campaign evidence; phase/date and initialization remain confounded, and it is not an
-equal-capacity factorial or independent confirmation. Do not inspect or integrate any V4
-endpoint before its 8/8 terminal trainings, READY record, 8/8 sealed evaluations, and the
-committed V4 adjudicator's first authorized read.
+The V4 campaign completed all 8/8 terminal trainings and 8/8 sealed evaluations with no
+ledger errors. The committed adjudicator was the first authorized endpoint reader. The
+next scientific work, if authorized after release closure, is an equal-budget factorial or
+capacity-matched decomposition; it must be separately frozen and must not be described as
+retrospective confirmation of V4.
 
 ---
 

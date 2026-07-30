@@ -13,7 +13,7 @@ independence, custody, or construct validity.
 | 4 | **Current artifact replay CLOSED; frozen V3 training replay defect disclosed** | `bootstrap_public_clone.py` hydrates and raw-hash-verifies every release section. All 48 Software V3 assets were uploaded, and a fresh HTTPS clone directly downloaded and verified the complete **407-asset / 9,489,409,339-byte** public boundary with zero local reuse. A subsequent pristine clone at pushed commit `9cfe5c1f` re-verified all 407 bytesets, installed the frozen 91-package environment, recomputed 196/196 active cells across 20 families with zero mismatch/untraceable cells, verified the 1,009-file manifest, passed every governed adjudicator, rendered the 47-page reader PDF with `scan: CLEAN`, and passed both ACM targets under the draft waiver. This artifact replay did not rerun V3 training. The audit correctly found that the frozen common module expects the CRLF SHA-256 `a230d17c…` for one MI lineage-reference JSON while a normal tagged checkout produces LF SHA-256 `37c78ef…`; direct clean-tag execution fails that raw input assertion until the historical CRLF representation is restored. `FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md` records both hashes and the descendant preserves the exact CRLF bytes. The reference was not read for runtime configuration, so endpoint arithmetic is unchanged, but frozen-tag portability is not claimed. |
 | 5 | **CLOSED** | E-A is labeled the frozen independent-arm Welch/Satterthwaite analysis: ordinary 95% Welch CI, df=13.939; its paired-by-seed result is descriptive only. Hybrid intervals are ordinary paired 95% CIs; Holm adjusts p-values/decisions, not intervals. A new health gate forbids the stale labels. |
 | 6 | **OPEN human verification; disclosure closed** | Dirty-tree execution across five commits, absent independent sidecar custody, and the limited local start marker are retained in the main text and erratum. The study remains outcome-known exploratory evidence. Only the maintainer can verify pre-adjudication human/tool visibility. |
-| 7 | **Current frequency and clean text+ID comparator coverage CLOSED narrowly** | FreqRec and WEARec are cited in Table 0, Related Work, Method, and the bibliography; BSARec is correctly scoped to Theorem 1 on repeated softmax attention, not the HSTU-style operator. The prospectively frozen official-code WEARec campaign returned `WEAREC-BELOW-EXISTING-REFERENCE`: WEARec NDCG@10 0.059184 [0.058674,0.059693] versus the existing 0.067337 [0.067063,0.067611] reference; descriptive unpaired delta −0.008154 [−0.008689,−0.007618]. The outcome-visible V2 AlphaFuse port remains permanently `NONCOUNTABLE`/`manuscript_allowed=false`. The separately frozen E-E V3 campaign completed 16/16 training bundles, then 16/16 sealed TEST evaluations, before the unchanged committed adjudicator read the endpoints under the protocol. Exact verdict: `EEV3-REPORTABLE-OUTCOME-KNOWN`. AlphaFuse-style MiniLM NDCG@10 is 0.048273 [0.048129,0.048416] versus a zero-initialized upstream-class SASRec-ID control at 0.039024 [0.038106,0.039941]; descriptive independent-arm Welch delta +0.009249 [0.008329,0.010169]. The package remains −0.019065 [−0.019347,−0.018783] below the existing reference. Prelaunch preparation opened the outcome-known combined TRAIN/VALID/TEST export but retained only TRAIN histories and VALID targets for training; fitting/selection did not load, hash, or score TEST and sealed assessment waited for READY. This closes comparator execution, not the independence gap: it is prospectively frozen only for its fresh optimizer seeds on an outcome-known split by the same investigators. MiniLM replaces the published AlphaFuse text vectors; text availability, initialization, trainable capacity, parameter allocation, and architectures differ, and upstream-default normal initialization was not tested. The result is a whole-package contrast, not a published-table reproduction, null-space-fusion isolation, equal-tuning evidence, independent confirmation, or SOTA. |
+| 7 | **Current frequency and clean text+ID comparator coverage CLOSED narrowly** | FreqRec and WEARec are cited in Table 0, Related Work, Method, and the bibliography; BSARec is correctly scoped to Theorem 1 on repeated softmax attention, not the HSTU-style operator. The prospectively frozen official-code WEARec campaign returned `WEAREC-BELOW-EXISTING-REFERENCE`: WEARec NDCG@10 0.059184 [0.058674,0.059693] versus the existing 0.067337 [0.067063,0.067611] reference; descriptive unpaired delta −0.008154 [−0.008689,−0.007618]. The outcome-visible V2 AlphaFuse port remains permanently `NONCOUNTABLE`/`manuscript_allowed=false`. The separately frozen E-E V3 campaign completed 16/16 training bundles, then 16/16 sealed TEST evaluations, before the unchanged committed adjudicator read the endpoints under the protocol. Exact verdict: `EEV3-REPORTABLE-OUTCOME-KNOWN`. AlphaFuse-style MiniLM NDCG@10 is 0.048273 [0.048129,0.048416] versus a zero-initialized upstream-class SASRec-ID control at 0.039024 [0.038106,0.039941]; descriptive independent-arm Welch delta +0.009249 [0.008329,0.010169]. The package remains −0.019065 [−0.019347,−0.018783] below the existing reference. Prelaunch preparation opened the outcome-known combined TRAIN/VALID/TEST export but retained only TRAIN histories and VALID targets for training; fitting/selection did not load, hash, or score TEST and sealed assessment waited for READY. This closes comparator execution, not the independence gap: it is prospectively frozen only for its fresh optimizer seeds on an outcome-known split by the same investigators. MiniLM replaces the published AlphaFuse text vectors; text availability, initialization, trainable capacity, parameter allocation, and architectures differ, and the parser-default `Normal(0,1)` setting was not tested. Official recipes may override initialization by dataset, so the parser setting is not a universal upstream default. The result is a whole-package contrast, not a published-table reproduction, null-space-fusion isolation, equal-tuning evidence, independent confirmation, or SOTA. |
 | 8 | **PARTLY CLOSED by prospective construct/time sensitivity** | The Amazon estimand remains next recorded review event, not preference/purchase/deployment engagement. The prospectively frozen MovieLens study now supplies a rating≥4 primary estimand, an all-rating construct sensitivity, and a global 90% time boundary with a training-observed catalog. Its negative verdict is reported. Verified-purchase, keep-latest, real implicit-event, and query-time-catalog sensitivities remain unrun. |
 | 9 | **Numerical graph, claim-map, and Table 0 quantitative provenance CLOSED; mutation depth remains open** | The graph has 200 active cells across 24 required families with zero mismatch/untraceable cells. The added evidence-map cell binds all eight plotted rows to six released adjudications without pooling them. The MovieLens cell verifies frozen code hashes and recomputes released aggregate seed-vector, paired-interval, Holm/NI, sensitivity, and resource arithmetic. The WEARec cell verifies official-code provenance, six reference artifacts, and released NDCG/Welch arithmetic while checking the recorded private-endpoint hash ledger. The E-E V3 cell recomputes all released NDCG/HR/MRR summaries and both Welch contrasts, verifies the same six reference artifacts, validates fixed-dataset sensitivity/resource metadata, and checks the 16-row private endpoint/sidecar ledger's schema, 64-hex syntax, and uniqueness. It records `private_endpoint_replay=0` and `private_bootstrap_replay=0`; it does not read or hash the private files. The local adjudicators checked the actual private files. `build_claim_artifact_map.py` asserts that every active cell is mapped exactly once. `build_table0_claim_ledger.py` generates Table 0’s quantitative fields from active graph cells, and the strict wrapper fails if its marked region drifts. Literature attribution remains citation-checked authored prose. Full mutation/fault-injection depth remains future assurance work. |
 | 10 | **Primary paper type CLOSED; validation depth OPEN** | Title, abstract, Introduction, Table 0, Related Work, Discussion, and Conclusion consistently define the paper as an **incremental modular FIR contribution**. The audit/rebuild apparatus is a supporting contribution, not the lead. Current-baseline execution, cross-repository validation, fault injection, and reviewer-usability evidence would strengthen but do not redefine the paper type. |
@@ -293,7 +293,7 @@ investigators. Prelaunch preparation opened the outcome-known combined export bu
 retained only TRAIN/VALID fields for training; fitting and selection did not load, hash,
 or score TEST. MiniLM replaces the published AlphaFuse text vectors, and the arms differ
 in text availability, initialization, trainable capacity, parameter allocation, and
-  architecture. The separately frozen E-E V4 sensitivity tests upstream-default normal
+  architecture. The separately frozen E-E V4 sensitivity tests parser-default normal
   initialization; its result is pending and is not backfilled into this V3 result. The result is
 countable whole-package current-comparator evidence, not a
 published-table reproduction, paired experiment, null-space-fusion isolation, equal-
@@ -321,7 +321,7 @@ defects. They are now corrected without changing any experimental value or verdi
    hash private endpoint/sidecar bytes. The local adjudicator performed the byte-level
    digest checks.
 3. The E-E V3 control is labeled a **zero-initialized upstream-class SASRec-ID
-   control**, not upstream-default SASRec. A normal-initialization sensitivity and an
+   control**, not parser-default-normal SASRec. A normal-initialization sensitivity and an
    equal-budget factorial remain open; the whole-package boundary is retained.
 4. `PAPER_SUBMISSION.md` is the sole canonical authored source. `PAPER_DRAFT.md` now
    carries a do-not-submit historical/noncanonical banner, and a health gate enforces
@@ -333,7 +333,7 @@ defects. They are now corrected without changing any experimental value or verdi
    DOI `10.1145/3726302.3729894`. TIGER preprocessing remains described as a paper-level
    statement rather than proof of the unreleased preprocessing geometry.
 
-## 2026-07-30 upstream-default-normal-init sensitivity addendum
+## 2026-07-30 parser-default-normal-init sensitivity addendum
 
 Audit item 4 correctly identifies the zero-initialized E-E V3 SASRec control as a
 comparator-fairness limitation. `PREREG_EE_V4.md` and its fail-closed source now
@@ -372,8 +372,11 @@ the commit-bound campaign remains untouched:
    byte identity before verifying any recorded cell. A stale self-consistent manifest can
    therefore no longer pass the strict gate.
 3. README now states that only tables are mechanically generated from canonical Markdown/
-   the artifact graph; TeX prose is a separately maintained mirror under semantic gates.
-   The Introduction also replaces the ambiguous `package-versus-repository-ID` label with
+    the artifact graph; TeX prose is a separately maintained mirror under semantic gates.
+    The health gate now requires that separately-maintained-TeX disclosure in README,
+    `CANONICAL_SUBMISSION.md`, and `VENUE_PLAN.md`, and rejects a renewed claim that the
+    TORS/venue/ACM PDF or TeX prose is wholly generated from canonical Markdown.
+    The Introduction also replaces the ambiguous `package-versus-repository-ID` label with
    the exact zero-initialized upstream-class SASRec-ID control. The V4 audit response now
    distinguishes the upstream CLI parser default from the dataset-varying official README
    recipes, which use both zero and normal ID initialization.
@@ -485,6 +488,39 @@ the commit-bound campaign remains untouched:
     compiler completion, cross-references, content markers, forbidden claims, and the main
     paper's page range. All 33 main pages and all 18 supplement pages were rendered and
     visually inspected without clipping, overlap, blank-content loss, or table/figure loss.
+
+18. The focused-package staging commit `6b3a2382` passed the full strict local rebuild before
+    the V4 outcome was available: the generator/artifact equality checks passed, all 200
+    active cells across 24 required families recomputed with zero mismatch or untraceable
+    cells, the claim map and generated Table 0 verified, all governed adjudicators passed,
+    and the release manifest verified 1,069 files with zero missing release assets. This is
+    artifact-integrity evidence, not scientific confirmation or acceptance evidence. It does
+    not close the required post-V4 rebuilt-PDF check, separately hydrated clean-clone replay,
+    final release/upload verification, or human author/contact/legal metadata review.
+
+### Disposition against the 2026-07-30 23:27 prioritized rejection-risk list
+
+This is a status ledger, not an acceptance uplift. `CLOSED IN STAGING` means the named
+source/build defect has direct local evidence; it does not mean the paper is submission-ready.
+
+| Audit risk | Current disposition | Evidence boundary / remaining work |
+|---:|---|---|
+| 1 | **OPEN — HUMAN** | Real author/affiliation/contact/running-header/declaration/release-creator metadata and legal/COI/funding review remain mandatory; no placeholder was invented. |
+| 2 | **CLOSED IN STAGING** | Markdown and TeX now say the HSTU-BLaIR comparison has the same users/items but one fewer reported interaction; the health gate rejects the false identity wording. |
+| 3 | **CLOSED IN STAGING** | The tracked result manifest was regenerated and strict submission mode independently regenerates it and requires byte equality before accepting its cells. |
+| 4 | **OPEN SCIENTIFIC; FRAMING REPAIRED** | The negative, selected-cohort MovieLens result remains central and blocks general FIR/cross-domain claims; the module is optional and the paper is framed as bounded evaluation/falsification. |
+| 5 | **PARTIAL — V4 IN PROGRESS** | V3 is labeled as a zero-initialized upstream-class control. V4 tests only the parser-default `Normal(0,1)` sensitivity. It is not the requested equal-budget 2x2 factorial, capacity match, text-only/ID-only decomposition, or permuted-text control. |
+| 6 | **OPEN SCIENTIFIC** | The closest current systems are positioned accurately, but protocol-matched TV-Rec and a state-space/long-convolution baseline remain unrun. |
+| 7 | **PARTIAL** | Table 1 is explicitly descriptive and no longer carries FIR inference; governed contrasts have exact vectors/estimators. A single valid inferential family for the heterogeneous historical ladder is neither claimed nor retrofitted. |
+| 8 | **PARTIAL** | The new MovieLens cohort-flow figure exposes the 1,033/6,040 primary cohort and training-catalog conditioning. Rolling cutoffs, out-of-catalog-as-miss coverage, subgroup uncertainty, and another non-Amazon domain remain open. |
+| 9 | **PARTIAL — RELEASE BLOCKED** | Graph/count metadata and candidate-bundle inventory are mechanically aligned; the stale 908-entry ZIP is rejected. Final creators, V4 counts, tag, rebuilt bundle, upload, and download/hash verification remain open. |
+| 10 | **PARTIAL** | Public guidance now says tables are generated while TeX prose is separately maintained, and the health gate enforces that boundary. The outcome-complete machine-readable clean-clone attestation remains pending. |
+| 11 | **PARTIAL** | The paper is split into a 33-page `acmsmall` main and 18-page supplement with page-by-page visual QA. Final post-V4 rebuild/accessibility checks and real submission metadata remain open. |
+| 12 | **OPEN HISTORICAL LIMIT** | V3 custody/resume history cannot be repaired retrospectively and external custody was not present. V4 must be reported only under its own frozen lifecycle; it is not independent custody. |
+| 13 | **OPEN — AUTHOR/LEGAL** | Aggregate public arithmetic is replayable; lawful release or independent escrow of private endpoints/sidecars and institutional retention/licensing decisions remain open. |
+| 14 | **OPEN SCIENTIFIC** | WEARec remains an equal-evaluation feasibility run with unequal architecture/training/search history, not an equal-budget matched comparison. |
+| 15 | **OPEN SCIENTIFIC/ENGINEERING** | No true bypass, optimized structured kernel, or counterbalanced latency/memory/energy distribution supports a practical-efficiency claim. |
+| 16 | **CLOSED IN STAGING (EDITORIAL SCOPE)** | The abstract follows one question--evidence--boundary spine; the main includes the FIR evidence map, cohort flow, and comparator-design matrix; chronology/VOID/probe ledgers moved to the supplement. Scientific risks above remain unchanged. |
 
 The V4 verdict, final rebuilt-PDF verification, archival candidate, and human
 metadata/legal items remain open and will not be marked closed by these source repairs.

@@ -189,8 +189,16 @@ H10_BANNED += ("before any TEST read", "validates all endpoint/sidecar hashes",
                "validates private endpoint/sidecar hashes",
                "schema/intervals and endpoint hashes", "repository SASRec-ID",
                "the data are public, platform-pseudonymized product reviews",
-               "identical dataset stats to ours", "package-versus-repository-ID")
+               "identical dataset stats to ours", "package-versus-repository-ID",
+               "upstream-default normal initialization", "upstream-default-initialization")
 H10_BANNED_RE += (r"ordinary paired 95\\?% CI[^.\n]{0,50}0\.002265",)
+# Audit 2026-07-30 item 10: the reader PDF is rendered from canonical Markdown,
+# but venue prose is maintained separately.  Prevent the narrower table-generation
+# statement from drifting back into a false whole-prose-generation claim.
+H10_BANNED_RE += (
+    r"(?i)(?:TORS|venue|ACM|TeX)[^.\n]{0,50}(?:PDF|prose)[^.\n]{0,50}"
+    r"(?:is|are)?\s*generated (?:entirely )?from (?:the )?canonical Markdown",
+)
 _pub10 = [os.path.join(HERE, "..", rel) for rel in (
     "PAPER_SUBMISSION.md", "README.md", "COVER_LETTER_TORS.md", "CANONICAL_SUBMISSION.md",
     "PLAIN_LANGUAGE_COMPANION.md", "CITATION.cff", ".zenodo.json",
@@ -237,6 +245,14 @@ for _rel10 in ("PAPER_SUBMISSION.md", os.path.join("paper_tex", "sections", "04-
     _body10 = io.open(_path10, encoding="utf-8", errors="replace").read().lower()
     if _matrix10 not in re.sub(r"\s+", " ", _body10):
         fails.append(f"H10: comparator-design boundary missing from {_rel10}")
+# Public reconstruction guidance must disclose the actual source relationship:
+# tables are generated, while TeX prose is separately maintained and parity-gated.
+_mirror10 = "separately maintained tex"
+for _rel10 in ("README.md", "CANONICAL_SUBMISSION.md", "VENUE_PLAN.md"):
+    _path10 = os.path.join(HERE, "..", _rel10)
+    _body10 = io.open(_path10, encoding="utf-8", errors="replace").read().lower()
+    if _mirror10 not in re.sub(r"\s+", " ", _body10):
+        fails.append(f"H10: separately-maintained-TeX disclosure missing from {_rel10}")
 _extra10 = ""
 for _p10 in (os.path.join(HERE, "PAPER_TORS_acmsmall.pdf"),
              os.path.join(HERE, "PAPER_TORS_SUPPLEMENT.pdf"),

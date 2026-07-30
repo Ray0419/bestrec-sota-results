@@ -1,11 +1,11 @@
 {
   "release": "v0.9-audit-evidence (immutable data assets) + the current deposit tag (deposit releases supersede each other; the current tag and bundle inventory are recorded in DOI_DEPOSIT_INSTRUCTIONS.md)",
-  "date": "2026-07-30",
+  "date": "2026-07-31",
   "license": {
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "2a0130ba10d8da25b156dfdab9f208c244e67cf1",
+  "git_commit": "e8efa6852ffe3df95cc449086712c2f86e0ce7f7",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -135,7 +135,7 @@
       "sha256": "0eaad74a57698a878e5aaa2e7d0e314232b53759c4c449b509b34867cb9d18bc"
     },
     "_bestrec_run/build_hstu_tables.py": {
-      "sha256": "d91956e4a8ba754924c8d08d70e7a3266892963ce4328d0b979fa7da602fc592"
+      "sha256": "e634f5ed3cc83941bb17b4a6a7e6821316e9719291359ab280ff6324b3f2d395"
     },
     "_bestrec_run/test_hstu_parity.py": {
       "sha256": "1656c393adaafb159fd48338b5bced547c11a1540a2d0f09ef7a800474d53bdd"
@@ -511,6 +511,18 @@
     },
     "_bestrec_run/adjudicate_ee_v3.py": {
       "sha256": "d69695920fc8df242602bdea6c43acf6a2f35324400302083b4964bb24f0eef2"
+    },
+    "PREREG_EE_V4.md": {
+      "sha256": "ad7d9f0fdabb5d23fd0896496e0f9049ad18e99dc11e5a1f87686bcc47290b58"
+    },
+    "_bestrec_run/adjudicate_ee_v4.py": {
+      "sha256": "3ed0a22bf4659d88d5e8108b58c864d6bee16e65df2ebdf388a6abb000aea554"
+    },
+    "_bestrec_run/run_ee_v4.py": {
+      "sha256": "d4aa016c554c362c681673cb1b46ad9abd00dac829e29f26d4e4341e7633a08f"
+    },
+    "_bestrec_run/run_ee_v4_campaign.py": {
+      "sha256": "fd9ef51ee896b1fd06fbd3e5dcde872cea15e321ce39d691e1c9cc9a4d460e1c"
     }
   },
   "result_families": {
@@ -1004,56 +1016,56 @@
   "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
   "submission_docs": {
     ".zenodo.json": {
-      "sha256": "dd831797afbefa6ae4263839faca57acb183a40d71f55610d11e499778ffd164",
+      "sha256": "183e8a237cef68ec72cb805dd4b1a0c66030d705245b16b716933f8083f1baa3",
       "bytes": 2076
     },
     "CITATION.cff": {
-      "sha256": "8a467980abe9ff5047fc337b4990cc13b912cf1f4111f5b838405669f83575e4",
+      "sha256": "be6f65bfa243c9679503aa172bb4bb96112e6ea624e6cd0a335f7eb71da99ac0",
       "bytes": 1612
     },
     "README.md": {
-      "sha256": "6a44b0d86db5aa927f3f91b7bcde873c82fc733dd753a27665bfbccdc5d2fb54",
-      "bytes": 11616
+      "sha256": "42092cb5a23e39de02eb87d510f29417f9a2529aca2d7c7968d4a4130664f92c",
+      "bytes": 12796
     },
     "DOI_DEPOSIT_INSTRUCTIONS.md": {
-      "sha256": "2cb0101df263c2ab50d4a1327e7ceda2102f41b25e41a57d8d8fadb5dea721ea",
-      "bytes": 2913
+      "sha256": "4b9cba7c923cd483207a676792de093693bc63958d0c8df33531975e883fc662",
+      "bytes": 3012
     },
     "VENUE_PLAN.md": {
-      "sha256": "8ee875a748316ff37863450514b3296416aa78e51b7cc0651f82ed1ec19e4f9a",
-      "bytes": 5517
+      "sha256": "b864901d888146d5fc231405344534ec18398a20c0a0f810fc8f44915417b6ad",
+      "bytes": 8174
     },
     "PAPER_SUBMISSION.md": {
-      "sha256": "bf9a46a7818e92bdb494271e09d50e0ea64b81b92fec2679eff783d368d8bb96",
-      "bytes": 174601
+      "sha256": "353e2108c4ae26326772c1f9bcef018a1d42e8e122741da6e1e5ea2ac3751f6c",
+      "bytes": 179087
     },
     "PAPER_SUBMISSION.pdf": {
-      "sha256": "4afbbc853a35254f78d55913d28d88910ff66ec24b4ae853bc7d158474aac551",
-      "bytes": 1614336
+      "sha256": "46917b5f5ce3c13abe573544c1ccbc9c23ab5d2d9135267cffe6d4b2d17a3227",
+      "bytes": 1855400
     },
     "PAPER_DRAFT.md": {
       "sha256": "200427a21e31fba479d3e2a5247330b4e4822719fdb2573880b178031f6e9310",
-      "bytes": 234696
+      "bytes": 233892
     },
     "CANONICAL_SUBMISSION.md": {
-      "sha256": "6ba5931fefedf77fae9f7558d97620f838ee4de408f95020b36a46fd2d1a714c",
-      "bytes": 19597
+      "sha256": "e4869e6dd5309f21db377846d4740a0ebd59ecad4820b9d2084278b707fd8679",
+      "bytes": 19862
     },
     "AUDIT_RESPONSE_2026-07-27.md": {
-      "sha256": "461118afc1a8950b622b637ae8626e6db7d50ffd332d1f0fa50e03da1a33f82f",
-      "bytes": 34091
+      "sha256": "9af75e29c97e7a28385a004788215635dca18d79f246cec4df9882184633537b",
+      "bytes": 46968
     },
     "COVER_LETTER_TORS.md": {
       "sha256": "9a791f5ad396254c896d8fd340d910ca9199f57c315bdfd3b04b1a48fae1300f",
       "bytes": 4171
     },
     "CLAIM_ARTIFACT_MAP.md": {
-      "sha256": "a6ab2eb9c718a940ab1033e8f8a04fc037e1d80ba03e8c8c078c4f535229c209",
-      "bytes": 17520
+      "sha256": "e7623f8773bf02df94f669d7f90bc87608e510be5ba4921fcc3b391ff745f2bd",
+      "bytes": 19049
     },
     "PHASE_COMPLETION_AUDIT_2026-07-28.md": {
-      "sha256": "580a075a1a5a2b66dacb8da736746fdf86af5e28026bc5d6823a571bf0592cb8",
-      "bytes": 8438
+      "sha256": "fe27535ca39ac6747f83b9b814acbe16388b72f3671d0ace334ffe178c95afba",
+      "bytes": 8483
     },
     "MOCK_REVIEW_2026-07-27.md": {
       "sha256": "f89d207c7093a31d2c64454bbec6e44c4d9abd561e2f2e640a0c7866d59377b7",
@@ -1065,11 +1077,11 @@
     },
     "THEIRS_ON_OURS_REPORT.md": {
       "sha256": "6bff70f42aba38c629adbf374a445c9a73ed6c01a529fdf12e06e9becfbd52ed",
-      "bytes": 24043
+      "bytes": 23657
     },
     "PINNED_ENV_PARITY_REPORT.md": {
       "sha256": "bedc1a50b90e895b5b8221e230a442a50ccdd0558455412a7571b322c93e5715",
-      "bytes": 17177
+      "bytes": 16918
     },
     "HSTU_PARITY_REPORT.md": {
       "sha256": "808b3a8ab739fc77084ac43acf0dd2a470d04faad5566d82a7379d0e762dc2ea",
@@ -1088,24 +1100,24 @@
       "bytes": 3435
     },
     "_bestrec_run/build_claim_artifact_map.py": {
-      "sha256": "c28b0e173c06011edcfd0518ee1314d48f2adb10f8b44dd91b3159a6b17befa6",
-      "bytes": 18422
+      "sha256": "5b4d17413cb756beca543cd14536ba8357cd1795ee4b8dbf1079571ea28bb579",
+      "bytes": 19640
     },
     "_bestrec_run/build_table0_claim_ledger.py": {
       "sha256": "b9020b786a2ee10b3b5ce6beeca8b57669a14e04fcb96eb2e8dcc27ce8a2c4eb",
       "bytes": 8268
     },
     "_bestrec_run/build_deposit_bundle.py": {
-      "sha256": "9e958c80aa40b79b54da47e343c6a6cefa9ea8f394cd9a623d8001627d84ba0c",
-      "bytes": 25735
+      "sha256": "75ff2803dadd6e15df148c60c82975b226bc256b2414e3f372b2f5d994dfea5c",
+      "bytes": 27504
     },
     "_bestrec_run/normalize_pdf_metadata.py": {
       "sha256": "63205ef1460cdb6bb2607a10a748c64c8e8b90f162f3e7c01f62976e2464c31c",
       "bytes": 1992
     },
     "_bestrec_run/render_paper_pdf.py": {
-      "sha256": "75564ba3ede61242d53c9e1bdc8f9b382be7e401a86100461eec0590f8c3007e",
-      "bytes": 6299
+      "sha256": "477e012d6690c93568b3dfb1048c25e3f85e7c3adf62bc0e2f14887162fa3587",
+      "bytes": 9733
     },
     "_bestrec_run/fbgemm_shims.py": {
       "sha256": "bb661345a50e11c20ccd16dc9699884467dbbc137fb2b26893804de7aecc9d34",
@@ -1113,27 +1125,39 @@
     },
     "_bestrec_run/rebuild_hstu_submission.py": {
       "sha256": "cca3566017cbe8815cb5991f7296e854e6a97b1650aa8b16e2442a9e01d6ad09",
-      "bytes": 13174
+      "bytes": 13087
     },
     "_bestrec_run/update_release_manifest.py": {
-      "sha256": "f614096d51614616c10bc5b45fbd01c54e3a63f1da9e60ce03b281a7b9584c8b",
-      "bytes": 44980
+      "sha256": "688e0349de197292035616d3bae5a9308bc1c4c48b2a4956faab8b4ee7c0ea0e",
+      "bytes": 45549
+    },
+    "_bestrec_run/clean_clone_replay.py": {
+      "sha256": "874088b37e7fa7c9b0e4ca7a8a3bf4944e54ec17c1c970d38705b11bbe19cb2c",
+      "bytes": 21075
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "7c3bf4a3d6687d71ec49ade9873084947eb7f64bb0c32165471f6c9013153d97",
-      "bytes": 515244
+      "sha256": "7ed0878c581ce0ceab1b33fa85fcd40787ea9d9f8133cb1d08b26a391cac2535",
+      "bytes": 342423
+    },
+    "paper_tex/PAPER_TORS_acmsmall.pdf": {
+      "sha256": "f30ce53a5175b281a81218dba4eed4ffe03a5c4a1ca4fd0302ff8a38f7041a87",
+      "bytes": 347640
+    },
+    "paper_tex/PAPER_TORS_SUPPLEMENT.pdf": {
+      "sha256": "8002d6a4552ab7ea37141526242301e596920384c1b52da121f68ec0c69bc360",
+      "bytes": 302335
     },
     "paper_tex/build.ps1": {
-      "sha256": "fe9f708fe0d190fae02b11af661b03f878606bc71bd520636320e9ebb3e7c756",
-      "bytes": 4432
+      "sha256": "aae386637ff10b7922d452d236df21e87e45eafd0220a07a3490d55df8f83cc3",
+      "bytes": 6627
     },
     "paper_tex/build.sh": {
-      "sha256": "67eeddc1f0024e4d8d1bde8a6376d3753d3a23e6bdeaaf41303e8aee7c2f5c57",
-      "bytes": 4826
+      "sha256": "50aa7cac9f095ac9d9512c2ea0c7ba3eeb4c77fd8273d37f06ae509e6ddc24d5",
+      "bytes": 5229
     },
     "_bestrec_run/emit_latex_tables.py": {
-      "sha256": "ab7f2de16d764a46924f689195e06d580928bb2a959bf800c91adfab2b74b87b",
-      "bytes": 29474
+      "sha256": "884b99798145e34841ee25f17843c19f0c52203f657a965d3f0d91270ba6e15f",
+      "bytes": 30469
     }
   },
   "pinned_parity_artifacts": {
@@ -1182,51 +1206,51 @@
     "files": {
       "_bestrec_run/theirs_runs/music_hstu_blair/hstu-sampled-softmax-n512-blair.gin": {
         "sha256": "1a20561f524046a28ae0202d467956df29eba69bc424f9f33ce617ae56789c4a",
-        "bytes": 1288
+        "bytes": 1243
       },
       "_bestrec_run/theirs_runs/music_hstu_blair/metrics.jsonl": {
         "sha256": "f602d3577ca5048ac3e6ba84d9bc1d952a8d950da08c790161ef43e1e6da771a",
-        "bytes": 77524
+        "bytes": 77390
       },
       "_bestrec_run/theirs_runs/music_hstu_blair/run_meta.json": {
         "sha256": "b0e8208d236de1ee4ed985344dbf27775e2066a358947b03a4185f98fef00f65",
-        "bytes": 1439
+        "bytes": 1404
       },
       "_bestrec_run/theirs_runs/music_hstu_blair/tb_logdir_intended.txt": {
         "sha256": "10cd693e01ba04ed9af8f64e45ec7f188eb766d55cfdd13f3e93e4eb75f737f8",
-        "bytes": 154
+        "bytes": 153
       },
       "_bestrec_run/theirs_runs/office_sasrec_final/metrics.jsonl": {
         "sha256": "9ed5b7276598f0247cd19bc7da135ee1271687b55994308d5fd717d3ae4f71a3",
-        "bytes": 94985
+        "bytes": 94818
       },
       "_bestrec_run/theirs_runs/office_sasrec_final/run_meta.json": {
         "sha256": "e0122c81056547ed47ef02dba66fe3d0bf142b257604f131b3eb03271606a829",
-        "bytes": 1452
+        "bytes": 1417
       },
       "_bestrec_run/theirs_runs/office_sasrec_final/sasrec-sampled-softmax-n512-final.gin": {
         "sha256": "521dbda5afc83ce7765e19114f7b21fb06580293543eed15fc115f8b667acd29",
-        "bytes": 1353
+        "bytes": 1307
       },
       "_bestrec_run/theirs_runs/office_sasrec_final/tb_logdir_intended.txt": {
         "sha256": "a6e88dbab92b7d00e6c15971413e135c992602efec922a2bfc31b8ca0476a363",
-        "bytes": 157
+        "bytes": 156
       },
       "_bestrec_run/theirs_runs/office_hstu_blair/hstu-sampled-softmax-n512-blair.gin": {
         "sha256": "667cfe13b7fd51fc8cc3ad6b9d15e87b986aadac1329a3d862aee9c68d69cd38",
-        "bytes": 1289
+        "bytes": 1244
       },
       "_bestrec_run/theirs_runs/office_hstu_blair/metrics.jsonl": {
         "sha256": "563f18f252ad6a77ea0d4da3c5df26641fb363747f6cac7fb51267717c1454d8",
-        "bytes": 94940
+        "bytes": 94773
       },
       "_bestrec_run/theirs_runs/office_hstu_blair/run_meta.json": {
         "sha256": "98a6dfcb2e1b6862eaf5edb6ff07ba7e2282ac3f573fac92ca1819a709375996",
-        "bytes": 1444
+        "bytes": 1409
       },
       "_bestrec_run/theirs_runs/office_hstu_blair/tb_logdir_intended.txt": {
         "sha256": "7cbfc0ad6984515ff90c6f31086983df42b0e43faf72daac3ecaa90fba5fce3a",
-        "bytes": 155
+        "bytes": 154
       },
       "_bestrec_run/theirs_runs/music_hstu_blair.log": {
         "sha256": "b632090a70efeb489f3412087a03424b6526f44f8520e29f5c350106ea356da7",
@@ -1242,10 +1266,10 @@
       }
     }
   },
-  "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes only the rendered paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship the git archive of that commit.",
+  "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes the rendered paper_tex/PAPER_TORS.pdf, PAPER_TORS_acmsmall.pdf, and PAPER_TORS_SUPPLEMENT.pdf artifacts; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.2.0-deposit",
-  "hash_parent_commit": "2a0130ba10d8da25b156dfdab9f208c244e67cf1",
+  "hash_parent_commit": "e8efa6852ffe3df95cc449086712c2f86e0ce7f7",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",
@@ -1687,13 +1711,13 @@
     },
     "_bestrec_run/run_CONNGATE_5seed_driver.log": {
       "sha256": "6fdba7729302006f4124a96d81e42b4cb2799bb661ccabcdc8eb38c2f5decf18",
-      "bytes": 18690
+      "bytes": 18699
     }
   },
   "figure_assets": {
     "figures/fig_tail_law_mechanism_data.csv": {
       "sha256": "4072f262469f709b3f1f40bdbecffb1bb9f017e5bf6fdb8e2bcec7830083fb1b",
-      "bytes": 2118
+      "bytes": 2143
     },
     "figures/fig_tail_law_mechanism.png": {
       "sha256": "1d1cd5121c17fa919b75cb4d82082c43d9fd5ffb9ae20eefe15949cf94d12edb",
@@ -1747,13 +1771,37 @@
       "sha256": "c2decf2edc441574e6735603f7d29e103553d860b94d99a6aee4a328dedf3be3",
       "bytes": 26671
     },
+    "figures/fig_fir_evidence_summary_data.csv": {
+      "sha256": "b053d20858b1040f38b5e2c29795220e3c8da8ca3815a3eb53f0b057246b604b",
+      "bytes": 1795
+    },
+    "figures/fig_fir_evidence_summary.png": {
+      "sha256": "0398655171d6b0b1415f29e59a92defa519e640b54a6bafd60290dc314659014",
+      "bytes": 95504
+    },
+    "figures/fig_fir_evidence_summary.pdf": {
+      "sha256": "874cb7c36d63762845d98b62464d11598700d1b3772f6afa33e2adbb5d632508",
+      "bytes": 26737
+    },
+    "figures/fig_movielens_cohort_flow_data.csv": {
+      "sha256": "b2195e20538ee052f99d38173691b65215d4787c7056f9619e7b0b2dd1260ff4",
+      "bytes": 297
+    },
+    "figures/fig_movielens_cohort_flow.png": {
+      "sha256": "f4875e89422b9c3c62ef4108cfa93504eecc0777279fd5c1406f852078c5ab8a",
+      "bytes": 101500
+    },
+    "figures/fig_movielens_cohort_flow.pdf": {
+      "sha256": "bb20c82a5615282e4d0ff8db3c11c8e8a00087a2c0b75672af5a885158b99fb6",
+      "bytes": 25636
+    },
     "_bestrec_run/make_fig_tail_law_mechanism.py": {
       "sha256": "64a794656d8e0b18fa71ffe3e08aed52ac71195df9637a238d3109367cc96087",
-      "bytes": 8169
+      "bytes": 8008
     },
     "_bestrec_run/make_fig_r1r2_plane.py": {
       "sha256": "7ef9a05a8ca55ba364689d7e994e42898e46019448fa1a667e46ae921b783867",
-      "bytes": 7251
+      "bytes": 7116
     },
     "_bestrec_run/make_fig_fir_response.py": {
       "sha256": "1e549ca0ff980fa1109de7208765e2d557a77da69a26754901a1b71b2901bb83",
@@ -1766,6 +1814,14 @@
     "_bestrec_run/make_fig_fir_efficiency_ml1m_v1.py": {
       "sha256": "38dbe3dfb013c0a5eda1c541218025fd5ff4d3b97bfcbf85ab9772f487f10d2a",
       "bytes": 5940
+    },
+    "_bestrec_run/make_fig_fir_evidence_summary.py": {
+      "sha256": "37810e026bd839de38532984e56b5569bb64f906f2e4ea560caeaa18a0de5644",
+      "bytes": 9067
+    },
+    "_bestrec_run/make_fig_movielens_cohort_flow.py": {
+      "sha256": "cd4b412e949b82dea6583c4f0fd9ed4ba29f472060973e060fc829445c1c5028",
+      "bytes": 5285
     }
   },
   "fir_control_sidecars": {

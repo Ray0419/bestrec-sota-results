@@ -13,8 +13,8 @@ control sequences. This gate makes those states build failures:
        with no preceding backslash) in any .tex source.
   [H4] required structural labels exist in the sources (the 5.4 mechanism spine and
        both figures -- the content the TORS derivative silently lost once).
-  [H5] the compiled PDF embeds >= 2 images and its extracted text contains no "??"
-       reference placeholders.
+  [H5] the compiled main and supplement PDFs exist, contain no unresolved reference
+       placeholders, and the acmsmall main remains within TORS's usual 20--35 pages.
 
 Usage: python check_tex_health.py   (run from paper_tex/, after tectonic --keep-logs)
 Exit codes: 0 = pass, 2 = fail.
@@ -50,9 +50,24 @@ else:
         if badpat in log:
             fails.append(f"H1: tool-error class in log: {badpat!r}")
 
+for _log_name1, _marker1 in (("main-acmsmall_console.log", "main-acmsmall.pdf"),
+                             ("supplement_console.log", "supplement.pdf")):
+    _path1 = os.path.join(HERE, _log_name1)
+    if not os.path.exists(_path1):
+        fails.append(f"H1: {_log_name1} missing")
+        continue
+    _text1 = io.open(_path1, encoding="utf-8-sig", errors="replace").read()
+    if not re.search(r"Writing [`]?" + re.escape(_marker1), _text1):
+        fails.append(f"H1: compiler completion marker missing from {_log_name1}")
+    for _pat1 in (r"Reference `[^']+' on page \d+ undefined",
+                  r"Citation `[^']+'[^\n]*undefined",
+                  r"There were undefined references", r"multiply defined"):
+        if re.search(_pat1, _text1):
+            fails.append(f"H1: unresolved reference/citation warning in {_log_name1}")
+
 # ---- collect sources on the compiled path --------------------------------------
 srcs = {}
-for pat in ("main.tex", "paper-shared.tex", os.path.join("sections", "*.tex"),
+for pat in ("main.tex", "main-acmsmall.tex", "supplement.tex", "paper-shared.tex", os.path.join("sections", "*.tex"),
             os.path.join("tables", "*.tex")):
     for f in glob.glob(os.path.join(HERE, pat)):
         srcs[f] = io.open(f, encoding="utf-8", errors="replace").read()
@@ -79,11 +94,11 @@ for lab in REQUIRED:
         fails.append(f"H4: required label missing from sources: {lab}")
 
 # ---- [H5] compiled-PDF checks --------------------------------------------------
+from pypdf import PdfReader
 pdf_path = os.path.join(HERE, "PAPER_TORS.pdf")
 if not os.path.exists(pdf_path):
     fails.append("H5: PAPER_TORS.pdf missing")
 else:
-    from pypdf import PdfReader
     rd = PdfReader(pdf_path)
     n_img = 0
     for pg in rd.pages:
@@ -106,6 +121,24 @@ else:
     for m in re.finditer(r"(?:§|Fig\.|Figure|Table|Section)\s*\?\?", text):
         fails.append("H5: unresolved '??' reference in PDF text: "
                      + text[max(0, m.start() - 50):m.end() + 20].replace("\n", " "))
+
+_acm5 = os.path.join(HERE, "PAPER_TORS_acmsmall.pdf")
+_supp5 = os.path.join(HERE, "PAPER_TORS_SUPPLEMENT.pdf")
+for _path5, _kind5 in ((_acm5, "acmsmall main"), (_supp5, "reviewer supplement")):
+    if not os.path.exists(_path5):
+        fails.append(f"H5: {os.path.basename(_path5)} missing")
+        continue
+    _rd5 = PdfReader(_path5)
+    _text5 = "\n".join((pg.extract_text() or "") for pg in _rd5.pages)
+    if re.search(r"(?:Fig\.|Figure|Table|Section)\s*\?\?", _text5):
+        fails.append(f"H5: unresolved '??' reference in {_kind5}")
+    if _path5 == _acm5 and not (20 <= len(_rd5.pages) <= 35):
+        fails.append(f"H5: acmsmall main is {len(_rd5.pages)} pages; TORS usually expects 20--35")
+    if _path5 == _supp5:
+        for _needle5 in ("Extended supporting results", "capacity-adding probes",
+                         "Appendix A.0"):
+            if _needle5 not in _text5:
+                fails.append(f"H5: reviewer supplement missing content marker {_needle5!r}")
 
 # ---- [H6] figure-generator sources must not carry retracted statistics ----------
 import glob as _g2
@@ -206,6 +239,7 @@ for _rel10 in ("PAPER_SUBMISSION.md", os.path.join("paper_tex", "sections", "04-
         fails.append(f"H10: comparator-design boundary missing from {_rel10}")
 _extra10 = ""
 for _p10 in (os.path.join(HERE, "PAPER_TORS_acmsmall.pdf"),
+             os.path.join(HERE, "PAPER_TORS_SUPPLEMENT.pdf"),
              os.path.join(HERE, "..", "PAPER_SUBMISSION.pdf")):
     if os.path.exists(_p10):
         try:

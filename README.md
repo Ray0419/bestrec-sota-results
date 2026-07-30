@@ -6,7 +6,9 @@ This repository is the working artifact repository for the manuscript (ACM TORS 
 code, pre-declarations, results of record, provenance manifests, the fail-closed build
 gate, and the full adversarial audit chain. The canonical paper is
 [`PAPER_SUBMISSION.md`](PAPER_SUBMISSION.md) (reader PDF: `PAPER_SUBMISSION.pdf`); the
-venue manuscript is `paper_tex/PAPER_TORS.pdf`. Its tables are mechanically regenerated
+venue package is the focused `paper_tex/PAPER_TORS.pdf` review rendering,
+`paper_tex/PAPER_TORS_acmsmall.pdf` journal-layout main, and
+`paper_tex/PAPER_TORS_SUPPLEMENT.pdf` reviewer supplement. Their tables are mechanically regenerated
 from the canonical Markdown/artifact graph, while its prose is a separately maintained TeX
 mirror governed by [`CANONICAL_SUBMISSION.md`](CANONICAL_SUBMISSION.md) and semantic health
 gates; the repository does not claim whole-prose generation. A non-technical companion
@@ -77,7 +79,7 @@ campaign above is a separate pre-declaration that passed under its frozen wordin
 | Path | What |
 |---|---|
 | `PAPER_SUBMISSION.md` / `.pdf`, `PAPER_DRAFT.md` | Canonical paper (reader edition) and working draft with status history |
-| `paper_tex/` | Generated ACM TORS LaTeX twin + `PAPER_TORS.pdf` + hygiene scanner |
+| `paper_tex/` | ACM TORS main/supplement TeX package, three governed PDFs, and health/hygiene gates |
 | `_bestrec_run/` | All preprocessing/training/eval code, gates, adjudicators, result JSONs of record |
 | `SOTA_CONFIRM_PREREG_V2.md`, `PREREG_OFFICE_V3.md`, `PREREG_FIR_BREADTH.md` (+ results files) | Immutable pre-declarations and their adjudicated outcomes |
 | `RELEASE_MANIFEST.json` | Self-policing SHA256 manifest (verified inside the strict gate) |

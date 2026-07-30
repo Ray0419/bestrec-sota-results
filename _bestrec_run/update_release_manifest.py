@@ -56,6 +56,7 @@ SUBMISSION_DOCS = [
     "_bestrec_run/update_release_manifest.py", "_bestrec_run/clean_clone_replay.py",
     # generated TORS LaTeX (derived output, VENUE_PLAN.md) + its table generator
     "paper_tex/PAPER_TORS.pdf", "paper_tex/PAPER_TORS_acmsmall.pdf",
+    "paper_tex/PAPER_TORS_SUPPLEMENT.pdf",
     "paper_tex/build.ps1", "paper_tex/build.sh",
     "_bestrec_run/emit_latex_tables.py",
 ]
@@ -761,8 +762,9 @@ def regen(m):
         "them would make verification circular. Provenance layer: git tracking + the "
         "gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. "
         "LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed "
-        "by git at the recorded git_commit -- this manifest hashes only the rendered "
-        "paper_tex/PAPER_TORS.pdf artifact; deposit bundles that require source ship "
+        "by git at the recorded git_commit -- this manifest hashes the rendered "
+        "paper_tex/PAPER_TORS.pdf, PAPER_TORS_acmsmall.pdf, and "
+        "PAPER_TORS_SUPPLEMENT.pdf artifacts; deposit bundles that require source ship "
         "the git archive of that commit.")
 
     m["git_commit"] = head_commit()

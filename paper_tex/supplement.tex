@@ -1,0 +1,59 @@
+%% Reviewer supplement for the focused TORS manuscript.
+%% The main paper remains main.tex/main-acmsmall.tex; this target carries the
+%% extended secondary-study record and appendices without deleting evidence.
+\documentclass[acmsmall,screen]{acmart}
+
+\newif\ifmainpaper
+\mainpaperfalse
+\newif\ifextendedmaterial
+\extendedmaterialtrue
+\newif\ifincludeappendices
+\includeappendicestrue
+
+\acmJournal{TORS}
+\acmYear{2026}
+\setcopyright{none}
+\settopmatter{printacmref=false}
+\acmDOI{}
+\citestyle{acmauthoryear}
+
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{xr-hyper}
+\externaldocument{main-acmsmall}
+\usepackage{cleveref}
+\crefname{figure}{Fig.}{Figs.}
+\Crefname{figure}{Fig.}{Figs.}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setlength{\emergencystretch}{3em}
+\hyphenation{Musical-Instruments Video-Games Beauty-and-Personal-Care}
+\graphicspath{{../figures/}}
+
+\begin{document}
+
+\title[Reviewer supplement]{Reviewer Supplement: Artifact-Gated Evaluation of a Causal FIR Module for Sequential Recommendation}
+\author{[Maintainer: real author name(s) required -- TORS is single-blind]}
+\affiliation{%
+  \institution{[Maintainer: real institution required -- TORS is single-blind]}
+  \country{[Maintainer: country]}}
+\renewcommand{\shortauthors}{[Maintainer: short author list]}
+
+\begin{abstract}
+This reviewer supplement preserves the extended secondary-study record, negative
+results, protocol chronology, and appendix tables omitted from the length-focused
+main manuscript. It changes no verdict, claim boundary, or evidentiary status.
+\end{abstract}
+
+\maketitle
+
+\input{sections/05-results}
+\appendix
+\input{sections/appendix-a0}
+\input{sections/appendix-a}
+\input{sections/supplement-tables}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}

@@ -124,6 +124,7 @@ def main():
             "PAPER_SUBMISSION.pdf",
             os.path.join("paper_tex", "PAPER_TORS.pdf"),
             os.path.join("paper_tex", "PAPER_TORS_acmsmall.pdf"),
+            os.path.join("paper_tex", "PAPER_TORS_SUPPLEMENT.pdf"),
             os.path.join("paper_tex", "main_console.log"),
             os.path.join("figures", "fig_tail_law_mechanism_data.csv"),
             os.path.join("figures", "fig_tail_law_mechanism.pdf"),

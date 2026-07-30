@@ -393,7 +393,7 @@ the commit-bound campaign remains untouched:
    canonical Markdown and its separately maintained TeX mirror.
 7. A new fail-closed clean-clone replay runner records a self-contained JSON transcript
    binding the subject commit/tree, exact commands and complete normalized captured output, output
-   hashes, toolchain, graph cell/family summary, release-manifest digest, and all three PDF
+   hashes, toolchain, graph cell/family summary, release-manifest digest, and all four PDF
    digests. Its verifier rejects transcript tampering, failed/missing stages, subject-tree
    drift, artifact drift, and post-attestation changes outside the record itself. An
    explicit metadata-waiver mode is classified `release_ready=false`; strict mode accepts
@@ -401,14 +401,14 @@ the commit-bound campaign remains untouched:
    deterministically before hashing so a public record does not leak workstation identity.
    The actual outcome-complete attestation remains pending the final V4 merge and clean-clone replay.
 8. Archive landing metadata now states the current 200-cell/24-family graph and the
-   mechanically required 931-entry candidate inventory; it explicitly marks the existing
+   mechanically computed candidate inventory; it explicitly marks the existing
    908-entry ZIP stale. The deposit gate now parses the semantic graph-count sentences in
    README, CFF, and Zenodo metadata and requires exact equality, rather than accepting the
    live integers anywhere in each file. It also requires README's exact live bundle count.
    The ZIP-internal `README_DEPOSIT.txt` no longer hard-codes the obsolete 196/20 graph;
-   its generator reads the active manifest and emits the live values. V4 integration must
-   update the externally authored, mechanically checked values again if it adds governed
-   cells or deposit payloads.
+   its generator reads the active manifest and emits the live values. The main/supplement
+   split adds another governed PDF, and V4 integration must update the externally authored,
+   mechanically checked values again for the final governed cells and deposit payloads.
 9. The acmsmall production preview is now declared in both the release-manifest and
    archival-bundle inventories. The clean-clone verifier requires every artifact,
    including that preview, to be a subject-commit blob before it may emit or accept
@@ -472,6 +472,19 @@ the commit-bound campaign remains untouched:
    pre-declared contrast family, and summarizes non-initialization-paired arms separately.
    The paper now points readers to the named matched-control and transfer studies in
    Section 5.2 as the FIR claim's evidential basis.
+17. The venue-length and readability issue is now resolved as a main/supplement split
+    against the official TORS guidance checked on 2026-07-31. The prior production-layout
+    preview was 52 pages, outside the journal's usual 20--35 `acmsmall`-page range. The
+    focused main article now compiles to 32 review-manuscript pages and 33 `acmsmall` pages.
+    It retains the method, comparator-design matrix, primary Amazon evidence, matched
+    controls, prospective MovieLens failure, current-comparator results, discussion, and
+    limitations. Extended secondary-study narratives, superseded/VOID histories, probe and
+    titration ledgers, and appendix tables compile into a separate 18-page reviewer
+    supplement. No evidence, negative result, verdict, or claim boundary was deleted. Both
+    main renderings and the supplement are now required build outputs; the health gate checks
+    compiler completion, cross-references, content markers, forbidden claims, and the main
+    paper's page range. All 33 main pages and all 18 supplement pages were rendered and
+    visually inspected without clipping, overlap, blank-content loss, or table/figure loss.
 
-The V4 verdict, final rebuilt-PDF verification/density work, archival candidate, and human
+The V4 verdict, final rebuilt-PDF verification, archival candidate, and human
 metadata/legal items remain open and will not be marked closed by these source repairs.

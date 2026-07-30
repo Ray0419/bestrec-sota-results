@@ -29,7 +29,8 @@ Before any tag, release, upload, or DOI mint:
    manuscript and `COVER_LETTER_TORS.md`;
 3. verify the selected code license and the redistribution/takedown position for
    derived Amazon Reviews assets;
-4. rebuild both PDFs and run the strict and clean-clone gates;
+4. rebuild the reader PDF, both TORS main renderings, and the reviewer supplement,
+   then run the strict and clean-clone gates;
 5. regenerate `RELEASE_MANIFEST.json` with the final intended tag;
 6. build the bundle in candidate mode, inspect it, commit, then create the tag;
 7. rebuild in normal mode at that exact tag and compare the zip hash; and

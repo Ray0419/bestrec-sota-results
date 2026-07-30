@@ -11,7 +11,8 @@ forbidden-claim-wording sweep required by VENUE_PLAN.md:
   - SOTA / state-of-the-art occurrences are FLAGGED with +-80 chars of context and listed for
     manual review (never hard-fail: the paper contains explicit SOTA NON-claims by design)
 
-Usage: python scan_pdf.py [pdf_path]   (default: PAPER_TORS.pdf next to this script)
+Usage: python scan_pdf.py [pdf_path] [report_path]
+       (defaults: PAPER_TORS.pdf and hygiene_scan_output.txt next to this script)
 Exit codes: 0 = pass (review list may be non-empty), 1 = hygiene failure.
 """
 import io
@@ -21,6 +22,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PDF = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "PAPER_TORS.pdf")
+REPORT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "hygiene_scan_output.txt")
 
 from pypdf import PdfReader  # noqa: E402
 
@@ -113,5 +115,7 @@ try:
 except Exception:
     pass
 print(report)
-io.open(os.path.join(HERE, "hygiene_scan_output.txt"), "w", encoding="utf-8", newline="\n").write(report)
+if not os.path.isabs(REPORT):
+    REPORT = os.path.join(HERE, REPORT)
+io.open(REPORT, "w", encoding="utf-8", newline="\n").write(report)
 sys.exit(1 if failures else 0)

@@ -1,7 +1,7 @@
-# build byproducts (the tracked deliverable is PAPER_TORS.pdf; the acmsmall preview is untracked by decision)
+# compiler byproducts; governed packaged PDFs are copied separately by the build
 main.pdf
 main-acmsmall.pdf
-PAPER_TORS_acmsmall.pdf
+supplement.pdf
 *.log
 *.blg
 *.aux

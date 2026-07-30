@@ -2,7 +2,7 @@
 
 **Authors**: [maintainer to supply before submission — TORS review is single-blind and the manuscript must carry real author/affiliation/contact metadata; withheld only in this public working copy]
 
-*Reader edition — rendered from the canonical markdown source. The ACM (TORS) review artifact is `paper_tex/PAPER_TORS.pdf` (see `VENUE_PLAN.md`); venue metadata (CCS concepts, keywords) lives in that artifact.*
+*Reader edition — rendered from the canonical markdown source and retaining the full evidence record. The focused ACM TORS package is `paper_tex/PAPER_TORS.pdf` (review rendering), `paper_tex/PAPER_TORS_acmsmall.pdf` (journal-layout main), and `paper_tex/PAPER_TORS_SUPPLEMENT.pdf` (reviewer supplement; see `VENUE_PLAN.md`); venue metadata (CCS concepts, keywords) lives in the TeX artifacts.*
 
 
 ---

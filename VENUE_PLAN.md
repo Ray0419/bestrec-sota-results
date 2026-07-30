@@ -1,12 +1,18 @@
-# Venue plan (maintainer decision, 2026-07-12)
+# Venue plan (maintainer decision, updated 2026-07-31)
 
 **Decision: aim for both ACM TORS and the RecSys 2027 Reproducibility track — sequenced, never
 simultaneous.** Concurrent submission of the same manuscript to two venues violates both venues'
 dual-submission policies, so the plan is:
 
 1. **Primary: ACM TORS** (Transactions on Recommender Systems). Rolling submissions — typeset
-   and submit first. Journal length accommodates the full apparatus (pre-declarations,
-   artifact gate, negative-result map, appendices).
+   and submit first. The official author guidelines checked on 2026-07-31 state that original
+   research papers are usually **20–35 pages in ACM `acmsmall` style**. Unusual lengths can be
+   considered, but length must be commensurate with contribution and readability is explicitly
+   part of the initial desk-review decision. The pre-split 52-page `acmsmall` preview exceeded
+   that usual range by 17 pages. The focused main article now compiles to 33 `acmsmall` pages,
+   while audit chronology, superseded studies, extended tables, and implementation ledgers are
+   retained in an 18-page reviewer supplement. Source:
+   <https://dl.acm.org/journal/tors/author-guidelines>.
 2. **Secondary: RecSys 2027, Reproducibility track** (dates not yet announced; the RecSys 2026 cycle — artifacts required, dual submission prohibited — is precedent only). If TORS has
    rejected (or the maintainer withdraws) before that deadline, submit the
    reproducibility-focused variant there. If TORS review is still pending at the deadline, the
@@ -14,8 +20,10 @@ dual-submission policies, so the plan is:
 
 ## Typesetting rules (both venues)
 
-- The **markdown files remain canonical** (`CANONICAL_SUBMISSION.md` governs); LaTeX is a
-  *generated/derived* submission format under `paper_tex/`.
+- `PAPER_SUBMISSION.md` remains the sole canonical authored source
+  (`CANONICAL_SUBMISSION.md` governs). Generated tables are emitted from the canonical
+  Markdown/artifact graph, but TeX prose is a separately maintained mirror under semantic,
+  numeral, and rendered-PDF parity gates; it is not described as whole-prose generation.
 - ACM `acmart` class (TORS: `manuscript`/`acmsmall` journal format, single-blind review per the current TORS author guidelines (corrected 2026-07-21; the earlier double-anonymous assumption was wrong);
   RecSys: `sigconf`).
 - **Artifact-gated numbers are never retyped by hand** (standing audit requirement): result
@@ -28,7 +36,33 @@ dual-submission policies, so the plan is:
   is permanent — and Office **V3** only within its frozen wording: per-category
   point-estimate comparison, no paired/distributional superiority, not SOTA).
 - The strict gate (`rebuild_hstu_submission.py --strict`) must pass at any commit that changes
-  paper content; the LaTeX is regenerated *from* the gated markdown, never edited divergently.
+  paper content. Generated TeX tables are regenerated from the gated Markdown/graph; separately
+  maintained TeX prose must be changed in the same commit and pass the parity gates.
+
+## TORS submission-format decision (official guidance checked 2026-07-31)
+
+- **Paper type:** original research paper, with a modular algorithmic contribution plus an
+  unusually strong falsification/reproducibility record. Do not relabel it a reproducibility
+  paper merely to justify length: the primary scientific question is the FIR intervention.
+- **Main-file target:** 30–35 `acmsmall` pages, including the evidence needed to understand the
+  method, matched controls, Amazon boundary, negative MovieLens result, comparator matrix, and
+  limitations without opening the supplement.
+- **Supplement target:** protocol chronology, VOID/deviated histories, full probe and titration
+  ladders, extended diagnostics, detailed custody/hash ledgers, and additional tables. TORS
+  permits supplementary material to be shared with reviewers; the main paper must remain
+  scientifically self-contained.
+- **Review mode:** single-blind. Real authors, affiliations, corresponding-author identity, and
+  contact metadata belong in the submission; placeholders remain a literal blocker.
+- **LaTeX mode:** TORS instructs authors not to include their own review line numbers. The local
+  submission class/options must match the official `acmart` manuscript guidance and leave portal
+  line numbering to the submission system.
+- **Cover letter:** required. It must declare originality, unpublished status, and no concurrent
+  review; extensions of earlier own work must be disclosed. The existing draft remains
+  human-incomplete until identity, conflicts, preprint/overlap, and corresponding-author fields
+  are supplied.
+- **Open access:** ACM states that it became fully open access on 2026-01-01. APC eligibility,
+  institutional coverage, waiver/discount status, and corresponding-author affiliation require
+  a human check before submission; do not infer them from the repository.
 
 ## DOI (related decision, same date)
 

@@ -1,12 +1,26 @@
 %% GENERATED from PAPER_SUBMISSION.md (pandoc) -- hand-fixed conversion; see BUILD_NOTES.md
+\ifmainpaper
 \section{Results}\label{sec:5}
+\else
+\section{Extended supporting results}\label{sec:supp-results}
+\fi
 
 \textbf{AlphaFuse pipeline boundary.} Because the upstream offline preprocessing code was unavailable, both official classes consumed training rows produced by our frozen per-prefix adapter. This is upstream-class/training-code transfer, not reproduction of the upstream data pipeline.
 
 \textbf{Statistical reporting conventions.} Unless stated otherwise: the sample unit is the training seed; means are reported \ensuremath{\pm} sample standard deviation over seeds; confidence intervals are two-sided 95\% Student-t intervals with df = n\ensuremath{-}1; comparisons between our own arms use same-numbered seeds and are analyzed as independent arms (Welch/Satterthwaite) unless exact matched backbone initialization and a paired analysis are explicitly named, as in canonical breadth, active controls, pointwise placebo, and prospective Software V3; comparisons against published numbers are point-estimate comparisons; pooled tail hit-counts are descriptive counts only; p-values are uncorrected unless a correction is named. Cells labeled \emph{confirmatory} in the artifact manifest are pre-declared prospective campaigns or frozen-protocol locks: selection timing and protocol integrity, not seed count or external independence, are the criterion. Multi-seed post-hoc results remain exploratory.
 
 
+\ifmainpaper
 \subsection{Video\_Games --- descriptive system context (not FIR inference; NOT SOTA)}\label{sec:5.1}
+
+The complete historical component ladder and retired-baseline context are retained in
+the canonical reader/reviewer supplement.  The main article keeps only the current
+comparator evidence needed to locate the modular FIR claim: the published HSTU-BLaIR
+anchor, the official-code WEARec feasibility result, and the frozen AlphaFuse-style
+whole-package comparison.  None is an equal-model experiment or the inferential basis
+for the matched FIR contrasts in \S\ref{sec:5.2}.
+
+\ifextendedmaterial
 
 Table 1 locates the historical \textbf{HSTU-style pure-PyTorch encoder} and component
 stack within the paper's system context. It is not the inferential basis for the modular
@@ -31,6 +45,8 @@ The full model is \textbf{+17.5\%} over the published SASRec point estimate (0.0
 
 \emph{The v1-era SASRec/SBERT/BLaIR baseline rows and the observations derived from them have been REMOVED per the artifact-graph gate: their per-seed artifacts were not retained and the values are untraceable. Exact user/item counts, \ensuremath{\pm}1 interaction agreement, frozen split hashes, and per-category floor runs establish dataset identity and local split traceability only; they do not establish training, implementation, or evaluation parity with a published system.}
 
+\fi
+
 \textbf{Table 1b: Reported, locally regenerated, and current-comparator evidence} \citep{liu2025hstublair,hu2025alphafuse,xu2026wearec}:
 
 The HSTU-BLaIR paper reports the same Video\_Games item and user counts as ours (25,612 items / 94,762 users), but 814,585 interactions---one fewer than our 814,586---under its AR2023 5-core LLOO geometry. They train for \textbf{100 epochs} following Zhai et al.'s HSTU protocol. Their single-seed numbers:
@@ -45,6 +61,8 @@ The clean E-E V3 campaign froze the AlphaFuse upstream at commit \texttt{b501a05
 
 Relative to HSTU-BLaIR, this paper contributes multi-seed internal ablations, a released preprocessing path, and implementation diagnostics---not a leaderboard result. The reported 0.0760 remains the stronger Video\_Games reference. Core-block equality at one aligned configuration (\S\ref{sec:3.2}) and environment-caveated local regenerations (\S\ref{sec:5.6}) do not constitute a pinned end-to-end reproduction.
 
+\ifextendedmaterial
+
 \textbf{Older published baselines on different protocols} (NOT directly comparable; for context only):
 
 \input{tables/table_older_baselines}
@@ -54,6 +72,8 @@ Relative to HSTU-BLaIR, this paper contributes multi-seed internal ablations, a 
 \textbf{Concurrent protocol landscape.} SID-MLP \citep[arXiv:2605.12617]{guo2026sidmlp}, Latte \citep[arXiv:2605.06331]{hou2026latte}, and GrIT \citep[arXiv:2602.19728]{shyam2026grit} report same-statistics AR2023 LLOO results; ReSID \citep[arXiv:2602.02338]{liang2026resid} and ChronoSID \citep[arXiv:2607.03918]{huang2026chronosid} use a different filtered universe; \emph{Augment or Not?}~\citep[arXiv:2505.23053]{huang2025augment}, DiffuReason \citep[arXiv:2602.09744]{jiang2026diffureason}, and SILLM4Rec \citep[MMAsia 2025]{wu2025sillm4rec} use non-interchangeable filtering or sampled-ranking setups; UniSGR \citep[arXiv:2607.04068]{sun2026unisgr} uses private logs; and DIGER \citep[arXiv:2601.19711]{fu2026diger} and ACERec \citep[arXiv:2602.13573]{xia2026acerec} address related semantic-ID problems outside this exact public protocol. We cite these works for coverage and make \textbf{no comparison against concurrent preprints}. HSTU-BLaIR remains the published external anchor for the counted point-estimate comparisons (\S\ref{sec:5.2}).
 
 Within our own full-catalog runs, the 11.6M-parameter model trains in about 10 minutes on one consumer GPU and reaches \ensuremath{\approx}5.4\ensuremath{\times} the popularity floor (0.0125). These are efficiency and sanity-check observations, not priority or SOTA claims.
+
+\fi
 
 
 \subsection{Canonical causal FIR internal contrasts and untuned category reuse (legacy-package attribution caveat \S\ref{sec:3})}\label{sec:5.2}
@@ -175,6 +195,38 @@ extraction.
 \textbf{Office\_Products V3 (redesigned pre-declaration) --- PASSED.} Under \texttt{PREREG\_OFFICE\_V3.md} (committed before any run; fresh never-inspected seeds 20260728--32; gate: each arm's fresh 5-seed 95\% CI lower bound must exceed the \textbf{environment-matched local regeneration of the comparator} --- best full-eval 0.0279, itself above the published 0.0271 --- with \ensuremath{\ge}4/5 seeds individually above), \textbf{both kernel arms passed}: K=16 fresh 5-seed \textbf{0.03047 \ensuremath{\pm} 0.00011 (CI-LB 0.03033)} and K=8 \textbf{0.03029 \ensuremath{\pm} 0.00005 (CI-LB 0.03024)}, 10/10 seeds above both references; dataset identity, reference-artifact hashes, and per-run provenance verified mechanically (\texttt{OFFICE\_V3\_RESULTS.md}). Per the frozen claim wording: \emph{a per-category point-estimate comparison against the published 0.0271 and its environment-matched single-run local regeneration 0.0279; no paired or distributional superiority is claimed; this is not SOTA on Office\_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind.} The V1 VOID above stands unchanged as its own record (Appendix A.0).
 
 
+\subsection{Secondary-study boundary}\label{sec:secondary-main}
+\label{sec:5.3}\label{sec:5.4}\label{sec:5.4.1}\label{sec:5.4.2}
+\label{sec:5.5}\label{sec:5.6}\label{sec:5.7}\label{sec:5.8}
+
+The remaining studies are supporting falsification and provenance evidence, not the
+inferential basis for the FIR claim.  In the outcome-visible TFV2 text-versus-ID
+study, the Musical\_Instruments positive-frequency tail contrast was +0.000420
+[+0.000181,+0.000660], while Video\_Games (+0.000173, $p=.14$) and the
+MI--VG interaction (+0.000247, $p=.13$) were not detected.  Zero-training-exposure
+targets produced no hits through rank 100.  Fixed-draw interaction/user thinning did
+not identify a mechanism: the most favorable corrected difference-in-differences was
+suggestive only ($p=.058$).  These results support neither cold-start capability nor a
+general cross-dataset tail regularity.
+
+The capacity-adding probe screen is mostly single-seed and supports no powered
+exclusion; its five-seed connection-gate interval includes zero and checkpoint cadence
+was unequal.  Local HSTU-BLaIR executions are environment-caveated single-run
+regenerations, not pinned reproductions or distributional comparisons.  A separately
+pre-declared EASE late-fusion study yielded positive paired intervals on three
+categories, but it is a standard two-scorer system addressing a different question and
+is not FIR evidence.  The five-category semantic reranker is outcome-visible and
+protocol-deviated: its gains occur at training frequency 1--5, frequency-zero targets
+do not change at rank 10, mid/head means fall, and overall changes are near zero.  It is
+retained as a descriptive redistribution study without an architectural-novelty or
+cold-start claim.
+
+Full tables, figures, chronology, and artifact identifiers for these supporting studies
+remain in the canonical reader edition and reviewer supplement.  Omitting their extended
+narrative from the main TORS file changes no value, verdict, or claim boundary.
+\fi
+
+\ifextendedmaterial
 \subsection{The Musical\_Instruments frequency-5 tail case (cross-dataset heterogeneity not established)}\label{sec:5.3}
 
 
@@ -389,3 +441,4 @@ lichtenberg2025denserec,wang2025mmesid,liu2023ucc}. We claim no architectural
 novelty for this element; it is retained only as a protocol-deviated redistribution
 study on fixed splits. Full operational chronology and artifacts are in the versioned
 supplement and repository.
+\fi

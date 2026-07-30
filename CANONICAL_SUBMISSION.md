@@ -112,7 +112,7 @@ Old-track artifacts (`archive_noncanonical/`, `_bestrec_sota_lab/paper_draft/`) 
 
 ## Noncanonical root-level PDFs (disambiguation note, 2026-07-19)
 
-Three legacy PDFs at the repository root are **not** part of this submission and must not be mistaken for submission artifacts: `BERT-Embedded Self-attention Transformer Recommender (BEST-Rec)_ Tackling Sparsity and Cold-Starts.pdf`, `BEST_Rec_v4_Sections_3-8.pdf`, and `BEST_Rec_v4_Sections_3-8_Elaborated.pdf` — they are the maintainer's separate earlier manuscript line (noncanonical, unmanifested, never cited by the canonical papers; disposition is the maintainer's call). The only canonical root PDF is `PAPER_SUBMISSION.pdf` (reader rendering); the venue artifact is `paper_tex/PAPER_TORS.pdf`.
+Three legacy PDFs at the repository root are **not** part of this submission and must not be mistaken for submission artifacts: `BERT-Embedded Self-attention Transformer Recommender (BEST-Rec)_ Tackling Sparsity and Cold-Starts.pdf`, `BEST_Rec_v4_Sections_3-8.pdf`, and `BEST_Rec_v4_Sections_3-8_Elaborated.pdf` — they are the maintainer's separate earlier manuscript line (noncanonical, unmanifested, never cited by the canonical papers; disposition is the maintainer's call). The only canonical root PDF is `PAPER_SUBMISSION.pdf` (full reader rendering); the venue package is the focused `paper_tex/PAPER_TORS.pdf` review rendering, its `paper_tex/PAPER_TORS_acmsmall.pdf` journal-layout main, and `paper_tex/PAPER_TORS_SUPPLEMENT.pdf` reviewer supplement.
 
 ## Pre-declared post-v1.1.11 additions (2026-07-22/23)
 

@@ -1,6 +1,6 @@
 %% paper-shared.tex -- everything below \documentclass, shared by both build targets:
 %%   main.tex          [manuscript,screen]  -> PAPER_TORS.pdf  (single-blind per current TORS guidelines)
-%%   main-acmsmall.tex [acmsmall,screen] -> PAPER_TORS_acmsmall.pdf (production preview, untracked)
+%%   main-acmsmall.tex [acmsmall,screen] -> PAPER_TORS_acmsmall.pdf (journal-layout main paper)
 %% See VENUE_PLAN.md ("TORS: manuscript/acmsmall journal format") and BUILD_NOTES.md.
 
 \acmJournal{TORS}
@@ -83,8 +83,10 @@
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{references}
 
-\input{sections/appendix-a0}
-\input{sections/appendix-a}
-\input{sections/supplement-tables}
+\ifincludeappendices
+  \input{sections/appendix-a0}
+  \input{sections/appendix-a}
+  \input{sections/supplement-tables}
+\fi
 
 \end{document}

@@ -386,7 +386,8 @@ def run_replay(args: argparse.Namespace) -> int:
     manifest = json.loads((ROOT / "RELEASE_MANIFEST.json").read_text(encoding="utf-8"))
     artifacts = [artifact_record(subject, rel) for rel in (
         "RELEASE_MANIFEST.json", "PAPER_SUBMISSION.pdf",
-        "paper_tex/PAPER_TORS.pdf", "paper_tex/PAPER_TORS_acmsmall.pdf")]
+        "paper_tex/PAPER_TORS.pdf", "paper_tex/PAPER_TORS_acmsmall.pdf",
+        "paper_tex/PAPER_TORS_SUPPLEMENT.pdf")]
     record = {
         "schema": SCHEMA,
         "classification": ("clean_clone_draft_metadata_replay"

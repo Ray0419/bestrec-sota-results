@@ -185,6 +185,7 @@ V11_ADDITIONS = [
 
     "paper_tex/PAPER_TORS.pdf",
     "paper_tex/PAPER_TORS_acmsmall.pdf",
+    "paper_tex/PAPER_TORS_SUPPLEMENT.pdf",
     "paper_tex/build.ps1",
     "paper_tex/build.sh",
 
@@ -354,7 +355,8 @@ README_TMPL = """Artifact-gated causal-FIR study -- deposit bundle {VERSION} ({D
 
 This bundle is the candidate archival companion to `PAPER_SUBMISSION.md` /
 `PAPER_SUBMISSION.pdf` (reader edition), `paper_tex/PAPER_TORS.pdf` (ACM TORS
-review format), and `paper_tex/PAPER_TORS_acmsmall.pdf` (production preview). It
+review format), `paper_tex/PAPER_TORS_acmsmall.pdf` (journal-layout main), and
+`paper_tex/PAPER_TORS_SUPPLEMENT.pdf` (reviewer supplement). It
 contains code, pre-declarations, result records,
 provenance manifests, core historical audit documents, and small evaluation
 artifacts needed to verify paper-facing numbers.

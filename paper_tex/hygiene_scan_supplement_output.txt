@@ -1,0 +1,6 @@
+hygiene scan: PAPER_TORS_SUPPLEMENT.pdf | pages: 18
+placeholder+forbidden failures: 0
+review list (SOTA mentions + negated claim-wordings): 2
+  REVIEW SOTA-mention :: . We provide our 0.01946 (2-seed mean) as a reference baseline rather than as a SOTA-improvement claim. A future apples-to-apples comparison would require either: A
+  REVIEW placeholder :: '[Maintainer:' byline fields pending (DRAFT_WAIVER=1 -- logged, non-fatal)
+verdict: PASS (review list above is informational)

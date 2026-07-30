@@ -370,6 +370,14 @@ REGISTRY = [
          # S4.1 role-based dataset table (round-15 audit): md-only; dataset stats are
          # protocol facts recorded in prereg/provenance files, not result-JSON cells
          family=None, allow=set()),
+    dict(key="table_comparator_matrix", fp="comparator use",
+         out="table_comparator_matrix.tex", env="tabularx",
+         colspec=(r">{\raggedright\arraybackslash}p{0.17\linewidth}"
+                  r">{\raggedright\arraybackslash}p{0.25\linewidth}"
+                  r">{\raggedright\arraybackslash}p{0.30\linewidth}"
+                  r">{\raggedright\arraybackslash}X"),
+         size=r"\scriptsize", tabcolsep=3, arraystretch=1.12,
+         family=None, allow=set()),
     dict(key="table1", fp="configuration", out="table1.tex",
          env="tabularx", colspec=r"Yrcp{0.30\linewidth}", size=r"\small",
          family="table1",
@@ -380,7 +388,15 @@ REGISTRY = [
          env="tabularx", colspec=r"p{0.22\linewidth}rrY", size=r"\small",
          family="table1a", allow=set()),
     dict(key="table1b", fp="method", out="table1b.tex",
-         env="tabularx", colspec=r"p{0.30\linewidth}p{0.22\linewidth}rY", size=r"\small",
+         # This comparison table contains several paragraph-height evidence rows.
+         # Keep it page-breakable so an unbreakable tabularx cannot collide with
+         # the acmsmall footer when a row is added by a later governed campaign.
+         env="longtable",
+         colspec=(r">{\raggedright\arraybackslash}p{0.28\linewidth}"
+                  r">{\raggedright\arraybackslash}p{0.23\linewidth}"
+                  r">{\raggedleft\arraybackslash}p{0.09\linewidth}"
+                  r">{\raggedright\arraybackslash}p{0.31\linewidth}"),
+         size=r"\small", tabcolsep=3, arraystretch=1.15,
          family="table1b", extra_families=["table1", "wearec_v1", "ee_v3"],  # comparison column also cites full-model/current-comparator graph cells
          # EXTERNAL_PUBLISHED constants printed only in the md row text (cited from
          # Liu 2025 / Zhai 2024 tables): HR@10 columns + HSTU-OpenAI row + port HR.

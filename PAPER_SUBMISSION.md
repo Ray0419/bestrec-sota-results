@@ -9,16 +9,14 @@
 
 ## Abstract
 
-We evaluate a small, detachable causal finite-impulse-response (FIR) residual for sequential recommendation.
-Outcome-known Amazon Reviews 2023 estimates are positive on Musical_Instruments (+0.002265, ordinary Welch 95% CI [0.001928, 0.002602]), Industrial_and_Scientific (+0.002110, ordinary paired CI [0.001820, 0.002399]), and CDs_and_Vinyl (+0.006150 [0.005849, 0.006450]).
-A frozen Software attempt found learned FIR−identity **+0.005062 [+0.004591, +0.005533]**, but unverifiable prior-output non-visibility keeps it outcome-known same-team robustness rather than independent confirmation.
-On Musical_Instruments, learned FIR exceeded an equal-parameter current-position-only DCT/GELU placebo by +0.001941 [+0.001788, +0.002095], yet did not separate from a shared causal filter (−0.000081 [−0.000337, +0.000175]).
-Most importantly, a prospectively frozen same-investigator MovieLens 1M study returned **`ML1M-NO-FIR-REPLICATION`**: learned FIR−identity was +0.000000 [−0.000074, +0.000075] (`p_Holm=.995`) and learned FIR−pointwise was +0.000035 [−0.000057, +0.000127] (`p_Holm=.796`).
-Shared (16 parameters), grouped (128), and low-rank (320) FIR arms met the pre-declared 0.000500 noninferiority margin versus the 1,024-parameter learned FIR, but this is only conditional coefficient-count compression—not a compute optimization—because the learned-FIR replication gate failed.
-Two frozen current-comparator studies under our evaluator bracket the package: an AlphaFuse-style MiniLM representation package scored 0.04827 [0.04813, 0.04842] versus a zero-initialized upstream-class SASRec-ID control at 0.03902 [0.03811, 0.03994], while WEARec scored 0.05918 [0.05867, 0.05969]; both remained below the existing 0.06734 full-model reference.
-These are outcome-known same-investigator whole-package/equal-evaluation results, not causal isolation, equal capacity or tuning, independent confirmation, or SOTA.
-Thus the evidence supports a narrow modular implementation and positive internal Amazon contrasts, not a general FIR benefit, per-channel necessity, or cross-domain generalization.
-A fail-closed graph preserves positive, null, deviated, and VOID outcomes under the same reporting rule.
+We test whether a small, identity-initialized causal finite-impulse-response (FIR) residual provides a robust modular gain in sequential recommendation.
+On three outcome-known Amazon Reviews 2023 category/split settings, learned FIR minus identity estimates are positive; on Musical_Instruments the effect is +0.002265, ordinary Welch 95% CI [0.001928, 0.002602].
+The learned filter also exceeds an equal-parameter current-position-only placebo (+0.001941 [+0.001788, +0.002095]), but does not separate from a 16-parameter shared causal filter (-0.000081 [-0.000337, +0.000175]), limiting any claim of per-channel-tap necessity.
+A prospectively frozen same-investigator MovieLens 1M study is negative: learned minus identity +0.000000 [-0.000074, +0.000075] and learned minus pointwise +0.000035 [-0.000057, +0.000127].
+Thus the parsimonious FIR arms support only conditional coefficient-count compression, not practical efficiency or cross-domain replication.
+Outcome-known same-evaluator AlphaFuse-style and WEARec studies improve comparator coverage but remain whole-package, unequal-model evidence below the paper's existing reference.
+Overall, the contribution is a narrow detachable implementation and an artifact-gated evaluation record, not a new architecture, general FIR benefit, SOTA result, or independent confirmation.
+A fail-closed graph preserves positive, null, deviated, and VOID outcomes under one reporting rule.
 
 ---
 
@@ -28,12 +26,12 @@ Sequential recommendation models predict a user's next item from their interacti
 
 Recent benchmarks consolidate evaluation around the Amazon Reviews 2023 (AR2023) dataset (Hou et al., 2024), but superficially similar “5-core” labels hide different preprocessing contracts. Our pipeline iteratively filters both users and items to at least five retained interactions and then applies leave-last-out. LIGER reports user-and-item filtering, whereas the TIGER paper states filtering users with fewer than five reviews; the exact geometry of TIGER's released preprocessing is not established here. Both use Amazon Reviews 2014 rather than AR2023. Their holdout chronology is related to ours, but their dataset and filtering geometry are not numerically interchangeable. Hou et al.'s AR2023 reference repository instead uses a **0-core** variant (`external/AmazonReviews2023/seq_rec_results/`). Numbers across these variants are not directly comparable.
 
-Recommender evaluation is vulnerable to mistuned baselines, incompatible protocols, and irreproducible result selection (Ferrari Dacrema et al., 2019; Ferrari Dacrema et al., 2021). We therefore pair the method with a per-paper discipline: git-frozen protocols, a fail-closed graph that recomputes 199 reported cells across 23 claim families, environment-caveated comparator regeneration, and symmetric adjudication. Failures are retained. In particular, the original Office_Products protocol remains VOID after its own floor check exposed an environment mismatch, although a redesigned fresh-seed protocol later passed (§5.2; Appendix A.0).
+Recommender evaluation is vulnerable to mistuned baselines, incompatible protocols, and irreproducible result selection (Ferrari Dacrema et al., 2019; Ferrari Dacrema et al., 2021). We therefore pair the method with a per-paper discipline: git-frozen protocols, a fail-closed graph that recomputes 200 reported cells across 24 claim families, environment-caveated comparator regeneration, and symmetric adjudication. Failures are retained. In particular, the original Office_Products protocol remains VOID after its own floor check exposed an environment mismatch, although a redesigned fresh-seed protocol later passed (§5.2; Appendix A.0).
 
 Using an HSTU-style pure-PyTorch encoder based on Zhai et al. (2024), we ask whether one small causal filtering component survives matched controls and remains positive under an untuned cross-category reuse. Our contribution ledger is deliberately limited to three items:
 
 1. **A canonical causal FIR module.** We adapt earlier bidirectional frequency filters to a strictly left-causal, depthwise residual that is identity-initialized and gradient-active under the all-position objective (§3). This is a modular component, not a new recommender architecture.
-2. **Internal evidence, a negative non-Amazon test, and a mechanism boundary.** Learned FIR–identity estimates are positive on three outcome-known Amazon category/split settings, and a frozen Software attempt produced +0.005062 [+0.004591, +0.005533] but remains outcome-known same-team robustness (§5.2). On Musical_Instruments, learned taps do not separate from a shared causal filter, but they beat an equal-parameter current-position-only DCT/GELU placebo by +0.001941 [+0.001788, +0.002095]. A prospectively frozen MovieLens 1M study then failed to replicate learned FIR against identity or pointwise. Its shared/grouped/low-rank arms met a pre-declared noninferiority margin versus learned FIR only conditionally on that failed replication gate. Together these results do not support a unique per-channel-tap requirement and prevent a general filtering or cross-domain claim; they do not prove that per-channel taps are unnecessary. Frozen current-comparator studies add a positive AlphaFuse-style package-versus-repository-ID contrast and a negative WEARec-versus-existing-reference contrast under the shared evaluator; they strengthen comparator coverage without isolating a component or supplying independent confirmation.
+2. **Internal evidence, a negative non-Amazon test, and a mechanism boundary.** Learned FIR–identity estimates are positive on three outcome-known Amazon category/split settings, and a frozen Software attempt produced +0.005062 [+0.004591, +0.005533] but remains outcome-known same-team robustness (§5.2). On Musical_Instruments, learned taps do not separate from a shared causal filter, but they beat an equal-parameter current-position-only DCT/GELU placebo by +0.001941 [+0.001788, +0.002095]. A prospectively frozen MovieLens 1M study then failed to replicate learned FIR against identity or pointwise. Its shared/grouped/low-rank arms met a pre-declared noninferiority margin versus learned FIR only conditionally on that failed replication gate. Together these results do not support a unique per-channel-tap requirement and prevent a general filtering or cross-domain claim; they do not prove that per-channel taps are unnecessary. Frozen current-comparator studies add a positive contrast between an AlphaFuse-style package and a zero-initialized upstream-class SASRec-ID control, plus a negative WEARec-versus-existing-reference contrast, under the shared evaluator; they strengthen comparator coverage without isolating a component or supplying independent confirmation.
 3. **An auditable evaluation record.** Released protocols, artifacts, sidecars where available, comparator-regeneration code, and a strict rebuild preserve positive, null, deviated, and VOID outcomes under the same reporting rule (§8). The apparatus certifies reconstruction and protocol history; it does not strengthen the estimand.
 
 TAPE, late fusion, sparse-warm redistribution, titrations, probe screens, and earlier Beauty results are supporting studies. All borrowed architectures and training recipes are attributed in §2.
@@ -216,7 +214,7 @@ view and training-observed catalog:
 
 | Category | Role in this paper | Users | Items | Interactions (total) |
 |---|---|---|---|---|
-| **Video_Games** | headline reference numbers (§5.1); tail-pattern null (equivalence claim retracted §5.3) | 94,762 | 25,612 | 814,586 |
+| **Video_Games** | descriptive system context (§5.1); tail-pattern null (equivalence claim retracted §5.3) | 94,762 | 25,612 | 814,586 |
 | **Musical_Instruments** | outcome-known FIR internal study + pre-declared per-category point-estimate comparison (§5.2) | 57,439 | 24,587 | 511,836 |
 | **Office_Products** | V1 prereg **VOID** (descriptive; Appendix A.0); **redesigned V3 prereg PASSED** (§5.2; `OFFICE_V3_RESULTS.md`) | 223,308 | 77,551 | 1,800,878 |
 | **Beauty_and_Personal_Care** | tail-pattern exploratory 3-seed estimate (§5.3); superseded cross-pipeline scan (Supplement S.1) | 729,576 | 207,649 | 6,624,441 |
@@ -229,6 +227,12 @@ statistics exactly on users/items (interactions within ±1; §5.2). The Beauty_a
 8× larger than Video_Games, with median user history of only 5 interactions — a harder
 benchmark. Every pre-declared campaign that has completed is mechanically adjudicated (verdicts at the relevant result blocks: §5.2, §5.7, §5.8, and Appendix A.0).
 
+The MovieLens primary cohort is explicitly conditional rather than population-representative: after the rating and global-time filters, 1,102 candidate users enter the fixed-point training-catalog filter and 1,033 remain. The all-ratings branch is a construct sensitivity, not a second independent dataset.
+
+![MovieLens cohort flow (unnumbered): the official 1,000,209-rating, 6,040-user source branches into the primary rating-at-least-4 view and the all-ratings sensitivity. Each applies a global 90% time boundary, requires at least six pre-cutoff and one post-cutoff events, and then iterates a user/training-catalog filter to a fixed point. The primary branch moves from 575,281 filtered events to 1,102 candidate users and 1,033 retained users with 2,359 training-observed items, producing 135,131 TRAIN, 1,033 VALID, and 1,033 TEST rows. The all-ratings branch retains 1,129 users and 3,015 items, producing 252,332 TRAIN and 1,129 rows in each held-out split. Exact public aggregates are in `figures/fig_movielens_cohort_flow_data.csv`.](figures/fig_movielens_cohort_flow.png)
+
+*MovieLens cohort flow (unnumbered). The primary estimand is conditional on eligible pre-cutoff history and a training-observed item catalog; it is not a random sample of all users or movies.*
+
 ### 4.2 Baselines
 
 - Popularity (trivial floor)
@@ -236,6 +240,18 @@ benchmark. Every pre-declared campaign that has completed is mechanically adjudi
 - SASRec with chunked-full-softmax (improved baseline)
 - BERT4Rec (Sun et al., 2019)
 - Published comparators: TIGER (Rajput et al., 2023), BLaIR (Hou et al., 2024), LIGER (Yang et al., 2024)
+
+**Comparator-design matrix.** This matrix separates the dimensions that are actually aligned from those that remain unmatched; a shared evaluator is not treated as an equal-model experiment.
+
+| Comparator use | Aligned dimensions | Known unmatched dimensions | Supported scope |
+|---|---|---|---|
+| FIR vs identity, Amazon canonical campaigns | same data, evaluator, backbone, schedule, and exact per-seed backbone initialization | +1,024 FIR parameters; outcome-known categories; TEST access differs by campaign | internal modular contrast on the named settings |
+| Learned FIR vs pointwise placebo, MI | same data/evaluator/backbone/init and exactly 1,024 trainable component parameters | temporal history versus a compound DCT/GELU/current-position operator; outcome-known | learned FIR versus this tested placebo, not temporal access alone |
+| Learned FIR vs shared causal filter, MI | same data/evaluator/backbone/init and causal-history access | 1,024 per-channel versus 16 shared parameters; outcome-known | per-channel-tap necessity not established |
+| MovieLens six-arm study | same frozen split/evaluator/backbone/init, schedule, seed blocks, and sealed endpoint timing | parameter counts and filter parameterizations differ; same investigator; record-level endpoints private | negative transfer test; parsimonious-arm NI is conditional only |
+| Official WEARec under our evaluator | official model/training code; same split, mask, catalog, cutoff, and tie rule | architecture, loss, schedule, capacity, and tuning budget unequal; private endpoints | equal-evaluation feasibility baseline only |
+| AlphaFuse-style package | official upstream classes; one frozen configuration; same split/evaluator | MiniLM substitutes for published vectors; architecture, capacity, initialization, and tuning history unequal | whole-package comparator coverage only |
+| Published/local HSTU-BLaIR reference | users/items match and interactions differ by one; local regeneration uses the reference code | single-run/unpaired reference; pinned environment unavailable; no equal tuning budget | per-category point threshold and environment-caveated context |
 
 ### 4.3 Experimental design (headline runs)
 
@@ -253,14 +269,16 @@ Headline runs use Adam (lr 1e-3, weight decay 1e-5) with gradient clipping (norm
 
 ## 5. Results
 
+**AlphaFuse pipeline boundary.** Because the upstream offline preprocessing code was unavailable, both official classes consumed training rows produced by our frozen per-prefix adapter. This is upstream-class/training-code transfer, not reproduction of the upstream data pipeline.
+
 **Statistical reporting conventions.** Unless stated otherwise: the sample unit is the training seed; means are reported ± sample standard deviation over seeds; confidence intervals are two-sided 95% Student-t intervals with df = n−1 (the six-seed Video_Games headline is n = 6; controlled ablation rungs are generally n = 5; every other exception is named at the point of use); comparisons between our own arms use same-numbered seeds and are analyzed as independent arms (Welch/Satterthwaite) unless exact matched backbone initialization and a paired analysis are explicitly named, as in canonical breadth, active controls, pointwise placebo, and prospective Software V3; comparisons against published numbers are point-estimate comparisons (the comparator is single-seed and unpaired); pooled tail hit-counts are reported as descriptive counts only — the same tail users recur under every seed and under both arms, so two-proportion z statistics over seed-summed pseudo-trials are invalid and are retracted (2026-07-19); the accompanying inference treats the five trained models per arm as the units (independent-arm Welch, §5.2/Appendix A.0); p-values are uncorrected unless a correction is named — cells labeled *confirmatory* in the artifact manifest are pre-declared prospective campaigns or their frozen-protocol locks — selection timing and protocol integrity, not seed count or external independence, are the criterion — while multi-seed post-hoc results improve precision without becoming confirmatory, and *exploratory* cells carry no confirmatory weight.
 
 
-### 5.1 Video_Games — multi-seed reference numbers (NOT SOTA)
+### 5.1 Video_Games — descriptive system context (not FIR inference; NOT SOTA)
 
-Our headline result (Table 1) is built on the **HSTU-style pure-PyTorch encoder** with the two added components and stacks each lever in a controlled 5-seed ablation; Table 1a retains the traceable within-paper SASRec-family floor; Table 1b combines reported HSTU-BLaIR evidence, our SM120 compatibility port, an official-code WEARec equal-evaluation feasibility run, and the frozen AlphaFuse-style whole-package comparison.
+Table 1 locates the historical **HSTU-style pure-PyTorch encoder** and component stack within the paper's system context. It is not the inferential basis for the modular FIR contribution: its ladder mixes n=1, five-seed, and six-seed arms, lacks one pre-declared contrast family, and contains separately summarized rather than initialization-paired arms. The FIR claim instead rests on the explicitly named matched-control and transfer studies in §5.2. Table 1a retains the traceable within-paper SASRec-family floor; Table 1b combines reported HSTU-BLaIR evidence, our SM120 compatibility port, an official-code WEARec equal-evaluation feasibility run, and the frozen AlphaFuse-style whole-package comparison.
 
-**Table 1: Headline component ablation — NDCG@10 on AR2023 Video_Games 5-core LLOO (full-catalog eval, n_eval = 94,762; 5 seeds = 20260608…20260612 unless noted; the full-model row is 6-seed 20260608…20260613; one flag added per row).**
+**Table 1: Descriptive system-context component ladder — NDCG@10 on AR2023 Video_Games 5-core LLOO (full-catalog eval, n_eval = 94,762; 5 seeds = 20260608…20260612 unless noted; the full-model row is 6-seed 20260608…20260613; one flag added per row).**
 
 | Configuration | NDCG@10 | seeds | Δ |
 |---|---:|---:|---|
@@ -286,7 +304,7 @@ The full model is **+17.5%** over the published SASRec point estimate (0.0573, T
 
 **Table 1b: Reported, locally regenerated, and current-comparator evidence** (Liu, 2025; Hu et al., 2025; Xu et al., 2026):
 
-The HSTU-BLaIR paper reports on AR2023 Video_Games 5-core LLOO with identical dataset stats to ours (25,612 items / 94,762 users / 814,585 interactions). They train for **100 epochs** following Zhai et al.'s HSTU protocol. Their single-seed numbers:
+The HSTU-BLaIR paper reports the same Video_Games item and user counts as ours (25,612 items / 94,762 users), but 814,585 interactions—one fewer than our 814,586—under its AR2023 5-core LLOO geometry. They train for **100 epochs** following Zhai et al.'s HSTU protocol. Their single-seed numbers:
 
 | Method | NDCG@10 | HR@10 | Comparison to ours |
 |---|---:|---:|---|
@@ -359,7 +377,11 @@ It is also same-investigator, same-code-lineage, and same-Amazon-family work und
 
 The paired-difference sample SD was **0.000563779**. In registered seed order, the eight learned-minus-identity differences were **+0.005197548, +0.004308974, +0.005082181, +0.005788969, +0.005439290, +0.005516648, +0.004194543, and +0.004966712**. A post-hoc two-sided exact sign test for 8/8 positive differences gives **p=.0078125**. This sign test is a small-n robustness sensitivity, not the frozen decision rule and not population-level uncertainty across users, cutoffs, categories, or domains.
 
-![Fig. 1: Software V3 registered paired-seed results. (A) Every matched seed block has higher sealed TEST NDCG@10 under learned FIR than identity. (B) All eight paired differences, the frozen +0.000500 reporting threshold, and the ordinary paired-t mean and 95% CI. The figure visualizes outcome-known exploratory same-team robustness, not independent confirmation; exact plotted values are in `figures/fig_software_v3_pairs_data.csv`.](figures/fig_software_v3_pairs.png)
+Figure 1 is a visual index of the released FIR contrasts, arranged to expose both scope and boundary conditions. It is not a pooled estimate: the intervals retain the estimators and evidence classes of their source adjudications and do not form one multiplicity family. The positive Amazon rows are outcome-known internal evidence; the matched MI controls show that learned FIR exceeds the equal-parameter pointwise placebo but not the shared causal filter; and the two prospectively frozen same-investigator MovieLens transfer intervals include zero.
+
+![Fig. 1: FIR evidence map across released adjudications. Four outcome-known internal Amazon learned-minus-identity estimates are positive. On matched MI controls, learned FIR exceeds the equal-parameter pointwise placebo, while learned minus the shared causal filter spans zero. In the prospectively frozen same-investigator MovieLens study, learned minus identity and learned minus pointwise both span zero. Intervals retain their source estimators and are not pooled or one common multiplicity family; exact values and source keys are in `figures/fig_fir_evidence_summary_data.csv`.](figures/fig_fir_evidence_summary.png)
+
+*Fig. 1: FIR evidence map. Positive outcome-known Amazon contrasts coexist with a shared-filter boundary and a negative prospectively frozen MovieLens transfer result; intervals are not pooled.*
 
 **Prospectively frozen non-Amazon replication and efficiency study (`PREREG_FIR_EFFICIENCY_ML1M_V1.md`; MovieLens 1M; verdict `ML1M-NO-FIR-REPLICATION`).** The protocol, acquisition code, six-arm trainer, structural/sequestration tests, runner, evaluator, and adjudicator were committed and pushed before acquiring MovieLens. The rating≥4 primary view used a global 90% time boundary, a training-observed catalog, 1,033 users, 2,359 items, and 135,131 training rows. Acquisition necessarily read and hash-bound TEST and used its target for cohort eligibility; the narrower sequestration claim is that model fitting/selection emitted no TEST scores and all 96 selected checkpoints existed before the 96 sealed one-shot TEST evaluations. Those evaluations preceded the protocol-designated adjudicator's first endpoint read. This is prospectively frozen same-investigator non-Amazon evidence, not independent confirmation or population-wide generalization.
 
@@ -377,6 +399,8 @@ The exact primary verdict is negative. Learned FIR did not replicate against ide
 Shared, grouped, and low-rank each passed the frozen 0.000500 noninferiority family (`p_Holm=5.20×10⁻⁶`, `5.20×10⁻⁶`, and `1.43×10⁻⁶`). These are conditional coefficient-count compression findings—not a computational optimization and not evidence that a smaller FIR is useful—because the prerequisite learned-FIR replication contrasts failed. There is no bypass implementation, and measured end-to-end latency and memory did not materially improve: median latency per user was 2.076/2.105/2.087/2.132/2.073/2.120 ms in table order; primary-view training peak memory ranged only from 580.94 to 583.28 MiB on one RTX 5060 Ti. The resource plane is therefore descriptive hardware evidence, not a general efficiency ranking. Under the ML-1M README, record-level rows, checkpoints, endpoints, and per-user sidecars remain private; the public graph verifies frozen code hashes and recomputes all reported aggregate-vector arithmetic but cannot independently replay private endpoint extraction.
 
 ![Fig. 2: MovieLens 1M R4 aggregate FIR accuracy-resource plane. Panels plot the six arms' primary eight-seed mean NDCG@10 against filter parameters, median latency per user, and median training peak CUDA memory. Learned FIR failed to replicate versus identity and pointwise. The plotted resource readings are descriptive measurements on one GPU; exact aggregate values are in `figures/fig_fir_efficiency_ml1m_v1_data.csv`.](figures/fig_fir_efficiency_ml1m_v1.png)
+
+*Fig. 2: MovieLens 1M accuracy-resource plane. Learned FIR failed to replicate; latency and memory are descriptive measurements on one GPU.*
 
 **Pre-declared breadth (two further categories).** Under `PREREG_FIR_BREADTH.md` (committed before any run; fresh never-inspected seeds 20260713–17; mechanical adjudication in `FIR_BREADTH_RESULTS.md`), the filter was transplanted with **zero per-category tuning** and tested as a same-seed 5-seed filter-vs-no-filter contrast — an internal contrast with no comparator involved — on two categories never used in its development. **Both categories fired the frozen decision rule**: Industrial_and_Scientific same-seed Δ = **+0.0024 ± 0.0005** (pre-declared paired-analysis 95% CI [+0.0018, +0.0030]; 5/5 same-seed differences positive) and CDs_and_Vinyl same-seed Δ = **+0.0057 ± 0.0006** (pre-declared paired-analysis 95% CI [+0.0049, +0.0064]; 5/5). **Analysis-premise correction (2026-07-19):** the frozen rule *as written* is a paired Student-t, but its pairing premise is now known to be false — same-numbered seeds are not initialization-paired (§5.3 randomization disclosure) — so the pre-declared intervals are reported as executed-as-frozen outputs whose *paired interpretation is withdrawn*; the **primary supported statement** is the post-hoc independent-arm Welch analysis (we no longer call it conservative: with correlated arms neither interval has a general conservative ordering, and here the Welch intervals are in fact narrower than the paired ones), under which both effects remain positive with 95% CIs excluding zero (Industrial_and_Scientific [+0.0019, +0.0029], CDs_and_Vinyl [+0.0050, +0.0063]; graphed as `firb.*.welch`, evidence-class exploratory since the Welch analysis is post-hoc). Per the frozen claim wording as narrowed by this correction, each result is exactly: *the causal-FIR-filter arm's 5-seed improvement over the no-filter arm on that category is positive with a 95% CI excluding zero* — an internal same-seed contrast of the FIR-plus-initialization/optimizer package; nothing broader, no SOTA language, no comparator statement. The filter package is thus multi-seed-supported on **four categories**, two of them under this pre-declared breadth campaign — and now **estimated under the valid independent-arm TFV2 pre-declaration (outcome-visible; not confirmatory — §5.3(vii))** (below), which supersedes this campaign's withdrawn paired interpretation as the primary FIR evidence.
 
@@ -415,7 +439,7 @@ The historical MI contrast survives independent-arm analysis (Welch t = 3.94, p 
 
 ![Fig. 3: (A) TFV2 repaired-estimand tail contrasts — MI, VG, and the MI−VG interaction as Welch 95% CIs (8 fresh seeds per arm; one estimand; outcome-visible campaign, §5.3; cross-dataset heterogeneity not established, p = 0.13). The historical defective-cohort Table 1d values are tabulated, not plotted. (B) Interaction-density titration level contrasts and (C) two-axis descriptive ratios — both on ONE fixed subset draw with no draw/seed uncertainty shown; arms are not initialization-paired (§5.3); the panel-C shift is suggestive only (p = 0.058, CI includes 0). Plotted values, estimator, and analysis IDs: figures/fig_tail_law_mechanism_data.csv.](figures/fig_tail_law_mechanism.png)
 
-*Fig. 1: (A) TFV2 repaired-estimand tail contrasts — MI, VG, and the MI−VG interaction as Welch 95% CIs (8 fresh seeds per arm; one estimand; outcome-visible campaign, §5.3; cross-dataset heterogeneity not established, p = 0.13). The historical defective-cohort Table 1d values are tabulated, not plotted. (B) Interaction-density titration level contrasts and (C) two-axis descriptive ratios — both on ONE fixed subset draw with no draw/seed uncertainty shown; arms are not initialization-paired (§5.3); the panel-C shift is suggestive only (p = 0.058, CI includes 0). Plotted values, estimator, and analysis IDs: figures/fig_tail_law_mechanism_data.csv.*
+*Fig. 3: Tail contrasts and fixed-draw titration summaries. Cross-dataset heterogeneity is not established; the two-axis shift is suggestive only (p = 0.058).*
 
 ### 5.4 Titration: thinning tracks the head effect but not the tail effect (level contrasts under a bundled intervention; head trend exploratory and uncorrected; tail inconclusive)
 
@@ -632,7 +656,7 @@ https://github.com/Ray0419/bestrec-sota-results. The tracked
 `RELEASE_MANIFEST.json` binds source code, split derivatives, text caches, result JSONs,
 released per-user sidecars, and the pinned HSTU-BLaIR submodule by SHA-256. Running
 `bootstrap_public_clone.py` fetches and verifies release-class assets; running
-`rebuild_hstu_submission.py --strict` then checks HSTU parity, recomputes the 199
+`rebuild_hstu_submission.py --strict` then checks HSTU parity, recomputes the 200
 artifact-gated cells, verifies the manifest, and executes every governed adjudicator.
 The numerical graph and release manifest have different scopes: every declared empirical
 cell is graph-bound, but not every transitive graph source is separately enumerated in the
@@ -911,8 +935,14 @@ A future apples-to-apples comparison would require either:
 | 0.78 | 19.030 | +0.002664 ± 0.000398 (5/5) | +0.004467 ± 0.001082 (5/5) | +0.000056 ± 0.000552 (2/5) | +0.000239 ± 0.001087 (2/5) |
 | 0.66 | 16.109 | +0.003540 ± 0.000416 (5/5) | +0.005720 ± 0.000904 (5/5) | −0.000108 ± 0.000503 (1/5) | +0.000073 ± 0.001165 (3/5) |
 
-### S.6 — Selected-checkpoint FIR diagnostics
+### S.6 — Software V3 paired-seed detail
 
-![Fig. S1: Learned residual-tap and effective frequency-response summaries from the eight released selected checkpoints of the outcome-known active-control learned arm. Channels are summarized within each seed; bands are ordinary 95% t intervals over the eight seed summaries. Lag 0 is contemporaneous. These are descriptive fitted-operator diagnostics, not a mechanism or independent-confirmation test; plotted values are released in `figures/fig_fir_response_data.csv`.](figures/fig_fir_response.png)
+![Fig. S1: Software V3 registered paired-seed results. (A) Every matched seed block has higher sealed TEST NDCG@10 under learned FIR than identity. (B) All eight paired differences, the frozen +0.000500 reporting threshold, and the ordinary paired-t mean and 95% CI. The figure visualizes outcome-known exploratory same-team robustness, not independent confirmation; exact plotted values are in `figures/fig_software_v3_pairs_data.csv`.](figures/fig_software_v3_pairs.png)
 
-*Fig. S1: Selected-checkpoint FIR diagnostics. The effective kernel is the residual identity plus the learned Δ taps. The separate pointwise-placebo study discriminates learned FIR from one equal-parameter compound current-only residual on outcome-known MI but does not isolate temporal access; this descriptive plot establishes neither that contrast nor learned-tap superiority.*
+*Fig. S1: Software V3 paired-seed detail and the frozen +0.000500 reporting threshold. This is outcome-known same-team robustness, not independent confirmation.*
+
+### S.7 — Selected-checkpoint FIR diagnostics
+
+![Fig. S2: Learned residual-tap and effective frequency-response summaries from the eight released selected checkpoints of the outcome-known active-control learned arm. Channels are summarized within each seed; bands are ordinary 95% t intervals over the eight seed summaries. Lag 0 is contemporaneous. These are descriptive fitted-operator diagnostics, not a mechanism or independent-confirmation test; plotted values are released in `figures/fig_fir_response_data.csv`.](figures/fig_fir_response.png)
+
+*Fig. S2: Descriptive FIR diagnostics; neither temporal-access isolation nor learned-tap superiority is established.*

@@ -135,7 +135,10 @@ CLAIMS = [
                   "_bestrec_run/fir_efficiency_ml1m_v1_adjudication.json",
                   "_bestrec_run/make_fig_fir_efficiency_ml1m_v1.py",
                   "figures/fig_fir_efficiency_ml1m_v1_data.csv",
-                  "figures/fig_fir_efficiency_ml1m_v1.pdf"],
+                  "figures/fig_fir_efficiency_ml1m_v1.pdf",
+                  "_bestrec_run/make_fig_movielens_cohort_flow.py",
+                  "figures/fig_movielens_cohort_flow_data.csv",
+                  "figures/fig_movielens_cohort_flow.pdf"],
     },
     {
         "id": "C13",
@@ -171,6 +174,21 @@ CLAIMS = [
                   "_bestrec_run/adjudicate_ee_v3.py",
                   "_bestrec_run/ee_v3_adjudication.json"],
     },
+    {
+        "id": "C15",
+        "claim": "FIR evidence-map visualization",
+        "boundary": "Visual index of eight already adjudicated contrasts. Source estimators and evidence classes remain separate; no pooling, common multiplicity family, independent confirmation, or generalization claim is created by the figure.",
+        "tables": ["fir_evidence_summary"],
+        "files": ["_bestrec_run/make_fig_fir_evidence_summary.py",
+                  "figures/fig_fir_evidence_summary_data.csv",
+                  "figures/fig_fir_evidence_summary.pdf",
+                  "_bestrec_run/fir_v3_adjudication.json",
+                  "_bestrec_run/fir_canonical_breadth_adjudication.json",
+                  "_bestrec_run/fir_controls_adjudication.json",
+                  "_bestrec_run/fir_pointwise_v1_adjudication.json",
+                  "_bestrec_run/fir_prospective_sw_v3_adjudication.json",
+                  "_bestrec_run/fir_efficiency_ml1m_v1_adjudication.json"],
+    },
 ]
 
 EXPECTED_EVIDENCE = {
@@ -179,6 +197,7 @@ EXPECTED_EVIDENCE = {
     "fir_canonical_breadth": {"exploratory"},
     "fir_controls": {"exploratory"},
     "fir_pointwise": {"exploratory"},
+    "fir_evidence_summary": {"exploratory"},
     "fir_prospective_sw_v3": {"exploratory"},
     "fir_efficiency_ml1m_v1": {"exploratory"},
     "wearec_v1": {"exploratory"},

@@ -53,9 +53,10 @@ SUBMISSION_DOCS = [
     "_bestrec_run/normalize_pdf_metadata.py",
     "_bestrec_run/render_paper_pdf.py",
     "_bestrec_run/fbgemm_shims.py", "_bestrec_run/rebuild_hstu_submission.py",
-    "_bestrec_run/update_release_manifest.py",
+    "_bestrec_run/update_release_manifest.py", "_bestrec_run/clean_clone_replay.py",
     # generated TORS LaTeX (derived output, VENUE_PLAN.md) + its table generator
-    "paper_tex/PAPER_TORS.pdf", "paper_tex/build.ps1", "paper_tex/build.sh",
+    "paper_tex/PAPER_TORS.pdf", "paper_tex/PAPER_TORS_acmsmall.pdf",
+    "paper_tex/build.ps1", "paper_tex/build.sh",
     "_bestrec_run/emit_latex_tables.py",
 ]
 # reference-implementation local runs (git-tracked source artifacts)
@@ -102,11 +103,19 @@ FIGURE_ASSETS = [
     "figures/fig_fir_efficiency_ml1m_v1_data.csv",
     "figures/fig_fir_efficiency_ml1m_v1.png",
     "figures/fig_fir_efficiency_ml1m_v1.pdf",
+    "figures/fig_fir_evidence_summary_data.csv",
+    "figures/fig_fir_evidence_summary.png",
+    "figures/fig_fir_evidence_summary.pdf",
+    "figures/fig_movielens_cohort_flow_data.csv",
+    "figures/fig_movielens_cohort_flow.png",
+    "figures/fig_movielens_cohort_flow.pdf",
     "_bestrec_run/make_fig_tail_law_mechanism.py",
     "_bestrec_run/make_fig_r1r2_plane.py",
     "_bestrec_run/make_fig_fir_response.py",
     "_bestrec_run/make_fig_software_v3_pairs.py",
     "_bestrec_run/make_fig_fir_efficiency_ml1m_v1.py",
+    "_bestrec_run/make_fig_fir_evidence_summary.py",
+    "_bestrec_run/make_fig_movielens_cohort_flow.py",
 ]
 AUX_GRAPH_SOURCES = [
     "_bestrec_sota_lab/runs/hstu_blair_eval_export_full_20260609_fg/hstu_blair_eval_export_summary.json",

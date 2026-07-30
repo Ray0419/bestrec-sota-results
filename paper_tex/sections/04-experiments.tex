@@ -13,6 +13,25 @@ filtered primary view and training-observed catalog:
 
 Video\_Games/Musical\_Instruments/Office\_Products match the HSTU-BLaIR comparator pipeline's own statistics exactly on users/items (interactions within \ensuremath{\pm}1; \S\ref{sec:5.2}). The Beauty\_and\_\allowbreak PC catalog is 8\ensuremath{\times} larger than Video\_Games, with median user history of only 5 interactions --- a harder benchmark. Every pre-declared campaign that has completed is mechanically adjudicated (verdicts at the relevant result blocks: \S\ref{sec:5.2}, \S\ref{sec:5.7}, \S\ref{sec:5.8}, and Appendix~A.0).
 
+The MovieLens primary cohort is explicitly conditional rather than population-
+representative: after the rating and global-time filters, 1,102 candidate users enter
+the fixed-point training-catalog filter and 1,033 remain. The all-ratings branch is a
+construct sensitivity, not a second independent dataset.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{fig_movielens_cohort_flow.pdf}
+  \Description{Cohort-flow diagram for MovieLens 1M. The official source branches into
+  a rating-at-least-4 primary view and an all-ratings sensitivity. Each branch applies
+  a global 90 percent time boundary, pre/post event eligibility, and a fixed-point
+  user and training-catalog filter before producing TRAIN, VALID, and TEST rows. The
+  primary branch moves from 575,281 filtered events to 1,102 candidate users and 1,033
+  retained users with 2,359 training-observed items.}
+  \par\smallskip\textit{MovieLens cohort flow (unnumbered). The primary estimand is
+  conditional on eligible pre-cutoff history and a training-observed item catalog; it
+  is not a random sample of all users or movies.}
+\end{figure}
+
 
 \subsection{Baselines}\label{sec:4.2}
 
@@ -29,6 +48,12 @@ Video\_Games/Musical\_Instruments/Office\_Products match the HSTU-BLaIR comparat
 \item
   Published comparators: TIGER \citep{rajput2023tiger}, BLaIR \citep{hou2024blair}, LIGER \citep{yang2024liger}
 \end{itemize}
+
+\paragraph{Comparator-design matrix.}
+This matrix separates the dimensions that are actually aligned from those that remain
+unmatched; a shared evaluator is not treated as an equal-model experiment.
+
+\input{tables/table_comparator_matrix}
 
 
 \subsection{Experimental design (headline runs)}\label{sec:4.3}
@@ -63,4 +88,3 @@ used margin 0.000500 and Holm-adjusted one-sided tests.
 \subsection{Training details and hardware}\label{sec:4.4}
 
 Headline runs use Adam (lr 1e-3, weight decay 1e-5) with gradient clipping (norm 5.0) under the 40-epoch warmup-cosine schedule above. Hardware: a single NVIDIA RTX 5060 Ti (16 GB, Blackwell sm\_120). Video\_Games training takes \textasciitilde10 min/seed; Beauty\_and\_\allowbreak PC \textasciitilde1.5--2 hr/seed with the chunked-full-softmax loss. (The Appendix A.1 Beauty scan used a shorter 15--20-epoch budget and seeds 42/43; those details are local to that supporting study.)
-

@@ -33,6 +33,7 @@ present("paper_tex/build.ps1", "UTF8Encoding($false)", "(BOM-free logs)")
 present("paper_tex/build.ps1", "RELEASE_MANIFEST.json", "(manifest epoch)")
 present("paper_tex/check_tex_health.py", "utf-16", "(BOM-aware H1)")
 present("_bestrec_run/release_build.py", "only_placeholder", "(exact-failure self-test)")
+present("_bestrec_run/clean_clone_replay.py", "bestrec.clean-clone-replay.v1", "(machine-readable clean-clone attestation)")
 
 # generators / emitted artifacts
 for rel in ("_bestrec_run/build_hstu_tables.py",

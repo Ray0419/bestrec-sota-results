@@ -155,7 +155,8 @@ H10_BANNED += ("supports causal temporal mixing", "causal temporal mixing/activi
 H10_BANNED += ("before any TEST read", "validates all endpoint/sidecar hashes",
                "validates private endpoint/sidecar hashes",
                "schema/intervals and endpoint hashes", "repository SASRec-ID",
-               "the data are public, platform-pseudonymized product reviews")
+               "the data are public, platform-pseudonymized product reviews",
+               "identical dataset stats to ours", "package-versus-repository-ID")
 H10_BANNED_RE += (r"ordinary paired 95\\?% CI[^.\n]{0,50}0\.002265",)
 _pub10 = [os.path.join(HERE, "..", rel) for rel in (
     "PAPER_SUBMISSION.md", "README.md", "COVER_LETTER_TORS.md", "CANONICAL_SUBMISSION.md",
@@ -186,6 +187,23 @@ for _br10 in H10_BANNED_RE:
     m10 = re.search(_br10, _all10)
     if m10:
         fails.append(f"H10: stale/withdrawn pattern in compiled sources: {m10.group(0)[:60]!r}")
+# The official AlphaFuse classes were not run through an upstream preprocessing
+# pipeline. Require this boundary in both authored Markdown and the separately
+# maintained TeX mirror so either side cannot drift silently.
+_adapter10 = "upstream offline preprocessing code was unavailable"
+for _rel10 in ("PAPER_SUBMISSION.md", os.path.join("paper_tex", "sections", "05-results.tex")):
+    _path10 = os.path.join(HERE, "..", _rel10)
+    _body10 = io.open(_path10, encoding="utf-8", errors="replace").read().lower()
+    if _adapter10 not in _body10:
+        fails.append(f"H10: AlphaFuse per-prefix-adapter disclosure missing from {_rel10}")
+# The audit-requested comparator matrix must preserve the equal-evaluation versus
+# equal-model distinction in both maintained sources.
+_matrix10 = "a shared evaluator is not treated as an equal-model experiment"
+for _rel10 in ("PAPER_SUBMISSION.md", os.path.join("paper_tex", "sections", "04-experiments.tex")):
+    _path10 = os.path.join(HERE, "..", _rel10)
+    _body10 = io.open(_path10, encoding="utf-8", errors="replace").read().lower()
+    if _matrix10 not in re.sub(r"\s+", " ", _body10):
+        fails.append(f"H10: comparator-design boundary missing from {_rel10}")
 _extra10 = ""
 for _p10 in (os.path.join(HERE, "PAPER_TORS_acmsmall.pdf"),
              os.path.join(HERE, "..", "PAPER_SUBMISSION.pdf")):

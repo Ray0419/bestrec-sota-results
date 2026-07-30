@@ -54,6 +54,7 @@ import math
 import os
 import re
 import sys
+import tempfile
 from decimal import Decimal, ROUND_HALF_UP
 
 try:
@@ -563,6 +564,96 @@ def rule_fir_prospective_sw_v3_contrast(p):
         raise ValueError("Software V3 practical-effect verdict no longer reproduces")
     return out
 
+def rule_fir_evidence_summary(p):
+    """Bind the cross-adjudication evidence-map CSV to its source records."""
+    mi = load(p["mi"])
+    breadth = load(p["breadth"])
+    controls = load(p["controls"])
+    pointwise = load(p["pointwise"])
+    software = load(p["software"])
+    ml1m = load(p["ml1m"])
+    if (mi.get("verdict") != "W-POS"
+            or breadth.get("verdict") != "CANON-BREADTH-POS"
+            or controls.get("verdict") != "CTRL-ACTIVE-CONTROL-SUPPORTED"
+            or pointwise.get("verdict") != "POINTWISE-FIR-DISCRIMINATED"
+            or software.get("verdict") != "SW-V3-PRACTICAL-POS"
+            or ml1m.get("verdict") != "ML1M-NO-FIR-REPLICATION"):
+        raise ValueError("FIR evidence-map source verdict drift")
+    primary = next(
+        row for row in mi["contrasts"] if row["contrast"] == "A1-A0 (PRIMARY)"
+    )
+    expected = [
+        ("Outcome-known internal Amazon", "MI: learned - identity",
+         primary["est"], primary["ci"][0], primary["ci"][1],
+         "fir_v3_adjudication.json", "contrasts/A1-A0 (PRIMARY)",
+         "outcome-known internal; Welch interval"),
+    ]
+    for category, label in (
+            ("Industrial_and_Scientific", "Industrial: learned - identity"),
+            ("CDs_and_Vinyl", "CDs: learned - identity")):
+        record = breadth["per_category"][category]
+        expected.append((
+            "Outcome-known internal Amazon", label,
+            record["paired_mean"], record["paired_ci"][0], record["paired_ci"][1],
+            "fir_canonical_breadth_adjudication.json", f"per_category/{category}",
+            "outcome-known internal; paired-t interval",
+        ))
+    record = software["primary_contrast"]
+    expected.append((
+        "Outcome-known internal Amazon", "Software: learned - identity",
+        record["mean"], record["ci95"][0], record["ci95"][1],
+        "fir_prospective_sw_v3_adjudication.json", "primary_contrast",
+        "outcome-known same-team robustness; paired-t interval",
+    ))
+    record = pointwise["contrasts"]["learned-pointwise"]
+    expected.append((
+        "Matched MI control boundaries", "Learned - pointwise FIR",
+        record["mean"], record["ci95"][0], record["ci95"][1],
+        "fir_pointwise_v1_adjudication.json", "contrasts/learned-pointwise",
+        "outcome-known internal; paired-t interval",
+    ))
+    record = controls["family_b"]["learned-shared"]
+    expected.append((
+        "Matched MI control boundaries", "Learned - shared filter",
+        record["mean"], record["ci95"][0], record["ci95"][1],
+        "fir_controls_adjudication.json", "family_b/learned-shared",
+        "outcome-known internal; paired-t interval",
+    ))
+    for key, label in (("learned-identity", "Learned - identity"),
+                       ("learned-pointwise", "Learned - pointwise FIR")):
+        record = ml1m["replication"][key]
+        expected.append((
+            "Prospectively frozen MovieLens transfer", label,
+            record["mean"], record["ci"][0], record["ci"][1],
+            "fir_efficiency_ml1m_v1_adjudication.json", f"replication/{key}",
+            "prospectively frozen same-investigator; paired-t interval",
+        ))
+
+    with open(os.path.join(ROOT, p["figure_data"]), newline="", encoding="utf-8") as fp:
+        rows = list(csv.DictReader(fp))
+    if len(rows) != len(expected):
+        raise ValueError("FIR evidence-map row-count drift")
+    positive_excluding_zero = 0
+    intervals_including_zero = 0
+    for index, (row, exp) in enumerate(zip(rows, expected), start=1):
+        group, label, est, low, high, source_file, source_key, scope = exp
+        if (row.get("group") != group or row.get("label") != label
+                or row.get("source_file") != source_file
+                or row.get("source_key") != source_key
+                or row.get("evidence_scope") != scope):
+            raise ValueError(f"FIR evidence-map metadata drift in row {index}")
+        for key, value in (("estimate", est), ("ci_low", low), ("ci_high", high)):
+            if abs(float(row[key]) - float(value)) > 5e-12:
+                raise ValueError(f"FIR evidence-map {key} drift in row {index}")
+        positive_excluding_zero += int(float(low) > 0.0)
+        intervals_including_zero += int(float(low) <= 0.0 <= float(high))
+    return {
+        "rows": float(len(rows)),
+        "positive_excluding_zero": float(positive_excluding_zero),
+        "intervals_including_zero": float(intervals_including_zero),
+    }
+
+
 def rule_fir_efficiency_ml1m_v1_aggregate(p):
     """Recompute the public aggregate ML-1M verdict and resource figure.
 
@@ -719,6 +810,33 @@ def rule_fir_efficiency_ml1m_v1_aggregate(p):
             if abs(float(row[name]) - float(value)) > 5e-12:
                 raise ValueError(f"MovieLens FIR-efficiency figure {arm}.{name} drift")
             out[f"{arm}_{name}"] = float(value)
+
+    with open(os.path.join(ROOT, p["cohort_flow_data"]), newline="", encoding="utf-8") as fp:
+        cohort_rows = list(csv.DictReader(fp))
+    view_names = ["MovieLens1M_R4", "MovieLens1M_ALL"]
+    if [row.get("view") for row in cohort_rows] != view_names:
+        raise ValueError("MovieLens cohort-flow view order drift")
+    views = adjud["data_provenance"]["views"]
+    for row, view_name in zip(cohort_rows, view_names):
+        view = views[view_name]
+        expected = {
+            "minimum_rating": view["minimum_rating"],
+            "time_fraction": view["time_fraction"],
+            "cutoff_timestamp_s": view["cutoff_timestamp_s"],
+            "filtered_events": view["n_filtered_events"],
+            "candidate_users": view["n_candidate_users"],
+            "retained_users": view["n_users"],
+            "train_catalog_items": view["n_train_catalog_items"],
+            "train_rows": view["n_rows"]["train"],
+            "valid_rows": view["n_rows"]["valid"],
+            "test_rows": view["n_rows"]["test"],
+        }
+        for name, value in expected.items():
+            if abs(float(row[name]) - float(value)) > 5e-12:
+                raise ValueError(f"MovieLens cohort-flow {view_name}.{name} drift")
+    out["cohort_views"] = float(len(cohort_rows))
+    out["primary_candidate_users"] = float(views["MovieLens1M_R4"]["n_candidate_users"])
+    out["primary_retained_users"] = float(views["MovieLens1M_R4"]["n_users"])
     return out
 
 def rule_wearec_v1_aggregate(p):
@@ -1602,7 +1720,7 @@ REQUIRED_FAMILIES = ["table1", "table1a", "table1b", "table1c", "table1d", "tabl
                      "table541", "table542", "tableV2conf", "table2",
                      "office_confirmation", "theirs_on_ours", "fir_breadth",
                      "fir_v3", "fir_canonical_breadth", "fir_controls",
-                     "fir_pointwise", "fir_prospective_sw_v3",
+                     "fir_pointwise", "fir_evidence_summary", "fir_prospective_sw_v3",
                      "fir_efficiency_ml1m_v1", "wearec_v1", "ee_v3",
                      "office_v3", "tfv2"]
 
@@ -1622,6 +1740,7 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "fir_v3_welch_adjudicated": "frozen E-A independent-arm Welch contrast on best_test[{m}], bound to matched initialization hashes, adjudicated statistics, and verdict",
         "fir_control_contrast": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with statistics, frozen verdict, and Holm decision cross-checked against the mechanical active-control adjudication JSON",
         "fir_pointwise_contrast": "matched-init paired (a-b) sealed one-shot final test NDCG@10, with parameter equality, statistics, frozen verdict, and Holm decision cross-checked against the mechanical pointwise-placebo adjudication JSON",
+        "fir_evidence_summary": "visual-index CSV bound row-by-row to six released adjudications; source estimators and evidence classes remain separate, with no pooling or new multiplicity family",
         "fir_prospective_sw_v3_contrast": "prospective matched-init paired learned-minus-identity sealed one-shot Software TEST NDCG@10, with validation-only checkpoint selection, state and evidence hashes, statistics, practical threshold, and committed adjudicator verdict independently cross-checked",
         "fir_efficiency_ml1m_v1_aggregate": "prospectively frozen same-investigator MovieLens 1M aggregate adjudication: recompute seed-vector means, paired intervals, Holm decisions, noninferiority bounds, and figure-resource rows; private record-level endpoints are not redistributable and are not independently replayed by the public graph",
         "wearec_v1_aggregate": "prospectively frozen outcome-known same-investigator WEARec aggregate adjudication: verify the six existing reference artifacts and recompute released NDCG@10 seed-vector means, t intervals, and the descriptive unpaired Welch contrast; private sealed endpoints and per-user sidecars are not independently replayed by the public graph",
@@ -2869,6 +2988,38 @@ def build_spec():
                       8, "exploratory", seeds=FIRPOINT_SEEDS,
                       notes=FIRPOINT_NOTE))
 
+    # ------- cross-adjudication FIR evidence-map figure -------
+    evidence_adjudications = {
+        "mi": BR + "fir_v3_adjudication.json",
+        "breadth": BR + "fir_canonical_breadth_adjudication.json",
+        "controls": BR + "fir_controls_adjudication.json",
+        "pointwise": BR + "fir_pointwise_v1_adjudication.json",
+        "software": BR + "fir_prospective_sw_v3_adjudication.json",
+        "ml1m": BR + "fir_efficiency_ml1m_v1_adjudication.json",
+    }
+    evidence_figure_data = "figures/fig_fir_evidence_summary_data.csv"
+    C.append(cell(
+        "firevidence.summary", "fir_evidence_summary",
+        "FIR evidence map: scope and boundary conditions",
+        "eight released contrasts indexed without pooling",
+        list(evidence_adjudications.values()) + [
+            evidence_figure_data,
+            "figures/fig_fir_evidence_summary.png",
+            "figures/fig_fir_evidence_summary.pdf",
+            BR + "make_fig_fir_evidence_summary.py",
+        ],
+        "fir_evidence_summary",
+        {**evidence_adjudications, "figure_data": evidence_figure_data},
+        [chk("rows", 8, mode="count"),
+         chk("positive_excluding_zero", 5, mode="count"),
+         chk("intervals_including_zero", 3, mode="count")],
+        8, "exploratory",
+        notes=("Visual index only. The intervals retain their source estimators "
+               "and evidence classes and do not form a pooled analysis or one "
+               "common multiplicity family. Positive Amazon contrasts coexist "
+               "with the shared-filter boundary and the prospectively frozen "
+               "same-investigator negative MovieLens transfer result.")))
+
     # ------- fir_prospective_sw_v3: frozen same-user Software robustness attempt -------
     SWV3_SEEDS = list(range(20261301, 20261309))
     SWV3_ADJ = BR + "fir_prospective_sw_v3_adjudication.json"
@@ -2944,6 +3095,7 @@ def build_spec():
         "preregistration": "PREREG_FIR_EFFICIENCY_ML1M_V1.md",
     }
     ML1M_FIGURE_DATA = "figures/fig_fir_efficiency_ml1m_v1_data.csv"
+    ML1M_COHORT_FLOW_DATA = "figures/fig_movielens_cohort_flow_data.csv"
     ML1M_NOTE = (
         "PREREG_FIR_EFFICIENCY_ML1M_V1.md, code, and adjudicator were committed and "
         "pushed before MovieLens acquisition. Ninety-six training runs completed with "
@@ -2962,11 +3114,15 @@ def build_spec():
         "fireff.ml1m.aggregate", "fir_efficiency_ml1m_v1",
         "MovieLens 1M R4 FIR replication, conditional parsimony, and resources",
         "aggregate 8-seed paired NDCG@10 and descriptive resource plane",
-        [ML1M_ADJ, ML1M_FIGURE_DATA,
-         BR + "make_fig_fir_efficiency_ml1m_v1.py"] + list(ML1M_FROZEN.values()),
+        [ML1M_ADJ, ML1M_FIGURE_DATA, ML1M_COHORT_FLOW_DATA,
+         "figures/fig_movielens_cohort_flow.png",
+         "figures/fig_movielens_cohort_flow.pdf",
+         BR + "make_fig_fir_efficiency_ml1m_v1.py",
+         BR + "make_fig_movielens_cohort_flow.py"] + list(ML1M_FROZEN.values()),
         "fir_efficiency_ml1m_v1_aggregate",
         {"adjud": ML1M_ADJ, "seeds": ML1M_SEEDS, "arms": ML1M_ARMS,
-         "frozen_files": ML1M_FROZEN, "figure_data": ML1M_FIGURE_DATA},
+         "frozen_files": ML1M_FROZEN, "figure_data": ML1M_FIGURE_DATA,
+         "cohort_flow_data": ML1M_COHORT_FLOW_DATA},
         [
             chk("negative_verdict", 1, mode="count"),
             chk("mean_identity", 0.052151, 6),
@@ -3016,6 +3172,9 @@ def build_spec():
             chk("lowrank_latency_ms_median", 2.132, 3),
             chk("learned_latency_ms_median", 2.073, 3),
             chk("pointwise_latency_ms_median", 2.120, 3),
+            chk("cohort_views", 2, mode="count"),
+            chk("primary_candidate_users", 1102, mode="count"),
+            chk("primary_retained_users", 1033, mode="count"),
         ],
         8, "exploratory", seeds=ML1M_SEEDS, notes=ML1M_NOTE))
 
@@ -3926,6 +4085,31 @@ def main():
     a = ap.parse_args()
     if a.write_manifest:
         write_manifest(a.manifest)
+    elif a.submission:
+        # Audit 2026-07-30: verifying a stale checked-in manifest against its
+        # own recorded rules is insufficient when the embedded generator has
+        # changed. Regenerate independently and require exact byte equality
+        # before trusting the tracked artifact.
+        fd, generated_path = tempfile.mkstemp(
+            prefix="hstu_results_manifest.generated.", suffix=".json", dir=HERE)
+        os.close(fd)
+        try:
+            write_manifest(generated_path)
+            with open(generated_path, "rb") as generated_handle:
+                generated_bytes = generated_handle.read()
+            with open(a.manifest, "rb") as tracked_handle:
+                tracked_bytes = tracked_handle.read()
+            if generated_bytes != tracked_bytes:
+                print("SUBMISSION GATE FAILED: tracked hstu_results_manifest.json "
+                      "is not byte-identical to the embedded generator output; "
+                      "run --write-manifest and review the semantic diff",
+                      file=sys.stderr)
+                sys.exit(4)
+        finally:
+            try:
+                os.remove(generated_path)
+            except FileNotFoundError:
+                pass
     verify(a.manifest, a.tables_out, submission=a.submission)
 
 if __name__ == "__main__":

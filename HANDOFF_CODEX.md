@@ -33,7 +33,7 @@ TeX, generated tables, the bibliography, the graph/claim-map generators, and
 - separates Amazon and MovieLens ethics/sidecar governance, completes AlphaFuse
   proceedings metadata, and narrows TIGER preprocessing geometry to what its paper states.
 
-The fail-closed graph recomputes 199 active cells across 23 required families with zero
+The fail-closed graph recomputes 200 active cells across 24 required families with zero
 mismatch or untraceable cells. The reader PDF is 55 pages with `scan: CLEAN`; the 49-page
 TORS review target and 50-page acmsmall preview compile under the logged author-metadata
 draft waiver. Visual inspection of the revised results, ethics, and AlphaFuse-reference
@@ -92,7 +92,7 @@ confirmation, or SOTA.
 Integration is complete in `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, the ACM TeX
 sections/tables, `AUDIT_RESPONSE_2026-07-27.md`, `CANONICAL_SUBMISSION.md`, the
 claim ledger/map, strict wrapper, and release-manifest updater. The graph now
-recomputes **199 active cells across 23 required families** with zero mismatch
+recomputes **200 active cells across 24 required families** with zero mismatch
 or untraceable cells. `EE_V3_OUTCOME_KNOWN` contains only the compact public
 adjudication; private endpoints/sidecars are hash-ledgered with
 `private_endpoint_replay=0` and record-level bootstraps are not publicly replayed.

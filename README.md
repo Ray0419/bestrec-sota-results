@@ -6,8 +6,10 @@ This repository is the working artifact repository for the manuscript (ACM TORS 
 code, pre-declarations, results of record, provenance manifests, the fail-closed build
 gate, and the full adversarial audit chain. The canonical paper is
 [`PAPER_SUBMISSION.md`](PAPER_SUBMISSION.md) (reader PDF: `PAPER_SUBMISSION.pdf`); the
-venue manuscript is `paper_tex/PAPER_TORS.pdf` (generated from the canonical markdown —
-[`CANONICAL_SUBMISSION.md`](CANONICAL_SUBMISSION.md) governs). A non-technical companion
+venue manuscript is `paper_tex/PAPER_TORS.pdf`. Its tables are mechanically regenerated
+from the canonical Markdown/artifact graph, while its prose is a separately maintained TeX
+mirror governed by [`CANONICAL_SUBMISSION.md`](CANONICAL_SUBMISSION.md) and semantic health
+gates; the repository does not claim whole-prose generation. A non-technical companion
 with analogies and interactive demos: [`PLAIN_LANGUAGE_COMPANION.md`](PLAIN_LANGUAGE_COMPANION.md).
 
 ## Verify everything with one command
@@ -17,7 +19,7 @@ uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --s
 ```
 
 This runs, fail-closed: the bitwise HSTU core-block parity test → the artifact-graph build
-(**all 199 artifact-gated cells across 23 families recomputed from public source artifacts**; exits
+(**all 200 artifact-gated cells across 24 families recomputed from public source artifacts**; exits
 nonzero on any mismatch, untraceable cell, or missing claim family) → release-manifest hash
 verification (the live gate reports the authoritative file count) → the pre-declared Musical_Instruments gate adjudicator → the TFV2 repaired-estimand adjudicator (outcome-visible — §5.3 chronology) → **the
 Office V3 adjudicator (counted; the build fails unless the campaign verdict is PASS)** →
@@ -86,10 +88,23 @@ campaign above is a separate pre-declaration that passed under its frozen wordin
 
 ## Releases
 
-- **`v1.2.0-deposit` (intended candidate; not yet tagged or published).** The current 908-entry
-  candidate bundle is prepared locally and explicitly refuses a normal/tagged build while
-  creator placeholders remain. `v1.1.11-deposit` is a historical snapshot and is stale
-  relative to the present manuscript; it must not be uploaded as current.
+### Machine-readable clean-clone replay
+
+`python _bestrec_run/clean_clone_replay.py` is the strict, no-waiver replay path. It
+requires a clean tracked tree, verifies/hydrates release assets, runs the closure ledger,
+strict empirical rebuild, reader and venue PDF builds, and both manifest checks, then
+writes `CLEAN_CLONE_ATTESTATION.json`. The record binds the subject commit/tree, complete
+normalized command output and its hashes, toolchain, graph summary, manifest, and PDF
+bytes; absolute workstation paths and remote credentials are redacted before hashing.
+Commit that JSON alone as the child of the verified subject; verify it with
+`python _bestrec_run/clean_clone_replay.py --verify-record CLEAN_CLONE_ATTESTATION.json`.
+While human metadata is pending, `--draft-metadata-waiver "reason"` is permitted only for
+an explicitly non-release replay and mechanically records `release_ready=false`.
+
+- **`v1.2.0-deposit` (intended candidate; not yet tagged or published).** The current source
+  inventory requires a 931-entry candidate bundle. The existing 908-entry ZIP is stale and
+  must be rebuilt; normal/tagged mode remains unavailable while creator placeholders remain.
+  `v1.1.11-deposit` is a historical snapshot and must not be uploaded as current.
 - **`v0.9-audit-evidence`** — the mutable audit-evidence store used by the bootstrap path, not the final archival deposit. It contains the pinned-parity files/ZIP, all 21 split CSVs, six text/cache-map assets, 107 TFV2 per-user sidecars, 144 FIR-control endpoint/sidecar/checkpoint files, 72 FIR-pointwise endpoint/sidecar/checkpoint files, and 48 Software V3 endpoint/sidecar/checkpoint files. The authoritative current bootstrap inventory is **407 release-only assets / 9,489,409,339 bytes (about 8.84 GiB)**. A fresh HTTPS clone downloaded and raw-hash-verified all 407 assets with zero local reuse on 2026-07-28, and the public `RELEASE_MANIFEST.json` was uploaded last. Fresh clones: `python bootstrap_public_clone.py` before the strict gate; `git submodule update --init` is optional because the parity test can hydrate the exact pinned HSTU reference commit into its isolated cache.
 - **`bestrec-raw-records-v1`** — the historical LC2C project's raw records (see `README_LC2C_HISTORICAL.md`).
 

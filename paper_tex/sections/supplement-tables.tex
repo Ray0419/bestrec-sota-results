@@ -20,11 +20,22 @@
 
 \input{tables/table1e}
 
-\section*{S.6 --- Selected-checkpoint FIR diagnostics}
+\section*{S.6 --- Software V3 paired-seed detail}
 
 \begingroup
 \renewcommand{\thefigure}{S\arabic{figure}}
 \setcounter{figure}{0}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.96\linewidth]{fig_software_v3_pairs.pdf}
+  \Description{Two panels visualize the eight Software V3 matched seed blocks. The left panel connects each identity NDCG at 10 value to its learned-FIR value. The right panel shows all eight learned-minus-identity differences, the zero line, the predeclared plus 0.000500 reporting threshold, and the paired mean with its ordinary 95 percent paired-t confidence interval.}
+  \caption{Software V3 registered paired-seed detail. Every matched seed block has higher sealed TEST NDCG@10 under learned FIR than identity; the second panel shows all paired differences, the frozen +0.000500 threshold, and the ordinary paired-t mean and 95\% CI. This is outcome-known same-team robustness, not independent confirmation. Exact values are in \texttt{figures/fig\_software\_v3\_pairs\_data.csv}.}
+  \label{fig:software_v3_pairs}
+\end{figure}
+
+\clearpage
+\section*{S.7 --- Selected-checkpoint FIR diagnostics}
+
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.96\linewidth]{fig_fir_response.pdf}

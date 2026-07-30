@@ -1,4 +1,19 @@
 param([string]$Draft = "")
+# Match build.sh's fail-closed release-epoch assertion. SOURCE_DATE_EPOCH is
+# intentionally fixed for byte-stable archival PDFs, but a release build must
+# still prove that the governing manifest is present, parseable, and carries a
+# nonempty Git boundary. ALLOW_HEAD_EPOCH=1 is development-only.
+$ManifestPath = Join-Path $PSScriptRoot "..\RELEASE_MANIFEST.json"
+$ManifestCommit = $null
+try {
+  $Manifest = Get-Content -LiteralPath $ManifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
+  $ManifestCommit = [string]$Manifest.git_commit
+} catch {
+  $ManifestCommit = $null
+}
+if ([string]::IsNullOrWhiteSpace($ManifestCommit) -and $env:ALLOW_HEAD_EPOCH -ne "1") {
+  throw "FATAL: cannot read git_commit from RELEASE_MANIFEST.json (set ALLOW_HEAD_EPOCH=1 only for development builds)"
+}
 # A fixed archival metadata epoch makes Tectonic's PDF date and file identifier
 # independent of the child commit that carries a freshly regenerated manifest.
 $env:SOURCE_DATE_EPOCH = "946684800"

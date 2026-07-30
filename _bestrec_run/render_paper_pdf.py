@@ -40,6 +40,30 @@ if "img{" not in head:  # embedded figures scale to text width; never slice acro
     head = head.replace("@page{", "img{max-width:100%;max-height:92vh;display:block;"
                         "margin:10px auto;page-break-inside:avoid;"
                         "break-inside:avoid}\n@page{", 1)
+# The supplemental FIR diagnostic otherwise leaves its concise printed caption
+# alone on a nearly blank final page. Canonicalize this targeted rule even when
+# reusing a previously generated HTML head, then keep the image/caption spacing
+# compact without changing global figure typography.
+head = re.sub(r"img\[src\$='fig_fir_response\.png'\]\{[^}]*\}\s*", "", head)
+_fir_s1_css = ("img[src$='fig_fir_response.png']{max-width:75%;margin-bottom:2px}\n"
+               "p:has(> img[src$='fig_fir_response.png']){margin-bottom:0}\n"
+               "p:has(> img[src$='fig_fir_response.png']) + p{margin-top:2px;margin-bottom:0}\n")
+head = head.replace("@page{", _fir_s1_css + "@page{", 1)
+# Keep the new supplemental Software heading with its figure instead of leaving
+# the heading alone below the preceding full-page table.
+head = re.sub(r"h3:has\(\+ p > img\[src\$='fig_software_v3_pairs\.png'\]\)\{[^}]*\}\s*", "", head)
+_software_s1_css = ("h3:has(+ p > img[src$='fig_software_v3_pairs.png'])"
+                    "{break-after:avoid;page-break-after:avoid}\n")
+head = head.replace("@page{", _software_s1_css + "@page{", 1)
+# Chromium's paged-media margin boxes provide visible reader-edition folios.
+# Keep the venue PDFs under acmart control; this affects only the HTML reader.
+if "@bottom-center" not in head:
+    head = head.replace(
+        "@page{margin:1.6cm}",
+        "@page{margin:1.6cm;@bottom-center{content:counter(page);"
+        "font:8pt 'Segoe UI',sans-serif;color:#555}}",
+        1,
+    )
 # PDF metadata title comes from <title> (audit 10:47: it advertised the html filename)
 TITLE = next((ln.lstrip("# ").strip() for ln in src.split("\n") if ln.startswith("# ")),
              "BEST-Rec artifact-gated evaluation study")
@@ -72,13 +96,55 @@ for _ in range(30):
     time.sleep(1)
 assert os.path.exists(PDF), "PDF not produced: " + (r.stderr or "")[-400:]
 
-# Edge stamps wall-clock metadata into otherwise identical output.  Normalize
-# it before scanning or manifesting the PDF.
+# Edge stamps wall-clock metadata into otherwise identical output. Normalize
+# before pypdf rewrites the object graph for navigation; pypdf preserves the
+# normalized values but encodes strings in a form the byte-level normalizer is
+# intentionally not expected to rewrite a second time.
 from normalize_pdf_metadata import normalize_pdf  # noqa: E402
 normalize_pdf(PDF)
-print("pdf bytes:", os.path.getsize(PDF))
 
-from pypdf import PdfReader  # noqa: E402
+# Edge does not emit a document outline for this HTML print path. Add one from
+# the canonical level-2 Markdown headings and fail if any target is ambiguous.
+# This is deterministic navigation metadata; it does not alter page content.
+from pypdf import PdfReader, PdfWriter  # noqa: E402
+
+def _heading_title(line):
+    title = line[3:].strip()
+    # Strip Markdown emphasis/code delimiters but preserve literal underscores;
+    # the Appendix A.0 heading intentionally prints Office_Products.
+    return title.replace("`", "").replace("**", "").replace("*", "")
+
+def _norm_text(value):
+    return re.sub(r"\s+", " ", value).strip()
+
+_headings = [_heading_title(line) for line in src.splitlines()
+             if re.match(r"^## (?!#)", line)]
+_pre_outline = PdfReader(PDF)
+_page_text = [_norm_text(pg.extract_text() or "") for pg in _pre_outline.pages]
+_targets = []
+for _title in _headings:
+    _probe = _norm_text(_title)
+    _candidates = [i for i, value in enumerate(_page_text) if _probe in value]
+    if not _candidates:
+        _prefix = _probe.split("—", 1)[0].strip()
+        _candidates = [i for i, value in enumerate(_page_text)
+                       if _prefix and _prefix in value]
+    if len(_candidates) != 1:
+        raise AssertionError(
+            f"reader outline target must resolve exactly once: {_title!r} -> {_candidates}")
+    _targets.append((_title, _candidates[0]))
+
+_writer = PdfWriter()
+_writer.clone_document_from_reader(_pre_outline)
+_writer.page_mode = "/UseOutlines"
+for _title, _page_index in _targets:
+    _writer.add_outline_item(_title, _page_index)
+_outline_tmp = PDF + ".outline.tmp"
+with open(_outline_tmp, "wb") as _stream:
+    _writer.write(_stream)
+os.replace(_outline_tmp, PDF)
+print("outline entries:", len(_targets))
+print("pdf bytes:", os.path.getsize(PDF))
 
 def _count_images(reader):
     n = 0
@@ -90,6 +156,8 @@ def _count_images(reader):
             pass
     return n
 rd = PdfReader(PDF)
+if len(rd.outline) != len(_targets):
+    raise AssertionError(f"reader outline count drift: {len(rd.outline)} != {len(_targets)}")
 text = "\n".join((pg.extract_text() or "") for pg in rd.pages)
 pats = [r"\bTODO\b", r"\bTBD\b", r"\bFIXME\b", r"\bXXX\b", r"PLACEHOLDER",
         r"lorem", r"\(v3\.\d\)", r"\[TK", r"\?\?\?", r"\bDEAD\b", r"\bkilled\b",

@@ -5,10 +5,10 @@ existing Git tag, GitHub release, archive record, or DOI. The historical
 `v1.1.11-deposit` tag remains provenance only and is stale relative to the
 current manuscript. Do not upload or retag it as current.
 
-The deterministic candidate bundle is
-`_release/bestrec_deposit_v1.2.0.zip` (908 entries: 906 tracked
-payloads plus `README_DEPOSIT.txt` and `SHA256SUMS.txt`) and has an adjacent
-`.sha256` sidecar. Rebuild it with:
+The current source inventory requires
+`_release/bestrec_deposit_v1.2.0.zip` (931 entries: 929 tracked
+payloads plus `README_DEPOSIT.txt` and `SHA256SUMS.txt`). Any existing 908-entry
+ZIP and adjacent `.sha256` sidecar are stale. Rebuild them with:
 
 ```powershell
 python _bestrec_run/build_deposit_bundle.py --candidate

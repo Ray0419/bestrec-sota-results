@@ -1,12 +1,22 @@
 %% GENERATED from PAPER_SUBMISSION.md (pandoc) -- hand-fixed conversion; see BUILD_NOTES.md
 \section{Results}\label{sec:5}
 
+\textbf{AlphaFuse pipeline boundary.} Because the upstream offline preprocessing code was unavailable, both official classes consumed training rows produced by our frozen per-prefix adapter. This is upstream-class/training-code transfer, not reproduction of the upstream data pipeline.
+
 \textbf{Statistical reporting conventions.} Unless stated otherwise: the sample unit is the training seed; means are reported \ensuremath{\pm} sample standard deviation over seeds; confidence intervals are two-sided 95\% Student-t intervals with df = n\ensuremath{-}1; comparisons between our own arms use same-numbered seeds and are analyzed as independent arms (Welch/Satterthwaite) unless exact matched backbone initialization and a paired analysis are explicitly named, as in canonical breadth, active controls, pointwise placebo, and prospective Software V3; comparisons against published numbers are point-estimate comparisons; pooled tail hit-counts are descriptive counts only; p-values are uncorrected unless a correction is named. Cells labeled \emph{confirmatory} in the artifact manifest are pre-declared prospective campaigns or frozen-protocol locks: selection timing and protocol integrity, not seed count or external independence, are the criterion. Multi-seed post-hoc results remain exploratory.
 
 
-\subsection{Video\_Games --- multi-seed reference numbers (NOT SOTA)}\label{sec:5.1}
+\subsection{Video\_Games --- descriptive system context (not FIR inference; NOT SOTA)}\label{sec:5.1}
 
-Our headline result (Table 1) is built on the \textbf{HSTU-style pure-PyTorch encoder} with the two added components and stacks each lever in a controlled 5-seed ablation; Table 1a retains the traceable within-paper SASRec-family floor; Table 1b combines reported HSTU-BLaIR evidence, our SM120 compatibility port, an official-code WEARec equal-evaluation feasibility run, and the frozen AlphaFuse-style whole-package comparison.
+Table 1 locates the historical \textbf{HSTU-style pure-PyTorch encoder} and component
+stack within the paper's system context. It is not the inferential basis for the modular
+FIR contribution: its ladder mixes $n=1$, five-seed, and six-seed arms, lacks one
+pre-declared contrast family, and contains separately summarized rather than
+initialization-paired arms. The FIR claim instead rests on the explicitly named
+matched-control and transfer studies in \S\ref{sec:5.2}. Table 1a retains the traceable
+within-paper SASRec-family floor; Table 1b combines reported HSTU-BLaIR evidence, our
+SM120 compatibility port, an official-code WEARec equal-evaluation feasibility run, and
+the frozen AlphaFuse-style whole-package comparison.
 
 \input{tables/table1}
 
@@ -23,7 +33,7 @@ The full model is \textbf{+17.5\%} over the published SASRec point estimate (0.0
 
 \textbf{Table 1b: Reported, locally regenerated, and current-comparator evidence} \citep{liu2025hstublair,hu2025alphafuse,xu2026wearec}:
 
-The HSTU-BLaIR paper reports on AR2023 Video\_Games 5-core LLOO with identical dataset stats to ours (25,612 items / 94,762 users / 814,585 interactions). They train for \textbf{100 epochs} following Zhai et al.'s HSTU protocol. Their single-seed numbers:
+The HSTU-BLaIR paper reports the same Video\_Games item and user counts as ours (25,612 items / 94,762 users), but 814,585 interactions---one fewer than our 814,586---under its AR2023 5-core LLOO geometry. They train for \textbf{100 epochs} following Zhai et al.'s HSTU protocol. Their single-seed numbers:
 
 \input{tables/table1b}
 
@@ -74,12 +84,20 @@ It is also same-investigator, same-code-lineage, and same-Amazon-family work und
 
 The paired-difference sample SD was \textbf{0.000563779}. In registered seed order, the eight learned-minus-identity differences were \textbf{+0.005197548, +0.004308974, +0.005082181, +0.005788969, +0.005439290, +0.005516648, +0.004194543, and +0.004966712}. A post-hoc two-sided exact sign test for 8/8 positive differences gives \textbf{$p=.0078125$}. This sign test is a small-$n$ robustness sensitivity, not the frozen decision rule and not population-level uncertainty across users, cutoffs, categories, or domains.
 
+Figure~\ref{fig:fir_evidence_summary} is a visual index of the released FIR contrasts,
+arranged to expose both scope and boundary conditions. It is not a pooled estimate:
+the intervals retain the estimators and evidence classes of their source adjudications
+and do not form one multiplicity family. The positive Amazon rows are outcome-known
+internal evidence; the matched MI controls show that learned FIR exceeds the
+equal-parameter pointwise placebo but not the shared causal filter; and the two
+prospectively frozen same-investigator MovieLens transfer intervals include zero.
+
 \begin{figure}[t]
   \centering
-  \includegraphics[width=\linewidth]{fig_software_v3_pairs.pdf}
-  \Description{Two panels visualize the eight Software V3 matched seed blocks. The left panel connects each identity NDCG at 10 value to its learned-FIR value. The right panel shows all eight learned-minus-identity differences, the zero line, the predeclared plus 0.000500 reporting threshold, and the paired mean with its ordinary 95 percent paired-t confidence interval.}
-  \caption{Software V3 registered paired-seed results. (A) Every matched seed block has higher sealed TEST NDCG@10 under learned FIR than identity. (B) All eight paired differences, the frozen +0.000500 reporting threshold, and the ordinary paired-t mean and 95\% CI. The figure visualizes outcome-known exploratory same-team robustness, not independent confirmation; exact plotted values are in \texttt{figures/fig\_software\_v3\_pairs\_data.csv}.}
-  \label{fig:software_v3_pairs}
+  \includegraphics[width=\linewidth]{fig_fir_evidence_summary.pdf}
+  \Description{A forest plot organizes eight released FIR contrasts into three groups. Four outcome-known internal Amazon learned-minus-identity estimates are positive. On matched Musical Instruments controls, learned FIR exceeds the equal-parameter pointwise placebo, while learned minus the shared causal filter spans zero. In the prospectively frozen same-investigator MovieLens study, learned minus identity and learned minus pointwise both span zero.}
+  \caption{FIR evidence map across released adjudications. Positive outcome-known Amazon contrasts coexist with a shared-filter boundary and a negative prospectively frozen MovieLens transfer result. Intervals retain their source estimators and evidence classes; they are not pooled and do not form one common multiplicity family. Exact values and source keys are in \texttt{figures/fig\_fir\_evidence\_summary\_data.csv}.}
+  \label{fig:fir_evidence_summary}
 \end{figure}
 
 \textbf{Prospectively frozen non-Amazon replication and efficiency study

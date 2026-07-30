@@ -29,7 +29,7 @@ deposit access.
 
 | phase | status | current evidence |
 |---|---|---|
-| 1. Fail-closed artifact gate | **COMPLETE** | `rebuild_hstu_submission.py --strict` calls the strict table graph, manifest verification, governed adjudicators, HSTU parity, FIR causality, and the generated claim-to-artifact map. The graph currently recomputes 199 active paper cells across 23 families with zero mismatch/untraceable cells, including aggregate-only MovieLens negative-replication, WEARec, and E-E V3 current-comparator families. |
+| 1. Fail-closed artifact gate | **COMPLETE** | `rebuild_hstu_submission.py --strict` calls the strict table graph, manifest verification, governed adjudicators, HSTU parity, FIR causality, and the generated claim-to-artifact map. The graph currently recomputes 200 active paper cells across 24 families with zero mismatch/untraceable cells, including the cross-adjudication evidence-map cell and aggregate-only MovieLens negative-replication, WEARec, and E-E V3 current-comparator families. |
 | 2. Remove or rerun old Table 1a | **COMPLETE (safe-removal path)** | Unretained v1 SASRec rows are excluded from the paper claim set and retained only as explicitly `RETIRED` provenance. No claim depends on them. |
 | 3. Re-adjudicate Office honestly | **COMPLETE** | Office V1 remains permanently `VOID`. The separately pre-declared V3 campaign passes only the narrow environment-caveated, per-category point-estimate rule; it is not promoted to paired, distributional, or SOTA evidence. |
 | 4. Bind Office to the artifact graph | **COMPLETE** | Office V1 and V3 cells, verdicts, external constants, and manuscript wording are graph-backed and drift-gated. |

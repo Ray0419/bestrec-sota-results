@@ -27,6 +27,7 @@
   "fir_canonical_breadth",
   "fir_controls",
   "fir_pointwise",
+  "fir_evidence_summary",
   "fir_prospective_sw_v3",
   "fir_efficiency_ml1m_v1",
   "wearec_v1",
@@ -17788,6 +17789,89 @@
    "paper_check_class": "exact"
   },
   {
+   "cell_id": "firevidence.summary",
+   "table_id": "fir_evidence_summary",
+   "row_label": "FIR evidence map: scope and boundary conditions",
+   "metric": "eight released contrasts indexed without pooling",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/fir_v3_adjudication.json",
+    "_bestrec_run/fir_canonical_breadth_adjudication.json",
+    "_bestrec_run/fir_controls_adjudication.json",
+    "_bestrec_run/fir_pointwise_v1_adjudication.json",
+    "_bestrec_run/fir_prospective_sw_v3_adjudication.json",
+    "_bestrec_run/fir_efficiency_ml1m_v1_adjudication.json",
+    "figures/fig_fir_evidence_summary_data.csv",
+    "figures/fig_fir_evidence_summary.png",
+    "figures/fig_fir_evidence_summary.pdf",
+    "_bestrec_run/make_fig_fir_evidence_summary.py"
+   ],
+   "n_seeds": 8,
+   "seeds": [],
+   "recompute": {
+    "rule": "fir_evidence_summary",
+    "params": {
+     "mi": "_bestrec_run/fir_v3_adjudication.json",
+     "breadth": "_bestrec_run/fir_canonical_breadth_adjudication.json",
+     "controls": "_bestrec_run/fir_controls_adjudication.json",
+     "pointwise": "_bestrec_run/fir_pointwise_v1_adjudication.json",
+     "software": "_bestrec_run/fir_prospective_sw_v3_adjudication.json",
+     "ml1m": "_bestrec_run/fir_efficiency_ml1m_v1_adjudication.json",
+     "figure_data": "figures/fig_fir_evidence_summary_data.csv"
+    }
+   },
+   "recompute_rule": "visual-index CSV bound row-by-row to six released adjudications; source estimators and evidence classes remain separate, with no pooling or new multiplicity family",
+   "paper": [
+    {
+     "name": "rows",
+     "value": 8,
+     "mode": "count"
+    },
+    {
+     "name": "positive_excluding_zero",
+     "value": 5,
+     "mode": "count"
+    },
+    {
+     "name": "intervals_including_zero",
+     "value": 3,
+     "mode": "count"
+    }
+   ],
+   "notes": "Visual index only. The intervals retain their source estimators and evidence classes and do not form a pooled analysis or one common multiplicity family. Positive Amazon contrasts coexist with the shared-filter boundary and the prospectively frozen same-investigator negative MovieLens transfer result.",
+   "recomputed": {
+    "rows": 8.0,
+    "positive_excluding_zero": 5.0,
+    "intervals_including_zero": 3.0
+   },
+   "recomputed_value": 8.0,
+   "paper_check": [
+    {
+     "name": "rows",
+     "paper": 8,
+     "mode": "count",
+     "recomputed": 8.0,
+     "result": "exact"
+    },
+    {
+     "name": "positive_excluding_zero",
+     "paper": 5,
+     "mode": "count",
+     "recomputed": 5.0,
+     "result": "exact"
+    },
+    {
+     "name": "intervals_including_zero",
+     "paper": 3,
+     "mode": "count",
+     "recomputed": 3.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
    "cell_id": "firprosp.swv3.learned_identity",
    "table_id": "fir_prospective_sw_v3",
    "row_label": "Frozen Software FIR robustness: learned-identity",
@@ -18195,7 +18279,11 @@
    "source_files": [
     "_bestrec_run/fir_efficiency_ml1m_v1_adjudication.json",
     "figures/fig_fir_efficiency_ml1m_v1_data.csv",
+    "figures/fig_movielens_cohort_flow_data.csv",
+    "figures/fig_movielens_cohort_flow.png",
+    "figures/fig_movielens_cohort_flow.pdf",
     "_bestrec_run/make_fig_fir_efficiency_ml1m_v1.py",
+    "_bestrec_run/make_fig_movielens_cohort_flow.py",
     "_bestrec_run/run_sasrec_sbert_efficiency_ml1m_v1_frozen.py",
     "_bestrec_run/eval_fir_efficiency_ml1m_v1.py",
     "_bestrec_run/run_fir_efficiency_ml1m_v1.py",
@@ -18246,7 +18334,8 @@
       "acquisition": "_bestrec_run/acquire_movielens_fir_efficiency_v1.py",
       "preregistration": "PREREG_FIR_EFFICIENCY_ML1M_V1.md"
      },
-     "figure_data": "figures/fig_fir_efficiency_ml1m_v1_data.csv"
+     "figure_data": "figures/fig_fir_efficiency_ml1m_v1_data.csv",
+     "cohort_flow_data": "figures/fig_movielens_cohort_flow_data.csv"
     }
    },
    "recompute_rule": "prospectively frozen same-investigator MovieLens 1M aggregate adjudication: recompute seed-vector means, paired intervals, Holm decisions, noninferiority bounds, and figure-resource rows; private record-level endpoints are not redistributable and are not independently replayed by the public graph",
@@ -18525,6 +18614,21 @@
      "value": 2.12,
      "mode": "round",
      "precision": 3
+    },
+    {
+     "name": "cohort_views",
+     "value": 2,
+     "mode": "count"
+    },
+    {
+     "name": "primary_candidate_users",
+     "value": 1102,
+     "mode": "count"
+    },
+    {
+     "name": "primary_retained_users",
+     "value": 1033,
+     "mode": "count"
     }
    ],
    "notes": "PREREG_FIR_EFFICIENCY_ML1M_V1.md, code, and adjudicator were committed and pushed before MovieLens acquisition. Ninety-six training runs completed with TEST bytes sequestered, followed by 96 one-shot sealed evaluations and the protocol-designated adjudicator. Local logs do not establish first human/tool access. Exact verdict ML1M-NO-FIR-REPLICATION: learned FIR did not reject versus identity or the equal-parameter pointwise arm. Shared/grouped/low-rank noninferiority passes are conditional numerical compression results and do not imply FIR value when the learned-FIR replication gate fails. Prospectively frozen same-investigator non-Amazon evidence, not independent confirmation or population generalization. The ML-1M README prohibits redistribution, so the public graph recomputes from the aggregate adjudication vectors and frozen-code hashes but cannot independently replay private record-level endpoints, checkpoints, or per-user sidecars.",
@@ -18613,7 +18717,10 @@
     "pointwise_latency_ms_median": 2.1203000214882195,
     "pointwise_inference_peak_mib_median": 50.13525390625,
     "pointwise_training_peak_mib_median": 580.939208984375,
-    "pointwise_training_wall_time_s_median": 7.717810153961182
+    "pointwise_training_wall_time_s_median": 7.717810153961182,
+    "cohort_views": 2.0,
+    "primary_candidate_users": 1102.0,
+    "primary_retained_users": 1033.0
    },
    "recomputed_value": 1.0,
    "paper_check": [
@@ -18984,6 +19091,27 @@
      "recomputed": 2.1203000214882195,
      "result": "exact",
      "rounded": 2.12
+    },
+    {
+     "name": "cohort_views",
+     "paper": 2,
+     "mode": "count",
+     "recomputed": 2.0,
+     "result": "exact"
+    },
+    {
+     "name": "primary_candidate_users",
+     "paper": 1102,
+     "mode": "count",
+     "recomputed": 1102.0,
+     "result": "exact"
+    },
+    {
+     "name": "primary_retained_users",
+     "paper": 1033,
+     "mode": "count",
+     "recomputed": 1033.0,
+     "result": "exact"
     }
    ],
    "paper_check_class": "exact"
@@ -19309,7 +19437,7 @@
   {
    "cell_id": "eev3.aggregate",
    "table_id": "ee_v3",
-   "row_label": "AlphaFuse-style MiniLM package versus repository SASRec ID backbone",
+   "row_label": "AlphaFuse-style MiniLM package versus zero-initialized upstream-class SASRec ID control",
    "metric": "aggregate NDCG@10/HR@10/MRR and descriptive Welch contrasts",
    "evidence_class": "exploratory",
    "status": "OK",
@@ -19380,7 +19508,7 @@
      }
     }
    },
-   "recompute_rule": "prospectively frozen outcome-known same-investigator AlphaFuse-style aggregate adjudication: verify the six existing reference artifacts; recompute released NDCG@10/HR@10/MRR seed summaries and descriptive independent-arm Welch contrasts; validate fixed-dataset sensitivity metadata, resource summaries, and the private endpoint/sidecar hash ledger; private endpoint extraction and record-level bootstrap resampling are not independently replayed by the public graph",
+   "recompute_rule": "prospectively frozen outcome-known same-investigator AlphaFuse-style aggregate adjudication: verify the six existing reference artifacts; recompute released NDCG@10/HR@10/MRR seed summaries and descriptive independent-arm Welch contrasts; validate fixed-dataset sensitivity metadata and resource summaries; check the private endpoint/sidecar ledger's shape, 64-hex syntax, and uniqueness without reading or hashing the private files; private endpoint extraction and record-level bootstrap resampling are not independently replayed by the public graph",
    "paper": [
     {
      "name": "verdict_reportable_outcome_known",
@@ -19587,7 +19715,7 @@
      "mode": "count"
     }
    ],
-   "notes": "PREREG_EE_V3 and the designated first-reader adjudicator were committed and pushed before launch. Sixteen fresh-seed trainings selected checkpoints with complete-history-masked VALID NDCG@10; TEST remained unread until all 16 training bundles were READY, followed by 16 sealed one-shot evaluations. The unchanged committed adjudicator returned EEV3-REPORTABLE-OUTCOME-KNOWN. The AlphaFuse-style MiniLM representation package scored NDCG@10 0.048273 [0.048129, 0.048416] versus 0.039024 [0.038106, 0.039941] for the official-repository SASRec ID backbone: descriptive independent-arm Welch delta +0.009249 [+0.008329, +0.010169], p=3.48e-08. It remained below the existing six-seed full-model reference by -0.019065 [-0.019347, -0.018783]. This is countable current-comparator evidence under shared data/evaluation and a frozen configuration, but it is outcome-known, same-investigator, and a whole-package contrast. It does not reproduce AlphaFuse's published text encoder, equalize architecture/text availability/initialization/capacity, isolate null-space fusion, supply independent confirmation, or support SOTA. The public graph recomputes released aggregate arithmetic and validates the private endpoint/sidecar hash ledger; it cannot replay private endpoint extraction or record-level bootstrap resampling.",
+   "notes": "PREREG_EE_V3 and its designated adjudicator were committed and pushed before launch. Prelaunch preparation opened the outcome-known combined TRAIN/VALID/TEST export and retained only TRAIN histories and VALID targets in the training input. Sixteen fresh-seed trainings selected checkpoints with complete-history-masked VALID NDCG@10 without loading, hashing, or scoring TEST; after all 16 training bundles were READY, 16 sealed one-shot evaluations followed. The unchanged committed adjudicator returned EEV3-REPORTABLE-OUTCOME-KNOWN. The AlphaFuse-style MiniLM representation package scored NDCG@10 0.048273 [0.048129, 0.048416] versus 0.039024 [0.038106, 0.039941] for a zero-initialized upstream-class SASRec ID control: descriptive independent-arm Welch delta +0.009249 [+0.008329, +0.010169], p=3.48e-08. It remained below the existing six-seed full-model reference by -0.019065 [-0.019347, -0.018783]. This is countable current-comparator evidence under shared data/evaluation and a frozen configuration, but it is outcome-known, same-investigator, and a whole-package contrast. It does not reproduce AlphaFuse's published text encoder, test upstream-default normal initialization, equalize architecture/text availability/initialization/capacity, isolate null-space fusion, supply independent confirmation, or support SOTA. The public graph recomputes released aggregate arithmetic and checks the private endpoint/sidecar ledger's schema, 64-hex syntax, and uniqueness; it does not read or hash the private files or replay record-level bootstrap resampling. The local adjudicator checked the private-file digests.",
    "recomputed": {
     "n_units_per_arm": 8.0,
     "alphafuse_ndcg_mean": 0.04827259824759229,

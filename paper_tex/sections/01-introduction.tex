@@ -19,7 +19,7 @@ Recommender evaluation is vulnerable to mistuned baselines, incompatible protoco
 and irreproducible result selection
 \citep{ferraridacrema2019worrying,ferraridacrema2021troubling}. We therefore pair
 the method with a per-paper discipline: git-frozen protocols, a fail-closed graph that
-recomputes 199 reported cells across 23 claim families, environment-caveated comparator
+recomputes 200 reported cells across 24 claim families, environment-caveated comparator
 regeneration, and symmetric adjudication. Failures are retained. In particular, the
 original Office\_Products protocol remains VOID after its own floor check exposed an
 environment mismatch, although a redesigned fresh-seed protocol later passed
@@ -53,7 +53,7 @@ these results prevent a general filtering or cross-domain claim.
 An official-code WEARec feasibility run under the same evaluator also scored below the
 existing full-model reference; it equalizes evaluation only, not architecture, loss,
 schedule, or tuning, and is neither independent confirmation nor SOTA evidence.
-A frozen AlphaFuse-style package-versus-repository-ID study returned a positive
+A frozen study contrasting an AlphaFuse-style package with a zero-initialized upstream-class SASRec-ID control returned a positive
 whole-package contrast but remained below that full-model reference; it improves
 comparator coverage without isolating a component or supplying independent confirmation.
 \item \textbf{An auditable evaluation record.} Released protocols, artifacts,

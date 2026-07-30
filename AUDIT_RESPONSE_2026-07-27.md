@@ -13,9 +13,9 @@ independence, custody, or construct validity.
 | 4 | **Current artifact replay CLOSED; frozen V3 training replay defect disclosed** | `bootstrap_public_clone.py` hydrates and raw-hash-verifies every release section. All 48 Software V3 assets were uploaded, and a fresh HTTPS clone directly downloaded and verified the complete **407-asset / 9,489,409,339-byte** public boundary with zero local reuse. A subsequent pristine clone at pushed commit `9cfe5c1f` re-verified all 407 bytesets, installed the frozen 91-package environment, recomputed 196/196 active cells across 20 families with zero mismatch/untraceable cells, verified the 1,009-file manifest, passed every governed adjudicator, rendered the 47-page reader PDF with `scan: CLEAN`, and passed both ACM targets under the draft waiver. This artifact replay did not rerun V3 training. The audit correctly found that the frozen common module expects the CRLF SHA-256 `a230d17c…` for one MI lineage-reference JSON while a normal tagged checkout produces LF SHA-256 `37c78ef…`; direct clean-tag execution fails that raw input assertion until the historical CRLF representation is restored. `FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md` records both hashes and the descendant preserves the exact CRLF bytes. The reference was not read for runtime configuration, so endpoint arithmetic is unchanged, but frozen-tag portability is not claimed. |
 | 5 | **CLOSED** | E-A is labeled the frozen independent-arm Welch/Satterthwaite analysis: ordinary 95% Welch CI, df=13.939; its paired-by-seed result is descriptive only. Hybrid intervals are ordinary paired 95% CIs; Holm adjusts p-values/decisions, not intervals. A new health gate forbids the stale labels. |
 | 6 | **OPEN human verification; disclosure closed** | Dirty-tree execution across five commits, absent independent sidecar custody, and the limited local start marker are retained in the main text and erratum. The study remains outcome-known exploratory evidence. Only the maintainer can verify pre-adjudication human/tool visibility. |
-| 7 | **Current frequency baseline CLOSED narrowly; clean text+ID V3 frozen, outcome pending** | FreqRec and WEARec are cited in Table 0, Related Work, Method, and the bibliography; BSARec is correctly scoped to Theorem 1 on repeated softmax attention, not the HSTU-style operator. The prospectively frozen official-code WEARec campaign completed 2/2 validation-only presets, 8/8 TEST-sequestered assessment trainings, and 8/8 sealed evaluations. Its exact verdict is `WEAREC-BELOW-EXISTING-REFERENCE`: WEARec NDCG@10 0.059184 [0.058674,0.059693] versus the existing 0.067337 [0.067063,0.067611] reference; descriptive unpaired delta −0.008154 [−0.008689,−0.007618]. This closes only a narrow official-model/equal-evaluation feasibility baseline, not equal architecture/loss/schedule/tuning budgets, independent confirmation, or SOTA. The outcome-visible V2 AlphaFuse port remains `NONCOUNTABLE`/`manuscript_allowed=false`. `PREREG_EE_V3.md` now freezes eight fresh seeds per arm, complete-history-masked VALID selection and one-shot TEST evaluation, immutable attempt/seal lifecycles, reconstructive rank sidecars, exact source/data/config/environment identities, independent-arm Welch inference, fixed-split user/item-cluster sensitivities, and resource reporting. Its structural suite passes on synthetic and real VALID data without reading TEST. No V3 result exists at this freeze point. |
+| 7 | **Current frequency and clean text+ID comparator coverage CLOSED narrowly** | FreqRec and WEARec are cited in Table 0, Related Work, Method, and the bibliography; BSARec is correctly scoped to Theorem 1 on repeated softmax attention, not the HSTU-style operator. The prospectively frozen official-code WEARec campaign returned `WEAREC-BELOW-EXISTING-REFERENCE`: WEARec NDCG@10 0.059184 [0.058674,0.059693] versus the existing 0.067337 [0.067063,0.067611] reference; descriptive unpaired delta −0.008154 [−0.008689,−0.007618]. The outcome-visible V2 AlphaFuse port remains permanently `NONCOUNTABLE`/`manuscript_allowed=false`. The separately frozen E-E V3 campaign completed 16/16 training bundles, then 16/16 sealed TEST evaluations, before the unchanged committed adjudicator became the first authorized endpoint reader. Exact verdict: `EEV3-REPORTABLE-OUTCOME-KNOWN`. AlphaFuse-style MiniLM NDCG@10 is 0.048273 [0.048129,0.048416] versus repository SASRec-ID 0.039024 [0.038106,0.039941]; descriptive independent-arm Welch delta +0.009249 [0.008329,0.010169]. The package remains −0.019065 [−0.019347,−0.018783] below the existing reference. This closes comparator execution, not the independence gap: it is prospectively frozen only for its fresh optimizer seeds on an outcome-known split by the same investigators. MiniLM replaces the published AlphaFuse text vectors; text availability, initialization, trainable capacity, parameter allocation, and architectures differ. The result is a whole-package contrast, not a published-table reproduction, null-space-fusion isolation, equal-tuning evidence, independent confirmation, or SOTA. |
 | 8 | **PARTLY CLOSED by prospective construct/time sensitivity** | The Amazon estimand remains next recorded review event, not preference/purchase/deployment engagement. The prospectively frozen MovieLens study now supplies a rating≥4 primary estimand, an all-rating construct sensitivity, and a global 90% time boundary with a training-observed catalog. Its negative verdict is reported. Verified-purchase, keep-latest, real implicit-event, and query-time-catalog sensitivities remain unrun. |
-| 9 | **Numerical graph, claim-map, and Table 0 quantitative provenance CLOSED; mutation depth remains open** | The graph has 198 active cells across 22 required families with zero mismatch/untraceable cells. The MovieLens cell verifies frozen code hashes and recomputes released aggregate seed-vector, paired-interval, Holm/NI, sensitivity, and resource arithmetic. The WEARec cell verifies the official-code provenance, six reference artifacts, eight private endpoint hashes, and recomputes released NDCG-vector intervals and the descriptive Welch contrast; neither cell claims replay of private endpoint extraction. `build_claim_artifact_map.py` asserts that every active cell is mapped exactly once. `build_table0_claim_ledger.py` generates Table 0’s quantitative FIR fields from active graph cells, and the strict wrapper fails if its marked region drifts. Literature attribution remains citation-checked authored prose. Full mutation/fault-injection depth remains future assurance work. |
+| 9 | **Numerical graph, claim-map, and Table 0 quantitative provenance CLOSED; mutation depth remains open** | The graph has 199 active cells across 23 required families with zero mismatch/untraceable cells. The MovieLens cell verifies frozen code hashes and recomputes released aggregate seed-vector, paired-interval, Holm/NI, sensitivity, and resource arithmetic. The WEARec cell verifies official-code provenance, six reference artifacts, eight private endpoint hashes, and released NDCG/Welch arithmetic. The E-E V3 cell recomputes all released NDCG/HR/MRR summaries and both Welch contrasts, verifies the same six reference artifacts, validates fixed-dataset sensitivity/resource metadata and all 16 endpoint/sidecar hashes, and records `private_endpoint_replay=0` and `private_bootstrap_replay=0`. No cell claims replay of private endpoint extraction. `build_claim_artifact_map.py` asserts that every active cell is mapped exactly once. `build_table0_claim_ledger.py` generates Table 0’s quantitative fields from active graph cells, and the strict wrapper fails if its marked region drifts. Literature attribution remains citation-checked authored prose. Full mutation/fault-injection depth remains future assurance work. |
 | 10 | **Primary paper type CLOSED; validation depth OPEN** | Title, abstract, Introduction, Table 0, Related Work, Discussion, and Conclusion consistently define the paper as an **incremental modular FIR contribution**. The audit/rebuild apparatus is a supporting contribution, not the lead. Current-baseline execution, cross-repository validation, fault injection, and reviewer-usability evidence would strengthen but do not redefine the paper type. |
 | 11 | **CLOSED** | “Transfers,” “cross-category confirmation/transfer,” “FIR-specific interpretation,” and “supports temporal mixing” were removed from the canonical and rendered manuscripts. Shared/nonlinear controls are described as statistically unseparated, never equivalent. The health gate now fails on the stale attribution phrases. |
 | 12 | **CLOSED** | The manuscript names the separately frozen five-test family A and four-test family B, reports all nine Holm-adjusted p-values, labels every CI ordinary paired, and states that neither one global nine-test family nor simultaneous-CI coverage is implied. |
@@ -41,6 +41,12 @@ same-team robustness; its same investigator, code lineage, Amazon family, and lo
 same-user custody also preclude independent confirmation.
 The artifact apparatus makes that boundary, the nulls, and the deviations
 reproducible; it does not turn them into independent confirmation.
+The frozen E-E V3 current-comparator study adds a positive AlphaFuse-style
+whole-package-versus-repository-ID contrast (+0.009249 [0.008329,0.010169])
+while also recording that package's negative contrast to the stronger existing
+reference (−0.019065 [−0.019347,−0.018783]). This strengthens comparator
+coverage for a modular paper, but does not isolate null-space fusion or equalize
+architecture, capacity, initialization, text availability, or tuning.
 The prospectively frozen MovieLens 1M study further narrows the boundary: learned FIR
 did not replicate versus identity or pointwise on the non-Amazon primary split. Smaller
 FIR arms met the registered noninferiority margin only relative to that non-replicating
@@ -115,7 +121,7 @@ class. The CRLF/LF frozen-reference defect is separately recorded in
 
 The audit's stale-landing-metadata finding is also closed for the mutable current
 boundary: README reports the public asset boundary and the current candidate count;
-CFF/Zenodo metadata report 198 cells across 22 families and no longer claim
+CFF/Zenodo metadata report 199 cells across 23 families and no longer claim
 that the compound placebo isolates temporal access; the public release manifest was
 uploaded last. The final immutable tag, verified creators/legal fields, and DOI remain
 open human-controlled work.
@@ -222,16 +228,24 @@ The graph recomputes both released NDCG vectors, both t intervals, the Welch ari
 the verdict, resource metadata, reference hashes, and the private endpoint-hash ledger.
 It does not replay private endpoint extraction or HR/MRR raw-vector arithmetic.
 
-This result closes only the current frequency-baseline half of audit item 4 as a narrow
-official-model/equal-evaluation feasibility run. It is same-investigator evidence on an
-outcome-known split, not independent confirmation, a paired experiment, equal
-architecture/loss/schedule/tuning budgets, or SOTA. The clean AlphaFuse-style text+ID
-comparison is now frozen as `PREREG_EE_V3.md`, but its 16 fresh training runs and
-sealed evaluations have not yet produced a result. V3 is prospectively frozen only
-with respect to its own fresh optimizer seeds: the split and earlier paper/reference
-outcomes are already known to the same investigators, so it cannot become independent
-confirmation. The frozen framing is a whole representation-package contrast, not an
-isolation of null-space fusion or evidence of equal architecture/tuning budgets.
+This WEARec result closes the current frequency-baseline half of audit item 7 as a narrow
+official-model/equal-evaluation feasibility run. The clean AlphaFuse-style text+ID half
+has now also completed under `PREREG_EE_V3.md`: 16/16 fresh-seed training bundles were
+ready before 16/16 sealed TEST evaluations, and the unchanged committed adjudicator was
+the first authorized endpoint reader. Its exact verdict is
+**`EEV3-REPORTABLE-OUTCOME-KNOWN`**. AlphaFuse-style MiniLM NDCG@10 is
+**0.048273 [0.048129,0.048416]** versus repository SASRec-ID
+**0.039024 [0.038106,0.039941]**; the descriptive independent-arm Welch difference is
+**+0.009249 [0.008329,+0.010169], p=3.48×10⁻⁸**. Against the existing six-seed
+reference, the package is **−0.019065 [−0.019347,−0.018783]**. User and target-item-
+cluster bootstrap intervals remain fixed-split sensitivities, not optimizer/population
+inference. V3 is prospectively frozen only with respect to its fresh optimizer seeds:
+the split and earlier paper/reference outcomes were already known to the same
+investigators. MiniLM replaces the published AlphaFuse text vectors, and the arms differ
+in text availability, initialization, trainable capacity, parameter allocation, and
+architecture. The result is countable whole-package current-comparator evidence, not a
+published-table reproduction, paired experiment, null-space-fusion isolation, equal-
+tuning evidence, independent confirmation, or SOTA.
 
 The audit's Table 0 readability and abstract-length concerns were also rechecked.
 Table 0 now uses generator-controlled ragged-right columns, additional padding, and

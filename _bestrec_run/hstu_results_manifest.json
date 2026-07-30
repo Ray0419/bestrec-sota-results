@@ -30,6 +30,7 @@
   "fir_prospective_sw_v3",
   "fir_efficiency_ml1m_v1",
   "wearec_v1",
+  "ee_v3",
   "office_v3",
   "tfv2"
  ],
@@ -19293,6 +19294,657 @@
      "paper": 8,
      "mode": "count",
      "recomputed": 8.0,
+     "result": "exact"
+    },
+    {
+     "name": "private_endpoint_replay",
+     "paper": 0,
+     "mode": "count",
+     "recomputed": 0.0,
+     "result": "exact"
+    }
+   ],
+   "paper_check_class": "exact"
+  },
+  {
+   "cell_id": "eev3.aggregate",
+   "table_id": "ee_v3",
+   "row_label": "AlphaFuse-style MiniLM package versus repository SASRec ID backbone",
+   "metric": "aggregate NDCG@10/HR@10/MRR and descriptive Welch contrasts",
+   "evidence_class": "exploratory",
+   "status": "OK",
+   "source_files": [
+    "_bestrec_run/ee_v3_adjudication.json",
+    "_bestrec_run/results_V2_ls02_filter8_VG.json",
+    "_bestrec_run/results_V2_ls02_filter8_seed20260609_VG.json",
+    "_bestrec_run/results_V2_ls02_filter8_seed20260610_VG.json",
+    "_bestrec_run/results_V2_ls02_filter8_seed20260611_VG.json",
+    "_bestrec_run/results_V2_ls02_filter8_seed20260612_VG.json",
+    "_bestrec_run/results_V2_confirm_seed20260613_VG.json",
+    "PREREG_EE_V3.md",
+    "_bestrec_run/prepare_ee_v3.py",
+    "_bestrec_run/ee_v3_input_manifest.json",
+    "_bestrec_run/ee_v3_common.py",
+    "_bestrec_run/test_ee_v3.py",
+    "_bestrec_run/run_ee_v3.py",
+    "_bestrec_run/eval_ee_v3.py",
+    "_bestrec_run/run_ee_v3_campaign.py",
+    "_bestrec_run/adjudicate_ee_v3.py"
+   ],
+   "n_seeds": 8,
+   "seeds": [
+    20262201,
+    20262202,
+    20262203,
+    20262204,
+    20262205,
+    20262206,
+    20262207,
+    20262208
+   ],
+   "recompute": {
+    "rule": "ee_v3_aggregate",
+    "params": {
+     "adjud": "_bestrec_run/ee_v3_adjudication.json",
+     "seeds": [
+      20262201,
+      20262202,
+      20262203,
+      20262204,
+      20262205,
+      20262206,
+      20262207,
+      20262208
+     ],
+     "arms": [
+      "alphafuse_package",
+      "sasrec_id"
+     ],
+     "repository_commit": "f7c9c551d313de07b433545ed4887400ed4f4d98",
+     "upstream_commit": "b501a0540b609370df995ad06fb245859b10a18a",
+     "reference_files": [
+      "_bestrec_run/results_V2_ls02_filter8_VG.json",
+      "_bestrec_run/results_V2_ls02_filter8_seed20260609_VG.json",
+      "_bestrec_run/results_V2_ls02_filter8_seed20260610_VG.json",
+      "_bestrec_run/results_V2_ls02_filter8_seed20260611_VG.json",
+      "_bestrec_run/results_V2_ls02_filter8_seed20260612_VG.json",
+      "_bestrec_run/results_V2_confirm_seed20260613_VG.json"
+     ],
+     "reference_lf_sha256": {
+      "results_V2_ls02_filter8_VG.json": "8e22dcc882af35fb99c9a2f746c1fdd310a1a4158f958bc684477a6b9ca65f48",
+      "results_V2_ls02_filter8_seed20260609_VG.json": "d6f607fe7b7e3943dc9354b87f8639cd10cfae8ba2f09c6a6d2d2f077d24d66e",
+      "results_V2_ls02_filter8_seed20260610_VG.json": "adaa757aac318958b4ef23bd1234d243beacb5215751bbf7d4064ad09c32456d",
+      "results_V2_ls02_filter8_seed20260611_VG.json": "19db16452087a64a66ee98315216675bc13719db5a86a74eaf28556d1bea74f2",
+      "results_V2_ls02_filter8_seed20260612_VG.json": "b4c4df8aa5a7bfec28628f5b1bd5130d7b2f28646020b1472ccaa2eb6cf34658",
+      "results_V2_confirm_seed20260613_VG.json": "4a1f1ac8b9a8e14fa8c98f781c6980292365e9fd5b7e0a2fb96bd4fa82db79f4"
+     }
+    }
+   },
+   "recompute_rule": "prospectively frozen outcome-known same-investigator AlphaFuse-style aggregate adjudication: verify the six existing reference artifacts; recompute released NDCG@10/HR@10/MRR seed summaries and descriptive independent-arm Welch contrasts; validate fixed-dataset sensitivity metadata, resource summaries, and the private endpoint/sidecar hash ledger; private endpoint extraction and record-level bootstrap resampling are not independently replayed by the public graph",
+   "paper": [
+    {
+     "name": "verdict_reportable_outcome_known",
+     "value": 1,
+     "mode": "count"
+    },
+    {
+     "name": "countable_as_current_comparator",
+     "value": 1,
+     "mode": "count"
+    },
+    {
+     "name": "independent_confirmation",
+     "value": 0,
+     "mode": "count"
+    },
+    {
+     "name": "general_sota_claim_allowed",
+     "value": 0,
+     "mode": "count"
+    },
+    {
+     "name": "direction_above_sasrec_id",
+     "value": 1,
+     "mode": "count"
+    },
+    {
+     "name": "direction_below_existing_reference",
+     "value": 1,
+     "mode": "count"
+    },
+    {
+     "name": "n_units_per_arm",
+     "value": 8,
+     "mode": "count"
+    },
+    {
+     "name": "alphafuse_ndcg_mean",
+     "value": 0.048273,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "alphafuse_ndcg_ci_lo",
+     "value": 0.048129,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "alphafuse_ndcg_ci_hi",
+     "value": 0.048416,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "sasrec_id_ndcg_mean",
+     "value": 0.039024,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "sasrec_id_ndcg_ci_lo",
+     "value": 0.038106,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "sasrec_id_ndcg_ci_hi",
+     "value": 0.039941,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "delta_vs_sasrec_id",
+     "value": 0.009249,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "delta_vs_sasrec_id_ci_lo",
+     "value": 0.008329,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "delta_vs_sasrec_id_ci_hi",
+     "value": 0.010169,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "delta_vs_sasrec_id_p",
+     "value": 3.4753606736507286e-08,
+     "mode": "approx",
+     "tol": 1e-11
+    },
+    {
+     "name": "relative_gain_vs_sasrec_id_pct",
+     "value": 23.7,
+     "mode": "round",
+     "precision": 1
+    },
+    {
+     "name": "existing_reference_mean",
+     "value": 0.067337,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "delta_vs_existing_reference",
+     "value": -0.019065,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "delta_vs_existing_reference_ci_lo",
+     "value": -0.019347,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "delta_vs_existing_reference_ci_hi",
+     "value": -0.018783,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "delta_vs_existing_reference_p",
+     "value": 1.9554396631393096e-15,
+     "mode": "approx",
+     "tol": 1e-17
+    },
+    {
+     "name": "alphafuse_hr10_mean",
+     "value": 0.089756,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "alphafuse_hr10_ci_lo",
+     "value": 0.08935,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "alphafuse_hr10_ci_hi",
+     "value": 0.090163,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "sasrec_id_hr10_mean",
+     "value": 0.073632,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "sasrec_id_hr10_ci_lo",
+     "value": 0.072351,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "sasrec_id_hr10_ci_hi",
+     "value": 0.074913,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "alphafuse_mrr_mean",
+     "value": 0.043412,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "sasrec_id_mrr_mean",
+     "value": 0.035281,
+     "mode": "round",
+     "precision": 6
+    },
+    {
+     "name": "bootstrap_replicates",
+     "value": 2000,
+     "mode": "count"
+    },
+    {
+     "name": "private_bootstrap_replay",
+     "value": 0,
+     "mode": "count"
+    },
+    {
+     "name": "private_endpoint_count",
+     "value": 16,
+     "mode": "count"
+    },
+    {
+     "name": "private_sidecar_count",
+     "value": 16,
+     "mode": "count"
+    },
+    {
+     "name": "private_endpoint_replay",
+     "value": 0,
+     "mode": "count"
+    }
+   ],
+   "notes": "PREREG_EE_V3 and the designated first-reader adjudicator were committed and pushed before launch. Sixteen fresh-seed trainings selected checkpoints with complete-history-masked VALID NDCG@10; TEST remained unread until all 16 training bundles were READY, followed by 16 sealed one-shot evaluations. The unchanged committed adjudicator returned EEV3-REPORTABLE-OUTCOME-KNOWN. The AlphaFuse-style MiniLM representation package scored NDCG@10 0.048273 [0.048129, 0.048416] versus 0.039024 [0.038106, 0.039941] for the official-repository SASRec ID backbone: descriptive independent-arm Welch delta +0.009249 [+0.008329, +0.010169], p=3.48e-08. It remained below the existing six-seed full-model reference by -0.019065 [-0.019347, -0.018783]. This is countable current-comparator evidence under shared data/evaluation and a frozen configuration, but it is outcome-known, same-investigator, and a whole-package contrast. It does not reproduce AlphaFuse's published text encoder, equalize architecture/text availability/initialization/capacity, isolate null-space fusion, supply independent confirmation, or support SOTA. The public graph recomputes released aggregate arithmetic and validates the private endpoint/sidecar hash ledger; it cannot replay private endpoint extraction or record-level bootstrap resampling.",
+   "recomputed": {
+    "n_units_per_arm": 8.0,
+    "alphafuse_ndcg_mean": 0.04827259824759229,
+    "alphafuse_ndcg_sd": 0.00017135538984554461,
+    "alphafuse_ndcg_ci_lo": 0.0481293415566474,
+    "alphafuse_ndcg_ci_hi": 0.04841585493853717,
+    "sasrec_id_ndcg_mean": 0.03902353143428129,
+    "sasrec_id_ndcg_sd": 0.00109738406919869,
+    "sasrec_id_ndcg_ci_lo": 0.03810609539336805,
+    "sasrec_id_ndcg_ci_hi": 0.03994096747519453,
+    "existing_reference_mean": 0.06733738616433897,
+    "existing_reference_ci_lo": 0.06706336782820595,
+    "existing_reference_ci_hi": 0.067611404500472,
+    "delta_vs_sasrec_id": 0.009249066813310995,
+    "delta_vs_sasrec_id_ci_lo": 0.008329189729329545,
+    "delta_vs_sasrec_id_ci_hi": 0.010168943897292445,
+    "delta_vs_sasrec_id_p": 3.4753606736507186e-08,
+    "delta_vs_sasrec_id_welch_df": 7.341152185538701,
+    "relative_gain_vs_sasrec_id_pct": 23.70125530255291,
+    "delta_vs_existing_reference": -0.019064787916746685,
+    "delta_vs_existing_reference_ci_lo": -0.019346656843897986,
+    "delta_vs_existing_reference_ci_hi": -0.018782918989595384,
+    "delta_vs_existing_reference_p": 1.9554396631393143e-15,
+    "delta_vs_existing_reference_welch_df": 8.144739992597488,
+    "direction_above_sasrec_id": 1.0,
+    "direction_below_existing_reference": 1.0,
+    "countable_as_current_comparator": 1.0,
+    "independent_confirmation": 0.0,
+    "general_sota_claim_allowed": 0.0,
+    "verdict_reportable_outcome_known": 1.0,
+    "bootstrap_replicates": 2000.0,
+    "bootstrap_user_ci_lo": 0.008451981517044594,
+    "bootstrap_user_ci_hi": 0.010027934258237644,
+    "bootstrap_item_cluster_ci_lo": 0.0048059513865592405,
+    "bootstrap_item_cluster_ci_hi": 0.015742583448877398,
+    "private_bootstrap_replay": 0.0,
+    "private_endpoint_count": 16.0,
+    "private_sidecar_count": 16.0,
+    "private_endpoint_replay": 0.0,
+    "alphafuse_hr10_mean": 0.08975644245583672,
+    "alphafuse_hr10_ci_lo": 0.08935023222421576,
+    "alphafuse_hr10_ci_hi": 0.09016265268745768,
+    "alphafuse_mrr_mean": 0.04341188022549001,
+    "alphafuse_mrr_ci_lo": 0.04326293758511194,
+    "alphafuse_mrr_ci_hi": 0.04356082286586808,
+    "alphafuse_cuda_peak_allocated_bytes_median": 168175104.0,
+    "alphafuse_eval_seconds_median": 13.339761400071438,
+    "alphafuse_profiler_accounted_flops_per_user_median": 12800985.203125,
+    "alphafuse_selected_epoch_median": 87.5,
+    "alphafuse_total_params_median": 5007680.0,
+    "alphafuse_trainable_params_median": 1729216.0,
+    "alphafuse_training_wall_seconds_median": 5154.101665400085,
+    "alphafuse_users_per_second_median": 7103.988497521808,
+    "sasrec_id_hr10_mean": 0.07363183554589392,
+    "sasrec_id_hr10_ci_lo": 0.07235051875879236,
+    "sasrec_id_hr10_ci_hi": 0.07491315233299548,
+    "sasrec_id_mrr_mean": 0.03528062381595722,
+    "sasrec_id_mrr_ci_lo": 0.03445051146962447,
+    "sasrec_id_mrr_ci_hi": 0.03611073616228998,
+    "sasrec_id_cuda_peak_allocated_bytes_median": 141946880.0,
+    "sasrec_id_eval_seconds_median": 13.26951159996679,
+    "sasrec_id_profiler_accounted_flops_per_user_median": 12772172.203125,
+    "sasrec_id_selected_epoch_median": 299.0,
+    "sasrec_id_total_params_median": 3368448.0,
+    "sasrec_id_trainable_params_median": 3368448.0,
+    "sasrec_id_training_wall_seconds_median": 11436.029707749956,
+    "sasrec_id_users_per_second_median": 7142.573614362281,
+    "alphafuse_ndcg_seed_1": 0.04845728042580799,
+    "alphafuse_ndcg_seed_2": 0.04819194258059327,
+    "alphafuse_ndcg_seed_3": 0.04855183659334152,
+    "alphafuse_ndcg_seed_4": 0.04810497185421205,
+    "alphafuse_ndcg_seed_5": 0.048230439990657265,
+    "alphafuse_ndcg_seed_6": 0.04810793304023104,
+    "alphafuse_ndcg_seed_7": 0.04814587480235894,
+    "alphafuse_ndcg_seed_8": 0.04839050669353621,
+    "sasrec_id_ndcg_seed_1": 0.03923733262697588,
+    "sasrec_id_ndcg_seed_2": 0.03878799450179395,
+    "sasrec_id_ndcg_seed_3": 0.0399369054536891,
+    "sasrec_id_ndcg_seed_4": 0.040195901626531874,
+    "sasrec_id_ndcg_seed_5": 0.03837862416267582,
+    "sasrec_id_ndcg_seed_6": 0.03949190003070748,
+    "sasrec_id_ndcg_seed_7": 0.03944055447840218,
+    "sasrec_id_ndcg_seed_8": 0.03671903859347406,
+    "existing_reference_ndcg_seed_1": 0.06731228032662745,
+    "existing_reference_ndcg_seed_2": 0.06694888249428342,
+    "existing_reference_ndcg_seed_3": 0.06776123627808996,
+    "existing_reference_ndcg_seed_4": 0.06740918426707242,
+    "existing_reference_ndcg_seed_5": 0.06732043112571998,
+    "existing_reference_ndcg_seed_6": 0.06727230249424056
+   },
+   "recomputed_value": 1.0,
+   "paper_check": [
+    {
+     "name": "verdict_reportable_outcome_known",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    },
+    {
+     "name": "countable_as_current_comparator",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    },
+    {
+     "name": "independent_confirmation",
+     "paper": 0,
+     "mode": "count",
+     "recomputed": 0.0,
+     "result": "exact"
+    },
+    {
+     "name": "general_sota_claim_allowed",
+     "paper": 0,
+     "mode": "count",
+     "recomputed": 0.0,
+     "result": "exact"
+    },
+    {
+     "name": "direction_above_sasrec_id",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    },
+    {
+     "name": "direction_below_existing_reference",
+     "paper": 1,
+     "mode": "count",
+     "recomputed": 1.0,
+     "result": "exact"
+    },
+    {
+     "name": "n_units_per_arm",
+     "paper": 8,
+     "mode": "count",
+     "recomputed": 8.0,
+     "result": "exact"
+    },
+    {
+     "name": "alphafuse_ndcg_mean",
+     "paper": 0.048273,
+     "mode": "round",
+     "recomputed": 0.04827259824759229,
+     "result": "exact",
+     "rounded": 0.048273
+    },
+    {
+     "name": "alphafuse_ndcg_ci_lo",
+     "paper": 0.048129,
+     "mode": "round",
+     "recomputed": 0.0481293415566474,
+     "result": "exact",
+     "rounded": 0.048129
+    },
+    {
+     "name": "alphafuse_ndcg_ci_hi",
+     "paper": 0.048416,
+     "mode": "round",
+     "recomputed": 0.04841585493853717,
+     "result": "exact",
+     "rounded": 0.048416
+    },
+    {
+     "name": "sasrec_id_ndcg_mean",
+     "paper": 0.039024,
+     "mode": "round",
+     "recomputed": 0.03902353143428129,
+     "result": "exact",
+     "rounded": 0.039024
+    },
+    {
+     "name": "sasrec_id_ndcg_ci_lo",
+     "paper": 0.038106,
+     "mode": "round",
+     "recomputed": 0.03810609539336805,
+     "result": "exact",
+     "rounded": 0.038106
+    },
+    {
+     "name": "sasrec_id_ndcg_ci_hi",
+     "paper": 0.039941,
+     "mode": "round",
+     "recomputed": 0.03994096747519453,
+     "result": "exact",
+     "rounded": 0.039941
+    },
+    {
+     "name": "delta_vs_sasrec_id",
+     "paper": 0.009249,
+     "mode": "round",
+     "recomputed": 0.009249066813310995,
+     "result": "exact",
+     "rounded": 0.009249
+    },
+    {
+     "name": "delta_vs_sasrec_id_ci_lo",
+     "paper": 0.008329,
+     "mode": "round",
+     "recomputed": 0.008329189729329545,
+     "result": "exact",
+     "rounded": 0.008329
+    },
+    {
+     "name": "delta_vs_sasrec_id_ci_hi",
+     "paper": 0.010169,
+     "mode": "round",
+     "recomputed": 0.010168943897292445,
+     "result": "exact",
+     "rounded": 0.010169
+    },
+    {
+     "name": "delta_vs_sasrec_id_p",
+     "paper": 3.4753606736507286e-08,
+     "mode": "approx",
+     "recomputed": 3.4753606736507186e-08,
+     "result": "within_tol"
+    },
+    {
+     "name": "relative_gain_vs_sasrec_id_pct",
+     "paper": 23.7,
+     "mode": "round",
+     "recomputed": 23.70125530255291,
+     "result": "exact",
+     "rounded": 23.7
+    },
+    {
+     "name": "existing_reference_mean",
+     "paper": 0.067337,
+     "mode": "round",
+     "recomputed": 0.06733738616433897,
+     "result": "exact",
+     "rounded": 0.067337
+    },
+    {
+     "name": "delta_vs_existing_reference",
+     "paper": -0.019065,
+     "mode": "round",
+     "recomputed": -0.019064787916746685,
+     "result": "exact",
+     "rounded": -0.019065
+    },
+    {
+     "name": "delta_vs_existing_reference_ci_lo",
+     "paper": -0.019347,
+     "mode": "round",
+     "recomputed": -0.019346656843897986,
+     "result": "exact",
+     "rounded": -0.019347
+    },
+    {
+     "name": "delta_vs_existing_reference_ci_hi",
+     "paper": -0.018783,
+     "mode": "round",
+     "recomputed": -0.018782918989595384,
+     "result": "exact",
+     "rounded": -0.018783
+    },
+    {
+     "name": "delta_vs_existing_reference_p",
+     "paper": 1.9554396631393096e-15,
+     "mode": "approx",
+     "recomputed": 1.9554396631393143e-15,
+     "result": "within_tol"
+    },
+    {
+     "name": "alphafuse_hr10_mean",
+     "paper": 0.089756,
+     "mode": "round",
+     "recomputed": 0.08975644245583672,
+     "result": "exact",
+     "rounded": 0.089756
+    },
+    {
+     "name": "alphafuse_hr10_ci_lo",
+     "paper": 0.08935,
+     "mode": "round",
+     "recomputed": 0.08935023222421576,
+     "result": "exact",
+     "rounded": 0.08935
+    },
+    {
+     "name": "alphafuse_hr10_ci_hi",
+     "paper": 0.090163,
+     "mode": "round",
+     "recomputed": 0.09016265268745768,
+     "result": "exact",
+     "rounded": 0.090163
+    },
+    {
+     "name": "sasrec_id_hr10_mean",
+     "paper": 0.073632,
+     "mode": "round",
+     "recomputed": 0.07363183554589392,
+     "result": "exact",
+     "rounded": 0.073632
+    },
+    {
+     "name": "sasrec_id_hr10_ci_lo",
+     "paper": 0.072351,
+     "mode": "round",
+     "recomputed": 0.07235051875879236,
+     "result": "exact",
+     "rounded": 0.072351
+    },
+    {
+     "name": "sasrec_id_hr10_ci_hi",
+     "paper": 0.074913,
+     "mode": "round",
+     "recomputed": 0.07491315233299548,
+     "result": "exact",
+     "rounded": 0.074913
+    },
+    {
+     "name": "alphafuse_mrr_mean",
+     "paper": 0.043412,
+     "mode": "round",
+     "recomputed": 0.04341188022549001,
+     "result": "exact",
+     "rounded": 0.043412
+    },
+    {
+     "name": "sasrec_id_mrr_mean",
+     "paper": 0.035281,
+     "mode": "round",
+     "recomputed": 0.03528062381595722,
+     "result": "exact",
+     "rounded": 0.035281
+    },
+    {
+     "name": "bootstrap_replicates",
+     "paper": 2000,
+     "mode": "count",
+     "recomputed": 2000.0,
+     "result": "exact"
+    },
+    {
+     "name": "private_bootstrap_replay",
+     "paper": 0,
+     "mode": "count",
+     "recomputed": 0.0,
+     "result": "exact"
+    },
+    {
+     "name": "private_endpoint_count",
+     "paper": 16,
+     "mode": "count",
+     "recomputed": 16.0,
+     "result": "exact"
+    },
+    {
+     "name": "private_sidecar_count",
+     "paper": 16,
+     "mode": "count",
+     "recomputed": 16.0,
      "result": "exact"
     },
     {

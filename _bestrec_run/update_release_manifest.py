@@ -589,6 +589,13 @@ def regen(m):
         _sw_v3_compact = [
             p for p in _sw_v3_compact if not p.endswith(".finaleval.json")]
         add_result_family("FIR_PROSPECTIVE_SW_V3", _sw_v3_compact)
+    _ee_v3_adjudication = os.path.join(
+        ROOT, "_bestrec_run", "ee_v3_adjudication.json")
+    if os.path.exists(_ee_v3_adjudication):
+        # Public compact aggregate only.  Per-run TEST endpoints, rank sidecars,
+        # checkpoints, and status/attempt records remain outside git/release-manifest
+        # result families; their digests are bound inside this adjudication.
+        add_result_family("EE_V3_OUTCOME_KNOWN", [_ee_v3_adjudication])
 
     # audit 2026-07-24 (E-E freeze): keep protocol_code in lock-step with the
     # governed-completeness gate -- auto-register any tracked governed file

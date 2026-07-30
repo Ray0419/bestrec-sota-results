@@ -368,7 +368,7 @@ REGISTRY = [
          family="table1a", allow=set()),
     dict(key="table1b", fp="method", out="table1b.tex",
          env="tabularx", colspec=r"p{0.30\linewidth}p{0.22\linewidth}rY", size=r"\small",
-         family="table1b", extra_families=["table1", "wearec_v1"],  # comparison column also cites the full-model and WEARec graph cells
+         family="table1b", extra_families=["table1", "wearec_v1", "ee_v3"],  # comparison column also cites full-model/current-comparator graph cells
          # EXTERNAL_PUBLISHED constants printed only in the md row text (cited from
          # Liu 2025 / Zhai 2024 tables): HR@10 columns + HSTU-OpenAI row + port HR.
          allow={"0.1028", "0.1315", "0.0742", "0.1328", "0.1353", "0.13234"}),
@@ -546,7 +546,7 @@ def main():
             if rep["fail"]:
                 failures.append(rep)
         elif cfg["key"] == "table0_novelty":
-            rep = {"table": cfg["key"], "checked": 14,
+            rep = {"table": cfg["key"], "checked": 21,
                    "note": ("generated-region gate passed; quantitative FIR fields "
                             "were formatted from active OK artifact-graph cells; literature "
                             "attribution remains authored citation prose")}

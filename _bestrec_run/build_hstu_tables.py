@@ -872,6 +872,267 @@ def rule_wearec_v1_aggregate(p):
         out[f"reference_seed_{index}"] = value
     return out
 
+
+def rule_ee_v3_aggregate(p):
+    """Recompute the public E-E V3 aggregate without replaying private endpoints.
+
+    The public adjudication releases optimizer-seed metric vectors, descriptive
+    Welch contrasts, fixed-dataset bootstrap intervals, resource summaries, and
+    a hash ledger for the sequestered TEST endpoints/rank sidecars.  The graph
+    recomputes all released aggregate arithmetic and verifies the Git-backed
+    existing-reference artifacts.  It deliberately does not replay private
+    endpoint extraction or record-level bootstrap resampling.
+    """
+    adjud = load(p["adjud"])
+    seeds = [int(s) for s in p["seeds"]]
+    arms = [str(a) for a in p["arms"]]
+    expected_boundary = (
+        "Prospectively frozen but outcome-known same-investigator execution; "
+        "AlphaFuse-style MiniLM representation package versus its repository "
+        "SASRec ID backbone under shared data and complete-history-masked "
+        "evaluator. Architectures, text availability, initialization, trainable "
+        "capacity, and parameter allocation are not equalized. This is not "
+        "independent confirmation, an isolation of null-space fusion, "
+        "equal-tuning evidence, or a general SOTA claim."
+    )
+    if (adjud.get("protocol") != "PREREG_EE_V3"
+            or adjud.get("classification") !=
+                "PROSPECTIVELY_FROZEN_OUTCOME_KNOWN_SAME_INVESTIGATOR_EXPLORATORY"
+            or adjud.get("verdict") != "EEV3-REPORTABLE-OUTCOME-KNOWN"
+            or adjud.get("claim_boundary") != expected_boundary
+            or adjud.get("countable_as_current_comparator") is not True
+            or adjud.get("independent_confirmation") is not False
+            or adjud.get("general_sota_claim_allowed") is not False
+            or adjud.get("repository_commit") != p["repository_commit"]
+            or adjud.get("upstream_commit") != p["upstream_commit"]
+            or [int(s) for s in adjud.get("seeds", [])] != seeds
+            or [str(a) for a in adjud.get("arms", [])] != arms
+            or not re.fullmatch(r"[0-9a-f]{64}", str(adjud.get("ready_sha256", "")))):
+        raise ValueError("E-E V3 adjudication metadata drift")
+
+    def summarize(values):
+        n = len(values)
+        mu = mean(values)
+        sd = sstd(values)
+        half = t_ppf(0.975, n - 1) * sd / math.sqrt(n)
+        return {"n": float(n), "mean": mu, "sd": sd,
+                "ci_lo": mu - half, "ci_hi": mu + half}
+
+    def verify_summary(label, values, recorded):
+        recomputed = summarize(values)
+        expected = {
+            "n": recorded["n"], "mean": recorded["mean"],
+            "sd": recorded["sd"], "ci_lo": recorded["ci95"][0],
+            "ci_hi": recorded["ci95"][1],
+        }
+        for key, value in expected.items():
+            if abs(float(recomputed[key]) - float(value)) > 1e-12:
+                raise ValueError(f"E-E V3 {label} {key} drift")
+        return recomputed
+
+    summaries = {}
+    vectors = {}
+    arm_records = adjud.get("arm_seed_summaries", {})
+    for arm in arms:
+        if set(arm_records.get(arm, {})) != {"NDCG@10", "HR@10", "MRR"}:
+            raise ValueError(f"E-E V3 {arm} metric-family drift")
+        for metric in ("NDCG@10", "HR@10", "MRR"):
+            rec = arm_records[arm][metric]
+            values = [float(x) for x in rec.get("vector", [])]
+            if len(values) != len(seeds):
+                raise ValueError(f"E-E V3 {arm} {metric} seed-vector drift")
+            vectors[(arm, metric)] = values
+            summaries[(arm, metric)] = verify_summary(
+                f"{arm} {metric}", values, rec)
+
+    reference_record = adjud.get("existing_paper_reference", {}).get("NDCG@10", {})
+    reference = [float(x) for x in reference_record.get("vector", [])]
+    if len(reference) != len(p["reference_files"]):
+        raise ValueError("E-E V3 existing-reference vector drift")
+    reference_summary = verify_summary("existing reference", reference, reference_record)
+    recorded_hashes = adjud.get("existing_paper_reference", {}).get("files_sha256", {})
+    for rel in p["reference_files"]:
+        name = os.path.basename(rel)
+        raw_ok = sha256_file(rel) == recorded_hashes.get(name)
+        lf_ok = sha256_lf(rel) == p["reference_lf_sha256"].get(name)
+        if not (raw_ok or lf_ok):
+            raise ValueError(f"E-E V3 reference identity drift: {name}")
+    artifact_reference = [bt_metric(rel, "NDCG@10") for rel in p["reference_files"]]
+    if any(abs(a - b) > 1e-15 for a, b in zip(artifact_reference, reference)):
+        raise ValueError("E-E V3 reference vector does not match source artifacts")
+
+    def welch(first, second):
+        a = summarize(first)
+        b = summarize(second)
+        va = a["sd"] ** 2 / len(first)
+        vb = b["sd"] ** 2 / len(second)
+        se = math.sqrt(va + vb)
+        df = (va + vb) ** 2 / (va * va / (len(first) - 1)
+                                + vb * vb / (len(second) - 1))
+        delta = a["mean"] - b["mean"]
+        t_value = delta / se
+        half = t_ppf(0.975, df) * se
+        return {"delta": delta, "df": df,
+                "p_two_sided_unadjusted": t_two_sided_p(t_value, df),
+                "ci_lo": delta - half, "ci_hi": delta + half}
+
+    def verify_contrast(label, first, second, recorded):
+        recomputed = welch(first, second)
+        expected = {
+            "delta": recorded["delta"], "df": recorded["welch_df"],
+            "p_two_sided_unadjusted": recorded["p_two_sided_unadjusted"],
+            "ci_lo": recorded["ci95"][0], "ci_hi": recorded["ci95"][1],
+        }
+        for key, value in expected.items():
+            if abs(float(recomputed[key]) - float(value)) > 1e-12:
+                raise ValueError(f"E-E V3 {label} Welch {key} drift")
+        direction = ("ABOVE" if recomputed["ci_lo"] > 0.0 else
+                     "BELOW" if recomputed["ci_hi"] < 0.0 else "OVERLAP")
+        if (recorded.get("direction") != direction
+                or recorded.get("estimand") != "first arm minus second arm"
+                or recorded.get("inference_boundary") !=
+                    "descriptive independent-arm Welch on optimizer-seed estimates"):
+            raise ValueError(f"E-E V3 {label} contrast-boundary drift")
+        recomputed["direction"] = direction
+        return recomputed
+
+    alpha_ndcg = vectors[("alphafuse_package", "NDCG@10")]
+    sasrec_ndcg = vectors[("sasrec_id", "NDCG@10")]
+    contrasts = adjud.get("contrasts", {})
+    vs_sasrec = verify_contrast(
+        "AlphaFuse-minus-SASRec-ID", alpha_ndcg, sasrec_ndcg,
+        contrasts["alphafuse_package_minus_sasrec_id"])
+    vs_reference = verify_contrast(
+        "AlphaFuse-minus-existing-reference", alpha_ndcg, reference,
+        contrasts["alphafuse_package_minus_existing_paper_reference"])
+
+    sensitivity = adjud.get("fixed_dataset_sensitivity", {})
+    user_ci = [float(x) for x in sensitivity.get(
+        "user_resample_percentile_ci95", [])]
+    item_ci = [float(x) for x in sensitivity.get(
+        "target_item_cluster_resample_percentile_ci95", [])]
+    if (sensitivity.get("boundary") !=
+            "fixed-split sensitivity only; not optimizer or population inference"
+            or sensitivity.get("estimand") !=
+            "mean over users of eight-seed AlphaFuse NDCG@10 minus eight-seed ID NDCG@10"
+            or int(sensitivity.get("replicates", -1)) != 2000
+            or int(sensitivity.get("rng_seed", -1)) != 20262299
+            or int(sensitivity.get("n_target_item_clusters", -1)) != 18219
+            or abs(float(sensitivity.get("point_estimate")) - vs_sasrec["delta"]) > 1e-12
+            or len(user_ci) != 2 or len(item_ci) != 2
+            or not (user_ci[0] < vs_sasrec["delta"] < user_ci[1])
+            or not (item_ci[0] < vs_sasrec["delta"] < item_ci[1])):
+        raise ValueError("E-E V3 fixed-dataset sensitivity metadata drift")
+
+    ledger = adjud.get("endpoint_ledger", [])
+    expected_pairs = [(arm, seed) for arm in arms for seed in seeds]
+    if (len(ledger) != len(expected_pairs)
+            or [(str(row.get("arm")), int(row.get("seed", -1)))
+                for row in ledger] != expected_pairs):
+        raise ValueError("E-E V3 endpoint-ledger arm/seed drift")
+    endpoint_hashes, sidecar_hashes = set(), set()
+    for row in ledger:
+        arm, seed = str(row["arm"]), int(row["seed"])
+        if (row.get("endpoint_file") !=
+                f"assessment_EEV3_{arm}_seed{seed}.finaleval.json"
+                or row.get("sidecar_file") !=
+                f"assessment_EEV3_{arm}_seed{seed}.finaleval.users.npz"
+                or not re.fullmatch(r"[0-9a-f]{64}", str(row.get("endpoint_sha256", "")))
+                or not re.fullmatch(r"[0-9a-f]{64}", str(row.get("sidecar_sha256", "")))):
+            raise ValueError("E-E V3 endpoint-ledger schema/hash drift")
+        endpoint_hashes.add(row["endpoint_sha256"])
+        sidecar_hashes.add(row["sidecar_sha256"])
+    if len(endpoint_hashes) != 16 or len(sidecar_hashes) != 16:
+        raise ValueError("E-E V3 endpoint-ledger hash uniqueness drift")
+
+    def median(values):
+        ordered = sorted(float(x) for x in values)
+        mid = len(ordered) // 2
+        return (ordered[mid] if len(ordered) % 2
+                else 0.5 * (ordered[mid - 1] + ordered[mid]))
+
+    if (adjud.get("resource_scope") !=
+            "profiler FLOPs are operator-accounted forward-plus-full-catalog-score lower bounds"):
+        raise ValueError("E-E V3 resource-scope drift")
+    resource_fields = (
+        "cuda_peak_allocated_bytes", "eval_seconds",
+        "profiler_accounted_flops_per_user", "selected_epoch", "total_params",
+        "trainable_params", "training_wall_seconds", "users_per_second")
+    resource_medians = {}
+    for arm in arms:
+        arm_resources = adjud.get("resources", {}).get(arm, {})
+        if set(arm_resources) != set(resource_fields):
+            raise ValueError(f"E-E V3 {arm} resource-family drift")
+        for field in resource_fields:
+            rec = arm_resources[field]
+            values = [float(x) for x in rec.get("vector", [])]
+            if (len(values) != len(seeds)
+                    or abs(median(values) - float(rec.get("median"))) > 1e-12):
+                raise ValueError(f"E-E V3 {arm} {field} resource drift")
+            resource_medians[(arm, field)] = median(values)
+
+    alpha = summaries[("alphafuse_package", "NDCG@10")]
+    sasrec = summaries[("sasrec_id", "NDCG@10")]
+    out = {
+        "n_units_per_arm": float(len(seeds)),
+        "alphafuse_ndcg_mean": alpha["mean"],
+        "alphafuse_ndcg_sd": alpha["sd"],
+        "alphafuse_ndcg_ci_lo": alpha["ci_lo"],
+        "alphafuse_ndcg_ci_hi": alpha["ci_hi"],
+        "sasrec_id_ndcg_mean": sasrec["mean"],
+        "sasrec_id_ndcg_sd": sasrec["sd"],
+        "sasrec_id_ndcg_ci_lo": sasrec["ci_lo"],
+        "sasrec_id_ndcg_ci_hi": sasrec["ci_hi"],
+        "existing_reference_mean": reference_summary["mean"],
+        "existing_reference_ci_lo": reference_summary["ci_lo"],
+        "existing_reference_ci_hi": reference_summary["ci_hi"],
+        "delta_vs_sasrec_id": vs_sasrec["delta"],
+        "delta_vs_sasrec_id_ci_lo": vs_sasrec["ci_lo"],
+        "delta_vs_sasrec_id_ci_hi": vs_sasrec["ci_hi"],
+        "delta_vs_sasrec_id_p": vs_sasrec["p_two_sided_unadjusted"],
+        "delta_vs_sasrec_id_welch_df": vs_sasrec["df"],
+        "relative_gain_vs_sasrec_id_pct":
+            100.0 * vs_sasrec["delta"] / sasrec["mean"],
+        "delta_vs_existing_reference": vs_reference["delta"],
+        "delta_vs_existing_reference_ci_lo": vs_reference["ci_lo"],
+        "delta_vs_existing_reference_ci_hi": vs_reference["ci_hi"],
+        "delta_vs_existing_reference_p": vs_reference["p_two_sided_unadjusted"],
+        "delta_vs_existing_reference_welch_df": vs_reference["df"],
+        "direction_above_sasrec_id": float(vs_sasrec["direction"] == "ABOVE"),
+        "direction_below_existing_reference":
+            float(vs_reference["direction"] == "BELOW"),
+        "countable_as_current_comparator": 1.0,
+        "independent_confirmation": 0.0,
+        "general_sota_claim_allowed": 0.0,
+        "verdict_reportable_outcome_known": 1.0,
+        "bootstrap_replicates": float(sensitivity["replicates"]),
+        "bootstrap_user_ci_lo": user_ci[0],
+        "bootstrap_user_ci_hi": user_ci[1],
+        "bootstrap_item_cluster_ci_lo": item_ci[0],
+        "bootstrap_item_cluster_ci_hi": item_ci[1],
+        "private_bootstrap_replay": 0.0,
+        "private_endpoint_count": float(len(ledger)),
+        "private_sidecar_count": float(len(ledger)),
+        "private_endpoint_replay": 0.0,
+    }
+    for arm in arms:
+        prefix = "alphafuse" if arm == "alphafuse_package" else "sasrec_id"
+        for metric in ("HR@10", "MRR"):
+            metric_key = "hr10" if metric == "HR@10" else "mrr"
+            summary = summaries[(arm, metric)]
+            out[f"{prefix}_{metric_key}_mean"] = summary["mean"]
+            out[f"{prefix}_{metric_key}_ci_lo"] = summary["ci_lo"]
+            out[f"{prefix}_{metric_key}_ci_hi"] = summary["ci_hi"]
+        for field in resource_fields:
+            out[f"{prefix}_{field}_median"] = resource_medians[(arm, field)]
+    for index, value in enumerate(alpha_ndcg, start=1):
+        out[f"alphafuse_ndcg_seed_{index}"] = value
+    for index, value in enumerate(sasrec_ndcg, start=1):
+        out[f"sasrec_id_ndcg_seed_{index}"] = value
+    for index, value in enumerate(reference, start=1):
+        out[f"existing_reference_ndcg_seed_{index}"] = value
+    return out
+
 def rule_pct_of_paired(p):
     """mean paired (a-b) delta as a percent of mean(b)."""
     m = p.get("metric", "NDCG@10")
@@ -1342,7 +1603,8 @@ REQUIRED_FAMILIES = ["table1", "table1a", "table1b", "table1c", "table1d", "tabl
                      "office_confirmation", "theirs_on_ours", "fir_breadth",
                      "fir_v3", "fir_canonical_breadth", "fir_controls",
                      "fir_pointwise", "fir_prospective_sw_v3",
-                     "fir_efficiency_ml1m_v1", "wearec_v1", "office_v3", "tfv2"]
+                     "fir_efficiency_ml1m_v1", "wearec_v1", "ee_v3",
+                     "office_v3", "tfv2"]
 
 OFFICE_VOID_NOTE = ("VOID under prereg floor check (+44% floor inflation); "
                     "provisional, not counted as a pass")
@@ -1363,6 +1625,7 @@ def cell(cid, table, row, metric, files, rule, params, paper, n_seeds, ev,
         "fir_prospective_sw_v3_contrast": "prospective matched-init paired learned-minus-identity sealed one-shot Software TEST NDCG@10, with validation-only checkpoint selection, state and evidence hashes, statistics, practical threshold, and committed adjudicator verdict independently cross-checked",
         "fir_efficiency_ml1m_v1_aggregate": "prospectively frozen same-investigator MovieLens 1M aggregate adjudication: recompute seed-vector means, paired intervals, Holm decisions, noninferiority bounds, and figure-resource rows; private record-level endpoints are not redistributable and are not independently replayed by the public graph",
         "wearec_v1_aggregate": "prospectively frozen outcome-known same-investigator WEARec aggregate adjudication: verify the six existing reference artifacts and recompute released NDCG@10 seed-vector means, t intervals, and the descriptive unpaired Welch contrast; private sealed endpoints and per-user sidecars are not independently replayed by the public graph",
+        "ee_v3_aggregate": "prospectively frozen outcome-known same-investigator AlphaFuse-style aggregate adjudication: verify the six existing reference artifacts; recompute released NDCG@10/HR@10/MRR seed summaries and descriptive independent-arm Welch contrasts; validate fixed-dataset sensitivity metadata, resource summaries, and the private endpoint/sidecar hash ledger; private endpoint extraction and record-level bootstrap resampling are not independently replayed by the public graph",
         "pct_of_paired": "100 * mean per-seed (a-b) / mean(b), best_test[{m}]",
         "pct_change": "100 * (mean(a)/denom - 1), best_test[{m}]",
         "share_of_lift": "100 * (mean(x)-mean(base)) / (mean(top)-mean(base))",
@@ -2842,6 +3105,93 @@ def build_spec():
             chk("private_endpoint_replay", 0, mode="count"),
         ],
         8, "exploratory", seeds=WEAREC_SEEDS, notes=WEAREC_NOTE))
+
+    # ------- E-E V3: clean AlphaFuse-style text+ID current comparator -------
+    EEV3_SEEDS = list(range(20262201, 20262209))
+    EEV3_ARMS = ["alphafuse_package", "sasrec_id"]
+    EEV3_ADJ = BR + "ee_v3_adjudication.json"
+    EEV3_FROZEN = [
+        "PREREG_EE_V3.md",
+        BR + "prepare_ee_v3.py",
+        BR + "ee_v3_input_manifest.json",
+        BR + "ee_v3_common.py",
+        BR + "test_ee_v3.py",
+        BR + "run_ee_v3.py",
+        BR + "eval_ee_v3.py",
+        BR + "run_ee_v3_campaign.py",
+        BR + "adjudicate_ee_v3.py",
+    ]
+    EEV3_NOTE = (
+        "PREREG_EE_V3 and the designated first-reader adjudicator were committed "
+        "and pushed before launch. Sixteen fresh-seed trainings selected checkpoints "
+        "with complete-history-masked VALID NDCG@10; TEST remained unread until all "
+        "16 training bundles were READY, followed by 16 sealed one-shot evaluations. "
+        "The unchanged committed adjudicator returned EEV3-REPORTABLE-OUTCOME-KNOWN. "
+        "The AlphaFuse-style MiniLM representation package scored NDCG@10 0.048273 "
+        "[0.048129, 0.048416] versus 0.039024 [0.038106, 0.039941] for the official-"
+        "repository SASRec ID backbone: descriptive independent-arm Welch delta "
+        "+0.009249 [+0.008329, +0.010169], p=3.48e-08. It remained below the existing "
+        "six-seed full-model reference by -0.019065 [-0.019347, -0.018783]. This is "
+        "countable current-comparator evidence under shared data/evaluation and a "
+        "frozen configuration, but it is outcome-known, same-investigator, and a "
+        "whole-package contrast. It does not reproduce AlphaFuse's published text "
+        "encoder, equalize architecture/text availability/initialization/capacity, "
+        "isolate null-space fusion, supply independent confirmation, or support SOTA. "
+        "The public graph recomputes released aggregate arithmetic and validates the "
+        "private endpoint/sidecar hash ledger; it cannot replay private endpoint "
+        "extraction or record-level bootstrap resampling.")
+    C.append(cell(
+        "eev3.aggregate", "ee_v3",
+        "AlphaFuse-style MiniLM package versus repository SASRec ID backbone",
+        "aggregate NDCG@10/HR@10/MRR and descriptive Welch contrasts",
+        [EEV3_ADJ] + WEAREC_REFERENCES + EEV3_FROZEN,
+        "ee_v3_aggregate",
+        {"adjud": EEV3_ADJ, "seeds": EEV3_SEEDS, "arms": EEV3_ARMS,
+         "repository_commit": "f7c9c551d313de07b433545ed4887400ed4f4d98",
+         "upstream_commit": "b501a0540b609370df995ad06fb245859b10a18a",
+         "reference_files": WEAREC_REFERENCES,
+         "reference_lf_sha256": WEAREC_REFERENCE_LF_SHA256},
+        [
+            chk("verdict_reportable_outcome_known", 1, mode="count"),
+            chk("countable_as_current_comparator", 1, mode="count"),
+            chk("independent_confirmation", 0, mode="count"),
+            chk("general_sota_claim_allowed", 0, mode="count"),
+            chk("direction_above_sasrec_id", 1, mode="count"),
+            chk("direction_below_existing_reference", 1, mode="count"),
+            chk("n_units_per_arm", 8, mode="count"),
+            chk("alphafuse_ndcg_mean", 0.048273, 6),
+            chk("alphafuse_ndcg_ci_lo", 0.048129, 6),
+            chk("alphafuse_ndcg_ci_hi", 0.048416, 6),
+            chk("sasrec_id_ndcg_mean", 0.039024, 6),
+            chk("sasrec_id_ndcg_ci_lo", 0.038106, 6),
+            chk("sasrec_id_ndcg_ci_hi", 0.039941, 6),
+            chk("delta_vs_sasrec_id", 0.009249, 6),
+            chk("delta_vs_sasrec_id_ci_lo", 0.008329, 6),
+            chk("delta_vs_sasrec_id_ci_hi", 0.010169, 6),
+            chk("delta_vs_sasrec_id_p", 3.4753606736507286e-08,
+                mode="approx", tol=1e-11),
+            chk("relative_gain_vs_sasrec_id_pct", 23.7, 1),
+            chk("existing_reference_mean", 0.067337, 6),
+            chk("delta_vs_existing_reference", -0.019065, 6),
+            chk("delta_vs_existing_reference_ci_lo", -0.019347, 6),
+            chk("delta_vs_existing_reference_ci_hi", -0.018783, 6),
+            chk("delta_vs_existing_reference_p", 1.9554396631393096e-15,
+                mode="approx", tol=1e-17),
+            chk("alphafuse_hr10_mean", 0.089756, 6),
+            chk("alphafuse_hr10_ci_lo", 0.089350, 6),
+            chk("alphafuse_hr10_ci_hi", 0.090163, 6),
+            chk("sasrec_id_hr10_mean", 0.073632, 6),
+            chk("sasrec_id_hr10_ci_lo", 0.072351, 6),
+            chk("sasrec_id_hr10_ci_hi", 0.074913, 6),
+            chk("alphafuse_mrr_mean", 0.043412, 6),
+            chk("sasrec_id_mrr_mean", 0.035281, 6),
+            chk("bootstrap_replicates", 2000, mode="count"),
+            chk("private_bootstrap_replay", 0, mode="count"),
+            chk("private_endpoint_count", 16, mode="count"),
+            chk("private_sidecar_count", 16, mode="count"),
+            chk("private_endpoint_replay", 0, mode="count"),
+        ],
+        8, "exploratory", seeds=EEV3_SEEDS, notes=EEV3_NOTE))
 
     # ------- tfv2: pre-declared repaired-estimand campaign (PREREG_TAIL_FIR_V2) -------
     # Independent 8-vs-8 arms, but outcome-visible: the first independently verifiable

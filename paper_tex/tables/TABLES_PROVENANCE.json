@@ -11,8 +11,8 @@
    "out": "table_attribution.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    64,
-    73
+    65,
+    74
    ],
    "family": "md-only (pandoc-converted; no JSON family)",
    "crosscheck": {
@@ -26,13 +26,13 @@
    "out": "table0_novelty.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    95,
-    103
+    96,
+    105
    ],
    "family": "build_table0_claim_ledger.py:hstu_results_manifest.json",
    "crosscheck": {
     "table": "table0_novelty",
-    "checked": 14,
+    "checked": 21,
     "note": "generated-region gate passed; quantitative FIR fields were formatted from active OK artifact-graph cells; literature attribution remains authored citation prose"
    }
   },
@@ -41,8 +41,8 @@
    "out": "table_datasets41.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    215,
-    223
+    217,
+    225
    ],
    "family": "md-only (pandoc-converted; no JSON family)",
    "crosscheck": {
@@ -56,8 +56,8 @@
    "out": "table1.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    263,
-    271
+    265,
+    273
    ],
    "family": "hstu_tables.json/manifest:table1",
    "crosscheck": {
@@ -74,8 +74,8 @@
    "out": "table1a.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    277,
-    279
+    279,
+    281
    ],
    "family": "hstu_tables.json/manifest:table1a",
    "crosscheck": {
@@ -92,15 +92,15 @@
    "out": "table1b.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    287,
-    294
+    289,
+    298
    ],
-   "family": "hstu_tables.json/manifest:table1b,table1,wearec_v1",
+   "family": "hstu_tables.json/manifest:table1b,table1,wearec_v1,ee_v3",
    "crosscheck": {
     "table": "table1b",
-    "checked": 19,
-    "exact": 7,
-    "within_1ulp": 8,
+    "checked": 37,
+    "exact": 8,
+    "within_1ulp": 25,
     "allowlisted": 4,
     "fail": []
    }
@@ -110,8 +110,8 @@
    "out": "table_older_baselines.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    304,
-    311
+    310,
+    317
    ],
    "family": "md-only (pandoc-converted; no JSON family)",
    "crosscheck": {
@@ -125,8 +125,8 @@
    "out": "table1c.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    325,
-    330
+    331,
+    336
    ],
    "family": "hstu_tables.json/manifest:table1c",
    "crosscheck": {
@@ -143,8 +143,8 @@
    "out": "table_ml1m_efficiency.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    360,
-    367
+    366,
+    373
    ],
    "family": "hstu_tables.json/manifest:fir_efficiency_ml1m_v1",
    "crosscheck": {
@@ -161,8 +161,8 @@
    "out": "table1d.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    394,
-    398
+    400,
+    404
    ],
    "family": "hstu_tables.json/manifest:table1d",
    "crosscheck": {
@@ -179,8 +179,8 @@
    "out": "table541.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    425,
-    429
+    431,
+    435
    ],
    "family": "hstu_tables.json/manifest:table541",
    "crosscheck": {
@@ -197,8 +197,8 @@
    "out": "table542.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    441,
-    446
+    447,
+    452
    ],
    "family": "hstu_tables.json/manifest:table542",
    "crosscheck": {
@@ -215,8 +215,8 @@
    "out": "table56_theirs.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    478,
-    484
+    484,
+    490
    ],
    "family": "hstu_results_manifest.json:theirs_on_ours(+published constants)",
    "crosscheck": {
@@ -233,8 +233,8 @@
    "out": "tableA1.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    777,
-    800
+    792,
+    815
    ],
    "family": "md-only (pandoc-converted; no JSON family)",
    "crosscheck": {
@@ -248,8 +248,8 @@
    "out": "table2.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    852,
-    873
+    867,
+    888
    ],
    "family": "hstu_tables.json/manifest:table2",
    "crosscheck": {
@@ -266,8 +266,8 @@
    "out": "table1e.tex",
    "source": "PAPER_SUBMISSION.md",
    "md_lines": [
-    881,
-    888
+    896,
+    903
    ],
    "family": "hstu_tables.json/manifest:table1e",
    "crosscheck": {

@@ -170,6 +170,36 @@ def main():
                   f"{'OK' if good else 'FAILED (verdict not reproduced)'}")
             return good
         ok &= verify_recorded_wearec_verdict()
+        def verify_recorded_ee_v3_verdict():
+            path = ROOT / "_bestrec_run" / "ee_v3_adjudication.json"
+            try:
+                rec = json.loads(path.read_text(encoding="utf-8"))
+                vs_id = rec["contrasts"]["alphafuse_package_minus_sasrec_id"]
+                vs_ref = rec["contrasts"][
+                    "alphafuse_package_minus_existing_paper_reference"]
+                good = (rec.get("protocol") == "PREREG_EE_V3"
+                        and rec.get("verdict") ==
+                            "EEV3-REPORTABLE-OUTCOME-KNOWN"
+                        and rec.get("classification") ==
+                            "PROSPECTIVELY_FROZEN_OUTCOME_KNOWN_SAME_INVESTIGATOR_EXPLORATORY"
+                        and rec.get("countable_as_current_comparator") is True
+                        and rec.get("independent_confirmation") is False
+                        and rec.get("general_sota_claim_allowed") is False
+                        and rec.get("arms") == ["alphafuse_package", "sasrec_id"]
+                        and rec.get("seeds") == list(range(20262201, 20262209))
+                        and vs_id.get("direction") == "ABOVE"
+                        and float(vs_id["ci95"][0]) > 0.0
+                        and vs_ref.get("direction") == "BELOW"
+                        and float(vs_ref["ci95"][1]) < 0.0
+                        and len(rec.get("endpoint_ledger", [])) == 16)
+            except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError):
+                good = False
+            print("--- E-E V3 recorded aggregate verdict "
+                  "(outcome-known whole-package current comparator; graph recomputes "
+                  "released summaries/contrasts): "
+                  f"{'OK' if good else 'FAILED (verdict not reproduced)'}")
+            return good
+        ok &= verify_recorded_ee_v3_verdict()
         ok &= run_verdict("E-F HYBRID_V1 fresh-seed adjudication (pre-declared; "
                           "W-H-POS x3 required)",
                           ["_bestrec_run/adjudicate_hybrid_v1.py"],

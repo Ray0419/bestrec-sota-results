@@ -155,6 +155,22 @@ CLAIMS = [
                   "_bestrec_run/wearec_baseline_v1_selection.json",
                   "_bestrec_run/wearec_baseline_v1_adjudication.json"],
     },
+    {
+        "id": "C14",
+        "claim": "Frozen AlphaFuse-style text+ID whole-package current comparator",
+        "boundary": "The AlphaFuse-style MiniLM package scored above the official-repository SASRec ID backbone but below the existing six-seed full-model reference. This is prospectively frozen, outcome-known, same-investigator whole-package evidence under shared data/evaluation and one frozen training configuration. MiniLM replaces the published AlphaFuse text vectors; architecture, text availability, initialization, trainable capacity, parameter allocation, and tuning history are not equalized. The result is not a published-table reproduction, paired experiment, null-space-fusion isolation, independent confirmation, or SOTA; the public graph recomputes released aggregate arithmetic and validates hashes but cannot replay private endpoints or record-level bootstraps.",
+        "tables": ["ee_v3"],
+        "files": ["PREREG_EE_V3.md",
+                  "_bestrec_run/prepare_ee_v3.py",
+                  "_bestrec_run/ee_v3_input_manifest.json",
+                  "_bestrec_run/ee_v3_common.py",
+                  "_bestrec_run/test_ee_v3.py",
+                  "_bestrec_run/run_ee_v3.py",
+                  "_bestrec_run/eval_ee_v3.py",
+                  "_bestrec_run/run_ee_v3_campaign.py",
+                  "_bestrec_run/adjudicate_ee_v3.py",
+                  "_bestrec_run/ee_v3_adjudication.json"],
+    },
 ]
 
 EXPECTED_EVIDENCE = {
@@ -166,6 +182,7 @@ EXPECTED_EVIDENCE = {
     "fir_prospective_sw_v3": {"exploratory"},
     "fir_efficiency_ml1m_v1": {"exploratory"},
     "wearec_v1": {"exploratory"},
+    "ee_v3": {"exploratory"},
     "tableV2conf": {"confirmatory"},
     "office_v3": {"confirmatory"},
     "office_confirmation": {"exploratory"},

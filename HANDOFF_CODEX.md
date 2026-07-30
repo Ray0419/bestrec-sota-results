@@ -1,38 +1,50 @@
-# CURRENT HANDOFF — AlphaFuse-style E-E V3 frozen prelaunch (2026-07-29)
+# CURRENT HANDOFF — AlphaFuse-style E-E V3 completed and integrated (2026-07-30)
 
-The clean text+ID comparator has advanced from audit design to a complete
-prelaunch package under `PREREG_EE_V3.md`. No V3 campaign status, training
-terminal, sealed TEST endpoint, or V3 adjudication existed when this package
-was frozen. The outcome-visible V2 port remains permanently noncountable.
+The clean text+ID current-comparator campaign under `PREREG_EE_V3.md` completed
+all 16 frozen training bundles and then all 16 sealed one-shot TEST evaluations
+with zero ledger errors. The unchanged committed adjudicator at freeze commit
+`f7c9c551d313de07b433545ed4887400ed4f4d98` was the first authorized endpoint
+reader. Exact verdict: **`EEV3-REPORTABLE-OUTCOME-KNOWN`**. The outcome-visible
+V2 port remains permanently `NONCOUNTABLE` and is never pooled with V3.
 
-V3 freezes the official AlphaFuse representation package and its repository
-SASRec ID backbone at upstream commit
-`b501a0540b609370df995ad06fb245859b10a18a`, eight fresh seeds per arm
-(`20262201..20262208`), complete-history-masked full-catalog VALID selection,
-and one-shot TEST scoring only after all 16 training bundles are READY. The
-trainer does not read TEST. Attempts, checkpoints, training terminals, READY,
-TEST seals, rank sidecars, and endpoints are exact-schema/hash bound; an
-incomplete sealed evaluation cannot be overwritten. The committed adjudicator
-is the designated first endpoint reader after 16/16 sealed evaluations.
+Exact TEST summaries (eight optimizer seeds per arm): AlphaFuse-style MiniLM
+representation package NDCG@10 **0.0482725982**, 95% CI
+**[0.0481293416, 0.0484158549]**; official-repository SASRec-ID backbone
+**0.0390235314 [0.0381060954, 0.0399409675]**. The descriptive independent-arm
+Welch difference is **+0.0092490668 [0.0083291897, 0.0101689439]**,
+`p=3.47536e-08`. Against the existing six-seed full-model reference
+0.0673373862, the package is **−0.0190647879 [−0.0193466568,−0.0187829190]**.
+The fixed-split user-resample sensitivity is [0.00845198,0.01002793] and the
+target-item-cluster sensitivity is [0.00480595,0.01574258]; neither is optimizer
+or population inference.
 
-The structural suite passes without loading TEST. It checks long-history
-masking outside the model's last-50 input, repeated-target exception, strict-
-greater ties, real VALID-data rank arithmetic against `run_sasrec_sbert.py`,
-and finite forward/backward contracts for both official model classes on CUDA.
-The frozen statistics are independent-arm Welch contrasts plus fixed-split
-user/item-cluster bootstrap sensitivities and resource reporting.
+Claims are deliberately narrow. This is countable, prospectively frozen but
+outcome-known same-investigator current-comparator evidence for a whole
+representation package under shared data/evaluation and one frozen training
+configuration. MiniLM replaces AlphaFuse's published text vectors. Text
+availability, initialization, trainable capacity, parameter allocation, and
+architectures differ. It is not a published-table reproduction, paired
+experiment, isolation of null-space fusion, equal-tuning evidence, independent
+confirmation, or SOTA.
 
-Claims remain deliberately narrow: this is a whole representation-package
-contrast on an outcome-known split by the same investigators. It is not an
-isolation of null-space fusion, equal architecture/tuning evidence, independent
-confirmation, or a SOTA test. Preserve user-modified `PAPER_REVIEW_AUDIT.md`
-and unrelated untracked QA/tmp files. Human author/byline metadata remains an
-external blocker and must not be invented.
+Integration is complete in `PAPER_SUBMISSION.md`, `PAPER_DRAFT.md`, the ACM TeX
+sections/tables, `AUDIT_RESPONSE_2026-07-27.md`, `CANONICAL_SUBMISSION.md`, the
+claim ledger/map, strict wrapper, and release-manifest updater. The graph now
+recomputes **199 active cells across 23 required families** with zero mismatch
+or untraceable cells. `EE_V3_OUTCOME_KNOWN` contains only the compact public
+adjudication; private endpoints/sidecars are hash-ledgered with
+`private_endpoint_replay=0` and record-level bootstraps are not publicly replayed.
+The reader PDF renders 53 pages with `scan: CLEAN`; both ACM targets compile and
+the review hygiene scan passes under the logged draft waiver. Visual QA of Table
+0, Table 1b, results, discussion, and conclusion found no clipping or overlap.
 
-Next action: after confirming the freeze commit is pushed and the committed
-preflight passes, launch `_bestrec_run/run_ee_v3_campaign.py` as the sole GPU
-driver and monitor only status/process/log health. Do not open endpoint content
-before completion; the driver must invoke the committed adjudicator first.
+Next actions: regenerate `RELEASE_MANIFEST.json` once more after the updated
+claim map/handoff, run the full strict local wrapper, commit, rerun strict at the
+commit, perform the separately hydrated pristine-clone replay, push, upload the
+release manifest last to `v0.9-audit-evidence`, re-download/hash-verify it, and
+disable the E-E V3 heartbeat. Preserve user-modified `PAPER_REVIEW_AUDIT.md` and
+unrelated untracked QA/tmp files. Human author/byline metadata remains the only
+literal-submission blocker and must not be invented.
 
 ---
 

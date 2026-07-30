@@ -138,6 +138,10 @@ def run_stage(spec: dict, rules: list[tuple[str, str]]) -> dict:
     tick = time.perf_counter()
     env = dict(os.environ)
     env.pop("DRAFT_WAIVER", None)
+    # A pristine checkout intentionally has no repository-local virtualenv.
+    # Make the TeX wrapper use the same interpreter that is already running
+    # and recording this replay, rather than its developer-worktree fallback.
+    env["PYTHON"] = sys.executable
     result = subprocess.run(
         spec["argv"], cwd=ROOT, env=env, capture_output=True, check=False
     )

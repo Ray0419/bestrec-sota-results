@@ -511,6 +511,20 @@ the commit-bound campaign remains untouched:
     clean-clone replay, final release/upload verification, and human author/contact/legal
     metadata review remain open at this checkpoint.
 
+19. The separately hydrated pristine replay at `ecccfb6e` closed the machine-side
+    clean-clone check. It installed and raw-hash-verified all 407 release-only assets,
+    reran the 201-cell/25-family strict graph and every governed adjudicator, rebuilt the
+    57-page reader, both 33-page main-paper PDFs, and 18-page supplement byte-stably,
+    verified all 1,073 manifest files and 666 Git-backed entries, and ended with a clean
+    tracked tree. The replay also exposed and repaired three portability defects before
+    passing: platform-default newlines in generated evidence/TeX artifacts, a TeX wrapper
+    fallback to a clone-local virtualenv, and an attestation validator that accepted only
+    SHA-256 Git object IDs in this SHA-1 repository. None changed data, estimates,
+    intervals, verdicts, or claim classes. The resulting record remains deliberately
+    `clean_clone_draft_metadata_replay` with `release_ready=false`; mechanical replay does
+    not supply missing author identity, legal review, independent custody, or acceptance
+    evidence.
+
 ### Disposition against the 2026-07-30 23:27 prioritized rejection-risk list
 
 This is a status ledger, not an acceptance uplift. `CLOSED IN STAGING` means the named
@@ -526,8 +540,8 @@ source/build defect has direct local evidence; it does not mean the paper is sub
 | 6 | **OPEN SCIENTIFIC** | The closest current systems are positioned accurately, but protocol-matched TV-Rec and a state-space/long-convolution baseline remain unrun. |
 | 7 | **PARTIAL** | Table 1 is explicitly descriptive and no longer carries FIR inference; governed contrasts have exact vectors/estimators. A single valid inferential family for the heterogeneous historical ladder is neither claimed nor retrofitted. |
 | 8 | **PARTIAL** | The new MovieLens cohort-flow figure exposes the 1,033/6,040 primary cohort and training-catalog conditioning. Rolling cutoffs, out-of-catalog-as-miss coverage, subgroup uncertainty, and another non-Amazon domain remain open. |
-| 9 | **PARTIAL — RELEASE BLOCKED** | Graph/count metadata and candidate-bundle inventory are mechanically aligned; the stale 908-entry ZIP is rejected. Final creators, V4 counts, tag, rebuilt bundle, upload, and download/hash verification remain open. |
-| 10 | **PARTIAL** | Public guidance now says tables are generated while TeX prose is separately maintained, and the health gate enforces that boundary. The outcome-complete machine-readable clean-clone attestation remains pending. |
+| 9 | **PARTIAL — HUMAN/ARCHIVAL RELEASE BLOCKED** | Graph/V4 counts and candidate-bundle inventory are mechanically aligned and the stale 908-entry ZIP is rejected. The pristine replay passes, but final creators, legal metadata, immutable tag/bundle, upload, and download/hash verification remain open. |
+| 10 | **CLOSED MECHANICALLY; NOT RELEASE-READY** | Public guidance says tables are generated while TeX prose is separately maintained, and the health gate enforces that boundary. The outcome-complete clean-clone replay passes and its machine-readable record is committed as the designed attestation-only child. The record remains `release_ready=false` because human metadata are absent. |
 | 11 | **PARTIAL — POST-V4 PDF CHECK CLOSED** | The paper is split into 33-page TORS and `acmsmall` mains plus an 18-page supplement. Post-V4 builds passed, the reader scan was clean, and all pages containing V4 text or Table 1b were visually checked. Real submission metadata and final accessibility/legal review remain open. |
 | 12 | **OPEN HISTORICAL LIMIT** | V3 custody/resume history cannot be repaired retrospectively and external custody was not present. V4 must be reported only under its own frozen lifecycle; it is not independent custody. |
 | 13 | **OPEN — AUTHOR/LEGAL** | Aggregate public arithmetic is replayable; lawful release or independent escrow of private endpoints/sidecars and institutional retention/licensing decisions remain open. |
@@ -535,6 +549,6 @@ source/build defect has direct local evidence; it does not mean the paper is sub
 | 15 | **OPEN SCIENTIFIC/ENGINEERING** | No true bypass, optimized structured kernel, or counterbalanced latency/memory/energy distribution supports a practical-efficiency claim. |
 | 16 | **CLOSED IN STAGING (EDITORIAL SCOPE)** | The abstract follows one question--evidence--boundary spine; the main includes the FIR evidence map, cohort flow, and comparator-design matrix; chronology/VOID/probe ledgers moved to the supplement. Scientific risks above remain unchanged. |
 
-The V4 verdict and post-V4 rebuilt-PDF verification are now integrated. The separately
-hydrated clean-clone attestation, archival candidate, and human metadata/legal items remain
-open and will not be marked closed by these source repairs.
+The V4 verdict, post-V4 rebuilt-PDF verification, and separately hydrated clean-clone
+replay are now integrated. The immutable archival candidate and human metadata/legal items
+remain open and will not be marked closed by these machine-side repairs.

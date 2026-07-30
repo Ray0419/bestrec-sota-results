@@ -1,4 +1,4 @@
-# CURRENT HANDOFF — E-E V4 integrated; final release replay pending (2026-07-31)
+# CURRENT HANDOFF — E-E V4 integrated and clean-clone verified (2026-07-31)
 
 The latest manuscript/audit phase has completed its local substantive work. The frozen
 pointwise mechanism result remains `POINTWISE-FIR-DISCRIMINATED`: learned FIR minus
@@ -45,14 +45,20 @@ initialization are confounded; architecture, capacity, and parameter allocation 
 unequal. It is not independent confirmation, causal initialization isolation, an
 equal-budget factorial, or SOTA.
 
-Commit `4bda1169` passed the full strict local replay: all 1,073 release-manifest files
+Commit `4bda1169` passed the first full strict local replay: all 1,073 release-manifest files
 verified, all governed adjudicators passed, and the graph recomputed 201 active cells
 across 25 required families with zero mismatch or untraceable cells. The reader PDF is
 57 pages with `scan: CLEAN`; the focused TORS and acmsmall mains are each 33 pages and
 the reviewer supplement is 18 pages. All pages containing the new V4 text and Table 1b
-were rendered and visually inspected without clipping or overlap. Final handoff/audit
-wording, the separately hydrated pristine-clone replay, attestation commit, push, and
-release-manifest upload/download hash verification remain machine-side release actions.
+were rendered and visually inspected without clipping or overlap. A separately hydrated
+pristine replay at `ecccfb6e` then passed all seven stages: 407 release-only assets were
+installed and hash-verified, the strict graph/adjudicator gate passed, all four governed
+PDFs rebuilt byte-stably, 1,073 manifest files and 666 Git-backed entries verified, and
+the tracked tree remained clean. The replay record is correctly
+`clean_clone_draft_metadata_replay` / `release_ready=false` because human metadata and
+legal review remain pending. The final status-doc replay, attestation-only child commit,
+push, and release-manifest upload/download hash verification are the remaining machine
+actions.
 
 Do not stage user-modified `PAPER_REVIEW_AUDIT.md` or unrelated untracked QA/tmp files.
 Human author/affiliation/country/contact/running-header metadata remains the literal

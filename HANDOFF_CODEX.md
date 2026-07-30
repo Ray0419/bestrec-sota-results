@@ -50,6 +50,14 @@ same-investigator/outcome-known positive evidence, a negative MovieLens replicat
 unequal architecture/training/tuning in current-baseline studies, venue mode/length,
 final legal/conflict/funding review, and an immutable DOI-backed deposit.
 
+The next empirical phase is `PREREG_EE_V4`: eight fresh upstream-default-normal-init
+SASRec-ID sensitivity runs in four frozen two-process waves. It directly addresses the
+zero-initialized E-E V3 control limitation while remaining outcome-known, same-investigator,
+cross-campaign evidence; phase/date and initialization remain confounded, and it is not an
+equal-capacity factorial or independent confirmation. Do not inspect or integrate any V4
+endpoint before its 8/8 terminal trainings, READY record, 8/8 sealed evaluations, and the
+committed V4 adjudicator's first authorized read.
+
 ---
 
 # Previous handoff — AlphaFuse-style E-E V3 completed and integrated (2026-07-30)

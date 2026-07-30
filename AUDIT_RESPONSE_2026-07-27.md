@@ -293,7 +293,8 @@ investigators. Prelaunch preparation opened the outcome-known combined export bu
 retained only TRAIN/VALID fields for training; fitting and selection did not load, hash,
 or score TEST. MiniLM replaces the published AlphaFuse text vectors, and the arms differ
 in text availability, initialization, trainable capacity, parameter allocation, and
-architecture; upstream-default normal initialization was not tested. The result is
+  architecture. The separately frozen E-E V4 sensitivity tests upstream-default normal
+  initialization; its result is pending and is not backfilled into this V3 result. The result is
 countable whole-package current-comparator evidence, not a
 published-table reproduction, paired experiment, null-space-fusion isolation, equal-
 tuning evidence, independent confirmation, or SOTA.
@@ -331,3 +332,23 @@ defects. They are now corrected without changing any experimental value or verdi
 6. AlphaFuse proceedings metadata now includes the verified 1614--1623 page range and
    DOI `10.1145/3726302.3729894`. TIGER preprocessing remains described as a paper-level
    statement rather than proof of the unreleased preprocessing geometry.
+
+## 2026-07-30 upstream-default-normal-init sensitivity addendum
+
+Audit item 4 correctly identifies the zero-initialized E-E V3 SASRec control as a
+comparator-fairness limitation. `PREREG_EE_V4.md` and its fail-closed source now
+predeclare eight fresh runs of the official AlphaFuse-repository `SASRec` class with
+the upstream CLI default `ID_embs_init_type="normal"` (`Normal(0,1)`). Training loss,
+schedule, VALID selection, data, and full-catalog evaluator match V3; the V4 driver
+uses four frozen two-process waves, creates READY only after all eight TEST-unread
+terminal bundles exist, seals each one-shot TEST evaluation, and invokes the committed
+adjudicator as the first authorized endpoint reader. The primary frozen contrast is
+V3 AlphaFuse-style MiniLM minus V4 normal-init SASRec-ID using independent-arm Welch.
+
+This phase is explicitly outcome-known, same-investigator, and cross-campaign. Phase/
+date and initialization are confounded, architecture/capacity remain unequal, and the
+V3 aggregate was visible before V4 design. Accordingly it can test whether the reported
+whole-package contrast survives a standard initialization choice, but it cannot isolate
+initialization, supply an equal-capacity factorial, establish SOTA, or provide independent
+confirmation. The exact negative, null, or positive verdict will be integrated with equal
+prominence only after all sealed endpoints exist and the frozen adjudicator runs.

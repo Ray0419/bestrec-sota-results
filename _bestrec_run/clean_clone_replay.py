@@ -29,6 +29,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SCHEMA = "bestrec.clean-clone-replay.v1"
 DEFAULT_OUTPUT = ROOT / "CLEAN_CLONE_ATTESTATION.json"
 HASH_RE = re.compile(r"^[0-9a-f]{64}$")
+GIT_OID_RE = re.compile(r"^(?:[0-9a-f]{40}|[0-9a-f]{64})$")
 
 
 def sha_bytes(data: bytes) -> str:
@@ -238,8 +239,8 @@ def validate_record_shape(record: dict) -> list[str]:
     if record.get("schema") != SCHEMA:
         errors.append("schema mismatch")
     for key in ("subject_commit", "subject_tree"):
-        if not HASH_RE.fullmatch(str(record.get(key, ""))):
-            errors.append(f"{key} is not a 64-hex digest")
+        if not GIT_OID_RE.fullmatch(str(record.get(key, ""))):
+            errors.append(f"{key} is not a 40- or 64-hex Git object ID")
     if record.get("clean_tracked_tree_at_start") is not True:
         errors.append("clean_tracked_tree_at_start is not true")
     if record.get("clean_tracked_tree_at_end") is not True:
@@ -297,7 +298,7 @@ def verify_record(path: Path) -> int:
     record = json.loads(path.read_text(encoding="utf-8"))
     errors = validate_record_shape(record)
     subject = str(record.get("subject_commit", ""))
-    if HASH_RE.fullmatch(subject):
+    if GIT_OID_RE.fullmatch(subject):
         if git("cat-file", "-e", f"{subject}^{{commit}}", check=False).returncode:
             errors.append("subject commit is unavailable")
         else:
@@ -360,6 +361,9 @@ def self_test() -> int:
     }
     if validate_record_shape(sample):
         raise RuntimeError("valid synthetic attestation was rejected")
+    sample["subject_commit"], sample["subject_tree"] = "a" * 40, "b" * 40
+    if validate_record_shape(sample):
+        raise RuntimeError("valid SHA-1 Git object IDs were rejected")
     sample["stages"][0]["stdout"] += "tamper"
     if not any("hash mismatch" in e for e in validate_record_shape(sample)):
         raise RuntimeError("tampered transcript was not rejected")

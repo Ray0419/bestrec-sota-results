@@ -7,10 +7,13 @@ established Transformer-based baselines. Later systems add language-derived item
 representations \citep{ding2021zesrec,hou2022unisrec,li2023recformer,hou2024blair}
 or discrete semantic IDs \citep{rajput2023tiger,yang2024liger}.
 
-Amazon Reviews 2023 results span incompatible preprocessing variants. In particular,
-the 0-core reference pipeline and the 5-core protocol used by recent generative
-retrievers do not define interchangeable benchmarks. Our experiments use the latter:
-fixed 5-core splits, leave-last-two-out histories, and full-catalog ranking.
+Amazon Reviews 2023 results span incompatible preprocessing variants, and superficially
+similar ``5-core'' labels hide different contracts. Our pipeline iteratively filters
+both users and items and then applies leave-last-out. LIGER reports user-and-item
+filtering, whereas TIGER reports user filtering only; both use Amazon Reviews 2014,
+not AR2023. Their holdout chronology is related to ours, but their datasets and
+filtering geometry are not interchangeable with our fixed AR2023 splits or with the
+0-core reference pipeline.
 
 Recommender evaluation is vulnerable to mistuned baselines, incompatible protocols,
 and irreproducible result selection

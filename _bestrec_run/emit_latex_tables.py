@@ -106,8 +106,15 @@ def unimap(s):
     # typographic-only break points for long unbreakable identifiers (no text change)
     s = s.replace(r"external/AmazonReviews2023/seq\_rec\_results/",
                   r"external/\allowbreak AmazonReviews2023/\allowbreak seq\_rec\_results/")
+    s = s.replace(r"preprocess\_5core\_standard.py",
+                  r"preprocess\_5core\_\allowbreak standard.py")
     s = s.replace(r"Beauty\_and\_Personal\_Care", r"Beauty\_and\_\allowbreak Personal\_Care")
     s = s.replace(r"Beauty\_and\_PC", r"Beauty\_and\_\allowbreak PC")
+    s = s.replace(r"Video\_Games", r"Video\_\allowbreak Games")
+    s = s.replace(r"Musical\_Instruments", r"Musical\_\allowbreak Instruments")
+    s = s.replace(r"Office\_Products", r"Office\_\allowbreak Products")
+    s = s.replace(r"Industrial\_and\_Scientific", r"Industrial\_and\_\allowbreak Scientific")
+    s = s.replace(r"CDs\_and\_Vinyl", r"CDs\_and\_\allowbreak Vinyl")
     s = s.replace(r"SOTA\_CONFIRM\_PREREG\_OFFICE.md", r"SOTA\_CONFIRM\_\allowbreak PREREG\_\allowbreak OFFICE.md")
     # round-7: Figs 1-3 are embedded floats; wire textual figure mentions to the labels
     # (\cref with \crefname{figure}{Fig.}{Figs.} prints exactly the md's "Fig. N")
@@ -353,7 +360,13 @@ REGISTRY = [
          size=r"\small", tabcolsep=3, arraystretch=1.18,
          family=None, allow=set()),
     dict(key="table_datasets41", fp="category", out="table_datasets41.tex",
-         env="tabularx", colspec=r">{\raggedright\arraybackslash}p{0.20\linewidth}>{\raggedright\arraybackslash}p{0.30\linewidth}rrr", size=r"\footnotesize",
+         env="tabularx",
+         colspec=(r">{\raggedright\arraybackslash}p{0.18\linewidth}"
+                  r">{\raggedright\arraybackslash}p{0.29\linewidth}"
+                  r">{\raggedleft\arraybackslash}p{0.09\linewidth}"
+                  r">{\raggedleft\arraybackslash}p{0.12\linewidth}"
+                  r">{\raggedleft\arraybackslash}p{0.20\linewidth}"),
+         size=r"\scriptsize", tabcolsep=2, arraystretch=1.15,
          # S4.1 role-based dataset table (round-15 audit): md-only; dataset stats are
          # protocol facts recorded in prereg/provenance files, not result-JSON cells
          family=None, allow=set()),

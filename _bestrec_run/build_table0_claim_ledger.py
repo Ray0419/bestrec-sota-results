@@ -73,7 +73,7 @@ def build() -> str:
          f"{signed(eev3['delta_vs_existing_reference'])} versus the existing {eev3['existing_reference_mean']:.6f} reference. "
          "Countable outcome-known same-investigator whole-package evidence; not a published-table reproduction, null-space-fusion isolation, equal architecture/capacity/tuning, independent confirmation, or SOTA. |"),
         "| **Label smoothing/time bias** — Szegedy et al. (2016); TiSASRec; HSTU (Zhai et al., 2024) | Integrated with this backbone and full-catalog chunked softmax | +0.0013 and +0.0027 single flags (Table 1). Prior work. |",
-        ("| **Sequence/frequency filters** — FMLP-Rec, BSARec, FreqRec, WEARec; causal convolutions include Caser, NextItNet, C3SASR, and AdaMCT "
+        ("| **Sequence/frequency and linear-time operators** — FMLP-Rec, BSARec, FreqRec, WEARec, TimeWeaver, TV-Rec, HyenaRec, ConvRec, and Mamba4Rec; causal convolutions include Caser, NextItNet, C3SASR, and AdaMCT "
          "| The official WEARec model/training code is evaluated under our split, complete-history mask, full-catalog evaluator, cutoff, and tie rule; the others are not inserted as-is "
          f"| WEARec official-code/equal-evaluation mean {wearec['wearec_mean']:.6f} "
          f"[{wearec['wearec_ci_lo']:.6f},{wearec['wearec_ci_hi']:.6f}] versus reference "

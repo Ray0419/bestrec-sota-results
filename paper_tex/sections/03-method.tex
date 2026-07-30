@@ -20,7 +20,7 @@ We preprocess Amazon Reviews 2023 \citep{hou2024blair} into 5-core leave-last-ou
   Encode item metadata (\texttt{meta\_\textless{}category\textgreater{}.jsonl}) with the chosen frozen text encoder.
 \end{enumerate}
 
-This protocol matches TIGER \citep{rajput2023tiger} and LIGER \citep{yang2024liger} but differs from \citet{hou2024blair}'s reference repo (\texttt{external/\allowbreak AmazonReviews2023/\allowbreak seq\_rec\_results/}) which uses the \texttt{0core\_timestamp\_w\_his\_*} HuggingFace subset. The 5-core protocol produces smaller, denser interaction matrices.
+This protocol shares chronological leave-last-out structure with TIGER \citep{rajput2023tiger} and LIGER \citep{yang2024liger}, but it is not identical to either: our iterative filtering applies to users and items, matching LIGER's stated k-core dimension, whereas TIGER states user filtering only; both comparator papers use Amazon Reviews 2014 rather than AR2023. \citet{hou2024blair}'s AR2023 reference repo (\texttt{external/\allowbreak AmazonReviews2023/\allowbreak seq\_rec\_results/}) uses the \texttt{0core\_timestamp\_w\_his\_*} HuggingFace subset. These pipelines produce different catalogs and cannot support direct numerical comparisons.
 
 \textbf{Estimand and construct boundary.} Each review event is treated as an implicit
 positive interaction regardless of its 1--5-star rating or verified-purchase flag. The

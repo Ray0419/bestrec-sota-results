@@ -209,6 +209,54 @@ private. The public graph expressly does not claim independent replay of private
 endpoint extraction. Audit items 8 and 13 are only partly closed; item 14 is closed
 experimentally with a negative primary result.
 
+## 2026-07-30 manuscript-parity, governance, and novelty response
+
+The later July 30 audit identified several manuscript defects that were independent of
+the governed result arithmetic. They are accepted and repaired without editing the
+audit itself:
+
+1. **Amazon protocol attribution:** Markdown and TeX no longer say that our AR2023
+   pipeline “matches” TIGER/LIGER. They now distinguish our iterative user-and-item
+   5-core pipeline from TIGER's stated user filtering, LIGER's stated user-and-item
+   filtering, both papers' Amazon Reviews 2014 source, and Hou et al.'s AR2023 0-core
+   repository path. LIGER's first author and full author list are corrected to Liu
+   Yang et al.
+2. **MovieLens chronology and governance:** the paper now states that acquisition read
+   the official ratings file, constructed and hash-bound TEST, and used TEST targets
+   for the frozen target-in-training-catalog cohort. The narrower valid claim is that
+   fitting and validation selection consumed TRAIN+VALID only, emitted no TEST scores,
+   and preceded sealed one-shot TEST evaluation. Ethics now covers both Amazon Reviews
+   2023 and MovieLens 1M, states that only `ratings.dat` was parsed, and records the
+   MovieLens non-redistribution/non-commercial boundary plus the remaining institutional
+   legal, retention, deletion, and access-control review.
+3. **Modern novelty boundary:** Related Work, Table 0, TeX, and the bibliography now
+   include mechanism-level positioning against TimeWeaver, TV-Rec, HyenaRec, ConvRec,
+   and Mamba4Rec, in addition to FreqRec and WEARec. These citations explicitly rule out
+   broad filtering, convolution, temporal-specificity, linear-time, or efficiency
+   novelty. No protocol-mismatched published number is presented as a matched baseline.
+4. **Statistical wording:** Table 1 and the historical moving-average paragraph now
+   define `±` as sample standard deviation, describe arithmetic mean contrasts as
+   descriptive, and reject visual “band non-overlap” as an inferential rule. The
+   retained pointwise-minus-identity result remains nonequivalence evidence only.
+5. **Compression wording:** the MovieLens noninferiority result is now called
+   conditional **coefficient-count** compression, not a computational optimization.
+   The paper states that no bypass implementation was tested and that measured
+   end-to-end latency and memory did not materially improve.
+6. **Rendered parity:** figure numbering is synchronized between Markdown and TeX;
+   the acmsmall dataset table now provides break opportunities for long category names
+   and no longer has column collisions. The fail-closed graph remains at 199 active
+   cells across 23 required families with zero mismatch and zero untraceable claims.
+
+These repairs close contradictions and presentation defects; they do not close the
+substantive external-validity gaps. The current WEARec comparison still differs in
+architecture, loss, schedule, and tuning budget; the AlphaFuse-style result remains a
+whole-package port using substituted MiniLM features; the prospective non-Amazon FIR
+test is negative; and none of the positive FIR evidence is independent confirmation.
+Author identity/affiliation/contact fields, conflicts/funding, venue mode and length,
+final legal review, immutable archival release, and DOI remain author-controlled open
+items. A literal submission build is therefore still blocked until real byline metadata
+are supplied and the draft waiver is removed.
+
 ## 2026-07-28 current-baseline and presentation response
 
 Audit item 4 requested at least one feasible current equal-evaluation baseline.

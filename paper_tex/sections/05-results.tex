@@ -10,6 +10,11 @@ Our headline result (Table 1) is built on the \textbf{HSTU-style pure-PyTorch en
 
 \input{tables/table1}
 
+For Table 1 specifically, ``\ensuremath{\pm}'' denotes sample SD, not a
+confidence interval. Its \ensuremath{\Delta} column contains arithmetic mean
+contrasts between separately summarized arms; those rows are not paired tests,
+and SD-band overlap or non-overlap is not used as an inferential rule.
+
 The full model is \textbf{+17.5\%} over the published SASRec point estimate (0.0573, Table 1b) on the same reported Video\_Games dataset geometry, but published training/evaluation equivalence is not established --- and \textbf{this difference is architectural, not text-driven}: the ID-only ablation already reaches \ensuremath{\approx}0.0656 (itself +14\% over published SASRec), and the entire frozen-text stack (SBERT features + text-sim bias + prototypes) adds only \textbf{+0.00178 \ensuremath{\pm} 0.00021 (5-seed, +2.7\%)} overall. The two supported regularizers stack with a combined lift whose excess over the component sum is 33\% --- additivity and orthogonality were NOT tested (loss target vs. embedding spectrum): label smoothing alone +0.0012, causal filter alone +0.0015, combined +0.0036 over the bias stack. Per-component single-flag attribution on the HSTU-style implementation: the \textbf{time bias is the largest classical component (+0.0027)}, label smoothing +0.0013, causal filter +0.0015, while \textbf{text-similarity bias shows no observed benefit (\ensuremath{\pm}0.0001, removable candidate)} and \textbf{TAPE is sub-additive (+0.0009)}. \emph{(The time-bias, text-sim, and TAPE single-flag figures here are the single-seed seed-20260608 DECOMP values, honestly flagged n=1 (reported inline here, not in a table). A 4-seed multi-seed cross-check --- DECOMP5, seeds 20260609--12, HSTU-style base 0.0594 --- confirms the ordering: time bias +0.0030 (largest classical component, \ensuremath{\ge} the single-seed +0.0027), pos-rab +0.0012, TAPE +0.0004, text-sim \ensuremath{-}0.00005 (no benefit observed at tested power). The qualitative attribution is unchanged; the only number that materially moves is TAPE, whose multi-seed single-flag lift (+0.0004) is smaller still than the single-seed +0.0009 --- further support for its demotion from a headline component.)} The causal filter's gain is robust across kernel lengths K\ensuremath{\in}\{4,8,16,50\} (k16 marginally best \& tightest, 5-seed 0.0676 \ensuremath{\pm} 0.0002; low kernel sensitivity, \S\ref{sec:5.4}). Every capacity-\emph{adding} probe we tried instead (continuous time-decay kernel, expert heads, text-distillation, dual-text, EMA, CL4SRec, James--Stein shrinkage \citep{james1961estimation,efron1973stein}, niche-competition loss, heat-kernel label smoothing, spectral-shrink, cue-fusion, forced ID\ensuremath{\rightarrow}text routing) was neutral or harmful --- several with a learned scalar the model itself drove to zero (the negative-result map, tabulated in Table S1, \S\ref{sec:5.5}).
 
 \input{tables/table1a}
@@ -82,8 +87,10 @@ The paired-difference sample SD was \textbf{0.000563779}. In registered seed ord
 \texttt{ML1M-\allowbreak NO-FIR-\allowbreak REPLICATION}).} The protocol and complete execution chain were
 committed and pushed before acquiring MovieLens. The rating-at-least-4 primary view
 used a global 90\% time boundary, a training-observed catalog, 1,033 users, 2,359
-items, and 135,131 training rows. All 96 checkpoints were trained before any TEST
-file was opened or hashed; 96 sealed one-shot evaluations then preceded the
+items, and 135,131 training rows. Acquisition necessarily read and hash-bound TEST
+and used its target for cohort eligibility; the narrower sequestration claim is that
+model fitting/selection emitted no TEST scores and all 96 selected checkpoints existed
+before the 96 sealed one-shot TEST evaluations. Those evaluations preceded the
 protocol-designated adjudicator's first endpoint read. This is prospectively frozen
 same-investigator non-Amazon evidence, not independent confirmation or population-wide
 generalization.
@@ -101,16 +108,17 @@ included zero.
 \begin{table*}[t]
 \caption{MovieLens 1M R4 primary FIR replication and conditional parsimony. NI-PASS
 uses the frozen 0.000500 noninferiority margin versus learned FIR. Because the
-learned-FIR replication gate failed, NI-PASS is conditional numerical compression,
-not evidence of FIR utility.}
+learned-FIR replication gate failed, NI-PASS is conditional coefficient-count
+compression only, not evidence of FIR utility or an end-to-end compute reduction.}
 \label{tab:ml1m-efficiency}
 \input{tables/table_ml1m_efficiency}
 \end{table*}
 
 Shared, grouped, and low-rank passed the frozen noninferiority family
 ($p_{\mathrm{Holm}}=5.20\times10^{-6}$, $5.20\times10^{-6}$, and
-$1.43\times10^{-6}$). These are conditional compression findings, not evidence that a
-smaller FIR is useful, because the prerequisite learned-FIR replication contrasts
+$1.43\times10^{-6}$). These are conditional coefficient-count compression findings,
+not a computational optimization and not evidence that a smaller FIR is useful,
+because the prerequisite learned-FIR replication contrasts
 failed. Median latency per user was 2.076/2.105/2.087/2.132/2.073/2.120 ms in table
 order; primary-view training peak memory ranged from 580.94 to 583.28 MiB on one RTX
 5060 Ti. The resource plane is descriptive hardware evidence, not a general efficiency
@@ -138,7 +146,7 @@ extraction.
 
 \textbf{TFV2 independent-arm replication (pre-declared, outcome-visible; adjudicated 2026-07-20).} The \texttt{PREREG\_TAIL\_FIR\_V2.md} campaign (Git-committed frozen rules; outcome-visible --- OTS chronology in \S\ref{sec:5.3}, disclosure (vii)) reran both breadth categories as fully independent 8-vs-8 arms (fresh never-inspected seeds; no pairing premise; per-run sidecars released): Industrial\_and\_Scientific overall \ensuremath{\Delta} = \textbf{+0.002131} (t = 16.99, 95\% CI {[}+0.001862, +0.002400{]}) and CDs\_and\_Vinyl overall \ensuremath{\Delta} = \textbf{+0.005770} (t = 26.12, 95\% CI {[}+0.005275, +0.006266{]}) --- \textbf{both PASS under Holm} (one family with the tail endpoint E1, \S\ref{sec:5.3}). This replaces the withdrawn paired interpretation with a valid pre-declared independent-arm design; the treatment remains the FIR-plus-initialization/optimizer package. Descriptively, the filter's positive-frequency-tail improvements are +0.000775 (IS, p = 2\ensuremath{\times}10$^{-4}$) and +0.002329 (CDs, p = 3\ensuremath{\times}10$^{-12}$).
 
-\textbf{Comparator ablations (audit-requested).} Each arm targets one named design element of the filter (with the disclosed caveat that the singular headline initialization means these arms also alter the optimization path, \S\ref{sec:3}) on the same 5-seed MI stack: freezing the kernel at a causal moving average (learnable gate retained) recovers only +0.00133 of the filter's +0.00225 gain over the no-filter baseline (0.04046 \ensuremath{\pm} 0.00022 vs 0.04138 \ensuremath{\pm} 0.00053; non-overlapping bands) --- an observation confounded by the shared singular start (\S\ref{sec:3}): no learned-shape attribution is claimed. Freezing the gate at 1 (delta-initialized kernel) matches the full filter (0.04127 \ensuremath{\pm} 0.00046), so the zero-init gate comparison is confounded by the singular-initialization bootstrap (\S\ref{sec:3} disclosure) and is not a clean single-factor attribution.
+\textbf{Comparator ablations (audit-requested).} Each arm targets one named design element of the filter (with the disclosed caveat that the singular headline initialization means these arms also alter the optimization path, \S\ref{sec:3}) on the same 5-seed MI stack: freezing the kernel at a causal moving average (learnable gate retained) recovers only +0.00133 of the filter's +0.00225 descriptive mean gain over the no-filter baseline (0.04046 \ensuremath{\pm} 0.00022 vs 0.04138 \ensuremath{\pm} 0.00053) --- an observation confounded by the shared singular start (\S\ref{sec:3}). Here \ensuremath{\pm} denotes sample standard deviation, and no inference is based on visual overlap of those bands; no learned-shape attribution is claimed. Freezing the gate at 1 (delta-initialized kernel) has a similar descriptive mean to the full filter (0.04127 \ensuremath{\pm} 0.00046), so the zero-init gate comparison is confounded by the singular-initialization bootstrap (\S\ref{sec:3} disclosure) and is not a clean single-factor attribution.
 
 \textbf{Pre-declared confirmation vs the published per-category reference.} The seeds above (20260608--17) are \emph{exploratory}: kernel choice, epoch budget, and the decision to compare against the published Musical\_Instruments HSTU-BLaIR number (0.0406; \citealp[Table 2]{liu2025hstublair}) were all made while inspecting them. To make the comparison selection-free, we froze a version-controlled pre-declared protocol (\texttt{SOTA\_CONFIRM\_PREREG\_V2.md}, committed to version control before any confirmation run: exact config and commands, data SHA256s, decision rule, claim wording) and ran \textbf{five pre-specified never-inspected seeds (20260618--22) under each of the two kernels --- ten arm-runs} with per-run provenance manifests (command, git commit + clean-tree flag, environment, data hashes) and per-user record sidecars. Result: \textbf{K=16 fresh 5-seed 0.04152 \ensuremath{\pm} 0.00045 (95\% CI lower bound 0.04096) and K=8 0.04120 \ensuremath{\pm} 0.00030 (CI-LB 0.04083) --- both CI lower bounds above the published 0.0406, 10/10 seeds above.} The supported claim is exactly this: \emph{fresh multi-seed means and seed-level confidence intervals exceed the published HSTU-BLaIR point estimate on this category under our reproduced protocol (parity evidence: users/items match the paper exactly; interactions differ by one --- see \texttt{SOTA\_CONFIRM\_PREREG\_V2\_ERRATA.md} E1; our plain SASRec floor is} below \emph{their published SASRec, ruling out an easier split).} The comparator is single-seed; our post-hoc local regeneration of it (\S\ref{sec:5.6} --- the reference implementation's research path under data-movement shims, unpinned environment) regenerates the published value at its best full-eval epoch (0.0406; final epoch 0.0391) but is itself a single environment-caveated run, so no paired or distributional superiority is claimed, and this remains a per-category result --- Video\_Games is explicitly not claimed (\S\ref{sec:5.1}). The first execution of this confirmation was voided by its own provenance tripwire (a concurrent documentation edit dirtied the tracked tree mid-campaign) and re-executed in full under a clean tree; both executions agree per-seed to \ensuremath{\pm}0.0003 (\texttt{SOTA\_CONFIRM\_V2\_RESULTS.md}). One protocol deviation is disclosed rather than claimed away: the gated runs executed at a documentation-only descendant commit of the pre-declaration's introducing commit (the pre-declared commit-equality rule was not literally satisfied); code identity across the two commits is demonstrated by empty protocol-file diffs and, in the from-scratch rebuild, by code hashes embedded in each run manifest (\texttt{SOTA\_CONFIRM\_PREREG\_V2\_ERRATA.md}, E3).
 
@@ -255,7 +263,7 @@ The tail ratio moves from 0.971 to 1.046. The independent-arm
 difference-in-differences is +0.000326 (p=0.058, 95\% CI [-0.00001,
 0.00067]); the within-rung tail level is +0.000178
 (p\ensuremath{\approx}0.16). The former paired analysis is retracted because arms are
-not initialization-paired. Fig. 2 therefore shows a suggestive direction, not a
+not initialization-paired. Fig.~\ref{fig:r1r2_plane} therefore shows a suggestive direction, not a
 confirmed effect or connectivity attribution.
 
 

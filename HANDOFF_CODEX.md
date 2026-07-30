@@ -1,4 +1,46 @@
-# CURRENT HANDOFF — AlphaFuse-style E-E V3 completed and integrated (2026-07-30)
+# CURRENT HANDOFF — July 30 audit-repair phase complete; final release replay pending (2026-07-30)
+
+The latest manuscript/audit phase has completed its local substantive work. The frozen
+pointwise mechanism result remains `POINTWISE-FIR-DISCRIMINATED`: learned FIR minus
+identity +0.001872 [+0.001737,+0.002007], pointwise minus identity -0.000069
+[-0.000200,+0.000061], and learned FIR minus pointwise +0.001941
+[+0.001788,+0.002095] in one frozen three-test Holm family. This is outcome-known
+Musical_Instruments evidence against one equal-parameter compound current-only placebo;
+it is not temporal isolation, per-channel necessity, generalization, SOTA, or independent
+confirmation.
+
+The July 30 audit corrections are now mirrored across `PAPER_SUBMISSION.md`,
+`PAPER_DRAFT.md`, ACM TeX, generated tables, bibliography, and
+`AUDIT_RESPONSE_2026-07-27.md` without modifying the user-owned audit. The paper now:
+
+- distinguishes our AR2023 iterative user+item 5-core path from TIGER/LIGER's Amazon
+  Reviews 2014 protocols and corrects LIGER's author metadata;
+- states the true MovieLens acquisition/training chronology and covers both datasets in
+  the ethics/governance section;
+- positions the modular claim against TimeWeaver, TV-Rec, HyenaRec, ConvRec, and
+  Mamba4Rec at mechanism level;
+- removes sample-SD band-overlap inference and labels MovieLens parsimony as conditional
+  coefficient-count compression, not compute optimization;
+- fixes figure numbering and the acmsmall dataset-table collision.
+
+The fail-closed graph recomputes 199 active cells across 23 required families with zero
+mismatch or untraceable cells. The reader PDF is 55 pages with `scan: CLEAN`; both ACM
+targets compile under the logged author-metadata draft waiver, and visual inspection of
+the novelty table, dataset table, MovieLens table, and new reference entries found no
+clipping. The final release-manifest regeneration, strict local replay, scoped commit,
+pristine hydrated-clone replay, push, and release-manifest upload/hash verification remain
+to be executed after this handoff edit.
+
+Do not stage user-modified `PAPER_REVIEW_AUDIT.md` or unrelated untracked QA/tmp files.
+Human author/affiliation/country/contact/running-header metadata remains the literal
+submission blocker and must not be invented. Substantive residual risks also remain:
+same-investigator/outcome-known positive evidence, a negative MovieLens replication,
+unequal architecture/training/tuning in current-baseline studies, venue mode/length,
+final legal/conflict/funding review, and an immutable DOI-backed deposit.
+
+---
+
+# Previous handoff — AlphaFuse-style E-E V3 completed and integrated (2026-07-30)
 
 The clean text+ID current-comparator campaign under `PREREG_EE_V3.md` completed
 all 16 frozen training bundles and then all 16 sealed one-shot TEST evaluations

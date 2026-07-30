@@ -50,9 +50,11 @@ A separate \textbf{20-variant cross-pipeline transfer scan on Beauty\_and\_\allo
 The MovieLens study used six exact matched-initialization arms over eight pre-specified
 seed blocks: identity, channel-shared K=16, eight-group K=16, rank-at-most-8
 tangent-factorized K=16, per-channel K=16, and an equal-parameter current-position-only
-placebo. Training constructed maps from TRAIN+VALID without opening or hashing TEST
-bytes. After all 96 training runs completed, each selected checkpoint received one
-sealed TEST evaluation. The primary estimand was NDCG@10 on rating-at-least-4 events
+placebo. Acquisition had already read the official ratings file, constructed and
+hash-bound the TEST split, and used target-in-training-catalog eligibility to define
+the primary cohort. During fitting and validation selection, trainers consumed
+TRAIN+VALID only and emitted no TEST scores. After all 96 training runs completed,
+each selected checkpoint received one sealed TEST evaluation. The primary estimand was NDCG@10 on rating-at-least-4 events
 after a global 90\% time boundary; all ratings, user/item cluster bootstraps, and
 resource readings were frozen sensitivities. The three-candidate noninferiority family
 used margin 0.000500 and Holm-adjusted one-sided tests.

@@ -1,4 +1,4 @@
-hygiene scan: PAPER_TORS.pdf | pages: 47
+hygiene scan: PAPER_TORS.pdf | pages: 48
 placeholder+forbidden failures: 0
 review list (SOTA mentions + negated claim-wordings): 24
   REVIEW negated-ok: pinned(?:[-\s]\w+)?[-\s]reproduction :: luded from the artifact graph) 0.13234 final stronger than ours; not a faithful pinned-environment reproduction AlphaFuse-style MiniLM representation package (8 fresh seeds; this audit) 0.048
@@ -9,18 +9,18 @@ review list (SOTA mentions + negated claim-wordings): 24
   REVIEW SOTA-mention :: line, not equal architecture/loss/schedule/tuning, independent confirmation, or SOTA. Filtering, frequency modeling, and causal convolution are prior art. Causal FI
   REVIEW SOTA-mention :: ion isolation, equal architecture/capacity/tuning, independent confirmation, or SOTA. Whitening, channel separation, prototype/codebook, decoupled fusion, and adapt
   REVIEW SOTA-mention :: results remain exploratory. 5.1 Video_Games — multi-seed reference numbers (NOT SOTA) Ourheadline result(Table1) is builton theHSTU-style pure-PyTorch encoderwithth
-  REVIEW SOTA-mention :: the same investigators on an outcome-known split—not independent confirmation, SOTA, a paired experiment, or Manuscript submitted to ACM Artifact-Gated Evaluation
+  REVIEW SOTA-mention :: the same investigators on an outcome-known split—not independent confirmation, SOTA, a paired experiment, or equality of architecture, loss, schedule, or tuning bu
   REVIEW SOTA-mention :: ation, equal-tuning evidence, a paired experiment, independent confirmation, or SOTA. The graph recomputes released aggregate vectors and Welch arithmetic and valid
   REVIEW SOTA-mention :: ins zerotraining occurrences (§5.3 cohort disclosure). We therefore donot claim SOTA over TIGER/LIGER/BLaIR. HSTU-BLaIR is the relevant stronger AR2023 Video_Games
-  REVIEW SOTA-mention :: relevant stronger AR2023 Video_Games 5-core reference and blocks a SASRec-SBERT SOTA claim. Manuscript submitted to ACM 18 [Maintainer: short author list] Concurren
+  REVIEW SOTA-mention :: relevant stronger AR2023 Video_Games 5-core reference and blocks a SASRec-SBERT SOTA claim. Concurrent protocol landscape. SID-MLP [Guo et al. 2026, arXiv:2605.1261
   REVIEW SOTA-mention :: r (0.0125). These are efficiency and sanity-check observations, not priority or SOTA claims. 5.2 Canonical causal FIR internal contrasts and untuned category reuse
   REVIEW SOTA-mention :: contrast of the FIR-plus-initialization/optimizer package; nothing broader, no SOTA language, no comparator statement. The filter package is thus multi-seed-suppor
-  REVIEW SOTA-mention :: eration 0.0279; no paired or distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA cla
-  REVIEW SOTA-mention :: distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind.The V1 VOID ab
-  REVIEW SOTA-mention :: not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind.The V1 VOID above stands unchanged as its own record (Appendi
+  REVIEW SOTA-mention :: eration 0.0279; no paired or distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Manuscript submitted to ACM Artifact-Gated Eval
+  REVIEW SOTA-mention :: distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Manuscript submitted to ACM Artifact-Gated Evaluation 25 Amazon Reviews 2023
+  REVIEW SOTA-mention :: tted to ACM Artifact-Gated Evaluation 25 Amazon Reviews 2023, and not a general-SOTA claim of any kind.The V1 VOID above stands unchanged as its own record (Appendi
   REVIEW SOTA-mention :: aired Welch contrast is descriptive, and neither independent confirmation nor a SOTA claim follows. The graph replays NDCG vector arithmetic, not private endpoint e
   REVIEW SOTA-mention :: able, establishes equal tuning, supplies independent confirmation, or permits a SOTA claim. User/item bootstrap intervals are fixed-dataset sensitivities; the publi
-  REVIEW SOTA-mention :: es, losses, schedules, or tuning budgets and is not independent confirmation or SOTA evidence. The frozen AlphaFuse-style current-comparator campaign reached NDCG@1
+  REVIEW SOTA-mention :: es, losses, schedules, or tuning budgets and is not independent confirmation or SOTA evidence. Manuscript submitted to ACM 36 [Maintainer: short author list] The fr
   REVIEW SOTA-mention :: duce AlphaFuse’s published text setting, or provide independent confirmation or SOTA evidence. The secondary result is narrower. Frozen text features improve the re
   REVIEW SOTA-mention :: lt artifacts, and build scripts are public athttps://github.com/Ray0419/bestrec-sota-results. The trackedRELEASE_MANIFEST.json binds source code, split derivatives,
   REVIEW SOTA-mention :: . We provide our 0.01946 (2-seed mean) as a reference baseline rather than as a SOTA-improvement claim. A future apples-to-apples comparison would require either: •

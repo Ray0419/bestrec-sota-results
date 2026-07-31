@@ -1,3 +1,62 @@
+# CLAUDE TICK — A4 narrowing + F1: ML-1M arms bit-identical on 3/8 seeds (2026-07-31)
+
+Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `792efb6c` (fifth
+consecutive tick); A0/A1 still BLOCKED (4 `[Maintainer:` placeholders remain in both
+`paper_tex/paper-shared.tex` and `COVER_LETTER_TORS.md`). Files added:
+`CLAUDE_A4_MOVIELENS_NARROWING_2026-07-31.md` + this section. Preserved (NOT staged):
+`PAPER_REVIEW_AUDIT.md`, `PAPER_SUBMISSION.md`, `COVER_LETTER_TORS.md`, TeX, checklist,
+adjudication JSONs, `paper_tex/tables/*`, `RELEASE_MANIFEST.json`, `qa_final*/`, `tmp/`,
+`temp/`.
+
+**F1 (BLOCKING — check before the paper narrates MovieLens).** Read from the COMMITTED
+`fir_efficiency_ml1m_v1_adjudication.json` (adjudicator already ran; no sealed endpoint
+opened): on **3 of 8 seeds the learned-FIR arm and the identity arm produced BIT-IDENTICAL
+NDCG@10** (s2 0.047012017140, s4 0.046056306397, s6 0.050821479159 — diff exactly 0.000e+00).
+Same pattern elsewhere: bit-identical-to-identity counts `lowrank 3/8`, `learned 3/8`,
+`grouped 2/8`, `pointwise 2/8`, `shared 0/8`. With ~6,040 eval users, bit-identical NDCG@10
+means NOT ONE user's top-10 changed. Three candidate explanations, which must be
+distinguished BEFORE interpreting the null: (1) the optimizer drove the taps to a functional
+no-op — scientifically interesting and consistent with the paper's own capacity-adding-levers
+-get-voted-off asymmetry; (2) metric/tie granularity; (3) **a pipeline fault — the module not
+active on those runs, which would make the null an ARTIFACT, not a result.**
+**Discriminating check (cheap, Codex-owned, no retraining):** the runner already records
+`fir_v3_final_l2`, and the E-A/breadth adjudicators already gate the identity arm on it being
+exactly 0. Read it for the ML-1M `learned` arm per seed. ≈0 ⇒ (1)/(3); clearly non-zero with
+bit-identical NDCG ⇒ (2); exactly 0 on the LEARNED arm ⇒ integrity question, not a result.
+
+**F2.** The compression claim is near-vacuous on this corpus: Q2 noninferiority (±0.000500)
+holds, but no arm separates from identity (all means 0.05212–0.05221), so noninferiority among
+inert arms says nothing about parameter efficiency. Not false — pre-declared and satisfied —
+but the dependency on the Q1 null must be visible or it reads as a salvaged positive.
+
+**Honest narrowing drafted, conditional on F1.** If (1)/(2): domain-conditional wording with
+the ML-1M interval stated as a BOUND (upper bound `+0.000075` is >10× below the Amazon
+estimates `+0.002110`…`+0.006150`), explicitly NOT equivalence (no margin pre-declared; CI
+covers zero). If (3): the study is not interpretable as a domain finding — report as an
+execution defect or re-run; do not narrate an artifact as a null. Enumerated what it does NOT
+permit: not equivalence; not "FIR doesn't work" (n=1 domain); not parameter efficiency (F2);
+not a refutation of the Amazon results; not "temporal structure doesn't matter" — which makes
+the A4 **temporal-diagnosticity dimension (D1) doubly important**, since a pre-selection
+diagnosticity screen would have told us whether ML-1M was a corpus where the mechanism could
+show itself at all.
+
+**Consolidated register added to the memo** — five ticks of memos, none yet actioned:
+F1(blocking/very-low-cost), E5(cover letter stale), C1(canonical wd drift), M1(split
+protocol), F2, E1–E4(under-claiming), W1/W2(tuning fairness), D1/D2(dataset gate),
+A0/A1/A4-legal(human-only).
+
+**Open risks:** scientific — F1 possible artifact; C1; M1; F2; A3 W1/W2; A2 not isolated.
+venue — A0 unverified; E5 editor-facing staleness; E3 under-claiming. human — A0, A1, A4
+licence/custody, AI-use statement.
+
+**Next safe action:** Codex runs the F1 `fir_v3_final_l2` check and applies/rebuts the
+register. Claude next tick: queue item (f) manuscript focus/length work that touches no
+generated table or graph, unless Codex responds first. **Expressly forbidden:** narrating the
+ML-1M null before F1 resolves; phrasing E1/F1 as equivalence; freezing either draft prereg;
+calling any venue Tier A before A0.
+
+---
+
 # CLAUDE TICK — evidence-class audit: PASS on upgrading, 4 precision defects (2026-07-31)
 
 Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `81a9bcfb`; A0 still

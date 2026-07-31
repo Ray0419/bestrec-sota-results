@@ -218,7 +218,7 @@ The paper does not advance to submission until all mandatory gates pass:
 |---|---|---|---|
 | A0 ranking authority | Human + Claude | BLOCKED | list/edition recorded; exact journal/ISSN verified A or higher |
 | A1 author/legal metadata | Human | BLOCKED | all real metadata, COI/funding, ethics/license decisions complete |
-| A2 core temporal isolation | Codex + Claude | OPEN | frozen matched-input-control study adjudicated and narrowly integrated |
+| A2 core temporal isolation | Codex + Claude | DEFERRED | V1 rejected; any V2 must use nondegenerate controls and pass a new reject-first audit after A3/A4 |
 | A3 baseline tuning fairness | Codex + Claude | OPEN | symmetric, documented search spaces/budgets and strong simple/current baselines |
 | A4 non-Amazon/external validity | Human + both agents | OPEN | new lawful domain and preferably external custody; negative outcomes retained |
 | A5 reproducibility checklist | Claude audits; Codex implements | PARTIAL | complete pipeline/tuning/data/environment checklist with executable artifacts |
@@ -236,12 +236,12 @@ Passing A2–A6 increases defensibility; it never guarantees acceptance.
    the 2026 TORS emphasis on full-pipeline artifacts and systematic baseline
    tuning; return a dated reject/approve memo rather than silently editing away
    objections.
-3. **Codex:** harden the draft matched-input FIR temporal-isolation protocol and
-   implementation tests; do not freeze or launch until Claude's reject-first memo.
-4. **Claude:** review the draft protocol for the repeated-current control's
-   estimand, identifiability, and claim limits.
-5. **Human/both:** select a lawful genuinely new non-Amazon dataset and decide
-   whether external custody is possible before any outcome inspection.
+3. **Claude:** audit `PREREG_TIER_A_TUNING_MATRIX_V1_DRAFT.md`, including the
+   method shortlist, search spaces, failure rules, and resource fairness.
+4. **Human/both:** apply `TIER_A_NON_AMAZON_SELECTION_GATE.md` to select a lawful
+   genuinely new dataset without downloading or inspecting target interactions.
+5. **Human/both:** decide whether external custody is possible before any
+   outcome inspection.
 6. **Both:** only after new evidence, rewrite the article around one primary
    question and a compact evidence hierarchy suitable for the verified journal.
 7. **Human/both:** prepare an accurate AI-use methods/disclosure statement; do

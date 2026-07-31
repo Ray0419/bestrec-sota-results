@@ -61,31 +61,31 @@ Offline Evaluation" (2026), <https://doi.org/10.1145/3800587>.
 
 ## 4. Phase plan
 
-### Phase A — exact-input temporal control
+### Phase A — exact-input temporal control (V1 rejected; deferred)
 
-Draft protocol: `PREREG_FIR_TEMPORAL_ISOLATION_V1_DRAFT.md`.
+The V1 draft in `PREREG_FIR_TEMPORAL_ISOLATION_V1_DRAFT.md` was rejected by
+Claude's memo at commit `17e489af`; Codex accepted the no-run verdict. Its
+repeated-current arm has K stored parameters but one functional degree of freedom
+and is weaker than the completed pointwise control. Do not freeze or launch it.
 
-Keep the parameter tensor, zero initialization, activation, channel map,
-optimizer, backbone initialization, data, selection rule, evaluator, and budget
-identical. Change only the input tensor supplied to those K tap weights:
-
-- lagged arm: the K true left-causal states;
-- repeated-current control: K copies of the current state.
-
-This is a much closer test than the prior DCT/GELU pointwise placebo. It can show
-whether the lagged-input arm outperforms that exact repeated-current control. It
-still cannot establish universal temporal necessity, dataset generalization, or
-independence. Claude must approve the estimand and identify any residual
-identifiability objection before freeze.
+Claude proposed donor-history, per-example/per-epoch order-scramble, and
+K-dose-response ideas for a possible V2. They are hypotheses, not approved arms;
+donor leakage/marginal matching, scramble RNG semantics, estimand boundaries,
+multiplicity, and compute must all be resolved first. Any future V2 requires a
+new identifier and another reject-first review. A2 is deferred behind A3 and A4
+because another outcome-known mechanism study currently has lower publication
+value than fair tuning and new external-domain evidence.
 
 ### Phase B — fair tuning matrix
+
+Draft protocol: `PREREG_TIER_A_TUNING_MATRIX_V1_DRAFT.md`.
 
 For each selected dataset, preregister equal validation-only search budgets and
 search spaces for:
 
 - popularity and nearest-neighbor/linear baselines;
 - SASRec and the paper's HSTU-style identity backbone;
-- the FIR intervention and exact-input control;
+- the FIR intervention and matched identity backbone;
 - at least one current frequency/long-convolution/state-space method whose
   official implementation supports the same task.
 
@@ -94,6 +94,8 @@ wall-clock/GPU budget, selected values, failed configurations, and full-catalog
 evaluation semantics. No method receives a result-dependent rescue budget.
 
 ### Phase C — new non-Amazon study
+
+Selection gate: `TIER_A_NON_AMAZON_SELECTION_GATE.md`.
 
 Dataset selection must occur before inspection of the target split outcome and
 must pass license, retention, redistribution, and cohort-definition review.

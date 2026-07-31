@@ -88,7 +88,10 @@ campaign above is a separate pre-declaration that passed under its frozen wordin
 | `TIER_A_PUBLICATION_ROADMAP.md` | Tier-A ranking gate and scientific risk-reduction sequence |
 | `CODEX_CLAUDE_COLLABORATION_GUIDE.md` | Shared Codex/Claude roles, freezes, protected files, and handoffs |
 | `TORS_METHODOLOGY_CHECKLIST.md` | Codex-prefilled methodology, tuning, reproducibility, policy, and Claude red-team audit matrix |
-| `PREREG_FIR_TEMPORAL_ISOLATION_V1_DRAFT.md` | Unfrozen design-review draft for the next matched temporal-input control; no run authorized |
+| `CLAUDE_DESIGN_MEMO_FIR_TEMPORAL_ISOLATION_V1.md` / `CODEX_RESPONSE_TO_CLAUDE_DESIGN_MEMO.md` | Reject-first review and point-by-point response; V1 may not run |
+| `PREREG_FIR_TEMPORAL_ISOLATION_V1_DRAFT.md` | Rejected temporal-control design history; never frozen and no run authorized |
+| `PREREG_TIER_A_TUNING_MATRIX_V1_DRAFT.md` | Unfrozen symmetric baseline-tuning design; no run authorized |
+| `TIER_A_NON_AMAZON_SELECTION_GATE.md` | Metadata/legal/custody gate for choosing a new external domain before outcome inspection |
 | `PLAIN_LANGUAGE_COMPANION.md`, `companion_site/` | Non-technical explainer (documentation, not submission material) |
 | `README_LC2C_HISTORICAL.md` | Preserved README of the repository's **earlier, unrelated LC2C/EASE cold-item project** (releases up to `bestrec-raw-records-v1`); nothing in it is claimed by the current paper |
 

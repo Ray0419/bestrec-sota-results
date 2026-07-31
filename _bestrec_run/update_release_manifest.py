@@ -40,6 +40,9 @@ SUBMISSION_DOCS = [
     "TIER_A_PUBLICATION_ROADMAP.md",
     "CODEX_CLAUDE_COLLABORATION_GUIDE.md",
     "TORS_METHODOLOGY_CHECKLIST.md",
+    "CLAUDE_DESIGN_MEMO_FIR_TEMPORAL_ISOLATION_V1.md",
+    "CODEX_RESPONSE_TO_CLAUDE_DESIGN_MEMO.md",
+    "TIER_A_NON_AMAZON_SELECTION_GATE.md",
     "PAPER_SUBMISSION.md", "PAPER_SUBMISSION.pdf", "PAPER_DRAFT.md",
     "CANONICAL_SUBMISSION.md", "AUDIT_RESPONSE_2026-07-27.md",
     "COVER_LETTER_TORS.md", "CLAIM_ARTIFACT_MAP.md",
@@ -212,6 +215,10 @@ EE_V4_PROTOCOL_FILES = [
     "_bestrec_run/eval_ee_v4.py",
     "_bestrec_run/run_ee_v4_campaign.py",
     "_bestrec_run/adjudicate_ee_v4.py",
+]
+TIER_A_DRAFT_PROTOCOL_FILES = [
+    "PREREG_FIR_TEMPORAL_ISOLATION_V1_DRAFT.md",
+    "PREREG_TIER_A_TUNING_MATRIX_V1_DRAFT.md",
 ]
 
 
@@ -649,7 +656,8 @@ def regen(m):
                + FIR_PROSPECTIVE_STAGE_A_PROTOCOL_FILES
                + WEAREC_BASELINE_PROTOCOL_FILES
                + EE_V3_PROTOCOL_FILES
-               + EE_V4_PROTOCOL_FILES):
+               + EE_V4_PROTOCOL_FILES
+               + TIER_A_DRAFT_PROTOCOL_FILES):
         _gap = os.path.join(ROOT, _t.replace("/", os.sep))
         if os.path.exists(_gap) and _t not in m["protocol_code"]:
             m["protocol_code"][_t] = {"sha256": sha_norm(_gap)}

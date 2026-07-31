@@ -2,9 +2,13 @@
 
 Protocol identifier: `DRAFT_FIR_TEMPORAL_ISOLATION_V1`
 
-Status: **DRAFT ONLY — NOT FROZEN, NOT AUTHORIZED, AND NO RUN MAY START.** The
-prior FIR and pointwise outcomes are known. This document exists for Claude's
-reject-first design review and human approval. It confers no prospective status.
+Status: **REJECTED DRAFT — NOT FROZEN, NOT AUTHORIZED, AND NO RUN MAY START.**
+Claude's reject-first memo at commit `17e489af` returned `REVISE` because the
+repeated-current arm collapses to one functional degree of freedom, is weaker
+than the completed pointwise control, and has a different effective optimization
+geometry. Codex accepted the no-run verdict in
+`CODEX_RESPONSE_TO_CLAUDE_DESIGN_MEMO.md`. This file is retained as design
+history and confers no prospective status.
 
 ## 1. Question and admissible estimand
 
@@ -30,11 +34,10 @@ repeated_current[t,c] = sum_k w[c,k] * x[t,c]
 ```
 
 Left padding and padding masks are identical. Neither arm can read future
-positions. `repeated_current` deliberately retains K trainable weights per
-channel even though its inputs are repeated; this preserves parameter count and
-optimization surface dimensions while removing earlier-state access. The
-functional collapse of the repeated inputs is part of the estimand and must be
-discussed, not hidden.
+positions. `repeated_current` deliberately retains K stored weights per channel
+even though its inputs are repeated. It preserves raw parameter count but **not
+functional or effective optimization dimension**: the arm collapses to one
+scalar per channel. This defect is why the draft was rejected.
 
 Proposed arms:
 
@@ -90,11 +93,12 @@ the study under documented external custody.
 
 ## 6. Required prelaunch artifacts
 
-Before any launch, Codex must provide a frozen common module, runner, structural
-test, TEST-free trainer, READY builder, sealed evaluator, driver, and mechanical
-adjudicator. Claude must provide a signed reject/approve design memo. The human
-must approve dataset/legal/custody choices. All artifacts and hashes must be
-committed and pushed, and a no-target-artifact scan must pass.
+This V1 draft may not launch. Any replacement must use a new protocol identifier.
+Before any future A2 launch, Codex must provide a frozen common module, runner,
+structural test, TEST-free trainer, READY builder, sealed evaluator, driver, and
+mechanical adjudicator. Claude must provide a signed reject/approve design memo.
+The human must approve dataset/legal/custody choices. All artifacts and hashes
+must be committed and pushed, and a no-target-artifact scan must pass.
 
 Until those conditions are met, this file must remain `DRAFT` and no seed,
 checkpoint, or endpoint may be created under this protocol identifier.

@@ -11,14 +11,14 @@ scientific red-team/venue-methodology role and Codex the freeze, execution,
 artifact-graph, build, and release-integrity role. Neither agent may approve its
 own work or modify the user-owned `PAPER_REVIEW_AUDIT.md`.
 
-The next proposed scientific phase is
-`PREREG_FIR_TEMPORAL_ISOLATION_V1_DRAFT.md`. It is explicitly **DRAFT, not
-frozen, not authorized, and must not be launched**. It proposes a closer
-matched-input control: the same `D × K` zero-initialized tap tensor, activation,
-channel map, optimizer, backbone, and budget receive either K true causal-lag
-states or K copies of the current state. Claude must produce a reject-first
-design memo and the human must approve dataset/legal/custody choices before
-Codex may implement, freeze, or run it.
+Claude completed the reject-first review at commit `17e489af` and returned
+`REVISE — do not freeze`. The repeated-current arm collapses to one functional
+degree of freedom and is weaker than the completed nonlinear pointwise control.
+Codex accepted the no-run verdict in `CODEX_RESPONSE_TO_CLAUDE_DESIGN_MEMO.md`,
+while correcting two overstatements: pre-LayerNorm channel rescaling is not an
+exact duplicate of the post-normalization affine, and the intended canonical FIR
+parameter group has zero weight decay. `PREREG_FIR_TEMPORAL_ISOLATION_V1_DRAFT.md`
+is retained as rejected design history; no V1 implementation or run is allowed.
 
 The completed V4/release boundary remains commit `2560e7f9`: V4 was adjudicated
 and narrowly integrated, the 201-cell/25-family strict gate passed, a separately
@@ -28,8 +28,9 @@ SHA-256 equality. The attestation remains `release_ready=false` because real
 author/contact/legal metadata are absent. Do not rerun or reinterpret V4.
 
 Immediate safe work: verify the maintainer's ranking list; have Claude audit the
-TORS methodology checklist and review the draft temporal-control estimand; then,
-only if accepted, build the frozen implementation and conformance tests. The
+TORS methodology checklist, `PREREG_TIER_A_TUNING_MATRIX_V1_DRAFT.md`, and
+`TIER_A_NON_AMAZON_SELECTION_GATE.md`. A3 tuning fairness and A4 non-Amazon
+validity now precede any revised A2 mechanism study. The
 maintainer must also approve an accurate venue-compliant AI-use disclosure that
 covers research design, code, analysis, validation, and writing assistance. No
 new experiment is active.

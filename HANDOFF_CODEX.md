@@ -1,3 +1,62 @@
+# CLAUDE TICK — A4 dataset-gate red-team; diagnosticity + exposure-bias gaps (2026-07-31)
+
+Branch `codex/bestrec-sota-results`, pushed. Claude (red-team) tick; no new Codex commits
+since `62c9326f`, and A0 remains BLOCKED (the roadmap cites the 2025 ABDC review only as an
+example of a changing list process, not as a named controlling authority — so no venue may
+be called Tier A). Files added: `CLAUDE_DESIGN_MEMO_NON_AMAZON_SELECTION_GATE.md` + this
+section. Files deliberately preserved (NOT staged): `PAPER_REVIEW_AUDIT.md`, all
+adjudication JSONs, `paper_tex/tables/*`, `RELEASE_MANIFEST.json`, `qa_final*/`, `tmp/`,
+`temp/`.
+
+**A4 verdict: APPROVE THE STRUCTURE, two additions REQUIRED before any candidate reaches
+human legal review.** The hard-gate/scorecard/stop-rule design is sound (UNKNOWN blocks
+rather than permits; repository-licence ≠ data-licence; no post-hoc substitution). The gap
+is that it selects for lawfulness/logistics/"distinctness" but never asks whether a
+candidate can DISCRIMINATE a short-range causal temporal filter.
+
+- **D1 (blocking): no mechanism-relevance dimension.** For a 16-lag recency filter,
+  diagnosticity is set by temporal structure, not product vertical. Far-stronger short-range
+  structure ⇒ a positive result is near-guaranteed and weak; far-weaker ⇒ a null is
+  uninformative. Add a metadata/TRAIN-only temporal-diagnosticity dimension (inter-event gap
+  distribution, session burstiness, repeat rate, sequence length vs K) and PRE-DECLARE what
+  each regime would make a positive/null result mean.
+- **D2 (blocking): KuaiRand's exposure/policy confound is hypothesis-specific**, currently
+  listed only as an open question. Recommender-logged data means "next item" is largely what
+  the platform showed; a 16-lag filter can fit the LOGGING POLICY's temporal autocorrelation
+  rather than user recency. The KuaiRand family ships a randomly-exposed portion precisely
+  for this; whether it supports a full-catalog next-item task at usable scale is
+  metadata-answerable and must be settled BEFORE selection. Add a hard exposure-bias gate.
+- Candidate flags: KuaiRand ~7.6k catalog ⇒ metrics NOT comparable across blocks (declare
+  direction/significance only) and repeat-consumption interacts directly with a recency
+  filter. **MIND-small: recommend hard exclusion** — time-varying item availability means a
+  causal filter would partly learn availability, not preference dynamics (an estimand
+  failure specific to our mechanism). **Yelp:** weeks-to-months gaps ⇒ poor diagnosticity
+  for K=16 even if licence resolves.
+- D3 custody definition is looser than the guide's `externally custodied` bar (require: not
+  an author, not supervised by an author, dated attestation naming what was controlled).
+  D4 gate 6 protects the dataset but not the method — the new block tests transfer of an
+  Amazon-selected configuration; decide and freeze whether it tests the MECHANISM or the
+  CONFIGURATION (interacts with A3 finding W2).
+
+**Sequencing (actionable):** do NOT send KuaiRand to human legal review yet. D1/D2 are
+metadata-only and need no licence decision — add them, re-score all three candidates from
+public metadata, then send only the surviving top candidate to the human with the exposure
+question already answered. Human decision cycles are scarce and A0/A1 are already queued on
+them.
+
+**Open risks:** scientific — D1/D2 diagnosticity+exposure; C1 canonical weight-decay drift
+(unresolved); A3 W1/W2 fairness asymmetries favoring our own method. venue — A0 unverified.
+human — A0 ranking authority, A1 author/legal metadata, A4 licence/custody; A4 is the
+binding constraint on A3 because W2 routes the fair-comparison claim through the new block.
+
+**Next safe action:** Codex adds D1/D2 and re-scores from metadata; Claude next tick starts
+`TORS_METHODOLOGY_CHECKLIST.md` row-by-row PASS/PARTIAL/FAIL (guide §9 item 2).
+**Expressly forbidden:** acquiring/downloading/inspecting any candidate dataset; freezing
+`DRAFT_TIER_A_TUNING_MATRIX_V1` or `DRAFT_FIR_TEMPORAL_ISOLATION_V1`; calling any venue
+Tier A before A0; reading `A2 − A1` as equivalence.
+
+---
+
 # CLAUDE TICK — A3 tuning-matrix memo delivered; C1 canonical-drift finding (2026-07-31)
 
 Branch `codex/bestrec-sota-results`, pushed. Claude (red-team) tick after Codex's

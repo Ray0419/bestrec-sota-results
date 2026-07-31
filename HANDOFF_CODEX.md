@@ -1,3 +1,57 @@
+# CLAUDE TICK - second proposal dies on its own gate; a REAL baseline found (2026-08-01)
+
+Branch `codex/bestrec-sota-results`, pushed. No new audit (22:11 still newest), no Codex commit
+since `95e771e1`; A0/A1 still BLOCKED. Files added: `CLAUDE_CIRCULARITY_GATE_REFUTED_2026-08-01.md`
++ this section. Preserved (NOT staged): `PAPER_REVIEW_AUDIT.md`, manuscript, TeX, cover letter,
+preregs, adjudicators, graph, tables, manifest, all `results_*.json`. **EXPLORATORY, NOT
+PREREGISTERED - licenses no manuscript claim.**
+
+**Two proposals, two self-set gates, two refutations, same day. Both withdrawn.**
+
+| direction | gate I set | outcome |
+|---|---|---|
+| temporal decomposition | full prior-art sweep | **occupied on all four axes** (TV-Rec NeurIPS'25, MUFFIN CIKM'25, FMLP/BSARec, depthwise-conv report) |
+| content circularity | does it land on PUBLISHED work | **NO - their evaluation target is clean** |
+
+**The circularity gate, in detail.** ACM 403s automated fetch, so MARec (RecSys 2024, Amazon;
+arXiv:2404.13298) and EASE were downloaded and read in full locally via `pypdf` (60,074 / 39,823
+chars normalized). **(1) The structure IS published** - MARec Eq. (9) verbatim:
+`P = (XTX + lambda0 FTF + lambda1 I + XT fA(X, fE(F)))^-1`, with a note that one "may add the
+collective term `lambda0||F - F.Theta||^2_F` ... as in [29]". Metadata enters the Gram exactly as
+content enters our `G = X^T X + beta*S + lam*I`. **(2) But their TARGET is real behaviour** - cold
+splits hold items out entirely and hr@k/ndcg@k are computed over **held-out user clicks**, never
+against the content-augmented Theta. Content is in the MODEL; there is no evaluation-target
+leakage to expose. **(3) They already run the ablation I called novel** - a metadata-only arm
+(Table 4) against fusion arms (Table 5), abstract reporting semantic-feature utility of +46.8% to
++105.5%. Zero hits for "leak"/"circular" in 60k chars is NOT an overlooked hazard; it is
+consistent with there being no hazard. **Withdrawn.**
+
+**What survives is small and self-directed:** our beta=10 -> beta=0 collapse (+0.0282 -> +0.0073,
+74% of margin) is real but is a property of OUR comparison design, near-obvious once stated, and
+MARec's clean protocol shows the family does not generally make this mistake. Not a paper.
+
+**THE VALUABLE FINDING - a real baseline, answering a standing open risk.** MARec is a strong,
+recent, **in-family** cold-start method evaluated on **Amazon Video Games (which we have)** using
+public splits (`github.com/cesarebernardis/NeuralFeatureCombiner`; 60/20/20 items, averaged over
+10 random splits), with reported hyperparameters (ML10M: delta=50, lambda1=700, alpha=1, beta=60;
+Netflix: delta=100, lambda1=500, alpha=1, beta=100). **"FIR/LC2C lack current baselines" has been
+a standing open risk in every handoff this week - this is a concrete, reproducible answer to it.**
+**Codex-owned; needs a NEW frozen prereg committed before launch for any number to be countable.**
+
+**Open risks:** scientific - Delta=0 init has external published evidence against it
+(arXiv:2607.18413), still undisclosed; LC2C has no current baseline (MARec now available);
+collective-EASE [29] and cSLIM not read directly. venue - A0 unverified. human - A0, A1, A4
+licence/custody, AI-use statement.
+
+**Next safe action - unchanged through two refutations, which is itself the signal:** fill the
+byline, fix cover-letter P1/P2, submit the FIR manuscript, and take the disclose-or-measure
+decision on Delta=0 init. Optionally add MARec as an LC2C baseline under a new prereg.
+**Expressly forbidden:** reviving either withdrawn direction without new evidence; citing the
+beta=0 collapse as a field-level finding; running MARec without a frozen prereg if the number is
+to count.
+
+---
+
 # CLAUDE TICK - prior-art sweep KILLS the decomposition direction (2026-08-01)
 
 Branch `codex/bestrec-sota-results`, pushed. No new audit (22:11 still newest), no Codex commit

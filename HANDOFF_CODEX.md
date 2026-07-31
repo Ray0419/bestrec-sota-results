@@ -1,3 +1,51 @@
+# CLAUDE TICK — patch register: findings converted to applyable text (2026-07-31)
+
+Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `6e427366` (ninth
+consecutive tick); A0/A1 still BLOCKED. Files added: `CLAUDE_PATCH_REGISTER_2026-07-31.md` +
+this section. Preserved (NOT staged): every file named in the patches, plus
+`PAPER_REVIEW_AUDIT.md`, adjudication JSONs, `paper_tex/tables/*`, `RELEASE_MANIFEST.json`,
+`qa_final*/`, `tmp/`, `temp/`.
+
+**No new findings this tick — deliberately.** Nine ticks produced twelve findings as analysis
+and none has been actioned; a thirteenth would dilute, not help. This tick converts the
+applyable subset into **exact anchored replacements** so the backlog can land in one
+mechanical pass: **P1** cover-letter counts, **P2** cover-letter pointwise sentence, **P3** pin
+the canonical weight-decay definition (C1), **P4** split-protocol disclosure paragraph (M1,
+new text, no experiment), **P5** MovieLens precise-null/bound wording (E1), **P6** remove the
+"Thus" non sequitur + opaque jargon (E2), **P7** precise evidence class for the breadth
+campaign (E4). Optional **P8** records the refuted budget hypothesis as exploratory.
+
+**Anchor discipline (learned this tick):** `COVER_LETTER_TORS.md` and `PAPER_SUBMISSION.md` are
+HARD-WRAPPED. My first anchor check returned 0 matches for two real strings purely because they
+span line breaks; re-verified with whitespace-flattened matching and all anchors are confirmed
+present (192/18 at L47–48, 282 assets at L51, 751/751 at L52). Apply with a flatten-aware edit
+or re-wrap afterwards, or the patch will silently fail to match.
+
+**P1 deliberately supplies NO replacement numbers.** I cannot authoritatively derive the
+cell/family/manifest counts, and hardcoding a second set of hand-typed values would repeat
+exactly the failure E5 identifies. The instruction is to regenerate from
+`rebuild_hstu_submission.py --strict` and `RELEASE_MANIFEST.json` at submission time — and the
+handoff's own `201/25` and `1,073/407` must likewise be re-derived, not copied.
+
+**P5 status:** I withdrew this wording at `faaad07d` pending F3/F4 and **restored it at
+`6e427366`** after F5 refuted them. Bound framing legitimate; "equivalent" still forbidden.
+
+**NOT in the register** (design judgment, not text): W1/W2 tuning-matrix fairness, D1/D2
+dataset gate, F1 (`fir_v3_final_l2`), and the four checklist status downgrades.
+
+**Open risks:** scientific — F1 (mechanism); C1; M1; F2; A3 W1/W2; A2 not isolated. venue —
+A0; E5 stale cover letter (now patch-ready); E3 under-claiming. human — A0, A1, A4
+licence/custody, AI-use statement. **process — twelve findings and a patch register now await
+a Codex pass; the loop's marginal value is low until they land or a human gate opens.**
+
+**Next safe action:** Codex applies or rebuts P1–P7 patch-by-patch (P1 and P2 are the cheapest
+editor-facing wins). Claude next tick: hold on new findings; re-audit anything Codex lands.
+**Expressly forbidden:** hardcoding regenerated counts into P1; strengthening P4 into a
+robustness claim; treating P8 as pre-declared; citing F3/F4 as live threats; calling any venue
+Tier A before A0.
+
+---
+
 # CLAUDE TICK — F5: I REFUTE MY OWN F3/F4 from existing artifacts (2026-07-31)
 
 Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `fc24438f` (eighth

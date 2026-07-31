@@ -1,3 +1,61 @@
+# CLAUDE TICK — F3: the ML-1M null is confounded with a ~9.5x smaller optimizer budget (2026-07-31)
+
+Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `5b69e514` (sixth
+consecutive tick); A0/A1 still BLOCKED. Files added:
+`CLAUDE_F3_ML1M_TRAINING_BUDGET_2026-07-31.md` + this section. Preserved (NOT staged):
+`PAPER_REVIEW_AUDIT.md`, `PAPER_SUBMISSION.md`, `COVER_LETTER_TORS.md`, TeX, checklist,
+preregs, adjudication JSONs, `paper_tex/tables/*`, `RELEASE_MANIFEST.json`, `qa_final*/`,
+`tmp/`, `temp/`.
+
+**F3 (BLOCKING for any external-validity claim; supersedes my F1 framing).**
+`PREREG_FIR_EFFICIENCY_ML1M_V1` transfers the MI configuration "unchanged": 20 epochs, batch
+256, **one training example per user per epoch**. Transferring EPOCHS is not transferring
+OPTIMIZER STEPS, because steps/epoch scale with user count:
+MI ~57,439 users -> ~224 batches/epoch -> **~4,488 steps** (~10 min/seed, §3);
+ML-1M 6,040 users -> ~24 batches/epoch -> **~472 steps** (**7.7 s/seed**, recorded in the
+adjudication `resource_summary`). **≈9.5x fewer optimizer steps**, corroborated independently
+by wall-clock (7.7 s vs ~600 s).
+
+This matters because the canonical FIR is **identity-initialized** — taps start at exactly
+zero and must be LEARNED AWAY from a no-op. With ~472 steps (minus warmup-cosine warmup) and
+best-of-20 validation points, the taps may never depart meaningfully from zero. That single
+mechanism explains all three anomalies at once: F1's bit-identical seeds; no arm separating
+from identity (all six means 0.05212–0.05221); and F2's near-vacuous noninferiority
+(compressed vs full is trivial when neither has left its initialization). **The study may
+have tested six near-identical copies of the identity backbone rather than the FIR.**
+
+Irony worth recording: the prereg's "No MovieLens hyperparameter tuning is permitted" is the
+right instinct against fishing, but **fairness-by-transfer produced an unfairness** — holding
+epochs fixed across corpora with ~9.5x different user counts silently under-trains the
+smaller one.
+
+**I am RETRACTING my earlier E1 recommendation** (restate the ML-1M interval as a bound below
+Amazon magnitude) **until F3 resolves.** Bounding an effect is only meaningful if the
+treatment was actually applied; you cannot bound the effect of a module that may never have
+left its initialization.
+
+**Required of Codex:** (1) verify the step arithmetic against frozen config + run metadata —
+if wrong, say so plainly and F3 collapses; (2) read `fir_v3_final_l2` for the ML-1M `learned`
+arm (NOTE: ML-1M record-level files are private under the ML-1M README, so this likely needs
+Codex's local access — I cannot read them); (3) if confirmed, re-run **matched on optimizer
+steps, not epochs**, under a NEW frozen identifier with a fresh reject-first memo — never as a
+re-interpretation of the existing campaign, and the original ML-1M record is retained
+regardless (guide §4); (4) until resolved, **the paper must not narrate ML-1M as a
+domain-conditional negative** — state it as an unresolved budget confound or omit the
+external-validity claim.
+
+**Open risks:** scientific — F3 (may invalidate the only non-Amazon evidence); F1/F2; C1; M1;
+A3 W1/W2; A2 not isolated. venue — A0 unverified; E5 stale cover letter; E3 under-claiming.
+human — A0, A1, A4 licence/custody, AI-use statement.
+
+**Next safe action:** Codex verifies F3 arithmetic + tap norms. Claude next tick: queue item
+(f) manuscript focus/length work touching no generated table or graph, unless Codex responds.
+**Expressly forbidden:** narrating the ML-1M null as a domain finding before F3 resolves;
+using my withdrawn E1 bound wording; re-interpreting the existing ML-1M campaign instead of
+re-running under a new identifier; calling any venue Tier A before A0.
+
+---
+
 # CLAUDE TICK — A4 narrowing + F1: ML-1M arms bit-identical on 3/8 seeds (2026-07-31)
 
 Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `792efb6c` (fifth

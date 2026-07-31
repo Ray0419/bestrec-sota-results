@@ -1,3 +1,59 @@
+# CLAUDE TICK — abstract fidelity PASS 5/5; F6: the 16-parameter result is under-sold (2026-07-31)
+
+Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `c44dfe1d` (TENTH
+consecutive tick); A0/A1 still BLOCKED; worktree byte-identical to last tick. Files added:
+`CLAUDE_F6_ABSTRACT_FIDELITY_AND_16_PARAM_2026-07-31.md` + this section. Preserved (NOT
+staged): all files named in the patch register, `PAPER_REVIEW_AUDIT.md`, adjudication JSONs,
+`paper_tex/tables/*`, `RELEASE_MANIFEST.json`, `qa_final*/`, `tmp/`, `temp/`.
+
+**Chose verification over production.** Queue item (f) is contraindicated right now — it would
+edit the abstract that P5/P6/P7 are pending against, creating a conflict. So this tick audited
+numerical fidelity instead.
+
+**PART 1 — abstract fidelity: PASS, 5/5 exact.** Every numeric claim in the abstract matches
+its committed adjudication to the printed digit: MI learned−identity +0.002265 [0.001928,
+0.002602] (`fir_v3`); learned−pointwise +0.001941 [+0.001788, +0.002095] (`fir_pointwise_v1`);
+learned−shared −0.000081 [−0.000337, +0.000175] (`fir_controls` family_b); ML-1M
+learned−identity +0.000000 (+2.02e-07) [−0.000074, +0.000075] and learned−pointwise +0.000035
+[−0.000057, +0.000127] (`fir_efficiency_ml1m_v1`). The gate is doing its job on the abstract.
+
+**PART 2 — F6 (new, constructive).** `fir_controls_adjudication.json` (MI, 8 seeds,
+`CTRL-ACTIVE-CONTROL-SUPPORTED`) contains a cleaner structure than the paper foregrounds:
+fixed_ma +0.000712 / fixed_hp +0.000708 (0 params, both CIs exclude 0) < nonlinear +0.001912 <
+learned(1,024 params) +0.002116 < **shared(16 params) +0.002197** — and learned−shared
+−0.000081 **crosses zero**, learned−nonlinear +0.000204 **crosses zero**, while
+learned−fixed_ma/hp ≈ +0.0014 **exclude zero**. Read together: causal filtering per se helps;
+**learning** it matters; **per-channel parameterization does not** — a 16-param shared filter
+matches (numerically exceeds) the 1,024-param one, 64× fewer parameters.
+
+**Framing consequence:** the abstract sources its parameter-efficiency statement from ML-1M,
+where F2 showed it is near-vacuous (no arm separates from identity, so compression among inert
+arms is trivial). The MI controls study supplies a **substantive** version of the same claim.
+**The paper is sourcing its efficiency claim from the campaign where it means least.** The
+abstract also reports only ONE of the two non-separations (shared) and omits the nonlinear one.
+
+**I am NOT recommending switching "canonical" to the shared filter** — that would reproduce the
+C1 defect exactly, since all breadth evidence (IS, CDs) used the per-channel variant;
+definition must follow evidence, not elegance. Nor may the two be called equivalent (CI crosses
+zero ≠ equivalence; no margin pre-declared). **Recommended:** move the efficiency statement to
+the MI controls study; add the nonlinear non-separation alongside the shared one; keep the
+fixed-filter contrasts visible as the evidence that learning matters; and IF a simpler headline
+is wanted, run the shared variant on the two breadth categories under a NEW frozen protocol —
+"a 16-parameter causal filter" across three corpora is a more parsimonious and more attractive
+contribution than the 1,024-parameter framing. That is a proposal, not a re-analysis.
+
+**Open risks:** scientific — F6 framing; F1 (mechanism); C1; M1; F2; A3 W1/W2; A2 not isolated.
+venue — A0; E5 (patch-ready); E3. human — A0, A1, A4 licence/custody, AI-use statement.
+**process — thirteen findings + a patch register now await a Codex pass; ten ticks, zero
+applied.**
+
+**Next safe action:** Codex applies/rebuts P1–P7 and the register. Claude: hold on new
+findings; re-audit whatever lands. **Expressly forbidden:** switching the canonical module to
+the shared filter without breadth evidence for it; calling learned/shared equivalent; editing
+the abstract while P5–P7 are pending; calling any venue Tier A before A0.
+
+---
+
 # CLAUDE TICK — patch register: findings converted to applyable text (2026-07-31)
 
 Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `6e427366` (ninth

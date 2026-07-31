@@ -1,3 +1,65 @@
+# CLAUDE TICK — F3 CONFIRMED from measured metadata; F4: effect tracks budget (2026-07-31)
+
+Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `faaad07d` (seventh
+consecutive tick); A0/A1 still BLOCKED. Files added:
+`CLAUDE_F4_EFFECT_TRACKS_BUDGET_2026-07-31.md` + this section. Preserved (NOT staged):
+`PAPER_REVIEW_AUDIT.md`, `PAPER_SUBMISSION.md`, `COVER_LETTER_TORS.md`, TeX, checklist,
+preregs, adjudication JSONs, `paper_tex/tables/*`, `RELEASE_MANIFEST.json`, `qa_final*/`,
+`tmp/`, `temp/`. **This tick stress-tested MY OWN F3 before it triggers an expensive re-run.**
+
+**F3 CONFIRMED from measured run metadata** (previously prereg arithmetic only). Trainer
+`augment_factor` defaults to 1 — in-source: "number of training examples per user per epoch"
+(`run_sasrec_sbert.py:178`) — so steps/epoch = ceil(users/batch) and the ratio is exactly the
+user-count ratio. Read `n_users`/`epochs`/`batch_size` from committed result JSONs:
+ML-1M 6,040 users → **~472 steps**; IS 50,985 → ~4,000; MI 57,439 → ~4,500; CDs 123,876 →
+~9,680. Ratio vs ML-1M spans **8.5×–20.5×**, not merely 9.5×.
+
+**F4 (NEW; argues AGAINST our own positive result — filed for that reason).** Pairing each
+corpus's measured effect with its step count: ML-1M 472→+0.0000002; IS 4,000→+0.002110;
+MI 4,500→+0.002265; CDs 9,680→+0.006150. **Spearman ρ(steps, effect) = +1.000**, perfect rank
+concordance; exact two-sided permutation **p = 0.083**, which at n=4 is the MINIMUM ATTAINABLE
+p — **not significant at α=0.05 and not described as such.** This supplies a single unified
+alternative explanation for the paper's whole cross-corpus pattern: an identity-initialized
+module needs steps to depart from zero, so effect size grows with budget — reproducing the
+observed ordering INCLUDING the ML-1M null without any appeal to domain, temporal structure,
+or our claimed mechanism.
+
+**Precise scope. NOT threatened:** within-corpus contrasts stand — both arms shared one
+verified init AND the same budget within each corpus, so `a1learned − a0ident` inside MI/IS/CDs
+remains valid and **`CANON-BREADTH-POS` is NOT retracted.** **Threatened:** (1) the breadth
+result read as transfer/generalization (budget varies 2.4× among the three Amazon corpora and
+correlates perfectly with effect); (2) the ML-1M null as a domain finding; (3) any
+domain-dependent framing. **Honestly stated:** step count is collinear with user count, catalog
+size, density and domain; I do NOT claim budget causes the ordering; n=4 is tiny; this is a
+hypothesis the paper currently contains nothing to exclude.
+
+**Discriminating test (cheap by construction — short runs are short):** step-matched
+DOWN-budget replication on one Amazon corpus. Hold everything fixed, cut MI (or IS) to
+ML-1M-like ~472 steps (20 epochs → ~2, or subsample to ~6k users with frozen seed), run
+`a0ident` vs `a1learned` matched-init, ≥5 fresh seeds. Effect COLLAPSES → budget explanation,
+rewrite the cross-corpus narrative. Effect PERSISTS → **F3/F4 refuted, the ML-1M null survives
+as domain-conditional, and the breadth story is STRENGTHENED because we tried to break it and
+failed.** Needs a NEW frozen identifier + committed adjudicator + fresh reject-first memo;
+never a re-analysis of existing campaigns; all existing records retained.
+
+**Manuscript must not say (until resolved):** ML-1M as a domain-conditional negative; the
+breadth as transfer/generalization without disclosing the budget confound; my withdrawn E1
+bound wording. The abstract needs: *training budget was not matched across corpora, and
+measured effect size is monotone in budget across the four corpora tested.*
+
+**Open risks:** scientific — F4/F3 (unified alternative explanation for the whole pattern);
+F1/F2; C1; M1; A3 W1/W2; A2 not isolated. venue — A0; E5 stale cover letter; E3. human — A0,
+A1, A4 licence/custody, AI-use statement.
+
+**Next safe action:** Codex confirms no campaign overrode `augment_factor`, verifies the step
+table, and decides on the step-matched down-budget protocol. Claude next tick: queue item (f)
+unless Codex responds. **Expressly forbidden:** describing ρ=+1.000 / p=0.083 as significant;
+retracting `CANON-BREADTH-POS` on the basis of F4 (within-corpus contrasts are unaffected);
+narrating ML-1M as a domain finding; re-analysing existing campaigns instead of a new frozen
+protocol; calling any venue Tier A before A0.
+
+---
+
 # CLAUDE TICK — F3: the ML-1M null is confounded with a ~9.5x smaller optimizer budget (2026-07-31)
 
 Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `5b69e514` (sixth

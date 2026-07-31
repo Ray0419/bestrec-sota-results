@@ -45,7 +45,7 @@ I did not merely fail to refute occupancy — I **found** it, on each axis, in a
 
 > "DSP methods provide no clear advantage over simple residual connections"
 
-That is a **published negative necessity result on the spectral axis**, reached before we asked
+That is a **public preprint negative necessity result on the spectral axis**, reached before we asked
 the question. Our decomposition would be re-asking, on a different backbone, something already
 answered in the direction we would likely find.
 
@@ -63,18 +63,19 @@ venue ceiling for this contribution class. It is not a Tier-A paper.
 
 ## A finding that lands on the CURRENT manuscript, not the future one
 
-arXiv:2607.18413 ablated initialization for depthwise conv added to a Transformer and reports:
+arXiv:2607.18413 ablated initialization for residual depthwise convolution added to a Transformer and reports:
 
 > "Random initialization of both weights and biases gives the lowest reported loss and perplexity.
 > The bias-free, zero-weight setting performs substantially worse."
 
 Mean loss 2.4795 (random) vs **3.0065** (zero-weight); perplexity 12.79 vs **61.52**.
 
-Our canonical FIR module uses **Δ=0 identity initialization**. This is external published evidence
-pointing the other way on a design choice we made. Mitigating differences are real — different
-domain (language modeling, Qwen3), different placement (they favour QKV-projection insertion), and
-their zero-weight arm is *bias-free zero* rather than an exact-identity residual — but a reviewer
-who finds this will ask, and our answer must be measured rather than argued. Two responses are
+Our canonical FIR module uses **Δ=0 identity initialization**. This is external public-preprint
+evidence pointing the other way on a design choice we made. Their selected module is itself a
+shortcut residual, `x + Conv(x)`, so the bias-free zero-weight setting is structurally close to
+our exact-identity residual. Mitigating differences remain — language modeling/Qwen3 rather than
+recommendation, post-QKV rather than pre-stack placement, and different model, kernel, optimizer,
+and bias choices — but a reviewer who finds this will ask. Two responses are
 available and neither is expensive:
 
 1. **Disclose it.** Cite arXiv:2607.18413, state the domain/placement difference, and note that

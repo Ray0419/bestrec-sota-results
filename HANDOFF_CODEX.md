@@ -1,3 +1,62 @@
+# CLAUDE TICK - decomposition question: 2 of 3 caveats cleared (2026-08-01)
+
+Branch `codex/bestrec-sota-results`, pushed. No new audit (22:11 still newest), no Codex commit
+since `a318f3b4`; A0/A1 still BLOCKED. Files added: `CLAUDE_DECOMPOSITION_CAVEATS_2026-08-01.md`
++ this section. Preserved (NOT staged): `PAPER_REVIEW_AUDIT.md`, manuscript, TeX, cover letter,
+preregs, adjudicators, graph, tables, manifest, all `results_*.json`. **EXPLORATORY, NOT
+PREREGISTERED - licenses no manuscript claim.**
+
+**A new maintainer research question is on the table:** under fixed backbone/evaluator/init/
+optimization-exposure/candidate-set, do gains come from ordered causal lags themselves, or from
+channel-specific / position-specific / user-adaptive / spectral parameterization? I raised three
+caveats; two now move.
+
+**CAVEAT 2 (optimizer exposure) - SUBSTANTIALLY CLEARED, and I OVERSTATED IT.** Two corrections
+against myself: (1) the 45x-96.8x asymmetry is **cross-corpus** (ML-1M vs Amazon); the
+decomposition compares arms **within one corpus at one budget**, so equal exposure holds by
+construction - I applied a confound from the wrong comparison. (2) The real residual risk is
+**differential convergence**, now measured on the committed `FIRCTRL` campaign (MI, 6 arms x 8
+seeds, VALIDATION only): best epoch 18-19 for every arm; **final/best 0.9995-0.9999**; last-5-epoch
+gain +0.00001 to +0.00011; still-rising a uniform **1-2/8 seeds** across all arms. What matters is
+not whether arms are converged but whether they are DIFFERENTIALLY converged - **they are not.**
+Equal epochs ~ equal convergence. What survives is a DISCLOSURE (peaks at 18-19 of 20 = budget
+adequate-but-not-generous; a prereg should extend it or say so), not a confound. Incidental:
+`shared` (16 params) peaks highest at 0.04619 vs `learned` (1,024) at 0.04600.
+
+**CAVEAT 1 (prior art) - PARTIALLY CLEARED; framing must NARROW.** Two searches. The **coarse**
+question is TAKEN - order-shuffling studies exist (late-fusion degrades more than early-fusion),
+so "does order matter at all" is answered and is not the question to ask. The **fine-grained**
+axis (channel / position / user-adaptive / spectral decomposition under a matched harness) was
+not surfaced; nearest neighbour MixFormer (arXiv:2602.14110) addresses parameter ALLOCATION, not
+necessity. **I will NOT call it novel on two searches.** Required before any prereg: full sweep of
+arXiv listings, SIGIR/RecSys/WWW 2025-26, and forward-citations of BSARec / FMLP-Rec / ConvFormer.
+
+**CAVEAT 3 (sequencing) - OPEN, human-only.** Proposed gate: **the FIR manuscript is submitted
+(or explicitly abandoned) before any decomposition prereg is frozen.** Reversing that order is
+legitimate but must be a stated decision, not drift.
+
+**Standing:** with caveat 2 largely removed this is the strongest direction available - it REUSES
+the FIR work (unlike paper #2's unlearning angle, which starts fresh), four cells of its answer
+table are already measured under matched init, and its hardest methodological objection failed to
+materialise under test. It remains a MEASUREMENT contribution and does not change the FIR
+manuscript's claim boundary.
+
+**Paper #2 workspace opened** (separate): `C:/Users/rayxc/Documents/R_paper2_unlearning`, branch
+`claude/unlearning-paper2` @ `948e382f`, forked from `a318f3b4`, seeded with `PAPER2_CHARTER.md`.
+Main repo verified untouched.
+
+**Open risks:** scientific - decomposition prior art not exhaustively checked; optimizer budget is
+adequate-not-generous; FIR/LC2C both lack current baselines. venue - A0 unverified. human - A0,
+A1, A4 licence/custody, AI-use statement, and the sequencing decision.
+
+**Next safe action:** full prior-art sweep on the decomposition axis (Claude), OR - per my
+standing recommendation - byline + the two cover-letter fixes (P1/P2) and submit the FIR paper to
+a reproducibility-fit venue. **Expressly forbidden:** calling the decomposition question novel on
+two searches; treating today's convergence numbers as countable; freezing any prereg before the
+FIR sequencing decision is made.
+
+---
+
 # CLAUDE TICK - exploratory program recorded: one direction survives, five rejected (2026-08-01)
 
 Branch `codex/bestrec-sota-results`, pushed. Audit top read first: newest is still **22:11**

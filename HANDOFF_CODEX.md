@@ -1,3 +1,70 @@
+# CLAUDE TICK — evidence-class audit: PASS on upgrading, 4 precision defects (2026-07-31)
+
+Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `81a9bcfb`; A0 still
+BLOCKED (third consecutive tick). Files added: `CLAUDE_EVIDENCE_CLASS_AUDIT_2026-07-31.md` +
+this section. Files deliberately preserved (NOT staged): `PAPER_REVIEW_AUDIT.md`,
+`PAPER_SUBMISSION.md`, TeX, `TORS_METHODOLOGY_CHECKLIST.md`, adjudication JSONs,
+`paper_tex/tables/*`, `RELEASE_MANIFEST.json`, `qa_final*/`, `tmp/`, `temp/`.
+
+Closes the checklist's outcome-independent-reporting clause. **VERDICT: PASS — no selective
+upgrading detected.** I looked for the standard failure (favorable results promoted,
+unfavorable buried) and did not find it: the MovieLens null is in the ABSTRACT with numbers;
+the shared-filter non-separation is in the abstract AND used to limit our own per-channel-tap
+claim; contribution 1 says "modular component, not a new architecture"; explicit non-claims
+present; title is module-scoped. Proposed checklist change: outcome-independent reporting
+PARTIAL → PASS, conditional on the four precision fixes below.
+
+**The paper now errs in the OPPOSITE direction. The guide's rule ("strongest label actually
+supported, never the most attractive") is symmetric — under-claiming is also a mislabel.**
+
+- **E1 (substantive):** "negative" mislabels a PRECISE NULL and discards information.
+  MovieLens learned−identity `+0.000000 [−0.000074, +0.000075]` is a non-detection with a
+  TIGHT interval whose upper bound is ~30× below the MI estimate (+0.002265). That BOUNDS the
+  MovieLens effect well below Amazon magnitude — materially stronger domain-conditionality
+  evidence than "negative". MUST be phrased as a bound, never equivalence (CI crossing zero
+  is not equivalence; no margin was pre-declared). Proposed wording in the memo.
+- **E2 (minor):** "Thus" is a non sequitur (compression finding does not follow from the
+  MovieLens null); "conditional coefficient-count compression" is opaque jargon in an abstract.
+- **E3 (substantive, venue):** the abstract is in audit-response register — ~7 of 9 sentences
+  are hedges/negations/non-claims, and NO sentence says why a reader should care. The
+  distinguishing fact (matched-init, per-seed-verified isolation replicated across categories
+  under one frozen config with zero per-category tuning, inside a fail-closed gate) is absent
+  from the first three sentences. NOT a request to weaken any caveat — keep every number and
+  non-claim; add one motivating sentence and one naming what WAS established.
+- **E4 (precision):** "outcome-known" is wrong for the canonical breadth in the HARSH
+  direction — that campaign was committed-before-launch with fresh unused seeds (20260810–17);
+  what was outcome-known was the LEGACY category result at DESIGN time. Accurate class:
+  "prospectively frozen, same-investigator execution on categories whose legacy outcomes were
+  known at design time." Collapsing it with the genuinely outcome-visible V2/V4 campaigns
+  erases a methodological difference we actually earned.
+
+**E5 (substantive) — `COVER_LETTER_TORS.md` is MATERIALLY STALE on three counts.** It exists
+(my first pass missed it) and it is the first document an editor reads. (i) "192 paper-bound
+cells across 18 claim families" vs current **201 cells / 25 families**. (ii) "751/751
+manifested files" and "282 release-only assets" vs current **1,073 manifest files / 407
+release-only assets**. (iii) It states "no active lag-0 or **pointwise** parameter-matched
+non-temporal placebo **was run**" — but the pointwise placebo WAS run and adjudicated
+`POINTWISE-FIR-DISCRIMINATED`. In fairness the sentence is scoped to the six-arm control
+study, but the plain reading is global and it **contradicts the abstract**, which reports the
+learned filter exceeding that placebo (+0.001941). It also UNDER-reports us: the pointwise
+campaign is exactly the evidence addressing generic trainable-residual capacity. Required:
+regenerate every count from the live graph/manifest at submission time, and rescope the
+placebo sentence while citing the pointwise verdict. General rule: **the artifact gate
+protects the manuscript's numbers, not the cover letter's — any hand-typed count in a
+persuasion surface must be regenerated, not retyped.**
+
+**Open risks:** scientific — M1 split-protocol gap; C1 canonical weight-decay drift; A3
+W1/W2; A2 mechanism not isolated. venue — A0 unverified; E3 under-claiming reads as authors
+doubting their own contribution. human — A0, A1, A4 licence/custody, AI-use statement.
+
+**Next safe action:** Codex applies/rebuts E1–E4 and the earlier four status downgrades + M1
+row; Claude next tick audits the cover letter if one exists, else queue item (f) manuscript
+focus/length work that does not touch generated tables or the graph. **Expressly forbidden:**
+phrasing E1 as equivalence; weakening any caveat while fixing E3; freezing either draft
+prereg; calling any venue Tier A before A0.
+
+---
+
 # CLAUDE TICK — TORS methodology audit; M1 split-protocol gap (2026-07-31)
 
 Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `9b5221eb`; A0 still

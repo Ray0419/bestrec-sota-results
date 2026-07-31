@@ -1,3 +1,59 @@
+# CLAUDE TICK — F5: I REFUTE MY OWN F3/F4 from existing artifacts (2026-07-31)
+
+Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `fc24438f` (eighth
+consecutive tick); A0/A1 still BLOCKED. Files added: `CLAUDE_F5_F3_F4_REFUTED_2026-07-31.md`
++ this section. Preserved (NOT staged): `PAPER_REVIEW_AUDIT.md`, `PAPER_SUBMISSION.md`,
+`COVER_LETTER_TORS.md`, TeX, checklist, preregs, adjudication JSONs, `paper_tex/tables/*`,
+`RELEASE_MANIFEST.json`, `qa_final*/`, `tmp/`, `temp/`.
+
+**Executed the F4 discriminating test with ZERO GPU cost, using the decision rule I
+pre-declared at `fc24438f` BEFORE running it** (so this is not a post-hoc rescue). Every result
+JSON carries a 20-entry `history` of PER-EPOCH VALIDATION metrics for both arms at every seed;
+since steps/epoch = ceil(users/batch), an early epoch IS a low-budget run. Used **validation,
+not test** (using test curves here would be metric-mining).
+
+Paired learned−identity validation gap at the epoch matching ML-1M's ENTIRE ~472-step budget:
+MI epoch 2 (~448 steps) **+0.001386, 8/8 seeds positive** (62% of final);
+IS epoch 2 (~400) **+0.001415, 8/8** (61% of final);
+CDs epoch 1 (~484) **+0.000891, 8/8** (+0.005516 by ~968). Even at HALF ML-1M's budget
+(MI epoch 1, ~224 steps) the gap is +0.000460, 8/8 positive.
+
+**VERDICT: F4 RETRACTED; F3's inference RETRACTED.** On all three Amazon corpora the FIR effect
+is already clear and unanimous at ML-1M-equivalent budget, so the 8.5×–20.5× step deficit does
+NOT explain the MovieLens null. My central inference was wrong.
+
+**Survives:** the factual step-count table (disclose as a protocol asymmetry, not an
+explanation); ρ=+1.000 as a true description of four points, causal reading refuted.
+**Restored and stronger:** the ML-1M null reads as a genuine corpus/domain difference and now
+carries MORE weight, because a serious alternative was tested and failed; **my E1 withdrawal is
+LIFTED** — the bound framing is legitimate again (still a bound, still NOT equivalence); the
+three-corpus breadth result is unaffected and better supported. **I withdraw last tick's
+request for a step-matched down-budget campaign — it is now redundant. No new GPU work needed
+for this question.**
+
+**F1 still open** but "under-trained" is now the LEAST likely explanation; live candidates are
+little short-range temporal structure in ML-1M, or tie/plateau granularity on a much smaller
+catalog (~3.7k movies vs 24.6k–124k items). The `fir_v3_final_l2` check remains worth doing —
+now diagnostic of MECHANISM, not of validity.
+
+**Incidental (descriptive, exploratory, post-hoc, licenses NOTHING):** the gap is non-monotone
+in training time — MI peaks epoch 7 (+0.002879) → settles +0.002224; CDs peaks epoch 3
+(+0.008895) → settles +0.005822. Consistent with the module acting partly as an OPTIMIZATION
+ACCELERANT rather than purely a final-quality gain. Would need its own frozen protocol to enter
+the paper.
+
+**Open risks:** scientific — F1 (mechanism, not validity); C1; M1; F2; A3 W1/W2; A2 not
+isolated. venue — A0; E5 stale cover letter; E3 under-claiming. human — A0, A1, A4
+licence/custody, AI-use statement.
+
+**Next safe action:** Codex works the standing register (E5 cover letter is the cheapest
+editor-facing win; then C1, M1). Claude next tick: queue item (f) unless Codex responds.
+**Expressly forbidden:** citing F3/F4 as live threats (they are retracted); requesting the
+step-matched campaign; treating the non-monotone-gap observation as a claim; calling any venue
+Tier A before A0.
+
+---
+
 # CLAUDE TICK — F3 CONFIRMED from measured metadata; F4: effect tracks budget (2026-07-31)
 
 Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `faaad07d` (seventh

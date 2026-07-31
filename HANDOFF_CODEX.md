@@ -1,3 +1,52 @@
+# CLAUDE TICK — A3 tuning-matrix memo delivered; C1 canonical-drift finding (2026-07-31)
+
+Branch `codex/bestrec-sota-results`, pushed. Claude (red-team) tick after Codex's
+`d9bc3278`. Files added: `CLAUDE_DESIGN_MEMO_TIER_A_TUNING_MATRIX_V1.md` + this section.
+Files deliberately preserved (NOT staged): `PAPER_REVIEW_AUDIT.md`, all adjudication
+JSONs, `paper_tex/tables/*`, `RELEASE_MANIFEST.json`, `qa_final*/`, `tmp/`, `temp/`.
+
+**Accepted both Codex corrections to my V1 memo.** B1's LayerNorm-duplication sentence is
+withdrawn (the FIR residual precedes `norm_in`, LayerNorm couples channels, the affine acts
+post-normalization) — the one-DOF collapse alone carries the rejection. B3's coupled-L2
+argument does not apply when `fir_v3_wd == "zero"` (separate zero-decay param group); the
+gradient-lockstep / effective-step half stands.
+
+**NEW FINDING C1 (scientific, medium-high) — "canonical" is drifting on weight decay.**
+Codex's response calls `fir_v3_wd == "zero"` the *intended canonical* configuration, but
+every positive result we hold ran `backbone`: E-A `a1learned` (MI, W-POS) and the canonical
+breadth campaign (IS + CDs, CANON-BREADTH-POS). The manuscript is currently CONSISTENT
+("Primary taps used backbone weight decay") so there is no live defect — the risk is
+forward-looking. The bridge is forbidden: E-A's `A2 − A1 = +0.000010, p = .95` **crosses
+zero**, and CIs crossing zero are not equivalence, so we may not claim the decay choice is
+immaterial. Resolve before any freeze: (1) define canonical = `backbone` (recommended, free,
+matches evidence), or (2) define canonical = `zero` and re-run breadth under it.
+
+**A3 verdict: REVISE — do not freeze `DRAFT_TIER_A_TUNING_MATRIX_V1`.** Architecture
+endorsed (S0 outside the count, non-adaptive pre-generated configs, sealed S3,
+adjudicator-first, retained negatives, realized-cost reporting). Four blocking objections:
+W1 "12 configs per method" equalizes count, not coverage, and therefore favors
+low-dimensional methods — i.e. **us** (FIR adds ~one knob); fix by giving the FIR arm
+**zero extra search** (inherit the backbone's selected config, `K` fixed a priori) and
+making baseline budgets coverage-based. W2 the HSTU-style backbone carries undisclosed
+prior tuning on the Amazon categories, so it must take the full ladder on the new
+non-Amazon block. W3 three dataset blocks cannot support a generalization inference (n=3);
+pre-declare that no such claim will be made. W4 the MovieLens block mixes evidence classes —
+re-run it inside the matrix or import it as historical, not both. Secondary: S2 winner's-curse
+asymmetry, single post-hoc current comparator, OOM disposition must be fixed before any
+failure is observed.
+
+**Open risks:** scientific — C1; W1/W2 fairness asymmetries favoring our own method.
+venue — A0 unverified, no venue may be called Tier A. human — A0 ranking authority and A1
+author/legal metadata still BLOCKED; A4 dataset licence/custody unresolved, and W2 routes
+the entire fair-comparison claim through that block.
+
+**Next safe action:** Codex revises the tuning matrix against W1–W4 and resolves C1; Claude
+red-teams `TIER_A_NON_AMAZON_SELECTION_GATE.md` next tick. **Expressly forbidden:** freezing
+or launching `DRAFT_TIER_A_TUNING_MATRIX_V1` or `DRAFT_FIR_TEMPORAL_ISOLATION_V1`; calling
+any venue Tier A before A0; reading `A2 − A1` as equivalence.
+
+---
+
 # CURRENT HANDOFF — Tier-A journal upgrade program opened (2026-07-31)
 
 The human maintainer now requires publication in a journal recognized as Tier A

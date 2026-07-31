@@ -1,0 +1,85 @@
+diff --git a/src/model/bsarec.py b/src/model/bsarec.py
+index a21cfa0..fc839ba 100644
+--- a/src/model/bsarec.py
++++ b/src/model/bsarec.py
+@@ -85,7 +85,10 @@ class FrequencyLayer(nn.Module):
+         self.out_dropout = nn.Dropout(args.hidden_dropout_prob)
+         self.LayerNorm = LayerNorm(args.hidden_size, eps=1e-12)
+         self.c = args.c // 2 + 1
+-        self.sqrt_beta = nn.Parameter(torch.randn(1, 1, args.hidden_size))
++        # filter_mode: full = per-channel gain (published); shared = single scalar
++        self.filter_mode = getattr(args, "filter_mode", "full")
++        n_ch = 1 if self.filter_mode == "shared" else args.hidden_size
++        self.sqrt_beta = nn.Parameter(torch.randn(1, 1, n_ch))
+ 
+     def forward(self, input_tensor):
+         # [batch, seq_len, hidden]
+diff --git a/src/model/fmlprec.py b/src/model/fmlprec.py
+index a48ce90..a7e3c56 100644
+--- a/src/model/fmlprec.py
++++ b/src/model/fmlprec.py
+@@ -94,16 +94,50 @@ class FMLPRecBlock(nn.Module):
+ class FMLPRecLayer(nn.Module):
+     def __init__(self, args):
+         super(FMLPRecLayer, self).__init__()
+-        self.complex_weight = nn.Parameter(torch.randn(1, args.max_seq_length//2 + 1, args.hidden_size, 2, dtype=torch.float32) * 0.02)
++        # filter_mode ladder (all nested inside `full`, the published design):
++        #   full   : per-frequency x per-channel   (L/2+1) * d * 2
++        #   rank1  : separable freq (x) channel    (L/2+1)*2 + d*2
++        #   shared : per-frequency, channel-tied   (L/2+1) * 2
++        #   none   : filter removed (identity anchor)
++        self.filter_mode = getattr(args, "filter_mode", "full")
++        n_freq = args.max_seq_length // 2 + 1
++        if self.filter_mode == "full":
++            self.complex_weight = nn.Parameter(
++                torch.randn(1, n_freq, args.hidden_size, 2, dtype=torch.float32) * 0.02)
++        elif self.filter_mode == "shared":
++            self.complex_weight = nn.Parameter(
++                torch.randn(1, n_freq, 1, 2, dtype=torch.float32) * 0.02)
++        elif self.filter_mode == "rank1":
++            self.complex_weight = nn.Parameter(
++                torch.randn(1, n_freq, 1, 2, dtype=torch.float32) * 0.02)
++            # channel gain initialised at unit modulus so the product matches
++            # the `shared` scale at step 0
++            gain = torch.zeros(1, 1, args.hidden_size, 2, dtype=torch.float32)
++            gain[..., 0] = 1.0
++            self.channel_gain = nn.Parameter(gain)
++        elif self.filter_mode == "none":
++            pass
++        else:
++            raise ValueError(f"unknown filter_mode {self.filter_mode}")
+         self.out_dropout = nn.Dropout(args.hidden_dropout_prob)
+         self.LayerNorm = LayerNorm(args.hidden_size, eps=1e-12)
+ 
++    def _weight(self):
++        w = torch.view_as_complex(self.complex_weight)
++        if self.filter_mode == "rank1":
++            w = w * torch.view_as_complex(self.channel_gain)
++        return w
++
+     def forward(self, input_tensor):
+         # [batch, seq_len, hidden]
+         batch, seq_len, hidden = input_tensor.shape
++        if self.filter_mode == "none":
++            hidden_states = self.LayerNorm(self.out_dropout(input_tensor) + input_tensor)
++            return hidden_states
++
+         x = torch.fft.rfft(input_tensor, dim=1, norm='ortho')
+ 
+-        weight = torch.view_as_complex(self.complex_weight)
++        weight = self._weight()
+         x = x * weight
+         sequence_emb_fft = torch.fft.irfft(x, n=seq_len, dim=1, norm='ortho')
+ 
+diff --git a/src/utils.py b/src/utils.py
+index 0a3a851..b48242d 100644
+--- a/src/utils.py
++++ b/src/utils.py
+@@ -77,6 +77,7 @@ def parse_args():
+     parser.add_argument("--adam_beta2", default=0.999, type=float, help="adam second beta value")
+     parser.add_argument("--gpu_id", default="0", type=str, help="gpu_id")
+     parser.add_argument("--variance", default=5, type=float)
++    parser.add_argument("--filter_mode", default="full", type=str, help="full|shared|rank1|none")
+ 
+     # model args
+     parser.add_argument("--model_type", default='BSARec', type=str)

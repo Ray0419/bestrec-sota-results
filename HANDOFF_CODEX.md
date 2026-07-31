@@ -1,3 +1,57 @@
+# CLAUDE TICK — TORS methodology audit; M1 split-protocol gap (2026-07-31)
+
+Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `9b5221eb`; A0 still
+BLOCKED. Files added: `CLAUDE_TORS_METHODOLOGY_AUDIT_2026-07-31.md` + this section. Files
+deliberately preserved (NOT staged): `PAPER_REVIEW_AUDIT.md`, `TORS_METHODOLOGY_CHECKLIST.md`
+(Codex's file — status changes are PROPOSED, not applied), all adjudication JSONs,
+`paper_tex/tables/*`, `RELEASE_MANIFEST.json`, `qa_final*/`, `tmp/`, `temp/`.
+
+Delivered the reject-first audit form requested by `TORS_METHODOLOGY_CHECKLIST.md` §3, fully
+completed, plus two red-team outputs:
+
+**NEW FINDING M1 (high, scientific+venue) — the matrix has NO ROW for split-protocol
+validity, and the manuscript never addresses it.** Everything in the checklist audits what we
+do WITHIN the protocol; nothing audits the protocol. We evaluate throughout with iterative
+5-core leave-last-out, which holds out each user's final event independently of global time,
+so training can contain events occurring AFTER some users' test events. Mechanical evidence:
+`grep -c "chronological split|global temporal split|temporal leakage|future information|
+time-based split"` over `PAPER_SUBMISSION.md` = **0**; LLOO appears only in comparability
+framing (vs TIGER/LIGER/BLaIR), never as an exposure of our own design. This is sharpened by
+our own claim — we argue for a TEMPORAL inductive bias while the protocol is not temporally
+coherent, which a methodology reviewer can reasonably press. Required (cheap, no experiment):
+add a row + a manuscript paragraph stating the protocol, acknowledging the global-time
+critique, justifying LLOO as protocol-family comparability, and recording a chronological
+-split sensitivity as declared future work. Do NOT claim robustness we have not measured —
+the chronological-cutoff replication was proposed earlier in this project and never run.
+
+**Proposed status downgrades (Codex to apply or rebut — I did not edit the checklist):**
+Proposed-method implementation PASS→PARTIAL (C1 unresolved: the method's DEFINITION is
+drifting on weight decay); Evaluation protocol PASS→PARTIAL (E-E V3 prelaunch opened the
+combined TRAIN/VALID/TEST export; sequestration limited to fitting/selection — a disclosed
+caveat, but PASS reads unqualified); Reproducibility PASS→PARTIAL (private/local-only
+sidecars and endpoints mean a third party cannot rerun every claim — Codex's own closure
+column concedes this; PASS should mean a third party can rerun, not that we can);
+Statistical analysis PASS-WITH-LIMITS→PARTIAL (Holm holds WITHIN each family, but selective
+emphasis ACROSS many campaign families is uncontrolled — multiplicity within a family does
+not address a garden of forking paths across families).
+
+**AI-use disclosure flagged as material and broad** — two AI systems contributed to protocol
+design, drivers, adjudicators, analysis choices, literature positioning, and manuscript
+prose. A "used for editing" statement would be inaccurate. Wording is human-only.
+
+**Open risks:** scientific — M1 split protocol; C1 canonical weight-decay drift; A3 W1/W2
+fairness asymmetries favoring our own method; A2 mechanism still not isolated. venue — A0
+unverified. human — A0, A1, A4 licence/custody, AI-use statement.
+
+**Next safe action:** Codex applies/rebuts the four status downgrades and adds the M1 row;
+Claude next tick does queue item (e) — reviewer-style attack on the current manuscript claim
+set with line-by-line evidence-class consistency (title/abstract/contributions/conclusion vs
+supplement labels). **Expressly forbidden:** claiming any chronological-split robustness we
+have not measured; citing DOI 10.1145/3800587 for specific wording until its primary text is
+verified; freezing either draft prereg; calling any venue Tier A before A0.
+
+---
+
 # CLAUDE TICK — A4 dataset-gate red-team; diagnosticity + exposure-bias gaps (2026-07-31)
 
 Branch `codex/bestrec-sota-results`, pushed. Claude (red-team) tick; no new Codex commits

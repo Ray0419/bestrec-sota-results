@@ -1,3 +1,67 @@
+# CLAUDE TICK - exploratory program recorded: one direction survives, five rejected (2026-08-01)
+
+Branch `codex/bestrec-sota-results`, pushed. Audit top read first: newest is still **22:11**
+(answered at `2cb6db24`); no new audit, no Codex commit since `7683c357`; A0/A1 still BLOCKED.
+Files added: `CLAUDE_EXPLORATORY_PROGRAM_2026-08-01.md` + this section. Preserved (NOT staged):
+`PAPER_REVIEW_AUDIT.md`, manuscript, TeX, cover letter, preregs, adjudicators, graph, tables,
+manifest, and **all `results_*.json` (backed up, re-run, restored; verified clean vs HEAD)**.
+All experiments were scratchpad-only. **EXPLORATORY, NOT PREREGISTERED - licenses no claim.**
+
+**ONE DIRECTION SURVIVED: exact unlearning for linear-autoencoder (EASE) recommenders.**
+Closed-form rank-one Gram downdate + Sherman-Morrison. Verified against full retrain across a
+72x range of catalog size, culminating on **Video_Games (94,762 users x 25,527 items, 625,062
+interactions)**: retrain **71.94 s**, exact unlearn **4.582 s**, **15.7x**, and
+**max|B_un - B_re| = 4.30e-16**. Ladder: 356 -> 6.3e-17; 1,463 -> 6.3e-17; 12,105 -> 2.5e-16;
+25,527 -> 4.3e-16. **Exactness is the load-bearing result and it holds at scale.**
+
+**TWO OF MY OWN PREDICTIONS WERE REFUTED - recorded rather than dropped:**
+1. I predicted speedup would grow ~linearly in n (O(n^3)/O(n^2)). **Measured: flat and noisy,
+   8-64x, no trend** - VG (15.7x) is LOWER than beauty k=5 (63.7x). Both ops are
+   memory-bandwidth-bound. **"Unlearning scales better than retraining" is REFUTED.**
+2. I told the maintainer the cold-item/LC2C direction looked stronger than FIR. A beta=0
+   ablation shows **~74% of LC2C's margin over content_direct is an artifact**: `ease_fast` uses
+   `G = X^T X + beta*S + lam*I` with **beta=10**, so the EASE target already contains SBERT
+   similarity before LC2C regresses SBERT onto it. Margin +0.0282 (beta=10) -> **+0.0073**
+   (beta=0). My earlier framing is corrected here.
+
+**Memory ceiling (Finding 5):** dense P is binding - VG 4.86 GB; **Office_Products (77,551
+items) 44.8 GB**; beauty un-k-cored 94.4 GB. The method inherits EASE's own O(n^2) ceiling and
+cannot reach sparse-index scale.
+
+**PRIOR ART - two full-text reads, verified by local extraction not fetch summary.**
+`Unlearn-ALS` (2023): MF `M=XY^T` via ALS, Sherman-Morrison on the **k x k** subproblem, exact
+**at the fixed point**; 0 hits for SLIM/linear-autoencoder/item-item (its 6 "EASE" hits are
+`increase`/`decrease`). `Caboose` (**SIGIR 2023**): item/user kNN **sparse top-k index**
+patching; 0 hits for SLIM/linear-autoencoder/matrix-inversion/Sherman/Woodbury/closed-form.
+Rec-unlearning survey (Dec 2024) and **ERASE benchmark (SIGIR 2026)** both omit the LAE family.
+**Correction: Sherman-Morrison in recommender unlearning is ALREADY PUBLISHED** (Unlearn-ALS)
+and must be cited prominently - the technique is not new. Unoccupied is narrower: the LAE
+family, dense item-item parameter, **single-step, no iteration, no fixed point**.
+
+**FIVE DIRECTIONS REJECTED:** FIR+LC2C (type mismatch - timestamp is dropped at preprocessing so
+EASE has no time axis; the embedding-dim variant is absorbed by the ridge; and the coherent
+version already ran as `z-fusion` and was swept to a documented impossibility boundary); modern
+encoder + text cleaning (measured flat-to-negative; ~4x text length, no gain; and `description`
+is only 18.1% covered, `categories` 0.0%); MUL for efficiency/storage/accuracy (unlearning is
+compliance, cannot raise accuracy - 1.5e-16 proves it returns exactly the retrained model);
+GNN+MUL and HSTU+MUL (deleting ONE user perturbs **100% of nodes at L=3** on both datasets, so
+exactness is destroyed; plus the pinned HSTU env is not installable on sm_120).
+
+**Open risks:** scientific - LAE-unlearning novelty is a GAP IN COVERAGE, not an unexplored
+technique; no privacy-attack evaluation; no measurement of unlearning's effect on recommendation
+quality; single victim per rung. engineering - VG split yields **25,527** items vs **25,612** in
+the FIR result JSONs (~85 items appear only in valid/test) - immaterial here, material for any
+manuscript number. venue - A0 unverified. human - A0, A1, A4 licence/custody, AI-use statement.
+
+**Next safe action:** if the maintainer wants this pursued, Codex drafts a preregistration for
+exact LAE unlearning with Unlearn-ALS and Caboose as named prior art, the memory ceiling and the
+flat-speedup finding stated as limitations up front, and a privacy-attack evaluation designed in
+from the start. **Expressly forbidden:** citing any of today's numbers as countable or
+integrated; claiming closed-form unlearning is novel (Unlearn-ALS predates it); claiming a
+scaling advantage (refuted); reusing the beta=10 LC2C margin without the beta=0 caveat.
+
+---
+
 # CLAUDE TICK - pre-FIR direction assessed: reproduction PASSES, novelty FAILS (2026-08-01)
 
 Branch `codex/bestrec-sota-results`, pushed. Audit top read first: newest is still **22:11**

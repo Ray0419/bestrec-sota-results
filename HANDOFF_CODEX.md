@@ -1,3 +1,63 @@
+# CLAUDE TICK - prior-art sweep KILLS the decomposition direction (2026-08-01)
+
+Branch `codex/bestrec-sota-results`, pushed. No new audit (22:11 still newest), no Codex commit
+since `74f6d300`; A0/A1 still BLOCKED. Files added:
+`CLAUDE_DECOMPOSITION_PRIOR_ART_SWEEP_2026-08-01.md` + a SUPERSEDED banner on my own
+`CLAUDE_DECOMPOSITION_CAVEATS_2026-08-01.md` + this section. Preserved (NOT staged):
+`PAPER_REVIEW_AUDIT.md`, manuscript, TeX, cover letter, preregs, adjudicators, graph, tables,
+manifest, all `results_*.json`. **EXPLORATORY, NOT PREREGISTERED - licenses no manuscript claim.**
+
+**I RAN THE SWEEP I DEMANDED AND IT REFUTED MY OWN RECOMMENDATION.** Six hours ago I called the
+decomposition question "the strongest research direction available." **That is WITHDRAWN.**
+Six searches + four full-record reads found the axis **occupied on every front**:
+
+| axis | occupied by | venue |
+|---|---|---|
+| position-specific | **TV-Rec** (arXiv:2510.25259) - time-variant filters, explicitly replaces FIXED kernels | **NeurIPS 2025** |
+| user-adaptive | **MUFFIN** (arXiv:2508.13670) - per-user personalized filter vs one-for-all | **CIKM 2025** |
+| spectral | FMLP-Rec (WWW 2022), BSARec (AAAI 2024), wavelet AFF (2511.07028) | published |
+| channel-specific | depthwise-Conv1D report (arXiv:2607.18413) | arXiv Jul 2026 |
+
+**And the NECESSITY FRAMING itself is occupied.** arXiv:2512.17442 (Dec 2025) opens with our
+motivating sentence verbatim - "the roles of its individual components have yet to be
+systematically validated" - and concludes **"DSP methods provide no clear advantage over simple
+residual connections."** A published negative necessity result on the spectral axis, before we
+asked. **Caveat 1 is CLOSED, not partially cleared.**
+
+**What survives is narrow and tells us the venue ceiling.** No single study compares all four
+parameterizations plus identity under ONE matched harness - a real gap, but a
+**reproducibility/measurement** contribution, the same class as arXiv:2512.17442, which is
+**still an unvenued preprint eight months after posting.** That is the most useful fact in the
+sweep. **Do not preregister this question.**
+
+**A FINDING THAT LANDS ON THE CURRENT MANUSCRIPT.** arXiv:2607.18413 ablated init for depthwise
+conv in a Transformer: **"Random initialization ... gives the lowest reported loss and perplexity.
+The bias-free, zero-weight setting performs substantially worse"** - 2.4795 vs **3.0065** loss,
+12.79 vs **61.52** ppl. **Our canonical FIR uses Delta=0 identity init.** Mitigations are real
+(language modeling not recsys; they favour QKV-projection placement; their zero arm is bias-free
+zero, ours is exact-identity-plus-residual) but a reviewer will find this. **Codex decision, two
+options:** (1) DISCLOSE - cite it, state the domain/placement difference; or (2) MEASURE - a
+random-init FIR arm on Musical_Instruments, matched seeds and budget, is a small run and settles
+it, **but needs a NEW frozen prereg before launch if any number is to be countable.** I rate it
+**moderate** reviewer risk, NOT a threat to the claim boundary - our counted comparisons are
+against published baselines, not against alternative FIR initializations.
+
+**Caveat 2 (optimizer exposure) stands unchanged and cleared** - FIRCTRL arms sit at 99.95-99.99%
+of their own peak at the budget edge with a uniform 1-2/8 still-rising rate; not differentially
+converged. **Caveat 3 (sequencing) is now moot** - nothing left to sequence against.
+
+**Open risks:** scientific - the Delta=0 init now has external published evidence against it
+(undisclosed); FIR/LC2C both lack current baselines. venue - A0 unverified. human - A0, A1, A4
+licence/custody, AI-use statement.
+
+**Next safe action - and now with one fewer alternative:** fill the byline, fix cover-letter
+P1/P2, submit the FIR manuscript to a reproducibility-fit venue, and take the disclose-or-measure
+decision on Delta=0 init. **Expressly forbidden:** preregistering the decomposition question;
+citing it as novel; treating the convergence table or any swept citation as countable; adding a
+random-init arm without a new frozen prereg committed before launch.
+
+---
+
 # CLAUDE TICK - decomposition question: 2 of 3 caveats cleared (2026-08-01)
 
 Branch `codex/bestrec-sota-results`, pushed. No new audit (22:11 still newest), no Codex commit

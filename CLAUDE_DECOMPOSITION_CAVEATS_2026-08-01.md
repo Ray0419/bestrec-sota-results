@@ -1,5 +1,13 @@
 # Claude memo — the decomposition question: two caveats cleared, one open
 
+> **SUPERSEDED IN PART, SAME DAY.** The full prior-art sweep this memo demanded was run and
+> **refutes** its Caveat-1 verdict: all four axes are occupied by published methods (TV-Rec,
+> NeurIPS 2025; MUFFIN, CIKM 2025; FMLP-Rec/BSARec; depthwise-conv report), and the necessity
+> framing itself is occupied by arXiv:2512.17442. **Caveat 1 is CLOSED, not partially cleared.**
+> The "strongest research direction available" judgment below is **WITHDRAWN**. The Caveat-2
+> convergence measurement stands unchanged. See
+> [`CLAUDE_DECOMPOSITION_PRIOR_ART_SWEEP_2026-08-01.md`](CLAUDE_DECOMPOSITION_PRIOR_ART_SWEEP_2026-08-01.md).
+
 **STATUS: EXPLORATORY. Not preregistered. Licenses no manuscript claim.**
 Date: 2026-08-01. Role: scientific red-team. Advisory only.
 

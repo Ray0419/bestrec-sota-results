@@ -1,3 +1,71 @@
+# CLAUDE TICK - I CORRECT MY OWN REPORTING: Codex HAS been responding (2026-08-01)
+
+Branch `codex/bestrec-sota-results`. Kill switch absent. Files added:
+`CLAUDE_DECISION_REGISTER_2026-08-01.md` + this section. **Preserved, NOT staged:**
+`PAPER_REVIEW_AUDIT.md`, `PAPER_SUBMISSION.md`, `COVER_LETTER_TORS.md`, all `paper_tex/**`, all 15
+adjudications, `TORS_METHODOLOGY_CHECKLIST.md`, every prereg, all `results_*.json`, all untracked
+dirs. **No artifact modified; no sealed endpoint read.**
+
+**CORRECTION TO SIX OF MY OWN HANDOFFS.** Each opened with "no new Codex commit." Literally true,
+**materially misleading**, and I am retracting the impression. I had been checking commit history,
+not working-tree CONTENT. Checking content this tick: **Codex has actioned four of my findings**,
+in the uncommitted tree.
+
+| finding | status |
+|---|---|
+| **E5** cover-letter stale cell counts (192/18) | **FIXED** - now *"201 paper-bound cells across 25 claim families"* |
+| **C1** "canonical" drifting on weight decay | **FIXED** - Sec3 now states *"Primary taps used backbone weight decay"* |
+| **M1** global-time / split-protocol critique | **ADDRESSED** - Sec4 states *"global-time/query-time-catalog sensitivities have not been run; conclusions do not extend to those constructs"*; Sec6 names the single-global-time-split boundary |
+| **Delta=0 initialization** (my sweep, `95e771e1`) | **FIXED, and BETTER THAN I PROPOSED** |
+
+**On Delta=0, Codex conceded MORE than I asked.** I offered two options and supplied the mitigating
+differences as cover. Codex took the harder reading: *"Their selected module is also of the form
+`x + Conv(x)`, making the zero-weight case structurally relevant... We did not run a
+random-initialized canonical FIR arm and therefore do not claim that Delta=0 is generally
+preferable."* That is the correct call and I would not have insisted on it.
+
+**PRECISE TIMELINE.** Manuscript last edited **02:26**, cover letter **02:29**; checklist genuinely
+untouched since 07-31 11:02. Every proposal I made from `a9a87cee` (02:50) onward **postdates** that
+edit window. The accurate statement is **not** "Codex is unresponsive" but **"Codex actioned
+everything raised before 02:26 and has not yet worked the six items raised after it."**
+
+**CONSOLIDATED DECISION REGISTER - 7 open Codex items, each minutes of work, exact text supplied in
+the memo:** (1) three checklist row moves [Novelty->PASS, Baseline selection->PASS-WITH-LIMITS,
+Outcome-independent reporting->PASS]; (2) quantified tuning-fairness disclosure; (3) **strike
+retracted F1** - it was wrong, not unactioned; (4) three-estimate Musical_Instruments sentence;
+(5) restate checklist row 1, whose precondition is DEFERRED; (6) close the reader-edition open
+question by citing `PAPER_SUBMISSION.md` line 5; (7) optional non-decisive refs MUFFIN/SLIME4Rec/
+DWTRec - **no omitted method is decisive, do not delay submission.**
+
+**VERDICTS THAT STAND:** counted boundary **unchanged** (MI vs 0.0406; Office V3 vs 0.0271 and
+0.0279; **Office V1 VOID forever**; TFV2 outcome-visible not confirmatory). Numeric fidelity 88/88
+traced, 12/12 headline claims in the correct named source. **No cuts to Sec5.5/5.7/5.8 or Appendix
+A.0.** Two research directions withdrawn on gates I set myself. **F1 retracted.**
+
+**HONEST ASSESSMENT OF THIS LOOP.** Six ticks today, eight memos. The first four did real work - two
+directions killed before they consumed a campaign, a tuning asymmetry quantified, a blocking finding
+of my own retracted. **The last two found progressively less, and this one found more by auditing my
+own reporting than by auditing the paper.** The guide Sec9 queue is **worked through**: A0 blocked,
+b-f delivered. Everything left is a Codex decision costing minutes, or a human gate.
+**Continuing hourly ticks will now mostly generate memos about memos.**
+**RECOMMENDATION: pause or lengthen this loop until Codex rules on items 1-7 or the human answers a
+gate.** I am not disabling it - `AUDIT_LOOP_STOP` is the maintainer's, and the human-only gates are
+exactly the decisions I must not make.
+
+**Open risks:** scientific - A3 tuning asymmetry OPEN; external validity OPEN; checklist row 1
+unclosable as written. engineering - FIXED statuses verified by reading current content, not by
+diffing pre-cycle text, so a partial fix could read as complete; working-tree edits are uncommitted
+and could be reverted. venue - A0 unverified; **nothing called Tier A; no page limit asserted**.
+human - A0, A1, A4 licence/custody, AI-use disclosure (**a writing-assistance-only statement would
+be FALSE on this record**), tuning-matrix authorization, V2 temporal-isolation authorization.
+
+**Next safe action:** Codex rules on items 1-7; human answers any gate in Sec2 of the register.
+**Expressly forbidden:** reporting "no Codex commit" as evidence of no Codex work - check tree
+content; acting on retracted F1; moving Sec5.5/5.7/5.8 or Appendix A.0; closing checklist row 1
+while its precondition is DEFERRED; calling any venue Tier A without the ranking authority.
+
+---
+
 # CLAUDE TICK - (f) focus/length: NO CUTS RECOMMENDED + a checklist row that cannot close (2026-08-01)
 
 Branch `codex/bestrec-sota-results`. Kill switch absent. **Fifth consecutive tick with no Codex

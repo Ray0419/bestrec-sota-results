@@ -1,3 +1,67 @@
+# CLAUDE TICK - calibration: the twice-flagged 35-50% forecast, and my own numbers (2026-07-31)
+
+Branch `codex/bestrec-sota-results`, pushed. Audit top read FIRST this tick (new discipline):
+newest run is still **22:11**, which I answered in full at `2cb6db24`; no new audit, no new
+Codex commit, gates unchanged. Files added: `CLAUDE_CALIBRATION_MEMO_2026-07-31.md` + this
+section. Preserved (NOT staged): `PAPER_REVIEW_AUDIT.md` (user-owned),
+`TIER_A_PUBLICATION_ROADMAP.md` (Codex-maintained - change PROPOSED only), manuscript, TeX,
+cover letter, preregs, adjudicators, graph, tables, manifest.
+
+**Also checked the 16:09 audit** (which I had never read during the Tier-A phase). Its
+MovieLens findings - false inference, wrong diagnostic field - were already absorbed into my
+22:11 response. **One item appears in BOTH audits and had never been acted on**, so I took it.
+
+**The 35-50% forecast in `TIER_A_PUBLICATION_ROADMAP.md` Sec.1 is indefensible as stated**, for
+reasons independent of whether the number is right: (i) **no basis** - grep for reference
+class / base rate / model / assumptions returns nothing; (ii) **internally contradictory** -
+the status line eleven lines earlier says "This is not an acceptance forecast", then it
+forecasts.
+
+**Estimand ambiguity explains part of the gap and is itself a defect.** The audits calibrate
+**direct** acceptance (~3-8% after metadata/release fixes; ~12-20% after the study program;
+~20-30% with independent replication). I have been quoting the maintainer **eventual**
+acceptance after a normal major-revision cycle - a different quantity that should be larger.
+**Neither the roadmap nor I ever said which.** Any retained figure must name: acceptance of
+what, at which venue class, conditional on what, by when.
+
+**Self-audit (recorded against myself).** My quoted figures - ~25-35% eventual at TORS as-is;
+~45-55% after the full program; earlier ~15-25% / ~50-70% "mid-tier" - were **too high**, and
+"mid-tier" was never defined. Even correcting for the direct-vs-eventual difference, they were
+not adequately conditioned on what the paper lacks: no independent replication, no external
+custody, unequal baseline tuning, a negative external replication, a modest incremental module,
+an unverified venue. The audits have also shown better local accuracy than me this week. On
+**direct acceptance today I now regard their range as better supported than mine**, and I will
+not defend my earlier numbers by appealing to the estimand difference alone. For *eventual*
+acceptance conditional on the full program landing I would still say meaningfully more than
+3-8% - but I cannot ground that either, so **I should stop quoting it as a number.**
+
+**PROPOSED roadmap replacement (Codex applies):** delete the 35-50% sentence; state that
+acceptance likelihood is **not forecast** (no reference class/model specified; venue unverified
+per A0); state instead the directional facts - package not submittable (author/legal
+placeholders, stale cover-letter counts, no immutable deposit); strongest scientific gaps are
+optimizer-exposure asymmetry, baseline-tuning fairness, global-time split sensitivity, and
+absent independent replication/external custody; and record the internal adversarial estimate
+as the internal estimate it is, not as an endorsed forecast. If the maintainer wants a number
+retained, it must carry estimand, venue class, conditioning set, reference class, and
+uncertainty - otherwise remove it.
+
+**Principle worth keeping:** an unfounded optimistic number in a planning document is the same
+category of error the artifact gate exists to prevent - **a claim with no traceable source.** I
+enforced that on the manuscript for eleven ticks and did not apply it to my own forecasts.
+
+**Open risks:** scientific - optimizer-exposure asymmetry UNRESOLVED (45x-96.8x); F1 mechanism;
+C1; M1 (narrowed, P4 rejected); A3 W1/W2; A2 not isolated. venue - A0 unverified; cover-letter
+counts; **calibration claims unfounded until grounded or removed**. human - A0, A1, A4
+licence/custody, AI-use statement.
+
+**Next safe action:** Codex applies the patch-register per-item dispositions and the roadmap
+calibration change; preregister the matched-init duration/convergence sensitivity before
+reading new TEST. Claude: audit top first each tick; verify-and-stop on unchanged state.
+**Expressly forbidden:** quoting any acceptance percentage without estimand + reference class;
+citing F5 as a refutation; applying P4 or P8; calling any venue Tier A before A0.
+
+---
+
 # CLAUDE TICK - audit 22:11 ACCEPTED IN FULL; my F3/F4/F5/F6 corrected (2026-07-31)
 
 Branch `codex/bestrec-sota-results`, pushed. **A new user-owned audit exists (22:11) and it

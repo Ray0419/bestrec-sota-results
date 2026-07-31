@@ -1,3 +1,77 @@
+# CLAUDE TICK - A4: I RETRACT my own BLOCKING F1; narrowing now unconditional (2026-08-01)
+
+Branch `codex/bestrec-sota-results`. Kill switch absent. No new Codex commit (HEAD was my
+`a3b5e85b`), no new audit (still 22:23), checklist untouched, A0/A1 unanswered -> queue item (d).
+Files added/changed: `CLAUDE_A4_MOVIELENS_NARROWING_V2_2026-08-01.md` + a superseding banner on my
+own `CLAUDE_A4_MOVIELENS_NARROWING_2026-07-31.md` + this section. **Preserved, NOT staged:**
+`PAPER_REVIEW_AUDIT.md`, `PAPER_SUBMISSION.md`, `COVER_LETTER_TORS.md`, all `paper_tex/**`, all
+adjudication JSONs, `TORS_METHODOLOGY_CHECKLIST.md`, every prereg, all `results_*.json`, and all
+untracked `qa_final*/`, `poc_temporal_lc2c_v1/`, `tmp/`, `temp/`. **No sealed endpoint inspected.**
+
+**HEADLINE: my own top-severity BLOCKING finding was wrong on three counts and is RETRACTED.**
+F1 claimed the paper "should not assert what the MovieLens null means" until Codex read
+`fir_v3_final_l2` to rule out an inactive module. Reading the committed artifacts:
+
+1. **The check was already run - by the committed adjudicator, before I raised it.**
+   `adjudicate_fir_efficiency_ml1m_v1.py` lines 286-288 **fail closed** unless every non-identity
+   arm ends with `fir_control_final_l2 > 0.0` (and identity ends exactly 0.0). Verdict
+   `ML1M-NO-FIR-REPLICATION` was issued, so those gates PASSED on all 48 non-identity runs.
+   **The module was provably active on every seed, including the 3 bit-identical ones.**
+   "Pipeline fault" was excluded by construction before I proposed testing for it.
+2. **I named the WRONG FIELD.** ML-1M runs `fir_control=learned` with `fir_v3=off`. Executed
+   literally, my request would have read `fir_v3_final_l2` = 0 on EVERY arm including the working
+   ones and **manufactured a false integrity alarm against a clean study.** This is the error that
+   matters.
+3. **I used the wrong cohort.** I wrote "~6,040 evaluation users"; the retained cohort is **1,033**
+   (1,102 candidate). 6,040 is the SOURCE population, stated at prereg line 42 - exactly the trap.
+   Per the 22:11 audit **125/115/109 of 1,033 target ranks DO change** on those seeds.
+
+**Correct explanation: metric granularity - ranks moved, but outside the top-10. Benign. Nothing
+blocks.** (Minor: bit-identical seeds are indices 3,5,7; v1 said s2/s4/s6.)
+
+**BUDGET ASYMMETRY NOW DERIVES TRANSPARENTLY.** Prereg lines 121-125: 20 epochs, batch 256, **one
+example per user per epoch**. With 1,033 users: **ceil(1033/256) x 20 = 5 x 20 = 100 optimizer
+updates** vs **4,000-9,680** on Amazon = **40x-96.8x**, independently confirming the audit's
+corrected figures. The same prereg says *"The six arms receive identical budgets"* - so **within**
+ML-1M the comparison IS symmetric; the asymmetry is **cross-corpus only**. Same structural pattern
+A3 found yesterday.
+
+**A4 NARROWING - now UNCONDITIONAL (v1 offered it only conditional on F1).** The ML-1M result
+permits: a prospectively frozen failure to replicate, learned-identity **+0.000000
+[-0.000074, +0.000075]**, `p_Holm=.995`, module active on all seeds, upper bound **28x-82x** below
+the Amazon estimates (+0.002110 to +0.006150) - **under ~100 optimizer updates vs 4,000-9,680.**
+It does **NOT** permit: equivalence (no margin pre-declared; CI covers zero); **a domain moderator**
+(budget not matched - attributing the null to MovieLens-ness rather than to 100 updates is the
+single most tempting overread); "FIR does not work"; a parameter-efficiency claim; or any
+refutation of the Amazon results.
+
+**F2 STANDS but needs no change.** All six arm means lie in **0.05211643-0.05221133**, spread
+**0.0000949 = ~19% of the 0.000500 margin**; noninferiority among arms none of which separates from
+identity carries no parameter-efficiency information. **Verified the manuscript already states the
+conditionality** at Sec5/Sec6 ("only conditionally: the learned-FIR effect gate failed"). Adequately
+disclosed; **I recommend no edit.**
+
+**ROW DISPOSITION: External validity STAYS OPEN.** Resolving F1 improves interpretation of the
+existing negative; it supplies no new external evidence. Closure needs a lawful new non-Amazon
+study frozen before TEST inspection. **I decline to move it.**
+
+**Lesson recorded, because this is the SECOND time this session:** before escalating a diagnostic
+as blocking, check whether a committed adjudicator already gates it. Twice the governance
+machinery was ahead of my audit.
+
+**Open risks:** scientific - external validity OPEN (n=1 non-Amazon, budget-confounded); A3 tuning
+asymmetry OPEN. engineering - ML-1M per-run sidecars private, so the 125/115/109 counts are taken
+from the 22:11 audit, not independently recomputed. venue - A0 unverified; nothing called Tier A.
+human - A0, A1, A4 licence/custody, AI-use disclosure, tuning-matrix authorization.
+
+**Next safe action:** Codex strikes F1 from the open-findings register (retracted, not actioned)
+and rules on the three checklist row moves proposed two ticks ago; human supplies A0/A1/A4.
+**Expressly forbidden:** treating the ML-1M null as a domain moderator or as equivalence; acting on
+retracted F1; reading "3/8 bit-identical" as evidence of an inactive module - the adjudicator
+already proves otherwise; moving External validity off OPEN without a new frozen non-Amazon study.
+
+---
+
 # CLAUDE TICK - A3 tuning fairness audited with NUMBERS; row stays OPEN (2026-08-01)
 
 Branch `codex/bestrec-sota-results`. Kill switch absent. No new Codex commit (HEAD was my

@@ -1,5 +1,16 @@
 # Claude A4 memo — what the MovieLens result permits, and the honest narrowing
 
+> **SUPERSEDED 2026-08-01. Its BLOCKING finding F1 is RETRACTED.** The committed adjudicator
+> (`adjudicate_fir_efficiency_ml1m_v1.py` lines 286–288) already fails closed unless every
+> non-identity arm ends with a strictly positive `fir_control_final_l2`, and the
+> `ML1M-NO-FIR-REPLICATION` verdict was issued — so the module was provably active on all eight
+> seeds and "explanation 3 (pipeline fault)" was excluded before F1 was raised. F1 also named the
+> wrong field (`fir_v3_final_l2`; ML-1M uses `fir_control_*`), so executing it literally would have
+> produced a **false integrity alarm**, and it used the 6,040 **source** population instead of the
+> **1,033** retained cohort. The correct explanation is metric granularity: 125/115/109 of 1,033
+> target ranks do change, outside the top-10. F2 stands. See
+> [`CLAUDE_A4_MOVIELENS_NARROWING_V2_2026-08-01.md`](CLAUDE_A4_MOVIELENS_NARROWING_V2_2026-08-01.md).
+
 Role: scientific red-team (`CODEX_CLAUDE_COLLABORATION_GUIDE.md` §3; queue item d).
 Reviewed at HEAD `792efb6c`: `PREREG_FIR_EFFICIENCY_ML1M_V1.md`,
 `_bestrec_run/fir_efficiency_ml1m_v1_adjudication.json` (verdict

@@ -1,3 +1,78 @@
+# CLAUDE TICK - (e) claim-fidelity audit: 88/88 traced; one reviewer trap found (2026-08-01)
+
+Branch `codex/bestrec-sota-results`. Kill switch absent. No new Codex commit (HEAD was my
+`4a0eb5e5`), no new audit (still 22:23), checklist untouched, A0/A1 unanswered -> queue item (e).
+Files added: `CLAUDE_E_CLAIM_FIDELITY_AUDIT_2026-08-01.md` + this section. **Preserved, NOT
+staged:** `PAPER_REVIEW_AUDIT.md`, `PAPER_SUBMISSION.md`, `COVER_LETTER_TORS.md`, all
+`paper_tex/**`, all 15 `*adjudication*.json`, `TORS_METHODOLOGY_CHECKLIST.md`, every prereg, all
+`results_*.json`, and every untracked `qa_final*/`, `poc_temporal_lc2c_v1/`, `tmp/`, `temp/`.
+**No sealed endpoint inspected. No artifact modified.**
+
+**NUMERIC FIDELITY: CLEAN.** Every value quoted to >=4 dp on the three surfaces a reviewer and
+editor read first, matched against the pooled contents of all 15 committed adjudications (1,403
+distinct values): **abstract 18/18, conclusion 58/58, cover letter 12/12 = 88/88 traced.** Then a
+**strong pass**: 12 headline claims re-verified inside the *named* source artifact with exact JSON
+paths (`fir_v3/contrasts[0]/est`, `fir_pointwise_v1/contrasts/learned-pointwise/mean`,
+`fir_controls/family_b/learned-shared/mean`, `ee_v4/contrasts/...`, `wearec_baseline_v1/...`, etc.)
+- **12/12 present in the correct named source. No surface asserts a number the artifacts do not
+support.**
+
+**TWO CAVEATS AGAINST MY OWN HARNESS, recorded rather than buried.** (1) Pool matching is
+near-vacuous for small values - `+0.000000` matches 13 of 15 files, `-0.000074` matches 8 - so the
+coarse test is weakest **exactly where the paper's null and negative results live**; the named-source
+pass is the one that carries weight. (2) The ML-1M `+0.000000` claim matched
+`/filter_trainable_parameters/identity`, a **parameter count**, not the effect - a coincidental hit.
+The correct value exists at `/replication/learned-identity/mean = 2.0248e-07` (verified in
+yesterday's A4 pass), so the claim is sound, but it is **11/12 semantically correct paths, not
+12/12**, and I am not reporting a clean sweep. Also: my first harness run returned **0/0** for two
+surfaces (missing `re.MULTILINE`) - a `0/0` reads as a PASS, and reporting it would have certified
+two surfaces I had never examined. Fixed before any conclusion was drawn.
+
+**THE FINDING WORTH ACTING ON - three Musical_Instruments values, one reviewer trap.** Reading
+Sec5.2 sequentially, a reviewer meets three different values for what looks like one quantity:
+
+| value | study | estimator | seeds |
+|---|---|---|---|
+| **+0.002265** [0.001928, 0.002602] | `PREREG_FIR_V3` (E-A) | independent-arm **Welch**, df 13.939 | V3 blocks |
+| **+0.002116** [0.001910, 0.002322] | `PREREG_FIR_CONTROLS` | ordinary **paired** | 20260901-08 |
+| **+0.001872** [0.001737, 0.002007] | `PREREG_FIR_POINTWISE_V1` | ordinary **paired** | 20261001-08 |
+
+The abstract and Sec7 quote only **+0.002265, the largest of the three.** **This is NOT
+concealment** - each paragraph names its own protocol, estimator, seeds and evidence class, and I
+verified the manuscript is internally accurate everywhere. **But nothing juxtaposes them,** so the
+reviewer must reconstruct the explanation, and one who does not asks "which is the effect, and why
+does the abstract use the biggest one?"
+
+**The defusal FAVOURS the paper, which is why leaving it implicit wastes an asset:** three separate
+seed blocks under two estimators give **+0.001872 to +0.002265**, spread **0.000393**, and **all
+three intervals exclude zero and mutually overlap**. That is internal stability the paper earns and
+does not state. A proposed sentence is in the memo. **Label discipline: same investigator, same
+category, same code lineage - these are REPEATED OUTCOME-KNOWN INTERNAL ESTIMATES, never
+replication, confirmation, or independent**, and the proposed wording says so explicitly.
+
+**ATTACKS THAT DID NOT LAND:** "a CI crossing zero is treated as equivalence" (rechecked all six
+shared-filter mentions - every one carries "not equivalence"); "the abstract hides the negative"
+(ML-1M null appears in abstract, contributions, Sec5, Sec6, Sec7 and cover letter); "numbers drift
+md vs TeX" (Codex's lane; no counterexample found in the surfaces I read).
+
+**DISPOSITION: no claim requires retraction, narrowing, or reclassification.** Counted boundary
+unchanged; no widening proposed. One presentational fix recommended, costing one sentence and zero
+new runs. **No checklist row moves on this audit.**
+
+**Open risks:** scientific - A3 tuning asymmetry OPEN; external validity OPEN (n=1 non-Amazon,
+budget-confounded). engineering - fidelity checked on abstract/Sec7/cover letter, not every number
+in Sec5; pool matching weak near zero. venue - A0 unverified; nothing called Tier A. human - A0,
+A1, A4 licence/custody, AI-use disclosure, tuning-matrix authorization.
+
+**Next safe action:** Codex accepts or rejects the three-estimate sentence, strikes retracted F1
+from the register, and rules on the three checklist row moves proposed three ticks ago; human
+supplies A0/A1/A4 and the AI-use wording. **Expressly forbidden:** describing the three MI
+estimates as replication/confirmation/independent; quoting +0.002265 as "the" effect without its
+protocol and estimator; treating 88/88 as proof the near-zero claims were strongly verified - they
+were not, and the memo says so.
+
+---
+
 # CLAUDE TICK - A4: I RETRACT my own BLOCKING F1; narrowing now unconditional (2026-08-01)
 
 Branch `codex/bestrec-sota-results`. Kill switch absent. No new Codex commit (HEAD was my

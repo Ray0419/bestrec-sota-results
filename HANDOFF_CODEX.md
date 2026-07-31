@@ -1,3 +1,76 @@
+# CLAUDE TICK - reject-first audit form DISCHARGED; 3 checklist rows proposed to move (2026-08-01)
+
+Branch `codex/bestrec-sota-results`, HEAD after this commit. Kill switch absent. Files added:
+`CLAUDE_REJECT_FIRST_AUDIT_2026-08-01.md` + this section. **Preserved, NOT staged:**
+`PAPER_REVIEW_AUDIT.md` (user-owned; 22:23 tail read only), `PAPER_SUBMISSION.md`,
+`COVER_LETTER_TORS.md`, all `paper_tex/**` (sections, tables, bib, PDFs), all six
+`*_adjudication.json`, `TORS_METHODOLOGY_CHECKLIST.md`, every prereg, and the untracked
+`qa_final*/`, `poc_temporal_lc2c_v1/`, and the two new Codex docs. **I edited no artifact.**
+
+**I read the two new documents first; both are already well self-audited and need nothing from
+me.** `FIR_TIER_A_NOVELTY_REVIEW_AND_EXPERIMENT_DESIGN_2026-08-01.md` has already absorbed my
+prior-art sweep (header now reads "superseded by the later full-axis sweep... do not preregister
+the decomposition direction"). `POC_TEMPORAL_LC2C_V1.md` is a clean, correctly-labelled NEGATIVE
+(LC2C+FIR cold-pool -0.004217; all four kernels worse than boxcar-8; decision "do not pivot"). No
+claim inflation in either. **Codex also actioned my Delta=0 flag from this morning: Tian et al.
+2026 is now cited in the manuscript (bib=4, md=6), as is the BSARec repro preprint (Hutter).**
+
+**WORK DONE - the deliverable is checklist §3, which was explicitly Claude-owned and unfilled**
+("copy this section into a dated memo and fill every field before... the venue package is declared
+ready"). All fields filled. **DECISION: APPROVE WITH REQUIRED CHANGES.**
+
+**THREE ROWS I PROPOSE MOVING (proposals only - I did NOT edit the checklist):**
+
+| row | was | proposed | basis |
+|---|---|---|---|
+| Novelty as a modular contribution | PARTIAL | **PASS** | Sec2/2.3/Table 0 compare the exact mechanism to TV-Rec, HyenaRec, ConvRec, C3SASR, AdaMCT, Mamba4Rec, WEARec, FreqRec, FMLP, BSARec and state what is new / evaluation / not new |
+| Baseline selection rationale | PARTIAL | **PASS-WITH-LIMITS** | inclusion/exclusion justified; **no omitted method is decisive** |
+| Outcome-independent reporting | PARTIAL | **PASS** | verified line-by-line: title, abstract, contributions, Sec7, cover letter ALL carry the ML-1M null, the shared-filter non-separation, the VOID record, "not independent confirmation". **No selective upgrading found.** |
+
+**Rows I explicitly do NOT move:** Hyperparameter tuning fairness stays **OPEN** - it is the
+weakest row in the package and my rated **most likely reviewer-1 rejection ground**; External
+validity stays **OPEN**; Exact-input temporal isolation stays **DEFERRED**; all BLOCKED-HUMAN /
+BLOCKED-RANKING rows stay blocked.
+
+**Hardest thing I checked and could not break:** every CI crossing zero is labelled "not
+equivalence" rather than read as sameness, in all six places the shared-filter non-separation
+appears. I found **no** instance of a null being upgraded anywhere in the package.
+
+**Residual friction I could NOT fully clear (disclosure judged adequate, no change recommended):**
+the novelty boundary names a **depthwise/per-channel** residual as the claimed-new object while
+the evidence declines per-channel attribution (learned - shared = -0.000081 [-0.000337,
++0.000175]). Not a contradiction - novelty of an artifact does not require necessity of each part,
+and the manuscript never conflates them - but a reviewer will feel it.
+
+**MANDATORY BEFORE SUBMISSION - 4 human, 1 Codex, NONE a scientific defect:** A0 ranking authority;
+A1 author/legal metadata; A4 licence/retention/redistribution + custody; AI-use disclosure (**must
+reflect actual breadth - a writing-assistance-only statement would be FALSE**); and Codex's 22:23
+release blockers (Office V3 sidecar boundary, stale `paper_tex/BUILD_NOTES.md`, abstract comparator
+sentence, SILLM4Rec rationale).
+
+**OPTIONAL, non-decisive:** three filter-family works named in Codex's own novelty review are
+absent from the package (verified `bib=0, md=0`): **MUFFIN** (CIKM 2025), **SLIME4Rec** (ICDE
+2023), **DWTRec** (2025). Sec2 already concedes the whole filtering family predates this work, so
+these improve coverage without changing any claim. **Do not delay submission for them.** Also
+**MARec** (RecSys 2024) as a future in-family cold-start baseline.
+
+**Counted claim boundary unchanged and I propose NO widening:** MI (vs 0.0406) and Office V3 (vs
+0.0271 and 0.0279); Office V1 VOID forever; TFV2 outcome-visible not confirmatory.
+
+**Open risks:** scientific - tuning-fairness asymmetry (OPEN, weakest row); only prospectively
+frozen non-Amazon test is negative AND was undertrained, so it is a failure-to-replicate not a
+domain moderator. engineering - one campaign ran dirty-tree with non-custodied sidecars
+(disclosed). venue - A0 unverified; I called nothing Tier A. human - A0, A1, A4, AI-use disclosure.
+
+**Next safe action:** Codex clears the four 22:23 release blockers and rules on the three proposed
+row moves; human supplies A0/A1/A4 + AI-use wording. **Expressly forbidden:** editing
+`TORS_METHODOLOGY_CHECKLIST.md` status cells on my say-so (proposals only); calling TORS Tier A
+without the ranking authority; reading any CI crossing zero as equivalence; treating this audit as
+independent peer review - it is advisory same-team evidence and creates no independent
+confirmation.
+
+---
+
 # CLAUDE TICK - second proposal dies on its own gate; a REAL baseline found (2026-08-01)
 
 Branch `codex/bestrec-sota-results`, pushed. No new audit (22:11 still newest), no Codex commit
@@ -72,11 +145,11 @@ Six searches + four full-record reads found the axis **occupied on every front**
 | spectral | FMLP-Rec (WWW 2022), BSARec (AAAI 2024), wavelet AFF (2511.07028) | published |
 | channel-specific | depthwise-Conv1D report (arXiv:2607.18413) | arXiv Jul 2026 |
 
-**And the NECESSITY FRAMING itself is occupied.** arXiv:2512.17442 (Dec 2025) opens with our
+**And the NECESSITY FRAMING itself is occupied.** arXiv:2512.17442 (Dec 2025 public preprint) opens with our
 motivating sentence verbatim - "the roles of its individual components have yet to be
 systematically validated" - and concludes **"DSP methods provide no clear advantage over simple
 residual connections."** A published negative necessity result on the spectral axis, before we
-asked. **Caveat 1 is CLOSED, not partially cleared.**
+asked. This is a public preprint result, not a venue-published result. **Caveat 1 is CLOSED, not partially cleared.**
 
 **What survives is narrow and tells us the venue ceiling.** No single study compares all four
 parameterizations plus identity under ONE matched harness - a real gap, but a
@@ -84,12 +157,13 @@ parameterizations plus identity under ONE matched harness - a real gap, but a
 **still an unvenued preprint eight months after posting.** That is the most useful fact in the
 sweep. **Do not preregister this question.**
 
-**A FINDING THAT LANDS ON THE CURRENT MANUSCRIPT.** arXiv:2607.18413 ablated init for depthwise
+**A FINDING THAT LANDS ON THE CURRENT MANUSCRIPT.** arXiv:2607.18413 ablated init for residual depthwise
 conv in a Transformer: **"Random initialization ... gives the lowest reported loss and perplexity.
 The bias-free, zero-weight setting performs substantially worse"** - 2.4795 vs **3.0065** loss,
 12.79 vs **61.52** ppl. **Our canonical FIR uses Delta=0 identity init.** Mitigations are real
-(language modeling not recsys; they favour QKV-projection placement; their zero arm is bias-free
-zero, ours is exact-identity-plus-residual) but a reviewer will find this. **Codex decision, two
+(language modeling not recsys; they favour QKV-projection placement; different model, kernel,
+optimizer, and bias choices). Their selected module is also `x + Conv(x)`, so its bias-free
+zero-weight setting is structurally close to our exact-identity residual. A reviewer will find this. **Codex decision, two
 options:** (1) DISCLOSE - cite it, state the domain/placement difference; or (2) MEASURE - a
 random-init FIR arm on Musical_Instruments, matched seeds and budget, is a small run and settles
 it, **but needs a NEW frozen prereg before launch if any number is to be countable.** I rate it

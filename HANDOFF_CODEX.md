@@ -1,3 +1,81 @@
+# CLAUDE TICK - A3 tuning fairness audited with NUMBERS; row stays OPEN (2026-08-01)
+
+Branch `codex/bestrec-sota-results`. Kill switch absent. No new Codex commit (HEAD was my
+`a9a87cee`), no new audit (`PAPER_REVIEW_AUDIT.md` still 22:23), checklist untouched (07-31 11:02),
+A0/A1 unanswered - so nothing was left for Claude and I advanced the queue. Files added:
+`CLAUDE_A3_TUNING_FAIRNESS_AUDIT_2026-08-01.md` + this section. **Preserved, NOT staged:**
+`PAPER_REVIEW_AUDIT.md`, `PAPER_SUBMISSION.md`, `COVER_LETTER_TORS.md`, all `paper_tex/**`, all
+seven `*_adjudication.json`, `TORS_METHODOLOGY_CHECKLIST.md`, every prereg, all
+`results_*.json`, and the untracked `qa_final*/`, `poc_temporal_lc2c_v1/`, `tmp/`, `temp/`.
+**I edited no artifact and inspected no sealed endpoint.**
+
+**A3 was the row I myself rated weakest and most likely reviewer-1 rejection ground, so I audited
+it with counts instead of adjectives.** Read-only mining of 1,105 committed `results_*.json`
+(427 campaign families), the WEARec selection record, and the comparator matrix.
+
+| side | distinct hyperparameter configs | epoch budgets |
+|---|---:|---|
+| **our model family** (whole project record) | **56** | **12 distinct**: 1,2,5,15,20,30,40,50,60,80,100,101 |
+| **WEARec** official code | **2** presets, **1** tuning seed | official recipe |
+| **AlphaFuse-style package** | **1** frozen config | official recipe |
+| **upstream-class SASRec-ID** | **1** (V3) **+1** (V4, cross-campaign) | official recipe |
+| **HSTU-BLaIR reference** | **0** local tuning, single published run | pinned env unavailable |
+
+**Search-breadth ratio against external comparators: 28x-56x, favouring us.**
+
+**Being fair about that number:** the 56 configs span the ENTIRE project history (encoder studies,
+pre-FIR BEST-Rec/LC2C, capacity/dropout sweeps) - **not** 56 attempts at the FIR contrasts, and I
+am NOT claiming that. What it establishes is that our family arrived at every external comparison
+with a long accumulated tuning history while each comparator arrived with 1-2 configurations.
+
+**WHAT IS ACTUALLY SYMMETRIC, and it should be said plainly:** the INTERNAL FIR contrasts have no
+tuning-fairness defect. Each FIR family resolves to **one configuration plus an arm flag**
+(FIRCTRL/FIRPOINTV1/FIRPROSPV3 = 2 config signatures over 8 seeds = identity/learned toggle, not a
+search), **8 seeds per arm**, shared per-seed `init_state_sha256`, and a constant **20 epochs**
+(MI/IS/Software) or **40** (VG). The problem is confined to external-comparator rows.
+
+**NAMED ASYMMETRIES.** **A3-1: WEARec preset selection was effectively a coin flip** -
+`wearec_baseline_v1_selection.json` shows `official_beauty` **0.06844665** vs `official_sports`
+**0.06812966** on one tuning seed, a gap of **0.000317**. Protocol is clean (TEST unread, tie order
+pre-declared) but "validation-only preset selection" must NOT be read as WEARec having been tuned.
+**A3-2: epoch budgets are per-recipe, not common** - no comparison in the package holds training
+budget constant across method families (defensible; forcing our schedule onto official code would
+be worse). **A3-3: the baseline tuning record is not publicly checkable** - **zero** of the 1,105
+public result JSONs correspond to WEAREC/EEV3/EEV4, so checklist Sec2 items **5** (attempted/
+completed config counts) and **9** (failed trials) cannot be verified for baselines from public
+artifacts. Documentation gap, not misconduct; Sec5 already says private endpoint extraction is not
+publicly replayed. **A3-4: V4 confounds phase/date with initialization** (already stated).
+
+**DOES ANY COUNTED CLAIM CHANGE? NO.** Every affected row already reads "architecture, loss,
+schedule, capacity, and tuning budget unequal", "whole-package", "equal-evaluation feasibility
+baseline only", "the equal-budget factorial remains open". Nothing asserts equal budget, equal
+capacity, or SOTA. Counted boundary unchanged; **I propose no widening and no retraction.**
+
+**ROW DISPOSITION: STAYS OPEN. I am not moving it.** Required closure is a frozen symmetric
+search-space matrix; `PREREG_TIER_A_TUNING_MATRIX_V1_DRAFT.md` is explicitly **DRAFT ONLY - NOT
+FROZEN, NOT AUTHORIZED** and awaits human approval of compute/data/licensing/venue. Good
+disclosure does not close it, and I decline to soften a row I flagged last tick.
+
+**THE ONE FIX AVAILABLE WITH NO NEW RUNS (Codex-owned; I edited nothing):** the manuscript
+discloses this **qualitatively**. Make it **quantitative** - a proposed sentence for Sec4 or the
+comparator matrix is in the memo, giving 56 vs 2-vs-1, the two WEARec validation numbers, and the
+per-recipe epoch budgets. **A reviewer who computes this ratio and finds it undisclosed will read
+concealment; the same reviewer, seeing it stated first by the authors, will read candour. The
+number will be found either way.**
+
+**Open risks:** scientific - A3 asymmetry real, quantified, favours us, disclosed but only
+qualitatively; external validity still OPEN. engineering - baseline tuning ledger not publicly
+replayable (private endpoints, by design). venue - A0 unverified; I called nothing Tier A.
+human - A0, A1, A4 licence/custody, AI-use disclosure, and authorization of the tuning matrix.
+
+**Next safe action:** Codex adds the quantified disclosure sentence and rules on last tick's three
+proposed checklist row moves; human authorizes or declines `PREREG_TIER_A_TUNING_MATRIX_V1_DRAFT`.
+**Expressly forbidden:** moving the tuning-fairness row off OPEN without a frozen matrix; reading
+"validation-only preset selection" as WEARec being tuned; citing 56 as FIR-specific tuning trials;
+launching any tuning-matrix run without human authorization and a frozen prereg.
+
+---
+
 # CLAUDE TICK - reject-first audit form DISCHARGED; 3 checklist rows proposed to move (2026-08-01)
 
 Branch `codex/bestrec-sota-results`, HEAD after this commit. Kill switch absent. Files added:

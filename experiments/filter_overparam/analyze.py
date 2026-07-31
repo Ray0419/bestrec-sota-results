@@ -54,8 +54,9 @@ def paired(a, b):
     m, s = st.mean(d), st.stdev(d)
     se = s / math.sqrt(n)
     t = m / se if se else float("inf")
+    # keyed by n (sample size), value is the two-sided .975 t-quantile at df=n-1
     crit = {2: 12.706, 3: 4.303, 4: 3.182, 5: 2.776, 6: 2.571, 7: 2.447,
-            8: 2.365, 9: 2.306, 10: 2.262}.get(n - 1, 1.96)
+            8: 2.365, 9: 2.306, 10: 2.262}.get(n, 1.96)
     return m, s, t, n - 1, (m - crit * se, m + crit * se), sum(1 for x in d if x > 0)
 
 

@@ -1,3 +1,76 @@
+# CLAUDE TICK - pre-FIR direction assessed: reproduction PASSES, novelty FAILS (2026-08-01)
+
+Branch `codex/bestrec-sota-results`, pushed. Audit top read first: newest is still **22:11**
+(answered at `2cb6db24`); no new audit, no Codex commit since `ae8f52db`; A0/A1 still BLOCKED.
+Files added: `CLAUDE_LC2C_PRIOR_ART_AND_REPRO_2026-08-01.md` + this section. Preserved (NOT
+staged): `PAPER_REVIEW_AUDIT.md`, manuscript, TeX, cover letter, preregs, adjudicators, graph,
+tables, manifest, and **all `results_*.json` (backed up, re-run, then restored via
+`git checkout` - never overwritten)**.
+
+**Context:** the maintainer asked whether the pre-FIR BEST-Rec/LC2C cold-item direction is a
+better publication bet than FIR. Two checks were run.
+
+**(1) REPRODUCTION: PASS, BIT-EXACT.** `run_warm_loo.py beauty fashion` re-run today vs the
+committed 2026-05-22 artifacts: **max absolute deviation 0.000e+00** across all 8 NDCG@10
+values (HR@10/MRR also matched). Runtime **~1-2 min, CPU only**. Three findings the JSON did
+not show: (a) the warm evaluation is **tiny** - beauty **253 users / 356 items / 2,535
+interactions**, fashion **513 / 614 / 3,805** - which explains why `ease_sbert` vs
+`higher_order_ease` is `n.s.` on 3 of 4 datasets; (b) the **deep baselines are NOT
+reproducible** (MultiVAE/iALS/LightGCN "remain in the legacy notebook";
+`results_FINAL.json` marks them `legacy_prior_pipeline_preserved_by_consolidator`), so the
+comparison that makes the warm table look strong cannot be re-derived; (c) **no provenance
+chain** - all three result files were last touched at `251ef5a0`, the FIRST commit in the repo,
+with `_provenance` recording only `generated_by`/`primary_inputs` (no data hashes, code commit,
+environment or seeds). Cold-item (instruments n=3,911; books n=11,930) was NOT re-run.
+
+**(2) PRIOR ART: the "new method" framing does NOT survive.** LC2C-V1 (SBERT -> SVD(B) latent ->
+ridge) is the skeleton of **Gantner et al., ICDM 2010**, attribute-to-feature mapping. LC2C-V2's
+premise - predicting the **linear-autoencoder item-item matrix from item content** - is an
+established named line: **ELSA** (Vancura et al. 2022) introduces `B = A A^T`; **beeFormer**
+(Vancura, Kordik & Straka, **RecSys 2024**, arXiv:2409.10309) trains sentence-Transformers so
+embeddings reproduce interaction similarity in that framework, reporting cold-start/zero-shot/
+time-split gains **including on Amazon Books**; and **SEMCo** (**SIGIR 2026**, arXiv:2604.12990)
+states verbatim as BACKGROUND: *"following shallow LAEs (Vancura et al., 2022, 2024, 2025) in
+factorizing B so that B = YY^T, where Y ... is a d-dimensional encoding of the item content
+features."* Separately **MARec** (arXiv:2404.13298) does cold-start on an **EASE** backbone,
+evaluates on **Amazon Video Games**, and reports +8.4% to +53.8% over prior SOTA.
+
+**What remains claimable:** beeFormer FINE-TUNES the encoder; LC2C-V2 keeps SBERT **frozen** and
+fits a **closed-form ridge** onto the full B row (seconds, CPU). That supports a
+**strong-baseline / efficiency** claim - *how much of the learned-encoder gain does a frozen
+closed-form map recover, at what cost* - **not** a new method, and only if benchmarked against
+beeFormer/MARec/SEMCo.
+
+**Disqualifying gap as things stand:** SEMCo's comparator set is **ALDI, CLCRec, GAR, GoRec,
+Heater**; ours is DropoutNet, CLCRec, content_direct, cf_hybrid - **one of five**. The headline
+**+119% on Books is measured against `content_direct`**, not against any current method.
+
+**Verdict vs FIR:** same shape both ways - real but modest effect, crowded space, non-current
+baselines. Cold-item has the larger effect and larger inferential units; FIR has the provenance
+and adjudication discipline. **Neither has a defensible novelty claim as framed.** Recommended:
+stop hunting a method contribution; write the **evaluation-apparatus** paper using FIR and LC2C
+as worked examples including where both under-delivered - it needs no new baselines to be honest
+and is the one asset the competitor papers lack.
+
+**LIMITS (important):** I did **not** read beeFormer's full method - ACM returned HTTP 403 and
+the arXiv PDF did not parse. Confidence attaches to *the line of work* and the `B = YY^T`
+framing (SEMCo states it verbatim with citations), **not** to beeFormer's internals, baselines,
+or whether it already contains a frozen-embedding control. **beeFormer and MARec must be read in
+full before any decision rests on this.** Prior-art search is not exhaustive; absence of a hit is
+not evidence of novelty.
+
+**Open risks:** scientific - LC2C novelty likely fails; both directions lack current baselines;
+optimizer-exposure asymmetry UNRESOLVED; F1 mechanism; C1; M1; A3 W1/W2; A2 not isolated.
+venue - A0 unverified; calibration claims unfounded until grounded (see
+`CLAUDE_CALIBRATION_MEMO_2026-07-31.md`). human - A0, A1, A4 licence/custody, AI-use statement.
+
+**Next safe action:** read beeFormer + MARec in full to confirm/refute Part 2; Codex applies the
+patch-register per-item dispositions and the roadmap calibration change. **Expressly forbidden:**
+asserting beeFormer's internals from this memo; citing LC2C as novel without the full-text check;
+re-running cold-item and overwriting `results_*.json`; calling any venue Tier A before A0.
+
+---
+
 # CLAUDE TICK - calibration: the twice-flagged 35-50% forecast, and my own numbers (2026-07-31)
 
 Branch `codex/bestrec-sota-results`, pushed. Audit top read FIRST this tick (new discipline):

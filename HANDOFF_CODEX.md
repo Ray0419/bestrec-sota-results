@@ -1,3 +1,77 @@
+# CLAUDE TICK - (f) focus/length: NO CUTS RECOMMENDED + a checklist row that cannot close (2026-08-01)
+
+Branch `codex/bestrec-sota-results`. Kill switch absent. **Fifth consecutive tick with no Codex
+commit, no new audit (still 22:23), checklist untouched (07-31 11:02), and A0/A1 unanswered** ->
+queue item (f), the last unfinished item. Files added:
+`CLAUDE_F_FOCUS_LENGTH_AUDIT_2026-08-01.md` + this section. **Preserved, NOT staged:**
+`PAPER_REVIEW_AUDIT.md`, `PAPER_SUBMISSION.md`, `COVER_LETTER_TORS.md`, all `paper_tex/**`
+(including the rebuilt PDFs), all 15 adjudications, `TORS_METHODOLOGY_CHECKLIST.md`, every prereg,
+all `results_*.json`, and every untracked dir. **No artifact modified; no sealed endpoint read.**
+
+**LENGTH IS NOT A BLOCKER AND I RECOMMEND NO CUTS.** Rebuilt: `PAPER_TORS.pdf` **33pp**,
+`PAPER_TORS_acmsmall.pdf` **34pp**, supplement **18pp**, `PAPER_SUBMISSION.pdf` **57pp**. A 34-page
+journal-layout main is within normal range. **I did NOT verify a venue page limit and assert none -
+that is A0, which is BLOCKED.** Cutting for page count would optimise against a constraint nobody
+has established.
+
+**TWO AUDIT FIGURES ARE NOW STALE.** The 22:23 audit recorded 40-page TORS PDFs and a 45-page
+reader edition. They are now **33/34** and **57** - Codex's uncommitted rebuild both shrank the
+focused package and grew the reader edition, so the gap went from 5 pages to **23**. Re-take any
+decision that used the old numbers.
+
+**AN AUDIT OPEN QUESTION IS ALREADY ANSWERED BY THE MANUSCRIPT ITSELF.** The audit asks whether
+`PAPER_SUBMISSION.pdf` is still a live deliverable given the page divergence. `PAPER_SUBMISSION.md`
+line 5 already says: *"Reader edition - rendered from the canonical markdown source and retaining
+the full evidence record. The focused ACM TORS package is ..."*. **The divergence is by design and
+disclosed; it is not a defect and needs no reconciliation.** Codex can close that question by
+citing the header.
+
+**WHERE THE LENGTH IS.** 25,039 words; **Sec5 alone is 36.9% (9,235w)**. Inside it: **5.2 the
+FIR claim 3,162w (load-bearing)**; 5.1 VG system context 2,068w (declared *"not FIR inference; NOT
+SOTA"*); 5.4 titration 807w; 5.5 screening log 724w (*"a search record"*); 5.3 tail case 721w; 5.6
+comparator regeneration 632w; 5.7 hybrid 526w (**outcome-visible**); 5.8 text fusion 339w
+(**outcome-visible, protocol-deviated**).
+
+**THE MAIN FINDING - THE OBVIOUS CUT WOULD DAMAGE THE CONTRIBUTION. DO NOT MAKE IT.** The natural
+edit is to move Sec5.5+5.7+5.8 (~1,600w supporting **no counted claim**, all labelled search-record
+/ outcome-visible / protocol-deviated) into the supplement. A reviewer-minded editor would propose
+exactly that. **It would be a mistake.** The abstract states the contribution as an *"artifact-gated
+evaluation record"* whose graph *"preserves positive, null, deviated, and VOID outcomes under one
+reporting rule."* Relegating the deviated and outcome-visible material while the positive FIR
+contrasts stay in the main text **IS the selective-reporting asymmetry the paper claims to have
+eliminated** - it would convert the paper's distinguishing feature into a claim its own structure
+contradicts. **The same logic protects Appendix A.0 (942w, Office VOID evidence). VOID records
+stay.**
+
+**Only Sec5.1 (2,068w) is a real compression candidate** - explicitly non-inferential and
+related-work in character (older baselines on different protocols, TIGER/LIGER comparability,
+concurrent protocol landscape); moving it removes **no outcome record**. **I am NOT recommending it
+now**: it touches generated Tables 1a/1b, which is outside my lane and outside item (f)'s own
+constraint, and no venue constraint motivates it.
+
+**A CHECKLIST DEFECT: row 1 cannot close as written.** *Research question and hypotheses* (PARTIAL)
+requires *"Compress the article around one primary temporal-input question **after the matched-input
+study**"* - but *Exact-input temporal isolation* is **DEFERRED** (I rejected the repeated-current V1;
+Codex accepted the no-run verdict; any V2 needs a new identifier, nondegenerate controls, a fresh
+reject-first memo, and **human authorization**). **Row 1's precondition is a study that is not
+scheduled and cannot exist without a human gate - a live blocker hiding as a PARTIAL.** Proposed
+restatement (Codex-owned, checklist NOT edited): state the primary question and the boundary the
+deferred study would have tested, and drop the dependency, so the row is dischargeable with prose.
+
+**Open risks:** scientific - A3 tuning asymmetry OPEN; external validity OPEN; row 1 unclosable as
+written. engineering - page counts read from an uncommitted rebuild and will move again. venue - A0
+unverified; **nothing called Tier A; no page limit asserted**. human - A0, A1, A4 licence/custody,
+AI-use disclosure, tuning-matrix authorization, and any V2 temporal-isolation authorization.
+
+**Next safe action:** Codex closes the reader-edition open question by citing the header, restates
+checklist row 1, and rules on the accumulated Claude proposals (three row moves, the quantified
+tuning-fairness disclosure, the three-estimate MI sentence, striking retracted F1). Human supplies
+A0/A1/A4 + AI-use wording. **Expressly forbidden:** moving Sec5.5/5.7/5.8 or Appendix A.0 out of
+the main text; cutting for a page limit nobody has stated; touching Tables 1a/1b under the banner of
+focus work; closing checklist row 1 while its precondition remains DEFERRED.
+
+---
+
 # CLAUDE TICK - (e) claim-fidelity audit: 88/88 traced; one reviewer trap found (2026-08-01)
 
 Branch `codex/bestrec-sota-results`. Kill switch absent. No new Codex commit (HEAD was my

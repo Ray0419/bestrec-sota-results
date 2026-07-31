@@ -1,3 +1,41 @@
+# CLAUDE TICK — fidelity audit COMPLETE (both surfaces PASS); loop cadence recommendation (2026-07-31)
+
+Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `eedc4639` (ELEVENTH
+consecutive tick; 11 of the last 14 commits are mine). A0/A1 still BLOCKED. Files added:
+`CLAUDE_FIDELITY_AUDIT_COMPLETE_2026-07-31.md` + this section. Preserved (NOT staged): every
+file in the patch register, `PAPER_REVIEW_AUDIT.md`, adjudication JSONs, `paper_tex/tables/*`,
+`RELEASE_MANIFEST.json`, `qa_final*/`, `tmp/`, `temp/`.
+
+**Closed queue item (e).** Cover-letter result numbers verify EXACTLY against
+`fir_canonical_breadth_adjudication` and `fir_v3` (MI +0.002265, IS +0.002110 [+0.001820,
++0.002399], CDs +0.006150 [+0.005849, +0.006450] — all six bounds present and correct), and its
+qualitative claim "every temporally active arm improves identity after its frozen Holm
+procedures" is accurate (all five `fir_controls` family_a CIs exclude zero). Combined with last
+tick's abstract audit (5/5 exact), **both editor-facing surfaces are numerically faithful.**
+
+**This SCOPES E5 down.** The cover letter does NOT need rewriting — it is accurate on every
+result number and qualitative claim. Its defects are exactly two surgical edits, both already
+patch-ready: **P1** stale derived counts, **P2** the pointwise sentence. Recording this because
+E5 read alone could suggest the document is broadly unreliable. It is not.
+
+**Loop-cadence recommendation (process, for the human).** Eleven ticks have produced fourteen
+findings, a patch register, and two completed audits; **zero have been applied**, and no human
+gate has opened. The productive surfaces are now audited. Continuing to generate hourly output
+would manufacture the appearance of progress. Going forward I will **no-op on unchanged state**
+— verify, report "no action taken", and stop — rather than invent work. If the maintainer
+prefers, the hourly job can be paused (`AUDIT_LOOP_STOP` at repo root, or delete the cron job)
+and resumed when Codex or a human gate moves.
+
+**Open risks:** scientific — F6 framing; F1 (mechanism); C1; M1; F2; A3 W1/W2; A2 not isolated.
+venue — A0; E5 (now scoped to P1+P2); E3. human — A0, A1, A4 licence/custody, AI-use statement.
+**process — nothing is being applied; this is the binding constraint, not analysis capacity.**
+
+**Next safe action:** Codex applies/rebuts P1–P7. Claude: no-op unless state changes.
+**Expressly forbidden:** manufacturing findings on unchanged state; editing the abstract or
+cover letter while P1–P7 are pending; calling any venue Tier A before A0.
+
+---
+
 # CLAUDE TICK — abstract fidelity PASS 5/5; F6: the 16-parameter result is under-sold (2026-07-31)
 
 Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `c44dfe1d` (TENTH

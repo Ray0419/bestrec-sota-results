@@ -21,12 +21,12 @@ uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --s
 ```
 
 This runs, fail-closed: the bitwise HSTU core-block parity test → the artifact-graph build
-(**all 200 artifact-gated cells across 24 families recomputed from public source artifacts**; exits
+(**all 201 active artifact-gated cells across 25 families recomputed from public source artifacts**; exits
 nonzero on any mismatch, untraceable cell, or missing claim family) → release-manifest hash
 verification (the live gate reports the authoritative file count) → the pre-declared Musical_Instruments gate adjudicator → the TFV2 repaired-estimand adjudicator (outcome-visible — §5.3 chronology) → **the
 Office V3 adjudicator (counted; the build fails unless the campaign verdict is PASS)** →
 **the FIR-breadth adjudicator (artifact-integrity: the frozen rule's legacy CONFIRMED tokens are checked mechanically; the paired premise is withdrawn and no inferential confirmation is implied)** → the Office V1
-adjudicator (descriptive/VOID). Each public campaign's live or recorded verdict gates the build (MI V2, Office V3, TFV2, FIR breadth, E-A, canonical FIR breadth, FIR active controls, FIR pointwise placebo, Software V3, MovieLens `ML1M-NO-FIR-REPLICATION`, E-F; the E-G adjudicator also gates as an artifact-reproduction check but confers no confirmatory status — see PAPER_SUBMISSION.md §5.8). The MovieLens gate recomputes aggregate seed-vector arithmetic because private record-level endpoints are not redistributable; it does not claim independent endpoint replay.
+adjudicator (descriptive/VOID). Each public campaign's live or recorded verdict gates the build (MI V2, Office V3, TFV2, FIR breadth, E-A, canonical FIR breadth, FIR active controls, FIR pointwise placebo, Software V3, MovieLens `ML1M-NO-FIR-REPLICATION`, WEARec, E-E V3, E-E V4, and E-F; the E-G adjudicator also gates as an artifact-reproduction check but confers no confirmatory status — see PAPER_SUBMISSION.md §5.8). The MovieLens gate recomputes aggregate seed-vector arithmetic because private record-level endpoints are not redistributable; it does not claim independent endpoint replay.
 (hardened 2026-07-18); `update_release_manifest.py --verify-git <commit|tag>` additionally
 checks the manifest against the git blobs. **Hash-check rule:** verify digests against the
 tag blob (`git show <tag>:FILE`), the release asset, or the bundle payload — never raw
@@ -85,6 +85,10 @@ campaign above is a separate pre-declaration that passed under its frozen wordin
 | `RELEASE_MANIFEST.json` | Self-policing SHA256 manifest (verified inside the strict gate) |
 | `PAPER_REVIEW_AUDIT.md` / `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` | The hourly adversarial audit chain (a second AI system) and point-by-point responses |
 | `DOI_DEPOSIT_INSTRUCTIONS.md`, `VENUE_PLAN.md` | Archival/deposit and venue decisions |
+| `TIER_A_PUBLICATION_ROADMAP.md` | Tier-A ranking gate and scientific risk-reduction sequence |
+| `CODEX_CLAUDE_COLLABORATION_GUIDE.md` | Shared Codex/Claude roles, freezes, protected files, and handoffs |
+| `TORS_METHODOLOGY_CHECKLIST.md` | Codex-prefilled methodology, tuning, reproducibility, policy, and Claude red-team audit matrix |
+| `PREREG_FIR_TEMPORAL_ISOLATION_V1_DRAFT.md` | Unfrozen design-review draft for the next matched temporal-input control; no run authorized |
 | `PLAIN_LANGUAGE_COMPANION.md`, `companion_site/` | Non-technical explainer (documentation, not submission material) |
 | `README_LC2C_HISTORICAL.md` | Preserved README of the repository's **earlier, unrelated LC2C/EASE cold-item project** (releases up to `bestrec-raw-records-v1`); nothing in it is claimed by the current paper |
 

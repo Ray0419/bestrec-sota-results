@@ -1,10 +1,21 @@
 # Venue plan (maintainer decision, updated 2026-07-31)
 
-**Decision: aim for both ACM TORS and the RecSys 2027 Reproducibility track — sequenced, never
+## Tier-A constraint added 2026-07-31
+
+The maintainer now requires a journal recognized as Tier A or higher. "Tier A"
+is list-dependent, so no agent may claim that a venue satisfies this requirement
+until the maintainer names the controlling ranking authority and edition and the
+exact journal/ISSN is verified against it. ACM TORS remains the leading
+scientific-fit candidate, but its relatively recent launch means its formal
+presence/rating cannot be assumed across ABDC, national, or institutional lists.
+`TIER_A_PUBLICATION_ROADMAP.md` governs the verification and evidence-upgrade
+work; `CODEX_CLAUDE_COLLABORATION_GUIDE.md` governs agent coordination.
+
+**Provisional decision: aim for ACM TORS and the RecSys 2027 Reproducibility track — sequenced, never
 simultaneous.** Concurrent submission of the same manuscript to two venues violates both venues'
 dual-submission policies, so the plan is:
 
-1. **Primary: ACM TORS** (Transactions on Recommender Systems). Rolling submissions — typeset
+1. **Scientific-fit primary, pending Tier-A verification: ACM TORS** (Transactions on Recommender Systems). Rolling submissions — typeset
    and submit first. The official author guidelines checked on 2026-07-31 state that original
    research papers are usually **20–35 pages in ACM `acmsmall` style**. Unusual lengths can be
    considered, but length must be commensurate with contribution and readability is explicitly

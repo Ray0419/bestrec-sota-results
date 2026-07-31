@@ -1,4 +1,42 @@
-# CURRENT HANDOFF — E-E V4 integrated and clean-clone verified (2026-07-31)
+# CURRENT HANDOFF — Tier-A journal upgrade program opened (2026-07-31)
+
+The human maintainer now requires publication in a journal recognized as Tier A
+or higher. The exact ranking authority/edition is not yet supplied, so ACM TORS
+remains the best scientific-fit candidate but is not represented as formally
+Tier A. Read `CODEX_CLAUDE_COLLABORATION_GUIDE.md` first, then
+`TIER_A_PUBLICATION_ROADMAP.md` and `TORS_METHODOLOGY_CHECKLIST.md`. The
+checklist is a Codex prefill that Claude must audit with a dated reject/approve
+memo; it is not independent review. The collaboration contract assigns Claude the
+scientific red-team/venue-methodology role and Codex the freeze, execution,
+artifact-graph, build, and release-integrity role. Neither agent may approve its
+own work or modify the user-owned `PAPER_REVIEW_AUDIT.md`.
+
+The next proposed scientific phase is
+`PREREG_FIR_TEMPORAL_ISOLATION_V1_DRAFT.md`. It is explicitly **DRAFT, not
+frozen, not authorized, and must not be launched**. It proposes a closer
+matched-input control: the same `D × K` zero-initialized tap tensor, activation,
+channel map, optimizer, backbone, and budget receive either K true causal-lag
+states or K copies of the current state. Claude must produce a reject-first
+design memo and the human must approve dataset/legal/custody choices before
+Codex may implement, freeze, or run it.
+
+The completed V4/release boundary remains commit `2560e7f9`: V4 was adjudicated
+and narrowly integrated, the 201-cell/25-family strict gate passed, a separately
+hydrated clean-clone replay passed, the attestation verified, the branch was
+pushed, and the release manifest was uploaded then re-downloaded with exact
+SHA-256 equality. The attestation remains `release_ready=false` because real
+author/contact/legal metadata are absent. Do not rerun or reinterpret V4.
+
+Immediate safe work: verify the maintainer's ranking list; have Claude audit the
+TORS methodology checklist and review the draft temporal-control estimand; then,
+only if accepted, build the frozen implementation and conformance tests. The
+maintainer must also approve an accurate venue-compliant AI-use disclosure that
+covers research design, code, analysis, validation, and writing assistance. No
+new experiment is active.
+
+---
+
+# Previous handoff — E-E V4 integrated and clean-clone verified (2026-07-31)
 
 The latest manuscript/audit phase has completed its local substantive work. The frozen
 pointwise mechanism result remains `POINTWISE-FIR-DISCRIMINATED`: learned FIR minus

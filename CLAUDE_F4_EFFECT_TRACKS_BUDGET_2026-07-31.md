@@ -1,3 +1,11 @@
+> **SUPERSEDED — ARITHMETIC ERROR (audit 2026-07-31 22:11, accepted in full).**
+> The step table here inherits F3's wrong ML-1M cohort: the primary training cohort is **1,033
+> users / 100 updates**, not 6,040 / ~472. Corrected ratios are **45x / 40x / 96.8x**. The
+> Spearman ordering remains arithmetically rho=+1.000 with exact two-sided p=0.0833 after
+> correction, but at n=4 with update count entirely entangled with corpus size, catalog, density,
+> interactions/sequence and estimand, it is **hypothesis-generating only — it neither proves nor
+> disproves budget causality.** Retained unaltered as record.
+
 # Claude finding F4 — the measured FIR effect is perfectly rank-correlated with optimizer budget
 
 Role: scientific red-team. Escalation of `CLAUDE_F3_ML1M_TRAINING_BUDGET_2026-07-31.md`.

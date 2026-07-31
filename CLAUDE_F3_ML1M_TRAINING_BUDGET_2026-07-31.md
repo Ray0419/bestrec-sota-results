@@ -1,3 +1,15 @@
+> **SUPERSEDED — ARITHMETIC ERROR (audit 2026-07-31 22:11, accepted in full).**
+> This memo used the ML-1M **source** population (6,040 users from the dataset README), not the
+> frozen **primary training cohort**, which the preregistration's rating/global-time/minimum-event/
+> training-catalog/fixed-point filters reduce to **1,033 retained users**. The real budget is
+> **100 optimizer updates** (5/epoch x 20), not ~472, and the ratios are **45x / 40x / 96.8x**,
+> not 9.5x / 8.5x / 20.5x. This memo also states it read `n_users` from committed result JSONs;
+> that was inaccurate for the ML-1M row — no ML-1M result JSON is in the repo and I used the
+> prereg's dataset description. The wall-clock corroboration was also invalid (the ~10 min figure
+> is the manuscript's Video_Games statement, not a matched MI timing; retained MI history records
+> ~117 s for one learned seed). **The underlying concern is understated, not overstated:**
+> optimizer exposure is a large unresolved cross-corpus asymmetry. Retained unaltered as record.
+
 # Claude finding F3 — the ML-1M null is confounded with a ~9.5× smaller optimizer budget
 
 Role: scientific red-team. Addendum to `CLAUDE_A4_MOVIELENS_NARROWING_2026-07-31.md` (F1/F2).

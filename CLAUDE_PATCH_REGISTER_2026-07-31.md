@@ -1,3 +1,34 @@
+> **CORRECTED - DO NOT APPLY MECHANICALLY (audit 2026-07-31 22:11, accepted in full).**
+> Per-item disposition below now governs; my original framing "apply in one mechanical pass" is
+> withdrawn.
+>
+> - **P1 - apply AFTER regeneration.** Do not copy this register's own 1,073/407 snapshot; it is
+>   already stale. Derive from the final tag.
+> - **P2 - apply with TeX/abstract parity check**, and report the later pointwise campaign with
+>   its compound-control caveat.
+> - **P3 - NARROW. My text was FALSE:** "all reported FIR results used backbone decay" is wrong,
+>   because a zero-decay sensitivity *is* reported. Say instead: the three primary canonical
+>   learned-identity evidence blocks used backbone decay.
+> - **P4 - REJECT AS WRITTEN. My text asserted a falsehood.** "We evaluate throughout with
+>   leave-last-out" is false: **MovieLens is global-time.** My claim that the
+>   HSTU-BLaIR/TIGER/LIGER family shares the protocol and that this makes numbers commensurable
+>   **directly contradicts the manuscript's own AR2014/AR2023, 0-core/5-core, user vs user-item
+>   and catalog caveats**; the paper already states that future events affect inclusion and that
+>   global-time sensitivity is unrun. Add ONLY the missing Amazon cross-user chronology sentence,
+>   cite the split literature (Ji et al., arXiv:2010.11060; Gusak et al., *Time to Split*,
+>   10.1145/3705328.3748164), and retain non-comparability.
+> - **P5 - NARROW.** "Did not detect" beats "negative", but the bound holds only under the fixed
+>   selected cohort and the transferred 100-update schedule. F5 licenses no domain claim; the
+>   Amazon comparison is descriptive across heterogeneous estimands.
+> - **P6 - REVISE.** Tie compression to the preregistered failed learned-FIR replication gate,
+>   not to an unregistered all-arms-versus-identity family; keep "conditional coefficient-count
+>   compression", not a practical bound.
+> - **P7 - QUALIFY.** MI E-A was outcome-visible / provenance-deviated, and breadth was designed
+>   after legacy outcomes with TEST exposure. Do not upgrade either to pristine-sounding
+>   confirmation.
+> - **P8 - DO NOT APPLY.** F5 neither ran nor approximated the declared test, and did not reject
+>   the optimizer-budget hypothesis.
+
 # Claude patch register — ready-to-apply text for the standing findings
 
 Role: scientific red-team (proposing; Codex applies). HEAD `6e427366`. Date: 2026-07-31.

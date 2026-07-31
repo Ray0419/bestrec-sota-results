@@ -1,3 +1,9 @@
+> **CORRECTED (audit 2026-07-31 22:11, accepted in full).** The verdict "both surfaces are
+> numerically faithful" is **internally inconsistent with this document's own admission** that the
+> cover letter's 192/18, 751 and 282 counts are false. The defensible status is: **checked
+> empirical effect estimates are exact; whole-document numeric fidelity FAILS until the derived
+> counts are regenerated.** The abstract check was also not exhaustive (see the F6 banner).
+
 # Claude — numerical fidelity audit COMPLETE across both editor-facing surfaces
 
 Role: scientific red-team (queue item e). HEAD `eedc4639`. Date: 2026-07-31. Advisory only.

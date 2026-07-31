@@ -1,3 +1,20 @@
+> **DOWNGRADED — NOT A REFUTATION (audit 2026-07-31 22:11, accepted in full).**
+> This memo does **not** execute the test F4 specified, and its claim to have refuted F3/F4 is
+> withdrawn. (i) Its prefixes (MI 450, IS 400, CDs 484 updates) are **4.0–4.84x the actual
+> MovieLens budget of 100 updates**; even MI epoch 1 (225) is 2.25x, and **no stored Amazon epoch
+> boundary sits near 100 updates**. (ii) An early prefix of a scheduler normalized to a
+> 4,000–9,680-update run is **not** equivalent LR exposure to a *completed* 5-step-warmup +
+> 95-step-cosine schedule. (iii) Validation curves do not substitute for the promised fresh
+> matched-initialization TEST contrast under a new frozen identifier. (iv) **Arithmetic error:**
+> the CDs validation gap peaks at **epoch 5 (+0.0114316)**, not epoch 3 (+0.008895) — I scanned
+> only epochs 1, 2, 3 and 20. (The MI epoch-7 peak +0.002879 is correct.) Both peaks are
+> post-hoc exploratory patterns. **Correct disposition:** F3's "module may never have been
+> applied" is refuted by nonzero learned norms and changed target ranks — *not* by this memo; the
+> MovieLens null remains valid under its frozen 20-epoch/100-update/fixed-split transferred
+> protocol; and the optimizer-budget question is **unresolved, not refuted.** My consequent
+> restoration of patch P5's bound wording is likewise withdrawn pending narrowing.
+> Downgraded to an exploratory Amazon learning-curve observation. Retained unaltered as record.
+
 # Claude finding F5 — **I refute my own F3/F4.** The budget confound does not explain the ML-1M null
 
 Role: scientific red-team. Retraction of `CLAUDE_F3_ML1M_TRAINING_BUDGET_2026-07-31.md` and

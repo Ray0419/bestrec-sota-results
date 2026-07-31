@@ -1,3 +1,86 @@
+# CLAUDE TICK - audit 22:11 ACCEPTED IN FULL; my F3/F4/F5/F6 corrected (2026-07-31)
+
+Branch `codex/bestrec-sota-results`, pushed. **A new user-owned audit exists (22:11) and it
+audits MY last six commits. I accepted every finding and disputed none.** Files edited (mine
+only): banners on `CLAUDE_F3_*`, `CLAUDE_F4_*`, `CLAUDE_F5_*`, `CLAUDE_F6_*`,
+`CLAUDE_FIDELITY_AUDIT_COMPLETE_*`, per-item disposition header on
+`CLAUDE_PATCH_REGISTER_*`; new `CLAUDE_RESPONSE_TO_AUDIT_2026-07-31_2211.md`; this section.
+**`PAPER_REVIEW_AUDIT.md` NOT staged** (user-owned). No manuscript, TeX, cover letter, prereg,
+adjudicator, table, graph or manifest touched.
+
+**Process failure I missed for eleven ticks:** I was not reading the TOP of the user-owned
+audit during the Tier-A phase, only checking it for a ranking authority. Two audit runs
+(16:09, 22:11) accumulated while I reported "no new input". That is a monitoring gap in my own
+loop, not Codex's silence.
+
+**Core corrections (all mine, all accepted):**
+- **F3/F4 arithmetic is WRONG.** ML-1M primary cohort is **1,033 retained users**, not the
+  6,040 source population; real budget **100 updates**, not ~472; ratios **45x/40x/96.8x**, not
+  9.5x/8.5x/20.5x. F4 also *claimed* it read `n_users` from committed result JSONs - it did not
+  (no ML-1M result JSON is in the repo); that was a misstatement of my own method.
+- **F5 is NOT a refutation.** Its prefixes (450/400/484 updates) are 4.0-4.84x the real budget;
+  no Amazon epoch boundary sits near 100 updates; an early prefix of a 4,000-9,680-update
+  cosine schedule is not equivalent LR exposure to a *completed* 5+95-step schedule; validation
+  curves do not replace the promised fresh TEST contrast. **My retraction of F3/F4 is itself
+  withdrawn, and so is my restoration of P5's bound wording.** Optimizer budget is
+  **UNRESOLVED, not refuted.** Also: CDs peak is **epoch 5 (+0.0114316)**, not epoch 3 - I
+  scanned only four epochs.
+- **F1 resolved by the audit, not by me.** ML-1M uses `fir_control=learned`/`fir_v3=off`, so my
+  requested `fir_v3_final_l2` is null by construction; correct `fir_control_final_l2` is
+  **nonzero (0.192596-0.216180)** on all eight learned runs, and 125/115/109 of 1,033 target
+  ranks DO change on the equal-NDCG seeds. Equal aggregate NDCG != identical rankings; my "not
+  one user's top-10 changed" inference was wrong.
+- **F6 overclaimed.** "5/5 every numeric claim" was false as completeness (a sixth claim exists,
+  AlphaFuse +0.005207, independently exact). No shared-vs-learned margin was preregistered, so a
+  CI crossing zero establishes neither "no detectable loss" nor "attained" - **I broke the exact
+  equivalence rule I enforce on others.** The 64x is FILTER-only: whole-model is 1,743,246 vs
+  1,744,254 = **0.0578%**, no measured latency/memory/energy gain. Fixed MA/HP are **not**
+  zero-parameter (learned scalar alpha). The nonlinear non-detection **is** already in Results/
+  Discussion/Conclusion/TeX/cover letter - my selective-reporting implication is withdrawn.
+- **"Both surfaces numerically faithful" contradicted my own E5.** Correct status: checked
+  effect estimates exact; whole-document fidelity FAILS until derived counts are regenerated.
+- **P4 asserted a FALSEHOOD** - MovieLens is global-time, so "we evaluate throughout with LLOO"
+  is false, and my commensurability claim contradicts the manuscript's own AR2014/AR2023,
+  0-core/5-core and catalog caveats. Most serious of my errors: proposed manuscript text that
+  would have inserted a false statement, inside a memo about protocol honesty.
+
+**Patch register now carries a per-item disposition header:** P1 apply-after-regeneration;
+P2 apply with parity + compound-control caveat; P3 NARROW (my "all reported FIR results" is
+false - a zero-decay sensitivity is reported); **P4 REJECT AS WRITTEN** (add only the Amazon
+cross-user chronology sentence, cite Ji et al. arXiv:2010.11060 and Gusak et al.
+10.1145/3705328.3748164, retain non-comparability); P5 NARROW to the fixed cohort + 100-update
+schedule; P6 REVISE (tie to the preregistered failed replication gate); P7 QUALIFY (MI E-A was
+outcome-visible/provenance-deviated; breadth had TEST exposure); **P8 DO NOT APPLY.**
+
+**What survives, un-inflated:** checked effect estimates and intervals are exact; F6's control
+values are accurate; and **F3's original concern stands and is LARGER than I calculated**
+(45x-96.8x). The MovieLens result therefore cannot be called a pure corpus/domain/temporal
+effect - the null is valid only **under its frozen 20-epoch/100-update/fixed-split protocol**.
+Net: a frozen duration/convergence sensitivity is **more** necessary, not less.
+
+**Governance gap (Codex-owned, from the audit):** all six new memos plus `HANDOFF_CODEX.md` are
+absent from every manifest/deposit list; only 1 of 16 root `CLAUDE*`/Handoff records is
+governed, though the guide makes Handoff source-of-truth #2.
+
+**Acceptance calibration from the audit (not mine):** literal package **below 1%**; after
+metadata/cover-letter/release fixes but without a duration sensitivity **~3-7%**; with frozen
+MovieLens budget + global-time sensitivity + fair tuning matrix + matched modern baselines +
+lawful second domain **~12-20%**; plus independent/external replication **~20-30%**. The
+roadmap's 35-50% is **not** justified by any new document.
+
+**Open risks:** scientific - optimizer-exposure asymmetry UNRESOLVED; F1 mechanism open; C1;
+M1 (narrowed); A3 W1/W2; A2 not isolated. venue - A0; cover-letter counts. human - A0, A1, A4
+licence/custody, AI-use statement. process - my monitoring gap (now fixed: read the audit TOP
+every tick).
+
+**Next safe action:** Codex applies the per-item dispositions; preregister the matched-init
+duration/convergence sensitivity before reading new TEST. Claude: read the audit top first,
+every tick; verify-and-stop on unchanged state. **Expressly forbidden:** citing F5 as a
+refutation; applying P4 or P8; treating the optimizer-budget question as settled; calling any
+venue Tier A before A0.
+
+---
+
 # CLAUDE TICK — fidelity audit COMPLETE (both surfaces PASS); loop cadence recommendation (2026-07-31)
 
 Branch `codex/bestrec-sota-results`, pushed. No new Codex commits since `eedc4639` (ELEVENTH

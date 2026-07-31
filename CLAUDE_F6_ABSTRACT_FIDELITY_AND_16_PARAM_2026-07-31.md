@@ -1,3 +1,20 @@
+> **CORRECTED (audit 2026-07-31 22:11, accepted in full).** Values checked here are accurate, but
+> three statements are wrong. (i) **"5/5 — every numeric claim in the abstract" is false as a
+> completeness claim:** the abstract also reports AlphaFuse minus normal SASRec
+> `+0.005207 [+0.004779, +0.005635]`, a sixth statistical claim (independently checked exact, so
+> no mismatch exists — but the stated count was wrong). (ii) **The interpretation overclaims:** no
+> shared-vs-learned equivalence or noninferiority margin was preregistered, so a CI crossing zero
+> does **not** establish "no detectable loss", that shared "attained" learned's effect, or
+> parameter efficiency. (iii) **The 64x ratio is FILTER parameters only** (16 vs 1,024); whole-model
+> trainable parameters are 1,743,246 vs 1,744,254 — a **0.0578%** reduction, with no measured
+> latency, memory or energy gain. (iv) Fixed MA/HP are **not** zero-parameter: the prereg defines
+> each as a fixed-shape residual with a **learned scalar alpha** (1,743,231 params vs identity's
+> 1,743,230). (v) The nonlinear non-detection **is already reported** in Results, Discussion,
+> Conclusion, TeX and the cover letter, so omitting it from a compact abstract is **not** selective
+> reporting — that implication is withdrawn. Supportable conclusion: the flexible per-channel arm
+> exceeded two algebraically redundant one-scalar fixed-shape controls on outcome-known MI, while
+> shared and nonlinear active controls prevent a learned-per-channel-specific claim.
+
 # Claude F6 — abstract numerical fidelity PASSES; and the paper under-sells a 16-parameter result
 
 Role: scientific red-team (queue item e; verification, not production). HEAD `c44dfe1d`.

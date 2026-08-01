@@ -1,0 +1,90 @@
+{
+  "device": "mps",
+  "torch": "2.13.0",
+  "config": {
+    "d_model": 64,
+    "blocks": 2,
+    "heads": 2,
+    "fir_taps": 64,
+    "max_len": 200,
+    "smoke": true
+  },
+  "accuracy": {
+    "sasrec": [
+      {
+        "seed": 13,
+        "test_ndcg10": 0.000979600165946015,
+        "test_hr10": 0.0024834437086092716,
+        "valid_ndcg10": 0.00170438909947064,
+        "best_epoch": 2,
+        "train_s": 91.4
+      }
+    ],
+    "fir": [
+      {
+        "seed": 13,
+        "test_ndcg10": 0.0014690515505141322,
+        "test_hr10": 0.003642384105960265,
+        "valid_ndcg10": 0.001849584452972499,
+        "best_epoch": 1,
+        "train_s": 85.4
+      }
+    ]
+  },
+  "bench": {
+    "sasrec": {
+      "200": {
+        "latency_ms_median": 25.38237505359575,
+        "latency_ms_p90": 30.947971215937287,
+        "peak_mem_mb": null
+      },
+      "400": {
+        "latency_ms_median": 50.15929153887555,
+        "latency_ms_p90": 61.46049650851637,
+        "peak_mem_mb": null
+      },
+      "600": {
+        "latency_ms_median": 74.06693795928732,
+        "latency_ms_p90": 89.86769105540588,
+        "peak_mem_mb": null
+      },
+      "800": {
+        "latency_ms_median": 102.94497892027721,
+        "latency_ms_p90": 123.1998368515633,
+        "peak_mem_mb": null
+      },
+      "1000": {
+        "latency_ms_median": 134.92222898639739,
+        "latency_ms_p90": 165.08393329568207,
+        "peak_mem_mb": null
+      }
+    },
+    "fir": {
+      "200": {
+        "latency_ms_median": 31.907062453683466,
+        "latency_ms_p90": 36.75329099642113,
+        "peak_mem_mb": null
+      },
+      "400": {
+        "latency_ms_median": 54.17825048789382,
+        "latency_ms_p90": 61.420387495309114,
+        "peak_mem_mb": null
+      },
+      "600": {
+        "latency_ms_median": 76.77200000034645,
+        "latency_ms_p90": 85.84740003570914,
+        "peak_mem_mb": null
+      },
+      "800": {
+        "latency_ms_median": 100.70695797912776,
+        "latency_ms_p90": 114.69740001484752,
+        "peak_mem_mb": null
+      },
+      "1000": {
+        "latency_ms_median": 121.9327294966206,
+        "latency_ms_p90": 137.44672924512997,
+        "peak_mem_mb": null
+      }
+    }
+  }
+}

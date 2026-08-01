@@ -456,3 +456,48 @@ over funding a paper #3.
   noise (>0.01 NDCG), which none of the FIR-adjacent ideas offer.
 - Moving to a subfield where this repository's preregistration machinery is the differentiator and
   the empirical effects are larger.
+
+---
+
+## 10. FINAL verified ladder — 80 runs complete (4 datasets x 4 arms x 5 seeds)
+
+| dataset | `full` 6656 | `rank1` 360 | `shared` 104 | `none` 0 | filter effect | 64x tying cost |
+|---|---:|---:|---:|---:|---:|---:|
+| LastFM | 0.0324 | 0.0361 | 0.0345 | 0.0290 | +0.0034 | −62% **(VOID)** |
+| Beauty | 0.0300 | 0.0291 | 0.0286 | 0.0243 | +0.0057 | **24%** |
+| Toys_and_Games | 0.0375 | 0.0370 | 0.0360 | 0.0275 | +0.0100 | **15%** |
+| ML-1M | 0.1095 | 0.1005 | 0.0970 | 0.0883 | +0.0212 | **59%** |
+
+On every dataset where the pre-declared validity gate passes, channel-tying costs **15–59%** of the
+filter's contribution. **The hypothesis is refuted, not merely unsupported.** LastFM's apparent
+−62% "gain" is precisely why the gate voided it: the filter barely works there, so the ratio is
+meaningless.
+
+### 10.1 A finding that bears directly on the manuscript
+
+ML-1M has the **largest** filter effect of the four (+0.0212, 24% relative), yet
+`PREREG_FIR_EFFICIENCY_ML1M_V1` measured an exact null there (+0.0000002, CI ±7.5e-05).
+
+Two candidate explanations were tested:
+
+1. **"MovieLens resists temporal filtering."** — **ELIMINATED.** The circular filter gives +0.0212.
+2. **"Causal short kernels are too weak on ML-1M."** — **ELIMINATED.** A causal 16-tap depthwise
+   filter in the same harness gives **+0.01877, t=+7.84, 3/3 seeds** (21.6% relative). My own
+   prediction here was that it would be ≈0; it was refuted at large effect size.
+
+The remaining candidates are **the backbone** (in FMLP-Rec the filter is the *only* sequence mixer;
+in BEST-Rec the FIR is a residual on top of self-attention) and **the split** (1,033 users at
+rating≥4 under a global time cutoff, vs 6,040 under LLOO here).
+
+**Test in flight:** the BEST-Rec ladder arms — `off` / `learned` (1,024 = 64×16) / `shared` (16),
+zero-init, parameter counts matching `FIRCTRL` exactly — bolted onto **SASRec**, an attention
+backbone, on ML-1M. If FIR helps SASRec there, the backbone explanation dies and the null is a
+property of the split. Note that FMLP-Rec's own Figure 3 reports their filter *improving* SASRec,
+GRU4Rec and Caser, which argues against the backbone explanation before we even run it.
+
+**Why this matters:** the manuscript frames the ML-1M result as "the prospectively frozen
+non-Amazon result is negative". A reviewer who checks the standard ML-1M literature will find
+filters producing ~25% relative gains and will ask why ours produces exactly zero. Better to answer
+that in the paper than to be asked it. The honest scope is narrower than currently stated: *a
+causal FIR residual adds nothing given this backbone and this split* — not *temporal filtering does
+not help on MovieLens*.

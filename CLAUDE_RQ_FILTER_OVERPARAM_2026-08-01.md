@@ -325,3 +325,87 @@ the process working rather than failing. As it stands this is a workshop-note-si
 **not** a Tier-A paper, and it should not be scaled to six datasets and a second model on the
 strength of the mechanism result alone. Await Toys_and_Games and ML-1M, then decide whether the
 mechanism/behaviour tension is worth a paper in its own right.
+
+---
+
+## 8. Final results and consolidated verdict (2026-08-01, end of session)
+
+### 8.1 Both complete datasets fail noninferiority, consistently
+
+| dataset | filter effect (`full−none`) | margin Δ | `rank1` (18× cut) | `shared` (64× cut) |
+|---|---:|---:|---:|---:|
+| Beauty | +0.00570 (t=7.37) | 0.00057 | −16.5%, FAIL | −24.2%, FAIL |
+| Toys_and_Games | +0.01000 (t=7.80) | 0.00100 | −5.0%, FAIL | −15.4%, FAIL |
+
+Direction is consistent: `shared` loses more than `rank1`, both lose something, neither is
+individually significant at n=5 (|t| ≤ 2.10).
+
+**A design error of mine, owned:** the 10%-of-effect margin is *untestable at feasible n*. CI
+half-widths are ≈0.0023 against margins of 0.0006–0.0010; establishing noninferiority would need
+≈110 seeds. I fixed the margin before seeing data, which was procedurally correct, but I never
+power-checked it first. Any future prereg must set the margin from a power calculation, not from
+an appealing round number.
+
+Honest summary of the measurement: **an 18× reduction costs little and is not detectably worse; a
+64× reduction costs ~15–24% of the filter's contribution.** The parameters saved are 0.8% of the
+model, so the practical value is negligible either way.
+
+### 8.2 The causal-vs-circular 2×2 — not supported
+
+| n | interaction | t | same-sign seeds |
+|---:|---:|---:|---:|
+| 3 | +0.00430 | +4.29 | **3/3** |
+| **5** | **+0.00210** | **+1.44** | **3/5** |
+
+The encouraging n=3 signal was noise; seeds 45–46 reversed it. **The dissociation is not
+established.** I was briefly convinced by n=3 — the exact failure mode I had warned about twice.
+
+### 8.3 Mechanism hypothesis also refuted
+
+Both filter families are equally low-rank at convergence:
+
+| filter | top-1 energy | eff. rank | inter-channel \|cos\| |
+|---|---:|---:|---:|
+| circular `[26×64]` | 0.835 | 1.44 / 26 | 0.893 |
+| causal `[16×64]` | 0.769 | 1.71 / 16 | 0.833 |
+
+So spectral simplicity does **not** explain which parameterisation is trainable. The one durable
+observation is negative and general: *the structure of the learned solution does not predict
+whether the constrained parameterisation can be trained* — consistent with the post-hoc result
+(post-hoc rank-1 costs 5.6%, trained rank-1 costs 24.2%), and with the FFN being equally
+compressible (so it is not a property of filters at all).
+
+### 8.4 Directions examined and closed this session
+
+| # | direction | outcome |
+|---|---|---|
+| 1 | Dataset sequentiality predicts FIR benefit | **refuted** — length confound; sign inverts under matching |
+| 2 | Channel-tying is lossless in FMLP-Rec | **refuted** — fails margin on both datasets |
+| 3 | The filter is uniquely over-parameterised | **refuted** — FFN equally compressible |
+| 4 | Low rank explains tying tolerance | **refuted** — both families equally low-rank |
+| 5 | Causal vs circular explains it | **not supported** at n=5 |
+| 6 | Ablation studies in SR are underpowered | **novelty fails** — paired-bootstrap protocols, seed-variance and replicability studies already occupy it |
+| 7 | Exact unlearning for linear autoencoders | **novelty fails to reach 95%** — IMCorrect (arXiv 2307.15960) already instantiates on **SLIM**, GF-CF and MF. It is *approximate* ("Sherman"/"Woodbury"/"closed-form" all 0 hits), so an exactness claim survives, but it is much narrower than "the family is unoccupied". Combined with the previously refuted speedup claim and the 44.8 GB dense-`P` ceiling, the practical case is weak. |
+
+For the record, the 2026 landscape checked for #7: **ERASE** (SIGIR 2026) benchmarks 10 models
+(LightGCN, DCCF, BPR, IBCF, SimRec, GRU4Rec, NARM, SASRec, S-KNN, SRGNN) plus 6 unlearning
+methods — **no EASE/SLIM/LAE**; **Obliviate** (arXiv 2607.22665, 2026) is *approximate* and covers
+MF-BPR and LightGCN only.
+
+### 8.5 Verdict
+
+**No Tier-A-publishable research question survived this session.** Novelty was cleared at ≥95% for
+the filter-parameterisation question and the experiment was run properly — the hypothesis was
+simply false. Six further directions were killed by empirical test or by novelty check, several
+before any compute was spent, which is the cheap-kill discipline working as intended.
+
+**The filter-parameterisation seam is exhausted and should not be scaled.** Effects are ~0.001
+NDCG against seed sd ~0.002, so resolving anything here needs seed counts out of proportion to the
+value of the answer.
+
+**What this session did establish, and it is worth keeping:** the BEST-Rec FIR equivalence
+(`shared`(16) ≈ `learned`(1024), 8/8 seeds, t≈27 against identity) **does not transfer** to
+FMLP-Rec's circular frequency filter, where the same 64× tying costs 15–24%. That makes the
+16-parameter result a *specific property of the causal short-kernel design* rather than a generic
+fact about temporal filters — which strengthens the existing FIR claim's distinctiveness rather
+than diluting it. It is a sentence for the discussion section, not a paper.

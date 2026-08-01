@@ -114,3 +114,38 @@ Exploratory. The E-G evidence is from an **exposed, protocol-deviated campaign**
 a hypothesis and nothing more; it cannot support any claim. Two seeds for the per-bin selection.
 Novelty is ~80–85%, below the bar, with a named path to close it and a specific suspicion
 (classical hybrid switching) that could kill it outright. Nothing here licenses a manuscript claim.
+
+---
+
+## 7. RESULT: novelty check FAILED. Direction withdrawn. (2026-08-01, same day)
+
+The §5 suspicion — "classical hybrid switching may already do bin-targeted content allocation" —
+was correct. The check cost no compute and killed the direction, which is what it was for.
+
+**The switching-hybrid literature occupies this completely:**
+
+| prior work | what it already does |
+|---|---|
+| **Burke, hybrid recommender taxonomy (2002)** | *Switching* hybrids are a named class: use one recommender under stated conditions, switch when they fail |
+| **DailyLearner** | Content-based first; falls back to collaborative when content confidence is insufficient |
+| Published switching rules | *"switches to thematic filtering if a user has fewer than S=40 ratings (threshold chosen empirically)"*; *"fewer than five reliable neighbours"*; *"user_interaction_count < 5 → content-based"* |
+| Adaptive-weight hybrids | *"hybridization weights adaptive based on the stage… initially depending more on non-personalized strategies and shifting weight to personalized approaches as it gains more user preference knowledge"* |
+
+That last row **is** the crossover: a weight that moves from content to collaborative as
+interactions accumulate. And the thresholds have been chosen empirically for two decades.
+
+**So the E-G selection of `wt_tail=0.2, wt_mid=0.0, wt_head=0.0` is a rediscovery of a classical
+switching hybrid, not a new quantity.** The 4.1× advantage of targeted over uniform allocation is
+real and internally consistent, but it is the textbook justification for switching hybrids
+existing at all — not evidence against received wisdom.
+
+**Novelty: well below 95%. Direction withdrawn.** No compute was spent beyond two searches, which
+is the whole value of running the cheap check before the pilot.
+
+### Correction to §1 of this memo
+
+I framed the field's position ("content helps cold, not warm") as a belief our data contradicts.
+That framing was wrong in a way I should have caught: the switching literature's *entire premise*
+is that the content→collaborative handover happens gradually across sparse-but-nonzero histories,
+not at exactly zero interactions. Our data agrees with the literature; it does not contradict it.
+I built the case for §2 before checking §5, and the ordering flattered the hypothesis.

@@ -37,15 +37,20 @@ for spec in "$@"; do
 done
 echo "queued $(wc -l < "$JOBS") runs, ${NPAR} at a time"
 
-# 2 threads per worker; keep n_parallel*2 at or below your physical core count.
-# Oversubscribing here is not merely slow, it thrashes: an early attempt at
-# 32 concurrent workers on 14 cores stretched a 7 s epoch to over 15 minutes.
-export OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 VECLIB_MAXIMUM_THREADS=2
+# DEVICE=mps is strongly recommended on Apple silicon: measured ~11.6 s/epoch on
+# Beauty solo, versus ~42 s/epoch on CPU solo and ~15 MINUTES/epoch once CPU
+# workers contend. At DEVICE=mps with 4 concurrent workers, ~30 s/epoch each.
+#
+# On CPU, keep n_parallel*2 at or below your physical core count. Oversubscribing
+# is not merely slow, it thrashes: 32 workers on 14 cores turned a 7 s epoch into
+# over 15 minutes.
+export OMP_NUM_THREADS=${THREADS:-2} MKL_NUM_THREADS=${THREADS:-2} VECLIB_MAXIMUM_THREADS=${THREADS:-2}
 cat "$JOBS" | xargs -P "$NPAR" -L 1 bash -c '
   set -- $0 $@
   echo "[start] $4"
   '"$PYBIN"' main.py --model_type FMLPRec --data_name "$1" --no_cuda \
       --num_workers 0 --seed "$3" --filter_mode "$2" --train_name "$4" \
+      --device "${DEVICE:-auto}" \
       > "output/$4.stdout" 2>&1
   echo "[done ] $4"
 '

@@ -34,8 +34,25 @@ campaign. Without it the comparison is uninterpretable — see the validity gate
 ```bash
 cd experiments/filter_overparam
 PYBIN=/path/to/python ./setup.sh          # clones + pins BSARec, applies patch, verifies param counts
-./run_all.sh 6 LastFM:5 Beauty:5 Toys_and_Games:5 ML-1M:5
+
+# Apple silicon (strongly preferred):
+DEVICE=mps ./run_all.sh 4 Beauty:5 Toys_and_Games:5 ML-1M:5
+
+# CUDA: drop --no_cuda from run_all.sh. Plain CPU:
+./run_all.sh 6 Beauty:5 Toys_and_Games:5 ML-1M:5
 ```
+
+**Use a GPU if you have one — the CPU path is a trap.** Measured on Beauty:
+
+| configuration | per epoch |
+|---|---:|
+| CPU, solo | ~42 s |
+| CPU, 6 concurrent workers | **~15 min** |
+| MPS, solo | **~11.6 s** |
+| MPS, 4 concurrent | ~30 s |
+
+The CPU contention penalty is not linear — it is catastrophic. A full 200-epoch Beauty run is ~40 min
+on MPS and ~50 hours on contended CPU.
 
 `setup.sh` fails loudly if the arm parameter counts are not exactly 6656/360/104/0, so a silently
 mis-applied patch cannot produce numbers.

@@ -409,3 +409,50 @@ FMLP-Rec's circular frequency filter, where the same 64× tying costs 15–24%. 
 16-parameter result a *specific property of the causal short-kernel design* rather than a generic
 fact about temporal filters — which strengthens the existing FIR claim's distinctiveness rather
 than diluting it. It is a sentence for the discussion section, not a paper.
+
+---
+
+## 9. Search closed — eight directions, and why the neighbourhood is exhausted
+
+Continuing past §8, three further directions were generated and killed. Recording them so the
+next session does not re-derive them.
+
+| # | direction | outcome |
+|---|---|---|
+| 6 | Ablation studies in SR are underpowered | **novelty fails** — paired-bootstrap protocols (arXiv 2511.19794), seed-variance studies (CEUR Vol-3476), BERT4Rec replicability, Ferrari Dacrema |
+| 7 | Exact unlearning for linear autoencoders | **novelty fails** — **IMCorrect** (arXiv 2307.15960) instantiates on **SLIM**, GF-CF, MF. Approximate ("Sherman"/"Woodbury"/"closed-form" = 0 hits), so an exactness claim survives but is far narrower than "the family is unoccupied". Practical case already weak: speedup refuted, dense `P` is 44.8 GB on Office_Products. **The prior session's memo overstates this gap and should be corrected.** |
+| 8 | Community adaptive overfitting of standard splits (ImageNetV2-for-RecSys) | **novelty fails** — the temporal-split question is settled at Tier-A: *A Critical Study on Data Leakage in Recommender System Offline Evaluation* (**TOIS 2023**, 10.1145/3569930; 21.7–73.4% drops across four datasets), *Don't Get Ahead of Yourself* (**RecSys 2025**), *Time to Split* (2025). Cross-dataset ranking instability is separately covered by Bradley-Terry rankings (arXiv 2606.07492), which even predicts rankings on unseen datasets. |
+
+Also checked and occupied: cold-start via content/text (SEMCo 2026, sparse multimodal 2026,
+content-based initialisation RecSys 2025) — which is the natural constructive reading of the
+voided E-G tail-bin result.
+
+### Why I am stopping rather than generating a ninth
+
+The eight directions fall into exactly two buckets, and the pattern is informative:
+
+- **Five died empirically** (§8.4 #1–5). Every one was a *deflationary* claim — "component X is
+  unnecessary". They failed because these components generally **are** necessary. The measured
+  effects are ~0.001–0.006 NDCG against seed sd ~0.002, so this regime needs seed counts out of
+  all proportion to the value of the answer.
+- **Three died on novelty** (#6–8), each before compute was spent. All three were *methodological*
+  claims about evaluation — and evaluation methodology in recommender systems is a mature,
+  crowded literature with Tier-A coverage already in place.
+
+That exhausts the two framings available from this repository's assets. A ninth hypothesis drawn
+from the same well would be a guess, not a search, and I decline to dress one up as a finding.
+
+**This is a negative result about the search, and it is decision-relevant:** the marginal value of
+continued hunting adjacent to FIR is low. The evidence favours shipping the existing manuscript
+over funding a paper #3.
+
+### What would change this verdict
+
+- A **new data asset** the field lacks (proprietary logs, a genuinely private holdout with an
+  independent custodian, or online/interventional data). The custody problem this repository
+  identified in `E-G3_DESIGN.md` is real and would be *solved*, not merely described, by such an
+  asset — and that would reopen direction 8 as a constructive contribution rather than a critique.
+- A **constructive** rather than deflationary framing with a positive effect large relative to seed
+  noise (>0.01 NDCG), which none of the FIR-adjacent ideas offer.
+- Moving to a subfield where this repository's preregistration machinery is the differentiator and
+  the empirical effects are larger.

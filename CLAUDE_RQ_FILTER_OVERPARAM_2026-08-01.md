@@ -1,6 +1,14 @@
 # Claude memo — candidate RQ #2: is the learnable frequency filter over-parameterised?
 
-**STATUS: EXPLORATORY, NOT PREREGISTERED. EXPERIMENT IN FLIGHT.** Licenses no manuscript claim.
+> **RESULT 2026-08-01 — the noninferiority hypothesis FAILS on Beauty, the dataset that counts.**
+> Validity gate passes there (filter effect +0.00570, t=7.37, 0/5 seeds for `none`), and against the
+> margin declared before any run finished, `shared` costs **24.2%** of the filter's benefit and
+> `rank1` **16.5%** — **2.4× and 1.6× the margin**. Because the *point estimates already exceed the
+> margin*, more seeds cannot rescue noninferiority; ~8 seeds would instead establish strict
+> inferiority. See §7. The strong claim is withdrawn. What survives is a mechanism/behaviour
+> tension, scoped honestly in §7.3.
+
+**STATUS: EXPLORATORY, NOT PREREGISTERED.** Licenses no manuscript claim.
 Date: 2026-08-01. Role: scientific red-team. Supersedes the direction in
 [`CLAUDE_RQ_LAG_INFORMATIVENESS_2026-08-01.md`](CLAUDE_RQ_LAG_INFORMATIVENESS_2026-08-01.md),
 which was killed by [`CLAUDE_PHASE0A_RESULT_2026-08-01.md`](CLAUDE_PHASE0A_RESULT_2026-08-01.md).
@@ -229,3 +237,91 @@ Experiment in flight; **no result is claimed here**. Novelty confidence is 85–
 with a named path to close it. One backbone family; the claim would not extend to models whose
 filters are not learnable per-channel. CPU-only runs on a single machine. Margin not pre-declared,
 so this run is exploratory by construction and cannot be upgraded to confirmatory after the fact.
+
+---
+
+## 7. Results
+
+Two of four datasets complete (5 seeds × 4 arms each). Toys_and_Games and ML-1M still running.
+LastFM ran on CPU, the rest on MPS; contrasts are within-dataset and paired by seed, so each is
+internally valid, but LastFM should be re-run on MPS before any write-up.
+
+### 7.1 LastFM — VOID by the pre-declared validity gate
+
+| arm | params | NDCG@10 | vs `full` | t | seeds+ |
+|---|---:|---:|---:|---:|---:|
+| `full` | 6,656 | 0.0324 | — | — | — |
+| `rank1` | 360 | 0.0361 | +0.0038 | +3.03 | 5/5 |
+| `shared` | 104 | 0.0345 | +0.0021 | +2.60 | 4/5 |
+| `none` | 0 | 0.0290 | −0.0034 | −1.72 | 1/5 |
+
+`full − none` = +0.0034, CI **[−0.0021, +0.0089]** — spans zero. The filter does not beat the
+no-filter anchor, so no equivalence claim is interpretable. **VOID**, exactly as the gate intended.
+
+The reduced arms *beating* `full` here is an overfitting artifact on a 1,090-user corpus, not
+support for the thesis: no superiority endpoint was pre-declared, and `full ≈ none`.
+
+### 7.2 Beauty — validity gate PASSES, noninferiority FAILS
+
+| arm | params | NDCG@10 | vs `full` | t | seeds+ |
+|---|---:|---:|---:|---:|---:|
+| `full` | 6,656 | 0.0300 | — | — | — |
+| `rank1` | 360 | 0.0291 | −0.0009 | −1.18 | 2/5 |
+| `shared` | 104 | 0.0286 | −0.0014 | −1.68 | 1/5 |
+| `none` | 0 | 0.0243 | **−0.0057** | **−7.37** | **0/5** |
+
+Validity gate: `full − none` = **+0.00570**, CI [+0.0036, +0.0078], 0/5 seeds. The filter works here.
+Margin: Δ = 0.10 × 0.00570 = **+0.00057**.
+
+| contrast | loss | % of filter effect | CI95 | vs margin |
+|---|---:|---:|---|---|
+| `full − shared` | +0.00138 | **24.2%** | [−0.00089, +0.00365] | **FAIL** (2.4× Δ) |
+| `full − rank1` | +0.00094 | **16.5%** | [−0.00128, +0.00316] | **FAIL** (1.6× Δ) |
+
+The losses are not individually significant at n=5 (t = −1.68, −1.18), so this is not "shared is
+proven worse". But **the point estimates already exceed the margin**, so additional seeds cannot
+produce noninferiority — they would establish *inferiority* (≈8 seeds for `shared`). Channel-tying
+costs roughly a quarter of everything the filter buys.
+
+**The strong claim — that the 64× reduction is lossless — is refuted on the only dataset so far
+where the question is well posed.**
+
+Reproduction caveat: our `full` gives Beauty HR@10 0.0575 against the published 0.0618 (≈7% low).
+Close enough to be a plausible reproduction, not exact; it should be closed before publication.
+
+### 7.3 What survives, at its true size
+
+**The mechanism result stands and is unusually stable** (10 filters, 5 seeds × 2 layers):
+
+| quantity | mean | sd |
+|---|---:|---:|
+| top-1 singular energy | 0.826 | 0.018 |
+| effective rank / 26 | **1.462** | 0.062 |
+| inter-channel \|cos\| | 0.888 | 0.007 |
+
+**And it is in direct tension with §7.2.** The trained filter is effectively rank ~1.5 with 89%
+aligned channels — yet constraining the *parameterisation* to rank 1 costs 16–24% of its benefit.
+These are not contradictory; together they say:
+
+> **Low-rank solutions do not imply that low-rank parameterisations suffice.** The redundant
+> parameters are not redundant during optimisation, only at convergence.
+
+That is a real and clean demonstration, on a highly-cited design, of something usually argued
+abstractly. But it is a **different and smaller claim** than the one this memo set out to make, the
+inverse of the kill condition I actually pre-specified, and the general phenomenon
+(overparameterisation aids optimisation) is well known outside recommendation. **I will not
+retrofit it into a Tier-A headline.**
+
+**Second surviving observation — an architectural dissociation.** Our causal 16-tap FIR shows
+`shared`(16) ≈ `learned`(1024), 8/8 seeds. FMLP-Rec's circular full-length frequency filter shows
+`shared`(104) < `full`(6,656). Same operator class, opposite verdict — plausibly because the causal
+short kernel has far less to lose from tying. Interesting, but it is a two-model observation.
+
+### 7.4 Honest standing
+
+Novelty was cleared at ≥95% and the harness is validated and reproducible; **the hypothesis was
+simply wrong.** This is the second direction killed today by its own pre-committed test, which is
+the process working rather than failing. As it stands this is a workshop-note-sized contribution,
+**not** a Tier-A paper, and it should not be scaled to six datasets and a second model on the
+strength of the mechanism result alone. Await Toys_and_Games and ML-1M, then decide whether the
+mechanism/behaviour tension is worth a paper in its own right.

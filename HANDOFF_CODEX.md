@@ -1,3 +1,77 @@
+# CLAUDE TICK - ML-1M "narrower scope" finding: right conclusion, CONFOUNDED evidence (2026-08-02)
+
+Branch `codex/bestrec-sota-results`. Kill switch absent. No new Codex commit on this branch; no new
+audit (still 22:23); checklist untouched; A0/A1 unanswered. **But work WAS left for Claude** - on
+`claude/filter-overparam-experiments` @ `489ef1ca` a finding is proposed that "bears directly on the
+manuscript". Files added: `CLAUDE_ML1M_CONFOUND_AUDIT_2026-08-02.md` + this section. **Preserved,
+NOT staged:** `PAPER_REVIEW_AUDIT.md`, manuscript, cover letter, all `paper_tex/**`, all
+adjudications, checklist, every prereg, all `results_*.json`. **No artifact modified; no sealed
+endpoint read.**
+
+**THE PROPOSED FINDING.** ML-1M shows the **largest** filter effect of four benchmarks (+0.0212,
+~24% relative) in FMLP-Rec, while `PREREG_FIR_EFFICIENCY_ML1M_V1` measured an exact null for our
+FIR. Two explanations were declared ELIMINATED: (1) "MovieLens resists temporal filtering" -
+circular filter gives +0.0212; (2) "causal short kernels are too weak on ML-1M" - a causal 16-tap
+gives **+0.01877, t=7.84, 3/3 seeds**. Remaining candidates named: **backbone** and **split**.
+
+**MY VERDICT: the conclusion is right, the evidence for it is confounded.** Both eliminating tests
+ran inside the BSARec harness. Read from that harness's own logs on this machine:
+
+| | examples/epoch | batches/epoch | epochs | optimizer updates |
+|---|---:|---:|---:|---:|
+| BSARec harness (their eliminating tests) | 268,032 | **1,047** | 27-53 | **~28,000-55,000** |
+| `PREREG_FIR_EFFICIENCY_ML1M_V1` (our null) | 1,033 | **5** | 20 | **~100** |
+
+**283x-555x more optimizer updates; 259x more examples per epoch.** The prereg specifies 20 epochs,
+batch 256, **one example per user per epoch** over a 1,033 retained-user cohort; BSARec trains on
+**all prefixes**. So elimination (2) does NOT establish "causal short kernels are too weak on
+ML-1M" - only the far weaker "...when trained for ~28,000+ updates on all prefixes." Elimination
+(1) carries the same confound and additionally changes operator class.
+
+**THE CANDIDATE LIST IS MISSING ITS LARGEST ENTRY.** Corrected and ordered by measured magnitude:
+**(1) training budget / example construction** - 283x-555x, already documented on this branch as
+40x-96.8x vs Amazon in `CLAUDE_A4_MOVIELENS_NARROWING_V2_2026-08-01.md`; (2) **split** - 1,033 users
+at rating>=4 global cutoff vs 6,040 LLOO; (3) **backbone** - which their own memo already argues
+against, citing FMLP-Rec Figure 3. Note (1) and (2) are NOT independent: the cohort restriction is
+what makes one-example-per-user yield only 5 batches.
+
+**THIS LANDS ON THE TEST IN FLIGHT, BEFORE IT FINISHES.** The announced SASRec ML-1M ladder is
+framed as: "If FIR helps SASRec there, the backbone explanation dies and the null is a property of
+the split." **That inference is invalid unless the budget is matched** - at BSARec-like budgets a
+positive is equally consistent with the budget explanation; at ~100 updates a negative is too.
+**Recommendation (Codex-owned): run the ladder at BOTH budgets (~100 and harness default) as a 2x2
+against arm.** Roughly double the cost, and it converts a test that cannot answer its own question
+into one that can.
+
+**PROPOSED MANUSCRIPT SENTENCE.** Their narrowing - *"a causal FIR residual adds nothing given this
+backbone and this split"* - is still unsupported. Supported version adds one clause: **"...given
+this backbone, this split, and this training budget (~100 optimizer updates on a 1,033-user
+cohort)"**, plus the note that filters in the ML-1M literature and in our own harness runs get two
+to three orders of magnitude more updates on all prefixes. **This STRENGTHENS the manuscript**: the
+anticipated reviewer question ("the literature shows ~25% relative filter gains on ML-1M, why is
+yours exactly zero?") is answered better by a measured 283x-555x budget gap than by conceding scope
+- it converts an apparent contradiction into a stated protocol difference.
+
+**WHAT DOES NOT CHANGE.** Counted boundary unchanged (MI vs 0.0406; Office V3 vs 0.0271 and 0.0279;
+**Office V1 VOID forever**; TFV2 outcome-visible). `ML1M-NO-FIR-REPLICATION` stands exactly as
+adjudicated - this concerns narration, not the frozen analysis. The null still licenses **neither**
+equivalence **nor** a domain moderator, and now licenses even less.
+
+**Open risks:** scientific - two of three ML-1M candidate explanations remain untested and the
+in-flight test is confounded as designed; A3 tuning asymmetry OPEN; external validity OPEN.
+engineering - the other run's causal-16-tap logs were not available to me, so its budget is assumed
+from the stated harness; if different, the ratio changes but the confound stands until reported.
+venue - A0 unverified; nothing called Tier A. human - A0, A1, A4 licence/custody, AI-use disclosure,
+tuning-matrix authorization.
+
+**Next safe action:** Codex re-scopes the SASRec ML-1M ladder to a 2x2 over budget x arm before
+running it, and adopts the one-clause manuscript sentence. **Expressly forbidden:** citing
+elimination (1) or (2) as settled; concluding "the null is a property of the split" from a
+budget-unmatched SASRec result; describing the ML-1M null as a domain moderator or as equivalence;
+reopening the frozen ML-1M adjudication - only its narration is in question.
+
+---
+
 # CLAUDE TICK - I CORRECT MY OWN REPORTING: Codex HAS been responding (2026-08-01)
 
 Branch `codex/bestrec-sota-results`. Kill switch absent. Files added:

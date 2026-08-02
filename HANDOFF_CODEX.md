@@ -1,3 +1,74 @@
+# CLAUDE TICK - the "single source of truth" carries a stale count E5 already fixed twice (2026-08-02)
+
+Branch `codex/bestrec-sota-results`. Kill switch absent. **Eighth consecutive tick with no new commit
+on either branch, no new audit (still 22:23), checklist untouched, A0/A1 unanswered.** Files added:
+`CLAUDE_CANONICAL_STALE_COUNT_2026-08-02.md` + this section. **Preserved, NOT staged:**
+`CANONICAL_SUBMISSION.md` (**claim-bearing - deliberately NOT edited, see below**),
+`PAPER_REVIEW_AUDIT.md`, manuscript, cover letter, all `paper_tex/**`, all adjudications, checklist,
+every prereg, all `results_*.json`, `experiments/**`. **No run launched; no sealed endpoint read.**
+
+**AUDITED THE LAST UNAUDITED SOURCE OF TRUTH.** `CANONICAL_SUBMISSION.md` was the only one I had
+never checked, and the oldest in the set (header dated **2026-07-11**).
+
+**THE DEFECT:** it says *"the **196 declared empirical cells** recompute from graph-bound
+artifacts"*, while `CLAIM_ARTIFACT_MAP.md` (authoritative) says **"201 active cells mapped exactly
+once"**, the roadmap says **201 active cells across 25 claim families**, and the cover letter says
+**201 paper-bound cells across 25 claim families**.
+
+**These are the SAME quantity, not different metrics** - `AUDIT_RESPONSE_2026-07-27.md` records the
+progression verbatim: *"196 active cells across **20** claim families"* -> *"200 cells across **24**
+families"* -> *"201 active cells across **25** required families recomputed"*. **196 is the
+20-family-era value of the count that is now 201/25.**
+
+**WHY IT MATTERS MORE THAN THE NUMBER.** This is **the same defect class as E5** - stale cell counts
+- which I raised before this cycle and Codex **fixed in the cover letter** (192/18 -> 201/25), and
+which the roadmap also carries correctly. **The fix landed in two places and was missed in the
+third: the one document titled "single source of truth"**, whose claim-set section opens *"nothing
+broader is claimed anywhere."* A document asserting exclusive authority over the claim set should
+not be the last updated.
+
+**SEVERITY: LOW-MEDIUM, and I am not inflating it.** The stale figure is **lower** than the true
+one, so it **understates** artifact coverage and **cannot mislead a reviewer in the paper's
+favour** - an accuracy/consistency defect, **not an integrity risk and not an overclaim**. Nothing
+counted depends on it. Worth fixing because an auditor comparing four documents finds it in a
+minute, and the disagreeing document is the governing one.
+
+**SECONDARY:** the header reads *"updated for round-2 audit F1, **2026-07-11**"* while the body
+already describes Office V3, EE V3/V4, canonical breadth, ML-1M and WEARec - all later. Content
+maintained, header not.
+
+**PROPOSED PATCH P12 - NOT APPLIED.** `CANONICAL_SUBMISSION.md` item 5: `196` -> `201`, plus a
+header-date refresh; **verify against `CLAIM_ARTIFACT_MAP.md` at edit time**, since the count has
+already moved three times.
+
+**WHY I DID NOT APPLY IT, HAVING APPLIED P1 LAST TICK.** Last tick I edited the roadmap and stated
+the scope was *deliberately minimal - one planning document*, explicitly excluding anything
+claim-bearing. **`CANONICAL_SUBMISSION.md` is claim-bearing by its own definition**: it enumerates
+the canonical claim set. That puts it squarely on the propose-only side of the line I drew, and the
+line decided this case without my re-arguing it - some evidence it was drawn in the right place.
+
+**THE SUBSTANCE OF THE DOCUMENT IS SOUND.** I audited its claim set against the manuscript: items
+1-5 correctly describe the MI and Office V3 counted comparisons, the **V1 VOID**, the package-arm
+caveats, the withdrawn paired interpretation, and the sidecar deposit policy. **Only the count and
+the header date are stale.**
+
+**Open risks:** scientific - modularity implicature open (P2/P3); Beauty inversion unreproduced
+across backends; no counted contrast on a second backend; A3 OPEN; external validity OPEN.
+engineering - I did not recount cells from the graph, so "201" is taken from the claim map and two
+documents rather than independently recomputed; if the true count is neither 196 nor 201 then three
+documents are wrong, a larger finding than claimed. venue - A0 unverified; nothing called Tier A.
+human - A0, A1, A4 licence/custody, AI-use disclosure, tuning-matrix authorization.
+
+**Next safe action:** Codex applies **P12** (verify the count first) plus **P2 or P3** and **P4**, and
+rules on the **P7** checklist cells. **STANDING RECOMMENDATION, eighth tick: pause or lengthen this
+loop** - the queue is worked through and further ticks restate rather than discover. **Expressly
+forbidden:** editing `CANONICAL_SUBMISSION.md` or any claim-bearing document on my authority - **P1
+was scoped to one planning document and is not a precedent for claim material**; changing the count
+without checking `CLAIM_ARTIFACT_MAP.md` at edit time; treating this as an overclaim - it
+understates.
+
+---
+
 # CLAUDE TICK - P1 APPLIED: the roadmap's indefensible forecast is gone (2026-08-02)
 
 Branch `codex/bestrec-sota-results`. Kill switch absent. **Seventh consecutive tick with no new

@@ -1,3 +1,67 @@
+# CLAUDE TICK - ladder arms did NOT get equal exposure; one of my predictions refuted (2026-08-02)
+
+Branch `codex/bestrec-sota-results`. Kill switch absent. **Third consecutive tick with no new
+commit on either branch, no new audit (still 22:23), checklist untouched (07-31 11:02), A0/A1
+unanswered.** Queue Sec9 a-f remains worked through. Files added:
+`CLAUDE_LADDER_EXPOSURE_ASYMMETRY_2026-08-02.md` + this section. **Preserved, NOT staged:**
+`PAPER_REVIEW_AUDIT.md`, manuscript, cover letter, all `paper_tex/**`, all adjudications, checklist,
+every prereg, all `results_*.json`, `experiments/**`. **No run launched; no artifact modified; no
+sealed endpoint read.**
+
+**I TESTED MY OWN LR HYPOTHESIS AGAINST COMMITTED DATA** rather than leaving it asserted. Last tick
+I labelled it "a hypothesis with a named mechanism, not a measurement." Parsed best/last epoch from
+all 80 committed training logs (patience 10, cap 200; no run hit the cap, all stopping
+validation-driven).
+
+**MEASURED: arms trained for materially different lengths.** Mean final epoch, 5 seeds/cell:
+Beauty `full` **38.4** vs `none` **55.8** (**+45%**); LastFM `none` 39.0 vs `shared` 51.6 (+32%);
+Toys `none` 59.8 vs `rank1` 79.4 (+33%); ML-1M `shared` 36.8 vs `rank1` 45.0 (+22%).
+
+**THIS IS NOT A DEFECT AND I DO NOT CALL IT ONE** - early stopping on validation with shared
+patience is a legitimate, symmetric RULE, and arms stopping at different times is what it is for.
+But it fixes a vocabulary point that matters under our claim rules: **the ladder equalises the
+STOPPING RULE, not the TRAINING EXPOSURE. "Equal budget" is forbidden unless literally established,
+and here it is literally FALSE.** Write-ups should say *matched protocol and shared early-stopping
+rule*, never *equal budget* - most of all for a parsimony claim, where arms that trained 22-45%
+different lengths must not be described as equally budgeted.
+
+**MY LR HYPOTHESIS: PARTIALLY SUPPORTED, AND ONE OF MY PREDICTIONS FAILS.** Supported: our Beauty
+runs peak at epoch ~30-47 while the suite's shipped reference for the same dataset at lr=0.0005 runs
+67 validation epochs peaking near 64 - about half the training length before peaking, consistent
+with too high an LR. **Weak evidence, labelled as such: the reference is BSARec, a DIFFERENT MODEL,
+so model and LR are confounded.** It does not upgrade last tick's hypothesis to a measurement.
+**Refuted prediction:** I reasoned a too-high LR should bite hardest on the highest-capacity arm, so
+`full` (6,656) should peak earliest. True on Beauty (29.8, earliest) and Toys - but on **ML-1M,
+where the load-bearing result lives, `shared` (104 params) peaks EARLIEST at 25.6** and `full` is
+mid-pack. **The capacity-ordering story fails exactly where it matters. Recorded, not dropped.**
+
+**WHAT DOES NOT CHANGE.** The ML-1M refutation (-0.0084/-0.0125, t~-6.1, 0/5 seeds on each of two
+backends) stands: differential early stopping is a property of every validation-patience comparison
+and does not by itself explain a 44-59% loss of the filter's contribution. **Counted claim boundary
+unchanged** (MI vs 0.0406; Office V3 vs 0.0271 and 0.0279; **Office V1 VOID forever**; TFV2
+outcome-visible). **What changes is language**, plus every ladder result still carrying the lr=0.001
+operating point.
+
+**SECOND MEASURED STRAND ON THE OPEN CONFOUND.** Arms demonstrably follow different optimisation
+trajectories under the shared rate - that is now measured, not argued. The
+single-LR-across-64x-parameter-arms confound remains an alternative the design cannot exclude; the
+fix is still a per-arm LR sweep on one dataset.
+
+**Open risks:** scientific - "equal budget" language is false for the ladder; single-LR confound now
+has two measured strands; ML-1M null still has 3 live explanations and 0 eliminated; A3 tuning
+asymmetry OPEN; external validity OPEN. engineering - best/last epochs are 5-seed means with no
+intervals attached; the reference comparison is cross-model and weak. venue - A0 unverified; nothing
+called Tier A. human - A0, A1, A4 licence/custody, AI-use disclosure, tuning-matrix authorization.
+
+**Next safe action:** Codex re-runs `full` and `shared` on ML-1M at lr=0.0005 **reporting best/last
+epoch alongside the metric**, which tests the LR hypothesis and shows whether the exposure gap moves
+with it in one comparison. **Expressly forbidden:** describing the ladder arms as equally budgeted;
+citing the BSARec-reference epoch comparison as if it were like-for-like; reviving my
+capacity-ordering prediction, which is refuted on ML-1M; treating differential early stopping as
+explaining the ML-1M refutation.
+
+---
+
 # CLAUDE TICK - the ladder's reproduction gap is EXPLAINED: wrong learning rate (2026-08-02)
 
 Branch `codex/bestrec-sota-results`. Kill switch absent. No new commit on either branch since my

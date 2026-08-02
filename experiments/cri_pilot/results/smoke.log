@@ -1,0 +1,11 @@
+== CRI pilot SMOKE device=mps 2026-08-01 14:24:15
+== run noise=uniform seed=13
+  edges+noise: view=944355, cart=198029, buy=101398
+  training multi-behavior model
+    epoch   1 loss 0.6927 (36.7s)
+    epoch   2 loss 0.6931 (35.2s)
+  training pooled control
+    epoch   1 loss 0.6928 (41.3s)
+    epoch   2 loss 0.6931 (40.4s)
+  done in 167.0s AUCs: {"view": {"D": 0.5441420105233185, "SI_b": 0.49967016484348664, "SI_pooled": 0.49914272336399607, "Loss": 0.49185830613420545}, "cart": {"D": 0.5729673411077736, "SI_b": 0.5020981954670779, "SI_pooled": 0.4984705268570588, "Loss": 0.4459743784238386}, "buy": {"D": 0.5985757028436962, "SI_b": 0.4984009454743921, "SI_pooled": 0.5046752474393656, "Loss": 0.46736887230597396}}
+== all runs complete

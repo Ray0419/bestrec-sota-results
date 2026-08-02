@@ -71,14 +71,42 @@ index a48ce90..a7e3c56 100644
          x = x * weight
          sequence_emb_fft = torch.fft.irfft(x, n=seq_len, dim=1, norm='ortho')
  
+diff --git a/src/trainers.py b/src/trainers.py
+index 2738e5b..2b4f935 100644
+--- a/src/trainers.py
++++ b/src/trainers.py
+@@ -12,11 +12,21 @@ class Trainer:
+         self.args = args
+         self.logger = logger
+         self.cuda_condition = torch.cuda.is_available() and not self.args.no_cuda
+-        self.device = torch.device("cuda" if self.cuda_condition else "cpu")
++        # Apple-silicon fallback: --device mps keeps the same code path, only the
++        # tensor placement changes. FFT is supported on MPS.
++        _want = getattr(self.args, "device", "auto")
++        if self.cuda_condition:
++            self.device = torch.device("cuda")
++        elif _want == "mps" and torch.backends.mps.is_available():
++            self.device = torch.device("mps")
++        else:
++            self.device = torch.device("cpu")
+ 
+         self.model = model
+         if self.cuda_condition:
+             self.model.cuda()
++        elif self.device.type == "mps":
++            self.model.to(self.device)
+ 
+         # Setting the train and test data loader
+         self.train_dataloader = train_dataloader
 diff --git a/src/utils.py b/src/utils.py
-index 0a3a851..b48242d 100644
+index 0a3a851..a9db8fd 100644
 --- a/src/utils.py
 +++ b/src/utils.py
-@@ -77,6 +77,7 @@ def parse_args():
+@@ -77,6 +77,8 @@ def parse_args():
      parser.add_argument("--adam_beta2", default=0.999, type=float, help="adam second beta value")
      parser.add_argument("--gpu_id", default="0", type=str, help="gpu_id")
      parser.add_argument("--variance", default=5, type=float)
++    parser.add_argument("--device", default="auto", type=str, help="auto|cpu|mps")
 +    parser.add_argument("--filter_mode", default="full", type=str, help="full|shared|rank1|none")
  
      # model args

@@ -1,0 +1,25 @@
+== FIR-encoder probe SMOKE device=mps torch=2.13.0 2026-08-02 00:11:21
+   ML-1M: 6040 users, 3706 items, median len 96
+  train sasrec seed 13
+    sasrec s13 ep  1 loss 25.7147 vNDCG 0.0016 (best 0.0016@1)
+    sasrec s13 ep  2 loss 14.9100 vNDCG 0.0017 (best 0.0017@2)
+  sasrec s13: test NDCG@10 0.0010 HR@10 0.0025 (91.4s)
+  benchmark sasrec (batch 256)
+    L=200: {'latency_ms_median': 25.38237505359575, 'latency_ms_p90': 30.947971215937287, 'peak_mem_mb': None}
+    L=400: {'latency_ms_median': 50.15929153887555, 'latency_ms_p90': 61.46049650851637, 'peak_mem_mb': None}
+    L=600: {'latency_ms_median': 74.06693795928732, 'latency_ms_p90': 89.86769105540588, 'peak_mem_mb': None}
+    L=800: {'latency_ms_median': 102.94497892027721, 'latency_ms_p90': 123.1998368515633, 'peak_mem_mb': None}
+    L=1000: {'latency_ms_median': 134.92222898639739, 'latency_ms_p90': 165.08393329568207, 'peak_mem_mb': None}
+  train fir seed 13
+    fir s13 ep  1 loss 23.9333 vNDCG 0.0018 (best 0.0018@1)
+    fir s13 ep  2 loss 14.1261 vNDCG 0.0011 (best 0.0018@1)
+  fir s13: test NDCG@10 0.0015 HR@10 0.0036 (85.4s)
+  benchmark fir (batch 256)
+    L=200: {'latency_ms_median': 31.907062453683466, 'latency_ms_p90': 36.75329099642113, 'peak_mem_mb': None}
+    L=400: {'latency_ms_median': 54.17825048789382, 'latency_ms_p90': 61.420387495309114, 'peak_mem_mb': None}
+    L=600: {'latency_ms_median': 76.77200000034645, 'latency_ms_p90': 85.84740003570914, 'peak_mem_mb': None}
+    L=800: {'latency_ms_median': 100.70695797912776, 'latency_ms_p90': 114.69740001484752, 'peak_mem_mb': None}
+    L=1000: {'latency_ms_median': 121.9327294966206, 'latency_ms_p90': 137.44672924512997, 'peak_mem_mb': None}
+== sasrec: test NDCG@10 mean 0.0010 (seeds: 0.0010)
+== fir: test NDCG@10 mean 0.0015 (seeds: 0.0015)
+== probe complete

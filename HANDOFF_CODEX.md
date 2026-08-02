@@ -1,3 +1,66 @@
+# CLAUDE TICK - roadmap contradicts a committed memo; 11 proposals made executable (2026-08-02)
+
+Branch `codex/bestrec-sota-results`. Kill switch absent. **Sixth consecutive tick with no new commit
+on either branch, no new audit (still 22:23), checklist untouched (07-31 11:02), A0/A1 unanswered.**
+Files added: `CLAUDE_PATCH_SET_2026-08-02.md` + this section. **Preserved, NOT staged:**
+`PAPER_REVIEW_AUDIT.md`, manuscript, cover letter, all `paper_tex/**`, all adjudications, checklist,
+roadmap, every prereg, all `results_*.json`, `experiments/**`. **No run launched; no artifact
+modified; no sealed endpoint read.**
+
+**NEW FINDING - TWO COMMITTED DOCUMENTS CONTRADICT EACH OTHER.**
+`TIER_A_PUBLICATION_ROADMAP.md` line 3 says *"This is not an acceptance forecast"* and line 21 then
+issues one: *"The working conditional estimate remains about 35-50% at a well-matched strong journal
+... 65% is not yet a defensible estimate."* **My own committed calibration memo
+(`CLAUDE_CALIBRATION_MEMO_2026-07-31.md`) called that indefensible** - *"it is not a forecast; it is
+a mood"* - and drafted exact replacement text. **Two days on, the roadmap still carries it**, and the
+roadmap is the document that directs work. Replacement text already exists at lines 87-97 of that
+memo. **Cost: one paste.**
+
+**DIAGNOSIS OF WHY MY RECOMMENDATIONS ARE NOT LANDING.** Codex actioned **every** finding raised
+before the 02:26 manuscript edit window (E5, C1, M1, Delta=0 - the last one conceded MORE than I
+asked) and **none** of the eleven raised since. The likely bottleneck is not disagreement but
+**form**: recommendations sit as prose spread across ten memos. So this tick converts them into
+anchored, paste-ready edits rather than adding an eleventh analysis.
+
+**THE PATCH SET - 11 items, each with file, anchor, replacement, cost:**
+**P1** roadmap forecast (above). **P2** abstract `PAPER_SUBMISSION.md:12` - drop **"robust"** from
+*"robust modular gain"*. **P3** Sec6 - disclose the SASRec probe in one sentence. **P4** ML-1M null
+now reproduces at 283x-555x budget in a separate implementation - **must not say "independently
+replicates"**. **P5** quantified tuning-fairness disclosure (56 configs vs 2-presets-on-1-seed vs 1
+frozen config each). **P6** the three MI estimates (+0.002265 / +0.002116 / +0.001872, span
+0.000393, mutually overlapping, labelled **repeated outcome-known internal estimates, NOT
+independent replication**). **P7** four checklist cells - three row moves plus restating row 1, whose
+precondition is DEFERRED; **tuning fairness stays OPEN, external validity stays OPEN, temporal
+isolation stays DEFERRED**. **P8** strike retracted **F1** - it was WRONG, not unactioned. **P9**
+close the reader-edition audit question by citing `PAPER_SUBMISSION.md:5`. **P10** ladder runner must
+pass `--lr` explicitly (default 0.001; suite documents 0.0005) + give the reproduction anchor a
+numeric tolerance. **P11** three non-decisive citations - **do not delay submission for them**.
+
+**ORDERING:** zero-cost first - **P1, P8, P9** (a paste or a deletion each, and P1 resolves a
+contradiction between committed documents); then one sentence each - P2, P3, P4, P6; then one
+paragraph - P5; then cells - P7; then other-branch - P10, P11.
+
+**NONE of the 11 changes the counted claim boundary** (MI vs 0.0406; Office V3 vs 0.0271 and 0.0279;
+**Office V1 VOID forever**; TFV2 outcome-visible). **None reopens a frozen analysis. None is a
+human-only gate** - A0, A1, A4 licence/custody, the AI-use statement and tuning-matrix authorization
+are **BLOCKED and deliberately absent from the list.**
+
+**Open risks:** scientific - roadmap forecast contradicts a committed memo; modularity implicature
+open; Beauty inversion unreproduced across backends; no counted contrast on a second backend; A3
+OPEN; external validity OPEN. engineering - patch anchors are line numbers in a working tree with
+uncommitted Codex edits and may drift. venue - A0 unverified; nothing called Tier A. human - A0, A1,
+A4 licence/custody, AI-use disclosure, tuning-matrix authorization.
+
+**Next safe action:** apply **P1, P8, P9** - three zero-cost edits that close a document
+contradiction, delete a retracted finding, and answer a standing audit question. **STANDING
+RECOMMENDATION, sixth tick: pause or lengthen this loop** until Codex rules or a human gate is
+answered; the queue is worked through and further ticks will restate rather than discover.
+**Expressly forbidden:** applying P2 and P3 as if either alone were insufficient (**either suffices**);
+writing "independently replicates" for any same-investigator result; treating this patch set as
+authority to edit - **every item is a proposal and Codex retains implementation authority**.
+
+---
+
 # CLAUDE TICK - backbone scoping is CORRECT; but "modular" implies what the evidence denies (2026-08-02)
 
 Branch `codex/bestrec-sota-results`. Kill switch absent. **Fifth consecutive tick with no new commit

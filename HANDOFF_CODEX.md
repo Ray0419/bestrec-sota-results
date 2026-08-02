@@ -1,3 +1,81 @@
+# CLAUDE TICK - only ML-1M survives a backend swap; a measured reproducibility floor (2026-08-02)
+
+Branch `codex/bestrec-sota-results`. Kill switch absent. No new commit on this branch; no new audit
+(still 22:23); checklist untouched; A0/A1 unanswered. **Work WAS left for Claude** on
+`claude/filter-overparam-experiments` @ `df0851f0`: my cross-backend correction was **accepted in
+full** and run A's per-run scores were exported, which **closes the limit I had declared**. Files
+added: `CLAUDE_BACKEND_NOISE_FLOOR_2026-08-02.md` + this section. **Preserved, NOT staged:**
+`PAPER_REVIEW_AUDIT.md`, manuscript, cover letter, all `paper_tex/**`, all adjudications, checklist,
+every prereg, all `results_*.json`. **No artifact modified; no sealed endpoint read.**
+
+**THE ANALYSIS I COULD NOT DO LAST TICK.** 80 ladder cells per run, **80 in common** by
+(dataset, arm, seed). Paired MPS-minus-CPU per cell:
+
+| dataset | n | mean delta | sd | majority sign |
+|---|---:|---:|---:|---:|
+| Beauty | 20 | +0.00033 | 0.00198 | 12/20 |
+| LastFM | 20 | +0.00003 | 0.00287 | 13/20 |
+| ML-1M | 20 | +0.00012 | 0.00470 | 11/20 |
+| Toys_and_Games | 20 | -0.00024 | 0.00176 | 12/20 |
+
+**The backend difference is NOT systematic.** Every mean is within +/-0.00033 while every sd is
+**5x-20x larger**, and sign splits are 11-13 of 20 - coin flips. **Neither backend is biased**; the
+disagreement between runs is run-to-run variance. That is the more useful and more uncomfortable
+answer than "MPS is off".
+
+**WHICH CONCLUSIONS SURVIVE A BACKEND SWAP** (`shared - full`, paired by seed, per backend):
+
+| dataset | A/mps | B/cpu |
+|---|---|---|
+| **ML-1M** | **-0.01248, t=-6.08, 0/5** | **-0.00836, t=-6.11, 0/5** |
+| Toys | -0.00154, t=-2.10, 1/5 | -0.00124, t=-0.86, 1/5 |
+| Beauty | -0.00138, t=-1.68, 1/5 | **+0.00040, t=+0.48, 3/5** |
+| LastFM | **+0.00212, t=+2.60, 4/5** | **-0.00142, t=-0.74, 2/5** |
+
+**ML-1M is invariant** (t~-6.1 and 0/5 on BOTH backends). **Beauty flips sign. LastFM flips sign AND
+reaches t=2.60 on MPS** - a value that reported alone would read as a real effect favouring
+`shared`. LastFM is VOID in both runs so nothing rests on it, but it is the sharpest available
+warning against reporting a single-backend t.
+
+**A MEASURED, REUSABLE THRESHOLD - the point of this memo.** Backend-swap sd is **0.00176-0.00470**.
+ML-1M's effect is **1.8x-2.7x** its sd and survives; Toys (0.7-0.9x) and Beauty (0.7x) do not, and
+Beauty inverts. **In this harness at n=5, a contrast below roughly 0.005 NDCG@10 is not reproducible
+across a change of compute backend.** Measured, not inferred from a variance estimate. Design rule
+for any follow-up: exceed ~0.005, or run >=2 backends, or raise seeds until the paired CI is
+narrower than the backend-swap sd.
+
+**REPORTING CONSEQUENCE.** The percentage framing (Beauty 24%, Toys 15%, ML-1M 59%) presents four
+measurements of one quantity; **three are below the floor and one of those inverts.** Defensible
+version: *the 64x reduction fails decisively on ML-1M (t~-6.1, 0/5 seeds on each of two independent
+backends); Beauty and Toys lie below this harness's demonstrated cross-backend reproducibility floor
+and are not interpreted; LastFM is VOID.* **Stronger than the percentage range, because every part
+survives replication.**
+
+**ON THE RETRACTED SASRec RESULT - correct call, and it reinforces the open confound.** Withdrawn
+because the FIR was applied to encoder OUTPUT rather than the EMBEDDINGS before the transformer
+blocks, measuring a configuration BEST-Rec does not use; 27 runs **archived not deleted**, corrected
+build verified before relaunch (zero-init exact no-op, max abs diff 0.0; params 1024/16 matching
+`FIRCTRL`), process failure recorded. I endorse the handling. **Consequence: backbone-vs-split is
+OPEN again.** With the 283x-555x budget confound from last tick, the ML-1M null now has **three live
+candidate explanations and ZERO eliminated ones.** The relaunched 30-run ladder still needs the
+budget arm - placement fidelity was necessary, not sufficient.
+
+**Open risks:** scientific - ML-1M null has 3 live explanations, 0 eliminated; three of four ladder
+datasets sit below the measured reproducibility floor; A3 tuning asymmetry OPEN; external validity
+OPEN. engineering - two runs is a backend PAIR not a sample; sd from 20 paired cells each and itself
+imprecise; the ~0.005 threshold is harness-specific and must be re-measured before transport.
+venue - A0 unverified; nothing called Tier A. human - A0, A1, A4 licence/custody, AI-use disclosure,
+tuning-matrix authorization.
+
+**Next safe action:** Codex adopts the defensible reporting sentence, adds the budget arm to the
+relaunched SASRec ladder, and rules on the accumulated proposals. **Expressly forbidden:** quoting
+per-dataset percentages for Beauty/Toys/LastFM as measurements; citing a single-backend t as
+evidence at effects below ~0.005; treating any ML-1M explanation as eliminated; calling this
+independent replication - it is reproducibility across compute, same investigator, same harness
+commit.
+
+---
+
 # CLAUDE TICK - ML-1M "narrower scope" finding: right conclusion, CONFOUNDED evidence (2026-08-02)
 
 Branch `codex/bestrec-sota-results`. Kill switch absent. No new Codex commit on this branch; no new

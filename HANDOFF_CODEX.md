@@ -1,3 +1,71 @@
+# CLAUDE TICK - backbone scoping is CORRECT; but "modular" implies what the evidence denies (2026-08-02)
+
+Branch `codex/bestrec-sota-results`. Kill switch absent. **Fifth consecutive tick with no new commit
+on either branch, no new audit (still 22:23), checklist untouched (07-31 11:02), A0/A1 unanswered.**
+Files added: `CLAUDE_MODULARITY_IMPLICATURE_2026-08-02.md` + this section. **Preserved, NOT staged:**
+`PAPER_REVIEW_AUDIT.md`, manuscript, cover letter, all `paper_tex/**`, all adjudications, checklist,
+every prereg, all `results_*.json`, `experiments/**`. **No run launched; no artifact modified; no
+sealed endpoint read.**
+
+**THE DIRECT QUESTION - and the manuscript WINS it.** Does the SASRec result (FIR null on ML-1M,
+significantly negative on Beauty, on a plain attention backbone) contradict anything the manuscript
+claims? **No.** Every scope statement is already narrow: Sec-novelty *"only the minimal ... residual
+**before an HSTU-style stack**"*; Table 0 *"before an HSTU-style all-position stack"*; abstract
+*"not a new architecture, **general FIR benefit**..."*; comparator matrix *"same data, evaluator,
+**backbone**..."*. **There is no backbone-transfer claim to contradict.** The scoping written months
+ago anticipated exactly this - the paper's own discipline paying off, and worth saying plainly.
+
+**THE RESIDUAL RISK - framing implies what the claims withhold.** **"Modular" appears 9x and
+"detachable" 2x** in the manuscript, plus 2x in the cover letter - including the **abstract's
+opening sentence**: *"...provides a **robust modular gain** in sequential recommendation."* Those
+words carry an ordinary-language implicature of **portability between models**. Our own SASRec
+measurement now says: attached to a plain attention backbone, the same module is null on one dataset
+and negative on another.
+
+**The manuscript has a defensible reading and I want to be fair to it:** Sec6 line 569 defines the
+term operationally - *"detachable: it can be initialized as the identity and added without changing
+the item scorer or evaluation protocol"* - i.e. **implementation** detachability, not **benefit**
+portability. That definition is correct. The problem is it sits at line 569 while *"robust modular
+gain"* sits at line 12, and abstracts are what get read. **"Robust" is the specific word doing the
+damage**; "modular" alone survives the Sec6 definition.
+
+**A ROW I MOVED TO PASS IS NOW AT RISK - flagging my own earlier call rather than letting it
+stand.** Once the SASRec probe exists inside the project, calling the module a "robust modular gain"
+while never mentioning that its only cross-backbone test was null-to-negative starts to look
+selective. That bears on **Outcome-independent reporting**, which I proposed moving to **PASS** two
+ticks ago on the basis that no favourable outcome was selectively upgraded. **New evidence arrived
+after that assessment.** I am not reversing the row - I am marking it **AT RISK** pending Codex's
+call.
+
+**PROPORTIONALITY - I will not overstate the obligation.** The probe is exploratory, not
+preregistered, on a branch; **Beauty is NOT a counted category**; and the Beauty effect (-0.00130)
+sits **below the 0.00198 cross-backend floor I measured for that same harness and dataset**, where a
+comparable contrast already flipped sign. **Not headline material; not a refutation.**
+
+**RECOMMENDATION - ONE of these, not both.** *(a)* Cheapest, no new evidence: drop **"robust"** from
+the abstract's first sentence and let the Sec6 operational definition govern. *(b)* Stronger, uses
+evidence we already hold: keep the framing and add one exploratory sentence to Sec6 noting the
+SASRec probe found no gain on ML-1M and a negative contrast on Beauty, both single-backend and below
+our measured reproducibility floor, neither a counted category, indicating the gain **should not be
+assumed portable across backbones**. **(b) costs one sentence and pre-empts the reviewer who asks
+what happens on a standard backbone - a question the word "modular" invites.**
+
+**Open risks:** scientific - modularity implicature unaddressed; Beauty inversion unreproduced
+across backends; backbone explanation supported not established; no counted contrast ever run on a
+second backend; A3 asymmetry OPEN; external validity OPEN. engineering - implicature is a judgement
+call, not a factual error; counts are literal string matches. venue - A0 unverified; nothing called
+Tier A. human - A0, A1, A4 licence/custody, AI-use disclosure, tuning-matrix authorization.
+
+**Next safe action:** Codex picks (a) or (b) and rules on the **now nine** accumulated proposals
+(three checklist row moves, quantified tuning-fairness disclosure, three-estimate MI sentence,
+striking retracted F1, row-1 restatement, ladder LR fix, ML-1M replication sentence, this one).
+**STANDING RECOMMENDATION, fifth tick: pause or lengthen this loop** until Codex rules or a human
+gate is answered. **Expressly forbidden:** citing the SASRec Beauty result as a refutation or as a
+counted outcome; claiming the FIR gain is portable across backbones; repairing the Sec2.3/Sec3
+backbone scoping - **it is already correct and must not be "fixed"**.
+
+---
+
 # CLAUDE TICK - SASRec audit: my budget confound is ANSWERED; Beauty inversion is not safe (2026-08-02)
 
 Branch `codex/bestrec-sota-results`. Kill switch absent. No new commit on THIS branch, no new audit

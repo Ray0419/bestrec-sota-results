@@ -1,3 +1,75 @@
+# CLAUDE TICK - our own campaigns PASS the audit that caught the ladder (2026-08-02)
+
+Branch `codex/bestrec-sota-results`. Kill switch absent. **Fourth consecutive tick with no new
+commit on either branch, no new audit (still 22:23), checklist untouched (07-31 11:02), A0/A1
+unanswered.** Files added: `CLAUDE_SELF_AUDIT_LADDER_INSTRUMENTS_2026-08-02.md` + this section.
+**Preserved, NOT staged:** `PAPER_REVIEW_AUDIT.md`, manuscript, cover letter, all `paper_tex/**`,
+all adjudications, checklist, every prereg, all `results_*.json`, `experiments/**`. **No run
+launched; no artifact modified; no sealed endpoint read.**
+
+**Rather than add a fifth memo about the external experiment, I pointed its three audit instruments
+at OUR OWN campaigns.** Fair auditing means reporting the result whichever way it falls - and this
+time it falls our way on the main check.
+
+**CHECK 1 - EQUAL TRAINING EXPOSURE: WE PASS, THE LADDER FAILED.** Read from committed `FIRCTRL`
+result JSONs (training files only): **all 48 runs (6 arms x 8 seeds) completed exactly 20
+validation epochs** - `epochs set=[20]` for identity, fixed_ma, fixed_hp, nonlinear, learned and
+shared alike. Our campaign uses a **fixed budget**, not early-stopping-with-patience, so exposure is
+identical **by construction**, where the ladder's arms diverged **22%-45%**. Combined with the
+convergence measurement from 2026-08-01 (final/best **0.9995-0.9999** every arm; uniform 1-2/8 still
+rising), **both conditions hold: equal epochs AND approximately equal convergence.**
+
+**Defensible strengthening Codex may use (every number measured and committed):** *"All six arms
+trained under an identical fixed 20-epoch budget from a shared per-seed initialisation, and every
+arm finished within 0.05% of its own best validation score, so the comparison is not confounded by
+differential training exposure or differential convergence."* Note this still avoids the bare
+forbidden term **"equal budget"**, and says nothing about the **external comparators**, where A3's
+asymmetry is real and stays **OPEN**.
+
+**CHECK 2 - HARDWARE PROVENANCE: minor gap.** No `device`/`gpu`/`cuda`/`hardware` key in the
+`FIRCTRL` result JSONs or configs. The manuscript states the hardware in prose, so it is not
+undisclosed, but it is **not machine-checkable per run** unlike seeds, init hashes and parameter
+counts. Cheap to fix going forward; not worth re-running anything over.
+
+**CHECK 3 - BACKEND SENSITIVITY: unmeasured, and I am DECLINING a transport trap.** Last tick's
+cross-backend floor was **0.00176-0.00470**; our headline MI effect is **+0.002265**. The tempting
+inference is that our headline sits at or below the floor. **The two are not commensurable:** the
+ladder's deltas are independent runs across machines (init + data order + kernels all vary), while
+our contrasts are **paired on shared per-seed `init_state_sha256`, adjudicator-enforced**, with only
+the module varying. Our paired sd is **~0.000246** (back-computed from `fir_controls`
+learned-identity, CI half-width 0.000206, n=8) - **7x-19x smaller** than the ladder's cross-backend
+sd. **Making that comparison would repeat exactly the category error I committed earlier this cycle
+when I applied the 45x-96.8x cross-corpus figure to a within-corpus question and was corrected. I am
+not repeating it.**
+
+**But the genuinely open gap:** **no counted contrast has ever been executed on a second compute
+backend**, so backend sensitivity OF THE PAIRED CONTRAST is unmeasured - pairing removes init
+variance, not necessarily kernel/reduction-order differences. Cheap to close (one arm pair, one
+category, second backend), and **worth closing precisely because the naive transport is available to
+a reviewer**: a measured answer beats my argument that the transport is invalid.
+
+**NET EFFECT ON THE CLAIM SET: nothing changes.** Counted boundary unchanged (MI vs 0.0406; Office
+V3 vs 0.0271 and 0.0279; **Office V1 VOID forever**; TFV2 outcome-visible). No frozen analysis
+reopened. One strengthening available, one gap to disclose or close.
+
+**Open risks:** scientific - no second-backend execution of any counted contrast; A3 external-
+comparator asymmetry OPEN; external validity OPEN; ML-1M null still has 3 live explanations, 0
+eliminated. engineering - hardware not machine-checkable per run; exposure equality read from
+`history` lengths (validation entries, not optimizer steps); paired sd back-computed from a
+published CI. venue - A0 unverified; nothing called Tier A. human - A0, A1, A4 licence/custody,
+AI-use disclosure, tuning-matrix authorization.
+
+**Next safe action:** Codex adopts the strengthening sentence and rules on the accumulated proposals
+(three checklist row moves, quantified tuning-fairness disclosure, three-estimate MI sentence,
+striking retracted F1, row-1 restatement, ladder LR fix). **STANDING RECOMMENDATION, now fourth
+tick: pause or lengthen this loop** until Codex rules or a human gate is answered - `AUDIT_LOOP_STOP`
+is the maintainer's and every remaining blocker is a decision I must not make. **Expressly
+forbidden:** comparing our paired effect sizes to the ladder's cross-backend spread; using the bare
+term "equal budget"; extending the exposure PASS to the external comparators, where the asymmetry is
+real and OPEN.
+
+---
+
 # CLAUDE TICK - ladder arms did NOT get equal exposure; one of my predictions refuted (2026-08-02)
 
 Branch `codex/bestrec-sota-results`. Kill switch absent. **Third consecutive tick with no new

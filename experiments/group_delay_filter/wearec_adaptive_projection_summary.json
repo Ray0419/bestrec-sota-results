@@ -1,0 +1,38 @@
+{
+  "protocol": "WEAREC_ADAPTIVE_HEAD_PROJECTION_SUMMARY_V1",
+  "decision": "FEASIBILITY_SUPPORT",
+  "candidate": "DEPTH_GATED_ADAPTIVE_HEAD_COLLAPSE",
+  "mean_delta_ndcg10": 0.0011465788373812595,
+  "eligible_datasets": 2,
+  "positive_datasets": 2,
+  "abstentions": ["Beauty", "ML-1M"],
+  "test_access": "none",
+  "rows": [
+    {
+      "dataset": "LastFM",
+      "delta_ndcg10": 0.0015783823724860883,
+      "bootstrap_95_ci": [-0.0010669959261837866, 0.0043799382379286975],
+      "users_improved": 30,
+      "users_harmed": 23,
+      "users_unchanged": 1037,
+      "output_layer_fraction_saved": 0.5,
+      "whole_model_fraction_saved": 0.01028374620444572
+    },
+    {
+      "dataset": "Sports_and_Outdoors",
+      "delta_ndcg10": 0.0007147753022764305,
+      "bootstrap_95_ci": [0.0003069281029189229, 0.0011132876368080426],
+      "users_improved": 704,
+      "users_harmed": 533,
+      "users_unchanged": 34361,
+      "output_layer_fraction_saved": 0.75,
+      "whole_model_fraction_saved": 0.007897774447662056
+    }
+  ],
+  "compact_smoke": {
+    "dataset": "LastFM",
+    "encoder_max_abs_difference": 0.0,
+    "parameters_saved": 3380,
+    "latency_claim": false
+  }
+}

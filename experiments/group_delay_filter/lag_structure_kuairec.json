@@ -1,0 +1,44 @@
+{
+  "protocol": "TRAIN_WINDOW_LAG_STRUCTURE_V1",
+  "label": "kuairec",
+  "data_file": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/KuaiRec.txt",
+  "test_access": "none",
+  "window": {
+    "max_sequence_length": 50,
+    "held_out_items_per_user": 2
+  },
+  "counts": {
+    "users": 7176,
+    "unique_training_items": 5901
+  },
+  "validation_label_safe_lag_diagnostics": [
+    {
+      "lag": 1,
+      "validation_pair_seen_fraction": 0.36315496098104794,
+      "mean_validation_pair_training_support": 1.9049609810479375,
+      "validation_HR@10": 0.08040691192865106,
+      "validation_NDCG@10": 0.0471752447145508
+    },
+    {
+      "lag": 2,
+      "validation_pair_seen_fraction": 0.3518673355629877,
+      "mean_validation_pair_training_support": 1.6325250836120402,
+      "validation_HR@10": 0.07552954292084726,
+      "validation_NDCG@10": 0.044431569758276994
+    },
+    {
+      "lag": 3,
+      "validation_pair_seen_fraction": 0.3492196209587514,
+      "mean_validation_pair_training_support": 1.499721293199554,
+      "validation_HR@10": 0.07511148272017837,
+      "validation_NDCG@10": 0.043740041117614675
+    },
+    {
+      "lag": 4,
+      "validation_pair_seen_fraction": 0.334726867335563,
+      "mean_validation_pair_training_support": 1.2759197324414715,
+      "validation_HR@10": 0.07051282051282051,
+      "validation_NDCG@10": 0.03899253957362041
+    }
+  ]
+}

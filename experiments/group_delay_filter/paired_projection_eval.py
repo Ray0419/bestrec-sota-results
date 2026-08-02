@@ -60,14 +60,19 @@ def evaluate_masks(
     dataloader: DataLoader,
     rating_matrix,
     mask_values: dict[str, float],
+    device: torch.device,
 ) -> dict[str, dict[str, np.ndarray]]:
     model.eval()
     answers = []
     predictions = {name: [] for name in mask_values}
     for batch in dataloader:
         user_ids, input_ids, batch_answers, _, _ = batch
-        sequence = model.predict(input_ids, user_ids)[:, -1, :]
-        scores = torch.matmul(sequence, model.item_embeddings.weight.T).numpy()
+        sequence = model.predict(
+            input_ids.to(device), user_ids.to(device)
+        )[:, -1, :]
+        scores = torch.matmul(
+            sequence, model.item_embeddings.weight.T
+        ).cpu().numpy()
         seen = rating_matrix[user_ids.numpy()].toarray() > 0
         for name, mask_value in mask_values.items():
             masked_scores = scores.copy()
@@ -134,8 +139,13 @@ def main() -> int:
     parser.add_argument("--batch-size", type=int, default=256)
     parser.add_argument("--bootstrap-samples", type=int, default=10000)
     parser.add_argument("--seed", type=int, default=314159)
+    parser.add_argument("--device", choices=("cpu", "mps"), default="cpu")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+
+    if args.device == "mps" and not torch.backends.mps.is_available():
+        raise SystemExit("MPS was requested but is unavailable")
+    device = torch.device(args.device)
 
     sys.path.insert(0, str(args.source_dir))
     from dataset import (
@@ -165,13 +175,14 @@ def main() -> int:
     for path in (args.baseline, args.projected):
         model = FMLPRecModel(config)
         model.load_state_dict(torch.load(path, map_location="cpu", weights_only=False))
-        models.append(model)
+        models.append(model.to(device))
 
     result = {
         "protocol": "PAIRED_PROJECTION_FULL_CATALOG_V1",
         "data_name": args.data_name,
         "split": args.split,
         "filter_mode": args.filter_mode,
+        "device": str(device),
         "baseline": {"path": str(args.baseline), "sha256": sha256(args.baseline)},
         "projected": {"path": str(args.projected), "sha256": sha256(args.projected)},
         "masks": {},
@@ -181,9 +192,9 @@ def main() -> int:
         "strict_negative_infinity": -math.inf,
     }
     baseline_masks = evaluate_masks(
-        models[0], dataloader, rating_matrix, mask_values)
+        models[0], dataloader, rating_matrix, mask_values, device)
     projected_masks = evaluate_masks(
-        models[1], dataloader, rating_matrix, mask_values)
+        models[1], dataloader, rating_matrix, mask_values, device)
     for mask_name in mask_values:
         baseline = baseline_masks[mask_name]
         projected = projected_masks[mask_name]

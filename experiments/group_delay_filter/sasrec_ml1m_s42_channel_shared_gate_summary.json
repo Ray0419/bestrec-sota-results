@@ -1,0 +1,29 @@
+{
+  "protocol": "DEPTH_GATED_CHANNEL_SHARED_PROJECTION_EXPLORATORY_V1",
+  "rank1_energy_threshold": 0.905,
+  "channel_consensus_threshold": 0.97,
+  "projection": "orthogonal projection onto equal temporal response across channels",
+  "checkpoints": [
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/SASFIR_ML-1M_learned_s42.pt",
+      "checkpoint_sha256": "8915164d758ec5fc62bf5c40fdda2fad88220b1c6eefcbc4b870d8af8bd9731b",
+      "projected": "experiments/group_delay_filter/projected_channel_shared_sasrec_ml1m/SASFIR_ML-1M_learned_s42.channel_shared_projected.pt",
+      "projected_sha256": "8bbcaa900efbe33b77376b1c136a9e282afd745df02577f83788e6a002a4c61f",
+      "layers": [
+        {
+          "key": "fir_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "final_layer": true,
+          "selected": false,
+          "rank1_retained_energy": 0.814906012341348,
+          "dominant_channel_uniform_cosine": 0.9591073307779807,
+          "channel_shared_retained_energy": 0.7517373772617287
+        }
+      ]
+    }
+  ]
+}

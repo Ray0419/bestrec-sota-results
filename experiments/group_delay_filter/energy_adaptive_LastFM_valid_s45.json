@@ -1,0 +1,596 @@
+{
+  "protocol": "ENERGY_ADAPTIVE_SPARSE_FIR_V1",
+  "data_name": "LastFM",
+  "split": "valid",
+  "device": "mps",
+  "bootstrap_scope": "strict_negative_infinity/NDCG@10",
+  "checkpoints": {
+    "F": {
+      "path": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s45.pt",
+      "sha256": "020b3408d7bfcbc3d6b68e7c69bbb38dbedab66aff333fde7c949c41fd3c9b0f"
+    },
+    "E90": {
+      "path": "experiments/group_delay_filter/projected_energy_adaptive_LastFM_e0p90/LADDER_LastFM_full_s45.energy0p9.pt",
+      "sha256": "df550537f0d6b8a85bd44b89fba35f70299a4bb23f04763076d93d8d0a910d66"
+    },
+    "E95": {
+      "path": "experiments/group_delay_filter/projected_energy_adaptive_LastFM_e0p95/LADDER_LastFM_full_s45.energy0p95.pt",
+      "sha256": "686a31f74f78ab5882306b56f90605b5ec815c0a07ef307fa1bd003af0bad5ef"
+    }
+  },
+  "masks": {
+    "legacy_zero": {
+      "arms": {
+        "HR@5": {
+          "F": 0.04036697247706422,
+          "E90": 0.04220183486238532,
+          "E95": 0.04036697247706422
+        },
+        "NDCG@5": {
+          "F": 0.028827265664951172,
+          "E90": 0.029944729661560407,
+          "E95": 0.028206592104206004
+        },
+        "HR@10": {
+          "F": 0.07064220183486239,
+          "E90": 0.06972477064220184,
+          "E95": 0.07064220183486239
+        },
+        "NDCG@10": {
+          "F": 0.038641791943343544,
+          "E90": 0.03877345332662656,
+          "E95": 0.03805405004134909
+        },
+        "HR@20": {
+          "F": 0.11284403669724771,
+          "E90": 0.11009174311926606,
+          "E95": 0.11284403669724771
+        },
+        "NDCG@20": {
+          "F": 0.04927280239781272,
+          "E90": 0.04898824921487106,
+          "E95": 0.04875049465224282
+        }
+      },
+      "contrasts": {
+        "HR@5": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.001834862385321101,
+            "bootstrap_95_ci": null,
+            "users_positive": 2,
+            "users_negative": 0,
+            "users_zero": 1088,
+            "nonzero_positive_rate": 1.0
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.0,
+            "bootstrap_95_ci": null,
+            "users_positive": 0,
+            "users_negative": 0,
+            "users_zero": 1090,
+            "nonzero_positive_rate": null
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.001834862385321101,
+            "bootstrap_95_ci": null,
+            "users_positive": 2,
+            "users_negative": 0,
+            "users_zero": 1088,
+            "nonzero_positive_rate": 1.0
+          }
+        },
+        "NDCG@5": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.0011174639966092326,
+            "bootstrap_95_ci": null,
+            "users_positive": 6,
+            "users_negative": 1,
+            "users_zero": 1083,
+            "nonzero_positive_rate": 0.8571428571428571
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0006206735607451691,
+            "bootstrap_95_ci": null,
+            "users_positive": 1,
+            "users_negative": 3,
+            "users_zero": 1086,
+            "nonzero_positive_rate": 0.25
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.0017381375573544018,
+            "bootstrap_95_ci": null,
+            "users_positive": 8,
+            "users_negative": 0,
+            "users_zero": 1082,
+            "nonzero_positive_rate": 1.0
+          }
+        },
+        "HR@10": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0009174311926605505,
+            "bootstrap_95_ci": null,
+            "users_positive": 0,
+            "users_negative": 1,
+            "users_zero": 1089,
+            "nonzero_positive_rate": 0.0
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.0,
+            "bootstrap_95_ci": null,
+            "users_positive": 1,
+            "users_negative": 1,
+            "users_zero": 1088,
+            "nonzero_positive_rate": 0.5
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0009174311926605505,
+            "bootstrap_95_ci": null,
+            "users_positive": 0,
+            "users_negative": 1,
+            "users_zero": 1089,
+            "nonzero_positive_rate": 0.0
+          }
+        },
+        "NDCG@10": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.0001316613832830146,
+            "bootstrap_95_ci": null,
+            "users_positive": 11,
+            "users_negative": 8,
+            "users_zero": 1071,
+            "nonzero_positive_rate": 0.5789473684210527
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0005877419019944535,
+            "bootstrap_95_ci": null,
+            "users_positive": 9,
+            "users_negative": 8,
+            "users_zero": 1073,
+            "nonzero_positive_rate": 0.5294117647058824
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.0007194032852774682,
+            "bootstrap_95_ci": null,
+            "users_positive": 9,
+            "users_negative": 7,
+            "users_zero": 1074,
+            "nonzero_positive_rate": 0.5625
+          }
+        },
+        "HR@20": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0027522935779816515,
+            "bootstrap_95_ci": null,
+            "users_positive": 1,
+            "users_negative": 4,
+            "users_zero": 1085,
+            "nonzero_positive_rate": 0.2
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.0,
+            "bootstrap_95_ci": null,
+            "users_positive": 1,
+            "users_negative": 1,
+            "users_zero": 1088,
+            "nonzero_positive_rate": 0.5
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0027522935779816515,
+            "bootstrap_95_ci": null,
+            "users_positive": 1,
+            "users_negative": 4,
+            "users_zero": 1085,
+            "nonzero_positive_rate": 0.2
+          }
+        },
+        "NDCG@20": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0002845531829416644,
+            "bootstrap_95_ci": null,
+            "users_positive": 23,
+            "users_negative": 23,
+            "users_zero": 1044,
+            "nonzero_positive_rate": 0.5
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0005223077455699066,
+            "bootstrap_95_ci": null,
+            "users_positive": 24,
+            "users_negative": 16,
+            "users_zero": 1050,
+            "nonzero_positive_rate": 0.6
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.00023775456262824208,
+            "bootstrap_95_ci": null,
+            "users_positive": 18,
+            "users_negative": 28,
+            "users_zero": 1044,
+            "nonzero_positive_rate": 0.391304347826087
+          }
+        }
+      }
+    },
+    "strict_negative_infinity": {
+      "arms": {
+        "HR@5": {
+          "F": 0.04036697247706422,
+          "E90": 0.04220183486238532,
+          "E95": 0.04036697247706422
+        },
+        "NDCG@5": {
+          "F": 0.028827265664951172,
+          "E90": 0.029944729661560407,
+          "E95": 0.028206592104206004
+        },
+        "HR@10": {
+          "F": 0.07064220183486239,
+          "E90": 0.06972477064220184,
+          "E95": 0.07064220183486239
+        },
+        "NDCG@10": {
+          "F": 0.038641791943343544,
+          "E90": 0.03877345332662656,
+          "E95": 0.03805405004134909
+        },
+        "HR@20": {
+          "F": 0.11284403669724771,
+          "E90": 0.11009174311926606,
+          "E95": 0.11284403669724771
+        },
+        "NDCG@20": {
+          "F": 0.04927280239781272,
+          "E90": 0.04898824921487106,
+          "E95": 0.04875049465224282
+        }
+      },
+      "contrasts": {
+        "HR@5": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.001834862385321101,
+            "bootstrap_95_ci": null,
+            "users_positive": 2,
+            "users_negative": 0,
+            "users_zero": 1088,
+            "nonzero_positive_rate": 1.0
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.0,
+            "bootstrap_95_ci": null,
+            "users_positive": 0,
+            "users_negative": 0,
+            "users_zero": 1090,
+            "nonzero_positive_rate": null
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.001834862385321101,
+            "bootstrap_95_ci": null,
+            "users_positive": 2,
+            "users_negative": 0,
+            "users_zero": 1088,
+            "nonzero_positive_rate": 1.0
+          }
+        },
+        "NDCG@5": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.0011174639966092326,
+            "bootstrap_95_ci": null,
+            "users_positive": 6,
+            "users_negative": 1,
+            "users_zero": 1083,
+            "nonzero_positive_rate": 0.8571428571428571
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0006206735607451691,
+            "bootstrap_95_ci": null,
+            "users_positive": 1,
+            "users_negative": 3,
+            "users_zero": 1086,
+            "nonzero_positive_rate": 0.25
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.0017381375573544018,
+            "bootstrap_95_ci": null,
+            "users_positive": 8,
+            "users_negative": 0,
+            "users_zero": 1082,
+            "nonzero_positive_rate": 1.0
+          }
+        },
+        "HR@10": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0009174311926605505,
+            "bootstrap_95_ci": null,
+            "users_positive": 0,
+            "users_negative": 1,
+            "users_zero": 1089,
+            "nonzero_positive_rate": 0.0
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.0,
+            "bootstrap_95_ci": null,
+            "users_positive": 1,
+            "users_negative": 1,
+            "users_zero": 1088,
+            "nonzero_positive_rate": 0.5
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0009174311926605505,
+            "bootstrap_95_ci": null,
+            "users_positive": 0,
+            "users_negative": 1,
+            "users_zero": 1089,
+            "nonzero_positive_rate": 0.0
+          }
+        },
+        "NDCG@10": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.0001316613832830146,
+            "bootstrap_95_ci": [
+              -0.0011070870777623839,
+              0.0014653085178605823
+            ],
+            "users_positive": 11,
+            "users_negative": 8,
+            "users_zero": 1071,
+            "nonzero_positive_rate": 0.5789473684210527
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0005877419019944535,
+            "bootstrap_95_ci": [
+              -0.0018828768948116832,
+              0.000549815393442813
+            ],
+            "users_positive": 9,
+            "users_negative": 8,
+            "users_zero": 1073,
+            "nonzero_positive_rate": 0.5294117647058824
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.0007194032852774682,
+            "bootstrap_95_ci": [
+              -0.0003422716375294434,
+              0.0019480137404555345
+            ],
+            "users_positive": 9,
+            "users_negative": 7,
+            "users_zero": 1074,
+            "nonzero_positive_rate": 0.5625
+          }
+        },
+        "HR@20": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0027522935779816515,
+            "bootstrap_95_ci": null,
+            "users_positive": 1,
+            "users_negative": 4,
+            "users_zero": 1085,
+            "nonzero_positive_rate": 0.2
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.0,
+            "bootstrap_95_ci": null,
+            "users_positive": 1,
+            "users_negative": 1,
+            "users_zero": 1088,
+            "nonzero_positive_rate": 0.5
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0027522935779816515,
+            "bootstrap_95_ci": null,
+            "users_positive": 1,
+            "users_negative": 4,
+            "users_zero": 1085,
+            "nonzero_positive_rate": 0.2
+          }
+        },
+        "NDCG@20": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0002845531829416644,
+            "bootstrap_95_ci": null,
+            "users_positive": 23,
+            "users_negative": 23,
+            "users_zero": 1044,
+            "nonzero_positive_rate": 0.5
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 1090,
+            "delta": -0.0005223077455699066,
+            "bootstrap_95_ci": null,
+            "users_positive": 24,
+            "users_negative": 16,
+            "users_zero": 1050,
+            "nonzero_positive_rate": 0.6
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 1090,
+            "delta": 0.00023775456262824208,
+            "bootstrap_95_ci": null,
+            "users_positive": 18,
+            "users_negative": 28,
+            "users_zero": 1044,
+            "nonzero_positive_rate": 0.391304347826087
+          }
+        }
+      }
+    }
+  }
+}

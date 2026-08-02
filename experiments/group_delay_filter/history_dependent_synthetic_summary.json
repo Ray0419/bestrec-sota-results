@@ -1,0 +1,30 @@
+{
+  "protocol": "HISTORY_DEPENDENT_SYNTHETIC_DECISION_V1",
+  "date": "2026-08-02",
+  "decision": "inconclusive",
+  "test_access": "none",
+  "preregistration_sha256": "932bd6fe01f5d540239292752af1eba5ccdafcb909102c060f02e441feb8ecb2",
+  "conditions": {
+    "independent_lag2_required": {
+      "best_validation_epoch": 97,
+      "validation_ndcg_at_10": 0.8905333141319057,
+      "early_rank1_energy": 0.9267827785156921,
+      "final_rank1_energy": 0.8328532749272911,
+      "early_uniform_cosine": 0.6000328363265368,
+      "final_uniform_cosine": 0.8396519399875078,
+      "centered_embedding_top_singular_energy": 0.19506874720182021
+    },
+    "coupled_lag1_sufficient": {
+      "best_validation_epoch": 1,
+      "validation_ndcg_at_10": 0.9996309297535715,
+      "early_rank1_energy": 0.7652553731699313,
+      "final_rank1_energy": 0.7591728314132118,
+      "early_uniform_cosine": 0.9858059879340481,
+      "final_uniform_cosine": 0.986982682274433,
+      "centered_embedding_top_singular_energy": 0.03365356872750048
+    }
+  },
+  "final_energy_difference": 0.0736804435140793,
+  "mechanism_threshold": 0.905,
+  "projection_run": false
+}

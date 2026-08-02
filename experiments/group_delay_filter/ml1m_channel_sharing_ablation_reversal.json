@@ -1,0 +1,108 @@
+{
+  "protocol": "TRAIN_TIME_POSTHOC_CHANNEL_SHARING_REVERSAL_V1",
+  "status": "retrospective_exploratory",
+  "split": "test",
+  "test_access": "outcome_known",
+  "metric": "NDCG@10",
+  "rows": [
+    {
+      "seed": 42,
+      "full_trained": 0.11152741820881402,
+      "all_layers_shared_trained_from_scratch": 0.098,
+      "full_then_final_layer_posthoc_shared": 0.11754579390640588,
+      "full_minus_all_layers_trained_shared": 0.013527418208814021,
+      "final_posthoc_minus_full": 0.006018375697591852,
+      "final_posthoc_minus_all_layers_trained_shared": 0.019545793906405873,
+      "projection_artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_channel_shared_ml1m_test_s42.json",
+      "projection_artifact_sha256": "e2f4d425a6c2e3b0be4bdd6de8d10906614205a8ef50516101e8cc83293ad30e",
+      "trained_shared_log": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_shared_s42.log",
+      "trained_shared_log_sha256": "10ba561d452c4bc6a9a4060eac9a59e5debf3057c245b6d8e0e8f2e9f2570f0b"
+    },
+    {
+      "seed": 43,
+      "full_trained": 0.11024107468915201,
+      "all_layers_shared_trained_from_scratch": 0.0926,
+      "full_then_final_layer_posthoc_shared": 0.1167186092250155,
+      "full_minus_all_layers_trained_shared": 0.017641074689152006,
+      "final_posthoc_minus_full": 0.006477534535863486,
+      "final_posthoc_minus_all_layers_trained_shared": 0.02411860922501549,
+      "projection_artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_channel_shared_ml1m_test_s43.json",
+      "projection_artifact_sha256": "ec020133a05fc38ff26bfb518925472a89a96101190cf3f561c15827491f5d01",
+      "trained_shared_log": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_shared_s43.log",
+      "trained_shared_log_sha256": "d0ead0e64d7c10209cf1e1c98191bee10d95b804c7aace8cfc00b97a11ba96a3"
+    },
+    {
+      "seed": 44,
+      "full_trained": 0.10336459124654755,
+      "all_layers_shared_trained_from_scratch": 0.0984,
+      "full_then_final_layer_posthoc_shared": 0.10767018664893059,
+      "full_minus_all_layers_trained_shared": 0.004964591246547551,
+      "final_posthoc_minus_full": 0.004305595402383039,
+      "final_posthoc_minus_all_layers_trained_shared": 0.00927018664893059,
+      "projection_artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_channel_shared_ml1m_test_s44.json",
+      "projection_artifact_sha256": "7421255115a2e6428b400a704549f599ebb3a3f497060e0455755da8fb6c7ace",
+      "trained_shared_log": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_shared_s44.log",
+      "trained_shared_log_sha256": "5cb83debccf9f8e8874a1f3f5160e11df6adb15b01e1f092d37957f27b659c1c"
+    },
+    {
+      "seed": 45,
+      "full_trained": 0.11225382987343471,
+      "all_layers_shared_trained_from_scratch": 0.099,
+      "full_then_final_layer_posthoc_shared": 0.12055657790936655,
+      "full_minus_all_layers_trained_shared": 0.013253829873434708,
+      "final_posthoc_minus_full": 0.00830274803593184,
+      "final_posthoc_minus_all_layers_trained_shared": 0.021556577909366548,
+      "projection_artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_channel_shared_ml1m_test_s45.json",
+      "projection_artifact_sha256": "73a6af2c24f40cb465e8230617bd186a89dddd520b04dd8844767d692580649e",
+      "trained_shared_log": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_shared_s45.log",
+      "trained_shared_log_sha256": "0c180dbfbd992a2fd69dde765e24149742210cd0ac27febfe3fa8a3f4d66acf9"
+    },
+    {
+      "seed": 46,
+      "full_trained": 0.1100946809064076,
+      "all_layers_shared_trained_from_scratch": 0.0971,
+      "full_then_final_layer_posthoc_shared": 0.11984798653247877,
+      "full_minus_all_layers_trained_shared": 0.012994680906407596,
+      "final_posthoc_minus_full": 0.009753305626071171,
+      "final_posthoc_minus_all_layers_trained_shared": 0.022747986532478767,
+      "projection_artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_channel_shared_ml1m_test_s46.json",
+      "projection_artifact_sha256": "9a2fb2c7262fe1a450f10edd599b5078764ce84efcd72b5c7c4cc07d3b24f1cf",
+      "trained_shared_log": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_shared_s46.log",
+      "trained_shared_log_sha256": "32245ab7bd416c00e2a28c62a1f4b1793cbdd8a5c9655c447a9aaa61e95567c7"
+    }
+  ],
+  "contrasts": {
+    "full_minus_all_layers_trained_shared": {
+      "n_seeds": 5,
+      "mean": 0.012476318984871176,
+      "sample_sd": 0.004611908144730036,
+      "paired_t_95_ci": [
+        0.006749878678537176,
+        0.018202759291205177
+      ],
+      "positive_seeds": 5
+    },
+    "final_posthoc_minus_full": {
+      "n_seeds": 5,
+      "mean": 0.006971511859568277,
+      "sample_sd": 0.002107733321183341,
+      "paired_t_95_ci": [
+        0.004354415276840471,
+        0.009588608442296084
+      ],
+      "positive_seeds": 5
+    },
+    "final_posthoc_minus_all_layers_trained_shared": {
+      "n_seeds": 5,
+      "mean": 0.019447830844439455,
+      "sample_sd": 0.005931864179191026,
+      "paired_t_95_ci": [
+        0.012082448650903438,
+        0.026813213037975472
+      ],
+      "positive_seeds": 5
+    }
+  },
+  "interpretation": "The all-layers shared train-time arm loses while final-layer-only posthoc sharing improves. This is a preliminary ablation reversal, not an exact optimization-path comparison, because the depth allocations differ.",
+  "required_control": "Train an early-full/final-shared model from scratch under the same selection protocol before attributing the contrast to optimization rather than depth."
+}

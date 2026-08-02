@@ -1,0 +1,36 @@
+{
+  "protocol": "TRAIN_WINDOW_TRANSITION_STRUCTURE_V1",
+  "label": "ml1m_n4000",
+  "data_file": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/ML-1M-N4000.txt",
+  "test_access": "none",
+  "window": {
+    "max_sequence_length": 50,
+    "held_out_items_per_user": 2
+  },
+  "counts": {
+    "users": 4000,
+    "training_window_interactions": 177281,
+    "training_transitions": 173281,
+    "unique_training_items": 3351,
+    "unique_training_pairs": 127907,
+    "mean_training_window_length": 44.32025
+  },
+  "entropy_nats": {
+    "item": 7.421583090411132,
+    "item_normalized_by_uniform": 0.9143242835592964,
+    "previous": 7.419391260224407,
+    "next": 7.422914373004082,
+    "next_given_previous": 4.117618898663465,
+    "previous_next_mutual_information": 3.3052954743406175,
+    "normalized_mutual_information_by_next_entropy": 0.4452827162282018
+  },
+  "validation_label_safe_diagnostics": {
+    "pair_seen_in_training_fraction": 0.37325,
+    "mean_pair_training_support": 1.74625,
+    "mean_target_training_popularity": 150.93725,
+    "popularity_HR@10": 0.02525,
+    "popularity_NDCG@10": 0.013008404718842185,
+    "first_order_transition_HR@10": 0.1565,
+    "first_order_transition_NDCG@10": 0.0934863990883232
+  }
+}

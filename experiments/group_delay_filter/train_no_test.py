@@ -39,8 +39,8 @@ def layer_spectra(state: dict[str, torch.Tensor], threshold: float) -> list[dict
             continue
         matrix = torch.view_as_complex(value.float().contiguous()).squeeze(0)
         matrix = matrix.clone()
-        matrix[0] = matrix[0].real
-        matrix[-1] = matrix[-1].real
+        matrix[0] = matrix[0].real.clone()
+        matrix[-1] = matrix[-1].real.clone()
         singular_values = torch.linalg.svdvals(matrix).double()
         energy = singular_values.square()
         retained = (energy[0] / energy.sum()).item()
@@ -69,7 +69,27 @@ def main() -> int:
     parser.add_argument("--epochs", type=int, default=200)
     parser.add_argument("--patience", type=int, default=10)
     parser.add_argument("--threshold", type=float, default=0.905)
+    parser.add_argument("--causal-k", type=int, default=16)
+    parser.add_argument("--finalize-only", action="store_true")
+    parser.add_argument("--best-epoch", type=int)
+    parser.add_argument("--last-epoch", type=int)
+    parser.add_argument("--training-script-sha256-at-launch")
+    parser.add_argument(
+        "--filter-mode",
+        choices=("full", "late_shared", "causal_full", "causal_shared"),
+        default="full",
+    )
     args = parser.parse_args()
+
+    if args.finalize_only and (args.best_epoch is None or args.last_epoch is None):
+        raise SystemExit("--finalize-only requires --best-epoch and --last-epoch")
+    if not args.finalize_only and (
+        args.best_epoch is not None or args.last_epoch is not None
+        or args.training_script_sha256_at_launch is not None
+    ):
+        raise SystemExit(
+            "finalization metadata is only accepted with --finalize-only"
+        )
 
     source_dir = args.source_dir.resolve()
     sys.path.insert(0, str(source_dir))
@@ -97,7 +117,7 @@ def main() -> int:
         data_name=args.data_name,
         train_name=args.train_name,
         model_type="FMLPRec",
-        filter_mode="full",
+        filter_mode=args.filter_mode,
         max_seq_length=50,
         hidden_size=64,
         num_hidden_layers=2,
@@ -117,7 +137,7 @@ def main() -> int:
         device=args.device,
         seed=args.seed,
         fir_arm="off",
-        causal_k=16,
+        causal_k=args.causal_k,
     )
     checkpoint = args.output_dir / f"{args.train_name}.pt"
     log_path = args.output_dir / f"{args.train_name}.log"
@@ -126,7 +146,9 @@ def main() -> int:
     config.same_target_path = str(args.data_dir / f"{args.data_name}_same_target.npy")
 
     set_seed(args.seed)
-    logger = set_logger(str(log_path), log_name=f"egsp-{args.train_name}", mode="w")
+    logger = set_logger(
+        str(log_path), log_name=f"egsp-{args.train_name}",
+        mode="a" if args.finalize_only else "w")
     sequence, max_item, num_users = get_seq_dic(config)
     config.item_size = max_item + 1
     config.num_users = num_users + 1
@@ -141,25 +163,40 @@ def main() -> int:
     config.valid_rating_matrix = generate_rating_matrix_valid(
         sequence["user_seq"], sequence["num_users"], config.item_size)
 
-    logger.info("Protocol TEMPORAL_FILTER_NO_TEST_TRAIN_V2")
+    logger.info(
+        "Protocol TEMPORAL_FILTER_NO_TEST_FINALIZE_V1"
+        if args.finalize_only else "Protocol TEMPORAL_FILTER_NO_TEST_TRAIN_V2"
+    )
     logger.info(str(config))
     model = MODEL_DICT[config.model_type.lower()](args=config)
     trainer = Trainer(model, train_loader, valid_loader, None, config, logger)
-    stopper = EarlyStopping(
-        str(checkpoint), logger=logger, patience=args.patience, verbose=True)
-    best_epoch = None
-    last_epoch = None
-    for epoch in range(args.epochs):
-        trainer.train(epoch)
-        scores, _ = trainer.valid(epoch)
-        primary = float(scores[-1])
-        if stopper.best_score is None or primary > float(stopper.best_score[0]):
-            best_epoch = epoch
-        stopper(np.array([primary]), trainer.model)
-        last_epoch = epoch
-        if stopper.early_stop:
-            logger.info("Early stopping without test evaluation")
-            break
+    if args.finalize_only:
+        if not checkpoint.exists() or not log_path.exists():
+            raise FileNotFoundError(
+                f"finalize-only requires {checkpoint} and {log_path}"
+            )
+        best_epoch = args.best_epoch
+        last_epoch = args.last_epoch
+        logger.info(
+            f"Finalizing existing checkpoint; best_epoch={best_epoch}, "
+            f"last_epoch={last_epoch}; test remains unavailable"
+        )
+    else:
+        stopper = EarlyStopping(
+            str(checkpoint), logger=logger, patience=args.patience, verbose=True)
+        best_epoch = None
+        last_epoch = None
+        for epoch in range(args.epochs):
+            trainer.train(epoch)
+            scores, _ = trainer.valid(epoch)
+            primary = float(scores[-1])
+            if stopper.best_score is None or primary > float(stopper.best_score[0]):
+                best_epoch = epoch
+            stopper(np.array([primary]), trainer.model)
+            last_epoch = epoch
+            if stopper.early_stop:
+                logger.info("Early stopping without test evaluation")
+                break
 
     state = torch.load(checkpoint, map_location="cpu", weights_only=True)
     trainer.model.load_state_dict(state)
@@ -184,13 +221,27 @@ def main() -> int:
         "preregistration_sha256": file_hash(args.preregistration),
         "data_file": str(data_file),
         "data_file_sha256": data_sha256,
-        "training_script_sha256": file_hash(Path(__file__)),
+        "training_script_sha256": (
+            args.training_script_sha256_at_launch
+            if args.finalize_only and args.training_script_sha256_at_launch
+            else file_hash(Path(__file__))
+        ),
+        "finalizer_script_sha256": (
+            file_hash(Path(__file__)) if args.finalize_only else None
+        ),
+        "artifact_reconstructed_after_finalization_error": args.finalize_only,
         "checkpoint": str(checkpoint.resolve()),
         "checkpoint_sha256": file_hash(checkpoint),
         "log": str(log_path.resolve()),
         "log_sha256": file_hash(log_path),
         "seed": args.seed,
         "device": args.device,
+        "filter_mode": args.filter_mode,
+        "causal_k": args.causal_k,
+        "trainable_parameters": sum(
+            parameter.numel() for parameter in trainer.model.parameters()
+            if parameter.requires_grad
+        ),
         "last_epoch": last_epoch,
         "best_validation_epoch": best_epoch,
         "checkpoint_selection_metric": "validation NDCG@20",

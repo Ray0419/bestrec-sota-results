@@ -1,0 +1,130 @@
+{
+  "protocol": "ML1M_SPARSE_SUPPORT_INTERACTION_V1",
+  "mode": "fixed_recent",
+  "taps": 8,
+  "oldest_taps": 2,
+  "shared_tolerance": 1e-07,
+  "allow_channel_specific_fixed": true,
+  "checkpoints": [
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s42.pt",
+      "checkpoint_sha256": "75fb8eb50677bf5e4625f00eda69e1ecb75c3ff88fe0e20148004414d989bf93",
+      "projected": "experiments/group_delay_filter/projected_sparse_transfer_Toys_and_Games_recent/LADDER_Toys_and_Games_full_s42.fixed_recent_k8.pt",
+      "projected_sha256": "3ba207ad9d0d46d3197724d462a246a8fa812dd68c7f07dc76e6e81fde9bef07",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.4180447696715204,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "retained_impulse_energy": 0.7890532053670544,
+      "storage_quantization_max_abs_error": 1.4971167599144086e-08,
+      "excluded_tap_max_abs_after_storage": 2.4642750045960783e-09
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s43.pt",
+      "checkpoint_sha256": "653d54c95ae3bcd0398c01a1448fbfba61b997c5760e44e2146ba7ce381b4c5d",
+      "projected": "experiments/group_delay_filter/projected_sparse_transfer_Toys_and_Games_recent/LADDER_Toys_and_Games_full_s43.fixed_recent_k8.pt",
+      "projected_sha256": "628a3495a4a116ccff6687b94dc7af902ac279ffd718ba95125e3702c9f0ff13",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.4386245484018913,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "retained_impulse_energy": 0.8135506942280452,
+      "storage_quantization_max_abs_error": 1.581336082206582e-08,
+      "excluded_tap_max_abs_after_storage": 2.309801413421729e-09
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s44.pt",
+      "checkpoint_sha256": "8da72ee05cb21d98803be0611d3cbcc40660946c27e525ff9d564001a4790944",
+      "projected": "experiments/group_delay_filter/projected_sparse_transfer_Toys_and_Games_recent/LADDER_Toys_and_Games_full_s44.fixed_recent_k8.pt",
+      "projected_sha256": "00477398f7e25f83e6b9b6b82e6a5271606dad28f72416578ebdb2ee8159630c",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.3185037887051294,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "retained_impulse_energy": 0.8035561179468583,
+      "storage_quantization_max_abs_error": 1.4302982476426225e-08,
+      "excluded_tap_max_abs_after_storage": 2.8773803187974407e-09
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s45.pt",
+      "checkpoint_sha256": "142378da792433dd038c16ca96f1524f9274ad32e26da8a21899dca5c1f1da48",
+      "projected": "experiments/group_delay_filter/projected_sparse_transfer_Toys_and_Games_recent/LADDER_Toys_and_Games_full_s45.fixed_recent_k8.pt",
+      "projected_sha256": "baf7f8fb28872fa9f88c46711bfdd05f3fff7b3241b859be8cfc5d6cd2e6b90b",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.3335427712179025,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "retained_impulse_energy": 0.7997912844702785,
+      "storage_quantization_max_abs_error": 1.488513928519814e-08,
+      "excluded_tap_max_abs_after_storage": 3.0745487893811863e-09
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s46.pt",
+      "checkpoint_sha256": "a004ce2f39b48f2172eca877a78343604562c715fe93bd16216a5db301d644ac",
+      "projected": "experiments/group_delay_filter/projected_sparse_transfer_Toys_and_Games_recent/LADDER_Toys_and_Games_full_s46.fixed_recent_k8.pt",
+      "projected_sha256": "d4b8a6d82c689c01d570172b07235162fd29df152b90189ce08f0d2bb8ed7855",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.3741743820573902,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "retained_impulse_energy": 0.8052416196558934,
+      "storage_quantization_max_abs_error": 1.4834705353017341e-08,
+      "excluded_tap_max_abs_after_storage": 2.459886041096629e-09
+    }
+  ]
+}

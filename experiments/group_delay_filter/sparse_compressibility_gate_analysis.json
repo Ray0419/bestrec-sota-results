@@ -1,0 +1,163 @@
+{
+  "protocol": "EXPLORATORY_K8_COMPRESSIBILITY_GATE_V1",
+  "rows": [
+    {
+      "dataset": "ML-1M",
+      "seed": 42,
+      "retained_energy_k8": 0.892968658437079,
+      "ndcg10_delta": 0.011454109822251856
+    },
+    {
+      "dataset": "ML-1M",
+      "seed": 43,
+      "retained_energy_k8": 0.8882868415523038,
+      "ndcg10_delta": 0.006571994966936738
+    },
+    {
+      "dataset": "ML-1M",
+      "seed": 44,
+      "retained_energy_k8": 0.8946977122440362,
+      "ndcg10_delta": 0.0048901606198529434
+    },
+    {
+      "dataset": "ML-1M",
+      "seed": 45,
+      "retained_energy_k8": 0.8836406369208816,
+      "ndcg10_delta": 0.007750505826003346
+    },
+    {
+      "dataset": "ML-1M",
+      "seed": 46,
+      "retained_energy_k8": 0.890488817948179,
+      "ndcg10_delta": 0.010150619315870855
+    },
+    {
+      "dataset": "Beauty",
+      "seed": 42,
+      "retained_energy_k8": 0.7945697700296147,
+      "ndcg10_delta": -5.1210284517515314e-05
+    },
+    {
+      "dataset": "Beauty",
+      "seed": 43,
+      "retained_energy_k8": 0.7922490586162358,
+      "ndcg10_delta": 0.0002945050815383917
+    },
+    {
+      "dataset": "Beauty",
+      "seed": 44,
+      "retained_energy_k8": 0.7900223089598059,
+      "ndcg10_delta": 8.367675066835415e-05
+    },
+    {
+      "dataset": "Beauty",
+      "seed": 45,
+      "retained_energy_k8": 0.8023230885953977,
+      "ndcg10_delta": 0.00039551274178934673
+    },
+    {
+      "dataset": "Beauty",
+      "seed": 46,
+      "retained_energy_k8": 0.7924911949940024,
+      "ndcg10_delta": 2.2981579304204476e-05
+    },
+    {
+      "dataset": "LastFM",
+      "seed": 42,
+      "retained_energy_k8": 0.7783275282293968,
+      "ndcg10_delta": -0.002164666843908643
+    },
+    {
+      "dataset": "LastFM",
+      "seed": 43,
+      "retained_energy_k8": 0.7790701922991558,
+      "ndcg10_delta": -0.0007193993805801918
+    },
+    {
+      "dataset": "LastFM",
+      "seed": 44,
+      "retained_energy_k8": 0.8266619269654178,
+      "ndcg10_delta": -0.002067064803862134
+    },
+    {
+      "dataset": "LastFM",
+      "seed": 45,
+      "retained_energy_k8": 0.8243860689093254,
+      "ndcg10_delta": -0.00037484153773685764
+    },
+    {
+      "dataset": "LastFM",
+      "seed": 46,
+      "retained_energy_k8": 0.8249288829465169,
+      "ndcg10_delta": -0.000940022195031942
+    },
+    {
+      "dataset": "Toys_and_Games",
+      "seed": 42,
+      "retained_energy_k8": 0.7909930893168685,
+      "ndcg10_delta": -7.98706302067102e-05
+    },
+    {
+      "dataset": "Toys_and_Games",
+      "seed": 43,
+      "retained_energy_k8": 0.8135506942280452,
+      "ndcg10_delta": 0.00010807010219691994
+    },
+    {
+      "dataset": "Toys_and_Games",
+      "seed": 44,
+      "retained_energy_k8": 0.8035561179468583,
+      "ndcg10_delta": -8.893333819737189e-05
+    },
+    {
+      "dataset": "Toys_and_Games",
+      "seed": 45,
+      "retained_energy_k8": 0.7997912844702785,
+      "ndcg10_delta": 2.4010325064858388e-05
+    },
+    {
+      "dataset": "Toys_and_Games",
+      "seed": 46,
+      "retained_energy_k8": 0.8080593657402373,
+      "ndcg10_delta": 0.0002662289354785134
+    }
+  ],
+  "checkpoint_level": {
+    "pearson_energy_delta": 0.8821732691535603,
+    "spearman_energy_delta": 0.5458646616541353
+  },
+  "dataset_summary": {
+    "Beauty": {
+      "mean_retained_energy_k8": 0.7943310842390112,
+      "mean_ndcg10_delta": 0.00014909317375655633,
+      "positive_seeds": 4
+    },
+    "LastFM": {
+      "mean_retained_energy_k8": 0.8066749198699625,
+      "mean_ndcg10_delta": -0.0012531989522239536,
+      "positive_seeds": 0
+    },
+    "ML-1M": {
+      "mean_retained_energy_k8": 0.8900165334204958,
+      "mean_ndcg10_delta": 0.008163478110183147,
+      "positive_seeds": 5
+    },
+    "Toys_and_Games": {
+      "mean_retained_energy_k8": 0.8031901103404575,
+      "mean_ndcg10_delta": 4.590107886724193e-05,
+      "positive_seeds": 3
+    }
+  },
+  "exploratory_gate": {
+    "threshold": 0.88,
+    "selected_checkpoints": 5,
+    "selected_positive": 5,
+    "selected_negative": 0,
+    "abstained_positive": 7,
+    "abstained_negative": 8,
+    "selected_mean_delta": 0.008163478110183147,
+    "abstained_mean_delta": -0.0003527348998667185,
+    "retrospective": true
+  },
+  "interpretation_limit": "Seeds share datasets; checkpoint-level correlation is descriptive and the threshold requires prospective dataset validation."
+}

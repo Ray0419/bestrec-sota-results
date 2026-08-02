@@ -1,0 +1,117 @@
+{
+  "protocol": "TEMPORAL_FILTER_NO_TEST_TRAIN_V2",
+  "test_access": "none",
+  "completed": true,
+  "source_dir": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src",
+  "source_revision": "c80bdc0f1a889b78fe9a27e2058389cc84caea84",
+  "source_file_sha256": {
+    "dataset.py": "235a0d750df76f55236cf082e08bc0907571c674705fe858c93ba73ac78823aa",
+    "trainers.py": "680d09da0c16028ca48c00725e16e9355cbe5136a625b40f97a26252b5c06edf",
+    "model/fmlprec.py": "565307ee0e45df7466b9a11dcc786151091c7650be62e617cdd2b171f6631adb"
+  },
+  "preregistration": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/PREREG_HISTORY_DEPENDENT_SYNTHETIC_V1.md",
+  "preregistration_sha256": "932bd6fe01f5d540239292752af1eba5ccdafcb909102c060f02e441feb8ecb2",
+  "data_file": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/SyntheticIndependentPhase.txt",
+  "data_file_sha256": "d3690443b50c13815c16eb6a3013f1059063995d0b06a80bb9406f4d0c8f4f38",
+  "training_script_sha256": "2b48f2265947cffe16fa9a337e6c4b7c45c22efce8f0e5bfc557b4a7f844f8aa",
+  "checkpoint": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/prospective_history_synthetic/HISTORY_SYNTH_independent_full_s47.pt",
+  "checkpoint_sha256": "09c1922c8ddb3194e4db87d56912f9e534a3b8faf5bfae92c278c8f58cbcc4f3",
+  "log": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/prospective_history_synthetic/HISTORY_SYNTH_independent_full_s47.log",
+  "log_sha256": "033915738fb1c315fdf483df8cb8f67d18451a89f978ae88115a8bfbf336bd4e",
+  "seed": 47,
+  "device": "mps",
+  "last_epoch": 107,
+  "best_validation_epoch": 97,
+  "checkpoint_selection_metric": "validation NDCG@20",
+  "validation_scores": {
+    "HR@5": 1.0,
+    "NDCG@5": 0.8905333141319057,
+    "HR@10": 1.0,
+    "NDCG@10": 0.8905333141319057,
+    "HR@20": 1.0,
+    "NDCG@20": 0.8905333141319057,
+    "raw_log_record": "{'Epoch': 97, 'HR@5': '1.0000', 'NDCG@5': '0.8905', 'HR@10': '1.0000', 'NDCG@10': '0.8905', 'HR@20': '1.0000', 'NDCG@20': '0.8905'}"
+  },
+  "rank1_energy_threshold": 0.905,
+  "filter_spectra": [
+    {
+      "parameter": "item_encoder.blocks.0.layer.complex_weight",
+      "shape": [
+        26,
+        64
+      ],
+      "canonicalization": "DC and Nyquist responses constrained to real values",
+      "rank1_retained_energy": 0.9267827785156921,
+      "selected": true,
+      "singular_values": [
+        21.03592300415039,
+        3.1811702251434326,
+        2.313371419906616,
+        2.072655439376831,
+        1.3683209419250488,
+        1.3271442651748657,
+        1.2107967138290405,
+        1.134641408920288,
+        1.0297313928604126,
+        0.9768271446228027,
+        0.9390167593955994,
+        0.8842360377311707,
+        0.819133996963501,
+        0.8047348260879517,
+        0.7534690499305725,
+        0.7243993282318115,
+        0.6832799315452576,
+        0.6236111521720886,
+        0.5854015350341797,
+        0.5660324692726135,
+        0.5381895303726196,
+        0.4842502772808075,
+        0.46291667222976685,
+        0.429572194814682,
+        0.38591668009757996,
+        0.3528510630130768
+      ]
+    },
+    {
+      "parameter": "item_encoder.blocks.1.layer.complex_weight",
+      "shape": [
+        26,
+        64
+      ],
+      "canonicalization": "DC and Nyquist responses constrained to real values",
+      "rank1_retained_energy": 0.8328532749272911,
+      "selected": false,
+      "singular_values": [
+        16.056642532348633,
+        4.6236186027526855,
+        2.9041242599487305,
+        2.131298303604126,
+        1.5386171340942383,
+        1.3263412714004517,
+        1.2681022882461548,
+        1.1837356090545654,
+        1.07106351852417,
+        1.0527578592300415,
+        0.9858912229537964,
+        0.9295858144760132,
+        0.8743650317192078,
+        0.8591009378433228,
+        0.8191433548927307,
+        0.7825367450714111,
+        0.7341486215591431,
+        0.7053127288818359,
+        0.6807639598846436,
+        0.6277398467063904,
+        0.6109170317649841,
+        0.5607930421829224,
+        0.5067664980888367,
+        0.48208507895469666,
+        0.42618054151535034,
+        0.3484461307525635
+      ]
+    }
+  ],
+  "selected_layers": [
+    "item_encoder.blocks.0.layer.complex_weight"
+  ]
+}

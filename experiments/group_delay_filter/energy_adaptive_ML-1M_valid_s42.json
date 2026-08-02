@@ -1,0 +1,596 @@
+{
+  "protocol": "ENERGY_ADAPTIVE_SPARSE_FIR_V1",
+  "data_name": "ML-1M",
+  "split": "valid",
+  "device": "mps",
+  "bootstrap_scope": "strict_negative_infinity/NDCG@10",
+  "checkpoints": {
+    "F": {
+      "path": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s42.pt",
+      "sha256": "8d4ddc0489d1c22d2c4a13e916bb71a3618fe38aa693ec906c3064bd87e79b6b"
+    },
+    "E90": {
+      "path": "experiments/group_delay_filter/projected_energy_adaptive_ML-1M_e0p90/LADDER_ML-1M_full_s42.energy0p9.pt",
+      "sha256": "42519dd6e1f541899394c280406997061a1d66ef9b732d0b9bf19d094e1427f8"
+    },
+    "E95": {
+      "path": "experiments/group_delay_filter/projected_energy_adaptive_ML-1M_e0p95/LADDER_ML-1M_full_s42.energy0p95.pt",
+      "sha256": "9e8267f2e6d51f9b653184baa003b1c02e92759ace09c1d1885463382e2378de"
+    }
+  },
+  "masks": {
+    "legacy_zero": {
+      "arms": {
+        "HR@5": {
+          "F": 0.14503311258278145,
+          "E90": 0.15711920529801324,
+          "E95": 0.151158940397351
+        },
+        "NDCG@5": {
+          "F": 0.09304816425587661,
+          "E90": 0.10161525247911439,
+          "E95": 0.09746546673572598
+        },
+        "HR@10": {
+          "F": 0.23642384105960265,
+          "E90": 0.2554635761589404,
+          "E95": 0.24735099337748345
+        },
+        "NDCG@10": {
+          "F": 0.12242807983757274,
+          "E90": 0.13323885606010824,
+          "E95": 0.12837543962737866
+        },
+        "HR@20": {
+          "F": 0.3577814569536424,
+          "E90": 0.3754966887417219,
+          "E95": 0.3695364238410596
+        },
+        "NDCG@20": {
+          "F": 0.15311013947021854,
+          "E90": 0.16348197288998598,
+          "E95": 0.1592518622364573
+        }
+      },
+      "contrasts": {
+        "HR@5": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.012086092715231788,
+            "bootstrap_95_ci": null,
+            "users_positive": 173,
+            "users_negative": 100,
+            "users_zero": 5767,
+            "nonzero_positive_rate": 0.6336996336996337
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.006125827814569536,
+            "bootstrap_95_ci": null,
+            "users_positive": 111,
+            "users_negative": 74,
+            "users_zero": 5855,
+            "nonzero_positive_rate": 0.6
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.005960264900662252,
+            "bootstrap_95_ci": null,
+            "users_positive": 96,
+            "users_negative": 60,
+            "users_zero": 5884,
+            "nonzero_positive_rate": 0.6153846153846154
+          }
+        },
+        "NDCG@5": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.00856708822323776,
+            "bootstrap_95_ci": null,
+            "users_positive": 392,
+            "users_negative": 239,
+            "users_zero": 5409,
+            "nonzero_positive_rate": 0.6212361331220285
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.004417302479849339,
+            "bootstrap_95_ci": null,
+            "users_positive": 276,
+            "users_negative": 180,
+            "users_zero": 5584,
+            "nonzero_positive_rate": 0.6052631578947368
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.00414978574338842,
+            "bootstrap_95_ci": null,
+            "users_positive": 268,
+            "users_negative": 167,
+            "users_zero": 5605,
+            "nonzero_positive_rate": 0.6160919540229886
+          }
+        },
+        "HR@10": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.01903973509933775,
+            "bootstrap_95_ci": null,
+            "users_positive": 222,
+            "users_negative": 107,
+            "users_zero": 5711,
+            "nonzero_positive_rate": 0.6747720364741642
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.010927152317880795,
+            "bootstrap_95_ci": null,
+            "users_positive": 141,
+            "users_negative": 75,
+            "users_zero": 5824,
+            "nonzero_positive_rate": 0.6527777777777778
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.008112582781456953,
+            "bootstrap_95_ci": null,
+            "users_positive": 115,
+            "users_negative": 66,
+            "users_zero": 5859,
+            "nonzero_positive_rate": 0.6353591160220995
+          }
+        },
+        "NDCG@10": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.010810776222535507,
+            "bootstrap_95_ci": null,
+            "users_positive": 701,
+            "users_negative": 435,
+            "users_zero": 4904,
+            "nonzero_positive_rate": 0.6170774647887324
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.005947359789805901,
+            "bootstrap_95_ci": null,
+            "users_positive": 541,
+            "users_negative": 357,
+            "users_zero": 5142,
+            "nonzero_positive_rate": 0.6024498886414253
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.004863416432729604,
+            "bootstrap_95_ci": null,
+            "users_positive": 527,
+            "users_negative": 340,
+            "users_zero": 5173,
+            "nonzero_positive_rate": 0.6078431372549019
+          }
+        },
+        "HR@20": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.01771523178807947,
+            "bootstrap_95_ci": null,
+            "users_positive": 200,
+            "users_negative": 93,
+            "users_zero": 5747,
+            "nonzero_positive_rate": 0.6825938566552902
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.011754966887417218,
+            "bootstrap_95_ci": null,
+            "users_positive": 125,
+            "users_negative": 54,
+            "users_zero": 5861,
+            "nonzero_positive_rate": 0.6983240223463687
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.005960264900662252,
+            "bootstrap_95_ci": null,
+            "users_positive": 101,
+            "users_negative": 65,
+            "users_zero": 5874,
+            "nonzero_positive_rate": 0.608433734939759
+          }
+        },
+        "NDCG@20": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.010371833419767464,
+            "bootstrap_95_ci": null,
+            "users_positive": 1085,
+            "users_negative": 686,
+            "users_zero": 4269,
+            "nonzero_positive_rate": 0.6126482213438735
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.006141722766238773,
+            "bootstrap_95_ci": null,
+            "users_positive": 915,
+            "users_negative": 582,
+            "users_zero": 4543,
+            "nonzero_positive_rate": 0.6112224448897795
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.004230110653528692,
+            "bootstrap_95_ci": null,
+            "users_positive": 848,
+            "users_negative": 596,
+            "users_zero": 4596,
+            "nonzero_positive_rate": 0.5872576177285319
+          }
+        }
+      }
+    },
+    "strict_negative_infinity": {
+      "arms": {
+        "HR@5": {
+          "F": 0.14503311258278145,
+          "E90": 0.15711920529801324,
+          "E95": 0.151158940397351
+        },
+        "NDCG@5": {
+          "F": 0.09304816425587661,
+          "E90": 0.10161525247911439,
+          "E95": 0.09746546673572598
+        },
+        "HR@10": {
+          "F": 0.23642384105960265,
+          "E90": 0.2554635761589404,
+          "E95": 0.24735099337748345
+        },
+        "NDCG@10": {
+          "F": 0.12242807983757274,
+          "E90": 0.13323885606010824,
+          "E95": 0.12837543962737866
+        },
+        "HR@20": {
+          "F": 0.3577814569536424,
+          "E90": 0.3754966887417219,
+          "E95": 0.3695364238410596
+        },
+        "NDCG@20": {
+          "F": 0.15311013947021854,
+          "E90": 0.16348197288998598,
+          "E95": 0.1592518622364573
+        }
+      },
+      "contrasts": {
+        "HR@5": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.012086092715231788,
+            "bootstrap_95_ci": null,
+            "users_positive": 173,
+            "users_negative": 100,
+            "users_zero": 5767,
+            "nonzero_positive_rate": 0.6336996336996337
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.006125827814569536,
+            "bootstrap_95_ci": null,
+            "users_positive": 111,
+            "users_negative": 74,
+            "users_zero": 5855,
+            "nonzero_positive_rate": 0.6
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.005960264900662252,
+            "bootstrap_95_ci": null,
+            "users_positive": 96,
+            "users_negative": 60,
+            "users_zero": 5884,
+            "nonzero_positive_rate": 0.6153846153846154
+          }
+        },
+        "NDCG@5": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.00856708822323776,
+            "bootstrap_95_ci": null,
+            "users_positive": 392,
+            "users_negative": 239,
+            "users_zero": 5409,
+            "nonzero_positive_rate": 0.6212361331220285
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.004417302479849339,
+            "bootstrap_95_ci": null,
+            "users_positive": 276,
+            "users_negative": 180,
+            "users_zero": 5584,
+            "nonzero_positive_rate": 0.6052631578947368
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.00414978574338842,
+            "bootstrap_95_ci": null,
+            "users_positive": 268,
+            "users_negative": 167,
+            "users_zero": 5605,
+            "nonzero_positive_rate": 0.6160919540229886
+          }
+        },
+        "HR@10": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.01903973509933775,
+            "bootstrap_95_ci": null,
+            "users_positive": 222,
+            "users_negative": 107,
+            "users_zero": 5711,
+            "nonzero_positive_rate": 0.6747720364741642
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.010927152317880795,
+            "bootstrap_95_ci": null,
+            "users_positive": 141,
+            "users_negative": 75,
+            "users_zero": 5824,
+            "nonzero_positive_rate": 0.6527777777777778
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.008112582781456953,
+            "bootstrap_95_ci": null,
+            "users_positive": 115,
+            "users_negative": 66,
+            "users_zero": 5859,
+            "nonzero_positive_rate": 0.6353591160220995
+          }
+        },
+        "NDCG@10": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.010810776222535507,
+            "bootstrap_95_ci": [
+              0.008143469846942851,
+              0.013526006386584143
+            ],
+            "users_positive": 701,
+            "users_negative": 435,
+            "users_zero": 4904,
+            "nonzero_positive_rate": 0.6170774647887324
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.005947359789805901,
+            "bootstrap_95_ci": [
+              0.0039869728036022204,
+              0.007935456594431152
+            ],
+            "users_positive": 541,
+            "users_negative": 357,
+            "users_zero": 5142,
+            "nonzero_positive_rate": 0.6024498886414253
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.004863416432729604,
+            "bootstrap_95_ci": [
+              0.0028979312582726553,
+              0.006843925042537476
+            ],
+            "users_positive": 527,
+            "users_negative": 340,
+            "users_zero": 5173,
+            "nonzero_positive_rate": 0.6078431372549019
+          }
+        },
+        "HR@20": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.01771523178807947,
+            "bootstrap_95_ci": null,
+            "users_positive": 200,
+            "users_negative": 93,
+            "users_zero": 5747,
+            "nonzero_positive_rate": 0.6825938566552902
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.011754966887417218,
+            "bootstrap_95_ci": null,
+            "users_positive": 125,
+            "users_negative": 54,
+            "users_zero": 5861,
+            "nonzero_positive_rate": 0.6983240223463687
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.005960264900662252,
+            "bootstrap_95_ci": null,
+            "users_positive": 101,
+            "users_negative": 65,
+            "users_zero": 5874,
+            "nonzero_positive_rate": 0.608433734939759
+          }
+        },
+        "NDCG@20": {
+          "E90_minus_F": {
+            "coefficients": {
+              "E90": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.010371833419767464,
+            "bootstrap_95_ci": null,
+            "users_positive": 1085,
+            "users_negative": 686,
+            "users_zero": 4269,
+            "nonzero_positive_rate": 0.6126482213438735
+          },
+          "E95_minus_F": {
+            "coefficients": {
+              "E95": 1.0,
+              "F": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.006141722766238773,
+            "bootstrap_95_ci": null,
+            "users_positive": 915,
+            "users_negative": 582,
+            "users_zero": 4543,
+            "nonzero_positive_rate": 0.6112224448897795
+          },
+          "E90_minus_E95": {
+            "coefficients": {
+              "E90": 1.0,
+              "E95": -1.0
+            },
+            "n_users": 6040,
+            "delta": 0.004230110653528692,
+            "bootstrap_95_ci": null,
+            "users_positive": 848,
+            "users_negative": 596,
+            "users_zero": 4596,
+            "nonzero_positive_rate": 0.5872576177285319
+          }
+        }
+      }
+    }
+  }
+}

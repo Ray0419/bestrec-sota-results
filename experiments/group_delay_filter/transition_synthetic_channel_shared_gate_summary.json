@@ -1,0 +1,76 @@
+{
+  "protocol": "DEPTH_GATED_CHANNEL_SHARED_PROJECTION_EXPLORATORY_V1",
+  "rank1_energy_threshold": 0.905,
+  "channel_consensus_threshold": 0.97,
+  "projection": "orthogonal projection onto equal temporal response across channels",
+  "checkpoints": [
+    {
+      "checkpoint": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/prospective_transition_synthetic/TRANSITION_SYNTH_high_full_s47.pt",
+      "checkpoint_sha256": "13ae912d9fd486a226d9fbab5a9f3e4475da3f6d4531431da0030e58c9e57875",
+      "projected": "experiments/group_delay_filter/projected_channel_shared_transition_synthetic/TRANSITION_SYNTH_high_full_s47.channel_shared_projected.pt",
+      "projected_sha256": "bb6f6bf5bbc3e4f76205fa54e53fc85b22d8412345a3ca3f69a142eb6e363b38",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.3449867136195401,
+          "dominant_channel_uniform_cosine": 0.8687762195961165,
+          "channel_shared_retained_energy": 0.2665520216873694
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": true,
+          "selected": false,
+          "rank1_retained_energy": 0.34458960466974414,
+          "dominant_channel_uniform_cosine": 0.872738047158197,
+          "channel_shared_retained_energy": 0.26720454863298604
+        }
+      ]
+    },
+    {
+      "checkpoint": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/prospective_transition_synthetic/TRANSITION_SYNTH_low_full_s47.pt",
+      "checkpoint_sha256": "c5f5e2c6541588b5e9a6b5090b6b6d6b0d8b425c1876cb0d39bd8f696c7c259e",
+      "projected": "experiments/group_delay_filter/projected_channel_shared_transition_synthetic/TRANSITION_SYNTH_low_full_s47.channel_shared_projected.pt",
+      "projected_sha256": "0ac9545b275313a0ebab423021c4191b29d1aba99d3659c7e921c378c1c6c6e4",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.4900089080355718,
+          "dominant_channel_uniform_cosine": 0.8608246682224527,
+          "channel_shared_retained_energy": 0.3680847172475367
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": true,
+          "selected": false,
+          "rank1_retained_energy": 0.6760757495369932,
+          "dominant_channel_uniform_cosine": 0.8923761764148099,
+          "channel_shared_retained_energy": 0.54064299353382
+        }
+      ]
+    }
+  ]
+}

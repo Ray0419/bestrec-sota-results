@@ -57,6 +57,7 @@ def main() -> int:
             for key in state
             if key.endswith("layer.complex_weight")
             or key.endswith("layer.causal_conv.weight")
+            or key.endswith("fir_conv.weight")
         )
         if not keys:
             raise SystemExit(f"no supported temporal filter in {path}")

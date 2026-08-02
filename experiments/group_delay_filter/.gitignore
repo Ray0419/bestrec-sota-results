@@ -12,3 +12,13 @@ prospective_kuairec/*.pt
 prospective_kuairec/*.log
 prospective_kuairec/*.stdout
 prospective_kuairec/KuaiRec.zip
+prospective_transition_synthetic/*.pt
+prospective_transition_synthetic/*.log
+prospective_transition_synthetic/*.stdout
+prospective_history_synthetic/*.pt
+prospective_history_synthetic/*.log
+prospective_history_synthetic/*.stdout
+prospective_wearec_static_shared/
+prospective_late_shared/*.pt
+prospective_late_shared/*.log
+prospective_late_shared/*.stdout

@@ -1,0 +1,314 @@
+{
+  "protocol": "ITEM_EMBEDDING_SPECTRAL_CONCENTRATION_V1",
+  "label": "ml1m",
+  "label_access": "none",
+  "checkpoint_count": 5,
+  "records": [
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s42.pt",
+      "checkpoint_sha256": "8d4ddc0489d1c22d2c4a13e916bb71a3618fe38aa693ec906c3064bd87e79b6b",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.2567486023102685,
+          "stable_rank": 3.8948605406293404,
+          "entropy_effective_rank": 30.932093769889107,
+          "participation_ratio": 12.315891780814143
+        },
+        "centered": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.15665661558799013,
+          "stable_rank": 6.383388254920679,
+          "entropy_effective_rank": 40.92052757860826,
+          "participation_ratio": 23.406857790222837
+        },
+        "row_normalized": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.18178942846597565,
+          "stable_rank": 5.5008699264773995,
+          "entropy_effective_rank": 36.78452614149785,
+          "participation_ratio": 19.06083276930051
+        },
+        "row_normalized_centered": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.09781398084441152,
+          "stable_rank": 10.22348739277524,
+          "entropy_effective_rank": 44.96281044206539,
+          "participation_ratio": 31.850161300972598
+        }
+      }
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s43.pt",
+      "checkpoint_sha256": "b3f3ff00d50d78df75754ee72fd0bff15bb714b6827d62552af1b46dcd473ef2",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.26353401193731807,
+          "stable_rank": 3.7945766189673136,
+          "entropy_effective_rank": 29.35809346322021,
+          "participation_ratio": 11.697893335831058
+        },
+        "centered": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.15673052594815848,
+          "stable_rank": 6.380378001990298,
+          "entropy_effective_rank": 39.46973007961349,
+          "participation_ratio": 22.71034385113988
+        },
+        "row_normalized": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.19411824955313692,
+          "stable_rank": 5.151499162505405,
+          "entropy_effective_rank": 34.59471466633057,
+          "participation_ratio": 17.367407193370813
+        },
+        "row_normalized_centered": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.10135796436747987,
+          "stable_rank": 9.86602292420194,
+          "entropy_effective_rank": 43.17496162519317,
+          "participation_ratio": 30.09836852170915
+        }
+      }
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s44.pt",
+      "checkpoint_sha256": "83f1089782d2a5f002794cb98cf872367ce5c6cfb8369ba928e5f2416849a944",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.29001726713720016,
+          "stable_rank": 3.448070557560713,
+          "entropy_effective_rank": 25.469711056844492,
+          "participation_ratio": 9.892168974561164
+        },
+        "centered": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.15939026557538302,
+          "stable_rank": 6.273908863819878,
+          "entropy_effective_rank": 35.9969157126065,
+          "participation_ratio": 20.745150648877953
+        },
+        "row_normalized": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.22770959207563915,
+          "stable_rank": 4.3915585236647665,
+          "entropy_effective_rank": 29.717572459331773,
+          "participation_ratio": 13.797438651826292
+        },
+        "row_normalized_centered": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.10983570463471587,
+          "stable_rank": 9.104507530822806,
+          "entropy_effective_rank": 39.00820972850252,
+          "participation_ratio": 26.095699795488787
+        }
+      }
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s45.pt",
+      "checkpoint_sha256": "26a0cb3f1ec2dd1a505a0d38424ed81c8b4bc4a4626082644f3b2df0f7825d87",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.25103565157265095,
+          "stable_rank": 3.983497936390103,
+          "entropy_effective_rank": 31.282979366504264,
+          "participation_ratio": 12.683386514894972
+        },
+        "centered": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.15545426773475962,
+          "stable_rank": 6.432760030147437,
+          "entropy_effective_rank": 41.0197612544802,
+          "participation_ratio": 23.53240501703354
+        },
+        "row_normalized": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.17917337521156357,
+          "stable_rank": 5.581186372245454,
+          "entropy_effective_rank": 36.75784650618544,
+          "participation_ratio": 19.16878718245384
+        },
+        "row_normalized_centered": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.09956128684451887,
+          "stable_rank": 10.044064632889514,
+          "entropy_effective_rank": 44.742393105728986,
+          "participation_ratio": 31.30220409395147
+        }
+      }
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s46.pt",
+      "checkpoint_sha256": "1c7baeb549e807614e21a5a566b63493ee28e44fc94d9d8c3bd622f4c2f70d0b",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.25826947720643856,
+          "stable_rank": 3.8719248237014297,
+          "entropy_effective_rank": 30.004172256169635,
+          "participation_ratio": 12.05334097760597
+        },
+        "centered": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.15738129169207016,
+          "stable_rank": 6.353995378031239,
+          "entropy_effective_rank": 39.88915216548766,
+          "participation_ratio": 22.792702962492047
+        },
+        "row_normalized": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.1876803591737076,
+          "stable_rank": 5.328208046929673,
+          "entropy_effective_rank": 35.31468394466542,
+          "participation_ratio": 17.99954661251591
+        },
+        "row_normalized_centered": {
+          "rows": 3416,
+          "dimensions": 64,
+          "top_singular_energy": 0.10291151405025824,
+          "stable_rank": 9.717085685005435,
+          "entropy_effective_rank": 43.58745939020521,
+          "participation_ratio": 30.196490570763252
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "raw": {
+      "top_singular_energy": {
+        "mean": 0.26392100203277524,
+        "population_std": 0.013642434686350874,
+        "min": 0.25103565157265095,
+        "max": 0.29001726713720016
+      },
+      "stable_rank": {
+        "mean": 3.7985860954497803,
+        "population_std": 0.1853196940314041,
+        "min": 3.448070557560713,
+        "max": 3.983497936390103
+      },
+      "entropy_effective_rank": {
+        "mean": 29.40940998252554,
+        "population_std": 2.0835753562181805,
+        "min": 25.469711056844492,
+        "max": 31.282979366504264
+      },
+      "participation_ratio": {
+        "mean": 11.728536316741462,
+        "population_std": 0.9731811154676755,
+        "min": 9.892168974561164,
+        "max": 12.683386514894972
+      }
+    },
+    "centered": {
+      "top_singular_energy": {
+        "mean": 0.15712259330767228,
+        "population_std": 0.0012933232105475497,
+        "min": 0.15545426773475962,
+        "max": 0.15939026557538302
+      },
+      "stable_rank": {
+        "mean": 6.364886105781906,
+        "population_std": 0.05212420644119055,
+        "min": 6.273908863819878,
+        "max": 6.432760030147437
+      },
+      "entropy_effective_rank": {
+        "mean": 39.45921735815922,
+        "population_std": 1.8299296135860235,
+        "min": 35.9969157126065,
+        "max": 41.0197612544802
+      },
+      "participation_ratio": {
+        "mean": 22.637492053953252,
+        "population_std": 1.0003146156564842,
+        "min": 20.745150648877953,
+        "max": 23.53240501703354
+      }
+    },
+    "row_normalized": {
+      "top_singular_energy": {
+        "mean": 0.19409420089600457,
+        "population_std": 0.017579368201370127,
+        "min": 0.17917337521156357,
+        "max": 0.22770959207563915
+      },
+      "stable_rank": {
+        "mean": 5.190664406364539,
+        "population_std": 0.4260885475334495,
+        "min": 4.3915585236647665,
+        "max": 5.581186372245454
+      },
+      "entropy_effective_rank": {
+        "mean": 34.63386874360221,
+        "population_std": 2.5989082443814104,
+        "min": 29.717572459331773,
+        "max": 36.78452614149785
+      },
+      "participation_ratio": {
+        "mean": 17.478802481893474,
+        "population_std": 1.9593310658288956,
+        "min": 13.797438651826292,
+        "max": 19.16878718245384
+      }
+    },
+    "row_normalized_centered": {
+      "top_singular_energy": {
+        "mean": 0.10229609014827687,
+        "population_std": 0.004139397687729188,
+        "min": 0.09781398084441152,
+        "max": 0.10983570463471587
+      },
+      "stable_rank": {
+        "mean": 9.791033633138987,
+        "population_std": 0.38300149426001345,
+        "min": 9.104507530822806,
+        "max": 10.22348739277524
+      },
+      "entropy_effective_rank": {
+        "mean": 43.095166858339056,
+        "population_std": 2.151900768566926,
+        "min": 39.00820972850252,
+        "max": 44.96281044206539
+      },
+      "participation_ratio": {
+        "mean": 29.90858485657705,
+        "population_std": 2.0183604087027573,
+        "min": 26.095699795488787,
+        "max": 31.850161300972598
+      }
+    }
+  }
+}

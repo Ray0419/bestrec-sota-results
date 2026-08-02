@@ -1,0 +1,84 @@
+{
+  "protocol": "TEMPORAL_FILTER_SEED_CONSENSUS_V1",
+  "label": "history-dependent-cross-condition-s47",
+  "checkpoint_count": 2,
+  "phase_invariant_similarity": "absolute normalized Frobenius inner product",
+  "layers": [
+    {
+      "layer_index": 0,
+      "representation": "complex_spectral",
+      "per_checkpoint": [
+        {
+          "checkpoint": "experiments/group_delay_filter/prospective_history_synthetic/HISTORY_SYNTH_coupled_full_s47.pt",
+          "rank1_retained_energy": 0.7652553903045357,
+          "dominant_channel_uniform_cosine": 0.9858059879340481
+        },
+        {
+          "checkpoint": "experiments/group_delay_filter/prospective_history_synthetic/HISTORY_SYNTH_independent_full_s47.pt",
+          "rank1_retained_energy": 0.9267827776427576,
+          "dominant_channel_uniform_cosine": 0.6000328363265368
+        }
+      ],
+      "pairwise_consensus": {
+        "rank1_matrix_cosine": {
+          "mean": 0.3982896948587751,
+          "min": 0.3982896948587751,
+          "max": 0.3982896948587751
+        },
+        "dominant_frequency_cosine": {
+          "mean": 0.6532554620900938,
+          "min": 0.6532554620900938,
+          "max": 0.6532554620900938
+        },
+        "dominant_channel_cosine": {
+          "mean": 0.6096997544948883,
+          "min": 0.6096997544948883,
+          "max": 0.6096997544948883
+        },
+        "tail_matrix_cosine": {
+          "mean": 0.013358015964641907,
+          "min": 0.013358015964641907,
+          "max": 0.013358015964641907
+        }
+      }
+    },
+    {
+      "layer_index": 1,
+      "representation": "complex_spectral",
+      "per_checkpoint": [
+        {
+          "checkpoint": "experiments/group_delay_filter/prospective_history_synthetic/HISTORY_SYNTH_coupled_full_s47.pt",
+          "rank1_retained_energy": 0.759172783189382,
+          "dominant_channel_uniform_cosine": 0.986982682274433
+        },
+        {
+          "checkpoint": "experiments/group_delay_filter/prospective_history_synthetic/HISTORY_SYNTH_independent_full_s47.pt",
+          "rank1_retained_energy": 0.8328532725128308,
+          "dominant_channel_uniform_cosine": 0.8396519399875078
+        }
+      ],
+      "pairwise_consensus": {
+        "rank1_matrix_cosine": {
+          "mean": 0.5915065633952417,
+          "min": 0.5915065633952417,
+          "max": 0.5915065633952417
+        },
+        "dominant_frequency_cosine": {
+          "mean": 0.704868414447478,
+          "min": 0.704868414447478,
+          "max": 0.704868414447478
+        },
+        "dominant_channel_cosine": {
+          "mean": 0.8391730304143407,
+          "min": 0.8391730304143407,
+          "max": 0.8391730304143407
+        },
+        "tail_matrix_cosine": {
+          "mean": 0.0039025483825474955,
+          "min": 0.0039025483825474955,
+          "max": 0.0039025483825474955
+        }
+      }
+    }
+  ]
+}

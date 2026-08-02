@@ -1,0 +1,52 @@
+{
+  "protocol": "TRAIN_WINDOW_LAG_STRUCTURE_V1",
+  "label": "yelp",
+  "data_file": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/Yelp.txt",
+  "test_access": "none",
+  "window": {
+    "max_sequence_length": 50,
+    "held_out_items_per_user": 2
+  },
+  "counts": {
+    "users": 30431,
+    "unique_training_items": 20014
+  },
+  "validation_label_safe_lag_diagnostics": [
+    {
+      "lag": 1,
+      "evaluated_users": 30431,
+      "excluded_short_history_users": 0,
+      "validation_pair_seen_fraction": 0.04492129736124347,
+      "mean_validation_pair_training_support": 0.0632578620485689,
+      "validation_HR@10": 0.0238901120567842,
+      "validation_NDCG@10": 0.014138254892329578
+    },
+    {
+      "lag": 2,
+      "evaluated_users": 30431,
+      "excluded_short_history_users": 0,
+      "validation_pair_seen_fraction": 0.031020998324077422,
+      "mean_validation_pair_training_support": 0.03736321514245342,
+      "validation_HR@10": 0.016102001248726627,
+      "validation_NDCG@10": 0.009136131423657946
+    },
+    {
+      "lag": 3,
+      "evaluated_users": 30431,
+      "excluded_short_history_users": 0,
+      "validation_pair_seen_fraction": 0.02086687916926818,
+      "mean_validation_pair_training_support": 0.02415300187308994,
+      "validation_HR@10": 0.011830041733758338,
+      "validation_NDCG@10": 0.006028840589674825
+    },
+    {
+      "lag": 4,
+      "evaluated_users": 22355,
+      "excluded_short_history_users": 8076,
+      "validation_pair_seen_fraction": 0.017579959740550214,
+      "mean_validation_pair_training_support": 0.020129724893759787,
+      "validation_HR@10": 0.011317378662491613,
+      "validation_NDCG@10": 0.0057975910135637096
+    }
+  ]
+}

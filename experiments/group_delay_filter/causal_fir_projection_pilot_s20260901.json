@@ -1,0 +1,190 @@
+{
+  "protocol": "CAUSAL_FIR_POSTHOC_PROJECTION_VALIDATION_V1",
+  "test_access": "candidate metadata only: parent_asin column used to reconstruct the trained catalog; no test user-target associations scored",
+  "test_catalog_file_sha256": "19f3ed965a5adafec9f55575cdbe113556ae5ee156e41591da364cfb89cda36a",
+  "source_run": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.json",
+  "source_run_sha256": "bc9b74d75fb191072b41193c302f02459c7b7a3346bc285acda676ed181fe2a5",
+  "checkpoint": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.best.pt",
+  "checkpoint_sha256": "e89b125cb922346414a381b30d7ec01e7eabef4dfbe08ab445ec9f2bbf7a20ea",
+  "seed": 20260901,
+  "category": "Musical_Instruments",
+  "subsample_users": 10000,
+  "subsample_seed": 314159,
+  "delta_kernel_shape": [
+    64,
+    16
+  ],
+  "delta_kernel_rank1_retained_energy": 0.8969983938424685,
+  "baseline": {
+    "NDCG@10": 0.04490762193145807,
+    "HR@10": 0.0819,
+    "MRR": 0.04073329470708064,
+    "n_eval": 10000,
+    "by_popularity": {
+      "tail": {
+        "NDCG@10": 0.0006852645214966462,
+        "HR@10": 0.0014705882352941176,
+        "n": 1360,
+        "n_hit@10": 2,
+        "HR@20": 0.0058823529411764705,
+        "n_hit@20": 8,
+        "HR@50": 0.016176470588235296,
+        "n_hit@50": 22,
+        "HR@100": 0.033823529411764704,
+        "n_hit@100": 46
+      },
+      "mid": {
+        "NDCG@10": 0.007752563655952454,
+        "HR@10": 0.013296011196641007,
+        "n": 1429,
+        "n_hit@10": 19,
+        "HR@20": 0.02099370188943317,
+        "n_hit@20": 30,
+        "HR@50": 0.0489853044086774,
+        "n_hit@50": 70,
+        "HR@100": 0.07907627711686493,
+        "n_hit@100": 113
+      },
+      "head": {
+        "NDCG@10": 0.06061098961322829,
+        "HR@10": 0.11066426293163223,
+        "n": 7211,
+        "n_hit@10": 798,
+        "HR@20": 0.16308417695187907,
+        "n_hit@20": 1176,
+        "HR@50": 0.24490361947025377,
+        "n_hit@50": 1766,
+        "HR@100": 0.33185411177367913,
+        "n_hit@100": 2393
+      }
+    }
+  },
+  "projections": {
+    "rank1": {
+      "metrics": {
+        "NDCG@10": 0.044731046873372766,
+        "HR@10": 0.0816,
+        "MRR": 0.04057648692403287,
+        "n_eval": 10000,
+        "by_popularity": {
+          "tail": {
+            "NDCG@10": 0.0008978121879068578,
+            "HR@10": 0.0022058823529411764,
+            "n": 1360,
+            "n_hit@10": 3,
+            "HR@20": 0.005147058823529412,
+            "n_hit@20": 7,
+            "HR@50": 0.013970588235294118,
+            "n_hit@50": 19,
+            "HR@100": 0.033823529411764704,
+            "n_hit@100": 46
+          },
+          "mid": {
+            "NDCG@10": 0.007855749866283023,
+            "HR@10": 0.013995801259622114,
+            "n": 1429,
+            "n_hit@10": 20,
+            "HR@20": 0.02239328201539538,
+            "n_hit@20": 32,
+            "HR@50": 0.04758572428271519,
+            "n_hit@50": 68,
+            "HR@100": 0.07837648705388384,
+            "n_hit@100": 112
+          },
+          "head": {
+            "NDCG@10": 0.0603055855774866,
+            "HR@10": 0.10997087782554431,
+            "n": 7211,
+            "n_hit@10": 793,
+            "HR@20": 0.16350020801553183,
+            "n_hit@20": 1179,
+            "HR@50": 0.24213007904590209,
+            "n_hit@50": 1746,
+            "HR@100": 0.3306060185827208,
+            "n_hit@100": 2384
+          }
+        }
+      },
+      "paired": {
+        "n_users": 10000,
+        "ndcg10_delta": -0.00017657505808531168,
+        "ndcg10_delta_bootstrap_95": [
+          -0.0008043397470356675,
+          0.0004598558743737096
+        ],
+        "users_improved": 170,
+        "users_harmed": 168,
+        "users_unchanged": 9662,
+        "rank_improved": 4490,
+        "rank_harmed": 4737,
+        "rank_unchanged": 773
+      },
+      "compact_parameters": 80,
+      "original_parameters": 1024,
+      "filter_parameter_reduction_fraction": 0.921875
+    },
+    "shared": {
+      "metrics": {
+        "NDCG@10": 0.044998883652310855,
+        "HR@10": 0.0829,
+        "MRR": 0.04043398461224591,
+        "n_eval": 10000,
+        "by_popularity": {
+          "tail": {
+            "NDCG@10": 0.0005801947252337411,
+            "HR@10": 0.0014705882352941176,
+            "n": 1360,
+            "n_hit@10": 2,
+            "HR@20": 0.0058823529411764705,
+            "n_hit@20": 8,
+            "HR@50": 0.015441176470588236,
+            "n_hit@50": 21,
+            "HR@100": 0.033823529411764704,
+            "n_hit@100": 46
+          },
+          "mid": {
+            "NDCG@10": 0.008130396425557013,
+            "HR@10": 0.01469559132260322,
+            "n": 1429,
+            "n_hit@10": 21,
+            "HR@20": 0.02239328201539538,
+            "n_hit@20": 32,
+            "HR@50": 0.04828551434569629,
+            "n_hit@50": 69,
+            "HR@100": 0.08187543736878937,
+            "n_hit@100": 117
+          },
+          "head": {
+            "NDCG@10": 0.06068248997429894,
+            "HR@10": 0.1117736791013729,
+            "n": 7211,
+            "n_hit@10": 806,
+            "HR@20": 0.16086534461239774,
+            "n_hit@20": 1160,
+            "HR@50": 0.24434891138538345,
+            "n_hit@50": 1762,
+            "HR@100": 0.3283871862432395,
+            "n_hit@100": 2368
+          }
+        }
+      },
+      "paired": {
+        "n_users": 10000,
+        "ndcg10_delta": 9.126172085277453e-05,
+        "ndcg10_delta_bootstrap_95": [
+          -0.0006210340263348412,
+          0.0008352318278276626
+        ],
+        "users_improved": 191,
+        "users_harmed": 181,
+        "users_unchanged": 9628,
+        "rank_improved": 4654,
+        "rank_harmed": 4641,
+        "rank_unchanged": 705
+      },
+      "compact_parameters": 16,
+      "original_parameters": 1024,
+      "filter_parameter_reduction_fraction": 0.984375
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "protocol": "TRAIN_WINDOW_LAG_STRUCTURE_V1",
+  "label": "transition_high",
+  "data_file": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/SyntheticTransitionHigh.txt",
+  "test_access": "none",
+  "window": {
+    "max_sequence_length": 50,
+    "held_out_items_per_user": 2
+  },
+  "counts": {
+    "users": 2000,
+    "unique_training_items": 2000
+  },
+  "validation_label_safe_lag_diagnostics": [
+    {
+      "lag": 1,
+      "validation_pair_seen_fraction": 0.8265,
+      "mean_validation_pair_training_support": 32.943,
+      "validation_HR@10": 0.825,
+      "validation_NDCG@10": 0.8184240323498098
+    },
+    {
+      "lag": 2,
+      "validation_pair_seen_fraction": 0.703,
+      "mean_validation_pair_training_support": 22.087,
+      "validation_HR@10": 0.6945,
+      "validation_NDCG@10": 0.6815960880193483
+    },
+    {
+      "lag": 3,
+      "validation_pair_seen_fraction": 0.5955,
+      "mean_validation_pair_training_support": 14.479,
+      "validation_HR@10": 0.572,
+      "validation_NDCG@10": 0.5514777022302793
+    },
+    {
+      "lag": 4,
+      "validation_pair_seen_fraction": 0.5265,
+      "mean_validation_pair_training_support": 9.8045,
+      "validation_HR@10": 0.4795,
+      "validation_NDCG@10": 0.4587728140750076
+    }
+  ]
+}

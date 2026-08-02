@@ -1,0 +1,129 @@
+{
+  "protocol": "ML1M_SPARSE_SUPPORT_INTERACTION_V1",
+  "mode": "fixed_boundary",
+  "taps": 8,
+  "oldest_taps": 2,
+  "shared_tolerance": 1e-07,
+  "checkpoints": [
+    {
+      "checkpoint": "experiments/group_delay_filter/projected_channel_shared_ml1m/LADDER_ML-1M_full_s42.channel_shared_projected.pt",
+      "checkpoint_sha256": "5ff2471c1e92cd92ed26f55ffb5272967fb712267f11ba3d960538362162af8a",
+      "projected": "experiments/group_delay_filter/projected_sparse_support_boundary_ml1m/LADDER_ML-1M_full_s42.channel_shared_projected.fixed_boundary_k8.pt",
+      "projected_sha256": "5451a7a3c6bea0459d73e32c6110175552a5f423448ec36d7085cfec1cd55d0a",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.0,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        48,
+        49
+      ],
+      "retained_impulse_energy": 0.9590909314191476,
+      "storage_quantization_max_abs_error": 1.3771884898175586e-08,
+      "excluded_tap_max_abs_after_storage": 3.331833165251943e-09
+    },
+    {
+      "checkpoint": "experiments/group_delay_filter/projected_channel_shared_ml1m/LADDER_ML-1M_full_s43.channel_shared_projected.pt",
+      "checkpoint_sha256": "9b60873633daee8cb2b8fa30af64e85b7528bec2171c457a76b949807720032f",
+      "projected": "experiments/group_delay_filter/projected_sparse_support_boundary_ml1m/LADDER_ML-1M_full_s43.channel_shared_projected.fixed_boundary_k8.pt",
+      "projected_sha256": "1ce52e84ce90fc7bc9a0852ae15922cae94404a2c5d9b58ac89c17c5965cb749",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.0,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        48,
+        49
+      ],
+      "retained_impulse_energy": 0.9562410832076109,
+      "storage_quantization_max_abs_error": 1.4836467784520124e-08,
+      "excluded_tap_max_abs_after_storage": 3.101254652748541e-09
+    },
+    {
+      "checkpoint": "experiments/group_delay_filter/projected_channel_shared_ml1m/LADDER_ML-1M_full_s44.channel_shared_projected.pt",
+      "checkpoint_sha256": "94132a37c003f52e1e58af3c3a216076d5ac7eecf80eaefb6a73bb0d074f3b57",
+      "projected": "experiments/group_delay_filter/projected_sparse_support_boundary_ml1m/LADDER_ML-1M_full_s44.channel_shared_projected.fixed_boundary_k8.pt",
+      "projected_sha256": "b8ee3fb0182d7a0b1c46183a2ce5a8ab648a4529d23b4bfc77eaf89c50a7a585",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.0,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        48,
+        49
+      ],
+      "retained_impulse_energy": 0.940408569154935,
+      "storage_quantization_max_abs_error": 1.5100962854693052e-08,
+      "excluded_tap_max_abs_after_storage": 3.359407039469019e-09
+    },
+    {
+      "checkpoint": "experiments/group_delay_filter/projected_channel_shared_ml1m/LADDER_ML-1M_full_s45.channel_shared_projected.pt",
+      "checkpoint_sha256": "b3f43ce91c45aa0c45c936f983c7284d51e60e5d7d0217d40ffcc67ce9db1396",
+      "projected": "experiments/group_delay_filter/projected_sparse_support_boundary_ml1m/LADDER_ML-1M_full_s45.channel_shared_projected.fixed_boundary_k8.pt",
+      "projected_sha256": "ef93253eea44a1426f7c656d2473608cd62a2eb488e35a89f8d5a2e6988e7ab8",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.0,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        48,
+        49
+      ],
+      "retained_impulse_energy": 0.9527714783461402,
+      "storage_quantization_max_abs_error": 1.4229213647368129e-08,
+      "excluded_tap_max_abs_after_storage": 3.0733445864408338e-09
+    },
+    {
+      "checkpoint": "experiments/group_delay_filter/projected_channel_shared_ml1m/LADDER_ML-1M_full_s46.channel_shared_projected.pt",
+      "checkpoint_sha256": "e66f0adeb83f0149ed49b7f1b8b2a6eeb65066865c6960b6ab058fed0672f969",
+      "projected": "experiments/group_delay_filter/projected_sparse_support_boundary_ml1m/LADDER_ML-1M_full_s46.channel_shared_projected.fixed_boundary_k8.pt",
+      "projected_sha256": "3b3b7c040cd669d98f106506b8ebf49cebb4a62f9501c14220fb2cfe22b17f24",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.0,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        48,
+        49
+      ],
+      "retained_impulse_energy": 0.9583108166032563,
+      "storage_quantization_max_abs_error": 1.3407173168545267e-08,
+      "excluded_tap_max_abs_after_storage": 2.882286123363457e-09
+    }
+  ]
+}

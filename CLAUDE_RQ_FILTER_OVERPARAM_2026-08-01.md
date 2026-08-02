@@ -573,3 +573,42 @@ FMLP-Rec, and that is unresolved.**
 **Gap closed:** the reconciliation could only compare arm means because run A's per-run scores were
 not machine-readable. They now are — `experiments/filter_overparam/results_ladder_runA_2026-08-01.csv`,
 100 rows including the causal arms — so a future pass can do seed-level paired comparison.
+
+### 10.4 FINAL — BEST-Rec's FIR arms on a plain SASRec backbone (30 runs, 5 seeds, faithful placement)
+
+FIR applied to the **embeddings before the encoder**, matching the frozen script; zero-init
+verified as an exact no-op (max abs diff 0.0); parameter counts 1,024 / 16 matching `FIRCTRL`.
+
+| dataset | arm | params | NDCG@10 | vs `off` | t | CI95 | seeds+ |
+|---|---|---:|---:|---:|---:|---|---:|
+| **ML-1M** | `off` | 0 | 0.11116 | — | — | — | — |
+| | `learned` | 1,024 | 0.11204 | +0.00088 | +0.65 | [−0.00287,+0.00463] | 3/5 |
+| | `shared` | 16 | 0.11258 | +0.00142 | +0.74 | [−0.00390,+0.00674] | 2/5 |
+| **Beauty** | `off` | 0 | 0.02810 | — | — | — | — |
+| | `learned` | 1,024 | 0.02680 | **−0.00130** | **−3.04** | **[−0.00249,−0.00011]** | **0/5** |
+| | `shared` | 16 | 0.02752 | −0.00058 | −1.26 | [−0.00186,+0.00070] | 1/5 |
+
+**Finding 1 — the ML-1M null replicates.** On an attention backbone the FIR is indistinguishable
+from absent (t = +0.65, +0.74). Independent harness, independent implementation, different split
+(6,040 users LLOO vs our 1,033 at rating≥4 under a global cutoff). `ML1M-NO-FIR-REPLICATION` is
+not an artifact of our code or our split.
+
+**Finding 2 — the Amazon positive does NOT replicate; it inverts.** On Beauty the per-channel FIR
+makes SASRec **significantly worse** (−0.00130, t = −3.04, **0/5 seeds**, CI excludes zero), against
+a published +0.002 on MI / IS / CDs.
+
+**The salient difference is the embedding.** BEST-Rec's backbone uses **SBERT text embeddings**;
+this SASRec uses learned **ID embeddings** only. The FIR filters over the embedding sequence, and a
+filter that usefully smooths a semantic trajectory can plausibly damage an ID-embedding one.
+
+**Implication for the manuscript — a scope condition, not a refutation.** The counted claim is
+about a causal FIR residual *on the BEST-Rec backbone*. This result suggests that gain may be
+**contingent on the text-embedding backbone** rather than a general property of causal filtering. A
+reviewer asking "does this transfer?" now has an answer, and it is better stated by the authors
+than discovered by the reviewer.
+
+**Why this is not a refutation:** Beauty is not one of the three counted categories (MI, IS, CDs);
+the split, loss and negative sampling differ; and plain SASRec is not the BEST-Rec backbone — the
+missing SBERT initialisation is precisely the suspected cause. **The decisive follow-up** is to add
+SBERT item-embedding initialisation to this SASRec and re-run: if the FIR effect turns positive,
+the text-embedding dependence is established; if it stays negative, the cause lies elsewhere.

@@ -1,0 +1,97 @@
+{
+  "protocol": "TEMPORAL_FILTER_NO_TEST_TRAIN_V2",
+  "test_access": "none",
+  "completed": true,
+  "source_dir": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src",
+  "source_revision": "c80bdc0f1a889b78fe9a27e2058389cc84caea84",
+  "source_file_sha256": {
+    "dataset.py": "235a0d750df76f55236cf082e08bc0907571c674705fe858c93ba73ac78823aa",
+    "trainers.py": "680d09da0c16028ca48c00725e16e9355cbe5136a625b40f97a26252b5c06edf",
+    "model/fmlprec.py": "565307ee0e45df7466b9a11dcc786151091c7650be62e617cdd2b171f6631adb"
+  },
+  "preregistration": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/PREREG_LATE_SHARED_TRAINING_CONTROL_V1.md",
+  "preregistration_sha256": "8b2c5bcbee08dae4ce007e2ae34b6258289999ed773c1c2667c607c009fa15ca",
+  "data_file": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/ML-1M.txt",
+  "data_file_sha256": "c3fa8abcfcdc8824e6b54fe5fdb50c5fac8316e7ef2bc00973f8dd69ba76163d",
+  "training_script_sha256": "3bfc652b7baf4028bd0454e2d69a1f759ed453708a0f07384a4db403ffbc7b96",
+  "finalizer_script_sha256": "ae6b4b99559bcc0aaa74a622d5aaf9d52c7e7f206ec9feb8dcf0b9b88def1ae8",
+  "artifact_reconstructed_after_finalization_error": true,
+  "checkpoint": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/prospective_late_shared/LATE_SHARED_ML-1M_s42.pt",
+  "checkpoint_sha256": "57145c423af42730845918c7a1a18e9290046638305fad26c8b6de6d5f829582",
+  "log": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/prospective_late_shared/LATE_SHARED_ML-1M_s42.log",
+  "log_sha256": "0c3c06c718ce1cc765745fb5837cf760dd3258eb05fbd1409c861bb44474b22a",
+  "seed": 42,
+  "device": "mps",
+  "filter_mode": "late_shared",
+  "causal_k": 16,
+  "trainable_parameters": 292084,
+  "last_epoch": 52,
+  "best_validation_epoch": 42,
+  "checkpoint_selection_metric": "validation NDCG@20",
+  "validation_scores": {
+    "HR@5": 0.1403973509933775,
+    "NDCG@5": 0.09033459631543958,
+    "HR@10": 0.2240066225165563,
+    "NDCG@10": 0.11716007639944663,
+    "HR@20": 0.34205298013245033,
+    "NDCG@20": 0.14687220427200276,
+    "raw_log_record": "{'Epoch': 42, 'HR@5': '0.1404', 'NDCG@5': '0.0903', 'HR@10': '0.2240', 'NDCG@10': '0.1172', 'HR@20': '0.3421', 'NDCG@20': '0.1469'}"
+  },
+  "rank1_energy_threshold": 0.905,
+  "filter_spectra": [
+    {
+      "parameter": "item_encoder.blocks.0.layer.complex_weight",
+      "shape": [
+        26,
+        64
+      ],
+      "canonicalization": "DC and Nyquist responses constrained to real values",
+      "rank1_retained_energy": 0.8854058971608837,
+      "selected": false,
+      "singular_values": [
+        17.987689971923828,
+        3.6290063858032227,
+        2.9818341732025146,
+        1.9448949098587036,
+        1.4464224576950073,
+        1.3703491687774658,
+        1.2235527038574219,
+        1.1770756244659424,
+        1.0522112846374512,
+        1.042685866355896,
+        0.9640394449234009,
+        0.9340896606445312,
+        0.865993320941925,
+        0.8286840915679932,
+        0.7376003861427307,
+        0.7223489880561829,
+        0.6878595352172852,
+        0.6354947090148926,
+        0.5991106033325195,
+        0.5641383528709412,
+        0.5254636406898499,
+        0.4727479815483093,
+        0.45473426580429077,
+        0.4125188887119293,
+        0.3907002806663513,
+        0.31331759691238403
+      ]
+    },
+    {
+      "parameter": "item_encoder.blocks.1.layer.complex_weight",
+      "shape": [
+        26,
+        1
+      ],
+      "canonicalization": "DC and Nyquist responses constrained to real values",
+      "rank1_retained_energy": 1.0,
+      "selected": true,
+      "singular_values": [
+        1.961570382118225
+      ]
+    }
+  ],
+  "selected_layers": [
+    "item_encoder.blocks.1.layer.complex_weight"
+  ]
+}

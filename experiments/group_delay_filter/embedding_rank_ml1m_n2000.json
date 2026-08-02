@@ -1,0 +1,154 @@
+{
+  "protocol": "ITEM_EMBEDDING_SPECTRAL_CONCENTRATION_V1",
+  "label": "ml1m_n2000",
+  "label_access": "none",
+  "checkpoint_count": 1,
+  "records": [
+    {
+      "checkpoint": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/prospective_scale/EGSP_ML1M_N2000_full_s47.pt",
+      "checkpoint_sha256": "82ffd24925402454b47bdab7e11027edc248f1519b273359fa95bb35a4ba86f1",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 3414,
+          "dimensions": 64,
+          "top_singular_energy": 0.30698030205932547,
+          "stable_rank": 3.2575380025743312,
+          "entropy_effective_rank": 26.45487088455104,
+          "participation_ratio": 9.269611860909878
+        },
+        "centered": {
+          "rows": 3414,
+          "dimensions": 64,
+          "top_singular_energy": 0.13805696164258718,
+          "stable_rank": 7.243386991152821,
+          "entropy_effective_rank": 40.90717015741506,
+          "participation_ratio": 24.92968654047517
+        },
+        "row_normalized": {
+          "rows": 3414,
+          "dimensions": 64,
+          "top_singular_energy": 0.23996087366183463,
+          "stable_rank": 4.167346054129025,
+          "entropy_effective_rank": 31.902278395185203,
+          "participation_ratio": 13.48169378975753
+        },
+        "row_normalized_centered": {
+          "rows": 3414,
+          "dimensions": 64,
+          "top_singular_energy": 0.0890185317048873,
+          "stable_rank": 11.23361597689774,
+          "entropy_effective_rank": 44.4806563282578,
+          "participation_ratio": 31.580352000564545
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "raw": {
+      "top_singular_energy": {
+        "mean": 0.30698030205932547,
+        "population_std": 0.0,
+        "min": 0.30698030205932547,
+        "max": 0.30698030205932547
+      },
+      "stable_rank": {
+        "mean": 3.2575380025743312,
+        "population_std": 0.0,
+        "min": 3.2575380025743312,
+        "max": 3.2575380025743312
+      },
+      "entropy_effective_rank": {
+        "mean": 26.45487088455104,
+        "population_std": 0.0,
+        "min": 26.45487088455104,
+        "max": 26.45487088455104
+      },
+      "participation_ratio": {
+        "mean": 9.269611860909878,
+        "population_std": 0.0,
+        "min": 9.269611860909878,
+        "max": 9.269611860909878
+      }
+    },
+    "centered": {
+      "top_singular_energy": {
+        "mean": 0.13805696164258718,
+        "population_std": 0.0,
+        "min": 0.13805696164258718,
+        "max": 0.13805696164258718
+      },
+      "stable_rank": {
+        "mean": 7.243386991152821,
+        "population_std": 0.0,
+        "min": 7.243386991152821,
+        "max": 7.243386991152821
+      },
+      "entropy_effective_rank": {
+        "mean": 40.90717015741506,
+        "population_std": 0.0,
+        "min": 40.90717015741506,
+        "max": 40.90717015741506
+      },
+      "participation_ratio": {
+        "mean": 24.92968654047517,
+        "population_std": 0.0,
+        "min": 24.92968654047517,
+        "max": 24.92968654047517
+      }
+    },
+    "row_normalized": {
+      "top_singular_energy": {
+        "mean": 0.23996087366183463,
+        "population_std": 0.0,
+        "min": 0.23996087366183463,
+        "max": 0.23996087366183463
+      },
+      "stable_rank": {
+        "mean": 4.167346054129025,
+        "population_std": 0.0,
+        "min": 4.167346054129025,
+        "max": 4.167346054129025
+      },
+      "entropy_effective_rank": {
+        "mean": 31.902278395185203,
+        "population_std": 0.0,
+        "min": 31.902278395185203,
+        "max": 31.902278395185203
+      },
+      "participation_ratio": {
+        "mean": 13.48169378975753,
+        "population_std": 0.0,
+        "min": 13.48169378975753,
+        "max": 13.48169378975753
+      }
+    },
+    "row_normalized_centered": {
+      "top_singular_energy": {
+        "mean": 0.0890185317048873,
+        "population_std": 0.0,
+        "min": 0.0890185317048873,
+        "max": 0.0890185317048873
+      },
+      "stable_rank": {
+        "mean": 11.23361597689774,
+        "population_std": 0.0,
+        "min": 11.23361597689774,
+        "max": 11.23361597689774
+      },
+      "entropy_effective_rank": {
+        "mean": 44.4806563282578,
+        "population_std": 0.0,
+        "min": 44.4806563282578,
+        "max": 44.4806563282578
+      },
+      "participation_ratio": {
+        "mean": 31.580352000564545,
+        "population_std": 0.0,
+        "min": 31.580352000564545,
+        "max": 31.580352000564545
+      }
+    }
+  }
+}

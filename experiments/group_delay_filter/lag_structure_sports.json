@@ -1,0 +1,52 @@
+{
+  "protocol": "TRAIN_WINDOW_LAG_STRUCTURE_V1",
+  "label": "sports",
+  "data_file": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/Sports_and_Outdoors.txt",
+  "test_access": "none",
+  "window": {
+    "max_sequence_length": 50,
+    "held_out_items_per_user": 2
+  },
+  "counts": {
+    "users": 35598,
+    "unique_training_items": 18281
+  },
+  "validation_label_safe_lag_diagnostics": [
+    {
+      "lag": 1,
+      "evaluated_users": 35598,
+      "excluded_short_history_users": 0,
+      "validation_pair_seen_fraction": 0.06618349345468846,
+      "mean_validation_pair_training_support": 0.1838024608124052,
+      "validation_HR@10": 0.043260857351536605,
+      "validation_NDCG@10": 0.028962410287054024
+    },
+    {
+      "lag": 2,
+      "evaluated_users": 35598,
+      "excluded_short_history_users": 0,
+      "validation_pair_seen_fraction": 0.03188381369739873,
+      "mean_validation_pair_training_support": 0.04983426035170515,
+      "validation_HR@10": 0.018428001573122084,
+      "validation_NDCG@10": 0.010379823662696618
+    },
+    {
+      "lag": 3,
+      "evaluated_users": 35598,
+      "excluded_short_history_users": 0,
+      "validation_pair_seen_fraction": 0.021461879880892185,
+      "mean_validation_pair_training_support": 0.0287094780605652,
+      "validation_HR@10": 0.013259171863587842,
+      "validation_NDCG@10": 0.0072988195566957
+    },
+    {
+      "lag": 4,
+      "evaluated_users": 24182,
+      "excluded_short_history_users": 11416,
+      "validation_pair_seen_fraction": 0.01542469605491688,
+      "mean_validation_pair_training_support": 0.019518650235712514,
+      "validation_HR@10": 0.010379621205855595,
+      "validation_NDCG@10": 0.005431387285316469
+    }
+  ]
+}

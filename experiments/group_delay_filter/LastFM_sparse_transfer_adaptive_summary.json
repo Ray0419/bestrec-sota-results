@@ -1,0 +1,130 @@
+{
+  "protocol": "ML1M_SPARSE_SUPPORT_INTERACTION_V1",
+  "mode": "aggregate_topk",
+  "taps": 8,
+  "oldest_taps": 2,
+  "shared_tolerance": 1e-07,
+  "allow_channel_specific_fixed": false,
+  "checkpoints": [
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s42.pt",
+      "checkpoint_sha256": "7f7078e70c144ed4dad0e6ff4e8e293f69b65f82f8dbced818c4a8c8bbca0cb7",
+      "projected": "experiments/group_delay_filter/projected_sparse_transfer_LastFM_adaptive/LADDER_LastFM_full_s42.aggregate_topk_k8.pt",
+      "projected_sha256": "d6714c56646c7b7a98a2f3e0f31afaf68d81609f691dbebea99ef1d1736339b8",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.33208374573587207,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "retained_impulse_energy": 0.7783275282293968,
+      "storage_quantization_max_abs_error": 1.3544555175665255e-08,
+      "excluded_tap_max_abs_after_storage": 1.9181543916860815e-09
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s43.pt",
+      "checkpoint_sha256": "9f1ac54f06becb53df1189a6437e749ca28d163caff2d12dcac5c73b4afbee31",
+      "projected": "experiments/group_delay_filter/projected_sparse_transfer_LastFM_adaptive/LADDER_LastFM_full_s43.aggregate_topk_k8.pt",
+      "projected_sha256": "38eeef256bf92bc9652e96b2a85ea57ab3808a9ad938f4b62159eac426915ed9",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.3721600567223504,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "retained_impulse_energy": 0.7790701922991558,
+      "storage_quantization_max_abs_error": 1.4998181094620407e-08,
+      "excluded_tap_max_abs_after_storage": 2.192308974971151e-09
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s44.pt",
+      "checkpoint_sha256": "976d129ea93f54f2e32089672739cb38cad2c46c7356246bc1b2636df67d236f",
+      "projected": "experiments/group_delay_filter/projected_sparse_transfer_LastFM_adaptive/LADDER_LastFM_full_s44.aggregate_topk_k8.pt",
+      "projected_sha256": "af2bf124cdc89359234ee0adad8300f72dfe9479f34af09a3694ea822f03ad0d",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.3151066273567267,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8
+      ],
+      "retained_impulse_energy": 0.8266619269654178,
+      "storage_quantization_max_abs_error": 1.4626293648624667e-08,
+      "excluded_tap_max_abs_after_storage": 2.7335591194007863e-09
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s45.pt",
+      "checkpoint_sha256": "020b3408d7bfcbc3d6b68e7c69bbb38dbedab66aff333fde7c949c41fd3c9b0f",
+      "projected": "experiments/group_delay_filter/projected_sparse_transfer_LastFM_adaptive/LADDER_LastFM_full_s45.aggregate_topk_k8.pt",
+      "projected_sha256": "3df73cd3a97661cd6a5d7d56fe4cf6ebc96087e4bf5f4c6e4555b0f43f5f6cfe",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.35731789613782894,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8
+      ],
+      "retained_impulse_energy": 0.8243860689093254,
+      "storage_quantization_max_abs_error": 1.455884923728945e-08,
+      "excluded_tap_max_abs_after_storage": 2.082548243485805e-09
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s46.pt",
+      "checkpoint_sha256": "9f6de9af4ee33b017f4a4a337de5748ff4ffd7b2c55e8bccf058f895a8f42678",
+      "projected": "experiments/group_delay_filter/projected_sparse_transfer_LastFM_adaptive/LADDER_LastFM_full_s46.aggregate_topk_k8.pt",
+      "projected_sha256": "c90f1c57d5189497087c8669086b29313b3a12dfc3760abfabc16c5ff186a687",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.42892983311321586,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8
+      ],
+      "retained_impulse_energy": 0.8249288829465169,
+      "storage_quantization_max_abs_error": 1.4150377145793465e-08,
+      "excluded_tap_max_abs_after_storage": 2.3029756356406377e-09
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "protocol": "WEAREC_STATIC_BASE_PROJECTION_SUMMARY_V1",
+  "decision": "COMPRESSION_ONLY_SUPPORT",
+  "mean_delta_ndcg10": -9.09908828850343e-06,
+  "nonnegative_datasets": 1,
+  "all_within_negative_0p0005_margin": true,
+  "test_access": "none",
+  "rows": [
+    {
+      "dataset": "Beauty",
+      "delta_ndcg10": -4.874398855622012e-05,
+      "bootstrap_95_ci": [-0.0002607346658461705, 0.00016123181724998927],
+      "unchanged_user_fraction": 0.9879264857130081,
+      "selected_tensor_reduction": 0.875,
+      "whole_model_fraction_saved": 0.00039957057140787156
+    },
+    {
+      "dataset": "LastFM",
+      "delta_ndcg10": -1.8267408511978012e-05,
+      "bootstrap_95_ci": [-0.0002407525709031488, 0.00019715817156794384],
+      "unchanged_user_fraction": 0.9908256880733946,
+      "selected_tensor_reduction": 0.5,
+      "whole_model_fraction_saved": 0.00015821148006839604
+    },
+    {
+      "dataset": "ML-1M",
+      "delta_ndcg10": 8.660358959177956e-05,
+      "bootstrap_95_ci": [-0.0005980431659524247, 0.0007725452155392769],
+      "unchanged_user_fraction": 0.9592715231788079,
+      "selected_tensor_reduction": 0.5,
+      "whole_model_fraction_saved": 0.0001656293597151175
+    },
+    {
+      "dataset": "Sports_and_Outdoors",
+      "delta_ndcg10": -5.598854567759514e-05,
+      "bootstrap_95_ci": [-0.0002334678921949513, 0.00012203824602299766],
+      "unchanged_user_fraction": 0.9883420416877353,
+      "selected_tensor_reduction": 0.75,
+      "whole_model_fraction_saved": 0.00012150422227172394
+    }
+  ]
+}

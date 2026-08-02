@@ -1,0 +1,314 @@
+{
+  "protocol": "ITEM_EMBEDDING_SPECTRAL_CONCENTRATION_V1",
+  "label": "toys",
+  "label_access": "none",
+  "checkpoint_count": 5,
+  "records": [
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s42.pt",
+      "checkpoint_sha256": "75fb8eb50677bf5e4625f00eda69e1ecb75c3ff88fe0e20148004414d989bf93",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.1592494028311019,
+          "stable_rank": 6.279458398098916,
+          "entropy_effective_rank": 45.133410879313686,
+          "participation_ratio": 24.870156457240196
+        },
+        "centered": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.09005384356607903,
+          "stable_rank": 11.104467731754587,
+          "entropy_effective_rank": 53.45318298189944,
+          "participation_ratio": 41.51466242287125
+        },
+        "row_normalized": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.13083888070917374,
+          "stable_rank": 7.642988036734903,
+          "entropy_effective_rank": 47.89541305655988,
+          "participation_ratio": 30.033025120854546
+        },
+        "row_normalized_centered": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.07717451774991468,
+          "stable_rank": 12.95764494752681,
+          "entropy_effective_rank": 54.69005877405986,
+          "participation_ratio": 44.74911870333093
+        }
+      }
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s43.pt",
+      "checkpoint_sha256": "653d54c95ae3bcd0398c01a1448fbfba61b997c5760e44e2146ba7ce381b4c5d",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.15287993320913482,
+          "stable_rank": 6.541080827344635,
+          "entropy_effective_rank": 45.68175753062201,
+          "participation_ratio": 25.844887128002593
+        },
+        "centered": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.08036620590091875,
+          "stable_rank": 12.443041061722784,
+          "entropy_effective_rank": 54.147217057178274,
+          "participation_ratio": 43.217007019331554
+        },
+        "row_normalized": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.13132526981674103,
+          "stable_rank": 7.614680719068452,
+          "entropy_effective_rank": 47.81343897330094,
+          "participation_ratio": 29.823352702452926
+        },
+        "row_normalized_centered": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.0713276230564465,
+          "stable_rank": 14.019813883446396,
+          "entropy_effective_rank": 55.04307487739485,
+          "participation_ratio": 45.44660469119574
+        }
+      }
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s44.pt",
+      "checkpoint_sha256": "8da72ee05cb21d98803be0611d3cbcc40660946c27e525ff9d564001a4790944",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.14894269769532206,
+          "stable_rank": 6.7139914576114705,
+          "entropy_effective_rank": 46.557809020284495,
+          "participation_ratio": 26.863428419523704
+        },
+        "centered": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.07693579066188747,
+          "stable_rank": 12.997851733203557,
+          "entropy_effective_rank": 54.97116478213022,
+          "participation_ratio": 44.837890287718935
+        },
+        "row_normalized": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.12753156495064916,
+          "stable_rank": 7.841196023799831,
+          "entropy_effective_rank": 48.6658444752982,
+          "participation_ratio": 31.002091219287486
+        },
+        "row_normalized_centered": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.06771381633926749,
+          "stable_rank": 14.768034857017746,
+          "entropy_effective_rank": 55.78594446442216,
+          "participation_ratio": 47.02629567415931
+        }
+      }
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s45.pt",
+      "checkpoint_sha256": "142378da792433dd038c16ca96f1524f9274ad32e26da8a21899dca5c1f1da48",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.15072492681624675,
+          "stable_rank": 6.634602657456453,
+          "entropy_effective_rank": 46.674510455789985,
+          "participation_ratio": 26.648920736246037
+        },
+        "centered": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.08221458423548277,
+          "stable_rank": 12.163292064285752,
+          "entropy_effective_rank": 54.931662317437855,
+          "participation_ratio": 44.06137337813064
+        },
+        "row_normalized": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.1262086281732737,
+          "stable_rank": 7.923388554917856,
+          "entropy_effective_rank": 49.066989350168726,
+          "participation_ratio": 31.40444693994261
+        },
+        "row_normalized_centered": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.07091542265983716,
+          "stable_rank": 14.101304941757732,
+          "entropy_effective_rank": 55.912028458499066,
+          "participation_ratio": 46.83161647345032
+        }
+      }
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s46.pt",
+      "checkpoint_sha256": "a004ce2f39b48f2172eca877a78343604562c715fe93bd16216a5db301d644ac",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.15214616676455278,
+          "stable_rank": 6.572626976186043,
+          "entropy_effective_rank": 46.03201107761559,
+          "participation_ratio": 26.10155822267247
+        },
+        "centered": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.0812444561864757,
+          "stable_rank": 12.308532137931453,
+          "entropy_effective_rank": 54.46354676097581,
+          "participation_ratio": 43.5178430279981
+        },
+        "row_normalized": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.12940835299013917,
+          "stable_rank": 7.7274764487281535,
+          "entropy_effective_rank": 48.28406002398576,
+          "participation_ratio": 30.37507576158463
+        },
+        "row_normalized_centered": {
+          "rows": 11924,
+          "dimensions": 64,
+          "top_singular_energy": 0.07161083310825904,
+          "stable_rank": 13.964367632593115,
+          "entropy_effective_rank": 55.38623183557573,
+          "participation_ratio": 45.91174250985496
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "raw": {
+      "top_singular_energy": {
+        "mean": 0.15278862546327165,
+        "population_std": 0.003498935466186816,
+        "min": 0.14894269769532206,
+        "max": 0.1592494028311019
+      },
+      "stable_rank": {
+        "mean": 6.548352063339503,
+        "population_std": 0.14684789368147463,
+        "min": 6.279458398098916,
+        "max": 6.7139914576114705
+      },
+      "entropy_effective_rank": {
+        "mean": 46.01589979272516,
+        "population_std": 0.5688815207993734,
+        "min": 45.133410879313686,
+        "max": 46.674510455789985
+      },
+      "participation_ratio": {
+        "mean": 26.065790192737,
+        "population_std": 0.7008402838075366,
+        "min": 24.870156457240196,
+        "max": 26.863428419523704
+      }
+    },
+    "centered": {
+      "top_singular_energy": {
+        "mean": 0.08216297611016873,
+        "population_std": 0.0043281400705415096,
+        "min": 0.07693579066188747,
+        "max": 0.09005384356607903
+      },
+      "stable_rank": {
+        "mean": 12.203436945779625,
+        "population_std": 0.6178826638048862,
+        "min": 11.104467731754587,
+        "max": 12.997851733203557
+      },
+      "entropy_effective_rank": {
+        "mean": 54.39335477992432,
+        "population_std": 0.5609051802500927,
+        "min": 53.45318298189944,
+        "max": 54.97116478213022
+      },
+      "participation_ratio": {
+        "mean": 43.429755227210094,
+        "population_std": 1.104752238924199,
+        "min": 41.51466242287125,
+        "max": 44.837890287718935
+      }
+    },
+    "row_normalized": {
+      "top_singular_energy": {
+        "mean": 0.12906253932799536,
+        "population_std": 0.0019433793494450131,
+        "min": 0.1262086281732737,
+        "max": 0.13132526981674103
+      },
+      "stable_rank": {
+        "mean": 7.749945956649839,
+        "population_std": 0.11717548341317846,
+        "min": 7.614680719068452,
+        "max": 7.923388554917856
+      },
+      "entropy_effective_rank": {
+        "mean": 48.3451491758627,
+        "population_std": 0.4717221456139301,
+        "min": 47.81343897330094,
+        "max": 49.066989350168726
+      },
+      "participation_ratio": {
+        "mean": 30.527598348824437,
+        "population_std": 0.5929308026645769,
+        "min": 29.823352702452926,
+        "max": 31.40444693994261
+      }
+    },
+    "row_normalized_centered": {
+      "top_singular_energy": {
+        "mean": 0.07174844258274497,
+        "population_std": 0.003053209730021073,
+        "min": 0.06771381633926749,
+        "max": 0.07717451774991468
+      },
+      "stable_rank": {
+        "mean": 13.96223325246836,
+        "population_std": 0.5798577252609209,
+        "min": 12.95764494752681,
+        "max": 14.768034857017746
+      },
+      "entropy_effective_rank": {
+        "mean": 55.363467681990336,
+        "population_std": 0.4552043212499078,
+        "min": 54.69005877405986,
+        "max": 55.912028458499066
+      },
+      "participation_ratio": {
+        "mean": 45.99307561039825,
+        "population_std": 0.8512777225541649,
+        "min": 44.74911870333093,
+        "max": 47.02629567415931
+      }
+    }
+  }
+}

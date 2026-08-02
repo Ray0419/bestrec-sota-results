@@ -1,0 +1,129 @@
+{
+  "protocol": "ML1M_SPARSE_SUPPORT_INTERACTION_V1",
+  "mode": "fixed_recent",
+  "taps": 8,
+  "oldest_taps": 2,
+  "shared_tolerance": 1e-07,
+  "checkpoints": [
+    {
+      "checkpoint": "experiments/group_delay_filter/projected_channel_shared_ml1m/LADDER_ML-1M_full_s42.channel_shared_projected.pt",
+      "checkpoint_sha256": "5ff2471c1e92cd92ed26f55ffb5272967fb712267f11ba3d960538362162af8a",
+      "projected": "experiments/group_delay_filter/projected_sparse_support_recent_ml1m/LADDER_ML-1M_full_s42.channel_shared_projected.fixed_recent_k8.pt",
+      "projected_sha256": "d8f6f6c45b5cebb50511f12319de1ec000f62fe9dc6244af3af66282e2563a8e",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.0,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "retained_impulse_energy": 0.910799977797341,
+      "storage_quantization_max_abs_error": 1.5048494494123144e-08,
+      "excluded_tap_max_abs_after_storage": 4.443003389094846e-09
+    },
+    {
+      "checkpoint": "experiments/group_delay_filter/projected_channel_shared_ml1m/LADDER_ML-1M_full_s43.channel_shared_projected.pt",
+      "checkpoint_sha256": "9b60873633daee8cb2b8fa30af64e85b7528bec2171c457a76b949807720032f",
+      "projected": "experiments/group_delay_filter/projected_sparse_support_recent_ml1m/LADDER_ML-1M_full_s43.channel_shared_projected.fixed_recent_k8.pt",
+      "projected_sha256": "5802beb5165d6a96c4fb4c7b991a095e6dff87b866d5edec3a77860ed724e24b",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.0,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "retained_impulse_energy": 0.9112017629245152,
+      "storage_quantization_max_abs_error": 1.4962744565433867e-08,
+      "excluded_tap_max_abs_after_storage": 3.320066594253706e-09
+    },
+    {
+      "checkpoint": "experiments/group_delay_filter/projected_channel_shared_ml1m/LADDER_ML-1M_full_s44.channel_shared_projected.pt",
+      "checkpoint_sha256": "94132a37c003f52e1e58af3c3a216076d5ac7eecf80eaefb6a73bb0d074f3b57",
+      "projected": "experiments/group_delay_filter/projected_sparse_support_recent_ml1m/LADDER_ML-1M_full_s44.channel_shared_projected.fixed_recent_k8.pt",
+      "projected_sha256": "56597b0f7338cac2023eb8f56a2e591a96cc4e4b06c141ee21f489acabf96f2b",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.0,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "retained_impulse_energy": 0.9572305732796094,
+      "storage_quantization_max_abs_error": 1.2437950210426067e-08,
+      "excluded_tap_max_abs_after_storage": 2.4467824508401442e-09
+    },
+    {
+      "checkpoint": "experiments/group_delay_filter/projected_channel_shared_ml1m/LADDER_ML-1M_full_s45.channel_shared_projected.pt",
+      "checkpoint_sha256": "b3f43ce91c45aa0c45c936f983c7284d51e60e5d7d0217d40ffcc67ce9db1396",
+      "projected": "experiments/group_delay_filter/projected_sparse_support_recent_ml1m/LADDER_ML-1M_full_s45.channel_shared_projected.fixed_recent_k8.pt",
+      "projected_sha256": "c5fbcb8336ed78977ad9105884507d4ea3158114f86ed65ab5711040989ac33b",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.0,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "retained_impulse_energy": 0.8942678747206922,
+      "storage_quantization_max_abs_error": 1.4403181197859376e-08,
+      "excluded_tap_max_abs_after_storage": 2.9934728430127844e-09
+    },
+    {
+      "checkpoint": "experiments/group_delay_filter/projected_channel_shared_ml1m/LADDER_ML-1M_full_s46.channel_shared_projected.pt",
+      "checkpoint_sha256": "e66f0adeb83f0149ed49b7f1b8b2a6eeb65066865c6960b6ab058fed0672f969",
+      "projected": "experiments/group_delay_filter/projected_sparse_support_recent_ml1m/LADDER_ML-1M_full_s46.channel_shared_projected.fixed_recent_k8.pt",
+      "projected_sha256": "091426abe1577808cadc35207f4357155030f457f3785932888375c034d50c2f",
+      "filter_key": "item_encoder.blocks.1.layer.complex_weight",
+      "filter_count": 2,
+      "sequence_length": 50,
+      "channels": 64,
+      "max_input_channel_deviation": 0.0,
+      "retained_tap_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "retained_impulse_energy": 0.9125765148166912,
+      "storage_quantization_max_abs_error": 1.5425827937655632e-08,
+      "excluded_tap_max_abs_after_storage": 3.877753650717118e-09
+    }
+  ]
+}

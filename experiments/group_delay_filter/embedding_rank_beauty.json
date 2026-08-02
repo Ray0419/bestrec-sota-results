@@ -1,0 +1,314 @@
+{
+  "protocol": "ITEM_EMBEDDING_SPECTRAL_CONCENTRATION_V1",
+  "label": "beauty",
+  "label_access": "none",
+  "checkpoint_count": 5,
+  "records": [
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_full_s42.pt",
+      "checkpoint_sha256": "ef01fb1e79c4edb58a28031d216245fd353d42e4c5d180af8e29e8e42a17c6b7",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.1580086549686359,
+          "stable_rank": 6.328767245050571,
+          "entropy_effective_rank": 45.67196272120104,
+          "participation_ratio": 25.256849731891016
+        },
+        "centered": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.08262218504679943,
+          "stable_rank": 12.103286779859104,
+          "entropy_effective_rank": 54.67886205906886,
+          "participation_ratio": 43.84561335235139
+        },
+        "row_normalized": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.13525168612030602,
+          "stable_rank": 7.393623167924891,
+          "entropy_effective_rank": 48.03668210665127,
+          "participation_ratio": 29.5615333552399
+        },
+        "row_normalized_centered": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.07075352942204768,
+          "stable_rank": 14.133570553561494,
+          "entropy_effective_rank": 55.78370705457572,
+          "participation_ratio": 46.820448859208895
+        }
+      }
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_full_s43.pt",
+      "checkpoint_sha256": "30858a2116074159fd34856ccb6294a6522b44c082be5e0b82ea61dd542ee07e",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.15379262013466669,
+          "stable_rank": 6.502262586620619,
+          "entropy_effective_rank": 46.88236244325802,
+          "participation_ratio": 26.452358673080035
+        },
+        "centered": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.07690118436442696,
+          "stable_rank": 13.003700895698834,
+          "entropy_effective_rank": 55.94674071711903,
+          "participation_ratio": 46.31252916562108
+        },
+        "row_normalized": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.13052467055807035,
+          "stable_rank": 7.661386891262833,
+          "entropy_effective_rank": 49.292456512207,
+          "participation_ratio": 31.125831486891357
+        },
+        "row_normalized_centered": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.06578537695832283,
+          "stable_rank": 15.200946566492009,
+          "entropy_effective_rank": 56.89101331938841,
+          "participation_ratio": 49.05088217426529
+        }
+      }
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_full_s44.pt",
+      "checkpoint_sha256": "40c6f39bbdb5eeee954d801a3a04f391e0b9a40ff2d0287da8fa7b381de57cfc",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.14942919612977634,
+          "stable_rank": 6.692132634719654,
+          "entropy_effective_rank": 47.38683946054559,
+          "participation_ratio": 27.371277776623245
+        },
+        "centered": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.07227011268371412,
+          "stable_rank": 13.836978563689819,
+          "entropy_effective_rank": 56.32430465977024,
+          "participation_ratio": 47.58582209607922
+        },
+        "row_normalized": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.12806642373776772,
+          "stable_rank": 7.808447919554832,
+          "entropy_effective_rank": 49.591672764319426,
+          "participation_ratio": 31.782013125394172
+        },
+        "row_normalized_centered": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.06255758364196269,
+          "stable_rank": 15.985272156982978,
+          "entropy_effective_rank": 57.10716792199642,
+          "participation_ratio": 49.87342593986303
+        }
+      }
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_full_s45.pt",
+      "checkpoint_sha256": "1bc76c496ccedbd215ce8f63c6a93b30964d9337f52da56b89a3b7a4c13c3e57",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.1559680715036662,
+          "stable_rank": 6.411568665042408,
+          "entropy_effective_rank": 46.14257119621424,
+          "participation_ratio": 25.730817585991407
+        },
+        "centered": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.07926048742017165,
+          "stable_rank": 12.616626929113506,
+          "entropy_effective_rank": 55.24361340230992,
+          "participation_ratio": 44.93315403564538
+        },
+        "row_normalized": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.13403246564754406,
+          "stable_rank": 7.460878938313581,
+          "entropy_effective_rank": 48.424652538233936,
+          "participation_ratio": 29.960855411297246
+        },
+        "row_normalized_centered": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.06816119361669026,
+          "stable_rank": 14.671104582228669,
+          "entropy_effective_rank": 56.236183654345126,
+          "participation_ratio": 47.64460254268037
+        }
+      }
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_full_s46.pt",
+      "checkpoint_sha256": "84169978a05c741b76803f25becd3a34e1ccad4d43827b16fdb7a5881cef4f20",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.16062269731453033,
+          "stable_rank": 6.225770185155131,
+          "entropy_effective_rank": 45.327209830581026,
+          "participation_ratio": 24.7420851183326
+        },
+        "centered": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.0805139536504134,
+          "stable_rank": 12.420207363582442,
+          "entropy_effective_rank": 54.68077080364987,
+          "participation_ratio": 43.96058295089054
+        },
+        "row_normalized": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.13875789430589408,
+          "stable_rank": 7.206797170008096,
+          "entropy_effective_rank": 47.66845355283153,
+          "participation_ratio": 28.8324022990377
+        },
+        "row_normalized_centered": {
+          "rows": 12101,
+          "dimensions": 64,
+          "top_singular_energy": 0.06868060751871902,
+          "stable_rank": 14.560150763480772,
+          "entropy_effective_rank": 55.815483964804685,
+          "participation_ratio": 46.90413743535806
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "raw": {
+      "top_singular_energy": {
+        "mean": 0.1555642480102551,
+        "population_std": 0.0038079820131314054,
+        "min": 0.14942919612977634,
+        "max": 0.16062269731453033
+      },
+      "stable_rank": {
+        "mean": 6.432100263317676,
+        "population_std": 0.15887790666715843,
+        "min": 6.225770185155131,
+        "max": 6.692132634719654
+      },
+      "entropy_effective_rank": {
+        "mean": 46.28218913035998,
+        "population_std": 0.7595150108418681,
+        "min": 45.327209830581026,
+        "max": 47.38683946054559
+      },
+      "participation_ratio": {
+        "mean": 25.91067777718366,
+        "population_std": 0.9221952238923727,
+        "min": 24.7420851183326,
+        "max": 27.371277776623245
+      }
+    },
+    "centered": {
+      "top_singular_energy": {
+        "mean": 0.07831358463310512,
+        "population_std": 0.003544593458985368,
+        "min": 0.07227011268371412,
+        "max": 0.08262218504679943
+      },
+      "stable_rank": {
+        "mean": 12.796160106388742,
+        "population_std": 0.5966610953411352,
+        "min": 12.103286779859104,
+        "max": 13.836978563689819
+      },
+      "entropy_effective_rank": {
+        "mean": 55.37485832838358,
+        "population_std": 0.6651152279478203,
+        "min": 54.67886205906886,
+        "max": 56.32430465977024
+      },
+      "participation_ratio": {
+        "mean": 45.32754032011752,
+        "population_std": 1.4345912403094727,
+        "min": 43.84561335235139,
+        "max": 47.58582209607922
+      }
+    },
+    "row_normalized": {
+      "top_singular_energy": {
+        "mean": 0.13332662807391643,
+        "population_std": 0.0037208446251779607,
+        "min": 0.12806642373776772,
+        "max": 0.13875789430589408
+      },
+      "stable_rank": {
+        "mean": 7.506226817412847,
+        "population_std": 0.20966943928898693,
+        "min": 7.206797170008096,
+        "max": 7.808447919554832
+      },
+      "entropy_effective_rank": {
+        "mean": 48.60278349484863,
+        "population_std": 0.7319459977511744,
+        "min": 47.66845355283153,
+        "max": 49.591672764319426
+      },
+      "participation_ratio": {
+        "mean": 30.252527135572073,
+        "population_std": 1.06595377326001,
+        "min": 28.8324022990377,
+        "max": 31.782013125394172
+      }
+    },
+    "row_normalized_centered": {
+      "top_singular_energy": {
+        "mean": 0.0671876582315485,
+        "population_std": 0.002803429668880093,
+        "min": 0.06255758364196269,
+        "max": 0.07075352942204768
+      },
+      "stable_rank": {
+        "mean": 14.910208924549185,
+        "population_std": 0.6361081813828539,
+        "min": 14.133570553561494,
+        "max": 15.985272156982978
+      },
+      "entropy_effective_rank": {
+        "mean": 56.366711183022076,
+        "population_std": 0.5447846561940812,
+        "min": 55.78370705457572,
+        "max": 57.10716792199642
+      },
+      "participation_ratio": {
+        "mean": 48.05869939027512,
+        "population_std": 1.209579514644766,
+        "min": 46.820448859208895,
+        "max": 49.87342593986303
+      }
+    }
+  }
+}

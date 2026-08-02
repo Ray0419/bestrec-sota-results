@@ -1,0 +1,947 @@
+{
+  "protocol": "CROSSDATA_SPARSE_SUPPORT_TRANSFER_V1_SUMMARY",
+  "preregistration": "experiments/group_delay_filter/PREREG_CROSSDATA_SPARSE_SUPPORT_TRANSFER_V1.md",
+  "preregistration_sha256": "78a7c066c8cf886767af53cb7ead259379ccf037d994a56425e5d3ecb5d087e0",
+  "primary_metric": "strict_negative_infinity/NDCG@10",
+  "per_seed": [
+    {
+      "dataset": "Beauty",
+      "seed": 42,
+      "artifact": "experiments/group_delay_filter/crossdata_sparse_support_Beauty_valid_s42.json",
+      "artifact_sha256": "4262ef6f576ad83d21d5e728bf4cffbd1d43d98dfbbd866e88659110084c3b2c",
+      "arms": {
+        "F": 0.038577703020791373,
+        "A": 0.03852649273627386,
+        "B": 0.03865278219584089,
+        "R": 0.03852649273627386
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "delta": -5.1210284517515314e-05,
+          "bootstrap_95_ci": [
+            -0.00034512812839097645,
+            0.0002312471933809717
+          ]
+        },
+        "B_minus_F": {
+          "delta": 7.50791750495085e-05,
+          "bootstrap_95_ci": [
+            -0.00021755097923850918,
+            0.0003663710522385348
+          ]
+        },
+        "R_minus_F": {
+          "delta": -5.1210284517515314e-05,
+          "bootstrap_95_ci": [
+            -0.00034512812839097645,
+            0.0002312471933809717
+          ]
+        },
+        "A_minus_B": {
+          "delta": -0.0001262894595670238,
+          "bootstrap_95_ci": [
+            -0.00035596434478710117,
+            9.971382898631945e-05
+          ]
+        },
+        "B_minus_R": {
+          "delta": 0.0001262894595670238,
+          "bootstrap_95_ci": [
+            -9.971382898631949e-05,
+            0.00035596434478710106
+          ]
+        }
+      }
+    },
+    {
+      "dataset": "Beauty",
+      "seed": 43,
+      "artifact": "experiments/group_delay_filter/crossdata_sparse_support_Beauty_valid_s43.json",
+      "artifact_sha256": "8cf853f9f2aaaf8437c7c89e95a22ff1fefc09792275afad8d8f93001b9ba6a1",
+      "arms": {
+        "F": 0.036492758222240296,
+        "A": 0.03678726330377869,
+        "B": 0.036935238175812964,
+        "R": 0.03678726330377869
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "delta": 0.0002945050815383917,
+          "bootstrap_95_ci": [
+            2.3089999637655986e-06,
+            0.0005862157540099839
+          ]
+        },
+        "B_minus_F": {
+          "delta": 0.0004424799535726669,
+          "bootstrap_95_ci": [
+            0.00015397374689393785,
+            0.000736768058739102
+          ]
+        },
+        "R_minus_F": {
+          "delta": 0.0002945050815383917,
+          "bootstrap_95_ci": [
+            2.3089999637655986e-06,
+            0.0005862157540099839
+          ]
+        },
+        "A_minus_B": {
+          "delta": -0.00014797487203427524,
+          "bootstrap_95_ci": [
+            -0.00034072477328830734,
+            4.365667416412835e-05
+          ]
+        },
+        "B_minus_R": {
+          "delta": 0.00014797487203427524,
+          "bootstrap_95_ci": [
+            -4.365667416412835e-05,
+            0.0003407247732883073
+          ]
+        }
+      }
+    },
+    {
+      "dataset": "Beauty",
+      "seed": 44,
+      "artifact": "experiments/group_delay_filter/crossdata_sparse_support_Beauty_valid_s44.json",
+      "artifact_sha256": "8b57143c9202590526a641cfa7a64b25b3ab583d6cde81ac6612c7e52fe42041",
+      "arms": {
+        "F": 0.03963354726486267,
+        "A": 0.03971722401553102,
+        "B": 0.0399455961275681,
+        "R": 0.03971722401553102
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "delta": 8.367675066835415e-05,
+          "bootstrap_95_ci": [
+            -0.00020661625900628597,
+            0.0003794474070787238
+          ]
+        },
+        "B_minus_F": {
+          "delta": 0.00031204886270543074,
+          "bootstrap_95_ci": [
+            2.5994305119229675e-05,
+            0.0006002708953198278
+          ]
+        },
+        "R_minus_F": {
+          "delta": 8.367675066835415e-05,
+          "bootstrap_95_ci": [
+            -0.00020661625900628597,
+            0.0003794474070787238
+          ]
+        },
+        "A_minus_B": {
+          "delta": -0.00022837211203707663,
+          "bootstrap_95_ci": [
+            -0.0004396054321463338,
+            -1.3102333728064099e-05
+          ]
+        },
+        "B_minus_R": {
+          "delta": 0.00022837211203707663,
+          "bootstrap_95_ci": [
+            1.3102333728063926e-05,
+            0.0004396054321463337
+          ]
+        }
+      }
+    },
+    {
+      "dataset": "Beauty",
+      "seed": 45,
+      "artifact": "experiments/group_delay_filter/crossdata_sparse_support_Beauty_valid_s45.json",
+      "artifact_sha256": "e4c7eb08afce206125692e992a5180346d23a62cc0a0819c466118991d3de1f1",
+      "arms": {
+        "F": 0.03904775613968508,
+        "A": 0.03944326888147443,
+        "B": 0.0393837537130135,
+        "R": 0.03943405095885923
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "delta": 0.00039551274178934673,
+          "bootstrap_95_ci": [
+            8.128530302487369e-05,
+            0.0007134898355958568
+          ]
+        },
+        "B_minus_F": {
+          "delta": 0.000335997573328425,
+          "bootstrap_95_ci": [
+            9.37408081955641e-06,
+            0.0006604250719401475
+          ]
+        },
+        "R_minus_F": {
+          "delta": 0.0003862948191741479,
+          "bootstrap_95_ci": [
+            6.800305824209846e-05,
+            0.0007048829320153359
+          ]
+        },
+        "A_minus_B": {
+          "delta": 5.951516846092174e-05,
+          "bootstrap_95_ci": [
+            -0.00012220051059700247,
+            0.00024380387617561837
+          ]
+        },
+        "B_minus_R": {
+          "delta": -5.029724584572293e-05,
+          "bootstrap_95_ci": [
+            -0.0002558304962312919,
+            0.0001509683895757109
+          ]
+        }
+      }
+    },
+    {
+      "dataset": "Beauty",
+      "seed": 46,
+      "artifact": "experiments/group_delay_filter/crossdata_sparse_support_Beauty_valid_s46.json",
+      "artifact_sha256": "855f0ed7e5b80dc18079377c99f0001e02577e5c8ee4978072d2a0fc8d5601cc",
+      "arms": {
+        "F": 0.03892239099509864,
+        "A": 0.038945372574402844,
+        "B": 0.03909282034407,
+        "R": 0.038945372574402844
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "delta": 2.2981579304204476e-05,
+          "bootstrap_95_ci": [
+            -0.0002181217969969299,
+            0.00026665872366762975
+          ]
+        },
+        "B_minus_F": {
+          "delta": 0.00017042934897137392,
+          "bootstrap_95_ci": [
+            -0.00010667409094297149,
+            0.00044350673697705336
+          ]
+        },
+        "R_minus_F": {
+          "delta": 2.2981579304204476e-05,
+          "bootstrap_95_ci": [
+            -0.0002181217969969299,
+            0.00026665872366762975
+          ]
+        },
+        "A_minus_B": {
+          "delta": -0.00014744776966716945,
+          "bootstrap_95_ci": [
+            -0.00032429770317594166,
+            2.8284764209771913e-05
+          ]
+        },
+        "B_minus_R": {
+          "delta": 0.00014744776966716945,
+          "bootstrap_95_ci": [
+            -2.8284764209771987e-05,
+            0.0003242977031759416
+          ]
+        }
+      }
+    },
+    {
+      "dataset": "LastFM",
+      "seed": 42,
+      "artifact": "experiments/group_delay_filter/crossdata_sparse_support_LastFM_valid_s42.json",
+      "artifact_sha256": "d294924e436030f2f867a46ca5a3232fa908f72bf29354fa5fe020a723e83cfd",
+      "arms": {
+        "F": 0.03936868579260713,
+        "A": 0.03720401894869849,
+        "B": 0.03722311010948058,
+        "R": 0.03720401894869849
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "delta": -0.002164666843908643,
+          "bootstrap_95_ci": [
+            -0.004012502195059169,
+            -0.0006372058955668807
+          ]
+        },
+        "B_minus_F": {
+          "delta": -0.002145575683126549,
+          "bootstrap_95_ci": [
+            -0.004164959986522296,
+            -0.00038630784679173153
+          ]
+        },
+        "R_minus_F": {
+          "delta": -0.002164666843908643,
+          "bootstrap_95_ci": [
+            -0.004012502195059169,
+            -0.0006372058955668807
+          ]
+        },
+        "A_minus_B": {
+          "delta": -1.9091160782094396e-05,
+          "bootstrap_95_ci": [
+            -0.0008100975447374839,
+            0.000757632520419218
+          ]
+        },
+        "B_minus_R": {
+          "delta": 1.9091160782094396e-05,
+          "bootstrap_95_ci": [
+            -0.0007576325204192188,
+            0.0008100975447374838
+          ]
+        }
+      }
+    },
+    {
+      "dataset": "LastFM",
+      "seed": 43,
+      "artifact": "experiments/group_delay_filter/crossdata_sparse_support_LastFM_valid_s43.json",
+      "artifact_sha256": "dbc358971cd11c594d8b17d1ed0e21cbe24d5421d365deed21fc7cc43ef952c4",
+      "arms": {
+        "F": 0.03613478218717371,
+        "A": 0.03541538280659352,
+        "B": 0.03515532915966074,
+        "R": 0.03541538280659352
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "delta": -0.0007193993805801918,
+          "bootstrap_95_ci": [
+            -0.0024925520276211804,
+            0.0010241744951720536
+          ]
+        },
+        "B_minus_F": {
+          "delta": -0.000979453027512973,
+          "bootstrap_95_ci": [
+            -0.0029597101333339176,
+            0.0009755436800421664
+          ]
+        },
+        "R_minus_F": {
+          "delta": -0.0007193993805801918,
+          "bootstrap_95_ci": [
+            -0.0024925520276211804,
+            0.0010241744951720536
+          ]
+        },
+        "A_minus_B": {
+          "delta": 0.00026005364693278127,
+          "bootstrap_95_ci": [
+            -0.0007163917185654575,
+            0.001171463790667307
+          ]
+        },
+        "B_minus_R": {
+          "delta": -0.00026005364693278127,
+          "bootstrap_95_ci": [
+            -0.001171463790667307,
+            0.0007163917185654572
+          ]
+        }
+      }
+    },
+    {
+      "dataset": "LastFM",
+      "seed": 44,
+      "artifact": "experiments/group_delay_filter/crossdata_sparse_support_LastFM_valid_s44.json",
+      "artifact_sha256": "61fc4546349a45dce01f4b38f0133250ed529fa9bfc243df89ecd2a667f78cbd",
+      "arms": {
+        "F": 0.042885155782282934,
+        "A": 0.040818090978420804,
+        "B": 0.040453771627619525,
+        "R": 0.04055961591773946
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "delta": -0.002067064803862134,
+          "bootstrap_95_ci": [
+            -0.004070441279217111,
+            -0.00026707406773265495
+          ]
+        },
+        "B_minus_F": {
+          "delta": -0.0024313841546634058,
+          "bootstrap_95_ci": [
+            -0.0047044452795921435,
+            -0.0003506157862371403
+          ]
+        },
+        "R_minus_F": {
+          "delta": -0.002325539864543465,
+          "bootstrap_95_ci": [
+            -0.004451105720438378,
+            -0.0004154206934180798
+          ]
+        },
+        "A_minus_B": {
+          "delta": 0.000364319350801272,
+          "bootstrap_95_ci": [
+            -0.0006003997235114675,
+            0.001383431952148927
+          ]
+        },
+        "B_minus_R": {
+          "delta": -0.00010584429011994045,
+          "bootstrap_95_ci": [
+            -0.0009367165980973112,
+            0.0007353591717258142
+          ]
+        }
+      }
+    },
+    {
+      "dataset": "LastFM",
+      "seed": 45,
+      "artifact": "experiments/group_delay_filter/crossdata_sparse_support_LastFM_valid_s45.json",
+      "artifact_sha256": "9e6902d5bc54e99728a88aaebc4c51d5dc7c02201a2222dda182526aac70ae5d",
+      "arms": {
+        "F": 0.038641791943343544,
+        "A": 0.03826695040560669,
+        "B": 0.03789548636582478,
+        "R": 0.03781688180723479
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "delta": -0.00037484153773685764,
+          "bootstrap_95_ci": [
+            -0.0019018962394389094,
+            0.0012015347672509424
+          ]
+        },
+        "B_minus_F": {
+          "delta": -0.0007463055775187642,
+          "bootstrap_95_ci": [
+            -0.002482935970232527,
+            0.0009698716985817596
+          ]
+        },
+        "R_minus_F": {
+          "delta": -0.0008249101361087548,
+          "bootstrap_95_ci": [
+            -0.0027729865471080805,
+            0.001095127985631894
+          ]
+        },
+        "A_minus_B": {
+          "delta": 0.0003714640397819067,
+          "bootstrap_95_ci": [
+            -0.0005393347605946939,
+            0.0013583596478243228
+          ]
+        },
+        "B_minus_R": {
+          "delta": 7.860455858999053e-05,
+          "bootstrap_95_ci": [
+            -0.0010021082254825894,
+            0.0011501697156170746
+          ]
+        }
+      }
+    },
+    {
+      "dataset": "LastFM",
+      "seed": 46,
+      "artifact": "experiments/group_delay_filter/crossdata_sparse_support_LastFM_valid_s46.json",
+      "artifact_sha256": "1f32bdc37121506e3c3bced9f1e10bb46309f9cb2d41ac4c18c13be261f75185",
+      "arms": {
+        "F": 0.038976812243691324,
+        "A": 0.03803679004865938,
+        "B": 0.03769530205164938,
+        "R": 0.038068368869334346
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "delta": -0.000940022195031942,
+          "bootstrap_95_ci": [
+            -0.0029695851799585856,
+            0.0009128334125172863
+          ]
+        },
+        "B_minus_F": {
+          "delta": -0.0012815101920419488,
+          "bootstrap_95_ci": [
+            -0.0035977213907598974,
+            0.0008127516336608078
+          ]
+        },
+        "R_minus_F": {
+          "delta": -0.000908443374356981,
+          "bootstrap_95_ci": [
+            -0.002915892805889049,
+            0.0009179301143617014
+          ]
+        },
+        "A_minus_B": {
+          "delta": 0.00034148799701000685,
+          "bootstrap_95_ci": [
+            -0.0004840884369546062,
+            0.001183278331945862
+          ]
+        },
+        "B_minus_R": {
+          "delta": -0.00037306681768496766,
+          "bootstrap_95_ci": [
+            -0.0012334710308960536,
+            0.00046963828022245405
+          ]
+        }
+      }
+    },
+    {
+      "dataset": "Toys_and_Games",
+      "seed": 42,
+      "artifact": "experiments/group_delay_filter/crossdata_sparse_support_Toys_and_Games_valid_s42.json",
+      "artifact_sha256": "6258dbd07fc309367c0cb05789f8ee83fef06d65a0483e703eadb65387c1757b",
+      "arms": {
+        "F": 0.045358301786981345,
+        "A": 0.04527843115677463,
+        "B": 0.045453652479539315,
+        "R": 0.045362111335760937
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "delta": -7.98706302067102e-05,
+          "bootstrap_95_ci": [
+            -0.0003718355125168569,
+            0.00021064872761937482
+          ]
+        },
+        "B_minus_F": {
+          "delta": 9.535069255796975e-05,
+          "bootstrap_95_ci": [
+            -0.00019929953842797314,
+            0.0003875938354852637
+          ]
+        },
+        "R_minus_F": {
+          "delta": 3.80954877959281e-06,
+          "bootstrap_95_ci": [
+            -0.00027070374821131106,
+            0.00027644979595510945
+          ]
+        },
+        "A_minus_B": {
+          "delta": -0.00017522132276467995,
+          "bootstrap_95_ci": [
+            -0.0003669845056199721,
+            1.3537344430749056e-05
+          ]
+        },
+        "B_minus_R": {
+          "delta": 9.154114377837692e-05,
+          "bootstrap_95_ci": [
+            -0.00010101876862247727,
+            0.0002773343060888121
+          ]
+        }
+      }
+    },
+    {
+      "dataset": "Toys_and_Games",
+      "seed": 43,
+      "artifact": "experiments/group_delay_filter/crossdata_sparse_support_Toys_and_Games_valid_s43.json",
+      "artifact_sha256": "9917bc9b84894808c05c1d695edf8b91369856f587d3fd8f2da71af4ba26e37f",
+      "arms": {
+        "F": 0.042280635745606525,
+        "A": 0.04238870584780345,
+        "B": 0.042405985752162555,
+        "R": 0.04238870584780345
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "delta": 0.00010807010219691994,
+          "bootstrap_95_ci": [
+            -0.00018736437844215986,
+            0.0003941442350003657
+          ]
+        },
+        "B_minus_F": {
+          "delta": 0.0001253500065560228,
+          "bootstrap_95_ci": [
+            -0.00016894486104868813,
+            0.0004158569908035
+          ]
+        },
+        "R_minus_F": {
+          "delta": 0.00010807010219691994,
+          "bootstrap_95_ci": [
+            -0.00018736437844215986,
+            0.0003941442350003657
+          ]
+        },
+        "A_minus_B": {
+          "delta": -1.7279904359102862e-05,
+          "bootstrap_95_ci": [
+            -0.0002550672994708575,
+            0.0002140785439985902
+          ]
+        },
+        "B_minus_R": {
+          "delta": 1.7279904359102862e-05,
+          "bootstrap_95_ci": [
+            -0.00021407854399859027,
+            0.00025506729947085744
+          ]
+        }
+      }
+    },
+    {
+      "dataset": "Toys_and_Games",
+      "seed": 44,
+      "artifact": "experiments/group_delay_filter/crossdata_sparse_support_Toys_and_Games_valid_s44.json",
+      "artifact_sha256": "96dacc4a1a328044834740dc182e6039bece385576b388086c37d93993fdf367",
+      "arms": {
+        "F": 0.04468980726646066,
+        "A": 0.044600873928263285,
+        "B": 0.04482567813952409,
+        "R": 0.044600873928263285
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "delta": -8.893333819737189e-05,
+          "bootstrap_95_ci": [
+            -0.0004083211710196269,
+            0.00023586130785758174
+          ]
+        },
+        "B_minus_F": {
+          "delta": 0.00013587087306343146,
+          "bootstrap_95_ci": [
+            -0.0001897080612527401,
+            0.0004553431882421823
+          ]
+        },
+        "R_minus_F": {
+          "delta": -8.893333819737189e-05,
+          "bootstrap_95_ci": [
+            -0.0004083211710196269,
+            0.00023586130785758174
+          ]
+        },
+        "A_minus_B": {
+          "delta": -0.00022480421126080336,
+          "bootstrap_95_ci": [
+            -0.0004041195059604447,
+            -4.820162607639789e-05
+          ]
+        },
+        "B_minus_R": {
+          "delta": 0.00022480421126080336,
+          "bootstrap_95_ci": [
+            4.820162607639781e-05,
+            0.0004041195059604447
+          ]
+        }
+      }
+    },
+    {
+      "dataset": "Toys_and_Games",
+      "seed": 45,
+      "artifact": "experiments/group_delay_filter/crossdata_sparse_support_Toys_and_Games_valid_s45.json",
+      "artifact_sha256": "27d270713b41fabb9e798922e61fadcb921b97592995fae31671264d0826e2dc",
+      "arms": {
+        "F": 0.04494091239311397,
+        "A": 0.04496492271817883,
+        "B": 0.04512132297896904,
+        "R": 0.04496492271817883
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "delta": 2.4010325064858388e-05,
+          "bootstrap_95_ci": [
+            -0.00029798243547203606,
+            0.00034495912742808495
+          ]
+        },
+        "B_minus_F": {
+          "delta": 0.0001804105858550704,
+          "bootstrap_95_ci": [
+            -0.00013740879103930749,
+            0.0005028305260480699
+          ]
+        },
+        "R_minus_F": {
+          "delta": 2.4010325064858388e-05,
+          "bootstrap_95_ci": [
+            -0.00029798243547203606,
+            0.00034495912742808495
+          ]
+        },
+        "A_minus_B": {
+          "delta": -0.000156400260790212,
+          "bootstrap_95_ci": [
+            -0.00034645942703852257,
+            3.0341375671508834e-05
+          ]
+        },
+        "B_minus_R": {
+          "delta": 0.000156400260790212,
+          "bootstrap_95_ci": [
+            -3.0341375671508844e-05,
+            0.0003464594270385225
+          ]
+        }
+      }
+    },
+    {
+      "dataset": "Toys_and_Games",
+      "seed": 46,
+      "artifact": "experiments/group_delay_filter/crossdata_sparse_support_Toys_and_Games_valid_s46.json",
+      "artifact_sha256": "4074eb942768a959aaf82f239657c0fc63c75fd0f87a2cc2d63e706c7f17be57",
+      "arms": {
+        "F": 0.0443265914214649,
+        "A": 0.04459282035694342,
+        "B": 0.04459719731877311,
+        "R": 0.04467249248808324
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "delta": 0.0002662289354785134,
+          "bootstrap_95_ci": [
+            -5.306074958917525e-05,
+            0.000591128009836844
+          ]
+        },
+        "B_minus_F": {
+          "delta": 0.0002706058973082013,
+          "bootstrap_95_ci": [
+            -7.531259644659062e-05,
+            0.0006160127566794563
+          ]
+        },
+        "R_minus_F": {
+          "delta": 0.00034590106661833636,
+          "bootstrap_95_ci": [
+            3.4704380963657334e-05,
+            0.000672114511766852
+          ]
+        },
+        "A_minus_B": {
+          "delta": -4.3769618296879205e-06,
+          "bootstrap_95_ci": [
+            -0.00020672523900606933,
+            0.0001944509169458081
+          ]
+        },
+        "B_minus_R": {
+          "delta": -7.529516931013503e-05,
+          "bootstrap_95_ci": [
+            -0.0002886523439563958,
+            0.00013849014402888968
+          ]
+        }
+      }
+    }
+  ],
+  "datasets": {
+    "Beauty": {
+      "arms": {
+        "F": 0.03853483112853561,
+        "A": 0.038683924302292165,
+        "B": 0.03880203811126109,
+        "R": 0.03868208071776913
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "mean": 0.00014909317375655633,
+          "positive_seeds": 4,
+          "negative_seeds": 1,
+          "bootstrap_lower_bound_positive_seeds": 2
+        },
+        "B_minus_F": {
+          "mean": 0.00026720698272548105,
+          "positive_seeds": 5,
+          "negative_seeds": 0,
+          "bootstrap_lower_bound_positive_seeds": 3
+        },
+        "R_minus_F": {
+          "mean": 0.00014724958923351657,
+          "positive_seeds": 4,
+          "negative_seeds": 1,
+          "bootstrap_lower_bound_positive_seeds": 2
+        },
+        "A_minus_B": {
+          "mean": -0.00011811380896892468,
+          "positive_seeds": 1,
+          "negative_seeds": 4,
+          "bootstrap_lower_bound_positive_seeds": 0
+        },
+        "B_minus_R": {
+          "mean": 0.00011995739349196445,
+          "positive_seeds": 4,
+          "negative_seeds": 1,
+          "bootstrap_lower_bound_positive_seeds": 1
+        }
+      }
+    },
+    "LastFM": {
+      "arms": {
+        "F": 0.03920144558981973,
+        "A": 0.03794824663759579,
+        "B": 0.037684599862847,
+        "R": 0.03781285366992012
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "mean": -0.0012531989522239536,
+          "positive_seeds": 0,
+          "negative_seeds": 5,
+          "bootstrap_lower_bound_positive_seeds": 0
+        },
+        "B_minus_F": {
+          "mean": -0.0015168457269727283,
+          "positive_seeds": 0,
+          "negative_seeds": 5,
+          "bootstrap_lower_bound_positive_seeds": 0
+        },
+        "R_minus_F": {
+          "mean": -0.0013885919198996072,
+          "positive_seeds": 0,
+          "negative_seeds": 5,
+          "bootstrap_lower_bound_positive_seeds": 0
+        },
+        "A_minus_B": {
+          "mean": 0.0002636467747487745,
+          "positive_seeds": 4,
+          "negative_seeds": 1,
+          "bootstrap_lower_bound_positive_seeds": 0
+        },
+        "B_minus_R": {
+          "mean": -0.0001282538070731209,
+          "positive_seeds": 2,
+          "negative_seeds": 3,
+          "bootstrap_lower_bound_positive_seeds": 0
+        }
+      }
+    },
+    "Toys_and_Games": {
+      "arms": {
+        "F": 0.044319249722725475,
+        "A": 0.04436515080159272,
+        "B": 0.04448076733379362,
+        "R": 0.04439782126361795
+      },
+      "contrasts": {
+        "A_minus_F": {
+          "mean": 4.590107886724193e-05,
+          "positive_seeds": 3,
+          "negative_seeds": 2,
+          "bootstrap_lower_bound_positive_seeds": 0
+        },
+        "B_minus_F": {
+          "mean": 0.00016151761106813914,
+          "positive_seeds": 5,
+          "negative_seeds": 0,
+          "bootstrap_lower_bound_positive_seeds": 0
+        },
+        "R_minus_F": {
+          "mean": 7.857154089246712e-05,
+          "positive_seeds": 4,
+          "negative_seeds": 1,
+          "bootstrap_lower_bound_positive_seeds": 1
+        },
+        "A_minus_B": {
+          "mean": -0.00011561653220089723,
+          "positive_seeds": 0,
+          "negative_seeds": 5,
+          "bootstrap_lower_bound_positive_seeds": 0
+        },
+        "B_minus_R": {
+          "mean": 8.294607017567202e-05,
+          "positive_seeds": 4,
+          "negative_seeds": 1,
+          "bootstrap_lower_bound_positive_seeds": 1
+        }
+      }
+    }
+  },
+  "macro_contrasts": {
+    "A_minus_F": {
+      "mean": -0.00035273489986671847,
+      "positive_datasets": 2,
+      "negative_datasets": 1,
+      "positive_seeds": 7,
+      "negative_seeds": 8,
+      "dataset_means": {
+        "Beauty": 0.00014909317375655633,
+        "LastFM": -0.0012531989522239536,
+        "Toys_and_Games": 4.590107886724193e-05
+      }
+    },
+    "B_minus_F": {
+      "mean": -0.000362707044393036,
+      "positive_datasets": 2,
+      "negative_datasets": 1,
+      "positive_seeds": 10,
+      "negative_seeds": 5,
+      "dataset_means": {
+        "Beauty": 0.00026720698272548105,
+        "LastFM": -0.0015168457269727283,
+        "Toys_and_Games": 0.00016151761106813914
+      }
+    },
+    "R_minus_F": {
+      "mean": -0.0003875902632578746,
+      "positive_datasets": 2,
+      "negative_datasets": 1,
+      "positive_seeds": 8,
+      "negative_seeds": 7,
+      "dataset_means": {
+        "Beauty": 0.00014724958923351657,
+        "LastFM": -0.0013885919198996072,
+        "Toys_and_Games": 7.857154089246712e-05
+      }
+    },
+    "A_minus_B": {
+      "mean": 9.972144526317528e-06,
+      "positive_datasets": 1,
+      "negative_datasets": 2,
+      "positive_seeds": 5,
+      "negative_seeds": 10,
+      "dataset_means": {
+        "Beauty": -0.00011811380896892468,
+        "LastFM": 0.0002636467747487745,
+        "Toys_and_Games": -0.00011561653220089723
+      }
+    },
+    "B_minus_R": {
+      "mean": 2.4883218864838527e-05,
+      "positive_datasets": 2,
+      "negative_datasets": 1,
+      "positive_seeds": 10,
+      "negative_seeds": 5,
+      "dataset_means": {
+        "Beauty": 0.00011995739349196445,
+        "LastFM": -0.0001282538070731209,
+        "Toys_and_Games": 8.294607017567202e-05
+      }
+    }
+  },
+  "frozen_decision_rules": {
+    "adaptive_transfer": {
+      "passed": false
+    },
+    "strong_adaptive_transfer": {
+      "passed": false
+    },
+    "fixed_boundary_transfer": {
+      "passed": false
+    },
+    "boundary_position_value": {
+      "passed": false
+    },
+    "material_dataset_failures": {
+      "A": [],
+      "B": [],
+      "R": []
+    }
+  },
+  "test_accessed": false
+}

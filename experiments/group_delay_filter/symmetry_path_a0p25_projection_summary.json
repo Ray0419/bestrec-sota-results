@@ -1,0 +1,179 @@
+{
+  "protocol": "DEPTH_GATED_CHANNEL_SHARED_PROJECTION_EXPLORATORY_V1",
+  "rank1_energy_threshold": 0.905,
+  "channel_consensus_threshold": 0.97,
+  "deviation_scale": 0.25,
+  "projection": "shared channel mean plus a fixed fraction of the orthogonal channel-specific deviation",
+  "checkpoints": [
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s42.pt",
+      "checkpoint_sha256": "8d4ddc0489d1c22d2c4a13e916bb71a3618fe38aa693ec906c3064bd87e79b6b",
+      "projected": "experiments/group_delay_filter/projected_symmetry_path_a0p25/LADDER_ML-1M_full_s42.channel_shared_a0p25_projected.pt",
+      "projected_sha256": "f4ac28d50875dbc858878b639e4e5c27e4f75035e0cb7d7b9245d95d36df1de0",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.8714063918241403,
+          "dominant_channel_uniform_cosine": 0.9559789917951022,
+          "channel_shared_retained_energy": 0.7982805338984942
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": true,
+          "selected": true,
+          "rank1_retained_energy": 0.9113263083173069,
+          "dominant_channel_uniform_cosine": 0.9875116738061105,
+          "channel_shared_retained_energy": 0.8888650018083485
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s43.pt",
+      "checkpoint_sha256": "b3f3ff00d50d78df75754ee72fd0bff15bb714b6827d62552af1b46dcd473ef2",
+      "projected": "experiments/group_delay_filter/projected_symmetry_path_a0p25/LADDER_ML-1M_full_s43.channel_shared_a0p25_projected.pt",
+      "projected_sha256": "18a0e1f4456c66c923d8510ec08870958ef1df0c6f13d74dd237e60519941a1d",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.8795692063251992,
+          "dominant_channel_uniform_cosine": 0.9497372109508457,
+          "channel_shared_retained_energy": 0.795218740664914
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": true,
+          "selected": true,
+          "rank1_retained_energy": 0.9087708623793275,
+          "dominant_channel_uniform_cosine": 0.9817432767530115,
+          "channel_shared_retained_energy": 0.8760886172088519
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s44.pt",
+      "checkpoint_sha256": "83f1089782d2a5f002794cb98cf872367ce5c6cfb8369ba928e5f2416849a944",
+      "projected": "experiments/group_delay_filter/projected_symmetry_path_a0p25/LADDER_ML-1M_full_s44.channel_shared_a0p25_projected.pt",
+      "projected_sha256": "c9e3df5a625961774a9dd9427030a906f6dcd49e48e7de95b75486c49a0e59d4",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.8712041788850443,
+          "dominant_channel_uniform_cosine": 0.9612357686123064,
+          "channel_shared_retained_energy": 0.8065599961933636
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": true,
+          "selected": true,
+          "rank1_retained_energy": 0.9166794350471521,
+          "dominant_channel_uniform_cosine": 0.9747340660775876,
+          "channel_shared_retained_energy": 0.8710600028099308
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s45.pt",
+      "checkpoint_sha256": "26a0cb3f1ec2dd1a505a0d38424ed81c8b4bc4a4626082644f3b2df0f7825d87",
+      "projected": "experiments/group_delay_filter/projected_symmetry_path_a0p25/LADDER_ML-1M_full_s45.channel_shared_a0p25_projected.pt",
+      "projected_sha256": "e4957a4b6d8a9e5e9d7f35e97a8a9f7d9d0186074ad9500fa3f2ee8339fed99f",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.8870554572938031,
+          "dominant_channel_uniform_cosine": 0.9584254440426841,
+          "channel_shared_retained_energy": 0.816213662194088
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": true,
+          "selected": true,
+          "rank1_retained_energy": 0.9055357266350512,
+          "dominant_channel_uniform_cosine": 0.9875884085796135,
+          "channel_shared_retained_energy": 0.8833691979307017
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s46.pt",
+      "checkpoint_sha256": "1c7baeb549e807614e21a5a566b63493ee28e44fc94d9d8c3bd622f4c2f70d0b",
+      "projected": "experiments/group_delay_filter/projected_symmetry_path_a0p25/LADDER_ML-1M_full_s46.channel_shared_a0p25_projected.pt",
+      "projected_sha256": "d3eb61e44de98bf2799029cc34c6dfd6631e418a3678caaf6ac756d86c10e0f4",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.8752079417737049,
+          "dominant_channel_uniform_cosine": 0.9571033260778797,
+          "channel_shared_retained_energy": 0.803365062176519
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": true,
+          "selected": true,
+          "rank1_retained_energy": 0.9118119818896948,
+          "dominant_channel_uniform_cosine": 0.9871354018700341,
+          "channel_shared_retained_energy": 0.8886411752776009
+        }
+      ]
+    }
+  ]
+}

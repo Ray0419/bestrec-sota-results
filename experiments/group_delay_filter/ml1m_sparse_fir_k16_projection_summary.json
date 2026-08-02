@@ -1,0 +1,301 @@
+{
+  "protocol": "DEPTH_GATED_CHANNEL_SHARED_PROJECTION_EXPLORATORY_V1",
+  "rank1_energy_threshold": 0.905,
+  "channel_consensus_threshold": 0.97,
+  "deviation_scale": 0.0,
+  "intervention": "sparse_fir",
+  "sparse_taps": 16,
+  "projection": "channel-shared spectrum compiled from the fixed largest-magnitude real impulse-response taps",
+  "checkpoints": [
+    {
+      "checkpoint": "experiments/group_delay_filter/projected_channel_shared_ml1m/LADDER_ML-1M_full_s42.channel_shared_projected.pt",
+      "checkpoint_sha256": "5ff2471c1e92cd92ed26f55ffb5272967fb712267f11ba3d960538362162af8a",
+      "projected": "experiments/group_delay_filter/projected_sparse_fir_k16_ml1m/LADDER_ML-1M_full_s42.channel_shared_projected.channel_shared_sparse_fir_k16_projected.pt",
+      "projected_sha256": "34ab27e36348f8d24ab31a2fc7a1b68fccc13f467e2a30dbe5ed9791d6773cac",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.8714063918241403,
+          "dominant_channel_uniform_cosine": 0.9559789917951022,
+          "channel_shared_retained_energy": 0.7982805338984942
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": true,
+          "selected": true,
+          "rank1_retained_energy": 1.0,
+          "dominant_channel_uniform_cosine": 1.0,
+          "channel_shared_retained_energy": 1.0,
+          "sequence_length": 50,
+          "sparse_taps": 16,
+          "retained_tap_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            16,
+            48,
+            49
+          ],
+          "retained_impulse_energy": 0.9897455965790767,
+          "rfft_reconstruction_max_abs_error": 0.0,
+          "replacement_frobenius_norm_ratio": 0.9898297075959065,
+          "max_row_energy_relative_error": 0.30258863938923714
+        }
+      ]
+    },
+    {
+      "checkpoint": "experiments/group_delay_filter/projected_channel_shared_ml1m/LADDER_ML-1M_full_s43.channel_shared_projected.pt",
+      "checkpoint_sha256": "9b60873633daee8cb2b8fa30af64e85b7528bec2171c457a76b949807720032f",
+      "projected": "experiments/group_delay_filter/projected_sparse_fir_k16_ml1m/LADDER_ML-1M_full_s43.channel_shared_projected.channel_shared_sparse_fir_k16_projected.pt",
+      "projected_sha256": "ad0f848650610f46e48e38639feadd994f18f6c76cdbd9b9a796e79cd6d59cd2",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.8795692063251992,
+          "dominant_channel_uniform_cosine": 0.9497372109508457,
+          "channel_shared_retained_energy": 0.795218740664914
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": true,
+          "selected": true,
+          "rank1_retained_energy": 1.0,
+          "dominant_channel_uniform_cosine": 1.0,
+          "channel_shared_retained_energy": 1.0,
+          "sequence_length": 50,
+          "sparse_taps": 16,
+          "retained_tap_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            48,
+            49
+          ],
+          "retained_impulse_energy": 0.9881815305595135,
+          "rfft_reconstruction_max_abs_error": 0.0,
+          "replacement_frobenius_norm_ratio": 0.9872324413163709,
+          "max_row_energy_relative_error": 0.49307915603652425
+        }
+      ]
+    },
+    {
+      "checkpoint": "experiments/group_delay_filter/projected_channel_shared_ml1m/LADDER_ML-1M_full_s44.channel_shared_projected.pt",
+      "checkpoint_sha256": "94132a37c003f52e1e58af3c3a216076d5ac7eecf80eaefb6a73bb0d074f3b57",
+      "projected": "experiments/group_delay_filter/projected_sparse_fir_k16_ml1m/LADDER_ML-1M_full_s44.channel_shared_projected.channel_shared_sparse_fir_k16_projected.pt",
+      "projected_sha256": "88ef1eb49967cb61cd799516f870cb2fa8433582116cebd9438f8ed2b947b6f1",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.8712041788850443,
+          "dominant_channel_uniform_cosine": 0.9612357686123064,
+          "channel_shared_retained_energy": 0.8065599961933636
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": true,
+          "selected": true,
+          "rank1_retained_energy": 1.0,
+          "dominant_channel_uniform_cosine": 0.9999999999999999,
+          "channel_shared_retained_energy": 1.0,
+          "sequence_length": 50,
+          "sparse_taps": 16,
+          "retained_tap_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            17,
+            49
+          ],
+          "retained_impulse_energy": 0.9874312772571899,
+          "rfft_reconstruction_max_abs_error": 0.0,
+          "replacement_frobenius_norm_ratio": 0.9852875384590063,
+          "max_row_energy_relative_error": 0.36449036728220807
+        }
+      ]
+    },
+    {
+      "checkpoint": "experiments/group_delay_filter/projected_channel_shared_ml1m/LADDER_ML-1M_full_s45.channel_shared_projected.pt",
+      "checkpoint_sha256": "b3f43ce91c45aa0c45c936f983c7284d51e60e5d7d0217d40ffcc67ce9db1396",
+      "projected": "experiments/group_delay_filter/projected_sparse_fir_k16_ml1m/LADDER_ML-1M_full_s45.channel_shared_projected.channel_shared_sparse_fir_k16_projected.pt",
+      "projected_sha256": "d43d0263c4a678dcc4b68786e5058c39b8d185dc475506d0ce7fa83b396e17ad",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.8870554572938031,
+          "dominant_channel_uniform_cosine": 0.9584254440426841,
+          "channel_shared_retained_energy": 0.816213662194088
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": true,
+          "selected": true,
+          "rank1_retained_energy": 1.0,
+          "dominant_channel_uniform_cosine": 0.9999999999999999,
+          "channel_shared_retained_energy": 1.0,
+          "sequence_length": 50,
+          "sparse_taps": 16,
+          "retained_tap_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            47,
+            48,
+            49
+          ],
+          "retained_impulse_energy": 0.9879740085690303,
+          "rfft_reconstruction_max_abs_error": 0.0,
+          "replacement_frobenius_norm_ratio": 0.9874077013095846,
+          "max_row_energy_relative_error": 0.4170643710491767
+        }
+      ]
+    },
+    {
+      "checkpoint": "experiments/group_delay_filter/projected_channel_shared_ml1m/LADDER_ML-1M_full_s46.channel_shared_projected.pt",
+      "checkpoint_sha256": "e66f0adeb83f0149ed49b7f1b8b2a6eeb65066865c6960b6ab058fed0672f969",
+      "projected": "experiments/group_delay_filter/projected_sparse_fir_k16_ml1m/LADDER_ML-1M_full_s46.channel_shared_projected.channel_shared_sparse_fir_k16_projected.pt",
+      "projected_sha256": "2cd6ff65ea969948586c49883acdb6a73c0a40f8f7342d0b178bc320ea5f602b",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.8752079417737049,
+          "dominant_channel_uniform_cosine": 0.9571033260778797,
+          "channel_shared_retained_energy": 0.803365062176519
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": true,
+          "selected": true,
+          "rank1_retained_energy": 1.0,
+          "dominant_channel_uniform_cosine": 0.9999999999999999,
+          "channel_shared_retained_energy": 1.0,
+          "sequence_length": 50,
+          "sparse_taps": 16,
+          "retained_tap_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            15,
+            48,
+            49
+          ],
+          "retained_impulse_energy": 0.9893280878021754,
+          "rfft_reconstruction_max_abs_error": 0.0,
+          "replacement_frobenius_norm_ratio": 0.9862253349096483,
+          "max_row_energy_relative_error": 0.38021544194896223
+        }
+      ]
+    }
+  ]
+}

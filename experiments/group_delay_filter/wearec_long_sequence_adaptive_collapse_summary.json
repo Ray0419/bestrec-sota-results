@@ -1,0 +1,31 @@
+{
+  "protocol": "WEAREC_LONG_SEQUENCE_ADAPTIVE_COLLAPSE_V1",
+  "date": "2026-08-02",
+  "decision": "fail",
+  "test_access": "none",
+  "preregistration_sha256": "2859ab4a5f7a5ec9e3708cf25e7adda9c6db0396e4b1d251bf2bf5de1da88cf1",
+  "results": [
+    {
+      "dataset": "Foursquare",
+      "baseline_ndcg_at_10": 0.015109106801053644,
+      "projected_ndcg_at_10": 0.013464919452538355,
+      "delta_ndcg_at_10": -0.0016441873485152896,
+      "bootstrap_95_ci": [-0.003743269095323321, 0.00018656744649890234],
+      "parameters_saved": 91910,
+      "whole_model_fraction_saved": 0.09640133835390863,
+      "output_layer_mac_fraction_saved": 0.875,
+      "artifact_sha256": "701c3cfda9598c46e9b70095f47e44a955e17a438f185a2ca85baa2dcbadb1b5"
+    },
+    {
+      "dataset": "LastFM",
+      "baseline_ndcg_at_10": 0.07047392991014775,
+      "projected_ndcg_at_10": 0.07011164462865556,
+      "delta_ndcg_at_10": -0.0003622852814922065,
+      "bootstrap_95_ci": [-0.0035278251947391008, 0.0029595740146682137],
+      "parameters_saved": 13130,
+      "whole_model_fraction_saved": 0.033886144618735736,
+      "output_layer_mac_fraction_saved": 0.5,
+      "artifact_sha256": "e8b835453ba2bb155b5dc8d5b633e7e9838223ec542b48ff0c7cfb854754906c"
+    }
+  ]
+}

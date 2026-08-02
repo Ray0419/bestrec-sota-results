@@ -1,0 +1,39 @@
+{
+  "protocol": "WEAREC_IMPULSE_SUPPORT_PROJECTION_V1",
+  "date": "2026-08-02",
+  "decision": "fail",
+  "test_access": "none",
+  "preregistration_sha256": "5e6df6feb3d7fd3ea29d6fda6f15e045ea9a84a2a773ac174e71a061c6050130",
+  "results": [
+    {
+      "dataset": "Beauty",
+      "sequence_length": 50,
+      "common_impulse_radius": 9,
+      "baseline_ndcg_at_10": 0.07334365688998412,
+      "delta_ndcg_at_10": 0.00013078750317802444,
+      "bootstrap_95_ci": [-0.00014666785505690715, 0.0004124425953689792],
+      "whole_model_fraction_saved": 0.018266083264359842,
+      "artifact_sha256": "486bf16fa77f370e44df0b6b03b666607584656568a814ee0a6888ab9a16e957"
+    },
+    {
+      "dataset": "Sports_and_Outdoors",
+      "sequence_length": 50,
+      "common_impulse_radius": 9,
+      "baseline_ndcg_at_10": 0.04312737269447338,
+      "delta_ndcg_at_10": 0.0003126741056155803,
+      "bootstrap_95_ci": [-0.0000526357256028496, 0.0006906094780189436],
+      "whole_model_fraction_saved": 0.006480225187825277,
+      "artifact_sha256": "c5dea3624af595a4fb1c93a89339ebbf038a42dbc0d3a861c27cbc8a9c6867ce"
+    },
+    {
+      "dataset": "Foursquare",
+      "sequence_length": 200,
+      "common_impulse_radius": 40,
+      "baseline_ndcg_at_10": 0.015109106801053644,
+      "delta_ndcg_at_10": -0.002045385775221653,
+      "bootstrap_95_ci": [-0.0037757858017240077, -0.0006758759964319898],
+      "whole_model_fraction_saved": 0.06544928205074417,
+      "artifact_sha256": "265a6e5f7b22271a674e8fb793e4311eef0f596082b96b48cfa59e693449df10"
+    }
+  ]
+}

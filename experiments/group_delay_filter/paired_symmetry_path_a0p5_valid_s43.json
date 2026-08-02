@@ -1,0 +1,201 @@
+{
+  "protocol": "PAIRED_PROJECTION_FULL_CATALOG_V1",
+  "data_name": "ML-1M",
+  "split": "valid",
+  "filter_mode": "full",
+  "device": "mps",
+  "baseline": {
+    "path": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s43.pt",
+    "sha256": "b3f3ff00d50d78df75754ee72fd0bff15bb714b6827d62552af1b46dcd473ef2"
+  },
+  "projected": {
+    "path": "experiments/group_delay_filter/projected_symmetry_path_a0p5/LADDER_ML-1M_full_s43.channel_shared_a0p5_projected.pt",
+    "sha256": "c0d3d0ec006b3bd45792571b03788b4c0085813fabaa57a7f360e4e113a3dcb8"
+  },
+  "masks": {
+    "legacy_zero": {
+      "HR@5": {
+        "n_users": 6040,
+        "baseline": 0.1400662251655629,
+        "projected": 0.14735099337748345,
+        "delta": 0.00728476821192053,
+        "relative_delta": 0.05200945626477542,
+        "bootstrap_95_ci": [
+          0.0038079470198675498,
+          0.010430463576158941
+        ],
+        "users_improved": 74,
+        "users_harmed": 30,
+        "users_unchanged": 5936,
+        "nonzero_win_rate": 0.7115384615384616
+      },
+      "NDCG@5": {
+        "n_users": 6040,
+        "baseline": 0.08843771083308492,
+        "projected": 0.092484020640982,
+        "delta": 0.004046309807897081,
+        "relative_delta": 0.04575321737504019,
+        "bootstrap_95_ci": [
+          0.002347411839116926,
+          0.005696512955292025
+        ],
+        "users_improved": 202,
+        "users_harmed": 118,
+        "users_unchanged": 5720,
+        "nonzero_win_rate": 0.63125
+      },
+      "HR@10": {
+        "n_users": 6040,
+        "baseline": 0.2314569536423841,
+        "projected": 0.23658940397350994,
+        "delta": 0.0051324503311258275,
+        "relative_delta": 0.02217453505007153,
+        "bootstrap_95_ci": [
+          0.0013245033112582781,
+          0.008774834437086093
+        ],
+        "users_improved": 85,
+        "users_harmed": 54,
+        "users_unchanged": 5901,
+        "nonzero_win_rate": 0.6115107913669064
+      },
+      "NDCG@10": {
+        "n_users": 6040,
+        "baseline": 0.11775715161477891,
+        "projected": 0.12112469737290033,
+        "delta": 0.003367545758121398,
+        "relative_delta": 0.028597377840266645,
+        "bootstrap_95_ci": [
+          0.0017957460022941672,
+          0.004924639637901015
+        ],
+        "users_improved": 423,
+        "users_harmed": 256,
+        "users_unchanged": 5361,
+        "nonzero_win_rate": 0.6229749631811488
+      },
+      "HR@20": {
+        "n_users": 6040,
+        "baseline": 0.3423841059602649,
+        "projected": 0.348841059602649,
+        "delta": 0.006456953642384106,
+        "relative_delta": 0.01885880077369439,
+        "bootstrap_95_ci": [
+          0.002980132450331126,
+          0.009933774834437087
+        ],
+        "users_improved": 79,
+        "users_harmed": 40,
+        "users_unchanged": 5921,
+        "nonzero_win_rate": 0.6638655462184874
+      },
+      "NDCG@20": {
+        "n_users": 6040,
+        "baseline": 0.14569269398787318,
+        "projected": 0.14949288052497106,
+        "delta": 0.0038001865370978797,
+        "relative_delta": 0.026083576554732323,
+        "bootstrap_95_ci": [
+          0.0025045870995614233,
+          0.005144458425005712
+        ],
+        "users_improved": 750,
+        "users_harmed": 423,
+        "users_unchanged": 4867,
+        "nonzero_win_rate": 0.639386189258312
+      }
+    },
+    "strict_negative_infinity": {
+      "HR@5": {
+        "n_users": 6040,
+        "baseline": 0.1400662251655629,
+        "projected": 0.14735099337748345,
+        "delta": 0.00728476821192053,
+        "relative_delta": 0.05200945626477542,
+        "bootstrap_95_ci": [
+          0.0038079470198675498,
+          0.010430463576158941
+        ],
+        "users_improved": 74,
+        "users_harmed": 30,
+        "users_unchanged": 5936,
+        "nonzero_win_rate": 0.7115384615384616
+      },
+      "NDCG@5": {
+        "n_users": 6040,
+        "baseline": 0.08843771083308492,
+        "projected": 0.092484020640982,
+        "delta": 0.004046309807897081,
+        "relative_delta": 0.04575321737504019,
+        "bootstrap_95_ci": [
+          0.002347411839116926,
+          0.005696512955292025
+        ],
+        "users_improved": 202,
+        "users_harmed": 118,
+        "users_unchanged": 5720,
+        "nonzero_win_rate": 0.63125
+      },
+      "HR@10": {
+        "n_users": 6040,
+        "baseline": 0.2314569536423841,
+        "projected": 0.23658940397350994,
+        "delta": 0.0051324503311258275,
+        "relative_delta": 0.02217453505007153,
+        "bootstrap_95_ci": [
+          0.0013245033112582781,
+          0.008774834437086093
+        ],
+        "users_improved": 85,
+        "users_harmed": 54,
+        "users_unchanged": 5901,
+        "nonzero_win_rate": 0.6115107913669064
+      },
+      "NDCG@10": {
+        "n_users": 6040,
+        "baseline": 0.11775715161477891,
+        "projected": 0.12112469737290033,
+        "delta": 0.003367545758121398,
+        "relative_delta": 0.028597377840266645,
+        "bootstrap_95_ci": [
+          0.0017957460022941672,
+          0.004924639637901015
+        ],
+        "users_improved": 423,
+        "users_harmed": 256,
+        "users_unchanged": 5361,
+        "nonzero_win_rate": 0.6229749631811488
+      },
+      "HR@20": {
+        "n_users": 6040,
+        "baseline": 0.3423841059602649,
+        "projected": 0.348841059602649,
+        "delta": 0.006456953642384106,
+        "relative_delta": 0.01885880077369439,
+        "bootstrap_95_ci": [
+          0.002980132450331126,
+          0.009933774834437087
+        ],
+        "users_improved": 79,
+        "users_harmed": 40,
+        "users_unchanged": 5921,
+        "nonzero_win_rate": 0.6638655462184874
+      },
+      "NDCG@20": {
+        "n_users": 6040,
+        "baseline": 0.14569269398787318,
+        "projected": 0.14949288052497106,
+        "delta": 0.0038001865370978797,
+        "relative_delta": 0.026083576554732323,
+        "bootstrap_95_ci": [
+          0.0025045870995614233,
+          0.005144458425005712
+        ],
+        "users_improved": 750,
+        "users_harmed": 423,
+        "users_unchanged": 4867,
+        "nonzero_win_rate": 0.639386189258312
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "protocol": "COUPLED_SHARED_TRANSITION_SYNTHETIC_V1",
+  "seed": 20260802,
+  "random_generator": "NumPy PCG64",
+  "users": 2000,
+  "items": 2000,
+  "topics": 10,
+  "topic_size": 200,
+  "sequence_length": 62,
+  "unique_items_per_sequence": 62,
+  "preregistration": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/PREREG_TRANSITION_CAUSAL_SYNTHETIC_V1.md",
+  "preregistration_sha256": "d4541a28f6522a6814d962c90801a781da697b88c5144f902a9bc24436ae9e87",
+  "generator_sha256": "72be0f2f4b3dbae7d3ed1547a8ded1964734c7b5aff13b889f3779cd75492251",
+  "conditions": {
+    "SyntheticTransitionHigh": {
+      "alpha": 0.85,
+      "path": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/SyntheticTransitionHigh.txt",
+      "sha256": "5b5a594e54db89144fa51586a76851734c4e0bb5824fee4f38e3f52d99532002",
+      "shared_steps": 103699,
+      "shared_step_fraction": 0.8499918032786885
+    },
+    "SyntheticTransitionLow": {
+      "alpha": 0.15,
+      "path": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/SyntheticTransitionLow.txt",
+      "sha256": "0bde16adf1a76885bd4997b7e57a164ea5ea175b2de36fefe09bfd484669c417",
+      "shared_steps": 18355,
+      "shared_step_fraction": 0.15045081967213114
+    }
+  }
+}

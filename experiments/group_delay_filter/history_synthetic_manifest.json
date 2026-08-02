@@ -1,0 +1,30 @@
+{
+  "protocol": "COUPLED_HISTORY_DEPENDENCE_SYNTHETIC_V1",
+  "seed": 20260803,
+  "random_generator": "NumPy PCG64",
+  "users": 2000,
+  "items": 2000,
+  "topics": 10,
+  "stream_size": 100,
+  "sequence_length": 62,
+  "unique_items_per_sequence": 62,
+  "balanced_start_count_per_topic_stream": 2,
+  "equal_item_histograms": true,
+  "preregistration": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/PREREG_HISTORY_DEPENDENT_SYNTHETIC_V1.md",
+  "preregistration_sha256": "932bd6fe01f5d540239292752af1eba5ccdafcb909102c060f02e441feb8ecb2",
+  "generator_sha256": "21e4b755f879997cd51a734a092efa0d8b12ccfd75dbc9b91f4ed91a81bab273",
+  "conditions": {
+    "SyntheticCoupledPhase": {
+      "path": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/SyntheticCoupledPhase.txt",
+      "sha256": "1e27d66ca3bb0b2a2dd9276b55ae181dd3820b49fcaeda6e0c0b46ba3d62da1e",
+      "users": 2000,
+      "interactions": 124000
+    },
+    "SyntheticIndependentPhase": {
+      "path": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/SyntheticIndependentPhase.txt",
+      "sha256": "d3690443b50c13815c16eb6a3013f1059063995d0b06a80bb9406f4d0c8f4f38",
+      "users": 2000,
+      "interactions": 124000
+    }
+  }
+}

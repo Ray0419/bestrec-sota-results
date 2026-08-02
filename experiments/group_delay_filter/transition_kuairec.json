@@ -1,0 +1,36 @@
+{
+  "protocol": "TRAIN_WINDOW_TRANSITION_STRUCTURE_V1",
+  "label": "kuairec",
+  "data_file": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/KuaiRec.txt",
+  "test_access": "none",
+  "window": {
+    "max_sequence_length": 50,
+    "held_out_items_per_user": 2
+  },
+  "counts": {
+    "users": 7176,
+    "training_window_interactions": 358800,
+    "training_transitions": 351624,
+    "unique_training_items": 5901,
+    "unique_training_pairs": 263403,
+    "mean_training_window_length": 50.0
+  },
+  "entropy_nats": {
+    "item": 7.287129759887195,
+    "item_normalized_by_uniform": 0.8392528962507654,
+    "previous": 7.286645295948465,
+    "next": 7.281672047019799,
+    "next_given_previous": 4.97273545057421,
+    "previous_next_mutual_information": 2.308936596445589,
+    "normalized_mutual_information_by_next_entropy": 0.3170887924553781
+  },
+  "validation_label_safe_diagnostics": {
+    "pair_seen_in_training_fraction": 0.36315496098104794,
+    "mean_pair_training_support": 1.9049609810479375,
+    "mean_target_training_popularity": 468.33221850613154,
+    "popularity_HR@10": 0.06563545150501672,
+    "popularity_NDCG@10": 0.03660648606163262,
+    "first_order_transition_HR@10": 0.08040691192865106,
+    "first_order_transition_NDCG@10": 0.0471752447145508
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "protocol": "ITEM_EMBEDDING_SPECTRAL_CONCENTRATION_V1",
+  "label": "synthetic_low",
+  "label_access": "none",
+  "checkpoint_count": 1,
+  "records": [
+    {
+      "checkpoint": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/prospective_transition_synthetic/TRANSITION_SYNTH_low_full_s47.pt",
+      "checkpoint_sha256": "c5f5e2c6541588b5e9a6b5090b6b6d6b0d8b425c1876cb0d39bd8f696c7c259e",
+      "embedding_key": "item_embeddings.weight",
+      "padding_row_excluded": true,
+      "spectra": {
+        "raw": {
+          "rows": 2000,
+          "dimensions": 64,
+          "top_singular_energy": 0.23604985883057608,
+          "stable_rank": 4.236393128782789,
+          "entropy_effective_rank": 22.99664775029583,
+          "participation_ratio": 11.688294111089636
+        },
+        "centered": {
+          "rows": 2000,
+          "dimensions": 64,
+          "top_singular_energy": 0.08011261838454907,
+          "stable_rank": 12.482428113882058,
+          "entropy_effective_rank": 29.79691671368662,
+          "participation_ratio": 19.614074260170604
+        },
+        "row_normalized": {
+          "rows": 2000,
+          "dimensions": 64,
+          "top_singular_energy": 0.23737602197150232,
+          "stable_rank": 4.212725412173488,
+          "entropy_effective_rank": 22.902026394863128,
+          "participation_ratio": 11.609074309781949
+        },
+        "row_normalized_centered": {
+          "rows": 2000,
+          "dimensions": 64,
+          "top_singular_energy": 0.08070547355705363,
+          "stable_rank": 12.390733316161805,
+          "entropy_effective_rank": 29.747728753255615,
+          "participation_ratio": 19.573602621762397
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "raw": {
+      "top_singular_energy": {
+        "mean": 0.23604985883057608,
+        "population_std": 0.0,
+        "min": 0.23604985883057608,
+        "max": 0.23604985883057608
+      },
+      "stable_rank": {
+        "mean": 4.236393128782789,
+        "population_std": 0.0,
+        "min": 4.236393128782789,
+        "max": 4.236393128782789
+      },
+      "entropy_effective_rank": {
+        "mean": 22.99664775029583,
+        "population_std": 0.0,
+        "min": 22.99664775029583,
+        "max": 22.99664775029583
+      },
+      "participation_ratio": {
+        "mean": 11.688294111089636,
+        "population_std": 0.0,
+        "min": 11.688294111089636,
+        "max": 11.688294111089636
+      }
+    },
+    "centered": {
+      "top_singular_energy": {
+        "mean": 0.08011261838454907,
+        "population_std": 0.0,
+        "min": 0.08011261838454907,
+        "max": 0.08011261838454907
+      },
+      "stable_rank": {
+        "mean": 12.482428113882058,
+        "population_std": 0.0,
+        "min": 12.482428113882058,
+        "max": 12.482428113882058
+      },
+      "entropy_effective_rank": {
+        "mean": 29.79691671368662,
+        "population_std": 0.0,
+        "min": 29.79691671368662,
+        "max": 29.79691671368662
+      },
+      "participation_ratio": {
+        "mean": 19.614074260170604,
+        "population_std": 0.0,
+        "min": 19.614074260170604,
+        "max": 19.614074260170604
+      }
+    },
+    "row_normalized": {
+      "top_singular_energy": {
+        "mean": 0.23737602197150232,
+        "population_std": 0.0,
+        "min": 0.23737602197150232,
+        "max": 0.23737602197150232
+      },
+      "stable_rank": {
+        "mean": 4.212725412173488,
+        "population_std": 0.0,
+        "min": 4.212725412173488,
+        "max": 4.212725412173488
+      },
+      "entropy_effective_rank": {
+        "mean": 22.902026394863128,
+        "population_std": 0.0,
+        "min": 22.902026394863128,
+        "max": 22.902026394863128
+      },
+      "participation_ratio": {
+        "mean": 11.609074309781949,
+        "population_std": 0.0,
+        "min": 11.609074309781949,
+        "max": 11.609074309781949
+      }
+    },
+    "row_normalized_centered": {
+      "top_singular_energy": {
+        "mean": 0.08070547355705363,
+        "population_std": 0.0,
+        "min": 0.08070547355705363,
+        "max": 0.08070547355705363
+      },
+      "stable_rank": {
+        "mean": 12.390733316161805,
+        "population_std": 0.0,
+        "min": 12.390733316161805,
+        "max": 12.390733316161805
+      },
+      "entropy_effective_rank": {
+        "mean": 29.747728753255615,
+        "population_std": 0.0,
+        "min": 29.747728753255615,
+        "max": 29.747728753255615
+      },
+      "participation_ratio": {
+        "mean": 19.573602621762397,
+        "population_std": 0.0,
+        "min": 19.573602621762397,
+        "max": 19.573602621762397
+      }
+    }
+  }
+}

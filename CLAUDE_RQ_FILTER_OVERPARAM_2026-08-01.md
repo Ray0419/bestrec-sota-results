@@ -534,3 +534,42 @@ t=1.44, 3/5 at n=5). Both were caught, but both were avoidable by checking first
 
 **The backbone-vs-split question is therefore OPEN again.** Nothing about the cause of the ML-1M
 null should be inferred from the retracted runs.
+
+### 10.3 ACCEPTED IN FULL — the cross-backend reconciliation corrects §10
+
+An independent CPU replication of the same protocol (commit `6390ff3`, reconciled in
+[`CLAUDE_LADDER_CROSS_BACKEND_RECONCILIATION_2026-08-02.md`](CLAUDE_LADDER_CROSS_BACKEND_RECONCILIATION_2026-08-02.md))
+**corrects the reporting in §10, and I accept the correction in full.**
+
+**What replicates (verdict — unchanged):** LastFM VOID; noninferiority established on no dataset;
+`rank1` loses less than `shared`; ML-1M has the largest filter effect; the filter is low-rank
+(their SVD: eff. rank 1.19–1.64 / 26, against mine 1.44). The 64× channel-tied claim is refuted on
+both backends.
+
+**What does NOT replicate — my percentages.** §10's table reads as four measurements of one
+quantity. It is not:
+
+| dataset | my "tying cost" | CPU replication | status |
+|---|---:|---:|---|
+| ML-1M | −59% | −44%, **t=−6.11, 0/5 seeds** | **robust — the real result** |
+| Toys | −15% | −11% | directionally stable, non-significant in both |
+| Beauty | −24% | **+8% — sign inverts** | **not reproducible even in sign** |
+| LastFM | +62% | −25% | moot, VOID both |
+
+Beauty's contrast changes sign between backends. My own text already conceded the losses were
+non-significant at n=5 (t = −1.68, −1.18); the replication shows concretely what that means. Quoting
+a 15–59% range across benchmarks implied a precision the data does not have.
+
+**Corrected headline:** *a single decisive failure on ML-1M* (`shared` significantly worse,
+t=−6.11, 0/5 seeds), not a 15–59% range. Backend noise (0.001–0.003 NDCG@10) is smaller than the
+ML-1M effect and larger than the Beauty effect — exactly the signature of a study adequately
+powered on one dataset and underpowered elsewhere.
+
+**Reproduction anchor — worse than I reported.** Published FMLP-Rec Beauty HR@10 is 0.0618; I get
+0.0575 (≈7% low), the CPU run gets 0.0553 (≈10.5% low). Both low, neither matching, direction
+consistent across backends. **Every conclusion here remains conditional on `full` being a faithful
+FMLP-Rec, and that is unresolved.**
+
+**Gap closed:** the reconciliation could only compare arm means because run A's per-run scores were
+not machine-readable. They now are — `experiments/filter_overparam/results_ladder_runA_2026-08-01.csv`,
+100 rows including the causal arms — so a future pass can do seed-level paired comparison.

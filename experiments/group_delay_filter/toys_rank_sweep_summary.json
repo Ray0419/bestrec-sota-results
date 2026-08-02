@@ -1,0 +1,208 @@
+{
+  "protocol": "GROUP_DELAY_MANIFOLD_FEASIBILITY_V1",
+  "sequence_length": 50,
+  "parameter_counts_per_layer": {
+    "full": 3328,
+    "complex_rank2": 360,
+    "complex_rank3": 540,
+    "complex_rank4": 720,
+    "group_delay": 244
+  },
+  "fit": {
+    "steps": 1500,
+    "restarts": 4,
+    "seed": 271828
+  },
+  "checkpoints": [
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s42.pt",
+      "checkpoint_sha256": "75fb8eb50677bf5e4625f00eda69e1ecb75c3ff88fe0e20148004414d989bf93",
+      "rank_projected": {
+        "2": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s42.rank2_projected.pt",
+        "3": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s42.rank3_projected.pt",
+        "4": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s42.rank4_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "2": 0.28032647337586136,
+            "3": 0.2586245233930375,
+            "4": 0.24083071855725033
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "2": 0.43248164407476153,
+            "3": 0.40618343250912425,
+            "4": 0.3834833561130452
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s43.pt",
+      "checkpoint_sha256": "653d54c95ae3bcd0398c01a1448fbfba61b997c5760e44e2146ba7ce381b4c5d",
+      "rank_projected": {
+        "2": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s43.rank2_projected.pt",
+        "3": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s43.rank3_projected.pt",
+        "4": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s43.rank4_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "2": 0.27787811172796045,
+            "3": 0.25791511342772583,
+            "4": 0.23901809653633233
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "2": 0.39464393219122756,
+            "3": 0.3724993025893689,
+            "4": 0.3523284443464791
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s44.pt",
+      "checkpoint_sha256": "8da72ee05cb21d98803be0611d3cbcc40660946c27e525ff9d564001a4790944",
+      "rank_projected": {
+        "2": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s44.rank2_projected.pt",
+        "3": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s44.rank3_projected.pt",
+        "4": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s44.rank4_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "2": 0.2657379061987415,
+            "3": 0.24522281263856363,
+            "4": 0.22820874821513976
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "2": 0.4203325488045697,
+            "3": 0.3991617013431928,
+            "4": 0.3781384781890751
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s45.pt",
+      "checkpoint_sha256": "142378da792433dd038c16ca96f1524f9274ad32e26da8a21899dca5c1f1da48",
+      "rank_projected": {
+        "2": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s45.rank2_projected.pt",
+        "3": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s45.rank3_projected.pt",
+        "4": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s45.rank4_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "2": 0.2752285814080164,
+            "3": 0.25312791170980503,
+            "4": 0.23652310202756624
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "2": 0.42180596098717693,
+            "3": 0.39926811981815225,
+            "4": 0.37869191872469116
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s46.pt",
+      "checkpoint_sha256": "a004ce2f39b48f2172eca877a78343604562c715fe93bd16216a5db301d644ac",
+      "rank_projected": {
+        "2": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s46.rank2_projected.pt",
+        "3": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s46.rank3_projected.pt",
+        "4": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s46.rank4_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "2": 0.27482884238023914,
+            "3": 0.2558815593520717,
+            "4": 0.23868145722969714
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "2": 0.4155061011309254,
+            "3": 0.392356840046859,
+            "4": 0.3712942810297046
+          },
+          "group_delay": null
+        }
+      ]
+    }
+  ]
+}

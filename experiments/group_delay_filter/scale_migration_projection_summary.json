@@ -1,0 +1,151 @@
+{
+  "protocol": "GROUP_DELAY_MANIFOLD_FEASIBILITY_V1",
+  "sequence_length": 50,
+  "parameter_counts_per_layer": {
+    "full": 3328,
+    "rank1": 180,
+    "group_delay": 244
+  },
+  "fit": {
+    "steps": 1500,
+    "restarts": 4,
+    "seed": 271828
+  },
+  "checkpoints": [
+    {
+      "checkpoint": "experiments/group_delay_filter/prospective_scale/EGSP_ML1M_N2000_full_s47.pt",
+      "checkpoint_sha256": "82ffd24925402454b47bdab7e11027edc248f1519b273359fa95bb35a4ba86f1",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_scale_migration/EGSP_ML1M_N2000_full_s47.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.905": "experiments/group_delay_filter/projected_scale_migration/EGSP_ML1M_N2000_full_s47.energy0p905_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.362858761119689
+          },
+          "rank1_retained_energy": 0.8683335194786845,
+          "energy_projection": {
+            "0.905": false
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.3313622677822409
+          },
+          "rank1_retained_energy": 0.8901990474902105,
+          "energy_projection": {
+            "0.905": false
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "experiments/group_delay_filter/prospective_scale/EGSP_ML1M_N4000_full_s47.pt",
+      "checkpoint_sha256": "59aa14c6eda31ce37a14d2ecef8e911a375d803da65b1dbd93d50e3c0483bde4",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_scale_migration/EGSP_ML1M_N4000_full_s47.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.905": "experiments/group_delay_filter/projected_scale_migration/EGSP_ML1M_N4000_full_s47.energy0p905_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.383169773699419
+          },
+          "rank1_retained_energy": 0.853180924523136,
+          "energy_projection": {
+            "0.905": false
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.3016435326504825
+          },
+          "rank1_retained_energy": 0.9090111792101373,
+          "energy_projection": {
+            "0.905": true
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "experiments/group_delay_filter/prospective_scale/EGSP_ML1M_N943_full_s47.pt",
+      "checkpoint_sha256": "08ce3ba1040fc21a7f0d0f6f4d512150448258d6c4dbd2dd59e3811bb0c8a744",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_scale_migration/EGSP_ML1M_N943_full_s47.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.905": "experiments/group_delay_filter/projected_scale_migration/EGSP_ML1M_N943_full_s47.energy0p905_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.3069116229182633
+          },
+          "rank1_retained_energy": 0.9058052557176778,
+          "energy_projection": {
+            "0.905": true
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.34288293101136547
+          },
+          "rank1_retained_energy": 0.8824312956210552,
+          "energy_projection": {
+            "0.905": false
+          },
+          "group_delay": null
+        }
+      ]
+    }
+  ]
+}

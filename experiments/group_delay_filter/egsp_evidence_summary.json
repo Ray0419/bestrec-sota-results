@@ -1,0 +1,363 @@
+{
+  "protocol": "EGSP_EVIDENCE_SUMMARY_V1",
+  "warning": "ML-1M groups are exploratory discovery evidence; prospective Sports evidence is governed separately by PREREG_EGSP_PROSPECTIVE_V1.md.",
+  "ml1m_spectral_test": {
+    "n": 5,
+    "mean_delta": 0.00695888899624495,
+    "sd_delta": 0.002169413562307496,
+    "seed_level_95_ci": [
+      0.004265206278712754,
+      0.009652571713777147
+    ],
+    "positive_seeds": 5,
+    "rows": [
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_ml1m_full_s42.json",
+        "baseline_sha256": "8d4ddc0489d1c22d2c4a13e916bb71a3618fe38aa693ec906c3064bd87e79b6b",
+        "projected_sha256": "17ea07db7837afc67e2341ff58aa07856ef0279aebb3bf06db8ece279c73f9ff",
+        "n_users": 6040,
+        "baseline": 0.11152741820881402,
+        "projected": 0.11916513245932076,
+        "delta": 0.0076377142505067415,
+        "relative_delta": 0.06848283922619426,
+        "bootstrap_95_ci": [
+          0.0052297531947264825,
+          0.010099640198153957
+        ],
+        "users_improved": 600,
+        "users_harmed": 389,
+        "users_unchanged": 5051,
+        "nonzero_win_rate": 0.6066734074823054
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_ml1m_full_s43.json",
+        "baseline_sha256": "b3f3ff00d50d78df75754ee72fd0bff15bb714b6827d62552af1b46dcd473ef2",
+        "projected_sha256": "f41d0544d786bbe5fc25983953099d611874d78c213e597c120e03f0cdb6ba63",
+        "n_users": 6040,
+        "baseline": 0.11024107468915201,
+        "projected": 0.11677466469333733,
+        "delta": 0.006533590004185327,
+        "relative_delta": 0.05926638526164738,
+        "bootstrap_95_ci": [
+          0.00446233872906769,
+          0.008679557392602653
+        ],
+        "users_improved": 538,
+        "users_harmed": 332,
+        "users_unchanged": 5170,
+        "nonzero_win_rate": 0.6183908045977011
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_ml1m_full_s44.json",
+        "baseline_sha256": "83f1089782d2a5f002794cb98cf872367ce5c6cfb8369ba928e5f2416849a944",
+        "projected_sha256": "92e665a7fb3299df2835541d378604a561a70f9970916fc23b43308f935d5264",
+        "n_users": 6040,
+        "baseline": 0.10336459124654755,
+        "projected": 0.10680861921829855,
+        "delta": 0.003444027971750992,
+        "relative_delta": 0.03331922402262704,
+        "bootstrap_95_ci": [
+          0.0020766409534808987,
+          0.0048220405520402795
+        ],
+        "users_improved": 331,
+        "users_harmed": 209,
+        "users_unchanged": 5500,
+        "nonzero_win_rate": 0.6129629629629629
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_ml1m_full_s45.json",
+        "baseline_sha256": "26a0cb3f1ec2dd1a505a0d38424ed81c8b4bc4a4626082644f3b2df0f7825d87",
+        "projected_sha256": "8093475aa363018d2dc042b63fa89766de82e3c75d1714c84a07bb6a982c31c1",
+        "n_users": 6040,
+        "baseline": 0.11225382987343471,
+        "projected": 0.1203377492162587,
+        "delta": 0.00808391934282398,
+        "relative_delta": 0.07201464174486102,
+        "bootstrap_95_ci": [
+          0.005920616438388708,
+          0.010211534661737196
+        ],
+        "users_improved": 576,
+        "users_harmed": 301,
+        "users_unchanged": 5163,
+        "nonzero_win_rate": 0.6567844925883695
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_ml1m_full_s46.json",
+        "baseline_sha256": "1c7baeb549e807614e21a5a566b63493ee28e44fc94d9d8c3bd622f4c2f70d0b",
+        "projected_sha256": "d490e2bb57e79d8a3b3c6bcaa6b13090fa71b4f23459cee96096d4be4c73f249",
+        "n_users": 6040,
+        "baseline": 0.1100946809064076,
+        "projected": 0.11918987431836531,
+        "delta": 0.009095193411957709,
+        "relative_delta": 0.08261246898648635,
+        "bootstrap_95_ci": [
+          0.006941628549532257,
+          0.011303765650427282
+        ],
+        "users_improved": 574,
+        "users_harmed": 302,
+        "users_unchanged": 5164,
+        "nonzero_win_rate": 0.6552511415525114
+      }
+    ]
+  },
+  "ml1m_spectral_validation": {
+    "n": 5,
+    "mean_delta": 0.006918713869783856,
+    "sd_delta": 0.0027926589140457926,
+    "seed_level_95_ci": [
+      0.0034511698369503753,
+      0.010386257902617336
+    ],
+    "positive_seeds": 5,
+    "rows": [
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_ml1m_full_valid_s42.json",
+        "baseline_sha256": "8d4ddc0489d1c22d2c4a13e916bb71a3618fe38aa693ec906c3064bd87e79b6b",
+        "projected_sha256": "17ea07db7837afc67e2341ff58aa07856ef0279aebb3bf06db8ece279c73f9ff",
+        "n_users": 6040,
+        "baseline": 0.12242807983757274,
+        "projected": 0.13172987815238016,
+        "delta": 0.00930179831480742,
+        "relative_delta": 0.07597765420439707,
+        "bootstrap_95_ci": [
+          0.006858230115314186,
+          0.011768088298842771
+        ],
+        "users_improved": 687,
+        "users_harmed": 420,
+        "users_unchanged": 4933,
+        "nonzero_win_rate": 0.6205962059620597
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_ml1m_full_valid_s43.json",
+        "baseline_sha256": "b3f3ff00d50d78df75754ee72fd0bff15bb714b6827d62552af1b46dcd473ef2",
+        "projected_sha256": "f41d0544d786bbe5fc25983953099d611874d78c213e597c120e03f0cdb6ba63",
+        "n_users": 6040,
+        "baseline": 0.11775715161477891,
+        "projected": 0.12477779848446657,
+        "delta": 0.007020646869687642,
+        "relative_delta": 0.05961970694276311,
+        "bootstrap_95_ci": [
+          0.004719851580943536,
+          0.009238994655139844
+        ],
+        "users_improved": 627,
+        "users_harmed": 366,
+        "users_unchanged": 5047,
+        "nonzero_win_rate": 0.6314199395770392
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_ml1m_full_valid_s44.json",
+        "baseline_sha256": "83f1089782d2a5f002794cb98cf872367ce5c6cfb8369ba928e5f2416849a944",
+        "projected_sha256": "92e665a7fb3299df2835541d378604a561a70f9970916fc23b43308f935d5264",
+        "n_users": 6040,
+        "baseline": 0.11314657225605676,
+        "projected": 0.11535949530382159,
+        "delta": 0.0022129230477648345,
+        "relative_delta": 0.019558021101663346,
+        "bootstrap_95_ci": [
+          0.0006821446102088142,
+          0.003662260280582413
+        ],
+        "users_improved": 384,
+        "users_harmed": 275,
+        "users_unchanged": 5381,
+        "nonzero_win_rate": 0.582701062215478
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_ml1m_full_valid_s45.json",
+        "baseline_sha256": "26a0cb3f1ec2dd1a505a0d38424ed81c8b4bc4a4626082644f3b2df0f7825d87",
+        "projected_sha256": "8093475aa363018d2dc042b63fa89766de82e3c75d1714c84a07bb6a982c31c1",
+        "n_users": 6040,
+        "baseline": 0.11875130266323222,
+        "projected": 0.12744969724343008,
+        "delta": 0.008698394580197891,
+        "relative_delta": 0.0732488350453362,
+        "bootstrap_95_ci": [
+          0.006336362177504833,
+          0.011098842011410365
+        ],
+        "users_improved": 627,
+        "users_harmed": 377,
+        "users_unchanged": 5036,
+        "nonzero_win_rate": 0.6245019920318725
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_ml1m_full_valid_s46.json",
+        "baseline_sha256": "1c7baeb549e807614e21a5a566b63493ee28e44fc94d9d8c3bd622f4c2f70d0b",
+        "projected_sha256": "d490e2bb57e79d8a3b3c6bcaa6b13090fa71b4f23459cee96096d4be4c73f249",
+        "n_users": 6040,
+        "baseline": 0.12103631008957882,
+        "projected": 0.1283961166260403,
+        "delta": 0.007359806536461492,
+        "relative_delta": 0.060806600358309905,
+        "bootstrap_95_ci": [
+          0.005131996075102964,
+          0.009543398264391845
+        ],
+        "users_improved": 605,
+        "users_harmed": 360,
+        "users_unchanged": 5075,
+        "nonzero_win_rate": 0.6269430051813472
+      }
+    ]
+  },
+  "ml1m_causal_fir_test": {
+    "n": 4,
+    "mean_delta": 0.005175765261012432,
+    "sd_delta": 0.0033071623718710862,
+    "seed_level_95_ci": [
+      -8.666807465478911e-05,
+      0.010438198596679653
+    ],
+    "positive_seeds": 4,
+    "rows": [
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_ml1m_causal_s42.json",
+        "baseline_sha256": "3df8dfa5d816c4e7ba61aa6640dee76419d65b027a648662a6c42bc550d75766",
+        "projected_sha256": "b238f6a1a20855b6ccc375a16e2644c2ad7e8519b959abb18bbf8ae9bf63f211",
+        "n_users": 6040,
+        "baseline": 0.10735120173718801,
+        "projected": 0.11370913210015525,
+        "delta": 0.0063579303629672295,
+        "relative_delta": 0.05922551643653143,
+        "bootstrap_95_ci": [
+          0.004443594885165507,
+          0.008207875409172706
+        ],
+        "users_improved": 485,
+        "users_harmed": 265,
+        "users_unchanged": 5290,
+        "nonzero_win_rate": 0.6466666666666666
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_ml1m_causal_s43.json",
+        "baseline_sha256": "dce9ba5e751db7d52a97806bcb06b98910c203edc14cb1af9d45339f64b2a06e",
+        "projected_sha256": "070511cb526a81cbc79f9e84dc2b0167357b9e5820017ffef42b2d5fe5aad2ce",
+        "n_users": 6040,
+        "baseline": 0.10733975206282521,
+        "projected": 0.11660459762677344,
+        "delta": 0.009264845563948253,
+        "relative_delta": 0.08631327523959254,
+        "bootstrap_95_ci": [
+          0.007222452733565991,
+          0.011349826587037044
+        ],
+        "users_improved": 562,
+        "users_harmed": 300,
+        "users_unchanged": 5178,
+        "nonzero_win_rate": 0.6519721577726219
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_ml1m_causal_s44.json",
+        "baseline_sha256": "a5eb4d71ecf59dbbdbcaa53597aeba8f24a0f5499c9bc272339a59a7922166cc",
+        "projected_sha256": "f16d9386702f5709ba2607a7c22ad674cb25cf8f03911054732becd7571c9392",
+        "n_users": 6040,
+        "baseline": 0.10200859166500251,
+        "projected": 0.10391593775141912,
+        "delta": 0.001907346086416627,
+        "relative_delta": 0.018697896474057552,
+        "bootstrap_95_ci": [
+          0.00039145705108857706,
+          0.0034200507253125114
+        ],
+        "users_improved": 382,
+        "users_harmed": 281,
+        "users_unchanged": 5377,
+        "nonzero_win_rate": 0.5761689291101055
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/paired_ml1m_causal_s45.json",
+        "baseline_sha256": "b43b77e162999331b6f05f37185e6efbfe5900a70e32cf681523802a268507ea",
+        "projected_sha256": "f6c26dea2e7c5707fb9b073917b28353b6a6e0a387340748f30fb5117cdfa96d",
+        "n_users": 6040,
+        "baseline": 0.10635675012067146,
+        "projected": 0.10952968915138907,
+        "delta": 0.003172939030717618,
+        "relative_delta": 0.029832982176661367,
+        "bootstrap_95_ci": [
+          0.001560952919300535,
+          0.004744003141622761
+        ],
+        "users_improved": 404,
+        "users_harmed": 263,
+        "users_unchanged": 5373,
+        "nonzero_win_rate": 0.6056971514242878
+      }
+    ]
+  },
+  "bestrec_fir_validation_smoke": {
+    "n": 8,
+    "mean_delta": -0.0002949346119114143,
+    "positive_seeds": 3,
+    "rows": [
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/fir_inference_ablation/smoke_rank1_learned_s20260901.json",
+        "checkpoint_sha256": "e89b125cb922346414a381b30d7ec01e7eabef4dfbe08ab445ec9f2bbf7a20ea",
+        "delta_ndcg10": -0.00022870853955676325,
+        "ci95_low": -0.0023429556828240762,
+        "ci95_high": 0.0019968745215432804,
+        "noninferior_at_margin": false
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/fir_inference_ablation/smoke_rank1_learned_s20260902.json",
+        "checkpoint_sha256": "d8474bc23387c30e81129dbcbcbe30b28d3954f469174f0745c60831da9f79dc",
+        "delta_ndcg10": -0.0010427058801455663,
+        "ci95_low": -0.003324307328873279,
+        "ci95_high": 0.0010797683952579668,
+        "noninferior_at_margin": false
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/fir_inference_ablation/smoke_rank1_learned_s20260903.json",
+        "checkpoint_sha256": "070ab278053a3a050c79f676f8608b5b9dedb7e81f1d0f2c0a86ca9307952213",
+        "delta_ndcg10": 0.0005857474119445238,
+        "ci95_low": -0.0013180324223055744,
+        "ci95_high": 0.0024622307210250163,
+        "noninferior_at_margin": false
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/fir_inference_ablation/smoke_rank1_learned_s20260904.json",
+        "checkpoint_sha256": "334d7ca0db003c14952d636da2a992c58eed99a082f71b0d5d76cb0c0d65456b",
+        "delta_ndcg10": 0.000542649125581162,
+        "ci95_low": -0.0017157753825852995,
+        "ci95_high": 0.003039291416884433,
+        "noninferior_at_margin": false
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/fir_inference_ablation/smoke_rank1_learned_s20260905.json",
+        "checkpoint_sha256": "52c64e1d13a3c9fcd707b3801fe2c5a74b056df8d6dcf24a6c3b997553723181",
+        "delta_ndcg10": -0.0007523588717727115,
+        "ci95_low": -0.002962690884011208,
+        "ci95_high": 0.0012488347449139362,
+        "noninferior_at_margin": false
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/fir_inference_ablation/smoke_rank1_learned_s20260906.json",
+        "checkpoint_sha256": "26b4cb8cfb476bc5038f18167b293ef26c0f53493d4858f2131749277c572b0b",
+        "delta_ndcg10": -0.0009398365637569452,
+        "ci95_low": -0.00280974691621663,
+        "ci95_high": 0.0008901360432778204,
+        "noninferior_at_margin": false
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/fir_inference_ablation/smoke_rank1_learned_s20260907.json",
+        "checkpoint_sha256": "6da1ba326b17b835bd9ad556cfd048c1eb4a153dc09bd6f2c1de6198e69b263f",
+        "delta_ndcg10": -0.0006780671849311602,
+        "ci95_low": -0.002313061061820946,
+        "ci95_high": 0.0008717123540358281,
+        "noninferior_at_margin": false
+      },
+      {
+        "artifact": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/fir_inference_ablation/smoke_rank1_learned_s20260908.json",
+        "checkpoint_sha256": "01482fab9f0cb1afb8d3062e783c794e1f73963d3aa4170ddb39ef77f1b0f04d",
+        "delta_ndcg10": 0.00015380360734614635,
+        "ci95_low": -0.0012282891001668677,
+        "ci95_high": 0.0016136577836715473,
+        "noninferior_at_margin": false
+      }
+    ]
+  }
+}

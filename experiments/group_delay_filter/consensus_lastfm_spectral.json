@@ -1,0 +1,114 @@
+{
+  "protocol": "TEMPORAL_FILTER_SEED_CONSENSUS_V1",
+  "label": "lastfm_spectral",
+  "checkpoint_count": 5,
+  "phase_invariant_similarity": "absolute normalized Frobenius inner product",
+  "layers": [
+    {
+      "layer_index": 0,
+      "representation": "complex_spectral",
+      "per_checkpoint": [
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s42.pt",
+          "rank1_retained_energy": 0.8237400263813361,
+          "dominant_channel_uniform_cosine": 0.9124520749148142
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s43.pt",
+          "rank1_retained_energy": 0.8201308335357476,
+          "dominant_channel_uniform_cosine": 0.9113204315739657
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s44.pt",
+          "rank1_retained_energy": 0.8444141694936876,
+          "dominant_channel_uniform_cosine": 0.9125220556770581
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s45.pt",
+          "rank1_retained_energy": 0.8432565022625944,
+          "dominant_channel_uniform_cosine": 0.8973635338222898
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s46.pt",
+          "rank1_retained_energy": 0.8515089048438136,
+          "dominant_channel_uniform_cosine": 0.9074724073860471
+        }
+      ],
+      "pairwise_consensus": {
+        "rank1_matrix_cosine": {
+          "mean": 0.8299664281525818,
+          "min": 0.7905506393406851,
+          "max": 0.8750079212694621
+        },
+        "dominant_frequency_cosine": {
+          "mean": 0.9967365633027798,
+          "min": 0.9952821768134965,
+          "max": 0.9982161490872482
+        },
+        "dominant_channel_cosine": {
+          "mean": 0.8326960453045823,
+          "min": 0.7929198762137494,
+          "max": 0.8780788861677162
+        },
+        "tail_matrix_cosine": {
+          "mean": 0.03951640145203895,
+          "min": 0.01791356290641165,
+          "max": 0.07493302555950297
+        }
+      }
+    },
+    {
+      "layer_index": 1,
+      "representation": "complex_spectral",
+      "per_checkpoint": [
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s42.pt",
+          "rank1_retained_energy": 0.8028190946097931,
+          "dominant_channel_uniform_cosine": 0.9240977700861921
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s43.pt",
+          "rank1_retained_energy": 0.8004858772323782,
+          "dominant_channel_uniform_cosine": 0.9238005027651678
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s44.pt",
+          "rank1_retained_energy": 0.8298703860301845,
+          "dominant_channel_uniform_cosine": 0.926872737847067
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s45.pt",
+          "rank1_retained_energy": 0.8244552568619989,
+          "dominant_channel_uniform_cosine": 0.9170750724663119
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_LastFM_full_s46.pt",
+          "rank1_retained_energy": 0.8315771477767078,
+          "dominant_channel_uniform_cosine": 0.9189057317656303
+        }
+      ],
+      "pairwise_consensus": {
+        "rank1_matrix_cosine": {
+          "mean": 0.8518941656706677,
+          "min": 0.818806198562207,
+          "max": 0.8838897879040712
+        },
+        "dominant_frequency_cosine": {
+          "mean": 0.992084580722047,
+          "min": 0.9861744564844352,
+          "max": 0.997597018128518
+        },
+        "dominant_channel_cosine": {
+          "mean": 0.85873852281285,
+          "min": 0.8208198700585467,
+          "max": 0.8958384994182543
+        },
+        "tail_matrix_cosine": {
+          "mean": 0.028184040746710815,
+          "min": 0.011122503934062786,
+          "max": 0.0494815673251902
+        }
+      }
+    }
+  ]
+}

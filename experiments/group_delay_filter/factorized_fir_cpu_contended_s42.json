@@ -1,0 +1,39 @@
+{
+  "protocol": "FACTORIZED_RANK1_FIR_BENCHMARK_V1",
+  "device": "cpu",
+  "torch_version": "2.13.0",
+  "checkpoint": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s42.energy1_projected.pt",
+  "layer": 1,
+  "shape": {
+    "channels": 64,
+    "taps": 16
+  },
+  "parameter_count": {
+    "depthwise": 1024,
+    "factorized": 80,
+    "reduction": 0.921875
+  },
+  "records": [
+    {
+      "batch_size": 1,
+      "max_absolute_error": 1.8905848264694214e-07,
+      "depthwise_median_ms": 0.5895000649616122,
+      "factorized_median_ms": 5.371999926865101,
+      "speedup": 0.10973568000504842
+    },
+    {
+      "batch_size": 32,
+      "max_absolute_error": 3.5762786865234375e-07,
+      "depthwise_median_ms": 161.10558307264,
+      "factorized_median_ms": 267.39804190583527,
+      "speedup": 0.6024935034093243
+    },
+    {
+      "batch_size": 256,
+      "max_absolute_error": 4.76837158203125e-07,
+      "depthwise_median_ms": 1800.4851669538766,
+      "factorized_median_ms": 2237.7096249256283,
+      "speedup": 0.8046107264760578
+    }
+  ]
+}

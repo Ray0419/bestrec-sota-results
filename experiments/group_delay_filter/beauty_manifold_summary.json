@@ -1,0 +1,206 @@
+{
+  "protocol": "GROUP_DELAY_MANIFOLD_FEASIBILITY_V1",
+  "sequence_length": 50,
+  "parameter_counts_per_layer": {
+    "full": 3328,
+    "complex_rank1": 180,
+    "group_delay": 244
+  },
+  "fit": {
+    "steps": 1500,
+    "restarts": 4,
+    "seed": 271828
+  },
+  "checkpoints": [
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_full_s42.pt",
+      "checkpoint_sha256": "ef01fb1e79c4edb58a28031d216245fd353d42e4c5d180af8e29e8e42a17c6b7",
+      "rank1_projected": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s42.rank1_projected.pt",
+      "group_delay_projected": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s42.group_delay_projected.pt",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.3738699009887374,
+          "group_delay": {
+            "relative_frobenius_error": 0.36635254340865747,
+            "tau_mean": -0.11113400277221513,
+            "tau_std": 0.10116765582638869,
+            "tau_min": -0.6098155559471236,
+            "tau_max": 0.14375536920616278
+          }
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.44550192980742115,
+          "group_delay": {
+            "relative_frobenius_error": 0.4367600359542207,
+            "tau_mean": -0.00302241826390455,
+            "tau_std": 0.17677855208809423,
+            "tau_min": -0.6024830032252536,
+            "tau_max": 0.8361913649190313
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_full_s43.pt",
+      "checkpoint_sha256": "30858a2116074159fd34856ccb6294a6522b44c082be5e0b82ea61dd542ee07e",
+      "rank1_projected": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s43.rank1_projected.pt",
+      "group_delay_projected": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s43.group_delay_projected.pt",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.38040303621145,
+          "group_delay": {
+            "relative_frobenius_error": 0.36971342228433823,
+            "tau_mean": -0.014125542802477254,
+            "tau_std": 0.08213277957448487,
+            "tau_min": -0.3069790528316825,
+            "tau_max": 0.15782164664622977
+          }
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.45108963460209717,
+          "group_delay": {
+            "relative_frobenius_error": 0.4437688114400147,
+            "tau_mean": -0.009231658593422488,
+            "tau_std": 0.16646550181535114,
+            "tau_min": -0.8589391216654139,
+            "tau_max": 0.6034322098697993
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_full_s44.pt",
+      "checkpoint_sha256": "40c6f39bbdb5eeee954d801a3a04f391e0b9a40ff2d0287da8fa7b381de57cfc",
+      "rank1_projected": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s44.rank1_projected.pt",
+      "group_delay_projected": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s44.group_delay_projected.pt",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.3350926094562994,
+          "group_delay": {
+            "relative_frobenius_error": 0.3258387750080391,
+            "tau_mean": -0.03948107238745788,
+            "tau_std": 0.10428433776676145,
+            "tau_min": -0.6523259325407641,
+            "tau_max": 0.15300955788200374
+          }
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.45529901019619684,
+          "group_delay": {
+            "relative_frobenius_error": 0.44631751887656274,
+            "tau_mean": -0.0066989261529586605,
+            "tau_std": 0.1936027332145405,
+            "tau_min": -0.6064168600634237,
+            "tau_max": 0.9340592043604876
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_full_s45.pt",
+      "checkpoint_sha256": "1bc76c496ccedbd215ce8f63c6a93b30964d9337f52da56b89a3b7a4c13c3e57",
+      "rank1_projected": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s45.rank1_projected.pt",
+      "group_delay_projected": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s45.group_delay_projected.pt",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.343096250965689,
+          "group_delay": {
+            "relative_frobenius_error": 0.33149814933145727,
+            "tau_mean": -0.03894640166747223,
+            "tau_std": 0.18110189883271163,
+            "tau_min": -0.4166214080282978,
+            "tau_max": 1.2041437978800005
+          }
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.44204592208336,
+          "group_delay": {
+            "relative_frobenius_error": 0.43453785277976836,
+            "tau_mean": -0.027420044703473298,
+            "tau_std": 0.22411468148904864,
+            "tau_min": -0.3896527849328133,
+            "tau_max": 1.2930370292283566
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_full_s46.pt",
+      "checkpoint_sha256": "84169978a05c741b76803f25becd3a34e1ccad4d43827b16fdb7a5881cef4f20",
+      "rank1_projected": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s46.rank1_projected.pt",
+      "group_delay_projected": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s46.group_delay_projected.pt",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.3543985315830017,
+          "group_delay": {
+            "relative_frobenius_error": 0.34275747360495323,
+            "tau_mean": -0.018264561707277544,
+            "tau_std": 0.09164010760389094,
+            "tau_min": -0.45301335059498105,
+            "tau_max": 0.2011140030545678
+          }
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.45016186414962045,
+          "group_delay": {
+            "relative_frobenius_error": 0.44150173507301915,
+            "tau_mean": -0.004544381211739836,
+            "tau_std": 0.24789211122808233,
+            "tau_min": -0.23939986825260864,
+            "tau_max": 1.6103269673761331
+          }
+        }
+      ]
+    }
+  ]
+}

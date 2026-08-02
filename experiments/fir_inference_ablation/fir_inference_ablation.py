@@ -25,7 +25,9 @@ from fuse_ease_eval import build_model_from_config  # noqa: E402
 
 MODES = (
     "normal", "zero", "current_only", "lag_only", "channel_mean",
-    "orthogonal_history", "orthogonal_lag",
+    "orthogonal_history", "orthogonal_lag", "terminal_only",
+    "terminal_lag_only", "position_only", "item_only",
+    "rank1_projection",
 )
 
 
@@ -60,8 +62,15 @@ def bootstrap_delta(
 
 
 def intervene(model: torch.nn.Module, arm: str, mode: str, original: torch.Tensor) -> None:
-    if mode in {"normal", "orthogonal_history"}:
+    if mode in {
+            "normal", "orthogonal_history", "terminal_only",
+            "position_only", "item_only"}:
         weight = original
+    elif mode == "rank1_projection":
+        target = original[:, 0, :].T.to(torch.float64)
+        u, s, vh = torch.linalg.svd(target, full_matrices=False)
+        estimate = (u[:, :1] * s[:1]) @ vh[:1, :]
+        weight = estimate.T.unsqueeze(1).to(dtype=original.dtype)
     elif mode == "zero":
         weight = torch.zeros_like(original)
     elif mode == "current_only":
@@ -70,7 +79,7 @@ def intervene(model: torch.nn.Module, arm: str, mode: str, original: torch.Tenso
     elif mode == "lag_only":
         weight = original.clone()
         weight[..., -1] = 0
-    elif mode == "orthogonal_lag":
+    elif mode in {"orthogonal_lag", "terminal_lag_only"}:
         weight = original.clone()
         weight[..., -1] = 0
     elif mode == "channel_mean":
@@ -98,6 +107,58 @@ def install_orthogonal_probe(model: torch.nn.Module, arm: str):
         coefficient = (output * current).sum(dim=1, keepdim=True) \
             / current.square().sum(dim=1, keepdim=True).clamp_min(1e-8)
         return output - coefficient * current
+
+    return model.fir_control_module.register_forward_hook(hook)
+
+
+def install_terminal_probe(model: torch.nn.Module, arm: str):
+    """Retain the FIR residual only at each sequence's final real position."""
+    original_encode = model.encode
+
+    def encode(input_ids, times=None):
+        model._fir_probe_input_ids = input_ids
+        model._fir_probe_last_position = (
+            (input_ids != model.pad_id).sum(dim=1) - 1).clamp_min(0)
+        return original_encode(input_ids, times=times)
+
+    def hook(_module, _inputs, output):
+        if getattr(model, "_fir_probe_mode", "normal") not in {
+                "terminal_only", "terminal_lag_only"}:
+            return output
+        positions = model._fir_probe_last_position
+        if arm == "shared":
+            positions = positions.repeat_interleave(model.d_model)
+        mask = torch.zeros(
+            (output.shape[0], 1, output.shape[-1]),
+            dtype=output.dtype, device=output.device)
+        mask[torch.arange(output.shape[0], device=output.device), 0, positions] = 1
+        return output * mask
+
+    model.encode = encode
+    return model.fir_control_module.register_forward_hook(hook)
+
+
+def install_component_probe(model: torch.nn.Module, arm: str):
+    """Split the linear FIR output into item and positional contributions."""
+    def hook(module, _inputs, output):
+        mode = getattr(model, "_fir_probe_mode", "normal")
+        if mode not in {"position_only", "item_only"}:
+            return output
+        batch, seq_len = model._fir_probe_input_ids.shape
+        positions = torch.arange(seq_len, device=output.device)
+        position_x = model.pos_emb(positions).unsqueeze(0).expand(batch, -1, -1)
+        position_x = torch.nn.functional.pad(
+            position_x.transpose(1, 2),
+            (model.fir_control_kernel_len - 1, 0))
+        if arm == "shared":
+            position_x = position_x.reshape(batch * model.d_model, 1, -1)
+            position_delta = torch.nn.functional.conv1d(
+                position_x, module.weight)
+        else:
+            position_delta = torch.nn.functional.conv1d(
+                position_x, module.weight, groups=model.d_model)
+        return position_delta if mode == "position_only" \
+            else output - position_delta
 
     return model.fir_control_module.register_forward_hook(hook)
 
@@ -160,6 +221,8 @@ def main() -> int:
     model.load_state_dict(ckpt["state_dict"], strict=True)
     model.to(device).eval()
     orthogonal_hook = install_orthogonal_probe(model, args.arm)
+    terminal_hook = install_terminal_probe(model, args.arm)
+    component_hook = install_component_probe(model, args.arm)
     original = model.fir_control_module.weight.detach().clone()
 
     results: dict[str, dict] = {}
@@ -224,6 +287,8 @@ def main() -> int:
     args.out.write_text(json.dumps(artifact, indent=2) + "\n", encoding="utf-8")
     if orthogonal_hook is not None:
         orthogonal_hook.remove()
+    terminal_hook.remove()
+    component_hook.remove()
     print(json.dumps({
         "out": str(args.out),
         "results": {k: v["NDCG@10"] for k, v in results.items()},

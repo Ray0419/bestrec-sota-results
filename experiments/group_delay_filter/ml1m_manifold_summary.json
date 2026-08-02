@@ -1,0 +1,206 @@
+{
+  "protocol": "GROUP_DELAY_MANIFOLD_FEASIBILITY_V1",
+  "sequence_length": 50,
+  "parameter_counts_per_layer": {
+    "full": 3328,
+    "complex_rank1": 180,
+    "group_delay": 244
+  },
+  "fit": {
+    "steps": 1200,
+    "restarts": 4,
+    "seed": 271828
+  },
+  "checkpoints": [
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s42.pt",
+      "checkpoint_sha256": "8d4ddc0489d1c22d2c4a13e916bb71a3618fe38aa693ec906c3064bd87e79b6b",
+      "rank1_projected": "experiments/group_delay_filter/projected_ml1m/LADDER_ML-1M_full_s42.rank1_projected.pt",
+      "group_delay_projected": "experiments/group_delay_filter/projected_ml1m/LADDER_ML-1M_full_s42.group_delay_projected.pt",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.3585995094473213,
+          "group_delay": {
+            "relative_frobenius_error": 0.3406438609772174,
+            "tau_mean": -0.04192737594189244,
+            "tau_std": 0.22143910410763115,
+            "tau_min": -1.0977399486428798,
+            "tau_max": 0.09784336614249124
+          }
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.29778128161906453,
+          "group_delay": {
+            "relative_frobenius_error": 0.28855897299529065,
+            "tau_mean": -0.0276643280190896,
+            "tau_std": 0.06888569402431147,
+            "tau_min": -0.13782141151988703,
+            "tau_max": 0.23875751400040646
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s43.pt",
+      "checkpoint_sha256": "b3f3ff00d50d78df75754ee72fd0bff15bb714b6827d62552af1b46dcd473ef2",
+      "rank1_projected": "experiments/group_delay_filter/projected_ml1m/LADDER_ML-1M_full_s43.rank1_projected.pt",
+      "group_delay_projected": "experiments/group_delay_filter/projected_ml1m/LADDER_ML-1M_full_s43.group_delay_projected.pt",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.3470314015687927,
+          "group_delay": {
+            "relative_frobenius_error": 0.31547327561770305,
+            "tau_mean": -0.01152285143863316,
+            "tau_std": 0.21444474965581134,
+            "tau_min": -1.036997477470633,
+            "tau_max": 0.1734253417940786
+          }
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.3020416157099419,
+          "group_delay": {
+            "relative_frobenius_error": 0.29279515636577075,
+            "tau_mean": -0.09253583180715166,
+            "tau_std": 0.08701614133788284,
+            "tau_min": -0.5340256546807065,
+            "tau_max": 0.0870227949862057
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s44.pt",
+      "checkpoint_sha256": "83f1089782d2a5f002794cb98cf872367ce5c6cfb8369ba928e5f2416849a944",
+      "rank1_projected": "experiments/group_delay_filter/projected_ml1m/LADDER_ML-1M_full_s44.rank1_projected.pt",
+      "group_delay_projected": "experiments/group_delay_filter/projected_ml1m/LADDER_ML-1M_full_s44.group_delay_projected.pt",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.35888134684733286,
+          "group_delay": {
+            "relative_frobenius_error": 0.329420815825536,
+            "tau_mean": -0.014733557921450967,
+            "tau_std": 0.15849507583662803,
+            "tau_min": -0.9315809582329566,
+            "tau_max": 0.15840712670047266
+          }
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.2886530182638797,
+          "group_delay": {
+            "relative_frobenius_error": 0.2804232053933804,
+            "tau_mean": -0.04089958818444302,
+            "tau_std": 0.07491322120707636,
+            "tau_min": -0.3188441453557159,
+            "tau_max": 0.09183627036007364
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s45.pt",
+      "checkpoint_sha256": "26a0cb3f1ec2dd1a505a0d38424ed81c8b4bc4a4626082644f3b2df0f7825d87",
+      "rank1_projected": "experiments/group_delay_filter/projected_ml1m/LADDER_ML-1M_full_s45.rank1_projected.pt",
+      "group_delay_projected": "experiments/group_delay_filter/projected_ml1m/LADDER_ML-1M_full_s45.group_delay_projected.pt",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.3360722284066272,
+          "group_delay": {
+            "relative_frobenius_error": 0.32094174183398894,
+            "tau_mean": 0.0029174681264157896,
+            "tau_std": 0.1545495235093409,
+            "tau_min": -1.0018777281306348,
+            "tau_max": 0.1366129495707889
+          }
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.30735040810929226,
+          "group_delay": {
+            "relative_frobenius_error": 0.2988310699729993,
+            "tau_mean": -0.04777870928071043,
+            "tau_std": 0.1018998709599589,
+            "tau_min": -0.7178645124853809,
+            "tau_max": 0.1292568685327042
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_full_s46.pt",
+      "checkpoint_sha256": "1c7baeb549e807614e21a5a566b63493ee28e44fc94d9d8c3bd622f4c2f70d0b",
+      "rank1_projected": "experiments/group_delay_filter/projected_ml1m/LADDER_ML-1M_full_s46.rank1_projected.pt",
+      "group_delay_projected": "experiments/group_delay_filter/projected_ml1m/LADDER_ML-1M_full_s46.group_delay_projected.pt",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.35325919411431467,
+          "group_delay": {
+            "relative_frobenius_error": 0.3289321319110063,
+            "tau_mean": 0.008448192476058491,
+            "tau_std": 0.23831595048697318,
+            "tau_min": -1.0142274423049653,
+            "tau_max": 1.142890275798545
+          }
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.29696467485259137,
+          "group_delay": {
+            "relative_frobenius_error": 0.29133697858964624,
+            "tau_mean": -0.09350596302707898,
+            "tau_std": 0.05059732644401302,
+            "tau_min": -0.19787958985530404,
+            "tau_max": 0.09309757150542741
+          }
+        }
+      ]
+    }
+  ]
+}

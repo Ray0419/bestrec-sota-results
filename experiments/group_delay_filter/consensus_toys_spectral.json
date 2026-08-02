@@ -1,0 +1,114 @@
+{
+  "protocol": "TEMPORAL_FILTER_SEED_CONSENSUS_V1",
+  "label": "toys_spectral",
+  "checkpoint_count": 5,
+  "phase_invariant_similarity": "absolute normalized Frobenius inner product",
+  "layers": [
+    {
+      "layer_index": 0,
+      "representation": "complex_spectral",
+      "per_checkpoint": [
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s42.pt",
+          "rank1_retained_energy": 0.8927431484635502,
+          "dominant_channel_uniform_cosine": 0.9233333110339896
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s43.pt",
+          "rank1_retained_energy": 0.8962618274165761,
+          "dominant_channel_uniform_cosine": 0.9094548311082892
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s44.pt",
+          "rank1_retained_energy": 0.9027492429766063,
+          "dominant_channel_uniform_cosine": 0.9129118323554614
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s45.pt",
+          "rank1_retained_energy": 0.8965288901620762,
+          "dominant_channel_uniform_cosine": 0.9123224122727165
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s46.pt",
+          "rank1_retained_energy": 0.903154381115497,
+          "dominant_channel_uniform_cosine": 0.9184533379971138
+        }
+      ],
+      "pairwise_consensus": {
+        "rank1_matrix_cosine": {
+          "mean": 0.8402992038800481,
+          "min": 0.8223276550342432,
+          "max": 0.8593650553700632
+        },
+        "dominant_frequency_cosine": {
+          "mean": 0.9975532195718275,
+          "min": 0.9956301812964593,
+          "max": 0.9988316653989965
+        },
+        "dominant_channel_cosine": {
+          "mean": 0.8423633135904345,
+          "min": 0.823503964944895,
+          "max": 0.8622445991508741
+        },
+        "tail_matrix_cosine": {
+          "mean": 0.0280818004130723,
+          "min": 0.0028762394737636256,
+          "max": 0.06041189497136127
+        }
+      }
+    },
+    {
+      "layer_index": 1,
+      "representation": "complex_spectral",
+      "per_checkpoint": [
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s42.pt",
+          "rank1_retained_energy": 0.7878318966777341,
+          "dominant_channel_uniform_cosine": 0.9126313868126887
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s43.pt",
+          "rank1_retained_energy": 0.8250145379132333,
+          "dominant_channel_uniform_cosine": 0.9193271412460241
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s44.pt",
+          "rank1_retained_energy": 0.8037420926644027,
+          "dominant_channel_uniform_cosine": 0.9240733649525216
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s45.pt",
+          "rank1_retained_energy": 0.8002849775300994,
+          "dominant_channel_uniform_cosine": 0.9175910657210544
+        },
+        {
+          "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s46.pt",
+          "rank1_retained_energy": 0.8056257490666487,
+          "dominant_channel_uniform_cosine": 0.9185066101962442
+        }
+      ],
+      "pairwise_consensus": {
+        "rank1_matrix_cosine": {
+          "mean": 0.8420690131218225,
+          "min": 0.8107787119850219,
+          "max": 0.8743140448109034
+        },
+        "dominant_frequency_cosine": {
+          "mean": 0.9943507136169603,
+          "min": 0.991751800113476,
+          "max": 0.9961896003296568
+        },
+        "dominant_channel_cosine": {
+          "mean": 0.8468572508404011,
+          "min": 0.814058749230422,
+          "max": 0.8791854593146828
+        },
+        "tail_matrix_cosine": {
+          "mean": 0.02469949221657015,
+          "min": 0.011322623500282526,
+          "max": 0.04531090986318194
+        }
+      }
+    }
+  ]
+}

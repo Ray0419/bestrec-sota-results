@@ -1,0 +1,178 @@
+{
+  "protocol": "DEPTH_GATED_CHANNEL_SHARED_PROJECTION_EXPLORATORY_V1",
+  "rank1_energy_threshold": 0.905,
+  "channel_consensus_threshold": 0.97,
+  "projection": "orthogonal projection onto equal temporal response across channels",
+  "checkpoints": [
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_causal_full_s42.pt",
+      "checkpoint_sha256": "9e5ee74559db8b2a28988476b8f64414bbfc03ded31f1f6d5d3fdb18b6d5988a",
+      "projected": "experiments/group_delay_filter/projected_channel_shared_causal_ml1m/LADDER_ML-1M_causal_full_s42.channel_shared_projected.pt",
+      "projected_sha256": "3f7d799b296166100d1f852fa9bced6524678bbff4611d4c893b3d658d9c82c6",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.8405282488028588,
+          "dominant_channel_uniform_cosine": 0.927418512363529,
+          "channel_shared_retained_energy": 0.7263777423053525
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "final_layer": true,
+          "selected": true,
+          "rank1_retained_energy": 0.9151689242653256,
+          "dominant_channel_uniform_cosine": 0.9726704175890735,
+          "channel_shared_retained_energy": 0.8665389056652452
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_causal_full_s43.pt",
+      "checkpoint_sha256": "cd4a03ed96e6cdf789f30f106bafa73d3c4e72d7b03c8e44f75d63b6ac0b3099",
+      "projected": "experiments/group_delay_filter/projected_channel_shared_causal_ml1m/LADDER_ML-1M_causal_full_s43.channel_shared_projected.pt",
+      "projected_sha256": "dd4efd6aefac0cc8417b66639d6771fa0f7e98cd88293ed78315a2bfeb93b5a3",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.8452439104007653,
+          "dominant_channel_uniform_cosine": 0.914824936869551,
+          "channel_shared_retained_energy": 0.711896419322036
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "final_layer": true,
+          "selected": true,
+          "rank1_retained_energy": 0.9179818815455115,
+          "dominant_channel_uniform_cosine": 0.9761586516272767,
+          "channel_shared_retained_energy": 0.8751071992574989
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_causal_full_s44.pt",
+      "checkpoint_sha256": "383c2b48fe6d0f4132ef18ab8a15352b766c7330c966a1315b88b3a3ebb65596",
+      "projected": "experiments/group_delay_filter/projected_channel_shared_causal_ml1m/LADDER_ML-1M_causal_full_s44.channel_shared_projected.pt",
+      "projected_sha256": "2861498da41e672fe0bba694d1ad055617669baa703b980c167b9715ec7e69f2",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.8706783142075843,
+          "dominant_channel_uniform_cosine": 0.9473861190980144,
+          "channel_shared_retained_energy": 0.7841065203688108
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "final_layer": true,
+          "selected": false,
+          "rank1_retained_energy": 0.9191615958904024,
+          "dominant_channel_uniform_cosine": 0.9675097118947873,
+          "channel_shared_retained_energy": 0.8611177562340084
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_causal_full_s45.pt",
+      "checkpoint_sha256": "1af8bf798fe16cfb70d5a66403caa8d567283322f7093148a4299212a362e47b",
+      "projected": "experiments/group_delay_filter/projected_channel_shared_causal_ml1m/LADDER_ML-1M_causal_full_s45.channel_shared_projected.pt",
+      "projected_sha256": "6ef4e13d2ea11eed0fbebbdaa6dba43e7c692e707ac56056485d8d6dfac967ce",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.8603676913580051,
+          "dominant_channel_uniform_cosine": 0.9406913662272982,
+          "channel_shared_retained_energy": 0.7648807635755316
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "final_layer": true,
+          "selected": true,
+          "rank1_retained_energy": 0.9130889770997723,
+          "dominant_channel_uniform_cosine": 0.9781070639455858,
+          "channel_shared_retained_energy": 0.8740552185041246
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_causal_full_s46.pt",
+      "checkpoint_sha256": "efd22aeefe4e9088431b97fe5774c4d4dbf68165429ed77fab3c81c308418bee",
+      "projected": "experiments/group_delay_filter/projected_channel_shared_causal_ml1m/LADDER_ML-1M_causal_full_s46.channel_shared_projected.pt",
+      "projected_sha256": "655f8575ea2db327c1fccc12da8f267eae7c52f5a96baf92523950f5fc8db25a",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.8517576590829732,
+          "dominant_channel_uniform_cosine": 0.9204092199603056,
+          "channel_shared_retained_energy": 0.727777638859629
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "final_layer": true,
+          "selected": true,
+          "rank1_retained_energy": 0.9196392143500995,
+          "dominant_channel_uniform_cosine": 0.9754254401957907,
+          "channel_shared_retained_energy": 0.8755907921144791
+        }
+      ]
+    }
+  ]
+}

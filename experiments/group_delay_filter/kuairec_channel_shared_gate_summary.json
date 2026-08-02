@@ -1,0 +1,42 @@
+{
+  "protocol": "DEPTH_GATED_CHANNEL_SHARED_PROJECTION_EXPLORATORY_V1",
+  "rank1_energy_threshold": 0.905,
+  "channel_consensus_threshold": 0.97,
+  "projection": "orthogonal projection onto equal temporal response across channels",
+  "checkpoints": [
+    {
+      "checkpoint": "experiments/group_delay_filter/prospective_kuairec/DEPTH_EGSP_KuaiRec_full_s47.pt",
+      "checkpoint_sha256": "6a083e71229a9247b25ee4d1675e9b51161a98aee48d39a1fa2987119df5b730",
+      "projected": "experiments/group_delay_filter/projected_channel_shared_kuairec/DEPTH_EGSP_KuaiRec_full_s47.channel_shared_projected.pt",
+      "projected_sha256": "40e76d21f36d6302fdb78cf97847702680cd470382f6a407e847226e536fb34a",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": false,
+          "selected": false,
+          "rank1_retained_energy": 0.803889772191054,
+          "dominant_channel_uniform_cosine": 0.9272650612200373,
+          "channel_shared_retained_energy": 0.6958408327475131
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "representation": "complex_spectral",
+          "shape": [
+            26,
+            64
+          ],
+          "final_layer": true,
+          "selected": false,
+          "rank1_retained_energy": 0.8599882696961171,
+          "dominant_channel_uniform_cosine": 0.9606607157080308,
+          "channel_shared_retained_energy": 0.7947210920137419
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "protocol": "GROUP_DELAY_MANIFOLD_FEASIBILITY_V1",
+  "sequence_length": 50,
+  "parameter_counts_per_layer": {
+    "full": 3328,
+    "complex_rank1": 180,
+    "group_delay": 244
+  },
+  "fit": {
+    "steps": 1500,
+    "restarts": 4,
+    "seed": 271828
+  },
+  "checkpoints": [
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_full_s42.pt",
+      "checkpoint_sha256": "ef01fb1e79c4edb58a28031d216245fd353d42e4c5d180af8e29e8e42a17c6b7",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s42.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.85": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s42.energy0p85_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.3738699009887374
+          },
+          "rank1_retained_energy": 0.8602212971346717,
+          "energy_projection": {
+            "0.85": true
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.44550192980742115
+          },
+          "rank1_retained_energy": 0.8015280305378636,
+          "energy_projection": {
+            "0.85": false
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_full_s43.pt",
+      "checkpoint_sha256": "30858a2116074159fd34856ccb6294a6522b44c082be5e0b82ea61dd542ee07e",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s43.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.85": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s43.energy0p85_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.38040303621145
+          },
+          "rank1_retained_energy": 0.8552935300411102,
+          "energy_projection": {
+            "0.85": true
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.45108963460209717
+          },
+          "rank1_retained_energy": 0.7965181415545465,
+          "energy_projection": {
+            "0.85": false
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_full_s44.pt",
+      "checkpoint_sha256": "40c6f39bbdb5eeee954d801a3a04f391e0b9a40ff2d0287da8fa7b381de57cfc",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s44.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.85": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s44.energy0p85_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.3350926094562994
+          },
+          "rank1_retained_energy": 0.887712943087768,
+          "energy_projection": {
+            "0.85": true
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.45529901019619684
+          },
+          "rank1_retained_energy": 0.7927028113143635,
+          "energy_projection": {
+            "0.85": false
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_full_s45.pt",
+      "checkpoint_sha256": "1bc76c496ccedbd215ce8f63c6a93b30964d9337f52da56b89a3b7a4c13c3e57",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s45.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.85": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s45.energy0p85_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.343096250965689
+          },
+          "rank1_retained_energy": 0.8822849625732889,
+          "energy_projection": {
+            "0.85": true
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.44204592208336
+          },
+          "rank1_retained_energy": 0.804595402769472,
+          "energy_projection": {
+            "0.85": false
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_full_s46.pt",
+      "checkpoint_sha256": "84169978a05c741b76803f25becd3a34e1ccad4d43827b16fdb7a5881cef4f20",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s46.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.85": "experiments/group_delay_filter/projected_beauty/LADDER_Beauty_full_s46.energy0p85_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.3543985315830017
+          },
+          "rank1_retained_energy": 0.8744016808118121,
+          "energy_projection": {
+            "0.85": true
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.45016186414962045
+          },
+          "rank1_retained_energy": 0.7973542960653387,
+          "energy_projection": {
+            "0.85": false
+          },
+          "group_delay": null
+        }
+      ]
+    }
+  ]
+}

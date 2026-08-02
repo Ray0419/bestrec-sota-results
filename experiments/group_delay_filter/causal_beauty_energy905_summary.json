@@ -1,0 +1,256 @@
+{
+  "protocol": "GROUP_DELAY_MANIFOLD_FEASIBILITY_V1",
+  "sequence_length": 50,
+  "parameter_counts_per_layer": {
+    "full": 1024,
+    "rank1": 80,
+    "group_delay": 224
+  },
+  "fit": {
+    "steps": 1500,
+    "restarts": 4,
+    "seed": 271828
+  },
+  "checkpoints": [
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_causal_full_s42.pt",
+      "checkpoint_sha256": "6878634a5a2fca76b31ee90adc8ce4dd174ba0b28d5fe65c49d19d60adb49f40",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_causal_beauty/LADDER_Beauty_causal_full_s42.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.905": "experiments/group_delay_filter/projected_causal_beauty/LADDER_Beauty_causal_full_s42.energy0p905_projected.pt",
+        "1.0": "experiments/group_delay_filter/projected_causal_beauty/LADDER_Beauty_causal_full_s42.energy1_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.5911759013371976
+          },
+          "rank1_retained_energy": 0.650511053678152,
+          "energy_projection": {
+            "0.905": false,
+            "1.0": false
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.48778381575383173
+          },
+          "rank1_retained_energy": 0.7620669490886319,
+          "energy_projection": {
+            "0.905": false,
+            "1.0": false
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_causal_full_s43.pt",
+      "checkpoint_sha256": "40155d36baacf9af1e019e53098e86569b847338c5d2b4f60472d71aa79d36e2",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_causal_beauty/LADDER_Beauty_causal_full_s43.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.905": "experiments/group_delay_filter/projected_causal_beauty/LADDER_Beauty_causal_full_s43.energy0p905_projected.pt",
+        "1.0": "experiments/group_delay_filter/projected_causal_beauty/LADDER_Beauty_causal_full_s43.energy1_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.5457140530799054
+          },
+          "rank1_retained_energy": 0.7021961722711022,
+          "energy_projection": {
+            "0.905": false,
+            "1.0": false
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.4814571017687845
+          },
+          "rank1_retained_energy": 0.7681990591564023,
+          "energy_projection": {
+            "0.905": false,
+            "1.0": false
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_causal_full_s44.pt",
+      "checkpoint_sha256": "7ba58249760e660dc402055c231250a576c92573d0f522a9a0a5cf3242aca157",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_causal_beauty/LADDER_Beauty_causal_full_s44.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.905": "experiments/group_delay_filter/projected_causal_beauty/LADDER_Beauty_causal_full_s44.energy0p905_projected.pt",
+        "1.0": "experiments/group_delay_filter/projected_causal_beauty/LADDER_Beauty_causal_full_s44.energy1_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.51866594533536
+          },
+          "rank1_retained_energy": 0.7309856371493773,
+          "energy_projection": {
+            "0.905": false,
+            "1.0": false
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.48487765051336956
+          },
+          "rank1_retained_energy": 0.7648936640326347,
+          "energy_projection": {
+            "0.905": false,
+            "1.0": false
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_causal_full_s45.pt",
+      "checkpoint_sha256": "1fa0c027dfa3459de6e089ed31b099bec2dc1d610d2c22442bdec6d79aba991e",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_causal_beauty/LADDER_Beauty_causal_full_s45.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.905": "experiments/group_delay_filter/projected_causal_beauty/LADDER_Beauty_causal_full_s45.energy0p905_projected.pt",
+        "1.0": "experiments/group_delay_filter/projected_causal_beauty/LADDER_Beauty_causal_full_s45.energy1_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.5246335553749156
+          },
+          "rank1_retained_energy": 0.7247596325746753,
+          "energy_projection": {
+            "0.905": false,
+            "1.0": false
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.49415482026780966
+          },
+          "rank1_retained_energy": 0.7558110136060887,
+          "energy_projection": {
+            "0.905": false,
+            "1.0": false
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Beauty_causal_full_s46.pt",
+      "checkpoint_sha256": "76bd3a6e3a8b0316de6113afbe4c9ed8855fbc3deefc8001638b69373f6f9244",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_causal_beauty/LADDER_Beauty_causal_full_s46.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.905": "experiments/group_delay_filter/projected_causal_beauty/LADDER_Beauty_causal_full_s46.energy0p905_projected.pt",
+        "1.0": "experiments/group_delay_filter/projected_causal_beauty/LADDER_Beauty_causal_full_s46.energy1_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.47705179367923256
+          },
+          "rank1_retained_energy": 0.772421586147427,
+          "energy_projection": {
+            "0.905": false,
+            "1.0": false
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.465252008756245
+          },
+          "rank1_retained_energy": 0.7835405683482789,
+          "energy_projection": {
+            "0.905": false,
+            "1.0": false
+          },
+          "group_delay": null
+        }
+      ]
+    }
+  ]
+}

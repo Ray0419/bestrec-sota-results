@@ -1,0 +1,37 @@
+{
+  "protocol": "EGSP_PROSPECTIVE_SPORTS_V1",
+  "status": "ABORTED_INCOMPLETE",
+  "decision_rule_eligible": false,
+  "dataset": "Sports_and_Outdoors",
+  "architecture": "standard FMLP-Rec spectral filter",
+  "seed": 47,
+  "frozen_rank": 1,
+  "frozen_energy_threshold": 0.905,
+  "last_completed_epoch": 30,
+  "interrupted_during_epoch": 31,
+  "test_access": "none",
+  "selected_checkpoint_at_abort": {
+    "selection_split": "validation",
+    "hr_at_5": 0.0245,
+    "ndcg_at_5": 0.0160,
+    "hr_at_10": 0.0395,
+    "ndcg_at_10": 0.0208,
+    "hr_at_20": 0.0612,
+    "ndcg_at_20": 0.0262,
+    "rank1_energy_by_layer": [
+      0.874167943,
+      0.790125882
+    ],
+    "energy_gap_to_threshold_by_layer": [
+      0.030832057,
+      0.114874118
+    ],
+    "selected_layers": []
+  },
+  "interpretation": "Incomplete mechanism-gate abstention; not a performance pass, fail, or completed inconclusive result.",
+  "abort_reason": "Repeated host scheduling stalls made training completion impractical; the frozen mechanism precondition also remained unmet at the validation-selected checkpoint.",
+  "sha256": {
+    "checkpoint": "5fdfa77c018b8500a2e2ab2407a919115989747f67a63ebb89ce6f5280c76aa3",
+    "training_log": "ff15a839cc7f3952c61d3ab0058745afc458b06dba10e992f68fcbd7d7b2a0d5"
+  }
+}

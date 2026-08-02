@@ -1,0 +1,133 @@
+{
+  "protocol": "FIR_INFERENCE_ABLATION_VALIDATION_ONLY_V1",
+  "category": "Musical_Instruments",
+  "arm": "learned",
+  "seed": 20260907,
+  "selected_epoch": 12,
+  "selected_val_NDCG10_recorded": 0.046412437073011174,
+  "subsample_users": 1000,
+  "subsample_seed": 271828,
+  "ni_margin_ndcg10": 0.0005,
+  "modes": [
+    "normal",
+    "rank1_projection"
+  ],
+  "results": {
+    "normal": {
+      "NDCG@10": 0.042761344595159796,
+      "HR@10": 0.077,
+      "MRR": 0.03917810855162775,
+      "n_eval": 1000,
+      "by_popularity": {
+        "tail": {
+          "NDCG@10": 0.003875968992248062,
+          "HR@10": 0.007751937984496124,
+          "n": 129,
+          "n_hit@10": 1,
+          "HR@20": 0.015503875968992248,
+          "n_hit@20": 2,
+          "HR@50": 0.031007751937984496,
+          "n_hit@50": 4,
+          "HR@100": 0.05426356589147287,
+          "n_hit@100": 7
+        },
+        "mid": {
+          "NDCG@10": 0.0035971223021582736,
+          "HR@10": 0.007194244604316547,
+          "n": 139,
+          "n_hit@10": 1,
+          "HR@20": 0.014388489208633094,
+          "n_hit@20": 2,
+          "HR@50": 0.05755395683453238,
+          "n_hit@50": 8,
+          "HR@100": 0.09352517985611511,
+          "n_hit@100": 13
+        },
+        "head": {
+          "NDCG@10": 0.057051017206502457,
+          "HR@10": 0.10245901639344263,
+          "n": 732,
+          "n_hit@10": 75,
+          "HR@20": 0.15027322404371585,
+          "n_hit@20": 110,
+          "HR@50": 0.23224043715846995,
+          "n_hit@50": 170,
+          "HR@100": 0.33469945355191255,
+          "n_hit@100": 245
+        }
+      },
+      "elapsed_seconds": 8.304340124130249
+    },
+    "rank1_projection": {
+      "NDCG@10": 0.04208327741022864,
+      "HR@10": 0.076,
+      "MRR": 0.03863084480100562,
+      "n_eval": 1000,
+      "by_popularity": {
+        "tail": {
+          "NDCG@10": 0.003875968992248062,
+          "HR@10": 0.007751937984496124,
+          "n": 129,
+          "n_hit@10": 1,
+          "HR@20": 0.015503875968992248,
+          "n_hit@20": 2,
+          "HR@50": 0.031007751937984496,
+          "n_hit@50": 4,
+          "HR@100": 0.05426356589147287,
+          "n_hit@100": 7
+        },
+        "mid": {
+          "NDCG@10": 0.0035971223021582736,
+          "HR@10": 0.007194244604316547,
+          "n": 139,
+          "n_hit@10": 1,
+          "HR@20": 0.014388489208633094,
+          "n_hit@20": 2,
+          "HR@50": 0.05755395683453238,
+          "n_hit@50": 8,
+          "HR@100": 0.08633093525179857,
+          "n_hit@100": 12
+        },
+        "head": {
+          "NDCG@10": 0.05612469591561289,
+          "HR@10": 0.10109289617486339,
+          "n": 732,
+          "n_hit@10": 74,
+          "HR@20": 0.1489071038251366,
+          "n_hit@20": 109,
+          "HR@50": 0.23224043715846995,
+          "n_hit@50": 170,
+          "HR@100": 0.3237704918032787,
+          "n_hit@100": 237
+        }
+      },
+      "elapsed_seconds": 7.544641971588135
+    }
+  },
+  "paired_vs_normal": {
+    "rank1_projection": {
+      "delta_ndcg10": -0.0006780671849311602,
+      "ci95_low": -0.002313061061820946,
+      "ci95_high": 0.0008717123540358281,
+      "noninferior_at_margin": false
+    }
+  },
+  "kernel": {
+    "shape": [
+      64,
+      1,
+      16
+    ],
+    "mean_abs": 0.12349399924278259,
+    "current_tap_mean_abs": 0.07838517427444458,
+    "strict_lag_mean_abs": 0.12650126218795776
+  },
+  "elapsed_seconds": 15.896256923675537,
+  "provenance": {
+    "run_json": "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.json",
+    "run_json_sha256": "f796bc41dd49d696349a2fa5c7ca1b2f84b3c57e56c05d8ce6ece482b25709d3",
+    "checkpoint": "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.best.pt",
+    "checkpoint_sha256": "6da1ba326b17b835bd9ad556cfd048c1eb4a153dc09bd6f2c1de6198e69b263f",
+    "test_usage": "item-ID mapping only; no test target scored"
+  }
+}

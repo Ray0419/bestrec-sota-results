@@ -1,0 +1,206 @@
+{
+  "protocol": "GROUP_DELAY_MANIFOLD_FEASIBILITY_V1",
+  "sequence_length": 50,
+  "parameter_counts_per_layer": {
+    "full": 3328,
+    "complex_rank1": 180,
+    "group_delay": 244
+  },
+  "fit": {
+    "steps": 1500,
+    "restarts": 4,
+    "seed": 271828
+  },
+  "checkpoints": [
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s42.pt",
+      "checkpoint_sha256": "75fb8eb50677bf5e4625f00eda69e1ecb75c3ff88fe0e20148004414d989bf93",
+      "rank1_projected": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s42.rank1_projected.pt",
+      "group_delay_projected": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s42.group_delay_projected.pt",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.32750091837497164,
+          "group_delay": {
+            "relative_frobenius_error": 0.31900772192737087,
+            "tau_mean": -0.06512815287610099,
+            "tau_std": 0.08610236408497006,
+            "tau_min": -0.4999342005726503,
+            "tau_max": 0.10987192988269584
+          }
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.46061708969844595,
+          "group_delay": {
+            "relative_frobenius_error": 0.45570149739047594,
+            "tau_mean": -0.00436127769219846,
+            "tau_std": 0.2906991721624698,
+            "tau_min": -1.3517539719104077,
+            "tau_max": 1.1484494984775853
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s43.pt",
+      "checkpoint_sha256": "653d54c95ae3bcd0398c01a1448fbfba61b997c5760e44e2146ba7ce381b4c5d",
+      "rank1_projected": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s43.rank1_projected.pt",
+      "group_delay_projected": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s43.group_delay_projected.pt",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.32208410793366293,
+          "group_delay": {
+            "relative_frobenius_error": 0.3136579621619799,
+            "tau_mean": -0.09027883807835764,
+            "tau_std": 0.08387371624252665,
+            "tau_min": -0.45324275064529085,
+            "tau_max": 0.11754535852789966
+          }
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.41831263677633074,
+          "group_delay": {
+            "relative_frobenius_error": 0.4115108839244587,
+            "tau_mean": -0.04255067287542209,
+            "tau_std": 0.12777090871766236,
+            "tau_min": -0.5642694365311687,
+            "tau_max": 0.5040340248253714
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s44.pt",
+      "checkpoint_sha256": "8da72ee05cb21d98803be0611d3cbcc40660946c27e525ff9d564001a4790944",
+      "rank1_projected": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s44.rank1_projected.pt",
+      "group_delay_projected": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s44.group_delay_projected.pt",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.3118505363525826,
+          "group_delay": {
+            "relative_frobenius_error": 0.3045087873703674,
+            "tau_mean": -0.030716765067395322,
+            "tau_std": 0.0761560817677537,
+            "tau_min": -0.31187930574839345,
+            "tau_max": 0.14056011977593125
+          }
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.443010053312108,
+          "group_delay": {
+            "relative_frobenius_error": 0.4359553818930861,
+            "tau_mean": -0.024608534438495568,
+            "tau_std": 0.11519086334984384,
+            "tau_min": -0.5673624995184653,
+            "tau_max": 0.2133485493824728
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s45.pt",
+      "checkpoint_sha256": "142378da792433dd038c16ca96f1524f9274ad32e26da8a21899dca5c1f1da48",
+      "rank1_projected": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s45.rank1_projected.pt",
+      "group_delay_projected": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s45.group_delay_projected.pt",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.3216692553507774,
+          "group_delay": {
+            "relative_frobenius_error": 0.31081354346355056,
+            "tau_mean": -0.0838159923209472,
+            "tau_std": 0.07482388981628454,
+            "tau_min": -0.28611181465116725,
+            "tau_max": 0.10105131873702226
+          }
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.44689486735685385,
+          "group_delay": {
+            "relative_frobenius_error": 0.43860660558784514,
+            "tau_mean": 0.0005876767543447486,
+            "tau_std": 0.1665733300560727,
+            "tau_min": -0.6132588437243284,
+            "tau_max": 0.6633732523944297
+          }
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_Toys_and_Games_full_s46.pt",
+      "checkpoint_sha256": "a004ce2f39b48f2172eca877a78343604562c715fe93bd16216a5db301d644ac",
+      "rank1_projected": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s46.rank1_projected.pt",
+      "group_delay_projected": "experiments/group_delay_filter/projected_toys/LADDER_Toys_and_Games_full_s46.group_delay_projected.pt",
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.31120028741070116,
+          "group_delay": {
+            "relative_frobenius_error": 0.30134653820285856,
+            "tau_mean": -0.05467916244711109,
+            "tau_std": 0.09652451973130205,
+            "tau_min": -0.49263731049034065,
+            "tau_max": 0.14254103415187563
+          }
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.complex_weight",
+          "shape": [
+            26,
+            64
+          ],
+          "rank1_relative_frobenius_error": 0.440878952699435,
+          "group_delay": {
+            "relative_frobenius_error": 0.4353169818081258,
+            "tau_mean": -0.02138415010372487,
+            "tau_std": 0.15853701715581583,
+            "tau_min": -0.6771472977375131,
+            "tau_max": 0.37283511097071953
+          }
+        }
+      ]
+    }
+  ]
+}

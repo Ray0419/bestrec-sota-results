@@ -1,0 +1,45 @@
+{
+  "protocol": "DEPTH_EGSP_KUAIREC_DATA_V1",
+  "preregistration": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/PREREG_DEPTH_EGSP_KUAIREC_V1.md",
+  "preregistration_sha256": "41b66e7f8bca5d57146eee0c1a506d94b1389e55ea7af3094e7103f064010681",
+  "source": {
+    "archive_url": "https://zenodo.org/api/records/18164998/files/KuaiRec.zip/content",
+    "zenodo_doi": "https://doi.org/10.5281/zenodo.18164998",
+    "license": "CC BY 4.0",
+    "archive_member": "KuaiRec 2.0/data/big_matrix.csv",
+    "official_archive_md5": "261550d472c48eff4990fb13c0e5bcf7",
+    "archive_md5": "261550d472c48eff4990fb13c0e5bcf7",
+    "archive_sha256": "c23f211cf109c7a060a25a4afe9e8c681b1ccbbc816cca921d87ad37dd11c70c"
+  },
+  "preprocessing": {
+    "columns": [
+      "user_id",
+      "video_id",
+      "timestamp"
+    ],
+    "watch_ratio_threshold": null,
+    "sort_key": [
+      "user_id",
+      "timestamp",
+      "video_id"
+    ],
+    "duplicate_pair_policy": "retain earliest event",
+    "minimum_unique_items_per_user": 5,
+    "id_mapping": "ascending retained original IDs, one-indexed",
+    "split": "leave-last-two-out in downstream repository loader"
+  },
+  "raw_rows": 12530806,
+  "duplicate_user_video_rows_removed": 2229837,
+  "retained": {
+    "users": 7176,
+    "items": 10728,
+    "interactions": 10300969,
+    "mean_sequence_length": 1435.4750557413602,
+    "median_sequence_length": 1571.0,
+    "min_sequence_length": 80,
+    "max_sequence_length": 3387,
+    "matrix_density": 0.13380639967760627
+  },
+  "sequence_file": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/KuaiRec.txt",
+  "sequence_file_sha256": "9888dd1a1068a369accff58323767ede5a2b3b893e7eaac0419361d693597228"
+}

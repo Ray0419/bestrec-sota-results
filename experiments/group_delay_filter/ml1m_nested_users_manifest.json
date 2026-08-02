@@ -1,0 +1,50 @@
+{
+  "protocol": "EGSP_ML1M_NESTED_USERS_V1",
+  "preregistration": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/PREREG_EGSP_SCALE_PHASE_V1.md",
+  "preregistration_sha256": "eb52d585736742911ff1ad20168cc7b5db284bad19324daeacd08de2572d310b",
+  "source": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/ML-1M.txt",
+  "source_sha256": "c3fa8abcfcdc8824e6b54fe5fdb50c5fac8316e7ef2bc00973f8dd69ba76163d",
+  "selection": "ascending SHA-256 of '20260802:<original user id>'",
+  "nested": true,
+  "cohorts": [
+    {
+      "size": 943,
+      "output": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/ML-1M-N943.txt",
+      "output_sha256": "856afe71eea5d99ae4e2adcabea76dea8932a894bafa9a965575b0f84e880c7d",
+      "selected_original_user_ids_sha256": "09567b669322edccd47d332f7319c996043a424f3f7489133e145078422335b2",
+      "interactions": 157245,
+      "active_items": 3340,
+      "max_item_id": 3414,
+      "mean_sequence_length": 166.74973488865322,
+      "median_sequence_length": 92,
+      "min_sequence_length": 18,
+      "max_sequence_length": 1850
+    },
+    {
+      "size": 2000,
+      "output": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/ML-1M-N2000.txt",
+      "output_sha256": "5f7f6599d25028ef31832311131b12570b86890c9b9c1afe6ec199683f70ff19",
+      "selected_original_user_ids_sha256": "1454ed4e4d555355b8f5237d5a3a7895b68b30b874b7dcb39ae3e412dc4f05cc",
+      "interactions": 325133,
+      "active_items": 3395,
+      "max_item_id": 3414,
+      "mean_sequence_length": 162.5665,
+      "median_sequence_length": 94.0,
+      "min_sequence_length": 18,
+      "max_sequence_length": 1850
+    },
+    {
+      "size": 4000,
+      "output": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/ML-1M-N4000.txt",
+      "output_sha256": "75b0998fbdf03b42943b505dfb9a7562bfbc58c796f011464e39ef912c2d925c",
+      "selected_original_user_ids_sha256": "0a91ea9ead558ae28930edf1a318365a117750694dcc4f1ed289bdb75c715e86",
+      "interactions": 652238,
+      "active_items": 3416,
+      "max_item_id": 3416,
+      "mean_sequence_length": 163.0595,
+      "median_sequence_length": 92.0,
+      "min_sequence_length": 18,
+      "max_sequence_length": 1850
+    }
+  ]
+}

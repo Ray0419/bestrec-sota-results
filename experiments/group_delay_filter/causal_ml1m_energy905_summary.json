@@ -1,0 +1,256 @@
+{
+  "protocol": "GROUP_DELAY_MANIFOLD_FEASIBILITY_V1",
+  "sequence_length": 50,
+  "parameter_counts_per_layer": {
+    "full": 1024,
+    "rank1": 80,
+    "group_delay": 224
+  },
+  "fit": {
+    "steps": 1500,
+    "restarts": 4,
+    "seed": 271828
+  },
+  "checkpoints": [
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_causal_full_s42.pt",
+      "checkpoint_sha256": "9e5ee74559db8b2a28988476b8f64414bbfc03ded31f1f6d5d3fdb18b6d5988a",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s42.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.905": "experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s42.energy0p905_projected.pt",
+        "1.0": "experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s42.energy1_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.3993391430815936
+          },
+          "rank1_retained_energy": 0.8405282488028585,
+          "energy_projection": {
+            "0.905": false,
+            "1.0": false
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.2912577479393027
+          },
+          "rank1_retained_energy": 0.9151689242653256,
+          "energy_projection": {
+            "0.905": true,
+            "1.0": false
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_causal_full_s43.pt",
+      "checkpoint_sha256": "cd4a03ed96e6cdf789f30f106bafa73d3c4e72d7b03c8e44f75d63b6ac0b3099",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s43.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.905": "experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s43.energy0p905_projected.pt",
+        "1.0": "experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s43.energy1_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.39339050522252667
+          },
+          "rank1_retained_energy": 0.8452439104007652,
+          "energy_projection": {
+            "0.905": false,
+            "1.0": false
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.28638805571198084
+          },
+          "rank1_retained_energy": 0.9179818815455114,
+          "energy_projection": {
+            "0.905": true,
+            "1.0": false
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_causal_full_s44.pt",
+      "checkpoint_sha256": "383c2b48fe6d0f4132ef18ab8a15352b766c7330c966a1315b88b3a3ebb65596",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s44.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.905": "experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s44.energy0p905_projected.pt",
+        "1.0": "experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s44.energy1_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.3596132447399787
+          },
+          "rank1_retained_energy": 0.8706783142075842,
+          "energy_projection": {
+            "0.905": false,
+            "1.0": false
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.2843209526390865
+          },
+          "rank1_retained_energy": 0.9191615958904024,
+          "energy_projection": {
+            "0.905": true,
+            "1.0": false
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_causal_full_s45.pt",
+      "checkpoint_sha256": "1af8bf798fe16cfb70d5a66403caa8d567283322f7093148a4299212a362e47b",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s45.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.905": "experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s45.energy0p905_projected.pt",
+        "1.0": "experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s45.energy1_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.3736740673929554
+          },
+          "rank1_retained_energy": 0.8603676913580051,
+          "energy_projection": {
+            "0.905": false,
+            "1.0": false
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.29480675518079263
+          },
+          "rank1_retained_energy": 0.9130889770997722,
+          "energy_projection": {
+            "0.905": true,
+            "1.0": false
+          },
+          "group_delay": null
+        }
+      ]
+    },
+    {
+      "checkpoint": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/output/LADDER_ML-1M_causal_full_s46.pt",
+      "checkpoint_sha256": "4085db76f38bfe6fc5ba4c7dd33bc34d6f2496ddf7c4be72bffee1eb00caddb9",
+      "rank_projected": {
+        "1": "experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s46.rank1_projected.pt"
+      },
+      "energy_projected": {
+        "0.905": "experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s46.energy0p905_projected.pt",
+        "1.0": "experiments/group_delay_filter/projected_causal_ml1m/LADDER_ML-1M_causal_full_s46.energy1_projected.pt"
+      },
+      "group_delay_projected": null,
+      "layers": [
+        {
+          "key": "item_encoder.blocks.0.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.3849231372417844
+          },
+          "rank1_retained_energy": 0.8518341784159424,
+          "energy_projection": {
+            "0.905": false,
+            "1.0": false
+          },
+          "group_delay": null
+        },
+        {
+          "key": "item_encoder.blocks.1.layer.causal_conv.weight",
+          "representation": "real_fir",
+          "shape": [
+            16,
+            64
+          ],
+          "rank_relative_frobenius_error": {
+            "1": 0.27714691532865954
+          },
+          "rank1_retained_energy": 0.9231895873238088,
+          "energy_projection": {
+            "0.905": true,
+            "1.0": false
+          },
+          "group_delay": null
+        }
+      ]
+    }
+  ]
+}

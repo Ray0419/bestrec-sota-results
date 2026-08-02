@@ -1,0 +1,14 @@
+projected_*/
+prospective_sports/*.pt
+prospective_sports/*.log
+prospective_ml100k/*.pt
+prospective_ml100k/*.log
+prospective_ml100k/*.stdout
+prospective_ml100k/ml-100k.zip
+prospective_scale/*.pt
+prospective_scale/*.log
+prospective_scale/*.stdout
+prospective_kuairec/*.pt
+prospective_kuairec/*.log
+prospective_kuairec/*.stdout
+prospective_kuairec/KuaiRec.zip

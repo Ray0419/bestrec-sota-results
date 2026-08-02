@@ -1,0 +1,25 @@
+{
+  "protocol": "EGSP_ML100K_EXECUTION_ATTEMPT_V1",
+  "status": "ABORTED_INELIGIBLE",
+  "reason": "CPU FFT training was impractically descheduled by concurrent campaigns.",
+  "restart_policy": "Restart seed 47 from initialization on MPS; do not resume this checkpoint.",
+  "preregistration_sha256": "c10aecfe9a51cfa3d386fbfb6c8c461bb85d77a0b0d95408c03e8398e128a526",
+  "completed_training_epochs": 1,
+  "last_completed_zero_based_epoch": 0,
+  "interrupted_during_zero_based_epoch": 1,
+  "test_access": "none",
+  "filter_spectrum_inspected": false,
+  "validation_epoch_0": {
+    "hr_at_5": 0.0392,
+    "ndcg_at_5": 0.0232,
+    "hr_at_10": 0.0657,
+    "ndcg_at_10": 0.0318,
+    "hr_at_20": 0.1018,
+    "ndcg_at_20": 0.0408
+  },
+  "sha256": {
+    "checkpoint": "0063e1febdd92b8cca6d10831427a652b14f8cbf40662a12cbd138554243d7da",
+    "log": "2abe5f45a45f91e98c65e6947fed9d5c8f5a774a4beb8580e8eb1cc131509f4c",
+    "stdout": "0ad9f17bca16ba3551b20240273ec674619d1bb3ebf9b9d749fdda261e718b69"
+  }
+}

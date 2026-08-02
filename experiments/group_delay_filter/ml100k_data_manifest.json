@@ -1,0 +1,35 @@
+{
+  "protocol": "EGSP_ML100K_DATA_V1",
+  "preregistration": "/Users/ray.x.chen123/Documents/Recommendation system/bestrec-sota-results/experiments/group_delay_filter/PREREG_EGSP_ML100K_V1.md",
+  "preregistration_sha256": "c10aecfe9a51cfa3d386fbfb6c8c461bb85d77a0b0d95408c03e8398e128a526",
+  "source": {
+    "archive_url": "https://files.grouplens.org/datasets/movielens/ml-100k.zip",
+    "readme_url": "https://files.grouplens.org/datasets/movielens/ml-100k-README.txt",
+    "official_archive_md5": "0e33842e24a9c977be4e0107933c0723",
+    "archive_md5": "0e33842e24a9c977be4e0107933c0723",
+    "archive_sha256": "50d2a982c66986937beb9ffb3aa76efe955bf3d5c6b761f4e3a7cd717c6a3229"
+  },
+  "preprocessing": {
+    "include_all_ratings": true,
+    "sort_key": [
+      "timestamp",
+      "original_item_id"
+    ],
+    "iterative_user_item_k_core": 5,
+    "k_core_filter_rounds": 1,
+    "id_mapping": "ascending retained original IDs, one-indexed",
+    "split": "leave-last-two-out in downstream repository loader"
+  },
+  "raw_interactions": 100000,
+  "retained": {
+    "users": 943,
+    "items": 1349,
+    "interactions": 99287,
+    "mean_sequence_length": 105.28844114528101,
+    "min_sequence_length": 19,
+    "max_sequence_length": 648,
+    "matrix_density": 0.07804925214624242
+  },
+  "sequence_file": "/private/tmp/claude-501/-Users-ray-x-chen123-Documents-Recommendation-system-bestrec-sota-results/251cdeef-b88d-4947-9e12-5fd4c0584c0e/scratchpad/BSARec/src/data/ML-100K.txt",
+  "sequence_file_sha256": "32bec7e018ff9c50a5d116186a952cfdc8237b54e31d8f853255e5f1e9e8dbd7"
+}

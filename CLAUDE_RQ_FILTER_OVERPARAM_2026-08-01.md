@@ -501,3 +501,36 @@ filters producing ~25% relative gains and will ask why ours produces exactly zer
 that in the paper than to be asked it. The honest scope is narrower than currently stated: *a
 causal FIR residual adds nothing given this backbone and this split* — not *temporal filtering does
 not help on MovieLens*.
+
+### 10.2 RETRACTION — the first SASRec replication was mis-specified
+
+I reported that the ML-1M null "independently replicates" on an attention backbone. **That result
+was invalid and is withdrawn.**
+
+BEST-Rec applies its causal FIR to the **embeddings, before the transformer blocks**
+(`run_sasrec_sbert_efficiency_ml1m_v1_frozen.py` ~line 1036, immediately after `x = self.drop(x)`).
+My SASRec arm applied it to the **encoder output**, after all attention layers. Those test
+different things: BEST-Rec pre-processes attention's *input*; my version post-processed its
+*output*. "FIR ≈ 0 on an attention backbone" therefore measured a configuration BEST-Rec does not
+use.
+
+The 27 affected runs are archived under `output/postfir_archive/`, not deleted.
+
+**Process failure, recorded:** I characterised the result before checking placement fidelity
+against the frozen source. This is the second time in the session I announced a finding ahead of
+its verification (the first being the n=3 causal interaction, t=4.29, 3/3 seeds, which reversed to
+t=1.44, 3/5 at n=5). Both were caught, but both were avoidable by checking first.
+
+**Corrected implementation, verified before relaunch:**
+
+| check | result |
+|---|---|
+| FIR placement | on embeddings, pre-encoder — matches frozen source |
+| `fir_conv` weight after construction | `max|w| = 0.0` (`init_weights` touches only Linear/Embedding/LayerNorm/GRU, never Conv1d) |
+| zero-init no-op, same model, FIR-active vs bypassed | **max abs diff = 0.0 — exact** |
+| parameter counts | `learned` 1,024 = 64x16, `shared` 16 — match `FIRCTRL` exactly |
+
+30 corrected runs in flight (ML-1M + Beauty x off/learned/shared x 5 seeds).
+
+**The backbone-vs-split question is therefore OPEN again.** Nothing about the cause of the ML-1M
+null should be inferred from the retracted runs.

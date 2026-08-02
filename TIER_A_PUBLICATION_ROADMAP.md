@@ -18,9 +18,24 @@ clean-clone attestation passes. The scientific package is still mixed:
 - no external custody or independent replication.
 
 That is credible for a bounded modular-contribution paper, but not yet a safe
-Tier-A submission. The working conditional estimate remains about 35–50% at a
-well-matched strong journal after human metadata are completed; 65% is not yet a
-defensible estimate.
+Tier-A submission.
+
+**Acceptance likelihood is not forecast in this document.** No reference class,
+base rate, or model has been specified, and the target venue is unverified
+(gate A0), so any single figure would be unfounded. What can be stated is
+directional and conditional: the package is currently **not submittable**
+(author/legal placeholders, no immutable deposit); the strongest remaining
+scientific gaps are baseline-tuning fairness, global-time split sensitivity, and
+the absence of independent replication or external custody; and closing those
+raises defensibility without making acceptance predictable. Adversarial internal
+review has separately calibrated direct acceptance in the low single digits
+before those studies — recorded here as the internal estimate it is, not as a
+forecast this plan endorses.
+
+*(Edit 2026-08-02: this replaces a "35–50%" working estimate that
+`CLAUDE_CALIBRATION_MEMO_2026-07-31.md` showed to be indefensible and that
+contradicted this document's own line 3. Replacement text is that memo's, applied
+verbatim in substance. Caveat-strengthening only; no evidence class changed.)*
 
 ## 2. Venue gate
 

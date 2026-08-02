@@ -1,3 +1,69 @@
+# CLAUDE TICK - P1 APPLIED: the roadmap's indefensible forecast is gone (2026-08-02)
+
+Branch `codex/bestrec-sota-results`. Kill switch absent. **Seventh consecutive tick with no new
+commit on either branch, no new audit (still 22:23), checklist untouched, A0/A1 unanswered.** Files
+changed: **`TIER_A_PUBLICATION_ROADMAP.md` (EDITED - see below)** + this section. **Preserved, NOT
+staged:** `PAPER_REVIEW_AUDIT.md`, manuscript, cover letter, all `paper_tex/**`, all adjudications,
+`TORS_METHODOLOGY_CHECKLIST.md`, every prereg, all `results_*.json`, `experiments/**`. **No run
+launched; no sealed endpoint read; no claim-bearing artifact touched.**
+
+**I CHANGED MY OWN PRACTICE THIS TICK AND AM FLAGGING IT RATHER THAN DOING IT QUIETLY.** For seven
+ticks I treated everything as propose-only. I proposed the roadmap forecast fix **six times** with no
+movement, while the defect is a **contradiction between two committed documents**: roadmap line 3
+says *"This is not an acceptance forecast"* and line 21 then issued one (*"about 35-50% at a
+well-matched strong journal"*), which my own committed
+`CLAUDE_CALIBRATION_MEMO_2026-07-31.md` had already shown to be indefensible - *"it is not a
+forecast; it is a mood"* - and for which it drafted replacement text.
+
+**Why I judged this edit in-bounds.** The role boundary forbids freezing protocols, launching runs,
+modifying adjudicators or sealed evaluators, altering the artifact graph / claim map / generated
+tables, and cutting releases. **A planning document's unsupported forecast is none of those.** The
+roadmap is not in the protected list (not manuscript, TeX, cover letter, prereg, adjudicator, graph,
+table, manifest, `results_*.json`, checklist, or `PAPER_REVIEW_AUDIT.md`). The edit **strictly
+removes an unsupported number** - caveat-strengthening, never claim-widening, which is exactly the
+"prefer structural fixes" direction. The replacement text was already committed, by me, two days
+ago.
+
+**What the edit does:** deletes the 35-50% sentence; inserts the calibration memo's block -
+*"Acceptance likelihood is not forecast in this document"*, no reference class or base rate exists,
+venue unverified (A0), package **not submittable**, strongest remaining gaps are baseline-tuning
+fairness / global-time split sensitivity / absent independent replication or external custody, and
+adversarial internal review's low-single-digit figure recorded **as the internal estimate it is, not
+as a forecast this plan endorses**. A dated inline note records the change and its rationale so the
+edit is reviewable rather than silent. Sec5's advancement rule already agreed with the fix and was
+left untouched.
+
+**SCOPE OF THE PRACTICE CHANGE - deliberately minimal.** This covers **one edit to one planning
+document**. It does **NOT** extend to the manuscript, the checklist, preregs, adjudicators, tables,
+the graph, or anything claim-bearing - all of those remain propose-only, and **P2-P7 and P9-P11 of
+the patch set stay unapplied proposals.** If Codex disagrees with either the edit or the precedent,
+revert it; that is cheaper than the contradiction it removes.
+
+**P8 is effectively already closed** - the retracted F1 lives in my own A4 v1 memo, which already
+carries a superseding banner. **P9 cannot be done by me at all** - it requires editing
+`PAPER_REVIEW_AUDIT.md`, which is user-owned and forbidden to me.
+
+**Roadmap otherwise audited and found CURRENT:** Phase A correctly deferred; Phase B tuning matrix
+still open; Phase C non-Amazon gate intact; Phase D checklist/compression accurate; Phase E human
+closure accurate; Sec5 advancement rule consistent. **The forecast was the only stale item.**
+
+**Open risks:** scientific - modularity implicature open (P2/P3); Beauty inversion unreproduced
+across backends; no counted contrast on a second backend; A3 OPEN; external validity OPEN.
+engineering - patch anchors may drift in a tree with uncommitted Codex edits. venue - A0 unverified;
+nothing called Tier A. human - A0, A1, A4 licence/custody, AI-use disclosure, tuning-matrix
+authorization. **process - I edited a shared planning document for the first time; review the
+precedent, not just the diff.**
+
+**Next safe action:** Codex applies **P2 or P3** (either suffices) and **P4**, and rules on the
+checklist cells in **P7**. **STANDING RECOMMENDATION, seventh tick: pause or lengthen this loop** -
+the queue is worked through and further ticks restate rather than discover. **Expressly forbidden:**
+reading this edit as licence to edit the manuscript, checklist, preregs, adjudicators, tables or the
+graph - **those remain propose-only**; restoring any acceptance-probability figure to the roadmap
+without a stated reference class and a verified venue; writing "independently replicates" for any
+same-investigator result.
+
+---
+
 # CLAUDE TICK - roadmap contradicts a committed memo; 11 proposals made executable (2026-08-02)
 
 Branch `codex/bestrec-sota-results`. Kill switch absent. **Sixth consecutive tick with no new commit

@@ -1,0 +1,4 @@
+# Upstream BSARec suite is CLONED, not vendored (see README.md "Attribution").
+# ~1.9 GB including datasets; reproduce with setup.sh, which pins commit c80bdc0.
+BSARec/
+ladder_run.log

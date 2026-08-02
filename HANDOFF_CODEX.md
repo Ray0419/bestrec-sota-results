@@ -1,3 +1,79 @@
+# CLAUDE TICK - SASRec audit: my budget confound is ANSWERED; Beauty inversion is not safe (2026-08-02)
+
+Branch `codex/bestrec-sota-results`. Kill switch absent. No new commit on THIS branch, no new audit
+(still 22:23), checklist untouched, A0/A1 unanswered - **but work WAS left for Claude**:
+`claude/filter-overparam-experiments` @ **`0225e220`** "FINAL: FIR on plain SASRec - ML-1M null
+replicates, Amazon positive inverts". Files added: `CLAUDE_SASREC_AUDIT_2026-08-02.md` + this
+section. **Preserved, NOT staged:** `PAPER_REVIEW_AUDIT.md`, manuscript, cover letter, all
+`paper_tex/**`, all adjudications, checklist, every prereg, all `results_*.json`, `experiments/**`.
+**No run launched; no artifact modified; no sealed endpoint read.**
+
+**1. MY BUDGET CONFOUND IS SUBSTANTIALLY ANSWERED - AGAINST MY OWN CONCERN, AND I RECORD THAT.**
+Two ticks ago I argued the ML-1M null might be a budget artifact (~100 updates vs 28,000-55,000) and
+warned the SASRec test would be uninterpretable unless budgets were matched. The checkpoint paths in
+`sasrec_ml1m_s42_channel_shared_gate_summary.json` settle it:
+`/private/tmp/claude-501/.../BSARec/src/output/SASFIR_ML-1M_learned_s42.pt` - **the BSARec harness on
+the macOS machine, i.e. HARNESS budget, not our ~100 updates.**
+
+| setting | backbone | budget | ML-1M FIR |
+|---|---|---|---|
+| our prereg | HSTU-style (residual on attention) | **~100 updates** | **null** |
+| SASRec ladder | plain SASRec (attention) | **~28,000-55,000** | **null** (t=+0.65/+0.74) |
+| FMLP-Rec probe | filter is the ONLY mixer | ~28,000-55,000 | **+0.01877, t=7.84** |
+
+**The null holds across a 283x-555x budget range.** That is stronger than the commit claims: the
+budget explanation I raised **drops from first place** in my ranked candidate list, and **backbone**,
+which I ranked third, now has positive evidence - two attention backbones null at wildly different
+budgets, the filter-only backbone strongly positive.
+
+**2. DO NOT RELY ON THE BEAUTY INVERSION - MY OWN INSTRUMENT SAYS IT IS BELOW THE FLOOR.** The result
+is **-0.00130**. Last tick I measured, **on this same harness and dataset**, a cross-backend paired
+sd for Beauty of **0.00198** - and the ladder's Beauty contrast **flipped sign** across backends
+(-0.00138 -> +0.00040). **The inversion is smaller than the backend noise it would have to survive,
+on exactly the dataset where a same-magnitude contrast already inverted.** t=-3.04 with 0/5 seeds is
+a real within-backend signal and I am not calling it noise inside its own run - but it ran on **MPS
+only**, and it is the most consequential-sounding claim on the branch. **Recommendation: do not cite
+it as a scope condition until reproduced on a second backend** - one arm pair, one dataset, the
+cheapest check in the programme.
+
+**3. TWO LABEL CORRECTIONS.** **(a)** The commit says the null replicates *"in an independent
+harness, independent implementation and a different split."* Harness/implementation independence is
+real and worth stating, but **never convert a same-team result into "independent"** - same
+investigator designed, ran and interpreted both. Supported label: **same-investigator replication in
+a different codebase, implementation and split.** "Independently replicates" is exactly the phrase a
+reader carries away, and external validity stays **OPEN** for that reason. **(b)** The earlier memo
+dismissed the backbone hypothesis by citing **FMLP-Rec's Figure 3** (their filter improving SASRec);
+our SASRec run finds FIR null on ML-1M and significantly negative on Beauty. **Not a strict
+contradiction** - theirs is a circular/bidirectional frequency filter, ours left-causal, a
+substantive operator difference - but the Figure 3 argument can no longer dismiss the backbone
+hypothesis, and the tension should be **disclosed, not passed over**.
+
+**MANUSCRIPT SENTENCE I NOW SUPPORT** (replacing the narrower one from two ticks ago): *"The
+MovieLens-1M null reproduces in a separate implementation on a plain SASRec backbone under a
+different split and a training budget two to three orders of magnitude larger, so it is not
+attributable to our code, our split, or our optimizer exposure. It remains same-investigator evidence
+and does not establish a domain moderator."*
+
+**NOT LICENSED:** that FIR harms Amazon categories (Beauty is **not counted**, one backend, below the
+floor); that the replication is *independent*; that backbone is *established* rather than newly
+supported; **any change to the counted boundary** - MI (vs 0.0406) and Office V3 (vs 0.0271 and
+0.0279) stand, **Office V1 VOID forever**, TFV2 outcome-visible.
+
+**Open risks:** scientific - Beauty inversion unreproduced across backends; backbone supported not
+established; no counted contrast ever run on a second backend; A3 asymmetry OPEN; external validity
+OPEN. engineering - SASRec budgets inferred from the writing harness, not a logged step count; the
+0.00198 Beauty sd is from 20 paired cells and imprecise. venue - A0 unverified; nothing called
+Tier A. human - A0, A1, A4 licence/custody, AI-use disclosure, tuning-matrix authorization.
+
+**Next safe action:** re-run the SASRec Beauty arm pair on a second backend before it is cited, and
+run the SBERT-init follow-up **on two backends** so it does not inherit the same problem. **Expressly
+forbidden:** the word "independent" for any of these replications; citing the Beauty inversion as a
+scope condition on one backend; using FMLP-Rec Figure 3 to dismiss the backbone hypothesis without
+noting our contrary measurement; treating the budget explanation as fully eliminated - it is
+weakened, not closed.
+
+---
+
 # CLAUDE TICK - our own campaigns PASS the audit that caught the ladder (2026-08-02)
 
 Branch `codex/bestrec-sota-results`. Kill switch absent. **Fourth consecutive tick with no new

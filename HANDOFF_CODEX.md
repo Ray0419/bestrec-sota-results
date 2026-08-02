@@ -1,3 +1,75 @@
+# CLAUDE TICK - the ladder's reproduction gap is EXPLAINED: wrong learning rate (2026-08-02)
+
+Branch `codex/bestrec-sota-results`. Kill switch absent. No new commit on either branch since my
+`fd5e0cb8` / `df0851f0`; no new audit (still 22:23); checklist untouched; A0/A1 unanswered. Queue
+Sec9 a-f remains worked through, so this tick closes the one threat I had flagged **three times and
+never adjudicated**. Files added: `CLAUDE_LADDER_REPRODUCTION_GAP_EXPLAINED_2026-08-02.md` + this
+section. **Preserved, NOT staged:** `PAPER_REVIEW_AUDIT.md`, manuscript, cover letter, all
+`paper_tex/**`, all adjudications, checklist, every prereg, all `results_*.json`, and
+`experiments/**` (other branch). **No run launched; no artifact modified; no sealed endpoint read.**
+
+**THE CAUSE, read from configs rather than inferred:**
+
+| source | learning rate |
+|---|---|
+| BSARec parser default (`src/utils.py:66`) | **0.001** |
+| BSARec README's own Beauty example (line 63) | **0.0005** |
+| Shipped `BSARec_Beauty_best.log` (the suite's own validated run) | **0.0005** |
+| **Our 80 ladder runs** (`run_all.sh` passes no `--lr`) | **0.001** |
+
+`run_all.sh` never passes `--lr`, so **every run silently took the parser default - double the
+learning rate the suite documents for Beauty.** The suite treats LR as a per-dataset TUNED quantity:
+it is the FIRST argument in the README's run template, ahead of alpha, c and num_attention_heads.
+Everything else matches the shipped reference exactly (item_size 12102, num_users 22364,
+max_seq_length 50, hidden 64, 2 layers, dropout 0.5, batch 256, epochs 200, patience 10); the
+`num_attention_heads` difference is inert for FMLP-Rec, which has no attention. **A ~10.5% shortfall
+from 2x the documented LR is entirely ordinary. The anchor did not fail mysteriously - it failed for
+a knowable, fixable reason.**
+
+**WHAT THIS DOES NOT INVALIDATE.** All four arms shared the LR, seeds and data, and every comparison
+is within-dataset paired by seed, so **the internal contrasts stand** - the ML-1M refutation
+(-0.0084/-0.0125, t~-6.1, 0/5 seeds on each of two backends) is unaffected in internal validity.
+Nothing reopens the frozen ML-1M adjudication. **Counted claim boundary unchanged** (MI vs 0.0406;
+Office V3 vs 0.0271 and 0.0279; **Office V1 VOID forever**; TFV2 outcome-visible).
+
+**WHAT IT DOES CHANGE - scope.** Not *"FMLP-Rec's filter is over-parameterised"* but *"**at the
+suite's default LR of 0.001, not the 0.0005 it documents for Beauty**, a 64x channel-tied reduction
+fails decisively on ML-1M, and trained filters are low-rank across four benchmarks."* State it
+rather than let a reviewer find it by opening the harness README.
+
+**THE SHARPER PROBLEM - and it is mine.** A single LR was applied to arms differing **64x in
+parameter count**. Optimal LR routinely varies with parameterisation, so the ladder cannot separate
+*"channel-tying loses capacity"* from *"channel-tying wants a different LR."* **That is exactly the
+tuning-fairness objection I raised against the manuscript's external comparators in
+`CLAUDE_A3_TUNING_FAIRNESS_AUDIT_2026-08-01.md`** - one configuration applied to models it was
+chosen for neither of - **now recurring INSIDE an experiment about parameterisation fairness. I did
+not catch it at design time and should have; it is the same failure mode I had already written up.**
+It does not overturn ML-1M (a 44-59% loss is large to attribute wholly to LR mismatch) but it is a
+live alternative the design cannot exclude.
+
+**RECOMMENDATIONS (Codex-owned; I launched nothing):** (1) re-run at the documented LR, at minimum
+`full` and `shared` on **ML-1M** where the load-bearing result lives - if the refutation survives a
+correctly-tuned LR it becomes far more robust; (2) ideally sweep LR **per arm** on one dataset, the
+fair version - if too expensive, state the limitation rather than omit it; (3) **give the
+reproduction anchor a numeric tolerance** before any further campaign, as I recommended at 0/80 -
+this is what its absence costs; (4) amend `run_all.sh`/README to pass `--lr` explicitly so the
+operating point is recorded in the command, not inherited from a parser default.
+
+**Open risks:** scientific - every ladder claim is scoped to lr=0.001; single-LR-across-64x-arms is
+an unexcluded alternative explanation; ML-1M null still has 3 live candidate explanations and 0
+eliminated; A3 tuning asymmetry OPEN; external validity OPEN. engineering - the lr=0.0005 fix is a
+hypothesis with a named mechanism, NOT a measurement; the published 0.0618 comes from a third-party
+baseline table (DWTRec), not an FMLP-Rec log shipped with this suite, so a residual protocol
+difference cannot be excluded. venue - A0 unverified; nothing called Tier A. human - A0, A1, A4
+licence/custody, AI-use disclosure, tuning-matrix authorization.
+
+**Next safe action:** Codex re-runs `full`/`shared` on ML-1M at lr=0.0005 and amends the runner to
+pass `--lr` explicitly. **Expressly forbidden:** stating any ladder result without its learning
+rate; claiming lr=0.0005 closes the 10.5% gap - that is untested; treating the LR finding as
+overturning the ML-1M refutation - it does not; calling the two ladder runs independent replication.
+
+---
+
 # CLAUDE TICK - only ML-1M survives a backend swap; a measured reproducibility floor (2026-08-02)
 
 Branch `codex/bestrec-sota-results`. Kill switch absent. No new commit on this branch; no new audit

@@ -1,0 +1,9 @@
+group,label,estimate,ci_low,ci_high,source_file,source_key,evidence_scope
+Outcome-known internal Amazon,MI: learned - identity,0.002264809282,0.001927556598,0.002602061965,fir_v3_adjudication.json,contrasts/A1-A0 (PRIMARY),outcome-known internal; Welch interval
+Outcome-known internal Amazon,Industrial: learned - identity,0.002109953205,0.001820460341,0.002399446069,fir_canonical_breadth_adjudication.json,per_category/Industrial_and_Scientific,outcome-known internal; paired-t interval
+Outcome-known internal Amazon,CDs: learned - identity,0.006149939577,0.005849427095,0.006450452059,fir_canonical_breadth_adjudication.json,per_category/CDs_and_Vinyl,outcome-known internal; paired-t interval
+Outcome-known internal Amazon,Software: learned - identity,0.005061858156,0.004590527204,0.005533189108,fir_prospective_sw_v3_adjudication.json,primary_contrast,outcome-known same-team robustness; paired-t interval
+Matched MI control boundaries,Learned - pointwise FIR,0.001941448413,0.001788010989,0.002094885836,fir_pointwise_v1_adjudication.json,contrasts/learned-pointwise,outcome-known internal; paired-t interval
+Matched MI control boundaries,Learned - shared filter,-0.000081417372,-0.000337479702,0.000174644957,fir_controls_adjudication.json,family_b/learned-shared,outcome-known internal; paired-t interval
+Prospectively frozen MovieLens transfer,Learned - identity,0.000000202482,-0.000074172541,0.000074577505,fir_efficiency_ml1m_v1_adjudication.json,replication/learned-identity,prospectively frozen same-investigator; paired-t interval
+Prospectively frozen MovieLens transfer,Learned - pointwise FIR,0.000035070448,-0.000057071687,0.000127212583,fir_efficiency_ml1m_v1_adjudication.json,replication/learned-pointwise,prospectively frozen same-investigator; paired-t interval

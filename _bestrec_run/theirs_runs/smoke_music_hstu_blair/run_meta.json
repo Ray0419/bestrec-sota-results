@@ -1,0 +1,38 @@
+{
+  "run_name": "smoke_music_hstu_blair",
+  "gin_file": "C:\\Users\\rayxc\\Documents\\R\\external\\HSTU-BLaIR\\configs\\amzn23_music\\hstu-sampled-softmax-n512-blair.gin",
+  "gin_sha256": "07ed8a4f293edaa6e645334310efdd722554e7101991a68b89c7edd4050d1fce",
+  "extra_bindings": [
+    "train_fn.num_epochs = 1",
+    "create_data_loader.num_workers = 0",
+    "create_data_loader.prefetch_factor = None"
+  ],
+  "master_port": 12402,
+  "shims": "pure-PyTorch fbgemm shims installed (3 ops) + selftest passed",
+  "their_commit": "40a27879ec22648657b5abc77915a7cc88c66cfd",
+  "our_commit": "b536dcacbd1159c254241d10a5edb1da6ac67193",
+  "torch": "2.11.0+cu128",
+  "cuda": "12.8",
+  "device": "NVIDIA GeForce RTX 5060 Ti",
+  "python": "3.12.13 (main, Apr  7 2026, 20:53:22) [MSC v.1944 64 bit (AMD64)]",
+  "monkeypatches": [
+    "train.setup: nccl->gloo",
+    "train.add_to_summary_writer: tee to metrics.jsonl",
+    "train.DDP: single-process passthrough (Windows gloo+CUDA DDP segfaults; identity at world_size=1)"
+  ],
+  "argv": [
+    "_bestrec_run/theirs_train.py",
+    "--gin",
+    "external/HSTU-BLaIR/configs/amzn23_music/hstu-sampled-softmax-n512-blair.gin",
+    "--run-name",
+    "smoke_music_hstu_blair",
+    "--binding",
+    "train_fn.num_epochs = 1",
+    "--workers0",
+    "--port",
+    "12402"
+  ],
+  "started_utc": "2026-07-10T23:07:49Z",
+  "elapsed_sec": 72.5,
+  "finished_utc": "2026-07-10T23:09:01Z"
+}

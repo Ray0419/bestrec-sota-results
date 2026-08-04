@@ -1,0 +1,314 @@
+{
+ "generated_by": "_bestrec_run/emit_latex_tables.py",
+ "sources": {
+  "md": "PAPER_SUBMISSION.md",
+  "json": "_bestrec_run/hstu_tables.json",
+  "manifest": "_bestrec_run/hstu_results_manifest.json"
+ },
+ "tables": [
+  {
+   "key": "table_attribution",
+   "out": "table_attribution.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    63,
+    72
+   ],
+   "family": "md-only (pandoc-converted; no JSON family)",
+   "crosscheck": {
+    "table": "table_attribution",
+    "checked": 0,
+    "note": "md-only table; no JSON family"
+   }
+  },
+  {
+   "key": "table0_novelty",
+   "out": "table0_novelty.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    94,
+    103
+   ],
+   "family": "build_table0_claim_ledger.py:hstu_results_manifest.json",
+   "crosscheck": {
+    "table": "table0_novelty",
+    "checked": 21,
+    "note": "generated-region gate passed; quantitative FIR fields were formatted from active OK artifact-graph cells; literature attribution remains authored citation prose"
+   }
+  },
+  {
+   "key": "table_datasets41",
+   "out": "table_datasets41.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    215,
+    223
+   ],
+   "family": "md-only (pandoc-converted; no JSON family)",
+   "crosscheck": {
+    "table": "table_datasets41",
+    "checked": 0,
+    "note": "md-only table; no JSON family"
+   }
+  },
+  {
+   "key": "table_comparator_matrix",
+   "out": "table_comparator_matrix.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    246,
+    254
+   ],
+   "family": "md-only (pandoc-converted; no JSON family)",
+   "crosscheck": {
+    "table": "table_comparator_matrix",
+    "checked": 0,
+    "note": "md-only table; no JSON family"
+   }
+  },
+  {
+   "key": "table1",
+   "out": "table1.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    283,
+    291
+   ],
+   "family": "hstu_tables.json/manifest:table1",
+   "crosscheck": {
+    "table": "table1",
+    "checked": 19,
+    "exact": 18,
+    "within_1ulp": 1,
+    "allowlisted": 0,
+    "fail": []
+   }
+  },
+  {
+   "key": "table1a",
+   "out": "table1a.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    299,
+    301
+   ],
+   "family": "hstu_tables.json/manifest:table1a",
+   "crosscheck": {
+    "table": "table1a",
+    "checked": 2,
+    "exact": 2,
+    "within_1ulp": 0,
+    "allowlisted": 0,
+    "fail": []
+   }
+  },
+  {
+   "key": "table1b",
+   "out": "table1b.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    309,
+    319
+   ],
+   "family": "hstu_tables.json/manifest:table1b,table1,wearec_v1,ee_v3,ee_v4",
+   "crosscheck": {
+    "table": "table1b",
+    "checked": 46,
+    "exact": 8,
+    "within_1ulp": 34,
+    "allowlisted": 4,
+    "fail": []
+   }
+  },
+  {
+   "key": "table_older_baselines",
+   "out": "table_older_baselines.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    333,
+    340
+   ],
+   "family": "md-only (pandoc-converted; no JSON family)",
+   "crosscheck": {
+    "table": "table_older_baselines",
+    "checked": 0,
+    "note": "md-only table; no JSON family"
+   }
+  },
+  {
+   "key": "table1c",
+   "out": "table1c.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    354,
+    359
+   ],
+   "family": "hstu_tables.json/manifest:table1c",
+   "crosscheck": {
+    "table": "table1c",
+    "checked": 9,
+    "exact": 7,
+    "within_1ulp": 2,
+    "allowlisted": 0,
+    "fail": []
+   }
+  },
+  {
+   "key": "table_ml1m_efficiency",
+   "out": "table_ml1m_efficiency.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    393,
+    400
+   ],
+   "family": "hstu_tables.json/manifest:fir_efficiency_ml1m_v1",
+   "crosscheck": {
+    "table": "table_ml1m_efficiency",
+    "checked": 14,
+    "exact": 14,
+    "within_1ulp": 0,
+    "allowlisted": 0,
+    "fail": []
+   }
+  },
+  {
+   "key": "table1d",
+   "out": "table1d.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    429,
+    433
+   ],
+   "family": "hstu_tables.json/manifest:table1d",
+   "crosscheck": {
+    "table": "table1d",
+    "checked": 8,
+    "exact": 7,
+    "within_1ulp": 1,
+    "allowlisted": 0,
+    "fail": []
+   }
+  },
+  {
+   "key": "table541",
+   "out": "table541.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    460,
+    464
+   ],
+   "family": "hstu_tables.json/manifest:table541",
+   "crosscheck": {
+    "table": "table541",
+    "checked": 15,
+    "exact": 12,
+    "within_1ulp": 0,
+    "allowlisted": 3,
+    "fail": []
+   }
+  },
+  {
+   "key": "table542",
+   "out": "table542.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    476,
+    481
+   ],
+   "family": "hstu_tables.json/manifest:table542",
+   "crosscheck": {
+    "table": "table542",
+    "checked": 15,
+    "exact": 15,
+    "within_1ulp": 0,
+    "allowlisted": 0,
+    "fail": []
+   }
+  },
+  {
+   "key": "table56_theirs",
+   "out": "table56_theirs.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    513,
+    519
+   ],
+   "family": "hstu_results_manifest.json:theirs_on_ours(+published constants)",
+   "crosscheck": {
+    "table": "table56_theirs",
+    "checked": 15,
+    "exact": 15,
+    "within_1ulp": 0,
+    "allowlisted": 0,
+    "fail": []
+   }
+  },
+  {
+   "key": "tableA1",
+   "out": "tableA1.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    836,
+    859
+   ],
+   "family": "md-only (pandoc-converted; no JSON family)",
+   "crosscheck": {
+    "table": "tableA1",
+    "checked": 0,
+    "note": "md-only table; no JSON family"
+   }
+  },
+  {
+   "key": "table2",
+   "out": "table2.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    911,
+    932
+   ],
+   "family": "hstu_tables.json/manifest:table2",
+   "crosscheck": {
+    "table": "table2",
+    "checked": 33,
+    "exact": 17,
+    "within_1ulp": 13,
+    "allowlisted": 3,
+    "fail": []
+   }
+  },
+  {
+   "key": "table1e",
+   "out": "table1e.tex",
+   "source": "PAPER_SUBMISSION.md",
+   "md_lines": [
+    940,
+    947
+   ],
+   "family": "hstu_tables.json/manifest:table1e",
+   "crosscheck": {
+    "table": "table1e",
+    "checked": 54,
+    "exact": 54,
+    "within_1ulp": 0,
+    "allowlisted": 0,
+    "fail": []
+   }
+  },
+  {
+   "key": "tableV2conf",
+   "out": "tableV2conf.tex",
+   "source": "hstu_tables.json:tableV2conf",
+   "crosscheck": {
+    "note": "emitted directly from strict-build JSON"
+   }
+  },
+  {
+   "key": "office_confirmation",
+   "out": "office_confirmation.tex",
+   "source": "hstu_tables.json:office_confirmation",
+   "crosscheck": {
+    "note": "emitted directly from strict-build JSON"
+   }
+  }
+ ]
+}

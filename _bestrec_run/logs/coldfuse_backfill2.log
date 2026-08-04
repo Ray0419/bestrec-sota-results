@@ -1,0 +1,91 @@
+PREFLIGHT OK (MI): 38 flags
+PREFLIGHT OK (IS): 60 flags
+PREFLIGHT OK (VG): 37 flags
+PREFLIGHT OK (OFFICE): 60 flags
+PREFLIGHT OK (CDS): 60 flags
+no prior campaign running -> starting
+[skip existing] results_MI_COLDFUSE_base_seed20260736.json
+[skip existing] results_MI_COLDFUSE_base_seed20260736.fusion.json
+[skip existing] results_Musical_Instruments_COLDFUSE_confirm_seed20260736.json
+[skip existing] results_MI_COLDFUSE_base_seed20260737.json
+[skip existing] results_MI_COLDFUSE_base_seed20260737.fusion.json
+[skip existing] results_Musical_Instruments_COLDFUSE_confirm_seed20260737.json
+[skip existing] results_MI_COLDFUSE_base_seed20260738.json
+[skip existing] results_MI_COLDFUSE_base_seed20260738.fusion.json
+[skip existing] results_Musical_Instruments_COLDFUSE_confirm_seed20260738.json
+[skip existing] results_MI_COLDFUSE_base_seed20260739.json
+[skip existing] results_MI_COLDFUSE_base_seed20260739.fusion.json
+[skip existing] results_Musical_Instruments_COLDFUSE_confirm_seed20260739.json
+[skip existing] results_MI_COLDFUSE_base_seed20260740.json
+[skip existing] results_MI_COLDFUSE_base_seed20260740.fusion.json
+[skip existing] results_Musical_Instruments_COLDFUSE_confirm_seed20260740.json
+[skip existing] results_IS_COLDFUSE_base_seed20260736.json
+[skip existing] results_IS_COLDFUSE_base_seed20260736.fusion.json
+[skip existing] results_Industrial_and_Scientific_COLDFUSE_confirm_seed20260736.json
+[skip existing] results_IS_COLDFUSE_base_seed20260737.json
+[skip existing] results_IS_COLDFUSE_base_seed20260737.fusion.json
+[skip existing] results_Industrial_and_Scientific_COLDFUSE_confirm_seed20260737.json
+[skip existing] results_IS_COLDFUSE_base_seed20260738.json
+[skip existing] results_IS_COLDFUSE_base_seed20260738.fusion.json
+[skip existing] results_Industrial_and_Scientific_COLDFUSE_confirm_seed20260738.json
+[skip existing] results_IS_COLDFUSE_base_seed20260739.json
+[skip existing] results_IS_COLDFUSE_base_seed20260739.fusion.json
+[skip existing] results_Industrial_and_Scientific_COLDFUSE_confirm_seed20260739.json
+[skip existing] results_IS_COLDFUSE_base_seed20260740.json
+[skip existing] results_IS_COLDFUSE_base_seed20260740.fusion.json
+[skip existing] results_Industrial_and_Scientific_COLDFUSE_confirm_seed20260740.json
+[skip existing] results_VG_COLDFUSE_base_seed20260736.json
+[skip existing] results_VG_COLDFUSE_base_seed20260736.fusion.json
+[skip existing] results_Video_Games_COLDFUSE_confirm_seed20260736.json
+[skip existing] results_VG_COLDFUSE_base_seed20260737.json
+[skip existing] results_VG_COLDFUSE_base_seed20260737.fusion.json
+[skip existing] results_Video_Games_COLDFUSE_confirm_seed20260737.json
+[skip existing] results_VG_COLDFUSE_base_seed20260738.json
+[skip existing] results_VG_COLDFUSE_base_seed20260738.fusion.json
+[skip existing] results_Video_Games_COLDFUSE_confirm_seed20260738.json
+[skip existing] results_VG_COLDFUSE_base_seed20260739.json
+[skip existing] results_VG_COLDFUSE_base_seed20260739.fusion.json
+[skip existing] results_Video_Games_COLDFUSE_confirm_seed20260739.json
+[skip existing] results_VG_COLDFUSE_base_seed20260740.json
+[skip existing] results_VG_COLDFUSE_base_seed20260740.fusion.json
+[skip existing] results_Video_Games_COLDFUSE_confirm_seed20260740.json
+[run] results_OFFICE_COLDFUSE_base_seed20260736.json
+  random seed set to 20260736
+=== Office_Products: load splits ===
+  n_users=223,308  n_items=77,551  pad_id=77551
+  built sequences for 223,308 users
+  built timestamp sequences (12 time buckets)
+  loading SBERT embeddings from C:\Users\rayxc\Documents\R\cache_5core\sbert_titles_Office_Products.npy...
+Traceback (most recent call last):
+  File "C:\Users\rayxc\Documents\R\_bestrec_run\run_sasrec_sbert.py", line 3030, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "C:\Users\rayxc\Documents\R\_bestrec_run\run_sasrec_sbert.py", line 2274, in main
+    x = torch.from_numpy(sbert_emb).to(DEVICE)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: out of memory
+Search for `cudaErrorMemoryAllocation' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+RUN FAILED (exit 1): results_OFFICE_COLDFUSE_base_seed20260736.json
+[skip existing] results_OFFICE_COLDFUSE_base_seed20260737.json
+[skip existing] results_Office_Products_COLDFUSE_confirm_seed20260737.json
+[skip existing] results_OFFICE_COLDFUSE_base_seed20260738.json
+[skip existing] results_Office_Products_COLDFUSE_confirm_seed20260738.json
+[skip existing] results_OFFICE_COLDFUSE_base_seed20260739.json
+[skip existing] results_Office_Products_COLDFUSE_confirm_seed20260739.json
+[skip existing] results_OFFICE_COLDFUSE_base_seed20260740.json
+[skip existing] results_Office_Products_COLDFUSE_confirm_seed20260740.json
+[skip existing] results_CDS_COLDFUSE_base_seed20260736.json
+[skip existing] results_CDs_and_Vinyl_COLDFUSE_confirm_seed20260736.json
+[skip existing] results_CDS_COLDFUSE_base_seed20260737.json
+[skip existing] results_CDs_and_Vinyl_COLDFUSE_confirm_seed20260737.json
+[skip existing] results_CDS_COLDFUSE_base_seed20260738.json
+[skip existing] results_CDs_and_Vinyl_COLDFUSE_confirm_seed20260738.json
+[skip existing] results_CDS_COLDFUSE_base_seed20260739.json
+[skip existing] results_CDs_and_Vinyl_COLDFUSE_confirm_seed20260739.json
+[skip existing] results_CDS_COLDFUSE_base_seed20260740.json
+[skip existing] results_CDs_and_Vinyl_COLDFUSE_confirm_seed20260740.json
+COLDFUSE CONFIRM DONE: 0 ran, 63 skipped, 1 failed, 1.9 min

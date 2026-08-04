@@ -1,0 +1,314 @@
+W0711 09:26:18.198000 21132 .venv\Lib\site-packages\torch\utils\flop_counter.py:29] triton not found; flop counting will not work for triton kernels
+[theirs_train] shims: pure-PyTorch fbgemm shims installed (3 ops) + selftest passed
+[theirs_train] gin: C:\Users\rayxc\Documents\R\external\HSTU-BLaIR\configs\amzn23_office\sasrec-sampled-softmax-n512-final.gin
+[theirs_train] bindings: ['create_data_loader.num_workers = 0', 'create_data_loader.prefetch_factor = None']
+INFO:root:cuda.matmul.allow_tf32: True
+INFO:root:cudnn.allow_tf32: True
+INFO:root:Training model on rank 0.
+Initialize _item_emb.weight as truncated normal: torch.Size([77552, 64]) params
+Skipping initialization for _embedding_module._item_emb.weight
+Skipping initialization for _input_features_preproc._pos_emb.weight
+Initialize attention_layers.0.in_proj_weight as xavier normal: torch.Size([192, 64]) params
+Failed to initialize attention_layers.0.in_proj_bias: torch.Size([192]) params
+Initialize attention_layers.0.out_proj.weight as xavier normal: torch.Size([64, 64]) params
+Failed to initialize attention_layers.0.out_proj.bias: torch.Size([64]) params
+Initialize attention_layers.1.in_proj_weight as xavier normal: torch.Size([192, 64]) params
+Failed to initialize attention_layers.1.in_proj_bias: torch.Size([192]) params
+Initialize attention_layers.1.out_proj.weight as xavier normal: torch.Size([64, 64]) params
+Failed to initialize attention_layers.1.out_proj.bias: torch.Size([64]) params
+Initialize attention_layers.2.in_proj_weight as xavier normal: torch.Size([192, 64]) params
+Failed to initialize attention_layers.2.in_proj_bias: torch.Size([192]) params
+Initialize attention_layers.2.out_proj.weight as xavier normal: torch.Size([64, 64]) params
+Failed to initialize attention_layers.2.out_proj.bias: torch.Size([64]) params
+Initialize attention_layers.3.in_proj_weight as xavier normal: torch.Size([192, 64]) params
+Failed to initialize attention_layers.3.in_proj_bias: torch.Size([192]) params
+Initialize attention_layers.3.out_proj.weight as xavier normal: torch.Size([64, 64]) params
+Failed to initialize attention_layers.3.out_proj.bias: torch.Size([64]) params
+Initialize forward_layers.0._conv1d.0.weight as xavier normal: torch.Size([64, 64, 1]) params
+Failed to initialize forward_layers.0._conv1d.0.bias: torch.Size([64]) params
+Initialize forward_layers.0._conv1d.3.weight as xavier normal: torch.Size([64, 64, 1]) params
+Failed to initialize forward_layers.0._conv1d.3.bias: torch.Size([64]) params
+Initialize forward_layers.1._conv1d.0.weight as xavier normal: torch.Size([64, 64, 1]) params
+Failed to initialize forward_layers.1._conv1d.0.bias: torch.Size([64]) params
+Initialize forward_layers.1._conv1d.3.weight as xavier normal: torch.Size([64, 64, 1]) params
+Failed to initialize forward_layers.1._conv1d.3.bias: torch.Size([64]) params
+Initialize forward_layers.2._conv1d.0.weight as xavier normal: torch.Size([64, 64, 1]) params
+Failed to initialize forward_layers.2._conv1d.0.bias: torch.Size([64]) params
+Initialize forward_layers.2._conv1d.3.weight as xavier normal: torch.Size([64, 64, 1]) params
+Failed to initialize forward_layers.2._conv1d.3.bias: torch.Size([64]) params
+Initialize forward_layers.3._conv1d.0.weight as xavier normal: torch.Size([64, 64, 1]) params
+Failed to initialize forward_layers.3._conv1d.0.bias: torch.Size([64]) params
+Initialize forward_layers.3._conv1d.3.weight as xavier normal: torch.Size([64, 64, 1]) params
+Failed to initialize forward_layers.3._conv1d.3.bias: torch.Size([64]) params
+INFO:root:Rank 0: writing logs to ./exps/amzn23_office-l50/SASRec-d64-b4-h4-posi_d0.5-l2-ffn64-relu-d0.5_None_DotProduct_local-l2-eps1e-06_ssl-t0.05-n512-b128-lr0.001-wu0-wd0-2026-07-11-fe5
+INFO:root:rank 0:  batch-stat (eval): iter 0 (epoch 0): NDCG@10 0.0000, HR@10 0.0000, HR@50 0.0000, MRR 0.0004 
+INFO:root: rank: 0, batch-stat (train): step 0 (epoch 0 in 0.49s): 9.071373
+INFO:root:rank 0: eval @ epoch 0 in 39.60s: NDCG@10 0.0048, NDCG@50 0.0090, HR@10 0.0084, HR@50 0.0280, MRR 0.0055
+INFO:root:Truncating epoch 1 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 1 in 0.52s: NDCG@10 0.0070, NDCG@50 0.0120, HR@10 0.0122, HR@50 0.0354, MRR 0.0075
+INFO:root:rank 0:  batch-stat (eval): iter 4000 (epoch 2): NDCG@10 0.0000, HR@10 0.0000, HR@50 0.0391, MRR 0.0021 
+INFO:root: rank: 0, batch-stat (train): step 4000 (epoch 2 in 38.02s): 5.526014
+INFO:root:Truncating epoch 2 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 2 in 0.50s: NDCG@10 0.0066, NDCG@50 0.0115, HR@10 0.0125, HR@50 0.0355, MRR 0.0069
+INFO:root:Truncating epoch 3 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 3 in 0.52s: NDCG@10 0.0072, NDCG@50 0.0127, HR@10 0.0133, HR@50 0.0385, MRR 0.0077
+INFO:root:rank 0:  batch-stat (eval): iter 8000 (epoch 4): NDCG@10 0.0185, HR@10 0.0391, HR@50 0.0703, MRR 0.0148 
+INFO:root: rank: 0, batch-stat (train): step 8000 (epoch 4 in 76.65s): 5.179805
+INFO:root:Truncating epoch 4 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 4 in 0.54s: NDCG@10 0.0086, NDCG@50 0.0153, HR@10 0.0165, HR@50 0.0475, MRR 0.0087
+INFO:root:rank 0: eval @ epoch 5 in 13.50s: NDCG@10 0.0096, NDCG@50 0.0167, HR@10 0.0188, HR@50 0.0519, MRR 0.0095
+INFO:root:rank 0:  batch-stat (eval): iter 12000 (epoch 6): NDCG@10 0.0083, HR@10 0.0156, HR@50 0.0469, MRR 0.0089 
+INFO:root: rank: 0, batch-stat (train): step 12000 (epoch 6 in 115.75s): 5.101302
+INFO:root:Truncating epoch 6 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 6 in 0.53s: NDCG@10 0.0107, NDCG@50 0.0185, HR@10 0.0204, HR@50 0.0569, MRR 0.0105
+INFO:root:Truncating epoch 7 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 7 in 0.53s: NDCG@10 0.0111, NDCG@50 0.0187, HR@10 0.0200, HR@50 0.0552, MRR 0.0112
+INFO:root:Truncating epoch 8 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 8 in 0.53s: NDCG@10 0.0122, NDCG@50 0.0202, HR@10 0.0232, HR@50 0.0605, MRR 0.0117
+INFO:root:rank 0:  batch-stat (eval): iter 16000 (epoch 9): NDCG@10 0.0106, HR@10 0.0312, HR@50 0.0547, MRR 0.0071 
+INFO:root: rank: 0, batch-stat (train): step 16000 (epoch 9 in 22.13s): 5.091227
+INFO:root:Truncating epoch 9 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 9 in 0.57s: NDCG@10 0.0119, NDCG@50 0.0196, HR@10 0.0243, HR@50 0.0604, MRR 0.0110
+INFO:root:rank 0: eval @ epoch 10 in 13.73s: NDCG@10 0.0132, NDCG@50 0.0212, HR@10 0.0247, HR@50 0.0619, MRR 0.0126
+INFO:root:rank 0:  batch-stat (eval): iter 20000 (epoch 11): NDCG@10 0.0156, HR@10 0.0234, HR@50 0.0625, MRR 0.0163 
+INFO:root: rank: 0, batch-stat (train): step 20000 (epoch 11 in 60.57s): 5.054451
+INFO:root:Truncating epoch 11 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 11 in 0.50s: NDCG@10 0.0141, NDCG@50 0.0225, HR@10 0.0253, HR@50 0.0643, MRR 0.0138
+INFO:root:Truncating epoch 12 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 12 in 0.52s: NDCG@10 0.0138, NDCG@50 0.0220, HR@10 0.0251, HR@50 0.0630, MRR 0.0134
+INFO:root:rank 0:  batch-stat (eval): iter 24000 (epoch 13): NDCG@10 0.0232, HR@10 0.0547, HR@50 0.0703, MRR 0.0170 
+INFO:root: rank: 0, batch-stat (train): step 24000 (epoch 13 in 98.95s): 4.868794
+INFO:root:Truncating epoch 13 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 13 in 0.50s: NDCG@10 0.0140, NDCG@50 0.0220, HR@10 0.0264, HR@50 0.0635, MRR 0.0132
+INFO:root:Truncating epoch 14 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 14 in 0.52s: NDCG@10 0.0140, NDCG@50 0.0220, HR@10 0.0250, HR@50 0.0626, MRR 0.0135
+INFO:root:rank 0: eval @ epoch 15 in 13.75s: NDCG@10 0.0149, NDCG@50 0.0230, HR@10 0.0274, HR@50 0.0651, MRR 0.0140
+INFO:root:rank 0:  batch-stat (eval): iter 28000 (epoch 16): NDCG@10 0.0260, HR@10 0.0469, HR@50 0.1250, MRR 0.0241 
+INFO:root: rank: 0, batch-stat (train): step 28000 (epoch 16 in 6.32s): 4.832542
+INFO:root:Truncating epoch 16 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 16 in 0.53s: NDCG@10 0.0143, NDCG@50 0.0223, HR@10 0.0276, HR@50 0.0651, MRR 0.0132
+INFO:root:Truncating epoch 17 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 17 in 0.52s: NDCG@10 0.0170, NDCG@50 0.0248, HR@10 0.0303, HR@50 0.0662, MRR 0.0159
+INFO:root:rank 0:  batch-stat (eval): iter 32000 (epoch 18): NDCG@10 0.0153, HR@10 0.0312, HR@50 0.0859, MRR 0.0133 
+INFO:root: rank: 0, batch-stat (train): step 32000 (epoch 18 in 45.60s): 4.999974
+INFO:root:Truncating epoch 18 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 18 in 0.54s: NDCG@10 0.0162, NDCG@50 0.0252, HR@10 0.0292, HR@50 0.0707, MRR 0.0154
+INFO:root:Truncating epoch 19 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 19 in 0.50s: NDCG@10 0.0168, NDCG@50 0.0254, HR@10 0.0299, HR@50 0.0696, MRR 0.0159
+INFO:root:rank 0:  batch-stat (eval): iter 36000 (epoch 20): NDCG@10 0.0108, HR@10 0.0234, HR@50 0.0547, MRR 0.0101 
+INFO:root: rank: 0, batch-stat (train): step 36000 (epoch 20 in 83.05s): 4.922590
+INFO:root:rank 0: eval @ epoch 20 in 13.60s: NDCG@10 0.0160, NDCG@50 0.0244, HR@10 0.0289, HR@50 0.0681, MRR 0.0151
+INFO:root:Truncating epoch 21 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 21 in 0.53s: NDCG@10 0.0155, NDCG@50 0.0236, HR@10 0.0282, HR@50 0.0653, MRR 0.0146
+INFO:root:rank 0:  batch-stat (eval): iter 40000 (epoch 22): NDCG@10 0.0321, HR@10 0.0547, HR@50 0.1094, MRR 0.0288 
+INFO:root: rank: 0, batch-stat (train): step 40000 (epoch 22 in 121.66s): 4.752903
+INFO:root:Truncating epoch 22 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 22 in 0.50s: NDCG@10 0.0159, NDCG@50 0.0240, HR@10 0.0292, HR@50 0.0665, MRR 0.0149
+INFO:root:Truncating epoch 23 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 23 in 0.55s: NDCG@10 0.0172, NDCG@50 0.0264, HR@10 0.0303, HR@50 0.0725, MRR 0.0164
+INFO:root:Truncating epoch 24 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 24 in 0.53s: NDCG@10 0.0161, NDCG@50 0.0236, HR@10 0.0289, HR@50 0.0642, MRR 0.0150
+INFO:root:rank 0:  batch-stat (eval): iter 44000 (epoch 25): NDCG@10 0.0121, HR@10 0.0312, HR@50 0.0938, MRR 0.0113 
+INFO:root: rank: 0, batch-stat (train): step 44000 (epoch 25 in 28.23s): 5.033401
+INFO:root:rank 0: eval @ epoch 25 in 13.58s: NDCG@10 0.0160, NDCG@50 0.0244, HR@10 0.0291, HR@50 0.0682, MRR 0.0150
+INFO:root:Truncating epoch 26 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 26 in 0.55s: NDCG@10 0.0148, NDCG@50 0.0236, HR@10 0.0259, HR@50 0.0667, MRR 0.0146
+INFO:root:rank 0:  batch-stat (eval): iter 48000 (epoch 27): NDCG@10 0.0129, HR@10 0.0234, HR@50 0.0703, MRR 0.0130 
+INFO:root: rank: 0, batch-stat (train): step 48000 (epoch 27 in 68.30s): 5.049367
+INFO:root:Truncating epoch 27 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 27 in 0.52s: NDCG@10 0.0158, NDCG@50 0.0244, HR@10 0.0297, HR@50 0.0696, MRR 0.0147
+INFO:root:Truncating epoch 28 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 28 in 0.52s: NDCG@10 0.0144, NDCG@50 0.0229, HR@10 0.0267, HR@50 0.0665, MRR 0.0136
+INFO:root:rank 0:  batch-stat (eval): iter 52000 (epoch 29): NDCG@10 0.0077, HR@10 0.0156, HR@50 0.0547, MRR 0.0083 
+INFO:root: rank: 0, batch-stat (train): step 52000 (epoch 29 in 105.16s): 4.885818
+INFO:root:Truncating epoch 29 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 29 in 0.52s: NDCG@10 0.0170, NDCG@50 0.0256, HR@10 0.0304, HR@50 0.0702, MRR 0.0160
+INFO:root:rank 0: eval @ epoch 30 in 13.43s: NDCG@10 0.0166, NDCG@50 0.0253, HR@10 0.0298, HR@50 0.0701, MRR 0.0157
+INFO:root:Truncating epoch 31 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 31 in 0.52s: NDCG@10 0.0175, NDCG@50 0.0261, HR@10 0.0317, HR@50 0.0717, MRR 0.0162
+INFO:root:rank 0:  batch-stat (eval): iter 56000 (epoch 32): NDCG@10 0.0229, HR@10 0.0312, HR@50 0.0781, MRR 0.0244 
+INFO:root: rank: 0, batch-stat (train): step 56000 (epoch 32 in 13.12s): 4.826759
+INFO:root:Truncating epoch 32 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 32 in 0.52s: NDCG@10 0.0178, NDCG@50 0.0270, HR@10 0.0315, HR@50 0.0741, MRR 0.0169
+INFO:root:Truncating epoch 33 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 33 in 0.52s: NDCG@10 0.0162, NDCG@50 0.0247, HR@10 0.0308, HR@50 0.0706, MRR 0.0148
+INFO:root:rank 0:  batch-stat (eval): iter 60000 (epoch 34): NDCG@10 0.0161, HR@10 0.0234, HR@50 0.0547, MRR 0.0167 
+INFO:root: rank: 0, batch-stat (train): step 60000 (epoch 34 in 52.46s): 4.722072
+INFO:root:Truncating epoch 34 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 34 in 0.52s: NDCG@10 0.0155, NDCG@50 0.0242, HR@10 0.0269, HR@50 0.0669, MRR 0.0151
+INFO:root:rank 0: eval @ epoch 35 in 13.35s: NDCG@10 0.0164, NDCG@50 0.0251, HR@10 0.0299, HR@50 0.0699, MRR 0.0154
+INFO:root:rank 0:  batch-stat (eval): iter 64000 (epoch 36): NDCG@10 0.0156, HR@10 0.0156, HR@50 0.0625, MRR 0.0194 
+INFO:root: rank: 0, batch-stat (train): step 64000 (epoch 36 in 92.10s): 4.930648
+INFO:root:Truncating epoch 36 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 36 in 0.48s: NDCG@10 0.0147, NDCG@50 0.0232, HR@10 0.0294, HR@50 0.0682, MRR 0.0133
+INFO:root:Truncating epoch 37 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 37 in 0.55s: NDCG@10 0.0165, NDCG@50 0.0251, HR@10 0.0302, HR@50 0.0695, MRR 0.0155
+INFO:root:rank 0:  batch-stat (eval): iter 68000 (epoch 38): NDCG@10 0.0129, HR@10 0.0312, HR@50 0.1172, MRR 0.0127 
+INFO:root: rank: 0, batch-stat (train): step 68000 (epoch 38 in 126.67s): 4.779379
+INFO:root:Truncating epoch 38 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 38 in 0.48s: NDCG@10 0.0180, NDCG@50 0.0273, HR@10 0.0317, HR@50 0.0756, MRR 0.0169
+INFO:root:Truncating epoch 39 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 39 in 0.54s: NDCG@10 0.0162, NDCG@50 0.0254, HR@10 0.0291, HR@50 0.0710, MRR 0.0155
+INFO:root:rank 0: eval @ epoch 40 in 12.92s: NDCG@10 0.0168, NDCG@50 0.0257, HR@10 0.0305, HR@50 0.0716, MRR 0.0158
+INFO:root:rank 0:  batch-stat (eval): iter 72000 (epoch 41): NDCG@10 0.0419, HR@10 0.0703, HR@50 0.1328, MRR 0.0382 
+INFO:root: rank: 0, batch-stat (train): step 72000 (epoch 41 in 35.07s): 4.794715
+INFO:root:Truncating epoch 41 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 41 in 0.52s: NDCG@10 0.0178, NDCG@50 0.0262, HR@10 0.0314, HR@50 0.0710, MRR 0.0167
+INFO:root:Truncating epoch 42 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 42 in 0.48s: NDCG@10 0.0170, NDCG@50 0.0254, HR@10 0.0304, HR@50 0.0691, MRR 0.0160
+INFO:root:rank 0:  batch-stat (eval): iter 76000 (epoch 43): NDCG@10 0.0122, HR@10 0.0312, HR@50 0.0703, MRR 0.0106 
+INFO:root: rank: 0, batch-stat (train): step 76000 (epoch 43 in 73.27s): 4.977705
+INFO:root:Truncating epoch 43 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 43 in 0.51s: NDCG@10 0.0179, NDCG@50 0.0276, HR@10 0.0327, HR@50 0.0774, MRR 0.0169
+INFO:root:Truncating epoch 44 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 44 in 0.48s: NDCG@10 0.0182, NDCG@50 0.0281, HR@10 0.0321, HR@50 0.0781, MRR 0.0173
+INFO:root:rank 0:  batch-stat (eval): iter 80000 (epoch 45): NDCG@10 0.0258, HR@10 0.0469, HR@50 0.0625, MRR 0.0209 
+INFO:root: rank: 0, batch-stat (train): step 80000 (epoch 45 in 111.58s): 5.079499
+INFO:root:rank 0: eval @ epoch 45 in 13.10s: NDCG@10 0.0169, NDCG@50 0.0258, HR@10 0.0307, HR@50 0.0721, MRR 0.0158
+INFO:root:Truncating epoch 46 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 46 in 0.52s: NDCG@10 0.0163, NDCG@50 0.0245, HR@10 0.0293, HR@50 0.0676, MRR 0.0153
+INFO:root:Truncating epoch 47 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 47 in 0.47s: NDCG@10 0.0176, NDCG@50 0.0256, HR@10 0.0309, HR@50 0.0680, MRR 0.0165
+INFO:root:rank 0:  batch-stat (eval): iter 84000 (epoch 48): NDCG@10 0.0119, HR@10 0.0234, HR@50 0.0781, MRR 0.0129 
+INFO:root: rank: 0, batch-stat (train): step 84000 (epoch 48 in 18.65s): 4.836677
+INFO:root:Truncating epoch 48 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 48 in 0.48s: NDCG@10 0.0167, NDCG@50 0.0260, HR@10 0.0305, HR@50 0.0736, MRR 0.0156
+INFO:root:Truncating epoch 49 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 49 in 0.48s: NDCG@10 0.0155, NDCG@50 0.0244, HR@10 0.0284, HR@50 0.0695, MRR 0.0147
+INFO:root:rank 0:  batch-stat (eval): iter 88000 (epoch 50): NDCG@10 0.0098, HR@10 0.0234, HR@50 0.0703, MRR 0.0100 
+INFO:root: rank: 0, batch-stat (train): step 88000 (epoch 50 in 56.77s): 4.892601
+INFO:root:rank 0: eval @ epoch 50 in 13.20s: NDCG@10 0.0177, NDCG@50 0.0267, HR@10 0.0317, HR@50 0.0733, MRR 0.0167
+INFO:root:Truncating epoch 51 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 51 in 0.56s: NDCG@10 0.0165, NDCG@50 0.0256, HR@10 0.0309, HR@50 0.0732, MRR 0.0153
+INFO:root:rank 0:  batch-stat (eval): iter 92000 (epoch 52): NDCG@10 0.0139, HR@10 0.0391, HR@50 0.0625, MRR 0.0085 
+INFO:root: rank: 0, batch-stat (train): step 92000 (epoch 52 in 94.70s): 4.931763
+INFO:root:Truncating epoch 52 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 52 in 0.52s: NDCG@10 0.0175, NDCG@50 0.0267, HR@10 0.0314, HR@50 0.0740, MRR 0.0164
+INFO:root:Truncating epoch 53 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 53 in 0.50s: NDCG@10 0.0164, NDCG@50 0.0251, HR@10 0.0298, HR@50 0.0703, MRR 0.0154
+INFO:root:Truncating epoch 54 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 54 in 0.62s: NDCG@10 0.0172, NDCG@50 0.0264, HR@10 0.0309, HR@50 0.0734, MRR 0.0163
+INFO:root:rank 0:  batch-stat (eval): iter 96000 (epoch 55): NDCG@10 0.0331, HR@10 0.0625, HR@50 0.1250, MRR 0.0285 
+INFO:root: rank: 0, batch-stat (train): step 96000 (epoch 55 in 2.20s): 4.807028
+INFO:root:rank 0: eval @ epoch 55 in 13.15s: NDCG@10 0.0174, NDCG@50 0.0264, HR@10 0.0314, HR@50 0.0728, MRR 0.0163
+INFO:root:Truncating epoch 56 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 56 in 0.48s: NDCG@10 0.0167, NDCG@50 0.0258, HR@10 0.0304, HR@50 0.0721, MRR 0.0158
+INFO:root:rank 0:  batch-stat (eval): iter 100000 (epoch 57): NDCG@10 0.0289, HR@10 0.0469, HR@50 0.1094, MRR 0.0264 
+INFO:root: rank: 0, batch-stat (train): step 100000 (epoch 57 in 41.30s): 4.998855
+INFO:root:Truncating epoch 57 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 57 in 0.50s: NDCG@10 0.0181, NDCG@50 0.0267, HR@10 0.0327, HR@50 0.0724, MRR 0.0167
+INFO:root:Truncating epoch 58 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 58 in 0.49s: NDCG@10 0.0168, NDCG@50 0.0253, HR@10 0.0305, HR@50 0.0701, MRR 0.0157
+INFO:root:rank 0:  batch-stat (eval): iter 104000 (epoch 59): NDCG@10 0.0199, HR@10 0.0391, HR@50 0.1094, MRR 0.0187 
+INFO:root: rank: 0, batch-stat (train): step 104000 (epoch 59 in 79.05s): 4.997746
+INFO:root:Truncating epoch 59 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 59 in 0.52s: NDCG@10 0.0176, NDCG@50 0.0264, HR@10 0.0320, HR@50 0.0725, MRR 0.0164
+INFO:root:rank 0: eval @ epoch 60 in 13.12s: NDCG@10 0.0175, NDCG@50 0.0264, HR@10 0.0314, HR@50 0.0726, MRR 0.0165
+INFO:root:rank 0:  batch-stat (eval): iter 108000 (epoch 61): NDCG@10 0.0259, HR@10 0.0547, HR@50 0.0938, MRR 0.0199 
+INFO:root: rank: 0, batch-stat (train): step 108000 (epoch 61 in 116.53s): 4.886834
+INFO:root:Truncating epoch 61 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 61 in 0.50s: NDCG@10 0.0184, NDCG@50 0.0268, HR@10 0.0331, HR@50 0.0723, MRR 0.0170
+INFO:root:Truncating epoch 62 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 62 in 0.48s: NDCG@10 0.0184, NDCG@50 0.0277, HR@10 0.0333, HR@50 0.0771, MRR 0.0170
+INFO:root:Truncating epoch 63 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 63 in 0.48s: NDCG@10 0.0173, NDCG@50 0.0260, HR@10 0.0312, HR@50 0.0715, MRR 0.0161
+INFO:root:rank 0:  batch-stat (eval): iter 112000 (epoch 64): NDCG@10 0.0191, HR@10 0.0312, HR@50 0.0703, MRR 0.0192 
+INFO:root: rank: 0, batch-stat (train): step 112000 (epoch 64 in 24.62s): 5.015985
+INFO:root:Truncating epoch 64 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 64 in 0.57s: NDCG@10 0.0183, NDCG@50 0.0269, HR@10 0.0312, HR@50 0.0710, MRR 0.0174
+INFO:root:rank 0: eval @ epoch 65 in 13.22s: NDCG@10 0.0175, NDCG@50 0.0265, HR@10 0.0316, HR@50 0.0731, MRR 0.0164
+INFO:root:rank 0:  batch-stat (eval): iter 116000 (epoch 66): NDCG@10 0.0342, HR@10 0.0469, HR@50 0.1250, MRR 0.0360 
+INFO:root: rank: 0, batch-stat (train): step 116000 (epoch 66 in 62.58s): 5.003274
+INFO:root:Truncating epoch 66 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 66 in 0.55s: NDCG@10 0.0175, NDCG@50 0.0261, HR@10 0.0316, HR@50 0.0713, MRR 0.0164
+INFO:root:Truncating epoch 67 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 67 in 0.50s: NDCG@10 0.0155, NDCG@50 0.0241, HR@10 0.0289, HR@50 0.0688, MRR 0.0145
+INFO:root:rank 0:  batch-stat (eval): iter 120000 (epoch 68): NDCG@10 0.0259, HR@10 0.0469, HR@50 0.1172, MRR 0.0235 
+INFO:root: rank: 0, batch-stat (train): step 120000 (epoch 68 in 100.47s): 4.888989
+INFO:root:Truncating epoch 68 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 68 in 0.47s: NDCG@10 0.0145, NDCG@50 0.0245, HR@10 0.0272, HR@50 0.0740, MRR 0.0139
+INFO:root:Truncating epoch 69 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 69 in 0.48s: NDCG@10 0.0175, NDCG@50 0.0259, HR@10 0.0303, HR@50 0.0690, MRR 0.0167
+INFO:root:rank 0: eval @ epoch 70 in 13.47s: NDCG@10 0.0173, NDCG@50 0.0264, HR@10 0.0316, HR@50 0.0735, MRR 0.0162
+INFO:root:rank 0:  batch-stat (eval): iter 124000 (epoch 71): NDCG@10 0.0247, HR@10 0.0547, HR@50 0.0859, MRR 0.0185 
+INFO:root: rank: 0, batch-stat (train): step 124000 (epoch 71 in 8.73s): 4.979821
+INFO:root:Truncating epoch 71 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 71 in 0.52s: NDCG@10 0.0167, NDCG@50 0.0257, HR@10 0.0299, HR@50 0.0710, MRR 0.0158
+INFO:root:Truncating epoch 72 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 72 in 0.49s: NDCG@10 0.0162, NDCG@50 0.0257, HR@10 0.0292, HR@50 0.0725, MRR 0.0156
+INFO:root:rank 0:  batch-stat (eval): iter 128000 (epoch 73): NDCG@10 0.0165, HR@10 0.0312, HR@50 0.0781, MRR 0.0159 
+INFO:root: rank: 0, batch-stat (train): step 128000 (epoch 73 in 45.36s): 4.828970
+INFO:root:Truncating epoch 73 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 73 in 0.52s: NDCG@10 0.0173, NDCG@50 0.0269, HR@10 0.0291, HR@50 0.0728, MRR 0.0171
+INFO:root:Truncating epoch 74 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 74 in 0.50s: NDCG@10 0.0195, NDCG@50 0.0279, HR@10 0.0330, HR@50 0.0720, MRR 0.0184
+INFO:root:rank 0:  batch-stat (eval): iter 132000 (epoch 75): NDCG@10 0.0278, HR@10 0.0391, HR@50 0.0938, MRR 0.0271 
+INFO:root: rank: 0, batch-stat (train): step 132000 (epoch 75 in 83.88s): 4.982510
+INFO:root:rank 0: eval @ epoch 75 in 13.91s: NDCG@10 0.0168, NDCG@50 0.0257, HR@10 0.0304, HR@50 0.0715, MRR 0.0158
+INFO:root:Truncating epoch 76 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 76 in 0.49s: NDCG@10 0.0165, NDCG@50 0.0247, HR@10 0.0303, HR@50 0.0687, MRR 0.0152
+INFO:root:rank 0:  batch-stat (eval): iter 136000 (epoch 77): NDCG@10 0.0150, HR@10 0.0312, HR@50 0.0547, MRR 0.0125 
+INFO:root: rank: 0, batch-stat (train): step 136000 (epoch 77 in 120.58s): 4.965958
+INFO:root:Truncating epoch 77 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 77 in 0.51s: NDCG@10 0.0185, NDCG@50 0.0272, HR@10 0.0325, HR@50 0.0719, MRR 0.0174
+INFO:root:Truncating epoch 78 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 78 in 0.48s: NDCG@10 0.0189, NDCG@50 0.0279, HR@10 0.0328, HR@50 0.0741, MRR 0.0179
+INFO:root:Truncating epoch 79 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 79 in 0.52s: NDCG@10 0.0195, NDCG@50 0.0284, HR@10 0.0337, HR@50 0.0751, MRR 0.0183
+INFO:root:rank 0:  batch-stat (eval): iter 140000 (epoch 80): NDCG@10 0.0153, HR@10 0.0391, HR@50 0.0859, MRR 0.0116 
+INFO:root: rank: 0, batch-stat (train): step 140000 (epoch 80 in 29.70s): 4.950522
+INFO:root:rank 0: eval @ epoch 80 in 13.22s: NDCG@10 0.0173, NDCG@50 0.0261, HR@10 0.0312, HR@50 0.0718, MRR 0.0162
+INFO:root:Truncating epoch 81 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 81 in 0.50s: NDCG@10 0.0172, NDCG@50 0.0254, HR@10 0.0304, HR@50 0.0684, MRR 0.0162
+INFO:root:rank 0:  batch-stat (eval): iter 144000 (epoch 82): NDCG@10 0.0356, HR@10 0.0469, HR@50 0.0781, MRR 0.0346 
+INFO:root: rank: 0, batch-stat (train): step 144000 (epoch 82 in 68.65s): 4.832874
+INFO:root:Truncating epoch 82 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 82 in 0.48s: NDCG@10 0.0176, NDCG@50 0.0266, HR@10 0.0306, HR@50 0.0720, MRR 0.0169
+INFO:root:Truncating epoch 83 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 83 in 0.50s: NDCG@10 0.0169, NDCG@50 0.0251, HR@10 0.0295, HR@50 0.0679, MRR 0.0160
+INFO:root:rank 0:  batch-stat (eval): iter 148000 (epoch 84): NDCG@10 0.0417, HR@10 0.0703, HR@50 0.0938, MRR 0.0353 
+INFO:root: rank: 0, batch-stat (train): step 148000 (epoch 84 in 107.57s): 4.872208
+INFO:root:Truncating epoch 84 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 84 in 0.50s: NDCG@10 0.0177, NDCG@50 0.0256, HR@10 0.0330, HR@50 0.0702, MRR 0.0160
+INFO:root:rank 0: eval @ epoch 85 in 13.53s: NDCG@10 0.0170, NDCG@50 0.0259, HR@10 0.0309, HR@50 0.0723, MRR 0.0159
+INFO:root:Truncating epoch 86 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 86 in 0.52s: NDCG@10 0.0184, NDCG@50 0.0266, HR@10 0.0321, HR@50 0.0701, MRR 0.0173
+INFO:root:rank 0:  batch-stat (eval): iter 152000 (epoch 87): NDCG@10 0.0132, HR@10 0.0234, HR@50 0.0781, MRR 0.0148 
+INFO:root: rank: 0, batch-stat (train): step 152000 (epoch 87 in 14.72s): 4.872955
+INFO:root:Truncating epoch 87 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 87 in 0.53s: NDCG@10 0.0175, NDCG@50 0.0273, HR@10 0.0319, HR@50 0.0774, MRR 0.0165
+INFO:root:Truncating epoch 88 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 88 in 0.52s: NDCG@10 0.0174, NDCG@50 0.0263, HR@10 0.0310, HR@50 0.0720, MRR 0.0165
+INFO:root:rank 0:  batch-stat (eval): iter 156000 (epoch 89): NDCG@10 0.0203, HR@10 0.0391, HR@50 0.0938, MRR 0.0183 
+INFO:root: rank: 0, batch-stat (train): step 156000 (epoch 89 in 52.08s): 4.769507
+INFO:root:Truncating epoch 89 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 89 in 0.49s: NDCG@10 0.0173, NDCG@50 0.0264, HR@10 0.0310, HR@50 0.0732, MRR 0.0163
+INFO:root:rank 0: eval @ epoch 90 in 13.32s: NDCG@10 0.0177, NDCG@50 0.0266, HR@10 0.0319, HR@50 0.0733, MRR 0.0166
+INFO:root:rank 0:  batch-stat (eval): iter 160000 (epoch 91): NDCG@10 0.0356, HR@10 0.0625, HR@50 0.1094, MRR 0.0313 
+INFO:root: rank: 0, batch-stat (train): step 160000 (epoch 91 in 91.43s): 4.919482
+INFO:root:Truncating epoch 91 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 91 in 0.48s: NDCG@10 0.0175, NDCG@50 0.0264, HR@10 0.0316, HR@50 0.0732, MRR 0.0164
+INFO:root:Truncating epoch 92 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 92 in 0.50s: NDCG@10 0.0184, NDCG@50 0.0267, HR@10 0.0314, HR@50 0.0704, MRR 0.0174
+INFO:root:rank 0:  batch-stat (eval): iter 164000 (epoch 93): NDCG@10 0.0166, HR@10 0.0312, HR@50 0.1016, MRR 0.0172 
+INFO:root: rank: 0, batch-stat (train): step 164000 (epoch 93 in 129.28s): 4.843862
+INFO:root:Truncating epoch 93 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 93 in 0.50s: NDCG@10 0.0166, NDCG@50 0.0264, HR@10 0.0315, HR@50 0.0765, MRR 0.0155
+INFO:root:Truncating epoch 94 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 94 in 0.52s: NDCG@10 0.0195, NDCG@50 0.0294, HR@10 0.0332, HR@50 0.0787, MRR 0.0187
+INFO:root:rank 0: eval @ epoch 95 in 13.35s: NDCG@10 0.0175, NDCG@50 0.0265, HR@10 0.0316, HR@50 0.0733, MRR 0.0164
+INFO:root:rank 0:  batch-stat (eval): iter 168000 (epoch 96): NDCG@10 0.0143, HR@10 0.0234, HR@50 0.0938, MRR 0.0162 
+INFO:root: rank: 0, batch-stat (train): step 168000 (epoch 96 in 37.42s): 4.764000
+INFO:root:Truncating epoch 96 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 96 in 0.50s: NDCG@10 0.0174, NDCG@50 0.0261, HR@10 0.0315, HR@50 0.0715, MRR 0.0161
+INFO:root:Truncating epoch 97 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 97 in 0.48s: NDCG@10 0.0163, NDCG@50 0.0253, HR@10 0.0303, HR@50 0.0726, MRR 0.0152
+INFO:root:rank 0:  batch-stat (eval): iter 172000 (epoch 98): NDCG@10 0.0293, HR@10 0.0469, HR@50 0.0859, MRR 0.0263 
+INFO:root: rank: 0, batch-stat (train): step 172000 (epoch 98 in 74.63s): 4.987355
+INFO:root:Truncating epoch 98 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 98 in 0.48s: NDCG@10 0.0178, NDCG@50 0.0268, HR@10 0.0323, HR@50 0.0742, MRR 0.0165
+INFO:root:Truncating epoch 99 eval to 64 iters to save cost..
+INFO:root:rank 0: eval @ epoch 99 in 0.53s: NDCG@10 0.0176, NDCG@50 0.0266, HR@10 0.0328, HR@50 0.0750, MRR 0.0161
+INFO:root:rank 0:  batch-stat (eval): iter 176000 (epoch 100): NDCG@10 0.0171, HR@10 0.0391, HR@50 0.0938, MRR 0.0142 
+INFO:root: rank: 0, batch-stat (train): step 176000 (epoch 100 in 111.62s): 4.945947
+INFO:root:rank 0: eval @ epoch 100 in 13.35s: NDCG@10 0.0174, NDCG@50 0.0263, HR@10 0.0312, HR@50 0.0721, MRR 0.0164

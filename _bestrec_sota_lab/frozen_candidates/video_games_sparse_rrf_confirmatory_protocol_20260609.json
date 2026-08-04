@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "protocol_id": "video_games_sparse_rrf_confirmatory_20260609",
+  "candidate": "multi_rrf_dev10_dev13_dev4_dev5_dev9_sasrec_k30",
+  "dataset": "Video_Games",
+  "candidate_scope": "full_catalog",
+  "fresh_confirmatory_seeds": [
+    20260801,
+    20260802,
+    20260803,
+    20260804,
+    20260805
+  ],
+  "retired_seed_sets": [
+    {
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ],
+      "reason": "The development HSTU component runs used seed 20260701 before this sparse-RRF candidate was frozen. To avoid any ambiguity, the entire previously listed seed set is retired for this candidate-specific confirmatory run."
+    }
+  ],
+  "frozen_manifest": "_bestrec_sota_lab/frozen_candidates/video_games_multi_rrf_candidate_20260609.json",
+  "required_components": [
+    "dev10",
+    "dev13",
+    "dev4",
+    "dev5",
+    "dev9",
+    "sasrec"
+  ],
+  "required_gate": "Publication approval remains blocked unless every listed fresh seed has all six component exports, the sparse full-catalog replay succeeds for each seed, and modern comparator/statistical gates pass.",
+  "publication_grade": false
+}

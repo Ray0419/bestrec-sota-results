@@ -1,0 +1,25 @@
+{
+  "arrays": {
+    "train_items": [
+      625062
+    ],
+    "train_offsets": [
+      94763
+    ],
+    "user_index": [
+      94762
+    ],
+    "valid_target": [
+      94762
+    ]
+  },
+  "contains_test_fields": false,
+  "n_items": 25612,
+  "n_train_interactions": 625062,
+  "n_users": 94762,
+  "private_input": "_bestrec_run/ee_v3_private/input/Video_Games.train_valid_full.npz",
+  "private_input_sha256": "57d2011e0cc0af1cbbf9537b8c0352d8e53b5dc67a813cc81e4bf2836a002a3e",
+  "protocol": "PREREG_EE_V3",
+  "source": "ee_baselines/export/Video_Games/Video_Games.sequences.jsonl",
+  "source_sha256": "402fe06f0aa579f43162fbc15177f9f50a2241277a6b427c1ebf59cde8c72f5b"
+}

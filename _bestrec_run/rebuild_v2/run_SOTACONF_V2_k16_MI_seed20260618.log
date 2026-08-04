@@ -1,0 +1,642 @@
+  random seed set to 20260618
+=== Musical_Instruments: load splits ===
+  n_users=57,439  n_items=24,587  pad_id=24587
+  built sequences for 57,439 users
+  built timestamp sequences (12 time buckets)
+  loading SBERT embeddings from C:\Users\rayxc\Documents\R\cache_5core\sbert_titles_Musical_Instruments.npy...
+  TAPE: k-means 24,587 text embeddings into K=512 prototypes (tau=0.05)...
+  TAPE: K=512 mean max-assignment weight = 0.516 (1.0 = hard clustering)
+
+=== Build SASRec-SBERT (d=64, layers=4, heads=2) ===
+  total params: 11,186,047  device=cuda
+  57,439 training examples / 225 batches per epoch
+  LR schedule: warmup_cosine (225 warmup + 4275 cosine steps)
+
+=== Train for 20 epochs ===
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.0s]
+    [31,232/57,439  elapsed 8.4s]
+    [36,352/57,439  elapsed 9.8s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.3s]
+  eval done in 15.5s
+  by-popularity NDCG@10: tail=0.0000(n=7,762)  mid=0.0003(n=8,169)  head=0.0372(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.7s]
+    [51,712/57,439  elapsed 14.1s]
+    [56,832/57,439  elapsed 15.5s]
+  eval done in 15.7s
+  by-popularity NDCG@10: tail=0.0000(n=8,800)  mid=0.0005(n=8,657)  head=0.0338(n=39,982)
+  epoch   1  loss=9.6214  val_NDCG=0.0269  test_NDCG=0.0236  test_HR=0.0458  (6.3s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 3.0s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.7s]
+    [51,712/57,439  elapsed 14.1s]
+    [56,832/57,439  elapsed 15.5s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0001(n=7,762)  mid=0.0003(n=8,169)  head=0.0459(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 3.0s]
+    [15,872/57,439  elapsed 4.4s]
+    [20,992/57,439  elapsed 5.8s]
+    [26,112/57,439  elapsed 7.2s]
+    [31,232/57,439  elapsed 8.6s]
+    [36,352/57,439  elapsed 10.0s]
+    [41,472/57,439  elapsed 11.4s]
+    [46,592/57,439  elapsed 12.8s]
+    [51,712/57,439  elapsed 14.3s]
+    [56,832/57,439  elapsed 15.7s]
+  eval done in 15.8s
+  by-popularity NDCG@10: tail=0.0001(n=8,800)  mid=0.0006(n=8,657)  head=0.0439(n=39,982)
+  epoch   2  loss=9.0956  val_NDCG=0.0332  test_NDCG=0.0307  test_HR=0.0581  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 3.0s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.7s]
+    [51,712/57,439  elapsed 14.1s]
+    [56,832/57,439  elapsed 15.5s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0000(n=7,762)  mid=0.0010(n=8,169)  head=0.0525(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.4s]
+    [46,592/57,439  elapsed 12.8s]
+    [51,712/57,439  elapsed 14.2s]
+    [56,832/57,439  elapsed 15.6s]
+  eval done in 15.7s
+  by-popularity NDCG@10: tail=0.0001(n=8,800)  mid=0.0010(n=8,657)  head=0.0504(n=39,982)
+  epoch   3  loss=8.9327  val_NDCG=0.0381  test_NDCG=0.0353  test_HR=0.0652  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 3.0s]
+    [15,872/57,439  elapsed 4.4s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.7s]
+    [51,712/57,439  elapsed 14.1s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0000(n=7,762)  mid=0.0016(n=8,169)  head=0.0564(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.7s]
+    [51,712/57,439  elapsed 14.1s]
+    [56,832/57,439  elapsed 15.5s]
+  eval done in 15.7s
+  by-popularity NDCG@10: tail=0.0001(n=8,800)  mid=0.0013(n=8,657)  head=0.0533(n=39,982)
+  epoch   4  loss=8.8256  val_NDCG=0.0410  test_NDCG=0.0373  test_HR=0.0686  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.8s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.3s]
+  eval done in 15.5s
+  by-popularity NDCG@10: tail=0.0000(n=7,762)  mid=0.0028(n=8,169)  head=0.0577(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.4s]
+    [36,352/57,439  elapsed 9.8s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.5s
+  by-popularity NDCG@10: tail=0.0002(n=8,800)  mid=0.0024(n=8,657)  head=0.0549(n=39,982)
+  epoch   5  loss=8.7479  val_NDCG=0.0421  test_NDCG=0.0386  test_HR=0.0706  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.5s
+  by-popularity NDCG@10: tail=0.0004(n=7,762)  mid=0.0034(n=8,169)  head=0.0593(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.7s]
+    [51,712/57,439  elapsed 14.1s]
+    [56,832/57,439  elapsed 15.5s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0004(n=8,800)  mid=0.0030(n=8,657)  head=0.0556(n=39,982)
+  epoch   6  loss=8.6792  val_NDCG=0.0434  test_NDCG=0.0392  test_HR=0.0719  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.4s]
+    [36,352/57,439  elapsed 9.8s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 13.9s]
+    [56,832/57,439  elapsed 15.3s]
+  eval done in 15.5s
+  by-popularity NDCG@10: tail=0.0006(n=7,762)  mid=0.0040(n=8,169)  head=0.0606(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0005(n=8,800)  mid=0.0037(n=8,657)  head=0.0568(n=39,982)
+  epoch   7  loss=8.6216  val_NDCG=0.0445  test_NDCG=0.0401  test_HR=0.0730  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 3.0s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.5s
+  by-popularity NDCG@10: tail=0.0010(n=7,762)  mid=0.0047(n=8,169)  head=0.0618(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0007(n=8,800)  mid=0.0044(n=8,657)  head=0.0580(n=39,982)
+  epoch   8  loss=8.5689  val_NDCG=0.0454  test_NDCG=0.0411  test_HR=0.0745  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.6s]
+    [26,112/57,439  elapsed 7.0s]
+    [31,232/57,439  elapsed 8.4s]
+    [36,352/57,439  elapsed 9.8s]
+    [41,472/57,439  elapsed 11.1s]
+    [46,592/57,439  elapsed 12.5s]
+    [51,712/57,439  elapsed 13.9s]
+    [56,832/57,439  elapsed 15.3s]
+  eval done in 15.4s
+  by-popularity NDCG@10: tail=0.0012(n=7,762)  mid=0.0051(n=8,169)  head=0.0622(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.6s]
+    [26,112/57,439  elapsed 7.0s]
+    [31,232/57,439  elapsed 8.4s]
+    [36,352/57,439  elapsed 9.8s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.5s
+  by-popularity NDCG@10: tail=0.0008(n=8,800)  mid=0.0050(n=8,657)  head=0.0577(n=39,982)
+  epoch   9  loss=8.5213  val_NDCG=0.0458  test_NDCG=0.0410  test_HR=0.0738  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 3.0s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.5s
+  by-popularity NDCG@10: tail=0.0016(n=7,762)  mid=0.0059(n=8,169)  head=0.0620(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.7s]
+    [51,712/57,439  elapsed 14.1s]
+    [56,832/57,439  elapsed 15.5s]
+  eval done in 15.7s
+  by-popularity NDCG@10: tail=0.0008(n=8,800)  mid=0.0055(n=8,657)  head=0.0583(n=39,982)
+  epoch  10  loss=8.4786  val_NDCG=0.0459  test_NDCG=0.0415  test_HR=0.0743  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.8s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.3s]
+  eval done in 15.5s
+  by-popularity NDCG@10: tail=0.0016(n=7,762)  mid=0.0063(n=8,169)  head=0.0621(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.7s]
+    [51,712/57,439  elapsed 14.1s]
+    [56,832/57,439  elapsed 15.5s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0011(n=8,800)  mid=0.0057(n=8,657)  head=0.0580(n=39,982)
+  epoch  11  loss=8.4391  val_NDCG=0.0460  test_NDCG=0.0414  test_HR=0.0748  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 3.0s]
+    [15,872/57,439  elapsed 4.4s]
+    [20,992/57,439  elapsed 5.8s]
+    [26,112/57,439  elapsed 7.2s]
+    [31,232/57,439  elapsed 8.6s]
+    [36,352/57,439  elapsed 10.0s]
+    [41,472/57,439  elapsed 11.4s]
+    [46,592/57,439  elapsed 12.8s]
+    [51,712/57,439  elapsed 14.2s]
+    [56,832/57,439  elapsed 15.6s]
+  eval done in 15.8s
+  by-popularity NDCG@10: tail=0.0016(n=7,762)  mid=0.0064(n=8,169)  head=0.0620(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 3.0s]
+    [15,872/57,439  elapsed 4.4s]
+    [20,992/57,439  elapsed 5.8s]
+    [26,112/57,439  elapsed 7.3s]
+    [31,232/57,439  elapsed 8.7s]
+    [36,352/57,439  elapsed 10.1s]
+    [41,472/57,439  elapsed 11.5s]
+    [46,592/57,439  elapsed 12.9s]
+    [51,712/57,439  elapsed 14.4s]
+    [56,832/57,439  elapsed 15.8s]
+  eval done in 15.9s
+  by-popularity NDCG@10: tail=0.0012(n=8,800)  mid=0.0059(n=8,657)  head=0.0576(n=39,982)
+  epoch  12  loss=8.4052  val_NDCG=0.0459  test_NDCG=0.0412  test_HR=0.0745  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 3.0s]
+    [15,872/57,439  elapsed 4.4s]
+    [20,992/57,439  elapsed 5.8s]
+    [26,112/57,439  elapsed 7.2s]
+    [31,232/57,439  elapsed 8.6s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.7s]
+    [51,712/57,439  elapsed 14.1s]
+    [56,832/57,439  elapsed 15.5s]
+  eval done in 15.7s
+  by-popularity NDCG@10: tail=0.0017(n=7,762)  mid=0.0067(n=8,169)  head=0.0620(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0013(n=8,800)  mid=0.0059(n=8,657)  head=0.0578(n=39,982)
+  epoch  13  loss=8.3735  val_NDCG=0.0460  test_NDCG=0.0413  test_HR=0.0743  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 3.0s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0019(n=7,762)  mid=0.0072(n=8,169)  head=0.0621(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.7s]
+    [51,712/57,439  elapsed 14.1s]
+    [56,832/57,439  elapsed 15.5s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0014(n=8,800)  mid=0.0059(n=8,657)  head=0.0575(n=39,982)
+  epoch  14  loss=8.3453  val_NDCG=0.0462  test_NDCG=0.0411  test_HR=0.0736  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 3.0s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0018(n=7,762)  mid=0.0072(n=8,169)  head=0.0619(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.7s]
+    [51,712/57,439  elapsed 14.1s]
+    [56,832/57,439  elapsed 15.5s]
+  eval done in 15.7s
+  by-popularity NDCG@10: tail=0.0016(n=8,800)  mid=0.0062(n=8,657)  head=0.0573(n=39,982)
+  epoch  15  loss=8.3239  val_NDCG=0.0460  test_NDCG=0.0411  test_HR=0.0742  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 3.0s]
+    [15,872/57,439  elapsed 4.4s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.7s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0019(n=7,762)  mid=0.0072(n=8,169)  head=0.0622(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0016(n=8,800)  mid=0.0064(n=8,657)  head=0.0575(n=39,982)
+  epoch  16  loss=8.3055  val_NDCG=0.0462  test_NDCG=0.0412  test_HR=0.0743  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.8s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.3s]
+  eval done in 15.5s
+  by-popularity NDCG@10: tail=0.0018(n=7,762)  mid=0.0074(n=8,169)  head=0.0620(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.7s]
+    [51,712/57,439  elapsed 14.1s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0016(n=8,800)  mid=0.0065(n=8,657)  head=0.0573(n=39,982)
+  epoch  17  loss=8.2899  val_NDCG=0.0461  test_NDCG=0.0411  test_HR=0.0738  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.4s]
+    [36,352/57,439  elapsed 9.8s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.3s]
+  eval done in 15.5s
+  by-popularity NDCG@10: tail=0.0019(n=7,762)  mid=0.0074(n=8,169)  head=0.0621(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.1s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0016(n=8,800)  mid=0.0064(n=8,657)  head=0.0573(n=39,982)
+  epoch  18  loss=8.2814  val_NDCG=0.0462  test_NDCG=0.0411  test_HR=0.0740  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.0s]
+    [31,232/57,439  elapsed 8.4s]
+    [36,352/57,439  elapsed 9.8s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.5s]
+    [51,712/57,439  elapsed 13.9s]
+    [56,832/57,439  elapsed 15.3s]
+  eval done in 15.5s
+  by-popularity NDCG@10: tail=0.0019(n=7,762)  mid=0.0074(n=8,169)  head=0.0620(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.6s]
+    [10,752/57,439  elapsed 3.0s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.7s]
+    [51,712/57,439  elapsed 14.1s]
+    [56,832/57,439  elapsed 15.5s]
+  eval done in 15.7s
+  by-popularity NDCG@10: tail=0.0016(n=8,800)  mid=0.0065(n=8,657)  head=0.0573(n=39,982)
+  epoch  19  loss=8.2737  val_NDCG=0.0461  test_NDCG=0.0411  test_HR=0.0738  (6.0s)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.2s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.4s]
+    [36,352/57,439  elapsed 9.8s]
+    [41,472/57,439  elapsed 11.2s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.5s
+  by-popularity NDCG@10: tail=0.0019(n=7,762)  mid=0.0074(n=8,169)  head=0.0622(n=41,508)
+  evaluating 57,439 users in batches of 512...
+    [512/57,439  elapsed 0.1s]
+    [5,632/57,439  elapsed 1.5s]
+    [10,752/57,439  elapsed 2.9s]
+    [15,872/57,439  elapsed 4.3s]
+    [20,992/57,439  elapsed 5.7s]
+    [26,112/57,439  elapsed 7.1s]
+    [31,232/57,439  elapsed 8.5s]
+    [36,352/57,439  elapsed 9.9s]
+    [41,472/57,439  elapsed 11.3s]
+    [46,592/57,439  elapsed 12.6s]
+    [51,712/57,439  elapsed 14.0s]
+    [56,832/57,439  elapsed 15.4s]
+  eval done in 15.6s
+  by-popularity NDCG@10: tail=0.0016(n=8,800)  mid=0.0065(n=8,657)  head=0.0574(n=39,982)
+  epoch  20  loss=8.2701  val_NDCG=0.0462  test_NDCG=0.0412  test_HR=0.0738  (6.0s)
+
+=== Best by val NDCG@10 ===
+  val_NDCG=0.0462
+  test: {'NDCG@10': 0.0411530542379373, 'HR@10': 0.073834850885287, 'MRR': 0.03760129036701166, 'n_eval': 57439, 'by_popularity': {'tail': {'NDCG@10': 0.0016061392834033283, 'HR@10': 0.003522727272727273, 'n': 8800, 'n_hit@10': 31, 'HR@20': 0.007272727272727273, 'n_hit@20': 64, 'HR@50': 0.019204545454545453, 'n_hit@50': 169, 'HR@100': 0.03590909090909091, 'n_hit@100': 316}, 'mid': {'NDCG@10': 0.006479800238172277, 'HR@10': 0.012475453390319972, 'n': 8657, 'n_hit@10': 108, 'HR@20': 0.022987178006237726, 'n_hit@20': 199, 'HR@50': 0.04840013861614878, 'n_hit@50': 419, 'HR@100': 0.08213006815293981, 'n_hit@100': 711}, 'head': {'NDCG@10': 0.05736482982384759, 'HR@10': 0.10259616827572407, 'n': 39982, 'n_hit@10': 4102, 'HR@20': 0.147566404882197, 'n_hit@20': 5900, 'HR@50': 0.23027862538142163, 'n_hit@50': 9207, 'HR@100': 0.3074883697663949, 'n_hit@100': 12294}}}
+wrote _bestrec_run\rebuild_v2\results_SOTACONF_V2_k16_MI_seed20260618.users.jsonl.gz (57,439 per-user records, best epoch 20, sha256 b45c3ca061dc…)
+
+wrote _bestrec_run\rebuild_v2\results_SOTACONF_V2_k16_MI_seed20260618.json

@@ -1,0 +1,9 @@
+name: seal-endpoint-check
+on: [push, pull_request]
+jobs:
+  seal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject any tracked sequestered-endpoint artifact outside the frozen allowlist
+        run: bash cloud/ci_seal_check.sh

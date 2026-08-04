@@ -1,0 +1,35 @@
+k16 seed 20260618 done
+k16 seed 20260619 done
+k16 seed 20260620 done
+k16 seed 20260621 done
+k16 seed 20260622 done
+k8 seed 20260618 done
+k8 seed 20260619 done
+k8 seed 20260620 done
+k8 seed 20260621 done
+k8 seed 20260622 done
+adjudicating: _bestrec_run/rebuild_v2
+
+=== ARM k16 ===
+  seed 20260618: NDCG@10=0.04115 HR@10=0.07383 n_eval=57439 best_ep=20 hashes_ok=True >0.0406: True
+  seed 20260619: NDCG@10=0.04108 HR@10=0.07373 n_eval=57439 best_ep=20 hashes_ok=True >0.0406: True
+  seed 20260620: NDCG@10=0.04151 HR@10=0.07434 n_eval=57439 best_ep=14 hashes_ok=True >0.0406: True
+  seed 20260621: NDCG@10=0.04152 HR@10=0.07477 n_eval=57439 best_ep=16 hashes_ok=True >0.0406: True
+  seed 20260622: NDCG@10=0.04226 HR@10=0.07497 n_eval=57439 best_ep=18 hashes_ok=True >0.0406: True
+  mean=0.04150 sd=0.00047 CI-LB=0.04092 seeds>0.0406: 5/5
+  ARM GATE (CI-LB > 0.0406): PASS
+
+=== ARM k8 ===
+  seed 20260618: NDCG@10=0.04118 HR@10=0.07382 n_eval=57439 best_ep=16 hashes_ok=True >0.0406: True
+  seed 20260619: NDCG@10=0.04102 HR@10=0.07382 n_eval=57439 best_ep=17 hashes_ok=True >0.0406: True
+  seed 20260620: NDCG@10=0.04154 HR@10=0.07486 n_eval=57439 best_ep=15 hashes_ok=True >0.0406: True
+  seed 20260621: NDCG@10=0.04150 HR@10=0.07458 n_eval=57439 best_ep=13 hashes_ok=True >0.0406: True
+  seed 20260622: NDCG@10=0.04084 HR@10=0.07316 n_eval=57439 best_ep=16 hashes_ok=True >0.0406: True
+  mean=0.04121 sd=0.00030 CI-LB=0.04084 seeds>0.0406: 5/5
+  ARM GATE (CI-LB > 0.0406): PASS
+
+=== provenance consistency ===
+  git_commit=89f32fb55c204812e96097ac182d3bd2e666ec78 dirty_tracked=False
+
+=== DUAL GATE VERDICT: PASS ===
+SOTA_CONFIRM_V2_DRIVER_COMPLETE

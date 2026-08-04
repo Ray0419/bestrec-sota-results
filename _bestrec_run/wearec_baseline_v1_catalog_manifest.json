@@ -1,0 +1,28 @@
+{
+  "catalog_items": 25612,
+  "items": {
+    "test": 18219,
+    "train": 25527,
+    "valid": 18799
+  },
+  "private_catalog_sha256": "461a8e541da3f528d7ed768339e319b0bfdb1f243c1f29400f5edbd8c017f31a",
+  "protocol": "PREREG_WEAREC_BASELINE_V1",
+  "rows": {
+    "test": 94762,
+    "train": 625062,
+    "valid": 94762
+  },
+  "scope": "prefreeze transductive catalog identity only; no endpoint values",
+  "split_sha256": {
+    "test": "5a21bbcb5106d48cca21e90bbb6c417e1b95ac406321cd300c7800759dbaa496",
+    "train": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
+    "valid": "b70d195ab3b9f76082854671e0e6a94c444302db6169d4074f112695d1467711"
+  },
+  "test_only_items_vs_train_valid": 12,
+  "test_only_users_vs_train_valid": 0,
+  "users": {
+    "test": 94762,
+    "train": 94762,
+    "valid": 94762
+  }
+}

@@ -1,0 +1,8 @@
+We test whether a small, identity-initialized causal finite-impulse-response (FIR) residual provides a robust modular gain in sequential recommendation.
+On three outcome-known Amazon Reviews 2023 category/split settings, learned FIR minus identity estimates are positive; on Musical\_Instruments the effect is +0.002265, ordinary Welch 95\% CI [0.001928, 0.002602].
+The learned filter also exceeds an equal-parameter current-position-only placebo (+0.001941 [+0.001788, +0.002095]), but does not separate from a 16-parameter shared causal filter (-0.000081 [-0.000337, +0.000175]), limiting any claim of per-channel-tap necessity.
+A prospectively frozen same-investigator MovieLens 1M study is negative: learned minus identity +0.000000 [-0.000074, +0.000075] and learned minus pointwise +0.000035 [-0.000057, +0.000127].
+Thus the parsimonious FIR arms support only conditional coefficient-count compression, not practical efficiency or cross-domain replication.
+Outcome-known same-evaluator AlphaFuse-style and WEARec studies improve comparator coverage; the AlphaFuse-style package remains above a separately frozen parser-default-normal SASRec-ID sensitivity by +0.005207 [+0.004779, +0.005635], but these are whole-package, unequal-model results below the paper's existing reference.
+Overall, the contribution is a narrow detachable implementation and an artifact-gated evaluation record, not a new architecture, general FIR benefit, SOTA result, or independent confirmation.
+A fail-closed graph preserves positive, null, deviated, and VOID outcomes under one reporting rule.

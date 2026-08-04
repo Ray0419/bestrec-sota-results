@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "run_id": "smoke_video_games_sasrec_20260608",
+  "timestamp_utc": "2026-06-08T03:03:24+00:00",
+  "command": "_bestrec_run\\run_sasrec_confirmatory.py --category Video_Games --methods sasrec_sbert --seeds 20260608 --epochs 1 --eval-every 1 --run-id smoke_video_games_sasrec_20260608",
+  "cwd": "C:\\Users\\rayxc\\Documents\\R",
+  "category": "Video_Games",
+  "methods": [
+    "sasrec_sbert"
+  ],
+  "seeds": [
+    20260608
+  ],
+  "config": {
+    "category": "Video_Games",
+    "seeds": "20260608",
+    "methods": "sasrec_sbert",
+    "run_id": "smoke_video_games_sasrec_20260608",
+    "epochs": 1,
+    "batch_size": 256,
+    "eval_batch_size": 512,
+    "max_seq_len": 50,
+    "d_model": 64,
+    "n_layers": 2,
+    "n_heads": 2,
+    "dropout": 0.2,
+    "lr": 0.001,
+    "eval_every": 1,
+    "eval_subsample": 0,
+    "sampled_negs": 0,
+    "in_batch_negs": false,
+    "chunked_full_softmax": false,
+    "item_chunk": 8192,
+    "augment_factor": 1,
+    "mlp_hidden": 300,
+    "mlp_dropout": 0.2,
+    "resume": false
+  },
+  "environment": {
+    "python": "3.12.13 (main, Apr  7 2026, 20:53:22) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "2.4.4",
+    "torch": "2.11.0+cu128",
+    "torch_cuda": "12.8",
+    "device": "cuda",
+    "nvidia_smi": {
+      "ok": true,
+      "output": "NVIDIA GeForce RTX 5060 Ti, 16311 MiB, 10708 MiB, 591.86"
+    },
+    "git_head": {
+      "ok": true,
+      "output": "dd4c34265ffa9f64b18b6677a9e75336035422d6"
+    },
+    "git_status_short": {
+      "ok": true,
+      "output": "AM BEAUTY_GAP_CAMPAIGN_RESULTS.md\nA  BEAUTY_GAP_CLOSING_PLAN.md\nAM BEAUTY_GAP_FINAL_HONEST.md\n M SOTA_FINAL_HONEST.md\nMM SOTA_GOAL_FINAL.md\n M SOTA_HUNT_FINAL.md\n M SOTA_VIDEO_GAMES_RESULT.md\nA  _bestrec_run/compare_beauty_results.py\nA  _bestrec_run/concat_encoder_caches.py\n M _bestrec_run/encode_blair_5core.py\nAM _bestrec_run/encode_blair_richtext_5core.py\nAM _bestrec_run/encode_richtext_5core.py\nA  _bestrec_run/queue_next_beauty_experiments.sh\nA  _bestrec_run/results_sasrec_blair_mlp_drop02_Beauty.json\nA  _bestrec_run/results_sasrec_blair_richtext_mlp_Beauty.json\nA  _bestrec_run/results_sasrec_blair_richtext_mlp_seed43_Beauty.json\nMM _bestrec_run/run_sasrec_sbert.py\n?? BULLETPROOF_PLAN_EXECUTION_REPORT.md\n?? BULLETPROOF_PLAN_FOR_CODEX.md\n?? CITATION_AUDIT.md\n?? COMPARATOR_SOURCE_AUDIT.md\n?? LEADERBOARD_STATUS.md\n?? PUBLISHABLE_CLAIM.md\n?? REVISION_PLAN.md\n?? SELF_PLAGIARISM_AUDIT.md\n?? VALIDATION_RUN_STATUS.md\n?? _bestrec_confirmatory_sasrec/\n?? _bestrec_run/CITATIONS.md\n?? _bestrec_run/README.md\n?? _bestrec_run/SASREC_IMPLEMENTATION_VERIFICATION.md\n?? _bestrec_run/run_sasrec_confirmatory.py\n?? _bestrec_sota_lab/paper_draft/"
+    }
+  },
+  "input_hashes": {
+    "data_5core/5core/last_out/Video_Games.train.csv": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
+    "data_5core/5core/last_out/Video_Games.valid.csv": "b70d195ab3b9f76082854671e0e6a94c444302db6169d4074f112695d1467711",
+    "data_5core/5core/last_out/Video_Games.test.csv": "5a21bbcb5106d48cca21e90bbb6c417e1b95ac406321cd300c7800759dbaa496",
+    "_bestrec_run/run_sasrec_confirmatory.py": "0f853adcbbfdcdade2a741f32b5fbfbed430c254a95f65fcc8eaf6376f83e212",
+    "_bestrec_run/run_sasrec_sbert.py": "867e6e57765336a1f2f4f2d0340d57111af8694a5b0e5ffa8d0baf03a9add507",
+    "cache_5core/sbert_titles_Video_Games.npy": "00e539a4e04289ec42db9c18eacd0d817a4ba9f8a4d2a9c14cf8a4e8bc8b45fd"
+  },
+  "output_hashes": {
+    "_bestrec_confirmatory_sasrec/smoke_video_games_sasrec_20260608/publication_gate.json": "0111643343069913de7143822b27359093eec11a235d0e4192acde6b3b1763f8",
+    "_bestrec_confirmatory_sasrec/smoke_video_games_sasrec_20260608/result_Video_Games_sasrec_sbert_seed20260608.json": "67f585535923e580e4d4dc70e50a79e0c7f4edd9e3a6d2b4249f6e93232738c4",
+    "_bestrec_confirmatory_sasrec/smoke_video_games_sasrec_20260608/results_final.json": "6469f20702de2ad3f519ffa60ff7921034735d8b1757c98f76f98ee5452fdb01",
+    "_bestrec_confirmatory_sasrec/smoke_video_games_sasrec_20260608/run_config.json": "f172de909741a34946a44fa800fac3926f1a83309c94650213a9b9d0a118219b",
+    "_bestrec_confirmatory_sasrec/smoke_video_games_sasrec_20260608/warm_full_catalog_records_Video_Games_sasrec_sbert_seed20260608.jsonl": "b1e59ff01402e519056c703375b1b681e9d88d03b024c86d039a23579108dff4"
+  }
+}

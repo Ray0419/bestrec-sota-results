@@ -1,0 +1,92 @@
+%% paper-shared.tex -- everything below \documentclass, shared by both build targets:
+%%   main.tex          [manuscript,screen]  -> PAPER_TORS.pdf  (single-blind per current TORS guidelines)
+%%   main-acmsmall.tex [acmsmall,screen] -> PAPER_TORS_acmsmall.pdf (journal-layout main paper)
+%% See VENUE_PLAN.md ("TORS: manuscript/acmsmall journal format") and BUILD_NOTES.md.
+
+\acmJournal{TORS}
+\acmYear{2026}
+\setcopyright{none}
+\settopmatter{printacmref=false}
+\acmDOI{}% suppress the class's 10.1145/nnnnnnn.nnnnnnn stub on the review manuscript
+
+\citestyle{acmauthoryear}
+
+\usepackage{tabularx}
+\usepackage{longtable}
+\setlength{\emergencystretch}{1.5em}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+%% round-7: Figs 1-3 embedded from the repository figures/ directory (canonical PDFs)
+\graphicspath{{../figures/}}
+%% \cref prints exactly the md's "Fig. N" wording (cleveref loads after hyperref, which acmart provides)
+\usepackage{cleveref}
+\crefname{figure}{Fig.}{Figs.}
+\Crefname{figure}{Fig.}{Figs.}
+
+%% pandoc-emitted list macro
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%% long technical tokens + narrow table cells: soften overfull boxes
+\emergencystretch=3em
+\hyphenation{Musical-Instruments Video-Games Beauty-and-Personal-Care}
+
+\begin{document}
+
+\title[Artifact-Gated Evaluation]{Artifact-Gated Evaluation of a Causal FIR Module for Sequential Recommendation}
+
+\author{[Maintainer: real author name(s) required -- TORS is single-blind]}
+\affiliation{%
+  \institution{[Maintainer: real institution required -- TORS is single-blind]}
+  \country{[Maintainer: country]}}
+
+\renewcommand{\shortauthors}{[Maintainer: short author list]}
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\begin{CCSXML}
+<ccs2012>
+<concept>
+<concept_id>10002951.10003317.10003347.10003350</concept_id>
+<concept_desc>Information systems~Recommender systems</concept_desc>
+<concept_significance>500</concept_significance>
+</concept>
+<concept>
+<concept_id>10002951.10003317.10003371</concept_id>
+<concept_desc>Information systems~Personalization</concept_desc>
+<concept_significance>300</concept_significance>
+</concept>
+</ccs2012>
+\end{CCSXML}
+\ccsdesc[500]{Information systems~Recommender systems}
+\ccsdesc[300]{Information systems~Personalization}
+\keywords{sequential recommendation, Amazon Reviews 2023, HSTU, causal FIR filtering, long-tail recommendation, text-augmented recommendation, reproducibility, pre-declaration}
+
+\maketitle
+
+\input{sections/01-introduction}
+\input{sections/02-related}
+\input{sections/03-method}
+\input{sections/04-experiments}
+\input{sections/05-results}
+\input{sections/06-discussion}
+\input{sections/07-conclusion}
+\input{sections/08-availability}
+\input{sections/09-acknowledgments}
+\input{sections/10-ethics}
+
+%% References (position matches the canonical md: after S10, before the appendices).
+%% nocite-star REMOVED 2026-07-21 (audit 22:57 fix 6): every entry is now cited at its prose site; the H9 gate fails the build if a bib entry loses its citation.
+%% The bibliography now prints exactly the cited set (75 entries, matching the md list
+%% after the same reference-to-text audit removed its two never-named entries).
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\ifincludeappendices
+  \input{sections/appendix-a0}
+  \input{sections/appendix-a}
+  \input{sections/supplement-tables}
+\fi
+
+\end{document}

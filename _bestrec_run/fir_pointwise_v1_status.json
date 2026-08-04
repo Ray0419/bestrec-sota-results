@@ -1,0 +1,10 @@
+{
+  "protocol": "PREREG_FIR_POINTWISE_V1",
+  "state": "complete",
+  "trained": 24,
+  "skipped_train": 0,
+  "evaluated": 24,
+  "skipped_eval": 0,
+  "total": 24,
+  "elapsed_min": 144.2
+}

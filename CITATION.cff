@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "UNPUBLISHED CANDIDATE: replace creator metadata before citing a released artifact."
+title: "Artifact-Gated Evaluation of a Causal FIR Module for Sequential Recommendation (code and evaluation artifacts)"
+type: software
+authors:
+  - name: "CREATOR METADATA REQUIRED BEFORE PUBLICATION"
+repository-code: "https://github.com/Ray0419/bestrec-sota-results"
+license: MIT
+version: "1.2.0"
+keywords:
+  - sequential recommendation
+  - Amazon Reviews 2023
+  - MovieLens 1M
+  - HSTU
+  - causal FIR residual
+  - modular contribution
+  - reproducibility
+  - pre-declaration
+abstract: >-
+  Unpublished candidate metadata for the code, pre-declarations, provenance
+  manifests, and evaluation artifacts accompanying a narrow modular study of a
+  gradient-active left-causal depthwise FIR residual in an HSTU-style sequential
+  recommender. The fail-closed graph recomputes 200 active paper cells across 24
+  families and preserves null, deviated, and VOID outcomes. An equal-parameter
+  current-position-only placebo discriminates learned FIR from that tested compound
+  placebo in an outcome-known setting but does not isolate temporal access. A
+  prospectively frozen MovieLens 1M study did not replicate learned FIR versus identity
+  or pointwise; smaller FIR arms met a noninferiority margin only conditionally on that
+  failed effect gate. The evidence does not support broad SOTA,
+  paired superiority over single-run comparators, per-channel-tap necessity,
+  independent confirmation, or generalization. Replace the author placeholder
+  and verify legal/licensing fields before publication.

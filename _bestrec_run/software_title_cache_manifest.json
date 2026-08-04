@@ -1,0 +1,44 @@
+{
+  "created_utc": "2026-07-27T23:47:33.695340+00:00",
+  "device": "cuda",
+  "dtype": "float32",
+  "inputs": {
+    "feasibility": {
+      "path": "_bestrec_run/software_feasibility.json",
+      "sha256": "54d8c6ae086a51ba784f038c438761105634f988ea85ba3c2b65e63f9b8b960d"
+    },
+    "metadata": {
+      "path": "data_raw_proper/software/meta_Software.jsonl",
+      "sha256": "7c52cce1bf3bff33f965fe117e3e8fac18a1839f88b215efa50b31a8230a5f58"
+    }
+  },
+  "items": 17591,
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "normalization": false,
+  "outputs": {
+    "embeddings": {
+      "bytes": 27019904,
+      "path": "cache_5core/sbert_titles_Software.npy",
+      "sha256": "2a1d09dea26c9c619a6d52ba2082c58ac23c03a04a7f02be30f5e9441098aa38"
+    },
+    "item_map": {
+      "bytes": 358302,
+      "path": "cache_5core/asin2idx_Software.json",
+      "sha256": "62e6a129e39dcead62922e096d6a36eef2527668a7bb8791822127440d36c7ae"
+    }
+  },
+  "protocol": "PREREG_FIR_PROSPECTIVE_SW_V2_PREPARATION",
+  "shape": [
+    17591,
+    384
+  ],
+  "titles_found": 17591,
+  "titles_missing_or_empty": 0,
+  "versions": {
+    "numpy": "2.4.4",
+    "python": "3.12.13",
+    "sentence_transformers": "5.4.1",
+    "torch": "2.11.0+cu128"
+  }
+}

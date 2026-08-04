@@ -1,0 +1,12 @@
+{
+  "status": "RETRACTED",
+  "retracted": [
+    "fig_bbp_irreducibility.pdf",
+    "fig_bbp_irreducibility.png",
+    "make_fig_bbp_irreducibility.py"
+  ],
+  "reason": "BBP spectral-irreducibility impossibility claim retracted in the manuscript (see the s5.4.2 retraction note); generator emits the withdrawn claim and must not be rerun for release artifacts",
+  "quarantined": "2026-07-22",
+  "audit": "2026-07-22 11:48 C7",
+  "history": "preserved in git (git mv)"
+}

@@ -1,0 +1,12 @@
+%% TORS JOURNAL-LAYOUT TARGET: focused acmsmall main paper. The single-column
+%% review rendering remains main.tex -> PAPER_TORS.pdf, while this target is
+%% also required because the venue's usual length guidance is stated in acmsmall pages.
+%% All authored main-paper content is shared via paper-shared.tex.
+\documentclass[acmsmall,screen]{acmart}
+\newif\ifmainpaper
+\mainpapertrue
+\newif\ifextendedmaterial
+\extendedmaterialfalse
+\newif\ifincludeappendices
+\includeappendicesfalse
+\input{paper-shared}

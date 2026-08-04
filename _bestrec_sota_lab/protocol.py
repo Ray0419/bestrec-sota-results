@@ -65,7 +65,7 @@ def lab_code_inputs() -> list[Path]:
 def external_code_inputs() -> list[Path]:
     """Hash external comparator source without pulling in checkpoints/results."""
 
-    roots = [ROOT / "external" / "liger"]
+    roots = [ROOT / "external" / "liger", ROOT / "external" / "HSTU-BLaIR"]
     allowed_suffixes = {".md", ".py", ".json", ".yaml", ".yml", ".toml", ".txt"}
     allowed_names = {"LICENSE", ".gitignore"}
     skip_dirs = {".git", "__pycache__", "outputs", "results"}

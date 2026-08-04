@@ -1,0 +1,15 @@
+{
+  "preset_order_for_exact_ties": [
+    "official_sports",
+    "official_beauty"
+  ],
+  "protocol": "PREREG_WEAREC_BASELINE_V1",
+  "selected_preset": "official_beauty",
+  "selection_endpoint": "maximum shared-evaluator VALID NDCG@10",
+  "test_read_or_scored": false,
+  "tuning_seed": 20262000,
+  "validation_ndcg10": {
+    "official_beauty": 0.06844664817855373,
+    "official_sports": 0.06812966341037814
+  }
+}

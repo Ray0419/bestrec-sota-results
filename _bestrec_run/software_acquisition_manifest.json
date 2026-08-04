@@ -1,0 +1,19 @@
+{
+  "created_utc": "2026-07-27T23:46:53.137675+00:00",
+  "files": {
+    "Software.csv.gz": {
+      "bytes": 19079096,
+      "path": "data_raw_proper/software/Software.csv.gz",
+      "sha256": "a3ab7484436ac9034d1399b501fd2f6f5e82cfe096aeb2c4361ebfa1a5db494e",
+      "url": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/benchmark/5core/rating_only/Software.csv.gz"
+    },
+    "meta_Software.jsonl": {
+      "bytes": 256220771,
+      "path": "data_raw_proper/software/meta_Software.jsonl",
+      "sha256": "7c52cce1bf3bff33f965fe117e3e8fac18a1839f88b215efa50b31a8230a5f58",
+      "url": "https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023/resolve/2b6d039ed471f2ba5fd2acb718bf33b0a7e5598e/raw/meta_categories/meta_Software.jsonl"
+    }
+  },
+  "hf_revision": "2b6d039ed471f2ba5fd2acb718bf33b0a7e5598e",
+  "protocol": "PREREG_FIR_PROSPECTIVE_SW_V2_PREPARATION"
+}

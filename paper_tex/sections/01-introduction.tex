@@ -1,0 +1,68 @@
+%% GENERATED from PAPER_SUBMISSION.md (pandoc) -- hand-fixed conversion; see BUILD_NOTES.md
+\section{Introduction}\label{sec:1}
+
+Sequential recommendation models predict a user's next item from their interaction
+history. SASRec \citep{kang2018sasrec} and BERT4Rec \citep{sun2019bert4rec}
+established Transformer-based baselines. Later systems add language-derived item
+representations \citep{ding2021zesrec,hou2022unisrec,li2023recformer,hou2024blair}
+or discrete semantic IDs \citep{rajput2023tiger,yang2024liger}.
+
+Amazon Reviews 2023 results span incompatible preprocessing variants, and superficially
+similar ``5-core'' labels hide different contracts. Our pipeline iteratively filters
+both users and items and then applies leave-last-out. LIGER reports user-and-item
+filtering, whereas TIGER reports user filtering only; both use Amazon Reviews 2014,
+not AR2023. Their holdout chronology is related to ours, but their datasets and
+filtering geometry are not interchangeable with our fixed AR2023 splits or with the
+0-core reference pipeline.
+
+Recommender evaluation is vulnerable to mistuned baselines, incompatible protocols,
+and irreproducible result selection
+\citep{ferraridacrema2019worrying,ferraridacrema2021troubling}. We therefore pair
+the method with a per-paper discipline: git-frozen protocols, a fail-closed graph that
+recomputes 201 reported cells across 25 claim families, environment-caveated comparator
+regeneration, and symmetric adjudication. Failures are retained. In particular, the
+original Office\_Products protocol remains VOID after its own floor check exposed an
+environment mismatch, although a redesigned fresh-seed protocol later passed
+(\S\ref{sec:5.2}; Appendix A.0).
+
+Using an HSTU-style pure-PyTorch encoder based on \citet{zhai2024hstu}, we ask whether
+one small causal filtering component survives matched controls and can be reused without
+category-specific tuning. Our contribution ledger is deliberately limited to three
+items:
+
+\begin{enumerate}
+\item \textbf{A canonical causal FIR module.} We adapt earlier bidirectional frequency
+filters to a strictly left-causal, depthwise residual that is identity-initialized and
+gradient-active under the all-position objective (\S\ref{sec:3}). This is a modular
+component, not a new recommender architecture.
+\item \textbf{Internal evidence, a negative non-Amazon test, and a mechanism boundary.}
+Learned FIR--identity estimates are positive on three outcome-known Amazon category/split settings.
+A separately frozen Software attempt then produced +0.005062 [+0.004591, +0.005533],
+clearing its pre-declared +0.000500 reporting threshold with validation-only selection and
+sealed final evaluation. Because earlier V2 validation-output non-visibility is not
+independently established, V3 is classified outcome-known/exploratory under local
+same-user custody---not confirmation. On Musical\_Instruments, learned taps do not separate from a
+shared causal filter, but they beat a parameter-matched current-position-only placebo by
++0.001941 [+0.001788, +0.002095], while the placebo--identity interval spans zero. This
+discriminates learned FIR from that compound placebo; it does not isolate temporal access,
+establish unique necessity of per-channel taps or provide independent confirmation.
+A prospectively frozen MovieLens 1M study then failed to replicate learned FIR against
+identity or pointwise. Its shared/grouped/low-rank arms met a pre-declared noninferiority
+margin versus learned FIR only conditionally on that failed replication gate. Together
+these results prevent a general filtering or cross-domain claim.
+An official-code WEARec feasibility run under the same evaluator also scored below the
+existing full-model reference; it equalizes evaluation only, not architecture, loss,
+schedule, or tuning, and is neither independent confirmation nor SOTA evidence.
+A frozen study contrasting an AlphaFuse-style package with a zero-initialized upstream-class SASRec-ID control returned a positive
+whole-package contrast; the package also remained above a separately frozen parser-default-normal SASRec-ID sensitivity, but stayed below that full-model reference. These studies improve
+comparator coverage without isolating a component or supplying independent confirmation.
+\item \textbf{An auditable evaluation record.} Released protocols, artifacts,
+sidecars where available, comparator-regeneration code, and a strict rebuild preserve
+positive, null, deviated, and VOID outcomes under the same reporting rule
+(\S\ref{sec:8}). The apparatus certifies reconstruction and protocol history; it does
+not strengthen the estimand.
+\end{enumerate}
+
+TAPE, late fusion, sparse-warm redistribution, titrations, probe screens, and earlier
+Beauty results are supporting studies. All borrowed architectures and training recipes
+are attributed in \S\ref{sec:2}.

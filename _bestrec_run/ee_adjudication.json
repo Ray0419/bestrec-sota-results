@@ -1,0 +1,104 @@
+{
+ "Video_Games": {
+  "experiment": "E-E",
+  "category": "Video_Games",
+  "arm_A": "AlphaFuse",
+  "arm_B": "our SASRec-SBERT stack",
+  "n_seeds": 3,
+  "min_seeds_required": 3,
+  "alphafuse_family_mean_sd": {
+   "HR@5": {
+    "mean": 0.046355,
+    "sd": 0.000164,
+    "n": 3
+   },
+   "HR@10": {
+    "mean": 0.079121,
+    "sd": 0.000274,
+    "n": 3
+   },
+   "HR@20": {
+    "mean": 0.124118,
+    "sd": 0.001069,
+    "n": 3
+   },
+   "HR@50": {
+    "mean": 0.202472,
+    "sd": 0.001312,
+    "n": 3
+   },
+   "NDCG@5": {
+    "mean": 0.027482,
+    "sd": 0.000155,
+    "n": 3
+   },
+   "NDCG@10": {
+    "mean": 0.03802,
+    "sd": 0.000201,
+    "n": 3
+   },
+   "NDCG@20": {
+    "mean": 0.049338,
+    "sd": 0.000414,
+    "n": 3
+   },
+   "NDCG@50": {
+    "mean": 0.064826,
+    "sd": 0.000446,
+    "n": 3
+   },
+   "MRR@5": {
+    "mean": 0.02134,
+    "sd": 0.000148,
+    "n": 3
+   },
+   "MRR@10": {
+    "mean": 0.025655,
+    "sd": 0.000172,
+    "n": 3
+   },
+   "MRR@20": {
+    "mean": 0.028731,
+    "sd": 0.000236,
+    "n": 3
+   },
+   "MRR@50": {
+    "mean": 0.031193,
+    "sd": 0.000236,
+    "n": 3
+   }
+  },
+  "comparator_our_stack": {
+   "NDCG@10": 0.063676,
+   "provenance_files": [
+    "results_BEST_VG_seed20260610.json",
+    "results_BEST_VG_seed20260611.json",
+    "results_BEST_VG_seed20260612.json"
+   ],
+   "provenance_values": [
+    0.06411679823353583,
+    0.06350441441118967,
+    0.0634055563728492
+   ],
+   "note": "same split, same MiniLM-384 text; recorded, not re-run"
+  },
+  "point_estimate_NDCG10": {
+   "alphafuse_mean": 0.03802,
+   "our_stack": 0.063676,
+   "difference_A_minus_B": -0.025656,
+   "label": "DESCRIPTIVE point estimate; NON-INFERENTIAL; no significance test; no ranking claim asserted in either direction; single environment."
+  },
+  "disclosed_deviations": [
+   "MiniLM-384 substituted for OpenAI text-embedding-3",
+   "our AR2023 5-core LLOO split; never their paper numbers",
+   "each method trains as designed (AlphaFuse sampled-neg infoNCE)",
+   "per-prefix train expansion is our adapter's disclosed choice",
+   "single environment; point estimate, no cross-env variance"
+  ],
+  "verdict": "PILOT_NONCOUNTABLE",
+  "quarantine_reasons": [
+   "no shared-evaluator estimand parity (AlphaFuse eval does not mask seen items; ours does) -- cross-evaluator"
+  ],
+  "reporting_class": "protocol-deviated engineering PILOT; NOT countable; values must NOT be integrated; superseded by E-E V2 (one shared exact-rank evaluator, matched factorial, equal tuning, exact provenance, per-user ranks)."
+ }
+}

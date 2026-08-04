@@ -1,261 +1,138 @@
-# BEST-Rec v5: SBERT-Augmented EASE + Novel Cold-Item Algorithm (LC2C)
+# Artifact-Gated Evaluation of a Causal FIR Module for Sequential Recommendation
 
-A closed-form linear recommender + a **novel content-to-CF mapping (LC2C)** for cold items, evaluated rigorously across four Amazon Reviews 2023 subsets. Multiple rounds of strict adversarial review (see `RESPONSE_TO_STRICT_REVIEW_RESUBMISSION_ROUND{2,3,4}.md`) have addressed the headline statistical and reproducibility issues, but several items remain explicitly out of scope for this submission and are scoped as camera-ready work: (a) BLaIR / TIGER / LIGER / CLCRec / MELT head-to-head comparisons, (b) a faithful DropoutNet reproduction with hyperparameter sweep and multi-seed variance (we ship a *simplified DropoutNet-style* baseline instead, with explicit deviation list in the paper Table 5.4 caption), (c) chronological / leave-last-out splits, and (d) a clustered-bootstrap uncertainty analysis on cold-item deltas. See "Open camera-ready items" below for the full list.
+**A narrow modular contribution with outcome-known Amazon studies, a negative prospective MovieLens 1M test, and an artifact-gated audit trail.**
 
-## Publication-grade confirmatory path
+This repository is the working artifact repository for the manuscript (ACM TORS submission format; **public** — 407 release-only assets totaling 9,489,409,339 bytes, including the Software V3 endpoint/sidecar/checkpoint set, are deposited as hash-manifested release assets; `bootstrap_public_clone.py` reconstructs a fresh clone's full evidence boundary):
+code, pre-declarations, results of record, provenance manifests, the fail-closed build
+gate, and the full adversarial audit chain. The canonical paper is
+[`PAPER_SUBMISSION.md`](PAPER_SUBMISSION.md) (reader PDF: `PAPER_SUBMISSION.pdf`); the
+venue package is the focused `paper_tex/PAPER_TORS.pdf` review rendering,
+`paper_tex/PAPER_TORS_acmsmall.pdf` journal-layout main, and
+`paper_tex/PAPER_TORS_SUPPLEMENT.pdf` reviewer supplement. Their tables are mechanically regenerated
+from the canonical Markdown/artifact graph, while its prose is a separately maintained TeX
+mirror governed by [`CANONICAL_SUBMISSION.md`](CANONICAL_SUBMISSION.md) and semantic health
+gates; the repository does not claim whole-prose generation. A non-technical companion
+with analogies and interactive demos: [`PLAIN_LANGUAGE_COMPANION.md`](PLAIN_LANGUAGE_COMPANION.md).
 
-The strict SOTA repair path is now separate from the exploratory artifacts. It freezes `lc2cpp_validated_margin`, evaluates cold targets against the **full item catalog**, writes per-record JSONL files, and blocks publication claims unless all modern-baseline and significance gates pass:
+## Verify everything with one command
 
 ```powershell
-uv --project _bestrec_run run python _bestrec_run/run_all_confirmatory.py --profile sota-confirmatory --datasets beauty,fashion,instruments,books --seeds 20260521,20260522,20260523,20260524,20260525 --candidate-scope full_catalog --no-books-cap
-uv --project _bestrec_run run python _bestrec_run/validate_artifacts.py --strict-publication
+uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --strict
 ```
 
-Outputs are written to `_bestrec_confirmatory/<run_id>/`. If any gate fails, the runner writes `_bestrec_confirmatory/<run_id>/INTERNAL_SOTA_FAILURE_REPORT.md` and does not build a SOTA paper.
+This runs, fail-closed: the bitwise HSTU core-block parity test → the artifact-graph build
+(**all 201 active artifact-gated cells across 25 families recomputed from public source artifacts**; exits
+nonzero on any mismatch, untraceable cell, or missing claim family) → release-manifest hash
+verification (the live gate reports the authoritative file count) → the pre-declared Musical_Instruments gate adjudicator → the TFV2 repaired-estimand adjudicator (outcome-visible — §5.3 chronology) → **the
+Office V3 adjudicator (counted; the build fails unless the campaign verdict is PASS)** →
+**the FIR-breadth adjudicator (artifact-integrity: the frozen rule's legacy CONFIRMED tokens are checked mechanically; the paired premise is withdrawn and no inferential confirmation is implied)** → the Office V1
+adjudicator (descriptive/VOID). Each public campaign's live or recorded verdict gates the build (MI V2, Office V3, TFV2, FIR breadth, E-A, canonical FIR breadth, FIR active controls, FIR pointwise placebo, Software V3, MovieLens `ML1M-NO-FIR-REPLICATION`, WEARec, E-E V3, E-E V4, and E-F; the E-G adjudicator also gates as an artifact-reproduction check but confers no confirmatory status — see PAPER_SUBMISSION.md §5.8). The MovieLens gate recomputes aggregate seed-vector arithmetic because private record-level endpoints are not redistributable; it does not claim independent endpoint replay.
+(hardened 2026-07-18); `update_release_manifest.py --verify-git <commit|tag>` additionally
+checks the manifest against the git blobs. **Hash-check rule:** verify digests against the
+tag blob (`git show <tag>:FILE`), the release asset, or the bundle payload — never raw
+Windows worktree bytes, whose CRLF line endings legitimately differ from the LF-pinned
+blobs (`DOI_DEPOSIT_INSTRUCTIONS.md` has the full rule).
 
-## TL;DR — paper-ready numbers
+## What is claimed (exactly this, nothing broader)
 
-### Warm leave-one-out (5-fold mean ± std, full-item ranking)
+- **Two counted pre-declared per-category point-estimate comparisons** vs published
+  HSTU-BLaIR values (single-run comparators; no paired or distributional superiority is
+  claimed, and no SOTA claim of any kind is made):
+  - **Musical_Instruments**: fresh 5-seed 95% CI lower bounds **0.04096** (K=16) / **0.04083**
+    (K=8) vs published 0.0406; 10/10 seeds above (`SOTA_CONFIRM_PREREG_V2.md`).
+  - **Office_Products (V3)**: CI lower bounds **0.03033** (K=16) / **0.03024** (K=8) vs both
+    the environment-matched local regeneration 0.0279 and the published 0.0271; 10/10 seeds
+    above (`PREREG_OFFICE_V3.md`, `OFFICE_V3_RESULTS.md`).
+- **The canonical gradient-active left-causal FIR residual has positive internal estimates on
+  three outcome-visible categories:** Musical_Instruments +0.002265 (ordinary Welch 95% CI
+  [+0.001928,+0.002602]), Industrial_and_Scientific +0.002110 (ordinary paired 95% CI
+  [+0.001820,+0.002399]), and CDs_and_Vinyl +0.006150 (ordinary paired 95% CI
+  [+0.005849,+0.006450]). Active controls show that trainable causal residual arms beat frozen
+  identity. A subsequent equal-parameter current-position-only placebo is not detectably
+  different from identity (−0.000069 [−0.000200,+0.000061]), while learned FIR beats it
+  (+0.001941 [+0.001788,+0.002095]). This discriminates learned FIR from that compound placebo
+  but does not isolate temporal access because basis/rank, activation, channel mixing, and
+  temporal access change together;
+  the competitive shared causal filter prevents per-channel-tap attribution. These are
+  outcome-known internal mechanism estimates, never an independent-confirmation or comparator claim.
+- **The prospectively frozen non-Amazon result is negative:** on MovieLens 1M rating≥4,
+  learned FIR−identity is +0.000000 [−0.000074,+0.000075] (`p_Holm=.995`) and
+  learned FIR−pointwise is +0.000035 [−0.000057,+0.000127] (`p_Holm=.796`), yielding
+  `ML1M-NO-FIR-REPLICATION`. Shared/grouped/low-rank arms (16/128/320 parameters) meet
+  the pre-declared noninferiority margin versus learned FIR (1,024), but only as
+  conditional numerical compression because the learned-FIR effect gate failed. This is
+  same-investigator evidence on one split, not independent confirmation or generalization.
+- **Pre-declared fresh-seed hybrid (E-F, 2026-07-23):** late z-score fusion with train-only EASE (Steck 2019) lifted test NDCG@10 on all three categories tested (MI +0.0024, IS +0.0026, VG +0.0032; ordinary paired 95% CIs with Holm-adjusted decisions, fresh seeds 20260721-25); the MI fused five-seed mean 0.04399 exceeds the published single-run 0.0406 (point-estimate comparison, environment-caveated; see PAPER_SUBMISSION.md §5.7).
+- **Sparse-warm text-fusion study (E-G, 2026-07-23; OUTCOME-VISIBLE, PROTOCOL-DEVIATED — descriptive only):** a validation-selected history-centroid text scorer raised tail-bin test NDCG@10 on all five categories (+0.0011 to +0.0048) at aggregate cost within margin, BUT the campaign's no-interim clause was violated, the literal config gate fails MI/VG, and the gate was amended after outcomes; no confirmatory status is claimed. Its intended clean replication (E-G2) was itself EXPOSED (a git add -A committed 14 in-progress confirm artifacts before adjudication, audit 2026-07-23 22:00); the sole remaining counted path is a future repository-sequestered E-G3 (PAPER_SUBMISSION.md §5.8).
+- **Text tail benefit: one MI frequency-5-heavy case** (cross-dataset heterogeneity not established, interaction p = 0.13; the thinning intervention did NOT explain it — one fixed draw; mechanism unresolved).
+- **The evaluation apparatus itself** — version-controlled pre-declaration (the TFV2 campaign carries OpenTimestamps proofs whose earliest Bitcoin attestation postdates its first result — the pre-launch freeze rests on Git history alone, a disclosed limitation stated exactly in §5.3 disclosure (vii)), fail-closed artifact
+  gate, comparator regeneration, symmetric self-VOIDing — demonstrated end to end.
 
-| Dataset | k | \|U\| | \|I\| | \|R\| | NDCG@10 | HR@10 | MAE | RMSE |
-|---|---|---|---|---|---|---|---|---|
-| Beauty      |  5 |    253 |    356 |   2,535 | **0.0929 ± 0.004** | 0.1652 | 0.6749 | 0.9058 |
-| Fashion     |  4 |    513 |    614 |   3,805 | **0.0923 ± 0.006** | 0.1635 | 0.7104 | 0.9599 |
-| Instruments | 10 |  3,911 |  2,269 |  59,026 | 0.0564 ± 0.002 | 0.1033 | 0.5983 | 0.9039 |
-| Books       | 20 | 14,407 | 13,164 | 601,992 | **0.1023 ± 0.003** | 0.1826 | 0.5840 | 0.8055 |
+**Explicitly not claimed:** state-of-the-art on anything (on Video_Games our 0.0673 sits
+below the published 0.0760 — "competitive, not SOTA"); statistical superiority over
+single-run comparators; anything from the Office **V1** campaign, whose pre-declared
+floor check failed and whose **VOID stands permanently** (Appendix A.0) — the redesigned V3
+campaign above is a separate pre-declaration that passed under its frozen wording.
 
-### Cold-item GroupKFold-by-item (ranking among held-out 20% item fold)
+## Layout
 
-| Method | Beauty | Fashion | Instruments | Books |
-|---|---|---|---|---|
-| Random | 0.067 | 0.036 | 0.011 | 0.002 |
-| Content KNN (X·S) | 0.145 | 0.134 | 0.036 | 0.027 |
-| LC2C V1 (SVD k=64 + Ridge) | 0.161 | 0.157 | 0.050 | 0.046 |
-| **LC2C V2 (direct Ridge, no SVD — headline)** | **0.173** | **0.155** | **0.058** | **0.065** |
-| **Δ V2 vs Content KNN** | **+19%** | **+16%** | **+62%** | **+141%** |
-
-Notes: (1) this is **NOT a full-catalog cold-item ranking** — candidates are restricted to the held-out 20% item fold, so absolute NDCG values and gains are easier than a production cold-start retrieval problem where cold items must compete with all warm and cold catalog items; (2) V2 beats V1 on Beauty/Instruments/Books and ties/slightly loses on Fashion; (3) per-USER paired Wilcoxon with Holm–Bonferroni correction is computed by `_bestrec_run/compute_significance.py` from `results_cold_item_v2_perpair_<dataset>.json` (which stores `(fold, user, item, ndcg)` records); LC2C V2 is Holm-corrected p < 0.001 vs. content-direct and a *simplified DropoutNet-style* baseline on all 4 datasets (n_users = 253 / 512 / 3,911 / 11,930). The DropoutNet row in our tables is **inspired by Volkovs et al., 2017** (SVD-warm-CF + content fallback; item-tower-only; single-config, single-seed) — it is *not* a faithful reproduction of the original architecture, and we do not claim to outperform the official tuned DropoutNet (see `_paper_gen/build_paper_full.py` Table 5.4 caption for the full deviation list).
-
-### vs LightGCN (most-cited modern baseline) on warm split
-
-Raw mean NDCG@10 gaps: Beauty **+63%**, Fashion **+44%**, Instruments **+5%**, Books **+121%** (all four numbers regenerated from the canonical `results_FINAL.json::datasets.<ds>.baselines` in this revision; the figure at `_bestrec_run/figures/fig2_vs_lightgcn.png` reads from the same source). Under one-sided paired Wilcoxon with Holm–Bonferroni correction across six baselines per dataset, the gap is significant only on Books; the small-dataset gaps fail Holm correction. **Round-4 upgrade:** the Books single-pipeline rerun moved EASE+SBERT from 0.0990 → 0.1023, so the Books-vs-LightGCN gap rose from +114% to +121% and the per-USER Wilcoxon now also Holm-rejects EASE-pure and Higher-Order EASE on Books at p < 0.001.
-
-## Two algorithms
-
-### Warm/known-item ranking — SBERT-augmented EASE
-
-```
-G  = X^T X + λI + βS_content       # X = binary user-item, S = SBERT cosine sim of titles
-B  = -G^{-1}/diag(G^{-1}); diag(B)=0
-score(u, i) = (X B)[u, i]
-```
-
-Closed-form, no learned parameters, sub-second fit on small datasets.
-
-### Cold-item ranking — Learned Content-to-CF (LC2C)
-
-For an item never seen in training, EASE's `B[:, j_cold]` is undefined. The headline LC2C method (V2 — direct ridge, no SVD) learns a dataset-specific linear map from SBERT title embeddings directly to the full collaborative behaviour vector:
-
-```
-HEADLINE LC2C (V2):
-1. EASE on warm items                          B_warm ∈ R^{n_warm × n_warm}
-2. Ridge:  SBERT_warm @ W ≈ B_warm.T            (W ∈ R^{384 × n_warm})
-3. Predict cold B-columns                       B_hat[:, j] = (SBERT_cold[j] @ W).T
-4. Score: X[u, warm] @ B_hat[:, j]
-```
-
-A legacy SVD-compressed variant (V1) is kept as an ablation:
-
-```
-LC2C V1 (SVD-compressed, kept as ablation):
-1. EASE on warm items                          B_warm
-2. SVD(B_warm) → E_cf_warm                       (k=64 collaborative latent)
-3. Ridge:  SBERT_warm @ W ≈ E_cf_warm            (content → CF latent map)
-4. Predict cold latents                         E_cf_cold = SBERT_cold @ W
-5. Score: (X_u @ E_cf_warm) @ E_cf_cold[j].T
-```
-
-LC2C V2 improves over content-KNN by **+19% / +16% / +62% / +141%** across Beauty/Fashion/Instruments/Books in mean NDCG@10. V2 also outperforms V1 on Beauty/Instruments/Books (+7%/+15%/+43%) and ties/slightly loses on Fashion.
-
-### Per-dataset hyperparameters
-
-| Dataset | k-core | λ | β | LC2C dim |
-|---|---|---|---|---|
-| Beauty      |  5 | 100 | 10 | 64 |
-| Fashion     |  4 |  30 | 10 | 64 |
-| Instruments | 10 | 200 | 10 | 64 |
-| Books       | 20 | 200 | 10 | 64 |
-
-## Open camera-ready items (NOT addressed in this submission)
-
-The round-4 strict review (`STRICT_REVIEW_RESUBMISSION_ROUND4.md`) identified the following items as still out of scope; the round-4 response (`RESPONSE_TO_STRICT_REVIEW_RESUBMISSION_ROUND4.md`) documents the rationale for deferring each to camera-ready:
-
-1. **Notebook retirement** — `BEST_Rec_v4.ipynb` has moved to `archive/legacy_notebooks/` and is explicitly *removed* from the official reproduction path. Tables and figures are reproduced by standalone scripts under `_bestrec_run/` (see `RUNNING.md`).
-2. **Faithful DropoutNet reproduction** — we ship a simplified DropoutNet-style baseline (single config, single seed, SVD-warm-CF + content fallback); a full DropoutNet with multi-seed and hyperparameter sweep is camera-ready scope.
-3. **Modern cold-start / text-augmented comparators** — BLaIR, TIGER, LIGER, CLCRec, MELT are not run.
-4. **Clustered bootstrap on cold-item deltas** — we report a simple user-clustered bootstrap CI in `_bestrec_run/compute_significance.py` (round 4); a full fold-block + user-clustered bootstrap that respects all three dependency axes is camera-ready scope.
-5. **Chronological / temporal splits** — we use random GroupKFold by user / by item; a temporal-validity protocol is camera-ready scope.
-6. **iALS on Books** — still out-of-memory on our hardware; iALS row is missing for Books in Table 5.2.
-7. **Per-user warm-LOO vectors for the three deep baselines** (MultiVAE, iALS, LightGCN) saved in the same standalone JSON format so the entire Table 5.2 Wilcoxon path is auditable from released artifacts. Round 4 covers the four closed-form methods (Popularity, EASE-pure, Higher-Order EASE, EASE+SBERT) on all four datasets via `results_warm_loo_perfold_<ds>.json`.
-
-## Reviewer concerns addressed (partial — see `RESPONSE_TO_STRICT_REVIEW_RESUBMISSION_ROUND{2,3,4}.md` for the full audit)
-
-| Original concern | Fix in v5 |
+| Path | What |
 |---|---|
-| SVD computed on full data before train/test split | EASE refit per fold (closed-form, leakage-free) |
-| User text from full reviews including held-out | Per-fold encoding; few-shot context-only for cold |
-| KFold on interactions allows same (u,i) in train+test | Per-user leave-one-out + GroupKFold by user |
-| Multi-rating duplicates inflate k-core counts | (user, item) deduplication, latest rating kept |
-| Sampled 99-negative ranking inflates NDCG to ~0.997 | Full-item ranking against ALL unseen items |
-| `clamp(score, 1, 5)` ties items at boundary | EASE outputs raw scores, no clamp |
-| Only Beauty + Books reported | Beauty + Fashion + Instruments + Books (all 4) |
-| Deep model with 270K params overfits 3K interactions | EASE: 0 trainable params, closed-form |
-| No statistical significance reported | Paired Wilcoxon vs every baseline, all 4 datasets |
-| No deep baseline comparison | LightGCN, MultiVAE, iALS added |
-| **No true cold-start (only thresholds)** | **GroupKFold-by-item; LC2C novel algorithm** |
-| **Item-side signals risk leakage in user-only CV** | **Per-fold per-side splits; SBERT computed once from titles only (external metadata)** |
+| `PAPER_SUBMISSION.md` / `.pdf`, `PAPER_DRAFT.md` | Canonical paper (reader edition) and working draft with status history |
+| `paper_tex/` | ACM TORS main/supplement TeX package, three governed PDFs, and health/hygiene gates |
+| `_bestrec_run/` | All preprocessing/training/eval code, gates, adjudicators, result JSONs of record |
+| `SOTA_CONFIRM_PREREG_V2.md`, `PREREG_OFFICE_V3.md`, `PREREG_FIR_BREADTH.md` (+ results files) | Immutable pre-declarations and their adjudicated outcomes |
+| `RELEASE_MANIFEST.json` | Self-policing SHA256 manifest (verified inside the strict gate) |
+| `PAPER_REVIEW_AUDIT.md` / `RESPONSE_TO_PAPER_REVIEW_AUDIT.md` | The hourly adversarial audit chain (a second AI system) and point-by-point responses |
+| `DOI_DEPOSIT_INSTRUCTIONS.md`, `VENUE_PLAN.md` | Archival/deposit and venue decisions |
+| `TIER_A_PUBLICATION_ROADMAP.md` | Tier-A ranking gate and scientific risk-reduction sequence |
+| `CODEX_CLAUDE_COLLABORATION_GUIDE.md` | Shared Codex/Claude roles, freezes, protected files, and handoffs |
+| `TORS_METHODOLOGY_CHECKLIST.md` | Codex-prefilled methodology, tuning, reproducibility, policy, and Claude red-team audit matrix |
+| `CLAUDE_DESIGN_MEMO_FIR_TEMPORAL_ISOLATION_V1.md` / `CODEX_RESPONSE_TO_CLAUDE_DESIGN_MEMO.md` | Reject-first review and point-by-point response; V1 may not run |
+| `PREREG_FIR_TEMPORAL_ISOLATION_V1_DRAFT.md` | Rejected temporal-control design history; never frozen and no run authorized |
+| `PREREG_TIER_A_TUNING_MATRIX_V1_DRAFT.md` | Unfrozen symmetric baseline-tuning design; no run authorized |
+| `TIER_A_NON_AMAZON_SELECTION_GATE.md` | Metadata/legal/custody gate for choosing a new external domain before outcome inspection |
+| `PLAIN_LANGUAGE_COMPANION.md`, `companion_site/` | Non-technical explainer (documentation, not submission material) |
+| `README_LC2C_HISTORICAL.md` | Preserved README of the repository's **earlier, unrelated LC2C/EASE cold-item project** (releases up to `bestrec-raw-records-v1`); nothing in it is claimed by the current paper |
 
-## Repository layout
+## Releases
 
-```
-archive/legacy_notebooks/BEST_Rec_v4.ipynb          ← historical notebook only; not part of the official reproduction path
-README.md                                           ← this file
-RESPONSE_TO_STRICT_REVIEW_RESUBMISSION_ROUND{2,3,4}.md ← responses to successive strict-review rounds
+### Machine-readable clean-clone replay
 
-_bestrec_run/
-├── ease_efficient.py                               ← Cholesky-based EASE solver
-├── preprocess_v2.py                                ← dedup-aware dataset loader
-├── v5_utils.py                                     ← shared helpers
-├── make_paper_table.py                             ← 4-dataset paper table generator
-├── consolidate_final.py                            ← merges per-dataset results
-├── make_figures.py                                 ← warm/cold figures (round 4: reads ONLY from results_FINAL.json)
-├── run_warm_loo.py                                 ← (NEW round 4) standalone warm-LOO; saves per-(fold, user, ndcg) JSON for Table 5.2 audit
-├── run_ablation_embeddings.py                      ← SBERT vs random vs BoW ablation
-├── run_hp_sweep.py                                 ← λ × β heatmap
-├── run_cold_item.py                                ← cold-item evaluation harness
-├── run_cold_item_v2.py                             ← novel methods: LC2C V1/V2, content_topk, DropoutNet-style, etc.
-├── compute_significance.py                         ← Holm-corrected per-USER Wilcoxon for both warm-LOO (round 4) and cold-item
-├── results_FINAL.json                              ← SINGLE CANONICAL warm-LOO source (4 datasets × 7 baselines + ours)
-├── results_warm_loo.json                           ← (NEW round 4) single-pipeline warm-LOO summary
-├── results_warm_loo_perfold_<ds>.json              ← (NEW round 4) per-(fold, user, ndcg) records for Wilcoxon audit
-├── results_cold_item_v2.json                       ← cold-ITEM 5-fold summary on 4 datasets
-├── results_cold_item_v2_perpair_<ds>.json          ← per-(fold, user, item, ndcg) cold-item records
-├── results_v7_2_coldstart.json                     ← cold-USER on 4 datasets
-├── results_ablation_embeddings.json                ← embedding ablation
-├── results_hp_sweep.json                           ← λ × β grids
-├── results_lightgcn.json, results_v6_baselines.json, results_books_warm.json ← historical per-run snapshots; NOT consulted by figures or paper builder (kept for provenance only)
-├── figures/                                        ← publication-ready figures (PNG + PDF)
-│   ├── fig1_warm_methods_x_datasets.{png,pdf}      ← grouped bar: 7 methods × 4 datasets
-│   ├── fig2_vs_lightgcn.{png,pdf}                  ← headline: EASE+SBERT vs LightGCN (round 4: regenerated from results_FINAL.json)
-│   ├── fig3_ablation_embeddings.{png,pdf}          ← SBERT vs random vs BoW vs none
-│   ├── fig4_cold_start.{png,pdf}                   ← cold-USER NDCG@10
-│   ├── fig5_size_vs_ndcg.{png,pdf}                 ← method NDCG vs dataset size
-│   ├── fig6_hp_sensitivity_*.{png,pdf}             ← λ × β heatmap
-│   └── fig7_cold_item_v2.{png,pdf}                 ← LC2C cold-ITEM
-├── pyproject.toml + uv.lock                        ← reproducible Python env
-└── ...
+`python _bestrec_run/clean_clone_replay.py` is the strict, no-waiver replay path. It
+requires a clean tracked tree, verifies/hydrates release assets, runs the closure ledger,
+strict empirical rebuild, reader and venue PDF builds, and both manifest checks, then
+writes `CLEAN_CLONE_ATTESTATION.json`. The record binds the subject commit/tree, complete
+normalized command output and its hashes, toolchain, graph summary, manifest, and PDF
+bytes; absolute workstation paths and remote credentials are redacted before hashing.
+Commit that JSON alone as the child of the verified subject; verify it with
+`python _bestrec_run/clean_clone_replay.py --verify-record CLEAN_CLONE_ATTESTATION.json`.
+While human metadata is pending, `--draft-metadata-waiver "reason"` is permitted only for
+an explicitly non-release replay and mechanically records `release_ready=false`.
 
-cache/<dataset>/                                    ← preprocessed datasets
-├── raw_data_dedup.pkl                              ← dedup'd interactions + metadata
-├── v5/item_title_k{K}_dedup.pt                     ← SBERT title embeddings
-└── v5/v5_results.json                              ← per-dataset 5-fold results
+- **`v1.2.0-deposit` (intended candidate; not yet tagged or published).** The current source
+  inventory requires a 931-entry candidate bundle. The existing 908-entry ZIP is stale and
+  must be rebuilt; normal/tagged mode remains unavailable while creator placeholders remain.
+  `v1.1.11-deposit` is a historical snapshot and must not be uploaded as current.
+- **`v0.9-audit-evidence`** — the mutable audit-evidence store used by the bootstrap path, not the final archival deposit. It contains the pinned-parity files/ZIP, all 21 split CSVs, six text/cache-map assets, 107 TFV2 per-user sidecars, 144 FIR-control endpoint/sidecar/checkpoint files, 72 FIR-pointwise endpoint/sidecar/checkpoint files, and 48 Software V3 endpoint/sidecar/checkpoint files. The authoritative current bootstrap inventory is **407 release-only assets / 9,489,409,339 bytes (about 8.84 GiB)**. A fresh HTTPS clone downloaded and raw-hash-verified all 407 assets with zero local reuse on 2026-07-28, and the public `RELEASE_MANIFEST.json` was uploaded last. Fresh clones: `python bootstrap_public_clone.py` before the strict gate; `git submodule update --init` is optional because the parity test can hydrate the exact pinned HSTU reference commit into its isolated cache.
+- **`bestrec-raw-records-v1`** — the historical LC2C project's raw records (see `README_LC2C_HISTORICAL.md`).
 
-data/<dataset>/                                     ← raw Amazon Reviews 2023 .jsonl files
-```
+Data: the Amazon Reviews 2023 dataset (McAuley Lab) is **not redistributed**; derived
+splits/caches are pinned by SHA256 with regeneration scripts. MovieLens 1M record rows,
+transformed splits, checkpoints, endpoints, and per-user sidecars are also not
+redistributed under the ML-1M README; only aggregate provenance, statistics, code, and
+adjudication enter the public graph.
 
-## Running
+License: MIT (`LICENSE`). Citation metadata: `CITATION.cff` / `.zenodo.json`.
 
-### Setup (one-time)
+## License scope (stated exactly; added 2026-07-21)
 
-```bash
-# Requires Python 3.12 + uv
-cd _bestrec_run
-uv sync                              # installs PyTorch CUDA + sentence-transformers + sklearn + matplotlib
-```
-
-### Preprocess a dataset (only needed once per dataset)
-
-```bash
-uv run python preprocess_v2.py beauty
-uv run python preprocess_v2.py fashion
-uv run python preprocess_v2.py instruments
-# Books has its own memory-efficient streaming preprocessor (see code)
-```
-
-### Reproduction path (round 4: STANDALONE SCRIPTS, no notebook)
-
-The historical notebook has been moved to `archive/legacy_notebooks/` because it had drifted from the paper. Reproducing every table and figure in the paper requires only the standalone scripts below.
-
-Expected runtimes (RTX 5060 Ti, 64GB RAM):
-
-| Dataset | Time | Bottleneck |
-|---|---|---|
-| Beauty | ~5 minutes | LightGCN training on tiny graph |
-| Fashion | ~5 minutes | LightGCN training |
-| Instruments | ~12 minutes | LightGCN on 60K interactions |
-| Books | ~30 minutes baselines + several hours for higher-order EASE | LightGCN + 13K-item EASE Cholesky + B@B for HO-EASE |
-
-### Reproducing all paper materials
-
-```bash
-# 1. Preprocess all four datasets (one-time)
-for ds in beauty fashion instruments; do
-    uv run python _bestrec_run/preprocess_v2.py $ds
-done
-# Books preprocessing: see existing cache/books/raw_data_dedup.pkl in repo
-
-# 2. Warm-LOO baselines (single canonical pipeline, round 4) — writes
-#    results_warm_loo.json (summary) and
-#    results_warm_loo_perfold_<ds>.json (per-(fold, user, ndcg) audit JSON)
-uv run python _bestrec_run/run_warm_loo.py beauty fashion instruments books
-
-# 3. Cold-item + LC2C + DropoutNet-style baselines (per-pair audit JSON saved)
-uv run python _bestrec_run/run_cold_item_v2.py beauty fashion instruments books
-
-# 4. Ablations + hyperparameter sensitivity sweeps
-uv run python _bestrec_run/run_hp_sweep.py beauty fashion instruments
-uv run python _bestrec_run/run_ablation_embeddings.py beauty fashion instruments
-
-# 5. Per-USER paired Wilcoxon (Holm-corrected) for both warm-LOO and cold-item,
-#    re-aggregated from the per-pair / per-fold JSON files saved above
-uv run python _bestrec_run/compute_significance.py
-
-# 6. Consolidate results into results_FINAL.json (the single canonical source)
-uv run python _bestrec_run/consolidate_final.py
-uv run python _bestrec_run/make_paper_table.py
-uv run python _bestrec_run/make_figures.py            # reads ONLY results_FINAL.json + results_v7_2_coldstart.json + results_ablation_embeddings.json
-uv run python _paper_gen/build_paper_full.py          # rebuilds the PDF
-```
-
-## Methodology highlights
-
-- **Per-(user, item) deduplication** before k-core filtering (critical: Fashion/Beauty/Instruments preprocessing inflated counts because reviewers repeat items).
-- **Per-dataset k-core** chosen so each dataset retains ≥200 users post-dedup: k=5 (Beauty), k=4 (Fashion), k=10 (Instruments), k=20 (Books).
-- **EASE refit per fold** (closed-form, leakage-free). SBERT title embeddings are computed once from external metadata (Amazon catalog titles, not derived from the train/test interaction split).
-- **Three evaluation protocols**:
-  - Warm leave-one-out per user — full-item ranking against unseen catalog items.
-  - Cold-USER (GroupKFold by user) + few-shot text context — full-item ranking.
-  - Cold-ITEM (GroupKFold by item) + LC2C — ranking among the held-out 20% item fold only (NOT full catalog; see SUBMISSION.md and the paper §4.2.3 for the precise protocol).
-- **Statistical significance for warm-LOO**: paired Wilcoxon signed-rank on per-user NDCG@10 with Holm–Bonferroni correction across the six baseline comparisons per dataset, implemented in `_bestrec_run/compute_significance.py`. As of round 4, raw p-values are recomputed from per-(fold, user, ndcg) JSONs saved by `run_warm_loo.py` for the four closed-form methods (Popularity, EASE-pure, Higher-Order EASE, EASE+SBERT) so the Wilcoxon path is end-to-end auditable from the released artifacts. Deep-baseline (MultiVAE, iALS, LightGCN) per-user vectors are still consumed from the prior pipeline; saving them in the same standalone format is camera-ready scope.
-- **Statistical significance for cold-item**: per-USER paired Wilcoxon signed-rank with Holm–Bonferroni correction across three head-to-head comparisons (V2 vs content-direct, V1, simplified DropoutNet-style). Implemented in `_bestrec_run/compute_significance.py` reading the `(fold, user, item, ndcg)` records from `results_cold_item_v2_perpair_<dataset>.json`. LC2C V2 is Holm-corrected p < 0.001 vs content-direct and the simplified DropoutNet-style baseline on all 4 datasets; p < 0.05 vs V1 on Beauty, p < 0.001 vs V1 on Instruments and Books, n.s. on Fashion. Round 4 additionally reports a simple user-clustered bootstrap 95% CI on the V2 − content-direct cold-item delta to give a non-asymptotic uncertainty quantification that respects the user dependency unit.
-- **6 baselines**: Popularity, MultiVAE (Liang 2018), iALS (Hu 2008), LightGCN (He 2020), EASE-pure (Steck 2019), Higher-Order EASE (Steck 2020).
-- **3 ablations**:
-  - **Content embedding type**: SBERT vs random Gaussian vs TF-IDF+SVD vs none.
-  - **Hyperparameter sensitivity**: 6×6 (λ, β) heatmap (primary) plus a follow-up 1D λ sweep for λ = 200 on Instruments / Books.
-  - **LC2C variants**: V0 (content-direct), V1 (SVD + ridge), V2 (direct ridge, headline), V3 (nearest-warm, no ridge).
-- **Proposed algorithm**: LC2C V2 (Learned Content-to-CF, direct ridge with no SVD). To our knowledge this specific formulation — direct ridge regression from a frozen sentence encoder into the column space of a closed-form item-item recommender — has not been reported previously; see §2.6 of the paper for the literature search. A *simplified DropoutNet-style* baseline inspired by Volkovs et al. (2017) is now run head-to-head (single-config, single-seed, SVD-warm-CF + content fallback; not a faithful reproduction); a faithful DropoutNet with hyperparameter sweep and multi-seed variance, plus CLCRec, MELT, BLaIR, TIGER, LIGER, are camera-ready scope.
-
-## Citation
-
-```bibtex
-@inproceedings{steck2019ease,
-  author    = {Harald Steck},
-  title     = {Embarrassingly Shallow Autoencoders for Sparse Data},
-  booktitle = {WWW},
-  year      = {2019},
-}
-```
-
-## License
-
-[Your chosen license here.]
+The repository's MIT license covers **the code in this repository only**. It does
+not and cannot assign a license to the Amazon Reviews 2023 dataset or to the
+derived interaction-split CSVs / text caches / per-user sidecars distributed as
+release assets: those derive from the McAuley Lab's public research release,
+whose maintainers state they are not in a position to assign a license or dictate
+usage terms (that statement is not an affirmative permission grant, and we do not
+treat it as one — manuscript §10). Derived data assets are redistributed on the
+dataset's public research availability with attribution, takedown honored
+immediately on maintainer, platform, or venue request. TORS review is single-blind (per the current author guidelines), so this named repository is cited directly from the manuscript; author metadata in the manuscript is a maintainer-supplied field before submission.

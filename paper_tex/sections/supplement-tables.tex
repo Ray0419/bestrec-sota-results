@@ -1,0 +1,58 @@
+%% Supplement tables relocated from the body to mirror the canonical PAPER_SUBMISSION.md
+%% "## Supplementary Material" structure (S.4 = screening log Table S1; S.5 = titration
+%% ladder Table S2). The tables themselves are non-float, \textbf-captioned blocks emitted
+%% by _bestrec_run/emit_latex_tables.py from the md; this file only supplies the S.4/S.5
+%% section frames and \input positions. See BUILD_NOTES.md.
+\section*{S.4 --- Screening-log detail (full probe table)}
+
+\begin{quote}
+\emph{Supplement to \S\ref{sec:5.5} --- the full search record. Each row's \ensuremath{\Delta} is versus its stated base; most rows are single-seed exploratory probes (power note in \S\ref{sec:5.5}).}
+\end{quote}
+
+\input{tables/table2}
+
+\clearpage
+\section*{S.5 --- Titration ladder (full six rungs)}
+
+\begin{quote}
+\emph{Supplement to \S\ref{sec:5.4}; integrity-gated against its prose values by the released titration-table script.}
+\end{quote}
+
+\input{tables/table1e}
+
+\section*{S.6 --- Software V3 paired-seed detail}
+
+\begingroup
+\renewcommand{\thefigure}{S\arabic{figure}}
+\setcounter{figure}{0}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.96\linewidth]{fig_software_v3_pairs.pdf}
+  \Description{Two panels visualize the eight Software V3 matched seed blocks. The left panel connects each identity NDCG at 10 value to its learned-FIR value. The right panel shows all eight learned-minus-identity differences, the zero line, the predeclared plus 0.000500 reporting threshold, and the paired mean with its ordinary 95 percent paired-t confidence interval.}
+  \caption{Software V3 registered paired-seed detail. Every matched seed block has higher sealed TEST NDCG@10 under learned FIR than identity; the second panel shows all paired differences, the frozen +0.000500 threshold, and the ordinary paired-t mean and 95\% CI. This is outcome-known same-team robustness, not independent confirmation. Exact values are in \texttt{figures/fig\_software\_v3\_pairs\_data.csv}.}
+  \label{fig:software_v3_pairs}
+\end{figure}
+
+\clearpage
+\section*{S.7 --- Selected-checkpoint FIR diagnostics}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.96\linewidth]{fig_fir_response.pdf}
+  \Description{Two-panel descriptive FIR diagnostic. Panel A plots the
+  signed channel-mean residual tap and mean absolute residual tap across
+  causal lags 0 through 15, with uncertainty bands over eight seed summaries.
+  Panel B plots the magnitude of the effective residual frequency response
+  across normalized angular frequency, with an identity-magnitude reference
+  at one and an uncertainty band over the same eight seeds.}
+  \caption{Learned residual-tap and effective frequency-response summaries from
+  the eight released selected checkpoints of the outcome-known active-control
+  learned arm. Channels are summarized within each seed; bands are ordinary
+  95\% $t$ intervals over the eight seed summaries. Lag 0 is contemporaneous.
+  These are descriptive fitted-operator diagnostics, not a mechanism or
+  independent-confirmation test; plotted values are released in
+  \texttt{figures/fig\_fir\_response\_data.csv}. The effective kernel is the
+  residual identity plus the learned $\Delta$ taps.}
+  \label{fig:fir-response}
+\end{figure}
+\endgroup

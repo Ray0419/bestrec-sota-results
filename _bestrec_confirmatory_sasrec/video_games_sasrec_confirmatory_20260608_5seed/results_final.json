@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "dataset": "Video_Games",
+  "candidate_scope": "full_catalog",
+  "seeds": [
+    20260608,
+    20260609,
+    20260610,
+    20260611,
+    20260612
+  ],
+  "methods": {
+    "sasrec_sbert": {
+      "n_completed_seeds": 5,
+      "ndcg10_values": [
+        0.054693023875403535,
+        0.055164871712744264,
+        0.05534279391074889,
+        0.05478043321987997,
+        0.05548217653918156
+      ],
+      "mean_ndcg10": 0.05509265985159164,
+      "std_ndcg10": 0.0003452170452651727,
+      "records_total": 473810
+    },
+    "sasrec_blair": {
+      "n_completed_seeds": 5,
+      "ndcg10_values": [
+        0.0547639384962772,
+        0.05346932062351571,
+        0.05484364139736459,
+        0.05412551116643142,
+        0.05541970450306878
+      ],
+      "mean_ndcg10": 0.054524423237331546,
+      "std_ndcg10": 0.0007471895180831944,
+      "records_total": 473810
+    },
+    "sasrec_no_sbert": {
+      "n_completed_seeds": 5,
+      "ndcg10_values": [
+        0.0515348760827624,
+        0.05066040444676485,
+        0.0503287062020548,
+        0.05184782216343747,
+        0.05045744483101681
+      ],
+      "mean_ndcg10": 0.050965850745207264,
+      "std_ndcg10": 0.0006817973674486618,
+      "records_total": 473810
+    }
+  },
+  "paired_tests": {
+    "sasrec_sbert_vs_sasrec_blair": {
+      "candidate": "sasrec_sbert",
+      "baseline": "sasrec_blair",
+      "alternative": "candidate_greater",
+      "sample_unit": "per-user per-seed NDCG@10 record",
+      "n_pairs": 473810,
+      "mean_delta_ndcg10": 0.0005682366142601002,
+      "wilcoxon_statistic": 56282821122.5,
+      "p_value": 0.031105259299573317,
+      "holm_adjusted_p_value": 0.031105259299573317,
+      "holm_family": "sasrec_sbert_vs_same_run_confirmatory_comparators"
+    },
+    "sasrec_sbert_vs_sasrec_no_sbert": {
+      "candidate": "sasrec_sbert",
+      "baseline": "sasrec_no_sbert",
+      "alternative": "candidate_greater",
+      "sample_unit": "per-user per-seed NDCG@10 record",
+      "n_pairs": 473810,
+      "mean_delta_ndcg10": 0.004126809106384379,
+      "wilcoxon_statistic": 57124144057.0,
+      "p_value": 5.280487653995692e-32,
+      "holm_adjusted_p_value": 1.0560975307991383e-31,
+      "holm_family": "sasrec_sbert_vs_same_run_confirmatory_comparators"
+    }
+  }
+}

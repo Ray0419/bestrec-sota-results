@@ -1,0 +1,94 @@
+%% GENERATED from PAPER_SUBMISSION.md (pandoc) -- hand-fixed conversion; see BUILD_NOTES.md
+\section*{Appendix A --- Superseded earlier-stage supporting material (Beauty\_and\_\allowbreak Personal\_Care)}
+
+\begin{quote}
+\textbf{Why this is an appendix:} the material below is an earlier-stage Beauty\_and\_\allowbreak Personal\_Care reproducibility study (the 20-variant cross-pipeline scan, its 2-seed signal, and the retracted LIGER-gap audit). It predates and does not belong to the headline spine (causal FIR filter + MI frequency-5 tail case + competitive-overall Video\_Games result, \S\ref{sec:1}--\S\ref{sec:7}). It is retained verbatim for the reproducibility and negative-result record only, and is referenced from \S\ref{sec:6.1}--\S\ref{sec:6.2} as supporting context. The live Beauty result that enters the tail pattern (\S\ref{sec:5.3}) is the text\ensuremath{-}ID tail contrast, not these single-seed sampled-softmax scans.
+\end{quote}
+
+
+\subsection*{A.1 Beauty\_and\_\allowbreak Personal\_Care --- 20-variant cross-pipeline scan (superseded supporting material)}
+
+\begin{quote}
+\textbf{Note:} the following Beauty\_and\_\allowbreak PC 20-variant scan and the LIGER-gap audit are \textbf{earlier-stage supporting material}, retained for the reproducibility and negative-result record. They predate the HSTU + causal-filter + tail-pattern spine and are \emph{not} the paper's headline; the live Beauty result used in the tail pattern (\S\ref{sec:5.3}) is the text\ensuremath{-}ID tail contrast, not these single-seed sampled-softmax scans.
+\end{quote}
+
+The scan varies five axes: \textbf{text encoder} (MiniLM titles/rich-text, BLaIR titles/rich-text), \textbf{projection \ensuremath{\Phi}} (single Linear vs the 2-layer MLP adaptor of \citealp{hou2024blair}), \textbf{learned item embedding} (kept vs removed = faithful SASRecText), \textbf{loss} (sampled softmax K=1024, in-batch negatives, chunked-full-softmax, hybrid), and \textbf{augmentation} (random subsequence sampling, factor 1/2/3). Training used a 15--20-epoch budget, batch size 256, Adam (lr 1e-3, weight decay 1e-5, gradient clip 5.0), a single seed for the initial scan, and two seeds (42, 43) for the final reported variants. Table A1 summarizes all 20 variants. \textbf{Numbers are single-seed unless otherwise noted.}
+
+\input{tables/tableA1}
+
+\textbf{2-seed mean of variant 19+20 (BLaIR-rich-text + MLP)}: NDCG@10 = 0.01946, range 0.0002.
+
+\textbf{Clean-ablation finding (variant 21, added after audit)}: When we hold the encoder constant at MiniLM and ONLY change projection layer from single-Linear to the SASRecText 2-layer MLP adaptor, NDCG@10 drops slightly from \textasciitilde0.0190 to 0.01889. \textbf{No improvement from the MLP adaptor was observed in this single comparison.} The +1.3--2.3\% gains in variants 16/19/20 therefore cannot be attributed to the projection layer alone; their bundled encoder/content changes and possible interactions remain unresolved.
+
+Re-analysis of the 20-variant scan:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{MLP adaptor alone}: no improvement observed in the single comparison (variant 21 vs 7 = -1.2\%)
+\item
+  \textbf{MiniLM \ensuremath{\rightarrow} BLaIR encoder}: small benefit (variant 16 vs 7 = +0.9\% NDCG@10, single-seed)
+\item
+  \textbf{Titles \ensuremath{\rightarrow} rich text (BLaIR)}: small additional benefit (variant 19 vs 16 = +0.4\%, single-seed)
+\item
+  \textbf{Removing learned item embedding} (faithful SASRecText): hurts substantially
+\item
+  \textbf{Heavy dropout (0.5)} as in the published SASRecText: hurts on our 5-core data (median 5 interactions/user)
+\item
+  \textbf{Subsequence augmentation}: hurts (\textasciitilde-5\% NDCG)
+\item
+  \textbf{Width (d=128)}: no help
+\end{itemize}
+
+
+\subsection*{A.2 Beauty\_and\_\allowbreak PC multi-seed signal (superseded supporting material)}
+
+\begin{quote}
+\textbf{Note:} this is appendix supporting material for the Beauty 20-variant scan (\S{}A.1), not the headline tail-pattern result (\S\ref{sec:5.3}).
+\end{quote}
+
+We have multi-seed numbers for two configurations:
+
+\begin{itemize}
+\tightlist
+\item
+  Best variant (BLaIR + rich-text + MLP): seed 42 \ensuremath{\rightarrow} 0.01936, seed 43 \ensuremath{\rightarrow} 0.01955; \textbf{mean 0.01946 (n=2)}.
+\item
+  Baseline (chunked-full, no MLP, MiniLM titles): original \ensuremath{\rightarrow} 0.01911, seed 42 \ensuremath{\rightarrow} 0.0190; \textbf{mean 0.01906 (n=2)}.
+\end{itemize}
+
+Apparent gain: 0.01946 - 0.01906 = \textbf{+0.0004 (+2.1\% relative)} with n=2 vs n=2. Inter-seed variance for our baseline (0.0001 range) is roughly half the size of the gain, suggesting the directional signal is real but small. A formal significance test would require larger n; our paper-stated +2.1\% improvement is honest about this.
+
+
+\subsection*{A.3 Audit of ``gaps to LIGER'' claims (corrected from earlier versions; superseded supporting material)}
+
+\begin{quote}
+\textbf{Note:} this comparator-audit retraction is retained as appendix material; the body's \S\ref{sec:5.4} is the titration result.
+\end{quote}
+
+Earlier versions of this work cited an apparent 57\% gap to LIGER on Beauty\_and\_\allowbreak Personal\_Care. \textbf{After a comparator audit, this framing is retracted.} The facts:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{LIGER reports on Amazon 2014, not AR2023.} The LIGER paper \citep{yang2024liger} evaluates on Amazon Beauty (2014, \citealp{he2016ups}), reporting NDCG@10 = 0.04020 \ensuremath{\pm} 0.00044 (K=20) and 0.04738 \ensuremath{\pm} 0.00151 (K=N) on their 5-core preprocessing. The 2014 Amazon Beauty subset has tens of thousands of items, while our AR2023 Beauty\_and\_\allowbreak Personal\_Care 5-core has 207,649 items. \textbf{These are different datasets.} The ``57\% gap'' framing in earlier versions compared our AR2023 number to LIGER's 2014 number, which is invalid.
+\item
+  \textbf{There is no published LIGER number on AR2023 Beauty\_and\_\allowbreak Personal\_Care 5-core.} LIGER does not evaluate on AR2023 at all in the published paper.
+\item
+  \textbf{TIGER reports on Amazon 2014 only.} The TIGER paper \citep{rajput2023tiger} reports NDCG@10 = 0.0384 on Amazon Beauty 2014 with their 5-core, also not on AR2023.
+\item
+  \textbf{BLaIR \citep{hou2024blair} introduced AR2023 --- historical note, superseded: the AR2023 5-core literature has since grown (HSTU-BLaIR and 2026 preprints; \S\ref{sec:5.1}).} Their Beauty subset is ``All\_Beauty'' (not ``Beauty\_and\_\allowbreak Personal\_Care'') and their preprocessing is by-timestamp 8:1:1 with no k-core filter. They report NDCG@10 on All\_Beauty in the range 0.0177-0.0241 across various LLM encoders (Table 8). With a UniSRec downstream model, their best All\_Beauty number is 0.0241 (gemini-embedding). They do not report on Beauty\_and\_\allowbreak Personal\_Care.
+\end{enumerate}
+
+We therefore cannot make a defensible gap claim to TIGER/LIGER/BLaIR on AR2023 Beauty\_and\_\allowbreak Personal\_Care 5-core, because \textbf{we did not find a comparable published number} (a search statement as of this writing, not a priority claim --- AR2023 preprints are appearing rapidly; \S\ref{sec:5.1}). We provide our 0.01946 (2-seed mean) as a reference baseline rather than as a SOTA-improvement claim.
+
+A future apples-to-apples comparison would require either:
+
+\begin{itemize}
+\tightlist
+\item
+  Running TIGER/LIGER on our 5-core preprocessing (multi-week effort for faithful reproduction), or
+\item
+  Adopting Hou et al.'s by-timestamp 8:1:1 preprocessing and re-running our pipeline.
+\end{itemize}
+

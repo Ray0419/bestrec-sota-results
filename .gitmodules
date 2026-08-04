@@ -4,3 +4,6 @@
 [submodule "external/liger"]
 	path = external/liger
 	url = https://github.com/facebookresearch/liger.git
+[submodule "external/HSTU-BLaIR"]
+	path = external/HSTU-BLaIR
+	url = https://github.com/snapfinger/HSTU-BLaIR

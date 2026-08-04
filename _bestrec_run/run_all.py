@@ -20,15 +20,7 @@ from pathlib import Path
 from artifact_utils import DATASETS, ROOT, RUN_DIR, append_manifest_run, read_json, write_json
 
 
-FIGURE_NAMES = [
-    "fig1_warm_methods_x_datasets.png",
-    "fig2_vs_lightgcn.png",
-    "fig3_ablation_embeddings.png",
-    "fig6_hp_sensitivity_combined.png",
-    "fig7_cold_item_v2.png",
-    "fig8_lc2c_ablation.png",
-    "fig9_lc2c_latentdim.png",
-]
+FIGURE_NAMES = []  # legacy BEST-Rec-era figures removed 2026-07-25 (superseded); the current paper figures are built by make_fig_tail_law_mechanism.py + make_fig_r1r2_plane.py
 
 
 def parse_csv(value: str, defaults: tuple[str, ...] = DATASETS) -> list[str]:
@@ -130,7 +122,6 @@ def main() -> int:
     run_stage([*py_cmd, str(RUN_DIR / "compute_significance.py")])
     run_stage([*py_cmd, str(RUN_DIR / "consolidate_final.py")])
     run_stage([*py_cmd, str(RUN_DIR / "build_tables.py")])
-    run_stage([*py_cmd, str(RUN_DIR / "make_figures.py")])
     copy_figures()
 
     outputs = [

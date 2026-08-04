@@ -1,19 +1,19 @@
 # SOTA Hunt — Final Report
 
 **Generated:** after the parallel-agent SOTA hunt round.
-**Outcome:** SOTA achieved under the strict-confirmatory protocol on every dataset, for both warm-LOO and cold-item-full-catalog evaluation, against every mandatory baseline that was runnable in the compute budget.
+**Superseded status:** internal historical report only. Later audits found that several claims here depend on incomplete comparator coverage, protocol assumptions, or aggregate-only artifacts. Do not use this file as final publication evidence without the stricter guardrails in `PUBLISHABLE_CLAIM.md`, `REVISION_PLAN.md`, and `LEADERBOARD_STATUS.md`.
 
 ## TL;DR
 
-1. **Cold-item full-catalog SOTA: `CDR_validated`** (the algorithm shipped in the previous turn).
+1. **Historical cold-item full-catalog candidate: `CDR_validated`** (the algorithm shipped in the previous turn).
    - Beats every faithful mandatory baseline (BLaIR, DropoutNet, CLCRec, RQ-VAE-TIGER-proxy) by 1.3-16× on every dataset.
    - Per-USER Wilcoxon vs the strongest faithful baseline (faithful DropoutNet) Holm p < 0.001 on all 4 datasets.
-2. **Warm-LOO SOTA: `ease_sbert`** (the algorithm in the published paper).
+2. **Historical warm-LOO candidate: `ease_sbert`** (the algorithm in the published paper).
    - Beats every tuned mandatory baseline (MultiVAE multi-seed multi-config, LightGCN multi-seed multi-config) at Holm p < 0.001 on all 4 datasets (Instruments ties LightGCN under the strictest test, n.s.).
 3. **CDR_K (kernel-ridge) is *not* a clean SOTA winner.** Beats CDR_validated on Beauty + Instruments (Holm p < 0.05) but its Nyström kernel approximation collapses on Books fold 1 (NDCG 0.003 vs 0.056). Reported as an honest negative-stability finding.
 4. **8 of 8 mandatory baselines accounted for:** 6 ran at strict-multi-seed multi-config fidelity, 1 ran as a documented proxy (TIGER → RQ-VAE-kNN, with $120-450 full-LIGER cost as out-of-budget rationale), 2 deferred with explicit rationale (iALS-Books OOM; MELT has no public reference implementation).
 
-This is SOTA under the strict-confirmatory protocol defined in `_bestrec_run/artifact_utils.py::MANDATORY_SOTA_BASELINES` — under the available baselines and the round-5 evaluation protocol with full-catalog cold-item ranking, our method wins on every comparison the protocol can make.
+Historical interpretation at the time: under the available baselines and the round-5 evaluation protocol, the method won the comparisons that completed. Current interpretation: this is not enough for an unqualified publication SOTA claim because the later audit requires exact comparator coverage, per-user records, manifest-level provenance, and protocol-locked external baselines.
 
 ## 1. Cold-item full-catalog NDCG@10 — final leaderboard
 
@@ -35,7 +35,7 @@ This is SOTA under the strict-confirmatory protocol defined in `_bestrec_run/art
 | RQ-VAE kNN (TIGER-inspired proxy) | 0.1493 | 0.1005 | 0.0408 | n/a | NEW proxy |
 | CDR_K (kernel-ridge — unstable) | 0.1508 | 0.1380 | 0.0564 | 0.0436 | NEW — see §3 |
 
-**SOTA verdict per dataset (cold-item, full-catalog):** CDR_validated wins on every dataset vs every mandatory baseline that completed.
+**Historical verdict per dataset (cold-item, full-catalog):** CDR_validated won the completed comparisons in this internal report.
 
 ### Per-USER paired Wilcoxon, CDR_validated vs faithful DropoutNet (the strongest faithful baseline)
 

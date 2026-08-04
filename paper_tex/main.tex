@@ -1,0 +1,18 @@
+%% PAPER_TORS -- ACM TORS LaTeX derivative of the canonical PAPER_SUBMISSION.md
+%% (generated format conversion; the markdown remains canonical -- see BUILD_NOTES.md).
+%%
+%% DEFAULT REVIEW TARGET: single-column `manuscript` format, per ACM's general
+%% author workflow for initial journal review submissions (VENUE_PLAN.md: "TORS:
+%% manuscript/acmsmall journal format"). Produces PAPER_TORS.pdf -- the gated review artifact.
+%% The journal-layout main paper lives in main-acmsmall.tex -> PAPER_TORS_acmsmall.pdf;
+%% extended evidence lives in supplement.tex -> PAPER_TORS_SUPPLEMENT.pdf.
+%%
+%% Build: ./build.sh  (emit tables -> compile three targets -> health/hygiene gates)
+\documentclass[manuscript,screen]{acmart}
+\newif\ifmainpaper
+\mainpapertrue
+\newif\ifextendedmaterial
+\extendedmaterialfalse
+\newif\ifincludeappendices
+\includeappendicesfalse
+\input{paper-shared}

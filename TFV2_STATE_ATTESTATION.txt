@@ -1,0 +1,4 @@
+PREREG_TAIL_FIR_V2 state attestation (2026-07-20)
+HEAD at freeze: 51752141669ccfc73420bb4389c4eb4fca193035
+prereg sha256: 1fdc73d11691bd03db2e3e97bdb22dbedc9faadd6e745d2b809b04dfc10b1f99
+commands sha256: 525496d4bf608f4f62837b729fb6867b61d521df2cee80cf413a8f0c39de1a1b

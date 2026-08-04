@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "confirmatory_run_complete": true,
+  "per_user_records_present": true,
+  "fresh_seed_count": 1,
+  "external_protocol_matched_comparators_reproduced": false,
+  "final_unqualified_sota_claim_allowed": false,
+  "strict_reviewer_verdict": "candidate rerun is auditable, but final SOTA claim remains blocked until protocol-matched external comparators and per-user significance gates are complete"
+}

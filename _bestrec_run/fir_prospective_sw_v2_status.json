@@ -1,0 +1,16 @@
+{
+  "protocol": "PREREG_FIR_PROSPECTIVE_SW_V2",
+  "status": "terminal_integrity_failure",
+  "verdict": "SW-V2-INTEGRITY-FAIL",
+  "scientific_verdict": null,
+  "detected_at": "2026-07-28T10:24:46+10:00",
+  "reason": "Frozen implementation accessed Software.test.csv before all 16 checkpoints existed; --no-test-eval suppressed scoring, not file access.",
+  "execution_git_head": "c1048ba652c3ca2958c8aabc98f45702e51bfc75",
+  "training_json_count": 1,
+  "checkpoint_count": 2,
+  "started_seal_count": 0,
+  "finaleval_count": 0,
+  "endpoint_sidecar_count": 0,
+  "endpoint_or_training_content_read_during_diagnosis": false,
+  "partial_artifacts_preserved": true
+}

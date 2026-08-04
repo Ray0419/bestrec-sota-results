@@ -1,0 +1,10 @@
+# compiler byproducts; governed packaged PDFs are copied separately by the build
+main.pdf
+main-acmsmall.pdf
+supplement.pdf
+*.log
+*.blg
+*.aux
+*.bbl
+*.out
+*.xdv

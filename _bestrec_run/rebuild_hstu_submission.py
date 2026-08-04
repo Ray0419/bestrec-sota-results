@@ -1,0 +1,254 @@
+#!/usr/bin/env python
+"""Canonical one-command submission rebuild (acceptance-repair-plan Phase 9).
+
+    uv --project _bestrec_run run python _bestrec_run/rebuild_hstu_submission.py --strict
+
+Runs the HSTU parity test, fail-closed artifact graph, release-manifest check,
+all counted or paper-printed campaign adjudicators, and the descriptive Office
+V1 adjudicator. Exits nonzero if any strict step fails."""
+import subprocess
+import sys
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+PY = sys.executable
+STRICT = "--strict" in sys.argv
+
+
+def run(label, args, required=True):
+    print(f"\n=== {label} ===")
+    r = subprocess.run([PY] + args, cwd=str(ROOT))
+    ok = r.returncode == 0
+    print(f"--- {label}: {'OK' if ok else f'FAILED (exit {r.returncode})'}")
+    return ok or not required
+
+
+def main():
+    ok = True
+    ok &= run("HSTU core-block parity test", ["_bestrec_run/test_hstu_parity.py"])
+    ok &= run("FIR no-future-leakage unit test",
+              ["_bestrec_run/test_fir_causality.py"])
+    build_args = ["_bestrec_run/build_hstu_tables.py"]
+    if STRICT:
+        # accept either flag spelling of the fail-closed mode
+        import io
+        src = io.open(ROOT / "_bestrec_run" / "build_hstu_tables.py", encoding="utf-8").read()
+        build_args.append("--strict-submission" if "--strict-submission" in src else "--submission")
+    ok &= run("Artifact-graph table build" + (" (strict)" if STRICT else ""), build_args)
+    ok &= run("Claim-to-artifact map verification",
+              ["_bestrec_run/build_claim_artifact_map.py", "--verify"])
+    ok &= run("Generated Table 0 claim-ledger verification",
+              ["_bestrec_run/build_table0_claim_ledger.py", "--check"])
+    if STRICT:
+        # round-3 audit F1: the release manifest must describe the submitted
+        # tree; verify file-by-file, fail closed on any drift
+        ok &= run("Release-manifest verification",
+                  ["_bestrec_run/update_release_manifest.py", "--verify"])
+    if STRICT:
+        # audit 2026-07-19 13:47 CP-2: the counted MI gate must be verdict-parsed too
+        def run_mi_verdict():
+            r = subprocess.run([PY, "_bestrec_run/summarize_sota_confirm_v2.py"],
+                               cwd=str(ROOT), capture_output=True, text=True)
+            out = (r.stdout or "") + (r.stderr or "")
+            good = r.returncode == 0 and "DUAL GATE VERDICT: PASS" in out
+            print(f"--- MI V2 gate adjudication (counted; must PASS): "
+                  f"{'OK' if good else 'FAILED (verdict not confirmed)'}")
+            if not good:
+                print(out[-2000:])
+            return good
+        ok &= run_mi_verdict()
+    else:
+        ok &= run("MI V2 gate adjudication", ["_bestrec_run/summarize_sota_confirm_v2.py"])
+    if STRICT:
+        # audit 2026-07-18 21:30 CP-3: every COUNTED campaign's live adjudicator must
+        # gate the strict build (exit codes alone don't carry the verdict -- parse it).
+        def run_verdict(label, args, needles):
+            r = subprocess.run([PY] + args, cwd=str(ROOT), capture_output=True, text=True)
+            out = (r.stdout or "") + (r.stderr or "")
+            good = r.returncode == 0 and all(n in out for n in needles)
+            print(f"--- {label}: {'OK' if good else 'FAILED (verdict not confirmed)'}")
+            if not good:
+                print(out[-2000:])
+            return good
+        ok &= run_verdict("Office V3 adjudication (counted; must PASS)",
+                          ["_bestrec_run/adjudicate_office_v3.py", "--no-append"],
+                          ["CAMPAIGN VERDICT: PASS"])
+        ok &= run_verdict("TFV2 repaired-estimand adjudication (counted integrity gate; "
+                          "Git-declared frozen rules; outcome-visible per S5.3(vii); ALL PASS required)",
+                          ["_bestrec_run/adjudicate_tfv2.py"],
+                          ["PRIMARY FAMILY VERDICT: ALL PASS"])
+        ok &= run_verdict("FIR-breadth frozen-rule adjudication (artifact-integrity: verifies the recorded pre-declared rule fired; its paired interpretation is withdrawn, manuscript S5.2)",
+                          ["_bestrec_run/adjudicate_fir_breadth.py", "--no-append"],
+                          ["Industrial_and_Scientific: ARTIFACT-PASS",
+                           "CDs_and_Vinyl: ARTIFACT-PASS"])
+        # audit 2026-07-23 15:59: printed E-F/E-G results must be graph-gated.
+        ok &= run_verdict("E-A FIR_V3 matched-arm adjudication (pre-declared; "
+                          "W-POS required)",
+                          ["_bestrec_run/adjudicate_fir_v3.py"],
+                          ["VERDICT: W-POS"])
+        ok &= run_verdict("Canonical FIR breadth adjudication (pre-declared; "
+                          "matched-init CANON-BREADTH-POS required)",
+                          ["_bestrec_run/adjudicate_fir_canonical_breadth.py"],
+                          ["VERDICT: CANON-BREADTH-POS",
+                           "Industrial_and_Scientific: Holm",
+                           "CDs_and_Vinyl: Holm"])
+        ok &= run_verdict("FIR active-control adjudication (pre-declared but "
+                          "outcome-known internal mechanism study; frozen active-control "
+                          "verdict required)",
+                          ["_bestrec_run/adjudicate_fir_controls.py"],
+                          ["VERDICT: CTRL-ACTIVE-CONTROL-SUPPORTED",
+                           "supported active controls: ['fixed_ma', 'fixed_hp', "
+                           "'shared', 'nonlinear']",
+                           "A retained contrast is not evidence of equivalence."])
+        ok &= run_verdict("FIR pointwise-placebo adjudication (pre-declared but "
+                          "outcome-known internal mechanism study; frozen pointwise "
+                          "verdict required)",
+                          ["_bestrec_run/adjudicate_fir_pointwise_v1.py"],
+                          ["VERDICT: POINTWISE-FIR-DISCRIMINATED",
+                           "learned-pointwise",
+                           "A retained contrast is not evidence of equivalence."])
+        def verify_recorded_sw_v3_verdict():
+            path = ROOT / "_bestrec_run" / "fir_prospective_sw_v3_adjudication.json"
+            try:
+                rec = json.loads(path.read_text(encoding="utf-8"))
+                primary = rec["primary_contrast"]
+                good = (rec.get("protocol") == "PREREG_FIR_PROSPECTIVE_SW_V3"
+                        and rec.get("verdict") == "SW-V3-PRACTICAL-POS"
+                        and rec.get("scope") == ("prospective same-investigator, "
+                            "same-code-lineage, same-Amazon-family category attempt; "
+                            "not independent confirmation")
+                        and rec.get("custody_scope") == ("local same-user operational "
+                            "first-reader handoff; no external escrow or independent custody")
+                        and float(primary["ci95"][0]) > float(rec["practical_threshold"])
+                        and float(primary["p_two_sided"]) < float(rec["alpha"]))
+            except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError):
+                good = False
+            print("--- Software V3 recorded protocol verdict "
+                  "(outcome-known/exploratory manuscript class; graph recomputes all endpoints): "
+                  f"{'OK' if good else 'FAILED (verdict not reproduced)'}")
+            return good
+        ok &= verify_recorded_sw_v3_verdict()
+        def verify_recorded_ml1m_verdict():
+            path = ROOT / "_bestrec_run" / "fir_efficiency_ml1m_v1_adjudication.json"
+            try:
+                rec = json.loads(path.read_text(encoding="utf-8"))
+                replication = rec["replication_positive"]
+                ni = rec["noninferiority_pass"]
+                good = (rec.get("protocol") == "PREREG_FIR_EFFICIENCY_ML1M_V1"
+                        and rec.get("verdict") == "ML1M-NO-FIR-REPLICATION"
+                        and rec.get("not_independent_confirmation") is True
+                        and replication == {
+                            "learned-identity": False,
+                            "learned-pointwise": False,
+                        }
+                        and ni == {"shared": True, "grouped": True, "lowrank": True})
+            except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError):
+                good = False
+            print("--- MovieLens recorded aggregate verdict "
+                  "(private endpoints unavailable; graph recomputes aggregate vectors): "
+                  f"{'OK' if good else 'FAILED (verdict not reproduced)'}")
+            return good
+        ok &= verify_recorded_ml1m_verdict()
+        def verify_recorded_wearec_verdict():
+            path = ROOT / "_bestrec_run" / "wearec_baseline_v1_adjudication.json"
+            try:
+                rec = json.loads(path.read_text(encoding="utf-8"))
+                contrast = rec["descriptive_welch_contrast"]
+                good = (rec.get("protocol") == "PREREG_WEAREC_BASELINE_V1"
+                        and rec.get("verdict") == "WEAREC-BELOW-EXISTING-REFERENCE"
+                        and rec.get("evidence_class") ==
+                            "prospectively frozen execution on an outcome-known split by the same investigators"
+                        and rec.get("selected_preset") == "official_beauty"
+                        and rec.get("assessment_seeds") == list(range(20262001, 20262009))
+                        and float(contrast["ci95_unadjusted"][1]) < 0.0)
+            except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError):
+                good = False
+            print("--- WEARec recorded aggregate verdict "
+                  "(outcome-known official-code/equal-evaluation baseline; graph "
+                  "recomputes released NDCG vectors): "
+                  f"{'OK' if good else 'FAILED (verdict not reproduced)'}")
+            return good
+        ok &= verify_recorded_wearec_verdict()
+        def verify_recorded_ee_v3_verdict():
+            path = ROOT / "_bestrec_run" / "ee_v3_adjudication.json"
+            try:
+                rec = json.loads(path.read_text(encoding="utf-8"))
+                vs_id = rec["contrasts"]["alphafuse_package_minus_sasrec_id"]
+                vs_ref = rec["contrasts"][
+                    "alphafuse_package_minus_existing_paper_reference"]
+                good = (rec.get("protocol") == "PREREG_EE_V3"
+                        and rec.get("verdict") ==
+                            "EEV3-REPORTABLE-OUTCOME-KNOWN"
+                        and rec.get("classification") ==
+                            "PROSPECTIVELY_FROZEN_OUTCOME_KNOWN_SAME_INVESTIGATOR_EXPLORATORY"
+                        and rec.get("countable_as_current_comparator") is True
+                        and rec.get("independent_confirmation") is False
+                        and rec.get("general_sota_claim_allowed") is False
+                        and rec.get("arms") == ["alphafuse_package", "sasrec_id"]
+                        and rec.get("seeds") == list(range(20262201, 20262209))
+                        and vs_id.get("direction") == "ABOVE"
+                        and float(vs_id["ci95"][0]) > 0.0
+                        and vs_ref.get("direction") == "BELOW"
+                        and float(vs_ref["ci95"][1]) < 0.0
+                        and len(rec.get("endpoint_ledger", [])) == 16)
+            except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError):
+                good = False
+            print("--- E-E V3 recorded aggregate verdict "
+                  "(outcome-known whole-package current comparator; graph recomputes "
+                  "released summaries/contrasts): "
+                  f"{'OK' if good else 'FAILED (verdict not reproduced)'}")
+            return good
+        ok &= verify_recorded_ee_v3_verdict()
+        def verify_recorded_ee_v4_verdict():
+            path = ROOT / "_bestrec_run" / "ee_v4_adjudication.json"
+            try:
+                rec = json.loads(path.read_text(encoding="utf-8"))
+                contrasts = rec["contrasts"]
+                alpha = contrasts["v3_alphafuse_zero_minus_v4_sasrec_normal"]
+                normal_zero = contrasts["v4_sasrec_normal_minus_v3_sasrec_zero"]
+                normal_ref = contrasts["v4_sasrec_normal_minus_existing_paper_reference"]
+                good = (rec.get("protocol") == "PREREG_EE_V4"
+                        and rec.get("verdict") ==
+                            "EEV4-ALPHAFUSE-ABOVE-NORMAL-SASREC"
+                        and rec.get("classification") ==
+                            "PROSPECTIVELY_FROZEN_OUTCOME_KNOWN_SAME_INVESTIGATOR_COMPARATOR_FAIRNESS_SENSITIVITY"
+                        and rec.get("countable_as_normal_init_sensitivity") is True
+                        and rec.get("independent_confirmation") is False
+                        and rec.get("general_sota_claim_allowed") is False
+                        and rec.get("seeds") == list(range(20262301, 20262309))
+                        and alpha.get("direction") == "ABOVE"
+                        and float(alpha["ci95"][0]) > 0.0
+                        and normal_zero.get("direction") == "ABOVE"
+                        and float(normal_zero["ci95"][0]) > 0.0
+                        and normal_ref.get("direction") == "BELOW"
+                        and float(normal_ref["ci95"][1]) < 0.0
+                        and len(rec.get("endpoint_ledger", [])) == 8)
+            except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError):
+                good = False
+            print("--- E-E V4 recorded aggregate verdict "
+                  "(outcome-known cross-campaign normal-init sensitivity; graph "
+                  "recomputes released summaries/contrasts): "
+                  f"{'OK' if good else 'FAILED (verdict not reproduced)'}")
+            return good
+        ok &= verify_recorded_ee_v4_verdict()
+        ok &= run_verdict("E-F HYBRID_V1 fresh-seed adjudication (pre-declared; "
+                          "W-H-POS x3 required)",
+                          ["_bestrec_run/adjudicate_hybrid_v1.py"],
+                          ["VERDICT MI: W-H-POS", "VERDICT IS: W-H-POS",
+                           "VERDICT VG: W-H-POS"])
+        ok &= run_verdict("E-G COLDFUSE sensitivity adjudication (outcome-visible/"
+                          "protocol-deviated; artifact-reproduction gate ONLY, "
+                          "no confirmatory status)",
+                          ["_bestrec_run/adjudicate_coldfuse_v1.py"],
+                          ["CLASSIFICATION: post-outcome sensitivity "
+                           "adjudication (v3)"])
+    # Office is VOID/descriptive under its prereg floor check — report, non-gating
+    run("Office adjudication (descriptive; VOID under prereg floor check)",
+        ["_bestrec_run/office_prereg_tools.py", "adjudicate"], required=False)
+    print(f"\n=== SUBMISSION REBUILD: {'PASS' if ok else 'FAIL'} ===")
+    return 0 if ok else 2
+
+
+if __name__ == "__main__":
+    sys.exit(main())

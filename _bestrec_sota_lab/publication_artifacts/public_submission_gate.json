@@ -1,0 +1,77 @@
+{
+  "checks": [
+    {
+      "name": "strict_artifact_audit_approved",
+      "passed": true,
+      "path": "_bestrec_sota_lab\\runs\\full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705\\STRICT_REAL_FAIR_REPRO_REVIEW_CURRENT.md"
+    },
+    {
+      "name": "raw_records_externally_archived",
+      "passed": true,
+      "path": "_bestrec_sota_lab\\publication_artifacts\\raw_record_release\\raw_record_release_manifest.json",
+      "reason": "external archive URL/DOI present",
+      "total_bytes": 5099053650,
+      "total_rows": 23357327
+    },
+    {
+      "asset_count_actual": 11,
+      "asset_count_expected": 11,
+      "command": [
+        "gh",
+        "release",
+        "view",
+        "bestrec-raw-records-v1",
+        "--json",
+        "url,assets"
+      ],
+      "mismatches": [],
+      "missing_assets": [],
+      "name": "github_release_assets_match_manifests",
+      "passed": true,
+      "reason": "GitHub release assets match local manifests by name, size, and available SHA256 digest",
+      "release_url": "https://github.com/Ray0419/bestrec-sota-results/releases/tag/bestrec-raw-records-v1",
+      "returncode": 0,
+      "tag": "bestrec-raw-records-v1",
+      "unexpected_assets": []
+    },
+    {
+      "command": [
+        "C:\\Users\\rayxc\\Documents\\R\\_bestrec_run\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\prepare_raw_record_release.py",
+        "--verify-only"
+      ],
+      "name": "raw_record_manifest_deep_verify",
+      "passed": true,
+      "returncode": 0,
+      "stderr_tail": [],
+      "stdout_tail": [
+        "Raw record release manifest verified: C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\publication_artifacts\\raw_record_release\\raw_record_release_manifest.json"
+      ]
+    },
+    {
+      "name": "paper_rendered_outputs_present_and_fresh",
+      "passed": true,
+      "paths": [
+        "_bestrec_sota_lab\\paper_draft\\lc2c_retrieval_ltr_paper.md",
+        "_bestrec_sota_lab\\paper_draft\\build\\lc2c_retrieval_ltr_paper.pdf",
+        "_bestrec_sota_lab\\paper_draft\\build\\lc2c_retrieval_ltr_paper.html"
+      ]
+    },
+    {
+      "missing_phrases": [],
+      "name": "paper_claim_boundaries_present",
+      "passed": true
+    },
+    {
+      "name": "paper_no_stale_rejection_or_provenance_text",
+      "passed": true,
+      "stale_hits": []
+    }
+  ],
+  "decision": "approve_public_submission",
+  "failures": [],
+  "generated_utc": "2026-06-10T09:27:10Z",
+  "passed": true,
+  "run_id": "full_clean_rebuild_confirmatory_masked_candidate_20260701_20260705",
+  "schema_version": 1
+}

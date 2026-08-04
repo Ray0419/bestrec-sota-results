@@ -1,0 +1,76 @@
+%% GENERATED from PAPER_SUBMISSION.md (pandoc) -- hand-fixed conversion; see BUILD_NOTES.md
+\section{Related Work and Attribution}\label{sec:2}
+
+We summarize prior work that our experiments directly build on. A complete attribution table for every component used in our experiments appears at the end of this section.
+
+\textbf{SASRec} \citep{kang2018sasrec} is the base Transformer sequential recommender we re-implement. SASRec models a user's history with a causal-masked Transformer encoder and scores the next item via dot product with a learned item-embedding table.
+
+\textbf{BERT4Rec} \citep{sun2019bert4rec} adapts BERT-style bidirectional masked-item modeling for sequential recommendation. We implement BERT4Rec as one of our 20 ablation baselines on Beauty\_and\_\allowbreak PC.
+
+\textbf{SBERT / MiniLM} \citep{reimers2019sbert,wang2020minilm} provide pre-trained sentence embeddings. We use \texttt{sentence-transformers/}\allowbreak\texttt{all-MiniLM-L6-v2} \citep{minilm2021card} (384-d) as the default frozen item-text encoder.
+
+\textbf{UniSRec} \citep{hou2022unisrec} is an early, widely-adopted text-based sequential recommender that uses a pre-trained language model to embed item text and learns a parametric adaptor to project these embeddings into the sequential model's hidden space; \textbf{ZESRec} \citep{ding2021zesrec} precedes it in representing items from natural-language descriptions with a pre-trained encoder for zero-shot sequential recommendation, and \textbf{RecFormer} \citep{li2023recformer} subsequently studies language representations for sequential recommendation including low-resource and cold-start evaluation --- we make no priority claim in this line. The SASRec-with-frozen-text-encoder pattern we use is a strict simplification of UniSRec.
+
+\textbf{BLaIR} \citep{hou2024blair} (published as \citealp{hou2026blairacl}) is a RoBERTa-base model continually pretrained on 10\% of (item-metadata, review) pairs from Amazon Reviews 2023. We use \texttt{hyp1231/blair-roberta-base} (768-d) as an alternative frozen item-text encoder. Hou et al. also publish a reference implementation, \textbf{SASRecText}, that pairs SASRec with BLaIR via a 2-layer MLP adaptor \texttt{{[}768,\ 300,\ 64{]}} with Dropout(0.2) + ReLU; we adopt this adaptor design verbatim (see Appendix A.1).
+
+\textbf{TIGER} \citep{rajput2023tiger} reformulates sequential recommendation as autoregressive generation over discrete semantic IDs produced by a residual-quantized variational autoencoder over item-text embeddings. TIGER reports strong results on Amazon Reviews 5-core benchmarks.
+
+\textbf{LIGER} \citep{yang2024liger} extends TIGER with a dense-retrieval refinement step and reports further gains.
+
+\textbf{Amazon Reviews 2023} \citep{hou2024blair} is the source dataset for the Amazon experiments. Our iterative \textbf{user-and-item 5-core leave-last-out} protocol (\S\ref{sec:3}) shares chronological leave-out structure with TIGER and LIGER. LIGER states user-and-item filtering; the TIGER paper states user filtering, but we do not infer the exact geometry of its released preprocessing from that sentence. Both use Amazon Reviews 2014, whereas our study uses AR2023. Hou et al.'s \texttt{seq\_rec\_results/} reference implementation instead uses the \texttt{0core\_timestamp\_w\_his\_*} HuggingFace subset.
+
+\textbf{Evaluation practice and reproducibility in recommender systems.} Our lead contribution responds to a documented evaluation-trust problem in this field. \citet{ferraridacrema2019worrying} examined 18 recent neural recommenders and could reproduce only 7 with reasonable effort, 6 of which were often outperformed by comparably simple heuristic baselines; the extended journal analysis \citep{ferraridacrema2021troubling} corroborates the pattern in greater depth and attributes it in part to the choice and optimization of the baselines used for comparison. \citet{sun2020rigorous} respond at the community level with standardized benchmarking for reproducible evaluation and fair comparison. These works diagnose the problem and propose field-level remedies; what this paper adds is complementary and \emph{per-paper}: an executable discipline that a single submission can adopt and a reviewer can re-run --- version-controlled pre-declaration of the comparator-facing confirmation (\S\ref{sec:5.2}), a fail-closed artifact gate that recomputes every artifact-gated table cell from released artifacts at build time (published comparator values are pinned as labeled external constants; \S\ref{sec:2.2} records a retirement the gate forced), local regeneration of the comparator by its own unmodified reference implementation (environment-caveated single-run regenerations, \S\ref{sec:5.6}), and symmetric publication of failures, including a pre-declaration VOIDed by its own comparability check (Appendix A.0) with a redesigned successor that subsequently passed on fresh seeds (\texttt{PREREG\_OFFICE\_V3.md}; \S\ref{sec:5.2}), the original VOID standing unchanged. None of this apparatus strengthens any empirical claim --- every non-claim of \S\ref{sec:5}--\S\ref{sec:7} stands unchanged; it certifies that the numbers printed are the numbers the artifacts recompute, under decision rules frozen before the confirmatory runs.
+
+
+\subsection{Attribution table}\label{sec:2.1}
+
+\input{tables/table_attribution}
+
+
+\subsection{Our additions to the above prior art}\label{sec:2.2}
+
+We do not claim a wholly new recommender architecture. Our architectural additions are deliberately small: a causal FIR adaptation of prior frequency-filter ideas and a soft text-prototype additive term. Our contributions are:
+
+\begin{itemize}
+\tightlist
+\item
+  An \textbf{open-source iterative user-and-item 5-core preprocessing pipeline} (\texttt{preprocess\_5core\_\allowbreak standard.py}). Its leave-out chronology resembles TIGER and LIGER and its two-sided filtering resembles LIGER, but it does not claim exact TIGER/LIGER protocol identity and differs from Hou et al.'s 0-core repository path.
+\item
+  A \textbf{memory-efficient chunked-full-softmax loss} that enables proper full-catalog cross-entropy training at 207k-item catalogs on a single 16 GB GPU.
+\item
+  An \textbf{eval optimization} (caching \texttt{all\_item\_features()} once per \texttt{evaluate()} call) that gives \textasciitilde10\ensuremath{\times} speedup at d=64 with the MLP adaptor.
+\item
+  A \textbf{cross-pipeline transfer study}: empirically testing which published architectural choices help on the 5-core protocol.
+\item
+  \textbf{Negative-result documentation} for 18 of 20 tested variants on Beauty\_and\_\allowbreak Personal\_Care 5-core.
+\item
+  The \textbf{competitive Video\_Games 5-core result} on the HSTU-style pure-PyTorch stack (6-seed NDCG@10 = \textbf{0.0673 \ensuremath{\pm} 0.0003}, +17.5\% over published SASRec 0.0573), shown to be architectural (ID-only \ensuremath{\approx}0.0656), with no SOTA claim. \emph{(The earlier v1-era SASRec-SBERT number 0.05509 \ensuremath{\pm} 0.00035 has been retired from Table 1a: its raw per-seed artifacts predate the artifact manifest and cannot be recomputed, so it survives only as a RETIRED provenance row in the manifest, not as a paper claim.)}
+\item
+  The two added components --- the \textbf{strictly causal FIR temporal filter} (positive matched identity contrasts on three outcome-visible categories plus a positive outcome-known Software robustness contrast; learned FIR separates from one equal-parameter compound non-temporal placebo in MI, while the shared causal control prevents per-channel-tap attribution; \S\ref{sec:5.2}) and \textbf{TAPE} --- plus the \textbf{MI frequency-5 tail case} (\S\ref{sec:5.3}) and its \textbf{interaction-thinning titration} level-contrast result (\S\ref{sec:5.4}). The novelty boundary for each is stated explicitly in Table 0 (\S\ref{sec:2.3}).
+\end{itemize}
+
+
+\subsection{Claim boundary}\label{sec:2.3}
+
+Table 0 separates prior work from the paper's actual claim boundary. Frequency
+filtering (including FEARec, FreqRec, WEARec, and WPGRec) and causal convolution (including Caser and
+NextItNet) predate this work
+\citep{du2023fearec,he2026freqrec,xu2026wearec,liu2026wpgrec,tang2018caser,yuan2019nextitnet}, as do residual
+identity initialization, HSTU, frozen text encoders, and label smoothing. Our claim is limited to the
+gradient-active left-causal depthwise-FIR residual used before an HSTU-style stack under
+an all-position objective, together with its matched internal evaluation. The historical
+zero-gated realization is singular at initialization and remains package-attributed;
+the nonsingular canonical realization permits a FIR-arm interpretation, while the
+learned FIR separates from one equal-parameter current-position-only DCT/GELU placebo,
+but that compound contrast does not isolate temporal access; a shared causal filter prevents attribution to per-channel taps
+(\S\ref{sec:3}, \S\ref{sec:5.2}).
+
+\input{tables/table0_novelty}
+
+\textbf{Closest filtering and linear-time operator systems.} FMLP-Rec and BSARec establish learnable sequence filtering and frequency-rescaled attention; BSARec's Theorem~1 concerns repeatedly applied softmax attention, not our HSTU-style operator. C3SASR and AdaMCT already combine causal/local convolution with attention \citep{chen2022c3sasr,jiang2023adamct}. TimeWeaver combines a reparameterized large-kernel convolution with time-aware augmentation and dual temporal/EMA streams \citep{liu2025timeweaver}. TV-Rec replaces fixed kernels and self-attention with position-specific time-variant filters \citep{shin2025tvrec}; HyenaRec parameterizes long convolution kernels with Legendre polynomials and short-term gates \citep{liu2026hyenarec}; ConvRec uses hierarchical strided convolution for attribute-aware sequence aggregation \citep{elsayed2026convrec}; and Mamba4Rec applies a selective state-space operator with a local convolutional path \citep{liu2024mamba4rec}. Other nearby filtering systems include DLFS-Rec, DIFF, TASIF, and ConvFormer \citep{liu2023dlfsrec,kim2025diff,luo2026tasif,wang2023convformer}; current frequency systems FreqRec and WEARec add inter-session spectral paths or adaptive wavelet filtering \citep{he2026freqrec,xu2026wearec}. These systems differ in backbone, attributes, sequence length, candidate protocol, and efficiency target, so their reported numbers are not inserted as if protocol-matched. Their existence rules out broad filtering, convolution, temporal-specificity, or efficiency novelty. Our distinction is only the small gradient-active, identity-initialized \textbf{left-causal depthwise FIR residual} placed before one HSTU-style all-position, full-catalog stack, together with the bounded evaluation reported here.
+
+\textbf{Closest text/ID systems.} AlphaFuse \citep{hu2025alphafuse} learns ID embeddings in the null space of language embeddings and is the closest frozen-text-plus-ID comparator. The first AlphaFuse-style MiniLM port on our Video\_Games split used mismatched seen-item masking; its repaired V2 factorial remained outcome-visible, capacity/initialization-confounded, incompletely masked for long histories, and non-rank-reconstructive, so its governed adjudicator permanently marks it \texttt{NONCOUNTABLE}. Separately frozen V3 used eight fresh seeds per arm, complete-history-masked validation selection, and sealed TEST evaluation. Its verdict, \texttt{EEV3-REPORTABLE-OUTCOME-KNOWN}, records AlphaFuse-style MiniLM NDCG@10 0.048273 [0.048129, 0.048416] versus 0.039024 [0.038106, 0.039941] for a zero-initialized upstream-class SASRec-ID control: descriptive independent-arm difference +0.009249 [+0.008329, +0.010169]. The package nevertheless remains -0.019065 [-0.019347, -0.018783] below our existing 0.067337 reference. Separately frozen V4 tested parser-default \texttt{Normal(0,1)} SASRec-ID and scored 0.043065 [0.042645, 0.043486]; the package remained above it by +0.005207 [+0.004779, +0.005635], while normal initialization improved SASRec-ID over the earlier zero-init control by +0.004042 [+0.003089, +0.004995]. Official recipes may override initialization by dataset, so the parser setting is not a universal upstream recipe. V4 is outcome-known, same-investigator, and cross-campaign: phase/date and initialization are confounded, and architecture, capacity, and allocation remain unequal. These studies do not reproduce AlphaFuse's published text encoder, isolate null-space fusion or initialization, establish equal architecture/capacity/tuning, provide independent confirmation, or support SOTA. Whitening, channel separation, prototype/codebook, decoupled fusion, and adaptive semantic/ID methods remain active prior lines \citep{zhang2024dwsrec,zhou2026sidsrec,hu2026bfdrec,lee2026ace,zhang2026llmsqrec,liu2021nova,xie2022difsr,xu2024tedrec,li2025alterrec,liu2024llmesr,wei2026faerec,he2025llm2rec}. Our text findings remain construction-specific; item-text permutation remains open. Mecos and RecGPT address different few-interaction or zero-shot/short-history settings \citep{zheng2021mecos,jiang2025recgpt}.
+
+Two concurrent 2026 preprints reinforce that this is an active modular-content line rather than a priority claim: SISA-Rec injects frozen BERT semantics through gated input fusion and a semantic attention term \citep{abbasi2026sisarec}, while ASER adds review-distilled sensory representations to four existing sequential backbones \citep{yoon2026aser}. Their Amazon Reviews 2014 protocols and representation interventions are not numerically interchangeable with our AR2023 FIR study; we cite them for mechanism-family coverage only.
+
+\textbf{Tail and reproducibility boundary.} SimRec, MELT, DropoutNet, CLCRec, and LLM-ESR already address sparse, long-tail, or content-supported recommendation \citep{brody2024simrec,kim2023melt,volkovs2017dropoutnet,wei2021clcrec,liu2024llmesr}, so our tail contribution is a measured, dataset-specific frequency-5 case rather than a method claim. LLM2Rec uses Amazon Reviews 2023 with 5-core leave-one-out/full ranking, but its length-10 histories and resulting item universe prevent direct numeric comparison \citep{he2025llm2rec}. Elliot, DaisyRec~2.0, accountability workflows, and reproduction audits predate our apparatus \citep{anelli2021elliot,sun2022daisyrec,bellogin2021accountability,petrov2022bert4rec}; we claim only this paper's combination of per-cell recomputation, provenance tripwires, and symmetric self-VOIDing, not evaluation infrastructure generally. Chunked exact cross-entropy is likewise implementation engineering, not a contribution \citep{wijmans2025cce}.

@@ -1,0 +1,515 @@
+{
+  "claim_scope": "local_video_games_component_comparator_evidence_only",
+  "components": [
+    "dev10",
+    "dev13",
+    "dev4",
+    "dev5",
+    "dev9",
+    "sasrec"
+  ],
+  "confirmatory_protocol": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_sparse_rrf_confirmatory_protocol_20260609.json",
+  "evidence_scope": "video_games_sparse_rrf_confirmatory_inputs",
+  "evidence_stage": "confirmatory_inventory",
+  "fresh_confirmatory_seeds": [
+    20260801,
+    20260802,
+    20260803,
+    20260804,
+    20260805
+  ],
+  "frozen_manifest": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_multi_rrf_candidate_20260609.json",
+  "missing_component_files": [],
+  "missing_static_inputs": [],
+  "present_component_files": [
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+    "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl"
+  ],
+  "protocol_id": "video_games_sparse_rrf_confirmatory_20260609",
+  "publication_grade": false,
+  "ready_to_replay_confirmatory": true,
+  "reason": "Inventory check only; no confirmatory result is produced by this script.",
+  "replay_commands_after_inputs_exist": [
+    "uv --project _bestrec_run run python _bestrec_sota_lab/run_sparse_rrf_full_catalog_replay.py --manifest C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_multi_rrf_candidate_20260609.json --input dev10 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev13 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev4 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev5 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev9 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input sasrec C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl top_ids --sequence-csv C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\hstu_strict_protocol_data_20260609\\sasrec_format_test_strict.csv --out-dir _bestrec_sota_lab/runs/video_games_sparse_rrf_full_catalog_confirmatory_seed20260801 --dataset Video_Games --seed 20260801 --fold-id 0 --split test --evidence-stage confirmatory --evidence-scope video_games_sparse_rrf_five_seed_replay --protocol-manifest C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_sparse_rrf_confirmatory_protocol_20260609.json --claim-scope local_video_games_component_comparator_evidence_only",
+    "uv --project _bestrec_run run python _bestrec_sota_lab/run_sparse_rrf_full_catalog_replay.py --manifest C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_multi_rrf_candidate_20260609.json --input dev10 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev13 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev4 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev5 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev9 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input sasrec C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl top_ids --sequence-csv C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\hstu_strict_protocol_data_20260609\\sasrec_format_test_strict.csv --out-dir _bestrec_sota_lab/runs/video_games_sparse_rrf_full_catalog_confirmatory_seed20260802 --dataset Video_Games --seed 20260802 --fold-id 0 --split test --evidence-stage confirmatory --evidence-scope video_games_sparse_rrf_five_seed_replay --protocol-manifest C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_sparse_rrf_confirmatory_protocol_20260609.json --claim-scope local_video_games_component_comparator_evidence_only",
+    "uv --project _bestrec_run run python _bestrec_sota_lab/run_sparse_rrf_full_catalog_replay.py --manifest C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_multi_rrf_candidate_20260609.json --input dev10 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev13 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev4 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev5 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev9 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input sasrec C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl top_ids --sequence-csv C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\hstu_strict_protocol_data_20260609\\sasrec_format_test_strict.csv --out-dir _bestrec_sota_lab/runs/video_games_sparse_rrf_full_catalog_confirmatory_seed20260803 --dataset Video_Games --seed 20260803 --fold-id 0 --split test --evidence-stage confirmatory --evidence-scope video_games_sparse_rrf_five_seed_replay --protocol-manifest C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_sparse_rrf_confirmatory_protocol_20260609.json --claim-scope local_video_games_component_comparator_evidence_only",
+    "uv --project _bestrec_run run python _bestrec_sota_lab/run_sparse_rrf_full_catalog_replay.py --manifest C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_multi_rrf_candidate_20260609.json --input dev10 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev13 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev4 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev5 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev9 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input sasrec C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl top_ids --sequence-csv C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\hstu_strict_protocol_data_20260609\\sasrec_format_test_strict.csv --out-dir _bestrec_sota_lab/runs/video_games_sparse_rrf_full_catalog_confirmatory_seed20260804 --dataset Video_Games --seed 20260804 --fold-id 0 --split test --evidence-stage confirmatory --evidence-scope video_games_sparse_rrf_five_seed_replay --protocol-manifest C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_sparse_rrf_confirmatory_protocol_20260609.json --claim-scope local_video_games_component_comparator_evidence_only",
+    "uv --project _bestrec_run run python _bestrec_sota_lab/run_sparse_rrf_full_catalog_replay.py --manifest C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_multi_rrf_candidate_20260609.json --input dev10 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev13 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev4 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev5 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input dev9 C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl teacher_top_ids --input sasrec C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl top_ids --sequence-csv C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\hstu_strict_protocol_data_20260609\\sasrec_format_test_strict.csv --out-dir _bestrec_sota_lab/runs/video_games_sparse_rrf_full_catalog_confirmatory_seed20260805 --dataset Video_Games --seed 20260805 --fold-id 0 --split test --evidence-stage confirmatory --evidence-scope video_games_sparse_rrf_five_seed_replay --protocol-manifest C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_sparse_rrf_confirmatory_protocol_20260609.json --claim-scope local_video_games_component_comparator_evidence_only"
+  ],
+  "required_training_note": "Each missing HSTU component must be regenerated from the frozen generator label on the listed fresh seed; the SASRec component must likewise be regenerated/exported on the same fresh seed before replay.",
+  "retired_seed_sets": [
+    {
+      "reason": "The development HSTU component runs used seed 20260701 before this sparse-RRF candidate was frozen. To avoid any ambiguity, the entire previously listed seed set is retired for this candidate-specific confirmatory run.",
+      "seeds": [
+        20260701,
+        20260702,
+        20260703,
+        20260704,
+        20260705
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "seed_component_inputs": {
+    "20260801": {
+      "dev10": {
+        "component": "dev10",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781020763592286500,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "af33544256f1257cedd5711d82ea6e7e76068f3642686bdf5d2202ee03cd8ad0",
+          "size_bytes": 211767400
+        },
+        "generator_label": "strict_hstu_sm120_dev9_resume_lr3e-4_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev13": {
+        "component": "dev13",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781023911786479900,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "b83a3148b6620a3317c6aaa1aa406bf945bf30f2998ffdcd719d2227c058681b",
+          "size_bytes": 212223090
+        },
+        "generator_label": "strict_hstu_sm120_d96_l4h4_epoch60_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev4": {
+        "component": "dev4",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781025758600586700,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "a58c804e526ea5d09a6994c9837b37de049464ee89a1fa54c76648de9eda67be",
+          "size_bytes": 212119716
+        },
+        "generator_label": "strict_hstu_sm120_epoch60_direct",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev5": {
+        "component": "dev5",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781021838635904300,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "9d1cf1d398095e82c892ed03cea8e14a0abdd955bc74f8a9284d5682d4ab790a",
+          "size_bytes": 211322763
+        },
+        "generator_label": "strict_hstu_sm120_epoch30_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev9": {
+        "component": "dev9",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781015604100117300,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "5cf9062e59b9bde26fc370663c62b1e947405244d929a499450b7307e048e7ab",
+          "size_bytes": 211612833
+        },
+        "generator_label": "strict_hstu_sm120_epoch60_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "sasrec": {
+        "component": "sasrec",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781026194922800800,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl",
+          "sha256": "f153a8564f8566c943211c1ddf812109cbbd7bace8360538a81a5fadd51cedca",
+          "size_bytes": 165187225
+        },
+        "generator_label": "sasrec_sbert_seed101_from_checkpoint",
+        "ids_key": "top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260801_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl"
+      }
+    },
+    "20260802": {
+      "dev10": {
+        "component": "dev10",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781031236459573500,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "c129bac0104cee11845952d3d2db209b3223a7923d320558d220c69268a139b3",
+          "size_bytes": 212204346
+        },
+        "generator_label": "strict_hstu_sm120_dev9_resume_lr3e-4_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev13": {
+        "component": "dev13",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781034548776361300,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "34e40b9f6345548fede6f5ef645c051b088d0a7e9822a8b8f3a35c4da72d7eb6",
+          "size_bytes": 211907802
+        },
+        "generator_label": "strict_hstu_sm120_d96_l4h4_epoch60_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev4": {
+        "component": "dev4",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781038064491237200,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "f298698b84e98bcba90aa3f03e481a0608dac21c6bdfa2e1e828dcda0c26590e",
+          "size_bytes": 211995310
+        },
+        "generator_label": "strict_hstu_sm120_epoch60_direct",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev5": {
+        "component": "dev5",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781032499327579800,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "f0fa2d3d0ddc593fc4a7c5fb896093c2ac03f178835007bbff005a9a40053b60",
+          "size_bytes": 211666745
+        },
+        "generator_label": "strict_hstu_sm120_epoch30_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev9": {
+        "component": "dev9",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781029869013184600,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "f3aedac4520e3f9259f5b66dcd5d471350dd0cacda96b39effb1c4ea64d774a2",
+          "size_bytes": 212042203
+        },
+        "generator_label": "strict_hstu_sm120_epoch60_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "sasrec": {
+        "component": "sasrec",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781038543753207800,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl",
+          "sha256": "b1d560e6a0ee24dfcd3656add2860ae5d377abbad74a9395a0172561da20ed8b",
+          "size_bytes": 165061054
+        },
+        "generator_label": "sasrec_sbert_seed101_from_checkpoint",
+        "ids_key": "top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260802_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl"
+      }
+    },
+    "20260803": {
+      "dev10": {
+        "component": "dev10",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781046797577468600,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "d963d3b3fe3e0e1983a3736fba637f6d928ab715fe6af60ce593b0e7aa7e5aac",
+          "size_bytes": 212353613
+        },
+        "generator_label": "strict_hstu_sm120_dev9_resume_lr3e-4_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev13": {
+        "component": "dev13",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781052450858606900,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "7023b0fa010b59d7d4c171ad71f1d2d7c4f585c37065baa3a3d1d146b7fc9691",
+          "size_bytes": 212296957
+        },
+        "generator_label": "strict_hstu_sm120_d96_l4h4_epoch60_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev4": {
+        "component": "dev4",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781054339390649500,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "0271be79e2503c51a374692048d46d7d506d30d22cd29342cc1295338fbfc4ad",
+          "size_bytes": 211908865
+        },
+        "generator_label": "strict_hstu_sm120_epoch60_direct",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev5": {
+        "component": "dev5",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781048654797828100,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "74f91d0e969c37c8efe34f2f6e14303d9d24d148d97f790ce46bcbed47ad0668",
+          "size_bytes": 212028665
+        },
+        "generator_label": "strict_hstu_sm120_epoch30_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev9": {
+        "component": "dev9",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781045279715112100,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "00bc8f61197a9553a3c077d0e684e3a01ec6fe86c4eb414c6273fbe680c2c76d",
+          "size_bytes": 212208909
+        },
+        "generator_label": "strict_hstu_sm120_epoch60_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "sasrec": {
+        "component": "sasrec",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781054831124431500,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl",
+          "sha256": "eb8a70a4cbd81d7bb15ee60f373ccb80cdccf542fa66791af2e4da3ac722ece9",
+          "size_bytes": 165068570
+        },
+        "generator_label": "sasrec_sbert_seed101_from_checkpoint",
+        "ids_key": "top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260803_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl"
+      }
+    },
+    "20260804": {
+      "dev10": {
+        "component": "dev10",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781058879282307100,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "643b989781baf1fe23068a50d33b0b0aed28a41164e0885cc554f600e5695529",
+          "size_bytes": 212279934
+        },
+        "generator_label": "strict_hstu_sm120_dev9_resume_lr3e-4_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev13": {
+        "component": "dev13",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781061935513918900,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "b14e468bd27d4a048c3cff0e516b33dcf3d0a9c5caa4200b5beae6138080d842",
+          "size_bytes": 212496368
+        },
+        "generator_label": "strict_hstu_sm120_d96_l4h4_epoch60_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev4": {
+        "component": "dev4",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781063860685087000,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "313ffab7d6ab376fd321ac504188404309a14b81d19b9b60189588ce549324c7",
+          "size_bytes": 211899663
+        },
+        "generator_label": "strict_hstu_sm120_epoch60_direct",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev5": {
+        "component": "dev5",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781064866483566200,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "2aff388a3e45e32159127343f65e05ba9e4066df8347ebac440f3095cba88438",
+          "size_bytes": 211385660
+        },
+        "generator_label": "strict_hstu_sm120_epoch30_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev9": {
+        "component": "dev9",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781056948052831600,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "07987f95ed2b7093d1ef22dcdcc4da7c484fa1e78ad925e02215b72694ac202b",
+          "size_bytes": 212002224
+        },
+        "generator_label": "strict_hstu_sm120_epoch60_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "sasrec": {
+        "component": "sasrec",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781065326579318600,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl",
+          "sha256": "a1ca99e82d5dbdeb5bec9da7a9eec5a69f4f4041aab33a90e0e877cce85f1537",
+          "size_bytes": 165055627
+        },
+        "generator_label": "sasrec_sbert_seed101_from_checkpoint",
+        "ids_key": "top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260804_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl"
+      }
+    },
+    "20260805": {
+      "dev10": {
+        "component": "dev10",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781072556700112600,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "e9e6b1dab9e2dd39eda17b2041ad81c150a6a2d2af48f14cb31c3e05046bfbee",
+          "size_bytes": 211739702
+        },
+        "generator_label": "strict_hstu_sm120_dev9_resume_lr3e-4_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev10_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev13": {
+        "component": "dev13",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781075914618790000,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "f1eb258c5139b2aa99566ae702bde2b395afd950b82f7b967794c17379a54503",
+          "size_bytes": 212004537
+        },
+        "generator_label": "strict_hstu_sm120_d96_l4h4_epoch60_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev13_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev4": {
+        "component": "dev4",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781067901656365600,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "1476745bedc486cf72acbf64358ac546fe58b0ca472a5c9dba6db656261691cc",
+          "size_bytes": 212007799
+        },
+        "generator_label": "strict_hstu_sm120_epoch60_direct",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev4_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev5": {
+        "component": "dev5",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781068941152561500,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "9ee52238dba313a3d8354b96990aff90089642f8ffb089f7ef0f2c2e9b8bb4fe",
+          "size_bytes": 211370980
+        },
+        "generator_label": "strict_hstu_sm120_epoch30_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev5_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "dev9": {
+        "component": "dev9",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781071217501360200,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl",
+          "sha256": "12a0d59953ac622b549a0b60c433af27ff8b97bd65febc74540f8d4de1ca6d6d",
+          "size_bytes": 211429982
+        },
+        "generator_label": "strict_hstu_sm120_epoch60_dropout03",
+        "ids_key": "teacher_top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_dev9_export_test\\warm_full_catalog_records_Video_Games_strict_hstu_test.jsonl"
+      },
+      "sasrec": {
+        "component": "sasrec",
+        "file": {
+          "exists": true,
+          "mtime_ns": 1781076435584190600,
+          "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl",
+          "sha256": "c167d1e4312578cc7e0e0d1d8216fb4442b9b28214c187bbaa3924c663dcb3f7",
+          "size_bytes": 165046343
+        },
+        "generator_label": "sasrec_sbert_seed101_from_checkpoint",
+        "ids_key": "top_ids",
+        "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl"
+      }
+    }
+  },
+  "split": "test",
+  "static_inputs": {
+    "item_map": {
+      "exists": true,
+      "mtime_ns": 1780955381131971600,
+      "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\hstu_item_alignment_20260609\\hstu_bestrec_item_map.json",
+      "sha256": "549a4b7883df5053b51ee671823d9c40731a231a2a8c1309df7b4dc5ab996d3b",
+      "size_bytes": 546874
+    },
+    "manifest": {
+      "exists": true,
+      "mtime_ns": 1781011245968027600,
+      "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_multi_rrf_candidate_20260609.json",
+      "sha256": "a97888c17d7449c8bbfb5be145ad354e76fac64323f24e4edd4c49fffca0d6a6",
+      "size_bytes": 2807
+    },
+    "sequence_csv": {
+      "exists": true,
+      "mtime_ns": 1780957673407737600,
+      "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\hstu_strict_protocol_data_20260609\\sasrec_format_test_strict.csv",
+      "sha256": "5a51c1efd7f0aff2a45d1c7199ef7083f4c4755e404ed3b7283840516196d36d",
+      "size_bytes": 20015946
+    },
+    "user_map": {
+      "exists": true,
+      "mtime_ns": 1780955859849607600,
+      "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\hstu_user_alignment_20260609\\hstu_bestrec_user_map.json",
+      "sha256": "7e318327a39c36a7337e53acdc855ef764f962b8d4bbba53b4eef067bed87778",
+      "size_bytes": 2068592
+    }
+  },
+  "status": "ready"
+}

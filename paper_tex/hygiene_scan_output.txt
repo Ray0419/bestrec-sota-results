@@ -1,0 +1,28 @@
+hygiene scan: PAPER_TORS.pdf | pages: 33
+placeholder+forbidden failures: 0
+review list (SOTA mentions + negated claim-wordings): 24
+  REVIEW negated-ok: pinned(?:[-\s]\w+)?[-\s]reproduction :: luded from the artifact graph) 0.13234 final stronger than ours; not a faithful pinned-environment reproduction AlphaFuse-style MiniLM representation package (8 fresh seeds; this audit) 0.048
+  REVIEW negated-ok: pinned(?:[-\s]\w+)?[-\s]reproduction :: cal HSTU-BLaIR executions are environmentcaveated single-run regenerations, not pinned reproductions or distributional comparisons. A separately pre-declared EASE late-fusion stud
+  REVIEW negated-ok: pinned\s+reproduction :: cal HSTU-BLaIR executions are environmentcaveated single-run regenerations, not pinned reproductions or distributional comparisons. A separately pre-declared EASE late-fusion stud
+  REVIEW SOTA-mention :: artifact-gated evaluation record, not a new architecture, general FIR benefit, SOTA result, or independent confirmation. A fail-closed graph preserves positive, nu
+  REVIEW SOTA-mention :: tecture, loss, schedule, or tuning, and is neither independent confirmation nor SOTA evidence. A frozen study contrasting an AlphaFuse-style package with a zero-ini
+  REVIEW SOTA-mention :: r published SASRec 0.0573), shown to be architectural (ID-only≈0.0656), with no SOTA claim.(The earlier v1-era SASRec-SBERT number 0.05509 ± 0.00035 has been retire
+  REVIEW SOTA-mention :: ion isolation, equal architecture/capacity/tuning, independent confirmation, or SOTA. Manuscript submitted to ACM 6 [Maintainer: short author list] Component and re
+  REVIEW SOTA-mention :: line, not equal architecture/loss/schedule/tuning, independent confirmation, or SOTA. Filtering, frequency modeling, and causal convolution are prior art. Causal FI
+  REVIEW SOTA-mention :: qual architecture/capacity/tuning, provide independent confirmation, or support SOTA. Whitening, channel separation, prototype/codebook, decoupled fusion, and adapt
+  REVIEW SOTA-mention :: ploratory. 5.1 Video_Games — descriptive system context (not FIR inference; NOT SOTA) The complete historical component ladder and retired-baseline context are reta
+  REVIEW SOTA-mention :: the same investigators on an outcome-known split—not independent confirmation, SOTA, a paired experiment, or equality of architecture, loss, schedule, or tuning bu
+  REVIEW SOTA-mention :: solation,equal-tuning evidence,apaired experiment, independent confirmation, or SOTA. The public graph recomputes released aggregate vectors and Welch arithmetic an
+  REVIEW SOTA-mention :: ation, supply an equal-budget factorial or independent confirmation, or support SOTA. The public graph recomputes the released summary and three Welch contrasts and
+  REVIEW SOTA-mention :: ed Evaluation 23 FIR-plus-initialization/optimizer package; nothing broader, no SOTA language, no comparator statement. The filter package is thus multi-seed-suppor
+  REVIEW SOTA-mention :: eration 0.0279; no paired or distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA cla
+  REVIEW SOTA-mention :: distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind. The V1 VOID a
+  REVIEW SOTA-mention :: not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind. The V1 VOID above stands unchanged as its own record (Append
+  REVIEW SOTA-mention :: aired Welch contrast is descriptive, and neither independent confirmation nor a SOTA claim follows. The graph replays NDCG vector arithmetic, not private endpoint e
+  REVIEW SOTA-mention :: able, establishes equal tuning, supplies independent confirmation, or permits a SOTA claim.User/itembootstrapintervals arefixed-datasetsensitivities;the publicgraph
+  REVIEW SOTA-mention :: es, losses, schedules, or tuning budgets and is not independent confirmation or SOTA evidence. The frozen AlphaFuse-style current-comparator campaign reached NDCG@1
+  REVIEW SOTA-mention :: duce AlphaFuse’s published text setting, or provide independent confirmation or SOTA evidence. A separately frozen parser-defaultNormal(0,1) SASRec-ID sensitivity r
+  REVIEW SOTA-mention :: initialization isolation, equal-budget comparison, independent confirmation, or SOTA. The secondary result is narrower. Frozen text features improve the repaired Mu
+  REVIEW SOTA-mention :: lt artifacts, and build scripts are public athttps://github.com/Ray0419/bestrec-sota-results. The trackedRELEASE_MANIFEST.json binds source code, split derivatives,
+  REVIEW placeholder :: '[Maintainer:' byline fields pending (DRAFT_WAIVER=1 -- logged, non-fatal)
+verdict: PASS (review list above is informational)

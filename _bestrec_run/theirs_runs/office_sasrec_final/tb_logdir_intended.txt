@@ -1,0 +1,1 @@
+./exps/amzn23_office-l50/SASRec-d64-b4-h4-posi_d0.5-l2-ffn64-relu-d0.5_None_DotProduct_local-l2-eps1e-06_ssl-t0.05-n512-b128-lr0.001-wu0-wd0-2026-07-11-fe5

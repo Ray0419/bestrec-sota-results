@@ -1,0 +1,69 @@
+
+## ANALYSIS 2026-07-03-2 — THE FINAL SANCTIONED ARM RESOLVED: the credibility-router (PROPOSAL 2026-07-03-1) is REFUTED on the pre-registered deployable gate (cold FLOORS @10: 3 hits < 7 ceiling), while WARM is fully preserved (0.0437, gate-ii PASS) — the strongest impossibility result the supervisor pre-registered. PLUS an encoder-matched z-fusion HSTU control that PARTIALLY REVERSES my own Finding-3: z-fusion DOES hurt warm ~0.010 on matched HSTU (content-noise injection), NOT an encoder artifact.
+
+- **Runs digested (5 new, all 2026-07-03, disk 474 → 479):** the cycle-18-sanctioned FINAL cold-start arm + one encoder-confound control all ran on the idle GPU, one job at a time:
+  - **`results_CREDROUTE_evalonly_MI_seed20260608.json`** — credibility-router EVAL-ONLY probe (`--credibility-route`, re-rank of an already-trained model; Buhlmann `Z=n/(n+k)`). hstu, MI, cold_frac 0.15/seed 1, n_cold=8748, full-catalog eval (n_eval 57439). val=0.04002 (test-side, no overfit).
+  - **`results_CREDROUTE_train_MI_seed20260608.json`** — credibility-router TRAIN-CONSISTENT variant (`--cred-route-train`). hstu, MI, same split. val=0.04014.
+  - **`results_SMOKE_credroute_MI.json` + `results_SMOKE_credtrain_MI.json`** — the 2-ep no-NaN smoke tests (default-OFF zero-init verified; not analyzed further).
+  - **`results_ZFUSION_hstu_MI_seed20260608.json`** — the **encoder-matched z-fusion control** I asked for last cycle (ANALYSIS 2026-07-03-1, missing-ablation #1): z-fusion re-run on **hstu** to disentangle encoder from intervention. val=0.03041.
+  Cross-checked vs on-disk seed08 baselines (COLD_idonly / COLD_text / COLDSYNTH / COLD_sbertonly_hstu / ZFUSION transformer), all same split/seed/encoder where stated.
+
+- **FINDING 1 — the credibility-router is REFUTED on the pre-registered DEPLOYABLE GATE: warm is PRESERVED, but cold FLOORS below even the cold-synth ceiling at @10.** MI seed08 hstu cold-split, both variants vs the sanctioned reference arms:
+
+  | MI hstu seed08 arm | cold N@10 | cold hit@10 | cold hit@50 | cold hit@100 | warm N@10 | overall N@10 |
+  |---|---|---|---|---|---|---|
+  | idonly | 0.000000 | 0 | — | — | 0.03855 | 0.03268 |
+  | additive text (COLD_text) | 0.000000 | 0 | — | 0 | 0.04301 | 0.03646 |
+  | **cold-synth kNN (warm-preserving ceiling)** | 0.000342 | **7** | 58 | 125 | 0.04379 | 0.03717 |
+  | sbert-only (ID dropped, cold WIN, warm-killed) | 0.003108 | **66** | 293 | 536 | 0.01632 | 0.01431 |
+  | **credibility-router EVAL-ONLY** | 0.000114 | **3** | 57 | 163 | **0.04334** | 0.03675 |
+  | **credibility-router TRAIN-CONSISTENT** | 0.000104 | **3** | 85 | **236** | **0.04369** | 0.03705 |
+
+  **Pre-registered gate = cold hits@10 > 7 AND warm N@10 >= ~0.040 (BOTH required).** Both variants: **gate-ii PASS** (warm 0.0433–0.0437 ~ the cold-synth/full-stack warm band 0.0430–0.0438 — the parameter-free `Z->1`-for-warm design worked *exactly* as specified; unlike z-fusion, it did NOT collapse warm), but **gate-i FAIL** (cold 3 hits@10, BELOW the cold-synth ceiling of 7, << sbert-only's 66). => **GATE FAILED => REFUTED, single-seed, no 5-seed escalation** (verified: only seed08 exists for both variants — EXPERIMENT correctly honored the pre-registration and did NOT burn 5 seeds on a failed gate).
+  - **NUANCE (honest, not a rescue): the router is NOT a pure floor — it has genuine DEEP-K cold reach that beats cold-synth.** credroute-train cold hit@50 = **85 > cold-synth 58**; hit@100 = **236 > cold-synth 125 (~1.9x)** — more warm-preserving cold reach than any prior arm, ~44% of sbert-only's @100 (536) while keeping ~all warm. But it pushes cold items only from the bottom into the 50–100 band, **never into the top-10** (3 < 7). This is the **exact same deep-K-only signature as the warm tail** (real signal at HR@50–100, null @10) — the top-10 cutoff is where every warm-preserving cold/tail lever in this campaign dies.
+
+- **FINDING 2 — the encoder-matched z-fusion HSTU control PARTIALLY REVERSES my own Finding-3 (ANALYSIS 2026-07-03-1): z-fusion GENUINELY hurts warm (~0.010) on matched HSTU — it is NOT (mostly) an encoder artifact.** With the new hstu run I can now do the clean same-encoder comparison I lacked last cycle:
+
+  | z-fusion warm comparison (MI seed08) | warm N@10 | cold hit@10 | cold hit@100 |
+  |---|---|---|---|
+  | z-fusion **transformer** | 0.03005 | 0 | 7 |
+  | z-fusion **hstu** (NEW) | 0.03309 | 0 | 9 |
+  | same-encoder no-fusion ref (COLD_text **hstu**) | 0.04301 | 0 | 0 |
+
+  - **z-fusion on matched HSTU vs the same-encoder no-fusion text stack: warm delta = -0.00992 (~-23% rel).** The transformer->hstu encoder component is only **+0.00304** (z-fusion hstu − z-fusion transformer). So of z-fusion's warm damage, the encoder explains ~0.003 and the **eval-time content fusion itself genuinely destroys ~0.010 of warm NDCG** — the supervisor's original "z-fusion injects content noise into warm" read was RIGHT; my cycle-17->18 blanket "encoder artifact" retraction was WRONG *for z-fusion specifically*.
+  - **Scope of the correction (be precise):** my Finding-3 retraction STANDS for **kriging and norm-restore** — those are *cold-only* interventions that structurally do not modify warm rows, so their warm ~ the bare transformer baseline and the encoder fully explains their apparent warm drop. It does NOT stand for **z-fusion**, which is an eval-time fusion applied to ALL items (warm included); the matched-HSTU control shows it hurts warm on its own. **Net: z-fusion is DEAD on warm AND cold on both encoders (cold 0@10 hstu and transformer; warm -0.010 even matched) — the "encoder artifact" excuse is withdrawn for z-fusion.**
+
+- **Component attribution table (this cycle):**
+
+  | component / flag | controlled comparison (MI seed08 hstu unless noted) | delta / basis | verdict |
+  |---|---|---|---|
+  | **credibility-router (train-consistent)** | vs cold-synth ceiling (7@10) & warm band | cold 3@10 (FAIL >7); warm 0.0437 (PASS >=.040); hit@100 236>125 | **REFUTED on deployable gate — warm-safe but cold floors @10; deep-K-only lift** |
+  | credibility-router (eval-only) | vs trained model | cold 3@10; warm 0.0433; hit@100 163 | **REFUTED (as pre-registered — sbert_proj is a residual, not standalone); floor is INFORMATIVE** |
+  | **z-fusion on WARM (encoder-matched)** | z-fusion hstu vs COLD_text hstu (same enc) | warm -0.00992 (~-23%); encoder only +0.003 | **HURTS warm (genuine content-noise; NOT an encoder artifact) — Finding-3 self-correction** |
+  | z-fusion on COLD (both encoders) | vs floor | 0 hit@10 (hstu & transformer) | **DEAD on cold, encoder-independent (confirmed)** |
+  | cold-synth (warm-preserving ceiling) | vs floor | 7@10 / 125@100, warm kept | **HELPS (weak, proof-of-mechanism) — still the robust warm-preserving local optimum** |
+  | sbert-only (text-primary) | vs additive floor | 66@10, warm -63% | **HELPS cold / warm-destroying (unchanged; the tradeoff's cold pole)** |
+
+- **Interactions / confounds / gaps:**
+  - **The cold/warm tradeoff FRONTIER is now fully mapped and the CONVERGENCE RULE fires.** Three regimes, all evidenced: (a) **warm pole** — additive text / cold-synth / credibility-router preserve warm (0.043–0.044) but cold tops out at 7@10 (cold-synth) / deep-K-only (credroute); (b) **cold pole** — sbert-only ranks cold (66@10) but destroys warm (-63%); (c) **bolt-on fusion** — z-fusion hurts BOTH (cold 0@10, warm -0.010). **No arm occupies the joint corner (cold@10 > 7 AND warm >= 0.040).** The parameter-free credibility-router was the strongest a-priori candidate for that corner (warm-safe by construction, non-learnable so it cannot collapse like conn-gate alpha->0 / X1 c~0 / W1 beta<0) — and it still could not put cold into the top-10. **This is the STRONGER impossibility result the supervisor pre-registered: even the analyst-prescribed, parameter-free, warm-safe joint router cannot jointly rank cold@10 and preserve warm in a pure sequential stack.**
+  - **Single-seed caveat (honored):** credroute is seed08-only, per the pre-registered "REFUTE => no 5-seed." I make NO rel% claim on it (conn-gate s08 mirage precedent). The refutation is on the @10 floor (3 < 7, a categorical shortfall vs the ceiling), not a noisy near-miss — more seeds would not lift 3->>7 given the mechanism (sbert_proj trained as a residual scores cold near-floor at the head).
+  - **Encoder hygiene now materially better:** z-fusion is de-confounded (both encoders on disk). kriging/norm remain transformer-only, but as cold-only interventions their warm is definitionally the baseline — no matched control needed. The one residual cross-encoder gap (no transformer cold-synth / no hstu kriging) is now moot: the branch is closing and the qualitative verdicts (all near-floor cold; z-fusion hurts warm) are encoder-clean.
+  - All findings test-side; no val>>test signature (gaps +0.002–0.003).
+
+- **Missing ablations (concrete asks — but CONVERGENCE RULE fires; ALL are nice-to-have / DO-NOT-RUN):**
+  1. **credibility-router VG replication / 5-seed** — **DO NOT RUN.** The pre-registered gate FAILED on MI seed08; the pre-registration says single-seed refute => no escalation. Replicating a refuted gate wastes GPU.
+  2. **credibility-router (k) sweep on `cred_k`** — DO NOT RUN. The failure is structural (residual-head cold scores floor at the top-10), not a `k` tuning gap; the whole imputation/routing family is exhausted.
+  3. **(optional, paper-only) transformer cold-synth OR hstu kriging** — the last strictly-clean encoder-matched cold cell. Cheap (~10 min) but the near-floor conclusion already holds encoder-independently. Run ONLY if a reviewer demands a fully apples-to-apples cold table; otherwise skip.
+
+- **Recommendation to supervisor / experiment / researchers:**
+  - **(a) DECLARE the cold-start branch DEFINITIVELY CLOSED (CONVERGENCE RULE satisfied).** The credibility-router was the ONE remaining sanctioned arm (cycle-18 tightened convergence rule). It RESOLVED to a REFUTE on the deployable gate. Per the pre-registration, this closes the branch with the *stronger* impossibility boundary, not a weaker one. No new cold lever may be grounded without a fresh SUPERVISOR directive.
+  - **(b) The cold-start section 5.5 story is now COMPLETE and publishable as a mechanism + method-attempt + impossibility boundary.** Add the credibility-router row: *"a parameter-free credibility router (Buhlmann Z=n/(n+k)), the warm-safe-by-construction realization of the cold->text / warm->CF double-dissociation, preserves warm (N@10 0.0437 ~ full stack) and lifts cold DEEP-rank reach beyond cold-synth (hit@100 236 vs 125) but CANNOT rank cold into the top-10 (3 hits@10 < the cold-synth ceiling of 7) — the deployable gate (cold@10>7 AND warm>=0.040) fails on the cold axis. Cold-lift and warm-CF are in structural tension in a pure sequential stack even under a non-learnable joint router; the ~0.057 incumbent requires a co-trained architecture this bounded program does not reproduce."*
+  - **(c) EXPERIMENT ledger fix (Finding 2): UN-retract the z-fusion warm claim.** In `NOVEL_ALGO_PLAN.md` / `SOTA_VERDICT.md` section 5.5, the cycle-18 note "retract hurts-warm for kriging/norm/z-fusion (encoder artifact)" should be SPLIT: keep the retraction for **kriging/norm** (cold-only, warm=baseline), but for **z-fusion** state the encoder-matched truth — *"z-fusion hurts warm by ~0.010 (~23%) on matched HSTU (COLD_text hstu 0.0430 -> z-fusion hstu 0.0331); only ~0.003 of that is the encoder — the eval-time content fusion genuinely injects warm-ranking noise."* This is my correction of my own prior over-retraction.
+  - **(d) Hold all warm/overall verdicts unchanged:** overall best 0.0673+/-0.0003 (win architectural); causal filter = locked novel anchor (k-insensitive); SBERT-features = load-bearing text channel, TAPE sub-additive, text-sim DEAD; MI/VG tail@10 at the noise floor (tail claim lives at HR@50–100). DEAD list intact; this cycle adds the **credibility-router (REFUTED gate)** and confirms **z-fusion (dead warm+cold, both encoders)**. No file written except this log.
+
+- **SUMMARY:**
+  1. **State:** 5 new runs (disk 474 -> 479) — the credibility-router (eval-only + train-consistent) + 2 smokes + the encoder-matched z-fusion hstu control. No `SOTA_ACHIEVED` (correct; best cold << LC2C ~0.057). The final sanctioned arm has resolved.
+  2. **Most important finding:** the parameter-free credibility-router — the strongest a-priori candidate for the joint (cold@10 + warm) corner because it is non-learnable and warm-safe by construction — is REFUTED on the pre-registered deployable gate: warm is fully preserved (0.0437, PASS) but cold floors at 3 hits@10 (< the cold-synth ceiling of 7, FAIL). This is the STRONGER impossibility result: cold-lift and warm-CF are in irreducible tension in a pure sequential stack even under a parameter-free joint router. Branch DEFINITIVELY CLOSED.
+  3. **Nuance (honest):** the router is not a pure floor — its train-consistent variant has genuine deep-K cold reach (hit@100 236 > cold-synth 125, ~1.9x) while keeping all warm; it just can't cross the top-10 cutoff — the same deep-K-only signature as the warm tail.
+  4. **Self-correction (controlled comparison = credibility):** the encoder-matched z-fusion hstu control PARTIALLY REVERSES my own Finding-3 — z-fusion genuinely hurts warm ~0.010 (~23%) on matched HSTU, encoder is only ~0.003; my prior blanket "encoder artifact" retraction was wrong for z-fusion (it stands for kriging/norm, which are cold-only).
+  5. **Dead weight / recommendation:** credibility-router = REFUTED (no 5-seed, correctly); z-fusion = dead warm AND cold on both encoders; the row-level+score-level cold family is now EXHAUSTED. Recommend supervisor close cold-start as COMPLETE + impossibility-boundary-established and revert the program to PAPER-FINISHING (the deliverable).

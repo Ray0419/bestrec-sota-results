@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-07-27T23:39:28.229844+00:00",
+  "files": {
+    "Digital_Music.jsonl": {
+      "bytes": 78823304,
+      "path": "data_raw_proper/digital_music/Digital_Music.jsonl",
+      "sha256": "9ac137137e55e34fce290670fdf44acee5afa2ffae541f4f3b366a835930a7c3",
+      "url": "https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023/resolve/2b6d039ed471f2ba5fd2acb718bf33b0a7e5598e/raw/review_categories/Digital_Music.jsonl"
+    },
+    "meta_Digital_Music.jsonl": {
+      "bytes": 67097002,
+      "path": "data_raw_proper/digital_music/meta_Digital_Music.jsonl",
+      "sha256": "7f5387e99b70631d919c87005269c555e8886ae9a60c4c59a9b6ed7881acbbec",
+      "url": "https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023/resolve/2b6d039ed471f2ba5fd2acb718bf33b0a7e5598e/raw/meta_categories/meta_Digital_Music.jsonl"
+    }
+  },
+  "protocol": "PREREG_FIR_PROSPECTIVE_DM_V1_SELECTION",
+  "upstream_repository": "McAuley-Lab/Amazon-Reviews-2023",
+  "upstream_revision": "2b6d039ed471f2ba5fd2acb718bf33b0a7e5598e"
+}

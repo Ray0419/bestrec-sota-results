@@ -1,0 +1,561 @@
+{
+  "arm_seed_summaries": {
+    "alphafuse_package": {
+      "HR@10": {
+        "ci95": [
+          0.08935023222421576,
+          0.09016265268745768
+        ],
+        "mean": 0.08975644245583672,
+        "n": 8,
+        "sd": 0.0004858852465427674,
+        "vector": [
+          0.0896245330406703,
+          0.0904793060509487,
+          0.09037377851881556,
+          0.08923408117177771,
+          0.08976171883244338,
+          0.08967729680673688,
+          0.08908634262679133,
+          0.08981448259850995
+        ]
+      },
+      "MRR": {
+        "ci95": [
+          0.04326293758511194,
+          0.04356082286586808
+        ],
+        "mean": 0.04341188022549001,
+        "n": 8,
+        "sd": 0.00017815659455953144,
+        "vector": [
+          0.043682540238153926,
+          0.04310916241274343,
+          0.04350249686783739,
+          0.04344738572078046,
+          0.043341079131547014,
+          0.04324435323979702,
+          0.043437496652098354,
+          0.043530527540962476
+        ]
+      },
+      "NDCG@10": {
+        "ci95": [
+          0.04812934155664739,
+          0.04841585493853717
+        ],
+        "mean": 0.04827259824759228,
+        "n": 8,
+        "sd": 0.00017135538984554461,
+        "vector": [
+          0.04845728042580799,
+          0.04819194258059327,
+          0.04855183659334152,
+          0.04810497185421205,
+          0.048230439990657265,
+          0.04810793304023104,
+          0.04814587480235894,
+          0.04839050669353621
+        ]
+      }
+    },
+    "sasrec_id": {
+      "HR@10": {
+        "ci95": [
+          0.07235051875879234,
+          0.0749131523329955
+        ],
+        "mean": 0.07363183554589392,
+        "n": 8,
+        "sd": 0.0015326372270730072,
+        "vector": [
+          0.07318334353432811,
+          0.07321500179396805,
+          0.07494565332095143,
+          0.0754732909816171,
+          0.0731727907811148,
+          0.07451299043920559,
+          0.07404866929781981,
+          0.07050294421814651
+        ]
+      },
+      "MRR": {
+        "ci95": [
+          0.034450511469624454,
+          0.03611073616228999
+        ],
+        "mean": 0.03528062381595722,
+        "n": 8,
+        "sd": 0.0009929325030701096,
+        "vector": [
+          0.03572141928418829,
+          0.03511117000894881,
+          0.03601834350244708,
+          0.03625425707030959,
+          0.034573441895919606,
+          0.035707146980235915,
+          0.03566566942545211,
+          0.033193542360156404
+        ]
+      },
+      "NDCG@10": {
+        "ci95": [
+          0.03810609539336804,
+          0.039940967475194544
+        ],
+        "mean": 0.03902353143428129,
+        "n": 8,
+        "sd": 0.00109738406919869,
+        "vector": [
+          0.03923733262697588,
+          0.03878799450179395,
+          0.0399369054536891,
+          0.040195901626531874,
+          0.03837862416267582,
+          0.03949190003070748,
+          0.03944055447840218,
+          0.03671903859347406
+        ]
+      }
+    }
+  },
+  "arms": [
+    "alphafuse_package",
+    "sasrec_id"
+  ],
+  "claim_boundary": "Prospectively frozen but outcome-known same-investigator execution; AlphaFuse-style MiniLM representation package versus its repository SASRec ID backbone under shared data and complete-history-masked evaluator. Architectures, text availability, initialization, trainable capacity, and parameter allocation are not equalized. This is not independent confirmation, an isolation of null-space fusion, equal-tuning evidence, or a general SOTA claim.",
+  "classification": "PROSPECTIVELY_FROZEN_OUTCOME_KNOWN_SAME_INVESTIGATOR_EXPLORATORY",
+  "completed_utc": "2026-07-30T08:25:04.068347+00:00",
+  "contrasts": {
+    "alphafuse_package_minus_existing_paper_reference": {
+      "ci95": [
+        -0.019346656843898025,
+        -0.01878291898959536
+      ],
+      "delta": -0.019064787916746692,
+      "direction": "BELOW",
+      "estimand": "first arm minus second arm",
+      "inference_boundary": "descriptive independent-arm Welch on optimizer-seed estimates",
+      "p_two_sided_unadjusted": 1.9554396631393096e-15,
+      "welch_df": 8.144739992597488
+    },
+    "alphafuse_package_minus_sasrec_id": {
+      "ci95": [
+        0.008329189729329512,
+        0.010168943897292464
+      ],
+      "delta": 0.009249066813310988,
+      "direction": "ABOVE",
+      "estimand": "first arm minus second arm",
+      "inference_boundary": "descriptive independent-arm Welch on optimizer-seed estimates",
+      "p_two_sided_unadjusted": 3.4753606736507286e-08,
+      "welch_df": 7.341152185538703
+    }
+  },
+  "countable_as_current_comparator": true,
+  "endpoint_ledger": [
+    {
+      "arm": "alphafuse_package",
+      "endpoint_file": "assessment_EEV3_alphafuse_package_seed20262201.finaleval.json",
+      "endpoint_sha256": "54e304d35b8737875974d103aa9a6915a7575907d1fae07e70b74d288aa7ea02",
+      "seed": 20262201,
+      "sidecar_file": "assessment_EEV3_alphafuse_package_seed20262201.finaleval.users.npz",
+      "sidecar_sha256": "c2905eb841e73049e197e700e452cd7b0fcd75c26cf340cadc3e3ecbaee00809"
+    },
+    {
+      "arm": "alphafuse_package",
+      "endpoint_file": "assessment_EEV3_alphafuse_package_seed20262202.finaleval.json",
+      "endpoint_sha256": "4e5489007d3e4ef9e12d461aef2fddb5eed469e53e7cd8c8ffa46e3d0906d7af",
+      "seed": 20262202,
+      "sidecar_file": "assessment_EEV3_alphafuse_package_seed20262202.finaleval.users.npz",
+      "sidecar_sha256": "7c1f84807ad6735c7e921b8d64414811181b66cbc81b7cabe84475c142dbc0f5"
+    },
+    {
+      "arm": "alphafuse_package",
+      "endpoint_file": "assessment_EEV3_alphafuse_package_seed20262203.finaleval.json",
+      "endpoint_sha256": "1a9a0837862af8629fd5bcdd9328368b1886043a6ddaa90f9aa06cf29573b6a3",
+      "seed": 20262203,
+      "sidecar_file": "assessment_EEV3_alphafuse_package_seed20262203.finaleval.users.npz",
+      "sidecar_sha256": "da8ad2e694ef9084736a9591e6caf26be05b5857918a4bbff65ea34edd26e1e3"
+    },
+    {
+      "arm": "alphafuse_package",
+      "endpoint_file": "assessment_EEV3_alphafuse_package_seed20262204.finaleval.json",
+      "endpoint_sha256": "027f22cd88b4861a496e607f3053cbe62d1183dbf2aba5b2857017ba1c3f33dd",
+      "seed": 20262204,
+      "sidecar_file": "assessment_EEV3_alphafuse_package_seed20262204.finaleval.users.npz",
+      "sidecar_sha256": "8683343c8b4e1876495545465bca8d1fc5d8fd83ea5fe2677d299bed4bb13b00"
+    },
+    {
+      "arm": "alphafuse_package",
+      "endpoint_file": "assessment_EEV3_alphafuse_package_seed20262205.finaleval.json",
+      "endpoint_sha256": "89ed309d25d9c17268621c2eb6285aa5c0b27ace29bf5f4ba0ca8219221e9996",
+      "seed": 20262205,
+      "sidecar_file": "assessment_EEV3_alphafuse_package_seed20262205.finaleval.users.npz",
+      "sidecar_sha256": "a810181d21c005c0947cf557c7fd5b977c8550ad4a78e6fbe9a2e368365e97cd"
+    },
+    {
+      "arm": "alphafuse_package",
+      "endpoint_file": "assessment_EEV3_alphafuse_package_seed20262206.finaleval.json",
+      "endpoint_sha256": "f0f49047811fcc85ef16d01df90f53eb3d13b133e19f503096380a4477fb4754",
+      "seed": 20262206,
+      "sidecar_file": "assessment_EEV3_alphafuse_package_seed20262206.finaleval.users.npz",
+      "sidecar_sha256": "6a05bf7b9959b91073ce6ff31d23931c5dbda10ee7c2f83556ac3a6d80e4082d"
+    },
+    {
+      "arm": "alphafuse_package",
+      "endpoint_file": "assessment_EEV3_alphafuse_package_seed20262207.finaleval.json",
+      "endpoint_sha256": "cf7e0f620bee156d664d41908e839cdfaa251d8f2713813dcc6f906f56a33c77",
+      "seed": 20262207,
+      "sidecar_file": "assessment_EEV3_alphafuse_package_seed20262207.finaleval.users.npz",
+      "sidecar_sha256": "58f356fc404d42ace30dc8cc847bedd1a6ae48e4588c223ab639d360f17e85b3"
+    },
+    {
+      "arm": "alphafuse_package",
+      "endpoint_file": "assessment_EEV3_alphafuse_package_seed20262208.finaleval.json",
+      "endpoint_sha256": "bf23ff88cb0c48123adb73a67d8f73d92e72cd3c1a1b25a28bcaeb2c15d4b292",
+      "seed": 20262208,
+      "sidecar_file": "assessment_EEV3_alphafuse_package_seed20262208.finaleval.users.npz",
+      "sidecar_sha256": "b8019b578f0f46f06314d0c2c89c73cfa80f4384b596a2be0e6ad4b80a3021db"
+    },
+    {
+      "arm": "sasrec_id",
+      "endpoint_file": "assessment_EEV3_sasrec_id_seed20262201.finaleval.json",
+      "endpoint_sha256": "891673f9e772cfce97761eb69b238d62bec86b8a005bd9b3213f8f434005abf8",
+      "seed": 20262201,
+      "sidecar_file": "assessment_EEV3_sasrec_id_seed20262201.finaleval.users.npz",
+      "sidecar_sha256": "d4b0668c3ca856a442aff109a2ed483658eedb67d56a5ff7614ea238cc6347ec"
+    },
+    {
+      "arm": "sasrec_id",
+      "endpoint_file": "assessment_EEV3_sasrec_id_seed20262202.finaleval.json",
+      "endpoint_sha256": "8cf23ce2dcb04afd63b31a0b8330117f3dcbf7d919b8d0062d534e9d596c4a1b",
+      "seed": 20262202,
+      "sidecar_file": "assessment_EEV3_sasrec_id_seed20262202.finaleval.users.npz",
+      "sidecar_sha256": "f931fea805e07a66075a4bd4dc7b736f3e99d890c5d4ed84b83d8beccd428441"
+    },
+    {
+      "arm": "sasrec_id",
+      "endpoint_file": "assessment_EEV3_sasrec_id_seed20262203.finaleval.json",
+      "endpoint_sha256": "eb7486b90eafc2bd8d239283acce0486491927c5f7edee1996064157d65eaf31",
+      "seed": 20262203,
+      "sidecar_file": "assessment_EEV3_sasrec_id_seed20262203.finaleval.users.npz",
+      "sidecar_sha256": "40db2ff78d1658ce593e8a537b6641b1e2f49dca1c88652fb365be556aa8934e"
+    },
+    {
+      "arm": "sasrec_id",
+      "endpoint_file": "assessment_EEV3_sasrec_id_seed20262204.finaleval.json",
+      "endpoint_sha256": "b484d193fcdbe9cf7d3efcab0b9cce10b421285e0f8d9c5fbf2a5746fee655fe",
+      "seed": 20262204,
+      "sidecar_file": "assessment_EEV3_sasrec_id_seed20262204.finaleval.users.npz",
+      "sidecar_sha256": "eb5bd7e64c650df64ad7ed85d8c6aed103c3801fa0ff9c0f734d0c0be98c4986"
+    },
+    {
+      "arm": "sasrec_id",
+      "endpoint_file": "assessment_EEV3_sasrec_id_seed20262205.finaleval.json",
+      "endpoint_sha256": "1e344e78b6b9966040142481082cdfa516356bb173f89d8cdaa0a55f91615911",
+      "seed": 20262205,
+      "sidecar_file": "assessment_EEV3_sasrec_id_seed20262205.finaleval.users.npz",
+      "sidecar_sha256": "13e51f2feefaf4e3629c1c3938413f39a528842783bbaef7c7fe1aeda073e394"
+    },
+    {
+      "arm": "sasrec_id",
+      "endpoint_file": "assessment_EEV3_sasrec_id_seed20262206.finaleval.json",
+      "endpoint_sha256": "6d02fd62270822d7a9716e1b967046a969b3895b51fcdcdddb929d8cab078508",
+      "seed": 20262206,
+      "sidecar_file": "assessment_EEV3_sasrec_id_seed20262206.finaleval.users.npz",
+      "sidecar_sha256": "ffc6b7f59844828c3824fb43ae9520853ead25540c9d96fbbbdb7792a77ffb16"
+    },
+    {
+      "arm": "sasrec_id",
+      "endpoint_file": "assessment_EEV3_sasrec_id_seed20262207.finaleval.json",
+      "endpoint_sha256": "1542429e8007c2b33da8b971d8e09a5f709be80e466a0f5060ba56e6ea2f51bf",
+      "seed": 20262207,
+      "sidecar_file": "assessment_EEV3_sasrec_id_seed20262207.finaleval.users.npz",
+      "sidecar_sha256": "1a3a35e8b82163b69740392836b9c7ee206eb461191d38fb61e5cfdb9193c32b"
+    },
+    {
+      "arm": "sasrec_id",
+      "endpoint_file": "assessment_EEV3_sasrec_id_seed20262208.finaleval.json",
+      "endpoint_sha256": "5c47347eafecbeaf0293ceb15e49349e2704bb77dc23a910bfdc8b8232da755e",
+      "seed": 20262208,
+      "sidecar_file": "assessment_EEV3_sasrec_id_seed20262208.finaleval.users.npz",
+      "sidecar_sha256": "3b75d074b98ba1941e5ee137c6bd4228319590363346bbc8bcccd79be15c1032"
+    }
+  ],
+  "existing_paper_reference": {
+    "NDCG@10": {
+      "ci95": [
+        0.06706336782820593,
+        0.06761140450047201
+      ],
+      "mean": 0.06733738616433897,
+      "n": 6,
+      "sd": 0.00026111018695743196,
+      "vector": [
+        0.06731228032662745,
+        0.06694888249428342,
+        0.06776123627808996,
+        0.06740918426707242,
+        0.06732043112571998,
+        0.06727230249424056
+      ]
+    },
+    "files_sha256": {
+      "results_V2_confirm_seed20260613_VG.json": "d37cb83ba049b64bd2f5fdf694871d2d5948eccbbfb667b4cbfdc7ad3ac51c0b",
+      "results_V2_ls02_filter8_VG.json": "d391651bac4a2354054a4165f3df536a78e2604ad763d44bd0f509f6a588f1bd",
+      "results_V2_ls02_filter8_seed20260609_VG.json": "737b2434cf1ce2cd1a01d646f06079b9a8644d34759a3929f331a2e82e63c183",
+      "results_V2_ls02_filter8_seed20260610_VG.json": "db4f693bc37d5830569a69ea854dda19de74c505af9d5b59e560064e47c5d32f",
+      "results_V2_ls02_filter8_seed20260611_VG.json": "f3a0032f76230fa9ab66e2c9e576856f13ad18930b480f9ef128073952ead3fa",
+      "results_V2_ls02_filter8_seed20260612_VG.json": "ab2110f0c0973f65aba9359258528cf88a577a9f8bf549689e48778e02d3f422"
+    }
+  },
+  "fixed_dataset_sensitivity": {
+    "boundary": "fixed-split sensitivity only; not optimizer or population inference",
+    "estimand": "mean over users of eight-seed AlphaFuse NDCG@10 minus eight-seed ID NDCG@10",
+    "n_target_item_clusters": 18219,
+    "point_estimate": 0.009249066813310995,
+    "replicates": 2000,
+    "rng_seed": 20262299,
+    "target_item_cluster_resample_percentile_ci95": [
+      0.0048059513865592405,
+      0.015742583448877398
+    ],
+    "user_resample_percentile_ci95": [
+      0.008451981517044594,
+      0.010027934258237644
+    ]
+  },
+  "general_sota_claim_allowed": false,
+  "independent_confirmation": false,
+  "protocol": "PREREG_EE_V3",
+  "ready_sha256": "5278315788a0ca6792a59d1f629f5c25eb67f5791ba4e51cc5544a0ae97af730",
+  "repository_commit": "f7c9c551d313de07b433545ed4887400ed4f4d98",
+  "resource_scope": "profiler FLOPs are operator-accounted forward-plus-full-catalog-score lower bounds",
+  "resources": {
+    "alphafuse_package": {
+      "cuda_peak_allocated_bytes": {
+        "median": 168175104.0,
+        "vector": [
+          168175104,
+          168175104,
+          168175104,
+          168175104,
+          168175104,
+          168175104,
+          168175104,
+          168175104
+        ]
+      },
+      "eval_seconds": {
+        "median": 13.339761400071438,
+        "vector": [
+          13.500394199974835,
+          13.420964400051162,
+          12.797297599958256,
+          13.499192200019024,
+          12.777050100034103,
+          13.75824399990961,
+          13.258558400091715,
+          12.330505600082688
+        ]
+      },
+      "profiler_accounted_flops_per_user": {
+        "median": 12800985.203125,
+        "vector": [
+          12800985.203125,
+          12800985.203125,
+          12800985.203125,
+          12800985.203125,
+          12800985.203125,
+          12800985.203125,
+          12800985.203125,
+          12800985.203125
+        ]
+      },
+      "selected_epoch": {
+        "median": 87.5,
+        "vector": [
+          79,
+          80,
+          92,
+          90,
+          107,
+          85,
+          106,
+          84
+        ]
+      },
+      "total_params": {
+        "median": 5007680.0,
+        "vector": [
+          5007680,
+          5007680,
+          5007680,
+          5007680,
+          5007680,
+          5007680,
+          5007680,
+          5007680
+        ]
+      },
+      "trainable_params": {
+        "median": 1729216.0,
+        "vector": [
+          1729216,
+          1729216,
+          1729216,
+          1729216,
+          1729216,
+          1729216,
+          1729216,
+          1729216
+        ]
+      },
+      "training_wall_seconds": {
+        "median": 5154.101665400085,
+        "vector": [
+          4899.787043599994,
+          4791.18319380004,
+          5191.060388700105,
+          5117.142942100065,
+          5815.0686482000165,
+          5718.468349299976,
+          5261.624882100034,
+          4443.08381890005
+        ]
+      },
+      "users_per_second": {
+        "median": 7103.988497521808,
+        "vector": [
+          7019.202446709048,
+          7060.744457353509,
+          7404.844597839868,
+          7019.827453072819,
+          7416.578886213108,
+          6887.652232408625,
+          7147.232537690107,
+          7685.167427308457
+        ]
+      }
+    },
+    "sasrec_id": {
+      "cuda_peak_allocated_bytes": {
+        "median": 141946880.0,
+        "vector": [
+          141946880,
+          141946880,
+          141946880,
+          141946880,
+          141946880,
+          141946880,
+          141946880,
+          141946880
+        ]
+      },
+      "eval_seconds": {
+        "median": 13.26951159996679,
+        "vector": [
+          13.094623500015587,
+          13.715176200028509,
+          13.797961800009944,
+          12.93864670000039,
+          13.57223170006182,
+          13.444399699917994,
+          12.907152500003576,
+          12.608814200037159
+        ]
+      },
+      "profiler_accounted_flops_per_user": {
+        "median": 12772172.203125,
+        "vector": [
+          12772172.203125,
+          12772172.203125,
+          12772172.203125,
+          12772172.203125,
+          12772172.203125,
+          12772172.203125,
+          12772172.203125,
+          12772172.203125
+        ]
+      },
+      "selected_epoch": {
+        "median": 299.0,
+        "vector": [
+          310,
+          288,
+          405,
+          264,
+          278,
+          255,
+          381,
+          356
+        ]
+      },
+      "total_params": {
+        "median": 3368448.0,
+        "vector": [
+          3368448,
+          3368448,
+          3368448,
+          3368448,
+          3368448,
+          3368448,
+          3368448,
+          3368448
+        ]
+      },
+      "trainable_params": {
+        "median": 3368448.0,
+        "vector": [
+          3368448,
+          3368448,
+          3368448,
+          3368448,
+          3368448,
+          3368448,
+          3368448,
+          3368448
+        ]
+      },
+      "training_wall_seconds": {
+        "median": 11436.029707749956,
+        "vector": [
+          11874.30011489999,
+          10861.709478099947,
+          15420.123163599987,
+          10619.787082599942,
+          10997.759300599922,
+          10305.594003400067,
+          14567.275760199991,
+          13642.6219749999
+        ]
+      },
+      "users_per_second": {
+        "median": 7142.573614362281,
+        "vector": [
+          7236.71054764478,
+          6909.280538430343,
+          6867.825942229504,
+          7323.9498841866625,
+          6982.049974844474,
+          7048.436681079782,
+          7341.820746285732,
+          7515.536234939582
+        ]
+      }
+    }
+  },
+  "seeds": [
+    20262201,
+    20262202,
+    20262203,
+    20262204,
+    20262205,
+    20262206,
+    20262207,
+    20262208
+  ],
+  "upstream_commit": "b501a0540b609370df995ad06fb245859b10a18a",
+  "verdict": "EEV3-REPORTABLE-OUTCOME-KNOWN"
+}

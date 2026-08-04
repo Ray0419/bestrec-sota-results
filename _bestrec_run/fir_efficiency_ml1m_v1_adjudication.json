@@ -1,0 +1,754 @@
+{
+  "protocol": "PREREG_FIR_EFFICIENCY_ML1M_V1",
+  "verdict": "ML1M-NO-FIR-REPLICATION",
+  "scope": "prospectively frozen same-investigator non-Amazon robustness and efficiency study",
+  "not_independent_confirmation": true,
+  "primary_category": "MovieLens1M_R4",
+  "alpha": 0.05,
+  "noninferiority_margin_ndcg10": 0.0005,
+  "seeds": [
+    20261101,
+    20261102,
+    20261103,
+    20261104,
+    20261105,
+    20261106,
+    20261107,
+    20261108
+  ],
+  "arms": [
+    "identity",
+    "shared",
+    "grouped",
+    "lowrank",
+    "learned",
+    "pointwise"
+  ],
+  "filter_trainable_parameters": {
+    "identity": 0,
+    "shared": 16,
+    "grouped": 128,
+    "lowrank": 320,
+    "learned": 1024,
+    "pointwise": 1024
+  },
+  "primary_means": {
+    "identity": 0.0521512974596004,
+    "shared": 0.0522113073099036,
+    "grouped": 0.05212499709285893,
+    "lowrank": 0.05221133343033168,
+    "learned": 0.05215149994160288,
+    "pointwise": 0.05211642949333563
+  },
+  "primary_values": {
+    "identity": [
+      0.058945669160034506,
+      0.05695710278112029,
+      0.04701201713984492,
+      0.047999068525637734,
+      0.04605630639736272,
+      0.0512550986948211,
+      0.05082147915884024,
+      0.0581636378191417
+    ],
+    "shared": [
+      0.05890324539349156,
+      0.05702421163100083,
+      0.04698074575778359,
+      0.04801065145820898,
+      0.046073604031968335,
+      0.051362703221118085,
+      0.05110130958121961,
+      0.0582339874044378
+    ],
+    "grouped": [
+      0.05863617211604185,
+      0.05715095873029557,
+      0.04699804339238921,
+      0.04801065145820898,
+      0.04605630639736272,
+      0.05120515143713409,
+      0.05082147915884024,
+      0.05812121405259877
+    ],
+    "lowrank": [
+      0.05901277800991504,
+      0.05715095873029557,
+      0.04701201713984492,
+      0.04801065145820898,
+      0.04605630639736272,
+      0.05118300830666488,
+      0.05110130958121961,
+      0.0581636378191417
+    ],
+    "learned": [
+      0.05892347313888758,
+      0.05715095873029557,
+      0.04701201713984492,
+      0.04801065145820898,
+      0.04605630639736272,
+      0.05118300830666488,
+      0.05082147915884024,
+      0.05805410520271822
+    ],
+    "pointwise": [
+      0.05866583873765512,
+      0.05715095873029557,
+      0.0469947195052393,
+      0.048022234390780225,
+      0.04605630639736272,
+      0.05118300830666488,
+      0.05069473205954551,
+      0.0581636378191417
+    ]
+  },
+  "replication": {
+    "learned-identity": {
+      "mean": 2.0248200248689646e-07,
+      "sd": 8.896311181427254e-05,
+      "t": 0.006437562450631175,
+      "df": 7,
+      "p_two_sided": 0.9950432261121331,
+      "ci": [
+        -7.417254072752827e-05,
+        7.457750473250206e-05
+      ],
+      "confidence": 0.95,
+      "per_seed": [
+        -2.2196021146926592e-05,
+        0.00019385594917527976,
+        0.0,
+        1.1582932571245486e-05,
+        0.0,
+        -7.209038815621932e-05,
+        0.0,
+        -0.00010953261642348416
+      ]
+    },
+    "learned-pointwise": {
+      "mean": 3.507044826726001e-05,
+      "sd": 0.00011021510636359968,
+      "t": 0.9000055475960301,
+      "df": 7,
+      "p_two_sided": 0.39802076238317935,
+      "ci": [
+        -5.7071686532353234e-05,
+        0.00012721258306687324
+      ],
+      "confidence": 0.95,
+      "per_seed": [
+        0.0002576344012324566,
+        0.0,
+        1.7297634605617507e-05,
+        -1.1582932571245486e-05,
+        0.0,
+        0.0,
+        0.0001267470992947356,
+        -0.00010953261642348416
+      ]
+    }
+  },
+  "replication_holm": {
+    "learned-identity": {
+      "p_raw": 0.9950432261121331,
+      "p_holm": 0.9950432261121331,
+      "reject": false
+    },
+    "learned-pointwise": {
+      "p_raw": 0.39802076238317935,
+      "p_holm": 0.7960415247663587,
+      "reject": false
+    }
+  },
+  "replication_positive": {
+    "learned-identity": false,
+    "learned-pointwise": false
+  },
+  "noninferiority": {
+    "shared": {
+      "mean": 5.9807368300710505e-05,
+      "sd": 0.00013736742179945132,
+      "t_margin": 11.526563754295013,
+      "df": 7,
+      "p_one_sided": 4.163277613125255e-06,
+      "margin": 0.0005,
+      "simultaneous_lower": -6.84990846098729e-05,
+      "simultaneous_confidence": 0.9833333333333333,
+      "per_seed": [
+        -2.0227745396020347e-05,
+        -0.0001267470992947356,
+        -3.12713820613264e-05,
+        0.0,
+        1.7297634605617507e-05,
+        0.00017969491445320174,
+        0.00027983042237936934,
+        0.0001798822017195778
+      ]
+    },
+    "grouped": {
+      "mean": -2.650284874395996e-05,
+      "sd": 0.0001083063455290877,
+      "t_margin": 12.365408319893428,
+      "df": 7,
+      "p_one_sided": 2.5988232642980384e-06,
+      "margin": 0.0005,
+      "simultaneous_lower": -0.0001276651391946989,
+      "simultaneous_confidence": 0.9833333333333333,
+      "per_seed": [
+        -0.000287301022845729,
+        0.0,
+        -1.3973747455708896e-05,
+        0.0,
+        0.0,
+        2.214313046920713e-05,
+        0.0,
+        6.71088498805511e-05
+      ]
+    },
+    "lowrank": {
+      "mean": 5.9833488728789665e-05,
+      "sd": 9.974069834981155e-05,
+      "t_margin": 15.875648066031324,
+      "df": 7,
+      "p_one_sided": 4.770898034454294e-07,
+      "margin": 0.0005,
+      "simultaneous_lower": -3.3328157958968974e-05,
+      "simultaneous_confidence": 0.9833333333333333,
+      "per_seed": [
+        8.930487102746382e-05,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.00027983042237936934,
+        0.00010953261642348416
+      ]
+    }
+  },
+  "noninferiority_holm": {
+    "shared": {
+      "p_raw": 4.163277613125255e-06,
+      "p_holm": 5.197646528596077e-06,
+      "reject": true
+    },
+    "grouped": {
+      "p_raw": 2.5988232642980384e-06,
+      "p_holm": 5.197646528596077e-06,
+      "reject": true
+    },
+    "lowrank": {
+      "p_raw": 4.770898034454294e-07,
+      "p_holm": 1.4312694103362883e-06,
+      "reject": true
+    }
+  },
+  "noninferiority_pass": {
+    "shared": true,
+    "grouped": true,
+    "lowrank": true
+  },
+  "cluster_sensitivities": {
+    "shared": {
+      "user_weighted_mean": 5.980736830070979e-05,
+      "user_cluster_percentile_ci95": [
+        -6.0977413882862216e-05,
+        0.00018222183398710113
+      ],
+      "n_users": 1033,
+      "item_macro_mean": 6.9604982579743365e-06,
+      "item_cluster_percentile_ci95": [
+        -2.264487728801322e-05,
+        3.821577403049387e-05
+      ],
+      "n_target_items": 457,
+      "bootstrap_repetitions": 10000,
+      "bootstrap_seed": 20261190
+    },
+    "grouped": {
+      "user_weighted_mean": -2.6502848743961277e-05,
+      "user_cluster_percentile_ci95": [
+        -0.00011425883968562763,
+        4.109655393543845e-05
+      ],
+      "n_users": 1033,
+      "item_macro_mean": 3.3275777039677494e-06,
+      "item_cluster_percentile_ci95": [
+        -1.737770661367547e-05,
+        2.6898931318381737e-05
+      ],
+      "n_target_items": 457,
+      "bootstrap_repetitions": 10000,
+      "bootstrap_seed": 20261190
+    },
+    "lowrank": {
+      "user_weighted_mean": 5.983348872878948e-05,
+      "user_cluster_percentile_ci95": [
+        -3.085635417201781e-06,
+        0.00015336322305696708
+      ],
+      "n_users": 1033,
+      "item_macro_mean": 1.4428648040956493e-05,
+      "item_cluster_percentile_ci95": [
+        -1.1153855374985027e-06,
+        3.744578241106237e-05
+      ],
+      "n_target_items": 457,
+      "bootstrap_repetitions": 10000,
+      "bootstrap_seed": 20261190
+    }
+  },
+  "all_ratings_sensitivity": {
+    "means": {
+      "identity": 0.06597356268962098,
+      "shared": 0.06595605951093099,
+      "grouped": 0.06597419071495722,
+      "lowrank": 0.06600175869308131,
+      "learned": 0.06598585387896701,
+      "pointwise": 0.06594291753295736
+    },
+    "candidate_minus_learned": {
+      "shared": {
+        "mean": -2.9794368036020584e-05,
+        "sd": 0.00015385970273193748,
+        "t": -0.5477145556726652,
+        "df": 7,
+        "p_two_sided": 0.6009078371853045,
+        "ci": [
+          -0.00015842429851564834,
+          9.883556244360718e-05
+        ],
+        "confidence": 0.95,
+        "per_seed": [
+          -0.00023727920549971443,
+          2.7144039084617266e-05,
+          0.00018420755162075475,
+          -0.0002560361614861728,
+          -7.722931662906829e-05,
+          9.928317789897889e-05,
+          0.0,
+          2.1554970722439948e-05
+        ]
+      },
+      "grouped": {
+        "mean": -1.1663164009792157e-05,
+        "sd": 9.76794773457724e-05,
+        "t": -0.3377209864553746,
+        "df": 7,
+        "p_two_sided": 0.7454750038207563,
+        "ci": [
+          -9.33252506847133e-05,
+          6.999892266512898e-05
+        ],
+        "confidence": 0.95,
+        "per_seed": [
+          5.160197693587082e-05,
+          2.7144039084617266e-05,
+          0.0,
+          0.0,
+          -6.140251720691825e-05,
+          0.00010988120212049313,
+          0.0,
+          -0.00022053001301240022
+        ]
+      },
+      "lowrank": {
+        "mean": 1.5904814114292218e-05,
+        "sd": 5.7118566921923825e-05,
+        "t": 0.787582918815201,
+        "df": 7,
+        "p_two_sided": 0.45677553020093786,
+        "ci": [
+          -3.184750284594287e-05,
+          6.365713107452731e-05
+        ],
+        "confidence": 0.95,
+        "per_seed": [
+          0.0,
+          2.7144039084617266e-05,
+          0.00012280503441382262,
+          0.0,
+          -6.140251720691825e-05,
+          6.69103636137397e-05,
+          0.0,
+          -2.8218406990923595e-05
+        ]
+      }
+    },
+    "learned_minus_identity": {
+      "mean": 1.2291189346032988e-05,
+      "sd": 0.0001423822567908839,
+      "t": 0.24416478657709353,
+      "df": 7,
+      "p_two_sided": 0.8141052115531018,
+      "ci": [
+        -0.00010674335619999996,
+        0.00013132573489206594
+      ],
+      "confidence": 0.95,
+      "per_seed": [
+        0.0003141145839741233,
+        -2.7144039084617266e-05,
+        -0.00018420755162075475,
+        0.0,
+        6.140251720691825e-05,
+        -6.69103636137397e-05,
+        -2.714403908458951e-05,
+        2.8218406990923595e-05
+      ]
+    },
+    "learned_minus_pointwise": {
+      "mean": 4.293634600963537e-05,
+      "sd": 0.00014906052642457628,
+      "t": 0.8147182128233634,
+      "df": 7,
+      "p_two_sided": 0.4420655099439664,
+      "ci": [
+        -8.168137267044881e-05,
+        0.00016755406468971955
+      ],
+      "confidence": 0.95,
+      "per_seed": [
+        0.0003269001296975632,
+        -2.7144039084617266e-05,
+        -0.00015706351253613748,
+        0.0,
+        0.0,
+        0.00018912579787241923,
+        -2.714403908458951e-05,
+        3.881643121244477e-05
+      ]
+    }
+  },
+  "resource_summary": {
+    "MovieLens1M_R4": {
+      "identity": {
+        "fir_control_trainable_params": 0,
+        "latency_ms_median_across_seeds": 2.075825002975762,
+        "latency_ms_p95_across_seeds": 2.134550013579428,
+        "flops_per_user_median": 404352.0,
+        "inference_peak_cuda_memory_bytes_median": 53139968,
+        "training_peak_cuda_memory_bytes_median": 610950144,
+        "training_wall_time_s_median": 7.716793775558472
+      },
+      "shared": {
+        "fir_control_trainable_params": 16,
+        "latency_ms_median_across_seeds": 2.1047000191174448,
+        "latency_ms_p95_across_seeds": 2.1546000498346984,
+        "flops_per_user_median": 404352.0,
+        "inference_peak_cuda_memory_bytes_median": 53136384,
+        "training_peak_cuda_memory_bytes_median": 610948096,
+        "training_wall_time_s_median": 7.8183218240737915
+      },
+      "grouped": {
+        "fir_control_trainable_params": 128,
+        "latency_ms_median_across_seeds": 2.087024971842766,
+        "latency_ms_p95_across_seeds": 2.1378499804995954,
+        "flops_per_user_median": 404352.0,
+        "inference_peak_cuda_memory_bytes_median": 53140992,
+        "training_peak_cuda_memory_bytes_median": 610952704,
+        "training_wall_time_s_median": 7.685863494873047
+      },
+      "lowrank": {
+        "fir_control_trainable_params": 320,
+        "latency_ms_median_across_seeds": 2.1321500244084746,
+        "latency_ms_p95_across_seeds": 2.179599949158728,
+        "flops_per_user_median": 404416.0,
+        "inference_peak_cuda_memory_bytes_median": 53143040,
+        "training_peak_cuda_memory_bytes_median": 611613184,
+        "training_wall_time_s_median": 7.784375429153442
+      },
+      "learned": {
+        "fir_control_trainable_params": 1024,
+        "latency_ms_median_across_seeds": 2.0725500071421266,
+        "latency_ms_p95_across_seeds": 2.114500035531819,
+        "flops_per_user_median": 404352.0,
+        "inference_peak_cuda_memory_bytes_median": 53139968,
+        "training_peak_cuda_memory_bytes_median": 610962432,
+        "training_wall_time_s_median": 7.7809141874313354
+      },
+      "pointwise": {
+        "fir_control_trainable_params": 1024,
+        "latency_ms_median_across_seeds": 2.1203000214882195,
+        "latency_ms_p95_across_seeds": 2.1631999989040196,
+        "flops_per_user_median": 506752.0,
+        "inference_peak_cuda_memory_bytes_median": 52570624,
+        "training_peak_cuda_memory_bytes_median": 609158912,
+        "training_wall_time_s_median": 7.717810153961182
+      }
+    },
+    "MovieLens1M_ALL": {
+      "identity": {
+        "fir_control_trainable_params": 0,
+        "latency_ms_median_across_seeds": 2.0716999715659767,
+        "latency_ms_p95_across_seeds": 2.1121500176377594,
+        "flops_per_user_median": 488320.0,
+        "inference_peak_cuda_memory_bytes_median": 53307904,
+        "training_peak_cuda_memory_bytes_median": 715175168,
+        "training_wall_time_s_median": 8.608771443367004
+      },
+      "shared": {
+        "fir_control_trainable_params": 16,
+        "latency_ms_median_across_seeds": 2.1066500048618764,
+        "latency_ms_p95_across_seeds": 2.1434499649330974,
+        "flops_per_user_median": 488320.0,
+        "inference_peak_cuda_memory_bytes_median": 53304320,
+        "training_peak_cuda_memory_bytes_median": 715173120,
+        "training_wall_time_s_median": 8.705813765525818
+      },
+      "grouped": {
+        "fir_control_trainable_params": 128,
+        "latency_ms_median_across_seeds": 2.0807750115636736,
+        "latency_ms_p95_across_seeds": 2.136250026524067,
+        "flops_per_user_median": 488320.0,
+        "inference_peak_cuda_memory_bytes_median": 53308928,
+        "training_peak_cuda_memory_bytes_median": 715177728,
+        "training_wall_time_s_median": 8.665000319480896
+      },
+      "lowrank": {
+        "fir_control_trainable_params": 320,
+        "latency_ms_median_across_seeds": 2.1234249870758504,
+        "latency_ms_p95_across_seeds": 2.168299979530275,
+        "flops_per_user_median": 488384.0,
+        "inference_peak_cuda_memory_bytes_median": 53310976,
+        "training_peak_cuda_memory_bytes_median": 716262912,
+        "training_wall_time_s_median": 8.74135935306549
+      },
+      "learned": {
+        "fir_control_trainable_params": 1024,
+        "latency_ms_median_across_seeds": 2.0688750373665243,
+        "latency_ms_p95_across_seeds": 2.1246999967843294,
+        "flops_per_user_median": 488320.0,
+        "inference_peak_cuda_memory_bytes_median": 53307904,
+        "training_peak_cuda_memory_bytes_median": 715187456,
+        "training_wall_time_s_median": 8.70168673992157
+      },
+      "pointwise": {
+        "fir_control_trainable_params": 1024,
+        "latency_ms_median_across_seeds": 2.120475022820756,
+        "latency_ms_p95_across_seeds": 2.1694499882869422,
+        "flops_per_user_median": 590720.0,
+        "inference_peak_cuda_memory_bytes_median": 52738560,
+        "training_peak_cuda_memory_bytes_median": 713438208,
+        "training_wall_time_s_median": 8.61160671710968
+      }
+    }
+  },
+  "backbone_init_sha256": {
+    "MovieLens1M_R4": {
+      "20261101": {
+        "identity": "227f899655d857a21acde4b066de687001fd599a6daa1e358a7d68a9174a7dfb",
+        "shared": "227f899655d857a21acde4b066de687001fd599a6daa1e358a7d68a9174a7dfb",
+        "grouped": "227f899655d857a21acde4b066de687001fd599a6daa1e358a7d68a9174a7dfb",
+        "lowrank": "227f899655d857a21acde4b066de687001fd599a6daa1e358a7d68a9174a7dfb",
+        "learned": "227f899655d857a21acde4b066de687001fd599a6daa1e358a7d68a9174a7dfb",
+        "pointwise": "227f899655d857a21acde4b066de687001fd599a6daa1e358a7d68a9174a7dfb"
+      },
+      "20261102": {
+        "identity": "48aca28625527c8dba3cb116e58f04ad03a5cbe7f069fefbc173db59c6d57ff7",
+        "shared": "48aca28625527c8dba3cb116e58f04ad03a5cbe7f069fefbc173db59c6d57ff7",
+        "grouped": "48aca28625527c8dba3cb116e58f04ad03a5cbe7f069fefbc173db59c6d57ff7",
+        "lowrank": "48aca28625527c8dba3cb116e58f04ad03a5cbe7f069fefbc173db59c6d57ff7",
+        "learned": "48aca28625527c8dba3cb116e58f04ad03a5cbe7f069fefbc173db59c6d57ff7",
+        "pointwise": "48aca28625527c8dba3cb116e58f04ad03a5cbe7f069fefbc173db59c6d57ff7"
+      },
+      "20261103": {
+        "identity": "a7a0e2442322be597de74739c11ff6e3f39a868e47803cd99a38f4826227225e",
+        "shared": "a7a0e2442322be597de74739c11ff6e3f39a868e47803cd99a38f4826227225e",
+        "grouped": "a7a0e2442322be597de74739c11ff6e3f39a868e47803cd99a38f4826227225e",
+        "lowrank": "a7a0e2442322be597de74739c11ff6e3f39a868e47803cd99a38f4826227225e",
+        "learned": "a7a0e2442322be597de74739c11ff6e3f39a868e47803cd99a38f4826227225e",
+        "pointwise": "a7a0e2442322be597de74739c11ff6e3f39a868e47803cd99a38f4826227225e"
+      },
+      "20261104": {
+        "identity": "968bb17eab6e9480713a822608fee5bbd52a4b2e584d82281f15db9c1718a185",
+        "shared": "968bb17eab6e9480713a822608fee5bbd52a4b2e584d82281f15db9c1718a185",
+        "grouped": "968bb17eab6e9480713a822608fee5bbd52a4b2e584d82281f15db9c1718a185",
+        "lowrank": "968bb17eab6e9480713a822608fee5bbd52a4b2e584d82281f15db9c1718a185",
+        "learned": "968bb17eab6e9480713a822608fee5bbd52a4b2e584d82281f15db9c1718a185",
+        "pointwise": "968bb17eab6e9480713a822608fee5bbd52a4b2e584d82281f15db9c1718a185"
+      },
+      "20261105": {
+        "identity": "f80590010b5c1c339f450481f8c42ca72bc663f9c8daf243f5837b6dc7ffa60f",
+        "shared": "f80590010b5c1c339f450481f8c42ca72bc663f9c8daf243f5837b6dc7ffa60f",
+        "grouped": "f80590010b5c1c339f450481f8c42ca72bc663f9c8daf243f5837b6dc7ffa60f",
+        "lowrank": "f80590010b5c1c339f450481f8c42ca72bc663f9c8daf243f5837b6dc7ffa60f",
+        "learned": "f80590010b5c1c339f450481f8c42ca72bc663f9c8daf243f5837b6dc7ffa60f",
+        "pointwise": "f80590010b5c1c339f450481f8c42ca72bc663f9c8daf243f5837b6dc7ffa60f"
+      },
+      "20261106": {
+        "identity": "f2e7c6470df21be1fbf1b578c8b6453c2c73b54ab5e6f36aafb3d718d2d3ff5f",
+        "shared": "f2e7c6470df21be1fbf1b578c8b6453c2c73b54ab5e6f36aafb3d718d2d3ff5f",
+        "grouped": "f2e7c6470df21be1fbf1b578c8b6453c2c73b54ab5e6f36aafb3d718d2d3ff5f",
+        "lowrank": "f2e7c6470df21be1fbf1b578c8b6453c2c73b54ab5e6f36aafb3d718d2d3ff5f",
+        "learned": "f2e7c6470df21be1fbf1b578c8b6453c2c73b54ab5e6f36aafb3d718d2d3ff5f",
+        "pointwise": "f2e7c6470df21be1fbf1b578c8b6453c2c73b54ab5e6f36aafb3d718d2d3ff5f"
+      },
+      "20261107": {
+        "identity": "4c2ae0174286e121e7fd62c6c8d3a6e5a4c762141472508a2a974279bc0b0c65",
+        "shared": "4c2ae0174286e121e7fd62c6c8d3a6e5a4c762141472508a2a974279bc0b0c65",
+        "grouped": "4c2ae0174286e121e7fd62c6c8d3a6e5a4c762141472508a2a974279bc0b0c65",
+        "lowrank": "4c2ae0174286e121e7fd62c6c8d3a6e5a4c762141472508a2a974279bc0b0c65",
+        "learned": "4c2ae0174286e121e7fd62c6c8d3a6e5a4c762141472508a2a974279bc0b0c65",
+        "pointwise": "4c2ae0174286e121e7fd62c6c8d3a6e5a4c762141472508a2a974279bc0b0c65"
+      },
+      "20261108": {
+        "identity": "b912d2432235bb561917c2c4e04e485c302cbc18a21157f2024add92af86e3e0",
+        "shared": "b912d2432235bb561917c2c4e04e485c302cbc18a21157f2024add92af86e3e0",
+        "grouped": "b912d2432235bb561917c2c4e04e485c302cbc18a21157f2024add92af86e3e0",
+        "lowrank": "b912d2432235bb561917c2c4e04e485c302cbc18a21157f2024add92af86e3e0",
+        "learned": "b912d2432235bb561917c2c4e04e485c302cbc18a21157f2024add92af86e3e0",
+        "pointwise": "b912d2432235bb561917c2c4e04e485c302cbc18a21157f2024add92af86e3e0"
+      }
+    },
+    "MovieLens1M_ALL": {
+      "20261101": {
+        "identity": "92c8eedabd7ef241a9818829a14a3a303cddf132c309bd0ba16a08ed5f3eb6d8",
+        "shared": "92c8eedabd7ef241a9818829a14a3a303cddf132c309bd0ba16a08ed5f3eb6d8",
+        "grouped": "92c8eedabd7ef241a9818829a14a3a303cddf132c309bd0ba16a08ed5f3eb6d8",
+        "lowrank": "92c8eedabd7ef241a9818829a14a3a303cddf132c309bd0ba16a08ed5f3eb6d8",
+        "learned": "92c8eedabd7ef241a9818829a14a3a303cddf132c309bd0ba16a08ed5f3eb6d8",
+        "pointwise": "92c8eedabd7ef241a9818829a14a3a303cddf132c309bd0ba16a08ed5f3eb6d8"
+      },
+      "20261102": {
+        "identity": "755f109d8a1d53f7e6edb9231dbf014908f9b81c0cb551d64ccce02abd9f72df",
+        "shared": "755f109d8a1d53f7e6edb9231dbf014908f9b81c0cb551d64ccce02abd9f72df",
+        "grouped": "755f109d8a1d53f7e6edb9231dbf014908f9b81c0cb551d64ccce02abd9f72df",
+        "lowrank": "755f109d8a1d53f7e6edb9231dbf014908f9b81c0cb551d64ccce02abd9f72df",
+        "learned": "755f109d8a1d53f7e6edb9231dbf014908f9b81c0cb551d64ccce02abd9f72df",
+        "pointwise": "755f109d8a1d53f7e6edb9231dbf014908f9b81c0cb551d64ccce02abd9f72df"
+      },
+      "20261103": {
+        "identity": "f29e092cff52b9fbdb8f1e91f5ce99fb3d37b2b16ddf2385c975b60bdd1ee963",
+        "shared": "f29e092cff52b9fbdb8f1e91f5ce99fb3d37b2b16ddf2385c975b60bdd1ee963",
+        "grouped": "f29e092cff52b9fbdb8f1e91f5ce99fb3d37b2b16ddf2385c975b60bdd1ee963",
+        "lowrank": "f29e092cff52b9fbdb8f1e91f5ce99fb3d37b2b16ddf2385c975b60bdd1ee963",
+        "learned": "f29e092cff52b9fbdb8f1e91f5ce99fb3d37b2b16ddf2385c975b60bdd1ee963",
+        "pointwise": "f29e092cff52b9fbdb8f1e91f5ce99fb3d37b2b16ddf2385c975b60bdd1ee963"
+      },
+      "20261104": {
+        "identity": "5ef1001bb9b86ff943a63d21b9463c5be8a4aefe0f76e081e1cf0cb179780fd6",
+        "shared": "5ef1001bb9b86ff943a63d21b9463c5be8a4aefe0f76e081e1cf0cb179780fd6",
+        "grouped": "5ef1001bb9b86ff943a63d21b9463c5be8a4aefe0f76e081e1cf0cb179780fd6",
+        "lowrank": "5ef1001bb9b86ff943a63d21b9463c5be8a4aefe0f76e081e1cf0cb179780fd6",
+        "learned": "5ef1001bb9b86ff943a63d21b9463c5be8a4aefe0f76e081e1cf0cb179780fd6",
+        "pointwise": "5ef1001bb9b86ff943a63d21b9463c5be8a4aefe0f76e081e1cf0cb179780fd6"
+      },
+      "20261105": {
+        "identity": "577ffb48b2a210be2619305636e68911190cad5e660d64c2d12c29086b363d0b",
+        "shared": "577ffb48b2a210be2619305636e68911190cad5e660d64c2d12c29086b363d0b",
+        "grouped": "577ffb48b2a210be2619305636e68911190cad5e660d64c2d12c29086b363d0b",
+        "lowrank": "577ffb48b2a210be2619305636e68911190cad5e660d64c2d12c29086b363d0b",
+        "learned": "577ffb48b2a210be2619305636e68911190cad5e660d64c2d12c29086b363d0b",
+        "pointwise": "577ffb48b2a210be2619305636e68911190cad5e660d64c2d12c29086b363d0b"
+      },
+      "20261106": {
+        "identity": "b3b787bf00060d5f699cbf2f33080af17896c62fb9b3e2bfd5773972da54e085",
+        "shared": "b3b787bf00060d5f699cbf2f33080af17896c62fb9b3e2bfd5773972da54e085",
+        "grouped": "b3b787bf00060d5f699cbf2f33080af17896c62fb9b3e2bfd5773972da54e085",
+        "lowrank": "b3b787bf00060d5f699cbf2f33080af17896c62fb9b3e2bfd5773972da54e085",
+        "learned": "b3b787bf00060d5f699cbf2f33080af17896c62fb9b3e2bfd5773972da54e085",
+        "pointwise": "b3b787bf00060d5f699cbf2f33080af17896c62fb9b3e2bfd5773972da54e085"
+      },
+      "20261107": {
+        "identity": "899ce03b77b276f67169a72adfecd6469d21c71e63ee5f395b148701349e12f0",
+        "shared": "899ce03b77b276f67169a72adfecd6469d21c71e63ee5f395b148701349e12f0",
+        "grouped": "899ce03b77b276f67169a72adfecd6469d21c71e63ee5f395b148701349e12f0",
+        "lowrank": "899ce03b77b276f67169a72adfecd6469d21c71e63ee5f395b148701349e12f0",
+        "learned": "899ce03b77b276f67169a72adfecd6469d21c71e63ee5f395b148701349e12f0",
+        "pointwise": "899ce03b77b276f67169a72adfecd6469d21c71e63ee5f395b148701349e12f0"
+      },
+      "20261108": {
+        "identity": "4aa0936e2a64b6be3497b65a78ce1bc1739dd8680d7271f5e2601d88be1e6037",
+        "shared": "4aa0936e2a64b6be3497b65a78ce1bc1739dd8680d7271f5e2601d88be1e6037",
+        "grouped": "4aa0936e2a64b6be3497b65a78ce1bc1739dd8680d7271f5e2601d88be1e6037",
+        "lowrank": "4aa0936e2a64b6be3497b65a78ce1bc1739dd8680d7271f5e2601d88be1e6037",
+        "learned": "4aa0936e2a64b6be3497b65a78ce1bc1739dd8680d7271f5e2601d88be1e6037",
+        "pointwise": "4aa0936e2a64b6be3497b65a78ce1bc1739dd8680d7271f5e2601d88be1e6037"
+      }
+    }
+  },
+  "split_sha256": {
+    "MovieLens1M_R4": {
+      "train": "a1e0858393a720693e8b7dbaf167b252a2fcb5c2627d07f6ce3ccee0c47f6128",
+      "valid": "ed3100ebf2030035a0f66b416ffd9285b96f240bf27d08b027a4e1866aa14888",
+      "test": "c26dbe005939b27882c6481430662d1e91b4a5e64bb2de6b1745df05d93074b3"
+    },
+    "MovieLens1M_ALL": {
+      "train": "6800821d9a9452ad58f920970bf4d8540c359cdca2dce66c94d4bf2a76ef1acd",
+      "valid": "68f137b0ed3119343a9a370d36708787a6ed7407995dba5f3973aeee2ec35f9a",
+      "test": "ebd6f93eb3e287cfd8b22689910c0d4f09ef786c451bde12a85d4352bc3beede"
+    }
+  },
+  "data_provenance": {
+    "protocol": "PREREG_FIR_EFFICIENCY_ML1M_V1",
+    "source_url": "https://files.grouplens.org/datasets/movielens/ml-1m.zip",
+    "source_official_md5": "c4d9eecfca2ab87c1945afe126590906",
+    "source_observed_md5": "c4d9eecfca2ab87c1945afe126590906",
+    "source_observed_sha256": "a6898adb50b9ca05aa231689da44c217cb524e7ebd39d264c56e2832f2c54e20",
+    "ratings_dat_sha256": "506d64ca44484487c11dc2d9a28de5c54948213e6b96285e298afe28d6ea4e0f",
+    "redistribution": "record-level artifacts remain private under the ML-1M README",
+    "views": {
+      "MovieLens1M_R4": {
+        "category": "MovieLens1M_R4",
+        "time_fraction": 0.9,
+        "cutoff_timestamp_s": 977938855,
+        "min_train_events": 5,
+        "min_train_item_count": 5,
+        "n_filtered_events": 575281,
+        "n_candidate_users": 1102,
+        "n_users": 1033,
+        "n_train_catalog_items": 2359,
+        "n_rows": {
+          "train": 135131,
+          "valid": 1033,
+          "test": 1033
+        },
+        "split_sha256": {
+          "train": "a1e0858393a720693e8b7dbaf167b252a2fcb5c2627d07f6ce3ccee0c47f6128",
+          "valid": "ed3100ebf2030035a0f66b416ffd9285b96f240bf27d08b027a4e1866aa14888",
+          "test": "c26dbe005939b27882c6481430662d1e91b4a5e64bb2de6b1745df05d93074b3"
+        },
+        "minimum_rating": 4
+      },
+      "MovieLens1M_ALL": {
+        "category": "MovieLens1M_ALL",
+        "time_fraction": 0.9,
+        "cutoff_timestamp_s": 978133414,
+        "min_train_events": 5,
+        "min_train_item_count": 5,
+        "n_filtered_events": 1000209,
+        "n_candidate_users": 1158,
+        "n_users": 1129,
+        "n_train_catalog_items": 3015,
+        "n_rows": {
+          "train": 252332,
+          "valid": 1129,
+          "test": 1129
+        },
+        "split_sha256": {
+          "train": "6800821d9a9452ad58f920970bf4d8540c359cdca2dce66c94d4bf2a76ef1acd",
+          "valid": "68f137b0ed3119343a9a370d36708787a6ed7407995dba5f3973aeee2ec35f9a",
+          "test": "ebd6f93eb3e287cfd8b22689910c0d4f09ef786c451bde12a85d4352bc3beede"
+        },
+        "minimum_rating": 1
+      }
+    }
+  },
+  "frozen_sha256_lf": {
+    "trainer": "f15d3912603c976f8600bf12dfc780536a0cddb1504e39409891fb072066fd56",
+    "evaluator": "fb431bf40e714c668a106276142858dfd5939e89a54b1dacee75c9f0e75ecffd",
+    "runner": "205ca48bc567f72acb3efb816d1c8deddf58d56127324da2958dfaad31713c39",
+    "structural_test": "106dfc040933d1756c8696c3e6c8a3bb3993de7056ddf5e035316880f76ade59",
+    "sequestration_test": "ceb730569d749f627f461f98a731b84653a9cea731acfcbcd5cc1a43e924c47c",
+    "acquisition": "c76d33616e93a46ea937f84762fa3293892ea698ab5be249fc1361ab31e6a47c",
+    "preregistration": "866f682019a9936ca16ff53a3bbb16465f639aad54c112b6d23d679e48e6021c"
+  },
+  "caveats": [
+    "The study is prospectively frozen but same-investigator and same-code-lineage.",
+    "One non-Amazon dataset does not establish population-wide generalization.",
+    "The 0.0005 margin is a preregistered measurement-scale SESOI, not a business KPI.",
+    "User/item bootstrap intervals are fixed-dataset sensitivities, not new independent samples.",
+    "MovieLens record-level artifacts remain private under the ML-1M README."
+  ]
+}

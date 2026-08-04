@@ -1,0 +1,107 @@
+{
+  "gated_EXEC2": {
+    "results_SOTACONF_V2_k16_MI_seed20260618.users.jsonl.gz": {
+      "bytes": 1110021,
+      "rows": 57439,
+      "sha256": "9fb0db7e675cc63071a28767291a9b9b1c969663e1509545b23ea5e547c5faf8"
+    },
+    "results_SOTACONF_V2_k16_MI_seed20260619.users.jsonl.gz": {
+      "bytes": 1111766,
+      "rows": 57439,
+      "sha256": "a82e72ebc246f5e3631b424a4974699c82bf4dae32f415b320fc82d549c9ec6b"
+    },
+    "results_SOTACONF_V2_k16_MI_seed20260620.users.jsonl.gz": {
+      "bytes": 1110088,
+      "rows": 57439,
+      "sha256": "ff44f30006d9a5e7a48c9c4c56669ac95fc2cb732b823fb1e732757e63d3e93d"
+    },
+    "results_SOTACONF_V2_k16_MI_seed20260621.users.jsonl.gz": {
+      "bytes": 1110662,
+      "rows": 57439,
+      "sha256": "265929e3525ce821c4ba58dc2d321892202b9ad9602ff1db67181a3022ec142a"
+    },
+    "results_SOTACONF_V2_k16_MI_seed20260622.users.jsonl.gz": {
+      "bytes": 1109812,
+      "rows": 57439,
+      "sha256": "38505da65c60f0f544509ede35838e45b906624520a938caf04693adb168cb16"
+    },
+    "results_SOTACONF_V2_k8_MI_seed20260618.users.jsonl.gz": {
+      "bytes": 1110311,
+      "rows": 57439,
+      "sha256": "3cfb41076253b290c52d8f4272213ac22bfe8dd3216b44b49b27e0f73ecfd4ed"
+    },
+    "results_SOTACONF_V2_k8_MI_seed20260619.users.jsonl.gz": {
+      "bytes": 1109542,
+      "rows": 57439,
+      "sha256": "82ec6e6956621bbcf023d05beeb0a0d45786cb496bfefb247d4708eca1755162"
+    },
+    "results_SOTACONF_V2_k8_MI_seed20260620.users.jsonl.gz": {
+      "bytes": 1110029,
+      "rows": 57439,
+      "sha256": "055955970dc8af6ae8015fc95c05a533ad39a1f16838ad3f65c977c1a19654c6"
+    },
+    "results_SOTACONF_V2_k8_MI_seed20260621.users.jsonl.gz": {
+      "bytes": 1108712,
+      "rows": 57439,
+      "sha256": "8e34d7153983ae54ab79fc3baa25c3253d921c20d91f78346c3416fe4a83e1ad"
+    },
+    "results_SOTACONF_V2_k8_MI_seed20260622.users.jsonl.gz": {
+      "bytes": 1111370,
+      "rows": 57439,
+      "sha256": "988cea6c1b052b0778f17be96c86ec304ae7f1756175df708df693577e17a2cc"
+    }
+  },
+  "preserved_EXEC1": {
+    "results_SOTACONF_V2_k16_MI_seed20260618.EXEC1.users.jsonl.gz": {
+      "bytes": 1110215,
+      "rows": 57439,
+      "sha256": "001650f52d430f00226363c989fcab3c9e0061150aa93c96d83267b45d28b2ca"
+    },
+    "results_SOTACONF_V2_k16_MI_seed20260619.EXEC1.users.jsonl.gz": {
+      "bytes": 1111530,
+      "rows": 57439,
+      "sha256": "0b3a7fb1eb02dfa8e50a50153711419d8185eb58eaa774c00f5491879937f4e2"
+    },
+    "results_SOTACONF_V2_k16_MI_seed20260620.EXEC1.users.jsonl.gz": {
+      "bytes": 1110258,
+      "rows": 57439,
+      "sha256": "d97d431d82b944e3c77747d6da5dca8dbc0537036556d6d05d79e8d7faf259df"
+    },
+    "results_SOTACONF_V2_k16_MI_seed20260621.EXEC1.users.jsonl.gz": {
+      "bytes": 1110935,
+      "rows": 57439,
+      "sha256": "053a3f3ee9b3b3f1d510eb1a454cf5ef150557f82feccedda43b24ea4f02fea5"
+    },
+    "results_SOTACONF_V2_k16_MI_seed20260622.EXEC1.users.jsonl.gz": {
+      "bytes": 1109821,
+      "rows": 57439,
+      "sha256": "01427262ee34db9af1da0417c86782480259286cdc5d5b0a6c349007beb608f7"
+    },
+    "results_SOTACONF_V2_k8_MI_seed20260618.EXEC1.users.jsonl.gz": {
+      "bytes": 1110215,
+      "rows": 57439,
+      "sha256": "5521328281be326aa1e78bd3408e6577bf8203b499ed139ef4d5119a7511c55a"
+    },
+    "results_SOTACONF_V2_k8_MI_seed20260619.EXEC1.users.jsonl.gz": {
+      "bytes": 1109938,
+      "rows": 57439,
+      "sha256": "2395a49a312ac36e5d14db8b2cf33c9e9aea07b737af59ac6ef4642b5873e89f"
+    },
+    "results_SOTACONF_V2_k8_MI_seed20260620.EXEC1.users.jsonl.gz": {
+      "bytes": 1111187,
+      "rows": 57439,
+      "sha256": "d81f9b0073cd0522a4f364223016eb2b2f4aeb66dea25da6e3f87c3a13913061"
+    },
+    "results_SOTACONF_V2_k8_MI_seed20260621.EXEC1.users.jsonl.gz": {
+      "bytes": 1108739,
+      "rows": 57439,
+      "sha256": "2b2194e2c02bd1fc5005605270397c95180e3a16746014a1e8780fa56b27fb2c"
+    },
+    "results_SOTACONF_V2_k8_MI_seed20260622.EXEC1.users.jsonl.gz": {
+      "bytes": 1111281,
+      "rows": 57439,
+      "sha256": "d1afd01a7662a61ec8bc5f100d1e4124450898d46bf3af8b38be4378f66fcd1b"
+    }
+  },
+  "note": "gated_EXEC2 = the 10 sidecars of the dual-gate-PASS campaign (commit 86816be); preserved_EXEC1 = the voided first execution, retained for transparency. All tracked in git."
+}

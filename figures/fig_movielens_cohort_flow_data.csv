@@ -1,0 +1,3 @@
+view,minimum_rating,time_fraction,cutoff_timestamp_s,filtered_events,candidate_users,retained_users,train_catalog_items,train_rows,valid_rows,test_rows
+MovieLens1M_R4,4,0.9,977938855,575281,1102,1033,2359,135131,1033,1033
+MovieLens1M_ALL,1,0.9,978133414,1000209,1158,1129,3015,252332,1129,1129

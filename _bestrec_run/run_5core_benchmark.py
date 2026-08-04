@@ -49,6 +49,8 @@ SPLIT_DIR = ROOT / "data_5core" / "5core" / "last_out"
 META_PATHS = {
     "Video_Games":              ROOT / "data_raw_proper" / "video_games" / "meta_Video_Games.jsonl",
     "Beauty_and_Personal_Care": ROOT / "data_raw_proper" / "beauty_and_pc" / "meta_Beauty_and_Personal_Care.jsonl",
+    "Musical_Instruments":      ROOT / "data" / "instruments" / "meta_Musical_Instruments.jsonl",
+    "Office_Products":          ROOT / "data_raw_proper" / "office" / "meta_Office_Products.jsonl",
 }
 EMB_CACHE_DIR = ROOT / "cache_5core"
 

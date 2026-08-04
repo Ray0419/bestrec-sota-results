@@ -1,0 +1,446 @@
+%% GENERATED from PAPER_SUBMISSION.md (pandoc) -- hand-fixed conversion; see BUILD_NOTES.md
+\ifmainpaper
+\section{Results}\label{sec:5}
+\else
+\section{Extended supporting results}\label{sec:supp-results}
+\fi
+
+\textbf{AlphaFuse pipeline boundary.} Because the upstream offline preprocessing code was unavailable, both official classes consumed training rows produced by our frozen per-prefix adapter. This is upstream-class/training-code transfer, not reproduction of the upstream data pipeline.
+
+\textbf{Statistical reporting conventions.} Unless stated otherwise: the sample unit is the training seed; means are reported \ensuremath{\pm} sample standard deviation over seeds; confidence intervals are two-sided 95\% Student-t intervals with df = n\ensuremath{-}1; comparisons between our own arms use same-numbered seeds and are analyzed as independent arms (Welch/Satterthwaite) unless exact matched backbone initialization and a paired analysis are explicitly named, as in canonical breadth, active controls, pointwise placebo, and prospective Software V3; comparisons against published numbers are point-estimate comparisons; pooled tail hit-counts are descriptive counts only; p-values are uncorrected unless a correction is named. Cells labeled \emph{confirmatory} in the artifact manifest are pre-declared prospective campaigns or frozen-protocol locks: selection timing and protocol integrity, not seed count or external independence, are the criterion. Multi-seed post-hoc results remain exploratory.
+
+
+\ifmainpaper
+\subsection{Video\_Games --- descriptive system context (not FIR inference; NOT SOTA)}\label{sec:5.1}
+
+The complete historical component ladder and retired-baseline context are retained in
+the canonical reader/reviewer supplement.  The main article keeps only the current
+comparator evidence needed to locate the modular FIR claim: the published HSTU-BLaIR
+anchor, the official-code WEARec feasibility result, and the frozen AlphaFuse-style
+whole-package comparison.  None is an equal-model experiment or the inferential basis
+for the matched FIR contrasts in \S\ref{sec:5.2}.
+
+\ifextendedmaterial
+
+Table 1 locates the historical \textbf{HSTU-style pure-PyTorch encoder} and component
+stack within the paper's system context. It is not the inferential basis for the modular
+FIR contribution: its ladder mixes $n=1$, five-seed, and six-seed arms, lacks one
+pre-declared contrast family, and contains separately summarized rather than
+initialization-paired arms. The FIR claim instead rests on the explicitly named
+matched-control and transfer studies in \S\ref{sec:5.2}. Table 1a retains the traceable
+within-paper SASRec-family floor; Table 1b combines reported HSTU-BLaIR evidence, our
+SM120 compatibility port, an official-code WEARec equal-evaluation feasibility run, and
+the frozen AlphaFuse-style whole-package comparison.
+
+\input{tables/table1}
+
+For Table 1 specifically, ``\ensuremath{\pm}'' denotes sample SD, not a
+confidence interval. Its \ensuremath{\Delta} column contains arithmetic mean
+contrasts between separately summarized arms; those rows are not paired tests,
+and SD-band overlap or non-overlap is not used as an inferential rule.
+
+The full model is \textbf{+17.5\%} over the published SASRec point estimate (0.0573, Table 1b) on the same reported Video\_Games dataset geometry, but published training/evaluation equivalence is not established --- and \textbf{this difference is architectural, not text-driven}: the ID-only ablation already reaches \ensuremath{\approx}0.0656 (itself +14\% over published SASRec), and the entire frozen-text stack (SBERT features + text-sim bias + prototypes) adds only \textbf{+0.00178 \ensuremath{\pm} 0.00021 (5-seed, +2.7\%)} overall. The two supported regularizers stack with a combined lift whose excess over the component sum is 33\% --- additivity and orthogonality were NOT tested (loss target vs. embedding spectrum): label smoothing alone +0.0012, causal filter alone +0.0015, combined +0.0036 over the bias stack. Per-component single-flag attribution on the HSTU-style implementation: the \textbf{time bias is the largest classical component (+0.0027)}, label smoothing +0.0013, causal filter +0.0015, while \textbf{text-similarity bias shows no observed benefit (\ensuremath{\pm}0.0001, removable candidate)} and \textbf{TAPE is sub-additive (+0.0009)}. \emph{(The time-bias, text-sim, and TAPE single-flag figures here are the single-seed seed-20260608 DECOMP values, honestly flagged n=1 (reported inline here, not in a table). A 4-seed multi-seed cross-check --- DECOMP5, seeds 20260609--12, HSTU-style base 0.0594 --- confirms the ordering: time bias +0.0030 (largest classical component, \ensuremath{\ge} the single-seed +0.0027), pos-rab +0.0012, TAPE +0.0004, text-sim \ensuremath{-}0.00005 (no benefit observed at tested power). The qualitative attribution is unchanged; the only number that materially moves is TAPE, whose multi-seed single-flag lift (+0.0004) is smaller still than the single-seed +0.0009 --- further support for its demotion from a headline component.)} The causal filter's gain is robust across kernel lengths K\ensuremath{\in}\{4,8,16,50\} (k16 marginally best \& tightest, 5-seed 0.0676 \ensuremath{\pm} 0.0002; low kernel sensitivity, \S\ref{sec:5.4}). Every capacity-\emph{adding} probe we tried instead (continuous time-decay kernel, expert heads, text-distillation, dual-text, EMA, CL4SRec, James--Stein shrinkage \citep{james1961estimation,efron1973stein}, niche-competition loss, heat-kernel label smoothing, spectral-shrink, cue-fusion, forced ID\ensuremath{\rightarrow}text routing) was neutral or harmful --- several with a learned scalar the model itself drove to zero (the negative-result map, tabulated in Table S1, \S\ref{sec:5.5}).
+
+\input{tables/table1a}
+
+\emph{The v1-era SASRec/SBERT/BLaIR baseline rows and the observations derived from them have been REMOVED per the artifact-graph gate: their per-seed artifacts were not retained and the values are untraceable. Exact user/item counts, \ensuremath{\pm}1 interaction agreement, frozen split hashes, and per-category floor runs establish dataset identity and local split traceability only; they do not establish training, implementation, or evaluation parity with a published system.}
+
+\fi
+
+\textbf{Table 1b: Reported, locally regenerated, and current-comparator evidence} \citep{liu2025hstublair,hu2025alphafuse,xu2026wearec}:
+
+The HSTU-BLaIR paper reports the same Video\_Games item and user counts as ours (25,612 items / 94,762 users), but 814,585 interactions---one fewer than our 814,586---under its AR2023 5-core LLOO geometry. They train for \textbf{100 epochs} following Zhai et al.'s HSTU protocol. Their single-seed numbers:
+
+\input{tables/table1b}
+
+\textbf{Our full model (0.0673) exceeds their published SASRec (0.0573) but does not reach their HSTU (0.0741) or HSTU-BLaIR (0.0760) on Video\_Games.} Our local compatibility-port HSTU-BLaIR run reached final full-eval NDCG@10 \texttt{0.07382} (the best-epoch reading exists only in an unretained WSL log and is excluded from the artifact graph); the run is stronger than SASRec-SBERT but carries SM120/fbgemm validity caveats.
+
+The separately frozen WEARec campaign used the official AAAI 2026 repository at commit \texttt{2087335339b1} (the full hash is artifact-bound). Two official-domain presets were selected by one tuning seed using validation NDCG@10 only; the selected \texttt{official\_beauty} preset then trained on eight fresh assessment seeds with TEST scoring suppressed until all checkpoints existed. The committed adjudicator's first authorized endpoint read returned \textbf{\texttt{WEAREC-BELOW-\allowbreak EXISTING-REFERENCE}}: WEARec mean NDCG@10 \textbf{0.059184, 95\% CI [0.058674, 0.059693]}, versus the existing six-seed full-model reference \textbf{0.067337 [0.067063, 0.067611]}. The descriptive outcome-known unpaired Welch contrast is \textbf{\ensuremath{-}0.008154 [\ensuremath{-}0.008689, \ensuremath{-}0.007618], \ensuremath{p=1.16\times10^{-11}}}. This is narrow official-model/equal-evaluation evidence by the same investigators on an outcome-known split---not independent confirmation, SOTA, a paired experiment, or equality of architecture, loss, schedule, or tuning budgets. The graph replays the released NDCG vectors and Welch arithmetic; private endpoint extraction and HR/MRR raw-vector arithmetic are not publicly replayed.
+
+The clean E-E V3 campaign froze the AlphaFuse upstream at commit \texttt{b501a0540b60} (the full hash is artifact-bound), the official repository \texttt{AlphaFuse} and \texttt{SASRec} classes, one shared training configuration, and eight fresh seeds per arm. MiniLM-384 title vectors replace AlphaFuse's published OpenAI text vectors, so this is an AlphaFuse-style port rather than a published-table reproduction. Prelaunch preparation opened the pre-existing outcome-known combined TRAIN/VALID/TEST export but wrote a training input containing only user IDs, TRAIN histories, and VALID targets. Model fitting and complete-history-masked VALID selection did not load, hash, or score TEST; after all 16 selected checkpoints were bound into the family-wide READY record, 16 sealed one-shot TEST evaluations preceded the unchanged committed adjudicator. Its exact verdict, \textbf{\texttt{EEV3-REPORTABLE-\allowbreak OUTCOME-KNOWN}}, is countable as current-comparator evidence: AlphaFuse-style NDCG@10 \textbf{0.048273 [0.048129, 0.048416]}, zero-initialized upstream-class SASRec-ID control \textbf{0.039024 [0.038106, 0.039941]}, and descriptive independent-arm Welch difference \textbf{+0.009249 [+0.008329, +0.010169], \ensuremath{p=3.48\times10^{-8}}}. Fixed-split user and target-item-cluster bootstrap sensitivities are also positive, but are not optimizer- or population-level inference. The package remains \textbf{-0.019065 [-0.019347, -0.018783]} below the existing 0.067337 full-model reference. Because text availability, initialization, trainable capacity, parameter allocation, and architectures differ, and the parser-default \texttt{Normal(0,1)} setting was not tested, this is a whole representation-package contrast. Official recipes may override initialization by dataset, so the parser setting is not a universal upstream default. The contrast is not null-space-fusion isolation, equal-tuning evidence, a paired experiment, independent confirmation, or SOTA. The public graph recomputes released aggregate vectors and Welch arithmetic and checks endpoint/sidecar ledger shape, 64-hex syntax, and uniqueness; it does not read or hash the private endpoint/sidecar files or replay record-level bootstraps. The local adjudicator, which had access to the private files, checked their recorded digests.
+
+The separately frozen E-E V4 campaign addressed only that initialization sensitivity. Eight fresh parser-default \texttt{Normal(0,1)} SASRec-ID runs completed before eight sealed one-shot TEST evaluations and the committed adjudicator's first endpoint read. Its exact verdict is \textbf{\texttt{EEV4-ALPHAFUSE-ABOVE-NORMAL-SASREC}}: normal-init SASRec-ID NDCG@10 \textbf{0.043065 [0.042645, 0.043486]}, V3 AlphaFuse-style package minus V4 normal-init SASRec-ID \textbf{+0.005207 [+0.004779, +0.005635], \ensuremath{p=1.02\times10^{-9}}}, and V4 normal-init minus V3 zero-init SASRec-ID \textbf{+0.004042 [+0.003089, +0.004995]}. The normal-init arm remains \textbf{-0.024272 [-0.024728, -0.023816]} below the existing reference. This is countable only as prospectively frozen, outcome-known, same-investigator cross-campaign comparator-fairness sensitivity. Phase/date and initialization are confounded; architecture, capacity, and parameter allocation remain unequal. It does not isolate initialization, supply an equal-budget factorial or independent confirmation, or support SOTA. The public graph recomputes the released summary and three Welch contrasts and validates ledger structure without reading private endpoint/sidecar files.
+
+Relative to HSTU-BLaIR, this paper contributes multi-seed internal ablations, a released preprocessing path, and implementation diagnostics---not a leaderboard result. The reported 0.0760 remains the stronger Video\_Games reference. Core-block equality at one aligned configuration (\S\ref{sec:3.2}) and environment-caveated local regenerations (\S\ref{sec:5.6}) do not constitute a pinned end-to-end reproduction.
+
+\ifextendedmaterial
+
+\textbf{Older published baselines on different protocols} (NOT directly comparable; for context only):
+
+\input{tables/table_older_baselines}
+
+\textbf{Comparability caveat}: TIGER and LIGER evaluate on the older Amazon Reviews 2014 dataset, not AR2023. The BLaIR paper does evaluate on AR2023 Video\_Games but uses a by-timestamp split (no k-core filter) and a different downstream architecture (UniSRec), producing numbers \textasciitilde{}3-4\ensuremath{\times} lower than our 5-core LLOO numbers. The 5-core filter guarantees \ensuremath{\ge}5 interactions per user and item in the full filtered sequence (which substantially eases the benchmark relative to the by-timestamp variant); note that after the leave-last-out split a small set of items retains zero \emph{training} occurrences (\S\ref{sec:5.3} cohort disclosure). We therefore do \textbf{not} claim SOTA over TIGER/LIGER/BLaIR. HSTU-BLaIR is the relevant stronger AR2023 Video\_Games 5-core reference and blocks a SASRec-SBERT SOTA claim.
+
+\textbf{Concurrent protocol landscape.} SID-MLP \citep[arXiv:2605.12617]{guo2026sidmlp}, Latte \citep[arXiv:2605.06331]{hou2026latte}, and GrIT \citep[arXiv:2602.19728]{shyam2026grit} report same-statistics AR2023 LLOO results; ReSID \citep[arXiv:2602.02338]{liang2026resid} and ChronoSID \citep[arXiv:2607.03918]{huang2026chronosid} use a different filtered universe; \emph{Augment or Not?}~\citep[arXiv:2505.23053]{huang2025augment}, DiffuReason \citep[arXiv:2602.09744]{jiang2026diffureason}, and SILLM4Rec \citep[MMAsia 2025]{wu2025sillm4rec} use non-interchangeable filtering or sampled-ranking setups; UniSGR \citep[arXiv:2607.04068]{sun2026unisgr} uses private logs; and DIGER \citep[arXiv:2601.19711]{fu2026diger} and ACERec \citep[arXiv:2602.13573]{xia2026acerec} address related semantic-ID problems outside this exact public protocol. We cite these works for coverage and make \textbf{no comparison against concurrent preprints}. HSTU-BLaIR remains the published external anchor for the counted point-estimate comparisons (\S\ref{sec:5.2}).
+
+Within our own full-catalog runs, the 11.6M-parameter model trains in about 10 minutes on one consumer GPU and reaches \ensuremath{\approx}5.4\ensuremath{\times} the popularity floor (0.0125). These are efficiency and sanity-check observations, not priority or SOTA claims.
+
+\fi
+
+
+\subsection{Canonical causal FIR internal contrasts and untuned category reuse (legacy-package attribution caveat \S\ref{sec:3})}\label{sec:5.2}
+
+The strongest second-category package result appears on Musical\_Instruments, an already outcome-visible AR2023 category; it is internal robustness evidence, not transfer confirmation. The full V2 stack reaches \textbf{NDCG@10 = 0.0413 \ensuremath{\pm} 0.0005 (5-seed)}, \textbf{+7.9\%} over a matched HSTU+TAPE base (0.0383 \ensuremath{\pm} 0.0004) and \textbf{+57\%} over a plain ID-only SASRec (0.0264). A two-arm comparison (not a controlled isolation --- \S\ref{sec:3} initialization caveat) (best-by-val, vs the MI SBERT+TAPE base 0.0383, four 20-epoch seeds 20260609--12) separates the two supported regularizers at the arm level (bundled arms; no component isolation):
+
+\input{tables/table1c}
+
+(Recomputed best-by-val from the released per-seed artifacts. Against the headline 5-seed V2 stack the package arm's share is 77\% (k16) / 82\% (k8). LS-only is the 5-seed family \texttt{results\_MI\_lsonly\_seed\{08–12\}} (0.03914 \ensuremath{\pm} 0.00013); base is the four e20 seeds 20260609--12.)
+
+\textbf{The package arm contributes \ensuremath{\approx}3\ensuremath{\times} what label smoothing does on the second category, and \ensuremath{\approx}80\% of the combined lift in that same-seed decomposition --- a package-level share, no component isolation --- (77\% vs the k16 stack, 82\% vs the k8 headline stack)} --- i.e. the historical package's gain appears on both development categories while label smoothing's does not (no formal component-by-category interaction was tested). Its kernel-length insensitivity also appears on MI (MI k8 0.0413 \ensuremath{\pm} 0.0005 \ensuremath{\approx} k16 0.0415 \ensuremath{\pm} 0.0002). Component attribution for these historical runs remains open; the matched-initialization studies below provide cleaner internal contrasts, subject to their outcome-visibility limits.
+
+\textbf{Pre-declared matched-arm FIR study (\texttt{PREREG\_FIR\_V3.md} / E-A; mechanically adjudicated verdict W-POS; outcome-visible split).} A nonsingular reparameterization, $y=x+\mathrm{conv}_{\Delta}(x)$ with $\Delta=0$, made the treatment identity-initialized and gradient-active; three arms by eight seed blocks shared one verified initialization within each block. The frozen registered analysis is independent-arm Welch/Satterthwaite: learned FIR minus identity is \textbf{+0.002265, ordinary 95\% Welch CI [+0.001928, +0.002602]} ($df=13.939$) on Musical\_Instruments. The paired-by-seed difference is retained only as descriptive. This is a cleaner within-configuration contrast than the historical package arms, but the category and split had already informed development and the execution record contains the provenance deviations documented in the audit; it is therefore exploratory internal evidence, not fresh confirmation. The zero-FIR-weight-decay sensitivity is A2--A1 \textbf{+0.000010 [-0.000339, +0.000360], $p=.95$}: no difference was detected, but neither equivalence nor exclusion of a weight-decay pathway is established. Artifacts: \texttt{results\_MI\_FIRV3\_\{arm\}\_seed\{seed\}.json} (24 runs) and \texttt{fir\_v3\_adjudication.json}.
+
+\textbf{Pre-declared canonical reparameterization breadth (\texttt{PREREG\_FIR\_CANONICAL\_BREADTH.md}; verdict \texttt{CANON-BREADTH-POS}; outcome-known/test-exposed).} With one frozen K=16, 20-epoch configuration, zero category tuning, and exact per-seed matched initialization, learned minus identity is \textbf{+0.002110, ordinary paired 95\% CI [+0.001820, +0.002399]} on Industrial\_and\_Scientific (paired $t=17.23$; Holm-adjusted $p=5.44\times10^{-7}$; 8/8 positive) and \textbf{+0.006150 [+0.005849, +0.006450]} on CDs\_and\_Vinyl ($t=48.39$; Holm-adjusted $p=8.42\times10^{-10}$; 8/8 positive). Supportive registered endpoints point in the same direction: HR@10/MRR differences are +0.003474/+0.001819 on Industrial\_and\_Scientific and +0.010728/+0.005033 on CDs\_and\_Vinyl; the broader registered cutoff family was not emitted by the trainer and is not claimed. The categories were selected after favorable legacy-package outcomes and TEST was evaluated each epoch, so these estimates are \textbf{descriptive robustness of the canonical parameterization, not independent confirmation or population transfer}. The intervals are ordinary paired-t intervals; Holm adjusts decisions/p-values, not confidence limits. All 32 source JSONs and the adjudication record are now hash-bound in the public artifact inventory.
+
+\textbf{Pre-declared six-arm active-control study (\texttt{PREREG\_FIR\_CONTROLS.md}; eight matched seed blocks; sealed one-shot final TEST; frozen verdict \texttt{CTRL-ACTIVE-CONTROL-SUPPORTED}).} The frozen analysis has two separate Holm families; all intervals are ordinary paired 95\% intervals. In family A, learned is \textbf{+0.002116 [+0.001910, +0.002322], $p_{\mathrm{Holm}}=2.04\times10^{-7}$}; fixed MA \textbf{+0.000712 [+0.000509, +0.000915], $p_{\mathrm{Holm}}=1.30\times10^{-4}$}; fixed HP \textbf{+0.000708 [+0.000510, +0.000907], $p_{\mathrm{Holm}}=1.30\times10^{-4}$}; channel-shared \textbf{+0.002197 [+0.002008, +0.002386], $p_{\mathrm{Holm}}=1.08\times10^{-7}$}; and parameter-matched nonlinear causal \textbf{+0.001912 [+0.001657, +0.002166], $p_{\mathrm{Holm}}=1.33\times10^{-6}$}. In family B, learned exceeds fixed MA by \textbf{+0.001404 [+0.001085, +0.001723], $p_{\mathrm{Holm}}=6.37\times10^{-5}$} and fixed HP by \textbf{+0.001407 [+0.001089, +0.001726], $p_{\mathrm{Holm}}=6.37\times10^{-5}$}, but the fixed arms are algebraically redundant. A learned-specific advantage is not established over shared (\textbf{-0.000081 [-0.000337, +0.000175], $p_{\mathrm{Holm}}=.477$}) or nonlinear (\textbf{+0.000204 [-0.000038, +0.000446], $p_{\mathrm{Holm}}=.174$}); retained tests are not equivalence. This study alone lacked a parameter-matched non-temporal placebo. It was designed after the learned--identity outcome was known, ran from a dirty evolving tree, and its sidecars were not independently custodied because of a filename-suffix ignore error; we classify it as outcome-known exploratory mechanism evidence despite its frozen analysis and sealed evaluator. Human pre-adjudication visibility remains an author-verification item.
+
+\textbf{Pre-declared parameter-matched non-temporal placebo (\texttt{PREREG\_FIR\_POINTWISE\_V1.md}; eight matched seed blocks; sealed one-shot final TEST; frozen verdict \texttt{POINTWISE-FIR-DISCRIMINATED}).} The current-position-only placebo uses a deterministic width-16 orthonormal DCT projection, GELU, and zero-initialized learned 16-to-64 map. It is identity-initialized, gradient-active, and has exactly 1,024 trainable parameters, matching the K=16 depthwise FIR, but cannot access earlier positions. In one frozen three-test Holm family, learned FIR minus identity is \textbf{+0.001872 [+0.001737, +0.002007], $p_{\mathrm{Holm}}=1.87\times10^{-8}$}; pointwise minus identity is \textbf{-0.000069 [-0.000200, +0.000061], $p_{\mathrm{Holm}}=.249$}; and learned FIR minus pointwise is \textbf{+0.001941 [+0.001788, +0.002095], $p_{\mathrm{Holm}}=2.40\times10^{-8}$}. All intervals are ordinary paired 95\% intervals; the retained pointwise--identity test is not equivalence. This discriminates the learned temporal FIR from the tested equal-parameter non-temporal residual under matched initialization. It does not establish per-channel-tap necessity because the shared causal filter remains competitive, and it is outcome-known Musical\_Instruments mechanism evidence, not independent confirmation or cross-domain replication.
+
+\textbf{Frozen Software robustness attempt (\texttt{PREREG\_FIR\_PROSPECTIVE\_SW\_V3.md}; eight matched seed blocks; sealed one-shot final TEST; verdict \texttt{SW-V3-PRACTICAL-POS}).} The learned and identity arms used exact per-seed matched backbone initialization.
+Training loaded TEST rows only for the explicitly pre-declared transductive item catalog and emitted no TEST scores; checkpoints were selected solely by validation NDCG@10.
+After all 16 checkpoints existed, the committed driver created exclusive-created, hash-linked local READY/evaluation seals, evaluated each selected checkpoint once on TEST, and invoked the protocol-designated adjudicator.
+Mean TEST NDCG@10 was \textbf{0.120200 learned versus 0.115138 identity}; learned minus identity was \textbf{+0.005062, ordinary paired 95\% CI [+0.004591, +0.005533]}, paired $t(7)=25.39$, two-sided $p=3.75\times10^{-8}$, with 8/8 differences positive.
+The CI lower bound cleared the frozen +0.000500 reporting threshold, yielding the exact mechanical verdict \texttt{SW-V3-PRACTICAL-POS}.
+Tracked evidence cannot establish whether earlier V2 validation output was observed before V3 was frozen, and local logs cannot prove first human/tool access; absent an author custody statement, we therefore classify V3 as \textbf{outcome-known exploratory same-team robustness}, not confirmation.
+It is also same-investigator, same-code-lineage, and same-Amazon-family work under local same-user custody with no external escrow. The frozen tag additionally binds a CRLF raw digest for one MI lineage-reference JSON while a normal tagged checkout produces LF bytes; direct clean-tag execution therefore fails that raw input assertion until the historical CRLF representation is restored. The reference was not read for runtime configuration, so the defect does not change endpoint arithmetic, but it narrows replayability (\texttt{FIR\_PROSPECTIVE\_SW\_V3\_REPLAY\_ERRATUM.md}).
+
+The paired-difference sample SD was \textbf{0.000563779}. In registered seed order, the eight learned-minus-identity differences were \textbf{+0.005197548, +0.004308974, +0.005082181, +0.005788969, +0.005439290, +0.005516648, +0.004194543, and +0.004966712}. A post-hoc two-sided exact sign test for 8/8 positive differences gives \textbf{$p=.0078125$}. This sign test is a small-$n$ robustness sensitivity, not the frozen decision rule and not population-level uncertainty across users, cutoffs, categories, or domains.
+
+Figure~\ref{fig:fir_evidence_summary} is a visual index of the released FIR contrasts,
+arranged to expose both scope and boundary conditions. It is not a pooled estimate:
+the intervals retain the estimators and evidence classes of their source adjudications
+and do not form one multiplicity family. The positive Amazon rows are outcome-known
+internal evidence; the matched MI controls show that learned FIR exceeds the
+equal-parameter pointwise placebo but not the shared causal filter; and the two
+prospectively frozen same-investigator MovieLens transfer intervals include zero.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{fig_fir_evidence_summary.pdf}
+  \Description{A forest plot organizes eight released FIR contrasts into three groups. Four outcome-known internal Amazon learned-minus-identity estimates are positive. On matched Musical Instruments controls, learned FIR exceeds the equal-parameter pointwise placebo, while learned minus the shared causal filter spans zero. In the prospectively frozen same-investigator MovieLens study, learned minus identity and learned minus pointwise both span zero.}
+  \caption{FIR evidence map across released adjudications. Positive outcome-known Amazon contrasts coexist with a shared-filter boundary and a negative prospectively frozen MovieLens transfer result. Intervals retain their source estimators and evidence classes; they are not pooled and do not form one common multiplicity family. Exact values and source keys are in \texttt{figures/fig\_fir\_evidence\_summary\_data.csv}.}
+  \label{fig:fir_evidence_summary}
+\end{figure}
+
+\textbf{Prospectively frozen non-Amazon replication and efficiency study
+(\texttt{PREREG\_FIR\_EFFICIENCY\_\allowbreak ML1M\_V1.md}; MovieLens 1M; verdict
+\texttt{ML1M-\allowbreak NO-FIR-\allowbreak REPLICATION}).} The protocol and complete execution chain were
+committed and pushed before acquiring MovieLens. The rating-at-least-4 primary view
+used a global 90\% time boundary, a training-observed catalog, 1,033 users, 2,359
+items, and 135,131 training rows. Acquisition necessarily read and hash-bound TEST
+and used its target for cohort eligibility; the narrower sequestration claim is that
+model fitting/selection emitted no TEST scores and all 96 selected checkpoints existed
+before the 96 sealed one-shot TEST evaluations. Those evaluations preceded the
+protocol-designated adjudicator's first endpoint read. This is prospectively frozen
+same-investigator non-Amazon evidence, not independent confirmation or population-wide
+generalization.
+
+The exact primary verdict is negative. Learned FIR did not replicate against identity
+(\textbf{+0.000000, ordinary paired 95\% CI [-0.000074, +0.000075],
+$p_{\mathrm{Holm}}=.995$}) or the equal-parameter pointwise arm
+(\textbf{+0.000035 [-0.000057, +0.000127], $p_{\mathrm{Holm}}=.796$}). Mean
+NDCG@10 was 0.052151 for both learned and identity and 0.052116 for pointwise. The
+all-ratings sensitivity agreed: learned minus identity +0.000012 [-0.000107,
++0.000131] and learned minus pointwise +0.000043 [-0.000082, +0.000168]. All six
+pre-declared user/item cluster percentile intervals for the parsimonious-arm contrasts
+included zero.
+
+\begin{table*}[t]
+\caption{MovieLens 1M R4 primary FIR replication and conditional parsimony. NI-PASS
+uses the frozen 0.000500 noninferiority margin versus learned FIR. Because the
+learned-FIR replication gate failed, NI-PASS is conditional coefficient-count
+compression only, not evidence of FIR utility or an end-to-end compute reduction.}
+\label{tab:ml1m-efficiency}
+\input{tables/table_ml1m_efficiency}
+\end{table*}
+
+Shared, grouped, and low-rank passed the frozen noninferiority family
+($p_{\mathrm{Holm}}=5.20\times10^{-6}$, $5.20\times10^{-6}$, and
+$1.43\times10^{-6}$). These are conditional coefficient-count compression findings,
+not a computational optimization and not evidence that a smaller FIR is useful,
+because the prerequisite learned-FIR replication contrasts
+failed. Median latency per user was 2.076/2.105/2.087/2.132/2.073/2.120 ms in table
+order; primary-view training peak memory ranged from 580.94 to 583.28 MiB on one RTX
+5060 Ti. The resource plane is descriptive hardware evidence, not a general efficiency
+ranking. Under the ML-1M README, record-level rows, checkpoints, endpoints, and per-user
+sidecars remain private; the public graph verifies frozen code hashes and recomputes all
+reported aggregate-vector arithmetic but cannot independently replay private endpoint
+extraction.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig_fir_efficiency_ml1m_v1.pdf}
+  \Description{Three panels plot the six MovieLens 1M R4 arms' primary eight-seed mean
+  NDCG at 10 against filter parameter count, median latency per user, and median training
+  peak CUDA memory. Shared and low-rank have the highest numerical means, while learned
+  FIR is visually coincident with identity. The resource ranges are narrow and are
+  descriptive measurements on one GPU.}
+  \caption{MovieLens 1M R4 aggregate FIR accuracy-resource plane. Learned FIR failed to
+  replicate versus identity and pointwise. Resource readings are descriptive on one GPU;
+  exact aggregate values are in
+  \texttt{figures/fig\_fir\_efficiency\_ml1m\_v1\_data.csv}.}
+  \label{fig:ml1m-efficiency}
+\end{figure*}
+
+\textbf{Pre-declared breadth (two further categories).} Under \texttt{PREREG\_FIR\_BREADTH.md} (committed before any run; fresh never-inspected seeds 20260713--17; mechanical adjudication in \texttt{FIR\_BREADTH\_RESULTS.md}), the filter was transplanted with \textbf{zero per-category tuning} and tested as a same-seed 5-seed filter-vs-no-filter contrast --- an internal contrast with no comparator involved --- on two categories never used in its development. \textbf{Both categories fired the frozen decision rule}: Industrial\_and\_Scientific same-seed \ensuremath{\Delta} = \textbf{+0.0024 \ensuremath{\pm} 0.0005} (pre-declared paired-analysis 95\% CI {[}+0.0018, +0.0030{]}; 5/5 same-seed differences positive) and CDs\_and\_Vinyl same-seed \ensuremath{\Delta} = \textbf{+0.0057 \ensuremath{\pm} 0.0006} (pre-declared paired-analysis 95\% CI {[}+0.0049, +0.0064{]}; 5/5). \textbf{Analysis-premise correction (2026-07-19):} the frozen rule \emph{as written} is a paired Student-t, but its pairing premise is now known to be false --- same-numbered seeds are not initialization-paired (\S\ref{sec:5.3} randomization disclosure) --- so the pre-declared intervals are reported as executed-as-frozen outputs whose \emph{paired interpretation is withdrawn}; the \textbf{primary supported statement} is the post-hoc independent-arm Welch analysis (we no longer call it conservative: with correlated arms neither interval has a general conservative ordering, and here the Welch intervals are in fact narrower than the paired ones), under which both effects remain positive with 95\% CIs excluding zero (Industrial\_and\_Scientific {[}+0.0019, +0.0029{]}, CDs\_and\_Vinyl {[}+0.0050, +0.0063{]}; graphed as \texttt{firb.*.welch}, evidence-class exploratory since the Welch analysis is post-hoc). Per the frozen claim wording as narrowed by this correction, each result is exactly: \emph{the causal-FIR-filter arm's 5-seed improvement over the no-filter arm on that category is positive with a 95\% CI excluding zero} --- an internal same-seed contrast of the FIR-plus-initialization/optimizer package; nothing broader, no SOTA language, no comparator statement. The filter package is thus multi-seed-supported on \textbf{four categories}, two of them under this pre-declared breadth campaign --- and now \textbf{estimated under the valid independent-arm TFV2 pre-declaration (outcome-visible; not confirmatory --- \S\ref{sec:5.3}(vii))} (below), which supersedes this campaign's withdrawn paired interpretation as the primary FIR evidence.
+
+\textbf{TFV2 independent-arm replication (pre-declared, outcome-visible; adjudicated 2026-07-20).} The \texttt{PREREG\_TAIL\_FIR\_V2.md} campaign (Git-committed frozen rules; outcome-visible --- OTS chronology in \S\ref{sec:5.3}, disclosure (vii)) reran both breadth categories as fully independent 8-vs-8 arms (fresh never-inspected seeds; no pairing premise; per-run sidecars released): Industrial\_and\_Scientific overall \ensuremath{\Delta} = \textbf{+0.002131} (t = 16.99, 95\% CI {[}+0.001862, +0.002400{]}) and CDs\_and\_Vinyl overall \ensuremath{\Delta} = \textbf{+0.005770} (t = 26.12, 95\% CI {[}+0.005275, +0.006266{]}) --- \textbf{both PASS under Holm} (one family with the tail endpoint E1, \S\ref{sec:5.3}). This replaces the withdrawn paired interpretation with a valid pre-declared independent-arm design; the treatment remains the FIR-plus-initialization/optimizer package. Descriptively, the filter's positive-frequency-tail improvements are +0.000775 (IS, p = 2\ensuremath{\times}10$^{-4}$) and +0.002329 (CDs, p = 3\ensuremath{\times}10$^{-12}$).
+
+\textbf{Comparator ablations (audit-requested).} Each arm targets one named design element of the filter (with the disclosed caveat that the singular headline initialization means these arms also alter the optimization path, \S\ref{sec:3}) on the same 5-seed MI stack: freezing the kernel at a causal moving average (learnable gate retained) recovers only +0.00133 of the filter's +0.00225 descriptive mean gain over the no-filter baseline (0.04046 \ensuremath{\pm} 0.00022 vs 0.04138 \ensuremath{\pm} 0.00053) --- an observation confounded by the shared singular start (\S\ref{sec:3}). Here \ensuremath{\pm} denotes sample standard deviation, and no inference is based on visual overlap of those bands; no learned-shape attribution is claimed. Freezing the gate at 1 (delta-initialized kernel) has a similar descriptive mean to the full filter (0.04127 \ensuremath{\pm} 0.00046), so the zero-init gate comparison is confounded by the singular-initialization bootstrap (\S\ref{sec:3} disclosure) and is not a clean single-factor attribution.
+
+\textbf{Pre-declared confirmation vs the published per-category reference.} The seeds above (20260608--17) are \emph{exploratory}: kernel choice, epoch budget, and the decision to compare against the published Musical\_Instruments HSTU-BLaIR number (0.0406; \citealp[Table 2]{liu2025hstublair}) were all made while inspecting them. To make the comparison selection-free, we froze a version-controlled pre-declared protocol (\texttt{SOTA\_CONFIRM\_PREREG\_V2.md}, committed to version control before any confirmation run: exact config and commands, data SHA256s, decision rule, claim wording) and ran \textbf{five pre-specified never-inspected seeds (20260618--22) under each of the two kernels --- ten arm-runs} with per-run provenance manifests (command, git commit + clean-tree flag, environment, data hashes) and per-user record sidecars. Result: \textbf{K=16 fresh 5-seed 0.04152 \ensuremath{\pm} 0.00045 (95\% CI lower bound 0.04096) and K=8 0.04120 \ensuremath{\pm} 0.00030 (CI-LB 0.04083) --- both CI lower bounds above the published 0.0406, 10/10 seeds above.} The supported claim is exactly this: \emph{fresh multi-seed means and seed-level confidence intervals exceed the published HSTU-BLaIR point estimate on this category under our reproduced protocol (parity evidence: users/items match the paper exactly; interactions differ by one --- see \texttt{SOTA\_CONFIRM\_PREREG\_V2\_ERRATA.md} E1; our plain SASRec floor is} below \emph{their published SASRec, ruling out an easier split).} The comparator is single-seed; our post-hoc local regeneration of it (\S\ref{sec:5.6} --- the reference implementation's research path under data-movement shims, unpinned environment) regenerates the published value at its best full-eval epoch (0.0406; final epoch 0.0391) but is itself a single environment-caveated run, so no paired or distributional superiority is claimed, and this remains a per-category result --- Video\_Games is explicitly not claimed (\S\ref{sec:5.1}). The first execution of this confirmation was voided by its own provenance tripwire (a concurrent documentation edit dirtied the tracked tree mid-campaign) and re-executed in full under a clean tree; both executions agree per-seed to \ensuremath{\pm}0.0003 (\texttt{SOTA\_CONFIRM\_V2\_RESULTS.md}). One protocol deviation is disclosed rather than claimed away: the gated runs executed at a documentation-only descendant commit of the pre-declaration's introducing commit (the pre-declared commit-equality rule was not literally satisfied); code identity across the two commits is demonstrated by empty protocol-file diffs and, in the from-scratch rebuild, by code hashes embedded in each run manifest (\texttt{SOTA\_CONFIRM\_PREREG\_V2\_ERRATA.md}, E3).
+
+\input{tables/tableV2conf}
+
+\textbf{Office\_Products V1 (the original second-category attempt) --- descriptive only; superseded by the counted V3 campaign below.} Office\_Products numerically exceeded the published HSTU-BLaIR point estimate under the frozen MI configuration, but the pre-declared SASRec floor check failed because our local SASRec floor was substantially above the published SASRec reference. We therefore treat the V1 Office campaign as descriptive evidence, not as a passed confirmatory category (the separately pre-declared V3 campaign later passed and is counted, \S\ref{sec:5.2}). The floor anomaly has since been resolved mechanistically --- the reference implementation's own SASRec, run locally on its own pipeline (\S\ref{sec:5.6}), lands +13.9\% above its published row, while a completed run of their Office HSTU-BLaIR configuration regenerates its published row (+1.6\%; \S\ref{sec:5.6}) --- the conservatism is a property of the published Office SASRec row specifically. The VOID is retained on procedural grounds (the pre-declared floor check failed as written); full detail, decomposition, and disclosures in Appendix A.0.
+
+\textbf{Office\_Products V3 (redesigned pre-declaration) --- PASSED.} Under \texttt{PREREG\_OFFICE\_V3.md} (committed before any run; fresh never-inspected seeds 20260728--32; gate: each arm's fresh 5-seed 95\% CI lower bound must exceed the \textbf{environment-matched local regeneration of the comparator} --- best full-eval 0.0279, itself above the published 0.0271 --- with \ensuremath{\ge}4/5 seeds individually above), \textbf{both kernel arms passed}: K=16 fresh 5-seed \textbf{0.03047 \ensuremath{\pm} 0.00011 (CI-LB 0.03033)} and K=8 \textbf{0.03029 \ensuremath{\pm} 0.00005 (CI-LB 0.03024)}, 10/10 seeds above both references; dataset identity, reference-artifact hashes, and per-run provenance verified mechanically (\texttt{OFFICE\_V3\_RESULTS.md}). Per the frozen claim wording: \emph{a per-category point-estimate comparison against the published 0.0271 and its environment-matched single-run local regeneration 0.0279; no paired or distributional superiority is claimed; this is not SOTA on Office\_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind.} The V1 VOID above stands unchanged as its own record (Appendix A.0).
+
+
+\subsection{Secondary-study boundary}\label{sec:secondary-main}
+\label{sec:5.3}\label{sec:5.4}\label{sec:5.4.1}\label{sec:5.4.2}
+\label{sec:5.5}\label{sec:5.6}\label{sec:5.7}\label{sec:5.8}
+
+The remaining studies are supporting falsification and provenance evidence, not the
+inferential basis for the FIR claim.  In the outcome-visible TFV2 text-versus-ID
+study, the Musical\_Instruments positive-frequency tail contrast was +0.000420
+[+0.000181,+0.000660], while Video\_Games (+0.000173, $p=.14$) and the
+MI--VG interaction (+0.000247, $p=.13$) were not detected.  Zero-training-exposure
+targets produced no hits through rank 100.  Fixed-draw interaction/user thinning did
+not identify a mechanism: the most favorable corrected difference-in-differences was
+suggestive only ($p=.058$).  These results support neither cold-start capability nor a
+general cross-dataset tail regularity.
+
+The capacity-adding probe screen is mostly single-seed and supports no powered
+exclusion; its five-seed connection-gate interval includes zero and checkpoint cadence
+was unequal.  Local HSTU-BLaIR executions are environment-caveated single-run
+regenerations, not pinned reproductions or distributional comparisons.  A separately
+pre-declared EASE late-fusion study yielded positive paired intervals on three
+categories, but it is a standard two-scorer system addressing a different question and
+is not FIR evidence.  The five-category semantic reranker is outcome-visible and
+protocol-deviated: its gains occur at training frequency 1--5, frequency-zero targets
+do not change at rank 10, mid/head means fall, and overall changes are near zero.  It is
+retained as a descriptive redistribution study without an architectural-novelty or
+cold-start claim.
+
+Full tables, figures, chronology, and artifact identifiers for these supporting studies
+remain in the canonical reader edition and reviewer supplement.  Omitting their extended
+narrative from the main TORS file changes no value, verdict, or claim boundary.
+\fi
+
+\ifextendedmaterial
+\subsection{The Musical\_Instruments frequency-5 tail case (cross-dataset heterogeneity not established)}\label{sec:5.3}
+
+
+Beyond \emph{whether} text helps overall (modestly: +2.7\% on Video\_Games, \S\ref{sec:5.1}), we ask \emph{where this additive frozen-text construction helps} (only early additive fusion of frozen text features is tested --- \S\ref{sec:2.3} scope note). \texttt{evaluate()} reports \texttt{by\_popularity} NDCG@10 over nominal train-frequency terciles \{tail, mid, head\} (bucketed by TRAIN frequency only, so no validation/test frequencies enter the bucketing; two cohort-definition defects are disclosed below), and we compare the full text stack against an ID-only ablation on the \textbf{same split and seed numbers}. The cold-start intuition --- text should rescue rare items where ID embeddings are starved --- holds on \emph{one} of three datasets, and the MI difference survives an independent-arm analysis.
+
+
+\textbf{Randomization disclosure.} Same-numbered text and ID arms are not initialization-paired: treatment-specific modules consume RNG before the shared backbone is constructed, changing backbone initialization and subsequent stochastic streams. Table 1d's per-seed differences are therefore descriptive, all retained inference is independent-arm Welch/Satterthwaite, and the former paired CI/MDE/TOST analyses are withdrawn.
+
+
+\input{tables/table1d}
+
+
+The historical MI contrast survives independent-arm analysis (Welch t = 3.94, p = 0.014, 95\% CI {[}+0.000109, +0.000562{]}) and has tail HR \ensuremath{\Delta} = +0.00109 \ensuremath{\pm} 0.00065, but its absolute scale is small (\ensuremath{\approx}29.6 versus 20.0 hits/seed); MI's largest absolute text lift is at the head (+0.00527). On Video\_Games, no tail difference is detected (Welch p \ensuremath{\approx} 0.22), but equivalence is \textbf{not} established. Beauty remains exploratory because one arm pair uses unmatched evaluation geometry. Most importantly, the repaired TFV2 MI--VG contrast is +0.000247 (p = 0.13), so cross-dataset heterogeneity did not replicate and is not claimed (Fig.~\ref{fig:tail_law_mechanism}).
+
+
+\textbf{Why Table 1d is historical.} Its nominal terciles mix zero-train-exposure targets with positive-frequency targets and split boundary-frequency ties by item-ID order; the original runs also lack per-row outcome sidecars. These arm-independent defects do not create a treatment-specific cohort, but they prevent the intended rare-item interpretation. TFV2 therefore separates zero exposure, uses whole-frequency-group cohorts, and releases per-user outcomes.
+
+
+\textbf{Repaired-estimand campaign (TFV2; 8 independent seeds/arm).} On the tie-safe MI positive-frequency tail, text \ensuremath{-} ID is \textbf{+0.000420, 95\% CI {[}+0.000181, +0.000660{]}, Welch p = 0.0022}, passing the frozen Holm rule. The {[}1,6{]} band (+0.000546, p = 0.0039) and HR@10 (+0.001150, p = 4\ensuremath{\times}10$^{-5}$) agree. However, zero-exposure targets produce no hits through rank 100 in any of four categories, the exclude-frequency-5 sensitivity is nonsignificant (+0.000071, p = 0.52), and the frequency-5 group alone is +0.001379. We therefore report a \textbf{frequency-5-heavy positive-tail case}, not cold-start capability or a smooth rare-item law. VG is nonsignificant (+0.000173, p = 0.14), as is MI--VG (+0.000247, p = 0.13).
+
+\textbf{Evidence status.} TFV2's endpoints were Git-frozen before launch, but interim test values became visible, its first independently verifiable timestamp postdates the first result, and the adjudicator was committed after some outputs existed. The eight-seed size was resource-based rather than prospectively powered, and the run manifests record concurrent tracked-document edits. TFV2 is therefore \textbf{outcome-visible, not confirmatory}; its released sidecars and frozen estimator support reproducible estimates, not a claim of blinded confirmation. The repository retains the complete chronology, cohort files, logs, hashes, and errata.
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[height=0.86\textheight,width=\textwidth,keepaspectratio]{figures/fig_tail_law_mechanism.pdf}
+  \Description{Three stacked panels: a forest plot of TFV2 tail contrasts with confidence intervals for MI, VG, and their interaction; a line chart of head and tail deltas across interaction-thinning levels; and a line chart of tail and head text-to-ID ratios across four regimes.}
+  \caption{(A) TFV2 repaired-estimand tail contrasts --- MI, VG, and the MI\ensuremath{-}VG interaction as Welch 95\% CIs (8 fresh seeds per arm; one estimand; outcome-visible campaign, \S\ref{sec:5.3}; cross-dataset heterogeneity not established, p = 0.13). The historical defective-cohort Table 1d values are tabulated, not plotted. (B) Interaction-density titration level contrasts and (C) two-axis descriptive ratios --- both on ONE fixed subset draw with no draw/seed uncertainty shown; arms are not initialization-paired (\S\ref{sec:5.3}); the panel-C shift is suggestive only (p = 0.058, CI includes 0). Plotted values, estimator, and analysis IDs: figures/fig\_tail\_law\_mechanism\_data.csv.}
+  \label{fig:tail_law_mechanism}
+\end{figure}
+
+
+\subsection{Titration: thinning tracks the head effect but not the tail effect (level contrasts under a bundled intervention; head trend exploratory and uncorrected; tail inconclusive)}\label{sec:5.4}
+
+
+We thinned Video\_Games interactions over six rungs down to MI's global density
+(\ensuremath{\rho}=0.66), holding n\_eval at 94,762 and re-estimating text--ID
+differences with five seeds per rung. The two strata respond differently:
+
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Head:} \ensuremath{\Delta} rises overall from +0.00221 to +0.00354;
+  all rungs are 5/5 positive. Spearman \ensuremath{\rho_s} versus density is
+  -0.94 (exact p=0.017), with one adjacent reversal; the HR trend is weaker
+  (\ensuremath{\rho_s}=-0.71, p\ensuremath{\approx}0.14). This is an
+  exploratory uncorrected rank trend on one fixed thinning draw.
+\item
+  \textbf{Tail:} \ensuremath{\Delta} is non-monotone
+  (\ensuremath{\rho_s}=-0.14). At MI-matched density it is -0.000108
+  \ensuremath{\pm}0.000503 (1/5 positive), so thinning does not reproduce MI's
+  +0.000335 tail estimate. Without a prospective equivalence margin this is
+  inconclusive, not evidence of no effect.
+\end{itemize}
+
+
+
+The full ladder is Table S2. The head trend and tail non-reproduction are level
+contrasts under a bundled intervention; their interaction is nonsignificant. Global
+density is therefore not identified as the tail mechanism.
+
+
+\subsubsection{The level contrasts in one scale-free table: the cross-dataset tail/head arm ratio (descriptive; no interaction-test support)}\label{sec:5.4.1}
+
+
+To separate absolute scale from arm contrast, Table 5 reports the text/ID NDCG ratio
+at full VG density, VG thinned to MI density, and native MI. Ratios above one
+favor text.
+
+
+\input{tables/table541}
+
+
+The head ratio rises from 1.026 to 1.049 as VG is thinned, toward MI's 1.101.
+The tail ratio remains 0.971 at both VG densities, far below MI's 1.276. Thus
+matching global density does not reproduce the MI tail advantage on this draw. The
+earlier two-seed ``trough'' interpretation is retracted; the five-seed endpoint is near
+zero with a wide interval. This remains a level contrast, not a significant
+stratum-by-density interaction.
+
+One hypothesis is that user connectivity or item-text quality differs between native
+MI sparsity and artificially thinned VG. Neither is identified here: user thinning
+changes several dataset properties at once, and an item-text permutation control has
+not been run.
+
+
+\subsubsection{User-mode titration: a suggestive tail-level response at MI-matched connectivity (bundled intervention; descriptive)}\label{sec:5.4.2}
+
+
+User thinning preserves each retained user's history while lowering users/item. At
+\ensuremath{\rho_{\mathrm{user}}}=0.66 it matches the interaction-thinned rung's
+interactions/item (16.1 versus 16.2) and approaches MI's users/item (2.44 versus
+2.34). Because user composition, degrees, update counts, and topology also change,
+this is a bundled-scheme contrast, not single-factor identification.
+
+
+The read comes out on the predicted branch --- a positive shift (suggestive):
+
+
+\input{tables/table542}
+
+
+The tail ratio moves from 0.971 to 1.046. The independent-arm
+difference-in-differences is +0.000326 (p=0.058, 95\% CI [-0.00001,
+0.00067]); the within-rung tail level is +0.000178
+(p\ensuremath{\approx}0.16). The former paired analysis is retracted because arms are
+not initialization-paired. Fig.~\ref{fig:r1r2_plane} therefore shows a suggestive direction, not a
+confirmed effect or connectivity attribution.
+
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{figures/fig_r1r2_plane.pdf}
+  \Description{Scatter of tail text-to-ID ratio against two resource axes with dashed straight connectors between related points; the user-thinned shift is labeled suggestive with the confidence interval including zero.}
+  \caption{The (R1 = interactions/item, R2 = users/item) resource plane --- the two VG thinned rungs share R1, but only the user-thinned (R2) point moves to a positive tail point estimate beside MI native (suggestive, p = 0.058; descriptive contrast; bundled interventions on one fixed subset draw; the \S\ref{sec:5.4.2} dd inference is suggestive, not significant, under the corrected independent-arm analysis).}
+  \label{fig:r1r2_plane}
+\end{figure}
+
+
+Lower user-thinning rungs do not support a ``peak then collapse'' interpretation:
+\ensuremath{\rho_{\mathrm{user}}}=0.50 is +0.000236
+\ensuremath{\pm}0.000532, while \ensuremath{\rho_{\mathrm{user}}}=0.40 exhibits
+a text-arm floor collapse. The user-thinned estimate also remains below native MI.
+Overall, interaction thinning tracks the head level, while user thinning gives only a
+suggestive tail-level shift. Shared intervention draws omit subset uncertainty, the
+stratum-by-density interaction is nonsignificant, and the mechanism remains unidentified.
+A prior spectral explanation is retracted because it did not measure the claimed spectrum
+\citep{baik2005bbp,marchenko1967mp,gavish2014optimal}.
+
+
+\begin{quote}
+\textbf{Provenance:} released \texttt{results\_USERTITR\_*.json}; five seeds per
+rung; n\_eval=94,762 and tail\_n=10,900 fixed. Arms share seed numbers but are not
+initialization-paired. All model seeds use one intervention draw.
+\end{quote}
+
+
+\subsection{Screening log of capacity-adding probes (a search record, not powered exclusions)}\label{sec:5.5}
+
+
+A central empirical finding of this work is \textbf{asymmetric}: the only levers that moved test NDCG@10 were \emph{capacity-restricting} (label smoothing, the causal FIR filter) or classical inductive biases already in Table 1 (the time bias); \textbf{no capacity-\emph{adding} probe we tried showed a benefit at its tested power (mostly single-seed).} We document the full set here as a first-class result --- negatives are part of the contribution, and several are \emph{interpretable} negatives in which a learnable scalar, free to engage the mechanism, was driven by the optimizer to (or past) zero. This is observational evidence --- most rows are single-seed probes (power note below) --- that the in-environment ceiling was not left unexplored on these axes; the residual gap to the published HSTU-BLaIR 0.0760 could not be isolated (the pinned reference environment is not installable here, and the shimmed local execution of \S\ref{sec:5.6} did not include the Video\_Games configuration); what the probe set shows is that none of the tested probes (mostly single-seed; Table S1 power note) produced a gain --- observations that leave the gap unexplained, not exclusions.
+
+
+All entries are best-by-val test NDCG@10, full-catalog eval (n\_eval = 94,762 on Video\_Games), on the same fixed protocol. \ensuremath{\Delta} is versus the stated base; for the three learnable-scalar probes (W1/X1/Y1) we report the absolute single-seed test next to its base band, since the headline test is statistically indistinguishable from the base and the \emph{learned scalar} is the load-bearing readout. Several rows are single-seed --- sufficient for a negative-result map (a probe that fails to clear its base on one seed, or whose own learned scalar switches it off, does not warrant five seeds).
+
+
+\textbf{Unequal power, stated plainly.} The probes in Table S1 do \emph{not} carry equal evidential weight: most rows are single-seed exploratory probes, while a few were run at full multi-seed power. Only the multi-seed, pre-declared negatives --- the conn-gate five-seed confirmation (cadence-caveated; see the row note) and the titration nulls of \S\ref{sec:5.3}--\S\ref{sec:5.4} (the VG tail null --- former equivalence claims retracted, \S\ref{sec:5.3} --- and the 5-seed-locked ladder rungs) --- were run at full pre-declared power (no null is thereby confirmed); the \textbf{Beauty near-zero tail estimate is a 3-seed exploratory observation} (mixed evaluation geometry, \S\ref{sec:5.3}) and carries \textbf{no} confirmatory weight. The remaining rows are exploratory documentation of the search space, recorded for completeness and interpretability, not powered hypothesis tests. Full per-probe seed counts are given in the table's n column.
+
+
+The full screening log --- all 18 capacity-adding / alternative-mechanism probes with per-probe \ensuremath{\Delta} NDCG@10, seed counts, and learned-scalar readouts --- is \textbf{Table S1} (Supplement \S{}S.4); it is summarised above and analysed next.
+
+
+The pattern is consistent and is itself the finding: across loss-side (W1, Y1, sampled-softmax), embedding-side (X1, GD1, text-init), attention-side (c3, n\_heads, text-sim), encoder-side (BLaIR, dual-text), and auxiliary-objective (c1, c2, CL4SRec, EMA) axes, no capacity-adding probe produced a test gain at its tested power (mostly single-seed; power note above), and three free scalars (W1's \ensuremath{\beta}, X1's c, Y1's T) were each switched off --- or, for W1, reversed --- by the optimizer. Only anti-overconfidence regularizers (label smoothing) and the restricted causal-filter inductive bias (Table 1) transferred. These are hypothesis-generating observations at their stated (mostly single-seed) power, not powered exclusions; \textbf{we do not claim they bound an in-environment ceiling}. (An earlier spectral-irreducibility clause here is retracted --- see the \S\ref{sec:5.4.2} retraction note.) The conn-gate row deserves separate emphasis: it is the only entry tested at full five-seed power and the only one that directly operationalizes \emph{this paper's own intervention-associated tail pattern} --- the collaborative-connectivity association of \S\ref{sec:5.4.2}. A single seed showed a +0.00053 tail lift, but the pre-declared five-seed confirmation collapsed to +0.0001 \ensuremath{\pm} 0.0003 (95\% CI {[}\ensuremath{-}0.00025, +0.00045{]}, includes zero), and the free gate scalar \ensuremath{\alpha} was driven \emph{below} its initialization (voted off; the learned value is recorded in 4/5 seed logs --- the fifth predates the log line, and the graph reports the recovered count). \textbf{Cadence caveat (disclosed 2026-07-19):} the conn-gate arms were evaluated only at epochs \{10, 20\} while their base evaluated every epoch, so best-by-val checkpoint opportunities were unequal across arms; the tail CI-includes-zero verdict is unchanged by this, but the small overall delta is cadence-sensitive and we rest no claim on its sign. This is the cleanest illustration of the paper's central distinction: a mechanism-associated pattern can be \emph{supported} by controlled thinning contrasts (the matched-R1 level contrast) yet not be \emph{actionable} through a learnable cold-start gate --- one \emph{interpretation} --- a hypothesis, not an identified mechanism --- is that the connectivity signal the model needs is already latent in the frozen text features, leaving no residual for an explicit gate to exploit.
+
+
+\subsection{Executing the reference implementation locally (post-hoc comparator regeneration)}\label{sec:5.6}
+
+Late in this work we succeeded in running the \textbf{reference implementation itself} --- the HSTU-BLaIR repository at its released commit, unmodified (clean git tree): its preprocessing, its gin configurations, its trainer, and its eval protocol --- end-to-end on our hardware. The pinned environment (torch 2.2.2 / fbgemm\_gpu 0.6.0) remains uninstallable here (no sm\_120 kernel images, no Windows wheels); what makes execution possible under our unpinned torch 2.11 environment is that the repository's research path uses exactly \textbf{three} \texttt{fbgemm} operators, all pure data movement (\texttt{asynchronous\_complete\_cumsum}, \texttt{jagged\_to\_padded\_dense}, \texttt{dense\_to\_jagged}), which we re-implement in plain PyTorch with self-tested forward/gradient parity, plus a world-size-1 identity DDP wrapper and logging/data-acquisition patches (full shim inventory, per-run provenance, and artifacts: \texttt{THEIRS\_ON\_OURS\_REPORT.md}). No model math is touched --- the layer norms, fused projections, SiLU pointwise attention, biases, loss, and scoring all execute in the reference repository's own unmodified lines, consistent with the core-block parity evidence of \S\ref{sec:3.2}. Their own preprocessing pipeline ran with its dataset-size assertions left active and \textbf{passing} on both corpora (Musical\_Instruments: 24,587 items / 57,439 users; Office\_Products: 77,551 items / 223,308 users --- the comparator paper's exact statistics).
+
+Two single-run results (their configurations as shipped, 101 epochs; our RTX 5060 Ti):
+
+\input{tables/table56_theirs}
+
+\textbf{The Musical\_Instruments comparator regenerates locally.} The final-epoch full-corpus eval lands within 2.3--4.3\% of every published metric above, and the best full-eval epoch hits the published NDCG@10 exactly; the run oscillates in a 0.0384--0.0406 band from roughly epoch 30 onward (the comparator's own README notes run-to-run variability). The published 0.0406 that \S\ref{sec:5.2}'s pre-declared confirmation is measured against is therefore no longer only a transcribed constant: a local run of the generating code regenerates it under the unpinned shimmed research path, and our pre-declared CI lower bounds (0.04096 / 0.04083) sit above both its best (0.0406) and final (0.0391) local readings. \textbf{The Office\_Products floor anomaly resolves}: their own SASRec configuration lands +13.9\% above its published row here, crossing the published value at epoch 20 of 101 and never re-entering --- which, combined with our floor run, decomposes the +44\% floor-check failure entirely into published-row conservatism and baseline-strength protocol differences, leaving nothing attributable to our split or eval (resolution in Appendix A.0; the VOID is deliberately retained).
+
+\textbf{Caveats (why these are regenerations, not reproductions).} Single runs (the reference code seeds only Python's \texttt{random}, so even in place it is not run-to-run deterministic); an unpinned environment (torch 2.11 vs pinned 2.2.2, transformers 5.7 vs 4.51, different cuBLAS/TF32 kernel versions); a different GPU than the comparator used; and the shims themselves --- though the shim risk has since been closed on CPU: under the pinned torch 2.2.2 itself, the real \texttt{fbgemm-gpu(-cpu)==0.6.0} operators match our shims \textbf{bit-exactly (max abs diff 0.0, forward and gradient)} on every input the pinned binary accepts, the reference block under \{pinned torch + real fbgemm\} vs \{pinned torch + shims\} is bit-exact at every stage, and the remaining torch 2.2.2\ensuremath{\rightarrow}2.11 block-level numerics drift is bounded at \textbf{4.8\ensuremath{\times}10\ensuremath{^{-7}} per stage / 2.4\ensuremath{\times}10\ensuremath{^{-7}} end-to-end}, with negative controls confirming the harness detects 1-ulp perturbations (\texttt{PINNED\_ENV\_PARITY\_REPORT.md}); the pinned stack's \emph{GPU} (cu121) kernel numerics remain the one locally untestable component. We therefore cite these as \textbf{environment-caveated single-run regenerations} and change no claim wording on their basis: \S\ref{sec:5.2}'s claim remains a point-estimate comparison against the published number.
+
+\subsection{Pre-declared fresh-seed hybrid: late fusion with a closed-form item-item model (E-F; adjudicated 2026-07-23; W-H-POS on all three categories)}\label{sec:5.7}
+
+\textbf{Provenance and system.} An author-operated side campaign (2026-07-22; outcome-visible development on historical seeds, disclosed as such) found that late score fusion of the frozen sequential stack with EASE \citep{steck2019ease} --- a closed-form linear item-item model fit on the \emph{train split only} --- improved MI test NDCG@10 on every historical seed. \texttt{PREREG\_HYBRID\_V1.md} (frozen and committed before launch, with its mechanical adjudicator) is the fresh-seed replication: per user, fused = z(seq) + w\ensuremath{\cdot}z(EASE); (l2, w) selected on \emph{validation only} from frozen grids; the fusion stage evaluates test once, at the selected pair (the underlying trainer additionally logs test curves at eval epochs under the pipeline's long-standing best-by-val protocol --- a standing test exposure disclosed in \S\ref{sec:5.3} process disclosure (i), not a fusion-stage selection input); Completed per-seed fusion results were also read for operational monitoring before the full family finished; PREREG\_HYBRID\_V1 registered no no-interim clause, and the once-only adjudication ran after all files existed (disclosed). Five fresh seeds 20260721--25 per category; integrity gates all passed (per-seed reconstruction fidelity <0.0005 vs the recorded base result; frozen-grid membership; canonical n\_eval; mechanical config equality to the per-category frozen reference), adjudicator exit 0.
+
+\textbf{Result (frozen wording; 'pre-declared' replaces the prereg's synonym for the manuscript's uniform terminology).} Under the pre-declared fresh-seed replication (PREREG\_HYBRID\_V1, 5 seeds), late z-score fusion with a train-only EASE model changed test NDCG@10 by \textbf{+0.00244 {[}+0.00219, +0.00268{]}} on Musical\_Instruments, \textbf{+0.00261 {[}+0.00211, +0.00310{]}} on Industrial\_and\_Scientific, and \textbf{+0.00317 {[}+0.00286, +0.00348{]}} on Video\_Games These are ordinary paired 95\% CIs; raw paired p-values are 1.0e-5 on MI, 1.3e-4 on IS, and 9.0e-6 on VG, all significant after Holm adjustment. Holm adjusts p-values and decisions, not the intervals; significance attaches only to fused-vs-sequential contrasts. The hybrid is a two-scorer system; published comparator numbers are single-scorer, single-run values, and every comparison below remains a point-estimate comparison under the environment caveats of \S\ref{sec:3}. Fresh-seed sequential-only means for context: MI 0.04155, IS 0.03340, VG 0.06713.
+
+\textbf{Published-comparator rows (frozen wordings).} The fused system's five-fresh-seed mean test NDCG@10 on Musical\_Instruments, \textbf{0.04399}, exceeds the published single-run HSTU-BLaIR point estimate 0.0406 under our environment-caveated regeneration protocol (point-estimate comparison; no distributional claim). On Video\_Games the fused five-fresh-seed mean, 0.07031, remains below the published single-run 0.0760. A five-checkpoint ensemble of the same frozen stack, fused with EASE under the same validation-only rule, scored \textbf{0.04557} on Musical\_Instruments (single evaluation; ensemble frame --- comparable only to other ensembles).
+
+\textbf{Attribution and scope.} EASE is Steck (2019); z-score late fusion is standard. The local contribution is empirical: the measured complementarity between a text-augmented sequential scorer and a closed-form co-occurrence scorer under the 5-core LLOO full-catalog protocol, quantified under a frozen plan on fresh seeds. EASE alone is far weaker than the sequential model on these catalogs (side-campaign observation; the gain is complementarity, not a stronger component). The dense closed-form fit is infeasible at Office/CDs/Beauty catalog sizes; that scope exclusion was declared in the prereg, and a content-based third scorer that avoids the item-item inversion was subsequently studied at five-category scale (\S\ref{sec:5.8}; outcome-visible, protocol-deviated --- see its classification). Artifacts: results\_\{MI,IS,VG\}\_HYBRIDV1\_base\_seed*.json (+.fusion.json, per-user records), results\_MI\_HYBRIDV1\_ensemble5.json, hybrid\_v1\_adjudication.json.
+
+\subsection{Sparse-warm text-fusion study on all five categories (E-G; outcome-visible, protocol-deviated; descriptive estimates, no pre-declared-confirmation status; a near-threshold redistribution, not cold start)}\label{sec:5.8}
+
+\textbf{Classification.} All 25 runs completed, but the campaign is outcome-visible
+and protocol-deviated. Interim endpoints were exposed, the literal frozen
+configuration gate fails on MI and VG, and the amended gate postdates outcome
+visibility. The literal failure governs; the amended PASS is a sensitivity only. A
+planned replication was also exposed before adjudication. Accordingly, every estimate
+below is descriptive and conditional on optimizer seeds over one repeatedly used split.
+
+\textbf{System.} At evaluation time, a history-centroid text score is added to the
+sequential score and, where feasible, EASE. Text weights depend only on train-frequency
+bins and are selected on validation under an overall non-inferiority constraint. The
+text scorer fits no parameters, but the sequential and EASE components are trained or
+fit; this is not a training-free recommender.
+
+The repository retains the as-launched gate, later sensitivity gates, their hashes,
+and the exact chronology. This preserves the defect without converting a post-outcome
+repair into a frozen decision.
+
+\textbf{Descriptive result.} Tail-bin NDCG@10 changes were +0.00217 [0.00196,
+0.00239] on MI, +0.00243 [0.00218, 0.00267] on IS, +0.00337 [0.00305,
+0.00370] on VG, +0.00114 [0.00105, 0.00123] on Office, and +0.00481
+[0.00472, 0.00490] on CDs. Overall changes were near zero. These intervals are
+retained as descriptive arithmetic, not as pre-declared confirmation.
+
+The gain is entirely frequency 1--5; frequency-zero targets never change at rank 10.
+Mid and head means decline in every category, so this is a sparse-warm redistribution
+rather than free overall accuracy. All validation choices hit the text-weight grid
+ceiling, leaving the optimum unbracketed. With five seeds, the exact two-sided
+sign-test floor is 0.0625.
+
+Evaluation-time content fusion is established prior art
+\citep{wang2024lmprior,collins2025ensrec,xu2024tedrec,brody2024simrec,
+lichtenberg2025denserec,wang2025mmesid,liu2023ucc}. We claim no architectural
+novelty for this element; it is retained only as a protocol-deviated redistribution
+study on fixed splits. Full operational chronology and artifacts are in the versioned
+supplement and repository.
+\fi

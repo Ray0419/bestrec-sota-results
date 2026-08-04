@@ -1,0 +1,41 @@
+{
+  "active": [],
+  "blocked": [],
+  "completed": [],
+  "counts": {
+    "active": 0,
+    "blocked": 0,
+    "completed": 0,
+    "ready": 1,
+    "selected": 1
+  },
+  "execute": true,
+  "filters": {
+    "components": [
+      "sasrec"
+    ],
+    "seed": 20260805
+  },
+  "generated_at_utc": "2026-06-10T07:20:56.821488+00:00",
+  "protocol": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_sparse_rrf_confirmatory_protocol_20260609.json",
+  "ready": [
+    {
+      "component": "sasrec",
+      "expected_output": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl",
+      "job": "seed20260805_sasrec",
+      "kind": "sasrec",
+      "seed": 20260805
+    }
+  ],
+  "schema_version": 1,
+  "selected": [
+    {
+      "component": "sasrec",
+      "expected_output": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_confirmatory_seed20260805_sasrec_export_test\\warm_full_catalog_records_Video_Games_sasrec_sbert_test.jsonl",
+      "job": "seed20260805_sasrec",
+      "kind": "sasrec",
+      "seed": 20260805
+    }
+  ],
+  "status_log": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_sparse_rrf_confirmatory_job_status.jsonl"
+}

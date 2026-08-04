@@ -1,0 +1,41 @@
+%% GENERATED from PAPER_SUBMISSION.md (pandoc) -- hand-fixed conversion; see BUILD_NOTES.md
+\section{Code and Data Availability}\label{sec:8}
+
+Code, frozen protocols, result artifacts, and build scripts are public at
+\url{https://github.com/Ray0419/bestrec-sota-results}. The tracked
+\texttt{RELEASE\_MANIFEST.json} binds source code, split derivatives, text caches,
+result JSONs, released per-user sidecars, and the pinned HSTU-BLaIR submodule by
+SHA-256. Running \texttt{bootstrap\_public\_clone.py} fetches and verifies
+release-class assets; running \texttt{rebuild\_hstu\_submission.py --strict} then
+checks HSTU parity, recomputes the 200 artifact-gated cells, verifies the manifest,
+and executes every governed adjudicator.
+
+The numerical graph and release manifest have different scopes: every declared empirical
+cell is graph-bound, but not every transitive graph source is separately enumerated in the
+release manifest. Table 0's literature attribution remains citation-checked authored
+prose, but its quantitative FIR fields are generated from active graph cells and the
+strict rebuild verifies the generated region. Table 0 is not a separate numerical graph
+family. We make no broader ``every printed claim is hash-manifested'' claim.
+
+MovieLens 1M record rows, transformed splits, checkpoints, endpoint files, and
+per-user sidecars are not redistributed under the ML-1M README. The public release
+contains the frozen acquisition/training/evaluation code, source and split hashes,
+aggregate seed vectors/statistics, and adjudication. Consequently, the public graph
+recomputes the aggregate MovieLens claims but cannot independently replay the private
+record-level endpoint extraction.
+
+The WEARec release contains the frozen official-code adapter, validation-only selection
+record, eight-seed aggregate adjudication, reference-vector identities, and private
+endpoint hashes. Its graph cell independently recomputes the released NDCG summaries and
+descriptive Welch arithmetic. Checkpoints, sealed endpoint files, and per-user sidecars
+remain private, and HR/MRR raw-vector arithmetic is therefore not publicly replayed.
+
+The public \texttt{v0.9-audit-evidence} release is the working evidence store.
+Historical campaigns for which checkpoints or per-user records were not retained are
+labeled as such and require regeneration for rank-level reconstruction. Raw Amazon
+Reviews 2023 archives are not redistributed; derived splits are tied to their public
+source and preprocessing code by hashes. Local-only audit sidecars are outside every
+printed claim and are precommitted by digest for reviewer access. A new archival deposit
+will be cut only after the manuscript, author metadata, licenses, and clean-clone build
+are finalized; the older \texttt{v1.1.11-deposit} tag is retained as a historical
+boundary, not represented as current.

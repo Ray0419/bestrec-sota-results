@@ -1,0 +1,36 @@
+{
+  "run_name": "office_hstu_blair",
+  "gin_file": "C:\\Users\\rayxc\\Documents\\R\\external\\HSTU-BLaIR\\configs\\amzn23_office\\hstu-sampled-softmax-n512-blair.gin",
+  "gin_sha256": "6fd33b706f23e03bdf295fc8dff50a720d3318a53fe50e3dd6473e67e50e06f3",
+  "extra_bindings": [
+    "create_data_loader.num_workers = 0",
+    "create_data_loader.prefetch_factor = None"
+  ],
+  "master_port": 12413,
+  "shims": "pure-PyTorch fbgemm shims installed (3 ops) + selftest passed",
+  "their_commit": "40a27879ec22648657b5abc77915a7cc88c66cfd",
+  "our_commit": "e6b5c796024d8a6642c94959573d3cf8d833b8f9",
+  "torch": "2.11.0+cu128",
+  "cuda": "12.8",
+  "device": "NVIDIA GeForce RTX 5060 Ti",
+  "python": "3.12.13 (main, Apr  7 2026, 20:53:22) [MSC v.1944 64 bit (AMD64)]",
+  "monkeypatches": [
+    "train.setup: nccl->gloo",
+    "train.add_to_summary_writer: tee to metrics.jsonl",
+    "train.SummaryWriter: events to <run_dir>/tb (Windows MAX_PATH; location only)",
+    "train.DDP: single-process passthrough (Windows gloo+CUDA DDP segfaults; identity at world_size=1)"
+  ],
+  "argv": [
+    "_bestrec_run/theirs_train.py",
+    "--gin",
+    "external/HSTU-BLaIR/configs/amzn23_office/hstu-sampled-softmax-n512-blair.gin",
+    "--run-name",
+    "office_hstu_blair",
+    "--workers0",
+    "--port",
+    "12413"
+  ],
+  "started_utc": "2026-07-11T12:08:12Z",
+  "elapsed_sec": 22454.9,
+  "finished_utc": "2026-07-11T18:22:27Z"
+}

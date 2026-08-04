@@ -1,0 +1,75 @@
+{
+  "candidate_scope": "hstu_full_catalog_top2500_rank_proxy",
+  "config": {
+    "checkpoint": "/home/ray/.bestrec_hstu_blair/HSTU-BLaIR/ckpts/amzn23_game-l50/HSTU-b4-h4-dqk16-dv16-lsilud0.5-ad0.0_blair_DotProduct_local_text-l2-eps1e-06_ssl-t0.05-n512-b128-lr0.001-wu0-wd0-2026-06-09-fe5_ep100",
+    "dataset_label": "Video_Games",
+    "dataset_name": "amzn23_game",
+    "device": "cuda",
+    "dropout_rate": 0.5,
+    "eval_batch_size": 128,
+    "eval_user_max_batch_size": 128,
+    "gin_config_file": "configs/amzn23_game/hstu-sampled-softmax-n512-blair.gin",
+    "gr_output_length": 10,
+    "interaction_module_type": "DotProduct",
+    "item_embedding_dim": 64,
+    "l2_norm_eps": 1e-06,
+    "limit_batches": 0,
+    "main_module": "HSTU",
+    "max_sequence_length": 50,
+    "method": "hstu_blair_sm120_export",
+    "out_jsonl": "/mnt/c/Users/rayxc/Documents/R/_bestrec_sota_lab/runs/hstu_blair_eval_export_full_20260609_fg/warm_full_catalog_records_Video_Games_hstu_blair_sm120.jsonl",
+    "seed": 42,
+    "summary_json": "/mnt/c/Users/rayxc/Documents/R/_bestrec_sota_lab/runs/hstu_blair_eval_export_full_20260609_fg/hstu_blair_eval_export_summary.json",
+    "teacher_top_k": 0,
+    "text_embedding_model": "blair",
+    "top_k_method": "MIPSBruteForceTopK"
+  },
+  "dataset": "Video_Games",
+  "environment": {
+    "cuda": "12.8",
+    "cuda_available": true,
+    "cuda_device": "NVIDIA GeForce RTX 5060 Ti",
+    "device": "cuda",
+    "python": "3.9.25 (main, Oct 31 2025, 23:00:23) \n[Clang 21.1.4 ]",
+    "torch": "2.8.0+cu128"
+  },
+  "generated_at_utc": "2026-06-08T21:41:52.553243+00:00",
+  "method": "hstu_blair_sm120_export",
+  "metrics": {
+    "HR@10": 0.13234207804816275,
+    "MRR": 0.06542299777141188,
+    "NDCG@10": 0.07382241421701587
+  },
+  "n_records": 94762,
+  "rank_note": "NDCG@10/HR@10 exact for top-10 under upstream top-2500 retrieval; MRR uses upstream rank=2501 miss proxy.",
+  "schema_version": 1,
+  "seed": 42,
+  "source": {
+    "checkpoint": {
+      "exists": true,
+      "mtime_ns": 1780950483144688767,
+      "path": "/home/ray/.bestrec_hstu_blair/HSTU-BLaIR/ckpts/amzn23_game-l50/HSTU-b4-h4-dqk16-dv16-lsilud0.5-ad0.0_blair_DotProduct_local_text-l2-eps1e-06_ssl-t0.05-n512-b128-lr0.001-wu0-wd0-2026-06-09-fe5_ep100",
+      "sha256": "815e7712b6775dce5c79117c76f0a2936a2aef2a4125ed13869707ff0d1a9f7c",
+      "size_bytes": 100040877
+    },
+    "cwd": "/home/ray/.bestrec_hstu_blair/HSTU-BLaIR",
+    "gin_config": {
+      "exists": true,
+      "mtime_ns": 1780926399575681039,
+      "path": "configs/amzn23_game/hstu-sampled-softmax-n512-blair.gin",
+      "sha256": "96c83b8330ba13e375ee567d22a174dc75ece78a67e05123a147b540d1091857",
+      "size_bytes": 1242
+    },
+    "interaction_module_debug": "DotProduct",
+    "output_jsonl": {
+      "exists": true,
+      "mtime_ns": 1780954912551269900,
+      "path": "/mnt/c/Users/rayxc/Documents/R/_bestrec_sota_lab/runs/hstu_blair_eval_export_full_20260609_fg/warm_full_catalog_records_Video_Games_hstu_blair_sm120.jsonl",
+      "sha256": "320147e717694a4c6371f59fe7a73a0b6cabe83d81ec1abc395b24ff3ad6a8a3",
+      "size_bytes": 31132025
+    },
+    "source_commit": "40a27879ec22648657b5abc77915a7cc88c66cfd",
+    "source_status_short": ""
+  },
+  "started_at_utc": "2026-06-08T21:41:33.345556+00:00"
+}

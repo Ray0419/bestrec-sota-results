@@ -1,0 +1,96 @@
+{
+  "category": "Video_Games",
+  "config": {
+    "category": "Video_Games",
+    "epochs": 2,
+    "batch_size": 256,
+    "max_seq_len": 50,
+    "d_model": 64,
+    "n_layers": 4,
+    "n_heads": 2,
+    "dropout": 0.5,
+    "lr": 0.001,
+    "no_sbert": false,
+    "sbert_only": false,
+    "encoder_cache": null,
+    "mlp_adaptor": false,
+    "mlp_hidden": 300,
+    "mlp_dropout": 0.2,
+    "eval_every": 1,
+    "eval_subsample": 0,
+    "sampled_negs": 0,
+    "in_batch_negs": false,
+    "chunked_full_softmax": true,
+    "item_chunk": 32768,
+    "augment_factor": 1,
+    "seed": 20260608,
+    "lr_schedule": "warmup_cosine",
+    "time_bias": true,
+    "text_sim_bias": true,
+    "text_prototypes": "512",
+    "cosine_scoring": false,
+    "score_temp": 0.05,
+    "text_distill_weight": 0.0,
+    "text_init_emb": false,
+    "pos_rab": true,
+    "encoder": "hstu",
+    "proto_tau": 0.05,
+    "time_decay_kernel": false,
+    "time_decay_bases": 8,
+    "expert_heads": 0,
+    "cl_weight": 0.0,
+    "cl_mask_prob": 0.3,
+    "cl_tau": 1.0,
+    "label_smoothing": 0.2,
+    "ema_decay": 0.0,
+    "causal_filter": true,
+    "filter_kernel": 8,
+    "out": "_bestrec_run/results_SMOKE_lsfilter_VG.json"
+  },
+  "n_users": 94762,
+  "n_items": 25612,
+  "n_params": 11644735,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 9.029424178953763,
+      "epoch_time_s": 9.486973762512207,
+      "val": {
+        "NDCG@10": 0.04491872166726446,
+        "HR@10": 0.08500242713323906,
+        "MRR": 0.04084783754265821,
+        "n_eval": 94762
+      },
+      "test": {
+        "NDCG@10": 0.040927318542365386,
+        "HR@10": 0.0764230387708153,
+        "MRR": 0.03747435634637574,
+        "n_eval": 94762
+      }
+    },
+    {
+      "epoch": 2,
+      "train_loss": 8.594478075073736,
+      "epoch_time_s": 9.67053508758545,
+      "val": {
+        "NDCG@10": 0.050570857952009204,
+        "HR@10": 0.09456322154450096,
+        "MRR": 0.04554872436632376,
+        "n_eval": 94762
+      },
+      "test": {
+        "NDCG@10": 0.04559596729762508,
+        "HR@10": 0.08444313121293345,
+        "MRR": 0.04132496545989987,
+        "n_eval": 94762
+      }
+    }
+  ],
+  "best_val_NDCG10": 0.050570857952009204,
+  "best_test": {
+    "NDCG@10": 0.04559596729762508,
+    "HR@10": 0.08444313121293345,
+    "MRR": 0.04132496545989987,
+    "n_eval": 94762
+  }
+}

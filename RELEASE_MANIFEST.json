@@ -1,0 +1,2946 @@
+{
+  "release": "v0.9-audit-evidence (immutable data assets) + the current deposit tag (deposit releases supersede each other; the current tag and bundle inventory are recorded in DOI_DEPOSIT_INSTRUCTIONS.md)",
+  "date": "2026-07-31",
+  "license": {
+    "code": "MIT (this repo)",
+    "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
+  },
+  "git_commit": "65b20b5763e9a5626c77c0cbfcb0df022a06875f",
+  "splits": {
+    "Video_Games.train": {
+      "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
+      "bytes": 36876874
+    },
+    "Video_Games.valid": {
+      "sha256": "b70d195ab3b9f76082854671e0e6a94c444302db6169d4074f112695d1467711",
+      "bytes": 5590891
+    },
+    "Video_Games.test": {
+      "sha256": "5a21bbcb5106d48cca21e90bbb6c417e1b95ac406321cd300c7800759dbaa496",
+      "bytes": 5590949
+    },
+    "Musical_Instruments.train": {
+      "sha256": "1f56c4abf0515e59090d728174db6b35ffa97f06929a0f955f2be924560f9dba",
+      "bytes": 23421672
+    },
+    "Musical_Instruments.valid": {
+      "sha256": "f1240768bd813fe84620fdff9d91c1055f560f51be42cf8ae9de45d7ee8d76bc",
+      "bytes": 3389015
+    },
+    "Musical_Instruments.test": {
+      "sha256": "19f3ed965a5adafec9f55575cdbe113556ae5ee156e41591da364cfb89cda36a",
+      "bytes": 3389015
+    },
+    "Office_Products.train": {
+      "sha256": "95d3db37ab29157c4e6922270a282f72c43c3c4ccd01cd95385aa852d1469c58",
+      "bytes": 79907881
+    },
+    "Office_Products.valid": {
+      "sha256": "a0bd9331846c56e005d13911f785fcf79938284bb81d04dd72a1b9bb75ca8876",
+      "bytes": 13175332
+    },
+    "Office_Products.test": {
+      "sha256": "92a9a602dd6fa73c3271ed69d37da5c7e8c63ecb1a928ab59c5085af4188c1ed",
+      "bytes": 13175332
+    },
+    "Beauty_and_Personal_Care.train": {
+      "sha256": "29d06f3ccf6623bdb74f8a1d90b274ec83f7d31b810eef0e7bde27f15d0c10ba",
+      "bytes": 304783478
+    },
+    "Beauty_and_Personal_Care.valid": {
+      "sha256": "15411717d313ea4a02c695ba2b41fed2e2a0d41623dd41c87be9b8958343c221",
+      "bytes": 43045160
+    },
+    "Beauty_and_Personal_Care.test": {
+      "sha256": "a9a5413282acf08ce7f69011d737eb722c911f41c3853c8d78bac17cf276a5a3",
+      "bytes": 43045160
+    },
+    "Industrial_and_Scientific.train": {
+      "sha256": "66ed9f7fad153e93d0c1172b231cfb15eeffe5f475eab62063d1b5511bbd7f50",
+      "bytes": 18350102
+    },
+    "Industrial_and_Scientific.valid": {
+      "sha256": "1aafbe3e9eaf49dd0296c4eb4167c86ba3b0a71b2d5d77bb9a1670115064b914",
+      "bytes": 3008255
+    },
+    "Industrial_and_Scientific.test": {
+      "sha256": "812ca889e85e01bf26f29e9efd87e25ba221e800386a1c6a4bad6a8c08e423b9",
+      "bytes": 3008255
+    },
+    "CDs_and_Vinyl.train": {
+      "sha256": "387b041a8be1b48d6c77c216b7ebd8f550905eee32c8707212f1b9bb226042a6",
+      "bytes": 76921437
+    },
+    "CDs_and_Vinyl.valid": {
+      "sha256": "c5569b1c546dfb4220216549c9bf83bcf2be644233617edbfdf26c9f263ddb91",
+      "bytes": 7305416
+    },
+    "CDs_and_Vinyl.test": {
+      "sha256": "1cd7c08e50eb87f652c3b13091fefd802c1994f30c0755a295296ecd0ebb161c",
+      "bytes": 7306174
+    },
+    "Software.train": {
+      "sha256": "731c567c20b9cc58ee1270c3e281720f1a50b6e5d24c0494fa31861f17798246",
+      "bytes": 57075093
+    },
+    "Software.valid": {
+      "sha256": "3f42eb8e0fe8b54cc4ad854755da29f455540c4a787eaa2744f36864944733c3",
+      "bytes": 8491035
+    },
+    "Software.test": {
+      "sha256": "9e520fff20359a0fc130c8df7c4898f448aa140a90dffd82a64a60192574f863",
+      "bytes": 8491035
+    }
+  },
+  "text_caches": {
+    "sbert_titles_Beauty_and_Personal_Care.npy": {
+      "sha256": "1694fbce74c39ec9cb5e0af86c209a11bffc7a1d5f667f675f08c020088ac233",
+      "bytes": 318948992
+    },
+    "sbert_titles_Musical_Instruments.npy": {
+      "sha256": "406979249f4f89cb14d520bf9ca33994763e9caffd215280bb5f5ee7a49ed90b",
+      "bytes": 37765760
+    },
+    "sbert_titles_Office_Products.npy": {
+      "sha256": "48d2b660f7fec56d37c6d418297db6bb9a308d2f664b1ceb5a8f0bb2f5c157e4",
+      "bytes": 119118464
+    },
+    "sbert_titles_Video_Games.npy": {
+      "sha256": "00e539a4e04289ec42db9c18eacd0d817a4ba9f8a4d2a9c14cf8a4e8bc8b45fd",
+      "bytes": 39340160
+    },
+    "sbert_titles_Software.npy": {
+      "sha256": "2a1d09dea26c9c619a6d52ba2082c58ac23c03a04a7f02be30f5e9441098aa38",
+      "bytes": 27019904
+    },
+    "asin2idx_Software.json": {
+      "sha256": "62e6a129e39dcead62922e096d6a36eef2527668a7bb8791822127440d36c7ae",
+      "bytes": 358302
+    }
+  },
+  "protocol_code": {
+    "_bestrec_run/run_sasrec_sbert.py": {
+      "sha256": "f15d3912603c976f8600bf12dfc780536a0cddb1504e39409891fb072066fd56"
+    },
+    "_bestrec_run/run_sota_confirm_v2.sh": {
+      "sha256": "0c7fa2a4e58e0d442c4a6c3af510c5d62bcd5b238bfe5346ea060bc742fa1b1a"
+    },
+    "_bestrec_run/summarize_sota_confirm_v2.py": {
+      "sha256": "89bd473d6614dd2bef219695b210e77f87698e471979b5d8838e243b4587e50c"
+    },
+    "_bestrec_run/run_office_program.sh": {
+      "sha256": "ff8311df8b9d73d40080a6e3e867cf52c10f9be1a0f96a46c7c80c4e571085b5"
+    },
+    "_bestrec_run/office_prereg_tools.py": {
+      "sha256": "0eaad74a57698a878e5aaa2e7d0e314232b53759c4c449b509b34867cb9d18bc"
+    },
+    "_bestrec_run/build_hstu_tables.py": {
+      "sha256": "e2c7a9801f3ca7c81552feed4881337c77dacfb7e3d5e1b9b2aa55c6df97597c"
+    },
+    "_bestrec_run/test_hstu_parity.py": {
+      "sha256": "1656c393adaafb159fd48338b5bced547c11a1540a2d0f09ef7a800474d53bdd"
+    },
+    "_bestrec_run/preprocess_5core_standard.py": {
+      "sha256": "b6cc34785c68a025a3e0c95dbd1505de3ac72eebb5fa206f4e8cb91692f3e594"
+    },
+    "PREREG_FIR_V3.md": {
+      "sha256": "1b52176b3f2931585b770c4f2036142583d7e66b125e32482cc43ed7c0e9a074"
+    },
+    "PREREG_HYBRID_V1.md": {
+      "sha256": "fdade94547eefe9c749e3a9769a4a3ba857bb2f45c9df56cae9d1a6beea0b0fb"
+    },
+    "PREREG_COLDFUSE_V1.md": {
+      "sha256": "faaf80c8f3f003a109bb097acb9a000860f38b063f91ff0f5ce7f81411754f76"
+    },
+    "GATE5_CONFORMANCE_DECISION.md": {
+      "sha256": "faa06bde93723a240e356d89f86e4c8369bd66a4651ce84b7f6ee03ce5360e6d"
+    },
+    "_bestrec_run/fuse_ease_eval.py": {
+      "sha256": "ee9abfd66d1610cc0f6776f9bb76a76a6f3c2456864b24858e108d556101382c"
+    },
+    "_bestrec_run/ensemble_fuse_eval.py": {
+      "sha256": "e5e41c56a2cb558b34ed06d919dab49bae3fa645f1d26be720da3841587e1a53"
+    },
+    "_bestrec_run/fuse_cold_eval.py": {
+      "sha256": "32d2de709befc579cdc79c8a4918ae48fee015e7da02ff38559d0157e6fc3ad2"
+    },
+    "_bestrec_run/fuse_cold_confirm.py": {
+      "sha256": "70bf7650afe2de4c8e7731a7cced37d621cbc6b4fd533683a16282b09a4261b7"
+    },
+    "_bestrec_run/run_ea_fir_v3.py": {
+      "sha256": "dacef548efd2875c82c77306f6150c7677c98d2b59680ec2ae7e5745c2cde9e6"
+    },
+    "_bestrec_run/run_ef_hybrid_v1.py": {
+      "sha256": "558d50cd6223e03a2f25f6963927d334064752f73787dfde9eff8491a7658ccd"
+    },
+    "_bestrec_run/run_eg_coldfuse_explore.py": {
+      "sha256": "1d3cb318699a1a40809a235ea2163f47d9620ee9f99fe413996f611b0155b9cf"
+    },
+    "_bestrec_run/run_coldfuse_confirm.py": {
+      "sha256": "4ebcd3402732c94d8fd2703471e52e24a4746240b7282b92be3ccbf2b302ed79"
+    },
+    "_bestrec_run/adjudicate_fir_v3.py": {
+      "sha256": "d88cdeb1811ab5cab43896cf790a6c1d841c9e976b1e0b82bc3a3babd0218087"
+    },
+    "_bestrec_run/adjudicate_hybrid_v1.py": {
+      "sha256": "daa5b76596c7de275b857391e5049ab623c7d5528b2fd5bb718f867241a32739"
+    },
+    "_bestrec_run/adjudicate_coldfuse_v1.py": {
+      "sha256": "e4ee4aaf1749e177b446baee32ae4dea9b85f88d26ab113621adea90cf33d48b"
+    },
+    "_bestrec_run/adjudicate_coldfuse_v1_ORIGINAL_aslaunched.py": {
+      "sha256": "7931e683f53596042a726b93a587d266c65db9cc92bb4028fda32f281000f41b"
+    },
+    "PREREG_COLDFUSE_V2.md": {
+      "sha256": "45fd754f1322773ef05d57dd77558d581926087b8902040ffd06ffd9ef3225d9"
+    },
+    "PREREG_TEXTPERM_V1.md": {
+      "sha256": "5196b995592a0498a889e901ab0c41ce830d00d20898363ad502b0e25f44efcb"
+    },
+    "_bestrec_run/adjudicate_coldfuse_v2.py": {
+      "sha256": "55d32c31d37eeeee435f080606c5344827413c4cf2c7e2d946f5a98c2a6b1ea3"
+    },
+    "_bestrec_run/adjudicate_textperm_v1.py": {
+      "sha256": "a72d5438afaa01f952d231fa84d2179c2a01117e6e7bfd03bf781ae80c84c641"
+    },
+    "_bestrec_run/fuse_cold_confirm2.py": {
+      "sha256": "0be4268ddbfd037fe1aaa34681e624aada4e27b51fbc3baa49951176e4a76429"
+    },
+    "_bestrec_run/run_eg2_parallel.py": {
+      "sha256": "bb1a58343fb611fd45704200944e8f19ff0eac5288d7f8f19c8e8d064142205c"
+    },
+    "cloud/make_control_caches.py": {
+      "sha256": "1adade435efb5274ed433795e1ee3e7d7e1cf79727e6bcf256cf3a0f09c3d0f1"
+    },
+    "cloud/eval_final_model.py": {
+      "sha256": "a58a29c41af1632822fc9d1c07c851af06e7518fb5033d7e6fd0289d8550ea0f"
+    },
+    "cloud/make_shards_eb.py": {
+      "sha256": "a864732dfdb2d608a01e862028de17d1f3e1fd716d0df310a566010f163e8769"
+    },
+    "cloud/run_shard.py": {
+      "sha256": "782b6bf9bd75b72b0419430d45800aa06ca4bde93f484d485605031d3acc8665"
+    },
+    "cloud/run_all_pod.sh": {
+      "sha256": "5399241340a2c2dd51d7d8724d60f2e337d5ed0d1d90a4286de6f3f9b5aab150"
+    },
+    "cloud/bootstrap_pod.sh": {
+      "sha256": "e1dea99fa2b807581f2cff15332a8091efefedeb7935344e736b6c3ac4d77223"
+    },
+    "PREREG_FIR_BREADTH.md": {
+      "sha256": "b6590547739e32876579bfeddd6b90dc6b7ebc128b20c378660179c7d23f90b9"
+    },
+    "PREREG_OFFICE_V3.md": {
+      "sha256": "0628ac0ed070585fc6a24ba38183e111fd3ed288ad54e74d9ce8ab5afd9c99d4"
+    },
+    "PREREG_TAIL_FIR_V2.md": {
+      "sha256": "451f3669ac489fbc16a1710beec29d974bc7008c254de60f454f8fdedc2b100f"
+    },
+    "_bestrec_run/adjudicate_fir_breadth.py": {
+      "sha256": "33b5baa9395959385df4752062484a6b46c2f9aaa8417a64dc380f773e54dd5f"
+    },
+    "_bestrec_run/adjudicate_office_v3.py": {
+      "sha256": "f452855e90172cf02dfba0ceac02522674ca5d5b9acfd7f08f71251006fb22eb"
+    },
+    "_bestrec_run/adjudicate_tfv2.py": {
+      "sha256": "7bf9fb391a98da10ca895e01617dc426ddd0783da26abe9259de8cdaa6823e3c"
+    },
+    "cloud/README.md": {
+      "sha256": "dd4491b40e1f4d7685be9c788dbca3f7ac738e7ad458c3002b940f74f2320ec6"
+    },
+    "cloud/ci_seal_check.sh": {
+      "sha256": "dfa20b0ae277c2fd6510f9bbf9cf33017c1d25ae04f39e701976a02d4d8b9cc8"
+    },
+    "cloud/hooks/pre-commit": {
+      "sha256": "be558e298d1b2fe2d9eaa28f266545d8ef468fe1d68a8a965d5dda2599bfd95c"
+    },
+    "cloud/hooks/pre-push": {
+      "sha256": "df539194e40bb7bb337bb44ff39b9f919f52a61de0a719b6b5c8829d674d0daf"
+    },
+    "cloud/hooks/seal_forensic_allowlist.txt": {
+      "sha256": "0dcaf8765c3c05ecd6b99a35242427ce96470fb6ff1dbbce6b3d8bda1eb31631"
+    },
+    "cloud/hooks/seal_patterns.sh": {
+      "sha256": "c8ae87b85f43ddfbd79b0d5825f009f0ae8d7bde14e0c3bc9065e7ef19f37f44"
+    },
+    "cloud/install_seal_hooks.sh": {
+      "sha256": "52f43bddadc4335c1f6bfe8a8e454d9041bd05a9b9b1ea40f6b389679a9e78a9"
+    },
+    "cloud/shards/eb_shard0.json": {
+      "sha256": "cc41e1cda315b1a29e69e011c59649260815871f924511cd2c066256510fb378"
+    },
+    "cloud/shards/eb_shard1.json": {
+      "sha256": "6725574f56b5db108ddbf4f39a18cd3df8e511cd808d246f1aec5477f8db1870"
+    },
+    "cloud/shards/eb_shard2.json": {
+      "sha256": "4863ccdad6cd9c98be19ed1551aae16b917465575063fea2aee462eb9ec94ed7"
+    },
+    "cloud/shards/eb_shard3.json": {
+      "sha256": "859bfc2454521df7f622a3c5c784c7a9ba882bf915c526453f9eb120cfe9a177"
+    },
+    "cloud/shards/eb_shard4.json": {
+      "sha256": "fb5dd573fde01ca6e4ddd40cfc5881b6b3b8ce272ea0e7bda4e615b1e85955c0"
+    },
+    "cloud/shards/eb_shard5.json": {
+      "sha256": "0a0ef2fd4b8dad97ca8cda9fd5ac0ed24ec54cac42692632810eca5920dad98f"
+    },
+    "cloud/shards/eb_shard6.json": {
+      "sha256": "5757561c06d7e4ccdf96172f183c9ad834a6a644ca32a84052a4b4da536a58b9"
+    },
+    "cloud/shards/eb_shard7.json": {
+      "sha256": "a04c6813837e47203b453ce00be634c753eb9448d43770dd4ea3926e1d090d18"
+    },
+    "E-G3_DESIGN.md": {
+      "sha256": "8f9fb5a028fd745a40c69bbdeda8b091c470be9af03ca7c3516094403cee1718"
+    },
+    ".github/workflows/seal.yml": {
+      "sha256": "97fb8608bebb8a6fe0b987aa4b2907e90c73db036c98716b2c9c5a2091ee62ee"
+    },
+    "PREREG_EE.md": {
+      "sha256": "713816adedd18e6d6d98460bd6de82f3570bb643b2d0b31e22cf8198d145ac50"
+    },
+    "_bestrec_run/adjudicate_ee.py": {
+      "sha256": "a61c5e7571bd2d567692bafb7e6f4c2966af0e34aad9d8bace6f41caecc7a611"
+    },
+    "_bestrec_run/run_ee.py": {
+      "sha256": "10c40c512a07c202d008d55a10c99c41fd3691d94cf484675dbaaeb52a6c5c59"
+    },
+    "PREREG_EE_V2.md": {
+      "sha256": "77e4187c671486de74fe7fe99f6ddcd9e6fa988a8cd89583c560814c4325dd28"
+    },
+    "_bestrec_run/adjudicate_ee_v2.py": {
+      "sha256": "568bc4c75fbe35ae22ff18c4a15c3892ea8531e50f12d4379431dd04c08bab5e"
+    },
+    "PREREG_FIR_CANONICAL_BREADTH.md": {
+      "sha256": "422e78708d00ad518252a5a6c8fbe96dd04e258367c060d9cc7efbd786bc42d1"
+    },
+    "_bestrec_run/adjudicate_fir_canonical_breadth.py": {
+      "sha256": "5d3370e83677662df8f420e739fe5e9150aaeaf066ae8891f50e2c04531af212"
+    },
+    "PREREG_FIR_CONTROLS.md": {
+      "sha256": "31bf02d67cab67393bc5e25633a07b3b202a0e20033758654f2f41d55e70d921"
+    },
+    "_bestrec_run/adjudicate_fir_controls.py": {
+      "sha256": "2a3aa3fd7d41edefe6d1587cee9a581d742166f54e2a006c7bde053e3170ac78"
+    },
+    "PREREG_FIR_CANONICAL_BREADTH_ERRATA.md": {
+      "sha256": "8704c23940e3f8b12526cd89d13e2c343a91f13e1af14bddc26aeab10a185df1"
+    },
+    "PREREG_FIR_CONTROLS_ERRATA.md": {
+      "sha256": "29ef287c561d63d1c0642e4708b7926f03e87362a92873331c49af2505347bb2"
+    },
+    "_bestrec_run/run_fir_controls.py": {
+      "sha256": "29712af908d905195ea35b30b8bc5b05405a1eb155c7c7594b89e97965b4888e"
+    },
+    "_bestrec_run/eval_fir_controls.py": {
+      "sha256": "36598d47764ce14c79845079f3d7f5af618937460fb001a673ef4136b65d9d02"
+    },
+    "PREREG_FIR_POINTWISE_V1.md": {
+      "sha256": "e109ae98a825e7fb48cb2ca988c17d3a882c5e5af6fe9de1930e82e16223cfdf"
+    },
+    "_bestrec_run/run_sasrec_sbert_firctrl_frozen.py": {
+      "sha256": "5620d4e2c2a38bd5a4db7f1b8f01bbbf9ccf9071d19dced7f4be94444261d854"
+    },
+    "_bestrec_run/run_sasrec_sbert_pointwise_v1_frozen.py": {
+      "sha256": "46dbbc2f2a3c86a8410e549f92d70228edc24d0b05d66da0fa081298e2a73ac8"
+    },
+    "_bestrec_run/test_fir_pointwise_v1.py": {
+      "sha256": "6b4ae09d0e007158f2bb201758625ec2c3c14fcabc22c450a686226214aed30c"
+    },
+    "_bestrec_run/run_fir_pointwise_v1.py": {
+      "sha256": "a9a79eab4c79dddb991e549382a69c8fa0e40a330ef79f57d62eab1a3f7e103d"
+    },
+    "_bestrec_run/eval_fir_pointwise_v1.py": {
+      "sha256": "0dfd22c49d2454d64960777286c29fb0dfe425e4afa0d8ded767542bd517c2c8"
+    },
+    "_bestrec_run/adjudicate_fir_pointwise_v1.py": {
+      "sha256": "1af6c9bc25e87cd24916acac7e5b21244352d44df10981e3246b8690658daedc"
+    },
+    "PREREG_FIR_PROSPECTIVE_DM_V1_SELECTION.md": {
+      "sha256": "ed4e9a1f9616bd67b3738e7570e7a242609bc713b43c7ed4455702881e96257a"
+    },
+    "_bestrec_run/acquire_digital_music_prospective.py": {
+      "sha256": "eec025d63170e6fb2249649be5b1bf690d08951afe7e747da144578a5fda4941"
+    },
+    "_bestrec_run/verify_digital_music_feasibility.py": {
+      "sha256": "a1964d2d418f363cc1f4421d7d54bb8f732685c126c5f660e1256b3e3bb48cfd"
+    },
+    "PREREG_FIR_PROSPECTIVE_SW_V2_PREPARATION.md": {
+      "sha256": "2bfdbc30f758e116229c7c863f3e37db82ac4b10325de2bdaa45466cf8d8c8a6"
+    },
+    "_bestrec_run/acquire_software_prospective.py": {
+      "sha256": "c57d59e1da2e31f3423517b2a59f96d2d05d3c2ac7da14b471db39d4cc310685"
+    },
+    "_bestrec_run/prepare_software_official_5core.py": {
+      "sha256": "d9155364d4fe90b6bdb0f2a2183ffa44737cedd1a8d0c2a614281c0dab9fa5af"
+    },
+    "_bestrec_run/verify_software_feasibility.py": {
+      "sha256": "45c9b72fddc6dd9fe97e73d6ea74c4bea2910c86ec6794946d86e923f78c0670"
+    },
+    "_bestrec_run/encode_software_titles_frozen.py": {
+      "sha256": "9b2f4444d5160361c4745796b45f8c35cf0da111c3fb041451d10d5c7c6723ca"
+    },
+    "PREREG_FIR_PROSPECTIVE_SW_V2.md": {
+      "sha256": "d36193259f2fa90921d9feb8448883294b849424f16f8722b66cf35b9af1c55f"
+    },
+    "_bestrec_run/adjudicate_fir_prospective_sw_v2.py": {
+      "sha256": "3fcbaf67fc2481f4ef2cda5fe68a829efbd0dffdf13ff3259be45644021a893d"
+    },
+    "_bestrec_run/run_sasrec_sbert_software_v2_frozen.py": {
+      "sha256": "296f80e63af04364c3346e0422ef562ced7310117d078ba8b74ebfddbcbab050"
+    },
+    "_bestrec_run/run_fir_prospective_sw_v2.py": {
+      "sha256": "32cf612f7cde60124b0178122ec2468aef7add9766501ac58fbd1154ee20e859"
+    },
+    "_bestrec_run/eval_fir_prospective_sw_v2.py": {
+      "sha256": "c159fd76902c944a38b2d1a1fa6afaa8948a89e1f28388ad68be3980a4119e25"
+    },
+    "FIR_PROSPECTIVE_SW_V2_INTEGRITY.md": {
+      "sha256": "2306db13ac6b41db1dc7526c7e97631381b2886d877f210e240359b0eb2dff41"
+    },
+    "PREREG_FIR_PROSPECTIVE_SW_V3.md": {
+      "sha256": "1c0b238b020dbc503d4448ebf127b035dcd059e4eb17fb9f6b9ceb07054d89af"
+    },
+    "_bestrec_run/fir_prospective_sw_v3_common.py": {
+      "sha256": "1650c40c2871cfe2d3058777cf01243f564857be2f8205d89774c530a8fda9d8"
+    },
+    "_bestrec_run/fir_prospective_sw_v3_environment.json": {
+      "sha256": "bb44221dc43fadb8d8d53475171920c1a685edca684bfe5c8ff8bda383e1b550"
+    },
+    "_bestrec_run/run_sasrec_sbert_software_v3_frozen.py": {
+      "sha256": "6f86818274d0448c7be3643642c75a22a9bb08ef41330f8a9a57ecb62a88fa49"
+    },
+    "_bestrec_run/run_fir_prospective_sw_v3.py": {
+      "sha256": "a0a93bf5edd761566e645412435c8c54c163f38f03219c154fb45a8dd078c5a9"
+    },
+    "_bestrec_run/eval_fir_prospective_sw_v3.py": {
+      "sha256": "c84df5188d1cff7e19335e33c4941fda1f0a0a7fcf6b770cbaf1b2fb7aedce42"
+    },
+    "_bestrec_run/adjudicate_fir_prospective_sw_v3.py": {
+      "sha256": "71d8b9bc47662d2de91142d718634c38f73dbc27584e4c856061896800853d70"
+    },
+    "FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md": {
+      "sha256": "0af3e60c3ea38ebeb3d432230c6abcb440474750fd3610efd7dda34c2d7af0aa"
+    },
+    "PREREG_FIR_EFFICIENCY_ML1M_V1.md": {
+      "sha256": "866f682019a9936ca16ff53a3bbb16465f639aad54c112b6d23d679e48e6021c"
+    },
+    "_bestrec_run/adjudicate_fir_efficiency_ml1m_v1.py": {
+      "sha256": "51316ee3838473efd6e7be28a51a4a160e515d910b85a5af193590ae08e53a40"
+    },
+    "_bestrec_run/acquire_movielens_fir_efficiency_v1.py": {
+      "sha256": "c76d33616e93a46ea937f84762fa3293892ea698ab5be249fc1361ab31e6a47c"
+    },
+    "_bestrec_run/run_sasrec_sbert_efficiency_ml1m_v1_frozen.py": {
+      "sha256": "f15d3912603c976f8600bf12dfc780536a0cddb1504e39409891fb072066fd56"
+    },
+    "_bestrec_run/test_fir_efficiency_v1.py": {
+      "sha256": "106dfc040933d1756c8696c3e6c8a3bb3993de7056ddf5e035316880f76ade59"
+    },
+    "_bestrec_run/test_fir_efficiency_sequestration_v1.py": {
+      "sha256": "ceb730569d749f627f461f98a731b84653a9cea731acfcbcd5cc1a43e924c47c"
+    },
+    "_bestrec_run/run_fir_efficiency_ml1m_v1.py": {
+      "sha256": "205ca48bc567f72acb3efb816d1c8deddf58d56127324da2958dfaad31713c39"
+    },
+    "_bestrec_run/eval_fir_efficiency_ml1m_v1.py": {
+      "sha256": "fb431bf40e714c668a106276142858dfd5939e89a54b1dacee75c9f0e75ecffd"
+    },
+    "_bestrec_run/fir_efficiency_ml1m_v1_adjudication.json": {
+      "sha256": "a0b3a58d60f58bc5ada065af4d14d3025163a2c638a152893ee16156300645a8"
+    },
+    "PREREG_WEAREC_BASELINE_V1.md": {
+      "sha256": "bb46c1b1d8eb06b264aacd7ed7d14dcc7ec491ddcbba539388a27205bbe9e59e"
+    },
+    "_bestrec_run/acquire_wearec_baseline_v1.py": {
+      "sha256": "224218392b77680c36a4a7ceff97b0b483c6fbe44e7da4e62f97ea8ad9891a64"
+    },
+    "_bestrec_run/prepare_wearec_baseline_v1.py": {
+      "sha256": "ec6eb117ace9524dc74f990be95d3b9dbe01186afd52c20aabb153deb89122a5"
+    },
+    "_bestrec_run/wearec_baseline_v1_common.py": {
+      "sha256": "d25500ac982f4d93566c27641b24f741939a4ee82cf43deb7cba70bee0d3b4c4"
+    },
+    "_bestrec_run/test_wearec_baseline_v1.py": {
+      "sha256": "b587de2614a7207a2294913ed92fc4035b2d79618f8b003b15a08424da38a002"
+    },
+    "_bestrec_run/run_wearec_baseline_v1.py": {
+      "sha256": "c25784106dd5ef3bd270ac2db3cfc7d900e119745cf5d132d6a117aa45262c67"
+    },
+    "_bestrec_run/eval_wearec_baseline_v1.py": {
+      "sha256": "973bfc8c87084bdcb7ce0d0b50bf61472faa4c8ac2703085c2663bb7e5c94938"
+    },
+    "_bestrec_run/run_wearec_campaign_v1.py": {
+      "sha256": "357ecae781a6aa6af35dd075434525ca2792faee3b5db898c94d5f429fa57457"
+    },
+    "_bestrec_run/adjudicate_wearec_baseline_v1.py": {
+      "sha256": "9a8353829ace7d3163107464fac74c9a53c80d11a0c84d78418ee36895ecca72"
+    },
+    "_bestrec_run/wearec_baseline_v1_catalog_manifest.json": {
+      "sha256": "d71bd08134658fa5e5bde93f9ec91585ab825baabaaf525d4d511e9c6ece7203"
+    },
+    "_bestrec_run/wearec_baseline_v1_selection.json": {
+      "sha256": "8ebec814f6ecdd546fcbbd0272a00570e934b35b36556e1548eafc292f51872b"
+    },
+    "_bestrec_run/wearec_baseline_v1_adjudication.json": {
+      "sha256": "3dab5a28b39323bbace9acf2833cc7925bab902668f8f20c649441149048e6fb"
+    },
+    "PREREG_EE_V3.md": {
+      "sha256": "0fcdc53d72611e4ac87b5dc5d5c859dd8b23605cca8aa5d55db4e87c249e1dc6"
+    },
+    "_bestrec_run/prepare_ee_v3.py": {
+      "sha256": "72c0ba6c5cea49371352b7cf231e74b219d96a2ed381c67653ea6e3cfd1fccc2"
+    },
+    "_bestrec_run/ee_v3_input_manifest.json": {
+      "sha256": "3d06e4b2f1677e5576c7ab09f4a9a23387fb8b53f19b8f86c30d5701122900e0"
+    },
+    "_bestrec_run/ee_v3_common.py": {
+      "sha256": "97886b54c09e13bec4d2e52ec03d4746e21d4161ef3bf603a8131865626e64b2"
+    },
+    "_bestrec_run/test_ee_v3.py": {
+      "sha256": "c3584984b43b1a46f0111d4ae321064f0d9a704f8102c75ec66a35aa333ea770"
+    },
+    "_bestrec_run/run_ee_v3.py": {
+      "sha256": "7d615a05bb8863506b8b484e4107f4189e603137e06dce324c087358b26fee34"
+    },
+    "_bestrec_run/eval_ee_v3.py": {
+      "sha256": "604f16247a50fa7a6053f936597d38e97b922dbedf5951998d4dbbdac333ecfc"
+    },
+    "_bestrec_run/run_ee_v3_campaign.py": {
+      "sha256": "b7e8f79b5896a34202ddc7e93cc5a0b88972b278a742eae8690efea70e18bd1a"
+    },
+    "_bestrec_run/adjudicate_ee_v3.py": {
+      "sha256": "d69695920fc8df242602bdea6c43acf6a2f35324400302083b4964bb24f0eef2"
+    },
+    "PREREG_EE_V4.md": {
+      "sha256": "ad7d9f0fdabb5d23fd0896496e0f9049ad18e99dc11e5a1f87686bcc47290b58"
+    },
+    "_bestrec_run/adjudicate_ee_v4.py": {
+      "sha256": "3ed0a22bf4659d88d5e8108b58c864d6bee16e65df2ebdf388a6abb000aea554"
+    },
+    "_bestrec_run/run_ee_v4.py": {
+      "sha256": "d4aa016c554c362c681673cb1b46ad9abd00dac829e29f26d4e4341e7633a08f"
+    },
+    "_bestrec_run/run_ee_v4_campaign.py": {
+      "sha256": "fd9ef51ee896b1fd06fbd3e5dcde872cea15e321ce39d691e1c9cc9a4d460e1c"
+    },
+    "_bestrec_run/ee_v4_common.py": {
+      "sha256": "b0f8c70353d778a723a99a9f21aaa2655e30315cdfc60b4792a2590c08247e04"
+    },
+    "_bestrec_run/test_ee_v4.py": {
+      "sha256": "5dc5c714afc90598493f5f9e57fcc7d39a31a98d3ea370b633113b665b750957"
+    },
+    "_bestrec_run/eval_ee_v4.py": {
+      "sha256": "850a5b0e355c6cced941207ca5959cb244a3cf381e957d20c2d0a89fbeaa807d"
+    },
+    "PREREG_FIR_TEMPORAL_ISOLATION_V1_DRAFT.md": {
+      "sha256": "a3efb6b83ffaf60d8d99bf8cb15a97ec9f824d3b20b2814bfb23bde05708fa9c"
+    },
+    "PREREG_TIER_A_TUNING_MATRIX_V1_DRAFT.md": {
+      "sha256": "7bea04897edff4aaadd5a7eeb7fce44234a87a0fc1fff247874c6b13a128a49c"
+    }
+  },
+  "result_families": {
+    "MI_gate_EXEC2": {
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260618.json": "87aa5b6ba21dd9a77ff5c5617540cdc387f55a2fe05fdbda8ca5be74a44ab705",
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260619.json": "003983b5d9f43d796556cdf63e5b72db3343e03956f0b29fe097953fd2c361ed",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260618.json": "8b6de9a5c41602bc2e4db0570d0ba35c6ddbf5435dc2a537ddae9836bf930320",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260619.json": "5bba7cd01dbd009d5a1cb7c5c24efe5ac63ec3eeb93b50b04d9be93bdb8a3063"
+    },
+    "MI_gate_EXEC2_rest": {
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260620.EXEC1.json": "2046b27c04ae11376b2305ff2c129262062ce0c50b3228cf5908e51a8169ce5a",
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260620.json": "e8831fa3e3c5e7c3662ff31deb1f0d099f00d87479b36cd17943b31861fec166",
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260621.EXEC1.json": "e9f6079f9dda93262ab50fd287418304397a4762224fe79207e0f5c87ad1cc33",
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260621.json": "fbf1b11d6523fc69943b9118539f4d9da46b7cf91a607bd5b42e38f8729f3dd4",
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260622.EXEC1.json": "7105ee74b99a33f664e1c8476499368841f603ab5a26393a04f3cee17d8bc65d",
+      "_bestrec_run/results_SOTACONF_V2_k16_MI_seed20260622.json": "bf979a77fc6fa32ea4fd2d0874f3a945d52b3e812b2dc3fef2d1eab8becf2050",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260620.EXEC1.json": "c9bba66710a9ea1b0d24e9b2bc8e3a04ce76e2bc28a01af2c4e3627a5d359e8c",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260620.json": "cac772d48ec0517ccb67ed26653fce19a0e12cb0661da098717396815634c6b2",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260621.EXEC1.json": "ac7de6f5fab50e965a3435a93547191dce4938f3531e573fe8e2427c47f9f696",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260621.json": "032ba290a54116b68b543790a1281e8ab49d2b0eca450f627cc23aad374d997d",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260622.EXEC1.json": "3fbf2f21ab7df7130aef6e4b3fc1941e6d7c4c6f826327d107af38089e9a0b2e",
+      "_bestrec_run/results_SOTACONF_V2_k8_MI_seed20260622.json": "f8031a196abf743b5a7833362102737ca7434883fedb21c670557d00216ce77d"
+    },
+    "MI_rebuild": {
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k16_MI_seed20260618.json": "7999466623b797d1121f0f366fd1d957da888e82c25533f7acc22d1f8735de48",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k16_MI_seed20260619.json": "c61d98180f603534379779c215027ae1685bdc42f6f3ac6438f37122ab6b45a6",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k16_MI_seed20260620.json": "4c4893f257c6fa15183dcbf676d6c3ee7bef1761fc0cf9509949f533ae34c1b1",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k16_MI_seed20260621.json": "d7d852fb5eeb478326be682a7b0c741fb6f5dc68cc1127cd443de97f1b5be90f",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k16_MI_seed20260622.json": "1eaf9f21980e1e141104e3b8a6758655fd7f36ab570da92837a72ec2e6793742",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k8_MI_seed20260618.json": "bc13ee7d81432cee97f142d4aa8bd518d9975562510df9e482b4c5bfb162f77f",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k8_MI_seed20260619.json": "22be139ce926b0a2ef3c85dd2f036e7e5fa1fc205fcfd9e9dec00b0deb852ee5",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k8_MI_seed20260620.json": "2dc8b9ec38aa443708d508fef1b0244058896f546b4755e0063c49a00c2ace6c",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k8_MI_seed20260621.json": "67973cd6dc99bdc2e824f8d062aec29c4d1593d1f3dfca481a3188524745d678",
+      "_bestrec_run/rebuild_v2/results_SOTACONF_V2_k8_MI_seed20260622.json": "a89ead29ef1d2a7bc5820829e05e8401e18ed14c3a20262104af65a15042dc94"
+    },
+    "OFFICE_gate": {
+      "_bestrec_run/results_OFFICE_k16_seed20260623.json": "8089354b2aa557e35e301c2b096b7014674a43028b839ae9377ba425ee1fe651",
+      "_bestrec_run/results_OFFICE_k16_seed20260624.json": "d6cc059aea712c5a70632a32ebc408485cef661ed81b9d156253c1157a14eba3",
+      "_bestrec_run/results_OFFICE_k16_seed20260625.json": "f3c82c7743aa89e898741c661af9e9a2983bb1591bcb3930d82cca1517b61681",
+      "_bestrec_run/results_OFFICE_k16_seed20260626.json": "beec1b599d276c3e1fd4ebb0e39c5052b039ac515e319229e26fd1e87a0d9cba",
+      "_bestrec_run/results_OFFICE_k16_seed20260627.json": "aaf86369f7a103220c6c4c4c1f1379d2b5c4853b9451a0d365432dbae0fb7f53",
+      "_bestrec_run/results_OFFICE_k8_seed20260623.json": "eb936ae34613c8b51cba9873a4528fa867555da81cb7e6d2d9101a94c44c27a6",
+      "_bestrec_run/results_OFFICE_k8_seed20260624.json": "c50868a186504586e934525e247470713c8c9db0128d06ad1aaf3ead651d6b44",
+      "_bestrec_run/results_OFFICE_k8_seed20260625.json": "365129ea44ca0e4ba28482f18d37041b8c1802178330b4dddfca36580c1bf055",
+      "_bestrec_run/results_OFFICE_k8_seed20260626.json": "853730711690cb94dc1c5a8b6c8e6a81d0ed1b5beb7fa6dae308bc0c3694bd34",
+      "_bestrec_run/results_OFFICE_k8_seed20260627.json": "0ca82e5533e9ba7081b4a76cc37faa475ca48c69b99b789af931070ad5825c04"
+    },
+    "OFFICE_idonly_floor": {
+      "_bestrec_run/results_OFFICE_idonly_seed20260623.json": "05466d5422a8a0d848cf1862375c32cf1a4293e4c0b004e87b3ed9b0fd11b4e6",
+      "_bestrec_run/results_OFFICE_idonly_seed20260624.json": "c2fae4e1e3470642046d0d896ec50d2db5af6ba60aeae58484b51739b4434b59",
+      "_bestrec_run/results_OFFICE_idonly_seed20260625.json": "7ee0fc807a33ce3839433be160d94e388c88f378e643ad6616567d21f2408441",
+      "_bestrec_run/results_OFFICE_idonly_seed20260626.json": "92400e42338fc17d4bc8f2c7b33b2b291aa9e8fd27b3abb1d2acc9fd2371736d",
+      "_bestrec_run/results_OFFICE_idonly_seed20260627.json": "149ddaddd5b60f1f163f33be2e3ae13272469409e3b9dc7aaaf2ad941311af7b"
+    },
+    "FIR_ablations": {
+      "_bestrec_run/results_FIRABL_fixedavg_MI_seed20260608.json": "4e3dfaa2774df9f8ddc14ca1d562c2fe52e0ca520c593ca3440d5179b200d9a2",
+      "_bestrec_run/results_FIRABL_fixedavg_MI_seed20260609.json": "b2bceb1521347e5c62f8d36e252743aa3c601876a5e8cda2f758e6e83c0295ae",
+      "_bestrec_run/results_FIRABL_fixedavg_MI_seed20260610.json": "cfb0a2e571712aff30b7d5b6554556e40c37661113922b6c7b3f427f9bb5951d",
+      "_bestrec_run/results_FIRABL_fixedavg_MI_seed20260611.json": "490aaf3a36a45d06f06557e339d7fa4e2a9fb7901ffb09a8269afb5ef6294e10",
+      "_bestrec_run/results_FIRABL_fixedavg_MI_seed20260612.json": "734727462b2113c1036115d9ab12b3018180de8512b76a7d222d34d255590127",
+      "_bestrec_run/results_FIRABL_nogate_MI_seed20260608.json": "8846a38f5b9f51b691921260aab9779b36b854a754c5c6938b73202f1c6817ac",
+      "_bestrec_run/results_FIRABL_nogate_MI_seed20260609.json": "04602a62d145caf2cfa6d0a298b0a8a5cd62f19dff96c40a7bfc6fc18ff6552b",
+      "_bestrec_run/results_FIRABL_nogate_MI_seed20260610.json": "9cfc56a02bbdece33bdc4ce6ed3fe03eeae50dcb06e1c6c19a7bfa2ecd5203c2",
+      "_bestrec_run/results_FIRABL_nogate_MI_seed20260611.json": "90d7e23bd45a1f36535ca6b2fb95b764f84918c3f8d1e20fdb60f1a4f8308390",
+      "_bestrec_run/results_FIRABL_nogate_MI_seed20260612.json": "cb71c74ce56a1927c4bf060fa3dac9d32cae7e898590c11ee774b82a5ebb8d67"
+    },
+    "OFFICEV3_gate": {
+      "_bestrec_run/results_OFFICEV3_k16_seed20260728.json": "1ebc1a05c0e07a4d2f3428e2d09db1f7067b5cdd94e67e69f1021e30adaad29a",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260728.json.treestate.txt": "67a9c6fb52489c8214c8786e7f9a655f193828abcb827cb20b77f964224bcbf8",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260729.json": "45f1b00d3b2797acfd897af75b79254aa10bfa0cb1a760ee19b36fbf17069f36",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260729.json.treestate.txt": "412c3fc6141dc95548324e9d53656aa5f9a52cc6fa0e895ff37099ecb620774c",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260730.json": "3c2aacfa7faf0526bae239f83d19d5e9cd5dba08726838bfcf6761544dc32602",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260730.json.treestate.txt": "a1ae2bbac5f6d4f314ba0a8c474bdb85a8acf792f0fed1c23faf1f352a0e8057",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260731.json": "2233b6f716e58a3d1831c9932fdffeca678d92c9aec486cee24384537cd3fbf0",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260731.json.treestate.txt": "6c8f565eeccb58bdc83599c3e8fe64794519bfde9357c086dfb24b20ad227332",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260732.json": "d86db85510db2776f244ae627d5a73df948f0a204b53388bd36b9521f384e2f8",
+      "_bestrec_run/results_OFFICEV3_k16_seed20260732.json.treestate.txt": "af9aa688d73922479fc244932b6137d45043d9a6ed4823672b9a243ef5557407",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260728.json": "b64df9dc3061b401a493f96d9d88ffa8eb1dde28318906e8389e9943d5c4af85",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260728.json.treestate.txt": "74cf84fae2595108c60baa2dc9a214b9e7b1c873c4861a410c49065a1aa32460",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260729.json": "b11990ccf40f4e5db713219507d8b47a0593426ae1299517d2cf992248da8d12",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260729.json.treestate.txt": "36dd870b002fac8963d89097dfe4951bb0b5d4e199afa179d7999e3060414b15",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260730.json": "7a615a7b6176270ca0c8bbbe3d222a08757927012fb3ec48e3c76c613dd4f6e5",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260730.json.treestate.txt": "de207a91049f69a44ce73d4a2e72bc28a7c78b067c983b8dfadf20f6e117eef9",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260731.json": "ddf32b792bfbc1d44d22ffbe40b88655de5c421e38b810316b1f22584f059c9c",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260731.json.treestate.txt": "6c3a82abea9afa3ae8c56229863c332be0673fb090dc4a02bca60673c472cd14",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260732.json": "d6014ec2b948bd92d9020a9ea48d4a1c566707d1c7b17b6fc0bd3de916cfa658",
+      "_bestrec_run/results_OFFICEV3_k8_seed20260732.json.treestate.txt": "a15e84cd47072d3261db3bee60ea7d00b881cca74a9495c6413fefbb98dc98ea"
+    },
+    "FIR_breadth": {
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260713.json": "530e0fa46a1d1a4a7f908df92f20b1717752a44d5259213030d3abb6622f532f",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260714.json": "9c229dd316ffedf6c562a68780f4abcf7c636732c2427055da7eacff9de20c3d",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260715.json": "7ecf9709b0b66053219983e833b7cdd47594e5e0560de6f62c71f2223063483a",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260716.json": "b71ac6992497762ef3f75df47a6c22886b289685396e41150cd5a7d975ed2eec",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_filter_seed20260717.json": "30305404d7a1ab958613321d90d08ffb49acd3f87c8a06e9e8c6928f70637faa",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260713.json": "081b69cbc1f8ee24a20fbeb481f6a3783b61445de7f8a6a725e2e8f90d29f91e",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260714.json": "8dd9e331351ba5d902c727651daae73cfcb7ff09fe0edfbd3d64d21397cba3b1",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260715.json": "66a7361ff762c9f8e7514aaaba8bda8d4a4c189bd9cccc4f27f09a2303295a4b",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260716.json": "9b0d93ca4fd80939e0f1ba27ef58aee41badde4dbf8a5ef331fd66357a00f12f",
+      "_bestrec_run/results_FIRB_Industrial_and_Scientific_nofilter_seed20260717.json": "3ede06794f9fd5c82cac116f7d28cb2c87fa2c9b6abaf2c49e914fafbfe91441",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260713.json": "4e48c1b64a22b99256a9dec4f324a4bad6fef4cfaa89c8aaff4cb49553381c03",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260714.json": "8609c14765d267e5d75a3d9cc2ef1c4944e9fd0a355859d8075c514553a7204f",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260715.json": "20ff931d41595157eaf4fb4e4fb42869cb1aab14f35bbe5f3975a13abff7dd4a",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260716.json": "fdf4504fe1b6478003f49b616d3d3ad4fb98f9a18c7e232d022ae127d3637a72",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_filter_seed20260717.json": "9ad6ece462dd283ab4b7e3dd9f019029618acbd6a3fc8318efdd59814e6598c2",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260713.json": "911c4abfaa69db9ff2a3d508b047c272578992fa0579f04f9bf82dae56078afe",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260714.json": "0e978e21b1565cd8e5094a8d9944ec6a6979ddcb3b2f50e26fa078be7a35bacf",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260715.json": "aa88cb35225434df03c879bae2fcf5dc11b53b340e788de1d5f50f054a4a3b20",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260716.json": "4b84e283973a061a074c5fab79e1ddbdd6288ac3917cb4eea78d1d60bcc6a188",
+      "_bestrec_run/results_FIRB_CDs_and_Vinyl_nofilter_seed20260717.json": "931b1ef04c192e35cd743f3139daff1c90c57b11b0f8912e75339384d1626f69"
+    },
+    "FIR_V3_matched_arm": {
+      "results_MI_FIRV3_a0ident_seed20260713.json": "4949c020cefd82c2f55b715dfbd3a3486f5c746fcd0433ead4bb72b6fee13b7c",
+      "results_MI_FIRV3_a0ident_seed20260714.json": "5ac6aff28e774460eb0c5c9d9379644b6bbf61fcb2024ff70bd3b5435106a1dc",
+      "results_MI_FIRV3_a0ident_seed20260715.json": "3282958188bb5812fbded4db89da7a4a73acdcbfeb1d4cb7af2807ea7826fd6d",
+      "results_MI_FIRV3_a0ident_seed20260716.json": "7f95204dd237ff2cdcc52bfdc2105ace71d8067799768a299d51283aa4d196ee",
+      "results_MI_FIRV3_a0ident_seed20260717.json": "b8c2c47eb71b0499006a0210f1c8aeade98c4e34281fcfd6916454d44550119b",
+      "results_MI_FIRV3_a0ident_seed20260718.json": "6284b9c130803eb90921c39ea75d2a8868a9454806890a6f2a4571cbddbeb8e1",
+      "results_MI_FIRV3_a0ident_seed20260719.json": "433b9b7ac589624254b5c53abe5dda34dcdc4578ea45c528f164ce3a98b15a4d",
+      "results_MI_FIRV3_a0ident_seed20260720.json": "6ba31166d346eaae5d7329212f1611c42e9364f6ee18bb0a56e06dceb0586ed5",
+      "results_MI_FIRV3_a1learned_seed20260713.json": "1ea8d62837d0debd086208f98c69d8789b1abda6aba67917d3bf21ae04519f23",
+      "results_MI_FIRV3_a1learned_seed20260714.json": "c4ff42add55ee1c16982a81501fab5aa6c627663d497070f53e7ef61295cd6bd",
+      "results_MI_FIRV3_a1learned_seed20260715.json": "9066d530c6f607274f34e1376c75cb464d430904528ec46b9ab5fdd8922f2733",
+      "results_MI_FIRV3_a1learned_seed20260716.json": "4a23feaaacb886d7d25ffd4b9ad841568b47234c703a49d1fd8f62e48dc27bf4",
+      "results_MI_FIRV3_a1learned_seed20260717.json": "7484ad13db6b329b26b753ee863fd0b7ebb1800269804bf0e63274d669a5c94e",
+      "results_MI_FIRV3_a1learned_seed20260718.json": "49c2391c2ca17513fa2436570d7e5e396f8b98d693b4ea5911b43ce8aab32036",
+      "results_MI_FIRV3_a1learned_seed20260719.json": "3dcd0f57b6e7a1e04b24dcf39882238af8e0d262fd25bab2d159b7c48f288a0c",
+      "results_MI_FIRV3_a1learned_seed20260720.json": "8f60b5e4796b978a6982d86d810ac5788d925e3b4a99b8309eb56e34fe57fc3e",
+      "results_MI_FIRV3_a2learnedwd0_seed20260713.json": "f0d671b1668916976d03dd71d3e09f5839017be530f51270cdfa4fb1412b782a",
+      "results_MI_FIRV3_a2learnedwd0_seed20260714.json": "5400a494e980f896ace38b17c8694a22f00f83f9c756222befde392cc38b5aab",
+      "results_MI_FIRV3_a2learnedwd0_seed20260715.json": "3f5f28b0555dc217e9a2ee7d4446ad7042c19dba1089fed5fbc6870217e5c94b",
+      "results_MI_FIRV3_a2learnedwd0_seed20260716.json": "e6d82af771268df918fd4e3c96ef9709f8789d5ff03c57f3a98097d171c14c32",
+      "results_MI_FIRV3_a2learnedwd0_seed20260717.json": "d25b681099ef37f2cd6e7d8387a3ae1f64a9881a01602a2dfe4ca7ab64f46fd7",
+      "results_MI_FIRV3_a2learnedwd0_seed20260718.json": "69197f7f0acd63a5871345f4b192cadaa642e2184493ff3e08c13413467d26ea",
+      "results_MI_FIRV3_a2learnedwd0_seed20260719.json": "72b1ec69af467793a93683d4de9ce72f3014d9e70f1536404d499b64282b02e7",
+      "results_MI_FIRV3_a2learnedwd0_seed20260720.json": "ec6e31a808f3f977fef2f40c359b2b157c8c32d71c97f627f3df8ce4216cdeec",
+      "fir_v3_adjudication.json": "426c0a63e0ce19f53d98f7cb96751fcb0ffb0bf47a067db9667c3093dc6687e2"
+    },
+    "HYBRID_V1_fresh_seed": {
+      "results_IS_HYBRIDV1_base_seed20260721.fusion.json": "df909a356c089f87375bc46fa8633b9fd0bc1f3d84030ea3edb4395fa71458c1",
+      "results_IS_HYBRIDV1_base_seed20260721.json": "0185facc4962080c76269dbbf22ecc91a46d8e92c724213c8d77d42e8b512ac9",
+      "results_IS_HYBRIDV1_base_seed20260722.fusion.json": "3f556a40a67e334cb73a1e412a6ac0a3758c8baf64650ebad294a0e08fa01410",
+      "results_IS_HYBRIDV1_base_seed20260722.json": "caf6d593f78f9029dde16999ae6342aba0a5ec88ec71f32b9b40942fe1b26106",
+      "results_IS_HYBRIDV1_base_seed20260723.fusion.json": "ff48fbf258eb5a16b415bc5195ca7c20c1aa506a19859925f9f118a90b87ba13",
+      "results_IS_HYBRIDV1_base_seed20260723.json": "da3083f61c7b43bbf035f116ae9d680b16174a194c4c40a31c14724f85edae56",
+      "results_IS_HYBRIDV1_base_seed20260724.fusion.json": "5c8bb7a0a7f37ad88b111e3e80f6508f855f8bd7e9a27c0dd197e6152fb63e36",
+      "results_IS_HYBRIDV1_base_seed20260724.json": "42dd6c523d5453398790e5056ed8059025384caf41bfc52ccb889b4a023d82ab",
+      "results_IS_HYBRIDV1_base_seed20260725.fusion.json": "b3c957b79addefae0de06b9351a9859ce99b5c45b50326c07c3d13e298c62e6d",
+      "results_IS_HYBRIDV1_base_seed20260725.json": "433d8d79b8b82ddbafca6d75145dcdc01ef072f39c42afd977fafc2ab82a08b7",
+      "results_MI_HYBRIDV1_base_seed20260721.fusion.json": "a2480ab7770fff8d2116398c981628528db9011f8fe202ad311ecc714d663efd",
+      "results_MI_HYBRIDV1_base_seed20260721.json": "dcfe99cc5eb6091df61565f96cbd7a34a82d633f0e8ae4947bc3557a6d6ef14f",
+      "results_MI_HYBRIDV1_base_seed20260722.fusion.json": "6fe3fca594203c57bae1cb2432523a79befce7dda6f821b08ba1f025d083eab8",
+      "results_MI_HYBRIDV1_base_seed20260722.json": "cdf60b1a0bf212b050d95c9a3e871cf52ccc816697409e4fe892c77e6157f12b",
+      "results_MI_HYBRIDV1_base_seed20260723.fusion.json": "ed3dbf040ac8f73145344315cc7f2d870b6901bae3ac20e2848491d474a23c55",
+      "results_MI_HYBRIDV1_base_seed20260723.json": "a31eda8e67519523793b2c70977e2d7cf667ccfb588a385f0c1b83ca02d8d5d0",
+      "results_MI_HYBRIDV1_base_seed20260724.fusion.json": "5392f08cd9b3dd67b7d1e726be4cd7a817645e2c61a4f787fe12d156593dcacb",
+      "results_MI_HYBRIDV1_base_seed20260724.json": "ba59d60cbd2245642cfc11fab0b2f9736592942ce342405d8c2619f66fd8f7f0",
+      "results_MI_HYBRIDV1_base_seed20260725.fusion.json": "9dda6cb9d3ed17c2cbc299b3d86d3132100a06d43d6e47cd6a6612dc321664bd",
+      "results_MI_HYBRIDV1_base_seed20260725.json": "ef174ad6aa5fcd19bef42d293d15e3870d7a0f94808421250f74d45964340bed",
+      "results_VG_HYBRIDV1_base_seed20260721.fusion.json": "c0ec8686fcad84d0868b9be7ab74e796252d1f34015d39f79ac9747720dc1da5",
+      "results_VG_HYBRIDV1_base_seed20260721.json": "ec62fa032f457739f0ac7d332ce4b32c71362c520844f3be63c786fc8d6102ff",
+      "results_VG_HYBRIDV1_base_seed20260722.fusion.json": "2f9d3b6fe23da1e15878a699942fa0d2bbfc385610f47454a4b3f5e4d6dac6d2",
+      "results_VG_HYBRIDV1_base_seed20260722.json": "56e4649dd5e4585c85893c226c4b97f6b7d74bb0aaf65a0c784d523da1da4951",
+      "results_VG_HYBRIDV1_base_seed20260723.fusion.json": "b9a00a89b9dbd79ebe94f401bb4df41bc30a438cf54d852111a572dc47af3f52",
+      "results_VG_HYBRIDV1_base_seed20260723.json": "69953dc171c299b7f623562bef5c9fa033ed11747c89da12f6b00504e9f188bc",
+      "results_VG_HYBRIDV1_base_seed20260724.fusion.json": "55618c42ece5728e88839594b6b0cd38f03d21b7187c34ec861fdd4b447e3455",
+      "results_VG_HYBRIDV1_base_seed20260724.json": "de0ccc6f8f1ed0c440cfda34407d3749ddb124bafaa84b283a0996ac440f4f4f",
+      "results_VG_HYBRIDV1_base_seed20260725.fusion.json": "959fe6279994fef3825d5a2c39b65b29307d7e5629d5e9c141bddd85ad40bd8e",
+      "results_VG_HYBRIDV1_base_seed20260725.json": "d078f2f01f623bef2b7d756977cebc6d547b21cf653aa0fd9ecb72154569522d",
+      "results_MI_HYBRIDV1_ensemble5.json": "290c27d071d5460ee000909a463860f1838dc65125a10d5f121c43ba473cb178",
+      "hybrid_v1_adjudication.json": "f8cd0bd1d631c5dde9f63a34cf4e9f390852e62d93330ba734afd593fee48e82"
+    },
+    "COLDFUSE_V1_sparse_warm": {
+      "results_CDS_COLDFUSE_base_seed20260736.json": "8c3a0ddcea676f724450c98db57bd66fab4d31b1fccd06343b1f0d90cdc4ff31",
+      "results_CDS_COLDFUSE_base_seed20260737.json": "53f8f73aa5e35eea89cbab13bfe3c471de7f1530db840e25d854e2299d8eaf0d",
+      "results_CDS_COLDFUSE_base_seed20260738.json": "8ae87316b469566c319563604941bb92bcfde22f75243dc765e558d7cc9d6284",
+      "results_CDS_COLDFUSE_base_seed20260739.json": "4581f7a67fe1f94f112ecbb9613781a951267cc05489e312f29ea2ab5ccb2fa5",
+      "results_CDS_COLDFUSE_base_seed20260740.json": "fddf2d53eabe4dcb6f09a8dc037d6f873294743e95bd0b24bba68396319e1799",
+      "results_IS_COLDFUSE_base_seed20260736.fusion.json": "3ecc2f30eb0cb2dbe231368819dd5c6af11433f19d1a6d01466721c134cba2d7",
+      "results_IS_COLDFUSE_base_seed20260736.json": "600a6cd14a89121b1b39ac6fc6198bfb7083039c7ae4450557b7f202046fba7f",
+      "results_IS_COLDFUSE_base_seed20260737.fusion.json": "e3ae03266f48ea130de69ed11d03c6982c6466cfc8aea59cf5524821720621fa",
+      "results_IS_COLDFUSE_base_seed20260737.json": "1b6aabb1f980812c0464a9d7712a7effab8aad4995397a526f28eae5b13b96df",
+      "results_IS_COLDFUSE_base_seed20260738.fusion.json": "e9c39a80a3238b5391a11883390f352b3a542ece8b55bc1d24b3aa98bff20375",
+      "results_IS_COLDFUSE_base_seed20260738.json": "acde64e07ab36967386ed35e6d377d610224e9a0b4c64ceb9bf211e79ef6e3ca",
+      "results_IS_COLDFUSE_base_seed20260739.fusion.json": "d7f726c6beed86c0cc494cc5a23a8c0430b428be958f991cf0911e89dacc0b39",
+      "results_IS_COLDFUSE_base_seed20260739.json": "16557e04c7b511263383fe3c2af59aadf7a36500d39260648e8cb39ab27614cb",
+      "results_IS_COLDFUSE_base_seed20260740.fusion.json": "a8906576915c6767be420ccc9bb96270a27e460260ee0957c4f14c2d1890aa9a",
+      "results_IS_COLDFUSE_base_seed20260740.json": "0d2aa5331b24a245cd25d64a99268dce69b0c2da210e17b9952530e2c76398fd",
+      "results_MI_COLDFUSE_base_seed20260736.fusion.json": "299e11f1f1061c2bc63578f1794b868820db55234cfcd63db51e80c99af3de3d",
+      "results_MI_COLDFUSE_base_seed20260736.json": "446cffa28f70ac0e805c5ae82eb138ea1a403b279b97c18091a2abc45d9b84ab",
+      "results_MI_COLDFUSE_base_seed20260737.fusion.json": "238a1de2fa7a694b2ec2b738f846baad7a287183ad37c9392870c8742f72e939",
+      "results_MI_COLDFUSE_base_seed20260737.json": "10ed1e983c0e4567f2a78b5ac802bc6f8bbd4756d4e26525b3b15f7368edd791",
+      "results_MI_COLDFUSE_base_seed20260738.fusion.json": "0e605dc320c937ec46bd880543398f77773acc5198f1a33fb84f2a412b5afa91",
+      "results_MI_COLDFUSE_base_seed20260738.json": "fe07591cc0da596dec46cf768e0ae8e759a5d0ff1042abaa2773a97825d2f5ad",
+      "results_MI_COLDFUSE_base_seed20260739.fusion.json": "8e2a184a874b5f52daeaf34238f6d1a38b902e8d970a84965a16d45418c0494f",
+      "results_MI_COLDFUSE_base_seed20260739.json": "6bd16ed9e4e412c5fd1975a43d35331d52b17c06e2af71d9231ea49e9289f0df",
+      "results_MI_COLDFUSE_base_seed20260740.fusion.json": "4a462080acd2b8ef87471db545ac73b38e3a5385326e47d55dc08449961f202e",
+      "results_MI_COLDFUSE_base_seed20260740.json": "1123d38e565f0951edb73bdf04d5f408b1335652392ed6bda84d474c8bda053d",
+      "results_OFFICE_COLDFUSE_base_seed20260736.json": "81b0fc3effc647d2ff7afe52a5391ae52086f91d2854f83c9d1efe7947619a79",
+      "results_OFFICE_COLDFUSE_base_seed20260737.json": "418e091eb1ff683aca57d968b95dbc15599edeea1d5f1a8fe5ab8ab4035acf76",
+      "results_OFFICE_COLDFUSE_base_seed20260738.json": "1bbe2bd37e53a5f6f11a7f2a7ff3ed73db14959e2a939f811f44ec1a8259929a",
+      "results_OFFICE_COLDFUSE_base_seed20260739.json": "149126a0ef4c49389dc06274a5226f685bdf7d1faec12c5613aff35d1e56e039",
+      "results_OFFICE_COLDFUSE_base_seed20260740.json": "415a19d9bd486428169635cd2e918e4a0e3e9ecb3a9f862a4c2ef4cd27b336ce",
+      "results_VG_COLDFUSE_base_seed20260736.fusion.json": "fa51c6adc7bc125985aeed91d03f0e064224c5412f75f6734bd9ce07cf6022de",
+      "results_VG_COLDFUSE_base_seed20260736.json": "decb805cb3f9adee41f28d4fed47b91b6f617a997b2002c428060a999b52e4f1",
+      "results_VG_COLDFUSE_base_seed20260737.fusion.json": "6f3e7af55cd46a674150b3402693bec680131d19aa8b79e96916c35ed8d55ba0",
+      "results_VG_COLDFUSE_base_seed20260737.json": "beacde4f87e48cbbcc4b9fec594bed8454977d4d9d0265453f3ffdbfeb3d506f",
+      "results_VG_COLDFUSE_base_seed20260738.fusion.json": "1caaf2b526d317b0f06572a99ac0d11703b711c657be79ce59240db237b66fa1",
+      "results_VG_COLDFUSE_base_seed20260738.json": "9c010483bd2fdcdede1114c4a580628da59450a7245e53509daa8ff86c42329a",
+      "results_VG_COLDFUSE_base_seed20260739.fusion.json": "5345e12d1ebf67c3efadf4672751d9efd0d2d9c5816536dfa0ac9c7986b2af49",
+      "results_VG_COLDFUSE_base_seed20260739.json": "696f58c6947ff3d3ea855ef51f9850ef04309a7938b72cf21a6762fdc0447089",
+      "results_VG_COLDFUSE_base_seed20260740.fusion.json": "6c5774e0fe3be9ab359688978a2558558ed7fb9b28d9f623eb02270e5b150cef",
+      "results_VG_COLDFUSE_base_seed20260740.json": "56c0428acca45857e2a0bd395b457bad0b997c82ebb784de572bbf8258f00119",
+      "results_CDs_and_Vinyl_COLDFUSE_confirm_seed20260736.json": "16d3da7b5b9e27faa9345c5da53f6a782d81e5adf0b8c6644bb9f56fdc45ed55",
+      "results_CDs_and_Vinyl_COLDFUSE_confirm_seed20260737.json": "75126c75303e1e19e0ea1a5e12f5808f43a5f0056039107040aef7c80874eae0",
+      "results_CDs_and_Vinyl_COLDFUSE_confirm_seed20260738.json": "5a634a3843866a1750abfb67f949b87b0c93904e21a971c2065c9e408aa613b3",
+      "results_CDs_and_Vinyl_COLDFUSE_confirm_seed20260739.json": "0a5b98919004db12e3177b651d731efcbde84a6e435d44b35966dfe292803a7d",
+      "results_CDs_and_Vinyl_COLDFUSE_confirm_seed20260740.json": "c1dec6a24f8102212f14665d4e6e7ae385576e93b6bb98b131a3d49f881f180b",
+      "results_Industrial_and_Scientific_COLDFUSE_confirm_seed20260736.json": "137cf484d33703df0471627f8557fa084a707faa87ca8505ce538b5875beec7d",
+      "results_Industrial_and_Scientific_COLDFUSE_confirm_seed20260737.json": "177e0544046e45f31ec6cf2d968d6329faee7b717e464f3267c08ce17606c5db",
+      "results_Industrial_and_Scientific_COLDFUSE_confirm_seed20260738.json": "512ce42b5a01b9db994a35cdd72f4acedabafac7ea46ada7c908970cc0356941",
+      "results_Industrial_and_Scientific_COLDFUSE_confirm_seed20260739.json": "7ea79a6491a05dac9700b44047836310054f047bc29c680f39fbbb472fe505b7",
+      "results_Industrial_and_Scientific_COLDFUSE_confirm_seed20260740.json": "b7eb047f14367caea6f61ffec8e700a6dba70a9f73f65447dc1ae81b5cf7b460",
+      "results_Musical_Instruments_COLDFUSE_confirm_seed20260736.json": "bd2030e045fb1d429acf762a3d608a9901867bbff79d376347655decf1300bb2",
+      "results_Musical_Instruments_COLDFUSE_confirm_seed20260737.json": "0dcb9e6d0c3c487dc7716cf80fa4630cc38ed3a082ad80b7c5e8b69d6c0acef7",
+      "results_Musical_Instruments_COLDFUSE_confirm_seed20260738.json": "41d82c901a10d269f42a924e44cf156a8c7d3f94cb00cb977b5859c06f42d528",
+      "results_Musical_Instruments_COLDFUSE_confirm_seed20260739.json": "752680b1314eed02fe4f37000f14a65b30d887cf7b4cc85fe4dba7eadf941fdc",
+      "results_Musical_Instruments_COLDFUSE_confirm_seed20260740.json": "c1c87f796792363c1efbcb6a538124a77dde32ff1c6ec9aef00f928ceeeb46af",
+      "results_Office_Products_COLDFUSE_confirm_seed20260736.json": "b87ac2ecb7a1f659f2a1e8fbedb2bab9ebbb83dd02bc0aeb97e9d323f61f7a13",
+      "results_Office_Products_COLDFUSE_confirm_seed20260737.json": "706fd5907eddbbe1ea395a6a2a65403ca0154ddd6441bfe56fd2a221c4a7a121",
+      "results_Office_Products_COLDFUSE_confirm_seed20260738.json": "e371ae1a565c3d0ba4da5d5ac3847278b1d786588d315f91db31f6a2c50090f6",
+      "results_Office_Products_COLDFUSE_confirm_seed20260739.json": "b12bd9171b6139f71f32e4a5bff10fd31ba5d99b15b4eddf3e3b2f657c28a312",
+      "results_Office_Products_COLDFUSE_confirm_seed20260740.json": "c8f4b4189c357d7f9edc8fc53aa0c8f5f68254d9338dea2dd976b021cc380eaa",
+      "results_Video_Games_COLDFUSE_confirm_seed20260736.json": "88e05218670ffdcccf5d46027e5db5b8ca66d3d17843ab2adf78c8dd7575ebf5",
+      "results_Video_Games_COLDFUSE_confirm_seed20260737.json": "d8530cd323726c946361f02f3a2be8f586a3602365106bead865f743cd8f7c74",
+      "results_Video_Games_COLDFUSE_confirm_seed20260738.json": "620ff7ac2501c3b23c441d161dc434fb5586146f93868788fcef23f49c6f9681",
+      "results_Video_Games_COLDFUSE_confirm_seed20260739.json": "ce1fe1a683163a5676b74852f400fcde1cd64604073f0a233b5edf3caa78779c",
+      "results_Video_Games_COLDFUSE_confirm_seed20260740.json": "9a676b27f12660aecc22a907856315f37657a485786da2249bac61c69ae9631b",
+      "results_Musical_Instruments_COLDFUSE_explore_seed20260721.json": "9fdb3433b7082b1ee3bfb6a790ff03ae628e69dbc18d9eb0b82044c91cc41c54",
+      "results_Musical_Instruments_COLDFUSE_explore_seed20260722.json": "64fcff3e537319873a4f972d17e050b6984165bc2a1b5bf96a52a1f86004d164",
+      "eg_coldfuse_explore_verdict.json": "ef1f142891ea29bb15bf5f3e9d58da10f7e3d8ad125f58ebb9e1507d3c5f08ec",
+      "coldfuse_v1_adjudication_v1run_20260723.json": "0ef5ee0278cc11238c6004351711c9d5f986c372a50deefa9531685451c7fd02",
+      "coldfuse_v1_adjudication_v2run_20260723.json": "9e599de1fb9c3edea2f4ebc1b0373919a3a89ffe2ca5bf658aa0632095140c99",
+      "coldfuse_v1_adjudication_ORIGINAL_v1_output.txt": "72004688c36965d431e9978b9d7e94e3b7976ba1c3c7de2681d6e90aca493f0c"
+    },
+    "FIR_CANONICAL_BREADTH_OUTCOME_KNOWN": {
+      "_bestrec_run/fir_canonical_breadth_adjudication.json": "dbb79986c29c8f6d4699b760bc52c429490cbbf108e0ee906281d35f31d574b3",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260810.json": "10d40354c5f08cc4d385b74e74050766c6b2207cee2306397119bd73e81daaf6",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260811.json": "2e5101e14a51a9dbaf1c8157455949cba51cb6eb18205d1cf03d10b131f44b0c",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260812.json": "81b108e93926e801d498b88b4bacd0a867f8f777087043d9921fdee3361e0e5c",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260813.json": "d94f6580c3b24615d3fb1b237d87b12ecd9bd519158fc255ad6f7117632a8622",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260814.json": "b2f16ff69da555709c5f89ac3c5c79a5e0565ff040d7b190447d25d9b2132166",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260815.json": "ab1e495f6dea6d2403d9508d0da52d50a83be92316ea5a9719a4cc3841161e68",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260816.json": "ab482dd8316e9cf08c9174ed0f36d89cc1b8a667ee014465b1de94edecc7300f",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a0ident_seed20260817.json": "97d7e5d9badb104950e6104e6a5ef10019fb3a822bda06091d86ee30069d2363",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260810.json": "c13625402673b05543c9b212e40dcf1ab927558ca4580aea85c244c3b401ce1b",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260811.json": "df2fcd31f5401bdc39e55f2357a95ec5b7a804f4326afaeea5be61ab40c48b03",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260812.json": "928d9fb9e2a0ce1dc134f83aaa1d18310fa26812591c016a2dc2ed9125d2b625",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260813.json": "b1c8f147a1b35fa40731cd5de32b7846a0d8126f11403500c05e53c72c97b4a4",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260814.json": "bb3cdb635292084e54e59e2c0fe743281e09ae60d4a2edf6078c8c372a75362a",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260815.json": "edd192ebad90e11197767b0de6de40a4fb5b24731b29d518ba8b624af0052b27",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260816.json": "66c362f5aa14cf149828bda6aae539d9f5dee10e2f60c07917f04b8c8f74e0c3",
+      "_bestrec_run/results_CDs_and_Vinyl_FIRCANON_a1learned_seed20260817.json": "aaf9cf8e3390a2c5b19650b5a2baf9490e690de1ad7cd4e2c5f2a7d9f3981634",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260810.json": "d8a71bc5566eb078d7e64d1c0485bc6be557e911f812caa1a6bc5f47a1331e97",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260811.json": "4532ff9bebf76f55fcc2390427eefb7cd0c71570adc690e95903685de1304b5b",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260812.json": "c258f71a411419d3f8130eeff8fd52c1963db03891aa1b0aae3e38dafeed2790",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260813.json": "7027e33b4fed66eaaf99b025ac0e6d03819d43998880282a548af89621236fe0",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260814.json": "0138d66220f42cdd77e97db37fa7f89071f68ca47d7679eb036e447c69c87892",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260815.json": "f1bb9d873dd9b5451f83b9b5eb25a467ed61ffd59893d975b8fceaa0b873c42a",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260816.json": "f7da90e71e385c917f5d759d0f4c67d5a769f0bb8224268e2842b109a4937408",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a0ident_seed20260817.json": "62123c834c2294cfbf462966bee376004a3f9d959b3a467204222bb7d0b5ba20",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260810.json": "5687c66627f390de83bab1e5f8fa6a280ec9c3eee1242708ec40a56df02b893e",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260811.json": "fa0d2b312e02c1e03f8703f775a9b131f978738c44abe1c20343502c93788bfa",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260812.json": "d54725e42621312b88997e2982df52c85647cfa1245710beccbb1cdc0cd1955a",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260813.json": "d566f150354af4cc46a5f6ffeea4f82246caabbe5704947aaa6d1a2bb9916fd6",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260814.json": "91de206f6029320d6957dda69b7d3b169732044d544397cd769997e4085e3b2e",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260815.json": "f25670e58d6253ffe6123d85e745e6473ca07f400de200588c1dd1d2cf99f4ee",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260816.json": "435873cfc31708a73636d3f6931a0a7f107b47e58df3d1ea7c2402a6ff0b4650",
+      "_bestrec_run/results_Industrial_and_Scientific_FIRCANON_a1learned_seed20260817.json": "3f17820bdd49265051f3c4daaa29ad3d172858df1639745f5c47a1851cf8f387"
+    },
+    "FIR_CONTROLS_OUTCOME_KNOWN": {
+      "_bestrec_run/fir_controls_adjudication.json": "286058fcbe552b22708a290fc3b3902c6e717900aa6c399ad875ecf3ce5fc1a1",
+      "_bestrec_run/fir_controls_status.json": "c7e05b3b2c639b3c31ac906a95f6d812a80fb574a1cc90dd46967cbe90686489",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260901.finaleval.started.json": "64f83693afd5fd9dd00d526998fe475a781bcf78592763a93766af495be6a183",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260901.json": "e075383bec194ae61102522c3ad4e0df5a87f593b18ed8a5c2b4a9cc84da95ac",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260902.finaleval.started.json": "ed6ec256712a00cbeb78c54758275f07a13490c75e96d6fcbf37f2caa3426bdb",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260902.json": "e8df17a1ba59bff0afe39226358f1382b06725f2e7c225b23900d973e2c320af",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260903.finaleval.started.json": "7b04f371008cee03d0965e870c5d5f1d7d2a6abf3af42c03f523e711529a85de",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260903.json": "b64d53a2425ca5904432bd031e550b23a1cdcc78153a5f67af8b6b4ffa0af442",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260904.finaleval.started.json": "1cafa6b4619d9341010dd49c1425f7a40a7e05f59a1fbe4403d062611f752a50",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260904.json": "5deecf34dbf04ca9c5191116b1b6ff29fc5abe7db02deec44c7cd6283e8ed9f5",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260905.finaleval.started.json": "c43cf35d337fef031b8377cb563dd0eaf5db531c2c76f963dbc4065b37465002",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260905.json": "b6739099564f36a08615e13d60f574e97ea82b081dabeaf1d052c522440a2186",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260906.finaleval.started.json": "21301654f20c986fc2b84f1fc375ae6c8402ee8437eff261067f027e81307d23",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260906.json": "d8089cb2a778d1d46b1528add7e0c95aabecc88c050268cea40a793ed4de7f22",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260907.finaleval.started.json": "945655495f3d0d8e7342647c7d6add87888a054a2a123ce35285d0e0ae2feeec",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260907.json": "4b8f3ff558c4590d44cb3a81f7cb53d9dfabe7244533f8d36a38c7ca20b63001",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260908.finaleval.started.json": "099d4d01438021f793ba5f281fd1b136ab75308f948ade0fa883b649aa1d7880",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260908.json": "93ff300579a28ad751761e44d71bf1c5e4a31f6d0a7e890acf2336f478167b58",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260901.finaleval.started.json": "b507f4c1afba526d7c18168d49b1af1276b32c965963f862fa7fb74255a3a802",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260901.json": "ced845e1c9d4c999ec9be5ead7b793884e11a28766493479a7dd2f47221e35a3",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260902.finaleval.started.json": "b5845440adc6cf92cd677ec574ef94345182edecec0eb0319945aac2bd2c9777",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260902.json": "6f097e23780746a3b38ecdda76655d386fd60cedeaff0344f8f8c80cba677f24",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260903.finaleval.started.json": "c19b7fe10ee08e6ddac2293f7900ab046e8fedc8e32a0c6138df2da6da4b145f",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260903.json": "67a13115a96c670ece4681a7e08473c2ed90de523c9074c68b69df28730a6c5b",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260904.finaleval.started.json": "ece4dd904ae75652c0ec793154e42af5038fa23dfbe30084565eff09ea843c71",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260904.json": "72654f3620bc302dd95aa384ab7dcfebe36825fcf7b1badafab7ac86ed33b925",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260905.finaleval.started.json": "a8554d2bf0e3477b65b4fad9d4733c1f48f95499325b9a0665fa55e1505ccf97",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260905.json": "64b4febfa9a5f72132740eaf6063d5b2885fdd3fed23095e9cf9527ddce74034",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.finaleval.started.json": "5ac75619e5de0601f7337db28a85cd50f635a5ee3b8f32e06a57c723a1d77edc",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.json": "20ba67e451a8537d89984f6117a84b550e533999745f705ef85f19dc42a3c16f",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260907.finaleval.started.json": "c35f246f9a463343b0b5e58737cd32141336639d8cd2bebfc79bc179b124a06f",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260907.json": "632228100b8af7799409d4336324ccc1ce34483b2fbf6bb327c8ad519085e242",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260908.finaleval.started.json": "9ddaa264cf9dfd4e8cb1f71bc0aa44a3d4c93767e4d5672f6ceec6ecea497727",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260908.json": "32579397a9c7d3a6729d0ce3f534f4b60bfadd975f2a1c3c255ad34f3c09b7d0",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.started.json": "0688b1ccf82586d92aeb4272c9a3d806d306beae0a2f1f6d40966e0a999bae40",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260901.json": "84de16337d77a5768b3ca02926a12ff02c3b0bfeb29c45426847a918140f396b",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.started.json": "e4a3669b2b9f19fc86aaf7805af5969e03bf736efa9ac570073ca9cd1d799bb6",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260902.json": "5fb6b1b162fd192e1e098943b180101522619fe17f672f83053958c7c1ff1254",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.started.json": "6d05a08d91bf9156341fc1a0c683c5748d8a5b34a888b709b71e3dfab8866567",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260903.json": "3184a0a8774fb91f9e1400038c9a8a13978b231afaf878acaa0fe4af160129ab",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.started.json": "e2615c68fd02d74763bda959e9cd573d1dcdf5ec4da6bcd4cd3e0d52a4566ce6",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260904.json": "8e804ffe0b6288ccf2e01aa1800ce525f23d255ef9e4778cb09f32faeed8628b",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.started.json": "448234a329c4fd39cd9ae53aad1cfe6f28206e5716c69583a6b2e2b4fb668aab",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260905.json": "a98537b6e823ee281931719b2e87cc81134f7e3e73b25e10052b0f807e107476",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.started.json": "938b2b8d96ef0fdab8c00e590a39493466ec5e445bd3349e02b29c07151d17dc",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260906.json": "4d72c4f8abcc93517e2f110ecf5fdd3e556181388200249a3c687676bc9a813b",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.started.json": "77d03cfa365132a374c8db8d8470c772739cf728235a1467a01f5478d3bb08da",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260907.json": "f1446ef38df0ea86af5861c8995c73b3268df82845e4811801c8142542943355",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.started.json": "d8f658bbd31c9b8cb931110d43ca0bfc8e11b6d8d4d2dbece156a55ab0cfa438",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_identity_seed20260908.json": "a8fdd4182cff04e6f246f9d0d54dd68ccd73b6ad45a5eee420b11e20bb8b1441",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.started.json": "a0db1ab0726074dd5a811dbcfaf4ec84c4a7217142e6c9ab30528b99b9f6edb0",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260901.json": "1babc72a1fac3fa5e59402706119ad3823338d09002b06aba6c6a10182752706",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.started.json": "8bceef2bf2083ab5ff6039a6df17543e84fe4ec9a58d2e41c9c78ee8ca62427a",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260902.json": "c87e4791f09823c75b33e91f5213769472b187f71fdf4f68007d01b6cedabb16",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.started.json": "5e07cb6716c95b08eede3f1f211f38a58111be92863276a13ef7001dadb6f2bb",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260903.json": "58c0bdde1ceff3462a32b6d294215af2488a15b37fda207dd6412c0724c79aea",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.started.json": "64c8e0748707bf6e07f1d399d648267354ae66b9d2e2fff38ccaefae16d3fa4f",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260904.json": "71485098655ced1f91a4270233fa66c83a27a4c738ea615e3d631d135b5dbb02",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.started.json": "13451200b011ce704f561e15b569bf5453a1ed22f7e960dc0f7f8af28898df62",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260905.json": "349cc74e519ccd6c51a3588826ad7ff0a5d69460571a805fa99f4fce4b2778bf",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.started.json": "e6dd320d591b3625286906c11e966a5777c747d2d2357bbe55e8490d2321ccca",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260906.json": "4e657ef78cb54eb3591cfa07b676172f7143b9336ffb491febe20d53e692ae0e",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.started.json": "39e2f87b5fd13fd9b47cc508a56ccda58e128553e068ea88e3c68e960561f08a",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260907.json": "9bdadd81715c60d266809187e02877e403c31142f35194dfa0c31cbc306cfba6",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.started.json": "f9dc3ff16ee034ea395ef097890d0277468496bf9fe51b6afdb08e519f761789",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_learned_seed20260908.json": "fc14e52520bb6eb4b4c60cbc01e77ec98adbc612e472d9e90b407d4a0914328e",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260901.finaleval.started.json": "a6e0ace678fe297db42f29d2fb4c1e16bd88602fdba3f578056f23e171559d9f",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260901.json": "955757357f476865aedd0ce817334946241bd48e38b82198ae0bcb71227f81c8",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260902.finaleval.started.json": "2c17ac200183e51e1453a590204c3a49764b1bc4d70bb1f492432cf035a20aca",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260902.json": "3e6af049d4c206b055bf7613f4a8314de15061666032affd8d5cace83b2fb67a",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260903.finaleval.started.json": "02f06789b80c410f36f6e369a438ab4a7d2bdfcbeee78ccbcf4202c4ec5f7e8f",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260903.json": "5bed70b88a9201c0c746a8e219a3fe891175bfd8a9a85fd5e33ab023b74564b0",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260904.finaleval.started.json": "8813e23509a4e87504aebbcbdee359d0b557d706afef6f2231d182a5b0544f24",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260904.json": "20b8cb38f7bc9136dea221f736841550a9de8bf7a87916a591676d5aeb762477",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260905.finaleval.started.json": "993a3799af22e6c32b5eb8160fda211ca3243f8bf902b8e5bceb1506b99f2d02",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260905.json": "feffd66b8339d51e0f0d8cf95e48d8b5f93cc7946258d8823d7afe1ab09b003a",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260906.finaleval.started.json": "bbb4ed274947cfa2ee887e2a48c43ae00cf43179f917c7c356b8ad2bef42e64e",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260906.json": "25136fb233ca252ce44d8ca043a4bbe1068a0601f45536e7c6425a945e79a7ba",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260907.finaleval.started.json": "aecd0160f608e5976ed5f8f927e3aae8f12a20739fd99aa9533b2f21ecdc7534",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260907.json": "431569a5466be87e6692c143324411f446e31a06a3b73fcbad76ddf7f48c8d1f",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260908.finaleval.started.json": "48e42c1c1e4920a4f9ea7cb29cff87e2df6f220293b93d328adbd06ad230a560",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_nonlinear_seed20260908.json": "2cfd1cc53facbcb1ab225ac66700d26d52d33fd48d269ece782b07dbe37c1440",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260901.finaleval.started.json": "ae41a386517dd9498dc85feca5e95849d2dc2a60a5378ff2f21d51a99434489d",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260901.json": "9c3d657c5fe8f38d71f5f93d6242dc0a46a41621bfb9c66793fdc61f8299ecd9",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260902.finaleval.started.json": "150eb8961103fe71e8a48e36c7b2777862a088763dc19db62c79283121098953",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260902.json": "69d68c65f707e38507d56de4ab24250619085457b4a40fbbf7f4b41e213f0166",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260903.finaleval.started.json": "5eaa48687b2f51e8c6d8bd56aa252ab25feca097e6bf530533e374edf2889373",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260903.json": "c5f66347fde9d40d484e102b979591dc4b5fcc018b9220c17216022f6ce0f7d2",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260904.finaleval.started.json": "b23357f02d415252a9630ffc26b94bc17928e7c67939f835c9dae472dee0420b",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260904.json": "4997ffe72fbc78f8a1eaa21741c5ac4f9498b523116e7fa5d14c0cfa6b3cee6d",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260905.finaleval.started.json": "e18f90ed1c40a5c57e41359317080c130774e87f88dd66c72893a92d2fe4b41d",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260905.json": "7e925083314e72a25a17457f30a1886f8e7ae8f1dc280cf8f7f70e9bc25701a9",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260906.finaleval.started.json": "f58b62119da2a862a495cec30a6066e7d82b024bd36112b0b35cd875ff5ee4ea",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260906.json": "69e2569ea2bd7035ed06c720799ece0eb766f88f9f669cf29ec8253efcd7dc04",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260907.finaleval.started.json": "df6f21da5868fc933d38638ae43ed7f22596c88ada4b6a711566aa2111a9ac52",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260907.json": "da451badc4852079bab5d1fbc3379a29fb6da49474c415a67bb063082ff8d06f",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260908.finaleval.started.json": "be1f50dcfa3a60f98616e4225e265e3e952681952e2cdb6730ac3bb7f2d50934",
+      "_bestrec_run/results_Musical_Instruments_FIRCTRL_shared_seed20260908.json": "aab5ca3f48042da801a535c32b1f97953db6c7cc7b1eb9b2d1b69f9dcf432fa2"
+    },
+    "FIR_POINTWISE_OUTCOME_KNOWN": {
+      "_bestrec_run/fir_pointwise_v1_adjudication.json": "74ba5c69a41d73b0b721fb91c6ee8eed1c71fc6bc707628a71c55f983203f474",
+      "_bestrec_run/fir_pointwise_v1_status.json": "9f5c6bf3f7ac18cbfd72c9494c6d54571a12908fa6795f78c723e27ca8d0a967",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261001.finaleval.started.json": "47dfc870df06b432779d145b3b9e1e7cfba9ffe58eff79368291161d68d1b2d9",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261001.json": "00fc3763fddd720978f5bab90a3ff1af232d4832fcbe6edbfbaef38f00d9d770",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261002.finaleval.started.json": "50d9fad1c5aadde6d467aa736e147c98debb1630fc50cd186ac95c7187e98fdd",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261002.json": "97551a9fa190734c1d0fe39e92f30320ac90ebd04458d0a58d4c9176863530fa",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261003.finaleval.started.json": "e36abad070da45e70071a431197ad6711ef71e085a9c28125f2c04ef65eb00ee",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261003.json": "fc34dd1911194570df92ea370abe983e5e353571fa33f43eed90d86033248b45",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261004.finaleval.started.json": "69f92b49265148a23f92ab89e9907ccfef600665d91bcccc275debea671f5643",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261004.json": "fdabb70f82899fe7b45119f4555be11a08488cec339dcb77172eb93b7919e4c0",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261005.finaleval.started.json": "077021d2837d3ede6aaee52cd9d0e4384273f2e41d109f0b6b6fc71cc331f400",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261005.json": "ea1e62f58a538fb47d03a1c14331c0b0251ba2f02c50fbcde38374c691492c82",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261006.finaleval.started.json": "83cef6a9b8523f093757528f5c0acad330852fba4b1418f65ca8eb167f13c30b",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261006.json": "63ca066038503ffdbe657e9009bd13a7a017f62ffb52dcf10381cdb25b780c6d",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261007.finaleval.started.json": "8f24a9fdaf74d4e08872e33ffca8bebd0c9bb901af57ae7897b33f06f9e0ad14",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261007.json": "b9903343b0d1ef3e707374dbfd9bda59c36c36cba3c3726417e650949b7d6c60",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261008.finaleval.started.json": "4017c522671733a5e393009cce73b96ef95303c1324705ea826ebcbd77444155",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_identity_seed20261008.json": "460a54277e43e111e150af4a61d887a10ed4e9d8ebc6a8d0c14bbc42305fd769",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261001.finaleval.started.json": "55968efb739f6bd1e42c52b0761f543c9d660b246176d3c555165f4fa2d0d82a",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261001.json": "64c04811a2ce5ff5f9edf914b819347f458f077e1d21a1b76009114cd80b1948",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261002.finaleval.started.json": "d47ecdcaeca042608c33ac81a6fc77c8af18a88a9d30028c0240b41b49805194",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261002.json": "5af62ab536e8a239097f18c7b3ccdeb856d5eada76b99db943a6cbe1943f5be5",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261003.finaleval.started.json": "ac6039d6f2715c91c3b75468fe69267030ed3e69c81c0eba7c10ccdf19a0dfc9",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261003.json": "1cab7996bcc4c2b9c9db5a6c4910e8656881fcb6246e0449aa1c7e7ecc13fc41",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261004.finaleval.started.json": "076d4e480bf8be93d5ae0b3316cb28020f2ddd6ff181dbca231cc942fde4d057",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261004.json": "4aaeaf31a148d6147611979d304af48093c6ee3becf698fed7b16a8b1b2c135a",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261005.finaleval.started.json": "1c8dae8921eec2baf6e3244ca7ea955834f17f446185b7628a0ef60b63997412",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261005.json": "2bb4d74afd380fa1ddd7ac21e7586f125a84ea9890feaade106cbf86cb622fbb",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261006.finaleval.started.json": "45f8c768407aa12cdfbb51a0921d3ed841f7f73e90fbf94a8f6fdfaad1f7f526",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261006.json": "1ccba720e085bd104c1df5b6b158820414e0ca61fbd2e18480c4a18f34d0f7d5",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261007.finaleval.started.json": "747f2be22201b9adcb3eb22d11affc16103a2ae30d9b5a8e7ac72b89bbb01b08",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261007.json": "f6b62d5ef5922cf243112a969ff2259ac2f639fdefbbc887afecbe1a07b08c2c",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261008.finaleval.started.json": "4b57e988478fda66f914ab43dd5c1588fa09d52a57a6389f9abdf84a87652900",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_learned_seed20261008.json": "5b7f9051e84f2f537c2be6e23b6df1d92ed99db30fc2563716863ed268fb4b3b",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261001.finaleval.started.json": "25d754e7e95b790ac0d6be8a20ed42c39e3171f15794e6b6155ec348cdbf76fc",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261001.json": "3213302900a450e05de05072c25a14cc09155aa47e1bea5d328b0476b94c6dfd",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261002.finaleval.started.json": "e401606d530c670a777a0ce41f56e8a2310662fe05bca3b99390775788b8e51a",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261002.json": "55a283061588fb3f6c593923ddcd4aab56bcb4b7145ff81234a740b48a740388",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.finaleval.started.json": "70124f8a5b4175a7fab944652a5f5738c0d79ec5dfac64603eb581caa0d48add",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.json": "67ae24cafc67ac284bb3cb5e6b3a3a58ed8763c6e264ffac4cb943cc2546acc7",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261004.finaleval.started.json": "3210ac1da4c897e9e17593955825010ab9d9ab542925d1109cd6e5e289680d1e",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261004.json": "c5db64a8bedab8d9ff20800538758e60f67302093e92150468806f0a69e0e767",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261005.finaleval.started.json": "a8746e0162d792818acb67470b7aff7eac11476eefc70cf54cbb497fa71f1c54",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261005.json": "f0d77f4a9909255888cffa194bc042e886ab99c40bcf005f0bb98cc7300a9b8d",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261006.finaleval.started.json": "48d524f40677e0ee5437799cd4547c9d1c3bc21850f00cf68eeeb209807fa314",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261006.json": "ae5e2fe0ee84bcb15d12172b5f638ff453cd2d3ddd7d32513f396c367c638651",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261007.finaleval.started.json": "94a445a335d4f1a34cb236dd4984300732feec031cbddd10965c500c24e418a9",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261007.json": "ca9419ba9fb712904a7b6b47fbc628c1ac698ba55a3b4ed0be20b0e2ab5e29d7",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261008.finaleval.started.json": "66c3eb8390f0f1ee0f9210c3d0158b234d79d3d4dadbc80f201c16734ab86d15",
+      "_bestrec_run/results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261008.json": "2fc6b261c1e6bcb6cf0a1c0ca389f3cea8c28965cd06434fec828815b74a01cd"
+    },
+    "FIR_PROSPECTIVE_DM_V1_FEASIBILITY_VOID": {
+      "FIR_PROSPECTIVE_DM_V1_FEASIBILITY.md": "c94ed6a912245ae92ffd9f037f8b9927e7b7e14647eaa07b516a3b6f4a51f24d",
+      "_bestrec_run/digital_music_acquisition_manifest.json": "ad1dc6a66cde2fd24c0217b28a3e6f0c50966eb396ec0b9e1d1f7123cf7d5a7c",
+      "_bestrec_run/digital_music_feasibility.json": "e57a4c8ec4429ddf5ca20521cff2263b04fa33311e3519afaaff7320b34b7f97"
+    },
+    "FIR_PROSPECTIVE_SW_V2_PREPARATION": {
+      "_bestrec_run/software_acquisition_manifest.json": "e234452c682b81c21e81efbdb689831ba19971031b6247c261086215f4da2255",
+      "_bestrec_run/software_feasibility.json": "54d8c6ae086a51ba784f038c438761105634f988ea85ba3c2b65e63f9b8b960d",
+      "_bestrec_run/software_title_cache_manifest.json": "022aafce6a98e12e43009d4613df4796a2b0850f0326f33ae927e76548fb7b63"
+    },
+    "FIR_PROSPECTIVE_SW_V2_INTEGRITY_VOID": {
+      "FIR_PROSPECTIVE_SW_V2_INTEGRITY.md": "2306db13ac6b41db1dc7526c7e97631381b2886d877f210e240359b0eb2dff41",
+      "_bestrec_run/fir_prospective_sw_v2_status.json": "9e03ff173a807ec6b47d2e50079b71f1f737652aa64909eafd2af889f41ca177"
+    },
+    "FIR_PROSPECTIVE_SW_V3": {
+      "_bestrec_run/fir_prospective_sw_v3_adjudication.json": "f8eb00629cd1c1672128e874c3d61df3f1d73df39a72cc34bba1bea125d501c3",
+      "_bestrec_run/fir_prospective_sw_v3_attempt.json": "f8a1fa77db5e0c8d5ad38ba7bc39e646789a2768cbc1dc594d9573c58d2d141f",
+      "_bestrec_run/fir_prospective_sw_v3_endpoints_complete.json": "83f3d9b01a6703394f77bb70a8beea1bcb680ab833f3750b1c48225d5d3d9ea9",
+      "_bestrec_run/fir_prospective_sw_v3_ready.json": "8f70882a187651cb4dca684111da1fb5e017a6742dec9a7e435e9a9fb3606e0f",
+      "_bestrec_run/fir_prospective_sw_v3_status.json": "bd9b9b73ae3633895026fb79b8795f310e1fcd6dfde88b7cd80ae9c3a75e0f66",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261301.finaleval.started.json": "be9b49cb5ab754376ec3b8684b4692bd1a76455359b5d0b74ed85e12e3b80c75",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261301.json": "cdfd836915b493b3fffa1cca5540515d2fd86445270ce7c81560fb5f54fc6120",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261302.finaleval.started.json": "c3af3d4ecf3b6b6416a8b1e207ab259188361f7387e842fe842d12cd26694312",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261302.json": "d2aca4848a53f8f061125fa5837ac7ed1bede859252775faa30351bbbe7407d1",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261303.finaleval.started.json": "fcaee462091c0da3db62e60f5d598bb42c729885f699a52757596280464cda35",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261303.json": "8ba64cc62953b9c7bec01d98ee4cdaeb244bb8d7ef42ac1dc779a32e2faf9492",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261304.finaleval.started.json": "67c7275f1842505ad0ad58a5aeeb97389f3f228c765ef96fda48b76d659b3fa9",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261304.json": "380d91d811a358f92cea56bff3ba3f58e83f95c55aff39f981612843f5c6f69e",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261305.finaleval.started.json": "30a04f2cffadfc7bfaf815092effbf4592355e78d5a639889016db17c216d29c",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261305.json": "3cefe8ea8d4318481798b69947bc8e791e08c13c0ba6cc02c1b4ca0523896e91",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261306.finaleval.started.json": "fbb6ebeb41d3c02fade43b34fde54f7bd28332c87c3494f690a4cfac6e8a95d7",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261306.json": "e73ea64d36cd20db961fedfb76eaca4e0a37414bf2243b824131536210da1849",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261307.finaleval.started.json": "8d78fbaad9fde8d0f8b5978ff5ae60cca5658e72b08ea07fe34a7dd73e50baa5",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261307.json": "88d1affc3566b6df2f7f3088233d67b9e9a377adef840238db7bf375f264f205",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261308.finaleval.started.json": "74c93144c91db009a338edd9c7b00df8c0855014a6477f3b0b42b756a1dff8cc",
+      "_bestrec_run/results_Software_FIRPROSPV3_identity_seed20261308.json": "294e273fa50f05a8a64231261c49427ecfdae64647084f31b07f5ab8ab7b2fc4",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261301.finaleval.started.json": "6a8b177eedf2fbe74d334f2f1b99d559c283c2f004ae5dcf543cc97ca154a450",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261301.json": "d84a5a866e2d2343f0181de6f7f7cf496e6c6f09e11221c238da5c6b550cdc73",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261302.finaleval.started.json": "196c2b2d543b863422333026baa12035774e6c877bf5153208d4772896c21e17",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261302.json": "6b059a356b0fde8d45f40c9faa5971004a2d77ee6014022c47507aa29ad52d94",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261303.finaleval.started.json": "4ab7a69a0bfc313ca0b6a372480d0dbf8676fd927adeb7a7a0e0a72fa13105af",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261303.json": "1fd84c7e462265ec85f6174754a363ce948db4f8b91ad8763e03e05fd75d54cc",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261304.finaleval.started.json": "74699e78aa5d3b9d27f190cf545cd1d886bf714a98cca57da93b94b284c7c2cc",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261304.json": "80487ae8069b9e4c27434248d2ae8633661994f7d41c478d39ec0b610390bb6c",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261305.finaleval.started.json": "45c8d6bd44865472b1417ce79c2788e475c04bd85d622ea36201e3174011f6a8",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261305.json": "1a877baf5f3223fd8ac5a40bdd107aad6628751cc816837dc4b972ead9588b0f",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261306.finaleval.started.json": "70cf0942247af34d2decce212118eec80c57ce194a80f6f56dbe0d94555e42c1",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261306.json": "26dc50bf4866ea089d47375ef12e3cef502021d94864f0660facbfced530b628",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261307.finaleval.started.json": "bb46f6131c3f3915af1aa462e5c778a70acf4fe0b7b84a21ab2a19d729241c1a",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261307.json": "3c843c71465452c4d466a109b6d0f9b0ec85322edd2cb8cf9d10dc5df707fb50",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261308.finaleval.started.json": "dca2ca19d6dc12aad25c333818f5d08e58576780f08fb2161c59186c75f46f27",
+      "_bestrec_run/results_Software_FIRPROSPV3_learned_seed20261308.json": "331c4c0875cd411bb18801a910707f62a5be8fa6d5b91447cd396939e0561ab0"
+    },
+    "EE_V3_OUTCOME_KNOWN": {
+      "_bestrec_run/ee_v3_adjudication.json": "978aebe051abdefe3de542856bad6e321f6d581c53edfa9c01594006d24126ef"
+    },
+    "EE_V4_NORMAL_INIT_SENSITIVITY": {
+      "_bestrec_run/ee_v4_adjudication.json": "b00993ae5376e909d0dcb76f33a1e3d283504853707ac7f4a88c745d437616cd"
+    }
+  },
+  "sidecars": "see _bestrec_run/SOTACONF_V2_sidecar_manifest.json (tracked) + per-run user_records_sha256 fields",
+  "manifest_scope": "Hashes describe the repository files as of git_commit \u2014 the parent commit whose tree was hashed at the most recent --regen (the manifest cannot hash itself, so its own commit is the immediate child of that state); commits that touch no manifested file leave the hashes valid without a regen, and every strict build re-verifies all hashes against the live tree. Kept in sync MECHANICALLY: rebuild_hstu_submission.py --strict runs update_release_manifest.py --verify, which fails the submission gate on any hash mismatch, so a manifested file cannot change without a --regen + commit. Hashing rule (2026-07-18 migration, content identity proven under the legacy raw rule at migration time): git-backed sections (protocol_code, submission_docs, result_families, reference_runs) digest LF-normalized bytes for text files -- platform-independent and equal to the git-blob and deposit-payload hashes; release-asset sections (splits, text_caches, pinned_parity_artifacts, FIR-control and FIR-pointwise endpoint/sidecar/checkpoint files) digest raw bytes because their uploaded assets are immutable as-is. The release-only data sections are byte-verified at every --regen; result_families are Git-backed compact records and must never duplicate a release-only entry. The manifest cannot hash itself; its own commit is the immediate child of the state it describes.",
+  "supersedes_git_commit": "5efb3e9dade6a51a9aca28e695f601b20c326945",
+  "submission_docs": {
+    ".zenodo.json": {
+      "sha256": "183e8a237cef68ec72cb805dd4b1a0c66030d705245b16b716933f8083f1baa3",
+      "bytes": 2076
+    },
+    "CITATION.cff": {
+      "sha256": "be6f65bfa243c9679503aa172bb4bb96112e6ea624e6cd0a335f7eb71da99ac0",
+      "bytes": 1612
+    },
+    "README.md": {
+      "sha256": "6cedac8ff8364ca687bf488eb60c83289cc7ab80aa8bd69eacd640f6e9e75264",
+      "bytes": 13704
+    },
+    "DOI_DEPOSIT_INSTRUCTIONS.md": {
+      "sha256": "4b9cba7c923cd483207a676792de093693bc63958d0c8df33531975e883fc662",
+      "bytes": 3012
+    },
+    "VENUE_PLAN.md": {
+      "sha256": "08270e5ce382f52941dd882d488a0d6d41488748f9ef5945fb07e912ce26331a",
+      "bytes": 8885
+    },
+    "TIER_A_PUBLICATION_ROADMAP.md": {
+      "sha256": "427d7853772aad1eb5271365b721f3af74bb0bbda9a1b3e84dd0df3240eda188",
+      "bytes": 7428
+    },
+    "CODEX_CLAUDE_COLLABORATION_GUIDE.md": {
+      "sha256": "541a73a4e9a821abd85f5e56e275f56faa3957e9997aedc47f75fee1d3d1a849",
+      "bytes": 12552
+    },
+    "TORS_METHODOLOGY_CHECKLIST.md": {
+      "sha256": "c9e6072a2577ac087837c39c87d046427dd4f08db5f3fa96eecc538a4b08acc1",
+      "bytes": 9855
+    },
+    "CLAUDE_DESIGN_MEMO_FIR_TEMPORAL_ISOLATION_V1.md": {
+      "sha256": "4ce967411f6e7432a5487193b9963be10afbced6f525934e9213c49e676d45c4",
+      "bytes": 10432
+    },
+    "CODEX_RESPONSE_TO_CLAUDE_DESIGN_MEMO.md": {
+      "sha256": "a2d3e622b2ae78902842c7682da3bbe331552b833b4115da2643b15c5c5ff07e",
+      "bytes": 4113
+    },
+    "TIER_A_NON_AMAZON_SELECTION_GATE.md": {
+      "sha256": "159db89ae412e97834fe17eb9de3c1cdb3de451fa30b1050837c994b128b7104",
+      "bytes": 5179
+    },
+    "PAPER_SUBMISSION.md": {
+      "sha256": "74ab67182af7bd2a312dd2143e657c943b809eaa622aa22658dd092552d7633e",
+      "bytes": 182603
+    },
+    "PAPER_SUBMISSION.pdf": {
+      "sha256": "f1ff8e939d43a266fada013400b23be2d2f58c1b66341545f3791fc50896969c",
+      "bytes": 1868749
+    },
+    "PAPER_DRAFT.md": {
+      "sha256": "200427a21e31fba479d3e2a5247330b4e4822719fdb2573880b178031f6e9310",
+      "bytes": 234696
+    },
+    "CANONICAL_SUBMISSION.md": {
+      "sha256": "61c25e0c2b68e41cae9e63ceb0188d54ca5616ca3fd05381e2479ce5a3316e40",
+      "bytes": 20329
+    },
+    "AUDIT_RESPONSE_2026-07-27.md": {
+      "sha256": "063b04eecf510d0cf0dadee4b7b202e684ab8e1e3214c0c04ae497536007c008",
+      "bytes": 55351
+    },
+    "COVER_LETTER_TORS.md": {
+      "sha256": "9a791f5ad396254c896d8fd340d910ca9199f57c315bdfd3b04b1a48fae1300f",
+      "bytes": 4171
+    },
+    "CLAIM_ARTIFACT_MAP.md": {
+      "sha256": "dba04c5cc3081cf58219960c354459fc06962fbfcae4ab094cc72394c4a44ffa",
+      "bytes": 20598
+    },
+    "PHASE_COMPLETION_AUDIT_2026-07-28.md": {
+      "sha256": "fe27535ca39ac6747f83b9b814acbe16388b72f3671d0ace334ffe178c95afba",
+      "bytes": 8483
+    },
+    "MOCK_REVIEW_2026-07-27.md": {
+      "sha256": "f89d207c7093a31d2c64454bbec6e44c4d9abd561e2f2e640a0c7866d59377b7",
+      "bytes": 12349
+    },
+    "bootstrap_public_clone.py": {
+      "sha256": "13220770f09cecd484c5accf9951cdeefd077ed912c8bc41783f967225909778",
+      "bytes": 5924
+    },
+    "THEIRS_ON_OURS_REPORT.md": {
+      "sha256": "6bff70f42aba38c629adbf374a445c9a73ed6c01a529fdf12e06e9becfbd52ed",
+      "bytes": 24043
+    },
+    "PINNED_ENV_PARITY_REPORT.md": {
+      "sha256": "bedc1a50b90e895b5b8221e230a442a50ccdd0558455412a7571b322c93e5715",
+      "bytes": 17177
+    },
+    "HSTU_PARITY_REPORT.md": {
+      "sha256": "808b3a8ab739fc77084ac43acf0dd2a470d04faad5566d82a7379d0e762dc2ea",
+      "bytes": 10908
+    },
+    "_bestrec_run/test_hstu_parity.py": {
+      "sha256": "1656c393adaafb159fd48338b5bced547c11a1540a2d0f09ef7a800474d53bdd",
+      "bytes": 17483
+    },
+    "_bestrec_run/test_pinned_env_parity.py": {
+      "sha256": "bdc575d736d33f744788a19a70188a585e639a36da7f43ac1277a81f4addc7c2",
+      "bytes": 37349
+    },
+    "_bestrec_run/test_fir_causality.py": {
+      "sha256": "503d360caa5dcc0cf1bf0488ce14e38b1836a14e91fe7c22f3c45c438d569300",
+      "bytes": 3435
+    },
+    "_bestrec_run/build_claim_artifact_map.py": {
+      "sha256": "61ff8a3d54975af84f7864c4acfa58e295c7636022f1f5654808e3aeeb974c7b",
+      "bytes": 21129
+    },
+    "_bestrec_run/build_table0_claim_ledger.py": {
+      "sha256": "c953064b7a4e170ccace0b6872070f59f2be373cc2ec5351ef85d433ca713de1",
+      "bytes": 8719
+    },
+    "_bestrec_run/build_deposit_bundle.py": {
+      "sha256": "75ff2803dadd6e15df148c60c82975b226bc256b2414e3f372b2f5d994dfea5c",
+      "bytes": 27504
+    },
+    "_bestrec_run/normalize_pdf_metadata.py": {
+      "sha256": "63205ef1460cdb6bb2607a10a748c64c8e8b90f162f3e7c01f62976e2464c31c",
+      "bytes": 1992
+    },
+    "_bestrec_run/render_paper_pdf.py": {
+      "sha256": "477e012d6690c93568b3dfb1048c25e3f85e7c3adf62bc0e2f14887162fa3587",
+      "bytes": 9733
+    },
+    "_bestrec_run/fbgemm_shims.py": {
+      "sha256": "bb661345a50e11c20ccd16dc9699884467dbbc137fb2b26893804de7aecc9d34",
+      "bytes": 9762
+    },
+    "_bestrec_run/rebuild_hstu_submission.py": {
+      "sha256": "2030ac3d0b5e595570823995d1944ad98f4d49881686c8751833c24606083646",
+      "bytes": 15243
+    },
+    "_bestrec_run/update_release_manifest.py": {
+      "sha256": "83e3e915f40155554894a30d35affa4eaf1d2568314ed89fcb289d507d55f134",
+      "bytes": 46679
+    },
+    "_bestrec_run/clean_clone_replay.py": {
+      "sha256": "99343325b623fa750687da9922adff86cc43970645e78d5e224b69f701fd525e",
+      "bytes": 21603
+    },
+    "paper_tex/PAPER_TORS.pdf": {
+      "sha256": "9add98694488676ea4cb69aff0b70890454458591af5cdd17a5225b066428ae8",
+      "bytes": 345956
+    },
+    "paper_tex/PAPER_TORS_acmsmall.pdf": {
+      "sha256": "6c816b6275e39600b8832a80c83964110af03ed2f81341027d76327e700e714e",
+      "bytes": 350773
+    },
+    "paper_tex/PAPER_TORS_SUPPLEMENT.pdf": {
+      "sha256": "8002d6a4552ab7ea37141526242301e596920384c1b52da121f68ec0c69bc360",
+      "bytes": 302335
+    },
+    "paper_tex/build.ps1": {
+      "sha256": "aae386637ff10b7922d452d236df21e87e45eafd0220a07a3490d55df8f83cc3",
+      "bytes": 6688
+    },
+    "paper_tex/build.sh": {
+      "sha256": "50aa7cac9f095ac9d9512c2ea0c7ba3eeb4c77fd8273d37f06ae509e6ddc24d5",
+      "bytes": 5229
+    },
+    "_bestrec_run/emit_latex_tables.py": {
+      "sha256": "db8dc7fdfd76beb300975337830619326d9531b635655ab5fccd800474e34e7c",
+      "bytes": 30615
+    }
+  },
+  "pinned_parity_artifacts": {
+    "note": "Reproducible intermediates of test_pinned_env_parity.py (three-leg commands in PINNED_ENV_PARITY_REPORT.md section 3); archived as release asset pinned_env_parity_artifacts.zip on v0.9-audit-evidence. Source of truth is the script + commands.",
+    "files": {
+      "inenv_results.json": {
+        "sha256": "9352a8461102c3979f7a91d350120b74a396ebbe9048e81eb3c7d27860caa960",
+        "bytes": 6824
+      },
+      "replay_results_Linux-torch2.2.2pcpu-shims.json": {
+        "sha256": "b81197d181f7f7329881c108c88ffaac11f9651c0310f8a4d4f9e22cfec854ae",
+        "bytes": 9285
+      },
+      "replay_results_Windows-torch2.11.0pcu128-shims.json": {
+        "sha256": "75aae011977c02cd1a0ad87c5e1cc4d382c7c13f07156aca9108e3622f80d496",
+        "bytes": 10191
+      },
+      "pinned_ops.pt": {
+        "sha256": "d6bedad1f455fc0e3adaefc10bc1d398156d64a5557d6b7c63dfd1a6395b781c",
+        "bytes": 10857890
+      },
+      "pinned_block.pt": {
+        "sha256": "b36da427a45f938e739f5bfcd93542a8d07b82459413921c0e19dfcf597e7acd",
+        "bytes": 660670
+      },
+      "pinned_pip_freeze.txt": {
+        "sha256": "a18ceb06152aba79395657bb34905590a09a0da04dd2739356c99f9f97f64c32",
+        "bytes": 254
+      },
+      "setup_pinned_env.sh": {
+        "sha256": "560b0a7adc72dcd07984cc6dc39aad2aab89bcae58e631139d7154a31416eed3",
+        "bytes": 3362
+      },
+      "negative_control.py": {
+        "sha256": "0fad4a24aa2e563db0572772464730f1db730a7557362f0074facb5ce04676dc",
+        "bytes": 2154
+      },
+      "negative_control.log": {
+        "sha256": "e9381a4f58fa3d8618e55aeb057cdb10135573bd78c7557f1e96cf6ffb5979ba",
+        "bytes": 409
+      }
+    }
+  },
+  "reference_runs": {
+    "note": "Git-tracked source artifacts of the local reference-implementation runs (THEIRS_ON_OURS_REPORT.md): metrics.jsonl / run_meta.json / gin copy / intended-TB-path / trainer log per run. Consumed by the theirs_on_ours family of _bestrec_run/hstu_results_manifest.json.",
+    "files": {
+      "_bestrec_run/theirs_runs/music_hstu_blair/hstu-sampled-softmax-n512-blair.gin": {
+        "sha256": "1a20561f524046a28ae0202d467956df29eba69bc424f9f33ce617ae56789c4a",
+        "bytes": 1288
+      },
+      "_bestrec_run/theirs_runs/music_hstu_blair/metrics.jsonl": {
+        "sha256": "f602d3577ca5048ac3e6ba84d9bc1d952a8d950da08c790161ef43e1e6da771a",
+        "bytes": 77524
+      },
+      "_bestrec_run/theirs_runs/music_hstu_blair/run_meta.json": {
+        "sha256": "b0e8208d236de1ee4ed985344dbf27775e2066a358947b03a4185f98fef00f65",
+        "bytes": 1439
+      },
+      "_bestrec_run/theirs_runs/music_hstu_blair/tb_logdir_intended.txt": {
+        "sha256": "10cd693e01ba04ed9af8f64e45ec7f188eb766d55cfdd13f3e93e4eb75f737f8",
+        "bytes": 154
+      },
+      "_bestrec_run/theirs_runs/office_sasrec_final/metrics.jsonl": {
+        "sha256": "9ed5b7276598f0247cd19bc7da135ee1271687b55994308d5fd717d3ae4f71a3",
+        "bytes": 94985
+      },
+      "_bestrec_run/theirs_runs/office_sasrec_final/run_meta.json": {
+        "sha256": "e0122c81056547ed47ef02dba66fe3d0bf142b257604f131b3eb03271606a829",
+        "bytes": 1452
+      },
+      "_bestrec_run/theirs_runs/office_sasrec_final/sasrec-sampled-softmax-n512-final.gin": {
+        "sha256": "521dbda5afc83ce7765e19114f7b21fb06580293543eed15fc115f8b667acd29",
+        "bytes": 1353
+      },
+      "_bestrec_run/theirs_runs/office_sasrec_final/tb_logdir_intended.txt": {
+        "sha256": "a6e88dbab92b7d00e6c15971413e135c992602efec922a2bfc31b8ca0476a363",
+        "bytes": 157
+      },
+      "_bestrec_run/theirs_runs/office_hstu_blair/hstu-sampled-softmax-n512-blair.gin": {
+        "sha256": "667cfe13b7fd51fc8cc3ad6b9d15e87b986aadac1329a3d862aee9c68d69cd38",
+        "bytes": 1289
+      },
+      "_bestrec_run/theirs_runs/office_hstu_blair/metrics.jsonl": {
+        "sha256": "563f18f252ad6a77ea0d4da3c5df26641fb363747f6cac7fb51267717c1454d8",
+        "bytes": 94940
+      },
+      "_bestrec_run/theirs_runs/office_hstu_blair/run_meta.json": {
+        "sha256": "98a6dfcb2e1b6862eaf5edb6ff07ba7e2282ac3f573fac92ca1819a709375996",
+        "bytes": 1444
+      },
+      "_bestrec_run/theirs_runs/office_hstu_blair/tb_logdir_intended.txt": {
+        "sha256": "7cbfc0ad6984515ff90c6f31086983df42b0e43faf72daac3ecaa90fba5fce3a",
+        "bytes": 155
+      },
+      "_bestrec_run/theirs_runs/music_hstu_blair.log": {
+        "sha256": "b632090a70efeb489f3412087a03424b6526f44f8520e29f5c350106ea356da7",
+        "bytes": 21589
+      },
+      "_bestrec_run/theirs_runs/office_sasrec_final.log": {
+        "sha256": "8e82787c393194e6db400343ba31d11ac4ac7f498afe3be11fa941f48daf3475",
+        "bytes": 29597
+      },
+      "_bestrec_run/theirs_runs/office_hstu_blair.log": {
+        "sha256": "65e2c69d43b6790f39260c709e2717756f0afd85b9c42a34a1b342d3057535d5",
+        "bytes": 28304
+      }
+    }
+  },
+  "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes the rendered paper_tex/PAPER_TORS.pdf, PAPER_TORS_acmsmall.pdf, and PAPER_TORS_SUPPLEMENT.pdf artifacts; deposit bundles that require source ship the git archive of that commit.",
+  "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
+  "intended_deposit_tag": "v1.2.0-deposit",
+  "hash_parent_commit": "65b20b5763e9a5626c77c0cbfcb0df022a06875f",
+  "tfv2_sidecars": {
+    "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
+      "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",
+      "bytes": 2435213
+    },
+    "results_TFV2_CDs_filter_seed20260861.users.jsonl.gz": {
+      "sha256": "50ae22c56afd369dc022ae24ea33a3dfdc806a797f72e8c6beb68ddabf8296d4",
+      "bytes": 2436214
+    },
+    "results_TFV2_CDs_filter_seed20260862.final.users.jsonl.gz": {
+      "sha256": "f0aa5c02e5924fa84084d692f0b67538bc5fb14d3e999ff117c10577e39ef7a3",
+      "bytes": 2437800
+    },
+    "results_TFV2_CDs_filter_seed20260862.users.jsonl.gz": {
+      "sha256": "1e4e4d37069cae8a1a15a7c3ababaf69e8a4ad5d75606778cee8f93a73806533",
+      "bytes": 2435529
+    },
+    "results_TFV2_CDs_filter_seed20260863.users.jsonl.gz": {
+      "sha256": "f9d5086d9715d55fe458b929c92311137da9cb139a13c46250867d01778cb5f9",
+      "bytes": 2437886
+    },
+    "results_TFV2_CDs_filter_seed20260864.final.users.jsonl.gz": {
+      "sha256": "495277ff2ef985545dcd2a896f6ac22bb5db07da3d834f894313cce966cd5b36",
+      "bytes": 2436819
+    },
+    "results_TFV2_CDs_filter_seed20260864.users.jsonl.gz": {
+      "sha256": "09e530cbe460bc2a5f04169fcab8e736476f48189b56dd97577a1cf510e97f35",
+      "bytes": 2434876
+    },
+    "results_TFV2_CDs_filter_seed20260865.users.jsonl.gz": {
+      "sha256": "ea34933df28994d28883bdf344bf744bc002ebb7e9393d7c0e77e02d3c17000f",
+      "bytes": 2434810
+    },
+    "results_TFV2_CDs_filter_seed20260866.final.users.jsonl.gz": {
+      "sha256": "eb7ca810cb7c50b372eb6433409c10a73842d31aa929b80779c8d9030ff61fc2",
+      "bytes": 2436826
+    },
+    "results_TFV2_CDs_filter_seed20260866.users.jsonl.gz": {
+      "sha256": "bf04a8f39045c92bf49b9de313116dba8b4b560d852cf3181ef1e1f82c344c55",
+      "bytes": 2437192
+    },
+    "results_TFV2_CDs_filter_seed20260867.final.users.jsonl.gz": {
+      "sha256": "2d03f4bd2bea475e82b4b581e3b0a5cb21694956f505fda9a809e733640683c2",
+      "bytes": 2436181
+    },
+    "results_TFV2_CDs_filter_seed20260867.users.jsonl.gz": {
+      "sha256": "a0a43b1ab18ad818717a8e687ce635e763474e4eebddfb90c866c355068ed1c0",
+      "bytes": 2437737
+    },
+    "results_TFV2_CDs_filter_seed20260868.final.users.jsonl.gz": {
+      "sha256": "fc342e964322f89c8886cd7cef0fa76f941cddb3643020475913fa2d7738d938",
+      "bytes": 2436499
+    },
+    "results_TFV2_CDs_filter_seed20260868.users.jsonl.gz": {
+      "sha256": "28ebca6a42405a98d9ef0bcb57828262cd2d3e08c0c24a807569f858a9144bd9",
+      "bytes": 2435423
+    },
+    "results_TFV2_CDs_nofilter_seed20260871.users.jsonl.gz": {
+      "sha256": "5de32301034a09d105960a4185d3efcf696ad1d0dea708aa28946e4100033e8f",
+      "bytes": 2455889
+    },
+    "results_TFV2_CDs_nofilter_seed20260872.users.jsonl.gz": {
+      "sha256": "56d8c7b6d654a28268ab0bca19170d8ea4fd0b8f74e75b57886dd8b92530789f",
+      "bytes": 2454425
+    },
+    "results_TFV2_CDs_nofilter_seed20260873.users.jsonl.gz": {
+      "sha256": "6b71674ea83babffebbef538ede65b1a0d4be0e9fa57f030f2f3179a8442125a",
+      "bytes": 2457710
+    },
+    "results_TFV2_CDs_nofilter_seed20260874.users.jsonl.gz": {
+      "sha256": "d4f40401f5c3453896fee3d176c8300ef2e6a7bd9833c2493254e79ba067e29f",
+      "bytes": 2462115
+    },
+    "results_TFV2_CDs_nofilter_seed20260875.final.users.jsonl.gz": {
+      "sha256": "80d7d6aae4c243373a0d153b4c807e066d078d6d34cd2dead97231673756a060",
+      "bytes": 2464129
+    },
+    "results_TFV2_CDs_nofilter_seed20260875.users.jsonl.gz": {
+      "sha256": "981249e669b6aafcbacfa1c647ee56ef731fc4cbdf0ff906f2be8deb3306f526",
+      "bytes": 2463698
+    },
+    "results_TFV2_CDs_nofilter_seed20260876.users.jsonl.gz": {
+      "sha256": "d18eb7ebfa0929cfa0e63c0a0ca44218582f2e51ff9519059522a620f0fd9b97",
+      "bytes": 2456513
+    },
+    "results_TFV2_CDs_nofilter_seed20260877.final.users.jsonl.gz": {
+      "sha256": "cf15bb6dccb0efd5a0d2de9422012d00fbd0a412c81bff16900c63d386e9f205",
+      "bytes": 2463394
+    },
+    "results_TFV2_CDs_nofilter_seed20260877.users.jsonl.gz": {
+      "sha256": "6957252a46a8496d0d2fa473cd6547de326a9cd90a00244c9e4d744de64d9880",
+      "bytes": 2462791
+    },
+    "results_TFV2_CDs_nofilter_seed20260878.final.users.jsonl.gz": {
+      "sha256": "d13e36813b2ae5e30ba1924d9dddb3f728f702b37568a82e99c28a9ef7844d52",
+      "bytes": 2460026
+    },
+    "results_TFV2_CDs_nofilter_seed20260878.users.jsonl.gz": {
+      "sha256": "db8bf9ad98b90d4de4b6068a770fe85ac638dc857d8330716ff561897bbcd979",
+      "bytes": 2458796
+    },
+    "results_TFV2_IS_filter_seed20260821.final.users.jsonl.gz": {
+      "sha256": "0dff45205e7660891f2669bbbaa59236fc019deedf05d49b1ed618e972a0d2ae",
+      "bytes": 1030022
+    },
+    "results_TFV2_IS_filter_seed20260821.users.jsonl.gz": {
+      "sha256": "3f58fb54867e510fa07bd117e4ac1694be43f1b8e483c15e6bf73771be84b9fd",
+      "bytes": 1029255
+    },
+    "results_TFV2_IS_filter_seed20260822.final.users.jsonl.gz": {
+      "sha256": "e7ccdc83980ed556053d800c4cd0e23922b59d11890f4e196459d8c9b268e5a7",
+      "bytes": 1030371
+    },
+    "results_TFV2_IS_filter_seed20260822.users.jsonl.gz": {
+      "sha256": "d57f059808c1bb81af6a421f8bb89b8f2786f4857e4d3a7bb28c2b2c474ca6bd",
+      "bytes": 1030345
+    },
+    "results_TFV2_IS_filter_seed20260823.final.users.jsonl.gz": {
+      "sha256": "cdca2e4e32d814e7f169819b63d90cdd599a9be0e78830591b60330342c1cea8",
+      "bytes": 1029412
+    },
+    "results_TFV2_IS_filter_seed20260823.users.jsonl.gz": {
+      "sha256": "ba6cacde622b93353e8e21dea09a0fd22d628cb51ebae58a706c5e68fb999007",
+      "bytes": 1028509
+    },
+    "results_TFV2_IS_filter_seed20260824.final.users.jsonl.gz": {
+      "sha256": "f5f425e8421d5db0383faff8587f348cb0119fd10aed64382ac725f10213bdd2",
+      "bytes": 1029212
+    },
+    "results_TFV2_IS_filter_seed20260824.users.jsonl.gz": {
+      "sha256": "61030293935895bae7cd33ef431d16a6ab0a4d2813a6d0158c887647f68c8465",
+      "bytes": 1028050
+    },
+    "results_TFV2_IS_filter_seed20260825.final.users.jsonl.gz": {
+      "sha256": "2735361476969baa7c6bb40489fae6c3e76fb67fc31ae994f55bbd81127367e3",
+      "bytes": 1029018
+    },
+    "results_TFV2_IS_filter_seed20260825.users.jsonl.gz": {
+      "sha256": "f419d5fbf59baba3f36f02bd732c78a84a2dfbc1fff7026aa01c664f5a3a4cb3",
+      "bytes": 1028974
+    },
+    "results_TFV2_IS_filter_seed20260826.final.users.jsonl.gz": {
+      "sha256": "ecf9418c8f79de72ed1636d5f1d04568f59f4e92243fdd7b1751950fd7f2232f",
+      "bytes": 1029112
+    },
+    "results_TFV2_IS_filter_seed20260826.users.jsonl.gz": {
+      "sha256": "8dc39dd8f056cbd9df230c3fd546e19c37c6c9511fb0abaaf4696e9800d936f8",
+      "bytes": 1029861
+    },
+    "results_TFV2_IS_filter_seed20260827.final.users.jsonl.gz": {
+      "sha256": "c01179a26c33ca6465b67eb31053c375886de7c73c0a9baf249467e68250bfb8",
+      "bytes": 1029130
+    },
+    "results_TFV2_IS_filter_seed20260827.users.jsonl.gz": {
+      "sha256": "f4c2700124694d1d122a02f5f550f2d8b3db5786d16f8e8e65c96a1c041d1fb8",
+      "bytes": 1028673
+    },
+    "results_TFV2_IS_filter_seed20260828.final.users.jsonl.gz": {
+      "sha256": "da6b96d4d6ab426ab3e31e66c590e7c2854e15d685321fbf8fa110fcbff29987",
+      "bytes": 1029275
+    },
+    "results_TFV2_IS_filter_seed20260828.users.jsonl.gz": {
+      "sha256": "98a982d060827a40f8a45afe798fa497608e92fb090fc5dfa8ccf8dc7ac5b3a0",
+      "bytes": 1027260
+    },
+    "results_TFV2_IS_nofilter_seed20260831.final.users.jsonl.gz": {
+      "sha256": "3f1b1388799e8e0165ff6df18f602878cc05290cbb299bbaad0816ee9c5f4f9c",
+      "bytes": 1032535
+    },
+    "results_TFV2_IS_nofilter_seed20260831.users.jsonl.gz": {
+      "sha256": "fa7de49b1140fc22de434ee567878b8728012bd6735040f21bd3478581bba0db",
+      "bytes": 1031150
+    },
+    "results_TFV2_IS_nofilter_seed20260832.final.users.jsonl.gz": {
+      "sha256": "7fe1044e9c59be2a804a5c115deb8c030c9741e3d0a6714e6fe898488fbe4409",
+      "bytes": 1032548
+    },
+    "results_TFV2_IS_nofilter_seed20260832.users.jsonl.gz": {
+      "sha256": "abd27102160beb03a0d425c47b8046eba982cbd44c889884f8975237f6802fdc",
+      "bytes": 1034426
+    },
+    "results_TFV2_IS_nofilter_seed20260833.final.users.jsonl.gz": {
+      "sha256": "f06cf44e57c56596c5dc6cbe8b6cab1f1f49ac0092d863e9bb844286b1e86c68",
+      "bytes": 1032789
+    },
+    "results_TFV2_IS_nofilter_seed20260833.users.jsonl.gz": {
+      "sha256": "1df4e2882edf6bc539fae18557dd857ce3a911698460ebf8296d2df35566571d",
+      "bytes": 1032198
+    },
+    "results_TFV2_IS_nofilter_seed20260834.final.users.jsonl.gz": {
+      "sha256": "e7254fcea5d093e77a57cd8705460864f9ff8b524bb963d5e6d9eb0968049f7c",
+      "bytes": 1034046
+    },
+    "results_TFV2_IS_nofilter_seed20260834.users.jsonl.gz": {
+      "sha256": "df6ac9c81715a50fad7c2f1cb6a95d61c4619525c82394f9b1c0120ac89e1e21",
+      "bytes": 1032872
+    },
+    "results_TFV2_IS_nofilter_seed20260835.final.users.jsonl.gz": {
+      "sha256": "156124a9837fc935b67e32c95ca84b074f8dec819c031d04db14c7825eaab8d9",
+      "bytes": 1031931
+    },
+    "results_TFV2_IS_nofilter_seed20260835.users.jsonl.gz": {
+      "sha256": "2ee039a0d80aafcb55cfbc0a679f00dcda7933eb594a89a0a3ed8953b18662d1",
+      "bytes": 1032405
+    },
+    "results_TFV2_IS_nofilter_seed20260836.final.users.jsonl.gz": {
+      "sha256": "8b1493222b16898d8fa844600589c41dbdb9e385b9befa4fc487cb3b8af3c443",
+      "bytes": 1032023
+    },
+    "results_TFV2_IS_nofilter_seed20260836.users.jsonl.gz": {
+      "sha256": "a4ae1b3b31881f1b6c56cc730e050bc7eecd5fcc4b45904b6a97c25b0f691ceb",
+      "bytes": 1030184
+    },
+    "results_TFV2_IS_nofilter_seed20260837.final.users.jsonl.gz": {
+      "sha256": "0cb367487afdd11f2c7f116ab39b3fa757887def3f72b47585e70fa419988c73",
+      "bytes": 1034112
+    },
+    "results_TFV2_IS_nofilter_seed20260837.users.jsonl.gz": {
+      "sha256": "a4844552b397eea103b9881f636425370931839c9d7d5ffb6f311dc64303c10d",
+      "bytes": 1031927
+    },
+    "results_TFV2_IS_nofilter_seed20260838.final.users.jsonl.gz": {
+      "sha256": "821d35329e16ad31a5a6dd855d890f5eb3778bfa0c371727db89f204ac834967",
+      "bytes": 1033978
+    },
+    "results_TFV2_IS_nofilter_seed20260838.users.jsonl.gz": {
+      "sha256": "2dd7eda53e81e567f0ed42880216ed0427adb94b5fe453dd0e6119d813522888",
+      "bytes": 1028410
+    },
+    "results_TFV2_MI_idonly_seed20260811.final.users.jsonl.gz": {
+      "sha256": "533dee95d26f5ff449d6a8aadd0960a1c99e13aaa30b48c2ee68d076a71a0235",
+      "bytes": 1126764
+    },
+    "results_TFV2_MI_idonly_seed20260811.users.jsonl.gz": {
+      "sha256": "27d4af31149eb02c58f0e90052ca13ae0e1987e5685f0b7b0d5e423b9c806abb",
+      "bytes": 1125034
+    },
+    "results_TFV2_MI_idonly_seed20260812.final.users.jsonl.gz": {
+      "sha256": "03e4fd3f1059acf9a5c50fe63431949f91887f2127fa715981beea3ac13f8627",
+      "bytes": 1125562
+    },
+    "results_TFV2_MI_idonly_seed20260812.users.jsonl.gz": {
+      "sha256": "0b884b3ce4dafac2e3b9be668a79053993f02914af4548f7544e199a5a314e49",
+      "bytes": 1126652
+    },
+    "results_TFV2_MI_idonly_seed20260813.final.users.jsonl.gz": {
+      "sha256": "c221c18a16d44f3ea4ab9eb7d159129ca36cfee4b037cd1be9680e2902f63e4b",
+      "bytes": 1125829
+    },
+    "results_TFV2_MI_idonly_seed20260813.users.jsonl.gz": {
+      "sha256": "e105e42ad1cb89d10cc02816d61bc11fcead4f4f7577b9bbefe716581d0e2274",
+      "bytes": 1125726
+    },
+    "results_TFV2_MI_idonly_seed20260814.final.users.jsonl.gz": {
+      "sha256": "ec1fdd164b5afd4cd4b575c0ba5609ec4e7ca4c8fb50f086350b64005ea14bbc",
+      "bytes": 1126549
+    },
+    "results_TFV2_MI_idonly_seed20260814.users.jsonl.gz": {
+      "sha256": "5fed3cd621068635d2cfbec5e8f734db7a0d9a3bf043977285e032aa218c0297",
+      "bytes": 1125614
+    },
+    "results_TFV2_MI_idonly_seed20260815.final.users.jsonl.gz": {
+      "sha256": "2b17baed2d42175c5b19a65d3694676558beac0872fc6a8dfa5a40bfc292b73d",
+      "bytes": 1125713
+    },
+    "results_TFV2_MI_idonly_seed20260815.users.jsonl.gz": {
+      "sha256": "f803a1608a2fe097a0670248ebe3d63709effff5f073b7f184cf62f54ab551b9",
+      "bytes": 1124820
+    },
+    "results_TFV2_MI_idonly_seed20260816.final.users.jsonl.gz": {
+      "sha256": "ebb13753ebc9e6f82d389973402023b867f1e76dc521f6874574006f7b397480",
+      "bytes": 1125707
+    },
+    "results_TFV2_MI_idonly_seed20260816.users.jsonl.gz": {
+      "sha256": "82fab4e762a266ece041dfbc45cd4b2872cbbc30a78984dd47acc47e7543663a",
+      "bytes": 1125342
+    },
+    "results_TFV2_MI_idonly_seed20260817.final.users.jsonl.gz": {
+      "sha256": "14c4c54127e47784d22631046e89f9ec2c99160ab2f8eb694b22be400f69e57b",
+      "bytes": 1127102
+    },
+    "results_TFV2_MI_idonly_seed20260817.users.jsonl.gz": {
+      "sha256": "15b052032a4d538de2dbe42277607242dfdfe9438b2c2e7872cc10d2de8772ff",
+      "bytes": 1126600
+    },
+    "results_TFV2_MI_idonly_seed20260818.final.users.jsonl.gz": {
+      "sha256": "96141dbb5e99ab32532d762f07366a73f99fdb35bc6ef9cf2ceabe91616cf6cb",
+      "bytes": 1127671
+    },
+    "results_TFV2_MI_idonly_seed20260818.users.jsonl.gz": {
+      "sha256": "d2636267bf91903cc27078e6c53a325e244a8ef6d0630335cf39c59fcacda056",
+      "bytes": 1127072
+    },
+    "results_TFV2_MI_text_seed20260801.users.jsonl.gz": {
+      "sha256": "6e73ac2b99286e98cb79fe0e3d3b705b4e090343debc1cd58a5f4f4bc3d475ba",
+      "bytes": 1110437
+    },
+    "results_TFV2_MI_text_seed20260802.final.users.jsonl.gz": {
+      "sha256": "962c8a145ce8791079805c3b649dcae99696c9227550ad75dd8f80b8b9992c77",
+      "bytes": 1110384
+    },
+    "results_TFV2_MI_text_seed20260802.users.jsonl.gz": {
+      "sha256": "ecd2fa7991bc0a9617e7c6adab901d1b70ebf3e3892128cd125492c5a35545ca",
+      "bytes": 1110897
+    },
+    "results_TFV2_MI_text_seed20260803.final.users.jsonl.gz": {
+      "sha256": "e391605ef189c7bceb2c7ccaefbbc369f32c2ce0e76b1605a7adb235422b5e15",
+      "bytes": 1111113
+    },
+    "results_TFV2_MI_text_seed20260803.users.jsonl.gz": {
+      "sha256": "a9cd6b98f38f3864d83245c9b6c2a0dbaa296907ec9c315aa952b000d109de99",
+      "bytes": 1110796
+    },
+    "results_TFV2_MI_text_seed20260804.final.users.jsonl.gz": {
+      "sha256": "436db62ac3fdfdb63a8018014db587789329f1236ff0b51671f3f0cf8fc29c4d",
+      "bytes": 1110455
+    },
+    "results_TFV2_MI_text_seed20260804.users.jsonl.gz": {
+      "sha256": "d626463f86191a6eb6392a091362d311606d9d9502f52cf08ae4153bdee4f356",
+      "bytes": 1109868
+    },
+    "results_TFV2_MI_text_seed20260805.final.users.jsonl.gz": {
+      "sha256": "1c277bc1ff60475e580f9abd2ba9710476f268953efe4b9cd3c49223ff9aaaf2",
+      "bytes": 1110809
+    },
+    "results_TFV2_MI_text_seed20260805.users.jsonl.gz": {
+      "sha256": "87896f863eb9a97b074cfa960ef56ed0cd9cd4b35399af02c7bc073ad682e188",
+      "bytes": 1109807
+    },
+    "results_TFV2_MI_text_seed20260806.final.users.jsonl.gz": {
+      "sha256": "269d09278a5870ce1a97fc4487d897e988566d4313169c5b25c16160d9fa9595",
+      "bytes": 1110758
+    },
+    "results_TFV2_MI_text_seed20260806.users.jsonl.gz": {
+      "sha256": "93208fed8ea830fb2e7dafcb4be7de28b160d42b2a0e9687118226ff82b41bb2",
+      "bytes": 1109501
+    },
+    "results_TFV2_MI_text_seed20260807.final.users.jsonl.gz": {
+      "sha256": "e59e648ba39abd05f5178000abbf03c6575152151d5369f67cc3344058861add",
+      "bytes": 1111405
+    },
+    "results_TFV2_MI_text_seed20260807.users.jsonl.gz": {
+      "sha256": "ffd30be9caed9742f5b5760f827c4d40f840381499291bca2a2bac6290cd3bff",
+      "bytes": 1110491
+    },
+    "results_TFV2_MI_text_seed20260808.final.users.jsonl.gz": {
+      "sha256": "ab49eeeefef8ae70261dc635cf27f8ef1b6a47ac452225c889980acc4d71f816",
+      "bytes": 1110895
+    },
+    "results_TFV2_MI_text_seed20260808.users.jsonl.gz": {
+      "sha256": "c858d9450366f9e0e07831bbd529deae46b2e870404d32a05dac76d771081518",
+      "bytes": 1108399
+    },
+    "results_TFV2_VG_idonly_seed20260851.users.jsonl.gz": {
+      "sha256": "905ea2dd0d6b813b06c46ac4f542ef6677373755a6329bfe0f7c7267057ec9ed",
+      "bytes": 1713945
+    },
+    "results_TFV2_VG_idonly_seed20260852.users.jsonl.gz": {
+      "sha256": "ff54f8851eedbd01dc550ebe4bcfd31c95171a70e22b54874eec1fca0e5389ca",
+      "bytes": 1714303
+    },
+    "results_TFV2_VG_idonly_seed20260853.users.jsonl.gz": {
+      "sha256": "78e88e1f150aaa40f55fc87f20f5ce3c5c79c9b651ec8f144d4df568378d92bb",
+      "bytes": 1713644
+    },
+    "results_TFV2_VG_idonly_seed20260854.users.jsonl.gz": {
+      "sha256": "8e71229804f761039c1cc7ac3ee96c29a077b0aa7445ff5bd742c46cb9c8aeab",
+      "bytes": 1714405
+    },
+    "results_TFV2_VG_idonly_seed20260855.users.jsonl.gz": {
+      "sha256": "c9b0db873ac865f8ad93f6a4b37d50130ef5a466cea460031cde282d687caa21",
+      "bytes": 1715259
+    },
+    "results_TFV2_VG_idonly_seed20260856.users.jsonl.gz": {
+      "sha256": "8ae47c56dece97ae7d45a5368645d9b6b43445b9d74065083a7422f06a2837b7",
+      "bytes": 1716229
+    },
+    "results_TFV2_VG_idonly_seed20260857.users.jsonl.gz": {
+      "sha256": "1bc64ac5560713eb1c5a7e98357591f3406fcf4359c317dd7cb9422d6a2a946f",
+      "bytes": 1715249
+    },
+    "results_TFV2_VG_idonly_seed20260858.users.jsonl.gz": {
+      "sha256": "1326f7a5819940f6339a6ac6db6ed08a70a4e97f5d18289093440067880a3278",
+      "bytes": 1714863
+    },
+    "results_TFV2_VG_text_seed20260841.final.users.jsonl.gz": {
+      "sha256": "d8b3db7ddff823c3553b04070794c59eb695f9ad5605e832c5afe85d3ea73f76",
+      "bytes": 1704619
+    },
+    "results_TFV2_VG_text_seed20260841.users.jsonl.gz": {
+      "sha256": "3a233b85246b9cc91833fbdd3f7ffcac88f13a0c94cf776e1a990bdc948dc88f",
+      "bytes": 1700929
+    },
+    "results_TFV2_VG_text_seed20260842.users.jsonl.gz": {
+      "sha256": "ce07194072f06ebee2b7a82931f78d2203cbbe36ad0705269211600e439438f5",
+      "bytes": 1704447
+    },
+    "results_TFV2_VG_text_seed20260843.users.jsonl.gz": {
+      "sha256": "ef49a1b02c5e48a6c08c2534161d11c5eab02ca20704525ebf6406060f5ad01a",
+      "bytes": 1707426
+    },
+    "results_TFV2_VG_text_seed20260844.users.jsonl.gz": {
+      "sha256": "dda109e519f46dfb0063005c472d0fc71454465a241cd5427418fab1cba16f35",
+      "bytes": 1704637
+    },
+    "results_TFV2_VG_text_seed20260845.final.users.jsonl.gz": {
+      "sha256": "321095768cf41afa518b5d564bd96ce59918616bfe2ac36b2ae6ba96c2223451",
+      "bytes": 1703553
+    },
+    "results_TFV2_VG_text_seed20260845.users.jsonl.gz": {
+      "sha256": "e6fec09c7769a318557925a45bb6a80889917a7b88bf9abbe2477099b7e16ffe",
+      "bytes": 1703540
+    },
+    "results_TFV2_VG_text_seed20260846.users.jsonl.gz": {
+      "sha256": "aaf076de6a89f923cfe0d2760c77159d936ae1bc92100cbb4281e1a9a12d961d",
+      "bytes": 1703800
+    },
+    "results_TFV2_VG_text_seed20260847.users.jsonl.gz": {
+      "sha256": "168a5db1c4204f75e76771b83e6b9ba8308f91c9fda684a3f0510244e5956165",
+      "bytes": 1703244
+    },
+    "results_TFV2_VG_text_seed20260848.final.users.jsonl.gz": {
+      "sha256": "a78f86272d962e9eb9cd873c809a010721609b8d8c46e2675ace51e9481499af",
+      "bytes": 1704469
+    },
+    "results_TFV2_VG_text_seed20260848.users.jsonl.gz": {
+      "sha256": "8b38b7bd85ab48189232a20411cbd0a768789d84a7dab67ac4bc3a8eb2395a96",
+      "bytes": 1703449
+    }
+  },
+  "aux_graph_sources": {
+    "_bestrec_sota_lab/runs/hstu_blair_eval_export_full_20260609_fg/hstu_blair_eval_export_summary.json": {
+      "sha256": "22d6d1ff5203c0d29a2c0be3a88c41beb063666dcc9afbc3d4c9b0ad54e0bc98",
+      "bytes": 3268
+    },
+    "_bestrec_run/run_CONNGATE_MI_k8_seed20260608.log": {
+      "sha256": "0f8ff4f2f8c75df8341b07ae8253631eb180e6a562b36d63404b7b1ec38f4d6d",
+      "bytes": 4460
+    },
+    "_bestrec_run/run_CONNGATE_5seed_driver.log": {
+      "sha256": "6fdba7729302006f4124a96d81e42b4cb2799bb661ccabcdc8eb38c2f5decf18",
+      "bytes": 18690
+    }
+  },
+  "figure_assets": {
+    "figures/fig_tail_law_mechanism_data.csv": {
+      "sha256": "4072f262469f709b3f1f40bdbecffb1bb9f017e5bf6fdb8e2bcec7830083fb1b",
+      "bytes": 2118
+    },
+    "figures/fig_tail_law_mechanism.png": {
+      "sha256": "1d1cd5121c17fa919b75cb4d82082c43d9fd5ffb9ae20eefe15949cf94d12edb",
+      "bytes": 228536
+    },
+    "figures/fig_tail_law_mechanism.pdf": {
+      "sha256": "7f9c1bdd66d14cc279468b2afcbe2efc783a79823aba28d67dc20a5d61c18ff0",
+      "bytes": 50123
+    },
+    "figures/fig_r1r2_plane.png": {
+      "sha256": "99bc90fefa8160d8613df479a32a9609d0c8c928cc78bde0375662648d584a33",
+      "bytes": 177715
+    },
+    "figures/fig_r1r2_plane.pdf": {
+      "sha256": "48499bed774298ee4e36eaebbee4ea51cf144f07be3a54f0d7e0b9410b9a889e",
+      "bytes": 40206
+    },
+    "figures/fig_fir_response_data.csv": {
+      "sha256": "ee568885ea05a5e1e0fa699500fb019fec2abd5a35149184db30ea905953e3a2",
+      "bytes": 26640
+    },
+    "figures/fig_fir_response.png": {
+      "sha256": "0b5e1a638755c3b457bb58741ea4285eb2710f65465cad6e4aa158efc99b62f3",
+      "bytes": 103648
+    },
+    "figures/fig_fir_response.pdf": {
+      "sha256": "d0fa0cb640bf5292a3977bdaa713af0634c25a3646a4328f10f435965d42d992",
+      "bytes": 33221
+    },
+    "figures/fig_software_v3_pairs_data.csv": {
+      "sha256": "d28d463c78f29fd4c60c0cbf8cd4238e65d523c1b8ed568b1ee7acf41440599d",
+      "bytes": 490
+    },
+    "figures/fig_software_v3_pairs.png": {
+      "sha256": "21ee184eab54de8f4679bae9a4c065e233d55f99ced88e9c9148d364979811c5",
+      "bytes": 118198
+    },
+    "figures/fig_software_v3_pairs.pdf": {
+      "sha256": "b6f03b588a66b4cc677acfb3f4a4417fcb07b3192852615c044e4deb4d7a5ca9",
+      "bytes": 27588
+    },
+    "figures/fig_fir_efficiency_ml1m_v1_data.csv": {
+      "sha256": "62ebbeb63325c29b814ce28e08555a04e135c4b49932ffb96bde0ef1658c3036",
+      "bytes": 761
+    },
+    "figures/fig_fir_efficiency_ml1m_v1.png": {
+      "sha256": "7a9b63fec6a8097346cb509f95756a1c03a1f53e97125a0da9789d8786a7760f",
+      "bytes": 80287
+    },
+    "figures/fig_fir_efficiency_ml1m_v1.pdf": {
+      "sha256": "c2decf2edc441574e6735603f7d29e103553d860b94d99a6aee4a328dedf3be3",
+      "bytes": 26671
+    },
+    "figures/fig_fir_evidence_summary_data.csv": {
+      "sha256": "b053d20858b1040f38b5e2c29795220e3c8da8ca3815a3eb53f0b057246b604b",
+      "bytes": 1795
+    },
+    "figures/fig_fir_evidence_summary.png": {
+      "sha256": "0398655171d6b0b1415f29e59a92defa519e640b54a6bafd60290dc314659014",
+      "bytes": 95504
+    },
+    "figures/fig_fir_evidence_summary.pdf": {
+      "sha256": "874cb7c36d63762845d98b62464d11598700d1b3772f6afa33e2adbb5d632508",
+      "bytes": 26737
+    },
+    "figures/fig_movielens_cohort_flow_data.csv": {
+      "sha256": "b2195e20538ee052f99d38173691b65215d4787c7056f9619e7b0b2dd1260ff4",
+      "bytes": 297
+    },
+    "figures/fig_movielens_cohort_flow.png": {
+      "sha256": "f4875e89422b9c3c62ef4108cfa93504eecc0777279fd5c1406f852078c5ab8a",
+      "bytes": 101500
+    },
+    "figures/fig_movielens_cohort_flow.pdf": {
+      "sha256": "bb20c82a5615282e4d0ff8db3c11c8e8a00087a2c0b75672af5a885158b99fb6",
+      "bytes": 25636
+    },
+    "_bestrec_run/make_fig_tail_law_mechanism.py": {
+      "sha256": "64a794656d8e0b18fa71ffe3e08aed52ac71195df9637a238d3109367cc96087",
+      "bytes": 8169
+    },
+    "_bestrec_run/make_fig_r1r2_plane.py": {
+      "sha256": "7ef9a05a8ca55ba364689d7e994e42898e46019448fa1a667e46ae921b783867",
+      "bytes": 7251
+    },
+    "_bestrec_run/make_fig_fir_response.py": {
+      "sha256": "1e549ca0ff980fa1109de7208765e2d557a77da69a26754901a1b71b2901bb83",
+      "bytes": 5894
+    },
+    "_bestrec_run/make_fig_software_v3_pairs.py": {
+      "sha256": "207b19879ab9920846abc95ea9bf3a1d39fe2cc4ecfa3be9ae16c8046fc32ca7",
+      "bytes": 4855
+    },
+    "_bestrec_run/make_fig_fir_efficiency_ml1m_v1.py": {
+      "sha256": "38dbe3dfb013c0a5eda1c541218025fd5ff4d3b97bfcbf85ab9772f487f10d2a",
+      "bytes": 5940
+    },
+    "_bestrec_run/make_fig_fir_evidence_summary.py": {
+      "sha256": "37810e026bd839de38532984e56b5569bb64f906f2e4ea560caeaa18a0de5644",
+      "bytes": 9067
+    },
+    "_bestrec_run/make_fig_movielens_cohort_flow.py": {
+      "sha256": "cd4b412e949b82dea6583c4f0fd9ed4ba29f472060973e060fc829445c1c5028",
+      "bytes": 5285
+    }
+  },
+  "fir_control_sidecars": {
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260901.finaleval.users.npz": {
+      "sha256": "bd9581ea6f5bb6c7785eaebf36ba4b3a237c462e50f701416733648da57b6b76",
+      "bytes": 643125
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260902.finaleval.users.npz": {
+      "sha256": "0f2bb1d6163ed6d2202036fffd80bdd6b59e2d0e3782049eea7e5327e5cf8960",
+      "bytes": 643087
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260903.finaleval.users.npz": {
+      "sha256": "1f0895e84c2883b8f7d7ea5f89520e24e63805ada0450551bd79ec900baacca3",
+      "bytes": 643200
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260904.finaleval.users.npz": {
+      "sha256": "8d629fd2817564606e251ef2c659c779dccf352052cae057b0ddbbc08413b300",
+      "bytes": 644049
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260905.finaleval.users.npz": {
+      "sha256": "1dfe1cd534666688edb99ed42bb3fcbe1adc0d961446715d9a2acd684be5e947",
+      "bytes": 642446
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260906.finaleval.users.npz": {
+      "sha256": "afec67ba2a729685ca4ff896b037c5bb0ee34eba016ad2273bd726933932b378",
+      "bytes": 643430
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260907.finaleval.users.npz": {
+      "sha256": "fa674c17ab0af8cdb02e0ed4c642bdcc282acbfd512da7d48193e5243e665f60",
+      "bytes": 644005
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260908.finaleval.users.npz": {
+      "sha256": "12e58368e6b0d2507954427d2801fa490764fba12a81800e6d7e9bf484729b0f",
+      "bytes": 644016
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260901.finaleval.users.npz": {
+      "sha256": "b43a08a46be08b790e1fc7f1ef55157d767d2882c9523405236f1175ff4780a2",
+      "bytes": 643046
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260902.finaleval.users.npz": {
+      "sha256": "9861ecc2fe64bcfddf0a138674326dc9c9d3b3879cc084a4f1f4597255ada2cc",
+      "bytes": 642978
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260903.finaleval.users.npz": {
+      "sha256": "0d4d5aa6ee9d1b11eb6e9b2a00dd0bc213a1c5009317913a9fd179990e8b9b1d",
+      "bytes": 642846
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260904.finaleval.users.npz": {
+      "sha256": "4a8a794f8ca34bfc6cf5692b125abaac4fcf9baa60040f36e55467357b8b9636",
+      "bytes": 644193
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260905.finaleval.users.npz": {
+      "sha256": "49abb41faebf44fd1a55886f0ca155b4637647338fefabde6de531708dd9bfed",
+      "bytes": 642348
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.finaleval.users.npz": {
+      "sha256": "148b2a9de0e48ccf71f3766177ea28cb745086815be426e4cbb40e5d227d5c35",
+      "bytes": 643515
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260907.finaleval.users.npz": {
+      "sha256": "0a7ced0521948981c6c62dc7c775b0732b1d5557fb2c27d4c8cb7c45ef468fea",
+      "bytes": 644246
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260908.finaleval.users.npz": {
+      "sha256": "fd627758a8c44f933cfab726ee534ce4f56cddc58d7b1357cb79577e12d41cfc",
+      "bytes": 643979
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.users.npz": {
+      "sha256": "1acde515408ab4913dc01eabf4e5ab10cbdf9c7376c9e1fa875f2ba53992e80e",
+      "bytes": 643858
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.users.npz": {
+      "sha256": "f135823f82a703fd9cb6fea54141eb7838c9dddc645e5e555b2b9242678a6397",
+      "bytes": 642670
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.users.npz": {
+      "sha256": "1cab25ea5fb8915eccb6293ae8f34bc617582a96fa036eda58567ee9fbd63156",
+      "bytes": 643589
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.users.npz": {
+      "sha256": "e96388c97414093820c407261cbc59c0c24bb0b7487e63d286e46a06d36cfaf3",
+      "bytes": 644280
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.users.npz": {
+      "sha256": "22eba23d43d5e231b72307ee909e6841897ec83e0b4db496d728a25bffc2b2da",
+      "bytes": 643096
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.users.npz": {
+      "sha256": "701118d7cc7b82819ef71b340808c42672a68617d42b80028f615298c94d399a",
+      "bytes": 644901
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.users.npz": {
+      "sha256": "2a6434c818b10b084be1a20c05aae03c42716829f30be36ee22d6222795ee86b",
+      "bytes": 644250
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.users.npz": {
+      "sha256": "a2573fc852f1bd4336972e6229c4da11c8eea544a3b1a06f320d08fb501584f5",
+      "bytes": 644457
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.users.npz": {
+      "sha256": "4595676a15db8b61ffd1f3392a09be9da6bcb35c7c06b7f739627f974517bfaa",
+      "bytes": 643757
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.users.npz": {
+      "sha256": "9f5fd9d7930261c640ce570285efb0d2d40eb91640a18dcfbc8e7f3f519868d7",
+      "bytes": 642750
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.users.npz": {
+      "sha256": "5e4a7c87d34d4d1b8654090bedcde298abc270d20fae24a4931e3424b5230763",
+      "bytes": 643070
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.users.npz": {
+      "sha256": "09506c21ec7945f85b0067bea5fb03575e456b19b481776496837f3032254f80",
+      "bytes": 643742
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.users.npz": {
+      "sha256": "a68653afed27a8c32e7e4e76797640ec0e0e26dfa388105993324495e963a2f1",
+      "bytes": 643129
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.users.npz": {
+      "sha256": "3011bee3c99d56aa2b14485cf2ed6125d5c3460288e4987a7377f6cbd7548fe1",
+      "bytes": 643137
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.users.npz": {
+      "sha256": "d0d5cfd54552370c17134f780ac6928075573f02fa6685f24bd321cc0c34db50",
+      "bytes": 642312
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.users.npz": {
+      "sha256": "95bb57608fee8cd2d893537a6cb3022f289f72569d802c82b97e08d84a75ecbf",
+      "bytes": 643106
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260901.finaleval.users.npz": {
+      "sha256": "8d0f18fcd6442cad329056ae023126fadebac257deaa666f254c801b2385562b",
+      "bytes": 643629
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260902.finaleval.users.npz": {
+      "sha256": "95a28146704f97dc7d7ef0969724a4c65a36fa42370654de7a2c32dfbcde8bd2",
+      "bytes": 642681
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260903.finaleval.users.npz": {
+      "sha256": "17338f50d65b3096da4e211679bfe680fdce02f90bd18d27bc16b86d9302d260",
+      "bytes": 643306
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260904.finaleval.users.npz": {
+      "sha256": "567ec554fde205fd555fbdf889a532eecce2112baaa46eeb8be77085ae0b1f42",
+      "bytes": 643975
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260905.finaleval.users.npz": {
+      "sha256": "7bf11327e6cf41c202b14e1aa9e2c9ec04abbb1803c3a3e6c2d98719ec664bc6",
+      "bytes": 642315
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260906.finaleval.users.npz": {
+      "sha256": "3e442248e846ff00f0e9afab6161f605a1be05a65cd052e2e0c8d8c673745e1d",
+      "bytes": 642933
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260907.finaleval.users.npz": {
+      "sha256": "ad6b24206feb27ba1b90994cd31d827e0047d94b606942aca89b7533f4274e18",
+      "bytes": 642155
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260908.finaleval.users.npz": {
+      "sha256": "4d576e53d3a89b4ce758e03db6d8a062a797ebacf3cc926011e18f360ccc9d4d",
+      "bytes": 642955
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260901.finaleval.users.npz": {
+      "sha256": "33560c7dc6cc7d4c75c882823450779e74e2a7e41a144036cd81c7a9e872261f",
+      "bytes": 642920
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260902.finaleval.users.npz": {
+      "sha256": "4bc9951ffb29c736c629caa39665b9b536b210d98bf95837ee50d4ad0594daf7",
+      "bytes": 641920
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260903.finaleval.users.npz": {
+      "sha256": "b4eff1ae563b9af2f8842292bed365d0c3c34ec3a44a5cf7518c3818e16e737b",
+      "bytes": 642857
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260904.finaleval.users.npz": {
+      "sha256": "4c263d2ccbef733daf9263a142bfb5a6b762f453487906fbe810814cbb4288f9",
+      "bytes": 643445
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260905.finaleval.users.npz": {
+      "sha256": "5b78856e08858fc32365f5b6d91d62c16af40b6651fa830ac78ee759eebbeb4a",
+      "bytes": 643597
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260906.finaleval.users.npz": {
+      "sha256": "9d6bd50fb923b5d0de6b7e90ab1df5502a6c1ea4753c18787f4507bd29e23e7b",
+      "bytes": 643891
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260907.finaleval.users.npz": {
+      "sha256": "2116e6e782a90ebb5cd89c164bb910e736c439299fce5238519236dec59c002b",
+      "bytes": 643199
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260908.finaleval.users.npz": {
+      "sha256": "247b9db18813412414eede00c2e1f0558c67c07b0885c45d95a80a51e96d7cf8",
+      "bytes": 643456
+    }
+  },
+  "fir_control_checkpoints": {
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260901.best.pt": {
+      "sha256": "d8de88e182c5da44ca5cf6035c402a9ec304d6f59fe4efb34a6f1d472d526380",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260902.best.pt": {
+      "sha256": "12fea854c00f71c4af8931d6d99669c23c4b9d709b73eff458f49390a23ca811",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260903.best.pt": {
+      "sha256": "82473f49eadd0dca025489fd61049954d417a113cb61f3ac11fc18a05c77ac78",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260904.best.pt": {
+      "sha256": "40d35b2c99600d45b41bb8b46e6f40099267a4a13a28d9a09927d4d728272ec2",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260905.best.pt": {
+      "sha256": "6ca1e0f5507bbb32661e4eb3ff902a980cf3a0ed2a52db3594f08e9b21e38c39",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260906.best.pt": {
+      "sha256": "c03f5832d6d44da6376ad79ec58a540936b226adc294fcd58a2bd52130608261",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260907.best.pt": {
+      "sha256": "eac8e1ff2c7d6cb0472c26711216e6bcb82e45cf7ffe1bfe375dc92d8e457a2f",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260908.best.pt": {
+      "sha256": "ad67a4943b9f0d1fe9a40255b004c74ba6a55bb088c89d0d787cc8aac3aedeff",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260901.best.pt": {
+      "sha256": "6283de21cb9f95c56837002e950d795b2c519308d89409d9d12ba1c5d63c67ee",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260902.best.pt": {
+      "sha256": "e4db1226a8905012380cc7475df001f1f61a9e39341e4f8f015ff369f1f77a4d",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260903.best.pt": {
+      "sha256": "796ba0a5ade1490aadf87d521a5464d8dfa58a35ac33e97e0aab07af0b1d34e4",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260904.best.pt": {
+      "sha256": "54781ef496212db4114af25b5cebdef2d1e2fe6174fe0ebbe123f26d83d63f98",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260905.best.pt": {
+      "sha256": "ab485b908399182c7d3d8fc909fd162b81bdd716b472fb512a61539f09eadc8e",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.best.pt": {
+      "sha256": "435bd129dd4f394ccffb94c4b46939d232db9e0e92387ee6f8c71d641ed7c682",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260907.best.pt": {
+      "sha256": "1c889c78aec3ea22ac09c5f7d16c4f53e255c111162da236dbb491af38ea6e5b",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260908.best.pt": {
+      "sha256": "1de4b0e244733cb7cd45fdfd36e4d84d926e9f709fcfcd7359239da0b8f68d9a",
+      "bytes": 95114133
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260901.best.pt": {
+      "sha256": "46abdd3dc11653eede7e74f2e31698cb652dc1ed0c1ef5e52c5db9ff04322c23",
+      "bytes": 95117853
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260902.best.pt": {
+      "sha256": "364929634e7ef067082aefdba86408df21d4f1400ad54462a241f930c1d68165",
+      "bytes": 95117853
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260903.best.pt": {
+      "sha256": "11b04db0fbe527b13e7ff215afbeed88c8b1acf20bb0f297a4fc4ab4ed97765b",
+      "bytes": 95117853
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260904.best.pt": {
+      "sha256": "f85c44ecf57e9e142c868476dfc88ce44cbe6b41f894c3650779980f02daf53b",
+      "bytes": 95117853
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260905.best.pt": {
+      "sha256": "8b82dabfb5ab03444776d432de6decd025aadf6ea436469f491c05c35f09cdb0",
+      "bytes": 95117853
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260906.best.pt": {
+      "sha256": "d12e3c03c0463b7edcff2d515e388160e405b8d0911abacfb2202a6ebc0f579c",
+      "bytes": 95117853
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260907.best.pt": {
+      "sha256": "048fa5f76fdf7e771431c9a641a12110138a3a19f1a3523ec7ff53141b0c4bc4",
+      "bytes": 95117853
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260908.best.pt": {
+      "sha256": "0ad84424a2820e826e711d2da8610b07d4d45d61e41170696659ab9dfb71ff4c",
+      "bytes": 95117853
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260901.best.pt": {
+      "sha256": "e89b125cb922346414a381b30d7ec01e7eabef4dfbe08ab445ec9f2bbf7a20ea",
+      "bytes": 95117738
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260902.best.pt": {
+      "sha256": "d8474bc23387c30e81129dbcbcbe30b28d3954f469174f0745c60831da9f79dc",
+      "bytes": 95117738
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260903.best.pt": {
+      "sha256": "070ab278053a3a050c79f676f8608b5b9dedb7e81f1d0f2c0a86ca9307952213",
+      "bytes": 95117738
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260904.best.pt": {
+      "sha256": "334d7ca0db003c14952d636da2a992c58eed99a082f71b0d5d76cb0c0d65456b",
+      "bytes": 95117738
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260905.best.pt": {
+      "sha256": "52c64e1d13a3c9fcd707b3801fe2c5a74b056df8d6dcf24a6c3b997553723181",
+      "bytes": 95117738
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260906.best.pt": {
+      "sha256": "26b4cb8cfb476bc5038f18167b293ef26c0f53493d4858f2131749277c572b0b",
+      "bytes": 95117738
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260907.best.pt": {
+      "sha256": "6da1ba326b17b835bd9ad556cfd048c1eb4a153dc09bd6f2c1de6198e69b263f",
+      "bytes": 95117738
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260908.best.pt": {
+      "sha256": "01482fab9f0cb1afb8d3062e783c794e1f73963d3aa4170ddb39ef77f1b0f04d",
+      "bytes": 95117738
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260901.best.pt": {
+      "sha256": "350f0f41d43b2679912782ab99c0ec4a251387f068b26f7b163ebfef40095eaa",
+      "bytes": 95117968
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260902.best.pt": {
+      "sha256": "0d96d29ada7999d74a09aa7135059598b1d10956b9316cbb0e076e7049239439",
+      "bytes": 95117968
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260903.best.pt": {
+      "sha256": "f6c5349d9d3c2302305e8ce6ade1b94390d50c5e97b30af52a2a5607d36d0a61",
+      "bytes": 95117968
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260904.best.pt": {
+      "sha256": "579a5ff8d58e9d22a58df1042b3965219fb569fe805cec448700d46145996007",
+      "bytes": 95117968
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260905.best.pt": {
+      "sha256": "265fc37597c0633507341b149fe7292ac519c3b30dd0b15426d1992abb2e8aa5",
+      "bytes": 95117968
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260906.best.pt": {
+      "sha256": "fc6be6746d38f3d8c864b836124bfa290126a5a10cb1f0a3ae9c922f678b73fb",
+      "bytes": 95117968
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260907.best.pt": {
+      "sha256": "2fbfcbcec512d5304a9e629d63b98779b9d719215bb4409ad43dc4723952c9bf",
+      "bytes": 95117968
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260908.best.pt": {
+      "sha256": "5f875b698e0a8e2b8c4f37edfebc340409fa3959e93a80ab28a07112ece299c1",
+      "bytes": 95117968
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260901.best.pt": {
+      "sha256": "3988acadb0c10e46c67c982aa724b91853363463317f21b297e8f0f87502c913",
+      "bytes": 95113655
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260902.best.pt": {
+      "sha256": "dccc4fc69f6b75862e4e37cceb84f5e5510f740dc6cbe453795db9fe59772277",
+      "bytes": 95113655
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260903.best.pt": {
+      "sha256": "c18ace11ead3e0ec3fb996799e089cac600d4ded48b0995d4695625e0ce70a46",
+      "bytes": 95113655
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260904.best.pt": {
+      "sha256": "0bd93265228896f2c5b825f4645daa144ca4c1f50d8ef64e3d3369cfaa1220d9",
+      "bytes": 95113655
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260905.best.pt": {
+      "sha256": "fbd45d117bc43e24ecbba19351c747bb2193e49bd0d5a0e4dd61e108dae74b26",
+      "bytes": 95113655
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260906.best.pt": {
+      "sha256": "2e022e5df1962747a1a9bf3b46d3e06632edab2668e189fcafcdf9604dcaf421",
+      "bytes": 95113655
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260907.best.pt": {
+      "sha256": "03d677091286d66b80b7a9e80cece424377f52a306eb217111c1dce6de20ff56",
+      "bytes": 95113655
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260908.best.pt": {
+      "sha256": "f2aba49459b78e58955ec2a53a0e71d774a63d10f395102b32a28f376d582a5e",
+      "bytes": 95113655
+    }
+  },
+  "fir_control_finaleval": {
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260901.finaleval.json": {
+      "sha256": "c6df209d9d086e99e5d6d776b3c56382609342af0480ccc1928f6119ba8914d8",
+      "bytes": 2655
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260902.finaleval.json": {
+      "sha256": "bb693a790054b16660d0436b188ea3e16dde16f716e46d4e3baa2a904d50ed6e",
+      "bytes": 2653
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260903.finaleval.json": {
+      "sha256": "a1b07ecf3c1c4293c5e9a6df963184e05802f28e3413fed86ea40703d49c834d",
+      "bytes": 2652
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260904.finaleval.json": {
+      "sha256": "4146e4f811741a8942c7539c04f2a14a799b55b06f6e5465b0b97c1a8fa7edb1",
+      "bytes": 2653
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260905.finaleval.json": {
+      "sha256": "79ea9515589dfa7470e8620198c0d6e7b57a1ded252040c7fd0d75bd551cd2a4",
+      "bytes": 2653
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260906.finaleval.json": {
+      "sha256": "385e2da8023604dc6344767b8c3c6eafe6046337a2c24a7410a8168a4e13f39c",
+      "bytes": 2636
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260907.finaleval.json": {
+      "sha256": "f9be7df54a5a270b1b1c9f163600cdf2ee0ad4ef2051a9114633ced55157fe4f",
+      "bytes": 2650
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_hp_seed20260908.finaleval.json": {
+      "sha256": "4c63d5b3c13b6594cfa888e2cbbc7afede66fb9de95badcf86ddd8ea20fb9d4a",
+      "bytes": 2655
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260901.finaleval.json": {
+      "sha256": "071af45c8a6c79165c5ceed6b29404153aa50f31029886a2d1109c684d2f64d5",
+      "bytes": 2654
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260902.finaleval.json": {
+      "sha256": "6bf4d5d8eec30b3942696dcee2d8ae3dddb64c527d371c9c4021deab4f8b6c5f",
+      "bytes": 2653
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260903.finaleval.json": {
+      "sha256": "712ad2b87b688e8a3185dcb375c4235d544a0ac3ebeb75e9a721e1d30db94722",
+      "bytes": 2656
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260904.finaleval.json": {
+      "sha256": "3c3e65d0adbbec4beb96ea0f92634bba7728eee6efddd5e73fe790973ea99428",
+      "bytes": 2652
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260905.finaleval.json": {
+      "sha256": "7b000ee1c92a113201bba07a5accd648de90835c64782b5c3eba2f2ca0171eca",
+      "bytes": 2655
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.finaleval.json": {
+      "sha256": "7217cf184b70ffb2aa1977562235c79c521a08aa0c14a5950651c94fe59669b5",
+      "bytes": 2640
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260907.finaleval.json": {
+      "sha256": "3f65ae7b68a301fb7cff160cafbf995d2385a7c662e06442875acca7337b6160",
+      "bytes": 2650
+    },
+    "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260908.finaleval.json": {
+      "sha256": "78668efa2cac3de30eb6d650e16f69fd3445eb5a3154fb66f0db4a790343f3f6",
+      "bytes": 2654
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260901.finaleval.json": {
+      "sha256": "aaad6adacc450448949555082a5560ccda6cf941fa54ccb3ea1581bedf301b36",
+      "bytes": 2653
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260902.finaleval.json": {
+      "sha256": "abc862331e6dd0932116bcf1e42fdb787d072a6003447b563cead1067d596fcd",
+      "bytes": 2653
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260903.finaleval.json": {
+      "sha256": "df00c7cf0abc05a0cbf76edf4289b3ff2cee7d139d76b06198db36555c52078e",
+      "bytes": 2657
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260904.finaleval.json": {
+      "sha256": "65bc686573678d9708df73c8d95f5d34533f84692b9c2fa0f24dbab1d98ea362",
+      "bytes": 2658
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260905.finaleval.json": {
+      "sha256": "420d5e666c8ffa0b5128d867b743b6fd4647d9c57d4abfcf149abfdd15e23ce6",
+      "bytes": 2649
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260906.finaleval.json": {
+      "sha256": "d428b9173e6c3c823194861896c1c969ea34eefaf0ecd270df405c4ee96e3d12",
+      "bytes": 2654
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260907.finaleval.json": {
+      "sha256": "91bfdad530c263d032cdfa855e8811cdc28973020d0b59a55e27e80b9dd3bfa3",
+      "bytes": 2652
+    },
+    "results_Musical_Instruments_FIRCTRL_identity_seed20260908.finaleval.json": {
+      "sha256": "efc8de534394a735e9c51a3fc3e1960848a1fd2f8c4896aa53f08d0e4241acf3",
+      "bytes": 2655
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260901.finaleval.json": {
+      "sha256": "da914276e7d87810fd869a678e16b2ce009df8a97086dd237b565266b0787986",
+      "bytes": 2649
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260902.finaleval.json": {
+      "sha256": "b013ae97d7f0b37ae8a60f7dc2c26f132ae8cdbea9297c2f8f12a6713904993b",
+      "bytes": 2648
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260903.finaleval.json": {
+      "sha256": "edb5cf1add06f9663d42697db4b17d97719598dc1c2e308f683828acf14dc7dc",
+      "bytes": 2634
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260904.finaleval.json": {
+      "sha256": "efc1cbfd875c9f2ed157b2e821889f891c3546188d51bc49307673f06c3d8b9f",
+      "bytes": 2650
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260905.finaleval.json": {
+      "sha256": "7ac8ef00552381c02e10b0f5e17baea7321b2b1196f89b1e6af86d1f3a1e8ae5",
+      "bytes": 2649
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260906.finaleval.json": {
+      "sha256": "7ec1110869dfa6000570b00b272eab3b6eec41e9a88201db7f355ba3176e9520",
+      "bytes": 2648
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260907.finaleval.json": {
+      "sha256": "5daab6e3496733a687d923ac297829ee2e747a56c78c3c1207b6f0e382200b66",
+      "bytes": 2655
+    },
+    "results_Musical_Instruments_FIRCTRL_learned_seed20260908.finaleval.json": {
+      "sha256": "05b34fa4d03fdf18d425d5779b396e32c46046b7502684f94b1bca909c3d54d9",
+      "bytes": 2637
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260901.finaleval.json": {
+      "sha256": "351d3336b48590bbf133f487c27c9d3dc9c81e0390021ba86329e86968c6c710",
+      "bytes": 2658
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260902.finaleval.json": {
+      "sha256": "ff9182ed95b0a26b425f3e77f3287281881a2dd54e47f7d16950778768ecb6c6",
+      "bytes": 2662
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260903.finaleval.json": {
+      "sha256": "a6a145d4410e10c59f1be7471a8c0ae9fa955d1237bffb69b73381acac23ecb3",
+      "bytes": 2657
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260904.finaleval.json": {
+      "sha256": "85e2b75fde3078f0e9b0a50e480b8f12075cccd40f5a6172cac8f6ab32bcb9d8",
+      "bytes": 2632
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260905.finaleval.json": {
+      "sha256": "abb4fd68c7f1a22a74c705b9e3a6c727446a888a3f7b6ec75f60d9cef65047cd",
+      "bytes": 2646
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260906.finaleval.json": {
+      "sha256": "393fee118db09056176d66e4ea4d4fbd7b45bdb72d85c71aaa77f647ade6204b",
+      "bytes": 2656
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260907.finaleval.json": {
+      "sha256": "32c6ffd279795274fd55034c26ca864a103d10d4f43bcc6e4269ae76dba6ee52",
+      "bytes": 2639
+    },
+    "results_Musical_Instruments_FIRCTRL_nonlinear_seed20260908.finaleval.json": {
+      "sha256": "30af34a15a8d876196f9948c012d93cfbdea614e6c8263a9ad4f90b1132d93bc",
+      "bytes": 2645
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260901.finaleval.json": {
+      "sha256": "a77dfbe786ec9b4932351db6b8be3734adf60f8039a2e2a35265a503ec059b02",
+      "bytes": 2646
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260902.finaleval.json": {
+      "sha256": "70565c042dd8d1230331ee8c989ed38a53598e3e71b0efdc8eff46c3f2480d01",
+      "bytes": 2645
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260903.finaleval.json": {
+      "sha256": "75dc40d936bf13ea702a2028938053d16e680eb306916d3b5b6c579ccc5b2e63",
+      "bytes": 2629
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260904.finaleval.json": {
+      "sha256": "2f4b8353d8d549429733d449a046e15b43f9a4c9ebf9062d674aab2a1eeb74fe",
+      "bytes": 2647
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260905.finaleval.json": {
+      "sha256": "eb1fd03cfa49ceb87f22ca95f8774546cb4cc9d66f628b08a991f3fbb6545c82",
+      "bytes": 2630
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260906.finaleval.json": {
+      "sha256": "d8db5e4b254f6423a00807d9a4c74466955441b6bb537ec11e82e91842613dfa",
+      "bytes": 2642
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260907.finaleval.json": {
+      "sha256": "4e5b3fefb7baf40f133381ce1af4e8d2840386e3ff6156e28d2894f01686373a",
+      "bytes": 2646
+    },
+    "results_Musical_Instruments_FIRCTRL_shared_seed20260908.finaleval.json": {
+      "sha256": "c429571588c360bc5c6175089d47dd84ff14f0c2f1ab81c897a48e18b4e99b8e",
+      "bytes": 2630
+    }
+  },
+  "fir_pointwise_finaleval": {
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261001.finaleval.json": {
+      "sha256": "c21497acc7479178ed9ca7fb6b2e08ad0fb5f644bcca138c2bd37e9baef633d0",
+      "bytes": 2674
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261002.finaleval.json": {
+      "sha256": "d418f5edb5a9a5ca8c3d7a5cef01c515e6a8d0b96207798c48246edd28403daf",
+      "bytes": 2658
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261003.finaleval.json": {
+      "sha256": "84edf5d711313cc8323122f60fae8bf0d0edb2d3ffb3d9a9e9400885f855dd23",
+      "bytes": 2663
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261004.finaleval.json": {
+      "sha256": "6d96a155da89ecd3ddb98f8083a646b1af58dd9b26e1045cb4474c264ff2adeb",
+      "bytes": 2661
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261005.finaleval.json": {
+      "sha256": "bd588e5cfa878b0e82904d662e37b1b744227f8ff94314bd7d982016df952515",
+      "bytes": 2658
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261006.finaleval.json": {
+      "sha256": "cd525c601119f7bfd1dc58b2d7b4ebf6820aa887c8bb851e610b10753801d437",
+      "bytes": 2678
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261007.finaleval.json": {
+      "sha256": "da32ccb4aca6b53eca74be51e1d18d6fb4244a801cf40f1ce3cb7760f88ba026",
+      "bytes": 2663
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261008.finaleval.json": {
+      "sha256": "569ab30d915e09a3a719bc1ca44a4cea11cdfeb2df001b419af60990e678e7fb",
+      "bytes": 2677
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261001.finaleval.json": {
+      "sha256": "6aa2f76a49c3a835b697f8d959153a3092f98d3be792c8d63a076280ea3833fe",
+      "bytes": 2672
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261002.finaleval.json": {
+      "sha256": "a3b5631b9306c1415ee8bb29392f112ce6844ec914709335c767940ee0423067",
+      "bytes": 2669
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261003.finaleval.json": {
+      "sha256": "3abb90c91a9fc75ce72a7075b4dc01f4b0dc022a39544c0b715f83f857534cae",
+      "bytes": 2675
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261004.finaleval.json": {
+      "sha256": "1e6d5c42958c786178998d969b5120819f2db5aedd0ab68b04cef191cd856eca",
+      "bytes": 2668
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261005.finaleval.json": {
+      "sha256": "6730dc09d293bc5a30f6dd02f7258e18922e888c6a9f206c535e8beecb9d1d30",
+      "bytes": 2674
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261006.finaleval.json": {
+      "sha256": "f09c2b75284da9dddfae55772014691f87de420bc35cce7b74f56a9d1013d586",
+      "bytes": 2670
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261007.finaleval.json": {
+      "sha256": "100225ae3de08af45a6aee9a02e14893d25371703cf6c7d4a997f1e46cfcb318",
+      "bytes": 2663
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261008.finaleval.json": {
+      "sha256": "b456c2866ff5d886eeed1d9791d7e949a2ffff16fd501a558bbb092f571ae9bc",
+      "bytes": 2656
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261001.finaleval.json": {
+      "sha256": "ef02fa9ead88c2e92716772569c465f5cab93ab6adb06f82a41c0418c6c5d2b3",
+      "bytes": 2665
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261002.finaleval.json": {
+      "sha256": "95394501544307fa504c44894d21431e99bd767dfe2df7b417acb98aa26160a8",
+      "bytes": 2677
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.finaleval.json": {
+      "sha256": "fe8d0f16a25143f2116060cad3078b44bc61331cf1d6be517ea716cae9b7ff43",
+      "bytes": 2681
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261004.finaleval.json": {
+      "sha256": "d032d5efcd49b1a67fc9079373a06832b27b68d19b13d3a52b377e2fea9547d0",
+      "bytes": 2651
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261005.finaleval.json": {
+      "sha256": "3a45f27013e642244c782b1fcb7a4f78a8e44197bef3f8f1a1434ea4fdfbdfa5",
+      "bytes": 2681
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261006.finaleval.json": {
+      "sha256": "41f3ad221bc0e8847ff9eb96acff4d30bf8db58e4faeac7660ae64046f1feb55",
+      "bytes": 2679
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261007.finaleval.json": {
+      "sha256": "69d3af54380f8920841ace49af14add226f55344da12ebaad87db35b5457b284",
+      "bytes": 2679
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261008.finaleval.json": {
+      "sha256": "8338f0a4940a570e18d8a0c8cf8f61f462dafd3c7af32e6657deaecad9e7b207",
+      "bytes": 2678
+    }
+  },
+  "fir_pointwise_sidecars": {
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261001.finaleval.users.npz": {
+      "sha256": "52bb29c4442159e44a3d22cc72ba7262259fc7baf101ca4a543b2b9e20144ec2",
+      "bytes": 642999
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261002.finaleval.users.npz": {
+      "sha256": "ec557b00e6fa2cc2f26739dc50dd45985b53d83046214dcb787d7abd2552496d",
+      "bytes": 642756
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261003.finaleval.users.npz": {
+      "sha256": "b90ca337f38feed5c5f6132d227ca93b9bf94ea54d79c5b749e27d36010ccd81",
+      "bytes": 643613
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261004.finaleval.users.npz": {
+      "sha256": "17bec6b58e3442652f87a90e72d99add40b2b1f87c72a2ede1416df6e20f330a",
+      "bytes": 642693
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261005.finaleval.users.npz": {
+      "sha256": "ba49002f697c01aef2f46ef06b0132da6fb515e5cc1a46859aac79b46446025d",
+      "bytes": 644153
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261006.finaleval.users.npz": {
+      "sha256": "26d1f7a12c08b7db61333c0d3809308966b968392fff01600f2a8ddc38ff9dff",
+      "bytes": 643288
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261007.finaleval.users.npz": {
+      "sha256": "cd61d0501fa21a53c6f0a3a86d943672df7655931d595c7a11faf5a0d88eccc1",
+      "bytes": 644744
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261008.finaleval.users.npz": {
+      "sha256": "14d2f051924f2893451f66dfff17569e3cffcbfd40c0a9c6f54ead330f283c69",
+      "bytes": 644586
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261001.finaleval.users.npz": {
+      "sha256": "ddcaa21f2819de0d1c7a77c440425e9d897d8bca0b44a1f55da911232c9ad154",
+      "bytes": 643015
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261002.finaleval.users.npz": {
+      "sha256": "7a46f5291f28453def086e229dc64344dda22408c10cdddf2e46792d834c8045",
+      "bytes": 641963
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261003.finaleval.users.npz": {
+      "sha256": "a0cefe3764eb83d596b4b60f2be7e5a6fe83a181b62c5d16c83d0f6c362cde2b",
+      "bytes": 643966
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261004.finaleval.users.npz": {
+      "sha256": "985b3ca83ef21a320897c240121907700f46348db3e167a85e817aef15669b20",
+      "bytes": 643358
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261005.finaleval.users.npz": {
+      "sha256": "edd769ac7ecb4e745677b70aada423b7a76cc7d07e9ae77d0d09e8bf735c0d75",
+      "bytes": 643277
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261006.finaleval.users.npz": {
+      "sha256": "d53c013cd9a584370eef6229ca5017475a5ef92b96cc2d8d1442e00d57a45a7c",
+      "bytes": 642758
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261007.finaleval.users.npz": {
+      "sha256": "56adbc2bfc89c4ba883d3a1441fd9d5a9c6566579b83853a268987714bf730ed",
+      "bytes": 642497
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261008.finaleval.users.npz": {
+      "sha256": "8aadabc6eae4e411f4a2233c12cf1c0b7fd1a4dc725c62d8062d0d7724de3ab7",
+      "bytes": 642746
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261001.finaleval.users.npz": {
+      "sha256": "fef329d77560cc110226e9fbc2b061370ccd6d369df7927af84e150cdf1e8679",
+      "bytes": 642690
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261002.finaleval.users.npz": {
+      "sha256": "c05087288035376d2806a2eb8821fc30ad666c57045bc95334dc2d456a2abdb2",
+      "bytes": 644590
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.finaleval.users.npz": {
+      "sha256": "2552631e3547542d03aecac0e0fbc6187f7b7879ce3f8e950b829185ef9a2c2c",
+      "bytes": 643062
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261004.finaleval.users.npz": {
+      "sha256": "3b0cb81c637aaad07f9dec9924b76e71d1816ad01e68b58ec800f2bdbb7ce903",
+      "bytes": 644264
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261005.finaleval.users.npz": {
+      "sha256": "6e1e74a9bca331d3089f7b672b6ce36f239b6776ee4e3abc2f9ef537ed9888d0",
+      "bytes": 644778
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261006.finaleval.users.npz": {
+      "sha256": "cdfa0dc9258c6e81acaf8d8fc8f7b2c529db80faf01efc78d9e2bab88fa52a81",
+      "bytes": 642788
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261007.finaleval.users.npz": {
+      "sha256": "217c84b1f68b3fecefafbbf462cbb7b05b828edbd926714ef40536f2fe24e838",
+      "bytes": 643795
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261008.finaleval.users.npz": {
+      "sha256": "7276b5d2fb986ef02631a3e5cf024a74b5f635c9521ada6f500d64ddbecfa081",
+      "bytes": 642811
+    }
+  },
+  "fir_pointwise_checkpoints": {
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261001.best.pt": {
+      "sha256": "03bf9025a827893ae28259b395499a0cd3e9253104d828b2abc14d1268a43938",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261002.best.pt": {
+      "sha256": "ffcb529c2889a86bcb1c4b7d7096d3f8c135b3a60a11158c5759662498c80455",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261003.best.pt": {
+      "sha256": "c6725b7cf49673aa7a4253560bb29978fc65dd3c6dcc6a5ea61840ca294e3895",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261004.best.pt": {
+      "sha256": "8c6b171109f4045b09a96e47532664b49ed78b27a8b78a6a55edbfa0bde539fa",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261005.best.pt": {
+      "sha256": "b3f4f65faf49057e7ac0b17cf6227d8d3e6f9968763f79ac7d80c08e53e03b66",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261006.best.pt": {
+      "sha256": "113f5812a70ff580f2879e3db22ae5b744eda7f55be9261813c80f7edd7e4342",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261007.best.pt": {
+      "sha256": "6d94158c22aa7ff0907fe03137daae75b00499355b87bd626c47692f4613fce2",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_identity_seed20261008.best.pt": {
+      "sha256": "74de5226f7ce8625fd349096f590c64472b037e27b678541b096bb2884f1808f",
+      "bytes": 95118070
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261001.best.pt": {
+      "sha256": "cfd070f49429994a1f11c8b7cc80ad21ddd5f6b59acb8e6289545e20d7846803",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261002.best.pt": {
+      "sha256": "16c935e586673d317e3c630dc6fdc7858b22a4c09faa59097718634b04347953",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261003.best.pt": {
+      "sha256": "b2155b1c8f80c88aa11214c96aac7aea976f06ef77f529edcb029dfbf63906fb",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261004.best.pt": {
+      "sha256": "0a5a482d8ac8b56c1a9aa1d1fdda1935f2eda4f9732c23795096fe9e87871e8f",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261005.best.pt": {
+      "sha256": "b076782ba26ab9c03a4ffd2b8d99471a9e4cfa628fa6dd8dfe7863e483edf98b",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261006.best.pt": {
+      "sha256": "e7d65b0f1da3926839a2bf8c21f6e3872ce12ecbafcf68c5c384c2b64cd09a18",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261007.best.pt": {
+      "sha256": "4fd3fe13469602465dee1e11d661e747f66d29430c86cdf24bf56c341e7c3da8",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_learned_seed20261008.best.pt": {
+      "sha256": "af25a4cd31281307f632b7a06f9e8d43611d25a556a8ff48667ce5a17dfc63f8",
+      "bytes": 95118019
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261001.best.pt": {
+      "sha256": "c5520ae2556c04b475b9b232f589bf5738767a7f1bff111ca1a7cf07bd2bb3f3",
+      "bytes": 95122597
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261002.best.pt": {
+      "sha256": "96a0d3a83cf7c9d4e7c592badc45af6a71776e5400f4f4ca97ffa0cd5d8a1c6d",
+      "bytes": 95122597
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261003.best.pt": {
+      "sha256": "a9bd050d72266e8e149ad41e17f283501c96fdabce44b1d1c2babc66b83fc993",
+      "bytes": 95122597
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261004.best.pt": {
+      "sha256": "481fde238ff92a30e84b8e0c11dcfd115dca32b7d86336fb459f6e721e949219",
+      "bytes": 95122597
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261005.best.pt": {
+      "sha256": "321cbc6fc4af39052a96bd4a8c1b04f5237fc4bfae6126e005db1c0e0e793a9d",
+      "bytes": 95122597
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261006.best.pt": {
+      "sha256": "1e7f589014ae2acfc8d0c2f65ce5cfc3da366503a9201b3f7654f79a6ea6ee60",
+      "bytes": 95122597
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261007.best.pt": {
+      "sha256": "aa23e8b2fb656409876e476aefbca2e6ff1057fb2449edfd058d93825b582278",
+      "bytes": 95122597
+    },
+    "results_Musical_Instruments_FIRPOINTV1_pointwise_seed20261008.best.pt": {
+      "sha256": "e535b6b4a6ad26821eccc61e4a9066015bd39a10f70908b8197e957daf015046",
+      "bytes": 95122597
+    }
+  },
+  "fir_prospective_sw_v2_finaleval": {},
+  "fir_prospective_sw_v2_sidecars": {},
+  "fir_prospective_sw_v2_checkpoints": {},
+  "fir_prospective_sw_v3_finaleval": {
+    "results_Software_FIRPROSPV3_identity_seed20261301.finaleval.json": {
+      "sha256": "074f885ec5fd9a87d9987ae0394aca80ca3b29d9f40d87bdc9a2dd852b0ae613",
+      "bytes": 3316
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261302.finaleval.json": {
+      "sha256": "3ffdd69d3efcd834324f718bcc4450243eacf9ff522d1606493f8a5c5b6bca4d",
+      "bytes": 3317
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261303.finaleval.json": {
+      "sha256": "dfc14cd83a5dbc402ad3d295608f6a369c51c02903f38e7b4babe494d0591771",
+      "bytes": 3316
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261304.finaleval.json": {
+      "sha256": "d3b10a905ada981bfd197abb113accd149549263f47b27ee4b625641f6947ca7",
+      "bytes": 3317
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261305.finaleval.json": {
+      "sha256": "4af81a795791ec813b2deea9bcf364c342a14d3d9813f676d02825eaebdc7597",
+      "bytes": 3313
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261306.finaleval.json": {
+      "sha256": "e1f2ef642621ac8e934ae883a3569001d9c84d19ad1aeec9191c949375d7fcb7",
+      "bytes": 3316
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261307.finaleval.json": {
+      "sha256": "9749eceae60cd416f4f3e81b9b43d9240158fa8d6943869682fcad414f0548e4",
+      "bytes": 3315
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261308.finaleval.json": {
+      "sha256": "782e1f9c636ba2c7cc3efdc903b8e31cd36db7012abbab25e2b7829ea88bef22",
+      "bytes": 3316
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261301.finaleval.json": {
+      "sha256": "14a22100fee449f90e30c2ff3bae6bf50245b9b64500e9700b92fdee6ec53938",
+      "bytes": 3314
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261302.finaleval.json": {
+      "sha256": "66af18f8afb1d50ddad0599bc9dcc34ab72a0cd04615e489b582a058680d45ff",
+      "bytes": 3310
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261303.finaleval.json": {
+      "sha256": "47956090b73ffc0188be89f865d625a20f89302ea66116e6c984a79284ef0a02",
+      "bytes": 3313
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261304.finaleval.json": {
+      "sha256": "d646003ecd5e7de1033e079296408f526b8a17e49e2442a518ad72a54a1d28d0",
+      "bytes": 3312
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261305.finaleval.json": {
+      "sha256": "4e96530b6a551c4214bc9091308531dde5d0739c03e35a7b672ec337396f3abf",
+      "bytes": 3314
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261306.finaleval.json": {
+      "sha256": "0ec62a179ceed8d1b479d87a30417483b10852855557c31d34f9080dfdab9854",
+      "bytes": 3312
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261307.finaleval.json": {
+      "sha256": "cfb6473a85e44a0b978af1ac4a7078753c85dafde3731ada0553af1fb8683164",
+      "bytes": 3312
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261308.finaleval.json": {
+      "sha256": "1e09ee4dc66e222d2a8335974903b8dec706fb366d4a69a83c14248e56ced66b",
+      "bytes": 3310
+    }
+  },
+  "fir_prospective_sw_v3_sidecars": {
+    "results_Software_FIRPROSPV3_identity_seed20261301.finaleval.users.npz": {
+      "sha256": "b436516da7c39db2bf2c172458f05177aa0e027dea45b3d6476fa491b8a65250",
+      "bytes": 1353282
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261302.finaleval.users.npz": {
+      "sha256": "97ad56c843d7559146d1c710d02202318bf9abeb7cb818e4c67d78ab452d68eb",
+      "bytes": 1352136
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261303.finaleval.users.npz": {
+      "sha256": "da7ed836802cf817b3c86f18e8c2a5bf83de939e043cd86dce66aac3adcfa50a",
+      "bytes": 1353192
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261304.finaleval.users.npz": {
+      "sha256": "be1f5b1a762ff305e962028d3205db7f3d1714ec444616df0d3f18a60796cd3d",
+      "bytes": 1352301
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261305.finaleval.users.npz": {
+      "sha256": "be08b2be52f86830439015cd3d0bb905b3b56890c022eb70460ea5578f1c21bd",
+      "bytes": 1352226
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261306.finaleval.users.npz": {
+      "sha256": "aa8233e087dbb54076d00237bcc873d9bbbb1ff56e3ebe1f9ae4452e6ab38a5d",
+      "bytes": 1354123
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261307.finaleval.users.npz": {
+      "sha256": "a61bb390ac05bd3935f5e7212fb02fcc709ce3ef567ec36c727fc70d0ab2e0be",
+      "bytes": 1352806
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261308.finaleval.users.npz": {
+      "sha256": "476457e2508efc6bfacbda9ee268c8668dbbf5d201c671757502047a6ad0aa44",
+      "bytes": 1353466
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261301.finaleval.users.npz": {
+      "sha256": "51ad22a39c20aa0f68bf4d568525e86bfaaf113803f728c130b02f0f4f2697e5",
+      "bytes": 1350666
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261302.finaleval.users.npz": {
+      "sha256": "488a36e3c7a70f19013ad6a1f6254240a5ce1b4e5f1d84486b809e6dbf1090d4",
+      "bytes": 1350744
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261303.finaleval.users.npz": {
+      "sha256": "8865235b93729409247d370f73cc82bc69af93e77e6617a850ce20c9621b5728",
+      "bytes": 1350696
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261304.finaleval.users.npz": {
+      "sha256": "48f5b37247238c9812d442b3fab8988d771f3140b586bb5a2e7c26973aaf5bbd",
+      "bytes": 1350909
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261305.finaleval.users.npz": {
+      "sha256": "0344006e5dcdd351cc40741f46eca9235818876b01294569bbd4a8a62a07add7",
+      "bytes": 1351705
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261306.finaleval.users.npz": {
+      "sha256": "808efd8f5035fc32b6dd245473d8c331a3a6ce228ed5fad00dcc69e13dd50bc2",
+      "bytes": 1350736
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261307.finaleval.users.npz": {
+      "sha256": "b583f492dd552c2d02188d7fb04e7b4241228313c42011934db4ae9609c35f60",
+      "bytes": 1350688
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261308.finaleval.users.npz": {
+      "sha256": "50d52b40ee72a6dbd9062b101f6b0c08fadba4f86ce929582a040785355fd8a1",
+      "bytes": 1351205
+    }
+  },
+  "fir_prospective_sw_v3_checkpoints": {
+    "results_Software_FIRPROSPV3_identity_seed20261301.best.pt": {
+      "sha256": "cb46bf024ad8a04b4412db04996c50329833fb6f46d9851bad4dbfb3d74f1829",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261302.best.pt": {
+      "sha256": "9b02514b3e6975b43bd6bd51e32e0f1df45cc239a55b47556e375ce94bbe2aa3",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261303.best.pt": {
+      "sha256": "280823dfdd4efc48d17fafe1734259b5965d3bc06ac7e9c45dc7646c260b3da4",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261304.best.pt": {
+      "sha256": "2fbf32bf17dd1f3f5c6fb1b9ced4f25ab8c5c186af7bd7c9c0ce9c9658e570bd",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261305.best.pt": {
+      "sha256": "9433d7ce0266115977958c77e7a3fa72f7cf21e500d5907f84066cfc1cde014f",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261306.best.pt": {
+      "sha256": "e6ba3aa37eaa1c917319b500449ad5397390e9cd5563f5230736a4793c078352",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261307.best.pt": {
+      "sha256": "b88c85599f76debd335656f901e1bfa1986929ceb700dba01242a793b21cef2e",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_identity_seed20261308.best.pt": {
+      "sha256": "6a5377e86779f6373734001d87e33bee7c9fda76571a6d65e8590e1f0f3ba80c",
+      "bytes": 68252613
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261301.best.pt": {
+      "sha256": "924c2f97b575e84794eae02ebcb40c03089178b4f7723a8dc1b8d49c4fbfa83a",
+      "bytes": 68252562
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261302.best.pt": {
+      "sha256": "918375c1089e6a4660d4ade2943141d5478047446cacb5bca9860d2f3e1aa179",
+      "bytes": 68252562
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261303.best.pt": {
+      "sha256": "6a0105c7d5df9f45d44d98259fe2407964688045bb528acaf3a3e155dcedaf41",
+      "bytes": 68252562
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261304.best.pt": {
+      "sha256": "21bebc63bcd6550c5c893e7e0e11eaeb9da64c7fb8b61e181a134e6479f615e5",
+      "bytes": 68252562
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261305.best.pt": {
+      "sha256": "32f4ad670425a4894bc336492d94b9a2ee32d1dbe1be8616385f6303d6afab8a",
+      "bytes": 68252562
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261306.best.pt": {
+      "sha256": "bcdfc9a9b726c6fe39dd42b1faa5c552d913f9ac9d568f3547419627b2f0d26e",
+      "bytes": 68252562
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261307.best.pt": {
+      "sha256": "23468577cd4ccf75fe30cae04b93f824929bf8b49476d9b1dfdaeb60b818088f",
+      "bytes": 68252562
+    },
+    "results_Software_FIRPROSPV3_learned_seed20261308.best.pt": {
+      "sha256": "126994a38aac26afb2e64843b1a298ec7606240f53312a755aba9529709239c3",
+      "bytes": 68252562
+    }
+  }
+}

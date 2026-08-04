@@ -1,0 +1,77 @@
+{
+  "experiment": "c4_2model_score_ensemble",
+  "category": "Video_Games",
+  "recipe": {
+    "epochs": 40,
+    "batch_size": 256,
+    "max_seq_len": 50,
+    "d_model": 64,
+    "n_layers": 4,
+    "n_heads": 2,
+    "dropout": 0.5,
+    "lr": 0.001,
+    "item_chunk": 32768,
+    "proto_tau": 0.05,
+    "proto_k": 512
+  },
+  "members": [
+    {
+      "name": "sbert",
+      "cache": "C:\\Users\\rayxc\\Documents\\R\\cache_5core\\sbert_titles_Video_Games.npy",
+      "seed": 20260609,
+      "best_val_subsample_NDCG10": 0.07373587457206487,
+      "best_epoch": 40,
+      "text_dim": 384,
+      "n_params": 11644222
+    },
+    {
+      "name": "blair",
+      "cache": "C:\\Users\\rayxc\\Documents\\R\\cache_5core\\blair_titles_Video_Games.npy",
+      "seed": 20260608,
+      "best_val_subsample_NDCG10": 0.07297687281074144,
+      "best_epoch": 30,
+      "text_dim": 768,
+      "n_params": 21528766
+    }
+  ],
+  "results": {
+    "solo:sbert": {
+      "NDCG@10": 0.06358811422144925,
+      "HR@10": 0.11331546400455879,
+      "MRR": 0.05686789840576682,
+      "n_eval": 94762
+    },
+    "solo:blair": {
+      "NDCG@10": 0.0625675340215209,
+      "HR@10": 0.11146873219222896,
+      "MRR": 0.05607157754102043,
+      "n_eval": 94762
+    },
+    "mean": {
+      "NDCG@10": 0.06558381175372123,
+      "HR@10": 0.11670289778603238,
+      "MRR": 0.05854921542956961,
+      "n_eval": 94762
+    },
+    "zmean": {
+      "NDCG@10": 0.06554069270436548,
+      "HR@10": 0.11658681750068593,
+      "MRR": 0.05853516056404939,
+      "n_eval": 94762
+    },
+    "rank": {
+      "NDCG@10": 0.06727945737909533,
+      "HR@10": 0.11733606297883117,
+      "MRR": 0.06054717524295753,
+      "n_eval": 94762
+    },
+    "_diag": {
+      "member_rank_spearman": 0.9571400559405274,
+      "note": "lower corr = more diverse errors = more ensemble headroom"
+    }
+  },
+  "best_solo_NDCG10": 0.06358811422144925,
+  "best_fusion_NDCG10": 0.06727945737909533,
+  "campaign_single_best_0639": 0.0639,
+  "mandate_0760": 0.076
+}

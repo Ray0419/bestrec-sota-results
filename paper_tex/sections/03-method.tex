@@ -1,0 +1,130 @@
+%% GENERATED from PAPER_SUBMISSION.md (pandoc) -- hand-fixed conversion; see BUILD_NOTES.md
+\section{Method}\label{sec:3}
+
+\subsection{Preprocessing pipeline}\label{sec:3.1}
+
+We preprocess Amazon Reviews 2023 \citep{hou2024blair} into 5-core leave-last-out splits. For each category we:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Load raw user-item review interactions from the \texttt{raw\_review\_\textless{}category\textgreater{}} HuggingFace subset.
+\item
+  Apply a 5-core filter iteratively until no user or item has fewer than 5 interactions.
+\item
+  Sort each user's interactions chronologically.
+\item
+  Hold out the last interaction as test, the second-to-last as validation, the rest as training.
+\item
+  Encode item metadata (\texttt{meta\_\textless{}category\textgreater{}.jsonl}) with the chosen frozen text encoder.
+\end{enumerate}
+
+This protocol shares chronological leave-last-out structure with TIGER \citep{rajput2023tiger} and LIGER \citep{yang2024liger}, but it is not identical to either: our iterative filtering applies to users and items, matching LIGER's stated k-core dimension. The TIGER paper states user filtering, but the exact geometry of its released preprocessing is not established here; both comparator papers use Amazon Reviews 2014 rather than AR2023. \citet{hou2024blair}'s AR2023 reference repo (\texttt{external/\allowbreak AmazonReviews2023/\allowbreak seq\_rec\_results/}) uses the \texttt{0core\_timestamp\_w\_his\_*} HuggingFace subset. These pipelines produce different catalogs and cannot support direct numerical comparisons.
+
+\textbf{Estimand and construct boundary.} Each review event is treated as an implicit
+positive interaction regardless of its 1--5-star rating or verified-purchase flag. The
+estimand is therefore \emph{ranking the next recorded review event among the fixed
+post-filter catalog}, not predicting preference, satisfaction, purchase, or deployment
+engagement. Five-core eligibility, item indices, and the candidate catalog are computed
+from complete histories before splitting, so future events can affect inclusion even
+though their identities are not used as training targets. Rating-threshold,
+verified-purchase, genuine implicit-event, and global-time/query-time-catalog
+sensitivities have not been run; conclusions do not extend to those constructs or
+deployment regimes.
+
+
+\textbf{Pre-core deduplication (disclosed 2026-07-19).} Before k-core filtering, duplicate \texttt{(user, item)} interactions are collapsed to a single event, keeping the \textbf{earliest} timestamped occurrence (first-exposure convention). This step is material and was previously undocumented in the paper: it removes 41,888 of 3,017,439 raw rows on Musical\_Instruments (1.39\%), 69,115 of 4,624,615 on Video\_Games (1.49\%), 320,078 of 23,911,390 on Beauty\_and\_PC (1.34\%), and 156,363 of 12,845,712 on Office\_Products (1.22\%); the FIR-breadth categories were preprocessed from AR2023 rating-only exports whose (user, item) pairs are already unique (0 rows removed on Industrial\_and\_Scientific and CDs\_and\_Vinyl). Deduplication can change k-core membership, sequence order, and held-out targets; sensitivity to a keep-latest rule is untested (a disclosed limitation). (The MI/Office counts are from the retained preprocessing logs; the VG/Beauty logs were not retained, and their counts were regenerated 2026-07-19 from the raw dumps with the released deterministic script.)
+
+
+\textbf{Timestamp-tie policies (disclosed 2026-07-19; two distinct deterministic rules).} Two tie-breaking rules operate at different stages and were previously undocumented. (i) Preprocessing stable-sorts each user's interactions by timestamp only, so for equal-timestamp events the raw-file order decides both which duplicate survives deduplication and which event lands on a leave-two-out split boundary. (ii) The trainer later re-sorts each user's train sequence by \texttt{(timestamp, item\_index)}, so within-train equal-timestamp order is decided by reindexed item ID. Both rules are deterministic given the released raw dumps and code. Measured scale (2026-07-19, from the released splits): on Musical\_Instruments, 3 of 57,439 users (0.01\%) have test-target timestamp equal to the validation-target timestamp, 3 have validation equal to the last train timestamp, and 12 (user, timestamp) groups cover 24 of 511,836 rows; on Video\_Games the counts are 4 and 8 of 94,762 users and 61 groups covering 122 of 814,586 rows (0.01\%). At this scale the tie policies cannot materially affect any reported number; we nevertheless document them as part of the exact preprocessing contract.
+
+
+\subsection{Model architecture}\label{sec:3.2}
+
+\textbf{Shared item-feature construction (both encoder families).} For each item \texttt{i}:
+
+\begin{itemize}
+\tightlist
+\item
+  A learned per-item embedding $e_i \in \mathbb{R}^d$ (initialized N(0, 0.02), padding-aware).
+\item
+  A frozen text embedding $s_i \in \mathbb{R}^k$ from MiniLM (k=384) or BLaIR (k=768).
+\item
+  A learnable projection $\Phi : \mathbb{R}^k \rightarrow \mathbb{R}^d$.
+\end{itemize}
+
+The item feature passed into the encoder is $f_i = e_i + \Phi(s_i)$. Sequences are right-padded with a dedicated pad token and processed with a causal-only attention mask (no key-padding mask --- see \S\ref{sec:3.4}). The output logits for position $t$ are $h_t \cdot{}$\texttt{all\_items.T} where \texttt{all\_items} is the (n\_items, d) item-features table.
+
+\textbf{Headline encoder --- HSTU-style (every \S\ref{sec:5} result).} All headline experiments use the \textbf{HSTU-style pure-PyTorch pointwise-attention encoder}, described in full in \S\ref{sec:3.7}: pointwise $\mathrm{silu}(QK^{\top} + \mathrm{rab})\,V$ aggregation with the published per-block normalization --- no softmax, no $1/\sqrt{d}$ scaling --- with the core block verified exactly (max abs diff 0.0) against the reference research implementation at a mirrored, aligned, dropout-free configuration (\texttt{HSTU\_PARITY\_REPORT.md} discloses the alignment; the trained configuration is a strict-superset HSTU-style variant --- \S\ref{sec:6.3}). Configuration, stated here and in \S\ref{sec:4.4}: \textbf{4 layers, 2 heads, d = 64, dropout 0.5}.
+
+\textbf{Baseline encoder --- SASRec-SBERT (protocol parity and the superseded Appendix A.1 scans only).} The SASRec-family baseline follows \citet{kang2018sasrec}: a 2-layer pre-norm Transformer encoder (d=64, n\_heads=2, FFN dim=4d, GELU activation) followed by a final LayerNorm, using the same item-feature construction. \textbf{No headline number uses this encoder}; it appears as the per-category parity/floor baseline and in the superseded Beauty scan (Appendix A.1).
+
+
+\subsection{Choice of projection \texorpdfstring{\ensuremath{\Phi}}{Phi}}\label{sec:3.3}
+
+Following our cross-pipeline transfer study (Appendix A.1), we compare two designs for $\Phi$:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Linear}: $\Phi(s) = W s$ for a learned weight $W \in \mathbb{R}^{d \times k}$.
+\item
+  \textbf{MLP} (adopted from \citet{hou2024blair} SASRecText): $\Phi(s) = W_2 \cdot \mathrm{ReLU}(W_1 \cdot \mathrm{Dropout}(s))$ with hidden dim 300 and Dropout(0.2) between and before the linear layers. \textbf{This design is from \citet{hou2024blair} and we do not claim novelty for it.}
+\end{itemize}
+
+
+\subsection{Right-padding + causal-only mask}\label{sec:3.4}
+
+During exploration we identified a numerical failure mode in the standard SASRec implementation pattern: combining left-padding with both a key-padding mask and a pre-norm Transformer encoder produces NaN logits when an entire row of keys is padded (the softmax denominator is zero). The NaN propagates through residual connections and silently inflates eval NDCG to \textasciitilde0.9955 --- a ``fake-perfect'' result. We adopt right-padding + causal-only mask (no key-padding mask) to avoid this trap.
+
+
+\subsection{Chunked-full-softmax loss}\label{sec:3.5}
+
+For training with cross-entropy over the full catalog (no sampled negatives), the full logits tensor \texttt{(B,\ L,\ n\_items)} is prohibitive at L=50 and n\_items=207k. We implement an incremental-logsumexp loss:
+
+\begin{verbatim}
+def chunked_full_softmax_loss(hidden, targets, model, item_chunk):
+    lse = -inf  # running logsumexp over the item dimension
+    target_scores = None
+    for chunk_start in range(0, n_items, item_chunk):
+        chunk_emb = model.item_features(chunk_ids)
+        chunk_logits = hidden @ chunk_emb.T
+        lse = logsumexp(lse, logsumexp(chunk_logits, axis=-1))
+        if any(target in chunk):
+            target_scores[in_chunk] = chunk_logits[in_chunk, target]
+    return -mean(target_scores - lse)
+\end{verbatim}
+
+This bounds peak memory by \texttt{(batch,\ item\_chunk)} instead of \texttt{(batch,\ n\_items)} and allows proper full-softmax training at the 207k-item Beauty\_and\_\allowbreak Personal\_Care scale on a 16 GB GPU.
+
+
+Memory-efficient exact cross-entropy has published precedent (Cut Cross-Entropy, ICLR 2025, computes exact CE without materializing the full logit matrix); our chunked variant is independent implementation engineering in the same spirit, claimed only as engineering. 
+
+
+\subsection{Evaluation protocol}\label{sec:3.6}
+
+We score each user against the \textbf{full catalog} of 207k items (Beauty\_and\_\allowbreak PC) or 25k items (Video\_Games). For the held-out test item, we compute the rank under dot-product scoring (after masking train+val items the user has already seen) and report NDCG@10, HR@10, MRR. We use the standard SASRec test-time convention of including the validation item in the input sequence \citep{kang2018sasrec}.
+
+For our default 16 GB GPU, the optimized evaluation caches the (n\_items, d) item-features table once per \texttt{evaluate()} call rather than recomputing it per batch --- this is critical with the MLP adaptor, which would otherwise recompute the 207k-item \ensuremath{\times} 768 \ensuremath{\rightarrow} 300 \ensuremath{\rightarrow} 64 MLP forward 1,400+ times per evaluation.
+
+
+\subsection{Added components (deliberately small adaptations)}\label{sec:3.7}
+
+Our two architectural additions (the novelty boundary is stated in \S\ref{sec:2.3}) are deliberately simple, default-OFF, and zero-initialized so that each is a \emph{bit-identical no-op at initialization} and reduces the design to a single controlled lever. Both are defined on top of an \textbf{HSTU-style pure-PyTorch implementation of the HSTU encoder, based on the published architecture} \citep{zhai2024hstu}: we use the pointwise-aggregated interaction $\mathrm{silu}(QK^{\top} + \mathrm{rab})\,V$ with the published per-block normalization, having diagnosed and removed two spurious normalizations (a $1/\sqrt{d}$ score scaling and a $1/(i{+}1)$ row averaging) in our initial reimplementation that collapse HSTU's pointwise attention into weak mean-pooling. We verify the implementation equation-by-equation against the published HSTU formulation (pointwise $\mathrm{silu}(QK^{\top} + \mathrm{rab})\,V$ aggregation, no softmax, no $1/\sqrt{d}$ scaling); an executable end-to-end reproduction of the official kernel stack is impossible on our hardware (\S\ref{sec:5.6}); the core block, however, passes an exact numerical parity test against the reference research implementation at a mirrored \textbf{aligned configuration only} (identity affine norms, zeroed extra \texttt{uvqk} bias, \ensuremath{\varepsilon} aligned, dropout off, eval mode; max abs diff 0.0; \texttt{HSTU\_PARITY\_REPORT.md} discloses the alignment --- the trained configuration is a strict-superset HSTU-style variant, \S\ref{sec:6.3}). \textbf{Initialization disclosure (2026-07-19):} with the delta-kernel and gate g=0 initialization, both task gradients are exactly zero at the start (y=x, so the gate gradient vanishes and the kernel gradient is multiplied by g=0); learning bootstraps only because Adam's coupled weight-decay term (1e-5) perturbs the delta tap off its fixed point --- the optimizer regularizer is therefore part of the filter's learning mechanism, and with weight decay disabled this parameterization is an absorbing no-op. The fixed-average and no-gate comparator arms do not share this singular start, so those comparisons alter the optimization path as well as the named design element. The later nonsingular studies provide cleaner internal contrasts but reuse outcome-visible splits, and active controls prevent uniquely learned-tap attribution; they do not retroactively decompose the non-initialization-matched historical arms.
+
+\textbf{(a) Text-Anchored Prototype Embeddings (TAPE).} TAPE is a simple soft text-prototype additive capacity term inspired by semantic-ID and prototype methods (TIGER, VQ-Rec, ProtoMF); it provides a small but not headline gain (\S\ref{sec:5.1}). Let $t_i \in \mathbb{R}^{d_{\text{text}}}$ be item \emph{i}'s frozen text embedding (MiniLM or BLaIR). We k-means the L2-normalized text embeddings into \emph{K} centroids $\{c_1,\ldots,c_K\}$ once, offline, and form a \textbf{frozen soft assignment} $A_i = \mathrm{softmax}(\langle t_i, c\rangle / \tau) \in \Delta^{K}$ ($\tau$ = 0.05). We add a \textbf{learnable prototype table} $P \in \mathbb{R}^{K\times d}$ (zero-initialized) to each item's feature:
+\begin{equation*}
+  e_i = \mathrm{id}_i + \Phi(t_i) + A_i P,
+\end{equation*}
+where $\mathrm{id}_i$ is the learned per-item embedding and $\Phi$ the learned projection of the frozen text embeddings. Items in the same semantic neighborhood share the learnable capacity $A_i P$ --- the shared-structure benefit of TIGER-style semantic IDs \citep{rajput2023tiger} without discrete codes or an autoregressive decoder. Because $A$ is frozen and $P$ is zero-init, TAPE is an exact no-op at initialization and recovers the baseline. TAPE is adjacent to TIGER (discrete RQ-VAE IDs), VQ-Rec \citep{hou2023vqrec} (PQ codes), and ProtoMF \citep{melchiorre2022protomf} (prototype matrix factorization for explainability); it differs only in realization --- a frozen text-derived soft assignment gating a learnable prototype table inside a sequential recommender --- and we present it as a small adaptation of these prior ideas tested as a secondary ablation, not as a headline contribution. Default K = 512.
+
+\textbf{(b) Canonical causal FIR temporal filter (the proposed module).} BSARec \citep[Theorem 1]{shin2024bsarec} proves a low-pass limit for repeatedly applied softmax self-attention. That result does not cover the non-softmax HSTU-style pointwise operator used here and supplies motivation only. We test whether an explicit local left-causal residual benefits this backbone. Learned FIR separates from one equal-parameter current-position-only DCT/GELU residual, a compound contrast that does not isolate temporal access, while a competitive shared causal filter prevents attribution to per-channel taps (\S\ref{sec:5.1}--\S\ref{sec:5.2}). The proposed module is a single \textbf{per-channel learnable FIR residual} on the sequence embeddings $x \in \mathbb{R}^{B\times L\times d}$, in a \textbf{nonsingular, gradient-active} parameterization:
+\begin{equation*}
+  x \leftarrow x + \mathrm{DWConv}_{\Delta}(\mathrm{pad\_left}(x, K{-}1)), \qquad \Delta = 0 \text{ at init},
+\end{equation*}
+implemented as a depthwise \texttt{Conv1d(d,\ d,\ kernel\_size=K,\ groups=d,\ bias=False)} whose tap residual $\Delta$ is zero at initialization, with a \textbf{left-only causal pad of $K{-}1$}, so the layer is an \textbf{exact identity at initialization} yet has \textbf{nonzero gradients on the first task update} --- there is no gate whose zero initialization creates an absorbing fixed point. The primary E-A and canonical-breadth learned arms used the backbone weight-decay setting for FIR taps; E-A's zero-FIR-weight-decay sensitivity was not detectably different (A2--A1 +0.000010 [-0.000339, +0.000360], $p=.95$), which is neither an equivalence result nor a pathway/mediation test (\S\ref{sec:5.2}). The left-only pad makes output position \emph{t} a function of input positions \ensuremath{\le} \emph{t} only --- so under our all-position next-item loss there is \textbf{no future-label leakage}. FMLP-Rec \citep{zhou2022fmlprec} and BSARec use bidirectional sequence filters in their original formulations; under our all-position next-item loss, directly inserting such filters before each position's prediction would mix future positions, so we use this left-causal realization. \textbf{Legacy zero-gated realization (historical runs; reported as package-level).} The Video\_Games headline configuration (\S\ref{sec:5.1}) and the original breadth campaign (\S\ref{sec:5.2}) were trained with a functionally related but \emph{singular} realization --- $x \leftarrow x + g \odot (y - x)$ with a delta kernel and a scalar gate $g = 0$ at initialization --- in which both task gradients vanish at the start, so learning could begin only after Adam's weight-decay term perturbed the delta tap (\S\ref{sec:3} initialization disclosure). We call that the \textbf{legacy zero-gated FIR package} and report its contrasts as package-level (FIR-plus-initialization/optimizer), not FIR-specific. The nonsingular canonical form was then evaluated under matched per-seed initialization on three already outcome-visible category/split settings. Those internal estimates are positive, but their test exposure prevents an independent-confirmation claim. On Musical\_Instruments, a later equal-parameter pointwise placebo discriminates learned FIR from that compound current-only residual without isolating temporal access, and the shared causal control prevents learned-per-channel-tap attribution (\S\ref{sec:5.2}). The novelty boundary is narrow and we state it plainly. \emph{Not new}: filtering sequential representations, causal convolution (Caser; NextItNet), the frequency-domain motivation, and the attention-oversmoothing framing (FMLP-Rec; BSARec). \emph{New}: the minimal, gradient-active, identity-initialized, leak-free left-causal depthwise-FIR residual inserted before an HSTU-style stack under the all-position next-item objective, evaluated under full-catalog LLOO. As an FIR filter the module has a learnable per-channel frequency response --- the only sense in which we use the word ``spectral'' --- and supplies an explicit local temporal path; we do not claim the attention stack cannot represent this behavior. The legacy-package gain is robust across kernel lengths K \ensuremath{\in} \{4, 8, 16, 50\} (\S\ref{sec:5}); the canonical primary configuration fixes \textbf{K = 16} (historical runs used K = 8 on Video\_Games and K = 16 on Musical\_Instruments, \S\ref{sec:5.1}--\S\ref{sec:5.2}).
+
+A separate, subsequently frozen Software attempt also evaluated the canonical K=16 form and returned a positive thresholded verdict. Because earlier V2 validation-output non-visibility is not independently established, it is classified outcome-known/exploratory same-team robustness; its same-investigator, same-code-lineage, same-Amazon-family, local-custody scope also precludes independent-confirmation wording (\S\ref{sec:5.2}).
+
+Both components are leak-free by construction and add negligible parameters (TAPE: K\ensuremath{\times}d \ensuremath{\approx} 33k; filter: K\ensuremath{\times}d \ensuremath{\approx} 0.5--3k). Two further regularizers we use are \emph{not} claimed novel: \textbf{label smoothing} \citep{szegedy2016rethinking} on the full-softmax CE target, and the standard time / text-similarity / relative-position attention biases (TiSASRec \citep{li2020tisasrec}; HSTU \citep{zhai2024hstu}; \citealp{shaw2018relative}), each cited at the point of use.

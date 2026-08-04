@@ -1,0 +1,8 @@
+{
+  "protocol": "PREREG_FIR_CONTROLS",
+  "started_unix": 1785093220.4190361,
+  "run_json": "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.json",
+  "run_json_sha256": "ce334870eed389c88a2c67d803fc892e26244a01eebddaf72b23e203edb49f30",
+  "checkpoint": "results_Musical_Instruments_FIRCTRL_fixed_ma_seed20260906.best.pt",
+  "checkpoint_sha256": "435bd129dd4f394ccffb94c4b46939d232db9e0e92387ee6f8c71d641ed7c682"
+}

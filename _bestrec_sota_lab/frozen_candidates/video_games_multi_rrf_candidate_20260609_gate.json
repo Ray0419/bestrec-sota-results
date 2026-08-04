@@ -1,0 +1,110 @@
+{
+  "approval": "reject_for_publication_claim",
+  "artifact_reports": {
+    "summary": {
+      "exists": true,
+      "hash_matches_manifest": true,
+      "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\hstu_multi7_k30_sparse_local_refine_r005_20260609\\multi_rrf_fusion_summary.json",
+      "sha256": "d6df46546a6180baf82941014ca057e64d31d31cee6d4314209ce258f4308298"
+    },
+    "test_records": {
+      "exists": true,
+      "hash_matches_manifest": true,
+      "path": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\hstu_multi7_k30_sparse_local_refine_r005_20260609\\warm_full_catalog_records_Video_Games_multi_rrf_fusion_test.jsonl",
+      "sha256": "859171de2415c7331a526c64b33f20a94f068d5cd6fcee86ac9344f6d44f4635"
+    }
+  },
+  "blockers": [
+    "candidate is explicitly marked as development-only, not publication evidence",
+    "candidate has fewer than five fresh confirmatory seeds"
+  ],
+  "can_claim_sota": false,
+  "frozen_config": {
+    "rrf_k": 30,
+    "weights": {
+      "dev10": 0.2,
+      "dev13": 0.45,
+      "dev4": 0.05,
+      "dev5": 0.2,
+      "dev9": 0.05,
+      "sasrec": 0.05
+    }
+  },
+  "full_catalog_sparse_replay": {
+    "present": true,
+    "problems": [],
+    "record_report": {
+      "candidate_scopes": [
+        "full_catalog"
+      ],
+      "folds": [
+        0
+      ],
+      "methods": [
+        "multi_rrf_sparse_full_catalog_frozen"
+      ],
+      "metrics": {
+        "hr10": 0.13562398429750322,
+        "ndcg10": 0.07653033829842454,
+        "rr": 0.06643941550199861
+      },
+      "problem_count": 0,
+      "problems": [],
+      "publication_grade_true": 0,
+      "records": 94762,
+      "seeds": [
+        20260609
+      ],
+      "unique_users": 94762
+    },
+    "records": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_sparse_rrf_full_catalog_replay_20260609\\full_catalog_records_Video_Games_sparse_rrf_frozen_test.jsonl",
+    "summary": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\runs\\video_games_sparse_rrf_full_catalog_replay_20260609\\sparse_rrf_full_catalog_frozen_test_summary.json",
+    "summary_sha256": "5a28de92092d8f9970761bcded74992e7753e3b7459ef4b0f5c10b512b9eeddc",
+    "valid": true
+  },
+  "manifest": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_sota_lab\\frozen_candidates\\video_games_multi_rrf_candidate_20260609.json",
+  "manifest_sha256": "a97888c17d7449c8bbfb5be145ad354e76fac64323f24e4edd4c49fffca0d6a6",
+  "record_report": {
+    "candidate_scopes": [
+      "multi_method_top50_union_history_masked"
+    ],
+    "folds": [
+      0
+    ],
+    "methods": [
+      "multi_rrf_fusion_dev"
+    ],
+    "metrics": {
+      "hr10": 0.13562398429750322,
+      "ndcg10": 0.07652977352062436,
+      "rr": 0.06636780667534566
+    },
+    "problem_count": 0,
+    "problems": [],
+    "publication_grade_true": 0,
+    "records": 94762,
+    "seeds": [
+      20260609
+    ],
+    "unique_users": 94762
+  },
+  "required_fix": [
+    "Rerun the frozen recipe on fresh confirmatory seeds/splits before inspecting outcomes.",
+    "Use the sparse full-catalog replay path for the frozen top-50 RRF scoring function; do not use the top-50-union development artifact as publication evidence.",
+    "Compare against the modern baseline suite with per-user Holm-corrected tests and clustered bootstrap intervals."
+  ],
+  "schema_version": 1,
+  "summary_selected_config": {
+    "name": "rrf_dev100.2_dev130.45_dev40.05_dev50.2_dev90.05_sasrec0.05_k30",
+    "rrf_k": 30,
+    "weights": {
+      "dev10": 0.2,
+      "dev13": 0.45,
+      "dev4": 0.05,
+      "dev5": 0.2,
+      "dev9": 0.05,
+      "sasrec": 0.05
+    }
+  },
+  "warnings": []
+}

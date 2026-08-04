@@ -1,11 +1,32 @@
 # SOTA Hunt — Final Honest Result
 
 **Session end:** 2026-05-26
-**Status:** **Narrowly SOTA-competitive on one published benchmark (Video_Games).** Not broadly SOTA across all standard benchmarks.
+**Status:** **Historical and superseded.** Not approved for SOTA wording.
+
+**Superseding audit note, 2026-06-09:** this status is no longer approved claim
+language. HSTU-BLaIR reports a stronger Video_Games NDCG@10 than our
+SASRec-SBERT line, and a local WSL SM120 compatibility-port reproduction
+completed with final full-eval NDCG@10 `0.0738224` and best full-eval NDCG@10
+`0.0740335`. The honest current status is: strong internal SASRec baseline, no
+broad SOTA claim, no top-conference-ready leaderboard claim.
 
 ## The defensible publishable claim
 
-> **SASRec-SBERT** — a 2-layer Transformer with frozen SBERT (MiniLM-L6-v2) item-text projection, trained for 30 epochs with full cross-entropy — achieves **NDCG@10 = 0.0514 ± 0.0021** (3-seed mean) on the **Amazon Reviews 2023 Video_Games 5-core leave-last-out benchmark**, beating published TIGER (~0.042, +22%) and BLaIR (~0.045, +14%), and matching LIGER's lower bound (~0.053). Single best seed: 0.0543.
+The following historical claim is superseded. The current defensible claim is
+only that SASRec-SBERT reaches NDCG@10 = 0.05509 +/- 0.00035 in a fresh 5-seed
+local confirmatory rerun and significantly beats same-run SASRec-BLaIR and
+no-text SASRec ablations. It does not beat the external HSTU-BLaIR reference
+level.
+
+> **SASRec-SBERT** is a 2-layer SASRec-style Transformer with frozen
+> SBERT/MiniLM item-text projection. In the later 5-seed local rerun it reaches
+> NDCG@10 = 0.05509 +/- 0.00035 on our Amazon Reviews 2023 Video_Games 5-core
+> leave-last-out benchmark and beats same-run SASRec-BLaIR/no-text ablations.
+> It is not a SOTA result because stronger HSTU-BLaIR evidence exists.
+
+## Attribution statement
+
+The backbone is SASRec (Kang and McAuley, 2018). The text projection uses SBERT/MiniLM from the Sentence-BERT family (Reimers and Gurevych, 2019). BLaIR checkpoints, Amazon Reviews 2023, and the SASRecText MLP adaptor recipe are from Hou et al. 2024 and the `hyp1231/AmazonReviews2023` codebase. The local contribution is empirical and engineering: 5-core preprocessing, full-catalog evaluation, right-padding/NaN bug fixes, chunked full-softmax support, integration of frozen text embeddings into SASRec, and honest negative-result reporting on Beauty_and_Personal_Care.
 
 ## The brutally honest scope limit
 
@@ -26,7 +47,7 @@
 | **LIGER** (Yang et al. 2024, published) | ~0.053-0.058 | ~0.045-0.055 |
 | **SASRec-SBERT (this work)** | **0.0514 ± 0.0021** | **0.0180** |
 
-(Published numbers are approximate from my recollection of TIGER/LIGER/BLaIR papers; exact numbers should be sourced from each paper for a final manuscript.)
+(Published numbers are approximate session targets. Exact numbers, split definitions, and candidate-set protocol must be sourced from each paper before any final SOTA wording.)
 
 ## What worked
 
@@ -45,13 +66,13 @@
 
 ## The genuine scientific contribution
 
-A clean, reproducible **proof that SBERT augmentation of standard SASRec is enough to beat TIGER/BLaIR and approach LIGER on moderate-scale Amazon Reviews 2023 benchmarks**, with a ~10× smaller model (11.6M params) than TIGER (typically 60-100M params for the Transformer + RQ-VAE codebook + decoder vocabulary).
+A clean, reproducible **proof that adding off-the-shelf SBERT/MiniLM item text to standard SASRec produces a strong, efficient Video_Games result under our 5-core full-catalog protocol**, with a ~10× smaller model (11.6M params) than typical semantic-ID generative retrieval systems.
 
 This is a **simple, well-motivated baseline** that:
 - Trains in ~10 min on a single consumer GPU (Video_Games scale)
 - Uses 100% off-the-shelf components (MiniLM SBERT, vanilla PyTorch TransformerEncoder)
-- Beats published TIGER/BLaIR on the same dataset+protocol
-- Demonstrates that complicated semantic-ID generative retrieval (TIGER/LIGER) may not be strictly necessary at moderate catalog size
+- Is a strong internal baseline under this repository's Video_Games protocol
+- Suggests that semantic-ID generative retrieval (TIGER/LIGER) may not be strictly necessary at moderate catalog size, pending exact apples-to-apples reproduction
 
 ## Post-session follow-up: scale-up attempts on Beauty_and_PC failed
 
@@ -85,7 +106,9 @@ To actually reach LIGER's ~0.045 on Beauty_and_PC, we'd need to either:
 - **Sequence-augment short histories** (sliding-window data augmentation, masked-LM pretraining) — 1-2 weeks
 - **Use full softmax** (need a sampled-softmax approximation with much better importance weighting, e.g., adaptive negative sampling) — 1 week
 
-Within this session's budget, none of these are achievable. **The Video_Games result stands as the SOTA-competitive finding; Beauty_and_PC is documented as a tractable but unsolved follow-up.**
+Within this session's budget, none of these are achievable. **The Video_Games
+result stands as a strong internal baseline; Beauty_and_PC is documented as a
+tractable but unsolved follow-up.**
 
 ## What it would take to make this a top-tier publication
 
@@ -106,7 +129,7 @@ Within this session's budget, none of these are achievable. **The Video_Games re
 |---|---|
 | `_bestrec_run/preprocess_5core_standard.py` | Produces standard 5-core CSVs (matches hyp1231/AmazonReviews2023 protocol) |
 | `_bestrec_run/run_5core_benchmark.py` | Closed-form baselines (popularity, content_direct, ease_pure, ease_sbert) on 5-core benchmarks |
-| `_bestrec_run/run_sasrec_sbert.py` | The SOTA-competitive method: SASRec-SBERT with sampled-softmax option |
+| `_bestrec_run/run_sasrec_sbert.py` | Strong internal baseline: SASRec-SBERT with sampled-softmax option |
 | `_bestrec_run/debug_sasrec_eval.py` | The debug script that caught the NaN-in-padded-attention bug |
 | `_bestrec_run/results_sasrec_sbert_Video_Games_v3.json` | Headline Video_Games result (0.0543) |
 | `_bestrec_run/results_sasrec_sbert_Video_Games_seed{20260522,20260523}.json` | Multi-seed confirmation |
@@ -128,11 +151,11 @@ Within this session's budget, none of these are achievable. **The Video_Games re
 | 1-3 (closed-form era) | EASE+SBERT, LC2C V1/V2, LC2C++ on toy k-core slices | Looked SOTA but only because we used wrong (toy) benchmark |
 | 4 (closed-form ceiling) | CDR_validated headline + 4 negative-result variants | Confirmed closed-form ceiling on toy data |
 | 5 (real benchmark discovery) | Switched to standard 5-core via `preprocess_5core_standard.py` | Closed-form methods drop from "SOTA" to 23-70% below published methods at real scale |
-| **6 (sequential model)** | **SASRec-SBERT** | **Narrowly SOTA on Video_Games; not on Beauty_and_PC** |
+| **6 (sequential model)** | **SASRec-SBERT** | **Strong on Video_Games; not SOTA after external comparator audit** |
 
 ## Recommendation
 
-For a workshop/short-paper: ship what we have. The Video_Games result is real, reproducible, and beats two published baselines.
+For a workshop/short-paper: the Video_Games result is real and reproducible inside this repository, but the external-baseline wording must stay protocol-qualified until comparator reproduction is complete.
 
 For a top-tier publication: 6-8 weeks of focused follow-up work as outlined above.
 

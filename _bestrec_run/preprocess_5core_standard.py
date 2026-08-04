@@ -48,6 +48,12 @@ CATEGORIES = {
     "Beauty_and_Personal_Care":  ("../data_raw_proper/beauty_and_pc",        "Beauty_and_Personal_Care.jsonl"),
     "Sports_and_Outdoors":       ("../data_raw_proper/sports",               "Sports_and_Outdoors.jsonl"),
     "Toys_and_Games":            ("../data_raw_proper/toys",                 "Toys_and_Games.jsonl"),
+    # 4th HSTU-BLaIR benchmark category (novelty-audit N7/N13 response; their
+    # published Office NDCG@10: SASRec .0153 / HSTU .0223 / HSTU-BLaIR .0271)
+    "Office_Products":           ("../data_raw_proper/office",               "Office_Products.jsonl"),
+    # Prospective untouched-category confirmation. Selection and acquisition
+    # are frozen in PREREG_FIR_PROSPECTIVE_DM_V1_SELECTION.md.
+    "Digital_Music":             ("../data_raw_proper/digital_music",        "Digital_Music.jsonl"),
 }
 
 

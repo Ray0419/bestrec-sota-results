@@ -1,0 +1,78 @@
+%% GENERATED from PAPER_SUBMISSION.md (pandoc) -- hand-fixed conversion; see BUILD_NOTES.md
+\section{Conclusion}\label{sec:7}
+
+This paper contributes a narrow causal-filter module and an evaluation discipline for
+testing it. The discipline combines git-frozen protocols, a fail-closed artifact graph,
+environment-caveated comparator regeneration, and symmetric adjudication. Its value is
+illustrated by the Office\_Products V1 campaign: its own floor check VOIDed the
+comparison, and that verdict remains in the record even though a redesigned protocol
+later passed on fresh seeds.
+
+The main empirical result is a family of identity-initialized, gradient-active,
+strictly left-causal residual modules. Learned FIR--identity estimates are positive
+on Musical\_Instruments (+0.002265, 95\% CI [0.001928, 0.002602]),
+Industrial\_and\_Scientific (+0.002110 [0.001820, 0.002399]), and
+CDs\_and\_Vinyl (+0.006150 [0.005849, 0.006450]), but these are outcome-visible
+internal estimates. A separately frozen Software robustness attempt found learned FIR
+minus identity +0.005062 [+0.004591, +0.005533], with 8/8 positive paired differences
+and the ordinary 95\% CI lower bound above its pre-declared +0.000500 reporting threshold.
+Because earlier V2 validation-output non-visibility is not independently established and
+the work remains same-investigator, same-code-lineage, same-Amazon-family under local
+same-user custody, it is outcome-known robustness rather than independent confirmation.
+In the active-control study, every trainable left-causal arm improves
+identity; learned taps beat the redundant fixed-filter parameterizations but are not
+separated from the shared causal filter or parameter-matched nonlinear causal control.
+In the subsequent equal-parameter current-position-only placebo study, pointwise minus
+identity is -0.000069 [-0.000200, +0.000061], while learned FIR minus pointwise is
++0.001941 [+0.001788, +0.002095]. This discriminates learned FIR from that
+compound current-only residual in outcome-known MI, but does not isolate temporal
+access. It does not establish per-channel-tap
+necessity. In the prospectively frozen MovieLens 1M study, however, learned FIR did not
+replicate against identity (+0.000000 [-0.000074, +0.000075],
+$p_{\mathrm{Holm}}=.995$) or pointwise (+0.000035 [-0.000057, +0.000127],
+$p_{\mathrm{Holm}}=.796$). Shared, grouped, and low-rank arms met the pre-declared
+noninferiority margin against learned FIR only as coefficient-count compression: the learned-FIR
+effect gate failed, and no compute reduction was observed. The evidence therefore supports neither unique necessity of learned per-channel
+FIR coefficients, a general FIR benefit, superiority over the stronger external reference, nor
+independent cross-category confirmation.
+
+The official-code WEARec current-baseline campaign reached mean NDCG@10 0.059184
+[0.058674, 0.059693], below the existing six-seed full-model reference 0.067337
+[0.067063, 0.067611]; the descriptive unpaired contrast was -0.008154
+[-0.008689, -0.007618]. This closes only the narrow official-code/equal-evaluation
+feasibility check. It does not equalize architectures, losses, schedules, or tuning
+budgets and is not independent confirmation or SOTA evidence.
+
+The frozen AlphaFuse-style current-comparator campaign reached NDCG@10 0.048273
+[0.048129, 0.048416], above a zero-initialized upstream-class SASRec-ID control at 0.039024
+[0.038106, 0.039941] by +0.009249 [+0.008329, +0.010169], but below the existing
+full-model reference by -0.019065 [-0.019347, -0.018783]. This countable mixed result
+supports the value of the tested whole representation package over that ID backbone;
+it does not isolate null-space fusion, equalize architecture/capacity/tuning, reproduce
+AlphaFuse's published text setting, or provide independent confirmation or SOTA evidence.
+
+A separately frozen parser-default \texttt{Normal(0,1)} SASRec-ID sensitivity reached
+0.043065 [0.042645, 0.043486]. The AlphaFuse-style package remained above it by
++0.005207 [+0.004779, +0.005635], while normal initialization improved SASRec-ID over
+the earlier zero-init arm by +0.004042 [+0.003089, +0.004995]. Because this comparison
+is outcome-known, same-investigator, and cross-campaign, phase/date and initialization
+are confounded. It closes the narrow zero-init sensitivity concern, not initialization
+isolation, equal-budget comparison, independent confirmation, or SOTA.
+
+The secondary result is narrower. Frozen text features improve the repaired
+Musical\_Instruments frequency-tail endpoint (+0.000420 [0.000181, 0.000660]),
+but the gain concentrates at train frequency 5; removing that boundary group leaves no
+detected effect. The corresponding cross-dataset contrast is nonsignificant, and
+thinning interventions do not identify a tail mechanism. We therefore report a
+dataset-specific frequency-5 case, not a general cross-dataset result. TAPE, late fusion,
+sparse-warm redistribution, and the probe screen are supporting or descriptive studies,
+not additional headline contributions.
+
+The evidence has important limits: uncertainty is over optimizer seeds on reused fixed
+splits; comparator uncertainty is not distributionally matched; several campaigns are
+outcome-visible or protocol-deviated; and no item-text permutation control, temporal
+split replication, or deployment study has been completed. The defensible contribution
+is thus modular rather than architectural: a small causal FIR realization, its measured
+internal effect under the stated protocol, and an auditable record that preserves nulls,
+deviations, and VOID outcomes alongside positive results.
+

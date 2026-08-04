@@ -1,0 +1,179 @@
+{
+  "assessment_seeds": [
+    20262001,
+    20262002,
+    20262003,
+    20262004,
+    20262005,
+    20262006,
+    20262007,
+    20262008
+  ],
+  "claim_boundary": "official 2026 WEARec model/training code under the paper's shared split, full-catalog mask, and tie rule; not independent confirmation, SOTA, a paired experiment, or equal tuning budgets",
+  "descriptive_welch_contrast": {
+    "ci95_unadjusted": [
+      -0.008689419251699939,
+      -0.007618332832746352
+    ],
+    "delta": -0.008153876042223146,
+    "df": 10.007090599196305,
+    "estimand": "WEARec minus existing full-model reference",
+    "p_two_sided_unadjusted": 1.1567406255137613e-11,
+    "se": 0.00024037758918854808,
+    "t": -33.92111581511613,
+    "warning": "descriptive outcome-known cross-system contrast; not randomized, paired, or confirmatory"
+  },
+  "endpoint_sha256": {
+    "20262001": "ba218e447c0a24284f5873291d60e9460c034c263244a8affaeedd4e18e84009",
+    "20262002": "705bf49051dffd7f1a2b679ee506894bae33b5b0b84fb18a0d84778741456869",
+    "20262003": "f34303f052a788268e94e5b693579bea3d526c0b8bff23cacc78fdbcf4d46bf5",
+    "20262004": "988e1cd48edd97d619217e7c488405849e2d0aa477883f1cc7bce69876479e34",
+    "20262005": "4ff11badf40dd0887e748cdd7ecb1adccdef9152f76755a5a01112a19c722106",
+    "20262006": "e2160987d7a1f3e562817d3219a4fd2a20288a1e6991d57d3009a24be29e189d",
+    "20262007": "f5c27a69b42da6d091f3b1c5a660cbae23592e1744431967b98701a4d5902fc2",
+    "20262008": "a0664807e4984d151a2325092efdecaf5c519e770ea9f7b4ba887a429da70267"
+  },
+  "evidence_class": "prospectively frozen execution on an outcome-known split by the same investigators",
+  "execution_repository_commit": "b804ea02bfc60c0b7d2c157c67d26e26e34cf478",
+  "existing_full_model_reference_ndcg10": {
+    "ci95": [
+      0.06706336782820593,
+      0.06761140450047201
+    ],
+    "mean": 0.06733738616433897,
+    "n": 6,
+    "sd": 0.00026111018695743196
+  },
+  "protocol": "PREREG_WEAREC_BASELINE_V1",
+  "reference_sha256": {
+    "results_V2_confirm_seed20260613_VG.json": "d37cb83ba049b64bd2f5fdf694871d2d5948eccbbfb667b4cbfdc7ad3ac51c0b",
+    "results_V2_ls02_filter8_VG.json": "d391651bac4a2354054a4165f3df536a78e2604ad763d44bd0f509f6a588f1bd",
+    "results_V2_ls02_filter8_seed20260609_VG.json": "737b2434cf1ce2cd1a01d646f06079b9a8644d34759a3929f331a2e82e63c183",
+    "results_V2_ls02_filter8_seed20260610_VG.json": "db4f693bc37d5830569a69ea854dda19de74c505af9d5b59e560064e47c5d32f",
+    "results_V2_ls02_filter8_seed20260611_VG.json": "f3a0032f76230fa9ab66e2c9e576856f13ad18930b480f9ef128073952ead3fa",
+    "results_V2_ls02_filter8_seed20260612_VG.json": "ab2110f0c0973f65aba9359258528cf88a577a9f8bf549689e48778e02d3f422"
+  },
+  "resources": [
+    {
+      "best_epoch": 29,
+      "eval_seconds": 7.550054999999702,
+      "n_params": 1775682,
+      "peak_cuda_memory_bytes": 308445696,
+      "seed": 20262001,
+      "train_seconds": 1702.6019260999747
+    },
+    {
+      "best_epoch": 74,
+      "eval_seconds": 7.869419099995866,
+      "n_params": 1775682,
+      "peak_cuda_memory_bytes": 308445696,
+      "seed": 20262002,
+      "train_seconds": 4211.910800199956
+    },
+    {
+      "best_epoch": 41,
+      "eval_seconds": 6.990314300055616,
+      "n_params": 1775682,
+      "peak_cuda_memory_bytes": 308445696,
+      "seed": 20262003,
+      "train_seconds": 2301.6406763000414
+    },
+    {
+      "best_epoch": 50,
+      "eval_seconds": 7.048093999968842,
+      "n_params": 1775682,
+      "peak_cuda_memory_bytes": 308445696,
+      "seed": 20262004,
+      "train_seconds": 2341.3766658999957
+    },
+    {
+      "best_epoch": 53,
+      "eval_seconds": 7.0506337999831885,
+      "n_params": 1775682,
+      "peak_cuda_memory_bytes": 308445696,
+      "seed": 20262005,
+      "train_seconds": 2472.8648909999756
+    },
+    {
+      "best_epoch": 40,
+      "eval_seconds": 7.256815900094807,
+      "n_params": 1775682,
+      "peak_cuda_memory_bytes": 308445696,
+      "seed": 20262006,
+      "train_seconds": 1967.7174914999632
+    },
+    {
+      "best_epoch": 34,
+      "eval_seconds": 7.081423000083305,
+      "n_params": 1775682,
+      "peak_cuda_memory_bytes": 308445696,
+      "seed": 20262007,
+      "train_seconds": 1726.594491600059
+    },
+    {
+      "best_epoch": 38,
+      "eval_seconds": 7.201375599950552,
+      "n_params": 1775682,
+      "peak_cuda_memory_bytes": 308445696,
+      "seed": 20262008,
+      "train_seconds": 1867.0105647000019
+    }
+  ],
+  "selected_preset": "official_beauty",
+  "upstream": {
+    "commit": "2087335339b1ead87da6e066ce14e2d33880a95e",
+    "url": "https://github.com/xhy963319431/WEARec.git"
+  },
+  "validation_selection": {
+    "official_beauty": 0.06844664817855373,
+    "official_sports": 0.06812966341037814
+  },
+  "vectors": {
+    "existing_reference_ndcg10": [
+      0.06731228032662745,
+      0.06694888249428342,
+      0.06776123627808996,
+      0.06740918426707242,
+      0.06732043112571998,
+      0.06727230249424056
+    ],
+    "wearec_ndcg10": [
+      0.059624832984051294,
+      0.059891722520229326,
+      0.05887554662399928,
+      0.0585100459919559,
+      0.0594198164823197,
+      0.05880140086911008,
+      0.058413212974130775,
+      0.059931502531130255
+    ]
+  },
+  "verdict": "WEAREC-BELOW-EXISTING-REFERENCE",
+  "wearec_hr10": {
+    "ci95": [
+      0.10507929694788108,
+      0.10640843020013184
+    ],
+    "mean": 0.10574386357400646,
+    "n": 8,
+    "sd": 0.0007949162621790582
+  },
+  "wearec_mrr": {
+    "ci95": [
+      0.052561839312533644,
+      0.053505353709126714
+    ],
+    "mean": 0.05303359651083018,
+    "n": 8,
+    "sd": 0.0005642887469573258
+  },
+  "wearec_ndcg10": {
+    "ci95": [
+      0.05867405405183037,
+      0.05969296619240128
+    ],
+    "mean": 0.059183510122115826,
+    "n": 8,
+    "sd": 0.0006093819629445834
+  }
+}

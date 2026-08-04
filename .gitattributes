@@ -1,0 +1,31 @@
+# Line-ending policy (added per audit 2026-07-18 15:17):
+# text artifacts that enter releases are LF everywhere, so a Linux/macOS checkout,
+# a Windows checkout, and `git archive` all yield identical bytes for packaged files.
+# The deposit builder additionally normalizes text payloads to LF at bundle time,
+# so bundles are byte-stable regardless of the local checkout's line endings.
+*.md    text eol=lf
+*.py    text eol=lf
+*.json  text eol=lf
+*.jsonl text eol=lf
+*.cff   text eol=lf
+*.sh    text eol=lf
+*.txt   text eol=lf
+*.tex   text eol=lf
+*.bib   text eol=lf
+*.gin   text eol=lf
+*.html  text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.pdf   -text
+*.zip   -text
+*.gz    -text
+*.png   -text
+*.pt    -text
+*.npz   -text
+
+# FIR-control seals/provenance hash the exact Windows-produced JSON bytes.
+# Preserve those committed bytes verbatim so a clean clone reproduces the raw
+# SHA-256 recorded before the one-shot final evaluation.
+_bestrec_run/results_Musical_Instruments_FIRCTRL_*.json -text whitespace=-cr-at-eol
+_bestrec_run/results_Musical_Instruments_FIRPOINTV1_*.json -text whitespace=-cr-at-eol
+_bestrec_run/results_MI_V2_ls02_filter16_seed20260608.json -text whitespace=-cr-at-eol

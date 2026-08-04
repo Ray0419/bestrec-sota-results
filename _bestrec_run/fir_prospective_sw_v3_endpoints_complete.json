@@ -1,0 +1,234 @@
+{
+  "protocol": "PREREG_FIR_PROSPECTIVE_SW_V3",
+  "execution_git_head": "9c8f1a16f5d8d4a8a95b77d62b229f4cc3540219",
+  "created_unix": 1785217065.3352458,
+  "attempt_sha256": "f8a1fa77db5e0c8d5ad38ba7bc39e646789a2768cbc1dc594d9573c58d2d141f",
+  "ready_sha256": "8f70882a187651cb4dca684111da1fb5e017a6742dec9a7e435e9a9fb3606e0f",
+  "artifacts": {
+    "identity:20261301": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261301.finaleval.json",
+        "sha256": "074f885ec5fd9a87d9987ae0394aca80ca3b29d9f40d87bdc9a2dd852b0ae613"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261301.finaleval.users.npz",
+        "sha256": "b436516da7c39db2bf2c172458f05177aa0e027dea45b3d6476fa491b8a65250"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261301.finaleval.started.json",
+        "sha256": "be9b49cb5ab754376ec3b8684b4692bd1a76455359b5d0b74ed85e12e3b80c75"
+      }
+    },
+    "learned:20261301": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261301.finaleval.json",
+        "sha256": "14a22100fee449f90e30c2ff3bae6bf50245b9b64500e9700b92fdee6ec53938"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261301.finaleval.users.npz",
+        "sha256": "51ad22a39c20aa0f68bf4d568525e86bfaaf113803f728c130b02f0f4f2697e5"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261301.finaleval.started.json",
+        "sha256": "6a8b177eedf2fbe74d334f2f1b99d559c283c2f004ae5dcf543cc97ca154a450"
+      }
+    },
+    "learned:20261302": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261302.finaleval.json",
+        "sha256": "66af18f8afb1d50ddad0599bc9dcc34ab72a0cd04615e489b582a058680d45ff"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261302.finaleval.users.npz",
+        "sha256": "488a36e3c7a70f19013ad6a1f6254240a5ce1b4e5f1d84486b809e6dbf1090d4"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261302.finaleval.started.json",
+        "sha256": "196c2b2d543b863422333026baa12035774e6c877bf5153208d4772896c21e17"
+      }
+    },
+    "identity:20261302": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261302.finaleval.json",
+        "sha256": "3ffdd69d3efcd834324f718bcc4450243eacf9ff522d1606493f8a5c5b6bca4d"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261302.finaleval.users.npz",
+        "sha256": "97ad56c843d7559146d1c710d02202318bf9abeb7cb818e4c67d78ab452d68eb"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261302.finaleval.started.json",
+        "sha256": "c3af3d4ecf3b6b6416a8b1e207ab259188361f7387e842fe842d12cd26694312"
+      }
+    },
+    "identity:20261303": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261303.finaleval.json",
+        "sha256": "dfc14cd83a5dbc402ad3d295608f6a369c51c02903f38e7b4babe494d0591771"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261303.finaleval.users.npz",
+        "sha256": "da7ed836802cf817b3c86f18e8c2a5bf83de939e043cd86dce66aac3adcfa50a"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261303.finaleval.started.json",
+        "sha256": "fcaee462091c0da3db62e60f5d598bb42c729885f699a52757596280464cda35"
+      }
+    },
+    "learned:20261303": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261303.finaleval.json",
+        "sha256": "47956090b73ffc0188be89f865d625a20f89302ea66116e6c984a79284ef0a02"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261303.finaleval.users.npz",
+        "sha256": "8865235b93729409247d370f73cc82bc69af93e77e6617a850ce20c9621b5728"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261303.finaleval.started.json",
+        "sha256": "4ab7a69a0bfc313ca0b6a372480d0dbf8676fd927adeb7a7a0e0a72fa13105af"
+      }
+    },
+    "learned:20261304": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261304.finaleval.json",
+        "sha256": "d646003ecd5e7de1033e079296408f526b8a17e49e2442a518ad72a54a1d28d0"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261304.finaleval.users.npz",
+        "sha256": "48f5b37247238c9812d442b3fab8988d771f3140b586bb5a2e7c26973aaf5bbd"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261304.finaleval.started.json",
+        "sha256": "74699e78aa5d3b9d27f190cf545cd1d886bf714a98cca57da93b94b284c7c2cc"
+      }
+    },
+    "identity:20261304": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261304.finaleval.json",
+        "sha256": "d3b10a905ada981bfd197abb113accd149549263f47b27ee4b625641f6947ca7"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261304.finaleval.users.npz",
+        "sha256": "be1f5b1a762ff305e962028d3205db7f3d1714ec444616df0d3f18a60796cd3d"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261304.finaleval.started.json",
+        "sha256": "67c7275f1842505ad0ad58a5aeeb97389f3f228c765ef96fda48b76d659b3fa9"
+      }
+    },
+    "identity:20261305": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261305.finaleval.json",
+        "sha256": "4af81a795791ec813b2deea9bcf364c342a14d3d9813f676d02825eaebdc7597"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261305.finaleval.users.npz",
+        "sha256": "be08b2be52f86830439015cd3d0bb905b3b56890c022eb70460ea5578f1c21bd"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261305.finaleval.started.json",
+        "sha256": "30a04f2cffadfc7bfaf815092effbf4592355e78d5a639889016db17c216d29c"
+      }
+    },
+    "learned:20261305": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261305.finaleval.json",
+        "sha256": "4e96530b6a551c4214bc9091308531dde5d0739c03e35a7b672ec337396f3abf"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261305.finaleval.users.npz",
+        "sha256": "0344006e5dcdd351cc40741f46eca9235818876b01294569bbd4a8a62a07add7"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261305.finaleval.started.json",
+        "sha256": "45c8d6bd44865472b1417ce79c2788e475c04bd85d622ea36201e3174011f6a8"
+      }
+    },
+    "learned:20261306": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261306.finaleval.json",
+        "sha256": "0ec62a179ceed8d1b479d87a30417483b10852855557c31d34f9080dfdab9854"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261306.finaleval.users.npz",
+        "sha256": "808efd8f5035fc32b6dd245473d8c331a3a6ce228ed5fad00dcc69e13dd50bc2"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261306.finaleval.started.json",
+        "sha256": "70cf0942247af34d2decce212118eec80c57ce194a80f6f56dbe0d94555e42c1"
+      }
+    },
+    "identity:20261306": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261306.finaleval.json",
+        "sha256": "e1f2ef642621ac8e934ae883a3569001d9c84d19ad1aeec9191c949375d7fcb7"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261306.finaleval.users.npz",
+        "sha256": "aa8233e087dbb54076d00237bcc873d9bbbb1ff56e3ebe1f9ae4452e6ab38a5d"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261306.finaleval.started.json",
+        "sha256": "fbb6ebeb41d3c02fade43b34fde54f7bd28332c87c3494f690a4cfac6e8a95d7"
+      }
+    },
+    "identity:20261307": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261307.finaleval.json",
+        "sha256": "9749eceae60cd416f4f3e81b9b43d9240158fa8d6943869682fcad414f0548e4"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261307.finaleval.users.npz",
+        "sha256": "a61bb390ac05bd3935f5e7212fb02fcc709ce3ef567ec36c727fc70d0ab2e0be"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261307.finaleval.started.json",
+        "sha256": "8d78fbaad9fde8d0f8b5978ff5ae60cca5658e72b08ea07fe34a7dd73e50baa5"
+      }
+    },
+    "learned:20261307": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261307.finaleval.json",
+        "sha256": "cfb6473a85e44a0b978af1ac4a7078753c85dafde3731ada0553af1fb8683164"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261307.finaleval.users.npz",
+        "sha256": "b583f492dd552c2d02188d7fb04e7b4241228313c42011934db4ae9609c35f60"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261307.finaleval.started.json",
+        "sha256": "bb46f6131c3f3915af1aa462e5c778a70acf4fe0b7b84a21ab2a19d729241c1a"
+      }
+    },
+    "learned:20261308": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261308.finaleval.json",
+        "sha256": "1e09ee4dc66e222d2a8335974903b8dec706fb366d4a69a83c14248e56ced66b"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261308.finaleval.users.npz",
+        "sha256": "50d52b40ee72a6dbd9062b101f6b0c08fadba4f86ce929582a040785355fd8a1"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_learned_seed20261308.finaleval.started.json",
+        "sha256": "dca2ca19d6dc12aad25c333818f5d08e58576780f08fb2161c59186c75f46f27"
+      }
+    },
+    "identity:20261308": {
+      "finaleval": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261308.finaleval.json",
+        "sha256": "782e1f9c636ba2c7cc3efdc903b8e31cd36db7012abbab25e2b7829ea88bef22"
+      },
+      "users": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261308.finaleval.users.npz",
+        "sha256": "476457e2508efc6bfacbda9ee268c8668dbbf5d201c671757502047a6ad0aa44"
+      },
+      "started_seal": {
+        "name": "results_Software_FIRPROSPV3_identity_seed20261308.finaleval.started.json",
+        "sha256": "74c93144c91db009a338edd9c7b00df8c0855014a6477f3b0b42b756a1dff8cc"
+      }
+    }
+  },
+  "endpoint_semantically_parsed_by_driver": false
+}

@@ -1,0 +1,75 @@
+{
+  "category": "Video_Games",
+  "config": {
+    "category": "Video_Games",
+    "epochs": 2,
+    "batch_size": 256,
+    "max_seq_len": 50,
+    "d_model": 64,
+    "n_layers": 4,
+    "n_heads": 2,
+    "dropout": 0.5,
+    "lr": 0.001,
+    "no_sbert": false,
+    "sbert_only": false,
+    "encoder_cache": null,
+    "mlp_adaptor": false,
+    "mlp_hidden": 300,
+    "mlp_dropout": 0.2,
+    "eval_every": 2,
+    "eval_subsample": 0,
+    "sampled_negs": 0,
+    "in_batch_negs": false,
+    "chunked_full_softmax": true,
+    "item_chunk": 32768,
+    "augment_factor": 1,
+    "seed": 20260608,
+    "lr_schedule": "warmup_cosine",
+    "time_bias": false,
+    "text_sim_bias": true,
+    "text_prototypes": "512",
+    "cosine_scoring": false,
+    "score_temp": 0.05,
+    "text_distill_weight": 0.0,
+    "pos_rab": true,
+    "encoder": "hstu",
+    "proto_tau": 0.05,
+    "time_decay_kernel": true,
+    "time_decay_bases": 8,
+    "out": "_bestrec_run/results_SMOKE_decay_VG.json"
+  },
+  "n_users": 94762,
+  "n_items": 25612,
+  "n_params": 11644222,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 8.530083577909238,
+      "epoch_time_s": 9.535588502883911
+    },
+    {
+      "epoch": 2,
+      "train_loss": 7.91766493661063,
+      "epoch_time_s": 9.248936891555786,
+      "val": {
+        "NDCG@10": 0.047446728074798966,
+        "HR@10": 0.08903357886072476,
+        "MRR": 0.04308534239350951,
+        "n_eval": 94762
+      },
+      "test": {
+        "NDCG@10": 0.04048812522501389,
+        "HR@10": 0.07550494924125704,
+        "MRR": 0.037042576550519846,
+        "n_eval": 94762
+      }
+    }
+  ],
+  "best_val_NDCG10": 0.047446728074798966,
+  "best_test": {
+    "NDCG@10": 0.04048812522501389,
+    "HR@10": 0.07550494924125704,
+    "MRR": 0.037042576550519846,
+    "n_eval": 94762
+  }
+}

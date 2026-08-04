@@ -137,3 +137,10 @@ _bestrec_run/ee_v4_status.json
 _bestrec_run/ee_v4_driver.log
 _bestrec_run/ee_v4_driver.err.log
 _bestrec_run/run_ee_v3_campaign.log
+
+# --- scratch / reproducible workspaces (see NAVIGATION.md §7) ---
+_bestrec_run/tmp/
+_bestrec_run/qa_final*/
+temp/
+experiments/*/BSARec/
+*.best.pt

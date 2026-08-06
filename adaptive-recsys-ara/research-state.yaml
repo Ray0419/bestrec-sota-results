@@ -1,10 +1,10 @@
 # Research State — Adaptive Recommendation Research Sprint
 
 project:
-  title: "RAVEL: Residual Alignment via a Validation-gated Exception Layer"
-  question: "Can post-training, validation-gated application of a reference-free preference residual improve explicit preference accuracy while remaining non-inferior in temporal NDCG@10 to a frozen linear semantic-collaborative vector ranker?"
+  title: "FACET-PREF: Facet-Conditioned Preference Retrieval"
+  question: "Pending Phase-2 lock: can macro-balanced reference-free alignment of facet-conditioned user queries improve fixed-budget candidate support and top-10 preference accuracy without material relevance or latency loss?"
   status: active
-  phase: 1_identify_limitations_cycle_4
+  phase: 2_design_question_cycle_4
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -33,6 +33,8 @@ literature:
     - "Global fusion assumes complementary experts help on the same requests."
     - "Temporal validation does not inherit conformal or distribution-free guarantees."
     - "Post-training residual selection with exact identity fallback is under-explored relative to joint gates."
+    - "Single-centroid semantic queries erase multi-modal user preference geometry."
+    - "Positive-item candidate recall does not reveal natural preference-pair co-support."
   evidence_gaps:
     - "The RAVEL component intersection is only a candidate whitespace, not an exhaustive novelty proof."
     - "PoC evidence is required before any benefit claim."
@@ -87,13 +89,13 @@ experiments:
       external_verification_complete: false
       failed_gates: [G1, G3, G5, G9, G10]
   gate:
-    status: cycle4_not_reached
-    rule: "A new cycle-4 question, disjoint cohort, and all-or-nothing gate must be locked before any successor outcome is evaluated."
+    status: cycle4_phase2_not_locked
+    rule: "FACET-PREF's fresh cohort, fixed-budget estimands, controls, and all-or-nothing gate must be committed before any successor outcome is evaluated."
 
 outer_loop:
   cycle: 4
-  last_direction: "RAVEL_v1_DEAD_END"
-  last_reflection: "RAVEL preserved relevance and showed positive conditional uplift, but aggregate preference gain was only 0.000146, test coverage fell below 0.10, accepted pair support was too small, relative p95 overhead was 1.543x, and external integrity failed on nonempty model-loading stderr. The next design must change the preference-relevant candidate or list optimization surface, not add another gate around the same proposal."
+  last_direction: "FACET_PREF_SELECTED_AFTER_REJECTING_DEEP_TAIL_CONTINUATION"
+  last_reflection: "RAVEL's failure came from a sparse preference-relevant action set. A read-only continuation probe initially showed +0.0053 on broad tail pairs, but served-page diagnostics were null or negative, so head-exact continuation was rejected before a new PoC. Cycle 4 instead tests macro-balanced alignment of facet-conditioned queries before fixed-budget ANN retrieval, while retaining the immutable BPR branch."
 
 workspace:
   findings: "findings.md"

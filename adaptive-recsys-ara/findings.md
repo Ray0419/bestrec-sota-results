@@ -2,11 +2,11 @@
 
 ## Research Question
 
-After two killed global-alignment designs, can post-training, validation-gated application of a reference-free preference residual improve explicit preference accuracy by at least 0.5 percentage points while remaining non-inferior in temporal NDCG@10 to a frozen semantic–collaborative linear hybrid?
+Phase 2 is now locking whether macro-balanced, reference-free alignment of facet-conditioned user queries can improve fixed-budget preference-pair candidate support and top-10 preference accuracy over single-centroid and BPR baselines without material relevance or latency loss.
 
 ## Current Understanding
 
-Phase 1 originally found four coupled bottlenecks: cross-stage objective mismatch, exposure-censored feedback, preference freshness versus reindexing cost, and semantic alignment versus online latency. RIPPLE showed that semantic query adaptation cannot replace collaborative structure. CAPER preserved collaborative support and safety, but global preference residuals still failed to retain both relevance and preference quality. RAVEL then showed that selective intervention can preserve relevance and produce positive conditional uplift, yet cannot create enough aggregate preference effect when the underlying constrained proposal changes too little of the evaluated preference surface. Cycle 4 has returned to candidate/list formation rather than another request gate. No positive benefit claim has been made.
+Phase 1 originally found four coupled bottlenecks: cross-stage objective mismatch, exposure-censored feedback, preference freshness versus reindexing cost, and semantic alignment versus online latency. RIPPLE showed that semantic query adaptation cannot replace collaborative structure. CAPER preserved collaborative support and safety, but global preference residuals still failed to retain both relevance and preference quality. RAVEL then showed that selective intervention can preserve relevance and produce positive conditional uplift, yet cannot create enough aggregate preference effect when the underlying constrained proposal changes too little of the evaluated preference surface. A cycle-4 deep-tail continuation idea was rejected after its apparent preference gain vanished on served-page metrics. FACET-PREF now moves alignment before ANN candidate formation while retaining collaborative support. No positive benefit claim has been made.
 
 ## Key Results
 
@@ -27,6 +27,9 @@ RAVEL v1 is the third killed design. Its source-bound runner produced `+0.000146
 - Generic gating, abstention, safe fallback, semantic-collaborative mixtures, and selective LLM pair regularization are already occupied. RAVEL's only defensible candidate whitespace is post-training control of an already-trained reference-free residual with exact identity fallback and intervention-specific evaluation.
 - RAVEL's accepted requests had positive `+0.00224` conditional preference uplift and passed relevance non-inferiority, but only `8.57%` of requests were accepted; proposal support, not harm calibration, limited aggregate effect.
 - When the baseline path is roughly `2 ms`, even a tiny residual, projection, and two logistic heads can violate a strict relative latency ratio despite low absolute latency.
+- Broad full-union preference accuracy can reward changes in unserved deep ranks. The continuation probe gained `+0.00531` on tail-tail pairs but changed page-2 NDCG/Recall by approximately zero; future evaluations must bind preference estimands to the served surface.
+- Positive-item candidate recall and preference-pair co-support are different retrieval properties. FACET-PREF must establish both before attributing any top-10 change to aligned facet retrieval.
+- Multi-interest retrieval, SimPO, and fixed-budget vector fusion are individually occupied. The only candidate novelty is macro-balanced reference-free alignment of facet queries before ANN with immutable item geometry and end-to-end preference/support/latency evaluation.
 
 ## Lessons and Constraints
 
@@ -35,13 +38,14 @@ RAVEL v1 is the third killed design. Its source-bound runner produced `+0.000146
 - New Windows experiment runners must follow the repository's safe-execution contract.
 - Every successor cycle must use a prospectively selected cohort disjoint from all opened predecessor cohorts.
 - Cycle 4 must change preference-relevant candidate support or the list-level learning target rather than add another selector around RAVEL's fixed proposal.
+- Cycle 4 must compare FACET-PREF with raw multi-interest, single-query aligned, zero-margin, shuffled-label, single-centroid linear, and selected-BPR controls under a fixed candidate budget.
 - Temporal validation is empirical calibration only; conformal, distribution-free, causal, and formal-safety language is prohibited.
 
 ## Open Questions
 
-- Can preference-aware retrieval expose useful high/low-rating pairs without target injection or catalog re-embedding?
-- Can list-level alignment move enough top-ranked pair relations to clear a material preference gate while preserving BPR/linear relevance?
-- Can the next mechanism avoid a learned online selector and remain close to the dual-index linear latency path?
+- Can facet-conditioned preference alignment expose useful high/low-rating pairs without target injection or catalog re-embedding?
+- Does macro-balanced facet training outperform an unaligned multi-interest retriever and a single aligned query at the same semantic budget?
+- Can batched facet search remain within 1.25x of the dual-index single-centroid path?
 
 ## Optimization Trajectory
 
@@ -50,3 +54,4 @@ RAVEL v1 is the third killed design. Its source-bound runner produced `+0.000146
 | 1 | RIPPLE v1: text-only, query-only, ANN-boundary SimPO | Dead end. Passed latency, index immutability, dislike safety, and seed stability; failed statistical quality, ANN-specific mechanism, BPR relevance, and candidate recall. |
 | 2 | CAPER v1: BPR+semantic union, contradiction-focused SimPO residual, hard BPR-regret projection | Dead end. Passed support, Recall, dislike, latency, and integrity; failed material relevance, matched mechanism, preference accuracy, and seed stability. |
 | 3 | RAVEL v1: finite preference proposal plus validation-gated exact fallback | Dead end. Passed relevance non-inferiority, selective mechanism, safety, support/fallback, and seed stability; failed strong default, material preference gain, coverage/support, relative latency, and external integrity. |
+| 4 | FACET-PREF: macro-balanced preference-aligned facet queries before fixed-budget ANN | Selected after rejecting a deep-tail continuation diagnostic; Phase 2 protocol lock in progress. |

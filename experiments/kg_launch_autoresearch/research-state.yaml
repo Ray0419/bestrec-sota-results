@@ -101,16 +101,28 @@ hypotheses:
     priority: low
   - id: H9
     statement: "A ridge-regularized terminal Green-energy residual can capture global co-fact paths while Loewner endpoint boxes certify Top-10 invariance to transaction-time revision uncertainty."
-    status: protocol_locked_label_blind_poc_pending_implementation
-    motivation: "The additive H6 kernel changes ranks but misses outcome attribution. H9A is explicitly a non-novel feasibility gate for a standard Kron/hypergraph energy and sufficient endpoint certificate. Only a later H9B group-exclusive possible-world bound/search algorithm could support a Tier-A novelty claim."
+    status: killed_by_certificate_utility_gate
+    motivation: "H9A passed runtime, numerical, revision-sensitivity, graph-dependence, and global-path gates, but certified only 907/48,422 impressions (1.8731 percent), exposed uncertainty on 98.9344 percent, and stayed below 5 percent certificate coverage in both robustness views. No rescue tuning is allowed."
     parent: null
     priority: high
+  - id: H10
+    statement: "Relation-wise configuration-null residualization can expose fixed-degree-null-exceptional KG structure that is degree-distinct at historical and current endpoints while retaining a nondegenerate endpoint-worst score."
+    status: protocol_locked_label_blind_poc_pending_implementation
+    motivation: "H10A is a label-blind feasibility test for the occupied correspondence-analysis residual, not a novelty claim. A mathematical audit demoted trace energy because it is only a degree-class mixing statistic and promoted candidate-projected variance as the first gate. A pass would justify designing a genuinely new H10B component; a miss kills the direction."
+    parent: null
+    priority: high
+  - id: H11
+    statement: "A complete entailment-quotient relation-message layer can factor every scorer invariant to a fixed property-entailment fragment through a minimal-antichain quotient without materializing closure, while preserving provenance and time in a separate invariant channel."
+    status: current_form_no_go_stronger_quotient_conditional
+    motivation: "Independent red-team found the original antichain canonicalizer collides with minimal RDFS reduction, DeepSets, and generic representation-invariant GNN wrappers (novelty about 0.30; Tier-A 0.10--0.15). Only a stronger complete quotient, universal-factorization theorem, injective poset/Mobius layer, and no-materialization algorithm remains conditional (novelty 0.55--0.65), subject to a cheap natural-drift POC."
+    parent: null
+    priority: medium
 
 experiments:
-  proxy_metric: "H9A label-blind conjunction: revision-sensitive and graph-dependent guard-resolved Top-10 changes, rigorous global co-fact path use, nonvacuous Loewner Top-10 certificate coverage, robustness, and <=300-second primary/replay runtime."
+  proxy_metric: "H10A label-blind conjunction: fixed-degree-null-exceptional within-impression residual variance, degree-distinct rankings at both transaction-time endpoints, nondegenerate endpoint-worst scores, robustness, exact replay, and <=30-second module runtime."
   baseline_value: 0
   best_value: 0.5500209487454029
-  total_runs: 6
+  total_runs: 7
   trajectory:
     - run: "h1_launch_support/run_001"
       classification: "confirmatory implementation-invalidity adjudication"
@@ -142,11 +154,16 @@ experiments:
       value: -0.0023676952391595285
       secondary_value: -0.004304736473329268
       verdict: "KILL_H6_OUTCOME_DIRECTION"
+    - run: "h9_revkron_certificate/h9_3105834790a84ed2970a"
+      classification: "prospective label-blind graph-mechanism and certificate-utility test with exact replay and deep verification"
+      value: 0.018731155260005784
+      secondary_value: 0.9893436867539548
+      verdict: "KILL_H9_KRON_DIRECTION"
 
 outer_loop:
-  cycle: 6
-  last_direction: "H9A RevKron-Cert prospective label-blind mechanism and certificate-coverage gate"
-  last_reflection: "Independent audits found the H9A scorer/operator/certificate ingredients occupied by classical Kron reduction, hypergraph recommendation, inverse-Laplacian ranking, and robust Top-K work. H9A therefore makes no algorithm novelty or cold-start outcome claim. Its exact, label-blind protocol tests whether the mechanism has enough revision sensitivity, genuinely global co-fact propagation, graph dependence, rigorous certificate coverage, structural robustness, and runtime headroom to justify H9B: a provenance-native exact/anytime search over mutually exclusive revision worlds."
+  cycle: 7
+  last_direction: "H10A relation-null dual-transaction-time label-blind feasibility gate"
+  last_reflection: "H9's global graph mechanism worked computationally but its sufficient Loewner certificate was practically vacuous, so the direction was killed without tuning. H10 tests whether the non-degree orientation of relation-wise KG incidence survives exact fixed-degree randomization and affects candidate scores. Its CA/configuration-null ingredients are occupied and cannot support a novelty claim; a pass only authorizes a genuinely new H10B module. The contingency candidate is H11 entailment-quotient antichain message passing, pending independent collision red-team."
 
 workspace:
   findings: "findings.md"

@@ -356,6 +356,22 @@ def is_sha256(value: Any) -> bool:
     return True
 
 
+def require_authorized_launcher_sha256(
+    value: Any, launcher_path: Path, label: str
+) -> str:
+    """Require an externally supplied lowercase digest of this launcher."""
+
+    if (
+        not isinstance(value, str)
+        or value != value.lower()
+        or not is_sha256(value)
+        or not launcher_path.is_file()
+        or sha256_file(launcher_path) != value
+    ):
+        raise IntegrityError(f"{label} does not authorize the current launcher")
+    return value
+
+
 def canonical_json_bytes(value: Any) -> bytes:
     return (
         json.dumps(
@@ -2368,7 +2384,7 @@ def _expected_prefix_queries(
     bpr_user_matrix: Any,
     bpr_item_matrix: Any,
     collaborative_mask: Any,
-) -> tuple[Any, Any]:
+) -> tuple[Any, Any, Any]:
     import numpy as np
 
     users = np.asarray(user_ids, dtype=np.int64)
@@ -2378,6 +2394,7 @@ def _expected_prefix_queries(
     collaborative = np.asarray(collaborative_mask, dtype=np.bool_)
     raw_queries = np.empty((users.size, 384), dtype=np.float32)
     bpr_queries = np.empty((users.size, 64), dtype=np.float32)
+    descriptor_features = np.empty((users.size, 1153), dtype=np.float32)
     for user_row, raw_user_id in enumerate(users):
         events = tuple(histories[int(raw_user_id)])
         positive = sorted(
@@ -2400,8 +2417,22 @@ def _expected_prefix_queries(
             if disliked
             else np.zeros(384, dtype=np.float32)
         )
-        raw_queries[user_row] = _normalise_replay(
+        raw_query = _normalise_replay(
             liked - np.float32(0.25) * dislike, "raw semantic query"
+        )
+        raw_queries[user_row] = raw_query
+        descriptor_features[user_row] = np.ascontiguousarray(
+            np.concatenate(
+                (
+                    raw_query,
+                    liked,
+                    dislike,
+                    np.asarray(
+                        [min(len(events), 500) / 500.0], dtype=np.float32
+                    ),
+                )
+            ),
+            dtype=np.float32,
         )
         base = np.asarray(bpr_users[user_row], dtype=np.float32)
         selected = [event for event in events if collaborative[event.item_index]]
@@ -2425,7 +2456,124 @@ def _expected_prefix_queries(
         if not np.isfinite(base).all() or float(np.linalg.norm(base)) <= 1.0e-12:
             raise IntegrityError("Authenticated prefix yields an invalid BPR query")
         bpr_queries[user_row] = np.ascontiguousarray(base, dtype=np.float32)
-    return raw_queries, bpr_queries
+    return raw_queries, bpr_queries, descriptor_features
+
+
+def _validated_adapter_state_arrays(
+    state: Mapping[str, Any], label: str
+) -> Mapping[str, Any]:
+    """Return immutable float32 arrays for one exact CABLE adapter state."""
+
+    import numpy as np
+
+    expected_shapes = {
+        "hidden.weight": (32, 1153),
+        "hidden.bias": (32,),
+        "residual.weight": (384, 32),
+        "residual.bias": (384,),
+        "boundary.weight": (1, 32),
+        "boundary.bias": (1,),
+    }
+    if set(state) != set(expected_shapes):
+        raise IntegrityError(f"{label} adapter state-key inventory changed")
+    arrays: dict[str, Any] = {}
+    for name, expected_shape in expected_shapes.items():
+        value = state[name]
+        try:
+            if hasattr(value, "detach"):
+                value = value.detach().cpu().numpy()
+            source = np.asarray(value)
+        except (AttributeError, RuntimeError, TypeError, ValueError) as exc:
+            raise IntegrityError(f"{label} adapter tensor cannot be decoded: {name}") from exc
+        if (
+            source.dtype != np.float32
+            or source.shape != expected_shape
+            or not np.isfinite(source).all()
+        ):
+            raise IntegrityError(f"{label} adapter tensor differs: {name}")
+        array = np.array(source, dtype=np.float32, order="C", copy=True)
+        array.setflags(write=False)
+        arrays[name] = array
+    return arrays
+
+
+def _adapter_state_memory_sha256(state: Mapping[str, Any]) -> str:
+    """Reproduce the runner's in-memory adapter-state SHA-256 exactly."""
+
+    import numpy as np
+
+    digest = hashlib.sha256()
+    for name in sorted(state):
+        value = state[name]
+        if hasattr(value, "detach"):
+            value = value.detach().cpu().numpy()
+        array = np.ascontiguousarray(value)
+        digest.update(name.encode("utf-8"))
+        digest.update(str(array.dtype).encode("ascii"))
+        digest.update(canonical_json_bytes(list(array.shape)))
+        digest.update(array.tobytes(order="C"))
+    return digest.hexdigest()
+
+
+def _replay_adapter_outputs(
+    *,
+    descriptor_features: Any,
+    raw_queries: Any,
+    state: Mapping[str, Any],
+    label: str,
+    batch_size: int = 64,
+) -> tuple[Any, Any]:
+    """Replay the frozen adapter equations directly from checkpoint arrays."""
+
+    import numpy as np
+
+    features = np.ascontiguousarray(descriptor_features, dtype=np.float32)
+    raw = np.ascontiguousarray(raw_queries, dtype=np.float32)
+    if (
+        features.ndim != 2
+        or features.shape[1] != 1153
+        or raw.shape != (features.shape[0], 384)
+        or batch_size < 1
+        or not np.isfinite(features).all()
+        or not np.isfinite(raw).all()
+    ):
+        raise IntegrityError(f"{label} adapter replay inputs are invalid")
+    arrays = _validated_adapter_state_arrays(state, label)
+    queries = np.empty_like(raw)
+    boundaries = np.empty(features.shape[0], dtype=np.float32)
+    for start in range(0, features.shape[0], batch_size):
+        stop = min(features.shape[0], start + batch_size)
+        hidden = np.asarray(
+            np.tanh(
+                features[start:stop] @ arrays["hidden.weight"].T
+                + arrays["hidden.bias"]
+            ),
+            dtype=np.float32,
+        )
+        residual = np.asarray(
+            hidden @ arrays["residual.weight"].T + arrays["residual.bias"],
+            dtype=np.float32,
+        )
+        boundary = np.asarray(
+            hidden @ arrays["boundary.weight"].T + arrays["boundary.bias"],
+            dtype=np.float32,
+        ).reshape(-1)
+        residual_norm = np.linalg.norm(residual, axis=1, keepdims=True)
+        residual = residual / np.maximum(residual_norm, np.float32(1.0))
+        displaced = raw[start:stop] + np.float32(0.25) * residual
+        displaced_norm = np.linalg.norm(displaced, axis=1, keepdims=True)
+        query = displaced / np.maximum(displaced_norm, np.float32(1.0e-12))
+        queries[start:stop] = np.asarray(query, dtype=np.float32)
+        boundaries[start:stop] = boundary
+    if (
+        not np.isfinite(queries).all()
+        or not np.isfinite(boundaries).all()
+        or not np.allclose(
+            np.linalg.norm(queries, axis=1), 1.0, rtol=0.0, atol=2.0e-5
+        )
+    ):
+        raise IntegrityError(f"{label} adapter replay produced invalid outputs")
+    return np.ascontiguousarray(queries), np.ascontiguousarray(boundaries)
 
 
 def _load_stage_manifests(
@@ -2498,6 +2646,7 @@ def _verify_manifest_oracles(
     bpr_user_matrix: Any,
     bpr_item_matrix: Any,
     collaborative_mask: Any,
+    adapter_states: Mapping[int, Mapping[str, Mapping[str, Any]]],
     action_pairs: Sequence[tuple[int, int, int, int, int]] | None = None,
 ) -> Mapping[str, Any]:
     import numpy as np
@@ -2523,7 +2672,11 @@ def _verify_manifest_oracles(
     reference_history: Any | None = None
     reference_history_counts: Any | None = None
     reference_bpr_queries: Any | None = None
-    expected_raw_queries, expected_bpr_queries = _expected_prefix_queries(
+    (
+        expected_raw_queries,
+        expected_bpr_queries,
+        descriptor_features,
+    ) = _expected_prefix_queries(
         user_ids=users,
         histories=expected_histories,
         semantic_matrix=semantic,
@@ -2531,8 +2684,13 @@ def _verify_manifest_oracles(
         bpr_item_matrix=bpr_items_matrix,
         collaborative_mask=collaborative,
     )
+    if set(adapter_states) != set(EXPECTED_SEEDS):
+        raise IntegrityError("Adapter-state seed inventory differs")
 
     for seed in EXPECTED_SEEDS:
+        seed_states = adapter_states[seed]
+        if set(seed_states) != {"raw_hybrid", *EXPECTED_METHODS[2:]}:
+            raise IntegrityError(f"Adapter-state method inventory differs for seed {seed}")
         manifest = manifests[seed]
         candidates = np.asarray(manifest["candidates"], dtype=np.int64)
         bpr_scores = np.asarray(manifest["bpr_scores"], dtype=np.float32)
@@ -2576,6 +2734,7 @@ def _verify_manifest_oracles(
             )
             or not np.all(np.isnan(learned_boundaries[0]))
             or not np.isfinite(learned_boundaries[1:]).all()
+            or not np.all(learned_boundaries[1] == 0.0)
             or not np.all(oracle_agreement == 1)
             or np.any(complement_counts < 500)
         ):
@@ -2594,6 +2753,27 @@ def _verify_manifest_oracles(
             raise IntegrityError(
                 f"{prefix}/{seed} prefix query construction differs from replay"
             )
+        for method_index, method in enumerate(EXPECTED_METHODS[2:], start=2):
+            replayed_queries, replayed_boundaries = _replay_adapter_outputs(
+                descriptor_features=descriptor_features,
+                raw_queries=expected_raw_queries,
+                state=seed_states[method],
+                label=f"{prefix}/{seed}/{method}",
+            )
+            if not np.allclose(
+                semantic_queries[method_index],
+                replayed_queries,
+                rtol=0.0,
+                atol=2.0e-6,
+            ) or not np.allclose(
+                learned_boundaries[method_index],
+                replayed_boundaries,
+                rtol=0.0,
+                atol=2.0e-6,
+            ):
+                raise IntegrityError(
+                    f"{prefix}/{seed}/{method} checkpoint-to-query binding differs"
+                )
         if (
             np.any(candidates[0, :, :200] < 0)
             or not np.all(candidates[0, :, 200:] == -1)
@@ -2636,17 +2816,12 @@ def _verify_manifest_oracles(
                 f"{prefix} seed BPR queries",
             )
 
-        batch_size = 32
+        batch_size = 64
         for start in range(0, user_count, batch_size):
             stop = min(user_count, start + batch_size)
-            full_bpr_batch = np.stack(
-                [
-                    np.asarray(
-                        bpr_items_matrix @ bpr_queries[user_row], dtype=np.float32
-                    )
-                    for user_row in range(start, stop)
-                ],
-                axis=0,
+            full_bpr_batch = np.asarray(
+                bpr_queries[start:stop] @ bpr_items_matrix.T,
+                dtype=np.float32,
             )
             for local, user_row in enumerate(range(start, stop)):
                 count = int(history_counts[user_row])
@@ -2697,16 +2872,9 @@ def _verify_manifest_oracles(
         for method_index in range(1, len(EXPECTED_METHODS)):
             for start in range(0, user_count, batch_size):
                 stop = min(user_count, start + batch_size)
-                full_semantic_batch = np.stack(
-                    [
-                        np.asarray(
-                            semantic
-                            @ semantic_queries[method_index, user_row],
-                            dtype=np.float32,
-                        )
-                        for user_row in range(start, stop)
-                    ],
-                    axis=0,
+                full_semantic_batch = np.asarray(
+                    semantic_queries[method_index, start:stop] @ semantic.T,
+                    dtype=np.float32,
                 )
                 for local, user_row in enumerate(range(start, stop)):
                     count = int(history_counts[user_row])
@@ -2763,6 +2931,8 @@ def _verify_manifest_oracles(
         "semantic_branch_bpr_novel": True,
         "shared_bpr_branch": True,
         "faiss_matrix_oracle_exact": True,
+        "adapter_checkpoint_query_binding": True,
+        "descriptor_features_replayed": True,
         "action": {
             "checked": int(action_checked),
             "violations": int(action_violations),
@@ -2857,13 +3027,15 @@ def _verify_R_target_blind_manifest(
         or np.any(complement_counts < 500)
     ):
         raise IntegrityError("R target-blind query/history arrays are invalid")
-    expected_raw_queries, expected_bpr_queries = _expected_prefix_queries(
-        user_ids=users,
-        histories=A_events,
-        semantic_matrix=semantic,
-        bpr_user_matrix=bpr_user_matrix,
-        bpr_item_matrix=bpr_matrix,
-        collaborative_mask=collaborative,
+    expected_raw_queries, expected_bpr_queries, _descriptor_features = (
+        _expected_prefix_queries(
+            user_ids=users,
+            histories=A_events,
+            semantic_matrix=semantic,
+            bpr_user_matrix=bpr_user_matrix,
+            bpr_item_matrix=bpr_matrix,
+            collaborative_mask=collaborative,
+        )
     )
     if not np.allclose(
         raw_queries, expected_raw_queries, rtol=0.0, atol=2.0e-6
@@ -2871,7 +3043,7 @@ def _verify_R_target_blind_manifest(
         bpr_queries, expected_bpr_queries, rtol=0.0, atol=2.0e-6
     ):
         raise IntegrityError("R prefix query construction differs from replay")
-    batch_size = 32
+    batch_size = 64
     for start in range(0, user_count, batch_size):
         stop = min(user_count, start + batch_size)
         bpr_full_batch = np.asarray(
@@ -3462,8 +3634,12 @@ def _verify_training_evidence(
     training_record: Mapping[str, Any],
     run_directory: Path,
     R_diagnostics: Mapping[str, Any],
-) -> Mapping[str, Any]:
+) -> tuple[Mapping[str, Any], Mapping[int, Mapping[str, Mapping[str, Any]]]]:
     import numpy as np
+    try:
+        import torch
+    except ImportError as exc:
+        raise IntegrityError("PyTorch is required for adapter checkpoint replay") from exc
 
     recorded_R = require_mapping(
         training_record.get("R_pair_diagnostics"), "training R pair diagnostics"
@@ -3526,6 +3702,7 @@ def _verify_training_evidence(
     }
     if set(checkpoints) != expected_checkpoint_keys:
         raise IntegrityError("Checkpoint inventory changed")
+    adapter_states: dict[int, Mapping[str, Mapping[str, Any]]] = {}
     for seed_row, seed in enumerate(EXPECTED_SEEDS):
         if str(initial_record.get(str(seed), "")) != initial_hashes[seed_row]:
             raise IntegrityError("Training initial-memory hash differs")
@@ -3559,6 +3736,7 @@ def _verify_training_evidence(
                 or diagnostic.get("reference_model_used") is not False
                 or diagnostic.get("checkpoint_sha256")
                 != str(final_hashes[seed_row, method_row])
+                or int(diagnostic.get("parameter_count", -1)) != 49_633
             ):
                 raise IntegrityError("Training diagnostic differs from raw evidence")
             parameter_counts.add(int(diagnostic.get("parameter_count", -1)))
@@ -3576,6 +3754,7 @@ def _verify_training_evidence(
                     raise IntegrityError("Training trace contains invalid values")
         if len(parameter_counts) != 1 or next(iter(parameter_counts)) <= 0:
             raise IntegrityError("Trainable controls do not have matched parameter counts")
+        seed_states: dict[str, Mapping[str, Any]] = {}
         for method in ("raw_hybrid", *trained_methods):
             checkpoint = require_mapping(
                 checkpoints[f"{seed}:{method}"], f"checkpoint {seed}/{method}"
@@ -3598,12 +3777,47 @@ def _verify_training_evidence(
                 or bool(checkpoint.get("trained")) != (method != "raw_hybrid")
             ):
                 raise IntegrityError("Checkpoint memory/training binding differs")
-    return {
+            try:
+                state = torch.load(path, map_location="cpu", weights_only=True)
+            except (OSError, RuntimeError, TypeError, ValueError) as exc:
+                raise IntegrityError(
+                    f"Cannot independently load adapter checkpoint {seed}/{method}"
+                ) from exc
+            if not isinstance(state, Mapping) or not all(
+                isinstance(value, torch.Tensor) for value in state.values()
+            ):
+                raise IntegrityError(
+                    f"Adapter checkpoint {seed}/{method} is not a tensor state"
+                )
+            arrays = _validated_adapter_state_arrays(
+                state, f"checkpoint {seed}/{method}"
+            )
+            if _adapter_state_memory_sha256(arrays) != expected_memory:
+                raise IntegrityError(
+                    f"Adapter checkpoint memory SHA differs for {seed}/{method}"
+                )
+            if method == "raw_hybrid" and any(
+                not np.all(arrays[name] == 0.0)
+                for name in (
+                    "residual.weight",
+                    "residual.bias",
+                    "boundary.weight",
+                    "boundary.bias",
+                )
+            ):
+                raise IntegrityError("Raw-hybrid checkpoint is not the zero adapter")
+            seed_states[method] = arrays
+        adapter_states[seed] = seed_states
+    report = {
         "matched_optimizer_steps": True,
         "matched_pair_presentations": True,
+        "adapter_checkpoint_states_loaded": len(EXPECTED_SEEDS)
+        * (1 + len(trained_methods)),
+        "adapter_checkpoint_memory_sha256_replayed": True,
         "R_selected_pairs": int(R_diagnostics["selected_pairs"]),
         "R_selected_pair_users": int(R_diagnostics["selected_pair_users"]),
     }
+    return report, adapter_states
 
 
 def _verify_provenance_and_replay_archive(
@@ -4389,7 +4603,7 @@ def replay_scientific_gates(
         bpr_item_matrix=immutable["bpr_item_matrix"],
         collaborative_mask=immutable["collaborative_mask"],
     )
-    training_report = _verify_training_evidence(
+    training_report, adapter_states = _verify_training_evidence(
         raw=validation,
         training_record=training_record,
         run_directory=run_directory,
@@ -4420,6 +4634,7 @@ def replay_scientific_gates(
         bpr_user_matrix=immutable["bpr_user_matrix"],
         bpr_item_matrix=immutable["bpr_item_matrix"],
         collaborative_mask=immutable["collaborative_mask"],
+        adapter_states=adapter_states,
     )
     selected_index, selected_alpha, stronger, choice_replay = (
         _validation_choice_replay(
@@ -4664,6 +4879,7 @@ def replay_scientific_gates(
         bpr_user_matrix=immutable["bpr_user_matrix"],
         bpr_item_matrix=immutable["bpr_item_matrix"],
         collaborative_mask=immutable["collaborative_mask"],
+        adapter_states=adapter_states,
         action_pairs=T_pairs,
     )
     T_metric_rows: list[Any] = []
@@ -4820,6 +5036,11 @@ def verify_launch_record(
     expected_launcher_sha256: str,
 ) -> Mapping[str, Any]:
     verify_frozen_source_files(expected_paths)
+    expected_launcher_sha256 = require_authorized_launcher_sha256(
+        expected_launcher_sha256,
+        expected_paths["launcher"],
+        "verifier expected launcher SHA-256",
+    )
     record = read_json_mapping(launch_record_path, "launch record")
     if record.get("schema") != "cable-pref-external-launch-v1":
         raise IntegrityError("Launch record schema changed")
@@ -4871,8 +5092,11 @@ def verify_launch_record(
         actual = sha256_file(path)
         if str(source_hashes.get(name, "")).lower() != actual:
             raise IntegrityError(f"Launch source changed: {name}")
-    if str(source_hashes.get("launcher", "")).lower() != expected_launcher_sha256:
-        raise IntegrityError("Verifier launcher hash differs from parent binding")
+    if (
+        record.get("authorized_launcher_sha256") != expected_launcher_sha256
+        or source_hashes.get("launcher") != expected_launcher_sha256
+    ):
+        raise IntegrityError("Verifier launcher hash differs from external authorization")
     if str(source_hashes.get("python_executable", "")).lower() != sha256_file(
         python_executable
     ):
@@ -4958,7 +5182,7 @@ def run_verifier(args: argparse.Namespace) -> int:
         run_directory=run_directory,
         expected_paths=paths,
         expected_environment=expected_environment,
-        expected_launcher_sha256=str(args.expected_launcher_sha256).lower(),
+        expected_launcher_sha256=args.expected_launcher_sha256,
     )
     recorded_hardware = require_mapping(
         launch_record.get("machine_hardware"), "launch machine hardware"
@@ -4982,6 +5206,8 @@ def run_verifier(args: argparse.Namespace) -> int:
     if (
         claim.get("schema") != "cable-pref-one-time-launch-claim-v1"
         or Path(str(claim.get("run_directory", ""))).resolve() != run_directory
+        or claim.get("authorized_launcher_sha256")
+        != launch_record.get("authorized_launcher_sha256")
         or claim.get("automatic_retry_or_resume_forbidden") is not True
     ):
         raise IntegrityError("One-time launch claim content differs")
@@ -5118,6 +5344,11 @@ def run_verifier(args: argparse.Namespace) -> int:
 def run_launch(args: argparse.Namespace) -> int:
     project_root = Path(__file__).resolve().parents[1]
     paths = locked_paths(project_root)
+    authorized_launcher_sha256 = require_authorized_launcher_sha256(
+        args.authorized_launcher_sha256,
+        paths["launcher"],
+        "outer-launch authorized launcher SHA-256",
+    )
     config_path = args.config.resolve()
     protocol_path = args.protocol.resolve()
     if config_path != paths["config"] or protocol_path != paths["protocol"]:
@@ -5208,6 +5439,8 @@ def run_launch(args: argparse.Namespace) -> int:
     environment.update(fixed_environment)
     source_hashes = {name: sha256_file(path) for name, path in paths.items()}
     source_hashes["python_executable"] = sha256_file(python_executable)
+    if source_hashes["launcher"] != authorized_launcher_sha256:
+        raise IntegrityError("Launcher changed after external digest authorization")
     hardware_record = machine_hardware_record()
     command = [
         str(python_executable),
@@ -5307,6 +5540,7 @@ def run_launch(args: argparse.Namespace) -> int:
                 "run_id": run_id,
                 "run_directory": str(run_directory),
                 "launcher_pid": os.getpid(),
+                "authorized_launcher_sha256": authorized_launcher_sha256,
                 "source_sha256": source_hashes,
                 "outer_lock": str(outer_lock.path),
                 "automatic_retry_or_resume_forbidden": True,
@@ -5322,6 +5556,7 @@ def run_launch(args: argparse.Namespace) -> int:
                 "run_id": run_id,
                 "run_directory": str(run_directory),
                 "python_executable": str(python_executable),
+                "authorized_launcher_sha256": authorized_launcher_sha256,
                 "command": command,
                 "preflight_command": preflight_command,
                 "launcher_synthetic_preflight": launcher_preflight,
@@ -5408,7 +5643,7 @@ def run_launch(args: argparse.Namespace) -> int:
             "--launch-record",
             str(launch_record),
             "--expected-launcher-sha256",
-            source_hashes["launcher"],
+            authorized_launcher_sha256,
         ]
         (
             verifier_child_pid,
@@ -5613,6 +5848,92 @@ def synthetic_self_test() -> Mapping[str, Any]:
         label="synthetic stable tie top-k",
     )
 
+    generator = np.random.default_rng(20263510)
+    liked = generator.normal(size=(3, 384)).astype(np.float32)
+    liked /= np.linalg.norm(liked, axis=1, keepdims=True)
+    disliked = generator.normal(size=(3, 384)).astype(np.float32)
+    disliked /= np.linalg.norm(disliked, axis=1, keepdims=True)
+    raw_queries = liked - np.float32(0.25) * disliked
+    raw_queries /= np.linalg.norm(raw_queries, axis=1, keepdims=True)
+    descriptor_features = np.ascontiguousarray(
+        np.concatenate(
+            (
+                raw_queries,
+                liked,
+                disliked,
+                np.asarray([[0.1], [0.5], [1.0]], dtype=np.float32),
+            ),
+            axis=1,
+        ),
+        dtype=np.float32,
+    )
+    synthetic_state = {
+        "hidden.weight": generator.normal(0.0, 0.01, (32, 1153)).astype(
+            np.float32
+        ),
+        "hidden.bias": generator.normal(0.0, 0.01, 32).astype(np.float32),
+        "residual.weight": generator.normal(0.0, 0.01, (384, 32)).astype(
+            np.float32
+        ),
+        "residual.bias": generator.normal(0.0, 0.01, 384).astype(np.float32),
+        "boundary.weight": generator.normal(0.0, 0.01, (1, 32)).astype(
+            np.float32
+        ),
+        "boundary.bias": generator.normal(0.0, 0.01, 1).astype(np.float32),
+    }
+    replayed_queries, replayed_boundaries = _replay_adapter_outputs(
+        descriptor_features=descriptor_features,
+        raw_queries=raw_queries,
+        state=synthetic_state,
+        label="synthetic adapter",
+        batch_size=2,
+    )
+    try:
+        import torch
+        import torch.nn.functional as functional
+    except ImportError as exc:
+        raise IntegrityError("PyTorch is required for adapter replay self-test") from exc
+    with torch.no_grad():
+        feature_tensor = torch.from_numpy(descriptor_features)
+        raw_tensor = torch.from_numpy(raw_queries)
+        hidden_tensor = torch.tanh(
+            functional.linear(
+                feature_tensor,
+                torch.from_numpy(synthetic_state["hidden.weight"]),
+                torch.from_numpy(synthetic_state["hidden.bias"]),
+            )
+        )
+        residual_tensor = functional.linear(
+            hidden_tensor,
+            torch.from_numpy(synthetic_state["residual.weight"]),
+            torch.from_numpy(synthetic_state["residual.bias"]),
+        )
+        boundary_tensor = functional.linear(
+            hidden_tensor,
+            torch.from_numpy(synthetic_state["boundary.weight"]),
+            torch.from_numpy(synthetic_state["boundary.bias"]),
+        ).reshape(-1)
+        residual_tensor = residual_tensor / torch.clamp(
+            torch.linalg.vector_norm(residual_tensor, dim=1, keepdim=True), min=1.0
+        )
+        displaced_tensor = raw_tensor + 0.25 * residual_tensor
+        query_tensor = displaced_tensor / torch.clamp(
+            torch.linalg.vector_norm(displaced_tensor, dim=1, keepdim=True),
+            min=1.0e-12,
+        )
+    if not np.allclose(
+        replayed_queries,
+        query_tensor.numpy(),
+        rtol=0.0,
+        atol=2.0e-6,
+    ) or not np.allclose(
+        replayed_boundaries,
+        boundary_tensor.numpy(),
+        rtol=0.0,
+        atol=2.0e-6,
+    ):
+        raise IntegrityError("Synthetic adapter state-to-query replay differs from Torch")
+
     synthetic_metrics = np.zeros((3, 8, 8, 8), dtype=np.float64)
     metric_index = {name: index for index, name in enumerate(EXPECTED_METRICS)}
     synthetic_metrics[:, 4, :, metric_index["conditional_admission_at_200"]] = 0.20
@@ -5703,6 +6024,29 @@ def synthetic_self_test() -> Mapping[str, Any]:
         raise IntegrityError("Unsupported-metric replay emitted nonfinite details") from exc
     with tempfile.TemporaryDirectory(prefix="cable-verifier-selftest-") as temp:
         root = Path(temp)
+        synthetic_launcher = root / "synthetic_launcher.py"
+        publish_bytes_exclusive(synthetic_launcher, b"# synthetic launcher\n")
+        correct_launcher_digest = sha256_file(synthetic_launcher)
+        if require_authorized_launcher_sha256(
+            correct_launcher_digest,
+            synthetic_launcher,
+            "synthetic launcher authorization",
+        ) != correct_launcher_digest:
+            raise IntegrityError("Correct launcher digest was not accepted")
+        wrong_launcher_digest = (
+            "0" * 64 if correct_launcher_digest != "0" * 64 else "1" * 64
+        )
+        for invalid_digest in (wrong_launcher_digest, "A" * 64):
+            try:
+                require_authorized_launcher_sha256(
+                    invalid_digest,
+                    synthetic_launcher,
+                    "synthetic invalid launcher authorization",
+                )
+            except IntegrityError:
+                pass
+            else:
+                raise IntegrityError("Invalid launcher digest was accepted")
         target = root / "atomic.json"
         publish_json_exclusive(target, {"value": 1})
         try:
@@ -5734,7 +6078,9 @@ def synthetic_self_test() -> Mapping[str, Any]:
         verify_config_contract(read_json_mapping(config_path, "synthetic config check"))
     return {
         "atomic_no_overwrite": True,
+        "adapter_state_query_binding": True,
         "all_gates_replayed": True,
+        "authorized_launcher_digest_binding": True,
         "config_contract": config_path.is_file(),
         "centered_power": True,
         "exclusive_lock": True,
@@ -5773,6 +6119,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument("--local-dataset-archive", type=Path)
     parser.add_argument("--run-id")
+    parser.add_argument("--authorized-launcher-sha256")
     parser.add_argument("--self-test", action="store_true")
 
     # Internal post-exit verifier mode. These arguments are issued only by the

@@ -1,6 +1,6 @@
-# H7 Prospective Protocol: Revision-Chain-Certified KG Residual
+# H7A Prospective Protocol: Revision-Chain-Derived Interval Certificate
 
-Status: **draft; not locked and not authorized for execution**
+Status: **DRAFT; NOT LOCKED; NOT EXECUTABLE**
 
 Classification: label-blind structural feasibility proof of concept
 
@@ -8,10 +8,10 @@ Draft date: 2026-08-07
 
 ## Research question and scope
 
-For a cold-item recommender whose external knowledge graph may be incompletely
-materialized at serving time, can actual source revision histories define a
-non-vacuous uncertainty set and support an exact, low-latency Top-10
-invariance certificate for an additive KG residual?
+For a recommender whose external knowledge graph may be stale at serving time,
+can actual page revision histories define a useful conservative fault-model
+superset and support an exact, low-latency Top-10 invariance certificate for an
+additive KG residual?
 
 This experiment tests only structural support, certificate tightness, exactness,
 and runtime. It must not parse candidate click suffixes, compute recommendation
@@ -19,13 +19,26 @@ outcomes, or select any design choice using labels. A positive result is a gate
 to a separately locked outcome experiment; it is not evidence of improved
 recommendation quality by itself.
 
+H7A is an exact **revision-chain-derived interval certificate** under a bounded
+per-page FIFO staleness model. Its Cartesian product of page states is a
+conservative fault-model superset; it is not evidence that the corresponding
+asynchronous combinations occurred in Wikidata or in any measured serving
+pipeline. H7A is not a provenance-poset or min-cut experiment.
+
+Exact replay dominates this module whenever the exact page revision used for
+each recommendation is observable. The certificate is relevant only when page
+versions are unresolved but bounded by the stated FIFO fault model. An H7B
+dependency experiment would require measured stream partitions, consumer
+offsets, or explicit computational lineage from a real materialization system,
+and a separately locked protocol.
+
 The mathematical closure/min-cut result is classical. This protocol neither
 implements a general min-cut solver nor claims novelty for minimum closure,
 partial-order Top-K, temporal recommendation, KG provenance, generic
 certification, uncertainty routing, or additive residuals in isolation. The
-candidate contribution is only the eventual package of real revision
-provenance, an exact downstream ranking certificate, and certificate-controlled
-KG fusion.
+candidate contribution is only the eventual package of real revision-derived
+uncertainty, an exact downstream ranking certificate, and
+certificate-controlled KG fusion.
 
 ## Fixed existing inputs
 
@@ -48,8 +61,8 @@ KG fusion.
 - The H5 top-50 QID sample, annotation-confidence threshold `0.90`, final-50
   history rule, and H6 deterministic tie rule remain unchanged.
 
-The H6 manifest is the only allowed impression/candidate source. The H7
-phase-A runner must not open `behaviors.tsv`; this prevents access to candidate
+The H6 manifest is the only allowed impression/candidate source. The H7A
+runner must not open `behaviors.tsv`; this prevents access to candidate
 suffixes. It may join manifest news IDs to the immutable `news.tsv` only to
 recover the already frozen title and abstract entity annotations.
 
@@ -67,20 +80,60 @@ locked protocol.
 - A longer window may not rescue a failed primary experiment. Any later window
   is exploratory and requires a new protocol.
 
-For each fixed H5 QID, acquire from the official Wikidata/MediaWiki revisions
-API:
+Use the official [MediaWiki revisions
+API](https://www.mediawiki.org/wiki/API:Revisions) and interpret entity content
+under the official [Wikibase JSON
+format](https://doc.wikimedia.org/Wikibase/master/php/docs_topics_json.html).
+Wikidata's [stable-interface
+policy](https://www.wikidata.org/wiki/Wikidata:Stable_Interface_Policy/en)
+does not treat raw revision content as a stable interface, so every retained
+response, content model, slot hash, parser version, and independent endpoint
+fact check is part of the reproducibility boundary.
+The sole endpoint is `https://www.wikidata.org/w/api.php`, using
+`action=query`. For each fixed H5 QID, acquisition has two noninterchangeable
+passes:
 
-1. the last revision at or before the lower-window timestamp;
-2. every subsequent revision through the exact H5 upper revision at or before
-   `tau`; and
-3. for every returned revision, the QID/title, revision ID, parent revision ID,
-   UTC timestamp, source SHA-1, and main-slot JSON content.
+1. **Metadata pass.** Query the single page with `titles=<QID>`,
+   `prop=revisions`,
+   `rvslots=main`, and
+   `rvprop=ids|timestamp|sha1|slotsha1|contentmodel`. First obtain the lower
+   checkpoint with `rvdir=older`, `rvstart=<lower timestamp>`, and `rvlimit=1`.
+   If it exists, enumerate the locked chain with `rvdir=newer`,
+   `rvstartid=<lower revision ID>`, `rvendid=<H5 upper revision ID>`, and
+   `rvlimit=max`. If no lower checkpoint exists, enumerate from page creation
+   with `rvdir=newer`, `rvendid=<H5 upper revision ID>`, and `rvlimit=max` and
+   prepend the verified empty state. Follow every returned continuation object
+   exactly, and log the request parameters and continuation object for every
+   page.
+2. **Content pass.** Request the exact metadata-pass revision IDs in ascending
+   page-chain order, in batches of at most 50 IDs, with `revids`,
+   `rvslots=main`, and
+   `rvprop=ids|timestamp|sha1|slotsha1|contentmodel|content`. Content discovery
+   from a second time-range query is forbidden. The returned revision-ID set
+   and order-independent set hash must equal the requested batch exactly.
 
-Do not request or retain editor identity or edit comments. Respect API
-continuation and the content-response limit, use a descriptive user agent,
-throttle sequential requests, and cache every raw response immutably with its
-SHA-256. Retries and waits must be logged. Acquisition time is reported
-separately from certificate compute time.
+Every request uses `format=json`, `formatversion=2`, `maxlag=5`, a descriptive
+user agent, and a 60-second transport timeout. A successful content batch is
+followed by a one-second proactive wait. Retry only a transport timeout, HTTP
+429, HTTP 5xx, or a MediaWiki `maxlag` response, for at most six total attempts.
+After failed attempt `a` in `1..5`, wait
+
+`min(120, max(Retry-After if valid else 0, 2^a))` seconds.
+
+There is no random jitter. A missing or nonnumeric `Retry-After` is zero; a
+server-required wait above 120 seconds ends acquisition as inconclusive rather
+than silently shortening it. All attempts, statuses, response headers, waits,
+and continuation tokens are logged. A repeated continuation token, a token
+that does not add a revision, premature termination, or revisions outside the
+locked endpoints is an integrity failure.
+
+Do not request or retain editor identity, user ID, or edit comments. For every
+revision, retain the QID/title, revision ID, parent revision ID, UTC timestamp,
+revision SHA-1, main-slot SHA-1, main-slot content model, and main-slot JSON.
+The metadata and content passes must agree exactly on these shared fields. The
+main-slot content model must be `wikibase-item`; hidden SHA or content fields
+are invalid. Cache every raw response immutably with its SHA-256. Acquisition
+time is reported separately from certificate compute time.
 
 ### Page-chain integrity
 
@@ -114,11 +167,13 @@ and the collapsed state must retain the complete list of source revision IDs
 that it represents.
 
 One page revision is one atomic multi-fact state transition. Its additions and
-deletions may not be selected independently. The only admitted dependency is
-the observed page-local parent chain. Shared entities, timestamps, edit tags,
+deletions may not be selected independently. The only admitted ordering is the
+observed page-local parent chain. Shared entities, timestamps, edit tags,
 similar comments, and apparent batches are not evidence of cross-page
-causality. With independently lagging page shards, the feasible graph state is
-the Cartesian product of one prefix position per intact page chain.
+causality. H7A assumes a conservative bounded per-page FIFO staleness fault
+model: each page is at one prefix position in its intact chain, and page
+positions vary independently. The Cartesian product is exact for this declared
+fault-model superset, not for an observed asynchronous ingestion trace.
 
 This is a transaction-time ingestion model, not a valid-time model.
 
@@ -134,6 +189,14 @@ only manifest fields `i`, `u`, `h`, and candidate news IDs `c[*].n`; H6
 structural scores may be ignored but no other field may be added. The ordered
 5,000-impression ID list and its SHA-256 must be written before any certificate
 metric is aggregated.
+
+The committed full H6 cohort has 16,021 of 64,443 impressions with `m <= 10`
+candidates. For such an impression, top-`min(10,m)` contains every candidate,
+so Top-10 set invariance is vacuous. Report the sampled `m <= 10` count and its
+non-Top-10 structural diagnostics separately, but exclude these impressions
+from every Top-10 coverage, gate, bootstrap, endpoint false-assurance, and
+Monte Carlo false-assurance denominator. Every such denominator is restricted
+to `m > 10` and must be emitted explicitly with its numerator.
 
 For every news row, let `A(n)` be the sorted set of distinct H5 top-50 QIDs in
 the title or abstract annotations with confidence at least `0.90`. Candidate
@@ -186,6 +249,28 @@ The profile is deliberately frozen at the definitely ingested lower
 checkpoint. Recomputing or renormalizing it at a feasible revision state would
 destroy the additive certificate and is forbidden.
 
+This lower-only profile narrows H7A materially. A fact added after the lower
+checkpoint has zero score weight whenever that signature was absent from the
+user's lower-checkpoint history profile. H7A can therefore test uncertainty in
+the retention, deletion, reappearance, or cross-entity reuse of facts already
+represented in that profile; it is not a general scorer for wholly novel KG
+facts. Report this limitation rather than imputing a weight from future states.
+
+For each QID and impression, classify a changing fact as `score_relevant` when
+its `wF_i(f) > 0`. For every `m > 10` impression, also report:
+
+- `revision_exposed`: at least one nominal boundary pair has a QID with
+  nonzero anchor-weight difference whose page chain contains more than one
+  scorer fact state before applying `wF`;
+- `score_relevant_revision_exposed`: at least one such changing fact has
+  positive `wF` and nonzero candidate anchor-weight difference; and
+- `zero_weight_only_revision_exposed`: revision-exposed but not
+  score-relevant-revision-exposed.
+
+Report the number and mass of post-lower additions with zero `wF`, distinct
+score-relevant changing signatures, and all three impression counts. No
+zero-weight addition or impression may be dropped.
+
 ### Base, residual, and nominal score
 
 For candidate news `j`, define the graph-independent entity base
@@ -204,10 +289,36 @@ and
 
 `score_ij(t) = B_ij + R_ij(t)`.
 
+The primary arithmetic bounds follow from nonnegative mass vectors that each
+sum to `S`:
+
+- `0 <= G_iq(t) <= S`;
+- `0 <= B_ij <= S^2` and `0 <= R_ij(t) <= S^2`;
+- `0 <= score_ij(t) <= 2*S^2 = 2^41`;
+- any final pair margin lies in `[-2*S^2, 2*S^2]`; and
+- the direct bound accumulator is at most `3*S^2 < 2^42` in absolute value,
+  because `sum_q |a_j(q)-a_k(q)| <= 2*S`.
+
+For the rational-strength sensitivities, compare scores after multiplying the
+base by four and using residual numerators in `{1,2,4,8}`. The most conservative
+intermediate accumulator bound is `20*S^2 < 2^45`. Every multiplication and
+addition must be checked against these symbolic bounds and the observed sparse
+support before casting to signed `int64`.
+
 The primary residual strength is exactly one. Descriptive, non-gating
 sensitivities may use strengths `1/4`, `1/2`, and `2`, evaluated with a common
 integer denominator; they cannot rescue a failed primary gate. A candidate
 with no retained anchor has base and residual zero.
+
+As a quantization audit, repeat the primary structural ranking and certificate
+calculation with `S_hi = 2^24`, using the same largest-remainder rule. Its
+largest sensitivity accumulator is below `2^53` and signed-`int64` safe. For
+every `m > 10` impression, compare the nominal Top-10 set and boolean
+certificate status at the two scales. Report both agreement rates, their joint
+agreement, the certified-rate difference over all `m > 10` impressions, and
+every discordant impression ID. It is an integrity gate: joint agreement must
+be at least 99 percent, the absolute certified-rate difference must be at most
+0.005, and no overflow or scientific gate decision may change.
 
 The nominal state is the upper revision of every page. Sort by descending
 integer score, breaking equal scores by ascending hexadecimal SHA-256 of
@@ -224,22 +335,62 @@ For every user/impression and QID, cache
 For candidates `j` and `k`, let `d_q = a_j(q) - a_k(q)`. The exact worst
 feasible pair margin over the product of real page chains is
 
-`lower_margin(j,k) = B_ij - B_ik`
+`chain_lower(j,k) = B_ij - B_ik`
 
 `  + sum_{q: d_q >= 0} d_q * L_iq`
 
 `  + sum_{q: d_q < 0}  d_q * U_iq`.
 
-This follows by separability across page chains. The corresponding cached
-argmin or argmax revision for every nonzero `d_q` is an explicit feasible
-adverse-version witness. Shared QIDs cancel through `d_q`; they must not be
-optimized independently for the two candidates.
+Define the exact upper feasible margin symmetrically:
 
-Let `T` be the nominal top-`min(10,m)` candidate set. `T` is certified invariant
-if, for every `j` in `T` and `k` outside `T`, either:
+`chain_upper(j,k) = B_ij - B_ik`
 
-1. `lower_margin(j,k) > 0`; or
-2. `lower_margin(j,k) == 0` and the fixed tie hash ranks `j` before `k`.
+`  + sum_{q: d_q >= 0} d_q * U_iq`
+
+`  + sum_{q: d_q < 0}  d_q * L_iq`.
+
+For the endpoint-only heuristic, let `Lend_iq` and `Uend_iq` be the minimum and
+maximum of only the lower and upper page projections, and define
+`endpoint_lower(j,k)` by substituting `Lend` and `Uend` into the
+`chain_lower` formula.
+
+For an impression with `m > 10`, a **boundary pair** is an ordered pair with
+nominally selected `j` and nominally unselected `k`. It is an **affected
+boundary pair** exactly when
+
+`chain_upper(j,k) - chain_lower(j,k) > 0`.
+
+The impression is **boundary-affected** when it has at least one affected
+boundary pair. An affected boundary pair is **interior-worse** exactly when
+
+`chain_lower(j,k) < endpoint_lower(j,k)`.
+
+All comparisons are exact integer comparisons. `Interior-worse` means that an
+intermediate real page revision produces a stricter adverse bound than both
+window endpoints; a numerical tolerance or nominal-score change is not a
+substitute for this definition.
+
+This follows by separability across page chains. For each nonzero `d_q`, choose
+the earliest chronological chain state attaining `L_iq` when `d_q > 0` and
+the earliest attaining `U_iq` when `d_q < 0`; for `d_q == 0`, choose the lower
+checkpoint. Within a collapsed scorer state, choose its earliest raw source
+revision. Serialize the global witness as ascending QID followed by chain
+index and revision ID. This deterministic state vector is the canonical
+adverse witness. Shared QIDs cancel through `d_q`; they must not be optimized
+independently for the two candidates.
+
+Replay every canonical witness from the raw cached revision contents, using an
+independent fact extractor and scorer implementation. It must reproduce every
+per-page projection, both candidate scores, and the exact compiled lower
+margin. For an uncertified impression, the canonical list witness is the
+failing boundary pair with smallest `chain_lower`, tied by selected news ID and
+then unselected news ID.
+
+For `m > 10`, let `T` be the nominal Top-10 candidate set. `T` is certified
+invariant if, for every `j` in `T` and `k` outside `T`, either:
+
+1. `chain_lower(j,k) > 0`; or
+2. `chain_lower(j,k) == 0` and the fixed tie hash ranks `j` before `k`.
 
 No sampled-state success may be called a certificate.
 
@@ -256,19 +407,54 @@ No sampled-state success may be called a certificate.
    projection and the possibly-present sum as its upper projection. This is a
    safe provenance-blind superset, not a matched stochastic model.
 5. **Endpoint-only envelope:** use only the lower and upper page projections.
-   This is an explicitly unsafe heuristic. Report false certifications against
-   the full chain; never describe it as certified.
-6. **Deterministic Monte Carlo:** 1,000 product states per impression. For
-   replicate `b` and page `q`, select
-   `int(SHA256("20260807|H7MC|" + b + "|" + impression_id + "|" + q), 16)
-   mod number_of_chain_states(q)`. Sampling is diagnostic only.
+   Evaluate it only for `m > 10`. This is an explicitly unsafe heuristic.
+   Report false certifications against the full chain; never describe it as
+   certified. Its impression-level
+   false-assurance denominator is boundary-affected `m > 10` impressions that
+   the endpoint heuristic declares Top-10 stable. The numerator is those same
+   impressions that the exact chain certificate does not certify. If the
+   denominator is zero, report `NA` and the zero count.
+6. **Deterministic Monte Carlo:** 1,000 product states per boundary-affected
+   `m > 10` impression. For replicate `b` and ascending page `q`, hash
+   successive counters as
+   `SHA256("20260807|H7MC|" + b + "|" + impression_id + "|" + q + "|" + counter)`.
+   For `n` chain states, accept the first unsigned big-endian digest
+   `x < floor(2^256/n)*n` and choose state `x mod n`. Sampling is diagnostic
+   only. Call an impression `MC-stable` when none of its 1,000 sampled states
+   changes the nominal Top-10 set. The Monte Carlo false-assurance denominator is
+   boundary-affected `m > 10` impressions that are MC-stable; its numerator is
+   those same impressions that the exact chain certificate does not certify.
+   If the denominator is zero, report `NA` and the zero count.
 
 For exact validation, identify boundary pairs whose Cartesian product of
 relevant page-state counts is at most 100,000. Sort them by SHA-256 of
 `20260807|H7ENUM|impression_id|selected_news_id|unselected_news_id` and
 exhaustively enumerate the first 100, or all if fewer than 100 exist. The
-enumerated minimum margin and earliest lexicographic revision witness must
-match the compiled certificate exactly.
+enumerated minimum margin must match the compiled certificate exactly. Among
+equal minima, choose the lexicographically smallest canonical witness
+serialization defined above; that witness must also match exactly.
+
+## Frozen robustness-view reconstruction
+
+The metadata/navigation blocklist is the H6 list `P1343, P1424, P5008, P6104,
+P7867, P8744, P9241, P2354, P8402, P10280, P1889`. Its view removes those
+properties from every page state, then recomputes lower fact counts and
+reallocates each positive user fact mass to sum exactly to `S` by the same
+largest-remainder rule.
+
+The hub-excluded view removes QIDs `Q30` and `Q22686` from every news anchor
+set, then recomputes user entity counts, lower fact counts, candidate anchor
+weights, base scores, residuals, nominal rankings, boundary pairs, and
+certificates. Every nonempty mass vector is reallocated to sum exactly to `S`.
+A now-empty candidate anchor set receives base and residual zero; a now-empty
+user entity profile receives a zero base; and a now-empty user fact profile
+receives a zero residual. No impression, history article, or candidate is
+dropped, and candidate count `m` is unchanged in either view.
+
+All view-specific Top-10 rates use that view's own `m > 10`
+boundary-affected cohort. The chain and independent-fact methods within a view
+must use the identical cohort and bootstrap resamples. Primary-view membership
+may not be reused to improve a robustness result.
 
 ## Metrics
 
@@ -276,19 +462,27 @@ Report at minimum:
 
 - raw and collapsed revision counts per QID;
 - fact-changing QIDs, additions, deletions, reverts, and distinct fact states;
-- QIDs and impressions surviving the two frozen robustness views;
+- nonzero-support QIDs and impressions in the two frozen robustness views;
+- sampled impression counts for `m <= 10` and `m > 10`, with 16,021/64,443
+  retained as the independently known full-cohort vacuity check;
 - zero-lower-fact-profile impressions;
+- revision-exposed, score-relevant-revision-exposed, and
+  zero-weight-only-revision-exposed `m > 10` impressions;
+- distinct and occurrence-weighted score-relevant changing facts and
+  post-lower zero-weight additions;
 - impressions with at least one candidate whose feasible score range is
-  nonzero (`structurally affected`);
-- nominal-versus-safe score, total-order, Top-1, and Top-10 changes;
-- exact Top-10 certified rate overall and among structurally affected
-  impressions;
-- independent-fact certified rate and paired difference from the chain rate;
-- endpoint-only false-certificate rate;
-- relevant boundary pairs for which an intermediate state is strictly worse
-  than both endpoints;
+  nonzero, reported as a non-Top-10 structural diagnostic for both `m` strata;
+- nominal-versus-safe score, total-order, and Top-1 changes for both `m`
+  strata, but Top-10 changes only for `m > 10`;
+- boundary pairs, affected boundary pairs, interior-worse pairs, and
+  boundary-affected `m > 10` impressions, with every denominator explicit;
+- exact Top-10 certified rate on all `m > 10` impressions and separately on
+  the boundary-affected `m > 10` denominator;
+- independent-fact certified rate and its paired difference from the chain
+  rate on the identical boundary-affected `m > 10` denominator;
+- endpoint-only and Monte Carlo false-assurance numerators and denominators;
 - exact-witness replay and exhaustive-enumeration results;
-- Monte Carlo false-assurance rate relative to the exact certificate;
+- primary-versus-high-scale quantization agreement and all discordant IDs;
 - compile time, total compute time, peak resident memory, and median, p95, and
   p99 per-impression certificate latency; and
 - all metrics for the seven-day window, metadata/navigation property
@@ -296,10 +490,23 @@ Report at minimum:
   views unless explicitly included in the gates below.
 
 For the primary difference between chain and independent-fact certification,
-use 2,000 paired user-cluster bootstrap replicates. Sample users with
-replacement, retain all their sampled impressions, use identical resamples for
-both methods, and seed each replicate by SHA-256 of
-`20260807|H7BOOT|replicate_id`.
+use 2,000 paired user-cluster bootstrap replicates on the locked
+boundary-affected `m > 10` denominator. Sort its `N` distinct user IDs
+lexicographically. In replicate `b`, make exactly `N` draws with replacement.
+For draw `d`, hash successive nonnegative counters as
+
+`SHA256("20260807|H7BOOT|" + b + "|" + d + "|" + counter)`.
+
+Interpret the digest as an unsigned 256-bit big-endian integer `x`. Accept the
+first `x < floor(2^256/N)*N` and select sorted user index `x mod N`; this avoids
+modulo bias. A selected user retains every one of that user's eligible sampled
+impressions, with multiplicity. Use the identical weighted impressions for the
+chain and independent-fact indicators, and record their mean difference.
+
+Sort the 2,000 replicate differences ascending. The fixed percentile interval
+uses the nearest-rank order statistics `x_(50)` and `x_(1950)`, indexed from
+one. Emit the user count, impression count, all replicate differences, and both
+endpoints. If `N == 0`, the relevant gate fails; it is not `NA`.
 
 ## Advance gate
 
@@ -311,28 +518,40 @@ all integrity and exactness checks plus every condition below on the primary
 2. at least 10 of 50 QIDs contain at least two distinct retained fact states;
 3. after removing `Q30` and `Q22686`, at least five QIDs still contain at least
    two distinct retained fact states;
-4. at least 10 percent of the 5,000 impressions are structurally affected;
-5. at least 100 relevant boundary pairs, and at least one percent of affected
-   relevant boundary pairs, have a full-chain adverse state strictly worse
-   than both endpoints;
-6. among structurally affected impressions, the exact chain Top-10 certified
-   rate is at least 20 percent;
-7. at least five percent of structurally affected impressions remain
-   uncertified, so certificate routing is non-degenerate;
-8. the chain Top-10 certified rate exceeds the independent-fact rate by at
-   least 0.05 absolute, and the paired user-bootstrap 95 percent interval for
-   that difference lies strictly above zero;
-9. after removing `Q30` and `Q22686`, at least five percent of impressions are
-   structurally affected and the chain certificate retains at least a 0.02
+4. among sampled `m > 10` impressions, at least 10 percent are
+   boundary-affected and at least 10 percent are
+   score-relevant-revision-exposed; among revision-exposed `m > 10`
+   impressions, fewer than 90 percent are zero-weight-only; and at least 10
+   distinct changing fact signatures, including at least one post-lower
+   addition, are score-relevant in at least one boundary-affected impression;
+5. at least 100 affected boundary pairs are interior-worse, and
+   interior-worse pairs constitute at least one percent of all affected
+   boundary pairs;
+6. on the boundary-affected `m > 10` denominator, the exact chain Top-10
+   certified rate is at least 20 percent;
+7. on that same denominator, at least five percent remain uncertified, so
+   certificate routing is non-degenerate;
+8. on that same boundary-affected `m > 10` denominator, the chain Top-10
+   certified rate exceeds the independent-fact rate by at least 0.05 absolute,
+   and the paired user-bootstrap 95 percent interval for that difference lies
+   strictly above zero;
+9. in the hub-excluded view's own boundary-affected `m > 10` denominator, at
+   least five percent of all hub-view `m > 10` impressions are
+   boundary-affected and the chain certificate retains at least a 0.02
    absolute advantage over the independent-fact certificate;
-10. every exhaustively enumerated minimum and every replayed adverse witness
+10. the `S_hi = 2^24` audit has at least 99 percent per-impression Top-10 and
+    certificate-status agreement, at most 0.005 absolute certified-rate
+    difference, no overflow, and the same pass/fail result for every
+    scientific gate;
+11. every exhaustively enumerated minimum and every replayed adverse witness
     agrees exactly with the compiled result;
-11. primary chain projection, nominal ranking, and exact certificate
+12. primary chain projection, nominal ranking, and exact certificate
     computation for all 5,000 impressions completes within 60 seconds in one
     process, excluding network acquisition, immutable-input hashing, bootstrap,
-    Monte Carlo diagnostics, and the exhaustive verifier;
-12. p95 per-impression certificate latency is at most 10 milliseconds; and
-13. no result, ledger, or log contains a candidate click suffix or aggregate
+    Monte Carlo diagnostics, high-scale audit, robustness views, witness
+    replay, and the exhaustive verifier;
+13. p95 per-impression certificate latency is at most 10 milliseconds; and
+14. no result, ledger, or log contains a candidate click suffix or aggregate
     outcome statistic.
 
 Bootstrap, Monte Carlo, and exhaustive-verification runtimes must still be
@@ -352,13 +571,16 @@ reported separately and remain subject to the single-process safety boundary.
   `INCONCLUSIVE`, never a scientific failure or pass.
 - If endpoint-only bounds match the full-chain bounds, or the chain certificate
   gains less than the locked threshold over independent-fact masking, the
-  provenance-structure direction is killed even if nominal and safe rankings
+  revision-chain interval direction is killed even if nominal and safe rankings
   differ.
 - If the primary effect depends on `Q30` or `Q22686`, the direction is killed.
 - General min-cut development is not unlocked by a chain-only pass. It requires
-  a new protocol, explicit real cross-stream prerequisite provenance, and a
-  demonstrated material loss from the product-of-chains relaxation. Synthetic
-  semantic rules, timestamps, or shared graph neighborhoods are insufficient.
+  an H7B protocol, measured stream partitions/consumer offsets or explicit
+  real computational lineage, and a demonstrated material loss from the
+  product-of-chains relaxation. Synthetic semantic rules, timestamps, or shared
+  graph neighborhoods are insufficient.
+- If exact page versions or consumer checkpoints are available for the serving
+  decision, H7A is killed for that regime because exact replay dominates.
 
 ## Runtime and Windows safety boundary
 
@@ -382,6 +604,41 @@ The eventual implementation must comply with
   ledger is verified empty, locks are released, and exact replay succeeds.
 - Any nonempty stderr or asynchronous-error ledger invalidates the run.
 
+### Runtime measurement contract
+
+Use a monotonic high-resolution clock and record integer nanoseconds. Report
+three disjoint timings:
+
+1. acquisition, retry waits, and raw-response publication;
+2. immutable hashing, file loading, JSON parsing, raw fact extraction, and
+   global page-chain compilation; and
+3. primary per-impression scorer/certificate computation.
+
+For timing 3, load and validate the compiled page chains, frozen news mapping,
+and ordered 5,000-impression IDs first. Start the core timer immediately before
+constructing the first impression's user profiles and stop only after all
+5,000 primary nominal rankings, chain bounds, independent-fact bounds,
+certificates, canonical witnesses, and primary counters are in memory. It
+includes profile construction and all `m <= 10` structural diagnostics, but
+excludes serialization, bootstrap, Monte Carlo, high-scale quantization audit,
+robustness views, and exhaustive verification. Do not exclude warm-up
+impressions, trigger garbage collection, change process priority, or discard an
+observed run.
+
+Record one latency for each impression from the start of its profile
+construction through completion of its primary counters and certificate (or
+its explicit `m <= 10` vacuity record). Sort all 5,000 integer latencies and
+report nearest-rank median, p95, and p99 using indices `ceil(p*N)`, indexed from
+one. Both the primary and exact-replay core timings must independently satisfy
+the total and p95 gates. Also report launcher-to-completion wall time, CPU
+model, logical-core count, RAM, operating-system build, interpreter and package
+hashes, and whether the input files were already resident in the OS cache if
+that fact is observable. No timing may be selected from repeated trials.
+
+Bootstrap, Monte Carlo, high-scale, each robustness view, witness replay, and
+exhaustive enumeration receive separate timers. They remain single-process
+and are never included selectively in the core number.
+
 The scorer should compile sparse revision deltas once. For each user and page,
 update `G_iq(t)` only on facts present in the sparse user profile and cache its
 minimum, maximum, upper value, and witnesses. At inference, evaluate only the
@@ -389,19 +646,20 @@ minimum, maximum, upper value, and witnesses. At inference, evaluate only the
 difference. Cartesian snapshot enumeration is prohibited outside the locked
 small-case verifier.
 
-## Strict-coldness limitation and next stage
+## Recommendation-scope limitation and next stage
 
 The current workspace contains MIND-small development data but no immutable
-MIND training split. H6 structural eligibility does not prove that a candidate
-is a strict cold item. Therefore this POC must be described as a label-blind
-revision-certificate feasibility experiment on news recommendation, not as a
-strict cold-start result.
+MIND training split. H7A therefore does not define or stratify items by prior
+interaction status, and no claim about that status may appear in its result. It
+is a label-blind revision-certificate feasibility experiment on news
+recommendation.
 
-If and only if H7 advances, a separate protocol may acquire and hash the
-official training split, define strict item coldness entirely before outcome
-comparison, and then open labels on a frozen cohort. That outcome protocol must
-compare the always-on residual, no-KG base, safe-lower residual,
-certificate-gated residual, a random gate matched on activation rate, and an
-uncertainty-magnitude gate matched on activation rate. Publication-level claims
-would additionally require at least one independent dataset with real source
-revision histories and representative learned recommenders.
+If and only if H7A advances, a separate protocol may acquire and hash the
+official training split, define any zero-prior-interaction subgroup entirely
+before outcome comparison, and then open labels on a frozen cohort. That
+outcome protocol must compare the always-on residual, no-KG base, safe-lower
+residual, certificate-gated residual, a random gate matched on activation rate,
+and an uncertainty-magnitude gate matched on activation rate.
+Publication-level claims would additionally require at least one independent
+dataset with real source revision histories and representative learned
+recommenders.

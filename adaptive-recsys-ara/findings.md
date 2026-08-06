@@ -10,7 +10,7 @@ Phase 1 found four coupled bottlenecks: cross-stage objective mismatch, exposure
 
 ## Key Results
 
-None yet.
+RIPPLE v1 is a verified negative result. NDCG@10 was 0.01135 versus 0.00573 for frozen semantic FAISS, 0.01155 for exact-hard adaptation, and 0.06256 for BPR-MF. Recall@50 fell from 0.09363 to 0.06866. Four of eight mandatory gates failed, so the design was killed and Phase 5 was forbidden.
 
 ## Patterns and Insights
 
@@ -33,4 +33,6 @@ None yet.
 
 ## Optimization Trajectory
 
-No runs yet.
+| Cycle | Design | Outcome |
+|---|---|---|
+| 1 | RIPPLE v1: text-only, query-only, ANN-boundary SimPO | Dead end. Passed latency, index immutability, dislike safety, and seed stability; failed statistical quality, ANN-specific mechanism, BPR relevance, and candidate recall. |

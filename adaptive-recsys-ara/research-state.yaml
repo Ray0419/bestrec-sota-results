@@ -2,9 +2,9 @@
 
 project:
   title: "RIPPLE: Retrieval-Index-conditioned Preference Policy Learning for Efficient Recommendation"
-  question: "Under a fixed catalog index and p95 latency budget, can query-only index-conditioned SimPO improve temporal full-catalog recommendation over frozen SentenceTransformer-FAISS retrieval and random-negative adaptation without re-encoding items?"
+  question: "Pending Phase 2 redesign after RIPPLE v1 failed the PoC gate."
   status: active
-  phase: 4_poc_validation
+  phase: 1_identify_limitations_cycle_2
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -43,18 +43,23 @@ hypotheses:
 
 experiments:
   proxy_metric: "Temporal full-catalog NDCG@10"
-  baseline_value: null
-  best_value: null
-  total_runs: 0
-  trajectory: []
+  baseline_value: 0.005728564774466464
+  best_value: 0.011554019227211103
+  total_runs: 1
+  trajectory:
+    - design: "RIPPLE v1"
+      status: dead_end
+      proposed_ndcg_at_10: 0.011350290536784564
+      bpr_ndcg_at_10: 0.06255894164014639
+      gate_passed: false
   gate:
-    status: not_reached
+    status: failed_design_killed
     rule: "All eight criteria in research-question.md must pass; otherwise kill RIPPLE and return to Phase 1."
 
 outer_loop:
-  cycle: 1
-  last_direction: "RIPPLE"
-  last_reflection: "The gap survives only at the full-stack intersection; individual components have substantial prior art."
+  cycle: 2
+  last_direction: "RIPPLE_v1_DEAD_END"
+  last_reflection: "Text-only query rotation improved top-10 precision over a weak semantic baseline but lost candidate recall, failed to beat exact-hard mining, and reached only 18.1% of BPR-MF NDCG. Preserve fixed-index serving; redesign around collaborative structure and coverage preservation."
 
 workspace:
   findings: "findings.md"

@@ -67,7 +67,7 @@ The closest analogy is learning to defer with the direction reversed: the reliab
 
 ## Required controls and measurements
 
-The PoC must compare RAVEL with the frozen projected linear hybrid, always-on residual, near-tie-only residual, uncertainty-only residual, a jointly trained gate, and a deterministic matched-coverage random gate. It must report overall NDCG/Recall, explicit pair accuracy, intervention coverage, conditional uplift, harmful-intervention rate, regret, dislike intrusion, latency, and exact-fallback checks.
+The PoC must compare RAVEL with the frozen projected linear hybrid, always-on residual, near-tie-only residual, uncertainty-only residual, a one-head post-training selector, and a deterministic matched-coverage random gate. It must report overall NDCG/Recall, explicit pair accuracy, intervention coverage, conditional uplift, harmful-intervention rate, regret, dislike intrusion, latency, and exact-fallback checks. A truly jointly trained gate belongs in the scaled study: pretending that a validation-trained combined-label head was jointly optimized with the residual would be an invalid control.
 
 ## Primary sources added in cycle 3
 

@@ -1,10 +1,10 @@
 # Research State — Adaptive Recommendation Research Sprint
 
 project:
-  title: "Cycle 3: Selective Preference Alignment over a Linear Hybrid"
-  question: "Can a validation-calibrated selective preference correction improve explicit alignment while retaining the relevance gain, safety, and latency of a strong linear semantic-collaborative hybrid?"
+  title: "RAVEL: Residual Alignment via a Validation-gated Exception Layer"
+  question: "Can post-training, validation-gated application of a reference-free preference residual improve explicit preference accuracy while remaining non-inferior in temporal NDCG@10 to a frozen linear semantic-collaborative vector ranker?"
   status: active
-  phase: 1_identify_limitations_cycle_3
+  phase: 4_poc_validation_cycle_3_preregistered
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -20,14 +20,21 @@ literature:
     - "Recommendations as Treatments (ICML 2016)"
     - "Quake (OSDI 2025)"
     - "Drift-Adapter (EMNLP 2025)"
+    - "SelectiveNet (ICML 2019)"
+    - "Learning to Defer to a Set of Experts (ICML 2025)"
+    - "Recommendation Systems with Distribution-Free Reliability Guarantees (UAI 2023)"
+    - "Selective LLM-Guided Regularization (WSDM GenAIRecP 2026)"
   open_problems:
     - "ANN geometric objectives are disconnected from aligned downstream utility."
     - "Implicit feedback is censored by exposure and position."
     - "Fresh preference updates conflict with catalog re-embedding and index rebuild cost."
     - "Semantic/LLM alignment remains expensive at online inference time."
-    - "Preference residuals lack a hard strong-baseline regret floor on the actual served candidate union."
+    - "Pairwise preference quality does not identify which list interventions are safe or useful."
+    - "Global fusion assumes complementary experts help on the same requests."
+    - "Temporal validation does not inherit conformal or distribution-free guarantees."
+    - "Post-training residual selection with exact identity fallback is under-explored relative to joint gates."
   evidence_gaps:
-    - "No exhaustive novelty proof exists for the full RIPPLE component intersection."
+    - "The RAVEL component intersection is only a candidate whitespace, not an exhaustive novelty proof."
     - "PoC evidence is required before any benefit claim."
 
 hypotheses:
@@ -48,7 +55,10 @@ hypotheses:
     statement: "Two immutable FAISS searches plus residual projection stay within the matched hybrid p95 budget."
   - id: C3-H1
     status: pending
-    statement: "A validation-calibrated selective uniform-pair correction can improve preference accuracy while retaining the projected linear hybrid's relevance."
+    statement: "RAVEL improves user-macro explicit preference-pair accuracy by at least 0.005 over the frozen linear hybrid while meeting the locked NDCG@10 non-inferiority bounds."
+  - id: C3-H2
+    status: pending
+    statement: "RAVEL's exact-fallback selector outperforms always-on residual alignment in NDCG and matched-coverage heuristic routing in preference accuracy."
 
 experiments:
   proxy_metric: "Temporal full-catalog NDCG@10"
@@ -68,13 +78,13 @@ experiments:
       strongest_control_ndcg_at_10: 0.0648460502012084
       gate_passed: false
   gate:
-    status: cycle3_not_reached
-    rule: "A new cycle-3 gate must be locked on a disjoint cohort before any successor outcome is evaluated."
+    status: cycle3_preregistered_awaiting_single_outcome_run
+    rule: "All ten RAVEL promise criteria must pass on the prospectively declared disjoint user slice [1000:2000]."
 
 outer_loop:
   cycle: 3
-  last_direction: "CAPER_v1_DEAD_END"
-  last_reflection: "Support and hard regret constraints preserved safety and latency, but contradiction-focused global residuals did not improve preference accuracy and lost to simple projected linear fusion. Preserve linear fusion as the relevance anchor; test selective, uniformly trained preference corrections on a disjoint cohort."
+  last_direction: "RAVEL_v1_PREREGISTERED_AND_AUDITED"
+  last_reflection: "The successor is a post-training one-sided exception layer: preserve projected linear fusion exactly on rejection, retain its nonselected tail even on acceptance, and serve the same finite proposal only when temporally prior validation predicts benefit under bounded relevance risk. The external verifier independently replays selection and G1-G10."
 
 workspace:
   findings: "findings.md"

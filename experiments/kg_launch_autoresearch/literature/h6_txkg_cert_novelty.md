@@ -21,7 +21,8 @@ The audit did **not** locate a paper combining all four defining axes:
 | H6 is the first temporal or point-in-time recommender | **NO** | Temporal recommendation and point-in-time graph training are occupied. |
 | H6 is an algorithm contribution by itself | **NO** | It is a diagnostic/benchmark contribution unless it unlocks and validates H7. |
 | The H7 min-weight-closure/min-cut solver is new | **NO** | Maximum closure, causal down-sets, and partial-order Top-K are established mathematics. |
-| **H7 revision-poset certificate package** | **YES, qualified** | The candidate novelty is the composition: revision-provenance ideals, exact worst additive recommendation margins, exact Top-K membership, and certificate-triggered cold-start KG residual control. |
+| H7A page-chain interval certificate is a Tier-A algorithm by itself | **NO** | With independent page-prefix uncertainty and a separable score, each page compiles to a scalar interval; online certification is standard interval-robust linear Top-K arithmetic. Revision histories can still provide tighter extrema and real witnesses. |
+| **H7B materialization-lineage certificate package** | **YES, qualified** | The surviving stronger hypothesis requires measured stream partitions, consumer offsets, or real computational prerequisite lineage, then combines provenance-consistent ideals, exact worst additive recommendation margins, exact Top-K membership, and certificate-triggered KG residual control. |
 
 Here, `YES, qualified` means "no exact collision found in this search," not a
 priority proof. A positive empirical result still requires a reproducible
@@ -47,6 +48,10 @@ systematic review and author-level related-work check before submission.
 | KG4RecEval | [*KG4RecEval: Does Knowledge Graph Really Matter for Recommender Systems?*](https://doi.org/10.1145/3713071), *ACM Transactions on Information Systems* 43(3), 2025, DOI `10.1145/3713071` | Tests KG removal and random corruption, including cold-start settings. It motivates H6's matched-null audit but does not use observed source histories or certify rankings. |
 | EUMR | [*Embedding Uncertainty Modeling for Cold-Start Item Recommendation*](https://doi.org/10.1016/j.neucom.2025.132144), *Neurocomputing* 665, 2026, DOI `10.1016/j.neucom.2025.132144` | Supplies a model-agnostic uncertainty module for distribution-shifted cold items. Its Gaussian embedding uncertainty is empirical rather than a version-provenance set with an exact certificate. |
 | RankDist | [*A Rank-Based Approach to Recommender System's Top-K Queries with Uncertain Scores*](https://doi.org/10.1145/3709655), *Proceedings of the ACM on Management of Data* 3(1), SIGMOD 2025, DOI `10.1145/3709655` | Computes item-position probabilities from uncertain score distributions and proves expected-quality optimality for rank-based recommendation. It blocks a broad claim to be the first uncertainty-aware Top-K recommender; H7 instead uses a provenance-constrained set of feasible graph versions and certifies worst-case membership exactly rather than optimizing expectation under score distributions. |
+| CertDR | [*Certified Robustness to Word Substitution Ranking Attack for Neural Ranking Models*](https://doi.org/10.1145/3511808.3557256), CIKM 2022, DOI `10.1145/3511808.3557256` | Defines certified Top-K robustness for a ranker and protects selected-versus-unselected membership using randomized smoothing. It blocks novelty for Top-K-set certification itself; the remaining distinction is the external-KG version fault model and exact provenance witness. |
+| GUIDER | [*GUIDER: Uncertainty Guided Dynamic Re-ranking for Large Language Models Based Recommender Systems*](https://doi.org/10.1609/aaai.v40i19.38639), AAAI 2026, pp. 16049--16057 | Uses predictive-uncertainty decomposition to dynamically adapt recommendation ranking. It blocks generic uncertainty-controlled reranking novelty, but has no KG revision provenance or exact invariance certificate. |
+| K-RagRec | [*Knowledge Graph Retrieval-Augmented Generation for LLM-based Recommendation*](https://arxiv.org/abs/2501.02226), ACL 2025 | Retrieves up-to-date structured KG information to augment LLM recommendation. It blocks a broad up-to-date KG retrieval claim, but does not model source revision fault sets or certify a recommendation list. |
+| X-KGRank | [*X-KGRank: A Knowledge Graph RAG Framework for Explainable Recommendations via Pattern Mining and LLM Re-Ranking*](https://arxiv.org/abs/2608.01732), arXiv:2608.01732, 2026 preprint | Selectively routes long-tail items through KG paths before LLM reranking. It blocks selective KG routing for long-tail items as novelty; it lacks transaction-time provenance and a worst-case certificate. |
 
 The closest recent works each cover one or two axes, not the four-way
 intersection. In particular, no located work makes a certificate result itself
@@ -97,6 +102,14 @@ No located paper combined all five. None of the components alone is new.
   Top-K literature. H7 must claim neither the first uncertain recommender nor
   the first possible-world ranking method; its distinction is exact worst-case
   certification over provenance-consistent revision histories.
+- Certified Top-K-set invariance is occupied by
+  [CertDR](https://doi.org/10.1145/3511808.3557256), while uncertainty-guided
+  dynamic reranking and selective KG routing are occupied by
+  [GUIDER](https://doi.org/10.1609/aaai.v40i19.38639),
+  [K-RagRec](https://arxiv.org/abs/2501.02226), and
+  [X-KGRank](https://arxiv.org/abs/2608.01732). A certificate-triggered residual
+  is therefore defensible only as part of the full provenance-constrained
+  package, not as a routing contribution in isolation.
 - Generic structural graph certificates are occupied by
   [certifiable robustness to graph perturbations](https://papers.neurips.cc/paper_files/paper/2019/hash/e2f374c3418c50bc30d67d5f7454a5b4-Abstract.html)
   and [certified robust graph contrastive learning](https://arxiv.org/abs/2310.03312).
@@ -158,6 +171,16 @@ The narrow novelty hypothesis is not the algebraic robust margin. It is the
 combination of transaction-time-derived, correlated source/relation/edit-group
 constraints with a downstream cold-start ranking certificate and selective KG
 residual.
+
+The current H7A proof-of-concept deliberately does **not** yet instantiate the
+correlated case. Under its conservative product of independently stale page
+prefixes, an event-additive score compiles each page chain to an exact scalar
+minimum and maximum, after which certification is interval arithmetic. H7A can
+test whether real revision states materially tighten bounds over an
+independent-fact mask and can return auditable revision witnesses, but it is a
+mechanism study rather than a standalone poset algorithm. The stronger H7B
+claim below is unlocked only by measured cross-stream partitions, consumer
+checkpoints, or real materialization-task lineage.
 
 ## Preferred stronger variant: revision-poset certificate
 

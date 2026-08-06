@@ -46,6 +46,7 @@ systematic review and author-level related-work check before submission.
 | Node-aware bi-smoothing | [*Node-Aware Bi-Smoothing: Certified Robustness against Graph Injection Attacks*](https://doi.org/10.1109/SP54263.2024.00241), IEEE S&P 2024, DOI `10.1109/SP54263.2024.00241` | Includes a recommender application and certified graph-injection robustness. It uses randomized smoothing against injected nodes, not correlated transaction-time revisions or an exact additive-margin certificate. |
 | KG4RecEval | [*KG4RecEval: Does Knowledge Graph Really Matter for Recommender Systems?*](https://doi.org/10.1145/3713071), *ACM Transactions on Information Systems* 43(3), 2025, DOI `10.1145/3713071` | Tests KG removal and random corruption, including cold-start settings. It motivates H6's matched-null audit but does not use observed source histories or certify rankings. |
 | EUMR | [*Embedding Uncertainty Modeling for Cold-Start Item Recommendation*](https://doi.org/10.1016/j.neucom.2025.132144), *Neurocomputing* 665, 2026, DOI `10.1016/j.neucom.2025.132144` | Supplies a model-agnostic uncertainty module for distribution-shifted cold items. Its Gaussian embedding uncertainty is empirical rather than a version-provenance set with an exact certificate. |
+| RankDist | [*A Rank-Based Approach to Recommender System's Top-K Queries with Uncertain Scores*](https://doi.org/10.1145/3709655), *Proceedings of the ACM on Management of Data* 3(1), SIGMOD 2025, DOI `10.1145/3709655` | Computes item-position probabilities from uncertain score distributions and proves expected-quality optimality for rank-based recommendation. It blocks a broad claim to be the first uncertainty-aware Top-K recommender; H7 instead uses a provenance-constrained set of feasible graph versions and certifies worst-case membership exactly rather than optimizing expectation under score distributions. |
 
 The closest recent works each cover one or two axes, not the four-way
 intersection. In particular, no located work makes a certificate result itself
@@ -91,6 +92,11 @@ No located paper combined all five. None of the components alone is new.
 - Generic recommender certificates are occupied by
   [PORE](https://www.usenix.org/conference/usenixsecurity23/presentation/jia)
   and [node-aware bi-smoothing](https://arxiv.org/abs/2312.03979).
+- Uncertain-score recommendation and probabilistic rank semantics are occupied
+  by [RankDist](https://doi.org/10.1145/3709655) and the older uncertain-database
+  Top-K literature. H7 must claim neither the first uncertain recommender nor
+  the first possible-world ranking method; its distinction is exact worst-case
+  certification over provenance-consistent revision histories.
 - Generic structural graph certificates are occupied by
   [certifiable robustness to graph perturbations](https://papers.neurips.cc/paper_files/paper/2019/hash/e2f374c3418c50bc30d67d5f7454a5b4-Abstract.html)
   and [certified robust graph contrastive learning](https://arxiv.org/abs/2310.03312).

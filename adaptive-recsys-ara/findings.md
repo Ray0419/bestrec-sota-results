@@ -6,7 +6,7 @@ On a prospectively selected temporal MovieLens 10M cohort, under an exact 200 un
 
 ## Current Understanding
 
-Phase 1 originally found four coupled bottlenecks: cross-stage objective mismatch, exposure-censored feedback, preference freshness versus reindexing cost, and semantic alignment versus online latency. RIPPLE showed that semantic query adaptation cannot replace collaborative structure. CAPER preserved collaborative support and safety, but global preference residuals still failed to retain both relevance and preference quality. RAVEL then showed that selective intervention can preserve relevance and produce positive conditional uplift, yet cannot create enough aggregate preference effect when the underlying constrained proposal changes too little of the evaluated preference surface. A cycle-4 deep-tail continuation idea was rejected after its apparent preference gain vanished on served-page metrics. FACET-PREF moved alignment before ANN candidate formation, but its fixed post-filter retrieval depth could not guarantee the registered exact candidate budget. CABLE-PREF then failed its retrieval-integrity invariant before any R/V/T target was opened. Cycle 6 has therefore returned to Phase 1. No positive benefit claim has been made.
+Phase 1 originally found four coupled bottlenecks: cross-stage objective mismatch, exposure-censored feedback, preference freshness versus reindexing cost, and semantic alignment versus online latency. RIPPLE showed that semantic query adaptation cannot replace collaborative structure. CAPER preserved collaborative support and safety, but global preference residuals still failed to retain both relevance and preference quality. RAVEL then showed that selective intervention can preserve relevance and produce positive conditional uplift, yet cannot create enough aggregate preference effect when the underlying constrained proposal changes too little of the evaluated preference surface. A cycle-4 deep-tail continuation idea was rejected after its apparent preference gain vanished on served-page metrics. FACET-PREF moved alignment before ANN candidate formation, but its fixed post-filter retrieval depth could not guarantee the registered exact candidate budget. CABLE-PREF then failed its retrieval-integrity invariant before any R/V/T target was opened. Cycle-6 Phase 1 selected PIVOT, a shared preference potential over immutable vector partitions; Phase 2 is designing its test. No positive benefit claim has been made.
 
 ## Key Results
 
@@ -41,6 +41,8 @@ Cycle-5 Phase 1 selected CABLE-PREF. Exact masked BPR top-200 is followed by exa
 - The next learnable target should be the actual eligible branch-admission cutoff. Pairwise order can improve without moving a preferred item into the fixed candidate set.
 - Defining the semantic branch on the complement of history plus the admitted collaborative branch guarantees that every semantic slot expands support rather than duplicating BPR.
 - Bitwise or total-order identity across FAISS and an independently accumulated matrix product is not a robust scientific invariant: floating-point backends may differ near ties even when retrieval quality is equivalent. A future protocol must name one canonical ranking semantics and audit other backends using explicit score/set tolerances.
+- IVF and learned ANN routing ordinarily optimize geometric neighbor recovery. PIVOT's candidate gap is to use one preference-trained partition offset for both fixed-budget probe selection and cross-partition ranking, avoiding separate routing/ranking utilities.
+- On the frozen 10,681-item SentenceTransformer matrix, any four of 32 target-blind clusters contain at least 932 items; a 300-event history therefore leaves a construction-level floor of 632 unseen items for a 100-candidate PoC.
 
 ## Lessons and Constraints
 
@@ -55,9 +57,9 @@ Cycle-5 Phase 1 selected CABLE-PREF. Exact masked BPR top-200 is followed by exa
 
 ## Open Questions
 
-- Which preference-alignment intervention changes a high-support served surface rather than another sparse gate, tail-only reorder, or admission-boundary patch?
-- Can the next mechanism reduce alignment-label or retrieval work while keeping one canonical FAISS candidate semantics and immutable item embeddings?
-- Which fresh, disjoint cohort can test that mechanism without adapting to any opened cycle-5 artifact?
+- Can a preference-trained partition potential beat geometric IVF at identical four-shard work while also beating route-only and rerank-only controls?
+- Will the candidate gain survive served-list preference, relevance, and seed-stability tests on a fresh temporal cohort?
+- How much full-catalog semantic quality is retained when at most 19.89% of the MovieLens-scale catalog is scanned?
 
 ## Optimization Trajectory
 
@@ -68,4 +70,4 @@ Cycle-5 Phase 1 selected CABLE-PREF. Exact masked BPR top-200 is followed by exa
 | 3 | RAVEL v1: finite preference proposal plus validation-gated exact fallback | Dead end. Passed relevance non-inferiority, selective mechanism, safety, support/fallback, and seed stability; failed strong default, material preference gain, coverage/support, relative latency, and external integrity. |
 | 4 | FACET-PREF: macro-balanced preference-aligned facet queries before fixed-budget ANN | Dead end. Fixed depth-700 BPR retrieval exhausted before 200 unseen candidates during target-blind V construction; killed before V/T outcomes. |
 | 5 | CABLE-PREF: exact masked complement retrieval plus endpoint-leave-out admission-boundary query alignment | Dead end. Batched FAISS and matrix lexsort disagreed during target-blind R construction; no R/V/T target opened, but G1 and external integrity failed. |
-| 6 | Successor TBD | Phase 1 restarted with a fresh-mechanism, fresh-cohort, canonical-retrieval requirement. |
+| 6 | PIVOT: one preference-trained partition potential jointly controls fixed-work FAISS probing and cross-shard ranking | Phase 1 complete; target-blind real-embedding capacity passed and Phase 2 is locking a fresh temporal test. |

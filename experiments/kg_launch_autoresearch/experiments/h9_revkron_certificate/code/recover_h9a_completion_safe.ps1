@@ -7,6 +7,13 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 Set-StrictMode -Version 2.0
 
+if (-not (
+    [string]::Equals($Mode, 'Audit', [StringComparison]::Ordinal) -or
+    [string]::Equals($Mode, 'Recover', [StringComparison]::Ordinal)
+)) {
+    throw "Mode spelling must be exactly 'Audit' or 'Recover'."
+}
+
 $expectedProtocolHash = 'B1D52DE0A454F8B29A1DB4A6E0627EFC6A60E96010730C7D9427276D6D4C11C9'
 $expectedRunnerHash = 'F16034E938A2C228887B517831F10DD2E799312D53F4220F4DEBF507A4351D8E'
 $expectedLauncherHash = '798861EC6D81386D40C4C90F139FD85E848A978BE7C28EA18A2FECB42549304A'
@@ -29,10 +36,10 @@ $expectedLaunchBlobs = [ordered]@{
     'experiments/kg_launch_autoresearch/experiments/h9_revkron_certificate/protocol.md' = 'c71f34e2b43cc7aecfe6987a781c476cc5650e6d'
     'experiments/kg_launch_autoresearch/experiments/h9_revkron_certificate/implementation_lock.md' = '2888191f6fba541ede65a5add8a9ed8413fb9be2'
 }
-if ($Mode -ceq 'Recover' -and $ConfirmRecovery -cne $requiredConfirmation) {
+if ($Mode -eq 'Recover' -and $ConfirmRecovery -cne $requiredConfirmation) {
     throw "Recovery requires -ConfirmRecovery '$requiredConfirmation'."
 }
-if ($Mode -ceq 'Audit' -and -not [string]::IsNullOrEmpty($ConfirmRecovery)) {
+if ($Mode -eq 'Audit' -and -not [string]::IsNullOrEmpty($ConfirmRecovery)) {
     throw 'Audit mode does not accept a recovery confirmation token.'
 }
 
@@ -1657,7 +1664,7 @@ function Invoke-H9ARecoveryAudit {
 }
 
 $initialAudit = Invoke-H9ARecoveryAudit -RecoveryLockHeld $false
-if ($Mode -ceq 'Audit') {
+if ($Mode -eq 'Audit') {
     [ordered]@{
         schema_version = 'h9a_completion_recovery_audit.v1'
         status = 'H9A_RECOVERY_AUDIT_PASS'

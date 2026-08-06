@@ -39,7 +39,14 @@ completion marker last. It never invokes the H9 Python runner and never opens
 candidate labels.
 
 Recovery script SHA-256:
-`FFDED65DCFCE76C62228A2837FF804F94ADB1F96BC02EFFA42352B15AA95137C`.
+`8C8406616716D3A8FF26C947EC7748BC9AC9790DFDB56082A73EA23B850E6F33`.
+
+Independent pre-execution static audit also demonstrated that PowerShell's
+case-insensitive `ValidateSet` accepts lowercase mode spellings while preserving
+their casing. The recovery script now rejects every mode spelling except exact
+ordinal `Audit` or `Recover` before any filesystem inspection or mutation, so a
+case variant cannot bypass the recovery confirmation check or the audit-only
+return branch.
 
 The recovered decision remains `KILL_H9_KRON_DIRECTION`; recovery cannot turn
 the failed certificate-utility gates into a pass.

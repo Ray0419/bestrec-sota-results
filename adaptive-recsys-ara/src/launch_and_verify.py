@@ -87,7 +87,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     if Path(run_id).name != run_id or run_id in {".", ".."}:
         raise ValueError("run-id must be one safe path component")
-    run_directory = experiments_root / run_id
+    # The runner intentionally isolates its append-only attempts beneath a
+    # protocol-specific subdirectory while keeping the lock at experiments_root.
+    run_directory = experiments_root / "ripple_poc_runs" / run_id
     if run_directory.exists():
         raise FileExistsError(f"Run directory already exists: {run_directory}")
 

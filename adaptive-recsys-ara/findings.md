@@ -38,7 +38,7 @@ RAVEL v1 is the third killed design. Its source-bound runner produced `+0.000146
 - New Windows experiment runners must follow the repository's safe-execution contract.
 - Every successor cycle must use a prospectively selected cohort disjoint from all opened predecessor cohorts.
 - Cycle 4 must change preference-relevant candidate support or the list-level learning target rather than add another selector around RAVEL's fixed proposal.
-- Cycle 4 must compare FACET-PREF with raw multi-interest, single-query aligned, zero-margin, shuffled-label, single-centroid linear, and selected-BPR controls under a fixed candidate budget.
+- Cycle 4 compares FACET-PREF with raw multi-interest, single-query aligned, zero-margin, shuffled-direction, pair-micro, single-centroid hybrid, and selected-BPR controls under a fixed candidate budget. The source-bound runner and external verifier are now prospectively frozen; no cycle-4 outcome has been opened.
 - Temporal validation is empirical calibration only; conformal, distribution-free, causal, and formal-safety language is prohibited.
 
 ## Open Questions
@@ -54,4 +54,4 @@ RAVEL v1 is the third killed design. Its source-bound runner produced `+0.000146
 | 1 | RIPPLE v1: text-only, query-only, ANN-boundary SimPO | Dead end. Passed latency, index immutability, dislike safety, and seed stability; failed statistical quality, ANN-specific mechanism, BPR relevance, and candidate recall. |
 | 2 | CAPER v1: BPR+semantic union, contradiction-focused SimPO residual, hard BPR-regret projection | Dead end. Passed support, Recall, dislike, latency, and integrity; failed material relevance, matched mechanism, preference accuracy, and seed stability. |
 | 3 | RAVEL v1: finite preference proposal plus validation-gated exact fallback | Dead end. Passed relevance non-inferiority, selective mechanism, safety, support/fallback, and seed stability; failed strong default, material preference gain, coverage/support, relative latency, and external integrity. |
-| 4 | FACET-PREF: macro-balanced preference-aligned facet queries before fixed-budget ANN | Selected after rejecting a deep-tail continuation diagnostic; Phase 2 protocol lock in progress. |
+| 4 | FACET-PREF: macro-balanced preference-aligned facet queries before fixed-budget ANN | Phase 3 complete; runner/verifier prospectively frozen and independently audited before the one authorized PoC launch. |

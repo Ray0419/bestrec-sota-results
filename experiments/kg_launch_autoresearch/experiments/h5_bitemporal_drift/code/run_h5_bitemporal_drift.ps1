@@ -19,7 +19,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 
-$RunId = 'run_001'
+$RunId = 'run_002'
 $SampleSize = 50
 $MinimumConfidence = 0.90
 $ExpectedCutoffText = '2019-11-15T23:58:03Z'
@@ -233,10 +233,14 @@ function Get-DirectEntityFactSet {
             $dataValue = Get-JsonPropertyValue -Object $mainsnak -Name 'datavalue'
             if ([string] (Get-JsonPropertyValue -Object $dataValue -Name 'type') -ne 'wikibase-entityid') { continue }
             $value = Get-JsonPropertyValue -Object $dataValue -Name 'value'
+            $entityType = Get-JsonPropertyValue -Object $value -Name 'entity-type'
+            if ([string] $entityType -ne 'item') { continue }
             $numericValue = Get-JsonPropertyValue -Object $value -Name 'numeric-id'
             [long] $numericId = 0
             if ($null -eq $numericValue -or -not [long]::TryParse([string] $numericValue, [System.Globalization.NumberStyles]::Integer, $InvariantCulture, [ref] $numericId)) { continue }
             if ($numericId -le 0) { continue }
+            $explicitId = Get-JsonPropertyValue -Object $value -Name 'id'
+            if ($null -ne $explicitId -and [string] $explicitId -ne ('Q' + [string] $numericId)) { continue }
             $null = $facts.Add($propertyId + '|Q' + [string] $numericId)
         }
     }
@@ -285,6 +289,36 @@ function Get-Median {
     return ([double] $Values[$middle - 1] + [double] $Values[$middle]) / 2.0
 }
 
+function Measure-WeightedDriftRows {
+    param([Parameter(Mandatory = $true)][AllowEmptyCollection()][object[]] $Rows)
+    [double] $weightedCurrent = 0.0
+    [double] $weightedCurrentOnly = 0.0
+    [double] $weightedHistorical = 0.0
+    [double] $weightedHistoricalOnly = 0.0
+    $currentOnlyCountsLocal = New-Object 'System.Collections.Generic.List[int]'
+    foreach ($row in $Rows) {
+        if (-not [bool] $row.api_ok) { continue }
+        $frequency = [long] $row.news_frequency
+        $weightedCurrent += [double] $frequency * [int] $row.current_fact_count
+        $weightedCurrentOnly += [double] $frequency * [int] $row.current_only_count
+        $weightedHistorical += [double] $frequency * [int] $row.historical_fact_count
+        $weightedHistoricalOnly += [double] $frequency * [int] $row.historical_only_count
+        $currentOnlyCountsLocal.Add([int] $row.current_only_count)
+    }
+    $counts = $currentOnlyCountsLocal.ToArray()
+    return [pscustomobject]@{
+        weighted_current_fact_mass = $weightedCurrent
+        weighted_current_only_fact_mass = $weightedCurrentOnly
+        weighted_historical_fact_mass = $weightedHistorical
+        weighted_historical_only_fact_mass = $weightedHistoricalOnly
+        weighted_current_only_fraction = if ($weightedCurrent -gt 0) { $weightedCurrentOnly / $weightedCurrent } else { $null }
+        weighted_historical_only_fraction = if ($weightedHistorical -gt 0) { $weightedHistoricalOnly / $weightedHistorical } else { $null }
+        mean_current_only = if ($counts.Length -gt 0) { [double] (($counts | Measure-Object -Sum).Sum) / $counts.Length } else { $null }
+        median_current_only = Get-Median -Values $counts
+        valid_rows = $counts.Length
+    }
+}
+
 function Measure-AffectedNews {
     param(
         [Parameter(Mandatory = $true)][string] $Path,
@@ -296,6 +330,8 @@ function Measure-AffectedNews {
     [long] $entityJsonFailures = 0
     [long] $selectedNews = 0
     [long] $affectedNews = 0
+    $selectedQidCounts = New-Object 'System.Collections.Generic.Dictionary[string,long]' ($Ordinal)
+    foreach ($qid in $Selected) { $selectedQidCounts.Add($qid, 0) }
     $reader = New-Object System.IO.StreamReader($Path, $Utf8NoBom, $true, 1048576)
     try {
         while (-not $reader.EndOfStream) {
@@ -305,7 +341,10 @@ function Measure-AffectedNews {
             $hasSelected = $false
             $hasAffected = $false
             foreach ($qid in $qids) {
-                if ($Selected.Contains($qid)) { $hasSelected = $true }
+                if ($Selected.Contains($qid)) {
+                    $hasSelected = $true
+                    $selectedQidCounts[$qid]++
+                }
                 if ($Affected.Contains($qid)) { $hasAffected = $true }
             }
             if ($hasSelected) {
@@ -324,6 +363,7 @@ function Measure-AffectedNews {
         selected_news = $selectedNews
         affected_news = $affectedNews
         affected_rate = if ($selectedNews -gt 0) { [double] $affectedNews / $selectedNews } else { $null }
+        selected_qid_counts = $selectedQidCounts
     }
 }
 
@@ -361,7 +401,7 @@ function Get-Sha256Text {
 }
 
 if ($SelfTest) {
-    $syntheticJson = '{"claims":{"P31":[{"rank":"normal","mainsnak":{"snaktype":"value","datavalue":{"type":"wikibase-entityid","value":{"numeric-id":5}}}}],"P279":[{"rank":"deprecated","mainsnak":{"snaktype":"value","datavalue":{"type":"wikibase-entityid","value":{"numeric-id":1}}}}],"P18":[{"rank":"normal","mainsnak":{"snaktype":"value","datavalue":{"type":"string","value":"x"}}}]}}'
+    $syntheticJson = '{"claims":{"P31":[{"rank":"normal","mainsnak":{"snaktype":"value","datavalue":{"type":"wikibase-entityid","value":{"entity-type":"item","numeric-id":5,"id":"Q5"}}}}],"P279":[{"rank":"deprecated","mainsnak":{"snaktype":"value","datavalue":{"type":"wikibase-entityid","value":{"entity-type":"item","numeric-id":1,"id":"Q1"}}}}],"P18":[{"rank":"normal","mainsnak":{"snaktype":"value","datavalue":{"type":"string","value":"x"}}}]}}'
     $synthetic = $syntheticJson | ConvertFrom-Json -ErrorAction Stop
     $facts = Get-DirectEntityFactSet -Entity $synthetic
     if ($facts.Count -ne 1 -or -not $facts.Contains('P31|Q5')) { throw 'Self-test fact extraction failed.' }
@@ -375,6 +415,36 @@ if ($SelfTest) {
     $line = "N1`tcat`tsub`tTitle`tAbstract`thttps://example.test`t[{`"WikidataId`":`"Q5`",`"Confidence`":0.95}]`t[]"
     $qids = Get-NewsQidSet -Line $line -FieldFailureReference ([ref] $fieldFailures) -EntityJsonFailureReference ([ref] $jsonFailures)
     if ($qids.Count -ne 1 -or -not $qids.Contains('Q5') -or $fieldFailures -ne 0 -or $jsonFailures -ne 0) { throw 'Self-test MIND parsing failed.' }
+    $selfTestStyles = [System.Globalization.DateTimeStyles]::AssumeUniversal -bor [System.Globalization.DateTimeStyles]::AdjustToUniversal
+    $selfTestTime = [datetime]::MinValue
+    if (-not [datetime]::TryParseExact('11/15/2019 11:58:03 PM', 'M/d/yyyy h:mm:ss tt', $InvariantCulture, $selfTestStyles, [ref] $selfTestTime) -or $selfTestTime.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ', $InvariantCulture) -ne $ExpectedCutoffText) {
+        throw 'Self-test behavior timestamp parsing failed.'
+    }
+    $weightedRows = [object[]] @(
+        [pscustomobject]@{ api_ok = $true; news_frequency = 2; current_fact_count = 4; current_only_count = 1; historical_fact_count = 3; historical_only_count = 0 },
+        [pscustomobject]@{ api_ok = $true; news_frequency = 1; current_fact_count = 2; current_only_count = 1; historical_fact_count = 4; historical_only_count = 3 }
+    )
+    $weightedTest = Measure-WeightedDriftRows -Rows $weightedRows
+    if ([math]::Abs([double] $weightedTest.weighted_current_only_fraction - 0.3) -gt 1e-12 -or [math]::Abs([double] $weightedTest.weighted_historical_only_fraction - 0.3) -gt 1e-12 -or [double] $weightedTest.median_current_only -ne 1.0) {
+        throw 'Self-test weighted metric calculation failed.'
+    }
+    $selfTestRoot = Join-Path ([System.IO.Path]::GetTempPath()) ('provicold-h5-selftest-' + [guid]::NewGuid().ToString('N'))
+    $resolvedTempRoot = [System.IO.Path]::GetFullPath([System.IO.Path]::GetTempPath())
+    $resolvedSelfTestRoot = [System.IO.Path]::GetFullPath($selfTestRoot)
+    if (-not $resolvedSelfTestRoot.StartsWith($resolvedTempRoot, [System.StringComparison]::OrdinalIgnoreCase) -or [System.IO.Path]::GetFileName($resolvedSelfTestRoot) -notlike 'provicold-h5-selftest-*') {
+        throw 'Self-test temporary path validation failed.'
+    }
+    try {
+        $stage = Join-Path $resolvedSelfTestRoot 'stage'
+        $published = Join-Path $resolvedSelfTestRoot 'published'
+        [System.IO.Directory]::CreateDirectory($stage) | Out-Null
+        Write-Utf8Fsync -Path (Join-Path $stage 'marker.txt') -Content 'ok'
+        [System.IO.Directory]::Move($stage, $published)
+        if ((Get-Content -Raw -LiteralPath (Join-Path $published 'marker.txt')) -ne 'ok') { throw 'Self-test atomic publication failed.' }
+    }
+    finally {
+        if ([System.IO.Directory]::Exists($resolvedSelfTestRoot)) { Remove-Item -LiteralPath $resolvedSelfTestRoot -Recurse -Force }
+    }
     Write-Output 'H5_SELFTEST_OK'
     exit 0
 }
@@ -414,6 +484,7 @@ if (-not $currentRequest.success) { $apiErrors.Add('current_batch: ' + [string] 
 [long] $currentEntitiesFound = 0
 [long] $historicalQueriesResolved = 0
 [long] $historicallyAbsentCount = 0
+$factPartitionsValid = $true
 $currentOnlyCounts = New-Object 'System.Collections.Generic.List[int]'
 
 foreach ($sampleRow in $selectedRows) {
@@ -422,9 +493,26 @@ foreach ($sampleRow in $selectedRows) {
     $currentEntity = if ($null -ne $currentEntities) { Get-JsonPropertyValue -Object $currentEntities -Name $qid } else { $null }
     $currentOk = $null -ne $currentEntity -and -not (Test-JsonProperty -Object $currentEntity -Name 'missing')
     if ($currentOk) { $currentEntitiesFound++ }
+    $currentRevision = $null
+    $currentModified = $null
+    if ($currentOk) {
+        $currentRevisionValue = Get-JsonPropertyValue -Object $currentEntity -Name 'lastrevid'
+        [long] $currentRevisionParsed = 0
+        $currentModifiedValue = Get-JsonPropertyValue -Object $currentEntity -Name 'modified'
+        $currentModifiedParsed = [datetime]::MinValue
+        $currentTimestampStyles = [System.Globalization.DateTimeStyles]::AllowWhiteSpaces -bor [System.Globalization.DateTimeStyles]::AssumeUniversal -bor [System.Globalization.DateTimeStyles]::AdjustToUniversal
+        $currentRevisionValid = $null -ne $currentRevisionValue -and [long]::TryParse([string] $currentRevisionValue, [System.Globalization.NumberStyles]::Integer, $InvariantCulture, [ref] $currentRevisionParsed) -and $currentRevisionParsed -gt 0
+        $currentModifiedValid = $null -ne $currentModifiedValue -and [datetime]::TryParse([string] $currentModifiedValue, $InvariantCulture, $currentTimestampStyles, [ref] $currentModifiedParsed)
+        if (-not $currentRevisionValid -or -not $currentModifiedValid) {
+            $currentOk = $false
+            $apiErrors.Add($qid + ': current revision metadata is missing or invalid')
+        }
+        else {
+            $currentRevision = $currentRevisionParsed
+            $currentModified = $currentModifiedParsed.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ', $InvariantCulture)
+        }
+    }
     $currentFacts = if ($currentOk) { Get-DirectEntityFactSet -Entity $currentEntity } else { New-StringSet }
-    $currentRevision = if ($currentOk) { Get-JsonPropertyValue -Object $currentEntity -Name 'lastrevid' } else { $null }
-    $currentModified = if ($currentOk) { Get-JsonPropertyValue -Object $currentEntity -Name 'modified' } else { $null }
 
     $historicalUri = 'https://www.wikidata.org/w/api.php?action=query&format=json&formatversion=2&prop=revisions&titles=' + [uri]::EscapeDataString($qid) + '&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&rvstart=' + [uri]::EscapeDataString($cutoffText) + '&rvdir=older&rvlimit=1'
     $historicalRequest = Invoke-WikidataJson -Uri $historicalUri
@@ -443,17 +531,32 @@ foreach ($sampleRow in $selectedRows) {
             $query = Get-JsonPropertyValue -Object $historicalRequest.data -Name 'query'
             $pages = @(Get-JsonPropertyValue -Object $query -Name 'pages')
             if ($pages.Count -ne 1 -or $null -eq $pages[0]) { throw 'Historical query did not return exactly one page.' }
-            $revisionsValue = Get-JsonPropertyValue -Object $pages[0] -Name 'revisions'
+            $page = $pages[0]
+            if (Test-JsonProperty -Object $page -Name 'missing') { throw 'Historical query page is missing.' }
+            $revisionsValue = Get-JsonPropertyValue -Object $page -Name 'revisions'
             $revisions = @($revisionsValue)
             if ($null -eq $revisionsValue -or $revisions.Count -eq 0) {
+                if (-not $currentOk) { throw 'Cannot classify pre-cutoff absence without a valid current entity.' }
                 $historicalAbsent = $true
                 $historicallyAbsentCount++
                 $historicalOk = $true
             }
             else {
                 $revision = $revisions[0]
-                $historicalRevision = Get-JsonPropertyValue -Object $revision -Name 'revid'
-                $historicalTimestamp = Get-JsonPropertyValue -Object $revision -Name 'timestamp'
+                $historicalRevisionValue = Get-JsonPropertyValue -Object $revision -Name 'revid'
+                [long] $historicalRevisionParsed = 0
+                if ($null -eq $historicalRevisionValue -or -not [long]::TryParse([string] $historicalRevisionValue, [System.Globalization.NumberStyles]::Integer, $InvariantCulture, [ref] $historicalRevisionParsed) -or $historicalRevisionParsed -le 0) {
+                    throw 'Historical revision ID is missing or invalid.'
+                }
+                $historicalTimestampValue = Get-JsonPropertyValue -Object $revision -Name 'timestamp'
+                $historicalTimestampParsed = [datetime]::MinValue
+                $timestampStyles = [System.Globalization.DateTimeStyles]::AllowWhiteSpaces -bor [System.Globalization.DateTimeStyles]::AssumeUniversal -bor [System.Globalization.DateTimeStyles]::AdjustToUniversal
+                if ($null -eq $historicalTimestampValue -or -not [datetime]::TryParse([string] $historicalTimestampValue, $InvariantCulture, $timestampStyles, [ref] $historicalTimestampParsed)) {
+                    throw 'Historical revision timestamp is missing or invalid.'
+                }
+                if ($historicalTimestampParsed -gt $cutoff) { throw 'Historical revision timestamp is after the locked cutoff.' }
+                $historicalRevision = $historicalRevisionParsed
+                $historicalTimestamp = $historicalTimestampParsed.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ', $InvariantCulture)
                 $slots = Get-JsonPropertyValue -Object $revision -Name 'slots'
                 $mainSlot = Get-JsonPropertyValue -Object $slots -Name 'main'
                 $content = Get-JsonPropertyValue -Object $mainSlot -Name 'content'
@@ -475,6 +578,11 @@ foreach ($sampleRow in $selectedRows) {
     $currentFactArray = [string[]] @(Get-SortedSetValues -Set $currentFacts)
     $historicalFactArray = [string[]] @(Get-SortedSetValues -Set $historicalFacts)
     $jaccard = Get-Jaccard -First $currentFacts -Second $historicalFacts
+    foreach ($fact in $currentOnly) { if ($historicalFacts.Contains($fact)) { $factPartitionsValid = $false } }
+    foreach ($fact in $historicalOnly) { if ($currentFacts.Contains($fact)) { $factPartitionsValid = $false } }
+    $currentIntersectionCount = $currentFacts.Count - $currentOnly.Length
+    $historicalIntersectionCount = $historicalFacts.Count - $historicalOnly.Length
+    if ($currentIntersectionCount -ne $historicalIntersectionCount -or $currentIntersectionCount -lt 0) { $factPartitionsValid = $false }
     if ($currentOk -and $historicalOk) {
         $weightedCurrentFacts += [double] $frequency * $currentFacts.Count
         $weightedCurrentOnlyFacts += [double] $frequency * $currentOnly.Length
@@ -501,6 +609,11 @@ foreach ($sampleRow in $selectedRows) {
             facts = $historicalFactArray
         }
         comparison = [ordered]@{
+            current_fact_count = $currentFacts.Count
+            historical_fact_count = $historicalFacts.Count
+            intersection_count = $currentIntersectionCount
+            current_only_count = $currentOnly.Length
+            historical_only_count = $historicalOnly.Length
             current_only = $currentOnly
             historical_only = $historicalOnly
             jaccard = $jaccard
@@ -527,11 +640,32 @@ foreach ($sampleRow in $selectedRows) {
 $requestCompletedUtc = [datetime]::UtcNow
 
 $newsExposure = Measure-AffectedNews -Path $NewsPath -Selected $selectedSet -Affected $affectedSet
-$weightedCurrentOnlyFraction = if ($weightedCurrentFacts -gt 0) { $weightedCurrentOnlyFacts / $weightedCurrentFacts } else { $null }
-$weightedHistoricalOnlyFraction = if ($weightedHistoricalFacts -gt 0) { $weightedHistoricalOnlyFacts / $weightedHistoricalFacts } else { $null }
+$selectedFrequencyCrosscheck = $true
+foreach ($row in $selectedRows) {
+    $qid = [string] $row.qid
+    if (-not $newsExposure.selected_qid_counts.ContainsKey($qid) -or [long] $newsExposure.selected_qid_counts[$qid] -ne [long] $row.news_frequency) {
+        $selectedFrequencyCrosscheck = $false
+        break
+    }
+}
+$streamWeightedCurrentFacts = $weightedCurrentFacts
+$streamWeightedCurrentOnlyFacts = $weightedCurrentOnlyFacts
+$streamWeightedHistoricalFacts = $weightedHistoricalFacts
+$streamWeightedHistoricalOnlyFacts = $weightedHistoricalOnlyFacts
+$recomputedMetrics = Measure-WeightedDriftRows -Rows $entityCsvRows.ToArray()
+$metricRecomputationValid = [math]::Abs([double] $recomputedMetrics.weighted_current_fact_mass - $streamWeightedCurrentFacts) -le 1e-9 -and
+    [math]::Abs([double] $recomputedMetrics.weighted_current_only_fact_mass - $streamWeightedCurrentOnlyFacts) -le 1e-9 -and
+    [math]::Abs([double] $recomputedMetrics.weighted_historical_fact_mass - $streamWeightedHistoricalFacts) -le 1e-9 -and
+    [math]::Abs([double] $recomputedMetrics.weighted_historical_only_fact_mass - $streamWeightedHistoricalOnlyFacts) -le 1e-9
+$weightedCurrentFacts = [double] $recomputedMetrics.weighted_current_fact_mass
+$weightedCurrentOnlyFacts = [double] $recomputedMetrics.weighted_current_only_fact_mass
+$weightedHistoricalFacts = [double] $recomputedMetrics.weighted_historical_fact_mass
+$weightedHistoricalOnlyFacts = [double] $recomputedMetrics.weighted_historical_only_fact_mass
+$weightedCurrentOnlyFraction = $recomputedMetrics.weighted_current_only_fraction
+$weightedHistoricalOnlyFraction = $recomputedMetrics.weighted_historical_only_fraction
 $currentOnlyArray = $currentOnlyCounts.ToArray()
-$meanCurrentOnly = if ($currentOnlyArray.Length -gt 0) { [double] (($currentOnlyArray | Measure-Object -Sum).Sum) / $currentOnlyArray.Length } else { $null }
-$medianCurrentOnly = Get-Median -Values $currentOnlyArray
+$meanCurrentOnly = $recomputedMetrics.mean_current_only
+$medianCurrentOnly = $recomputedMetrics.median_current_only
 
 $sanityChecks = New-Object 'System.Collections.Generic.List[object]'
 Add-SanityCheck -Checks $sanityChecks -Name 'behavior_cutoff_matches_lock' -Passed ($cutoffText -eq $ExpectedCutoffText) -Observed $cutoffText
@@ -539,9 +673,12 @@ Add-SanityCheck -Checks $sanityChecks -Name 'behavior_rows_parse_cleanly' -Passe
 Add-SanityCheck -Checks $sanityChecks -Name 'news_rows_parse_cleanly_both_passes' -Passed (($newsRead.Stats.field_count_failures + $newsRead.Stats.entity_json_failures + $newsExposure.field_count_failures + $newsExposure.entity_json_failures) -eq 0) -Observed ([ordered]@{ first = $newsRead.Stats; second_field_failures = $newsExposure.field_count_failures; second_json_failures = $newsExposure.entity_json_failures })
 Add-SanityCheck -Checks $sanityChecks -Name 'news_pass_row_counts_match' -Passed ($newsRead.Stats.raw_lines -eq $newsExposure.raw_lines) -Observed ([ordered]@{ first = $newsRead.Stats.raw_lines; second = $newsExposure.raw_lines })
 Add-SanityCheck -Checks $sanityChecks -Name 'sample_has_exactly_50_unique_qids' -Passed ($selectedRows.Length -eq $SampleSize -and $selectedSet.Count -eq $SampleSize) -Observed ([ordered]@{ rows = $selectedRows.Length; unique = $selectedSet.Count })
+Add-SanityCheck -Checks $sanityChecks -Name 'selected_qid_frequencies_reproduce_on_second_pass' -Passed $selectedFrequencyCrosscheck -Observed $sampleSha256
 Add-SanityCheck -Checks $sanityChecks -Name 'all_current_entities_returned' -Passed ($currentEntitiesFound -eq $SampleSize) -Observed $currentEntitiesFound
 Add-SanityCheck -Checks $sanityChecks -Name 'all_historical_queries_resolved' -Passed ($historicalQueriesResolved -eq $SampleSize) -Observed $historicalQueriesResolved
 Add-SanityCheck -Checks $sanityChecks -Name 'no_api_or_snapshot_parse_errors' -Passed ($apiErrors.Count -eq 0) -Observed $apiErrors.ToArray()
+Add-SanityCheck -Checks $sanityChecks -Name 'fact_set_partitions_are_exact' -Passed $factPartitionsValid -Observed $entityLedgers.Count
+Add-SanityCheck -Checks $sanityChecks -Name 'weighted_metrics_recompute_exactly' -Passed $metricRecomputationValid -Observed $recomputedMetrics
 Add-SanityCheck -Checks $sanityChecks -Name 'weighted_current_fact_denominator_positive' -Passed ($weightedCurrentFacts -gt 0) -Observed $weightedCurrentFacts
 Add-SanityCheck -Checks $sanityChecks -Name 'selected_news_denominator_positive' -Passed ($newsExposure.selected_news -gt 0) -Observed $newsExposure.selected_news
 

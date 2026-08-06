@@ -2,9 +2,9 @@
 
 project:
   title: "CABLE-PREF: Cardinality-Assured Boundary Learning for Preference-aligned retrieval"
-  question: "Pending the cycle-5 Phase-2 prospective question and gate lock."
+  question: "On unopened MovieLens 10M, can endpoint-leave-out admission-boundary alignment improve preferred admission by +0.020 over raw exact-complement retrieval and +0.010 over order-only alignment, and sPCE@10 by +0.005 over raw hybrid and BPR, under an exact 200+200 output contract without relevance or p95 regression?"
   status: active
-  phase: 2_design_research_question_cycle_5
+  phase: 3_algorithm_design_cycle_5
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -76,6 +76,15 @@ hypotheses:
   - id: C4-F1
     status: falsified
     statement: "A fixed depth-700 BPR search always contains at least 200 prefix-unseen candidates for every eligible FACET-PREF request."
+  - id: C5-H1
+    status: preregistered_unopened
+    statement: "CABLE-PREF materially improves method-independent BPR-missed preferred-item admission over raw exact-complement retrieval and order-only reference-free alignment."
+  - id: C5-H2
+    status: preregistered_unopened
+    statement: "CABLE-PREF improves strict preference-consistent exposure@10 over raw hybrid and BPR while remaining relevance- and dislike-safe."
+  - id: C5-H3
+    status: preregistered_unopened
+    statement: "Exact complement retrieval guarantees every eligible 200+200 output, and CABLE-PREF stays within the registered matched p95 budget without changing immutable item geometry."
 
 experiments:
   proxy_metric: "Temporal full-catalog NDCG@10"
@@ -114,13 +123,13 @@ experiments:
       gate_passed: false
       failed_gates: [G1]
   gate:
-    status: cycle5_phase2_active_phase5_forbidden
+    status: cycle5_phase3_active_phase5_forbidden
     rule: "A successor may proceed to Phase 5 only after a prospectively locked, source-bound PoC externally verifies every registered gate; any failure kills that design and returns to Phase 1."
 
 outer_loop:
   cycle: 5
   last_direction: "CABLE_PREF_SELECTED_AFTER_CARDINALITY_AND_COLLISION_ANALYSIS"
-  last_reflection: "Exact masked complement retrieval must provide the feasibility invariant; the learnable novelty is admission-boundary alignment of an immutable semantic query, not masked search itself. Phase 2 must preregister this mechanism on a completely unopened dataset."
+  last_reflection: "Phase 2 locked CABLE-PREF on the unopened SHA-bound MovieLens 10M archive. The endpoint-leave-out cutoff makes admission supervision action-consistent; all nine gates are conjunctive and Phase 5 remains forbidden."
 
 workspace:
   findings: "findings.md"

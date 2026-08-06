@@ -2,7 +2,7 @@
 
 ## Research Question
 
-Pending prospective Phase-2 lock for CABLE-PREF. The intended question asks whether reference-free training against the actual eligible semantic admission boundary can improve preferred-item admission and strict preference-consistent exposure at an exact 200+200 output budget, without relevance or latency regression.
+On a prospectively selected temporal MovieLens 10M cohort, under an exact 200 unseen BPR plus 200 BPR-novel semantic output contract, can CABLE-PREF improve BPR-missed preferred-item Admission@200 by at least `+0.020` over raw exact-complement retrieval and `+0.010` over order-only reference-free alignment, and improve sPCE@10 by at least `+0.005` over raw hybrid and BPR, without material relevance, dislike-safety, seed-stability, or p95-latency regression?
 
 ## Current Understanding
 
@@ -63,4 +63,4 @@ Cycle-5 Phase 1 selected CABLE-PREF. Exact masked BPR top-200 is followed by exa
 | 2 | CAPER v1: BPR+semantic union, contradiction-focused SimPO residual, hard BPR-regret projection | Dead end. Passed support, Recall, dislike, latency, and integrity; failed material relevance, matched mechanism, preference accuracy, and seed stability. |
 | 3 | RAVEL v1: finite preference proposal plus validation-gated exact fallback | Dead end. Passed relevance non-inferiority, selective mechanism, safety, support/fallback, and seed stability; failed strong default, material preference gain, coverage/support, relative latency, and external integrity. |
 | 4 | FACET-PREF: macro-balanced preference-aligned facet queries before fixed-budget ANN | Dead end. Fixed depth-700 BPR retrieval exhausted before 200 unseen candidates during target-blind V construction; killed before V/T outcomes. |
-| 5 | CABLE-PREF: exact masked complement retrieval plus admission-boundary query alignment | Phase 1 complete; Phase 2 question and gate pending. No outcomes opened. |
+| 5 | CABLE-PREF: exact masked complement retrieval plus endpoint-leave-out admission-boundary query alignment | Phases 1-2 complete; Phase 3 active on a downloaded but unopened SHA-bound MovieLens 10M archive. |

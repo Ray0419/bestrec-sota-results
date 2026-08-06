@@ -2497,12 +2497,32 @@ def peak_resident_bytes() -> int:
                 ("PagefileUsage", ctypes.c_size_t), ("PeakPagefileUsage", ctypes.c_size_t),
             ]
 
+        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        get_current_process = kernel32.GetCurrentProcess
+        get_current_process.argtypes = []
+        get_current_process.restype = wintypes.HANDLE
+        try:
+            get_process_memory_info = kernel32.K32GetProcessMemoryInfo
+        except AttributeError:
+            psapi = ctypes.WinDLL("psapi", use_last_error=True)
+            get_process_memory_info = psapi.GetProcessMemoryInfo
+        get_process_memory_info.argtypes = [
+            wintypes.HANDLE,
+            ctypes.POINTER(ProcessMemoryCounters),
+            wintypes.DWORD,
+        ]
+        get_process_memory_info.restype = wintypes.BOOL
+
         counters = ProcessMemoryCounters()
-        counters.cb = ctypes.sizeof(counters)
-        process = ctypes.windll.kernel32.GetCurrentProcess()
-        if not ctypes.windll.psapi.GetProcessMemoryInfo(process, ctypes.byref(counters), counters.cb):
-            raise RuntimeError("GetProcessMemoryInfo failed")
-        return int(counters.PeakWorkingSetSize)
+        counters.cb = ctypes.sizeof(ProcessMemoryCounters)
+        process = get_current_process()
+        ctypes.set_last_error(0)
+        if not get_process_memory_info(process, ctypes.byref(counters), counters.cb):
+            raise ctypes.WinError(ctypes.get_last_error())
+        peak = int(counters.PeakWorkingSetSize)
+        if peak <= 0:
+            raise RuntimeError("Windows peak working-set counter is not positive")
+        return peak
     import resource
     usage = int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
     return usage if sys.platform == "darwin" else usage * 1024
@@ -2945,6 +2965,9 @@ def run_selftest(authorization: Mapping[str, Any]) -> dict[str, Any]:
     verify_python_thread_state()
     require_no_async_failures()
     startup = verify_bound_provenance(authorization)
+    synthetic_peak = peak_resident_bytes()
+    if not isinstance(synthetic_peak, int) or synthetic_peak <= 0:
+        raise RuntimeError("synthetic peak-memory transport self-test failed")
 
     empty = [frozenset() for _ in range(SAMPLE_SIZE)]
     singleton = list(empty)

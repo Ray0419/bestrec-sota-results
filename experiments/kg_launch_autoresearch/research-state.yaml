@@ -95,7 +95,7 @@ hypotheses:
     priority: medium
 
 experiments:
-  proxy_metric: "H1 primary: conventional-minus-launch prefix-linkability gap in percentage points; H2 primary: fractional loss of KG Recall@20/NDCG@20 lift under launch-safe inputs."
+  proxy_metric: "H6 Phase A primary: historical-versus-current shared-fact score-vector and rank-change rates without click labels; Phase B primary, if opened: paired change in impression-mean nDCG@10."
   baseline_value: 0
   best_value: -2.6749611197511625
   total_runs: 4

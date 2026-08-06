@@ -1651,8 +1651,10 @@ function Invoke-H9ARecoveryAudit {
     if ([string]$deep.final_verdict -cne 'KILL_H9_KRON_DIRECTION') {
         throw 'Frozen recovered chain does not recompute to its expected KILL verdict.'
     }
-    foreach ($pid in @($expectedLauncherPid, $expectedPrimaryPid, $expectedReplayPid, $expectedVerifierPid)) {
-        if (Test-ProcessAlive -ProcessId $pid) { throw "Original chain PID is live: $pid" }
+    foreach ($originalProcessId in @($expectedLauncherPid, $expectedPrimaryPid, $expectedReplayPid, $expectedVerifierPid)) {
+        if (Test-ProcessAlive -ProcessId $originalProcessId) {
+            throw "Original chain PID is live: $originalProcessId"
+        }
     }
     if (Test-Path -LiteralPath $innerLock) { throw 'Inner lock appeared during audit.' }
     return [pscustomobject]@{
@@ -1886,8 +1888,10 @@ try {
         (Test-Path -LiteralPath $innerLock)) {
         throw 'Normal/recovered completion or inner lock appeared before recovery publication.'
     }
-    foreach ($pid in @($expectedLauncherPid, $expectedPrimaryPid, $expectedReplayPid, $expectedVerifierPid)) {
-        if (Test-ProcessAlive $pid) { throw "Original PID revived before recovery publication: $pid" }
+    foreach ($originalProcessId in @($expectedLauncherPid, $expectedPrimaryPid, $expectedReplayPid, $expectedVerifierPid)) {
+        if (Test-ProcessAlive $originalProcessId) {
+            throw "Original PID revived before recovery publication: $originalProcessId"
+        }
     }
 
     $completionPayload = [ordered]@{

@@ -39,7 +39,7 @@ completion marker last. It never invokes the H9 Python runner and never opens
 candidate labels.
 
 Recovery script SHA-256:
-`63338196E326028783CF83C3AF3F8807623A9066FE71CD2761180AFA3E9DFE4E`.
+`3A9513C0F243044867A07081D768737CD6A1F97FEA1F6548E7410131035207A4`.
 
 Independent pre-execution static audit also demonstrated that PowerShell's
 case-insensitive `ValidateSet` accepts lowercase mode spellings while preserving
@@ -54,6 +54,13 @@ JSON use LF, while the five hash-pinned PowerShell stdout/inner-release records
 use exactly one CRLF terminator. The validator now requires the exact observed
 line-ending form at each named call site; it does not normalize or broadly
 accept mixed line endings. That failed audit wrote no file and no marker.
+
+The next read-only audit passed the frozen artifact and gate checks, then
+stopped because PowerShell treats local `$pid` as the read-only automatic
+`$PID` variable. Both read-only/live-process loop variables are now named
+`$originalProcessId`; the automatic recovery-process `$PID` references remain
+unchanged. This audit also failed before the recovery branch and wrote no file
+or marker.
 
 The recovered decision remains `KILL_H9_KRON_DIRECTION`; recovery cannot turn
 the failed certificate-utility gates into a pass.

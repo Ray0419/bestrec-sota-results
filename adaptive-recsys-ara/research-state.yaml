@@ -1,10 +1,10 @@
 # Research State — Adaptive Recommendation Research Sprint
 
 project:
-  title: "CAPER: Coverage-Anchored Preference-Exception Reranking"
-  question: "Can a SimPO-derived preference residual on the actual semantic-collaborative FAISS union improve relevance and preference accuracy over strong BPR while a hard per-request collaborative-regret projection preserves support, ranking safety, and latency?"
+  title: "Cycle 3: Selective Preference Alignment over a Linear Hybrid"
+  question: "Can a validation-calibrated selective preference correction improve explicit alignment while retaining the relevance gain, safety, and latency of a strong linear semantic-collaborative hybrid?"
   status: active
-  phase: 4_poc_validation_cycle_2
+  phase: 1_identify_limitations_cycle_3
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -32,35 +32,49 @@ literature:
 
 hypotheses:
   - id: C2-H1
+    status: falsified
     statement: "CAPER improves NDCG@10 over strong BPR and every matched residual/fusion ablation."
   - id: C2-H2
+    status: falsified
     statement: "CAPER improves held-out explicit preference-pair accuracy by at least three percentage points over BPR."
   - id: C2-H3
+    status: supported
     statement: "The collaborative candidate set is a subset of the served union for every request."
   - id: C2-H4
+    status: supported
     statement: "Hard collaborative-regret projection prevents material Recall@10 loss and excessive dislike intrusion."
   - id: C2-H5
+    status: supported
     statement: "Two immutable FAISS searches plus residual projection stay within the matched hybrid p95 budget."
+  - id: C3-H1
+    status: pending
+    statement: "A validation-calibrated selective uniform-pair correction can improve preference accuracy while retaining the projected linear hybrid's relevance."
 
 experiments:
   proxy_metric: "Temporal full-catalog NDCG@10"
   baseline_value: 0.005728564774466464
-  best_value: 0.011554019227211103
-  total_runs: 1
+  best_value: 0.0648460502012084
+  total_runs: 2
   trajectory:
     - design: "RIPPLE v1"
       status: dead_end
       proposed_ndcg_at_10: 0.011350290536784564
       bpr_ndcg_at_10: 0.06255894164014639
       gate_passed: false
+    - design: "CAPER v1"
+      status: dead_end
+      proposed_ndcg_at_10: 0.06319149679753816
+      bpr_ndcg_at_10: 0.06311244084043514
+      strongest_control_ndcg_at_10: 0.0648460502012084
+      gate_passed: false
   gate:
-    status: cycle2_protocol_locked_outcome_unopened
-    rule: "All nine CAPER criteria in research-question-cycle2.md must pass; otherwise kill CAPER and return to Phase 1."
+    status: cycle3_not_reached
+    rule: "A new cycle-3 gate must be locked on a disjoint cohort before any successor outcome is evaluated."
 
 outer_loop:
-  cycle: 2
-  last_direction: "RIPPLE_v1_DEAD_END"
-  last_reflection: "Text-only query rotation improved top-10 precision over a weak semantic baseline but lost candidate recall, failed to beat exact-hard mining, and reached only 18.1% of BPR-MF NDCG. Preserve fixed-index serving; redesign around collaborative structure and coverage preservation."
+  cycle: 3
+  last_direction: "CAPER_v1_DEAD_END"
+  last_reflection: "Support and hard regret constraints preserved safety and latency, but contradiction-focused global residuals did not improve preference accuracy and lost to simple projected linear fusion. Preserve linear fusion as the relevance anchor; test selective, uniformly trained preference corrections on a disjoint cohort."
 
 workspace:
   findings: "findings.md"

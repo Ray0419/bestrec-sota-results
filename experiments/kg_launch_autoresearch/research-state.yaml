@@ -100,14 +100,14 @@ hypotheses:
     parent: H6
     priority: low
   - id: H9
-    statement: "A regularized Laplacian/Rayleigh cold-item residual can capture global KG paths while provenance-derived Loewner endpoints certify Top-10 invariance to transaction-time revision uncertainty."
-    status: conditional_go_label_blind_poc_next
-    motivation: "The additive H6 kernel changes ranks but misses outcome attribution; H9 tests a globally propagated yet mathematically certifiable module using an exact 50-by-50 Schur complement before any further label access."
+    statement: "A ridge-regularized terminal Green-energy residual can capture global co-fact paths while Loewner endpoint boxes certify Top-10 invariance to transaction-time revision uncertainty."
+    status: protocol_locked_label_blind_poc_pending_implementation
+    motivation: "The additive H6 kernel changes ranks but misses outcome attribution. H9A is explicitly a non-novel feasibility gate for a standard Kron/hypergraph energy and sufficient endpoint certificate. Only a later H9B group-exclusive possible-world bound/search algorithm could support a Tier-A novelty claim."
     parent: null
     priority: high
 
 experiments:
-  proxy_metric: "H6 Phase B primary: paired historical-versus-current change in impression-mean nDCG@10 on the exact committed Phase-A cohort; H7 structural primary: exact Top-10 certificate gain over an independent-fact uncertainty superset."
+  proxy_metric: "H9A label-blind conjunction: revision-sensitive and graph-dependent guard-resolved Top-10 changes, rigorous global co-fact path use, nonvacuous Loewner Top-10 certificate coverage, robustness, and <=300-second primary/replay runtime."
   baseline_value: 0
   best_value: 0.5500209487454029
   total_runs: 6
@@ -144,9 +144,9 @@ experiments:
       verdict: "KILL_H6_OUTCOME_DIRECTION"
 
 outer_loop:
-  cycle: 5
-  last_direction: "H6 confirmatory outcome adjudication; pivot to H9 provenance-Rayleigh certificate"
-  last_reflection: "H6 Phase B was valid and statistically resolved but failed both the prospective practical-magnitude and matched-null attribution gates: current-minus-historical nDCG@10 was -0.0023677 versus a required absolute 0.005, and the matched-null q95 was 0.0027244. H6 and its contingent H7A lead path are killed without rescue tuning. H9 now tests, label-blind, whether a globally propagated regularized-Laplacian scorer can be both revision-sensitive and deterministically certifiable using exact small Schur complements."
+  cycle: 6
+  last_direction: "H9A RevKron-Cert prospective label-blind mechanism and certificate-coverage gate"
+  last_reflection: "Independent audits found the H9A scorer/operator/certificate ingredients occupied by classical Kron reduction, hypergraph recommendation, inverse-Laplacian ranking, and robust Top-K work. H9A therefore makes no algorithm novelty or cold-start outcome claim. Its exact, label-blind protocol tests whether the mechanism has enough revision sensitivity, genuinely global co-fact propagation, graph dependence, rigorous certificate coverage, structural robustness, and runtime headroom to justify H9B: a provenance-native exact/anytime search over mutually exclusive revision worlds."
 
 workspace:
   findings: "findings.md"

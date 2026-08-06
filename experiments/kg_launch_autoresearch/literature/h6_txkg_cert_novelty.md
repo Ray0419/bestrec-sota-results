@@ -5,6 +5,31 @@ Audit date: 2026-08-07
 Status: qualified literature-search conclusion through the audit date; absence
 of a located paper is not proof of priority.
 
+## Targeted 2026 collision refresh
+
+A second exact-intersection search on 2026-08-07 used combinations of
+`transaction time`, `revision history`, `point-in-time`, `certified
+robustness`, `Top-K`, `knowledge graph`, `recommendation`, and `cold start`.
+It found two additional boundary papers but no exact package collision:
+
+- [DRAR](https://doi.org/10.1145/3787454) (TOIS 2026) uses diffusion-based
+  relation augmentation and collaborative alignment against noisy KG views.
+  It strengthens the collision against generic augmentation/denoising, but
+  does not define uncertainty from historical source revisions or certify a
+  downstream ranking over admissible transaction-time graph versions.
+- [Robust Knowledge Graph Embedding via Denoising](https://doi.org/10.1007/978-3-032-25156-5_22)
+  (ESWC 2026) gives randomized-smoothing certificates for embedding-space
+  perturbations in KG completion/reasoning. It is a mandatory certification
+  citation and possible adapted baseline, but does not address recommendation,
+  cutoff observability, revision-derived correlated edge sets, or Top-K
+  recommendation membership.
+
+The refresh also reconfirmed that GraphMatch supplies point-in-time feature
+and subgraph reconstruction, so exact historical replay cannot itself be the
+algorithm claim. This remains a qualified search conclusion, not a priority
+proof; a positive empirical result would still require a formal systematic
+review and author-level related-work check before submission.
+
 ## Surviving research question
 
 For cold-start recommendation at cutoff `tau`, can a plug-in KG residual use

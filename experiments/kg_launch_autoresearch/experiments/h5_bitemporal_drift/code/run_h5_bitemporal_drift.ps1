@@ -19,12 +19,13 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 
-$RunId = 'run_002'
+$RunId = 'run_003'
 $SampleSize = 50
 $MinimumConfidence = 0.90
 $ExpectedCutoffText = '2019-11-15T23:58:03Z'
 $CurrentOnlyGate = 0.15
 $AffectedNewsGate = 0.50
+$InterRequestDelaySeconds = 4
 $InvariantCulture = [System.Globalization.CultureInfo]::InvariantCulture
 $Ordinal = [System.StringComparer]::Ordinal
 $Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
@@ -201,18 +202,33 @@ function Invoke-WikidataJson {
     param([Parameter(Mandatory = $true)][string] $Uri)
 
     $lastMessage = $null
+    [long] $waitTotal = 0
     for ($attempt = 1; $attempt -le 3; $attempt++) {
         try {
             $headers = @{ 'User-Agent' = $UserAgent }
             $data = Invoke-RestMethod -Uri $Uri -Headers $headers -Method Get -TimeoutSec 45 -ErrorAction Stop
-            return [pscustomobject]@{ success = $true; attempts = $attempt; data = $data; error = $null }
+            return [pscustomobject]@{ success = $true; attempts = $attempt; wait_seconds = $waitTotal; data = $data; error = $null }
         }
         catch {
             $lastMessage = $_.Exception.Message
-            if ($attempt -lt 3) { Start-Sleep -Seconds $attempt }
+            if ($attempt -lt 3) {
+                $response = $_.Exception.Response
+                $statusCode = if ($null -ne $response) { [int] $response.StatusCode } else { 0 }
+                [int] $waitSeconds = $attempt
+                if ($statusCode -eq 429) {
+                    $waitSeconds = 60
+                    $retryAfterText = if ($null -ne $response -and $null -ne $response.Headers) { [string] $response.Headers['Retry-After'] } else { '' }
+                    [int] $retryAfterSeconds = 0
+                    if ([int]::TryParse($retryAfterText, [System.Globalization.NumberStyles]::Integer, $InvariantCulture, [ref] $retryAfterSeconds) -and $retryAfterSeconds -gt 0) {
+                        $waitSeconds = [math]::Min(60, $retryAfterSeconds)
+                    }
+                }
+                $waitTotal += $waitSeconds
+                Start-Sleep -Seconds $waitSeconds
+            }
         }
     }
-    return [pscustomobject]@{ success = $false; attempts = 3; data = $null; error = $lastMessage }
+    return [pscustomobject]@{ success = $false; attempts = 3; wait_seconds = $waitTotal; data = $null; error = $lastMessage }
 }
 
 function Get-DirectEntityFactSet {
@@ -476,6 +492,9 @@ $entityCsvRows = New-Object 'System.Collections.Generic.List[object]'
 $affectedSet = New-StringSet
 $apiErrors = New-Object 'System.Collections.Generic.List[string]'
 if (-not $currentRequest.success) { $apiErrors.Add('current_batch: ' + [string] $currentRequest.error) }
+[long] $totalRetryWaitSeconds = [long] $currentRequest.wait_seconds
+[long] $totalProactiveWaitSeconds = 0
+[int] $sampleIndex = 0
 
 [double] $weightedCurrentFacts = 0.0
 [double] $weightedCurrentOnlyFacts = 0.0
@@ -516,6 +535,7 @@ foreach ($sampleRow in $selectedRows) {
 
     $historicalUri = 'https://www.wikidata.org/w/api.php?action=query&format=json&formatversion=2&prop=revisions&titles=' + [uri]::EscapeDataString($qid) + '&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&rvstart=' + [uri]::EscapeDataString($cutoffText) + '&rvdir=older&rvlimit=1'
     $historicalRequest = Invoke-WikidataJson -Uri $historicalUri
+    $totalRetryWaitSeconds += [long] $historicalRequest.wait_seconds
     $historicalFacts = New-StringSet
     $historicalRevision = $null
     $historicalTimestamp = $null
@@ -606,6 +626,8 @@ foreach ($sampleRow in $selectedRows) {
             absent_at_cutoff = $historicalAbsent
             revision_id = $historicalRevision
             revision_timestamp_utc = $historicalTimestamp
+            request_attempts = $historicalRequest.attempts
+            retry_wait_seconds = $historicalRequest.wait_seconds
             facts = $historicalFactArray
         }
         comparison = [ordered]@{
@@ -636,6 +658,11 @@ foreach ($sampleRow in $selectedRows) {
         jaccard = $jaccard
         error = $rowError
     })
+    $sampleIndex++
+    if ($sampleIndex -lt $selectedRows.Length) {
+        Start-Sleep -Seconds $InterRequestDelaySeconds
+        $totalProactiveWaitSeconds += $InterRequestDelaySeconds
+    }
 }
 $requestCompletedUtc = [datetime]::UtcNow
 
@@ -709,6 +736,8 @@ $result = [ordered]@{
         fact_signature = 'nondeprecated direct entity-valued property_id|Qtarget'
         weighted_current_only_gate = $CurrentOnlyGate
         affected_selected_news_gate = $AffectedNewsGate
+        inter_historical_request_delay_seconds = $InterRequestDelaySeconds
+        rate_limit_retry_wait_cap_seconds = 60
     }
     inputs = [ordered]@{
         news = [System.IO.Path]::GetFullPath($NewsPath)
@@ -732,6 +761,10 @@ $result = [ordered]@{
         request_started_utc = $requestStartedUtc.ToString('o', $InvariantCulture)
         request_completed_utc = $requestCompletedUtc.ToString('o', $InvariantCulture)
         current_batch_attempts = $currentRequest.attempts
+        current_batch_retry_wait_seconds = $currentRequest.wait_seconds
+        inter_historical_request_delay_seconds = $InterRequestDelaySeconds
+        total_proactive_wait_seconds = $totalProactiveWaitSeconds
+        total_retry_wait_seconds = $totalRetryWaitSeconds
         current_entities_found = $currentEntitiesFound
         historical_queries_resolved = $historicalQueriesResolved
         historically_absent_entities = $historicallyAbsentCount

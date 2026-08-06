@@ -6,7 +6,7 @@ After two killed global-alignment designs, can post-training, validation-gated a
 
 ## Current Understanding
 
-Phase 1 originally found four coupled bottlenecks: cross-stage objective mismatch, exposure-censored feedback, preference freshness versus reindexing cost, and semantic alignment versus online latency. RIPPLE showed that semantic query adaptation cannot replace collaborative structure. CAPER then preserved collaborative support and safety, but global preference residuals still failed to retain both relevance and preference quality. Cycle 3 reframes this as a selective-intervention problem: RAVEL keeps projected linear fusion as an exact default and lets a separately trained residual act only after temporally prior validation grants permission. No positive benefit claim has been made.
+Phase 1 originally found four coupled bottlenecks: cross-stage objective mismatch, exposure-censored feedback, preference freshness versus reindexing cost, and semantic alignment versus online latency. RIPPLE showed that semantic query adaptation cannot replace collaborative structure. CAPER preserved collaborative support and safety, but global preference residuals still failed to retain both relevance and preference quality. RAVEL then showed that selective intervention can preserve relevance and produce positive conditional uplift, yet cannot create enough aggregate preference effect when the underlying constrained proposal changes too little of the evaluated preference surface. Cycle 4 has returned to candidate/list formation rather than another request gate. No positive benefit claim has been made.
 
 ## Key Results
 
@@ -14,7 +14,7 @@ RIPPLE v1 is a verified negative result. NDCG@10 was `0.01135` versus BPR-MF `0.
 
 CAPER v1 is also a verified negative result. It preserved candidate support, Recall, dislike safety, immutability, and `2.307 ms` worst-seed p95 latency, but gained only `0.125%` NDCG over BPR, lost `0.55` percentage points of user-macro preference accuracy, lost to projected linear fusion, and was stable in only one of three seeds. G1, G2, G3, and G7 failed, so CAPER was killed and Phase 5 remained forbidden.
 
-RAVEL v1 has completed Phase 3 and is prospectively preregistered for one disjoint-cohort PoC. Its finite proposal may alter only the constrained top-10 intervention while preserving the frozen-linear nonselected tail; rejection reuses the complete linear record exactly. The primary always-on control serves the identical finite proposal without a selector, and an external verifier independently replays validation selection, raw test statistics, deterministic bootstrap intervals, G1-G10, provenance, and exact fallback. All outcome-free audits passed, but no RAVEL benefit claim exists until the single held-out run clears every gate.
+RAVEL v1 is the third killed design. Its source-bound runner produced `+0.000146` user-macro preference gain versus the required `+0.005`, `8.57%` coverage versus the `10%` floor, only `45.67` seed-averaged accepted-and-pair-bearing requests versus `100`, and `1.543x` worst-seed p95 overhead versus `1.25x`. G1, G3, G5, and G9 failed internally. The post-exit verifier also failed closed on nonempty SentenceTransformer progress-bar stderr, so no external completion marker exists and G10 fails. RAVEL was killed without rerun or repair; Phase 5 remains prohibited.
 
 ## Patterns and Insights
 
@@ -25,21 +25,23 @@ RAVEL v1 has completed Phase 3 and is prospectively preregistered for one disjoi
 - Projected linear fusion supplied relevance, while uniform natural-pair residual training supplied preference accuracy; globally applying the residual could not retain both.
 - Full-order preference evaluation is only interpretable when unconstrained tail reranking cannot earn credit; RAVEL therefore preserves the default tail and attributes every order change to its constrained top-10 intervention.
 - Generic gating, abstention, safe fallback, semantic-collaborative mixtures, and selective LLM pair regularization are already occupied. RAVEL's only defensible candidate whitespace is post-training control of an already-trained reference-free residual with exact identity fallback and intervention-specific evaluation.
+- RAVEL's accepted requests had positive `+0.00224` conditional preference uplift and passed relevance non-inferiority, but only `8.57%` of requests were accepted; proposal support, not harm calibration, limited aggregate effect.
+- When the baseline path is roughly `2 ms`, even a tiny residual, projection, and two logistic heads can violate a strict relative latency ratio despite low absolute latency.
 
 ## Lessons and Constraints
 
 - Every PoC must compare against a standard baseline on the same temporal split and candidate pool.
 - Phase 5 claims are prohibited unless every preregistered promise criterion passes.
 - New Windows experiment runners must follow the repository's safe-execution contract.
-- Cycle 3 must use a prospectively selected user cohort disjoint from the 1,000 CAPER users.
-- The next hypothesis must be selective rather than another global residual.
+- Every successor cycle must use a prospectively selected cohort disjoint from all opened predecessor cohorts.
+- Cycle 4 must change preference-relevant candidate support or the list-level learning target rather than add another selector around RAVEL's fixed proposal.
 - Temporal validation is empirical calibration only; conformal, distribution-free, causal, and formal-safety language is prohibited.
 
 ## Open Questions
 
-- Can a cross-fitted validation selector identify useful preference exceptions on the prospectively disjoint hash slice `[1000:2000]`?
-- Can RAVEL clear the locked `+0.005` preference gate while meeting its NDCG non-inferiority bounds?
-- Does exact fallback plus a small selector stay within `1.25x` projected-linear p95 latency?
+- Can preference-aware retrieval expose useful high/low-rating pairs without target injection or catalog re-embedding?
+- Can list-level alignment move enough top-ranked pair relations to clear a material preference gate while preserving BPR/linear relevance?
+- Can the next mechanism avoid a learned online selector and remain close to the dual-index linear latency path?
 
 ## Optimization Trajectory
 
@@ -47,3 +49,4 @@ RAVEL v1 has completed Phase 3 and is prospectively preregistered for one disjoi
 |---|---|---|
 | 1 | RIPPLE v1: text-only, query-only, ANN-boundary SimPO | Dead end. Passed latency, index immutability, dislike safety, and seed stability; failed statistical quality, ANN-specific mechanism, BPR relevance, and candidate recall. |
 | 2 | CAPER v1: BPR+semantic union, contradiction-focused SimPO residual, hard BPR-regret projection | Dead end. Passed support, Recall, dislike, latency, and integrity; failed material relevance, matched mechanism, preference accuracy, and seed stability. |
+| 3 | RAVEL v1: finite preference proposal plus validation-gated exact fallback | Dead end. Passed relevance non-inferiority, selective mechanism, safety, support/fallback, and seed stability; failed strong default, material preference gain, coverage/support, relative latency, and external integrity. |

@@ -4,7 +4,7 @@ project:
   title: "RAVEL: Residual Alignment via a Validation-gated Exception Layer"
   question: "Can post-training, validation-gated application of a reference-free preference residual improve explicit preference accuracy while remaining non-inferior in temporal NDCG@10 to a frozen linear semantic-collaborative vector ranker?"
   status: active
-  phase: 4_poc_validation_cycle_3_preregistered
+  phase: 1_identify_limitations_cycle_4
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -54,17 +54,17 @@ hypotheses:
     status: supported
     statement: "Two immutable FAISS searches plus residual projection stay within the matched hybrid p95 budget."
   - id: C3-H1
-    status: pending
+    status: falsified
     statement: "RAVEL improves user-macro explicit preference-pair accuracy by at least 0.005 over the frozen linear hybrid while meeting the locked NDCG@10 non-inferiority bounds."
   - id: C3-H2
-    status: pending
+    status: provisional_runner_support_but_external_integrity_failed
     statement: "RAVEL's exact-fallback selector outperforms always-on residual alignment in NDCG and matched-coverage heuristic routing in preference accuracy."
 
 experiments:
   proxy_metric: "Temporal full-catalog NDCG@10"
   baseline_value: 0.005728564774466464
   best_value: 0.0648460502012084
-  total_runs: 2
+  total_runs: 3
   trajectory:
     - design: "RIPPLE v1"
       status: dead_end
@@ -77,14 +77,23 @@ experiments:
       bpr_ndcg_at_10: 0.06311244084043514
       strongest_control_ndcg_at_10: 0.0648460502012084
       gate_passed: false
+    - design: "RAVEL v1"
+      status: dead_end
+      proposed_ndcg_at_10: 0.06082746507323623
+      linear_ndcg_at_10: 0.06077474884504718
+      proposed_preference_accuracy: 0.6164014659311302
+      linear_preference_accuracy: 0.6162552252698682
+      gate_passed: false
+      external_verification_complete: false
+      failed_gates: [G1, G3, G5, G9, G10]
   gate:
-    status: cycle3_preregistered_awaiting_single_outcome_run
-    rule: "All ten RAVEL promise criteria must pass on the prospectively declared disjoint user slice [1000:2000]."
+    status: cycle4_not_reached
+    rule: "A new cycle-4 question, disjoint cohort, and all-or-nothing gate must be locked before any successor outcome is evaluated."
 
 outer_loop:
-  cycle: 3
-  last_direction: "RAVEL_v1_PREREGISTERED_AND_AUDITED"
-  last_reflection: "The successor is a post-training one-sided exception layer: preserve projected linear fusion exactly on rejection, retain its nonselected tail even on acceptance, and serve the same finite proposal only when temporally prior validation predicts benefit under bounded relevance risk. The external verifier independently replays selection and G1-G10."
+  cycle: 4
+  last_direction: "RAVEL_v1_DEAD_END"
+  last_reflection: "RAVEL preserved relevance and showed positive conditional uplift, but aggregate preference gain was only 0.000146, test coverage fell below 0.10, accepted pair support was too small, relative p95 overhead was 1.543x, and external integrity failed on nonempty model-loading stderr. The next design must change the preference-relevant candidate or list optimization surface, not add another gate around the same proposal."
 
 workspace:
   findings: "findings.md"

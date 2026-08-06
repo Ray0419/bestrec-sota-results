@@ -1,10 +1,10 @@
 # Research State — Adaptive Recommendation Research Sprint
 
 project:
-  title: "CABLE-PREF: Cardinality-Assured Boundary Learning for Preference-aligned retrieval"
-  question: "On unopened MovieLens 10M, can endpoint-leave-out admission-boundary alignment improve preferred admission by +0.020 over raw exact-complement retrieval and +0.010 over order-only alignment, and sPCE@10 by +0.005 over raw hybrid and BPR, under an exact 200+200 output contract without relevance or p95 regression?"
+  title: "Cycle-6 successor research sprint"
+  question: "To be selected after failure-driven Phase-1 ideation and novelty review."
   status: active
-  phase: 4_poc_validation_cycle_5_authorized_once_not_yet_launched
+  phase: 1_identify_limitations_cycle_6
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -77,20 +77,23 @@ hypotheses:
     status: falsified
     statement: "A fixed depth-700 BPR search always contains at least 200 prefix-unseen candidates for every eligible FACET-PREF request."
   - id: C5-H1
-    status: preregistered_unopened
+    status: not_evaluated_project_killed_on_retrieval_integrity
     statement: "CABLE-PREF materially improves method-independent BPR-missed preferred-item admission over raw exact-complement retrieval and order-only reference-free alignment."
   - id: C5-H2
-    status: preregistered_unopened
+    status: not_evaluated_project_killed_on_retrieval_integrity
     statement: "CABLE-PREF improves strict preference-consistent exposure@10 over raw hybrid and BPR while remaining relevance- and dislike-safe."
   - id: C5-H3
-    status: preregistered_unopened
+    status: not_evaluated_project_killed_on_retrieval_integrity
     statement: "Exact complement retrieval guarantees every eligible 200+200 output, and CABLE-PREF stays within the registered matched p95 budget without changing immutable item geometry."
+  - id: C5-F1
+    status: falsified
+    statement: "The batched full-row FAISS candidate path agrees exactly with the canonical matrix lexsort oracle on every real target-blind request."
 
 experiments:
   proxy_metric: "Temporal full-catalog NDCG@10"
   baseline_value: 0.005728564774466464
   best_value: 0.0648460502012084
-  total_runs: 4
+  total_runs: 5
   trajectory:
     - design: "RIPPLE v1"
       status: dead_end
@@ -122,14 +125,24 @@ experiments:
       external_verification_complete: false
       gate_passed: false
       failed_gates: [G1]
+    - design: "CABLE-PREF v1"
+      status: dead_end
+      termination_stage: "target_blind_R_candidate_construction"
+      failure: "batched_full_row_faiss_disagreed_with_matrix_lexsort_oracle"
+      R_target_opened: false
+      validation_opened: false
+      test_opened: false
+      external_verification_complete: false
+      gate_passed: false
+      failed_gates: [G1, G9]
   gate:
-    status: cycle5_phase4_authorized_once_phase5_forbidden_pending_external_gate
+    status: cycle6_phase1_phase5_forbidden
     rule: "A successor may proceed to Phase 5 only after a prospectively locked, source-bound PoC externally verifies every registered gate; any failure kills that design and returns to Phase 1."
 
 outer_loop:
-  cycle: 5
-  last_direction: "CABLE_PREF_SELECTED_AFTER_CARDINALITY_AND_COLLISION_ANALYSIS"
-  last_reflection: "CABLE-PREF's source-bound runner and post-exit verifier are committed. An independent archive-free audit found no P0/P1 defect; runner 32/32 and launcher 17/17 preflights pass, and the exact digest-bound command is authorized once. All nine gates remain conjunctive and Phase 5 remains forbidden pending external verification."
+  cycle: 6
+  last_direction: "RESET_AFTER_CABLE_RETRIEVAL_ORACLE_FAILURE"
+  last_reflection: "CABLE-PREF was killed on its sole run before R/V/T target access because the real batched FAISS row disagreed with the independent matrix lexsort oracle, falsifying G1. No repair or rerun is allowed. Cycle 6 returns to Phase 1 and must select a genuinely different hypothesis with one canonical retrieval semantics and pre-outcome real-embedding feasibility coverage."
 
 workspace:
   findings: "findings.md"

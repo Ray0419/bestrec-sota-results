@@ -6,7 +6,7 @@ On a prospectively selected temporal MovieLens 10M cohort, under an exact 200 un
 
 ## Current Understanding
 
-Phase 1 originally found four coupled bottlenecks: cross-stage objective mismatch, exposure-censored feedback, preference freshness versus reindexing cost, and semantic alignment versus online latency. RIPPLE showed that semantic query adaptation cannot replace collaborative structure. CAPER preserved collaborative support and safety, but global preference residuals still failed to retain both relevance and preference quality. RAVEL then showed that selective intervention can preserve relevance and produce positive conditional uplift, yet cannot create enough aggregate preference effect when the underlying constrained proposal changes too little of the evaluated preference surface. A cycle-4 deep-tail continuation idea was rejected after its apparent preference gain vanished on served-page metrics. FACET-PREF moved alignment before ANN candidate formation, but its fixed post-filter retrieval depth could not guarantee the registered exact candidate budget. Cycle 5 has completed outcome-blind algorithm design, implementation, and independent pre-outcome review. Its digest-bound one-shot PoC is authorized exactly once but has not yet launched. No positive benefit claim has been made.
+Phase 1 originally found four coupled bottlenecks: cross-stage objective mismatch, exposure-censored feedback, preference freshness versus reindexing cost, and semantic alignment versus online latency. RIPPLE showed that semantic query adaptation cannot replace collaborative structure. CAPER preserved collaborative support and safety, but global preference residuals still failed to retain both relevance and preference quality. RAVEL then showed that selective intervention can preserve relevance and produce positive conditional uplift, yet cannot create enough aggregate preference effect when the underlying constrained proposal changes too little of the evaluated preference surface. A cycle-4 deep-tail continuation idea was rejected after its apparent preference gain vanished on served-page metrics. FACET-PREF moved alignment before ANN candidate formation, but its fixed post-filter retrieval depth could not guarantee the registered exact candidate budget. CABLE-PREF then failed its retrieval-integrity invariant before any R/V/T target was opened. Cycle 6 has therefore returned to Phase 1. No positive benefit claim has been made.
 
 ## Key Results
 
@@ -17,6 +17,8 @@ CAPER v1 is also a verified negative result. It preserved candidate support, Rec
 RAVEL v1 is the third killed design. Its source-bound runner produced `+0.000146` user-macro preference gain versus the required `+0.005`, `8.57%` coverage versus the `10%` floor, only `45.67` seed-averaged accepted-and-pair-bearing requests versus `100`, and `1.543x` worst-seed p95 overhead versus `1.25x`. G1, G3, G5, and G9 failed internally. The post-exit verifier also failed closed on nonempty SentenceTransformer progress-bar stderr, so no external completion marker exists and G10 fails. RAVEL was killed without rerun or repair; Phase 5 remains prohibited.
 
 FACET-PREF v1 is the fourth killed design. After all three-seed R-only training completed, the first target-blind V candidate construction raised `The fixed depth-700 collaborative row exhausted before 200`. Because the protocol required exactly 200 unseen BPR candidates and prohibited adaptive deeper search, this is a direct feasibility/G1 failure. V relevance, V preference, and T were never opened. The design was killed without rerun or a post-outcome depth patch.
+
+CABLE-PREF v1 is the fifth killed design. Its one-time run completed structural/A data handling, SentenceTransformer encoding, BPR fitting, and immutable index publication, then failed during target-blind R candidate generation because batched full-row FAISS retrieval disagreed with the matrix lexsort oracle. The R manifest had not yet been published, so R/V/T targets remained unopened. G1 and external integrity failed; the design was killed without repair or rerun.
 
 Cycle-5 Phase 1 selected CABLE-PREF. Exact masked BPR top-200 is followed by exact masked semantic top-200 on the complement of history and the BPR branch, guaranteeing 400 unique unseen candidates for every eligible request. A small query adapter is trained with an admission loss against the detached eligible semantic cutoff plus an order-only reference-free loss. This is a hypothesis, not a positive result.
 
@@ -38,6 +40,7 @@ Cycle-5 Phase 1 selected CABLE-PREF. Exact masked BPR top-200 is followed by exa
 - Correctness and scalable latency must be separated: exact masked top-k defines the quality oracle, while filtered ANN or certified probing is evaluated independently for oracle recall, work, and tail latency.
 - The next learnable target should be the actual eligible branch-admission cutoff. Pairwise order can improve without moving a preferred item into the fixed candidate set.
 - Defining the semantic branch on the complement of history plus the admitted collaborative branch guarantees that every semantic slot expands support rather than duplicating BPR.
+- Bitwise or total-order identity across FAISS and an independently accumulated matrix product is not a robust scientific invariant: floating-point backends may differ near ties even when retrieval quality is equivalent. A future protocol must name one canonical ranking semantics and audit other backends using explicit score/set tolerances.
 
 ## Lessons and Constraints
 
@@ -48,12 +51,13 @@ Cycle-5 Phase 1 selected CABLE-PREF. Exact masked BPR top-200 is followed by exa
 - Cycle 4 must change preference-relevant candidate support or the list-level learning target rather than add another selector around RAVEL's fixed proposal.
 - FACET-PREF's consumed cohort cannot be used to tune a deeper collaborative search depth. Cycle 5 must change the feasibility construction and use an unopened evaluation cohort or a dataset/domain allocated prospectively.
 - Temporal validation is empirical calibration only; conformal, distribution-free, causal, and formal-safety language is prohibited.
+- CABLE-PREF's consumed claim and cohort cannot be reused. Cycle 6 must test a distinct mechanism on a prospectively disjoint cohort and must cover real frozen-embedding retrieval arithmetic before any quality launch.
 
 ## Open Questions
 
-- Will exact masked complement retrieval satisfy its registered correctness and p95 contracts on the prospectively bound MovieLens 10M cohort?
-- Can admission-boundary alignment improve preferred-endpoint support and served-list preference consistency without relevance loss?
-- Does CABLE-PREF beat both raw exact-complement retrieval and the matched order-only control across at least two of three seeds?
+- Which preference-alignment intervention changes a high-support served surface rather than another sparse gate, tail-only reorder, or admission-boundary patch?
+- Can the next mechanism reduce alignment-label or retrieval work while keeping one canonical FAISS candidate semantics and immutable item embeddings?
+- Which fresh, disjoint cohort can test that mechanism without adapting to any opened cycle-5 artifact?
 
 ## Optimization Trajectory
 
@@ -63,4 +67,5 @@ Cycle-5 Phase 1 selected CABLE-PREF. Exact masked BPR top-200 is followed by exa
 | 2 | CAPER v1: BPR+semantic union, contradiction-focused SimPO residual, hard BPR-regret projection | Dead end. Passed support, Recall, dislike, latency, and integrity; failed material relevance, matched mechanism, preference accuracy, and seed stability. |
 | 3 | RAVEL v1: finite preference proposal plus validation-gated exact fallback | Dead end. Passed relevance non-inferiority, selective mechanism, safety, support/fallback, and seed stability; failed strong default, material preference gain, coverage/support, relative latency, and external integrity. |
 | 4 | FACET-PREF: macro-balanced preference-aligned facet queries before fixed-budget ANN | Dead end. Fixed depth-700 BPR retrieval exhausted before 200 unseen candidates during target-blind V construction; killed before V/T outcomes. |
-| 5 | CABLE-PREF: exact masked complement retrieval plus endpoint-leave-out admission-boundary query alignment | Phases 1-3 complete; the source-bound, digest-authorized one-shot Phase-4 PoC passed its final archive-free audit and is authorized once on the downloaded but unopened SHA-bound MovieLens 10M archive. |
+| 5 | CABLE-PREF: exact masked complement retrieval plus endpoint-leave-out admission-boundary query alignment | Dead end. Batched FAISS and matrix lexsort disagreed during target-blind R construction; no R/V/T target opened, but G1 and external integrity failed. |
+| 6 | Successor TBD | Phase 1 restarted with a fresh-mechanism, fresh-cohort, canonical-retrieval requirement. |

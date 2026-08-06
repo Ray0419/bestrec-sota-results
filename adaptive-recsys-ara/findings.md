@@ -2,7 +2,7 @@
 
 ## Research Question
 
-Phase 2 is now locking whether macro-balanced, reference-free alignment of facet-conditioned user queries can improve fixed-budget preference-pair candidate support and top-10 preference accuracy over single-centroid and BPR baselines without material relevance or latency loss.
+At a fixed 200+200 vector-retrieval budget and with immutable catalog embeddings and indexes, can macro-balanced, SimPO-inspired reference-free alignment of facet-conditioned user queries improve natural preference-pair co-support by at least 0.02 over a single-centroid hybrid and strict preference-consistent exposure@10 by at least 0.005 over both that hybrid and selected BPR, while remaining non-inferior to the hybrid in NDCG@10 and within 1.25x p95 latency?
 
 ## Current Understanding
 

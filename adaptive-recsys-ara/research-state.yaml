@@ -2,9 +2,9 @@
 
 project:
   title: "FACET-PREF: Facet-Conditioned Preference Retrieval"
-  question: "Pending Phase-2 lock: can macro-balanced reference-free alignment of facet-conditioned user queries improve fixed-budget candidate support and top-10 preference accuracy without material relevance or latency loss?"
+  question: "At a fixed 200+200 vector-retrieval budget and with immutable catalog embeddings and indexes, can macro-balanced, SimPO-inspired reference-free alignment of facet-conditioned user queries improve natural preference-pair co-support by at least 0.02 over a single-centroid hybrid and strict preference-consistent exposure@10 by at least 0.005 over both that hybrid and selected BPR, while remaining non-inferior to the hybrid in NDCG@10 and within 1.25x p95 latency?"
   status: active
-  phase: 2_design_question_cycle_4
+  phase: 3_algorithm_design_cycle_4
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -61,6 +61,15 @@ hypotheses:
   - id: C3-H2
     status: provisional_runner_support_but_external_integrity_failed
     statement: "RAVEL's exact-fallback selector outperforms always-on residual alignment in NDCG and matched-coverage heuristic routing in preference accuracy."
+  - id: C4-H1
+    status: preregistered_untested
+    statement: "FACET-PREF improves natural preference-pair candidate co-support by at least 0.02 over the fixed-budget single-centroid hybrid with a paired lower bound above zero."
+  - id: C4-H2
+    status: preregistered_untested
+    statement: "FACET-PREF improves strict preference-consistent exposure@10 by at least 0.005 over both the single-centroid hybrid and selected BPR with paired lower bounds above zero."
+  - id: C4-H3
+    status: preregistered_untested
+    statement: "FACET-PREF is non-inferior to the single-centroid hybrid in NDCG@10 and satisfies the 1.25x p95 latency budget."
 
 experiments:
   proxy_metric: "Temporal full-catalog NDCG@10"
@@ -89,8 +98,8 @@ experiments:
       external_verification_complete: false
       failed_gates: [G1, G3, G5, G9, G10]
   gate:
-    status: cycle4_phase2_not_locked
-    rule: "FACET-PREF's fresh cohort, fixed-budget estimands, controls, and all-or-nothing gate must be committed before any successor outcome is evaluated."
+    status: cycle4_phase2_locked_phase3_source_pending
+    rule: "FACET-PREF is promising only if the source-bound external verifier recomputes every preregistered G1-G9 gate as true; any failure kills the method and forbids Phase 5."
 
 outer_loop:
   cycle: 4

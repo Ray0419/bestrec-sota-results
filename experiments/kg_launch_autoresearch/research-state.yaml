@@ -77,13 +77,13 @@ hypotheses:
     priority: medium
   - id: H5
     statement: "A present Wikidata snapshot exposes a material fraction of entity-to-entity facts that were not observable at the MIND recommendation cutoff."
-    status: active
+    status: supported_structurally
     motivation: "This tests the exact external-KG transaction-time limitation that Amazon snapshots cannot identify."
     parent: null
     priority: high
   - id: H6
     statement: "Point-in-time censoring of Wikidata facts materially changes knowledge-aware MIND rankings or model order under strict historical evaluation."
-    status: pending
+    status: active
     motivation: "A structural drift result is not publication-grade until it changes recommendation outcomes."
     parent: H5
     priority: high
@@ -98,7 +98,7 @@ experiments:
   proxy_metric: "H1 primary: conventional-minus-launch prefix-linkability gap in percentage points; H2 primary: fractional loss of KG Recall@20/NDCG@20 lift under launch-safe inputs."
   baseline_value: 0
   best_value: -2.6749611197511625
-  total_runs: 3
+  total_runs: 4
   trajectory:
     - run: "h1_launch_support/run_001"
       classification: "confirmatory implementation-invalidity adjudication"
@@ -115,11 +115,16 @@ experiments:
       value: 0.24361509827878206
       secondary_value: 0.75
       verdict: "INCONCLUSIVE: 22/50 historical queries rate-limited; subset estimates inadmissible"
+    - run: "h5_bitemporal_drift/run_003"
+      classification: "confirmatory structural POC, transport-corrected"
+      value: 0.24942058519879862
+      secondary_value: 1.0
+      verdict: "ADVANCE_H5_TO_OUTCOME_POC"
 
 outer_loop:
-  cycle: 1
-  last_direction: "H1 launch-time graph-support overstatement"
-  last_reflection: "H1 failed its locked gate. H4 was then eliminated before outcome compute because generic semantic fallback and support stratification are occupied and the natural unlinked outcome cohort is too small. The new active loop is H5: directly reconstruct external-KG transaction-time drift on MIND and kill it unless a locked structural gate passes."
+  cycle: 3
+  last_direction: "H5 bitemporal external-KG transaction-time drift"
+  last_reflection: "H5 passed its locked structural gate on a complete fresh replay: 24.94 percent of weighted present-snapshot facts were absent at the 2019 cutoff and every selected news item was attached to an affected entity. This is not yet outcome evidence. H6 is active and must first pass a label-blind candidate-score/rank coverage gate before click outcomes are inspected."
 
 workspace:
   findings: "findings.md"

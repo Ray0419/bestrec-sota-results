@@ -51,13 +51,23 @@ generic content fallback are already occupied; a positive BLaIR fallback test
 would not isolate a new KG mechanism. H4 is retained only as a diagnostic and
 receives no outcome compute.
 
-### H5 active pivot: external-KG transaction time
+### H5 confirmatory structural result: supported
 
 MIND-small provides timestamped impressions and Wikidata-linked news entities,
 allowing a direct bounded comparison between the facts observable at the 2019
 cutoff and a present Wikidata snapshot. This addresses a limitation Amazon
-metadata cannot test. The H5 sample and effect gates are locked before any
-historical/current fact-set comparison.
+metadata cannot test. On the complete fresh `run_003` replay, all 50 historical
+revisions resolved and all registered sanity checks passed. The
+news-frequency-weighted current-only edge fraction was 0.24942, and all 12,060
+selected news items were attached to an entity with at least one current-only
+fact. Both locked structural gates passed.
+
+The drift remained large after an exploratory label-blind restriction to the
+1,091 relation IDs supplied by MIND: the weighted current-only fraction was
+0.23718 and all 50 sampled entities remained affected. This does not show that
+the changed facts alter recommendation rankings. H6 is now active: a locked
+label-blind coverage audit must first establish that historical versus present
+facts change enough candidate scores to justify an outcome POC.
 
 ## Patterns and Insights
 
@@ -82,8 +92,8 @@ historical/current fact-set comparison.
 
 ## Optimization Trajectory
 
-H1 was refuted by `run_002`; H4 was eliminated before outcome compute. H5 is
-the active direction. Broad historical
+H1 was refuted by `run_002`; H4 was eliminated before outcome compute. H5
+passed its structural gate, and H6 is the active direction. Broad historical
 point-in-time replay is not a novel algorithm after the GraphMatch collision.
 Any surviving contribution must be narrower than generic content fusion,
 support gating, or graph replay and must be locked before an outcome run.

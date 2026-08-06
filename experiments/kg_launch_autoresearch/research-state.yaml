@@ -71,9 +71,27 @@ hypotheses:
     priority: high
   - id: H4
     statement: "If H1 or H2 fails, attribute-linkability stress testing will reveal a distinct failure on cold-exclusive entities that supports an open-vocabulary fallback module."
-    status: active
+    status: eliminated_before_outcome
     motivation: "Predeclared pivot; avoids rescuing a failed provenance claim by metric shopping."
     parent: null
+    priority: medium
+  - id: H5
+    statement: "A present Wikidata snapshot exposes a material fraction of entity-to-entity facts that were not observable at the MIND recommendation cutoff."
+    status: active
+    motivation: "This tests the exact external-KG transaction-time limitation that Amazon snapshots cannot identify."
+    parent: null
+    priority: high
+  - id: H6
+    statement: "Point-in-time censoring of Wikidata facts materially changes knowledge-aware MIND rankings or model order under strict historical evaluation."
+    status: pending
+    motivation: "A structural drift result is not publication-grade until it changes recommendation outcomes."
+    parent: H5
+    priority: high
+  - id: H7
+    statement: "A bitemporal support-shift risk estimator improves over point-in-time snapshot-only training and matched random relation masking."
+    status: pending_novelty_constrained
+    motivation: "GraphMatch kills broad replay novelty; only external-KG transaction-time support matching plus a formal risk estimator remains potentially algorithmic."
+    parent: H6
     priority: medium
 
 experiments:
@@ -96,7 +114,7 @@ experiments:
 outer_loop:
   cycle: 1
   last_direction: "H1 launch-time graph-support overstatement"
-  last_reflection: "H1 failed its locked gate in the opposite direction: launch-prefix linkability was 63.50 percent versus 60.82 percent for bottom-frequency completed-graph items. Future catalog support added only 6.08 percent, below the 20 percent gate. Do not run H2 as a rescue; activate H4 and require a new locked mechanism."
+  last_reflection: "H1 failed its locked gate. H4 was then eliminated before outcome compute because generic semantic fallback and support stratification are occupied and the natural unlinked outcome cohort is too small. The new active loop is H5: directly reconstruct external-KG transaction-time drift on MIND and kill it unless a locked structural gate passes."
 
 workspace:
   findings: "findings.md"

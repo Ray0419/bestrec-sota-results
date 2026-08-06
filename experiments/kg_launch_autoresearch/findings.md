@@ -43,6 +43,22 @@ prefix-visible warm item, and 4.93 percent have no eligible attribute at all.
 This motivates the predeclared H4 only if a non-generic mechanism and outcome
 gain can be demonstrated.
 
+### H4 literature/feasibility gate: eliminated
+
+The natural frozen-cutoff outcome cohort contains only 355 evaluable unlinked
+pairs across 278 users. More importantly, semantic-support stratification and
+generic content fallback are already occupied; a positive BLaIR fallback test
+would not isolate a new KG mechanism. H4 is retained only as a diagnostic and
+receives no outcome compute.
+
+### H5 active pivot: external-KG transaction time
+
+MIND-small provides timestamped impressions and Wikidata-linked news entities,
+allowing a direct bounded comparison between the facts observable at the 2019
+cutoff and a present Wikidata snapshot. This addresses a limitation Amazon
+metadata cannot test. The H5 sample and effect gates are locked before any
+historical/current fact-set comparison.
+
 ## Patterns and Insights
 
 - Algorithmic complexity is not the current bottleneck: LightKG-style simplification and KG4RecEval both weaken the case for another attention or denoising block.
@@ -66,7 +82,8 @@ gain can be demonstrated.
 
 ## Optimization Trajectory
 
-H1 was refuted by `run_002`; H4 is the active direction. Broad historical
+H1 was refuted by `run_002`; H4 was eliminated before outcome compute. H5 is
+the active direction. Broad historical
 point-in-time replay is not a novel algorithm after the GraphMatch collision.
 Any surviving contribution must be narrower than generic content fusion,
 support gating, or graph replay and must be locked before an outcome run.

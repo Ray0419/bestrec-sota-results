@@ -65,11 +65,13 @@ warm-user PoC; it makes no causal, fairness, or counterfactual-exposure claim.
 - Allocate consecutive groups to `A=60%`, `R=20%`, `V=10%`, and sealed `T=10%`
   by nearest cumulative event count, breaking cutoff ties toward the earlier
   group. Adjacent nonempty blocks must have strict timestamp order.
-- Structural eligibility uses counts, times, catalog capacity, and `A` only:
+- Structural eligibility uses counts, times, semantic-catalog capacity, and `A` only:
   at least 80 total events, at least four timestamp groups, at least 20 `A`
-  events, at least five distinct `A` items rated at least 4, and at least 700
-  catalog items unseen at the longest prefix. No `R/V/T` item identity, rating,
-  positive count, pair, or candidate outcome may affect cohort membership.
+  events, at least five distinct `A` items rated at least 4, and the conservative
+  count-only bound `|C_sem|-(|A|+|R|+|V|) >= 700`. This guarantees at least 700
+  unseen semantic items without reading a later-block item identity. No `R/V/T`
+  item identity, rating, positive count, pair, or candidate outcome may affect
+  cohort membership.
 - Order eligible users by
   `SHA256("20260835:{user_id}")`, then numeric user ID, and take exactly 2,000.
   Fewer than 2,000 eligible users fails closed.
@@ -85,13 +87,26 @@ target access.
 
 ## Fixed preference and relevance estimands
 
-After a stage's complete target-blind query, mask, candidate, score, and ranking
-manifests are durable and hashed, form natural pairs from that stage only:
+For training block `R`, publish/hash the complete method-independent prefix
+descriptor, BPR branch, semantic-domain basis, raw query, cutoff identity/score,
+and references to the immutable matrices before joining `R`; aligned candidates
+cannot exist until those pairs train the adapters. For `V/T`, the target-blind
+query, prefix history, BPR branch, candidate IDs, and raw candidate component
+scores must be durable before labels are joined. Together with the earlier
+published immutable matrices/indexes and the source-bound config/protocol (plus
+the pre-`T` frozen-choice artifact for selected alpha), these files form the
+replay-complete closure basis. The independent verifier must reconstruct the
+domains, every fused ranking, and every top-10 list. Deterministically redundant
+full-row/rank arrays need not be stored a second time.
+Then form natural pairs from the corresponding stage only:
 
 - pair distinct items whose rating gap is at least 2.0;
 - the higher-rated endpoint is preferred;
-- cap at 100 pairs per user by ascending
+- for `R`, cap at 32 pairs per user and 30,000 globally by round-aware user
+  interleaving; for `V/T`, cap at 100 pairs per user, always by ascending
   `SHA256("20263503:{user_id}:{low_item_id}:{high_item_id}")`;
+- `low_item_id/high_item_id` mean ascending numeric movie IDs; pair identity is
+  stage-qualified and repeated user/movie rows fail closed;
 - pair IDs and directions are fixed across methods and seeds;
 - bootstrap users, never pair rows.
 
@@ -124,9 +139,11 @@ items remain unknown.
 ## Registered controls
 
 Every semantic control shares the exact same BPR branch, complement mask,
-candidate quotas, item matrices/indexes, optimizer steps, parameter count,
-initialization family, pair presentations, clipping, checkpoint rule, fusion
-coefficient, ranking rule, and latency instrumentation.
+candidate quotas, item matrices/indexes, parameter schema, fusion coefficient,
+ranking rule, and latency instrumentation. Every *trainable* semantic control
+also shares optimizer steps, initialization family, pair presentations,
+clipping, and checkpoint rule; the raw hybrid is the unchanged zero-output
+artifact and performs no optimizer update.
 
 1. BPR only.
 2. Raw SentenceTransformer exact-complement hybrid.
@@ -181,7 +198,8 @@ outcome may select an epoch, loss weight, margin, boundary, cohort, or gate.
 7. **G7 — seed stability.** All seeds `{20260835,20260836,20260837}` complete
    and enter the aggregate. At least two independently show positive admission
    gain over raw and order-only, positive sPCE gain over raw, and NDCG delta at
-   least `-0.0002`. No seed's NDCG delta is below `-0.001`.
+   least `-0.0002` versus `raw_hybrid`. No seed's raw-hybrid NDCG delta is below
+   `-0.001`.
 8. **G8 — serving latency.** For 512 prospectively hash-selected requests,
    one CPU thread, resident matrices, 32 warm-ups, seven AB/BA-interleaved
    repetitions, and per-request medians, worst-seed CABLE p95 is at most
@@ -196,8 +214,14 @@ outcome may select an epoch, loss weight, margin, boundary, cohort, or gate.
    recursive hashes all verify. A separately source-bound post-exit verifier
    recomputes G1-G9 before publishing the sole authoritative marker.
 
-Use a paired 10,000-draw user-cluster percentile bootstrap at alpha 0.05 with
-seed `20263504`, after averaging the three optimization seeds within user.
+Use a paired 10,000-draw user-cluster two-sided percentile interval (2.5th and
+97.5th percentiles) with seed `20263504`, after averaging the three optimization
+seeds within user. The pre-`T` power audit is a registered exception: for each
+comparison, retain the finite common-user difference vector, subtract its mean,
+add the registered effect without clipping, and run 1,000 outer resamples. Each
+outer sample is tested with 1,000 inner user-bootstrap draws and the same 2.5th-
+percentile-lower-bound-above-zero rule. All four comparison detection fractions
+must be at least 0.80.
 
 ```text
 PROMISING = G1 & G2 & G3 & G4 & G5 & G6 & G7 & G8 & G9
@@ -223,4 +247,3 @@ only a fully verified `PROMISING=true` authorizes Phase 5.
 - The MovieLens-scale p95 result is a PoC latency claim. A later paper must
   separately test filtered ANN against the exact oracle at substantially larger
   catalogs before making a scale claim.
-

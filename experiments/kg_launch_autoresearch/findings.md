@@ -18,6 +18,31 @@ The candidate contribution is therefore a launch-safe evaluation and a lightweig
 
 These are bootstrap observations, not yet outcome evidence.
 
+### H1 confirmatory result: refuted
+
+The corrected deterministic run used 67,938 interacted items with parsable
+listing dates, 6,430 future-born zero-prefix-interaction items, and 48,083
+prefix-warm items. All locked sanity checks passed and the PowerShell error
+stream was empty.
+
+- Launch-cold link rate against the prefix graph: 0.63499.
+- Launch-cold link rate against the completed graph: 0.69580.
+- Bottom-frequency link rate against its completed graph: 0.60824.
+- Deterministic-random link rate against its completed graph: 0.60264.
+- Locked total support gap: -2.675 percentage points, below the +10 pp gate.
+- Locked future-graph-only rate: 0.06081, below the 0.20 gate.
+
+The hypothesized overstatement of graph support is therefore false in Digital
+Music under the locked construction. In fact, launch items were slightly more
+exact-linkable than either synthetic cohort. No outcome experiment should be
+used to rescue H1.
+
+The negative result still exposes a different measurable population: 36.50
+percent of real launch items have no exact typed attribute link to a
+prefix-visible warm item, and 4.93 percent have no eligible attribute at all.
+This motivates the predeclared H4 only if a non-generic mechanism and outcome
+gain can be demonstrated.
+
 ## Patterns and Insights
 
 - Algorithmic complexity is not the current bottleneck: LightKG-style simplification and KG4RecEval both weaken the case for another attention or denoising block.
@@ -41,5 +66,7 @@ These are bootstrap observations, not yet outcome evidence.
 
 ## Optimization Trajectory
 
-No confirmatory experiment has run. H1 is next; its metric and decision gate will be committed before execution.
-
+H1 was refuted by `run_002`; H4 is the active direction. Broad historical
+point-in-time replay is not a novel algorithm after the GraphMatch collision.
+Any surviving contribution must be narrower than generic content fusion,
+support gating, or graph replay and must be locked before an outcome run.

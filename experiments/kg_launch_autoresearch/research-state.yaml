@@ -53,25 +53,25 @@ literature:
 hypotheses:
   - id: H1
     statement: "Conventional random or low-frequency cold splits overstate graph support because future-born zero-interaction items have materially less prefix-visible warm-graph connectivity than synthetic cold items."
-    status: active
+    status: refuted
     motivation: "If false, launch-safety is unlikely to produce a publishable KG-specific limitation."
     parent: null
     priority: high
   - id: H2
     statement: "At least 30 percent of apparent KG ranking lift disappears, or the model order reverses, when post-cutoff and endogenous relations are removed in at least two domains."
-    status: pending
+    status: not_advanced
     motivation: "This is the decisive outcome-level evidence for a Tier-A evaluation contribution."
     parent: H1
     priority: high
   - id: H3
     statement: "A lightweight availability-gated inductive KG residual improves launch-safe full-catalog ranking over both content-only and always-on KG fusion without retraining the warm recommender."
-    status: pending
+    status: eliminated_as_broad_claim
     motivation: "A modular patch is more valuable than an audit alone and can be runtime efficient."
     parent: H2
     priority: high
   - id: H4
     statement: "If H1 or H2 fails, attribute-linkability stress testing will reveal a distinct failure on cold-exclusive entities that supports an open-vocabulary fallback module."
-    status: pending
+    status: active
     motivation: "Predeclared pivot; avoids rescuing a failed provenance claim by metric shopping."
     parent: null
     priority: medium
@@ -79,14 +79,24 @@ hypotheses:
 experiments:
   proxy_metric: "H1 primary: conventional-minus-launch prefix-linkability gap in percentage points; H2 primary: fractional loss of KG Recall@20/NDCG@20 lift under launch-safe inputs."
   baseline_value: 0
-  best_value: null
-  total_runs: 0
-  trajectory: []
+  best_value: -2.6749611197511625
+  total_runs: 2
+  trajectory:
+    - run: "h1_launch_support/run_001"
+      classification: "confirmatory implementation-invalidity adjudication"
+      value: -2.6749611197511625
+      secondary_value: 0.060808709175738773
+      verdict: "inconclusive only because code added a non-protocol zero-parse-failure gate"
+    - run: "h1_launch_support/run_002"
+      classification: "deterministic corrected confirmatory adjudication"
+      value: -2.6749611197511625
+      secondary_value: 0.060808709175738773
+      verdict: "REFUTE_H1_AND_PIVOT_H4"
 
 outer_loop:
-  cycle: 0
-  last_direction: null
-  last_reflection: "Bootstrap literature audit converged on launch-time provenance and linkability; all generic KG fusion ideas were rejected as crowded."
+  cycle: 1
+  last_direction: "H1 launch-time graph-support overstatement"
+  last_reflection: "H1 failed its locked gate in the opposite direction: launch-prefix linkability was 63.50 percent versus 60.82 percent for bottom-frequency completed-graph items. Future catalog support added only 6.08 percent, below the 20 percent gate. Do not run H2 as a rescue; activate H4 and require a new locked mechanism."
 
 workspace:
   findings: "findings.md"
@@ -95,4 +105,3 @@ workspace:
   experiments_dir: "experiments/"
   to_human_dir: "to_human/"
   paper_dir: "paper/"
-

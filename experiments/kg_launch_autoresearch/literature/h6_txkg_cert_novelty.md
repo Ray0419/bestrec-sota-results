@@ -128,6 +128,50 @@ combination of transaction-time-derived, correlated source/relation/edit-group
 constraints with a downstream cold-start ranking certificate and selective KG
 residual.
 
+## Preferred stronger variant: revision-poset certificate
+
+Actual revision histories provide more structure than an unordered
+cardinality budget. Let each atomic edit event `e` have a signed additive
+increment `c_e` to a held-fixed pairwise recommendation margin. If `e < f`
+means that edit `f` can occur only after `e`, then every feasible incomplete
+history is a down-set (order ideal) of the free edit poset after definitely-in
+and definitely-out events are fixed. The exact adverse margin is
+
+`m_lower = m_0 + min_{I is an ideal} sum_{e in I} c_e`.
+
+This is a minimum-weight closure problem. Equivalently negate the weights and
+solve a maximum closure with an `s-t` min-cut, using an infinite-capacity arc
+from each dependent edit to its prerequisite. For a single revision chain it
+reduces to one prefix scan:
+
+`m_lower = m_0 + min_t sum_{r <= t} c_r`.
+
+The causal constraint can make a certificate much less vacuous than arbitrary
+masking. For event increments `(+100,-90,-90)`, the worst feasible prefix is
+`-80`; an unconstrained two-edge adversary incorrectly selects both negative
+events and reports `-180`. A nominal Top-K set is invariant in every feasible
+history exactly when every selected-versus-unselected worst-case margin is
+strictly positive. A failed strict inequality is uncertified, and the min-cut
+itself supplies an interpretable adverse version witness.
+
+The closure/min-cut result is classical and **not** a novelty claim; see
+[Picard (1976)](https://doi.org/10.1287/mnsc.22.11.1268). Consistent global
+snapshots in distributed systems already use causal down-sets and network-flow
+optimization, and partial-order/uncertain-database Top-K is mature; see
+[Amarilli et al. (ICDT 2017)](https://doi.org/10.4230/LIPIcs.ICDT.2017.5).
+The 2026 [risk-controlled cascading KG-update framework](https://aclanthology.org/2026.findings-acl.2111/)
+is a further near boundary because it models dependency-aware update cascades
+with conformal guarantees, although it does not certify downstream
+recommendation ranks across transaction-time-consistent versions.
+
+The remaining candidate contribution is therefore only the package:
+revision-provenance-consistent cuts, exact downstream cold-start Top-K margins,
+and a certificate-triggered additive KG residual. It requires an exactly
+event-additive residual. Normalized embeddings, degree recomputation, arbitrary
+cardinality constraints, mutually exclusive edits, and nonlinear message
+passing do not inherit the one-min-cut theorem. If the cutoff and every
+transaction timestamp are already known, exact replay dominates this module.
+
 ## Identifiability limit
 
 If two KG histories share the same current snapshot but have different cutoff

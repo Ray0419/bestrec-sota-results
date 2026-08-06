@@ -88,9 +88,9 @@ hypotheses:
     parent: H5
     priority: high
   - id: H7
-    statement: "A bitemporal support-shift risk estimator improves over point-in-time snapshot-only training and matched random relation masking."
+    statement: "A revision-poset-constrained additive KG residual uses exact min-closure pairwise margins to improve worst-snapshot cold-start ranking and certified Top-K coverage over current-snapshot, stable-intersection, and matched random-mask baselines."
     status: pending_novelty_constrained
-    motivation: "GraphMatch kills broad replay novelty; only external-KG transaction-time support matching plus a formal risk estimator remains potentially algorithmic."
+    motivation: "GraphMatch kills broad replay novelty, and minimum closure is classical; only the package of real transaction-revision provenance, exact downstream rank certificates, and selective residual fallback remains potentially algorithmic."
     parent: H6
     priority: medium
 

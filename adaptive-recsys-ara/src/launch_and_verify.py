@@ -11,6 +11,7 @@ external completion marker.
 from __future__ import annotations
 
 import argparse
+import ctypes
 import hashlib
 import json
 import os
@@ -42,6 +43,35 @@ def sha256_file(path: Path) -> str:
         while block := handle.read(1024 * 1024):
             digest.update(block)
     return digest.hexdigest()
+
+
+def pid_is_running(pid: int) -> bool:
+    """Return whether a PID is active without signalling or mutating it."""
+    if pid <= 0:
+        return False
+    if os.name == "nt":
+        process_query_limited_information = 0x1000
+        still_active = 259
+        kernel32 = ctypes.windll.kernel32
+        handle = kernel32.OpenProcess(
+            process_query_limited_information, False, int(pid)
+        )
+        if not handle:
+            return False
+        try:
+            exit_code = ctypes.c_ulong()
+            if not kernel32.GetExitCodeProcess(handle, ctypes.byref(exit_code)):
+                raise OSError("GetExitCodeProcess failed")
+            return int(exit_code.value) == still_active
+        finally:
+            kernel32.CloseHandle(handle)
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    return True
 
 
 def publish_json_exclusive(path: Path, value: Any) -> None:
@@ -150,8 +180,12 @@ def main(argv: Sequence[str] | None = None) -> int:
             )
         candidate_path = candidates[0]
         candidate = json.loads(candidate_path.read_text(encoding="utf-8"))
-        if int(candidate["pid"]) != child_pid:
-            raise RuntimeError("Completion candidate PID does not match child PID")
+        runner_pid = int(candidate["pid"])
+        # Some Windows venv launchers create a short-lived shim process, so the
+        # waited child PID need not equal the actual interpreter PID recorded by
+        # the runner. The completion invariant is that both have exited.
+        if pid_is_running(runner_pid):
+            raise RuntimeError(f"Runner PID is still active after child exit: {runner_pid}")
         lock_path = Path(candidate["runner_lock"])
         if lock_path.exists():
             raise RuntimeError(f"Runner lock still exists after exit: {lock_path}")
@@ -182,9 +216,11 @@ def main(argv: Sequence[str] | None = None) -> int:
             {
                 "schema": "ripple-external-completion-v1",
                 "verified_utc": utc_now(),
-                "child_pid": child_pid,
+                "launcher_child_pid": child_pid,
                 "child_exit_code": return_code,
                 "child_process_has_exited": True,
+                "runner_pid": runner_pid,
+                "runner_process_has_exited": True,
                 "runner_lock_released": True,
                 "candidate_marker": candidate_path.name,
                 "candidate_marker_sha256": sha256_file(candidate_path),

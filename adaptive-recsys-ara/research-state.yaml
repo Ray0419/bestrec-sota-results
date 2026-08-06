@@ -1,10 +1,10 @@
 # Research State — Adaptive Recommendation Research Sprint
 
 project:
-  title: "RIPPLE: Retrieval-Index-conditioned Preference Policy Learning for Efficient Recommendation"
-  question: "Pending Phase 2 redesign after RIPPLE v1 failed the PoC gate."
+  title: "CAPER: Coverage-Anchored Preference-Exception Reranking"
+  question: "Can a SimPO-derived preference residual on the actual semantic-collaborative FAISS union improve relevance and preference accuracy over strong BPR while a hard per-request collaborative-regret projection preserves support, ranking safety, and latency?"
   status: active
-  phase: 1_identify_limitations_cycle_2
+  phase: 4_poc_validation_cycle_2
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -25,21 +25,22 @@ literature:
     - "Implicit feedback is censored by exposure and position."
     - "Fresh preference updates conflict with catalog re-embedding and index rebuild cost."
     - "Semantic/LLM alignment remains expensive at online inference time."
+    - "Preference residuals lack a hard strong-baseline regret floor on the actual served candidate union."
   evidence_gaps:
     - "No exhaustive novelty proof exists for the full RIPPLE component intersection."
     - "PoC evidence is required before any benefit claim."
 
 hypotheses:
-  - id: H1
-    statement: "Query-only SimPO improves temporal NDCG@10 and Recall@50 over a frozen history-centroid query."
-  - id: H2
-    statement: "FAISS-boundary hard confusions improve NDCG@10 over matched random-negative and exact-hard-negative adaptation."
-  - id: H3
-    statement: "Item-vector and index fingerprints remain unchanged across preference training."
-  - id: H4
-    statement: "Pre-search ambiguity routing preserves candidate quality within a 1.25x p95 latency budget."
-  - id: H5
-    statement: "RIPPLE remains within 10% relative NDCG@10 of a train-only BPR-MF baseline."
+  - id: C2-H1
+    statement: "CAPER improves NDCG@10 over strong BPR and every matched residual/fusion ablation."
+  - id: C2-H2
+    statement: "CAPER improves held-out explicit preference-pair accuracy by at least three percentage points over BPR."
+  - id: C2-H3
+    statement: "The collaborative candidate set is a subset of the served union for every request."
+  - id: C2-H4
+    statement: "Hard collaborative-regret projection prevents material Recall@10 loss and excessive dislike intrusion."
+  - id: C2-H5
+    statement: "Two immutable FAISS searches plus residual projection stay within the matched hybrid p95 budget."
 
 experiments:
   proxy_metric: "Temporal full-catalog NDCG@10"
@@ -53,8 +54,8 @@ experiments:
       bpr_ndcg_at_10: 0.06255894164014639
       gate_passed: false
   gate:
-    status: failed_design_killed
-    rule: "All eight criteria in research-question.md must pass; otherwise kill RIPPLE and return to Phase 1."
+    status: cycle2_protocol_locked_outcome_unopened
+    rule: "All nine CAPER criteria in research-question-cycle2.md must pass; otherwise kill CAPER and return to Phase 1."
 
 outer_loop:
   cycle: 2

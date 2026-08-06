@@ -2,7 +2,7 @@
 
 ## Research Question
 
-At a fixed 200+200 vector-retrieval budget and with immutable catalog embeddings and indexes, can macro-balanced, SimPO-inspired reference-free alignment of facet-conditioned user queries improve natural preference-pair co-support by at least 0.02 over a single-centroid hybrid and strict preference-consistent exposure@10 by at least 0.005 over both that hybrid and selected BPR, while remaining non-inferior to the hybrid in NDCG@10 and within 1.25x p95 latency?
+Pending prospective Phase-2 lock for CABLE-PREF. The intended question asks whether reference-free training against the actual eligible semantic admission boundary can improve preferred-item admission and strict preference-consistent exposure at an exact 200+200 output budget, without relevance or latency regression.
 
 ## Current Understanding
 
@@ -17,6 +17,8 @@ CAPER v1 is also a verified negative result. It preserved candidate support, Rec
 RAVEL v1 is the third killed design. Its source-bound runner produced `+0.000146` user-macro preference gain versus the required `+0.005`, `8.57%` coverage versus the `10%` floor, only `45.67` seed-averaged accepted-and-pair-bearing requests versus `100`, and `1.543x` worst-seed p95 overhead versus `1.25x`. G1, G3, G5, and G9 failed internally. The post-exit verifier also failed closed on nonempty SentenceTransformer progress-bar stderr, so no external completion marker exists and G10 fails. RAVEL was killed without rerun or repair; Phase 5 remains prohibited.
 
 FACET-PREF v1 is the fourth killed design. After all three-seed R-only training completed, the first target-blind V candidate construction raised `The fixed depth-700 collaborative row exhausted before 200`. Because the protocol required exactly 200 unseen BPR candidates and prohibited adaptive deeper search, this is a direct feasibility/G1 failure. V relevance, V preference, and T were never opened. The design was killed without rerun or a post-outcome depth patch.
+
+Cycle-5 Phase 1 selected CABLE-PREF. Exact masked BPR top-200 is followed by exact masked semantic top-200 on the complement of history and the BPR branch, guaranteeing 400 unique unseen candidates for every eligible request. A small query adapter is trained with an admission loss against the detached eligible semantic cutoff plus an order-only reference-free loss. This is a hypothesis, not a positive result.
 
 ## Patterns and Insights
 
@@ -33,6 +35,9 @@ FACET-PREF v1 is the fourth killed design. After all three-seed R-only training 
 - Positive-item candidate recall and preference-pair co-support are different retrieval properties. FACET-PREF must establish both before attributing any top-10 change to aligned facet retrieval.
 - Multi-interest retrieval, SimPO, and fixed-budget vector fusion are individually occupied. The only candidate novelty is macro-balanced reference-free alignment of facet queries before ANN with immutable item geometry and end-to-end preference/support/latency evaluation.
 - An ANN depth fixed before exclusion does not imply a fixed candidate budget after excluding an arbitrarily long prefix. Candidate feasibility must be guaranteed by the operator or by a prospective history bound; it cannot be treated as a harmless implementation detail.
+- Correctness and scalable latency must be separated: exact masked top-k defines the quality oracle, while filtered ANN or certified probing is evaluated independently for oracle recall, work, and tail latency.
+- The next learnable target should be the actual eligible branch-admission cutoff. Pairwise order can improve without moving a preferred item into the fixed candidate set.
+- Defining the semantic branch on the complement of history plus the admitted collaborative branch guarantees that every semantic slot expands support rather than duplicating BPR.
 
 ## Lessons and Constraints
 
@@ -58,4 +63,4 @@ FACET-PREF v1 is the fourth killed design. After all three-seed R-only training 
 | 2 | CAPER v1: BPR+semantic union, contradiction-focused SimPO residual, hard BPR-regret projection | Dead end. Passed support, Recall, dislike, latency, and integrity; failed material relevance, matched mechanism, preference accuracy, and seed stability. |
 | 3 | RAVEL v1: finite preference proposal plus validation-gated exact fallback | Dead end. Passed relevance non-inferiority, selective mechanism, safety, support/fallback, and seed stability; failed strong default, material preference gain, coverage/support, relative latency, and external integrity. |
 | 4 | FACET-PREF: macro-balanced preference-aligned facet queries before fixed-budget ANN | Dead end. Fixed depth-700 BPR retrieval exhausted before 200 unseen candidates during target-blind V construction; killed before V/T outcomes. |
-| 5 | Successor with construction-level candidate feasibility | Phase 1 active. Direction and question not yet selected. |
+| 5 | CABLE-PREF: exact masked complement retrieval plus admission-boundary query alignment | Phase 1 complete; Phase 2 question and gate pending. No outcomes opened. |

@@ -1,10 +1,10 @@
 # Research State — Adaptive Recommendation Research Sprint
 
 project:
-  title: "Cycle 5 successor to FACET-PREF"
-  question: "Pending the cycle-5 Phase-1 limitation analysis and direction selection."
+  title: "CABLE-PREF: Cardinality-Assured Boundary Learning for Preference-aligned retrieval"
+  question: "Pending the cycle-5 Phase-2 prospective question and gate lock."
   status: active
-  phase: 1_identify_limitations_cycle_5
+  phase: 2_design_research_question_cycle_5
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -36,6 +36,8 @@ literature:
     - "Single-centroid semantic queries erase multi-modal user preference geometry."
     - "Positive-item candidate recall does not reveal natural preference-pair co-support."
     - "Post-filter fixed-depth ANN cannot guarantee an exact unseen-candidate budget for long user histories."
+    - "Pairwise preference margins do not directly train a preferred item to cross the deployed eligible branch-admission cutoff."
+    - "Independent retrieval branches waste fixed candidate slots through overlap unless complement ownership is enforced at selection time."
   evidence_gaps:
     - "The RAVEL component intersection is only a candidate whitespace, not an exhaustive novelty proof."
     - "PoC evidence is required before any benefit claim."
@@ -112,13 +114,13 @@ experiments:
       gate_passed: false
       failed_gates: [G1]
   gate:
-    status: cycle5_phase1_active_phase5_forbidden
+    status: cycle5_phase2_active_phase5_forbidden
     rule: "A successor may proceed to Phase 5 only after a prospectively locked, source-bound PoC externally verifies every registered gate; any failure kills that design and returns to Phase 1."
 
 outer_loop:
   cycle: 5
-  last_direction: "FACET_PREF_KILLED_ON_FIXED_DEPTH_CANDIDATE_EXHAUSTION"
-  last_reflection: "FACET-PREF failed before validation labels because post-filtering a fixed depth-700 BPR row could not guarantee 200 unseen candidates for a long prefix. Cycle 5 must make candidate feasibility a construction-level invariant without tuning a deeper depth on the consumed cohort."
+  last_direction: "CABLE_PREF_SELECTED_AFTER_CARDINALITY_AND_COLLISION_ANALYSIS"
+  last_reflection: "Exact masked complement retrieval must provide the feasibility invariant; the learnable novelty is admission-boundary alignment of an immutable semantic query, not masked search itself. Phase 2 must preregister this mechanism on a completely unopened dataset."
 
 workspace:
   findings: "findings.md"

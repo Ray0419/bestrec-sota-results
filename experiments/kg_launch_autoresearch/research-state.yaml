@@ -83,28 +83,34 @@ hypotheses:
     priority: high
   - id: H6
     statement: "Point-in-time censoring of Wikidata facts materially changes knowledge-aware MIND rankings or model order under strict historical evaluation."
-    status: phase_a_supported_phase_b_locked_next
+    status: killed_by_confirmatory_outcome_gate
     motivation: "A structural drift result is not publication-grade until it changes recommendation outcomes."
     parent: H5
     priority: high
   - id: H7
     statement: "A bounded-staleness compiler uses real page revision chains to tighten exact interval-robust Top-K certificates over independent-fact masks, enabling certificate-controlled additive KG fusion."
-    status: h7a_draft_redteamed_not_yet_tier_a_algorithm
+    status: not_advanced_after_h6_outcome_kill
     motivation: "H7A is exact only for its declared conservative per-page FIFO fault-model superset and reduces online inference to interval-robust linear Top-K arithmetic. It is a feasibility gate, not a poset/min-cut novelty claim. A stronger H7B requires measured stream partitions or real materialization lineage plus a material certificate gain."
     parent: H6
     priority: medium
   - id: H8
     statement: "Revision-induced cycle-space energy identifies correlated external-KG edit risk that can route an additive cold-start residual beyond degree and independent masking."
-    status: pending_only_if_h6_fails
+    status: eliminated_as_lead_retain_diagnostic_only
     motivation: "The label-blind H5 anchor-fact graph has beta1 214 for current-only edits and zero for historical-only edits; the effect remains beta1 39 after the metadata and anchor robustness restrictions, but no ranking consequence or algorithm value is established."
     parent: H6
     priority: low
+  - id: H9
+    statement: "A regularized Laplacian/Rayleigh cold-item residual can capture global KG paths while provenance-derived Loewner endpoints certify Top-10 invariance to transaction-time revision uncertainty."
+    status: conditional_go_label_blind_poc_next
+    motivation: "The additive H6 kernel changes ranks but misses outcome attribution; H9 tests a globally propagated yet mathematically certifiable module using an exact 50-by-50 Schur complement before any further label access."
+    parent: null
+    priority: high
 
 experiments:
   proxy_metric: "H6 Phase B primary: paired historical-versus-current change in impression-mean nDCG@10 on the exact committed Phase-A cohort; H7 structural primary: exact Top-10 certificate gain over an independent-fact uncertainty superset."
   baseline_value: 0
   best_value: 0.5500209487454029
-  total_runs: 5
+  total_runs: 6
   trajectory:
     - run: "h1_launch_support/run_001"
       classification: "confirmatory implementation-invalidity adjudication"
@@ -131,11 +137,16 @@ experiments:
       value: 0.5500209487454029
       secondary_value: 0.2155237962230188
       verdict: "PASS_COVERAGE_AND_OPEN_LABELS"
+    - run: "h6_ranking_consequence/outcome_run_001"
+      classification: "one-shot confirmatory held-fixed outcome test with exact replay"
+      value: -0.0023676952391595285
+      secondary_value: -0.004304736473329268
+      verdict: "KILL_H6_OUTCOME_DIRECTION"
 
 outer_loop:
-  cycle: 4
-  last_direction: "H6 held-fixed transaction-time snapshot ranking consequence"
-  last_reflection: "H6 Phase A passed decisively and reproducibly without opening labels: 87.57 percent of score vectors, 55.00 percent of total orders, and 21.55 percent of Top-10 sets changed. Phase B is now permitted but must be hash-locked and committed before its one confirmatory label-opening run. In parallel, H7 has a draft label-blind protocol for an exact fixed-point revision-chain certificate; it is not yet locked or executed."
+  cycle: 5
+  last_direction: "H6 confirmatory outcome adjudication; pivot to H9 provenance-Rayleigh certificate"
+  last_reflection: "H6 Phase B was valid and statistically resolved but failed both the prospective practical-magnitude and matched-null attribution gates: current-minus-historical nDCG@10 was -0.0023677 versus a required absolute 0.005, and the matched-null q95 was 0.0027244. H6 and its contingent H7A lead path are killed without rescue tuning. H9 now tests, label-blind, whether a globally propagated regularized-Laplacian scorer can be both revision-sensitive and deterministically certifiable using exact small Schur complements."
 
 workspace:
   findings: "findings.md"

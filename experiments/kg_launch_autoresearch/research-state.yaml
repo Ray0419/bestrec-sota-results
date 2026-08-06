@@ -88,9 +88,9 @@ hypotheses:
     parent: H5
     priority: high
   - id: H7
-    statement: "A revision-poset-constrained additive KG residual uses exact min-closure pairwise margins to improve worst-snapshot cold-start ranking and certified Top-K coverage over current-snapshot, stable-intersection, and matched random-mask baselines."
-    status: prospective_chain_certificate_protocol_drafted
-    motivation: "GraphMatch kills broad replay novelty, and minimum closure is classical; only the package of real transaction-revision provenance, exact downstream rank certificates, and selective residual fallback remains potentially algorithmic."
+    statement: "A bounded-staleness compiler uses real page revision chains to tighten exact interval-robust Top-K certificates over independent-fact masks, enabling certificate-controlled additive KG fusion."
+    status: h7a_draft_redteamed_not_yet_tier_a_algorithm
+    motivation: "H7A is exact only for its declared conservative per-page FIFO fault-model superset and reduces online inference to interval-robust linear Top-K arithmetic. It is a feasibility gate, not a poset/min-cut novelty claim. A stronger H7B requires measured stream partitions or real materialization lineage plus a material certificate gain."
     parent: H6
     priority: medium
   - id: H8

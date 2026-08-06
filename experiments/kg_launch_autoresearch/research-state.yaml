@@ -93,6 +93,12 @@ hypotheses:
     motivation: "GraphMatch kills broad replay novelty, and minimum closure is classical; only the package of real transaction-revision provenance, exact downstream rank certificates, and selective residual fallback remains potentially algorithmic."
     parent: H6
     priority: medium
+  - id: H8
+    statement: "Revision-induced cycle-space energy identifies correlated external-KG edit risk that can route an additive cold-start residual beyond degree and independent masking."
+    status: pending_only_if_h6_fails
+    motivation: "The label-blind H5 anchor-fact graph has beta1 214 for current-only edits and zero for historical-only edits; the effect remains beta1 39 after the metadata and anchor robustness restrictions, but no ranking consequence or algorithm value is established."
+    parent: H6
+    priority: low
 
 experiments:
   proxy_metric: "H6 Phase A primary: historical-versus-current shared-fact score-vector and rank-change rates without click labels; Phase B primary, if opened: paired change in impression-mean nDCG@10."

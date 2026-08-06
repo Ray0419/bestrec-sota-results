@@ -98,7 +98,7 @@ experiments:
   proxy_metric: "H1 primary: conventional-minus-launch prefix-linkability gap in percentage points; H2 primary: fractional loss of KG Recall@20/NDCG@20 lift under launch-safe inputs."
   baseline_value: 0
   best_value: -2.6749611197511625
-  total_runs: 2
+  total_runs: 3
   trajectory:
     - run: "h1_launch_support/run_001"
       classification: "confirmatory implementation-invalidity adjudication"
@@ -110,6 +110,11 @@ experiments:
       value: -2.6749611197511625
       secondary_value: 0.060808709175738773
       verdict: "REFUTE_H1_AND_PIVOT_H4"
+    - run: "h5_bitemporal_drift/run_002"
+      classification: "confirmatory structural POC, inconclusive transport failure"
+      value: 0.24361509827878206
+      secondary_value: 0.75
+      verdict: "INCONCLUSIVE: 22/50 historical queries rate-limited; subset estimates inadmissible"
 
 outer_loop:
   cycle: 1

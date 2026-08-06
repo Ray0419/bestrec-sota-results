@@ -1,10 +1,10 @@
 # Research State — Adaptive Recommendation Research Sprint
 
 project:
-  title: "PIVOT: Preference-Informed Vector-partition Offsets for Traversal"
-  question: "On a fresh 600-user temporal MovieLens 10M cohort, can one reference-free user-to-partition potential improve FutureLikedRecall@100 and fixed-pair CandidatePreferenceExposure@100 by at least 0.010 over equal-work balanced geometric FAISS retrieval while preserving aligned-oracle fidelity, raw-exact relevance, and serving latency?"
+  title: "Cycle 7: Successor direction after PIVOT structural-integrity termination"
+  question: "TBD after fresh Phase-1 limitation analysis"
   status: active
-  phase: 4_poc_cycle_6_authorized_unopened
+  phase: 1_identify_limitations_cycle_7
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -92,20 +92,23 @@ hypotheses:
     status: falsified
     statement: "The batched full-row FAISS candidate path agrees exactly with the canonical matrix lexsort oracle on every real target-blind request."
   - id: C6-H1
-    status: preregistered_source_locked_unopened
+    status: not_evaluated_project_killed_on_structural_integrity
     statement: "PIVOT improves both FutureLikedRecall@100 and fixed-pair CandidatePreferenceExposure@100 by at least 0.010 over balanced geometric four-shard retrieval at identical search work, with paired lower bounds above zero."
   - id: C6-H2
-    status: preregistered_source_locked_unopened
+    status: not_evaluated_project_killed_on_structural_integrity
     statement: "Reusing one bounded partition potential for both routing and ranking beats route-only, rerank-only, and shuffled-direction controls on both primary metrics."
   - id: C6-H3
-    status: preregistered_source_locked_unopened
+    status: not_evaluated_project_killed_on_structural_integrity
     statement: "PIVOT retains at least 90% aligned-oracle top-100 overlap and 95% of raw-full-exact future-liked recall while meeting the fixed 1,336-slot and registered p95 latency bounds."
+  - id: C6-F1
+    status: falsified
+    statement: "The source-locked structural scan yields exactly 21,931 eligible non-cycle-5 users before any A/R/V/T outcome access."
 
 experiments:
   proxy_metric: "Temporal full-catalog NDCG@10"
   baseline_value: 0.005728564774466464
   best_value: 0.0648460502012084
-  total_runs: 5
+  total_runs: 6
   trajectory:
     - design: "RIPPLE v1"
       status: dead_end
@@ -148,21 +151,24 @@ experiments:
       gate_passed: false
       failed_gates: [G1, G9]
     - design: "PIVOT v1"
-      status: source_locked_authorized_unopened
+      status: dead_end
       target_blind_qualification_passed: true
+      termination_stage: "target_blind_structural_cohort_scan"
+      failure: "observed_21928_structurally_eligible_users_vs_locked_21931"
       R_target_opened: false
       validation_opened: false
       test_opened: false
       external_verification_complete: false
-      gate_passed: null
+      gate_passed: false
+      failed_gates: [G9]
   gate:
-    status: cycle6_phase4_one_shot_authorized_phase5_forbidden
+    status: cycle7_phase1_phase5_forbidden
     rule: "A successor may proceed to Phase 5 only after a prospectively locked, source-bound PoC externally verifies every registered gate; any failure kills that design and returns to Phase 1."
 
 outer_loop:
-  cycle: 6
-  last_direction: "PIVOT_SOURCE_LOCKED_ONE_SHOT_POC_AUTHORIZED"
-  last_reflection: "Cycle-6 Phase 3 implemented and independently audited the source-bound PIVOT runner, post-exit verifier, and launcher. Final item-only qualification reproduced all 32 FAISS indexes, certified fixed work and candidate feasibility, and passed the locked latency ceilings without opening the archive or user outcomes. Exactly one append-only Phase-4 command is authorized; Phase 5 remains forbidden unless the external G1-G9 conjunction is true."
+  cycle: 7
+  last_direction: "PIVOT_KILLED_RETURNED_TO_PHASE_1"
+  last_reflection: "The sole PIVOT launch consumed its append-only claim and failed closed during the target-blind structural cohort scan: 21,928 users met the locked structural rule, not the preregistered 21,931. No cohort, A/R/V/T stage manifest, training checkpoint, metric, verifier report, or completion marker exists. PIVOT is killed without repair or rerun. Cycle 7 must avoid treating a preview-derived exact aggregate count as a scientific invariant and must test a genuinely different mechanism on a fresh cohort."
 
 workspace:
   findings: "findings.md"

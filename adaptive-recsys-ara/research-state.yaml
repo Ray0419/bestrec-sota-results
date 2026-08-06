@@ -1,10 +1,10 @@
 # Research State — Adaptive Recommendation Research Sprint
 
 project:
-  title: "FACET-PREF: Facet-Conditioned Preference Retrieval"
-  question: "At a fixed 200+200 vector-retrieval budget and with immutable catalog embeddings and indexes, can macro-balanced, SimPO-inspired reference-free alignment of facet-conditioned user queries improve natural preference-pair co-support by at least 0.02 over a single-centroid hybrid and strict preference-consistent exposure@10 by at least 0.005 over both that hybrid and selected BPR, while remaining non-inferior to the hybrid in NDCG@10 and within 1.25x p95 latency?"
+  title: "Cycle 5 successor to FACET-PREF"
+  question: "Pending the cycle-5 Phase-1 limitation analysis and direction selection."
   status: active
-  phase: 4_poc_validation_cycle_4_ready_to_launch
+  phase: 1_identify_limitations_cycle_5
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -35,6 +35,7 @@ literature:
     - "Post-training residual selection with exact identity fallback is under-explored relative to joint gates."
     - "Single-centroid semantic queries erase multi-modal user preference geometry."
     - "Positive-item candidate recall does not reveal natural preference-pair co-support."
+    - "Post-filter fixed-depth ANN cannot guarantee an exact unseen-candidate budget for long user histories."
   evidence_gaps:
     - "The RAVEL component intersection is only a candidate whitespace, not an exhaustive novelty proof."
     - "PoC evidence is required before any benefit claim."
@@ -62,20 +63,23 @@ hypotheses:
     status: provisional_runner_support_but_external_integrity_failed
     statement: "RAVEL's exact-fallback selector outperforms always-on residual alignment in NDCG and matched-coverage heuristic routing in preference accuracy."
   - id: C4-H1
-    status: preregistered_untested
+    status: not_evaluated_project_killed_on_feasibility
     statement: "FACET-PREF improves natural preference-pair candidate co-support by at least 0.02 over the fixed-budget single-centroid hybrid with a paired lower bound above zero."
   - id: C4-H2
-    status: preregistered_untested
+    status: not_evaluated_project_killed_on_feasibility
     statement: "FACET-PREF improves strict preference-consistent exposure@10 by at least 0.005 over both the single-centroid hybrid and selected BPR with paired lower bounds above zero."
   - id: C4-H3
-    status: preregistered_untested
+    status: not_evaluated_project_killed_on_feasibility
     statement: "FACET-PREF is non-inferior to the single-centroid hybrid in NDCG@10 and satisfies the 1.25x p95 latency budget."
+  - id: C4-F1
+    status: falsified
+    statement: "A fixed depth-700 BPR search always contains at least 200 prefix-unseen candidates for every eligible FACET-PREF request."
 
 experiments:
   proxy_metric: "Temporal full-catalog NDCG@10"
   baseline_value: 0.005728564774466464
   best_value: 0.0648460502012084
-  total_runs: 3
+  total_runs: 4
   trajectory:
     - design: "RIPPLE v1"
       status: dead_end
@@ -97,14 +101,24 @@ experiments:
       gate_passed: false
       external_verification_complete: false
       failed_gates: [G1, G3, G5, G9, G10]
+    - design: "FACET-PREF v1"
+      status: dead_end
+      termination_stage: "target_blind_V_candidate_construction"
+      failure: "fixed_depth_700_collaborative_row_exhausted_before_200_unseen"
+      validation_relevance_opened: false
+      validation_preference_opened: false
+      test_opened: false
+      external_verification_complete: false
+      gate_passed: false
+      failed_gates: [G1]
   gate:
-    status: cycle4_phase3_complete_prospective_source_frozen
-    rule: "FACET-PREF is promising only if the source-bound external verifier recomputes every preregistered G1-G9 gate as true; any failure kills the method and forbids Phase 5."
+    status: cycle5_phase1_active_phase5_forbidden
+    rule: "A successor may proceed to Phase 5 only after a prospectively locked, source-bound PoC externally verifies every registered gate; any failure kills that design and returns to Phase 1."
 
 outer_loop:
-  cycle: 4
-  last_direction: "FACET_PREF_SELECTED_AFTER_REJECTING_DEEP_TAIL_CONTINUATION"
-  last_reflection: "RAVEL's failure came from a sparse preference-relevant action set. A read-only continuation probe initially showed +0.0053 on broad tail pairs, but served-page diagnostics were null or negative, so head-exact continuation was rejected before a new PoC. Cycle 4 instead tests macro-balanced alignment of facet-conditioned queries before fixed-budget ANN retrieval, while retaining the immutable BPR branch."
+  cycle: 5
+  last_direction: "FACET_PREF_KILLED_ON_FIXED_DEPTH_CANDIDATE_EXHAUSTION"
+  last_reflection: "FACET-PREF failed before validation labels because post-filtering a fixed depth-700 BPR row could not guarantee 200 unseen candidates for a long prefix. Cycle 5 must make candidate feasibility a construction-level invariant without tuning a deeper depth on the consumed cohort."
 
 workspace:
   findings: "findings.md"

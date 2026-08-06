@@ -1,0 +1,66 @@
+# Research State — Adaptive Recommendation Research Sprint
+
+project:
+  title: "RIPPLE: Retrieval-Index-conditioned Preference Policy Learning for Efficient Recommendation"
+  question: "Under a fixed catalog index and p95 latency budget, can query-only index-conditioned SimPO improve temporal full-catalog recommendation over frozen SentenceTransformer-FAISS retrieval and random-negative adaptation without re-encoding items?"
+  status: active
+  phase: 4_poc_validation
+  started: "2026-08-07"
+  domain: "vector retrieval and preference-aligned recommendation"
+
+literature:
+  key_papers:
+    - "Sentence-BERT (EMNLP-IJCNLP 2019)"
+    - "FAISS (2017) and ScaNN (ICML 2020)"
+    - "Stochastic Retrieval-Conditioned Reranking (ICTIR 2022)"
+    - "TIGER (NeurIPS 2023)"
+    - "SimPO (NeurIPS 2024)"
+    - "Preference Learning Algorithms Do Not Learn Preference Rankings (NeurIPS 2024)"
+    - "RecPO (ACL 2026)"
+    - "Recommendations as Treatments (ICML 2016)"
+    - "Quake (OSDI 2025)"
+    - "Drift-Adapter (EMNLP 2025)"
+  open_problems:
+    - "ANN geometric objectives are disconnected from aligned downstream utility."
+    - "Implicit feedback is censored by exposure and position."
+    - "Fresh preference updates conflict with catalog re-embedding and index rebuild cost."
+    - "Semantic/LLM alignment remains expensive at online inference time."
+  evidence_gaps:
+    - "No exhaustive novelty proof exists for the full RIPPLE component intersection."
+    - "PoC evidence is required before any benefit claim."
+
+hypotheses:
+  - id: H1
+    statement: "Query-only SimPO improves temporal NDCG@10 and Recall@50 over a frozen history-centroid query."
+  - id: H2
+    statement: "FAISS-boundary hard confusions improve NDCG@10 over matched random-negative and exact-hard-negative adaptation."
+  - id: H3
+    statement: "Item-vector and index fingerprints remain unchanged across preference training."
+  - id: H4
+    statement: "Pre-search ambiguity routing preserves candidate quality within a 1.25x p95 latency budget."
+  - id: H5
+    statement: "RIPPLE remains within 10% relative NDCG@10 of a train-only BPR-MF baseline."
+
+experiments:
+  proxy_metric: "Temporal full-catalog NDCG@10"
+  baseline_value: null
+  best_value: null
+  total_runs: 0
+  trajectory: []
+  gate:
+    status: not_reached
+    rule: "All eight criteria in research-question.md must pass; otherwise kill RIPPLE and return to Phase 1."
+
+outer_loop:
+  cycle: 1
+  last_direction: "RIPPLE"
+  last_reflection: "The gap survives only at the full-stack intersection; individual components have substantial prior art."
+
+workspace:
+  findings: "findings.md"
+  log: "research-log.md"
+  literature_dir: "literature/"
+  experiments_dir: "experiments/"
+  data_dir: "data/"
+  to_human_dir: "to_human/"
+  paper_dir: "paper/"

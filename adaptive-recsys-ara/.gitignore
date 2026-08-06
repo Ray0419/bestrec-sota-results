@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+data/*.zip
+data/ml-100k/
+experiments/runs/
+experiments/launches/
+experiments/*.runner.lock
+experiments/launcher-*.stdout.log
+experiments/launcher-*.stderr.log

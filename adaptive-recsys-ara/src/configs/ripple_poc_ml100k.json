@@ -1,0 +1,81 @@
+{
+  "protocol_name": "ripple-ml100k-poc-v1-preregistered",
+  "seed": 20260807,
+  "replicate_seeds": [20260807, 20260808, 20260809],
+  "dataset": {
+    "name": "MovieLens 100K",
+    "url": "https://files.grouplens.org/datasets/movielens/ml-100k.zip",
+    "expected_sha256": null,
+    "positive_rating_min": 4,
+    "dislike_rating_max": 2,
+    "minimum_total_positives": 5,
+    "minimum_train_events": 8,
+    "minimum_query_positives": 2,
+    "train_fraction": 0.8,
+    "validation_fraction": 0.1
+  },
+  "embedding": {
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "local_files_only": true,
+    "batch_size": 64
+  },
+  "index": {
+    "kind": "IndexIVFFlat",
+    "metric": "inner_product",
+    "nlist": 32,
+    "nprobe": 4,
+    "high_nprobe": 16,
+    "presearch_router_drift_threshold": 0.02,
+    "hard_negative_search_k": 128,
+    "evaluation_search_k": 150,
+    "candidate_count": 50
+  },
+  "adapter": {
+    "rank": 16,
+    "residual_scale": 0.25,
+    "epochs": 20,
+    "batch_size": 256,
+    "learning_rate": 0.003,
+    "weight_decay": 0.0001,
+    "temperature": 0.1,
+    "simpo_beta": 2.0,
+    "explicit_margin": 0.5,
+    "confusion_margin": 0.2,
+    "explicit_weight": 1.0,
+    "confusion_weight": 0.25,
+    "anchor_coefficient": 0.05,
+    "gradient_clip_norm": 1.0,
+    "maximum_training_pairs": 12000
+  },
+  "bpr": {
+    "enabled": true,
+    "embedding_dimension": 64,
+    "epochs": 20,
+    "batch_size": 1024,
+    "learning_rate": 0.01,
+    "l2_regularization": 0.0001
+  },
+  "evaluation": {
+    "ndcg_k": 10,
+    "recall_k": 50,
+    "latency_warmup_rounds": 10,
+    "latency_measured_rounds": 5,
+    "bootstrap_repetitions": 10000,
+    "bootstrap_alpha": 0.05,
+    "bootstrap_seed": 20260907,
+    "minimum_dislike_audit_users": 100,
+    "minimum_ann_boundary_source_rate": 0.95
+  },
+  "promise_gate": {
+    "minimum_relative_ndcg_gain_over_frozen": 0.05,
+    "minimum_relative_ndcg_gain_over_random_adapter": 0.01,
+    "minimum_relative_ndcg_gain_over_exact_hard_adapter": 0.01,
+    "minimum_fraction_of_bpr_ndcg": 0.9,
+    "minimum_absolute_recall50_change": 0.0,
+    "maximum_absolute_dislike_intrusion10_change": 0.0,
+    "maximum_p95_latency_ratio": 1.25,
+    "require_positive_ndcg_bootstrap_lower_bound": true,
+    "require_unchanged_item_and_index_hashes": true,
+    "minimum_ripple_seeds_beating_frozen": 2
+  }
+}

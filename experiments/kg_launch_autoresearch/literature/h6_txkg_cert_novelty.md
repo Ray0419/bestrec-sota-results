@@ -5,30 +5,55 @@ Audit date: 2026-08-07
 Status: qualified literature-search conclusion through the audit date; absence
 of a located paper is not proof of priority.
 
-## Targeted 2026 collision refresh
+## Binary claim audit
 
-A second exact-intersection search on 2026-08-07 used combinations of
-`transaction time`, `revision history`, `point-in-time`, `certified
-robustness`, `Top-K`, `knowledge graph`, `recommendation`, and `cold start`.
-It found two additional boundary papers but no exact package collision:
+The audit did **not** locate a paper combining all four defining axes:
 
-- [DRAR](https://doi.org/10.1145/3787454) (TOIS 2026) uses diffusion-based
-  relation augmentation and collaborative alignment against noisy KG views.
-  It strengthens the collision against generic augmentation/denoising, but
-  does not define uncertainty from historical source revisions or certify a
-  downstream ranking over admissible transaction-time graph versions.
-- [Robust Knowledge Graph Embedding via Denoising](https://doi.org/10.1007/978-3-032-25156-5_22)
-  (ESWC 2026) gives randomized-smoothing certificates for embedding-space
-  perturbations in KG completion/reasoning. It is a mandatory certification
-  citation and possible adapted baseline, but does not address recommendation,
-  cutoff observability, revision-derived correlated edge sets, or Top-K
-  recommendation membership.
+1. external-KG transaction-time or version provenance;
+2. a strict cold-start recommendation target;
+3. an exact Top-K or pairwise-margin certificate over correlated,
+   provenance-consistent revisions; and
+4. a residual that is activated, shrunk, or rejected by that certificate.
 
-The refresh also reconfirmed that GraphMatch supplies point-in-time feature
-and subgraph reconstruction, so exact historical replay cannot itself be the
-algorithm claim. This remains a qualified search conclusion, not a priority
-proof; a positive empirical result would still require a formal systematic
-review and author-level related-work check before submission.
+| Candidate claim | Binary verdict | Defensible interpretation |
+| --- | --- | --- |
+| **H6 snapshot-ranking diagnostic** | **YES, qualified** | A controlled evaluation package that holds the recommender and candidate set fixed while intervening only on an external KG's as-of snapshot, then tests cold-item score/order/Top-K consequences against relation/degree-matched nulls. |
+| H6 is the first temporal or point-in-time recommender | **NO** | Temporal recommendation and point-in-time graph training are occupied. |
+| H6 is an algorithm contribution by itself | **NO** | It is a diagnostic/benchmark contribution unless it unlocks and validates H7. |
+| The H7 min-weight-closure/min-cut solver is new | **NO** | Maximum closure, causal down-sets, and partial-order Top-K are established mathematics. |
+| **H7 revision-poset certificate package** | **YES, qualified** | The candidate novelty is the composition: revision-provenance ideals, exact worst additive recommendation margins, exact Top-K membership, and certificate-triggered cold-start KG residual control. |
+
+Here, `YES, qualified` means "no exact collision found in this search," not a
+priority proof. A positive empirical result still requires a reproducible
+systematic review and author-level related-work check before submission.
+
+## Nearest 2024--2026 collisions
+
+| Work | Exact publication | Collision and remaining distinction |
+| --- | --- | --- |
+| GraphMatch | [*GraphMatch: Fusing Language and Graph Representations in a Dynamic Two-Sided Work Marketplace*](https://proceedings.mlr.press/v322/sacha26a.html), UniReps workshop, PMLR 322, 2026 | Uses point-in-time subgraph training and historical feature reconstruction for recommendation. It blocks a broad point-in-time novelty claim, but does not model external-KG revision provenance or certify Top-K membership. |
+| ColdRAG | [*Cold-Start Recommendation with Knowledge-Guided Retrieval-Augmented Generation*](https://arxiv.org/abs/2505.20773), arXiv:2505.20773, 2025 preprint | Dynamically builds a domain KG and ranks cold items with evidence-grounded LLM retrieval. It lacks source-version provenance and formal ranking guarantees. |
+| DCKG | [*Meta-Learning on Dynamic Node Clustering Knowledge Graph for Cold-Start Recommendation*](https://doi.org/10.1016/j.neucom.2024.128192), *Neurocomputing* 602, 2024, DOI `10.1016/j.neucom.2024.128192` | Directly occupies dynamic-KG cold-start recommendation, but "dynamic" means learned node clustering/aggregation rather than transaction-time source revisions; it provides no certificate. |
+| TKGRec | [*Temporal Knowledge Graph Recommendation with Sequence-Aware and Path Reasoning*](https://doi.org/10.1016/j.datak.2025.102522), *Data & Knowledge Engineering* 161, 2026, DOI `10.1016/j.datak.2025.102522` | Integrates interaction timestamps with sequence and path reasoning. Its time axis is user interaction/preference time, not transaction-time versions of an external KG; it has no certificate. |
+| SKGRec | [*SKGRec: Unifying Temporal Dynamics and Knowledge Graphs for Robust Recommendations*](https://doi.org/10.1016/j.eswa.2025.129354), *Expert Systems with Applications* 297A, 2026, DOI `10.1016/j.eswa.2025.129354` | Combines temporal social dynamics, KG semantics, contrastive learning, and distillation. It does not use source revision histories or exact ranking certificates. |
+| DRAR | [*DRAR: Diffusion-Based Relation Augmentation for Knowledge-Aware Recommendation*](https://doi.org/10.1145/3787454), *ACM Transactions on Information Systems* 44(5), 2026, DOI `10.1145/3787454` | Handles interaction noise and irrelevant KG connections by diffusion and relation augmentation. It has neither transaction-time uncertainty nor exact downstream certification. |
+| Robust KGE via denoising | [*Robust Knowledge Graph Embedding via Denoising*](https://doi.org/10.1007/978-3-032-25156-5_22), ESWC 2026, pp. 417--435, DOI `10.1007/978-3-032-25156-5_22` | Gives randomized-smoothing robustness metrics for perturbed KGE embeddings. It is not recommendation, revision provenance, or an exact Top-K certificate. |
+| PROV-STAR traceability | [*Full Traceability and Provenance for Knowledge Graphs*](https://doi.org/10.3233/FAIA241309), FOIS 2024, pp. 223--237, DOI `10.3233/FAIA241309` | Tracks triple-level changes with provenance and reconstructs arbitrary past KG versions. It blocks novelty for KG change provenance/version recovery itself, but has no recommendation or certificate. |
+| CascadeKG | [*Risk-Controlled Event-Driven Cascading Updates for Knowledge Graph Consistency Restoration*](https://doi.org/10.18653/v1/2026.findings-acl.2111), Findings of ACL 2026, DOI `10.18653/v1/2026.findings-acl.2111` | Models dependency-aware KG update cascades and conformal coverage. It does not optimize over version-consistent down-sets or certify recommendation ranks. |
+| AGNNCert | [*AGNNCert: Defending Graph Neural Networks against Arbitrary Perturbations with Deterministic Certification*](https://www.usenix.org/conference/usenixsecurity25/presentation/li-jiate), USENIX Security 2025 | Gives deterministic certificates for edge, node, and feature perturbations in node/graph classification. It lacks KG provenance, recommendation, and the proposed fallback. |
+| Exact GNN label certification | [*Exact Certification of (Graph) Neural Networks Against Label Poisoning*](https://proceedings.iclr.cc/paper_files/paper/2025/hash/401aa72e0e3be680348a5b0ffdb1a5aa-Abstract-Conference.html), ICLR 2025 | Uses an exact MILP certificate for label poisoning. It concerns training-label attacks and classification rather than source revisions and Top-K recommendation. |
+| RobustMask | [*RobustMask: Certified Robustness against Adversarial Neural Ranking Attack via Randomized Masking*](https://arxiv.org/abs/2512.23307), arXiv:2512.23307, 2025 preprint | Certifies pairwise and Top-K neural ranking under text perturbations. It blocks "first certified Top-K ranker," but has no KG, transaction-time provenance, or cold-start residual. |
+| Node-aware bi-smoothing | [*Node-Aware Bi-Smoothing: Certified Robustness against Graph Injection Attacks*](https://doi.org/10.1109/SP54263.2024.00241), IEEE S&P 2024, DOI `10.1109/SP54263.2024.00241` | Includes a recommender application and certified graph-injection robustness. It uses randomized smoothing against injected nodes, not correlated transaction-time revisions or an exact additive-margin certificate. |
+| KG4RecEval | [*KG4RecEval: Does Knowledge Graph Really Matter for Recommender Systems?*](https://doi.org/10.1145/3713071), *ACM Transactions on Information Systems* 43(3), 2025, DOI `10.1145/3713071` | Tests KG removal and random corruption, including cold-start settings. It motivates H6's matched-null audit but does not use observed source histories or certify rankings. |
+| EUMR | [*Embedding Uncertainty Modeling for Cold-Start Item Recommendation*](https://doi.org/10.1016/j.neucom.2025.132144), *Neurocomputing* 665, 2026, DOI `10.1016/j.neucom.2025.132144` | Supplies a model-agnostic uncertainty module for distribution-shifted cold items. Its Gaussian embedding uncertainty is empirical rather than a version-provenance set with an exact certificate. |
+
+The closest recent works each cover one or two axes, not the four-way
+intersection. In particular, no located work makes a certificate result itself
+route an additive external-KG residual. This is the most specific surviving
+novelty statement; claims such as "first temporal KG recommender," "first
+robust KG recommender," "first use of KG provenance," "first cold-start
+uncertainty module," "first certified recommender," or "first certified Top-K
+ranker" are false.
 
 ## Surviving research question
 
@@ -72,7 +97,7 @@ No located paper combined all five. None of the components alone is new.
 - Bitemporal KG models and revision reconstruction are established by
   [Time-Aware Probabilistic Knowledge Graphs](https://doi.org/10.4230/LIPIcs.TIME.2019.8)
   and [Wikidated](https://arxiv.org/abs/2112.05003).
-- [KG4RecEval](https://arxiv.org/abs/2404.03164) already tests KG removal and
+- [KG4RecEval](https://doi.org/10.1145/3713071) already tests KG removal and
   random corruption and often finds little accuracy loss. A matched random
   perturbation baseline is therefore mandatory.
 - [MIND](https://aclanthology.org/2020.acl-main.331/) includes Wikidata-linked
@@ -155,10 +180,20 @@ strictly positive. A failed strict inequality is uncertified, and the min-cut
 itself supplies an interpretable adverse version witness.
 
 The closure/min-cut result is classical and **not** a novelty claim; see
-[Picard (1976)](https://doi.org/10.1287/mnsc.22.11.1268). Consistent global
-snapshots in distributed systems already use causal down-sets and network-flow
-optimization, and partial-order/uncertain-database Top-K is mature; see
-[Amarilli et al. (ICDT 2017)](https://doi.org/10.4230/LIPIcs.ICDT.2017.5).
+[Picard, *Maximal Closure of a Graph and Applications to Combinatorial
+Problems* (1976)](https://doi.org/10.1287/mnsc.22.11.1268), DOI
+`10.1287/mnsc.22.11.1268`. Consistent global snapshots in distributed systems
+already use causal down-sets and network-flow optimization; see Chen and Wu,
+[*On the Complexity of the Minimum and Maximum Global Snapshot
+Problems*](https://doi.org/10.1109/CMPSAC.1997.624733), COMPSAC 1997, DOI
+`10.1109/CMPSAC.1997.624733`, and its *Information Processing Letters* version,
+DOI [`10.1016/S0020-0190(98)00100-8`](https://doi.org/10.1016/S0020-0190(98)00100-8).
+Partial-order and uncertain-database Top-K are also mature; see Amarilli et al.,
+[*Top-k Querying of Unknown Values under Order Constraints*](https://doi.org/10.4230/LIPIcs.ICDT.2017.5),
+ICDT 2017, DOI `10.4230/LIPIcs.ICDT.2017.5`, and Mouratidis and Tang,
+[*Exact Processing of Uncertain Top-k Queries in Multi-Criteria
+Settings*](https://doi.org/10.14778/3204028.3204031), PVLDB 2018, DOI
+`10.14778/3204028.3204031`.
 The 2026 [risk-controlled cascading KG-update framework](https://aclanthology.org/2026.findings-acl.2111/)
 is a further near boundary because it models dependency-aware update cascades
 with conformal guarantees, although it does not certify downstream
@@ -171,6 +206,82 @@ event-additive residual. Normalized embeddings, degree recomputation, arbitrary
 cardinality constraints, mutually exclusive edits, and nonlinear message
 passing do not inherit the one-min-cut theorem. If the cutoff and every
 transaction timestamp are already known, exact replay dominates this module.
+Likewise, routing or abstaining on uncertainty is not independently new; reject
+option theory already formalizes this behavior, for example
+[*Optimal Strategies for Reject Option Classifiers*](https://jmlr.org/papers/v24/21-0048.html),
+JMLR 2023. Only the use of this specific exact revision certificate to control
+an additive external-KG residual remains a defensible routing claim.
+
+## Conditional H8 fallback: revision-circulation residual
+
+**Binary verdict: CONDITIONAL KEEP as a cheap third pivot; NO to broad Hodge,
+cycle, simplicial, or basis-invariant graph-learning novelty.** The closest
+collision is already an inductive KG cycle model, and cycle projectors are
+established. The only surviving formulation is narrower: turn signed
+transaction-time KG revisions into a conserved cycle-space signal and use it
+as an untuned residual/router for strict cold-start ranking.
+
+On the union anchor--fact graph, orient the vertex--edge incidence matrix `B`
+and encode historical-to-current triple changes as an edge signal `d`, with
+positive additions and negative deletions. Define
+
+`P_C = I - B^T (B B^T)^dagger B` and `h = P_C d`.
+
+For anchor weights `u`, candidate-fact features `z_i`, and masked edge query
+`q_(u,i),(a,f) = u_a z_(i,f)`, use the normalized residual
+
+`r(u,i) = <h,q_(u,i)> / (||h|| ||P_C q_(u,i)||)`.
+
+This residual is basis-invariant, bounded by one in magnitude, and exactly zero
+when the edited graph is a forest or the edit signal is a node-potential flow
+in `im(B^T)`. It therefore isolates non-node-separable coupled revision
+structure rather than repeating a degree or entity-frequency feature. The
+anchor--fact graph is bipartite and triangle-free, however, so it admits only a
+gradient plus harmonic-cycle decomposition. A three-way
+gradient/curl/harmonic claim would be mathematically false.
+
+Binding collisions are:
+
+- [*Statistical Ranking and Combinatorial Hodge Theory*](https://doi.org/10.1007/s10107-010-0419-x),
+  *Mathematical Programming* 127, 2011, DOI
+  `10.1007/s10107-010-0419-x`, for Hodge decomposition of ranking edge flows;
+- [*Cycle Representation Learning for Inductive Relation Prediction*](https://proceedings.mlr.press/v162/yan22a.html),
+  ICML 2022, for cycle-basis GNNs in inductive KG completion;
+- [*Cycle Invariant Positional Encoding for Graph Representation Learning*](https://proceedings.mlr.press/v231/yan24b.html),
+  Learning on Graphs 2023 proceedings, PMLR 231, published 2024, for the
+  basis-invariant cycle-space projector used by CycleNet;
+- [*How Does Topology Bias Distort Message Passing in Graph Recommender? A
+  Dirichlet Energy Perspective*](https://proceedings.neurips.cc/paper_files/paper/2025/hash/40b5237c3e025c72c02dd8b6716dac76-Abstract-Conference.html),
+  NeurIPS 2025, for test-time simplicial propagation in recommendation; and
+- [*HLSAD: Hodge Laplacian-Based Simplicial Anomaly Detection*](https://doi.org/10.1145/3711896.3736998),
+  KDD 2025, DOI `10.1145/3711896.3736998`, for Hodge-based change detection in
+  evolving complexes.
+
+[DBpedia-TKG](https://doi.org/10.5281/zenodo.14532571) additionally establishes
+that transaction-time KG revision data itself is available. No located paper
+feeds the harmonic component of signed source revisions into a cold-start
+ranker, but this narrow combination has only moderate novelty confidence and
+low pre-result Tier-A confidence.
+
+A label-blind structural POC found genuine geometry after the H6 metadata and
+hub exclusions: current-only edits retained cycle rank `beta_1 = 39`, whereas
+historical-only edits had `beta_1 = 0`. This shows that the residual is not
+identically zero; it does **not** show recommendation value. Do not inspect
+outcomes or advance the branch unless a preregistered no-tune test also passes
+all of these gates:
+
+- harmonic energy `||h||^2 / ||d||^2 >= 0.10` and above the 95th percentile of
+  999 deterministic relation-, sign-count-, and degree-bin-preserving edit
+  placement nulls;
+- `||B h||_infinity <= 1e-10` and independent solver/basis replay agreement;
+- a fixed equal-energy blend changes at least 20% of score vectors; and
+- it changes at least 5% of complete candidate orders or 2% of Top-10 lists
+  under the existing deterministic tie rule.
+
+Failing any gate eliminates H8. Current confidence is approximately `0.65`
+that the exact narrow combination is unoccupied and only `0.30` that it can
+support a Tier-A paper before ranking evidence. It is therefore a fallback,
+not the lead contribution.
 
 ## Identifiability limit
 

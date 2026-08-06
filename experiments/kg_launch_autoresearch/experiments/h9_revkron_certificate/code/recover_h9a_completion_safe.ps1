@@ -413,20 +413,32 @@ function Assert-DoubleEqual {
 }
 
 function Read-ExactSingleLineJson {
-    param([Parameter(Mandatory = $true)][string]$Path, [string]$Context)
+    param(
+        [Parameter(Mandatory = $true)][string]$Path,
+        [string]$Context,
+        [ValidateSet('LF', 'CRLF')][string]$LineEnding = 'LF'
+    )
     $bytes = [IO.File]::ReadAllBytes($Path)
     if ($bytes.Length -lt 3 -or
-        ($bytes.Length -ge 3 -and $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF) -or
-        $bytes[$bytes.Length - 1] -ne 0x0A) {
-        throw "$Context is not BOM-free UTF-8 JSON plus one LF."
+        ($bytes.Length -ge 3 -and $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF)) {
+        throw "$Context is empty or has a UTF-8 BOM."
+    }
+    $expectedCrCount = if ($LineEnding -ceq 'CRLF') { 1 } else { 0 }
+    $suffixLength = if ($LineEnding -ceq 'CRLF') { 2 } else { 1 }
+    if ($bytes[$bytes.Length - 1] -ne 0x0A -or
+        ($LineEnding -ceq 'CRLF' -and $bytes[$bytes.Length - 2] -ne 0x0D)) {
+        throw "$Context does not have its frozen $LineEnding terminator."
     }
     $lfCount = 0
+    $crCount = 0
     foreach ($value in $bytes) {
-        if ($value -eq 0x0D) { throw "$Context contains a carriage return." }
+        if ($value -eq 0x0D) { $crCount++ }
         if ($value -eq 0x0A) { $lfCount++ }
     }
-    if ($lfCount -ne 1) { throw "$Context is not exactly one JSON line." }
-    $text = [Text.Encoding]::UTF8.GetString($bytes, 0, $bytes.Length - 1)
+    if ($lfCount -ne 1 -or $crCount -ne $expectedCrCount) {
+        throw "$Context is not exactly one JSON line with frozen $LineEnding termination."
+    }
+    $text = [Text.Encoding]::UTF8.GetString($bytes, 0, $bytes.Length - $suffixLength)
     try { return $text | ConvertFrom-Json }
     catch { throw "$Context is not valid JSON: $($_.Exception.Message)" }
 }
@@ -992,7 +1004,7 @@ function Assert-Handshake {
 function Assert-InnerRelease {
     param([string]$Label, [string]$Role, [int]$ExpectedPid, $Authorization)
     $path = Join-Path $launchDirectory ($Label + '_inner_lock_released.json')
-    $release = Read-ExactSingleLineJson $path ($Label + ' inner-lock release')
+    $release = Read-ExactSingleLineJson $path ($Label + ' inner-lock release') -LineEnding CRLF
     Assert-ExactFields $release @(
         'created_time_ns', 'launch_id', 'launcher_pid', 'mode', 'pid', 'role',
         'runner_sha256', 'schema_version', 'token_sha256'
@@ -1399,7 +1411,7 @@ function Assert-ResultAndSummary {
     }
 
     $summaryPath = Join-Path $launchDirectory ($Label + '_stdout.log')
-    $summary = Read-ExactSingleLineJson $summaryPath ($Label + ' stdout summary')
+    $summary = Read-ExactSingleLineJson $summaryPath ($Label + ' stdout summary') -LineEnding CRLF
     Assert-ExactFields $summary @(
         'status', 'process_pid', 'output_id', 'run_role', 'output_directory',
         'result', 'row_manifest', 'result_sha256', 'row_manifest_sha256',
@@ -1535,7 +1547,7 @@ function Assert-DeepVerification {
     $expectedFinalVerdict = if ([bool]$deepRuntime.passed) { $StructuralVerdict } else { 'KILL_H9_KRON_DIRECTION' }
     Assert-String $deep.verdict 'deep.verdict' $expectedFinalVerdict
 
-    $summary = Read-ExactSingleLineJson (Join-Path $launchDirectory 'verifier_stdout.log') 'verifier stdout summary'
+    $summary = Read-ExactSingleLineJson (Join-Path $launchDirectory 'verifier_stdout.log') 'verifier stdout summary' -LineEnding CRLF
     Assert-ExactFields $summary @(
         'status', 'output_id', 'run_role', 'process_pid', 'verification_path',
         'verification_sha256', 'scientific_payload_sha256', 'structural_verdict',

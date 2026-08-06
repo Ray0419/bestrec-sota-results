@@ -39,7 +39,7 @@ completion marker last. It never invokes the H9 Python runner and never opens
 candidate labels.
 
 Recovery script SHA-256:
-`8C8406616716D3A8FF26C947EC7748BC9AC9790DFDB56082A73EA23B850E6F33`.
+`63338196E326028783CF83C3AF3F8807623A9066FE71CD2761180AFA3E9DFE4E`.
 
 Independent pre-execution static audit also demonstrated that PowerShell's
 case-insensitive `ValidateSet` accepts lowercase mode spellings while preserving
@@ -47,6 +47,13 @@ their casing. The recovery script now rejects every mode spelling except exact
 ordinal `Audit` or `Recover` before any filesystem inspection or mutation, so a
 case variant cannot bypass the recovery confirmation check or the audit-only
 return branch.
+
+The first read-only audit attempt then exposed a second serialization boundary:
+the hash-pinned Python result JSON and PowerShell authorization/handshake/deep
+JSON use LF, while the five hash-pinned PowerShell stdout/inner-release records
+use exactly one CRLF terminator. The validator now requires the exact observed
+line-ending form at each named call site; it does not normalize or broadly
+accept mixed line endings. That failed audit wrote no file and no marker.
 
 The recovered decision remains `KILL_H9_KRON_DIRECTION`; recovery cannot turn
 the failed certificate-utility gates into a pass.

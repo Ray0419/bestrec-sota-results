@@ -2,9 +2,9 @@
 
 project:
   title: "PIVOT: Preference-Informed Vector-partition Offsets for Traversal"
-  question: "Pending Phase-2 lock: can one reference-free user-to-partition potential improve equal-work FAISS shard retrieval and cross-shard ranking while keeping item vectors, assignments, nprobe, and indexes immutable?"
+  question: "On a fresh 600-user temporal MovieLens 10M cohort, can one reference-free user-to-partition potential improve FutureLikedRecall@100 and fixed-pair CandidatePreferenceExposure@100 by at least 0.010 over equal-work balanced geometric FAISS retrieval while preserving aligned-oracle fidelity, raw-exact relevance, and serving latency?"
   status: active
-  phase: 2_design_research_question_cycle_6
+  phase: 3_algorithm_design_cycle_6
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -91,6 +91,15 @@ hypotheses:
   - id: C5-F1
     status: falsified
     statement: "The batched full-row FAISS candidate path agrees exactly with the canonical matrix lexsort oracle on every real target-blind request."
+  - id: C6-H1
+    status: preregistered_unopened
+    statement: "PIVOT improves both FutureLikedRecall@100 and fixed-pair CandidatePreferenceExposure@100 by at least 0.010 over balanced geometric four-shard retrieval at identical search work, with paired lower bounds above zero."
+  - id: C6-H2
+    status: preregistered_unopened
+    statement: "Reusing one bounded partition potential for both routing and ranking beats route-only, rerank-only, and shuffled-direction controls on both primary metrics."
+  - id: C6-H3
+    status: preregistered_unopened
+    statement: "PIVOT retains at least 90% aligned-oracle top-100 overlap and 95% of raw-full-exact future-liked recall while meeting the fixed 1,336-slot and registered p95 latency bounds."
 
 experiments:
   proxy_metric: "Temporal full-catalog NDCG@10"
@@ -139,13 +148,13 @@ experiments:
       gate_passed: false
       failed_gates: [G1, G9]
   gate:
-    status: cycle6_phase2_question_design_phase5_forbidden
+    status: cycle6_phase3_algorithm_design_phase5_forbidden
     rule: "A successor may proceed to Phase 5 only after a prospectively locked, source-bound PoC externally verifies every registered gate; any failure kills that design and returns to Phase 1."
 
 outer_loop:
   cycle: 6
-  last_direction: "PIVOT_SELECTED_AFTER_PARTITION_ROUTING_COLLISION_AND_FEASIBILITY_REVIEW"
-  last_reflection: "Cycle-6 Phase 1 selected PIVOT: a fixed-work, immutable-index mechanism in which one SimPO-trained user-to-partition potential jointly controls FAISS shard probing and cross-shard ranking. Real item-only checks certified four-shard capacity and bounded scanned work; no cycle-6 quality outcome was opened. Phase 2 must now lock a fresh cohort, test estimands, controls, and an all-or-nothing gate."
+  last_direction: "PIVOT_QUESTION_LOCKED_AFTER_INDEPENDENT_CONSTRUCT_REVIEW"
+  last_reflection: "Cycle-6 Phase 2 prospectively locked a fresh 600-user cohort, capacity-balanced 32-shard FAISS construction, fixed 1,336-slot work, separate checkpoint and power pair sets, shared routing/ranking controls, latency protocol, and conjunctive G1-G9 gate. An independent re-audit returned APPROVED. No cycle-6 R/V/T outcome has been opened; Phase 3 must now implement the source-bound algorithm and verifier without changing the estimands."
 
 workspace:
   findings: "findings.md"

@@ -237,4 +237,3 @@ equal-work geometric baseline, dominance over both single-use controls, a
 nontrivial changed surface, relevance non-inferiority, fixed-work/capacity
 compliance, seed stability, and independent provenance. Any failure kills PIVOT
 and returns to Phase 1; Phase 5 remains forbidden.
-

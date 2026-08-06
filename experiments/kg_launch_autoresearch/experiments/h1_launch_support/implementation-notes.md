@@ -1,7 +1,9 @@
 # H1 Pre-Run Implementation Notes
 
-Status: locked before execution  
-Run: `run_001`  
+Status: locked before execution
+
+Run: `run_001`
+
 Date locked: 2026-08-07
 
 The confirmatory protocol uses day-resolution listing dates and deduplicated

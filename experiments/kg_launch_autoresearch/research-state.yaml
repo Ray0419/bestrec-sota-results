@@ -1,0 +1,98 @@
+project:
+  title: "ProviCold: Launch-Safe Knowledge Graph Recommendation for Strict Cold Items"
+  question: "Does knowledge-graph lift survive for future-born zero-interaction items when every relation, candidate, and metadata field is restricted to information observable at recommendation time?"
+  status: active
+  started: "2026-08-07"
+  domain: "knowledge-aware recommendation, strict item cold start, graph evaluation"
+
+literature:
+  key_papers:
+    - id: "kgat2019"
+      title: "KGAT: Knowledge Graph Attention Network for Recommendation"
+      authors: "Wang et al."
+      year: 2019
+      relevance: "Canonical high-order KG message passing; establishes the mature architecture family."
+    - id: "coldgpt2023"
+      title: "Multi-task Item-attribute Graph Pre-training for Strict Cold-start Item Recommendation"
+      authors: "Cao et al."
+      year: 2023
+      relevance: "Strong strict-cold item-attribute graph baseline; filters metadata-poor items and mostly tests shared-attribute interpolation."
+    - id: "firzen2024"
+      title: "Firzen: Firing Strict Cold-Start Items with Frozen Heterogeneous and Homogeneous Graphs for Recommendation"
+      authors: "He et al."
+      year: 2024
+      relevance: "Principal multimodal plus KG strict-cold baseline; randomly holds out 20 percent of items."
+    - id: "kg4receval2025"
+      title: "KG4RecEval: Does Knowledge Graph Really Matter for Recommender Systems?"
+      authors: "Zhang et al."
+      year: 2025
+      relevance: "Shows KG removal or corruption often does not reduce accuracy, but does not audit strict future-item or fact availability."
+    - id: "coldrag2025"
+      title: "Adaptive Candidate Retrieval with Dynamic Knowledge Graph Construction for Cold-Start Recommendation"
+      authors: "Yang et al."
+      year: 2025
+      relevance: "Dynamic LLM-built KG retrieval; defines cold items by low frequency after core filtering rather than zero-interaction launch."
+    - id: "lightkg2025"
+      title: "LightKG: Efficient Knowledge-Aware Recommendation with Simplified Graph Propagation"
+      authors: "2025 paper"
+      year: 2025
+      relevance: "Motivates a simple linear propagation baseline and makes another heavy KG-GNN unattractive."
+    - id: "ji2023leakage"
+      title: "A Critical Study on Data Leakage in Recommender System Offline Evaluation"
+      authors: "Ji et al."
+      year: 2023
+      relevance: "Global-timeline leakage precedent for interactions and candidate eligibility, but not external KG fact provenance."
+  open_problems:
+    - "Prospective strict item cold-start with one global cutoff over interactions, item eligibility, entity links, KG edges, and metadata."
+    - "Per-relation provenance audit separating launch metadata from review, co-view, co-buy, and other endogenous edges."
+    - "Full-catalog evaluation including items that cannot be linked to a curated KG."
+  evidence_gaps:
+    - "No outcome experiment yet establishes that conventional full-graph KG lift collapses under launch-safe inputs."
+    - "Amazon listing dates are available for most items in three local domains, but relation-level observation timestamps are incomplete."
+
+hypotheses:
+  - id: H1
+    statement: "Conventional random or low-frequency cold splits overstate graph support because future-born zero-interaction items have materially less prefix-visible warm-graph connectivity than synthetic cold items."
+    status: active
+    motivation: "If false, launch-safety is unlikely to produce a publishable KG-specific limitation."
+    parent: null
+    priority: high
+  - id: H2
+    statement: "At least 30 percent of apparent KG ranking lift disappears, or the model order reverses, when post-cutoff and endogenous relations are removed in at least two domains."
+    status: pending
+    motivation: "This is the decisive outcome-level evidence for a Tier-A evaluation contribution."
+    parent: H1
+    priority: high
+  - id: H3
+    statement: "A lightweight availability-gated inductive KG residual improves launch-safe full-catalog ranking over both content-only and always-on KG fusion without retraining the warm recommender."
+    status: pending
+    motivation: "A modular patch is more valuable than an audit alone and can be runtime efficient."
+    parent: H2
+    priority: high
+  - id: H4
+    statement: "If H1 or H2 fails, attribute-linkability stress testing will reveal a distinct failure on cold-exclusive entities that supports an open-vocabulary fallback module."
+    status: pending
+    motivation: "Predeclared pivot; avoids rescuing a failed provenance claim by metric shopping."
+    parent: null
+    priority: medium
+
+experiments:
+  proxy_metric: "H1 primary: conventional-minus-launch prefix-linkability gap in percentage points; H2 primary: fractional loss of KG Recall@20/NDCG@20 lift under launch-safe inputs."
+  baseline_value: 0
+  best_value: null
+  total_runs: 0
+  trajectory: []
+
+outer_loop:
+  cycle: 0
+  last_direction: null
+  last_reflection: "Bootstrap literature audit converged on launch-time provenance and linkability; all generic KG fusion ideas were rejected as crowded."
+
+workspace:
+  findings: "findings.md"
+  log: "research-log.md"
+  literature_dir: "literature/"
+  experiments_dir: "experiments/"
+  to_human_dir: "to_human/"
+  paper_dir: "paper/"
+

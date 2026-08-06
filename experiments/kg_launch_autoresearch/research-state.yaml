@@ -83,13 +83,13 @@ hypotheses:
     priority: high
   - id: H6
     statement: "Point-in-time censoring of Wikidata facts materially changes knowledge-aware MIND rankings or model order under strict historical evaluation."
-    status: active
+    status: phase_a_supported_phase_b_locked_next
     motivation: "A structural drift result is not publication-grade until it changes recommendation outcomes."
     parent: H5
     priority: high
   - id: H7
     statement: "A revision-poset-constrained additive KG residual uses exact min-closure pairwise margins to improve worst-snapshot cold-start ranking and certified Top-K coverage over current-snapshot, stable-intersection, and matched random-mask baselines."
-    status: pending_novelty_constrained
+    status: prospective_chain_certificate_protocol_drafted
     motivation: "GraphMatch kills broad replay novelty, and minimum closure is classical; only the package of real transaction-revision provenance, exact downstream rank certificates, and selective residual fallback remains potentially algorithmic."
     parent: H6
     priority: medium
@@ -101,10 +101,10 @@ hypotheses:
     priority: low
 
 experiments:
-  proxy_metric: "H6 Phase A primary: historical-versus-current shared-fact score-vector and rank-change rates without click labels; Phase B primary, if opened: paired change in impression-mean nDCG@10."
+  proxy_metric: "H6 Phase B primary: paired historical-versus-current change in impression-mean nDCG@10 on the exact committed Phase-A cohort; H7 structural primary: exact Top-10 certificate gain over an independent-fact uncertainty superset."
   baseline_value: 0
-  best_value: -2.6749611197511625
-  total_runs: 4
+  best_value: 0.5500209487454029
+  total_runs: 5
   trajectory:
     - run: "h1_launch_support/run_001"
       classification: "confirmatory implementation-invalidity adjudication"
@@ -126,11 +126,16 @@ experiments:
       value: 0.24942058519879862
       secondary_value: 1.0
       verdict: "ADVANCE_H5_TO_OUTCOME_POC"
+    - run: "h6_ranking_consequence/coverage_run_002"
+      classification: "confirmatory label-blind ranking-consequence gate"
+      value: 0.5500209487454029
+      secondary_value: 0.2155237962230188
+      verdict: "PASS_COVERAGE_AND_OPEN_LABELS"
 
 outer_loop:
-  cycle: 3
-  last_direction: "H5 bitemporal external-KG transaction-time drift"
-  last_reflection: "H5 passed its locked structural gate on a complete fresh replay: 24.94 percent of weighted present-snapshot facts were absent at the 2019 cutoff and every selected news item was attached to an affected entity. This is not yet outcome evidence. H6 is active and must first pass a label-blind candidate-score/rank coverage gate before click outcomes are inspected."
+  cycle: 4
+  last_direction: "H6 held-fixed transaction-time snapshot ranking consequence"
+  last_reflection: "H6 Phase A passed decisively and reproducibly without opening labels: 87.57 percent of score vectors, 55.00 percent of total orders, and 21.55 percent of Top-10 sets changed. Phase B is now permitted but must be hash-locked and committed before its one confirmatory label-opening run. In parallel, H7 has a draft label-blind protocol for an exact fixed-point revision-chain certificate; it is not yet locked or executed."
 
 workspace:
   findings: "findings.md"

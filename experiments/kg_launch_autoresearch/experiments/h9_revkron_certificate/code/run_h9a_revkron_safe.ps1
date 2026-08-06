@@ -655,6 +655,14 @@ function Start-H9AChild {
             -AuthorizationPath $authorizationPath `
             -Token $token `
             -Runtime $Runtime
+        # Python cannot leave its acknowledgement barrier yet, so this is a
+        # guaranteed live-handle sample of the exact authenticated child.
+        $process.Refresh()
+        $preAcknowledgementPeak = [Int64]$process.PeakWorkingSet64
+        if ($preAcknowledgementPeak -le 0) {
+            throw "Python child $Label exposed no positive live peak-working-set sample."
+        }
+        $launcherPeakResidentBytes = $preAcknowledgementPeak
         Write-ExclusiveJson -Path $ackPath -Value ([ordered]@{
             mode = 'h9a-child-process-acknowledgement'
             action = $Action
@@ -669,9 +677,39 @@ function Start-H9AChild {
         # The 300-second protocol threshold is an adjudication gate, not a
         # destructive timeout.  Wait for the exact PID so a slow completed run
         # can be committed as a valid KILL rather than becoming partial output.
+        while (-not $process.WaitForExit(100)) {
+            try {
+                $process.Refresh()
+                $livePeakSample = [Int64]$process.PeakWorkingSet64
+                if ($livePeakSample -le 0) {
+                    throw "Python child $Label exposed a nonpositive live peak-working-set sample."
+                }
+                if ($livePeakSample -gt $launcherPeakResidentBytes) {
+                    $launcherPeakResidentBytes = $livePeakSample
+                }
+            }
+            catch {
+                # The process can exit between the timed wait and the sample.
+                # Only that exact-PID exit race is benign; live errors fail closed.
+                if ($process.HasExited) { break }
+                throw
+            }
+        }
         $process.WaitForExit()
+        try {
+            $process.Refresh()
+            $postExitPeakSample = [Int64]$process.PeakWorkingSet64
+            if ($postExitPeakSample -gt $launcherPeakResidentBytes) {
+                $launcherPeakResidentBytes = $postExitPeakSample
+            }
+        }
+        catch [System.InvalidOperationException] {
+            # A positive authenticated live sample is already authoritative.
+        }
+        catch [System.ComponentModel.Win32Exception] {
+            # Windows may stop exposing process counters after exact PID exit.
+        }
         $rawExitCode = $process.ExitCode
-        $launcherPeakResidentBytes = [Int64]$process.PeakWorkingSet64
         $script:activeChild = $null
         if ($null -eq $rawExitCode) {
             throw "Python child $Label exposed no exit code after an exact-PID wait."
@@ -933,6 +971,9 @@ try {
             [string]$selfTestChild.summary.protocol_sha256 -ne [string]$runtime.protocol_sha256 -or
             [string]$selfTestChild.summary.lock_sha256 -ne [string]$runtime.lock_sha256) {
             throw 'Isolated Python self-test summary identity mismatch.'
+        }
+        if ([Int64]$selfTestChild.launcher_peak_resident_bytes -le 0) {
+            throw 'Isolated Python self-test has no positive launcher-observed peak working set.'
         }
         Assert-FixedHashes -Runtime $runtime
         $completionPayload = [ordered]@{

@@ -2,9 +2,9 @@
 
 project:
   title: "CODEPATCH-⊥: Orthogonal preference programs over immutable PQ codes"
-  question: "Phase-2 wording pending prospective gate lock"
+  question: "Can a 63-entry support-restricted PQ-table residual, exactly orthogonal to every dense-query ADC table, improve both CPE@100 and FutureLikedRecall@100 by 0.010 over the simultaneous best matched compressed-code control on 5,000 fresh temporal MovieLens-10M users within a 1/8-byte and 1.25x-p95 budget?"
   status: active
-  phase: 2_design_research_question_cycle_8
+  phase: 3_algorithm_design_and_implementation_cycle_8
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -109,6 +109,15 @@ hypotheses:
   - id: C6-F1
     status: falsified
     statement: "The source-locked structural scan yields exactly 21,931 eligible non-cycle-5 users before any A/R/V/T outcome access."
+  - id: C8-H1
+    status: preregistered_not_evaluated
+    statement: "CODEPATCH-⊥ improves both CPE@100 and FutureLikedRecall@100 by at least 0.010 over the simultaneous best matched compressed-code control with positive co-primary lower bounds."
+  - id: C8-H2
+    status: preregistered_not_evaluated
+    statement: "The gain is a pre-truncation non-dense mechanism: it survives globally dense, unprojected, random-subspace, shuffled, and rerank-only controls while preserving final-list relevance and dislike safety."
+  - id: C8-H3
+    status: preregistered_not_evaluated
+    statement: "A 63-entry user patch over immutable 24-byte PQ codes satisfies exact rank/orthogonality replay, a one-eighth semantic-index byte budget, and a 1.25x identical-scanner p95 budget."
 
 experiments:
   proxy_metric: "Temporal full-catalog NDCG@10"
@@ -174,13 +183,13 @@ experiments:
       outcomes_opened: false
       gate_passed: false
   gate:
-    status: cycle8_phase2_phase5_forbidden
+    status: cycle8_phase2_frozen_phase5_forbidden
     rule: "A successor may proceed to Phase 5 only after a prospectively locked, source-bound PoC externally verifies every registered gate; any failure kills that design and returns to Phase 1."
 
 outer_loop:
   cycle: 8
-  last_direction: "CODEPATCH_PERP_SELECTED_PHASE_1_COMPLETE"
-  last_reflection: "Cycle 8 rejected ECC and free query-bit reprogramming because both collide with hashing architectures and suffer metric or algebraic collapse. CODEPATCH-⊥ instead treats fixed PQ symbols as a serving interface and restricts user-conditioned utilities to the exact orthogonal complement of all dense-query ADC tables. Item-only checks confirmed the non-dense function space and a sub-one-eighth storage envelope, but provided no recommendation evidence. Phase 2 must preregister a fresh outcome test."
+  last_direction: "CODEPATCH_PERP_PHASE_2_FROZEN"
+  last_reflection: "Cycle 8 now has an independently approved one-shot question on 5,000 fresh users. A hash-bound 6,170-ID denylist excludes every prior opened cohort; simultaneous max-control bootstraps, contributor-specific power, exact scanner latency parity, global dense-table and rank-matched controls, and fail-closed algebra/provenance gates are fixed before Phase 3. No Cycle-8 user outcome has been opened."
 
 workspace:
   findings: "findings.md"

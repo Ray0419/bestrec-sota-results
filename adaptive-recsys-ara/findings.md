@@ -2,11 +2,13 @@
 
 ## Research Question
 
-Cycle 8 Phase 1 selected CODEPATCH-⊥. Phase 2 must test whether a sparse user preference program constrained outside every dense-query PQ scoring table can improve future recommendation without changing the catalog index.
+Cycle 8 asks whether a 63-entry sparse user preference program constrained outside every dense-query PQ scoring table can improve both CPE@100 and FutureLikedRecall@100 by at least 0.010 over the simultaneous best matched compressed-code control on 5,000 fresh temporal MovieLens-10M users, without changing the catalog index and within one-eighth storage and 1.25x matched-scanner p95 budgets.
 
 ## Current Understanding
 
 Phase 1 originally found four coupled bottlenecks: cross-stage objective mismatch, exposure-censored feedback, preference freshness versus reindexing cost, and semantic alignment versus online latency. Six designs were killed under prospective gates. Cycle 7 isolated a real compression bottleneck, but its selected MARGIN-CACHE architecture failed a deeper novelty audit. Cycle 8 instead treats the PQ lookup table as the personalization interface. For each subquantizer, it removes the complete centroid-plus-constant score subspace reachable by ordinary dense queries and learns only a sparse support-restricted orthogonal residual. This is an untested hypothesis, not a positive recommendation result.
+
+Cycle-8 Phase 2 is prospectively frozen after independent statistical and algebraic review. It conservatively hash-binds a 6,170-ID union of every prior opened cohort, requires 5,000 fresh users, recomputes the best-control envelope inside every paired bootstrap, binds effective endpoint denominators to a V-derived power calculation, and includes globally dense, unprojected, rank-matched random, shuffled, and rerank-only controls. No Cycle-8 rating or outcome was opened while fixing the protocol; Phase 5 remains forbidden.
 
 ## Key Results
 

@@ -2,11 +2,11 @@
 
 ## Research Question
 
-Phase 2 is formalizing this provisional Cycle-7 question: under a fixed sub-eighth-memory vector budget, can reference-free preference loss allocate a sparse exact-vector cache that improves future candidate preference exposure over equal-byte PQ cache controls while retaining full-precision relevance and low latency?
+Cycle 8 has returned to Phase 1. The next question must claim an architecture-level mechanism, not only a preference-aware heuristic for an occupied mixed-precision cache.
 
 ## Current Understanding
 
-Phase 1 originally found four coupled bottlenecks: cross-stage objective mismatch, exposure-censored feedback, preference freshness versus reindexing cost, and semantic alignment versus online latency. Six designs were killed under prospective gates. Cycle 7 has now isolated a different bottleneck: compressed vector indexes optimize average geometric distortion, while recommendation damage is concentrated in residual errors that reverse user preference margins or cross candidate boundaries. MARGIN-CACHE proposes to leave the SentenceTransformer catalog, PQ codebook, and user query immutable, learning only which bounded set of items deserves an exact-vector tier. This is a selected hypothesis, not a positive result.
+Phase 1 originally found four coupled bottlenecks: cross-stage objective mismatch, exposure-censored feedback, preference freshness versus reindexing cost, and semantic alignment versus online latency. Six designs were killed under prospective gates. Cycle 7 isolated a real compression bottleneck, but its selected MARGIN-CACHE architecture failed a deeper novelty audit: mixed-precision embedding caches, learned heterogeneous precision, ranking-aware quantization, and multi-tier vector systems already occupy the design. Only a preference-sensitivity cache-allocation criterion remained. Cycle 8 has returned to Phase 1 with no positive claim.
 
 ## Key Results
 
@@ -76,4 +76,5 @@ PIVOT v1 is the sixth killed design. Its sole claimed launch reproduced the froz
 | 4 | FACET-PREF: macro-balanced preference-aligned facet queries before fixed-budget ANN | Dead end. Fixed depth-700 BPR retrieval exhausted before 200 unseen candidates during target-blind V construction; killed before V/T outcomes. |
 | 5 | CABLE-PREF: exact masked complement retrieval plus endpoint-leave-out admission-boundary query alignment | Dead end. Batched FAISS and matrix lexsort disagreed during target-blind R construction; no R/V/T target opened, but G1 and external integrity failed. |
 | 6 | PIVOT: one preference-trained partition potential jointly controls fixed-work FAISS probing and cross-shard ranking | Dead end. Sole launch observed 21,928 rather than exactly 21,931 structurally eligible users and failed closed before cohort/A/R/V/T access; killed without repair or rerun. |
-| 7 | MARGIN-CACHE: SimPO-trained sparse exact-vector tier over immutable PQ retrieval | Phase 1 selected the direction after structured ideation and collision review; Phase 2 is locking the question and gates with all Cycle-7 outcomes unopened. |
+| 7 | MARGIN-CACHE: SimPO-trained sparse exact-vector tier over immutable PQ retrieval | Rejected before PoC. Architecture-level novelty collapsed to a cache-allocation heuristic after collision with mixed-precision embedding caches, learned precision allocation, ranking-aware PQ, and multi-tier vector systems. |
+| 8 | Architecture-level successor | Phase 1 restarted; no cohort or outcome has been opened. |

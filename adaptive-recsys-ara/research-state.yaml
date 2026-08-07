@@ -1,10 +1,10 @@
 # Research State — Adaptive Recommendation Research Sprint
 
 project:
-  title: "MARGIN-CACHE: Preference-Critical Precision Allocation for Compressed Retrieval"
-  question: "Provisional: under a fixed sub-eighth-memory vector budget, can reference-free preference loss allocate a sparse exact-vector cache that improves future candidate preference exposure over equal-byte PQ cache controls while retaining full-precision relevance and low latency?"
+  title: "Cycle 8: Architecture-level successor after MARGIN-CACHE novelty rejection"
+  question: "TBD after fresh Phase-1 limitation analysis"
   status: active
-  phase: 2_research_question_cycle_7
+  phase: 1_identify_limitations_cycle_8
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -164,14 +164,20 @@ experiments:
       external_verification_complete: false
       gate_passed: false
       failed_gates: [G9]
+    - design: "MARGIN-CACHE"
+      status: rejected_before_poc
+      reason: "architecture-level novelty occupied by mixed-precision embedding caches, learned heterogeneous precision, ranking-aware PQ, and multi-tier vector systems"
+      cohort_selected: false
+      outcomes_opened: false
+      gate_passed: false
   gate:
-    status: cycle7_phase2_question_design_phase5_forbidden
+    status: cycle8_phase1_phase5_forbidden
     rule: "A successor may proceed to Phase 5 only after a prospectively locked, source-bound PoC externally verifies every registered gate; any failure kills that design and returns to Phase 1."
 
 outer_loop:
-  cycle: 7
-  last_direction: "MARGIN_CACHE_SELECTED_AFTER_CYCLE7_IDEATION"
-  last_reflection: "Cycle-7 Phase 1 applied structured brainstorming and creative-thinking to ten distinct mechanisms and collision-checked PQ, ranking-aware quantization, exact reranking, dynamic indexing, uncertainty retrieval, and preference optimization. MARGIN-CACHE was selected: keep SentenceTransformer vectors and an ordinary FAISS PQ index immutable, then use user-macro fixed-margin SimPO loss to allocate a fixed exact-vector cache under actual serialized-byte accounting. No Cycle-7 cohort or A/R/V/T outcome has been opened; Phase 2 must now lock a falsifiable question and one-shot gate."
+  cycle: 8
+  last_direction: "MARGIN_CACHE_REJECTED_RETURNED_TO_PHASE_1"
+  last_reflection: "An independent architecture-level collision audit found that MARGIN-CACHE's storage pattern is occupied by mixed-precision embedding caches, learned heterogeneous precision, ranking-aware PQ, and multi-tier vector systems. Exact-vector caching is algebraically identical to full residual caching; only the preference-sensitivity allocation criterion remained potentially new. Because the user requested a novel recommendation system rather than a narrow cache heuristic, MARGIN-CACHE was killed before cohort selection or outcome access. Cycle 8 returned to Phase 1."
 
 workspace:
   findings: "findings.md"

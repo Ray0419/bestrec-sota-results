@@ -2,11 +2,11 @@
 
 ## Research Question
 
-Cycle 8 has returned to Phase 1. The next question must claim an architecture-level mechanism, not only a preference-aware heuristic for an occupied mixed-precision cache.
+Cycle 8 Phase 1 selected CODEPATCH-⊥. Phase 2 must test whether a sparse user preference program constrained outside every dense-query PQ scoring table can improve future recommendation without changing the catalog index.
 
 ## Current Understanding
 
-Phase 1 originally found four coupled bottlenecks: cross-stage objective mismatch, exposure-censored feedback, preference freshness versus reindexing cost, and semantic alignment versus online latency. Six designs were killed under prospective gates. Cycle 7 isolated a real compression bottleneck, but its selected MARGIN-CACHE architecture failed a deeper novelty audit: mixed-precision embedding caches, learned heterogeneous precision, ranking-aware quantization, and multi-tier vector systems already occupy the design. Only a preference-sensitivity cache-allocation criterion remained. Cycle 8 has returned to Phase 1 with no positive claim.
+Phase 1 originally found four coupled bottlenecks: cross-stage objective mismatch, exposure-censored feedback, preference freshness versus reindexing cost, and semantic alignment versus online latency. Six designs were killed under prospective gates. Cycle 7 isolated a real compression bottleneck, but its selected MARGIN-CACHE architecture failed a deeper novelty audit. Cycle 8 instead treats the PQ lookup table as the personalization interface. For each subquantizer, it removes the complete centroid-plus-constant score subspace reachable by ordinary dense queries and learns only a sparse support-restricted orthogonal residual. This is an untested hypothesis, not a positive recommendation result.
 
 ## Key Results
 
@@ -48,6 +48,9 @@ PIVOT v1 is the sixth killed design. Its sole claimed launch reproduced the froz
 - IVF and learned ANN routing ordinarily optimize geometric neighbor recovery. PIVOT's candidate gap is to use one preference-trained partition offset for both fixed-budget probe selection and cross-partition ranking, avoiding separate routing/ranking utilities.
 - On the frozen 10,681-item SentenceTransformer matrix, any four of 32 target-blind clusters contain at least 932 items; a 300-event history therefore leaves a construction-level floor of 632 unseen items for a 100-candidate PoC.
 - Exact aggregate cardinalities derived in a preview implementation are brittle protocol invariants: the scientific rule should lock eligibility logic and deterministic ordering, then fail only if fewer than the required prospective cohort size exists. Preview counts may be recorded diagnostically, not used as equality gates.
+- For a fixed PQ subquantizer, every dense-query ADC table lies in `col([C_m, 1])`; preference utility in its orthogonal complement is provably not another dense query.
+- Sparsity must be selected before a support-restricted orthogonal projection. Naively pruning a projected table can invalidate the non-collapse claim.
+- Complete-PQ-tuple utilities are nearly item-ID memorization when tuples are unique; a valid compressed preference program must operate on shared subquantizer symbols and generalize to unseen items.
 
 ## Lessons and Constraints
 
@@ -65,6 +68,8 @@ PIVOT v1 is the sixth killed design. Its sole claimed launch reproduced the froz
 - Which item-level PQ residuals cause the largest user-macro preference-margin damage, and are they distinct from popular or high-residual-norm items?
 - Can a learned exact tier improve future candidate preference exposure over every equal-byte cache heuristic while retaining at least 97% of full-float future-liked recall?
 - Does the two-tier PQ-plus-cache serving path preserve a meaningful memory reduction without material NDCG or p95-latency regression?
+- Does CODEPATCH-⊥ improve unseen future candidate recall and NDCG over both a tuned dense query and pQCF-style dense-representable lookup scoring?
+- Does any apparent CODEPATCH gain survive the exact orthogonal projection and participate in candidate rescue rather than only reranking an unchanged shortlist?
 
 ## Optimization Trajectory
 
@@ -77,4 +82,4 @@ PIVOT v1 is the sixth killed design. Its sole claimed launch reproduced the froz
 | 5 | CABLE-PREF: exact masked complement retrieval plus endpoint-leave-out admission-boundary query alignment | Dead end. Batched FAISS and matrix lexsort disagreed during target-blind R construction; no R/V/T target opened, but G1 and external integrity failed. |
 | 6 | PIVOT: one preference-trained partition potential jointly controls fixed-work FAISS probing and cross-shard ranking | Dead end. Sole launch observed 21,928 rather than exactly 21,931 structurally eligible users and failed closed before cohort/A/R/V/T access; killed without repair or rerun. |
 | 7 | MARGIN-CACHE: SimPO-trained sparse exact-vector tier over immutable PQ retrieval | Rejected before PoC. Architecture-level novelty collapsed to a cache-allocation heuristic after collision with mixed-precision embedding caches, learned precision allocation, ranking-aware PQ, and multi-tier vector systems. |
-| 8 | Architecture-level successor | Phase 1 restarted; no cohort or outcome has been opened. |
+| 8 | CODEPATCH-⊥: orthogonal user preference programs over immutable FAISS PQ symbols | Phase 1 complete. Selected after rejecting ECC/supervised hashing and verifying item-only non-collapse, storage, and code-scan feasibility; no cohort or outcome has been opened. |

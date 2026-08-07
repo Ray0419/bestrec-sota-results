@@ -1,10 +1,10 @@
 # Research State — Adaptive Recommendation Research Sprint
 
 project:
-  title: "Cycle 8: Architecture-level successor after MARGIN-CACHE novelty rejection"
-  question: "TBD after fresh Phase-1 limitation analysis"
+  title: "CODEPATCH-⊥: Orthogonal preference programs over immutable PQ codes"
+  question: "Phase-2 wording pending prospective gate lock"
   status: active
-  phase: 1_identify_limitations_cycle_8
+  phase: 2_design_research_question_cycle_8
   started: "2026-08-07"
   domain: "vector retrieval and preference-aligned recommendation"
 
@@ -44,9 +44,12 @@ literature:
     - "Product-quantization reconstruction error is not the same as user-macro preference-margin damage."
     - "Full-vector reranking preserves quality only after compressed retrieval and cannot rescue a censored item."
     - "Sparse precision allocation under a fixed serialized-byte budget is under-explored relative to retraining the full codebook or query encoder."
+    - "Every dense-query ADC table is confined to the centroid-plus-constant column space, leaving a large but untested orthogonal utility space."
+    - "Unprojected codeword tables may be ordinary query representations, while full-tuple tables may be item-ID memorization."
   evidence_gaps:
     - "The RAVEL component intersection is only a candidate whitespace, not an exhaustive novelty proof."
     - "PoC evidence is required before any benefit claim."
+    - "CODEPATCH-⊥ has only item-only non-collapse, byte, and latency feasibility evidence; no Cycle-8 preference or quality outcome has been opened."
 
 hypotheses:
   - id: C2-H1
@@ -171,13 +174,13 @@ experiments:
       outcomes_opened: false
       gate_passed: false
   gate:
-    status: cycle8_phase1_phase5_forbidden
+    status: cycle8_phase2_phase5_forbidden
     rule: "A successor may proceed to Phase 5 only after a prospectively locked, source-bound PoC externally verifies every registered gate; any failure kills that design and returns to Phase 1."
 
 outer_loop:
   cycle: 8
-  last_direction: "MARGIN_CACHE_REJECTED_RETURNED_TO_PHASE_1"
-  last_reflection: "An independent architecture-level collision audit found that MARGIN-CACHE's storage pattern is occupied by mixed-precision embedding caches, learned heterogeneous precision, ranking-aware PQ, and multi-tier vector systems. Exact-vector caching is algebraically identical to full residual caching; only the preference-sensitivity allocation criterion remained potentially new. Because the user requested a novel recommendation system rather than a narrow cache heuristic, MARGIN-CACHE was killed before cohort selection or outcome access. Cycle 8 returned to Phase 1."
+  last_direction: "CODEPATCH_PERP_SELECTED_PHASE_1_COMPLETE"
+  last_reflection: "Cycle 8 rejected ECC and free query-bit reprogramming because both collide with hashing architectures and suffer metric or algebraic collapse. CODEPATCH-⊥ instead treats fixed PQ symbols as a serving interface and restricts user-conditioned utilities to the exact orthogonal complement of all dense-query ADC tables. Item-only checks confirmed the non-dense function space and a sub-one-eighth storage envelope, but provided no recommendation evidence. Phase 2 must preregister a fresh outcome test."
 
 workspace:
   findings: "findings.md"

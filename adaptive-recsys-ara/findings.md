@@ -2,11 +2,11 @@
 
 ## Research Question
 
-On a prospectively selected, cycle-5-disjoint 600-user temporal MovieLens 10M cohort, can PIVOT reuse one fixed-margin, reference-free user-to-partition potential for both four-shard FAISS probing and cross-shard ranking, improving FutureLikedRecall@100 and fixed-pair CandidatePreferenceExposure@100 by at least `+0.010` over an equal-work balanced geometric baseline, while retaining at least 90% aligned-oracle top-100 overlap, at least 95% of raw-full-exact future-liked recall, and avoiding material NDCG@10 or p95-latency regression?
+Phase 2 is formalizing this provisional Cycle-7 question: under a fixed sub-eighth-memory vector budget, can reference-free preference loss allocate a sparse exact-vector cache that improves future candidate preference exposure over equal-byte PQ cache controls while retaining full-precision relevance and low latency?
 
 ## Current Understanding
 
-Phase 1 originally found four coupled bottlenecks: cross-stage objective mismatch, exposure-censored feedback, preference freshness versus reindexing cost, and semantic alignment versus online latency. RIPPLE showed that semantic query adaptation cannot replace collaborative structure. CAPER preserved collaborative support and safety, but global preference residuals still failed to retain both relevance and preference quality. RAVEL then showed that selective intervention can preserve relevance and produce positive conditional uplift, yet cannot create enough aggregate preference effect when the underlying constrained proposal changes too little of the evaluated preference surface. A cycle-4 deep-tail continuation idea was rejected after its apparent preference gain vanished on served-page metrics. FACET-PREF moved alignment before ANN candidate formation, but its fixed post-filter retrieval depth could not guarantee the registered exact candidate budget. CABLE-PREF then failed its retrieval-integrity invariant before any R/V/T target was opened. PIVOT subsequently failed a source-locked exact structural-count invariant before cohort construction or A/R/V/T access. Cycle 7 has returned to Phase 1; no positive benefit claim has been made.
+Phase 1 originally found four coupled bottlenecks: cross-stage objective mismatch, exposure-censored feedback, preference freshness versus reindexing cost, and semantic alignment versus online latency. Six designs were killed under prospective gates. Cycle 7 has now isolated a different bottleneck: compressed vector indexes optimize average geometric distortion, while recommendation damage is concentrated in residual errors that reverse user preference margins or cross candidate boundaries. MARGIN-CACHE proposes to leave the SentenceTransformer catalog, PQ codebook, and user query immutable, learning only which bounded set of items deserves an exact-vector tier. This is a selected hypothesis, not a positive result.
 
 ## Key Results
 
@@ -62,9 +62,9 @@ PIVOT v1 is the sixth killed design. Its sole claimed launch reproduced the froz
 
 ## Open Questions
 
-- Can a preference-trained partition potential beat geometric IVF at identical four-shard work while also beating route-only and rerank-only controls?
-- Will the candidate gain survive served-list preference, relevance, and seed-stability tests on a fresh temporal cohort?
-- How much full-catalog semantic quality is retained when exactly 1,336 physical shard slots, 12.51% of the 10,681-item catalog count, are searched?
+- Which item-level PQ residuals cause the largest user-macro preference-margin damage, and are they distinct from popular or high-residual-norm items?
+- Can a learned exact tier improve future candidate preference exposure over every equal-byte cache heuristic while retaining at least 97% of full-float future-liked recall?
+- Does the two-tier PQ-plus-cache serving path preserve a meaningful memory reduction without material NDCG or p95-latency regression?
 
 ## Optimization Trajectory
 
@@ -76,4 +76,4 @@ PIVOT v1 is the sixth killed design. Its sole claimed launch reproduced the froz
 | 4 | FACET-PREF: macro-balanced preference-aligned facet queries before fixed-budget ANN | Dead end. Fixed depth-700 BPR retrieval exhausted before 200 unseen candidates during target-blind V construction; killed before V/T outcomes. |
 | 5 | CABLE-PREF: exact masked complement retrieval plus endpoint-leave-out admission-boundary query alignment | Dead end. Batched FAISS and matrix lexsort disagreed during target-blind R construction; no R/V/T target opened, but G1 and external integrity failed. |
 | 6 | PIVOT: one preference-trained partition potential jointly controls fixed-work FAISS probing and cross-shard ranking | Dead end. Sole launch observed 21,928 rather than exactly 21,931 structurally eligible users and failed closed before cohort/A/R/V/T access; killed without repair or rerun. |
-| 7 | Successor direction | Phase 1 restarted. Must use a fresh cohort, a genuinely distinct mechanism, and rule-based eligibility without a preview-count equality gate. |
+| 7 | MARGIN-CACHE: SimPO-trained sparse exact-vector tier over immutable PQ retrieval | Phase 1 selected the direction after structured ideation and collision review; Phase 2 is locking the question and gates with all Cycle-7 outcomes unopened. |

@@ -1,0 +1,20 @@
+[
+ {
+  "label": "full-catalog softmax",
+  "cold_norm": 0.3687692367225417,
+  "warm_norm": 0.4496825651324614,
+  "norm_ratio": 0.8200656759149971,
+  "cold_coherence": 0.6028573480986463,
+  "warm_coherence": -0.061051864451005626,
+  "cold_norm_sd": 0.04442939543940887
+ },
+ {
+  "label": "sampled negatives (1024)",
+  "cold_norm": 0.5010083757197321,
+  "warm_norm": 0.4518525932555713,
+  "norm_ratio": 1.1087872089213793,
+  "cold_coherence": 0.935269124020645,
+  "warm_coherence": -0.11573258111019404,
+  "cold_norm_sd": 0.045417998745908544
+ }
+]

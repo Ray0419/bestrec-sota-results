@@ -1,0 +1,164 @@
+{
+ "category": "Video_Games",
+ "degree_summary": {
+  "n_items": 25612,
+  "n_deg0": 85,
+  "n_le_5": 7148,
+  "median": 9,
+  "max": 2062
+ },
+ "poc_a": {
+  "n_text_seeds": 8,
+  "n_id_seeds": 8,
+  "tercile_join_agreement": null,
+  "note": "arms not initialization-paired (different seed ranges); Welch across per-seed bucket means",
+  "buckets": {
+   "k0-0": {
+    "text_mean": 0.0,
+    "id_mean": 0.0,
+    "delta": 0.0,
+    "welch_se": 0.0,
+    "rel_delta_pct": 0.0,
+    "n_eval_users_per_seed": 345.0
+   },
+   "k1-2": {
+    "text_mean": 0.0008103006525011962,
+    "id_mean": 0.0009684448810143629,
+    "delta": -0.00015814422851316665,
+    "welch_se": 0.00011721861099580908,
+    "rel_delta_pct": -16.329708754051563,
+    "n_eval_users_per_seed": 2672.0
+   },
+   "k3-5": {
+    "text_mean": 0.005553772655588497,
+    "id_mean": 0.005654171152690025,
+    "delta": -0.00010039849710152815,
+    "welch_se": 0.00012550460810249476,
+    "rel_delta_pct": -1.7756536615231857,
+    "n_eval_users_per_seed": 7184.0
+   },
+   "k6-10": {
+    "text_mean": 0.013357810742184346,
+    "id_mean": 0.012552416903584537,
+    "delta": 0.0008053938385998091,
+    "welch_se": 0.0002055990278831974,
+    "rel_delta_pct": 6.416245132599256,
+    "n_eval_users_per_seed": 9045.0
+   },
+   "k11-20": {
+    "text_mean": 0.02470923984597278,
+    "id_mean": 0.023087421701317577,
+    "delta": 0.0016218181446552016,
+    "welch_se": 0.000382061444737067,
+    "rel_delta_pct": 7.024682814896763,
+    "n_eval_users_per_seed": 11480.0
+   },
+   "k21-50": {
+    "text_mean": 0.03838475713157526,
+    "id_mean": 0.03555320762519521,
+    "delta": 0.0028315495063800517,
+    "welch_se": 0.0003135148744831525,
+    "rel_delta_pct": 7.9642589108428,
+    "n_eval_users_per_seed": 17185.0
+   },
+   "k51-150": {
+    "text_mean": 0.06559438418365054,
+    "id_mean": 0.06260511594594347,
+    "delta": 0.0029892682377070795,
+    "welch_se": 0.00040275917143947653,
+    "rel_delta_pct": 4.774798660684808,
+    "n_eval_users_per_seed": 21777.0
+   },
+   "k151-500": {
+    "text_mean": 0.11602943770671525,
+    "id_mean": 0.11338056949774691,
+    "delta": 0.0026488682089683413,
+    "welch_se": 0.0005826142814981206,
+    "rel_delta_pct": 2.3362629246812694,
+    "n_eval_users_per_seed": 18071.0
+   },
+   "k501-1000000000": {
+    "text_mean": 0.2525072065664388,
+    "id_mean": 0.25342226987266564,
+    "delta": -0.0009150633062268154,
+    "welch_se": 0.0009693452863244945,
+    "rel_delta_pct": -0.3610824363172966,
+    "n_eval_users_per_seed": 7003.0
+   }
+  }
+ },
+ "poc_0": {
+  "ckpt": "results_VG_COLDFUSE_base_seed20260736.best.pt",
+  "n_items": 25612,
+  "channels": [
+   "item_emb",
+   "proj_text",
+   "tape_0"
+  ],
+  "id_row_norm_k0": 0.3231620480849909,
+  "id_row_norm_warm": 0.5516524251933627,
+  "n_deg0": 85,
+  "prior_ridge_on_effective": {
+   "spearman_k_vs_norm": 0.46740801006649313,
+   "spearman_p": NaN,
+   "binned_r2_of_1_over_k_law": 0.0382350132002639,
+   "sigma2": 1e-12,
+   "tau2_global": 0.008205852962295593,
+   "alpha_at_k": {
+    "1": 0.9999999998781357,
+    "2": 0.999999999939068,
+    "5": 0.9999999999756272,
+    "10": 0.9999999999878136,
+    "50": 0.9999999999975627,
+    "200": 0.9999999999993907
+   }
+  },
+  "resid2_by_degree_effective": [
+   {
+    "bucket": "k0-0",
+    "n": 85,
+    "mean_resid2": 0.0031670040371618476
+   },
+   {
+    "bucket": "k1-2",
+    "n": 966,
+    "mean_resid2": 0.006105321437048268
+   },
+   {
+    "bucket": "k3-5",
+    "n": 6097,
+    "mean_resid2": 0.007738049365626274
+   },
+   {
+    "bucket": "k6-10",
+    "n": 7281,
+    "mean_resid2": 0.00858498365749984
+   },
+   {
+    "bucket": "k11-20",
+    "n": 4970,
+    "mean_resid2": 0.00871280719721934
+   },
+   {
+    "bucket": "k21-50",
+    "n": 3684,
+    "mean_resid2": 0.007861967907590382
+   },
+   {
+    "bucket": "k51-150",
+    "n": 1874,
+    "mean_resid2": 0.006324644327025782
+   },
+   {
+    "bucket": "k151-500",
+    "n": 594,
+    "mean_resid2": 0.005121790385279482
+   },
+   {
+    "bucket": "k501-1000000000",
+    "n": 61,
+    "mean_resid2": 0.0046623501484510865
+   }
+  ]
+ }
+}

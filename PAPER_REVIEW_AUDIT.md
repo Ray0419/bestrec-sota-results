@@ -4,7 +4,2828 @@ This file is cumulative. Each run should add a timestamped section, keep the
 prior rejection-risk list current, and distinguish confirmed problems from
 plausible risks.
 
-## Current Prioritized Rejection-Risk List (2026-07-25 04:00 Australia/Sydney)
+## Current Prioritized Rejection-Risk List (2026-07-31 22:11 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Author, affiliation, country,
+   contact, running-header, declaration/legal, and release-creator fields remain
+   placeholders. The intended `v1.2.0-deposit` tag is absent and the tracked
+   clean-clone record is a waived draft with `release_ready=false`. Replace and
+   independently verify every field, rerun without a waiver, and build and
+   re-download the immutable deposit. Literal acceptance remains below 1%.
+2. **[CONFIRMED new optimizer-budget error and unresolved validity risk]** The
+   new F3/F4/F5 memos use all 6,040 source users to claim about 472 MovieLens
+   updates. The frozen primary trainer actually has 1,033 users, batch 256,
+   one example/user/epoch, and 20 epochs: **5 updates/epoch, 100 total**. Amazon
+   totals are 4,500/4,000/9,680, so the asymmetry is 45x/40x/96.8x. F5's
+   400-484-update post-hoc validation prefixes are not step matched, have
+   incompatible full-run LR schedules, and do not execute F4's promised fresh
+   frozen test. Retain the null only as a result under this 100-update fixed
+   protocol; run a preregistered duration/convergence sensitivity before any
+   domain or temporal-structure interpretation.
+3. **[CONFIRMED, editor-facing contradiction]** `COVER_LETTER_TORS.md` still
+   says 192 cells/18 families, 751 manifested files, 282 release assets, and no
+   active pointwise placebo. The live graph is 201/25, local manifest is
+   1,081=674+407, and the manuscript reports the pointwise campaign. Regenerate
+   every count from the final tag and scope the older six-arm statement.
+4. **[CONFIRMED central scientific ceiling; no new evidence this run]** All six
+   eligible commits are advisory memos/handoff text. None changes a manuscript,
+   preregistration, experiment, adjudication, result, table, figure, or PDF;
+   none of patch-register P1-P7 is applied. Positive FIR evidence remains
+   same-team/outcome-known Amazon evidence and the only frozen non-Amazon study
+   remains a selected-cohort null. Do not raise acceptance odds for analysis
+   documents.
+5. **[CONFIRMED estimand/design limitation, not wholly undisclosed leakage]**
+   Core Amazon user-wise LLOO permits globally later events from one user in
+   training while another user's earlier event is tested. The paper already
+   discloses complete-history inclusion and unrun global-time sensitivity, but
+   not this cross-user chronology plainly. Add one precise Amazon-only
+   Methods/Limitations/checklist sentence and run global/rolling-cutoff
+   sensitivity; do not claim comparator protocols are numerically commensurate.
+6. **[CONFIRMED MovieLens activity; interpretation still limited]** The F1/F3/
+   F5/handoff chain still requests the wrong `fir_v3_final_l2` field and repeats
+   the false 6,040-user/no-ranking-change inference. MovieLens used
+   `fir_control=learned`; all eight `fir_control_final_l2` values are nonzero
+   (`0.192596`-`0.216180`) and equal-NDCG seeds changed 109-125 held-out target
+   ranks among 1,033 users. Inactivity is resolved; full score/top-10 behavior,
+   optimization sufficiency, and population/domain generalization are not.
+7. **[CONFIRMED F6 overclaim]** The 16-filter-parameter shared arm beat identity
+   on outcome-known MI, while learned-shared was a non-detection
+   (`-0.000081 [-0.000337,+0.000175]`). With no equivalence/noninferiority
+   margin, this does not establish “no detectable loss,” matching performance,
+   or parameter efficiency. The 64x ratio concerns filter parameters only;
+   total trainable parameters fall just 0.0578%. Fixed MA/HP each learn one
+   scalar, so they are not zero-parameter/non-learned filters. Keep the safe
+   conclusion: per-channel necessity is not established.
+8. **[CONFIRMED canonical-protocol drift]** The paper says primary positive taps
+   used backbone weight decay, while design discussion called zero decay the
+   intended canonical. The MI contrast crosses zero and is not equivalence.
+   Define the three primary canonical learned-identity blocks as backbone-decay
+   evidence or rerun under zero; do not say every reported FIR result used the
+   same decay because a zero-decay sensitivity is reported.
+9. **[CONFIRMED novelty/baseline weakness]** TV-Rec, TimeWeaver, HyenaRec,
+   ConvRec, Mamba4Rec, and related frequency systems are discussed but none is
+   run under the paper protocol. Benchmark TV-Rec first and at least one modern
+   linear-time/long-convolution system with identical information, candidates,
+   method-appropriate search spaces, total compute, seeds, evaluator, and
+   hardware.
+10. **[CONFIRMED MovieLens estimand/generalization gap]** Primary eligibility
+    depends on the future target being in the training catalog and retains
+    1,033/6,040 users; all-evaluable coverage is 1,129/6,040. Define population
+    and catalog before cutoff, count unavailable targets as misses or coverage,
+    add cohort/head-mid-tail uncertainty, and repeat across cutoffs/domains. The
+    interval bounds only this fixed selected-cohort, transferred-schedule
+    estimand, not a pure domain effect.
+11. **[CONFIRMED headline-inference weakness]** Table 1 mixes single-, five-,
+    six-, and eight-seed arms without one complete estimand, SESOI, matching, or
+    multiplicity family. Release exact vectors/matching and report valid
+    effects, SEs/CIs, df, and confirmatory/exploratory families.
+12. **[CONFIRMED draft-design blockers; no authority to run]** The temporal
+    control remains rejected; the tuning matrix remains REVISE/NO RUN with
+    search-coverage and cross-architecture pairing problems; the dataset gate
+    lacks incorporated diagnosticity/exposure thresholds. Revise, re-audit,
+    freeze, and only then execute.
+13. **[CONFIRMED release-governance regression]** Mechanical gates pass their
+    declared boundary, but six new memos plus `HANDOFF_CODEX.md` are ungoverned;
+    only 1/16 root Claude/Handoff records is manifested. The local and remote
+    manifest hashes differ, the clean-clone verifier now reports 24 drifted
+    files, and the 957-entry candidate deposit still fails stale metadata.
+    Define an explicit public/internal policy and a supersession table, then
+    regenerate and attest the final boundary.
+14. **[CONFIRMED PDF/source-readiness defects]** All four PDFs are unchanged,
+    source-current, and local-manifest-matched, so defects persist: V3/V4
+    “Normal(0,1) was not tested” ambiguity, orphan TORS reference page,
+    nonexistent supplement Figure 3/mixed numbering, sub-2 pt labels, dense
+    acmsmall table, untagged venue PDFs, empty metadata, and placeholders.
+15. **[CONFIRMED comparator-design/terminology limit]** E-E V4 is valid
+    secondary coverage, not FIR efficacy or causal initialization isolation.
+    Run a concurrent blocked model-by-initialization 2x2 plus capacity/text/
+    null-space controls; meanwhile use noncausal cross-campaign wording.
+16. **[CONFIRMED public-replay/custody limit; AUTHOR/LEGAL VERIFICATION]**
+    Private AlphaFuse, WEARec, MovieLens, and V4 record-level artifacts cannot
+    be independently replayed, and V4 lacks external custody/signed receipts.
+    Provide lawful release or escrow plus institutional retention/licensing
+    decisions.
+17. **[CONFIRMED optimization/deployment gap]** FIR paths still execute roughly
+    404,352 operator FLOPs/user with no true bypass or demonstrated deployment
+    gain. Implement bypass/fused kernels and report CPU/GPU latency,
+    throughput, memory, bytes, energy, and accuracy across sequence lengths.
+18. **[CONFIRMED writing/status risk]** F3/F4 remain headed BLOCKING/CONFIRMED
+    while F5 separately retracts them; the fidelity memo says both surfaces
+    numerically PASS while acknowledging false cover counts; and A3-A7 status
+    files are stale. Add one machine-readable status/supersession registry,
+    mark exploratory/retracted claims in-place, and do not apply unsafe P3-P5/
+    P8 wording.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-31 16:09 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Author, affiliation, country,
+   contact, running-header, declaration/legal, and release-creator fields remain
+   placeholders. The intended `v1.2.0-deposit` tag is absent and the tracked
+   clean-clone attestation says `release_ready=false`. Replace and independently
+   verify every field, rerun without a waiver, and build and re-download the
+   immutable deposit. Literal acceptance remains below 1% while dummy metadata
+   is visible.
+2. **[CONFIRMED, editor-facing contradiction]** `COVER_LETTER_TORS.md` says
+   192 cells/18 families, 751 manifested files, 282 release assets, and no
+   active pointwise placebo. The current graph is 201/25, the local manifest
+   verifies 1,081 entries, the repository advertises 407 release assets, and
+   the manuscript reports the completed pointwise campaign. Regenerate every
+   count from the final tagged boundary and rewrite the placebo sentence before
+   an editor sees the package.
+3. **[CONFIRMED central scientific ceiling; no new evidence this run]** The
+   nine new commits are planning, governance, and reviewer memos. Both new
+   preregistrations remain rejected/unfrozen drafts and no experiment was run.
+   Positive FIR evidence remains same-team/outcome-known Amazon evidence; the
+   sole frozen non-Amazon result is a null/non-detection on a selected cohort.
+   Do not raise an acceptance estimate because documents were added.
+4. **[CONFIRMED estimand/design limitation, not wholly undisclosed leakage]**
+   The core Amazon user-wise leave-last-out split permits globally later events
+   from one user in training while another user's earlier held-out event is in
+   test. The paper already discloses complete-history catalog construction and
+   that future events affect inclusion, but does not state this cross-user
+   chronology or justify the non-global-time estimand plainly. Add an explicit
+   Methods/Limitations/checklist statement and run global-cutoff or rolling-time
+   sensitivity before making strong temporal-deployment claims.
+5. **[CONFIRMED error in a new reviewer memo; existing ML result not
+   invalidated]** `CLAUDE_A4_MOVIELENS_NARROWING_2026-07-31.md` falsely infers
+   that equal aggregate NDCG on 3/8 learned seeds means no user's ranking
+   changed and directs the reader to the wrong `fir_v3_final_l2` field. The
+   primary cohort has 1,033, not about 6,040, evaluable users; 109-125 held-out
+   target ranks changed on each equal-NDCG seed; and all eight learned runs
+   have nonzero `fir_control_final_l2` (`0.192596`-`0.216180`). Correct the memo
+   and handoff, expose the right diagnostic publicly, and add a governed
+   sealed-checkpoint score/top-10 counterfactual. Call the result a fixed-split
+   null/non-detection, not equivalence or an inactive module.
+6. **[CONFIRMED canonical-protocol drift]** The paper says the positive primary
+   taps used backbone weight decay, while the new Codex response calls zero
+   decay intended canonical. The available MI decay contrast crosses zero and
+   is not an equivalence test. Define canonical as the evidence-backed
+   backbone-decay setting or rerun the breadth/transfer evidence under zero
+   decay; do not silently change the canonical intervention.
+7. **[CONFIRMED novelty/baseline weakness]** TV-Rec, TimeWeaver, HyenaRec,
+   ConvRec, Mamba4Rec, and related frequency systems are discussed but none is
+   run under the paper protocol. Benchmark TV-Rec first and at least one
+   modern linear-time/long-convolution system with identical inputs,
+   candidates, method-appropriate predeclared search spaces, total compute,
+   seeds, evaluator, and hardware.
+8. **[CONFIRMED MovieLens estimand/generalization gap]** Primary eligibility
+   depends on the future target being in the training catalog and retains only
+   1,033/6,040 users; all-evaluable coverage is 1,129/6,040. Define population
+   and catalog before cutoff, count out-of-catalog targets as misses or report
+   coverage, add cohort/head-mid-tail uncertainty, and repeat across rolling
+   cutoffs and another non-Amazon domain. The current interval can bound an
+   Amazon-sized effect only for this fixed selected-cohort estimand.
+9. **[CONFIRMED headline-inference weakness]** Table 1 mixes single-, five-,
+   six-, and eight-seed arms in a descriptive ladder without one complete
+   estimand, matched contrast, SESOI, or multiplicity family. Release exact
+   vectors and matching records, then report valid effects, SEs/CIs, degrees of
+   freedom, and declared confirmatory versus exploratory families.
+10. **[CONFIRMED draft-design blockers; no authority to run]** The temporal
+    control collapses to one functional degree of freedom and is correctly
+    rejected. The tuning draft's equal 12-configuration rule favors a
+    low-dimensional FIR, its cross-architecture "paired" analysis lacks a
+    genuine shared random block, and it tries to import historical MovieLens
+    evidence. The dataset gate has not selected or acquired a dataset and lacks
+    incorporated temporal-diagnosticity/exposure-bias thresholds. Revise,
+    re-audit, freeze, and only then run.
+11. **[CONFIRMED release-governance regression]** Local manifest verification
+    passes 1,081 files and the graph/claim-map/Table 0/closure gates pass, but
+    the uploaded `v0.9-audit-evidence` manifest is now byte-stale; the old
+    clean-clone attestation fails post-attestation drift; six later governance
+    records sit outside declared manifest scope; and deposit checking expects
+    957 entries while README/CFF/Zenodo counts are stale. Define the public
+    governance boundary, regenerate all metadata, make a new child attestation,
+    and verify the exact tagged deposit.
+12. **[CONFIRMED PDF/source-readiness defects]** All four PDFs are unchanged,
+    current to their sources, and manifest-matched, so prior defects persist:
+    contradictory V3 "Normal(0,1) was not tested" wording, orphan TORS reference
+    page, nonexistent supplement Figure 3 reference/mixed numbering, sub-2 pt
+    figure text, dense acmsmall table, untagged TeX PDFs, empty PDF metadata,
+    and production placeholders. Repair and inspect every page again.
+13. **[CONFIRMED comparator-design and terminology limit]** E-E V4 is valid
+    secondary coverage, not FIR efficacy or causal initialization isolation.
+    It differs cross-campaign in model, text, capacity, allocation, phase/date,
+    and initialization. Run a concurrent blocked model-by-initialization 2x2
+    with capacity/text/null-space controls; meanwhile use noncausal
+    "later arm scored above" and "reduces the concern" wording.
+14. **[CONFIRMED public-replay/custody limit; AUTHOR/LEGAL VERIFICATION]**
+    Aggregate arithmetic and released ledgers are public, but private
+    AlphaFuse, WEARec, MovieLens, and V4 endpoints/sidecars/bootstraps cannot be
+    independently replayed; V4 lacks external custody and signed launch
+    receipts. Provide lawful release or independent escrow and institutional
+    decisions on access, retention, redistribution, licensing, and commercial
+    use.
+15. **[CONFIRMED optimization/deployment gap]** Identity, shared, grouped, and
+    learned FIR paths still execute roughly 404,352 operator FLOPs per user,
+    with no true bypass or demonstrated deployment gain. Implement a bypass and
+    fused/structured kernels; report counterbalanced latency, throughput,
+    memory, bytes, energy, and accuracy across hardware and sequence lengths.
+16. **[CONFIRMED writing/status risk]** The repository mixes "negative,"
+    "precise null," and "bound," calls unfinished reviews complete in some
+    status files, and publishes an unsupported 35-50% conditional acceptance
+    forecast. Use one dated status registry, distinguish null/non-detection
+    from negative effect or equivalence, remove sales forecasts, and keep the
+    33-page focused paper authoritative over the audit-ledger reader.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-31 10:08 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Author, affiliation, country,
+   contact, running-header, legal/declaration, and release-creator fields remain
+   placeholders. The tracked clean-clone attestation honestly says
+   `release_ready=false` and uses a metadata waiver. Replace and independently
+   verify every field, rerun without a waiver, and rebuild. Literal acceptance
+   remains below 1% while dummy metadata is visible.
+2. **[CONFIRMED central scientific ceiling]** E-E V4 is now complete and
+   mechanically valid, but it adds secondary comparator coverage rather than
+   FIR efficacy, method novelty, non-Amazon generalization, or independent
+   confirmation. Positive FIR evidence remains same-team/outcome-known Amazon
+   evidence; the sole frozen non-Amazon FIR study remains negative and
+   target-conditioned. Repeat population-honest cutoffs and obtain external
+   replication.
+3. **[CONFIRMED comparator-design limit]** The AlphaFuse-style package remains
+   above parser-default-normal SASRec-ID by +0.005207
+   [+0.004779,+0.005635], but normal SASRec is +0.004042 above the earlier
+   zero-init arm, shrinking the package margin by about 44%. The comparison is
+   cross-campaign and still differs in model, text, capacity, allocation,
+   initialization, and phase/date. Run a concurrent blocked
+   model-by-initialization 2x2 plus capacity-matched, text-only,
+   random/permuted-text, add/concat, and null-space-specific controls.
+4. **[CONFIRMED causal/terminology overstatement]** The manuscript often says
+   normal initialization “improved” SASRec and that V4 “closes” the zero-init
+   concern; the design supports only that the later normal-init arm scored
+   higher and reduces the concern. Frozen V4 artifacts also say
+   `upstream-default`/“more standard,” although the source establishes only a
+   CLI parser default and dataset-specific official recipes. Preserve frozen
+   records, add a linked erratum, and use noncausal parser-default wording.
+5. **[CONFIRMED novelty/baseline weakness]** TV-Rec, TimeWeaver, HyenaRec,
+   ConvRec, Mamba4Rec, and related frequency systems are discussed but none is
+   run under the paper protocol. Benchmark TV-Rec first and at least one
+   modern linear-time/long-convolution system with identical inputs,
+   candidates, tuning budget, seeds, evaluator, and hardware.
+6. **[CONFIRMED MovieLens estimand/generalization gap]** Primary eligibility
+   depends on the future target being in the training catalog and retains only
+   1,033/6,040 users; all-evaluable coverage is 1,129/6,040. Define population
+   and catalog before cutoff, count out-of-catalog targets as misses or report
+   coverage, add cohort/head-mid-tail uncertainty, and repeat across rolling
+   cutoffs and another non-Amazon domain.
+7. **[CONFIRMED headline-inference weakness]** Table 1 mixes single-, five-,
+   six-, and eight-seed arms in a descriptive ladder without one complete
+   estimand, matched contrast, SESOI, or multiplicity family. Release exact
+   vectors and matching records, then report valid effects, SEs/CIs, degrees of
+   freedom, and declared confirmatory versus exploratory families.
+8. **[CONFIRMED deposit blocker despite green release graph]** The live
+   1,073-file manifest, 201-cell/25-family graph, claim map, Table 0, closure
+   ledger, and clean-clone draft replay pass, and the uploaded v0.9 manifest
+   exactly matches local bytes. The deposit gate still requires 949 entries
+   while DOI/README inventory text is stale; README/CFF/Zenodo say 200/24
+   rather than 201/25; creators are placeholders; and
+   `v1.2.0-deposit` is absent. Fix, replay, tag, build, upload, and re-download
+   and hash the exact immutable deposit.
+9. **[CONFIRMED release-assurance gap]** `CLEAN_CLONE_ATTESTATION.json` is not
+   itself governed by `RELEASE_MANIFEST.json`; its subject hydration uses a
+   verified local source rather than proving public remote availability, and
+   its toolchain record says Tectonic is unavailable despite successful TeX
+   builds. Bind the attestation or a nonrecursive digest, record the actual
+   executable/version/hash, use a public immutable source bundle, and keep
+   transcript content as separately hashed artifacts.
+10. **[CONFIRMED PDF/source-readiness defects]** All four PDFs are current,
+    manifest-bound, and free of clipping/collision regressions, but V3 text says
+    parser-default Normal(0,1) “was not tested” immediately before V4 reports
+    that test; TORS page 33 is an orphan reference tail; the supplement cites a
+    nonexistent spectral Figure 3; figure text falls below 2 pt; venue PDFs are
+    untagged; and placeholder production furniture remains. Qualify “not tested
+    in V3,” repair references/numbering, redesign to at least 6-8 pt, tag and
+    accessibility-test, then render every page again.
+11. **[CONFIRMED public-replay/governance limit; AUTHOR/LEGAL VERIFICATION]**
+    Aggregate arithmetic and released ledgers are public, but private
+    AlphaFuse, WEARec, and MovieLens endpoints, sidecars, record bootstraps, and
+    some derivations cannot be replayed. Provide lawful release or independent
+    escrow and institutional decisions on access, retention, redistribution,
+    licensing, and commercial use.
+12. **[CONFIRMED V4 custody limit; AUTHOR VERIFICATION]** V4 chronology and
+    hashes are internally coherent, but STARTED files lack embedded signed
+    timestamps; the best launch evidence is a local origin reflog plus mutable
+    filesystem times; plaintext VALID logs were accessible; and there was no
+    external custodian. Preserve a server receipt, signed no-peeking statement,
+    per-child source binding, locks, sequestered logs, and external custody for
+    the next confirmatory study.
+13. **[CONFIRMED WEARec fairness and optimization gaps]** WEARec remains
+    official-model code in a custom harness with transferred presets and
+    unequal architecture/objective/search history. FIR identity/shared/grouped/
+    learned paths still execute about 404,352 operator FLOPs per user with no
+    true bypass or deployment gain. Run equal-information/equal-budget studies,
+    implement bypass and optimized structured kernels, and report
+    counterbalanced latency, throughput, memory, bytes, energy, and accuracy.
+14. **[CONFIRMED writing/editorial risk]** The reader remains a 23k-plus-word
+    audit ledger. Make the 33-page focused paper authoritative, move chronology,
+    hashes, retired paths, and detailed protocol history to the supplement, and
+    foreground one bounded question, the negative prospective transfer, and the
+    resulting claim boundary.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-31 04:07 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Real author, affiliation,
+   country/contact/running-header, conflict/funding, and release-creator fields
+   remain placeholders in both the current checkout and the focused side-branch
+   package. Strict production gates still require a draft waiver. Replace and
+   independently verify every field before submission; literal acceptance
+   remains below 1% while dummy metadata is visible.
+2. **[CONFIRMED: no new result at the fixed cutoff]** E-E V4 is a frozen
+   normal-initialization sensitivity, not completed evidence. The last eligible
+   status recorded 4/8 terminal trainings, 0/8 assessments, no READY record,
+   and no adjudication; wave three was active. Do not inspect, infer, quote, or
+   backfill a direction until all eight TEST-unread bundles, family READY, eight
+   sealed assessments, and the committed first-reader adjudication exist.
+3. **[CONFIRMED V4 design/lifecycle limit; AUTHOR VERIFICATION for access]** V4
+   improves one control but is a one-arm, outcome-known, same-investigator,
+   cross-campaign comparison: model, initialization, phase/date, and stochastic
+   paths remain confounded. `Normal(0,1)` is the pinned parser default, not a
+   universal official recipe. Mutable latest checkpoints and plaintext VALID
+   logs remain accessible; frozen-source cleanliness is checked once at driver
+   preflight rather than rehashed by each later-wave child; no campaign/seed
+   lock or external custody proves non-access. Use exact parser-default wording,
+   append-only hash-chained resumes, per-child source hashes, locks, sequestered
+   logs, and an externally held 2x2 model-by-initialization factorial.
+4. **[CONFIRMED central scientific ceiling]** Positive FIR evidence remains
+   outcome-known/same-team Amazon evidence. The sole frozen non-Amazon FIR study
+   is negative and target-conditioned, retaining 1,033/6,040 users in its
+   primary cohort. Even a favorable V4 result would address comparator
+   initialization, not filtering efficacy, cross-domain generalization, or
+   independent confirmation. Repeat population-honest temporal cutoffs and
+   obtain external replication.
+5. **[CONFIRMED current-checkout contradictions; repairs exist only off-branch]**
+   Current HEAD still calls 814,585 interactions "identical" to its own 814,586,
+   retains package-versus-repository-ID shorthand, omits the custom per-prefix
+   adapter, and tracks the three-field-stale E-E V3 result manifest. Eligible
+   side-worktree edits repair these statements and its ancestor adds a fatal
+   generator-equality gate, but they are not integrated into the current branch
+   or current PDFs. Merge only after clean verification and regeneration.
+6. **[CONFIRMED absence of one authoritative release boundary]** The pushed
+   root is `6d3b4048`; the local-only descendant `codex/ee-v4-postfix` is three
+   commits ahead and its worktree is dirty. All seven V4 protocol/code files
+   are absent from the root manifest, while its completeness matcher reports
+   only four and silently misses common/evaluator/test sources. The side
+   worktree fails ten live-manifest checks, claim-map equality, creator/tag, and
+   945-entry deposit checks. Select one clean candidate, integrate the governed
+   protocol/result boundary, regenerate every derived artifact, and verify a
+   clean clone before tagging.
+7. **[CONFIRMED novelty/baseline weakness]** TV-Rec, TimeWeaver, HyenaRec,
+   ConvRec, Mamba4Rec, and modern frequency systems are now cited, conceding
+   broad filtering/convolution/efficiency novelty, but none is run under the
+   paper protocol. Benchmark TV-Rec first and at least one modern linear-time or
+   long-convolution system under identical information, search budget, seeds,
+   evaluator, and hardware.
+8. **[CONFIRMED headline-inference weakness]** Table 1 mixes single-, five-,
+   and six-seed arms in a descriptive ladder without a complete estimand,
+   matched contrast, SESOI, or multiplicity family. Release exact vectors and
+   matching status, then report valid effects, SEs/CIs, degrees of freedom, and
+   declared confirmatory versus exploratory families.
+9. **[CONFIRMED MovieLens estimand/generalization gap]** Eligibility depends on
+   the future target being in the training catalog; primary and all-evaluable
+   coverage are only 1,033/6,040 and 1,129/6,040. Define the population/catalog
+   before cutoff, count out-of-catalog targets as misses or report coverage,
+   add cohort/head-mid-tail uncertainty, and repeat across rolling cutoffs and
+   another non-Amazon domain.
+10. **[CONFIRMED PDF/source-readiness gap]** The current root PDFs retain the
+    acmsmall page-17 footer collision, reader Figure 1-to-4 jump, sub-2-point
+    figure text, placeholder furniture, and excessive 55/49/50-page density.
+    The focused side package improves main-paper length (32-page TORS plus an
+    18-page supplement), but eligible source edits postdate all four side PDFs,
+    so those PDFs are already stale and cannot be the submission boundary.
+11. **[CONFIRMED WEARec fairness gap]** WEARec remains official model/training
+    code in a custom harness with transferred presets, one tuning seed, and
+    unequal architecture, objective, schedule, and search history. Keep it as
+    equal-evaluation feasibility evidence or run a genuinely equal-information,
+    equal-budget matched study.
+12. **[CONFIRMED public-replay/governance limit; AUTHOR/LEGAL VERIFICATION]**
+    Aggregate arithmetic is public, but private AlphaFuse, WEARec, and MovieLens
+    endpoints, sidecars, record bootstraps, and some upstream derivations cannot
+    be replayed. Provide lawful release or independent escrow and institutional
+    decisions on access, retention, redistribution, licensing, and commercial
+    use.
+13. **[CONFIRMED practical-optimization gap]** Identity/shared/grouped/learned
+    FIR paths still execute roughly 404,352 operator FLOPs per user; there is no
+    true bypass or demonstrated deployment gain. Implement bypass and optimized
+    structured kernels, then report counterbalanced latency, throughput, peak
+    memory, model bytes, energy, and accuracy distributions.
+14. **[CONFIRMED writing/editorial risk]** The reader remains a 23k-plus-word
+    audit ledger with many estimates, verdict codes, and historical VOID paths.
+    Make the 32-page focused main paper authoritative, move chronology/hashes
+    and retired studies to the supplement, and foreground one bounded question,
+    the negative prospective transfer, and the resulting claim boundary.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-30 23:27 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Real author names,
+   affiliations, country/contact/running-header metadata, declarations, and
+   release creators remain placeholders. The strict TORS health and PDF hygiene
+   gates fail unless the draft waiver is set; acmsmall still prints dummy
+   volume/DOI/date furniture. Replace all metadata, remove the waiver, complete
+   conflict/funding/legal review, and rebuild. Literal acceptance is below 1%.
+2. **[CONFIRMED manuscript contradiction]** The paper calls the HSTU-BLaIR
+   Video_Games geometry "identical" to ours while listing 814,585 interactions;
+   its own dataset table gives ours as 814,586 and later prose admits the
+   one-interaction difference. Say "same users/items; interaction totals differ
+   by one" and add a semantic gate against false identity language.
+3. **[CONFIRMED generated-artifact contradiction and gate blind spot]** The
+   tracked `hstu_results_manifest.json` is three semantic fields behind its
+   corrected generator: it still says TEST was unread before READY, calls the
+   control repository SASRec, and says the public graph validates the private
+   hash ledger. The 199-cell submission gate nevertheless passes because it
+   verifies the stale manifest rather than equality to regenerated output.
+   Regenerate it and make generator-to-artifact byte/semantic equality fatal.
+4. **[CONFIRMED central scientific risk]** The sole frozen non-Amazon FIR study
+   is negative, retains only 1,033/6,040 MovieLens users in its primary cohort,
+   and conditions membership on the future target being in the training
+   catalog. Positive FIR evidence remains outcome-visible/same-team Amazon
+   evidence; AlphaFuse-style MiniLM remains below WEARec, the paper reference,
+   and HSTU-BLaIR. Frame the paper as bounded evaluation/falsification, not a
+   generally useful filtering advance, and make the module optional.
+5. **[CONFIRMED AlphaFuse comparator validity gap; wording partly repaired]**
+   Main results correctly name a zero-initialized upstream-class control, but
+   the Introduction still advertises "package-versus-repository-ID." The parser
+   default is normal while official recipes use dataset-specific zero/normal
+   initialization; calling normal the universal upstream default is too broad.
+   Training also uses the paper's custom per-prefix adapter. State those facts
+   and run an equal-budget 2x2 model-by-initialization sensitivity plus simple
+   text/ID, capacity-matched, and permuted-text controls.
+6. **[CONFIRMED novelty/baseline weakness]** Related work now correctly covers
+   TV-Rec, TimeWeaver, HyenaRec, ConvRec, Mamba4Rec, and frequency systems, so
+   broad filter/convolution/temporal/efficiency novelty is already conceded.
+   None is protocol-matched. Benchmark TV-Rec first, then one state-space/long-
+   convolution system, with the same candidates, inputs, search budget, seeds,
+   evaluator, and hardware; otherwise retain only incremental realization and
+   audit-method contributions.
+7. **[CONFIRMED headline-inference weakness]** Table 1 no longer misuses sample-
+   SD-band overlap, but its headline ladder mixes n=1, five-seed, and six-seed
+   separately summarized arms and reports descriptive deltas without a complete
+   estimand/contrast/multiplicity analysis. Release exact vectors and matching
+   records; report valid effects, SEs/CIs, degrees of freedom, SESOI, and a
+   declared family. Do not let a descriptive component ladder carry inference.
+8. **[CONFIRMED MovieLens estimand/generalization gap]** Eligibility depends on
+   the future target's training-catalog membership (1,033/6,040 primary;
+   1,129/6,040 all-ratings), and private records prevent public cohort replay.
+   Define population/catalog before cutoff, count out-of-catalog targets as
+   misses or report coverage, add cohort-flow and head/mid/tail uncertainty,
+   and repeat across rolling cutoffs and another non-Amazon domain.
+9. **[CONFIRMED, archive not deposit-ready]** The live 1,054-file/647-Git-entry
+   manifest verifies and its v0.9 upload matches, but the archival candidate does
+   not: 928 payloads require a 930-entry ZIP while README/instructions say 908;
+   `.zenodo.json` says 198/22 rather than 199/23; creators are placeholders;
+   no `v1.2.0-deposit` tag exists; and the existing 908-entry ZIP embeds an old
+   manifest. Fix metadata/counts, rebuild, verify, tag a new immutable release,
+   and re-download/hash it before claiming deposit readiness.
+10. **[CONFIRMED source/release assurance gap]** README says the TORS PDF is
+    generated from canonical Markdown, but the build mechanically regenerates
+    tables only and TeX prose is separately maintained. The closure ledger also
+    fails its PowerShell manifest-epoch assertion, and the clean-clone proof is
+    prose-only rather than a tracked machine-readable attestation. Correct the
+    generation claim or implement whole-prose/claim parity; fix the closure gate
+    and commit a hash-bound clean-clone transcript.
+11. **[CONFIRMED PDF/submission-fit defect]** Current PDFs are 55-page reader,
+    49-page TORS, and 50-page acmsmall. Acmsmall page 17's comparator-table
+    bottom rule intersects the footer; the reader jumps from visible Fig. 1 to
+    Fig. 4; venue PDFs are untagged; and the 23,740-word narrative remains dense.
+    Move audit ledgers/history to a supplement, redesign rather than further
+    shrinking tables, normalize captions, add accessibility structure, and
+    inspect every final page without a waiver.
+12. **[CONFIRMED E-E V3 lifecycle/custody gap; AUTHOR VERIFICATION]** Mutable
+    resume checkpoints are not exact-schema/digest/hash-chain validated or
+    READY-bound; no exclusive process lock or per-child full source rehash
+    exists; arm-major execution confounds resource timing. Whether a resume or
+    premature human access occurred is not provable. Repair prospectively with
+    append-only resume lineage, locks, per-child hashes, counterbalanced order,
+    sequestered logs, and external custody.
+13. **[CONFIRMED public-replay/governance limit; AUTHOR/LEGAL VERIFICATION]**
+    Public arithmetic is reproducible, but private AlphaFuse, WEARec, and
+    MovieLens endpoints/sidecars and record bootstraps cannot be replayed. The
+    manuscript now discloses this accurately; it remains a reviewer limitation.
+    Provide lawful release or independent escrow plus institutional decisions
+    on retention, access, redistribution, upstream licensing, and commercial use.
+14. **[CONFIRMED WEARec fairness gap]** WEARec is an official-model/code run in
+    a custom harness with transferred presets, one tuning seed, and unequal
+    architecture, loss, schedule, and search history. Keep it as an equal-
+    evaluation feasibility result or run a genuinely equal-information,
+    equal-budget matched comparison.
+15. **[CONFIRMED practical-optimization gap]** The manuscript correctly demotes
+    MovieLens parsimony to coefficient-count compression, but identity/shared/
+    grouped/learned still execute about 404,352 operator FLOPs per user and no
+    true bypass or useful resource improvement is shown. Add a bypass, optimized
+    structured kernels, model bytes, and counterbalanced latency/throughput/
+    memory/energy distributions before making a practical-efficiency pitch.
+16. **[CONFIRMED writing/editorial risk]** The abstract is a ledger of mixed
+    estimates, caveats, and verdict codes; the main text retains long protocol
+    histories, VOID narratives, and superseded studies. Rewrite around one
+    question, the narrow FIR intervention, the negative prospective transfer,
+    and the resulting claim boundary. Use a forest plot, cohort-flow figure,
+    and compact comparator-design matrix; move chronology/hashes to a supplement.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-30 16:07 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Real author names,
+   affiliations, corresponding-author details, country/institution metadata,
+   declarations, and release creators remain placeholders. The hygiene gate
+   passes only through `DRAFT_WAIVER=1`, and acmsmall exposes dummy DOI,
+   volume/article, and January 2026 production furniture. Replace every
+   placeholder, remove the waiver, rebuild all formats, and complete an
+   author/legal metadata review. Literal acceptance remains below 1%.
+2. **[CONFIRMED, ethics/data-governance contradiction]** Ethics says the study
+   uses only Amazon Reviews 2023 although MovieLens 1M is central, and the
+   acknowledgments thank only Amazon. Distinguish acquired versus consumed
+   MovieLens data, fields, retention/deletion/security, GroupLens
+   acknowledgment, and official nonredistribution/commercial-use conditions.
+3. **[CONFIRMED, falsifiable manuscript contradictions]** The MovieLens result
+   says all checkpoints finished before any TEST file was opened or hashed,
+   although acquisition had already constructed/hashed TEST and used its target
+   for eligibility. Markdown also says the evidence "reject[s] per-channel
+   necessity," which null separation and conditional noninferiority cannot
+   establish. Correct and synchronize Markdown/TeX.
+4. **[CONFIRMED coverage weakness; NOVELTY/BASELINE RISK]** TimeWeaver,
+   HyenaRec, ConvRec, and Mamba4Rec remain absent; TV-Rec receives only a name
+   in a TeX laundry list. NeurIPS 2025 TV-Rec explicitly replaces fixed kernels
+   and self-attention with time-variant convolutional filters. These methods are
+   not identical to the left-causal FIR/HSTU residual, but broad filtering,
+   convolution, and efficiency novelty is untenable. Add mechanism-level
+   differentiation and protocol-matched modern operator baselines.
+5. **[CONFIRMED, protocol-attribution and citation error]** The paper says its
+   iterative user-and-item 5-core/LLOO pipeline matches TIGER and LIGER. TIGER
+   states user-only filtering below five reviews; LIGER filters users and items.
+   Say only that holdout chronology resembles both and k-core resembles LIGER.
+   LIGER's first author Liu Yang is also misrecorded as `Yang, J.`.
+6. **[CONFIRMED, central scientific risk]** The sole prospectively frozen
+   non-Amazon result is a credible negative: learned FIR does not improve over
+   identity or pointwise, only 17.1% of official MovieLens users enter the
+   primary cohort, and all top-10 success is on head targets. Positive findings
+   remain narrow outcome-visible Amazon evidence. Reframe around bounded
+   effects, failed transfer, and audit/falsification; make FIR optional.
+7. **[CONFIRMED, AlphaFuse still has no result]** At 16:07, 15/16 training
+   bundles existed: all eight `alphafuse_package` and seven `sasrec_id`; the
+   final control was active. `assessment_complete=0/16`, `errors=[]`, and no
+   eligible READY, assessment, completion, or adjudication existed. Do not read
+   or report any number, direction, trend, or comparison.
+8. **[CONFIRMED, WEARec fairness/provenance gap]** WEARec arithmetic is correct,
+   but the comparison uses two transferred presets and one tuning seed under
+   unequal architecture, information, loss, schedule, and tuning history. The
+   local runner uses official model/loss code inside a custom harness. Rename
+   it accurately, demote it, and run equal-budget matched comparisons.
+9. **[CONFIRMED, statistical-inference defect]** Table 1 labels gains by
+   "bands non-overlapping," but those bands are mean +/- sample SD, not
+   confidence intervals, including a five-seed versus six-seed comparison.
+   Non-overlap is not a valid named inferential test. Report exact arm vectors,
+   same-seed/matched-init deltas where available, a predeclared estimand and
+   CI/test, and multiplicity handling; remove significance-like band language.
+10. **[CONFIRMED, MovieLens estimand/reproducibility gap]** Eligibility is
+    conditioned on the future TEST target being in the training-observed
+    catalog: primary retention is 1,033/6,040 and all-rating retention is
+    1,129/6,040. Define cohort/catalog pre-cutoff, count out-of-catalog targets
+    as misses or report coverage, add rolling cutoffs and cohort-flow/head-mid-
+    tail figures, and provide lawful deterministic replay.
+11. **[CONFIRMED protocol/resource confounding; AUTHOR VERIFICATION for access]**
+    AlphaFuse completed the entire treatment arm before controls, confounding
+    arm with order, time, thermal history, and background load for resource
+    claims. Per-epoch VALID metrics remain accessible in a mutable log. No
+    evidence proves a person read/adapted to them. Future work must randomize/
+    counterbalance seed blocks, sequester logs, and attest access.
+12. **[CONFIRMED, AlphaFuse lifecycle integrity gap]** Frozen-source cleanliness
+    is checked only at driver preflight; children do not rehash all live source
+    bytes, there is no exclusive campaign/seed lock, and resumed `latest.pt`
+    files are neither hash-bound nor exact-schema validated despite the
+    preregistration. Latest checkpoints are overwritten rather than append-only
+    and are omitted from terminal/READY digests. Use a read-only clean clone,
+    process locks, per-child hashes, exact-schema/digest checks, and append-only/
+    hash-chained histories.
+13. **[CONFIRMED, archive not deposit-ready]** Manifest, result graph,
+    claim-map, and Table 0 checks pass, but candidate construction fails because
+    documentation says 908 entries while inventory requires 929. Creator
+    metadata and matching final tag/version are unresolved. Regenerate after a
+    stable boundary, prove replay, cut a matching version, and upload last.
+14. **[CONFIRMED, algorithm optimization claim remains conditional]**
+    MovieLens identity/shared/grouped/learned each execute the operator and
+    report 404,352 FLOPs/user; low-rank is slightly higher. This is coefficient
+    compression after a failed learned-effect gate, not compute optimization.
+    Add a true bypass/off arm, optimized structured kernels, model bytes, and
+    paired latency/throughput/memory/energy evidence.
+15. **[CONFIRMED/VERIFY, AlphaFuse comparator/replay boundary]** Both V3 arms
+    use zero ID initialization, so `sasrec_id` is not upstream-default normal-
+    initialization SASRec. Upstream checkout/data/MiniLM/private checkpoints
+    are not publicly reconstructible, the environment is incompletely pinned,
+    and no upstream license was found. Disclose, reconstruct, legally review,
+    and preregister a separate normal-init sensitivity.
+16. **[CONFIRMED, completion ledger contradicts the package]** The phase audit
+    marks contradiction cleanup, PDF polish, and candidate bundle complete
+    despite false Ethics/TEST/necessity/protocol wording, invalid band language,
+    a failed deposit, and visible PDF defects. Reopen phases and bind completion
+    to executable gates.
+17. **[CONFIRMED, PDF/citation defects]** Acmsmall page 12 visibly clips dataset
+    information; TORS/acmsmall call Figure 4 "Fig. 2"; stale references
+    misdescribe current Figure 3; venue PDFs are untagged with Type 3 fonts and
+    sub-4-point labels; LIGER metadata is wrong. Repair, rerender, and inspect
+    every page and reference.
+18. **[CONFIRMED governance/fit gap; AUTHOR VERIFICATION]** MovieLens and
+    Amazon use/redistribution, plus upstream code without discovered licenses,
+    need institutional/legal decisions. TORS plausibly fits evaluation/protocol
+    work, but the 51-page reader and 46-page review PDF remain dense and live
+    venue rules need manual verification. Move ledgers to a supplement and
+    foreground bounded evaluation.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-30 10:06 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Real author names,
+   affiliations, corresponding-author details, country/institution metadata,
+   declarations, and release creators remain placeholders. The hygiene gate
+   passes only through `DRAFT_WAIVER=1`, and acmsmall exposes dummy DOI,
+   volume/article, and January 2026 production furniture. Replace every
+   placeholder, remove the waiver, rebuild all formats, and complete an
+   author/legal metadata review. Literal acceptance remains below 1% until
+   this is done.
+2. **[CONFIRMED, ethics/data-governance contradiction]** Ethics says the study
+   uses only Amazon Reviews 2023 although MovieLens 1M is central, and the
+   acknowledgments thank only Amazon. The acquisition retained the complete
+   MovieLens ZIP privately but extracted/read only `ratings.dat` for the study.
+   State acquired versus consumed data, fields, retention/deletion/security,
+   GroupLens acknowledgment, and official nonredistribution/commercial-use
+   conditions in Ethics, acknowledgments, and availability.
+3. **[CONFIRMED, falsifiable manuscript contradictions]** The MovieLens result
+   says all checkpoints finished before any TEST file was opened or hashed,
+   although acquisition had already constructed and hashed TEST and used its
+   target for cohort eligibility. Markdown also says the evidence "reject[s]
+   per-channel necessity," which the reported null separation and conditional
+   noninferiority cannot establish. Correct and synchronize Markdown/TeX.
+4. **[CONFIRMED coverage gap; NOVELTY/BASELINE RISK]** TimeWeaver, HyenaRec,
+   ConvRec, and Mamba4Rec are absent modern sequence-operator lines.
+   ConvRec (IJCAI-ECAI 2026) uses hierarchical strided convolutions, weighted
+   residual paths, attributes, and linear-complexity sequence aggregation.
+   Mamba4Rec uses Conv1d inside a selective state-space block and reports
+   MovieLens/Amazon effectiveness and efficiency. Neither is identical to this
+   left-causal FIR/HSTU residual; Mamba4Rec is a baseline gap, not a novelty
+   collision. Cite, differentiate, and benchmark modern operators or retain
+   only specific-realization plus evaluation novelty.
+5. **[CONFIRMED, protocol-attribution and citation error]** The paper repeatedly
+   says its iterative user-and-item 5-core/LLOO pipeline matches TIGER and
+   LIGER. TIGER filters users below five reviews but does not state item 5-core;
+   LIGER filters both users and items. State that split chronology matches both,
+   while k-core matches LIGER only. The LIGER reference also misidentifies first
+   author Liu Yang as `Yang, J.` in Markdown and BibTeX; correct the full record.
+6. **[CONFIRMED, central scientific risk]** The sole prospectively frozen
+   non-Amazon result is a credible negative: learned FIR does not improve over
+   identity or pointwise, only 17.1% of official MovieLens users enter the
+   primary cohort, and all top-10 success is on head targets. Positive findings
+   remain narrow outcome-visible Amazon evidence. Reframe around bounded
+   Amazon effects, failed transfer, and audit/falsification; make FIR optional.
+7. **[CONFIRMED, AlphaFuse still has no result]** At 10:06, 13/16 training
+   bundles existed: all eight `alphafuse_package` and five `sasrec_id`; the
+   sixth control was active. `assessment_complete=0/16`, `errors=[]`, and no
+   READY, assessment, completion, or adjudication artifact existed. Do not
+   report any number, direction, trend, or comparison from training artifacts.
+8. **[CONFIRMED, WEARec fairness/provenance gap]** WEARec arithmetic is correct,
+   but the comparison uses two transferred presets and one tuning seed under
+   unequal architecture, information, loss, schedule, and tuning history. The
+   local runner uses official model/loss code inside a custom training/evaluation
+   harness. Rename it accurately, demote it, and run equal-budget official-
+   harness or matched-backbone comparisons.
+9. **[CONFIRMED, MovieLens estimand/reproducibility gap]** Eligibility is
+   conditioned on the future TEST target being in the training-observed
+   catalog: primary retention is 1,033/6,040 and all-rating retention is
+   1,129/6,040. Define cohort/catalog pre-cutoff, count out-of-catalog targets
+   as misses or report coverage, add rolling cutoffs and cohort-flow/head-mid-
+   tail figures, and provide lawful deterministic replay.
+10. **[CONFIRMED protocol/resource confounding; AUTHOR VERIFICATION for access]**
+    AlphaFuse completed the entire treatment arm before controls, confounding
+    arm with order, calendar time, thermal history, and background load for
+    resource claims. Per-epoch VALID metrics remain accessible in a mutable
+    log. No evidence proves a person read or adapted to them. Future work must
+    counterbalance/randomize seed blocks, sequester logs, and attest access.
+11. **[CONFIRMED, AlphaFuse lifecycle/cutoff integrity gap]** Frozen-source
+    cleanliness is checked only at driver preflight; children do not rehash all
+    live source bytes, there is no exclusive campaign lock, and latest
+    checkpoints are overwritten rather than append-only. This prevents reliable
+    reconstruction of intermediate campaign state across cutoffs. Use a read-
+    only clean clone, process/seed locks, per-child hashes, and append-only/hash-
+    chained histories.
+12. **[CONFIRMED, archive not deposit-ready]** Manifest, result graph,
+    claim-map, and Table 0 checks pass, but candidate deposit construction fails
+    because documentation says 908 entries while the inventory requires 929.
+    Creator metadata and matching final tag/version are unresolved, and the
+    hosted manifest is stale. Regenerate after a stable boundary, prove replay,
+    cut a matching version, and upload the manifest last.
+13. **[CONFIRMED, algorithm optimization claim remains conditional]**
+    MovieLens identity/shared/grouped/learned each execute the temporal
+    operator and report 404,352 FLOPs/user; low-rank is slightly higher. This is
+    coefficient compression after a failed learned-effect gate, not compute
+    optimization. Add a true bypass/off arm, optimized structured kernels,
+    model bytes, and paired latency/throughput/memory/energy evidence.
+14. **[CONFIRMED/VERIFY, AlphaFuse comparator/replay boundary]** Both V3 arms
+    use zero ID initialization, so `sasrec_id` is not upstream-default normal-
+    initialization SASRec. Upstream checkout/data/MiniLM/private checkpoints
+    are not publicly reconstructible, the environment is incompletely pinned,
+    and no upstream license was found. Disclose the comparator, preregister a
+    normal-init sensitivity, publish reconstruction, and complete legal review.
+15. **[CONFIRMED, completion ledger contradicts the package]** The phase audit
+    marks contradiction cleanup, PDF polish, and candidate bundle complete
+    despite false Ethics/TEST/per-channel/protocol wording, a failed deposit,
+    and visible PDF defects. Reopen those phases and bind completion to gates.
+16. **[CONFIRMED, PDF/citation defects]** Acmsmall page 12 visibly clips dataset
+    information; TORS/acmsmall call resource-plane Figure 4 "Fig. 2"; stale
+    references misdescribe current Figure 3; venue PDFs are untagged with Type
+    3 fonts and sub-4-point labels. Markdown omits an inline citation on its
+    C3SASR sentence, and LIGER author metadata is wrong. Repair, rerender, and
+    inspect every page and reference.
+17. **[CONFIRMED governance/fit gap; AUTHOR VERIFICATION]** MovieLens and
+    Amazon use/redistribution, plus upstream WEARec/AlphaFuse code without a
+    discovered license, need institutional/legal decisions. TORS plausibly
+    fits rigorous evaluation/protocol work, but the 51-page reader and 46-page
+    review PDF are dense and live venue rules need manual verification. Move
+    custody/screening ledgers to a supplement and foreground bounded evaluation.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-30 04:07 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Real author names,
+   affiliations, corresponding-author details, country/institution metadata,
+   declarations, and release creators remain placeholders. The hygiene gate
+   passes only through `DRAFT_WAIVER=1`, and acmsmall exposes dummy DOI,
+   volume/article, and January 2026 production furniture. Replace every
+   placeholder, remove the waiver, rebuild all formats, and complete an
+   author/legal metadata review. Literal acceptance remains below 1% until
+   this is done.
+2. **[CONFIRMED, ethics/data-governance contradiction]** Ethics says the study
+   uses only Amazon Reviews 2023 although MovieLens 1M is central, and the
+   acknowledgments thank only Amazon. The acquisition retained the complete
+   MovieLens ZIP privately but extracted/read only `ratings.dat` for the study.
+   State both facts, the fields actually consumed, retention/deletion/security,
+   GroupLens acknowledgment, and official nonredistribution/commercial-use
+   conditions in Ethics, acknowledgments, and availability.
+3. **[CONFIRMED, falsifiable manuscript contradictions]** The MovieLens result
+   says all checkpoints finished before any TEST file was opened or hashed,
+   although acquisition had already constructed and hashed TEST and used its
+   target for cohort eligibility. Markdown also says the evidence "reject[s]
+   per-channel necessity," which the reported null separation and conditional
+   noninferiority cannot establish. Correct and synchronize Markdown/TeX.
+4. **[CONFIRMED coverage gap; NOVELTY RISK]** Two close convolutional
+   sequential-recommendation precedents are absent: TimeWeaver (2025) uses
+   residual size-adaptive large-kernel depthwise convolution, and HyenaRec
+   (WWW 2026) uses polynomial convolution kernels with gated convolutions.
+   Neither is identical to this paper's left-causal FIR/HSTU package, but both
+   narrow any broad filtering/convolution novelty claim. Cite and differentiate
+   mechanism, causality, backbone, complexity, ablations, and empirical scope;
+   retain only a specific-realization and evaluation contribution.
+5. **[CONFIRMED, central scientific risk]** The sole prospectively frozen
+   non-Amazon result is a credible negative: learned FIR does not improve over
+   identity or pointwise, only 17.1% of official MovieLens users enter the
+   primary cohort, and all top-10 success is on head targets. Positive findings
+   remain narrow outcome-visible Amazon evidence. Reframe around bounded
+   Amazon effects, failed transfer, and audit/falsification; make FIR optional
+   and domain-validated.
+6. **[CONFIRMED, AlphaFuse still has no result]** At 04:07, 11/16 training
+   bundles existed: all eight `alphafuse_package` and three `sasrec_id`; the
+   fourth control was active. `assessment_complete=0/16`, `errors=[]`, and no
+   READY, assessment, completion, or adjudication artifact existed. Do not
+   report any number, direction, trend, or comparison from training artifacts.
+7. **[CONFIRMED, WEARec fairness/provenance gap]** WEARec arithmetic is correct,
+   but the comparison uses two transferred presets and one tuning seed under
+   unequal architecture, information, loss, schedule, and tuning history. The
+   local runner uses official model/loss code inside a custom data, optimizer,
+   training, selection, and evaluation harness. Rename it accurately, demote
+   it from headline evidence, and run equal-budget official-harness or matched-
+   backbone comparisons.
+8. **[CONFIRMED, MovieLens estimand/reproducibility gap]** Eligibility is
+   conditioned on the future TEST target being in the training-observed
+   catalog: primary retention is 1,033/6,040 and all-rating retention is
+   1,129/6,040. Define cohort/catalog pre-cutoff, count out-of-catalog targets
+   as misses or report coverage, add rolling cutoffs and cohort-flow/head-mid-
+   tail figures, and provide lawful deterministic replay.
+9. **[CONFIRMED protocol/resource confounding; AUTHOR VERIFICATION for access]**
+   AlphaFuse completed the whole treatment arm before any control terminal, so
+   arm, order, calendar time, thermal history, and background load are
+   confounded for resource claims. Per-epoch VALID metrics are accessible in a
+   mutable log. No evidence proves a person read or adapted to them. Future
+   work must counterbalance/randomize seed blocks, sequester logs, and attest
+   access.
+10. **[CONFIRMED, AlphaFuse lifecycle/cutoff integrity gap]** Frozen-source
+    cleanliness is checked only at driver preflight; children do not rehash all
+    live source bytes, there is no exclusive campaign lock, and latest
+    checkpoints are atomically overwritten. The active seed's cutoff-time
+    `latest.pt` version is already unrecoverable. Use a read-only clean clone,
+    campaign lock, per-child hashes, and append-only/hash-chained histories.
+11. **[CONFIRMED, archive not deposit-ready]** Manifest, result graph,
+    claim-map, and Table 0 checks pass, but candidate deposit construction fails
+    because documentation says 908 entries while the current inventory requires
+    929. Creator metadata and a matching final tag/version are unresolved, and
+    the hosted manifest is stale. Regenerate after a stable boundary, prove
+    clean-clone replay, cut a matching version, and upload the manifest last.
+12. **[CONFIRMED, algorithm optimization claim remains conditional]**
+    MovieLens identity/shared/grouped/learned each execute the temporal
+    operator and report 404,352 FLOPs/user; low-rank is slightly higher. This is
+    coefficient compression after a failed learned-effect gate, not compute
+    optimization. Add a true bypass/off arm, optimized structured kernels,
+    model bytes, and paired latency/throughput/memory/energy evidence.
+13. **[CONFIRMED/VERIFY, AlphaFuse comparator/replay boundary]** Both V3 arms
+    use zero ID initialization, so `sasrec_id` is not upstream-default normal-
+    initialization SASRec. Upstream checkout/data/MiniLM/private checkpoints
+    are not publicly reconstructible, the environment is incompletely pinned,
+    and no upstream license was found. Disclose the comparator, preregister a
+    normal-init sensitivity, publish reconstruction, and complete legal review.
+14. **[CONFIRMED, completion ledger contradicts the package]** The phase audit
+    marks contradiction cleanup, PDF polish, and candidate bundle complete
+    despite false Ethics/TEST/per-channel wording, a failed deposit count, and
+    visible PDF defects. Reopen those phases and bind completion to executable
+    gates.
+15. **[CONFIRMED, PDF/citation defects]** Acmsmall page 12 clips 65 dataset-
+    table glyphs; TORS/acmsmall call resource-plane Figure 4 "Fig. 2";
+    bibliography notes misdescribe current Figure 3; venue PDFs are untagged
+    with Type 3 plot fonts and sub-3-point labels. AlphaFuse BibTeX omits full
+    DOI/pages/proceedings metadata. Repair, rerender, and inspect every page.
+16. **[CONFIRMED governance/fit gap; AUTHOR VERIFICATION]** MovieLens and
+    Amazon use/redistribution, plus upstream WEARec/AlphaFuse code without a
+    discovered license, need institutional/legal decisions. TORS plausibly
+    fits rigorous evaluation/protocol work, but the 51-page reader and 46-page
+    review PDF are dense and live venue rules need manual verification. Move
+    custody/screening ledgers to a supplement and foreground bounded evaluation.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-29 22:06 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Real author names,
+   affiliations, corresponding-author details, country/institution metadata,
+   declarations, and release creators remain placeholders. The hygiene gate
+   passes only through `DRAFT_WAIVER=1`, and acmsmall exposes dummy DOI,
+   volume/article, and January 2026 production furniture. Replace every
+   placeholder, remove the waiver, rebuild all formats, and complete an
+   author/legal metadata review. Literal acceptance remains below 1% until
+   this is done.
+2. **[CONFIRMED, new ethics/data-governance contradiction]** The Ethics section
+   says the study uses **only Amazon Reviews 2023**, although MovieLens 1M is
+   central to the abstract, experiments, results, discussion, and release
+   metadata. Add a separate MovieLens paragraph naming what fields were used,
+   citing Harper--Konstan, acknowledging GroupLens, and stating the official
+   no-redistribution and permission-before-commercial-use conditions. Recheck
+   every ethics, acknowledgement, availability, and release statement for both
+   datasets.
+3. **[CONFIRMED, two other falsifiable manuscript contradictions]** The
+   MovieLens result still says all checkpoints finished before any TEST file
+   was opened or hashed, although acquisition had already read, written, and
+   hashed TEST and used the future target to define cohort eligibility. The
+   Markdown introduction still says the evidence “reject[s] per-channel
+   necessity,” which nonsignificance and conditional noninferiority cannot
+   establish. Correct and synchronize Markdown/TeX immediately.
+4. **[CONFIRMED, central scientific/novelty risk]** The only prospectively
+   frozen non-Amazon result is a credible negative: learned FIR does not improve
+   over identity or pointwise, only 17.1% of official MovieLens users enter the
+   primary cohort, and all top-10 success is on head targets. Positive results
+   are narrow outcome-visible Amazon evidence. Reframe around bounded Amazon
+   effects, failed external transfer, and an audit/falsification contribution;
+   make FIR optional and domain-validated.
+5. **[CONFIRMED, AlphaFuse still has no result]** At 22:06, 10/16 trainings had
+   terminated: all eight `alphafuse_package` jobs and two `sasrec_id` controls.
+   The third control had started; `assessment_complete=0/16`, `errors=[]`, and
+   no READY, assessment, endpoint, sidecar, completion record, or adjudication
+   existed. Do not report any number, direction, trend, or comparison from
+   training artifacts.
+6. **[CONFIRMED, WEARec fairness/provenance gap]** WEARec arithmetic is correct,
+   but the comparison uses two transferred presets and one tuning seed under
+   unequal architecture, information, loss, schedule, and tuning history. The
+   manuscript says “official code/model-training code,” while the local runner
+   uses the official model/loss inside custom data, optimizer, training,
+   selection, and evaluation code. Rename it accordingly, demote it from
+   headline evidence, and run equal-budget official-harness or matched-backbone
+   comparisons.
+7. **[CONFIRMED, MovieLens estimand/reproducibility gap]** Eligibility is
+   conditioned on the future TEST target being in the training-observed catalog:
+   primary retention is 1,033/6,040 users and all-rating retention is
+   1,129/6,040. Define the cohort/catalog entirely pre-cutoff, score excluded or
+   out-of-catalog targets as misses or report coverage, add rolling cutoffs and
+   cohort-flow/head-mid-tail figures, and provide lawful deterministic replay.
+8. **[CONFIRMED protocol/resource confounding; AUTHOR VERIFICATION for access]**
+   AlphaFuse completed the whole treatment arm before any control terminal, so
+   arm, order, calendar time, thermal history, and background load are
+   confounded for resource claims. Per-epoch VALID metrics are accessible in a
+   mutable log. No evidence proves a person read or adapted to them, and no
+   tracked drift was observed. Future work must counterbalance/randomize seed
+   blocks, sequester logs, and attest access.
+9. **[CONFIRMED, AlphaFuse lifecycle integrity gap]** Frozen-source cleanliness
+   is checked only once at driver preflight; children do not rehash all live
+   local source bytes, no exclusive lock prevents a second direct trainer, and
+   full training histories are not immutable/release-bound. Use a read-only
+   clean clone/container, a campaign lock, per-child source hashes, and
+   READY-bound histories/diagnostics in a later protocol.
+10. **[CONFIRMED, archive not deposit-ready]** Manifest, claim-map, and Table 0
+    checks pass at HEAD, but candidate deposit construction fails because the
+    docs/existing ZIP say 908 entries while the current inventory requires 929.
+    Creator metadata and a matching final tag/version are absent, and the
+    hosted manifest predates AlphaFuse. Regenerate only after a stable campaign
+    and manuscript boundary, prove a clean-clone replay, cut a new version, and
+    upload the matching manifest last.
+11. **[CONFIRMED, algorithm optimization claim remains conditional]**
+    MovieLens identity/shared/grouped/learned each execute the temporal
+    operator and report 404,352 FLOPs/user; low-rank is slightly higher. This is
+    coefficient compression after a failed learned-effect gate, not compute
+    optimization. Add a true bypass/off arm, optimized structured kernels,
+    total/trainable parameters and model bytes, plus paired latency,
+    throughput, memory, energy, and batch-size evidence.
+12. **[CONFIRMED/VERIFY, AlphaFuse comparator/replay boundary]** Both V3 arms
+    use zero ID initialization, so `sasrec_id` is not upstream-default normal-
+    initialization SASRec. The upstream checkout/data/MiniLM cache/private
+    checkpoints are not publicly reconstructible, the environment is not fully
+    pinned, and no upstream license was found. Disclose the exact comparator,
+    preregister a later normal-init sensitivity, publish reconstruction, and
+    complete legal review.
+13. **[CONFIRMED, completion ledger contradicts the package]** The phase audit
+    marks contradiction cleanup, PDF polish, and the candidate bundle complete
+    despite the false Ethics/TEST/per-channel statements, stale WEARec wording,
+    failed deposit count, and visible PDF defects. Reopen those phases and make
+    completion conditional on executable gates.
+14. **[CONFIRMED, PDF/citation defects]** Acmsmall page 12 clips 65 Datasets-
+    table glyphs; TORS/acmsmall call resource-plane Figure 4 “Fig. 2”;
+    bibliography notes misdescribe current Figure 3; venue PDFs are untagged
+    with Type 3 plot fonts and tiny labels. AlphaFuse's TeX BibTeX entry also
+    omits its verified DOI/pages/full proceedings metadata. Repair sources,
+    rerender, and visually inspect every page.
+15. **[CONFIRMED governance/fit gap; AUTHOR VERIFICATION]** MovieLens and
+    Amazon use/redistribution, plus upstream WEARec/AlphaFuse code without a
+    discovered license, need institutional/legal decisions. TORS is a plausible
+    fit for rigorous evaluation/protocol research, but the 51-page reader and
+    46-page review PDF remain dense and the live author-guideline page was not
+    machine-readable in this audit. Verify the portal manually; move custody,
+    screening, and audit ledgers to a supplement; foreground the bounded
+    evaluation contribution rather than algorithmic efficacy.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-29 16:06 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Real author names,
+   affiliations, corresponding-author details, country/institution metadata,
+   declarations, and release creators remain placeholders. The hygiene gate
+   still passes only through `DRAFT_WAIVER=1`, and acmsmall exposes dummy DOI,
+   volume/article, and January 2026 production furniture. Replace every
+   placeholder, remove the waiver, rebuild all formats, and complete an
+   author/legal metadata review. Literal acceptance remains below 1% until
+   this is done.
+2. **[CONFIRMED, two falsifiable manuscript contradictions]** The MovieLens
+   paragraph still says all checkpoints finished before any TEST file was
+   opened or hashed, although acquisition had already read, written, and
+   hashed TEST and used the future target to define cohort eligibility. The
+   Markdown introduction still says the evidence "reject[s] per-channel
+   necessity," which nonsignificance and conditional noninferiority cannot
+   establish. Correct both source paths immediately and disclose the target-
+   conditioned cohort in the main result.
+3. **[CONFIRMED, central scientific/novelty risk]** The prospectively frozen
+   non-Amazon MovieLens result is a credible negative: learned FIR does not
+   improve over identity or pointwise, the retained cohort is only 17.1% of
+   official users, and all top-10 success is on head targets. This blocks broad
+   benefit, cross-domain, tail, and default-use claims. Reframe around a bounded
+   Amazon effect, failed external transfer, and falsification/audit contribution;
+   make FIR optional and domain-validated.
+4. **[CONFIRMED, WEARec fairness/provenance gap]** WEARec arithmetic is correct,
+   but the comparison uses two cross-domain presets and one tuning seed and
+   compares an ID/frequency system with a richer text/HSTU/FIR package under
+   unequal architecture, information, loss, schedule, and tuning history. The
+   manuscript also calls it "official model/training code," although the local
+   runner rehosts the official model source/loss inside custom data,
+   optimization, selection, and evaluation code. Relabel and demote it; run an
+   equal-budget official-harness or matched-backbone comparison.
+5. **[CONFIRMED, AlphaFuse still has no result]** At the 16:06 cutoff all eight
+   `alphafuse_package` trainings had terminated, the first `sasrec_id` control
+   was active, and the status remained `training_complete=8/16`,
+   `assessment_complete=0/16`, `errors=[]`. No READY record, assessment,
+   endpoint, sidecar, completion seal, or adjudication existed. Do not report a
+   number, direction, trend, or comparative result from training logs.
+6. **[CONFIRMED protocol/resource confounding; AUTHOR VERIFICATION for access]**
+   The AlphaFuse driver has now completed the entire treatment arm before the
+   first control: order, calendar time, machine thermal/load state, and arm are
+   perfectly confounded. Per-epoch VALID metrics are available in a mutable
+   campaign log. No evidence proves a human read or adapted to them, and no
+   source drift was observed. For a future clean study, counterbalance or
+   randomize within seed blocks, sequester training logs, and attest who could
+   access them.
+7. **[CONFIRMED, lifecycle integrity gap]** Frozen-source cleanliness is checked
+   only once at driver preflight; later subprocesses do not rehash local source
+   bytes, and no exclusive campaign lock blocks a second direct trainer.
+   Terminal JSONs retain best-VALID summaries but not the full immutable
+   training trajectories. Run from a read-only clean clone/container, acquire
+   an exclusive lock, rehash before every trainer/evaluator/adjudicator process,
+   and bind complete histories into READY and the release.
+8. **[CONFIRMED, archive not deposit-ready]** Manifest, graph, claim-map, and
+   Table 0 checks pass at HEAD, but candidate deposit construction still fails:
+   the documentation/existing ZIP say 908 entries while the mechanical
+   inventory requires 929. Creator metadata and a valid final
+   `v1.2.0-deposit` tag/release are absent, and the hosted manifest predates the
+   AlphaFuse freeze. Regenerate only after the campaign reaches a stable public
+   boundary, then prove a clean-clone replay and upload the matching manifest.
+9. **[CONFIRMED, algorithm efficiency claim is conditional]** MovieLens
+   identity/shared/grouped/learned arms execute the same convolutional workload
+   and report identical counted FLOPs; low-rank is slightly higher. This is
+   coefficient compression conditional on a failed learned-effect gate, not
+   useful compute optimization. Add a true operator-bypass arm, matched total/
+   trainable parameters, analytic operations, and paired latency, memory,
+   throughput, and energy evidence.
+10. **[CONFIRMED, MovieLens estimand/reproducibility gap]** The primary retains
+    1,033/6,040 users and the all-rating view 1,129/6,040, conditional on a
+    known-catalog future target. Add pre-cutoff-only cohort/catalog construction,
+    count out-of-catalog targets as misses or report coverage, use rolling
+    cutoffs, report clustered uncertainty, and provide lawful one-command
+    acquisition-to-endpoint replay.
+11. **[CONFIRMED/VERIFY, AlphaFuse comparator/replay boundary]** Both V3 arms
+    use zero ID initialization, so `sasrec_id` is not upstream-default normal-
+    initialization SASRec. The upstream checkout/data/MiniLM cache/private
+    checkpoints are not publicly reconstructible, setup is not fully pinned,
+    and no upstream license was found. Disclose the zero-init comparator,
+    preregister a later normal-init sensitivity, provide reconstruction, and
+    complete legal review.
+12. **[CONFIRMED, completion ledger contradicts the package]** The phase audit
+    marks contradiction cleanup, presentation/PDF polish, and the candidate
+    bundle complete despite false MovieLens/per-channel statements, stale
+    WEARec provenance, a failed deposit count, and visible PDF defects. Reopen
+    those phases and make completion conditional on executable gates.
+13. **[CONFIRMED, PDF/citation defects]** Acmsmall page 12 clips the Datasets
+    table; TORS/acmsmall call resource-plane Figure 4 "Fig. 2"; bibliography
+    notes falsely describe current Figure 3; venue PDFs are untagged and retain
+    Type 3 plot fonts and very small labels. Fix responsive layout, generated
+    cross-references, stale BibTeX notes, vector fonts/legibility, metadata, and
+    accessibility, then rerender and inspect every page.
+14. **[CONFIRMED governance gap; AUTHOR VERIFICATION]** MovieLens use/
+    acknowledgement/nonredistribution, derived Amazon assets, and upstream
+    WEARec/AlphaFuse code without a discovered license require explicit
+    institutional/legal decisions. The 51-page reader and 46-page TORS paper
+    remain dense; move custody/screening/audit ledgers to a supplement and
+    verify the live TORS portal's anonymization, length, accessibility,
+    data/code, and supplement rules before submission.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-29 10:06 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Real author names,
+   affiliations, corresponding-author details, country/institution metadata,
+   declarations, and release creators remain placeholders. The hygiene gate
+   still passes only through `DRAFT_WAIVER=1`, and acmsmall exposes dummy DOI,
+   volume/article, and January 2026 production furniture. Replace every
+   placeholder, remove the waiver, rebuild all formats, and complete an
+   author/legal metadata review. Literal acceptance remains below 1% until
+   this is done.
+2. **[CONFIRMED, two falsifiable manuscript contradictions]** The MovieLens
+   paragraph still says all checkpoints finished before any TEST file was
+   opened or hashed, although acquisition had already read, written, and
+   hashed TEST and used the future target to define cohort eligibility. The
+   Markdown introduction still says the evidence "reject[s] per-channel
+   necessity," which nonsignificance and conditional noninferiority cannot
+   establish. Correct both Markdown and TeX immediately and disclose the
+   target-conditioned cohort in the main result.
+3. **[CONFIRMED, central scientific/novelty risk]** The prospectively frozen
+   non-Amazon MovieLens result is a credible negative: learned FIR does not
+   improve over identity or pointwise, the retained cohort is only 17.1% of
+   official users, and all top-10 success is on head targets. This blocks broad
+   benefit, cross-domain, tail, and default-use claims. Reframe around a bounded
+   Amazon effect, failed external transfer, and falsification/audit contribution;
+   make FIR optional and domain-validated.
+4. **[CONFIRMED, WEARec fairness/provenance gap]** WEARec arithmetic is correct,
+   but the comparison uses two cross-domain presets and one tuning seed and
+   compares an ID/frequency system with a richer text/HSTU/FIR package under
+   unequal architecture, information, loss, schedule, and tuning history. The
+   manuscript also calls it "official model/training code," although the local
+   runner rehosts the official model source/loss inside custom dataset,
+   optimizer, training, selection, and evaluation code. Relabel and demote it;
+   run an equal-budget official-harness/matched-backbone comparison.
+5. **[CONFIRMED, AlphaFuse has no result at this cutoff]** At 10:06 the frozen
+   V3 campaign had 4/16 terminal trainings, all from `alphafuse_package`,
+   0/16 assessments, no errors, and no READY, endpoint, sidecar, seal, or
+   adjudication. Seed `20262205` was active. Do not report a number, direction,
+   or trend. Keep any later outcome outside this timestamped audit until a
+   complete mechanical adjudication is committed and independently reviewed.
+6. **[PLAUSIBLE protocol-interference/resource risk; AUTHOR VERIFICATION]** The
+   AlphaFuse driver is arm-major: all eight treatment trainings precede every
+   SASRec control training. Per-epoch loss/VALID NDCG is written to an
+   accessible campaign log, and frozen-source cleanliness is checked only at
+   driver preflight, not before each later subprocess. No drift or adaptive
+   intervention is observed, but actual non-reading is unprovable and resource
+   timing is arm-confounded. Future work should interleave/randomize seed
+   blocks, seal metric logs, and hash-check sources before every subprocess.
+7. **[CONFIRMED, archive not deposit-ready]** Manifest, graph, claim-map, and
+   Table 0 checks pass at HEAD, but candidate deposit construction fails: the
+   documentation/existing ZIP say 908 entries while the mechanical inventory
+   requires 929. Creator metadata and a valid final `v1.2.0-deposit` tag/release
+   are absent, and the hosted manifest predates the AlphaFuse freeze. After a
+   stable campaign boundary, regenerate all inventory/metadata, pass clean-
+   clone gates, cut a new immutable version, and upload the matching manifest
+   last.
+8. **[CONFIRMED, algorithm efficiency claim is conditional]** MovieLens
+   identity/shared/grouped/learned arms execute the same convolutional workload
+   and report identical counted FLOPs; low-rank is slightly higher. This is
+   coefficient compression conditional on a failed learned-effect gate, not
+   useful compute optimization. Add a true operator-bypass arm, matched total/
+   trainable parameters, analytic operations, and paired latency, memory,
+   throughput, and energy evidence.
+9. **[CONFIRMED, MovieLens estimand/reproducibility gap]** The primary retains
+   1,033/6,040 users and the all-rating view 1,129/6,040, conditional on a
+   known-catalog future target. Public aggregates lack a one-command official-
+   download-to-endpoint replay. Add pre-cutoff-only cohort/catalog construction,
+   out-of-catalog misses or coverage, rolling cutoffs, user/item-cluster
+   inference, lawful acquisition, deterministic split hashes, and reviewer
+   escrow where redistribution is restricted.
+10. **[CONFIRMED/VERIFY, AlphaFuse replay and comparator boundaries]** Both V3
+    arms use zero ID initialization, so `sasrec_id` is not upstream-default
+    normal-init SASRec. The upstream checkout/data/MiniLM cache/private
+    checkpoints are not publicly reconstructible, setup does not provide a
+    fully pinned dependency/data path, and no upstream license was found.
+    Disclose zero-init explicitly, freeze a separate normal-init sensitivity,
+    provide public acquisition/environment/data reconstruction, and complete
+    legal review.
+11. **[CONFIRMED, activation/operation diagnostics incomplete]** Current public
+    evidence does not mechanically gate all selected-checkpoint update/tap
+    norms, effective responses, validation trajectories, or all per-user
+    secondary metrics. AlphaFuse's structural test checks only that some model
+    gradient is nonzero, not that each relevant representation path updates.
+    Publish graph-bound component-level diagnostics and rank-derived secondary
+    metric checks.
+12. **[CONFIRMED, completion ledger contradicts the package]** The phase audit
+    marks contradiction cleanup, presentation/PDF polish, and the candidate
+    bundle complete despite the false MovieLens/per-channel statements, stale
+    WEARec provenance, failed deposit count, and visible PDF defects. Reopen
+    those phases and make completion conditional on executable gates rather
+    than narrative assertions.
+13. **[CONFIRMED, PDF/citation defects]** Acmsmall page 12 clips the Datasets
+    table; TORS/acmsmall call resource-plane Figure 4 "Fig. 2"; bibliography
+    notes falsely call current Figure 3 a spectral-irreducibility/optimal-
+    shrinkage figure; venue PDFs are untagged and retain Type 3 plot fonts and
+    tiny labels. Fix responsive layout, generated cross-references, stale
+    BibTeX notes, vector fonts/legibility, metadata, and accessibility.
+14. **[CONFIRMED governance gap; AUTHOR VERIFICATION]** MovieLens use/
+    acknowledgement/nonredistribution, derived Amazon assets, and upstream
+    WEARec/AlphaFuse code without a discovered license require explicit
+    institutional/legal decisions. The 51-page reader and 46-page TORS paper
+    also remain dense; move custody/screening/audit ledgers to a supplement and
+    verify the current TORS portal's anonymization, length, accessibility,
+    data/code, and supplement rules.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-29 04:05 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Real author names,
+   affiliations, corresponding-author details, country/institution metadata,
+   declarations, and release creators remain placeholders. The hygiene gate
+   still passes only through `DRAFT_WAIVER=1`, and acmsmall exposes dummy DOI,
+   volume/article, and January 2026 production furniture. Replace every
+   placeholder, remove the waiver, rebuild all formats, and complete an
+   author/legal metadata review. Literal acceptance remains below 1% until
+   this is done, irrespective of the empirical package.
+2. **[CONFIRMED, two factual manuscript contradictions]** The MovieLens
+   paragraph still says all checkpoints finished before any TEST file was
+   opened or hashed, although acquisition had already read, written, and
+   hashed TEST and used the future target to define cohort eligibility. The
+   introduction still says the results "reject per-channel necessity," which
+   nonsignificance and conditional noninferiority cannot establish. Replace
+   these with the narrower training-process TEST-sequestration fact and "do
+   not support per-channel necessity"; disclose the target-conditioned cohort
+   in the main result.
+3. **[CONFIRMED, central scientific/novelty risk]** The prospectively frozen
+   non-Amazon MovieLens result is a credible negative: learned FIR does not
+   improve over identity or pointwise, and all top-10 success is on head
+   targets. This blocks broad benefit, cross-domain, tail, and default-use
+   claims. Reframe around a bounded Amazon effect, failed external transfer,
+   and falsification/audit contribution; make FIR optional and
+   domain-validated rather than the default recommendation.
+4. **[CONFIRMED, current-baseline gap remains]** WEARec's eight-seed aggregate
+   arithmetic is correct and the frozen port scores below the existing
+   reference, but it uses only two cross-domain presets and one tuning seed,
+   changes selection from upstream NDCG@20 to NDCG@10, and compares an ID-only
+   system with a richer text/HSTU/FIR stack under unequal architecture, loss,
+   schedule, and tuning budgets. TV-Rec, ConvFormer, and other close filtering
+   systems remain unexecuted. Treat WEARec as one narrow port result, not a fair
+   method-ranking or FIR-isolation result.
+5. **[CONFIRMED, provenance wording is factually overstated]** The manuscript
+   and protocol call the WEARec run "official model/training code" and say the
+   adapter replaces evaluation only. The local runner rehosts the official
+   model and loss inside custom dataset, optimizer, training, validation,
+   early-stopping, checkpoint-selection, and evaluation code. Replace the
+   description everywhere with "pinned official WEARec model implementation
+   and loss, rehosted in our custom harness," and state the selection-metric
+   change.
+6. **[CONFIRMED, archive not deposit-ready]** Manifest, graph, claim-map, and
+   Table 0 checks pass at HEAD, but the candidate deposit fails because the
+   documented 908-entry inventory is stale versus the mechanical 929-entry
+   count. Creator metadata and a valid final `v1.2.0-deposit` tag/release are
+   absent, and the uploaded public manifest predates the AlphaFuse freeze.
+   After the campaign state is stable, regenerate all counts and the manifest,
+   pass candidate/final/clean-clone gates, cut a new immutable version, and
+   upload the matching manifest last.
+7. **[CONFIRMED, AlphaFuse result absent at cutoff; comparator boundary]** The
+   AlphaFuse V3 protocol was committed and pushed before launch, but at the
+   fixed boundary it had 0/16 terminal trainings, 0/16 assessments, and no
+   READY, endpoint, sidecar, seal, or adjudication. Do not import any later
+   result into this audit. The frozen `sasrec_id` arm is also zero-initialized,
+   unlike upstream's default normal initialization; disclose it as a
+   zero-initialized package comparator and freeze a separate normal-init
+   sensitivity before drawing baseline conclusions.
+8. **[CONFIRMED, algorithm efficiency claim is conditional]** MovieLens
+   identity/shared/grouped/learned arms execute the same convolutional workload
+   and report identical counted FLOPs; low-rank is slightly higher. The result
+   supports coefficient compression only, conditional on a failed learned-
+   effect gate, not useful compute efficiency. Add a true operator-bypass arm,
+   matched total/trainable parameters, analytic operations, measured latency,
+   memory, energy, and a superiority-before-noninferiority decision sequence.
+9. **[CONFIRMED/VERIFY, custody and replay limitations]** WEARec lacks a
+   family-wide READY gate and its private endpoints are not publicly replayable.
+   AlphaFuse V3 has a stronger all-16 READY/seal design, but its first-reader
+   rule is procedural rather than externally auditable, its preparation reads
+   an outcome-bearing combined JSONL, and setup documentation does not pin the
+   governed upstream commit or a complete environment. Use exact training-
+   process wording, signed/external timestamps or escrow, access logging,
+   per-run source/environment hashes, and a clean portable replay.
+10. **[CONFIRMED, MovieLens estimand/reproducibility gap]** The primary cohort
+    retains 1,033/6,040 users (17.1%) and conditions on a known-catalog future
+    target; the all-rating sensitivity retains 18.7%. Public aggregates do not
+    provide a one-command official-download-to-endpoint replay. Add a
+    pre-cutoff-only cohort/catalog design, unseen-target coverage, rolling
+    cutoffs, user/item-cluster inference, official-source checksum and lawful
+    self-service acquisition, deterministic split verification, and reviewer
+    escrow where redistribution is restricted.
+11. **[CONFIRMED, activation/operation diagnostics incomplete]** Current public
+    evidence does not mechanically gate all selected-checkpoint update/tap
+    norms, effective responses, validation curves, or all per-user secondary
+    metrics. AlphaFuse's structural test checks only that some model gradient
+    is nonzero, not that each arm's relevant ID component updates. Publish
+    graph-bound per-seed diagnostics, verify rank-derived HR/MRR and exact
+    cohort keys, and validate each treatment path rather than only model-level
+    gradient flow.
+12. **[CONFIRMED, writing/source synchronization risk]** Markdown and TeX use
+    different causal caution and related-work coverage; the phase-completion
+    ledger calls contradiction cleanup and PDF polish complete despite known
+    false sentences and figure defects. Build all formats from one claim/
+    reference source, reopen those ledger items, move the WEARec Welch p-value
+    out of headline prose, and shorten the 212-word abstract from a numeric
+    ledger to question, design, central negative, bounded positive, and
+    implication.
+13. **[CONFIRMED, data governance/legal gaps]** MovieLens acknowledgement,
+    research-use/nonredistribution restrictions, demographic-field decision,
+    and the institutional determination are incomplete. The public basis for
+    derived Amazon assets and redistribution/use of upstream WEARec/AlphaFuse
+    code without a discovered license file remain author/legal questions.
+    Resolve and document these before public deposit.
+14. **[CONFIRMED, PDF/figure defects]** Acmsmall page 12 clips the Datasets
+    table; TORS/acmsmall prose calls the resource-plane Fig. 2 although it is
+    captioned Fig. 4; reader figure numbering diverges and splits a caption
+    across pages 26-27. Venue PDFs are untagged, and the reader lacks visible
+    page numbers, bookmarks, and live links. Fix responsive tables, generated
+    cross-references, caption keep-together, metadata/accessibility/navigation,
+    and use vector or at least 300-dpi reader figures.
+15. **[PLAUSIBLE editorial/venue risk; AUTHOR VERIFICATION]** The 51-page
+    reader and 46-page TORS artifact remain dense, Table 0 is audit-heavy, and
+    the screening/protocol material overwhelms the paper's scientific spine.
+    Move the full audit, custody, and screening ledgers into a navigable
+    supplement; retain a concise main-paper claim matrix. Verify the journal's
+    current anonymization, accessibility, length, abstract, data/code, and
+    supplement requirements in the live portal before submission.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-28 22:06 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Real author names,
+   affiliations, contact details, declarations, and release creators remain
+   placeholders. The PDF hygiene workflow still passes only with
+   `DRAFT_WAIVER=1`; the venue PDF also carries dummy running metadata. Replace
+   every placeholder, remove the waiver, rebuild all formats, and perform an
+   author/legal metadata check. Literal acceptance remains below 1% until this
+   is done, irrespective of the empirical evidence.
+2. **[CONFIRMED, false TEST-sequestration sentence and construct risk]** The
+   manuscript says all 96 MovieLens checkpoints were trained before any TEST
+   file was opened or hashed. The frozen acquisition program had already read
+   all ratings, identified post-cutoff TEST targets, written the TEST split,
+   and hashed all splits. More importantly, it retained users only when a
+   post-cutoff target existed and was in the training-derived catalog. This is
+   not model-score leakage and follows the frozen protocol, but it is
+   post-outcome-conditioned cohort construction. Replace the false sentence
+   with the narrower fact that training processes did not score or open the
+   already-created TEST CSV and selection used VALID only. Disclose the
+   conditional estimand and add a prospective sensitivity whose cohort and
+   catalog are defined from pre-cutoff data alone, with explicit unseen-item
+   handling.
+3. **[CONFIRMED, core external-result/novelty risk]** The one non-Amazon
+   replication is a clean negative under its registered rule: learned FIR does
+   not improve over identity or pointwise on the primary MovieLens view, and
+   all user/item-cluster bootstrap intervals include zero. This is valuable
+   negative evidence, but it directly blocks broad cross-domain benefit and
+   generalization claims. Reframe the paper around a bounded Amazon finding,
+   a failed external replication, and the audit methodology; do not present
+   MovieLens as confirmation of the algorithm.
+4. **[CONFIRMED current-baseline gap; IN PROGRESS at cutoff]** WEARec was frozen
+   and launched, but at this audit boundary only one of eight assessment
+   trainings had finished and no TEST evaluation or result existed. The
+   two-preset, one-tuning-seed cross-domain adapter is also not an equal
+   architecture/loss/schedule/tuning comparison. AlphaFuse remains missing.
+   Do not imply the gap is closed. After the sealed WEARec result, either run a
+   broader VALID-only budget or explicitly label it a narrow official-code
+   feasibility baseline; add a clean text+ID comparator or lower venue/novelty
+   ambition.
+5. **[CONFIRMED, archive not submission-final]** Git-backed release
+   verification and quantitative Table 0 checks pass at HEAD, but the current
+   candidate bundle exits 2: its documented inventory count is stale and
+   several dirty payloads no longer match `RELEASE_MANIFEST.json`. Creator
+   metadata, final deposit tag, and DOI also remain unresolved. Finish the
+   in-progress WEARec campaign first, commit one coherent source/result/PDF
+   state, regenerate the manifest and documentation together, run a clean-clone
+   bootstrap/strict replay, then cut an immutable versioned deposit.
+6. **[CONFIRMED, algorithm-parsimony result is conditional]** On MovieLens the
+   16-parameter shared and 320-parameter low-rank filters pass the registered
+   noninferiority margin against the 1,024-parameter learned filter, but the
+   learned-effect gate failed. Therefore this is conditional numerical
+   compression evidence, not proof of an efficient beneficial FIR. Promote a
+   shared/grouped/low-rank candidate only after an untouched study first shows
+   a nonzero FIR effect and then tests noninferiority. Report accuracy,
+   parameters, analytically counted FIR operations, latency, memory, and energy
+   on the same hardware as a Pareto frontier.
+7. **[CONFIRMED, MovieLens reproducibility gap]** Aggregate MovieLens endpoints
+   are graph-bound, but raw records and private split/endpoints are not shipped,
+   and the README lacks a one-command path for another researcher to download
+   the official source and reconstruct them locally. The official ML-1M terms
+   restrict redistribution but do not prevent an independent downloader/rebuild
+   workflow. Add source acknowledgement, checksum and acquisition commands,
+   deterministic preprocessing, split-verification hashes, full evaluation
+   commands, and reviewer escrow or permission where appropriate.
+8. **[AUTHOR VERIFICATION, Software-V3 evidence class/custody]** The Software
+   erratum now correctly discloses the CRLF clean-checkout failure and the paper
+   narrows V3 to outcome-known/exploratory evidence. Tracked evidence still
+   cannot show whether V2 validation output or later plaintext endpoints were
+   viewed before the designated adjudicator. Keep the conservative evidence
+   class unless signed access records exist; future campaigns need external
+   timestamps/escrow, create-new append-only seals, relative paths, and a
+   container/determinism record.
+9. **[CONFIRMED, inference and estimand remain narrow]** The MovieLens primary
+   retains only 1,033 of 6,040 users, uses one global cutoff, and reports eight
+   optimizer seeds; seed-paired t tests do not quantify cutoff, user-population,
+   or domain uncertainty. Mid/tail targets also have zero top-10 accuracy, so
+   the reported signal is entirely head-target performance. State the selected
+   population prominently, add
+   repeated temporal cutoffs and pre-cutoff-defined cohorts, and use user/item
+   cluster or hierarchical inference as primary rather than a sensitivity.
+10. **[CONFIRMED, treatment-activation and operation-accounting gap]** Several
+    MovieLens arm scores are exactly or nearly identical, while the public
+    aggregate graph lacks validation trajectories, selected-checkpoint tap/update
+    norms, and diagnostic activation magnitudes. The reported operation counter
+    also gives identical values for several structurally different FIR arms,
+    suggesting incomplete coverage. Publish graph-bound per-seed diagnostics,
+    verify nonzero parameter updates and effective filter responses, explain
+    counter coverage, and add analytic convolution/FIR FLOP counts.
+11. **[CONFIRMED, wording outruns statistical evidence]** The introduction says
+    the results “reject per-channel necessity.” A nonsignificant learned-versus-
+    shared contrast is not equivalence, and MovieLens noninferiority is
+    conditional on a failed learned-effect gate. Replace this with “do not
+    support per-channel necessity” or “prevent attributing gains to per-channel
+    taps,” and keep the noninferiority decision explicitly conditional.
+12. **[CONFIRMED, data governance/ethics incomplete]** The ethics section still
+    centers Amazon and does not adequately cover MovieLens licensing,
+    acknowledgement, nonredistribution, commercial-use restrictions, or the
+    decision not to use demographics. Add these items and record the authors'
+    institutional/legal determination. The affirmative basis for publicly
+    redistributing derived Amazon assets also remains an author/legal question.
+13. **[CONFIRMED, PDF/figure defects]** The acmsmall PDF's dataset table is
+    clipped on page 12; author/venue placeholders remain; venue PDFs are
+    untagged; older Figures 3-4 embed Type 3 fonts; and the MovieLens efficiency
+    figure uses a narrow truncated y-axis without uncertainty, visually
+    exaggerating negligible differences. Rebuild the table to the true column
+    width, re-export old figures with embedded vector/text fonts, tag the
+    production PDF, and redesign MovieLens as paired deltas with CIs, zero, and
+    the noninferiority margin. The new Software paired plot is clear and
+    numerically correct.
+14. **[CONFIRMED writing inconsistency; PLAUSIBLE editorial risk]** Hard-coded
+    Markdown/reader figure numbers and duplicated captions are inconsistent
+    after the two new figures. The roughly 22,651-word, 45-page TORS package is
+    still dense; the 220-word abstract reads as a result ledger, and the
+    screening log leaves a mostly blank continuation page. Generate figure
+    references/captions from one source, shorten the abstract to question,
+    design, main negative, bounded positive, and implication, and move the full
+    audit/screening ledger to a separately navigable supplement. Exact portal
+    length and abstract requirements still require author verification.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-28 16:04 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Real author names,
+   affiliations, contact details, declarations, and release creators remain
+   placeholders. The PDF hygiene workflow still passes only with
+   `DRAFT_WAIVER=1`. Replace every placeholder, remove the waiver, rebuild all
+   formats, and perform an author/legal metadata check. Literal acceptance is
+   below 1% until this is done, regardless of the empirical result.
+2. **[AUTHOR VERIFICATION, decisive V3 evidence-class risk]** Software V3 is
+   mechanically well executed, but tracked evidence cannot establish whether
+   anyone saw validation NDCG printed by the aborted V2 trainer before the V3
+   design, seeds, and +0.000500 threshold were frozen. If V2 stdout was unseen,
+   V3 is internally prospective new-seed evidence; if it was seen or cannot be
+   credibly resolved, V3 is a validation-outcome-informed retry. Preserve
+   console/job logs and obtain a signed, dated custody statement. Until then,
+   replace “closes the prospective-evidence gap” and `confirmatory` with
+   conditional, same-team robustness language.
+3. **[CONFIRMED, frozen-run reproducibility defect]** The V3 common module
+   expects the CRLF worktree SHA-256 `a230d17c...` for an MI reference JSON,
+   while the immutable tagged Git blob is LF-normalized and hashes to
+   `37c78ef...`; therefore a fresh checkout of the frozen tag fails
+   `assert_inputs`. The file is a non-algorithmic reference, so this does not
+   numerically invalidate the Software endpoint, but it falsifies clean-clone
+   replayability. Publish a V3 erratum with both hashes and preserve the exact
+   historical bytes; add a clean-checkout preregistration gate and hash
+   canonical content or Git blobs in future freezes.
+4. **[CONFIRMED, incremental novelty / current-baseline gap]** The contribution
+   remains a narrow modular adaptation and audit design. Current frequency-aware
+   recommenders such as FreqRec and WEARec are discussed but not run under the
+   protocol, and the closest AlphaFuse-style text+ID port remains noncountable.
+   Run at least one feasible current equal-protocol baseline and a clean
+   text+ID comparator, or narrow both contribution and venue ambition.
+5. **[CONFIRMED, archive not submission-final]** All 407 expected release
+   payloads (9,489,409,339 bytes) matched the mutable v0.9 release by name,
+   size, and digest, but the public `RELEASE_MANIFEST.json` is stale, landing
+   metadata still advertises pre-V3 counts, creator fields remain placeholders,
+   and no final v1.2.0 deposit tag/DOI exists. At the fixed cutoff the V3 paper
+   commit was also not yet public; it was pushed 40 seconds later. Refresh all
+   metadata, upload the manifest last, run a fresh HTTPS-clone bootstrap and
+   strict replay, then cut an immutable versioned deposit from the exact tree.
+6. **[CONFIRMED, parsimony/algorithm claim unresolved]** Software V3 tests only
+   the 1,024-parameter learned per-channel FIR against identity. In the
+   outcome-known active-control study, learned FIR does not beat the
+   16-parameter shared causal filter (learned-minus-shared -0.000081, ordinary
+   95% CI [-0.000337,+0.000175]). Make shared/grouped/low-rank FIR the primary
+   efficiency comparison, preregister noninferiority, and report
+   accuracy/parameters/FLOPs/latency/memory Pareto curves.
+7. **[CONFIRMED, external validity remains narrow]** V3 uses the same Amazon
+   ecosystem, one Software category and fixed split, eight optimizer seeds,
+   same investigators, same code lineage, and local custody. It is neither
+   independent replication nor evidence of transfer beyond Amazon. Add an
+   untouched temporal cutoff or non-Amazon domain under independent custody.
+8. **[CONFIRMED protocol limitations; AUTHOR VERIFICATION on human access]**
+   READY and evaluation seals are locally exclusive-created and hash-linked,
+   not immutable or externally timestamped. “First endpoint reader” is not
+   auditable; absolute argv paths impair portable replay; the environment record
+   omits several system/determinism details; and the adjudicator does not fully
+   reconstruct every sidecar property. Use externally escrowed, signed,
+   append-only events; relative/canonical paths; a container/lock; and stronger
+   sidecar/rank/coverage checks.
+9. **[CONFIRMED, inference remains seed-only]** The very small paired-t p-value
+   quantifies optimizer-seed variation for one split, not uncertainty across
+   users, cutoffs, categories, or domains. Report the registered per-seed
+   differences and SD, add the exact sign test as a robustness result, justify
+   the minimum-effect threshold substantively, and use repeated temporal
+   cutoffs plus hierarchical or cluster-aware inference.
+10. **[CONFIRMED, construct/deployment validity remains material]** Ratings and
+    verified-purchase flags are ignored, while full histories determine
+    five-core inclusion and transductive catalogs. Add rating, verified-purchase,
+    global-time, query-time-catalog, and non-five-core sensitivities before
+    preference or deployment claims.
+11. **[CONFIRMED, manuscript wording outruns evidence]** “Closes the
+    prospective-evidence gap,” “immutable seals,” and “first endpoint reader”
+    are unconditional claims that the evidence cannot establish. Use
+    “internally prospective conditional on documented non-visibility,”
+    “exclusive-created, hash-linked local seals,” and “protocol-designated first
+    interpreter; non-access is author-attested.” Call +0.000500 a predeclared
+    minimum-effect reporting threshold unless a practical SESOI is justified.
+12. **[CONFIRMED, figure/table/accessibility debt]** The revised FIR response
+    figure is readable and no Type 3 fonts, clipping, overlap, or blank pages
+    were found across the three full PDFs. However, there is no paired Software
+    V3 figure, Table 0 remains extremely dense across a page break, supplement
+    probe tables are tiny, the reader PDF has no links/outlines, and the TORS
+    PDFs are untagged. Add a paired-seed/forest plot with zero and +0.000500
+    lines, redesign Table 0, enlarge supplement tables, and remediate navigation
+    and tagging.
+13. **[PLAUSIBLE, venue-fit/editorial risk]** The package is claim-dense and
+    long (about 21,618 words; 275-word abstract; 42-page TORS and 47-page reader
+    PDFs). This is not asserted as a formal TORS rule violation, but it raises
+    editor/reviewer burden. Move audit plumbing and large probe tables to a
+    separately navigable supplement, shorten the abstract, and lead with one
+    bounded question, one result, and one limitation.
+14. **[CONFIRMED, release and provenance gate coverage gap]** Candidate checks
+    pass despite stale README/CFF/Zenodo counts, manual Table 0 provenance, and
+    the frozen clean-checkout hash failure. Expand the gate to compare all
+    manuscript/metadata counts and claims, regenerate Table 0 from adjudication,
+    execute every frozen input assertion in a clean clone, and fail on waived
+    placeholders.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-28 10:02 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Author, affiliation, contact,
+   declaration, and creator placeholders remain in the manuscript, PDFs,
+   citation metadata, and release material; the hygiene check still relies on
+   `DRAFT_WAIVER=1`. Replace every placeholder and pass an unwaived build before
+   submission. Literal acceptance remains below 1% regardless of the science.
+2. **[CONFIRMED, terminal Software-V2 protocol contradiction]** The frozen
+   protocol requires all 16 checkpoints before the first TEST *access* and
+   declares earlier access an integrity failure. The frozen trainer instead
+   opens `Software.test.csv` before training and constructs the item/user mapping
+   from train+validation+TEST; the campaign driver also opens all three files in
+   preflight. `--no-test-eval` suppresses scoring, not access, and the
+   adjudicator checks only for TEST metrics. Because training had started, the
+   literal frozen rule implies `SW-V2-INTEGRITY-FAIL` regardless of the eventual
+   numbers. Do not reinterpret the rule after the outcome: VOID V2, disclose the
+   deviation, and freeze a V3 that either explicitly permits a transductive
+   catalog while sequestering TEST scoring or never opens the TEST interaction
+   file before the final boundary.
+3. **[CONFIRMED, no prospective acceptance uplift]** Digital Music V1 honestly
+   ended in a deterministic five-core feasibility void, and Software V2 had no
+   tracked result, campaign status, endpoint, or adjudication at this cutoff.
+   Every paper-bound FIR result therefore remains outcome-known, TEST-exposed,
+   or developed on an inspected split. A valid untouched temporal or non-Amazon
+   one-shot study is still required for confirmation or generalization claims.
+4. **[CONFIRMED, protocol/configuration enforcement gap]** Software V2 does not
+   mechanically bind the registered reference digest or full normalized
+   configuration, accepts arbitrary wrapper arguments, omits the imported model
+   builder from the frozen evaluation hash set, accepts any common clean HEAD
+   rather than exact `c1048ba6`, lacks an environment lock, and cannot certify
+   adjudicator-first access. Freeze all executable dependencies and inputs,
+   assert exact config/argv/commit/environment equality, self-hash the
+   adjudicator, add immutable attempt/READY seals and an exclusive lock, and use
+   auditable endpoint escrow.
+5. **[CONFIRMED, reproducibility/archive not final]** The prior pointwise
+   checkout and duplicate-classification failures are repaired: a clean checkout
+   passes Git verification for 555 entries, and all 359 expected public payloads
+   (8,375,684,035 bytes) match the cutoff manifest by name, size, and digest.
+   The candidate deposit nevertheless exits 2: documentation says 820 bundle
+   entries while the mechanical inventory requires 839; README understates the
+   new Software split/cache inventory as 18/4/354 instead of 21/6/359; creator
+   metadata and the final tag/DOI remain absent; and the remote manifest was
+   refreshed only after the cutoff. Fix counts/bootstrap coverage, pass a full
+   clean-clone replay, and publish an immutable versioned release from the exact
+   passing tree.
+6. **[CONFIRMED, narrower mechanism support; proposed complexity unsupported]**
+   Learned FIR beats the tested equal-count current-only DCT/GELU residual, but
+   that compound arm changes temporal access, rank/basis, nonlinearity, and
+   cross-channel mixing. It does not isolate temporal access. The 1,024-parameter
+   per-channel FIR also fails to beat the 16-parameter shared causal filter.
+   Promote shared/grouped/low-rank FIR, preregister noninferiority and an SESOI,
+   and report accuracy/parameters/FLOPs/latency/memory Pareto curves plus linear
+   and activation/rank/basis-matched current-only controls.
+7. **[CONFIRMED, incremental novelty and nearest-baseline gap]** FreqRec and
+   WEARec are cited and AlphaFuse is discussed, but none has a valid current
+   equal-protocol result. The defensible contribution is a narrow modular
+   adaptation plus audit boundary, not broad filtering novelty. Run at least one
+   current frequency-filter system and a clean AlphaFuse-style text+ID baseline,
+   or narrow the claim and venue ambition.
+8. **[CONFIRMED, inference and decision rule remain weak]** Software V2 uses one
+   fixed Amazon category/split, eight optimizer seeds, and fixed identity-then-
+   learned execution order. Its positive rule requires a point estimate of at
+   least +0.000500 but only a confidence lower bound above zero, so it cannot
+   establish an effect above the stated practical threshold. Justify/power the
+   SESOI, require the lower bound to exceed it if magnitude is the claim,
+   randomize/alternate arm order, and add repeated temporal cutoffs and
+   hierarchical user/category inference.
+9. **[CONFIRMED, construct/deployment validity remains material]** Ratings and
+   verified-purchase flags are ignored; full histories determine five-core
+   membership, indices, and candidate catalogs. Official Amazon guidance itself
+   warns that five-core subsets reduce diversity and may not reflect the
+   original distribution. Add rating/verified-purchase, global-time,
+   query-time-catalog, and non-five-core sensitivities before preference or
+   deployment claims.
+10. **[CONFIRMED, manuscript wording is inaccurate]** “Identifies/distinguishes
+    temporal access” exceeds the compound placebo; “cleanly frozen” contradicts
+    all 24 pointwise records reporting `git_dirty_tracked=true`; and “TEST
+    disabled” is inaccurate because only TEST scoring was suppressed. Replace
+    these with scoped compound-control, source-hash-frozen/tracked-dirty, and
+    transductive-catalog language. Keep the Software V2 outcome out of the paper
+    unless it is clearly labeled protocol-invalid/descriptive.
+11. **[CONFIRMED at cutoff, figure/PDF/accessibility debt]** No manuscript
+    source, PDF, table, or figure changed by the fixed cutoff, so the prior full
+    132-page visual review applies to `22671fb2`. TORS/acmsmall are untagged; the
+    reader lacks useful navigation; Table 0 is cramped; acmsmall has dummy
+    metadata; Fig. S1 has Type-3/tiny labels, weak intervals, no accessible
+    description, and no pointwise panel. A post-cutoff figure-accessibility/PDF
+    commit appeared during this audit and is deliberately excluded until the
+    next fixed-cutoff render review.
+12. **[PLAUSIBLE venue-fit/writing rejection risk]** A 47-page reader and
+    42-page TORS artifact still ask a small incremental module to carry extensive
+    audit chronology, probes, screens, and tail studies. Center one main spine--
+    matched module evidence and its validity boundary--and move audit history,
+    long provenance, and secondary analyses to appendices.
+13. **[CONFIRMED, residual text/cache and tail-analysis limitations]** Item-map/
+    cache binding, unknown-metadata collapse, item-text permutation, repeated
+    thinning draws, tie/missingness controls, and item-macro/hierarchical tail
+    inference remain incomplete. Keep the frequency-5 result secondary.
+14. **[AUTHOR/LEGAL VERIFICATION]** Confirm authorship/order, conflicts,
+    funding, ethics/privacy review, AI-assistance disclosure if applicable,
+    license choice, Amazon-derived-asset redistribution/takedown authority,
+    portal length/mode, and final preprint/reviewer declarations. Do not add,
+    inspect, overwrite, or release live post-cutoff Software endpoints during
+    manuscript cleanup.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-28 04:01 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** The manuscript, reader/TORS PDFs,
+   running header, cover material, `.zenodo.json`, and `CITATION.cff` still expose
+   maintainer/creator placeholders. The hygiene gate passes only with
+   `DRAFT_WAIVER=1`. Insert real author, affiliation, country, contact, funding,
+   conflict, reviewer, preprint, ethics, and legal metadata, then require an
+   unwaived rebuild. Literal acceptance remains effectively below 1%.
+2. **[CONFIRMED, release/reproducibility blocker]** The fixed-cutoff commit
+   `ebe2b939` is not reproducible from its own clean Git tree. Hydration installs
+   all 354 locally available release assets, but strict rebuild exits 2 because
+   checkout LF normalization changes 24/24 pointwise training JSONs and 24/24
+   STARTED seals relative to their raw-byte hashes. Git-manifest verification
+   separately fails on 24 pointwise final-evaluation JSONs duplicated between a
+   Git-backed result family and a release-only section, so the deposit builder is
+   fail-closed. The post-cutoff sibling `a17c2f79` adds the needed `-text` rule,
+   but does not repair the duplicate classification, builder, metadata, tag, or
+   public inventory. Repair on a normal descendant, then prove strict replay from
+   a new HTTPS clone before claiming a reproducible release.
+3. **[CONFIRMED, primary scientific rejection risk]** Every headline FIR result,
+   including the new pointwise comparison, is outcome-known, TEST-exposed, or
+   developed on an inspected split. There is no untouched temporal cutoff,
+   non-Amazon domain, or independently custodied confirmation. Run a genuinely
+   prospective, validation-selected, one-shot final evaluation before using
+   confirmation, transfer, or generalization language.
+4. **[CONFIRMED, narrower mechanism support; broader attribution still fails]**
+   Learned FIR exceeds the equal-parameter current-position-only placebo by
+   +0.001941 (ordinary paired 95% CI [+0.001788,+0.002095], Holm-adjusted
+   p=2.40e-8), while placebo minus identity is -0.000069
+   [-0.000200,+0.000061], Holm p=.249. This supports only discrimination from
+   this tested DCT/GELU placebo. The arm simultaneously changes temporal access,
+   representation basis/bottleneck, and nonlinearity, so it does not isolate a
+   temporal mechanism. Learned per-channel taps still do not separate from the
+   16-parameter shared causal filter. Add linear and activation/rank-matched
+   current-only controls; compare shared/grouped/low-rank/per-channel causal FIR
+   with preregistered noninferiority margins and parameter/FLOPs/latency/memory
+   Pareto curves.
+5. **[CONFIRMED, incremental novelty and nearest-baseline gap]** FreqRec and
+   WEARec are now cited, BSARec is scoped to Theorem 1, and AlphaFuse is
+   discussed; however, FreqRec/WEARec remain unrun and the AlphaFuse port remains
+   `NONCOUNTABLE`. The defensible contribution is a narrow modular adaptation
+   plus audit boundary, not broad filtering novelty. Run at least one current
+   equal-protocol frequency-filter baseline and a clean AlphaFuse-style text+ID
+   comparator, or narrow the top-journal claim further.
+6. **[CONFIRMED, inference remains fixed-split and seed-only]** The intervals
+   measure optimizer-seed variation on one fixed split, not uncertainty over
+   users, temporal cutoffs, categories, or domains. The pointwise-identity null
+   is not equivalence. Add repeated temporal cutoffs/splits, hierarchical
+   user/category analysis, an a-priori SESOI, and equivalence/noninferiority tests
+   where parsimony is the scientific question.
+7. **[CONFIRMED, construct/deployment validity remains material]** Ratings and
+   verified-purchase flags are ignored; full histories determine five-core
+   eligibility, indices, and candidate catalogs. FIR-category TEST targets
+   include 6.37-11.24% 1-2-star reviews, and roughly 18.79-21.10% of the fixed
+   catalog first appears after a query. Rating-threshold, verified-purchase,
+   global-time, and query-time-catalog sensitivities are required before making
+   preference or deployment claims.
+8. **[CONFIRMED custody deviation; AUTHOR VERIFICATION on visibility]** The
+   pointwise protocol was committed before launch, all 24 training records set
+   `no_test_eval=true`/`best_test=null`, and frozen hashes support scientific-code
+   identity. Nevertheless every record says `git_dirty_tracked=true`; the runner
+   lacks a fail-closed exact-commit/clean-tree/24-checkpoint READY boundary, and
+   the runtime freeze omits material helper/adjudication/environment inputs.
+   Replace “cleanly frozen” with “precommitted and hash-bound, executed from a
+   tracked-dirty tree”; preserve the study as internal evidence and obtain an
+   author account of pre-adjudication human/tool visibility.
+9. **[CONFIRMED, public-artifact claims are false at the cutoff]** The manifest
+   requires 354 assets / 8,274,248,666 bytes, including 72 pointwise files; the
+   public v0.9 release had the prior 282 required assets and no pointwise assets
+   at cutoff. `README.md` still says 282 / about 4.60 GB, `CITATION.cff` and
+   `.zenodo.json` still say 192 cells / 18 families instead of 195 / 19, and the
+   stale 92-entry ZIP contains zero pointwise files. Publish a new versioned
+   draft release rather than mutating v0.9; upload all assets, verify digests and
+   inventory, upload the final manifest last, tag the exact passing commit, and
+   replay over HTTPS.
+10. **[CONFIRMED, local green checks mask boundary failures]** The live-tree gate
+    reports exact HSTU parity, 18 causal paths, 195 cells/19 families, zero
+    numeric mismatches, and 195/195 claim-map coverage. That does not override
+    the clean-clone adjudicator failure, 24 Git-manifest mismatches, or failed
+    deposit-builder check. Make `--verify-git HEAD`, clean-clone strict rebuild,
+    deposit `--check-only`, remote asset verification, and tag/tree identity
+    mandatory parts of one release gate.
+11. **[CONFIRMED, figure/PDF/accessibility debt]** All 132 rendered pages are
+    free of gross clipping, overlap, or blank-page defects, and the pointwise
+    numbers are consistent across editions. TORS/acmsmall remain untagged; the
+    reader lacks bookmarks/clickable links; Table 0 is severely cramped;
+    acmsmall retains dummy volume/date metadata. Fig. S1 uses Type-3 fonts,
+    roughly 5.5-7 pt labels, weak confidence bands, no ACM `\Description`, and
+    does not visualize the pointwise contrast. Replace or supplement it with a
+    readable forest plot of learned-identity, pointwise-identity, and
+    learned-pointwise effects; use vector Type-42 fonts, >=8 pt labels, visible
+    intervals, accessible colors, and alt text.
+12. **[PLAUSIBLE venue-fit/writing rejection risk]** The 47-page reader and
+    42-page TORS artifact still combine a small incremental module, extensive
+    audit chronology, screens, controls, and tail studies. The abstract and the
+    pointwise-results page are especially claim-dense. Center the main paper on
+    one spine--module, matched controls, honest validity boundary--and move audit
+    history, probes, long provenance, and secondary tail analyses to appendices.
+13. **[CONFIRMED, residual text/cache and tail-analysis limitations]** Item-map/
+    cache binding, unknown-metadata collapse, item-text permutation, repeated
+    thinning draws, tie/missingness controls, and item-macro/hierarchical tail
+    inference remain incomplete. Keep the frequency-5 result secondary.
+14. **[AUTHOR/LEGAL VERIFICATION]** Confirm authorship/order, conflicts,
+    funding, ethics/privacy review, AI-assistance disclosure if applicable,
+    license choice, Amazon-derived-asset redistribution/takedown authority,
+    portal length/mode, and final preprint/reviewer declarations. Ignore or
+    remove verified temporary render/test directories before any broad add/tag.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-28 00:28 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** The TORS PDF, reader PDF,
+   running header, cover letter, `.zenodo.json`, and `CITATION.cff` still contain
+   maintainer/creator placeholders. The PDF hygiene gate passes only under
+   `DRAFT_WAIVER=1`. Supply real author, affiliation, country, contact, conflict,
+   funding, reviewer, preprint, and legal metadata; rebuild with the waiver
+   disabled. Until then the literal acceptance probability is effectively below
+   1%, regardless of scientific quality.
+2. **[CONFIRMED, primary scientific rejection risk]** Every headline FIR result
+   is outcome-known, TEST-exposed, or developed on an already inspected split.
+   The new wording is substantially more honest, but there is still no untouched
+   temporal cutoff, non-Amazon domain, or independently custodied confirmation.
+   Run one genuinely prospective, validation-selected, one-shot final evaluation
+   before using confirmation, transfer, or generalization language.
+3. **[CONFIRMED, proposed-algorithm attribution is not identified]** All five
+   trainable left-causal arms beat frozen identity, but learned per-channel taps
+   do not beat the 16-parameter channel-shared arm or the parameter-matched
+   nonlinear arm. Shared is numerically higher than the 1,024-parameter learned
+   filter, and fixed MA/HP are algebraically redundant. No parameter-matched
+   lag-0/pointwise non-temporal placebo was run, so neither temporal specificity
+   nor per-channel-tap necessity is established. After this audit's fixed
+   cutoff, a pointwise preregistration, frozen trainer, runner, evaluator,
+   structural test, and adjudicator appeared; they were then committed and
+   pushed as post-cutoff commit `93e73a5c`, and the 24-job campaign began. The
+   protocol is more defensible than a code-only arm, but it is still running and
+   has not been adjudicated, graphed, or released, so it supplies no scientific
+   evidence or acceptance uplift. The scientifically strongest
+   next design is shared/grouped/low-rank versus learned versus lag-0 placebo,
+   with preregistered noninferiority margins and parameter/latency/memory curves.
+4. **[CONFIRMED, submitted TeX contradicts the corrected reader source]** The
+   TORS PDF still says the filter “transfers to a second category” and that it
+   supplies a temporal bias the baseline “does not learn as reliably”; the
+   reader correctly says only that a package gain appears on a second
+   outcome-visible category. The TORS results also omit the two active-control
+   Holm-family definitions and all nine adjusted p-values that are present in
+   the Markdown. Generate both editions from one source or add a fail-closed
+   prose/parity check; correct these statements before submission.
+5. **[CONFIRMED, incremental novelty and nearest-baseline gap]** FreqRec and
+   WEARec are now correctly cited, BSARec is scoped to Theorem 1, and AlphaFuse
+   is discussed. However, FreqRec/WEARec remain unrun and the attempted
+   AlphaFuse port is explicitly `NONCOUNTABLE`. The claim is therefore a narrow
+   modular adaptation with no current equal-protocol nearest-system baseline.
+   Run at least one current frequency-filter system and a clean AlphaFuse-style
+   comparator, or make the shared causal residual plus audit boundary—not broad
+   filtering novelty—the unmistakable contribution.
+6. **[CONFIRMED, construct/deployment validity remains material]** Ratings and
+   verified-purchase status are ignored and full histories determine five-core
+   membership, indices, and candidate catalogs. In the released FIR-category
+   TEST targets, 1–2-star reviews are 9.94% (MI), 11.24% (IS), and 6.37% (CDs);
+   ratings below 4 are 16.65%, 17.33%, and 12.33%. At a test query, roughly
+   18.79–21.10% of the fixed catalog has its first retained event in the future,
+   and 27.66–31.47% of aggregate TRAIN rows occur after that user's test event.
+   These do not invalidate the stated retrospective next-review estimand, but
+   they make rating-threshold, verified-purchase, global-time, and query-time-
+   catalog sensitivities substantive requirements for preference/deployment
+   relevance.
+7. **[CONFIRMED, inference remains fixed-split and seed-only]** Intervals quantify
+   optimizer variation over one fixed split; categories and cutoffs are not
+   sampled, and retained tests are not equivalence tests. Add repeated temporal
+   cutoffs/splits and a hierarchical category/user analysis. For the control
+   study, report both frozen Holm families and adjusted p-values in the actual
+   TORS artifact; use an equivalence/noninferiority design if parsimony between
+   shared and per-channel forms is the question.
+8. **[CONFIRMED custody deviation; AUTHOR VERIFICATION on visibility]** The
+   active-control campaign ran across dirty evolving trees and outcome sidecars
+   initially escaped the intended ignore/custody rule. Raw/canonical source-hash
+   handling is now checkout-invariant and the public rebuild passes, but those
+   later controls cannot retroactively become independently custodied. The
+   documentation also incorrectly implies every normalized text hash equals its
+   Git blob: the 96 deliberately CRLF-preserved FIRCTRL training/seal files have
+   different raw and LF-normalized hashes. Store/name both hash domains and keep
+   the controls exploratory; obtain a signed author account of any pre-
+   adjudication human, IDE, console, or tool visibility.
+9. **[CONFIRMED, final archival release is still absent and the candidate is not
+   standalone]** The public `v0.9-audit-evidence` store is populated and
+   bootstrap-compatible but mutable; it has 284 assets and 5,985,883,924 bytes,
+   while the documentation incorrectly says about 4.60 GB. Its uploaded
+   `RELEASE_MANIFEST.json` is stale (`c7ca997b`) and its tag is 257 commits behind
+   HEAD. Remote `v1.2.0` does not exist; GitHub's latest release is the stale
+   `v1.1.11-deposit`, now 105 commits and 591 paths behind HEAD. The internally
+   consistent 92-entry local candidate contains only 3/582 unique active graph
+   sources and omits six files explicitly linked by the claim map, so its printed
+   strict-verification command is not self-contained. Include the tracked source
+   archive/all small graph sources and mapped support files, then publish only
+   after metadata/legal verification and an actual HTTPS-clone/download replay.
+10. **[CONFIRMED, artifact assurance improved but is not complete claim/prose
+    assurance]** Hydrated and new clean-clone strict rebuilds pass: 761 local
+    manifest files, 479 Git blobs, 192 active cells, 18 families, zero mismatch/
+    untraceable cells, and a generated claim map. However, that map covers only
+    186/192 active cells; four `fir_breadth` and two `table1a` cells are omitted,
+    and the verifier never asserts complete/unique coverage. Its manually curated
+    ten-claim list mostly checks family status plus supporting-file existence and
+    did not catch the TeX transfer overclaim. Add union/completeness assertions,
+    claim-text synchronization, transitive source/hash coverage, mutation/fault-
+    injection tests, and a negative test proving forbidden wording fails. After
+    the fixed cutoff, concurrent pointwise-arm edits also make current worktree
+    manifest verification fail on three changed manifested files; HEAD remains
+    reproducible, but the live tree must not be represented as release-green.
+11. **[CONFIRMED, figure/PDF/accessibility debt]** The new FIR diagnostic is
+    numerically reproducible and explicitly descriptive, but prints raw
+    `e^{jω}` caret/braces, uses Type-3 fonts, has nearly invisible confidence
+    bands and roughly 5.5–7 pt in-layout text, and lacks an ACM `\Description`.
+    Overlay the 16-parameter shared response, use mathtext/Type-42 fonts, visible
+    intervals, at least 8 pt final labels, and synchronized captions. TORS is 41
+    pages and untagged; Table 0 remains cramped; the reader is tagged but lacks
+    bookmarks/clickable links. The acmsmall preview contains dummy DOI/article/
+    publication metadata and must not be submitted as-is.
+12. **[PLAUSIBLE venue-fit/writing rejection risk]** The roughly 20,000-token
+    Markdown and 41-page review PDF combine a small incremental module, a large
+    audit narrative, historical failures, screens, and several supporting
+    studies. Condense the main paper around one contribution spine; move audit
+    chronology, probe screens, and long provenance detail to the supplement.
+    A compact forest plot of the nine control contrasts is more decision-useful
+    in the main text than additional prose.
+13. **[CONFIRMED, residual text/cache and tail-analysis limitations]** Item-map/
+    cache binding, unknown-metadata collapse, item-text permutation, repeated
+    thinning draws, tie/missingness controls, and item-macro/hierarchical tail
+    inference remain incomplete. The corrected frequency-5 result is narrow and
+    should remain secondary until these checks are run.
+14. **[AUTHOR/LEGAL VERIFICATION]** Confirm authorship/order, conflicts,
+    funding, ethics/privacy review, AI-assistance disclosure if applicable,
+    license choice, Amazon-derived-asset redistribution/takedown authority,
+    portal length/mode, and final preprint/reviewer declarations. The untracked
+    `qa_final*` render folders (13 PNGs) and roughly 24.61 GiB untracked
+    `_bestrec_run/tmp/` tree should be safely ignored or cleaned from a verified
+    path before any broad add/tag.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-27 22:00 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker; unchanged]** Author, affiliation,
+   country, contact and running-header placeholders remain visible; the hygiene
+   scan passes only under `DRAFT_WAIVER=1`. Populate real metadata and require an
+   unwaived clean build.
+2. **[CONFIRMED, scientific rejection risk; unchanged]** Every headline FIR
+   estimate is outcome-known, test-exposed or repeatedly developed on the same
+   Musical Instruments split. There is no untouched temporal, non-Amazon or
+   independently custodied confirmation.
+3. **[CONFIRMED, attribution is weaker than stated; sharpened]** All five
+   trainable left-causal residual arms beat frozen identity, but there is no
+   active lag-0/pointwise, parameter-matched non-temporal placebo. The study
+   therefore does not isolate temporal structure from generic trainable-residual,
+   capacity or optimization effects. Learned per-channel taps also do not beat
+   shared/nonlinear arms; MA/HP collapse to the same smoothing family.
+4. **[CONFIRMED, clean-clone claim is false; unchanged]** All 144 FIR-control
+   binaries are public and hash-correct, but `bootstrap_public_clone.py` omits
+   their three release sections. A clean clone cannot run the strict control
+   adjudicator. Add the mappings, document the roughly 4.60 GB footprint and
+   publish a literal empty-clone transcript.
+5. **[CONFIRMED, statistical mislabel; unchanged]** The E-A interval is the
+   registered 8-vs-8 Welch interval (df 13.939), but manuscript and TeX call it
+   paired. Retain its values and label it “ordinary 95% Welch CI”; keep the
+   different paired-by-seed sensitivity descriptive. Replace hybrid
+   “Holm-corrected paired t” with ordinary CIs and Holm-adjusted p-values.
+6. **[CONFIRMED custody deviation; AUTHOR VERIFICATION on visibility]** The
+   controls ran from dirty trees spanning five commits, and sidecars lacked
+   independent custody. A local exclusive-start marker is not an independent
+   seal. Verify human/tool outcome visibility and keep the verdict exploratory.
+7. **[CONFIRMED, incremental novelty/direct-baseline gap; unchanged]** FreqRec
+   and WEARec remain uncited/unrun; AlphaFuse is admitted but omitted; BSARec is
+   still mis-cited as “Thm 3.1” although the relevant official result is Theorem
+   1 about repeated softmax attention. Run current equal-protocol baselines and
+   correct the citation/scope.
+8. **[CONFIRMED, construct/deployment validity untested; unchanged]** Ratings
+   and verified-purchase flags are ignored, and full histories determine
+   eligibility/catalogs. Rating, verification, keep-latest, global-time,
+   query-time-catalog and real implicit-event sensitivities remain necessary.
+9. **[CONFIRMED, incomplete artifact assurance; unchanged]** Table 0 remains
+   `checked: 0`; headline E-A is absent as a paper-bound graph cell; only 303/557
+   graph sources are explicitly release-manifest-covered. Add transitive
+   claim-to-source coverage or narrow the hash-manifest claim.
+10. **[CONFIRMED contribution-spine contradiction; PLAUSIBLE venue-fit risk,
+    new]** Title/abstract/Introduction ledger lead with the FIR module, while
+    Related Work calls the audit apparatus the “lead contribution.” The method
+    lane lacks independent replication/current baselines; the evaluation lane
+    lacks graph mutation/fault-injection tests, cross-repository validation and
+    reviewer-usability evidence. Choose and substantiate one primary paper type.
+11. **[CONFIRMED, stale internal wording; unchanged]** “Transfers,”
+    “cross-category confirmation/transfer,” “FIR-specific interpretation,”
+    “supports temporal mixing,” and shared/nonlinear controls that “recover the
+    gain” exceed the evidence. Say only that tested trainable left-causal
+    residuals improved frozen identity in this outcome-known setup; temporal
+    specificity and learned superiority were not established.
+12. **[CONFIRMED, multiplicity disclosure incomplete; unchanged]** Active-control
+    Holm adjustment operates in separate five-test and four-test families; CIs
+    are ordinary paired intervals. Name both families and print adjusted p-values
+    so readers do not infer global nine-test familywise or simultaneous-CI scope.
+13. **[CONFIRMED, inference/generalization gap; unchanged]** Uncertainty is
+    across eight optimizer seeds on one fixed split, not users, cutoffs, datasets
+    or environments. Add repeated temporal splits and hierarchical/dataset-level
+    inference; retained tests are not equivalence.
+14. **[CONFIRMED, algorithm-efficiency opportunity not validated; unchanged]**
+    The 16-parameter shared filter is numerically above 1,024 per-channel taps.
+    Preregister shared/grouped/low-rank filters, an active non-temporal placebo
+    and noninferiority margins on fresh data; report parameter/latency/memory
+    Pareto curves.
+15. **[CONFIRMED cache/TFV2 defects; PLAUSIBLE missingness bias; unchanged]**
+    Item-map/cache binding, unknown-metadata collapse, one-draw thinning, tie
+    handling and item-macro/hierarchical inference remain incomplete.
+16. **[CONFIRMED, mutable/stale release story; unchanged]** `v0.9` is mutable and
+    was appended under one tag; `v1.1.11-deposit` is 99 commits/577 paths behind
+    with 336 mismatches. Cut a versioned immutable deposit after clean-clone
+    replay and update stale README counts.
+17. **[CONFIRMED, writing/figure/PDF debt; unchanged]** The venue PDF is 41 pages
+    and Markdown about 20,545 words. Table 0 is cramped, reader Fig. 1 caption
+    splits pages, the reader lacks bookmarks, venue PDFs are untagged, and the
+    acmsmall preview clips page 42. Condense and repair layout/accessibility.
+18. **[AUTHOR/LEGAL VERIFICATION; unchanged]** Confirm outcome visibility, dirty
+    patches, authorship, portal mode/length, ethics/privacy, funding/conflicts,
+    licenses and derivative-redistribution permission.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-27 16:00 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** Author, affiliation, country,
+   contact and running-header placeholders remain visible; the hygiene scan is
+   green only under `DRAFT_WAIVER=1`. Populate real metadata and require an
+   unwaived clean build before submission.
+2. **[CONFIRMED, scientific rejection risk]** Every headline FIR estimate is
+   outcome-known, test-exposed, or repeatedly developed on the same Musical
+   Instruments split. The repaired wording is honest, but there is still no
+   untouched temporal, non-Amazon or independently custodied confirmation.
+3. **[CONFIRMED, mechanism/novelty narrowed]** All active temporal arms beat
+   identity, but learned per-channel taps do not beat the 16-parameter shared
+   kernel or nonlinear control. The shared arm is numerically best; fixed MA and
+   HP are the same one-dimensional function class under sign reversal. The
+   supported result is a small trainable causal temporal residual, not necessity
+   or superiority of learned per-channel FIR coefficients.
+4. **[CONFIRMED, clean-clone claim is false]** All 144 FIR-control binary assets
+   are public and hash-correct, but `bootstrap_public_clone.py` omits the three
+   FIR-control release sections. A clean clone therefore cannot run the strict
+   adjudicator despite the manuscript/README claim. Add the mappings and publish
+   a literal clean-clone transcript; document the roughly 4.60 GB download.
+5. **[CONFIRMED, statistical mislabel]** The headline E-A interval is the
+   registered 8-vs-8 Welch interval (df about 13.94), but the manuscript and TeX
+   call it paired. Correct every E-A occurrence and keep paired language only for
+   canonical breadth and active controls; likewise replace “Holm-corrected
+   paired t” for the hybrid with ordinary CIs plus Holm-adjusted p-values.
+6. **[CONFIRMED custody deviation; AUTHOR VERIFICATION on visibility]** The
+   active-control family ran from dirty trees spanning five commits, and
+   sidecars were not independently custodied before adjudication. The erratum is
+   candid, but a local exclusive-start marker is not an independent seal. Verify
+   who or what saw outcomes and preserve the verdict as exploratory only.
+7. **[CONFIRMED, incremental novelty/direct-baseline gap]** FreqRec and WEARec
+   remain uncited and unrun; AlphaFuse remains an admitted omission; BSARec is
+   still mis-cited as “Thm 3.1” although the official low-pass result is Theorem
+   1 about repeated softmax attention. Run current equal-protocol baselines and
+   correct the theorem/scope.
+8. **[CONFIRMED, construct/deployment validity untested]** The new estimand
+   disclosure correctly says ratings and verified-purchase flags are ignored and
+   full histories determine eligibility/catalogs. Rating, verified-purchase,
+   keep-latest, global-time/query-time-catalog and real implicit-event
+   sensitivities remain necessary before preference or deployment claims.
+9. **[CONFIRMED, incomplete artifact assurance]** Table 0 remains `checked: 0`;
+   the headline E-A estimate is not a paper-bound graph cell; only 303/557 graph
+   sources are explicitly release-manifest-covered. Narrow “every printed claim
+   is hash-manifested” or add exact transitive claim-to-source coverage.
+10. **[CONFIRMED, stale internal wording]** “Transfers,” “cross-category FIR
+    confirmation/transfer,” “FIR-specific interpretation,” and shared/nonlinear
+    controls that “recover the gain” overstate the corrected evidence boundary.
+    Use “outcome-known internal robustness” and “superiority was not
+    established,” without implying equivalence.
+11. **[CONFIRMED, multiplicity disclosure incomplete]** Active-control CIs are
+    ordinary paired intervals and Holm operates in two separately frozen
+    families, not one global nine-test family. State both families and adjusted
+    p-values in the main table/text so readers cannot infer simultaneous CIs or
+    global familywise coverage.
+12. **[CONFIRMED, inference/generalization gap]** Current uncertainty is across
+    eight optimizer seeds on one fixed split, not users, temporal resamples,
+    datasets or environments. Add repeated cutoffs/splits and hierarchical or
+    dataset-level inference; do not turn retained tests into equivalence.
+13. **[CONFIRMED, algorithm-efficiency opportunity not yet validated]** The
+    shared 16-tap filter uses 16 parameters versus 1,024 per-channel taps and is
+    numerically strongest here. Preregister shared/low-rank/grouped filters,
+    lag-0 or pointwise non-temporal capacity controls, and noninferiority margins
+    on fresh data; report accuracy/latency/memory/parameter Pareto curves.
+14. **[CONFIRMED cache/TFV2 defects; PLAUSIBLE missingness bias]** Item-map/cache
+    binding, unknown-metadata collapse, one-draw thinning, tie handling and
+    item-macro/hierarchical inference remain incomplete. Add fail-closed map
+    hashes, shuffled/missing-text controls and repeated tie-safe analyses.
+15. **[CONFIRMED, mutable/stale release story]** The `v0.9` evidence release is
+    mutable and was appended through 2026-07-27 under the same tag; the stated
+    `v1.1.11-deposit` is 99 commits/577 paths behind with 336 mismatches. Cut a
+    new immutable versioned release/deposit after clean-clone replay and update
+    README counts (still 175 cells/420 files rather than 203/744 or 462 Git).
+16. **[CONFIRMED, writing/figure/PDF debt]** The venue PDF is 41 pages and the
+    manuscript is about 20,545 words. Table 0 is cramped, the reader Fig. 1
+    caption splits pages, the reader lacks bookmarks, venue PDFs are untagged,
+    and the acmsmall preview clips a line on page 42. Condense Results/Related
+    Work, add a compact control forest/table, and repair layout/accessibility.
+17. **[AUTHOR/LEGAL VERIFICATION]** Confirm outcome visibility, exact dirty
+    patches, author order/identity, portal mode/length, ethics/privacy review,
+    funding/conflicts, licenses and derivative-redistribution permission.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-27 10:00 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker; unchanged]** Visible author,
+   affiliation and contact placeholders remain, and the hygiene gate passes only
+   under `DRAFT_WAIVER=1`. Replace them and require an unwaived clean build.
+2. **[CONFIRMED, realized P0 control-custody failure]** Stage 2 completed 48/48
+   TEST evaluations after the 04:00 warning. The evaluator's actual 48
+   `*.finaleval.users.npz` outcome sidecars and 48 STARTED seals are ordinary
+   untracked files because `.gitignore` and the CI deny-rule cover the wrong
+   `.finaleval.perusers.npz` suffix. Quarantine without opening, preserve exact
+   hashes/state, and obtain author verification of whether any outcome was read.
+3. **[CONFIRMED, active-control validity gap; AUTHOR VERIFICATION on visibility]**
+   No adjudication exists. All 48 training runs were no-TEST/checkpoint-valid but
+   dirty, span five commits and lack immutable attempt custody; family-complete
+   first read is not enforced. Fixed-MA and fixed-HP are the same scalar function
+   class under a sign reversal, so they are not independent mechanism controls.
+   Do not amend the frozen decision family after TEST; disclose the redundancy
+   and run a fresh, truly distinct control under a new preregistration.
+4. **[CONFIRMED, P0 canonical claim-class regression; unchanged]** The manuscript
+   and graph count the IS/CD reruns as confirmatory three-category isolation even
+   though both categories were selected after favorable outcomes and TEST was
+   evaluated every epoch. Relabel as outcome-known/test-exposed descriptive
+   canonical-reparameterization robustness.
+5. **[CONFIRMED, P0 public-artifact contradiction; unchanged]** The paper says
+   all 32 canonical sources are bound/public, but Git and the release manifest
+   contain 0/32; local strict reconstruction depends on ignored files. Publish a
+   hash-bound immutable bundle and prove clean-clone replay, or remove the claim
+   and the two cells from the submission graph.
+6. **[CONFIRMED, method/statistics contradiction; unchanged]** Primary canonical
+   taps used backbone weight decay although §3 says they were excluded. CIs are
+   ordinary paired-t intervals, not Holm-corrected intervals; adjusted p-values
+   and registered HR/MRR breadth secondaries remain absent. Correct the prose,
+   report the registered family and do not call p=.95 equivalence.
+7. **[CONFIRMED, construct-validity failure; unchanged]** Sequence construction
+   ignores 1--5-star ratings and treats every review as positive. Define the
+   next-review estimand and run rating, verified-purchase and implicit-event
+   sensitivities.
+8. **[CONFIRMED, deployment-validity failure; unchanged]** Complete histories
+   determine five-core eligibility, indices and catalogs before splitting. Run
+   global-time evaluation with training-era eligibility and query-time catalogs.
+9. **[CONFIRMED, incomplete artifact assurance; unchanged]** Table 0's canonical
+   row is `checked: 0`; graph metadata is stale; aggregate cells do not establish
+   transitive rank completeness; and the release manifest omits canonical inputs
+   plus the control runner/evaluator/test. Add exact-config, dependency-hash,
+   expected-set and claim-to-rank mutation gates.
+10. **[CONFIRMED, novelty/direct-baseline gap; unchanged]** The contribution is
+    incremental; FreqRec and WEARec remain uncited, while AlphaFuse and the
+    strongest HSTU-BLaIR/canonical-identity comparisons remain absent from the
+    executed-baseline overview. Run nearest controls under equal budgets.
+11. **[CONFIRMED, test-independence gap; worsened custody]** Public TEST exposure
+    spans prior campaigns; the new outcome files are not independently custodied.
+    Use validation-only selection, a genuinely untouched temporal/non-Amazon
+    dataset and an external one-shot final-test boundary.
+12. **[CONFIRMED cache confounding; PLAUSIBLE missingness bias; unchanged]** Text
+    caches are not fail-closed against item maps, missing metadata collapses to
+    `unknown`, and one table affects input and output. Bind maps and run a 2x2
+    input/output-text design with missingness and shuffled-feature controls.
+13. **[CONFIRMED, TFV2/inference defects; unchanged]** Post-hoc/predeclared
+    labeling, event-weighted tail coverage, one-draw thinning, ties and stale
+    statistics remain. Reconstruct ranks and add item-macro/hierarchical repeats.
+14. **[CONFIRMED, writing/integration inconsistency; unchanged]** The abstract
+    leads with external thresholds rather than the modular result; dataset-role
+    and baseline tables retain the defective legacy framing; BSARec remains
+    mis-cited. Rebuild one synchronized contribution ledger.
+15. **[CONFIRMED, release lag; unchanged]** Selected verification passes 464
+    local/326 Git known entries only because omissions are outside scope;
+    `v1.1.11-deposit` is 98 commits/444 paths behind with 200 mismatches. Cut a
+    portable deposit only after clean-clone replay.
+16. **[CONFIRMED, figure/table/PDF debt; unchanged]** Reader/TORS remain 47/40
+    pages, but Table 0 is tiny and fragmented, Fig. 2 misassigns `p=.058`, the
+    reader lacks outlines, venue PDFs are untagged, reader Fig. 1's caption splits
+    across pages, alt text duplicates captions and `FIR` is not expanded.
+17. **[AUTHOR/LEGAL VERIFICATION]** Confirm whether any FIR-control final JSON,
+    sidecar, IDE preview, console or derived summary exposed an endpoint before
+    adjudication; also confirm dirty patches, portal mode/length, identity,
+    ethics/privacy, licenses and derivative redistribution permission.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-27 04:00 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker; unchanged]** Visible author,
+   affiliation and contact placeholders remain, and the hygiene gate passes only
+   under `DRAFT_WAIVER=1`. Replace the metadata and require an unwaived clean
+   build before treating any acceptance estimate as literal.
+2. **[CONFIRMED, new P0 claim-class regression]** The manuscript and artifact
+   graph now count the IS/CD canonical reruns as confirmatory three-category
+   isolation. Both categories were selected after favorable outcomes were known,
+   and the rerun evaluated TEST at every epoch. Relabel this as pre-declared but
+   outcome-known/test-exposed canonical-reparameterization robustness.
+3. **[CONFIRMED, new P0 public-artifact contradiction]** The paper says all 32
+   canonical source runs are bound and public, but Git and the release manifest
+   contain 0/32; strict reconstruction succeeds only with ignored local inputs.
+   Publish a hash-bound immutable bundle and prove clean-clone replay, or remove
+   the public/clean-rebuild claim and the two cells from the submission graph.
+4. **[CONFIRMED, imminent active-control custody risk]** The promising test-once
+   control campaign is at 37/48 training runs and 0/48 final evaluations, but all
+   observed run JSONs record a dirty tracked tree and span five commits. Worse,
+   the evaluator writes `*.finaleval.users.npz` while `.gitignore` covers only
+   `*.finaleval.perusers.npz`; fix the sealed boundary before Stage 2 touches TEST.
+5. **[CONFIRMED, method/statistics contradiction]** Primary canonical taps used
+   backbone weight decay although §3 says they were excluded. The reported CIs
+   are ordinary paired-t intervals, not Holm-corrected intervals; adjusted
+   p-values and registered HR/MRR breadth secondaries remain absent. Correct the
+   prose and report the registered family without treating p=.95 as equivalence.
+6. **[CONFIRMED, under-gated mechanism claim]** The canonical graph checks only
+   partial settings and cannot certify full config/reference/code/data/cache
+   equality. Identity control establishes module-attributable gain, not
+   FIR-specific superiority over active alternatives; withhold that language
+   until the fixed/shared/nonlinear control campaign is validly adjudicated.
+7. **[CONFIRMED, construct-validity failure; unchanged]** Sequence construction
+   ignores 1--5-star rating values and treats every review as positive. Define
+   the next-review estimand and run 4+-star, rating-weighted, verified-purchase
+   and genuine implicit-feedback sensitivities.
+8. **[CONFIRMED, deployment-validity failure; unchanged]** Complete histories
+   determine five-core eligibility, indices and catalogs before splitting. Run
+   global-time evaluation with training-era eligibility and query-time catalogs.
+9. **[CONFIRMED, incomplete artifact assurance]** Table 0's headline canonical
+   row is `checked: 0`; graph metadata is stale; aggregate cells do not establish
+   transitive rank-level completeness; and the release manifest omits the
+   canonical endpoints plus most new control machinery. Add typed, mutation-
+   tested claim-to-rank and exact-config/hash gates.
+10. **[CONFIRMED, novelty/direct-baseline gap]** The contribution is incremental
+    and current frequency-aware recommenders FreqRec and WEARec remain uncited;
+    AlphaFuse and strongest HSTU-BLaIR/canonical-identity comparisons are absent
+    from the executed-baseline overview. Run nearest controls under equal budgets.
+11. **[CONFIRMED, test-independence gap; unchanged]** Public TEST exposure spans
+    campaigns and categories. Use validation-only selection, a true untouched
+    temporal/non-Amazon dataset and independently custodied one-shot final tests.
+12. **[CONFIRMED cache confounding; PLAUSIBLE missingness bias; unchanged]** Text
+    caches are not fail-closed against item maps, missing metadata collapses to
+    `unknown`, and one table affects input and output. Bind maps and run a 2x2
+    input/output-text design with missingness and shuffled-feature controls.
+13. **[CONFIRMED, TFV2/inference defects; unchanged]** Post-hoc/predeclared
+    labeling, event-weighted tail coverage, one-draw thinning, ties and stale
+    statistics remain. Reconstruct ranks and add item-macro/hierarchical repeats.
+14. **[CONFIRMED, writing/integration inconsistency]** The abstract leads with
+    external thresholds rather than the paper's modular result; the dataset-role
+    and baseline tables still describe the defective legacy breadth campaign;
+    and BSARec remains mis-cited. Rebuild one synchronized contribution ledger.
+15. **[CONFIRMED, release lag]** Selected-entry verification passes 464 local and
+    326 Git entries only because omitted files are outside scope;
+    `v1.1.11-deposit` is 98 commits/444 paths behind with 200 selected mismatches.
+    Cut a fresh portable deposit only after a clean-clone replay.
+16. **[CONFIRMED, figure/table/PDF debt; partly improved]** Condensation reduces
+    the reader/TORS PDFs to 47/40 pages, but Table 0 is still tiny and over-dense,
+    Fig. 2 still misassigns `p=.058`, the reader lacks outlines, venue PDFs are
+    untagged, alt text duplicates captions and `FIR` is not expanded on first use.
+17. **[AUTHOR/LEGAL VERIFICATION; unchanged]** Confirm historical and future
+    test-output visibility, exact dirty patches, final portal mode/length,
+    identity, ethics/privacy, licenses and derivative redistribution permission.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-26 22:00 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker; unchanged]** Visible identity and
+   affiliation placeholders remain in all PDFs, and the strict gate is green
+   only with `DRAFT_WAIVER=1`. Replace them and require an unwaived clean build.
+2. **[CONFIRMED, banked-result custody failure; unchanged]** The positive
+   canonical-breadth summary binds 0/32 endpoint files or hashes and omits exact
+   arm/config/provenance/rank evidence. Seal, manifest and clean-clone replay the
+   complete input bundle before any integration.
+3. **[CONFIRMED, protocol-deviated/outcome-visible result; unchanged]** All local
+   endpoints contain test metrics for 20/20 epochs and both categories were
+   selected after favorable outcomes were known. Preserve as descriptive; run
+   an untouched, validation-only, test-once successor.
+4. **[CONFIRMED, status/claim contradiction; unchanged]** The worklist calls the
+   campaign complete and claims three-category isolation, then says it is still
+   running and instructs relaunch/adjudication. Paper/TeX still call it pending.
+   Replace all with one timestamped descriptive/not-counted status.
+5. **[CONFIRMED, statistical/gate mismatch; unchanged]** Arithmetic and Holm
+   decisions are internally correct, but ordinary paired-t CIs are mislabeled
+   Holm-corrected; adjusted p-values and registered HR/MRR are absent; partial
+   config/provenance checks and fail-open Normal inference remain. Harden the gate.
+6. **[CONFIRMED, breadth/novelty overstatement; unchanged]** The two positive
+   fixed-category reruns support canonical reparameterization robustness, not
+   untouched-category or population generalization. Add negative/neutral
+   categories and a genuinely unseen non-Amazon dataset.
+7. **[CONFIRMED, construct-validity failure; unchanged]** The pipeline ignores
+   1--5-star rating values and treats every review as positive. Define the
+   next-review estimand and run rating/verified-purchase/implicit sensitivities.
+8. **[CONFIRMED, deployment-validity failure; unchanged]** Complete histories
+   determine five-core eligibility, indices and catalogs before splitting. Run
+   global-time evaluation with training-era eligibility and query-time catalogs.
+9. **[CONFIRMED, incomplete artifact assurance; unchanged]** The aggregate-heavy
+   graph omits 254/331 sources and all banked breadth inputs/cells; the selected-
+   entry manifest ignores the runner and final bank. Enforce transitive
+   claim-to-rank completeness and mutation-test omissions.
+10. **[CONFIRMED, incremental/unsynchronized method story; unchanged]** The paper
+    spine mixes canonical and legacy FIR identities and lacks equal-budget active
+    causal/depthwise-convolution and residual-initialization controls.
+11. **[CONFIRMED, test-independence/baseline gap; unchanged]** Public-test
+    exposure spans campaigns and close comparators remain unrun/unequally tuned.
+    Use validation-only tuning and independently custodied final tests.
+12. **[CONFIRMED cache confounding; PLAUSIBLE missingness bias; unchanged]** Text
+    caches are not fail-closed against item maps, missing metadata collapses to
+    `unknown`, and one table affects input and output. Bind maps and run a 2x2
+    input/output-text design with missingness and shuffled-feature controls.
+13. **[CONFIRMED, TFV2/inference defects; unchanged]** Post-hoc/predeclared
+    labeling, event-weighted tail coverage, one-draw thinning, ties and stale
+    statistics remain. Reconstruct ranks and add item-macro/hierarchical repeats.
+14. **[CONFIRMED, theory/current-novelty gap; unchanged]** BSARec is mis-cited;
+    prior causal/local convolution, residual initialization, FreqRec and WEARec
+    narrow novelty. Correct the boundary and add direct current comparators.
+15. **[CONFIRMED, release/PDF readiness false; unchanged]** Known-entry checks
+    pass 462 local/324 Git files but omit the bank; the deposit is 91 commits/438
+    paths behind. PDFs retain placeholder, tagging, navigation and layout defects.
+16. **[CONFIRMED, writing/figure/table debt; unchanged]** Fig. 2 misassigns
+    `p=.058` (within-rung is about `.16`), alt text duplicates captions, Table S1
+    mixes units/`n`, venue PDFs are untagged and `FIR` is never expanded.
+17. **[AUTHOR/LEGAL VERIFICATION; unchanged]** Confirm test-output visibility,
+    continuation decisions, exact dirty patches, portal mode/length, identity,
+    ethics/privacy, licenses and derived-artifact redistribution permission.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-26 16:00 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker; unchanged]** All three PDFs still
+   expose maintainer/author/institution/country/contact placeholders, and the
+   strict scan passes only with `DRAFT_WAIVER=1`. Replace the metadata and
+   require an unwaived, read-only scan and clean-tree release check.
+2. **[CONFIRMED, new P0 evidence-custody failure]** Commit `e055f9d0` banks a
+   positive canonical-breadth summary but tracks none of the 32 endpoint JSONs
+   or their hashes. The summary omits exact arm values, configs, n_eval,
+   code/data/split/cache/checkpoint provenance, selected epochs, control norms,
+   sidecar custody and attempt ledger. Preserve a sealed immutable input bundle,
+   manifest it, and rerun the adjudicator from a clean clone before integration.
+3. **[CONFIRMED, protocol-deviated/outcome-visible result]** Local endpoints
+   reproduce the two positive contrasts, but every one contains test metrics in
+   20/20 epoch records because the driver inherited `eval_every=1` and omitted
+   `--no-test-eval`. This violates the standing one-time holdout rule. Label the
+   result descriptive and run a fresh validation-only/checkpoint-only successor
+   with exactly one independently custodied final test.
+4. **[CONFIRMED, new claim/status contradiction]** `EXPERIMENT_PROGRAM.md` now
+   says the FIR isolation "holds on THREE categories," yet the same completed
+   bullet says the driver is running and instructs a future relaunch/adjudication;
+   the paper/TeX still say breadth is unfinished. Completion is dated July 25
+   although the last endpoint and bank commit are July 26 Sydney time. Replace
+   this with one timestamped, exposure-classified immutable completion record.
+5. **[CONFIRMED, statistical/gate mismatch]** Stored paired arithmetic, Holm
+   decisions and 8/8 sign tests are internally correct, but the preregistered
+   "Holm-corrected 95% CI" is an ordinary paired-t CI plus a separate Holm
+   p-value gate. The adjudicator checks only partial flags, can fall back to
+   Normal/1.96, retains zero ties, and omits registered HR/MRR secondaries. Bank
+   exact adjusted p-values or simultaneous CIs and make the gate fail closed.
+6. **[CONFIRMED, outcome-informed breadth/novelty overstatement]** Industrial &
+   Scientific and CDs & Vinyl were chosen after favorable legacy/TFV2 outcomes
+   were visible. The new matched-init results are useful reparameterization
+   robustness on fixed outcome-known categories, not untouched-category
+   confirmation or population generalization. Add null/negative categories and
+   a genuinely untouched, preferably non-Amazon dataset.
+7. **[CONFIRMED, construct-validity failure; unchanged]** Sequence construction
+   ignores stored 1--5-star ratings and treats every review as equally positive.
+   Define the endpoint as next reviewed item and add 4+-star, rating-weighted,
+   verified-purchase and true implicit-feedback sensitivities.
+8. **[CONFIRMED, deployment-validity failure; unchanged]** Five-core membership,
+   indexing and candidate availability use complete histories before splitting.
+   The FIR is position-causal, not globally leak-free. Replicate with
+   training-era eligibility and query-time catalogs on a global-time split.
+9. **[CONFIRMED, incomplete artifact assurance; worsened]** The 175-cell graph
+   mainly checks arithmetic over aggregates, leaves 254/331 source paths outside
+   the manifest, and contains no cells for the banked breadth result. The launch
+   driver and final adjudication are absent from a manifest whose selected-entry
+   checks remain green. Build a typed, rank-backed transitive claim-to-source
+   graph and test completeness, not only known-entry hashes.
+10. **[CONFIRMED, incremental/unsynchronized algorithm story]** The title,
+    introduction and method foreground the canonical FIR while the abstract,
+    evidence tables and conclusion still foreground the legacy package. The new
+    result strengthens repeatability, not novelty. Synchronize one method ledger
+    and run equal-budget causal/depthwise-convolution, C3SASR/NextItNet and
+    Fixup/ReZero-style matched controls.
+11. **[CONFIRMED, test-independence/baseline gap; unchanged]** Public-test
+    exposure spans several campaigns, while close comparators remain unrun or
+    unequally tuned. Freeze validation-only selection, equalize tuning budgets
+    and obtain independently custodied temporal and non-Amazon final tests.
+12. **[CONFIRMED cache confounding; PLAUSIBLE missingness bias; unchanged]** Text
+    cache rows are not fail-closed against their item map, missing metadata maps
+    to one `unknown` vector, and one table changes both input and output logits.
+    Bind exact maps/encoder commits, report cohort missingness and run the 2x2
+    input/output-text design with shuffled/random-feature controls.
+13. **[CONFIRMED, TFV2/inference defects; unchanged]** Post-hoc diagnostics are
+    called pre-declared; the event-weighted tail estimand excludes many items;
+    one-draw thinning, optimistic ties, stale statistics and overconfident null
+    wording persist. Reclassify, reconstruct ranks and add item-macro,
+    hierarchical and repeated-thinning sensitivities.
+14. **[CONFIRMED, theory/current-novelty gap]** The BSARec theorem citation is
+    wrong, while causal/local convolution and residual identity initialization
+    predate this work. Current 2026 frequency-aware recommenders FreqRec and
+    WEARec further narrow the contribution boundary. Correct the citation, add
+    these closest methods, and claim only the specific causal-FIR realization
+    and rigorously isolated effect.
+15. **[CONFIRMED, release/PDF readiness false]** Selected-manifest checks pass
+    462 local/324 Git entries yet omit the new result; `v1.1.11-deposit` is now
+    91 commits/438 paths behind and still reports 198 selected-entry mismatches.
+    Unchanged 61/54/55-page PDFs retain placeholder, navigation, tagging and
+    page-economy defects. Build portably from a clean clone and cut a new deposit.
+16. **[CONFIRMED, writing/figure/table debt; unchanged]** Fig. 2 assigns
+    `p=.058` to a point although it belongs to the four-group difference-in-
+    differences (within-rung `p` is about `.16`); alt text duplicates captions,
+    venue PDFs are untagged, Table S1 mixes units/`n`, and `FIR` is never
+    expanded. Correct estimand labels, accessibility text and terminology.
+17. **[AUTHOR/LEGAL VERIFICATION; unchanged]** Confirm whether any per-epoch
+    breadth test output was viewed or affected continuation; also confirm final
+    portal mode/length, identity, ethics/privacy review, licenses and permission
+    to redistribute deterministic split/rank derivatives.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-26 10:00 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker; unchanged]** The reader and both
+   venue PDFs still expose maintainer/author/institution/country/contact
+   placeholders. The strict scan passes only with `DRAFT_WAIVER=1`. Replace the
+   metadata and require an unwaived, read-only scan and a clean-tree release
+   check before submission.
+2. **[CONFIRMED, protocol-deviated campaign; unchanged]** The launched
+   canonical-FIR breadth driver inherits `eval_every=1` and lacks
+   `--no-test-eval`, so the trainer scores and prints the public test set every
+   epoch. No tracked final adjudication or result exists at this cutoff. Treat
+   this launch only as outcome-visible descriptive evidence; use new seeds in a
+   sealed validation-only/checkpoint-only successor with exactly one final test.
+3. **[CONFIRMED, specification/statistics contradictions; unchanged]** The
+   manuscript says FIR taps are excluded from weight decay although the primary
+   canonical arm and transfer launch apply backbone decay. A non-significant
+   `p=.95` is not an equivalence result, and the new code does not compute the
+   preregistered "Holm-corrected 95% CI." Align the registry, code and prose and
+   report an adjusted interval or remove that claim.
+4. **[CONFIRMED, outcome-informed breadth selection; unchanged]** Industrial &
+   Scientific and CDs & Vinyl were selected after favorable legacy and TFV2
+   outcomes were known. Fresh seeds do not restore category independence. Call
+   the exercise parameterization-transfer replication, add null/negative
+   categories and reserve external-breadth claims for genuinely unseen data.
+5. **[CONFIRMED, construct-validity failure; unchanged]** Sequence construction
+   ignores the stored 1--5-star rating and treats every review as an equally
+   positive interaction. Define the endpoint as next reviewed item, report
+   rating/verified-purchase distributions and add 4+-star, rating-weighted,
+   verified-purchase and true implicit-feedback sensitivity analyses.
+6. **[CONFIRMED, deployment-validity failure; unchanged]** Five-core membership,
+   indexing and candidate availability use complete histories before splitting.
+   The FIR is position-causal, not globally leak-free. Replicate with
+   training-era-only eligibility and query-time catalogs on a global-time split,
+   and qualify every leakage claim.
+7. **[CONFIRMED, incomplete artifact assurance; unchanged]** The 175-cell graph
+   mainly recomputes arithmetic over aggregate metrics, does not reconstruct
+   headline NDCG/HR from ranks, and leaves 254/331 graph sources outside the
+   manifest. The campaign launch driver is also unmanifested. Create a typed,
+   paper-parsing, rank-backed and transitive claim-to-source graph.
+8. **[CONFIRMED, fail-open adjudication; unchanged]** The new adjudicator lacks
+   full normalized-config and code/data/split/checkpoint/rank binding, immutable
+   attempts, registered HR/MRR outputs and fail-closed inference. It retains
+   zero ties and can substitute normal inference after SciPy errors. Harden and
+   mutation-test the gate before using any result.
+9. **[CONFIRMED, unsynchronized/incremental algorithm story; unchanged]** The
+   title, introduction and method now name a nonsingular no-gate FIR, whereas
+   the abstract, evidence tables, related-work boundary and conclusion still
+   foreground the legacy zero-gated package. Synchronize one contribution
+   ledger and benchmark direct causal-convolution, C3SASR/NextItNet and matched
+   residual-initialization controls under equal budgets.
+10. **[CONFIRMED, test-independence/baseline gap; unchanged]** Repeated public-
+    test exposure now includes the canonical launch; close comparators remain
+    unrun or unequally tuned. Freeze validation-only selection, equalize tuning
+    budgets and obtain independently custodied temporal and non-Amazon final
+    tests.
+11. **[CONFIRMED cache confounding; PLAUSIBLE missingness bias; unchanged]** Text
+    cache rows are not fail-closed against their item map, missing metadata maps
+    to one `unknown` vector, and one table changes both input and output logits.
+    Bind exact maps/encoder commits, report cohort missingness and run the 2x2
+    input/output-text design with shuffled/random-feature controls.
+12. **[CONFIRMED, TFV2/inference defects; unchanged]** Post-hoc diagnostics are
+    called pre-declared; the event-weighted tail estimand excludes many items;
+    one-draw thinning, optimistic ties, stale statistics and overconfident null
+    wording persist. Reclassify, reconstruct ranks and add item-macro,
+    hierarchical and repeated-thinning sensitivity analyses.
+13. **[CONFIRMED, theory/novelty support gap; unchanged]** BSARec is mis-cited as
+    "Thm 3.1" although the relevant published result is Theorem 1 for repeated
+    softmax attention, not this HSTU-style operator. Causal/local convolutions
+    and zero/identity residual initialization predate this work. Correct the
+    citation and limit novelty to effects demonstrated against direct controls.
+14. **[CONFIRMED, release/PDF readiness false; unchanged]** The selected
+    manifest verifies 462 local files and 324 Git-backed entries, but
+    `v1.1.11-deposit` is 90 commits/437 paths behind and has 198 mismatches. The
+    unchanged 61/54/55-page PDFs retain placeholder metadata, navigation and
+    accessibility defects. Produce a portable clean-clone build and a new
+    immutable deposit.
+15. **[CONFIRMED, writing/figure/table debt; newly sharpened]** Contribution
+    ledgers conflict and the conclusion is roughly 913 words. The shared Fig. 2
+    graphic attaches `p=.058` to the user-thinned point although that p-value is
+    for the four-group difference-in-differences; the within-rung contrast is
+    about `p=.16`. Reader alt text merely duplicates flawed captions, venue PDFs
+    are untagged, Table S1 mixes units/`n` meanings, and `FIR` is never expanded.
+    Correct the estimand label, write functional alt text, define the acronym,
+    use one three-item ledger, typed tables and neutral all-seed point/range plots.
+16. **[AUTHOR/LEGAL VERIFICATION; unchanged]** Confirm portal mode and length,
+    final identity, ethics/privacy review, software/data licenses and permission
+    to redistribute deterministic split/rank derivatives. Prefer hashes and
+    regeneration scripts until Amazon Reviews 2023 redistribution rights are
+    documented.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-26 04:00 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** The reader and both venue PDFs
+   still display maintainer/author/institution/country/contact placeholders.
+   The strict scan is red without `DRAFT_WAIVER=1`; the committed green report
+   explicitly treats the missing single-blind byline as nonfatal. Replace all
+   metadata and require an unwaived, read-only scan plus clean-tree verification.
+2. **[CONFIRMED, new campaign is protocol-deviated]** The launched canonical-
+   FIR breadth driver inherits `eval_every=1`, does not set `--no-test-eval`,
+   and therefore evaluates and prints test NDCG/HR every epoch, despite the
+   repository's standing one-time sequestered-holdout rule. Endpoint files being
+   gitignored does not sequester stdout or stop optional continuation. Let the
+   fixed queue finish only as descriptive evidence; freeze new seeds and a
+   checkpoint-only, test-once successor before any confirmatory claim.
+3. **[CONFIRMED, canonical-FIR specification and statistics contradict the
+   implementation]** The paper says canonical taps are excluded from weight
+   decay, while E-A's primary and the new frozen transfer use backbone decay.
+   `p=.95` without a registered equivalence margin does not rule out a decay
+   pathway. The new prereg says “Holm-corrected 95% CI,” but code computes an
+   ordinary t interval and separately Holm-gates p-values. Correct all three
+   claims and make the registered analysis, code and prose identical.
+4. **[CONFIRMED, new breadth label overstates independence]** Industrial &
+   Scientific and CDs & Vinyl were selected after favorable legacy-package and
+   independent-arm results were already visible; fresh seeds and a new
+   parameterization do not make category selection untouched. Call this an
+   outcome-informed parameterization-transfer replication, include null/negative
+   categories, and reserve external breadth language for genuinely unseen data.
+5. **[CONFIRMED, construct-validity failure]** The preprocessing stores Amazon's
+   1--5-star `rating`, but sequence construction ignores its value and treats
+   every review as an equally positive interaction. The endpoint is the next
+   reviewed item, not established liking, purchase or consumption. Define that
+   estimand, report rating/verified-purchase distributions, and run >=4-star,
+   rating-weighted, verified-purchase and true implicit-feedback sensitivities.
+6. **[CONFIRMED, deployment-validity failure]** Five-core membership, indexing
+   and candidate availability use the complete history before splitting. The
+   FIR is left-causal across sequence positions but the evaluation pipeline is
+   not globally leak-free. Run training-era-only eligibility and query-time
+   catalogs on a global-time split; replace every unqualified “leak-free” claim.
+7. **[CONFIRMED, artifact assurance remains incomplete]** The 175-cell graph
+   mostly recomputes arithmetic over stored aggregate metrics, does not parse
+   prose claims or reconstruct NDCG/HR from ranks, and leaves 254/331 source
+   paths outside the release manifest. The new campaign's launch driver is also
+   absent from a manifest that includes its prereg and adjudicator. Separate
+   arithmetic-gated from metric-reconstructed assurance and manifest the exact
+   transitive runner/data/code/split/claim graph.
+8. **[CONFIRMED, new adjudicator is not fail-closed]** It validates only a small
+   subset of the frozen configuration, ignores code/data/split/checkpoint and
+   rank provenance, silently accepts existing output names, omits promised
+   HR/MRR secondaries, retains zero ties in its sign-test denominator and falls
+   back to normal inference on any SciPy error. Require exact normalized config
+   and digests, immutable attempts, atomic outputs, rank reconstruction, complete
+   registered metrics and the registered Student-t implementation.
+9. **[CONFIRMED, title-level algorithm story is unsynchronized and
+   incremental]** Title/introduction/method now name the nonsingular no-gate FIR,
+   but the abstract, related-work boundary, novelty table, Results and Conclusion
+   still foreground the legacy zero-gated package. The claimed K={4,8,16,50}
+   robustness is legacy evidence; canonical evidence uses K=16. Synchronize one
+   method registry and benchmark C3SASR/NextItNet, simple causal-convolution and
+   residual-initialization controls before making the FIR the title contribution.
+10. **[CONFIRMED, test independence and baseline fairness remain inadequate]**
+    Repeated public-test exposure now includes the new canonical campaign;
+    AlphaFuse and other closest methods remain unrun and baseline HPO budgets are
+    unequal or undocumented. Freeze validation-only selection, tune close and
+    simple baselines equally, and use one independently custodied temporal and
+    non-Amazon final test.
+11. **[CONFIRMED confounding and semantic-cache gap; PLAUSIBLE missingness
+    bias]** Text cache rows are loaded without verifying their item map; mismatch
+    only warns/truncates, and missing metadata collapses to one `unknown`
+    embedding. The text table changes both inputs and output logits. Bind exact
+    mappings and encoder commits, report missingness by cohort, and run the 2x2
+    input/output-text design plus shuffled/random-feature controls.
+12. **[CONFIRMED, TFV2 and inferential defects persist]** Undeclared boundary
+    and rank-100 diagnostics are still called pre-declared; the event-weighted
+    tail estimand leaves at least 979/3,270 frequency-5 items with zero endpoint
+    weight. Stale Spearman pairs, one-draw thinning inference, optimistic score
+    ties, “rank-free HR” and “flat null” wording remain. Reclassify, reconstruct,
+    report item-macro/hierarchical sensitivity and generate prose statistics.
+13. **[CONFIRMED, theory and novelty support remain insufficient]** BSARec is
+    still mis-cited as “Thm 3.1” although the published low-pass result is
+    Theorem 1 for repeated softmax attention, not this HSTU-style operator.
+    Causal/local convolution, zero/identity residual initialization and much of
+    the artifact apparatus predate this work. Correct the citation and add a
+    direct feature/baseline matrix with measured portability and mutation tests.
+14. **[CONFIRMED, release and PDF readiness remain false]** Current manifest
+    checks its chosen 462 files/324 Git entries, but `v1.1.11-deposit` is now 90
+    commits/437 paths behind and reports 198 mismatches. The three rebuilt PDFs
+    retain the same 61/54/55-page focus burden, untagged venue files, reader
+    navigation/link omissions and placeholder metadata. Make one portable
+    clean-clone build, accessibility gate and new immutable deposit.
+15. **[CONFIRMED, writing/figure/table debt persists]** The revised title does
+    not resolve the contradictory contribution ledgers or roughly 913-word
+    Conclusion. Figure captions still misstate contrast/shared-draw semantics;
+    Table S1 mixes units and false `n` semantics; figures suppress uncertainty
+    and imply trajectories. Adopt one canonical three-item ledger, a 250--400-
+    word conclusion, typed table columns and neutral all-seed point/range plots.
+16. **[AUTHOR/LEGAL VERIFICATION]** Confirm portal mode/length, final identity,
+    ethics/privacy review, software/data licenses and redistribution permission
+    for deterministic split/rank derivatives. Prefer hashes and regeneration
+    scripts until Amazon Reviews 2023 redistribution rights are documented.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-25 22:00 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** The official TORS build still
+   prints maintainer, institution, country, short-author and corresponding-
+   author placeholders from `paper_tex/paper-shared.tex:37--42`. The strict PDF
+   scan exits nonzero; the committed health report is green only under
+   `DRAFT_WAIVER=1`. Replace every placeholder and require an unwaived,
+   read-only scan plus a clean-tree check at release.
+2. **[CONFIRMED, construct-validity failure]** The preprocessing retains each
+   review's 1--5-star `rating`, but the sequence builder ignores the value and
+   treats every review as an equally positive interaction. The endpoint is
+   therefore the next *reviewed* item, not necessarily the next liked,
+   purchased or consumed item; a one-star review is currently a positive
+   target. Define the estimand honestly, report rating and verified-purchase
+   distributions, and repeat with at least-four-star positives, rating-weighted
+   relevance and an alternative implicit-feedback dataset.
+3. **[CONFIRMED, deployment-validity failure]** Five-core membership, user/item
+   indexing and the candidate catalog use the complete history before the
+   leave-last-two-out split. The model is left-causal only across sequence
+   positions; it is not globally leak-free. Run a global-time replication with
+   training-era-only eligibility and query-time catalog availability, and
+   replace every unqualified "leak-free" claim with the narrower positional
+   statement.
+4. **[CONFIRMED, advertised artifact assurance is materially incomplete]** The
+   175-cell graph largely verifies arithmetic over stored aggregate metrics;
+   it has no per-user ranks/predictions from which headline NDCG/HR can be
+   reconstructed. Its cached `paper` values are not parsed from the paper, the
+   TeX checker can lose signs, 254/331 graph source paths are absent from the
+   release manifest, and exact E-A/E-F/E-G claims sit outside the graph. Split
+   "arithmetic-gated" from "metric-reconstructed" assurance and build a typed,
+   paper-parsing, rank-backed, complete dependency graph.
+5. **[CONFIRMED, TFV2 integrity and estimand errors]** Boundary-only and
+   all-category rank-100 diagnostics are called pre-declared but are absent
+   from the preregistration and adjudicator. The adjudicator trusts stored
+   metrics, can turn empty cohorts into zero and does not bind users/targets to
+   the split. The tail estimate is target-event weighted: at least 979/3,270
+   frequency-5 items have zero endpoint weight. Reclassify the two diagnostics
+   as post hoc, reconstruct metrics from sealed ranks, and add item-macro and
+   item-clustered sensitivity analyses.
+6. **[CONFIRMED, test independence and baseline fairness remain inadequate]**
+   One public test split was repeatedly exposed through interim/per-epoch
+   reporting and later work was chosen after outcomes were known. Fresh seeds
+   cannot restore independence. Freeze a validation-only plan, tune current
+   close and simple baselines under equal budgets, and use independently
+   custodied final temporal and non-Amazon tests.
+7. **[CONFIRMED confounding and semantic-cache assurance gap; PLAUSIBLE
+   missingness bias]** The item-text cache is loaded positionally without its
+   `asin2idx` mapping; a row mismatch merely warns and truncates. Missing item
+   metadata collapses to one identical `unknown` embedding, with no persisted
+   coverage audit. The same text table also changes sequence inputs and output
+   logits. Fail closed on an item-ID mapping and pinned encoder revision,
+   report missingness by frequency/target cohort, and run the 2x2 input/output-
+   text factorial plus shuffled/random-feature controls.
+8. **[CONFIRMED, theory citation error and closest-work gap]** "BSARec Thm 3.1"
+   does not support the asserted non-softmax HSTU mechanism; ReZero predates
+   zero-initialized residual gating, while TASTE, SAGE-Rec, AlphaFuse, LLM2Emb,
+   R2Rec and LLMEmb narrow the novelty claim. Correct the citation, add a
+   closest-work feature/comparator matrix, and limit novelty to what equal-
+   budget experiments and artifact mutation tests establish.
+9. **[CONFIRMED, inferential and reporting defects]** All density rungs reuse
+   one thinning draw, so the six-point permutation p-value does not represent
+   thinning-draw uncertainty. Undisclosed optimistic score ties can especially
+   favor the popularity baseline. Submission sources also contradict one
+   another (`-0.94/-0.71` versus stale `-0.82/-0.86` Spearman values), call
+   HR@10 "rank-free," and call a wide-interval estimate a "flat null." Use
+   independent thinning ladders, disclose tie rates/sensitivities, and generate
+   every prose statistic from one registry.
+10. **[CONFIRMED, release path is not clean-clone reproducible]** The newer
+    `release_build.py` is undiscoverable and unmanifested, omits the reader PDF
+    and final cleanliness check, and the reader renderer depends on a hard-
+    coded Windows path, ignored HTML and Edge. A locked `uv sync` would remove
+    undeclared `markdown` and `pypdf`. Commit and manifest the complete build
+    graph, lock all dependencies, and CI-test one cross-platform clean clone.
+11. **[CONFIRMED, writing architecture is contradictory and inefficient]** The
+    reader introduction lists three contributions, the TeX introduction seven,
+    the abstract a different result triad and the conclusion "two" findings;
+    the approximately 913-word conclusion then repeats results. Establish one
+    canonical three-item contribution ledger and generate abstract,
+    introductions and a 250--400-word conclusion from it. The 54/61-page
+    builds are a focus/readability risk; a formal page limit still requires
+    author/portal verification rather than being asserted here.
+12. **[CONFIRMED, figure/table/PDF defects]** Figure 1's caption says one
+    estimand despite three contrasts and incorrectly groups MI-native into the
+    fixed VG draw; Figure 2 visually attaches `p=.058` to the wrong comparison.
+    Table S1 mixes raw NDCG, relative percentages and words under one numeric
+    header and mislabels mixed `n` as `n=1`. Persistent crowding, causal-looking
+    connections, missing uncertainty, untagged PDFs, broken navigation and
+    metadata remain. Redesign to point/range plots and typed table columns,
+    correct captions, and enforce accessible-PDF QA.
+13. **[CONFIRMED, other adjudicators remain fail-open]** E-F HYBRID V1 accepts
+    contradictory category/base/selection metadata and can fall back from a
+    Student-t to a normal p-value; the FIR and TFV2 gates likewise validate
+    only part of their semantic stacks. Bind rows, splits, checkpoints,
+    categories and configs exactly; reconstruct metrics; require the registered
+    distribution; and add mutation tests that must fail.
+14. **[CONFIRMED, release/tag and quarantined-result debt]** The named
+    `v1.1.11-deposit` remains 86 commits/434 paths behind HEAD with 196
+    manifest mismatches; its fixed DOI bundle omits the executable environment
+    and much evidence. E-E remains nonreconstructible and must stay outside the
+    paper. Cut a new immutable deposit only after clean-checkout reproduction,
+    full dependency closure and corrected documentation.
+15. **[AUTHOR/LEGAL VERIFICATION]** Confirm journal portal mode and length,
+    final author identity, ethics/privacy review, software/data licenses and
+    permission for deterministically linkable split/rank derivatives. Because
+    Amazon Reviews 2023 carries no general dataset license, prefer hashes plus
+    regeneration scripts unless redistribution permission is documented.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-25 16:00 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** The official TORS build still
+   prints maintainer, institution, country, short-author and corresponding-
+   author placeholders from `paper_tex/paper-shared.tex:37--42`. The strict PDF
+   scan exits nonzero; the committed health report is green only because it
+   records `DRAFT_WAIVER=1`. Replace the metadata and require an unwaived scan
+   at the final release boundary. The literal package should not be submitted.
+2. **[CONFIRMED, deployment-validity failure]** Five-core eligibility is
+   computed from the complete interaction history before per-user leave-last-
+   two-out splitting, while user/item indexing also sees train, validation and
+   test. The evaluator then ranks the full future-informed catalog while only
+   masking each user's history. This is reproducible under the chosen offline
+   protocol, but relative to a global-time deployment estimand it lets later
+   interactions determine training membership and candidate availability. Run
+   a globally time-separated replication with training-era-only item
+   eligibility and query-time candidate availability; quantify how many
+   current test queries/candidates use future information.
+3. **[CONFIRMED, advertised artifact gate is materially incomplete]**
+   `rebuild_hstu_submission.py` does not rebuild either PDF, synchronize
+   Markdown and TeX, emit all result-bearing tables, or run strict PDF/TeX
+   health checks. Exact E-A/E-F/E-G statistics printed in both manuscripts are
+   outside the 175-cell result graph. The wrapper also verifies the manifest
+   before adjudicators that can rewrite manifested JSON. Replace "verify
+   everything" with an honest scoped claim until one clean-checkout command
+   builds both papers, checks semantic parity and every printed value, then
+   performs final manifest and clean-tree verification.
+4. **[CONFIRMED, test independence and baseline fairness remain inadequate]**
+   The project repeatedly exposes one public test split, logs interim and
+   per-epoch test results, and chooses subsequent work after outcomes are
+   visible. Fresh optimizer seeds cannot restore independence. Several close
+   methods are discussed but not run under equal tuning and compute budgets.
+   Freeze a validation-only comparison plan, tune all baselines equally, and
+   use one independently custodied final evaluation on fresh temporal and
+   non-Amazon data.
+5. **[CONFIRMED, theory citation error and closest-work gap]** The manuscript
+   cites "BSARec Thm 3.1" for over-smoothing in the non-softmax HSTU-style
+   operator, but BSARec contains Theorem 1 about repeated softmax attention.
+   TASTE already reports that text matching reduces popularity bias and
+   improves long-tail/cold-start sequential recommendation; SAGE-Rec,
+   AlphaFuse, LLM2Emb, R2Rec and LLMEmb further narrow the claim. Correct the
+   theorem reference and treat it as motivation only; add a closest-work
+   feature matrix and narrow novelty to the measured protocol and artifact
+   controls unless fair benchmarks establish more.
+6. **[CONFIRMED confounding; PLAUSIBLE boundary-artifact risk]** The same text-
+   augmented item table changes both sequence inputs and output logits, while
+   the ID-only ablation simultaneously removes SBERT features, prototypes and
+   text-similarity bias. Thus the frequency-5 gain is not attributable to
+   semantic sequence modeling. Moreover, train-frequency 5 lies exactly beside
+   a full-history five-core inclusion boundary. Run a 2x2 input-text/output-
+   text factorial, projection-only and auxiliary-off controls, shuffled text
+   and covariance-matched random features; repeat under 0/3/5/10-core and
+   train-era-only eligibility and model frequency continuously.
+7. **[CONFIRMED, estimand and uncertainty ceiling]** Keeping only the earliest
+   user-item event before splitting makes every target a user-new item; the
+   experiment estimates next-new-item recommendation, not unrestricted next-
+   item behavior. Most intervals remain optimizer-seed dispersion on one
+   repeatedly inspected split and omit users, items, split construction,
+   catalog time, intervention draws and comparator uncertainty. Name the
+   estimand, compare earliest/latest/duplicate-inclusive preprocessing, and add
+   hierarchical user/target resampling plus multiple temporal splits.
+8. **[CONFIRMED, FIR evidence useful but synthesis and gate overreach]** The
+   nonsingular E-A result is robust in a paired-seed sensitivity, but A2 minus
+   A1 lacks a registered equivalence margin; "changed nothing" and "does not
+   run through weight decay" remain unsupported. The FIR adjudicator validates
+   only a subset of the frozen stack, accepts major synthetic provenance/config
+   mutations, and silently substitutes a normal approximation when SciPy is
+   absent. Report the paired sensitivity, say only that no tap-decay
+   sensitivity was detected, validate the complete schema/provenance, and
+   require the registered Student-t implementation.
+9. **[CONFIRMED prior art; PLAUSIBLE portability risk]** Zero-initialized
+   residual gating predates this work in ReZero. Manubot already provides
+   Git-versioned manuscripts, continuous builds, generated values/tables,
+   provenance and timestamping; Continuous Analysis provides rerun/audit-trail
+   infrastructure. The defensible apparatus residue may be recommender-specific
+   per-cell gating and VOID rules, but coverage, false-negative rate, overhead
+   and portability are unmeasured. Publish a cross-system feature matrix,
+   mutation-test coverage and timing, and reproduce the workflow independently
+   on a second repository.
+10. **[CONFIRMED, excessive and internally unplanned length]** The source is
+    28,279 words total, 22,720 before References and 12,248 in Results; the
+    official TORS PDF is 54 pages and the reader is 61. `PAPER_SPINE.md` names
+    incompatible length targets. Choose one venue-compatible ceiling; retain
+    one estimand, one causal chain and one compact result spine, and move audit
+    chronology, rung tables and forensic dispositions to a labeled supplement.
+11. **[CONFIRMED, figure/PDF/accessibility defects]** The lead figures are
+    crowded and causally suggestive; green "Holm-PASS," connected trajectories
+    and WIN/NULL labels outrun the inference. Venue PDFs are untagged; the
+    reader has no visible folios, bookmarks or links. Supplement/table
+    pagination, malformed text extraction, DOI line breaks, placeholder PDF
+    metadata and acmsmall's repeated blank article-number footer remain.
+    Replace the lead with a neutral forest plot containing every seed and CI,
+    separate resource/titration panels, and gate tags, links, metadata, text
+    extraction, folios and page geometry.
+12. **[CONFIRMED, release boundary remains false/stale]** Current verification
+    passes its selected 460 files and 322 Git-backed entries, but the named
+    `v1.1.11-deposit` is 86 commits/434 paths behind HEAD and reports 196
+    mismatches. Documentation also says 420 files and calls completed E-A open.
+    Cut a new immutable deposit only after full dependency closure, clean-
+    checkout reproduction, corrected documentation, DOI issuance and tag
+    verification.
+13. **[CONFIRMED, repository and Windows-path regressions]** Deleting the
+    legacy BEST-Rec figures left tracked documentation and runners pointing to
+    absent files, and `run_all.py` calls a nonexistent builder. On default
+    Windows CP1252, `run_sasrec_sbert.py --help` crashes on a Unicode arrow;
+    experiment drivers then treat empty stdout as a flag failure. Restore or
+    tombstone the legacy route, add path/link closure, force UTF-8, check child
+    return codes/stderr and expose a machine-readable CLI schema.
+14. **[CONFIRMED, quarantined result remains unusable]** E-E V2 is now correctly
+    marked descriptive/noncountable/import-forbidden, but remains outcome-
+    visible, package-confounded, mask/selection-mismatched and non-
+    reconstructible. Its docstring and V1 disposition still misdescribe it.
+    Correct the records and keep the result outside the paper; if essential,
+    freeze an unseen full-history, validation-matched, one-factor V3.
+15. **[AUTHOR/LEGAL VERIFICATION]** Confirm journal portal mode and length,
+    final author identity, ethics/privacy review, software/data licenses and
+    permission for deterministically linkable split/rank derivatives. Until
+    the dataset's no-license status is resolved, prefer hashes plus regeneration
+    scripts over redistributing interaction-level records.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-25 10:00 Australia/Sydney)
+
+1. **[CONFIRMED, literal submission blocker]** The rebuilt TORS PDF now carries
+   the current title, abstract and supplement, but it still prints maintainer,
+   institution, country, short-author and corresponding-author placeholders
+   from `paper_tex/paper-shared.tex:37--42`. The 54-page PDF repeats those
+   values in running matter, and the hygiene gate passes only under
+   `DRAFT_WAIVER=1`. Supply real metadata and make the unwaived hygiene scan a
+   hard release condition; do not submit the literal current package.
+2. **[CONFIRMED, evaluation design conflicts with the target journal's own
+   standard]** The paper repeatedly exposes one public test split, logs
+   interim/per-epoch test outcomes and allocates later work in response to
+   observed outcomes. Fresh optimizer seeds cannot restore test independence.
+   Current TORS methods guidance calls for systematic, equally treated current
+   baselines, complete artifacts and test use only after selection. Run a
+   validation-only, equal-budget comparison and one independently custodied
+   final test on a temporal split plus a non-Amazon dataset.
+3. **[CONFIRMED, closest-literature and comparator gap]** AlphaFuse remains an
+   omitted/queued comparator; LLM2Emb reports its largest LLM-versus-ID gain in
+   a 3--6-interaction group close to this paper's frequency-5 result; R2Rec
+   reports that multimodal/text representations can instead hurt tail items on
+   three Amazon 5-core datasets. LLMEmb and SAGE-Rec are also absent. Reframe
+   frequency 5 as a protocol-specific replication/qualification, add a
+   comparator matrix, and either benchmark or give executable exclusion logic
+   under equal tuning budgets.
+4. **[CONFIRMED, uncertainty and generalization ceiling]** Most intervals are
+   optimizer-seed dispersion on one repeatedly examined fixed split; they do
+   not cover users/items, split construction, temporal drift, text-feature
+   construction or comparator estimation. Add hierarchical user/target
+   resampling, multiple intervention draws and a fresh temporal test. Never
+   treat a confidence bound against a fixed published point as a superiority
+   test.
+5. **[CONFIRMED, FIR synthesis overstates otherwise useful E-A evidence]** The
+   preregistered nonsingular three-arm E-A rerun gives a clean A1-versus-frozen
+   estimate, but the abstract, introduction and conclusion still foreground
+   the historically confounded package. A2 minus A1 is near zero with a wide
+   interval and p=.95, yet no equivalence margin was registered for that
+   contrast; therefore "changed nothing" and "does not run through weight
+   decay" are too strong. Define the nonsingular residual implementation in
+   Methods, report paired and independent-arm sensitivity, and say only that
+   no tap-decay sensitivity was detected at this precision.
+6. **[CONFIRMED, algorithm/mechanism scope is too broad]** The FIR adds
+   trainable parameters and is a small structured inductive-bias module, not a
+   capacity-restricting intervention. The single-dataset E-A result does not
+   retroactively decompose the historical package or establish a universal
+   mechanism. Make the nonsingular residual FIR canonical and compare
+   identity, fixed-average, random-filter and parameter-matched residual
+   controls across categories; report spectra, parameters, FLOPs, latency and
+   peak memory.
+7. **[CONFIRMED, excessive and internally unplanned length]** The source is
+   28,279 words total, 22,720 before References and 12,248 in Results; the
+   official TORS PDF is 54 pages and the reader is 61. `PAPER_SPINE.md` still
+   names incompatible 9--13k and about-18k/28-page targets. Choose one binding
+   target, make this a reproducibility case study with FIR as the demonstration,
+   and move chronology, rung-level tables, forensic dispositions and broad
+   comparator inventories to a labeled supplement/archive.
+8. **[CONFIRMED, visual and accessibility defects]** The headline figures
+   remain dense and causally suggestive; connected trajectories and WIN/NULL
+   labels outrun the inference. The official PDFs are untagged. In TORS, the
+   Table S1 caption is stranded at the foot of page 52, rows begin on page 53,
+   and page 54 is a continuation with large unused space. Replace the lead
+   graphic with a neutral forest plot containing every seed point and interval,
+   separate titration/resource panels, repair table pagination, and ship a
+   tagged PDF with bookmarks and alt text.
+9. **[CONFIRMED, new reproducibility-contract regression]** Commit `779345ae`
+   deleted the legacy BEST-Rec figure generators/assets after claiming zero
+   references, but tracked `ARCHITECTURE.md`, `README_LC2C_HISTORICAL.md`,
+   `RUNNING.md`, `SUBMISSION.md` and run scripts still cite or generate them.
+   `_bestrec_run/run_all.py` also calls a non-existent canonical
+   `_paper_gen/build_paper_full.py`. Either restore the whole historical
+   subsystem under a self-contained archive or tombstone those obsolete
+   reproduction routes; add a tracked-path/link-closure CI test.
+10. **[CONFIRMED, release boundary remains false/stale]** The named
+    `v1.1.11-deposit` is now 86 commits and 434 changed paths behind HEAD, and
+    its manifest check reports 196 mismatches. `README.md`, deposit instructions
+    and manuscript availability text still disagree on whether it is current.
+    Cut a new immutable deposit only after author metadata, dependency closure,
+    clean-checkout reproduction, DOI issuance and tag verification.
+11. **[CONFIRMED, manifest/CI scope is narrower than the rhetoric]** Current
+    verification passes for 460 selected files and 322 Git entries, but the
+    manifest omits the tracked E-E adjudication output and evaluator/builder
+    dependencies. Green path-presence workflows do not establish semantic
+    correctness, dependency closure or protected-branch enforcement. Expand
+    the manifest, add seeded mutation/deletion/case tests and require protected
+    semantic gates.
+12. **[CONFIRMED, E-E V2 is correctly quarantined but not rehabilitated]** The
+    new top tombstone, `DESCRIPTIVE_ONLY`, noncountable/import-forbidden machine
+    fields and nonzero incomplete exit repair the dangerous disposition. The
+    three-seed outcome remains outcome-visible, package-confounded,
+    mask/selection-mismatched and non-reconstructible; it cannot enter the
+    paper. The adjudicator docstring and V1 disposition still falsely describe
+    V2 as a matched factorial with exact provenance. Correct those records and
+    freeze a genuinely unseen, full-history, validation-matched V3 if this
+    comparison is essential.
+13. **[CONFIRMED, categorical wording still exceeds evidence]** "full power,"
+    "ceiling was not left unexplored," "refutes," "monotonic," and
+    "capacity-restricting" conflict with single-seed probes, a head-titration
+    reversal, absent prospective MDEs and the FIR parameter count. A single
+    density rung also cannot establish "no detected trend." Replace verdicts
+    with estimates, intervals, sampling units and explicit limitations.
+14. **[PLAUSIBLE RISK / AUTHOR VERIFICATION, artifact usefulness not yet
+    evaluated]** The apparatus catches arithmetic and selected provenance
+    failures in this repository, but its coverage, false-positive/negative
+    rates, overhead and portability are unmeasured. Seed known faults, publish
+    a coverage matrix and timing, obtain an independent clean reproduction and
+    demonstrate the workflow on a second repository—or call portability future
+    work rather than saying the apparatus certifies results.
+15. **[AUTHOR/LEGAL VERIFICATION]** The no-license status of the dataset is
+    disclosed, but public release of deterministically linkable split/rank
+    identifiers still needs maintainer/institutional review. Until permission
+    is resolved, prefer hashes plus regeneration scripts over redistributing
+    linkable interaction-level derivatives.
+
+## Superseded Prioritized Rejection-Risk List (2026-07-25 04:00 Australia/Sydney)
 
 1. **[CONFIRMED, submission-blocking package failure]** The literal journal
    package is not the improved reader. The official TORS PDF is still a
@@ -900,6 +3721,10206 @@ plausible risks.
     dirty earlier campaigns, seed-only uncertainty, weak comparator framing,
     stale archival deposit and a roughly 26,852-word/50-page narrative remain
     independent rejection risks. Recommendation remains **reject / not ready**.
+
+## Audit Run - 2026-07-31 22:11 Australia/Sydney
+
+### Fixed boundary and audited state
+
+- Audit cutoff: `2026-07-31T12:11:15.788Z`
+  (`2026-07-31T22:11:15.788+10:00`).
+- Workspace/branch: `C:\Users\rayxc\Documents\R` /
+  `codex/bestrec-sota-results`.
+- HEAD, upstream, and merge base are
+  `1762f71545cd8fbb17ced0ae3da1680fc049ed71`. Six eligible commits after the
+  16:09 audit add F3-F6 reviewer memos, a patch register, a fidelity-completion
+  note, and 318 handoff lines. No canonical manuscript, TeX, bibliography,
+  protocol, result, adjudication, table, figure, or PDF changed.
+- Sources inspected include all six-commit diffs; the four new scientific
+  memos, patch/fidelity records and handoff; the canonical abstract/Methods/
+  Results/Limitations and TeX mirror; MovieLens preregistration, adjudicator,
+  retained private run JSONs, sidecars and checkpoint diagnostics; all MI/IS/
+  CDs paired histories; control-study artifacts; live graph/release/deposit/
+  attestation gates; cover letter/status documents; and all four PDFs.
+- `git status` still shows this audit plus ten adjudication/table paths that
+  match HEAD after normalization and are stat/EOL noise, with existing
+  QA/tmp paths untracked. This run edited only `PAPER_REVIEW_AUDIT.md`; no paper,
+  memo, experiment, release, or artifact was altered.
+
+### Executive verdict and acceptance calibration
+
+**Recommendation: reject in the present form / major revision before a
+top-journal submission.** The six commits add no evidence or applied repair.
+Their central new scientific sequence is itself unreliable: F3/F4 use the
+wrong MovieLens training population and F5 claims a predeclared refutation using
+a post-hoc, non-step-matched analysis. F6's numbers are mostly accurate, but
+its parameter-efficiency interpretation exceeds the registered inference.
+
+Subjective conditional calibration, not a journal statistic:
+
+- **Literal package: below 1%.** Human/legal placeholders, stale cover letter,
+  failed deposit, absent tag, and non-current clean-clone attestation remain.
+- **After immediate metadata, cover-letter, memo/status, PDF, and release fixes
+  but without an optimizer-duration sensitivity: about 3-7% direct TORS/
+  top-journal acceptance.** This is a one-point downgrade from 4-8% because the
+  sole non-Amazon run used only 100 optimizer updates and the new “refutation”
+  is invalid.
+- **After a frozen MovieLens convergence/budget sensitivity, global-time
+  sensitivity, fair tuning matrix, matched modern baselines, population-honest
+  cutoffs, and a lawful second domain: about 12-20%.**
+- **With those studies plus independent/external replication: about 20-30%.**
+
+No new document justifies the roadmap's 35-50% forecast. Governance prose can
+prevent mistakes, but it cannot substitute for evidence.
+
+### F3-F5: wrong cohort, wrong update count, invalid “refutation”
+
+The official [MovieLens 1M
+README](https://files.grouplens.org/datasets/movielens/ml-1m-README.txt) reports
+1,000,209 ratings from **6,040 source users**. That is not the frozen primary
+training cohort. The preregistration applies rating, global-time, minimum-event,
+training-catalog and fixed-point filters; the primary run retains 1,033 users.
+The run JSON's top-level `n_users` is 1,033, matching the manuscript and cohort
+flow.
+
+The trainer creates one example per retained user at `augment_factor=1`, and
+the DataLoader has `drop_last=False`. Therefore the actual budgets are:
+
+| Campaign | Training users | Batch | Epochs | Updates/epoch | Total updates | Warmup steps |
+|---|---:|---:|---:|---:|---:|---:|
+| MovieLens R4 | 1,033 | 256 | 20 | 5 | **100** | 5 |
+| Musical Instruments E-A | 57,439 | 256 | 20 | 225 | **4,500** | 225 |
+| Industrial & Scientific breadth | 50,985 | 256 | 20 | 200 | **4,000** | 200 |
+| CDs & Vinyl breadth | 123,876 | 256 | 20 | 484 | **9,680** | 484 |
+
+F3/F4 instead use the unfiltered 6,040-user source population and report about
+472 MovieLens updates. Their claimed 9.5x/8.5x/20.5x ratios should be
+**45x/40x/96.8x**. F4 explicitly says it read `n_users` from committed result
+JSONs, which is contradicted by those JSONs. F3's wall-clock corroboration is
+also invalid: the cited roughly 10 minutes is the manuscript's Video_Games
+statement, not a matched MI timing, while the retained MI history records about
+117 seconds of training-loop time for one learned seed.
+
+F4's descriptive Spearman ordering remains arithmetically `rho=1` with exact
+two-sided permutation `p=2/24=.0833` even after correcting the update totals.
+At n=4, with update count completely entangled with corpus size, catalog,
+density, interactions/sequence and estimand, it is hypothesis-generating only.
+It neither proves nor disproves budget causality.
+
+F5 does not execute the test F4 specified. F4 required a new identifier,
+frozen protocol/adjudicator, matched initialization, and at least five fresh
+seeds; F5 reuses already-known validation histories and then calls the result
+not post-hoc. Its selected prefixes are:
+
+- MI epoch 2: 450 updates, gap `+0.00138564`, 8/8 positive;
+- IS epoch 2: 400 updates, gap `+0.00141498`, 8/8 positive; and
+- CDs epoch 1: 484 updates, gap `+0.00089065`, 8/8 positive.
+
+Those gaps reproduce, but they use 4.0-4.84 times the actual MovieLens budget;
+even MI epoch 1 is 225 updates, 2.25 times MovieLens. There is no stored Amazon
+epoch boundary near 100 updates. Moreover, each prefix belongs to a scheduler
+normalized to the full 4,000-9,680-update run, whereas MovieLens completes a
+5-step warmup plus 95-step cosine schedule. An early prefix and a completed
+100-step schedule do not have equivalent learning-rate exposure. Validation
+curves also do not replace the promised fresh final TEST contrast.
+
+F5 contains one further arithmetic error: it says the CDs validation gap peaks
+at epoch 3 (`+0.008895`); direct recomputation across the eight pairs finds the
+maximum at **epoch 5, `+0.0114316`**. Its MI epoch-7 peak `+0.002879` is correct.
+Both are post-hoc exploratory patterns.
+
+The correct disposition is:
+
+- F3's claim that the filter may never have been applied is refuted by nonzero
+  learned norms and changed target ranks, not by F5;
+- the MovieLens null remains valid **under its frozen 20-epoch, 100-update,
+  fixed-split transferred protocol**;
+- optimizer exposure is a large unresolved cross-corpus asymmetry, so the
+  result cannot be labeled a pure corpus/domain/temporal-structure effect; and
+- F3/F4 should carry prominent `SUPERSEDED / ARITHMETIC ERROR` banners, while
+  F5 should be downgraded to an exploratory Amazon learning-curve observation,
+  not a refutation.
+
+To resolve the scientific question, preregister fresh matched-initialization
+duration/convergence sensitivities before reading new TEST endpoints. Report
+both passes over users and exact updates, valid positions/tokens, integrated LR,
+tap norm, score deltas, target-rank/top-10 disagreement, HR/MRR/NDCG, and
+overfitting. Extend MovieLens over multiple update budgets and, if using an
+Amazon down-budget arm, define exact deterministic 100-update exposure without
+pretending that a different fraction of a much larger population is identical.
+Use one multiplicity family and retain the original null whatever happens.
+
+### F1 status: activation resolved, mechanism and optimization not resolved
+
+The new chain still repeats the prior F1 errors:
+
+1. primary evaluation/training is 1,033, not about 6,040 users;
+2. equal aggregate NDCG does not imply identical recommendation rankings;
+3. MovieLens uses `fir_control=learned`, `fir_v3=off`, so the requested
+   `fir_v3_final_l2=null` is expected; and
+4. the correct `fir_control_final_l2` is nonzero for all eight learned runs,
+   `0.192596`-`0.216180`.
+
+Hash-bound sidecars show target-rank changes on every seed. On the three
+equal-NDCG seeds, 125, 115 and 109 of 1,033 held-out target ranks change (by at
+most three ranks) while the target's NDCG@10/HR@10 contribution does not. This
+is top-k cutoff granularity, not an identical full ranking. The frozen
+adjudicator also binds run, selected checkpoint, final evaluation, seal,
+evaluator and sidecar hashes and requires nonzero active norms.
+
+Thus an inactive/missing module and obvious wrong-checkpoint evaluation are not
+supported. That does **not** prove convergence, adequate schedule length, a
+domain effect, or a causal temporal mechanism. Correct A4/F3/F5, the patch
+register and every handoff occurrence; expose the right norm/rank diagnostic in
+a governed artifact; and add a sealed checkpoint-versus-delta counterfactual
+for full-score and top-10 behavior.
+
+### F6 and “numerical fidelity”: correct values, overclaimed inference
+
+The five FIR effect/interval claims that F6 checks match their adjudications.
+However, “every numeric claim in the abstract; PASS 5/5” is not exhaustive: the
+abstract also reports AlphaFuse minus normal SASRec
+`+0.005207 [+0.004779,+0.005635]`. Independent checking finds that sixth
+statistical claim exact too, so there is no newly found abstract mismatch, but
+the stated audit count/completeness is false.
+
+The follow-up “both surfaces are numerically faithful” verdict is internally
+inconsistent with its own admission that the cover letter's 192/18, 751 and
+282 counts are false. The defensible status is: **checked empirical effect
+estimates are exact; whole-document numeric fidelity fails until derived counts
+are regenerated.**
+
+F6's control values are accurate:
+
+- shared minus identity `+0.002197 [+0.002008,+0.002386]`;
+- learned minus identity `+0.002116 [+0.001910,+0.002322]`; and
+- learned minus shared `-0.000081 [-0.000337,+0.000175]`.
+
+Its interpretation is not. No shared-versus-learned equivalence or
+noninferiority margin was preregistered, so a confidence interval crossing zero
+does not establish “no detectable loss,” that shared “attained” learned's
+effect, or parameter efficiency. The 64x ratio is **filter parameters**
+(16 versus 1,024), not whole-model parameters: total trainable parameters are
+1,743,246 versus 1,744,254, a reduction of only 1,008 or **0.0578%**. No measured
+latency, memory or energy gain follows.
+
+F6 also labels fixed MA/HP as zero-parameter/non-learned. The preregistration
+defines each as a fixed-shape residual with a **learned scalar alpha**, and the
+adjudication counts 1,743,231 trainable parameters versus identity's 1,743,230.
+The supportable conclusion is narrower: the flexible per-channel arm exceeded
+two algebraically redundant one-scalar fixed-shape controls on outcome-known
+MI; shared and nonlinear active controls prevent a learned-per-channel-specific
+claim. The nonlinear non-detection is already fully reported in Results,
+Discussion, Conclusion, TeX, and cover letter; omitting one control from a
+compact abstract is not selective reporting.
+
+### Patch register: apply, narrow, or reject item by item
+
+None of P1-P7 has been applied. Do not apply the register mechanically:
+
+1. **P1 - apply after regeneration.** Deriving cell/family/manifest/asset counts
+   from the final tag is correct; do not copy the register's already stale
+   1,073 snapshot.
+2. **P2 - apply with TeX/abstract parity check.** Scope the no-pointwise sentence
+   to the earlier six-arm study and report the later pointwise campaign with
+   its compound-control caveat.
+3. **P3 - narrow.** “All reported FIR results used backbone decay” is false
+   because a zero-decay sensitivity is reported. Say the three primary
+   canonical learned-identity evidence blocks used backbone decay.
+4. **P4 - reject as written.** “We evaluate throughout with LLOO” is false
+   because MovieLens is global-time. Claiming HSTU-BLaIR/TIGER/LIGER use the
+   same protocol and make numbers commensurable directly contradicts the
+   manuscript's careful AR2014/AR2023, 0-core/5-core, user/user-item and catalog
+   caveats. The paper already says future events affect inclusion and global-
+   time sensitivity is unrun. Add only the missing Amazon cross-user chronology
+   sentence, cite the split literature, and retain non-comparability.
+5. **P5 - narrow.** “Did not detect” is better than “negative,” but the bound
+   applies only under the fixed selected cohort and transferred 100-update
+   schedule. F5 does not license a domain claim; the Amazon comparison is
+   descriptive across heterogeneous estimands.
+6. **P6 - revise.** Tie compression to the preregistered failed learned-FIR
+   replication gate, not an unregistered all-arms-versus-identity family; call
+   it conditional coefficient-count compression, not a practical bound.
+7. **P7 - qualify.** Prelaunch protocols/fresh seeds matter, but MI E-A was
+   outcome-visible/provenance-deviated and breadth was designed after legacy
+   outcomes and had TEST exposure. Do not upgrade them to pristine-sounding
+   confirmation.
+8. **P8 - do not apply.** F5 did not run or approximate the declared test and
+   did not reject the optimizer-budget hypothesis.
+
+### Split, novelty, results and algorithm assessment
+
+The six commits do not change the core paper. Carried-forward scientific limits
+remain: Amazon user-wise LLOO is not global chronology; the primary MovieLens
+cohort is target-conditioned; Table 1 is a mixed-n descriptive ladder; and
+TV-Rec/Mamba/Hyena-family matched baselines are absent. Primary split-method
+sources remain [Ji et al.](https://arxiv.org/abs/2010.11060) and [Gusak et al.,
+*Time to Split*](https://doi.org/10.1145/3705328.3748164). Add one Amazon-only
+cross-user chronology sentence; do not insert P4's false commensurability.
+
+The 16-parameter shared result can motivate a new frozen breadth study, but it
+is not yet a simpler established cross-category method. A proper study would
+predeclare shared-versus-identity efficacy and shared-versus-per-channel
+noninferiority with a scientifically justified SESOI, use fresh matched blocks
+on MI/IS/CDs plus the new domain, and report whole-model parameters and measured
+runtime rather than a filter-only 64x ratio.
+
+Algorithm optimization remains open. Implement a true identity bypass, fuse
+depthwise causal kernels, compare direct versus FFT implementations across K
+and sequence length, and report counterbalanced CPU/GPU warm/cold latency,
+throughput, peak memory, model bytes, energy and accuracy. Do not infer
+practical efficiency from coefficient count.
+
+### Release, governance, clean-clone and deposit assessment
+
+Current green checks are unchanged:
+
+- graph: 201 active cells / 25 families / 181 exact / 20 declared rounding /
+  0 mismatch / 0 untraceable / 8 retired;
+- claim map, Table 0 and closure ledger: PASS;
+- declared local manifest: 1,081 entries / 0 missing, consisting of 674
+  Git-backed and 407 release-only files; and
+- Git-manifest verification at HEAD: 674 exact.
+
+These passes do not mean the current branch is manifest-complete. All six new
+memos plus `HANDOFF_CODEX.md` are absent from every manifest/deposit list. Only
+1 of 16 root `CLAUDE*.md`/Handoff records is governed, even though the
+collaboration guide makes Handoff source-of-truth #2. The unchanged 1,081 count
+and unchanged 957-entry deposit expectation are evidence that the new records
+sit outside scope.
+
+Local `RELEASE_MANIFEST.json` remains 181,245 bytes, SHA-256
+`cca6a5609e3250dababf0aaa13bddada46aea1d4608010eed178febbd668a1ca`;
+the GitHub `v0.9-audit-evidence` asset remains 179,993 bytes, SHA-256
+`734164a1d7be03e93c7ff40882382f5671f261e13be21d1ec8afa183af1e56c4`.
+The public mutable audit release is not synchronized.
+
+The clean-clone verifier now fails post-attestation drift across **24 files**;
+the record's subject is `8d417941...`, it is waived/draft, and it says
+`release_ready=false`. Candidate deposit checking still expects **957 total
+ZIP entries** and fails stale DOI/README inventory text, missing parsed 201/25
+README counts, CFF/Zenodo 200/24, creator placeholders, and the absent intended
+tag.
+
+Choose an explicit governance policy. Recommended: govern Handoff, the active
+patch/status register, and the complete F3->F5 supersession chain with status
+and `supersedes` metadata, plus every methodology/design memo on which public
+claims depend. Otherwise label them internal/non-release and remove Handoff
+from the public source order. Only after content settles should the authors
+regenerate the manifest/counts, commit a clean tree, create a new no-waiver
+attestation, tag, build/upload, and re-download/hash the immutable deposit.
+
+### PDF, figure, writing and submission-readiness assessment
+
+The PDF skill was used for targeted rerender/freshness review. There is zero
+source/PDF/figure/cover/manifest diff from the prior paper boundary. All four
+PDFs remain source-current and local-manifest-matched:
+
+- reader: 57 pages, SHA-256 `f1ff8e...96969c`;
+- TORS review: 33 pages, `9add98...8ae8`;
+- acmsmall preview: 33 pages, `6c816b...714e`; and
+- supplement: 18 pages, `8002d6...c360`.
+
+Targeted rerendering found no new clipping or collision. Persistent defects are
+unchanged: author/legal/DOI furniture; missing PDF Author/Keywords; untagged
+venue PDFs; V3 “Normal(0,1) was not tested” immediately before V4; orphan TORS
+page-33 references; supplement page-17 nonexistent “Fig. 3” and mixed
+numbering; supplement page 18 and reader page 57 underfilled; sub-2 pt labels;
+and a dense acmsmall page-5 table. Repair, render and inspect every page after
+the actual manuscript patch lands.
+
+Writing/status governance has become a rejection risk of its own. F3/F4 retain
+alarming live headings without supersession banners; F5 overclaims retraction;
+the fidelity note calls false-count surfaces PASS; the patch register mixes
+safe and unsafe text; and roadmap/checklist/guide still show stale A3-A7
+statuses. Create one machine-readable registry with item, current status,
+latest review commit, evidence, active blocker, owner, disposition and applied
+commit. At this boundary: A3 `REVISE/BLOCKED-NO-FREEZE`; A4
+`DESIGN-REVISE + HUMAN LEGAL/CUSTODY BLOCKED`; A5 `PARTIAL/REMEDIATION PENDING`;
+A7 `FAIL-CURRENT-HEAD (historical draft replay only)`.
+
+### Confirmed non-problems and resolved questions
+
+- The six new commits do not alter any result of record or silently launch a
+  protocol.
+- F5's three reported early Amazon validation gaps reproduce; the defect is
+  the wrong MovieLens count, nonmatching test, schedule and inference.
+- F4's `rho=1`, `p=.0833` is a correct four-point description, not causal or
+  generalizable evidence.
+- The MovieLens learned filter was active and changed target ranks. The original
+  aggregate null arithmetic remains valid under the frozen 100-update protocol.
+- All six quantitative effect/CI claims in the abstract independently match
+  their adjudications; the F6 “5/5 exhaustive” label and whole-surface PASS are
+  the problems.
+- The shared arm's positive identity contrast and 16 filter parameters are
+  correct; only equivalence/efficiency/generalization language is unsupported.
+- Mechanical graph/release checks pass their declared scope; no result
+  arithmetic drift or PDF freshness regression was introduced.
+
+### Concrete fixes in priority order
+
+1. Add arithmetic/supersession errata to F3-F5 and Handoff: 1,033 users,
+   100 updates, 45x/40x/96.8x; wrong field corrected; F5 exploratory only.
+2. Freeze and run a MovieLens duration/convergence sensitivity with fresh
+   matched blocks, step-defined schedules and activation/ranking diagnostics;
+   retain the original null.
+3. Apply corrected P1/P2; replace metadata; regenerate the cover letter from
+   the final tag.
+4. Apply narrowly rewritten P3/P5/P6/P7; reject P4/P8 as written; update both
+   Markdown and TeX and rerun semantic/table gates.
+5. Add explicit Amazon cross-user chronology and run global/rolling temporal
+   sensitivity with population-honest coverage.
+6. Run shared-filter breadth only under a preregistered efficacy/NI family; do
+   not claim equivalence or practical efficiency now.
+7. Resolve tuning/dataset-gate blockers and benchmark TV-Rec plus one modern
+   long-convolution/state-space method under fair total compute.
+8. Repair PDF wording, figures, typography, metadata, tagging and pagination;
+   inspect all pages.
+9. Define governance scope/supersession metadata, synchronize remote/local
+   manifest, generate a new no-waiver attestation, and pass the 957-entry tagged
+   deposit.
+10. Implement/baseline true bypass and optimized kernels; obtain independent
+    external replication before broad claims.
+
+### Open questions requiring author verification
+
+1. What verified author, affiliation, contact, declaration, legal and creator
+   metadata replaces every placeholder?
+2. Why did F3/F4 state 6,040 `n_users` came from committed result JSONs when the
+   primary JSONs record 1,033? Was a different view/file consulted?
+3. Which fairness target should the duration sensitivity prioritize: passes per
+   retained user, updates, valid positions, LR integral, wall-clock, or a
+   predeclared multi-axis profile?
+4. Can private MovieLens checkpoints/sidecars support lawful sealed
+   score/top-10 and duration diagnostics or independent escrow?
+5. Should Claude/Handoff records be governed public evidence or internal
+   workflow material, and who owns supersession status?
+6. Is backbone decay explicitly the canonical primary intervention, and which
+   zero-decay/legacy/control exceptions must be named?
+7. Which second-domain license, exposure mechanism and candidate universe can
+   pass a frozen diagnostic/legal gate?
+8. Which venue template, page, AI-use and accessibility policies are
+   authoritative at submission?
+
+### Running checklist after this audit
+
+- [x] Freeze UTC/local cutoff and identify HEAD/upstream/merge base.
+- [x] Audit all six eligible commits and confirm they add no empirical result.
+- [x] Recompute retained-user update counts from run JSON and DataLoader code.
+- [x] Reproduce F4 Spearman arithmetic and F5 early validation gaps; audit the
+      proposed-versus-executed test and LR schedules.
+- [x] Recheck tap norms, rank changes, abstract effects, control parameters and
+      patch-register anchors against artifacts/source.
+- [x] Recheck graph, claim map, Table 0, closure, live/Git manifests, remote
+      asset, clean-clone verifier and deposit gates.
+- [x] Confirm all four PDFs are unchanged/source-current/manifest-matched and
+      rerender targeted defect pages.
+- [x] Update current risks and append this timestamped audit.
+- [ ] Correct/supersede F3-F5/F1/Handoff and create one status registry.
+- [ ] Run a frozen 100-update-aware MovieLens convergence sensitivity.
+- [ ] Apply safe cover/manuscript patches and reject/narrow unsafe ones.
+- [ ] Replace metadata and repair/reinspect all PDF defects.
+- [ ] Run temporal sensitivity, fair modern baselines, lawful second domain,
+      shared-filter efficacy/NI and independent replication.
+- [ ] Govern the release boundary, create a current no-waiver attestation, and
+      pass/tag/re-download the 957-entry deposit.
+- [ ] Implement and measure true bypass/optimized FIR kernels.
+
+## Audit Run - 2026-07-31 16:09 Australia/Sydney
+
+### Fixed boundary and audited state
+
+- Audit cutoff: `2026-07-31T06:09:10.856Z`
+  (`2026-07-31T16:09:10.856+10:00`).
+- Workspace/branch: `C:\Users\rayxc\Documents\R` /
+  `codex/bestrec-sota-results`.
+- HEAD, upstream, and merge base are
+  `5b69e514ccaa57e4bba29c6d29ecf813e82ea719`
+  (`Claude A4 memo: honest MovieLens narrowing + F1`). Nine eligible commits
+  after the 10:08 audit add collaboration/governance guidance, two draft
+  preregistrations, a non-Amazon selection gate, a publication roadmap,
+  methodology/evidence reviews, and responses. They do not change the
+  canonical manuscript, TeX package, figures, PDFs, or results of record.
+- Sources inspected include all nine-commit diffs; `PAPER_SUBMISSION.md`;
+  current TeX Methods/Results; both draft preregistrations and reviewer memos;
+  the selection gate, roadmap, status/venue/cover-letter files; MovieLens
+  adjudication, private hash-bound run records, sidecars, and one retained
+  checkpoint; release/deposit/attestation files and live gates; and all four
+  current PDFs.
+- `git status` reports this audit plus ten adjudication/table paths marked
+  modified. The ten non-audit paths match their HEAD blobs after normalization
+  and are line-ending/stat noise. Existing untracked QA/tmp paths were not
+  treated as release assets. This audit changed only
+  `PAPER_REVIEW_AUDIT.md`; no manuscript, protocol, result, table, figure, PDF,
+  release, or experiment was edited.
+
+### Executive verdict and acceptance calibration
+
+**Recommendation: reject in the present form / major revision before a
+top-journal submission.** The new documents improve reject-first governance,
+surface genuine weaknesses, and correctly prevent two premature experiments.
+They add no empirical evidence. Worse, the newest MovieLens memo contains a
+false inference and a wrong diagnostic field, the cover letter remains
+materially stale, the core split estimand needs plainer disclosure, and the
+release/attestation boundary has drifted again.
+
+Subjective conditional calibration, not a journal statistic:
+
+- **Literal package: below 1%.** Visible author/legal placeholders, a stale
+  editor-facing cover letter, failed deposit checks, an absent tag, and
+  `release_ready=false` make desk return likely.
+- **After real metadata, corrected cover letter/MovieLens wording, explicit
+  split limitation, PDF repairs, and one exact immutable deposit: about 4-8%
+  direct TORS/top-journal acceptance.** This is slightly below the last 5-9%
+  estimate because newly exposed problems outweigh the value of more planning
+  documents.
+- **After global-temporal sensitivity, a fair predeclared tuning matrix,
+  protocol-matched modern baselines, population-honest cutoffs, and a lawful
+  second non-Amazon domain: about 12-20%.**
+- **With those studies plus credible independent/external replication: about
+  20-30%.**
+
+The roadmap's `35-50%` conditional forecast is unsupported and conflicts with
+this cumulative strict review. Remove it or identify a transparent model,
+reference class, assumptions, and uncertainty; the current commits provide no
+basis for an upward update.
+
+### New MovieLens F1 claim: independently falsified diagnosis, valid null
+
+`CLAUDE_A4_MOVIELENS_NARROWING_2026-07-31.md` and the top of
+`HANDOFF_CODEX.md` say that learned FIR and identity have exactly equal
+aggregate NDCG@10 on 3/8 seeds, infer that no user's top 10 changed among about
+6,040 evaluation users, and instruct Codex to inspect `fir_v3_final_l2`.
+Those statements do not survive inspection:
+
+1. The primary R4 evaluation cohort is **1,033 users**, not 6,040. The latter
+   is the original MovieLens population; the all-evaluable cohort is 1,129.
+2. MovieLens uses `fir_control=learned` with `fir_v3=off`. Therefore
+   `fir_v3_final_l2=null` is expected and says nothing about activation. The
+   correct field is `fir_control_final_l2`.
+3. The eight learned-arm `fir_control_final_l2` values are
+   `0.201260, 0.200193, 0.193119, 0.208099, 0.192596, 0.195180, 0.207744,
+   0.216180`: all clearly nonzero. The frozen adjudicator already requires
+   nonzero active-arm norms and binds checkpoint, run, seal, evaluator, and
+   user-sidecar digests.
+4. A direct load of the seed-20261103 best checkpoint finds
+   `fir_control_module.weight` shape `(64,1,16)` and L2 norm `0.193170`,
+   consistent with the run record. An inactive/missing tap tensor is therefore
+   not supported.
+5. Hash-bound per-user sidecars show the following held-out-target rank changes
+   between learned and identity:
+
+| Seed | Users | Target-rank changes | User NDCG@10 contribution changes |
+|---:|---:|---:|---:|
+| 20261101 | 1,033 | 121 | 4 |
+| 20261102 | 1,033 | 185 | 2 |
+| 20261103 | 1,033 | 125 | 0 |
+| 20261104 | 1,033 | 120 | 1 |
+| 20261105 | 1,033 | 115 | 0 |
+| 20261106 | 1,033 | 155 | 2 |
+| 20261107 | 1,033 | 109 | 0 |
+| 20261108 | 1,033 | 143 | 2 |
+
+The three exactly equal aggregate-NDCG seeds are 20261103, 20261105, and
+20261107. Their 109-125 target-rank changes occur without changing the held-out
+target's NDCG@10/HR@10 contribution, chiefly because perturbations remain
+outside the top-10 decision boundary. These sidecars do not expose the entire
+recommendation list, so they cannot establish whether every top-10 item/order
+was unchanged. The supportable interpretation is **top-k metric granularity or
+insensitivity**, not “no ranking effect” and not an inactive FIR pipeline.
+
+The published arithmetic itself remains correct: learned minus identity mean
+`+2.02482e-7`, ordinary paired 95% CI
+`[-7.417e-5,+7.458e-5]`, `p=.995`, rounded in the paper to
+`+0.000000 [-0.000074,+0.000075]`. This is a fixed-split
+null/non-detection. It is neither evidence of a negative effect nor formal
+equivalence, and a descriptive comparison with the Amazon estimate is not a
+cross-domain interaction test. Correct the memo and handoff, expose the proper
+tap norm and rank-sensitivity table in a governed public artifact, and run a
+sealed-checkpoint learned-versus-delta counterfactual reporting score deltas,
+top-10 disagreement, margins, HR/MRR/rank effects, and popularity strata.
+
+The compression claim also needs a dependency clause: smaller FIR
+parameterizations meet the declared noninferiority rule relative to learned
+FIR, but this is scientifically weak when learned FIR itself does not separate
+from identity. Report it as conditional compression of a non-replicating
+effect, not practical efficiency.
+
+### Split protocol and temporal estimand
+
+The core Amazon protocol is user-wise leave-last-out after a complete-history
+five-core/catalog construction. It can therefore place an event at a globally
+later time in training for one user than another user's test event. The
+manuscript already discloses complete-history inclusion and says a global-time
+sensitivity was not run; the new methodology memo overstates the issue when it
+says the paper says nothing. The remaining confirmed problem is that the
+cross-user chronology and resulting estimand are not stated plainly enough for
+a temporal-method paper.
+
+Primary literature supports treating this as consequential:
+
+- [Ji et al., *A Critical Study on Data Leakage in Recommender System Offline
+  Evaluation*](https://arxiv.org/abs/2010.11060) explains how leave-one-out
+  protocols can expose future information and alter model rankings.
+- [Gusak et al., *Time to Split*](https://doi.org/10.1145/3705328.3748164)
+  compares temporal splitting strategies and likewise warns that
+  leave-one-out can distort ranking under chronology.
+- The [ACM TORS methodological-standards
+  editorial](https://doi.org/10.1145/3800587) emphasizes complete pipelines and
+  systematic baseline tuning. It supports the broad reproducibility/tuning
+  concern but should not be cited as if it alone established this paper's
+  specific split defect.
+
+Add a sentence to Methods, Limitations, the abstract claim boundary, and
+`TORS_METHODOLOGY_CHECKLIST.md`: “The core user-wise LLOO estimand is not a
+global chronological deployment simulation; training may contain another
+user's later event.” Then predeclare global-cutoff or rolling-cutoff
+sensitivity, fix catalog/population before each cutoff, count unavailable
+targets as misses or coverage, and evaluate whether method rankings and FIR
+effects survive. MovieLens already uses a global-time boundary; keep that
+distinction.
+
+### New protocol and dataset plans: useful governance, not evidence
+
+**Temporal control.** Rejecting the proposed `repeated_current` arm is correct:
+K repeated current-position taps collapse to one functional degree of freedom
+per channel and are weaker than the completed nonlinear pointwise control.
+`donor_lags`, `order_scramble`, and K dose-response are only hypotheses. Before
+freeze, donor assignment must be outcome-independent, same-split,
+different-user, padding/mask/history matched, and independent of batch
+composition. Scrambling must touch only valid lags, preserve masks/counts, bind
+RNGs, and acknowledge changed optimization noise. K changes parameters,
+compute, and multiplicity; it is not a free ablation.
+
+**Tuning matrix.** The draft correctly remains `DRAFT / NO TRAINING`, and the
+review verdict is `REVISE`. Equal counts of 12 configurations do not equalize
+search coverage and favor the low-dimensional FIR, while scaling counts merely
+by hyperparameter dimension is not principled either. Use official,
+method-specific predeclared spaces; equal total compute; multi-budget
+performance profiles; a retuned shared backbone on every new domain; and
+sensitivity to the budget. Same integer seeds do not automatically justify a
+paired interval across HSTU, SASRec, GRU, TV-Rec, and other architectures;
+predeclare a real method-agnostic blocking/coupling scheme or use appropriate
+unpaired inference. Freeze complete contrast/multiplicity families. Keep
+historical MovieLens outside the new matrix or rerun it under the exact matrix
+protocol, never both.
+
+**Canonical intervention.** `PAPER_SUBMISSION.md` says primary positive taps
+used backbone weight decay; `CODEX_RESPONSE_TO_CLAUDE_DESIGN_MEMO.md` calls
+zero decay intended canonical. Existing MI decay sensitivity crosses zero and
+does not establish equivalence. The clean repair is to define
+canonical=`backbone` because that is what the positive E-A/breadth evidence
+used. If the scientific intervention is instead zero decay, rerun breadth and
+transfer evidence before reusing “canonical.”
+
+**Non-Amazon selection.** The gate is metadata-only and has selected or
+downloaded no dataset, which is correct at this stage. The reviewer requires
+blocking temporal-diagnosticity and exposure-bias gates, but they are not yet
+incorporated. A TRAIN-based diagnostic also conflicts with selecting and
+hashing the dataset before acquisition. Use a two-stage protocol: freeze
+metadata-only candidate eligibility first; then run a frozen, outcome-blind
+TRAIN-only diagnostic with hard thresholds and publish every exclusion, without
+adaptive candidate shopping.
+
+The [official KuaiRand repository](https://github.com/chongminggao/KuaiRand)
+confirms random-exposure data, timestamp/policy fields, and a roughly
+7.5k-item candidate universe, but explicitly positions KuaiRand-Pure for cases
+where sequential information is unnecessary or incomplete sequential logs are
+acceptable. Calling Pure the “strongest provisional technical candidate” for
+a temporal mechanism is therefore unearned; compare KuaiRand-27K/1K and the
+random-exposure subset, feasibility of full-catalog evaluation, policy
+confounding, and hosted-data terms. The [official MIND
+page](https://msnews.github.io/) confirms impression/candidate logs and a
+research license, but converting impression ranking to persistent
+full-catalog LLOO would change the estimand. “A positive FIR result is close to
+guaranteed” on bursty data is not acceptable protocol language.
+
+### Cover letter, evidence classes, and writing
+
+`COVER_LETTER_TORS.md` is the first editor-facing artifact and currently
+contradicts the package:
+
+- 192 cells/18 families versus the live 201/25 graph;
+- 751/751 manifested files versus the live local 1,081-entry manifest;
+- 282 release assets versus the repository's current 407-asset inventory; and
+- “no active lag-0 or pointwise ... placebo was run” despite the completed
+  pointwise verdict and learned-minus-pointwise estimate
+  `+0.001941 [+0.001788,+0.002095]`.
+
+The sentence may have intended to scope itself to an older six-arm experiment,
+but it reads globally and directly conflicts with the abstract. Regenerate
+counts programmatically from the final tag and write: the earlier study lacked
+that control; a later compound pointwise campaign was run and discriminated
+learned FIR from that arm, but did not isolate temporal access because several
+structural properties changed together.
+
+Use one evidence vocabulary everywhere:
+
+- MovieLens: “prospectively frozen fixed-split null/non-replication on the
+  selected eligible cohort,” with its interval and coverage;
+- compression: “noninferior to learned FIR conditional on the failed learned
+  effect gate”;
+- Amazon breadth: “prospectively frozen fresh execution on legacy
+  outcome-known categories,” not independent confirmation; and
+- pointwise: “compound-control discrimination,” not temporal “isolation.”
+
+The evidence-class review's proposed phrase “per-seed-verified isolation” is
+too strong because active controls do not isolate temporal access or
+per-channel necessity. Remove the unsupported 35-50% forecast, close completed
+review queue items, and maintain one authoritative dated status register. The
+roadmap, collaboration guide, methodology checklist, venue plan, and handoff
+currently disagree about which audits are complete and whether the
+clean-clone attestation passes.
+
+### Release, clean-clone, and deposit assessment
+
+Current green checks:
+
+- artifact graph: 201 active cells / 25 families / 181 exact /
+  20 declared-rounding / 0 mismatch / 0 untraceable / 8 retired;
+- claim map, Table 0, and closure ledger: PASS;
+- local release manifest: 1,081 files / 0 missing;
+- Git-manifest verification at HEAD: 674 exact entries; and
+- all current paper PDFs still match their local manifest entries.
+
+Current blockers and contradictions:
+
+1. Local `RELEASE_MANIFEST.json` is 181,245 bytes, SHA-256
+   `cca6a5609e3250dababf0aaa13bddada46aea1d4608010eed178febbd668a1ca`.
+   The GitHub `v0.9-audit-evidence` asset remains 179,993 bytes, SHA-256
+   `734164a1d7be03e93c7ff40882382f5671f261e13be21d1ec8afa183af1e56c4`.
+   The uploaded mutable audit release is therefore no longer synchronized.
+2. The manifest verifies only its declared scope. It omits the later
+   MovieLens, non-Amazon, tuning, evidence-class, and TORS methodology reviewer
+   memos plus `HANDOFF_CODEX.md`, although the collaboration guide treats the
+   handoff/audit chain as authoritative. Include governance evidence in the
+   public boundary or explicitly mark it internal and remove public dependency.
+3. The prior clean-clone verifier now fails `post-attestation subject drift
+   outside the record` across 18 changed files. Its subject predates HEAD and
+   it was already a waived draft with `release_ready=false`. Do not call it a
+   current passing attestation.
+4. Candidate-deposit checking now expects **957 entries**. DOI instructions and
+   README candidate inventory are stale; README parsing no longer yields the
+   required graph counts; `CITATION.cff` and `.zenodo.json` still say 200/24;
+   creators remain placeholders; and `v1.2.0-deposit` is absent.
+
+Required sequence: finish scientific/governance wording; define the public
+manifest scope; replace verified legal/creator metadata; regenerate every
+count; commit a clean tracked tree; run strict no-waiver replay; create a new
+child attestation; verify all gates; create the immutable tag; build/upload the
+957-entry payload; and independently re-download and hash every byte.
+
+### PDF, figure, algorithm, and submission-readiness assessment
+
+No canonical source, TeX, figure, or PDF changed after the previous cutoff.
+The four PDFs remain source-current and local-manifest-matched:
+
+- reader: 57 pages, SHA-256 `f1ff8e...96969c`;
+- focused TORS: 33 pages, `9add98...8ae8`;
+- acmsmall preview: 33 pages, `6c816b...714e`; and
+- supplement: 18 pages, `8002d6...c360`.
+
+Targeted rerendering reconfirmed no clipping/collision regression. Because the
+bytes are unchanged, every prior defect persists: visible production metadata
+placeholders; missing PDF Author/Keywords; untagged TeX PDFs; the V3
+“Normal(0,1) was not tested” contradiction; TORS page 33's orphan bibliography
+tail; supplement page 17's nonexistent “Fig. 3” note and mixed 1/2/S1/S2
+numbering; labels as small as about 0.96-1.9 pt; an overly dense acmsmall
+boundary table; and underfilled final pages. Change the V3 phrase to “not tested
+in V3; tested separately in V4,” standardize supplement figures S1-S4, target
+at least 6-7 pt final labels, rebalance pagination, add accessibility tagging
+and metadata, and inspect all pages again.
+
+Algorithmically, the draft work does not remedy the deployment claim. Identity,
+shared, grouped, and learned FIR paths still execute about 404,352 operator
+FLOPs per user. Add a genuine identity bypass, fuse depthwise causal
+convolution where possible, benchmark direct versus FFT kernels across K and
+sequence length, cache static transforms, and report counterbalanced warm/cold
+latency, throughput, peak memory, model bytes, energy, and accuracy. Optimization
+must be measured on at least CPU and the declared GPU rather than inferred from
+parameter count.
+
+### Confirmed non-problems and resolved questions
+
+- Neither rejected draft was frozen or run; the repository did not silently
+  promote a design memo to evidence.
+- The existing MovieLens means, confidence interval, p-value, hashes, and null
+  verdict remain arithmetically valid. The new F1 diagnosis is wrong; it does
+  not reveal a dead learned module.
+- The three exactly equal NDCG seeds still have changed held-out target ranks;
+  the phenomenon is top-10 metric insensitivity, not bit-identical full
+  rankings.
+- The paper already contains partial complete-history/global-time disclosure;
+  the fix is to make the cross-user chronology and estimand explicit, not to
+  claim the issue was wholly hidden.
+- Local graph, claim-map, Table 0, closure, manifest, and Git-manifest checks
+  pass. Their success does not cure the stale remote manifest, old attestation,
+  incomplete governance scope, or failed deposit metadata.
+- The four PDFs remain current to unchanged sources; no new layout regression
+  was introduced in these nine commits.
+
+### Concrete fixes in priority order
+
+1. Replace and independently verify all author/legal/creator metadata; correct
+   and regenerate the cover letter from the final tag.
+2. Correct the MovieLens memo/handoff (`1,033`, `fir_control_final_l2`,
+   target-rank changes); release a governed activation/ranking diagnostic and
+   use null/non-detection wording.
+3. Add explicit core-split estimand/chronology language and predeclare a global
+   or rolling temporal sensitivity with population-honest coverage.
+4. Resolve canonical weight decay; revise the tuning matrix for
+   method-appropriate spaces/equal compute/valid inference; obtain a new
+   reject-first review before freeze.
+5. Add hard temporal-diagnosticity and exposure-bias gates, reconcile
+   metadata-only selection with frozen TRAIN diagnostics, and complete legal
+   review before selecting/acquiring a second domain.
+6. Run TV-Rec and a Mamba/Hyena-family baseline under matched information,
+   search budget, evaluator, seeds, and hardware.
+7. Repair terminology, figures, typography, pagination, PDF metadata/tagging,
+   and the 33-page narrative; rerender every page.
+8. Define the governance/release boundary, regenerate the 1,081-entry local
+   manifest and remote audit asset, and create a fresh no-waiver clean-clone
+   attestation.
+9. Build, upload, re-download, and byte-verify the 957-entry immutable tagged
+   deposit.
+10. Implement the FIR bypass and optimized kernels; report full resource and
+    accuracy profiles.
+11. Repeat population-honest cutoffs and obtain independent/external
+    replication before broad efficacy, generalization, or Tier-A claims.
+
+### Open questions requiring author verification
+
+1. What verified author, affiliation, contact, declaration, legal, and
+   release-creator metadata replaces the placeholders?
+2. Should the Claude reviewer memos and `HANDOFF_CODEX.md` be public governed
+   evidence, internal workflow records, or excluded entirely from the archival
+   deposit?
+3. Is backbone or zero FIR weight decay the intended intervention? If zero,
+   will the positive breadth/transfer campaigns be rerun?
+4. Can the private MovieLens sealed checkpoint be used for a
+   no-training/no-tuning delta counterfactual, and can the resulting per-user
+   score/rank diagnostics be released lawfully?
+5. Which exact global-time or rolling-cutoff estimand best matches the claimed
+   deployment setting, and how will unavailable targets be counted?
+6. Which second-domain license, exposure process, candidate universe, and
+   temporal diagnostic can pass a frozen outcome-blind gate?
+7. Can private AlphaFuse, WEARec, MovieLens, and V4 artifacts be lawfully
+   released or independently escrowed, and what institutional approvals apply?
+8. Which venue template/page/accessibility policy is authoritative for the
+   final submission?
+
+### Running checklist after this audit
+
+- [x] Freeze UTC/local cutoff and identify HEAD/upstream/merge base.
+- [x] Audit every eligible commit and confirm no new empirical evidence.
+- [x] Independently inspect MovieLens run fields, all eight active norms,
+      retained sidecars, equal-NDCG seeds, and one bound checkpoint.
+- [x] Recompute/confirm the published MovieLens learned-minus-identity interval.
+- [x] Review temporal, tuning, canonical-decay, dataset-selection, and
+      methodology proposals without authorizing a run.
+- [x] Fact-check split-method concerns and dataset claims against primary
+      sources.
+- [x] Recheck graph, claim-map, Table 0, closure, live/Git manifests,
+      clean-clone attestation, remote manifest, and deposit gates.
+- [x] Confirm all four unchanged PDFs remain source-current and
+      local-manifest-matched; rerender targeted defect pages.
+- [x] Update the current rejection-risk list and append this timestamped run.
+- [ ] Replace metadata and correct the editor-facing cover letter.
+- [ ] Correct and govern the MovieLens F1 interpretation/diagnostic.
+- [ ] Add split-estimand disclosure and run global/rolling temporal sensitivity.
+- [ ] Resolve weight decay and revise/re-audit/freeze the tuning matrix.
+- [ ] Complete a diagnosticity/exposure/legal dataset gate and select a domain.
+- [ ] Run matched modern baselines, population-honest cutoffs, and independent
+      replication.
+- [ ] Repair PDF wording, figures, typography, tagging, metadata, and
+      pagination.
+- [ ] Regenerate release governance, create a no-waiver attestation, and pass
+      the 957-entry immutable deposit.
+- [ ] Implement and benchmark a true bypass and optimized FIR kernels.
+
+## Audit Run - 2026-07-31 10:08 Australia/Sydney
+
+### Fixed boundary and audited state
+
+- Audit cutoff: `2026-07-31T00:08:34.225Z`
+  (`2026-07-31T10:08:34.225+10:00`).
+- Workspace/branch: `C:\Users\rayxc\Documents\R` /
+  `codex/bestrec-sota-results`.
+- HEAD, upstream, and merge base are
+  `2560e7f9cee0f0845832e1f671b75a27acbff4c6`
+  (`Record V4 clean-clone attestation`). Twelve commits since the 04:07 audit
+  integrate the focused paper/supplement, terminology and generated-artifact
+  repairs, the completed V4 result, deterministic clean-clone generation, and
+  the machine-readable draft attestation. All are before this cutoff.
+- Canonical sources and artifacts inspected include `PAPER_SUBMISSION.md`,
+  all focused TeX sections/tables and bibliography, `PREREG_EE_V4.md`, all V4
+  runners/evaluators/adjudicators, public V4 status/adjudication, all 57 private
+  V4 execution files, `CLAIM_ARTIFACT_MAP.md`, `RELEASE_MANIFEST.json`,
+  `CLEAN_CLONE_ATTESTATION.json`, deposit metadata/scripts, and all four current
+  PDFs.
+- `git status` reports this audit plus ten adjudication/table paths modified.
+  The ten non-audit paths hash to their HEAD blobs and have no normalized
+  textual diff; they are stat/line-ending noise. Only this cumulative audit has
+  substantive tracked drift. Existing untracked QA/tmp directories were not
+  treated as release payloads. This run edited no manuscript, protocol, result,
+  table, figure, PDF, release artifact, or experiment.
+
+### Executive verdict and acceptance calibration
+
+**Recommendation: reject in the present form / major revision before a
+top-journal submission.** V4 completed cleanly and is a real incremental
+improvement: it shows that the AlphaFuse-style package remains above a stronger
+parser-default-normal SASRec-ID control. Its exact result is mechanically
+reconstructible and the current paper reports the central numerical boundaries.
+The focused package, public result graph, manifest, and clean-clone draft are
+also materially healthier than at 04:07.
+
+The advance is secondary. V4 does not test FIR efficacy, add a matched modern
+operator, repair the target-conditioned negative MovieLens transfer, isolate
+initialization or null-space fusion, or supply independent replication. Real
+metadata and the immutable deposit remain unfinished, and the clean-clone
+attestation explicitly denies release readiness.
+
+Subjective conditional calibration, not a journal statistic:
+
+- **Literal package: below 1%.** Visible author/legal/creator placeholders,
+  failed deposit checks, and a `release_ready=false` attestation make desk
+  return likely regardless of scientific merit.
+- **After real metadata, wording/PDF repairs, and one exact immutable deposit:
+  about 5-9% direct TORS/top-journal acceptance.** Relative to the prior 4-8%
+  package-only estimate, V4 is worth roughly one percentage point because it
+  reduces one comparator objection; it does not change the central evidence.
+- **After a concurrent fair 2x2 AlphaFuse/SASRec-by-initialization study,
+  protocol-matched TV-Rec plus a Mamba/Hyena-family baseline, repeated
+  population-honest cutoffs, and valid headline inference: about 12-20%.**
+- **With those studies plus credible independent/external replication: about
+  20-30%.**
+
+### E-E V4 result: confirmed and independently reconstructed
+
+The public adjudication completed at `2026-07-30T19:37:46.758631Z`; the final
+status followed at `19:37:47.148928Z` with 8/8 trainings, 8/8 assessments,
+and no errors. The exact verdict is
+`EEV4-ALPHAFUSE-ABOVE-NORMAL-SASREC`.
+
+Independent recomputation from the eight released aggregate values gives:
+
+- parser-default-normal SASRec-ID NDCG@10
+  `0.0430654763`, SD `0.0005027261`, ordinary t 95% CI
+  `[0.0426451868, 0.0434857658]`;
+- V3 AlphaFuse-style package minus V4 normal SASRec-ID
+  `+0.0052071220`, Welch 95% CI
+  `[+0.0047793378, +0.0056349062]`, df `8.6049`,
+  `p=1.0197e-9`;
+- V4 normal SASRec-ID minus V3 zero-init SASRec-ID
+  `+0.0040419448`, Welch 95% CI
+  `[+0.0030886209, +0.0049952687]`, df `9.8142`,
+  `p=2.9976e-6`; and
+- V4 normal SASRec-ID minus the paper's existing reference
+  `-0.0242719099`, Welch 95% CI
+  `[-0.0247282958, -0.0238155239]`, df `10.9567`,
+  `p=2.5186e-18`.
+
+These values exactly match the adjudication and
+`PAPER_SUBMISSION.md:327` / `paper_tex/sections/05-results.tex:62`. All eight
+endpoint JSON hashes, eight NPZ sidecar hashes, terminal-record hashes,
+selected-checkpoint hashes, READY identity, and status-to-adjudication hash
+match locally. Each sidecar contains the same 94,762-user/target cohort; ranks
+are in range, and row-level HR/NDCG/RR reconstruct endpoint HR/NDCG/MRR exactly.
+
+The protocol identities support a narrow robustness comparison: V3 zero-init
+SASRec and V4 normal-init SASRec otherwise match on model/training fields,
+data/upstream/TEST hashes, 3,368,448 parameters, complete-history mask, and
+full-catalog evaluator, while using fresh optimizer runs. This does **not**
+turn the AlphaFuse-versus-SASRec contrast into a component experiment:
+AlphaFuse still differs in frozen text, architecture, parameter allocation, and
+capacity (5,007,680 total / 1,729,216 trainable versus SASRec's
+3,368,448 / 3,368,448), and V3/V4 differ in campaign phase/date.
+
+Normal SASRec is about 10.4% above zero SASRec and reduces the package margin
+from `+0.009249` to `+0.005207`, about a 44% shrinkage. The correct conclusion
+is that the whole-package ordering survives one stronger ID-control setting.
+It is not evidence that initialization caused the difference, that null-space
+fusion caused the remaining margin, or that either system is SOTA.
+
+### V4 lifecycle and public-replay boundary
+
+The local lifecycle is internally coherent:
+
+1. freeze commit `6d3b404836fb...` at `13:38:05Z`;
+2. local origin reflog records its push at `13:38:08Z`;
+3. first training STARTED file at `13:38:45Z`;
+4. last terminal record at `19:34:58.648991Z`;
+5. READY at `19:34:59.860742Z`, SHA-256
+   `fac6b268...1aaf9`;
+6. eight sequential sealed endpoints from `19:35:01.588117Z` through
+   `19:37:40.646060Z`;
+7. adjudication at `19:37:46.758631Z`, SHA-256
+   `b00993ae...16cd`; and
+8. final status binds that adjudication hash.
+
+No READY/ledger digest mismatch was found across the 57 private files. This is
+stronger internal custody than earlier campaigns. It is not independent
+custody: STARTED JSONs have no embedded signed timestamp, the push evidence is
+a local reflog rather than a retained server receipt, plaintext VALID logs were
+author-accessible, and no external custodian attested non-access. These are
+**author-verification/custody risks**, not evidence that peeking occurred.
+
+All 57 files in `_bestrec_run/ee_v4_private/` are ignored and absent from Git,
+the release manifest, deposit, and public claim-map sources. The public
+adjudication exposes the aggregate vectors and a 16-file endpoint/sidecar hash
+ledger; the graph recomputes aggregate arithmetic and checks ledger structure,
+syntax, and uniqueness, but cannot hash or replay the private bytes or
+record-level values. This boundary is accurately disclosed. Do not advertise a
+fully reproducible V4 experiment unless lawful release or independent escrow
+binds READY, endpoints, sidecars, and preferably checkpoint/training bundles.
+
+### Confirmed wording and claim-boundary defects
+
+1. The immutable preregistration/adjudicator/adjudication retain
+   `upstream-default`, “upstream CLI default,” and “more standard” labels.
+   Primary-source inspection confirms only that the pinned parser defaults to
+   `normal`; the official AlphaFuse README specifies zero or normal by dataset
+   and gives no Video_Games recipe. Do not rewrite frozen records. Add a linked
+   human- and machine-readable erratum saying “pinned CLI parser-default
+   `Normal(0,1)` sensitivity, not a universal official recipe,” and bind it into
+   the claim graph and release manifest.
+2. `PAPER_SUBMISSION.md:108,562,584,641`, the claim map, and corresponding TeX
+   passages say normal initialization “improved” SASRec. Because phase/date and
+   initialization are confounded, replace this causal shorthand with “the later
+   normal-init arm scored above the earlier zero-init arm.”
+3. `PAPER_SUBMISSION.md:644` and TeX Conclusion say V4 “closes” the narrow
+   zero-init concern. It **addresses or reduces** that concern; only a
+   concurrent blocked factorial can close it.
+4. The V3 results paragraph and Table 1b say parser-default `Normal(0,1)` “was
+   not tested,” immediately before the V4 paragraph/row reports that test.
+   Context means “not tested in V3,” but the standalone sentence is
+   contradictory. Write “not tested in V3; tested separately in E-E V4 below.”
+5. The public-graph language is now mostly accurate: it says ledger
+   structure, not private-file content, is validated. Keep this exact boundary
+   everywhere; “validates the private ledger” is too easy to misread.
+
+### Scientific, novelty, inference, and algorithm assessment
+
+V4 adds comparator credibility but no new FIR estimate. Positive FIR evidence
+remains outcome-known/same-team evidence on Amazon settings. The prospectively
+frozen MovieLens result remains negative and conditions the primary cohort on
+the future target being in the training catalog. Fixed-split optimizer-seed
+intervals, including V4's, do not estimate uncertainty across users,
+categories, cutoffs, populations, or investigators.
+
+The manuscript's modern-literature coverage is improved and appropriately
+concedes that filtering, convolution, semantics, and efficiency are broad prior
+lines. That makes the missing matched experiments more important. Run TV-Rec
+first, then at least one state-space/long-convolution system, under identical
+information, preprocessing, candidates, masks/ties, tuning budget, seeds,
+evaluator, and hardware. SISA-Rec and ASER are further adjacent 2026 semantic
+sequential-recommendation work; their presence reinforces the need to keep the
+novelty claim at the specific FIR placement and audit/governance framework
+unless protocol-matched evidence supports more.
+
+Table 1 remains a mixed-n descriptive ladder. A top-journal revision should
+predeclare estimands, SESOIs, matching, multiplicity families, and
+confirmatory/exploratory status; release exact vectors and report effects,
+standard errors, confidence intervals, and degrees of freedom. Do not use
+V4's very small descriptive Welch p-values as population-level confirmation.
+
+Mechanism attribution still needs a true bypass, identity, shared/grouped/
+depthwise FIR, pointwise/current-position placebo, time-variant/dilated filters,
+text-only, random/permuted text, simple add/concat, null-space-specific, and
+capacity-matched controls. Identity/shared/grouped/learned paths still execute
+roughly 404,352 operator FLOPs per user. Implement bypass and optimized
+structured kernels, then counterbalance and report wall time, throughput, peak
+memory, model bytes, energy, and accuracy distributions.
+
+### Release, clean-clone, and deposit assessment
+
+Confirmed green gates:
+
+- result graph: 201 active cells / 25 claim families / 181 exact /
+  20 declared-rounding / 0 mismatch or untraceable / 8 retired;
+- claim map, Table 0, and closure ledger: PASS;
+- live release manifest: 1,073 files, 0 missing;
+- Git-manifest verification: 666 Git-backed entries exact;
+- local `RELEASE_MANIFEST.json`: 179,993 bytes, SHA-256
+  `734164a1d7be03e93c7ff40882382f5671f261e13be21d1ec8afa183af1e56c4`;
+  the v0.9 release asset downloaded from GitHub has the exact same size and
+  hash; and
+- `CLEAN_CLONE_ATTESTATION.json`: subject `8d4179414fd9...`, graph 201/25,
+  seven of seven stages exit 0, and its verifier passes.
+
+Confirmed blockers:
+
+1. Candidate-deposit checking still exits nonzero. DOI/README inventory text
+   says 931 while the live gate requires 949 entries; README, `CITATION.cff`,
+   and `.zenodo.json` say 200 cells / 24 families instead of 201/25.
+2. The normal tagged check additionally fails the literal creator placeholder
+   `CREATOR METADATA REQUIRED BEFORE PUBLICATION` and the absent intended
+   `v1.2.0-deposit` tag.
+3. The clean-clone artifact classifies itself as
+   `clean_clone_draft_metadata_replay`, says `release_ready=false`, and records
+   a waiver for author/affiliation/contact/running-header/legal metadata. It is
+   mechanical draft assurance, not final release clearance.
+4. `CLEAN_CLONE_ATTESTATION.json` is absent from the current release manifest.
+   Self-inclusion is impossible, but the post-attestation manifest can bind the
+   attestation or an external nonrecursive digest. Without that, a tracked
+   assurance artifact sits outside the advertised release graph.
+5. The attestation records Tectonic as unavailable in PATH although its TeX
+   stages succeed through replay/hydration. Record the actual executable,
+   version, and hash used. A verified local hydration source also does not prove
+   that a public remote source is available. Use an immutable public source
+   archive/digest and keep large transcripts as separately hashed artifacts
+   rather than embedding massive stdout.
+
+Required release sequence: replace metadata and stale counts; add the V4
+terminology erratum and assurance-artifact binding; rerun candidate checks;
+commit a clean tree; run a strict no-waiver clean-clone replay from an immutable
+public source; create the intended tag only after all gates pass; build and
+upload the exact bundle; then re-download and independently hash its contents.
+
+### PDF, figure, writing, and submission-fit assessment
+
+Every page of all eligible PDFs was rendered and visually inspected:
+
+- reader: 57 pages / 1,868,749 bytes / SHA-256
+  `f1ff8e...96969c`;
+- focused TORS: 33 pages / 345,956 bytes / SHA-256
+  `9add98...8ae8`;
+- acmsmall preview: 33 pages / 350,773 bytes / SHA-256
+  `6c816b...714e`; and
+- reviewer supplement: 18 pages / 302,335 bytes / SHA-256
+  `8002d6...c360`.
+
+All four are fresh relative to their sources and match the release manifest.
+V4 values and caveats render correctly in the three main artifacts. No clipping,
+overlap, missing-content, out-of-page glyph, font-embedding, or ToUnicode defect
+was found; the old acmsmall page-17 footer collision and page-13 clipping remain
+fixed; main-paper figure numbering is coherent.
+
+Confirmed remaining defects:
+
+1. TORS page 33 is an orphan bibliography tail with only a few lines and roughly
+   80-85% blank space. Rebalance references/spacing to avoid the extra page.
+2. Supplement page 17 cites a nonexistent “Fig. 3 spectral-irreducibility
+   analysis.” Its actual numbering is Figures 1, 2, S1, S2. Remove the stale
+   note and standardize the supplement as S1-S4.
+3. Main Figure 4 labels are roughly 1.8-1.9 pt; supplement figures fall to
+   roughly 0.96-1.89 pt. Simplify/facet panels and make final-placement text at
+   least 6-7 pt, preferably 7-8 pt.
+4. The acmsmall page-5 boundary table is extremely dense. Split or redesign it
+   rather than shrinking typography.
+5. Author/affiliation/country/contact/short-author placeholders, bare DOI, and
+   dummy article/legal furniture remain. PDF Author/Keywords fields are empty.
+6. Reader is tagged; TORS, acmsmall, and supplement are untagged. Add tagged
+   reading order, link/alt-text checks, and accessibility QA.
+7. Reader page 57 and supplement page 18 have large blank lower regions. The
+   supplement also lacks an explicit evidence-cutoff/scope note for V4; add one
+   if it is distributed with the V4-integrated main paper.
+
+Writing should now center the 33-page focused paper, not the 57-page audit
+reader. One bounded narrative is strongest: exact FIR intervention, strongest
+limited Amazon effect, failed prospective transfer, comparator limitations, and
+narrow conclusion. Move lifecycle hashes, retired/VOID paths, and extended
+negative-result chronology to the supplement.
+
+### Primary-source and release links checked
+
+- [Pinned AlphaFuse parser](https://raw.githubusercontent.com/Hugo-Chinn/AlphaFuse/b501a0540b609370df995ad06fb245859b10a18a/train.py):
+  `ID_embs_init_type` defaults to `normal`.
+- [Pinned official AlphaFuse README](https://github.com/Hugo-Chinn/AlphaFuse/tree/b501a0540b609370df995ad06fb245859b10a18a):
+  official displayed recipes vary between zero and normal by dataset and do not
+  provide a Video_Games recipe.
+- [Public V4 freeze commit](https://github.com/Ray0419/bestrec-sota-results/commit/6d3b404836fb57ee4efdb03846c0ccf2757bbce2):
+  protocol/source identity; a commit URL is not itself a signed no-access
+  receipt.
+- [Current v0.9 release](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-v1.2.0rc3):
+  source of the independently re-downloaded manifest asset.
+- [SISA-Rec primary preprint](https://arxiv.org/abs/2607.11168) and
+  [ASER primary preprint](https://arxiv.org/abs/2603.02709):
+  adjacent semantic sequential-recommendation work; these do not invalidate
+  the paper's narrow FIR/audit contribution but make broad semantic novelty
+  unsafe.
+
+### Confirmed non-problems and resolved prior risks
+
+- V4 is no longer “in progress”; all 8/8 training, 8/8 sealed assessment, READY,
+  and adjudication stages are complete.
+- The V4 aggregate values, CIs, Welch tests, endpoint hashes, and rank-derived
+  metrics reconstruct exactly.
+- The 814,585-versus-814,586 interaction contradiction is repaired: the paper
+  now says same users/items and one differing interaction.
+- Package-versus-repository-ID shorthand, parser-default recipe caveat, and
+  custom per-prefix-adapter disclosure are integrated.
+- Generated claim-manifest equality now fails closed with clone-stable bytes;
+  the focused source/supplement and all current PDFs are integrated and
+  manifest-bound.
+- The result graph, claim map, Table 0, closure ledger, live manifest,
+  Git-manifest, and draft clean-clone stages all pass at this boundary.
+- The uploaded release manifest now exactly matches the current local file.
+
+### Concrete fixes in priority order
+
+1. Replace every author/legal/creator placeholder and stale 931/200/24 metadata
+   value; rerun strict checks without a waiver.
+2. Add and bind a V4 terminology erratum; change causal “improved” to “later arm
+   scored above,” “closes” to “addresses/reduces,” and “not tested” to “not
+   tested in V3.”
+3. Bind the clean-clone attestation, actual TeX toolchain, public hydration
+   source, and separately hashed transcripts into the release graph.
+4. Decide lawful V4 private-artifact release versus independent escrow; keep
+   public reproducibility claims aggregate-only until the private bytes can be
+   verified.
+5. Repair the orphan bibliography page, false supplement Figure 3 reference,
+   numbering, tiny labels, dense boundary table, PDF metadata, tagging, and
+   blank-page balance; render and inspect every page again.
+6. Run the concurrent blocked 2x2 comparator study and matched text/capacity/
+   null-space controls; retain noncausal cross-campaign wording meanwhile.
+7. Run TV-Rec and one Mamba/Hyena-family baseline under exactly matched
+   information, tuning, seeds, evaluator, and hardware.
+8. Repeat population-honest temporal cutoffs with out-of-catalog targets and
+   obtain independent replication; define valid inference families.
+9. Implement true FIR bypass/structured kernels and report counterbalanced
+   resource and accuracy distributions.
+10. After all gates pass, create the immutable tag, build/upload the 949-entry
+    deposit, re-download it, and verify every byte.
+
+### Open questions requiring author verification
+
+1. What verified author, affiliation, contact, running-header, declaration,
+   legal, and release-creator metadata replaces the placeholders?
+2. Can a GitHub/server receipt independently establish the V4 freeze's
+   remote-before-launch time, and can the authors sign a no-peeking/access
+   statement for logs, checkpoints, and endpoints?
+3. Can the 57 private V4 files and other AlphaFuse/WEARec/MovieLens record-level
+   artifacts be lawfully released or independently escrowed, and what
+   institutional retention/license decisions apply?
+4. Was the clean-clone TeX build executed with a bundled/replay Tectonic binary;
+   if so, what exact path, version, and executable hash should the attestation
+   record?
+5. Should the supplement remain a V3/static protocol artifact, or will it be
+   revised with an explicit V4 evidence-cutoff/scope note?
+6. Which venue format and page policy is authoritative, and can the focused
+   paper be reduced to avoid an orphan 33rd reference page without sacrificing
+   readable typography?
+
+### Running checklist after this audit
+
+- [x] Freeze a UTC/local cutoff and identify HEAD/upstream/merge base.
+- [x] Validate 8/8 V4 training, READY, 8/8 sealed endpoints, adjudication, and
+      status hash binding.
+- [x] Independently reconstruct V4 means, t interval, Welch contrasts, p-values,
+      endpoint aggregates, and rank-derived metrics.
+- [x] Compare V3/V4 model/training/data/evaluator identities and delimit the
+      supported cross-campaign claim.
+- [x] Recheck result graph, claim map, Table 0, closure, live/Git manifests,
+      clean-clone attestation, remote manifest bytes, and deposit gates.
+- [x] Render and visually inspect every page of all four current PDFs.
+- [x] Recheck parser-default versus dataset-recipe wording against the pinned
+      AlphaFuse source and README.
+- [x] Update the current rejection-risk list and append this timestamped run.
+- [ ] Replace metadata/placeholders and make the 949-entry deposit pass.
+- [ ] Add the frozen-artifact terminology erratum and repair causal/contradictory
+      V4 wording.
+- [ ] Bind the attestation/toolchain/public hydration source and rerun strict
+      no-waiver clean-clone replay.
+- [ ] Repair PDF references, typography, tagging, metadata, and pagination.
+- [ ] Run the concurrent 2x2, matched modern operators, population-honest
+      cutoffs, valid inference, and independent replication.
+- [ ] Implement true bypass/optimized kernels and deployment measurements.
+- [ ] Tag, build, upload, re-download, and byte-verify the immutable deposit.
+
+## Audit Run - 2026-07-31 04:07 Australia/Sydney
+
+### Fixed boundary, branches, and eligible state
+
+- Audit cutoff: `2026-07-30T18:07:18.253Z`
+  (`2026-07-31T04:07:18.253+10:00`). Later live campaign writes are excluded.
+- The current root checkout and its upstream are
+  `codex/bestrec-sota-results` at
+  `6d3b404836fb57ee4efdb03846c0ccf2757bbce2` (`Freeze normal-init SASRec
+  sensitivity`). Relative to the prior `ade69d3b` boundary, this commit adds
+  `PREREG_EE_V4.md` and six V4 protocol/runner/evaluator/adjudicator files; it
+  does not add a result.
+- A nested, non-current worktree at
+  `_bestrec_run/tmp/ee_v4_postfix_worktree` is on local-only branch
+  `codex/ee-v4-postfix` at `6b3a238298250aeb4cbb8e80f985e3fe9bdaee49`,
+  three commits ahead of root (`fab28f6a`, `e8efa685`, `6b3a2382`). It contains
+  useful claim, generator, focused-paper, supplement, and release repairs, but
+  also eligible uncommitted source/generator edits made before the cutoff.
+  Therefore it is inspected as a draft candidate, not credited as the current
+  manuscript or public release.
+- The current root has only this audit modified among tracked files. Ignored V4
+  private/status/log artifacts belong to the active frozen campaign and were
+  not edited. This audit did not edit a manuscript, protocol, result, PDF, or
+  release artifact.
+
+### Executive verdict and acceptance calibration
+
+**Recommendation: reject / not ready for submission.** The new V4 freeze is a
+useful response to the weak zero-initialized ID control, but a protocol is not
+evidence. At the cutoff there is no V4 TEST endpoint, READY record, adjudication,
+or numerical result that can alter the paper. Core FIR evidence, modern-baseline
+coverage, population validity, independence, metadata, and release readiness are
+unchanged.
+
+Subjective conditional calibration, not a journal statistic:
+
+- **Literal current root: below 1%.** It contains placeholders, a dataset-count
+  contradiction, misleading AlphaFuse shorthand, a stale generated claim
+  manifest, broken release governance after the V4 commit, and the old PDFs.
+- **After integrating the focused branch, resolving its dirty state, adding real
+  metadata, and rebuilding/verifying every artifact: about 4-8%.** This improves
+  truthfulness, packaging, and presentation but not the central science.
+- **The V4 freeze alone adds zero acceptance evidence.** If a clean, sealed V4
+  adjudication later shows the MiniLM package clearly above parser-default-normal
+  SASRec, the secondary-comparator improvement might raise the total only to
+  roughly 5-9%; overlap or reversal gives no uplift and requires narrowing.
+- **After a concurrent fair 2x2 AlphaFuse/SASRec by zero/normal factorial,
+  protocol-matched TV-Rec plus Mamba/Hyena-family baselines, repeated
+  population-honest cutoffs, and valid headline inference: about 12-20%.**
+- **With those studies plus credible independent/external replication: about
+  20-30%.**
+
+### E-E V4: confirmed status at cutoff--no result may be inferred
+
+The tracked tree contains no V4 status, endpoint, or adjudication. The ignored
+live status last written before the cutoff (`2026-07-30T17:03:38.4481066Z`,
+SHA-256
+`64b90809fe098a9a6f273606bcb33a30abdead78d1f92a4f70165db349acfcd7`)
+records:
+
+- `state=training`;
+- `training_complete=4/8`;
+- `assessment_complete=0/8`;
+- `errors=[]`; and
+- two-process training concurrency.
+
+Seeds `20262301..20262304` have terminal bundles and selected checkpoints that
+pass the frozen schema/identity/hash validator. Their terminal-record hashes are
+respectively `240882da...`, `c766aec8...`, `4ae46453...`, and `e13df2ef...`.
+Wave three had started, but its later writes are outside this boundary. No
+`EEV4_FAMILY_READY.json`, assessment artifact, or `ee_v4_adjudication.json`
+existed at inspection. The preflight log begins with a passing structural/
+conformance suite and says TEST was not loaded. No training/VALID trend is used
+as evidence in this audit.
+
+Required reporting rule: keep V4 absent from the manuscript result graph until
+8/8 TEST-unread terminal bundles are exact, READY binds them, 8/8 sealed TEST
+attempts are complete, and the already committed adjudicator performs the first
+authorized endpoint read. Report negative, overlap, or positive outcomes with
+equal prominence and do not extend seeds or alter the design.
+
+### V4 protocol and implementation review
+
+#### Confirmed improvements
+
+1. `PREREG_EE_V4.md:9-25` calls the study outcome-known, same-investigator,
+   cross-campaign comparator-fairness sensitivity; it explicitly denies causal
+   initialization, independent-replication, and SOTA interpretations.
+2. One predeclared arm uses eight fresh seeds, the pinned upstream `SASRec`
+   class, and `ID_embs_init_type="normal"`; training loss, budget, complete-
+   history VALID selection, and evaluator otherwise match the V3 SASRec arm.
+3. The runner excludes TEST. READY requires all eight terminal training bundles,
+   the evaluator refuses a repeated sealed attempt, and the adjudicator requires
+   exact status/READY identity before reading endpoints.
+4. The primary Welch contrast is declared before results; two secondary Welch
+   diagnostics are explicitly unadjusted/descriptive. Independent-arm Welch is
+   appropriate because V3 and V4 are separate optimizer runs. The V3
+   adjudication identity is correctly frozen at
+   `978aebe051abdefe3de542856bad6e321f6d581c53edfa9c01594006d24126ef`.
+5. AST parsing passes for all six new Python files, and the actual campaign
+   preflight/conformance suite passed before training.
+
+#### Confirmed limitations and required fixes
+
+1. **This is not an initialization effect.** V3 AlphaFuse/zero and V4
+   SASRec/normal differ in model, text, capacity, initialization, campaign date,
+   and stochastic path. V4 can test whether the earlier whole-package ordering
+   survives one stronger ID-control choice; only a concurrent blocked 2x2
+   factorial can isolate model-by-initialization behavior.
+2. **Use parser-default wording only.** The pinned parser defaults to `normal`
+   and the pinned backbone implements it as `Normal(0,1)`, but official recipes
+   override initialization by dataset: Movies and displayed long-tail recipes
+   use zero; Toys/Sports use normal. No official Video_Games recipe exists.
+   `PREREG_EE_V4.md:107-108` calling this a "more standard SASRec
+   initialization" is unsupported. Say "pinned parser-default `Normal(0,1)`
+   sensitivity" everywhere.
+3. **Frozen-source assurance is only a driver preflight.** Later-wave children
+   recheck upstream/data but do not rehash every governed local source against
+   HEAD. A live file could change after preflight without being bound into each
+   child STARTED/terminal record. Recheck tracked cleanliness and content hashes
+   before every spawn and record them per child.
+4. **Resume and concurrency custody remain incomplete.** `latest.pt` is mutable;
+   there is no append-only generation/hash chain, exclusive campaign/seed lock,
+   or external custody. Exact resume schema is better than V3, but does not prove
+   historical continuity or prevent two processes from racing on shared paths.
+5. **Outcome-blinding is not independently provable.** Plaintext epoch/VALID
+   logs and private files are locally accessible. STARTED JSON has no embedded
+   timestamp; its filesystem timestamp is not a cryptographic receipt. The
+   commit precedes the first STARTED file by only about 40 seconds. GitHub now
+   exposes the commit, but the local record cannot prove it was remotely visible
+   before launch. Preserve an external server receipt, sequester logs, add an
+   access attestation, and use independent escrow for the first endpoint read.
+6. **Fresh-seed uniqueness is asserted, not independently registered.** Bind a
+   machine-readable cross-campaign seed registry and its digest into the freeze.
+
+### Current root contradictions versus non-current repairs
+
+The current root still has the confirmed defects from 23:27:
+
+- `PAPER_SUBMISSION.md:219` gives 814,586 Video_Games interactions, while line
+  289 calls an 814,585-interaction comparator geometry "identical"; TeX repeats
+  the contradiction.
+- `PAPER_SUBMISSION.md:36` and TeX Introduction line 56 advertise a positive
+  "package-versus-repository-ID" contrast rather than the exact
+  zero-initialized upstream-class SASRec-ID control.
+- Multiple passages call normal initialization broadly "upstream-default" even
+  though the primary-source README uses dataset-specific recipes.
+- The main paper omits V3's custom per-prefix training-row adapter and can be
+  read as full upstream-pipeline reproduction.
+- The tracked E-E V3 result manifest remains three semantic fields behind its
+  corrected generator; the current root graph still passes by trusting that
+  stale generated artifact.
+
+The eligible side-worktree draft repairs all five: it says the studies share
+users/items but differ by one interaction, uses the exact zero-init control
+label, distinguishes parser default from official recipes, discloses the custom
+adapter/full-pipeline limitation, and its committed ancestor makes
+generator-to-artifact equality fatal. Its new SISA-Rec and ASER discussion is
+substantively reasonable, although "older McAuley Amazon collection/common 2014
+geometry" is safer than claiming a paper literally names Amazon Reviews 2014.
+
+Those repairs are not yet a submission boundary. The side worktree is dirty,
+five governed live inputs differ from its release manifest, generated claim-map
+content is stale, and dirty manuscript/TeX edits at 17:00-17:09Z postdate all
+side PDFs. Merge or commit deliberately, regenerate all derived outputs, and
+then verify from a fresh clean clone.
+
+### Scientific, novelty, inference, and algorithm consequences
+
+No FIR estimate changes in this audit. Positive FIR evidence remains same-team,
+outcome-known Amazon evidence; the prospectively frozen MovieLens result remains
+negative on a future-target-conditioned cohort. Fixed-split optimizer-seed CIs
+do not estimate split, population, category, cutoff, or investigator variation.
+V4 is secondary comparator-fairness evidence and cannot repair this central
+external-validity ceiling.
+
+Modern operator coverage also remains bibliographic rather than empirical. Run
+TV-Rec first, then at least one Mamba/Hyena-family model, under the exact same
+preprocessing, input information, catalog/mask/tie policy, full-catalog
+evaluator, validation budget, seeds, and hardware. Publish exact vectors and
+parameters, model bytes, operator FLOPs, latency/throughput, peak memory, and
+energy. Keep the novelty claim to the specific FIR placement plus evaluation/
+governance contribution unless those comparisons support more.
+
+Mechanism attribution still requires a matched design spanning true bypass,
+identity, fixed/shared/grouped/depthwise FIR, the current-position placebo,
+time-variant/dilated filters, text-only, random/permuted text, simple add/concat,
+and null-space-specific/capacity-matched controls. The new FIR evidence-summary
+figure on the side branch is useful, but absolute NDCG deltas across datasets do
+not share one scale or estimand; facet by dataset and show baseline means and/or
+relative effects rather than inviting visual pooling.
+
+For practical optimization, implement a true no-operator bypass and optimized
+structured kernels. Current identity/shared/grouped/learned paths still execute
+about 404,352 operator FLOPs per user. Counterbalance execution and report
+accuracy together with distributions of wall time, throughput, VRAM, model
+bytes, and energy.
+
+### PDF, writing, and focused-package assessment
+
+Current-root PDFs are unchanged from 23:27: reader 55 pages / 1,614,336 bytes,
+TORS 49 pages / 515,244 bytes, and acmsmall 50 pages / 523,464 bytes. Therefore
+the confirmed root defects remain: acmsmall page-17 table/footer collision,
+reader Figure 1-to-4 jump, tiny venue-chart text, stale Figure-3 history,
+placeholder metadata, poor accessibility/navigation, and excessive density.
+
+The side branch is a meaningful structural improvement:
+
+- reader: 56 pages / 1,855,400 bytes / SHA-256 `46917b5f...a3227`;
+- focused TORS main: 32 pages / 342,423 bytes / SHA-256
+  `7ed0878c...c2535`;
+- reviewer supplement: 18 pages / 302,335 bytes / SHA-256
+  `8002d6a4...c360`; and
+- focused acmsmall preview: 33 pages / 347,640 bytes / SHA-256
+  `f30ce53a...f1a87`.
+
+It moves audit-history/supporting material out of the venue main paper and adds
+cohort-flow/FIR evidence figures. However, all four PDFs predate eligible dirty
+source edits, so none represents the current side source. The venue and
+supplement PDFs are untagged, metadata remains incomplete, and final visual QA
+must be repeated after a clean rebuild. Prefer a compact main-paper argument:
+one question, exact intervention, strongest bounded Amazon effect, failed
+prospective transfer, fair-comparator limitation, and narrow conclusion. Keep
+hash ledgers, superseded/VOID history, and detailed provenance in the supplement.
+
+Page-by-page rendering confirms real repairs in the committed focused package:
+the 814,585-versus-814,586 difference is stated accurately; reader figures are
+now numbered 1--4; the prior acmsmall page-17 footer/table collision and page-13
+dataset clipping are gone; and no other clipping, overlap, missing-content, or
+Type-3-font defect was found.
+
+Remaining focused-PDF defects are still submission-relevant:
+
+1. Dirty post-build edits replace broad "upstream-default" wording with the
+   accurate parser-default/recipe caveat. The stale wording therefore remains
+   visible on reader pages 7, 19, 36, and 38; TORS pages 7, 16, 17, 25, and 26;
+   and the same acmsmall pages.
+2. Supplement page 17 calls BBP/MP a "Fig. 3 spectral-irreducibility analysis,"
+   but the supplement contains Figures 1, 2, S1, and S2 and no spectral Figure
+   3. Reader bibliography pages 43 and 46 retain similar retraction-history
+   notes. Remove the notes or point to an explicit, correctly numbered
+   retraction statement.
+3. Author/affiliation/country/contact and short-author placeholders remain;
+   PDF Author/Keywords fields are empty; the DOI is bare; and dummy ACM
+   2770-6699/2026/1-ART, Article `.`, January 2026 furniture remains.
+4. TORS, acmsmall, and supplement are untagged. The tagged reader has 14
+   outlines but zero link annotations; the venue/supplement documents have
+   outlines and links but still require tagged reading order and alt-text QA.
+5. Figure text remains far below publication size: roughly 1.78--1.94 pt in
+   focused main figures and as low as 0.955 pt in the supplement. Redesign at
+   final placement for at least 7--8 pt rather than relying on zoom.
+6. Supplement numbering mixes Figures 1/2 with S1/S2; use S1--S4 throughout.
+   Supplement page 18 contains only two references and is mostly blank, so
+   rebalance the final bibliography/page break.
+
+### Release, graph, and reproducibility gates
+
+#### Current root (`6d3b4048`)
+
+- Result graph: **PASS**, 199 active cells / 23 families / zero mismatch or
+  untraceable cells.
+- Claim map: **PASS**.
+- Live release manifest: **FAIL**, five problems after verifying 1,053 files:
+  `AUDIT_RESPONSE_2026-07-27.md` hash drift plus ungoverned
+  `PREREG_EE_V4.md`, `adjudicate_ee_v4.py`, `run_ee_v4.py`, and
+  `run_ee_v4_campaign.py`. Direct inspection confirms that **all seven** V4
+  protocol/code files are absent from the manifest; the governed-completeness
+  matcher itself fails open by not reporting `ee_v4_common.py`, `eval_ee_v4.py`,
+  or `test_ee_v4.py`.
+- Git-manifest verification: **FAIL**, 646 entries match but the audit-response
+  blob does not.
+- Closure ledger: **FAIL**, root `paper_tex/build.ps1` still lacks the required
+  literal manifest-epoch assertion.
+- Deposit preflight: **FAIL** on creator placeholder, stale 930-entry
+  documentation, stale 199/23 Zenodo graph counts, changed payload, manifest
+  commit/tree mismatch, and absent final tag.
+
+#### Side candidate (`6b3a2382` plus dirty eligible edits)
+
+- Committed Git-manifest verification: **PASS**, 662 Git-backed entries match
+  the committed blobs.
+- Live manifest: **FAIL**, ten problems after 1,064 verified files--five hash
+  mismatches and the same five governed files dirty.
+- Claim map: **FAIL**, generated-content drift.
+- Closure ledger: **PASS**; the committed side repair fixes the previous
+  PowerShell manifest-epoch gap.
+- Deposit preflight: **FAIL**. Current inventory requires **945 entries**;
+  README/instructions are stale, creators remain placeholders, dirty payloads
+  disagree with the manifest, and no resolvable `v1.2.0-deposit` tag exists.
+
+The side branch's new generated-manifest equality gate has a confirmed
+cross-platform false-failure mode. In an LF-preserving snapshot, tracked and
+freshly generated JSON have identical 20,600 logical lines and no textual diff,
+but the generator writes CRLF (721,281 bytes) while the tracked file is LF
+(700,681 bytes), so byte equality fails. Emit canonical UTF-8/LF from the
+generator or canonicalize both sides before comparison, and test Windows,
+Linux, clean-clone, and ZIP-extraction paths. Do not weaken semantic equality;
+make byte representation deterministic.
+
+Do not publish either candidate. Choose the authoritative branch after V4,
+commit only intended source repairs, integrate governed V4 artifacts at the
+correct lifecycle boundary, regenerate manifest/claim map/tables/PDFs, make the
+worktree clean, execute clean-clone replay, set verified metadata/counts, build
+and re-download/hash the exact deposit, and only then create an immutable tag.
+
+### Evidence and primary-source links checked this run
+
+- [Pinned AlphaFuse parser](https://raw.githubusercontent.com/Hugo-Chinn/AlphaFuse/b501a0540b609370df995ad06fb245859b10a18a/train.py):
+  `ID_embs_init_type="normal"` parser default.
+- [Pinned AlphaFuse SASRec backbone](https://raw.githubusercontent.com/Hugo-Chinn/AlphaFuse/b501a0540b609370df995ad06fb245859b10a18a/models/backbone_SASRec.py):
+  `normal` means `Normal(0,1)` and `zeros` means a zero table.
+- [Pinned official AlphaFuse README](https://github.com/Hugo-Chinn/AlphaFuse/tree/b501a0540b609370df995ad06fb245859b10a18a):
+  dataset-specific zero/normal recipes and no Video_Games recipe.
+- [Public V4 freeze commit](https://github.com/Ray0419/bestrec-sota-results/commit/6d3b404836fb57ee4efdb03846c0ccf2757bbce2):
+  current tracked protocol/code identity; this does not by itself prove the
+  remote-arrival time preceded first local STARTED creation.
+- [SISA-Rec primary preprint](https://arxiv.org/abs/2607.11168) and
+  [ASER primary preprint](https://arxiv.org/abs/2603.02709): adjacent semantic
+  sequential-recommendation work added in the side draft.
+
+### Open questions requiring author verification
+
+1. Which branch becomes authoritative after V4: pushed root or the local focused
+   side branch, and when will one clean, hash-bound candidate replace both?
+2. Can a remote server receipt prove `6d3b4048` was visible before the first V4
+   STARTED file, not merely committed locally 40 seconds earlier?
+3. Has any person/tool inspected live V4 VALID logs, checkpoints, private files,
+   or future endpoints beyond the frozen driver/adjudicator workflow?
+4. Can V4 be externally custodied, and can the later result be integrated
+   without exposing or rewriting private execution history?
+5. Which fair Video_Games comparator recipe is intended, given parser-default
+   normal, dataset-specific official recipes, and no official Video_Games
+   command?
+6. What real author/affiliation/contact, funding/conflict, ethics/legal, and
+   creator metadata replaces every placeholder?
+7. Can private AlphaFuse/WEARec/MovieLens artifacts be lawfully released or
+   independently escrowed, and what institutional retention/license decisions
+   apply?
+
+### Running checklist after this audit
+
+- [x] Freeze a UTC/local cutoff and separate root, side branch, and later live
+  campaign writes.
+- [x] Inspect the full V4 preregistration and all six new Python files.
+- [x] Confirm V4 preflight pass, validate the four eligible terminal bundles,
+  and avoid using any numerical trend or TEST result.
+- [x] Verify primary-source parser/backbone/recipe initialization facts.
+- [x] Recheck current-root graph, claim map, manifest, closure, and deposit
+  gates.
+- [x] Recheck side live/Git manifests, claim map, closure, and deposit gates.
+- [x] Compare root versus focused side PDF identities, page counts, source
+  timestamps, and packaging boundaries.
+- [ ] Wait for exact 8/8 -> READY -> 8/8 sealed -> adjudication completion before
+  reading or integrating V4 endpoints.
+- [ ] Replace all universal-upstream/default/standard shorthand with pinned
+  parser-default wording; run the concurrent fair 2x2 factorial.
+- [ ] Integrate the one-interaction, exact-control, adapter, generator-equality,
+  and focused-package repairs into one authoritative clean branch.
+- [ ] Regenerate and visually inspect current main/supplement/reader PDFs after
+  the final source boundary; replace metadata and complete accessibility QA.
+- [ ] Run matched modern operators, repeated population-honest cutoffs, valid
+  Table-1 inference, and independent replication.
+- [ ] Add true bypass/optimized kernels and counterbalanced resource evidence.
+- [ ] Produce a clean, creator-complete, count-correct, tag-bound deposit and
+  verify the re-downloaded bytes.
+
+## Audit Run - 2026-07-30 23:27 Australia/Sydney
+
+### Audit boundary and change assessment
+
+- Fixed worktree boundary: `2026-07-30T23:27:25.8098378+10:00`
+  (`2026-07-30T13:27:25.8098378Z`). Files created or modified later are
+  excluded; in particular, the later `PREREG_EE_V4.md` is not evidence in this
+  run.
+- Branch: `codex/bestrec-sota-results`. HEAD, upstream, and merge base are all
+  `ade69d3b2731b38cfd50a43605e497678f7f65e5` (`Record clean-clone release
+  verification`).
+- Since the 22:07 boundary, three commits landed: `2a0130ba` repairs manuscript,
+  bibliography, Ethics, generated tables, and PDFs; `8605f34b` narrows claim and
+  source-governance language; `ade69d3b` records the clean-clone replay in the
+  handoff. The net change from `67b5ad59` is 43 files, 476 insertions, and 207
+  deletions.
+- At cutoff, the only tracked worktree modification was this cumulative audit.
+  Untracked QA/tmp directories were excluded. No manuscript, result, protocol,
+  PDF, release payload, or experiment was edited by this audit.
+
+### Executive verdict and acceptance calibration
+
+**Recommendation: reject in present form / major revision before a top-journal
+submission.** The package is substantially more honest and internally coherent
+than at 22:07. The false AlphaFuse TEST-read and public-file-hash statements are
+corrected in the manuscript, Ethics now covers both datasets, canonical-source
+governance is explicit, close literature is discussed, Table 1 no longer treats
+sample-SD overlap as inference, and the live public manifest verifies. Those are
+real repairs.
+
+They do not resolve the scientific ceiling: positive FIR evidence is still
+outcome-known/same-team Amazon evidence; the frozen MovieLens transfer is
+negative and population-selective; no matched modern filtering/operator baseline
+is run; and the AlphaFuse positive contrast remains initialization/capacity/
+architecture confounded. New audit-visible contradictions in the dataset count
+and generated result manifest, plus a failed archival deposit and a visible PDF
+collision, keep the literal package unfit for submission.
+
+Subjective conditional calibration, not a journal statistic:
+
+- **Literal package now: below 1%.** Author/creator placeholders, strict-gate
+  failure, a factual dataset contradiction, stale result-manifest claims, failed
+  archival deposit, and a visible production-preview collision make desk return
+  or immediate rejection likely.
+- **After release, metadata, factual, PDF, and editorial fixes only: about
+  4-8% direct TORS/top-journal acceptance.** The core science would be unchanged.
+- **After a fair AlphaFuse factorial, protocol-matched TV-Rec plus a modern
+  linear-time baseline, repeated population-honest temporal cutoffs, and valid
+  headline inference: about 12-20%.**
+- **With those studies plus credible independent/external replication: about
+  20-30% eventual acceptance.**
+
+Governance and writing improved materially; scientific odds did not improve
+materially because no decisive matched-modern-baseline or independent evidence
+was added.
+
+### Confirmed repairs since 22:07
+
+1. **AlphaFuse TEST chronology is now accurate in the manuscript.**
+   `PAPER_SUBMISSION.md:306` and TeX Results admit that prelaunch preparation
+   opened the pre-existing outcome-known combined TRAIN/VALID/TEST export but
+   retained only IDs, TRAIN histories, and VALID targets in the training input.
+   They claim only that fitting/VALID selection did not load, hash, or score TEST
+   and that READY preceded 16 sealed assessments.
+2. **Public/private verification is now distinguished.** The public graph is
+   described as recomputing released aggregate arithmetic and checking ledger
+   shape, 64-hex syntax, and uniqueness; the local adjudicator, which possessed
+   the private files, checked their digests. It no longer claims that the public
+   graph reads or hashes unavailable endpoints/sidecars.
+3. **The main AlphaFuse result is labeled correctly where quantified.** The
+   manuscript, TeX results/tables, claim map, and generator say
+   "zero-initialized upstream-class SASRec-ID control" and state that a normal-
+   initialization sensitivity and equal-budget factorial remain open.
+4. **Canonical-source governance is repaired structurally.**
+   `CANONICAL_SUBMISSION.md` declares `PAPER_SUBMISSION.md` the sole authored
+   source; `PAPER_DRAFT.md` begins with a DO-NOT-SUBMIT historical/noncanonical
+   banner; the TeX health gate checks that banner.
+5. **Ethics and data governance now separate Amazon from MovieLens.** They name
+   the consumed MovieLens fields, private/public boundary, nonredistribution,
+   GroupLens acknowledgment, and legal/institutional review requirement. The old
+   blanket product-review description is gone.
+6. **Related work and citation metadata improved.** TimeWeaver, TV-Rec,
+   HyenaRec, ConvRec, Mamba4Rec, and adjacent filter/frequency systems receive a
+   mechanism-level boundary; LIGER authorship and AlphaFuse authors/pages/DOI
+   are corrected; TIGER wording is cautious rather than claiming exact pipeline
+   equivalence.
+7. **Statistical and optimization language is narrower.** Table 1 says its plus/
+   minus values are sample SD and its deltas are descriptive; the old SD-band
+   inference is removed. MovieLens shared/grouped/low-rank results are called
+   conditional coefficient-count compression, not compute optimization.
+8. **Current source/PDF staleness is resolved.** Eligible manuscript and TeX/
+   bibliography sources predate the 22:50-22:51 PDF builds. The prior acmsmall
+   dataset-table clipping, old Ethics pages, and venue Figure-4 reference are
+   repaired. No Type 3 fonts remain.
+9. **The live release manifest is healthy.** Full verification passes 1,054
+   files with zero missing local release assets; `--verify-git HEAD` passes all
+   647 Git-backed entries. The uploaded v0.9 `RELEASE_MANIFEST.json` is 177,066
+   bytes with SHA-256
+   `95d10df66836615900d2b1469ba553c5ee206aeef97e5b9a2ecdeccff1457203`,
+   exactly matching local. This repairs the working evidence store, not the
+   final archival deposit.
+
+### New confirmed manuscript and artifact contradictions
+
+#### Video_Games geometry is not identical
+
+`PAPER_SUBMISSION.md:219` and `paper_tex/tables/table_datasets41.tex:10` give
+our Video_Games total as **814,586** interactions. Yet
+`PAPER_SUBMISSION.md:289` and `paper_tex/sections/05-results.tex:26` call the
+HSTU-BLaIR statistics "identical dataset stats to ours" while listing
+**814,585**. Later manuscript text already admits a one-interaction difference.
+The contradiction is visible in all three PDFs.
+
+Required wording: "The studies report the same 94,762 users and 25,612 items;
+interaction totals differ by one (ours 814,586; published paper 814,585), so
+this is near-parity rather than identity." Add a health/semantic check that bans
+the old identity phrase when the totals differ.
+
+#### The tracked results manifest is stale even though the graph is green
+
+Regenerating `_bestrec_run/hstu_results_manifest.json` from the current
+`build_hstu_tables.py` changes exactly three semantic fields in `eev3.aggregate`:
+
+1. row label: repository SASRec backbone -> zero-initialized upstream-class
+   SASRec-ID control;
+2. recompute rule: private-ledger validation -> ledger shape/syntax/uniqueness
+   without reading or hashing private files; and
+3. notes: TEST-unread-before-READY wording -> accurate preparation/fitting/
+   assessment chronology, corrected control, normal-init limitation, and local-
+   versus-public hash boundary.
+
+The current `--submission` graph still reports 199 cells, 23 families, zero
+mismatch, and zero untraceable cells because it verifies the stale tracked
+manifest as input; it does not compare that artifact to the embedded current
+generator specification. This is a fail-open semantic-generation defect.
+
+Required fix: regenerate/commit the manifest, then add a fatal generator-output
+equality step before graph verification. Extend it to claim-map, Table 0, and
+every generated table; use exact byte equality after normalized line endings or
+a structured semantic comparison with an explicit allowlist.
+
+#### AlphaFuse shorthand and initialization framing remain misleading
+
+The abstract and detailed result now name the control accurately, but
+`PAPER_SUBMISSION.md:36` and `paper_tex/sections/01-introduction.tex:56` still
+advertise a positive "package-versus-repository-ID" study. The health gate bans
+the exact phrase `repository SASRec-ID` but misses this hyphenated shorthand.
+
+The pinned upstream parser defaults `ID_embs_init_type` to `normal`, but the
+official README recipes are dataset-specific: Movies and the displayed long-tail
+recipes use zero, while Toys/Sports use normal. Therefore "upstream-default
+normal initialization" is defensible only as the parser default, not as a
+universal official recipe. The main paper also omits the preregistration's fact
+that, because upstream preprocessing was unavailable, training rows were made by
+the paper's custom per-prefix adapter. This is upstream class/training-code
+transfer, not full upstream-pipeline reproduction.
+
+Required fix: use "package versus zero-initialized upstream-class SASRec-ID
+control" everywhere; say "parser-default normal, with dataset-specific official
+recipes"; disclose the adapter in Methods/Results; and run an equal-budget 2x2
+AlphaFuse/SASRec x zero/normal design plus capacity-matched ID-only, text-only,
+simple add/concat, random/permuted-text, and null-space ablations.
+
+### Scientific, novelty, inference, and algorithm audit
+
+The AlphaFuse/WEARec arithmetic is unchanged and internally exact:
+
+- AlphaFuse-style MiniLM NDCG@10 `0.0482725983`, 95% t-CI
+  `[0.0481293416, 0.0484158549]`;
+- zero-init upstream-class SASRec-ID `0.0390235314`
+  `[0.0381060954, 0.0399409675]`;
+- descriptive independent-arm Welch delta `+0.0092490668`
+  `[+0.0083291897, +0.0101689439]`, `p=3.47536e-8`;
+- versus the paper's six-seed reference, `-0.0190647879`
+  `[-0.0193466568, -0.0187829190]`; and
+- fixed-dataset user bootstrap `[0.0084519815, 0.0100279343]` and target-cluster
+  bootstrap `[0.0048059514, 0.0157425834]`.
+
+These numbers support only a MiniLM whole-package win over this particular
+zero-init control. They do not identify text semantics, null-space fusion,
+capacity, architecture, or initialization as the cause. The package remains
+below WEARec (`0.059184`), the paper reference (`0.067337`), and reported
+HSTU-BLaIR (`0.0760`).
+
+The main scientific rejection risk remains external validity. All positive FIR
+results are outcome-known/exposed same-team Amazon settings. The prospectively
+frozen MovieLens study is negative on one global-time split. Its primary cohort
+uses the future target's training-catalog membership and retains only
+1,033/6,040 users (17.1%); the all-ratings view retains 1,129/6,040 (18.7%).
+Eight optimizer seeds on one split do not estimate variation over populations,
+cutoffs, domains, or investigator teams.
+
+Modern literature is now cited honestly, but citation is not comparative
+evidence. TV-Rec is the closest priority baseline because it uses position-
+specific time-variant convolutional filters; Mamba4Rec/HyenaRec cover modern
+linear-time/long-convolution alternatives. Run the same preprocessing,
+candidate universe, information inputs, mask, full-catalog evaluator, tuning
+budget, seeds, and hardware. Report exact vectors, parameters/model bytes,
+FLOPs, throughput, wall time, VRAM, and energy. Without this, the contribution
+is an incremental modular realization plus an unusually detailed audit record.
+
+Table 1's old invalid SD-band rule is gone, but the headline ablation remains a
+descriptive ladder mixing n=1, five-seed, and six-seed arms. A top-journal
+claim needs the exact seed vectors, initialization/backbone matching status, a
+named estimand, valid effect/SE/CI/df, SESOI, and multiplicity family. Same-
+numbered seeds must not be treated as paired unless the shared initialization
+and stochastic path are actually bound.
+
+Mechanism attribution remains open: learned FIR does not separate from shared
+causal FIR, the current-only placebo changes several things at once, and text
+permutation plus objective/target-multiplicity controls are unrun. Use a matched
+factorial spanning bypass, identity, fixed/shared/grouped/depthwise FIR,
+current-only placebo, and time-variant/dilated filters. Keep the module optional
+unless a prospective cross-domain effect is demonstrated.
+
+The manuscript now correctly avoids a compute-optimization claim. To establish
+practical value, however, it still needs a true operator bypass and optimized
+structured kernels: identity/shared/grouped/learned currently execute about
+404,352 operator FLOPs per user, and observed latency/memory changes are small.
+Counterbalance run order and report distributions for latency, throughput,
+peak memory, model bytes, energy, and accuracy.
+
+### Protocol, custody, and public-replay limits
+
+E-E V3 remains internally complete (`training_complete=16/16`,
+`assessment_complete=16/16`, `errors=[]`) with unchanged READY, endpoint,
+sidecar, and adjudication arithmetic. The following controls were not repaired
+and must be treated prospectively rather than rewritten into completed history:
+
+- `latest.pt` is mutable and resume validation checks only a small identity
+  subset, not exact schema/digest/type/range/hash-chain integrity;
+- READY binds terminal and selected-best state, not latest/resume lineage;
+- no exclusive campaign/process lock prevents concurrent shared-state races;
+- full frozen-source cleanliness is checked at campaign preflight, not rehashed
+  into every child STARTED/latest/terminal/READY record;
+- arm-major execution puts all AlphaFuse runs before controls and confounds
+  timing/resource comparisons; and
+- local plaintext seals cannot establish that no human/tool accessed outcomes
+  before adjudication.
+
+Whether any resume or premature access occurred remains **AUTHOR VERIFICATION**.
+Future campaigns need append-only resume generations, exact validation before
+deserialization, hash chaining, PID/host/campaign locks, per-child source hashes,
+randomized/counterbalanced seed blocks, sequestered logs, and external custody.
+
+The manuscript now accurately discloses that the public graph cannot replay
+private AlphaFuse, WEARec, or MovieLens endpoint extraction or record-level
+resampling. This is a repaired claim but a continuing reproducibility limit.
+Provide a lawful public bundle or independent escrow, plus institutional/legal
+decisions on retention, access, redistribution, upstream licensing, and
+commercial use.
+
+### PDF, writing, figures, and submission readiness
+
+Exact cutoff artifacts:
+
+- reader: 55 pages, 1,614,336 bytes, SHA-256
+  `4afbbc853a35254f78d55913d28d88910ff66ec24b4ae853bc7d158474aac551`;
+- TORS review: 49 pages, 515,244 bytes, SHA-256
+  `7c3bf4a3d6687d71ec49ade9873084947eb7f64bb0c32165471f6c9013153d97`;
+- acmsmall preview: 50 pages, 523,464 bytes, SHA-256
+  `1019aa0beccf7cd423b3f9965121789c8572218930b038cbe1c79cdc19b2a43b`.
+
+The reader and TORS hashes are manifest-bound. Acmsmall is an unmanifested
+preview. All three integrate the corrected detailed AlphaFuse/WEARec results.
+No Type 3 fonts, black squares, broken images, or out-of-page glyphs were found.
+
+Confirmed current defects:
+
+1. On acmsmall page 17, the comparator-table bottom rule is at page-top
+   coordinate `677.09123 pt`; footer glyphs span `674.43887-682.40898 pt`.
+   The rule objectively crosses the footer. This contradicts
+   `HANDOFF_CODEX.md`'s claim that visual inspection found no overlap.
+2. Reader page 28 has the only visible numbered main caption, Fig. 1, while
+   page 30 jumps to Fig. 4. No reader Fig. 2/Fig. 3 captions exist. Venue Figure
+   4 numbering is coherent; reader numbering is not.
+3. The 814,585/814,586 "identical" contradiction appears in all PDFs.
+4. TORS/acmsmall bibliography pages retain spectral-Figure-3 audit notes even
+   though current Figure 3 is the tail composite. Remove version-history notes
+   from the bibliography or move them to a retraction appendix.
+5. Venue figure labels remain unusably small. TORS minima are about 1.636 pt
+   (Fig. 3), 1.038 pt (Fig. 4), and 1.659 pt (S1); acmsmall reaches 0.955 pt.
+   Redesign annotations for at least 7-8 pt at final placement.
+6. Strict TORS health and hygiene fail on `[Maintainer: ...]` without the draft
+   waiver. Acmsmall also displays dummy DOI/article/ISSN/date furniture in every
+   footer. The reader lacks an Author metadata field.
+7. The reader is tagged but has zero outlines and zero link annotations; TORS/
+   acmsmall have outlines/links but are untagged. Complete alt text, structure,
+   reading order, bookmarks, and live-link QA.
+8. TORS page 16 strands the one-row Table 1a with excess whitespace; reader page
+   55 is mostly blank. These are lower-priority symptoms of an overlong,
+   ledger-heavy structure.
+
+The canonical Markdown source is approximately 23,740 whitespace-delimited
+words. The abstract reads as a sequence of estimates, verdict codes, and
+caveats rather than a journal argument. Rewrite it as: problem; precise
+intervention; strongest bounded Amazon result; failed prospective MovieLens
+transfer; matched-comparator limitation; conclusion. Move protocol chronology,
+hashes, VOID history, retired screens, and long comparator tables to a supplement.
+
+Recommended figure set:
+
+1. a cohort-flow/estimand diagram showing pre-cutoff population, catalog,
+   eligibility exclusions, and out-of-catalog outcomes;
+2. one forest plot of comparable FIR effects across datasets/cutoffs, visibly
+   separating outcome-known from prospectively frozen estimates;
+3. a compact comparator-design matrix for data, inputs, initialization,
+   capacity, objective, search budget, and evaluator; and
+4. a resource plot with distributions and readable labels, not a dense ledger
+   whose table rule reaches the footer.
+
+### Release and reproducibility gates
+
+Read-only cutoff checks:
+
+- result graph: **PASS**, 199 active cells / 23 required families, 8 retired,
+  zero mismatch or untraceable cells;
+- claim/artifact map: **PASS**;
+- Table 0 quantitative ledger: **PASS**;
+- release manifest full verification: **PASS**, 1,054 files / zero missing;
+- release manifest Git verification at HEAD: **PASS**, 647 entries;
+- closure ledger: **FAIL**, because `paper_tex/build.ps1` lacks the literal
+  `RELEASE_MANIFEST.json` manifest-epoch assertion required by the ledger;
+- candidate/final deposit preflight: **FAIL**.
+
+The deposit builder requires 928 payloads plus `README_DEPOSIT.txt` and
+`SHA256SUMS.txt` = **930 entries**. `README.md` and
+`DOI_DEPOSIT_INSTRUCTIONS.md` still say 908; `.zenodo.json` says 198 cells/22
+families; creator metadata is placeholder; and no local or remote
+`v1.2.0-deposit` tag/release exists. The existing
+`_release/bestrec_deposit_v1.2.0.zip` is stale: 908 entries, 8,035,455 bytes,
+SHA-256 `86223fa791666309fcd1f94dd2fcc388910d6f45b1d3d1b39cba14155e70564a`,
+with an old 171,215-byte embedded manifest rather than the current 177,066-byte
+manifest. Do not publish it.
+
+The builder also ignores `git rev-parse`'s return code when checking a tag, so a
+missing tag is misleadingly reported as a truncated mismatch. Require success
+before comparing stdout and emit an explicit missing-tag failure.
+
+`README.md` says the TORS PDF is generated from canonical Markdown, but the
+build regenerates quantitative tables only; BUILD_NOTES says prose was converted
+once and is now separately maintained. Correct the claim or implement one
+source/claim registry and semantic parity across Markdown, TeX, PDFs, metadata,
+and result manifests. The clean-clone replay recorded in `HANDOFF_CODEX.md` is
+useful but prose-only; commit a compact machine-readable attestation binding
+commit, command list, toolchain, manifest hash, graph summary, and PDF hashes.
+
+### Evidence/source links used this run
+
+- [Pinned AlphaFuse parser source](https://raw.githubusercontent.com/Hugo-Chinn/AlphaFuse/b501a0540b609370df995ad06fb245859b10a18a/train.py)
+  and [official pinned recipe README](https://github.com/Hugo-Chinn/AlphaFuse/tree/b501a0540b609370df995ad06fb245859b10a18a):
+  parser-normal default versus dataset-specific zero/normal recipes.
+- [AlphaFuse primary preprint](https://arxiv.org/abs/2504.19218) and
+  [SIGIR DOI](https://doi.org/10.1145/3726302.3729894): method scope and complete
+  bibliographic identity.
+- [TV-Rec NeurIPS primary record](https://proceedings.neurips.cc/paper_files/paper/2025/hash/ed31c00af5238b649171d64718c92cb2-Abstract-Conference.html),
+  [TimeWeaver primary article](https://www.mdpi.com/2079-8954/13/10/857),
+  [HyenaRec primary preprint](https://arxiv.org/abs/2603.25027), and
+  [Mamba4Rec primary preprint](https://arxiv.org/abs/2403.03900): nearby
+  operator families requiring matched comparison.
+- [TIGER primary paper](https://arxiv.org/pdf/2305.05065) and
+  [official Amazon Reviews 2014 data page](https://mcauleylab.ucsd.edu/public_datasets/data/amazon/index_2014.html):
+  paper-level user-filter wording versus official 5-core user/item definition.
+- [Official MovieLens 1M README](https://files.grouplens.org/datasets/movielens/ml-1m-README.txt):
+  fields, acknowledgment, redistribution, endorsement, and commercial-use terms.
+- [Current v0.9 audit-evidence release](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence):
+  working release-manifest asset boundary, not the final DOI deposit.
+
+### Open questions requiring author verification
+
+1. What real author/affiliation/country/contact, short-author, funding,
+   conflict, and creator metadata should replace the placeholders?
+2. Did any E-E V3 run resume from mutable `latest.pt`, and can any independent
+   event record establish the answer? Did any person/tool inspect outcomes before
+   the designated adjudication?
+3. Can the private AlphaFuse/WEARec/MovieLens endpoints, sidecars, checkpoints,
+   upstream data/embedding derivation, and environments be lawfully released or
+   independently escrowed?
+4. Which initialization recipe is the intended fair Video_Games AlphaFuse/SASRec
+   comparator, given parser-normal but dataset-specific official recipes?
+5. What inferential estimand and multiplicity family should replace Table 1's
+   descriptive five-versus-six-seed ladder?
+6. How many official MovieLens users and targets are excluded solely because the
+   future target is outside the training-observed catalog, and what is performance
+   when those outcomes count as misses?
+7. Which current TORS submission mode, length/supplement, accessibility,
+   artifact, ethics, and metadata rules apply to the intended article type?
+
+### Running checklist after this audit
+
+- [x] Freeze cutoff and exclude later protocol/worktree writes.
+- [x] Verify AlphaFuse aggregate arithmetic and unchanged complete lifecycle.
+- [x] Confirm repaired TEST chronology and public/private hash wording.
+- [x] Confirm canonical-source, Ethics, Table-1 wording, citation, and related-
+  work repairs.
+- [x] Run graph, claim-map, Table 0, full manifest, Git-manifest, closure, and
+  deposit preflight checks.
+- [x] Render and inspect all three cutoff PDFs; remove the isolated render tree.
+- [x] Verify the current v0.9 manifest upload matches local bytes.
+- [ ] Fix the 814,585/814,586 identity contradiction and add a semantic gate.
+- [ ] Regenerate `hstu_results_manifest.json` and enforce generator equality.
+- [ ] Remove every package-versus-repository-ID shorthand; state parser/recipe
+  initialization nuance and the custom adapter.
+- [ ] Run the AlphaFuse initialization/equal-budget factorial and matched modern
+  operator baselines.
+- [ ] Redesign the MovieLens population/catalog estimand and repeat across
+  cutoffs/domains; seek independent replication.
+- [ ] Replace Table 1's descriptive ladder with valid predeclared contrasts.
+- [ ] Repair acmsmall page 17, reader numbering, tiny labels, stale bibliography
+  notes, metadata, tagging, navigation, and links; rerender every format.
+- [ ] Fix closure/tag diagnostics, counts, `.zenodo.json`, and creators; rebuild
+  and verify the exact 930-entry deposit under a new immutable tag.
+- [ ] Commit a machine-readable clean-clone attestation and implement full claim/
+  source parity across Markdown, TeX, PDFs, metadata, and manifests.
+- [ ] Add append-only resume lineage, locks, per-child hashes, balanced execution,
+  log sequestration, and external custody to future protocols.
+- [ ] Rewrite the abstract/main narrative and move audit-history ledgers to a
+  supplement; use cohort-flow, forest, comparator-design, and readable resource
+  figures.
+
+## Audit Run - 2026-07-30 22:07 Australia/Sydney
+
+### Audit boundary and change assessment
+
+- Fixed worktree boundary: `2026-07-30T22:07:40.152+10:00`
+  (`2026-07-30T12:07:40.152Z`). Files rebuilt or edited after that instant are
+  excluded even if they now occupy the same paths.
+- Branch: `codex/bestrec-sota-results`.
+- HEAD, upstream, and merge base are identical at
+  `67b5ad59cbd4f80928bcd806dd2902958773495a` (`Integrate frozen E-E V3
+  comparator verdict`), committed at 18:51:50 local. The campaign itself binds
+  the earlier frozen execution commit `f7c9c551d313de07b433545ed4887400ed4f4d98`.
+- Relative to the 16:07 boundary, the new commit adds the governed AlphaFuse
+  adjudication, integrates its aggregates into the manuscript/result graph,
+  updates the release manifest, and rebuilds the reader/TORS PDFs.
+- At the cutoff, 11 non-audit tracked source files also had eligible uncommitted
+  edits: `PAPER_DRAFT.md`, `PAPER_SUBMISSION.md`,
+  `_bestrec_run/emit_latex_tables.py`, `paper_tex/references.bib`, and TeX
+  sections 01, 02, 03, 04, 05, 09, and 10. These repairs are part of the
+  inspected working source but are neither committed nor represented in the
+  eligible PDFs. Later 22:12-22:14 generator/source/PDF writes are excluded.
+- No manuscript, result, protocol, release payload, or PDF was edited by this
+  audit. Only this cumulative audit and automation memory are updated.
+
+### Executive verdict and acceptance calibration
+
+**Recommendation: reject in present form / major redevelopment before a
+top-journal submission.** AlphaFuse E-E V3 is now a legitimate internally
+reportable whole-package result and improves comparator coverage. It does not
+validate the paper's FIR contribution: the AlphaFuse-style package remains far
+below the paper's existing HSTU-style reference, uses a non-default SASRec
+control, and does not isolate null-space fusion. New falsifiable TEST-read and
+public-hash-validation claims, plus severe source/PDF/release divergence, offset
+the incremental evidentiary improvement.
+
+Subjective conditional calibration, not a journal statistic:
+
+- **Literal cutoff package: below 1%.** Author/creator placeholders, stale and
+  visibly defective PDFs, false empirical/reproducibility statements, dirty
+  canonical sources, and failed release gates make it unsuitable for submission.
+- **After administrative, factual, source-sync, PDF, ethics, and release repairs
+  only: about 3-7% direct top-journal acceptance.** The algorithmic novelty and
+  external-validity problems remain.
+- **After faithful/equal-budget modern baselines, population-honest temporal
+  evaluation, true bypass/resource evidence, and a narrower audit/falsification
+  framing: about 10-18%.**
+- **With independent or externally custodied temporal/non-Amazon replication:
+  about 15-25% eventual acceptance.**
+
+The new comparator changes the evidence ledger, not the literal acceptance tier.
+
+### AlphaFuse E-E V3 lifecycle: authorized and internally coherent
+
+The frozen stop rule is satisfied. Exact chronology in UTC:
+
+- final training terminal: `2026-07-30T08:19:38.507Z`;
+- family READY: `2026-07-30T08:19:40.302Z`;
+- first assessment-start seal: `2026-07-30T08:19:46.941Z`;
+- final endpoint completion: `2026-07-30T08:24:55.457Z`;
+- adjudication completion: `2026-07-30T08:25:04.068Z`; and
+- complete status update: `2026-07-30T08:25:04.626Z`.
+
+Status records `training_complete=16/16`, `assessment_complete=16/16`,
+`state=complete`, and `errors=[]`. The exact state hashes are:
+
+- READY SHA-256
+  `5278315788a0ca6792a59d1f629f5c25eb67f5791ba4e51cc5544a0ae97af730`;
+- adjudication SHA-256
+  `978aebe051abdefe3de542856bad6e321f6d581c53edfa9c01594006d24126ef`;
+- status SHA-256
+  `f0af011a23b3d15b1d6dbd2857c4dd2d15a2f4c55ff3714e2c128aef507762b2`.
+
+All 16 READY terminal/checkpoint identities and selected epochs match; all 16
+assessment seals bind READY; endpoint/seal/sidecar hashes match locally. The
+independent sidecar audit found zero errors: exact six-array schemas,
+`user_index=0..94761`, valid rank ranges, rank-derived HR/NDCG/RR, endpoint
+family metrics, common target vectors, and 18,219 target clusters all agree.
+Thus the endpoint can be reviewed. This supports **internal integrity**, not
+external blinding, independent custody, or public replay.
+
+The fixed private family has 114 files and 881,578,054 bytes:
+
+- 16 STARTED records (3,536 bytes);
+- 16 best checkpoints (268,191,328 bytes);
+- 16 latest checkpoints (594,974,960 bytes);
+- 16 terminal JSONs (63,012 bytes);
+- one READY record (7,247 bytes);
+- 16 assessment-start seals (8,112 bytes);
+- 16 per-user sidecars (16,202,790 bytes);
+- 16 endpoint JSONs (42,420 bytes); and
+- one private input NPZ (2,084,649 bytes).
+
+Including public status and adjudication gives 116 files and 881,596,873 bytes.
+The stable sorted `path|size|sha256` inventory digest is
+`b712b08b014a262893f825110fbc5ee70b5720c363959a8854a117e00eb370b6`.
+
+### AlphaFuse result: correct arithmetic, narrow interpretation
+
+Independent recomputation exactly reproduces the adjudication:
+
+- AlphaFuse-style MiniLM NDCG@10: `0.0482725983`, SD `0.0001713554`, ordinary
+  eight-seed t-CI `[0.0481293416, 0.0484158549]`;
+- zero-init upstream-class SASRec-ID NDCG@10: `0.0390235314`, SD
+  `0.0010973841`, CI `[0.0381060954, 0.0399409675]`;
+- descriptive independent-arm Welch difference: `+0.0092490668`, CI
+  `[+0.0083291897, +0.0101689439]`, df `7.34115`, unadjusted
+  `p=3.47536e-8`;
+- versus the six-seed paper reference: `-0.0190647879`, CI
+  `[-0.0193466568, -0.0187829190]`, df `8.14474`, `p=1.95544e-15`;
+- fixed-split user bootstrap CI `[0.0084519815, 0.0100279343]`; target-cluster
+  bootstrap CI `[0.0048059514, 0.0157425834]`.
+
+HR@10 and MRR also favor the package over the zero-init control and reconstruct
+exactly. The frozen verdict `EEV3-REPORTABLE-OUTCOME-KNOWN` is arithmetically
+supported. The defensible statement is limited: under this fixed data/evaluator
+and configuration, the MiniLM whole package outperformed this zero-init SASRec
+port. It is same-investigator, fixed-split, outcome-known evidence. It is not a
+published AlphaFuse reproduction, null-space-fusion ablation, equal-capacity or
+equal-tuning comparison, independent confirmation, or SOTA. It remains below
+WEARec (`0.059184`), the paper reference (`0.067337`), and reported HSTU-BLaIR
+(`0.0760`).
+
+#### Required comparator experiment
+
+Run one frozen equal-budget factorial using identical data, evaluator, search
+budget, seeds, and appropriately matched initialization:
+
+1. normal-init upstream SASRec-ID;
+2. capacity-matched ID-only;
+3. frozen text-only;
+4. simple add/concat text+ID;
+5. AlphaFuse null-space fusion; and
+6. randomly permuted text as a semantic-information control.
+
+Report exact eight-seed vectors, total/trainable parameters, model bytes,
+profiler scope, counterbalanced wall time/throughput/VRAM, and all tuning choices.
+Without these arms, the positive delta cannot identify text semantics, null-space
+geometry, capacity, architecture, or optimization as the cause.
+
+### New confirmed AlphaFuse contradictions and protocol gaps
+
+#### False "before any TEST read" wording
+
+`PAPER_SUBMISSION.md:306`, `paper_tex/sections/05-results.tex:34`, and
+`hstu_results_manifest.json:19590` say all checkpoints existed before any TEST
+read or that TEST remained unread. `prepare_ee_v3.py:4-7,56-61` explicitly reads
+the pre-existing combined TRAIN/VALID/TEST JSONL during preparation and then
+retains only TRAIN+VALID for the training input. The stronger statement is
+literally false.
+
+Required wording: preparation read the TEST-bearing combined export before
+launch; trainer fitting and validation selection did not load or score TEST;
+model assessment began only after all 16 terminal bundles and READY. Also state
+whether any person inspected TEST labels/outcomes during preparation (**AUTHOR
+VERIFICATION**).
+
+#### The "repository SASRec" label hides non-default initialization
+
+Both arms freeze `ID_embs_init_type=zeros`
+(`ee_v3_common.py:214-229`), while upstream `train.py:89` defaults to `normal`.
+The `sasrec_id` arm instantiates the upstream class but is not the upstream-
+default baseline. Replace every "repository SASRec-ID" shorthand with
+"zero-initialized upstream-class SASRec-ID port" and run a separately frozen
+normal-init sensitivity before using the result to rank AlphaFuse against SASRec.
+
+#### Resume, locking, source, order, and custody
+
+The preregistration says resume uses a hash/schema-validated latest checkpoint,
+but `run_ee_v3.py:98-112` checks only a few identities before deserializing it.
+`latest.pt` is mutable, overwritten, excluded from terminal/READY digests, and
+has no resume counter/history. Whether any resume occurred is **AUTHOR
+VERIFICATION** because STARTED lacks an embedded timestamp and mutable latest
+erases lineage.
+
+There is no campaign/seed process lock; children do not rehash all frozen local
+source bytes; training/evaluation is arm-major; and the entire AlphaFuse arm ran
+before controls. Accuracy arithmetic remains usable, but wall-time/resource
+comparisons are confounded with time, load, and thermal history. Local plaintext
+seals cannot prove non-access. Future campaigns need create-new process locks,
+per-child source hashes, exact-schema/data-only resume states, append-only
+checkpoint chains, balanced randomized blocks, sequestered logs, and external
+custody or signed access evidence.
+
+### False public hash-validation claim
+
+`PAPER_SUBMISSION.md:306`, TeX Results, and Discussion say the graph validates
+private endpoint/sidecar hashes. The local adjudicator did open the files,
+recompute rank metrics, and compare their digests. The **public graph does not**:
+`build_hstu_tables.py:1027-1046` checks the 16 ledger rows, filenames, hash
+syntax, and uniqueness, but never opens or hashes the private artifacts;
+`build_hstu_tables.py:876-884` acknowledges that private replay is unavailable.
+
+This distinction matters because a reader possessing only the public release
+cannot verify that the ledger digests correspond to any available byte stream.
+Replace the claim with: "the public graph validates ledger schema/uniqueness and
+recomputes released aggregate arithmetic; the execution-time local adjudicator
+validated private bytes." Alternatively publish or independently escrow the
+files and add a verifier that fails on content mismatch.
+
+### Canonical-source and eligible-fix audit
+
+`CANONICAL_SUBMISSION.md:3-4` calls `PAPER_DRAFT.md` and
+`PAPER_SUBMISSION.md` one canonical paper. At the cutoff, the draft still has a
+different title, older 175-cell/15-family counts versus 199/23, stale TIGER/
+LIGER statements in multiple locations, no complete MovieLens methods/results,
+and an AlphaFuse abstract mention without its Table 1b integration. Regenerate
+it, remove it, or mark it historical. Add a machine check for title, abstract
+claims, table membership, result counts, ethics datasets, and references across
+every claimed canonical source.
+
+The eligible uncommitted source edits do improve several prior problems:
+
+- Markdown Table 1 uses "descriptive mean contrast," and TeX Results explains
+  that plus/minus is sample SD, not a CI/test;
+- MovieLens training/assessment chronology is narrowed correctly;
+- Ethics/acknowledgments add MovieLens and GroupLens;
+- TIGER/LIGER equivalence is narrowed and LIGER authorship is corrected;
+- TV-Rec, TimeWeaver, HyenaRec, ConvRec, and Mamba4Rec receive mechanism-level
+  related-work discussion; and
+- one literal Figure 2 reference becomes a generated cross-reference.
+
+They are not submission-ready at the cutoff:
+
+1. The generated TeX Table 1 and PDFs still print "bands non-overlapping,"
+   contradicting the new prose. Exact vectors, initialization matching, a
+   declared contrast, valid CI/test, and multiplicity treatment remain absent.
+2. The common Ethics paragraph calls "the data" pseudonymized product reviews,
+   which is false for MovieLens ratings, and applies Amazon sidecar/split
+   language across both datasets. Split the sections by dataset, then give only
+   a genuinely common no-new-collection/no-deployment statement.
+3. AlphaFuse's BibTeX entry lacks the SIGIR DOI
+   `10.1145/3726302.3729894`, pages 1614-1623, and full metadata.
+4. TIGER attribution remains ambiguous: the TIGER paper states user filtering,
+   while the official Amazon 2014 5-core source defines both users and items as
+   having at least five reviews. Do not assert one-sided TIGER preprocessing
+   without the released pipeline; base noncomparability on known year, split,
+   catalog, history, and evaluator differences.
+5. All corrections are newer than the PDFs and three manifested files differ
+   from the manifest. Commit one coherent source/generator state and rebuild.
+
+### Novelty, baseline, algorithm, writing, and figure plan
+
+The new related-work paragraph correctly concedes that broad filtering,
+convolution, temporal specificity, and efficiency are prior art. Citation alone
+does not establish competitiveness. The highest-value sequence-operator study is
+a shared-protocol TV-Rec baseline, followed by Mamba4Rec/HyenaRec and one of
+TimeWeaver/ConvRec. Match candidate set, preprocessing, objective, search budget,
+seeds, hardware, early stopping, and information inputs.
+
+For the FIR mechanism, compare true bypass, identity, fixed moving average,
+shared causal, depthwise causal, pointwise placebo, and time-variant filters under
+matched initialization. Report paired seed differences only when initialization
+is actually matched; otherwise use a named independent-arm estimand. Predeclare a
+smallest effect of interest and multiplicity family.
+
+The abstract is currently a dense ledger of mixed positive, null, negative, and
+comparator numbers. Rewrite it around: question; narrow intervention; outcome-
+visible Amazon estimates; failed prospective MovieLens transfer; AlphaFuse/
+WEARec as bounded comparator audits; and the resulting claim limit. Move hashes,
+VOID history, protocol chronology, and long comparator ledgers to a supplement.
+
+MovieLens cohort selection still depends on the future target being in the
+training catalog (1,033/6,040 primary; 1,129/6,040 all-rating), and all observed
+top-10 success is head-only. Define population/catalog before the cutoff, score
+out-of-catalog targets as misses or report target coverage, add rolling temporal
+cutoffs, and show a cohort-flow plus head/mid/tail uncertainty figure.
+
+Optimization language remains conditional: MovieLens identity/shared/grouped/
+learned all execute the operator at 404,352 FLOPs/user, while AlphaFuse runtime
+comparisons are order-confounded. Add a real operator bypass, optimized structured
+kernels, model bytes, and counterbalanced latency/throughput/memory/energy
+distributions. Do not infer efficiency from parameter compression alone.
+
+### PDF and submission-readiness audit
+
+The eligible canonical PDFs all changed and integrate AlphaFuse/WEARec, but are
+older than the corrected sources:
+
+- reader: 53 pages, 1,596,415 bytes, SHA-256
+  `2e913b28330e8b400b88c1c9817951f71e27528d5d08dc0786261184f1bd1fed`;
+- TORS: 47 pages, 504,684 bytes, SHA-256
+  `d33c80806a089770d6b485079d8eef26ea9f4c8bdf299132bdeb7d453ff0a79e`;
+- acmsmall: 50 pages, 513,338 bytes, SHA-256
+  `ef512c518ca8364fd8a41e54a2240256035a9c9a1fbd7fe898b823c3faf74f7c`.
+
+Confirmed visible defects:
+
+1. Reader page 39, TORS page 36, and acmsmall page 38 still say the work uses
+   only Amazon and omit GroupLens, despite eligible corrected source.
+2. TORS page 27 and acmsmall page 29 say "Fig. 2" for the resource-plane
+   direction shown as Figure 4; reader uses a different Figure 2 numbering.
+3. TORS reference pages 37/39 retain obsolete spectral-Figure-3 annotations,
+   although current Figure 3 is the tail-contrast composite.
+4. Acmsmall page 13 visibly clips the dataset table's Interactions column;
+   page 17's current-comparator table is severely cramped.
+5. TORS Figure 3 has 248 sub-4-point characters (minimum 1.636 pt); Figure 4
+   has 1,051 (minimum 1.038 pt). Redesign rather than relying on zoom; target
+   at least 7-8 pt at final placement.
+6. Author/institution/country/short-author placeholders remain. Acmsmall shows
+   dummy article/ISSN/DOI and January 2026 production furniture.
+
+The prior Type 3 font defect is resolved: TORS now uses Type0 fonts with
+ToUnicode, has 37 outlines and 471 links, and shows no out-of-page glyphs.
+However, TORS/acmsmall remain untagged. The reader is tagged and its body text is
+large enough, but it has zero outlines and zero link annotations. Add semantic
+structure, alt text, reading order, bookmarks, and live links. No black squares,
+broken images, or general overlap were found outside the acmsmall table.
+
+The isolated render directory was removed. Post-cutoff 22:13-22:14 rebuilt PDFs
+are explicitly excluded from this audit and cannot retroactively repair it.
+
+### Release and reproducibility gates
+
+At the cutoff:
+
+- HEAD Git-backed manifest: **PASS**, 647 entries;
+- claim/artifact map: **PASS**;
+- active result graph: 199 cells across 23 families (8 retired);
+- public release-only boundary: 407 assets, 9,489,409,339 bytes;
+- cutoff worktree manifest equality: **FAIL** for `PAPER_DRAFT.md`,
+  `PAPER_SUBMISSION.md`, and `_bestrec_run/emit_latex_tables.py`;
+- Table 0 generator equality: **FAIL** because authored/generated Table 0 is
+  ahead of the eligible generator;
+- closure ledger: **FAIL** because its manifest-epoch assertion expects a
+  `RELEASE_MANIFEST.json` marker absent from `paper_tex/build.ps1`;
+- candidate deposit: **FAIL**; code requires 928 payloads plus README and
+  SHA256SUMS = 930 entries, while README/instructions say 908;
+- final/tagged release: **FAIL**; no local/remote `v1.2.0-deposit` tag and
+  creator placeholders remain.
+
+The current manifest is 177,066 bytes, SHA-256
+`588896c92fc400296fcd31ec6137200c343305a849a4fa381f17f165d04a3a4d`.
+The stale ZIP remains 8,035,455 bytes, 908 entries, SHA-256
+`86223fa791666309fcd1f94dd2fcc388910d6f45b1d3d1b39cba14155e70564a`,
+and embeds an older 171,215-byte manifest with SHA-256 beginning `929db47d`.
+Do not publish it.
+
+Required sequence: freeze one canonical source/generator tree; correct false
+claims; rebuild tables/PDFs; prove a clean-clone strict replay; regenerate the
+930-entry candidate and matching manifest; fill creators/legal metadata; cut a
+new immutable version/tag; verify the exact archive; upload metadata/manifest
+last.
+
+### Evidence/source links used this run
+
+- [AlphaFuse primary preprint](https://arxiv.org/abs/2504.19218): null-space
+  representation method, published scope, and official code link.
+- [AlphaFuse SIGIR DOI](https://doi.org/10.1145/3726302.3729894): stable venue
+  record for bibliography completion.
+- [TV-Rec primary NeurIPS record](https://proceedings.neurips.cc/paper_files/paper/2025/hash/ed31c00af5238b649171d64718c92cb2-Abstract-Conference.html):
+  time-variant convolution replacing fixed filters/self-attention.
+- [TimeWeaver primary article](https://www.mdpi.com/2079-8954/13/10/857),
+  [HyenaRec primary preprint](https://arxiv.org/abs/2603.25027), and
+  [Mamba4Rec primary preprint](https://arxiv.org/abs/2403.03900): close modern
+  operator families requiring differentiation/baselines.
+- [Official Amazon Reviews 2014 data page](https://mcauleylab.ucsd.edu/public_datasets/data/amazon/index_2014.html):
+  official 5-core definition for the TIGER-attribution ambiguity.
+- [Official MovieLens 1M README](https://files.grouplens.org/datasets/movielens/ml-1m-README.txt):
+  rating fields, acknowledgment, endorsement, redistribution, and commercial
+  conditions.
+
+### Open questions requiring author verification
+
+1. Did any person/tool inspect TEST labels or outcomes while preparing the
+   combined E-E V3 export, before READY, or before adjudication?
+2. Was final AlphaFuse seed 8 ever resumed, and can an append-only event record
+   establish the answer despite mutable latest checkpoints?
+3. What inferential claim, if any, is intended for the Table 1 five-versus-six-
+   seed descriptive rungs, and where are the exact vectors/pairing records?
+4. Can the exact AlphaFuse private endpoints/sidecars/checkpoints and upstream/
+   MiniLM derivation be legally released or independently escrowed?
+5. Which actual preprocessing code produced the TIGER comparison dataset, given
+   the paper/source ambiguity about user-only versus user-and-item 5-core?
+6. What institutional decisions cover Amazon/MovieLens retention, derivative
+   redistribution, upstream code without a discovered license, and commercial
+   restrictions?
+7. Which current TORS identity, length, supplement, accessibility, ethics,
+   code/data, and artifact rules apply to the intended submission type?
+
+### Running checklist after this audit
+
+- [x] Freeze the 22:07 cutoff and exclude later source/PDF rebuilds.
+- [x] Verify 16/16 training, READY, 16/16 sealed assessments, and adjudication.
+- [x] Recompute AlphaFuse seed summaries, Welch contrasts, sidecar metrics, and
+  target-cluster geometry independently.
+- [x] Inventory/hash the complete private E-E V3 family.
+- [x] Identify false TEST-read, zero-init-control, resume, and public-hash claims.
+- [x] Audit eligible uncommitted source repairs and canonical-source drift.
+- [x] Render/inspect all eligible PDFs and remove the isolated render tree.
+- [x] Recheck manifest, graph, claim-map, Table 0, closure, and deposit gates.
+- [ ] Replace AlphaFuse TEST-read wording and name the zero-init control exactly.
+- [ ] Correct public graph/hash claims or supply verifiable endpoint bytes.
+- [ ] Run normal-init and equal-budget AlphaFuse factorial controls.
+- [ ] Add protocol-matched TV-Rec, Mamba4Rec/HyenaRec, and large-kernel baselines.
+- [ ] Regenerate/remove `PAPER_DRAFT.md`; add cross-source claim synchronization.
+- [ ] Finish Table 1 inference, MovieLens cohort, Ethics, TIGER, and AlphaFuse
+  bibliography corrections; commit one canonical source/generator state.
+- [ ] Add locks, per-child hashes, append-only resume lineage, balanced order,
+  sequestered logs, and external custody to future protocols.
+- [ ] Add true-bypass/optimized resource experiments and uncertainty-aware
+  cohort/head-mid-tail figures.
+- [ ] Repair clipping, cross-references, stale notes, tiny chart text, metadata,
+  tagging, navigation, and links; rerender and inspect every page.
+- [ ] Pass clean-clone replay and create the 930-entry deposit with real creators
+  and a matching immutable tag/version.
+
+## Audit Run - 2026-07-30 16:07 Australia/Sydney
+
+### Audit boundary and change assessment
+
+- Fixed worktree boundary: `2026-07-30T16:07:10.543+10:00`
+  (`2026-07-30T06:07:10.543Z`). Later live-campaign writes are excluded.
+- Branch: `codex/bestrec-sota-results`.
+- HEAD, upstream, and merge base remain identical at
+  `f7c9c551d313de07b433545ed4887400ed4f4d98` (`Freeze clean AlphaFuse E-E V3
+  campaign`). No commit or tracked manuscript, bibliography, code, protocol,
+  result, table, figure, PDF, or release artifact changed since 10:06.
+- The only tracked modification is this cumulative audit. Ignored private
+  campaign and QA/tmp material remain outside the public evidence boundary.
+- No manuscript, result, PDF, release payload, or campaign file was edited.
+  This run updates only this audit and the automation memory.
+
+### Executive verdict and acceptance calibration
+
+**Recommendation: reject in present form / major redevelopment before a
+top-journal submission.** No admissible result or public-package repair occurred.
+This run confirms an invalid statistical-inference shortcut in headline Table 1,
+an inadequately handled close comparator (TV-Rec), and a mismatch between the
+AlphaFuse preregistered resume claim and its implementation.
+
+Subjective conditional calibration, not a journal statistic:
+
+- **Literal package now: below 1%.** Author/creator placeholders, dummy
+  production metadata, false Ethics and TEST statements, visible PDF defects,
+  citation/protocol errors, and a failed deposit create desk-rejection risk.
+- **After administrative, ethics, release, citation, and factual repairs only:
+  about 3-7% direct top-journal acceptance.** These repairs do not establish a
+  strong novelty margin or a positive prospective cross-domain effect.
+- **After protocol-matched current baselines, population-honest temporal
+  evaluation, valid uncertainty/contrast reporting, a true operator bypass,
+  and falsification-centered framing: about 10-18%.**
+- **With independent or externally custodied temporal/non-Amazon replication:
+  about 15-25% eventual acceptance.**
+
+Fifteen completed training bundles are operational progress, not a scientific
+result; the estimate therefore remains unchanged.
+
+### AlphaFuse E-E V3 fixed-cutoff state: 15/16 training, 0/16 assessment
+
+The last eligible status record was written at 14:32:07.864 local, has SHA-256
+`268e32f0335de7cdf508e0e2d223ea4b29be144a72c84ca6e880fe04094de6cd`, and
+states:
+
+- `protocol=PREREG_EE_V3`;
+- `repository_commit=f7c9c551...`;
+- `state=training`;
+- `training_complete=15` of 16;
+- `assessment_complete=0` of 16; and
+- `errors=[]`.
+
+Exactly all eight `alphafuse_package` and seven `sasrec_id` terminals were
+eligible. Final control seed `20262208` had an eligible STARTED record at
+14:32:09.920. Its first best/latest checkpoints appeared after the fixed cutoff
+at about 16:08:24 and are excluded. No outcome, log, metric, checkpoint content,
+or post-cutoff file was used for inference.
+
+All 16 STARTED records pass the exact current identity checks. All 15 terminal
+records pass exact schema, frozen identity, TEST-unread state, and recorded
+best-checkpoint digest checks. The frozen upstream/data/input set passes all
+10 expected hashes; the upstream checkout is at `b501a054...` and tracked-clean.
+These are integrity checks only.
+
+There was no eligible family READY, assessment-start seal, endpoint JSON,
+per-user sidecar, completion record, or `ee_v3_adjudication.json`. **The frozen
+stop rule therefore prohibits endpoint reading: no statistic, direction, trend,
+comparison, or verdict is admissible.** Wait for 16/16 terminal bundles,
+exclusive hash-bound READY, all 16 sealed assessments, completion, and frozen
+adjudication.
+
+The eligible private inventory comprises 62 files and 811,366,557 bytes:
+16 STARTED JSONs, 15 best checkpoints, 15 latest checkpoints, 15 terminal JSONs,
+and one 2,084,649-byte frozen input NPZ. The 61 campaign files total
+809,281,908 bytes; their canonical sorted `name<TAB>bytes<TAB>sha256` digest is
+`28c21d88d82d05c028b0d07266293771b5fe0bf4a2b783fb638ab727d4ed8b45`.
+The input NPZ has SHA-256 beginning `57d201...`. The active seed's post-cutoff
+checkpoint writes are not imported retrospectively.
+
+#### Confirmed protocol mismatch: claimed checkpoint validation is not implemented
+
+The preregistration says an interrupted attempt resumes only from a hash- and
+schema-validated latest checkpoint. In practice, `run_ee_v3.py:98-112` loads
+`latest.pt` with `weights_only=False`, checks only five identity fields, and
+then consumes model, optimizer, and RNG state. It neither requires an exact key
+set nor verifies a file digest. Terminal/READY construction validates and binds
+the terminal JSON plus selected best checkpoint, but not the mutable latest
+checkpoint (`ee_v3_common.py:459-520`).
+
+This does not void the 15 completed records by itself, but it means the stated
+lifecycle guarantee is false and a resumed run has a wider tampering/corruption
+surface than disclosed. Before any future campaign: exact-schema validate the
+checkpoint before deserialization; bind a create-new digest record to each
+epoch snapshot; use `weights_only=True` or a data-only state format where
+possible; include the resume lineage in terminal, READY, completion, and
+adjudication; and fail closed on any mismatch.
+
+Other confirmed limitations persist: training/evaluation order is arm-major;
+the entire treatment arm preceded controls, confounding resource comparisons
+with clock time, background load, and thermal history. There is no exclusive
+campaign/seed process lock, STARTED chronology depends on mutable filesystem
+mtime, and source cleanliness is checked only once by the driver. Both arms use
+zero ID initialization although the upstream SASRec default is normal. Rename
+the control as a zero-init port and preregister a separate normal-init official
+control. For future work, counterbalance seed blocks, sequester VALID logs,
+rehash source bytes per child, use append-only states, and add process locks.
+
+### Confirmed headline statistical-inference defect
+
+`paper_tex/tables/table1.tex:14-15` describes the label-smoothing and FIR gains
+as **"bands non-overlapping."** Yet `paper_tex/sections/05-results.tex:4`
+defines those displays as mean plus/minus sample standard deviation. Sample-SD
+bands describe seed dispersion; they are not confidence intervals and their
+non-overlap is not a named hypothesis test. The FIR row also compares a
+six-seed full-model arm with a five-seed prior arm, making the visual shortcut
+especially difficult to interpret.
+
+This is a confirmed reporting defect, not proof that either effect is absent.
+The paper currently does not provide the exact vectors, matching structure,
+estimand, standard error, CI, test, or multiplicity treatment needed to support
+the inference implied by that wording. The NIST mean-CI construction uses the
+standard error, `s/sqrt(n)`, and a Student-t critical value; it is distinct from
+mean plus/minus `s`.
+
+Required repair:
+
+1. Export exact per-seed arm vectors and initialization/checkpoint pairing.
+2. Predeclare the contrast. Use paired differences only for genuinely matched
+   seeds/backbone initializations; otherwise name and justify a Welch or other
+   independent-arm analysis.
+3. Report effect, standard error, two-sided CI, degrees of freedom, exact sample
+   sizes, a smallest effect of interest, and multiplicity handling across the
+   ablation family. With `n=5/6`, also show every point and a robust sensitivity.
+4. Replace "bands non-overlapping" with descriptive text until the valid
+   contrast exists. Do not equate CI overlap/non-overlap with a significance
+   decision.
+
+### Novelty and baseline audit: TV-Rec is too close for a name-only citation
+
+The primary NeurIPS 2025 TV-Rec record describes time-variant convolutional
+filters that replace fixed convolution kernels and self-attention, with reported
+efficiency/effectiveness evaluation across six benchmarks. The current TeX
+related-work section gives TV-Rec only a name in a dense list
+(`paper_tex/sections/02-related.tex:70`); the Markdown spine does not provide an
+equivalent mechanism-level comparison. This does not prove that the exact
+identity-initialized, left-causal FIR residual before HSTU is already known.
+It does make broad filtering, convolution, attention replacement, or efficiency
+novelty untenable without differentiation and a matched baseline.
+
+Add a compact comparator matrix covering fixed versus input/time-varying
+filters, causality, receptive field, channel sharing, identity initialization,
+attention/HSTU coexistence, asymptotic and realized compute, evaluator, datasets,
+and custody. Implement a protocol-matched TV-Rec baseline or narrow the claim to
+the specific realization and audit/falsification framework. Apply the same
+treatment to the already missing TimeWeaver, HyenaRec, ConvRec, and Mamba4Rec;
+avoid a citation laundry list.
+
+### Persistent scientific, writing, algorithm, and figure repairs
+
+- **[CONFIRMED] MovieLens chronology/estimand:** acquisition constructed and
+  hashed TEST and used the future target for known-catalog eligibility. Say
+  training processes did not score/read the preconstructed TEST split; do not
+  claim TEST was never opened/hashed. Freeze cohort/catalog pre-cutoff, score
+  out-of-catalog targets as misses or publish coverage, and add rolling cutoffs.
+- **[CONFIRMED] External validity:** R4 retains 1,033/6,040 official users and
+  the all-rating view 1,129/6,040; audited top-10 success is head-only. Add a
+  cohort-flow figure and paired uncertainty by head/mid/tail target group.
+- **[CONFIRMED] Necessity wording:** Markdown says the evidence rejects
+  per-channel necessity, while the data support only failure to establish it.
+  Synchronize the cautious TeX wording across abstract, introduction,
+  discussion, conclusion, tables, and PDFs.
+- **[CONFIRMED] Efficiency:** identity/shared/grouped/learned all execute the
+  operator and report 404,352 FLOPs/user. Treat the result as coefficient
+  compression, add a true bypass/off arm and optimized structured kernels, and
+  measure model bytes plus counterbalanced latency, throughput, peak memory,
+  and energy distributions rather than single point estimates.
+- **[CONFIRMED] WEARec:** the local comparison uses official model/loss code in
+  a custom harness, transferred presets, and unequal tuning history. Rename and
+  demote it; run equal-information, equal-budget, matched-evaluator baselines.
+- **[CONFIRMED] Ethics/governance:** Ethics and acknowledgments still say only
+  Amazon despite central MovieLens use. State acquired versus consumed data,
+  fields, access, storage, retention/deletion, GroupLens acknowledgment, and
+  redistribution/commercial-use constraints; obtain institutional/legal review.
+- **[CONFIRMED] Citation/protocol:** correct TIGER/LIGER preprocessing
+  equivalence and change LIGER first author from `Yang, J.` to Liu Yang.
+- **[PLAUSIBLE RISK] Journal contribution:** after corrections, the strongest
+  defensible contribution may be a rigorous negative/transfer audit rather than
+  a generally effective new recommender. Rewrite the abstract around question,
+  frozen contrasts, bounded findings, failed transfer, and limitations.
+- **[AUTHOR VERIFICATION]** State whether anyone/tool read AlphaFuse VALID logs,
+  whether parallel trainers were launched, whether freeze/tag evidence was
+  independently timestamped, and what licenses/permissions cover upstream code
+  and data derivatives.
+
+### PDF and submission-readiness audit
+
+All canonical PDFs are byte-identical to the 10:06 audit and contain no
+AlphaFuse result:
+
+- reader: 51 pages, 1,578,576 bytes, SHA-256
+  `DE2CECF8328339CE3FB92BE3DF10BF203A3FD24DC825A432D3A26D6A5F6DF6C6`;
+- TORS: 46 pages, 498,481 bytes, SHA-256
+  `B93B8FAF5C843EECCEEB8EE1D815E02F5FF243CA43DAF1A4A8A696F0D7C5AC84`;
+- acmsmall: 47 pages, 505,995 bytes, SHA-256
+  `2191F10C0041F2F9CAE688EDE5F440F03E2665F5B54449384CC139243ACB9AA9`.
+
+Confirmed visible defects remain: acmsmall page 12 clips the dataset table's
+Interactions column; reader calls the resource plane Figure 2 while venue
+editions caption it Figure 4 and still say "Fig. 2" nearby; venue bibliography
+pages retain stale spectral notes for the now-unrelated Figure 3; author,
+institution, country, short-author, DOI, volume, and date placeholders remain;
+and Ethics/acknowledgments still omit MovieLens/GroupLens. Rebuild labels and
+bibliography notes from one canonical source, split/landscape the clipped table,
+and complete a page-by-page edition-diff check.
+
+Accessibility is not submission-ready. The reader is tagged but has no
+outlines, destinations, or live links. TORS/acmsmall are untagged and retain six
+Type 3 plot-font resources with very small plot labels. Add semantic structure,
+alt text, reading order, bookmarks/links, embedded TrueType/OpenType fonts, and
+at least 7-8-point labels at final size. The isolated PDF render tree was
+removed; no project artifact was edited.
+
+### Release and reproducibility gates
+
+At the unchanged HEAD, read-only gates report:
+
+- Git-backed manifest: **PASS**, 646 entries;
+- claim/artifact map: **PASS**;
+- Table 0 claim ledger: **PASS**;
+- result graph: unchanged at 198 cells across 22 families;
+- candidate deposit: **FAIL only** because
+  `DOI_DEPOSIT_INSTRUCTIONS.md` states the wrong entry count instead of 929;
+- final publication: additionally blocked by creator placeholders and absence
+  of a matching `v1.2` tag (only `v1.1.11-deposit` exists).
+
+The local manifest remains 176,914 bytes, SHA-256 beginning `de318093...`.
+The stale local v1.2 ZIP still has 908 entries and embeds a 171,215-byte
+manifest with SHA-256 beginning `929db47d...`. The public boundary is 407
+assets totaling 9,489,409,339 bytes. Do not publish the ZIP. First repair the
+paper and replay chain, regenerate the 929-entry candidate once, verify it in a
+fresh clone, add real creators, and cut a matching immutable version/tag.
+
+### Evidence/source links used this run
+
+- [NIST confidence limits for a mean](https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm):
+  Student-t mean intervals use `s/sqrt(n)`, not sample SD bands.
+- [TV-Rec primary NeurIPS 2025 record](https://proceedings.neurips.cc/paper_files/paper/2025/hash/ed31c00af5238b649171d64718c92cb2-Abstract-Conference.html):
+  time-variant convolutional filters, attention/fixed-kernel replacement, and
+  reported efficiency/effectiveness scope.
+- [Official MovieLens 1M README](https://files.grouplens.org/datasets/movielens/ml-1m-README.txt):
+  dataset identity, acknowledgment, redistribution, and commercial-use terms.
+
+### Open questions requiring author verification
+
+1. Are the Table 1 arms matched by seed and backbone initialization, and where
+   are the exact vectors and declared contrast?
+2. Did any author/tool inspect AlphaFuse VALID output or launch a competing
+   trainer, and can access/process logs support the answer?
+3. Was the AlphaFuse freeze independently timestamped before execution, and
+   what exact upstream/data/MiniLM/license bundle will permit lawful replay?
+4. What exact novelty survives a mechanism-level comparison with TV-Rec,
+   TimeWeaver, HyenaRec, ConvRec, Mamba4Rec, and C3SASR?
+5. Which MovieLens archive members were retained/read/deleted, under what
+   security and institutional permissions?
+6. Which current TORS identity, length, supplement, accessibility, ethics,
+   data/code, and artifact rules apply to the intended article type?
+
+### Running checklist after this audit
+
+- [x] Freeze the 16:07 boundary and exclude later campaign writes.
+- [x] Verify AlphaFuse is 15/16 training and 0/16 assessment with no result.
+- [x] Validate eligible STARTED/terminal identities and checkpoint bindings.
+- [x] Identify the resume hash/schema mismatch against the preregistration.
+- [x] Audit the Table 1 SD-band inference and fact-check mean-CI construction.
+- [x] Fact-check TV-Rec and assess its novelty/baseline implication.
+- [x] Reverify release gates and byte-identical PDFs; remove temporary renders.
+- [ ] Complete 16/16 training, READY, all sealed assessments, completion, and
+  frozen adjudication before reading or reporting AlphaFuse.
+- [ ] Replace Table 1 band language with exact vectors and a valid declared
+  contrast, CI/test, effect threshold, and multiplicity treatment.
+- [ ] Add a mechanism-level comparator matrix and protocol-matched current
+  baselines, including TV-Rec and the other missing close operators.
+- [ ] Correct Ethics, MovieLens TEST/cohort, necessity, WEARec, TIGER/LIGER,
+  LIGER authorship, and efficiency wording in both source paths.
+- [ ] Implement future campaign locks, per-child source hashes, exact-schema/
+  digest-validated append-only resumes, balanced order, and log sequestration.
+- [ ] Add a normal-init SASRec control and a true operator-bypass efficiency arm.
+- [ ] Repair PDF clipping, numbering, stale notes, metadata, tiny/Type 3 labels,
+  tags, links, and accessibility; rerender and inspect every page.
+- [ ] Resolve data/code licenses, obtain institutional decisions, and manually
+  verify the target journal's live rules.
+- [ ] Regenerate the 929-entry deposit with real creators and a matching tag.
+
+## Audit Run - 2026-07-30 10:06 Australia/Sydney
+
+### Audit boundary and change assessment
+
+- Fixed worktree boundary: `2026-07-30T10:06:34.369+10:00`
+  (`2026-07-30T00:06:34.369Z`). Later AlphaFuse writes are excluded and cannot
+  be imported retrospectively.
+- Branch: `codex/bestrec-sota-results`.
+- HEAD, upstream, and merge base remain identical at
+  `f7c9c551d313de07b433545ed4887400ed4f4d98` (`Freeze clean AlphaFuse E-E V3
+  campaign`). There was no commit and no tracked manuscript, bibliography,
+  code, protocol, result, figure, table, PDF, or release change after 04:07.
+- The only tracked modification is this cumulative audit. The mtime of derived
+  `_bestrec_run/hstu_tables.json` was refreshed by the preceding read-only gate,
+  but it is byte-identical to HEAD. Live private campaign files and ignored
+  QA/tmp trees remain outside the public evidence boundary.
+- No manuscript, result, figure, PDF, release payload, or live campaign file
+  was edited. This run updates only this audit and automation memory.
+
+### Executive verdict and acceptance calibration
+
+**Recommendation: reject in present form / major redevelopment before a
+top-journal submission.** The public package did not change, so none of the
+desk, factual, scientific, or visual blockers was repaired. This run adds a
+current literature-coverage risk (ConvRec and Mamba4Rec) and a confirmed LIGER
+citation-metadata error. It also restores the unresolved TIGER/LIGER protocol
+attribution to the current priority list.
+
+Subjective conditional calibration, not a journal statistic:
+
+- **Literal package now: below 1%.** Author/creator placeholders, false Ethics
+  and TEST statements, dummy metadata, citation/protocol errors, and a failed
+  deposit make it unsuitable for submission.
+- **After administrative, ethics, release, citation, and factual repairs only:
+  about 3-7% direct top-journal acceptance.** These repairs remove desk risks
+  but do not create a positive prospective cross-domain result or a strong
+  novelty margin.
+- **After fair modern baselines, population-honest temporal evaluation, true
+  operator-bypass efficiency evidence, and falsification-centered framing:
+  about 10-18%.**
+- **With independent or externally custodied temporal/non-Amazon replication:
+  about 15-25% eventual acceptance.**
+
+Thirteen completed training bundles are not a result and do not change this
+calibration.
+
+### AlphaFuse E-E V3 fixed-cutoff state: 13/16 training, 0/16 assessment
+
+The last eligible status record was written at 07:37:08 local, has SHA-256
+`b71466f3097a23fb89b9b59f464aca65ea5c92ba1155df1ad1cfcdbce82e359e`, and
+states:
+
+- `protocol=PREREG_EE_V3`;
+- `repository_commit=f7c9c551...`;
+- `state=training`;
+- `training_complete=13` of 16;
+- `assessment_complete=0` of 16; and
+- `errors=[]`.
+
+Exactly eight `alphafuse_package` and five `sasrec_id` terminal bundles were
+eligible. Control seed `20262206` started at 07:37:14 and remained active. Its
+best checkpoint existed by 09:59:29, but no terminal JSON existed at the
+boundary, so it is not a completed bundle. No metric, log, checkpoint content,
+TEST endpoint, or post-cutoff artifact was used for inference.
+
+Non-outcome integrity checks passed: all 14 STARTED records have the exact
+frozen schema/state, and all 13 terminals have the exact schema,
+`training_complete_test_unread`, `test_read_or_scored=false`, the frozen commit,
+and a terminal checkpoint digest matching the corresponding best file. Runtime
+identity is uniform across terminals (Python 3.12.13, torch 2.11.0+cu128,
+NumPy 2.4.4, pandas 3.0.3, CUDA 12.8, RTX 5060 Ti, Windows 11).
+
+There was no eligible family READY, assessment JSON/start seal/per-user
+sidecar, completion record, or adjudication. **There is therefore no authorized
+TEST evaluation, result, direction, trend, or arm comparison.** Reporting must
+wait for 16/16 terminals, exclusive hash-bound READY, all 16 sealed
+assessments, completion, and frozen adjudication.
+
+The eligible cutoff inventory is exactly 55 files (716,947,503 bytes): one
+frozen input NPZ, 14 STARTED JSONs, 13 terminal JSONs, 14 best checkpoints, and
+13 latest checkpoints. Its canonical sorted
+`relative-path|mtime-UTC|length|sha256` digest is
+`2b3f26c99cb15739a25e742efa20c1b01d3f28eb0ca64f9ad1980708ce36b595`.
+The active sixth control had no eligible latest checkpoint at the cutoff; a
+later file at that path is excluded. Because the resume path is overwritten
+rather than append-only, intermediate state cannot be reconstructed reliably
+across arbitrary cutoffs. Use append-only epoch snapshots or a hash-chained
+journal in a future protocol.
+
+The internal freeze chronology and present source cleanliness remain coherent,
+but they do not prove independent preregistration or non-access to plaintext
+VALID output. The treatment arm completed entirely before controls, so any
+resource contrast remains confounded with calendar order, thermal history,
+background load, and mutable machine state. Do not modify this live study;
+counterbalance arms, sequester logs, lock the campaign, and rehash sources in a
+separate future sensitivity.
+
+There is also no family/process lock. A second runner may accept an existing
+STARTED record and resume the same mutable checkpoint, allowing concurrent
+drivers to race best/latest writes and terminal creation. Add OS-level campaign
+and per-seed locks with PID/host/start metadata and fail when a live owner
+exists. Current local ACLs allow the user and Codex sandbox identities to modify
+private artifacts; there is no signed append-only access log or independent
+custodian. Thus "first authorized reader" is a code convention, not verifiable
+blinding. Use a separate evaluator account, encrypted write-only endpoint
+store, signed event ledger, and independent custody for a future study.
+
+Public replay remains incomplete: the ignored AlphaFuse checkout is not a
+submodule/deposit payload; tracked `uv.lock`/`pyproject` are absent from the
+release inventory; and private input/embedding derivations are hash-declared
+but not reconstructible from the deposit. Add an acquisition/build script,
+upstream commit archive plus license, lock/container/GPU determinism record,
+and a lawful immutable input or independently reproducible derivation.
+
+### New and restored literature/protocol findings
+
+#### New close current line: ConvRec
+
+[ConvRec](https://arxiv.org/html/2605.04723v2), reported by its authors as
+accepted at IJCAI-ECAI 2026, proposes attribute-aware sequential recommendation
+with hierarchical strided one-dimensional convolution, gradual down-scaling,
+and weighted average-pool/progressive residual paths. It claims linear sequence
+complexity and evaluates runtime/memory as well as accuracy. It is not the same
+mechanism as a position-preserving, identity-initialized left-causal depthwise
+FIR residual before HSTU. It is nevertheless close enough that a 2026 top-
+journal submission cannot present convolutional sequence modeling or efficient
+convolutional recommendation as adequately covered without it.
+
+Required action: add ConvRec to the comparator matrix; distinguish sequence-
+length down-scaling versus same-length causal filtering, attributes, causality,
+residual construction, backbone, complexity, and evaluation geometry. Either
+run a faithful equal-protocol comparator or state clearly why only literature-
+level differentiation is supplied.
+
+#### New modern baseline gap: Mamba4Rec
+
+[Mamba4Rec](https://arxiv.org/html/2403.03900v2) uses Conv1d inside a selective
+state-space block, reports MovieLens 1M and Amazon results, and includes GPU
+memory/training/inference measurements. It is not a priority collision with the
+specific FIR residual, but it is a material modern sequence-operator and
+efficiency baseline. Its absence weakens claims that the chosen HSTU/SASRec
+comparators adequately locate the accuracy-efficiency frontier.
+
+Add at least a literature comparison and, for an efficiency-centered paper,
+an equal-protocol Mamba/SSM baseline with identical input information,
+candidate scoring, search budget, seeds, and hardware measurement protocol.
+Together with TimeWeaver and HyenaRec from the prior audit, this reinforces a
+specific-realization/evaluation novelty claim rather than broad convolution or
+filter novelty.
+
+#### Persistent false TIGER/LIGER preprocessing equivalence
+
+The manuscript repeatedly says its iterative user-and-item 5-core/LLOO pipeline
+"matches TIGER and LIGER" (`PAPER_SUBMISSION.md:28,58,79,125` and TeX mirrors).
+The primary [TIGER NeurIPS paper](https://proceedings.neurips.cc/paper_files/paper/2023/file/20dcab0f14046a5c6b02b61da9f13229-Paper-Conference.pdf)
+states that it filters users with fewer than five reviews, uses last/penultimate
+test/validation holdouts, and caps training history at 20; it does not state an
+item 5-core filter. The primary [LIGER record](https://arxiv.org/html/2411.18814v2)
+states that it removes items with fewer than five users and users with fewer
+than five interactions, caps histories at 20, and uses the same holdout order.
+
+This is a confirmed attribution error, not a subtle implementation difference.
+Replace "matches TIGER and LIGER" with a dimension-by-dimension statement:
+holdout chronology resembles both; user-and-item k-core resembles LIGER, not
+the TIGER paper; dataset vintage, deduplication, max-history treatment,
+candidate set, and evaluator remain different. Add a preprocessing comparison
+table and treat TIGER numbers as non-comparable rather than protocol-matched.
+
+#### New LIGER citation metadata error and minor C3SASR source drift
+
+`paper_tex/references.bib:313-318` and `PAPER_SUBMISSION.md:748` identify the
+LIGER first author as `Yang, J.`. The [primary arXiv record](https://arxiv.org/abs/2411.18814)
+lists **Liu Yang** followed by 13 coauthors. Correct to `Yang, Liu`, preferably
+include the full author list, and add the stable arXiv URL/DOI. The reader PDF
+does contain the C3SASR reference, so no missing-reference claim is warranted;
+however, Markdown's closest-filtering sentence lacks an inline author-year
+citation while TeX supplies `\citep`, another symptom of source drift.
+
+### Persistent scientific and writing blockers
+
+#### MovieLens TEST chronology, cohort, and interpretation
+
+Acquisition constructed and hashed TEST and used the future target for
+eligibility before training. The defensible statement is that training
+processes did not read the already-constructed TEST split or score it,
+checkpoint selection was VALID-only, and model scoring began after training.
+Correct the stronger false statement in both editions.
+
+The target-conditioned known-catalog cohort retains 1,033/6,040 users (17.1%)
+in R4 and 1,129/6,040 (18.7%) in the all-rating view; audited top-10 success is
+head-only. Freeze population/catalog pre-cutoff, count out-of-catalog targets
+as misses or publish coverage, add rolling cutoffs, and show cohort-flow plus
+head/mid/tail uncertainty.
+
+#### Ethics and acknowledgments
+
+The rendered paper still says it uses only Amazon and thanks only Amazon even
+though MovieLens is central. The code retained the full MovieLens ZIP privately
+but extracted/read only `ratings.dat` for the study. Distinguish acquired/
+retained bytes from consumed fields; state storage, access, retention/deletion,
+and security; acknowledge GroupLens; and state the official nonredistribution
+and commercial-use conditions. Reconcile Ethics, acknowledgments,
+availability, release inventory, and institutional/legal review.
+
+#### Necessity, WEARec, and optimization language
+
+Replace Markdown's "reject per-channel necessity" with "do not support" or
+"cannot attribute uniquely to per-channel taps." Relabel WEARec as official
+model/loss inside a custom data/training/evaluation harness and provide an
+equal-budget modern comparison.
+
+MovieLens identity/shared/grouped/learned each report 404,352 FLOPs/user;
+low-rank reports 404,416. That is coefficient compression, not compute
+reduction. Add a compiled bypass/off arm, kernels that avoid dense expansion,
+cached streaming inference, and counterbalanced repeated measurements of
+operations, model bytes, latency distributions, throughput, memory, and energy.
+Plot paired differences/CIs and the noninferiority margin rather than truncated
+point means.
+
+### PDF, figure, citation, and submission-readiness audit
+
+All canonical PDFs are unchanged:
+
+- reader: 51 pages, 1,578,576 bytes, SHA-256
+  `DE2CECF8328339CE3FB92BE3DF10BF203A3FD24DC825A432D3A26D6A5F6DF6C6`;
+- TORS: 46 pages, 498,481 bytes, SHA-256
+  `B93B8FAF5C843EECCEEB8EE1D815E02F5FF243CA43DAF1A4A8A696F0D7C5AC84`;
+- acmsmall: 47 pages, 505,995 bytes, SHA-256
+  `2191F10C0041F2F9CAE688EDE5F440F03E2665F5B54449384CC139243ACB9AA9`.
+
+Target rendering reconfirms:
+
+1. Acmsmall page 12 visibly loses the Interactions header and MovieLens
+   interaction/event text beyond the right MediaBox. Rebuild with a true width-
+   constrained table, a split table, or landscape layout.
+2. TORS page 27 and acmsmall page 26 call captioned Figure 4 "Fig. 2." Replace
+   hard-coded numbering with generated references and test every edition.
+3. Reader page 37 and venue page 35 visibly print the Amazon-only Ethics/
+   acknowledgment contradiction immediately after MovieLens material.
+4. Venue reference pages 36/38 retain obsolete notes tying current Figure 3 to
+   the retired spectral analysis. Delete or retarget the notes.
+5. Real-author/institution/country/short-author placeholders remain; acmsmall
+   retains dummy January 2026 publication furniture.
+6. Venue PDFs remain untagged, each has six Type 3 plot-font resources, and key
+   labels render at roughly 2.6-3.9 points. Re-export with embedded
+   TrueType/OpenType fonts and at least 7-8-point final-size labels. The reader
+   is tagged but has no outlines or live links.
+
+The isolated PDF render directory was removed; no project artifact was edited.
+
+### Release and reproducibility gates
+
+No tracked release file changed. Read-only verification at `f7c9c551...`
+continues to pass the Git-backed manifest, result graph, claim/artifact map, and
+Table 0 gates. The candidate deposit remains blocked by the documented
+908-versus-required-929 entry count (927 payloads plus README and
+SHA256SUMS); final publication additionally fails real-creator and matching-tag
+requirements. The current manifest is 176,914 bytes, SHA-256
+`de3180935d81dcb10f478a526b34df360ba7a12b6a0bb9681a40d2c2d2469b02`.
+The existing 8,035,455-byte ZIP has 908 entries, SHA-256
+`86223fa791666309fcd1f94dd2fcc388910d6f45b1d3d1b39cba14155e70564a`,
+and embeds a stale 171,215-byte manifest with SHA-256
+`929db47dc7b305473de68747bc7ba14fa39c91fd02307de2b2be910699814cbc`.
+Do not publish it. Stabilize the campaign/manuscript, prove fresh-clone replay,
+regenerate the inventory once, cut a new matching immutable version rather
+than moving an old tag, and upload metadata and manifest last.
+
+### Evidence/source links used this run
+
+- [ConvRec primary paper](https://arxiv.org/html/2605.04723v2): hierarchical
+  convolutional down-scaling, weighted residual paths, attributes, and the
+  authors' IJCAI-ECAI 2026 acceptance statement.
+- [Mamba4Rec primary paper](https://arxiv.org/html/2403.03900v2): selective SSM
+  with Conv1d and MovieLens/Amazon effectiveness-efficiency evaluation.
+- [TIGER NeurIPS paper](https://proceedings.neurips.cc/paper_files/paper/2023/file/20dcab0f14046a5c6b02b61da9f13229-Paper-Conference.pdf):
+  user-only stated filtering, leave-one-out chronology, and history cap 20.
+- [LIGER primary paper](https://arxiv.org/html/2411.18814v2): user-and-item
+  5-core filtering, max history 20, and holdout chronology.
+- [LIGER arXiv metadata](https://arxiv.org/abs/2411.18814): Liu Yang and 13
+  coauthors, arXiv-issued DOI `10.48550/arXiv.2411.18814`.
+- [C3SASR primary preprint](https://arxiv.org/abs/2211.01297): cheap causal
+  convolution inside self-attentive sequential recommendation.
+- [Official MovieLens 1M README](https://files.grouplens.org/datasets/movielens/ml-1m-README.txt):
+  identity, acknowledgment, redistribution, commercial-use, and warranty terms.
+
+### Open questions requiring author verification
+
+1. Did any author/tool read AlphaFuse VALID output before family completion,
+   and can access/process logs support the answer?
+2. Was any second trainer launched, or any campaign source edited/reverted
+   during the long-running process?
+3. Which MovieLens archive members/fields were retained, accessed, or deleted,
+   under what security and retention policy?
+4. What exact preprocessing dimensions are shared with TIGER and LIGER, and
+   will all protocol-equivalence language be corrected?
+5. After systematic review, what specific novelty remains relative to
+   TimeWeaver, HyenaRec, ConvRec, Mamba4Rec, C3SASR, and AdaMCT?
+6. What institutional/legal decision covers data derivatives and upstream code
+   where no affirmative license was found?
+7. What are the current TORS rules for identity, length, supplement,
+   accessibility, code/data, ethics, and artifacts?
+
+### Running checklist after this audit
+
+- [x] Freeze the 10:06 boundary and exclude later live artifacts.
+- [x] Verify AlphaFuse status is 13/16 training, 0/16 assessment, no result.
+- [x] Record the mutable-latest/intermediate-state reconstruction limitation.
+- [x] Fact-check ConvRec, Mamba4Rec, TIGER, LIGER, and LIGER authorship.
+- [x] Re-run/reconfirm manifest, graph, claim-map, Table 0, and deposit gates.
+- [x] Re-hash/target-render the PDFs and remove the isolated render directory.
+- [ ] Complete 16/16 training, READY, 16 sealed assessments, completion, and
+  frozen adjudication before reading/reporting AlphaFuse.
+- [ ] Correct TIGER/LIGER protocol statements and LIGER author metadata.
+- [ ] Cite/differentiate TimeWeaver, HyenaRec, ConvRec, and Mamba4Rec; add fair
+  modern sequence-operator baselines.
+- [ ] Rewrite Ethics/acknowledgments for Amazon and MovieLens, including
+  acquired versus consumed data, retention, security, and permissions.
+- [ ] Correct TEST chronology, target-conditioned cohort disclosure, and
+  per-channel-necessity wording in both source paths.
+- [ ] Correct WEARec provenance and add equal-budget current baselines.
+- [ ] Add a true operator bypass and optimized/counterbalanced resource tests.
+- [ ] Add future AlphaFuse source rehashing, lock, append-only state, balanced
+  order, log sequestration, and normal-init sensitivity.
+- [ ] Fix PDF clipping, numbering, obsolete notes, tiny/Type 3 labels, tags,
+  metadata, and citations; rerender and inspect every page.
+- [ ] Reopen falsely complete phase-ledger items and bind them to gates.
+- [ ] Resolve data/code license questions and manually verify TORS rules.
+- [ ] Regenerate the 929-entry deposit with real creators and a matching tag.
+
+## Audit Run - 2026-07-30 04:07 Australia/Sydney
+
+### Audit boundary and change assessment
+
+- Fixed worktree boundary: `2026-07-30T04:07:16.4523494+10:00`
+  (`2026-07-29T18:07:16.4523494Z`). Later writes from the live AlphaFuse
+  process are excluded and cannot be imported retrospectively.
+- Branch: `codex/bestrec-sota-results`.
+- HEAD, upstream, and merge base are identical at
+  `f7c9c551d313de07b433545ed4887400ed4f4d98` (`Freeze clean AlphaFuse E-E V3
+  campaign`). No tracked manuscript, code, protocol, result, figure, table,
+  bibliography, PDF, or release artifact changed since the 22:06 audit.
+- The only tracked modification remains this cumulative audit. Ignored QA/tmp
+  material and live private campaign files are outside the public evidence
+  boundary.
+- No manuscript, result, figure, PDF, release payload, or live campaign file
+  was edited. This run updates only this audit and automation memory.
+
+### Executive verdict and acceptance calibration
+
+**Recommendation: reject in present form / major redevelopment before a
+top-journal submission.** No new result is admissible. This run adds one
+material novelty problem: two close convolutional sequential-recommendation
+lines, TimeWeaver and HyenaRec, are absent from the manuscript. The exact FIR
+realization may still differ, but the omission makes broad novelty language
+unsafe and reinforces an incremental algorithm/evaluation interpretation.
+
+Subjective conditional calibration, not a journal statistic:
+
+- **Literal package now: below 1%.** Author/creator placeholders, false Ethics
+  and TEST statements, dummy publication metadata, and the failed deposit are
+  desk-rejection conditions.
+- **After administrative, ethics, release, and factual wording repairs only:
+  about 3-7% direct top-journal acceptance.** Those fixes do not create a
+  positive prospective cross-domain result or a strong algorithmic novelty
+  margin.
+- **After fair current baselines, population-honest temporal evaluation, true
+  operator-bypass efficiency evidence, and falsification-centered framing:
+  about 10-18%.**
+- **With independent or externally custodied temporal/non-Amazon replication:
+  about 15-25% eventual acceptance.**
+
+The estimate is unchanged from 22:06. More training terminals are operational
+progress, not scientific evidence.
+
+### AlphaFuse E-E V3 fixed-cutoff state: 11/16 training, 0/16 assessment
+
+The last eligible status record was written at 01:36:28 local, has SHA-256
+`11e77764e17179bb48fb2db6d90cd90690eb8f2c3e256a3ac870f1b478859451`, and
+states:
+
+- `protocol=PREREG_EE_V3`;
+- `repository_commit=f7c9c551...`;
+- `state=training`;
+- `training_complete=11` of 16;
+- `assessment_complete=0` of 16; and
+- `errors=[]`.
+
+Exactly eight `alphafuse_package` and three `sasrec_id` terminal bundles were
+eligible. Control seed `20262204` started at 01:36:30 and remained active. Its
+best checkpoint existed by 04:04:43, but no terminal JSON existed, so it is not
+a completed training bundle. All 11 terminals use the frozen schema and state
+`training_complete_test_unread`, assert `test_read_or_scored=false`, bind the
+frozen commit/upstream identity, and have selected-checkpoint hashes that match
+their files. These are non-outcome integrity checks; no metric, log, checkpoint
+content, TEST endpoint, or post-cutoff artifact was used for inference.
+
+There was no `EEV3_FAMILY_READY.json`, assessment JSON/start seal/per-user
+sidecar, completion record, or adjudication. **Therefore there is no authorized
+TEST evaluation, result, direction, trend, or arm comparison.** Reporting must
+wait for 16/16 terminals, exclusive hash-bound READY, 16 sealed assessments,
+completion, and frozen adjudication.
+
+The logical cutoff inventory comprised 48 paths: 12 STARTED JSONs, 11 terminal
+JSONs, 12 best checkpoints, 12 latest checkpoints, and one private input NPZ.
+Only 47 cutoff files (609,045,273 bytes) remain reconstructible now because the
+active seed's `latest.pt` is atomically overwritten by later epochs; its exact
+cutoff byte stream is already unrecoverable. This is not an outcome leak, but
+it is a confirmed audit/custody limitation. A future protocol should use
+append-only epoch state or a hash-chained journal rather than a mutable resume
+file.
+
+The internal chronology remains coherent: freeze commit 03:30:12, remote-ref
+push 03:30:48, campaign creation 03:31:07, and first STARTED record 03:31:18 on
+29 July local time. Frozen tracked files currently match HEAD. This supports
+internal pre-execution freezing; it is not an independent timestamp,
+cryptographic blinding, or proof that accessible VALID logs were unread.
+
+### New close-literature and novelty check
+
+The manuscript does not mention either of the following close lines:
+
+1. [TimeWeaver (Systems, 2025)](https://www.mdpi.com/2079-8954/13/10/857)
+   describes a sequential recommender with a residual size-adaptive
+   large-kernel depthwise-convolution module (DOI
+   `10.3390/systems13100857`).
+2. [HyenaRec / Hyena Operator for Fast Sequential Recommendation](https://arxiv.org/abs/2603.25027)
+   describes polynomial convolution kernels with gated convolutions and lists
+   the WWW 2026 DOI `10.1145/3774904.3792716`.
+
+These sources do **not** by themselves show that the paper's exact left-causal
+FIR tap parameterization, HSTU integration, identity-control suite, or audit
+protocol is already known. They do show that convolutional/filtering sequence
+operators and efficient long-kernel recommendation are not a new general idea.
+Accordingly:
+
+- remove or narrow any broad claim to the first convolutional/filtering
+  sequential recommender;
+- add a comparator matrix covering kernel construction, causality, gating,
+  adaptivity, backbone, complexity, initialization/control, datasets, and
+  evaluation protocol;
+- test the proposed realization against these mechanisms or faithful
+  adaptations under equal data, search budget, backbone, and seeds; and
+- frame novelty as a specific modular realization plus unusually strict
+  evaluation/falsification evidence, not convolution itself.
+
+This is a **confirmed related-work coverage omission** and a **plausible
+novelty/priority risk** until the authors complete a broader systematic search.
+
+### Persistent factual, methodological, and writing blockers
+
+#### Ethics, acknowledgment, and retained-data scope
+
+The visibly rendered Ethics section says the work uses only Amazon Reviews
+2023, while MovieLens appears immediately elsewhere in the paper; the
+acknowledgments thank Amazon only. The MovieLens acquisition downloads and
+retains the complete ML-1M ZIP in private storage, then extracts/reads only
+`ratings.dat` fields needed for user, movie, rating, and timestamp processing.
+The study code does not extract/read demographics or movie metadata, but the
+retained archive itself contains additional records. Do not conflate consumed
+fields with acquired/retained bytes.
+
+Required repair:
+
+1. add separate Amazon and MovieLens Ethics/data-governance paragraphs;
+2. name the archive acquired, file/fields actually read, private retention
+   location/class, access controls, deletion schedule, and whether unused
+   archive members will be removed;
+3. cite Harper--Konstan and acknowledge GroupLens;
+4. state the official no-redistribution and permission-before-commercial-use
+   conditions; and
+5. reconcile Ethics, acknowledgments, availability, release inventory, and
+   institutional/legal review.
+
+The [official ML-1M README](https://files.grouplens.org/datasets/movielens/ml-1m-README.txt)
+is the controlling source for the dataset description, acknowledgment,
+nonredistribution, commercial-use permission, and warranty limitations.
+
+#### False TEST chronology and target-conditioned cohort
+
+The result says every checkpoint finished before any TEST file was opened or
+hashed. Acquisition had already selected the post-cutoff target, conditioned
+eligibility on its presence in the training-derived catalog, wrote TEST, and
+hashed it. The defensible claim is narrower:
+
+> All 96 training processes completed without reading the preconstructed TEST
+> split or scoring TEST; checkpoint selection used VALID only, and model
+> scoring on TEST began after training completed.
+
+The primary R4 cohort retains 1,033/6,040 official users (17.1%); the
+all-rating cohort retains 1,129/6,040 (18.7%). All audited primary top-10 hits
+are head-item hits. Call this a target-conditioned known-catalog temporal
+cohort. Redesign with population/catalog frozen pre-cutoff, out-of-catalog
+targets counted as misses or explicit coverage, rolling cutoffs, and a
+cohort-flow plus head/mid/tail uncertainty figure.
+
+#### Unsupported causal/necessity wording
+
+Markdown still says the result "reject[s] per-channel necessity" while TeX is
+more cautious. Nonsignificant learned-versus-structured contrasts and
+conditional noninferiority cannot establish absence or necessity. Use "do not
+support per-channel necessity" or "cannot attribute the effect uniquely to
+per-channel taps," and generate all editions from one canonical sentence.
+
+#### WEARec baseline fairness
+
+The pinned official WEARec model/loss is embedded in custom data,
+optimization, checkpoint-selection, and evaluation code. Two transferred
+presets and a one-seed tuning choice are not a fair current comparison against
+the richer HSTU/text/FIR package. Relabel provenance exactly, remove it from
+headline evidence, and run either the official harness or a matched-backbone,
+equal-information, equal-search-budget, multi-seed comparison.
+
+#### Algorithm/resource optimization
+
+MovieLens identity/shared/grouped/learned each report 404,352 FLOPs/user;
+low-rank reports 404,416. Identity still executes the convolution, and
+structured forms expand/execute channelwise. This demonstrates coefficient
+compression, not compute reduction.
+
+For a defensible optimization claim, add a true compiled `off` arm, structured
+kernels that avoid dense expansion, cached/ring-buffer streaming inference,
+and paired repeated measurements of full-model operations, serialized and
+trainable bytes, latency distribution, throughput, peak/allocated memory, and
+energy over batch sizes, sequence lengths, and hardware. Counterbalance arm
+order and plot paired deltas/CIs plus the noninferiority margin.
+
+### AlphaFuse protocol guidance
+
+The driver is arm-major: every treatment finished before controls. Therefore
+arm is confounded with calendar time, thermal history, device/background load,
+and mutable-system state for any resource comparison. Per-epoch VALID output
+is accessible in a mutable campaign log; whether a human/tool read or adapted
+to it remains author verification.
+
+Source cleanliness is checked once by the long-lived driver. Per-seed children
+validate upstream/data identities but do not re-attest every live campaign
+source byte; no exclusive campaign lock prevents a second direct trainer. No
+current drift was observed. A later protocol should use a clean read-only
+worktree/container, acquire an exclusive lock, rehash dependencies before each
+child, alternate/randomize arms within matched seed blocks, sequester logs,
+and bind append-only histories into READY and release.
+
+Both arms use zero ID initialization. `sasrec_id` is therefore not upstream-
+default normal-initialization SASRec. Do not retrofit the active study; disclose
+the comparator and preregister a separate normal-init sensitivity. Public
+replay also needs exact upstream checkout/license, lawful data acquisition,
+MiniLM reconstruction, locked environment/container, and released aggregate
+or rank evidence.
+
+### PDF, figure, citation, and submission-readiness audit
+
+All three PDFs are byte-identical to 22:06:
+
+- reader: 51 pages, 1,578,576 bytes, SHA-256
+  `DE2CECF8328339CE3FB92BE3DF10BF203A3FD24DC825A432D3A26D6A5F6DF6C6`;
+- TORS: 46 pages, 498,481 bytes, SHA-256
+  `B93B8FAF5C843EECCEEB8EE1D815E02F5FF243CA43DAF1A4A8A696F0D7C5AC84`;
+- acmsmall: 47 pages, 505,995 bytes, SHA-256
+  `2191F10C0041F2F9CAE688EDE5F440F03E2665F5B54449384CC139243ACB9AA9`.
+
+Target rendering confirms:
+
+1. The false "only Amazon" Ethics sentence and Amazon-only acknowledgment are
+   visibly printed on reader page 37, TORS page 35, and acmsmall page 35.
+2. Acmsmall page 12 has 65 Datasets-table glyphs up to 28.9163 points outside
+   the MediaBox; this is the only out-of-box page across all 144 PDF pages.
+3. TORS page 27 captions Figure 4 while prose calls it Fig. 2; acmsmall page 26
+   repeats the wrong reference.
+4. Venue page 36 bibliography notes falsely link current Figure 3 to spectral
+   irreducibility/optimal shrinkage.
+5. TORS/acmsmall are untagged and each contains six Type 3 plot resources.
+   Figure 4 labels are predominantly below 3 points at rendered venue scale.
+6. The reader is tagged but has zero outlines, named destinations, annotations,
+   or live links. Author/short-author placeholders and acmsmall's dummy
+   production furniture persist.
+
+Fix source labels rather than hard-coded numbers, rebuild the table to actual
+column width, replace Type 3/raster text with embedded vector fonts, design for
+at least readable journal-scale labels, tag the submission PDF, and visually
+inspect every page. Correct the AlphaFuse BibTeX entry to the full SIGIR 2025
+record, pages 1614-1623, DOI `10.1145/3726302.3729894`. Compress the abstract
+and conclusion around question, design, decisive positive/negative result, and
+scope; move custody/release ledgers to a supplement.
+
+### Release and reproducibility gates
+
+Read-only gates at `f7c9c551...`:
+
+- release manifest versus Git: **PASS**, 646 Git-backed entries;
+- result graph: **PASS**, 198 cells, zero mismatch/untraceable, 22 families;
+- claim/artifact map: **PASS**;
+- Table 0 quantitative ledger: **PASS**;
+- candidate deposit: **FAIL only** because `DOI_DEPOSIT_INSTRUCTIONS.md`
+  declares an entry count different from 929; and
+- final deposit: **FAIL** on that count, creator placeholders, and a deposit
+  tag/version that does not match HEAD.
+
+The local manifest is 176,914 bytes, SHA-256
+`de3180935d81dcb10f478a526b34df360ba7a12b6a0bb9681a40d2c2d2469b02`.
+The existing 908-entry ZIP embeds a stale 171,215-byte manifest rather than the
+current 929-entry inventory. Do not publish it. Stabilize the campaign and
+manuscript, repair creators/count/version, demonstrate fresh-clone replay,
+rebuild the archive once, and upload matching metadata/manifest last.
+
+### Evidence/source links used this run
+
+- [TimeWeaver publisher record](https://www.mdpi.com/2079-8954/13/10/857):
+  residual size-adaptive large-kernel depthwise convolution in a sequential
+  recommender; DOI `10.3390/systems13100857`.
+- [HyenaRec primary arXiv record](https://arxiv.org/abs/2603.25027): polynomial
+  convolution kernels and gated convolutions for sequential recommendation;
+  WWW 2026 DOI `10.1145/3774904.3792716`.
+- [Official MovieLens 1M README](https://files.grouplens.org/datasets/movielens/ml-1m-README.txt):
+  data identity, acknowledgment, nonredistribution, commercial-use permission,
+  and warranty boundaries.
+- [AlphaFuse DOI record](https://doi.org/10.1145/3726302.3729894): complete
+  SIGIR 2025 citation identity and close language/ID fusion comparator.
+- [Official WEARec AAAI article](https://ojs.aaai.org/index.php/AAAI/article/view/38640):
+  close frequency-aware line; it does not validate fairness of the custom
+  harness.
+- [ACM TORS scope](https://www.acm.org/binaries/content/assets/press-releases/2022/march/tors-launch.pdf):
+  supports an evaluation/protocol framing, not relaxed evidence standards.
+- [Current TORS author guidelines](https://dl.acm.org/journal/tors/author-guidelines):
+  manual verification remains required because automated access returned 403.
+
+### Open questions requiring author verification
+
+1. Did any author/tool read AlphaFuse VALID output before family completion,
+   and can access/process logs support the answer?
+2. Was any second trainer launched outside the driver, or any campaign source
+   edited/reverted during the long run?
+3. Exactly which MovieLens archive members/fields were retained, accessed, or
+   deleted, under what security and retention policy?
+4. Has GroupLens been acknowledged, and does any redistribution/commercial use
+   have the required permission?
+5. What institutional/legal decision covers Amazon derivatives and upstream
+   WEARec/AlphaFuse code where no license was found?
+6. What are the current TORS rules for author identity, length, supplement,
+   accessibility, code/data, ethics, and artifacts?
+7. After a systematic search, what exact claim remains novel relative to
+   TimeWeaver, HyenaRec, WEARec, AlphaFuse, and other 2025-2026 systems?
+
+### Running checklist after this audit
+
+- [x] Freeze the 04:07 boundary and exclude later live artifacts.
+- [x] Verify 11/16 AlphaFuse terminals, zero assessment, no READY/result.
+- [x] Verify the cutoff-time mutable-latest reconstruction limitation.
+- [x] Check TimeWeaver and HyenaRec against the novelty narrative.
+- [x] Re-run manifest, result-graph, claim-map, Table 0, and deposit gates.
+- [x] Re-hash/target-render all PDFs and remove the isolated render directory.
+- [ ] Complete 16/16 training, READY, 16 sealed assessments, completion, and
+  frozen adjudication before reading/reporting AlphaFuse.
+- [ ] Cite/differentiate TimeWeaver and HyenaRec and narrow novelty claims.
+- [ ] Rewrite Ethics/acknowledgments for Amazon and MovieLens, including
+  acquired versus consumed data, retention, security, and permissions.
+- [ ] Correct TEST chronology, target-conditioned cohort disclosure, and
+  per-channel-necessity wording in both source paths.
+- [ ] Correct WEARec provenance and add equal-budget current baselines.
+- [ ] Add true operator bypass and optimized, counterbalanced resource tests.
+- [ ] Add future AlphaFuse source rehashing, lock, append-only state, balanced
+  order, log sequestration, and normal-init sensitivity.
+- [ ] Fix PDF clipping, numbering, stale notes, tiny/Type 3 labels, tags,
+  metadata, and citations; rerender and inspect every page.
+- [ ] Reopen falsely complete phase-ledger items and bind them to gates.
+- [ ] Resolve data/code license questions and manually verify TORS rules.
+- [ ] Regenerate the 929-entry deposit with real creators and a matching tag.
+
+## Audit Run - 2026-07-29 22:06 Australia/Sydney
+
+### Audit boundary and change assessment
+
+- Fixed worktree boundary: `2026-07-29T22:06:13.5672454+10:00`
+  (`2026-07-29T12:06:13.5672454Z`). Files created or modified later were
+  excluded; in particular, later live AlphaFuse checkpoints cannot be imported
+  retrospectively into this section.
+- Branch: `codex/bestrec-sota-results`.
+- HEAD, upstream, and merge base remain identical at
+  `f7c9c551d313de07b433545ed4887400ed4f4d98` (`Freeze clean AlphaFuse E-E V3
+  campaign`). No tracked manuscript, code, protocol, result, figure, table,
+  bibliography, PDF, or release file changed since 16:06.
+- The only tracked modification is this cumulative audit. A derived
+  `hstu_tables.json` timestamp was refreshed by the prior audit, but its tracked
+  content is unchanged. Ignored QA/tmp and private live-campaign files remain
+  outside the public evidence boundary.
+- No manuscript, source, result, figure, PDF, release payload, or live campaign
+  file was edited. Only this audit and automation memory are updated.
+
+### Executive verdict and acceptance calibration
+
+**Recommendation: reject in present form / major redevelopment before a
+top-journal submission.** AlphaFuse remains pre-result. More importantly, this
+run found a new direct manuscript contradiction: the Ethics section says the
+work uses only Amazon Reviews 2023 although MovieLens 1M is now central to the
+paper. The false TEST chronology, future-target-conditioned MovieLens cohort,
+WEARec provenance overstatement, weak compute claim, literal placeholders,
+failed deposit, and PDF defects also remain unchanged.
+
+Subjective conditional calibration, not a journal statistic:
+
+- **Literal package now: below 1%.** The package is not submission-ready while
+  real authors/creators, ethics/data disclosure, true TEST chronology, dummy
+  metadata, and a passing deposit are absent.
+- **After administrative, ethics, release, and wording repairs only: about
+  3-7% direct top-journal acceptance.** Those repairs remove desk-rejection
+  triggers but do not create a positive prospective cross-domain result.
+- **After fair current baselines, a population-honest temporal study, a true
+  operator-bypass efficiency experiment, and falsification-centered framing:
+  about 10-18%.**
+- **With independent or externally custodied temporal/non-Amazon replication:
+  about 15-25% eventual acceptance.**
+
+The estimate is unchanged. Completing additional training jobs is not a result
+and does not raise acceptance probability.
+
+### AlphaFuse E-E V3 fixed-cutoff state: 10/16 training, 0/16 assessment
+
+The last eligible status record was written at 21:19:18 local and states:
+
+- `protocol=PREREG_EE_V3`;
+- `repository_commit=f7c9c551...`;
+- `state=training`;
+- `training_complete=10` of 16;
+- `assessment_complete=0` of 16; and
+- `errors=[]`.
+
+The ten terminals are all eight `alphafuse_package` seeds and the first two
+`sasrec_id` seeds. Control seed `20262203` acquired its STARTED record at
+21:19:19 but had no eligible terminal/checkpoint at the boundary. The eligible
+private inventory contained 41 files: 11 STARTED JSONs, ten terminal JSONs, ten
+best checkpoints, and ten latest checkpoints. It contained zero family READY,
+assessment/evaluation, completion/DONE, or adjudication artifacts.
+
+Non-outcome schema checks are favorable: all ten terminal records have the
+frozen 17-field schema, state `training_complete_test_unread`, and
+`test_read_or_scored=false`; all bind the frozen commit, and every declared
+best-checkpoint hash matches its file. STARTED records bind the same commit and
+state `training_started_test_unread`; the prepared input says
+`contains_test_fields=false`, and its input/source hashes match. No metric
+field, training log, checkpoint content, TEST endpoint, or post-cutoff file was
+used for inference.
+
+**Admissible conclusion: there is still no AlphaFuse result, direction, trend,
+or arm comparison.** Reporting must wait for all 16 terminals, the exclusive
+hash-bound family READY record, all 16 sealed assessments, completion state,
+and frozen mechanical adjudication.
+
+The internal chronology remains clean: freeze commit at 03:30:12, remote-ref
+push at 03:30:48, campaign creation at 03:31:07, and first STARTED record at
+03:31:18. HEAD/upstream/merge base match, and the nine frozen protocol/source
+files are currently tracked and clean. This supports internal pre-execution
+freezing; it is not independent registration or proof of non-access.
+
+### AlphaFuse operational and optimization guidance
+
+#### Arm-major training and assessment
+
+The frozen iterator loops arm before seed. Every treatment training therefore
+completed before the first control began; the evaluation loop is also arm-
+major. This creates a confirmed order/resource limitation:
+
+- arm is perfectly confounded with calendar time, thermal history, background
+  load, and device aging/state;
+- elapsed time, throughput, memory, and energy cannot be interpreted as
+  randomized arm effects; and
+- plaintext per-epoch VALID values are available before family completion.
+
+No tracked evidence establishes human metric access or adaptive intervention;
+that remains author verification. Do not alter the live V3. In a new frozen
+sensitivity, randomize or alternate arms within matched seed blocks, use a
+quiet isolated device with matched warm-up, repeat resource profiling in
+counterbalanced order, and sequester logs until family completion.
+
+#### Per-child integrity and history binding
+
+The driver checks source cleanliness once at preflight, while later children do
+not re-attest every live source byte. No drift is currently observed, but a
+mid-campaign edit/revert would not be captured by the long-lived preflight.
+Per-epoch histories remain in a mutable ignored log; terminals retain only
+selected-best summaries.
+
+For the next protocol, execute from a read-only detached clone/container,
+acquire an exclusive campaign lock, hash every frozen dependency immediately
+before each child, record those hashes in every lifecycle artifact, and bind an
+exclusive full training-history JSON into READY/release. Add path-specific
+gradient/update/tap-norm checks rather than merely proving that some model
+gradient exists.
+
+#### Comparator and public replay
+
+Both arms use zero ID initialization; `sasrec_id` is therefore a zero-initialized
+128-dimensional SASRec-ID control, not upstream-default normal-initialized
+SASRec. Any eventual estimate remains a whole-package contrast involving text,
+representation, initialization, capacity, and allocation. Freeze a separate
+normal-initialization control sensitivity later; do not retrofit it into V3.
+
+The upstream tree, exact Amazon pickles, MiniLM cache, environment, checkpoints,
+and future endpoints are not reconstructible from a public clone, and no
+explicit upstream license was found. Supply an exact acquisition/checkout/hash
+bootstrap, locked environment/container, deterministic MiniLM reconstruction,
+and lawful aggregate/rank release before treating the result as reproducible.
+
+### New confirmed rejection risk: Ethics falsely says “only Amazon”
+
+`PAPER_SUBMISSION.md:655` and `paper_tex/sections/10-ethics.tex:4` begin:
+
+> This work uses only the public, pseudonymized Amazon Reviews 2023 dataset.
+
+That is false. MovieLens 1M is reported in the abstract, dataset table,
+experiments, results, discussion, conclusion, availability section,
+`CITATION.cff`, and `.zenodo.json`. The acquisition code reads
+`ratings.dat` fields `UserID`, `MovieID`, `Rating`, and `Timestamp`; it does not
+need the optional demographic file for the reported study. The Ethics text is
+therefore materially stale, not merely incomplete attribution.
+
+The [official MovieLens 1M README](https://files.grouplens.org/datasets/movielens/ml-1m-README.txt)
+confirms 1,000,209 ratings from 6,040 users and requires acknowledgement,
+prohibits redistribution without separate permission, and requires permission
+before commercial/revenue-bearing use. It also disclaims correctness and
+suitability. The paper cites Harper--Konstan elsewhere and the availability
+section says record-level artifacts are private, but neither cures an Ethics
+section that expressly excludes MovieLens.
+
+Required rewrite:
+
+1. use separate Amazon and MovieLens subsections;
+2. state exactly which fields/files were consumed and that MovieLens
+   demographics were not used, if author verification confirms this;
+3. give the official Harper--Konstan citation and explicit acknowledgement;
+4. state the no-redistribution and permission-before-commercial-use conditions;
+5. distinguish public aggregate evidence from private MovieLens rows/splits/
+   checkpoints/endpoints/sidecars; and
+6. re-review institutional/venue requirements rather than assuming public data
+   alone settles ethics or legal compliance.
+
+Acknowledgments should also thank GroupLens. Run a source-level consistency
+gate that fails if any dataset in the experiment/availability ledgers is absent
+from Ethics and acknowledgments.
+
+### Other persistent factual and scientific blockers
+
+#### False MovieLens TEST chronology
+
+`PAPER_SUBMISSION.md:356` and TeX results lines 83--84 say every checkpoint was
+trained before any TEST file was opened or hashed. Acquisition had already
+selected the first post-cutoff target, conditioned eligibility on its catalog
+membership, written TEST, and hashed it before training. Replace this with:
+
+> All 96 training processes completed without reading the already-constructed
+> TEST CSV or scoring TEST; checkpoint selection used VALID only, and TEST
+> model scoring began after all training completed.
+
+The narrower wording at `PAPER_SUBMISSION.md:246` is closer but should not say
+TRAIN+VALID maps were constructed “without opening or hashing TEST bytes” if
+cohort construction itself already consumed the future target.
+
+#### Future-target-conditioned MovieLens estimand
+
+The preprocessor retains users only if the future TEST target is in the
+training-derived catalog. The R4 view retains 1,033/6,040 users (17.1%); the
+all-rating view retains 1,129/6,040 (18.7%). Previously audited per-user records
+show all primary top-10 success is head-only. Call this a
+“target-conditioned known-catalog temporal cohort,” not population-wide
+temporal generalization.
+
+Fix the design by freezing population/catalog solely from pre-cutoff data,
+counting out-of-catalog targets as misses or reporting coverage, adding a
+cohort-flow/coverage figure, running multiple rolling cutoffs, and reporting
+head/mid/tail denominators and user/item-cluster uncertainty.
+
+#### Unsupported “reject per-channel necessity” wording
+
+Markdown line 35 still says the results “reject per-channel necessity.” The TeX
+introduction correctly says unique necessity is not established. Null
+separation and conditional noninferiority cannot prove non-necessity. Use “do
+not support per-channel necessity” in every source and generate both editions
+from one canonical sentence.
+
+#### WEARec provenance and fairness
+
+The local port imports the official WEARec model/loss, but custom code defines
+the dataset, loader, optimizer, training/validation loop, checkpoint selection,
+and evaluator. Thus “official-code run” and “official model/training code” are
+overstated. Use:
+
+> Pinned official WEARec model, loss, and recipe executed in our custom data,
+> optimization, checkpoint-selection, and evaluation harness.
+
+The arithmetic is exact but only two transferred presets and one tuning seed
+were used, with unequal inputs, architecture, loss, schedule, and tuning budget
+relative to the paper's package. Demote it from the abstract or make it a fair
+official-harness/matched-backbone, equal-budget comparison.
+
+#### Novelty and journal-fit boundary
+
+[AlphaFuse](https://doi.org/10.1145/3726302.3729894) already studies language/
+ID fusion through a null-space construction, and
+[WEARec](https://ojs.aaai.org/index.php/AAAI/article/view/38640) is a close
+frequency-aware sequential-recommendation line. The present contribution is
+incremental as an algorithm. Its stronger TORS fit is the bounded negative/
+protocol/audit evidence: ACM's published TORS scope explicitly welcomes new
+evaluation methods and protocols as well as algorithms. Reframe the title,
+abstract, and contribution ledger around what the audit apparatus teaches and
+what failed, not a general FIR efficacy claim.
+
+The live [TORS author-guidelines page](https://dl.acm.org/journal/tors/author-guidelines)
+returned HTTP 403 to automated inspection, so exact current length,
+single-blind metadata, supplement, accessibility, and artifact rules remain
+author-verification items. Do not rely solely on stale local `VENUE_PLAN.md`.
+
+### Algorithm optimization guidance
+
+The MovieLens profiler reports identical `404,352` FLOPs/user for identity,
+shared, grouped, and learned; low-rank reports `404,416`. Identity still
+executes a zero depthwise convolution and structured arms expand/execute across
+all channels. Parameter-count reduction is real, but compute reduction is not.
+
+For a publishable optimization claim:
+
+1. add a true compiled bypass/off arm;
+2. implement shared/grouped/low-rank kernels without dense expansion;
+3. benchmark streaming inference with a K-step ring buffer and cached state;
+4. report analytic operator/full-model operations, serialized bytes,
+   trainable/total parameters, throughput, latency distributions, peak and
+   allocated memory, and energy;
+5. use counterbalanced paired measurements across seeds, batch sizes, sequence
+   lengths, catalog sizes, warm-up regimes, CPU/GPU types, and repeated blocks;
+6. plot paired deltas/CIs and the noninferiority margin rather than truncated
+   point means; and
+7. gate “efficient FIR” behind a positive learned-versus-off effect.
+
+### PDF, writing, figure, and citation audit
+
+The PDFs are byte-identical to 16:06:
+
+- reader: 51 pages, 1,578,576 bytes, SHA-256
+  `DE2CECF8328339CE3FB92BE3DF10BF203A3FD24DC825A432D3A26D6A5F6DF6C6`;
+- TORS: 46 pages, 498,481 bytes, SHA-256
+  `B93B8FAF5C843EECCEEB8EE1D815E02F5FF243CA43DAF1A4A8A696F0D7C5AC84`;
+- acmsmall: 47 pages, 505,995 bytes, SHA-256
+  `2191F10C0041F2F9CAE688EDE5F440F03E2665F5B54449384CC139243ACB9AA9`.
+
+Confirmed persistent defects:
+
+1. Acmsmall page 12 has 65 Datasets-table glyphs up to 28.9 points outside
+   the MediaBox, clipping Interactions values and train rows.
+2. TORS page 27 and acmsmall page 26 say “Fig. 2” for resource-plane Figure 4;
+   the reader calls it Figure 2, so editions are not cross-synchronized.
+3. Venue bibliography pages 36/38 misdescribe current Figure 3 as a spectral-
+   irreducibility/optimal-shrinkage graphic.
+4. Author/institution/country/short-author placeholders remain; acmsmall shows
+   dummy volume/article/January-2026/blank-DOI production furniture.
+5. TORS/acmsmall are untagged and contain six Type 3 plot resources with very
+   small labels. The tagged reader has zero outlines, destinations, or links.
+6. The AlphaFuse TeX BibTeX entry gives only “SIGIR”; the verified record is
+   *Proceedings of SIGIR 2025*, pages 1614--1623, DOI
+   `10.1145/3726302.3729894`. The Markdown reference already has the DOI,
+   creating source drift.
+
+The Markdown manuscript has about 22,161 whitespace tokens and a 213-token
+abstract. The paper remains unusually dense because long custody, screening,
+failure, and release narratives sit in the main body. Move machine ledgers and
+protocol histories to a supplement; retain in the paper only the estimand,
+prospectivity class, primary uncertainty, decisive failure, and inference
+boundary. Rebuild from one source, use label-based cross-references, make the
+table responsive, replace Type 3 fonts, enlarge plot labels, tag the venue PDF,
+and inspect every rendered page.
+
+### Release and reproducibility gates
+
+Read-only checks at `f7c9c551...`:
+
+- release manifest versus Git: **PASS**, all 646 Git-backed entries;
+- claim/artifact map: **PASS**;
+- Table 0 quantitative claim ledger: **PASS**;
+- candidate deposit: **FAIL only on the documented inventory count**--expected
+  929 entries (927 payloads plus README/SHA256SUMS), while docs/current ZIP say
+  and contain 908;
+- final deposit: would also fail creator placeholders and a missing/stale
+  `v1.2.0-deposit` declaration; no `v1.2.0*` tag exists.
+
+The local manifest is 176,914 bytes, SHA-256
+`de3180935d81dcb10f478a526b34df360ba7a12b6a0bb9681a40d2c2d2469b02`.
+The 908-entry ZIP embeds an older 171,215-byte manifest (`929db47d...`) even
+though its outer sidecar matches the stale ZIP. Do not publish it. After the
+campaign/manuscript reaches a stable boundary, update the 929-entry docs,
+replace creators, regenerate the exact inventory, pass fresh-clone gates, cut a
+new immutable version/tag, rebuild normal mode, and upload matching metadata/
+manifest last.
+
+### Evidence/source links used this run
+
+- [Official MovieLens 1M README](https://files.grouplens.org/datasets/movielens/ml-1m-README.txt):
+  exact population, fields, acknowledgement, nonredistribution, commercial-use
+  permission, and warranty boundaries.
+- [AlphaFuse SIGIR record/DOI](https://doi.org/10.1145/3726302.3729894): close
+  language/ID null-space fusion comparator and complete citation identity.
+- [Official WEARec AAAI article](https://ojs.aaai.org/index.php/AAAI/article/view/38640):
+  close frequency-aware line; it does not validate fairness of this custom
+  harness.
+- [ACM description of TORS scope](https://www.acm.org/binaries/content/assets/press-releases/2022/march/tors-launch.pdf):
+  TORS explicitly welcomes algorithms, systems, and new evaluation methods/
+  protocols; this supports a protocol/audit framing but does not relax evidence
+  standards.
+- [Current TORS author-guidelines URL](https://dl.acm.org/journal/tors/author-guidelines):
+  manual verification required because automated access returned 403.
+
+### Open questions requiring author verification
+
+1. Did any author/tool read AlphaFuse per-epoch or terminal VALID metrics before
+   family completion, and can access/process logs support the answer?
+2. Were any direct second trainers launched outside the driver, and can an
+   exclusive-process record be produced?
+3. Did the MovieLens study read only `ratings.dat`, with no demographics/title/
+   genre fields, and will the Ethics statement say so exactly?
+4. Has GroupLens acknowledgement been included, and has any contemplated
+   redistribution or commercial use received the required permission?
+5. What institutional/legal decision covers Amazon derivatives and upstream
+   WEARec/AlphaFuse code with no discovered license?
+6. What are the live TORS rules for author identity, length, supplementary
+   material, accessibility, code/data, ethics, and artifacts?
+
+### Running checklist after this audit
+
+- [x] Fix the audit boundary and exclude post-cutoff/live outcome files.
+- [x] Verify AlphaFuse has 10/16 training terminals, zero assessment, no READY,
+  and no admissible result.
+- [x] Re-run release-manifest, claim-map, Table 0, and candidate-deposit checks.
+- [x] Re-hash and target-render all three unchanged PDFs; remove render temp.
+- [ ] Complete 16/16 training, READY, 16/16 sealed assessment, completion, and
+  frozen adjudication before reading/reporting AlphaFuse.
+- [ ] Rewrite Ethics/acknowledgments for Amazon **and** MovieLens, with exact
+  fields, citations, permissions, redistribution, and commercial-use limits.
+- [ ] Correct the false TEST chronology in Markdown and TeX.
+- [ ] Disclose target-conditioned retention, official denominator, coverage,
+  and head-only top-10 outcome; redesign the temporal estimand.
+- [ ] Replace “reject per-channel necessity” with a bounded non-causal claim.
+- [ ] Correct WEARec provenance and run equal-budget fair baselines.
+- [ ] Add a true operator-bypass and optimized/resource-balanced experiment.
+- [ ] In a future AlphaFuse protocol, add balanced order, log sequestration,
+  campaign lock, per-child hashes, full histories, and normal-init sensitivity.
+- [ ] Fix clipping, cross-edition numbering, stale bibliography annotations,
+  AlphaFuse metadata, Type 3 fonts, tiny labels, placeholders, and PDF tags.
+- [ ] Reopen falsely completed phase-audit items and bind completion to gates.
+- [ ] Resolve all dataset/code license questions and manually verify TORS rules.
+- [ ] Regenerate the 929-entry deposit with creators at a stable final tree and
+  cut a new matching version/tag.
+
+## Audit Run - 2026-07-29 16:06 Australia/Sydney
+
+### Audit boundary and change assessment
+
+- Fixed worktree boundary: `2026-07-29T16:06:21.2285073+10:00`
+  (`2026-07-29T06:06:21.2285073Z`). Files created or modified after that
+  instant were excluded even if the live campaign subsequently advanced.
+- Branch: `codex/bestrec-sota-results`.
+- HEAD, upstream, and merge base are identical at
+  `f7c9c551d313de07b433545ed4887400ed4f4d98` (`Freeze clean AlphaFuse E-E V3
+  campaign`). This is the same public commit audited at 10:06.
+- No tracked manuscript, code, protocol, result, figure, table, bibliography,
+  PDF, or release file changed between the two audits. The only tracked change
+  was this cumulative audit; untracked/ignored campaign and QA files are not
+  silently treated as public evidence.
+- No manuscript, model, result, figure, PDF, release payload, or live campaign
+  artifact was edited. Only this audit and the automation memory are updated.
+
+### Executive verdict and acceptance calibration
+
+**Recommendation: reject in present form / major redevelopment before a
+top-journal submission.** The live AlphaFuse campaign has completed all eight
+treatment trainings, but no control has terminated and no TEST assessment has
+begun. It therefore supplies no result. The manuscript and release package are
+otherwise unchanged and retain literal metadata blockers, two falsifiable
+claims, an externally negative central test, an unequal contemporary-baseline
+comparison, an undeployable efficiency claim, and visible PDF/release defects.
+
+Subjective conditional calibration, not a journal statistic:
+
+- **Literal package now: below 1%.** Author/creator placeholders,
+  `DRAFT_WAIVER=1`, dummy production metadata, false TEST chronology, and the
+  failed deposit gate make the package non-submittable.
+- **After clerical, release, and wording repairs only: about 3-7% direct
+  top-journal acceptance.** The central prospective non-Amazon experiment is
+  still negative and the positive Amazon evidence is narrow/outcome-known.
+- **After fair current baselines, population-honest temporal evaluation, a
+  true operator-bypass study, and falsification-centered reframing: about
+  10-18%.**
+- **With independent or externally custodied temporal/non-Amazon replication:
+  about 15-25% eventual acceptance.**
+
+The estimate is unchanged from 10:06. Training progress is not scientific
+evidence and cannot raise it.
+
+### AlphaFuse E-E V3 at the fixed cutoff: 8/16 training, 0/16 assessment
+
+The last eligible status record, written at 14:59:56 local, states:
+
+- `protocol=PREREG_EE_V3`;
+- `repo=f7c9c551...`;
+- `state=training`;
+- `training_complete=8` of 16;
+- `assessment_complete=0` of 16; and
+- `errors=[]`.
+
+All eight terminal training bundles belonged to `alphafuse_package`. The first
+`sasrec_id` seed (`20262201`) started at 14:59:58 and was still active at the
+boundary; no control terminal existed. No family READY record, TEST assessment
+seal, endpoint JSON, rank sidecar, ENDPOINTS-COMPLETE record, or adjudication
+existed. Training metric fields, mutable logs, checkpoints, and any later
+artifact were not opened for scientific inference.
+
+**Admissible conclusion: no AlphaFuse result exists at this cutoff.** It would
+be invalid to infer a direction from eight treatment training completions,
+their timing, a checkpoint filename, or a live log. Reporting must wait for all
+16 terminals, a hash-bound READY record, 16 exclusive-sealed assessments,
+completion state, and mechanical adjudication.
+
+The pre-launch chronology remains internally strong: frozen commit at 03:30:12,
+reported origin push at 03:30:48, and launch at 03:31:07. The frozen local files
+and pinned AlphaFuse checkout (`b501a054...`) were clean at the cutoff. This is
+good internal prospectivity evidence, but it is not an external registration,
+signed timestamp, independent custody, or proof that no person saw validation
+output.
+
+### AlphaFuse protocol: confirmed strengths and newly concrete risks
+
+#### Strengths that should be preserved
+
+1. The protocol labels the comparison outcome-known, same-investigator,
+   exploratory, and not a SOTA adjudication.
+2. It defines a whole representation-package contrast, rather than claiming
+   that a difference isolates a null-space mechanism.
+3. It freezes upstream/data/source identities, configurations, eight fresh
+   seeds per arm, stop rules, and independent-arm Welch inference.
+4. TRAIN/VALID-only training precedes a create-new READY record that must bind
+   all 16 terminal and checkpoint hashes before TEST evaluation is authorized.
+5. Each assessment requires an exclusive start seal and reconstructive rank
+   sidecar checks; an interrupted sealed assessment is not silently rerun.
+6. Complete-history masking, target exception, strict-greater ties, full-
+   catalog ranks, schema/hash checks, and a frozen adjudicator are stronger
+   than the permanently quarantined V2 attempt.
+7. Deterministic PyTorch and cuDNN modes are requested.
+
+#### 1. Treatment arm completed before the first control
+
+The frozen pair iterator is arm-major: it exhausts all eight
+`alphafuse_package` seeds and only then starts `sasrec_id`. At this cutoff that
+is no longer a hypothetical scheduling concern; the entire treatment arm had
+finished before the first control terminal.
+
+- **Confirmed:** arm, calendar time, order, thermal history, machine load, and
+  any background drift are confounded. This especially invalidates a simple
+  between-arm interpretation of elapsed-time, peak-memory, or energy fields.
+- **Confirmed:** the trainer prints per-epoch loss and VALID NDCG into an
+  accessible mutable log, so treatment validation behavior can be available
+  before controls finish.
+- **Author verification:** no access log proves whether a human viewed those
+  values or made an adaptive choice. No tracked source/configuration drift was
+  observed.
+
+Do not change the live frozen run. For a new preregistered study, randomize or
+counterbalance arm order within seed blocks, seal training logs from authors
+until family completion, record resource telemetry in repeated balanced
+blocks, and publish an access/custody attestation.
+
+#### 2. Source checking and concurrency are not fail-closed per child
+
+The driver performs the frozen-source cleanliness check only during preflight.
+Each later trainer/evaluator/adjudicator child executes working-tree files
+without independently rehashing all local frozen sources. Run records bind the
+repository/upstream/data identities, but not the live bytes of the driver,
+runner, evaluator, and adjudicator at every child launch. No exclusive campaign
+lock prevents a second direct trainer from being started outside the driver.
+
+- **Confirmed design gap:** a mid-campaign source replacement or concurrent
+  direct invocation is not rejected by every child.
+- **Observed state:** no such drift or second invocation was found before the
+  cutoff.
+- **Fix:** execute from a read-only clean clone/container; acquire an exclusive
+  campaign lock; hash-check every frozen dependency immediately before each
+  child; and store those hashes in every terminal, READY, assessment seal,
+  endpoint, completion, and adjudication record.
+
+#### 3. Full selection trajectories are not release-bound
+
+Terminal JSONs retain best-VALID summaries and epochs but not the complete
+per-epoch loss/VALID trajectory. The complete trace lives only in a mutable,
+ignored log. A reviewer therefore cannot audit selection stability, patience,
+or interruption behavior from the public release.
+
+Emit exclusive per-seed history JSONs, bind them into READY and the release,
+and mechanically check that the chosen checkpoint is the declared validation
+optimum. Add path-specific update/gradient/tap-norm diagnostics; the current
+structural test establishes only that some model gradient is nonzero.
+
+#### 4. Comparator and replay limits remain
+
+Both V3 arms use `ID_embs_init_type=zeros`; upstream AlphaFuse's SASRec default
+is normal initialization. This does not violate the frozen package comparison,
+but `sasrec_id` must be described as a **zero-initialized, 128-dimensional
+SASRec ID control**, not official/default SASRec. A result would still combine
+representation, initialization, capacity, allocation, and text-information
+differences.
+
+The pinned upstream checkout is neither vendored nor a bootstrap-managed
+submodule. Exact Amazon pickles, MiniLM cache, checkpoints, and future endpoint
+assets are outside a clean public clone, the environment is not fully pinned,
+and no explicit upstream license was found. After V3, freeze a separate normal-
+initialization sensitivity; provide exact acquisition/hash/environment/text-
+cache reconstruction; publish lawful aggregate/rank evidence; and obtain a
+documented legal decision before redistribution.
+
+### Persistent manuscript and scientific rejection risks
+
+#### 1. MovieLens TEST chronology is literally false
+
+`PAPER_SUBMISSION.md:246,356` and `paper_tex/sections/05-results.tex:83-84`
+say all 96 checkpoints finished before any TEST file was opened or hashed.
+The acquisition script had already identified future targets, used them in
+cohort retention, written TEST, and hashed it before training. What the record
+supports is narrower:
+
+> All 96 model-training processes completed without reading the already-
+> constructed TEST CSV or scoring TEST; checkpoint selection used VALID only,
+> and TEST model scoring began after all training completed.
+
+Replace the false sentence in both source paths and add a generated wording
+test so it cannot recur.
+
+#### 2. MovieLens is a target-conditioned, head-only narrow cohort
+
+Eligibility requires the future TEST target to lie in the training-observed
+catalog. The primary retains `1,033/6,040` official users (17.1%) and the all-
+rating view retains `1,129/6,040` (18.7%). Previously verified per-user files
+show all primary top-10 success comes from head targets, with zero mid/tail
+HR@10 and NDCG@10. This does not establish population-wide temporal transfer or
+tail recommendation.
+
+Redesign from pre-cutoff data only; score out-of-catalog targets as misses or
+report coverage; repeat across rolling cutoffs; and report cohort flow, target
+head/mid/tail denominators, clustered uncertainty, and tuned current baselines.
+
+#### 3. “Reject per-channel necessity” overstates a null result
+
+Markdown line 35 says the evidence “reject[s] per-channel necessity,” while
+the TeX source correctly says unique necessity is not established. A
+nonsignificant learned-versus-shared contrast and conditional noninferiority
+cannot reject necessity. Synchronize on “does not support per-channel
+necessity” or “prevents attribution to learned per-channel taps.”
+
+#### 4. WEARec is a narrow custom-harness port
+
+The eight-seed aggregate arithmetic remains correct, but “official
+model/training code” is false. The run retains the official model source/loss
+while local code supplies data loading, optimization, training, validation,
+checkpoint selection, and evaluation. It also compares only two transferred
+presets and one tuning seed against a richer text/HSTU/FIR package with unequal
+information, loss, architecture, schedule, and tuning history.
+
+Use “pinned official WEARec model and loss in our custom training/evaluation
+harness,” move the result out of headline evidence, and run equal-budget
+official-harness and matched-backbone comparisons before making a method-
+ranking claim.
+
+#### 5. “Efficiency” is coefficient compression, not compute optimization
+
+Identity, shared, grouped, and learned MovieLens arms each execute the temporal
+operator and report `404,352` FLOPs/user; low-rank reports `404,416`. The frozen
+study omitted the implemented `off` arm. Add a true bypass, analytic operator
+and full-model operations, serialized model bytes, trainable/total parameters,
+and paired throughput, latency, memory, and energy. Gate any compression claim
+behind a positive learned-effect result.
+
+#### 6. Novelty should be reframed
+
+The strongest prospective non-Amazon test is negative, while positive Amazon
+contrasts share investigator, code lineage, data family, and local custody.
+The defensible contribution is a bounded Amazon effect plus a unusually
+auditable falsification/protocol package—not general FIR benefit, tail
+improvement, or a current-SOTA recommender. Rewrite the abstract/introduction
+around this bounded claim and state exactly what would cause FIR to be disabled
+in deployment.
+
+### Submission artifacts and visual audit
+
+The three PDFs are byte-identical to the 10:06 audit:
+
+- `PAPER_SUBMISSION.pdf`: 51 pages, 1,578,576 bytes, SHA-256
+  `DE2CECF8328339CE3FB92BE3DF10BF203A3FD24DC825A432D3A26D6A5F6DF6C6`;
+- `paper_tex/PAPER_TORS.pdf`: 46 pages, 498,481 bytes, SHA-256
+  `B93B8FAF5C843EECCEEB8EE1D815E02F5FF243CA43DAF1A4A8A696F0D7C5AC84`;
+- `paper_tex/PAPER_TORS_acmsmall.pdf`: 47 pages, 505,995 bytes, SHA-256
+  `2191F10C0041F2F9CAE688EDE5F440F03E2665F5B54449384CC139243ACB9AA9`.
+
+Confirmed unresolved defects:
+
+1. Acmsmall page 12 places 65 glyphs, including the Datasets-table
+   Interactions column, outside the MediaBox.
+2. TORS page 27/acmsmall page 26 calls the resource-plane Figure 4 “Fig. 2.”
+3. Bibliography notes still describe current Figure 3 as a spectral-
+   irreducibility/optimal-shrinkage graphic, although it is the TFV2 tail
+   contrast.
+4. Page 1 retains author/institution/country placeholders; acmsmall exposes
+   dummy DOI/volume/article/publication-date furniture.
+5. TORS/acmsmall are untagged and retain six Type 3 resources on old plot
+   pages; Figure 3/4 labels are too small at venue-column size.
+6. The reader lacks useful page-navigation/link affordances and differs in
+   figure numbering from the venue artifacts.
+
+Repair the responsive table, replace hard-coded references with labels,
+delete stale bibliography figure annotations, replace placeholders, suppress
+dummy production metadata, re-export plots with embedded vector fonts and
+larger labels, tag the production PDF, and rerender/inspect every page.
+
+### Release and reproducibility gates
+
+Read-only gate results at `f7c9c551...`:
+
+- `update_release_manifest.py --verify-git HEAD`: **PASS**, 646 Git-backed
+  entries.
+- result/claim graph: **PASS**, 198 active cells across 22 required families;
+  eight retired and five external cells remain explicitly classified.
+- claim/artifact map and Table 0 claim ledger: **PASS**.
+- candidate deposit construction: **FAIL only on the stale documented entry
+  count** (`DOI_DEPOSIT_INSTRUCTIONS.md` says 908; expected is 929 = 927
+  payload entries plus two metadata entries).
+- normal/final deposit construction: **FAIL** additionally on creator
+  placeholders and the stale/nonmatching `v1.2.0-deposit` tag/version. A new
+  release version is required; do not move an existing immutable tag.
+
+The local manifest is 176,914 bytes with SHA-256
+`de3180935d81dcb10f478a526b34df360ba7a12b6a0bb9681a40d2c2d2469b02`.
+The hosted release manifest is older (175,734 bytes; SHA-256
+`edad5b42a89f6097ca9e6513cb48786ac11bcc2577ca5e89e6532f6c10bdd61f`)
+and predates the AlphaFuse freeze. The 407 large public-boundary assets total
+9,489,409,339 bytes. Do not rebuild or release while the live campaign is
+mid-family. After scientific/manuscript freeze, regenerate the 929-entry
+deposit, prove a fresh-clone replay, insert verified creators, cut a new tag,
+and upload the exact matching manifest last.
+
+### Fact-check evidence retained/revalidated
+
+- [Official MovieLens 1M README](https://files.grouplens.org/datasets/movielens/ml-1m-README.txt):
+  6,040 users, 1,000,209 ratings, timestamps, citation/acknowledgement, and
+  redistribution conditions. This supplies the denominator that makes the
+  manuscript's 1,033-user cohort materially narrow.
+- [Official WEARec AAAI article](https://ojs.aaai.org/index.php/AAAI/article/view/38640):
+  verifies the related work exists; it does not validate this repository's
+  custom-harness fairness or the phrase “official training code.”
+- [AlphaFuse preprint](https://arxiv.org/abs/2504.19218): verifies the close
+  representation-fusion line; it does not establish that the frozen local
+  package comparison is a fair SOTA benchmark.
+- [TORS reproducibility editorial](https://doi.org/10.1145/3800587): supports
+  the relevance of transparent, reproducible, appropriately tuned baselines;
+  exact current portal length/anonymization/supplement requirements still need
+  author verification at submission time.
+
+### Open questions requiring author verification
+
+1. Who could read the live AlphaFuse log/terminal JSONs, and did anyone inspect
+   per-epoch or terminal VALID metrics before the family completed?
+2. Was any second trainer/evaluator invocation started outside the campaign
+   driver, and are OS-level access/process records available?
+3. Can the authors provide a lawful, deterministic public reconstruction of
+   Amazon pickles, MiniLM cache, AlphaFuse checkout, and dependency environment?
+4. Does the institution permit redistribution of each Amazon derivative and
+   use/redistribution of upstream code without a discovered license?
+5. Will all MovieLens users/out-of-catalog targets be included in a genuinely
+   pre-cutoff temporal estimand?
+6. What is the exact target journal and its live anonymization, page/word,
+   accessibility, data/code, ethics, and supplement policy?
+
+### Running checklist after this audit
+
+- [x] Freeze a prospective non-Amazon test and publish its negative outcome
+  with paired uncertainty.
+- [x] Verify AlphaFuse freeze/launch chronology and keep all incomplete-family
+  training outcomes out of the manuscript.
+- [x] Re-run manifest, graph, claim-map, Table 0, deposit, and PDF checks at the
+  fixed cutoff.
+- [ ] Complete AlphaFuse 16/16 training, READY, 16/16 sealed assessment,
+  completion record, and mechanical adjudication before reading/reporting.
+- [ ] Correct the false MovieLens TEST chronology in Markdown and TeX.
+- [ ] Disclose target-conditioned retention, `1,033/6,040`, coverage, and
+  head-only top-10 performance.
+- [ ] Replace “reject per-channel necessity” with a non-causal bounded claim.
+- [ ] Correct WEARec provenance and run a fair equal-budget comparator.
+- [ ] Add a true operator-bypass efficiency experiment and uncertainty-aware
+  resource evidence.
+- [ ] Add AlphaFuse per-child source hashes, exclusive campaign locking,
+  sealed full histories, balanced ordering, and later normal-init sensitivity.
+- [ ] Fix the clipped table, wrong/stale figure references, fonts, small labels,
+  placeholders, dummy metadata, and PDF accessibility.
+- [ ] Reopen falsely completed phase-audit items and bind completion to gates.
+- [ ] Resolve author/legal/data-license questions and verify live journal rules.
+- [ ] Regenerate a 929-entry deposit from a clean frozen boundary, add verified
+  creators, cut a new version/tag, and synchronize the hosted manifest.
+
+## Audit Run - 2026-07-29 10:06 Australia/Sydney
+
+### Audit boundary and change assessment
+
+- Fixed worktree boundary: `2026-07-29T10:06:02.1135681+10:00`
+  (`2026-07-29T00:06:02.1135681Z`). Files modified after this instant were
+  excluded, even where an ongoing training process later advanced.
+- Branch: `codex/bestrec-sota-results`.
+- HEAD, upstream, and merge base remain identical:
+  `f7c9c551d313de07b433545ed4887400ed4f4d98` (`Freeze clean AlphaFuse E-E V3
+  campaign`). This is the same repository commit audited at 04:05.
+- No tracked manuscript, protocol, result, figure, bibliography, PDF, or
+  release file changed between audits. The only tracked modification was this
+  cumulative audit; ignored QA/tmp and live AlphaFuse files remained outside
+  the public boundary.
+- Therefore there is **no new manuscript result and no basis to raise the
+  acceptance estimate**. This run focuses on fixed-cutoff AlphaFuse lifecycle
+  progress, operational protocol weaknesses, revalidation of gates, and a
+  fresh full-PDF render.
+- No manuscript, code, result, figure, table, PDF, campaign artifact, or release
+  payload was edited. Only this audit and the automation memory are updated.
+
+### Executive verdict
+
+**Recommendation: reject in present form / major redevelopment before a
+top-journal submission.** AlphaFuse V3 has progressed safely through four
+training terminals, but it has no admissible result. The unchanged manuscript
+still contains a factually false MovieLens TEST sentence, an unsupported
+“reject per-channel necessity” claim, an overstated description of WEARec code
+provenance, a target-conditioned non-Amazon cohort, and direct metadata/release/
+PDF blockers.
+
+Subjective conditional calibration, not a journal statistic:
+
+- **Literal package now: below 1%.** Real-author/creator placeholders,
+  `DRAFT_WAIVER=1`, dummy production metadata, a failed deposit gate, and the
+  false TEST statement make it non-submittable.
+- **After metadata, release, and wording repairs only: about 3-7% direct
+  top-journal acceptance.** The principal positive evidence remains
+  outcome-known Amazon evidence and the prospectively frozen non-Amazon test is
+  negative.
+- **After a fair current-baseline comparison, population-honest MovieLens
+  redesign, true operator-bypass efficiency study, and narrow falsification
+  framing: about 10-18%.**
+- **With an additional externally custodied or independent temporal/non-Amazon
+  replication: about 15-25% eventual acceptance.**
+
+### AlphaFuse V3 fixed-cutoff state: training only, no result
+
+The last status record available before the boundary was written at 09:05:12
+local and stated:
+
+- protocol `PREREG_EE_V3`;
+- repository commit `f7c9c551...`;
+- `state=training`;
+- `training_complete=4` of 16;
+- `assessment_complete=0` of 16; and
+- `errors=[]`.
+
+All four terminal bundles belonged to `alphafuse_package`; seed `20262205` was
+the active fifth job. No SASRec terminal, family READY record, assessment seal,
+endpoint JSON, rank sidecar, ENDPOINTS-COMPLETE state, or adjudication existed
+at the cutoff. Training metrics, checkpoint contents, and mutable campaign logs
+were not opened. **No numerical direction, trend, effect, or comparator verdict
+is admissible in this section.**
+
+The freeze chronology remains internally strong: commit at 03:30:12, reported
+origin push at 03:30:48, and campaign launch at 03:31:07. All nine frozen local
+protocol/code/input-manifest files were committed and clean at launch and at
+this cutoff. This supports “frozen before execution” within the available Git
+record; it is not an external preregistration or cryptographically immutable
+custody service.
+
+### AlphaFuse protocol strengths
+
+Confirmed design strengths remain:
+
+1. The protocol calls the experiment outcome-known, same-investigator,
+   exploratory, and not a SOTA test.
+2. It defines a whole representation-package contrast rather than claiming an
+   isolated null-space causal effect.
+3. It freezes upstream commit/source hashes, TRAIN/VALID input hashes, eight
+   fresh seed labels per arm, configuration, stop rules, and independent-arm
+   Welch inference.
+4. Training verifies only hash-bound TRAIN/VALID inputs. TEST evaluation is
+   blocked behind a family READY record containing all 16 terminal/checkpoint
+   hashes.
+5. Each assessment requires an exclusive start seal before TEST loading; an
+   incomplete sealed attempt is not rerun.
+6. Complete-history masks, target exception, strict-greater ties, full-catalog
+   ranks, reconstructive per-user sidecars, schema/hash checks, and a committed
+   mechanical adjudicator are substantially stronger than the quarantined V2
+   attempt.
+7. Deterministic PyTorch algorithms and cuDNN deterministic mode are enabled.
+
+These controls justify continuing the campaign without intervention. They do
+not yet create scientific evidence because the family has not crossed its own
+READY/evaluation/adjudication boundary.
+
+### New AlphaFuse operational risks identified this run
+
+#### 1. Arm-major execution and interim VALID visibility
+
+`expected_pairs()` iterates `ARMS=(alphafuse_package, sasrec_id)` before seeds,
+so all eight AlphaFuse treatment jobs run before any SASRec control job. The
+trainer also prints loss, current VALID NDCG@10, best VALID NDCG@10, and patience
+counter every epoch to an accessible ignored campaign log. A live monitor can
+read that tail.
+
+- **Confirmed:** first-arm validation values are mechanically available before
+  control-arm execution; resource measurements are confounded with execution
+  order, thermal state, background load, and calendar time.
+- **Not confirmed:** no evidence shows that a human read those metrics or
+  changed the frozen run in response.
+- **Interpretive boundary:** at best this is TEST-sequestered, not validation-
+  blinded. Resource timing cannot be treated as a randomized arm comparison.
+
+Future protocol: randomize or interleave arms within seed blocks, predeclare the
+order, write metric logs to sealed custody unavailable to authors until all
+training finishes, and compare resources with repeated counterbalanced blocks.
+
+#### 2. Source integrity is checked only at preflight
+
+The driver calls `frozen_sources_ok()` once during preflight. Later trainer,
+evaluator, and adjudicator subprocesses execute working-tree files without
+rerunning that check. Terminal records bind the repository HEAD and selected
+upstream/data hashes, but not the live bytes of every local frozen script at
+subprocess launch.
+
+- **Confirmed:** a mid-campaign local source edit could be executed without a
+  driver-level fail-closed check, even if it were later reverted.
+- **Observed state:** no such tracked drift existed at the cutoff; only the
+  audit file was modified.
+- **Fix:** hash and compare all frozen local sources immediately before every
+  trainer/evaluator/adjudicator subprocess; store those hashes in every
+  terminal, READY, seal, endpoint, and adjudication record. Execute from a
+  read-only clean clone/container rather than the editable working tree.
+
+#### 3. Incomplete public training diagnostics
+
+The terminal JSON retains best epoch, stopped epoch, best VALID metrics,
+parameters, environment, and wall time, but not the complete per-epoch loss/
+VALID trajectory. The only full trace is the mutable ignored log. This prevents
+later reviewers from checking learning stability, patience behavior, and
+selection fragility from the release boundary.
+
+Fix: emit one exclusive, hash-bound per-seed training-history artifact and bind
+it into READY/release. Publish component-specific update norms and gradients;
+the structural test currently proves only that some model gradient is active,
+not that AlphaFuse's ID residual and SASRec's ID table each update as intended.
+
+#### 4. Comparator and replay boundary
+
+Both arms receive `ID_embs_init_type=zeros`; upstream `train.py` defaults SASRec
+ID initialization to `normal`. The protocol admits package/initialization/
+capacity differences, so this is not a frozen-protocol violation. It does mean
+the control must be named **zero-initialized 128-dimensional SASRec ID**, not
+official/default SASRec, and any eventual difference remains a whole-package
+contrast.
+
+The upstream checkout is a nested, non-vendored directory rather than a
+submodule/bootstrap target. Exact pickles, MiniLM cache, private checkpoints,
+and future endpoints are unavailable from a public clone. Setup documentation
+does not yet provide a fully pinned environment and data-regeneration path, and
+the pinned upstream tree has no discovered LICENSE/COPYING/NOTICE file.
+
+Required follow-up after V3, not during it:
+
+1. freeze a separate normal-init SASRec sensitivity;
+2. provide exact upstream acquisition/hash verification, environment lock or
+   container, Amazon-export adapter, MiniLM regeneration, and clean replay;
+3. publish aggregate/rank evidence within legal limits; and
+4. obtain an author/institutional legal determination before redistribution or
+   deposit.
+
+### Unchanged scientific rejection risks
+
+#### False MovieLens TEST chronology
+
+`PAPER_SUBMISSION.md:356` and the TeX results still say all 96 checkpoints were
+trained before any TEST file was “opened or hashed.” The acquisition program
+had already located post-cutoff targets, used them to filter users, written
+TEST, and hashed it. Correct wording:
+
+> All 96 model-training processes completed without reading the already-
+> constructed TEST CSV and selected checkpoints using VALID only; TEST model
+> scoring began after all training completed.
+
+This is a confirmed factual contradiction, not a stylistic dispute.
+
+#### Target-conditioned MovieLens population
+
+The protocol retains only users whose VALID and future TEST targets lie in the
+training-observed catalog. The R4 primary retains 1,033/6,040 official users
+(17.1%); the all-rating view retains 1,129/6,040 (18.7%). Previously audited
+per-user results show all primary top-10 success is on head targets, with zero
+mid/tail HR@10 and NDCG@10. The paper states `1,033` and “training-observed
+catalog” but not the official denominator or head-only outcome in the main
+result.
+
+Required redesign: define population/catalog using pre-cutoff data only, score
+out-of-catalog targets as misses or report coverage, use multiple rolling
+cutoffs, and report user/item-cluster uncertainty plus head/mid/tail
+denominators.
+
+#### WEARec is still a narrow port, not a fair method comparison
+
+The released eight-seed arithmetic remains exact, including WEARec mean
+`0.0591835101` versus existing-reference mean `0.0673373862` and descriptive
+Welch difference `-0.0081538760`. The label
+`WEAREC-BELOW-EXISTING-REFERENCE` is mechanically correct for those vectors.
+
+The comparison still screens only two cross-domain presets on one tuning seed
+against a much more extensively developed, text/HSTU/label-smoothing/FIR
+package. It does not equalize architecture, input information, loss, schedule,
+parameter count, checkpoint metric, or tuning budget. Moreover, “official
+model/training code” remains inaccurate: the official model source and loss are
+used, while local code implements the dataset, optimizer, training/validation
+loop, checkpoint selection, and evaluator. Use:
+
+> Pinned official WEARec model source and loss executed through our local data,
+> optimization, checkpoint-selection, and evaluation harness.
+
+Run official-code WEARec against its official SASRec/ablation under equal data,
+loss, schedule, and tuning budget, or insert WEARec's operator into the same
+backbone. Until then, demote WEARec from the abstract to a scoped feasibility
+appendix and do not use its Welch p-value as method-superiority evidence.
+
+#### Per-channel and efficiency overclaim
+
+Markdown still says the evidence “reject[s] per-channel necessity”; TeX more
+correctly says it does not establish unique necessity. Replace all sources with
+“does not support per-channel necessity” or “prevents attribution to learned
+per-channel taps.”
+
+MovieLens identity/shared/grouped/learned all execute the convolution and
+report the same 404,352 counted FLOPs per user; low-rank is slightly higher.
+The frozen campaign omitted the implemented `off` arm. Thus current evidence is
+coefficient compression conditional on a failed learned-effect gate, not useful
+compute optimization. Add a true operator bypass and a frozen superiority-
+before-noninferiority sequence with analytic operations and paired resource/
+energy measurements.
+
+### Internal completion claims are false
+
+`PHASE_COMPLETION_AUDIT_2026-07-28.md` labels:
+
+- manuscript contradiction cleanup **COMPLETE**;
+- presentation/PDF polish **COMPLETE except author block**; and
+- the manuscript-matched deposit **CANDIDATE COMPLETE**.
+
+Those statuses conflict with the unchanged false MovieLens sentence,
+Markdown/TeX causal drift, WEARec provenance overstatement, failed candidate
+inventory gate, acmsmall clipping, wrong figure references, stale bibliography
+notes, untagged PDFs, and dummy metadata. Reopen the phases. Completion should
+be computed from strict factual-claim, deposit, cross-reference, placeholder,
+and rendered-page gates rather than asserted in prose.
+
+### Release and reproducibility revalidation
+
+Read-only checks at the fixed boundary:
+
+- Git-backed manifest verification: **PASS**, 646 entries.
+- Evidence graph: **PASS**, 198 active cells / 22 required families; 8 retired
+  and 5 external cells.
+- Claim-map verification: **PASS**.
+- Quantitative Table 0 verification: **PASS**.
+- Public payload boundary: 407 assets / 9,489,409,339 bytes.
+- Candidate deposit: **FAIL**. Documentation and the existing ZIP record 908
+  entries, while the current mechanical inventory requires 929 = 927 payloads
+  plus `README_DEPOSIT.txt` and `SHA256SUMS.txt`.
+- Final deposit: additionally fails creator placeholders and absent/stale
+  `v1.2.0-deposit` tag/release.
+
+The old 908-entry ZIP is internally sidecar-consistent but obsolete by 21
+entries. The local manifest remains 176,914 bytes, SHA-256
+`de3180935d81dcb10f478a526b34df360ba7a12b6a0bb9681a40d2c2d2469b02`.
+The hosted manifest remains the older 175,734-byte
+`edad5b42a89f6097ca9e6513cb48786ac11bcc2577ca5e89e6532f6c10bdd61f`
+copy uploaded before the AlphaFuse freeze.
+
+Do not rebuild/tag while the campaign is live. After a stable committed
+boundary: regenerate counts/ZIP/manifest/metadata together, replace creators,
+run candidate/final/clean-clone/strict/PDF gates, cut a new immutable version,
+and upload the exact matching manifest last.
+
+### PDF, figure, citation, and writing audit
+
+All PDFs are byte-identical to 04:05:
+
+| Artifact | Pages | Bytes | SHA-256 |
+|---|---:|---:|---|
+| `PAPER_SUBMISSION.pdf` | 51 | 1,578,576 | `DE2CECF8328339CE3FB92BE3DF10BF203A3FD24DC825A432D3A26D6A5F6DF6C6` |
+| `paper_tex/PAPER_TORS.pdf` | 46 | 498,481 | `B93B8FAF5C843EECCEEB8EE1D815E02F5FF243CA43DAF1A4A8A696F0D7C5AC84` |
+| `paper_tex/PAPER_TORS_acmsmall.pdf` | 47 | 505,995 | `2191F10C0041F2F9CAE688EDE5F440F03E2665F5B54449384CC139243ACB9AA9` |
+
+Fresh full-page rendering reconfirms:
+
+- acmsmall page 12 has 65 glyphs outside the MediaBox; the Datasets
+  Interactions column/header is clipped;
+- TORS page 27 and acmsmall page 26 say “Fig. 2” for resource-plane Figure 4;
+- BibTeX notes at `references.bib:11,71,161` call current Figure 3 a spectral-
+  irreducibility/optimal-shrinkage figure, although Figure 3 now shows TFV2
+  tail contrasts; the false annotation appears in venue bibliographies;
+- author/institution/country/short-author placeholders and dummy acmsmall
+  January 2026 furniture remain;
+- TORS/acmsmall are untagged and contain six Type 3 plot-font resources; Figure
+  3/4 labels are too small at venue-column width;
+- the tagged reader has no detected page-boundary overflow, but its author
+  placeholder and weak navigation/link presentation remain; and
+- no blank page, black-box figure, or general glyph corruption was found.
+
+Fix the table width, generated cross-references, stale BibTeX notes, plot font
+embedding/label size, author/production metadata, accessibility, and
+navigation. The Markdown manuscript is approximately 22,161 whitespace tokens
+and the abstract approximately 213; move the exhaustive custody, screening, and
+negative-result ledgers into a navigable supplement and rewrite the abstract as
+question, design, central negative, bounded positive, and implication.
+
+### External sources and venue verification
+
+- The [official WEARec AAAI record](https://ojs.aaai.org/index.php/AAAI/article/view/38640)
+  describes a broader dynamic-frequency/wavelet system across four benchmarks;
+  the local port is not a reproduction of that published evaluation.
+- The [official AlphaFuse paper record](https://arxiv.org/abs/2504.19218)
+  covers null-space language/ID representations, multiple benchmarks, and
+  cold-start/long-tail settings; the local MiniLM package study is narrower.
+- The [official MovieLens 1M README](https://files.grouplens.org/datasets/movielens/ml-1m-README.txt)
+  confirms 6,040 users and the source's acknowledgement/use/redistribution
+  conditions, making the 1,033-user denominator omission material.
+- The [TORS methodological-standards editorial](https://doi.org/10.1145/3800587)
+  emphasizes reproducible evaluation and properly tuned baselines. The current
+  author-guidelines page remained inaccessible to this audit; exact portal
+  length, anonymization, accessibility, and supplement requirements remain
+  **AUTHOR VERIFICATION**.
+
+### Running checklist
+
+#### Immediate manuscript/release fixes
+
+- [ ] Correct the false MovieLens TEST sentence in Markdown and TeX.
+- [ ] Add `1,033/6,040`, `1,129/6,040`, target-conditioned inclusion,
+  coverage, and head/mid/tail outcomes to the main MovieLens result.
+- [ ] Replace “reject per-channel necessity” with non-support language.
+- [ ] Replace WEARec “official model/training code” wording and demote the
+  unequal package comparison.
+- [ ] Keep AlphaFuse numerical claims absent until 16/16 READY, 16/16 sealed
+  assessments, and committed mechanical adjudication exist.
+- [ ] Reopen contradiction, PDF-polish, and candidate-deposit completion phases.
+- [ ] Fix acmsmall clipping, Figure 2/4 references, stale Figure 3 BibTeX notes,
+  Type 3 fonts/tiny labels, placeholders, tagging, and dummy metadata.
+- [ ] At a stable campaign boundary, rebuild the 929-or-later deposit and exact
+  hosted manifest; replace creators and cut a new tag.
+- [ ] Resolve Amazon/MovieLens/upstream-code licensing and ethics decisions.
+
+#### Highest-value experimental/protocol work
+
+- [ ] For future AlphaFuse work, interleave/randomize arms, seal validation
+  logs, hash-check local sources before every subprocess, and bind full
+  training histories/component diagnostics.
+- [ ] Freeze a normal-init SASRec sensitivity and a public AlphaFuse acquisition/
+  environment/data-reconstruction path.
+- [ ] Run an equal-budget WEARec official-harness/matched-backbone comparison
+  plus closer TV-Rec/ConvFormer baselines, or narrow the novelty claim.
+- [ ] Redesign MovieLens with a pre-cutoff-only population/catalog, rolling
+  cutoffs, out-of-catalog coverage, and tuned baselines.
+- [ ] Add a true FIR-off bypass and paired parameter/FLOP/latency/memory/energy
+  Pareto study with superiority before compression noninferiority.
+- [ ] Obtain external timestamp/escrow or independent reproduction on another
+  contemporary non-Amazon domain.
+
+### Open author questions
+
+1. Who are the final authors, affiliations, corresponding contact, countries,
+   creators, funding/conflict declarations, and submission owner?
+2. Will the authors correct the MovieLens acquisition/training/cohort wording
+   before any further public PDF is built?
+3. Has anyone read the live AlphaFuse validation log or changed any executable
+   file/process after seeing it? What access record supports the answer?
+4. Will any eventual AlphaFuse result be named a whole-package,
+   zero-initialized-SASRec comparison rather than a null-space causal effect or
+   default-SASRec benchmark?
+5. Can a public clone recreate AlphaFuse upstream, data adapters, MiniLM
+   embeddings, training, ranks, and adjudication without private files?
+6. Will WEARec be labeled as an official-model/loss custom-harness port and
+   removed from headline prose until a fair tuning budget is run?
+7. What is the institutional/legal basis for Amazon derivatives, MovieLens use,
+   and upstream repositories without a discovered license file?
+8. Is TORS the final target, and what are its current live requirements for
+   authorship/anonymization, length, accessibility, data/code, and supplements?
+
+## Audit Run - 2026-07-29 04:05 Australia/Sydney
+
+### Audit boundary and inspected state
+
+- Fixed worktree boundary: `2026-07-29T04:05:50.9383132+10:00`
+  (`2026-07-28T18:05:50.9383132Z`). Later AlphaFuse campaign files, process
+  progress, and outcomes were not used to judge this boundary.
+- Branch: `codex/bestrec-sota-results`.
+- HEAD, upstream, and merge base:
+  `f7c9c551d313de07b433545ed4887400ed4f4d98` (`Freeze clean AlphaFuse E-E V3
+  campaign`). Its parent is `55a55ddf`; the previous audit boundary was
+  `b804ea02bfc60c0b7d2c157c67d26e26e34cf478`.
+- Delta from the previous audit: 58 files, approximately 3,002 insertions and
+  199 deletions. Material changes include completed/integrated WEARec baseline
+  evidence, checkout-portable WEARec reference verification, updated graph and
+  PDFs, and a publicly frozen AlphaFuse V3 protocol/campaign implementation.
+- At the cutoff, the only tracked worktree modification was this cumulative
+  audit. Ignored/private campaign state existed and the first AlphaFuse
+  training was active; outcome files were not semantically inspected.
+- AlphaFuse chronology at the boundary: freeze commit authored/committed at
+  03:30:12 local, origin reflog reports push at 03:30:48, campaign wrappers
+  began at 03:31:07, and the first seed runner began at 03:31:16. Thus the
+  tracked freeze preceded launch in the available Git chronology.
+- Primary materials inspected: Markdown and TeX manuscript sources, BibTeX,
+  three compiled PDFs, tables/figures, WEARec protocol/model port/adjudication,
+  AlphaFuse V3 protocol and frozen code, MovieLens acquisition/protocol and
+  prior adjudication, aggregate evidence graph, manifest/deposit tooling,
+  metadata, documentation, prior audit history, and primary literature pages.
+- No manuscript, code, result, figure, table, release payload, or PDF was
+  edited. This audit updates only `PAPER_REVIEW_AUDIT.md` and the automation
+  memory.
+
+### Executive verdict and acceptance calibration
+
+**Recommendation: reject in present form / major redevelopment before a
+top-journal submission.** WEARec is now a real, internally coherent result and
+the AlphaFuse V3 design is stronger than the earlier noncountable attempt.
+Neither development rescues the central scientific claim at this cutoff. The
+WEARec run is a narrow custom port under unequal information and tuning, not a
+fair method comparison; the AlphaFuse campaign has no admissible result yet;
+and the manuscript retains two easily reviewer-detectable factual/causal
+overstatements. Submission metadata and release blockers independently make
+the literal package non-submittable.
+
+Subjective conditional calibration, not a journal acceptance statistic:
+
+- **Literal package now: below 1%.** Author/affiliation/contact/creator
+  placeholders, `DRAFT_WAIVER=1`, dummy production metadata, and an unbuildable
+  final deposit are direct blockers.
+- **Scientific manuscript after clerical/release repair only: about 3-7%
+  direct top-journal acceptance.** The MovieLens negative and unfair current-
+  comparator design leave the core algorithmic contribution weak.
+- **After correcting WEARec/MovieLens/per-channel wording, aligning formats,
+  and sharply narrowing the paper to a bounded falsification/audit study:
+  about 6-12%.**
+- **With validation-budgeted official-harness WEARec, TV-Rec/ConvFormer and
+  matched-backbone comparisons, true bypass efficiency evidence, and
+  reproducible endpoints: about 10-18%.**
+- **With an additional genuinely prospective, externally custodied, or
+  independent temporal/non-Amazon replication: about 15-25% eventual
+  acceptance.**
+
+The WEARec addition improves transparency, but in its present wording it also
+creates a new provenance/fairness vulnerability. A very small p-value does not
+repair a confounded comparator.
+
+### Material improvements confirmed this run
+
+1. **WEARec was completed and integrated symmetrically.** Eight fresh
+   assessment seeds, the negative verdict, aggregate vectors, exact arithmetic,
+   limitations, and graph cells are present. Negative evidence was not hidden.
+2. **WEARec aggregate replay is checkout-portable.** The six existing-reference
+   Git blobs are LF-normalized and hash-bound; independent hash checks agree
+   with the frozen constants. The public graph recomputes the released NDCG
+   vectors and contrast arithmetic.
+3. **The evidence graph remains coherent.** The strict graph reports 198 active
+   cells across 22 required families: 178 exact and 20 within rounding, with no
+   mismatch or untraceable active cell. Claim-map and quantitative Table 0
+   checks pass.
+4. **AlphaFuse V3 has a materially stronger lifecycle.** The frozen design
+   requires all 16 terminal/checkpoint hashes in a family READY record, an
+   exclusive start seal before TEST access, complete-history masking, strict-
+   greater ties, full-catalog ranks, reconstructive sidecars, and a committed
+   mechanical adjudicator. This is a meaningful custody improvement over V2.
+5. **Cross-format WEARec numbers render consistently.** The abstract, prose,
+   and Table 1b show the same rounded estimate and interval without clipping.
+6. **Release integrity at HEAD is internally sound.** All 646 Git-backed
+   manifest entries verify, and the local manifest includes the nine frozen
+   AlphaFuse V3 protocol/code/input-manifest files. The deposit failure is
+   metadata/inventory finalization, not silent hash corruption.
+
+### WEARec result: arithmetic is confirmed
+
+Released eight-seed WEARec NDCG@10 vector:
+
+`0.0596248330, 0.0598917225, 0.0588755466, 0.0585100460,
+0.0594198165, 0.0588014009, 0.0584132130, 0.0599315025`.
+
+Released six-seed existing-reference vector:
+
+`0.0673122803, 0.0669488825, 0.0677612363, 0.0674091843,
+0.0673204311, 0.0672723025`.
+
+Independent recomputation agrees with the adjudication and manuscript:
+
+| Quantity | Recomputed value |
+|---|---:|
+| WEARec mean | 0.059183510122 |
+| WEARec sample SD | 0.000609381963 |
+| WEARec ordinary 95% t CI | [0.058674054052, 0.059692966192] |
+| Existing-reference mean | 0.067337386164 |
+| Existing-reference sample SD | 0.000261110187 |
+| Existing-reference ordinary 95% t CI | [0.067063367828, 0.067611404500] |
+| Descriptive Welch difference | -0.008153876042 |
+| Welch CI | [-0.008689419252, -0.007618332833] |
+| Welch t / df / p | -33.9211 / 10.0071 / 1.15674e-11 |
+| Relative mean gap | -12.11% |
+
+The mechanical verdict `WEAREC-BELOW-EXISTING-REFERENCE` follows from these
+released vectors. This is **confirmed arithmetic**, not a confirmation that
+WEARec as a method is inferior. The observations are optimizer seeds on one
+fixed, outcome-known split; the systems were neither paired nor randomized,
+and users/datasets/deployments are not the inference units. The Welch p-value
+adds little scientific information given the structural confounding. Keep it
+in the detailed table if desired, but emphasize estimates, seed spread, and
+design differences rather than significance language.
+
+Secondary HR/MRR aggregates are reported locally, but their raw endpoint/rank
+vectors remain private. The public graph can replay the NDCG vector arithmetic,
+not the private endpoint extraction or per-user ranks. This boundary is
+disclosed and should remain prominent.
+
+### Confirmed WEARec provenance overstatement
+
+The manuscript calls the comparison “official WEARec model/training code” in
+the closest-work table, Table 1b, and results/discussion text. The frozen
+protocol says the adapter replaces evaluation only. Those descriptions are
+factually too broad:
+
+- `_bestrec_run/run_wearec_baseline_v1.py` implements a custom optimizer,
+  DataLoader, training loop, validation loop, early stopping, and checkpoint
+  handling;
+- `_bestrec_run/wearec_baseline_v1_common.py` implements the custom dataset;
+- the pinned official repository uses its own `Trainer` and `RecDataset`;
+- upstream checkpoint selection follows the returned NDCG@20 metric, whereas
+  the local port selects complete-history-masked VALID NDCG@10.
+
+The defensible replacement everywhere is:
+
+> We use the pinned official WEARec model implementation and loss, rehosted in
+> our custom data, optimization, checkpoint-selection, and evaluation harness;
+> checkpoint selection changes from the upstream NDCG@20 convention to our
+> complete-history-masked VALID NDCG@10.
+
+Required files to synchronize include `PREREG_WEAREC_BASELINE_V1.md`,
+`PAPER_SUBMISSION.md`, Markdown/TeX Table 0 and Table 1b, abstract, results,
+discussion, conclusion, manifest notes, handoff, and release metadata. This is
+not a cosmetic preference: a reviewer can verify that the official trainer is
+not imported.
+
+### WEARec fairness, novelty, and current-baseline interpretation
+
+**Confirmed design limitations:**
+
+- selection tested only the official Sports and Beauty presets using one
+  tuning seed;
+- Beauty exceeded Sports on VALID by only `0.000316985`, about 0.52 times the
+  selected model's assessment-seed SD, so the preset choice is fragile;
+- WEARec is ID/frequency based, while the existing reference includes a richer
+  HSTU-style architecture, text representations/bias, label smoothing, and FIR;
+- objectives, input information, architecture, schedules, checkpoint metrics,
+  parameter allocation, tuning history, and tuning compute are unequal;
+- the reported total-parameter counts are not directly comparable because the
+  reference includes a large frozen text table; matched trainable parameters
+  and a matched resource profile are absent; and
+- the WEARec family lacks a family-wide READY record. The campaign driver waits
+  for all eight checkpoints, but the evaluator can be invoked directly for a
+  single seed. Plaintext endpoint custody and designated-first-reader status
+  remain procedural/author-verification facts.
+
+Therefore the result establishes only that **this particular official-model/
+loss port under this small configuration budget scored 0.05918 under the
+paper's evaluator**. It does not establish adequately tuned WEARec inferiority,
+fair current-system competitiveness, or a causal advantage of FIR.
+
+The nearest-baseline gap also remains broader than WEARec. TV-Rec directly
+studies time-variant convolutional filtering, while ConvFormer uses large-
+kernel depthwise convolutional mixing. They are closer to the claimed causal
+depthwise-FIR mechanism than an ID-only WEARec port and are not executed. The
+manuscript's Markdown and TeX related-work sections list different close
+systems. Build one feature-by-feature novelty matrix covering causal direction,
+time variance, depthwise/channel mixing, residual placement, initialization,
+objective, input modality, receptive field, and complexity; then run the
+closest feasible baselines under the same split/evaluator and comparable
+tuning budgets.
+
+Recommended fairer experiment:
+
+1. Freeze a validation-only WEARec tuning grid with at least 3-5 tuning seeds
+   and a declared compute budget.
+2. Use the official WEARec training harness as far as technically possible;
+   identify every changed component if a port remains necessary.
+3. Compare WEARec with an ID-only matched HSTU reference, the same HSTU backbone
+   with and without FIR, and TV-Rec/ConvFormer under the same evaluator.
+4. Report matched total and trainable parameters, validation evaluations,
+   tuning GPU-hours, training time, inference latency, peak memory, and analytic
+   or measured operations on the same hardware.
+5. Remove the WEARec sentence from the abstract until the comparison is fair
+   enough to support a headline interpretation.
+
+### AlphaFuse V3 fixed-cutoff audit: no result exists here
+
+At the fixed boundary, `_bestrec_run/ee_v3_status.json` had last been written at
+03:31:16 and reported:
+
+- protocol `PREREG_EE_V3`;
+- `state=training`;
+- `training_complete=0`;
+- `assessment_complete=0`;
+- `total=16`;
+- `errors=[]`; and
+- repository commit `f7c9c551...`.
+
+The first `alphafuse_package`/seed `20262201` STARTED record and best checkpoint
+existed. There was no terminal training JSON, family READY, evaluation seal,
+endpoint, rank sidecar, ENDPOINTS-COMPLETE record, or adjudication. A mutable
+latest checkpoint was overwritten after the cutoff, so its exact cutoff state
+cannot now be reconstructed. It was not opened. **No AlphaFuse result or trend
+may be inferred or incorporated into this timestamped section.**
+
+Confirmed protocol strengths:
+
+- the protocol accurately labels the split outcome-known, same-investigator,
+  exploratory, and not a SOTA test;
+- MiniLM substitution and non-reproduction boundaries are explicit;
+- the estimand is the full representation-package contrast, not an isolated
+  null-space effect;
+- validation/TEST use complete-history masks, target exception,
+  strict-greater ties, and the full 25,612-item catalog;
+- training calls data verification without TEST and TEST evaluation is blocked
+  behind a family READY containing all 16 terminal/checkpoint hashes;
+- the evaluator creates an exclusive start seal before TEST access; ranks are
+  reconstructive and the adjudicator verifies schemas/hashes; and
+- stop rules prohibit seed extension, arm deletion, and post-launch
+  redefinition.
+
+Confirmed limitations and repairs:
+
+1. **Zero-initialized comparator.** The frozen common configuration sends
+   `ID_embs_init_type=zeros` to both arms. Upstream SASRec defaults to normal
+   ID initialization. This is permitted by the package-level estimand but must
+   be described as a **zero-initialized 128-dimensional SASRec ID arm**, not the
+   official/default SASRec baseline. After V3, freeze a distinct normal-init
+   SASRec sensitivity; do not alter the live protocol.
+2. **TEST wording.** Preparation opens the combined outcome-known JSONL and
+   materializes rows containing TEST before writing a TEST-field-free training
+   input. The accurate statement is: “the training process opened only the
+   hash-bound TRAIN/VALID input; preprocessing read the pre-existing
+   outcome-known export.” The catalog/title metadata is also transductive.
+3. **Custody.** “First authorized reader” is a protocol role, not independently
+   proven access control. Use “protocol-designated first authorized reader”
+   unless external escrow/access logging exists.
+4. **Activation.** The structural suite proves only that some model gradient is
+   nonzero. It does not prove that the AlphaFuse ID residual and SASRec ID table
+   each update. Release per-arm selected-checkpoint parameter-delta norms,
+   component gradients, and validation curves.
+5. **Reproduction setup.** `setup_ee_env.sh` shallow-clones current upstream
+   HEAD instead of checking out the governed `b501a054...` commit and lacks a
+   complete requirements lock/container. `README_EE.md` still calls completed
+   loader/protocol work pending. Add pinned clone/fetch/checkout, governed-file
+   hash verification, environment lock, exact V3 commands, Amazon export/data
+   regeneration, and a fresh-clone replay.
+6. **Legal boundary.** No upstream LICENSE/COPYING/NOTICE file was found in the
+   pinned AlphaFuse tree. Authors must obtain/document the legal basis and avoid
+   redistributing upstream source as though licensed.
+
+Algorithm/runtime improvements should be frozen only for a later campaign:
+CSR or GPU-vectorized complete-history masks, cached padded tensors, larger
+validated evaluation batches, and multi-GPU seed parallelism. Current profiler
+FLOPs are an operator-accounted lower bound, training wall time excludes setup
+and includes repeated validation, and neither supports an energy/general-
+efficiency claim.
+
+### Previously confirmed critical problems remain unresolved
+
+#### MovieLens TEST wording and selected estimand
+
+`PAPER_SUBMISSION.md` still says all 96 checkpoints were trained before any
+TEST file was opened or hashed. Acquisition had already parsed the full archive,
+identified first post-cutoff targets, written TEST, and hashed all split files.
+The correct claim is:
+
+> All 96 model-training processes completed without reading the already-
+> constructed TEST split and selected checkpoints using VALID only; TEST model
+> scoring began after training completed.
+
+Further, a user is retained only when the first post-cutoff target exists in
+the training-observed catalog. This makes the estimand a target-conditioned,
+known-catalog temporal cohort, not untouched population-wide temporal
+generalization. The primary retains 1,033/6,040 users (17.1%); the all-rating
+view retains 1,129/6,040 (18.7%); all primary top-10 success is on head targets,
+with zero mid/tail HR@10 and NDCG@10. Put these facts in the main result.
+
+Required stronger design: determine cohort/catalog from pre-cutoff events only,
+score out-of-catalog targets as misses or report coverage, use rolling cutoffs,
+report head/mid/tail denominators, and preregister tuned MovieLens baselines.
+
+#### Per-channel and algorithm-efficiency overclaim
+
+The Markdown introduction still says the combined evidence “reject[s]
+per-channel necessity.” A nonsignificant learned-versus-shared contrast is not
+equivalence; MovieLens noninferiority is conditional on a failed learned-effect
+gate. Replace with “does not support per-channel necessity” or “prevents
+attribution to learned per-channel taps.” The TeX source is already closer to
+this boundary, proving cross-format drift.
+
+On MovieLens, identity/shared/grouped/learned all execute the same 64-by-16
+depthwise convolution and report the same 404,352 counted FLOPs per user;
+low-rank is slightly more expensive. Latency and memory are nearly equal. This
+is coefficient compression, not compute compression. Add:
+
+1. a true `off`/bypass arm that removes the FIR operator;
+2. total/trainable parameters and serialized model bytes;
+3. analytic FIR/projection operations and a counter-coverage validation;
+4. paired per-seed latency, memory, energy, and throughput distributions; and
+5. a frozen hierarchy that first establishes shared-versus-off benefit and
+   only then tests parsimonious-versus-learned noninferiority.
+
+Publish selected-checkpoint taps/update norms, effective responses, activation
+magnitudes, validation curves, and best epochs. Exact or near-exact arm scores
+make treatment activation and counter coverage reviewer-critical.
+
+### Release, reproducibility, and metadata audit
+
+Read-only gates at `f7c9c551`:
+
+- `update_release_manifest.py --verify-git HEAD`: **PASS**, 646 Git-backed
+  entries.
+- strict evidence graph: **PASS**, 198 active cells / 22 required families.
+- claim-map verification: **PASS**.
+- quantitative Table 0 verification: **PASS**.
+- candidate deposit check: **FAIL only on inventory text**; mechanical expected
+  total is 929, while `DOI_DEPOSIT_INSTRUCTIONS.md` still says 908.
+- final deposit check: **FAIL additionally** because creator metadata is still
+  placeholder and `v1.2.0-deposit` is absent/stale relative to HEAD. No such
+  local/remote tag or GitHub release exists.
+
+Local `RELEASE_MANIFEST.json`: 176,914 bytes, SHA-256
+`de3180935d81dcb10f478a526b34df360ba7a12b6a0bb9681a40d2c2d2469b02`;
+its hash parent is `55a55ddf`. The public v0.9 manifest is 175,734 bytes,
+SHA-256 `edad5b42a89f6097ca9e6513cb48786ac11bcc2577ca5e89e6532f6c10bdd61f`,
+and records parent `b0c8c7d`. It includes WEARec adjudication but naturally
+predates the AlphaFuse V3 freeze. Repository documentation reports a 407-asset,
+approximately 9.5-GB rehydrated clean-clone replay, but that full download was
+not independently repeated in this audit; classify it as repository-recorded.
+
+Do not patch the 908 count or publish a tag during the live campaign. Once a
+stable result/no-result boundary is committed:
+
+1. regenerate inventory and all documentation from the same mechanical source;
+2. regenerate the release manifest at the final commit;
+3. replace creator and author metadata;
+4. run candidate, final, placeholder, clean-clone bootstrap, strict graph, and
+   PDF byte/visual gates;
+5. cut a new immutable versioned deposit tag/release rather than repointing an
+   old tag; and
+6. upload the exact matching manifest last.
+
+For MovieLens, provide a lawful one-command workflow that downloads from the
+official GroupLens source, verifies the archive checksum, regenerates the
+preprocessing/cohort/catalog deterministically, verifies split hashes/counts,
+trains/evaluates/adjudicates, and compares regenerated graph cells. Restricted
+redistribution is not a reason to omit a self-service reproducibility path.
+
+### Writing, citations, and submission readiness
+
+1. **Abstract:** approximately 212 whitespace tokens, but it remains a dense
+   result/protocol ledger. Recommended order: question; prospective design;
+   central MovieLens non-replication; bounded Amazon finding; audit implication.
+   Remove WEARec until the comparison is fair enough for headline space.
+2. **One canonical source:** Markdown and TeX disagree on per-channel wording,
+   closest filtering systems, and figure numbering. Generate narrative claims,
+   references, captions, and cross-references from one ledger/source.
+3. **WEARec language:** replace “official model/training code,” avoid calling
+   the feasibility gap “closed” without the fairness qualifier, and demote the
+   Welch p-value.
+4. **AlphaFuse citation:** `paper_tex/references.bib` lists only authors/year/
+   title/`SIGIR`. Add the full SIGIR 2025 venue metadata and DOI
+   `10.1145/3726302.3729894`.
+5. **Related work:** align Markdown with TeX and include direct comparisons to
+   TV-Rec and ConvFormer. Separate “cited” from “executed under matched
+   protocol”; a citation list does not close an empirical baseline gap.
+6. **Completion ledger:** reopen contradiction cleanup, presentation polish,
+   and final PDF review. They are not complete while false sentences, clipped
+   tables, placeholder metadata, and reference mismatches remain.
+7. **Length/navigation:** move the full screening log, custody chronology,
+   protocol ledger, and exhaustive negative map into a separately navigable
+   supplement. Keep a short main-paper claim matrix and failure-boundary table.
+
+### PDF, figure, and table audit
+
+Exact fixed-cutoff artifacts:
+
+| Artifact | Pages | Bytes | SHA-256 |
+|---|---:|---:|---|
+| `PAPER_SUBMISSION.pdf` | 51 | 1,578,576 | `DE2CECF8328339CE3FB92BE3DF10BF203A3FD24DC825A432D3A26D6A5F6DF6C6` |
+| `paper_tex/PAPER_TORS.pdf` | 46 | 498,481 | `B93B8FAF5C843EECCEEB8EE1D815E02F5FF243CA43DAF1A4A8A696F0D7C5AC84` |
+| `paper_tex/PAPER_TORS_acmsmall.pdf` | 47 | 505,995 | `2191F10C0041F2F9CAE688EDE5F440F03E2665F5B54449384CC139243ACB9AA9` |
+
+Confirmed visual/structural findings:
+
+- acmsmall page 12 clips the Datasets table at the physical right edge,
+  including the Interactions header and values;
+- TORS page 27 and acmsmall page 26 call the R1/R2 resource plane “Fig. 2,”
+  while its caption is Fig. 4;
+- the reader's Software and MovieLens graphics on pages 20-21 are unnumbered,
+  while later plots remain Fig. 1/Fig. 2; journal PDFs number all four;
+- the reader splits its Fig. 1 caption across pages 26-27;
+- all page 1s retain author/institution/country placeholders, and no PDF has
+  Author metadata;
+- acmsmall adds a bare clickable DOI, dummy volume/article data, and January
+  2026 publication date;
+- the reader is tagged with `/Lang en-US`, but has no visible page numbers,
+  bookmarks, or link annotations; TORS/acmsmall are untagged but have 37
+  bookmarks and hundreds of links;
+- all fonts are embedded and TeX figures are vector; reader figures are raster
+  at approximately 179-328 dpi, with four of five below 300 dpi; and
+- no blank pages, glyph blocks, general overlap, or other clipped page content
+  were found.
+
+Required repairs: make the table responsive to true acmsmall width or move it
+to landscape/supplement; replace hard-coded figure numbers with generated
+labels; number the reader's new figures; keep captions together; remove dummy
+metadata; add reader page numbers/navigation/live links; tag the production
+venue PDF if required; and include vector figures or at least 300-dpi raster
+exports.
+
+### External fact checks and source links
+
+- The [official WEARec AAAI record](https://ojs.aaai.org/index.php/AAAI/article/view/38640)
+  describes a 2026 AAAI system using dynamic frequency-domain filtering and
+  wavelet feature enhancement across four benchmarks. The local run is much
+  narrower and should not be described as a reproduction of those results.
+- The [official AlphaFuse paper record](https://arxiv.org/abs/2504.19218)
+  describes null-space language-guided ID embeddings, three-benchmark
+  evaluation including cold-start/long-tail settings, and links the SIGIR DOI
+  `10.1145/3726302.3729894`. The local MiniLM whole-package comparison does not
+  test all those published claims.
+- The official [TV-Rec NeurIPS 2025 page](https://nips.cc/virtual/2025/poster/117088)
+  identifies a time-variant convolutional-filter sequential recommender, while
+  the [ConvFormer primary preprint](https://arxiv.org/abs/2308.02925) studies
+  large-kernel depthwise convolution for sequential recommendation. These are
+  closer mechanism comparators than a WEARec-only baseline set.
+- The official [MovieLens 1M README](https://files.grouplens.org/datasets/movielens/ml-1m-README.txt)
+  confirms the 1,000,209-rating/6,040-user base data, timestamps,
+  acknowledgement, and redistribution/use conditions. The paper's much smaller
+  target-conditioned cohort is a constructed estimand, not the official
+  population.
+- The [TORS methodological-standards editorial](https://doi.org/10.1145/3800587)
+  emphasizes rigorous, reproducible evaluation and properly tuned baselines.
+  Exact live portal length/anonymization/accessibility rules were not verified
+  here and remain **AUTHOR VERIFICATION**.
+
+### Prioritized repair sequence
+
+#### Before submission or deposit
+
+- [ ] Replace every author/affiliation/contact/declaration/creator placeholder;
+  remove `DRAFT_WAIVER`; delete dummy production metadata; rebuild and scan.
+- [ ] Correct all MovieLens TEST-file wording and disclose the future-target-
+  conditioned, known-catalog cohort plus head-only success.
+- [ ] Replace “reject per-channel necessity” and all unconditional efficiency/
+  generalization language.
+- [ ] Correct WEARec provenance wording, checkpoint-selection change, and
+  fairness interpretation across every source and artifact.
+- [ ] Keep AlphaFuse V3 outcome-free at this timestamp; disclose zero-init
+  SASRec and exact preprocessing/custody boundaries when a later result is
+  integrated.
+- [ ] Synchronize Markdown, TeX, references, tables, figures, claim ledger,
+  abstract, handoff, release metadata, and phase-completion status.
+- [ ] Fix acmsmall clipping, figure numbering/caption split, accessibility,
+  metadata, navigation, and reader figure resolution.
+- [ ] Resolve MovieLens, Amazon-derived-asset, WEARec, and AlphaFuse legal/
+  licensing questions and document the authors' institutional determination.
+- [ ] At a stable campaign boundary, regenerate the 929-or-later inventory,
+  final manifest, creators, tag/release, and clean-clone replay; upload the
+  matching manifest last.
+
+#### Highest-value experimental/algorithm work
+
+- [ ] Fair WEARec protocol: broader multi-seed VALID tuning, official harness
+  where possible, matched ID-only HSTU and FIR/no-FIR arms, equal tuning budget.
+- [ ] Execute TV-Rec and ConvFormer, or narrow the novelty claim explicitly if
+  a faithful comparison is technically impossible.
+- [ ] AlphaFuse normal-init SASRec sensitivity under a separately frozen
+  protocol; release arm-specific activation/update diagnostics.
+- [ ] Pre-cutoff-only MovieLens cohort/catalog, rolling cutoffs, target coverage,
+  tuned baselines, and another contemporary non-Amazon domain.
+- [ ] True FIR-off bypass; superiority-before-noninferiority; analytic and
+  measured parameter/bytes/FLOPs/latency/memory/energy Pareto with uncertainty.
+- [ ] External timestamp/escrow or independent reproduction with replayable
+  aggregate and per-user/rank evidence.
+
+### Open author questions
+
+1. Who are the final authors, affiliations, corresponding contact, countries,
+   release creators, funding/conflict declarations, and submission owner?
+2. Will the authors sign the corrected MovieLens acquisition/training/cohort
+   wording and remove “reject per-channel necessity”?
+3. Will WEARec be labeled as an official-model/loss custom port and removed
+   from the abstract unless a fairer comparison is completed?
+4. Why was one tuning seed/two cross-domain presets considered adequate, and
+   can the authors commit to a declared comparable tuning budget?
+5. Will AlphaFuse's `sasrec_id` arm be described explicitly as zero-initialized,
+   and will a normal-init sensitivity be frozen separately?
+6. Was any private WEARec endpoint, AlphaFuse live artifact, or MovieLens/
+   Software endpoint viewed outside the protocol-designated adjudicator path?
+   What external access record supports the answer?
+7. What is the lawful basis for the derived Amazon release assets and for use/
+   redistribution of upstream repositories without a discovered license file?
+8. Can an anonymous reviewer download ML-1M and reproduce splits/endpoints from
+   one command without receiving restricted raw data from the authors?
+9. Is TORS the final target, and what are its current live requirements for
+   anonymization, length, abstract, accessibility, data/code, and supplements?
+
+## Audit Run - 2026-07-28 22:06 Australia/Sydney
+
+### Audit boundary and inspected state
+
+- Fixed worktree boundary: `2026-07-28T22:06:32.6977331+10:00`
+  (`2026-07-28T12:06:32.6977331Z`). Later campaign outputs were not used to
+  judge the state at this boundary.
+- Branch: `codex/bestrec-sota-results`.
+- HEAD, upstream, and merge base:
+  `b804ea02bfc60c0b7d2c157c67d26e26e34cf478` (`Freeze official WEARec
+  equal-protocol baseline`).
+- Previous audit HEAD:
+  `1585915bcc098cb3d4c914e83b2c0a0173041b61`.
+- Delta from the previous audit: 10 commits, 90 changed files, approximately
+  10,567 insertions and 662 deletions. Material changes include the Software-V3
+  replay erratum and conservative evidence wording, a graph-bound Software
+  paired figure, the frozen and adjudicated MovieLens efficiency/replication
+  study, release handoff updates, and a publicly frozen WEARec campaign.
+- The fixed worktree was dirty. Manuscript, TeX, graph-builder, manifest, PDF,
+  and handoff files had uncommitted changes, while the WEARec assessment was
+  actively training. This audit treats `b804ea02` as the committed boundary and
+  separately labels fixed-cutoff worktree observations; it does not treat a
+  later result as known.
+- Primary manuscript/artifacts inspected: `PAPER_SUBMISSION.md`, synchronized
+  TeX sections/tables, `PAPER_SUBMISSION.pdf`, `paper_tex/PAPER_TORS.pdf`,
+  `paper_tex/PAPER_TORS_acmsmall.pdf`, protocols, acquisition/training/
+  evaluation/adjudication code, aggregate result graph, release manifest,
+  figures, documentation, and prior audit history.
+- No manuscript, code, result, figure, table, release payload, or PDF was edited
+  by this audit. Only this cumulative audit and the automation memory were
+  updated.
+
+### Executive verdict
+
+**Recommendation: reject in present form / major redevelopment before a
+top-journal submission.** The package has improved materially: Software-V3 is
+now conservatively classified, its replay defect is disclosed, its paired
+figure is readable, and the MovieLens result is unusually honest negative
+evidence. That negative result, however, weakens the central algorithmic claim,
+and the manuscript simultaneously contains a false TEST-sequestration sentence
+and underdiscloses TEST-target-conditioned cohort construction. Current-baseline,
+release, metadata, reproducibility, visual, and legal/ethics blockers remain.
+
+Subjective conditional acceptance calibration, not a venue statistic:
+
+- **Literal package now: below 1%.** Real-author/affiliation/contact/creator
+  placeholders and `DRAFT_WAIVER=1` make it non-submittable.
+- **Scientific package after clerical and release repair: about 5-9% direct
+  top-journal acceptance.** The prospective non-Amazon negative improves
+  credibility but reduces the general algorithmic contribution.
+- **After correcting the TEST/cohort claims, adding tuned/current baselines, a
+  true bypass efficiency comparison, diagnostics, uncertainty-aware figures,
+  and reframing as a falsification/audit study: about 8-15%.**
+- **With independent or externally custodied temporal/non-Amazon replication
+  and a validated account of when filtering helps: about 15-25% eventual
+  acceptance.**
+
+These ranges are lower than a simple “one more dataset” uplift because the new
+dataset does not replicate the FIR effect. Its scientific value is honesty and
+boundary discovery, not confirmation.
+
+### Material improvements confirmed this run
+
+1. **Software-V3 replay disclosure is now technically honest.**
+   `FIR_PROSPECTIVE_SW_V3_REPLAY_ERRATUM.md` records the executed CRLF digest
+   (`a230d17c...`) and tagged LF digest (`37c78ef...`), states that the frozen
+   tag cannot replay without restoring the historical representation, and
+   correctly explains that the reference was not a runtime/model-selection
+   input. The descendant clean replay is explicitly an artifact-boundary
+   replay, not a rerun of frozen V3 training.
+2. **Software-V3 evidence language is more conservative.** The current package
+   treats it as same-team, same-Amazon, outcome-known/exploratory evidence and
+   no longer relies on “independent confirmation.” This is the correct default
+   while V2-console visibility and plaintext endpoint access are unverifiable.
+3. **Software paired figure is successful.** Reader page 20, TORS page 19, and
+   acmsmall page 19 show all eight pairs clearly. Means and difference match the
+   graph (`0.115137725`, `0.120199583`, `+0.005061858`); the limitation line is
+   visible and there is no clipping.
+4. **MovieLens execution and arithmetic are strong internally.** All 96
+   training records were clean at the frozen commit, had 20 epochs, no TEST
+   training metric, null TEST digest/interactions inside trainers, and
+   VALID-selected checkpoints. Within each view/seed, all six arms share the
+   same backbone initialization. All 96 sidecars have common ordered keys,
+   unique users, and rank-derived NDCG/HR/MRR that reproduce the endpoints.
+5. **Negative evidence is reported rather than hidden.** The registered
+   `ML1M-NO-FIR-REPLICATION` verdict and failed learned-effect gate are carried
+   into the paper. This is a meaningful research-integrity improvement.
+6. **Quantitative provenance improved.** `build_table0_claim_ledger.py --check`
+   passes and all active quantitative FIR fields are graph-sourced. The dirty
+   Table 0 changes are layout-only.
+7. **Committed release graph is coherent.** Git-backed manifest verification at
+   `b804ea02` passes all 635 entries. The current failure is a dirty/incomplete
+   release state, not silent corruption of the committed manifest.
+
+### Confirmed critical contradiction: MovieLens TEST wording
+
+The sentence in `PAPER_SUBMISSION.md` and the TeX results section saying all 96
+checkpoints were trained “before any TEST file was opened or hashed” is false.
+The frozen acquisition script:
+
+- read the full ratings archive;
+- located the first post-cutoff target per retained user;
+- constructed and wrote the TEST CSV; and
+- SHA-hashed TRAIN, VALID, and TEST before model training.
+
+The defensible claim is narrower:
+
+> All 96 model-training processes completed without reading or hashing the
+> already-constructed TEST split and selected checkpoints using VALID only;
+> TEST scoring began after all training records were complete.
+
+This should be corrected everywhere, including abstract/claims, manuscript,
+TeX, captions, audit response, and release documentation. “TEST scoring
+sequestered” is accurate; “TEST file unopened” is not.
+
+### Confirmed construct issue: TEST-target-conditioned cohort
+
+The acquisition code retains a user only if a post-cutoff event exists and its
+first target lies in the training-derived catalog. Thus TRAIN/VALID cohort
+membership depends on a future TEST target. The frozen protocol explicitly
+specifies this, so it is not an unregistered deviation, and trainers do not
+receive TEST scores. It is nevertheless a transductive/post-outcome selection
+design that narrows the estimand and favors training-observed/head targets.
+
+Consequences that require prominent disclosure:
+
+- The primary R4 view retains 1,033 of the official 6,040 users (17.1%); the
+  all-rating view retains 1,129 (18.7%).
+- The result concerns recent-active users with an evaluable known-catalog future
+  target, not the full MovieLens population.
+- All reported top-10 accuracy is head-target accuracy: mid and tail targets
+  have zero HR@10/NDCG@10 across primary arms/seeds.
+- The null shows failure of an untuned frozen Amazon-to-MovieLens transfer in
+  this cohort, not that a tuned FIR can never help MovieLens.
+
+Required next design: define eligible users and catalog using pre-cutoff data
+only; evaluate every eligible future target; treat out-of-catalog targets as
+misses or report coverage separately; repeat across rolling cutoffs; report
+head/mid/tail denominators and coverage; preregister tuned baseline parity.
+
+### MovieLens result and statistical interpretation
+
+Primary `MovieLens1M_R4` arm means (NDCG@10):
+
+| Arm | Mean |
+|---|---:|
+| identity | 0.0521512975 |
+| shared | 0.0522113073 |
+| grouped | 0.0521249971 |
+| low-rank | 0.0522113334 |
+| learned | 0.0521514999 |
+| pointwise | 0.0521164295 |
+
+Registered primary contrasts independently reproduce:
+
+- learned minus identity: `+0.0000002025`, paired SD `0.0000889631`,
+  `t(7)=0.00644`, ordinary 95% CI
+  `[-0.0000741725,+0.0000745775]`, Holm `p=.995043`;
+- learned minus pointwise: `+0.0000350704`, paired SD `0.0001102151`,
+  `t(7)=0.90001`, ordinary 95% CI
+  `[-0.0000570717,+0.0001272126]`, Holm `p=.796042`;
+- all-rating learned minus identity: `+0.0000122912`, CI
+  `[-0.000106743,+0.000131326]`;
+- all-rating learned minus pointwise: `+0.0000429363`, CI
+  `[-0.0000816814,+0.000167554]`;
+- all six registered user/item cluster-bootstrap intervals include zero.
+
+The frozen decision `ML1M-NO-FIR-REPLICATION` is correct. Do not describe these
+near-zero estimates merely as “not significant”; report the tight intervals
+and explain what effect sizes they rule out under this selected cohort.
+
+Candidate-minus-learned noninferiority decisions against the registered
+`-0.000500` margin also reproduce:
+
+| Candidate | Mean difference | Simultaneous lower bound | Decision |
+|---|---:|---:|---|
+| shared | +0.0000598074 | -0.0000684991 | pass |
+| grouped | -0.0000265028 | -0.0001276650 | pass |
+| low-rank | +0.0000598335 | -0.0000333282 | pass |
+
+These are conditional numerical-compression results only because the learned
+effect gate failed. They do **not** establish that shared/grouped/low-rank FIR
+is useful, nor do they prove per-channel taps unnecessary. The rational default
+for this domain is currently no FIR.
+
+### Algorithm and efficiency audit
+
+The paper currently conflates coefficient/parameter compression with
+computational efficiency:
+
+- identity, shared, grouped, and learned all execute the same frozen 64-by-16
+  depthwise convolutional operator and all report exactly 404,352 counted
+  FLOPs/user;
+- low-rank is slightly more expensive in the present counter;
+- median latencies and peak memory differ negligibly (roughly 2.07-2.13 ms/user
+  and 580.94-583.28 MiB);
+- there is no true bypass/off arm that removes operator execution.
+
+Required optimization study:
+
+1. Add a true `off` arm that bypasses the FIR/convolution code path.
+2. Separate **coefficient compression** (trainable parameters/model bytes) from
+   **compute efficiency** (analytic operations, measured latency, memory,
+   energy).
+3. Validate the operation counter against analytic FIR and projection counts;
+   document what layers/operations it includes.
+4. Report paired per-seed resource distributions and uncertainty, not only
+   medians.
+5. If retaining FIR, first establish shared-versus-off superiority on an
+   untouched design; then test shared/grouped/low-rank noninferiority to learned.
+6. Publish selected-checkpoint tap values/norms, update norms, effective filter
+   responses, activation magnitudes, validation curves, and best epochs. Several
+   identical/near-identical scores make active-treatment diagnostics important
+   even though structural gradients at initialization are nonzero.
+
+### Current-baseline and novelty audit
+
+The closest defensible contribution remains an incremental causal FIR module
+plus unusually detailed audit/falsification machinery. The non-Amazon negative
+makes a broad algorithmic advance harder to sustain.
+
+At the fixed cutoff, the official-code WEARec campaign was not a result:
+
+- freeze commit `b804ea02` was publicly pushed at 20:06:03 local;
+- the first tuning start seal followed at 20:06:23;
+- both validation-only tuning runs were complete and `official_beauty` was
+  selected;
+- assessment seed `20262001` was complete and `20262002` was training;
+- zero TEST seals, endpoints, sidecars, or adjudication existed.
+
+Therefore no WEARec number may enter the manuscript or this audit at the cutoff.
+The protocol honestly says the adapter is not a reproduction, SOTA claim,
+equal-architecture comparison, or independent confirmation. It reuses official
+model source but substitutes this paper's data/evaluator and tries only the two
+official Sports/Beauty presets with one tuning seed. A poor eventual result
+would not be decisive evidence against WEARec. Broaden the VALID-only budget in
+a new protocol or obtain configuration guidance; otherwise label the result a
+narrow official-code port. AlphaFuse/text+ID remains an unclosed nearest-
+comparator gap.
+
+WEARec custody is improved but incomplete: the evaluator can be invoked for one
+seed without verifying a family-wide READY barrier. For future versions, create
+an exclusive family READY record containing all eight checkpoint/run hashes;
+make the evaluator reject until the entire family validates; embed adapter,
+commit/dirty-state, environment, driver, cuDNN, and lock hashes; and use an
+externally auditable first-reader handoff.
+
+### Reproducibility, release, and data-governance audit
+
+Read-only release checks at the fixed boundary:
+
+- `update_release_manifest.py --verify-git b804ea02`: **PASS**, 635 entries.
+- local manifest verification: **FAIL**, 12 reports after 1,036 verified files,
+  corresponding to six dirty manifested payloads each reported as hash drift
+  and Git-dirty (`AUDIT_RESPONSE_2026-07-27.md`, `PAPER_DRAFT.md`,
+  `PAPER_SUBMISSION.md`, `build_hstu_tables.py`, `emit_latex_tables.py`, and
+  `paper_tex/PAPER_TORS.pdf`).
+- `build_table0_claim_ledger.py --check`: **PASS**.
+- candidate deposit check: **FAIL**; the live inventory requires 918 entries
+  while deposit instructions say 908, in addition to dirty payload mismatch.
+- final deposit check: **FAIL** for the same reasons plus creator placeholders
+  and absent/stale `v1.2.0-deposit`.
+
+All 407 expected public payload assets (9,489,409,339 bytes) match the mutable
+public v0.9 release by name, size, and GitHub SHA-256. The uploaded manifest is
+stale relative to the local cutoff manifest, so claims that it was “uploaded
+last” are no longer true. Do not patch counts piecemeal during the live WEARec
+campaign. Once the state is final: regenerate all counts from the mechanical
+inventory, commit one coherent boundary, run candidate and clean-clone checks,
+replace creator placeholders, cut the final tag, upload payloads, and upload the
+matching manifest last.
+
+For MovieLens, the public aggregate graph is insufficient for independent
+replay. Raw ML-1M redistribution is restricted by the official terms, but the
+authors can still provide a lawful self-service workflow:
+
+1. cite and link the official archive;
+2. require the researcher to accept/source the official terms and download it
+   directly;
+3. verify the archive checksum;
+4. run deterministic acquisition/preprocessing from the frozen commit;
+5. verify split/cohort/catalog hashes and counts;
+6. train/evaluate/adjudicate from one command; and
+7. compare regenerated aggregate cells against the release graph.
+
+The ethics/data statement should explicitly cover MovieLens research-use and
+acknowledgement conditions, restricted redistribution/commercial use, the
+decision not to use demographic fields (if true), and the authors' institutional
+determination. The basis for redistributing derived Amazon artifacts remains an
+author/legal verification item.
+
+### Writing and internal consistency audit
+
+1. **Per-channel necessity.** Markdown says the results “reject per-channel
+   necessity,” while the TeX uses the appropriately cautious “do not establish
+   necessity.” Harmonize all sources to “do not support per-channel necessity”
+   or “prevent attributing gains to per-channel taps.”
+2. **Figure numbering.** After adding Software and MovieLens figures, hard-coded
+   Markdown/reader numbers and duplicated italic captions disagree. Use
+   generated cross-references and a single caption source; verify every in-text
+   reference after rendering.
+3. **Abstract.** It is shorter (roughly 220 words) but remains a dense ledger of
+   estimates and protocol labels. Recommended order: research question;
+   prospective multi-domain design; central MovieLens non-replication; bounded
+   Amazon positive; compression caveat; audit/falsification implication.
+4. **Contribution framing.** “Reject,” “establishes,” “generalizes,” and
+   “efficient” should be reserved for decisions the registered design actually
+   supports. Prefer “did not replicate,” “consistent with,” “conditional
+   noninferiority,” “coefficient compression,” and “same-team evidence.”
+5. **Scope.** Put `1,033/6,040` and the target-conditioned known-catalog estimand
+   in the main MovieLens result paragraph, not only methods/supplement.
+6. **Length/navigation.** The main Markdown source is roughly 22,651 words and
+   the TORS PDF is 45 pages. This is not asserted as a formal rule violation;
+   exact portal limits require author verification. Move the full screening log,
+   custody ledger, and diagnostic tables to a separately navigable supplement.
+
+### PDF, table, and figure audit
+
+Artifacts at the fixed worktree state:
+
+- reader: 50 pages, 1,567,920 bytes, SHA-256 beginning `CD15F...A6B77`;
+- TORS: 45 pages, 494,002 bytes, SHA-256 beginning `B9D67...DFFF3`;
+- acmsmall: 46 pages, 501,605 bytes, SHA-256 beginning `8C7A07...E5F3`.
+
+Full-page rendering found no missing/blank pages, black glyphs, general overlap,
+or clipping in the reader/TORS PDFs. Confirmed defects and fixes:
+
+- **acmsmall page 12:** the Datasets table exceeds the right boundary; the
+  `Interactions (total)` header/column and MovieLens values are cut off. Use
+  true acmsmall-width `tabularx`/fixed-width columns, shorten cells, or move the
+  table to landscape/supplement; rebuild both formats.
+- **MovieLens figure (reader 21/TORS 20/acmsmall 21):** numbers match the data,
+  but labels are crowded and the narrow, truncated accuracy axis lacks
+  uncertainty. Replace with paired deltas/CIs, zero and NI-margin reference
+  lines, marker shapes, and an explicit zoom warning if an absolute panel is
+  retained.
+- **Older Figures 3-4:** venue PDFs contain six Type 3 font resources on their
+  pages. Re-export with Type42/TrueType/Type0/vector text. The two new figures
+  use embedded Type0 fonts and are clean.
+- **Accessibility/metadata:** reader is tagged but has no links or outlines;
+  TORS/acmsmall are untagged. Placeholders appear on page 1/running heads, and
+  acmsmall carries dummy January 2026 publication metadata. Replace metadata,
+  add navigation, and tag the production PDF.
+- **Pagination:** TORS screening log continues with only three rows on page 44,
+  leaving over two-thirds blank. Move the full log to supplement or tune
+  longtable breaks.
+- **Table 0:** spans pages 5-6 with a repeated header and no clipping; it is
+  still dense. Retain a short claim matrix in the paper and move the complete
+  audit ledger to supplement.
+
+### External fact checks and source links
+
+- The official [MovieLens 1M
+  README](https://files.grouplens.org/datasets/movielens/ml-1m-README.txt)
+  confirms 1,000,209 ratings, 6,040 users, at least 20 ratings per user,
+  timestamps, acknowledgement requirements, and research-use/redistribution
+  restrictions. The paper's base dataset counts are consistent; its retained
+  cohort is a much narrower constructed subset.
+- The [official WEARec AAAI
+  record](https://ojs.aaai.org/index.php/AAAI/article/view/38640) identifies the
+  2026 paper, and the [authors' official-code
+  repository](https://github.com/xhy963319431/WEARec) is the upstream used by
+  the local adapter. The manuscript is right to describe the local run as a
+  port rather than a reproduction of the published evaluation.
+- The exact live TORS submission-page, abstract, page/word, and supplementary
+  requirements could not be verified because the author-guidelines page was
+  inaccessible during this run. Treat all exact venue-format compliance as
+  **AUTHOR VERIFICATION**, not as a confirmed rule violation.
+
+### Prioritized repair sequence
+
+#### Before any submission or public deposit
+
+- [ ] Replace every author/affiliation/contact/declaration/creator placeholder;
+  remove `DRAFT_WAIVER`; rebuild and scan all formats.
+- [ ] Correct every “TEST file unopened/unhashed” MovieLens sentence.
+- [ ] Disclose target-conditioned cohort construction, retained-user fractions,
+  known-catalog estimand, and head-only top-10 success.
+- [ ] Replace “reject per-channel necessity” and unconditional efficiency/
+  generalization language.
+- [ ] Let WEARec finish under the frozen protocol without semantic TEST access;
+  do not incorporate post-cutoff results into this audit section.
+- [ ] Rebuild a coherent graph/manuscript/TeX/PDF/release state and pass Git,
+  local, candidate, clean-clone, placeholder, and final-deposit gates.
+- [ ] Fix acmsmall table clipping, MovieLens uncertainty visualization, Type 3
+  fonts, tagging/navigation, metadata, figure references, and pagination.
+- [ ] Add MovieLens official-source/licensing/ethics text and a self-service
+  download-to-rebuild workflow.
+
+#### Highest-value next experiments
+
+- [ ] Pre-cutoff-only MovieLens cohort/catalog with unseen-target coverage and
+  rolling temporal cutoffs.
+- [ ] True FIR-off bypass plus identity/shared/grouped/low-rank/learned arms;
+  superiority before noninferiority; tuned/current baseline parity.
+- [ ] Analytic and measured parameter/bytes/FLOPs/latency/memory/energy Pareto,
+  with per-seed uncertainty and activation/update diagnostics.
+- [ ] Broader VALID-only official-code WEARec configuration budget or explicit
+  narrow-port interpretation; clean AlphaFuse-style text+ID comparator.
+- [ ] Independent or externally custodied reproduction on another contemporary
+  implicit-feedback domain.
+
+### Open author questions
+
+1. Who are the final authors, affiliations, corresponding contact, release
+   creators, funding/conflict declarations, and venue submission owner?
+2. Will the authors sign the narrower MovieLens TEST/cohort description and
+   remove the false “unopened/unhashed” wording?
+3. Is there a lawful institutional basis for the public derived Amazon assets,
+   and has MovieLens use/nonredistribution been reviewed?
+4. Can a reviewer independently download ML-1M and regenerate splits/endpoints
+   from one command without private files?
+5. Was any V2 validation console output or any plaintext endpoint viewed before
+   designated adjudication? What records support the answer?
+6. Will WEARec be presented only as a narrow official-code port unless a fairer
+   tuning budget is run under a new frozen protocol?
+7. Is the target journal definitely TORS, and what are the exact current portal
+   requirements for abstract, length, supplementary files, anonymization, data,
+   and code?
+
+### Running checklist status
+
+- [x] Fixed cutoff recorded and later WEARec outcomes excluded.
+- [x] Main Markdown, TeX, protocols, code, results graph, figures, and PDFs
+  inspected.
+- [x] MovieLens arithmetic and sidecar alignment independently checked.
+- [x] Negative replication and conditional noninferiority distinguished.
+- [x] Official MovieLens and WEARec source claims fact-checked.
+- [x] Git-backed release and Table 0 graph checks rerun.
+- [x] All three current PDFs rendered/inspected; temporary renders removed.
+- [ ] False MovieLens TEST sentence corrected in all sources.
+- [ ] Target-conditioned cohort and head-only result disclosed prominently.
+- [ ] WEARec campaign adjudicated and fairly interpreted.
+- [ ] Current-baseline/AlphaFuse gap closed or claims/venue narrowed.
+- [ ] MovieLens self-service reproduction route demonstrated.
+- [ ] True bypass and complete efficiency accounting added.
+- [ ] Author/legal/ethics metadata resolved.
+- [ ] Candidate and clean-clone release gates pass from one immutable commit.
+- [ ] PDF clipping/fonts/tagging/navigation/metadata fixed.
+- [ ] Exact venue portal requirements verified by the authors.
+
+## Audit Run - 2026-07-28 16:04 Australia/Sydney
+
+### Fixed boundary, scope, and decision
+
+- **Fixed cutoff:** `2026-07-28T16:04:12.2482340+10:00`
+  (`2026-07-28T06:04:12.2482340Z`). Evidence created after that instant is
+  identified separately and is not used to improve the cutoff verdict.
+- **Branch:** `codex/bestrec-sota-results`.
+- **Cutoff HEAD:** `1585915bcc098cb3d4c914e83b2c0a0173041b61`
+  (`Integrate prospective Software FIR verdict`, committed 16:03:43 local).
+- **Cutoff upstream and merge base:**
+  `7cbc4ef8e52e736c5006d73ee30014ffcdf47ff9`; the integrated V3 commit was one
+  commit ahead and not publicly addressable at the boundary. A GitHub public
+  push event placed `1585915b` on the branch at 16:04:52 local, 40 seconds after
+  the cutoff. The freeze commit itself had already been pushed before launch.
+- **Cutoff worktree:** the only tracked change was this cumulative audit.
+  Untracked `_bestrec_run/qa_final/`, `qa_final2/`, `qa_final3/`, and
+  `_bestrec_run/tmp/` were excluded from scientific evidence.
+- **Change since the 10:02 audit:** 85 files, +24,589/-131 lines, including the
+  permanent V2 void, V3 preregistration/code/execution/adjudication, hydrated
+  V3 release artifacts, revised manuscripts/PDFs, and an improved FIR figure.
+- **Reviewer recommendation:** **reject / not submission-ready in literal
+  form; major scientific revision required.** The new Software effect is strong
+  and internally consistent, but its prospective label is conditional on an
+  unresolved custody fact, the frozen runner is not clean-checkout replayable,
+  current baselines and independent/generalization evidence remain missing, and
+  submission metadata is visibly incomplete.
+- **Subjective direct top-journal acceptance calibration:** **below 1% as the
+  literal package stands**; approximately **5-9%** after clerical/release repair
+  if V2 validation visibility remains unresolved, or **7-12%** if credible
+  non-visibility evidence is supplied. Fair current baselines plus the
+  shared/grouped efficiency study could move the scientific package to roughly
+  **10-18%**; an untouched non-Amazon/temporal study or independent reproduction
+  could plausibly move it to **18-30%**. These are reviewer judgments, not
+  journal base rates or guarantees.
+
+### What materially improved
+
+1. **[CONFIRMED] V2 was handled correctly after discovery.**
+   `FIR_PROSPECTIVE_SW_V2_INTEGRITY.md` and
+   `_bestrec_run/fir_prospective_sw_v2_status.json` permanently classify V2 as
+   `VOID` / integrity failure because the frozen no-TEST-access rule had been
+   violated. The partial run was not laundered into evidence.
+2. **[CONFIRMED] V3 fixed the literal V2 access contradiction.** The V3 protocol
+   explicitly permits all-split identifiers/timestamps for hashing, reindexing,
+   and catalog construction while sequestering TEST scoring. It uses eight new
+   paired seeds (`20261301`-`20261308`) and does not reuse the V2 checkpoints.
+3. **[CONFIRMED] The execution chronology is internally coherent.** The freeze
+   commit and public branch push preceded ATTEMPT; all 16 training runs preceded
+   READY; all evaluation seals followed READY; adjudication followed complete
+   endpoint creation. No training JSON contains a TEST metric, and all have
+   `best_test=null`.
+4. **[CONFIRMED] The Software endpoint is strong and exactly reproduced.** The
+   adjudication numbers agree across JSON, Markdown, TeX, Table 0, and PDFs. The
+   registered verdict follows mechanically from the registered rule.
+5. **[CONFIRMED] Figure quality improved.** `paper_tex/fig_fir_response.pdf`
+   now uses embedded Type 0 fonts, has readable labels, and states the mechanism
+   and independence limitations. The earlier Type 3-font defect is resolved.
+6. **[CONFIRMED] Pointwise wording improved.** The paper now calls the
+   current-position-only arm a compound contrast and no longer claims it
+   isolates temporal access.
+
+### Software V3 chronology and integrity reconstruction
+
+| Event | Time (Australia/Sydney) | Reviewer finding |
+|---|---:|---|
+| V2 violation detected | 10:24:46 | Pre-outcome protocol violation identified |
+| V2 void commit | 10:27:19 | Permanent and appropriate |
+| V3 freeze commit/tag | 10:48:06 | Before launch; annotated tag resolves to `9c8f1a16` |
+| Freeze commit publicly pushed | 10:49:55 | Before ATTEMPT; public timing confirmed |
+| V3 ATTEMPT | 10:55:00 | Frozen-file hashes later match tag Git objects |
+| First training JSON complete | 11:12:21 | No TEST score recorded |
+| Last training JSON complete | 15:25:31 | All 16 runs complete |
+| READY | 15:25:33 | Precedes every evaluation start seal |
+| First evaluation start seal | 15:25:38 | Created before endpoint load/score path |
+| Sixteenth evaluation start seal | 15:37:03 | All endpoints remain post-READY |
+| ENDPOINTS-COMPLETE | 15:37:45 | Hash chain closes internally |
+| Paper/result integration | 16:03:43 | Cutoff HEAD |
+
+Additional confirmed checks:
+
+- All 18 files named by ATTEMPT match their immutable tagged Git objects. The
+  frozen set includes the model builder and adjudicator.
+- There are exactly 16 training records and 16 evaluation-start seals, with
+  eight matched backbone/full-initial-state hashes. Arm order alternates.
+- Every run completed 20 epochs. Identity tap norms are zero; learned tap norms
+  are positive. The learned arm adds exactly 1,024 trainable parameters.
+- ATTEMPT, READY, ENDPOINTS-COMPLETE, run, seal, checkpoint, endpoint, and
+  sidecar digests cross-link without a discovered mismatch.
+- The evaluator creates its start seal before loading/scoring TEST. The
+  adjudicator and protocol hashes agree with the freeze.
+- The annotated freeze tag is unsigned and movable by repository administrators.
+  Public pre-launch publication is materially better than a local-only tag, but
+  it is not equivalent to a signed independent timestamp or third-party escrow.
+
+### Software V3 statistical audit
+
+Recomputation from
+`_bestrec_run/fir_prospective_sw_v3_adjudication.json` gives:
+
+| Quantity | Identity | Learned FIR | Paired learned-identity |
+|---|---:|---:|---:|
+| Mean NDCG@10 | 0.1151377253 | 0.1201995835 | +0.0050618582 |
+| Across-seed SD | 0.0004937797 | 0.0002121157 | 0.0005637789 |
+| Ordinary paired 95% CI | — | — | [+0.0045905272,+0.0055331891] |
+| Paired t statistic | — | — | t(7)=25.3948791 |
+| Two-sided paired-t p | — | — | 3.7494174e-8 |
+| Positive matched pairs | — | — | 8/8 |
+| Relative mean gain | — | — | 4.396% |
+
+The eight registered paired differences are `0.0051975481`, `0.0043089738`,
+`0.0050821811`, `0.0057889687`, `0.0054392902`, `0.0055166480`,
+`0.0041945430`, and `0.0049667125`. The lower confidence bound exceeds the
+registered +0.000500 threshold, so `SW-V3-PRACTICAL-POS` is arithmetically
+correct. Secondary descriptive differences are HR@10 `+0.0074361663` and MRR
+`+0.0044039100`.
+
+**Statistical qualification:** a post-hoc exact sign test for 8/8 positive
+pairs is `p=.0078125`. This still supports a consistently positive seed effect,
+but it shows why the extremely small paired-t p-value should not be read as
+population-level certainty: it relies on a normal approximation to a very
+small optimizer-seed variance sample. The manuscript must report all eight
+registered differences and their sample SD, and must state that inference is
+conditional on this one dataset split and training protocol.
+
+### Decisive prospective-evidence qualification
+
+**[AUTHOR VERIFICATION REQUIRED]** V3 says that no V2 training JSON,
+checkpoint, validation metric, TEST score, or outcome was inspected before V3
+was frozen. The tracked repository proves neither observation nor
+non-observation:
+
+- V2 produced one completed training JSON and two checkpoints before it stopped.
+- `run_fir_prospective_sw_v2.py` inherited child stdout.
+- `run_sasrec_sbert_pointwise_v1_frozen.py` prints validation NDCG each epoch
+  even when TEST scoring is disabled.
+
+Therefore a person watching the V2 job could have seen validation performance
+before choosing V3's threshold/design, even though no V2 TEST endpoint was
+created. The repository contains no redirected-console log, job-service access
+record, screen recording, or independent custodian statement that settles this.
+
+- **If stdout was redirected and unread, and this is documented:** classify V3
+  as internally prospective, predeclared, new-seed, same-category evidence. It
+  is still not independent confirmation.
+- **If values were seen, or visibility cannot be credibly resolved:** the
+  untouched V3 TEST evaluation remains meaningful, but the design is a
+  validation-outcome-informed retry. Classify it as predeclared new-seed
+  robustness under author-asserted non-inspection, not confirmatory evidence.
+
+Until this fact is resolved, the paper must not state without qualification
+that V3 “closes the prospective-evidence gap.”
+
+### Confirmed clean-checkout defect
+
+The frozen common module registers
+`_bestrec_run/results_MI_V2_ls02_filter16_seed20260608.json` with raw-byte
+SHA-256 `a230d17cd4e1683ac0e07e64702587950baf89374083521850c96daeede1ab72`.
+That digest describes the current CRLF worktree file (10,723 bytes).
+`.gitattributes` enforces `*.json text eol=lf`, so the immutable tagged Git blob
+is 10,318 bytes and hashes to
+`37c78ef344dcbe4741d7ea0d487712ff8eb8e10096754a7467e29844989302f8`.
+`assert_inputs` hashes raw bytes; a clean tagged checkout therefore fails before
+launch.
+
+The reference JSON is explicitly not an algorithm input and is not used to
+select or compute the Software endpoint. Consequently this is a reproducibility
+and registration defect, not evidence that the reported number is corrupted.
+It must nevertheless be disclosed rather than silently repairing the historical
+tag.
+
+Required repair:
+
+1. Publish a versioned V3 erratum stating the CRLF and LF sizes/digests and the
+   file's non-input role.
+2. Preserve or distribute the exact CRLF reference bytes required for historical
+   replay, with the deviation explicitly documented.
+3. For future protocols, hash the Git blob/canonical LF or semantic parsed JSON,
+   or mark intentionally byte-stable artifacts `-text` before freezing.
+4. Add a gate that clones the exact tag into a new directory and executes all
+   registered input assertions before any prospective launch.
+
+### Further protocol and reproducibility findings
+
+1. **[CONFIRMED] “Immutable seals” is inaccurate.** `atomic_json_x` creates a
+   temporary file exclusively but uses `os.replace` at the destination; the
+   resulting local JSON remains writable/replacable. Evaluation start seals use
+   exclusive creation but likewise have no append-only storage or external
+   timestamp. Use “exclusive-created, hash-linked local seals.”
+2. **[AUTHOR VERIFICATION] “First endpoint reader” is not auditable.** The
+   committed adjudicator is the protocol-designated first semantic interpreter,
+   but same-user local endpoint files existed first. Human/tool non-access is an
+   author assertion unless externally logged or escrowed.
+3. **[CONFIRMED] Replay is checkout-path dependent.** Absolute argv paths are
+   recorded and compared, so a clean checkout at another path can fail even
+   when contents match. Freeze relative normalized paths and content hashes.
+4. **[CONFIRMED] Raw endpoint evidence is not in Git.** The cutoff tree tracks
+   the 16 training JSONs and 16 start seals, but not the 16 final-evaluation
+   JSONs, 16 NPZ user sidecars, or 16 checkpoints. They are manifest-bound
+   release payloads; Git alone cannot reconstruct the endpoint or verify user
+   coverage.
+5. **[CONFIRMED] `best_test_epoch` is misleading.** No TEST-based selection
+   occurred; the field records a validation-selected checkpoint. Rename it
+   `selected_validation_epoch` throughout schema, code, checks, and prose.
+6. **[CONFIRMED] The adjudicator does not fully reconstruct sidecars.** It
+   recomputes mean NDCG but does not independently gate unique-user identity,
+   exact 146,396-user coverage, equal array lengths, finiteness, and
+   rank-derived HR/MRR. Add these checks from raw arrays.
+7. **[CONFIRMED] Environment capture is partial.** Python/Torch/CUDA build,
+   NumPy/SciPy, GPU and lock hashes are useful, but OS, driver, cuDNN,
+   deterministic-algorithm flags, container identity, and untracked import
+   shadowing are not fully bound.
+8. **[CONFIRMED] Registered reporting is incomplete.** The preregistration asks
+   for all paired differences and the sample SD; the paper prints neither. The
+   result graph recomputes several statistics, but Table 0 remains manual with
+   `checked: 0`, so not every printed number is mechanically gated.
+
+### Novelty, baselines, and algorithm optimization
+
+**[CONFIRMED]** The new Software result strengthens the narrow empirical claim
+that the learned causal FIR beats identity under this setup. It does not make
+the filter class novel, establish per-channel necessity, or show superiority to
+current frequency-aware recommenders. Published C3SASR already combines causal
+convolution with self-attention, while current FreqRec and WEARec use broader
+frequency/adaptive filtering approaches. The paper cites/scopes these systems,
+but does not execute FreqRec or WEARec under an equal protocol; AlphaFuse remains
+noncountable.
+
+The central parsimony result remains adverse to the proposed complexity. In the
+outcome-known active-control study, learned per-channel FIR minus the
+16-parameter shared FIR is `-0.00008142`, ordinary paired 95% CI
+`[-0.00033748,+0.00017464]`, Holm-adjusted `p=.477`. Software V3 compares only
+learned versus identity, so it cannot rescue a claim that 1,024 channel-specific
+parameters are needed.
+
+Highest-value algorithm study:
+
+1. On a genuinely untouched category/domain, preregister identity, 16-parameter
+   shared FIR, grouped FIR, low-rank FIR, 1,024-parameter per-channel FIR, and a
+   parameter/activation-matched current-only placebo.
+2. Make shared/grouped versus per-channel noninferiority the primary efficiency
+   question. Define a substantive margin before outcome access.
+3. Report trainable parameters, FLOPs, training time, inference latency,
+   throughput, peak memory, and accuracy in one Pareto analysis.
+4. Run a clean AlphaFuse-style text+ID comparator and at least one feasible
+   current frequency-aware baseline. If resource equivalence is impossible,
+   predeclare the exact mismatch and avoid leaderboard wording.
+5. Prefer a temporal holdout or non-Amazon domain, with independent endpoint
+   custody or third-party reproduction.
+
+Primary literature used for the novelty check:
+
+- [C3SASR preprint (authors' paper)](https://arxiv.org/abs/2211.01297)
+- [FreqRec, AAAI proceedings](https://ojs.aaai.org/index.php/AAAI/article/view/38502)
+- [WEARec, AAAI proceedings](https://ojs.aaai.org/index.php/AAAI/article/view/38640)
+
+### Construct, inference, and generalization
+
+- **[CONFIRMED]** Eight optimizer seeds on one fixed Software split quantify
+  training stochasticity, not uncertainty over users, time, categories, data
+  construction, or domains. Add repeated temporal cutoffs, category/domain
+  replication, and cluster-aware/hierarchical uncertainty.
+- **[CONFIRMED]** V3 is same-investigator, same-code-lineage, same-Amazon-family,
+  and locally custodied. It is a prospective evaluation only under the custody
+  condition above; it is not independent confirmation or external validation.
+- **[CONFIRMED]** Ratings and verified-purchase indicators are ignored, and the
+  transductive construction uses all-split identities/timestamps for catalogs
+  and mapping by explicit protocol design. This is not covert leakage, but it
+  narrows the estimand. Add rating/verified-purchase, global-time,
+  query-time-catalog, and non-five-core sensitivities.
+- **[SOURCE-CONFIRMED]** The official Amazon Reviews 2023 documentation presents
+  five-core as a filtered subset and warns that it reduces diversity and may not
+  represent the original distribution. Scope generalization accordingly:
+  [dataset categories](https://amazon-reviews-2023.github.io/main.html#grouped-by-category)
+  and [five-core processing/statistics](https://amazon-reviews-2023.github.io/data_processing/5core.html#statistics).
+- **[PLAUSIBLE RISK]** The registered +0.000500 threshold is not connected to a
+  user, business, latency, or prior-noise quantity. The result clears it, but
+  “practical” is stronger than justified. Call it a predeclared minimum-effect
+  reporting threshold or add a defensible smallest effect size of interest.
+
+### Release/archive audit at the cutoff
+
+Local mechanical checks:
+
+- `update_release_manifest.py --verify-git HEAD`: **PASS**, 602 Git-backed
+  entries.
+- `update_release_manifest.py --verify --allow-missing-assets`: **PASS**, 1,009
+  total files with zero local missing assets.
+- `build_deposit_bundle.py --check-only --candidate`: **PASS**; manifest and
+  candidate metadata agree on v1.2.0.
+- Normal non-candidate `--check-only`: **FAIL**, because creator metadata remains
+  placeholder text and the declared final `v1.2.0-deposit` tag does not exist at
+  `1585915b`.
+- Current local `RELEASE_MANIFEST.json`: 170,422 bytes, SHA-256
+  `e126df52fe17d769a2d8e092dda3fbe01d85b8956a70b312ae77c7bd6b383a33`.
+
+The manifest defines 407 release-only assets totaling 9,489,409,339 bytes:
+
+| Family | Files | Bytes |
+|---|---:|---:|
+| Splits | 21 | 765,347,561 |
+| Caches | 6 | 542,551,582 |
+| Pinned parity | 9 | 11,551,039 |
+| TFV2 sidecars | 107 | 161,288,286 |
+| FIR controls | 144 | 4,596,570,819 |
+| Pointwise | 72 | 2,298,374,748 |
+| Software V2 | 0 | 0 |
+| Software V3 | 48 | 1,113,725,304 |
+
+The mutable GitHub `v0.9-audit-evidence` release had 409 assets. All 407
+manifest-expected payloads matched by name, byte size, and SHA-256; the only
+extras were `pinned_env_parity_artifacts.zip` and `RELEASE_MANIFEST.json`.
+All V3 payload uploads predated this audit cutoff. This is strong evidence that
+the raw files exist publicly, but it is not a final immutable deposit:
+
+- The remote release-manifest asset was still the older 155,659-byte object
+  created at 00:59:33Z and did not describe V3.
+- README still says 195 cells and advertises 359 assets / 8,375,684,035 bytes;
+  current manuscript/canonical counts are 196 cells / 20 systems and the
+  payload inventory is 407 / 9,489,409,339.
+- CFF and Zenodo descriptions still say 195 cells / 19 systems; Zenodo also uses
+  obsolete temporal-access wording for the pointwise compound contrast.
+- Creator placeholders remain and `v1.2.0-deposit` is absent.
+- The candidate gate passes despite those contradictions and the V3
+  clean-checkout failure, demonstrating insufficient gate coverage.
+
+Required publication sequence: correct all landing/creator metadata; add the
+V3 erratum; generate Table 0 and count claims from machine sources; upload the
+manifest last; bootstrap from a fresh HTTPS clone with no author cache; run the
+strict result graph and frozen input assertions; then create an immutable tag,
+release, and DOI from the exact passing commit.
+
+### Full PDF, table, figure, and writing review
+
+The PDF skill workflow rendered and visually inspected all 132 pages at the
+fixed cutoff. Temporary render files were kept outside the manuscript tree and
+removed after inspection.
+
+| Artifact | Pages | Bytes | SHA-256 | Navigation/accessibility finding |
+|---|---:|---:|---|---|
+| `PAPER_SUBMISSION.pdf` | 47 | 1,341,963 | `1c811cdd90c783e35c841450f95368e34598ed05e323e2712f8db052bd5a474d` | Tagged, but 0 links and 0 outlines |
+| `paper_tex/PAPER_TORS.pdf` | 42 | 434,799 | `887450c4491ed3020d28cc6d1a151e223cb5cd3117da0bccd77fcb67c322a6cb` | Untagged; 479 links; 17 top-level outlines |
+| `paper_tex/PAPER_TORS_acmsmall.pdf` | 43 | 442,237 | `0c4ab983aff68383e3651204feca373605f79810b5ab1dafeca4218ef471058b` | Untagged; 487 links; 17 top-level outlines |
+
+- **[CONFIRMED]** No gross clipping, overlap, blank page, missing content, or
+  Type 3 font was found. The updated FIR response figure is legible.
+- **[CONFIRMED]** Table 0 remains difficult to read in the narrow TORS layout
+  and splits across pages 5-6. Supplement probe tables near the end are too
+  small for comfortable review. Redesign by scientific question, move secondary
+  diagnostics to the supplement, and use fewer columns with explicit units.
+- **[CONFIRMED]** There is no visualization of the new Software V3 result. Add a
+  paired-seed slope/forest plot showing identity and learned values, paired
+  differences with CI, zero, and the +0.000500 threshold. Keep outcome-known MI
+  and prospective-conditional Software evidence in separate panels.
+- **[CONFIRMED]** Visible placeholders remain in all formats, including
+  MAINTAINER/REAL AUTHOR text, short-author headers, institution/country fields,
+  and the acmsmall dummy volume/date footer.
+- **[PLAUSIBLE editorial risk]** `PAPER_SUBMISSION.md` is about 21,618 words;
+  the abstract is 275 words; the reader and TORS PDFs are 47 and 42 pages. No
+  formal TORS page/abstract violation is asserted here. Nevertheless the story
+  is too audit-dense for fast editorial comprehension. Compress the abstract,
+  introduction, and main result narrative; move chain-of-custody mechanics and
+  probe tables into a well-linked supplement.
+
+### Concrete wording repairs
+
+Replace unconditional language along these lines:
+
+- **Current:** “Software closes the prospective-evidence gap.”
+  **Suggested:** “Under the authors' attestation that aborted V2 validation
+  output was not observed, the predeclared new-seed Software V3 evaluation
+  provides internally prospective same-category evidence; it is not an
+  independent replication.”
+- **Current:** “immutable READY/evaluation seals.”
+  **Suggested:** “exclusive-created, hash-linked local READY and evaluation
+  seals.”
+- **Current:** “the adjudicator was the first endpoint reader.”
+  **Suggested:** “the committed adjudicator was the protocol-designated first
+  semantic interpreter; absence of prior human/tool access is author-attested.”
+- **Current:** “practically positive.”
+  **Suggested:** “positive under the predeclared +0.000500 minimum-effect
+  reporting threshold,” unless the threshold is tied to a substantive SESOI.
+- **Current:** broad novelty/superiority language.
+  **Suggested:** “a compact causal FIR adaptation that improves this frozen
+  identity baseline; current frequency-aware and independently reproduced
+  comparisons remain future work.”
+
+### Open questions requiring authors
+
+1. Was V2 child stdout redirected, hidden, or watched? Who had access, and can
+   the job/console logs and timestamps be preserved?
+2. Were the V2 training JSON or checkpoints opened by any person, IDE, script,
+   indexer, previewer, or automated agent before the V3 freeze?
+3. Why was +0.000500 chosen, and what user- or deployment-relevant quantity
+   makes it a practical threshold?
+4. Will the authors publish a V3 clean-checkout erratum without modifying or
+   retagging the historical freeze?
+5. Can an independent person reproduce the endpoint from a fresh HTTPS clone
+   and public assets, with no author-local cache or credentialed path?
+6. Why retain 1,024 per-channel taps when the 16-parameter shared FIR is
+   statistically competitive in the available study?
+7. Which current baseline can be implemented under a genuinely equal data,
+   tuning, compute, and evaluation protocol before submission?
+8. Can an untouched temporal cutoff or non-Amazon dataset be placed under
+   independent custody before any new model/design decision?
+9. Who are the actual authors/creators, what are their affiliations and roles,
+   and which ethics/privacy/data-license statements apply?
+
+### Running checklist after this audit
+
+- [x] Permanently void V2 and exclude it from evidentiary claims.
+- [x] Freeze V3 code/protocol before ATTEMPT and publish the freeze commit before
+  launch.
+- [x] Complete 16 validation-selected runs before READY and all TEST endpoints
+  after READY.
+- [x] Recompute the V3 paired result and verify manuscript/table/PDF consistency.
+- [x] Hydrate all 48 V3 raw release payloads and bind them in the manifest.
+- [x] Replace temporal-isolation wording for the pointwise compound contrast.
+- [x] Remove Type 3 fonts from the FIR response figure.
+- [ ] Resolve and document V2 validation-output visibility; condition the V3
+  evidence class until resolved.
+- [ ] Publish the V3 CRLF/LF clean-checkout erratum and demonstrate a fresh-tag
+  replay.
+- [ ] Report all eight registered differences, paired SD, and a robust small-n
+  sensitivity such as the exact sign test.
+- [ ] Regenerate Table 0 from checked adjudication/provenance rather than manual
+  transcription.
+- [ ] Replace “immutable,” “first reader,” “confirmatory,” and “practical” with
+  evidence-matched language.
+- [ ] Execute shared/grouped/low-rank versus per-channel FIR with preregistered
+  noninferiority and computational Pareto reporting.
+- [ ] Run a current equal-protocol frequency-aware baseline and clean
+  AlphaFuse-style text+ID comparator.
+- [ ] Add untouched temporal/non-Amazon validation or independent reproduction.
+- [ ] Add rating, verified-purchase, global-time, query-time-catalog, and
+  non-five-core sensitivities.
+- [ ] Correct README/CFF/Zenodo/manuscript counts and release wording.
+- [ ] Replace all author/creator/declaration placeholders; remove
+  `DRAFT_WAIVER=1`; rebuild and re-review every PDF.
+- [ ] Bootstrap and strictly verify from a fresh public clone, upload the final
+  manifest last, and cut the immutable versioned tag/release/DOI.
+- [ ] Add the Software paired-seed figure, redesign Table 0, enlarge supplement
+  tables, and remediate PDF navigation/tagging.
+
+### Files changed by this audit
+
+- Updated only `PAPER_REVIEW_AUDIT.md` with this cumulative section and current
+  risk list.
+- No manuscript, code, result, figure, release payload, or PDF was edited.
+- PDF render/contact-sheet scratch data created for visual inspection was
+  removed after review.
+
+## Audit Run - 2026-07-28 10:02 Australia/Sydney
+
+### Fixed audit boundary and verdict
+
+- **Fixed cutoff:** `2026-07-28T10:02:56.8201800+10:00`
+  (`2026-07-28T00:02:56.8201800Z`).
+- **Branch:** `codex/bestrec-sota-results`.
+- **Cutoff HEAD/upstream/merge base:**
+  `22671fb2428be6bcf81bd0c0710f479f073f6f63` (`Reserve fail-closed
+  prospective evidence sections`). The tracked worktree at the boundary differed
+  only in this cumulative audit. Ignored `qa_final*` and `_bestrec_run/tmp/`
+  working areas were not treated as evidence.
+- **Lineage warning:** the previous cutoff `ebe2b939` was replaced by sibling
+  `a17c2f79` from common parent `93e73a5c`, then followed by seven commits ending
+  at `22671fb2`. Relative to `a17c2f79`, this interval changed 29 files
+  (+2,329/-81). Relative to the prior sibling, the apparent 78-file diff includes
+  checkout-line-ending replacement noise and is not a valid scientific delta.
+- **Post-cutoff concurrency excluded:** background rebuild/adjudication activity
+  changed four tracked generated JSONs after the boundary. A prospective
+  Software worktree under `_bestrec_run/tmp/` was also running. No live endpoint,
+  metric, result, or post-cutoff adjudication was opened or used. Those files and
+  processes were not edited, stopped, or reverted. While this audit was being
+  written, HEAD/upstream advanced to `3de2455f` through two post-cutoff commits,
+  including a figure-accessibility/PDF rebuild. Those changes are outside this
+  fixed-cutoff verdict and should be visually reviewed in the next audit.
+- **Strict top-journal verdict:** **reject / not submission-ready**. The interval
+  adds a genuinely prospective selection/preparation attempt, but no eligible
+  scientific endpoint. More importantly, the active Software V2 design violates
+  its own literal TEST-access boundary as soon as training starts.
+- **Acceptance calibration (reviewer judgment, not a statistical forecast):**
+  literal current submission **below 1%**; scientific package after clerical,
+  archive, and wording repair but without valid new science **about 4-8% direct
+  acceptance**; after a protocol-correct positive Software-style study, fair
+  current baselines, and custody/configuration repair **about 10-18%**; with an
+  untouched temporal and non-Amazon validation plus independent reproduction
+  **about 18-30% eventual acceptance**. Software V2 contributes **zero uplift**
+  at this cutoff and should not be used to raise the current estimate.
+
+### What materially changed and improved
+
+1. **[CONFIRMED] Pointwise artifact classification and checkout integrity were
+   repaired.** The Git-backed pointwise result family now contains 50 tracked
+   records (24 training JSONs, 24 STARTED seals, status, and adjudication) and no
+   longer duplicates the 24 release-only final-evaluation JSONs. A clean
+   `core.autocrlf=true` checkout passes Git-backed verification for all 555
+   entries, and all 24 pointwise endpoint provenance hashes match the raw
+   clean-checkout training JSONs. CFF/Zenodo counts are synchronized to 195
+   cells / 19 families, although README inventory counts became stale again when
+   the Software preparation assets were added.
+2. **[CONFIRMED] Digital Music V1 was selected before acquisition and failed
+   transparently.** The deterministic stage-A rule selected Digital Music from
+   33 raw Amazon categories. After earliest-pair deduplication, recursive
+   five-core passes reduced 128,763 interactions through 2,236, 153, and 8 to
+   zero. The frozen record correctly declares `DM-V1-FEASIBILITY-VOID`, performs
+   no model fitting or TEST evaluation, prohibits fallback within V1, and does
+   not present the void as evidence for or against FIR.
+3. **[CONFIRMED] Software V2 selection and preparation are substantially more
+   disciplined than earlier campaigns.** Stage A was committed and pushed before
+   acquisition. Among officially nonempty five-core categories satisfying the
+   frozen size thresholds and prior-use exclusions, Software minimizes
+   users-times-items (about 2.58 billion versus about 5.43 billion for the next
+   eligible Baby Products category). The source and preparation record reports
+   146,396 users, 17,591 items, 1,276,840 interactions, 984,048 train rows,
+   146,396 validation rows, and 146,396 TEST rows.
+4. **[CONFIRMED] Source custody checks found no data mismatch.** An independent
+   download from the official Amazon Review 2023 endpoint was 19,079,096 bytes
+   with SHA-256
+   `a3ab7484436ac9034d1399b501fd2f6f5e82cfe096aeb2c4361ebfa1a5db494e`,
+   matching the frozen manifests. All 17,591 item titles were found; the
+   MiniLM-L6-v2 revision and 17,591 x 384 cache are pinned. The audit's temporary
+   download directory was removed after verification.
+5. **[CONFIRMED] The prepared chronological split is correct despite an
+   underpowered verifier.** Independent read-only reconstruction found no user
+   with a decreasing train-to-validation or validation-to-TEST timestamp. Three
+   users have tied boundary timestamps, and all three follow the frozen source-
+   row tie order. This supports the actual split; it does not cure the verifier
+   defect documented below.
+6. **[CONFIRMED] The Software execution boundary is more reproducible in several
+   respects.** The stage-B protocol and executable files were committed/pushed
+   as `c1048ba6` before the first process. The campaign launched from a dedicated
+   clean clone at that commit, uses two arms by eight fresh seeds, matched
+   backbone settings, 20 epochs, validation-selected checkpoints, and a planned
+   one-shot full-catalog evaluation after all 16 checkpoints.
+
+These are real engineering and transparency gains. None is an eligible positive
+scientific result.
+
+### Confirmed terminal Software-V2 protocol contradiction
+
+The frozen preregistration states that all 16 checkpoints must exist before the
+first TEST **access** and that earlier TEST access is a terminal
+`SW-V2-INTEGRITY-FAIL`. The implementation does not satisfy that literal rule:
+
+1. `run_sasrec_sbert_pointwise_v1_frozen.py` loads `Software.test.csv` before
+   fitting and passes train, validation, and TEST into `reindex` to create the
+   universe of users and items.
+2. `run_fir_prospective_sw_v2.py` independently opens all three split files in
+   preflight to check the item map.
+3. `--no-test-eval` prevents TEST **scoring** and training-history TEST metrics;
+   it does not prevent TEST-file access.
+4. The frozen adjudicator tests only for recorded TEST metrics, not file access,
+   so it can emit a positive verdict after a literal terminal violation.
+5. The fixed split contains 41 TEST items absent from training, including 11
+   absent from train+validation. Their identities and title features therefore
+   enter the transductive catalog before model fitting; this is not a merely
+   semantic open of unused bytes.
+
+Because a trainer had started after the frozen execution boundary, the strict
+reading is already **`SW-V2-INTEGRITY-FAIL` regardless of any eventual endpoint**.
+The rule cannot be weakened after results exist. This is a confirmed protocol
+failure, not a plausible risk.
+
+**Required fix:** preserve V2 as a void/descriptive attempt and freeze V3 before
+any new outcome access. Choose one of two coherent designs:
+
+- explicitly state: “TEST scoring is sequestered; TEST identities and frozen
+  public metadata are used in a transductive catalog before fitting,” and make
+  the claim only about that estimand; or
+- construct user/item mappings and title features from train+validation plus a
+  separately frozen public catalog, without opening the TEST interaction file
+  until the final evaluation boundary.
+
+If V2 finishes for operational reasons, do not present its p-value as
+confirmatory evidence. Preserve hashes and label it protocol-invalid/descriptive.
+
+### Other confirmed Software-V2 protocol and reproducibility gaps
+
+1. **Registered configuration is not mechanically enforced.** The protocol
+   pins a Musical Instruments reference JSON and digest, but the driver checks
+   only that the file exists; the wrapper accepts arbitrary extra trainer
+   arguments; and the adjudicator checks a subset plus cross-run equality rather
+   than equality to the exact registered normalized configuration. A consistently
+   altered configuration can therefore pass. Bind the reference digest in both
+   preflight and adjudication and compare exact normalized config and argv.
+2. **The evaluation code boundary is incomplete.** The evaluator imports
+   `fuse_ease_eval.py` to build the model, but this material helper is absent
+   from the frozen file table and driver preflight. Hash every imported local
+   helper and pin the Python/CUDA/package environment or container digest.
+3. **The execution commit is under-bound.** The driver accepts whatever clean
+   HEAD is present and the adjudicator requires only a common execution HEAD;
+   neither asserts exact `c1048ba6`. Hard-code the expected commit/tree, or
+   enumerate documentation-only descendants and mechanically prove that no
+   executable, config, input, or environment file changed.
+4. **The feasibility gate overclaims chronology.** Its parser retains only
+   `(user_id,parent_asin)` and discards timestamps/ratings, then verifies pair
+   union/disjointness and counts. It cannot prove penultimate/last chronology or
+   source-row tie breaking. Reconstruct and compare every ordered user history,
+   including the three tied boundaries.
+5. **Acquisition can trust a wrong preexisting file.** Stage-A code accepts a
+   preexisting Software gzip by size when no expected SHA is configured, and
+   checks headers only on a fresh download. The independent audit found the
+   current bytes correct, so this is a custody-gate defect rather than an
+   observed data mismatch. Future acquisition must require an exact digest and
+   schema for both cached and fresh files.
+6. **First-reader custody remains author verification.** Endpoint JSON/NPZ files
+   are ordinary plaintext. The adjudicator does not self-hash, enforce access
+   control, or prove a clean exact tree. Add adjudicator self-hash, an exclusive
+   campaign lock, signed all-checkpoints READY seal, encrypted/escrowed endpoints,
+   and append-only access logging. Until then, “mechanical first reader” is
+   **AUTHOR VERIFICATION**, not confirmed.
+7. **Attempt/resume policy is fail-open.** If a checkpoint exists but a run JSON
+   does not, a failed run can be relaunched and overwrite an attempt, contrary
+   to the “no failed run may be replaced” rule. Reserve immutable per-run attempt
+   IDs before launch, refuse any preexisting partial family, record failure
+   tombstones, and never overwrite checkpoints or results.
+8. **The practical threshold and statistical decision differ.** A positive
+   verdict requires mean learned-minus-identity >= +0.000500, but its confidence
+   lower bound need only exceed zero. That establishes a positive estimate with
+   a point-estimate screen, not an effect reliably exceeding +0.000500. Either
+   require the lower bound above the SESOI or rename the decision. Justify the
+   SESOI and provide an a-priori power/sensitivity analysis for eight seeds.
+9. **Fixed arm order is a runtime confound.** Every seed runs identity before
+   learned, so time, thermal, hardware, or environment drift is aligned with the
+   treatment. Preregister randomized or alternating within-seed order and log
+   GPU model, driver, clock/power state, and dependency environment.
+
+### Outcome status at the fixed cutoff
+
+- Git contained **zero** `results_Software_FIRPROSPV2_*` files.
+- Git contained **zero** Software campaign status or adjudication files.
+- The three reserved Software sections in `RELEASE_MANIFEST.json` were empty.
+- The manuscript contained no Software endpoint claim.
+- A dedicated ignored campaign worktree was active, but its post-cutoff outcome
+  state was excluded and not inspected.
+
+Therefore Digital Music V1 is a feasibility void, Software V2 is a literal
+protocol failure with no eligible endpoint, and the paper's scientific evidence
+at this cutoff is unchanged from the prior audit.
+
+### Scientific interpretation and algorithm optimization
+
+#### Mechanism wording remains too strong
+
+The paper still says the pointwise experiment “identifies temporal access” and
+“distinguishes temporal access.” The current-only arm changes more than temporal
+receptive field: it introduces a fixed DCT bottleneck, GELU, rank restriction,
+and cross-channel mapping. The defensible sentence is:
+
+> The learned FIR outperformed the tested equal-count current-only DCT/GELU
+> residual; the result is consistent with, but does not isolate, a benefit of
+> temporal access.
+
+This confirmed wording error appears in the abstract/method spine and should be
+fixed before another PDF is built.
+
+#### The 16-parameter shared FIR remains the strongest optimization direction
+
+The prior active-control result remains: shared causal FIR adds 16 parameters
+and has mean NDCG 0.041523587, whereas the 1,024-parameter per-channel learned
+FIR has mean 0.041442170; learned-minus-shared is -0.00008142 with ordinary 95%
+CI [-0.00033748,+0.00017464] and Holm p=.477. This does not prove equivalence,
+but it gives no accuracy justification for 64 times as many tap parameters.
+
+**Algorithm plan:**
+
+1. make shared FIR the default efficiency candidate;
+2. evaluate grouped FIR (for example 2, 4, 8, 16 groups) and a low-rank temporal
+   basis between shared and per-channel extremes;
+3. preregister a noninferiority margin tied to application utility;
+4. report NDCG, parameter count, FLOPs, training/inference latency, throughput,
+   peak memory, and energy if available;
+5. add current-only linear, activation-matched, rank-matched, and alternative
+   orthogonal-basis controls so temporal access is not confounded with one DCT
+   construction; and
+6. test at repeated temporal cutoffs and at least one non-Amazon domain before
+   selecting the more complex arm.
+
+Do not add a shared/grouped arm to the already frozen Software V2. Any such
+study must be a new preregistered protocol; Software is now outcome-accessed and
+cannot serve as an untouched category for it.
+
+### Novelty, baselines, construct validity, and writing
+
+1. **[CONFIRMED] Novelty remains incremental.** The manuscript now discusses
+   FreqRec, WEARec, and AlphaFuse, but has no valid equal-protocol execution of
+   those current systems. The contribution should be framed as a small causal
+   residual and auditable evidence boundary. Run at least one current
+   frequency-filter baseline and a clean text+ID fusion comparator.
+2. **[CONFIRMED] Statistical scope is optimizer-seed only.** One fixed split and
+   category do not support population/category/generalization language. Add
+   repeated temporal cutoffs, user/category hierarchical analysis, and an
+   explicitly powered SESOI. A confidence interval spanning zero is not
+   equivalence.
+3. **[CONFIRMED] Construct validity remains narrow.** Ratings and verified-
+   purchase status are ignored, and the transductive catalog includes future-
+   relative items. Add rating-threshold, verified-purchase, global-time, and
+   query-time-catalog sensitivity analyses. The official five-core documentation
+   itself warns about reduced diversity and generalizability.
+4. **[CONFIRMED] “Cleanly frozen pointwise campaign” is false.** All 24 pointwise
+   run records report `git_dirty_tracked=true`. The embedded trainer hash supports
+   code identity, but the exact dirty patch is not preserved. Write
+   “precommitted and source-hash-frozen, executed from a tracked-dirty tree.”
+5. **[CONFIRMED] “TEST disabled” is inaccurate.** Say “TEST scoring sequestered;
+   the fixed transductive catalog includes TEST IDs” wherever this is the actual
+   design. Do not imply interaction-file inaccessibility.
+6. **[PLAUSIBLE venue-fit risk]** The submission remains long and claim-dense
+   relative to the incremental method. Lead the abstract with the narrow module
+   result and exact validity boundary. Move audit chronology, failed campaigns,
+   extended probes, and long provenance to an appendix/repository. A top-journal
+   paper needs one scientific spine, not a chronology of every repair.
+
+### Release and archive status
+
+#### Confirmed repairs
+
+- Pointwise training records/seals are stored without checkout normalization,
+  repairing the prior raw-byte clean-clone mismatch.
+- Release-only pointwise final-evaluation JSONs are no longer duplicated in the
+  Git-backed result family.
+- An isolated clean checkout passes `--verify-git HEAD` for 555 Git-backed
+  entries. All 24 downloaded pointwise endpoint JSONs bind the raw bytes of their
+  clean-checkout training records.
+- The cutoff manifest expects 359 release-only assets / 8,375,684,035 bytes,
+  including 72 pointwise assets (24 final-evaluation JSONs, 24 sidecars, and 24
+  checkpoints). A GitHub API inventory found all 359 expected names, sizes, and
+  SHA-256 digests correct; all expected payloads were uploaded before cutoff.
+- README explicitly describes v0.9 as mutable audit evidence; CFF and Zenodo
+  counts now say 195 cells / 19 families.
+
+#### Remaining confirmed blockers
+
+- The candidate deposit is mechanically unbuildable: documentation and README
+  still say 820 bundle entries, but the mechanical `FILES` inventory requires
+  839, so `build_deposit_bundle.py --check-only --candidate` exits 2.
+- README still reports 18 splits, four caches, and 354 assets /
+  8,274,248,666 bytes. The cutoff manifest contains 21 splits, six caches, and
+  359 assets / 8,375,684,035 bytes after adding five Software preparation assets.
+- v0.9 is mutable. Its payloads were present at cutoff, but the remote
+  `RELEASE_MANIFEST.json` still held the older bytes then and was replaced only
+  at 10:11:14 Australia/Sydney, after this boundary.
+- No final immutable deposit, DOI, or `v1.2.0-deposit` tag exists.
+- Creator/author metadata remain placeholders.
+- Empty reserved Software sections are appropriately non-evidence; they must not
+  be populated with a protocol-invalid V2 verdict and presented as confirmation.
+- The bootstrap section registry omits the three reserved Software V2
+  final-evaluation, sidecar, and checkpoint sections. They are empty now, but a
+  future nonempty release would not hydrate by default until support is added.
+
+**Release fix:** update README to 21/6/359/8,375,684,035 and the bundle count to
+839; add all reserved Software sections to bootstrap/destination handling;
+regenerate the manifest; replace creator metadata; and prove the candidate in a
+new clean HTTPS clone with complete hydration, strict rebuild, adjudicator
+replay, PDF checks, and inventory. Then create a new immutable version, upload
+large assets first and the final manifest last, verify remote digests/sizes, tag
+the exact passing commit, and mint/freeze DOI metadata. Retain v0.9 only as
+historical mutable audit evidence.
+
+### PDF, figure, table, and accessibility audit
+
+The PDF skill was used for this audit. At fixed cutoff `22671fb2`, manuscript
+Markdown, TeX, tables, figures, and all three PDFs were byte-identical to the
+prior visually inspected version, so a redundant 132-page rerender was not
+created. The cutoff artifacts were:
+
+- reader: 47 pages, tagged, no useful outlines/clickable navigation;
+- TORS: 42 pages, untagged;
+- acmsmall: 43 pages, untagged with dummy publication metadata.
+
+No gross clipping, overlap, or blank-page defect was previously found, but the
+submission-quality problems remain: Table 0 is cramped; Fig. S1 uses Type-3
+fonts and roughly 5.5-7 pt labels, has weakly visible confidence bands, lacks an
+ACM `\Description`, and does not show the decisive pointwise contrasts.
+
+After this boundary, commit `3de2455f` changed the FIR-response figure and
+rebuilt the reader/TORS PDFs. It was not visually audited or used to revise the
+cutoff finding here; its accessibility claims and rendered pages require the
+next fixed-cutoff PDF inspection.
+
+**Figure/table fix:** generate a connected-seed forest or slope plot for
+learned-identity, pointwise-identity, and learned-pointwise with ordinary 95%
+intervals and clearly separated Holm-adjusted p-value labels. Put shared and
+nonlinear controls in a separate panel to avoid combining different families.
+Use vector Type-42 fonts, >=8 pt final-size text, visible interval strokes,
+colorblind-safe symbols that work in grayscale, and descriptive alt text.
+Simplify Table 0 to the few comparison axes needed for the novelty claim and move
+metadata detail to the supplement.
+
+### External fact-check evidence
+
+- The official Amazon Reviews 2023 category table reports 33 raw categories and
+  the stated Digital Music/Software scale. It supports the selection arithmetic,
+  not the paper's causal or novelty claims:
+  [Amazon Reviews 2023, grouped by category](https://amazon-reviews-2023.github.io/main.html#grouped-by-category).
+- The official five-core page reports 28 nonempty five-core categories, includes
+  Software at the scale used by the protocol, omits Digital Music from the
+  nonempty table, and explicitly warns that five-core filtering limits diversity
+  and may reduce generalizability:
+  [Amazon Reviews 2023, five-core processing](https://amazon-reviews-2023.github.io/data_processing/5core.html#statistics).
+
+These sources confirm dataset facts only. They do not validate the paper's
+novelty, mechanism, implementation, statistical decisions, or conclusions.
+
+### Prioritized concrete repair plan
+
+1. **Immediately freeze interpretation, not the live files.** Record Software V2
+   as a literal integrity failure once any trainer has opened TEST. Do not edit
+   the frozen protocol, rerun TEST, cherry-pick endpoints, or use V2 to update the
+   manuscript's acceptance claim.
+2. **Replace literal submission blockers.** Supply complete author/declaration/
+   legal metadata and pass an unwaived hygiene build.
+3. **Correct the manuscript now.** Scope the compound pointwise contrast,
+   disclose tracked-dirty execution and transductive TEST-ID access, and remove
+   “cleanly frozen,” “identifies,” and broad “TEST disabled” wording.
+4. **Freeze a protocol-correct V3 before new execution.** Bind exact commit,
+   normalized config/argv, split/cache/model-builder/environment hashes,
+   immutable attempts, randomized arm order, READY transition, and auditable
+   endpoint access. Specify the transductive catalog honestly or avoid TEST-file
+   access entirely.
+5. **Prioritize scientific value over another same-family rerun.** Evaluate
+   shared/grouped/low-rank FIR with noninferiority and cost Pareto analysis, add
+   fair current baselines, and seek an untouched temporal/non-Amazon validation.
+6. **Finish an immutable archive only after the science boundary is settled.**
+   Pass clean-clone replay, publish a versioned release, verify every digest,
+   upload manifest last, and tag/mint DOI from the exact passing tree.
+7. **Rebuild and inspect all PDFs after source fixes.** Improve Table 0, add the
+   pointwise forest, tag venue PDFs, add navigation/alt text, and remove dummy
+   metadata.
+
+### Open questions requiring author verification
+
+1. Did any V2 process begin before the authors noticed that the trainer and
+   preflight open `Software.test.csv`? If yes, confirm formal V2 VOID status and
+   preserve the earliest process/access evidence.
+2. Did any person, IDE, monitoring process, shell command, or automated tool read
+   live Software result/metric/endpoint files before a frozen adjudicator? Git
+   history cannot prove absence of access.
+3. Was a preexisting Software gzip present before the stage-A acquisition script
+   ran? If so, how was its exact digest and schema independently verified at that
+   time rather than later?
+4. What exact Python, PyTorch, CUDA, driver, GPU, and package environment was
+   active for every V2 attempt, and was it stable across the fixed arm order?
+5. Will the authors make the 16-parameter shared FIR, rather than the unsupported
+   1,024-parameter per-channel form, the primary algorithm candidate?
+6. Can the authors legally redistribute all Amazon-derived split/cache/checkpoint
+   assets and item metadata under the intended archive license?
+
+### Running checklist
+
+- [ ] Replace all author, affiliation, contact, declaration, creator, venue, and
+  legal placeholders.
+- [ ] Pass manuscript/PDF hygiene with `DRAFT_WAIVER` disabled.
+- [x] Freeze and push Digital Music V1 selection before acquisition.
+- [x] Record Digital Music V1 feasibility void without model/outcome fallback.
+- [x] Freeze and push Software V2 selection/preparation before acquisition and
+  training.
+- [x] Independently verify the official Software source digest and prepared
+  chronological split.
+- [ ] Formally record Software V2 as `SW-V2-INTEGRITY-FAIL` under its literal
+  early-TEST-access rule; do not use its endpoint as confirmation.
+- [ ] Freeze a new protocol with coherent TEST access/scoring semantics.
+- [ ] Bind exact commit, full normalized config/argv, all imported helpers,
+  inputs, cache, and environment in preflight and adjudication.
+- [ ] Add immutable attempts, failure tombstones, exclusive campaign lock,
+  all-checkpoint READY seal, and auditable endpoint escrow/access log.
+- [ ] Correct the SESOI decision rule and preregister power/sensitivity.
+- [ ] Randomize or alternate within-seed arm order and log runtime environment.
+- [ ] Replace temporal-identification, clean-tree, and TEST-disabled overclaims.
+- [ ] Promote/test shared/grouped/low-rank FIR with noninferiority and cost Pareto
+  reporting.
+- [ ] Run fair current FreqRec/WEARec-style and AlphaFuse-style baselines.
+- [ ] Run untouched temporal and non-Amazon validation with independent custody.
+- [ ] Add rating, verified-purchase, global-time, query-time-catalog, and
+  non-five-core sensitivity analyses.
+- [x] Remove pointwise final-evaluation JSON duplication from the Git-backed
+  result family and synchronize current landing counts.
+- [x] Verify all 359 expected public payload assets by API name/size/digest and
+  directly download/hash the 24 pointwise final-evaluation JSONs.
+- [ ] Update README inventory to 21 splits / six caches / 359 assets /
+  8,375,684,035 bytes, update the candidate bundle count to 839, and add the
+  three reserved Software sections to bootstrap handling.
+- [ ] Prove full strict replay in a new clean HTTPS clone from the final candidate.
+- [ ] Publish immutable versioned assets, final manifest last, exact tag, and DOI
+  with real creator metadata.
+- [ ] Add a readable pointwise forest plot; simplify Table 0; replace Type-3/tiny
+  text; add alt text, PDF tags, navigation, and final venue metadata.
+- [ ] Obtain author verification for endpoint visibility, acquisition custody,
+  environment stability, authorship/declarations, ethics/privacy, AI assistance,
+  licensing, redistribution, and venue requirements.
+
+### Files changed by this audit
+
+- Updated `PAPER_REVIEW_AUDIT.md` cumulatively with this timestamped fixed-cutoff
+  review.
+- Updated the automation memory after verification.
+- Did **not** edit the manuscript, TeX, code, data, split/cache, result,
+  adjudication, release manifest, PDF, figure, table, campaign worktree, or live
+  process. Post-cutoff generated changes were preserved untouched.
+
+## Audit Run - 2026-07-28 04:01 Australia/Sydney
+
+### Fixed audit boundary and verdict
+
+- **Fixed cutoff:** `2026-07-28T04:01:28.4420693+10:00`.
+- **Branch:** `codex/bestrec-sota-results`.
+- **Cutoff commit:** `ebe2b93944a3e092b133c09a2b7a9879d9604759`
+  (`Complete parameter-matched pointwise FIR mechanism study`, committed
+  03:56:28 Australia/Sydney).
+- **Parent/preregistration commit:**
+  `93e73a5c50294ff631db2349a36669888d539ebc`, committed 00:59:01 before the
+  first campaign result.
+- **Repository relation at cutoff:** cutoff HEAD was one commit ahead of
+  upstream and not publicly addressable. The tracked worktree delta was only
+  this cumulative audit; `qa_final*` and `_bestrec_run/tmp/` remained untracked.
+- **Change since the 00:28 audit:** 97 files, 38,467 insertions and 170
+  deletions. The result commit itself changed 86 files, adding all 24 pointwise
+  run records, 24 STARTED seals, adjudication/status artifacts, graph/manifest
+  records, synchronized manuscript/TeX text, and rebuilt PDFs.
+- **Post-cutoff concurrency, excluded from the primary verdict:** at 04:05:09,
+  `a17c2f79a8082df84984f28858658883a0992010` replaced the result commit as a
+  sibling of `ebe2b939`, adding a FIRPOINT `-text` checkout rule and recommitting
+  the 48 tracked JSON/seal files. It was subsequently pushed. It fixes one
+  checkout-normalization defect, but is not the audited cutoff and does not fix
+  the remaining release failures described below.
+- **Strict top-journal verdict: reject / not submission-ready.** The new
+  pointwise result is real, internally consistent, and useful, but the paper
+  remains outcome-known, its mechanism placebo is compound, literal metadata is
+  incomplete, and the cutoff release cannot reproduce itself from a clean Git
+  tree.
+- **Acceptance calibration (judgment, not a statistical forecast):** literal
+  current submission **below 1%**; after metadata, source, PDF, and clean-release
+  repair but without new science, approximately **4-8% direct acceptance**; after
+  compound-control wording, shared/grouped efficiency evidence, and current fair
+  baselines, approximately **8-15%**; with a genuinely untouched temporal or
+  non-Amazon one-shot validation, approximately **15-30% eventual acceptance**.
+  The pointwise result adds at most about 1-2 percentage points because it closes
+  one named placebo gap without repairing selection, external validity, or
+  release custody.
+
+### What materially improved in this audit
+
+1. **[CONFIRMED] The 24-run pointwise campaign is complete and the endpoint
+   arithmetic is correct.** There are exactly three arms (`identity`, `learned`,
+   `pointwise`) by eight preregistered seeds. All 24 runs have 20 epochs,
+   `best_test=null`, no training-history TEST score, and validation-selected
+   checkpoints. Within seed, the three backbone hashes match; learned and
+   pointwise each add exactly 1,024 trainable parameters. The 24 training records
+   completed before TEST evaluation began; the latest training record preceded
+   the earliest TEST seal by about 2.08 seconds.
+2. **[CONFIRMED] The independent recomputation exactly reproduces the frozen
+   adjudication.** From the 24 raw final-evaluation records:
+
+   | Contrast | Mean difference | SD | t(7) | Raw p | Ordinary paired 95% CI | Holm p |
+   |---|---:|---:|---:|---:|---:|---:|
+   | learned - identity | +0.001872027 | 0.000161073 | 32.8726 | 6.2404e-9 | [+0.001737366,+0.002006687] | 1.8721e-8 |
+   | pointwise - identity | -0.000069422 | 0.000156255 | -1.2566 | .249196 | [-0.000200054,+0.000061210] | .249196 |
+   | learned - pointwise | +0.001941448 | 0.000183533 | 29.9197 | 1.2010e-8 | [+0.001788011,+0.002094886] | 2.4021e-8 |
+
+   Arm means are identity `0.039464630`, learned `0.041336656`, and pointwise
+   `0.039395208`. All eight learned-identity and all eight learned-pointwise
+   paired differences are positive. A clearly post-hoc exact two-sided sign-flip
+   sensitivity gives p=.0078125 for each and Holm p=.0234375 across the three
+   tests, so the conclusion is not dependent on a Gaussian paired-t tail.
+3. **[CONFIRMED] Artifact-level alignment is strong in the live source tree.**
+   All 57,439 user/target identifiers align across the 24 final evaluations;
+   each sidecar mean reproduces its final NDCG; selected checkpoint epochs match
+   maximum validation NDCG. The pointwise code reads only the current position,
+   while learned FIR is left-padded and causal.
+4. **[CONFIRMED] Manuscript and TeX integration is substantially synchronized.**
+   The abstract, introduction, method, results, discussion, and conclusion report
+   the same three contrasts and correctly say the study is outcome-known and
+   does not establish per-channel-tap necessity, independent confirmation, or
+   generalization. The graph now reports 195 paper-bound cells across 19 families
+   and the claim map covers 195/195 cells exactly once.
+
+### Confirmed scientific and methodological problems
+
+#### 1. The placebo discriminates arms but does not isolate temporal access
+
+The pointwise arm removes access to earlier positions, but it also replaces the
+full-channel depthwise linear lag filter with a fixed rank-16 DCT projection,
+GELU, and learned cross-channel 16-to-64 remapping. The preregistration explicitly
+admits this representation-basis confound. Therefore the data establish:
+
+> In this outcome-known MI setting, learned FIR outperformed the tested
+> equal-parameter current-only DCT/GELU residual.
+
+They do **not** establish that temporal access alone caused the contrast. The
+phrases “identifies temporal access” (`PAPER_SUBMISSION.md:27`) and “distinguishes
+temporal access” (`PAPER_SUBMISSION.md:182` and the mirrored method TeX) are too
+strong. Replace them with “is consistent with, but does not isolate, a benefit
+of temporal access.” This is a confirmed wording error, not merely a stylistic
+preference.
+
+#### 2. Per-channel FIR remains unsupported and non-parsimonious
+
+The earlier active-control family remains decisive for architecture choice:
+
+- channel-shared causal FIR: 16 added parameters, mean NDCG `0.041523587`;
+- per-channel learned FIR: 1,024 added parameters, mean `0.041442170`;
+- learned - shared: `-0.00008142 [-0.00033748,+0.00017464]`, Holm p=.477;
+- learned - parameter-matched nonlinear causal control:
+  `+0.00020389 [-0.00003829,+0.00044607]`, Holm p=.174.
+
+The new pointwise study separates the learned FIR from one non-temporal arm, but
+does not overturn the simpler shared causal result. A top-journal reviewer can
+reasonably ask why the paper proposes 1,024 per-channel taps when a 16-parameter
+shared temporal filter is numerically at least as good.
+
+**Algorithm fix:** promote shared FIR, or a grouped/low-rank temporal-basis FIR,
+to the primary efficiency candidate. Preregister shared-versus-per-channel
+noninferiority with a domain-relevant SESOI. Report parameter count, FLOPs,
+wall-clock training/inference latency, peak memory, and NDCG as a Pareto frontier.
+Do not choose the more complex arm unless it earns a reliable accuracy or
+heterogeneity advantage.
+
+#### 3. The next placebo family must remove the compound-control confound
+
+Run a preregistered factorial or near-factorial placebo suite without modifying
+the completed V1 record:
+
+1. per-channel current-only linear residual, identity initialized;
+2. per-channel current-only nonlinear residual with the same activation;
+3. DCT, Hadamard, and seeded random orthogonal rank-16 bases;
+4. causal shared/grouped/low-rank filters using the same activation/rank budget;
+5. the current learned depthwise FIR.
+
+Match trainable parameters, initialization, optimizer, regularization, and
+checkpoint rule. This separates temporal receptive field, basis choice, rank,
+cross-channel mixing, and nonlinearity rather than changing them together.
+
+#### 4. Generalization and uncertainty remain unaddressed
+
+All estimates are from one known Musical Instruments split with eight optimizer
+seeds. The intervals do not sample temporal cutoffs, users, categories, or
+domains. The pointwise-identity interval spanning zero is non-rejection, not
+equivalence. Add repeated temporal cutoffs, at least one untouched non-Amazon or
+prospectively frozen category, and hierarchical user/category inference. Define
+an SESOI and minimum detectable effect before the next study.
+
+A post-hoc user-level diagnostic also shows concentration: averaging each user
+across the eight learned-versus-pointwise seeds, 87.33% have exact-zero NDCG
+change, 7.00% improve, and 5.67% worsen. The aggregate improvement is genuine but
+sparse. Report a user-level change distribution and category/item-frequency
+strata; label it descriptive unless preregistered.
+
+#### 5. Effect stability is a plausible risk, not yet a contradiction
+
+The new learned-identity estimate is +0.001872 versus +0.002116 in the earlier
+control campaign. A post-hoc between-campaign Welch comparison is -0.000244,
+95% CI [-0.000470,-0.000017], p=.037. Because the campaigns were not designed
+for this cross-study test and earlier custody was dirty, treat this as a
+**plausible stability risk requiring prospective verification**, not a failed
+replication claim.
+
+### Confirmed protocol and custody problems
+
+1. **Tracked-dirty execution contradicts “cleanly frozen.”** All 24 run records
+   identify preregistration commit `93e73a5c` but also set
+   `git_dirty_tracked=true`. The embedded frozen-trainer hash matches the
+   committed scientific code, so there is no evidence of model-code drift; the
+   exact dirty patch was nevertheless not captured. Replace the manuscript's
+   “later cleanly frozen pointwise-placebo campaign” with “precommitted,
+   source-hash-frozen campaign executed from a tracked-dirty tree.”
+2. **The adjudicator is not self-frozen.** The preregistration requires committed
+   hashes for the adjudicator and other protocol files, but the adjudicator's
+   runtime hash set includes trainer, evaluator, runner, structural test, and
+   preregistration--not the adjudicator itself. No observed edit occurred before
+   adjudication, but the mechanical gate does not satisfy the literal protocol.
+3. **Mechanical first-reader custody is not auditable.** The evaluator writes
+   plaintext endpoint JSON/NPZ files, with no access log, independent escrow, or
+   cryptographic unblinding boundary. Whether any author, IDE, console, or tool
+   inspected endpoints before adjudication remains **AUTHOR VERIFICATION**.
+4. **“TEST disabled” is too broad.** `--no-test-eval` suppresses TEST scoring
+   during training, but the trainer loads TEST and uses train+validation+test to
+   construct a fixed transductive ID catalog; three items occur only in TEST
+   relative to train+validation. Use “TEST scoring sequestered; frozen catalog
+   mapping includes TEST IDs,” not “TEST data inaccessible.”
+5. **Launch and resume custody remain under-enforced.** The runner does not fail
+   closed on exact committed HEAD, clean tracked tree, frozen expected hashes, an
+   exclusive campaign lock, a signed all-24-checkpoint READY seal, or exact
+   no-extra artifact inventory. Existing run/checkpoint files can be skipped by
+   existence. Before a prospective campaign, add immutable attempt IDs,
+   reservations, overwrite refusal, expected split/cache/environment hashes, and
+   a signed global transition from training-complete to evaluation-open.
+
+### Confirmed release and reproducibility failures
+
+#### Clean-clone strict replay fails at the fixed cutoff
+
+An isolated detached clone of `ebe2b939` was clean before hydration. Bootstrap
+installed all 354 locally available release assets. Exact HSTU core parity,
+18/18 FIR causality paths, the 195-cell/19-family graph, claim map, and local
+914-file manifest all passed. The pointwise adjudicator then failed and strict
+rebuild exited 2:
+
+```text
+INTEGRITY FAIL: run_json_sha256 mismatch in
+results_Musical_Instruments_FIRPOINTV1_identity_seed20261001.finaleval.json
+```
+
+The defect affects 24/24 training-JSON hashes and 24/24 STARTED-seal hashes.
+Cutoff `.gitattributes` normalizes JSON checkout to LF, while final-evaluation
+records sealed the original CRLF bytes. The clean checkout therefore differs
+from the raw-byte hashes. This is a confirmed reproducibility failure. The
+post-cutoff sibling's FIRPOINT `-text` rule confirms the diagnosis and repairs
+this particular byte-boundary problem, but it must be carried into a normal
+descendant with all other release fixes.
+
+#### Git-manifest and deposit gates fail independently
+
+- Local manifest verification: **PASS, 914 files**.
+- `update_release_manifest.py --verify-git HEAD`: **FAIL, exactly 24
+  mismatches / 536 OK**.
+- Cause: all 24 release-only pointwise final-evaluation JSONs are also duplicated
+  under Git-backed `result_families/FIR_POINTWISE_OUTCOME_KNOWN`.
+- Deposit candidate `--check-only`: **exit 2**, both because the manifest's
+  described commit does not equal cutoff HEAD and because Git verification
+  fails.
+- The existing `bestrec_deposit_v1.2.0.zip` is the stale 92-entry, 2,059,381-byte
+  candidate (SHA-256
+  `bbc04b3b8bbf377192fc78684aea489db902b28e37046d85dfcfde772c7f7fbc`)
+  and contains zero pointwise entries. The builder's addition list also omits
+  the pointwise preregistration, runner, evaluator, adjudicator, status, and
+  records.
+
+#### Public release is incomplete and documentation is stale
+
+The current manifest requires 354 release-only assets totaling 8,274,248,666
+bytes (8.274 decimal GB / 7.706 GiB), including 72 pointwise additions: 24 final
+evaluations, 24 user sidecars, and 24 checkpoints. At cutoff, public
+`v0.9-audit-evidence` contained the previous 282 required assets and none of the
+72 pointwise assets. A public HTTPS clone therefore could not reproduce the new
+result. `README.md:84` still reports 282 assets and approximately 4.60 GB;
+`CITATION.cff` and `.zenodo.json` still report 192 cells/18 families; deposit
+instructions describe the stale 92-entry candidate. The cutoff commit was also
+not on a remote branch and no `v1.2.0-deposit` tag existed.
+
+After cutoff, uploads began mutating the nominally immutable v0.9 release. Do not
+use a rolling evidence release as the archival submission object. Create a new
+versioned draft, upload all payload assets, verify exact remote name/size/digest
+inventory, upload the final manifest last, publish, tag the exact commit, and
+then replay from a fresh HTTPS clone. Evidence link:
+https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence
+
+#### Required release repair order
+
+1. Preserve FIRPOINT raw bytes with an explicit `-text` rule in a normal
+   descendant commit; document raw versus normalized hash domains.
+2. Remove the 24 final-evaluation JSONs from the Git-backed result-family map, or
+   teach Git verification that these entries are release assets--never both.
+3. Regenerate the manifest with correct parent/commit semantics; the post-cutoff
+   sibling currently records `ebe2b939` despite having parent `93e73a5c`.
+4. Require `--verify`, `--verify-git HEAD`, clean-clone strict rebuild, and
+   deposit `--check-only` to pass together.
+5. Add all pointwise protocol/result support and a complete source archive to
+   the deposit builder; rebuild a deterministic candidate.
+6. Correct README, CFF, Zenodo, DOI/deposit, cell/family, asset-count, byte-count,
+   and release-URL metadata.
+7. Publish all 354 assets to a new draft release; verify remotely; upload the
+   final manifest last; tag the exact passing tree; repeat a literal empty-clone
+   HTTPS replay.
+
+### Writing and claim corrections
+
+Use these replacements consistently in Markdown and TeX:
+
+- Replace **“identifies/distinguishes temporal access”** with **“outperformed
+  the tested equal-parameter current-only DCT/GELU residual; this is consistent
+  with, but does not isolate, a benefit of temporal access.”**
+- Replace **“cleanly frozen pointwise-placebo campaign”** with **“precommitted,
+  source-hash-frozen campaign executed from a tracked-dirty tree.”**
+- Replace any broad **“TEST disabled/inaccessible”** statement with **“TEST
+  scoring was sequestered during training; the frozen transductive catalog
+  mapping includes TEST IDs.”**
+- Keep **ordinary paired 95% CI** separate from **Holm-adjusted p-value**; do not
+  call the confidence intervals Holm-corrected.
+- Lead the abstract with the narrow module/control finding and validity boundary,
+  not a list of legacy point estimates. Move campaign chronology and custody
+  detail to a reproducibility appendix.
+- Add a compact comparator matrix for BSARec, FEARec, FreqRec, WEARec, C3SASR,
+  AdaMCT, and AlphaFuse-style text+ID fusion: operator, causal access, backbone,
+  side information, evaluation protocol, and whether equal-protocol evidence is
+  present.
+
+### Figure, table, and PDF audit
+
+The PDF workflow rendered and inspected every page of all three editions (132
+pages total): reader 47 pages, TORS 42 pages, and acmsmall preview 43 pages.
+Temporary render directories and the audit-created clean clones were removed.
+
+**Confirmed good:** no gross clipping, overlap, missing-glyph, blank-page, or
+unsafe-margin defect was found; the pointwise results are legible and numerically
+consistent in all editions.
+
+**Confirmed problems and fixes:**
+
+- Author/maintainer placeholders remain visible on page 1 and in running heads.
+- TORS/acmsmall are untagged. The reader has no bookmarks or clickable links.
+- Acmsmall retains dummy volume/article/publication-date metadata.
+- Table 0 is especially hard to scan in the TeX editions: narrow columns create
+  mid-word fragments. Move the full matrix to a landscape appendix; keep a short
+  main-paper table with ragged-right columns and >=8 pt text.
+- Fig. S1 leaves large unused white space, uses Type-3 fonts and roughly 5.5-7 pt
+  labels, has nearly invisible confidence bands, and lacks an ACM
+  `\Description`. The reader title prints raw `e^{jomega}` syntax, and the plot
+  does not visualize the new pointwise contrast.
+- Preferred new figure: a connected-seed/forest plot for learned-identity,
+  pointwise-identity, and learned-pointwise, with ordinary 95% intervals and
+  adjusted p-values clearly separated. Put shared/nonlinear controls in a
+  separate, explicitly non-combined panel. Use embedded vector Type-42 fonts,
+  >=8 pt final labels, visible intervals, colorblind-safe colors, and textual alt
+  description. Add a descriptive user-level change-distribution inset only if
+  clearly labeled post hoc.
+
+### Novelty and literature boundary
+
+The manuscript now acknowledges several direct lines, but the empirical nearest-
+baseline gap remains. The new pointwise result does not compare against a current
+frequency-filter recommender or a text+ID fusion system. Retain the paper's
+“incremental modular” description until equal-protocol evidence exists.
+
+Primary source checks carried forward:
+
+- BSARec official AAAI paper; the relevant result is Theorem 1 and concerns
+  repeated softmax self-attention, not the HSTU-style operator:
+  https://ojs.aaai.org/index.php/AAAI/article/view/28747
+- FreqRec official AAAI publication:
+  https://ojs.aaai.org/index.php/AAAI/article/view/38502
+- WEARec official AAAI publication:
+  https://ojs.aaai.org/index.php/AAAI/article/view/38640
+- AlphaFuse DOI record: https://doi.org/10.1145/3726302.3729894
+- C3SASR: https://arxiv.org/abs/2211.01297
+- AdaMCT: https://arxiv.org/abs/2205.08776
+
+### Open questions requiring author verification
+
+1. Did any person, IDE, shell, indexing service, or automated tool read endpoint
+   JSON/NPZ contents between first TEST evaluation and adjudication?
+2. What exact tracked dirty patch existed during all 24 runs, and can it be
+   reconstructed from logs or a snapshot?
+3. Was the public v0.9 release intended to be immutable? If yes, why were assets
+   uploaded after cutoff instead of creating a new draft release?
+4. What SESOI justifies keeping a 1,024-parameter per-channel filter over the
+   16-parameter shared arm?
+5. Which untouched temporal cutoff/domain will be reserved, and who will custody
+   its endpoint before final adjudication?
+6. Confirm real authorship/order, affiliations, conflicts, funding, ethics and
+   privacy review, AI-assistance disclosure, licenses, derived-Amazon-data
+   redistribution authority, preprint status, and reviewer declarations.
+
+### Running checklist
+
+- [x] Freeze a timestamped audit cutoff and preserve post-cutoff concurrency.
+- [x] Recompute all three pointwise contrasts independently from raw artifacts.
+- [x] Verify seed/config/backbone/parameter/checkpoint/user alignment.
+- [x] Compare manuscript, TeX, graph, adjudication, and rendered PDFs.
+- [x] Render and visually inspect every page of all three PDF editions.
+- [x] Test local manifest, Git-backed manifest, deposit builder, and clean clone.
+- [x] Distinguish confirmed faults, plausible risks, and author-verification items.
+- [ ] Correct compound-control causal wording and tracked-dirty custody wording.
+- [ ] Repair raw/normalized hash policy in a normal descendant commit.
+- [ ] Remove release-only/Git-backed pointwise duplication; pass Git verify.
+- [ ] Pass strict rebuild from a clean clone and deposit `--check-only` together.
+- [ ] Rebuild a complete deterministic deposit including pointwise support.
+- [ ] Publish and verify a new immutable 354-asset release; tag exact passing tree.
+- [ ] Replace all author/declaration placeholders and disable `DRAFT_WAIVER`.
+- [ ] Run shared/grouped/per-channel efficiency and compound-placebo controls.
+- [ ] Run current equal-protocol nearest baselines.
+- [ ] Reserve and run untouched temporal/non-Amazon validation.
+- [ ] Replace Fig. S1 or add the pointwise contrast forest; fix Table 0/accessibility.
+- [ ] Obtain author/legal/custody verification for all open questions.
+
+### Files changed by this audit
+
+- Updated `PAPER_REVIEW_AUDIT.md` only. No manuscript source, code, result,
+  figure, table, PDF, bibliography, protocol, manifest, release, or campaign
+  artifact was edited. The automation memory is updated separately after audit
+  verification.
+- Removed only the two audit-created temporary directories after verifying their
+  exact resolved paths: the PDF render directory and the isolated release-audit
+  clean clone. Existing user/campaign temporary trees were not modified.
+
+---
+
+## Audit Run - 2026-07-28 00:28 Australia/Sydney
+
+### Scope, fixed cutoff and change inventory
+
+- Fixed audit cutoff: **2026-07-28T00:28:03.1065840+10:00**.
+- Repository: `C:\Users\rayxc\Documents\R`; branch
+  `codex/bestrec-sota-results`; HEAD, upstream, and merge base all
+  `4cb723792305c48d202d577ed99fc0194f20529f`.
+- Prior audited HEAD: `2127ff8cb43d9f524db08d9661f66e10b4aa318f`.
+  Six commits were reviewed: portable bootstrap, checkout-invariant custody,
+  manuscript/claim-map repairs, causal tests, FIR-response diagnostics, and the
+  guarded deposit candidate.
+- Raw diff: 158 files, +61,230/-59,333. Ninety-six FIRCTRL training/seal JSON
+  rewrites are line-ending-only; with end-of-line changes ignored, the
+  substantive delta is 62 files, +2,462/-565.
+- Pre-audit tracked worktree delta was only this cumulative audit. Untracked
+  author QA material remains in `_bestrec_run/qa_final*` and
+  `_bestrec_run/tmp/`; no manuscript, result, checkpoint, sidecar, figure, or
+  release artifact was edited by this review.
+
+### Reviewer verdict and acceptance calibration
+
+**Verdict: reject / not ready for top-journal submission.** The package is much
+more candid and substantially more reproducible than at 22:00, but those repairs
+do not create independent evidence or identify the proposed per-channel FIR.
+The likely official TORS artifact also contains two claims already narrowed in
+the reader edition.
+
+Subjective reviewer-judgment ranges, not venue statistics:
+
+- **Literal package now: below 1%.** Real author/submission metadata are absent,
+  the build is waiver-dependent, the official TeX overstates transfer, and no
+  final immutable release exists.
+- **After metadata, TeX synchronization, PDF/figure repair, and a correct final
+  archive but no new science: about 3–7% direct acceptance.** The work would be
+  reviewable, but remains incremental and entirely outcome-visible.
+- **Major-revision / reject-and-resubmit pathway after matched placebo, shared-
+  filter efficiency study, current baselines, and validity sensitivities: about
+  15–25%.**
+- **After genuinely untouched temporal/non-Amazon validation and independent
+  one-shot custody: about 20–35% eventual acceptance.**
+
+### Confirmed material repairs since 22:00
+
+1. **E-A statistics are corrected.** The manuscript now consistently identifies
+   the registered A1-A0 estimate as an ordinary Welch/Satterthwaite interval:
+   +0.00226481, `t=14.4091`, `df=13.9394`, `p=9.16e-10`, 95% CI
+   [0.00192756, 0.00260206]. The A2-A1 sensitivity is correctly treated as
+   non-rejection, not equivalence (+0.00001029, CI [-0.00033918, 0.00035976],
+   `p=.9505`).
+2. **Evidence classes and mechanism boundaries are much more honest.** Canonical
+   breadth and controls are explicitly outcome-known/test-exposed exploratory
+   evidence. The text now says shared/nonlinear arms are not separated from
+   learned taps, MA/HP are redundant, and the absent non-temporal placebo blocks
+   temporal-specific attribution.
+3. **Novelty citations are repaired.** BSARec is now accurately tied to Theorem
+   1 for repeated softmax attention; FreqRec and WEARec are cited; filtering,
+   causal convolution, and frequency modeling are acknowledged as prior art.
+4. **Canonical sources are public-bound.** All 32 FIRCANON JSONs are tracked and
+   release-manifested, addressing the former 0/32 contradiction.
+5. **Executable checks are stronger.** Both the hydrated checkout and an audit-
+   created detached clean clone passed the strict build: exact HSTU core-block
+   parity, 16/16 future-perturbation causality paths, 192 active cells across 18
+   families, zero mismatch/untraceable cells, claim-map verification, manifest
+   verification, every counted adjudicator, and retained Office VOID handling.
+6. **Bootstrap mapping is repaired.** A clean clone hydrated 282/282 release-only
+   assets from a separately verified source root and then passed the strict
+   rebuild. This directly verifies destination mapping and local hash checking.
+   It is not a substitute for the final requested replay from an HTTPS clone
+   that downloads all 5.976 GB from the live release.
+7. **The FIR diagnostic is arithmetically reproducible and cautiously labeled.**
+   Its CSV exactly recomputes from eight selected learned checkpoints, with
+   intervals over eight seed summaries and explicit “descriptive, not mechanism”
+   language.
+
+### Confirmed scientific and statistical problems
+
+#### 1. The official TeX/PDF has stale overclaims
+
+- `paper_tex/sections/05-results.tex:42` and TORS PDF page 16 still say the
+  filter “transfers to a second category.” `PAPER_SUBMISSION.md:304` and reader
+  PDF page 16 correctly say only that the historical package gain appears on a
+  second development category, with no component-transfer claim.
+- `paper_tex/sections/03-method.tex:126` and TORS page 11 say the FIR supplies a
+  local temporal bias the baseline “does not learn as reliably.” The experiment
+  cannot identify that statement without a non-temporal trainable-residual
+  placebo.
+- The TeX conclusion retains “temporal-mixing modules”/“temporally active arm”
+  phrasing and does not label the MI interval as Welch as explicitly as the
+  reader does.
+- The Markdown prints the two frozen Holm families and all nine adjusted
+  p-values; `paper_tex/sections/05-results.tex:54` prints neither family
+  definitions nor adjusted p-values. Because the TeX/PDF is the intended journal
+  artifact, the later caveats do not cure this synchronization failure.
+
+**Fix:** generate Markdown and TeX from one structured claim ledger, or add a CI
+test that compares governed claim sentences/numbers across both artifacts. Add
+the stale phrases to the forbidden-wording scan and make the actual TORS result
+paragraph state the five-test family A, four-test family B, ordinary-CI status,
+and all adjusted p-values.
+
+#### 2. The result supports a parsimonious shared residual, not per-channel taps
+
+Verified control means are identity 0.0393265, fixed MA 0.0400383, fixed HP
+0.0400347, shared 0.0415236, learned per-channel 0.0414422, and nonlinear
+0.0412383. Learned-minus-shared is -0.00008142 (ordinary CI
+[-0.0003375, 0.0001746], Holm `p=.477`); learned-minus-nonlinear is +0.00020389
+([-0.000038, 0.000446], Holm `p=.174`). The shared module uses 16 parameters,
+versus 1,024 for per-channel taps, and is slightly better numerically. Failure to
+reject is not equivalence, but there is no empirical basis for per-channel
+necessity.
+
+**Algorithm recommendation:** make shared/grouped/low-rank FIR the primary
+efficiency candidate. On untouched data, preregister identity, shared, grouped,
+per-channel, parameter-matched lag-0 linear/nonlinear, and a strong local-
+convolution baseline; define a scientifically meaningful noninferiority margin
+before outcomes; report module and total parameters, FLOPs, peak memory,
+training/inference latency, and an accuracy-efficiency Pareto curve.
+
+#### 3. The new response plot is descriptive and smoothing-like
+
+The learned checkpoint diagnostic has mean magnitude 2.8935 at DC, 1.0577 at
+0.25pi, 0.8629 at 0.5pi, 0.8139 at 0.75pi, and 0.7586 at Nyquist; mean
+DC/Nyquist ratio is about 3.82. Learned/shared mean-tap shapes correlate about
+0.88–0.93 across seeds. This is a selected-checkpoint, pre-nonlinearity
+description—not causal mechanism evidence—and makes any high-pass story
+unpersuasive.
+
+**Figure recommendation:** overlay learned and shared responses, show parameter
+counts, make uncertainty visible, and call the pattern “smoothing-like selected-
+checkpoint behavior.” Put the nine inferential control contrasts in a forest
+plot in the main text; keep the tap response in the supplement.
+
+#### 4. Construct and deployment sensitivities are not cosmetic
+
+Independent recomputation from released processed CSVs found:
+
+| Category | TEST targets rated 1–2 | TEST targets rated <4 | Fixed catalog first seen after query | Aggregate TRAIN rows after that user's TEST event |
+|---|---:|---:|---:|---:|
+| Musical Instruments | 9.94% | 16.65% | 19.12% | 28.12% |
+| Industrial & Scientific | 11.24% | 17.33% | 21.10% | 27.66% |
+| CDs & Vinyl | 6.37% | 12.33% | 18.79% | 31.47% |
+
+For MI learned-minus-identity, the descriptive gain is +0.001083 on 1–2-star
+targets, +0.000084 on 3-star targets, and +0.002402 on 4–5-star targets; 87.37%
+of users have exactly zero NDCG@10 difference, 7.00% improve, and 5.63% worsen.
+These facts do not necessarily bias one arm relative to another and do not
+invalidate the explicitly retrospective next-recorded-review estimand. They do
+show why “preference,” “purchase,” or deployment claims require rating-filtered,
+verified-purchase, global-time, and query-time-catalog analyses.
+
+#### 5. Novelty and nearest-baseline evidence remain below a top-journal bar
+
+The exact identity-initialized depthwise placement may be distinct, but causal/
+local convolution with attention and modern frequency filters are established.
+The paper now cites the relevant work honestly, yet does not run C3SASR, AdaMCT,
+FreqRec, or WEARec under the same pipeline. The AlphaFuse-style port is correctly
+marked `NONCOUNTABLE` because of masking, capacity/initialization, and rank-
+reconstruction defects; therefore it supplies no endpoint.
+
+**Fix:** implement at least one strong causal-local comparator, one current
+frequency-filter comparator, and a clean AlphaFuse-style text/ID comparator
+under identical split, catalog, objective, selection, seeds, and compute budget.
+If this is infeasible, narrow the paper further to an artifact-gated study of a
+lightweight shared causal smoothing residual.
+
+#### 6. Inference remains optimizer-seed uncertainty on fixed retrospective splits
+
+The corrected ordinary Welch/paired intervals and Holm decisions are now mostly
+well described, but they do not sample users, cutoffs, categories, or datasets.
+Repeated temporal cutoffs and hierarchical category/user inference remain
+necessary. Do not interpret retained shared/nonlinear tests as equivalence; use
+an explicit noninferiority/equivalence design for the parsimonious model question.
+
+### Artifact, release, and reproducibility findings
+
+- `RELEASE_MANIFEST.json --verify`: **PASS, 761 files**; `--verify-git HEAD`:
+  **PASS, 479 Git-backed entries**. All 282 expected live release assets are
+  present with matching size and digest.
+- Live [`v0.9-audit-evidence`](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence):
+  284 assets, 5,985,883,924 bytes, last updated 2026-07-27T01:28:47Z. The 282
+  manifest-required assets total 5,975,873,918 bytes (5.976 GB / 5.565 GiB), not
+  the documented 4.60 GB. The two extras are an old parity ZIP and an uploaded
+  manifest.
+- The uploaded manifest is stale (123,973 bytes; `c7ca997b`; intended
+  `v1.1.11-deposit`) relative to the HEAD manifest (124,546 LF bytes;
+  `4cb72379`; intended `v1.2.0-deposit`). The v0.9 tag itself points to
+  `63e924b`, 257 commits behind HEAD, while the release targets a mutable branch.
+- Remote `v1.2.0` returns 404. GitHub's latest release is
+  [`v1.1.11-deposit`](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v1.1.11-deposit),
+  105 commits and 591 changed paths behind HEAD.
+- The ignored local candidate ZIP is internally consistent: 92 entries, SHA-256
+  `bbc04b3b8bbf377192fc78684aea489db902b28e37046d85dfcfde772c7f7fbc`,
+  matching sidecar, inventory, and internal hashes. It is not standalone: only
+  3/582 unique active graph sources are bundled; 579 are absent, and six files
+  explicitly linked by `CLAIM_ARTIFACT_MAP.md` are omitted. Most missing graph
+  sources are small enough to include; large checkpoints can remain manifest-
+  linked.
+- Claim-map verification passes but covers 186/192 active cells. Unmapped cells
+  are four legacy `fir_breadth` cells and two `table1a` popularity cells. The
+  verifier lacks a union-completeness/uniqueness assertion.
+- Checkout-invariant CRLF custody now works: the 96 affected raw worktree files
+  equal their Git blobs. However, manifest documentation that LF-normalized
+  text hashes equal Git blobs is false for those explicit `-text` exceptions.
+  Record both raw and canonical hashes with unambiguous field names.
+- The controls' dirty-tree execution and original sidecar-custody error remain
+  historical deviations. Author verification of any pre-adjudication visibility
+  is still required.
+- Untracked QA/temp material is release hygiene debt: 13 `qa_final*` PNGs and
+  roughly 24.61 GiB under `_bestrec_run/tmp/`, including clones. Add narrow
+  ignore rules or remove only after resolving and verifying exact paths.
+
+### PDF and figure audit
+
+All 130 pages across three current builds were rendered and inspected.
+
+| Artifact | Pages | SHA-256 | Findings |
+|---|---:|---|---|
+| `PAPER_SUBMISSION.pdf` | 46 | `0596312b4c1fca53132c8b716b1d2dde34cd00a2c32866b472163308ba4e4bf4` | tagged, language set, figure alt text; no bookmarks/clickable links |
+| `paper_tex/PAPER_TORS.pdf` | 41 | `b9bee31a403b7f26c2a14afd09420d9b6b63c4b3372bed85a7593fd21d1de916` | untagged; 17 bookmarks, 484 working links; fonts embedded |
+| `paper_tex/PAPER_TORS_acmsmall.pdf` | 42 | `456afaa44804f83b8e4b726fd0f21ecf7cb7581fdf6677a98ca3ffe047260722` | visually clean preview, but dummy DOI/article/January-2026 metadata |
+
+No clipping, overlap, blank pages, black boxes, missing glyphs, undefined
+references/citations, or unsafe margins were found. Remaining defects:
+
+1. placeholders and missing PDF author metadata on page 1/running headers;
+2. Fig. S1 prints raw `e^{jω}` syntax rather than a superscript, uses untagged
+   Type-3 fonts, has nearly invisible bands and roughly 5.5–7 pt in-layout text;
+3. Fig. S1 lacks `\Description{...}` and visible captions drift between reader
+   and TeX editions;
+4. Table 0 remains cramped; 243 underfull-box and 135 bibliography-metadata
+   warnings remain; and
+5. the acmsmall preview must remain preview-only until real DOI/article/
+   publication metadata exist.
+
+Use Matplotlib mathtext, Type-42 font embedding, at least 8 pt final labels,
+visible error bars/bands, a concise synchronized caption, and an ACM description.
+ACM/SIGACCESS guidance explains why meaningful alternative descriptions,
+embedded fonts, and tagged structure matter:
+[Accessible PDF Author Guide](https://www.sigaccess.org/welcome-to-sigaccess/resources/accessible-pdf-author-guide/).
+
+### Literature/source fact-check links
+
+- BSARec official AAAI record: <https://ojs.aaai.org/index.php/AAAI/article/view/28747>
+- FreqRec official AAAI record: <https://ojs.aaai.org/index.php/AAAI/article/view/38502>
+- WEARec official AAAI record: <https://ojs.aaai.org/index.php/AAAI/article/view/38640>
+- AlphaFuse DOI record: <https://doi.org/10.1145/3726302.3729894>
+- C3SASR primary preprint: <https://arxiv.org/abs/2211.01297>
+- AdaMCT primary preprint: <https://arxiv.org/abs/2205.08776>
+
+These sources confirm that softmax low-pass analysis, sequence-frequency
+filtering, causal/local convolution with attention, and text/ID fusion all
+predate this manuscript. The defensible novelty is the narrow realization and
+its artifact-gated evaluation, not the general ideas.
+
+### Concrete repair sequence
+
+1. **Submission legality (hours, blocking):** populate real metadata and
+   declarations; decide licensing/redistribution; build without waiver.
+2. **Single source of truth (hours–days, blocking):** synchronize TeX and reader;
+   remove transfer/baseline-reliability overclaims; print the control families
+   and adjusted p-values; add cross-edition claim tests.
+3. **Release (days, blocking):** correct 5.976-GB documentation and hash-domain
+   wording; make the claim map 192/192; make the deposit standalone; cut an
+   immutable tag/release/DOI and replay from a real HTTPS clone.
+4. **Algorithm study (weeks, high value):** prospective identity/shared/grouped/
+   per-channel/lag-0/nonlinear family with noninferiority and Pareto reporting.
+5. **Nearest baselines (weeks, high value):** equal-protocol C3SASR/AdaMCT plus
+   at least one FreqRec/WEARec and a repaired AlphaFuse-style comparison.
+6. **Validity/inference (weeks, high value):** rating/verification/global-time/
+   query-catalog sensitivities, repeated temporal cutoffs, and hierarchical
+   uncertainty.
+7. **Writing/figures (days):** shorten the 41-page review narrative, split or
+   redesign Table 0, add a control forest plot, and repair Fig. S1/accessibility.
+
+### Open questions requiring author verification
+
+1. Did any person, IDE preview, terminal, indexer, or tool expose active-control
+   endpoints before the frozen adjudicator's first complete-family read?
+2. Will the paper be submitted as an algorithmic module paper or an evaluation-
+   infrastructure paper? What is the one primary claim reviewers should retain?
+3. Can new experiments use a genuinely untouched temporal cutoff or non-Amazon
+   corpus with independent final-test custody?
+4. Why retain the 1,024-parameter per-channel FIR as the proposed module when the
+   16-parameter shared arm is numerically stronger and shape-similar?
+5. What author/legal permission supports publication of the derived splits,
+   caches, sidecars, and checkpoints?
+
+### Running checklist after this audit
+
+- [x] E-A Welch label and values corrected.
+- [x] Canonical/control evidence labeled outcome-known exploratory.
+- [x] BSARec theorem and FreqRec/WEARec citations corrected.
+- [x] 32/32 canonical run JSONs Git/release-bound.
+- [x] Hydrated and clean-clone strict builds pass.
+- [x] 16-path no-future-leakage test passes.
+- [ ] Real author/affiliation/contact/declaration metadata; unwaived build.
+- [ ] TeX/reader claim parity; no transfer/baseline-reliability overclaim.
+- [ ] Active-control families and nine adjusted p-values in TORS PDF.
+- [ ] Matched non-temporal placebo and shared/grouped noninferiority study.
+- [ ] Current equal-protocol nearest baselines.
+- [ ] Rating/global-time/query-catalog and repeated-cutoff sensitivities.
+- [ ] Claim map covers 192/192 cells and has negative/mutation tests.
+- [ ] Standalone, immutable v1.2 release/DOI replayed from HTTPS clone.
+- [ ] Fig. S1 math/font/CI/description/caption repair; Table 0 redesign.
+- [ ] Author verification of custody, ethics, conflicts, AI use, and licensing.
+
+### Files changed by this audit
+
+- `PAPER_REVIEW_AUDIT.md`: updated current risk list and added this timestamped
+  review.
+- Automation memory: updated after verification.
+- No manuscript, TeX, result, protocol, checkpoint, sidecar, graph, manifest,
+  figure, PDF, or release artifact was intentionally changed. The temporary
+  audit clean clone was removed after its successful strict replay.
+
+### Post-cutoff concurrent worktree note (preserved, not counted as evidence)
+
+After the 00:28 fixed cutoff, three user-owned FIR files became modified and a
+frozen trainer snapshot appeared untracked:
+
+- `_bestrec_run/run_sasrec_sbert.py`: adds a zero-init DCT-feature pointwise
+  residual with `d_model * K` trainable parameters;
+- `_bestrec_run/test_fir_causality.py`: adds that arm to future-perturbation
+  checks;
+- `_bestrec_run/adjudicate_fir_controls.py`: redirects completed-campaign source
+  verification to `_bestrec_run/run_sasrec_sbert_firctrl_frozen.py`; and
+- `_bestrec_run/run_sasrec_sbert_firctrl_frozen.py`: untracked snapshot whose raw
+  SHA matches the historical trainer recorded for the completed campaign.
+
+These files were not edited or reverted by this audit. The changed causality
+test passes **18/18** Transformer/HSTU paths, including pointwise. The older
+six-arm structural test still passes but does not include the new pointwise arm.
+At that intermediate snapshot, local manifest verification failed with six
+diagnostics: hash drift and git-dirty status for the changed trainer,
+adjudicator, and causality test. The later post-cutoff commit described below
+resolved this particular drift; it does not alter the 00:28 evidence cutoff.
+
+By a second read-only snapshot at **00:56 Australia/Sydney**, the following
+additional untracked files had appeared: `PREREG_FIR_POINTWISE_V1.md`, a frozen
+pointwise trainer, a 24-job driver (three arms by eight fresh seeds), a one-shot
+evaluator, a structural test, and a mechanical adjudicator. No protocol result,
+checkpoint, final-evaluation seal, per-user sidecar, status file, or
+adjudication artifact existed. The structural test was run with the repository
+environment and passed exact identity initialization, shared-backbone hashes,
+equal learned/pointwise parameter counts, active gradients, DCT orthonormality,
+pointwise temporal independence, an FIR positive control, and strict frozen-
+evaluator reconstruction. This is useful protocol engineering, not scientific
+evidence.
+
+The new preregistration correctly calls the study internal and outcome-known,
+uses fresh seeds `20261001`--`20261008`, freezes one three-contrast Holm family,
+uses ordinary paired confidence intervals, warns that nonsignificance is not
+equivalence, and limits any positive conclusion to the tested placebo. However,
+launch is not mechanically fail-closed: the driver does not require a clean
+committed tree, verify the frozen hash table, acquire an exclusive campaign
+lock, or reject pre-existing partial training artifacts. The evaluator can be
+invoked manually before all 24 validation-selected checkpoints exist and does
+not itself enforce the frozen category/seed/reference configuration. The
+adjudicator hashes five protocol files but omits its own digest, the live
+`fuse_ease_eval.py` helper executed during reconstruction, the mutable reference
+JSON used to derive arguments, and the environment lock. Neither the driver nor
+adjudicator enforces the release manifest as an external immutable boundary.
+
+The split-hash claim is also under-enforced: the adjudicator requires only one
+common TEST hash across arms, not preregistered expected train/validation/test/
+cache digests or agreement between training and final-evaluation provenance.
+`--no-test-eval` suppresses TEST scoring during training, but the trainer still
+reads the test CSV and builds the user/item universe from train+validation+test;
+this is transductive fixed-catalog metric sequestration, not strict TEST-data
+inaccessibility. Existing run/checkpoint pairs are resumed by existence rather
+than a signed attempt ledger, direct trainer invocation can overwrite its run
+JSON, and the parameter-count gate retains only the last seed's total count
+instead of verifying exactly 1,024 residual parameters for every learned and
+pointwise checkpoint.
+
+The DCT/GELU placebo also changes the representation basis, bottleneck/function
+class, and nonlinearity as well as temporal access, which the preregistration
+candidly acknowledges. For a separately versioned future protocol, bind a full
+serialized configuration, reference, helper, adjudicator, environment and
+expected split/cache digests in an external signed READY inventory; require all
+24 validated checkpoints before the evaluator can open TEST; reserve attempt
+paths by exclusive creation; verify best-validation selection and every seed's
+arm state/count; and add a linear or rank/activation-matched current-only arm.
+Do not alter the already-launched V1 decision tree. Record these as V1 custody/
+design limitations, do not amend the outcome-known six-arm family, and do not
+treat V1 as acceptance-relevant evidence before frozen adjudication and an
+independent artifact audit.
+
+At **00:59:01 Australia/Sydney**, the protocol landed and was pushed as commit
+`93e73a5c50294ff631db2349a36669888d539ebc`; it also repaired the ignore rules
+for `*.finaleval.users.npz`, added the protocol files to the release manifest,
+and left `HEAD` synchronized with upstream. At 01:00 the campaign driver began;
+the first identity-arm training process was active and ignored checkpoint/run
+artifacts had begun to appear. No training metric, TEST endpoint, result JSON,
+per-user sidecar, or final adjudication was opened by this audit. Against the
+new commit, manifest verification passes **768** local files and **486** Git
+blobs. The experiment remains post-cutoff, in progress, outcome-known, and
+scientifically unevaluated; no acceptance estimate changes until completion,
+frozen first-read adjudication, artifact audit, honest manuscript integration,
+and release.
+
+## Audit Run - 2026-07-27 22:00 Australia/Sydney
+
+### Scope, fixed cutoff and no-delta finding
+
+- Audit cutoff: **2026-07-27 22:00:57 Australia/Sydney**
+  (`2026-07-27T12:00:57Z`).
+- Audited branch/commit: `codex/bestrec-sota-results` at
+  `2127ff8cb43d9f524db08d9661f66e10b4aa318f`; `HEAD`, upstream and merge base
+  remain identical (0 ahead / 0 behind).
+- **No paper or artifact change exists after the 16:00 cutoff.** There are no new
+  commits and no tracked manuscript, TeX, PDF, figure, table, result, code,
+  protocol, bibliography, graph, manifest or release-document changes. The only
+  tracked worktree modification is this cumulative audit; `_bestrec_run/tmp/`
+  remains untracked.
+- Because the evidentiary package is byte-for-byte unchanged, no acceptance
+  uplift is warranted. This run rechecks the highest-risk claims and adds a
+  sharper attribution/venue-strategy diagnosis.
+
+### Verdict and acceptance calibration
+
+**Recommendation remains reject / not submission-ready.** The control arithmetic
+is credible and the disclosure quality is unusually strong, but disclosure does
+not supply independent evidence. More importantly, the current active-control
+design does not isolate temporal structure: frozen identity is compared only
+with trainable left-causal residuals, so generic activity/capacity/optimization
+remains a live explanation.
+
+- literal current package: **below 1%**;
+- conditional scientific merit after metadata/bootstrap/statistical-label fixes:
+  **about 3--7%**;
+- after equal-budget current baselines, an active non-temporal placebo,
+  rating/global-time sensitivities and genuinely untouched temporal or
+  non-Amazon evaluation: **about 12--20%**;
+- with independent reproduction and broader external validation: **about
+  20--35%**.
+
+These are strict-reviewer judgment ranges, not journal acceptance-rate
+statistics. The lower upper ranges relative to earlier audits reflect a tighter
+mechanism reading, not a deterioration in the unchanged files.
+
+### Sharpened mechanism finding: temporal specificity is not isolated
+
+1. **[CONFIRMED] Identity is the only inactive arm.** The registered control set
+   contains identity, per-channel learned FIR, fixed MA, nominal fixed HP, shared
+   FIR and nonlinear causal mixing, but no trainable lag-0/channelwise scaling or
+   parameter-matched pointwise non-temporal residual. Therefore the fact that all
+   five trainable arms beat frozen identity cannot distinguish temporal mixing
+   from adding an active optimization path.
+2. **[CONFIRMED] Current mechanism wording is one step too strong.** Abstract,
+   Introduction, Results, Discussion and Conclusion say the controls “support
+   causal temporal mixing/activity.” The supportable statement is narrower:
+   **all tested trainable left-causal residual arms improved the frozen identity
+   arm in this outcome-known MI setup; temporal specificity was not isolated.**
+   This is a treatment-family observation, not identified causal mechanism.
+3. **[CONFIRMED] The nominal high-pass arm became smoothing.** For every seed,
+   fixed HP learns the negative of the MA mixing scalar. At seed 20260901, MA is
+   +0.400161713 and HP -0.400161654; together with the sign-reversed formulas,
+   both implement the same smoothing family. Four of eight TEST values are
+   bit-identical and the maximum discrepancy is 2.73e-5. Report one redundant
+   scalar-filter control, not independent low/high-frequency evidence.
+4. **[CONFIRMED] Shared/nonlinear evidence remains non-equivalence.** “Can
+   recover the gain” is equivalence-adjacent. Use “also improved identity and
+   were not statistically separated from learned.” The 16-parameter shared arm
+   remains the algorithm-efficiency candidate, but selecting it from this TEST
+   result is hypothesis generation, not confirmation.
+5. **Required successor.** On untouched data, preregister frozen identity,
+   trainable lag-0 scaling, parameter-matched pointwise nonlinear residual,
+   shared-16, grouped/low-rank and per-channel FIR. Freeze a noninferiority or
+   equivalence margin, one-shot TEST custody and parameter/latency/memory
+   reporting before launch.
+
+### Statistical labels and multiplicity remain wrong
+
+- **[CONFIRMED] E-A is Welch, not paired.** `PREREG_FIR_V3.md:69-71` registers
+  an 8-vs-8 Welch test. The stored primary result has df=13.9394 and CI
+  [0.00192756, 0.00260206], exactly the interval printed in the paper. It remains
+  falsely labeled “ordinary paired” at `PAPER_SUBMISSION.md:314`, the TeX Results
+  mirror and the discussion's collective E-A/canonical sentence. The actual
+  descriptive paired sensitivity is [0.00207088, 0.00245874]. Preserve the
+  registered printed values and relabel them “ordinary 95% Welch CI”; optionally
+  report the paired result separately as descriptive.
+- **[CONFIRMED] Active-control family scope remains hidden.** Holm is applied to
+  one five-test identity family and one four-test learned-vs-active family, not a
+  single global nine-test family. Main text prints no adjusted p-values. Add a
+  compact table/forest plot with ordinary paired CI, raw p, Holm-adjusted p,
+  family label, decision and parameter count.
+- **[CONFIRMED] Hybrid wording remains ambiguous.** Replace “Holm-corrected
+  paired t” in Markdown, TeX and README with “paired t-tests with ordinary 95%
+  CIs and Holm-adjusted p-values.”
+
+### New contribution-spine and TORS-fit diagnosis
+
+**[CONFIRMED internal contradiction]** The title, abstract and Introduction's
+numbered ledger lead with the causal FIR module, while Related Work says the
+evaluation-trust response is “our lead contribution.” The paper currently asks
+reviewers to accept both a modest algorithm paper and an evaluation-method paper,
+but does not yet meet the strongest version of either bar.
+
+This matters for the selected journal. ACM describes TORS as welcoming both
+algorithm/system contributions and placing special emphasis on evaluation
+methods ([ACM TORS scope announcement](https://www.acm.org/binaries/content/assets/press-releases/2022/march/tors-launch.pdf)).
+The problem is therefore not topical mismatch; it is unresolved contribution
+identity.
+
+- **Algorithm-first route:** retain the present title/abstract; make the active
+  non-temporal placebo, shared-vs-per-channel efficiency study, current frequency
+  baselines and untouched external replication the main evidence. Move most
+  campaign chronology, audit machinery, hybrid/cold-fuse/titration and VOID
+  records to a supplement.
+- **Evaluation/reproducibility-first route:** retitle and lead with the artifact
+  graph/adjudication method. Its current use on the authors' own paper is a case
+  study, not a validation. Add seeded fault-injection/mutation tests with
+  sensitivity/specificity, omissions that should and should not fail, time and
+  reviewer effort, a second external repository, and comparison with Elliot,
+  DaisyRec/accountability workflows. `AUDIT_RESPONSE_2026-07-27.md:18` already
+  admits mutation tests and rank-level transitive completeness remain future
+  work.
+- **Do not keep both as co-equal spines at current length.** At 41 venue pages
+  and 20,545 Markdown words, the mixed identity dilutes novelty, makes the
+  abstract-to-discussion story harder to review, and leaves both validation
+  programs incomplete.
+
+### Novelty, validity and claim wording still unresolved
+
+- FreqRec and WEARec remain absent from manuscript, TeX and experiments. These
+  2026 frequency-aware recommenders materially narrow novelty and require either
+  equal-protocol execution or a precise incompatibility argument
+  ([FreqRec](https://ojs.aaai.org/index.php/AAAI/article/view/38502),
+  [WEARec](https://ojs.aaai.org/index.php/AAAI/article/view/38640)). AlphaFuse is
+  still explicitly queued rather than run.
+- BSARec remains falsely cited as “Thm 3.1.” The relevant official result is
+  Theorem 1 about repeated softmax attention
+  ([official paper](https://ojs.aaai.org/index.php/AAAI/article/download/28747/29438));
+  the manuscript's cautious hypothesis-level extension to non-softmax HSTU is
+  otherwise the right scope.
+- “Transfers,” “cross-category FIR confirmation/transfer” and “FIR-specific
+  interpretation” remain in source/PDF despite the correct admission that all
+  three category estimates are outcome-known or test-exposed. Replace them with
+  “fixed-configuration internal robustness across three exposed category
+  settings.”
+- The next-recorded-review/transductive-offline estimand is now disclosed, but
+  keep-earliest, rating threshold, verified purchase, real implicit events,
+  global-time eligibility and query-time catalogs remain untested. Do not infer
+  preference, satisfaction, engagement or deployment effectiveness.
+- Eight optimizer seeds on one split quantify optimizer variation only. Repeat
+  temporal cutoffs/splits and use hierarchical or dataset-level inference before
+  generalizing.
+
+### Artifact/release recheck: unchanged and still contradictory
+
+- Local release verification again passes **744/744** files and Git verification
+  passes **462/462** entries at HEAD. The
+  [v0.9 evidence release](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence)
+  remains at 284 uploaded assets, last updated 2026-07-27 01:28:47Z; all 144
+  control assets still match manifest byte size and GitHub SHA-256. No remote fix
+  occurred after the prior cutoff.
+- `bootstrap_public_clone.py:17-23` still downloads only 138 older assets
+  (1,379,303,099 bytes) and omits 144 controls (4,596,570,819 bytes). README and
+  manuscript assert full reconstruction, while the audit response correctly
+  says the clean-clone run remains unexecuted. Add the three mappings and offer a
+  minimal no-checkpoint verification tier where scientifically sufficient.
+- GitHub's official API still reports `immutable=false`. The manifest describes
+  “immutable data assets,” yet the July 10 release was appended through July 27.
+  Cut a new versioned frozen release and DOI-backed archive.
+- `v1.1.11-deposit` remains 99 commits/577 paths behind, with 336 current-manifest
+  mismatches and 126 matches. README calls it current, the manuscript calls it
+  historical and the manifest still names it as intended.
+- The graph remains internally green (203 cells: 190 OK, eight removed, five
+  external; 17 families), but only 303/557 unique source files are explicitly
+  manifest-covered. Table 0 is still Markdown-only with `checked: 0`, and the
+  E-A headline estimate has no paper-bound graph cell.
+
+### PDF, figure and writing recheck
+
+PDF bytes are unchanged, so the 16:00 full visual inspection was safely reused
+and targeted pages were rerendered rather than re-reviewing a nonexistent delta.
+
+- Reader: **47 letter pages**, 1,253,013 bytes, SHA-256
+  `96312F84E7F258727DA682B43673D9F77FDD29648FCB406708FD486940963EE6`;
+  tagged/en-US with two figure alt entries, but zero bookmarks or functional
+  links. Alt text largely repeats long captions; author/subject/keywords absent.
+- TORS: **41 letter pages**, 401,626 bytes, SHA-256
+  `C1DF1150CBDA11F39E9A132B71C2B4E050FB010FDAD8688BEDBCE1FE20114EEC`;
+  37 outlines/473 links but untagged and without functional figure alternatives.
+- Ignored acmsmall: **42 pages**, 408,597 bytes, SHA-256
+  `102CCE535FD2A424552981B248F3ED41E137C3249EB77FFEAB02BA4E933A9061`;
+  untagged, dummy production furniture and right-margin clipping on page 42.
+- Visible author/institution/country/contact placeholders, cramped six-column
+  Table 0, reader Fig. 1 caption split across pages 24--25, small figure labels
+  and final-page whitespace persist. No new clipping or source/PDF numeric
+  inconsistency was found in the reader/TORS pair.
+
+### Highest-leverage next actions
+
+1. Choose the algorithm-first or evaluation-first contribution lane; rewrite
+   title, abstract, Introduction, Related Work and conclusion around one spine.
+2. Correct E-A Welch/paired labels, two-family Holm disclosure, hybrid wording,
+   BSARec theorem number and all transfer/FIR-specific/equivalence-adjacent text.
+3. For the algorithm lane, freeze an active non-temporal placebo and shared/
+   grouped/per-channel comparison on untouched data with direct FreqRec/WEARec/
+   causal-convolution baselines and Pareto reporting.
+4. For the evaluation lane, add graph mutation/fault-injection coverage,
+   cross-repository validation, reviewer-effort evidence and transitive manifest
+   closure.
+5. Repair bootstrap, execute a real empty-clone minimal/full replay, cut an
+   immutable release/deposit and synchronize README/manuscript/manifest counts.
+6. Add rating/verification/dedup/global-time/catalog/repeated-cutoff sensitivities.
+7. Populate metadata; condense Results/Related Work; replace Table 0 with a
+   readable comparator/claim table; add a control forest/Pareto figure; repair
+   caption pagination, bookmarks, tagging, alt text and acmsmall overflow.
+
+### Open questions and running checklist delta
+
+- [x] No scientific/artifact/PDF delta exists after the 16:00 audit.
+- [x] Local/Git manifest and remote control-asset digest state reverified.
+- [x] Unchanged PDF hashes/pages and targeted visual defects reverified; temporary
+  renders removed.
+- [ ] Which contribution is primary: FIR algorithm or evaluation apparatus?
+- [ ] Has an active non-temporal placebo isolated temporal structure from generic
+  trainable-residual effects?
+- [ ] Has E-A been relabeled Welch without replacing the registered result?
+- [ ] Are both Holm families and adjusted p-values visible in the main text/table?
+- [ ] Have the MA/HP smoothing collapse and no-equivalence boundary been stated?
+- [ ] Are current frequency baselines, untouched validation and construct/
+  deployment sensitivities complete?
+- [ ] Has the graph received mutation/cross-repository validation and full
+  transitive source coverage?
+- [ ] Does a real empty clone pass against a new immutable release/deposit?
+- [ ] Are placeholders, contribution density, tables, figures and PDF
+  accessibility fixed?
+
+No manuscript, code, result, protocol, figure, table, release or PDF was edited.
+This run updates only the cumulative audit and automation memory.
+
+## Audit Run - 2026-07-27 16:00 Australia/Sydney
+
+### Scope, fixed cutoff and change inventory
+
+- Audit cutoff: **2026-07-27 16:00:54 Australia/Sydney**
+  (`2026-07-27T06:00:54Z`).
+- Audited branch/commit: `codex/bestrec-sota-results` at
+  `2127ff8cb43d9f524db08d9661f66e10b4aa318f`; `HEAD`, upstream and merge base
+  are identical (0 ahead / 0 behind). The prior audited commit was
+  `c7ca997ba8d0c9bcccb00491ed4b964a2edb22c1`.
+- One commit, `2127ff8c` (“Integrate FIR active-control verdict and audit
+  response”), changes **171 files, +131,381 / -129**. It commits the 32
+  canonical-breadth endpoints, 48 FIR-control training summaries and 48 STARTED
+  markers, adjudication/status files, two errata, artifact-graph/manifest/build
+  updates, revised manuscript/TeX, and rebuilt reader/TORS PDFs. The large
+  insertion count is mostly complete per-epoch run records rather than new prose.
+- At the cutoff, the only tracked worktree change is this cumulative audit;
+  `_bestrec_run/tmp/` is untracked. No manuscript, code, result or release file
+  was edited by this audit.
+
+### Verdict and acceptance calibration
+
+**Recommendation: reject / not submission-ready.** The revision is much more
+credible than the 10:00 version: important claim-class, weight-decay,
+multiplicity, secondary-endpoint and artifact omissions were repaired, and the
+active-control arithmetic is correct. The same control result, however, removes
+the strongest novelty interpretation: the evidence does not distinguish learned
+per-channel FIR taps from a much smaller shared filter or a nonlinear causal
+mixer. All headline evidence also remains outcome-known/internal, and the
+advertised clean-clone path is currently broken.
+
+- literal current package: **below 1%**, because visible submission metadata is
+  unfinished, the build relies on `DRAFT_WAIVER=1`, and the clean-clone claim is
+  false as implemented;
+- scientific/editorial package ignoring those literal blockers: **about 3--7%**;
+- after the immediate bootstrap, E-A/Welch, BSARec, wording, table-gate, metadata
+  and immutable-release fixes: **about 6--12%**;
+- after a genuinely untouched, sequestered temporal/non-Amazon replication with
+  direct current baselines and shared/non-temporal controls: **about 15--25%**;
+- with broad independent replication and independently reproduced portable
+  artifacts: **about 25--40%**.
+
+These are reviewer-judgment ranges, not journal acceptance-rate estimates. The
+active-control campaign raises credibility but lowers the plausible novelty
+ceiling for the present per-channel-FIR story.
+
+### Confirmed material repairs
+
+1. **[CONFIRMED] Canonical evidence class is now honest.** IS/CD canonical cells
+   are exploratory, and the manuscript consistently says the categories were
+   selected after favorable outcomes and TEST was evaluated each epoch. They are
+   described as outcome-known/test-exposed robustness, not independent breadth
+   confirmation or population transfer.
+2. **[CONFIRMED] Canonical custody is materially repaired.** All 32 FIRCANON run
+   JSONs are now tracked; the release result family binds those inputs plus the
+   adjudication record. The previous 0/32 source contradiction is closed locally.
+3. **[CONFIRMED] Canonical statistics are reported correctly.** IS is
+   +0.002109953 with ordinary paired CI [0.001820460, 0.002399446] and
+   Holm-adjusted p=5.44e-7; CDs is +0.006149940 [0.005849427, 0.006450452] with
+   Holm-adjusted p=8.42e-10. Registered HR@10/MRR supportive differences are now
+   disclosed, and the text no longer calls the ordinary CIs Holm-corrected.
+4. **[CONFIRMED] Weight-decay language is corrected.** The primary E-A and
+   canonical arms are now said to use backbone decay; A2-A1 p=.95 is explicitly
+   treated as no detected difference, not equivalence or pathway exclusion.
+5. **[CONFIRMED] Construct boundaries are explicit.** Section 3.1 defines the
+   estimand as ranking the next recorded review event, states that rating and
+   verified-purchase fields are ignored, and discloses full-history eligibility
+   and fixed-catalog construction. This closes an overclaim, not the missing
+   sensitivity experiments.
+6. **[CONFIRMED] The active-control result is integrated candidly.** The text
+   discloses outcome-known design, dirty/evolving-tree execution, the filename-
+   custody defect, author-verification need, MA/HP redundancy and the absence of
+   learned-specific superiority over shared/nonlinear controls. Retained tests
+   are explicitly not interpreted as equivalence.
+7. **[CONFIRMED] PDFs and graph were regenerated.** The graph now contains 203
+   total cells: 190 paper-bound OK cells across 17 families, eight removed cells
+   and five external cells, with no reported mismatch/untraceable cell.
+
+### Independent active-control arithmetic and interpretation
+
+All 48 final JSONs and per-user rank arrays were independently checked. Each arm
+contains the same 57,439 user and target IDs; stored ranks reconstruct NDCG@10,
+HR@10 and MRR exactly. The adjudication vectors, ordinary paired Student-t
+intervals (df=7), p-values and within-family Holm values reproduce to floating
+precision.
+
+| Registered contrast | Mean NDCG@10 difference | Ordinary paired 95% CI | Holm-adjusted p | Decision |
+|---|---:|---:|---:|---|
+| learned - identity | +0.002115674 | [+0.001909811, +0.002321536] | 2.035e-7 | reject |
+| fixed MA - identity | +0.000711799 | [+0.000508552, +0.000915045] | 1.304e-4 | reject |
+| fixed HP - identity | +0.000708176 | [+0.000509512, +0.000906840] | 1.304e-4 | reject |
+| shared - identity | +0.002197091 | [+0.002008143, +0.002386040] | 1.080e-7 | reject |
+| nonlinear - identity | +0.001911784 | [+0.001657185, +0.002166382] | 1.330e-6 | reject |
+| learned - fixed MA | +0.001403875 | [+0.001084789, +0.001722961] | 6.373e-5 | reject |
+| learned - fixed HP | +0.001407497 | [+0.001089196, +0.001725798] | 6.373e-5 | reject |
+| learned - shared | -0.000081417 | [-0.000337480, +0.000174645] | 0.47665 | retain |
+| learned - nonlinear | +0.000203890 | [-0.000038293, +0.000446074] | 0.17359 | retain |
+
+- **[CONFIRMED] The mechanical verdict is arithmetically correct.** Every active
+  temporal treatment improves identity in this one experiment; learned beats the
+  two weak fixed scalar-filter parameterizations but not shared or nonlinear.
+- **[CONFIRMED] MA and HP are duplicate function classes.** With unconstrained
+  scalars, `x+a(MA-x)` and `x+b(x-MA)` map under `b=-a`. Four of eight TEST values
+  are bit-identical and their maximum absolute difference is 2.73e-5. They count
+  as one conceptual control, even though the frozen nine-test family should still
+  be reported without post-selection.
+- **[CONFIRMED] The shared filter is the efficiency candidate.** Its mean
+  (0.04152359) is slightly above learned per-channel FIR (0.04144217) while using
+  16 filter parameters rather than 1,024. This is not an equivalence or
+  superiority result, but it directly weakens a per-channel-learned-FIR novelty
+  claim.
+- **[CONFIRMED limit]** The defensible wording is: “activating these strictly
+  left-causal temporal residuals improved this backbone in one outcome-known MI
+  study.” Identity does not control for an equally active non-temporal parameter
+  path, so generic trainable capacity/optimization remains incompletely excluded.
+
+### Newly confirmed statistical and wording errors
+
+1. **[CONFIRMED, material] E-A is falsely labeled paired.** The preregistration
+   and adjudicator specify an 8-vs-8 independent-arm Welch analysis. The printed
+   +0.002265 interval [0.001928, 0.002602] is that Welch interval (df about
+   13.94), not a paired interval. `PAPER_SUBMISSION.md:314`, the TeX mirror and
+   the discussion's blanket “E-A and canonical ... paired intervals” are wrong.
+   Replace with “ordinary 95% Welch CI”; do not substitute a post-hoc paired
+   result.
+2. **[CONFIRMED] The hybrid phrase remains ambiguous/wrong.** “Holm-corrected
+   paired t” should be “paired t-tests with ordinary 95% CIs and Holm-adjusted
+   p-values.”
+3. **[CONFIRMED] Active-control multiplicity is under-described.** The five
+   identity contrasts and four learned-vs-active contrasts are two separately
+   frozen Holm families. State this and print adjusted p-values in the proposed
+   compact control table/forest plot; the current intervals are not simultaneous
+   or Holm-adjusted.
+4. **[CONFIRMED] Stale phrases exceed the repaired boundary.** Introduction
+   “transfers,” dataset-table “cross-category FIR confirmation,” the section
+   heading “cross-category transfer,” Table 0 “FIR-specific interpretation,” and
+   discussion “shared/nonlinear ... recover the gain” should become outcome-known
+   internal robustness and “learned-specific superiority was not established.”
+5. **[CONFIRMED] Two MI contrasts need explicit separation.** E-A reports
+   +0.002265, while the cleaner six-arm campaign reports +0.002116. Label their
+   different campaigns/estimators prominently and do not pool them post hoc.
+
+### Public artifacts improved, but clean-clone and immutability claims fail
+
+1. **[CONFIRMED positive]** Local manifest verification passes **744/744** files,
+   and Git-blob verification passes **462/462** entries at HEAD. The
+   [public v0.9 evidence release](https://github.com/Ray0419/bestrec-sota-results/releases/tag/v0.9-audit-evidence)
+   exposes 284 API-listed assets. All 273 assets required by the split, cache,
+   TFV2 and FIR-control release sections match the manifest's byte sizes and
+   GitHub-provided SHA-256 digests. The 144 new FIR-control binaries comprise 48
+   final JSONs, 48 per-user NPZs and 48 checkpoints totaling 4,596,570,819 bytes.
+2. **[CONFIRMED P0] `bootstrap_public_clone.py` does not fetch those files.** Its
+   `DEST` map includes only splits, text caches, TFV2 sidecars and pinned parity;
+   it omits `fir_control_finaleval`, `fir_control_sidecars` and
+   `fir_control_checkpoints`. Git tracks none of those 144 binaries, while the
+   strict control adjudicator requires them. Consequently the availability claim
+   that bootstrap plus strict rebuild reconstructs the 190-cell evidence boundary
+   is false. A green local manifest check only proves that this populated
+   workspace has the ignored files.
+3. **[CONFIRMED direct contradiction]** `AUDIT_RESPONSE_2026-07-27.md` correctly
+   says clean-clone verification remains to be executed after upload, while
+   `PAPER_SUBMISSION.md:525-527` and `README.md:5,78` assert that it works now.
+   Fix the bootstrap, test from a genuinely empty clone, preserve the transcript,
+   and make a smaller verification tier available if downloading 4.60 GB of
+   checkpoints is unnecessary for ordinary numeric reconstruction.
+4. **[CONFIRMED] “Immutable” is not true of the current release process.** The
+   GitHub API reports the release as non-immutable; the same 2026-07-10 tag was
+   updated with assets through 2026-07-27 01:28Z. Stop appending campaigns to the
+   same evidence tag. Cut a versioned release whose inventory cannot silently
+   change, or explicitly version and timestamp every inventory snapshot.
+5. **[CONFIRMED] Manifest scope still overpromises.** The graph references 557
+   unique sources: 461 tracked and 96 released FIR final/sidecar inputs. Only
+   303/557 are explicitly covered by release-manifest paths/basenames; the other
+   254 are tracked but not individually manifest-hashed. Either register every
+   graph dependency or revise “every printed claim uses tracked, hash-manifested
+   artifacts” to distinguish commit-pinned from manifest-hashed sources.
+6. **[CONFIRMED] The archival deposit is obsolete.** `v1.1.11-deposit` is 99
+   commits and 577 changed paths behind HEAD; current-manifest verification at
+   that tag gives 336 mismatches and 126 matches. README still calls it current,
+   while the manuscript calls it historical. The manifest still names it as the
+   intended tag. Synchronize these only after the clean-clone test.
+
+### Remaining science, novelty and validity risks
+
+- **[CONFIRMED] No independent primary evidence exists.** MI E-A reused a
+  development category/split; IS/CD were chosen after favorable package results
+  and evaluated TEST every epoch; active controls were designed after the
+  learned-identity result and have custody uncertainty. Three positive category
+  estimates are not three independent replications.
+- **[CONFIRMED] Novelty is incremental and now narrower.** The exact insertion,
+  identity start and all-position HSTU combination may be useful engineering,
+  but causal convolution, temporal filtering and residual initialization are
+  known, while current controls do not require per-channel taps. Add the official
+  [FreqRec](https://doi.org/10.1609/aaai.v40i17.38502) and
+  [WEARec](https://doi.org/10.1609/aaai.v40i19.38640) lines and run them, plus a
+  fair causal-convolution baseline, on exact splits or a shared benchmark.
+- **[CONFIRMED citation error]** The manuscript still says “BSARec, Thm 3.1.”
+  The relevant result in the [official BSARec paper](https://ojs.aaai.org/index.php/AAAI/article/view/28747/29438)
+  is Theorem 1 and concerns repeated softmax self-attention, not the HSTU
+  pointwise SiLU operator. Correct the theorem and retain only a hypothesis-level
+  transfer of the motivation.
+- **[CONFIRMED] Construct/deployment limitations are disclosed, not solved.**
+  Treating every review as positive and letting future events affect k-core
+  eligibility/catalogs can materially change targets and candidates. Run rating
+  >=4, verified-purchase, keep-latest, global-time eligibility, query-time
+  catalog, repeated temporal cutoff and non-Amazon sensitivities.
+- **[CONFIRMED] Fixed-split seed intervals do not quantify dataset uncertainty.**
+  Repeat temporal cutoffs/splits and use dataset-level or hierarchical inference.
+  For the next fresh study, preregister identity, shared-16, grouped/low-rank,
+  per-channel learned, nonlinear and lag-0/pointwise capacity controls with a
+  noninferiority/equivalence margin and accuracy/latency/memory Pareto reporting.
+- **[CONFIRMED/POSSIBLE]** Cache/item-map binding, missing-text controls, TFV2
+  ties, one-draw thinning and event-weighted inference remain unresolved and may
+  bias the small tail effects.
+
+### Writing, tables, figures and rendered PDFs
+
+- The canonical Markdown is **20,545 words**; Results is about 7,260 and Related
+  Work about 2,598. Section 5.2 alone mixes legacy, canonical, control and
+  comparator chronologies. Lead with one control forest/table containing effect,
+  ordinary CI, adjusted p, parameter count and MA/HP redundancy; move chronology,
+  hybrid, cold-fuse and titration detail to a supplement.
+- Table 0 remains a Markdown-only table with `checked: 0` and is too dense in the
+  venue render. Split prior-art attribution from empirical claim/evidence, or
+  make a compact comparator matrix and generate all numerals from graph cells.
+- Reader PDF: **47 pages**, 1,253,013 bytes, SHA-256
+  `96312F84E7F258727DA682B43673D9F77FDD29648FCB406708FD486940963EE6`;
+  tagged but without bookmarks. TORS PDF: **41 pages**, 401,626 bytes, SHA-256
+  `C1DF1150CBDA11F39E9A132B71C2B4E050FB010FDAD8688BEDBCE1FE20114EEC`;
+  37 outline destinations but untagged/no functional alt structure. The ignored
+  acmsmall preview is 42 pages and has confirmed right-margin clipping on page 42.
+- All 130 rendered pages were visually inspected. No broken glyphs or clipping
+  was found in the reader/TORS pair, and the new narrowed control wording is
+  rendered. Persistent defects are visible author/contact/running-head
+  placeholders, cramped Table 0, reader Fig. 1 caption split across pages 24--25,
+  small dense figure/appendix labels, missing reader navigation and untagged
+  venue output.
+
+### Highest-leverage repair sequence
+
+1. **Submission mechanics:** supply real author/affiliation/contact metadata;
+   pass the hygiene gate without `DRAFT_WAIVER`; confirm venue mode and length.
+2. **Artifact truth:** add all three FIR-control bootstrap mappings, document
+   download tiers, run a literal empty-clone strict replay, and publish its log.
+   Then cut a new immutable evidence release/deposit and retire stale counts/tag
+   language.
+3. **Statistical truth:** change E-A to Welch, clarify the two control Holm
+   families and hybrid wording, print adjusted p-values, and bind Table 0/E-A to
+   the graph.
+4. **Claim truth:** replace transfer/confirmation/FIR-specific/equivalence-adjacent
+   language with the exact internal result: these active causal temporal
+   residuals improved identity; per-channel learned taps were not necessary.
+5. **Algorithm optimization:** prioritize the 16-parameter shared filter and a
+   grouped/low-rank ladder; add lag-0/non-temporal capacity controls and
+   preregister noninferiority on new data before selecting a winner.
+6. **Scientific generalization:** run untouched temporal and non-Amazon
+   replication under clean code, independent custody and one-shot TEST; add
+   FreqRec, WEARec, AlphaFuse where relevant and fair causal-convolution baselines.
+7. **Validity/statistics:** add rating/verified-purchase/global-time/catalog and
+   repeated-cutoff sensitivities with hierarchical inference.
+8. **Presentation:** condense the paper, correct BSARec, split Table 0, add the
+   control forest/table, keep captions with figures, enlarge labels, tag the
+   venue PDF and fix the acmsmall overflow.
+
+### Open questions and running checklist delta
+
+- [x] Active-control arithmetic, rank reconstruction and Holm decisions verified
+  independently from all 48 endpoint/sidecar pairs.
+- [x] Canonical evidence class, weight decay, CI/Holm distinction and HR/MRR
+  reporting corrected; all 32 source JSONs now tracked.
+- [x] All 144 FIR-control binaries are public and match manifest size/SHA-256.
+- [ ] **Clean clone still fails:** bootstrap does not download those 144 files.
+- [ ] Has any person, editor, indexer or preview semantically exposed control
+  outcomes before the mechanical adjudication? Author verification remains open.
+- [ ] Has E-A been corrected from paired to Welch everywhere, without replacing
+  the registered analysis by a post-hoc paired sensitivity?
+- [ ] Have stale transfer/FIR-specific/recover-the-gain phrases and BSARec theorem
+  number been corrected in Markdown, TeX, tables, abstract and PDF?
+- [ ] Are the two Holm families, adjusted p-values and ordinary-CI status explicit?
+- [ ] Are Table 0/E-A and every graph dependency either manifest-bound or covered
+  by a narrower truthful commit-pinning claim?
+- [ ] Has an immutable release/tag and literal empty-clone transcript replaced
+  the mutable v0.9 / stale v1.1.11 story?
+- [ ] Are the shared-filter optimization study, direct current baselines,
+  untouched validation, construct/deployment sensitivities and PDF/accessibility
+  repairs complete?
+
+No manuscript, code, result, protocol, figure or PDF was edited. This run updates
+only the cumulative audit and automation memory.
+
+## Audit Run - 2026-07-27 10:00 Australia/Sydney
+
+### Scope, fixed cutoff and change inventory
+
+- Audit cutoff: **2026-07-27 10:00:48 Australia/Sydney**
+  (`2026-07-27T00:00:48Z`).
+- Audited branch/commit: `codex/bestrec-sota-results` at
+  `c7ca997ba8d0c9bcccb00491ed4b964a2edb22c1`; `HEAD`, upstream and merge base
+  remain identical (0 ahead / 0 behind). There is **no tracked scientific,
+  manuscript, code, protocol, result, figure, table, bibliography, manifest or
+  PDF delta** from the 04:00 audit. The only tracked worktree modification is
+  this cumulative audit.
+- The material change is operational. Safe status fields now say the FIR-control
+  driver completed 48/48 training runs and 48/48 final evaluations with no skips
+  in 278.3 minutes. Filename/timestamp inspection finds 48 nonzero training
+  JSONs, 48 checkpoints, 48 STARTED seals, 48 final TEST JSONs and 48 per-user
+  NPZ sidecars. Stage 2 ran from 05:05:07 to 05:18:01 Sydney time; no campaign
+  process remains.
+- `_bestrec_run/fir_controls_adjudication.json` does **not** exist. No final JSON,
+  per-user sidecar or TEST metric/value was opened in this audit. Counts,
+  filenames, timestamps, ignore status and training-only structural metadata
+  were inspected; no outcome direction or magnitude is known here.
+
+### Verdict and acceptance calibration
+
+**Recommendation remains reject / not submission-ready.** Operational completion
+is not a scientific result. With no adjudication artifact, the control campaign
+has no verdict; with its sidecar quarantine broken, it cannot be described as a
+pristine independently custodied test-once study.
+
+- literal current package: **below 1%** because visible author placeholders and
+  `DRAFT_WAIVER=1` remain submission blockers;
+- scientific package at unchanged `c7ca997b`: **about 4--8%**;
+- after canonical evidence-class/custody, weight-decay/Holm and table-gate fixes:
+  **about 8--15%**;
+- after a valid active-control result, fair current baselines and genuinely
+  untouched temporal/non-Amazon validation: **about 15--25%**;
+- after independent reproduction, external replication and portable artifact
+  proof: **about 25--40%**.
+
+These are reviewer-judgment ranges. Stage-2 completion alone earns no uplift,
+and no control result may enter the paper until the frozen adjudicator produces
+a valid artifact with the custody deviation stated alongside it.
+
+### What completed correctly
+
+1. **[CONFIRMED] Freeze preceded execution.** Freeze commit `f846435b` predates
+   the launch, and the preregistration, runner, evaluator, adjudicator, trainer,
+   model builder and structural test have no tracked diff from freeze through
+   HEAD. Earliest checkpoint time follows the launch record.
+2. **[CONFIRMED] Training-time TEST sequestration held.** A structural-only pass
+   over all 48 training summaries finds exactly six arms × eight seeds, 20 epochs
+   each, `no_test_eval=true`, `save_ckpt=true`, null `best_test`, zero history
+   TEST keys and 48/48 matching checkpoint hashes. All 48 `zfusion_sweep` fields
+   are null, so the latent sweep bypass identified at 04:00 was not exercised.
+3. **[CONFIRMED] One-shot file mechanics completed consistently.** All 48 seals
+   precede their corresponding nonzero final/sidecar files; no timestamp-order
+   anomaly was found. The evaluator refuses a pre-existing seal/output, creates
+   the seal with `O_EXCL`, suppresses metric stdout and uses atomic writes.
+4. **[CONFIRMED, important limit]** These facts establish orderly execution and
+   absence of periodic TEST scoring during training. They do not establish a
+   scientific verdict, human blinding, full provenance, distinct controls or
+   release reproducibility.
+
+### P0 realized: final-outcome custody was not fail-closed
+
+1. **[CONFIRMED] The exact filename defect predicted at 04:00 occurred.** The
+   evaluator writes `*.finaleval.users.npz` (`eval_fir_controls.py:49,110-114`),
+   but `.gitignore:86` and `cloud/hooks/seal_patterns.sh:6` protect only
+   `*.finaleval.perusers.npz`. All 48 outcome-bearing NPZs therefore appear as
+   ordinary `??` files. All 48 STARTED seals are also unignored. Final JSONs and
+   checkpoints alone match their ignore rules.
+2. **[CONFIRMED] The repository/CI boundary would not block accidental staging.**
+   The same suffix error exists in the CI/hook deny pattern; it also omits
+   FIRCTRL training JSONs, STARTED seals, status and temp files. This recreates
+   the `git add -A` exposure path that invalidated E-G2. No FIRCTRL artifact is
+   tracked at this cutoff, so public exposure has not yet been observed.
+3. **[CONFIRMED custody deviation; AUTHOR VERIFICATION on semantic exposure]**
+   Outcome files were available to normal workspace/Git/IDE indexing before the
+   committed adjudicator. The claim “the committed adjudicator is the first
+   reader” can no longer be certified literally. There is **no evidence in this
+   audit that a human opened or learned an endpoint value**; ask the author to
+   document editors, previews, indexing, scripts, console logs and manual access.
+4. **[CONFIRMED] No adjudication means no result.** The preregistration requires
+   all 48 artifacts and its gates before a verdict. The absent adjudication JSON
+   means the only permissible status is **completed evaluation, pending/no
+   scientific verdict**. Do not inspect, summarize, integrate or optimize from
+   endpoint files manually.
+5. **Immediate containment guidance.** Do not delete, overwrite, rename, rerun or
+   casually open the artifacts. Preserve timestamps and exact working-tree state;
+   create an outcome-blind SHA-256 inventory and protocol-deviation addendum;
+   then quarantine behind ACL/encryption outside the repository. Any move must be
+   logged and hash-verified before/after. This audit does not perform that
+   material custody action without author authorization.
+6. **Adjudication guidance.** Preserve the committed adjudicator unchanged as the
+   preregistered primary analysis. If the author confirms no semantic unblinding,
+   invoke it exactly once in an isolated noninteractive process, redirect stdout
+   to a sealed log, and preserve command, environment, exit code and hashes. Run
+   any newly hardened validator only as a separately labeled post-hoc integrity
+   sensitivity; do not retroactively call modified code preregistered.
+
+### Active-control interpretation and provenance limits
+
+1. **[CONFIRMED] The two fixed controls are redundant.** `fixed_ma` is
+   `x + alpha*(MA-x)` and `fixed_hp` is `x + alpha*(x-MA)`. With unconstrained
+   scalar `alpha`, they are the same function class under a sign change. They
+   cannot count as two independent mechanisms or two distinct demonstrations.
+   Because TEST now exists, do not alter/drop a family member after seeing any
+   result. Report the frozen family faithfully, flag the redundancy, and use new
+   seeds in a new preregistration for a genuinely distinct high-pass/band-pass or
+   lag-difference control.
+2. **[CONFIRMED] Clean execution provenance is absent.** All 48 training records
+   report `git_dirty_tracked=true` and span five Git commits (3 at `f846435b`, 2
+   at `55f85fd2`, 1 at `445234df`, 1 at `533a1eb4`, 41 at `c7ca997b`). The code
+   family remained byte-stable, but no exact dirty patch, immutable attempt
+   directory or append-only command/error ledger was preserved.
+3. **[CONFIRMED] The adjudicator is not a transitive provenance gate.** It checks
+   cross-run config equality against the first run, not a precommitted expected
+   digest; ignores recorded Git commit/dirt/code provenance; binds only a common
+   TEST hash rather than expected train/valid/test hashes; omits model-builder,
+   reference, cache/item-map and environment hashes; and does not verify the
+   best-validation epoch against history.
+4. **[CONFIRMED] Sidecar validation is too weak.** It checks only `ndcg10` length
+   and supplied-mean agreement, not expected users/targets, uniqueness, ranges,
+   ranks or HR/MRR reconstruction. A zero-variance nonzero paired difference is
+   assigned p=0 rather than failing closed or receiving a registered deterministic
+   policy.
+5. **Required successor design.** Use fresh seeds and a new preregistration with
+   an out-of-repository encrypted/ACL-protected endpoint directory, independent
+   custodian, exact family-ready manifest, clean frozen commit, immutable attempt
+   ledger, expected config/code/data/cache/item-map hashes, metadata-first exact-
+   set verification and one adjudicator process that is the sole semantic reader.
+
+### Manuscript, science and novelty persistence
+
+No tracked content changed, so all 04:00 scientific findings remain current:
+
+- IS/CD canonical breadth is still machine-labeled confirmatory even though its
+  categories were outcome-selected and TEST was evaluated every epoch;
+- the paper still says the gate/public bootstrap binds all 32 canonical runs,
+  while Git and `RELEASE_MANIFEST.json` contain 0/32 and a clean clone cannot
+  recompute the two cells;
+- §3 still falsely says primary FIR taps were excluded from weight decay;
+  ordinary paired CIs remain ambiguously called Holm-corrected, adjusted p-values
+  and registered HR/MRR breadth secondaries are absent, and Table 0 is `checked: 0`;
+- “FIR-specific/cleanly isolated” still exceeds identity-only evidence; the new
+  campaign has no verdict and, regardless of outcome, is explicitly an internal
+  outcome-known Musical Instruments study;
+- rating-discarding construct validity, full-history eligibility/catalog leakage,
+  cache/missingness confounding, fixed-split optimizer-only inference and TFV2
+  defects remain; and
+- the incremental contribution still lacks direct FreqRec/WEARec discussion,
+  AlphaFuse execution in the overview and equal-budget closest controls. The
+  04:00 official-source fact checks and journal-fit assessment remain applicable;
+  and BSARec is still mis-cited as “Thm 3.1,” whereas its official article's
+  relevant result is Theorem 1 about repeated softmax self-attention
+  ([AAAI paper](https://ojs.aaai.org/index.php/AAAI/article/view/28747/29438)),
+  not the HSTU-style operator used here.
+
+### Release, PDF and presentation persistence
+
+- Fresh selected-entry verification still passes **464 local / 326 Git** known
+  entries. The control runner, evaluator and structural test, all FIRCTRL inputs,
+  the absent adjudication, and all canonical endpoints remain outside the release
+  boundary. `v1.1.11-deposit` remains **98 commits / 444 paths** behind with 200
+  selected mismatches and 126 matches.
+- Landing documentation is internally stale: `README.md:3` still calls component
+  isolation open and lines 20--22 advertise 175 cells/420 files rather than the
+  manuscript's 177-cell claim. `CANONICAL_SUBMISSION.md:85-87` calls the stale
+  `v1.1.11-deposit` current while `PAPER_SUBMISSION.md:522-529` calls it
+  historical. Synchronize one release status generated from the manifest.
+- PDF bytes are unchanged, so the prior full visual inspection was reused rather
+  than rerendered. Reader: 47 pages, tagged/no outlines, SHA-256 `27703ED0...`;
+  TORS: 40 pages, untagged/17 outlines, `906C6BBC...`; ignored acmsmall: 42 pages,
+  untagged/17 outlines, `3BC3AEF3...`.
+- Submission blockers persist: real author/affiliation/contact metadata are
+  missing; hygiene needs `DRAFT_WAIVER=1`; reader Fig. 1's caption splits across
+  pages 24--25; Table 0 is fragmented/tiny across pages 5--6; Fig. 2 associates
+  `p=.058` with the wrong estimand; annotation text is small; venue PDFs are
+  untagged and reader navigation/functional alt text remain incomplete.
+
+### Highest-leverage next actions
+
+1. **Contain without peeking:** authorize an outcome-blind forensic inventory and
+   logged hash-preserving move to real quarantine; document whether any tool or
+   person semantically accessed final values.
+2. **Adjudicate honestly:** run the frozen adjudicator once only after custody
+   documentation; preserve its complete sealed transcript; label any result
+   internal/outcome-known and custody-deviated, not confirmatory.
+3. **Do not post-select the frozen family:** report the MA/HP redundancy and all
+   registered outcomes; use a fresh campaign for a distinct active filter and
+   hardened custody/provenance/rank gates.
+4. **Repair the integrated canonical claim:** downgrade evidence class, disclose
+   outcome selection/every-epoch TEST, release all 32 hash-bound sources and prove
+   clean-clone replay.
+5. **Algorithm/validity:** compare equal-budget causal Conv1D/NextItNet-style,
+   shared, distinct fixed band-pass/difference and matched nonlinear/residual-
+   initialization controls; report parameter/latency/memory Pareto curves; add
+   rating-aware, global-time and untouched non-Amazon evaluation.
+6. **Statistics/writing:** distinguish ordinary CIs from Holm-adjusted p-values,
+   report registered secondaries, correct weight decay/BSARec, lead the abstract
+   with the narrow module-attributable claim and synchronize the dataset/baseline
+   tables.
+7. **Figures/release:** split Table 0, fix Fig. 2's estimand, keep captions with
+   figures, enlarge labels, write functional alt text, populate metadata, tag the
+   venue PDF, pass without a waiver and cut a clean-clone-derived deposit.
+
+### Open questions and running checklist delta
+
+- [x] All 48 validation-only training runs completed with no recorded training-
+  time TEST key and with matching best-checkpoint hashes.
+- [x] All 48 one-shot final artifact sets exist with orderly timestamps.
+- [ ] **No scientific verdict:** frozen adjudication artifact is absent.
+- [ ] Did any author, IDE, indexer, script or preview semantically read a final
+  JSON/sidecar or derived value before adjudication?
+- [ ] Have all endpoint artifacts been inventoried and moved to real quarantine
+  without deletion, overwrite, renaming ambiguity or value inspection?
+- [ ] Has the custody deviation and MA/HP redundancy been recorded before any
+  result is viewed or integrated?
+- [ ] Can the frozen adjudicator be invoked once with a sealed command/environment
+  transcript and all required inputs intact?
+- [ ] Are canonical evidence class/source release, statistical/method wording,
+  validity/baseline gaps, placeholders, figures and portable deposit repaired?
+
+No manuscript or scientific result was edited. No FIR-control TEST value was
+opened or reported. This run changes only the cumulative audit and automation
+memory.
+
+## Audit Run - 2026-07-27 04:00 Australia/Sydney
+
+### Scope, fixed cutoff and change inventory
+
+- Audit cutoff: **2026-07-27 04:00:42 Australia/Sydney**
+  (`2026-07-26T18:00:42Z`).
+- Audited branch/commit: `codex/bestrec-sota-results` at
+  `c7ca997ba8d0c9bcccb00491ed4b964a2edb22c1`; `HEAD`, upstream and merge base
+  are identical (0 ahead / 0 behind).
+- Seven commits landed after the 22:00 cutoff (`e055f9d0` to `c7ca997b`): 39
+  tracked paths changed, with 1,875 insertions and 451 deletions. They integrate
+  canonical FIR breadth into the manuscript/graph, compress the manuscript,
+  and freeze/launch a six-arm active-control campaign. Reader and TORS PDFs were
+  rebuilt; figures and bibliography are byte-unchanged.
+- Pre-audit tracked dirt is confined to this cumulative audit. Operational,
+  untracked FIR-control artifacts are live. The latest **status/structure-only**
+  observation during this audit reports 39/48 training summaries, 40 checkpoint
+  filenames (one run in progress), and 0/48 final evaluations, seals or sidecars.
+  No live TEST outcome value was inspected or reported.
+- The seven frozen control files are byte-identical from their pre-launch freeze
+  commit `f846435b` through `c7ca997b`. The structural test passes exact identity
+  at initialization (6/6), a common backbone digest (6/6), and active initial
+  gradients (5/5). There is no tracked pre-launch test transcript, and the
+  campaign preflight does not invoke that test.
+
+### Verdict and acceptance calibration
+
+**Recommendation: reject / not submission-ready.** Editorial compression and a
+much better test-once control protocol are material improvements. They do not
+offset two new submission-level contradictions: evidence already known to be
+outcome-informed and test-exposed is now machine-labeled confirmatory, and the
+paper promises public reconstruction from 32 files absent from Git/release.
+
+- literal current package: **below 1%**, because it contains visible identity
+  placeholders and needs `DRAFT_WAIVER=1` to pass hygiene;
+- scientific package at `c7ca997b`, ignoring clerical rejection: **about 4--8%**;
+- after honest evidence classification, immutable canonical sources, corrected
+  weight-decay/Holm wording and table gates: **about 8--15%**;
+- after valid active controls, fair current baselines and untouched temporal/
+  non-Amazon validation: **about 15--25%**;
+- after independent reproduction, external replication and portable artifact
+  proof: **about 25--40%**.
+
+These are reviewer-judgment ranges, not journal acceptance statistics. The
+current package should not be submitted merely because the integrated numbers
+are arithmetically correct.
+
+### Material improvements confirmed
+
+1. **[CONFIRMED] The manuscript is substantially leaner.** The Markdown body is
+   about 20,300 words, down from roughly 28,432 in the prior working version.
+   The reader fell from 61 to 47 pages and TORS from 54 to 40 without font
+   shrinkage, missing sections, clipping, overlap or broken glyphs. The prior
+   large TORS page-14 void is gone, and the conclusion is now about 283 words.
+2. **[CONFIRMED] Cross-format canonical numerals are synchronized.** The tracked
+   bank, Markdown, TeX and three rendered formats agree on IS `+0.002110`,
+   ordinary 95% CI `[+0.001820,+0.002399]`, t=17.23, 8/8; and CDs
+   `+0.006150`, `[+0.005849,+0.006450]`, t=48.39, 8/8. This confirms arithmetic
+   consistency only, not the evidentiary label or custody boundary.
+3. **[CONFIRMED] The new active-control design fixes several prior defects.** Its
+   preregistration openly calls the study internal and outcome-known, freezes
+   six matched arms over eight seed blocks, uses validation-only checkpoint
+   selection with `--no-test-eval --save-ckpt`, creates an exclusive pre-TEST
+   seal, suppresses endpoint printing, distinguishes ordinary CIs from Holm-
+   adjusted p-values, and defines equal-prominence decision outcomes.
+4. **[CONFIRMED, provisional] TEST is still sequestered in the live control
+   campaign.** The structurally inspected training summaries contain no test
+   keys, null `best_test`, valid checkpoint hashes and 20 training epochs. No
+   final-evaluation artifact exists at this audit. This is a time-limited state,
+   not a completed result or a reason to infer which verdict will occur.
+
+### P0 regression: canonical breadth is presented at the wrong evidence class
+
+1. **[CONFIRMED] Outcome-known categories are called confirmatory.** The two new
+   graph cells are labeled `evidence_class: "confirmatory"`, while IS and CDs
+   already had favorable legacy outcomes before their canonical selection
+   (`FIR_BREADTH_RESULTS.md:20-45`; the canonical preregistration itself records
+   that history at lines 18--21). A preregistered rerun does not make an
+   outcome-informed category choice independent.
+2. **[CONFIRMED] The rerun was test-exposed.** Its driver omitted
+   `--no-test-eval`; every local endpoint contains TEST values in all 20 epoch
+   records. The new paper wording at `PAPER_SUBMISSION.md:12,27,77,183,314,463`
+   promotes this to “cleanly isolated on three categories.” The defensible
+   label is **pre-declared, outcome-visible and protocol-deviated canonical-
+   reparameterization robustness on two previously favorable categories**.
+3. **[CONFIRMED] Fresh seeds do not repair category selection or repeated TEST
+   access.** The result can support a descriptive fixed-dataset contrast, but
+   not untouched breadth confirmation, population generalization or a clean
+   holdout claim. Hardwicke and Wagenmakers explain that preregistration reduces
+   bias through outcome-independent decisions
+   ([Nature Human Behaviour, 2023](https://doi.org/10.1038/s41562-022-01497-2)).
+4. **Required repair.** Change both graph cells to an outcome-visible/descriptive
+   class; remove “confirmatory,” “cleanly,” and unqualified “three-category
+   isolation”; add the per-epoch TEST and category-selection disclosure in the
+   abstract, §5.2, discussion, Table 0 and captions. A future claim of breadth
+   needs a genuinely untouched category/dataset and one-shot final TEST.
+
+### P0 regression: public reconstruction and artifact-custody claims are false
+
+1. **[CONFIRMED] Git tracks 0/32 canonical endpoint JSONs.** They remain ignored
+   by `.gitignore:104`, yet `_bestrec_run/hstu_results_manifest.json` names all
+   32 as sources of the two printed cells. `RELEASE_MANIFEST.json` binds only the
+   preregistration and old adjudicator; it contains neither those endpoints nor
+   the final adjudication as a released result family.
+2. **[CONFIRMED] The manuscript asserts the opposite.** `PAPER_SUBMISSION.md:314`
+   says the gate binds both printed results to all 32 runs; lines 514--520 say
+   result artifacts are public and a bootstrap plus strict build recomputes all
+   177 cells. `CANONICAL_SUBMISSION.md:45-74` similarly defines every printed
+   claim as tracked/hash-manifested and calls the absent files results of record.
+   A clean clone cannot execute the paired rule or rebuild those cells.
+3. **[CONFIRMED] Local green checks prove known-entry integrity, not
+   completeness.** Fresh selected-entry checks pass 464 local and 326 Git-backed
+   entries because omitted files are outside the selected set. The graph now has
+   364 unique sources, only 77 manifest-covered; 287 are uncovered. Of 33
+   FIRCAN sources, one summary is tracked, none is release-manifested and 32 are
+   ignored/local-only.
+4. **[CONFIRMED] The paired graph rule under-certifies the prose.** It checks
+   category, seed, FIR mode, K, epochs, initialization matching and some norms,
+   but not complete normalized configs, frozen-reference equality or trainer/
+   data/split/cache/checkpoint custody. It therefore cannot certify “one frozen
+   configuration,” “zero category tuning,” or clean module isolation.
+5. **Required repair.** Publish all 32 exact endpoints plus sufficient rank/
+   sidecar evidence as immutable release assets, bind every byte and dependency
+   in `RELEASE_MANIFEST.json`, fetch them in the bootstrap, and save a from-zero
+   clean-clone transcript. Until that succeeds, remove the public-reconstruction
+   claims and exclude these cells from the submission gate.
+
+### Active-control campaign: preserve the good design before TEST begins
+
+This is the highest-leverage experimental improvement in the delta, but Stage 2
+must not begin under the present custody implementation.
+
+1. **[CONFIRMED, imminent custody leak] Ignore rule and output name disagree.**
+   The evaluator writes `*.finaleval.users.npz`
+   (`eval_fir_controls.py:48-50,111-114`), while `.gitignore:86` protects only
+   `*.finaleval.perusers.npz`. Training JSONs, `*.finaleval.started.json`, the
+   actual sidecars, status file and temp directory also enter ordinary untracked
+   state. The sidecar contains per-user endpoint outcomes, recreating the same
+   accidental `git add -A` path that exposed the prior E-G2 campaign.
+2. **[CONFIRMED] Family-complete first read is not enforced.** The evaluator can
+   be called directly on one run without checking that all 48 checkpoints exist.
+   The adjudicator opens each available final JSON at lines 85--159 and checks
+   for missing family members only afterward at lines 161--165, so an accidental
+   interim invocation reads partial outcomes before returning `NOT READY`.
+3. **[CONFIRMED] Resume is existence-based, not provenance-based.** Stage 1
+   skips a run when a JSON and checkpoint exist without validating config,
+   no-TEST history or digest. Stage 2 skips a final JSON without verifying its
+   seal, sidecar or hashes. Fixed paths, no immutable attempt directories and no
+   append-only command/error ledger make retries and partial failures ambiguous.
+4. **[CONFIRMED] Exact executed state is not frozen.** All structurally inspected
+   runs say `git_dirty_tracked=true` and record several documentation commits;
+   the dirty patch is not preserved. The code files themselves remained stable,
+   but the adjudicator ignores commit/dirt state and does not prove that every
+   training run used the frozen trainer/model-builder/data boundary.
+5. **[CONFIRMED] Uniform drift can pass.** Cross-run config equality is checked
+   only against the first observed run, not the frozen reference. The evaluator
+   hashes train/valid/test, but adjudication ignores train/valid and requires only
+   a common TEST hash, not the preregistered digest. The model builder, reference
+   JSON, runner, preregistration, adjudicator, environment and text cache are not
+   transitively bound.
+6. **[CONFIRMED] Best-checkpoint and sidecar gates are incomplete.** The gate
+   does not recompute the maximum-validation epoch, inspect identity taps in the
+   loaded checkpoint, validate per-seed parameter counts, enforce expected
+   n_eval/user identities/uniqueness/ranges, or reconstruct NDCG/HR/MRR from
+   rank. It checks only sidecar length and the supplied NDCG mean.
+7. **[CONFIRMED, latent TEST bypass]** The trainer's optional `zfusion_sweep`
+   path evaluates TEST without honoring `no_test_eval`. The current reference
+   does not activate it, but a uniformly drifted config could leak while the
+   existing history checks still pass. Make `--no-test-eval` disable every TEST-
+   consuming path and require an empty sweep in the frozen gate.
+8. **[CONFIRMED, redundant controls]** `fixed_ma` computes
+   `x + alpha*(MA-x)` and `fixed_hp` computes `x + alpha*(x-MA)`. With an
+   unconstrained scalar, these are the same one-dimensional function family
+   under `alpha_hp=-alpha_ma`, not two distinct mechanisms. Counting both in
+   each Holm family overstates control diversity and wastes one arm.
+9. **Pre-TEST amendment required.** Pause automatic transition after Stage 1;
+   place all endpoint-bearing finals/sidecars/seals outside the repository behind
+   a deny-rule and CI; create a 48-entry checkpoint manifest and family-ready
+   seal; perform metadata-only exact-set preflight before any outcome read; make
+   adjudication one-shot; pin the expected config and all code/data/cache hashes;
+   and either replace one redundant fixed arm on fresh seeds or declare/drop the
+   duplicate contrast before TEST. Because 0 final evaluations exist, this can
+   be disclosed as an outcome-free pre-TEST protocol amendment.
+
+### Method, statistical and table consistency
+
+1. **[CONFIRMED] Weight-decay prose is false.** `PAPER_SUBMISSION.md:183` says
+   FIR taps are excluded from weight decay, but the canonical breadth prereg
+   fixes `fir_v3_wd=backbone`, as does the E-A primary arm. State that primary
+   taps received the backbone's `1e-5` decay; describe the zero-decay analysis as
+   a sensitivity with no detectable difference. `p=.95` does not prove
+   equivalence or empirical immateriality.
+2. **[CONFIRMED] Holm wording modifies the wrong object.** The adjudicator forms
+   ordinary paired-t 95% CIs and applies Holm to p-value decisions. The abstract,
+   results and frozen canonical wording place “Holm-corrected” next to those CIs.
+   Use: “ordinary paired 95% CIs; both Holm-adjusted p-value decisions passed,”
+   and print adjusted p-values. If simultaneous intervals are desired, compute
+   an explicitly registered familywise interval procedure.
+3. **[CONFIRMED] Registered outputs are missing.** The canonical breadth
+   preregistration names HR@10 and MRR@10 secondaries, but the integrated report
+   omits them. Report them with their frozen status and multiplicity handling;
+   do not silently narrow the registered endpoint set after seeing results.
+4. **[CONFIRMED] Table 0 is outside the table gate.** It prints all three headline
+   canonical estimates/intervals, while `TABLES_PROVENANCE.json:25-36` classifies
+   it `md-only` with `checked: 0`. Generate its numeric row from the graph or add
+   an exact numeral crosscheck. Refresh graph generation/snapshot dates, which
+   still say 2026-07-11 despite the July 26 campaign.
+5. **[CONFIRMED] The strongest supported phrase is “module-attributable versus
+   identity.”** “FIR-specific” implies discrimination from active temporal or
+   parameter-matched alternatives. Await a valid control verdict before making
+   that stronger mechanism claim; a retained contrast never proves equivalence.
+
+### Construct validity, deployment validity and inference
+
+No change closes the standing scientific-validity risks:
+
+- rating values remain discarded, so the estimand is next reviewed item rather
+  than positive preference; add 4+-star, rating-weighted, verified-purchase and
+  true implicit-event sensitivities;
+- five-core eligibility, item mapping and catalog construction still use full
+  histories; add a global-time split with training-era eligibility and query-
+  time candidate catalogs;
+- fixed-split seed intervals quantify optimizer variability only; add user/
+  split/category uncertainty or state the fixed-dataset scope beside every
+  inferential claim;
+- text-cache/item-map binding, missing-metadata analysis and 2x2 input/output
+  text controls remain necessary; and
+- TFV2 still needs rank reconstruction, item-macro estimands, repeated thinning,
+  proper tie handling and honest post-hoc labels.
+
+### Novelty, baselines and journal fit
+
+The new “incremental modular” label is appropriately modest, but the literature
+boundary and executed controls are still incomplete. Official AAAI records now
+include [FreqRec](https://doi.org/10.1609/aaai.v40i17.38502), which uses a
+learnable frequency-domain path for sequential recommendation, and
+[WEARec](https://doi.org/10.1609/aaai.v40i19.38640), which uses adaptive
+frequency filtering and wavelets. Neither is discussed. This does not make the
+specific left-causal identity-initialized residual identical, but it narrows any
+broad frequency-filtering novelty claim.
+
+The related-work block at `PAPER_SUBMISSION.md:96-100` remains too dense and the
+executed-baseline overview at lines 209--215 omits the canonical identity arm and
+the strongest HSTU-BLaIR reference; AlphaFuse remains explicitly unrun. Convert
+the prose catalogue to a compact comparator matrix (causality, operator,
+initialization, protocol, code, executed/not executed), run the closest causal/
+convolutional controls under equal tuning budgets, and move metadata detail to
+the supplement. TORS emphasizes comprehensive reproducibility and systematically
+tuned baselines ([Jannach and Chen, 2026](https://doi.org/10.1145/3800587)); the
+current local-only source boundary and comparator gaps remain a poor fit.
+
+### Release, build and deposit readiness
+
+- `RELEASE_MANIFEST.json` now covers the new control preregistration and
+  adjudicator, but not its runner, evaluator or structural test; it also omits
+  the canonical runner, 32 endpoints and final adjudication result family. The
+  governed-file matcher is too narrow for `run_fir_*` and evaluation/test helpers.
+- Selected-entry checks pass **464 local / 326 Git** known entries. This is not a
+  completeness proof. A full strict build was deliberately not run because it
+  would consume ignored canonical outcome inputs and mutate generated artifacts.
+- `v1.1.11-deposit` is **98 commits and 444 paths behind** HEAD and has **200
+  selected mismatches** (126 matches). It is not an archival boundary for this
+  paper state.
+- `EXPERIMENT_PROGRAM.md:56` still says the canonical campaign is complete and
+  next should be integrated, then says it is running and should be relaunched/
+  adjudicated. Integration already occurred. No tracked program-status entry
+  documents the active control launch. Replace operational prose with immutable,
+  timestamped, evidence-classified status records.
+
+### Writing, figures and PDF inspection
+
+- Reader `PAPER_SUBMISSION.pdf`: 47 letter pages, SHA-256 `27703ED0...`, tagged,
+  no outlines. TORS `paper_tex/PAPER_TORS.pdf`: 40 letter pages,
+  `906C6BBC...`, untagged, 17 outlines. The current ignored acmsmall build is 42
+  pages, `3BC3AEF3...`, untagged and content-fresh, but it is not a committed
+  release artifact.
+- All pages were visually inspected in montages with targeted full-page views.
+  No clipping, overlap, black boxes, missing glyphs, broken table or blank page
+  was found. Figures and tables render and the canonical numerals agree.
+- **Submission blocker:** reader page 1 still prints an author note; TORS and
+  acmsmall page 1 print literal maintainer/author/institution/country placeholders,
+  and even-page headers retain a maintainer placeholder. The acmsmall footer also
+  presents dummy volume/article/publication metadata and a blank DOI.
+- **Confirmed layout defects:** reader Fig. 1's caption splits across pages
+  24--25; TORS/acmsmall Table 0 spans pages 5--6 in six tiny, fragmented columns;
+  TORS page 23 Fig. 1 and page 24 Fig. 2 have undersized annotations; all formats
+  end with roughly half a page of avoidable appendix whitespace.
+- **Figure/statistical defect:** unchanged Fig. 2 visually associates `p=.058`
+  with the user-thinned point even though that p-value belongs to the four-group
+  difference-in-differences; the within-rung contrast is about `.16`. Put the
+  estimand and interval directly in the chart and regenerate the asset.
+- **Accessibility:** the reader is tagged but lacks navigation outlines; TORS
+  and acmsmall are untagged, and author metadata is absent in all. Alt text should
+  communicate the figure's analytical takeaway, not repeat the caption.
+
+### Highest-leverage repair sequence
+
+1. **Before any active-control TEST:** install the family-ready/out-of-repo
+   sealed boundary, exact ignore/deny patterns, immutable checkpoint manifest,
+   metadata-first adjudication, full provenance/config/rank gates and an
+   outcome-free amendment resolving the duplicate MA/HP control.
+2. **Canonical evidence:** downgrade the outcome-visible/test-exposed cells and
+   prose; publish/hash all inputs and prove a clean-clone replay. Do not call a
+   local strict PASS a public reconstruction.
+3. **Algorithm optimization:** retain the cheap depthwise K=16 residual, but add
+   equal-budget identity, shared-kernel, fixed smoothing, genuinely distinct
+   high-pass/band-pass, parameter-matched nonlinear, causal Conv1D/NextItNet-
+   style and residual-initialization controls. Profile throughput, memory,
+   parameter count and latency; report accuracy-cost Pareto points rather than
+   optimizing NDCG alone.
+4. **Validity:** run rating-aware and global-time sensitivities, then reserve a
+   non-Amazon or truly untouched temporal dataset for one-shot final testing.
+5. **Statistics:** align the estimand, experimental unit, CI and multiplicity
+   language; report adjusted p-values and every registered secondary; add
+   user/item/split uncertainty rather than relying only on eight optimizer seeds.
+6. **Writing:** lead the abstract with the narrow module-attributable result and
+   audit contribution, demote external threshold comparisons, synchronize the
+   dataset-role/baseline tables, correct the weight-decay/BSARec statements and
+   replace “FIR-specific/cleanly isolated” with the evidence actually supported.
+7. **Figures/tables:** split Table 0 into a short main claim table plus appendix
+   attribution matrix; add an all-seed difference forest plot badged with
+   evidence class; keep figures/captions together; enlarge annotations; correct
+   Fig. 2's estimand; write functional alt text.
+8. **Submission/release:** populate real metadata, make the venue PDF tagged,
+   pass the gate without a waiver on a clean tree, broaden manifest governance,
+   rerun from a fresh clone on two platforms and cut a new immutable deposit.
+
+### Open questions and running checklist delta
+
+- [x] Manuscript and conclusion materially compressed without missing content.
+- [x] Canonical headline arithmetic agrees across bank, source and rendered PDFs.
+- [x] Active-control training is validation-only and TEST remained untouched at
+  the latest audit observation; **this box expires when Stage 2 begins**.
+- [ ] Has the automatic Stage-2 transition been paused until the sidecar/first-
+  reader custody defects are repaired?
+- [ ] Will the redundant MA/HP parameterization be replaced or explicitly
+  removed from the independent-control interpretation before TEST?
+- [ ] Are the 48 training artifacts bound to one immutable checkpoint manifest,
+  frozen code/config/data/cache hashes and an append-only attempt ledger?
+- [ ] Are all 32 canonical endpoints available through a hash-verified public
+  release and reproducible from a clean clone?
+- [ ] Has every “confirmatory/cleanly isolated” canonical label been downgraded
+  and the TEST-exposure/category-selection history disclosed?
+- [ ] Are weight decay, ordinary CI/Holm wording, registered secondaries and
+  Table 0's numeric gate corrected?
+- [ ] Are real author metadata, a tagged venue PDF, Figure 2, Table 0 and the
+  split reader caption repaired without `DRAFT_WAIVER=1`?
+- [ ] Are rating-aware/global-time sensitivities, direct current baselines and a
+  genuinely untouched final dataset complete?
+
+No scientific result was edited and no live FIR-control TEST outcome was read. This
+run changes only the cumulative audit and automation memory.
+
+## Audit Run - 2026-07-26 22:00 Australia/Sydney
+
+### Scope, fixed cutoff and change inventory
+
+- Audit cutoff: **2026-07-26 22:00:35 Australia/Sydney**
+  (`2026-07-26T12:00:35Z`).
+- Audited branch/commit: `codex/bestrec-sota-results` at
+  `e055f9d0e3416e1d0508c1cf7805729546135a0e`; `HEAD`, upstream and merge base
+  are identical (0 ahead / 0 behind).
+- There is **no tracked delta** from the 16:00 audit. The only worktree change is
+  this cumulative audit. Manuscript, TeX, result bank, preregistration, runner,
+  adjudicator, figures, tables, bibliography, manifests and PDFs are unchanged.
+- PDF hashes remain reader `0CB9C531...` (61 pages), TORS `F0C18EFB...` (54)
+  and acmsmall `8EDA0710...` (55). Figure-PDF hashes remain Fig. 1 `7F9C1BDD...`
+  and Fig. 2 `48499BED...`. No rerender was warranted; the full prior 170-page
+  visual inspection remains applicable.
+- No ignored/live endpoint, sidecar, status or log was reopened during this
+  no-delta run. The 16:00 local arithmetic verification remains the recorded
+  evidence and was not repeated merely to rediscover the same outcome.
+
+### Verdict and acceptance calibration
+
+**Recommendation remains reject / not submission-ready.** No new evidence closes
+any P0 item, and there is no reason to revise the acceptance ranges:
+
+- literal current package: **below 1%** because of visible placeholders and a
+  waiver-dependent gate;
+- scientific content as banked but unreplayable/unintegrated: **1--3%**;
+- honest descriptive integration plus sealed source artifacts: **3--6%**;
+- untouched/non-Amazon test-once validation, closest equal-budget baselines and
+  the standing validity repairs: **15--25%**;
+- independent reproduction, external replication and portable artifact proof:
+  **25--40%**.
+
+The positive canonical-breadth arithmetic remains useful descriptive robustness.
+It remains ineligible for confirmatory or three-category generalization language.
+
+### Persistence audit: confirmed unresolved blockers
+
+1. **[CONFIRMED] Evidence boundary remains absent.** The tracked canonical family
+   still consists only of preregistration, runner, adjudicator code and derived
+   summary. Tracked endpoint inputs remain 0/32 and tracked per-user inputs 0.
+   The summary still lacks their hashes, full arm vectors/configs/provenance,
+   n_eval, selected epochs, control/learned norms and exact attempt custody.
+2. **[CONFIRMED] Test exposure remains dispositive.** The unchanged driver did
+   not use `--no-test-eval`; the 16:00 audit confirmed a test record at every one
+   of 20 epochs in every local endpoint. A fixed queue is not a sealed holdout.
+3. **[CONFIRMED] Outcome-informed category selection remains.** IS and CDs were
+   already favorable before canonical rerun selection. The preregistration froze
+   the rerun but cannot retrospectively make the category choice outcome-blind.
+   Primary guidance describes preregistration's bias reduction as arising from
+   outcome-independent decisions
+   ([Hardwicke and Wagenmakers](https://doi.org/10.1038/s41562-022-01497-2)).
+4. **[CONFIRMED] Program and manuscript statuses remain contradictory.** The
+   same `EXPERIMENT_PROGRAM.md:56` paragraph says COMPLETE/POS, "holds on THREE
+   categories," driver running, relaunch next tick and adjudicate later. The
+   Markdown/TeX manuscript still says the campaign will be integrated on
+   completion but is not yet claimed.
+5. **[CONFIRMED] Statistical labels remain wrong/incomplete.** The bank contains
+   correct ordinary paired-t CIs and Holm decisions, but no Holm-adjusted CIs or
+   adjusted p-values and no registered HR/MRR family. The adjudicator retains
+   broad Normal fallback, partial config gates, zero-tie handling and no rank
+   reconstruction.
+6. **[CONFIRMED] Release checks remain falsely reassuring on completeness.** A
+   fresh selected-entry verification again passes 462 local files and 324 Git
+   blobs. The canonical runner/final bank/endpoints remain outside the manifest,
+   and neither `hstu_results_manifest.json` nor `hstu_tables.json` links them.
+   `v1.1.11-deposit` remains 91 commits and 438 paths behind.
+7. **[CONFIRMED] No presentation fix landed.** The PDFs retain placeholder
+   furniture, untagged venue output, reader navigation/alt-text defects, page-14
+   whitespace, stale running head, Fig. 2 p-value misattribution, mixed-unit
+   tables and the unexplained `FIR` acronym.
+
+### Novelty and journal-fit check
+
+No manuscript novelty claim changed. The prior conclusion therefore stands:
+the bank strengthens repeatability of one realization but does not make
+frequency filtering or local convolution novel. Current [FreqRec (AAAI
+2026)](https://ojs.aaai.org/index.php/AAAI/article/view/38502) and [WEARec (AAAI
+2026)](https://ojs.aaai.org/index.php/AAAI/article/download/38640/42602) further
+support a narrow contribution boundary. TORS explicitly prioritizes complete
+reproducibility materials and systematically tuned baselines
+([Jannach and Chen, 2026](https://doi.org/10.1145/3800587)); the current local-
+only result boundary and comparator gaps remain poor journal fit.
+
+### Highest-leverage next actions
+
+1. **Evidence/release:** hash and preserve all 32 exact endpoints and sidecars,
+   the normalized full configs, dirty patch/attempt ledger and adjudicator
+   transcript; publish an immutable bundle and make a clean clone recompute the
+   final cells from it.
+2. **Protocol:** freeze a genuinely untouched/non-Amazon successor with
+   train/validation-only selection, atomic checkpoints and one independently
+   custodied final test; forbid trainer continuation after final evaluation.
+3. **Algorithm:** run equal-budget identity, learned FIR, fixed/random filter,
+   parameter-matched causal/depthwise convolution, NextItNet/C3SASR and
+   Fixup/ReZero-style controls; add rating-aware and global-time sensitivities.
+4. **Writing:** replace "three-category isolation" with explicit
+   outcome-known/test-exposed descriptive wording; synchronize abstract through
+   conclusion; separate ordinary CIs from Holm-adjusted decisions; report all
+   registered secondary metrics.
+5. **Figures/tables:** give the descriptive breadth result its own all-seed
+   difference forest plot, clearly badged as outcome-visible/test-exposed; fix
+   Fig. 2's estimand label, functional alt text, typed table columns and acronym.
+6. **Submission:** replace identity placeholders, produce tagged/navigable PDFs,
+   reflow the page-14 void, pass the unwaived gate on two platforms and cut a new
+   deposit tied to the exact submission commit.
+
+### Open questions and checklist delta
+
+- [ ] Has any author supplied an exact immutable 32-file inventory and hashes?
+- [ ] Has per-epoch test-output visibility/continuation been documented?
+- [ ] Has the worklist contradiction been replaced with one descriptive status?
+- [ ] Has a truly untouched, test-once successor been frozen?
+- [ ] Are direct active temporal-filter controls and construct/global-time
+  sensitivities complete?
+- [ ] Can one clean clone reproduce the result cells and all final PDFs without
+  local-only inputs, missing manifest entries, placeholders or a waiver?
+
+No checklist item can be closed from this no-delta snapshot. A future audit
+should notify only on a tracked change that resolves or materially worsens one
+of these items.
+
+## Audit Run - 2026-07-26 16:00 Australia/Sydney
+
+### Scope, fixed cutoff and change inventory
+
+- Audit cutoff: **2026-07-26 16:00:30 Australia/Sydney**
+  (`2026-07-26T06:00:30Z`).
+- Audited branch/commit: `codex/bestrec-sota-results` at
+  `e055f9d0e3416e1d0508c1cf7805729546135a0e`; local `HEAD`, upstream and merge
+  base are identical (0 ahead / 0 behind). The pre-audit worktree modification
+  was only this cumulative audit file.
+- Delta from the 10:00 cutoff `34e78c53`: one commit, two paths. It changes one
+  line in `EXPERIMENT_PROGRAM.md` and adds
+  `_bestrec_run/fir_canonical_breadth_adjudication.json` (155 lines). It does
+  **not** change the manuscript, TeX, figures, tables, bibliography, PDFs,
+  runner, preregistration, adjudicator, manifest or artifact graph.
+- The three PDFs and both main figure assets are byte-identical. Reader remains
+  `0CB9C531...` (61 pages), TORS `F0C18EFB...` (54), acmsmall `8EDA0710...`
+  (55), Fig. 1 `7F9C1B...` and Fig. 2 `48499B...`. Under the PDF inspection
+  workflow, the prior 170-page render remains valid; unchanged pages were not
+  rerendered.
+
+### Strict reviewer verdict and acceptance calibration
+
+**Recommendation: reject / not submission-ready.** The positive stored
+statistics are real, but the experiment is neither test-sequestered nor
+independently replayable from the committed release boundary. It cannot be
+integrated as confirmatory three-category breadth evidence.
+
+- **Literal current package:** below **1%**, because visible identity placeholders
+  and the waiver-dependent submission gate remain automatic rejection risks.
+- **Scientific content after clerical repair, as currently banked:** about
+  **1--3%**; the new result is absent from the paper and its source bundle is
+  unreplayable.
+- **Honest descriptive integration plus sealed source-artifact release:** about
+  **3--6%**. This would improve transparency, not restore confirmation.
+- **Genuinely untouched/non-Amazon test-once validation, equal-budget nearest
+  baselines and the other standing validity repairs:** about **15--25%**.
+- **Independent reproduction, external replication and portable clean-clone
+  artifact verification:** about **25--40%**.
+
+These are strict-reviewer judgment ranges, not calibrated acceptance-rate
+statistics. The current commit does not justify an uplift to the literal range.
+
+### What the new result genuinely establishes
+
+The following checks used the 32 now-completed local endpoint JSONs read-only.
+Those files are ignored and are **not** part of the auditable release; this
+section distinguishes local verification from publishable evidence.
+
+1. **[CONFIRMED locally; arithmetic positive]** All 32 declared files exist and
+   parse. Recalculation from their exact best-by-validation NDCG@10 values gives:
+
+   | Category | a0 identity mean | a1 learned mean | Paired delta | Ordinary paired-t 95% CI | t(df=7) | p | Sign |
+   |---|---:|---:|---:|---:|---:|---:|---:|
+   | Industrial & Scientific | .031194 | .033304 | +.002110 | [.001820, .002399] | 17.234 | 5.44e-7 | 8/8 |
+   | CDs & Vinyl | .060533 | .066683 | +.006150 | [.005849, .006450] | 48.392 | 4.21e-10 | 8/8 |
+
+   The relative changes against a0 are approximately +6.76% and +10.16%.
+   Stored Holm step-down decisions and exact two-sided sign-test p=.0078125 are
+   correct. Recalculation from the banked six-decimal deltas differs only by
+   rounding. Even Bonferroni 97.5% simultaneous intervals from those rounded
+   deltas remain positive, so correcting the CI label is unlikely to reverse
+   direction.
+2. **[CONFIRMED locally; pairing/config checks favorable]** Within every
+   category-seed pair, init hashes match and configs differ only in `fir_v3`
+   (`frozen` versus `learned`) plus the output path. n_eval matches within arms
+   (50,985 for Industrial & Scientific; 123,876 for CDs & Vinyl). Learned-filter
+   final L2 norms are nonzero; identity-control norms are zero. Each stored
+   `best_test` value equals the test metric at the epoch selected by maximum
+   validation NDCG@10.
+3. **[CONFIRMED locally; source consistency partial]** All 32 records carry the
+   same trainer SHA-256. It equals the CRLF worktree representation of the
+   unchanged frozen Git blob, and category-specific data hashes are stable.
+   However, all 32 records say `git_dirty_tracked=true`; 31 name `34e78c53` and
+   one names `eb538476`. The dirty diff was not preserved, so the clean state of
+   the whole experimental tree cannot be reconstructed. This is a provenance
+   caveat, not evidence that trainer code differed.
+4. **[SUPPORTED ONLY AS A NARROW CLAIM]** Conditional on these fixed datasets,
+   seeds, transferred MI configuration and local files, the learned canonical
+   FIR arm has a stable positive identity-control contrast on both categories.
+   This improves the legacy pairing/parameterization story. It does not establish
+   population-level category breadth, superiority to an active convolutional
+   control, or a novel frequency-filtering principle.
+
+### Why the bank cannot be counted as confirmatory evidence
+
+1. **[CONFIRMED, source boundary is missing]** The committed JSON contains only
+   verdict metadata, category summaries, rounded deltas, Holm flags and copied
+   init-hash strings. It does not bind the 32 endpoint filenames/hashes, exact
+   a0/a1 values, complete configs, data/split/cache/code/checkpoint hashes,
+   selected epochs, n_eval, learned/control norms, sidecars, attempt IDs or the
+   adjudicator transcript. None of the 32 endpoint JSONs is tracked or released.
+   Thus an external reviewer cannot reproduce arm means, Welch tests, selection,
+   the identity gate or the claimed 32/32 file set.
+2. **[CONFIRMED, test sequestration failed]** Every local endpoint contains a
+   test object in all 20 epoch-history rows. The driver inherited
+   `eval_every=1` and did not use the trainer's `--no-test-eval` mode. This
+   directly violates `EXPERIMENT_PROGRAM.md`'s one-final-holdout rule. A fixed
+   queue limits optional stopping but does not undo visibility, and the current
+   record does not establish that output was never viewed.
+3. **[CONFIRMED, category outcomes were already known]** The same two categories
+   had favorable legacy-filter/TFV2 evidence before the canonical preregistration.
+   Fresh seeds and a new parameterization reduce some analytic flexibility but
+   do not make category selection outcome-independent. Preregistration reduces
+   bias by moving decisions before outcome knowledge
+   ([Hardwicke and Wagenmakers, 2023](https://doi.org/10.1038/s41562-022-01497-2));
+   here it freezes the rerun, not the earlier category choice.
+4. **[CONFIRMED, the gate does not enforce its advertised boundary]** It checks
+   only selected FIR/category/epoch/seed flags, control L2 and self-reported init
+   hashes. It does not compare the full normalized cross-arm config, bind the MI
+   reference config, validate schema/ranges/finiteness/n_eval, reconstruct ranks,
+   hash the loaded checkpoint, or enforce an exact attempt/file set. A runner
+   also skips any existing pathname without validating ownership or contents.
+5. **[CONFIRMED, analysis/report mismatch]** The preregistration licenses a
+   "Holm-corrected 95% CI," but code computes an ordinary paired-t 95% interval
+   and separately applies Holm thresholds to p-values. It banks thresholds and
+   flags, not adjusted p-values. Registered HR/MRR@{5,10,20,50} secondaries are
+   absent. A broad SciPy exception silently switches to Normal p-values and 1.96
+   while prose still calls the result Student-t; stored values show the t branch
+   was used this time.
+6. **[CONFIRMED, chronology/status prose is contradictory]** The checked worklist
+   entry begins COMPLETE/POS and "holds on THREE categories," then retains the
+   old text saying the driver is running, instructing a next-tick relaunch and
+   future adjudication. Freeze and launch commits are 2026-07-26 01:42/01:45
+   Sydney; the last endpoint is 11:36 and bank commit 11:38, yet the completion
+   line says 2026-07-25. The manuscript and TeX still say integration is pending.
+
+### Release, artifact and submission checks
+
+- `update_release_manifest.py --verify`: **PASS**, 462 selected local files.
+- `--verify-git HEAD`: **PASS**, 324 selected Git-backed entries.
+- The green result is incomplete: the canonical-breadth runner and new final
+  adjudication are absent from `RELEASE_MANIFEST.json`; the final result is also
+  absent from `hstu_results_manifest.json`, `hstu_tables.json`, build scripts,
+  `CANONICAL_SUBMISSION.md`, README and the manuscript.
+- `v1.1.11-deposit` is now 91 commits and 438 changed paths behind HEAD. The
+  selected-entry tag comparison still reports 198 mismatches; it says nothing
+  about the omitted new bank.
+- The current manuscript's "not yet claimed" status is scientifically safer than
+  integrating the positive label, but "integrated on completion" is now stale.
+  Replace it with explicit completed-but-protocol-deviated/not-counted status.
+- TORS now explicitly prioritizes complete reproducibility materials and
+  systematically tuned baselines
+  ([Jannach and Chen, 2026](https://doi.org/10.1145/3800587)). A derived summary
+  with local-only inputs is directly misaligned with that journal standard.
+
+### Novelty and closest-literature update
+
+The new result strengthens empirical repeatability of one canonical realization;
+it does not make sequence convolution or frequency filtering novel. The paper
+still needs an explicit feature/baseline matrix and equal-budget experiments
+against FMLP-Rec, BSARec, simple causal/depthwise convolution, C3SASR/NextItNet
+and matched residual-initialization controls. Two current primary sources further
+narrow the frequency-aware boundary:
+
+- [FreqRec (AAAI 2026)](https://ojs.aaai.org/index.php/AAAI/article/view/38502)
+  uses a learnable frequency-domain MLP and frequency-consistency objective.
+- [WEARec (AAAI 2026)](https://ojs.aaai.org/index.php/AAAI/article/download/38640/42602)
+  combines adaptive frequency filtering and wavelet enhancement and benchmarks
+  FMLP-Rec, SLIME4Rec and BSARec.
+
+Neither source proves the paper's exact causal identity-initialized FIR
+realization is already known. They do show that "frequency-aware filtering helps
+sequential recommendation" is an occupied contribution space. The defensible
+novelty remains the exact causal realization plus rigorously isolated empirical
+behavior, contingent on direct active controls and reproducible evidence.
+
+### Actionable repair plan
+
+#### Algorithm, protocol and statistical optimization
+
+1. **Quarantine, do not discard, the completed run.** Preserve the 32 exact
+   endpoint bytes and sidecars as a descriptive evidence bundle. Generate a
+   machine-readable inventory with filename, bytes and SHA-256; publish it as
+   tracked files or immutable release assets; record the complete dirty diff and
+   attempt chronology where recoverable. Never promote it to confirmatory.
+2. **Freeze a successor before execution.** Use a genuinely untouched category
+   and preferably a non-Amazon dataset, new seeds, train/validation-only model
+   selection, atomic hashed checkpoints and one post-seal final evaluator. Make
+   the evaluator incapable of continuing training and give final-test custody to
+   a separate operator/service where practical.
+3. **Harden the adjudicator.** Require exact normalized config/reference
+   equality; bind Git tree, driver, trainer, data, split, cache and checkpoint
+   digests; reject dirty state or preserve its patch; validate complete schema,
+   finiteness, ranges and denominators; reconstruct NDCG/HR/MRR from ranks;
+   require an exact immutable file/attempt ledger and fail closed if SciPy or any
+   registered metric is absent.
+4. **Correct multiplicity reporting.** Preserve the executed ordinary 95% CIs,
+   report Holm-adjusted p-values/decisions separately, and optionally add genuine
+   simultaneous 97.5% intervals. Never call the current intervals Holm-corrected.
+5. **Run the active-control matrix.** Compare identity, learned FIR, fixed/random
+   filters, parameter-matched causal/depthwise convolution, NextItNet/C3SASR and
+   Fixup/ReZero-style initialization under the same validation-only search budget.
+   Report parameter count, FLOPs, peak memory and wall-clock as well as accuracy.
+6. **Complete construct/deployment sensitivities.** Run 4+-star, rating-weighted,
+   verified-purchase and true implicit-feedback definitions, plus global-time
+   splits with training-era eligibility and query-time catalogs.
+
+#### Writing and status integration
+
+1. Replace the worklist's stale operational tail with exact ISO timestamps,
+   freeze/launch/bank commits, an immutable input-inventory hash, adjudicator
+   exit/transcript hash and the classification
+   `OUTCOME-VISIBLE / TEST-EXPOSED / DESCRIPTIVE / NOT COUNTED`.
+2. Do not write "canonical isolation holds on three categories." A defensible
+   sentence is: "A predeclared matched-initialization transfer produced positive
+   stored NDCG@10 contrasts on two previously favorable categories; because the
+   categories and per-epoch test outputs were outcome-visible, these results are
+   descriptive robustness evidence rather than category-unseen confirmation."
+3. Synchronize Markdown and TeX abstract, introduction, Method, Results,
+   Limitations and Conclusion. Keep legacy zero-gated evidence, MI canonical
+   evidence and this descriptive transfer in separately labeled rows.
+4. Expand "finite-impulse-response (FIR)" at first use, correct the BSARec
+   theorem reference, add FreqRec/WEARec and reduce the conclusion to one bounded
+   contribution ledger rather than campaign chronology.
+
+#### Figures, tables and release
+
+1. Do not mix these data into the tail-mechanism figures or legacy four-category
+   plot. If retained, use a separate canonical learned-minus-identity forest/dot
+   plot with all eight seed differences, ordinary intervals, adjusted p-values
+   in separate columns, n_eval, and visible badges for outcome-known/test-exposed.
+2. Correct Fig. 2's existing p-value target (`dd p=.058`; within-rung about .16),
+   replace caption-duplicating alt text with functional descriptions and produce
+   tagged venue PDFs with verified navigation.
+3. Add the runner, exact input bundle, adjudication, transcript and generated
+   manuscript cells to both the release manifest and artifact graph. Test the
+   manifest's completeness patterns with deliberately omitted files.
+4. Rebuild from zero on a second platform, require the unwaived hygiene gate,
+   verify all three PDFs and cut a new immutable deposit matching the submission
+   commit.
+
+### Open questions and running checklist delta
+
+- [ ] Were any per-epoch test values, logs or final directions viewed during the
+  queue, and did they influence continuation, interpretation or integration?
+- [ ] Can the exact 32 endpoints, their sidecars and the adjudicator transcript
+  be frozen with a complete SHA-256/bytes inventory and clean-clone replay?
+- [ ] What tracked modifications caused `git_dirty_tracked=true` in all 32 runs,
+  and can the exact patch be recovered?
+- [ ] Will the current bank be explicitly classified descriptive/not counted
+  rather than cross-category confirmation?
+- [ ] Is there a genuinely untouched/non-Amazon, test-once successor with an
+  independently custodied final evaluator?
+- [ ] Are ordinary intervals and Holm-adjusted decisions labeled separately,
+  and are all registered HR/MRR secondaries reported?
+- [ ] Are direct active temporal-filter baselines tuned under equal budgets?
+- [ ] Are the new source boundary, graph cells, final PDFs and deposit all
+  reproducible from one clean commit without a waiver?
+
+The positive arithmetic is retained as a useful descriptive result. No standing
+submission blocker is closed by this commit.
+
+## Audit Run - 2026-07-26 10:00 Australia/Sydney
+
+### Scope, fixed cutoff and change inventory
+
+- Audit cutoff: **2026-07-26 10:00:22 Australia/Sydney**
+  (`2026-07-26T00:00:22Z`).
+- Audited branch/commit: `codex/bestrec-sota-results` at
+  `34e78c5354fb2139314ce9cf8dea531fb53a5491`; local `HEAD`, upstream and merge
+  base are identical (0 ahead / 0 behind).
+- Compared with the 04:00 audit, there is **no tracked manuscript, code,
+  result, figure, bibliography or PDF delta**. The only worktree modification
+  before this entry was the cumulative `PAPER_REVIEW_AUDIT.md`.
+- The three compiled PDFs are byte-identical to 04:00: reader
+  `0CB9C531...` (61 pages), TORS `F0C18EFB...` (54 pages), and acmsmall
+  `8EDA0710...` (55 pages). The earlier complete 170-page render remains the
+  relevant visual record, so unchanged pages were not rerendered.
+- No ignored or live campaign output, status file or log was opened. The audit
+  is intentionally limited to the version-controlled record at the cutoff;
+  therefore it neither infers completion nor learns outcome directions from
+  the live queue.
+
+### Strict reviewer verdict and acceptance calibration
+
+**Recommendation: reject / not ready for top-journal submission.** There is no
+evidential basis for an acceptance-probability uplift. The literal package is
+still below **1%** because it contains visible identity placeholders and a
+waiver-dependent gate. A clerical-only cleanup remains roughly **2--5%**. A
+coherent paper with the standing scientific defects repaired and a valid
+test-once canonical successor would be roughly **12--20%**; adding external
+replication, independent reproduction and portable artifact evidence could move
+it to **25--40%**. These are judgment ranges, not calibrated journal statistics.
+
+The central reason is not cosmetic. The claimed methodological identity,
+estimand, evaluation independence, direct-baseline evidence and artifact
+assurance are still unresolved simultaneously. The tracked canonical-breadth
+campaign cannot repair that gap in its current form.
+
+### Confirmed state at this cutoff
+
+1. **[CONFIRMED] No new counted breadth evidence exists.** The tracked inventory
+   contains the preregistration, runner and adjudicator, but no final
+   `_bestrec_run/fir_canonical_breadth_adjudication.json` and no integrated
+   `FIR_CANONICAL_BREADTH_RESULTS.md`. The program and manuscript still describe
+   the experiment as launched/not yet claimed.
+2. **[CONFIRMED] The launch violates the repository's own test-sequestration
+   rule.** The driver inherits `eval_every=1`; the trainer evaluates and prints
+   test NDCG/HR every epoch. Existing filename skips, optional continuation and
+   visible stdout mean gitignored endpoints are not a sealed holdout. Preserve
+   non-integration and mark all eventual outputs
+   `PROTOCOL-DEVIATED / OUTCOME-VISIBLE / DESCRIPTIVE`.
+3. **[CONFIRMED] The adjudicator remains insufficient.** It performs only
+   partial flag checks, lacks exact config/data/split/code/checkpoint/rank
+   custody, does not emit the registered HR/MRR family, retains zero ties,
+   substitutes normal inference after broad SciPy exceptions and computes an
+   ordinary t interval despite the preregistered Holm-CI wording.
+4. **[CONFIRMED] Algorithm/prose contradictions remain.** Weight-decay prose
+   conflicts with the actual canonical arm; `p=.95` is used as if it established
+   equivalence; K={4,8,16,50} evidence belongs to the legacy zero-gated package,
+   not the canonical K=16 method; the paper spine still mixes both identities.
+5. **[CONFIRMED] Construct and deployment validity remain unresolved.** Rating
+   values are ignored when defining positive events, and future information
+   still enters five-core eligibility, indexing and candidate availability.
+6. **[CONFIRMED] Artifact completeness remains overstated.** The graph covers
+   arithmetic over aggregates rather than reconstructing headline metrics from
+   ranks; 254 of 331 graph sources are outside the release manifest, and the
+   exact launch driver is not governed by that manifest.
+7. **[CONFIRMED] Release verification is only internally green.** Fresh checks
+   report `--verify` OK for 462 selected files and `--verify-git HEAD` OK for
+   324 Git-backed entries. Against `v1.1.11-deposit`, there are still 198
+   mismatches; the tag is 90 commits and 437 changed paths behind. A verifier
+   that checks only selected known entries does not establish completeness.
+8. **[CONFIRMED] Submission presentation is unchanged.** Visible placeholders,
+   blank PDF author metadata, untagged venue PDFs, missing reader navigation,
+   the page-14 whitespace regression, stale short title, long conclusion and
+   figure/table semantic defects all remain.
+9. **[CONFIRMED, newly sharpened visual/statistical error]** The shared Fig. 2
+   asset labels `p=.058` as if it belongs to the positive user-thinned point.
+   Section 5.4.2 shows that `p=.058` is the four-group difference-in-differences
+   against full density, while the within-rung text-minus-ID contrast is about
+   `p=.16`. The venue caption identifies the difference-in-differences more
+   clearly than the Markdown/reader caption, but neither caption repairs the
+   graphic itself. The reader's two figure `/Alt` strings duplicate the visible
+   captions (including the same statistical ambiguity and a CSV path), while
+   the untagged venue PDFs discard their better `\\Description{}` text.
+10. **[CONFIRMED, newly identified writing hygiene defect]** `FIR` appears in
+    the algorithm-centered title, abstract and body but is never expanded as
+    "finite-impulse-response." Define it at first use and avoid an unexplained
+    acronym in the title for a broad journal readership.
+
+### Plausible risks and author-verification boundary
+
+- **[PLAUSIBLE RISK]** Mapping-unsafe text caches and one shared `unknown`
+  embedding may create cohort-dependent missingness bias. This remains
+  unquantified because no mapping-bound coverage table is committed.
+- **[PLAUSIBLE RISK]** Outcome-informed category choice and repeated test
+  exposure can exaggerate generality even if the eventual fixed-run mean is
+  positive. That is a design risk, not a claim about unseen live results.
+- **[AUTHOR VERIFICATION]** State whether any per-epoch test output was viewed,
+  whether the queue was continued/restarted after viewing outcomes, and whether
+  any result path was reused. Supply an immutable attempt ledger and custody
+  record rather than an assertion.
+- **[AUTHOR/LEGAL VERIFICATION]** Confirm final journal mode/page limit,
+  ethics/privacy approval, licenses, and permission to redistribute derived
+  split/rank artifacts.
+
+### Actionable repair plan
+
+#### Algorithm and experimental optimization
+
+1. Quarantine the current breadth run as descriptive. Freeze a successor before
+   execution with new seeds, train/validation-only checkpoint selection, atomic
+   hashed checkpoints and exactly one post-seal test evaluator. Separate the
+   person who runs the final evaluator from model selection where practical.
+2. Make the adjudicator fail closed: compare the complete normalized config;
+   bind Git tree, runner, data, split, cache and checkpoint digests; reconstruct
+   NDCG/HR/MRR from per-user ranks; validate schema, finiteness, ranges and
+   `n_eval`; use immutable attempt directories and an append-only ledger.
+3. Resolve the canonical method identity. Either make exclusion of FIR taps from
+   decay real in every canonical experiment or state that backbone decay is
+   used. Predeclare an equivalence margin and TOST/CI procedure if equivalence
+   matters; otherwise report the wide compatible effect without a ruling-out
+   claim.
+4. Add equal-budget direct controls: simple causal/depthwise convolution,
+   fixed/random and parameter-matched filters, NextItNet/C3SASR, and
+   Fixup/ReZero-style residual initialization. Local convolution is already
+   central to [NextItNet](https://doi.org/10.1145/3289600.3290975) and
+   [C3SASR](https://arxiv.org/abs/2211.01297); zero-initialized residual gating
+   predates this work in
+   [ReZero](https://proceedings.mlr.press/v161/bachlechner21a.html).
+5. Run construct/deployment sensitivities: 4+-star positives, rating-weighted
+   relevance, verified purchases, a true implicit-feedback dataset, global-time
+   splitting, training-era-only eligibility and query-time catalogs. Report
+   both next-review prediction and any narrower positive-feedback estimand.
+
+#### Writing and claims
+
+1. Choose one three-item contribution ledger and propagate it through title,
+   abstract, introduction, related work, results and conclusion. Label legacy
+   zero-gated evidence separately from canonical no-gate evidence in every table.
+2. Replace "leak-free," "rules out," "pre-declared," "external breadth" and
+   "Holm-corrected CI" wherever the version-controlled evidence does not support
+   those phrases. The BSARec source has Theorem 1 for repeated softmax attention,
+   not "Thm 3.1" for this operator
+   ([AAAI article](https://ojs.aaai.org/index.php/AAAI/article/view/28747)).
+3. Reduce the conclusion to 250--400 words: one answer, two bounded findings,
+   the two most important limitations and the next decisive experiment. Move
+   apparatus inventory and campaign chronology to the supplement.
+
+#### Figures, tables and release
+
+1. Replace trajectory-like connected seed plots with neutral all-seed points,
+   paired-difference distributions and intervals; show all seeds and define the
+   estimand, pairing, correction family and uncertainty in each caption. In
+   Fig. 2, label `dd vs full-density: p=.058` separately from `within-rung
+   text-ID: p approximately .16` (both nonsignificant), or remove p-values from
+   the graphic. Synchronize the Markdown caption to the clearer venue wording.
+2. Split Table S1 into typed panels or columns so counts, percentages, ranks and
+   effect sizes are never mixed; replace ambiguous `n` with `n_users`,
+   `n_items`, `n_seeds` or `n_pairs`.
+3. Reflow the Method/dataset-table boundary to remove the half-empty venue page
+   14, update the running head, add bookmarks/tagging and concise functional alt
+   text rather than caption duplication, then verify with PAC/veraPDF, a screen
+   reader, and visual checks at normal and 200% zoom.
+4. Manifest the exact launch driver and complete transitive graph, pin all
+   dependencies, run a clean-clone cross-platform build and create a new
+   immutable deposit matching the submission commit.
+
+### Open questions and running checklist delta
+
+- [ ] Was any canonical-breadth test output viewed or used for continuation?
+- [ ] Is there a sealed new-seed, checkpoint-only successor with a one-time
+  final test and independent custody?
+- [ ] Has the exact weight-decay/equivalence/Holm analysis been reconciled across
+  registry, implementation, tables and prose?
+- [ ] Are rating-aware and global-time replications committed with rank-level
+  outputs?
+- [ ] Are direct causal-convolution/residual-init baselines tuned under the same
+  validation-only budget?
+- [ ] Does Fig. 2 distinguish the difference-in-differences `p=.058` from the
+  within-rung `p approximately .16`, and do tagged outputs expose correct,
+  functional alt text?
+- [ ] Is finite-impulse-response (FIR) expanded at first use and removed from the
+  title unless the journal audience can reasonably be assumed to know it?
+- [ ] Does a complete manifest and clean-clone build reproduce all three final
+  PDFs without waivers or placeholders?
+
+No checklist item can be closed from this no-delta snapshot. The next audit that
+can materially change the verdict requires a tracked manuscript/result/build
+delta addressing at least one P0 item; a live outcome alone is insufficient.
+
+## Audit Run - 2026-07-26 04:00 Australia/Sydney
+
+### Scope, fixed cutoff and change inventory
+
+- Audit cutoff: **2026-07-26 04:00:19 Australia/Sydney**
+  (`2026-07-25T18:00:19Z`).
+- Audited branch/commit: `codex/bestrec-sota-results` at
+  `34e78c5354fb2139314ce9cf8dea531fb53a5491`; local `HEAD`, upstream and
+  merge base were identical (0 ahead / 0 behind).
+- Compared with the prior audited `779345ae`, this snapshot is **four commits
+  ahead**: preregistration/driver/adjudicator freeze, launch log, Markdown
+  canonicalization, then TeX/PDF mirroring. The delta is 14 paths, 486
+  insertions and 21 deletions. No campaign endpoint was committed or inspected
+  in this audit.
+- Source delta: new `PREREG_FIR_CANONICAL_BREADTH.md`, launch driver and
+  adjudicator; retitled and partially rewritten FIR presentation; rebuilt
+  reader/TORS PDFs; updated selected release hashes. No figure asset changed.
+- Worktree at cutoff contained only the pre-existing cumulative
+  `PAPER_REVIEW_AUDIT.md` modification. Read-only subaudits opened no ignored or
+  live campaign payload. This run edits only this audit and automation memory.
+- Selected manifest checks: current local verification **OK (462 files)** and
+  Git-backed verification against `HEAD` **OK (324 entries)**. The stale
+  `v1.1.11-deposit` comparison now has **198 mismatches** and the tag is 90
+  commits / 437 changed paths behind.
+
+### What genuinely improved
+
+1. **[CONFIRMED]** The full new title is synchronized in Markdown, the two
+   visible venue titles and all three PDF `/Title` metadata fields.
+2. **[CONFIRMED]** The canonical no-gate equation and canonical-versus-legacy
+   distinction are mirrored in Markdown/TeX and render without clipping,
+   overlap or glyph loss.
+3. **[CONFIRMED]** Git chronology is internally ordered: preregistration,
+   driver and adjudicator were committed at `a6775c6a` before the launch-log
+   commit `2a11c1b8`. New endpoint/status ignore patterns are active.
+4. **[CONFIRMED]** The manuscript explicitly says the unfinished canonical
+   breadth results are “not yet claimed.” No new result entered the abstract,
+   tables or conclusion at this cutoff.
+
+These are useful process improvements, but they do **not** raise the current
+acceptance estimate because the launched protocol violates the project's own
+test-sequestration rule and the retitling introduces new factual and narrative
+contradictions.
+
+### Strict-review verdict and acceptance estimate
+
+**Recommendation: reject / do not submit the literal package.** Estimated
+acceptance remains:
+
+- **Literal current files:** below **1%** (visible author placeholders alone are
+  disqualifying, before scientific review).
+- **Metadata, citation, wording and formatting repair only:** about **2--5%**.
+- **Plus the prior global-time/rating-aware/text-factorial/baseline/artifact
+  repairs and a valid test-once canonical-FIR successor:** about **12--20%**.
+- **Plus independently custodied temporal/non-Amazon replication, independent
+  clean reproduction and demonstrated apparatus portability:** about
+  **25--40%**.
+
+These remain subjective conditional reviewer ranges. ACM TORS's current methods
+guidance prioritizes complete reproducibility, systematic baseline tuning and
+test use only after model selection; the new every-epoch test path conflicts
+directly with that standard ([Jannach and Chen, 2026](https://doi.org/10.1145/3800587)).
+
+### New P0 finding: the launched canonical breadth campaign is not test-sequestered
+
+**Status: CONFIRMED protocol deviation. Do not integrate it as confirmatory.**
+
+- The project's standing rule requires test evaluation to be isolated from
+  trainers/sweeps and frozen final systems evaluated once
+  (`EXPERIMENT_PROGRAM.md:50--51`).
+- `_bestrec_run/run_fir_canonical_breadth.py:45--66` copies the tracked MI
+  configuration, which has `eval_every=1`, and adds neither
+  `--no-test-eval` nor a checkpoint-only/final-evaluator path.
+- `_bestrec_run/run_sasrec_sbert.py:2753--2769` consequently evaluates the test
+  split at every evaluation epoch; `:2785--2789` prints test NDCG/HR, and
+  `:2793--2797` retains the contemporaneous test result whenever validation
+  improves.
+- Gitignoring `results_*_FIRCANON_*` protects the repository from an accidental
+  add, but it does not hide stdout/log outcomes, prohibit inspection, prevent
+  optional stopping or produce a once-only final holdout.
+- The project already records an end-to-end Industrial & Scientific smoke and
+  an observed tap norm. If the default trainer path was used, it also emitted
+  test metrics; the exact command/log and whether they were viewed require
+  author verification.
+
+**Required disposition now:**
+
+1. Let the already fixed queue finish only to avoid outcome-dependent stopping,
+   but label the family **PROTOCOL-DEVIATED / OUTCOME-VISIBLE / DESCRIPTIVE**.
+2. Do not allow its adjudicator verdict to upgrade abstract, title, Results,
+   Conclusion or a “confirmation” ledger.
+3. Freeze a successor with new seeds, training/validation-only trainers,
+   immutable/hashed best-validation checkpoints, a complete-run seal and one
+   post-seal final evaluator. Put the final test under an independent process or
+   custodian where practical.
+4. Record every attempt, command, launch commit, dirty-state digest, heartbeat,
+   failure and checkpoint hash in an append-only ledger; never silently reuse a
+   pathname.
+
+### New P0 finding: canonical-FIR prose contradicts the frozen implementation
+
+**Status: CONFIRMED factual/statistical errors.**
+
+#### Weight decay is included, not excluded
+
+- `PAPER_SUBMISSION.md:183` and `paper_tex/sections/03-method.tex:115` state
+  that canonical FIR taps “are excluded from weight decay.”
+- E-A's primary A1 arm uses `--fir-v3-wd backbone`
+  (`PREREG_FIR_V3.md:50--55`), and the new campaign explicitly pins the same
+  setting (`PREREG_FIR_CANONICAL_BREADTH.md:35--42`;
+  `run_fir_canonical_breadth.py:62--66`). Trainer lines 2595--2604 apply the
+  ordinary `1e-5` decay unless the option is `zero`.
+
+**Fix:** Say “the primary canonical arm uses backbone weight decay; A2 is a
+secondary zero-decay sensitivity.” If the intended proposed module excludes
+decay, rerun the proposed primary under that definition rather than relabeling
+an included-decay result.
+
+#### `p=.95` does not rule out the decay pathway
+
+- Introduction line 27 says the weight-decay pathway is “ruled out”; Method
+  calls it “empirically immaterial.” Results says excluding decay “changed
+  nothing” and the effect “does not run through” that pathway.
+- `PREREG_FIR_V3.md:72--80` registered an equivalence margin only for primary
+  A1-minus-A0, not the A2-minus-A1 decay contrast. The reported A2-minus-A1 CI
+  is `[-0.000339,+0.000360]`; failure to reject zero is not evidence of
+  equivalence or absence.
+
+**Fix:** Replace all causal/absence wording with: “A2-minus-A1 was +0.000010
+[-0.000339,+0.000360], p=.95; no decay sensitivity was detected at this
+precision, and no equivalence margin was preregistered.” If exclusion matters
+to the method definition, prospectively choose a meaningful margin and test it.
+
+#### The promised “Holm-corrected CI” is not computed
+
+- Frozen claim wording at `PREREG_FIR_CANONICAL_BREADTH.md:80--84` licenses a
+  “Holm-corrected 95% CI.”
+- `_bestrec_run/adjudicate_fir_canonical_breadth.py:54--63,154--162` computes an
+  ordinary per-category Student-t 95% CI. Lines 172--187 separately apply the
+  Holm step-down rule to p-values. No multiplicity-adjusted CI is constructed.
+
+**Fix:** Freeze/revise wording to “ordinary 95% CI excludes zero and the
+Holm-adjusted p-value is below .05,” or implement compatible simultaneous/
+adjusted intervals. Do not print “Holm-corrected CI.”
+
+#### Kernel robustness belongs to the legacy package
+
+Method line 183 places `K in {4,8,16,50}` robustness inside the canonical
+definition, but those sweeps used the historical zero-gated package; canonical
+evidence currently uses K=16 on MI only. Move the sweep into a clearly labeled
+legacy paragraph. If kernel robustness is part of the canonical claim, freeze a
+canonical K sensitivity with validation-only selection and fresh evaluation.
+
+### New high-risk finding: “breadth” categories and gate are outcome-informed
+
+**Status: CONFIRMED selection fact; inference must be narrowed.**
+
+- The new prereg selects Industrial & Scientific and CDs & Vinyl
+  (`PREREG_FIR_CANONICAL_BREADTH.md:44--50`).
+- The current manuscript already reports favorable legacy breadth estimates on
+  exactly those categories (`PAPER_SUBMISSION.md:324`) and favorable TFV2
+  independent-arm estimates (`:326`). The genuinely untouched category is
+  explicitly deferred in the new prereg.
+- Thus the new seeds and nonsingular parameterization are new, but category
+  choice and directional expectation are not. This is a targeted
+  reparameterization replication on outcome-known domains, not an unbiased test
+  of cross-category breadth.
+
+**Fix:** Disclose the prior category outcomes in the prereg/Results and rename
+the family “outcome-informed canonical-parameterization transfer.” Include
+previously null/negative categories and at least one genuinely untouched
+category or dataset before claiming general breadth.
+
+### New adjudicator/runner assurance defects
+
+**Status: CONFIRMED; current “fail-closed” label is inaccurate.**
+
+1. **Incomplete frozen-config enforcement.** Adjudicator lines 104--125 check
+   arm flags, kernel, category, epochs, seed, legacy-filter flag and a claimed
+   init hash. They do not exact-compare the full normalized configuration to a
+   pinned reference, bind trainer/driver/data/split/text/checkpoint hashes,
+   validate query counts/users/targets/ranks or reconstruct NDCG.
+2. **Unsafe resume.** Runner lines 93--104 skip any existing result pathname
+   without hashing, validating or assigning an immutable attempt ID. A stale,
+   partial or differently configured artifact can silently enter the family.
+   Status is overwritten directly rather than temp-written and atomically
+   renamed.
+3. **Registered metrics omitted.** Prereg lines 64--65 promise HR@10, MRR@10
+   and the full `{5,10,20,50}` metric family as secondaries; adjudicator line 125
+   reads only `best_test["NDCG@10"]` and never emits the promised family.
+4. **Inference can mutate with environment.** `_tdist()` lines 46--51 catches
+   any SciPy error and silently substitutes normal p-values/1.96 while output
+   still describes df=7 Student-t. At n=8 this is anti-conservative. Fail closed
+   if the registered t implementation is unavailable.
+5. **Sign-test tie handling is wrong.** Lines 81--89 keep zero differences in
+   `n`; an exact sign test should remove ties and disclose the reduced
+   denominator.
+6. **Release custody omits the launch driver.** `RELEASE_MANIFEST.json` includes
+   the new prereg and adjudicator but not
+   `_bestrec_run/run_fir_canonical_breadth.py`; current completeness patterns
+   therefore pass an incomplete protocol surface.
+
+**Required gate:** exact expected-file/attempt set; full finite schema; full
+normalized config and code/data/split/cache/checkpoint digests; identical
+user/target denominators across arms; rank-level metric reconstruction; complete
+secondary outputs; exact registered inference; and mutation tests for every
+field. Derive governed runners generically rather than maintaining a hand list.
+
+### Title, novelty and paper-identity regression
+
+**Status: CONFIRMED writing contradiction and STRONG novelty risk.**
+
+- The title, Introduction item 2 and Method now promise the **canonical
+  gradient-active FIR**. The abstract still reports only the **legacy
+  FIR-plus-initialization/optimizer package** and omits the canonical E-A result.
+- Introduction line 22 still says the lead contribution is the evaluation
+  apparatus. Related work, Table 0, the headline experiment/Table 1 and the
+  Conclusion remain centered on the legacy zero-gated K=8 stack and four-
+  category package evidence. The Conclusion still says there are two main
+  findings and calls the apparatus the lead.
+- Reader Introduction lists three contributions; both venue Introductions still
+  list seven. The retitle synchronized only one item, not the contribution
+  ledger.
+- The canonical evidence at this cutoff is one MI internal contrast; the new
+  cross-category run is unfinished and protocol-deviated. That evidence is too
+  narrow for an algorithm-centered top-journal title without direct current
+  baselines and external validation.
+
+**Novelty fact-check:** causal convolution in sequential recommendation is
+already central to [NextItNet](https://doi.org/10.1145/3289600.3290975) and is
+combined directly with self-attention in
+[C3SASR](https://arxiv.org/abs/2211.01297). Identity/zero-initialized residual
+training also has established precedents such as
+[Fixup](https://openreview.net/forum?id=H1gsz30cKX) and
+[ReZero](https://www.auai.org/uai2021/pdf/uai2021.519.pdf). The defensible novelty
+is therefore at most the exact HSTU placement/protocol plus measured controls,
+not causal convolution, FIR filtering or identity initialization themselves.
+
+**Required choice:**
+
+- **Recommended now:** revert to an apparatus/case-study title until a valid
+  canonical breadth result and direct algorithmic baselines exist; or
+- If retaining the FIR title, rewrite abstract, Related Work, Table 0,
+  Experiments, headline table and Conclusion around canonical E-A, labeling it
+  “MI-only FIR-specific”; demote all four-category evidence to “legacy
+  package-level.” Add equal-budget C3SASR, NextItNet/AdaMCT-style, simple
+  depthwise causal-conv, fixed moving-average/high-pass, parameter-matched random
+  filter and Fixup/ReZero initialization controls.
+
+The BSARec citation error remains especially damaging after retitling:
+`PAPER_SUBMISSION.md:179` still says “Thm 3.1,” whereas the published paper's
+low-pass result is **Theorem 1** for repeated softmax attention
+([official AAAI paper](https://ojs.aaai.org/index.php/AAAI/article/download/28747/29438)).
+It is motivation, not a theorem about the manuscript's non-softmax HSTU-style
+operator.
+
+### PDF, page-economy and figure audit
+
+- New PDF hashes/pages: reader `0CB9C531...7549` (61 pages), TORS
+  `F0C18EFB...409D0` (54), acmsmall `8EDA0710...004E` (55). All 170 pages were
+  newly rendered; changed title/Introduction/Method pages were visually
+  inspected. The new equation renders correctly.
+- **New layout regression:** the longer Method pushes the unbreakable dataset
+  table to venue page 15. TORS/acmsmall page 14 now strands the §4/§4.1 heading
+  and two lines beneath roughly half a page of dead space. Shorten/move the
+  legacy-method history, or make the dataset block float/break safely; add a
+  page-fit regression check.
+- **New minor parity defect:** the venue running head remains the old generic
+  `Artifact-Gated Evaluation` despite the FIR-focused full title. Update it only
+  after the final paper identity is chosen.
+- Reader remains tagged but has zero outlines/links; venue PDFs remain untagged.
+  All PDF authors are blank while visible placeholders remain. Previous
+  navigation, accessibility and metadata problems therefore persist.
+- Figure assets did not change. Figure 1 moved one page in TORS through reflow,
+  but the existing “one estimand/ONE draw” caption errors remain; Figure 2 still
+  attaches `p=.058` ambiguously. No new visual figure defect was introduced.
+
+### Persistent scientific blockers not repaired by this delta
+
+1. Star ratings remain ignored, so every review is treated as positive and the
+   construct remains next-review-event prediction. The official AR2023 schema
+   defines ratings from 1.0 to 5.0 and separately marks verified purchases
+   ([official schema](https://amazon-reviews-2023.github.io/main.html)).
+2. Global five-core/catalog construction remains future-informed; positional
+   left-causality does not make the overall protocol leak-free.
+3. TFV2 undeclared secondaries, event-vs-item weighting, score ties, stale
+   Spearman values, one-draw thinning inference, “rank-free” HR and “flat null”
+   wording remain unchanged.
+4. The text cache is still not semantically bound to its item map; missing
+   metadata and input/output-text confounding remain untested.
+5. The 175-cell gate remains aggregate-arithmetic rather than rank-level metric
+   reconstruction; 254/331 graph sources remain outside release custody.
+6. Author placeholders, stale deposit, closest-baseline omissions, repeated
+   test exposure and absence of external replication remain rejection-level.
+
+### Ordered repair plan, including algorithm and figure optimization
+
+1. **Quarantine the new campaign scientifically:** record the deviation now,
+   preserve every run without optional stopping, and forbid confirmatory
+   integration. Freeze a test-once successor before launching anything else.
+2. **Correct truth conditions immediately:** weight-decay setting, p=.95
+   interpretation, Holm-CI wording, legacy-only K sweep, BSARec theorem number,
+   “leak-free,” “rank-free,” “flat null” and stale Spearman pair.
+3. **Choose one paper identity:** apparatus case study is currently the better-
+   supported route. If algorithmic, make canonical E-A the sole proposed module
+   and treat the legacy package, text-tail case and artifact chronology as
+   supporting analyses rather than co-equal stories.
+4. **Optimize the algorithm evaluation, not just the module:** benchmark simple
+   causal/depthwise conv, C3SASR/NextItNet/AdaMCT, fixed and randomized filters,
+   parameter-matched residuals and initialization controls under equal
+   validation-only budgets. Predefine a practically meaningful delta, and
+   report parameters, FLOPs, latency, memory and training stability.
+5. **Establish transfer:** include null/negative outcome-known categories plus
+   a genuinely untouched AR2023 category; then use a global-time and non-Amazon
+   dataset. Keep rating-aware and verified-purchase sensitivities.
+6. **Make assurance semantic:** immutable attempts, full provenance, rank-level
+   sidecars, complete claim parsing, manifest closure and mutation tests. One
+   clean-clone command must build reader/TORS/acmsmall and finish clean.
+7. **Writing:** use one generated contribution registry across title, abstract,
+   both Introductions, Table 0, Results and a 250--400-word Conclusion. State
+   “canonical FIR-specific (MI only)” versus “legacy package-level (four
+   categories)” wherever both appear.
+8. **Figures:** add a compact method schematic showing only past taps
+   `x_t + sum_k Delta_k x_{t-k}`, identity initialization and the absence of a
+   gate. Replace result trajectories with an all-seed paired forest plot that
+   labels outcome-known versus genuinely untouched categories. Correct Fig. 1/
+   Fig. 2 contrast captions and show every CI; never connect incomparable arms.
+9. **Layout/release:** remove the venue-page-14 void, fix running heads,
+   placeholders, tags/links/accessibility and cut a new deposit only after all
+   science and gate repairs reproduce from a clean environment.
+
+### Open questions requiring author verification
+
+1. Were any IS smoke or live campaign test metrics viewed? Preserve the exact
+   smoke/run commands and logs; who had access, and was continuation ever
+   conditional on an observed result?
+2. Will the authors formally mark this campaign descriptive and launch a new
+   sequestered successor, or do they dispute the repository's standing rule?
+3. Why does Method say taps are excluded from decay when both canonical primary
+   configurations use backbone decay? Which setting defines the proposed method?
+4. Was any equivalence margin conceived for A2-minus-A1 before its result? If
+   not, will all “ruled out/immaterial/changed nothing” wording be withdrawn?
+5. Which genuinely untouched category/dataset will provide the external breadth
+   test, and how will negative categories be represented?
+6. Why does the launch driver sit outside the manifest, and what guarantees that
+   skipped result names are complete, configuration-identical attempts?
+7. Is the paper primarily an apparatus case study or an FIR algorithm paper?
+   Which single contribution ledger should every artifact implement?
+8. When will the rating/global-time/text-factorial/direct-baseline tests and an
+   independently held final evaluation be frozen and run?
+9. Who will supply final author metadata, portal/page-mode confirmation,
+   accessibility remediation and redistribution/license decisions?
+
+### Running checklist after this audit
+
+- [ ] Mark E-CANON-BREADTH protocol-deviated/outcome-visible/descriptive.
+- [ ] Freeze a new checkpoint-only, test-once canonical successor with new seeds.
+- [ ] Correct weight-decay, p=.95, Holm-CI, K-sweep and BSARec statements.
+- [ ] Exact-gate full config/code/data/split/checkpoint/rank provenance and metrics.
+- [ ] Add the launch driver and all graph sources to release custody.
+- [ ] Decide apparatus-versus-FIR identity and synchronize every paper artifact.
+- [ ] Run direct causal-convolution, filter and initialization controls fairly.
+- [ ] Add outcome-negative and genuinely untouched category/non-Amazon transfer.
+- [ ] Define review-event/rating construct and run rating/purchase sensitivities.
+- [ ] Run global-time training-era eligibility/query-time catalog replication.
+- [ ] Repair TFV2 estimand, secondaries, ties, thinning and prose statistics.
+- [ ] Bind text matrices to item maps/encoder commits and run the 2x2 text design.
+- [ ] Replace placeholders and pass an unwaived, read-only strict scan.
+- [ ] Fix page-14 whitespace, figures/captions, contribution ledger and Conclusion.
+- [ ] Make all PDFs accessible, navigable, metadata-clean and semantically aligned.
+- [ ] Reproduce from a clean locked environment and cut a complete new deposit.
+
+## Audit Run - 2026-07-25 22:00 Australia/Sydney
+
+### Scope, fixed cutoff and repository integrity
+
+- Audit cutoff: **2026-07-25 22:00:41 Australia/Sydney**
+  (`2026-07-25T12:00:41Z`).
+- Audited commit: `779345ae17da5d8ffe8c1d01d1f0e4aeee5cb4e3`.
+  Local `HEAD`, upstream and merge base were identical; ahead/behind was 0/0.
+- **No manuscript, code, result, figure, bibliography or compiled-PDF commit
+  changed since the 16:00 audit.** The only tracked pre-existing worktree change
+  was this cumulative audit. Consequently, the findings below are deeper
+  review of the same scientific snapshot, not regressions caused by a new
+  author edit.
+- Reader, TORS and acmsmall PDF hashes were unchanged. The existing 170-page
+  visual render was therefore reused read-only; no PDF was regenerated.
+- Current release-manifest verification passed for its selected 460 files and
+  322 Git-backed entries. Verification against `v1.1.11-deposit` still found
+  **196 mismatches**; the tag remains 86 commits and 434 paths behind `HEAD`.
+- The strict PDF scan still fails on `[Maintainer:]`. Running the scanner also
+  exposed a tooling defect: `paper_tex/scan_pdf.py:110--116` rewrites the
+  tracked `hygiene_scan_output.txt` during a check. That transient write was
+  restored exactly; this run intentionally edits only this audit and automation
+  memory. Add separate `--check` (read-only) and `--update` modes.
+
+### Strict-review verdict and acceptance estimate
+
+**Current recommendation: reject / do not submit this literal package.** The
+acceptance estimate is mechanically unchanged because the paper did not
+change, while the new construct-validity and assurance findings strengthen the
+downside case:
+
+- **Literal package now:** below **1%** (identity placeholders alone are a
+  submission blocker).
+- **Clerical, metadata and formatting repair only:** about **2--5%**.
+- **Plus a valid global-time protocol, rating-aware construct checks, fair
+  baseline tuning, text-side factorial decomposition, rank-backed artifact
+  reconstruction and an independently held final test:** about **12--20%**.
+- **Plus successful external replication, independent reproduction and a
+  portable clean-clone release:** about **25--40%**, still venue- and
+  reviewer-dependent.
+
+These are judgmental ranges, not a statistical model of editorial decisions.
+The target journal's 2026 methods editorial explicitly prioritizes complete
+reproducibility materials and documented systematic baseline tuning, which are
+precisely where this package remains incomplete ([ACM TORS editorial,
+DOI 10.1145/3800587](https://doi.org/10.1145/3800587)).
+
+### New confirmed problems
+
+#### 1. Star ratings are read and then discarded: the target is a review event
+
+**Status: CONFIRMED; P0 construct-validity problem.**
+
+- `_bestrec_run/preprocess_5core_standard.py:65--70` reads and stores `rating`.
+- `_bestrec_run/run_sasrec_sbert.py:99--128` loads it, but its sequence builder
+  uses only user, item and timestamp. Rating magnitude and sign never enter the
+  interaction definition.
+- The official Amazon Reviews 2023 schema defines `rating` on **1.0--5.0** and
+  `timestamp` as the review timestamp; it separately supplies
+  `verified_purchase` ([official field
+  definitions](https://amazon-reviews-2023.github.io/main.html)). The current
+  code therefore treats one-star and five-star reviews identically as positive
+  next-event targets and does not establish that an event is a purchase.
+- The paper discusses next-item recommendation without prominently defining
+  this narrower next-*review*-event construct or the ignored relevance signal.
+
+**Why a top-journal reviewer can reject:** The claimed recommendation benefit
+may be an ability to predict what active reviewers discuss, including disliked
+products, rather than what users prefer. Five-core filtering further selects
+unusually active reviewers. This changes both the scientific estimand and the
+population to which conclusions can generalize.
+
+**Required repair:**
+
+1. Rename the primary estimand “next-review-event prediction among globally
+   five-core reviewers/items” unless a new protocol supports a stronger claim.
+2. Report rating and verified-purchase distributions by category, split,
+   train-frequency cohort and target cohort.
+3. Predeclare and run at least: all reviews; ratings >=4 as positives;
+   rating-weighted relevance; verified-purchase-only where coverage permits;
+   and one true implicit-feedback dataset.
+4. Report how the five-core population differs from all reviewers. Do not
+   collapse these analyses into another optimizer-seed sweep.
+
+#### 2. The green 175-cell gate is aggregate arithmetic, not metric reconstruction
+
+**Status: CONFIRMED; P0 assurance-claim problem.**
+
+- `_bestrec_run/build_hstu_tables.py:171--194` obtains `bt_metric` and
+  popularity values from stored `best_test` aggregates; `:207--230` computes
+  table means, dispersions and deltas from those values.
+- Across the 175 active cells, `hstu_results_manifest.json` names 331 unique
+  source files: 326 JSON, three JSONL and two logs. It contains **no rank,
+  per-user or `.npz` source path** from which headline NDCG/HR can be rebuilt.
+- `build_hstu_tables.py:2285--2288,2342` compares recomputation to cached
+  `paper` fields in the graph rather than parsing claims from
+  `PAPER_SUBMISSION.md`. A prose-number edit can therefore evade the advertised
+  paper-mismatch check; the separate Markdown emitter covers only pipe tables.
+- Only 77/331 graph sources occur in `RELEASE_MANIFEST.json`; **254 Git-tracked
+  JSON inputs are outside the release manifest**. This contradicts the claim
+  that the graph derives from sources hashed there.
+- `emit_latex_tables.py:296--300` removes minus signs during numeric
+  tokenization and ignores several numeric forms. A sign-flipped value can pass
+  because comparison uses an unordered family-wide token pool.
+
+**Required repair:** Define two explicit assurance levels:
+
+- `ARITHMETIC_GATED`: stored aggregates are internally combined correctly.
+- `METRIC_RECONSTRUCTED`: each metric is rebuilt from a split-bound row with
+  user, target, rank, seed, arm, checkpoint, item map and provenance hashes.
+
+Store at least one `rank0` integer per evaluated query (full logits are not
+needed), reconstruct HR/NDCG from those records, parse typed claim anchors from
+both Markdown and TeX, require exact graph/release source-set equality, preserve
+numeric signs and make sign-flip/missing-source mutations fail CI.
+
+#### 3. TFV2 mixes preregistered and post-hoc claims and does not fail closed
+
+**Status: CONFIRMED.**
+
+- `PAPER_SUBMISSION.md:359` and `paper_tex/sections/05-results.tex:127` describe
+  all listed secondaries as “pre-declared gate-free.” The boundary-frequency-
+  only result and the all-four-category rank-100 null are absent from
+  `PREREG_TAIL_FIR_V2.md:59,67--69` and are not emitted by
+  `_bestrec_run/adjudicate_tfv2.py:221--256`.
+- `adjudicate_tfv2.py:143--166` trusts stored `ndcg10`, `hr10` and `best_test`.
+  It does not bind exact users/targets to the test split, validate row counts
+  and ranks, reconstruct metrics from `rank0`, or enforce complete provenance;
+  an empty cohort becomes `0.0`.
+- The evaluator averages test rows whose target falls in the cohort
+  (`run_sasrec_sbert.py:1657--1672`), not one value per tail item. The paper
+  reports 3,270 frequency-5 items but 2,291 test rows. Even if all target items
+  were distinct, at least **979 items (29.9%)** have zero endpoint weight; the
+  actual zero-weight share can be larger.
+
+**Required repair:** Label the two extra diagnostics “post hoc exploratory” and
+their p-values unadjusted; add them to a new frozen adjudicator before further
+use. Bind every row to the sealed split/config/checkpoint, reconstruct metrics,
+and fail on empty/mismatched cohorts. Name the current estimand
+“test-target-event-weighted NDCG among targets in the cohort”; add unique
+target-bearing item counts, item-macro NDCG, contribution concentration/Gini,
+and item-clustered or hierarchical uncertainty.
+
+#### 4. Several statistical statements are internally contradictory or invalidly framed
+
+**Status: CONFIRMED errors plus a STRONG DESIGN RISK.**
+
+- Current six-rung values are NDCG `rho_s=-0.94` and HR `rho_s=-0.71`
+  (`PAPER_SUBMISSION.md:371,376`; generated at
+  `_bestrec_run/make_table_5_4_titration.py:137--141`). Yet
+  `PAPER_SUBMISSION.md:392`, `PAPER_DRAFT.md:428` and TeX Results line 180 still
+  say `-0.82/-0.86`.
+- Every density uses the same thinning seed
+  (`run_sasrec_sbert.py:1782--1783,2244--2252`). The rungs are dependent nested
+  subsets from one draw, so permuting six rung responses is arithmetically exact
+  conditional on those points but does not quantify thinning-draw uncertainty.
+- `run_sasrec_sbert.py:1641--1648` defines rank as the number of scores strictly
+  greater than the target. A tied target receives the best rank in its tie
+  group. This is undisclosed and especially consequential for a popularity
+  baseline with many equal-frequency scores and for shared `unknown` text.
+- HR@10 is called “rank-free,” although it is computed from target rank. Use
+  “discount-free within the top 10.” “Flat null” is also unjustified without a
+  prospective equivalence margin.
+
+**Required repair:** Generate all prose statistics from one typed registry;
+remove the stale pair immediately. Treat the six-rung correlation as
+descriptive, or run multiple independent thinning ladders with draw-level
+replication. Report score-tie rates and average-, worst- and deterministic-
+random-rank sensitivities for every headline model and baseline.
+
+#### 5. Text embeddings are not semantically bound to item IDs
+
+**Status: CONFIRMED assurance gap; PLAUSIBLE bias until coverage is measured.**
+
+- `_bestrec_run/encode_richtext_5core.py:55--66,155--167` creates a sorted item
+  list, `.npy` matrix and `asin2idx_richtext_*.json` mapping.
+- `_bestrec_run/run_sasrec_sbert.py:2262--2269` loads only the matrix. It does
+  not verify the mapping; on a row-count mismatch it warns and slices
+  positionally. The release manifest lists the four `.npy` caches but not their
+  item mappings.
+- Missing metadata is encoded as the same literal `unknown` text
+  (`encode_richtext_5core.py:100,155--158`). Counts are printed, not sealed.
+  If missingness covaries with rarity, part of the tail pattern can be a common-
+  vector/missingness effect.
+- Encoder names are mutable unless a resolved model commit is recorded. The
+  official Hugging Face API permits pinning `revision` to a full commit hash
+  ([download guide](https://huggingface.co/docs/huggingface_hub/en/guides/download)).
+
+**Required repair:** Bundle and hash the ordered item list, mapping, split,
+text-template, resolved encoder/tokenizer commits, pooling/normalization,
+library versions, metadata coverage and missing-ID list. Require exact equality
+and never truncate. Add a missingness indicator or documented ID fallback,
+report coverage by cohort and rerun after excluding missing-metadata targets.
+Also fix `run_5core_benchmark.py:253--260`, whose mismatch branch recursively
+calls `main()` rather than explicitly re-encoding or raising.
+
+#### 6. The purported release command and environment are not self-contained
+
+**Status: CONFIRMED.**
+
+- Correction to the 16:00 audit: `_bestrec_run/release_build.py` exists and
+  builds the two TeX targets. It remains absent from README/RUNNING/CANONICAL,
+  the release manifest and DOI bundle; it does not rebuild
+  `PAPER_SUBMISSION.pdf` or perform a final whole-tree cleanliness check.
+- `_bestrec_run/render_paper_pdf.py:6,17,37--43` hard-codes the local workspace,
+  reads ignored `_paper_render.html` and requires Windows Edge. Its hygiene
+  findings do not make the process fail.
+- `markdown` and `pypdf` are missing from `pyproject.toml` and `uv.lock`; a
+  locked sync would uninstall both even though the reader and PDF health tools
+  import them.
+- The DOI bundle has a fixed 66-entry inventory and omits the environment lock,
+  most graph evidence, HSTU submodule, build wrappers and health scanners.
+
+**Required repair:** Make `release_build.py` the documented entry point; resolve
+paths relative to the repository; commit the render template; pin a portable
+browser/container; declare and lock every dependency; manifest the transitive
+build graph; rebuild all three PDFs; run semantic, hygiene and dependency-
+closure gates; finish with final manifest and clean-tree verification in a new
+CI environment.
+
+#### 7. The scientific story and visual semantics are not synchronized
+
+**Status: CONFIRMED.**
+
+- `PAPER_SUBMISSION.md:24--30`/reader list three contributions, while TeX
+  Introduction lines 12--29/venue PDFs list seven. The abstract uses a
+  different three-result taxonomy; the conclusion says “two” defensible
+  findings and then broadens the claim again.
+- The conclusion is roughly 913 word-like tokens over two to three PDF pages.
+- Table S1 mixes raw values, a relative percentage and categorical text under
+  `Delta NDCG@10 (n)`; its verdict header says `n=1` for rows with `n=4/5`.
+- Figure 1 contains three contrasts but calls them one estimand, and says both
+  B/C share one fixed subset draw even though MI-native is a separate dataset
+  reference. Figure 2 caption grammar makes `p=.058` look attached to the
+  positive user-thinned point; prose identifies it as a four-group
+  difference-in-differences, while the within-rung contrast is about `p=.16`.
+
+**Required writing/figure repair:** Adopt one three-item registry—artifact
+apparatus, the bounded FIR finding, and the frequency-5 boundary observation—
+then generate/check abstract, both introductions and conclusion against it.
+Cut the conclusion to 250--400 words. Split Table S1 into result, delta, unit,
+`n` and evidence-class columns. Replace connecting lines with neutral
+point/range plots showing seeds and uncertainty; state precisely which arms
+share a draw and label every p-value with its contrast. Use one supplement
+naming convention throughout.
+
+### Corrections to prior audit wording
+
+- Frequency 5 is adjacent to, but not mechanically identical to, the global
+  five-core inclusion threshold because validation/test events can raise full-
+  sequence frequency. The confirmed problem is **future-conditioned sample and
+  catalog selection**; quantify the boundary relation with a train-vs-full
+  frequency cross-tab before claiming a threshold mechanism.
+- The 54-page TORS PDF is clearly overlong and unfocused for this story, but
+  this audit has not verified a universal formal TORS research-article page
+  maximum. Treat page-limit compliance as author/portal verification, not a
+  confirmed rule violation.
+- A newer release wrapper does build the TeX PDFs; the defect is that the
+  advertised route and the newer unadvertised route are each incomplete.
+
+### Ordered remediation plan
+
+1. **Submission safety (same day):** replace author placeholders; correct
+   post-hoc labels, stale Spearman values, “rank-free,” “flat null” and
+   “leak-free”; make scanners read-only in check mode.
+2. **Data/algorithm contract:** freeze a schema containing event type, rating,
+   verified-purchase status, user/item/time, mapping hashes and target cohort.
+   Implement rating-aware and globally timed variants before further model
+   optimization.
+3. **Efficient, auditable evaluation:** emit one compact `rank0` row per query,
+   stream-reconstruct HR/NDCG, quantify ties and metadata missingness, and bind
+   each row to split, model, seed and checkpoint. This is cheaper and more
+   reviewable than preserving full score tensors.
+4. **Mechanism isolation:** run the 2x2 text-input/text-output design,
+   projection-only, parameter-matched FIR, missingness, shuffled-text and
+   covariance-matched random-feature controls. Report parameters, FLOPs,
+   latency and peak memory; do not tune architecture until the estimand is
+   defensible.
+5. **Inference:** use validation-only selection, independent thinning ladders,
+   hierarchical user/item uncertainty and an unseen final test. Include simple
+   and closest current baselines under equal search spaces and compute.
+6. **Writing/figures:** reduce to one contribution ledger and one causal chain;
+   shorten conclusion; move audit chronology/rung detail to the supplement;
+   use point/range plots with all seeds and typed table columns.
+7. **Release:** create one portable clean-clone build for reader/TORS/acmsmall,
+   metric reconstruction, manuscript parity, PDF accessibility/hygiene,
+   manifest closure and clean-tree verification; then mint a new tag/deposit.
+
+### Open questions requiring author verification
+
+1. What fraction of train/validation/test events have ratings 1--3, and how
+   does this vary by category, frequency and verified-purchase status?
+2. How many of the 3,270 frequency-5 items occur at least once as a test target,
+   and what share of endpoint weight is carried by the top 1/5/10% of items?
+3. What are the score-tie rates by arm and baseline, and do conclusions survive
+   average- and worst-rank tie handling?
+4. Why are 254 graph inputs absent from the release manifest, and where are the
+   rank-level records needed to reconstruct each headline metric?
+5. Were the boundary-only and rank-100 diagnostics conceived before or after
+   outcome inspection? If before, where is the immutable timestamped record?
+6. Which exact encoder/tokenizer commits and item mappings produced each text
+   matrix, and what metadata rows were missing?
+7. Which contribution ledger and artifact is canonical: the reader's three,
+   TeX's seven, abstract's result triad or conclusion's two?
+8. What submission mode/page guidance did the TORS portal provide, and are the
+   displayed author data, ethics statement and redistribution permissions final?
+
+### Running checklist after this audit
+
+- [ ] Replace all author/front-matter placeholders and pass strict no-waiver PDF scan.
+- [ ] Define the review-event/rating construct and run rating/purchase sensitivities.
+- [ ] Run training-era-only eligibility and query-time catalog replication.
+- [ ] Separate arithmetic-gated from rank-reconstructed claims.
+- [ ] Bring every graph input and paper claim into one fail-closed release graph.
+- [ ] Reclassify TFV2 post-hoc diagnostics and rebuild its adjudicator.
+- [ ] Report event-weighted and item-macro tail estimates with hierarchical uncertainty.
+- [ ] Correct stale statistics, terminology, tie handling and thinning inference.
+- [ ] Bind text matrices to item maps, encoder commits and missingness records.
+- [ ] Complete equal-budget baselines and one independently held final test.
+- [ ] Unify contribution ledger; shorten conclusion; correct figures and Table S1.
+- [ ] Make all three PDFs accessible, navigable, metadata-clean and semantically aligned.
+- [ ] Reproduce from a new portable locked environment and clean checkout.
+- [ ] Cut and verify a complete immutable deposit only after all preceding gates pass.
+
+## Audit Run - 2026-07-25 16:00 Australia/Sydney
+
+### Fixed cutoff, change boundary and scope
+
+- Audit cutoff: `2026-07-25T16:00:26.6494485+10:00`
+  (`2026-07-25T06:00:26.6494485Z`).
+- HEAD, upstream and merge base were all
+  `779345ae17da5d8ffe8c1d01d1f0e4aeee5cb4e3` (`0` ahead / `0` behind).
+- **[CONFIRMED] No manuscript, experiment, result, figure, bibliography,
+  release or code commit changed after the 10:00 audit.** The deeper findings
+  below concern pre-existing design and verification defects discovered in
+  unchanged files; they are not new author regressions.
+- Priority inspection covered the Markdown/TeX methods and claims, data
+  preparation and evaluator code, all result/adjudication gates, manifest and
+  release routes, bibliography, and the unchanged 61-page reader, 54-page TORS
+  and 55-page acmsmall PDFs.
+- No ignored/live endpoint result, rank, checkpoint or log payload was opened.
+  The prior 170-page render set was reused because all three PDF hashes were
+  unchanged. This audit edited only this audit file and automation memory; it
+  did not alter manuscript or scientific artifacts.
+
+### Strict verdict and acceptance calibration
+
+- **Verdict: reject / not submission-ready.** The literal package has a
+  submission-blocking identity/placeholder failure, and the scientific case is
+  not yet deployment-valid because the main split/catalog construction is
+  future-informed relative to global time.
+- **Estimated probability for the literal package now: below 1%.** This is a
+  reviewer-calibrated judgment, not a measured journal statistic. The source
+  did not change since 10:00; the estimate is lower because this audit found
+  material pre-existing defects that a strict reviewer could detect.
+- Conditional scenarios:
+
+  - metadata, PDF, citation and formatting fixes only: **2--5%**;
+  - plus a fresh global-time test, training-era catalog, equal-budget close
+    baselines, text-channel decomposition and complete artifact gate:
+    **12--20%**;
+  - plus consistent temporal/non-Amazon replication, hierarchical uncertainty,
+    independent clean reproduction and apparatus portability evidence:
+    **25--40%**.
+
+- These scenarios are not additive guarantees. Journal fit, editor triage,
+  author identity, ethics/licensing review and genuinely unseen results remain
+  outside this audit's control.
+
+### P0 scientific-validity finding: future-informed offline evaluation
+
+1. **[CONFIRMED implementation fact]** `PAPER_SUBMISSION.md:106--110` describes
+   global five-core processing before per-user leave-last-two-out splitting.
+   `_bestrec_run/preprocess_5core_standard.py` deduplicates, recursively filters
+   the complete data to five-core, and only then assigns the last and
+   second-last event of each user to test and validation.
+2. **[CONFIRMED implementation fact]**
+   `_bestrec_run/run_sasrec_sbert.py:109--117` constructs user/item indexing
+   from train, validation and test together. Evaluation scores that complete
+   item universe and, around lines 1545 and 1626--1630, masks the evaluated
+   user's history rather than restricting candidates to items available at the
+   query timestamp.
+3. **[CONFIRMED inference, scoped to the deployment estimand]** A query from an
+   earlier calendar date can therefore be trained/evaluated using item
+   membership established by other users' later events. This is internally
+   reproducible leave-one-out evaluation, not proof of an accidental code
+   leak; it is nevertheless future information relative to a real global-time
+   catalog/deployment claim.
+4. This concern is supported by Ji et al., *A Critical Study on Data Leakage in
+   Recommender System Offline Evaluation* ([TOIS 2023,
+   DOI](https://doi.org/10.1145/3569930)), which analyzes temporal leakage from
+   per-user leave-one-out protocols. The official Amazon Reviews 2023
+   processing guide separately offers absolute-timestamp splitting and says it
+   better aligns with real-world scenarios ([official 5-core processing
+   page](https://amazon-reviews-2023.github.io/data_processing/5core.html)).
+5. Required repair:
+
+   - freeze one or more calendar cutoffs before inspecting test metrics;
+   - build users, items, five-core eligibility, text/prototypes and candidate
+     availability using training-era information only;
+   - at each query, exclude not-yet-available items and report catalog size;
+   - publish counts of current queries/items whose eligibility depends on a
+     later interaction;
+   - repeat all headline contrasts and report whether sign, magnitude and
+     frequency localization survive.
+
+### P0 preprocessing and text-mechanism identification
+
+1. **[CONFIRMED estimand restriction]**
+   `_bestrec_run/preprocess_5core_standard.py:78--92` keeps the earliest event
+   for each user-item pair before splitting. Consequently a held-out target is
+   always new to that user. The paper estimates **next-new-item** ranking, not
+   general next-item prediction with repeat consumption.
+2. **[PLAUSIBLE RISK / AUTHOR VERIFICATION]** The sharp result at train
+   frequency exactly 5 may be influenced by the preprocessing boundary:
+   full-history frequency determines entry to five-core, whereas train-only
+   frequency defines the reported bucket. The existing artifacts do not show
+   the needed cross-tabulation.
+3. **[CONFIRMED mechanism confounding]** `PAPER_SUBMISSION.md:121--126` uses the
+   text-augmented item table in both sequence inputs and output logits. The
+   ID-only comparison at lines 221--223 simultaneously removes sentence
+   embeddings, prototypes and text-similarity bias. The result cannot isolate
+   semantic history modeling from output-side regularization/retrieval geometry
+   or auxiliary machinery.
+4. Required algorithmic decomposition:
+
+   - run a 2x2 factorial: text in input on/off x text in output on/off;
+   - add projection-only, prototype-off and text-similarity-bias-off arms;
+   - add shuffled-text, covariance/parameter-matched random-feature and pure-ID
+     residual controls;
+   - cross-tab train-frequency-5 items by full presplit frequency and number of
+     held-out events;
+   - repeat with 0/3/5/10-core, train-era-only eligibility and a continuous
+     frequency-response model with uncertainty;
+   - compare keep-earliest, keep-latest and duplicate-inclusive preprocessing,
+     and label the final estimand in title/abstract/methods.
+
+### Theory, novelty and closest-literature fact-check
+
+1. **[CONFIRMED citation error]** `PAPER_SUBMISSION.md:179` and
+   `paper_tex/sections/03-method.tex:111` cite "BSARec Thm 3.1." The official
+   BSARec article contains **Theorem 1**, and its analysis concerns repeated
+   softmax self-attention, not the paper's non-softmax SiLU HSTU-style operator
+   ([AAAI article](https://ojs.aaai.org/index.php/AAAI/article/view/28747),
+   [official PDF](https://ojs.aaai.org/index.php/AAAI/article/view/28747/29438)).
+   Correct the number and use the result only as adjacent motivation unless
+   smoothing is measured in the actual operator.
+2. **[CONFIRMED close prior art]** TASTE explicitly argues that text matching
+   can reduce popularity bias and improve long-tail/cold-start sequential
+   recommendation ([CIKM 2023 DOI](https://doi.org/10.1145/3583780.3615077),
+   [preprint](https://arxiv.org/abs/2308.14029)). It must be compared directly
+   with the frequency-5 contribution. SAGE-Rec, AlphaFuse, LLM2Emb, R2Rec and
+   LLMEmb remain additional close methods requiring either a fair benchmark or
+   auditable exclusion.
+3. **[CONFIRMED prior-art boundary]** Zero-initialized residual gating predates
+   this paper in [ReZero](https://proceedings.mlr.press/v161/bachlechner21a.html).
+   Novelty should attach to the causal FIR realization/evaluation, not zero-init
+   gating itself.
+4. **[CONFIRMED apparatus prior art]**
+   [Manubot](https://doi.org/10.1371/journal.pcbi.1007128) already demonstrates
+   Git-versioned manuscripts, continuous rebuilding, generated numerical
+   values/tables, provenance and timestamping. [Continuous
+   Analysis](https://doi.org/10.1038/nbt.3780) already provides rerunnable
+   analysis and audit-trail infrastructure. A defensible claim needs a feature
+   matrix showing the new recommender-specific per-cell/VOID contribution.
+5. Writing repair: replace broad "first," "certifies," "refutes," "full
+   power," "capacity-restricting" and "ceiling not left unexplored" claims
+   with a claim-evidence table containing the estimand, comparator, sampling
+   unit, interval, preregistration status and artifact gate for each sentence.
+
+### FIR statistics: useful robustness, narrower conclusion
+
+- **[CONFIRMED positive evidence]** The tracked FIR V3 arms share
+  initialization-state hashes. Across the eight matched seeds, descriptive
+  paired sensitivities are:
+
+  - A1 minus A0: mean `0.002264809`, paired SD `0.000231965`, `t(7)=27.616`,
+    95% CI `[0.002070881, 0.002458737]`;
+  - A2 minus A0: mean `0.002275099`, paired SD `0.000256425`, `t(7)=25.095`,
+    95% CI `[0.002060722, 0.002489475]`;
+  - A2 minus A1: mean `0.000010289`, paired SD `0.000081850`, `t(7)=0.356`,
+    95% CI `[-0.000058139, 0.000078718]`.
+
+- Arm correlations are A1/A0 `r=.729`, A2/A0 `r=.672`, A2/A1 `r=.968`.
+  Report this preregistered descriptive pairing beside the registered Welch
+  analysis; it materially strengthens the A1-versus-A0 robustness argument.
+- **[CONFIRMED limitation]** No A2-versus-A1 equivalence margin was registered.
+  The valid wording is "no tap-decay sensitivity was detected at this
+  precision," not "changed nothing" or a mechanistic proof about weight decay.
+- **[CONFIRMED gate defect, not evidence of corrupt data]** In-memory mutation
+  testing showed `adjudicate_fir_v3.py` still returns a positive classification
+  after major unvalidated learning-rate, model-dimension and data-hash changes.
+  It checks only a subset of `PREREG_FIR_V3.md` and omits complete provenance,
+  schema, `n_eval`, finiteness/range and sidecar validation. Actual tracked
+  artifacts appeared internally consistent; the assurance claim is the defect.
+- **[CONFIRMED implementation drift]** The bundled Python lacks SciPy, so the
+  adjudicator silently uses a normal approximation while the protocol names a
+  Welch Student-t test. Pin SciPy and fail closed when the registered test is
+  unavailable.
+
+### Artifact, build and release audit
+
+1. **[CONFIRMED false/incomplete one-command claim]**
+   `_bestrec_run/rebuild_hstu_submission.py:27--99` validates selected results,
+   gates and a manifest, but never compiles either paper, emits all paper
+   tables, runs strict TeX/PDF checks or compares Markdown with TeX.
+   `CANONICAL_SUBMISSION.md:4` says TeX is generated/derived and never edited
+   divergently, but there is no complete generator or semantic-parity gate.
+2. **[CONFIRMED claim-graph gap]** FIRV3, HYBRIDV1 and COLDFUSE values are absent
+   from `build_hstu_tables.py`, `hstu_results_manifest.json`,
+   `hstu_tables.json` and `emit_latex_tables.py`, although exact E-A/E-F/E-G
+   statistics are printed in `PAPER_SUBMISSION.md:322,462,477` and the TeX at
+   lines 80, 271 and 285. Current numbers happen to agree with source JSON;
+   nothing in the advertised gate enforces that agreement.
+3. **[CONFIRMED unsafe order]** The wrapper verifies the manifest first, then
+   invokes adjudicators that can rewrite tracked manifested outputs. Move all
+   deterministic writers first; build both papers; run claim/parity/health
+   checks; then make manifest verification and a clean-tree assertion the last
+   operations. Prefer no-write adjudicators for verification mode.
+4. **[CONFIRMED current checks]** Current-tree manifest verification passes for
+   460 files and `--verify-git HEAD` passes for 322 Git-backed entries. The old
+   `v1.1.11-deposit` is 86 commits and 434 changed paths behind HEAD and fails
+   with 196 mismatches. This proves the current curated hashes agree, not that
+   the old named deposit or whole dependency graph is reproducible.
+5. **[CONFIRMED Windows failure]** Under the default Windows CP1252 shell,
+   `run_sasrec_sbert.py --help` exits nonzero on a Unicode arrow. Multiple
+   campaign drivers scrape the empty stdout and report required flags missing.
+   Force UTF-8 for the child, test its return code and stderr, and expose CLI
+   capabilities as JSON rather than scraping help text.
+6. **[CONFIRMED stale documentation/path closure]** `README.md` says the
+   manifest covers 420 files rather than 460 and calls completed E-A open.
+   Legacy documentation/runners still cite deleted figures, while
+   `_bestrec_run/run_all.py` calls absent `_paper_gen/build_paper_full.py`.
+   Add a tracked-reference/path-closure gate and either restore the historical
+   bundle or tombstone every obsolete route consistently.
+
+### PDF, figure, writing and submission-readiness audit
+
+- **[CONFIRMED unchanged package]** Reader/TORS/acmsmall hashes remain
+  `8726fa4d...`, `59ae42e7...`, and `a1b54831...`; prior full-page renders are
+  therefore still representative.
+- **[CONFIRMED positive accessibility detail]** The reader has substantive
+  structure tags, 15 tagged tables, scoped column headers, alternative text for
+  both figures and embedded fonts. Table continuation headings repeat in all
+  three versions.
+- **[CONFIRMED defects]** The 61-page reader has no visible page numbers,
+  bookmarks, running header or link annotations; references and the GitHub URL
+  are not clickable. Page 55 labels a section "Supplementary Material" and
+  immediately says "Why this is an appendix," leaving its status unclear.
+- Venue PDFs remain untagged. Acmsmall repeats a blank production article-number
+  footer on all 55 pages and splits a DOI across pages 46--47. TORS page 52
+  strands the Table S1 caption, and page 54 is a sparse continuation. Reader
+  page 61 is an orphan continuation.
+- TeX extraction is malformed around styled spans (`one .`, `terms;that`,
+  `instead,RELEASE_MANIFEST.json`). Forty-eight of 82 bibliography records use
+  `note` fields for dense audit/metadata/novelty prose, making the references
+  unusually hard to scan. TORS/acmsmall creator metadata is placeholder-like
+  and lacks usable author metadata; reader XMP is absent.
+- Figure 1 is overpacked and uses green "Holm-PASS" plus connected lines that
+  imply a trend/causal verdict. Figure 2 is very small and substantially
+  duplicates Figure 1 panel C. Replace Figure 1 with a neutral forest plot
+  showing all seeds, mean effects, intervals and exact sampling unit; move
+  resource/titration plots to separate panels or supplement and avoid verdict
+  colors/labels. Gate single-column and grayscale legibility.
+- Writing repair: cut the main text to one estimand and one result spine; move
+  operational chronology, per-rung tables, audit dispositions and bibliography
+  commentary to versioned supplementary material. Rename the reader appendix
+  consistently and replace raw pseudo-list prose with real semantic lists.
+
+### Prioritized implementation sequence
+
+1. **P0 -- stop-ship hygiene:** replace every identity placeholder, remove the
+   waiver, fix PDF metadata, and require strict unwaived scans.
+2. **P0 -- rebuild the scientific test:** freeze a global-time split and
+   training-era catalog; prohibit test reads during tuning; run close baselines
+   under equal budgets; custody the final test until all choices are locked.
+3. **P0 -- identify the text effect:** execute the input/output 2x2 and
+   auxiliary/random/shuffled controls, then the core-threshold and dedup
+   sensitivity analyses.
+4. **P0 -- make assurance real:** define one machine-readable registry for
+   every printed estimate, interval, p-value and classification; generate or
+   parse-check both Markdown and TeX; rebuild both PDFs; verify the manifest
+   and clean tree last.
+5. **P1 -- harden adjudication:** validate the entire frozen config, immutable
+   code/data/checkpoint/source hashes, schemas, finiteness, ranges, duplicates,
+   `n_eval` and rank sidecars; fail on missing statistical dependencies.
+6. **P1 -- optimize safely:** cache content-addressed preprocessing/text and
+   repeated matrix artifacts by data/config hash, separate model input truncation
+   from full evaluation history, use atomic attempt directories, and report
+   parameters/FLOPs/latency/peak memory for every added component.
+7. **P1 -- rewrite and redraw:** narrow the contribution, add the closest-work
+   matrix and limitations box, replace Figure 1 with a forest plot, remove the
+   duplicate figure, repair pagination/tags/links/folios and run text-extraction
+   regression tests.
+8. **P2 -- externalize and seal:** reproduce on a non-Amazon dataset and second
+   repository, obtain independent clean-checkout reproduction, resolve licenses,
+   then cut and verify a new immutable DOI-backed deposit.
+
+### Open questions requiring author verification
+
+- What real deployment date/catalog policy is the paper intended to estimate?
+  If the claim is deliberately only transductive leave-one-out ranking, where
+  will that limitation be stated in the title, abstract and conclusion?
+- How many test targets/candidates would be ineligible under training-era-only
+  five-core and query-time availability?
+- What are full-sequence frequencies and held-out-event counts for the reported
+  train-frequency-5 targets?
+- Which text pathway is believed causal: input history, output embedding,
+  prototypes, similarity bias, or their package?
+- Which close baselines can be rerun from original code under an identical
+  tuning/search and compute budget?
+- Who will independently custody the final temporal test and reproduce the
+  clean checkout?
+- What author, institution, ethics, license, portal mode and page-limit values
+  replace the current placeholders/unknowns?
+
+### Running checklist
+
+- [ ] Replace all author/institution/running-head placeholders.
+- [ ] Make strict TeX/PDF health pass without `DRAFT_WAIVER`.
+- [ ] Freeze global-time train/validation/test cutoffs and catalog policy.
+- [ ] Recompute five-core, indexing, text features and candidates using only
+      training-era information.
+- [ ] Quantify future-informed current queries/candidates.
+- [ ] Run 0/3/5/10-core, dedup and exact-frequency sensitivity analyses.
+- [ ] Run text input/output 2x2 plus projection/prototype/bias/random/shuffle
+      controls.
+- [ ] Run close baselines under equal tuning and compute budgets.
+- [ ] Add hierarchical user/target and multiple-split uncertainty.
+- [ ] Correct BSARec theorem citation and add TASTE/ReZero/apparatus prior art.
+- [ ] Register every printed statistic and enforce Markdown/TeX/PDF parity.
+- [ ] Make adjudicators complete, dependency-pinned and fail-closed.
+- [ ] Fix Windows UTF-8/CLI discovery and legacy path closure.
+- [ ] Replace the lead figure; repair tags, links, folios, metadata and pages.
+- [ ] Cut the narrative to a journal-compatible main-text spine.
+- [ ] Resolve ethics/privacy/licenses and independently reproduce.
+- [ ] Cut and verify a new immutable DOI-backed release.
+
+## Audit Run - 2026-07-25 10:00 Australia/Sydney
+
+### Fixed cutoff, scope and boundary discipline
+
+- Audit cutoff: `2026-07-25T10:00:35.1437317+10:00`
+  (`2026-07-25T00:00:35.1437317Z`).
+- Repository state at the fixed boundary: clean and synchronized at
+  `779345ae17da5d8ffe8c1d01d1f0e4aeee5cb4e3`; HEAD, upstream and merge base
+  were identical (`0` ahead / `0` behind).
+- Comparison boundary: prior audited HEAD
+  `75accec13b1713d60cea649f53827c33e7305b58` to the fixed cutoff: 8 commits,
+  58 changed paths, 666 insertions and 636 deletions.
+- The delta principally: quarantines E-E V2 in machine-readable form; shortens
+  and synchronizes the title/abstract; moves Tables S1/S2 into the TeX
+  supplement; repairs one stale FIR forward reference; and deletes a legacy
+  BEST-Rec figure subsystem.
+- Priority artifacts inspected: Markdown and TeX manuscript sources, all three
+  current PDFs, figures and supplement tables, FIR V3 preregistration/results,
+  E-E V2 preregistration/adjudicator/committed disposition, release manifest
+  and bundle scripts, canonical run/documentation routes, repository history,
+  CI and branch governance.
+- No ignored/live endpoint result, checkpoint, rank or log payload was opened.
+  E-E review was limited to tracked committed disposition artifacts and
+  in-memory synthetic gate tests. No manuscript, experiment, result, figure or
+  release artifact was edited by this audit.
+- PDF review followed the PDF skill's render-and-inspect workflow: all 61
+  reader pages, 54 TORS pages and 55 acmsmall pages (170 total) were rendered
+  and visually checked, with full-resolution inspection of suspect pages. The
+  ignored render directory could not be removed because command policy blocked
+  the exact-path deletion before execution; it remains under
+  `tmp/pdfs/audit_20260725_1000` and is not tracked.
+
+### Strict verdict and acceptance calibration
+
+**Verdict: reject / not submission-ready.** The package is materially more
+internally consistent than at 04:00, and the previously overlooked E-A FIR
+experiment is real evidence. Neither fact cures the literal submission blocker,
+repeated-test-set design, current-comparator gap, one-dataset scope or stale
+release boundary.
+
+These are subjective reviewer ranges, not statistical probabilities or venue
+base rates:
+
+| state actually submitted | estimated acceptance chance | main reason |
+|---|---:|---|
+| Literal current TORS package | **below 1%**; conservative envelope **0--3%** | visible identity placeholders and waiver-dependent hygiene make technical return/desk rejection likely before scientific review |
+| Metadata, citations, compression and figure/package repair only | **4--8%** | removes clerical rejection risks but leaves repeated test exposure, unfair/absent current comparisons and one-dataset uncertainty |
+| Plus equal-budget current baselines, semantic controls, test-once evaluation and apparatus validation | **15--25%** | credible TORS-style evaluation/reproducibility paper, still vulnerable on novelty and external validity |
+| Plus independently custodied temporal/non-Amazon validation and demonstrated apparatus portability | **25--40%** | substantially stronger generalization and reusable-method contribution |
+
+For a novelty-dominant flagship rather than a methods/reproducibility-oriented
+journal, use roughly half of the last two ranges. The correct answer to “what
+is the chance now?” for the files as they stand is therefore **below 1%**, not
+the scientifically repaired scenario.
+
+### Confirmed improvements since 04:00
+
+1. **The official source is no longer stale.** Markdown, TeX and visible PDF
+   surfaces now use the concise 67-character title, *Artifact-Gated Evaluation
+   of Text-Augmented Sequential Recommenders*. The moderated abstract is
+   synchronized, and Tables S1/S2 are genuinely outside Results in the TeX
+   build.
+2. **E-E V2 is mechanically quarantined.** `PREREG_EE_V2.md:1` now starts with
+   an authoritative tombstone. The adjudicator/output emit
+   `OUTCOME_VISIBLE_PROTOCOL_DEVIATED_NONCOUNTABLE`, `DESCRIPTIVE_ONLY`,
+   `countable=false`, `import_allowed=false` and
+   `manuscript_allowed=false`; the old fusion-effect output key is gone and an
+   incomplete gate exits 2. The tracked three-seed number remains outside the
+   paper. This is the correct scientific disposition.
+3. **The FIR forward reference is current.** The Method now points to completed
+   E-A rather than calling it queued work.
+4. **Current manuscript figure closure is sound.** The TeX source includes only
+   `fig_tail_law_mechanism` and `fig_r1r2_plane`, and the current manifest binds
+   both PDF/PNG pairs, their data and generators.
+5. **Repository and selected-manifest checks are green.** Current-tree
+   verification reports `OK (460 files)`; Git-backed verification at HEAD
+   reports `OK (322 git-backed entries)`; current PR/push CI runs and the local
+   seal check succeed.
+
+These are important honesty and packaging repairs. They add no new experimental
+observations after the prior cutoff.
+
+### Correction to the prior audit: E-A does identify a bounded FIR component
+
+The 04:00 current-risk item saying the FIR mechanism “remains unidentified” was
+too broad and is superseded. `PREREG_FIR_V3.md` was committed before launch and
+specifies three nonsingular arms over eight fresh seeds: learned residual FIR
+with tap decay (A1), the same learned FIR without tap decay (A2), and a frozen
+identity control (A0), with shared initial-state hashes. The committed
+adjudication reports:
+
+| registered contrast | NDCG@10 estimate and 95% interval | strict reading |
+|---|---:|---|
+| A1 minus A0 | +0.002265 [0.001928, 0.002602] | supports a FIR-specific component at this fixed MI configuration |
+| A2 minus A0 | approximately the same positive effect | independently supports the learned nonsingular FIR versus frozen identity |
+| A2 minus A1 | +0.000010 [-0.000339, 0.000360], p=.9505 | no detectable tap-decay sensitivity at this precision; **not** registered equivalence |
+
+This is stronger than the previous audit credited. It shows that the positive
+effect does not require the legacy singular zero-gate start and is not visibly
+sensitive to tap decay in this rerun. It does **not** prove that weight decay
+“changed nothing,” because no equivalence margin was registered for A2 minus
+A1. Nor does one category/split retroactively decompose every historical arm
+or establish a universal filtering mechanism.
+
+**Required manuscript repair:** make the nonsingular residual FIR the defined
+algorithm in Methods; foreground E-A in the contribution/synthesis; call the
+module a small structured inductive bias, not capacity restriction; report a
+paired analysis alongside the registered Welch analysis because arms share
+seeds/initial-state hashes; and use “no tap-decay sensitivity was detected at
+this precision.”
+
+### Scientific design and result audit
+
+#### Test exposure and baseline fairness
+
+- The paper uses one repeatedly exposed public split, records interim/per-epoch
+  test outcomes and admits outcome-dependent allocation of later experiments.
+  Fresh optimizer seeds sample optimization noise; they do not make the test
+  set fresh.
+- [Jannach and Chen's 2026 TORS methods
+  guidance](https://doi.org/10.1145/3800587) emphasizes systematically tuned
+  current baselines, equal experimental treatment, complete artifacts and test
+  use after selection. The present design does not yet satisfy that standard.
+- A fair final campaign needs validation-only checkpoint/HPO selection,
+  identical trial/compute budgets and a single independently custodied test
+  reveal. Add the official AR2023 absolute-timestamp split and at least one
+  non-Amazon dataset so the result is not a one-split case study presented as a
+  general law.
+
+#### Inference and causal language
+
+- Seed intervals are conditional on one data/split realization. They omit
+  user/target, intervention-draw, split, temporal, text-construction and
+  comparator uncertainty. Add hierarchical user/target bootstrap or an
+  explicitly justified cluster procedure, repeat thinning/perturbation draws,
+  and keep confirmatory families plus multiplicity rules prospective.
+- A published baseline point estimate has no attached sampling/tuning
+  uncertainty. A lower seed-conditional bound above that number is not a valid
+  superiority test.
+- “Full power” is unsupported without a prospective MDE/power calculation;
+  “ceiling was not left unexplored” conflicts with the paper's own admission
+  that the ceiling is not bounded; and a single-seed screen cannot “refute” a
+  remedy.
+- The head titration contains a reversal but is called monotonic. One density
+  rung also cannot show “no detected trend.” Replace categorical screening
+  prose with estimates, intervals, sampling units and a direct limitation.
+
+#### Algorithm and experiment optimization
+
+1. Treat the nonsingular residual FIR as the canonical implementation. Across
+   multiple categories, compare learned FIR, frozen identity, fixed average,
+   random fixed filter and a parameter-matched unconstrained residual. Bind
+   initialization and search budgets and report response spectra, parameters,
+   FLOPs, latency and peak memory.
+2. Add text-permutation and random-feature controls before attributing the
+   frequency-5 effect to semantics. Analyze popularity continuously and repeat
+   under multiple core thresholds; do not infer a biological-looking threshold
+   law from one bin boundary.
+3. Give SASRec, BSARec/FMLP-Rec, AlphaFuse and other selected current systems
+   equal validation-only HPO budgets. Publish spaces, trials, early-stopping
+   rules, compute, selected settings and failures.
+4. For any new E-E work, create V3 rather than rehabilitating V2. Freeze exact
+   filenames/schema before unseen ON and OFF work; separate full evaluation
+   history from truncated model input; use the same masked validation/test
+   evaluator; enforce metric domains; reject unreadable, duplicate, extra or
+   incomplete attempts; write atomically; and reconstruct metrics from hashed
+   ordered user/target/rank sidecars.
+5. For exact full-catalogue evaluation, score item chunks, compute target scores
+   once and accumulate strict-greater counts into integer ranks. This preserves
+   exactness with `O(batch x chunk)` score memory instead of
+   `O(batch x catalogue)`. Test ties, long histories, repeated items, target
+   masking, chunk boundaries and all-score finiteness.
+6. Evaluate the apparatus itself: seed known data, evaluator, provenance and
+   reporting faults; report coverage, false positives/negatives and runtime;
+   have an independent party reproduce a clean bundle; and run the workflow on
+   a second repository.
+
+### Novelty and citation fact-check
+
+The short title and narrower apparatus framing help, but the literature boundary
+is still incomplete:
+
+- [AlphaFuse, SIGIR 2025](https://doi.org/10.1145/3726302.3729894) is the
+  closest null-space language/ID representation comparator. It remains omitted
+  from the counted comparison; E-E V2 cannot fill that gap.
+- [LLM2Emb, Expert Systems with Applications
+  2026](https://doi.org/10.1016/j.eswa.2026.133375) reports the largest
+  LLM-versus-ID advantage in its 3--6-interaction group, materially narrowing
+  priority for the frequency-5 observation.
+- [R2Rec, WWW 2025](https://doi.org/10.1145/3696410.3714572) reports a useful
+  counter-boundary: content representations can underperform IDs for tail items
+  on three Amazon 5-core leave-one-out datasets. The manuscript needs this
+  conflicting evidence, not only supporting semantic-tail papers.
+- [LLMEmb, AAAI 2025](https://doi.org/10.1609/aaai.v39i11.33327) and
+  [SAGE-Rec, WWW 2026](https://doi.org/10.1145/3774904.3792456) are directly
+  relevant semantic/long-tail sequential-recommendation systems and remain
+  absent.
+- The [official SIGIR 2026
+  program](https://sigir2026.org/SIGIR2026_program.pdf) confirms SIDSRec,
+  BFDRec and ACE, but the bibliography still lacks complete track/page/DOI
+  metadata.
+
+**Novelty judgment:** “text helps sparse items,” the 3--6/frequency-5 region,
+null-space fusion, gating and a small convolution are not priority claims. The
+defensible contribution is a bounded empirical qualification under an
+executable artifact-gated protocol. Until the apparatus itself is evaluated in
+another repository, even that contribution is a single-case demonstration.
+
+### Manuscript, writing and structure audit
+
+- The repeated audit tokenizer reports 28,279 words total, 22,720 before
+  References and 12,248 in Results; an alternate hyphen-aware tokenizer gives
+  about 28.6k. The conclusion is invariant: Results alone occupy roughly half
+  the numbered body, and the paper misses both internal length targets.
+- Choose one identity. The strongest route is a reproducibility/evaluation case
+  study with FIR as the worked algorithmic example, not three co-equal papers
+  (apparatus, FIR algorithm and tail phenomenon) sharing one manuscript.
+- Rewrite the abstract as problem -> protocol -> at most two bounded findings
+  -> implication. Include the clean E-A result; remove the dense point-estimate
+  ledger and “certifies” rhetoric.
+- Replace three walls of closest-system prose with a compact matrix: system,
+  modality, tail definition, split protocol, tuning budget, candidate policy,
+  available artifact and reason for inclusion/exclusion.
+- `PAPER_DRAFT.md` still carries the old long title although it is manifested
+  and bundled. TeX's internal comment still says “Figs 1--3” despite two
+  figures. The paper calls AlphaFuse “queued” although V2 completed and was
+  formally rejected. Synchronize all three surfaces and state the exact
+  forensic history plus need for an unseen V3.
+- TeX and Markdown still differ semantically in places (“flat null” versus
+  “near-zero estimate”) and structurally: the reader has Supplement S.1--S.5,
+  while TORS uses Appendix A.1--A.3 then jumps to S.4--S.5. One abstract says
+  one campaign remains VOID even though other campaigns are noncountable or
+  protocol-deviated. Perform a claim-by-claim parity diff, not just title and
+  abstract comparison.
+- The data no-license disclosure is appropriately candid. Whether linked split
+  IDs/rank sidecars may be redistributed is a permission/legal question, not a
+  technical inference. Until resolved, distribute hashes and deterministic
+  regeneration tooling rather than linkable derivatives.
+
+### PDF, figure and accessibility audit
+
+| artifact | pages / identity | confirmed condition |
+|---|---|---|
+| `PAPER_SUBMISSION.pdf` | 61 pages; SHA-256 `8726fa4d61bf5b67b4662c2438c908dce8d8bfd0b11bc3c2fb0abb5e2b4760b8` | tagged and current title, but zero bookmarks/page labels and incomplete metadata |
+| `paper_tex/PAPER_TORS.pdf` | 54 pages; SHA-256 `59ae42e786968c875ade6ea88ff65e9b0cc38f1d5e6e287014d4e78f09bb9259` | 39 outlines through References, untagged, visible placeholders |
+| `paper_tex/PAPER_TORS_acmsmall.pdf` | 55 pages; SHA-256 `a1b54831b4f0ae99132265934b036284012a3159da2336bd9a707792f7caf20e` | ignored preview, untagged, visible placeholders and bogus empty production metadata |
+
+No gross body-text overlap, corrupt glyphs or black boxes were found. Confirmed
+remaining defects:
+
+1. Page 1 of the venue PDFs has an all-caps maintainer warning, placeholder
+   institution/country and contact details; even-page running headers repeat the
+   short-author placeholder. The reader also says its author metadata is for a
+   maintainer. This is submission-fatal.
+2. Acmsmall page 1 invents incomplete production metadata (volume/article/date
+   with an empty DOI). Suppress it for review or populate it only at production.
+3. Figure 1 is overcrowded with tiny three-panel annotations and a caption
+   split across pages. Figure 2 mostly duplicates panel C and connects category
+   values with inferential-looking lines. Use one neutral forest plot with
+   every seed point, estimate and interval; move the resource/titration plane to
+   the supplement; remove lines unless x is genuinely ordered.
+4. Raw pseudo-list text (`either: - Running ... - Adopting ...`) remains visible
+   in reader pages 57--58, TORS page 52 and acmsmall page 53. Convert it to
+   actual list markup or prose.
+5. The table move succeeded but pagination did not. TORS page 52 strands the
+   Table S1 caption at the bottom; rows begin on page 53 and continue onto a
+   mostly blank page 54. Reader page 61 is an orphan Table S2 continuation with
+   about 70% blank area.
+6. Acmsmall page 55 visibly runs
+   `_bestrec_run/make_table_5_4_titration.py` through the right margin; the log
+   reports a 34 pt overfull box (about 29 pt in manuscript mode). Shorten the
+   provenance label or use a breakable path command, then rebuild and inspect.
+7. The reader has no bookmarks; the TeX outlines stop before starred
+   appendix/supplement sections; the venue PDFs are untagged. Add heading
+   outlines, document language, author/subject/keywords, alt text and a tagged
+   deliverable where the venue workflow permits it.
+
+### Release, provenance and governance audit
+
+- `v1.1.11-deposit` points to `26eff2dd...`, 86 commits and 434 changed paths
+  behind HEAD. Verification returns 196 mismatches (126 entries still match).
+  The manifest still names that tag and the bundle builder is hard-coded to
+  v1.1.11. README's “current archival bundle” wording is false; availability
+  text more honestly calls it the last deposit boundary.
+- The green current manifest is selected scope, not dependency closure. Its E-E
+  section includes the preregistration and adjudicator but omits the committed
+  adjudication JSON, shared evaluator, scoring adapter, dataset builder/exporter,
+  adapter specification, setup, metric family and experiment documentation.
+  The 64-file deposit inventory includes none of E-E V2.
+- Commit `779345ae` correctly removed unused assets from the **current TeX
+  paper**, but its “zero references across md” rationale is false. `SUBMISSION.md`
+  and `RUNNING.md` still instruct users to inspect or regenerate deleted files;
+  `run_hp_sweep.py` can recreate a deleted figure; and the nominal canonical
+  pipeline still targets missing `_paper_gen/build_paper_full.py`. This is a
+  confirmed historical reproduction-contract regression.
+- Resolve that regression one of two ways: move the complete legacy code,
+  assets and documentation into `archive_noncanonical/` with a self-contained
+  manifest, or tombstone the obsolete routes and rewrite current entry points.
+  Do not keep commands that promise files intentionally deleted as dead.
+- CI is green but bypassable. The default branch is unprotected; repository
+  rules/rulesets are empty; the seal checks only the tip tree; its allowlist is
+  editable in the same commit; and case variants bypass its case-sensitive
+  endpoint pattern. Protect the branch, require the gate, inspect the pushed
+  commit range, separate/approve exceptions and normalize case.
+- E-E V2's output semantics are repaired but the adjudicator docstring still
+  promises a matched “fusion factorial,” “fusion effect” and
+  REPORTABLE/INCOMPLETE gate. Input globbing still skips unreadable files,
+  overwrites duplicate seeds, trusts self-asserted flags, accepts metrics such
+  as 999, omits rank reconstruction and writes non-atomically. Archive it as a
+  forensic extractor or replace it with a fresh V3 gate; never treat exit 0
+  alone as countability—require `countable && manuscript_allowed`.
+
+### Prioritized concrete fix sequence
+
+1. **Submission package:** insert real author/affiliation/contact metadata;
+   remove draft waiver; synchronize old-title/figure-count/AlphaFuse-status
+   surfaces; repair A/S supplement hierarchy, raw lists, clipped path and PDF
+   accessibility; rebuild and inspect all variants.
+2. **Paper identity and writing:** choose the reproducibility-case-study spine;
+   foreground clean E-A; cut the main text radically; replace categorical
+   screening language; integrate conflicting literature in a comparator matrix.
+3. **Evaluation:** freeze equal-budget validation-only tuning and one test-once
+   release under independent custody, using a temporal split and a non-Amazon
+   dataset.
+4. **Mechanism:** make nonsingular FIR canonical; add matched structured/random
+   controls, text-permutation/random-feature tests, multiple core thresholds,
+   multiple intervention draws and hierarchical uncertainty.
+5. **Artifact contribution:** publish seeded-fault coverage, false positive/
+   negative rates, overhead, an independent clean reproduction and a second
+   repository case.
+6. **Release:** repair or archive broken legacy routes; close all transitive
+   manifest dependencies; protect semantic CI; reproduce from a clean checkout;
+   then cut, verify and deposit a new immutable DOI-tagged bundle.
+
+### Open questions requiring author verification
+
+1. Who will supply the final authors, affiliations, country, short author list,
+   corresponding author and acknowledgments, and when can the waiver be removed?
+2. Is TORS definitively the target, and what binding word/artifact policy will
+   replace the repository's conflicting 9--13k and about-18k plans?
+3. Can a custodian hold the temporal/non-Amazon test labels until model,
+   checkpoint, HPO and analysis choices are frozen?
+4. What equal compute/trial budget can be afforded for current baselines and
+   AlphaFuse, and which failures/exclusions will be published?
+5. Will the primary FIR inference remain Welch despite synchronized arm seeds,
+   or will paired and independent sensitivity be reported with a prospective
+   justification?
+6. Can user/target/rank sidecars be released under the dataset's no-license
+   status, or should the release contain hashes and regeneration scripts only?
+7. Will the legacy BEST-Rec materials remain supported, be moved as a complete
+   historical archive, or be explicitly retired?
+8. Which exact commit will define the new DOI deposit, and who will verify it
+   from a clean checkout?
+9. Will the apparatus be validated on a second repository, or will portability
+   be stated only as future work?
+
+### Running checklist
+
+- [x] Fixed a clean synchronized cutoff and compared it with the prior audit.
+- [x] Inspected source, TeX, tracked results, release routes and all 170 PDF
+  pages without opening ignored/live endpoint payloads.
+- [x] Confirmed Markdown/TeX title and abstract parity and TeX S1/S2 relocation.
+- [x] Confirmed E-E V2 tombstone, machine permissions and nonzero incomplete
+  exit with synthetic in-memory tests.
+- [x] Corrected the previous FIR assessment after verifying preregistered E-A.
+- [x] Verified current selected-manifest and Git-manifest checks.
+- [x] Verified that the named deposit remains stale and non-current.
+- [x] Fact-checked TORS methods guidance and the closest/countervailing
+  literature against primary publisher/official sources.
+- [x] Identified the deleted-figure documentation/pipeline regression.
+- [ ] Supply real author metadata and pass submission hygiene without a waiver.
+- [ ] Reconcile Markdown/TeX appendix/supplement structure and all claim/status
+  surfaces.
+- [ ] Meet one declared venue-compatible length target and redesign figures.
+- [ ] Add equal-budget current baselines and a test-once temporal/non-Amazon
+  evaluation.
+- [ ] Make the nonsingular FIR canonical and add matched mechanism controls plus
+  broader uncertainty.
+- [ ] Evaluate artifact-gate coverage, error rates, overhead and portability.
+- [ ] Repair/archive legacy reproduction routes and enforce path/dependency
+  closure in protected semantic CI.
+- [ ] Resolve derivative-data permissions and release policy.
+- [ ] Reproduce from a clean checkout and issue a new verified DOI deposit.
 
 ## Audit Run - 2026-07-25 04:00 Australia/Sydney
 

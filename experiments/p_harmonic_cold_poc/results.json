@@ -1,0 +1,808 @@
+{
+  "beauty": {
+    "classification": "exploratory proof of concept; not confirmatory or paper-bound",
+    "question": "Does p>2 vector harmonic extension improve within-cold ordering over p=2 and existing mappings?",
+    "dataset": "beauty",
+    "seed": 20260805,
+    "n_users": 253,
+    "n_items": 356,
+    "n_interactions": 2535,
+    "n_folds": 5,
+    "graph_k": 10,
+    "p_values": [
+      2.0,
+      4.0,
+      8.0
+    ],
+    "irls_steps": 12,
+    "runtime_seconds": 1.6630798000005598,
+    "summary": {
+      "content_direct": {
+        "mean_fold_event_ndcg10": 0.1343866093485781,
+        "std_fold_event_ndcg10": 0.009038533757848063,
+        "mean_fold_user_ndcg10": 0.13982861287991835
+      },
+      "lc2c_ridge": {
+        "mean_fold_event_ndcg10": 0.15352707952073516,
+        "std_fold_event_ndcg10": 0.007477041262845242,
+        "mean_fold_user_ndcg10": 0.1612024534778676
+      },
+      "p_harmonic_2": {
+        "mean_fold_event_ndcg10": 0.14922105433597505,
+        "std_fold_event_ndcg10": 0.005746982314402011,
+        "mean_fold_user_ndcg10": 0.1574040996363339
+      },
+      "p_harmonic_4": {
+        "mean_fold_event_ndcg10": 0.1465590548002877,
+        "std_fold_event_ndcg10": 0.006102790391078598,
+        "mean_fold_user_ndcg10": 0.1539831595068793
+      },
+      "p_harmonic_8": {
+        "mean_fold_event_ndcg10": 0.1410027812657656,
+        "std_fold_event_ndcg10": 0.006212768685741654,
+        "mean_fold_user_ndcg10": 0.14807116231574852
+      }
+    },
+    "folds": [
+      {
+        "fold": 0,
+        "n_warm": 284,
+        "n_cold": 72,
+        "methods": {
+          "content_direct": {
+            "n_events": 537,
+            "n_users": 216,
+            "event_mean_ndcg10": 0.12511816763671374,
+            "user_mean_ndcg10": 0.1245054271887578
+          },
+          "lc2c_ridge": {
+            "n_events": 537,
+            "n_users": 216,
+            "event_mean_ndcg10": 0.15474011461408765,
+            "user_mean_ndcg10": 0.15941991716395093
+          },
+          "p_harmonic_2": {
+            "n_events": 537,
+            "n_users": 216,
+            "event_mean_ndcg10": 0.14982450636779854,
+            "user_mean_ndcg10": 0.15368050121588445
+          },
+          "p_harmonic_4": {
+            "n_events": 537,
+            "n_users": 216,
+            "event_mean_ndcg10": 0.15070797495465976,
+            "user_mean_ndcg10": 0.15792324523792073
+          },
+          "p_harmonic_8": {
+            "n_events": 537,
+            "n_users": 216,
+            "event_mean_ndcg10": 0.14182425173349958,
+            "user_mean_ndcg10": 0.14291582972481154
+          }
+        },
+        "irls_relative_changes": {
+          "p_harmonic_2": [],
+          "p_harmonic_4": [
+            0.11570677421528933,
+            0.04270657252947302,
+            0.021603569713149064,
+            0.01241388442304981,
+            0.007841762623983202,
+            0.005320737363402947,
+            0.0037957062436615777,
+            0.0027989294100411516,
+            0.002105035352836407,
+            0.0016026027033003956,
+            0.0012283455411455035,
+            0.0009455427407204639
+          ],
+          "p_harmonic_8": [
+            0.304784079541208,
+            0.3286474088785941,
+            0.44978959293385873,
+            0.5229857430900869,
+            0.6076760494208145,
+            0.627989965894204,
+            0.6568465001833736,
+            0.6605097014176324,
+            0.6780837312304203,
+            0.6786403810633104,
+            0.6919552899516502,
+            0.6912316472933404
+          ]
+        }
+      },
+      {
+        "fold": 1,
+        "n_warm": 285,
+        "n_cold": 71,
+        "methods": {
+          "content_direct": {
+            "n_events": 499,
+            "n_users": 205,
+            "event_mean_ndcg10": 0.1329506542917784,
+            "user_mean_ndcg10": 0.14770967940293342
+          },
+          "lc2c_ridge": {
+            "n_events": 499,
+            "n_users": 205,
+            "event_mean_ndcg10": 0.1653863838383304,
+            "user_mean_ndcg10": 0.1822647484114155
+          },
+          "p_harmonic_2": {
+            "n_events": 499,
+            "n_users": 205,
+            "event_mean_ndcg10": 0.15635634801731538,
+            "user_mean_ndcg10": 0.170179163784531
+          },
+          "p_harmonic_4": {
+            "n_events": 499,
+            "n_users": 205,
+            "event_mean_ndcg10": 0.15190988780178655,
+            "user_mean_ndcg10": 0.16554783530428727
+          },
+          "p_harmonic_8": {
+            "n_events": 499,
+            "n_users": 205,
+            "event_mean_ndcg10": 0.14235548115059943,
+            "user_mean_ndcg10": 0.15111180454835227
+          }
+        },
+        "irls_relative_changes": {
+          "p_harmonic_2": [],
+          "p_harmonic_4": [
+            0.12189722319279421,
+            0.043763694853488015,
+            0.022070458351131552,
+            0.01268790452882949,
+            0.00776907796515084,
+            0.0049178657451036875,
+            0.0031607965866699396,
+            0.002051175840223573,
+            0.0013379787187645727,
+            0.000876453720388795,
+            0.0005757763418826612,
+            0.00037926069481887244
+          ],
+          "p_harmonic_8": [
+            0.3380357037416937,
+            0.358938352008274,
+            0.45884805385548216,
+            0.5031899533407443,
+            0.5557032661774868,
+            0.5763615767167691,
+            0.6073006429587567,
+            0.6166580043066393,
+            0.638734259953765,
+            0.6398694905887101,
+            0.6573370237622926,
+            0.654671910821595
+          ]
+        }
+      },
+      {
+        "fold": 2,
+        "n_warm": 285,
+        "n_cold": 71,
+        "methods": {
+          "content_direct": {
+            "n_events": 497,
+            "n_users": 204,
+            "event_mean_ndcg10": 0.13182238021766088,
+            "user_mean_ndcg10": 0.1356638655938854
+          },
+          "lc2c_ridge": {
+            "n_events": 497,
+            "n_users": 204,
+            "event_mean_ndcg10": 0.15043939979887652,
+            "user_mean_ndcg10": 0.15289802413555842
+          },
+          "p_harmonic_2": {
+            "n_events": 497,
+            "n_users": 204,
+            "event_mean_ndcg10": 0.14975755128202065,
+            "user_mean_ndcg10": 0.1576179982808502
+          },
+          "p_harmonic_4": {
+            "n_events": 497,
+            "n_users": 204,
+            "event_mean_ndcg10": 0.14672604092917507,
+            "user_mean_ndcg10": 0.1530813548466838
+          },
+          "p_harmonic_8": {
+            "n_events": 497,
+            "n_users": 204,
+            "event_mean_ndcg10": 0.14098770492658672,
+            "user_mean_ndcg10": 0.14646380563424763
+          }
+        },
+        "irls_relative_changes": {
+          "p_harmonic_2": [],
+          "p_harmonic_4": [
+            0.1181170640437308,
+            0.04047889572678893,
+            0.01826379350144216,
+            0.00887736301489711,
+            0.004495090730251095,
+            0.0023284437262501814,
+            0.0012261186163376396,
+            0.0006533528570203188,
+            0.00035141188800433227,
+            0.00019041593447136773,
+            0.00010381358336364698,
+            5.68918982637479e-05
+          ],
+          "p_harmonic_8": [
+            0.3194449992725909,
+            0.3320762469745768,
+            0.43948262757691964,
+            0.4890416120817155,
+            0.5721343950003497,
+            0.5854478132077887,
+            0.6341203167267135,
+            0.6280673857953302,
+            0.6625259712346112,
+            0.6493704235128501,
+            0.6795010977404075,
+            0.6632477449874846
+          ]
+        }
+      },
+      {
+        "fold": 3,
+        "n_warm": 285,
+        "n_cold": 71,
+        "methods": {
+          "content_direct": {
+            "n_events": 497,
+            "n_users": 198,
+            "event_mean_ndcg10": 0.13039298750133366,
+            "user_mean_ndcg10": 0.13908106972571052
+          },
+          "lc2c_ridge": {
+            "n_events": 497,
+            "n_users": 198,
+            "event_mean_ndcg10": 0.15478117651792092,
+            "user_mean_ndcg10": 0.1639559527729817
+          },
+          "p_harmonic_2": {
+            "n_events": 497,
+            "n_users": 198,
+            "event_mean_ndcg10": 0.1513816394506306,
+            "user_mean_ndcg10": 0.160537574370073
+          },
+          "p_harmonic_4": {
+            "n_events": 497,
+            "n_users": 198,
+            "event_mean_ndcg10": 0.14856763268631498,
+            "user_mean_ndcg10": 0.1546633139866878
+          },
+          "p_harmonic_8": {
+            "n_events": 497,
+            "n_users": 198,
+            "event_mean_ndcg10": 0.1496226361022144,
+            "user_mean_ndcg10": 0.15698918827429914
+          }
+        },
+        "irls_relative_changes": {
+          "p_harmonic_2": [],
+          "p_harmonic_4": [
+            0.10916426174516289,
+            0.03304751149261936,
+            0.013493812432222071,
+            0.006088020214954666,
+            0.002951357527239392,
+            0.0015197590098099316,
+            0.0008274953685069358,
+            0.00047242626947429256,
+            0.00027959348159728193,
+            0.00016965391076430525,
+            0.000104625301648707,
+            6.518720671818011e-05
+          ],
+          "p_harmonic_8": [
+            0.28494817309298537,
+            0.2784441195136944,
+            0.371105126567136,
+            0.4211967255393808,
+            0.5015905320235696,
+            0.5222552395799228,
+            0.5656231190204586,
+            0.5682891856320562,
+            0.5957781134405471,
+            0.5908215747603344,
+            0.6128461836287515,
+            0.6052491154594399
+          ]
+        }
+      },
+      {
+        "fold": 4,
+        "n_warm": 285,
+        "n_cold": 71,
+        "methods": {
+          "content_direct": {
+            "n_events": 505,
+            "n_users": 204,
+            "event_mean_ndcg10": 0.15164885709540374,
+            "user_mean_ndcg10": 0.15218302248830454
+          },
+          "lc2c_ridge": {
+            "n_events": 505,
+            "n_users": 204,
+            "event_mean_ndcg10": 0.14228832283446036,
+            "user_mean_ndcg10": 0.14747362490543145
+          },
+          "p_harmonic_2": {
+            "n_events": 505,
+            "n_users": 204,
+            "event_mean_ndcg10": 0.13878522656211,
+            "user_mean_ndcg10": 0.14500526053033083
+          },
+          "p_harmonic_4": {
+            "n_events": 505,
+            "n_users": 204,
+            "event_mean_ndcg10": 0.13488373762950198,
+            "user_mean_ndcg10": 0.13870004815881673
+          },
+          "p_harmonic_8": {
+            "n_events": 505,
+            "n_users": 204,
+            "event_mean_ndcg10": 0.13022383241592783,
+            "user_mean_ndcg10": 0.14287518339703195
+          }
+        },
+        "irls_relative_changes": {
+          "p_harmonic_2": [],
+          "p_harmonic_4": [
+            0.11270922738196139,
+            0.039349534428321356,
+            0.020441195744793715,
+            0.013007368666091517,
+            0.009459290106705875,
+            0.007388411574871112,
+            0.005983572255841718,
+            0.004923046783538053,
+            0.004082998545577442,
+            0.003397408369297907,
+            0.002832638928909552,
+            0.0023634126026479663
+          ],
+          "p_harmonic_8": [
+            0.31870309722537693,
+            0.3405861684514245,
+            0.45042937178899334,
+            0.49746798297771677,
+            0.5743714332416537,
+            0.5868213965836353,
+            0.6342450530606758,
+            0.6260654637804605,
+            0.6695627252259092,
+            0.6529347468442935,
+            0.696160220434384,
+            0.6718514814884317
+          ]
+        }
+      }
+    ],
+    "evaluation_contract": "Targets and candidates are cold items only; a pool-wide offset cannot change any rank.",
+    "limitations": [
+      "Random item folds are a cheap mapper test, not a deployment-realistic temporal evaluation.",
+      "The boundary values are EASE coefficient columns, not latent ground-truth behavior.",
+      "No hyperparameter was selected on a separate validation set; this is a falsification screen only."
+    ],
+    "software": {
+      "python": "3.12.13",
+      "numpy": "2.4.4",
+      "scipy": "1.17.1",
+      "sklearn": "1.8.0"
+    },
+    "input_sha256": {
+      "raw_data_dedup.pkl": "601aa9d9478a49d926b9329d076eb1a24db68df56107efaf1520c1e4c9e3fcf6",
+      "title_embeddings": "518388a253a6e8e4dcc16d53722ec08a0680b69adb215d8e21f5de31b865e283"
+    }
+  },
+  "fashion": {
+    "classification": "exploratory proof of concept; not confirmatory or paper-bound",
+    "question": "Does p>2 vector harmonic extension improve within-cold ordering over p=2 and existing mappings?",
+    "dataset": "fashion",
+    "seed": 20260805,
+    "n_users": 513,
+    "n_items": 614,
+    "n_interactions": 3805,
+    "n_folds": 5,
+    "graph_k": 10,
+    "p_values": [
+      2.0,
+      4.0,
+      8.0
+    ],
+    "irls_steps": 12,
+    "runtime_seconds": 4.294538600002852,
+    "summary": {
+      "content_direct": {
+        "mean_fold_event_ndcg10": 0.12269298421977645,
+        "std_fold_event_ndcg10": 0.022174776490147787,
+        "mean_fold_user_ndcg10": 0.1407309888892903
+      },
+      "lc2c_ridge": {
+        "mean_fold_event_ndcg10": 0.13827579402754642,
+        "std_fold_event_ndcg10": 0.014778640663994378,
+        "mean_fold_user_ndcg10": 0.15998436366969754
+      },
+      "p_harmonic_2": {
+        "mean_fold_event_ndcg10": 0.1375242973320434,
+        "std_fold_event_ndcg10": 0.013247399614929958,
+        "mean_fold_user_ndcg10": 0.1570750428783541
+      },
+      "p_harmonic_4": {
+        "mean_fold_event_ndcg10": 0.13549263083519641,
+        "std_fold_event_ndcg10": 0.014558786204440538,
+        "mean_fold_user_ndcg10": 0.15441480241065486
+      },
+      "p_harmonic_8": {
+        "mean_fold_event_ndcg10": 0.13236812007263873,
+        "std_fold_event_ndcg10": 0.013532691703158834,
+        "mean_fold_user_ndcg10": 0.15190609739736988
+      }
+    },
+    "folds": [
+      {
+        "fold": 0,
+        "n_warm": 491,
+        "n_cold": 123,
+        "methods": {
+          "content_direct": {
+            "n_events": 688,
+            "n_users": 335,
+            "event_mean_ndcg10": 0.08921788586400417,
+            "user_mean_ndcg10": 0.10114819619109024
+          },
+          "lc2c_ridge": {
+            "n_events": 688,
+            "n_users": 335,
+            "event_mean_ndcg10": 0.11339912281819413,
+            "user_mean_ndcg10": 0.1350319289750115
+          },
+          "p_harmonic_2": {
+            "n_events": 688,
+            "n_users": 335,
+            "event_mean_ndcg10": 0.11782137475446568,
+            "user_mean_ndcg10": 0.13595768375772985
+          },
+          "p_harmonic_4": {
+            "n_events": 688,
+            "n_users": 335,
+            "event_mean_ndcg10": 0.11598013172629074,
+            "user_mean_ndcg10": 0.13203005131083437
+          },
+          "p_harmonic_8": {
+            "n_events": 688,
+            "n_users": 335,
+            "event_mean_ndcg10": 0.11187270055112633,
+            "user_mean_ndcg10": 0.12788002145487554
+          }
+        },
+        "irls_relative_changes": {
+          "p_harmonic_2": [],
+          "p_harmonic_4": [
+            0.19580023340873356,
+            0.0638130416419297,
+            0.02873212252526601,
+            0.01440150870748286,
+            0.007794063813268737,
+            0.004402536186417076,
+            0.0025582025426390607,
+            0.0015151235849186252,
+            0.0009105963768563346,
+            0.000553863599143229,
+            0.00034039609841694687,
+            0.00021112696583289008
+          ],
+          "p_harmonic_8": [
+            0.5579077678801184,
+            0.5198863402103391,
+            0.7077350243422215,
+            0.6724830690143399,
+            0.8116452781859286,
+            0.7368047596499276,
+            0.858356118182493,
+            0.7719361664988098,
+            0.8839807043561515,
+            0.7943251274038468,
+            0.9003032768011583,
+            0.8096887255388815
+          ]
+        }
+      },
+      {
+        "fold": 1,
+        "n_warm": 491,
+        "n_cold": 123,
+        "methods": {
+          "content_direct": {
+            "n_events": 759,
+            "n_users": 372,
+            "event_mean_ndcg10": 0.14342619384903021,
+            "user_mean_ndcg10": 0.15724761924839936
+          },
+          "lc2c_ridge": {
+            "n_events": 759,
+            "n_users": 372,
+            "event_mean_ndcg10": 0.15204531479679356,
+            "user_mean_ndcg10": 0.1646098848021132
+          },
+          "p_harmonic_2": {
+            "n_events": 759,
+            "n_users": 372,
+            "event_mean_ndcg10": 0.14569880684954098,
+            "user_mean_ndcg10": 0.15362722664885106
+          },
+          "p_harmonic_4": {
+            "n_events": 759,
+            "n_users": 372,
+            "event_mean_ndcg10": 0.14720211402104325,
+            "user_mean_ndcg10": 0.1544124252858422
+          },
+          "p_harmonic_8": {
+            "n_events": 759,
+            "n_users": 372,
+            "event_mean_ndcg10": 0.14228425311517762,
+            "user_mean_ndcg10": 0.15150607108208777
+          }
+        },
+        "irls_relative_changes": {
+          "p_harmonic_2": [],
+          "p_harmonic_4": [
+            0.1861244523385417,
+            0.06038313364772672,
+            0.02841093446491421,
+            0.015200527020366807,
+            0.008840962408777166,
+            0.00536095512299782,
+            0.0033356830489652085,
+            0.0021084001909562307,
+            0.0013465295502799806,
+            0.0008661319419728514,
+            0.0005598410305192554,
+            0.00036314947460919364
+          ],
+          "p_harmonic_8": [
+            0.5116674183827078,
+            0.4582705540201784,
+            0.615675973241782,
+            0.5982557427882897,
+            0.7483601894236224,
+            0.6874040641140852,
+            0.8265355095553709,
+            0.7416451725802479,
+            0.8718896717413466,
+            0.7737505154161517,
+            0.8945313292356731,
+            0.7905610024520804
+          ]
+        }
+      },
+      {
+        "fold": 2,
+        "n_warm": 491,
+        "n_cold": 123,
+        "methods": {
+          "content_direct": {
+            "n_events": 747,
+            "n_users": 350,
+            "event_mean_ndcg10": 0.12652401074683245,
+            "user_mean_ndcg10": 0.16019591325680818
+          },
+          "lc2c_ridge": {
+            "n_events": 747,
+            "n_users": 350,
+            "event_mean_ndcg10": 0.14137731939674011,
+            "user_mean_ndcg10": 0.1776387261277344
+          },
+          "p_harmonic_2": {
+            "n_events": 747,
+            "n_users": 350,
+            "event_mean_ndcg10": 0.1453492117784985,
+            "user_mean_ndcg10": 0.17737407170181335
+          },
+          "p_harmonic_4": {
+            "n_events": 747,
+            "n_users": 350,
+            "event_mean_ndcg10": 0.14352189751266503,
+            "user_mean_ndcg10": 0.17461973447047657
+          },
+          "p_harmonic_8": {
+            "n_events": 747,
+            "n_users": 350,
+            "event_mean_ndcg10": 0.13781752658819177,
+            "user_mean_ndcg10": 0.16378447761802287
+          }
+        },
+        "irls_relative_changes": {
+          "p_harmonic_2": [],
+          "p_harmonic_4": [
+            0.19003070047629897,
+            0.05885723755329986,
+            0.024493976160880313,
+            0.011113524025808438,
+            0.005430131038044995,
+            0.0027731326982838567,
+            0.0014638160068691085,
+            0.0007902229142699599,
+            0.0004340925794397796,
+            0.00024185422280251708,
+            0.0001365122262587912,
+            7.804614028064892e-05
+          ],
+          "p_harmonic_8": [
+            0.5259308993500846,
+            0.4632073296313843,
+            0.6268642520506522,
+            0.6004406720717628,
+            0.7612688274926444,
+            0.6892286111116283,
+            0.8309752837354514,
+            0.733599334184342,
+            0.8645980639542616,
+            0.7565006534454658,
+            0.8825963018784795,
+            0.7718959903636712
+          ]
+        }
+      },
+      {
+        "fold": 3,
+        "n_warm": 491,
+        "n_cold": 123,
+        "methods": {
+          "content_direct": {
+            "n_events": 797,
+            "n_users": 388,
+            "event_mean_ndcg10": 0.1064871366361719,
+            "user_mean_ndcg10": 0.12829666110984206
+          },
+          "lc2c_ridge": {
+            "n_events": 797,
+            "n_users": 388,
+            "event_mean_ndcg10": 0.13128023962284596,
+            "user_mean_ndcg10": 0.15246879153018458
+          },
+          "p_harmonic_2": {
+            "n_events": 797,
+            "n_users": 388,
+            "event_mean_ndcg10": 0.12606528066251838,
+            "user_mean_ndcg10": 0.15184797576579567
+          },
+          "p_harmonic_4": {
+            "n_events": 797,
+            "n_users": 388,
+            "event_mean_ndcg10": 0.11992882678845537,
+            "user_mean_ndcg10": 0.14484314801623902
+          },
+          "p_harmonic_8": {
+            "n_events": 797,
+            "n_users": 388,
+            "event_mean_ndcg10": 0.12162098016065293,
+            "user_mean_ndcg10": 0.1499146389052624
+          }
+        },
+        "irls_relative_changes": {
+          "p_harmonic_2": [],
+          "p_harmonic_4": [
+            0.2153638059293072,
+            0.07606431056050947,
+            0.03706586201624044,
+            0.019586126201319057,
+            0.01108582427892315,
+            0.006482875773938165,
+            0.0038835324280546263,
+            0.002359669926880105,
+            0.0014490004230380007,
+            0.0008963219750066622,
+            0.0005576168866143031,
+            0.0003484329533416015
+          ],
+          "p_harmonic_8": [
+            0.5957605641358579,
+            0.5396264488869584,
+            0.7882498093232736,
+            0.6985615965710704,
+            0.9035377767688878,
+            0.7551143428633226,
+            0.9436073293859927,
+            0.7810678524810564,
+            0.9654438497325428,
+            0.7989901276743584,
+            0.9797152460203054,
+            0.8112839399052209
+          ]
+        }
+      },
+      {
+        "fold": 4,
+        "n_warm": 492,
+        "n_cold": 122,
+        "methods": {
+          "content_direct": {
+            "n_events": 806,
+            "n_users": 392,
+            "event_mean_ndcg10": 0.14780969400284352,
+            "user_mean_ndcg10": 0.1567665546403116
+          },
+          "lc2c_ridge": {
+            "n_events": 806,
+            "n_users": 392,
+            "event_mean_ndcg10": 0.1532769735031583,
+            "user_mean_ndcg10": 0.17017248691344392
+          },
+          "p_harmonic_2": {
+            "n_events": 806,
+            "n_users": 392,
+            "event_mean_ndcg10": 0.1526868126151934,
+            "user_mean_ndcg10": 0.16656825651758067
+          },
+          "p_harmonic_4": {
+            "n_events": 806,
+            "n_users": 392,
+            "event_mean_ndcg10": 0.1508301841275278,
+            "user_mean_ndcg10": 0.1661686529698822
+          },
+          "p_harmonic_8": {
+            "n_events": 806,
+            "n_users": 392,
+            "event_mean_ndcg10": 0.14824513994804503,
+            "user_mean_ndcg10": 0.16644527792660083
+          }
+        },
+        "irls_relative_changes": {
+          "p_harmonic_2": [],
+          "p_harmonic_4": [
+            0.19584907686372083,
+            0.07517814207021935,
+            0.04134385227921406,
+            0.025247562823082007,
+            0.016375629305764063,
+            0.01088823223417726,
+            0.007344818142038103,
+            0.0049905605633499646,
+            0.00340586216163064,
+            0.002330600366567639,
+            0.0015975290696296498,
+            0.0010964022998445002
+          ],
+          "p_harmonic_8": [
+            0.5969026839699444,
+            0.5529278079907524,
+            0.7720719613533071,
+            0.6850091735868397,
+            0.8735279220891007,
+            0.742956347871752,
+            0.9259626401532043,
+            0.772732835569689,
+            0.9524474891054483,
+            0.7883797334969681,
+            0.966710099044062,
+            0.7968985567870451
+          ]
+        }
+      }
+    ],
+    "evaluation_contract": "Targets and candidates are cold items only; a pool-wide offset cannot change any rank.",
+    "limitations": [
+      "Random item folds are a cheap mapper test, not a deployment-realistic temporal evaluation.",
+      "The boundary values are EASE coefficient columns, not latent ground-truth behavior.",
+      "No hyperparameter was selected on a separate validation set; this is a falsification screen only."
+    ],
+    "software": {
+      "python": "3.12.13",
+      "numpy": "2.4.4",
+      "scipy": "1.17.1",
+      "sklearn": "1.8.0"
+    },
+    "input_sha256": {
+      "raw_data_dedup.pkl": "b8f08d1e2d35dbd07eba278f3a57018ccfb87c4ecd056fcf7b279d7531b70e58",
+      "title_embeddings": "a56575fb4f356555b2500d5da59811f728b87e42c9054510ae8dfaaee93a72c0"
+    }
+  }
+}

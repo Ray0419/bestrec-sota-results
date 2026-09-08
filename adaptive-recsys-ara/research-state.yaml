@@ -1,0 +1,201 @@
+# Research State — Adaptive Recommendation Research Sprint
+
+project:
+  title: "CODEPATCH-⊥: Orthogonal preference programs over immutable PQ codes"
+  question: "Can a 63-entry support-restricted PQ-table residual, exactly orthogonal to every dense-query ADC table, improve both CPE@100 and FutureLikedRecall@100 by 0.010 over the simultaneous best matched compressed-code control on 5,000 fresh temporal MovieLens-10M users within a 1/8-byte and 1.25x-p95 budget?"
+  status: active
+  phase: 3_algorithm_design_and_implementation_cycle_8
+  started: "2026-08-07"
+  domain: "vector retrieval and preference-aligned recommendation"
+
+literature:
+  key_papers:
+    - "Sentence-BERT (EMNLP-IJCNLP 2019)"
+    - "FAISS (2017) and ScaNN (ICML 2020)"
+    - "Stochastic Retrieval-Conditioned Reranking (ICTIR 2022)"
+    - "TIGER (NeurIPS 2023)"
+    - "SimPO (NeurIPS 2024)"
+    - "Preference Learning Algorithms Do Not Learn Preference Rankings (NeurIPS 2024)"
+    - "RecPO (ACL 2026)"
+    - "Recommendations as Treatments (ICML 2016)"
+    - "Quake (OSDI 2025)"
+    - "Drift-Adapter (EMNLP 2025)"
+    - "SelectiveNet (ICML 2019)"
+    - "Learning to Defer to a Set of Experts (ICML 2025)"
+    - "Recommendation Systems with Distribution-Free Reliability Guarantees (UAI 2023)"
+    - "Selective LLM-Guided Regularization (WSDM GenAIRecP 2026)"
+  open_problems:
+    - "ANN geometric objectives are disconnected from aligned downstream utility."
+    - "Implicit feedback is censored by exposure and position."
+    - "Fresh preference updates conflict with catalog re-embedding and index rebuild cost."
+    - "Semantic/LLM alignment remains expensive at online inference time."
+    - "Pairwise preference quality does not identify which list interventions are safe or useful."
+    - "Global fusion assumes complementary experts help on the same requests."
+    - "Temporal validation does not inherit conformal or distribution-free guarantees."
+    - "Post-training residual selection with exact identity fallback is under-explored relative to joint gates."
+    - "Single-centroid semantic queries erase multi-modal user preference geometry."
+    - "Positive-item candidate recall does not reveal natural preference-pair co-support."
+    - "Post-filter fixed-depth ANN cannot guarantee an exact unseen-candidate budget for long user histories."
+    - "Pairwise preference margins do not directly train a preferred item to cross the deployed eligible branch-admission cutoff."
+    - "Independent retrieval branches waste fixed candidate slots through overlap unless complement ownership is enforced at selection time."
+    - "IVF coarse routing spends probe budget on geometric proximity rather than downstream user preference."
+    - "Separately learned routing and ranking utilities can disagree about which immutable partitions deserve work."
+    - "Cross-backend bitwise or total-order identity is brittle near floating-point ties and is not equivalent to retrieval utility."
+    - "Product-quantization reconstruction error is not the same as user-macro preference-margin damage."
+    - "Full-vector reranking preserves quality only after compressed retrieval and cannot rescue a censored item."
+    - "Sparse precision allocation under a fixed serialized-byte budget is under-explored relative to retraining the full codebook or query encoder."
+    - "Every dense-query ADC table is confined to the centroid-plus-constant column space, leaving a large but untested orthogonal utility space."
+    - "Unprojected codeword tables may be ordinary query representations, while full-tuple tables may be item-ID memorization."
+  evidence_gaps:
+    - "The RAVEL component intersection is only a candidate whitespace, not an exhaustive novelty proof."
+    - "PoC evidence is required before any benefit claim."
+    - "CODEPATCH-⊥ has only item-only non-collapse, byte, and latency feasibility evidence; no Cycle-8 preference or quality outcome has been opened."
+
+hypotheses:
+  - id: C2-H1
+    status: falsified
+    statement: "CAPER improves NDCG@10 over strong BPR and every matched residual/fusion ablation."
+  - id: C2-H2
+    status: falsified
+    statement: "CAPER improves held-out explicit preference-pair accuracy by at least three percentage points over BPR."
+  - id: C2-H3
+    status: supported
+    statement: "The collaborative candidate set is a subset of the served union for every request."
+  - id: C2-H4
+    status: supported
+    statement: "Hard collaborative-regret projection prevents material Recall@10 loss and excessive dislike intrusion."
+  - id: C2-H5
+    status: supported
+    statement: "Two immutable FAISS searches plus residual projection stay within the matched hybrid p95 budget."
+  - id: C3-H1
+    status: falsified
+    statement: "RAVEL improves user-macro explicit preference-pair accuracy by at least 0.005 over the frozen linear hybrid while meeting the locked NDCG@10 non-inferiority bounds."
+  - id: C3-H2
+    status: provisional_runner_support_but_external_integrity_failed
+    statement: "RAVEL's exact-fallback selector outperforms always-on residual alignment in NDCG and matched-coverage heuristic routing in preference accuracy."
+  - id: C4-H1
+    status: not_evaluated_project_killed_on_feasibility
+    statement: "FACET-PREF improves natural preference-pair candidate co-support by at least 0.02 over the fixed-budget single-centroid hybrid with a paired lower bound above zero."
+  - id: C4-H2
+    status: not_evaluated_project_killed_on_feasibility
+    statement: "FACET-PREF improves strict preference-consistent exposure@10 by at least 0.005 over both the single-centroid hybrid and selected BPR with paired lower bounds above zero."
+  - id: C4-H3
+    status: not_evaluated_project_killed_on_feasibility
+    statement: "FACET-PREF is non-inferior to the single-centroid hybrid in NDCG@10 and satisfies the 1.25x p95 latency budget."
+  - id: C4-F1
+    status: falsified
+    statement: "A fixed depth-700 BPR search always contains at least 200 prefix-unseen candidates for every eligible FACET-PREF request."
+  - id: C5-H1
+    status: not_evaluated_project_killed_on_retrieval_integrity
+    statement: "CABLE-PREF materially improves method-independent BPR-missed preferred-item admission over raw exact-complement retrieval and order-only reference-free alignment."
+  - id: C5-H2
+    status: not_evaluated_project_killed_on_retrieval_integrity
+    statement: "CABLE-PREF improves strict preference-consistent exposure@10 over raw hybrid and BPR while remaining relevance- and dislike-safe."
+  - id: C5-H3
+    status: not_evaluated_project_killed_on_retrieval_integrity
+    statement: "Exact complement retrieval guarantees every eligible 200+200 output, and CABLE-PREF stays within the registered matched p95 budget without changing immutable item geometry."
+  - id: C5-F1
+    status: falsified
+    statement: "The batched full-row FAISS candidate path agrees exactly with the canonical matrix lexsort oracle on every real target-blind request."
+  - id: C6-H1
+    status: not_evaluated_project_killed_on_structural_integrity
+    statement: "PIVOT improves both FutureLikedRecall@100 and fixed-pair CandidatePreferenceExposure@100 by at least 0.010 over balanced geometric four-shard retrieval at identical search work, with paired lower bounds above zero."
+  - id: C6-H2
+    status: not_evaluated_project_killed_on_structural_integrity
+    statement: "Reusing one bounded partition potential for both routing and ranking beats route-only, rerank-only, and shuffled-direction controls on both primary metrics."
+  - id: C6-H3
+    status: not_evaluated_project_killed_on_structural_integrity
+    statement: "PIVOT retains at least 90% aligned-oracle top-100 overlap and 95% of raw-full-exact future-liked recall while meeting the fixed 1,336-slot and registered p95 latency bounds."
+  - id: C6-F1
+    status: falsified
+    statement: "The source-locked structural scan yields exactly 21,931 eligible non-cycle-5 users before any A/R/V/T outcome access."
+  - id: C8-H1
+    status: preregistered_not_evaluated
+    statement: "CODEPATCH-⊥ improves both CPE@100 and FutureLikedRecall@100 by at least 0.010 over the simultaneous best matched compressed-code control with positive co-primary lower bounds."
+  - id: C8-H2
+    status: preregistered_not_evaluated
+    statement: "The gain is a pre-truncation non-dense mechanism: it survives globally dense, unprojected, random-subspace, shuffled, and rerank-only controls while preserving final-list relevance and dislike safety."
+  - id: C8-H3
+    status: preregistered_not_evaluated
+    statement: "A 63-entry user patch over immutable 24-byte PQ codes satisfies exact rank/orthogonality replay, a one-eighth semantic-index byte budget, and a 1.25x identical-scanner p95 budget."
+
+experiments:
+  proxy_metric: "Temporal full-catalog NDCG@10"
+  baseline_value: 0.005728564774466464
+  best_value: 0.0648460502012084
+  total_runs: 6
+  trajectory:
+    - design: "RIPPLE v1"
+      status: dead_end
+      proposed_ndcg_at_10: 0.011350290536784564
+      bpr_ndcg_at_10: 0.06255894164014639
+      gate_passed: false
+    - design: "CAPER v1"
+      status: dead_end
+      proposed_ndcg_at_10: 0.06319149679753816
+      bpr_ndcg_at_10: 0.06311244084043514
+      strongest_control_ndcg_at_10: 0.0648460502012084
+      gate_passed: false
+    - design: "RAVEL v1"
+      status: dead_end
+      proposed_ndcg_at_10: 0.06082746507323623
+      linear_ndcg_at_10: 0.06077474884504718
+      proposed_preference_accuracy: 0.6164014659311302
+      linear_preference_accuracy: 0.6162552252698682
+      gate_passed: false
+      external_verification_complete: false
+      failed_gates: [G1, G3, G5, G9, G10]
+    - design: "FACET-PREF v1"
+      status: dead_end
+      termination_stage: "target_blind_V_candidate_construction"
+      failure: "fixed_depth_700_collaborative_row_exhausted_before_200_unseen"
+      validation_relevance_opened: false
+      validation_preference_opened: false
+      test_opened: false
+      external_verification_complete: false
+      gate_passed: false
+      failed_gates: [G1]
+    - design: "CABLE-PREF v1"
+      status: dead_end
+      termination_stage: "target_blind_R_candidate_construction"
+      failure: "batched_full_row_faiss_disagreed_with_matrix_lexsort_oracle"
+      R_target_opened: false
+      validation_opened: false
+      test_opened: false
+      external_verification_complete: false
+      gate_passed: false
+      failed_gates: [G1, G9]
+    - design: "PIVOT v1"
+      status: dead_end
+      target_blind_qualification_passed: true
+      termination_stage: "target_blind_structural_cohort_scan"
+      failure: "observed_21928_structurally_eligible_users_vs_locked_21931"
+      R_target_opened: false
+      validation_opened: false
+      test_opened: false
+      external_verification_complete: false
+      gate_passed: false
+      failed_gates: [G9]
+    - design: "MARGIN-CACHE"
+      status: rejected_before_poc
+      reason: "architecture-level novelty occupied by mixed-precision embedding caches, learned heterogeneous precision, ranking-aware PQ, and multi-tier vector systems"
+      cohort_selected: false
+      outcomes_opened: false
+      gate_passed: false
+  gate:
+    status: cycle8_phase2_frozen_phase5_forbidden
+    rule: "A successor may proceed to Phase 5 only after a prospectively locked, source-bound PoC externally verifies every registered gate; any failure kills that design and returns to Phase 1."
+
+outer_loop:
+  cycle: 8
+  last_direction: "CODEPATCH_PERP_PHASE_2_FROZEN"
+  last_reflection: "Cycle 8 now has an independently approved one-shot question on 5,000 fresh users. A hash-bound 6,170-ID denylist excludes every prior opened cohort; simultaneous max-control bootstraps, contributor-specific power, exact scanner latency parity, global dense-table and rank-matched controls, and fail-closed algebra/provenance gates are fixed before Phase 3. No Cycle-8 user outcome has been opened."
+
+workspace:
+  findings: "findings.md"
+  log: "research-log.md"
+  literature_dir: "literature/"
+  experiments_dir: "experiments/"
+  data_dir: "data/"
+  to_human_dir: "to_human/"
+  paper_dir: "paper/"

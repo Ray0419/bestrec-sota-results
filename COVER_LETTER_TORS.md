@@ -30,10 +30,15 @@ A pre-declared, likewise outcome-known six-arm control study narrows the
 interpretation. Every temporally active arm improves identity after its frozen
 Holm procedures. Learned taps outperform two algebraically redundant fixed
 filter parameterizations, but advantages over a shared-filter control and a
-parameter-matched nonlinear causal control are not established. Because no
-active lag-0 or pointwise parameter-matched non-temporal placebo was run, the
-study does not isolate temporal structure from generic trainable-residual
-capacity and does not claim learned-tap superiority.
+parameter-matched nonlinear causal control are not established. Within that
+six-arm study no active lag-0 or pointwise parameter-matched non-temporal
+placebo arm was included, so that study alone does not isolate temporal
+structure from generic trainable-residual capacity. A separate pre-declared
+pointwise study (`PREREG_FIR_POINTWISE_V1.md`; verdict
+`POINTWISE-FIR-DISCRIMINATED`) tests an equal-parameter current-position-only
+placebo, and learned FIR exceeded it (+0.001941 [+0.001788, +0.002095]). The
+compound contrast changes basis, activation, channel mixing, and temporal
+access together; neither study establishes learned-tap superiority in general.
 
 **Secondary results.** Two per-category point estimates exceed published
 HSTU-BLaIR values under explicitly environment-caveated reproduced protocols;
@@ -44,13 +49,14 @@ zero-exposure targets through rank 100, and no replicated cross-dataset
 contrast. We therefore make no cold-start, transfer, or general state-of-the-art
 claim.
 
-**Why the evidence is inspectable.** A fail-closed graph recomputes 192
-paper-bound cells across 18 claim families from released artifacts. The release
-manifest and strict rebuild preserve positive, null, deviated, and permanently
-VOID outcomes under the same reporting rule. A fresh deep-path Windows clone
-bootstrapped and raw-hash-verified all 282 release-only assets, reproduced exact
-core-block parity against the disclosed HSTU-BLaIR commit, verified 751/751
-manifested files, and completed the strict rebuild. The public repository is
+**Why the evidence is inspectable.** At the current local submission boundary,
+the fail-closed graph recomputes 201 paper-bound cells across 25 claim families,
+and the release manifest verifies 1,081 entries, including 407 release-only
+assets. The graph and strict rebuild preserve positive, null, deviated, and
+permanently VOID outcomes under the same reporting rule. The final immutable
+deposit and no-waiver fresh-clone replay remain pending the required human
+author/legal metadata and will be regenerated and independently verified before
+submission. The public repository is
 https://github.com/Ray0419/bestrec-sota-results.
 
 **Material limitations and disclosure.** The manuscript reports outcome

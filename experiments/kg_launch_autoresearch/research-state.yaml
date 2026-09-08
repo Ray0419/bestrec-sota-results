@@ -1,0 +1,174 @@
+project:
+  title: "ProviCold: Launch-Safe Knowledge Graph Recommendation for Strict Cold Items"
+  question: "Does knowledge-graph lift survive for future-born zero-interaction items when every relation, candidate, and metadata field is restricted to information observable at recommendation time?"
+  status: active
+  started: "2026-08-07"
+  domain: "knowledge-aware recommendation, strict item cold start, graph evaluation"
+
+literature:
+  key_papers:
+    - id: "kgat2019"
+      title: "KGAT: Knowledge Graph Attention Network for Recommendation"
+      authors: "Wang et al."
+      year: 2019
+      relevance: "Canonical high-order KG message passing; establishes the mature architecture family."
+    - id: "coldgpt2023"
+      title: "Multi-task Item-attribute Graph Pre-training for Strict Cold-start Item Recommendation"
+      authors: "Cao et al."
+      year: 2023
+      relevance: "Strong strict-cold item-attribute graph baseline; filters metadata-poor items and mostly tests shared-attribute interpolation."
+    - id: "firzen2024"
+      title: "Firzen: Firing Strict Cold-Start Items with Frozen Heterogeneous and Homogeneous Graphs for Recommendation"
+      authors: "He et al."
+      year: 2024
+      relevance: "Principal multimodal plus KG strict-cold baseline; randomly holds out 20 percent of items."
+    - id: "kg4receval2025"
+      title: "KG4RecEval: Does Knowledge Graph Really Matter for Recommender Systems?"
+      authors: "Zhang et al."
+      year: 2025
+      relevance: "Shows KG removal or corruption often does not reduce accuracy, but does not audit strict future-item or fact availability."
+    - id: "coldrag2025"
+      title: "Adaptive Candidate Retrieval with Dynamic Knowledge Graph Construction for Cold-Start Recommendation"
+      authors: "Yang et al."
+      year: 2025
+      relevance: "Dynamic LLM-built KG retrieval; defines cold items by low frequency after core filtering rather than zero-interaction launch."
+    - id: "lightkg2025"
+      title: "LightKG: Efficient Knowledge-Aware Recommendation with Simplified Graph Propagation"
+      authors: "2025 paper"
+      year: 2025
+      relevance: "Motivates a simple linear propagation baseline and makes another heavy KG-GNN unattractive."
+    - id: "ji2023leakage"
+      title: "A Critical Study on Data Leakage in Recommender System Offline Evaluation"
+      authors: "Ji et al."
+      year: 2023
+      relevance: "Global-timeline leakage precedent for interactions and candidate eligibility, but not external KG fact provenance."
+  open_problems:
+    - "Prospective strict item cold-start with one global cutoff over interactions, item eligibility, entity links, KG edges, and metadata."
+    - "Per-relation provenance audit separating launch metadata from review, co-view, co-buy, and other endogenous edges."
+    - "Full-catalog evaluation including items that cannot be linked to a curated KG."
+  evidence_gaps:
+    - "No outcome experiment yet establishes that conventional full-graph KG lift collapses under launch-safe inputs."
+    - "Amazon listing dates are available for most items in three local domains, but relation-level observation timestamps are incomplete."
+
+hypotheses:
+  - id: H1
+    statement: "Conventional random or low-frequency cold splits overstate graph support because future-born zero-interaction items have materially less prefix-visible warm-graph connectivity than synthetic cold items."
+    status: refuted
+    motivation: "If false, launch-safety is unlikely to produce a publishable KG-specific limitation."
+    parent: null
+    priority: high
+  - id: H2
+    statement: "At least 30 percent of apparent KG ranking lift disappears, or the model order reverses, when post-cutoff and endogenous relations are removed in at least two domains."
+    status: not_advanced
+    motivation: "This is the decisive outcome-level evidence for a Tier-A evaluation contribution."
+    parent: H1
+    priority: high
+  - id: H3
+    statement: "A lightweight availability-gated inductive KG residual improves launch-safe full-catalog ranking over both content-only and always-on KG fusion without retraining the warm recommender."
+    status: eliminated_as_broad_claim
+    motivation: "A modular patch is more valuable than an audit alone and can be runtime efficient."
+    parent: H2
+    priority: high
+  - id: H4
+    statement: "If H1 or H2 fails, attribute-linkability stress testing will reveal a distinct failure on cold-exclusive entities that supports an open-vocabulary fallback module."
+    status: eliminated_before_outcome
+    motivation: "Predeclared pivot; avoids rescuing a failed provenance claim by metric shopping."
+    parent: null
+    priority: medium
+  - id: H5
+    statement: "A present Wikidata snapshot exposes a material fraction of entity-to-entity facts that were not observable at the MIND recommendation cutoff."
+    status: supported_structurally
+    motivation: "This tests the exact external-KG transaction-time limitation that Amazon snapshots cannot identify."
+    parent: null
+    priority: high
+  - id: H6
+    statement: "Point-in-time censoring of Wikidata facts materially changes knowledge-aware MIND rankings or model order under strict historical evaluation."
+    status: killed_by_confirmatory_outcome_gate
+    motivation: "A structural drift result is not publication-grade until it changes recommendation outcomes."
+    parent: H5
+    priority: high
+  - id: H7
+    statement: "A bounded-staleness compiler uses real page revision chains to tighten exact interval-robust Top-K certificates over independent-fact masks, enabling certificate-controlled additive KG fusion."
+    status: not_advanced_after_h6_outcome_kill
+    motivation: "H7A is exact only for its declared conservative per-page FIFO fault-model superset and reduces online inference to interval-robust linear Top-K arithmetic. It is a feasibility gate, not a poset/min-cut novelty claim. A stronger H7B requires measured stream partitions or real materialization lineage plus a material certificate gain."
+    parent: H6
+    priority: medium
+  - id: H8
+    statement: "Revision-induced cycle-space energy identifies correlated external-KG edit risk that can route an additive cold-start residual beyond degree and independent masking."
+    status: eliminated_as_lead_retain_diagnostic_only
+    motivation: "The label-blind H5 anchor-fact graph has beta1 214 for current-only edits and zero for historical-only edits; the effect remains beta1 39 after the metadata and anchor robustness restrictions, but no ranking consequence or algorithm value is established."
+    parent: H6
+    priority: low
+  - id: H9
+    statement: "A ridge-regularized terminal Green-energy residual can capture global co-fact paths while Loewner endpoint boxes certify Top-10 invariance to transaction-time revision uncertainty."
+    status: killed_by_certificate_utility_gate
+    motivation: "H9A passed runtime, numerical, revision-sensitivity, graph-dependence, and global-path gates, but certified only 907/48,422 impressions (1.8731 percent), exposed uncertainty on 98.9344 percent, and stayed below 5 percent certificate coverage in both robustness views. No rescue tuning is allowed."
+    parent: null
+    priority: high
+  - id: H10
+    statement: "Relation-wise configuration-null residualization can expose fixed-degree-null-exceptional KG structure that is degree-distinct at historical and current endpoints while retaining a nondegenerate endpoint-worst score."
+    status: protocol_locked_label_blind_poc_pending_implementation
+    motivation: "H10A is a label-blind feasibility test for the occupied correspondence-analysis residual, not a novelty claim. A mathematical audit demoted trace energy because it is only a degree-class mixing statistic and promoted candidate-projected variance as the first gate. A pass would justify designing a genuinely new H10B component; a miss kills the direction."
+    parent: null
+    priority: high
+  - id: H11
+    statement: "A complete entailment-quotient relation-message layer can factor every scorer invariant to a fixed property-entailment fragment through a minimal-antichain quotient without materializing closure, while preserving provenance and time in a separate invariant channel."
+    status: current_form_no_go_stronger_quotient_conditional
+    motivation: "Independent red-team found the original antichain canonicalizer collides with minimal RDFS reduction, DeepSets, and generic representation-invariant GNN wrappers (novelty about 0.30; Tier-A 0.10--0.15). Only a stronger complete quotient, universal-factorization theorem, injective poset/Mobius layer, and no-materialization algorithm remains conditional (novelty 0.55--0.65), subject to a cheap natural-drift POC."
+    parent: null
+    priority: medium
+
+experiments:
+  proxy_metric: "H10A label-blind conjunction: fixed-degree-null-exceptional within-impression residual variance, degree-distinct rankings at both transaction-time endpoints, nondegenerate endpoint-worst scores, robustness, exact replay, and <=30-second module runtime."
+  baseline_value: 0
+  best_value: 0.5500209487454029
+  total_runs: 7
+  trajectory:
+    - run: "h1_launch_support/run_001"
+      classification: "confirmatory implementation-invalidity adjudication"
+      value: -2.6749611197511625
+      secondary_value: 0.060808709175738773
+      verdict: "inconclusive only because code added a non-protocol zero-parse-failure gate"
+    - run: "h1_launch_support/run_002"
+      classification: "deterministic corrected confirmatory adjudication"
+      value: -2.6749611197511625
+      secondary_value: 0.060808709175738773
+      verdict: "REFUTE_H1_AND_PIVOT_H4"
+    - run: "h5_bitemporal_drift/run_002"
+      classification: "confirmatory structural POC, inconclusive transport failure"
+      value: 0.24361509827878206
+      secondary_value: 0.75
+      verdict: "INCONCLUSIVE: 22/50 historical queries rate-limited; subset estimates inadmissible"
+    - run: "h5_bitemporal_drift/run_003"
+      classification: "confirmatory structural POC, transport-corrected"
+      value: 0.24942058519879862
+      secondary_value: 1.0
+      verdict: "ADVANCE_H5_TO_OUTCOME_POC"
+    - run: "h6_ranking_consequence/coverage_run_002"
+      classification: "confirmatory label-blind ranking-consequence gate"
+      value: 0.5500209487454029
+      secondary_value: 0.2155237962230188
+      verdict: "PASS_COVERAGE_AND_OPEN_LABELS"
+    - run: "h6_ranking_consequence/outcome_run_001"
+      classification: "one-shot confirmatory held-fixed outcome test with exact replay"
+      value: -0.0023676952391595285
+      secondary_value: -0.004304736473329268
+      verdict: "KILL_H6_OUTCOME_DIRECTION"
+    - run: "h9_revkron_certificate/h9_3105834790a84ed2970a"
+      classification: "prospective label-blind graph-mechanism and certificate-utility test with exact replay and deep verification"
+      value: 0.018731155260005784
+      secondary_value: 0.9893436867539548
+      verdict: "KILL_H9_KRON_DIRECTION"
+
+outer_loop:
+  cycle: 7
+  last_direction: "H10A relation-null dual-transaction-time label-blind feasibility gate"
+  last_reflection: "H9's global graph mechanism worked computationally but its sufficient Loewner certificate was practically vacuous, so the direction was killed without tuning. H10 tests whether the non-degree orientation of relation-wise KG incidence survives exact fixed-degree randomization and affects candidate scores. Its CA/configuration-null ingredients are occupied and cannot support a novelty claim; a pass only authorizes a genuinely new H10B module. The contingency candidate is H11 entailment-quotient antichain message passing, pending independent collision red-team."
+
+workspace:
+  findings: "findings.md"
+  log: "research-log.md"
+  literature_dir: "literature/"
+  experiments_dir: "experiments/"
+  to_human_dir: "to_human/"
+  paper_dir: "paper/"

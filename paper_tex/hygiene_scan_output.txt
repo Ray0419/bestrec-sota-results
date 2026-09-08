@@ -14,7 +14,7 @@ review list (SOTA mentions + negated claim-wordings): 24
   REVIEW SOTA-mention :: the same investigators on an outcome-known split—not independent confirmation, SOTA, a paired experiment, or equality of architecture, loss, schedule, or tuning bu
   REVIEW SOTA-mention :: solation,equal-tuning evidence,apaired experiment, independent confirmation, or SOTA. The public graph recomputes released aggregate vectors and Welch arithmetic an
   REVIEW SOTA-mention :: ation, supply an equal-budget factorial or independent confirmation, or support SOTA. The public graph recomputes the released summary and three Welch contrasts and
-  REVIEW SOTA-mention :: ed Evaluation 23 FIR-plus-initialization/optimizer package; nothing broader, no SOTA language, no comparator statement. The filter package is thus multi-seed-suppor
+  REVIEW SOTA-mention :: contrast of the FIR-plus-initialization/optimizer package; nothing broader, no SOTA language, no comparator statement. The filter package is thus multi-seed-suppor
   REVIEW SOTA-mention :: eration 0.0279; no paired or distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA cla
   REVIEW SOTA-mention :: distributional superiority is claimed; this is not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind. The V1 VOID a
   REVIEW SOTA-mention :: not SOTA on Office_Products, not SOTA on Amazon Reviews 2023, and not a general-SOTA claim of any kind. The V1 VOID above stands unchanged as its own record (Append

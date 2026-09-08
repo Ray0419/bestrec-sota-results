@@ -1,0 +1,82 @@
+{
+  "classification": "prospective decision protocol; thresholds frozen before the new experiment results",
+  "frozen_at_local_date": "2026-08-05",
+  "purpose": "Decide whether each shortlisted cold-start research direction is good, needs more work, or should be replaced.",
+  "global_rules": {
+    "data": "Use only metadata available by the prediction cutoff; define item warmth from training interactions only.",
+    "evaluation": "Report mixed full-catalog, cold-target, warm-target, and within-cold metrics separately.",
+    "selection": "Validation selects configurations; test/outer data must not select hyperparameters.",
+    "inference": "Use paired user-level or time-block uncertainty when the number of independent units permits it.",
+    "runtime": "Record wall time and peak memory. Serialize GPU jobs and prefer cached representations.",
+    "stopping": "A hard-gate failure completes that direction as a no-go; do not rescue it with an undeclared sweep."
+  },
+  "rq1_offset_degeneracy": {
+    "minimum_scope": "At least three feasible global-time Amazon domains, followed by an impression-domain audit only if the Amazon mechanism generalizes and public data are practically obtainable.",
+    "hard_validity_gates": [
+      "The offset sweep changes no within-warm or within-cold ordering; any detected change is an implementation failure.",
+      "All candidates obey query-time availability and seen-item masking.",
+      "The outer/test period is untouched by prior, temperature, or blend selection."
+    ],
+    "go_gates": [
+      "At least two of three domains show a cold-target NDCG@10 span of at least 0.05 from the pool offset alone.",
+      "The same domains show the opposing warm-target response, with warm NDCG@10 span at least 0.02 or collapse to zero.",
+      "The direction of the cold/warm tradeoff is monotone apart from deterministic tie plateaus.",
+      "The effect is not confined to All_Beauty."
+    ],
+    "wrapper_upgrade_gate": "The validation-selected warm-safe integration policy has positive user-weighted mixed-traffic NDCG with a paired 95% interval excluding zero on at least two domains.",
+    "verdicts": {
+      "good": "Measurement contribution passes the go gates; wrapper is a method contribution only if its separate upgrade gate passes.",
+      "needs_more_work": "Measurement effect generalizes but the wrapper interval or impression-domain result is inconclusive.",
+      "new_direction": "The effect is tiny outside All_Beauty or disappears with valid availability/mixed-target evaluation."
+    }
+  },
+  "rq2_selective_fir": {
+    "screen_scope": "One fixed seed on two metadata-rich temporal domains using matched data, initialization, optimization budget, and scoring calibration.",
+    "required_arms": [
+      "split representation without FIR",
+      "semantic-only FIR",
+      "collaborative-only FIR",
+      "early-fused FIR",
+      "parameter-matched non-temporal or identity placebo"
+    ],
+    "go_gates": [
+      "Semantic-only FIR improves the predeclared primary cold metric over split-no-FIR on both domains.",
+      "Collaborative-only FIR is non-positive on average, or is materially smaller than semantic-only FIR on both domains.",
+      "Selective semantic FIR beats early-fused FIR on both domains.",
+      "The average selective-over-no-FIR cold NDCG@10 gain is at least 0.002 absolute and is not only a uniform cold-pool offset.",
+      "Mixed/warm utility remains within a predeclared 1% relative non-inferiority floor.",
+      "A shuffled-content or parameter-matched placebo does not reproduce the interaction."
+    ],
+    "confirmatory_upgrade": "Only after all screen gates pass: run at least three seeds and four temporal domains with paired user/time-block inference.",
+    "verdicts": {
+      "good": "The multi-seed upgrade reproduces the full semantic/collaborative/early-fusion interaction.",
+      "needs_more_work": "The two-domain screen passes but the multi-seed or cross-domain interaction is heterogeneous.",
+      "new_direction": "Any core screen interaction gate fails."
+    }
+  },
+  "rq3_anchored_cruot": {
+    "screen_scope": "Controlled paired manifolds with clean, outlier-contaminated, unmatched-mass, and semantic-shift regimes; out-of-sample targets only.",
+    "required_baselines": [
+      "ridge",
+      "robust ridge",
+      "Procrustes when dimensions permit",
+      "balanced OT",
+      "fixed-cost UOT",
+      "unanchored learned-cost UOT",
+      "partially anchored learned-cost UOT"
+    ],
+    "go_gates": [
+      "Anchoring prevents the permutation/non-identifiability failure seen in the unanchored arm.",
+      "Under contamination or unmatched mass, anchored CR-UOT reduces out-of-sample mapping error by at least 10% relative to the strongest non-CR-UOT baseline in at least two shifted regimes.",
+      "The inferred mass deficit predicts per-item mapping error with absolute Spearman correlation at least 0.30.",
+      "The method does not materially underperform ridge/Procrustes on clean paired data.",
+      "The optimized implementation uses landmark/block memory rather than a dense full-catalog quadratic plan."
+    ],
+    "natural_upgrade_gate": "Only after the synthetic gates pass: at least 5% relative within-cold NDCG@10 improvement on a natural strict-cold domain, with gains surviving affine score calibration.",
+    "verdicts": {
+      "good": "Synthetic gates and the natural upgrade gate pass.",
+      "needs_more_work": "Synthetic mechanism passes but natural ranking is inconclusive.",
+      "new_direction": "Synthetic recovery, mass-error diagnostic, or clean-data safety gate fails."
+    }
+  }
+}

@@ -376,6 +376,182 @@ function Get-DirectoryFileRecords {
     return $records
 }
 
+function Add-H10ACanonicalJsonString {
+    param(
+        [Parameter(Mandatory = $true)][string]$Value,
+        [Parameter(Mandatory = $true)][System.Text.StringBuilder]$Builder
+    )
+    [void]$Builder.Append('"')
+    foreach ($character in $Value.ToCharArray()) {
+        $code = [int][char]$character
+        if ($code -eq 34) {
+            [void]$Builder.Append('\"')
+            continue
+        }
+        if ($code -eq 92) {
+            [void]$Builder.Append('\\')
+            continue
+        }
+        if ($code -eq 8) {
+            [void]$Builder.Append('\b')
+            continue
+        }
+        if ($code -eq 9) {
+            [void]$Builder.Append('\t')
+            continue
+        }
+        if ($code -eq 10) {
+            [void]$Builder.Append('\n')
+            continue
+        }
+        if ($code -eq 12) {
+            [void]$Builder.Append('\f')
+            continue
+        }
+        if ($code -eq 13) {
+            [void]$Builder.Append('\r')
+            continue
+        }
+        if ($code -ge 32 -and $code -le 126) {
+            [void]$Builder.Append([char]$character)
+            continue
+        }
+        [void]$Builder.Append('\u')
+        [void]$Builder.Append(
+            $code.ToString('x4', [System.Globalization.CultureInfo]::InvariantCulture)
+        )
+    }
+    [void]$Builder.Append('"')
+}
+
+function Add-H10ACanonicalJsonValue {
+    param(
+        [AllowNull()]$Value,
+        [Parameter(Mandatory = $true)][System.Text.StringBuilder]$Builder,
+        [Parameter(Mandatory = $true)][int]$Depth
+    )
+    if ($Depth -gt 100) {
+        throw 'Canonical JSON nesting exceeds 100 levels.'
+    }
+    if ($null -eq $Value) {
+        [void]$Builder.Append('null')
+        return
+    }
+    if ($Value -is [string]) {
+        Add-H10ACanonicalJsonString -Value $Value -Builder $Builder
+        return
+    }
+    if ($Value -is [bool]) {
+        [void]$Builder.Append($(if ($Value) { 'true' } else { 'false' }))
+        return
+    }
+    if ($Value -is [sbyte] -or $Value -is [byte] -or
+        $Value -is [int16] -or $Value -is [uint16] -or
+        $Value -is [int32] -or $Value -is [uint32] -or
+        $Value -is [int64] -or $Value -is [uint64]) {
+        [void]$Builder.Append(
+            ([System.IFormattable]$Value).ToString(
+                $null, [System.Globalization.CultureInfo]::InvariantCulture
+            )
+        )
+        return
+    }
+    if ($Value -is [double]) {
+        if ([double]::IsNaN($Value) -or [double]::IsInfinity($Value)) {
+            throw 'Nonfinite Double is forbidden in canonical JSON.'
+        }
+        throw 'Floating-point Double is outside the H10A canonical JSON value domain.'
+    }
+    if ($Value -is [single]) {
+        if ([single]::IsNaN($Value) -or [single]::IsInfinity($Value)) {
+            throw 'Nonfinite Single is forbidden in canonical JSON.'
+        }
+        throw 'Floating-point Single is outside the H10A canonical JSON value domain.'
+    }
+    if ($Value -is [decimal]) {
+        throw 'Decimal is outside the H10A canonical JSON value domain.'
+    }
+    if ($Value -is [System.Collections.IDictionary]) {
+        [string[]]$keys = @()
+        foreach ($key in $Value.Keys) {
+            if ($key -isnot [string]) {
+                throw 'Canonical JSON dictionary keys must be strings.'
+            }
+            $keys += [string]$key
+        }
+        [Array]::Sort($keys, [System.StringComparer]::Ordinal)
+        [void]$Builder.Append('{')
+        $first = $true
+        foreach ($key in $keys) {
+            if (-not $first) { [void]$Builder.Append(',') }
+            $first = $false
+            Add-H10ACanonicalJsonString -Value $key -Builder $Builder
+            [void]$Builder.Append(':')
+            Add-H10ACanonicalJsonValue `
+                -Value $Value[$key] -Builder $Builder -Depth ($Depth + 1)
+        }
+        [void]$Builder.Append('}')
+        return
+    }
+    if ($Value -is [System.Management.Automation.PSCustomObject]) {
+        $properties = @($Value.PSObject.Properties)
+        [string[]]$keys = @()
+        foreach ($property in $properties) {
+            if ($property.MemberType -ne
+                [System.Management.Automation.PSMemberTypes]::NoteProperty) {
+                throw "Unsupported canonical JSON property type: $($property.MemberType)"
+            }
+            $keys += [string]$property.Name
+        }
+        [Array]::Sort($keys, [System.StringComparer]::Ordinal)
+        [void]$Builder.Append('{')
+        $first = $true
+        foreach ($key in $keys) {
+            if (-not $first) { [void]$Builder.Append(',') }
+            $first = $false
+            $property = $null
+            foreach ($candidate in $properties) {
+                if ([string]::Equals(
+                    [string]$candidate.Name, $key,
+                    [System.StringComparison]::Ordinal
+                )) {
+                    $property = $candidate
+                    break
+                }
+            }
+            if ($null -eq $property) {
+                throw "Canonical JSON property disappeared: $key"
+            }
+            Add-H10ACanonicalJsonString -Value $key -Builder $Builder
+            [void]$Builder.Append(':')
+            Add-H10ACanonicalJsonValue `
+                -Value $property.Value -Builder $Builder -Depth ($Depth + 1)
+        }
+        [void]$Builder.Append('}')
+        return
+    }
+    if ($Value -is [System.Collections.IList]) {
+        [void]$Builder.Append('[')
+        $first = $true
+        foreach ($item in $Value) {
+            if (-not $first) { [void]$Builder.Append(',') }
+            $first = $false
+            Add-H10ACanonicalJsonValue `
+                -Value $item -Builder $Builder -Depth ($Depth + 1)
+        }
+        [void]$Builder.Append(']')
+        return
+    }
+    throw "Unsupported canonical JSON value type: $($Value.GetType().FullName)"
+}
+
+function ConvertTo-H10ACanonicalJson {
+    param([AllowNull()]$Value)
+    $builder = New-Object System.Text.StringBuilder
+    Add-H10ACanonicalJsonValue -Value $Value -Builder $builder -Depth 0
+    return $builder.ToString()
+}
+
 function Write-ExclusiveJson {
     param(
         [Parameter(Mandatory = $true)][string]$Path,
@@ -397,7 +573,7 @@ function Write-ExclusiveJson {
             [System.IO.FileShare]::None
         )
         $created = $true
-        $json = ($Value | ConvertTo-Json -Depth 40 -Compress) + "`n"
+        $json = (ConvertTo-H10ACanonicalJson -Value $Value) + [string][char]10
         $bytes = (New-Object System.Text.UTF8Encoding($false)).GetBytes($json)
         $stream.Write($bytes, 0, $bytes.Length)
         $stream.Flush($true)
@@ -1133,7 +1309,7 @@ function Open-OuterLock {
 
 function Write-HeldLockOwner {
     param([System.IO.FileStream]$Stream, $Owner)
-    $json = ($Owner | ConvertTo-Json -Depth 30 -Compress) + [string][char]10
+    $json = (ConvertTo-H10ACanonicalJson -Value $Owner) + [string][char]10
     $bytes = (New-Object System.Text.UTF8Encoding($false)).GetBytes($json)
     $Stream.Write($bytes, 0, $bytes.Length)
     $Stream.Flush($true)

@@ -1,0 +1,152 @@
+{
+ "run": "results_K5_text_k0_MI_seed20260740.json",
+ "category": "Musical_Instruments",
+ "n_cold_items": 3121,
+ "n_items": 24587,
+ "arms": {
+  "stock_plus_offset": {
+   "score_shift_cold_minus_warm": -0.3772517577209304,
+   "by_offset": {
+    "0.0": {
+     "cold_full_ndcg10": 0.0,
+     "warm_full_ndcg10": 0.04334881446148368,
+     "cold_within_ndcg10": 0.022600222509938924,
+     "cold_within_auc": 0.7387961421837183,
+     "cold_within_mrr": 0.022467956898219756,
+     "cold_full_auc": 0.5140463690460495,
+     "n_cold": 11662,
+     "n_warm": 45777
+    },
+    "0.5": {
+     "cold_full_ndcg10": 0.0,
+     "warm_full_ndcg10": 0.04334881446148368,
+     "cold_within_ndcg10": 0.022600222509938924,
+     "cold_within_auc": 0.7387961421837183,
+     "cold_within_mrr": 0.022467956898219756,
+     "cold_full_auc": 0.632586191130265,
+     "n_cold": 11662,
+     "n_warm": 45777
+    },
+    "1.0": {
+     "cold_full_ndcg10": 0.0,
+     "warm_full_ndcg10": 0.04334881446148368,
+     "cold_within_ndcg10": 0.022600222509938924,
+     "cold_within_auc": 0.7387961696656403,
+     "cold_within_mrr": 0.02246795710149237,
+     "cold_full_auc": 0.7329184527034069,
+     "n_cold": 11662,
+     "n_warm": 45777
+    },
+    "2.0": {
+     "cold_full_ndcg10": 0.0,
+     "warm_full_ndcg10": 0.04334881446148368,
+     "cold_within_ndcg10": 0.022600222509938924,
+     "cold_within_auc": 0.7387961971475624,
+     "cold_within_mrr": 0.022467957134149952,
+     "cold_full_auc": 0.86573256063862,
+     "n_cold": 11662,
+     "n_warm": 45777
+    },
+    "4.0": {
+     "cold_full_ndcg10": 0.0,
+     "warm_full_ndcg10": 0.04334881446148368,
+     "cold_within_ndcg10": 0.022600222509938924,
+     "cold_within_auc": 0.7387962521165174,
+     "cold_within_mrr": 0.02246795735734753,
+     "cold_full_auc": 0.9535335073992801,
+     "n_cold": 11662,
+     "n_warm": 45777
+    },
+    "8.0": {
+     "cold_full_ndcg10": 0.021215360194490655,
+     "warm_full_ndcg10": 0.009452718467546988,
+     "cold_within_ndcg10": 0.022600222509938924,
+     "cold_within_auc": 0.7387963620544277,
+     "cold_within_mrr": 0.022467957678023728,
+     "cold_full_auc": 0.9668163933847601,
+     "n_cold": 11662,
+     "n_warm": 45777
+    }
+   }
+  },
+  "knn_imputed_plus_offset": {
+   "score_shift_cold_minus_warm": 1.5707279053409542,
+   "by_offset": {
+    "0.0": {
+     "cold_full_ndcg10": 0.014586696637942275,
+     "warm_full_ndcg10": 0.029022670401932488,
+     "cold_within_ndcg10": 0.023402443677928063,
+     "cold_within_auc": 0.7747447260952062,
+     "cold_within_mrr": 0.023851168687292482,
+     "cold_full_auc": 0.9101464092843918,
+     "n_cold": 11662,
+     "n_warm": 45777
+    },
+    "0.5": {
+     "cold_full_ndcg10": 0.01913021621410116,
+     "warm_full_ndcg10": 0.02006573248631411,
+     "cold_within_ndcg10": 0.023402443677928063,
+     "cold_within_auc": 0.7747447535771281,
+     "cold_within_mrr": 0.023851170021666424,
+     "cold_full_auc": 0.9303149418987473,
+     "n_cold": 11662,
+     "n_warm": 45777
+    },
+    "1.0": {
+     "cold_full_ndcg10": 0.021346685272959163,
+     "warm_full_ndcg10": 0.012226472770953956,
+     "cold_within_ndcg10": 0.023402443677928063,
+     "cold_within_auc": 0.7747447535771281,
+     "cold_within_mrr": 0.023851170021666424,
+     "cold_full_auc": 0.9445885622395064,
+     "n_cold": 11662,
+     "n_warm": 45777
+    },
+    "2.0": {
+     "cold_full_ndcg10": 0.02298946110549257,
+     "warm_full_ndcg10": 0.0034121520686910523,
+     "cold_within_ndcg10": 0.023402443677928063,
+     "cold_within_auc": 0.7747447535771281,
+     "cold_within_mrr": 0.023851170021666424,
+     "cold_full_auc": 0.960753906787188,
+     "n_cold": 11662,
+     "n_warm": 45777
+    },
+    "4.0": {
+     "cold_full_ndcg10": 0.023366072424851156,
+     "warm_full_ndcg10": 0.0007188013634201604,
+     "cold_within_ndcg10": 0.023402443677928063,
+     "cold_within_auc": 0.7747447810590502,
+     "cold_within_mrr": 0.023851170064401288,
+     "cold_full_auc": 0.9700307688292336,
+     "n_cold": 11662,
+     "n_warm": 45777
+    },
+    "8.0": {
+     "cold_full_ndcg10": 0.023402443677928063,
+     "warm_full_ndcg10": 0.0,
+     "cold_within_ndcg10": 0.023402443677928063,
+     "cold_within_auc": 0.7747448085409723,
+     "cold_within_mrr": 0.023851170088314246,
+     "cold_full_auc": 0.9714064224417266,
+     "n_cold": 11662,
+     "n_warm": 45777
+    }
+   }
+  }
+ },
+ "decisive": {
+  "imputation_cold_gain_full": 0.014586696637942275,
+  "imputation_warm_cost_full": -0.01432614405955119,
+  "imputation_within_cold_gain": 0.0008022211679891388,
+  "stock_within_cold_ndcg": 0.022600222509938924,
+  "imputed_within_cold_ndcg": 0.023402443677928063,
+  "matched_offset": 8.0,
+  "stock_within_auc": 0.7387961421837183,
+  "imputed_within_auc": 0.7747447260952062,
+  "within_auc_gain": 0.03594858391148792,
+  "stock_within_mrr": 0.022467956898219756,
+  "imputed_within_mrr": 0.023851168687292482,
+  "n_cold_pool": 3121
+ }
+}

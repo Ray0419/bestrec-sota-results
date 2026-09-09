@@ -1,0 +1,116 @@
+[
+ {
+  "file": "results_KDIALCK_text_k0f0.05_MI_seed20260736.posterior_eval.json",
+  "n_cold_targets": 2686,
+  "n_targets": 57439,
+  "p_observed": 0.04676265255314333,
+  "stock_cold_ndcg": 0.0,
+  "variants": [
+   {
+    "variant": "k0fixrdg",
+    "cold_gain": 0.0029081296472521032,
+    "warm_cost": -0.00046011506602149847,
+    "aggregate_delta": -0.00030260700878072315,
+    "breakeven_prevalence": 0.13660381153669562
+   },
+   {
+    "variant": "ebrdg_c1",
+    "cold_gain": 0.0029676231380194227,
+    "warm_cost": -0.00037674560696319335,
+    "aggregate_delta": -0.00022035405333197924,
+    "breakeven_prevalence": 0.11265073790933054
+   },
+   {
+    "variant": "ebrdg_c2",
+    "cold_gain": 0.0030973998362327456,
+    "warm_cost": -0.00040572252591085237,
+    "aggregate_delta": -0.00024190723203878454,
+    "breakeven_prevalence": 0.11581740058391406
+   },
+   {
+    "variant": "ebrdg_c4",
+    "cold_gain": 0.0032906705820107763,
+    "warm_cost": -0.00042770762614497744,
+    "aggregate_delta": -0.00025382639793581024,
+    "breakeven_prevalence": 0.1150253153933775
+   },
+   {
+    "variant": "k0knn_s0.4",
+    "cold_gain": 0.0,
+    "warm_cost": 0.0,
+    "aggregate_delta": 0.0,
+    "breakeven_prevalence": null
+   },
+   {
+    "variant": "k0knn_s0.55",
+    "cold_gain": 0.0,
+    "warm_cost": 0.0,
+    "aggregate_delta": 0.0,
+    "breakeven_prevalence": null
+   },
+   {
+    "variant": "k0knn_s0.7",
+    "cold_gain": 0.0003043668689962119,
+    "warm_cost": -1.1194140487023516e-06,
+    "aggregate_delta": 1.3165934865078173e-05,
+    "breakeven_prevalence": 0.0036643676355765193
+   },
+   {
+    "variant": "k0knn_s0.85",
+    "cold_gain": 0.005316797968441217,
+    "warm_cost": -0.00035101720810528725,
+    "aggregate_delta": -8.59751362690103e-05,
+    "breakeven_prevalence": 0.06193166099660433
+   },
+   {
+    "variant": "k0knn_s1",
+    "cold_gain": 0.025857621533428656,
+    "warm_cost": -0.00532351372207269,
+    "aggregate_delta": -0.0038654011279071125,
+    "breakeven_prevalence": 0.17072866906388381
+   },
+   {
+    "variant": "k0dev_t0.7",
+    "cold_gain": 0.0,
+    "warm_cost": 0.0,
+    "aggregate_delta": 0.0,
+    "breakeven_prevalence": null
+   },
+   {
+    "variant": "k0dev_t1",
+    "cold_gain": 0.004896699638838921,
+    "warm_cost": -0.000371694387920266,
+    "aggregate_delta": -0.00012533030853387043,
+    "breakeven_prevalence": 0.07055174423787566
+   },
+   {
+    "variant": "k0dev_t1.4",
+    "cold_gain": 0.049842821202523126,
+    "warm_cost": -0.015719914943414712,
+    "aggregate_delta": -0.01265402749258881,
+    "breakeven_prevalence": 0.23976904973006824
+   },
+   {
+    "variant": "k0orth_t1",
+    "cold_gain": 0.005051365326077567,
+    "warm_cost": -0.0005162780985684947,
+    "aggregate_delta": -0.00025592032356197786,
+    "breakeven_prevalence": 0.09272829798745863
+   },
+   {
+    "variant": "k0orth_t1.4",
+    "cold_gain": 0.036708493021470084,
+    "warm_cost": -0.011911192858636956,
+    "aggregate_delta": -0.00963760738058254,
+    "breakeven_prevalence": 0.24498703854256026
+   },
+   {
+    "variant": "k0orth_t2",
+    "cold_gain": 0.05991714309598649,
+    "warm_cost": -0.02854069313380219,
+    "aggregate_delta": -0.024404170072585725,
+    "breakeven_prevalence": 0.322647425601294
+   }
+  ]
+ }
+]

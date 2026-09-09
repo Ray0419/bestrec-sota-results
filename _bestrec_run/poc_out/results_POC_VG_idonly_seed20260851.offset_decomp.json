@@ -1,0 +1,140 @@
+{
+ "run": "results_POC_VG_idonly_seed20260851.json",
+ "category": "Video_Games",
+ "n_cold_items": 85,
+ "n_items": 25612,
+ "arms": {
+  "stock_plus_offset": {
+   "score_shift_cold_minus_warm": -0.07090891336881987,
+   "by_offset": {
+    "0.0": {
+     "cold_full_ndcg10": 0.0,
+     "warm_full_ndcg10": 0.06635719421009197,
+     "cold_within_ndcg10": 0.06202488498411317,
+     "cold_within_auc": 0.5462387765663258,
+     "cold_within_mrr": 0.06421711591436811,
+     "n_cold": 345,
+     "n_warm": 94417
+    },
+    "0.5": {
+     "cold_full_ndcg10": 0.0,
+     "warm_full_ndcg10": 0.06635719421009197,
+     "cold_within_ndcg10": 0.07600465641505476,
+     "cold_within_auc": 0.5703933667445529,
+     "cold_within_mrr": 0.07369951056721417,
+     "n_cold": 345,
+     "n_warm": 94417
+    },
+    "1.0": {
+     "cold_full_ndcg10": 0.0,
+     "warm_full_ndcg10": 0.06635719421009197,
+     "cold_within_ndcg10": 0.10572469752767812,
+     "cold_within_auc": 0.6029675547627436,
+     "cold_within_mrr": 0.09573338179700616,
+     "n_cold": 345,
+     "n_warm": 94417
+    },
+    "2.0": {
+     "cold_full_ndcg10": 0.0,
+     "warm_full_ndcg10": 0.06635719421009197,
+     "cold_within_ndcg10": 0.2407335905061252,
+     "cold_within_auc": 0.6969289119692816,
+     "cold_within_mrr": 0.2245201502211284,
+     "n_cold": 345,
+     "n_warm": 94417
+    },
+    "4.0": {
+     "cold_full_ndcg10": 0.0,
+     "warm_full_ndcg10": 0.06635719421009197,
+     "cold_within_ndcg10": 0.4477940006532531,
+     "cold_within_auc": 0.7996894368226978,
+     "cold_within_mrr": 0.42943301346908874,
+     "n_cold": 345,
+     "n_warm": 94417
+    },
+    "8.0": {
+     "cold_full_ndcg10": 0.39753553055334784,
+     "warm_full_ndcg10": 0.03865039614596947,
+     "cold_within_ndcg10": 0.6582530146059783,
+     "cold_within_auc": 0.8944789477016615,
+     "cold_within_mrr": 0.6342884853698205,
+     "n_cold": 345,
+     "n_warm": 94417
+    }
+   }
+  },
+  "knn_imputed_plus_offset": {
+   "score_shift_cold_minus_warm": 0.9935360111856973,
+   "by_offset": {
+    "0.0": {
+     "cold_full_ndcg10": 0.018558634796004364,
+     "warm_full_ndcg10": 0.06511124092106828,
+     "cold_within_ndcg10": 0.18417811860208927,
+     "cold_within_auc": 0.6639751489611639,
+     "cold_within_mrr": 0.16300011772284473,
+     "n_cold": 345,
+     "n_warm": 94417
+    },
+    "0.5": {
+     "cold_full_ndcg10": 0.030795123006986534,
+     "warm_full_ndcg10": 0.0637205319945139,
+     "cold_within_ndcg10": 0.18417811860208927,
+     "cold_within_auc": 0.6639751489611639,
+     "cold_within_mrr": 0.16300011772284473,
+     "n_cold": 345,
+     "n_warm": 94417
+    },
+    "1.0": {
+     "cold_full_ndcg10": 0.04993134486502496,
+     "warm_full_ndcg10": 0.0613563817963027,
+     "cold_within_ndcg10": 0.18417811860208927,
+     "cold_within_auc": 0.6639751489611639,
+     "cold_within_mrr": 0.16300011772284473,
+     "n_cold": 345,
+     "n_warm": 94417
+    },
+    "2.0": {
+     "cold_full_ndcg10": 0.08525700914687005,
+     "warm_full_ndcg10": 0.05334348864194866,
+     "cold_within_ndcg10": 0.18417811860208927,
+     "cold_within_auc": 0.6639751489611639,
+     "cold_within_mrr": 0.16300011772284473,
+     "n_cold": 345,
+     "n_warm": 94417
+    },
+    "4.0": {
+     "cold_full_ndcg10": 0.14606515549231266,
+     "warm_full_ndcg10": 0.030150409140543368,
+     "cold_within_ndcg10": 0.18417811860208927,
+     "cold_within_auc": 0.6639751489611639,
+     "cold_within_mrr": 0.16300011772284473,
+     "n_cold": 345,
+     "n_warm": 94417
+    },
+    "8.0": {
+     "cold_full_ndcg10": 0.18417811860208927,
+     "warm_full_ndcg10": 0.0027577683885276513,
+     "cold_within_ndcg10": 0.18417811860208927,
+     "cold_within_auc": 0.6639751489611639,
+     "cold_within_mrr": 0.16300011772284473,
+     "n_cold": 345,
+     "n_warm": 94417
+    }
+   }
+  }
+ },
+ "decisive": {
+  "imputation_cold_gain_full": 0.018558634796004364,
+  "imputation_warm_cost_full": -0.001245953289023688,
+  "imputation_within_cold_gain": 0.1221532336179761,
+  "stock_within_cold_ndcg": 0.06202488498411317,
+  "imputed_within_cold_ndcg": 0.18417811860208927,
+  "matched_offset": 8.0,
+  "stock_within_auc": 0.5462387765663258,
+  "imputed_within_auc": 0.6639751489611639,
+  "within_auc_gain": 0.11773637239483814,
+  "stock_within_mrr": 0.06421711591436811,
+  "imputed_within_mrr": 0.16300011772284473,
+  "n_cold_pool": 85
+ }
+}

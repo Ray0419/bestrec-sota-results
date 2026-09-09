@@ -1,0 +1,52 @@
+{
+ "n_capped_items": 3090,
+ "n_cap_targets": 11556,
+ "n_uncap_targets": 45883,
+ "rungs": {
+  "anchor": {
+   "cap_text_ndcg10": 0.043022909628925125,
+   "cap_id_ndcg10": 0.03788098427061258,
+   "cap_text_minus_id": 0.005141925358312545,
+   "cap_text_delta_vs_anchor": 0.0,
+   "cap_id_delta_vs_anchor": 0.0,
+   "uncap_text_ndcg10": 0.04084701359851159,
+   "uncap_id_ndcg10": 0.037475156302571026,
+   "overall_text_ndcg10": 0.04128477634729654,
+   "overall_id_ndcg10": 0.03755680375462778,
+   "gap_ci95": [
+    0.003115651649511848,
+    0.007206154914746917
+   ]
+  },
+  "k4": {
+   "cap_text_ndcg10": 0.00016025109967614132,
+   "cap_id_ndcg10": 0.000381492259144158,
+   "cap_text_minus_id": -0.00022124115946801668,
+   "cap_text_delta_vs_anchor": -0.04286265852924898,
+   "cap_id_delta_vs_anchor": -0.037499492011468426,
+   "uncap_text_ndcg10": 0.04251533357898833,
+   "uncap_id_ndcg10": 0.03704797483550281,
+   "overall_text_ndcg10": 0.0339940269209523,
+   "overall_id_ndcg10": 0.029671142497676592,
+   "gap_ci95": [
+    -0.000556737534872858,
+    5.0197194466473924e-05
+   ]
+  },
+  "k0": {
+   "cap_text_ndcg10": 0.0,
+   "cap_id_ndcg10": 0.0,
+   "cap_text_minus_id": 0.0,
+   "cap_text_delta_vs_anchor": -0.043022909628925125,
+   "cap_id_delta_vs_anchor": -0.03788098427061258,
+   "uncap_text_ndcg10": 0.04352321768802422,
+   "uncap_id_ndcg10": 0.037587368963397545,
+   "overall_text_ndcg10": 0.03476689700690498,
+   "overall_id_ndcg10": 0.030025265936864665,
+   "gap_ci95": [
+    0.0,
+    0.0
+   ]
+  }
+ }
+}

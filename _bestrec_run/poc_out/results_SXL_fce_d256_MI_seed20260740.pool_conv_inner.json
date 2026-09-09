@@ -1,0 +1,471 @@
+{
+ "run": "results_SXL_fce_d256_MI_seed20260740.json",
+ "category": "Musical_Instruments",
+ "ks": [
+  100,
+  200,
+  500,
+  1000
+ ],
+ "stride": 2,
+ "full_catalog_hit10": {
+  "k0-0": {
+   "hit": 0,
+   "n": 3845
+  },
+  "k1-2": {
+   "hit": 0,
+   "n": 2361
+  },
+  "k3-5": {
+   "hit": 9,
+   "n": 2795
+  },
+  "k6-10": {
+   "hit": 22,
+   "n": 3016
+  },
+  "k11-20": {
+   "hit": 50,
+   "n": 3097
+  },
+  "k21-50": {
+   "hit": 136,
+   "n": 3971
+  },
+  "k51-200": {
+   "hit": 285,
+   "n": 4013
+  },
+  "k201-1000000000": {
+   "hit": 496,
+   "n": 2212
+  }
+ },
+ "pool": {
+  "text": {
+   "k0-0": {
+    "100": {
+     "n": 3845,
+     "hit_forced": 0,
+     "nat_cov": 119,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 3845,
+     "hit_forced": 0,
+     "nat_cov": 190,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 3845,
+     "hit_forced": 0,
+     "nat_cov": 346,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 3845,
+     "hit_forced": 0,
+     "nat_cov": 550,
+     "hit_nat": 0
+    }
+   },
+   "k1-2": {
+    "100": {
+     "n": 2361,
+     "hit_forced": 37,
+     "nat_cov": 98,
+     "hit_nat": 3
+    },
+    "200": {
+     "n": 2361,
+     "hit_forced": 14,
+     "nat_cov": 150,
+     "hit_nat": 1
+    },
+    "500": {
+     "n": 2361,
+     "hit_forced": 4,
+     "nat_cov": 289,
+     "hit_nat": 1
+    },
+    "1000": {
+     "n": 2361,
+     "hit_forced": 1,
+     "nat_cov": 466,
+     "hit_nat": 0
+    }
+   },
+   "k3-5": {
+    "100": {
+     "n": 2795,
+     "hit_forced": 150,
+     "nat_cov": 125,
+     "hit_nat": 9
+    },
+    "200": {
+     "n": 2795,
+     "hit_forced": 82,
+     "nat_cov": 203,
+     "hit_nat": 10
+    },
+    "500": {
+     "n": 2795,
+     "hit_forced": 39,
+     "nat_cov": 360,
+     "hit_nat": 7
+    },
+    "1000": {
+     "n": 2795,
+     "hit_forced": 23,
+     "nat_cov": 529,
+     "hit_nat": 11
+    }
+   },
+   "k6-10": {
+    "100": {
+     "n": 3016,
+     "hit_forced": 273,
+     "nat_cov": 137,
+     "hit_nat": 30
+    },
+    "200": {
+     "n": 3016,
+     "hit_forced": 156,
+     "nat_cov": 228,
+     "hit_nat": 28
+    },
+    "500": {
+     "n": 3016,
+     "hit_forced": 80,
+     "nat_cov": 406,
+     "hit_nat": 28
+    },
+    "1000": {
+     "n": 3016,
+     "hit_forced": 55,
+     "nat_cov": 596,
+     "hit_nat": 26
+    }
+   },
+   "k11-20": {
+    "100": {
+     "n": 3097,
+     "hit_forced": 551,
+     "nat_cov": 138,
+     "hit_nat": 56
+    },
+    "200": {
+     "n": 3097,
+     "hit_forced": 331,
+     "nat_cov": 213,
+     "hit_nat": 54
+    },
+    "500": {
+     "n": 3097,
+     "hit_forced": 179,
+     "nat_cov": 394,
+     "hit_nat": 53
+    },
+    "1000": {
+     "n": 3097,
+     "hit_forced": 128,
+     "nat_cov": 595,
+     "hit_nat": 49
+    }
+   },
+   "k21-50": {
+    "100": {
+     "n": 3971,
+     "hit_forced": 1103,
+     "nat_cov": 171,
+     "hit_nat": 110
+    },
+    "200": {
+     "n": 3971,
+     "hit_forced": 762,
+     "nat_cov": 272,
+     "hit_nat": 115
+    },
+    "500": {
+     "n": 3971,
+     "hit_forced": 444,
+     "nat_cov": 507,
+     "hit_nat": 128
+    },
+    "1000": {
+     "n": 3971,
+     "hit_forced": 333,
+     "nat_cov": 758,
+     "hit_nat": 128
+    }
+   },
+   "k51-200": {
+    "100": {
+     "n": 4013,
+     "hit_forced": 1640,
+     "nat_cov": 171,
+     "hit_nat": 124
+    },
+    "200": {
+     "n": 4013,
+     "hit_forced": 1249,
+     "nat_cov": 277,
+     "hit_nat": 170
+    },
+    "500": {
+     "n": 4013,
+     "hit_forced": 843,
+     "nat_cov": 511,
+     "hit_nat": 238
+    },
+    "1000": {
+     "n": 4013,
+     "hit_forced": 614,
+     "nat_cov": 741,
+     "hit_nat": 241
+    }
+   },
+   "k201-1000000000": {
+    "100": {
+     "n": 2212,
+     "hit_forced": 1583,
+     "nat_cov": 86,
+     "hit_nat": 84
+    },
+    "200": {
+     "n": 2212,
+     "hit_forced": 1382,
+     "nat_cov": 140,
+     "hit_nat": 123
+    },
+    "500": {
+     "n": 2212,
+     "hit_forced": 1106,
+     "nat_cov": 257,
+     "hit_nat": 177
+    },
+    "1000": {
+     "n": 2212,
+     "hit_forced": 919,
+     "nat_cov": 411,
+     "hit_nat": 238
+    }
+   }
+  },
+  "pop": {
+   "k0-0": {
+    "100": {
+     "n": 3845,
+     "hit_forced": 2,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 3845,
+     "hit_forced": 0,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 3845,
+     "hit_forced": 0,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 3845,
+     "hit_forced": 0,
+     "nat_cov": 0,
+     "hit_nat": 0
+    }
+   },
+   "k1-2": {
+    "100": {
+     "n": 2361,
+     "hit_forced": 51,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 2361,
+     "hit_forced": 35,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 2361,
+     "hit_forced": 24,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 2361,
+     "hit_forced": 10,
+     "nat_cov": 0,
+     "hit_nat": 0
+    }
+   },
+   "k3-5": {
+    "100": {
+     "n": 2795,
+     "hit_forced": 186,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 2795,
+     "hit_forced": 141,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 2795,
+     "hit_forced": 88,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 2795,
+     "hit_forced": 51,
+     "nat_cov": 0,
+     "hit_nat": 0
+    }
+   },
+   "k6-10": {
+    "100": {
+     "n": 3016,
+     "hit_forced": 298,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 3016,
+     "hit_forced": 241,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 3016,
+     "hit_forced": 140,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 3016,
+     "hit_forced": 77,
+     "nat_cov": 0,
+     "hit_nat": 0
+    }
+   },
+   "k11-20": {
+    "100": {
+     "n": 3097,
+     "hit_forced": 432,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 3097,
+     "hit_forced": 337,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 3097,
+     "hit_forced": 221,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 3097,
+     "hit_forced": 142,
+     "nat_cov": 0,
+     "hit_nat": 0
+    }
+   },
+   "k21-50": {
+    "100": {
+     "n": 3971,
+     "hit_forced": 704,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 3971,
+     "hit_forced": 570,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 3971,
+     "hit_forced": 381,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 3971,
+     "hit_forced": 247,
+     "nat_cov": 39,
+     "hit_nat": 2
+    }
+   },
+   "k51-200": {
+    "100": {
+     "n": 4013,
+     "hit_forced": 805,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 4013,
+     "hit_forced": 669,
+     "nat_cov": 620,
+     "hit_nat": 131
+    },
+    "500": {
+     "n": 4013,
+     "hit_forced": 497,
+     "nat_cov": 2228,
+     "hit_nat": 296
+    },
+    "1000": {
+     "n": 4013,
+     "hit_forced": 384,
+     "nat_cov": 4013,
+     "hit_nat": 384
+    }
+   },
+   "k201-1000000000": {
+    "100": {
+     "n": 2212,
+     "hit_forced": 869,
+     "nat_cov": 2104,
+     "hit_nat": 840
+    },
+    "200": {
+     "n": 2212,
+     "hit_forced": 744,
+     "nat_cov": 2212,
+     "hit_nat": 744
+    },
+    "500": {
+     "n": 2212,
+     "hit_forced": 630,
+     "nat_cov": 2212,
+     "hit_nat": 630
+    },
+    "1000": {
+     "n": 2212,
+     "hit_forced": 560,
+     "nat_cov": 2212,
+     "hit_nat": 560
+    }
+   }
+  }
+ },
+ "gates": {
+  "G1": true,
+  "G2": true
+ }
+}

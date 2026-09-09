@@ -56,8 +56,9 @@ def main():
         "MI_d64 (secondary)": "results_SXL_fce_d64_MI_seed*.pool_conv.json",
         "STEAM_d256": "results_SXL_fce_d256_STEAM_seed*.pool_conv.json",
     }
-    KS = [int(x) for x in (sys.argv[1].split(",") if len(sys.argv) > 1
-                           else ["100", "200", "500", "1000"])]
+    ks_arg = (sys.argv[1] if len(sys.argv) > 1
+              and not sys.argv[1].startswith("-") else "100,200,500,1000")
+    KS = [int(x) for x in ks_arg.split(",")]
     report = {}
     c1_all = True
     for label, pat in sets.items():

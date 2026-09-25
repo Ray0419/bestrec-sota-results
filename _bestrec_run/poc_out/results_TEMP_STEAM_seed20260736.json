@@ -1,0 +1,441 @@
+{
+  "category": "Steam",
+  "config": {
+    "category": "Steam",
+    "epochs": 20,
+    "batch_size": 256,
+    "max_seq_len": 50,
+    "d_model": 64,
+    "n_layers": 4,
+    "n_heads": 2,
+    "dropout": 0.5,
+    "lr": 0.001,
+    "no_sbert": false,
+    "sbert_only": false,
+    "encoder_cache": null,
+    "mlp_adaptor": false,
+    "mlp_hidden": 300,
+    "mlp_dropout": 0.2,
+    "eval_every": 20,
+    "eval_subsample": 0,
+    "eval_stratify_head": 0.0,
+    "subsample_train_frac": 1.0,
+    "subsample_mode": "interaction",
+    "subsample_seed": 0,
+    "temporal_split": true,
+    "temporal_inner_q": 0.6,
+    "temporal_outer_q": 0.75,
+    "sampled_negs": 0,
+    "in_batch_negs": false,
+    "chunked_full_softmax": true,
+    "item_chunk": 32768,
+    "augment_factor": 1,
+    "seed": 20260736,
+    "lr_schedule": "warmup_cosine",
+    "time_bias": true,
+    "text_sim_bias": true,
+    "text_prototypes": "512",
+    "cosine_scoring": false,
+    "score_temp": 0.05,
+    "text_distill_weight": 0.0,
+    "text_init_emb": false,
+    "pos_rab": true,
+    "encoder": "hstu",
+    "proto_tau": 0.05,
+    "time_decay_kernel": false,
+    "time_decay_bases": 8,
+    "expert_heads": 0,
+    "cl_weight": 0.0,
+    "cl_mask_prob": 0.3,
+    "cl_tau": 1.0,
+    "label_smoothing": 0.2,
+    "ema_decay": 0.0,
+    "filter_fixed_avg": false,
+    "filter_no_gate": false,
+    "causal_filter": true,
+    "fir_v3": "off",
+    "fir_v3_kernel": 16,
+    "fir_v3_wd": "backbone",
+    "fir_control": "off",
+    "fir_control_kernel": 16,
+    "fir_control_groups": 8,
+    "fir_control_rank": 4,
+    "filter_kernel": 16,
+    "js_shrink": false,
+    "heat_target": false,
+    "heat_neighbors": 20,
+    "fitness_gate": false,
+    "fitness_gate_alpha": 0.0,
+    "fitness_gate_slope": 4.0,
+    "cue_fusion": false,
+    "cue_fusion_mode": "sum2",
+    "cue_fusion_nbr": 20,
+    "spectral_shrink": false,
+    "spectral_shrink_every": 1,
+    "spectral_shrink_mode": "hard",
+    "niche_share_beta": 0.0,
+    "out": "C:\\Users\\rayxc\\Documents\\R\\.claude\\worktrees\\brave-rhodes-0a7d09\\_bestrec_run\\poc_out\\results_TEMP_STEAM_seed20260736.json",
+    "split_dir": null,
+    "save_ckpt": true,
+    "no_test_eval": false,
+    "sequester_test_load": false,
+    "conn_gate": false,
+    "cold_item_frac": 0.0,
+    "cold_item_seed": 1,
+    "cold_synth_knn": 0,
+    "cold_synth_temp": 0.07,
+    "cold_synth_norm": false,
+    "cold_id_drop": false,
+    "zfusion_eval": false,
+    "zfusion_weight": 0.5,
+    "zfusion_sweep": "",
+    "credibility_route": false,
+    "cred_k": 2.0,
+    "cred_rank_fusion": false,
+    "rrf_c": 60.0,
+    "cred_route_train": false,
+    "dual_head_decorr": 0.0,
+    "decorr_mode": "pearson",
+    "krige_cold": false,
+    "krige_nugget": 0.01
+  },
+  "n_users": 334325,
+  "n_items": 12012,
+  "n_params": 5552447,
+  "n_trainable_params": 939455,
+  "fir_control_trainable_params": 0,
+  "peak_cuda_memory_bytes": 869496320,
+  "total_wall_time_s": 488.1566677093506,
+  "provenance": {
+    "created_at": "2026-08-12T01:09:36.550926+10:00",
+    "argv": [
+      "C:\\Users\\rayxc\\Documents\\R\\.claude\\worktrees\\brave-rhodes-0a7d09\\_bestrec_run\\run_sasrec_sbert_temporal.py",
+      "Steam",
+      "--epochs",
+      "20",
+      "--batch-size",
+      "256",
+      "--d-model",
+      "64",
+      "--n-layers",
+      "4",
+      "--n-heads",
+      "2",
+      "--dropout",
+      "0.5",
+      "--encoder",
+      "hstu",
+      "--chunked-full-softmax",
+      "--item-chunk",
+      "32768",
+      "--time-bias",
+      "--pos-rab",
+      "--label-smoothing",
+      "0.2",
+      "--causal-filter",
+      "--filter-kernel",
+      "16",
+      "--text-sim-bias",
+      "--text-prototypes",
+      "512",
+      "--lr-schedule",
+      "warmup_cosine",
+      "--eval-every",
+      "20",
+      "--temporal-split",
+      "--temporal-inner-q",
+      "0.60",
+      "--temporal-outer-q",
+      "0.75",
+      "--save-ckpt",
+      "--seed",
+      "20260736",
+      "--out",
+      "C:\\Users\\rayxc\\Documents\\R\\.claude\\worktrees\\brave-rhodes-0a7d09\\_bestrec_run\\poc_out\\results_TEMP_STEAM_seed20260736.json"
+    ],
+    "hostname": "DESKTOP-05J4CQ4",
+    "python": "3.12.13",
+    "torch": "2.11.0+cu128",
+    "cuda_device": "NVIDIA GeForce RTX 5060 Ti",
+    "n_interactions": {
+      "train": 2524999,
+      "valid": 167834,
+      "test": 193533
+    },
+    "data_sha256": {
+      "train_csv": "cbcf86cf48a6cbab4b9496cd71186206462ac6e01bc08f5addb68756b867c3f8",
+      "valid_csv": "2e658263c24be1e2f0f571b96ea9033aef2b42019d96de7dae1479e7ae52844d",
+      "test_csv": "e8531f35a25ea669dfd492c8919d6bc35868e5243822435249aa9259e0be871a",
+      "text_cache": "4814d8b0fac1c73dd175ae7b6eeb21774f51672dfc483213c3d3d2d50b2c2ad4"
+    },
+    "best_test_epoch": 20,
+    "git_commit": "6dbf6b6882f4532ba30ba53cc3329bdfe2388b4a",
+    "git_branch": "codex/cleanresearchwithskill",
+    "git_dirty_tracked": true,
+    "code_sha256": {
+      "run_sasrec_sbert.py": "9692872c0ba260152e82a9780405b734c4545f6f1d3e33fa5fc02658fa6d6744",
+      "run_sota_confirm_v2.sh": "0c7fa2a4e58e0d442c4a6c3af510c5d62bcd5b238bfe5346ea060bc742fa1b1a",
+      "summarize_sota_confirm_v2.py": "669d9b4a8f91b3b3fc5608708db8a277a79241fdf2d3b4070803a42b3e206b1c"
+    },
+    "user_records_path": "results_TEMP_STEAM_seed20260736.users.jsonl.gz",
+    "user_records_n": 193533,
+    "user_records_sha256": "10b198f95d26277f49de73b12756f8167584136d6307c75c2aff2c4af9791756"
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 7.843754937571864,
+      "epoch_time_s": 20.814608335494995
+    },
+    {
+      "epoch": 2,
+      "train_loss": 7.37279198070825,
+      "epoch_time_s": 20.85243535041809
+    },
+    {
+      "epoch": 3,
+      "train_loss": 7.321676222629811,
+      "epoch_time_s": 20.59123969078064
+    },
+    {
+      "epoch": 4,
+      "train_loss": 7.298999938876947,
+      "epoch_time_s": 20.595827102661133
+    },
+    {
+      "epoch": 5,
+      "train_loss": 7.285182747643114,
+      "epoch_time_s": 20.870481491088867
+    },
+    {
+      "epoch": 6,
+      "train_loss": 7.274188893841159,
+      "epoch_time_s": 20.610517501831055
+    },
+    {
+      "epoch": 7,
+      "train_loss": 7.268072366934218,
+      "epoch_time_s": 20.576504230499268
+    },
+    {
+      "epoch": 8,
+      "train_loss": 7.261573565171061,
+      "epoch_time_s": 20.695404052734375
+    },
+    {
+      "epoch": 9,
+      "train_loss": 7.25530875597132,
+      "epoch_time_s": 20.95033073425293
+    },
+    {
+      "epoch": 10,
+      "train_loss": 7.2484311367509555,
+      "epoch_time_s": 20.637393712997437
+    },
+    {
+      "epoch": 11,
+      "train_loss": 7.244194738766016,
+      "epoch_time_s": 20.566249132156372
+    },
+    {
+      "epoch": 12,
+      "train_loss": 7.2379299475850045,
+      "epoch_time_s": 20.89627695083618
+    },
+    {
+      "epoch": 13,
+      "train_loss": 7.234678488612724,
+      "epoch_time_s": 20.61210870742798
+    },
+    {
+      "epoch": 14,
+      "train_loss": 7.229438467509186,
+      "epoch_time_s": 20.576965808868408
+    },
+    {
+      "epoch": 15,
+      "train_loss": 7.226074297856625,
+      "epoch_time_s": 20.86695146560669
+    },
+    {
+      "epoch": 16,
+      "train_loss": 7.222592667170933,
+      "epoch_time_s": 20.572301149368286
+    },
+    {
+      "epoch": 17,
+      "train_loss": 7.219807659096432,
+      "epoch_time_s": 20.549854278564453
+    },
+    {
+      "epoch": 18,
+      "train_loss": 7.216754908935266,
+      "epoch_time_s": 20.57017493247986
+    },
+    {
+      "epoch": 19,
+      "train_loss": 7.215255587002099,
+      "epoch_time_s": 20.852112293243408
+    },
+    {
+      "epoch": 20,
+      "train_loss": 7.214018858193253,
+      "epoch_time_s": 20.539809465408325,
+      "val": {
+        "NDCG@10": 0.038491663049615384,
+        "HR@10": 0.07359057163625964,
+        "MRR": 0.03563018443531658,
+        "n_eval": 167834,
+        "by_popularity": {
+          "tail": {
+            "NDCG@10": 0.0,
+            "HR@10": 0.0,
+            "n": 35566,
+            "n_hit@10": 0,
+            "HR@20": 0.0,
+            "n_hit@20": 0,
+            "HR@50": 0.0,
+            "n_hit@50": 0,
+            "HR@100": 0.0,
+            "n_hit@100": 0
+          },
+          "mid": {
+            "NDCG@10": 0.0010093398214801536,
+            "HR@10": 0.002551020408163265,
+            "n": 5880,
+            "n_hit@10": 15,
+            "HR@20": 0.004931972789115646,
+            "n_hit@20": 29,
+            "HR@50": 0.01207482993197279,
+            "n_hit@50": 71,
+            "HR@100": 0.019727891156462583,
+            "n_hit@100": 116
+          },
+          "head": {
+            "NDCG@10": 0.05106714923979211,
+            "HR@10": 0.09760420293065797,
+            "n": 126388,
+            "n_hit@10": 12336,
+            "HR@20": 0.14924676393328482,
+            "n_hit@20": 18863,
+            "HR@50": 0.253410133873469,
+            "n_hit@50": 32028,
+            "HR@100": 0.36148210273127196,
+            "n_hit@100": 45687
+          }
+        }
+      },
+      "test": {
+        "NDCG@10": 0.02677038340306168,
+        "HR@10": 0.05237349702634693,
+        "MRR": 0.024822110348582338,
+        "n_eval": 193533,
+        "by_popularity": {
+          "tail": {
+            "NDCG@10": 0.0,
+            "HR@10": 0.0,
+            "n": 79252,
+            "n_hit@10": 0,
+            "HR@20": 0.0,
+            "n_hit@20": 0,
+            "HR@50": 0.0,
+            "n_hit@50": 0,
+            "HR@100": 0.0,
+            "n_hit@100": 0
+          },
+          "mid": {
+            "NDCG@10": 0.0005441569772178851,
+            "HR@10": 0.0015497869043006587,
+            "n": 5162,
+            "n_hit@10": 8,
+            "HR@20": 0.003487020534676482,
+            "n_hit@20": 18,
+            "HR@50": 0.007555211158465711,
+            "n_hit@50": 39,
+            "HR@100": 0.016853932584269662,
+            "n_hit@100": 87
+          },
+          "head": {
+            "NDCG@10": 0.04745409757080194,
+            "HR@10": 0.09281609985428751,
+            "n": 109119,
+            "n_hit@10": 10128,
+            "HR@20": 0.14409039672284388,
+            "n_hit@20": 15723,
+            "HR@50": 0.2457958742290527,
+            "n_hit@50": 26821,
+            "HR@100": 0.35084632373830404,
+            "n_hit@100": 38284
+          }
+        }
+      }
+    }
+  ],
+  "zfusion_sweep": null,
+  "best_val_NDCG10": 0.038491663049615384,
+  "best_test": {
+    "NDCG@10": 0.02677038340306168,
+    "HR@10": 0.05237349702634693,
+    "MRR": 0.024822110348582338,
+    "n_eval": 193533,
+    "by_popularity": {
+      "tail": {
+        "NDCG@10": 0.0,
+        "HR@10": 0.0,
+        "n": 79252,
+        "n_hit@10": 0,
+        "HR@20": 0.0,
+        "n_hit@20": 0,
+        "HR@50": 0.0,
+        "n_hit@50": 0,
+        "HR@100": 0.0,
+        "n_hit@100": 0
+      },
+      "mid": {
+        "NDCG@10": 0.0005441569772178851,
+        "HR@10": 0.0015497869043006587,
+        "n": 5162,
+        "n_hit@10": 8,
+        "HR@20": 0.003487020534676482,
+        "n_hit@20": 18,
+        "HR@50": 0.007555211158465711,
+        "n_hit@50": 39,
+        "HR@100": 0.016853932584269662,
+        "n_hit@100": 87
+      },
+      "head": {
+        "NDCG@10": 0.04745409757080194,
+        "HR@10": 0.09281609985428751,
+        "n": 109119,
+        "n_hit@10": 10128,
+        "HR@20": 0.14409039672284388,
+        "n_hit@20": 15723,
+        "HR@50": 0.2457958742290527,
+        "n_hit@50": 26821,
+        "HR@100": 0.35084632373830404,
+        "n_hit@100": 38284
+      }
+    }
+  },
+  "learned_niche_share_beta": null,
+  "learned_js_shrink_c": null,
+  "learned_heat_target_T": null,
+  "learned_conn_gate_alpha": null,
+  "learned_conn_gate_slope": null,
+  "spectral_effective_rank": null,
+  "spectral_bbp_rho_by_tercile": null,
+  "fir_v3": "off",
+  "fir_v3_kernel": 16,
+  "fir_v3_wd": "backbone",
+  "init_state_sha256": "f3ef560169ab09c0a19889a18cb0ad534acf26644136212d924fea2c5a10963e",
+  "best_ckpt_sha256": "d5095e1385220a20ec639208fc99d4037015a561be9e06b7ade35b635d6e38ca",
+  "fir_v3_final_l2": null,
+  "fir_v3_final_absmean_per_lag": null,
+  "fir_control": "off",
+  "fir_control_kernel": 16,
+  "backbone_init_sha256": "f3ef560169ab09c0a19889a18cb0ad534acf26644136212d924fea2c5a10963e",
+  "fir_control_final_l2": null,
+  "fir_control_alpha": null,
+  "fir_control_final_absmean_per_lag": null,
+  "fir_control_profile_axis": null
+}

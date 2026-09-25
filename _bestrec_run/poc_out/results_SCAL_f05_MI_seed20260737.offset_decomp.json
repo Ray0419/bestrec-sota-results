@@ -1,0 +1,140 @@
+{
+ "run": "results_SCAL_f05_MI_seed20260737.json",
+ "category": "Musical_Instruments",
+ "n_cold_items": 2153,
+ "n_items": 24587,
+ "arms": {
+  "stock_plus_offset": {
+   "score_shift_cold_minus_warm": -0.31472916017591424,
+   "by_offset": {
+    "0.0": {
+     "cold_full_ndcg10": 0.0,
+     "warm_full_ndcg10": 0.03364425409539556,
+     "cold_within_ndcg10": 0.027436743648174517,
+     "cold_within_auc": 0.7317199984426581,
+     "cold_within_mrr": 0.027129335718502613,
+     "n_cold": 15849,
+     "n_warm": 41590
+    },
+    "0.5": {
+     "cold_full_ndcg10": 0.0,
+     "warm_full_ndcg10": 0.03364425409539556,
+     "cold_within_ndcg10": 0.027436743648174517,
+     "cold_within_auc": 0.7317199984426581,
+     "cold_within_mrr": 0.027129335718502613,
+     "n_cold": 15849,
+     "n_warm": 41590
+    },
+    "1.0": {
+     "cold_full_ndcg10": 0.0,
+     "warm_full_ndcg10": 0.03364425409539556,
+     "cold_within_ndcg10": 0.027436743648174517,
+     "cold_within_auc": 0.7317199984426581,
+     "cold_within_mrr": 0.027129335718502613,
+     "n_cold": 15849,
+     "n_warm": 41590
+    },
+    "2.0": {
+     "cold_full_ndcg10": 0.0,
+     "warm_full_ndcg10": 0.03364425409539556,
+     "cold_within_ndcg10": 0.027436743648174517,
+     "cold_within_auc": 0.7317199984426581,
+     "cold_within_mrr": 0.027129335718502613,
+     "n_cold": 15849,
+     "n_warm": 41590
+    },
+    "4.0": {
+     "cold_full_ndcg10": 0.0,
+     "warm_full_ndcg10": 0.03364425409539556,
+     "cold_within_ndcg10": 0.027436743648174517,
+     "cold_within_auc": 0.7317200863998435,
+     "cold_within_mrr": 0.027129386580120936,
+     "n_cold": 15849,
+     "n_warm": 41590
+    },
+    "8.0": {
+     "cold_full_ndcg10": 0.024911331238374475,
+     "warm_full_ndcg10": 0.007889861203094147,
+     "cold_within_ndcg10": 0.027436743648174517,
+     "cold_within_auc": 0.7317204968742305,
+     "cold_within_mrr": 0.02712938947623945,
+     "n_cold": 15849,
+     "n_warm": 41590
+    }
+   }
+  },
+  "knn_imputed_plus_offset": {
+   "score_shift_cold_minus_warm": 1.8881924996333839,
+   "by_offset": {
+    "0.0": {
+     "cold_full_ndcg10": 0.01825368679301642,
+     "warm_full_ndcg10": 0.019807831214637417,
+     "cold_within_ndcg10": 0.02760976630623419,
+     "cold_within_auc": 0.7585886673856905,
+     "cold_within_mrr": 0.027701537199315764,
+     "n_cold": 15849,
+     "n_warm": 41590
+    },
+    "0.5": {
+     "cold_full_ndcg10": 0.022907009908277324,
+     "warm_full_ndcg10": 0.01292887442987336,
+     "cold_within_ndcg10": 0.02760976630623419,
+     "cold_within_auc": 0.7585886673856905,
+     "cold_within_mrr": 0.027701537199315764,
+     "n_cold": 15849,
+     "n_warm": 41590
+    },
+    "1.0": {
+     "cold_full_ndcg10": 0.025273650457779462,
+     "warm_full_ndcg10": 0.007889898371799658,
+     "cold_within_ndcg10": 0.02760976630623419,
+     "cold_within_auc": 0.7585886673856905,
+     "cold_within_mrr": 0.027701537199315764,
+     "n_cold": 15849,
+     "n_warm": 41590
+    },
+    "2.0": {
+     "cold_full_ndcg10": 0.026697749899451954,
+     "warm_full_ndcg10": 0.00366900515301235,
+     "cold_within_ndcg10": 0.02760976630623419,
+     "cold_within_auc": 0.7585886673856905,
+     "cold_within_mrr": 0.027701537199315764,
+     "n_cold": 15849,
+     "n_warm": 41590
+    },
+    "4.0": {
+     "cold_full_ndcg10": 0.027450395990707227,
+     "warm_full_ndcg10": 0.0019137109148585473,
+     "cold_within_ndcg10": 0.02760976630623419,
+     "cold_within_auc": 0.7585886967047524,
+     "cold_within_mrr": 0.0277015404886197,
+     "n_cold": 15849,
+     "n_warm": 41590
+    },
+    "8.0": {
+     "cold_full_ndcg10": 0.02760976630623419,
+     "warm_full_ndcg10": 0.0,
+     "cold_within_ndcg10": 0.02760976630623419,
+     "cold_within_auc": 0.7585886967047524,
+     "cold_within_mrr": 0.0277015404886197,
+     "n_cold": 15849,
+     "n_warm": 41590
+    }
+   }
+  }
+ },
+ "decisive": {
+  "imputation_cold_gain_full": 0.01825368679301642,
+  "imputation_warm_cost_full": -0.013836422880758141,
+  "imputation_within_cold_gain": 0.00017302265805967457,
+  "stock_within_cold_ndcg": 0.027436743648174517,
+  "imputed_within_cold_ndcg": 0.02760976630623419,
+  "matched_offset": 8.0,
+  "stock_within_auc": 0.7317199984426581,
+  "imputed_within_auc": 0.7585886673856905,
+  "within_auc_gain": 0.026868668943032414,
+  "stock_within_mrr": 0.027129335718502613,
+  "imputed_within_mrr": 0.027701537199315764,
+  "n_cold_pool": 2153
+ }
+}

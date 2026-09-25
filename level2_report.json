@@ -1,0 +1,231 @@
+{
+  "artifact": "cold-start measurement paper program",
+  "artifact_dir": "C:\\Users\\rayxc\\Documents\\R\\.claude\\worktrees\\brave-rhodes-0a7d09",
+  "review_version": "3.0.0",
+  "prerequisite": "No ARA layout exists; Level-2 methodology applied to the program's actual artifact set. Mapping: PAPER.md->PAPER_COLDSTART_MEASUREMENT_DRAFT.md; claims->VERIFIED_RESULTS.md; experiments->PREREG_{DOSE_RESPONSE,SCALING,TEMPORAL,STEAM}_V1.md; exploration tree->NOVELTY_AUDIT.md + MERGED_COLDSTART_AGENDA.md + in-paper corrections log; evidence->_bestrec_run/poc_out/*.json (spot-checked temporal_analysis.json, steam_family_aggregate.json outputs against draft tables: match).",
+
+  "overall": {
+    "grade": "Weak Accept",
+    "mean_score": 3.67,
+    "one_line_summary": "Exceptionally honest, fully pre-registered measurement program whose headline 'the framework predicted all three regimes' is, as currently computed, close to an arithmetic identity rather than an out-of-sample prediction - fixable with data already on disk, and the fix would make the paper stronger than the current framing.",
+    "strengths_summary": [
+      "Exploration integrity is outstanding: ten killed directions, three in-paper retractions, prereg kill criteria that actually fired, and a corrections log kept inside the paper",
+      "Every reported number is pre-registered, 5-seed-gated, CI'd with sign counts, and traceable to an artifact; the Steam transfer chapter includes a pre-declared null and a published-band sanity gate",
+      "The instruments themselves (offset-invariant within-pool AUC; offset-matched efficiency ratio) are genuinely useful, demonstrated across four methods with three distinct verdicts"
+    ],
+    "weaknesses_summary": [
+      "F01: E3/E4 'sign agreement' is near-tautological when p*, g, c and E4 are computed on the same evaluation - the crossover table currently demonstrates internal consistency, not prediction",
+      "The abstract's '~93% of measured benefit is nuisance' overstates a metric-specific decomposition that the paper's own coarse-signal result qualifies",
+      "No trained cold-start baseline anywhere in the program; the fusion arm's 'transfer is unsafe' conclusion is confounded by a single untuned weight"
+    ]
+  },
+
+  "dimensions": {
+    "D1_evidence_relevance": {
+      "score": 3,
+      "strengths": [
+        "Type-appropriate evidence throughout: improvement claims tested against the offset null model; generalization claims tested on a genuinely out-of-family dataset (Steam) with a pre-declared transfer-null",
+        "Multi-experiment support for every load-bearing claim (decomposition: 10 seed-runs over 2 pool configs; crossover: 3 datasets at n=5)"
+      ],
+      "weaknesses": [
+        "The central crossover claim's evidence is partially circular: E4 = pi_t*g - (1-pi_t)*|c| and p* is defined as the pi where that expression is zero, so when g, c, pi_t, E4 all come from the same evaluation, sign(E4) = sign(pi_t - p*) is algebra, not a tested prediction; the 3/3 'sign agreement' consistency check is guaranteed to pass"
+      ],
+      "suggestions": [
+        "Re-cast Table 5 as an out-of-sample prediction: estimate g and c (hence p*) on the inner window (events in the 0.60-0.75 quantile band, currently used only for model selection) and predict the sign of E4 measured on the outer window (>0.75). The data already exists in the per-event pipeline; a passing result upgrades the claim from consistency to genuine prediction, and a failing one is exactly the kind of finding this paper's brand can carry",
+        "Additionally report the cross-protocol stability of p* (LOO-estimated vs temporal-estimated) as secondary predictive evidence"
+      ]
+    },
+    "D2_falsifiability": {
+      "score": 4,
+      "strengths": [
+        "Every prereg contains executable kill criteria frozen before runs, and two demonstrably fired (dose-response H1 shape honesty; Steam E2 3->5 power rule)",
+        "The sqrt(N) retraction shows the criteria are enforced, not decorative"
+      ],
+      "weaknesses": [
+        "Independent testability of several endpoints requires this repository's artifacts and splits; no packaged replication kit is described in the draft"
+      ],
+      "suggestions": [
+        "Add a replication statement: seeds, split hashes, adapter script, and per-seed sidecars are sufficient for full independent recomputation; state where they live"
+      ]
+    },
+    "D3_scope_calibration": {
+      "score": 3,
+      "strengths": [
+        "Corrections log in-paper; limitations section names the backbone, arrival proxy, and 5-core caveats explicitly",
+        "VG boundary case reported as inconclusive rather than rounded up"
+      ],
+      "weaknesses": [
+        "Abstract states '~93% of ... measured cold-start benefit is this nuisance offset, not learned relevance' - but the paper's own Section 6.2 shows substantial genuine coarse signal; the 93% figure is specific to the top-10 cold-target NDCG metric and the within-pool NDCG numerator, not to 'benefit' in general",
+        "Section 6.5's 'hyperparameter transfer ... measurably unsafe' generalizes from one weight (w=0.2) on one method on one dataset",
+        "Steam E2 CI [1.18, 4.30] is reported as CONFIRMED per prereg letter, but its width deserves foreground acknowledgment"
+      ],
+      "suggestions": [
+        "Rescope the abstract sentence to 'of the cold-target top-10 metric gain'",
+        "Soften 6.5 finding 2 to 'the specific adjudicated weight transfers harmfully; tuned-transfer remains untested' or run the cheap inner-window tuning control",
+        "Report Steam E2 with its width: 'confirmed to exceed 1.0, magnitude imprecise at n=5'"
+      ]
+    },
+    "D4_argument_coherence": {
+      "score": 4,
+      "strengths": [
+        "Clean arc: degeneracy proposition -> instruments -> decomposition -> scaling law -> crossover -> practitioner procedure; the credited/claimed boundary (mechanism cited, bridge claimed) is handled carefully",
+        "Provenance and absorb-with-credit mode documented with evidence and reversibility"
+      ],
+      "weaknesses": [
+        "Section 6.5's knowledge-vs-rankability dissociation and its 'rescoring stage' implication are post-hoc interpretations inside a pre-registered framework, not labeled as exploratory",
+        "The practitioner procedure (Section 7) inherits F01: as written, step 3's guarantee is partly definitional unless p* is estimated on data disjoint from the deployment traffic being predicted"
+      ],
+      "suggestions": [
+        "Label 6.5 interpretive paragraphs as exploratory findings",
+        "Rewrite Section 7 to require estimating g, c on a calibration window and applying p* forward in time - which is also the deployment-realistic reading"
+      ]
+    },
+    "D5_exploration_integrity": {
+      "score": 5,
+      "strengths": [
+        "Genuinely exceptional: ten killed directions with named killers (prior-art hits with citations; refutations with CIs), three retractions that survived into the paper text, a documented near-tautology-grade design bug caught mid-program (multi-dose capset), and process failures (pipe-kill incident) logged with their fixes",
+        "Dead ends carry specific failure modes and transferable lessons (e.g., 'gap-hunting 0-for-10 vs apparatus-mining 3-for-3')"
+      ],
+      "weaknesses": [
+        "The exploration record is scattered across NOVELTY_AUDIT.md, MERGED_COLDSTART_AGENDA.md, VERIFIED_RESULTS.md and session memory rather than consolidated"
+      ],
+      "suggestions": [
+        "Consolidate the kill-list with one-line evidence per entry into a supplement table; reviewers at rigor-focused venues will treat it as a contribution"
+      ]
+    },
+    "D6_methodological_rigor": {
+      "score": 3,
+      "strengths": [
+        "Prereg-before-runs across four campaigns; across-seed t-intervals with sign counts; initialization-paired arms; frozen eval contracts; Steam pipeline gated against the published full-ranking band before any campaign ran",
+        "The offset null model is exactly the right baseline for the paper's question, and the family section gives the instruments a real discrimination task"
+      ],
+      "weaknesses": [
+        "No trained cold-start baseline (DropoutNet-, ALDI-, or content-init-style) appears anywhere; every method evaluated is post-hoc on one backbone family - a TOIS-level reviewer will very likely require at least one",
+        "The fusion arm confounds method class with hyperparameter choice (single transferred w, no tuned control)",
+        "All temporal E-endpoints share one backbone, one text encoder, and one imputation numerator; architecture-generality of the decomposition is asserted only by the sampled-negatives geometry check from the earlier LOO phase"
+      ],
+      "suggestions": [
+        "Add one trained baseline on MI + Steam (content-init delta is the cheapest credible choice) run through the same instruments",
+        "Tune fusion w on the inner window for Steam (hours, not days) to unconfound 6.5 finding 2",
+        "State the single-backbone threat in a dedicated threats-to-validity subsection rather than distributing it across scope notes"
+      ]
+    }
+  },
+
+  "findings": [
+    {
+      "finding_id": "F01",
+      "dimension": "D1_evidence_relevance",
+      "severity": "critical",
+      "target_file": "PAPER_COLDSTART_MEASUREMENT_DRAFT.md",
+      "target_entity": "Section 6.4 / Table 5 / Section 7",
+      "evidence_span": "the resulting criterion \u2014 compare measured p\\* to observed cold prevalence \u03c0_t \u2014 **predicted the sign of the aggregate effect in all three regimes tested**",
+      "observation": "E4 decomposes as pi_t*g - (1-pi_t)*|c|, and p* is by definition the prevalence at which this is zero; g, c, pi_t and E4 are all measured on the same outer-window evaluation, so the sign relationship and the E3/E4 agreement check hold by algebra.",
+      "reasoning": "The paper's headline claim of predictive validity is, as computed, close to an arithmetic identity. A statistics-literate reviewer will identify this within minutes, and it contaminates the practitioner procedure's framing as well. The underlying result is still valuable (the decomposition is stable across seeds and datasets, and the components vary meaningfully), but 'predicted' is not currently earned.",
+      "suggestion": "Estimate g and c on the inner window (0.60-0.75 band) per seed, form p*_inner, and test the sign of outer-window E4 against pi_t_outer vs p*_inner - a genuine temporally out-of-sample prediction using data already produced by the pipeline. Also report LOO-p* vs temporal-p* stability. Reframe Table 5 accordingly."
+    },
+    {
+      "finding_id": "F02",
+      "dimension": "D3_scope_calibration",
+      "severity": "major",
+      "target_file": "PAPER_COLDSTART_MEASUREMENT_DRAFT.md",
+      "target_entity": "Abstract / Section 6.1",
+      "evidence_span": "~93% of a standard content-imputation method's measured cold-start benefit on Amazon data is this nuisance offset, not learned relevance",
+      "observation": "The 93%/6.5% decomposition uses the within-pool NDCG@10 numerator, and the paper's own Section 6.2 establishes both that this metric is top-weighted relative to the genuine coarse signal (AUC gains 4x larger in relative terms) and that the two can disagree in sign at small pools.",
+      "reasoning": "As phrased, the abstract claims most of the method's benefit is fake; the paper's own instruments show large genuine coarse relevance. The defensible claim is metric-specific.",
+      "suggestion": "Rescope to 'of the cold-target top-10 ranking gain' and add one sentence noting the coarse-signal qualification, pointing to 6.2."
+    },
+    {
+      "finding_id": "F03",
+      "dimension": "D6_methodological_rigor",
+      "severity": "major",
+      "target_file": "PAPER_COLDSTART_MEASUREMENT_DRAFT.md",
+      "target_entity": "Section 6.5",
+      "evidence_span": "the field's habit of transferring fusion weights across domains is measurably unsafe",
+      "observation": "The fusion arm tests exactly one weight (w=0.2) transferred from Amazon, with no Steam-tuned fusion control; the harm could be attributable to the weight rather than to transfer per se.",
+      "reasoning": "A single-configuration negative cannot support a claim about 'the field's habit'; the confound is the kind this paper elsewhere prosecutes in others.",
+      "suggestion": "Either tune w on the Steam inner window and report both cells, or soften to a single-configuration observation."
+    },
+    {
+      "finding_id": "F04",
+      "dimension": "D6_methodological_rigor",
+      "severity": "major",
+      "target_file": "PAPER_COLDSTART_MEASUREMENT_DRAFT.md",
+      "target_entity": "Section 6.5 / TODO",
+      "observation": "No trained cold-start method (DropoutNet-, ALDI-, content-init-style) is evaluated anywhere in the program; all family members are post-hoc table edits or score fusions on one backbone.",
+      "reasoning": "For a venue at TOIS's bar, 'we measured the field's problem but ran none of the field's methods' is the most probable major-revision demand; deferring until a reviewer asks costs a review cycle.",
+      "suggestion": "Add one trained baseline (content-init + delta is cheapest and directly relevant) on MI and Steam, run through the identical instrument battery, before submission."
+    },
+    {
+      "finding_id": "F05",
+      "dimension": "D3_scope_calibration",
+      "severity": "minor",
+      "target_file": "PAPER_COLDSTART_MEASUREMENT_DRAFT.md",
+      "target_entity": "Section 6.4",
+      "evidence_span": "E2 (efficiency ratio) confirmed on all three (Steam: +0.113 \u00b1 0.012; 2.74 CI [1.18, 4.30])",
+      "observation": "Steam's E2 interval spans 1.18 to 4.30; 'confirmed' is per-prereg-letter accurate but the magnitude is very imprecise.",
+      "reasoning": "Reporting emphasis should match precision; a reviewer may read 'confirmed 2.74' as a magnitude claim.",
+      "suggestion": "Foreground the width: 'exceeds 1.0 with 95% confidence; magnitude imprecise at n=5.'"
+    },
+    {
+      "finding_id": "F06",
+      "dimension": "D6_methodological_rigor",
+      "severity": "minor",
+      "target_file": "PAPER_COLDSTART_MEASUREMENT_DRAFT.md",
+      "target_entity": "Section 6.6",
+      "observation": "Single backbone family, single text encoder, single imputation numerator across all temporal endpoints; stated in scope notes but not organized as a threats-to-validity treatment.",
+      "reasoning": "Distributed caveats read as boilerplate; a consolidated subsection signals the authors weighed them.",
+      "suggestion": "Add a threats-to-validity subsection covering backbone, encoder, arrival-proxy, and 5-core-global threats with the existing mitigations."
+    },
+    {
+      "finding_id": "F07",
+      "dimension": "D4_argument_coherence",
+      "severity": "minor",
+      "target_file": "PAPER_COLDSTART_MEASUREMENT_DRAFT.md",
+      "target_entity": "Section 6.5",
+      "evidence_span": "the correct engineering response to ridge is a rescoring stage, not abandonment",
+      "observation": "The knowledge-vs-rankability dissociation and its engineering implication were not pre-registered hypotheses; they are post-hoc readings of the family table.",
+      "reasoning": "The paper's credibility rests on the prereg boundary being visible; unlabeled post-hoc interpretation inside a prereg framework blurs it.",
+      "suggestion": "Mark the interpretive paragraphs of 6.5 as exploratory."
+    },
+    {
+      "finding_id": "F08",
+      "dimension": "D5_exploration_integrity",
+      "severity": "suggestion",
+      "target_file": "NOVELTY_AUDIT.md",
+      "observation": "The ten-direction kill list, the corrections, and the process lessons are spread over four documents plus session memory.",
+      "reasoning": "Consolidated, this record is a reviewable contribution at a rigor venue; scattered, it is invisible.",
+      "suggestion": "One supplement table: direction, killer (citation or CI), date, artifact."
+    },
+    {
+      "finding_id": "F09",
+      "dimension": "D2_falsifiability",
+      "severity": "suggestion",
+      "target_file": "PAPER_COLDSTART_MEASUREMENT_DRAFT.md",
+      "target_entity": "Section 9",
+      "observation": "Replication requires the repo's splits, seeds, adapter, and sidecars; the draft does not state a packaging plan.",
+      "reasoning": "TOIS increasingly weighs artifact completeness; this repo's culture is a competitive advantage worth surfacing.",
+      "suggestion": "Add an artifact-availability statement listing the exact recomputation path per table."
+    }
+  ],
+
+  "questions_for_authors": [
+    "When p* is estimated on the inner window and applied to the outer window, does the three-regime prediction survive? (This is the paper's make-or-break analysis and it is runnable today.)",
+    "Is the 93% offset share stable if the genuine-share numerator uses within-pool AUC scaled appropriately instead of within-pool NDCG@10?",
+    "Would a Steam-tuned fusion weight rescue the fusion arm, and if so, does the 'transfer unsafe' finding invert into a 'tuning is cheap and necessary' recommendation?",
+    "What fraction of the warm cost on MI (-38%) versus Steam (-1.2%) is explained by cold-pool catalog share versus score-scale differences - i.e., is p*'s cross-dataset variation itself predictable?"
+  ],
+
+  "read_order": [
+    "PAPER_COLDSTART_MEASUREMENT_DRAFT.md",
+    "VERIFIED_RESULTS.md",
+    "PREREG_TEMPORAL_V1.md",
+    "PREREG_STEAM_V1.md",
+    "PREREG_SCALING_V1.md",
+    "PREREG_DOSE_RESPONSE_V1.md",
+    "NOVELTY_AUDIT.md",
+    "MERGED_COLDSTART_AGENDA.md",
+    "_bestrec_run/poc_out/temporal_analysis.json",
+    "_bestrec_run/poc_out/steam_family_aggregate.json (via aggregate output)"
+  ]
+}

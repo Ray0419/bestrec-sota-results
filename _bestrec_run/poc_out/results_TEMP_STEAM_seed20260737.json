@@ -1,0 +1,441 @@
+{
+  "category": "Steam",
+  "config": {
+    "category": "Steam",
+    "epochs": 20,
+    "batch_size": 256,
+    "max_seq_len": 50,
+    "d_model": 64,
+    "n_layers": 4,
+    "n_heads": 2,
+    "dropout": 0.5,
+    "lr": 0.001,
+    "no_sbert": false,
+    "sbert_only": false,
+    "encoder_cache": null,
+    "mlp_adaptor": false,
+    "mlp_hidden": 300,
+    "mlp_dropout": 0.2,
+    "eval_every": 20,
+    "eval_subsample": 0,
+    "eval_stratify_head": 0.0,
+    "subsample_train_frac": 1.0,
+    "subsample_mode": "interaction",
+    "subsample_seed": 0,
+    "temporal_split": true,
+    "temporal_inner_q": 0.6,
+    "temporal_outer_q": 0.75,
+    "sampled_negs": 0,
+    "in_batch_negs": false,
+    "chunked_full_softmax": true,
+    "item_chunk": 32768,
+    "augment_factor": 1,
+    "seed": 20260737,
+    "lr_schedule": "warmup_cosine",
+    "time_bias": true,
+    "text_sim_bias": true,
+    "text_prototypes": "512",
+    "cosine_scoring": false,
+    "score_temp": 0.05,
+    "text_distill_weight": 0.0,
+    "text_init_emb": false,
+    "pos_rab": true,
+    "encoder": "hstu",
+    "proto_tau": 0.05,
+    "time_decay_kernel": false,
+    "time_decay_bases": 8,
+    "expert_heads": 0,
+    "cl_weight": 0.0,
+    "cl_mask_prob": 0.3,
+    "cl_tau": 1.0,
+    "label_smoothing": 0.2,
+    "ema_decay": 0.0,
+    "filter_fixed_avg": false,
+    "filter_no_gate": false,
+    "causal_filter": true,
+    "fir_v3": "off",
+    "fir_v3_kernel": 16,
+    "fir_v3_wd": "backbone",
+    "fir_control": "off",
+    "fir_control_kernel": 16,
+    "fir_control_groups": 8,
+    "fir_control_rank": 4,
+    "filter_kernel": 16,
+    "js_shrink": false,
+    "heat_target": false,
+    "heat_neighbors": 20,
+    "fitness_gate": false,
+    "fitness_gate_alpha": 0.0,
+    "fitness_gate_slope": 4.0,
+    "cue_fusion": false,
+    "cue_fusion_mode": "sum2",
+    "cue_fusion_nbr": 20,
+    "spectral_shrink": false,
+    "spectral_shrink_every": 1,
+    "spectral_shrink_mode": "hard",
+    "niche_share_beta": 0.0,
+    "out": "C:\\Users\\rayxc\\Documents\\R\\.claude\\worktrees\\brave-rhodes-0a7d09\\_bestrec_run\\poc_out\\results_TEMP_STEAM_seed20260737.json",
+    "split_dir": null,
+    "save_ckpt": true,
+    "no_test_eval": false,
+    "sequester_test_load": false,
+    "conn_gate": false,
+    "cold_item_frac": 0.0,
+    "cold_item_seed": 1,
+    "cold_synth_knn": 0,
+    "cold_synth_temp": 0.07,
+    "cold_synth_norm": false,
+    "cold_id_drop": false,
+    "zfusion_eval": false,
+    "zfusion_weight": 0.5,
+    "zfusion_sweep": "",
+    "credibility_route": false,
+    "cred_k": 2.0,
+    "cred_rank_fusion": false,
+    "rrf_c": 60.0,
+    "cred_route_train": false,
+    "dual_head_decorr": 0.0,
+    "decorr_mode": "pearson",
+    "krige_cold": false,
+    "krige_nugget": 0.01
+  },
+  "n_users": 334325,
+  "n_items": 12012,
+  "n_params": 5552447,
+  "n_trainable_params": 939455,
+  "fir_control_trainable_params": 0,
+  "peak_cuda_memory_bytes": 847714304,
+  "total_wall_time_s": 490.0745439529419,
+  "provenance": {
+    "created_at": "2026-08-12T01:17:48.913724+10:00",
+    "argv": [
+      "C:\\Users\\rayxc\\Documents\\R\\.claude\\worktrees\\brave-rhodes-0a7d09\\_bestrec_run\\run_sasrec_sbert_temporal.py",
+      "Steam",
+      "--epochs",
+      "20",
+      "--batch-size",
+      "256",
+      "--d-model",
+      "64",
+      "--n-layers",
+      "4",
+      "--n-heads",
+      "2",
+      "--dropout",
+      "0.5",
+      "--encoder",
+      "hstu",
+      "--chunked-full-softmax",
+      "--item-chunk",
+      "32768",
+      "--time-bias",
+      "--pos-rab",
+      "--label-smoothing",
+      "0.2",
+      "--causal-filter",
+      "--filter-kernel",
+      "16",
+      "--text-sim-bias",
+      "--text-prototypes",
+      "512",
+      "--lr-schedule",
+      "warmup_cosine",
+      "--eval-every",
+      "20",
+      "--temporal-split",
+      "--temporal-inner-q",
+      "0.60",
+      "--temporal-outer-q",
+      "0.75",
+      "--save-ckpt",
+      "--seed",
+      "20260737",
+      "--out",
+      "C:\\Users\\rayxc\\Documents\\R\\.claude\\worktrees\\brave-rhodes-0a7d09\\_bestrec_run\\poc_out\\results_TEMP_STEAM_seed20260737.json"
+    ],
+    "hostname": "DESKTOP-05J4CQ4",
+    "python": "3.12.13",
+    "torch": "2.11.0+cu128",
+    "cuda_device": "NVIDIA GeForce RTX 5060 Ti",
+    "n_interactions": {
+      "train": 2524999,
+      "valid": 167834,
+      "test": 193533
+    },
+    "data_sha256": {
+      "train_csv": "cbcf86cf48a6cbab4b9496cd71186206462ac6e01bc08f5addb68756b867c3f8",
+      "valid_csv": "2e658263c24be1e2f0f571b96ea9033aef2b42019d96de7dae1479e7ae52844d",
+      "test_csv": "e8531f35a25ea669dfd492c8919d6bc35868e5243822435249aa9259e0be871a",
+      "text_cache": "4814d8b0fac1c73dd175ae7b6eeb21774f51672dfc483213c3d3d2d50b2c2ad4"
+    },
+    "best_test_epoch": 20,
+    "git_commit": "6dbf6b6882f4532ba30ba53cc3329bdfe2388b4a",
+    "git_branch": "codex/cleanresearchwithskill",
+    "git_dirty_tracked": true,
+    "code_sha256": {
+      "run_sasrec_sbert.py": "9692872c0ba260152e82a9780405b734c4545f6f1d3e33fa5fc02658fa6d6744",
+      "run_sota_confirm_v2.sh": "0c7fa2a4e58e0d442c4a6c3af510c5d62bcd5b238bfe5346ea060bc742fa1b1a",
+      "summarize_sota_confirm_v2.py": "669d9b4a8f91b3b3fc5608708db8a277a79241fdf2d3b4070803a42b3e206b1c"
+    },
+    "user_records_path": "results_TEMP_STEAM_seed20260737.users.jsonl.gz",
+    "user_records_n": 193533,
+    "user_records_sha256": "6e9b7b20e45f89288e1594e71c0d0a79f201e9c9dc8311fb59ee2306f038d35f"
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 7.843503390369327,
+      "epoch_time_s": 20.906742572784424
+    },
+    {
+      "epoch": 2,
+      "train_loss": 7.374010735612861,
+      "epoch_time_s": 20.874441146850586
+    },
+    {
+      "epoch": 3,
+      "train_loss": 7.323153500183387,
+      "epoch_time_s": 20.616350173950195
+    },
+    {
+      "epoch": 4,
+      "train_loss": 7.299716097748225,
+      "epoch_time_s": 20.623409509658813
+    },
+    {
+      "epoch": 5,
+      "train_loss": 7.28548252923148,
+      "epoch_time_s": 20.86443066596985
+    },
+    {
+      "epoch": 6,
+      "train_loss": 7.275787676973827,
+      "epoch_time_s": 20.63222336769104
+    },
+    {
+      "epoch": 7,
+      "train_loss": 7.267305234829951,
+      "epoch_time_s": 20.625543355941772
+    },
+    {
+      "epoch": 8,
+      "train_loss": 7.260222762411091,
+      "epoch_time_s": 20.61251997947693
+    },
+    {
+      "epoch": 9,
+      "train_loss": 7.254644730124056,
+      "epoch_time_s": 20.90575075149536
+    },
+    {
+      "epoch": 10,
+      "train_loss": 7.249397721268615,
+      "epoch_time_s": 20.634742498397827
+    },
+    {
+      "epoch": 11,
+      "train_loss": 7.243804979544081,
+      "epoch_time_s": 20.623672246932983
+    },
+    {
+      "epoch": 12,
+      "train_loss": 7.238751680839996,
+      "epoch_time_s": 20.868493795394897
+    },
+    {
+      "epoch": 13,
+      "train_loss": 7.234873120356266,
+      "epoch_time_s": 20.68715524673462
+    },
+    {
+      "epoch": 14,
+      "train_loss": 7.229883614113803,
+      "epoch_time_s": 20.654637813568115
+    },
+    {
+      "epoch": 15,
+      "train_loss": 7.225920114649056,
+      "epoch_time_s": 20.955607175827026
+    },
+    {
+      "epoch": 16,
+      "train_loss": 7.2234247264774165,
+      "epoch_time_s": 20.732054471969604
+    },
+    {
+      "epoch": 17,
+      "train_loss": 7.22032805983372,
+      "epoch_time_s": 20.685214042663574
+    },
+    {
+      "epoch": 18,
+      "train_loss": 7.218048187115225,
+      "epoch_time_s": 20.664525747299194
+    },
+    {
+      "epoch": 19,
+      "train_loss": 7.216104714441959,
+      "epoch_time_s": 20.913691759109497
+    },
+    {
+      "epoch": 20,
+      "train_loss": 7.216039682203723,
+      "epoch_time_s": 20.641191720962524,
+      "val": {
+        "NDCG@10": 0.0387176752968118,
+        "HR@10": 0.07376931968492677,
+        "MRR": 0.03594675520757121,
+        "n_eval": 167834,
+        "by_popularity": {
+          "tail": {
+            "NDCG@10": 0.0,
+            "HR@10": 0.0,
+            "n": 35566,
+            "n_hit@10": 0,
+            "HR@20": 0.0,
+            "n_hit@20": 0,
+            "HR@50": 0.0,
+            "n_hit@50": 0,
+            "HR@100": 0.0,
+            "n_hit@100": 0
+          },
+          "mid": {
+            "NDCG@10": 0.0012309369466640984,
+            "HR@10": 0.002380952380952381,
+            "n": 5880,
+            "n_hit@10": 14,
+            "HR@20": 0.004591836734693878,
+            "n_hit@20": 27,
+            "HR@50": 0.01173469387755102,
+            "n_hit@50": 69,
+            "HR@100": 0.020918367346938777,
+            "n_hit@100": 123
+          },
+          "head": {
+            "NDCG@10": 0.051356967485194215,
+            "HR@10": 0.09784947938095388,
+            "n": 126388,
+            "n_hit@10": 12367,
+            "HR@20": 0.1496107225369497,
+            "n_hit@20": 18909,
+            "HR@50": 0.25392442320473463,
+            "n_hit@50": 32093,
+            "HR@100": 0.3635788207741241,
+            "n_hit@100": 45952
+          }
+        }
+      },
+      "test": {
+        "NDCG@10": 0.026378979465990774,
+        "HR@10": 0.05165010618344158,
+        "MRR": 0.024589008872075737,
+        "n_eval": 193533,
+        "by_popularity": {
+          "tail": {
+            "NDCG@10": 0.0,
+            "HR@10": 0.0,
+            "n": 79252,
+            "n_hit@10": 0,
+            "HR@20": 0.0,
+            "n_hit@20": 0,
+            "HR@50": 0.0,
+            "n_hit@50": 0,
+            "HR@100": 0.0,
+            "n_hit@100": 0
+          },
+          "mid": {
+            "NDCG@10": 0.000500932054848115,
+            "HR@10": 0.0013560635412630763,
+            "n": 5162,
+            "n_hit@10": 7,
+            "HR@20": 0.0027121270825261525,
+            "n_hit@20": 14,
+            "HR@50": 0.007361487795428129,
+            "n_hit@50": 38,
+            "HR@100": 0.017047655947307245,
+            "n_hit@100": 88
+          },
+          "head": {
+            "NDCG@10": 0.04676194999701671,
+            "HR@10": 0.09154226120107406,
+            "n": 109119,
+            "n_hit@10": 9989,
+            "HR@20": 0.14348555247023892,
+            "n_hit@20": 15657,
+            "HR@50": 0.2458508600701986,
+            "n_hit@50": 26827,
+            "HR@100": 0.3530549216909979,
+            "n_hit@100": 38525
+          }
+        }
+      }
+    }
+  ],
+  "zfusion_sweep": null,
+  "best_val_NDCG10": 0.0387176752968118,
+  "best_test": {
+    "NDCG@10": 0.026378979465990774,
+    "HR@10": 0.05165010618344158,
+    "MRR": 0.024589008872075737,
+    "n_eval": 193533,
+    "by_popularity": {
+      "tail": {
+        "NDCG@10": 0.0,
+        "HR@10": 0.0,
+        "n": 79252,
+        "n_hit@10": 0,
+        "HR@20": 0.0,
+        "n_hit@20": 0,
+        "HR@50": 0.0,
+        "n_hit@50": 0,
+        "HR@100": 0.0,
+        "n_hit@100": 0
+      },
+      "mid": {
+        "NDCG@10": 0.000500932054848115,
+        "HR@10": 0.0013560635412630763,
+        "n": 5162,
+        "n_hit@10": 7,
+        "HR@20": 0.0027121270825261525,
+        "n_hit@20": 14,
+        "HR@50": 0.007361487795428129,
+        "n_hit@50": 38,
+        "HR@100": 0.017047655947307245,
+        "n_hit@100": 88
+      },
+      "head": {
+        "NDCG@10": 0.04676194999701671,
+        "HR@10": 0.09154226120107406,
+        "n": 109119,
+        "n_hit@10": 9989,
+        "HR@20": 0.14348555247023892,
+        "n_hit@20": 15657,
+        "HR@50": 0.2458508600701986,
+        "n_hit@50": 26827,
+        "HR@100": 0.3530549216909979,
+        "n_hit@100": 38525
+      }
+    }
+  },
+  "learned_niche_share_beta": null,
+  "learned_js_shrink_c": null,
+  "learned_heat_target_T": null,
+  "learned_conn_gate_alpha": null,
+  "learned_conn_gate_slope": null,
+  "spectral_effective_rank": null,
+  "spectral_bbp_rho_by_tercile": null,
+  "fir_v3": "off",
+  "fir_v3_kernel": 16,
+  "fir_v3_wd": "backbone",
+  "init_state_sha256": "cd49d7646618284b0d3fc8ea49046c707175857d5c21da9ba040b785e19ad39c",
+  "best_ckpt_sha256": "f6b09b41ac9c4d1e6988e0801fce1f61342ebbc5401da2cbf1732a8e74292d7f",
+  "fir_v3_final_l2": null,
+  "fir_v3_final_absmean_per_lag": null,
+  "fir_control": "off",
+  "fir_control_kernel": 16,
+  "backbone_init_sha256": "cd49d7646618284b0d3fc8ea49046c707175857d5c21da9ba040b785e19ad39c",
+  "fir_control_final_l2": null,
+  "fir_control_alpha": null,
+  "fir_control_final_absmean_per_lag": null,
+  "fir_control_profile_axis": null
+}

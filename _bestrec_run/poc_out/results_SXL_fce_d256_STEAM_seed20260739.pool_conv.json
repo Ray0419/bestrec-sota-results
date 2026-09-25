@@ -1,0 +1,471 @@
+{
+ "run": "results_SXL_fce_d256_STEAM_seed20260739.json",
+ "category": "Steam",
+ "ks": [
+  100,
+  200,
+  500,
+  1000
+ ],
+ "stride": 2,
+ "full_catalog_hit10": {
+  "k0-0": {
+   "hit": 0,
+   "n": 168281
+  },
+  "k1-2": {
+   "hit": 2,
+   "n": 556
+  },
+  "k3-5": {
+   "hit": 0,
+   "n": 799
+  },
+  "k6-10": {
+   "hit": 1,
+   "n": 1831
+  },
+  "k11-20": {
+   "hit": 31,
+   "n": 3159
+  },
+  "k21-50": {
+   "hit": 86,
+   "n": 6903
+  },
+  "k51-200": {
+   "hit": 765,
+   "n": 24521
+  },
+  "k201-1000000000": {
+   "hit": 49087,
+   "n": 213630
+  }
+ },
+ "pool": {
+  "text": {
+   "k0-0": {
+    "100": {
+     "n": 168281,
+     "hit_forced": 3,
+     "nat_cov": 4647,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 168281,
+     "hit_forced": 0,
+     "nat_cov": 7826,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 168281,
+     "hit_forced": 0,
+     "nat_cov": 16455,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 168281,
+     "hit_forced": 0,
+     "nat_cov": 28858,
+     "hit_nat": 0
+    }
+   },
+   "k1-2": {
+    "100": {
+     "n": 556,
+     "hit_forced": 6,
+     "nat_cov": 16,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 556,
+     "hit_forced": 3,
+     "nat_cov": 25,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 556,
+     "hit_forced": 3,
+     "nat_cov": 44,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 556,
+     "hit_forced": 3,
+     "nat_cov": 88,
+     "hit_nat": 0
+    }
+   },
+   "k3-5": {
+    "100": {
+     "n": 799,
+     "hit_forced": 22,
+     "nat_cov": 15,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 799,
+     "hit_forced": 11,
+     "nat_cov": 30,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 799,
+     "hit_forced": 6,
+     "nat_cov": 71,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 799,
+     "hit_forced": 2,
+     "nat_cov": 123,
+     "hit_nat": 0
+    }
+   },
+   "k6-10": {
+    "100": {
+     "n": 1831,
+     "hit_forced": 72,
+     "nat_cov": 39,
+     "hit_nat": 1
+    },
+    "200": {
+     "n": 1831,
+     "hit_forced": 33,
+     "nat_cov": 90,
+     "hit_nat": 2
+    },
+    "500": {
+     "n": 1831,
+     "hit_forced": 11,
+     "nat_cov": 212,
+     "hit_nat": 1
+    },
+    "1000": {
+     "n": 1831,
+     "hit_forced": 5,
+     "nat_cov": 381,
+     "hit_nat": 1
+    }
+   },
+   "k11-20": {
+    "100": {
+     "n": 3159,
+     "hit_forced": 228,
+     "nat_cov": 102,
+     "hit_nat": 18
+    },
+    "200": {
+     "n": 3159,
+     "hit_forced": 135,
+     "nat_cov": 162,
+     "hit_nat": 17
+    },
+    "500": {
+     "n": 3159,
+     "hit_forced": 77,
+     "nat_cov": 303,
+     "hit_nat": 14
+    },
+    "1000": {
+     "n": 3159,
+     "hit_forced": 60,
+     "nat_cov": 516,
+     "hit_nat": 16
+    }
+   },
+   "k21-50": {
+    "100": {
+     "n": 6903,
+     "hit_forced": 778,
+     "nat_cov": 245,
+     "hit_nat": 54
+    },
+    "200": {
+     "n": 6903,
+     "hit_forced": 477,
+     "nat_cov": 417,
+     "hit_nat": 58
+    },
+    "500": {
+     "n": 6903,
+     "hit_forced": 281,
+     "nat_cov": 830,
+     "hit_nat": 59
+    },
+    "1000": {
+     "n": 6903,
+     "hit_forced": 200,
+     "nat_cov": 1301,
+     "hit_nat": 60
+    }
+   },
+   "k51-200": {
+    "100": {
+     "n": 24521,
+     "hit_forced": 4567,
+     "nat_cov": 1150,
+     "hit_nat": 356
+    },
+    "200": {
+     "n": 24521,
+     "hit_forced": 2755,
+     "nat_cov": 1896,
+     "hit_nat": 343
+    },
+    "500": {
+     "n": 24521,
+     "hit_forced": 1755,
+     "nat_cov": 3618,
+     "hit_nat": 333
+    },
+    "1000": {
+     "n": 24521,
+     "hit_forced": 1309,
+     "nat_cov": 5933,
+     "hit_nat": 345
+    }
+   },
+   "k201-1000000000": {
+    "100": {
+     "n": 213630,
+     "hit_forced": 137180,
+     "nat_cov": 11985,
+     "hit_nat": 9174
+    },
+    "200": {
+     "n": 213630,
+     "hit_forced": 111031,
+     "nat_cov": 18781,
+     "hit_nat": 11648
+    },
+    "500": {
+     "n": 213630,
+     "hit_forced": 85299,
+     "nat_cov": 33493,
+     "hit_nat": 14690
+    },
+    "1000": {
+     "n": 213630,
+     "hit_forced": 71197,
+     "nat_cov": 51394,
+     "hit_nat": 16818
+    }
+   }
+  },
+  "pop": {
+   "k0-0": {
+    "100": {
+     "n": 168281,
+     "hit_forced": 7,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 168281,
+     "hit_forced": 3,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 168281,
+     "hit_forced": 0,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 168281,
+     "hit_forced": 0,
+     "nat_cov": 0,
+     "hit_nat": 0
+    }
+   },
+   "k1-2": {
+    "100": {
+     "n": 556,
+     "hit_forced": 10,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 556,
+     "hit_forced": 8,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 556,
+     "hit_forced": 6,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 556,
+     "hit_forced": 4,
+     "nat_cov": 0,
+     "hit_nat": 0
+    }
+   },
+   "k3-5": {
+    "100": {
+     "n": 799,
+     "hit_forced": 38,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 799,
+     "hit_forced": 32,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 799,
+     "hit_forced": 22,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 799,
+     "hit_forced": 13,
+     "nat_cov": 0,
+     "hit_nat": 0
+    }
+   },
+   "k6-10": {
+    "100": {
+     "n": 1831,
+     "hit_forced": 92,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 1831,
+     "hit_forced": 70,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 1831,
+     "hit_forced": 55,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 1831,
+     "hit_forced": 27,
+     "nat_cov": 0,
+     "hit_nat": 0
+    }
+   },
+   "k11-20": {
+    "100": {
+     "n": 3159,
+     "hit_forced": 247,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 3159,
+     "hit_forced": 201,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 3159,
+     "hit_forced": 155,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 3159,
+     "hit_forced": 104,
+     "nat_cov": 0,
+     "hit_nat": 0
+    }
+   },
+   "k21-50": {
+    "100": {
+     "n": 6903,
+     "hit_forced": 659,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 6903,
+     "hit_forced": 548,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 6903,
+     "hit_forced": 422,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 6903,
+     "hit_forced": 287,
+     "nat_cov": 0,
+     "hit_nat": 0
+    }
+   },
+   "k51-200": {
+    "100": {
+     "n": 24521,
+     "hit_forced": 2500,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "200": {
+     "n": 24521,
+     "hit_forced": 2039,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "500": {
+     "n": 24521,
+     "hit_forced": 1524,
+     "nat_cov": 0,
+     "hit_nat": 0
+    },
+    "1000": {
+     "n": 24521,
+     "hit_forced": 1121,
+     "nat_cov": 0,
+     "hit_nat": 0
+    }
+   },
+   "k201-1000000000": {
+    "100": {
+     "n": 213630,
+     "hit_forced": 64475,
+     "nat_cov": 53060,
+     "hit_nat": 18516
+    },
+    "200": {
+     "n": 213630,
+     "hit_forced": 58612,
+     "nat_cov": 77657,
+     "hit_nat": 19394
+    },
+    "500": {
+     "n": 213630,
+     "hit_forced": 53169,
+     "nat_cov": 122368,
+     "hit_nat": 20832
+    },
+    "1000": {
+     "n": 213630,
+     "hit_forced": 50311,
+     "nat_cov": 156755,
+     "hit_nat": 21313
+    }
+   }
+  }
+ },
+ "gates": {
+  "G1": true,
+  "G2": true
+ }
+}

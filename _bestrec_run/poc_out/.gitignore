@@ -1,0 +1,4 @@
+# heavy artifacts (worktree research program): keep JSON results only
+*.pt
+*.log
+*.users.jsonl.gz

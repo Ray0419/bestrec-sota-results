@@ -29,6 +29,30 @@ The two papers now live in separate private repositories, split out of this mono
 - **Data:** splits and text caches are not redistributed in either artifact repo; the reproduction
   path of record is this project's immutable data release `v0.9-audit-evidence`.
 
+## Deposit-builder defects found while verifying repository 1 (2026-09-26) — fix before the DOI upload
+
+Running `rebuild_hstu_submission.py --strict` on the verbatim v1.2.0 deposit showed it cannot pass
+its own one-command verification. Both causes are in `_bestrec_run/build_deposit_bundle.py`, so the
+same defects are in `_release/bestrec_deposit_v1.2.0.zip`:
+
+1. **34 required files are omitted.** The builder bundles only files named by the manifest sections
+   and the active cell graph. Missing: `_bestrec_run/pyproject.toml`, `_bestrec_run/uv.lock` (so the
+   README's `uv --project` command has no environment), `_bestrec_run/make_table_5_4_titration.py`
+   (claim-map step fails), the 25 public COLDFUSE V1 `*.perusers.npz` (E-G step fails), and
+   `run_5core_benchmark.py`, `run_fir_canonical_breadth.py`, `tfv2_commands.txt`,
+   `run_tfv2_campaign.sh`, `test_fir_controls.py`, `PROTOCOL_PARITY_APPENDIX.md` (rerun procedures).
+   All are tracked, public, and outside the seal patterns.
+2. **LF normalisation breaks an integrity chain.** Text payloads are normalised to LF at bundle
+   time, but run JSONs written on Windows were hashed over CRLF bytes, so the FIR active-control and
+   pointwise-placebo adjudications fail `run_json_sha256` on an LF checkout (88/88 records match
+   after restoring CRLF; 0 content differences).
+
+Repository 1 carries the 34 files as byte-verified supplements plus a line-ending-aware integrity
+check; with those and the 407 hydrated release assets, every other strict step passes (197 cells,
+0 untraceable, 0 mismatches). The upstream fix: add the 34 files to the builder's inclusion set,
+and either exempt run JSONs from LF normalisation or compare line-ending-normalised bytes in the
+adjudicators; then cut v1.2.1 and re-run the verification from a fresh extraction.
+
 ## Anonymization note for review
 
 Both repositories are private and named/attributed. RecSys review is mutually anonymous: before

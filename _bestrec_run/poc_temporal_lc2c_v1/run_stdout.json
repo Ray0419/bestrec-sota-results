@@ -1,0 +1,144 @@
+﻿{
+  "selected_kernel": "exp085",
+  "inner_events": 227,
+  "outer_events": 456,
+  "outer_users": 161,
+  "outer_event_weighted_arm_means": {
+    "content_boxcar8": {
+      "cold_ndcg10": 0.19336583342900232,
+      "raw_full_ndcg10": 0.19336583342900232,
+      "pzc_full_ndcg10": 0.015034792228590242
+    },
+    "content_exp085": {
+      "cold_ndcg10": 0.19496117023968304,
+      "raw_full_ndcg10": 0.19496117023968304,
+      "pzc_full_ndcg10": 0.017810195961976232
+    },
+    "lc2c_boxcar8": {
+      "cold_ndcg10": 0.21106852765516318,
+      "raw_full_ndcg10": 0.0013836178806391612,
+      "pzc_full_ndcg10": 0.032223353996020665
+    },
+    "lc2c_exp085": {
+      "cold_ndcg10": 0.20685175355992183,
+      "raw_full_ndcg10": 0.0013649082448491691,
+      "pzc_full_ndcg10": 0.029682898568975533
+    }
+  },
+  "outer_user_weighted_arm_means": {
+    "content_boxcar8": {
+      "cold_ndcg10": 0.1968965184874238,
+      "raw_full_ndcg10": 0.1968965184874238,
+      "pzc_full_ndcg10": 0.019498416834284184
+    },
+    "content_exp085": {
+      "cold_ndcg10": 0.19182137803548616,
+      "raw_full_ndcg10": 0.19182137803548616,
+      "pzc_full_ndcg10": 0.02023288259593388
+    },
+    "lc2c_boxcar8": {
+      "cold_ndcg10": 0.208464729683562,
+      "raw_full_ndcg10": 0.003918818345164332,
+      "pzc_full_ndcg10": 0.036747246624144074
+    },
+    "lc2c_exp085": {
+      "cold_ndcg10": 0.20281177003224574,
+      "raw_full_ndcg10": 0.0029681102266601073,
+      "pzc_full_ndcg10": 0.03621518303949586
+    }
+  },
+  "outer_contrasts": {
+    "cold_ndcg10": {
+      "lc2c_fir_minus_boxcar": {
+        "n_users": 161,
+        "mean": -0.005652959651316282,
+        "ci95_user_bootstrap": [
+          -0.01638401183405963,
+          0.004210600845020167
+        ],
+        "positive_user_fraction": 0.2111801242236025
+      },
+      "content_fir_minus_boxcar": {
+        "n_users": 161,
+        "mean": -0.005075140451937585,
+        "ci95_user_bootstrap": [
+          -0.014998399095453004,
+          0.0035912206402893897
+        ],
+        "positive_user_fraction": 0.21739130434782608
+      },
+      "factorial_interaction": {
+        "n_users": 161,
+        "mean": -0.0005778191993786971,
+        "ci95_user_bootstrap": [
+          -0.011055282055825743,
+          0.010358514642785522
+        ]
+      }
+    },
+    "raw_full_ndcg10": {
+      "lc2c_fir_minus_boxcar": {
+        "n_users": 161,
+        "mean": -0.0009507081185042253,
+        "ci95_user_bootstrap": [
+          -0.005545274911269395,
+          0.0026931505557567193
+        ],
+        "positive_user_fraction": 0.006211180124223602
+      },
+      "content_fir_minus_boxcar": {
+        "n_users": 161,
+        "mean": -0.005075140451937585,
+        "ci95_user_bootstrap": [
+          -0.014496615904043619,
+          0.003751489907331321
+        ],
+        "positive_user_fraction": 0.21739130434782608
+      },
+      "factorial_interaction": {
+        "n_users": 161,
+        "mean": 0.004124432333433361,
+        "ci95_user_bootstrap": [
+          -0.005717670046295884,
+          0.014652073961303283
+        ]
+      }
+    },
+    "pzc_full_ndcg10": {
+      "lc2c_fir_minus_boxcar": {
+        "n_users": 161,
+        "mean": -0.0005320635846482106,
+        "ci95_user_bootstrap": [
+          -0.005220154815703876,
+          0.005375312063384201
+        ],
+        "positive_user_fraction": 0.06832298136645963
+      },
+      "content_fir_minus_boxcar": {
+        "n_users": 161,
+        "mean": 0.0007344657616496942,
+        "ci95_user_bootstrap": [
+          -0.009552830945967603,
+          0.008504509506181947
+        ],
+        "positive_user_fraction": 0.06832298136645963
+      },
+      "factorial_interaction": {
+        "n_users": 161,
+        "mean": -0.0012665293462979055,
+        "ci95_user_bootstrap": [
+          -0.009953728937899704,
+          0.008781212443152766
+        ]
+      }
+    }
+  },
+  "feasibility_rule": {
+    "cold_pool_improves": false,
+    "pzc_full_improves": false,
+    "cold_pool_interaction_positive": false,
+    "interpretation": "directional only; no confirmatory threshold was preregistered"
+  },
+  "results": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_run\\poc_temporal_lc2c_v1\\results.json",
+  "records": "C:\\Users\\rayxc\\Documents\\R\\_bestrec_run\\poc_temporal_lc2c_v1\\outer_records.jsonl"
+}

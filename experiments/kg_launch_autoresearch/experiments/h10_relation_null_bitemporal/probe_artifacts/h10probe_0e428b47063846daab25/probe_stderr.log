@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "C:\Users\rayxc\Documents\R\experiments\kg_launch_autoresearch\experiments\h10_relation_null_bitemporal\code\run_h10a_relation_null.py", line 1137, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\Users\rayxc\Documents\R\experiments\kg_launch_autoresearch\experiments\h10_relation_null_bitemporal\code\run_h10a_relation_null.py", line 1127, in main
+    args = parse_arguments(); auth = bootstrap(args)
+                                     ^^^^^^^^^^^^^^^
+  File "C:\Users\rayxc\Documents\R\experiments\kg_launch_autoresearch\experiments\h10_relation_null_bitemporal\code\run_h10a_relation_null.py", line 292, in bootstrap
+    auth = read_json(authorization_path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rayxc\Documents\R\experiments\kg_launch_autoresearch\experiments\h10_relation_null_bitemporal\code\run_h10a_relation_null.py", line 140, in read_json
+    raise RuntimeError(f"noncanonical JSON: {path}")
+RuntimeError: noncanonical JSON: C:\Users\rayxc\Documents\R\experiments\kg_launch_autoresearch\experiments\h10_relation_null_bitemporal\probe_artifacts\h10probe_0e428b47063846daab25\probe_authorization.json

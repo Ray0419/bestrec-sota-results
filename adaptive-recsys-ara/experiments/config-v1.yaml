@@ -1,0 +1,83 @@
+# Human-readable mirror of src/configs/ripple_poc_ml100k.json.
+# The immutable JSON is the executable source of truth for PoC v1.
+protocol_id: ripple-ml100k-poc-v1-preregistered
+seed: 20260807
+replicate_seeds: [20260807, 20260808, 20260809]
+dataset:
+  name: MovieLens 100K
+  source: https://files.grouplens.org/datasets/movielens/ml-100k.zip
+  split: per_user_chronological_80_10_10
+  positive_rating_min: 4
+  dislike_rating_max: 2
+  minimum_total_positives: 5
+  minimum_train_events: 8
+  minimum_query_positives: 2
+representation:
+  model: sentence-transformers/all-MiniLM-L6-v2
+  model_loading: local_files_only
+  metadata_template: "{title} [SEP] {pipe_joined_genres}"
+  normalize: true
+  dtype: float32
+  history_query: normalized_centroid_of_prefix_ratings_at_least_4
+retrieval:
+  implementation: faiss.IndexIVFFlat
+  metric: inner_product_on_normalized_vectors
+  nlist: 32
+  nprobe_gate: 4
+  hard_negative_search_k: 128
+  evaluation_search_k: 150
+  candidate_boundary: 50
+adapter:
+  rank: 16
+  residual_scale: 0.25
+  beta: 2.0
+  temperature: 0.1
+  explicit_margin: 0.5
+  confusion_margin: 0.2
+  explicit_weight: 1.0
+  confusion_weight: 0.25
+  anchor_coefficient: 0.05
+  optimizer: AdamW
+  learning_rate: 0.003
+  weight_decay: 0.0001
+  batch_size: 256
+  epochs: 20
+  gradient_clip_norm: 1.0
+  maximum_training_pairs: 12000
+  pair_refresh: every_epoch
+controls:
+  variants: [random_negative, exact_hard_negative, ann_boundary, frozen]
+  ann_boundary_min_source_rate: 0.95
+bpr:
+  factors: 64
+  learning_rate: 0.01
+  weight_decay: 0.0001
+  epochs: 20
+bootstrap:
+  resamples: 10000
+  seed: 20260907
+latency:
+  warmup_full_passes: 10
+  repetitions_per_query: 5
+  schedule: alternating_ABBA_BAAB
+gate:
+  ndcg10_relative_over_frozen_min: 0.05
+  ndcg10_bootstrap_lower_bound_strictly_positive: true
+  ndcg10_relative_over_random_min: 0.01
+  ndcg10_relative_over_exact_hard_min: 0.01
+  ndcg10_fraction_of_bpr_min: 0.90
+  recall50_not_below_frozen: true
+  future_dislike_intrusion10_not_above_frozen: true
+  latency_p95_ratio_max: 1.25
+  item_and_index_hash_unchanged: true
+  ripple_seeds_beating_frozen_min: 2
+fail_closed:
+  minimum_future_dislike_users: 100
+  minimum_ann_boundary_source_rate: 0.95
+  asynchronous_error_ledger_empty: true
+  all_required_metrics_finite: true
+execution:
+  device: cpu
+  numerical_threads: 1
+  dataloader_workers: 0
+  append_only_unique_run_directories: true

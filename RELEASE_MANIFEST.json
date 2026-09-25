@@ -1,11 +1,11 @@
 {
   "release": "v0.9-audit-evidence (immutable data assets) + the current deposit tag (deposit releases supersede each other; the current tag and bundle inventory are recorded in DOI_DEPOSIT_INSTRUCTIONS.md)",
-  "date": "2026-07-31",
+  "date": "2026-09-08",
   "license": {
     "code": "MIT (this repo)",
     "data": "Amazon Reviews 2023 (McAuley Lab) \u2014 obtain from the official source; raw data NOT redistributed here; regeneration: PROTOCOL_PARITY_APPENDIX.md section 7"
   },
-  "git_commit": "65b20b5763e9a5626c77c0cbfcb0df022a06875f",
+  "git_commit": "fe8ceac9c6eac1634512c1ab14951ded3d8c2824",
   "splits": {
     "Video_Games.train": {
       "sha256": "536866c7b3cb21ff4a1c2139ecb1e393c2ea468c4efe63ff1cfde51b0bcaa8d3",
@@ -1054,8 +1054,8 @@
       "bytes": 8885
     },
     "TIER_A_PUBLICATION_ROADMAP.md": {
-      "sha256": "427d7853772aad1eb5271365b721f3af74bb0bbda9a1b3e84dd0df3240eda188",
-      "bytes": 7428
+      "sha256": "9394f724e5adef0ecdf0be8dca87214557ec13d98e5e3749400eafc126bf4910",
+      "bytes": 8374
     },
     "CODEX_CLAUDE_COLLABORATION_GUIDE.md": {
       "sha256": "541a73a4e9a821abd85f5e56e275f56faa3957e9997aedc47f75fee1d3d1a849",
@@ -1078,8 +1078,8 @@
       "bytes": 5179
     },
     "PAPER_SUBMISSION.md": {
-      "sha256": "74ab67182af7bd2a312dd2143e657c943b809eaa622aa22658dd092552d7633e",
-      "bytes": 182603
+      "sha256": "bc462e1f7597e287105d8ebfbc7b2f6cdb011088beaaa48f7d0269cb8fbf1c19",
+      "bytes": 184719
     },
     "PAPER_SUBMISSION.pdf": {
       "sha256": "f1ff8e939d43a266fada013400b23be2d2f58c1b66341545f3791fc50896969c",
@@ -1098,11 +1098,11 @@
       "bytes": 55351
     },
     "COVER_LETTER_TORS.md": {
-      "sha256": "9a791f5ad396254c896d8fd340d910ca9199f57c315bdfd3b04b1a48fae1300f",
-      "bytes": 4171
+      "sha256": "c5ebb486af00d19c134fc70f1a31d87803182efd8d08f8101033505d3a5941ce",
+      "bytes": 4591
     },
     "CLAIM_ARTIFACT_MAP.md": {
-      "sha256": "dba04c5cc3081cf58219960c354459fc06962fbfcae4ab094cc72394c4a44ffa",
+      "sha256": "bcf69b8c33649e5c11e109182e6c374159289862317466e5d550d9698a3de7e5",
       "bytes": 20598
     },
     "PHASE_COMPLETION_AUDIT_2026-07-28.md": {
@@ -1178,12 +1178,12 @@
       "bytes": 21603
     },
     "paper_tex/PAPER_TORS.pdf": {
-      "sha256": "9add98694488676ea4cb69aff0b70890454458591af5cdd17a5225b066428ae8",
-      "bytes": 345956
+      "sha256": "a4bfcf286e52b891f3046eb3d0128acb27b1ef56cecb1137f15a7d76d6c065aa",
+      "bytes": 348849
     },
     "paper_tex/PAPER_TORS_acmsmall.pdf": {
-      "sha256": "6c816b6275e39600b8832a80c83964110af03ed2f81341027d76327e700e714e",
-      "bytes": 350773
+      "sha256": "48dd81b0c54e958c517657111d38734ab139ce04c7374ae6a50017c1a91a9aa5",
+      "bytes": 354943
     },
     "paper_tex/PAPER_TORS_SUPPLEMENT.pdf": {
       "sha256": "8002d6a4552ab7ea37141526242301e596920384c1b52da121f68ec0c69bc360",
@@ -1311,7 +1311,7 @@
   "generated_artifacts_note": "_bestrec_run/hstu_results_manifest.json and _bestrec_run/hstu_tables.json are git-tracked GENERATED artifacts: build_hstu_tables.py regenerates them deterministically from the source files hashed in this manifest, and the fail-closed --submission gate is itself their integrity check. They are intentionally outside this manifest's hash scope: the strict wrapper rewrites hstu_tables.json during the same run that verifies these hashes, so including them would make verification circular. Provenance layer: git tracking + the gate, per round-4 audit (PAPER_REVIEW_AUDIT.md) confirmed-problem 2. LaTeX source boundary (round-8 audit): the paper_tex/ SOURCE tree is governed by git at the recorded git_commit -- this manifest hashes the rendered paper_tex/PAPER_TORS.pdf, PAPER_TORS_acmsmall.pdf, and PAPER_TORS_SUPPLEMENT.pdf artifacts; deposit bundles that require source ship the git archive of that commit.",
   "git_commit_semantics": "git_commit (alias hash_parent_commit) is the PARENT commit recorded at --regen; the digests describe the worktree that becomes the tree of the manifest's own introducing commit (the immediate child). The LITERAL reviewer-facing verification target is intended_deposit_tag when present: run  update_release_manifest.py --verify-git <intended_deposit_tag>  (or HEAD, or any descendant where manifested files are unchanged). Do NOT verify at git_commit itself when manifested files changed in the introducing commit. (Audits 2026-07-18 21:30 and 23:28.)",
   "intended_deposit_tag": "v1.2.0-deposit",
-  "hash_parent_commit": "65b20b5763e9a5626c77c0cbfcb0df022a06875f",
+  "hash_parent_commit": "fe8ceac9c6eac1634512c1ab14951ded3d8c2824",
   "tfv2_sidecars": {
     "results_TFV2_CDs_filter_seed20260861.final.users.jsonl.gz": {
       "sha256": "5141a5021337171d944b0500440ed6f22ceacfad36ce5f41e71bc6ce33911369",

@@ -1,0 +1,1 @@
+{"status":"H6_PHASE_B_SELFTEST_COMPLETE","process_pid":36824,"real_inputs_opened":false,"candidate_labels_opened":false,"checks":["pattern_Gram_scoring","tolerance_hash_ranking","AUC_vs_micro_pair_distinction","PCG64_shared_cluster_bootstrap","SHA256_null_sampling_without_replacement"]}
